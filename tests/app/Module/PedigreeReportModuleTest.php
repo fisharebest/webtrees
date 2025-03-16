@@ -51,10 +51,8 @@ use Fisharebest\Webtrees\Report\TcpdfWrapper;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversTrait;
 
 #[CoversClass(PedigreeReportModule::class)]
-#[CoversTrait(ModuleReportTrait::class)]
 #[CoversClass(AbstractRenderer::class)]
 #[CoversClass(HtmlRenderer::class)]
 #[CoversClass(PdfRenderer::class)]

@@ -25,12 +25,9 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(FamilyStatusText::class)]
 class FamilyStatusTextTest extends AbstractElementTestCase
 {
-    /**
-     * Standard tests for all elements.
-     */
-    public static function setupBeforeClass(): void
+    public function setUp(): void
     {
-        parent::setUpBeforeClass();
+        parent::setUp();
 
         self::$element = new FamilyStatusText('label');
     }

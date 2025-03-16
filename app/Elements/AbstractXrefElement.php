@@ -31,7 +31,7 @@ use function preg_match;
 /**
  * Common behaviour for all XREF links
  */
-class AbstractXrefElement extends AbstractElement
+abstract class AbstractXrefElement extends AbstractElement
 {
     /**
      * Should we collapse the children of this element when editing?

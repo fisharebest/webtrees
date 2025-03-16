@@ -25,24 +25,6 @@ parameters:
 			path: app/Census/CensusColumnRelationToHead.php
 
 		-
-			message: '#^Parameter \$filename of class Fisharebest\\Localization\\Translation constructor expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/CompilePoFiles.php
-
-		-
-			message: '#^Parameter \$path of function basename expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/CompilePoFiles.php
-
-		-
-			message: '#^Parameter \$path of function dirname expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/CompilePoFiles.php
-
-		-
 			message: '#^Cannot access offset ''dbca'' on array\|false\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
@@ -109,12 +91,6 @@ parameters:
 			path: app/Cli/Commands/ConfigIni.php
 
 		-
-			message: '#^Cannot cast mixed to string\.$#'
-			identifier: cast.string
-			count: 1
-			path: app/Cli/Commands/ConfigIni.php
-
-		-
 			message: '#^Parameter \$ca of static method Fisharebest\\Webtrees\\DB\:\:connect\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -169,34 +145,10 @@ parameters:
 			path: app/Cli/Commands/ConfigIni.php
 
 		-
-			message: '#^Parameter \$string of function rtrim expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/ConfigIni.php
-
-		-
 			message: '#^Parameter \$username of static method Fisharebest\\Webtrees\\DB\:\:connect\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Cli/Commands/ConfigIni.php
-
-		-
-			message: '#^Binary operation "\." between ''A tree with the…'' and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Cli/Commands/TreeCreate.php
-
-		-
-			message: '#^Parameter \$name of method Fisharebest\\Webtrees\\Services\\TreeService\:\:create\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/TreeCreate.php
-
-		-
-			message: '#^Parameter \$title of method Fisharebest\\Webtrees\\Services\\TreeService\:\:create\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/TreeCreate.php
 
 		-
 			message: '#^Binary operation "\." between ''Tree "'' and mixed results in an error\.$#'
@@ -215,66 +167,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Cli/Commands/TreeExport.php
-
-		-
-			message: '#^Binary operation "\." between ''Invalid format\: ‘'' and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Cli/Commands/TreeList.php
-
-		-
-			message: '#^Binary operation "\." between ''A user with the…'' and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 2
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Parameter \$email of method Fisharebest\\Webtrees\\Services\\UserService\:\:create\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Parameter \$email of method Fisharebest\\Webtrees\\Services\\UserService\:\:findByEmail\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Parameter \$password of method Fisharebest\\Webtrees\\Services\\UserService\:\:create\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Parameter \$real_name of method Fisharebest\\Webtrees\\Services\\UserService\:\:create\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Parameter \$setting_value of method Fisharebest\\Webtrees\\User\:\:setPreference\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Parameter \$user_name of method Fisharebest\\Webtrees\\Services\\UserService\:\:create\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Parameter \$user_name of method Fisharebest\\Webtrees\\Services\\UserService\:\:findByUserName\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Binary operation "\." between ''Invalid format\: ‘'' and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Cli/Commands/UserList.php
 
 		-
 			message: '#^Parameter \#1 \$command of method Symfony\\Component\\Console\\Application\:\:add\(\) expects Symfony\\Component\\Console\\Command\\Command, mixed given\.$#'
@@ -1201,7 +1093,7 @@ parameters:
 			path: app/Family.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\FlashMessages\:\:getMessages\(\) should return array\<object\> but returns array\<mixed\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\FlashMessages\:\:getMessages\(\) should return array\<object\{text\: string, status\: string\}\> but returns array\<mixed\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/FlashMessages.php
@@ -1347,12 +1239,6 @@ parameters:
 		-
 			message: '#^Parameter \#3 \$headers of method Fisharebest\\Webtrees\\Contracts\\ResponseFactoryInterface\:\:response\(\) expects array\<string, string\>, array\<string\> given\.$#'
 			identifier: argument.type
-			count: 1
-			path: app/Helpers/functions.php
-
-		-
-			message: '#^Strict comparison using \=\=\= between ''\-dev'' and '''' will always evaluate to false\.$#'
-			identifier: identical.alwaysFalse
 			count: 1
 			path: app/Helpers/functions.php
 
@@ -1699,39 +1585,15 @@ parameters:
 			path: app/Http/RequestHandlers/DataFixUpdate.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$type\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/DataFixUpdateAll.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/DataFixUpdateAll.php
-
-		-
 			message: '#^Binary operation "\+\=" between mixed and int results in an error\.$#'
 			identifier: assignOp.invalid
 			count: 1
 			path: app/Http/RequestHandlers/DataFixUpdateAll.php
 
 		-
-			message: '#^Cannot access property \$xref on object\|null\.$#'
+			message: '#^Cannot access property \$xref on object\{xref\: string, type\: string\}\|null\.$#'
 			identifier: property.nonObject
 			count: 2
-			path: app/Http/RequestHandlers/DataFixUpdateAll.php
-
-		-
-			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Services\\DataFixService\:\:getRecordByType\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/DataFixUpdateAll.php
-
-		-
-			message: '#^Parameter \#2 \$parameters of function route expects array\<array\<string\>\|bool\|int\|string\|null\>, array\<mixed\> given\.$#'
-			identifier: argument.type
-			count: 1
 			path: app/Http/RequestHandlers/DataFixUpdateAll.php
 
 		-
@@ -1748,12 +1610,6 @@ parameters:
 
 		-
 			message: '#^Parameter \#2 \$params of method Fisharebest\\Webtrees\\Module\\ModuleDataFixInterface\:\:updateRecord\(\) expects array\<string, string\>, array given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/DataFixUpdateAll.php
-
-		-
-			message: '#^Parameter \#3 \$type of method Fisharebest\\Webtrees\\Services\\DataFixService\:\:getRecordByType\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/DataFixUpdateAll.php
@@ -2035,13 +1891,13 @@ parameters:
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
-			message: '#^Cannot access offset ''0'' on array\{0\: int\<0, max\>, 1\: int\<0, max\>, 2\: int, 3\: string, mime\: string, channels\?\: int, bits\?\: int\}\|false\.$#'
+			message: '#^Cannot access offset 0 on array\{0\: int\<0, max\>, 1\: int\<0, max\>, 2\: int, 3\: string, mime\: string, channels\?\: int, bits\?\: int\}\|false\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
-			message: '#^Cannot access offset ''1'' on array\{0\: int\<0, max\>, 1\: int\<0, max\>, 2\: int, 3\: string, mime\: string, channels\?\: int, bits\?\: int\}\|false\.$#'
+			message: '#^Cannot access offset 1 on array\{0\: int\<0, max\>, 1\: int\<0, max\>, 2\: int, 3\: string, mime\: string, channels\?\: int, bits\?\: int\}\|false\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: app/Http/RequestHandlers/ManageMediaData.php
@@ -2122,6 +1978,12 @@ parameters:
 			message: '#^Parameter \#3 \$gedcom of method Fisharebest\\Webtrees\\Contracts\\MediaFactoryInterface\:\:make\(\) expects string\|null, mixed given\.$#'
 			identifier: argument.type
 			count: 1
+			path: app/Http/RequestHandlers/ManageMediaData.php
+
+		-
+			message: '#^Parameter \#4 \$sort_columns of method Fisharebest\\Webtrees\\Services\\DatatablesService\:\:handleQuery\(\) expects array\<Illuminate\\Database\\Query\\Expression\<string\>\|string\>, array\{0\: ''multimedia_file_refn'', 2\: Illuminate\\Database\\Query\\Expression\<''descriptive_title \|…''\>\} given\.$#'
+			identifier: argument.type
+			count: 2
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
@@ -2371,38 +2233,8 @@ parameters:
 			path: app/Http/RequestHandlers/MergeTreesAction.php
 
 		-
-			message: '#^Binary operation "\." between ''Module '' and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Http/RequestHandlers/ModuleAction.php
-
-		-
-			message: '#^Binary operation "\." between non\-falsy\-string and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Http/RequestHandlers/ModuleAction.php
-
-		-
-			message: '#^Binary operation "\." between string and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Http/RequestHandlers/ModuleAction.php
-
-		-
 			message: '#^Method Fisharebest\\Webtrees\\Http\\RequestHandlers\\ModuleAction\:\:handle\(\) should return Psr\\Http\\Message\\ResponseInterface but returns mixed\.$#'
 			identifier: return.type
-			count: 1
-			path: app/Http/RequestHandlers/ModuleAction.php
-
-		-
-			message: '#^Parameter \#1 \$haystack of function str_contains expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/ModuleAction.php
-
-		-
-			message: '#^Parameter \#1 \$module_name of method Fisharebest\\Webtrees\\Services\\ModuleService\:\:findByName\(\) expects string, mixed given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/ModuleAction.php
 
@@ -3793,6 +3625,12 @@ parameters:
 			path: app/Module/FabTheme.php
 
 		-
+			message: '#^Method Fisharebest\\Webtrees\\Module\\FamilyTreeFavoritesModule\:\:getFavorites\(\) should return array\<int, object\{favorite_id\: string, favorite_type\: string, url\: string\|null, note\: string\|null, title\: string\|null, record\: Fisharebest\\Webtrees\\GedcomRecord\|null\}\> but returns array\<int, stdClass\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Module/FamilyTreeFavoritesModule.php
+
+		-
 			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\GedcomRecordFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -4009,12 +3847,6 @@ parameters:
 			path: app/Module/FanChartModule.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixCemeteryTag.php
-
-		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixCemeteryTag\:\:individualsToFix\(\) should return Illuminate\\Support\\Collection\<int, string\>\|null but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
 			identifier: return.type
 			count: 1
@@ -4025,12 +3857,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Module/FixCemeteryTag.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixDuplicateLinks.php
 
 		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixDuplicateLinks\:\:familiesToFix\(\) should return Illuminate\\Support\\Collection\<int, string\> but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
@@ -4105,12 +3931,6 @@ parameters:
 			path: app/Module/FixDuplicateLinks.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixMissingDeaths.php
-
-		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixMissingDeaths\:\:individualsToFix\(\) should return Illuminate\\Support\\Collection\<int, string\>\|null but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
 			identifier: return.type
 			count: 1
@@ -4121,12 +3941,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Module/FixMissingDeaths.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixNameSlashesAndSpaces.php
 
 		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixNameSlashesAndSpaces\:\:individualsToFix\(\) should return Illuminate\\Support\\Collection\<int, string\>\|null but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
@@ -4153,12 +3967,6 @@ parameters:
 			path: app/Module/FixNameSlashesAndSpaces.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixNameTags.php
-
-		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixNameTags\:\:individualsToFix\(\) should return Illuminate\\Support\\Collection\<int, string\> but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
 			identifier: return.type
 			count: 1
@@ -4175,12 +3983,6 @@ parameters:
 			identifier: notIdentical.alwaysTrue
 			count: 1
 			path: app/Module/FixNameTags.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixPlaceNames.php
 
 		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixPlaceNames\:\:familiesToFix\(\) should return Illuminate\\Support\\Collection\<int, string\>\|null but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
@@ -4207,12 +4009,6 @@ parameters:
 			path: app/Module/FixPlaceNames.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixPrimaryTag.php
-
-		-
 			message: '#^Binary operation "\." between "\\n" and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1
@@ -4235,12 +4031,6 @@ parameters:
 			identifier: notIdentical.alwaysTrue
 			count: 1
 			path: app/Module/FixPrimaryTag.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixSearchAndReplace.php
 
 		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixSearchAndReplace\:\:familiesToFix\(\) should return Illuminate\\Support\\Collection\<int, string\>\|null but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
@@ -4303,12 +4093,6 @@ parameters:
 			path: app/Module/FixSearchAndReplace.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixWtObjeSortTag.php
-
-		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixWtObjeSortTag\:\:individualsToFix\(\) should return Illuminate\\Support\\Collection\<int, string\> but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
 			identifier: return.type
 			count: 1
@@ -4339,21 +4123,21 @@ parameters:
 			path: app/Module/FrequentlyAskedQuestionsModule.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$languages\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/FrequentlyAskedQuestionsModule.php
-
-		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
 			count: 6
 			path: app/Module/FrequentlyAskedQuestionsModule.php
 
 		-
+			message: '#^Method Fisharebest\\Webtrees\\Module\\FrequentlyAskedQuestionsModule\:\:faqsForTree\(\) should return Illuminate\\Support\\Collection\<int, object\{block_id\: int, block_order\: int, gedcom_id\: int, header\: string, faqbody\: string, languages\: string\}\> but returns Illuminate\\Support\\Collection\<int, stdClass\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Module/FrequentlyAskedQuestionsModule.php
+
+		-
 			message: '#^Parameter \#2 \$string of function explode expects string, mixed given\.$#'
 			identifier: argument.type
-			count: 2
+			count: 1
 			path: app/Module/FrequentlyAskedQuestionsModule.php
 
 		-
@@ -4477,90 +4261,6 @@ parameters:
 			path: app/Module/InteractiveTree/TreeView.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageAfrikaans.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageAlbanian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageArabic.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageBasque.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageBosnian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageBulgarian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageCatalan.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageChineseSimplified.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageChineseTraditional.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageCroatian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageCzech.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageDanish.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageDivehi.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageDutch.php
-
-		-
 			message: '#^Binary operation "\." between mixed and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1
@@ -4573,340 +4273,10 @@ parameters:
 			path: app/Module/LanguageEnglishUnitedStates.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageEnglishUnitedStates.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageEstonian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageFaroese.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageFarsi.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageFinnish.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageFrench.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageGalician.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageGeorgian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageGerman.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageGreek.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageHebrew.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageHindi.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageHungarian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageIcelandic.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageIndonesian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageItalian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageJapanese.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageJavanese.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageKazhak.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageKorean.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageKurdish.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageLatvian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageLingala.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageLithuanian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageMalay.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageMaori.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageMarathi.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageNepalese.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageNorwegianBokmal.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageNorwegianNynorsk.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageOccitan.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguagePolish.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguagePortuguese.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguagePortugueseBrazil.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageRomanian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageRussian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageSerbian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageSerbianLatin.php
-
-		-
 			message: '#^Anonymous function should return array but returns mixed\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Module/LanguageSlovakian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageSlovakian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageSlovenian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageSpanish.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageSundanese.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageSwahili.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageSwedish.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageTagalog.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageTamil.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageTatar.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageThai.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageTurkish.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageUkranian.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageUrdu.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageUzbek.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageVietnamese.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageWelsh.php
-
-		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageYiddish.php
 
 		-
 			message: '#^Access to an undefined property object\:\:\$row\.$#'
@@ -5377,18 +4747,6 @@ parameters:
 			path: app/Module/ReviewChangesModule.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,mixed\>\:\:filter\(\) expects \(callable\(mixed, int\)\: bool\)\|null, Closure\(Fisharebest\\Webtrees\\Fact\)\: bool given\.$#'
-			identifier: argument.type
-			count: 4
-			path: app/Module/ShareAnniversaryModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,mixed\>\:\:mapWithKeys\(\) expects callable\(mixed, int\)\: array\<string, non\-falsy\-string\>, Closure\(Fisharebest\\Webtrees\\Fact\)\: non\-empty\-array\<string, non\-falsy\-string\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/ShareAnniversaryModule.php
-
-		-
 			message: '#^Parameter \#1 \$filter of method Fisharebest\\Webtrees\\GedcomRecord\:\:facts\(\) expects array\<string\>, array given\.$#'
 			identifier: argument.type
 			count: 3
@@ -5423,42 +4781,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Module/StatcounterModule.php
-
-		-
-			message: '#^Binary operation "\+" between int and int\|string results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: '#^Binary operation "\-" between string and 1 results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 2
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: '#^Parameter \#1 \$x of method Fisharebest\\Webtrees\\Module\\StatisticsChartModule\:\:fillYData\(\) expects int\|string, mixed given\.$#'
-			identifier: argument.type
-			count: 13
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: '#^Parameter \#2 \$z of method Fisharebest\\Webtrees\\Module\\StatisticsChartModule\:\:fillYData\(\) expects int\|string, mixed given\.$#'
-			identifier: argument.type
-			count: 3
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: '#^Parameter \#3 \$value of method Fisharebest\\Webtrees\\Module\\StatisticsChartModule\:\:fillYData\(\) expects int\|string, mixed given\.$#'
-			identifier: argument.type
-			count: 11
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: '#^Parameter &\$ydata by\-ref type of method Fisharebest\\Webtrees\\Module\\StatisticsChartModule\:\:fillYData\(\) expects array\<array\<int\>\>, array\<array\<mixed\>\> given\.$#'
-			identifier: parameterByRef.type
-			count: 1
-			path: app/Module/StatisticsChartModule.php
 
 		-
 			message: '#^Cannot cast mixed to int\.$#'
@@ -5561,6 +4883,12 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Module/TopSurnamesModule.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Module\\UserFavoritesModule\:\:getFavorites\(\) should return array\<int, object\{favorite_id\: string, favorite_type\: string, url\: string\|null, note\: string\|null, title\: string\|null, record\: Fisharebest\\Webtrees\\GedcomRecord\|null\}\> but returns array\<int, stdClass\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Module/UserFavoritesModule.php
 
 		-
 			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\GedcomRecordFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
@@ -6595,24 +5923,6 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: '#^Cannot assign new offset to array\<string\>\|string\.$#'
-			identifier: offsetAssign.dimType
-			count: 1
-			path: app/Report/ReportParserSetup.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Report\\ReportParserSetup\:\:reportProperties\(\) should return array\{title\: string, description\: string, inputs\: array\<array\{name\: string, type\: string, lookup\: string, options\: string, default\: string, value\: string\}\>\} but returns array\<string, array\<string\>\|string\>\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Report/ReportParserSetup.php
-
-		-
-			message: '#^Property Fisharebest\\Webtrees\\Report\\ReportParserSetup\:\:\$data \(array\<string, array\<string\>\|string\>\) does not accept array\<string, mixed\>\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: app/Report/ReportParserSetup.php
-
-		-
 			message: '#^Binary operation "\*" between mixed and 2 results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1
@@ -6775,7 +6085,7 @@ parameters:
 			path: app/Services/AdminService.php
 
 		-
-			message: '#^Parameter \#1 \$table of static method Illuminate\\Database\\Capsule\\Manager\:\:table\(\) expects Closure\|Illuminate\\Database\\Query\\Builder\|string, Illuminate\\Database\\Query\\Expression given\.$#'
+			message: '#^Parameter \#1 \$table of static method Illuminate\\Database\\Capsule\\Manager\:\:table\(\) expects Closure\|Illuminate\\Database\\Query\\Builder\|string, Illuminate\\Database\\Query\\Expression\<non\-falsy\-string\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Services/AdminService.php
@@ -6872,12 +6182,6 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Fact, Closure\(string\)\: Fisharebest\\Webtrees\\Fact given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/ClipboardService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,mixed\>\:\:map\(\) expects callable\(mixed, int\)\: Fisharebest\\Webtrees\\Fact, Closure\(string\)\: Fisharebest\\Webtrees\\Fact given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Services/ClipboardService.php
@@ -7201,12 +6505,6 @@ parameters:
 			path: app/Services/IndividualFactsService.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,mixed\>\:\:filter\(\) expects \(callable\(mixed, int\)\: bool\)\|null, Closure\(Fisharebest\\Webtrees\\Fact\)\: bool given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/IndividualFactsService.php
-
-		-
 			message: '#^Parameter \#1 \$gedcom of class Fisharebest\\Webtrees\\Fact constructor expects string, string\|null given\.$#'
 			identifier: argument.type
 			count: 1
@@ -7519,6 +6817,12 @@ parameters:
 			path: app/Services/PendingChangesService.php
 
 		-
+			message: '#^Method Fisharebest\\Webtrees\\Services\\PendingChangesService\:\:pendingChanges\(\) should return array\<array\<object\{xref\: string, change_id\: string, old_gedcom\: string\|null, new_gedcom\: string\|null, change_time\: Fisharebest\\Webtrees\\Contracts\\TimestampInterface, record\: Fisharebest\\Webtrees\\GedcomRecord, user_name\: string, real_name\: string\}\>\> but returns array\<list\<stdClass\>\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Services/PendingChangesService.php
+
+		-
 			message: '#^Method Fisharebest\\Webtrees\\Services\\PendingChangesService\:\:pendingXrefs\(\) should return Illuminate\\Support\\Collection\<int, string\> but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
 			identifier: return.type
 			count: 1
@@ -7783,6 +7087,12 @@ parameters:
 			path: app/Services/SearchService.php
 
 		-
+			message: '#^Parameter \#2 \$column of method Fisharebest\\Webtrees\\Services\\SearchService\:\:whereSearch\(\) expects Illuminate\\Database\\Query\\Expression\<string\>\|string, Illuminate\\Database\\Query\\Expression\<non\-falsy\-string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Services/SearchService.php
+
+		-
 			message: '#^Parameter \#3 \$subject of function preg_replace expects array\<float\|int\|string\>\|string, string\|null given\.$#'
 			identifier: argument.type
 			count: 1
@@ -7939,9 +7249,39 @@ parameters:
 			path: app/Site.php
 
 		-
+			message: '#^Access to an undefined property object\:\:\$change_time\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Statistics.php
+
+		-
+			message: '#^Binary operation "\-" between mixed and int results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: app/Statistics.php
+
+		-
 			message: '#^Binary operation "\." between non\-falsy\-string and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1
+			path: app/Statistics.php
+
+		-
+			message: '#^Cannot call method fullName\(\) on Fisharebest\\Webtrees\\Family\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Statistics.php
+
+		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 2
+			path: app/Statistics.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 5
 			path: app/Statistics.php
 
 		-
@@ -7951,652 +7291,232 @@ parameters:
 			path: app/Statistics.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$age\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartAge.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$century\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartAge.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$sex\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartAge.php
-
-		-
-			message: '#^Binary operation "\+" between mixed and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Statistics/Google/ChartAge.php
-
-		-
-			message: '#^Cannot cast mixed to float\.$#'
-			identifier: cast.double
-			count: 1
-			path: app/Statistics/Google/ChartAge.php
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: app/Statistics/Google/ChartAge.php
-
-		-
-			message: '#^Parameter \#1 \$num of function round expects float\|int, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: app/Statistics/Google/ChartAge.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$century\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartBirth.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$total\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartBirth.php
-
-		-
-			message: '#^Cannot cast mixed to float\.$#'
-			identifier: cast.double
-			count: 1
-			path: app/Statistics/Google/ChartBirth.php
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: app/Statistics/Google/ChartBirth.php
-
-		-
-			message: '#^Parameter \#1 \$century of method Fisharebest\\Webtrees\\Statistics\\Service\\CenturyService\:\:centuryName\(\) expects int, mixed given\.$#'
+			message: '#^Parameter \#1 \$string of method Fisharebest\\Webtrees\\Contracts\\TimestampFactoryInterface\:\:fromString\(\) expects string\|null, mixed given\.$#'
 			identifier: argument.type
 			count: 1
-			path: app/Statistics/Google/ChartBirth.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$century\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartChildren.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$total\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartChildren.php
-
-		-
-			message: '#^Cannot cast mixed to float\.$#'
-			identifier: cast.double
-			count: 1
-			path: app/Statistics/Google/ChartChildren.php
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: app/Statistics/Google/ChartChildren.php
-
-		-
-			message: '#^Parameter \#1 \$century of method Fisharebest\\Webtrees\\Statistics\\Service\\CenturyService\:\:centuryName\(\) expects int, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Google/ChartChildren.php
-
-		-
-			message: '#^Parameter \#1 \$num of function round expects float\|int, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Google/ChartChildren.php
-
-		-
-			message: '#^Parameter \#1 \$surns of method Fisharebest\\Webtrees\\Statistics\\Google\\ChartCommonSurname\:\:getTopNameAndCount\(\) expects array\<string, int\>, array\<int\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Google/ChartCommonSurname.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$century\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartDeath.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$total\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartDeath.php
-
-		-
-			message: '#^Cannot cast mixed to float\.$#'
-			identifier: cast.double
-			count: 1
-			path: app/Statistics/Google/ChartDeath.php
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: app/Statistics/Google/ChartDeath.php
-
-		-
-			message: '#^Parameter \#1 \$century of method Fisharebest\\Webtrees\\Statistics\\Service\\CenturyService\:\:centuryName\(\) expects int, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Google/ChartDeath.php
-
-		-
-			message: '#^Binary operation "\+" between mixed and \(float\|int\) results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 2
-			path: app/Statistics/Google/ChartDistribution.php
-
-		-
-			message: '#^Parameter \#1 \$str of function preg_quote expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Google/ChartDistribution.php
-
-		-
-			message: '#^Parameter \#2 \$subject of function preg_match expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Google/ChartDistribution.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$century\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartDivorce.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$total\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartDivorce.php
-
-		-
-			message: '#^Cannot cast mixed to float\.$#'
-			identifier: cast.double
-			count: 1
-			path: app/Statistics/Google/ChartDivorce.php
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: app/Statistics/Google/ChartDivorce.php
-
-		-
-			message: '#^Parameter \#1 \$century of method Fisharebest\\Webtrees\\Statistics\\Service\\CenturyService\:\:centuryName\(\) expects int, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Google/ChartDivorce.php
+			path: app/Statistics.php
 
 		-
 			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\FamilyFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
-			path: app/Statistics/Google/ChartFamilyLargest.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$century\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartMarriage.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$total\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartMarriage.php
-
-		-
-			message: '#^Cannot cast mixed to float\.$#'
-			identifier: cast.double
-			count: 1
-			path: app/Statistics/Google/ChartMarriage.php
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: app/Statistics/Google/ChartMarriage.php
-
-		-
-			message: '#^Parameter \#1 \$century of method Fisharebest\\Webtrees\\Statistics\\Service\\CenturyService\:\:centuryName\(\) expects int, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Google/ChartMarriage.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$age\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartMarriageAge.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$century\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartMarriageAge.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$sex\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartMarriageAge.php
-
-		-
-			message: '#^Binary operation "\+" between mixed and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Statistics/Google/ChartMarriageAge.php
-
-		-
-			message: '#^Cannot cast mixed to float\.$#'
-			identifier: cast.double
-			count: 1
-			path: app/Statistics/Google/ChartMarriageAge.php
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: app/Statistics/Google/ChartMarriageAge.php
-
-		-
-			message: '#^Parameter \#1 \$num of function round expects float\|int, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: app/Statistics/Google/ChartMarriageAge.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$century\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartNoChildrenFamilies.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$total\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Statistics/Google/ChartNoChildrenFamilies.php
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 3
-			path: app/Statistics/Google/ChartNoChildrenFamilies.php
+			path: app/Statistics.php
 
 		-
 			message: '#^Parameter \#2 \$request of method Fisharebest\\Webtrees\\Services\\UserService\:\:contactLink\(\) expects Psr\\Http\\Message\\ServerRequestInterface, mixed given\.$#'
 			identifier: argument.type
 			count: 2
-			path: app/Statistics/Repository/ContactRepository.php
+			path: app/Statistics.php
 
 		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: app/Statistics/Repository/EventRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\EventRepository\:\:eventQuery\(\) should return object\{id\: string, year\: int, fact\: string, type\: string\}\|null but returns \(object\{id\: mixed, year\: int, fact\: mixed, type\: mixed\}&stdClass\)\|null\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/EventRepository.php
-
-		-
-			message: '#^Property object\{id\: string, year\: int, fact\: string, type\: string\}\:\:\$year is not writable\.$#'
-			identifier: assign.propertyReadOnly
-			count: 1
-			path: app/Statistics/Repository/EventRepository.php
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: app/Statistics/Repository/FamilyDatesRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\FamilyDatesRepository\:\:eventQuery\(\) should return object\{id\: string, year\: int, fact\: string, type\: string\}\|null but returns \(object\{id\: mixed, year\: int, fact\: mixed, type\: mixed\}&stdClass\)\|null\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/FamilyDatesRepository.php
-
-		-
-			message: '#^Property object\{id\: string, year\: int, fact\: string, type\: string\}\:\:\$year is not writable\.$#'
-			identifier: assign.propertyReadOnly
-			count: 1
-			path: app/Statistics/Repository/FamilyDatesRepository.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$f_numchil\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
+			message: '#^Binary operation "\+\=" between \(float\|int\) and mixed results in an error\.$#'
+			identifier: assignOp.invalid
+			count: 2
+			path: app/StatisticsData.php
 
 		-
 			message: '#^Binary operation "/" between mixed and 365\.25 results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 2
-			path: app/Statistics/Repository/FamilyRepository.php
+			path: app/StatisticsData.php
 
 		-
 			message: '#^Cannot call method canShow\(\) on Fisharebest\\Webtrees\\Family\|null\.$#'
 			identifier: method.nonObject
 			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Cannot call method formatList\(\) on Fisharebest\\Webtrees\\Family\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Cannot call method fullName\(\) on Fisharebest\\Webtrees\\Family\|null\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Cannot call method fullName\(\) on Fisharebest\\Webtrees\\Individual\|null\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Cannot call method getBirthDate\(\) on Fisharebest\\Webtrees\\Individual\|null\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Cannot call method husband\(\) on Fisharebest\\Webtrees\\Family\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Cannot call method url\(\) on Fisharebest\\Webtrees\\Family\|null\.$#'
-			identifier: method.nonObject
-			count: 3
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Cannot call method url\(\) on Fisharebest\\Webtrees\\Individual\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Cannot call method wife\(\) on Fisharebest\\Webtrees\\Family\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Cannot cast mixed to float\.$#'
-			identifier: cast.double
-			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 9
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\FamilyRepository\:\:ageBetweenSiblingsQuery\(\) should return array\<object\{family\: string, child1\: string, child2\: string, age\: int\}\> but returns array\<int, object\{family\: mixed, child1\: mixed, child2\: mixed, age\: int\}&stdClass\>\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\FamilyRepository\:\:statsMarrAgeQuery\(\) should return array\<object\{f_id\: string, d_gid\: string, age\: int\}\> but returns array\<int, object\{f_id\: mixed, d_gid\: mixed, age\: int\}&stdClass\>\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\FamilyFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\IndividualFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$change_time\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Repository/GedcomRepository.php
-
-		-
-			message: '#^Parameter \#1 \$string of method Fisharebest\\Webtrees\\Contracts\\TimestampFactoryInterface\:\:fromString\(\) expects string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Repository/GedcomRepository.php
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: app/Statistics/Repository/HitCountRepository.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$days\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Binary operation "/" between mixed and 365\.25 results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
 
 		-
 			message: '#^Cannot call method findByComponent\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
 
 		-
 			message: '#^Cannot call method first\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
+
+		-
+			message: '#^Cannot call method formatList\(\) on Fisharebest\\Webtrees\\Family\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/StatisticsData.php
+
+		-
+			message: '#^Cannot call method fullName\(\) on Fisharebest\\Webtrees\\Family\|null\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/StatisticsData.php
+
+		-
+			message: '#^Cannot call method fullName\(\) on Fisharebest\\Webtrees\\Individual\|null\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/StatisticsData.php
+
+		-
+			message: '#^Cannot call method getBirthDate\(\) on Fisharebest\\Webtrees\\Individual\|null\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/StatisticsData.php
+
+		-
+			message: '#^Cannot call method husband\(\) on Fisharebest\\Webtrees\\Family\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/StatisticsData.php
+
+		-
+			message: '#^Cannot call method url\(\) on Fisharebest\\Webtrees\\Family\|null\.$#'
+			identifier: method.nonObject
+			count: 3
+			path: app/StatisticsData.php
+
+		-
+			message: '#^Cannot call method url\(\) on Fisharebest\\Webtrees\\Individual\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/StatisticsData.php
+
+		-
+			message: '#^Cannot call method wife\(\) on Fisharebest\\Webtrees\\Family\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/StatisticsData.php
+
+		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 2
+			path: app/StatisticsData.php
 
 		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
-			count: 5
-			path: app/Statistics/Repository/IndividualRepository.php
+			count: 23
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGiven\(\) should return string but returns array\<int\>\|string\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\StatisticsData\:\:countEventsByMonth\(\) should return array\<string, int\> but returns array\<int\>\.$#'
 			identifier: return.type
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenFemale\(\) should return string but returns array\<int\>\|string\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\StatisticsData\:\:countEventsByMonthAndSex\(\) should return array\<object\{month\: string, sex\: string, total\: int\}\> but returns array\<int, object\{month\: mixed, sex\: mixed, total\: int\}&stdClass\>\.$#'
 			identifier: return.type
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenFemaleList\(\) should return string but returns array\<int\>\|string\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\StatisticsData\:\:countFirstChildrenByMonth\(\) should return array\<string, int\> but returns array\<int\>\.$#'
 			identifier: return.type
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenFemaleListTotals\(\) should return string but returns array\<int\>\|string\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\StatisticsData\:\:countFirstChildrenByMonthAndSex\(\) should return array\<object\{month\: string, sex\: string, total\: int\}\> but returns array\<int, object\{month\: mixed, sex\: mixed, total\: int\}&stdClass\>\.$#'
 			identifier: return.type
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenFemaleTable\(\) should return string but returns array\<int\>\|string\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\StatisticsData\:\:countFirstMarriagesByMonth\(\) should return array\<string, int\> but returns array\<int\>\.$#'
 			identifier: return.type
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenFemaleTotals\(\) should return string but returns array\<int\>\|string\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\StatisticsData\:\:familiesWithTheMostChildren\(\) should return array\<int, object\{family\: Fisharebest\\Webtrees\\Family, children\: int\}\> but returns array\<int, object\{family\: Fisharebest\\Webtrees\\Family\|null, children\: int\}&stdClass\>\.$#'
 			identifier: return.type
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenList\(\) should return string but returns array\<int\>\|string\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\StatisticsData\:\:firstEvent\(\) should return object\{id\: string, year\: int, fact\: string, type\: string\}\|null but returns \(object\{id\: mixed, year\: int, fact\: mixed, type\: mixed\}&stdClass\)\|null\.$#'
 			identifier: return.type
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenListTotals\(\) should return string but returns array\<int\>\|string\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\StatisticsData\:\:maximumAgeBetweenSiblings\(\) should return array\<object\{family\: Fisharebest\\Webtrees\\Family, child1\: Fisharebest\\Webtrees\\Individual, child2\: Fisharebest\\Webtrees\\Individual, age\: string\}\> but returns array\<int, object\{family\: Fisharebest\\Webtrees\\Family\|null, child1\: Fisharebest\\Webtrees\\Individual\|null, child2\: Fisharebest\\Webtrees\\Individual\|null, age\: string\}&stdClass\>\.$#'
 			identifier: return.type
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenMale\(\) should return string but returns array\<int\>\|string\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\StatisticsData\:\:statsAge\(\) should return array\<object\{age\: float, century\: int, sex\: string\}\> but returns array\<int, object\{age\: float, century\: int, sex\: mixed\}&stdClass\>\.$#'
 			identifier: return.type
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenMaleList\(\) should return string but returns array\<int\>\|string\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\StatisticsData\:\:statsMarrAgeQuery\(\) should return array\<object\{f_id\: string, d_gid\: string, age\: int\}\> but returns array\<int, object\{f_id\: mixed, d_gid\: mixed, age\: int\}&stdClass\>\.$#'
 			identifier: return.type
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenMaleListTotals\(\) should return string but returns array\<int\>\|string\.$#'
-			identifier: return.type
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: int, Closure\(int\|string\)\: int given\.$#'
+			identifier: argument.type
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenMaleTable\(\) should return string but returns array\<int\>\|string\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenMaleTotals\(\) should return string but returns array\<int\>\|string\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenTable\(\) should return string but returns array\<int\>\|string\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenTotals\(\) should return string but returns array\<int\>\|string\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenUnknown\(\) should return string but returns array\<int\>\|string\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenUnknownList\(\) should return string but returns array\<int\>\|string\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenUnknownListTotals\(\) should return string but returns array\<int\>\|string\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenUnknownTable\(\) should return string but returns array\<int\>\|string\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:commonGivenUnknownTotals\(\) should return string but returns array\<int\>\|string\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
 
 		-
 			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: int, Closure\(string\)\: int given\.$#'
 			identifier: argument.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			count: 3
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Parameter \#2 \$callback of function array_walk expects callable\(int, string\)\: mixed, Closure\(string, string\)\: void given\.$#'
+			message: '#^Parameter \#1 \$place_name of class Fisharebest\\Webtrees\\Place constructor expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Parameter \#2 \$given of method Fisharebest\\Webtrees\\Statistics\\Google\\ChartCommonGiven\:\:chartCommonGiven\(\) expects array\<int\>, array\<int\>\|string given\.$#'
+			message: '#^Parameter \#1 \$rows of method Fisharebest\\Webtrees\\StatisticsData\:\:countPlaces\(\) expects array\<string\>, array\<mixed\> given\.$#'
+			identifier: argument.type
+			count: 2
+			path: app/StatisticsData.php
+
+		-
+			message: '#^Parameter \#1 \$str of function preg_quote expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: app/Statistics/Repository/LatestUserRepository.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: int, Closure\(string\)\: int given\.$#'
+			message: '#^Parameter \#1 \$value of method Fisharebest\\Webtrees\\Contracts\\ElementInterface\:\:canonical\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
-			path: app/Statistics/Repository/MediaRepository.php
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Parameter \#1 \$media of method Fisharebest\\Webtrees\\Statistics\\Google\\ChartMedia\:\:chartMedia\(\) expects array\<string, int\>, array\<int\> given\.$#'
+			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\FamilyFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
 			identifier: argument.type
-			count: 1
-			path: app/Statistics/Repository/MediaRepository.php
+			count: 3
+			path: app/StatisticsData.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: int, Closure\(string\)\: int given\.$#'
+			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\IndividualFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
 			identifier: argument.type
-			count: 1
-			path: app/Statistics/Repository/PlaceRepository.php
+			count: 4
+			path: app/StatisticsData.php
 
 		-
 			message: '#^Parameter \#2 \$subject of function preg_match expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
-			path: app/Statistics/Repository/PlaceRepository.php
+			path: app/StatisticsData.php
+
+		-
+			message: '#^Parameter \#3 \$gedcom of method Fisharebest\\Webtrees\\Contracts\\FamilyFactoryInterface\:\:make\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/StatisticsData.php
 
 		-
 			message: '#^Method Fisharebest\\Webtrees\\SurnameTradition\\PatrilinealSurnameTradition\:\:inflect\(\) should return string but returns string\|null\.$#'
@@ -8797,40 +7717,10 @@ parameters:
 			path: app/Webtrees.php
 
 		-
-			message: '#^Strict comparison using \!\=\= between ''\-dev'' and '''' will always evaluate to true\.$#'
-			identifier: notIdentical.alwaysTrue
-			count: 1
-			path: app/Webtrees.php
-
-		-
-			message: '#^Ternary operator condition is always true\.$#'
-			identifier: ternary.alwaysTrue
-			count: 1
-			path: app/Webtrees.php
-
-		-
 			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, mixed given\.$#'
 			identifier: argument.type
 			count: 7
 			path: resources/views/admin/control-panel.phtml
-
-		-
-			message: '#^Parameter \#1 \$tree of method Fisharebest\\Webtrees\\Module\\PlaceHierarchyListModule\:\:listUrl\(\) expects Fisharebest\\Webtrees\\Tree, Fisharebest\\Webtrees\\Tree\|null given\.$#'
-			identifier: argument.type
-			count: 2
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Cannot call method name\(\) on Fisharebest\\Webtrees\\Tree\|null\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: resources/views/admin/trees-merge.phtml
-
-		-
-			message: '#^Cannot call method title\(\) on Fisharebest\\Webtrees\\Tree\|null\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: resources/views/admin/trees-merge.phtml
 
 		-
 			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
@@ -8891,24 +7781,6 @@ parameters:
 			identifier: echo.nonString
 			count: 1
 			path: resources/views/chart-box.phtml
-
-		-
-			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, int\|null given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/components/badge.phtml
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: resources/views/components/select-number.phtml
-
-		-
-			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/components/select-number.phtml
 
 		-
 			message: '#^Cannot cast mixed to string\.$#'
@@ -9193,30 +8065,6 @@ parameters:
 			path: resources/views/fact.phtml
 
 		-
-			message: '#^Argument of an invalid type string supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 3
-			path: resources/views/help/date.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 3
-			path: resources/views/help/date.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$status\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/layouts/administration.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$text\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/layouts/administration.phtml
-
-		-
 			message: '#^Cannot call method findByInterface\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 2
@@ -9237,20 +8085,8 @@ parameters:
 		-
 			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
 			identifier: echo.nonString
-			count: 4
+			count: 2
 			path: resources/views/layouts/administration.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$status\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/layouts/default.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$text\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/layouts/default.phtml
 
 		-
 			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
@@ -9303,18 +8139,12 @@ parameters:
 		-
 			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
 			identifier: argument.type
-			count: 4
+			count: 2
 			path: resources/views/layouts/default.phtml
 
 		-
 			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
 			identifier: echo.nonString
-			count: 5
-			path: resources/views/layouts/default.phtml
-
-		-
-			message: '#^Strict comparison using \!\=\= between Fisharebest\\Webtrees\\Tree and null will always evaluate to true\.$#'
-			identifier: notIdentical.alwaysTrue
 			count: 3
 			path: resources/views/layouts/default.phtml
 
@@ -9331,63 +8161,33 @@ parameters:
 			path: resources/views/lists/individuals-table.phtml
 
 		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: int, Closure\(string\)\: int given\.$#'
+			identifier: argument.type
 			count: 2
 			path: resources/views/lists/locations-table.phtml
 
 		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/lists/locations-table.phtml
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: int, Closure\(string\)\: int given\.$#'
+			identifier: argument.type
 			count: 3
 			path: resources/views/lists/media-table.phtml
 
 		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/lists/media-table.phtml
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: int, Closure\(string\)\: int given\.$#'
+			identifier: argument.type
 			count: 4
 			path: resources/views/lists/notes-table.phtml
 
 		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/lists/notes-table.phtml
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: int, Closure\(string\)\: int given\.$#'
+			identifier: argument.type
 			count: 1
 			path: resources/views/lists/repositories-table.phtml
 
 		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/lists/repositories-table.phtml
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: int, Closure\(string\)\: int given\.$#'
+			identifier: argument.type
 			count: 4
-			path: resources/views/lists/sources-table.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
 			path: resources/views/lists/sources-table.phtml
 
 		-
@@ -9395,342 +8195,6 @@ parameters:
 			identifier: argument.type
 			count: 2
 			path: resources/views/lists/submitters-table.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/lists/submitters-table.phtml
-
-		-
-			message: '#^Binary operation "\+" between 1 and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: resources/views/lists/surnames-table.phtml
-
-		-
-			message: '#^Parameter \#1 \.\.\.\$arg1 of function max expects non\-empty\-array, array\<int\> given\.$#'
-			identifier: argument.type
-			count: 2
-			path: resources/views/lists/surnames-tag-cloud.phtml
-
-		-
-			message: '#^Parameter \#1 \.\.\.\$arg1 of function min expects non\-empty\-array, array\<int\> given\.$#'
-			identifier: argument.type
-			count: 2
-			path: resources/views/lists/surnames-tag-cloud.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/bing-webmaster-tools/form.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/bing-webmaster-tools/snippet.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on Fisharebest\\Webtrees\\Individual\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/census-assistant.phtml
-
-		-
-			message: '#^Cannot call method tree\(\) on Fisharebest\\Webtrees\\Individual\|null\.$#'
-			identifier: method.nonObject
-			count: 3
-			path: resources/views/modules/census-assistant.phtml
-
-		-
-			message: '#^Cannot call method getCloseRelationshipName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 6
-			path: resources/views/modules/family_nav/sidebar-family.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 6
-			path: resources/views/modules/family_nav/sidebar-family.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$block_id\.$#'
-			identifier: property.notFound
-			count: 4
-			path: resources/views/modules/faq/config.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$block_order\.$#'
-			identifier: property.notFound
-			count: 3
-			path: resources/views/modules/faq/config.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$gedcom_id\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/faq/config.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$header\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/modules/faq/config.phtml
-
-		-
-			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/faq/config.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: resources/views/modules/faq/config.phtml
-
-		-
-			message: '#^Parameter \#2 \$parameters of function route expects array\<array\<string\>\|bool\|int\|string\|null\>, array\<string, mixed\> given\.$#'
-			identifier: argument.type
-			count: 4
-			path: resources/views/modules/faq/config.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$faqbody\.$#'
-			identifier: property.notFound
-			count: 3
-			path: resources/views/modules/faq/show.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$header\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/modules/faq/show.phtml
-
-		-
-			message: '#^Parameter \#1 \$haystack of function str_starts_with expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/faq/show.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 3
-			path: resources/views/modules/faq/show.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/modules/faq/show.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$favorite_id\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/favorites/favorites.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$favorite_type\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/favorites/favorites.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$note\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/favorites/favorites.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$record\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/favorites/favorites.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$title\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/favorites/favorites.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$url\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/favorites/favorites.phtml
-
-		-
-			message: '#^Cannot call method formatList\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/favorites/favorites.phtml
-
-		-
-			message: '#^Cannot cast mixed to string\.$#'
-			identifier: cast.string
-			count: 1
-			path: resources/views/modules/favorites/favorites.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: resources/views/modules/favorites/favorites.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/modules/favorites/favorites.phtml
-
-		-
-			message: '#^Parameter \#2 \$parameters of function route expects array\<array\<string\>\|bool\|int\|string\|null\>, array\<string, mixed\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/favorites/favorites.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/google-analytics/form.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/google-webmaster-tools/form.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/google-webmaster-tools/snippet.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$background\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$birth_year\.$#'
-			identifier: property.notFound
-			count: 3
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$death_year\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$id\.$#'
-			identifier: property.notFound
-			count: 3
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$individual\.$#'
-			identifier: property.notFound
-			count: 5
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$row\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 1
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Binary operation "\*" between mixed and 1\.5 results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Binary operation "\+" between mixed and 1 results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Binary operation "\-" between mixed and int results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 2
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Binary operation "\-" between mixed and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Cannot call method facts\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Cannot call method lifespan\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Cannot call method summary\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Cannot call method url\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Parameter \#1 \$string of function strip_tags expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 4
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 4
-			path: resources/views/modules/lifespans-chart/chart.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: resources/views/modules/matomo-analytics/form.phtml
 
 		-
 			message: '#^Parameter \#1 \$string of function trim expects string, string\|null given\.$#'
@@ -9751,24 +8215,6 @@ parameters:
 			path: resources/views/modules/notes/tab.phtml
 
 		-
-			message: '#^PHPDoc tag @var for variable \$ancestors contains generic class Illuminate\\Support\\Collection but does not specify its types\: TKey, TValue$#'
-			identifier: missingType.generics
-			count: 1
-			path: resources/views/modules/pedigree-chart/chart-up.phtml
-
-		-
-			message: '#^PHPDoc tag @var for variable \$links contains generic class Illuminate\\Support\\Collection but does not specify its types\: TKey, TValue$#'
-			identifier: missingType.generics
-			count: 1
-			path: resources/views/modules/pedigree-chart/chart-up.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 2
-			path: resources/views/modules/pedigree-chart/chart-up.phtml
-
-		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\GedcomRecord\:\:displayImage\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -9781,679 +8227,7 @@ parameters:
 			path: resources/views/modules/pedigree-map/events.phtml
 
 		-
-			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, string given\.$#'
-			identifier: argument.type
-			count: 3
-			path: resources/views/modules/place-hierarchy/sidebar.phtml
-
-		-
-			message: '#^Cannot call method getCloseRelationshipName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 3
-			path: resources/views/modules/relatives/family.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 3
-			path: resources/views/modules/relatives/family.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: resources/views/modules/statcounter/form.phtml
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: resources/views/modules/statcounter/snippet.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$block_id\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/modules/stories/config.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$individual\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/stories/config.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$title\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/modules/stories/config.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/stories/config.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/stories/config.phtml
-
-		-
-			message: '#^Cannot call method url\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/stories/config.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 3
-			path: resources/views/modules/stories/config.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 2
-			path: resources/views/modules/stories/config.phtml
-
-		-
-			message: '#^Parameter \#2 \$parameters of function route expects array\<array\<string\>\|bool\|int\|string\|null\>, array\<string, mixed\> given\.$#'
-			identifier: argument.type
-			count: 2
-			path: resources/views/modules/stories/config.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$individual\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/modules/stories/list.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$title\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/stories/list.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/stories/list.phtml
-
-		-
-			message: '#^Cannot call method url\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/stories/list.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: resources/views/modules/stories/list.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/modules/stories/list.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$block_id\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/stories/tab.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$story_body\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/stories/tab.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$title\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/stories/tab.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/stories/tab.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/modules/stories/tab.phtml
-
-		-
-			message: '#^Parameter \#2 \$parameters of function route expects array\<array\<string\>\|bool\|int\|string\|null\>, array\<string, mixed\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/stories/tab.phtml
-
-		-
-			message: '#^Call to an undefined method Fisharebest\\Webtrees\\GedcomRecord\:\:husband\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: resources/views/modules/timeline-chart/chart.phtml
-
-		-
-			message: '#^Call to an undefined method Fisharebest\\Webtrees\\GedcomRecord\:\:wife\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: resources/views/modules/timeline-chart/chart.phtml
-
-		-
-			message: '#^Cannot access offset int on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
-			path: resources/views/modules/timeline-chart/chart.phtml
-
-		-
-			message: '#^Cannot access offset ''count'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: resources/views/modules/top10_pageviews/list.phtml
-
-		-
-			message: '#^Cannot access offset ''record'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
-			path: resources/views/modules/top10_pageviews/list.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/top10_pageviews/list.phtml
-
-		-
-			message: '#^Cannot call method url\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/top10_pageviews/list.phtml
-
-		-
-			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/top10_pageviews/list.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/top10_pageviews/list.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/modules/top10_pageviews/list.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$body\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/user-messages/user-messages.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$created\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/user-messages/user-messages.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$message_id\.$#'
-			identifier: property.notFound
-			count: 6
-			path: resources/views/modules/user-messages/user-messages.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$sender\.$#'
-			identifier: property.notFound
-			count: 3
-			path: resources/views/modules/user-messages/user-messages.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$subject\.$#'
-			identifier: property.notFound
-			count: 5
-			path: resources/views/modules/user-messages/user-messages.phtml
-
-		-
-			message: '#^Binary operation "\." between string and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: resources/views/modules/user-messages/user-messages.phtml
-
-		-
-			message: '#^Parameter \#1 \$haystack of function str_starts_with expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/user-messages/user-messages.phtml
-
-		-
-			message: '#^Parameter \#1 \$identifier of method Fisharebest\\Webtrees\\Services\\UserService\:\:findByIdentifier\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/user-messages/user-messages.phtml
-
-		-
-			message: '#^Parameter \#1 \$markdown of method Fisharebest\\Webtrees\\Contracts\\MarkdownFactoryInterface\:\:autolink\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/user-messages/user-messages.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 3
-			path: resources/views/modules/user-messages/user-messages.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 6
-			path: resources/views/modules/user-messages/user-messages.phtml
-
-		-
-			message: '#^Parameter \#2 \$parameters of function route expects array\<array\<string\>\|bool\|int\|string\|null\>, array\<string, mixed\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/user-messages/user-messages.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$change_id\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$change_time\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$real_name\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$record\.$#'
-			identifier: property.notFound
-			count: 5
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$user_name\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 1
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Cannot call method facts\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Cannot call method isPendingAddition\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Cannot call method isPendingDeletion\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Cannot call method summary\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Cannot call method tag\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Cannot call method url\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Parameter \#1 \$haystack of function str_ends_with expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Parameter \#1 \$string of function strip_tags expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 3
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 3
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Parameter \#2 \$parameters of function route expects array\<array\<string\>\|bool\|int\|string\|null\>, array\<string, mixed\> given\.$#'
-			identifier: argument.type
-			count: 3
-			path: resources/views/pending-changes-page.phtml
-
-		-
-			message: '#^Cannot access offset non\-falsy\-string on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
-			path: resources/views/search-advanced-page.phtml
-
-		-
-			message: '#^Cannot access offset string on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: resources/views/search-advanced-page.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: resources/views/statistics/families/top10-list-age.phtml
-
-		-
-			message: '#^Cannot call method url\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 3
-			path: resources/views/statistics/families/top10-list-age.phtml
-
-		-
-			message: '#^PHPDoc tag @var for variable \$records has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: resources/views/statistics/families/top10-list-age.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 3
-			path: resources/views/statistics/families/top10-list-age.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 3
-			path: resources/views/statistics/families/top10-list-age.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/statistics/families/top10-list-grand.phtml
-
-		-
-			message: '#^Cannot call method url\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/statistics/families/top10-list-grand.phtml
-
-		-
-			message: '#^PHPDoc tag @var for variable \$records has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: resources/views/statistics/families/top10-list-grand.phtml
-
-		-
-			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/statistics/families/top10-list-grand.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/statistics/families/top10-list-grand.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/statistics/families/top10-list-grand.phtml
-
-		-
-			message: '#^Parameter \#3 \$count of static method Fisharebest\\Webtrees\\I18N\:\:plural\(\) expects int, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/statistics/families/top10-list-grand.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/statistics/families/top10-list-spouses.phtml
-
-		-
-			message: '#^Cannot call method url\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/statistics/families/top10-list-spouses.phtml
-
-		-
-			message: '#^PHPDoc tag @var for variable \$records has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: resources/views/statistics/families/top10-list-spouses.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/statistics/families/top10-list-spouses.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 2
-			path: resources/views/statistics/families/top10-list-spouses.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/statistics/families/top10-list.phtml
-
-		-
-			message: '#^Cannot call method url\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/statistics/families/top10-list.phtml
-
-		-
-			message: '#^PHPDoc tag @var for variable \$records has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: resources/views/statistics/families/top10-list.phtml
-
-		-
-			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/statistics/families/top10-list.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/statistics/families/top10-list.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/statistics/families/top10-list.phtml
-
-		-
-			message: '#^Parameter \#3 \$count of static method Fisharebest\\Webtrees\\I18N\:\:plural\(\) expects int, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/statistics/families/top10-list.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/statistics/families/top10-nolist-grand.phtml
-
-		-
-			message: '#^Cannot call method url\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/statistics/families/top10-nolist-grand.phtml
-
-		-
-			message: '#^PHPDoc tag @var for variable \$records has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: resources/views/statistics/families/top10-nolist-grand.phtml
-
-		-
-			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/statistics/families/top10-nolist-grand.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/statistics/families/top10-nolist-grand.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/statistics/families/top10-nolist-grand.phtml
-
-		-
-			message: '#^Parameter \#3 \$count of static method Fisharebest\\Webtrees\\I18N\:\:plural\(\) expects int, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/statistics/families/top10-nolist-grand.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/statistics/families/top10-nolist-spouses.phtml
-
-		-
-			message: '#^Cannot call method url\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/statistics/families/top10-nolist-spouses.phtml
-
-		-
-			message: '#^PHPDoc tag @var for variable \$records has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: resources/views/statistics/families/top10-nolist-spouses.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/statistics/families/top10-nolist-spouses.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 2
-			path: resources/views/statistics/families/top10-nolist-spouses.phtml
-
-		-
-			message: '#^PHPDoc tag @var for variable \$data has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: resources/views/statistics/other/charts/column.phtml
-
-		-
-			message: '#^PHPDoc tag @var for variable \$data has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: resources/views/statistics/other/charts/combo.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/statistics/other/charts/combo.phtml
-
-		-
-			message: '#^PHPDoc tag @var for variable \$data has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: resources/views/statistics/other/charts/custom.phtml
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\TestCase\:\:withConsecutive\(\) return type with generic class PHPUnit\\Framework\\Constraint\\Callback does not specify its types\: CallbackInput$#'
-			identifier: missingType.generics
-			count: 1
-			path: tests/TestCase.php
-
-		-
 			message: '#^Parameter \#1 \$array of function array_shift expects array, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: tests/TestCase.php
-
-		-
-			message: '#^Parameter \#1 \$interface of method Fisharebest\\Webtrees\\Services\\ModuleService\:\:findByInterface\(\) expects class\-string\<Fisharebest\\Webtrees\\Module\\ModuleInterface\|Psr\\Http\\Server\\MiddlewareInterface\>, string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: tests/app/Services/ModuleServiceTest.php
-
-		-
-			message: '#^Unable to resolve the template type T in call to method Fisharebest\\Webtrees\\Services\\ModuleService\:\:findByInterface\(\)$#'
-			identifier: argument.templateType
-			count: 1
-			path: tests/app/Services/ModuleServiceTest.php

@@ -33,7 +33,6 @@ use function in_array;
 use function str_ends_with;
 use function str_starts_with;
 use function strtolower;
-use function trim;
 use function version_compare;
 
 use const PATH_SEPARATOR;

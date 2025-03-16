@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;

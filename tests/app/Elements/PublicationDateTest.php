@@ -25,12 +25,9 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(PublicationDate::class)]
 class PublicationDateTest extends AbstractElementTestCase
 {
-    /**
-     * Standard tests for all elements.
-     */
-    public static function setupBeforeClass(): void
+    public function setUp(): void
     {
-        parent::setUpBeforeClass();
+        parent::setUp();
 
         self::$element = new PublicationDate('label');
     }

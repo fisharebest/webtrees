@@ -24,9 +24,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(Family::class)]
 class FamilyTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(Family::class));

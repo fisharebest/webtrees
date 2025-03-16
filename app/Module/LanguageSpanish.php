@@ -22,18 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Localization\Locale\LocaleEs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Encodings\UTF8;
-use Illuminate\Database\Query\Builder;
 
-/**
- * Class LanguageSpanish.
- */
 class LanguageSpanish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -69,9 +63,6 @@ class LanguageSpanish extends AbstractModule implements ModuleLanguageInterface
         ];
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleEs();

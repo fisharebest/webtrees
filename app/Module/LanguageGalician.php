@@ -22,16 +22,10 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Localization\Locale\LocaleGl;
 use Fisharebest\Localization\Locale\LocaleInterface;
 
-/**
- * Class LanguageGalician.
- */
 class LanguageGalician extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleGl();

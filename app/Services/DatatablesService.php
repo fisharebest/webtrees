@@ -116,11 +116,11 @@ class DatatablesService
     /**
      * Apply filtering and pagination to a database query, and generate a response suitable for datatables.
      *
-     * @param ServerRequestInterface   $request        Includes the datatables request parameters.
-     * @param Builder                  $query          A query to fetch the unfiltered rows and columns.
-     * @param array<string>            $search_columns The names of searchable columns.
-     * @param array<string|Expression> $sort_columns   Sort column mapping.
-     * @param Closure                  $callback       Converts a row-object to an array-of-columns.
+     * @param ServerRequestInterface           $request        Includes the datatables request parameters.
+     * @param Builder                          $query          A query to fetch the unfiltered rows and columns.
+     * @param array<string>                    $search_columns The names of searchable columns.
+     * @param array<string|Expression<string>> $sort_columns   Sort column mapping.
+     * @param Closure                          $callback       Converts a row-object to an array-of-columns.
      *
      * @return ResponseInterface
      */

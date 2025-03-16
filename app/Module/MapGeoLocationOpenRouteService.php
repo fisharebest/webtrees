@@ -45,11 +45,6 @@ class MapGeoLocationOpenRouteService extends AbstractModule implements ModuleCon
         return /* I18N: https://openrouteservice.org */ I18N::translate('OpenRouteService');
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;

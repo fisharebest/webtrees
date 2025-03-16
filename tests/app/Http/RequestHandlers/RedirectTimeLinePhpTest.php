@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
-use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\TimelineChartModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;

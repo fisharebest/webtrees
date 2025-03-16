@@ -43,7 +43,6 @@ use function array_intersect;
 use function dirname;
 use function explode;
 use function intdiv;
-use function is_float;
 use function min;
 use function pathinfo;
 use function sha1;
@@ -51,11 +50,9 @@ use function sort;
 use function str_contains;
 use function strtoupper;
 use function strtr;
-use function substr;
 use function trim;
 
 use const PATHINFO_EXTENSION;
-use const PHP_INT_MAX;
 use const UPLOAD_ERR_OK;
 
 /**
@@ -289,7 +286,7 @@ class MediaFileService
 
         return $query
             ->orderBy(new Expression('setting_value || multimedia_file_refn'))
-            ->pluck(new Expression('setting_value || multimedia_file_refn AS path'));
+            ->pluck(new Expression('setting_value || multimedia_file_refn'));
     }
 
     /**
@@ -322,6 +319,7 @@ class MediaFileService
      */
     public function allMediaFolders(FilesystemOperator $data_filesystem): Collection
     {
+        /** Issue #5114 - columns containing '||' get a trailing space added by MySQL.  The alias is a workaround */
         $db_folders = DB::table('media_file')
             ->leftJoin('gedcom_setting', static function (JoinClause $join): void {
                 $join
@@ -330,7 +328,7 @@ class MediaFileService
             })
             ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->pluck(new Expression("COALESCE(setting_value, 'media/') || multimedia_file_refn AS path"))
+            ->pluck(new Expression("COALESCE(setting_value, 'media/') || multimedia_file_refn AS value"))
             ->map(static fn (string $path): string => dirname($path) . '/');
 
         $media_roots = DB::table('gedcom')
@@ -340,7 +338,7 @@ class MediaFileService
                     ->where('setting_name', '=', 'MEDIA_DIRECTORY');
             })
             ->where('gedcom.gedcom_id', '>', '0')
-            ->pluck(new Expression("COALESCE(setting_value, 'media/') AS path"))
+            ->pluck(new Expression("COALESCE(setting_value, 'media/')"))
             ->uniqueStrict();
 
         $disk_folders = new Collection($media_roots);

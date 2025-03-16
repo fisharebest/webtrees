@@ -27,9 +27,6 @@ use function abs;
 use function min;
 use function str_repeat;
 
-/**
- * Class LanguageEnglishUnitedStates.
- */
 class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
@@ -107,19 +104,11 @@ class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLangua
         1  => ' ascending',
     ];
 
-    /**
-     * One of: 'DMY', 'MDY', 'YMD'.
-     *
-     * @return string
-     */
     public function dateOrder(): string
     {
         return 'MDY';
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleEnUs();

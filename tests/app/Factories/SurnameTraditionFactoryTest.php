@@ -50,9 +50,6 @@ class SurnameTraditionFactoryTest extends TestCase
         self::assertInstanceOf(SpanishSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::SPANISH));
     }
 
-    /**
-     * Test create() with invalid input
-     */
     public function testCreateInvalid(): void
     {
         $factory = new SurnameTraditionFactory();
@@ -60,9 +57,6 @@ class SurnameTraditionFactoryTest extends TestCase
         self::assertInstanceOf(DefaultSurnameTradition::class, $factory->make('FOOBAR'));
     }
 
-    /**
-     * Test allDescriptions()
-     */
     public function testAllDescriptions(): void
     {
         $descriptions = Registry::surnameTraditionFactory()->list();

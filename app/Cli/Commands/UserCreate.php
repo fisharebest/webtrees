@@ -31,7 +31,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use function bin2hex;
 use function random_bytes;
 
-final class UserCreate extends Command
+final class UserCreate extends AbstractCommand
 {
     public function __construct(private readonly UserService $user_service)
     {
@@ -43,45 +43,45 @@ final class UserCreate extends Command
         $this
             ->setName(name: 'user-create')
             ->setDescription(description: 'Create a new user')
-            ->addOption(name: 'username', shortcut: null, mode: InputOption::VALUE_REQUIRED, description: 'The username of the new user')
-            ->addOption(name: 'realname', shortcut: null, mode: InputOption::VALUE_REQUIRED, description: 'The real name of the new user')
-            ->addOption(name: 'email', shortcut: null, mode: InputOption::VALUE_REQUIRED, description: 'The email of the new user')
-            ->addOption(name: 'password', shortcut: null, mode: InputOption::VALUE_REQUIRED, description: 'The password of the new user')
-            ->addOption(name: 'timezone', shortcut: null, mode: InputOption::VALUE_REQUIRED, description: 'Set the timezone', default: 'UTC')
-            ->addOption(name: 'language', shortcut: null, mode: InputOption::VALUE_REQUIRED, description: 'Set the language', default: 'en-US')
-            ->addOption(name: 'admin', shortcut: null, mode: InputOption::VALUE_NONE, description: 'Make the new user an administrator');
+            ->addOption(name: 'username', mode: InputOption::VALUE_REQUIRED, description: 'The username of the new user')
+            ->addOption(name: 'realname', mode: InputOption::VALUE_REQUIRED, description: 'The real name of the new user')
+            ->addOption(name: 'email', mode: InputOption::VALUE_REQUIRED, description: 'The email of the new user')
+            ->addOption(name: 'password', mode: InputOption::VALUE_REQUIRED, description: 'The password of the new user')
+            ->addOption(name: 'timezone', mode: InputOption::VALUE_REQUIRED, description: 'Set the timezone', default: 'UTC')
+            ->addOption(name: 'language', mode: InputOption::VALUE_REQUIRED, description: 'Set the language', default: 'en-US')
+            ->addOption(name: 'admin', mode: InputOption::VALUE_NONE, description: 'Make the new user an administrator');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle(input: $input, output: $output);
 
-        $username = $input->getOption(name: 'username');
-        $realname = $input->getOption(name: 'realname');
-        $email    = $input->getOption(name: 'email');
-        $password = $input->getOption(name: 'password');
-        $admin    = (bool) $input->getOption(name: 'admin');
-        $timezone = $input->getOption(name: 'timezone');
-        $language = $input->getOption(name: 'language');
+        $username = $this->stringOption(input: $input, name: 'username');
+        $realname = $this->stringOption(input: $input, name: 'realname');
+        $email    = $this->stringOption(input: $input, name: 'email');
+        $password = $this->stringOption(input: $input, name: 'password');
+        $admin    = $this->boolOption(input: $input, name: 'admin');
+        $timezone = $this->stringOption(input: $input, name: 'timezone');
+        $language = $this->stringOption(input: $input, name: 'language');
 
         $errors = false;
 
-        if ($username === null) {
+        if ($username === '') {
             $io->error(message: 'Missing required option: --username');
             $errors = true;
         }
 
-        if ($realname === null) {
+        if ($realname === '') {
             $io->error(message: 'Missing required option: --realname');
             $errors = true;
         }
 
-        if ($email === null) {
+        if ($email === '') {
             $io->error(message: 'Missing required option: --email');
             $errors = true;
         }
 
-        if ($timezone === null) {
+        if ($timezone === '') {
             $io->error(message: 'Missing required option: --timezone');
             $errors = true;
         }
@@ -95,7 +95,7 @@ final class UserCreate extends Command
         if ($user !== null) {
             $io->error(message: 'A user with the username "' . $username . '" already exists.');
 
-            return Command::FAILURE;
+            return self::FAILURE;
         }
 
         $user = $this->user_service->findByEmail(email: $email);
@@ -103,11 +103,11 @@ final class UserCreate extends Command
         if ($user !== null) {
             $io->error(message: 'A user with the email "' . $email . '" already exists');
 
-            return Command::FAILURE;
+            return self::FAILURE;
         }
 
-        if ($password === null) {
-            $password = bin2hex(string: random_bytes(length: 8));
+        if ($password === '') {
+            $password = bin2hex(string: random_bytes(length: 12));
             $io->info(message: 'Generated password: ' . $password);
         }
 
@@ -126,6 +126,6 @@ final class UserCreate extends Command
 
         DB::exec(sql: 'COMMIT');
 
-        return Command::SUCCESS;
+        return self::SUCCESS;
     }
 }

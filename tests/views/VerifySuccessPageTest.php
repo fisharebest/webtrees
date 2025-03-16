@@ -21,9 +21,6 @@ namespace Fisharebest\Webtrees;
 
 class VerifySuccessPageTest extends AbstractViewTest
 {
-    /**
-     * Standard tests for all elements.
-     */
     public function testView(): void
     {
         $this->doTestView('verify-success-page', [

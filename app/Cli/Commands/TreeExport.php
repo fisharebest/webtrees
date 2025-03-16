@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\TreeService;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -35,7 +34,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use function addcslashes;
 use function stream_get_contents;
 
-final class TreeExport extends Command
+final class TreeExport extends AbstractCommand
 {
     public function __construct(
         private readonly GedcomExportService $gedcom_export_service,
@@ -70,15 +69,15 @@ final class TreeExport extends Command
         $io = new SymfonyStyle(input: $input, output: $output);
 
         $tree_name = $input->getArgument(name: 'tree_name');
-        $format    = $input->getOption(name: 'format');
-        $filename  = $input->getOption(name: 'filename');
+        $format    = $this->stringOption(input: $input, name: 'format');
+        $filename  = $this->stringOption(input: $input, name: 'filename');
 
         $tree = $this->tree_service->all()[$tree_name] ?? null;
 
         if ($tree === null) {
             $io->error(message: 'Tree "' . $tree_name . '" not found.');
 
-            return Command::FAILURE;
+            return self::FAILURE;
         }
 
         $stream = $this->gedcom_export_service->export(
@@ -96,6 +95,6 @@ final class TreeExport extends Command
 
         $io->success('File exported successfully.');
 
-        return Command::SUCCESS;
+        return self::SUCCESS;
     }
 }

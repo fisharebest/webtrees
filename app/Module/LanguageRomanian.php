@@ -22,18 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleRo;
 use Fisharebest\Webtrees\Encodings\UTF8;
-use Illuminate\Database\Query\Builder;
 
-/**
- * Class LanguageRomanian.
- */
 class LanguageRomanian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -73,19 +67,11 @@ class LanguageRomanian extends AbstractModule implements ModuleLanguageInterface
         ];
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleRo();

@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\User;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -34,7 +33,7 @@ use function addcslashes;
 use function array_map;
 use function implode;
 
-final class UserList extends Command
+final class UserList extends AbstractCommand
 {
     public function __construct(private readonly UserService $user_service)
     {
@@ -57,7 +56,7 @@ final class UserList extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $format = $input->getOption(name: 'format');
+        $format = $this->stringOption(input: $input, name: 'format');
 
         $io = new SymfonyStyle(input: $input, output: $output);
 
@@ -105,10 +104,10 @@ final class UserList extends Command
             default:
                 $io->error(message: 'Invalid format: ‘' . $format . '’');
 
-                return Command::FAILURE;
+                return self::FAILURE;
         }
 
-        return Command::SUCCESS;
+        return self::SUCCESS;
     }
 
     private function formatTimestamp(int $timestamp): string

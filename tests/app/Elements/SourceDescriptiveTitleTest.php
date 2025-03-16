@@ -25,12 +25,9 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(SourceDescriptiveTitle::class)]
 class SourceDescriptiveTitleTest extends AbstractElementTestCase
 {
-    /**
-     * Standard tests for all elements.
-     */
-    public static function setupBeforeClass(): void
+    public function setUp(): void
     {
-        parent::setUpBeforeClass();
+        parent::setUp();
 
         self::$element = new SourceDescriptiveTitle('label');
     }

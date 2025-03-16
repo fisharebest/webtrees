@@ -22,18 +22,11 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Localization\Locale\LocaleDe;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Encodings\UTF8;
-use Illuminate\Database\Query\Builder;
 
-/**
- * Class LanguageGerman.
- */
 class LanguageGerman extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleDe();

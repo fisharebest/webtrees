@@ -24,6 +24,8 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use InvalidArgumentException;
 use League\Flysystem\FilesystemOperator;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 use function array_key_exists;
 use function date;
@@ -351,8 +353,9 @@ class Tree
      *
      * @param string $gedcom
      *
-     * @return GedcomRecord|Individual|Family|Location|Note|Source|Repository|Media|Submitter|Submission
-     * @throws InvalidArgumentException
+     * @return GedcomRecord
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function createRecord(string $gedcom): GedcomRecord
     {

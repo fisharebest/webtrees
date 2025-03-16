@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 
-use function gregoriantojd;
+use function GregorianToJD;
 use function mktime;
 
 #[CoversClass(Timestamp::class)]
@@ -33,7 +33,7 @@ class TimestampTest extends TestCase
         self::assertIsInt($time);
         $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
-        self::assertSame(2460296, gregoriantojd(12, 17, 2023));
+        self::assertSame(2460296, GregorianToJD(12, 17, 2023));
         self::assertSame(2460296, $timestamp->julianDay());
     }
 

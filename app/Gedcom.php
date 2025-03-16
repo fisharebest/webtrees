@@ -176,7 +176,6 @@ use Fisharebest\Webtrees\Elements\RelationIsDescriptor;
 use Fisharebest\Webtrees\Elements\ReligiousAffiliation;
 use Fisharebest\Webtrees\Elements\RepositoryRecord;
 use Fisharebest\Webtrees\Elements\Residence;
-use Fisharebest\Webtrees\Elements\ResidenceWithValue;
 use Fisharebest\Webtrees\Elements\ResponsibleAgency;
 use Fisharebest\Webtrees\Elements\RestrictionNotice;
 use Fisharebest\Webtrees\Elements\Retirement;

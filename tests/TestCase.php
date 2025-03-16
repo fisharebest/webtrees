@@ -59,9 +59,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
 {
     protected static bool $uses_database = false;
 
-    /**
-     * Create an SQLite in-memory database for testing
-     */
     private static function createTestDatabase(): void
     {
         DB::connect(
@@ -129,9 +126,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         return $request;
     }
 
-    /**
-     * Things to run before every test.
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -147,26 +141,23 @@ class TestCase extends \PHPUnit\Framework\TestCase
         (new WebRoutes())->load($router_container->getMap());
         Registry::container()->set(RouterContainer::class, $router_container);
 
+        I18N::init('en-US', true);
+
         if (static::$uses_database) {
             self::createTestDatabase();
+
+            I18N::init('en-US');
 
             // This is normally set in middleware.
             (new Gedcom())->registerTags(Registry::elementFactory(), true);
 
             // Boot modules
             (new ModuleService())->bootModules(new WebtreesTheme());
-
-            I18N::init('en-US');
-        } else {
-            I18N::init('en-US', true);
         }
 
         self::createRequest();
     }
 
-    /**
-     * Things to run after every test
-     */
     protected function tearDown(): void
     {
         if (static::$uses_database) {
@@ -194,9 +185,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         do {
             $controller->handle($request);
-
-            $imported = $tree->getPreference('imported');
-        } while (!$imported);
+        } while ($tree->getPreference('imported') !== '1');
 
         return $tree;
     }
@@ -214,7 +203,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $status      = UPLOAD_ERR_OK;
         $client_name = basename($filename);
 
-        $this->assertIsInt($size);
+        self::assertIsInt($size);
 
         return $uploaded_file_factory->createUploadedFile($stream, $size, $status, $client_name, $mime_type);
     }
@@ -244,12 +233,12 @@ class TestCase extends \PHPUnit\Framework\TestCase
             }
 
             if (str_starts_with($html, '<')) {
-                if (preg_match('~^</([a-z]+)>~', $html, $match)) {
+                if (preg_match('~^</([a-z]+)>~', $html, $match) === 1) {
                     if ($match[1] !== array_pop($stack)) {
                         static::fail('Closing tag matches nothing: ' . $match[0] . ' at ' . implode(':', $stack));
                     }
                     $html = substr($html, strlen($match[0]));
-                } elseif (preg_match('~^<([a-z]+)(?:\s+[a-z_\-]+="[^">]*")*\s*(/?)>~', $html, $match)) {
+                } elseif (preg_match('~^<([a-z]+)(?:\s+[a-z_\-]+="[^">]*")*\s*(/?)>~', $html, $match) === 1) {
                     $tag = $match[1];
                     $self_closing = $match[2] === '/';
 
@@ -293,7 +282,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      *
      * @param array<int,mixed> $parameters
 
-     * @return Callback
+     * @return Callback<mixed>
      */
     protected static function withConsecutive(array $parameters): Callback
     {

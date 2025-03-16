@@ -28,11 +28,6 @@ class ShareUrlModule extends AbstractModule implements ModuleShareInterface
 {
     use ModuleShareTrait;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         return I18N::translate('Share the URL');

@@ -22,16 +22,10 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Localization\Locale\LocaleBs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 
-/**
- * Class LanguageBosnian.
- */
 class LanguageBosnian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleBs();

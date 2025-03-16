@@ -17,16 +17,22 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Statistics\Repository;
+namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\TestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
+use Fisharebest\Localization\Locale\LocaleHy;
+use Fisharebest\Localization\Locale\LocaleInterface;
 
-#[CoversClass(MessageRepository::class)]
-class MessageRepositoryTest extends TestCase
+class LanguageArmenian extends AbstractModule implements ModuleLanguageInterface
 {
-    public function testClass(): void
+    use ModuleLanguageTrait;
+
+    public function isEnabledByDefault(): bool
     {
-        self::assertTrue(class_exists(MessageRepository::class));
+        return false;
+    }
+
+    public function locale(): LocaleInterface
+    {
+        return new LocaleHy();
     }
 }

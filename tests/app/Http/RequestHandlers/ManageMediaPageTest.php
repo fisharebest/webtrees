@@ -33,7 +33,7 @@ class ManageMediaPageTest extends TestCase
     public function testIndex(): void
     {
         $media_file_service = new MediaFileService(php_service: new PhpService());
-        $handler            = new ManageMediaPage(media_file_service: $media_file_service);
+        $handler            = new ManageMediaPage($media_file_service);
         $request            = self::createRequest();
         $response           = $handler->handle($request);
 

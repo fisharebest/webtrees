@@ -19,11 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Contracts\TimestampInterface;
 
-use function gregoriantojd;
+use function GregorianToJD;
 
 /**
  * A localized date-time.
@@ -45,7 +44,7 @@ class Timestamp implements TimestampInterface
 
     public function julianDay(): int
     {
-        return gregoriantojd($this->carbon->month, $this->carbon->day, $this->carbon->year);
+        return GregorianToJD($this->carbon->month, $this->carbon->day, $this->carbon->year);
     }
 
     public function diffForHumans(): string

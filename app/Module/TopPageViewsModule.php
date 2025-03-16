@@ -38,11 +38,6 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
 
     private const array PAGES = ['individual.php', 'family.php', 'source.php', 'repo.php', 'note.php', 'mediaviewer.php'];
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module */

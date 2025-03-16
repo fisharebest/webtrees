@@ -3,11 +3,17 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
-use Illuminate\Support\Collection;
 
 /**
- * @var Collection<int,object> $faqs
- * @var string                 $title
+ * @var array<int,object{
+ *      block_id: int,
+ *      block_order: int,
+ *      gedcom_id: int,
+ *      header: string,
+ *      faqbody: string,
+ *      languages: string
+ *  }>         $faqs
+ * @var string $title
  */
 
 ?>

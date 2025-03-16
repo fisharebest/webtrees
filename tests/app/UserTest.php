@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\UserService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
@@ -30,9 +29,6 @@ class UserTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * Things to run before every test.
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -46,7 +42,6 @@ class UserTest extends TestCase
     {
         $user = new User(123, 'username', 'real name', 'email');
 
-        self::assertInstanceOf(UserInterface::class, $user);
         self::assertSame(123, $user->id());
         self::assertSame('email', $user->email());
         self::assertSame('real name', $user->realName());

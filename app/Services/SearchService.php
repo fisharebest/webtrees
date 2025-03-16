@@ -126,8 +126,7 @@ class SearchService
                     ->where('wife_name.n_type', '<>', '_MARNM');
             });
 
-        $prefix = DB::prefix();
-        $field  = new Expression('COALESCE(' . $prefix . "husb_name.n_full, '') || COALESCE(" . $prefix . "wife_name.n_full, '')");
+        $field  = new Expression('COALESCE(' . DB::prefix('husb_name') . ".n_full, '') || COALESCE(" . DB::prefix('wife_name') . ".n_full, '')");
 
         $this->whereTrees($query, 'f_file', $trees);
         $this->whereSearch($query, $field, $search);
@@ -1065,9 +1064,9 @@ class SearchService
     /**
      * Apply search filters to a SQL query column.  Apply collation rules to MySQL.
      *
-     * @param Builder           $query
-     * @param Expression|string $column
-     * @param array<string>     $search_terms
+     * @param Builder                   $query
+     * @param Expression<string>|string $column
+     * @param array<string>             $search_terms
      */
     private function whereSearch(Builder $query, Expression|string $column, array $search_terms): void
     {
@@ -1079,9 +1078,9 @@ class SearchService
     /**
      * Apply soundex search filters to a SQL query column.
      *
-     * @param Builder           $query
-     * @param Expression|string $field
-     * @param string            $soundex
+     * @param Builder                   $query
+     * @param Expression<string>|string $field
+     * @param string                    $soundex
      */
     private function wherePhonetic(Builder $query, $field, string $soundex): void
     {

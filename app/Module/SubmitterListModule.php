@@ -51,11 +51,6 @@ class SubmitterListModule extends AbstractModule implements ModuleListInterface,
             ->get(static::class, static::ROUTE_URL, $this);
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module/list */
@@ -68,11 +63,6 @@ class SubmitterListModule extends AbstractModule implements ModuleListInterface,
         return I18N::translate('A list of submitters.');
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;

@@ -51,11 +51,6 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
         return I18N::translate('Create maps using %s.', $link);
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;

@@ -22,9 +22,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Localization\Locale\LocaleEnGb;
 use Fisharebest\Localization\Locale\LocaleInterface;
 
-/**
- * Class LanguageEnglishGreatBritain.
- */
 class LanguageEnglishGreatBritain extends LanguageEnglishUnitedStates
 {
     // British English changes "three-times" to "thrice"
@@ -61,19 +58,11 @@ class LanguageEnglishGreatBritain extends LanguageEnglishUnitedStates
         ' twenty-nine times removed',
     ];
 
-    /**
-     * One of: 'DMY', 'MDY', 'YMD'.
-     *
-     * @return string
-     */
     public function dateOrder(): string
     {
         return 'DMY';
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleEnGb();

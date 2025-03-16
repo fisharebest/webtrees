@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -36,7 +35,6 @@ class TreeUserTest extends TestCase
         $tree                  = $tree_service->create('name', 'title');
         $user                  = new TreeUser($tree);
 
-        self::assertInstanceOf(UserInterface::class, $user);
         self::assertSame(0, $user->id());
         self::assertSame('', $user->email());
         self::assertSame('title', $user->realName());

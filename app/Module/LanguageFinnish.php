@@ -23,16 +23,11 @@ use Fisharebest\Localization\Locale\LocaleFi;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Encodings\UTF8;
 
-/**
- * Class LanguageFinnish.
- */
 class LanguageFinnish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -70,9 +65,6 @@ class LanguageFinnish extends AbstractModule implements ModuleLanguageInterface
         ];
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleFi();

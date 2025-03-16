@@ -25,16 +25,11 @@ use Fisharebest\Localization\Locale\LocaleAr;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Encodings\UTF8;
 
-/**
- * Class LanguageArabic.
- */
 class LanguageArabic extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -75,19 +70,11 @@ class LanguageArabic extends AbstractModule implements ModuleLanguageInterface
         ];
     }
 
-    /**
-     * Default calendar used by this language.
-     *
-     * @return CalendarInterface
-     */
     public function calendar(): CalendarInterface
     {
         return new ArabicCalendar();
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleAr();

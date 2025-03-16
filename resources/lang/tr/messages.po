@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-03-04 12:16+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
+"PO-Revision-Date: 2025-02-20 11:50+0000\n"
+"Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
+"Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -161,7 +162,7 @@ msgstr "%j %F %Y"
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
 msgid "%s BCE"
-msgstr "%s M.Ö."
+msgstr "M.Ö. %s"
 
 #. I18N: size of file in KB
 #: app/Http/RequestHandlers/ManageMediaData.php:358 app/MediaFile.php:312
@@ -428,7 +429,7 @@ msgstr "%s&nbsp;M.Ö"
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "%s&nbsp;M.S."
+msgstr "M.S. &nbsp;%s"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php:854
@@ -3263,7 +3264,7 @@ msgstr "Kanada"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "“%s” klasörüne yazılamıyor."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3808,7 +3809,7 @@ msgstr "Genel hukuk evliliği"
 
 #: app/Elements/MarriageType.php:61
 msgid "Common-law marriage"
-msgstr ""
+msgstr "Ortak hukuk evliliği"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:71
@@ -3863,7 +3864,7 @@ msgstr "Veri tabanı sunucusuna bağlantı"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "Bağlantı türü"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -12780,7 +12781,7 @@ msgstr "Webtrees için kurulum sihirbazı"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Sex"
-msgstr ""
+msgstr "Cinsiyet"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
@@ -14475,12 +14476,16 @@ msgstr "“%s” modülü etkinleştirildi."
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:684
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
-msgstr "En yaygın aile gerçekleri ve olayları, daha kolay eklenebilmeleri için ayrı ayrı listelenmiştir."
+msgstr ""
+"En yaygın aile gerçekleri ve olayları, daha kolay eklenebilmeleri için ayrı "
+"listelenmiştir."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:659
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
-msgstr "En yaygın bireysel gerçekler ve olaylar, daha kolay eklenebilmeleri için ayrı ayrı listelenmiştir."
+msgstr ""
+"En yaygın bireysel gerçekler ve olaylar, daha kolay eklenebilmeleri için "
+"ayrı listelenmiştir."
 
 #: resources/views/admin/site-registration.phtml:56
 msgid "The new user will be asked to confirm their email address before the account is created."
@@ -14504,7 +14509,7 @@ msgstr "“%s” parametresi eksik."
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "“path” parametresi geçersiz."
 
 #: app/Http/RequestHandlers/SetupWizard.php:381
 msgid "The password needs to be at least six characters long."
@@ -14730,7 +14735,7 @@ msgstr "Bu birey için hiçbir gerçek yoktur."
 #: app/Module/AbstractIndividualListModule.php:177
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "“%s” soyadına sahip hiçbir birey bulunmamaktadır"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:324
 msgid "There are no links to this media object."
@@ -15114,7 +15119,7 @@ msgstr "Bu sayfa, normal formları atlamanıza ve temel verileri doğrudan düze
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "Bu sayfa silindi."
 
 #: app/Module/HitCountFooterModule.php:108
 #, php-format
@@ -17132,7 +17137,7 @@ msgstr "devam et"
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
 msgid "copy"
-msgstr ""
+msgstr "kopyala"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
@@ -17313,7 +17318,7 @@ msgstr "dosyayı dışa aktar"
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
 msgid "extract"
-msgstr ""
+msgstr "çıkart"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19437,7 +19442,7 @@ msgstr "liste"
 #: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
-msgstr ""
+msgstr "lokal"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
@@ -19646,7 +19651,7 @@ msgstr "yeğeni"
 
 #: resources/views/setup/step-4-database-mysql.phtml:73
 msgid "network"
-msgstr ""
+msgstr "ağ"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
@@ -19811,7 +19816,7 @@ msgstr "/"
 
 #: app/Elements/GeneatiqueAct.php:38
 msgid "online"
-msgstr ""
+msgstr "çevrimiçi"
 
 #: app/Services/RelationshipService.php:352
 msgid "parent"
@@ -19867,7 +19872,7 @@ msgstr "yüzde"
 
 #: app/Elements/GeneatiqueAct.php:41
 msgid "photocopy"
-msgstr ""
+msgstr "fotokopi"
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106

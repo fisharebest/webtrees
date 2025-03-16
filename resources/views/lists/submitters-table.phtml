@@ -11,6 +11,7 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
 /**
+ * @var string|null               $caption
  * @var Collection<int,Submitter> $submitters
  * @var Tree                      $tree
  */
@@ -32,8 +33,8 @@ $count_individuals = DB::table('individuals')
     ->where('l_type', '=', Submitter::RECORD_TYPE)
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
-    ->pluck(new Expression('COUNT(*) AS total'), 'l_to')
-    ->map(static fn (string $n) => (int) $n)
+    ->pluck(new Expression('COUNT(*)'), 'l_to')
+    ->map(static fn (string $n): int => (int) $n)
     ->all();
 
 $count_families = DB::table('families')
@@ -44,8 +45,8 @@ $count_families = DB::table('families')
     ->where('l_type', '=', Submitter::RECORD_TYPE)
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
-    ->pluck(new Expression('COUNT(*) AS total'), 'l_to')
-    ->map(static fn (string $n) => (int) $n)
+    ->pluck(new Expression('COUNT(*)'), 'l_to')
+    ->map(static fn (string $n): int => (int) $n)
     ->all();
 ?>
 

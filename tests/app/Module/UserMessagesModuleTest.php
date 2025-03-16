@@ -25,9 +25,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(UserMessagesModule::class)]
 class UserMessagesModuleTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(UserMessagesModule::class));

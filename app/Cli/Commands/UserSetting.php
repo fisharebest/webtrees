@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\DB;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -28,7 +27,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class UserSetting extends Command
+final class UserSetting extends AbstractCommand
 {
     protected function configure(): void
     {
@@ -44,18 +43,13 @@ final class UserSetting extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $quiet  = (bool) $input->getOption(name: 'quiet');
-        $list   = (bool) $input->getOption(name: 'list');
-        $delete = (bool) $input->getOption(name: 'delete');
+        $quiet  = $this->boolOption(input: $input, name: 'quiet');
+        $list   = $this->boolOption(input: $input, name: 'list');
+        $delete = $this->boolOption(input: $input, name: 'delete');
 
-        /** @var string $user_name */
-        $user_name = $input->getArgument(name: 'user-name');
-
-        /** @var string|null $setting_name */
-        $setting_name = $input->getArgument(name: 'setting-name');
-
-        /** @var string|null $setting_value */
-        $setting_value = $input->getArgument(name: 'setting-value');
+        $user_name     = $this->stringArgument(input: $input, name: 'user-name');
+        $setting_name  = $this->stringArgument(input: $input, name: 'setting-name');
+        $setting_value = $this->stringArgument(input: $input, name: 'setting-value');
 
         $io = new SymfonyStyle(input: $input, output: $output);
 
@@ -66,20 +60,20 @@ final class UserSetting extends Command
         if ($user_id === null) {
             $io->error(message: 'User ‘' . $user_name . '’ not found.');
 
-            return Command::FAILURE;
+            return self::FAILURE;
         }
 
         if ($list) {
             if ($delete) {
                 $io->error(message: 'Cannot specify --list and --delete together.');
 
-                return Command::FAILURE;
+                return self::FAILURE;
             }
 
-            if ($setting_value !== null) {
+            if ($setting_value !== '') {
                 $io->error(message: 'Cannot specify --list and a new value together.');
 
-                return Command::FAILURE;
+                return self::FAILURE;
             }
 
             $table = new Table(output: $output);
@@ -94,14 +88,14 @@ final class UserSetting extends Command
                 ->all();
 
             foreach ($settings as $setting) {
-                if ($setting_name === null || str_contains(haystack: $setting->setting_name, needle: $setting_name)) {
+                if (str_contains(haystack: $setting->setting_name, needle: $setting_name)) {
                     $table->addRow(row: [$setting->setting_name, $setting->setting_value]);
                 }
             }
 
             $table->render();
 
-            return Command::SUCCESS;
+            return self::SUCCESS;
         }
 
         /** @var string|null $old_setting_value */
@@ -111,16 +105,16 @@ final class UserSetting extends Command
             ->value(column: 'setting_value');
 
         if ($delete) {
-            if ($setting_name === null) {
+            if ($setting_name === '') {
                 $io->error(message: 'Setting name must be specified for --delete.');
 
-                return Command::FAILURE;
+                return self::FAILURE;
             }
 
-            if ($setting_value !== null) {
+            if ($setting_value !== '') {
                 $io->error(message: 'Cannot specify --delete and a new value together.');
 
-                return Command::FAILURE;
+                return self::FAILURE;
             }
 
             if ($old_setting_value === null) {
@@ -134,17 +128,17 @@ final class UserSetting extends Command
                 $io->success(message: 'User setting ‘' . $setting_name . '’ deleted.  Previous value was ‘' . $old_setting_value . '’.');
             }
 
-            return Command::SUCCESS;
+            return self::SUCCESS;
         }
 
 
-        if ($setting_name === null) {
+        if ($setting_name === '') {
             $io->error(message: 'A setting name is required, unless the --list option is used.');
 
-            return Command::FAILURE;
+            return self::FAILURE;
         }
 
-        if ($setting_value === null) {
+        if ($setting_value === '') {
             if ($old_setting_value === null) {
                 $io->info(message: 'User setting ‘' . $setting_name . '’ is not currently set.');
             } elseif ($quiet) {
@@ -156,13 +150,13 @@ final class UserSetting extends Command
                 $io->info(message: 'User setting ‘' . $setting_name . '’ is currently set to ‘' . $old_setting_value . '’.');
             }
 
-            return Command::SUCCESS;
+            return self::SUCCESS;
         }
 
         if ($old_setting_value === $setting_value) {
             $io->warning(message: 'User setting ' . $setting_name . ' is already set to ' . $setting_value);
 
-            return Command::SUCCESS;
+            return self::SUCCESS;
         }
 
         if ($old_setting_value === null) {
@@ -183,6 +177,6 @@ final class UserSetting extends Command
             $io->success(message: 'User setting ‘' . $setting_name . '’ was changed from ‘' . $old_setting_value . '’ to ‘' . $setting_value . '’.');
         }
 
-        return Command::SUCCESS;
+        return self::SUCCESS;
     }
 }

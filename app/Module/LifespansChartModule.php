@@ -90,11 +90,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             ->allows(RequestMethodInterface::METHOD_POST);
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module/chart */
@@ -413,7 +408,14 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * @param array<Individual> $individuals
      *
-     * @return array<object>
+     * @return array<object{
+     *     background: string,
+     *     birth_year: int,
+     *     death_year: int,
+     *     id: string,
+     *     individual: Individual,
+     *     row: int
+     * }>
      */
     private function layoutIndividuals(array $individuals): array
     {

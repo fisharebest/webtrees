@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;

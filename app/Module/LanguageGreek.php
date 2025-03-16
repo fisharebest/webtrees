@@ -22,16 +22,11 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Localization\Locale\LocaleEl;
 use Fisharebest\Localization\Locale\LocaleInterface;
 
-/**
- * Class LanguageGreek.
- */
 class LanguageGreek extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -39,9 +34,6 @@ class LanguageGreek extends AbstractModule implements ModuleLanguageInterface
         return ['Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ', 'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω'];
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleEl();

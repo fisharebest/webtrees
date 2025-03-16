@@ -37,9 +37,6 @@ class DataFixDataTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * Test request handler
-     */
     public function testHandlerForFixSearchAndReplace(): void
     {
         $gedcom_import_service = new GedcomImportService();

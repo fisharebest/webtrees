@@ -23,9 +23,6 @@ use Fisharebest\Localization\Locale\LocaleFr;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Relationship;
 
-/**
- * Class LanguageFrench.
- */
 class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
@@ -56,9 +53,6 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
         ],
     ];
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleFr();

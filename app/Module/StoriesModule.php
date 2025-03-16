@@ -104,9 +104,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     }
 
     /**
-     * @param Individual $individual
-     *
-     * @return array<object>
+     * @return array<object{block_id:int,title:string,story_body:string}>
      */
     private function getStoriesForIndividual(Individual $individual): array
     {
@@ -185,11 +183,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         ]), 'menu-story');
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module */

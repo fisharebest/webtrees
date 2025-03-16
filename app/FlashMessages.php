@@ -53,7 +53,7 @@ class FlashMessages
     /**
      * Get the current messages, and remove them from session storage.
      *
-     * @return array<object>
+     * @return array<object{text:string,status:string}>
      */
     public static function getMessages(): array
     {

@@ -24,46 +24,61 @@ use Fisharebest\ExtCalendar\CalendarInterface;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleUr;
 
-/**
- * Class LanguageUrdu.
- */
 class LanguageUrdu extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
     {
-        return ['ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي', 'آ', 'ة', 'ى', 'ی'];
+        return [
+            'ا',
+            'ب',
+            'ت',
+            'ث',
+            'ج',
+            'ح',
+            'خ',
+            'د',
+            'ذ',
+            'ر',
+            'ز',
+            'س',
+            'ش',
+            'ص',
+            'ض',
+            'ط',
+            'ظ',
+            'ع',
+            'غ',
+            'ف',
+            'ق',
+            'ك',
+            'ل',
+            'م',
+            'ن',
+            'ه',
+            'و',
+            'ي',
+            'آ',
+            'ة',
+            'ى',
+            'ی',
+        ];
     }
 
-    /**
-     * Default calendar used by this language.
-     *
-     * @return CalendarInterface
-     */
     public function calendar(): CalendarInterface
     {
         return new ArabicCalendar();
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleUr();

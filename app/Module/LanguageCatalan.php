@@ -22,16 +22,10 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Localization\Locale\LocaleCa;
 use Fisharebest\Localization\Locale\LocaleInterface;
 
-/**
- * Class LanguageCatalan.
- */
 class LanguageCatalan extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleCa();

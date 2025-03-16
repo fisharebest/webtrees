@@ -21,14 +21,10 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Validator;
-use Fisharebest\Webtrees\Webtrees;
-use PDO;
-use PDOException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use RuntimeException;
 
 /**
  * Middleware to connect to the database.

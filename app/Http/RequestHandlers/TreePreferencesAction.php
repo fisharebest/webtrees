@@ -127,7 +127,7 @@ class TreePreferencesAction implements RequestHandlerInterface
         $tree->setPreference('SURNAME_LIST_STYLE', $surname_list_style);
         $tree->setPreference('SURNAME_TRADITION', $surname_tradition);
         $tree->setPreference('USE_SILHOUETTE', (string) $use_silhouette);
-        $tree->setPreference('WEBMASTER_USER_ID', (string) $webmaster_user_id);
+        $tree->setPreference('WEBMASTER_USER_ID', $webmaster_user_id);
         $tree->setPreference('title', $title);
 
         $url = route(ManageTrees::class, ['tree' => $tree->name()]);

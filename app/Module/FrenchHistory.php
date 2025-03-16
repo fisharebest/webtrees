@@ -21,28 +21,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 class FrenchHistory extends AbstractModule implements ModuleHistoricEventsInterface
 {
     use ModuleHistoricEventsTrait;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         return 'Faits historiques de France 🇫🇷';
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;

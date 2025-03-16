@@ -11,6 +11,7 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
 /**
+ * @var string|null           $caption
  * @var Collection<int,Media> $media_objects
  * @var Tree                  $tree
  */
@@ -29,8 +30,8 @@ $count_individuals = DB::table('individuals')
     ->where('l_type', '=', 'OBJE')
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
-    ->pluck(new Expression('COUNT(*) AS total'), 'l_to')
-    ->map(static fn ($n) => (int) $n)
+    ->pluck(new Expression('COUNT(*)'), 'l_to')
+    ->map(static fn (string $n): int => (int) $n)
     ->all();
 
 $count_families = DB::table('families')
@@ -41,8 +42,8 @@ $count_families = DB::table('families')
     ->where('l_type', '=', 'OBJE')
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
-    ->pluck(new Expression('COUNT(*) AS total'), 'l_to')
-    ->map(static fn ($n) => (int) $n)
+    ->pluck(new Expression('COUNT(*)'), 'l_to')
+    ->map(static fn (string $n): int => (int) $n)
     ->all();
 
 $count_sources = DB::table('sources')
@@ -53,8 +54,8 @@ $count_sources = DB::table('sources')
     ->where('l_type', '=', 'OBJE')
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
-    ->pluck(new Expression('COUNT(*) AS total'), 'l_to')
-    ->map(static fn ($n) => (int) $n)
+    ->pluck(new Expression('COUNT(*)'), 'l_to')
+    ->map(static fn (string $n): int => (int) $n)
     ->all();
 ?>
 

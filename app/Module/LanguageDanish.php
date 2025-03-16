@@ -22,21 +22,15 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Localization\Locale\LocaleDa;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Encodings\UTF8;
-use Illuminate\Database\Query\Builder;
 
 use function mb_substr;
 use function str_starts_with;
 
-/**
- * Class LanguageDanish.
- */
 class LanguageDanish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -74,13 +68,6 @@ class LanguageDanish extends AbstractModule implements ModuleLanguageInterface
         ];
     }
 
-    /**
-     * Some languages use digraphs and trigraphs.
-     *
-     * @param string $string
-     *
-     * @return string
-     */
     public function initialLetter(string $string): string
     {
         if (str_starts_with($string, 'AA')) {
@@ -90,9 +77,6 @@ class LanguageDanish extends AbstractModule implements ModuleLanguageInterface
         return mb_substr($string, 0, 1);
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleDa();

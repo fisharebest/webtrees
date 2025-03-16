@@ -132,7 +132,7 @@ class MergeFactsAction implements RequestHandlerInterface
             ->where('gedcom_id', '=', $tree->id())
             ->whereIn('page_parameter', [$xref1, $xref2])
             ->groupBy(['page_name'])
-            ->pluck(new Expression('SUM(page_count) AS total'), 'page_name');
+            ->pluck(new Expression('SUM(page_count)'), 'page_name');
 
         foreach ($hits as $page_name => $page_count) {
             DB::table('hit_counter')

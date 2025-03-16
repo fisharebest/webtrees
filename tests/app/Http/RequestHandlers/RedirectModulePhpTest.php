@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Factories\IndividualFactory;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\InteractiveTreeModule;
-use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\PedigreeMapModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -73,7 +72,7 @@ class RedirectModulePhpTest extends TestCase
         $module_service = $this->createMock(ModuleService::class);
         $module_service
             ->expects($this->once())
-            ->method('findByinterface')
+            ->method('findByInterface')
             ->with(PedigreeMapModule::class)
             ->willReturn(new Collection([$module]));
 

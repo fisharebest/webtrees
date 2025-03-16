@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\FamilyBookChartModule;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
-use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;

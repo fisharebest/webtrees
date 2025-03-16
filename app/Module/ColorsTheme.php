@@ -42,11 +42,6 @@ class ColorsTheme extends CloudsTheme
     // If no valid palette has been selected, use this one.
     private const string DEFAULT_PALETTE = 'ash';
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a theme. */

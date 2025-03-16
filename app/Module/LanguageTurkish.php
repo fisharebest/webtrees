@@ -22,18 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleTr;
 use Fisharebest\Webtrees\Encodings\UTF8;
-use Illuminate\Database\Query\Builder;
 
-/**
- * Class LanguageTurkish.
- */
 class LanguageTurkish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -71,9 +65,6 @@ class LanguageTurkish extends AbstractModule implements ModuleLanguageInterface
         ];
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleTr();

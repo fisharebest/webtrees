@@ -21,18 +21,11 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleIs;
-use Illuminate\Database\Query\Builder;
 
-/**
- * Class LanguageIcelandic.
- */
 class LanguageIcelandic extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleIs();

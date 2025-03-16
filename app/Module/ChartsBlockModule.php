@@ -51,11 +51,6 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
         $this->module_service = $module_service;
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module/block */

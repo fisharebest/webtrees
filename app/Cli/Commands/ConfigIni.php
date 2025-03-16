@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Webtrees;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -32,7 +31,7 @@ use function file_exists;
 use function file_put_contents;
 use function parse_ini_file;
 
-final class ConfigIni extends Command
+final class ConfigIni extends AbstractCommand
 {
     protected function configure(): void
     {
@@ -62,42 +61,40 @@ final class ConfigIni extends Command
             ->addOption(name: 'tblpfx', mode: InputOption::VALUE_OPTIONAL, description: 'Table prefix', default: $config['tblpfx'] ?? '')
             ->addOption(name: 'base-url', mode: InputOption::VALUE_OPTIONAL, description: 'Base URL', default: $config['base_url'] ?? '')
             ->addOption(name: 'rewrite-urls', mode: InputOption::VALUE_NEGATABLE, description: 'Use pretty URLs', default: (bool) ($config['rewrite_urls'] ?? false))
-            ->addOption(name: 'block-asn', mode: InputOption::VALUE_OPTIONAL, description: 'List of ASNs to block', default: $config['block_asn'] ?? '')
-        ;
+            ->addOption(name: 'block-asn', mode: InputOption::VALUE_OPTIONAL, description: 'List of ASNs to block', default: $config['block_asn'] ?? '');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle(input: $input, output: $output);
 
-        $data =
-            '; <?php return; ?> DO NOT DELETE THIS LINE' . PHP_EOL;
+        $data = '; <?php return; ?> DO NOT DELETE THIS LINE' . PHP_EOL;
 
         $config = [
-            'dbtype'       => $input->getOption(name: 'dbtype'),
-            'dbhost'       => $input->getOption(name: 'dbhost'),
-            'dbport'       => $input->getOption(name: 'dbport'),
-            'dbuser'       => $input->getOption(name: 'dbuser'),
-            'dbpass'       => $input->getOption(name: 'dbpass'),
-            'dbname'       => $input->getOption(name: 'dbname'),
-            'dbkey'        => $input->getOption(name: 'dbkey'),
-            'dbcert'       => $input->getOption(name: 'dbcert'),
-            'dbca'         => $input->getOption(name: 'dbca'),
-            'dbverify'     => (int) (bool) $input->getOption(name: 'dbverify'),
-            'tblpfx'       => $input->getOption(name: 'tblpfx'),
-            'base_url'     => rtrim(string: $input->getOption(name: 'base-url'), characters: '/'),
-            'rewrite_urls' => (int) (bool) $input->getOption(name: 'rewrite-urls'),
-            'block_asn'    => $input->getOption(name: 'block-asn'),
+            'dbtype'       => $this->stringOption(input: $input, name: 'dbtype'),
+            'dbhost'       => $this->stringOption(input: $input, name: 'dbhost'),
+            'dbport'       => $this->stringOption(input: $input, name: 'dbport'),
+            'dbuser'       => $this->stringOption(input: $input, name: 'dbuser'),
+            'dbpass'       => $this->stringOption(input: $input, name: 'dbpass'),
+            'dbname'       => $this->stringOption(input: $input, name: 'dbname'),
+            'dbkey'        => $this->stringOption(input: $input, name: 'dbkey'),
+            'dbcert'       => $this->stringOption(input: $input, name: 'dbcert'),
+            'dbca'         => $this->stringOption(input: $input, name: 'dbca'),
+            'dbverify'     => $this->boolOption(input: $input, name: 'dbverify') ? '1' : '0',
+            'tblpfx'       => $this->stringOption(input: $input, name: 'tblpfx'),
+            'base_url'     => rtrim(string: $this->stringOption(input: $input, name: 'base-url'), characters: '/'),
+            'rewrite_urls' => $this->boolOption(input: $input, name: 'rewrite-urls') ? '1' : '0',
+            'block_asn'    => $this->stringOption(input: $input, name: 'block-asn'),
         ];
 
         foreach ($config as $key => $value) {
-            $data .= $key . ' = "' . addcslashes(string: (string) $value, characters: '"') . '"' . PHP_EOL;
+            $data .= $key . ' = "' . addcslashes(string: $value, characters: '"') . '"' . PHP_EOL;
         }
 
         $io->info(message: $data);
         file_put_contents(filename: Webtrees::CONFIG_FILE, data: $data);
 
-        if ($input->getOption(name: 'base-url') === '') {
+        if ($config['base_url'] === '') {
             $io->warning(message: 'You must set the base URL');
         }
 
@@ -122,9 +119,9 @@ final class ConfigIni extends Command
         } catch (Throwable $ex) {
             $io->error(message: 'Database connection failed: ' . $ex->getMessage());
 
-            return Command::FAILURE;
+            return self::FAILURE;
         }
 
-        return Command::SUCCESS;
+        return self::SUCCESS;
     }
 }

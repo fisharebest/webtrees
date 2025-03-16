@@ -66,11 +66,6 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
         $this->user_service  = $user_service;
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module */

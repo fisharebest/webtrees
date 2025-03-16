@@ -17,16 +17,16 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Statistics\Repository;
+namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(EventRepository::class)]
-class EventRepositoryTest extends TestCase
+#[CoversClass(LanguageArmenian::class)]
+class LanguageArmenianTest extends TestCase
 {
     public function testClass(): void
     {
-        self::assertTrue(class_exists(EventRepository::class));
+        self::assertTrue(class_exists(LanguageArmenian::class));
     }
 }

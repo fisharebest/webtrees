@@ -163,7 +163,7 @@ class DB extends Manager
         return parent::connection()->getPdo();
     }
 
-    public static function prefix(string $identifier = ''): string
+    public static function prefix(string $identifier): string
     {
         return parent::connection()->getTablePrefix() . $identifier;
     }
@@ -224,6 +224,9 @@ class DB extends Manager
         }
     }
 
+    /**
+     * @return Expression<string>
+     */
     public static function binaryColumn(string $column, string|null $alias = null): Expression
     {
         if (self::driverName() === self::MYSQL) {

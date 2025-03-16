@@ -22,26 +22,15 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleZhHans;
 
-/**
- * Class LanguageChineseSimplified.
- */
 class LanguageChineseSimplified extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * One of: 'DMY', 'MDY', 'YMD'.
-     *
-     * @return string
-     */
     public function dateOrder(): string
     {
         return 'YMD';
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleZhHans();

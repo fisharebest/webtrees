@@ -78,9 +78,6 @@ class ModuleServiceTest extends TestCase
         self::assertNotEmpty($module_service->findByInterface(ModuleSidebarInterface::class, true)->all());
         self::assertNotEmpty($module_service->findByInterface(ModuleTabInterface::class, true)->all());
         self::assertNotEmpty($module_service->findByInterface(ModuleThemeInterface::class, true)->all());
-
-        // Search for an invalid module type
-        self::assertEmpty($module_service->findByInterface('not-a-valid-class-or-interface')->all());
     }
 
     public function testOtherModules(): void

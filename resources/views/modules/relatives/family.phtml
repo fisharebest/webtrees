@@ -11,15 +11,15 @@ use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToFamilyPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\RelationshipService;
 
 /**
- * @var Family     $family
- * @var int        $fam_access_level
- * @var Individual $individual
- * @var string     $label
- * @var string     $type
+ * @var Family              $family
+ * @var int                 $fam_access_level
+ * @var Individual          $individual
+ * @var string              $label
+ * @var RelationshipService $relationship_service
+ * @var string              $type
  */
 
 ?>
@@ -45,8 +45,10 @@ use Fisharebest\Webtrees\Services\RelationshipService;
                 ?>
                 <tr class="<?= $row_class ?>">
                     <th scope="row">
-                        <?= $individual === $person ? '<i class="icon-selected"></i>' : '' ?>
-                        <?= Registry::container()->get(RelationshipService::class)->getCloseRelationshipName($individual, $person) ?>
+                        <?= $relationship_service->getCloseRelationshipName($individual, $person) ?>
+                        <?php if ($individual === $person) : ?>
+                            <span class="icon-selected"><?= view('icons/user') ?></span>
+                        <?php endif ?>
                     </th>
                     <td class="border-0 p-0">
                         <?= view('chart-box', ['individual' => $person]) ?>
@@ -83,8 +85,10 @@ use Fisharebest\Webtrees\Services\RelationshipService;
 
                 <tr class="<?= $row_class ?>">
                     <th scope="row">
-                        <?= $individual === $person ? '<i class="icon-selected"></i>' : '' ?>
-                        <?= Registry::container()->get(RelationshipService::class)->getCloseRelationshipName($individual, $person) ?>
+                        <?= $relationship_service->getCloseRelationshipName($individual, $person) ?>
+                        <?php if ($individual === $person) : ?>
+                            <span class="icon-selected"><?= view('icons/user') ?></span>
+                        <?php endif ?>
                     </th>
                     <td class="border-0 p-0">
                         <?= view('chart-box', ['individual' => $person]) ?>
@@ -179,10 +183,6 @@ use Fisharebest\Webtrees\Services\RelationshipService;
 
                 <tr class="<?= $row_class ?>">
                     <th scope="row">
-                        <?php if ($individual === $person) : ?>
-                            <i class="icon-selected"></i>
-                        <?php endif ?>
-
                         <?php if ($prev->isOK() && $next->isOK()) : ?>
                             <div class="wt-date-difference collapse small">
                                 <?php $days = $next->maximumJulianDay() - $prev->minimumJulianDay(); ?>
@@ -199,7 +199,11 @@ use Fisharebest\Webtrees\Services\RelationshipService;
                             </div>
                         <?php endif ?>
 
-                        <?= Registry::container()->get(RelationshipService::class)->getCloseRelationshipName($individual, $person) ?>
+                        <?= $relationship_service->getCloseRelationshipName($individual, $person) ?>
+
+                        <?php if ($individual === $person) : ?>
+                            <span class="icon-selected"><?= view('icons/user') ?></span>
+                        <?php endif ?>
                     </th>
                     <td class="border-0 p-0">
                         <?= view('chart-box', ['individual' => $person]) ?>

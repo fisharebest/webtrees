@@ -25,9 +25,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(CensusOfSlovakia::class)]
 class CensusOfSlovakiaTest extends TestCase
 {
-    /**
-     * Test the census place
-     */
     public function testPlace(): void
     {
         $census = new CensusOfSlovakia();
@@ -35,9 +32,6 @@ class CensusOfSlovakiaTest extends TestCase
         self::assertSame('Slovensko', $census->censusPlace());
     }
 
-    /**
-     * Test the census language
-     */
     public function testLanguage(): void
     {
         $census = new CensusOfSlovakia();
@@ -45,9 +39,6 @@ class CensusOfSlovakiaTest extends TestCase
         self::assertSame('sk', $census->censusLanguage());
     }
 
-    /**
-     * Test the census dates
-     */
     public function testAllDates(): void
     {
         $census = new CensusOfSlovakia();

@@ -23,15 +23,10 @@ use Fisharebest\Webtrees\Contracts\IdFactoryInterface;
 use Ramsey\Uuid\Exception\RandomSourceException;
 use Ramsey\Uuid\Uuid;
 
-use function dechex;
 use function hexdec;
 use function sprintf;
-use function str_pad;
 use function str_split;
 use function strtoupper;
-use function substr;
-
-use const STR_PAD_LEFT;
 
 /**
  * Create a unique identifier.

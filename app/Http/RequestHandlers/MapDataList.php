@@ -117,7 +117,7 @@ class MapDataList implements RequestHandlerInterface
 
         return $this->viewResponse('admin/locations', [
             'active'       => $this->map_data_service->activePlaces($parent),
-            'all_trees'    => $this->tree_service->all(),
+            'all_trees'    => $this->tree_service->all()->all(),
             'breadcrumbs'  => array_reverse($breadcrumbs),
             'parent_id'    => $parent_id,
             'placelist'    => $this->map_data_service->getPlaceListLocation($parent_id),

@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Services\TreeService;
-use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -49,7 +48,7 @@ class HandleExceptionsTest extends TestCase
         Registry::container()->set(ModuleService::class, $module_service);
 
         $request    = self::createRequest();
-        $middleware = new HandleExceptions(php_service: new PhpService(), tree_service: $tree_service);
+        $middleware = new HandleExceptions(new PhpService(), $tree_service);
         $response   = $middleware->process($request, $handler);
 
         self::assertSame(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR, $response->getStatusCode());

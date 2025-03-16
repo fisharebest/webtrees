@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 use function extension_loaded;
+use function ini_get;
 use function ini_parse_quantity;
 use function sys_get_temp_dir;
 
@@ -52,7 +53,7 @@ class PhpServiceTest extends TestCase
         self::assertSame((int) ini_get(option: 'max_execution_time'), $php_service->maxExecutionTime());
 
         self::assertSame(
-            ini_parse_quantity(shorthand: (string) ini_get(option: 'memory_limit')),
+            ini_parse_quantity(shorthand: ini_get(option: 'memory_limit')),
             $php_service->memoryLimit()
         );
 

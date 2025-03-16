@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -100,11 +99,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         return I18N::translate('Generate sitemap files for search engines.');
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;
@@ -128,11 +122,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         ]);
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module - see https://en.wikipedia.org/wiki/Sitemaps */
@@ -197,46 +186,46 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
                 ->join('gedcom', 'f_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->groupBy(['gedcom_id'])
-                ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
+                ->pluck(new Expression('COUNT(*)'), 'gedcom_name');
 
             $count_individuals = DB::table('individuals')
                 ->join('gedcom', 'i_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->groupBy(['gedcom_id'])
-                ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
+                ->pluck(new Expression('COUNT(*)'), 'gedcom_name');
 
             $count_media = DB::table('media')
                 ->join('gedcom', 'm_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->groupBy(['gedcom_id'])
-                ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
+                ->pluck(new Expression('COUNT(*)'), 'gedcom_name');
 
             $count_notes = DB::table('other')
                 ->join('gedcom', 'o_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->where('o_type', '=', Note::RECORD_TYPE)
                 ->groupBy(['gedcom_id'])
-                ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
+                ->pluck(new Expression('COUNT(*)'), 'gedcom_name');
 
             $count_repositories = DB::table('other')
                 ->join('gedcom', 'o_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->where('o_type', '=', Repository::RECORD_TYPE)
                 ->groupBy(['gedcom_id'])
-                ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
+                ->pluck(new Expression('COUNT(*)'), 'gedcom_name');
 
             $count_sources = DB::table('sources')
                 ->join('gedcom', 's_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->groupBy(['gedcom_id'])
-                ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
+                ->pluck(new Expression('COUNT(*)'), 'gedcom_name');
 
             $count_submitters = DB::table('other')
                 ->join('gedcom', 'o_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->where('o_type', '=', Submitter::RECORD_TYPE)
                 ->groupBy(['gedcom_id'])
-                ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
+                ->pluck(new Expression('COUNT(*)'), 'gedcom_name');
 
             // Versions 2.0.1 and earlier of this module stored large amounts of data in the settings.
             DB::table('module_setting')
@@ -336,7 +325,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
                 break;
 
             default:
-                throw new HttpNotFoundException('Invalid record type: ' . $type);
+                throw new HttpNotFoundException('Invalid record type: ' . e($type));
         }
 
         // Skip private records.

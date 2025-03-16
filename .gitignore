@@ -1,3 +1,5 @@
+.phpunit.cache/
+
 /modules_v4/
 
 /node_modules/

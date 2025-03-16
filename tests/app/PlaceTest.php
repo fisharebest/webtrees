@@ -24,9 +24,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(Place::class)]
 class PlaceTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(Place::class));

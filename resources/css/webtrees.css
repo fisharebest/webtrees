@@ -1231,28 +1231,8 @@ a > .wt-icon-arrow-up:hover {
 }
 
 /* Miscellaneous images */
-.icon-cfamily {
-    content: url(webtrees/images/family.png);
-}
-
-.icon-childless {
-    content: url(images/childless.png);
-}
-
 .icon-children {
     content: url(images/children.png);
-}
-
-.icon-edit_indi {
-    content: url(webtrees/images/edit_indi.png);
-}
-
-.icon-fam-list {
-    content: url(webtrees/images/family.png);
-}
-
-.icon-indi-list {
-    content: url(webtrees/images/indis.png);
 }
 
 .icon-loading-small {
@@ -1313,16 +1293,8 @@ a > .wt-icon-arrow-up:hover {
     content: url(webtrees/images/indis.png);
 }
 
-.icon-patriarch {
-    content: url(webtrees/images/patriarch.png);
-}
-
 .icon-pedigree {
     content: url(webtrees/images/pedigree.png);
-}
-
-.icon-sfamily {
-    content: url(webtrees/images/family.png);
 }
 
 .icon-user_add {

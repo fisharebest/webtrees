@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\RateLimitService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SiteUser;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;

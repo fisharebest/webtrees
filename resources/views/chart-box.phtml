@@ -31,7 +31,7 @@ $menus = $module_service->findByComponent(ModuleChartInterface::class, $individu
 foreach ($individual->spouseFamilies() as $family) {
     $menus->push(new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->url()));
     $spouse  = $family->spouse($individual);
-    if ($spouse && $spouse->canShow()) {
+    if ($spouse instanceof Individual && $spouse->canShow()) {
         $menus->push(new Menu($spouse->fullName(), $spouse->url()));
     }
     foreach ($family->children() as $child) {
@@ -92,7 +92,7 @@ $id = Registry::idFactory()->id();
 ?>
 
 <div class="wt-chart-box wt-chart-box-<?= strtolower($individual->sex()) ?> <?= $individual->isPendingAddition() ? 'wt-new' : '' ?> <?= $individual->isPendingDeletion() ? 'wt-old' : '' ?> overflow-hidden" data-wt-chart-xref="<?= e($individual->xref()) ?>" data-tree="<?= e($individual->tree()->name()) ?>">
-    <?php if ($individual->canShow() && $individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) : ?>
+    <?php if ($individual->canShow() && $individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES') === '1') : ?>
         <div class="wt-chart-box-thumbnail float-start me-1">
             <?= $individual->displayImage(40, 50, 'crop', ['class' => 'wt-chart-box-thumbnail']) ?>
         </div>
@@ -101,10 +101,9 @@ $id = Registry::idFactory()->id();
     <?php if ($individual->canShow()) : ?>
         <div class="wt-chart-box-extra d-print-none float-end ms-1">
             <div class="dropdown position-static wt-chart-box-zoom">
-                <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-zoom-<?= $id ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div ><?= view('icons/zoom-in') ?></div>
+                <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-zoom-<?= $id ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= I18N::translate('Zoom in') ?>">
+                    <div><?= view('icons/zoom-in') ?></div>
                     <div class="d-none"><?= view('icons/zoom-out') ?></div>
-                    <span class="visually-hidden"><?= I18N::translate('Links') ?></span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end wt-chart-box-dropdown wt-chart-box-zoom-dropdown" style="position: inherit" aria-labelledby="#chart-box-zoom-<?= $id ?>">
@@ -115,9 +114,10 @@ $id = Registry::idFactory()->id();
             </div>
 
             <div class="dropdown position-static wt-chart-box-links">
-                <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-menu-<?= $id ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="icon-pedigree" title="<?= I18N::translate('Links') ?>"></i>
-                    <span class="visually-hidden"><?= I18N::translate('Links') ?></span>
+                <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-menu-<?= $id ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= I18N::translate('Links') ?>">
+                    <span class="icon-pedigree">
+                        <?= view('icons/menu') ?>
+                    </span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end wt-chart-box-dropdown wt-chart-box-links-dropdown" style="position: inherit" aria-labelledby="#chart-box-menu-<?= $id ?>">

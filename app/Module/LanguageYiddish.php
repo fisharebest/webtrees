@@ -24,46 +24,51 @@ use Fisharebest\ExtCalendar\JewishCalendar;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleYi;
 
-/**
- * Class LanguageYiddish.
- */
 class LanguageYiddish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
     {
-        return ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר', 'ש', 'ת'];
+        return [
+            'א',
+            'ב',
+            'ג',
+            'ד',
+            'ה',
+            'ו',
+            'ז',
+            'ח',
+            'ט',
+            'י',
+            'כ',
+            'ל',
+            'מ',
+            'נ',
+            'ס',
+            'ע',
+            'פ',
+            'צ',
+            'ק',
+            'ר',
+            'ש',
+            'ת',
+        ];
     }
 
-    /**
-     * Default calendar used by this language.
-     *
-     * @return CalendarInterface
-     */
     public function calendar(): CalendarInterface
     {
         return new JewishCalendar();
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleYi();

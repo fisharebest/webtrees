@@ -68,11 +68,6 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
         $this->data_fix_service = $data_fix_service;
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module */
