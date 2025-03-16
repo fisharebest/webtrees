@@ -16,13 +16,16 @@ use Fisharebest\Webtrees\I18N;
 
 <div class="card mb-4 wt-block wt-block-<?= e($block) ?>" id="block-<?= e($id) ?>">
     <div class="card-header wt-block-header wt-block-header-<?= e($block) ?>">
+        <?php if (isset($icon) && $icon !== '') : ?>
+            <?= view($icon) ?>
+        <?php endif ?>
+        <?= $title ?>
         <?php if ($config_url !== '') : ?>
-            <a class="btn btn-link" href="<?= e($config_url) ?>" title="<?= I18N::translate('Preferences') ?>">
+            <a class="btn btn-link float-end" href="<?= e($config_url) ?>" title="<?= I18N::translate('Preferences') ?>">
                 <?= view('icons/preferences') ?>
                 <span class="visually-hidden"><?= I18N::translate('Preferences') ?></span>
             </a>
         <?php endif ?>
-        <?= $title ?>
     </div>
     <div class="card-body wt-block-content wt-block-content-<?= e($block) ?>">
         <?= $content ?>
