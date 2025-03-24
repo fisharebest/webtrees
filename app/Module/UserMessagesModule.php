@@ -142,6 +142,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 'config_url' => '',
                 'title'      => I18N::plural('%s message', '%s messages', $count, I18N::number($count)),
                 'content'    => $content,
+                'icon'       => 'icons/email',
             ]);
         }
 
