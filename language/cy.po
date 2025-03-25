@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-04-08 16:59+0000\n"
+"PO-Revision-Date: 2025-03-26 09:59+0000\n"
 "Last-Translator: Meddal <post@meddal.com>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/cy/>\n"
@@ -1083,7 +1083,7 @@ msgstr "Adroddiad am unigolion a oedd yn briod ar adeegau neu lefydd penodol."
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr "Adroddiad am newidiadau diweddar ac arfaethedig."
+msgstr "Adroddiad am newidiadau diweddar a chynigion newydd"
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:35
@@ -1818,7 +1818,7 @@ msgstr ""
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1742
 msgid "Advanced search"
-msgstr "Chwiliad manwl"
+msgstr "Chwilio manwl"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6672
@@ -3718,7 +3718,7 @@ msgstr "Gwiriwch am wallau"
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:94
 msgid "Check for pending changes…"
-msgstr "Gwirio am newidiadau arfaethedig…"
+msgstr "Gwirio am gynigion newydd…"
 
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 msgid "Check the access rights on this folder."
@@ -6940,7 +6940,7 @@ msgstr "Cyffredinol"
 #: app/Controller/SearchController.php:188
 #: app/Controller/SearchController.php:192 app/Theme/AbstractTheme.php:1724
 msgid "General search"
-msgstr "Chwiliad cyffredinol"
+msgstr "Chwilio cyffredinol"
 
 #. I18N: Description of the “Sitemaps” module
 #: app/Module/SiteMapModule.php:44
@@ -10958,16 +10958,16 @@ msgstr "Cart achau %s"
 #: app/Theme/AbstractTheme.php:1678 edit_changes.php:35 edit_changes.php:49
 #: help_text.php:302 modules_v3/change_report/report.xml:52
 msgid "Pending changes"
-msgstr "Newidiadau arfaethedig"
+msgstr "Cynigion newydd"
 
 #: help_text.php:309
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
 msgstr ""
-"Dim ond pan fydd gan eich cyfrif ganiatâd i olygu y bydd newidiadau "
-"arfaethedig yn cael eu dangos. Pan fyddwch chi'n allgofnodi, fyddwch chi "
-"ddim yn gallu eu gweld mwyach. Hefyd, dim ond ar rai tudalennau y mae "
-"newidiadau arfaethedig yn cael eu dangos. Er enghraifft, fyddan nhw ddim yn "
-"cael eu dangos mewn rhestrau, adroddiadau na chanlyniadau chwilio."
+"Dim ond pan fydd gan eich cyfrif ganiatâd i olygu y bydd cynigion newydd yn "
+"cael eu dangos. Pan fyddwch chi'n allgofnodi, fyddwch chi ddim yn gallu eu "
+"gweld mwyach. Hefyd, dim ond ar rai tudalennau y mae cynigion yn cael eu "
+"dangos. Er enghraifft, fyddan nhw ddim yn cael eu dangos mewn rhestrau, "
+"adroddiadau na chanlyniadau chwilio."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1719
@@ -11024,7 +11024,7 @@ msgstr "Lle ffonetig"
 #: app/Controller/SearchController.php:198 app/Theme/AbstractTheme.php:1733
 #: branches.php:51
 msgid "Phonetic search"
-msgstr "Chwiliad ffonetig"
+msgstr "Chwilio ffonetig"
 
 #: app/GedcomTag.php:836
 msgid "Phonetic title"
@@ -11722,7 +11722,7 @@ msgstr "Recife, Brasil"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
 msgid "Record"
-msgstr "Recordio"
+msgstr "Cofnodi"
 
 #. I18N: gedcom tag RIN
 #: app/GedcomTag.php:754
@@ -13016,7 +13016,7 @@ msgstr "Dangos rhieni"
 
 #: modules_v3/change_report/report.xml:8
 msgid "Show pending changes"
-msgstr "Dangos newidiadau arfaethedig"
+msgstr "Dangos cynigion newydd"
 
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
@@ -14535,7 +14535,7 @@ msgstr "Nid oes unrhyw nodiadau ar gyfer yr unigolyn hwn."
 
 #: admin_site_upgrade.php:105
 msgid "There are no pending changes."
-msgstr "Gwirio am newidiadau arfaethedig..."
+msgstr "Gwirio am gynigion newydd..."
 
 #: app/Module/ResearchTaskModule.php:151
 msgid "There are no research tasks in this family tree."
@@ -14548,7 +14548,7 @@ msgstr "Nid oes unrhyw ddyfyniadau ffynhonnell ar gyfer yr unigolyn hwn."
 #: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
 #: app/Theme/AbstractTheme.php:1961
 msgid "There are pending changes for you to moderate."
-msgstr "Mae yna newidiadau arfaethedig i chi eu cymedroli."
+msgstr "Mae yna gynigion newydd i chi eu cymedroli."
 
 #: app/Module/RecentChangesModule.php:89
 #, php-format
@@ -14622,9 +14622,9 @@ msgstr ""
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
-"Bydd y bloc hwn yn dangos i olygyddion restr o gofnodion gyda newidiadau "
-"arfaethedig y mae angen i gymedrolwr eu hadolygu. Mae hefyd yn cynhyrchu e-"
-"byst dyddiol i gymedrolwyr pryd bynnag y bydd yna newidiadau arfaethedig."
+"Bydd y bloc hwn yn dangos i olygyddion restr o gofnodion gyda chynigion "
+"newydd y mae angen i gymedrolwr eu hadolygu. Mae hefyd yn cynhyrchu e-byst "
+"dyddiol i gymedrolwyr pryd bynnag y bydd yna gynigion newydd."
 
 #: setup.php:351 setup.php:362
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
@@ -15667,7 +15667,7 @@ msgstr ""
 
 #: modules_v3/change_report/report.xml:87
 msgid "Total pending changes: "
-msgstr "Cyfanswm y newidiadau arfaethedig: "
+msgstr "Cyfanswm y cynigion newydd: "
 
 #. I18N: A count of places
 #: app/Module/GoogleMapsModule.php:1556
@@ -16494,8 +16494,8 @@ msgid "When you add, edit, or delete information, the changes are not saved imme
 msgstr ""
 "Pan fyddwch chi'n ychwanegu, golygu, neu ddileu gwybodaeth, fydd y "
 "newidiadau ddim yn cael eu cadw ar unwaith. Yn lle hynny, mae nhw'n cael eu "
-"cadw mewn ardal “arfaethedig”. Mae angen i'r cymedrolwr adolygu'r newidiadau "
-"arfaethedig hyn cyn iddyn nhw gael eu derbyn."
+"cadw mewn ardal “cynigion”. Mae angen i'r cymedrolwr adolygu'r cynigion hyn "
+"cyn iddyn nhw gael eu derbyn."
 
 #: message.php:132
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
