@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: Welsh (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-04-08 16:59+0000\n"
+"PO-Revision-Date: 2025-03-25 17:01+0000\n"
 "Last-Translator: Meddal <post@meddal.com>\n"
-"Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/webtrees/cy/>\n"
+"Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/cy/>\n"
 "Language: cy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : (n==3) ? 3 :(n==6) ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : "
+"(n==3) ? 3 :(n==6) ? 4 : 5;\n"
 "X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
@@ -1018,7 +1020,7 @@ msgstr "Adroddiad am unigolion a oedd yn briod ar adeegau neu lefydd penodol."
 #: app/Module/ChangeReportModule.php:51
 #: resources/xml/reports/change_report.xml:4
 msgid "A report of recent and pending changes."
-msgstr "Adroddiad am newidiadau diweddar ac arfaethedig."
+msgstr "Adroddiad am newidiadau diweddar a chynigion newydd"
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:51
@@ -1714,7 +1716,7 @@ msgstr "Bedydd oedolion"
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:170
 #: app/Module/SearchMenuModule.php:120
 msgid "Advanced search"
-msgstr "Chwiliad manwl"
+msgstr "Chwilio manwl"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:42
@@ -3562,7 +3564,7 @@ msgstr "Gwiriwch am fersiwn newydd"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:119
 msgid "Check for pending changes…"
-msgstr "Gwirio am newidiadau arfaethedig…"
+msgstr "Gwirio am gynigion newydd…"
 
 #: resources/views/setup/step-2-server-checks.phtml:61
 msgid "Checking server capacity"
@@ -3884,7 +3886,7 @@ msgstr "Priodas cyfraith gwlad"
 
 #: app/Elements/MarriageType.php:61
 msgid "Common-law marriage"
-msgstr ""
+msgstr "Priodas cyfraith gyffredin"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:71
@@ -6990,7 +6992,7 @@ msgstr "Cyffredinol"
 #: app/Http/RequestHandlers/SearchGeneralPage.php:198
 #: app/Module/SearchMenuModule.php:95
 msgid "General search"
-msgstr "Chwiliad cyffredinol"
+msgstr "Chwilio cyffredinol"
 
 #. I18N: Description of the “Sitemaps” module
 #: app/Module/SiteMapModule.php:103
@@ -11119,11 +11121,16 @@ msgstr "Cart achau %s"
 #: resources/views/pending-changes-page.phtml:80
 #: resources/xml/reports/change_report.xml:52
 msgid "Pending changes"
-msgstr "Newidiadau arfaethedig"
+msgstr "Cynigion newydd"
 
 #: resources/views/help/pending-changes.phtml:22
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr "Dim ond pan fydd gan eich cyfrif ganiatâd i olygu y bydd newidiadau arfaethedig yn cael eu dangos. Pan fyddwch chi'n allgofnodi, fyddwch chi ddim yn gallu eu gweld mwyach. Hefyd, dim ond ar rai tudalennau y mae newidiadau arfaethedig yn cael eu dangos. Er enghraifft, fyddan nhw ddim yn cael eu dangos mewn rhestrau, adroddiadau na chanlyniadau chwilio."
+msgstr ""
+"Dim ond pan fydd gan eich cyfrif ganiatâd i olygu y bydd cynigion newydd yn "
+"cael eu dangos. Pan fyddwch chi'n allgofnodi, fyddwch chi ddim yn gallu eu "
+"gweld mwyach. Hefyd, dim ond ar rai tudalennau y mae cynigion yn cael eu "
+"dangos. Er enghraifft, fyddan nhw ddim yn cael eu dangos mewn rhestrau, "
+"adroddiadau na chanlyniadau chwilio."
 
 #: app/CustomTags/BrothersKeeper.php:67 app/CustomTags/BrothersKeeper.php:108
 msgid "Permanent number"
@@ -11181,7 +11188,7 @@ msgstr "Lle ffonetig"
 #: app/Http/RequestHandlers/SearchPhoneticPage.php:103
 #: app/Module/SearchMenuModule.php:108 resources/views/branches-page.phtml:37
 msgid "Phonetic search"
-msgstr "Chwiliad ffonetig"
+msgstr "Chwilio ffonetig"
 
 #: app/Gedcom.php:694
 msgid "Phonetic type"
@@ -11892,7 +11899,7 @@ msgstr "Recife, Brasil"
 #: resources/views/modules/recent_changes/changes-table.phtml:49
 #: resources/views/modules/todo/research-tasks.phtml:33
 msgid "Record"
-msgstr "Recordio"
+msgstr "Cofnodi"
 
 #: app/CustomTags/Ancestry.php:63 app/CustomTags/FamilyTreeBuilder.php:60
 #: app/CustomTags/MyHeritage.php:55 app/CustomTags/MyHeritage.php:58
@@ -12864,7 +12871,7 @@ msgstr "Dewin gosod webtrees"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Sex"
-msgstr ""
+msgstr "Rhyw"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
@@ -13238,7 +13245,7 @@ msgstr "Dangos y cyfrinair"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
-msgstr "Dangos newidiadau arfaethedig"
+msgstr "Dangos cynigion newydd"
 
 #: resources/xml/reports/family_group_report.xml:9
 #: resources/xml/reports/individual_ext_report.xml:11
@@ -14669,7 +14676,7 @@ msgstr "Y ddewislen chwilio."
 
 #: app/Services/SearchService.php:1173
 msgid "The search returned too many results."
-msgstr "Dychwelodd y chwiliad ormod o ganlyniadau."
+msgstr "Dychwelodd y chwilio ormod o ganlyniadau."
 
 #: resources/views/setup/step-2-server-checks.phtml:57
 msgid "The server configuration is OK."
@@ -14835,7 +14842,7 @@ msgstr "Nid oes unrhyw nodiadau ar gyfer yr unigolyn hwn."
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:199
 #: resources/views/pending-changes-page.phtml:32
 msgid "There are no pending changes."
-msgstr "Gwirio am newidiadau arfaethedig..."
+msgstr "Gwirio am gynigion newydd..."
 
 #: app/Module/ResearchTaskModule.php:128
 msgid "There are no research tasks in this family tree."
@@ -14849,7 +14856,7 @@ msgstr "Nid oes unrhyw ddyfyniadau ffynhonnell ar gyfer yr unigolyn hwn."
 #: resources/views/emails/pending-changes-html.phtml:22
 #: resources/views/emails/pending-changes-text.phtml:19
 msgid "There are pending changes for you to moderate."
-msgstr "Mae yna newidiadau arfaethedig i chi eu cymedroli."
+msgstr "Mae yna gynigion newydd i chi eu cymedroli."
 
 #: app/Module/RecentChangesModule.php:139
 #, php-format
@@ -14920,7 +14927,10 @@ msgstr "Nid yw'r cyfrif hwn wedi'i wirio. Gwiriwch eich e-bost am neges ddilysu.
 
 #: resources/views/modules/review_changes/config.phtml:15
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Bydd y bloc hwn yn dangos i olygyddion restr o gofnodion gyda newidiadau arfaethedig y mae angen i gymedrolwr eu hadolygu. Mae hefyd yn cynhyrchu e-byst dyddiol i gymedrolwyr pryd bynnag y bydd yna newidiadau arfaethedig."
+msgstr ""
+"Bydd y bloc hwn yn dangos i olygyddion restr o gofnodion gyda chynigion "
+"newydd y mae angen i gymedrolwr eu hadolygu. Mae hefyd yn cynhyrchu e-byst "
+"dyddiol i gymedrolwyr pryd bynnag y bydd yna gynigion newydd."
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:87
@@ -15101,7 +15111,9 @@ msgstr "Mae'r ddolen hon yn ddilys am awr."
 
 #: resources/views/help/data-fixes.phtml:18
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
-msgstr "Mae'r rhestr hon yn cael ei chreu gan ddefnyddio chwiliad syml (ond cyflym), ac felly mae'n cynnwys cofnodion na fydd yn cael eu diweddaru."
+msgstr ""
+"Mae'r rhestr hon yn cael ei chreu gan ddefnyddio chwilio syml (ond cyflym), "
+"ac felly mae'n cynnwys cofnodion na fydd yn cael eu diweddaru."
 
 #: app/Auth.php:347
 msgid "This media object does not exist or you do not have permission to view it."
@@ -15730,7 +15742,7 @@ msgstr "Cyfanswm priodasau"
 
 #: resources/xml/reports/change_report.xml:87
 msgid "Total pending changes: "
-msgstr "Cyfanswm y newidiadau arfaethedig: "
+msgstr "Cyfanswm y cynigion newydd: "
 
 #: resources/views/modules/gedcom_stats/config.phtml:48
 #: resources/views/modules/html/template-statistics.phtml:38
@@ -16519,7 +16531,11 @@ msgstr "Pan fyddwch yn ychwanegu aelod newydd o'r teulu, y mae modd darparu cyfe
 
 #: resources/views/help/pending-changes.phtml:14
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "Pan fyddwch chi'n ychwanegu, golygu, neu ddileu gwybodaeth, fydd y newidiadau ddim yn cael eu cadw ar unwaith. Yn lle hynny, mae nhw'n cael eu cadw mewn ardal “arfaethedig”. Mae angen i'r cymedrolwr adolygu'r newidiadau arfaethedig hyn cyn iddyn nhw gael eu derbyn."
+msgstr ""
+"Pan fyddwch chi'n ychwanegu, golygu, neu ddileu gwybodaeth, fydd y "
+"newidiadau ddim yn cael eu cadw ar unwaith. Yn lle hynny, mae nhw'n cael eu "
+"cadw mewn ardal “cynigion”. Mae angen i'r cymedrolwr adolygu'r cynigion hyn "
+"cyn iddyn nhw gael eu derbyn."
 
 #: resources/views/help/relationship-privacy.phtml:10
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
