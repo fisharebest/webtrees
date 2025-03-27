@@ -112,7 +112,6 @@ final class UserList extends AbstractCommand
 
     private function formatTimestamp(int $timestamp): string
     {
-
         if ($timestamp === 0) {
             return '';
         }
