@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-03-15 16:59+0000\n"
-"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
+"PO-Revision-Date: 2025-04-08 04:48+0000\n"
+"Last-Translator: Tommy J. <tommyj82@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/nb_NO/>\n"
 "Language: nb\n"
@@ -506,7 +506,7 @@ msgstr "(%s gammel)"
 #: app/Http/RequestHandlers/IndividualPage.php:163
 #: resources/views/fact-association-structure.phtml:67
 #: resources/views/fact-date.phtml:99
-#, php-format
+#, fuzzy, php-format
 msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(%s gammel)"
@@ -515,7 +515,7 @@ msgstr "(%s gammel)"
 #: app/Http/RequestHandlers/IndividualPage.php:160
 #: resources/views/fact-association-structure.phtml:64
 #: resources/views/fact-date.phtml:95
-#, php-format
+#, fuzzy, php-format
 msgctxt "Male"
 msgid "(aged %s)"
 msgstr "(%s gammel)"
@@ -1077,7 +1077,7 @@ msgstr "A4"
 #: resources/views/modules/map-box/config.phtml:23
 #: resources/views/modules/openrouteservice/config.phtml:23
 msgid "API key"
-msgstr "API kode"
+msgstr "API-nøkkel"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:53
@@ -1118,7 +1118,7 @@ msgstr "Aban"
 #: resources/views/admin/trees-preferences.phtml:560
 #: resources/views/admin/trees-preferences.phtml:564
 msgid "Abbreviate place names"
-msgstr "Forkorte stedsnavn"
+msgstr "Forkort stedsnavn"
 
 #: app/CustomTags/GedcomL.php:262 app/CustomTags/RootsMagic.php:80
 #: app/Gedcom.php:828 resources/views/lists/sources-table.phtml:97
@@ -1139,11 +1139,11 @@ msgstr "Godkjenn alle endringer"
 #: resources/views/admin/components.phtml:106
 #: resources/views/admin/trees-privacy.phtml:233
 msgid "Access level"
-msgstr "Nivå for rettigheter"
+msgstr "Tilgangsnivå"
 
 #: resources/views/admin/users-edit.phtml:231
 msgid "Access to family trees"
-msgstr "Tilgang til slektstrær"
+msgstr "Slektstretilgang"
 
 #: resources/views/admin/users-edit.phtml:96
 msgid "Account approval and email verification"
@@ -1164,67 +1164,67 @@ msgstr "Adar"
 #: app/Date/JewishDate.php:309
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
-msgstr "Adar"
+msgstr "adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:257
 msgctxt "LOCATIVE"
 msgid "Adar"
-msgstr "Adar"
+msgstr "adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:153
 msgctxt "NOMINATIVE"
 msgid "Adar"
-msgstr "Adar"
+msgstr "adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:203
 msgctxt "GENITIVE"
 msgid "Adar I"
-msgstr "Adar I"
+msgstr "adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:307
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr "Adar I"
+msgstr "adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:255
 msgctxt "LOCATIVE"
 msgid "Adar I"
-msgstr "Adar I"
+msgstr "adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:151
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr "Adar I"
+msgstr "adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:223
 msgctxt "GENITIVE"
 msgid "Adar II"
-msgstr "Adar II"
+msgstr "adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:327
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr "Adar II"
+msgstr "adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:275
 msgctxt "LOCATIVE"
 msgid "Adar II"
-msgstr "Adar II"
+msgstr "adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:171
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr "Adar II"
+msgstr "adar II"
 
 #: app/Http/RequestHandlers/MapDataAdd.php:80
 #: app/Http/RequestHandlers/MapDataAdd.php:83
@@ -1256,7 +1256,7 @@ msgstr "Legg til et nytt barn"
 #: app/Http/RequestHandlers/AddChildToIndividualPage.php:85
 #: resources/views/modules/relatives/tab.phtml:155
 msgid "Add a child to create a one-parent family"
-msgstr "Legg til et barn for å opprette en aleneforeldrefamilie"
+msgstr "Legg til et barn for å opprette en aleneforelderfamilie"
 
 #: app/Http/RequestHandlers/AddChildToFamilyPage.php:76
 #: resources/views/family-page-children.phtml:47
@@ -1268,7 +1268,7 @@ msgstr "Legg til en datter"
 #: resources/views/edit/raw-gedcom-record.phtml:60
 #: resources/views/record-page-menu-facts.phtml:16
 msgid "Add a fact"
-msgstr "Tilføy faktum"
+msgstr "Legg til et faktum"
 
 #: app/Http/RequestHandlers/AddParentToIndividualPage.php:77
 #: resources/views/family-page-grandparents.phtml:36
@@ -1294,11 +1294,11 @@ msgstr "Legg til en ny ektemann"
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:71
 #: resources/views/modules/relatives/tab.phtml:146
 msgid "Add a husband using an existing individual"
-msgstr "Legg til en ektemann ved å koble til en allerede registrert person"
+msgstr "Legg til en ektemann ved å koble til en eksisterende person"
 
 #: resources/views/modules/user_blog/list.phtml:63
 msgid "Add a journal entry"
-msgstr "Legg til nytt notat"
+msgstr "Legg til et nytt notat"
 
 #: app/Http/RequestHandlers/AddMediaFileModal.php:68
 #: resources/views/media-page-menu.phtml:34
@@ -1321,7 +1321,7 @@ msgstr "Legg til en ny mor"
 
 #: resources/views/individual-page-menu.phtml:45
 msgid "Add a name"
-msgstr "Legg til nytt navn"
+msgstr "Legg til et nytt navn"
 
 #: resources/views/modules/gedcom_news/list.phtml:64
 msgid "Add a news article"
@@ -1329,7 +1329,7 @@ msgstr "Legg inn en nyhetsartikkel"
 
 #: resources/views/modules/notes/tab.phtml:98
 msgid "Add a note"
-msgstr "Legg til nytt notat"
+msgstr "Legg til et nytt notat"
 
 #: resources/views/modules/relatives/family.phtml:229
 msgid "Add a sibling"
@@ -1376,13 +1376,13 @@ msgstr "Legg til en ny hustru"
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:74
 #: resources/views/modules/relatives/tab.phtml:144
 msgid "Add a wife using an existing individual"
-msgstr "Legg til en hustru ved å koble til en allerede registrert person"
+msgstr "Legg til en hustru ved å koble til en eksisterende person"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:294
 #: resources/views/modules/faq/config.phtml:47
 msgid "Add an FAQ"
-msgstr "Legg til FAQ-element"
+msgstr "Legg til et FAQ-element"
 
 #: resources/views/modules/custom-css-js/edit.phtml:35
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
@@ -1398,7 +1398,7 @@ msgstr "Legg til fra utklippstavle"
 
 #: app/Module/ModuleHistoricEventsTrait.php:32
 msgid "Add historic events to an individual’s page."
-msgstr "Legg til historiske hendelser til personside."
+msgstr "Legg historiske hendelser til en persons side."
 
 #: resources/views/modules/lifespans-chart/page.phtml:29
 msgid "Add individuals"
@@ -13041,7 +13041,7 @@ msgstr "Vis par som ble gift for mer enn 100 år siden."
 
 #: resources/views/lists/families-table.phtml:130
 msgid "Show couples who married within the last 100 years."
-msgstr "Vis par som er blitt gift innen de siste 100 år."
+msgstr "Vis par som er blitt gift de siste 100 år."
 
 #: resources/views/lists/families-table.phtml:120
 msgid "Show couples with an unknown marriage date."
@@ -13067,7 +13067,7 @@ msgstr "Vis personer som er født for over 100 år siden."
 
 #: resources/views/lists/individuals-table.phtml:142
 msgid "Show individuals born within the last 100 years."
-msgstr "Vis personer som er født innen de siste 100 år."
+msgstr "Vis personer som er født de siste 100 år."
 
 #: resources/views/lists/individuals-table.phtml:114
 msgid "Show individuals who are alive or couples where both partners are alive."
@@ -13084,7 +13084,7 @@ msgstr "Vis personer som døde for over 100 år siden."
 
 #: resources/views/lists/individuals-table.phtml:129
 msgid "Show individuals who died within the last 100 years."
-msgstr "Vis personer som døde innen de siste 100 år."
+msgstr "Vis personer som har dødd de siste 100 år."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:99
@@ -17106,7 +17106,7 @@ msgstr "clouds"
 #. I18N: Name of a theme.
 #: app/Module/ColorsTheme.php:53
 msgid "colors"
-msgstr "colors"
+msgstr "farger"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:267
@@ -20748,7 +20748,7 @@ msgstr "ukjent"
 #: app/Module/InteractiveTree/TreeView.php:356
 msgctxt "unknown family"
 msgid "unknown"
-msgstr "Ukjent"
+msgstr "ukjent"
 
 #: app/Module/RelationshipsChartModule.php:475
 msgid "unlimited"
