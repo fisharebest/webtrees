@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-12-08 04:04+0000\n"
-"Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
+"PO-Revision-Date: 2025-04-09 20:59+0000\n"
+"Last-Translator: ByteFloor <Catelixor+GitHub@proton.me>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/cs/>\n"
 "Language: cs\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Czech\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -3503,7 +3503,7 @@ msgstr "Změnit bloky na uživatelově stránce „Moje stránka“"
 
 #: admin_trees_manage.php:408 index_edit.php:50
 msgid "Change the “Home page” blocks"
-msgstr "Změnit bloky na domovské stránce"
+msgstr "Změnit bloky na stránce „Domovská stránka“"
 
 #: index_edit.php:42
 msgid "Change the “My page” blocks"
@@ -6300,7 +6300,7 @@ msgstr "Jména souborů nesmí obsahovat znak „%s“."
 #: addmedia.php:165 addmedia.php:299 admin_media_upload.php:122
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "Jména souborů nesměji mít příponu “%s”."
+msgstr "Názvy souborů nesmějí mít příponu „%s“."
 
 #: admin.php:893
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
@@ -9948,7 +9948,7 @@ msgstr "Bez chrámu - obřad naživo"
 
 #: admin.php:622 admin_site_upgrade.php:61
 msgid "No upgrade information is available."
-msgstr "Není dostupná žádná aktualizace."
+msgstr "Není k dispozici žádná informace o aktualizaci."
 
 #: app/Stats.php:1739
 msgid "Nobody at all"
@@ -11062,7 +11062,7 @@ msgstr "Předvolby"
 #: admin_modules.php:98
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "Pro modul “%s” existují předvolby, ale modul už neexistuje."
+msgstr "Pro modul „%s“ existují předvolby, ale modul už neexistuje."
 
 #. I18N: A configuration setting
 #: admin_users.php:471
@@ -12460,7 +12460,8 @@ msgstr "Zobraz odkaz na stažení v prohlížeči médií"
 #. I18N: A configuration setting
 #: admin_site_config.php:506
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "Zobrazit dohodu o používání na stránce «Request a new user account»"
+msgstr ""
+"Zobrazit dohodu o používání na stránce „Zažádat o nový uživatelský účet“"
 
 #: app/Module/NotesTabModule.php:74
 msgid "Show all notes"
@@ -12787,12 +12788,16 @@ msgstr "Zobrazit návštěvníkům"
 #: app/Functions/FunctionsPrintLists.php:273
 #: app/Functions/FunctionsPrintLists.php:664
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "Zobrazit páry nebo osoby nejníže v rodokmenu (listy stromu). Jsou naživu a v databázi pro ně neexistují děti."
+msgstr ""
+"Zobrazit páry nebo osoby nejníže v rodokmenu (listy stromu). Jsou naživu a v "
+"databázi pro ně neexistují děti."
 
 #: app/Functions/FunctionsPrintLists.php:264
 #: app/Functions/FunctionsPrintLists.php:655
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "Zobrazit páry nebo osoby prapředků (kořeny stromu). Můžou se také nazývat stařešinové. V databázi pro ně neexistují rodiče."
+msgstr ""
+"Zobrazit páry nebo osoby prapředků (kořeny stromu). Můžou se také nazývat "
+"stařešinové. V databázi pro ně neexistují rodiče."
 
 #. I18N: %s are placeholders for numbers
 #: app/I18N.php:228 app/I18N.php:229
@@ -13555,7 +13560,7 @@ msgstr "Pole <b>příjmení</b> obsahuje jméno, které se používá pro tříd
 #: admin_trees_manage.php:148
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "Soubor GEDCOM “%s” je importován."
+msgstr "Soubor GEDCOM „%s“ je importován."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13622,25 +13627,26 @@ msgstr "Rodokmen byl vyexportován do %s."
 #: admin_trees_manage.php:77
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "Rodokmen “%s” už existuje."
+msgstr "Rodokmen „%s“ už existuje."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:80
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "Rodokmen “%s” je vytvořen."
+msgstr "Rodokmen „%s“ je vytvořen."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:57 admin_trees_manage.php:154
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "Rodokmen “%s” je vymazán."
+msgstr "Rodokmen „%s“ je vymazán."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:66
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "Rodokmen “%s” se zobrazí návštěvníkům při jejich první návštěvě tohoto webu."
+msgstr ""
+"Rodokmen „%s“ se zobrazí návštěvníkům při jejich první návštěvě tohoto webu."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
@@ -13739,7 +13745,7 @@ msgstr "Následující fakta a události byly nalezeny v obou záznamech."
 #: admin_site_merge.php:252 admin_site_merge.php:298
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr "Následující fakta a události byly nalezeny pouze v záznamu “%s”."
+msgstr "Následující fakta a události byly nalezeny pouze v záznamu %s."
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
@@ -13823,12 +13829,12 @@ msgstr "Zpráva pro %s byla úspěšně odeslána."
 #: admin_modules.php:54
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "Modul “%s” je deaktivován."
+msgstr "Modul „%s“ byl deaktivován."
 
 #: admin_modules.php:56
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "Module “%s” je aktivován."
+msgstr "Module „%s“ byl aktivován."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1844
@@ -13892,17 +13898,17 @@ msgstr "Předvolby pro diagram “%s 1” jsou aktualizovány."
 #: admin_trees_config.php:178 admin_trees_config.php:301
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "Předvolby pro rodokmen “%s” jsou aktualizovány."
+msgstr "Předvolby pro rodokmen „%s“ byly aktualizovány."
 
 #: admin_modules.php:86
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "Předvolby pro modul “%s” jsou vymazány."
+msgstr "Předvolby pro modul „%s“ byly smazány."
 
 #: app/Module/GoogleMapsModule.php:266
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "Předvolby pro modul “%s” jsou aktualizovány."
+msgstr "Předvolby pro modul „%s“ byly aktualizovány."
 
 #: setup.php:381
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -13921,7 +13927,7 @@ msgstr "Záznam je zkopírován do schránky."
 #: admin_site_merge.php:172
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr "Záznamy “%1$s” a “%2$s” jsou sloučeny."
+msgstr "Záznamy „%1$s“ a „%2$s“ byly sloučeny."
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
@@ -14351,7 +14357,7 @@ msgstr "Toto je počáteční hodnota volby \"zobrazit podrobnosti\" u diagramů
 
 #: admin.php:629 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr "Toto je poslední verze webtrees. Neni dostupná žádná aktualizace."
+msgstr "Toto je poslední verze webtrees. Není dostupná žádná aktualizace."
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1757
@@ -14432,7 +14438,9 @@ msgstr ""
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:355
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "Toto je jméno SMTP serveru. 'localhost' znamená, že mailová služba běží na stejném počítači jako webový server."
+msgstr ""
+"Toto je jméno SMTP serveru. „localhost“ znamená, že mailová služba běží na "
+"stejném počítači jako webový server."
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1090
@@ -16287,7 +16295,9 @@ msgstr "Váš uživatelský účet nemá povoleno „automaticky schvalovat změ
 #: admin.php:571
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
-msgstr "Váš webový server používá PHP verse %s, pro kterou se už nevydávají bezpečnostní aktualizace. Doporučuje se upgrade na vyšší versi co nejdříve."
+msgstr ""
+"Váš webový server používá PHP verze %s, pro kterou se už nevydávají "
+"bezpečnostní aktualizace. Doporučuje se upgrade na vyšší verzi co nejdříve."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6925
@@ -20264,7 +20274,7 @@ msgstr "„%s“ přidán(a) do vašich oblíbených."
 #: action.php:47
 #, php-format
 msgid "“%s” has been deleted."
-msgstr "“%s 1” je odstraněno."
+msgstr "„%s“ bylo smazáno."
 
 #: app/Functions/FunctionsPrint.php:120 app/Note.php:107
 msgid "…"
