@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-04-08 04:48+0000\n"
-"Last-Translator: Tommy J. <tommyj82@gmail.com>\n"
+"PO-Revision-Date: 2025-04-13 21:59+0000\n"
+"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/nb_NO/>\n"
 "Language: nb\n"
@@ -506,7 +506,7 @@ msgstr "(%s gammel)"
 #: app/Http/RequestHandlers/IndividualPage.php:163
 #: resources/views/fact-association-structure.phtml:67
 #: resources/views/fact-date.phtml:99
-#, fuzzy, php-format
+#, php-format
 msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(%s gammel)"
@@ -515,7 +515,7 @@ msgstr "(%s gammel)"
 #: app/Http/RequestHandlers/IndividualPage.php:160
 #: resources/views/fact-association-structure.phtml:64
 #: resources/views/fact-date.phtml:95
-#, fuzzy, php-format
+#, php-format
 msgctxt "Male"
 msgid "(aged %s)"
 msgstr "(%s gammel)"
