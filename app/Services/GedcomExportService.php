@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Encodings\UTF16BE;
 use Fisharebest\Webtrees\Encodings\UTF16LE;
 use Fisharebest\Webtrees\Encodings\UTF8;
@@ -44,6 +45,7 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use RuntimeException;
+use ZipArchive;
 
 use function addcslashes;
 use function date;
@@ -136,7 +138,7 @@ class GedcomExportService
             $media_path = null;
         }
 
-        $resource = $this->export($tree, $sort_by_xref, $encoding, $access_level, $line_endings, $records, $zip_filesystem, $media_path);
+        $resource = $this->export($tree, $sort_by_xref, $encoding, $access_level, $line_endings, $records, $zip_filesystem, $media_path, $temp_zip_file);
 
         if ($format === 'gedzip') {
             $zip_filesystem->writeStream('gedcom.ged', $resource);
@@ -178,7 +180,8 @@ class GedcomExportService
         string $line_endings = 'CRLF',
         Collection|null $records = null,
         FilesystemOperator|null $zip_filesystem = null,
-        string|null $media_path = null
+        string|null $media_path = null,
+        string|null $temp_zip_file = null
     ) {
         $stream = fopen('php://memory', 'wb+');
 
@@ -223,6 +226,13 @@ class GedcomExportService
 
         $media_filesystem = $tree->mediaFilesystem();
 
+        // Use PHP ZipArchive if available (way faster, and probably mandatory for shared servers that are not fully customizable regarding timeout).
+        // Fallback to Flysystem versatile solution if not (works everywhere).
+        if($zip_filesystem !== null) {
+            $zip = new ZipArchive;
+            $php_zip = extension_loaded('zip') && $zip->open($temp_zip_file, ZipArchive::CREATE|ZIPARCHIVE::OVERWRITE);
+        }
+
         foreach ($data as $rows) {
             foreach ($rows as $datum) {
                 if (is_string($datum)) {
@@ -241,7 +251,7 @@ class GedcomExportService
                         $datum->m_gedcom ??
                         $datum->o_gedcom;
                 }
-
+                
                 if ($media_path !== null && $zip_filesystem !== null && preg_match('/0 @' . Gedcom::REGEX_XREF . '@ OBJE/', $gedcom) === 1) {
                     preg_match_all('/\n1 FILE (.+)/', $gedcom, $matches, PREG_SET_ORDER);
 
@@ -249,7 +259,14 @@ class GedcomExportService
                         $media_file = $match[1];
 
                         if ($media_filesystem->fileExists($media_file)) {
-                            $zip_filesystem->writeStream($media_path . $media_file, $media_filesystem->readStream($media_file));
+
+                            if ($php_zip === TRUE) {
+                                $zip->addFile(Site::getPreference('INDEX_DIRECTORY') . $tree->getPreference('MEDIA_DIRECTORY') . $media_file, $media_path . $media_file);
+                            }
+                            else {
+                                $zip_filesystem->writeStream($media_path . $media_file, $media_filesystem->readStream($media_file));
+                            }
+                            
                         }
                     }
                 }
@@ -266,6 +283,11 @@ class GedcomExportService
                     throw new RuntimeException('Unable to write to stream.  Perhaps the disk is full?');
                 }
             }
+        }
+
+        // In case we were using PHP ZipArchive
+        if ($zip_filesystem !== null && $php_zip === TRUE) {
+            $zip->close();
         }
 
         if (rewind($stream) === false) {
