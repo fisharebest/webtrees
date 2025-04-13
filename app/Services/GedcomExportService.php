@@ -251,7 +251,7 @@ class GedcomExportService
                         $datum->m_gedcom ??
                         $datum->o_gedcom;
                 }
-                
+
                 if ($media_path !== null && $zip_filesystem !== null && preg_match('/0 @' . Gedcom::REGEX_XREF . '@ OBJE/', $gedcom) === 1) {
                     preg_match_all('/\n1 FILE (.+)/', $gedcom, $matches, PREG_SET_ORDER);
 
