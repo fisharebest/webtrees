@@ -87,8 +87,8 @@ class BadBotBlocker implements MiddlewareInterface
          'img2dataset',
          'ISSCyberRiskCrawler',
          'Kangaroo Bot',
-         'Meta-ExternalAgent',
-         'Meta-ExternalFetcher',
+         'meta-externalagent',
+         'meta-externalfetcher',
          'OAI-SearchBot',
          'omgili',
          'omgilibot',
@@ -110,6 +110,7 @@ class BadBotBlocker implements MiddlewareInterface
         'admantx',
         'Adsbot',
         'AhrefsBot',
+        'AliyunSecBot',
         'AntBot', // Aggressive crawler
         'AspiegelBot',
         'Awario', // Brand management
