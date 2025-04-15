@@ -1140,7 +1140,14 @@ class SearchService
     {
         return static function (GedcomRecord $record) use ($search_terms): bool {
             // Ignore non-genealogy fields
-            $gedcom = preg_replace('/\n\d (?:_UID|_WT_USER) .*/', '', $record->gedcom());
+            $regex = '/^([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|[0-9A-F]{36})$/i';
+
+            if (array_filter($search_terms, static fn (string $term): bool => preg_match($regex, $term) === 1) !== []) {
+                $gedcom = preg_replace('/\n\d _WT_USER .*/', '', $record->gedcom());
+            } else {
+                $gedcom = preg_replace('/\n\d (UID|_UID|_WT_USER) .*/', '', $record->gedcom());
+            }
+
 
             // Ignore matches in links
             $gedcom = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . '( @' . Gedcom::REGEX_XREF . '@)?/', '', $gedcom);
