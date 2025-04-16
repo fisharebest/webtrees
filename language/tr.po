@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-02-20 11:50+0000\n"
-"Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
+"PO-Revision-Date: 2025-04-17 13:59+0000\n"
+"Last-Translator: Doctor2424 <doctor24@hotmail.de>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/tr/>\n"
 "Language: tr\n"
@@ -270,8 +270,8 @@ msgstr[1] "%s aileleri güncellendi."
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] "%s aile ağaçları"
-msgstr[1] "%s aile ağacı"
+msgstr[0] "%s aile ağacı"
+msgstr[1] "%s aile ağaçları"
 
 #: app/Stats.php:5254 app/Stats.php:5258
 #, php-format
@@ -18859,87 +18859,87 @@ msgstr "büyük büyük büyük yeğeni"
 #: app/Functions/Functions.php:1718
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "büyük büyük büyük yeğeni"
+msgstr "büyük-büyük-büyük yeğeni"
 
 #: app/Functions/Functions.php:1720
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "büyük büyük büyük yeğeni"
+msgstr "büyük-büyük-büyük yeğeni"
 
 #: app/Functions/Functions.php:1722
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr "büyük büyük büyük yeğeni"
+msgstr "büyük-büyük-büyük yeğeni"
 
 #: app/Functions/Functions.php:1557
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr "büyük büyük büyük amcası"
+msgstr "büyük-büyük-büyük amcası"
 
 #: app/Functions/Functions.php:1559
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr "büyük büyük büyük dayısı"
+msgstr "büyük-büyük-büyük dayısı"
 
 #: app/Functions/Functions.php:1561
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr "büyük büyük büyük amcası"
+msgstr "büyük-büyük-büyük amcası"
 
 #: app/Functions/Functions.php:1683
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Functions/Functions.php:1685
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Functions/Functions.php:1687
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Functions/Functions.php:1699
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Functions/Functions.php:1701
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Functions/Functions.php:1703
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Functions/Functions.php:1691
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Functions/Functions.php:1693
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Functions/Functions.php:1695
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Functions/Functions.php:1542
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr "büyük büyük amcası"
+msgstr "büyük-büyük amcası"
 
 #: app/Functions/Functions.php:1544
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr "büyük büyük dayısı"
+msgstr "büyük -büyük dayısı"
 
 #: app/Functions/Functions.php:1546
 msgctxt "great-grandparent’s brother"
@@ -20550,7 +20550,7 @@ msgstr "on ikinci kuzeni"
 
 #: app/Functions/Functions.php:759
 msgid "twin brother"
-msgstr "ikiz kardeşi"
+msgstr "ikiz erkek kardeşi"
 
 #: app/Functions/Functions.php:793
 msgid "twin sibling"
@@ -20558,7 +20558,7 @@ msgstr "ikiz kardeşi"
 
 #: app/Functions/Functions.php:776
 msgid "twin sister"
-msgstr "ikiz kardeşi"
+msgstr "ikiz kız kardeşi"
 
 #: app/Functions/Functions.php:834
 msgctxt "father’s brother"
