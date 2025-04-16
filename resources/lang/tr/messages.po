@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-02-20 11:50+0000\n"
-"Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
+"PO-Revision-Date: 2025-04-17 13:59+0000\n"
+"Last-Translator: Doctor2424 <doctor24@hotmail.de>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/tr/>\n"
 "Language: tr\n"
@@ -252,8 +252,8 @@ msgstr[1] "%s aileleri güncellendi."
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] "%s aile ağaçları"
-msgstr[1] "%s aile ağacı"
+msgstr[0] "%s aile ağacı"
+msgstr[1] "%s aile ağaçları"
 
 #: resources/views/statistics/families/top10-list-grand.phtml:20
 #: resources/views/statistics/families/top10-nolist-grand.phtml:16
@@ -18841,87 +18841,87 @@ msgstr "büyük büyük büyük yeğeni"
 #: app/Services/RelationshipService.php:1572
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "büyük büyük büyük yeğeni"
+msgstr "büyük-büyük-büyük yeğeni"
 
 #: app/Services/RelationshipService.php:1576
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "büyük büyük büyük yeğeni"
+msgstr "büyük-büyük-büyük yeğeni"
 
 #: app/Services/RelationshipService.php:1579
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr "büyük büyük büyük yeğeni"
+msgstr "büyük-büyük-büyük yeğeni"
 
 #: app/Services/RelationshipService.php:1336
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr "büyük büyük büyük amcası"
+msgstr "büyük-büyük-büyük amcası"
 
 #: app/Services/RelationshipService.php:1340
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr "büyük büyük büyük dayısı"
+msgstr "büyük-büyük-büyük dayısı"
 
 #: app/Services/RelationshipService.php:1343
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr "büyük büyük büyük amcası"
+msgstr "büyük-büyük-büyük amcası"
 
 #: app/Services/RelationshipService.php:1525
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Services/RelationshipService.php:1529
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Services/RelationshipService.php:1532
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Services/RelationshipService.php:1548
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Services/RelationshipService.php:1552
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Services/RelationshipService.php:1555
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Services/RelationshipService.php:1537
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Services/RelationshipService.php:1541
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Services/RelationshipService.php:1544
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr "büyük büyük yeğeni"
+msgstr "büyük-büyük yeğeni"
 
 #: app/Services/RelationshipService.php:1317
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr "büyük büyük amcası"
+msgstr "büyük-büyük amcası"
 
 #: app/Services/RelationshipService.php:1321
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr "büyük büyük dayısı"
+msgstr "büyük -büyük dayısı"
 
 #: app/Services/RelationshipService.php:1324
 msgctxt "great-grandparent’s brother"
@@ -20702,7 +20702,7 @@ msgstr "on ikinci kuzeni"
 
 #: app/Services/RelationshipService.php:437
 msgid "twin brother"
-msgstr "ikiz kardeşi"
+msgstr "ikiz erkek kardeşi"
 
 #: app/Services/RelationshipService.php:479
 msgid "twin sibling"
@@ -20710,7 +20710,7 @@ msgstr "ikiz kardeşi"
 
 #: app/Services/RelationshipService.php:458
 msgid "twin sister"
-msgstr "ikiz kardeşi"
+msgstr "ikiz kız kardeşi"
 
 #: app/Services/RelationshipService.php:524
 msgctxt "father’s brother"
