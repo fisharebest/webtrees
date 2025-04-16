@@ -4225,7 +4225,7 @@ parameters:
 			path: app/Module/HtmlBlockModule.php
 
 		-
-			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<int,string\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<int, ''FAM\:_UID''\|''FAM\:CHAN''\>\|iterable\<int, ''FAM\:_UID''\|''FAM\:CHAN''\>, Illuminate\\Support\\Collection\<int, mixed\> given\.$#'
+			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<int,string\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<int, ''FAM\:_UID''\|''FAM\:CHAN''\|''FAM\:SUBM''\|''FAM\:UID''\>\|iterable\<int, ''FAM\:_UID''\|''FAM\:CHAN''\|''FAM\:SUBM''\|''FAM\:UID''\>, Illuminate\\Support\\Collection\<int, mixed\> given\.$#'
 			identifier: argument.type
 			count: 2
 			path: app/Module/IndividualFactsTabModule.php
