@@ -242,6 +242,9 @@ class Gedcom
     // Regular expression to match a GEDCOM XREF.
     public const string REGEX_XREF = '[A-Za-z0-9:_.-]{1,20}';
 
+    // Regular expression to match a GEDCOM UID or _UID.
+    public const string REGEX_UID = '[0-9a-fA-F]{8}-?[0-9a-fA-F]{4}-?[0-9a-fA-F]{4}-?[0-9a-fA-F]{4}-?[0-9a-fA-F]{12}|[0-9a-fA-F]{36}|[0-9a-fA-F]{38}';
+
     // Regular expression to match a GEDCOM fact/event for editing raw GEDCOM.
     private const string REGEX_VALUE   = '( .+)?';
     private const string REGEX_LEVEL_9 = '\n9 ' . self::REGEX_TAG . self::REGEX_VALUE;
