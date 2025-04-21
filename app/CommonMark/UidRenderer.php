@@ -47,26 +47,26 @@ class UidRenderer implements NodeRendererInterface
             $html = $node->record()->fullName();
         } elseif ($node->linkText === "FULLNAME") {
             $html = $node->record()->fullName();
-#TODO Needs to be checked if the record has the fact asked for
-#TODO Needs take the date format defined acording to the language shown.
-#TODO         } elseif ($node->linkText === "BIRT:DATE") {
-#TODO             $html = $node->record()->fullName();
-#TODO                         $tmp   = new Date($value);
-#TODO                         $dfmt = "%j %F %Y";
-#TODO                         $value = strip_tags($tmp->display(null, $dfmt));
-#TODO         } elseif ($node->linkText === "BIRT:PLAC") {
-#TODO             $html = $node->record()->fullName();
-#TODO                         $tmp   = new Place($value, $this->tree);
-#TODO                         $value = $tmp->shortName();
-#TODO         } elseif ($node->linkText === "DEAT:DATE") {
-#TODO             $html = $node->record()->fullName();
-#TODO                         $tmp   = new Date($value);
-#TODO                         $dfmt = "%j %F %Y";
-#TODO                         $value = strip_tags($tmp->display(null, $dfmt));
-#TODO         } elseif ($node->linkText === "DEAT:PLAC") {
-#TODO             $html = $node->record()->fullName();
-#TODO                         $tmp   = new Place($value, $this->tree);
-#TODO                         $value = $tmp->shortName();
+        #TODO Needs to be checked if the record has the fact asked for
+        #TODO Needs take the date format defined acording to the language shown.
+        #TODO } elseif ($node->linkText === "BIRT:DATE") {
+        #TODO     $html = $node->record()->fullName();
+        #TODO                 $tmp   = new Date($value);
+        #TODO                 $dfmt = "%j %F %Y";
+        #TODO                 $value = strip_tags($tmp->display(null, $dfmt));
+        #TODO } elseif ($node->linkText === "BIRT:PLAC") {
+        #TODO     $html = $node->record()->fullName();
+        #TODO                 $tmp   = new Place($value, $this->tree);
+        #TODO                 $value = $tmp->shortName();
+        #TODO } elseif ($node->linkText === "DEAT:DATE") {
+        #TODO     $html = $node->record()->fullName();
+        #TODO                 $tmp   = new Date($value);
+        #TODO                 $dfmt = "%j %F %Y";
+        #TODO                 $value = strip_tags($tmp->display(null, $dfmt));
+        #TODO } elseif ($node->linkText === "DEAT:PLAC") {
+        #TODO     $html = $node->record()->fullName();
+        #TODO                 $tmp   = new Place($value, $this->tree);
+        #TODO                 $value = $tmp->shortName();
         } else {
             $html = $node->linkText();
         }
