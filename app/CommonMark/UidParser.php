@@ -81,10 +81,9 @@ class UidParser implements InlineParserInterface
         // )                  end 1st non-capturing group
         // ?                  2nd capturing group can be there or not
         // #                  literal # (end ancor)
-
     }
 
-    private function firstMatchingUidRecord(String $pUid, Collection $pCollection) : ?Object
+    private function firstMatchingUidRecord(String $pUid, Collection $pCollection): ?Object
     {
         foreach ($pCollection as $recTmp) {
             $regexTmp = '/\n1 _?UID ' . $pUid . '(:?\n|$)/';
@@ -112,7 +111,7 @@ class UidParser implements InlineParserInterface
             #Unescape character's #
 
             #NOTE: It should use only one \\, but it's using two because it get's escaped again in the regex processing.
-            $linkText = preg_replace("/\\\\#/","#", $subm[1]);
+            $linkText = preg_replace("/\\\\#/", "#", $subm[1]);
         } else {
             $linkText = '';
         }
@@ -166,17 +165,16 @@ class UidParser implements InlineParserInterface
         if ($firstFoundRecord === null) {
             return false;
         } else {
-
             $record = $firstFoundRecord;
-    
+
             if ($record instanceof GedcomRecord) {
                 $cursor->advanceBy($inlineContext->getFullMatchLength());
 
                 $inlineContext->getContainer()->appendChild(new UidNode($record, $linkText));
-    
+
                 return true;
             }
-    
+
             return false;
         }
     }
