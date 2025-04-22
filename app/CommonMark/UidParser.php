@@ -58,7 +58,7 @@ class UidParser implements InlineParserInterface
     {
         #This one permits escaping a # sign inside the text to be shown in the link and is ungreedy
         # so there can be more than one reference in one line
-        return InlineParserMatch::regex('#(' . Gedcom::REGEX_UID . ')(?::(.*(?:(?!\\#).)*?))?#');
+        return InlineParserMatch::regex('#(' . Gedcom::REGEX_UID . ')(?::(.+?[^\\\]))?#');
 
         // TESTED IN PHP 7.4
         //
@@ -69,17 +69,11 @@ class UidParser implements InlineParserInterface
         // (?:                begin 1st non-capturing group
         //   :                a literal :
         //   (                start 2nd capturing group (without first :)
-        //     .*             any character zero or more times
-        //     (?:            begin 2nd non-capturing group
-        //       (?!          begin negative lookahead
-        //         \\#        literal text sequence \#
-        //       )            end negative lookahead
-        //       .            any single character   <- consumes one character if not followed by \#
-        //     )              end 2nd non-capturing group
-        //     *?             repeat 0 or more times 2nd non-capturing group NON GREEDY <- all characters before last # permiting \#
+        //     .+?            any character one or more times NON GREEDY
+        //     [^\\\]         any character that is not a \
         //   )                end 2nd capturing group
         // )                  end 1st non-capturing group
-        // ?                  2nd capturing group can be there or not
+        // ?                  1st non-capturing group can be there or not
         // #                  literal # (end ancor)
     }
 
