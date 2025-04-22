@@ -138,6 +138,7 @@ class BadBotBlocker implements MiddlewareInterface
         'phxbot', // Badly written crawler
         'proximic',
         'python-requests', // Crawler library used by many bots
+        'Scrapy', // Crawler library used by many bots
         'SeekportBot', // Pretends to be a search engine - but isn't
         'SemrushBot',
         'serpstatbot',
