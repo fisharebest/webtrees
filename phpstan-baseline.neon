@@ -1519,6 +1519,30 @@ parameters:
 			path: app/Http/Middleware/HandleExceptions.php
 
 		-
+			message: '#^Offset ''file'' might not exist on array\{type\: int, message\: string, file\: string, line\: int\}\|null\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: app/Http/Middleware/HandleExceptions.php
+
+		-
+			message: '#^Offset ''line'' might not exist on array\{type\: int, message\: string, file\: string, line\: int\}\|null\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: app/Http/Middleware/HandleExceptions.php
+
+		-
+			message: '#^Offset ''message'' might not exist on array\{type\: int, message\: string, file\: string, line\: int\}\|null\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: app/Http/Middleware/HandleExceptions.php
+
+		-
+			message: '#^Offset ''type'' might not exist on array\{type\: int, message\: string, file\: string, line\: int\}\|null\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: app/Http/Middleware/HandleExceptions.php
+
+		-
 			message: '#^Parameter \#1 \$message of static method Fisharebest\\Webtrees\\Log\:\:addErrorLog\(\) expects string, string\|null given\.$#'
 			identifier: argument.type
 			count: 1
@@ -3053,12 +3077,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/PendingChangesRejectChange.php
-
-		-
-			message: '#^Offset 1 might not exist on array\{0\?\: string, 1\?\: string\}\.$#'
-			identifier: offsetAccess.notFound
-			count: 1
-			path: app/Http/RequestHandlers/PhpInformation.php
 
 		-
 			message: '#^Parameter \#2 \$subject of function preg_match expects string, string\|false given\.$#'
@@ -8205,12 +8223,6 @@ parameters:
 		-
 			message: '#^Method Fisharebest\\Webtrees\\Services\\PendingChangesService\:\:pendingChanges\(\) should return array\<array\<object\{xref\: string, change_id\: string, old_gedcom\: string\|null, new_gedcom\: string\|null, change_time\: Fisharebest\\Webtrees\\Contracts\\TimestampInterface, record\: Fisharebest\\Webtrees\\GedcomRecord, user_name\: string, real_name\: string\}\>\> but returns array\<list\<mixed\>\>\.$#'
 			identifier: return.type
-			count: 1
-			path: app/Services/PendingChangesService.php
-
-		-
-			message: '#^Offset 1 might not exist on array\{0\?\: string, 1\?\: non\-falsy\-string\}\.$#'
-			identifier: offsetAccess.notFound
 			count: 1
 			path: app/Services/PendingChangesService.php
 
