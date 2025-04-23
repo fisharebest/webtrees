@@ -63,6 +63,11 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Extend screen width limitation of bootstrap for 4k/5k devices */
+@media (min-width: 1700px) { .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {max-width: 1600px} }
+@media (min-width: 2100px) { .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {max-width: 1980px} }
+@media (min-width: 2500px) { .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {max-width: 2360px} }
+
 /* Scrollbars */
 .wt-global {
     /* Prevent redraws when dynamic content requires a scrollbar. */
