@@ -136,8 +136,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         // Facts of relatives take the form 1 EVEN / 2 TYPE Event of Individual
         // Ensure custom tags from there are recognised
         Registry::elementFactory()->registerTags([
-            'INDI:EVEN:CEME'      => new CustomElement('Cemetery'),
-            'INDI:EVEN:_GODP'     => new CustomElement('Godparent'),
+            'INDI:EVEN:CEME'      => new CustomElement(I18N::translate('Cemetery')),
+            'INDI:EVEN:_GODP'     => new CustomElement(I18N::translate('Godparent')),
             'INDI:EVEN:FAMC'      => new XrefFamily(I18N::translate('Adoptive parents')),
             'INDI:EVEN:FAMC:ADOP' => new AdoptedByWhichParent(I18N::translate('Adoption')),
         ]);
