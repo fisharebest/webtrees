@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-01-17 11:44+0000\n"
+"PO-Revision-Date: 2025-04-26 11:39+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/nl/>\n"
@@ -746,7 +746,7 @@ msgstr "Een link naar het contactadres van de website beheerder."
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:47
 msgid "A link to the webtrees home page."
-msgstr "Een link naar de webtrees homepage."
+msgstr "Een link naar de webtrees-homepage."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:103
@@ -7679,7 +7679,9 @@ msgstr "Als u probeert deze waarden te overschrijden, kan dat leiden tot server 
 
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php:44
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
-msgstr "Als u een van de volgende tracking en analytics diensten gebruikt, kan webtrees de tracking code automatisch toevoegen."
+msgstr ""
+"Als u een van de volgende volg- en analysediensten gebruikt, kan webtrees de "
+"tracking code automatisch toevoegen."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:366 app/MediaFile.php:328
 msgid "Image dimensions"
@@ -11836,7 +11838,7 @@ msgstr "Records"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:105
 msgid "Redirect old URLs from webtrees version 1."
-msgstr "Oude URL's van webtrees versie 1 omleiden."
+msgstr "Oude URL's van webtrees-versie 1 omleiden."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:169
@@ -14707,7 +14709,9 @@ msgstr "De websitevoorkeuren zijn bijgewerkt."
 #: resources/views/errors/database-error.phtml:22
 #: resources/views/setup/step-6-failed.phtml:22
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr "De webtrees ontwikkelaars zijn zeer geinteresseerd om kennis van deze fout te nemen. Als u contact met ze opneemt, zullen ze u helpen de fout op te sporen."
+msgstr ""
+"De webtrees-ontwikkelaars zijn zeer geïnteresseerd in deze fout. Als u "
+"contact met ze opneemt, zullen ze u helpen de fout op te lossen."
 
 #: app/Module/ModuleThemeTrait.php:67 app/Module/ModuleThemeTrait.php:452
 #: resources/views/admin/modules.phtml:272
@@ -20826,7 +20830,7 @@ msgstr "webtrees herkent dit bestandsformaat niet."
 
 #: app/Services/MessageService.php:134
 msgid "webtrees message"
-msgstr "webtreesbericht"
+msgstr "webtrees-bericht"
 
 #: resources/views/setup/step-3-database-type.phtml:50
 msgid "webtrees needs a database to store your genealogy data."
