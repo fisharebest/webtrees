@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-01-17 12:23+0000\n"
+"PO-Revision-Date: 2025-04-26 11:39+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
@@ -7460,7 +7460,9 @@ msgstr "Als u probeert deze waarden te overschrijden, kan dat leiden tot server 
 
 #: admin_site_config.php:519
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
-msgstr "Als u een van de volgende tracking en analytics diensten gebruikt, kan webtrees de tracking code automatisch toevoegen."
+msgstr ""
+"Als u een van de volgende volg- en analysediensten gebruikt, kan webtrees de "
+"tracking code automatisch toevoegen."
 
 #: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
@@ -14116,7 +14118,9 @@ msgstr "De website www.geonames.org bevat een uitgebreide database met plaatsnam
 
 #: setup.php:509
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr "De webtrees ontwikkelaars zijn zeer geinteresseerd om kennis van deze fout te nemen. Als u contact met ze opneemt, zullen ze u helpen de fout op te sporen."
+msgstr ""
+"De webtrees-ontwikkelaars zijn zeer geïnteresseerd in deze fout. Als u "
+"contact met ze opneemt, zullen ze u helpen de fout op te lossen."
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
@@ -20241,7 +20245,7 @@ msgstr "webtrees kan geen verbinding maken met de database van PhpGedView: %s."
 
 #: message.php:40 message.php:260 message.php:320
 msgid "webtrees message"
-msgstr "webtreesbericht"
+msgstr "webtrees-bericht"
 
 #: setup.php:276
 #, php-format
