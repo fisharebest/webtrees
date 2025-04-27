@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-04-17 13:59+0000\n"
+"PO-Revision-Date: 2025-04-28 01:39+0000\n"
 "Last-Translator: Doctor2424 <doctor24@hotmail.de>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/tr/>\n"
@@ -1082,19 +1082,19 @@ msgstr "Aban"
 #: app/Date/JalaliDate.php:229
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr "Aban"
+msgstr "Ağustos"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:184
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr "Aban"
+msgstr "Ağustos"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:94
 msgctxt "NOMINATIVE"
 msgid "Aban"
-msgstr "Aban"
+msgstr "Ağustos"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:585
@@ -2408,31 +2408,31 @@ msgstr "Boşluklardan ve noktalama işaretlerinden kaçının. Bir aile adı iyi
 #: app/Date/JalaliDate.php:267
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
-msgstr "Azar"
+msgstr "Eylül"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:141
 msgctxt "GENITIVE"
 msgid "Azar"
-msgstr "Azar"
+msgstr "Eylül"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:231
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr "Azar"
+msgstr "Eylül"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:186
 msgctxt "LOCATIVE"
 msgid "Azar"
-msgstr "Azar"
+msgstr "Eylül"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:96
 msgctxt "NOMINATIVE"
 msgid "Azar"
-msgstr "Azar"
+msgstr "Eylül"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:72
@@ -2458,25 +2458,25 @@ msgstr "Bahamalar"
 #: app/Date/JalaliDate.php:145
 msgctxt "GENITIVE"
 msgid "Bahman"
-msgstr "Bahman"
+msgstr "Kasım"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:235
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
-msgstr "Bahman"
+msgstr "Kasım"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:190
 msgctxt "LOCATIVE"
 msgid "Bahman"
-msgstr "Bahman"
+msgstr "Kasım"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:100
 msgctxt "NOMINATIVE"
 msgid "Bahman"
-msgstr "Bahman"
+msgstr "Kasım"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:89
@@ -5878,31 +5878,31 @@ msgstr "Hata: GEDCOM dosyalarını %s kodlamasından UTF-8 kodlamasına dönüş
 #: app/Date/JalaliDate.php:270
 msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
-msgstr "Esf"
+msgstr "Aralık"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:147
 msgctxt "GENITIVE"
 msgid "Esfand"
-msgstr "Esfand"
+msgstr "Aralık"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:237
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
-msgstr "Esfand"
+msgstr "Aralık"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:192
 msgctxt "LOCATIVE"
 msgid "Esfand"
-msgstr "Esfand"
+msgstr "Aralık"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:102
 msgctxt "NOMINATIVE"
 msgid "Esfand"
-msgstr "Esfand"
+msgstr "Aralık"
 
 #: app/Factories/ElementFactory.php:281
 msgid "Estate name"
@@ -6397,25 +6397,25 @@ msgstr "Faroe Adaları"
 #: app/Date/JalaliDate.php:125
 msgctxt "GENITIVE"
 msgid "Farvardin"
-msgstr "Farvardin"
+msgstr "Ocak"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:215
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
-msgstr "Farvardin"
+msgstr "Ocak"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:170
 msgctxt "LOCATIVE"
 msgid "Farvardin"
-msgstr "Farvardin"
+msgstr "Ocak"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:80
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
-msgstr "Farvardin"
+msgstr "Ocak"
 
 #: resources/views/search-advanced-page.phtml:62
 #: resources/xml/reports/bdm_report.xml:118
@@ -6638,7 +6638,7 @@ msgstr "Bayrak"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:189
 msgid "Flanders"
-msgstr "Flanders"
+msgstr "Flandra"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:149
@@ -8121,7 +8121,7 @@ msgstr "Iyar"
 #. I18N: The Persian/Jalali calendar
 #: app/Date.php:242
 msgid "Jalali"
-msgstr "Jalali"
+msgstr "Celâlî Takvimi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:267
@@ -9501,7 +9501,7 @@ msgstr "Orta sistemler (5.000 kişi): 32-64MB, 20-40 saniye"
 #: app/Date/JalaliDate.php:265
 msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
-msgstr "Mehr"
+msgstr "Temmuz"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:137
@@ -16671,7 +16671,7 @@ msgstr "Dünya"
 #: app/Factories/ElementFactory.php:314 app/GedcomTag.php:1247
 #: resources/views/modules/yahrzeit/table.phtml:34
 msgid "Yahrzeit"
-msgstr "Yahrzeit"
+msgstr "Ölüm Yıldönümü"
 
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:66
@@ -18944,11 +18944,11 @@ msgstr "büyük büyük torunu"
 
 #: app/Functions/Functions.php:2038
 msgid "great-great-grandfather"
-msgstr "büyük büyük büyükbabası"
+msgstr "büyük-büyük-büyükbabası"
 
 #: app/Functions/Functions.php:2042
 msgid "great-great-grandmother"
-msgstr "büyük büyük büyükannesi"
+msgstr "büyük-büyük-büyükannesi"
 
 #: app/Functions/Functions.php:2045
 msgid "great-great-grandparent"
