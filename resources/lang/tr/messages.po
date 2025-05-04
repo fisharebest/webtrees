@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-04-28 01:39+0000\n"
+"PO-Revision-Date: 2025-05-06 09:59+0000\n"
 "Last-Translator: Doctor2424 <doctor24@hotmail.de>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/tr/>\n"
@@ -402,14 +402,14 @@ msgstr "%s × kuzeni"
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr "%s × kuzeni"
+msgstr "%s × kız kuzeni"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:424
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr "%s × kuzeni"
+msgstr "%s × erkek kuzeni"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:98
@@ -492,7 +492,7 @@ msgstr "(%s yaş)"
 #: app/Http/RequestHandlers/IndividualPage.php:179
 #, php-format
 msgid "(aged %s)"
-msgstr "(%s yaşadı)"
+msgstr "(yaşı %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:359
@@ -501,7 +501,7 @@ msgstr "(%s yaşadı)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "(yaş %s)"
+msgstr "(yaşı %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:355
@@ -510,7 +510,7 @@ msgstr "(yaş %s)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "(yaş %s)"
+msgstr "(yaşı %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -731,7 +731,7 @@ msgstr "Site ziyaretçileri için bir karşılama mesajı."
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:68
 msgid "A link to the site contacts."
-msgstr "Site ilgili kişilere bir bağlantı."
+msgstr "Site iletişim bilgilerine bir bağlantı."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
@@ -741,7 +741,7 @@ msgstr "Webtrees ana sayfasına bir bağlantı."
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:115
 msgid "A list of branches of a family."
-msgstr "Bir ailenin şubelerinin listesi."
+msgstr "Bir ailenin dallarının listesi."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:91
@@ -806,22 +806,24 @@ msgstr "Aile ağacına bağlı görevlerin ve etkinliklerin bir listesi."
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:77
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "Yakın gelecekte gerçekleşecek olan İbranice ölüm yıldönümlerinin bir listesi."
+msgstr ""
+"Yakın gelecekte gerçekleşecek olan İbranice ölüm yıl dönümlerinin bir "
+"listesi."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:112
 msgid "A list of the anniversaries that occur today."
-msgstr "Bugün gerçekleşen yıldönümlerinin bir listesi."
+msgstr "Bugün gerçekleşen yıl dönümlerinin bir listesi."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:116
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr "Yakın gelecekte gerçekleşecek yıldönümlerinin bir listesi."
+msgstr "Yakın gelecekte gerçekleşecek yıl dönümlerinin bir listesi."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:58
 msgid "A list of the most popular given names."
-msgstr "En popüler verilen adların bir listesi."
+msgstr "En popüler isimlerin bir listesi."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:76
@@ -847,18 +849,20 @@ msgstr "Bir medya nesnesi, bir medya dosyası hakkında bilgi içeren aile ağac
 #: resources/views/emails/verify-notify-text.phtml:15
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "Yeni bir kullanıcı (%1$s) bir hesap (%2$s) istedi ve bir e-posta adresini (%3$s) doğruladı."
+msgstr ""
+"Yeni bir kullanıcı (%1$s) bir hesap (%2$s) istedi ve e-posta adresini (%3$s) "
+"doğruladı."
 
 #: app/Http/RequestHandlers/LoginAction.php:82
 #: resources/views/admin/control-panel.phtml:163
 #: resources/views/admin/upgrade/wizard.phtml:29
 msgid "A new version of webtrees is available."
-msgstr "Webtrees'in yeni bir sürümü mevcuttur."
+msgstr "Webtrees' in yeni bir sürümü mevcuttur."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:121
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr "“%s” adresine bir şifre sıfırlama bağlantısı gönderildi."
+msgstr "“%s” adresine şifre sıfırlama bağlantısı gönderildi."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:66
@@ -870,7 +874,7 @@ msgstr "Notları kaydetmek veya bir günlük tutmak için özel bir alan."
 #: resources/views/emails/register-notify-text.phtml:18
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr "Potansiyel bir kullanıcı %s adresindeki webtrees'e kaydoldu."
+msgstr "Potansiyel bir kullanıcı %s adresinde webtrees'e kaydoldu."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:52
@@ -926,7 +930,7 @@ msgstr "Belirli bir zamanda veya yerde doğan bireylerin bir raporu."
 #: app/Module/CemeteryReportModule.php:52
 #: resources/xml/reports/cemetery_report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr "Belirli bir yere gömülen kişilerin bir raporu."
+msgstr "Belirli bir yerde defn edilen kişilerin bir raporu."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:52
@@ -1124,7 +1128,7 @@ msgstr "Tüm değişiklikleri kabul et"
 #: resources/views/admin/components.phtml:99
 #: resources/views/admin/trees-privacy.phtml:243
 msgid "Access level"
-msgstr "Erişim seviyesi"
+msgstr "Erişim düzeyi"
 
 #: resources/views/admin/users-edit.phtml:230
 msgid "Access to family trees"
@@ -1251,11 +1255,11 @@ msgstr "Tek ebeveynli bir aile oluşturmak için bir çocuk ekle"
 #: resources/views/family-page-children.phtml:45
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a daughter"
-msgstr "Bir kız kardeş ekle"
+msgstr "Bir kız çocuğu ekle"
 
 #: resources/views/edit/raw-gedcom-record.phtml:53
 msgid "Add a fact"
-msgstr "Bir gerçek ekle"
+msgstr "Bir bilgi/olay ekle"
 
 #: app/Http/RequestHandlers/AddParentToIndividualPage.php:61
 #: resources/views/family-page-grandparents.phtml:33
@@ -1348,7 +1352,7 @@ msgstr "Bir oğul ekle"
 #: resources/views/family-page.phtml:110 resources/views/media-page.phtml:180
 #: resources/views/modules/sources_tab/tab.phtml:53
 msgid "Add a source citation"
-msgstr "Bir kaynak alıntı ekle"
+msgstr "Bir kaynak atıfı ekle"
 
 #: app/Module/StoriesModule.php:299
 #: resources/views/modules/stories/config.phtml:38
@@ -1399,7 +1403,7 @@ msgstr "Panodan ekle"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
-msgstr "Bir kişinin sayfasına tarihi olaylar ekle."
+msgstr "Kişisel sayfanıza tarihi olaylar ekleyin."
 
 #: resources/views/modules/lifespans-chart/page.phtml:29
 msgid "Add individuals"
@@ -1453,12 +1457,12 @@ msgstr "GEDCOM medya yolunu dosya adlarına ekle"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:203
 msgid "Add to TITLE header tag"
-msgstr "Üstbilgi BAŞLIK etiketine ekle"
+msgstr "Üst bilgi BAŞLIK etiketine ekle"
 
 #: app/Module/ClippingsCartModule.php:189
 #: resources/views/modules/clippings/add-options.phtml:22
 msgid "Add to the clippings cart"
-msgstr "Kupür sepetine ekle"
+msgstr "Küpür sepetine ekle"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:145
@@ -1533,36 +1537,36 @@ msgstr "Yöneticiler"
 #: app/Elements/PedigreeLinkageType.php:61 app/GedcomCode/GedcomCodePedi.php:74
 msgctxt "Female pedigree"
 msgid "Adopted"
-msgstr "Evlâtlık"
+msgstr "Kız Evlatlık"
 
 #: app/Elements/PedigreeLinkageType.php:51 app/GedcomCode/GedcomCodePedi.php:70
 msgctxt "Male pedigree"
 msgid "Adopted"
-msgstr "Evlâtlık"
+msgstr "Erkek Evlatlık"
 
 #: app/Elements/PedigreeLinkageType.php:71 app/GedcomCode/GedcomCodePedi.php:77
 msgctxt "Pedigree"
 msgid "Adopted"
-msgstr "Evlâtlık"
+msgstr "Evlatlık"
 
 #: app/Elements/AdoptedByWhichParent.php:57
 #: app/GedcomCode/GedcomCodeAdop.php:49
 msgid "Adopted by both parents"
-msgstr "Her iki ebeveyn tarafından evlât edinildi"
+msgstr "Her iki ebeveyn tarafından evlat edinildi"
 
 #. I18N: gedcom tag _ADPF
 #: app/Elements/AdoptedByWhichParent.php:58
 #: app/Factories/ElementFactory.php:296 app/GedcomCode/GedcomCodeAdop.php:50
 #: app/GedcomTag.php:1027
 msgid "Adopted by father"
-msgstr "Baba tarafından evlât edinildi"
+msgstr "Baba tarafından evlat edinildi"
 
 #. I18N: gedcom tag _ADPM
 #: app/Elements/AdoptedByWhichParent.php:59
 #: app/Factories/ElementFactory.php:297 app/GedcomCode/GedcomCodeAdop.php:51
 #: app/GedcomTag.php:1031
 msgid "Adopted by mother"
-msgstr "Anne tarafından evlât edinildi"
+msgstr "Anne tarafından evlat edinildi"
 
 #: app/Factories/ElementFactory.php:275 app/Factories/ElementFactory.php:810
 msgid "Adopted name"
@@ -1572,77 +1576,77 @@ msgstr "Evlatlık adı"
 #: app/Factories/ElementFactory.php:1118 app/Factories/ElementFactory.php:1121
 #: app/GedcomTag.php:439
 msgid "Adoption"
-msgstr "Evlât edinme"
+msgstr "Evlat edinme"
 
 #: app/Module/IndividualFactsTabModule.php:343
 msgid "Adoption of a brother"
-msgstr "Bir erkek kardeşin evlât edinilmesi"
+msgstr "Bir erkek kardeşin evlat edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:322
 msgid "Adoption of a child"
-msgstr "Bir çocuğun evlât edinilmesi"
+msgstr "Bir çocuğun evlat edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:321
 msgid "Adoption of a daughter"
-msgstr "Bir kızın evlât edinilmesi"
+msgstr "Bir kızın evlat edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:391
 #: app/Module/IndividualFactsTabModule.php:414
 #: app/Module/IndividualFactsTabModule.php:437
 msgid "Adoption of a grandchild"
-msgstr "Bir torunun evlât edinilmesi"
+msgstr "Bir torunun evlat edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:390
 msgid "Adoption of a granddaughter"
-msgstr "Bir kız torunun evlât edinilmesi"
+msgstr "Bir kız torunun evlat edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:413
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr "Bir kız torunun evlât edinilmesi"
+msgstr "Bir kızın kızının evlat edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:436
 msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr "Bir kız torunun evlât edinilmesi"
+msgstr "Bir oğlun kızının evlat edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:389
 msgid "Adoption of a grandson"
-msgstr "Bir erkek torunun evlât edinilmesi"
+msgstr "Bir erkek torunun evlat edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:412
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr "Bir erkek torunun evlât edinilmesi"
+msgstr "Bir kızın, oğlunun evlat edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:435
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr "Bir erkek torunun evlât edinilmesi"
+msgstr "Bir oğulun, erkek çocuğunun evlat edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:366
 msgid "Adoption of a half-brother"
-msgstr "Bir üvey erkek kardeşin evlât edinilmesi"
+msgstr "Bir üvey erkek kardeşin evlat edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:368
 msgid "Adoption of a half-sibling"
-msgstr "Bir üvey kardeşin evlât edinilmesi"
+msgstr "Üvey kız kardeşin evlat edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:367
 msgid "Adoption of a half-sister"
-msgstr "Bir üvey kız kardeşin evlât edinilmesi"
+msgstr "Bir üvey kız kardeşin evlat edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:345
 msgid "Adoption of a sibling"
-msgstr "Bir kardeşin evlât edinilmesi"
+msgstr "Bir kardeş çocuğunun evlat edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:344
 msgid "Adoption of a sister"
-msgstr "Bir kız kardeşin evlât edinilmesi"
+msgstr "Bir kız kardeşin evlat edinilmesi"
 
 #: app/Module/IndividualFactsTabModule.php:320
 msgid "Adoption of a son"
-msgstr "Bir oğlun evlât edinilmesi"
+msgstr "Bir oğlun evlat edinilmesi"
 
 #: app/Factories/ElementFactory.php:1120
 msgid "Adoptive parents"
@@ -1699,7 +1703,7 @@ msgstr "Yaş"
 
 #: resources/views/statistics/families/birth-age.phtml:12
 msgid "Age at birth of child"
-msgstr "Çocuğun doğum yaşı"
+msgstr "Çocuğun doğumundaki yaşı"
 
 #: resources/views/admin/trees-privacy.phtml:71
 msgid "Age at which to assume an individual is dead"
@@ -1707,7 +1711,7 @@ msgstr "Bir bireyin öldüğünü varsayma yaşı"
 
 #: resources/views/statistics/families/age-difference.phtml:42
 msgid "Age between husband and wife"
-msgstr "Koca ve karı arasındaki yaş"
+msgstr "Koca ve karı arasındaki yaş farkı"
 
 #: resources/views/statistics/families/age-difference.phtml:20
 msgid "Age between siblings"
@@ -1715,7 +1719,7 @@ msgstr "Kardeşler arasındaki yaş"
 
 #: resources/views/statistics/families/age-difference.phtml:51
 msgid "Age between wife and husband"
-msgstr "Karı ve koca arasındaki yaş"
+msgstr "Karı ve koca arasındaki yaş farkı"
 
 #: resources/views/statistics/families/age-difference.phtml:12
 msgid "Age difference"
@@ -1724,7 +1728,7 @@ msgstr "Yaş farkı"
 #: app/Module/StatisticsChartModule.php:645
 #: resources/views/modules/statistics-chart/custom.phtml:40
 msgid "Age in year of first marriage"
-msgstr "İlk evlilik yılında yaş"
+msgstr "İlk evlilik yılında ki yaş"
 
 #: app/Module/StatisticsChartModule.php:584
 #: resources/views/lists/families-table.phtml:482
@@ -1732,7 +1736,7 @@ msgstr "İlk evlilik yılında yaş"
 #: resources/views/modules/statistics-chart/custom.phtml:39
 #: resources/views/statistics/families/marriage-age.phtml:12
 msgid "Age in year of marriage"
-msgstr "Evlilik yılında yaş"
+msgstr "Evlilik yılında ki yaş"
 
 #: resources/views/modules/statistics-chart/custom.phtml:136
 #: resources/views/modules/statistics-chart/custom.phtml:139
@@ -1743,7 +1747,7 @@ msgstr "Yaş aralığı"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:411
 msgid "Age of parents next to child’s birthdate"
-msgstr "Çocuğun doğum tarihine yakın ebeveynlerin yaşı"
+msgstr "Çocuğun doğum tarihinde, ebeveynlerin yaşı"
 
 #: resources/views/lists/individuals-table.phtml:490
 #: resources/views/lists/individuals-table.phtml:532
@@ -1817,7 +1821,7 @@ msgstr "Yaşayan"
 #: resources/xml/reports/relative_ext_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:46
 msgid "All"
-msgstr "Tüm"
+msgstr "Tümü"
 
 #: app/Http/RequestHandlers/TreePrivacyPage.php:176
 #: resources/views/admin/trees-privacy.phtml:272
@@ -2010,11 +2014,11 @@ msgstr "Anguilla"
 #: resources/views/lists/individuals-table.phtml:248
 #: resources/views/modules/yahrzeit/table.phtml:29
 msgid "Anniversary"
-msgstr "Yıldönümü"
+msgstr "Yıl dönümü"
 
 #: app/Http/RequestHandlers/CalendarPage.php:122
 msgid "Anniversary calendar"
-msgstr "Yıldönümü takvimi"
+msgstr "Yıl dönümü takvimi"
 
 #. I18N: gedcom tag ANUL
 #: app/Factories/ElementFactory.php:989 app/GedcomTag.php:464
@@ -2073,7 +2077,7 @@ msgstr "Yönetici tarafından onaylandı"
 #: app/Date/AbstractGregorianJulianDate.php:204
 msgctxt "Abbreviation for April"
 msgid "Apr"
-msgstr "Nis"
+msgstr "Nisan"
 
 #: app/Date/AbstractGregorianJulianDate.php:101
 msgctxt "GENITIVE"
@@ -2100,7 +2104,7 @@ msgstr "Nisan"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:153
 msgid "Aqua Marine"
-msgstr "Aquamarin"
+msgstr "Akuamarin"
 
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
@@ -2144,7 +2148,7 @@ msgstr "Bu aile ağacındaki tüm değişiklikleri reddetmek istediğinizden emi
 
 #: resources/views/modules/favorites/favorites.phtml:35
 msgid "Are you sure you want to remove this item from your list of favorites?"
-msgstr "Bu öğeyi Favoriler listenizden kaldırmak istediğinizden emin misiniz?"
+msgstr "Bu ögeyi Favoriler listenizden kaldırmak istediğinizden emin misiniz?"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:56
@@ -2381,11 +2385,11 @@ msgstr "Ortalama evlilik yaşı"
 
 #: app/Statistics/Google/ChartMarriageAge.php:159
 msgid "Average age in century of marriage"
-msgstr "Evlilik yüzyılındaki ortalama yaş"
+msgstr "Yüzyıldaki ortalama evlilik yaşı"
 
 #: app/Statistics/Google/ChartAge.php:136
 msgid "Average age related to death century"
-msgstr "Vefat yüzyılındaki ortalama yaş"
+msgstr "Yüzyıldaki ortalama vefat yaşı"
 
 #: app/Statistics/Google/ChartChildren.php:95
 msgid "Average number"
@@ -2408,31 +2412,31 @@ msgstr "Boşluklardan ve noktalama işaretlerinden kaçının. Bir aile adı iyi
 #: app/Date/JalaliDate.php:267
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
-msgstr "Eylül"
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:141
 msgctxt "GENITIVE"
 msgid "Azar"
-msgstr "Eylül"
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:231
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr "Eylül"
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:186
 msgctxt "LOCATIVE"
 msgid "Azar"
-msgstr "Eylül"
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:96
 msgctxt "NOMINATIVE"
 msgid "Azar"
-msgstr "Eylül"
+msgstr "Azar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:72
@@ -2456,27 +2460,28 @@ msgstr "Bahamalar"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:145
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Bahman"
-msgstr "Kasım"
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:235
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
-msgstr "Kasım"
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:190
 msgctxt "LOCATIVE"
 msgid "Bahman"
-msgstr "Kasım"
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:100
 msgctxt "NOMINATIVE"
 msgid "Bahman"
-msgstr "Kasım"
+msgstr "Bahman"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:89
@@ -2517,12 +2522,12 @@ msgstr "Bir torunun vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:385
 msgid "Baptism of a granddaughter"
-msgstr "Bir torunun vaftizi"
+msgstr "Bir kız torunun vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:408
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "Bir torunun vaftizi"
+msgstr "Bir kız torunun vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:431
 msgctxt "son’s daughter"
@@ -2545,11 +2550,11 @@ msgstr "Bir torunun vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:361
 msgid "Baptism of a half-brother"
-msgstr "Bir üvey kardeşin vaftizi"
+msgstr "Üvey kardeşin vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:363
 msgid "Baptism of a half-sibling"
-msgstr "Bir üvey kardeşin vaftizi"
+msgstr "Üvey kardeşin vaftizi"
 
 #: app/Module/IndividualFactsTabModule.php:362
 msgid "Baptism of a half-sister"
@@ -2807,12 +2812,12 @@ msgstr "Doğum"
 #: app/Elements/PedigreeLinkageType.php:60 app/GedcomCode/GedcomCodePedi.php:63
 msgctxt "Female pedigree"
 msgid "Birth"
-msgstr "Doğum"
+msgstr "Kız doğumu"
 
 #: app/Elements/PedigreeLinkageType.php:50 app/GedcomCode/GedcomCodePedi.php:59
 msgctxt "Male pedigree"
 msgid "Birth"
-msgstr "Doğum"
+msgstr "Erkek doğumu"
 
 #: app/Elements/PedigreeLinkageType.php:70 app/GedcomCode/GedcomCodePedi.php:66
 msgctxt "Pedigree"
@@ -2864,12 +2869,12 @@ msgstr "Bir kız torunun doğumu"
 #: app/Module/IndividualFactsTabModule.php:398
 msgctxt "daughter’s daughter"
 msgid "Birth of a granddaughter"
-msgstr "Bir kız torunun doğumu"
+msgstr "Bir kızın, kız torununun doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:421
 msgctxt "son’s daughter"
 msgid "Birth of a granddaughter"
-msgstr "Bir kız torunun doğumu"
+msgstr "Bir oğulun, kız torununun doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:374
 msgid "Birth of a grandson"
@@ -2878,12 +2883,12 @@ msgstr "Bir erkek torunun doğumu"
 #: app/Module/IndividualFactsTabModule.php:397
 msgctxt "daughter’s son"
 msgid "Birth of a grandson"
-msgstr "Bir erkek torunun doğumu"
+msgstr "Bir kızın, erkek torununun doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:420
 msgctxt "son’s son"
 msgid "Birth of a grandson"
-msgstr "Bir erkek torunun doğumu"
+msgstr "Bir oğulun, erkek torununun doğumu"
 
 #: app/Module/IndividualFactsTabModule.php:351
 msgid "Birth of a half-brother"
@@ -2912,7 +2917,7 @@ msgstr "Bir oğlun doğumu"
 
 #: app/Factories/ElementFactory.php:1145
 msgid "Birth parents"
-msgstr "Doğum ebeveynleri"
+msgstr "Öz ebeveynleri"
 
 #: resources/views/statistics/other/places.phtml:21
 msgid "Birth places"
@@ -3031,13 +3036,13 @@ msgstr "Bouvet Adası"
 #. I18N: Branches of a family tree
 #: app/Module/BranchesListModule.php:104 app/Module/BranchesListModule.php:229
 msgid "Branches"
-msgstr "Şubeler"
+msgstr "Dallar"
 
 #. I18N: %s is a surname
 #: app/Module/BranchesListModule.php:224
 #, php-format
 msgid "Branches of the %s family"
-msgstr "%s ailesinin şubeleri"
+msgstr "%s ailesinin dalları"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:104
