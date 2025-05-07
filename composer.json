@@ -45,7 +45,7 @@
         "ext-pdo": "*",
         "ext-session": "*",
         "ext-xml": "*",
-        "aura/router": "3.4.1",
+        "aura/router": "3.4.2",
         "doctrine/dbal": "3.9.4",
         "ezyang/htmlpurifier": "4.18.0",
         "fig/http-message-util": "1.1.5",
@@ -59,7 +59,7 @@
         "illuminate/support": "8.83.27",
         "intervention/image": "2.7.2",
         "io-developer/php-whois": "4.1.10",
-        "league/commonmark": "2.6.2",
+        "league/commonmark": "2.7.0",
         "league/flysystem": "2.5.0",
         "league/flysystem-ziparchive": "2.3.1",
         "middlewares/client-ip": "2.1.0",
@@ -77,8 +77,8 @@
         "symfony/cache": "5.4.46",
         "symfony/expression-language": "5.4.45",
         "symfony/mailer": "5.4.45",
-        "symfony/polyfill-mbstring": "1.31.0",
-        "symfony/polyfill-php80": "1.31.0",
+        "symfony/polyfill-mbstring": "1.32.0",
+        "symfony/polyfill-php80": "1.32.0",
         "tecnickcom/tcpdf": "6.9.3"
     },
     "require-dev": {
@@ -90,11 +90,11 @@
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.7.0",
         "phpstan/extension-installer": "1.4.3",
-        "phpstan/phpstan": "2.1.12",
-        "phpstan/phpstan-deprecation-rules": "2.0.1",
+        "phpstan/phpstan": "2.1.14",
+        "phpstan/phpstan-deprecation-rules": "2.0.2",
         "phpstan/phpstan-phpunit": "2.0.6",
         "phpstan/phpstan-strict-rules": "2.0.4",
-        "phpunit/phpunit": "9.6.22",
+        "phpunit/phpunit": "9.6.23",
         "squizlabs/php_codesniffer": "3.12.2"
     },
     "suggest": {

@@ -1519,30 +1519,6 @@ parameters:
 			path: app/Http/Middleware/HandleExceptions.php
 
 		-
-			message: '#^Offset ''file'' might not exist on array\{type\: int, message\: string, file\: string, line\: int\}\|null\.$#'
-			identifier: offsetAccess.notFound
-			count: 1
-			path: app/Http/Middleware/HandleExceptions.php
-
-		-
-			message: '#^Offset ''line'' might not exist on array\{type\: int, message\: string, file\: string, line\: int\}\|null\.$#'
-			identifier: offsetAccess.notFound
-			count: 1
-			path: app/Http/Middleware/HandleExceptions.php
-
-		-
-			message: '#^Offset ''message'' might not exist on array\{type\: int, message\: string, file\: string, line\: int\}\|null\.$#'
-			identifier: offsetAccess.notFound
-			count: 1
-			path: app/Http/Middleware/HandleExceptions.php
-
-		-
-			message: '#^Offset ''type'' might not exist on array\{type\: int, message\: string, file\: string, line\: int\}\|null\.$#'
-			identifier: offsetAccess.notFound
-			count: 1
-			path: app/Http/Middleware/HandleExceptions.php
-
-		-
 			message: '#^Parameter \#1 \$message of static method Fisharebest\\Webtrees\\Log\:\:addErrorLog\(\) expects string, string\|null given\.$#'
 			identifier: argument.type
 			count: 1
@@ -10466,6 +10442,12 @@ parameters:
 
 		-
 			message: '#^Cannot call method method\(\) on object\|null\.$#'
+			identifier: method.nonObject
+			count: 3
+			path: tests/app/Services/TimeoutServiceTest.php
+
+		-
+			message: '#^Cannot call method willReturn\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 3
 			path: tests/app/Services/TimeoutServiceTest.php

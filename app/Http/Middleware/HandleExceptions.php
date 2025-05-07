@@ -76,12 +76,13 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // Fatal errors.  We may be out of memory, so do not create any variables.
-        register_shutdown_function(static function (): void {
-            if (error_get_last() !== null && error_get_last()['type'] & E_ERROR) {
-                // If PHP does not display the error, then we must display it.
-                if (ini_get('display_errors') !== '1') {
-                    echo error_get_last()['message'], '<br><br>', error_get_last()['file'], ': ', error_get_last()['line'];
-                }
+        register_shutdown_function(function (): void {
+            // Show any error message, unless PHP already did this.
+            if ((error_get_last()['type'] ?? 0) & E_ERROR && ini_get('display_errors') !== '1') {
+                echo
+                    (error_get_last()['message'] ?? 'unknown'), '<br>',
+                    (error_get_last()['file'] ?? 'unknown'), ': ',
+                    (error_get_last()['line'] ?? 'unknown');
             }
         });
 

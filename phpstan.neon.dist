@@ -17,6 +17,3 @@ parameters:
 
     dynamicConstantNames:
         - Fisharebest\Webtrees\Webtrees::STABILITY
-
-    ignoreErrors:
-        - '#^Cannot call method willReturn\(\) on mixed\.$#'
