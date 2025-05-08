@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-05-06 09:59+0000\n"
+"PO-Revision-Date: 2025-05-09 10:48+0000\n"
 "Last-Translator: Doctor2424 <doctor24@hotmail.de>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/tr/>\n"
@@ -2992,12 +2992,12 @@ msgstr "Brit milah"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:255
 msgid "British Indian Ocean Territory"
-msgstr "İngiliz Hint Okyanusu Bölgesi"
+msgstr "Britanya Hint Okyanusu Bölgesi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:526
 msgid "British Virgin Islands"
-msgstr "İngiliz Virgin Adaları"
+msgstr "Britanya Virjin Adaları"
 
 #: resources/xml/reports/individual_ext_report.xml:327
 #: resources/xml/reports/individual_report.xml:316
@@ -3031,7 +3031,7 @@ msgstr "Brumaire"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:109
 msgid "Brunei Darussalam"
-msgstr "Brunei Sultanlığı"
+msgstr "Brunei Darüsselam"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:63
@@ -3080,20 +3080,20 @@ msgstr "Bir kız torunun defni"
 #: app/Services/IndividualFactsService.php:408
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Bir kız torunun defni"
+msgstr "Bir kız çocuğunun, kızının defni"
 
 #: app/Services/IndividualFactsService.php:426
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Bir kız torunun defni"
+msgstr "Bir erkek çocuğunun, kızının defni"
 
 #: app/Services/IndividualFactsService.php:647
 msgid "Burial of a grandfather"
-msgstr "Bir büyükbabanın defni"
+msgstr "Bir büyük babanın defni"
 
 #: app/Services/IndividualFactsService.php:648
 msgid "Burial of a grandmother"
-msgstr "Bir büyükannenin defni"
+msgstr "Bir büyük annenin defni"
 
 #: app/Services/IndividualFactsService.php:649
 #: app/Services/IndividualFactsService.php:667
@@ -3108,12 +3108,12 @@ msgstr "Bir erkek torunun defni"
 #: app/Services/IndividualFactsService.php:407
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr "Bir erkek torunun defni"
+msgstr "Bir kız çocuğunun, oğlunun defni"
 
 #: app/Services/IndividualFactsService.php:425
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr "Bir erkek torunun defni"
+msgstr "Bir erkek çocuğunun, oğlunun defni"
 
 #: app/Services/IndividualFactsService.php:371
 msgid "Burial of a half-brother"
@@ -3133,7 +3133,7 @@ msgstr "Bir kocanın defni"
 
 #: app/Services/IndividualFactsService.php:665
 msgid "Burial of a maternal grandfather"
-msgstr "Bir anne büyükbabasının defni"
+msgstr "Bir anne büyük babasının defni"
 
 #: app/Services/IndividualFactsService.php:666
 msgid "Burial of a maternal grandmother"
@@ -3149,11 +3149,11 @@ msgstr "Bir ebeveynin defni"
 
 #: app/Services/IndividualFactsService.php:683
 msgid "Burial of a paternal grandfather"
-msgstr "Bir baba tarafından büyükbabanın defni"
+msgstr "Bir baba tarafından büyük babanın defni"
 
 #: app/Services/IndividualFactsService.php:684
 msgid "Burial of a paternal grandmother"
-msgstr "Bir baba tarafından büyükannenin defni"
+msgstr "Bir baba tarafından büyük annenin defni"
 
 #: app/Services/IndividualFactsService.php:355
 msgid "Burial of a sibling"
@@ -3177,7 +3177,7 @@ msgstr "Bir eşin defni"
 
 #: resources/xml/reports/cemetery_report.xml:5
 msgid "Burial place contains"
-msgstr "Defin yeri şunları içerir"
+msgstr "Mezar yeri şunları içerir"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:40
@@ -3555,7 +3555,7 @@ msgstr "Çocukları "
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition/IcelandicSurnameTradition.php:52
 msgid "Children take a patronym instead of a surname."
-msgstr "Çocuklar soyadı yerine bir aile adı alırlar."
+msgstr "Çocuklar soyadı yerine baba adı alırlar."
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition/SpanishSurnameTradition.php:53
