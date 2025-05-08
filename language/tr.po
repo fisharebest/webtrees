@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-05-06 09:59+0000\n"
+"PO-Revision-Date: 2025-05-09 10:48+0000\n"
 "Last-Translator: Doctor2424 <doctor24@hotmail.de>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/tr/>\n"
@@ -3099,12 +3099,12 @@ msgstr "Bir oğlun Brit milah'ı"
 #. I18N: Name of a country or state
 #: app/Stats.php:6779
 msgid "British Indian Ocean Territory"
-msgstr "İngiliz Hint Okyanusu Bölgesi"
+msgstr "Britanya Hint Okyanusu Bölgesi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6916
 msgid "British Virgin Islands"
-msgstr "İngiliz Virgin Adaları"
+msgstr "Britanya Virjin Adaları"
 
 #: modules_v3/individual_ext_report/report.xml:319
 #: modules_v3/individual_report/report.xml:316
@@ -3138,7 +3138,7 @@ msgstr "Brumaire"
 #. I18N: Name of a country or state
 #: app/Stats.php:6706
 msgid "Brunei Darussalam"
-msgstr "Brunei Sultanlığı"
+msgstr "Brunei Darüsselam"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:101
@@ -3185,20 +3185,20 @@ msgstr "Bir kız torunun defni"
 #: app/GedcomTag.php:1116
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Bir kız torunun defni"
+msgstr "Bir kız çocuğunun, kızının defni"
 
 #: app/GedcomTag.php:1125
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Bir kız torunun defni"
+msgstr "Bir erkek çocuğunun, kızının defni"
 
 #: app/GedcomTag.php:1132
 msgid "Burial of a grandfather"
-msgstr "Bir büyükbabanın defni"
+msgstr "Bir büyük babanın defni"
 
 #: app/GedcomTag.php:1134
 msgid "Burial of a grandmother"
-msgstr "Bir büyükannenin defni"
+msgstr "Bir büyük annenin defni"
 
 #: app/GedcomTag.php:1136
 msgid "Burial of a grandparent"
@@ -3211,12 +3211,12 @@ msgstr "Bir erkek torunun defni"
 #: app/GedcomTag.php:1114
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr "Bir erkek torunun defni"
+msgstr "Bir kız çocuğunun, oğlunun defni"
 
 #: app/GedcomTag.php:1123
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr "Bir erkek torunun defni"
+msgstr "Bir erkek çocuğunun, oğlunun defni"
 
 #: app/GedcomTag.php:1159
 msgid "Burial of a half-brother"
@@ -3236,7 +3236,7 @@ msgstr "Bir kocanın defni"
 
 #: app/GedcomTag.php:1150
 msgid "Burial of a maternal grandfather"
-msgstr "Bir anne büyükbabasının defni"
+msgstr "Bir anne büyük babasının defni"
 
 #: app/GedcomTag.php:1152
 msgid "Burial of a maternal grandmother"
@@ -3256,11 +3256,11 @@ msgstr "Bir ebeveynin defni"
 
 #: app/GedcomTag.php:1141
 msgid "Burial of a paternal grandfather"
-msgstr "Bir baba tarafından büyükbabanın defni"
+msgstr "Bir baba tarafından büyük babanın defni"
 
 #: app/GedcomTag.php:1143
 msgid "Burial of a paternal grandmother"
-msgstr "Bir baba tarafından büyükannenin defni"
+msgstr "Bir baba tarafından büyük annenin defni"
 
 #: app/GedcomTag.php:1145
 msgid "Burial of a paternal grandparent"
@@ -3288,7 +3288,7 @@ msgstr "Bir eşin defni"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
-msgstr "Defin yeri şunları içerir"
+msgstr "Mezar yeri şunları içerir"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6693
@@ -3663,7 +3663,7 @@ msgstr "Çocukları "
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:88
 msgid "Children take a patronym instead of a surname."
-msgstr "Çocuklar soyadı yerine bir aile adı alırlar."
+msgstr "Çocuklar soyadı yerine baba adı alırlar."
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition.php:82
