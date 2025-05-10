@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-03-15 16:59+0000\n"
+"PO-Revision-Date: 2025-05-11 23:34+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sv/>\n"
@@ -14812,7 +14812,7 @@ msgstr "Thermidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:39
 msgid "These cookies are “essential”, and do not require consent."
-msgstr "Dessa kakor är ”väsentliga” och kräver inte samtycke."
+msgstr "Dessa kakor är ”nödvändiga” och kräver inte samtycke."
 
 #: resources/views/admin/trees-unconnected.phtml:39
 #, php-format
