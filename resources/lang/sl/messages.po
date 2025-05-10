@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-05-10 16:42+0000\n"
+"PO-Revision-Date: 2025-05-11 18:59+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sl/>\n"
@@ -10405,7 +10405,7 @@ msgstr "Ne"
 #: app/Http/RequestHandlers/ImportGedcomAction.php:88
 #: app/Http/RequestHandlers/ImportGedcomAction.php:100
 msgid "No GEDCOM file was received."
-msgstr "Nisem prejel datoteke GEDCOM."
+msgstr "Ni prejete datoteke GEDCOM."
 
 #: resources/views/admin/trees-import.phtml:72
 msgid "No GEDCOM files found."
@@ -10439,18 +10439,18 @@ msgstr "Ne najdem napak."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Ni dogodkov za naslednji %s dan."
+msgstr[1] "Ni dogodkov za naslednja %s dni."
+msgstr[2] "Ni dogodkov za naslednje %s dni."
+msgstr[3] "Ni dogodkov za naslednjih %s dni."
 
 #: resources/views/modules/todays_events/empty.phtml:8
 msgid "No events exist for today."
-msgstr "Danes ni posebnih dogodkov."
+msgstr "Danes ni dogodkov."
 
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "No events exist for tomorrow."
-msgstr "Jutri ni posebnih dogodkov."
+msgstr "Jutri ni dogodkov."
 
 #: resources/views/family-page.phtml:56
 msgid "No facts exist for this family."
@@ -10459,7 +10459,7 @@ msgstr "Za to družino ni navedenih dejstev."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:55
 msgid "No file was received. Please try again."
-msgstr "Datoteka ni bila sprejeta. Naložite jo ponovno."
+msgstr "Ni prejete datoteke. Ponovno jo naložite."
 
 #: app/Module/RelationshipsChartModule.php:388
 msgid "No link between the two individuals could be found."
