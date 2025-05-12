@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-05-11 23:34+0000\n"
+"PO-Revision-Date: 2025-05-13 20:49+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sl/>\n"
@@ -10507,7 +10507,7 @@ msgstr "Drugo"
 
 #: admin_trees_config.php:1337
 msgid "Other facts to show in charts"
-msgstr "Druga dejstva za prikaz na grafikonih"
+msgstr "Druga dejstva za prikaz na diagramih"
 
 #: addmedia.php:524 admin_media_upload.php:242
 msgid "Other folder… please type in"
@@ -10719,17 +10719,17 @@ msgstr "Rodovnik"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree chart"
-msgstr "Družinsko drevo"
+msgstr "Diagram rodovnika"
 
 #: app/Module/GoogleMapsModule.php:210
 msgid "Pedigree map"
-msgstr ""
+msgstr "Zemljevid rodovnika"
 
 #. I18N: %s is an individual’s name
 #: app/Module/GoogleMapsModule.php:708
 #, php-format
 msgid "Pedigree map of %s"
-msgstr ""
+msgstr "Zemljevid rodovnika osebe %s"
 
 #: app/Module/ChartsBlockModule.php:86
 #, php-format
@@ -10740,7 +10740,7 @@ msgstr ""
 #: app/Controller/PedigreeController.php:85
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr ""
+msgstr "Družinsko drevo osebe %s"
 
 #. I18N: Name of a module
 #: admin.php:767 admin.php:789 admin_site_upgrade.php:100
@@ -10748,7 +10748,7 @@ msgstr ""
 #: app/Theme/AbstractTheme.php:1678 edit_changes.php:35 edit_changes.php:49
 #: help_text.php:302 modules_v3/change_report/report.xml:52
 msgid "Pending changes"
-msgstr ""
+msgstr "Čakajoče spremembe"
 
 #: help_text.php:309
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
@@ -10757,21 +10757,21 @@ msgstr ""
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1719
 msgid "Permanent number"
-msgstr ""
+msgstr "Stalna številka"
 
 #: admin_site_change.php:373 admin_site_logs.php:313
 msgid "Permanently delete these records?"
-msgstr ""
+msgstr "Dokončno izbrišem te zapise?"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:293
 msgid "Perth, Australia"
-msgstr ""
+msgstr "Perth, Avstralija"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6850
 msgid "Peru"
-msgstr ""
+msgstr "Peru"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6851
@@ -10795,21 +10795,21 @@ msgstr "Fonetičen"
 
 #: search.php:253
 msgid "Phonetic algorithm"
-msgstr ""
+msgstr "Fonetični algoritem"
 
 #: app/GedcomTag.php:608
 msgid "Phonetic name"
-msgstr ""
+msgstr "Fonetično ime"
 
 #: app/GedcomTag.php:688
 msgid "Phonetic place"
-msgstr ""
+msgstr "Fonetični kraj"
 
 #. I18N: search using “sounds like”, rather than exact spelling
 #: app/Controller/SearchController.php:198 app/Theme/AbstractTheme.php:1733
 #: branches.php:51
 msgid "Phonetic search"
-msgstr ""
+msgstr "Fonetično iskanje"
 
 #: app/GedcomTag.php:836
 msgid "Phonetic title"
@@ -10818,7 +10818,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1936
 msgid "Photo"
-msgstr "fotografija"
+msgstr "Foto"
 
 #: admin_pgv_to_wt.php:151
 msgid "PhpGedView might be installed in one of these folders:"
@@ -10846,7 +10846,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6849
 msgid "Pitcairn"
-msgstr "Pitkairnove ostrovy"
+msgstr "Pitcairn"
 
 #. I18N: gedcom tag PLAC
 #: app/GedcomTag.php:686 app/Module/GoogleMapsModule.php:1431
@@ -10879,7 +10879,7 @@ msgstr "Kraj vključuje"
 #: app/Module/GoogleMapsModule.php:414 app/Theme/AbstractTheme.php:1531
 #: placelist.php:41 placelist.php:43 placelist.php:139
 msgid "Place hierarchy"
-msgstr ""
+msgstr "Hierarhija krajev"
 
 #: app/GedcomTag.php:692
 msgid "Place in Hebrew"
@@ -10897,12 +10897,12 @@ msgstr ""
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:178
 msgid "Place of LDS baptism"
-msgstr ""
+msgstr "Kraj krsta LDS"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:780
 msgid "Place of LDS child sealing"
-msgstr ""
+msgstr "Kraj pečatenja otroka LDS"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:416
@@ -10912,99 +10912,99 @@ msgstr "Kraj obdaritve LDS"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:472
 msgid "Place of LDS spouse sealing"
-msgstr ""
+msgstr "Kraj pečatenja zakoncev LDS"
 
 #: app/GedcomTag.php:134
 msgid "Place of adoption"
-msgstr ""
+msgstr "Kraj posvojitve"
 
 #: app/GedcomTag.php:186 modules_v3/missing_facts_report/report.xml:140
 msgid "Place of baptism"
-msgstr ""
+msgstr "Kraj krsta"
 
 #: app/GedcomTag.php:194 modules_v3/missing_facts_report/report.xml:223
 msgid "Place of bar mitzvah"
-msgstr ""
+msgstr "Kraj bar mitzvah"
 
 #: app/GedcomTag.php:202 modules_v3/missing_facts_report/report.xml:264
 msgid "Place of bat mitzvah"
-msgstr ""
+msgstr "Kraj bat mitzvah"
 
 #: app/GedcomTag.php:210 modules_v3/fact_sources/report.xml:273
 #: modules_v3/missing_facts_report/report.xml:93
 msgid "Place of birth"
-msgstr ""
+msgstr "Kraj rojstva"
 
 #: app/GedcomTag.php:218
 msgid "Place of blessing"
-msgstr ""
+msgstr "Kraj blagoslova"
 
 #: app/GedcomTag.php:1092
 msgid "Place of brit milah"
-msgstr ""
+msgstr "Kraj brit milah"
 
 #: app/GedcomTag.php:230 modules_v3/missing_facts_report/report.xml:557
 msgid "Place of burial"
-msgstr ""
+msgstr "Kraj pokopa"
 
 #: app/GedcomTag.php:282 modules_v3/missing_facts_report/report.xml:181
 msgid "Place of christening"
-msgstr ""
+msgstr "Kraj krsta (imenovanja)"
 
 #: app/GedcomTag.php:314 modules_v3/missing_facts_report/report.xml:305
 msgid "Place of confirmation"
-msgstr ""
+msgstr "Kraj potrditve (birma)"
 
 #: app/GedcomTag.php:334
 msgid "Place of cremation"
-msgstr ""
+msgstr "Kraj upepelitve"
 
 #: app/GedcomTag.php:358 modules_v3/fact_sources/report.xml:275
 #: modules_v3/missing_facts_report/report.xml:516
 msgid "Place of death"
-msgstr ""
+msgstr "Kraj smrti"
 
 #: app/GedcomTag.php:408
 msgid "Place of emigration"
-msgstr ""
+msgstr "Kraj izselitve"
 
 #: app/GedcomTag.php:424 modules_v3/missing_facts_report/report.xml:347
 msgid "Place of engagement"
-msgstr ""
+msgstr "Kraj zaroke"
 
 #: app/GedcomTag.php:432
 msgid "Place of event"
-msgstr ""
+msgstr "Kraj dogodka"
 
 #: app/GedcomTag.php:484 modules_v3/missing_facts_report/report.xml:389
 msgid "Place of first communion"
-msgstr ""
+msgstr "Kraj prvega obhajila"
 
 #: app/GedcomTag.php:528
 msgid "Place of immigration"
-msgstr ""
+msgstr "Kraj priselitve"
 
 #: app/GedcomTag.php:466 app/GedcomTag.php:580
 #: modules_v3/fact_sources/report.xml:321
 #: modules_v3/missing_facts_report/report.xml:474
 msgid "Place of marriage"
-msgstr ""
+msgstr "Kraj poroke"
 
 #: app/GedcomTag.php:564 modules_v3/missing_facts_report/report.xml:431
 msgid "Place of marriage banns"
-msgstr ""
+msgstr "Kraj prepovedi poroke"
 
 #: app/GedcomTag.php:622
 msgid "Place of naturalization"
-msgstr ""
+msgstr "Kraj naturalizacije"
 
 #: app/GedcomTag.php:670
 msgid "Place of ordination"
-msgstr ""
+msgstr "Kraj posvečenja"
 
 #: app/GedcomTag.php:736
 msgid "Place of residence"
-msgstr ""
+msgstr "Kraj bivanja"
 
 #: admin_site_upgrade.php:354
 #, php-format
@@ -11037,7 +11037,7 @@ msgstr ""
 #: app/Theme/FabTheme.php:114 app/Theme/MinimalTheme.php:111
 #: app/Theme/WebtreesTheme.php:77 app/Theme/XeneaTheme.php:93
 msgid "Play"
-msgstr "Zaženi"
+msgstr "Predvajaj"
 
 #: search.php:55
 msgid "Please enter a given name, surname, or place in addition to the year"
@@ -11049,7 +11049,7 @@ msgstr "Vnesite Zadevo za sporočilo."
 
 #: message.php:50
 msgid "Please enter a valid email address."
-msgstr "Vnesite delujoč e-poštni naslov."
+msgstr "Prosimo, vnesite veljaven e-poštni naslov."
 
 #: app/Module/CensusAssistantModule.php:169 find.php:127 search.php:36
 #: search.php:48
@@ -11068,25 +11068,25 @@ msgstr ""
 #: app/Date/FrenchDate.php:92
 msgctxt "GENITIVE"
 msgid "Pluviose"
-msgstr ""
+msgstr "pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:158
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
-msgstr ""
+msgstr "pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:125
 msgctxt "LOCATIVE"
 msgid "Pluviose"
-msgstr ""
+msgstr "pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:59
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
-msgstr ""
+msgstr "pluviôse"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6854
@@ -11096,12 +11096,12 @@ msgstr "Poljska"
 #: app/SurnameTradition.php:90
 msgctxt "Surname tradition"
 msgid "Polish"
-msgstr ""
+msgstr "Poljska"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:363 setup.php:284
 msgid "Port number"
-msgstr ""
+msgstr "Številka vrat"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:299
@@ -11111,7 +11111,7 @@ msgstr "Portland, Oregon, Združene države Amerike"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:283
 msgid "Porto Alegre, Brazil"
-msgstr ""
+msgstr "Porto Alegre, Brazilija"
 
 #. I18N: page orientation
 #: admin_trees_config.php:53 modules_v3/change_report/report.xml:10
@@ -11127,48 +11127,54 @@ msgstr "Portugalska"
 #: app/SurnameTradition.php:84
 msgctxt "Surname tradition"
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugalska"
 
 #. I18N: gedcom tag POST
 #: app/GedcomTag.php:696
 msgid "Postal code"
-msgstr ""
+msgstr "Poštna številka"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:96
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
-msgstr ""
+msgstr "prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:129
 msgctxt "LOCATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:63
 msgctxt "NOMINATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "prairial"
 
 #: admin_site_config.php:129
 msgid "Predefined text that states admin will decide on each request for a user account"
-msgstr "Prednastavljeno besedilo, ki trdi, da bo upravitelj odločil o vsaki zahtevi za uporabniški račun"
+msgstr ""
+"Vnaprej določeno besedilo, da bo skrbnik odločal o vsaki zahtevi za "
+"uporabniški račun"
 
 #: admin_site_config.php:128
 msgid "Predefined text that states all users can request a user account"
-msgstr "Prednastavljeno besedilo, ki trdi, da morajo vsi uporabniki zahtevati uporabniki račun"
+msgstr ""
+"Vnaprej določeno besedilo, da lahko vsi uporabniki zahtevajo uporabniški "
+"račun"
 
 #: admin_site_config.php:130
 msgid "Predefined text that states only family members can request a user account"
-msgstr "Prednastavljeno besedilo, ki trdi, da lahko le družinski člani zaprosijo za uporabnški račun"
+msgstr ""
+"Vnaprej določeno besedilo, da lahko samo družinski člani zahtevajo "
+"uporabniški račun"
 
 #: admin_trees_config.php:325 admin_trees_manage.php:388
 #: app/Module/ChartsBlockModule.php:77
@@ -11181,17 +11187,17 @@ msgstr "Prednastavljeno besedilo, ki trdi, da lahko le družinski člani zaprosi
 #: app/Module/UpcomingAnniversariesModule.php:78
 #: app/Module/YahrzeitModule.php:74 block_edit.php:64
 msgid "Preferences"
-msgstr ""
+msgstr "Nastavitve"
 
 #: admin_modules.php:98
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr ""
+msgstr "Nastavitve modula “%s” obstajajo, vendar modul ne obstaja več."
 
 #. I18N: A configuration setting
 #: admin_users.php:471
 msgid "Preferred contact method"
-msgstr ""
+msgstr "Prednostni način sporočanja"
 
 #: app/Module/GoogleMapsModule.php:378
 msgid "Prefixes"
@@ -11208,38 +11214,40 @@ msgstr ""
 #. I18N: I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/President_of_the_Church
 #: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "President’s Office"
-msgstr ""
+msgstr "Predsednikov urad"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:301
 msgid "Preston, England"
-msgstr ""
+msgstr "Preston, Anglija"
 
 #: app/GedcomCode/GedcomCodeRela.php:216
 msgid "Priest"
-msgstr "duhovnik"
+msgstr "Duhovnik"
 
 #. I18N: The first day in the French republican calendar
 #: app/Date/FrenchDate.php:197
 msgid "Primidi"
-msgstr ""
+msgstr "primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr ""
+msgstr "Natisni tudi prazne osnovne dogodke"
 
 #: admin_trees_config.php:310 admin_trees_manage.php:398
 msgid "Privacy"
-msgstr "Zasebno"
+msgstr "Zasebnost"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: admin_trees_config.php:498
 msgid "Privacy restrictions"
-msgstr ""
+msgstr "Omejitve zasebnosti"
 
 #: admin_trees_config.php:521
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr ""
+"Omejitve zasebnosti - nanašajo se na zapise in dejstva, ki ne vsebujejo "
+"oznake GEDCOM RESN"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:531
 #: app/GedcomRecord.php:609 app/GedcomRecord.php:734 app/Individual.php:1309
@@ -11252,7 +11260,7 @@ msgstr "Zasebno"
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:700
 msgid "Probate"
-msgstr "Overitev oporoke"
+msgstr "Zapuščinska razsodba"
 
 #. I18N: gedcom tag PROP
 #: app/GedcomTag.php:704
@@ -11262,7 +11270,7 @@ msgstr "Posest"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "Provo City Center, Utah, United States"
-msgstr "Provo (središče mesta), Utah, Združene države Amerike"
+msgstr "Provo City Center, Utah, Združene države Amerike"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:305
@@ -11287,29 +11295,29 @@ msgstr "Katar"
 #. I18N: gedcom tag QUAY
 #: app/GedcomTag.php:712
 msgid "Quality of data"
-msgstr ""
+msgstr "Kakovost podatkov"
 
 #. I18N: The fourth day in the French republican calendar
 #: app/Date/FrenchDate.php:200
 msgid "Quartidi"
-msgstr ""
+msgstr "quartidi"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:175
 msgid "Question"
-msgstr ""
+msgstr "Vprašanje"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:307
 msgid "Quetzaltenango, Guatemala"
-msgstr ""
+msgstr "Quetzaltenango, Gvatemala"
 
 #: admin_trees_config.php:1823
 msgid "Quick family facts"
-msgstr ""
+msgstr "Hitra dejstva o družini"
 
 #: admin_trees_config.php:1705
 msgid "Quick individual facts"
-msgstr ""
+msgstr "Hitra dejstva o osebi"
 
 #: admin_trees_config.php:2001
 msgid "Quick repository facts"
@@ -11322,12 +11330,12 @@ msgstr ""
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:201
 msgid "Quintidi"
-msgstr ""
+msgstr "quintidi"
 
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: app/Module/UserMessagesModule.php:133 app/Module/UserMessagesModule.php:134
 msgid "RE: "
-msgstr ""
+msgstr "Odg: "
 
 #. I18N: Menu entry
 #: admin_site_readme.php:28 app/Theme/AdministrationTheme.php:104
@@ -11336,55 +11344,55 @@ msgstr "Besedilo README"
 
 #: app/GedcomCode/GedcomCodeRela.php:219
 msgid "Rabbi"
-msgstr "rabin"
+msgstr "Rabin"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:92
 msgctxt "GENITIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "rebiul-ewel"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:156
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "rebiul-ewel"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:124
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "rebiul-ewel"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:60
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "rebiul-ewel"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:93
 msgctxt "GENITIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "rebiul-ahir"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:157
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "rebiul-ahir"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:125
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "rebiul-ahir"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:61
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "rebiul-ahir"
 
 #. I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:93
@@ -11395,25 +11403,25 @@ msgstr ""
 #: app/Date/HijriDate.php:96
 msgctxt "GENITIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "redžeb"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:160
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
-msgstr ""
+msgstr "redžeb"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:128
 msgctxt "LOCATIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "redžeb"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:64
 msgctxt "NOMINATIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "redžeb"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:309
@@ -11424,25 +11432,25 @@ msgstr "Raleigh, Severna Karolina, Združene države Amerike"
 #: app/Date/HijriDate.php:98
 msgctxt "GENITIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "ramazan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
-msgstr ""
+msgstr "ramazan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:130
 msgctxt "LOCATIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "ramazan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:66
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "ramazan"
 
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:39
@@ -11452,39 +11460,39 @@ msgstr ""
 #: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
 #: edit_interface.php:1779 edit_interface.php:1849
 msgid "Re-order children"
-msgstr "Razporedi otroke"
+msgstr "Razvrsti otroke"
 
 #: app/Controller/IndividualController.php:297
 #: app/Module/RelativesTabModule.php:363 edit_interface.php:2154
 #: edit_interface.php:2204
 msgid "Re-order families"
-msgstr ""
+msgstr "Razvrsti družine"
 
 #. I18N: gedcom tag _WT_OBJE_SORT
 #: app/GedcomTag.php:1767 app/Module/AlbumModule.php:110
 #: app/Module/AlbumModule.php:111 edit_interface.php:1651
 #: edit_interface.php:1698 edit_interface.php:1744
 msgid "Re-order media"
-msgstr "Razvrsti fotografije"
+msgstr "Razvrsti medije"
 
 #: admin_users.php:312 admin_users.php:846 edituser.php:170 login.php:324
 #: login.php:420
 msgid "Real name"
-msgstr "Ime"
+msgstr "Pravo ime"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
 msgid "Recent changes"
-msgstr ""
+msgstr "Zadnje spremembe"
 
 #: calendar.php:234
 msgid "Recent years (&lt; 100 yrs)"
-msgstr "polpretekla zgodovina (&lt; 100 let);lt; 100 let)"
+msgstr "Zadnja leta (&lt; 100 let)"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:311
 msgid "Recife, Brazil"
-msgstr ""
+msgstr "Recife, Brazilija"
 
 #: admin_site_change.php:328 admin_site_change.php:389
 #: admin_trees_config.php:526 app/Functions/FunctionsPrintLists.php:1680
@@ -11498,12 +11506,12 @@ msgstr "Zapis"
 #. I18N: gedcom tag RIN
 #: app/GedcomTag.php:754
 msgid "Record ID number"
-msgstr ""
+msgstr "ID številka zapisa"
 
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:750
 msgid "Record file number"
-msgstr ""
+msgstr "Številka datoteke zapisa"
 
 #: search.php:83 statistics.php:350
 msgid "Records"
@@ -11521,39 +11529,39 @@ msgstr "Redlands, Kalifornija, Združene države Amerike"
 #. I18N: gedcom tag REFN
 #: app/GedcomTag.php:716
 msgid "Reference number"
-msgstr ""
+msgstr "Referenčna številka"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:315
 msgid "Regina, Saskatchewan, Canada"
-msgstr ""
+msgstr "Regina, Saskatchewan, Kanada"
 
 #: app/GedcomTag.php:584 modules_v3/fact_sources/report.xml:205
 msgid "Registered partnership"
-msgstr ""
+msgstr "Registrirano partnerstvo"
 
 #: app/GedcomCode/GedcomCodeRela.php:227
 msgid "Registry officer"
-msgstr "uslužbenec na matičnem uradu"
+msgstr "Matičar"
 
 #: app/GedcomCode/GedcomCodeRela.php:225
 msgctxt "FEMALE"
 msgid "Registry officer"
-msgstr ""
+msgstr "Matičarka"
 
 #: app/GedcomCode/GedcomCodeRela.php:223
 msgctxt "MALE"
 msgid "Registry officer"
-msgstr ""
+msgstr "Matičar"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:165
 msgid "Regular expression"
-msgstr ""
+msgstr "Regularni izraz"
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Regularni izrazi so napredna tehnika ujemanja vzorcev."
 
 #: edit_changes.php:186 edit_changes.php:206
 msgid "Reject"
@@ -11568,14 +11576,14 @@ msgstr "Zavrni vse spremembe"
 #: modules_v3/individual_ext_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:91
 msgid "Related families"
-msgstr ""
+msgstr "Družine v sorodstvenem razmerju"
 
 #. I18N: Name of a report
 #: app/Module/RelatedIndividualsReportModule.php:29
 #: modules_v3/relative_ext_report/report.xml:3
 #: modules_v3/relative_ext_report/report.xml:43
 msgid "Related individuals"
-msgstr ""
+msgstr "Osebe v sorodstvenem razmerju"
 
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:720
@@ -11625,24 +11633,24 @@ msgstr "Sorodstvena razmerja med osebo %1$s in osebo %2$s"
 #: app/GedcomTag.php:724 modules_v3/missing_facts_report/report.xml:26
 #: modules_v3/missing_facts_report/report.xml:587
 msgid "Religion"
-msgstr "Religija"
+msgstr "Veroizpoved"
 
 #: app/GedcomTag.php:666
 msgid "Religious institution"
-msgstr ""
+msgstr "Verska ustanova"
 
 #: app/GedcomTag.php:586 modules_v3/fact_sources/report.xml:199
 msgid "Religious marriage"
-msgstr ""
+msgstr "Cerkvena poroka"
 
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
-msgstr "Pogostnost opozorilnih e-sporočil (na število dni)"
+msgstr "Pogostost e-poštnih opomnikov (v dnevih)"
 
 #. I18N: gedcom tag SERV
 #: app/GedcomTag.php:766
 msgid "Remote server"
-msgstr ""
+msgstr "Oddaljeni strežnik"
 
 #: app/Module/CensusAssistantModule.php:386
 #: app/Module/CensusAssistantModule.php:407
@@ -11668,7 +11676,7 @@ msgstr "Odstrani zastavo"
 
 #: timeline.php:277 timeline.php:292
 msgid "Remove individual"
-msgstr ""
+msgstr "Odstrani osebo"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:127
 msgid "Remove link from list"
@@ -11677,11 +11685,11 @@ msgstr "Odstrani povezavo s seznama"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:288
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "Odstrani medijsko pot iz imen datotek v datoteki GEDCOM"
 
 #: app/Module/GoogleMapsModule.php:3917
 msgid "Remove this location?"
-msgstr "Ostrani to lokacijo?"
+msgstr "Ostranim to lokacijo?"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:317
@@ -11700,11 +11708,11 @@ msgstr ""
 
 #: admin_trees_places.php:105 search.php:162
 msgid "Replace with"
-msgstr "Zamenjaj z"
+msgstr "Zamenjaj s/z"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:153
 msgid "Replacement text"
-msgstr ""
+msgstr "Besedilo zamenjave"
 
 #: app/Module/UserMessagesModule.php:137
 msgid "Reply"
@@ -11713,7 +11721,7 @@ msgstr "Odgovori"
 #: admin_module_reports.php:66 admin_modules.php:244 reportengine.php:125
 #: reportengine.php:153
 msgid "Report"
-msgstr ""
+msgstr "Poročilo"
 
 #. I18N: Menu entry
 #: admin_module_reports.php:28 admin_modules.php:164
@@ -11727,7 +11735,7 @@ msgstr "Poročila"
 #: app/Module/HtmlBlockModule.php:199 app/Theme/AbstractTheme.php:1540
 #: repolist.php:33 repolist.php:37 statistics.php:356
 msgid "Repositories"
-msgstr "Kraji počitka"
+msgstr "Skladišča"
 
 #: find.php:687
 msgid "Repositories found"
@@ -11751,7 +11759,7 @@ msgstr "Ime skladišča"
 #. I18N: Name of a country or state
 #: app/Stats.php:6719
 msgid "Republic of the Congo"
-msgstr "Kongo (Brazzaville)"
+msgstr "Kongo"
 
 #: app/Module/LoginBlockModule.php:99 login.php:222
 msgid "Request a new password"
@@ -11760,17 +11768,17 @@ msgstr "Zahtevaj novo geslo"
 #: app/Module/LoginBlockModule.php:90 app/Module/WelcomeBlockModule.php:60
 #: login.php:213 login.php:280
 msgid "Request a new user account"
-msgstr "Oddajte vlogo za nov uporabniški račun"
+msgstr "Zahtevaj nov uporabniški račun"
 
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:1743
 msgid "Research task"
-msgstr ""
+msgstr "Raziskovalno opravilo"
 
 #. I18N: Name of a module. Tasks that need further research.
 #: app/Module/ResearchTaskModule.php:39
 msgid "Research tasks"
-msgstr ""
+msgstr "Raziskovalna opravila"
 
 #: app/Module/ResearchTaskModule.php:201
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
@@ -11783,11 +11791,11 @@ msgstr ""
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:732
 msgid "Residence"
-msgstr "Bivališče"
+msgstr "Prebivališče"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Obnovi privzeto postavitev blokov"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
@@ -11796,7 +11804,7 @@ msgstr ""
 
 #: admin_users.php:584
 msgid "Restrict to immediate family"
-msgstr ""
+msgstr "Omeji na ožjo družino"
 
 #. I18N: gedcom tag RESN
 #: app/GedcomTag.php:740
@@ -11847,11 +11855,11 @@ msgstr "Romunija"
 #. I18N: gedcom tag ROMN
 #: app/GedcomTag.php:762
 msgid "Romanized"
-msgstr "Romanizirana pisava"
+msgstr "Romanizirano"
 
 #: app/GedcomTag.php:690
 msgid "Romanized place"
-msgstr ""
+msgstr "Romanizirani kraj"
 
 #: app/GedcomTag.php:838
 msgid "Romanized title"
@@ -11871,7 +11879,7 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:29 branches.php:55 search.php:258
 msgid "Russell"
-msgstr ""
+msgstr "Russell"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6864
@@ -11881,11 +11889,11 @@ msgstr "Rusija"
 #. I18N: Name of a country or state
 #: app/Stats.php:6865
 msgid "Rwanda"
-msgstr ""
+msgstr "Ruanda"
 
 #: admin_site_config.php:345
 msgid "SMTP mail server"
-msgstr ""
+msgstr "SMTP poštni strežnik"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:321
@@ -11896,25 +11904,25 @@ msgstr "Sacramento, Kalifornija, Združene države Amerike"
 #: app/Date/HijriDate.php:91
 msgctxt "GENITIVE"
 msgid "Safar"
-msgstr ""
+msgstr "safer"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:155
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
-msgstr ""
+msgstr "safer"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:123
 msgctxt "LOCATIVE"
 msgid "Safar"
-msgstr ""
+msgstr "safer"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:59
 msgctxt "NOMINATIVE"
 msgid "Safar"
-msgstr ""
+msgstr "safer"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:89
@@ -11924,27 +11932,27 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6874
 msgid "Saint Helena"
-msgstr "Svätá Helena"
+msgstr "Sveta Helena"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6795
 msgid "Saint Kitts and Nevis"
-msgstr "Svätý Krištof a Nevis"
+msgstr "Sveti Krištof in Nevis"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6802
 msgid "Saint Lucia"
-msgstr "Svätá Lucia"
+msgstr "Sveta Lucija"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6881
 msgid "Saint Pierre and Miquelon"
-msgstr "Saint Pierre a Miquelon"
+msgstr "Sveta Peter in Mihael"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6914
 msgid "Saint Vincent and the Grenadines"
-msgstr "Svätý Vincent a Grenadíny"
+msgstr "Sveti Vincencij in Grenadine"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:341
@@ -11954,7 +11962,7 @@ msgstr "Salt Lake City, Utah, Združene države Amerike"
 #. I18N: Name of a country or state
 #: app/Stats.php:6922
 msgid "Samoa"
-msgstr ""
+msgstr "Samoa"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:327
@@ -11974,22 +11982,22 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6879
 msgid "San Marino"
-msgstr ""
+msgstr "San Marino"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:323
 msgid "San Salvador, El Salvador"
-msgstr ""
+msgstr "San Salvador, Salvador"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:325
 msgid "Santiago, Chile"
-msgstr ""
+msgstr "Santiago, Čile"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:331
 msgid "Santo Domingo, Dominican Republic"
-msgstr ""
+msgstr "Santo Domingo, Dominikanska republika"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:347
@@ -11999,12 +12007,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6883
 msgid "Sao Tome and Principe"
-msgstr ""
+msgstr "Sveti Tomaž in Princ"
 
 #. I18N: abbreviation for Saturday
 #: app/Date/CalendarDate.php:381 app/Functions/FunctionsPrint.php:665
 msgid "Sat"
-msgstr ""
+msgstr "sob"
 
 #: app/Module/GoogleMapsModule.php:327
 msgid "Satellite"
@@ -12017,11 +12025,11 @@ msgstr "sobota"
 #. I18N: Name of a country or state
 #: app/Stats.php:6866
 msgid "Saudi Arabia"
-msgstr "Saudská Arábia"
+msgstr "Savdska Arabija"
 
 #: app/GedcomTag.php:388
 msgid "School or college"
-msgstr ""
+msgstr "Šola ali fakulteta"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6867
@@ -12037,24 +12045,24 @@ msgstr "Knjiga izrezkov"
 #: app/GedcomCode/GedcomCodePedi.php:81
 msgctxt "Female pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Pečatenje"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:77
 msgctxt "Male pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Pečatenje"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:85
 msgctxt "Pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Pečatenje"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:67
 msgid "Sealing canceled (divorce)"
-msgstr ""
+msgstr "Pečatenje preklicano (ločitev)"
 
 #: app/Module/DescendancyModule.php:101 app/Module/DescendancyModule.php:134
 #: app/Module/FamiliesSidebarModule.php:149
@@ -12065,13 +12073,13 @@ msgstr ""
 #: app/Theme/WebtreesTheme.php:58 app/Theme/WebtreesTheme.php:59
 #: app/Theme/XeneaTheme.php:57 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:89
 msgid "Search"
-msgstr "Išči"
+msgstr "Iskanje"
 
 #: app/Controller/SearchController.php:202
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1752
 msgid "Search and replace"
-msgstr ""
+msgstr "Najdi in zamenjaj"
 
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:59
@@ -12084,7 +12092,7 @@ msgstr ""
 
 #: medialist.php:184
 msgid "Search filters"
-msgstr ""
+msgstr "Filtri iskanja"
 
 #: admin_trees_places.php:103 search.php:76 search.php:156
 msgid "Search for"
@@ -12100,11 +12108,11 @@ msgstr ""
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:159
 msgid "Search method"
-msgstr ""
+msgstr "Metoda iskanja"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:147
 msgid "Search text/pattern"
-msgstr ""
+msgstr "Iskanje besedila/vzorca"
 
 #: app/Module/RelationshipsChartModule.php:171
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
@@ -12120,32 +12128,32 @@ msgstr "Seattle, Washington, Združene države Amerike"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:374
 msgid "Second record"
-msgstr ""
+msgstr "Drugi zapis"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:415
 msgid "Secure connection"
-msgstr "SSL Prijava"
+msgstr "Zaščitena povezava"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:620
 msgid "Security code"
-msgstr ""
+msgstr "Varnostna koda"
 
 #. I18N: %s is a URL
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Oglejte si %s za več informacij."
 
 #: admin_site_merge.php:214 admin_site_merge.php:261 admin_site_merge.php:307
 msgid "Select"
-msgstr ""
+msgstr "Izberi"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:208
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "Izberite datoteko GEDCOM za uvoz"
 
 #: index_edit.php:284 index_edit.php:367
 msgid "Select a block and use the arrows to move it."
@@ -12167,7 +12175,7 @@ msgstr "Izberi zastavo"
 
 #: lifespan.php:41
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Izberi osebe glede na kraj ali datum"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:44
@@ -12193,21 +12201,21 @@ msgstr ""
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:352
 msgid "Select two records to merge."
-msgstr ""
+msgstr "Izberite zapisa za združitev."
 
 #: app/GedcomCode/GedcomCodeRela.php:236
 msgid "Seller"
-msgstr "prodajalec"
+msgstr "Prodajalec"
 
 #: app/GedcomCode/GedcomCodeRela.php:234
 msgctxt "FEMALE"
 msgid "Seller"
-msgstr ""
+msgstr "Prodajalka"
 
 #: app/GedcomCode/GedcomCodeRela.php:232
 msgctxt "MALE"
 msgid "Seller"
-msgstr ""
+msgstr "Prodajalec"
 
 #: app/Module/UserMessagesModule.php:107 login.php:538 message.php:128
 msgid "Send"
@@ -12238,37 +12246,37 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Razpošlji opozorilna e-sporočila"
+msgstr "Pošlji e-pošto z opomniki"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:335
 msgid "Sender name"
-msgstr ""
+msgstr "Ime pošiljatelja"
 
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:96
 msgid "Sending email"
-msgstr ""
+msgstr "Pošiljanje e-pošte"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:428
 msgid "Sending server name"
-msgstr ""
+msgstr "Ime odhodnega strežnika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6870
 msgid "Senegal"
-msgstr ""
+msgstr "Senegal"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:335
 msgid "Seoul, Korea"
-msgstr ""
+msgstr "Seoul, Koreja"
 
 #: app/Date/CalendarDate.php:329
 msgctxt "Abbreviation for September"
 msgid "Sep"
-msgstr ""
+msgstr "sep"
 
 #. I18N: gedcom tag _SEPR
 #: app/GedcomTag.php:1727
@@ -12278,17 +12286,17 @@ msgstr "Ločen/a"
 #: app/Date/CalendarDate.php:229
 msgctxt "GENITIVE"
 msgid "September"
-msgstr "september"
+msgstr "septembra"
 
 #: app/Date/CalendarDate.php:297
 msgctxt "INSTRUMENTAL"
 msgid "September"
-msgstr "september"
+msgstr "septembrom"
 
 #: app/Date/CalendarDate.php:263
 msgctxt "LOCATIVE"
 msgid "September"
-msgstr "september"
+msgstr "septembru"
 
 #: app/Date/CalendarDate.php:195 app/Functions/FunctionsPrint.php:653
 msgctxt "NOMINATIVE"
@@ -12298,7 +12306,7 @@ msgstr "september"
 #. I18N: The seventh day in the French republican calendar
 #: app/Date/FrenchDate.php:203
 msgid "Septidi"
-msgstr ""
+msgstr "septidi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6871
@@ -12307,27 +12315,27 @@ msgstr "Srbija"
 
 #: app/GedcomCode/GedcomCodeRela.php:245
 msgid "Servant"
-msgstr "služabnik"
+msgstr "Služabnik"
 
 #: app/GedcomCode/GedcomCodeRela.php:243
 msgctxt "FEMALE"
 msgid "Servant"
-msgstr ""
+msgstr "Služabnica"
 
 #: app/GedcomCode/GedcomCodeRela.php:241
 msgctxt "MALE"
 msgid "Servant"
-msgstr ""
+msgstr "Služabnik"
 
 #. I18N: Menu entry
 #: admin.php:589 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
 msgid "Server information"
-msgstr ""
+msgstr "Podatki o strežniku"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:350 setup.php:280
 msgid "Server name"
-msgstr ""
+msgstr "Ime strežnika"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:291
@@ -12336,22 +12344,22 @@ msgstr "Časovna omejitev seje"
 
 #: admin_trees_manage.php:441 admin_trees_manage.php:452
 msgid "Set as default"
-msgstr ""
+msgstr "Nastavi kot privzeto"
 
 #. I18N: You need to:
 #: login.php:573
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Nastavi raven dostopa za vsako drevo."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
 msgid "Set the default blocks for new family trees"
-msgstr ""
+msgstr "Nastavitev privzetih blokov za nova družinska drevesa"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:167 index_edit.php:39
 msgid "Set the default blocks for new users"
-msgstr ""
+msgstr "Nastavitev privzetih blokov za nove uporabnike"
 
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:1237
@@ -12371,12 +12379,12 @@ msgstr ""
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: admin_trees_config.php:394
 msgid "Set the privacy access level for all dead individuals."
-msgstr ""
+msgstr "Nastavi raven dostopa zasebnosti za vse mrtve osebe."
 
 #. I18N: You need to:
 #: login.php:571
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Nastavi stanje na “odobreno”."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1580
@@ -12385,52 +12393,52 @@ msgstr ""
 
 #: setup.php:93
 msgid "Setup wizard for webtrees"
-msgstr ""
+msgstr "Čarovnik za nastavitev webtrees"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:202
 msgid "Sextidi"
-msgstr ""
+msgstr "sextidi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6890
 msgid "Seychelles"
-msgstr "Seychely"
+msgstr "Sejšeli"
 
 #: app/Date/JalaliDate.php:188
 msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
-msgstr ""
+msgstr "šar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:92
 msgctxt "GENITIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "šarivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:156
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
-msgstr ""
+msgstr "šarivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:124
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "šarivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:60
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "šarivar"
 
 #: admin_trees_manage.php:590 app/Controller/FamilyController.php:153
 #: app/GedcomTag.php:772 edit_interface.php:1344 edit_interface.php:1437
 #: inverselink.php:141 note.php:152 note.php:162
 msgid "Shared note"
-msgstr ""
+msgstr "Deljena opomba"
 
 #. I18N: Label for search field
 #: find.php:239
@@ -12440,7 +12448,7 @@ msgstr "Skupen zapisek vsebuje"
 #: app/Functions/FunctionsPrintLists.php:1045 app/Theme/AbstractTheme.php:1522
 #: notelist.php:33 notelist.php:37 search.php:103
 msgid "Shared notes"
-msgstr "Skupni zapiski"
+msgstr "Deljene opombe"
 
 #: find.php:709
 msgid "Shared notes found"
@@ -12450,106 +12458,106 @@ msgstr "Najdenih skupnih zapiskov"
 #: app/Date/HijriDate.php:99
 msgctxt "GENITIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "šewal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:163
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
-msgstr ""
+msgstr "šewal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:131
 msgctxt "LOCATIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "šewal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:67
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "šewal"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:97
 msgctxt "GENITIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "šaban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Sha’aban"
-msgstr ""
+msgstr "šaban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:129
 msgctxt "LOCATIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "šaban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:65
 msgctxt "NOMINATIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "šaban"
 
 #: modules_v3/descendancy_report/report.xml:358
 msgid "She "
-msgstr ""
+msgstr "Ona "
 
 #: modules_v3/ahnentafel_report/report.xml:290
 msgid "She died"
-msgstr ""
+msgstr "Umrla je"
 
 #: modules_v3/ahnentafel_report/report.xml:260
 #: modules_v3/descendancy_report/report.xml:242
 msgid "She married"
-msgstr ""
+msgstr "Poročila se je"
 
 #: modules_v3/ahnentafel_report/report.xml:223
 msgid "She resided at"
-msgstr ""
+msgstr "Stanovala je"
 
 #: modules_v3/descendancy_report/report.xml:331
 msgid "She was born"
-msgstr ""
+msgstr "Rodila se je"
 
 #: modules_v3/ahnentafel_report/report.xml:340
 msgid "She was buried"
-msgstr ""
+msgstr "Pokopana je bila"
 
 #: modules_v3/ahnentafel_report/report.xml:167
 msgid "She was christened"
-msgstr ""
+msgstr "Krščena je bila"
 
 #: modules_v3/ahnentafel_report/report.xml:315
 msgid "She was cremated"
-msgstr ""
+msgstr "Upepeljena je bila"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:139
 msgctxt "GENITIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "šebat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:215
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
-msgstr ""
+msgstr "šebat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:177
 msgctxt "LOCATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "šebat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:101
 msgctxt "NOMINATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "šebat"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:90
@@ -12563,7 +12571,7 @@ msgstr ""
 
 #: help_text.php:136 help_text.php:148 help_text.php:159
 msgid "Shortcut"
-msgstr ""
+msgstr "Bližnjica"
 
 #: statistics.php:252
 msgid "Shortest marriage"
@@ -12575,12 +12583,12 @@ msgstr "Naj bo ta sklop skrit, kadar je prazen"
 
 #: calendar.php:221
 msgid "Show"
-msgstr "Pokaži"
+msgstr "Prikaži"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1031
 msgid "Show a download link in the media viewer"
-msgstr ""
+msgstr "Prikaži povezavo za prenos v pregledovalniku medijev"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:506
@@ -12589,15 +12597,15 @@ msgstr ""
 
 #: app/Module/NotesTabModule.php:74
 msgid "Show all notes"
-msgstr "Pokaži vse opombe"
+msgstr "Prikaži vse opombe"
 
 #: placelist.php:212
 msgid "Show all places in a list"
-msgstr "Pokaži seznam vseh krajev"
+msgstr "Prikaži seznam vseh krajev"
 
 #: app/Module/SourcesTabModule.php:70
 msgid "Show all sources"
-msgstr "Pokaži vse vire"
+msgstr "Prikaži vse vire"
 
 #: app/Module/InteractiveTree/TreeView.php:62
 msgid "Show all spouses and ancestors"
@@ -12610,7 +12618,7 @@ msgstr ""
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr ""
+msgstr "Prikaži kazalec starosti"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
@@ -12619,7 +12627,7 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr ""
+msgstr "Prikaži otroke prednikov"
 
 #. I18N: Label for a configuration option
 #: app/Module/TopPageViewsModule.php:165
@@ -12629,26 +12637,27 @@ msgstr "Štetje krajev pred ali za imenom"
 #: app/Functions/FunctionsPrintLists.php:711
 msgid "Show couples where either partner married more than once."
 msgstr ""
+"Prikaži pare, pri katerih je bil katerikoli partner poročen več kot enkrat."
 
 #: app/Functions/FunctionsPrintLists.php:626
 msgid "Show couples where only the female partner is dead."
-msgstr "Pokaži pare, pri katerih je pokojna samo žena."
+msgstr "Prikaži pare, pri katerih je partnerka mrtva."
 
 #: app/Functions/FunctionsPrintLists.php:635
 msgid "Show couples where only the male partner is dead."
-msgstr "Pokaži pare, pri katerih je pokojni samo mož."
+msgstr "Prikaži pare, pri katerih je partner mrtev."
 
 #: app/Functions/FunctionsPrintLists.php:684
 msgid "Show couples who married more than 100 years ago."
-msgstr "Pokaži pare, ki so se poročili pred več kot sto leti."
+msgstr "Prikaži pare, ki so se poročili pred več kot sto leti."
 
 #: app/Functions/FunctionsPrintLists.php:693
 msgid "Show couples who married within the last 100 years."
-msgstr "Pokaži pare, ki so se poročili v zadnji sto letih."
+msgstr "Pokaži pare, ki so se poročili v zadnjih sto letih."
 
 #: app/Functions/FunctionsPrintLists.php:675
 msgid "Show couples with an unknown marriage date."
-msgstr "Pokaži pare z neznanim datumom poroke."
+msgstr "Prikaži neporočene pare ali pare z neznanim datumom poroke."
 
 #: ancestry.php:75
 msgid "Show cousins"
@@ -12657,12 +12666,12 @@ msgstr "Pokaži bratrance/sestrične"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:296
 msgid "Show date of last update"
-msgstr ""
+msgstr "Prikaži datum zadnje posodobitve"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:384
 msgid "Show dead individuals"
-msgstr "Pokaži mrtve osebe"
+msgstr "Prikaži mrtve osebe"
 
 #: ancestry.php:115 app/Module/ChartsBlockModule.php:206 descendancy.php:84
 #: familybook.php:55 hourglass.php:56 pedigree.php:166 relationship.php:83
@@ -12671,7 +12680,7 @@ msgstr "Pokaži podrobnosti"
 
 #: app/Functions/FunctionsPrintLists.php:702
 msgid "Show divorced couples."
-msgstr "Pokaži ločene pare."
+msgstr "Prikaži ločene pare."
 
 #: compact.php:60
 msgid "Show images"
@@ -12683,34 +12692,34 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:244
 msgid "Show individuals born more than 100 years ago."
-msgstr "Pokaži osebe, ki so se rodile pred več kot sto leti."
+msgstr "Prikaži osebe, ki so se rodile pred več kot sto leti."
 
 #: app/Functions/FunctionsPrintLists.php:253
 msgid "Show individuals born within the last 100 years."
-msgstr "Pokaži osebe, ki so se rodile v zadnjih sto letih."
+msgstr "Prikaži osebe, ki so se rodile v zadnjih sto letih."
 
 #: app/Functions/FunctionsPrintLists.php:206
 #: app/Functions/FunctionsPrintLists.php:617
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr "Pokaži še živeče pare oz. pare, pri katerih sta živa oba zakonca."
+msgstr "Prikaži žive osebe ali pare, pri katerih sta živa oba partnerja."
 
 #: app/Functions/FunctionsPrintLists.php:215
 #: app/Functions/FunctionsPrintLists.php:644
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr "Pokaži že pokojne ljudi oz. pare, pri katerih sta umrla že oba zakonca."
+msgstr "Prikaži mrtve osebe ali pare, pri katerih sta mrtva oba partnerja."
 
 #: app/Functions/FunctionsPrintLists.php:224
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Pokaži ljudi, ki so umrli pred več kot sto leti."
+msgstr "Prikaži osebe, ki so umrle pred več kot sto leti."
 
 #: app/Functions/FunctionsPrintLists.php:233
 msgid "Show individuals who died within the last 100 years."
-msgstr "Pokaži ljudi, ki so umrli v zadnjih sto letih."
+msgstr "Prikaži osebe, ki so umrle v zadnjih sto letih."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:278
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Prikaži seznam družinskih dreves"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:424
@@ -13531,7 +13540,7 @@ msgstr "Švica"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:359
 msgid "Sydney, Australia"
-msgstr ""
+msgstr "Sydney, Avstralija"
 
 #: admin_trees_manage.php:750
 msgid "Synchronize family trees with GEDCOM files"
@@ -15094,7 +15103,7 @@ msgstr "Napogostejši priimki"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:373
 msgid "Toronto, Ontario, Canada"
-msgstr ""
+msgstr "Toronto, Ontario, Kanada"
 
 #: admin.php:851
 msgid "Total"
@@ -15662,7 +15671,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:379
 msgid "Vancouver, British Columbia, Canada"
-msgstr ""
+msgstr "Vancouver, Britanska Kolumbija, Kanada"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6919
