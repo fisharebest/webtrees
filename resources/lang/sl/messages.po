@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-05-12 17:10+0000\n"
+"PO-Revision-Date: 2025-05-13 20:48+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sl/>\n"
@@ -12576,22 +12576,22 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:451
 msgid "San Marino"
-msgstr ""
+msgstr "San Marino"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:174 app/GedcomCode/GedcomCodeTemp.php:588
 msgid "San Salvador, El Salvador"
-msgstr ""
+msgstr "San Salvador, Salvador"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:175 app/GedcomCode/GedcomCodeTemp.php:591
 msgid "Santiago, Chile"
-msgstr ""
+msgstr "Santiago, Čile"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:178 app/GedcomCode/GedcomCodeTemp.php:600
 msgid "Santo Domingo, Dominican Republic"
-msgstr ""
+msgstr "Santo Domingo, Dominikanska republika"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:186 app/GedcomCode/GedcomCodeTemp.php:624
@@ -12601,13 +12601,13 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:459
 msgid "Sao Tome and Principe"
-msgstr ""
+msgstr "Sveti Tomaž in Princ"
 
 #. I18N: abbreviation for Saturday
 #: app/Date/AbstractCalendarDate.php:295
 #: resources/views/edit/initialize-calendar-popup.phtml:29
 msgid "Sat"
-msgstr ""
+msgstr "sob"
 
 #: app/Date/AbstractCalendarDate.php:263
 msgid "Saturday"
@@ -12616,16 +12616,16 @@ msgstr "sobota"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:425
 msgid "Saudi Arabia"
-msgstr "Saudská Arábia"
+msgstr "Savdska Arabija"
 
 #: app/Factories/ElementFactory.php:607
 msgid "Schema"
-msgstr ""
+msgstr "Shema"
 
 #: app/Factories/ElementFactory.php:1184 app/Factories/ElementFactory.php:1208
 #: app/GedcomTag.php:651
 msgid "School or college"
-msgstr ""
+msgstr "Šola ali fakulteta"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:427
@@ -12642,14 +12642,14 @@ msgstr "Knjiga izrezkov"
 #: app/Elements/PedigreeLinkageType.php:64 app/GedcomCode/GedcomCodePedi.php:98
 msgctxt "Female pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Pečatenje"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/Elements/PedigreeLinkageType.php:54 app/GedcomCode/GedcomCodePedi.php:93
 msgctxt "Male pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Pečatenje"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #. I18N: “sealing” is a ceremony in the Mormon church.
@@ -12657,14 +12657,14 @@ msgstr ""
 #: app/GedcomCode/GedcomCodePedi.php:102
 msgctxt "Pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Pečatenje"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/Elements/LdsSpouseSealingDateStatus.php:63
 #: app/GedcomCode/GedcomCodeStat.php:108
 msgid "Sealing canceled (divorce)"
-msgstr ""
+msgstr "Pečatenje preklicano (ločitev)"
 
 #. I18N: Name of a module
 #. I18N: A button label.
@@ -12679,13 +12679,13 @@ msgstr ""
 #: resources/views/modules/fix-place-names/options.phtml:11
 #: resources/views/search-replace-page.phtml:44
 msgid "Search"
-msgstr "Išči"
+msgstr "Iskanje"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/SearchReplacePage.php:52
 #: app/Module/FixSearchAndReplace.php:78 app/Module/SearchMenuModule.php:138
 msgid "Search and replace"
-msgstr ""
+msgstr "Najdi in zamenjaj"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixSearchAndReplace.php:89
@@ -12699,7 +12699,7 @@ msgstr ""
 
 #: resources/views/modules/media-list/page.phtml:76
 msgid "Search filters"
-msgstr ""
+msgstr "Filtri iskanja"
 
 #: resources/views/search-general-page.phtml:37
 #: resources/views/search-replace-page.phtml:26
@@ -12708,11 +12708,11 @@ msgstr "Poišči"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:38
 msgid "Search method"
-msgstr ""
+msgstr "Metoda iskanja"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:18
 msgid "Search text/pattern"
-msgstr ""
+msgstr "Iskanje besedila/vzorca"
 
 #: resources/views/modules/relationships-chart/config.phtml:24
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
@@ -12727,33 +12727,33 @@ msgstr "Seattle, Washington, Združene države Amerike"
 
 #: resources/views/admin/merge-records-step-1.phtml:106
 msgid "Second record"
-msgstr ""
+msgstr "Drugi zapis"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:151
 msgid "Secure connection"
-msgstr "SSL Prijava"
+msgstr "Zaščitena povezava"
 
 #. I18N: A configuration setting
 #: resources/views/modules/statcounter/form.phtml:18
 msgid "Security code"
-msgstr ""
+msgstr "Varnostna koda"
 
 #: resources/views/admin/site-mail.phtml:34
 #: resources/views/modules/fix-search-and-replace/options.phtml:45
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Oglejte si %s za več informacij."
 
 #: resources/views/admin/merge-records-step-2.phtml:48
 #: resources/views/admin/merge-records-step-2.phtml:95
 #: resources/views/admin/merge-records-step-2.phtml:141
 msgid "Select"
-msgstr ""
+msgstr "Izberi"
 
 #: resources/views/admin/trees-import.phtml:37
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "Izberite datoteko GEDCOM za uvoz"
 
 #: resources/views/edit/input-addon-calendar.phtml:13
 #: resources/views/edit/input-addon-calendar.phtml:16
@@ -12762,7 +12762,7 @@ msgstr "Izberi datum"
 
 #: resources/views/modules/lifespans-chart/page.phtml:39
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Izberi osebe glede na kraj ali datum"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:137
