@@ -151,9 +151,15 @@ parameters:
 			path: app/Cli/Commands/ConfigIni.php
 
 		-
-			message: '#^Binary operation "\." between ''Tree "'' and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
+			message: '#^Cannot call method addFromString\(\) on ZipArchive\|null\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/Cli/Commands/TreeExport.php
+
+		-
+			message: '#^Cannot call method close\(\) on ZipArchive\|null\.$#'
+			identifier: method.nonObject
+			count: 2
 			path: app/Cli/Commands/TreeExport.php
 
 		-

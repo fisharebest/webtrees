@@ -37,7 +37,7 @@ final class Console extends Application
         Commands\SiteOnline::class,
         Commands\SiteSetting::class,
         //Commands\TreeCreate::class,
-        //Commands\TreeExport::class,
+        Commands\TreeExport::class,
         Commands\TreeList::class,
         Commands\TreeSetting::class,
         //Commands\UserCreate::class,
