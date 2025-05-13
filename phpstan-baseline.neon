@@ -6325,6 +6325,12 @@ parameters:
 			path: app/Services/GedcomExportService.php
 
 		-
+			message: '#^Parameter \#2 \$content of method ZipArchive\:\:addFromString\(\) expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 2
+			path: app/Services/GedcomExportService.php
+
+		-
 			message: '#^Parameter \#2 \$subject of function preg_match expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
