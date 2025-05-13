@@ -151,9 +151,15 @@ parameters:
 			path: app/Cli/Commands/ConfigIni.php
 
 		-
-			message: '#^Binary operation "\." between ''Tree "'' and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
+			message: '#^Cannot call method addFromString\(\) on ZipArchive\|null\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/Cli/Commands/TreeExport.php
+
+		-
+			message: '#^Cannot call method close\(\) on ZipArchive\|null\.$#'
+			identifier: method.nonObject
+			count: 2
 			path: app/Cli/Commands/TreeExport.php
 
 		-
@@ -2387,12 +2393,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/PendingChangesRejectChange.php
-
-		-
-			message: '#^Offset 1 might not exist on array\{0\?\: string, 1\?\: string\}\.$#'
-			identifier: offsetAccess.notFound
-			count: 1
-			path: app/Http/RequestHandlers/PhpInformation.php
 
 		-
 			message: '#^Parameter \#2 \$subject of function preg_match expects string, string\|false given\.$#'
@@ -6331,6 +6331,12 @@ parameters:
 			path: app/Services/GedcomExportService.php
 
 		-
+			message: '#^Parameter \#2 \$content of method ZipArchive\:\:addFromString\(\) expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 2
+			path: app/Services/GedcomExportService.php
+
+		-
 			message: '#^Parameter \#2 \$subject of function preg_match expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -6825,12 +6831,6 @@ parameters:
 		-
 			message: '#^Method Fisharebest\\Webtrees\\Services\\PendingChangesService\:\:pendingXrefs\(\) should return Illuminate\\Support\\Collection\<int, string\> but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
 			identifier: return.type
-			count: 1
-			path: app/Services/PendingChangesService.php
-
-		-
-			message: '#^Offset 1 might not exist on array\{0\?\: string, 1\?\: non\-falsy\-string\}\.$#'
-			identifier: offsetAccess.notFound
 			count: 1
 			path: app/Services/PendingChangesService.php
 

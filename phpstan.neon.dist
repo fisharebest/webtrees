@@ -18,7 +18,3 @@ parameters:
 
     dynamicConstantNames:
         - Fisharebest\Webtrees\Webtrees::STABILITY
-
-    ignoreErrors:
-        - '#^Call to an undefined method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber::with\(\)\.$#'
-        - '#^Cannot call method willReturn\(\) on mixed\.$#'

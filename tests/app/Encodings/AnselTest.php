@@ -31,6 +31,7 @@ use function count;
 use function ctype_alpha;
 use function dechex;
 use function in_array;
+use function normalizer_normalize;
 use function preg_split;
 use function range;
 use function strlen;
@@ -141,7 +142,7 @@ class AnselTest extends TestCase
         foreach ($latin_code_blocks as $codes) {
             foreach ($codes as $code) {
                 $utf8 = UTF8::chr($code);
-                $norm = Normalizer::normalize($utf8, Normalizer::FORM_D);
+                $norm = normalizer_normalize($utf8, Normalizer::FORM_D);
                 self::assertIsString($norm);
 
                 if ($norm !== $utf8) {
