@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Fisharebest\Webtrees\Site;
 
 use function route;
 use function time;
@@ -130,8 +131,8 @@ class LoginAction implements RequestHandlerInterface
             Log::addAuthenticationLog('Login failed (not approved by admin): ' . $username);
             throw new Exception(I18N::translate('This account has not been approved. Please wait for an administrator to approve it.'));
         }
-        if ($user->getPreference(UserInterface::PREF_IS_STATUS_MFA) !== '') {
-          # covers scenario where 2fa not enabled by user
+        if ($user->getPreference(UserInterface::PREF_IS_STATUS_MFA) !== '' && Site::getPreference('SHOW_2FA_OPTION')) {
+          # MFA switched on for site and has been enabled by user
             if ($code2fa != '') {
                 if (!$user->check2FAcode($code2fa)) {
                     throw new Exception(I18N::translate('2FA code does not match. Please try again.'));
