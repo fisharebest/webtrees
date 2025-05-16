@@ -60,14 +60,14 @@ class LanguageGerman extends AbstractModule implements ModuleLanguageInterface
 
     public function relationships(): array
     {
-        // returns array => [nominativ, genitive %s] 
+        // returns array => [nominativ, genitive %s]
         // $genitive = static fn (string $prefix, string $suffix): array => [$prefix . $suffix, $prefix . 's' . $suffix . '%s'];
         $genitive = static fn (string $prefix, string $suffix, int $gender): array =>
             ($gender == 0) ? [$prefix . $suffix, '%s' . ' des ' . $prefix . 's' . $suffix] : (($gender == 1) ? [$prefix . $suffix, '%s' . ' der ' . $prefix . $suffix] : [$prefix . $suffix, '%s' . ' der ' . $prefix . $suffix]);
-        
+
         // $n <= -1 -> ''
-        // $n == 0 -> Ur 
-        // $n == 1 -> Urur 
+        // $n == 0 -> Ur
+        // $n == 1 -> Urur
         // $n >= 2 -> $n+1 ' x Ur'
         $ur = static fn (int $n, string $simpleGreat, string $suffix, int $gender): array => $genitive(
             (($n > 1) ?  ($n + 1) . ' x Ur' : (($n > -1) ? 'Ur' . str_repeat('ur', $n) : '')) . $simpleGreat,
@@ -164,7 +164,6 @@ class LanguageGerman extends AbstractModule implements ModuleLanguageInterface
             Relationship::fixed('Großmutter väterlicherseits', '%s der Großmutter (väterlicherseits)')->father()->mother(),
             Relationship::fixed('Großvater väterlicherseits', '%s des Großvaters (väterlicherseits)')->father()->father(),
             Relationship::fixed('Großeltern väterlicherseits', '%s der Großeltern (väterlicherseits)')->father()->parent(),
-            // 
             Relationship::fixed('Großmutter', '%s der Großmutter')->parent()->mother(),
             Relationship::fixed('Großvater', '%s des Großvaters')->parent()->father(),
             Relationship::fixed('Großeltern', '%s der Großeltern')->parent()->parent(),
