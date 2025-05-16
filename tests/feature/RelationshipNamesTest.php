@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Module\LanguageEnglishAustralia;
 use Fisharebest\Webtrees\Module\LanguageEnglishGreatBritain;
 use Fisharebest\Webtrees\Module\LanguageEnglishUnitedStates;
 use Fisharebest\Webtrees\Module\LanguageFrench;
+use Fisharebest\Webtrees\Module\LanguageGerman;
 use Fisharebest\Webtrees\Module\LanguageSlovakian;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\RelationshipService;
