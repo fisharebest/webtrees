@@ -23,7 +23,6 @@ use Fisharebest\Localization\Locale\LocaleDe;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Relationship;
 use Fisharebest\Webtrees\Encodings\UTF8;
-// use Illuminate\Database\Query\Builder;
 
 /**
  * Class LanguageGerman.
@@ -58,19 +57,22 @@ class LanguageGerman extends AbstractModule implements ModuleLanguageInterface
             UTF8::LATIN_SMALL_LETTER_SHARP_S   => 'ss',
         ];
     }
-	public function relationships(): array
+
+    public function relationships(): array
     {
         // returns array => [nominativ, genitive %s] 
         // $genitive = static fn (string $prefix, string $suffix): array => [$prefix . $suffix, $prefix . 's' . $suffix . '%s'];
-        $genitive = static fn (string $prefix, string $suffix, int $gender): array =>			
-		    ($gender == 0) ? [$prefix . $suffix, '%s' . ' des ' . $prefix . 's' . $suffix] : (($gender == 1) ? [$prefix . $suffix, '%s' . ' der ' . $prefix . $suffix] : [$prefix . $suffix, '%s' . ' der ' . $prefix . $suffix]);
-		
+        $genitive = static fn (string $prefix, string $suffix, int $gender): array =>
+            ($gender == 0) ? [$prefix . $suffix, '%s' . ' des ' . $prefix . 's' . $suffix] : (($gender == 1) ? [$prefix . $suffix, '%s' . ' der ' . $prefix . $suffix] : [$prefix . $suffix, '%s' . ' der ' . $prefix . $suffix]);
+        
+        // $n <= -1 -> ''
+        // $n == 0 -> Ur 
+        // $n == 1 -> Urur 
+        // $n >= 2 -> $n+1 ' x Ur'
         $ur = static fn (int $n, string $simpleGreat, string $suffix, int $gender): array => $genitive(
-		    (($n > 1) ?  ($n + 1) . ' x Ur' : (($n > -1) ? 'Ur' . str_repeat('ur', $n) : '')) . $simpleGreat, $suffix, $gender
-			// $n <= -1 -> ''
-			// $n == 0 -> Ur 
-			// $n == 1 -> Urur 
-			// $n >= 2 -> $n+1 ' x Ur'
+            (($n > 1) ?  ($n + 1) . ' x Ur' : (($n > -1) ? 'Ur' . str_repeat('ur', $n) : '')) . $simpleGreat,
+            $suffix,
+            $gender
         );
 
         return [
@@ -123,7 +125,7 @@ class LanguageGerman extends AbstractModule implements ModuleLanguageInterface
             Relationship::fixed('Stiefschwester', '%s der Stiefschwester')->parent()->spouse()->daughter(),
             Relationship::fixed('Stiefbruder', '%s des Stiefbruders')->parent()->spouse()->son(),
             Relationship::fixed('Stiefgeschwister', '%s der Stiefgeschwister')->parent()->spouse()->child(),
-			// Cousin / Cousine
+            // Cousin / Cousine
             Relationship::fixed('Cousine', '%s der Cousine')->parent()->sister()->child()->female(),
             Relationship::fixed('Cousine', '%s der Cousine')->parent()->brother()->child()->female(),
             Relationship::fixed('Cousin', '%s des Cousins')->parent()->sister()->child()->male(),
@@ -145,7 +147,7 @@ class LanguageGerman extends AbstractModule implements ModuleLanguageInterface
             Relationship::fixed('Schwiegertochter', '%s der Schwiegertochter')->child()->wife(),
             Relationship::fixed('Schwiegersohn', '%s des Schwiegersohnes')->child()->husband(),
             Relationship::fixed('Schwiegerkind', '%s des Schwiegerkindes')->child()->married()->spouse(),
-			//
+            //
             Relationship::fixed('Schwägerin', '%s der Schwägerin')->sibling()->spouse()->sister(),
             Relationship::fixed('Schwager', '%s des Schwagers')->sibling()->spouse()->brother(),
             Relationship::fixed('Schwager/Schwägerin', '%s des Schwagers / der Schwägerin')->sibling()->spouse()->sibling(),
@@ -162,7 +164,7 @@ class LanguageGerman extends AbstractModule implements ModuleLanguageInterface
             Relationship::fixed('Großmutter väterlicherseits', '%s der Großmutter (väterlicherseits)')->father()->mother(),
             Relationship::fixed('Großvater väterlicherseits', '%s des Großvaters (väterlicherseits)')->father()->father(),
             Relationship::fixed('Großeltern väterlicherseits', '%s der Großeltern (väterlicherseits)')->father()->parent(),
-			// 
+            // 
             Relationship::fixed('Großmutter', '%s der Großmutter')->parent()->mother(),
             Relationship::fixed('Großvater', '%s des Großvaters')->parent()->father(),
             Relationship::fixed('Großeltern', '%s der Großeltern')->parent()->parent(),
@@ -170,43 +172,43 @@ class LanguageGerman extends AbstractModule implements ModuleLanguageInterface
             Relationship::fixed('Enkelin', '%s der Enkelin')->child()->daughter(),
             Relationship::fixed('Enkel', '%s des Enkels')->child()->son(),
             Relationship::fixed('Enkelin/Enkel', '%s der Enkelin/des Enkels')->child()->child(),
-			// Nichte / Neffe
+            // Nichte / Neffe
             Relationship::fixed('Nichte', '%s der Nichte')->sibling()->daughter(),
-            Relationship::fixed('Nichte', '%s der Nichte')->married()->spouse()->sibling()->daughter(),			
+            Relationship::fixed('Nichte', '%s der Nichte')->married()->spouse()->sibling()->daughter(),
             Relationship::fixed('Neffe', '%s des Neffen')->sibling()->son(),
             Relationship::fixed('Neffe', '%s des Neffen')->married()->spouse()->sibling()->son(),
             Relationship::fixed('Nichte/Neffe', '%s der Nichte / des Neffen')->sibling()->child(),
             Relationship::fixed('Nichte/Neffe', '%s der Nichte/ des Neffen')->married()->spouse()->sibling()->child(),
-			// Großnichte / Großneffe
+            // Großnichte / Großneffe
             Relationship::fixed('Großnichte', '%s der Großnichte')->sibling()->child()->child()->female(),
             Relationship::fixed('Großnichte', '%s der Großnichte')->married()->spouse()->sibling()->child()->child()->female(),
             Relationship::fixed('Großneffe', '%s des Großneffen')->sibling()->child()->child()->male(),
             Relationship::fixed('Großneffe', '%s des Großneffen')->married()->spouse()->sibling()->child()->child()->male(),
-			// Tante / Onkel
+            // Tante / Onkel
             Relationship::fixed('Tante', '%s der Tante')->parent()->sister(),
             Relationship::fixed('Tante', '%s der Tante')->parent()->brother()->wife(),
             Relationship::fixed('Onkel', '%s des Onkels')->parent()->sister()->husband(),
             Relationship::fixed('Onkel', '%s des Onkels')->parent()->brother(),
-			// Großtante / Großonkel
+            // Großtante / Großonkel
             Relationship::fixed('Großtante', '%s der Großtante')->parent()->parent()->sister(),
             Relationship::fixed('Großtante', '%s der Großtante')->parent()->parent()->brother()->wife(),
             Relationship::fixed('Großonkel', '%s des Großonkels')->parent()->parent()->brother(),
             Relationship::fixed('Großonkel', '%s des Großonkels')->parent()->parent()->sister()->husband(),
             // Relationships with dynamically generated names
-			// ancestors: n=2 -> Urgroßmutter (mütterlicherseits) / Großmutter der Mutter
+            // ancestors: n=2 -> Urgroßmutter (mütterlicherseits) / Großmutter der Mutter
             Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großmutter', ' (mütterlicherseits)', 1))->mother()->ancestor()->female(),
             Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großvater', ' (mütterlicherseits)', 0))->mother()->ancestor()->male(),
             Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großmutter', ' (väterlicherseits)', 1))->father()->ancestor()->female(),
             Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großvater', ' (väterlicherseits)', 0))->father()->ancestor()->male(),
-			//
+            //
             Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großeltern', ' (väterlicherseits)', 2))->father()->ancestor(),
             Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großeltern', ' (mütterlicherseits)', 2))->mother()->ancestor(),
-			//
+            //
             Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großtante', '', 1))->ancestor()->sister(),
             Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großtante', '', 1))->ancestor()->sibling()->wife(),
             Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großonkel', '', 0))->ancestor()->brother(),
             Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großonkel', '', 0))->ancestor()->sibling()->husband(),
-			// descendants
+            // descendants
             Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großnichte', '', 1))->sibling()->descendant()->female(),
             Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großnichte', '', 1))->married()->spouse()->sibling()->descendant()->female(),
             Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großneffe', '', 0))->sibling()->descendant()->male(),
