@@ -400,7 +400,7 @@ class RelationshipNamesTest extends TestCase
             self::assertRelationships('Großmutter väterlicherseits', 'Enkelin', [$i4f, $f1m, $i1m, $f4m, $i12f], $en);
             self::assertRelationships('Großvater mütterlicherseits', 'Enkel', [$i3m, $f1m, $i2f, $f5m, $i13m], $en);
             self::assertRelationships('Großmutter mütterlicherseits', 'Enkelin/Enkel', [$i5u, $f1m, $i2f, $f5m, $i14f], $en);
-            self::assertRelationships('Urgroßvater (väterlicherseits) ', 'Urenkel', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i16m], $en);
+            self::assertRelationships('Urgroßvater (väterlicherseits)', 'Urenkel', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i16m], $en);
             // self::assertRelationships('paternal great-grandmother', 'great-granddaughter', [$i4f, $f1m, $i1m, $f4m, $i11m, $f7, $i17f], $en);
             // self::assertRelationships('paternal great-great-grandfather', 'great-great-grandson', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m], $en);
             // self::assertRelationships('paternal great-great-grandmother', 'great-great-granddaughter', [$i4f, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i19f], $en);
