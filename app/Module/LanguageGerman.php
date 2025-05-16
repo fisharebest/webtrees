@@ -194,26 +194,26 @@ class LanguageGerman extends AbstractModule implements ModuleLanguageInterface
             Relationship::fixed('Großonkel', '%s des Großonkels')->parent()->parent()->sister()->husband(),
             // Relationships with dynamically generated names
 			// ancestors: n=2 -> Urgroßmutter (mütterlicherseits) / Großmutter der Mutter
-            Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großmutter', ' (mütterlicherseits) ', 1))->mother()->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großvater', ' (mütterlicherseits) ', 0))->mother()->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großmutter', ' (väterlicherseits) ', 1))->father()->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großvater', ' (väterlicherseits) ', 0))->father()->ancestor()->male(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großmutter', ' (mütterlicherseits)', 1))->mother()->ancestor()->female(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großvater', ' (mütterlicherseits)', 0))->mother()->ancestor()->male(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großmutter', ' (väterlicherseits)', 1))->father()->ancestor()->female(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großvater', ' (väterlicherseits)', 0))->father()->ancestor()->male(),
 			//
-            Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großeltern', ' (väterlicherseits) ', 2))->father()->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großeltern', ' (mütterlicherseits) ', 2))->mother()->ancestor(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großeltern', ' (väterlicherseits)', 2))->father()->ancestor(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 2, 'großeltern', ' (mütterlicherseits)', 2))->mother()->ancestor(),
 			//
-            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großtante', ' ', 1))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großtante', ' ', 1))->ancestor()->sibling()->wife(),
-            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großonkel', ' ', 0))->ancestor()->brother(),
-            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großonkel', ' ', 0))->ancestor()->sibling()->husband(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großtante', '', 1))->ancestor()->sister(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großtante', '', 1))->ancestor()->sibling()->wife(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großonkel', '', 0))->ancestor()->brother(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großonkel', '', 0))->ancestor()->sibling()->husband(),
 			// descendants
-            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großnichte', ' ', 1))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großnichte', ' ', 1))->married()->spouse()->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großneffe', ' ', 0))->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großneffe'), ' ', 0)->married()->spouse()->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'enkelin', ' ', 1))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'enkel', ' ', 0))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'enkelin/enkel', ' ', 2))->descendant(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großnichte', '', 1))->sibling()->descendant()->female(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großnichte', '', 1))->married()->spouse()->sibling()->descendant()->female(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großneffe', '', 0))->sibling()->descendant()->male(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großneffe'), '', 0)->married()->spouse()->sibling()->descendant()->male(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'enkelin', '', 1))->descendant()->female(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'enkel', '', 0))->descendant()->male(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'enkelin/enkel', '', 2))->descendant(),
         ];
     }
 }
