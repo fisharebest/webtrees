@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-02-20 11:50+0000\n"
+"PO-Revision-Date: 2025-05-17 20:33+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
@@ -16909,7 +16909,7 @@ msgstr "e"
 #: app/Functions/Functions.php:1092
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr "tia"
+msgstr "tia paterna"
 
 #: app/Functions/Functions.php:848
 msgctxt "father’s sister"
@@ -16919,7 +16919,7 @@ msgstr "tia paterna"
 #: app/Functions/Functions.php:1154
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr "tia"
+msgstr "tia materna"
 
 #: app/Functions/Functions.php:886
 msgctxt "mother’s sister"
@@ -20524,7 +20524,7 @@ msgstr "tio paterno"
 #: app/Functions/Functions.php:1134
 msgctxt "father’s sister’s husband"
 msgid "uncle"
-msgstr "tio"
+msgstr "tio paterno"
 
 #: app/Functions/Functions.php:870
 msgctxt "mother’s brother"
@@ -20534,7 +20534,7 @@ msgstr "tio materno"
 #: app/Functions/Functions.php:1202
 msgctxt "mother’s sister’s husband"
 msgid "uncle"
-msgstr "tio"
+msgstr "tio materno"
 
 #: app/Functions/Functions.php:890
 msgctxt "parent’s brother"
