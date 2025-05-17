@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-02-20 11:50+0000\n"
+"PO-Revision-Date: 2025-05-17 20:33+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -16856,7 +16856,7 @@ msgstr "e"
 #: app/Services/RelationshipService.php:780
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr "tia"
+msgstr "tia paterna"
 
 #: app/Services/RelationshipService.php:538
 msgctxt "father’s sister"
@@ -16866,7 +16866,7 @@ msgstr "tia paterna"
 #: app/Services/RelationshipService.php:860
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr "tia"
+msgstr "tia materna"
 
 #: app/Services/RelationshipService.php:576
 msgctxt "mother’s sister"
@@ -20728,7 +20728,7 @@ msgstr "tio paterno"
 #: app/Services/RelationshipService.php:822
 msgctxt "father’s sister’s husband"
 msgid "uncle"
-msgstr "tio"
+msgstr "tio paterno"
 
 #: app/Services/RelationshipService.php:560
 msgctxt "mother’s brother"
@@ -20738,7 +20738,7 @@ msgstr "tio materno"
 #: app/Services/RelationshipService.php:908
 msgctxt "mother’s sister’s husband"
 msgid "uncle"
-msgstr "tio"
+msgstr "tio materno"
 
 #: app/Services/RelationshipService.php:580
 msgctxt "parent’s brother"
