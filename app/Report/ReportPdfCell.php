@@ -36,7 +36,7 @@ class ReportPdfCell extends ReportBaseCell
      *
      * @return void
      */
-    public function render($renderer): void
+    public function render($renderer, bool $headerorfoot=false): void  //sfqas
     {
         $temptext = str_replace('#PAGENUM#', (string) $renderer->tcpdf->PageNo(), $this->text);
         // underline «title» part of Source item
@@ -125,9 +125,12 @@ class ReportPdfCell extends ReportBaseCell
                 $cHT += $cM['cell'] * 2;
             }
             // Add a new page if needed
-            if ($renderer->checkPageBreakPDF($cHT)) {
-                $this->top = $renderer->tcpdf->GetY();
-            }
+            //sfqas
+			if ($renderer->tcpdf->checkPageBreak($cHT,null,false) and !$headerorfoot){
+				if ($renderer->checkPageBreakPDF($cHT)) {
+					$this->top = $renderer->tcpdf->GetY();
+				}
+			}
             $temptext = RightToLeftSupport::spanLtrRtl($temptext);
         }
         // HTML ready - last value is true
