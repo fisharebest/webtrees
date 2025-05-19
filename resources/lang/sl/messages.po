@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-05-19 12:41+0000\n"
+"PO-Revision-Date: 2025-05-20 07:41+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sl/>\n"
@@ -19702,17 +19702,17 @@ msgstr ""
 #: resources/views/lists/datatables-attributes.phtml:18
 #: resources/views/modules/media-list/pagination.phtml:55
 msgid "last"
-msgstr ""
+msgstr "zadnji"
 
 #: resources/views/admin/trees-preferences.phtml:570
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr ""
+msgstr "zadnji"
 
 #: app/Module/PedigreeChartModule.php:357
 #: app/Module/PedigreeChartModule.php:365
 msgid "left"
-msgstr ""
+msgstr "Levo"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -19722,12 +19722,12 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:311
 #: app/Module/YahrzeitModule.php:255
 msgid "list"
-msgstr ""
+msgstr "Seznam"
 
 #: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
-msgstr ""
+msgstr "lokalno"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
@@ -19737,7 +19737,7 @@ msgstr ""
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/Elements/NameType.php:83
 msgid "maiden name"
-msgstr ""
+msgstr "dekliško ime"
 
 #: resources/views/admin/trees-privacy.phtml:127
 msgid "managers"
@@ -19746,22 +19746,22 @@ msgstr "upravitelji"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: app/Http/RequestHandlers/TreePreferencesPage.php:108
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: resources/xml/reports/descendancy_report.xml:245
 msgctxt "FEMALE"
 msgid "married"
-msgstr ""
+msgstr "poročena"
 
 #: resources/xml/reports/descendancy_report.xml:176
 msgctxt "MALE"
 msgid "married"
-msgstr ""
+msgstr "poročen"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/Elements/NameType.php:85
 msgid "married name"
-msgstr ""
+msgstr "poročno ime"
 
 #: app/Services/RelationshipService.php:566
 msgctxt "mother’s father"
