@@ -29,6 +29,8 @@ use Fisharebest\Webtrees\Tree;
 
 <form method="post" action="<?= e(route(LoginAction::class, ['tree' => $tree?->name()])) ?>" class="wt-page-options wt-page-options-login">
     <input type="hidden" name="url" value="<?= e($url) ?>">
+    <input type="hidden" id="loginstage" name="loginstage" value="1">
+
 
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="username">
@@ -45,14 +47,6 @@ use Fisharebest\Webtrees\Tree;
         </label>
         <div class="col-sm-9 wt-page-options-value">
             <input autocomplete="current-password" class="form-control" id="password" name="password" required="required" type="password" data-wt-show-password-text="<?= e(I18N::translate('show')) ?>" data-wt-show-password-title="<?= e(I18N::translate('Show password')) ?>" data-wt-hide-password-text="<?= e(I18N::translate('hide')) ?>" data-wt-hide-password-title="<?= e(I18N::translate('Hide password')) ?>">
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="code2fa">
-            <?= I18N::translate('Google authenticator code [if enabled]') ?>
-        </label>
-        <div class="col-sm-9 wt-page-options-value">
-            <input class="form-control" id="code2fa" name="code2fa" type="text" value="">
         </div>
     </div>
     <div class="row">
