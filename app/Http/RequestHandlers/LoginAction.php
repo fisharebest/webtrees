@@ -68,28 +68,67 @@ class LoginAction implements RequestHandlerInterface
         $tree        = Validator::attributes($request)->treeOptional();
         $default_url = route(HomePage::class);
         $username    = Validator::parsedBody($request)->string('username');
-        $password    = Validator::parsedBody($request)->string('password');
-        $code2fa     = Validator::parsedBody($request)->string('code2fa');
-        $url         = Validator::parsedBody($request)->isLocalUrl()->string('url', $default_url);
+        $password    = Validator::parsedBody($request)->string('password','');
+        $loginstage    = Validator::parsedBody($request)->string('loginstage');
+        $code2fa     = Validator::parsedBody($request)->string('code2fa','');        
+        $url         = Validator::parsedBody($request)->isLocalUrl()->string('url', $default_url);        
+        $mfastatus   = Validator::parsedBody($request)->string('mfastatus','false');
 
         try {
-            $this->doLogin($username, $password, $code2fa);
+            if($loginstage == "1") {
+              $mfastatus = $this->doLogin($username, $password);           
+            }
+            else {
+              if($mfastatus == true) {  
+                 $this->doLogin_mfa($username, $code2fa);             
+              }              
+            }
+            #return redirect(route(LoginPageMfa::class, ['username' => $username]));
+               #$this->doLogin_mfa($username, $mfastatus);
+           
 
             if (Auth::isAdmin() && $this->upgrade_service->isUpgradeAvailable()) {
                 FlashMessages::addMessage(I18N::translate('A new version of webtrees is available.') . ' <a class="alert-link" href="' . e(route(UpgradeWizardPage::class)) . '">' . I18N::translate('Upgrade to webtrees %s.', '<span dir="ltr">' . $this->upgrade_service->latestVersion() . '</span>') . '</a>');
             }
 
             // Redirect to the target URL
-            return redirect($url);
+            #return redirect($url);
+            if($mfastatus == true) {
+                return redirect(route(LoginPageMfa::class, [
+                    'tree'     => $tree?->name(),
+                    'username' => $username,                
+                    'url'      => $url,
+                ]));
+            }
+            else {
+                $user = $this->user_service->findByIdentifier($username);
+                Auth::login($user);
+                Log::addAuthenticationLog('Login: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
+                Auth::user()->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, (string) time());
+            
+                Session::put('language', Auth::user()->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
+                Session::put('theme', Auth::user()->getPreference(UserInterface::PREF_THEME));
+                I18N::init(Auth::user()->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
+                return redirect($url);
+            }
+
         } catch (Exception $ex) {
             // Failed to log in.
-            FlashMessages::addMessage($ex->getMessage(), 'danger');
-
-            return redirect(route(LoginPage::class, [
+            FlashMessages::addMessage($ex->getMessage(), 'danger');  
+            if($loginstage == "2") {          
+            return redirect(route(LoginPageMfa::class, [
                 'tree'     => $tree?->name(),
-                'username' => $username,
+                'username' => $username,                
                 'url'      => $url,
             ]));
+            }
+            else {
+            return redirect(route(LoginPage::class, [
+                'tree'     => $tree?->name(),
+                'username' => $username,                
+                'url'      => $url,
+            ]));
+            }
         }
     }
 
@@ -98,12 +137,11 @@ class LoginAction implements RequestHandlerInterface
      *
      * @param string $username
      * @param string $password
-     * @param string $code2fa
      *
-     * @return void
+     * @return bool
      * @throws Exception
      */
-    private function doLogin(string $username, #[\SensitiveParameter] string $password, string $code2fa): void
+    private function doLogin(string $username, #[\SensitiveParameter] string $password): bool
     {
         if ($_COOKIE === []) {
             Log::addAuthenticationLog('Login failed (no session cookies): ' . $username);
@@ -131,22 +169,35 @@ class LoginAction implements RequestHandlerInterface
             Log::addAuthenticationLog('Login failed (not approved by admin): ' . $username);
             throw new Exception(I18N::translate('This account has not been approved. Please wait for an administrator to approve it.'));
         }
-        if ($user->getPreference(UserInterface::PREF_IS_STATUS_MFA) !== '' && Site::getPreference('SHOW_2FA_OPTION')) {
+        if ($user->getPreference(UserInterface::PREF_IS_STATUS_MFA) == "1" && Site::getPreference('SHOW_2FA_OPTION')) {
           # MFA switched on for site and has been enabled by user
-            if ($code2fa != '') {
-                if (!$user->check2FAcode($code2fa)) {
-                    throw new Exception(I18N::translate('2FA code does not match. Please try again.'));
-                }
-            } else {
-                    throw new Exception(I18N::translate('2FA code must be entered as you have 2FA authentication enabled. Please try again.'));
-            }
+          # return another page for the modal to pop up on
+          return true;
         }
+        else {
+            return false;
+        }
+    }
+
+    private function doLogin_mfa(string $username, string $code2fa): void
+    {
+        if ($code2fa != '') {
+            $user = $this->user_service->findByIdentifier($username);
+            if (!$user->check2FAcode($code2fa)) {
+                throw new Exception(I18N::translate('2FA code does not match. Please try again.'));
+            }
+        } else {
+                throw new Exception(I18N::translate('2FA code must be entered as you have 2FA authentication enabled. Please try again.'));
+        }
+    
         Auth::login($user);
         Log::addAuthenticationLog('Login: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
         Auth::user()->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, (string) time());
-
+    
         Session::put('language', Auth::user()->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
         Session::put('theme', Auth::user()->getPreference(UserInterface::PREF_THEME));
         I18N::init(Auth::user()->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
+    
     }
+    
 }
