@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-05-19 05:59+0000\n"
+"PO-Revision-Date: 2025-05-19 12:41+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sl/>\n"
@@ -17081,12 +17081,12 @@ msgstr "sprejeto"
 #: resources/views/modules/lifespans-chart/page.phtml:75
 #: resources/views/modules/timeline-chart/page.phtml:41
 msgid "add"
-msgstr "dodaj"
+msgstr "Dodaj"
 
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:147
 msgid "add place"
-msgstr "dodaj kraj"
+msgstr "Dodaj kraj"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/Elements/NameType.php:71
@@ -17175,11 +17175,11 @@ msgstr "teta/stric"
 
 #: resources/views/admin/trees-import.phtml:86
 msgid "automatic"
-msgstr "samodejno"
+msgstr "Samodejno"
 
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
-msgstr "nazaj na vrh"
+msgstr "Nazaj na vrh"
 
 #: app/Elements/GeneatiqueAct.php:43
 msgid "before"
@@ -17210,88 +17210,88 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:450
 msgid "brother"
-msgstr ""
+msgstr "brat"
 
 #: app/Services/RelationshipService.php:718
 msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "svak"
 
 #: app/Services/RelationshipService.php:544
 msgctxt "husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "svak"
 
 #: app/Services/RelationshipService.php:834
 msgctxt "husband’s sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "svak"
 
 #: app/Services/RelationshipService.php:612
 msgctxt "sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "svak"
 
 #: app/Services/RelationshipService.php:1018
 msgctxt "sister’s husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "svak"
 
 #: app/Services/RelationshipService.php:624
 msgctxt "spouse’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "svak"
 
 #: app/Services/RelationshipService.php:642
 msgctxt "wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "svak"
 
 #: app/Services/RelationshipService.php:1074
 msgctxt "wife’s sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "svak"
 
 #: app/Services/RelationshipService.php:720
 msgctxt "brother’s wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "svak/svakinja"
 
 #: app/Services/RelationshipService.php:554
 msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "svak/svakinja"
 
 #: app/Services/RelationshipService.php:606
 msgctxt "sibling’s spouse"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "svak/svakinja"
 
 #: app/Services/RelationshipService.php:1020
 msgctxt "sister’s husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "svak/svakinja"
 
 #: app/Services/RelationshipService.php:640
 msgctxt "spouse’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "svak/svakinja"
 
 #: app/Services/RelationshipService.php:652
 msgctxt "wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "svak/svakinja"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:265
 msgid "bullet list"
-msgstr ""
+msgstr "označeni seznam"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:192
 #, php-format
 msgid "calculated %s"
-msgstr ""
+msgstr "izračunano %s"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:46
@@ -17340,33 +17340,33 @@ msgstr ""
 #: resources/views/modules/stories/edit.phtml:76
 #: resources/views/modules/user_blog/edit.phtml:54
 msgid "cancel"
-msgstr "Prekini"
+msgstr "Prekliči"
 
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:65
 msgid "challenged"
-msgstr ""
+msgstr "izzvano"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:77
 msgid "change of name"
-msgstr ""
+msgstr "sprememba imena"
 
 #. I18N: button label
 #: resources/views/admin/control-panel.phtml:193
 #: resources/views/admin/control-panel.phtml:214
 msgid "check now"
-msgstr ""
+msgstr "Preveri zdaj"
 
 #: app/Elements/AgeAtEvent.php:90 app/Elements/RoleInEvent.php:78
 #: app/Services/RelationshipService.php:429
 msgid "child"
-msgstr ""
+msgstr "otrok"
 
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "citizen"
-msgstr ""
+msgstr "državljan"
 
 #: resources/views/admin/components.phtml:108
 #: resources/views/admin/components.phtml:129
@@ -17380,7 +17380,7 @@ msgstr ""
 #: resources/views/modules/favorites/favorites.phtml:58
 #: resources/views/modules/privacy-policy/footer.phtml:25
 msgid "close"
-msgstr ""
+msgstr "Zapri"
 
 #. I18N: Name of a theme.
 #: app/Module/CloudsTheme.php:43
@@ -17395,7 +17395,7 @@ msgstr ""
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:267
 msgid "compact list"
-msgstr ""
+msgstr "zgoščeni seznam"
 
 #. I18N: A button label.
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:291
@@ -17415,17 +17415,17 @@ msgstr ""
 #: resources/views/register-page.phtml:101
 #: resources/views/report-select-page.phtml:40
 msgid "continue"
-msgstr "naprej"
+msgstr "Nadaljuj"
 
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
 msgid "copy"
-msgstr ""
+msgstr "Kopiraj"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
 msgid "create"
-msgstr ""
+msgstr "Ustvari"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
@@ -17434,45 +17434,45 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
-msgstr "Obdobja med datumi"
+msgstr "Datumska obdobja"
 
 #: app/Services/RelationshipService.php:427
 msgid "daughter"
-msgstr "Hči"
+msgstr "hči"
 
 #: resources/xml/reports/descendancy_report.xml:226
 msgid "daughter of"
-msgstr ""
+msgstr "hčerjo staršev"
 
 #: app/Services/RelationshipService.php:514
 msgctxt "child’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "snaha"
 
 #: app/Services/RelationshipService.php:622
 msgctxt "son’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "snaha"
 
 #: app/Services/RelationshipService.php:1066
 msgctxt "son’s wife’s father"
 msgid "daughter-in-law’s father"
-msgstr ""
+msgstr "snahin oče"
 
 #: app/Services/RelationshipService.php:1068
 msgctxt "son’s wife’s mother"
 msgid "daughter-in-law’s mother"
-msgstr ""
+msgstr "snahina mati"
 
 #: app/Services/RelationshipService.php:1070
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr ""
+msgstr "snahin starš"
 
 #: resources/views/admin/location-edit.phtml:47
 #: resources/views/admin/location-edit.phtml:54
 msgid "degrees"
-msgstr ""
+msgstr "stopinje"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:115
@@ -17481,30 +17481,30 @@ msgstr ""
 #: resources/views/admin/site-logs.phtml:107
 #: resources/views/admin/users-cleanup.phtml:78
 msgid "delete"
-msgstr ""
+msgstr "Izbriši"
 
 #: resources/xml/reports/descendancy_report.xml:137
 #: resources/xml/reports/descendancy_report.xml:365
 msgctxt "FEMALE"
 msgid "died"
-msgstr ""
+msgstr "umrla"
 
 #: resources/xml/reports/descendancy_report.xml:134
 #: resources/xml/reports/descendancy_report.xml:435
 msgctxt "MALE"
 msgid "died"
-msgstr ""
+msgstr "umrl"
 
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:66
 msgid "disproven"
-msgstr ""
+msgstr "ovrženo"
 
 #: app/Module/PedigreeChartModule.php:360
 #: app/Module/PedigreeChartModule.php:368
 #: resources/views/edit/reorder-card-header.phtml:32
 msgid "down"
-msgstr ""
+msgstr "Dol"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:110
@@ -17514,11 +17514,11 @@ msgstr ""
 #: resources/views/report-setup-page.phtml:82
 #: resources/views/report-setup-page.phtml:95
 msgid "download"
-msgstr "prenos"
+msgstr "Prenos"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:19
 msgid "d’Aboville number"
-msgstr ""
+msgstr "d’Aboville-ovo število"
 
 #: resources/views/admin/components.phtml:141
 #: resources/views/family-page-menu.phtml:29
@@ -17526,7 +17526,7 @@ msgstr ""
 #: resources/views/media-page-menu.phtml:28
 #: resources/views/record-page-menu.phtml:23
 msgid "edit"
-msgstr ""
+msgstr "Uredi"
 
 #: app/Services/RelationshipService.php:2337
 msgid "eighth cousin"
@@ -17545,15 +17545,15 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:445
 msgid "elder brother"
-msgstr ""
+msgstr "starejši brat"
 
 #: app/Services/RelationshipService.php:487
 msgid "elder sibling"
-msgstr ""
+msgstr "starejši sorojenec"
 
 #: app/Services/RelationshipService.php:466
 msgid "elder sister"
-msgstr ""
+msgstr "starejša sestra"
 
 #: app/Services/RelationshipService.php:2343
 msgid "eleventh cousin"
@@ -17573,71 +17573,71 @@ msgstr ""
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/Elements/NameType.php:79
 msgid "estate name"
-msgstr ""
+msgstr "hišno ime"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:196
 #, php-format
 msgid "estimated %s"
-msgstr ""
+msgstr "ocenjeno %s"
 
 #: app/Services/RelationshipService.php:364
 msgid "ex-husband"
-msgstr ""
+msgstr "bivši mož"
 
 #: app/Services/RelationshipService.php:411
 msgid "ex-spouse"
-msgstr ""
+msgstr "bivši zakonec"
 
 #: app/Services/RelationshipService.php:388
 msgid "ex-wife"
-msgstr ""
+msgstr "bivša žena"
 
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:153
 msgid "export file"
-msgstr ""
+msgstr "Izvozi datoteko"
 
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
 msgid "extract"
-msgstr ""
+msgstr "izvleček"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
 msgid "facts"
-msgstr ""
+msgstr "dejstva"
 
 #: app/Elements/RoleInEvent.php:82 app/Services/RelationshipService.php:350
 msgid "father"
-msgstr ""
+msgstr "oče"
 
 #: app/Services/RelationshipService.php:550
 msgctxt "husband’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "tast"
 
 #: app/Services/RelationshipService.php:630
 msgctxt "spouse’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "tast"
 
 #: app/Services/RelationshipService.php:648
 msgctxt "wife’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "tast"
 
 #: app/Services/RelationshipService.php:368
 msgid "fiancé"
-msgstr ""
+msgstr "zaročenec"
 
 #: app/Services/RelationshipService.php:415
 msgid "fiancé(e)"
-msgstr ""
+msgstr "zaročenec/zaročenka"
 
 #: app/Services/RelationshipService.php:392
 msgid "fiancée"
-msgstr ""
+msgstr "zaročenka"
 
 #: app/Services/RelationshipService.php:2351
 msgid "fifteenth cousin"
@@ -17695,12 +17695,12 @@ msgstr ""
 #: resources/views/lists/datatables-attributes.phtml:16
 #: resources/views/modules/media-list/pagination.phtml:27
 msgid "first"
-msgstr ""
+msgstr "prva"
 
 #: resources/views/admin/trees-preferences.phtml:570
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr ""
+msgstr "prvih"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2420
@@ -17740,62 +17740,62 @@ msgstr ""
 #: app/Services/RelationshipService.php:774
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "bratranec/sestrična"
 
 #: app/Services/RelationshipService.php:776
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "sestrična"
 
 #: app/Services/RelationshipService.php:778
 msgctxt "father’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "bratranec"
 
 #: app/Services/RelationshipService.php:818
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "bratranec/sestrična"
 
 #: app/Services/RelationshipService.php:820
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "sestrična"
 
 #: app/Services/RelationshipService.php:824
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "bratranec"
 
 #: app/Services/RelationshipService.php:854
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "bratranec/sestrična"
 
 #: app/Services/RelationshipService.php:856
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "sestrična"
 
 #: app/Services/RelationshipService.php:858
 msgctxt "mother’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "bratranec"
 
 #: app/Services/RelationshipService.php:904
 msgctxt "mother’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "bratranec/sestrična"
 
 #: app/Services/RelationshipService.php:906
 msgctxt "mother’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "sestrična"
 
 #: app/Services/RelationshipService.php:910
 msgctxt "mother’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "bratranec"
 
 #: app/Services/RelationshipService.php:1154
 msgctxt "father’s father’s brother’s child"
@@ -17986,23 +17986,23 @@ msgstr[3] ""
 #: app/Date.php:212
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "od %s"
 
 #. I18N: Gedcom FROM-TO dates
 #: app/Date.php:224
 #, php-format
 msgid "from %s to %s"
-msgstr ""
+msgstr "od %s do %s"
 
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php:506
 msgid "full circle"
-msgstr ""
+msgstr "Polni krog"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "geographic"
-msgstr ""
+msgstr "geografsko"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:49
@@ -19531,57 +19531,57 @@ msgstr ""
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php:502
 msgid "half circle"
-msgstr ""
+msgstr "Polkrog"
 
 #: app/Services/RelationshipService.php:540
 msgctxt "father’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "polbrat"
 
 #: app/Services/RelationshipService.php:578
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "polbrat"
 
 #: app/Services/RelationshipService.php:596
 msgctxt "parent’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "polbrat"
 
 #: app/Services/RelationshipService.php:526
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "pol-sorojenec"
 
 #: app/Services/RelationshipService.php:562
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "pol-sorojenec"
 
 #: app/Services/RelationshipService.php:582
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "pol-sorojenec"
 
 #: app/Services/RelationshipService.php:528
 msgctxt "father’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "polsestra"
 
 #: app/Services/RelationshipService.php:564
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "polsestra"
 
 #: app/Services/RelationshipService.php:584
 msgctxt "parent’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "polsestra"
 
 #. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php:243
 msgid "herself"
-msgstr ""
+msgstr "ona sama"
 
 #: resources/views/admin/site-mail.phtml:152
 #: resources/views/admin/tags.phtml:70 resources/views/admin/tags.phtml:84
@@ -19627,21 +19627,21 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsrv.phtml:85
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "hide"
-msgstr ""
+msgstr "Skrij"
 
 #. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php:240
 msgid "himself"
-msgstr ""
+msgstr "on sam"
 
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:54
 msgid "household"
-msgstr ""
+msgstr "gospodinjstvo"
 
 #: app/Elements/RoleInEvent.php:79 app/Services/RelationshipService.php:366
 msgid "husband"
-msgstr ""
+msgstr "mož"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/Elements/NameType.php:81
@@ -19655,7 +19655,7 @@ msgstr ""
 
 #: app/Elements/AgeAtEvent.php:93
 msgid "infant"
-msgstr "Dojenček"
+msgstr "dojenček"
 
 #: app/Elements/NoteStructure.php:65
 msgid "inline note"
