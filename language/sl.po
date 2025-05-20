@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-05-20 07:41+0000\n"
+"PO-Revision-Date: 2025-05-21 11:28+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sl/>\n"
@@ -572,7 +572,7 @@ msgstr "%s, njeni predniki in njihove družine"
 #: app/Module/ClippingsCartModule.php:184
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr "%s, njeni starši in sorojenci"
+msgstr "%s, njeni starši in bratje/sestre"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:200
@@ -596,7 +596,7 @@ msgstr "%s, njegovi predniki in njihove družine"
 #: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr "%s, njegovi starši in sorojenci"
+msgstr "%s, njegovi starši in bratje/sestre"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:203
@@ -1719,7 +1719,7 @@ msgstr "Posvojitev polbrata"
 
 #: app/GedcomTag.php:912
 msgid "Adoption of a half-sibling"
-msgstr "Posvojitev pol-sorojenca"
+msgstr "Posvojitev polbrata/polsestre"
 
 #: app/GedcomTag.php:910
 msgid "Adoption of a half-sister"
@@ -1727,7 +1727,7 @@ msgstr "Posvojitev polsestre"
 
 #: app/GedcomTag.php:921
 msgid "Adoption of a sibling"
-msgstr "Posvojitev sorojenca"
+msgstr "Posvojitev brata/sestre"
 
 #: app/GedcomTag.php:919
 msgid "Adoption of a sister"
@@ -1803,7 +1803,7 @@ msgstr "Starost med možem in ženo"
 
 #: statistics.php:330
 msgid "Age between siblings"
-msgstr "Starost med sorojenci"
+msgstr "Starost med brati/sestrami"
 
 #: statistics.php:339
 msgid "Age between wife and husband"
@@ -2616,7 +2616,7 @@ msgstr "Krst polbrata"
 
 #: app/GedcomTag.php:1016
 msgid "Baptism of a half-sibling"
-msgstr "Krst pol-sorojenca"
+msgstr "Krst polbrata/polsestre"
 
 #: app/GedcomTag.php:1014
 msgid "Baptism of a half-sister"
@@ -2624,7 +2624,7 @@ msgstr "Krst polsestre"
 
 #: app/GedcomTag.php:1025
 msgid "Baptism of a sibling"
-msgstr "Krst sorojenca"
+msgstr "Krst brata/sestre"
 
 #: app/GedcomTag.php:1023
 msgid "Baptism of a sister"
@@ -2939,7 +2939,7 @@ msgstr "Rojstvo polbrata"
 
 #: app/GedcomTag.php:1074
 msgid "Birth of a half-sibling"
-msgstr "Rojstvo pol-sorojenca"
+msgstr "Rojstvo polbrata/polsestre"
 
 #: app/GedcomTag.php:1072
 msgid "Birth of a half-sister"
@@ -2947,7 +2947,7 @@ msgstr "Rojstvo polsestre"
 
 #: app/GedcomTag.php:1083
 msgid "Birth of a sibling"
-msgstr "Rojstvo sorojenca"
+msgstr "Rojstvo brata/sestre"
 
 #: app/GedcomTag.php:1081
 msgid "Birth of a sister"
@@ -3260,7 +3260,7 @@ msgstr "Pokop polbrata"
 
 #: app/GedcomTag.php:1163
 msgid "Burial of a half-sibling"
-msgstr "Pokop pol-sorojenca"
+msgstr "Pokop polbrata/polsestre"
 
 #: app/GedcomTag.php:1161
 msgid "Burial of a half-sister"
@@ -3304,7 +3304,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1181
 msgid "Burial of a sibling"
-msgstr "Pokop sorojenca"
+msgstr "Pokop brata/sestre"
 
 #: app/GedcomTag.php:1179
 msgid "Burial of a sister"
@@ -3819,7 +3819,7 @@ msgstr "Krst polbrata"
 
 #: app/GedcomTag.php:1235
 msgid "Christening of a half-sibling"
-msgstr "Krst pol-sorojenca"
+msgstr "Krst polbrata/polsestre"
 
 #: app/GedcomTag.php:1233
 msgid "Christening of a half-sister"
@@ -3827,7 +3827,7 @@ msgstr "Krst polsestre"
 
 #: app/GedcomTag.php:1244
 msgid "Christening of a sibling"
-msgstr "Krst sorojenca"
+msgstr "Krst brata/sestre"
 
 #: app/GedcomTag.php:1242
 msgid "Christening of a sister"
@@ -4303,7 +4303,7 @@ msgstr "Upepelitev polbrata"
 
 #: app/GedcomTag.php:1320
 msgid "Cremation of a half-sibling"
-msgstr "Upepelitev pol-sorojenca"
+msgstr "Upepelitev polbrata/polsestre"
 
 #: app/GedcomTag.php:1318
 msgid "Cremation of a half-sister"
@@ -4339,7 +4339,7 @@ msgstr "Upepelitev očetove matere"
 
 #: app/GedcomTag.php:1338
 msgid "Cremation of a sibling"
-msgstr "Upepelitev sorojenca"
+msgstr "Upepelitev brata/sestre"
 
 #: app/GedcomTag.php:1336
 msgid "Cremation of a sister"
@@ -4880,7 +4880,7 @@ msgstr "Smrt polbrata"
 
 #: app/GedcomTag.php:1423
 msgid "Death of a half-sibling"
-msgstr "Smrt pol-sorojenca"
+msgstr "Smrt polbrata/polsestre"
 
 #: app/GedcomTag.php:1421
 msgid "Death of a half-sister"
@@ -4916,7 +4916,7 @@ msgstr "Smrt očetove matere"
 
 #: app/GedcomTag.php:1441
 msgid "Death of a sibling"
-msgstr "Smrt sorojenca"
+msgstr "Smrt brata/sestre"
 
 #: app/GedcomTag.php:1439
 msgid "Death of a sister"
@@ -6561,8 +6561,8 @@ msgstr ""
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
 msgstr ""
 "Na primer, če določite dolžino poti 2, bo oseba lahko videla svojega vnuka ("
-"otrok, otrok), svojo teto (starš, sorojenec), svojo pastorko (zakonec, otrok)"
-", ne pa tudi svojega prvega bratranca (starš, sorojenec, otrok)."
+"otrok, otrok), svojo teto (starš, brat/sestra), svojo pastorko (zakonec, "
+"otrok), ne pa tudi svojega prvega bratranca (starš, brat/sestra, otrok)."
 
 #: app/Theme/AbstractTheme.php:296
 #, php-format
@@ -7000,7 +7000,7 @@ msgstr "Najvišja starost ob smrti"
 
 #: statistics.php:331
 msgid "Greatest age between siblings"
-msgstr "Največja razlika v starosti med sorojenci"
+msgstr "Največja razlika v starosti med brati/sestrami"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6763
@@ -8895,7 +8895,7 @@ msgstr "Poroka polbrata"
 
 #: app/GedcomTag.php:1614
 msgid "Marriage of a half-sibling"
-msgstr "Poroka pol-sorojenca"
+msgstr "Poroka polbrata/polsestre"
 
 #: app/GedcomTag.php:1612
 msgid "Marriage of a half-sister"
@@ -8913,7 +8913,7 @@ msgstr "Poroka starša"
 
 #: app/GedcomTag.php:1638
 msgid "Marriage of a sibling"
-msgstr "Poroka sorojenca"
+msgstr "Poroka brata/sestre"
 
 #: app/GedcomTag.php:1636
 msgid "Marriage of a sister"
@@ -10679,7 +10679,7 @@ msgstr "Starši"
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Parents and siblings"
-msgstr "Starši in sorojenci"
+msgstr "Starši in bratje/sestre"
 
 #: app/Functions/FunctionsPrint.php:280
 msgid "Parent’s age"
@@ -12941,12 +12941,12 @@ msgstr "Prikazanih %1$s do %2$s od %3$s"
 #: app/Controller/HourglassController.php:358
 #: app/Controller/PedigreeController.php:285
 msgid "Sibling"
-msgstr "Sorojenec"
+msgstr "Brat/sestra"
 
 #: app/Controller/HourglassController.php:358
 #: app/Controller/PedigreeController.php:285
 msgid "Siblings"
-msgstr "Sorojenci"
+msgstr "Bratje/sestre"
 
 #: admin_module_sidebar.php:87 admin_modules.php:218
 msgid "Sidebar"
@@ -17042,7 +17042,7 @@ msgstr "starejši brat"
 
 #: app/Functions/Functions.php:797
 msgid "elder sibling"
-msgstr "starejši sorojenec"
+msgstr "starejši brat/sestra"
 
 #: app/Functions/Functions.php:780
 msgid "elder sister"
@@ -18982,17 +18982,17 @@ msgstr "polbrat"
 #: app/Functions/Functions.php:836
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr "pol-sorojenec"
+msgstr "polbrat/polsestra"
 
 #: app/Functions/Functions.php:872
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr "pol-sorojenec"
+msgstr "polbrat/polsestra"
 
 #: app/Functions/Functions.php:892
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr "pol-sorojenec"
+msgstr "polbrat/polsestra"
 
 #: app/Functions/Functions.php:838
 msgctxt "father’s daughter"
@@ -19091,25 +19091,25 @@ msgstr ""
 #: app/Date/FrenchDate.php:100
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "dodatni dnevi"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:166
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr ""
+msgstr "dodatni dnevi"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:133
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "dodatni dnevi"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:67
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "dodatni dnevi"
 
 #. I18N: A button label, last page
 #: admin_trees_config.php:1508 app/I18N.php:223
