@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-05-20 07:41+0000\n"
+"PO-Revision-Date: 2025-05-21 11:28+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sl/>\n"
@@ -487,7 +487,7 @@ msgstr "%s, njeni predniki in njihove družine"
 #: app/Module/ClippingsCartModule.php:457
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr "%s, njeni starši in sorojenci"
+msgstr "%s, njeni starši in bratje/sestre"
 
 #: app/Module/ClippingsCartModule.php:458
 #, php-format
@@ -507,7 +507,7 @@ msgstr "%s, njegovi predniki in njihove družine"
 #: app/Module/ClippingsCartModule.php:466
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr "%s, njegovi starši in sorojenci"
+msgstr "%s, njegovi starši in bratje/sestre"
 
 #: app/Module/ClippingsCartModule.php:467
 #, php-format
@@ -1384,7 +1384,7 @@ msgstr "Dodaj opombo"
 
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a sibling"
-msgstr "Dodaj sorojenca"
+msgstr "Dodaj brata/sestro"
 
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a sister"
@@ -1665,7 +1665,7 @@ msgstr "Posvojitev polbrata"
 
 #: app/Services/IndividualFactsService.php:257
 msgid "Adoption of a half-sibling"
-msgstr "Posvojitev pol-sorojenca"
+msgstr "Posvojitev polbrata/polsestre"
 
 #: app/Services/IndividualFactsService.php:256
 msgid "Adoption of a half-sister"
@@ -1673,7 +1673,7 @@ msgstr "Posvojitev polsestre"
 
 #: app/Services/IndividualFactsService.php:234
 msgid "Adoption of a sibling"
-msgstr "Posvojitev sorojenca"
+msgstr "Posvojitev brata/sestre"
 
 #: app/Services/IndividualFactsService.php:233
 msgid "Adoption of a sister"
@@ -1735,7 +1735,7 @@ msgstr "Starost med možem in ženo"
 
 #: resources/views/modules/statistics-chart/age-difference.phtml:17
 msgid "Age between siblings"
-msgstr "Starost med sorojenci"
+msgstr "Starost med brati/sestrami"
 
 #: resources/views/modules/statistics-chart/age-difference.phtml:46
 msgid "Age between wife and husband"
@@ -2545,7 +2545,7 @@ msgstr "Krst polbrata"
 
 #: app/Services/IndividualFactsService.php:252
 msgid "Baptism of a half-sibling"
-msgstr "Krst pol-sorojenca"
+msgstr "Krst polbrata/polsestre"
 
 #: app/Services/IndividualFactsService.php:251
 msgid "Baptism of a half-sister"
@@ -2553,7 +2553,7 @@ msgstr "Krst polsestre"
 
 #: app/Services/IndividualFactsService.php:229
 msgid "Baptism of a sibling"
-msgstr "Krst sorojenca"
+msgstr "Krst brata/sestre"
 
 #: app/Services/IndividualFactsService.php:228
 msgid "Baptism of a sister"
@@ -2875,7 +2875,7 @@ msgstr "Rojstvo polbrata"
 
 #: app/Services/IndividualFactsService.php:242
 msgid "Birth of a half-sibling"
-msgstr "Rojstvo pol-sorojenca"
+msgstr "Rojstvo polbrata/polsestre"
 
 #: app/Services/IndividualFactsService.php:241
 msgid "Birth of a half-sister"
@@ -2884,7 +2884,7 @@ msgstr "Rojstvo polsestre"
 #: app/Services/IndividualFactsService.php:219
 #: resources/views/admin/trees-preferences.phtml:442
 msgid "Birth of a sibling"
-msgstr "Rojstvo sorojenca"
+msgstr "Rojstvo brata/sestre"
 
 #: app/Services/IndividualFactsService.php:218
 msgid "Birth of a sister"
@@ -3175,7 +3175,7 @@ msgstr "Pokop polbrata"
 
 #: app/Services/IndividualFactsService.php:375
 msgid "Burial of a half-sibling"
-msgstr "Pokop pol-sorojenca"
+msgstr "Pokop polbrata/polsestre"
 
 #: app/Services/IndividualFactsService.php:374
 msgid "Burial of a half-sister"
@@ -3211,7 +3211,7 @@ msgstr "Pokop očetove matere"
 
 #: app/Services/IndividualFactsService.php:357
 msgid "Burial of a sibling"
-msgstr "Pokop sorojenca"
+msgstr "Pokop brata/sestre"
 
 #: app/Services/IndividualFactsService.php:356
 msgid "Burial of a sister"
@@ -3719,7 +3719,7 @@ msgstr "Krst polbrata"
 
 #: app/Services/IndividualFactsService.php:247
 msgid "Christening of a half-sibling"
-msgstr "Krst pol-sorojenca"
+msgstr "Krst polbrata/polsestre"
 
 #: app/Services/IndividualFactsService.php:246
 msgid "Christening of a half-sister"
@@ -3727,7 +3727,7 @@ msgstr "Krst polsestre"
 
 #: app/Services/IndividualFactsService.php:224
 msgid "Christening of a sibling"
-msgstr "Krst sorojenca"
+msgstr "Krst brata/sestre"
 
 #: app/Services/IndividualFactsService.php:223
 msgid "Christening of a sister"
@@ -4292,7 +4292,7 @@ msgstr "Upepelitev polbrata"
 
 #: app/Services/IndividualFactsService.php:380
 msgid "Cremation of a half-sibling"
-msgstr "Upepelitev pol-sorojenca"
+msgstr "Upepelitev polbrata/polsestre"
 
 #: app/Services/IndividualFactsService.php:379
 msgid "Cremation of a half-sister"
@@ -4328,7 +4328,7 @@ msgstr "Upepelitev očetove matere"
 
 #: app/Services/IndividualFactsService.php:362
 msgid "Cremation of a sibling"
-msgstr "Upepelitev sorojenca"
+msgstr "Upepelitev brata/sestre"
 
 #: app/Services/IndividualFactsService.php:361
 msgid "Cremation of a sister"
@@ -4968,7 +4968,7 @@ msgstr "Smrt polbrata"
 
 #: app/Services/IndividualFactsService.php:370
 msgid "Death of a half-sibling"
-msgstr "Smrt pol-sorojenca"
+msgstr "Smrt polbrata/polsestre"
 
 #: app/Services/IndividualFactsService.php:369
 msgid "Death of a half-sister"
@@ -5008,7 +5008,7 @@ msgstr "Smrt očetove matere"
 #: app/Services/IndividualFactsService.php:352
 #: resources/views/admin/trees-preferences.phtml:488
 msgid "Death of a sibling"
-msgstr "Smrt sorojenca"
+msgstr "Smrt brata/sestre"
 
 #: app/Services/IndividualFactsService.php:351
 msgid "Death of a sister"
@@ -6699,8 +6699,8 @@ msgstr ""
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
 msgstr ""
 "Na primer, če določite dolžino poti 2, bo oseba lahko videla svojega vnuka ("
-"otrok, otrok), svojo teto (starš, sorojenec), svojo pastorko (zakonec, otrok)"
-", ne pa tudi svojega prvega bratranca (starš, sorojenec, otrok)."
+"otrok, otrok), svojo teto (starš, brat/sestra), svojo pastorko (zakonec, "
+"otrok), ne pa tudi svojega prvega bratranca (starš, brat/sestra, otrok)."
 
 #: resources/views/help/data-fixes.phtml:14
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
@@ -7211,7 +7211,7 @@ msgstr "Najvišja starost ob smrti"
 
 #: resources/views/modules/statistics-chart/age-difference.phtml:26
 msgid "Greatest age between siblings"
-msgstr "Največja razlika v starosti med sorojenci"
+msgstr "Največja razlika v starosti med brati/sestrami"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:223
@@ -9322,7 +9322,7 @@ msgstr "Poroka polbrata"
 
 #: app/Services/IndividualFactsService.php:471
 msgid "Marriage of a half-sibling"
-msgstr "Poroka pol-sorojenca"
+msgstr "Poroka polbrata/polsestre"
 
 #: app/Services/IndividualFactsService.php:470
 msgid "Marriage of a half-sister"
@@ -9340,7 +9340,7 @@ msgstr "Poroka starša"
 #: app/Services/IndividualFactsService.php:465
 #: resources/views/admin/trees-preferences.phtml:462
 msgid "Marriage of a sibling"
-msgstr "Poroka sorojenca"
+msgstr "Poroka brata/sestre"
 
 #: app/Services/IndividualFactsService.php:464
 msgid "Marriage of a sister"
@@ -11138,7 +11138,7 @@ msgstr "Starši"
 #: resources/xml/reports/relative_ext_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:41
 msgid "Parents and siblings"
-msgstr "Starši in sorojenci"
+msgstr "Starši in bratje/sestre"
 
 #: resources/views/fact-parent-age.phtml:42
 msgid "Parent’s age"
@@ -13507,11 +13507,11 @@ msgstr "Prikazanih %1$s do %2$s od %3$s"
 
 #: resources/views/modules/pedigree-chart/previous.phtml:24
 msgid "Sibling"
-msgstr "Sorojenec"
+msgstr "Brat/sestra"
 
 #: resources/views/modules/pedigree-chart/previous.phtml:22
 msgid "Siblings"
-msgstr "Sorojenci"
+msgstr "Bratje/sestre"
 
 #: resources/views/admin/modules.phtml:185
 #: resources/views/admin/modules.phtml:188
@@ -17586,7 +17586,7 @@ msgstr "starejši brat"
 
 #: app/Services/RelationshipService.php:488
 msgid "elder sibling"
-msgstr "starejši sorojenec"
+msgstr "starejši brat/sestra"
 
 #: app/Services/RelationshipService.php:467
 msgid "elder sister"
@@ -19588,17 +19588,17 @@ msgstr "polbrat"
 #: app/Services/RelationshipService.php:527
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr "pol-sorojenec"
+msgstr "polbrat/polsestra"
 
 #: app/Services/RelationshipService.php:563
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr "pol-sorojenec"
+msgstr "polbrat/polsestra"
 
 #: app/Services/RelationshipService.php:583
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr "pol-sorojenec"
+msgstr "polbrat/polsestra"
 
 #: app/Services/RelationshipService.php:529
 msgctxt "father’s daughter"
@@ -19713,25 +19713,25 @@ msgstr ""
 #: app/Date/FrenchDate.php:173
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "dodatni dnevi"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:267
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr ""
+msgstr "dodatni dnevi"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:220
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "dodatni dnevi"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:126
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "dodatni dnevi"
 
 #. I18N: A button label, last page
 #: resources/views/admin/trees-preferences.phtml:561
