@@ -175,6 +175,54 @@ parameters:
 			path: app/Cli/Commands/TreeExport.php
 
 		-
+			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: app/Cli/Commands/TreeImport.php
+
+		-
+			message: '#^Binary operation "\.\=" between mixed and string\|false results in an error\.$#'
+			identifier: assignOp.invalid
+			count: 1
+			path: app/Cli/Commands/TreeImport.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Cli\\Commands\\TreeImport\:\:autoCompleteTreeName\(\) should return array\<string\> but returns array\<mixed\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Cli/Commands/TreeImport.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_pop expects array, list\<string\>\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/TreeImport.php
+
+		-
+			message: '#^Parameter \#1 \$gedrec of method Fisharebest\\Webtrees\\Services\\GedcomImportService\:\:importRecord\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/TreeImport.php
+
+		-
+			message: '#^Parameter \#1 \$stream of function fread expects resource, resource\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/TreeImport.php
+
+		-
+			message: '#^Parameter \#2 \$max of class Symfony\\Component\\Console\\Helper\\ProgressBar constructor expects int, int\<0, max\>\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/TreeImport.php
+
+		-
+			message: '#^Parameter \$suggestedValues of method Symfony\\Component\\Console\\Command\\Command\:\:addArgument\(\) expects array\|\(Closure\(Symfony\\Component\\Console\\Completion\\CompletionInput, Symfony\\Component\\Console\\Completion\\CompletionSuggestions\)\: list\<string\|Symfony\\Component\\Console\\Completion\\Suggestion\>\), Closure\(Symfony\\Component\\Console\\Completion\\CompletionInput\)\: array\<string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/TreeImport.php
+
+		-
 			message: '#^Parameter \#1 \$command of method Symfony\\Component\\Console\\Application\:\:add\(\) expects Symfony\\Component\\Console\\Command\\Command, mixed given\.$#'
 			identifier: argument.type
 			count: 1
