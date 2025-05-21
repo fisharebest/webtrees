@@ -64,8 +64,6 @@ class LoginPageMfa implements RequestHandlerInterface
 
         $url      = Validator::queryParams($request)->isLocalUrl()->string('url', route(HomePage::class));
         $username = Validator::queryParams($request)->string('username', '');
-        
-        
 
         // No tree?  perhaps we came here from a page without one.
         if ($tree === null) {
@@ -78,15 +76,13 @@ class LoginPageMfa implements RequestHandlerInterface
         }
 
         $title = I18N::translate('Continue with MFA');
-        $welcome = I18N::translate('Please enter your Google Authenticator code');
-        $can_register = Site::getPreference('USE_REGISTRATION_MODULE') === '1';
+        $welcome = I18N::translate('Please enter your Google Authenticator code');        
 
         return $this->viewResponse('login-page-mfa', [
-            'can_register' => $can_register,
             'title'        => $title,
             'url'          => $url,
             'tree'         => $tree,
-            'username'     => $username,            
+            'username'     => $username,
             'welcome'      => $welcome,
         ]);
     }
