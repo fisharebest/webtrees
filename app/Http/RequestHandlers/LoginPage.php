@@ -64,7 +64,6 @@ class LoginPage implements RequestHandlerInterface
 
         $url      = Validator::queryParams($request)->isLocalUrl()->string('url', route(HomePage::class));
         $username = Validator::queryParams($request)->string('username', '');
-        
 
         // No tree?  perhaps we came here from a page without one.
         if ($tree === null) {
@@ -105,7 +104,7 @@ class LoginPage implements RequestHandlerInterface
             'title'        => $title,
             'url'          => $url,
             'tree'         => $tree,
-            'username'     => $username,            
+            'username'     => $username,
             'welcome'      => $welcome,
         ]);
     }
