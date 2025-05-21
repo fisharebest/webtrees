@@ -7,7 +7,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var bool      $can_register
  * @var string    $error
  * @var Tree|null $tree
  * @var string    $url
@@ -18,7 +17,7 @@ use Fisharebest\Webtrees\Tree;
 ?>
 
 <h2 class="wt-page-title">
-    <?= I18N::translate('Welcome to this genealogy website') ?>
+    <?= I18N::translate('') ?>
 </h2>
 
 <p>
@@ -28,7 +27,7 @@ use Fisharebest\Webtrees\Tree;
 <form method="post" action="<?= e(route(LoginAction::class, ['tree' => $tree?->name()])) ?>" class="wt-page-options wt-page-options-login">
     <input type="hidden" name="url" value="<?= e($url) ?>">
     <input type="hidden" id="loginstage" name="loginstage" value="2">
-    <input type="hidden" id="mfastatus" name="mfastatus" value="true">
+    <input type="hidden" id="mfastatus" name="mfastatus" value="1">
     <input class="form-control" type="hidden" id="username" name="username" required="required" value="<?= e($username) ?>" autocomplete="username">
 
       <div class="row mb-3">    
