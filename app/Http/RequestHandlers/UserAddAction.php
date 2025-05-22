@@ -59,6 +59,7 @@ class UserAddAction implements RequestHandlerInterface
         $real_name = Validator::parsedBody($request)->string('real_name');
         $email     = Validator::parsedBody($request)->string('email');
         $password  = Validator::parsedBody($request)->string('password');
+	$secret = "";
 
         $errors = false;
 
@@ -82,7 +83,7 @@ class UserAddAction implements RequestHandlerInterface
             return redirect($url);
         }
 
-        $new_user = $this->user_service->create($username, $real_name, $email, $password);
+        $new_user = $this->user_service->create($username, $real_name, $email, $password, $secret);
         $new_user->setPreference(UserInterface::PREF_IS_EMAIL_VERIFIED, '1');
         $new_user->setPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED, '1');
         $new_user->setPreference(UserInterface::PREF_LANGUAGE, I18N::languageTag());
