@@ -290,7 +290,7 @@ class User implements UserInterface
             ->where('user_id', '=', $this->id())
             ->value('secret');
         $google2fa = new Google2FA();
-        if ($google2fa->verifyKey((string)$secret, $code2fa)) {
+        if ($google2fa->verifyKey($secret, $code2fa)) {
                 return true;
         }
         return false;

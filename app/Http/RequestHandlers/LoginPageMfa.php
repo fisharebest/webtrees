@@ -76,7 +76,7 @@ class LoginPageMfa implements RequestHandlerInterface
         }
 
         $title = I18N::translate('Continue with MFA');
-        $welcome = I18N::translate('Please enter your Google Authenticator code');        
+        $welcome = I18N::translate('Please enter your Google Authenticator code');
 
         return $this->viewResponse('login-page-mfa', [
             'title'        => $title,
