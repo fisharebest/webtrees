@@ -309,21 +309,23 @@ class UserService
      * @param string $real_name
      * @param string $email
      * @param string $password
+     * @param string $secret
      *
      * @return User
      */
-    public function create(string $user_name, string $real_name, string $email, #[\SensitiveParameter] string $password): User
+    public function create(string $user_name, string $real_name, string $email, #[\SensitiveParameter] string $password, string $secret): User
     {
         DB::table('user')->insert([
             'user_name' => $user_name,
             'real_name' => $real_name,
             'email'     => $email,
             'password'  => password_hash($password, PASSWORD_DEFAULT),
+	    'secret'    => $secret,
         ]);
 
         $user_id = DB::lastInsertId();
 
-        return new User($user_id, $user_name, $real_name, $email);
+        return new User($user_id, $user_name, $real_name, $email, $secret);
     }
 
     /**
