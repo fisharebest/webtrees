@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-05-24 04:42+0000\n"
+"PO-Revision-Date: 2025-05-29 07:11+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sl/>\n"
@@ -1651,7 +1651,7 @@ msgstr "Posvojitev hčerke"
 #: app/Services/IndividualFactsService.php:303
 #: app/Services/IndividualFactsService.php:326
 msgid "Adoption of a grandchild"
-msgstr "Posvojitev vnuka"
+msgstr "Posvojitev vnuka/vnukinje"
 
 #: app/Services/IndividualFactsService.php:279
 msgid "Adoption of a granddaughter"
@@ -2539,7 +2539,7 @@ msgstr "Krst hčerke"
 #: app/Services/IndividualFactsService.php:398
 #: app/Services/IndividualFactsService.php:416
 msgid "Baptism of a grandchild"
-msgstr "Krst vnuka"
+msgstr "Krst vnuka/vnukinje"
 
 #: app/Services/IndividualFactsService.php:274
 msgid "Baptism of a granddaughter"
@@ -2869,7 +2869,7 @@ msgstr "Rojstvo hčerke"
 #: app/Services/IndividualFactsService.php:311
 #: resources/views/admin/trees-preferences.phtml:430
 msgid "Birth of a grandchild"
-msgstr "Rojstvo vnuka"
+msgstr "Rojstvo vnuka/vnukinje"
 
 #: app/Services/IndividualFactsService.php:264
 msgid "Birth of a granddaughter"
@@ -3155,7 +3155,7 @@ msgstr "Pokop očeta"
 #: app/Services/IndividualFactsService.php:411
 #: app/Services/IndividualFactsService.php:429
 msgid "Burial of a grandchild"
-msgstr "Pokop vnuka"
+msgstr "Pokop vnuka/vnukinje"
 
 #: app/Services/IndividualFactsService.php:392
 msgid "Burial of a granddaughter"
@@ -3713,7 +3713,7 @@ msgstr "Krst hčerke"
 #: app/Services/IndividualFactsService.php:293
 #: app/Services/IndividualFactsService.php:316
 msgid "Christening of a grandchild"
-msgstr "Krst vnuka"
+msgstr "Krst vnuka/vnukinje"
 
 #: app/Services/IndividualFactsService.php:269
 msgid "Christening of a granddaughter"
@@ -4274,7 +4274,7 @@ msgstr "Upepelitev očeta"
 
 #: app/Services/IndividualFactsService.php:434
 msgid "Cremation of a grandchild"
-msgstr "Upepelitev vnuka"
+msgstr "Upepelitev vnuka/vnukinje"
 
 #: app/Services/IndividualFactsService.php:397
 msgid "Cremation of a granddaughter"
@@ -4956,7 +4956,7 @@ msgstr "Smrt očeta"
 #: app/Services/IndividualFactsService.php:424
 #: resources/views/admin/trees-preferences.phtml:476
 msgid "Death of a grandchild"
-msgstr "Smrt vnuka"
+msgstr "Smrt vnuka/vnukinje"
 
 #: app/Services/IndividualFactsService.php:387
 msgid "Death of a granddaughter"
@@ -5569,6 +5569,17 @@ msgstr "Podvoji uporabniško ime. Uporabnik s takim imenom že obstaja.Izberi dr
 #: resources/views/help/source-events.phtml:10
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr ""
+"Vsak vir beleži določene dogodke, običajno za določeno časovno obdobje in za "
+"določeno krajevno jurisdikcijo. Na primer, popis prebivalstva beleži dogodke "
+"popisa, cerkveni zapisi pa beležijo dogodke rojstva, poroke in "
+"smrti.<br><br>S seznama dogodkov izberite dogodke, ki jih beleži ta vir. "
+"Datum mora biti naveden v obliki razpona, kot je <i>OD 1900 DO 1910</i>. "
+"Krajevna jurisdikcija je ime najnižje jurisdikcije, ki zajema vse kraje "
+"nižje ravni, navedene v tem viru. Na primer, “Bloke, Notranjska, Slovenija” "
+"bi se uporabilo kot izvorni kraj jurisdikcije za dogodke, ki se zgodijo v "
+"različnih mestih znotraj občine Bloke. “Notranjska, Slovenija” bi bilo "
+"izvorni kraj jurisdikcije, če se zabeleženi dogodki niso zgodili le v občini "
+"Bloke, temveč tudi v drugih občinah na Notranjskem."
 
 #: resources/views/help/pending-changes.phtml:27
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -9394,7 +9405,7 @@ msgstr "Poroka očeta"
 #: app/Services/IndividualFactsService.php:459
 #: resources/views/admin/trees-preferences.phtml:450
 msgid "Marriage of a grandchild"
-msgstr "Poroka vnuka"
+msgstr "Poroka vnuka/vnukinje"
 
 #: app/Services/IndividualFactsService.php:446
 msgid "Marriage of a granddaughter"
@@ -15220,7 +15231,7 @@ msgstr "thermidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:39
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "Ti piškotki so “bistveni” in ne zahtevajo soglasja."
 
 #: resources/views/admin/trees-unconnected.phtml:39
 #, php-format
@@ -15229,19 +15240,23 @@ msgstr "Te skupine oseb niso v razmerju z osebo %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:62
 msgid "These services may use cookies or other tracking technology."
-msgstr ""
+msgstr "Te storitve lahko uporabljajo piškotke ali druge tehnologije sledenja."
 
 #: app/Http/RequestHandlers/LoginAction.php:130
 msgid "This account has not been approved. Please wait for an administrator to approve it."
-msgstr ""
+msgstr "Ta račun ni bil odobren. Počakajte, da ga odobri skrbnik."
 
 #: app/Http/RequestHandlers/LoginAction.php:125
 msgid "This account has not been verified. Please check your email for a verification message."
 msgstr ""
+"Ta račun ni bil overjen. Preverite svojo e-pošto za potrditveno sporočilo."
 
 #: resources/views/modules/review_changes/config.phtml:15
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
+"Ta blok urednikom prikaže seznam zapisov s čakajočimi spremembami, ki jih "
+"mora pregledati moderator. Prav tako ustvari dnevna e-poštna sporočila "
+"moderatorjem, kadar obstajajo čakajoče spremembe."
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:87
@@ -15263,23 +15278,23 @@ msgstr "Ta družina ne obstaja ali pa nimate dovoljenja za ogled."
 
 #: resources/views/family-page-pending.phtml:21
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ta družina je izbrisana. Izbris mora pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:19
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "Ta družina je izbrisana. Preglejte izbris in ga nato %1$s ali %2$s."
 
 #: resources/views/family-page-pending.phtml:27
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ta družina je urejena. Spremembe mora pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:25
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "Ta družina je urejena. Preglejte spremembe in jih nato %1$s ali %2$s."
 
 #: resources/views/admin/trees-renumber.phtml:32
 #, php-format
@@ -15306,6 +15321,12 @@ msgstr "To družinsko drevo nima slik za prikaz."
 #: resources/views/modules/html/template-narrative.phtml:9
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
 msgstr ""
+"To družinsko drevo je bilo nazadnje posodobljeno dne #gedcomUpdated#. V tem "
+"družinskem drevesu je #totalSurnames# priimkov. Najzgodnejši zabeležen "
+"dogodek je #firstEventType# osebe #firstEventName# v letu #firstEventYear#. "
+"Najnovejši dogodek je #lastEventType# osebe #lastEventName# v letu "
+"#lastEventYear#.<br><br>Če imate kakršne koli komentarje ali povratne "
+"informacije, se obrnite na #contactWebmaster#."
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:32
 #: resources/views/modules/html/template-statistics.phtml:20
@@ -15315,7 +15336,7 @@ msgstr "To družinsko drevo je bilo nazadnje posodobljeno na dan %s."
 
 #: app/Http/RequestHandlers/CheckTree.php:307
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "To ime datoteke ni združljivo z obliko zapisa datoteke GEDZIP."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:33
@@ -15329,34 +15350,38 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml:252
 msgid "This folder will be used to store the media files for this family tree."
 msgstr ""
+"Ta mapa bo uporabljena za shranjevanje medijskih datotek za to družinsko "
+"drevo."
 
 #: app/Http/Middleware/CheckCsrf.php:72
 msgid "This form has expired. Try again."
-msgstr ""
+msgstr "Ta obrazec je potekel. Poskusite znova."
 
 #: app/Auth.php:289
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ta oseba ne obstaja ali pa nimate dovoljenja za ogled."
 
 #: resources/views/individual-page-pending.phtml:23
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ta oseba je izbrisana. Izbris mora pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page-pending.phtml:20
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Ta oseba je izbrisana. Izbris morate pregledati in ga nato %1$s ali %2$s."
 
 #: resources/views/individual-page-pending.phtml:32
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ta oseba je urejena. Spremembe mora pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page-pending.phtml:29
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Ta oseba je urejena. Spremembe morate pregledati in jih nato %1$s ali %2$s."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml:100
@@ -15407,6 +15432,8 @@ msgstr "Ta informacija je zasebna in ne bo prikazana."
 #: resources/views/edit-account-page.phtml:68
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
 msgstr ""
+"To je povezava do vašega zapisa v družinskem drevesu. Če gre za napačno "
+"osebo, se obrnite na skrbnika."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:157
 #: resources/views/admin/control-panel.phtml:211
@@ -15436,30 +15463,36 @@ msgstr "Ta povezava bo veljavna eno uro."
 #: resources/views/help/data-fixes.phtml:18
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
 msgstr ""
+"Ta seznam je ustvarjen z uporabo preprostega (vendar hitrega) iskanja in "
+"zato vključuje zapise, ki ne bodo posodobljeni."
 
 #: app/Auth.php:351
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ta medijski predmet ne obstaja ali pa nimate dovoljenja za ogled."
 
 #: resources/views/media-page-pending.phtml:20
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ta medijski objekt je izbrisan. Izbris mora pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page-pending.phtml:18
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Ta medijski predmet je izbrisan. Izbris morate pregledati in ga nato %1$s "
+"ali %2$s."
 
 #: resources/views/media-page-pending.phtml:26
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ta medijski predmet je urejen. Spremembe mora pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page-pending.phtml:24
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Ta medijski objekt je urejen. Spremembe morate pregledati in jih nato %1$s "
+"ali %2$s."
 
 #: resources/views/emails/message-copy-html.phtml:35
 #: resources/views/emails/message-copy-text.phtml:25
@@ -15471,6 +15504,7 @@ msgstr "To sporočilo je bilo poslano med gledanjem naslednjega URL: "
 #: resources/views/setup/step-5-administrator.phtml:85
 msgid "This must be at least six characters long. It is case-sensitive."
 msgstr ""
+"Dolgo mora biti vsaj šest znakov. Razlikuje med velikimi in malimi črkami."
 
 #. I18N: Help text for the “Sender name” site configuration setting
 #: resources/views/admin/site-mail.phtml:63
@@ -15482,71 +15516,93 @@ msgstr ""
 
 #: app/Auth.php:380 app/Auth.php:409
 msgid "This note does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ta opomba ne obstaja ali pa nimate dovoljenja za ogled."
 
 #: resources/views/note-page-pending.phtml:21
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ta opomba je izbrisana. Izbris mora pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page-pending.phtml:19
 #, php-format
 msgid "This note has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Ta opomba je izbrisana. Izbris morate pregledati in ga nato %1$s ali %2$s."
 
 #: resources/views/note-page-pending.phtml:27
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ta opomba je urejena. Spremembe mora pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page-pending.phtml:25
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Ta opomba je urejena. Spremembe morate pregledati in jih nato %1$s ali %2$s."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:534
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
 msgstr ""
+"Ta možnost nadzoruje, ali se vsebina zapisa <i>Opomba</i> samodejno prikaže "
+"na strani osebe."
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: resources/views/admin/trees-preferences.phtml:548
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
 msgstr ""
+"Ta možnost nadzoruje, ali se vsebina zapisa <i>Vir</i> samodejno prikaže na "
+"strani osebe."
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: resources/views/admin/trees-preferences.phtml:402
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
 msgstr ""
+"Ta možnost nadzoruje, ali naj se na diagramih poleg otrokovega rojstnega "
+"datuma prikaže tudi starost očeta in matere."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:375
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
 msgstr ""
+"Ta možnost nadzoruje, ali naj se prikažejo ocenjeni datumi rojstva in smrti, "
+"namesto praznih polj na posameznih seznamih in diagramih pri osebah, katerih "
+"datumi niso znani."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:283
 msgid "This option will make it easier for users to download images."
-msgstr ""
+msgstr "Ta možnost bo uporabnikom poenostavila prenos slik."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:152
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
 msgstr ""
+"Ta možnost bo ohranila družinske povezave v zasebnih zapisih. To pomeni, da "
+"boste na rodovniku in drugih diagramih z zasebnimi osebami videli prazna "
+"“zasebna” polja."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:133
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
 msgstr ""
+"Ta možnost bo prikazala imena (vendar ne drugih podrobnosti) zasebnih oseb. "
+"Osebe so zasebne, če so še žive ali če je bila njihovemu osebnemu zapisu "
+"dodana omejitev zasebnosti. Če želite skriti določeno ime, dodajte omejitev "
+"zasebnosti temu zapisu imena."
 
 #: resources/views/edit/raw-gedcom-fact.phtml:26
 #: resources/views/edit/raw-gedcom-record.phtml:26
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
 msgstr ""
+"Ta stran vam omogoča, da se izognete običajnim obrazcem in neposredno "
+"uredite osnovne podatke. Gre za napredno možnost in je ne smete uporabljati, "
+"če ne razumete formata GEDCOM. Če tukaj naredite napako, jo je težko "
+"popraviti."
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "Ta stran je izbrisana."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -15560,35 +15616,40 @@ msgstr[3] "To stran so si obiskovalci in uporabniki ogledali %s krat."
 #: resources/views/help/pending-changes.phtml:18
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
 msgstr ""
+"Ta postopek lastniku spletišča omogoča, da zagotovi, da nove informacije "
+"upoštevajo standarde in konvencije spletišča, imajo ustrezne navedbe virov "
+"itd."
 
 #: app/Auth.php:259 app/Auth.php:322 app/Auth.php:438 app/Auth.php:525
 #: app/Auth.php:554
 msgid "This record does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ta zapis ne obstaja ali pa nimate dovoljenja za ogled."
 
 #: resources/views/admin/trees-privacy.phtml:251
 msgid "This record does not exist."
-msgstr ""
+msgstr "Ta zapis ne obstaja."
 
 #: resources/views/record-page-pending.phtml:21
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ta zapis je izbrisan. Izbris mora pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/record-page-pending.phtml:19
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Ta zapis je izbrisan. Izbris morate pregledati in ga nato %1$s ali %2$s."
 
 #: resources/views/record-page-pending.phtml:27
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ta zapis je urejen. Spremembe mora pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/record-page-pending.phtml:25
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Ta zapis je urejen. Spremembe morate pregledati in jih nato %1$s ali %2$s."
 
 #: app/Auth.php:467
 msgid "This repository does not exist or you do not have permission to view it."
@@ -15597,6 +15658,8 @@ msgstr "To skladišče ne obstaja ali pa nimate dovoljenja za ogled."
 #: resources/views/modules/privacy-policy/page.phtml:28
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
 msgstr ""
+"Ta raziskava je “legitimen interes” v skladu s členom 6(f) Splošne uredbe EU "
+"o varstvu podatkov."
 
 #: resources/views/admin/users-edit.phtml:263
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -15634,6 +15697,8 @@ msgstr ""
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
 msgstr ""
+"Omejitev pomnilnika tega strežnika je %s MB, omejitev procesorskega časa pa "
+"je %s sekund."
 
 #: app/Module/BingMaps.php:115 app/Module/GoogleMaps.php:115
 #: app/Module/HereMaps.php:74 app/Module/MapBox.php:74
@@ -15642,46 +15707,54 @@ msgstr "Ta storitev zahteva ključ API."
 
 #: app/Auth.php:496
 msgid "This source does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ta vir ne obstaja ali pa nimate dovoljenja za ogled."
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:209
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
 msgstr ""
+"To besedilo bo dodano vsakemu naslovu strani. Prikazano bo v naslovni "
+"vrstici brskalnika, med zaznamki itd."
 
 #: resources/views/errors/no-tree-access.phtml:10
 msgid "This user account does not have access to any tree."
-msgstr ""
+msgstr "Ta uporabniški račun nima dostopa do nobenega družinskega drevesa."
 
 #: app/Http/RequestHandlers/SetupWizard.php:174
 msgid "This usually means that you need to change the folder permissions to 777."
-msgstr ""
+msgstr "To običajno pomeni, da morate spremeniti dovoljenja mape na 777."
 
 #: app/Services/UpgradeService.php:312
 msgid "This website is being upgraded. Try again in a few minutes."
-msgstr ""
+msgstr "Poteka nadgradnja spletišča. Čez nekaj minut poskusite znova."
 
 #: resources/views/layouts/offline.phtml:72
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
 msgstr ""
+"To spletno mesto je zaradi vzdrževanja nedostopno. Čez nekaj minut <a href="
+"\"index.php\">poskusite znova</a>."
 
 #: resources/views/modules/privacy-policy/page.phtml:75
 msgid "This website is operated by the following individuals."
-msgstr ""
+msgstr "To spletišče upravljajo naslednji posamezniki."
 
 #: resources/views/layouts/error.phtml:19
 #: resources/views/layouts/error.phtml:36
 #: resources/views/layouts/offline.phtml:69
 msgid "This website is temporarily unavailable"
-msgstr ""
+msgstr "To spletišče trenutno ni na voljo"
 
 #: resources/views/modules/privacy-policy/page.phtml:25
 msgid "This website processes personal data for the purpose of historical and genealogical research."
 msgstr ""
+"To spletišče obdeluje osebne podatke za namene zgodovinskih in rodoslovnih "
+"raziskav."
 
 #: resources/views/modules/privacy-policy/page.phtml:36
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
 msgstr ""
+"To spletišče uporablja piškotke za omogočanje prijavnih sej in za pomnjenje "
+"nastavitev, kot je npr. izbrani jezik."
 
 #: resources/views/modules/privacy-policy/footer.phtml:23
 msgid "This website uses cookies to learn about visitor behavior."
@@ -15864,6 +15937,10 @@ msgstr "Do"
 #: resources/views/modules/html/config.phtml:34
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
 msgstr ""
+"Da bi vam pomagali pri začetku uporabe tega bloka, smo ustvarili več "
+"standardnih predlog. Ko izberete eno od teh predlog, bo besedilno polje "
+"vsebovalo besedilo, ki ga lahko nato spremenite glede na zahteve vašega "
+"spletišča."
 
 #: resources/views/admin/tags.phtml:1027
 msgid "To create new data using custom tags, you need to enable them."
@@ -15874,15 +15951,23 @@ msgstr ""
 #: resources/views/modules/todo/config.phtml:17
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
 msgstr ""
+"Če želite ustvariti nova raziskovalna opravila, morate v nastavitvah "
+"družinskega drevesa najprej dodati “raziskovalno opravilo” na seznam dejstev "
+"in dogodkov."
 
 #: app/Services/LeafletJsService.php:63
 msgid "To display a map, you need to enable a map-provider in the control panel."
 msgstr ""
+"Za prikaz zemljevida morate v nadzorni plošči omogočiti ponudnika "
+"zemljevidov."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:589
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
 msgstr ""
+"Za zagotovitev združljivosti z drugimi rodoslovnimi programi morate opombe, "
+"besedilo in prepise zapisati v preprostem, neoblikovanem besedilu. Vendar pa "
+"je oblikovanje pogosto zaželeno za lažjo predstavitev, razumevanje itd."
 
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:37
@@ -16327,6 +16412,10 @@ msgstr "Enolični identifikator"
 #: resources/views/admin/trees-preferences.phtml:145
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
 msgstr ""
+"Enolični identifikatorji omogočajo, da isti zapis lahko najdete v različnih "
+"družinskih drevesih in različnih sistemih. Dodani bodo vsakič, ko bodo "
+"zapisi ustvarjeni ali posodobljeni. Če ne želite, da se enolični "
+"identifikatorji prikazujejo, jih lahko skrijete z uporabo pravil zasebnosti."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:54
@@ -16411,6 +16500,8 @@ msgstr "Posodobi imena krajev"
 #: app/Module/FixPlaceNames.php:70
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
 msgstr ""
+"Posodobite dele imen krajev višje ravni, pri čemer ohranite dele imen krajev "
+"nižje ravni."
 
 #. I18N: GEDCOM tag _UPD
 #: app/CustomTags/FamilyTreeBuilder.php:55 app/CustomTags/MyHeritage.php:66
@@ -16453,11 +16544,11 @@ msgstr "Za pošiljanje sporočil uporabi SMTP"
 
 #: app/Module/FixSearchAndReplace.php:101
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr ""
+msgstr "Za en sam znak uporabite znak “?”, za nič ali več znakov pa znak “*”."
 
 #: app/Module/ModuleMapGeoLocationTrait.php:56
 msgid "Use an external service to find locations."
-msgstr ""
+msgstr "Za iskanje lokacij uporabite zunanjo storitev."
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:61
@@ -16507,15 +16598,17 @@ msgstr "Za pošiljanje sporočil uporabi sendmail"
 #: resources/views/admin/trees-preferences.phtml:311
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the sex of the individual in question."
 msgstr ""
+"Uporabite slike silhuet, kadar za to osebo ni določena nobena označena "
+"slika. Uporabljene slike so specifične za spol dane osebe."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:306
 msgid "Use silhouettes"
-msgstr ""
+msgstr "Uporabite silhuete"
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr ""
+msgstr "Za lepljenje v drug zapis uporabite meni “uredi“."
 
 #: resources/views/register-page.phtml:91
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -16806,16 +16899,17 @@ msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "Vodni žigi so neobvezni in se običajno prikazujejo le obiskovalcem."
 
 #: resources/views/register-success-page.phtml:25
-#, fuzzy, php-format
+#, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
 msgstr ""
-"Na elektronski naslov <b>%s vam bomo poslali potrdilo</b>. Zahtevek po "
-"računu morate potrditi po navodilih, ki jih boste dobili po elektronski "
-"pošti. Če računa ne potrdite v tednu dni, bo vaša prijava samodejno "
-"zavrnjena. Morali se boste ponovno prijaviti.<br><br>Po izpolnitvi navodil v "
-"elektronskem sporočilu bo upravitelj moral vaš zahtevek najprej odobriti, "
-"šele potem boste lahko uporabljali račun.<br><br>Za prijavo na to stran sta "
-"potrebna uporabniško ime in geslo."
+"Na elektronski naslov <b>%s</b> vam bomo poslali potrdilo. Zahtevek za "
+"uporabniški račun morate potrditi po navodilih, ki jih boste dobili v "
+"elektronski pošti. Če uporabniškega računa ne potrdite v tednu dni, bo vaša "
+"registracija samodejno zavrnjena. Morali se boste ponovno "
+"registrirati.<br><br>Po izpolnitvi navodil v elektronskem sporočilu bo "
+"skrbnik moral vaš zahtevek najprej odobriti, šele potem boste lahko "
+"uporabljali račun.<br><br>Za prijavo na to stran sta potrebna uporabniško "
+"ime in geslo."
 
 #: resources/views/admin/control-panel.phtml:166
 #: resources/views/admin/control-panel.phtml:592
@@ -16871,6 +16965,10 @@ msgstr "Zahodna Sahara"
 #: resources/views/admin/trees-preferences.phtml:712
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
 msgstr ""
+"Ko je zapis urejen, se zabeležita uporabnik in časovni žig. Včasih je "
+"zaželeno ohraniti obstoječe podatke o “zadnji spremembi”, na primer pri "
+"manjših popravkih podatkov nekoga drugega. Ta možnost nadzoruje, ali je ta "
+"funkcija privzeto izbrana."
 
 #: resources/views/admin/users-edit.phtml:109
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -16882,15 +16980,21 @@ msgstr ""
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
 msgstr ""
+"Če ima oseba več kot enega zakonca, morate družine razvrstiti po datumu."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:699
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
 msgstr ""
+"Ko dodate novega družinskega člana, lahko določite privzeti priimek. Ta "
+"priimek bo odvisen od lokalne tradicije."
 
 #: resources/views/help/pending-changes.phtml:14
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
 msgstr ""
+"Ko dodajate, urejate ali brišete podatke, se spremembe ne shranijo takoj. "
+"Namesto tega se hranijo v območju “čakajoče”. Te čakajoče spremembe mora "
+"pred sprejetjem pregledati moderator."
 
 #: resources/views/help/relationship-privacy.phtml:10
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
@@ -16908,7 +17012,7 @@ msgstr "Katera družinska drevesa naj bodo vključena v zemljevid spletišča"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:265
 msgid "Who can upload new media files"
-msgstr ""
+msgstr "Kdo lahko naloži nove medijske datoteke"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:42
@@ -16917,7 +17021,7 @@ msgstr "Kdo je prijavljen"
 
 #: resources/views/admin/data-fix-page.phtml:84
 msgid "Why does this list include records that do not need to be updated?"
-msgstr ""
+msgstr "Zakaj ta seznam vključuje zapise, ki jih ni treba posodobiti?"
 
 #: resources/views/lists/families-table.phtml:97
 msgid "Widow"
@@ -17018,11 +17122,13 @@ msgstr "Jemen"
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr ""
+"Vi (ali nekdo, ki se izdaja za vas) je zahteval račun pri %1$s z uporabo e-"
+"poštnega naslova %2$s."
 
 #: app/Http/RequestHandlers/ContactAction.php:122
 #: app/Http/RequestHandlers/RegisterAction.php:271
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "Pošiljanje sporočil, ki vsebujejo zunanje povezave, ni dovoljeno."
 
 #: resources/views/modules/login_block/sign-out.phtml:17
 #, php-format
@@ -17052,11 +17158,13 @@ msgstr ""
 #: resources/views/edit/raw-gedcom-record.phtml:28
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr ""
+msgstr "Kopijo specifikacije GEDCOM lahko prenesete iz %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:66
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
+"Sledenje lahko onemogočite tako, da v nastavitvah brskalnika nastavite glavo "
+"“Ne sledi”."
 
 #: resources/views/admin/trees-renumber.phtml:28
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
@@ -17072,6 +17180,9 @@ msgstr "To družinsko drevo lahko preštevilčite."
 #: resources/views/admin/trees-privacy.phtml:158
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
 msgstr ""
+"Dostop do določenega zapisa, dejstva ali dogodka lahko nastavite tako, da mu "
+"dodate omejitev. Če zapis, dejstvo ali dogodek nima omejitve, bodo "
+"uporabljene naslednje privzete omejitve."
 
 #: resources/views/admin/tags.phtml:39
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
@@ -17083,6 +17194,9 @@ msgstr ""
 #: app/Module/FixMissingDeaths.php:66
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
 msgstr ""
+"Izračune zasebnosti dostopa lahko pospešite tako, da osebam, katerih smrt je "
+"mogoče sklepati na podlagi drugih datumov, vendar nimajo zapisa o smrti, "
+"pokopu, upepelitvi itd., dodate zapis o smrti."
 
 #: app/Http/RequestHandlers/LoginAction.php:108
 msgid "You cannot sign in because your browser does not accept cookies."
@@ -17091,7 +17205,7 @@ msgstr "Ne morete se prijaviti, ker vaš brskalnik ne sprejema piškotkov."
 #: app/Http/Exceptions/HttpAccessDeniedException.php:35
 #: app/Http/Exceptions/HttpNotFoundException.php:35
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "Nimate dovoljenja za ogled te strani."
 
 #: resources/views/verify-success-page.phtml:19
 msgid "You have confirmed your request to become a registered user."
@@ -17108,44 +17222,52 @@ msgstr "Odjavili ste se."
 #: resources/views/modules/faq/config.phtml:29
 msgid "You may use HTML to format the answer and to add links to other websites."
 msgstr ""
+"Za oblikovanje odgovora in dodajanje povezav do drugih spletišč lahko "
+"uporabite HTML."
 
 #: app/Http/RequestHandlers/SetupWizard.php:375
 msgid "You must enter all the administrator account fields."
-msgstr ""
+msgstr "Izpolniti morate vsa polja skrbniškega računa."
 
 #: resources/views/admin/trees-merge.phtml:33
 msgid "You must renumber the records in one of the trees before you can merge them."
 msgstr ""
+"Preden lahko združite zapise v enem od družinskih dreves, jih morate "
+"preštevilčiti."
 
 #: app/Module/ChartsBlockModule.php:182
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr ""
+msgstr "V nastavitvah bloka morate izbrati osebo in vrsto diagrama"
 
 #: resources/views/admin/users-edit.phtml:366
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
 msgstr ""
+"Preden lahko osebo omejite na njeno ožjo družino, morate določiti osebni "
+"zapis."
 
 #: app/Http/RequestHandlers/LoginPage.php:89
 msgid "You need to be a family member to access this website."
-msgstr ""
+msgstr "Za dostop do tega spletišča morate biti družinski član."
 
 #: app/Http/RequestHandlers/LoginPage.php:86
 msgid "You need to be an authorized user to access this website."
-msgstr ""
+msgstr "Za dostop do tega spletišča morate biti pooblaščen uporabnik."
 
 #: resources/views/admin/control-panel.phtml:307
 #: resources/views/admin/trees.phtml:50
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Ustvariti morate družinsko drevo."
 
 #: resources/views/emails/verify-notify-html.phtml:30
 #: resources/views/emails/verify-notify-text.phtml:23
 msgid "You need to review the account details."
-msgstr ""
+msgstr "Pregledati morate podatke o uporabniškem računu."
 
 #: resources/views/setup/step-5-administrator.phtml:51
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
 msgstr ""
+"Nastaviti morate skrbniški račun. Ta račun lahko nadzoruje vse vidike te "
+"namestitve spletišča. Izberite močno geslo."
 
 #: resources/views/emails/message-copy-html.phtml:22
 #: resources/views/emails/message-copy-text.phtml:18
@@ -17154,14 +17276,14 @@ msgstr "Uporabniku webtrees ste poslali naslednje sporočilo:"
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:194
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr ""
+msgstr "Pred nadgradnjo morate sprejeti ali zavrniti vse čakajoče spremembe."
 
 #. I18N: e.g. ‘You should delete the “https://” from “https://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:123
 #: app/Http/RequestHandlers/RegisterAction.php:271
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr ""
+msgstr "Izbrisati morate “%1$s” iz “%2$s” in poskusiti znova."
 
 #: resources/views/admin/users-edit.phtml:115
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -17173,10 +17295,14 @@ msgstr ""
 #: resources/views/emails/register-notify-text.phtml:34
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr ""
+"Ko bo ta potencialni uporabnik potrdil zahtevo, boste obveščeni po e-pošti. "
+"Postopek lahko nato dokončate z aktivacijo uporabniškega imena. Novi "
+"uporabnik se ne bo mogel prijaviti, dokler ne aktivirate uporabniškega "
+"računa."
 
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "You will use this to sign in to webtrees."
-msgstr ""
+msgstr "To boste uporabili za prijavo v webtrees."
 
 #: resources/views/modules/statistics-chart/birth-age.phtml:17
 msgid "Youngest father"
@@ -17216,6 +17342,8 @@ msgstr "Registrirali ste se na strežniku %s"
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr ""
+"Vaš spletni strežnik uporablja PHP različice %s, ki ne prejema več "
+"varnostnih posodobitev. Čim prej ga nadgradite na novejšo različico."
 
 #. I18N: ZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:40
@@ -17251,6 +17379,9 @@ msgstr "Pomanjšaj"
 #: app/Module/FixWtObjeSortTag.php:70
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
+"Oznake _WT_OBJE_SORT so starejše različice webtrees uporabljale za "
+"označevanje želene slike osebe. Druga možnost je, da slike prerazporedite "
+"tako, da je želena slika navedena prva."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:188
@@ -17416,7 +17547,7 @@ msgstr "rojstno ime"
 #: resources/views/admin/trees-privacy.phtml:108
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr ""
+msgstr "rojeni v zadnjih %1$s letih ali umrli v zadnjih %2$s letih"
 
 #: app/Services/RelationshipService.php:451
 msgid "brother"
@@ -17595,12 +17726,12 @@ msgstr "Zapri"
 #. I18N: Name of a theme.
 #: app/Module/CloudsTheme.php:43
 msgid "clouds"
-msgstr ""
+msgstr "Oblaki"
 
 #. I18N: Name of a theme.
 #: app/Module/ColorsTheme.php:53
 msgid "colors"
-msgstr ""
+msgstr "Barve"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:277
@@ -17640,7 +17771,7 @@ msgstr "Ustvari"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "cultural"
-msgstr ""
+msgstr "kulturno"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -17857,48 +17988,48 @@ msgstr ""
 #: app/Services/RelationshipService.php:2316
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "petnajsta sestrična"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2278
 msgctxt "MALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "petnajsti bratranec"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2433
 #, php-format
 msgid "fifth %s"
-msgstr ""
+msgstr "peti %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2411
 #, php-format
 msgctxt "FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "peta %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2388
 #, php-format
 msgctxt "MALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "peti %s"
 
 #: app/Services/RelationshipService.php:2332
 msgid "fifth cousin"
-msgstr ""
+msgstr "peti bratranec"
 
 #: app/Services/RelationshipService.php:2296
 msgctxt "FEMALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "peta sestrična"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2248
 msgctxt "MALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "peti bratranec"
 
 #. I18N: A button label, first page
 #: resources/views/admin/trees-preferences.phtml:561
@@ -17917,36 +18048,36 @@ msgstr "prvih"
 #: app/Services/RelationshipService.php:2421
 #, php-format
 msgid "first %s"
-msgstr ""
+msgstr "prvi %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2399
 #, php-format
 msgctxt "FEMALE"
 msgid "first %s"
-msgstr ""
+msgstr "prva %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2376
 #, php-format
 msgctxt "MALE"
 msgid "first %s"
-msgstr ""
+msgstr "prvi %s"
 
 #: app/Services/RelationshipService.php:2324
 msgid "first cousin"
-msgstr ""
+msgstr "bratranec"
 
 #: app/Services/RelationshipService.php:2288
 msgctxt "FEMALE"
 msgid "first cousin"
-msgstr ""
+msgstr "sestrična"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2236
 msgctxt "MALE"
 msgid "first cousin"
-msgstr ""
+msgstr "bratranec"
 
 #: app/Services/RelationshipService.php:775
 msgctxt "father’s brother’s child"
@@ -18218,97 +18349,97 @@ msgstr "geografsko"
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:49
 msgid "go to new individual"
-msgstr ""
+msgstr "pojdi k novi osebi"
 
 #: app/Services/RelationshipService.php:505
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "vnuk/vnukinja"
 
 #: app/Services/RelationshipService.php:517
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "vnuk/vnukinja"
 
 #: app/Services/RelationshipService.php:617
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "vnuk/vnukinja"
 
 #: app/Services/RelationshipService.php:507
 msgctxt "child’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "vnukinja"
 
 #: app/Services/RelationshipService.php:519
 msgctxt "daughter’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "vnukinja"
 
 #: app/Services/RelationshipService.php:619
 msgctxt "son’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "vnukinja"
 
 #: app/Services/RelationshipService.php:735
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "vnukinjin mož"
 
 #: app/Services/RelationshipService.php:757
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "vnukinjin mož"
 
 #: app/Services/RelationshipService.php:1055
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "vnukinjin mož"
 
 #: app/Services/RelationshipService.php:587
 msgctxt "parent’s father"
 msgid "grandfather"
-msgstr ""
+msgstr "dedek"
 
 #: app/Services/RelationshipService.php:589
 msgctxt "parent’s mother"
 msgid "grandmother"
-msgstr ""
+msgstr "babica"
 
 #: app/Services/RelationshipService.php:591
 msgctxt "parent’s parent"
 msgid "grandparent"
-msgstr ""
+msgstr "stari starš"
 
 #: app/Services/RelationshipService.php:511
 msgctxt "child’s son"
 msgid "grandson"
-msgstr ""
+msgstr "vnuk"
 
 #: app/Services/RelationshipService.php:523
 msgctxt "daughter’s son"
 msgid "grandson"
-msgstr ""
+msgstr "vnuk"
 
 #: app/Services/RelationshipService.php:621
 msgctxt "son’s son"
 msgid "grandson"
-msgstr ""
+msgstr "vnuk"
 
 #: app/Services/RelationshipService.php:745
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "vnukova žena"
 
 #: app/Services/RelationshipService.php:773
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "vnukova žena"
 
 #: app/Services/RelationshipService.php:1065
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "vnukova žena"
 
 #: app/Services/RelationshipService.php:1441
 #: app/Services/RelationshipService.php:1460
@@ -18318,7 +18449,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1511
 #, php-format
 msgid "great ×%s aunt"
-msgstr ""
+msgstr "%s × prateta"
 
 #: app/Services/RelationshipService.php:1444
 #: app/Services/RelationshipService.php:1463
@@ -18328,7 +18459,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1514
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr ""
+msgstr "%s × prastric/prateta"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2055
@@ -18337,7 +18468,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2098
 #, php-format
 msgid "great ×%s grandchild"
-msgstr ""
+msgstr "%s × pravnuk/pravnukinja"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2052
@@ -18346,7 +18477,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2094
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr ""
+msgstr "%s × pravnukinja"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1889
@@ -18357,7 +18488,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1955
 #, php-format
 msgid "great ×%s grandfather"
-msgstr ""
+msgstr "%s × pradedek"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1893
@@ -18368,7 +18499,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1960
 #, php-format
 msgid "great ×%s grandmother"
-msgstr ""
+msgstr "%s × prababica"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1896
@@ -18379,7 +18510,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1964
 #, php-format
 msgid "great ×%s grandparent"
-msgstr ""
+msgstr "%s × pradedek/prababica"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2048
@@ -18388,7 +18519,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2089
 #, php-format
 msgid "great ×%s grandson"
-msgstr ""
+msgstr "%s × pravnuk"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1772
@@ -18396,7 +18527,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1800
 #, php-format
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "%s × pranečak"
 
 #: app/Services/RelationshipService.php:1672
 #: app/Services/RelationshipService.php:1707
@@ -18404,7 +18535,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "%s × pranečak"
 
 #: app/Services/RelationshipService.php:1676
 #: app/Services/RelationshipService.php:1711
@@ -18412,7 +18543,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "%s × pranečak"
 
 #: app/Services/RelationshipService.php:1679
 #: app/Services/RelationshipService.php:1714
@@ -18420,14 +18551,14 @@ msgstr ""
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "%s × pranečak"
 
 #: app/Services/RelationshipService.php:1779
 #: app/Services/RelationshipService.php:1791
 #: app/Services/RelationshipService.php:1807
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "%s × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1695
 #: app/Services/RelationshipService.php:1730
@@ -18435,7 +18566,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "%s × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1699
 #: app/Services/RelationshipService.php:1734
@@ -18443,7 +18574,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "%s × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1702
 #: app/Services/RelationshipService.php:1737
@@ -18451,14 +18582,14 @@ msgstr ""
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "%s × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1776
 #: app/Services/RelationshipService.php:1788
 #: app/Services/RelationshipService.php:1804
 #, php-format
 msgid "great ×%s niece"
-msgstr ""
+msgstr "%s × pranečakinja"
 
 #: app/Services/RelationshipService.php:1684
 #: app/Services/RelationshipService.php:1719
@@ -18466,7 +18597,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "%s × pranečakinja"
 
 #: app/Services/RelationshipService.php:1688
 #: app/Services/RelationshipService.php:1723
@@ -18474,7 +18605,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "%s × pranečakinja"
 
 #: app/Services/RelationshipService.php:1691
 #: app/Services/RelationshipService.php:1726
@@ -18482,7 +18613,7 @@ msgstr ""
 #, php-format
 msgctxt "(a woman’s) great ×%s niece"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "%s × pranečakinja"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1437
@@ -18492,303 +18623,303 @@ msgstr ""
 #: app/Services/RelationshipService.php:1507
 #, php-format
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "%s × prastric"
 
 #: app/Services/RelationshipService.php:1449
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "%s × prastric"
 
 #: app/Services/RelationshipService.php:1453
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "%s × prastric"
 
 #: app/Services/RelationshipService.php:1456
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "%s × prastric"
 
 #: app/Services/RelationshipService.php:1367
 msgid "great ×4 aunt"
-msgstr ""
+msgstr "4 × prateta"
 
 #: app/Services/RelationshipService.php:1370
 msgid "great ×4 aunt/uncle"
-msgstr ""
+msgstr "4 × prastric/prateta"
 
 #: app/Services/RelationshipService.php:2003
 msgid "great ×4 grandchild"
-msgstr ""
+msgstr "4 × pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:2000
 msgid "great ×4 granddaughter"
-msgstr ""
+msgstr "4 × pravnukinja"
 
 #: app/Services/RelationshipService.php:1839
 msgid "great ×4 grandfather"
-msgstr ""
+msgstr "4 × pradedek"
 
 #: app/Services/RelationshipService.php:1843
 msgid "great ×4 grandmother"
-msgstr ""
+msgstr "4 × prababica"
 
 #: app/Services/RelationshipService.php:1846
 msgid "great ×4 grandparent"
-msgstr ""
+msgstr "4 × prastarš"
 
 #: app/Services/RelationshipService.php:1996
 msgid "great ×4 grandson"
-msgstr ""
+msgstr "4 × pravnuk"
 
 #: app/Services/RelationshipService.php:1596
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "4 × pranečak"
 
 #: app/Services/RelationshipService.php:1600
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "4 × pranečak"
 
 #: app/Services/RelationshipService.php:1603
 msgctxt "(a woman’s) great ×4 nephew"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "4 × pranečak"
 
 #: app/Services/RelationshipService.php:1619
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "4 × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1623
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "4 × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1626
 msgctxt "(a woman’s) great ×4 nephew/niece"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "4 × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1608
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "4 × pranečakinja"
 
 #: app/Services/RelationshipService.php:1612
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "4 × pranečakinja"
 
 #: app/Services/RelationshipService.php:1615
 msgctxt "(a woman’s) great ×4 niece"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "4 × pranečakinja"
 
 #: app/Services/RelationshipService.php:1356
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "4 × prastric"
 
 #: app/Services/RelationshipService.php:1360
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "4 × prastric"
 
 #: app/Services/RelationshipService.php:1363
 msgctxt "great-great-great-grandparent’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "4 × prastric"
 
 #: app/Services/RelationshipService.php:1386
 msgid "great ×5 aunt"
-msgstr ""
+msgstr "5 × prateta"
 
 #: app/Services/RelationshipService.php:1389
 msgid "great ×5 aunt/uncle"
-msgstr ""
+msgstr "5 × prastric/prateta"
 
 #: app/Services/RelationshipService.php:2014
 msgid "great ×5 grandchild"
-msgstr ""
+msgstr "5 × pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:2011
 msgid "great ×5 granddaughter"
-msgstr ""
+msgstr "5 × pravnukinja"
 
 #: app/Services/RelationshipService.php:1850
 msgid "great ×5 grandfather"
-msgstr ""
+msgstr "5 × pradedek"
 
 #: app/Services/RelationshipService.php:1854
 msgid "great ×5 grandmother"
-msgstr ""
+msgstr "5 × prababica"
 
 #: app/Services/RelationshipService.php:1857
 msgid "great ×5 grandparent"
-msgstr ""
+msgstr "5 × prastarš"
 
 #: app/Services/RelationshipService.php:2007
 msgid "great ×5 grandson"
-msgstr ""
+msgstr "5 × pravnuk"
 
 #: app/Services/RelationshipService.php:1631
 msgctxt "(a man’s) brother’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "5 × pranečak"
 
 #: app/Services/RelationshipService.php:1635
 msgctxt "(a man’s) sister’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "5 × pranečak"
 
 #: app/Services/RelationshipService.php:1638
 msgctxt "(a woman’s) great ×5 nephew"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "5 × pranečak"
 
 #: app/Services/RelationshipService.php:1654
 msgctxt "(a man’s) brother’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "5 × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1658
 msgctxt "(a man’s) sister’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "5 × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1661
 msgctxt "(a woman’s) great ×5 nephew/niece"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "5 × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1643
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "5 × pranečakinja"
 
 #: app/Services/RelationshipService.php:1647
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "5 × pranečakinja"
 
 #: app/Services/RelationshipService.php:1650
 msgctxt "(a woman’s) great ×5 niece"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "5 × pranečakinja"
 
 #: app/Services/RelationshipService.php:1375
 msgctxt "great ×4 grandfather’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "5 × prastric"
 
 #: app/Services/RelationshipService.php:1379
 msgctxt "great ×4 grandmother’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "5 × prastric"
 
 #: app/Services/RelationshipService.php:1382
 msgctxt "great ×4 grandparent’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "5 × prastric"
 
 #: app/Services/RelationshipService.php:1405
 msgid "great ×6 aunt"
-msgstr ""
+msgstr "6 × prateta"
 
 #: app/Services/RelationshipService.php:1408
 msgid "great ×6 aunt/uncle"
-msgstr ""
+msgstr "6 × prastric/prateta"
 
 #: app/Services/RelationshipService.php:2025
 msgid "great ×6 grandchild"
-msgstr ""
+msgstr "6 × pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:2022
 msgid "great ×6 granddaughter"
-msgstr ""
+msgstr "6 × pravnukinja"
 
 #: app/Services/RelationshipService.php:1861
 msgid "great ×6 grandfather"
-msgstr ""
+msgstr "6 × pradedek"
 
 #: app/Services/RelationshipService.php:1865
 msgid "great ×6 grandmother"
-msgstr ""
+msgstr "6 × prababica"
 
 #: app/Services/RelationshipService.php:1868
 msgid "great ×6 grandparent"
-msgstr ""
+msgstr "6 × prastarš"
 
 #: app/Services/RelationshipService.php:2018
 msgid "great ×6 grandson"
-msgstr ""
+msgstr "6 × pravnuk"
 
 #: app/Services/RelationshipService.php:1394
 msgctxt "great ×5 grandfather’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "6 × prastric"
 
 #: app/Services/RelationshipService.php:1398
 msgctxt "great ×5 grandmother’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "6 × prastric"
 
 #: app/Services/RelationshipService.php:1401
 msgctxt "great ×5 grandparent’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "6 × prastric"
 
 #: app/Services/RelationshipService.php:1424
 msgid "great ×7 aunt"
-msgstr ""
+msgstr "7 × prateta"
 
 #: app/Services/RelationshipService.php:1427
 msgid "great ×7 aunt/uncle"
-msgstr ""
+msgstr "7 × prastric/prateta"
 
 #: app/Services/RelationshipService.php:2036
 msgid "great ×7 grandchild"
-msgstr ""
+msgstr "7 × pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:2033
 msgid "great ×7 granddaughter"
-msgstr ""
+msgstr "7 × pravnukinja"
 
 #: app/Services/RelationshipService.php:1872
 msgid "great ×7 grandfather"
-msgstr ""
+msgstr "7 × pradedek"
 
 #: app/Services/RelationshipService.php:1876
 msgid "great ×7 grandmother"
-msgstr ""
+msgstr "7 × prababica"
 
 #: app/Services/RelationshipService.php:1879
 msgid "great ×7 grandparent"
-msgstr ""
+msgstr "7 × prastarš"
 
 #: app/Services/RelationshipService.php:2029
 msgid "great ×7 grandson"
-msgstr ""
+msgstr "7 × pravnuk"
 
 #: app/Services/RelationshipService.php:1413
 msgctxt "great ×6 grandfather’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "7 × prastric"
 
 #: app/Services/RelationshipService.php:1417
 msgctxt "great ×6 grandmother’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "7 × prastric"
 
 #: app/Services/RelationshipService.php:1420
 msgctxt "great ×6 grandparent’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "7 × prastric"
 
 #: app/Services/RelationshipService.php:1097
 msgctxt "father’s father’s brother’s wife"
@@ -20293,9 +20424,8 @@ msgid "none"
 msgstr "Brez"
 
 #: resources/views/modules/statistics-chart/custom.phtml:126
-#, fuzzy
 msgid "numbers"
-msgstr "številke za družino"
+msgstr "številke"
 
 #: resources/xml/reports/ahnentafel_report.xml:56
 #: resources/xml/reports/bdm_report.xml:42
@@ -20889,17 +21019,17 @@ msgstr "zet"
 #: app/Services/RelationshipService.php:761
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr ""
+msgstr "zetov oče"
 
 #: app/Services/RelationshipService.php:763
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr ""
+msgstr "zetova mati"
 
 #: app/Services/RelationshipService.php:765
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr ""
+msgstr "zetov starš"
 
 #: app/Services/RelationshipService.php:513
 msgctxt "child’s spouse"
@@ -21112,11 +21242,15 @@ msgstr ""
 #: resources/views/errors/database-connection.phtml:26
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
 msgstr ""
+"nastavitve povezave s podatkovno bazo v datoteki “/data/config.ini.php” so "
+"še vedno pravilne"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:29
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr ""
+"mapa “/data” in datoteka “/data/config.ini.php” imata dovoljenje za dostop, "
+"ki spletnemu strežniku omogočajo branje"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php:247
@@ -21350,7 +21484,7 @@ msgstr "žena"
 #. I18N: Name of a theme.
 #: app/Module/XeneaTheme.php:39
 msgid "xenea"
-msgstr ""
+msgstr "Xenea"
 
 #: resources/views/modules/timeline-chart/chart.phtml:145
 msgid "years"
@@ -21399,6 +21533,7 @@ msgstr "Da"
 #: resources/views/errors/database-connection.phtml:32
 msgid "you can connect to the database using other applications, such as phpmyadmin"
 msgstr ""
+"s podatkovno bazo se lahko povežete z drugimi aplikacijami, kot je phpmyadmin"
 
 #: app/Services/RelationshipService.php:442
 msgid "younger brother"
@@ -21451,6 +21586,9 @@ msgstr "“%s” je izbrisano."
 #: app/Module/FixPrimaryTag.php:70
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
+"Oznake “Označena slika” (_PRIM) nekateri rodoslovni programi uporabljajo za "
+"označevanje prednostne slike osebe. Druga možnost je, da slike "
+"prerazporedite tako, da je prednostna slika navedena prva."
 
 #: app/Individual.php:448 app/Individual.php:452 app/Note.php:101
 #: app/Report/ReportParserGenerate.php:987
