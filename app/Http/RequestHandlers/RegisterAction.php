@@ -124,7 +124,7 @@ class RegisterAction implements RequestHandlerInterface
 
         Log::addAuthenticationLog('User registration requested for: ' . $username);
 
-        $user  = $this->user_service->create($username, $realname, $email, $password, $secret);
+        $user  = $this->user_service->create($username, $realname, $email, $password);
         $token = Str::random(32);
 
         $user->setPreference(UserInterface::PREF_LANGUAGE, I18N::languageTag());

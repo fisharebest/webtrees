@@ -324,7 +324,7 @@ class SetupWizard implements RequestHandlerInterface
         }
         // Create the user
         if ($admin === null) {
-            $admin = $this->user_service->create($data['wtuser'], $data['wtname'], $data['wtemail'], $data['wtpass'], $data['wtsecret']);
+            $admin = $this->user_service->create($data['wtuser'], $data['wtname'], $data['wtemail'], $data['wtpass']);
             $admin->setPreference(UserInterface::PREF_LANGUAGE, $data['lang']);
             $admin->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, '1');
             $admin->setPreference(UserInterface::PREF_IS_STATUS_MFA, '0');

@@ -113,7 +113,7 @@ class User implements UserInterface
         return $this->real_name;
     }
     /**
-     * Generate a QR code image based on 2FA secret and return both.
+     * Generate a QR code image based on MFA secret and return both.
      *
      * @return array<mixed>
      */
@@ -123,7 +123,7 @@ class User implements UserInterface
         $qrinfo = array();
         $google2fa = new Google2FA();
         $qrinfo['secret'] = $google2fa->generateSecretKey();
-        $data = 'otpauth://totp/' . (string)$this->user_id . '?secret=' . (string)$qrinfo['secret'] . '&issuer=' . (string)$_SERVER['SERVER_NAME'];
+        $data = 'otpauth://totp/' . (string)$this->user_id . '?secret=' . $qrinfo['secret'] . '&issuer=' . (string)$_SERVER['SERVER_NAME'];
         $qrinfo['qrcode'] = (new QRCode())->render($data);
         return $qrinfo;
     }
@@ -290,7 +290,7 @@ class User implements UserInterface
             ->where('user_id', '=', $this->id())
             ->value('secret');
         $google2fa = new Google2FA();
-        if ($google2fa->verifyKey((string)$secret, $codemfa)) {
+        if ((bool)$google2fa->verifyKey($secret, $codemfa)) {
                 return true;
         }
         return false;
