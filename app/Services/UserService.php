@@ -309,11 +309,10 @@ class UserService
      * @param string $real_name
      * @param string $email
      * @param string $password
-     * @param string $secret
      *
      * @return User
      */
-    public function create(string $user_name, string $real_name, string $email, #[\SensitiveParameter] string $password, string $secret): User
+    public function create(string $user_name, string $real_name, string $email, #[\SensitiveParameter] string $password): User
     {
         DB::table('user')->insert([
             'user_name' => $user_name,
