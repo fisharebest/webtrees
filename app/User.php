@@ -280,17 +280,17 @@ class User implements UserInterface
       /**
       * Validate a supplied 2fa code
       *
-      * @param string $code2fa
+      * @param string $codemfa
       *
       * @return bool
       */
-    public function check2facode(string $code2fa): bool
+    public function checkMfaCode(string $codemfa): bool
     {
         $secret = DB::table('user')
             ->where('user_id', '=', $this->id())
             ->value('secret');
         $google2fa = new Google2FA();
-        if ($google2fa->verifyKey((string)$secret, $code2fa)) {
+        if ($google2fa->verifyKey((string)$secret, $codemfa)) {
                 return true;
         }
         return false;

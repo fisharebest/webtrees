@@ -33,6 +33,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\User as CoreUser;
 
 use function route;
 use function time;
@@ -70,17 +71,22 @@ class LoginAction implements RequestHandlerInterface
         $username    = Validator::parsedBody($request)->string('username');
         $password    = Validator::parsedBody($request)->string('password', '');
         $loginstage    = Validator::parsedBody($request)->string('loginstage', '1');
-        $code2fa     = Validator::parsedBody($request)->string('code2fa', '');
+        $codemfa     = Validator::parsedBody($request)->string('codemfa', '');
         $url         = Validator::parsedBody($request)->isLocalUrl()->string('url', $default_url);
         $mfastatus   = Validator::parsedBody($request)->string('mfastatus', '0');
         $mfasuccess   = Validator::parsedBody($request)->string('mfasuccess', '0');
 
-        try {
+	try {
+ 	    $user = $this->user_service->findByIdentifier($username);
+            if ($user === null) {
+                Log::addAuthenticationLog('Login failed (no such user/email): ' . $username);
+                throw new Exception(I18N::translate('The username or password is incorrect.'));
+            }	    
             if ($loginstage === "1") {
-                $mfastatus = $this->doLogin($username, $password);
+                $mfastatus = $this->doLogin($username, $password, $user);
             } else {
                 if ($mfastatus === "1") {
-                    $mfasuccess = $this->doLoginMfa($username, $code2fa);
+                    $mfasuccess = $this->doLoginMfa($username, $codemfa, $user);
                 }
             }
 
@@ -96,7 +102,7 @@ class LoginAction implements RequestHandlerInterface
                     'url'      => $url,
                 ]));
             } else {
-                $this->completeLogin($username);
+                $this->completeLogin($username, $user);
                 // Redirect to the target URL
                 return redirect($url);
             }
@@ -121,22 +127,16 @@ class LoginAction implements RequestHandlerInterface
      *
      * @param string $username
      * @param string $password
+     * @param CoreUser $user
      *
      * @return string
      * @throws Exception
      */
-    private function doLogin(string $username, #[\SensitiveParameter] string $password): string
+    private function doLogin(string $username, #[\SensitiveParameter] string $password, CoreUser $user): string
     {
         if ($_COOKIE === []) {
             Log::addAuthenticationLog('Login failed (no session cookies): ' . $username);
             throw new Exception(I18N::translate('You cannot sign in because your browser does not accept cookies.'));
-        }
-
-        $user = $this->user_service->findByIdentifier($username);
-
-        if ($user === null) {
-            Log::addAuthenticationLog('Login failed (no such user/email): ' . $username);
-            throw new Exception(I18N::translate('The username or password is incorrect.'));
         }
 
         if (!$user->checkPassword($password)) {
@@ -165,25 +165,21 @@ class LoginAction implements RequestHandlerInterface
      * Verify login with 2FA if user has enable this.  Throw an exception, if we can't.
      *
      * @param string $username
-     * @param string $code2fa
+     * @param string $codemfa
+     * @param CoreUser $user
      *
      * @return string
      * @throws Exception
      */
 
-    private function doLoginMfa(string $username, string $code2fa): string
+    private function doLoginMfa(string $username, string $codemfa, CoreUser $user): string
     {
-        if ($code2fa !== '') {
-            $user = $this->user_service->findByIdentifier($username);
-            if ($user === null) {
-                Log::addAuthenticationLog('Login failed (no such user/email): ' . $username);
-                throw new Exception(I18N::translate('The username or password is incorrect.'));
-            }
-            if (!$user->check2FAcode($code2fa)) {
-                throw new Exception(I18N::translate('2FA code does not match. Please try again.'));
+        if ($codemfa !== '') {
+            if (!$user->checkMfaCode($codemfa)) {
+                throw new Exception(I18N::translate('Authentication code does not match. Please try again.'));
             }
         } else {
-                throw new Exception(I18N::translate('2FA code must be entered as you have 2FA authentication enabled. Please try again.'));
+                throw new Exception(I18N::translate('Authentication code must be entered as you have multi-factor authentication enabled. Please try again.'));
         }
         return "1";
     }
@@ -192,17 +188,13 @@ class LoginAction implements RequestHandlerInterface
      * Complete login
      *
      * @param string $username
+     * @param CoreUser $user
      *
      * @return void
      * @throws Exception
      */
-    private function completeLogin(string $username): void
+    private function completeLogin(string $username, CoreUser $user): void
     {
-        $user = $this->user_service->findByIdentifier($username);
-        if ($user === null) {
-            Log::addAuthenticationLog('Login failed (no such user/email): ' . $username);
-            throw new Exception(I18N::translate('The username or password is incorrect.'));
-        }
         Auth::login($user);
         Log::addAuthenticationLog('Login: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
         Auth::user()->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, (string) time());
