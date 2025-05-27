@@ -73,7 +73,6 @@ interface UserInterface
      * @return string
      */
     public function realName(): string;
-
     /**
      * The user‘s login name.
      *

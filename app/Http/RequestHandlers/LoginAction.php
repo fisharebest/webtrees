@@ -76,12 +76,12 @@ class LoginAction implements RequestHandlerInterface
         $mfastatus   = Validator::parsedBody($request)->string('mfastatus', '0');
         $mfasuccess   = Validator::parsedBody($request)->string('mfasuccess', '0');
 
-	try {
- 	    $user = $this->user_service->findByIdentifier($username);
+        try {
+            $user = $this->user_service->findByIdentifier($username);
             if ($user === null) {
                 Log::addAuthenticationLog('Login failed (no such user/email): ' . $username);
                 throw new Exception(I18N::translate('The username or password is incorrect.'));
-            }	    
+            }  
             if ($loginstage === "1") {
                 $mfastatus = $this->doLogin($username, $password, $user);
             } else {
@@ -153,7 +153,7 @@ class LoginAction implements RequestHandlerInterface
             Log::addAuthenticationLog('Login failed (not approved by admin): ' . $username);
             throw new Exception(I18N::translate('This account has not been approved. Please wait for an administrator to approve it.'));
         }
-        if ($user->getPreference(UserInterface::PREF_IS_STATUS_MFA) === "1" && Site::getPreference('SHOW_2FA_OPTION')) {
+        if ($user->getPreference(UserInterface::PREF_IS_STATUS_MFA) === "1" && (bool)Site::getPreference('SHOW_2FA_OPTION')) {
             # MFA switched on for site and has been enabled by user
             return "1";
         } else {

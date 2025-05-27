@@ -157,7 +157,7 @@ use Fisharebest\Webtrees\Tree;
 <?php if ($show_2fa) : ?>
     <fieldset class="row">
         <legend class="col-sm-3 col-form-label wt-page-options-label">
-            <?= I18N::translate('2FA status') ?>
+            <?= I18N::translate('MFA status') ?>
         </legend>
         <div class="col-sm-9 wt-page-options-value">
             <?= view('components/checkbox', ['label' => I18N::translate('Enable or disable 2FA status'), 'name' => 'status-mfa', 'checked' => (bool) $user->getPreference(UserInterface::PREF_IS_STATUS_MFA)]) ?>
@@ -170,7 +170,7 @@ use Fisharebest\Webtrees\Tree;
     <div class="row"  id="qrcode">
         <?php $qrc = $user->genQRcode(); ?>
         <input type="hidden" name="secret" id="secret" value="">
-        <input type="hidden" id="newsecret" value="<?= e($qrc['secret']) ?>">
+        <input type="hidden" id="newsecret" value="<?= e((string)$qrc['secret']) ?>">
         <img src="<?= e($qrc['qrcode']) ?>" alt="QR Code" id="qrcode" />
     </div>
     <div class="row mb-3">
