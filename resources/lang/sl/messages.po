@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-05-28 17:23+0000\n"
+"PO-Revision-Date: 2025-05-29 14:37+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sl/>\n"
@@ -18422,7 +18422,7 @@ msgstr "%s × prateta"
 #: app/Services/RelationshipService.php:1513
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr "%s × prateta/prastric"
+msgstr "%s × prastric/prateta"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2054
@@ -18431,7 +18431,7 @@ msgstr "%s × prateta/prastric"
 #: app/Services/RelationshipService.php:2097
 #, php-format
 msgid "great ×%s grandchild"
-msgstr "%s × prasin/prahči"
+msgstr "%s × pravnuk/pravnukinja"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2051
@@ -18440,7 +18440,7 @@ msgstr "%s × prasin/prahči"
 #: app/Services/RelationshipService.php:2093
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr "%s × prahči"
+msgstr "%s × pravnukinja"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1888
@@ -18482,7 +18482,7 @@ msgstr "%s × pradedek/prababica"
 #: app/Services/RelationshipService.php:2088
 #, php-format
 msgid "great ×%s grandson"
-msgstr "%s × prasin"
+msgstr "%s × pravnuk"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1771
@@ -18608,731 +18608,731 @@ msgstr "%s × prastric"
 
 #: app/Services/RelationshipService.php:1366
 msgid "great ×4 aunt"
-msgstr ""
+msgstr "4 × prateta"
 
 #: app/Services/RelationshipService.php:1369
 msgid "great ×4 aunt/uncle"
-msgstr ""
+msgstr "4 × prastric/prateta"
 
 #: app/Services/RelationshipService.php:2002
 msgid "great ×4 grandchild"
-msgstr ""
+msgstr "4 × pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:1999
 msgid "great ×4 granddaughter"
-msgstr ""
+msgstr "4 × pravnukinja"
 
 #: app/Services/RelationshipService.php:1838
 msgid "great ×4 grandfather"
-msgstr ""
+msgstr "4 × pradedek"
 
 #: app/Services/RelationshipService.php:1842
 msgid "great ×4 grandmother"
-msgstr ""
+msgstr "4 × prababica"
 
 #: app/Services/RelationshipService.php:1845
 msgid "great ×4 grandparent"
-msgstr ""
+msgstr "4 × prastarš"
 
 #: app/Services/RelationshipService.php:1995
 msgid "great ×4 grandson"
-msgstr ""
+msgstr "4 × pravnuk"
 
 #: app/Services/RelationshipService.php:1595
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "4 × pranečak"
 
 #: app/Services/RelationshipService.php:1599
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "4 × pranečak"
 
 #: app/Services/RelationshipService.php:1602
 msgctxt "(a woman’s) great ×4 nephew"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "4 × pranečak"
 
 #: app/Services/RelationshipService.php:1618
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "4 × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1622
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "4 × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1625
 msgctxt "(a woman’s) great ×4 nephew/niece"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "4 × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1607
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "4 × pranečakinja"
 
 #: app/Services/RelationshipService.php:1611
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "4 × pranečakinja"
 
 #: app/Services/RelationshipService.php:1614
 msgctxt "(a woman’s) great ×4 niece"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "4 × pranečakinja"
 
 #: app/Services/RelationshipService.php:1355
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "4 × prastric"
 
 #: app/Services/RelationshipService.php:1359
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "4 × prastric"
 
 #: app/Services/RelationshipService.php:1362
 msgctxt "great-great-great-grandparent’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "4 × prastric"
 
 #: app/Services/RelationshipService.php:1385
 msgid "great ×5 aunt"
-msgstr ""
+msgstr "5 × prateta"
 
 #: app/Services/RelationshipService.php:1388
 msgid "great ×5 aunt/uncle"
-msgstr ""
+msgstr "5 × prastric/prateta"
 
 #: app/Services/RelationshipService.php:2013
 msgid "great ×5 grandchild"
-msgstr ""
+msgstr "5 × pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:2010
 msgid "great ×5 granddaughter"
-msgstr ""
+msgstr "5 × pravnukinja"
 
 #: app/Services/RelationshipService.php:1849
 msgid "great ×5 grandfather"
-msgstr ""
+msgstr "5 × pradedek"
 
 #: app/Services/RelationshipService.php:1853
 msgid "great ×5 grandmother"
-msgstr ""
+msgstr "5 × prababica"
 
 #: app/Services/RelationshipService.php:1856
 msgid "great ×5 grandparent"
-msgstr ""
+msgstr "5 × prastarš"
 
 #: app/Services/RelationshipService.php:2006
 msgid "great ×5 grandson"
-msgstr ""
+msgstr "5 × pravnuk"
 
 #: app/Services/RelationshipService.php:1630
 msgctxt "(a man’s) brother’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "5 × pranečak"
 
 #: app/Services/RelationshipService.php:1634
 msgctxt "(a man’s) sister’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "5 × pranečak"
 
 #: app/Services/RelationshipService.php:1637
 msgctxt "(a woman’s) great ×5 nephew"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "5 × pranečak"
 
 #: app/Services/RelationshipService.php:1653
 msgctxt "(a man’s) brother’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "5 × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1657
 msgctxt "(a man’s) sister’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "5 × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1660
 msgctxt "(a woman’s) great ×5 nephew/niece"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "5 × pranečak/pranečakinja"
 
 #: app/Services/RelationshipService.php:1642
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "5 × pranečakinja"
 
 #: app/Services/RelationshipService.php:1646
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "5 × pranečakinja"
 
 #: app/Services/RelationshipService.php:1649
 msgctxt "(a woman’s) great ×5 niece"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "5 × pranečakinja"
 
 #: app/Services/RelationshipService.php:1374
 msgctxt "great ×4 grandfather’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "5 × prastric"
 
 #: app/Services/RelationshipService.php:1378
 msgctxt "great ×4 grandmother’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "5 × prastric"
 
 #: app/Services/RelationshipService.php:1381
 msgctxt "great ×4 grandparent’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "5 × prastric"
 
 #: app/Services/RelationshipService.php:1404
 msgid "great ×6 aunt"
-msgstr ""
+msgstr "6 × prateta"
 
 #: app/Services/RelationshipService.php:1407
 msgid "great ×6 aunt/uncle"
-msgstr ""
+msgstr "6 × prastric/prateta"
 
 #: app/Services/RelationshipService.php:2024
 msgid "great ×6 grandchild"
-msgstr ""
+msgstr "6 × pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:2021
 msgid "great ×6 granddaughter"
-msgstr ""
+msgstr "6 × pravnukinja"
 
 #: app/Services/RelationshipService.php:1860
 msgid "great ×6 grandfather"
-msgstr ""
+msgstr "6 × pradedek"
 
 #: app/Services/RelationshipService.php:1864
 msgid "great ×6 grandmother"
-msgstr ""
+msgstr "6 × prababica"
 
 #: app/Services/RelationshipService.php:1867
 msgid "great ×6 grandparent"
-msgstr ""
+msgstr "6 × prastarš"
 
 #: app/Services/RelationshipService.php:2017
 msgid "great ×6 grandson"
-msgstr ""
+msgstr "6 × pravnuk"
 
 #: app/Services/RelationshipService.php:1393
 msgctxt "great ×5 grandfather’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "6 × prastric"
 
 #: app/Services/RelationshipService.php:1397
 msgctxt "great ×5 grandmother’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "6 × prastric"
 
 #: app/Services/RelationshipService.php:1400
 msgctxt "great ×5 grandparent’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "6 × prastric"
 
 #: app/Services/RelationshipService.php:1423
 msgid "great ×7 aunt"
-msgstr ""
+msgstr "7 × prateta"
 
 #: app/Services/RelationshipService.php:1426
 msgid "great ×7 aunt/uncle"
-msgstr ""
+msgstr "7 × prastric/prateta"
 
 #: app/Services/RelationshipService.php:2035
 msgid "great ×7 grandchild"
-msgstr ""
+msgstr "7 × pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:2032
 msgid "great ×7 granddaughter"
-msgstr ""
+msgstr "7 × pravnukinja"
 
 #: app/Services/RelationshipService.php:1871
 msgid "great ×7 grandfather"
-msgstr ""
+msgstr "7 × pradedek"
 
 #: app/Services/RelationshipService.php:1875
 msgid "great ×7 grandmother"
-msgstr ""
+msgstr "7 × prababica"
 
 #: app/Services/RelationshipService.php:1878
 msgid "great ×7 grandparent"
-msgstr ""
+msgstr "7 × prastarš"
 
 #: app/Services/RelationshipService.php:2028
 msgid "great ×7 grandson"
-msgstr ""
+msgstr "7 × pravnuk"
 
 #: app/Services/RelationshipService.php:1412
 msgctxt "great ×6 grandfather’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "7 × prastric"
 
 #: app/Services/RelationshipService.php:1416
 msgctxt "great ×6 grandmother’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "7 × prastric"
 
 #: app/Services/RelationshipService.php:1419
 msgctxt "great ×6 grandparent’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "7 × prastric"
 
 #: app/Services/RelationshipService.php:1096
 msgctxt "father’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:792
 msgctxt "father’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:1102
 msgctxt "father’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:804
 msgctxt "father’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:1108
 msgctxt "father’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:816
 msgctxt "father’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:1114
 msgctxt "mother’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:872
 msgctxt "mother’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:1120
 msgctxt "mother’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:890
 msgctxt "mother’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:1126
 msgctxt "mother’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:902
 msgctxt "mother’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:1132
 msgctxt "parent’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:924
 msgctxt "parent’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:1138
 msgctxt "parent’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:936
 msgctxt "parent’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:1144
 msgctxt "parent’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:948
 msgctxt "parent’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "prateta"
 
 #: app/Services/RelationshipService.php:790
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:1098
 msgctxt "father’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:802
 msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:1104
 msgctxt "father’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:814
 msgctxt "father’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:1110
 msgctxt "father’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:870
 msgctxt "mother’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:1116
 msgctxt "mother’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:888
 msgctxt "mother’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:1122
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:900
 msgctxt "mother’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:1128
 msgctxt "mother’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:922
 msgctxt "parent’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:1134
 msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:934
 msgctxt "parent’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:1140
 msgctxt "parent’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:946
 msgctxt "parent’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:1146
 msgctxt "parent’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prastric/prateta"
 
 #: app/Services/RelationshipService.php:724
 msgctxt "child’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:730
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:738
 msgctxt "child’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:746
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:752
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:766
 msgctxt "daughter’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:1044
 msgctxt "son’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:1050
 msgctxt "son’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:1058
 msgctxt "son’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "pravnuk/pravnukinja"
 
 #: app/Services/RelationshipService.php:726
 msgctxt "child’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "pravnukinja"
 
 #: app/Services/RelationshipService.php:732
 msgctxt "child’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "pravnukinja"
 
 #: app/Services/RelationshipService.php:740
 msgctxt "child’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "pravnukinja"
 
 #: app/Services/RelationshipService.php:748
 msgctxt "daughter’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "pravnukinja"
 
 #: app/Services/RelationshipService.php:754
 msgctxt "daughter’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "pravnukinja"
 
 #: app/Services/RelationshipService.php:768
 msgctxt "daughter’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "pravnukinja"
 
 #: app/Services/RelationshipService.php:1046
 msgctxt "son’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "pravnukinja"
 
 #: app/Services/RelationshipService.php:1052
 msgctxt "son’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "pravnukinja"
 
 #: app/Services/RelationshipService.php:1060
 msgctxt "son’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "pravnukinja"
 
 #: app/Services/RelationshipService.php:784
 msgctxt "father’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "pradedek"
 
 #: app/Services/RelationshipService.php:796
 msgctxt "father’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "pradedek"
 
 #: app/Services/RelationshipService.php:808
 msgctxt "father’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "pradedek"
 
 #: app/Services/RelationshipService.php:864
 msgctxt "mother’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "pradedek"
 
 #: app/Services/RelationshipService.php:882
 msgctxt "mother’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "pradedek"
 
 #: app/Services/RelationshipService.php:894
 msgctxt "mother’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "pradedek"
 
 #: app/Services/RelationshipService.php:916
 msgctxt "parent’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "pradedek"
 
 #: app/Services/RelationshipService.php:928
 msgctxt "parent’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "pradedek"
 
 #: app/Services/RelationshipService.php:940
 msgctxt "parent’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "pradedek"
 
 #: app/Services/RelationshipService.php:786
 msgctxt "father’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "prababica"
 
 #: app/Services/RelationshipService.php:798
 msgctxt "father’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "prababica"
 
 #: app/Services/RelationshipService.php:810
 msgctxt "father’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "prababica"
 
 #: app/Services/RelationshipService.php:866
 msgctxt "mother’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "prababica"
 
 #: app/Services/RelationshipService.php:884
 msgctxt "mother’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "prababica"
 
 #: app/Services/RelationshipService.php:896
 msgctxt "mother’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "prababica"
 
 #: app/Services/RelationshipService.php:918
 msgctxt "parent’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "prababica"
 
 #: app/Services/RelationshipService.php:930
 msgctxt "parent’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "prababica"
 
 #: app/Services/RelationshipService.php:942
 msgctxt "parent’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "prababica"
 
 #: app/Services/RelationshipService.php:788
 msgctxt "father’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "prastarš"
 
 #: app/Services/RelationshipService.php:800
 msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "prastarš"
 
 #: app/Services/RelationshipService.php:812
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "prastarš"
 
 #: app/Services/RelationshipService.php:868
 msgctxt "mother’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "prastarš"
 
 #: app/Services/RelationshipService.php:886
 msgctxt "mother’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "prastarš"
 
 #: app/Services/RelationshipService.php:898
 msgctxt "mother’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "prastarš"
 
 #: app/Services/RelationshipService.php:920
 msgctxt "parent’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "prastarš"
 
 #: app/Services/RelationshipService.php:932
 msgctxt "parent’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "prastarš"
 
 #: app/Services/RelationshipService.php:944
 msgctxt "parent’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "prastarš"
 
 #: app/Services/RelationshipService.php:728
 msgctxt "child’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "pravnuk"
 
 #: app/Services/RelationshipService.php:736
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "pravnuk"
 
 #: app/Services/RelationshipService.php:742
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "pravnuk"
 
 #: app/Services/RelationshipService.php:750
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "pravnuk"
 
 #: app/Services/RelationshipService.php:758
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "pravnuk"
 
 #: app/Services/RelationshipService.php:770
 msgctxt "daughter’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "pravnuk"
 
 #: app/Services/RelationshipService.php:1048
 msgctxt "son’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "pravnuk"
 
 #: app/Services/RelationshipService.php:1056
 msgctxt "son’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "pravnuk"
 
 #: app/Services/RelationshipService.php:1062
 msgctxt "son’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "pravnuk"
 
 #: app/Services/RelationshipService.php:1328
 msgid "great-great-aunt"
