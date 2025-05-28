@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-05-11 18:59+0000\n"
+"PO-Revision-Date: 2025-05-29 10:38+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sv/>\n"
@@ -53,13 +53,13 @@ msgstr "%1$s %2$s har en %3$s-länk till %4$s."
 #: app/Functions/Functions.php:2374
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s är %2$s generationer mera"
+msgstr "%1$s %2$s generationer bakåt"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2378
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr "%1$s är %2$s generationer mindre"
+msgstr "%1$s %2$s generationer framåt"
 
 #: app/Functions/FunctionsPrintLists.php:70
 #, php-format
@@ -350,13 +350,13 @@ msgstr[1] "%s källor har uppdaterats."
 #: app/Functions/Functions.php:2366
 #, php-format
 msgid "%s three times removed ascending"
-msgstr "%s tre generationer mera"
+msgstr "%s tre generationer bakåt"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2370
 #, php-format
 msgid "%s three times removed descending"
-msgstr "%s tre generationer mindre"
+msgstr "%s tre generationer framåt"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2358
@@ -1594,7 +1594,7 @@ msgstr "Dotters adoption"
 #: app/Module/IndividualFactsTabModule.php:414
 #: app/Module/IndividualFactsTabModule.php:437
 msgid "Adoption of a grandchild"
-msgstr "Barnbarnets adoption"
+msgstr "Adoption av ett barnbarn"
 
 #: app/Module/IndividualFactsTabModule.php:390
 msgid "Adoption of a granddaughter"
@@ -2859,7 +2859,7 @@ msgstr "Dotters födelse"
 #: app/Module/IndividualFactsTabModule.php:422
 #: resources/views/admin/trees-preferences.phtml:449
 msgid "Birth of a grandchild"
-msgstr "Barnbarnets födelse"
+msgstr "Barnbarns födelse"
 
 #: app/Module/IndividualFactsTabModule.php:375
 msgid "Birth of a granddaughter"
@@ -3152,7 +3152,7 @@ msgstr "Fars begravning"
 #: app/Module/IndividualFactsTabModule.php:522
 #: app/Module/IndividualFactsTabModule.php:540
 msgid "Burial of a grandchild"
-msgstr "Barnbarnets begravning"
+msgstr "Barnbarns begravning"
 
 #: app/Module/IndividualFactsTabModule.php:503
 msgid "Burial of a granddaughter"
@@ -3715,7 +3715,7 @@ msgstr "Dop av en dotter"
 #: app/Module/IndividualFactsTabModule.php:404
 #: app/Module/IndividualFactsTabModule.php:427
 msgid "Christening of a grandchild"
-msgstr "Dop av ett barnbarn"
+msgstr "Barnbarns dop"
 
 #: app/Module/IndividualFactsTabModule.php:380
 msgid "Christening of a granddaughter"
@@ -4283,7 +4283,7 @@ msgstr "Fars kremering"
 
 #: app/Module/IndividualFactsTabModule.php:545
 msgid "Cremation of a grandchild"
-msgstr "Barnbarnets kremering"
+msgstr "Barnbarns kremering"
 
 #: app/Module/IndividualFactsTabModule.php:508
 msgid "Cremation of a granddaughter"
@@ -4949,7 +4949,7 @@ msgstr "Faderns död"
 #: app/Module/IndividualFactsTabModule.php:535
 #: resources/views/admin/trees-preferences.phtml:495
 msgid "Death of a grandchild"
-msgstr "Barnbarnets död"
+msgstr "Barnbarns död"
 
 #: app/Module/IndividualFactsTabModule.php:498
 msgid "Death of a granddaughter"
@@ -9179,7 +9179,7 @@ msgstr "Faderns vigsel"
 #: app/Module/IndividualFactsTabModule.php:570
 #: resources/views/admin/trees-preferences.phtml:469
 msgid "Marriage of a grandchild"
-msgstr "Barnbarnets vigsel"
+msgstr "Barnbarns vigsel"
 
 #: app/Module/IndividualFactsTabModule.php:557
 msgid "Marriage of a granddaughter"
@@ -17988,12 +17988,12 @@ msgstr "barnbarn"
 #: app/Functions/Functions.php:788
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr "dottersbarn"
+msgstr "barnbarn"
 
 #: app/Functions/Functions.php:888
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr "sonsbarn"
+msgstr "barnbarn"
 
 #: app/Functions/Functions.php:778
 msgctxt "child’s daughter"
@@ -18089,7 +18089,7 @@ msgstr "%s. generations tant/onkel"
 #: app/Functions/Functions.php:2296
 #, php-format
 msgid "great ×%s grandchild"
-msgstr "barnbarn %s generationer fram"
+msgstr "barnbarn %s generationer framåt"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2262 app/Functions/Functions.php:2273
@@ -18104,7 +18104,7 @@ msgstr "barnets dotter %s generationer fram"
 #: app/Functions/Functions.php:2165
 #, php-format
 msgid "great ×%s grandfather"
-msgstr "gammelfar %s generationer bak"
+msgstr "gammelfar %s generationer bakåt"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2114 app/Functions/Functions.php:2128
@@ -18112,7 +18112,7 @@ msgstr "gammelfar %s generationer bak"
 #: app/Functions/Functions.php:2170
 #, php-format
 msgid "great ×%s grandmother"
-msgstr "gammelmor %s generationer bak"
+msgstr "gammelmor %s generationer bakåt"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2117 app/Functions/Functions.php:2131
@@ -18120,7 +18120,7 @@ msgstr "gammelmor %s generationer bak"
 #: app/Functions/Functions.php:2174
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "gammelförälder %s generationer bak"
+msgstr "gammelförälder %s generationer bakåt"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2258 app/Functions/Functions.php:2270
@@ -18245,15 +18245,15 @@ msgstr "barnets dotter 4 generationer fram"
 
 #: app/Functions/Functions.php:2060
 msgid "great ×4 grandfather"
-msgstr "gammelfar 4 generationer bak"
+msgstr "gammelfar 4 generationer bakåt"
 
 #: app/Functions/Functions.php:2064
 msgid "great ×4 grandmother"
-msgstr "gammelmor 4 generationer bak"
+msgstr "gammelmor 4 generationer bakåt"
 
 #: app/Functions/Functions.php:2067
 msgid "great ×4 grandparent"
-msgstr "gammelförälder 4 generationer bak"
+msgstr "gammelförälder 4 generationer bakåt"
 
 #: app/Functions/Functions.php:2206
 msgid "great ×4 grandson"
@@ -18329,7 +18329,7 @@ msgstr "5. generations tant/onkel"
 
 #: app/Functions/Functions.php:2224
 msgid "great ×5 grandchild"
-msgstr "barnbarn 5 generationer fram"
+msgstr "barnbarn 5 generationer framåt"
 
 #: app/Functions/Functions.php:2221
 msgid "great ×5 granddaughter"
@@ -18337,15 +18337,15 @@ msgstr "barnets dotter 5 generationer fram"
 
 #: app/Functions/Functions.php:2071
 msgid "great ×5 grandfather"
-msgstr "gammelfar 5 generationer bak"
+msgstr "gammelfar 5 generationer bakåt"
 
 #: app/Functions/Functions.php:2075
 msgid "great ×5 grandmother"
-msgstr "gammelmor 5 generationer bak"
+msgstr "gammelmor 5 generationer bakåt"
 
 #: app/Functions/Functions.php:2078
 msgid "great ×5 grandparent"
-msgstr "gammelförälder 5 generationer bak"
+msgstr "gammelförälder 5 generationer bakåt"
 
 #: app/Functions/Functions.php:2217
 msgid "great ×5 grandson"
@@ -18429,15 +18429,15 @@ msgstr "barnets dotter 6 generationer fram"
 
 #: app/Functions/Functions.php:2082
 msgid "great ×6 grandfather"
-msgstr "gammelfar 6 generationer bak"
+msgstr "gammelfar 6 generationer bakåt"
 
 #: app/Functions/Functions.php:2086
 msgid "great ×6 grandmother"
-msgstr "gammelmor 6 generationer bak"
+msgstr "gammelmor 6 generationer bakåt"
 
 #: app/Functions/Functions.php:2089
 msgid "great ×6 grandparent"
-msgstr "gammelförälder 6 generationer bak"
+msgstr "gammelförälder 6 generationer bakåt"
 
 #: app/Functions/Functions.php:2228
 msgid "great ×6 grandson"
@@ -18476,15 +18476,15 @@ msgstr "barnets dotter 7 generationer fram"
 
 #: app/Functions/Functions.php:2093
 msgid "great ×7 grandfather"
-msgstr "gammelfar 7 generationer bak"
+msgstr "gammelfar 7 generationer bakåt"
 
 #: app/Functions/Functions.php:2097
 msgid "great ×7 grandmother"
-msgstr "gammelmor 7 generationer bak"
+msgstr "gammelmor 7 generationer bakåt"
 
 #: app/Functions/Functions.php:2100
 msgid "great ×7 grandparent"
-msgstr "gammelförälder 7 generationer bak"
+msgstr "gammelförälder 7 generationer bakåt"
 
 #: app/Functions/Functions.php:2239
 msgid "great ×7 grandson"
@@ -18693,12 +18693,12 @@ msgstr "barnbarns barn"
 #: app/Functions/Functions.php:1002
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr "barns dotterbarn"
+msgstr "barnbarns barn"
 
 #: app/Functions/Functions.php:1010
 msgctxt "child’s son’s child"
 msgid "great-grandchild"
-msgstr "barnets sons barn"
+msgstr "barnbarns barn"
 
 #: app/Functions/Functions.php:1018
 msgctxt "daughter’s child’s child"
@@ -18708,7 +18708,7 @@ msgstr "dotters barnbarn"
 #: app/Functions/Functions.php:1024
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr "dotters dotterbarn"
+msgstr "dotters barnbarn"
 
 #: app/Functions/Functions.php:1038
 msgctxt "daughter’s son’s child"
@@ -18723,7 +18723,7 @@ msgstr "sons barnbarn"
 #: app/Functions/Functions.php:1322
 msgctxt "son’s daughter’s child"
 msgid "great-grandchild"
-msgstr "sondotters barn"
+msgstr "sons barnbarn"
 
 #: app/Functions/Functions.php:1330
 msgctxt "son’s son’s child"
@@ -18973,15 +18973,15 @@ msgstr "barnbarns barns dotter"
 
 #: app/Functions/Functions.php:2038
 msgid "great-great-grandfather"
-msgstr "gammelfar 2 generationer bak"
+msgstr "gammelfar 2 generationer bakåt"
 
 #: app/Functions/Functions.php:2042
 msgid "great-great-grandmother"
-msgstr "gammelmor 2 generationer bak"
+msgstr "gammelmor 2 generationer bakåt"
 
 #: app/Functions/Functions.php:2045
 msgid "great-great-grandparent"
-msgstr "gammelförälder 2 generationer bak"
+msgstr "gammelförälder 2 generationer bakåt"
 
 #: app/Functions/Functions.php:2184
 msgid "great-great-grandson"
@@ -19005,15 +19005,15 @@ msgstr "barnbarns barnbarns dotter"
 
 #: app/Functions/Functions.php:2049
 msgid "great-great-great-grandfather"
-msgstr "gammelfar 3 generationer bak"
+msgstr "gammelfar 3 generationer bakåt"
 
 #: app/Functions/Functions.php:2053
 msgid "great-great-great-grandmother"
-msgstr "gammelmor 3 generationer bak"
+msgstr "gammelmor 3 generationer bakåt"
 
 #: app/Functions/Functions.php:2056
 msgid "great-great-great-grandparent"
-msgstr "gammelförälder 3 generationer bak"
+msgstr "gammelförälder 3 generationer bakåt"
 
 #: app/Functions/Functions.php:2195
 msgid "great-great-great-grandson"
