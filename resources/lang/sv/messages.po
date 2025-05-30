@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-05-28 17:23+0000\n"
+"PO-Revision-Date: 2025-05-30 21:45+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sv/>\n"
@@ -15288,7 +15288,7 @@ msgstr "Tid"
 #: app/CustomTags/Aldfaer.php:71 app/CustomTags/Gedcom7.php:124
 #: app/CustomTags/ProGen.php:56
 msgid "Time of birth"
-msgstr "Födelsetiden"
+msgstr "Födelsetid"
 
 #: resources/views/admin/tags.phtml:960
 msgid "Time of birth and time of death"
@@ -15297,7 +15297,7 @@ msgstr "Födelsetiden och dödstiden"
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:128
 #: app/CustomTags/Geneatique.php:59
 msgid "Time of death"
-msgstr "Dödstiden"
+msgstr "Dödstid"
 
 #: app/CustomTags/GedcomL.php:223 app/Gedcom.php:450 app/Gedcom.php:617
 #: app/Gedcom.php:764 app/Gedcom.php:785 app/Gedcom.php:816 app/Gedcom.php:832
