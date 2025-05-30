@@ -211,7 +211,7 @@ class LanguageGerman extends AbstractModule implements ModuleLanguageInterface
             Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großnichte', '', 'F'))->sibling()->descendant()->female(),
             Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großnichte', '', 'F'))->married()->spouse()->sibling()->descendant()->female(),
             Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großneffe', '', 'M'))->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großneffe'), '', 'M')->married()->spouse()->sibling()->descendant()->male(),
+            Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'großneffe', '', 'M'))->married()->spouse()->sibling()->descendant()->male(),
             Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'enkelin', '', 'F'))->descendant()->female(),
             Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'enkel', '', 'M'))->descendant()->male(),
             Relationship::dynamic(static fn (int $n) => $ur($n - 3, 'enkelin/enkel', '', 'U'))->descendant(),
