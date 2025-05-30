@@ -115,15 +115,17 @@ class User implements UserInterface
     /**
      * Generate a QR code image based on MFA secret and return both.
      *
+     * @param string $user_id
+     *
      * @return array<mixed>
      */
 
-    public function genQRcode(): array
+    public function genQRcode(string $user_id): array
     {
         $qrinfo = array();
         $google2fa = new Google2FA();
         $qrinfo['secret'] = $google2fa->generateSecretKey();
-        $data = 'otpauth://totp/' . (string)$this->user_id . '?secret=' . $qrinfo['secret'] . '&issuer=' . (string)$_SERVER['SERVER_NAME'];
+        $data = 'otpauth://totp/' . $user_id . '?secret=' . $qrinfo['secret'] . '&issuer=' . (string)$_SERVER['SERVER_NAME'];
         $qrinfo['qrcode'] = (new QRCode())->render($data);
         return $qrinfo;
     }
