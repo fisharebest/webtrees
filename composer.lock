@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "57eb7786311969b6ff5c3b354ab5fe02",
+    "content-hash": "671e6bb31a43fcc99744d0ad871fee21",
     "packages": [
         {
             "name": "aura/router",
@@ -5778,16 +5778,16 @@
         },
         {
             "name": "tecnickcom/tcpdf",
-            "version": "6.9.3",
+            "version": "6.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tecnickcom/TCPDF.git",
-                "reference": "d0e8dd17f8a1df3c97b94b9af8356e88e811ed59"
+                "reference": "ca5b6de294512145db96bcbc94e61696599c391d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/d0e8dd17f8a1df3c97b94b9af8356e88e811ed59",
-                "reference": "d0e8dd17f8a1df3c97b94b9af8356e88e811ed59",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/ca5b6de294512145db96bcbc94e61696599c391d",
+                "reference": "ca5b6de294512145db96bcbc94e61696599c391d",
                 "shasum": ""
             },
             "require": {
@@ -5837,15 +5837,15 @@
             ],
             "support": {
                 "issues": "https://github.com/tecnickcom/TCPDF/issues",
-                "source": "https://github.com/tecnickcom/TCPDF/tree/6.9.3"
+                "source": "https://github.com/tecnickcom/TCPDF/tree/6.10.0"
             },
             "funding": [
                 {
-                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&currency_code=GBP&business=paypal@tecnick.com&item_name=donation%20for%20tcpdf%20project",
+                    "url": "https://www.paypal.com/donate/?hosted_button_id=NZUEC5XS8MFBJ",
                     "type": "custom"
                 }
             ],
-            "time": "2025-04-20T15:52:50+00:00"
+            "time": "2025-05-27T18:02:28+00:00"
         },
         {
             "name": "voku/portable-ascii",
@@ -5925,16 +5925,16 @@
     "packages-dev": [
         {
             "name": "composer/ca-bundle",
-            "version": "1.5.6",
+            "version": "1.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "f65c239c970e7f072f067ab78646e9f0b2935175"
+                "reference": "d665d22c417056996c59019579f1967dfe5c1e82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/f65c239c970e7f072f067ab78646e9f0b2935175",
-                "reference": "f65c239c970e7f072f067ab78646e9f0b2935175",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/d665d22c417056996c59019579f1967dfe5c1e82",
+                "reference": "d665d22c417056996c59019579f1967dfe5c1e82",
                 "shasum": ""
             },
             "require": {
@@ -5981,7 +5981,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/1.5.6"
+                "source": "https://github.com/composer/ca-bundle/tree/1.5.7"
             },
             "funding": [
                 {
@@ -5997,7 +5997,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-03-06T14:30:56+00:00"
+            "time": "2025-05-26T15:08:54+00:00"
         },
         {
             "name": "composer/class-map-generator",
@@ -6074,16 +6074,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "2.8.8",
+            "version": "2.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "85ff84d6c5260ba21740a7c5c9a111890805d6e7"
+                "reference": "b4e6bff2db7ce756ddb77ecee958a0f41f42bd9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/85ff84d6c5260ba21740a7c5c9a111890805d6e7",
-                "reference": "85ff84d6c5260ba21740a7c5c9a111890805d6e7",
+                "url": "https://api.github.com/repos/composer/composer/zipball/b4e6bff2db7ce756ddb77ecee958a0f41f42bd9d",
+                "reference": "b4e6bff2db7ce756ddb77ecee958a0f41f42bd9d",
                 "shasum": ""
             },
             "require": {
@@ -6168,7 +6168,7 @@
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/composer/issues",
                 "security": "https://github.com/composer/composer/security/policy",
-                "source": "https://github.com/composer/composer/tree/2.8.8"
+                "source": "https://github.com/composer/composer/tree/2.8.9"
             },
             "funding": [
                 {
@@ -6184,7 +6184,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-04-04T14:56:46+00:00"
+            "time": "2025-05-13T12:01:37+00:00"
         },
         {
             "name": "composer/metadata-minifier",
@@ -6417,24 +6417,24 @@
         },
         {
             "name": "composer/spdx-licenses",
-            "version": "1.5.8",
+            "version": "1.5.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/spdx-licenses.git",
-                "reference": "560bdcf8deb88ae5d611c80a2de8ea9d0358cc0a"
+                "reference": "edf364cefe8c43501e21e88110aac10b284c3c9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/560bdcf8deb88ae5d611c80a2de8ea9d0358cc0a",
-                "reference": "560bdcf8deb88ae5d611c80a2de8ea9d0358cc0a",
+                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/edf364cefe8c43501e21e88110aac10b284c3c9f",
+                "reference": "edf364cefe8c43501e21e88110aac10b284c3c9f",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.3.2 || ^7.0 || ^8.0"
             },
             "require-dev": {
-                "phpstan/phpstan": "^0.12.55",
-                "symfony/phpunit-bridge": "^4.2 || ^5"
+                "phpstan/phpstan": "^1.11",
+                "symfony/phpunit-bridge": "^3 || ^7"
             },
             "type": "library",
             "extra": {
@@ -6477,7 +6477,7 @@
             "support": {
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/spdx-licenses/issues",
-                "source": "https://github.com/composer/spdx-licenses/tree/1.5.8"
+                "source": "https://github.com/composer/spdx-licenses/tree/1.5.9"
             },
             "funding": [
                 {
@@ -6493,7 +6493,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-11-20T07:44:33+00:00"
+            "time": "2025-05-12T21:07:07+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -7066,16 +7066,16 @@
         },
         {
             "name": "php-coveralls/php-coveralls",
-            "version": "v2.7.0",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-coveralls/php-coveralls.git",
-                "reference": "b36fa4394e519dafaddc04ae03976bc65a25ba15"
+                "reference": "00b9fce4d785a98760ca02f305c197f5fcfb6004"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-coveralls/php-coveralls/zipball/b36fa4394e519dafaddc04ae03976bc65a25ba15",
-                "reference": "b36fa4394e519dafaddc04ae03976bc65a25ba15",
+                "url": "https://api.github.com/repos/php-coveralls/php-coveralls/zipball/00b9fce4d785a98760ca02f305c197f5fcfb6004",
+                "reference": "00b9fce4d785a98760ca02f305c197f5fcfb6004",
                 "shasum": ""
             },
             "require": {
@@ -7090,6 +7090,7 @@
                 "symfony/yaml": "^2.0.5 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0"
             },
             "require-dev": {
+                "phpspec/prophecy-phpunit": "^1.1 || ^2.3",
                 "phpunit/phpunit": "^4.8.35 || ^5.4.3 || ^6.0 || ^7.0 || >=8.0 <8.5.29 || >=9.0 <9.5.23",
                 "sanmai/phpunit-legacy-adapter": "^6.1 || ^8.0"
             },
@@ -7143,9 +7144,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-coveralls/php-coveralls/issues",
-                "source": "https://github.com/php-coveralls/php-coveralls/tree/v2.7.0"
+                "source": "https://github.com/php-coveralls/php-coveralls/tree/v2.8.0"
             },
-            "time": "2023-11-22T10:21:01+00:00"
+            "time": "2025-05-12T08:35:27+00:00"
         },
         {
             "name": "phpstan/extension-installer",
@@ -7197,16 +7198,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.1.14",
+            "version": "2.1.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "8f2e03099cac24ff3b379864d171c5acbfc6b9a2"
+                "reference": "89b5ef665716fa2a52ecd2633f21007a6a349053"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/8f2e03099cac24ff3b379864d171c5acbfc6b9a2",
-                "reference": "8f2e03099cac24ff3b379864d171c5acbfc6b9a2",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/89b5ef665716fa2a52ecd2633f21007a6a349053",
+                "reference": "89b5ef665716fa2a52ecd2633f21007a6a349053",
                 "shasum": ""
             },
             "require": {
@@ -7251,25 +7252,25 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-05-02T15:32:28+00:00"
+            "time": "2025-05-21T20:55:28+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-deprecation-rules.git",
-                "reference": "9d8e7d4e32711715ad78a1fb6ec368df9af01fdf"
+                "reference": "468e02c9176891cc901143da118f09dc9505fc2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-deprecation-rules/zipball/9d8e7d4e32711715ad78a1fb6ec368df9af01fdf",
-                "reference": "9d8e7d4e32711715ad78a1fb6ec368df9af01fdf",
+                "url": "https://api.github.com/repos/phpstan/phpstan-deprecation-rules/zipball/468e02c9176891cc901143da118f09dc9505fc2f",
+                "reference": "468e02c9176891cc901143da118f09dc9505fc2f",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4 || ^8.0",
-                "phpstan/phpstan": "^2.1.13"
+                "phpstan/phpstan": "^2.1.15"
             },
             "require-dev": {
                 "php-parallel-lint/php-parallel-lint": "^1.2",
@@ -7296,9 +7297,9 @@
             "description": "PHPStan rules for detecting usage of deprecated classes, methods, properties, constants and traits.",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan-deprecation-rules/issues",
-                "source": "https://github.com/phpstan/phpstan-deprecation-rules/tree/2.0.2"
+                "source": "https://github.com/phpstan/phpstan-deprecation-rules/tree/2.0.3"
             },
-            "time": "2025-04-26T19:59:57+00:00"
+            "time": "2025-05-14T10:56:57+00:00"
         },
         {
             "name": "phpstan/phpstan-phpunit",

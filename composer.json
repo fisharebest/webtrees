@@ -1,6 +1,7 @@
 {
     "name": "fisharebest/webtrees",
     "description": "webtrees online genealogy",
+    "type": "project",
     "keywords": [
         "webtrees",
         "genealogy"
@@ -79,19 +80,19 @@
         "symfony/mailer": "5.4.45",
         "symfony/polyfill-mbstring": "1.32.0",
         "symfony/polyfill-php80": "1.32.0",
-        "tecnickcom/tcpdf": "6.9.3"
+        "tecnickcom/tcpdf": "6.10.0"
     },
     "require-dev": {
         "ext-dom": "*",
         "ext-libxml": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
-        "composer/composer": "2.8.8",
+        "composer/composer": "2.8.9",
         "league/flysystem-memory": "2.0.6",
-        "php-coveralls/php-coveralls": "2.7.0",
+        "php-coveralls/php-coveralls": "2.8.0",
         "phpstan/extension-installer": "1.4.3",
-        "phpstan/phpstan": "2.1.14",
-        "phpstan/phpstan-deprecation-rules": "2.0.2",
+        "phpstan/phpstan": "2.1.17",
+        "phpstan/phpstan-deprecation-rules": "2.0.3",
         "phpstan/phpstan-phpunit": "2.0.6",
         "phpstan/phpstan-strict-rules": "2.0.4",
         "phpunit/phpunit": "9.6.23",
