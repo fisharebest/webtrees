@@ -63,7 +63,7 @@ class LanguageGerman extends AbstractModule implements ModuleLanguageInterface
         $genitive = static fn (string $prefix, string $suffix, string $gender): array => [
             $prefix . $suffix,
             '%s ' . ($gender === 'M' ? 'des ' . $prefix . 's' : '%s der ' . $prefix) . $suffix,
-        ] ;
+        ];
 
         // $n <= -1 -> ''
         // $n == 0 -> Ur
