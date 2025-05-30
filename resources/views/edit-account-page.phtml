@@ -168,7 +168,7 @@ use Fisharebest\Webtrees\Tree;
     </fieldset>
 <?php endif ?>
     <div class="row"  id="qrcode">
-        <?php $qrc = $user->genQRcode(); ?>
+        <?php $qrc = genQRcode(); ?>
         <input type="hidden" name="secret" id="secret" value="">
         <input type="hidden" id="newsecret" value="<?= e((string)$qrc['secret']) ?>">
         <img src="<?= e($qrc['qrcode']) ?>" alt="QR Code" id="qrcode" />
