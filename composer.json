@@ -1,6 +1,7 @@
 {
     "name": "fisharebest/webtrees",
     "description": "webtrees online genealogy",
+    "type": "project",
     "keywords": [
         "webtrees",
         "genealogy"
@@ -50,9 +51,9 @@
         "fisharebest/ext-calendar": "2.6.0",
         "fisharebest/localization": "1.17.0",
         "guzzlehttp/guzzle": "7.9.3",
-        "illuminate/database": "12.12.0",
-        "illuminate/support": "12.12.0",
-        "intervention/image": "3.11.2",
+        "illuminate/database": "12.16.0",
+        "illuminate/support": "12.16.0",
+        "intervention/image": "3.11.3",
         "league/commonmark": "2.7.0",
         "league/flysystem": "3.29.1",
         "league/flysystem-path-prefixing": "3.28.0",
@@ -68,12 +69,12 @@
         "psr/http-server-middleware": "1.0.2",
         "ramsey/uuid": "4.7.6",
         "sabre/vobject": "4.5.7",
-        "symfony/cache": "7.2.6",
-        "symfony/console": "7.2.6",
-        "symfony/expression-language": "7.2.0",
-        "symfony/mailer": "7.2.6",
+        "symfony/cache": "7.3.0",
+        "symfony/console": "7.3.0",
+        "symfony/expression-language": "7.3.0",
+        "symfony/mailer": "7.3.0",
         "symfony/polyfill-mbstring": "1.32.0",
-        "tecnickcom/tcpdf": "6.9.3"
+        "tecnickcom/tcpdf": "6.10.0"
     },
     "require-dev": {
         "ext-dom": "*",
@@ -81,13 +82,13 @@
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
         "league/flysystem-memory": "3.29.0",
-        "php-coveralls/php-coveralls": "2.7.0",
+        "php-coveralls/php-coveralls": "2.8.0",
         "phpstan/extension-installer": "1.4.3",
-        "phpstan/phpstan": "2.1.14",
-        "phpstan/phpstan-deprecation-rules": "2.0.2",
+        "phpstan/phpstan": "2.1.17",
+        "phpstan/phpstan-deprecation-rules": "2.0.3",
         "phpstan/phpstan-phpunit": "2.0.6",
         "phpstan/phpstan-strict-rules": "2.0.4",
-        "phpunit/phpunit": "12.1.4",
+        "phpunit/phpunit": "12.1.6",
         "squizlabs/php_codesniffer": "4.0.0beta1"
     },
     "suggest": {

@@ -607,6 +607,12 @@ parameters:
 			path: app/Encodings/AbstractEncoding.php
 
 		-
+			message: '#^Method Fisharebest\\Webtrees\\Encodings\\UTF8\:\:fromUtf8\(\) should return string but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Encodings/UTF8.php
+
+		-
 			message: '#^Cannot access offset ''BURI'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 2
@@ -1354,6 +1360,12 @@ parameters:
 			message: '#^Parameter \#1 \$request of method Fisharebest\\Webtrees\\Http\\Middleware\\HandleExceptions\:\:unhandledExceptionResponse\(\) expects Psr\\Http\\Message\\ServerRequestInterface, mixed given\.$#'
 			identifier: argument.type
 			count: 3
+			path: app/Http/Middleware/HandleExceptions.php
+
+		-
+			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
 			path: app/Http/Middleware/HandleExceptions.php
 
 		-
@@ -3889,7 +3901,19 @@ parameters:
 			path: app/Module/FanChartModule.php
 
 		-
+			message: '#^Parameter \#4 \$string of function imagettfbbox expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Module/FanChartModule.php
+
+		-
 			message: '#^Parameter \#6 \$color of function imagefilledrectangle expects int, int\<0, max\>\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Module/FanChartModule.php
+
+		-
+			message: '#^Parameter \#8 \$text of function imagettftext expects string, string\|false given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/FanChartModule.php
@@ -5317,7 +5341,7 @@ parameters:
 			path: app/Place.php
 
 		-
-			message: '#^Parameter \#1 \$items of class Illuminate\\Support\\Collection constructor expects Illuminate\\Contracts\\Support\\Arrayable\<int\<0, max\>, string\>\|iterable\<int\<0, max\>, string\>\|null, list\<string\>\|false given\.$#'
+			message: '#^Parameter \#1 \$items of class Illuminate\\Support\\Collection constructor expects Illuminate\\Contracts\\Support\\Arrayable\<int\<0, max\>, non\-empty\-string\>\|iterable\<int\<0, max\>, non\-empty\-string\>\|null, list\<non\-empty\-string\>\|false given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Place.php
@@ -5401,7 +5425,7 @@ parameters:
 			path: app/PlaceLocation.php
 
 		-
-			message: '#^Parameter \#1 \$items of class Illuminate\\Support\\Collection constructor expects Illuminate\\Contracts\\Support\\Arrayable\<int\<0, max\>, string\>\|iterable\<int\<0, max\>, string\>\|null, list\<string\>\|false given\.$#'
+			message: '#^Parameter \#1 \$items of class Illuminate\\Support\\Collection constructor expects Illuminate\\Contracts\\Support\\Arrayable\<int\<0, max\>, non\-empty\-string\>\|iterable\<int\<0, max\>, non\-empty\-string\>\|null, list\<non\-empty\-string\>\|false given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/PlaceLocation.php
