@@ -17,8 +17,11 @@ use Fisharebest\Webtrees\I18N;
 
         <title><?= I18N::translate('Setup wizard for webtrees') ?></title>
 
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+        <!-- Until we set base_url, can't fetch resources with HTTP. -->
+        <link rel="icon" href="data:image/x-icon;base64,<?= base64_encode((string) file_get_contents(__DIR__ . '/../../../public/favicon.ico')) ?>" type="image/x-icon">
+        <style>
+            <?= file_get_contents(__DIR__ . '/../../../public/css/vendor.min.css') ?>
+        </style>
     </head>
 
     <body class="container">
