@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-05-30 21:45+0000\n"
+"PO-Revision-Date: 2025-06-03 12:01+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sl/>\n"
@@ -3683,7 +3683,7 @@ msgstr "Izberi sorodnike"
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:51
 msgid "Choose user defined welcome text typed below"
-msgstr "Uporabniško določeno pozdravno besedilo, vneseno spodaj"
+msgstr "Uporabniško določeno pozdravno besedilo po meri, vneseno spodaj"
 
 #: app/Gedcom.php:619 resources/xml/reports/family_group_report.xml:206
 #: resources/xml/reports/family_group_report.xml:560
@@ -8701,7 +8701,7 @@ msgstr "Zadnja sprememba"
 #: resources/views/admin/control-panel.phtml:211
 #, php-format
 msgid "Last checked %s."
-msgstr "Nazadnje preverjeno pred %s."
+msgstr "Nazadnje preverjeno %s."
 
 #: app/Module/ReviewChangesModule.php:156
 msgid "Last email reminder was sent "
@@ -14711,8 +14711,8 @@ msgstr "Mapa “%s” je izbrisana."
 #: resources/views/admin/site-preferences.phtml:43
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr ""
-"Mapo je mogoče določiti v celoti (npr. /home/user_name/webtrees_data/) ali "
-"glede na namestitveno mapo (npr. ../../webtrees_data/)."
+"Mapo je mogoče določiti absolutno(npr. /home/user_name/webtrees_data/) ali "
+"relativno, glede na namestitveno mapo (npr. ../../webtrees_data/)."
 
 #: app/Http/RequestHandlers/SitePreferencesAction.php:64
 #, php-format
@@ -15014,7 +15014,7 @@ msgstr "Priimek je obdan s poševnicami: <%s>Janez Pavel /Kovač/<%s>"
 #: resources/views/edit-account-page.phtml:116
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr ""
-"Časovni pas je potreben za datumske izračune, kot je na primer poznavanje "
+"Časovni pas je potreben za datumske izračune, kot je na primer izračunavanje "
 "današnjega datuma."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
