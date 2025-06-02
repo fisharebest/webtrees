@@ -7147,13 +7147,13 @@ parameters:
 			path: app/Services/SearchService.php
 
 		-
-			message: '#^Parameter \#1 \$haystack of function mb_stripos expects string, string\|null given\.$#'
+			message: '#^Parameter \#1 \$key of method Illuminate\\Support\\Collection\<\*NEVER\*,\*NEVER\*\>\:\:containsStrict\(\) expects \(callable\(never\)\: bool\)\|int\|string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Services/SearchService.php
 
 		-
-			message: '#^Parameter \#1 \$key of method Illuminate\\Support\\Collection\<\*NEVER\*,\*NEVER\*\>\:\:containsStrict\(\) expects \(callable\(never\)\: bool\)\|int\|string, mixed given\.$#'
+			message: '#^Parameter \#1 \$text of method Fisharebest\\Webtrees\\Module\\ModuleLanguageInterface\:\:normalize\(\) expects string, string\|null given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Services/SearchService.php
