@@ -92,6 +92,9 @@ class SearchService
         $this->whereTrees($query, 'f_file', $trees);
         $this->whereSearch($query, 'f_gedcom', $search);
 
+        // Remove accents when searching using PHP.
+        $search = array_map(static fn (string $x): string => I18N::language()->normalize($x), $search);
+
         return $query
             ->get()
             ->each($this->rowLimiter())
@@ -173,6 +176,9 @@ class SearchService
 
         $this->whereTrees($query, 'i_file', $trees);
         $this->whereSearch($query, 'i_gedcom', $search);
+
+        // Remove accents when searching using PHP.
+        $search = array_map(static fn (string $x): string => I18N::language()->normalize($x), $search);
 
         return $query
             ->get()
@@ -1148,9 +1154,11 @@ class SearchService
                 $gedcom = preg_replace('/\n\d (UID|_UID|_WT_USER) .*/', '', $record->gedcom());
             }
 
-
             // Ignore matches in links
             $gedcom = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . '( @' . Gedcom::REGEX_XREF . '@)?/', '', $gedcom);
+
+            // Remove accents when searching using PHP.
+            $gedcom = I18N::language()->normalize($gedcom);
 
             // Re-apply the filtering
             foreach ($search_terms as $search_term) {
