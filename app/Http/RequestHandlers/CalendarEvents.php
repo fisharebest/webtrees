@@ -234,11 +234,8 @@ class CalendarEvents implements RequestHandlerInterface
                 $tmp   = new Date($cal_date->format('%@ ' . $d . ' %O %E'));
                 $d_fmt = $tmp->minimumDate()->format('%j');
                 echo '<div class="d-flex d-flex justify-content-between">';
-                if ($d === $today->day && $cal_date->month === $today->month) {
-                    echo '<span class="cal_day current_day">', $d_fmt, '</span>';
-                } else {
-                    echo '<span class="cal_day">', $d_fmt, '</span>';
-                }
+                echo '<span class="cal_day">', $d_fmt, '</span>';
+
                 // Show a converted date
                 foreach (explode('_and_', $CALENDAR_FORMAT) as $convcal) {
                     switch ($convcal) {
