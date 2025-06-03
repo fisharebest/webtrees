@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use PragmaRX\Google2FA\Google2FA;
 #use Fisharebest\Webtrees\Registry;
 #use Fisharebest\Webtrees\Session;
 #use Fisharebest\Webtrees\Validator;
@@ -47,7 +48,7 @@ class QrcodeService
         $qrinfo = array();
         $google2fa = new Google2FA();
         $qrinfo['secret'] = $google2fa->generateSecretKey();
-        $data = 'otpauth://totp/' . $this->user_id . '?secret=' . $qrinfo['secret'] . '&issuer=' . $_SERVER['SERVER_NAME'];
+        $data = 'otpauth://totp/' . (string)$this->user_id . '?secret=' . (string)$qrinfo['secret'] . '&issuer=' . $_SERVER['SERVER_NAME'];
         $qrinfo['qrcode'] = (new QRCode())->render($data);
         return $qrinfo;
     }
