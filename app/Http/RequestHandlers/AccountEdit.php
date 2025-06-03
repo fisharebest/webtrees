@@ -101,7 +101,7 @@ class AccountEdit implements RequestHandlerInterface
             'my_individual_record' => $my_individual_record,
             'show_delete_option'   => $show_delete_option,
             'show_2fa'             => $show_2fa,
-            'qrcode'               => $this->qrcode_service->genQRcode(),
+            'qrcode'               => $this->qrcode_service->genQRcode($user),
             'timezones'            => $timezones,
             'title'                => $title,
             'tree'                 => $tree,
