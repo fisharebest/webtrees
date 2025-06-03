@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-06-03 12:01+0000\n"
+"PO-Revision-Date: 2025-06-04 14:28+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sl/>\n"
@@ -1980,7 +1980,7 @@ msgstr "Predniki"
 
 #: app/Gedcom.php:583
 msgid "Ancestors interest"
-msgstr "Interes prednikov"
+msgstr "Raziskovanje prednikov"
 
 #: resources/xml/reports/ahnentafel_report.xml:55
 msgid "Ancestors of "
@@ -5279,7 +5279,7 @@ msgstr "Potomci"
 
 #: app/Gedcom.php:641
 msgid "Descendants interest"
-msgstr "Zanimanje o potomcih"
+msgstr "Raziskovanje potomcev"
 
 #: resources/xml/reports/descendancy_report.xml:42
 msgid "Descendants of "
@@ -8097,7 +8097,7 @@ msgstr "Diagram porazdelitve oseb"
 
 #: resources/views/admin/tags.phtml:1032
 msgid "Individual facts and events"
-msgstr "Dejstva in dogodki osebe"
+msgstr "Osebna dejstva in dogodki"
 
 #: resources/views/admin/control-panel.phtml:720
 msgid "Individual page"
@@ -18041,7 +18041,7 @@ msgstr "peti bratranec"
 #: resources/views/lists/datatables-attributes.phtml:16
 #: resources/views/modules/media-list/pagination.phtml:27
 msgid "first"
-msgstr "prva"
+msgstr "začetek"
 
 #: resources/views/admin/trees-preferences.phtml:570
 msgctxt "Show the [first/last] [N] parts of a place name."
