@@ -158,7 +158,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
             ]));
         }
 
-        $surname     = Validator::attributes($request)->string('surname', '');
+        $surname     = I18N::language()->normalize(Validator::attributes($request)->string('surname', ''));
         $soundex_std = Validator::queryParams($request)->boolean('soundex_std', false);
         $soundex_dm  = Validator::queryParams($request)->boolean('soundex_dm', false);
         $ajax        = Validator::queryParams($request)->boolean('ajax', false);
@@ -354,7 +354,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         $person_name = '';
         foreach ($individual->getAllNames() as $name) {
             [$surn1] = explode(',', $name['sort']);
-            if ($this->surnamesMatch($surn1, $surname, $soundex_std, $soundex_dm)) {
+            if ($this->surnamesMatch(I18N::language()->normalize($surn1), $surname, $soundex_std, $soundex_dm)) {
                 $person_name = $name['full'];
                 break;
             }
