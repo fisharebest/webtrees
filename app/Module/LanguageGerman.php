@@ -125,11 +125,10 @@ class LanguageGerman extends AbstractModule implements ModuleLanguageInterface
             Relationship::fixed('Stiefschwester', '%s der Stiefschwester')->parent()->spouse()->daughter(),
             Relationship::fixed('Stiefbruder', '%s des Stiefbruders')->parent()->spouse()->son(),
             Relationship::fixed('Stiefgeschwister', '%s der Stiefgeschwister')->parent()->spouse()->child(),
-            // Cousin / Cousine
-            Relationship::fixed('Cousine', '%s der Cousine')->parent()->sister()->child()->female(),
-            Relationship::fixed('Cousine', '%s der Cousine')->parent()->brother()->child()->female(),
-            Relationship::fixed('Cousin', '%s des Cousins')->parent()->sister()->child()->male(),
-            Relationship::fixed('Cousin', '%s des Cousins')->parent()->brother()->child()->male(),
+            // Cousins
+            Relationship::fixed('Cousin', '%s des Cousins')->parent()->sibling()->son(),
+            Relationship::fixed('Cousine', '%s der Cousine')->parent()->sibling()->daughter(),
+            Relationship::fixed('Cousin/Cousine', '%s des Cousins/der Cousine')->parent()->sibling()->child(),
             // Partners
             Relationship::fixed('Ex-Frau', '%s der Ex-Frau')->divorced()->partner()->female(),
             Relationship::fixed('Ex-Mann', '%s des Ex-Mannes')->divorced()->partner()->male(),
