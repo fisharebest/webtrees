@@ -20,8 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Factories;
 
 use Fisharebest\Webtrees\Contracts\IdFactoryInterface;
-use Ramsey\Uuid\Exception\RandomSourceException;
 use Ramsey\Uuid\Uuid;
+use Throwable;
 
 use function hexdec;
 use function sprintf;
@@ -40,8 +40,8 @@ class IdFactory implements IdFactoryInterface
     {
         try {
             return strtolower(Uuid::uuid4()->toString());
-        } catch (RandomSourceException $ex) {
-            // uuid4() can fail if there is insufficient entropy in the system.
+        } catch (Throwable $ex) {
+            // uuid7() can fail for various reasons.
             return '';
         }
     }
