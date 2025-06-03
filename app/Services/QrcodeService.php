@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use PragmaRX\Google2FA\Google2FA;
+use chillerlan\QRCode\QRCode;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 #use Fisharebest\Webtrees\Registry;
 #use Fisharebest\Webtrees\Session;
