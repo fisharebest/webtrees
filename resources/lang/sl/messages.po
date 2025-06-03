@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-06-03 12:01+0000\n"
+"PO-Revision-Date: 2025-06-04 14:28+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sl/>\n"
@@ -2049,7 +2049,7 @@ msgstr "Predniki"
 #. I18N: gedcom tag ANCI
 #: app/Factories/ElementFactory.php:1125 app/GedcomTag.php:461
 msgid "Ancestors interest"
-msgstr "Interes prednikov"
+msgstr "Raziskovanje prednikov"
 
 #: resources/xml/reports/ahnentafel_report.xml:55
 msgid "Ancestors of "
@@ -5399,7 +5399,7 @@ msgstr "Potomci"
 #. I18N: gedcom tag DESI
 #: app/Factories/ElementFactory.php:1181 app/GedcomTag.php:634
 msgid "Descendants interest"
-msgstr "Zanimanje o potomcih"
+msgstr "Raziskovanje potomcev"
 
 #: resources/xml/reports/descendancy_report.xml:42
 msgid "Descendants of "
@@ -18285,7 +18285,7 @@ msgstr "peti bratranec"
 #: resources/views/lists/datatables-attributes.phtml:14
 #: resources/views/modules/media-list/pagination.phtml:25
 msgid "first"
-msgstr "prva"
+msgstr "začetek"
 
 #: resources/views/admin/trees-preferences.phtml:597
 msgctxt "Show the [first/last] [N] parts of a place name."
