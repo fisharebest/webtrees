@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-06-03 12:01+0000\n"
+"PO-Revision-Date: 2025-06-04 14:28+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sl/>\n"
@@ -2095,7 +2095,7 @@ msgstr "Predniki"
 #. I18N: gedcom tag ANCI
 #: app/GedcomTag.php:158
 msgid "Ancestors interest"
-msgstr "Interes prednikov"
+msgstr "Raziskovanje prednikov"
 
 #: modules_v3/ahnentafel_report/report.xml:55
 msgid "Ancestors of "
@@ -5209,7 +5209,7 @@ msgstr "Potomci"
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:366
 msgid "Descendants interest"
-msgstr "Zanimanje o potomcih"
+msgstr "Raziskovanje potomcev"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
@@ -17543,7 +17543,7 @@ msgstr ""
 #. I18N: A button label, first page
 #: admin_trees_config.php:1508 app/I18N.php:222
 msgid "first"
-msgstr "prva"
+msgstr "začetek"
 
 #: admin_trees_config.php:1519
 msgctxt "Show the [first/last] [N] parts of a place name."
