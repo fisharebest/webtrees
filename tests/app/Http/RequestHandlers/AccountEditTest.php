@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\QrcodeService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
@@ -37,13 +38,14 @@ class AccountEditTest extends TestCase
         $user            = $this->createMock(User::class);
         $message_service = $this->createMock(MessageService::class);
         $module_service  = $this->createMock(ModuleService::class);
+        $qrcode_service  = $this->createMock(QrcodeService::class);
 
         $module_service->method('findByInterface')->willReturn(new Collection([]));
 
         $request = self::createRequest()
             ->withAttribute('user', $user);
 
-        $handler  = new AccountEdit($message_service, $module_service);
+        $handler  = new AccountEdit($message_service, $module_service, $qrcode_service);
         $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());

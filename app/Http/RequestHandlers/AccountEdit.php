@@ -49,7 +49,7 @@ class AccountEdit implements RequestHandlerInterface
 
     private ModuleService $module_service;
 
-    private QrcodeServer $qrcode_service;
+    private QrcodeService $qrcode_service;
 
     /**
      * @param MessageService $message_service
