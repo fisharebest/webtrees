@@ -158,7 +158,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
             ]));
         }
 
-        $surname     = I18N::language()->normalize(Validator::attributes($request)->string('surname', ''));
+        $surname     = Validator::attributes($request)->string('surname', '');
         $soundex_std = Validator::queryParams($request)->boolean('soundex_std', false);
         $soundex_dm  = Validator::queryParams($request)->boolean('soundex_dm', false);
         $ajax        = Validator::queryParams($request)->boolean('ajax', false);
@@ -354,7 +354,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         $person_name = '';
         foreach ($individual->getAllNames() as $name) {
             [$surn1] = explode(',', $name['sort']);
-            if ($this->surnamesMatch(I18N::language()->normalize($surn1), $surname, $soundex_std, $soundex_dm)) {
+            if ($this->surnamesMatch($surn1, $surname, $soundex_std, $soundex_dm)) {
                 $person_name = $name['full'];
                 break;
             }
@@ -456,9 +456,10 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         if ($soundex_dm && Soundex::compare(Soundex::daitchMokotoff($surname1), Soundex::daitchMokotoff($surname2))) {
             return true;
         }
-
         // One is a substring of the other.  e.g. Halen / Van Halen
-        return stripos($surname1, $surname2) !== false || stripos($surname2, $surname1) !== false;
+        $sn1 = I18N::language()->normalize($surname1);
+        $sn2 = I18N::language()->normalize($surname2);
+        return stripos($sn1, $sn2) !== false || stripos($sn2, $sn1) !== false;
     }
 
     /**
