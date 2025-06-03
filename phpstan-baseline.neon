@@ -6157,12 +6157,6 @@ parameters:
 			path: app/Services/AdminService.php
 
 		-
-			message: '#^Parameter \#1 \$table of static method Illuminate\\Database\\Capsule\\Manager\:\:table\(\) expects Closure\|Illuminate\\Database\\Query\\Builder\|string, Illuminate\\Database\\Query\\Expression\<non\-falsy\-string\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/AdminService.php
-
-		-
 			message: '#^Parameter \#2 \$subject of function preg_match expects string, string\|false given\.$#'
 			identifier: argument.type
 			count: 1
