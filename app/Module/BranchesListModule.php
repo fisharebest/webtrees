@@ -456,10 +456,12 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         if ($soundex_dm && Soundex::compare(Soundex::daitchMokotoff($surname1), Soundex::daitchMokotoff($surname2))) {
             return true;
         }
+
         // One is a substring of the other.  e.g. Halen / Van Halen
-        $sn1 = I18N::language()->normalize($surname1);
-        $sn2 = I18N::language()->normalize($surname2);
-        return stripos($sn1, $sn2) !== false || stripos($sn2, $sn1) !== false;
+        $surname1 = I18N::language()->normalize($surname1);
+        $surname2 = I18N::language()->normalize($surname2);
+
+        return stripos($surname1, $surname2) !== false || stripos($surname2, $surname1) !== false;
     }
 
     /**
