@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Tree;
  * @var string               $title
  * @var Tree|null            $tree
  * @var UserInterface        $user
+ * @var array<string,string> $qrcode
  */
 
 ?>
@@ -170,7 +171,7 @@ use Fisharebest\Webtrees\Tree;
     <div class="row"  id="qrcode">
         <?php $qrc = $qrcode; ?>
         <input type="hidden" name="secret" id="secret" value="">
-        <input type="hidden" id="newsecret" value="<?= e((string)$qrc['secret']) ?>">
+        <input type="hidden" id="newsecret" value="<?= e($qrc['secret']) ?>">
         <img src="<?= e($qrc['qrcode']) ?>" alt="QR Code" id="qrcode" />
     </div>
     <div class="row mb-3">
