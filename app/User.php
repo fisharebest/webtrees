@@ -271,6 +271,7 @@ class User implements UserInterface
       */
     public function checkMfaCode(string $codemfa): bool
     {
+        /** @var string $secret */
         $secret = DB::table('user')
             ->where('user_id', '=', $this->id())
             ->value('secret');
