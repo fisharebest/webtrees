@@ -77,7 +77,6 @@ class GuestUser implements UserInterface
      *
      * @return string
      */
-    
     public function userName(): string
     {
         return '';

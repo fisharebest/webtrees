@@ -81,7 +81,7 @@ class LoginAction implements RequestHandlerInterface
             if ($user === null) {
                 Log::addAuthenticationLog('Login failed (no such user/email): ' . $username);
                 throw new Exception(I18N::translate('The username or password is incorrect.'));
-            }  
+            }
             if ($loginstage === "1") {
                 $mfastatus = $this->doLogin($username, $password, $user);
             } else {
