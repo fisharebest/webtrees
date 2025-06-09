@@ -81,7 +81,7 @@ class LoginAction implements RequestHandlerInterface
             if ($user === null) {
                 Log::addAuthenticationLog('Login failed (no such user/email): ' . $username);
                 throw new Exception(I18N::translate('The username or password is incorrect.'));
-            }  
+            }
             if ($loginstage === "1") {
                 $mfastatus = $this->doLogin($username, $password, $user);
             } else {
@@ -179,7 +179,7 @@ class LoginAction implements RequestHandlerInterface
                 throw new Exception(I18N::translate('Authentication code does not match. Please try again.'));
             }
         } else {
-                throw new Exception(I18N::translate('Authentication code must be entered as you have multi-factor authentication enabled. Please try again.'));
+            throw new Exception(I18N::translate('Authentication code must be entered as you have multi-factor authentication enabled. Please try again.'));
         }
         return "1";
     }
