@@ -257,6 +257,7 @@ use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Module\WelcomeBlockModule;
 use Fisharebest\Webtrees\Module\XeneaTheme;
 use Fisharebest\Webtrees\Module\YahrzeitModule;
+use Fisharebest\Webtrees\Module\YandexMetrica;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
@@ -382,6 +383,7 @@ class ModuleService
         'google-analytics'        => GoogleAnalyticsModule::class,
         'google-maps'             => GoogleMaps::class,
         'google-webmaster-tools'  => GoogleWebmasterToolsModule::class,
+        'yandex-metrica'          => YandexMetrica::class,
         'here-maps'               => HereMaps::class,
         'hit-counter'             => HitCountFooterModule::class,
         'hourglass_chart'         => HourglassChartModule::class,
