@@ -51,8 +51,8 @@
         "fisharebest/ext-calendar": "2.6.0",
         "fisharebest/localization": "1.17.0",
         "guzzlehttp/guzzle": "7.9.3",
-        "illuminate/database": "12.16.0",
-        "illuminate/support": "12.16.0",
+        "illuminate/database": "12.18.0",
+        "illuminate/support": "12.18.0",
         "intervention/image": "3.11.3",
         "league/commonmark": "2.7.0",
         "league/flysystem": "3.29.1",
@@ -67,7 +67,7 @@
         "psr/http-message": "2.0",
         "psr/http-server-handler": "1.0.2",
         "psr/http-server-middleware": "1.0.2",
-        "ramsey/uuid": "4.7.6",
+        "ramsey/uuid": "4.8.1",
         "sabre/vobject": "4.5.7",
         "symfony/cache": "7.3.0",
         "symfony/console": "7.3.0",
@@ -88,7 +88,7 @@
         "phpstan/phpstan-deprecation-rules": "2.0.3",
         "phpstan/phpstan-phpunit": "2.0.6",
         "phpstan/phpstan-strict-rules": "2.0.4",
-        "phpunit/phpunit": "12.1.6",
+        "phpunit/phpunit": "12.2.1",
         "squizlabs/php_codesniffer": "4.0.0beta1"
     },
     "suggest": {

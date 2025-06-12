@@ -30,7 +30,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
 #[CoversClass(Statistics::class)]
 #[CoversClass(StatisticsData::class)]
-#[CoversClass(StatisticsData::class)]
 #[CoversClass(StatisticsFormat::class)]
 class EmbeddedVariablesTest extends TestCase
 {
