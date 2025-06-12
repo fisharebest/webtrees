@@ -116,8 +116,7 @@
             "@composer webtrees:test"
         ],
         "webtrees:phpcs": [
-            "vendor/bin/phpcs --colors --extensions=php   --standard=PSR12 --exclude=Generic.Files.LineLength index.php app tests",
-            "#vendor/bin/phpcs --colors --extensions=phtml --standard=PSR12 --exclude=Generic.Files.LineLength resources/views"
+            "vendor/bin/phpcs --colors --exclude=Generic.Files.LineLength index.php app tests"
         ],
         "webtrees:phpstan": [
             "vendor/bin/phpstan analyze -v --memory-limit=-1"

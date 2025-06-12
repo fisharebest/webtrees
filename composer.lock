@@ -1123,16 +1123,16 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v12.16.0",
+            "version": "v12.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "d5ea498fd4de52341eced75eced74b7f076bb35f"
+                "reference": "e5711846b7c68128bc8de72c13e017606043c996"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/d5ea498fd4de52341eced75eced74b7f076bb35f",
-                "reference": "d5ea498fd4de52341eced75eced74b7f076bb35f",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/e5711846b7c68128bc8de72c13e017606043c996",
+                "reference": "e5711846b7c68128bc8de72c13e017606043c996",
                 "shasum": ""
             },
             "require": {
@@ -1176,11 +1176,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-05-26T17:22:35+00:00"
+            "time": "2025-05-28T13:08:33+00:00"
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v12.16.0",
+            "version": "v12.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -1226,16 +1226,16 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v12.16.0",
+            "version": "v12.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "a3c80c986a421a5c550f89e80daa0d7ac817e6cf"
+                "reference": "ff9dde2c8dce16ea9ecf0418095749311240aff9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/a3c80c986a421a5c550f89e80daa0d7ac817e6cf",
-                "reference": "a3c80c986a421a5c550f89e80daa0d7ac817e6cf",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/ff9dde2c8dce16ea9ecf0418095749311240aff9",
+                "reference": "ff9dde2c8dce16ea9ecf0418095749311240aff9",
                 "shasum": ""
             },
             "require": {
@@ -1273,20 +1273,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-05-21T13:18:18+00:00"
+            "time": "2025-06-09T14:04:48+00:00"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v12.16.0",
+            "version": "v12.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "b559b9840344cc02cb142a5d72132a2c928f2e5c"
+                "reference": "152313571553ef1be907a3c18b8ef2d635cb4339"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/b559b9840344cc02cb142a5d72132a2c928f2e5c",
-                "reference": "b559b9840344cc02cb142a5d72132a2c928f2e5c",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/152313571553ef1be907a3c18b8ef2d635cb4339",
+                "reference": "152313571553ef1be907a3c18b8ef2d635cb4339",
                 "shasum": ""
             },
             "require": {
@@ -1321,7 +1321,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-05-13T15:08:45+00:00"
+            "time": "2025-06-09T18:23:03+00:00"
         },
         {
             "name": "illuminate/database",
@@ -1395,7 +1395,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v12.16.0",
+            "version": "v12.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2487,16 +2487,16 @@
         },
         {
             "name": "nette/utils",
-            "version": "v4.0.6",
+            "version": "v4.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "ce708655043c7050eb050df361c5e313cf708309"
+                "reference": "e67c4061eb40b9c113b218214e42cb5a0dda28f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/ce708655043c7050eb050df361c5e313cf708309",
-                "reference": "ce708655043c7050eb050df361c5e313cf708309",
+                "url": "https://api.github.com/repos/nette/utils/zipball/e67c4061eb40b9c113b218214e42cb5a0dda28f2",
+                "reference": "e67c4061eb40b9c113b218214e42cb5a0dda28f2",
                 "shasum": ""
             },
             "require": {
@@ -2567,9 +2567,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/utils/issues",
-                "source": "https://github.com/nette/utils/tree/v4.0.6"
+                "source": "https://github.com/nette/utils/tree/v4.0.7"
             },
-            "time": "2025-03-30T21:06:30+00:00"
+            "time": "2025-06-03T04:55:08+00:00"
         },
         {
             "name": "nyholm/psr7",
@@ -5763,16 +5763,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v5.4.0",
+            "version": "v5.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "447a020a1f875a434d62f2a401f53b82a396e494"
+                "reference": "ae59794362fe85e051a58ad36b289443f57be7a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/447a020a1f875a434d62f2a401f53b82a396e494",
-                "reference": "447a020a1f875a434d62f2a401f53b82a396e494",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/ae59794362fe85e051a58ad36b289443f57be7a9",
+                "reference": "ae59794362fe85e051a58ad36b289443f57be7a9",
                 "shasum": ""
             },
             "require": {
@@ -5815,9 +5815,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v5.4.0"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.5.0"
             },
-            "time": "2024-12-30T11:07:19+00:00"
+            "time": "2025-05-31T08:24:38+00:00"
         },
         {
             "name": "phar-io/manifest",
