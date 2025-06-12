@@ -135,7 +135,7 @@ class MapDataImportAction implements RequestHandlerInterface
             }
         } else {
             rewind($fp);
-            while (($row = fgetcsv($fp, 0, MapDataService::CSV_SEPARATOR)) !== false) {
+            while (($row = fgetcsv(stream: $fp, separator: MapDataService::CSV_SEPARATOR, escape: '\\')) !== false) {
                 // Skip the header
                 if (!is_numeric($row[0])) {
                     continue;

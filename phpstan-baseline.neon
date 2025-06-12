@@ -2245,12 +2245,6 @@ parameters:
 			path: app/Http/RequestHandlers/MapDataImportAction.php
 
 		-
-			message: '#^Parameter \#1 \$stream of function fgetcsv expects resource, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/MapDataImportAction.php
-
-		-
 			message: '#^Parameter \#1 \$stream of function rewind expects resource, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -2264,6 +2258,12 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$uploaded_file of class Fisharebest\\Webtrees\\Exceptions\\FileUploadException constructor expects Psr\\Http\\Message\\UploadedFileInterface\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/RequestHandlers/MapDataImportAction.php
+
+		-
+			message: '#^Parameter \$stream of function fgetcsv expects resource, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/MapDataImportAction.php
