@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-06-04 14:28+0000\n"
+"PO-Revision-Date: 2025-06-15 00:01+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sl/>\n"
@@ -8964,7 +8964,7 @@ msgstr "Litva"
 #: app/SurnameTradition/LithuanianSurnameTradition.php:64
 msgctxt "Surname tradition"
 msgid "Lithuanian"
-msgstr "Litovski"
+msgstr "Litovska"
 
 #: app/CustomTags/TheNextGeneration.php:53
 #: app/Statistics/Google/ChartMortality.php:71
@@ -13560,7 +13560,7 @@ msgstr "Prikaži zakonce"
 #: resources/views/admin/trees-preferences.phtml:569
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "Prikaži %1$s %2$s dele imena kraja."
+msgstr "Prikaži %1$s %2$s delov imena kraja."
 
 #. I18N: Description of the “Pedigree map” module
 #: app/Module/PedigreeMapModule.php:120
@@ -14053,7 +14053,7 @@ msgstr "Španija"
 #: app/SurnameTradition/SpanishSurnameTradition.php:42
 msgctxt "Surname tradition"
 msgid "Spanish"
-msgstr "Španski"
+msgstr "Španska"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:188
@@ -17551,7 +17551,7 @@ msgstr "rojstno ime"
 #: resources/views/admin/trees-privacy.phtml:108
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr "rojeni v zadnjih %1$s letih ali umrli v zadnjih %2$s letih"
+msgstr "Rojeni v zadnjih %1$s letih ali umrli v zadnjih %2$s letih"
 
 #: app/Services/RelationshipService.php:451
 msgid "brother"
@@ -18041,7 +18041,7 @@ msgstr "peti bratranec"
 #: resources/views/lists/datatables-attributes.phtml:16
 #: resources/views/modules/media-list/pagination.phtml:27
 msgid "first"
-msgstr "začetek"
+msgstr "Začetek"
 
 #: resources/views/admin/trees-preferences.phtml:570
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -19997,7 +19997,7 @@ msgstr "ime po priselitvi"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:166
 msgid "import file"
-msgstr "uvozi datoteko"
+msgstr "Uvozi datoteko"
 
 #: app/Elements/AgeAtEvent.php:93
 msgid "infant"
@@ -20048,7 +20048,7 @@ msgstr "dodatni dnevi"
 #: resources/views/lists/datatables-attributes.phtml:18
 #: resources/views/modules/media-list/pagination.phtml:55
 msgid "last"
-msgstr "zadnji"
+msgstr "Konec"
 
 #: resources/views/admin/trees-preferences.phtml:570
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -20127,7 +20127,7 @@ msgstr "materin starš"
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition/MatrilinealSurnameTradition.php:39
 msgid "matrilineal"
-msgstr "po materini liniji"
+msgstr "Po materini liniji"
 
 #: resources/views/modules/recent_changes/config.phtml:27
 #: resources/views/modules/upcoming_events/config.phtml:27
@@ -20301,7 +20301,7 @@ msgstr "omrežje"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:115
 #: resources/views/setup/step-5-administrator.phtml:106
 msgid "next"
-msgstr "naslednji"
+msgstr "Naprej"
 
 #: app/Services/RelationshipService.php:499
 msgctxt "brother’s daughter"
@@ -20472,7 +20472,7 @@ msgstr "partner"
 #: app/SurnameTradition/PaternalSurnameTradition.php:38
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr "očetov"
+msgstr "Očetovska"
 
 #: app/Services/RelationshipService.php:531
 msgctxt "father’s father"
@@ -20492,7 +20492,7 @@ msgstr "očetov starš"
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition/PatrilinealSurnameTradition.php:39
 msgid "patrilineal"
-msgstr "po očetovi liniji"
+msgstr "Po očetovi liniji"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:120
@@ -20530,7 +20530,7 @@ msgstr "politično"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:119
 #: resources/views/setup/step-5-administrator.phtml:110
 msgid "previous"
-msgstr "prejšnji"
+msgstr "Nazaj"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/Elements/CertaintyAssessment.php:52
