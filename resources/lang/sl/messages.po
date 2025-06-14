@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-06-04 14:28+0000\n"
+"PO-Revision-Date: 2025-06-16 10:28+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sl/>\n"
@@ -8982,7 +8982,7 @@ msgstr "Litva"
 #: app/SurnameTradition.php:107
 msgctxt "Surname tradition"
 msgid "Lithuanian"
-msgstr "Litovski"
+msgstr "Litovska"
 
 #: app/Statistics/Google/ChartMortality.php:73
 msgid "Living"
@@ -13560,7 +13560,7 @@ msgstr "Pokaži statistične diagrame"
 #: resources/views/admin/trees-preferences.phtml:596
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "Prikaži %1$s %2$s dele imena kraja."
+msgstr "Prikaži %1$s %2$s delov imena kraja."
 
 #. I18N: Description of the “Pedigree map” module
 #: app/Module/PedigreeMapModule.php:134
@@ -14058,7 +14058,7 @@ msgstr "Španija"
 #: app/SurnameTradition.php:91
 msgctxt "Surname tradition"
 msgid "Spanish"
-msgstr "Španski"
+msgstr "Španska"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:188 app/GedcomCode/GedcomCodeTemp.php:630
@@ -17605,7 +17605,7 @@ msgstr "sprejmi"
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:122
 msgid "accepted"
-msgstr "sprejeto"
+msgstr "Sprejeto"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-privacy.phtml:248
@@ -17777,7 +17777,7 @@ msgstr "rojstno ime"
 #: resources/views/admin/trees-privacy.phtml:121
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr "rojeni v zadnjih %1$s letih ali umrli v zadnjih %2$s letih"
+msgstr "Rojeni v zadnjih %1$s letih ali umrli v zadnjih %2$s letih"
 
 #: app/Functions/Functions.php:722
 msgid "brother"
@@ -18285,7 +18285,7 @@ msgstr "peti bratranec"
 #: resources/views/lists/datatables-attributes.phtml:14
 #: resources/views/modules/media-list/pagination.phtml:25
 msgid "first"
-msgstr "začetek"
+msgstr "Začetek"
 
 #: resources/views/admin/trees-preferences.phtml:597
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -20181,11 +20181,11 @@ msgstr "ime po priselitvi"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:163
 msgid "import file"
-msgstr "uvozi datoteko"
+msgstr "Uvozi datoteko"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr "opomba v besedilu"
+msgstr "Opomba v besedilu"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
@@ -20228,7 +20228,7 @@ msgstr "dodatni dnevi"
 #: resources/views/lists/datatables-attributes.phtml:16
 #: resources/views/modules/media-list/pagination.phtml:53
 msgid "last"
-msgstr "zadnji"
+msgstr "Konec"
 
 #: resources/views/admin/trees-preferences.phtml:597
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -20318,7 +20318,7 @@ msgstr "materin starš"
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition.php:88
 msgid "matrilineal"
-msgstr "po materini liniji"
+msgstr "Po materini liniji"
 
 #: resources/views/modules/recent_changes/config.phtml:25
 #: resources/views/modules/upcoming_events/config.phtml:25
@@ -20342,7 +20342,7 @@ msgstr "člani"
 #. I18N: Name of a theme.
 #: app/Module/MinimalTheme.php:39
 msgid "minimal"
-msgstr "najmanj"
+msgstr "Minimalno"
 
 #: app/Functions/Functions.php:620
 msgid "mother"
@@ -20494,7 +20494,7 @@ msgstr "nikoli"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:119
 #: resources/views/setup/step-5-administrator.phtml:104
 msgid "next"
-msgstr "naslednji"
+msgstr "Naprej"
 
 #: app/Functions/Functions.php:770
 msgctxt "brother’s daughter"
@@ -20666,7 +20666,7 @@ msgstr "partner"
 #: app/SurnameTradition.php:77
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr "očetov"
+msgstr "Očetovska"
 
 #: app/Functions/Functions.php:802
 msgctxt "father’s father"
@@ -20686,12 +20686,12 @@ msgstr "očetov starš"
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition.php:84
 msgid "patrilineal"
-msgstr "po očetovi liniji"
+msgstr "Po očetovi liniji"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:126
 msgid "pending"
-msgstr "čakajoče"
+msgstr "Čakajoče"
 
 #: resources/views/modules/statistics-chart/custom.phtml:131
 msgid "percentage"
@@ -20717,7 +20717,7 @@ msgstr "politično"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:123
 #: resources/views/setup/step-5-administrator.phtml:108
 msgid "previous"
-msgstr "prejšnji"
+msgstr "Nazaj"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/Elements/CertaintyAssessment.php:52 app/GedcomCode/GedcomCodeQuay.php:49
@@ -20760,7 +20760,7 @@ msgstr "zavrni"
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:124
 msgid "rejected"
-msgstr "zavrnjeno"
+msgstr "Zavrnjeno"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
