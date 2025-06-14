@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-06-04 14:28+0000\n"
+"PO-Revision-Date: 2025-06-16 10:28+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sl/>\n"
@@ -8567,7 +8567,7 @@ msgstr "Litva"
 #: app/SurnameTradition.php:95
 msgctxt "Surname tradition"
 msgid "Lithuanian"
-msgstr "Litovski"
+msgstr "Litovska"
 
 #: app/Stats.php:1068 app/Stats.php:1070
 msgid "Living"
@@ -12993,7 +12993,7 @@ msgstr "Pokaži statistične diagrame"
 #: admin_trees_config.php:1516
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "Prikaži %1$s %2$s dele imena kraja."
+msgstr "Prikaži %1$s %2$s delov imena kraja."
 
 #: app/Module/HtmlBlockModule.php:325
 msgid "Show the date and time of update"
@@ -13435,7 +13435,7 @@ msgstr "Španija"
 #: app/SurnameTradition.php:81
 msgctxt "Surname tradition"
 msgid "Spanish"
-msgstr "Španski"
+msgstr "Španska"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:351
@@ -16911,7 +16911,7 @@ msgstr "sprejmi"
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:54
 msgid "accepted"
-msgstr "sprejeto"
+msgstr "Sprejeto"
 
 #. I18N: A button label.
 #: admin_trees_config.php:537 app/Functions/FunctionsPrint.php:569
@@ -17091,7 +17091,7 @@ msgstr "rojstno ime"
 #: admin_trees_config.php:450
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr "rojeni v zadnjih %1$s letih ali umrli v zadnjih %2$s letih"
+msgstr "Rojeni v zadnjih %1$s letih ali umrli v zadnjih %2$s letih"
 
 #: app/Functions/Functions.php:768
 msgid "brother"
@@ -17543,7 +17543,7 @@ msgstr ""
 #. I18N: A button label, first page
 #: admin_trees_config.php:1508 app/I18N.php:222
 msgid "first"
-msgstr "začetek"
+msgstr "Začetek"
 
 #: admin_trees_config.php:1519
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -19466,7 +19466,7 @@ msgstr "dodatni dnevi"
 #. I18N: A button label, last page
 #: admin_trees_config.php:1508 app/I18N.php:223
 msgid "last"
-msgstr "zadnji"
+msgstr "Konec"
 
 #: admin_trees_config.php:1520
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -19550,7 +19550,7 @@ msgstr "materin starš"
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition.php:78
 msgid "matrilineal"
-msgstr "po materini liniji"
+msgstr "Po materini liniji"
 
 #: app/Module/GoogleMapsModule.php:361
 msgid "maximum"
@@ -19581,7 +19581,7 @@ msgstr ""
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:167
 msgid "minimal"
-msgstr "najmanj"
+msgstr "Minimalno"
 
 #: app/Module/GoogleMapsModule.php:355
 msgid "minimum"
@@ -19677,7 +19677,7 @@ msgstr "nikoli"
 #. I18N: A button label, next page
 #: app/I18N.php:224 app/Module/BatchUpdateModule.php:247
 msgid "next"
-msgstr "naslednji"
+msgstr "Naprej"
 
 #: app/Functions/Functions.php:808
 msgctxt "brother’s daughter"
@@ -19819,7 +19819,7 @@ msgstr "partner"
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr "očetov"
+msgstr "Očetovska"
 
 #: app/Functions/Functions.php:840
 msgctxt "father’s father"
@@ -19839,12 +19839,12 @@ msgstr "očetov starš"
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition.php:75
 msgid "patrilineal"
-msgstr "po očetovi liniji"
+msgstr "Po očetovi liniji"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:56
 msgid "pending"
-msgstr "čakajoče"
+msgstr "Čakajoče"
 
 #: statistics.php:757 statisticsplot.php:889 statisticsplot.php:939
 #: statisticsplot.php:993 statisticsplot.php:1043 statisticsplot.php:1097
@@ -19865,7 +19865,7 @@ msgstr "Predogled"
 #. I18N: A button label, previous page
 #: app/I18N.php:225 app/Module/BatchUpdateModule.php:246
 msgid "previous"
-msgstr "prejšnji"
+msgstr "Nazaj"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/GedcomCode/GedcomCodeQuay.php:39
@@ -19900,7 +19900,7 @@ msgstr "zavrni"
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:55
 msgid "rejected"
-msgstr "zavrnjeno"
+msgstr "Zavrnjeno"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/GedcomCode/GedcomCodeName.php:144
