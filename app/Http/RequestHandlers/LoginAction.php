@@ -179,7 +179,7 @@ class LoginAction implements RequestHandlerInterface
                 throw new Exception(I18N::translate('Authentication code does not match. Please try again.'));
             }
         } else {
-                throw new Exception(I18N::translate('Authentication code must be entered as you have multi-factor authentication enabled. Please try again.'));
+            throw new Exception(I18N::translate('Authentication code must be entered as you have multi-factor authentication enabled. Please try again.'));
         }
         return "1";
     }
