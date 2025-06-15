@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-06-15 00:01+0000\n"
+"PO-Revision-Date: 2025-06-16 05:22+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sl/>\n"
@@ -17416,7 +17416,7 @@ msgstr "sprejmi"
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:116
 msgid "accepted"
-msgstr "sprejeto"
+msgstr "Sprejeto"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-privacy.phtml:238
@@ -20005,7 +20005,7 @@ msgstr "dojenček"
 
 #: app/Elements/NoteStructure.php:65
 msgid "inline note"
-msgstr "opomba v besedilu"
+msgstr "Opomba v besedilu"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:200
@@ -20151,7 +20151,7 @@ msgstr "člani"
 #. I18N: Name of a theme.
 #: app/Module/MinimalTheme.php:39
 msgid "minimal"
-msgstr "najmanj"
+msgstr "Minimalno"
 
 #: app/Elements/RoleInEvent.php:81 app/Services/RelationshipService.php:349
 msgid "mother"
@@ -20497,7 +20497,7 @@ msgstr "Po očetovi liniji"
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:120
 msgid "pending"
-msgstr "čakajoče"
+msgstr "Čakajoče"
 
 #: resources/views/modules/statistics-chart/custom.phtml:131
 msgid "percentage"
@@ -20573,7 +20573,7 @@ msgstr "zavrni"
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:118
 msgid "rejected"
-msgstr "zavrnjeno"
+msgstr "Zavrnjeno"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
