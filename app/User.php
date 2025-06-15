@@ -262,13 +262,13 @@ class User implements UserInterface
 
         return $this;
     }
-      /**
-      * Validate a supplied 2fa code
-      *
-      * @param string $codemfa
-      *
-      * @return bool
-      */
+    /**
+    * Validate a supplied 2fa code
+    *
+    * @param string $codemfa
+    *
+    * @return bool
+    */
     public function checkMfaCode(string $codemfa): bool
     {
         /** @var string $secret */
@@ -277,7 +277,7 @@ class User implements UserInterface
             ->value('secret');
         $google2fa = new Google2FA();
         if ((bool)$google2fa->verifyKey($secret, $codemfa)) {
-                return true;
+            return true;
         }
         return false;
     }
