@@ -23,7 +23,7 @@
     },
     "config": {
         "platform": {
-            "php": "8.3.0"
+            "php": "8.4.0"
         },
         "sort-packages": true,
         "process-timeout": 3600,
@@ -32,7 +32,7 @@
         }
     },
     "require": {
-        "php": "8.3 - 8.6",
+        "php": "8.4 - 8.6",
         "ext-ctype": "*",
         "ext-curl": "*",
         "ext-gd": "*",
@@ -46,6 +46,7 @@
         "ext-xml": "*",
         "aura/router": "3.4.2",
         "ezyang/htmlpurifier": "4.19.0",
+        "doctrine/dbal": "5.0.x-dev",
         "fig/http-message-util": "1.1.5",
         "fisharebest/algorithm": "1.6.0",
         "fisharebest/ext-calendar": "2.6.0",
@@ -69,10 +70,10 @@
         "psr/http-server-middleware": "1.0.2",
         "ramsey/uuid": "4.9.2",
         "sabre/vobject": "4.5.8",
-        "symfony/cache": "7.4.4",
-        "symfony/console": "7.4.4",
-        "symfony/expression-language": "7.4.4",
-        "symfony/mailer": "7.4.4",
+        "symfony/cache": "8.0.4",
+        "symfony/console": "8.0.4",
+        "symfony/expression-language": "8.0.4",
+        "symfony/mailer": "8.0.4",
         "symfony/polyfill-mbstring": "1.33.0",
         "tecnickcom/tcpdf": "6.10.1"
     },
@@ -89,6 +90,9 @@
         "phpstan/phpstan-phpunit": "2.0.12",
         "phpunit/phpunit": "12.5.8",
         "squizlabs/php_codesniffer": "4.0.1"
+    },
+    "replace": {
+        "carbonphp/carbon-doctrine-types": "*"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
@@ -137,7 +141,7 @@
             "find resources/css -name *.png -exec pngcrush -rem allb -brute -reduce {} {} \\;",
             "find resources/css -name *.png -exec optipng -o7 -zm1-9 {} \\;"
         ],
-        "ci" : [
+        "ci": [
             "@composer validate",
             "@composer install --quiet",
             "@composer webtrees:test",
