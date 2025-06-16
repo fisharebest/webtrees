@@ -48,7 +48,7 @@ final class ConfigIni extends AbstractCommand
         $this
             ->setName(name: 'config-ini')
             ->setDescription(description: 'Set values in data/config.ini.php')
-            ->addOption(name: 'dbtype', mode: InputOption::VALUE_OPTIONAL, description: 'Database type', default: $config['dbtype'] ?? 'mysql')
+            ->addOption(name: 'dbtype', mode: InputOption::VALUE_OPTIONAL, description: 'Database type', default: $config['dbtype'] ?? DB::MYSQL)
             ->addOption(name: 'dbhost', mode: InputOption::VALUE_OPTIONAL, description: 'Database host', default: $config['dbhost'] ?? '')
             ->addOption(name: 'dbport', mode: InputOption::VALUE_OPTIONAL, description: 'Database port', default: $config['dbport'] ?? '')
             ->addOption(name: 'dbuser', mode: InputOption::VALUE_OPTIONAL, description: 'Database user', default: $config['dbuser'] ?? '')
