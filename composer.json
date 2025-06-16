@@ -46,6 +46,7 @@
         "ext-xml": "*",
         "aura/router": "3.4.2",
         "ezyang/htmlpurifier": "4.19.0",
+        "doctrine/dbal": "4.4.x-dev",
         "fig/http-message-util": "1.1.5",
         "fisharebest/algorithm": "1.6.0",
         "fisharebest/ext-calendar": "2.6.0",
