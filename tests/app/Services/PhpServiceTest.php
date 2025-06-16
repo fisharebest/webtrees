@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use RuntimeException;
 
 use function extension_loaded;
 use function ini_get;
@@ -66,5 +67,15 @@ class PhpServiceTest extends TestCase
             ini_parse_quantity(shorthand: (string) ini_get(option: 'upload_max_filesize')),
             $php_service->uploadMaxFilesize()
         );
+    }
+
+    public function testIniGetInvalidSetting(): void
+    {
+        $php_service = new PhpService();
+
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Cannot read PHP configuration: foo_bar');
+
+        $php_service->iniGet(option: 'foo_bar');
     }
 }
