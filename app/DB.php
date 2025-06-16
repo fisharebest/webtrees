@@ -20,6 +20,20 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Doctrine\DBAL\Configuration;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Query\Expression\ExpressionBuilder;
+use Doctrine\DBAL\Query\QueryBuilder;
+use Fisharebest\Webtrees\DB\Column;
+use Fisharebest\Webtrees\DB\ColumnType;
+use Fisharebest\Webtrees\DB\Drivers\MySQLDriver;
+use Fisharebest\Webtrees\DB\Drivers\PostgreSQLDriver;
+use Fisharebest\Webtrees\DB\Drivers\SQLiteDriver;
+use Fisharebest\Webtrees\DB\Drivers\SQLServerDriver;
+use Fisharebest\Webtrees\DB\ForeignKey;
+use Fisharebest\Webtrees\DB\Index;
+use Fisharebest\Webtrees\DB\PrimaryKey;
+use Fisharebest\Webtrees\DB\UniqueIndex;
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -27,6 +41,8 @@ use PDO;
 use PDOException;
 use RuntimeException;
 use SensitiveParameter;
+
+use function str_starts_with;
 
 /**
  * Database abstraction
@@ -66,6 +82,8 @@ class DB extends Manager
         self::SQLITE     => 'PRAGMA foreign_keys = ON',
         self::SQL_SERVER => 'SET language us_english', // For timestamp columns
     ];
+
+    private static Connection $dbal_connection;
 
     public static function connect(
         #[SensitiveParameter]
@@ -134,6 +152,23 @@ class DB extends Manager
         if ($sql !== '') {
             self::exec($sql);
         }
+
+        $dbal_driver = match ($driver) {
+            self::MYSQL      => new MySQLDriver(pdo: self::pdo()),
+            self::POSTGRES   => new PostgreSQLDriver(pdo: self::pdo()),
+            self::SQLITE     => new SQLiteDriver(pdo: self::pdo()),
+            self::SQL_SERVER => new SQLServerDriver(pdo: self::pdo()),
+        };
+
+        $configuration = new Configuration();
+        $configuration->setSchemaAssetsFilter(schemaAssetsFilter: self::schemaAssetsFilter(...));
+
+        self::$dbal_connection = new Connection(params: [], driver: $dbal_driver, config: $configuration);
+    }
+
+    private static function schemaAssetsFilter(string $asset): bool
+    {
+        return str_starts_with(haystack: $asset, needle: self::prefix());
     }
 
     public static function driverName(): string
@@ -163,7 +198,7 @@ class DB extends Manager
         return parent::connection()->getPdo();
     }
 
-    public static function prefix(string $identifier): string
+    public static function prefix(string $identifier = ''): string
     {
         return parent::connection()->getTablePrefix() . $identifier;
     }
@@ -253,5 +288,143 @@ class DB extends Manager
     public static function query(): Builder
     {
         return parent::connection()->query();
+    }
+
+    public static function getDBALConnection(): Connection
+    {
+        return self::$dbal_connection;
+    }
+
+    public static function select(string ...$expressions): QueryBuilder
+    {
+        return self::$dbal_connection
+            ->createQueryBuilder()
+            ->select(...$expressions);
+    }
+
+    public static function update(string $table): QueryBuilder
+    {
+        return parent::connection()->update(self::prefix($table));
+    }
+
+    /**
+     * @param array<array-key,array<string,int|float|string|null>>  $rows
+     */
+    public static function insert(string $table, array $rows): void
+    {
+        foreach ($rows as $row) {
+            self::getDBALConnection()->insert(self::prefix($table), $row);
+        }
+    }
+
+    public static function delete(string ...$expressions): QueryBuilder
+    {
+        return self::$dbal_connection
+            ->createQueryBuilder()
+            ->delete(...$expressions);
+    }
+
+    public static function expression(): ExpressionBuilder
+    {
+        return self::$dbal_connection->createExpressionBuilder();
+    }
+
+    public static function char(string $name, int $length): Column
+    {
+        return new Column(
+            name: $name,
+            type: ColumnType::Char,
+            length: $length,
+            fixed: true,
+            collation: self::COLLATION_ASCII[self::driverName()],
+        );
+    }
+
+    public static function varchar(string $name, int $length): Column
+    {
+        return new Column(
+            name: $name,
+            type: ColumnType::Char,
+            length: $length,
+            collation: self::COLLATION_ASCII[self::driverName()],
+        );
+    }
+
+    public static function nchar(string $name, int $length): Column
+    {
+        return new Column(
+            name: $name,
+            type: ColumnType::NChar,
+            length: $length,
+            fixed: true,
+            collation: self::COLLATION_UTF8[self::driverName()],
+        );
+    }
+
+    public static function nvarchar(string $name, int $length): Column
+    {
+        return new Column(
+            name: $name,
+            type: ColumnType::NVarChar,
+            length: $length,
+            collation: self::COLLATION_UTF8[self::driverName()],
+        );
+    }
+
+    public static function integer(string $name): Column
+    {
+        return new Column(name: $name, type: ColumnType::Integer);
+    }
+
+    public static function float(string $name): Column
+    {
+        return new Column(name: $name, type: ColumnType::Float);
+    }
+
+    public static function text(string $name): Column
+    {
+        return new Column(name: $name, type: ColumnType::Text, collation: self::COLLATION_UTF8[self::driverName()]);
+    }
+
+    public static function timestamp(string $name, int $precision = 0): Column
+    {
+        return new Column(name: $name, type: ColumnType::Timestamp, precision: $precision);
+    }
+
+    /**
+     * @param array<array-key,string> $columns
+     */
+    public static function primaryKey(array $columns): PrimaryKey
+    {
+        return new PrimaryKey(columns: $columns);
+    }
+
+    /**
+     * @param list<string> $columns
+     */
+    public static function index(array $columns): Index
+    {
+        return new Index(columns: $columns);
+    }
+
+    /**
+     * @param list<string> $columns
+     */
+    public static function uniqueIndex(array $columns): UniqueIndex
+    {
+        return new UniqueIndex(columns: $columns);
+    }
+
+    /**
+     * @param list<string> $local_columns
+     * @param list<string> $foreign_columns
+     */
+    public static function foreignKey(array $local_columns, string $foreign_table, array|null $foreign_columns = null): ForeignKey
+    {
+        return new ForeignKey(
+            local_columns: $local_columns,
+            foreign_table: $foreign_table,
+            foreign_columns: $foreign_columns ?? $local_columns,
+        );
     }
 }
