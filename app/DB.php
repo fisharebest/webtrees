@@ -20,6 +20,23 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Doctrine\DBAL\Configuration;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\DriverManager;
+use Doctrine\DBAL\Query\Expression\ExpressionBuilder;
+use Doctrine\DBAL\Query\QueryBuilder;
+use Doctrine\DBAL\Schema\Column;
+use Doctrine\DBAL\Schema\ForeignKeyConstraint;
+use Doctrine\DBAL\Schema\ForeignKeyConstraint\ReferentialAction;
+use Doctrine\DBAL\Schema\Index;
+use Doctrine\DBAL\Schema\Index\IndexType;
+use Doctrine\DBAL\Schema\PrimaryKeyConstraint;
+use Doctrine\DBAL\Types\AsciiStringType;
+use Doctrine\DBAL\Types\DateTimeImmutableType;
+use Doctrine\DBAL\Types\FloatType;
+use Doctrine\DBAL\Types\IntegerType;
+use Doctrine\DBAL\Types\StringType;
+use Doctrine\DBAL\Types\TextType;
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -27,6 +44,8 @@ use PDO;
 use PDOException;
 use RuntimeException;
 use SensitiveParameter;
+
+use function str_starts_with;
 
 /**
  * Database abstraction
@@ -66,6 +85,8 @@ class DB extends Manager
         self::SQLITE     => 'PRAGMA foreign_keys = ON',
         self::SQL_SERVER => 'SET language us_english', // For timestamp columns
     ];
+
+    private static Connection $dbal_connection;
 
     public static function connect(
         #[SensitiveParameter]
@@ -108,6 +129,45 @@ class DB extends Manager
             $database = Webtrees::ROOT_DIR . 'data/' . $database . '.sqlite';
         }
 
+        // doctrine/dbal
+
+        $parameters = match ($driver) {
+            self::MYSQL => [
+                'driver'   => 'pdo_mysql',
+                'dbname'   => $database,
+                'user'     => $username,
+                'password' => $password,
+                'port'     => $port,
+                'charset'  => 'utf8mb4',
+            ],
+            self::POSTGRES => [
+                'driver'   => 'pdo_pgsql',
+                'dbname'   => $database,
+                'user'     => $username,
+                'password' => $password,
+                'port'     => $port,
+                'charset'  => 'utf8',
+            ],
+            self::SQLITE => [
+                'driver'   => 'pdo_sqlite',
+                'path'     => $database,
+            ],
+            self::SQL_SERVER => [
+                'driver'   => 'pdo_sqlsrv',
+                'dbname'   => $database,
+                'user'     => $username,
+                'password' => $password,
+                'port'     => $port,
+            ],
+        };
+
+        $configuration = new Configuration();
+        $configuration->setSchemaAssetsFilter(schemaAssetsFilter: self::schemaAssetsFilter(...));
+
+        self::$dbal_connection = DriverManager::getConnection(params: $parameters, config: $configuration);
+
+        // illuminate/database
+
         $capsule = new self();
         $capsule->addConnection([
             'driver'         => $driver,
@@ -134,6 +194,17 @@ class DB extends Manager
         if ($sql !== '') {
             self::exec($sql);
         }
+    }
+
+    private static function schemaAssetsFilter(string $asset): bool
+    {
+        $prefix = parent::connection()->getTablePrefix();
+
+        if ($prefix === '') {
+            throw new RuntimeException('Table prefix cannot be empty.');
+        }
+
+        return str_starts_with(haystack: $asset, needle: $prefix);
     }
 
     public static function driverName(): string
@@ -163,6 +234,11 @@ class DB extends Manager
         return parent::connection()->getPdo();
     }
 
+    /**
+     * @param non-empty-string $identifier
+     *
+     * @return non-empty-string
+     */
     public static function prefix(string $identifier): string
     {
         return parent::connection()->getTablePrefix() . $identifier;
@@ -171,7 +247,8 @@ class DB extends Manager
     /**
      * SQL-Server needs to be told that we are going to insert into an identity column.
      *
-     * @param Closure(): void $callback
+     * @param non-empty-string $table
+     * @param Closure(): void  $callback
      */
     public static function identityInsert(string $table, Closure $callback): void
     {
@@ -253,5 +330,217 @@ class DB extends Manager
     public static function query(): Builder
     {
         return parent::connection()->query();
+    }
+
+    public static function getDBALConnection(): Connection
+    {
+        return self::$dbal_connection;
+    }
+
+    public static function select(string ...$expressions): QueryBuilder
+    {
+        return self::$dbal_connection
+            ->createQueryBuilder()
+            ->select(...$expressions);
+    }
+
+    /**
+     * @param non-empty-string                                     $table
+     * @param array<array-key,array<string,int|float|string|null>> $rows
+     */
+    public static function insert(string $table, array $rows): void
+    {
+        foreach ($rows as $row) {
+            self::getDBALConnection()->insert(self::prefix($table), $row);
+        }
+    }
+
+    public static function delete(string ...$expressions): QueryBuilder
+    {
+        return self::$dbal_connection
+            ->createQueryBuilder()
+            ->delete(...$expressions);
+    }
+
+    public static function expression(): ExpressionBuilder
+    {
+        return self::$dbal_connection->createExpressionBuilder();
+    }
+
+    /**
+     * @param non-empty-string $name
+     */
+    public static function char(string $name, int $length, bool $nullable = false, string|null $default = null): Column
+    {
+        return Column::editor()
+            ->setUnquotedName($name)
+            ->setType(new AsciiStringType())
+            ->setLength($length)
+            ->setFixed(true)
+            ->setNotNull(!$nullable)
+            ->setDefaultValue($default)
+            ->setCollation(self::COLLATION_ASCII[self::driverName()])
+            ->create();
+    }
+
+    /**
+     * @param non-empty-string $name
+     */
+    public static function varchar(string $name, int $length, bool $nullable = false, string|null $default = null): Column
+    {
+        return Column::editor()
+            ->setUnquotedName($name)
+            ->setType(new AsciiStringType())
+            ->setLength($length)
+            ->setFixed(false)
+            ->setNotNull(!$nullable)
+            ->setDefaultValue($default)
+            ->setCollation(self::COLLATION_ASCII[self::driverName()])
+            ->create();
+    }
+
+    /**
+     * @param non-empty-string $name
+     */
+    public static function nchar(string $name, int $length, bool $nullable = false, string|null $default = null): Column
+    {
+        return Column::editor()
+            ->setUnquotedName($name)
+            ->setType(new StringType())
+            ->setLength($length)
+            ->setFixed(true)
+            ->setNotNull(!$nullable)
+            ->setDefaultValue($default)
+            ->setCollation(self::COLLATION_UTF8[self::driverName()])
+            ->create();
+    }
+
+    /**
+     * @param non-empty-string $name
+     */
+    public static function nvarchar(string $name, int $length, bool $nullable = false, string|null $default = null): Column
+    {
+        return Column::editor()
+            ->setUnquotedName($name)
+            ->setType(new StringType())
+            ->setLength($length)
+            ->setFixed(false)
+            ->setNotNull(!$nullable)
+            ->setDefaultValue($default)
+            ->setCollation(self::COLLATION_UTF8[self::driverName()])
+            ->create();
+    }
+
+    /**
+     * @param non-empty-string $name
+     */
+    public static function integer(string $name, bool $autoincrement = false, bool $nullable = false, int|null $default = null): Column
+    {
+        return Column::editor()
+            ->setUnquotedName($name)
+            ->setType(new IntegerType())
+            ->setAutoincrement($autoincrement)
+            ->setNotNull(!$nullable)
+            ->setDefaultValue($default)
+            ->create();
+    }
+
+    /**
+     * @param non-empty-string $name
+     */
+    public static function float(string $name, bool $nullable = false): Column
+    {
+        return Column::editor()
+            ->setUnquotedName($name)
+            ->setType(new FloatType())
+            ->setNotNull(!$nullable)
+            ->create();
+    }
+
+    /**
+     * @param non-empty-string $name
+     */
+    public static function text(string $name): Column
+    {
+        return Column::editor()
+            ->setUnquotedName($name)
+            ->setType(new TextType())
+            ->setCollation(self::COLLATION_UTF8[self::driverName()])
+            ->create();
+    }
+
+    /**
+     * @param non-empty-string $name
+     */
+    public static function timestamp(string $name, int $precision = 0, string|null $default = null): Column
+    {
+        return Column::editor()
+            ->setUnquotedName($name)
+            ->setType(new DateTimeImmutableType())
+            ->setPrecision($precision)
+            ->create();
+    }
+
+    /**
+     * @param non-empty-list<non-empty-string> $columns
+     */
+    public static function primaryKey(array $columns): PrimaryKeyConstraint
+    {
+        return PrimaryKeyConstraint::editor()
+            ->setUnquotedColumnNames(...$columns)
+            ->create();
+    }
+
+    /**
+     * @param non-empty-string                 $name
+     * @param non-empty-list<non-empty-string> $columns
+     */
+    public static function index(string $name, array $columns): Index
+    {
+        return Index::editor()
+            ->setType(IndexType::REGULAR)
+            ->setUnquotedName(DB::prefix($name))
+            ->setUnquotedColumnNames(...$columns)
+            ->create();
+    }
+
+    /**
+     * @param non-empty-string                 $name
+     * @param non-empty-list<non-empty-string> $columns
+     */
+    public static function uniqueIndex(string $name, array $columns): Index
+    {
+        return Index::editor()
+            ->setType(IndexType::UNIQUE)
+            ->setUnquotedName(DB::prefix($name))
+            ->setUnquotedColumnNames(...$columns)
+            ->create();
+    }
+
+    /**
+     * @param non-empty-string                  $name
+     * @param non-empty-array<non-empty-string> $local_columns
+     * @param non-empty-string                  $foreign_table
+     * @param non-empty-array<non-empty-string> $foreign_columns
+     */
+    public static function foreignKey(
+        string $name,
+        array $local_columns,
+        string $foreign_table,
+        array|null $foreign_columns = null,
+        ReferentialAction $on_delete = ReferentialAction::NO_ACTION,
+        ReferentialAction $on_update = ReferentialAction::NO_ACTION,
+    ): ForeignKeyConstraint
+    {
+        $foreign_columns ??= $local_columns;
+
+        return ForeignKeyConstraint::editor()
+            ->setUnquotedName(DB::prefix($name))
+            ->setQuotedReferencingColumnNames(...$local_columns)
+            ->setQuotedReferencedTableName(DB::prefix($foreign_table))
+            ->setQuotedReferencedColumnNames(...$foreign_columns)
+            ->setOnDeleteAction($on_delete)
+            ->setOnUpdateAction($on_update)
+            ->create();
     }
 }
