@@ -301,26 +301,6 @@ class UpgradeService
     }
 
     /**
-     * @return void
-     */
-    public function startMaintenanceMode(): void
-    {
-        $message = I18N::translate('This website is being upgraded. Try again in a few minutes.');
-
-        file_put_contents(Webtrees::OFFLINE_FILE, $message);
-    }
-
-    /**
-     * @return void
-     */
-    public function endMaintenanceMode(): void
-    {
-        if (file_exists(Webtrees::OFFLINE_FILE)) {
-            unlink(Webtrees::OFFLINE_FILE);
-        }
-    }
-
-    /**
      * Check with the webtrees.net server for the latest version of webtrees.
      * Fetching the remote file can be slow, so check infrequently, and cache the result.
      * Pass the current versions of webtrees, PHP and database, as the response

@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomExportService;
+use Fisharebest\Webtrees\Services\MaintenanceModeService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
@@ -49,7 +50,7 @@ use function view;
 /**
  * Upgrade to a new version of webtrees.
  */
-class UpgradeWizardStep implements RequestHandlerInterface
+readonly class UpgradeWizardStep implements RequestHandlerInterface
 {
     // We make the upgrade in a number of small steps to keep within server time limits.
     private const string STEP_CHECK   = 'Check';
@@ -76,25 +77,12 @@ class UpgradeWizardStep implements RequestHandlerInterface
         'vendor',
     ];
 
-    private GedcomExportService $gedcom_export_service;
-
-    private UpgradeService $upgrade_service;
-
-    private TreeService $tree_service;
-
-    /**
-     * @param GedcomExportService $gedcom_export_service
-     * @param TreeService         $tree_service
-     * @param UpgradeService      $upgrade_service
-     */
     public function __construct(
-        GedcomExportService $gedcom_export_service,
-        TreeService $tree_service,
-        UpgradeService $upgrade_service
+        private GedcomExportService $gedcom_export_service,
+        private MaintenanceModeService $maintenance_mode_service,
+        private TreeService $tree_service,
+        private UpgradeService $upgrade_service,
     ) {
-        $this->gedcom_export_service = $gedcom_export_service;
-        $this->tree_service          = $tree_service;
-        $this->upgrade_service       = $upgrade_service;
     }
 
     /**
@@ -276,9 +264,9 @@ class UpgradeWizardStep implements RequestHandlerInterface
         $source_filesystem = Registry::filesystem()->root(self::UPGRADE_FOLDER . self::ZIP_FILE_PREFIX);
         $root_filesystem   = Registry::filesystem()->root();
 
-        $this->upgrade_service->startMaintenanceMode();
+        $this->maintenance_mode_service->offline();
         $this->upgrade_service->moveFiles($source_filesystem, $root_filesystem);
-        $this->upgrade_service->endMaintenanceMode();
+        $this->maintenance_mode_service->online();
 
         // While we have time, clean up any old files.
         $files_to_keep    = $this->upgrade_service->webtreesZipContents($zip_file);

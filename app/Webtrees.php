@@ -109,9 +109,6 @@ class Webtrees
     // Location of the file containing the database connection details.
     public const string CONFIG_FILE = self::DATA_DIR . 'config.ini.php';
 
-    // Location of the file that triggers maintenance mode.
-    public const string OFFLINE_FILE = self::DATA_DIR . 'offline.txt';
-
     // Location of our modules.
     public const string MODULES_PATH = 'modules_v4/';
     public const string MODULES_DIR  = self::ROOT_DIR . self::MODULES_PATH;

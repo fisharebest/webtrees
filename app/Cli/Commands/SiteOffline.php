@@ -19,18 +19,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli\Commands;
 
-use Fisharebest\Webtrees\Webtrees;
+use Fisharebest\Webtrees\Services\MaintenanceModeService;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Throwable;
 
-use function file_exists;
-use function file_put_contents;
-
 final class SiteOffline extends AbstractCommand
 {
+    public function __construct(
+        private readonly MaintenanceModeService $maintenance_mode_service,
+    ) {
+        parent::__construct();
+    }
+
     protected function configure(): void
     {
         $this
@@ -45,22 +48,18 @@ final class SiteOffline extends AbstractCommand
 
         $io = new SymfonyStyle(input: $input, output: $output);
 
-        $file_exists = file_exists(filename: Webtrees::OFFLINE_FILE);
+        $file = $this->maintenance_mode_service->file();
 
         try {
-            file_put_contents(filename: Webtrees::OFFLINE_FILE, data: $message);
+            $this->maintenance_mode_service->offline($message);
         } catch (Throwable $ex) {
-            $io->error(message: 'Failed to write file ' . Webtrees::OFFLINE_FILE);
+            $io->error(message: 'Failed to write file ' . $file);
             $io->error(message: $ex->getMessage());
 
             return self::FAILURE;
         }
 
-        if ($file_exists) {
-            $io->success(message: Webtrees::OFFLINE_FILE . ' updated. Site is offline.');
-        } else {
-            $io->success(message: Webtrees::OFFLINE_FILE . ' created. Site is offline.');
-        }
+        $io->success(message: $file . ' created. Site is offline.');
 
         return self::SUCCESS;
     }
