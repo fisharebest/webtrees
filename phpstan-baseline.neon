@@ -1,6 +1,18 @@
 parameters:
 	ignoreErrors:
 		-
+			message: '#^Method Fisharebest\\Webtrees\\Arr\:\:flatten\(\) should return Fisharebest\\Webtrees\\Arr\<int, TValue\> but returns Fisharebest\\Webtrees\\Arr\<\(int\|string\), mixed\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Arr.php
+
+		-
+			message: '#^Parameter \#1 \.\.\.\$arrays of function array_merge expects array, TValue given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Arr.php
+
+		-
 			message: '#^Cannot call method find\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
@@ -149,6 +161,12 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between 45 and 45 will always evaluate to false\.$#'
+			identifier: notIdentical.alwaysFalse
+			count: 1
+			path: app/Cli/Commands/DatabaseRepair.php
 
 		-
 			message: '#^Cannot call method addFromString\(\) on ZipArchive\|null\.$#'
@@ -301,14 +319,14 @@ parameters:
 			path: app/Container.php
 
 		-
-			message: '#^Constant Fisharebest\\Webtrees\\DB\:\:COLLATION_ASCII is unused\.$#'
-			identifier: classConstant.unused
+			message: '#^Call to internal method Doctrine\\DBAL\\Connection\:\:__construct\(\) from outside its root namespace Doctrine\.$#'
+			identifier: method.internal
 			count: 1
 			path: app/DB.php
 
 		-
-			message: '#^Constant Fisharebest\\Webtrees\\DB\:\:COLLATION_UTF8 is unused\.$#'
-			identifier: classConstant.unused
+			message: '#^Match expression does not handle remaining value\: string$#'
+			identifier: match.unhandled
 			count: 1
 			path: app/DB.php
 
@@ -317,6 +335,180 @@ parameters:
 			identifier: return.type
 			count: 1
 			path: app/DB.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\DB\:\:update\(\) should return Doctrine\\DBAL\\Query\\QueryBuilder but returns int\.$#'
+			identifier: return.type
+			count: 1
+			path: app/DB.php
+
+		-
+			message: '#^Parameter \$columns of class Fisharebest\\Webtrees\\DB\\PrimaryKey constructor expects array\<int, string\>, array\<string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/DB.php
+
+		-
+			message: '#^Static method Fisharebest\\Webtrees\\DB\:\:prefix\(\) invoked with 0 parameters, 1 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: app/DB.php
+
+		-
+			message: '#^Call to internal method Doctrine\\DBAL\\Types\\Type\:\:__construct\(\) from outside its root namespace Doctrine\.$#'
+			identifier: method.internal
+			count: 8
+			path: app/DB/ColumnType.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\DB\\Drivers\\DriverInterface\:\:connect\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/DB/Drivers/DriverInterface.php
+
+		-
+			message: '#^Call to internal method Doctrine\\DBAL\\Driver\\PDO\\Connection\:\:__construct\(\) from outside its root namespace Doctrine\.$#'
+			identifier: method.internal
+			count: 1
+			path: app/DB/Drivers/MySQLDriver.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\DB\\Drivers\\MySQLDriver\:\:query\(\) should return array\<object\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: app/DB/Drivers/MySQLDriver.php
+
+		-
+			message: '#^Call to internal method Doctrine\\DBAL\\Driver\\PDO\\Connection\:\:__construct\(\) from outside its root namespace Doctrine\.$#'
+			identifier: method.internal
+			count: 1
+			path: app/DB/Drivers/PostgreSQLDriver.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\DB\\Drivers\\PostgreSQLDriver\:\:query\(\) should return array\<object\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: app/DB/Drivers/PostgreSQLDriver.php
+
+		-
+			message: '#^Call to internal method Doctrine\\DBAL\\Driver\\PDO\\Connection\:\:__construct\(\) from outside its root namespace Doctrine\.$#'
+			identifier: method.internal
+			count: 1
+			path: app/DB/Drivers/SQLServerDriver.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\DB\\Drivers\\SQLServerDriver\:\:query\(\) should return array\<object\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: app/DB/Drivers/SQLServerDriver.php
+
+		-
+			message: '#^Call to internal method Doctrine\\DBAL\\Driver\\PDO\\Connection\:\:__construct\(\) from outside its root namespace Doctrine\.$#'
+			identifier: method.internal
+			count: 1
+			path: app/DB/Drivers/SQLiteDriver.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\DB\\Drivers\\SQLiteDriver\:\:query\(\) should return array\<object\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: app/DB/Drivers/SQLiteDriver.php
+
+		-
+			message: '#^Binary operation "\." between '' AS '' and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: app/DB/GroupConcat.php
+
+		-
+			message: '#^Binary operation "\." between ''GROUP_CONCAT\('' and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: app/DB/GroupConcat.php
+
+		-
+			message: '#^Binary operation "\." between ''STRING_AGG\('' and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: app/DB/GroupConcat.php
+
+		-
+			message: '#^Binary operation "\." between non\-falsy\-string and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 4
+			path: app/DB/GroupConcat.php
+
+		-
+			message: '#^Call to an undefined static method Illuminate\\Database\\Capsule\\Manager\:\:getTheConnection\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 5
+			path: app/DB/GroupConcat.php
+
+		-
+			message: '#^Cannot call method getDriverName\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/DB/GroupConcat.php
+
+		-
+			message: '#^Cannot call method getPdo\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/DB/GroupConcat.php
+
+		-
+			message: '#^Cannot call method getSchemaGrammar\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 3
+			path: app/DB/GroupConcat.php
+
+		-
+			message: '#^Cannot call method quote\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/DB/GroupConcat.php
+
+		-
+			message: '#^Cannot call method wrap\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 3
+			path: app/DB/GroupConcat.php
+
+		-
+			message: '#^Class Fisharebest\\Webtrees\\GroupConcat extends generic class Illuminate\\Database\\Query\\Expression but does not specify its types\: TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/DB/GroupConcat.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\DB\\Query\:\:first\(\) never returns float so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: app/DB/Query.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\DB\\Query\:\:first\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: app/DB/Query.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\DB\\Query\:\:first\(\) never returns string so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: app/DB/Query.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\DB\\Schema\:\:dropTable\(\) should return \$this\(Fisharebest\\Webtrees\\DB\\Schema\) but returns Fisharebest\\Webtrees\\DB\\Schema\.$#'
+			identifier: return.type
+			count: 1
+			path: app/DB/Schema.php
+
+		-
+			message: '#^Parameter \$tables of class Fisharebest\\Webtrees\\DB\\Schema constructor expects list\<Fisharebest\\Webtrees\\DB\\Table\>, array\<int\<0, max\>, Fisharebest\\Webtrees\\DB\\Table\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/DB/Schema.php
 
 		-
 			message: '#^Cannot access offset int on mixed\.$#'
