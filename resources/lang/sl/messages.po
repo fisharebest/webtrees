@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-06-16 10:28+0000\n"
+"PO-Revision-Date: 2025-06-18 08:28+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sl/>\n"
@@ -1310,7 +1310,7 @@ msgstr "Dodaj"
 #: app/Module/ClippingsCartModule.php:743
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr "Dodaj %s v košarico za izrezke"
+msgstr "Dodaj %s med izrezke"
 
 #: resources/views/modules/relatives/family.phtml:221
 msgid "Add a brother"
@@ -1516,7 +1516,7 @@ msgstr "Dodaj k oznaki TITLE"
 #: app/Module/ClippingsCartModule.php:162
 #: resources/views/modules/clippings/add-options.phtml:23
 msgid "Add to the clippings cart"
-msgstr "Dodaj v košarico za izrezke"
+msgstr "Dodaj med izrezke"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:140
@@ -3832,7 +3832,7 @@ msgstr "Čiščenje podatkovne mape"
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:185
 msgid "Clippings cart"
-msgstr "Košarica za izrezke"
+msgstr "Izrezki"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:83
@@ -5808,7 +5808,7 @@ msgstr "Izprazni odložišče"
 
 #: app/Module/ClippingsCartModule.php:166
 msgid "Empty the clippings cart"
-msgstr "Izprazni košarico za izrezke"
+msgstr "Izprazni izrezke"
 
 #: resources/views/admin/components.phtml:41
 #: resources/views/admin/components.phtml:87
@@ -14590,8 +14590,8 @@ msgstr "Meni diagramov."
 #: resources/views/modules/clippings/show.phtml:21
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
 msgstr ""
-"Košarica za izrezke omogoča, da vzamete dele tega družinskega drevesa in jih "
-"prenesete kot datoteko GEDCOM."
+"Izrezki omogočajo, da vzamete dele tega družinskega drevesa in jih prenesete "
+"kot datoteko GEDCOM."
 
 #: resources/views/admin/trees-preferences.phtml:383
 msgid "The date and time of the last update"
@@ -16767,27 +16767,27 @@ msgstr "Prikaži tabelo dogodkov, ki se bodo zgodili %s"
 
 #: resources/views/calendar-page.phtml:221
 msgid "View this day"
-msgstr "Poglej današnji dan"
+msgstr "Prikaži današnji dan"
 
 #: app/Statistics/Repository/FamilyRepository.php:477
 #: resources/views/fact.phtml:110
 #: resources/views/statistics/families/top10-list-age.phtml:23
 #: resources/views/statistics/families/top10-nolist-age.phtml:25
 msgid "View this family"
-msgstr "Poglej to družino"
+msgstr "Prikaži to družino"
 
 #: app/Module/ModuleMapLinkTrait.php:57
 #, php-format
 msgid "View this location using %s"
-msgstr "Poglej to lokacijo z uporabo %s"
+msgstr "Prikaži to lokacijo z uporabo %s"
 
 #: resources/views/calendar-page.phtml:225
 msgid "View this month"
-msgstr "Poglej ta mesec"
+msgstr "Prikaži ta mesec"
 
 #: resources/views/calendar-page.phtml:229
 msgid "View this year"
-msgstr "Poglej to leto"
+msgstr "Prikaži to leto"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:205
@@ -17285,7 +17285,7 @@ msgstr "Najmlajša mater"
 
 #: resources/views/modules/clippings/show.phtml:26
 msgid "Your clippings cart is empty."
-msgstr "Košarica za izrezke je prazna."
+msgstr "Izrezki so prazni."
 
 #: resources/views/contact-page.phtml:43
 #: resources/views/setup/step-5-administrator.phtml:56
@@ -20961,7 +20961,7 @@ msgstr "šesti bratranec"
 
 #: app/Services/RelationshipService.php:425
 msgid "son"
-msgstr "Sin"
+msgstr "sin"
 
 #: resources/xml/reports/descendancy_report.xml:295
 msgid "son of"
