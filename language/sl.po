@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-06-16 10:28+0000\n"
+"PO-Revision-Date: 2025-06-18 08:28+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sl/>\n"
@@ -1358,7 +1358,7 @@ msgstr "Dodaj"
 #: app/Module/ClippingsCartModule.php:737
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr "Dodaj %s v košarico za izrezke"
+msgstr "Dodaj %s med izrezke"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:120
 msgid "Add a blank row"
@@ -1566,7 +1566,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:459
 #: app/Module/ClippingsCartModule.php:575
 msgid "Add to the clippings cart"
-msgstr "Dodaj v košarico za izrezke"
+msgstr "Dodaj med izrezke"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:720
@@ -3936,7 +3936,7 @@ msgstr "Očiščeno, vendar še ni dokončano"
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:38
 msgid "Clippings cart"
-msgstr "Košarica za izrezke"
+msgstr "Izrezki"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1918
@@ -5771,7 +5771,7 @@ msgstr "Delodajalec"
 #: app/Module/ClippingsCartModule.php:481
 #: app/Module/ClippingsCartModule.php:728
 msgid "Empty the clippings cart"
-msgstr "Izprazni košarico za izrezke"
+msgstr "Izprazni izrezke"
 
 #: admin_modules.php:156
 msgid "Enabled"
@@ -13917,8 +13917,8 @@ msgstr "Spremembe “%s” so zavrnjene."
 #: app/Module/ClippingsCartModule.php:324
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
 msgstr ""
-"Košarica za izrezke omogoča, da vzamete dele tega družinskega drevesa in jih "
-"prenesete kot datoteko GEDCOM."
+"Izrezki omogočajo, da vzamete dele tega družinskega drevesa in jih prenesete "
+"kot datoteko GEDCOM."
 
 #: site-unavailable.php:52
 msgid "The database reported the following error message:"
@@ -16174,7 +16174,7 @@ msgstr "Poglej zapiske"
 
 #: calendar.php:292
 msgid "View this day"
-msgstr "Poglej današnji dan"
+msgstr "Prikaži današnji dan"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -16184,7 +16184,7 @@ msgstr "Poglej današnji dan"
 #: app/Stats.php:4535 app/Stats.php:4562 app/Stats.php:4573 app/Stats.php:4582
 #: medialist.php:313 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:99
 msgid "View this family"
-msgstr "Poglej to družino"
+msgstr "Prikaži to družino"
 
 #: app/Module/SlideShowModule.php:177 medialist.php:310
 msgid "View this individual"
@@ -16192,7 +16192,7 @@ msgstr "Poglej osebo"
 
 #: calendar.php:296
 msgid "View this month"
-msgstr "Poglej ta mesec"
+msgstr "Prikaži ta mesec"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
 msgid "View this source"
@@ -16200,7 +16200,7 @@ msgstr "Poglej vir"
 
 #: calendar.php:300
 msgid "View this year"
-msgstr "Poglej to leto"
+msgstr "Prikaži to leto"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:385
@@ -16815,7 +16815,7 @@ msgstr "Najmlajša mater"
 #: app/Module/ClippingsCartModule.php:357
 #: app/Module/ClippingsCartModule.php:691
 msgid "Your clippings cart is empty."
-msgstr "Košarica za izrezke je prazna."
+msgstr "Izrezki so prazni."
 
 #: message.php:116 message.php:269 setup.php:428
 msgid "Your name"
@@ -20257,7 +20257,7 @@ msgstr "šesti bratranec"
 #: app/Functions/Functions.php:747 app/Functions/FunctionsCharts.php:311
 #: edit_interface.php:1979
 msgid "son"
-msgstr "Sin"
+msgstr "sin"
 
 #: modules_v3/descendancy_report/report.xml:295
 msgid "son of"
