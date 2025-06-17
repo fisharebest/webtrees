@@ -30,12 +30,12 @@ class QrcodeService
 {
     // If the form is completed faster than this, then suspect a robot.
     // private const float MINIMUM_FORM_TIME = 3.0;
-     /**
-         * Generate a QR code image based on 2FA secret and return both.
-         *
-         * @param UserInterface   $user
-         * @return array<string, mixed>
-     */
+    /**
+        * Generate a QR code image based on 2FA secret and return both.
+        *
+        * @param UserInterface   $user
+        * @return array<string, mixed>
+    */
 
     public function genQRcode(UserInterface $user): array
     {
