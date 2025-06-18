@@ -9871,14 +9871,8 @@ parameters:
 			path: resources/views/edit/reorder-families.phtml
 
 		-
-			message: '#^Cannot call method displayImage\(\) on Fisharebest\\Webtrees\\GedcomRecord\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/edit/reorder-media.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on Fisharebest\\Webtrees\\GedcomRecord\|null\.$#'
-			identifier: method.nonObject
+			message: '#^Call to an undefined method Fisharebest\\Webtrees\\GedcomRecord\:\:displayImage\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: resources/views/edit/reorder-media.phtml
 
