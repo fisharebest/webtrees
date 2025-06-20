@@ -51,8 +51,8 @@
         "fisharebest/ext-calendar": "2.6.0",
         "fisharebest/localization": "1.17.0",
         "guzzlehttp/guzzle": "7.9.3",
-        "illuminate/database": "12.18.0",
-        "illuminate/support": "12.18.0",
+        "illuminate/database": "12.19.3",
+        "illuminate/support": "12.19.3",
         "intervention/image": "3.11.3",
         "league/commonmark": "2.7.0",
         "league/flysystem": "3.29.1",
@@ -60,7 +60,7 @@
         "league/flysystem-ziparchive": "3.29.0",
         "middlewares/client-ip": "2.1.0",
         "mlocati/ip-lib": "1.20.0",
-        "nesbot/carbon": "3.9.1",
+        "nesbot/carbon": "3.10.0",
         "nyholm/psr7": "1.8.2",
         "nyholm/psr7-server": "1.1.0",
         "psr/cache": "3.0.0",
@@ -88,8 +88,8 @@
         "phpstan/phpstan-deprecation-rules": "2.0.3",
         "phpstan/phpstan-phpunit": "2.0.6",
         "phpstan/phpstan-strict-rules": "2.0.4",
-        "phpunit/phpunit": "12.2.1",
-        "squizlabs/php_codesniffer": "4.0.0beta1"
+        "phpunit/phpunit": "12.2.3",
+        "squizlabs/php_codesniffer": "4.0.0-RC1"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
