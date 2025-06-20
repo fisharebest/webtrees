@@ -356,6 +356,10 @@ class UserService
      */
     public function delete(User $user): void
     {
+        DB::table('session')
+            ->where('user_id', '=', $user->id())
+            ->delete();
+
         // Don't delete the logs, just set the user to null.
         DB::table('log')
             ->where('user_id', '=', $user->id())
