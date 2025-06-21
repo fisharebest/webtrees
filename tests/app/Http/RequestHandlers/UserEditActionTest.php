@@ -47,6 +47,7 @@ class UserEditActionTest extends TestCase
             'email'          => '',
             'theme'          => '',
             'password'       => '',
+            'secret'         => '',
             'language'       => '',
             'timezone'       => '',
             'comment'        => '',

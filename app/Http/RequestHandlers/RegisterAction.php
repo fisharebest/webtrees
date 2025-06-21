@@ -96,13 +96,14 @@ class RegisterAction implements RequestHandlerInterface
         $password = Validator::parsedBody($request)->string('password');
         $realname = Validator::parsedBody($request)->string('realname');
         $username = Validator::parsedBody($request)->string('username');
+        $secret   = Validator::parsedBody($request)->string('secret');
 
         try {
             if ($this->captcha_service->isRobot($request)) {
                 throw new Exception(I18N::translate('Please try again.'));
             }
 
-            $this->doValidateRegistration($request, $username, $email, $realname, $comments, $password);
+            $this->doValidateRegistration($request, $username, $email, $realname, $comments, $password, $secret);
 
             Session::forget('register_comments');
             Session::forget('register_email');
@@ -135,6 +136,7 @@ class RegisterAction implements RequestHandlerInterface
         $user->setPreference(UserInterface::PREF_CONTACT_METHOD, MessageService::CONTACT_METHOD_INTERNAL_AND_EMAIL);
         $user->setPreference(UserInterface::PREF_NEW_ACCOUNT_COMMENT, $comments);
         $user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, '1');
+        $user->setPreference(UserInterface::PREF_IS_STATUS_MFA, '0');
         $user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, '');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '');
         $user->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, '0');
@@ -246,6 +248,7 @@ class RegisterAction implements RequestHandlerInterface
         string $username,
         string $email,
         string $realname,
+        string $secret,
         string $comments,
         #[\SensitiveParameter] string $password
     ): void {
