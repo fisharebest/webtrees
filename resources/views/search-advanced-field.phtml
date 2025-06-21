@@ -12,6 +12,7 @@ declare(strict_types=1);
  * @var Tree          $tree
  */
 
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
 
@@ -26,7 +27,7 @@ use Fisharebest\Webtrees\Tree;
         <?php if (str_ends_with($field_name, ':PLAC')) : ?>
             <?= view('components/select-place', ['name' => 'fields[' . $field_name . ']', 'id' => 'fields-' . $field_name, 'tree' => $tree, 'place' => Place::find((int) $field_value, $tree)]) ?>
         <?php elseif (str_ends_with($field_name, ':DATE')) : ?>
-            <input class="form-control form-control" type="text" id="fields[<?= e($field_name) ?>]" name="fields[<?= e($field_name) ?>]" value="<?= e($field_value) ?>" onchange="webtrees.reformatDate(this, 'dmy')">
+            <input class="form-control form-control" type="text" id="fields[<?= e($field_name) ?>]" name="fields[<?= e($field_name) ?>]" value="<?= e($field_value) ?>" onchange="webtrees.reformatDate(this, '<?= I18N::language()->dateOrder() ?>')">
         <?php else : ?>
             <input class="form-control form-control" type="text" id="fields[<?= e($field_name) ?>]" name="fields[<?= e($field_name) ?>]" value="<?= e($field_value) ?>">
         <?php endif ?>
