@@ -452,8 +452,7 @@
     content += '</tr>';
 
     let tdate = new Date(date.getFullYear(), date.getMonth(), 1);
-    let day = tdate.getDay();
-    day = day - weekStart;
+    let day = (7 + tdate.getDay() - weekStart) % 7;
     let daymilli = 1000 * 60 * 60 * 24;
     tdate = tdate.getTime() - (day * daymilli) + (daymilli / 2);
     tdate = new Date(tdate);
