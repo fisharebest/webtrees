@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-06-18 08:28+0000\n"
+"PO-Revision-Date: 2025-06-24 06:28+0000\n"
 "Last-Translator: Gregor Anželj <gregor.anzelj@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sl/>\n"
@@ -6218,7 +6218,7 @@ msgstr "Družinsko drevo"
 #: app/Module/ClippingsCartModule.php:103
 #: app/Module/ClippingsCartModule.php:492
 msgid "Family tree clippings cart"
-msgstr "Košarica za izreze družinskega drevesa"
+msgstr "Izrezki družinskega drevesa"
 
 #: admin_trees_config.php:590 admin_trees_manage.php:645
 msgid "Family tree title"
@@ -6644,7 +6644,7 @@ msgstr "Za tehnično pomoč in informacije se obrnite na %s."
 #: app/Theme/AbstractTheme.php:285
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Za tehnično podporo ali rodoslovna vprašanja se obrnite na %s."
+msgstr "Kontakt za tehnično podporo ali rodoslovna vprašanja je %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:283
@@ -20518,7 +20518,7 @@ msgstr ""
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:281
 msgid "themself"
-msgstr "oni sami"
+msgstr "oseba"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:639
