@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2025-06-27 18:28+0000\n"
+"Last-Translator: ro-la <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sk/>\n"
 "Language: sk\n"
@@ -9915,7 +9915,9 @@ msgstr "Väčšina mailových serverov vyžaduje platnú e-mailovú adresu."
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:171
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr "Väčšina mailových serverov vyžaduje vyžaduje, aby sa odosielací server identifikoval korektne použitím platného doménového mena."
+msgstr ""
+"Väčšina mailových serverov vyžaduje, aby sa odosielací server identifikoval "
+"korektne použitím platného doménového mena."
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:157
@@ -10407,7 +10409,7 @@ msgstr "Nenašli sa žiadne zodpovedajúce fakty"
 #: resources/views/modules/gedcom_news/list.phtml:18
 #: resources/views/modules/user_blog/list.phtml:18
 msgid "No news articles have been submitted."
-msgstr "Neboli pridané žiadne žiadne novinky."
+msgstr "Neboli pridané žiadne novinky."
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:47
 msgid "No predefined text"
@@ -12354,7 +12356,7 @@ msgstr "Latinkou"
 
 #: app/Factories/ElementFactory.php:1227
 msgid "Romanized name"
-msgstr "Romanizované meno"
+msgstr "Meno latinkou"
 
 #: app/Factories/ElementFactory.php:971 app/Factories/ElementFactory.php:1102
 #: app/GedcomTag.php:876
@@ -12367,7 +12369,7 @@ msgstr "Titul latinkou"
 
 #: app/Factories/ElementFactory.php:1234
 msgid "Romanized type"
-msgstr "Romanizovaný typ"
+msgstr "Typ latinkou"
 
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/individuals-table.phtml:221
@@ -15481,7 +15483,8 @@ msgstr "Táto webová stránka používa služby tretích strán, aby sa poučil
 #: resources/views/admin/trees-import.phtml:27
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Zmaže všetky genealogické údaje z „%s“ a nahradí ich ich údajmi z GEDCOM-súboru."
+msgstr ""
+"Zmaže všetky genealogické údaje z „%s“ a nahradí ich údajmi z GEDCOM-súboru."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/AbstractCalendarDate.php:291
