@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-10-07 12:22+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2025-06-27 16:28+0000\n"
+"Last-Translator: ro-la <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
 "Language: sk\n"
@@ -10084,7 +10084,7 @@ msgstr "Nebol poskytnuty žiadny súbor médií."
 
 #: app/Module/FamilyTreeNewsModule.php:109
 msgid "No news articles have been submitted."
-msgstr "Neboli pridané žiadne žiadne novinky."
+msgstr "Neboli pridané žiadne novinky."
 
 #: app/Module/GoogleMapsModule.php:3269 app/Module/GoogleMapsModule.php:3972
 msgid "No places found"
@@ -15110,8 +15110,7 @@ msgstr ""
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr ""
-"Zmaže všetky genealogické údaje z „%s“ a nahradí ich ich údajmi z GEDCOM-"
-"súboru."
+"Zmaže všetky genealogické údaje z „%s“ a nahradí ich údajmi z GEDCOM-súboru."
 
 #: admin_trees_places.php:98
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
