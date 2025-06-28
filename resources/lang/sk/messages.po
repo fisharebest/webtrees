@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-06-26 17:58+0000\n"
+"PO-Revision-Date: 2025-06-28 15:53+0000\n"
 "Last-Translator: ro-la <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sk/>\n"
@@ -12198,7 +12198,7 @@ msgstr "Obmedziť na najbližšiu rodinu"
 #: app/Http/RequestHandlers/HelpText.php:243
 #: resources/views/modals/restriction-fields.phtml:11
 msgid "Restriction"
-msgstr "Zákaz"
+msgstr "Obmedzenie prístupu"
 
 #: resources/views/help/restriction.phtml:10
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
