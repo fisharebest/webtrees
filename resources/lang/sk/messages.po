@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-06-27 18:28+0000\n"
+"PO-Revision-Date: 2025-06-29 17:28+0000\n"
 "Last-Translator: ro-la <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sk/>\n"
@@ -869,7 +869,7 @@ msgstr "Zoznam stránok, ktoré boli zobrazované najčastejšie."
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:53
 msgid "A list of users and visitors who are currently online."
-msgstr "Zoznam aktuálne pripojených užívateľov a návštevníkov."
+msgstr "Zoznam aktuálne prihlásených užívateľov a návštevníkov."
 
 #: resources/views/help/media-object.phtml:8
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
@@ -12310,7 +12310,7 @@ msgstr "Obmedziť na najbližšiu rodinu"
 #: resources/views/cards/add-restriction.phtml:16
 #: resources/views/media-page.phtml:196
 msgid "Restriction"
-msgstr "Zákaz"
+msgstr "Obmedzenie prístupu"
 
 #: resources/views/help/restriction.phtml:8
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
@@ -16666,7 +16666,7 @@ msgstr "Kto môže nahrať nové multimediálne súbory"
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:42
 msgid "Who is online"
-msgstr "Kto je pripojený"
+msgstr "Kto je prihlásený"
 
 #: resources/views/admin/data-fix-page.phtml:82
 msgid "Why does this list include records that do not need to be updated?"
