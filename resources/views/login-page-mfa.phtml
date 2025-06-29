@@ -1,0 +1,53 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\Http\RequestHandlers\LoginAction;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var string    $error
+ * @var Tree|null $tree
+ * @var string    $url
+ * @var string    $username
+ * @var string    $warning
+ * @var string    $welcome
+ */
+?>
+
+<h2 class="wt-page-title">
+    <?= I18N::translate('') ?>
+</h2>
+
+<p>
+    <?= nl2br($welcome, false) ?>
+</p>
+
+<form method="post" action="<?= e(route(LoginAction::class, ['tree' => $tree?->name()])) ?>" class="wt-page-options wt-page-options-login">
+    <input type="hidden" name="url" value="<?= e($url) ?>">
+    <input type="hidden" id="loginstage" name="loginstage" value="2">
+    <input type="hidden" id="mfastatus" name="mfastatus" value="1">
+    <input class="form-control" type="hidden" id="username" name="username" required="required" value="<?= e($username) ?>" autocomplete="username">
+
+      <div class="row mb-3">    
+        <label class="col-sm-3 col-form-label wt-page-options-label" for="codemfa">
+            <?= I18N::translate('Google authenticator code') ?>
+        </label>
+        <div class="col-sm-9 wt-page-options-value">        
+            <input class="form-control" id="codemfa" name="codemfa" type="text" value="">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-form-label wt-page-options-label">
+        </div>
+        <div class="col-sm-9 wt-page-options-value">
+            <button class="btn btn-primary" type="submit">
+                <?= /* I18N: A button label. */
+                I18N::translate('Verify') ?>
+            </button>
+        </div>
+    </div>
+
+    <?= csrf_field() ?>
+</form>
