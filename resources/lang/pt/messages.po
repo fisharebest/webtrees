@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-05-17 20:32+0000\n"
+"PO-Revision-Date: 2025-07-04 23:28+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/pt/>\n"
@@ -1827,7 +1827,7 @@ msgstr "Argélia"
 #. I18N: gedcom tag ALIA
 #: app/Factories/ElementFactory.php:1124 app/GedcomTag.php:455
 msgid "Alias"
-msgstr "Apelido"
+msgstr "Nome alternativo"
 
 #: resources/views/lists/individuals-table.phtml:191
 msgid "Alive"
@@ -7812,7 +7812,7 @@ msgstr ""
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
 msgstr ""
-"Se uma pessoa era conhecida por uma alcunha que não faz parte do seu nome "
+"Se uma pessoa era conhecida por um apelido que não faz parte do seu nome "
 "formal, esta deve ser colocada entre aspas. Por exemplo, <%s>John "
 "&quot;Nobby&quot; /Clark/<%s>."
 
@@ -8052,7 +8052,7 @@ msgstr ""
 
 #: resources/views/admin/trees-unconnected.phtml:29
 msgid "Include aliases"
-msgstr "Incluir aliases"
+msgstr "Incluir nomes alternativos"
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include associates"
