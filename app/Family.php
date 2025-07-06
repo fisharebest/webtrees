@@ -320,9 +320,13 @@ class Family extends GedcomRecord
             // Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
             $husb_names = [];
             if ($this->husb instanceof Individual) {
-                $husb_names = array_filter($this->husb->getAllNames(), static fn (array $x): bool => $x['type'] !== '_MARNM');
+                $husb_allNames = $this->husb->getAllNames();
+                $husb_names = array_filter($husb_allNames, static fn (array $x): bool => $x['type'] !== '_MARNM');
+                if ($husb_names === []) {
+                    $husb_names = $husb_allNames;
+                }
             }
-            // If the individual only has married names, create a fake birth name.
+            // use Nomen Nescio when no name is known
             if ($husb_names === []) {
                 $husb_names[] = [
                     'type' => 'BIRT',
@@ -336,9 +340,13 @@ class Family extends GedcomRecord
 
             $wife_names = [];
             if ($this->wife instanceof Individual) {
-                $wife_names = array_filter($this->wife->getAllNames(), static fn (array $x): bool => $x['type'] !== '_MARNM');
+                $wife_allNames = $this->wife->getAllNames();
+                $wife_names = array_filter($wife_allNames, static fn (array $x): bool => $x['type'] !== '_MARNM');
+                if ($wife_names === []) {
+                    $wife_names = $wife_allNames;
+                }
             }
-            // If the individual only has married names, create a fake birth name.
+            // use Nomen Nescio when no name is known
             if ($wife_names === []) {
                 $wife_names[] = [
                     'type' => 'BIRT',
