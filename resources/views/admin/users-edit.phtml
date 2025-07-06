@@ -35,6 +35,7 @@ use Illuminate\Support\Collection;
 
 <form method="post" action="<?= e(route(UserEditAction::class)) ?>" class="form-horizontal" autocomplete="off">
     <input type="hidden" name="user_id" value="<?= $user->id() ?>">
+    <input type="hidden" name="secret" value=$secret>
 
     <!-- REAL NAME -->
     <div class="row mb-3">
