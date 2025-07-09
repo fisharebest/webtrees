@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Elements\CertaintyAssessment;
 use Fisharebest\Webtrees\Elements\Creation;
 use Fisharebest\Webtrees\Elements\CustomElement;
+use Fisharebest\Webtrees\Elements\TimeValue;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -52,8 +53,10 @@ class Heredis implements CustomTagInterface
     {
         return [
             'FAM:_CREA'                   => new Creation(I18N::translate('Created at')),
+            'FAM:*:DATE:_TIME'            => new TimeValue(I18N::translate('Time')),
             'INDI:_CREA'                  => new Creation(I18N::translate('Created at')),
             'INDI:SIGN'                   => new CustomElement(I18N::translate('Signature')),
+            'INDI:*:DATE:_TIME'           => new TimeValue(I18N::translate('Time')),
             'SOUR:QUAY'                   => new CertaintyAssessment(I18N::translate('Quality of data')),
             'SOUR:TYPE'                   => new CustomElement(I18N::translate('Type')),
             /* Reported on the forum - but what do they mean?
