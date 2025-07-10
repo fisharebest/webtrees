@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
 class Coordinates extends EmptyElement
 {
     protected const array SUBTAGS = [
-        'LONG' => '1:1',
         'LATI' => '1:1',
+        'LONG' => '1:1',
     ];
 }
