@@ -36,6 +36,7 @@ use Fisharebest\Webtrees\Elements\HeredisFNA;
 use Fisharebest\Webtrees\Elements\HeredisQualEvid;
 use Fisharebest\Webtrees\Elements\HeredisQualInfo;
 use Fisharebest\Webtrees\Elements\HeredisQualSour;
+use Fisharebest\Webtrees\Elements\HeredisRechElement;
 use Fisharebest\Webtrees\Elements\HeredisUST;
 use Fisharebest\Webtrees\Elements\NoteStructure;
 use Fisharebest\Webtrees\Elements\PafUid;
@@ -117,8 +118,8 @@ class Heredis implements CustomTagInterface
             'INDI:*:SOUR:_QUAL:_INFO'     => new HeredisQualInfo(I18N::translate('Qualité de l’information')),            // Quality of the information
             'INDI:*:SOUR:_QUAL:_EVID'     => new HeredisQualEvid(I18N::translate('Qualité de la preuve')),                // Quality of proof
             'INDI:*:_ETI'                 => new CustomElement(I18N::translate('Etiquettes personnalisées')),             // Personalized flags
-            'INDI:*:_FNA'                 => new HeredisFNA(I18N::translate('Etat des recherches d’un événement')),       // Research Status of an event
-            'INDI:*:_RECH'                => new EmptyElement(I18N::translate('Infos de recherche de l’événement')),      // Research Data of an event
+            'INDI:*:_FNA'                 => new HeredisFNA(I18N::translate('Etat des recherches')),                      // Research Status of an event
+            'INDI:*:_RECH'                => new HeredisRechElement(I18N::translate('Infos de recherche')),               // Research Data of an event
             'INDI:*:_RECH:_PROJ'          => new CustomElement(I18N::translate('Projet de recherche')),                   // Research Data Project
             'INDI:*:_RECH:TYPE'           => new CustomElement(I18N::translate('Document de recherche')),                 // Search Document type of Search Data tab
             'INDI:*:_RECH:PLAC'           => new PlaceName(I18N::translate('Lieu de recherche')),                         // Search Place of Search Data tab
