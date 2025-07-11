@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Heredis custom tag FAM:_UST - Union status
  */
-class HeredisUST extends AbstractEventElement
+class HeredisUST extends AbstractElement
 {
 
     /**

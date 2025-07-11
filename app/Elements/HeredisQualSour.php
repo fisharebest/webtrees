@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Heredis custom tag *:*:SOUR:_QUAL:_SOUR - quality of the source
  */
-class HeredisQualSour extends AbstractEventElement
+class HeredisQualSour extends AbstractElement
 {
 
     /**

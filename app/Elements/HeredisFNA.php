@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Heredis custom tag INDI:*:_FNA - Research status
  */
-class HeredisFNA extends AbstractEventElement
+class HeredisFNA extends AbstractElement
 {
 
     /**

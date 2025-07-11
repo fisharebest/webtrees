@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Heredis custom tag INDI:_FIL - Child status
  */
-class HeredisFIL extends AbstractEventElement
+class HeredisFIL extends AbstractElement
 {
 
     /**

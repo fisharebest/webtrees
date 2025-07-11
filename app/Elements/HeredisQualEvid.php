@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Heredis custom tag *:*:SOUR:_QUAL:_EVID - quality of the evidence
  */
-class HeredisQualEvid extends AbstractEventElement
+class HeredisQualEvid extends AbstractElement
 {
 
     /**
