@@ -19,13 +19,25 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\I18N;
+
 /**
- * An empty element with no data - only child elements.
+ * Heredis custom tag *:*:SOUR:_QUAL:_SOUR - quality of the source
  */
-class Coordinates extends EmptyElement
+class HeredisQualSour extends AbstractElement
 {
-    protected const array SUBTAGS = [
-        'LATI' => '1:1',
-        'LONG' => '1:1',
-    ];
+
+    /**
+     * A list of controlled values for this element
+     *
+     * @return array<int|string,string>
+     */
+    public function values(): array
+    {
+        return [
+            'O'  => I18N::translate('Original'),
+            'D'  => I18N::translate('Derived'),
+        ];
+    }
+
 }

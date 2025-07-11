@@ -19,13 +19,27 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\I18N;
+
 /**
- * An empty element with no data - only child elements.
+ * Heredis custom tag INDI:*:_FNA - Research status
  */
-class Coordinates extends EmptyElement
+class HeredisFNA extends AbstractElement
 {
-    protected const array SUBTAGS = [
-        'LATI' => '1:1',
-        'LONG' => '1:1',
-    ];
+
+    /**
+     * A list of controlled values for this element
+     *
+     * @return array<int|string,string>
+     */
+    public function values(): array
+    {
+        return [
+            'NO'          => I18N::translate('Ne pas rechercher'),
+            'YES'         => I18N::translate('Faire des recherches'),
+            'NOT_FOUND'   => I18N::translate('Introuvable'),
+            'IN_PROGRESS' => I18N::translate('Recherches en cours'),
+        ];
+    }
+
 }
