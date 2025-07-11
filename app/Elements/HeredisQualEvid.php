@@ -35,8 +35,8 @@ class HeredisQualEvid extends AbstractElement
     public function values(): array
     {
         return [
-            'D'  => I18N::translate('Directe'),
-            'I'  => I18N::translate('Indirecte'),
+            'D'  => I18N::translate('Direct'),
+            'I'  => I18N::translate('Indirect'),
             'N'  => I18N::translate('Negative'),
         ];
     }

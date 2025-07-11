@@ -78,25 +78,25 @@ class Heredis implements CustomTagInterface
     public function tags(): array
     {
         return [
-            'HEAD:_GUID'                  => new PafUid(I18N::translate('Identifiant du fichier')),
+            'HEAD:_GUID'                  => new PafUid(I18N::translate('File identifier')),
             'FAM:_CREA'                   => new Creation(I18N::translate('Created at')),
-            'FAM:_UST'                    => new HeredisUST(I18N::translate('Statut d’union')),                           // Union type
+            'FAM:_UST'                    => new HeredisUST(I18N::translate('Union type')),
             'FAM:*:DATE:_TIME'            => new TimeValue(I18N::translate('Time')),
-            'FAM:*:PLAC:_SUBMAP'          => new Coordinates(I18N::translate('Géolocalisation des subdivisions')),        // Geolocation of subdivisions
-            'FAM:*:PLAC:_SUBMAP:LATI'     => new PlaceLatitude(I18N::translate('Latitude') . ' des subdivisions'),
-            'FAM:*:PLAC:_SUBMAP:LONG'     => new PlaceLongtitude(I18N::translate('Longitude') . ' des subdivisions'),
-            'FAM:*:SOUR:_QUAL'            => new EmptyElement(I18N::translate('Qualité des citations complètes')),        // Quality of completed citations
-            'FAM:*:SOUR:_QUAL:_SOUR'      => new HeredisQualSour(I18N::translate('Qualité de la source')),                // Quality of the source
-            'FAM:*:SOUR:_QUAL:_INFO'      => new HeredisQualInfo(I18N::translate('Qualité de l’information')),            // Quality of the information
-            'FAM:*:SOUR:_QUAL:_EVID'      => new HeredisQualEvid(I18N::translate('Qualité de la preuve')),                // Quality of proof
-            'FAM:*:_RECH'                 => new EmptyElement(I18N::translate('Infos de recherche de l’événement')),      // Research Data of an event
-            'FAM:*:_RECH:_PROJ'           => new CustomElement(I18N::translate('Projet de recherche')),                   // Research Data Project
-            'FAM:*:_RECH:TYPE'            => new CustomElement(I18N::translate('Document de recherche')),                 // Search Document type of Search Data tab
-            'FAM:*:_RECH:PLAC'            => new PlaceName(I18N::translate('Lieu de recherche')),                         // Search Place of Search Data tab
-            'FAM:*:_RECH:DATE'            => new DateValueExact(I18N::translate('Date de recherche')),                    // Search date of Search Data tab
-            'FAM:*:_RECH:REFN'            => new UserReferenceNumber(I18N::translate('Référence de la recherche')),       // Search data call number
-            'FAM:*:_RECH:WWW'             => new AddressWebPage(I18N::translate('Site web de la recherche')),             // Search data website field
-            'FAM:*:_RECH:NOTE'            => new NoteStructure(I18N::translate('Note de recherche')),                     // Research note
+            'FAM:*:PLAC:_SUBMAP'          => new Coordinates(I18N::translate('Geolocation of subdivisions')),
+            'FAM:*:PLAC:_SUBMAP:LATI'     => new PlaceLatitude(I18N::translate('Latitude of subdivision')),
+            'FAM:*:PLAC:_SUBMAP:LONG'     => new PlaceLongtitude(I18N::translate('Longitude of subdivision')),
+            'FAM:*:SOUR:_QUAL'            => new EmptyElement(I18N::translate('Quality of completed citations')),
+            'FAM:*:SOUR:_QUAL:_SOUR'      => new HeredisQualSour(I18N::translate('Quality of the source')),
+            'FAM:*:SOUR:_QUAL:_INFO'      => new HeredisQualInfo(I18N::translate('Quality of the information')),
+            'FAM:*:SOUR:_QUAL:_EVID'      => new HeredisQualEvid(I18N::translate('Quality of proof')),
+            'FAM:*:_RECH'                 => new EmptyElement(I18N::translate('Research data')),
+            'FAM:*:_RECH:_PROJ'           => new CustomElement(I18N::translate('Research data project')),
+            'FAM:*:_RECH:TYPE'            => new CustomElement(I18N::translate('Research document')),
+            'FAM:*:_RECH:PLAC'            => new PlaceName(I18N::translate('Search place')),
+            'FAM:*:_RECH:DATE'            => new DateValueExact(I18N::translate('Search date')),
+            'FAM:*:_RECH:REFN'            => new UserReferenceNumber(I18N::translate('Call number')),
+            'FAM:*:_RECH:WWW'             => new AddressWebPage(I18N::translate('URL')),
+            'FAM:*:_RECH:NOTE'            => new NoteStructure(I18N::translate('Note')),
             'INDI:_CLS'                   => new CustomBooleanFact(I18N::translate('Individu sans postérité')),           // Person without descendants
             'INDI:_CREA'                  => new Creation(I18N::translate('Created at')),
             'INDI:_FIL'                   => new HeredisFIL(I18N::translate('Filiation de l’individu')),                  // Child Status
