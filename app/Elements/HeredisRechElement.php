@@ -19,11 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Tree;
-
 /**
- * Heredis custom tag INDI:_FIL - Child status
+ * Heredis custom tag *:*:_RECH - Research data of an event.
  */
 class HeredisRechElement extends EmptyElement
 {
@@ -39,33 +36,8 @@ class HeredisRechElement extends EmptyElement
     ];
 
     /**
-     * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
-     */
-    public function canonical(string $value): string
-    {
-        return 'N';
-    }
-
-    /**
-     * An edit control for this data.
-     *
-     * @param string $id
-     * @param string $name
-     * @param string $value
-     *
-     * @return string
-     */
-    public function editTextArea(string $id, string $name, string $value): string
-    {
-        return '<span>&nbsp;</span>';
-    }
-
-    /**
      * Should we collapse the children of this element when editing?
+     * FIXME: label is not shown, it does not have a control to collapse
      *
      * @return bool
      */

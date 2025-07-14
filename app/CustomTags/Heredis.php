@@ -44,6 +44,7 @@ use Fisharebest\Webtrees\Elements\PlaceLatitude;
 use Fisharebest\Webtrees\Elements\PlaceLongtitude;
 use Fisharebest\Webtrees\Elements\PlaceName;
 use Fisharebest\Webtrees\Elements\RoleInEvent;
+use Fisharebest\Webtrees\Elements\SourceCallNumber;
 use Fisharebest\Webtrees\Elements\TimeValue;
 use Fisharebest\Webtrees\Elements\UserReferenceNumber;
 use Fisharebest\Webtrees\I18N;
@@ -52,6 +53,9 @@ use Fisharebest\Webtrees\I18N;
  * GEDCOM files created by Heredis
  *
  * @see https://www.heredis.com
+ *
+ * Reference: https://help.heredis.com/les-tags-gedcom/ and https://help.heredis.com/en/gedcom-tags/
+ * Example GEDCOM fragment with lots of custom tags: https://www.geneanet.org/forum/viewtopic.php?p=2441735
  */
 class Heredis implements CustomTagInterface
 {
@@ -68,72 +72,68 @@ class Heredis implements CustomTagInterface
     /**
      * Tags created by this application.
      *
-     * Heredis is predominantly used in France, so keeping unique tag labels in French is a service to its users.
-     *
-     * Reference: https://help.heredis.com/les-tags-gedcom/ and https://help.heredis.com/en/gedcom-tags/
-     * Example GEDCOM fragment with lots of custom tags: https://www.geneanet.org/forum/viewtopic.php?p=2441735
-     * *
      * @return array<string,ElementInterface>
      */
     public function tags(): array
     {
         return [
-            'HEAD:_GUID'                  => new PafUid(I18N::translate('Identifiant du fichier')),
+            'HEAD:_GUID'                  => new PafUid(I18N::translate('File identifier')),
             'FAM:_CREA'                   => new Creation(I18N::translate('Created at')),
-            'FAM:_UST'                    => new HeredisUST(I18N::translate('Statut d’union')),                           // Union type
+            'FAM:_UST'                    => new HeredisUST(I18N::translate('Union type')),
             'FAM:*:DATE:_TIME'            => new TimeValue(I18N::translate('Time')),
-            'FAM:*:PLAC:_SUBMAP'          => new Coordinates(I18N::translate('Géolocalisation des subdivisions')),        // Geolocation of subdivisions
-            'FAM:*:PLAC:_SUBMAP:LATI'     => new PlaceLatitude(I18N::translate('Latitude') . ' des subdivisions'),
-            'FAM:*:PLAC:_SUBMAP:LONG'     => new PlaceLongtitude(I18N::translate('Longitude') . ' des subdivisions'),
-            'FAM:*:SOUR:_QUAL'            => new EmptyElement(I18N::translate('Qualité des citations complètes')),        // Quality of completed citations
-            'FAM:*:SOUR:_QUAL:_SOUR'      => new HeredisQualSour(I18N::translate('Qualité de la source')),                // Quality of the source
-            'FAM:*:SOUR:_QUAL:_INFO'      => new HeredisQualInfo(I18N::translate('Qualité de l’information')),            // Quality of the information
-            'FAM:*:SOUR:_QUAL:_EVID'      => new HeredisQualEvid(I18N::translate('Qualité de la preuve')),                // Quality of proof
-            'FAM:*:_RECH'                 => new EmptyElement(I18N::translate('Infos de recherche de l’événement')),      // Research Data of an event
-            'FAM:*:_RECH:_PROJ'           => new CustomElement(I18N::translate('Projet de recherche')),                   // Research Data Project
-            'FAM:*:_RECH:TYPE'            => new CustomElement(I18N::translate('Document de recherche')),                 // Search Document type of Search Data tab
-            'FAM:*:_RECH:PLAC'            => new PlaceName(I18N::translate('Lieu de recherche')),                         // Search Place of Search Data tab
-            'FAM:*:_RECH:DATE'            => new DateValueExact(I18N::translate('Date de recherche')),                    // Search date of Search Data tab
-            'FAM:*:_RECH:REFN'            => new UserReferenceNumber(I18N::translate('Référence de la recherche')),       // Search data call number
-            'FAM:*:_RECH:WWW'             => new AddressWebPage(I18N::translate('Site web de la recherche')),             // Search data website field
-            'FAM:*:_RECH:NOTE'            => new NoteStructure(I18N::translate('Note de recherche')),                     // Research note
-            'INDI:_CLS'                   => new CustomBooleanFact(I18N::translate('Individu sans postérité')),           // Person without descendants
+            'FAM:*:PLAC:_SUBMAP'          => new Coordinates(I18N::translate('Geolocation of subdivisions')),
+            'FAM:*:PLAC:_SUBMAP:LATI'     => new PlaceLatitude(I18N::translate('Latitude of subdivision')),
+            'FAM:*:PLAC:_SUBMAP:LONG'     => new PlaceLongtitude(I18N::translate('Longitude of subdivision')),
+            'FAM:*:SOUR:_QUAL'            => new EmptyElement(I18N::translate('Quality of completed citation')),
+            'FAM:*:SOUR:_QUAL:_SOUR'      => new HeredisQualSour(I18N::translate('Quality of the source')),
+            'FAM:*:SOUR:_QUAL:_INFO'      => new HeredisQualInfo(I18N::translate('Quality of the information')),
+            'FAM:*:SOUR:_QUAL:_EVID'      => new HeredisQualEvid(I18N::translate('Quality of the evidence')),
+            'FAM:*:_RECH'                 => new EmptyElement(I18N::translate('Research data')),
+            'FAM:*:_RECH:_PROJ'           => new CustomElement(I18N::translate('Research project')),
+            'FAM:*:_RECH:TYPE'            => new CustomElement(I18N::translate('Document')),
+            'FAM:*:_RECH:PLAC'            => new PlaceName(I18N::translate('Search place')),
+            'FAM:*:_RECH:DATE'            => new DateValueExact(I18N::translate('Search date')),
+            'FAM:*:_RECH:REFN'            => new UserReferenceNumber(I18N::translate('Call number')),
+            'FAM:*:_RECH:WWW'             => new AddressWebPage(I18N::translate('URL')),
+            'FAM:*:_RECH:NOTE'            => new NoteStructure(I18N::translate('Note')),
+            'INDI:_CLS'                   => new CustomBooleanFact(I18N::translate('Childless')),
             'INDI:_CREA'                  => new Creation(I18N::translate('Created at')),
-            'INDI:_FIL'                   => new HeredisFIL(I18N::translate('Filiation de l’individu')),                  // Child Status
-            'INDI:_FNF'                   => new CustomBooleanFact(I18N::translate('Père introuvable')),                  // Father not found, untraceable
-            'INDI:_MNF'                   => new CustomBooleanFact(I18N::translate('Mère introuvable')),                  // Mother not found, untraceable
-            'INDI:_SEC'                   => new CustomBooleanFact(I18N::translate('Individu secondaire')),               // Secondary person
-            'INDI:_ULS'                   => new CustomBooleanFact(I18N::translate('Individu sans alliance')),            // Unmarried person
+            'INDI:_FIL'                   => new HeredisFIL(I18N::translate('Child status')),
+            'INDI:_ETI'                   => new CustomElement(I18N::translate('Personalized flag')),
+            'INDI:_FNF'                   => new CustomBooleanFact(I18N::translate('Untraceable father')),
+            'INDI:_MNF'                   => new CustomBooleanFact(I18N::translate('Untraceable mother')),
+            'INDI:_SEC'                   => new CustomBooleanFact(I18N::translate('Secondary person')),
+            'INDI:_ULS'                   => new CustomBooleanFact(I18N::translate('Unmarried')),
             'INDI:SIGN'                   => new CustomBooleanFact(I18N::translate('Signature')),
             'INDI:ASSO:_AGE'              => new AgeAtEvent(I18N::translate('Age')),
             'INDI:ASSO:_ROLE'             => new RoleInEvent(I18N::translate('Role')),
             'INDI:ASSO:_TITL'             => new CustomElement(I18N::translate('Title')),
             'INDI:ASSO:_TYPE'             => new CustomElement(I18N::translate('Type')),
             'INDI:*:DATE:_TIME'           => new TimeValue(I18N::translate('Time')),
-            'INDI:*:PLAC:_SUBMAP'         => new Coordinates(I18N::translate('Géolocalisation des subdivisions')),        // Geolocation of subdivisions
-            'INDI:*:PLAC:_SUBMAP:LATI'    => new PlaceLatitude(I18N::translate('Latitude') . ' des subdivisions'),
-            'INDI:*:PLAC:_SUBMAP:LONG'    => new PlaceLongtitude(I18N::translate('Longitude') . ' des subdivisions'),
-            'INDI:*:SOUR:_QUAL'           => new EmptyElement(I18N::translate('Qualité des citations complètes')),        // Quality of completed citations
-            'INDI:*:SOUR:_QUAL:_SOUR'     => new HeredisQualSour(I18N::translate('Qualité de la source')),                // Quality of the source
-            'INDI:*:SOUR:_QUAL:_INFO'     => new HeredisQualInfo(I18N::translate('Qualité de l’information')),            // Quality of the information
-            'INDI:*:SOUR:_QUAL:_EVID'     => new HeredisQualEvid(I18N::translate('Qualité de la preuve')),                // Quality of proof
-            'INDI:*:_ETI'                 => new CustomElement(I18N::translate('Etiquettes personnalisées')),             // Personalized flags
-            'INDI:*:_FNA'                 => new HeredisFNA(I18N::translate('Etat des recherches')),                      // Research Status of an event
-            'INDI:*:_RECH'                => new HeredisRechElement(I18N::translate('Infos de recherche')),               // Research Data of an event
-            'INDI:*:_RECH:_PROJ'          => new CustomElement(I18N::translate('Projet de recherche')),                   // Research Data Project
-            'INDI:*:_RECH:TYPE'           => new CustomElement(I18N::translate('Document de recherche')),                 // Search Document type of Search Data tab
-            'INDI:*:_RECH:PLAC'           => new PlaceName(I18N::translate('Lieu de recherche')),                         // Search Place of Search Data tab
-            'INDI:*:_RECH:DATE'           => new DateValueExact(I18N::translate('Date de recherche')),                    // Search date of Search Data tab
-            'INDI:*:_RECH:REFN'           => new UserReferenceNumber(I18N::translate('Référence de la recherche')),       // Search data call number
-            'INDI:*:_RECH:WWW'            => new AddressWebPage(I18N::translate('Site web de la recherche')),             // Search data website field
-            'INDI:*:_RECH:NOTE'           => new NoteStructure(I18N::translate('Note de recherche')),                     // Research note
+            'INDI:*:PLAC:_SUBMAP'         => new Coordinates(I18N::translate('Geolocation of subdivisions')),
+            'INDI:*:PLAC:_SUBMAP:LATI'    => new PlaceLatitude(I18N::translate('Latitude of subdivision')),
+            'INDI:*:PLAC:_SUBMAP:LONG'    => new PlaceLongtitude(I18N::translate('Longitude of subdivision')),
+            'INDI:*:SOUR:_QUAL'           => new EmptyElement(I18N::translate('Quality of completed citation')),
+            'INDI:*:SOUR:_QUAL:_SOUR'     => new HeredisQualSour(I18N::translate('Quality of the source')),
+            'INDI:*:SOUR:_QUAL:_INFO'     => new HeredisQualInfo(I18N::translate('Quality of the information')),
+            'INDI:*:SOUR:_QUAL:_EVID'     => new HeredisQualEvid(I18N::translate('Quality of proof')),
+            'INDI:*:_ETI'                 => new CustomElement(I18N::translate('Personalized flag')),
+            'INDI:*:_FNA'                 => new HeredisFNA(I18N::translate('Research status')),
+            'INDI:*:_RECH'                => new HeredisRechElement(I18N::translate('Research data')),
+            'INDI:*:_RECH:_PROJ'          => new CustomElement(I18N::translate('Research project')),
+            'INDI:*:_RECH:TYPE'           => new CustomElement(I18N::translate('Document')),
+            'INDI:*:_RECH:PLAC'           => new PlaceName(I18N::translate('Search place')),
+            'INDI:*:_RECH:DATE'           => new DateValueExact(I18N::translate('Search date')),
+            'INDI:*:_RECH:REFN'           => new SourceCallNumber(I18N::translate('Call number')),
+            'INDI:*:_RECH:WWW'            => new AddressWebPage(I18N::translate('URL')),
+            'INDI:*:_RECH:NOTE'           => new NoteStructure(I18N::translate('Note')),
             'NOTE:_CREA'                  => new Creation(I18N::translate('Created at')),
             'OBJE:_CREA'                  => new Creation(I18N::translate('Created at')),
             'REPO:_CREA'                  => new Creation(I18N::translate('Created at')),
             'SOUR:EMAIL'                  => new AddressEmail(I18N::translate('Email address')),
             'SOUR:QUAY'                   => new CertaintyAssessment(I18N::translate('Quality of data')),
             'SOUR:TYPE'                   => new CustomElement(I18N::translate('Type')),
-            'SOUR:_ARCH'                  => new CustomElement(I18N::translate('Classement')),                            // Archive
+            'SOUR:_ARCH'                  => new CustomElement(I18N::translate('Archive')),
             'SOUR:_CREA'                  => new Creation(I18N::translate('Created at')),
         ];
     }

@@ -35,15 +35,15 @@ class HeredisFIL extends AbstractElement
     public function values(): array
     {
         return [
-            'LEGITIMATE_CHILD'     => I18N::translate('Légitime'),
-            'NATURAL_CHILD'        => I18N::translate('Naturel'),
-            'RECOGNIZED_CHILD'     => I18N::translate('Reconnu'),
-            'LEGITIMIZED_CHILD'    => I18N::translate('Légitimé'),
-            'CHILD_FOUND'          => I18N::translate('Trouvé'),
-            'ADOPTED_CHILD'        => I18N::translate('Adopté'),
-            'ADULTEROUS_CHILD'     => I18N::translate('Adultérin'),
-            'STILLBORN_CHILD'      => I18N::translate('Mort-Né'),
-            'RELATIONSHIP_UNKNOW'  => I18N::translate('Non Connue'),
+            'LEGITIMATE_CHILD'     => I18N::translate('Legitimate'),
+            'NATURAL_CHILD'        => I18N::translate('Natural'),
+            'RECOGNIZED_CHILD'     => I18N::translate('Legally recognised'),
+            'LEGITIMIZED_CHILD'    => I18N::translate('Legitimated'),
+            'CHILD_FOUND'          => I18N::translate('Foundling'),
+            'ADOPTED_CHILD'        => I18N::translate('Adopted'),
+            'ADULTEROUS_CHILD'     => I18N::translate('Illegitimate'),
+            'STILLBORN_CHILD'      => I18N::translate('Stillborn'),
+            'RELATIONSHIP_UNKNOW'  => I18N::translate('Unknown'),
         ];
     }
 

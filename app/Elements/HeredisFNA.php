@@ -35,10 +35,10 @@ class HeredisFNA extends AbstractElement
     public function values(): array
     {
         return [
-            'NO'          => I18N::translate('Ne pas rechercher'),
-            'YES'         => I18N::translate('Faire des recherches'),
-            'NOT_FOUND'   => I18N::translate('Introuvable'),
-            'IN_PROGRESS' => I18N::translate('Recherches en cours'),
+            'NO'          => I18N::translate('No search record'),
+            'YES'         => I18N::translate('Search record'),
+            'NOT_FOUND'   => I18N::translate('Untraceable record'),
+            'IN_PROGRESS' => I18N::translate('Search in progress'),
         ];
     }
 

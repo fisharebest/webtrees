@@ -35,8 +35,8 @@ class HeredisQualSour extends AbstractElement
     public function values(): array
     {
         return [
-            'O'  => I18N::translate('Originale'),
-            'D'  => I18N::translate('Dérivé'),
+            'O'  => I18N::translate('Original'),
+            'D'  => I18N::translate('Derived'),
         ];
     }
 

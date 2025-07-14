@@ -35,8 +35,8 @@ class HeredisQualInfo extends AbstractElement
     public function values(): array
     {
         return [
-            'P'  => I18N::translate('Primaire'),
-            'S'  => I18N::translate('Secondaire'),
+            'P'  => I18N::translate('Primary'),
+            'S'  => I18N::translate('Secondary'),
         ];
     }
 
