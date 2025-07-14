@@ -55,8 +55,8 @@ class CustomBooleanFact extends AbstractEventElement
     public function values(): array
     {
         return [
-            'Y' => I18N::translate('Yes'),
-            'N' => I18N::translate('No'),
+            'Y' => I18N::translate('yes'),
+            'N' => I18N::translate('no'),
         ];
     }
 
