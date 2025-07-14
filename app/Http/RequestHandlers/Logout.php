@@ -29,8 +29,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-use function route;
+use function response;
 
 /**
  * Perform a logout.
@@ -52,6 +51,12 @@ class Logout implements RequestHandlerInterface
             FlashMessages::addMessage(I18N::translate('You have signed out.'));
         }
 
-        return redirect(route(HomePage::class));
+        if ($request->getHeaderLine('X-Requested-With') !== '') {
+            // Ajax request - send empty response
+            return response();
+        } else {
+            // Form submission - redirect to home page
+            return redirect(HomePage::class);
+        }
     }
 }
