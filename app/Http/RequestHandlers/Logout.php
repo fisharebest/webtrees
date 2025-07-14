@@ -51,6 +51,12 @@ class Logout implements RequestHandlerInterface
             FlashMessages::addMessage(I18N::translate('You have signed out.'));
         }
 
-        return response();
+        if ($request->getHeaderLine('X-Requested-With') !== '') {
+            // Ajax request - send empty response
+            return response();
+        } else {
+            // Form submission - redirect to home page
+            return redirect(HomePage::class);
+        }
     }
 }
