@@ -50,6 +50,7 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
         'SUBM',
         '_CLS',
         '_CREA',
+        '_ETI',
         '_FIL',
         '_FSFTID',
         '_FNF',
