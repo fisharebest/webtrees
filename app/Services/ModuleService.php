@@ -84,7 +84,7 @@ use Fisharebest\Webtrees\Module\FrequentlyAskedQuestionsModule;
 use Fisharebest\Webtrees\Module\GeonamesAutocomplete;
 use Fisharebest\Webtrees\Module\GoogleAnalyticsModule;
 use Fisharebest\Webtrees\Module\GoogleMaps;
-use Fisharebest\Webtrees\Module\GoogleWebmasterToolsModule;
+use Fisharebest\Webtrees\Module\GoogleSearchConsole;
 use Fisharebest\Webtrees\Module\HereMaps;
 use Fisharebest\Webtrees\Module\HitCountFooterModule;
 use Fisharebest\Webtrees\Module\HourglassChartModule;
@@ -381,7 +381,7 @@ class ModuleService
         'geonames'                => GeonamesAutocomplete::class,
         'google-analytics'        => GoogleAnalyticsModule::class,
         'google-maps'             => GoogleMaps::class,
-        'google-webmaster-tools'  => GoogleWebmasterToolsModule::class,
+        'google-webmaster-tools'  => GoogleSearchConsole::class,
         'here-maps'               => HereMaps::class,
         'hit-counter'             => HitCountFooterModule::class,
         'hourglass_chart'         => HourglassChartModule::class,

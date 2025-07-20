@@ -22,9 +22,9 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * Class GoogleWebmasterToolsModule - add support for Google webmaster tools.
+ * Class GoogleSearchConsole - add support for Google Search Console (formerly Google Webmaster Tools).
  */
-class GoogleWebmasterToolsModule extends AbstractModule implements ModuleAnalyticsInterface, ModuleConfigInterface, ModuleExternalUrlInterface, ModuleGlobalInterface
+class GoogleSearchConsole extends AbstractModule implements ModuleAnalyticsInterface, ModuleConfigInterface, ModuleExternalUrlInterface, ModuleGlobalInterface
 {
     use ModuleAnalyticsTrait;
     use ModuleConfigTrait;
@@ -33,7 +33,7 @@ class GoogleWebmasterToolsModule extends AbstractModule implements ModuleAnalyti
 
     public function title(): string
     {
-        return I18N::translate('Google™ webmaster tools');
+        return I18N::translate('Google™ Search Console');
     }
 
     public function isEnabledByDefault(): bool
@@ -68,7 +68,7 @@ class GoogleWebmasterToolsModule extends AbstractModule implements ModuleAnalyti
      */
     public function externalUrl(): string
     {
-        return 'https://www.google.com/webmasters';
+        return 'https://search.google.com/search-console';
     }
 
     /**
