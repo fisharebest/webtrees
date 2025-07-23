@@ -17,37 +17,33 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\RequestHandlers;
+namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
-use Fisharebest\Webtrees\Registry;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
 use function response;
-use function route;
 
-class NotFound implements RequestHandlerInterface
+/**
+ * Middleware to deny access to robots.
+ */
+class AuthNotRobot implements MiddlewareInterface
 {
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    /**
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
+     *
+     * @return ResponseInterface
+     */
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        // Robots don't need pretty error pages
         if ($request->getAttribute(BadBotBlocker::ROBOT_ATTRIBUTE_NAME) !== null) {
-            return response('', StatusCodeInterface::STATUS_NOT_FOUND);
+            return response('Not acceptable', StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
         }
 
-        // Need the request to generate a route/error page.
-        Registry::container()->set(ServerRequestInterface::class, $request);
-
-        if ($request->getMethod() !== RequestMethodInterface::METHOD_GET) {
-            throw new HttpNotFoundException();
-        }
-
-        return redirect(url: route(route_name: HomePage::class));
+        return $handler->handle($request);
     }
 }
