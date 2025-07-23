@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Http\Middleware\AuthEditor;
 use Fisharebest\Webtrees\Http\Middleware\AuthLoggedIn;
 use Fisharebest\Webtrees\Http\Middleware\AuthManager;
 use Fisharebest\Webtrees\Http\Middleware\AuthModerator;
+use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountDelete;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountUpdate;
@@ -663,11 +664,7 @@ class WebRoutes
 
             // Visitor routes with a tree.
             $router->attach('', '/tree/{tree}', static function (Map $router) {
-                $router->get(TreePage::class, '');
                 $router->get(AutoCompleteSurname::class, '/autocomplete/surname');
-                $router->get(CalendarPage::class, '/calendar/{view}');
-                $router->post(CalendarAction::class, '/calendar/{view}');
-                $router->get(CalendarEvents::class, '/calendar-events/{view}');
                 $router->get(ContactPage::class, '/contact');
                 $router->post(ContactAction::class, '/contact');
                 $router->get(FamilyPage::class, '/family/{xref}{/slug}')->tokens(['slug' => '.*']);
@@ -707,9 +704,22 @@ class WebRoutes
                 $router->get(TomSelectSubmission::class, '/tom-select-submission');
                 $router->get(TomSelectSubmitter::class, '/tom-select-submitter');
                 $router->get(TomSelectRepository::class, '/tom-select-repository');
+                $router->get(TreePage::class, '');
                 $router->get(TreePageBlock::class, '/tree-page-block');
-                $router->get('example', '/…')
-                    ->isRoutable(false);
+                $router->get('example', '/…')->isRoutable(false);
+            });
+
+            // Visitor routes with a tree (robots not allowed).
+            $router->attach('', '/tree/{tree}', static function (Map $router) {
+                $router->extras([
+                    'middleware' => [
+                        AuthNotRobot::class,
+                    ],
+                ]);
+
+                $router->get(CalendarPage::class, '/calendar/{view}');
+                $router->post(CalendarAction::class, '/calendar/{view}');
+                $router->get(CalendarEvents::class, '/calendar-events/{view}');
             });
 
             // Match module routes, with and without a tree.

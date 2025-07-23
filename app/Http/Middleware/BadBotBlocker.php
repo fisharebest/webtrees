@@ -47,110 +47,134 @@ use function str_ends_with;
  */
 class BadBotBlocker implements MiddlewareInterface
 {
+    public const ROBOT_ATTRIBUTE_NAME = 'is-a-robot';
+
     // Cache whois requests.  Try to avoid all caches expiring at the same time.
     private const WHOIS_TTL_MIN = 28 * 86400;
     private const WHOIS_TTL_MAX = 35 * 86400;
 
-    /**
-     * @see https://github.com/ai-robots-txt/ai.robots.txt for a list of AI crawlers.
-     * We can't load this repository as a dependency as it's not a package.
-     * Instead, the list from version 1.26 is copied here.
-     */
-    public const AI_ROBOTS = [
-         'AI2Bot',
-         'Ai2Bot-Dolma',
-         'Amazonbot',
-         'anthropic-ai',
-         'Applebot',
-         'Applebot-Extended',
-         'Brightbot 1.0',
-         'Bytespider',
-         'CCBot',
-         'ChatGPT-User',
-         'Claude-Web',
-         'ClaudeBot',
-         'cohere-ai',
-         'cohere-training-data-crawler',
-         'Crawlspace',
-         'Diffbot',
-         'DuckAssistBot',
-         'FacebookBot',
-         'FriendlyCrawler',
-         'Google-Extended',
-         'GoogleOther',
-         'GoogleOther-Image',
-         'GoogleOther-Video',
-         'GPTBot',
-         'iaskspider/2.0',
-         'ICC-Crawler',
-         'ImagesiftBot',
-         'img2dataset',
-         'ISSCyberRiskCrawler',
-         'Kangaroo Bot',
-         'meta-externalagent',
-         'meta-externalfetcher',
-         'OAI-SearchBot',
-         'omgili',
-         'omgilibot',
-         'PanguBot',
-         'PerplexityBot',
-         'PetalBot',
-         'Scrapy',
-         'SemrushBot-OCOB',
-         'SemrushBot-SWA',
-         'Sidetrade indexer bot',
-         'Timpibot',
-         'VelenPublicWebCrawler',
-         'Webzio-Extended',
-         'YouBot',
-    ];
-
-    // Other bad robots - SEO optimisers, advertisers, etc.  This list is shared with robots.txt.
+    // An opinionated list of "bad" robots. Typically, these are AI and SEO crawlers.
     public const BAD_ROBOTS = [
-        'admantx',
+        'ADmantX',
+        'AI2Bot',
         'Adsbot',
+        'AISearchBot',
         'AhrefsBot',
+        'Ai2Bot-Dolma',
         'AliyunSecBot',
-        'AntBot', // Aggressive crawler
+        'Amazonbot',
+        'Andibot',
+        'AntBot',
+        'Applebot',
         'AspiegelBot',
-        'Awario', // Brand management
-        'Barkrowler', // Crawler for babbar.tech
+        'Awario',
         'BLEXBot',
-        'CensysInspect', // Vulnerability scanner
-        'DataForSeoBot', // https://dataforseo.com/dataforseo-bot
+        'Barkrowler',
+        'Brightbot',
+        'Bytespider',
+        'CCBot',
+        'CensysInspect',
+        'ChatGPT-User',
+        'Claude-SearchBot',
+        'Claude-User',
+        'Claude-Web',
+        'ClaudeBot',
+        'Cotoyogi',
+        'Crawlspace',
+        'DataForSeoBot',
+        'Datenbank Crawler',
+        'Devin',
+        'Diffbot',
         'DotBot',
-        'Expanse', // Another pointless crawler
-        'fidget-spinner-bot', // Agressive crawler
-        'Foregenix', // Vulnerability scanner
-        'Go-http-client', // Crawler library used by many bots
+        'DuckAssistBot',
+        'Echobot Bot',
+        'EchoboxBot',
+        'Expanse',
+        'FacebookBot',
+        'Factset_spyderbot',
+        'FirecrawlAgent',
+        'Foregenix',
+        'FriendlyCrawler',
+        'GPTBot',
+        'Gemini-Deep-Research',
+        'Go-http-client',
+        'Google-CloudVertexBot',
+        'Google-Extended',
+        'GoogleAgent-Mariner',
+        'GoogleOther',
         'Grapeshot',
-        'Honolulu-bot', // Aggressive crawer, no info available
-        'ia_archiver',
-        'internet-measurement', // Driftnet
+        'Honolulu-bot',
+        'ICC-Crawler',
+        'ISSCyberRiskCrawler',
+        'ImagesiftBot',
         'IonCrawl',
-        'Java', // Crawler library used by many bots
-        'linabot', // Aggressive crawer, no info available
+        'Java',
+        'Kangaroo Bot',
         'Linguee',
-        'MegaIndex.ru',
         'MJ12bot',
-        'netEstate NE',
-        'panscient',
-        'phxbot', // Badly written crawler
-        'proximic',
-        'python-requests', // Crawler library used by many bots
-        'Scrapy', // Crawler library used by many bots
-        'SeekportBot', // Pretends to be a search engine - but isn't
-        'SemrushBot',
-        'serpstatbot',
+        'MegaIndex.ru',
+        'Meta-ExternalAgent',
+        'Meta-ExternalFetcher',
+        'MistralAI-User',
+        'MyCentralAIScraperBot',
+        'NovaAct',
+        'OAI-SearchBot',
+        'Operator',
+        'PanguBot',
+        'Panscient',
+        'Perplexity-User',
+        'PerplexityBot',
+        'PetalBot',
+        'PhindBot',
+        'Poseidon Research Crawler',
+        'QualifiedBot',
+        'QuillBot',
+        'SBIntuitionsBot',
         'SEOkicks',
+        'Scrapy',
+        'SeekportBot',
+        'SemrushBot',
+        'Sidetrade indexer bot',
         'SiteKiosk',
-        'test-bot', // Agressive crawler
+        'SummalyBot',
+        'Thinkbot',
+        'TikTokSpider',
+        'Timpibot',
         'TinyTestBot',
         'Turnitin',
-        'wp_is_mobile', // Nothing to do with wordpress
+        'VelenPublicWebCrawler',
+        'WARDBot',
+        'Webzio-Extended',
         'XoviBot',
+        'YandexAdditional',
         'YisouSpider',
+        'YouBot',
         'ZoominfoBot',
+        'aiHitBot',
+        'aiohttp',
+        'anthropic-ai',
+        'bedrockbot',
+        'cohere-ai',
+        'cohere-training-data-crawler',
+        'facebookexternalhit',
+        'fidget-spinner-bot',
+        'iaskspider',
+        'img2dataset',
+        'internet-measurement',
+        'linabot',
+        'meta-externalagent',
+        'meta-externalfetcher',
+        'netEstate',
+        'omgili',
+        'panscient',
+        'phxbot',
+        'proximic',
+        'python-requests',
+        'quillbot.com',
+        'wpbot',
+        'serpstatbot',
+        'test-bot',
+        'wp_is_mobile',
     ];
 
     /**
@@ -192,24 +216,9 @@ class BadBotBlocker implements MiddlewareInterface
 
     /**
      * Some search engines operate from designated IP addresses.
-     *
-     * @see https://help.duckduckgo.com/duckduckgo-help-pages/results/duckduckbot
+     * TODO: fetch current lists of IPs, rather than use hard-coded values.
+     * See https://merj.com/blog/dont-block-what-you-want-duckduckgo-and-common-crawl-to-provide-ip-address-api-endpoints
      */
-    private const ROBOT_IPS = [
-        'DuckDuckBot' => [
-            '23.21.227.69',
-            '50.16.241.113',
-            '50.16.241.114',
-            '50.16.241.117',
-            '50.16.247.234',
-            '52.204.97.54',
-            '52.5.190.19',
-            '54.197.234.188',
-            '54.208.100.253',
-            '54.208.102.37',
-            '107.21.1.8',
-        ],
-    ];
 
     /**
      * Some search engines operate from within a designated autonomous system.
@@ -236,11 +245,13 @@ class BadBotBlocker implements MiddlewareInterface
         $address = Factory::parseAddressString($ip);
         assert($address instanceof AddressInterface);
 
-        foreach ([self::AI_ROBOTS, self::BAD_ROBOTS] as $robots) {
-            foreach ($robots as $robot) {
-                if (str_contains($ua, $robot)) {
-                    return $this->response();
-                }
+        if ($ua === '') {
+            return $this->response();
+        }
+
+        foreach (self::BAD_ROBOTS as $robot) {
+            if (str_contains($ua, $robot)) {
+                return $this->response();
             }
         }
 
@@ -256,19 +267,7 @@ class BadBotBlocker implements MiddlewareInterface
             }
         }
 
-        foreach (self::ROBOT_IPS as $robot => $valid_ip_ranges) {
-            if (str_contains($ua, $robot)) {
-                foreach ($valid_ip_ranges as $ip_range) {
-                    $range = Factory::parseRangeString($ip_range);
-
-                    if ($range instanceof RangeInterface && $range->contains($address)) {
-                        continue 2;
-                    }
-                }
-
-                return $this->response();
-            }
-        }
+        // TODO: fetch current lists of IPs, rather than use hard-coded values.
 
         foreach (self::ROBOT_ASNS as $robot => $asns) {
             foreach ($asns as $asn) {
@@ -295,6 +294,37 @@ class BadBotBlocker implements MiddlewareInterface
                 }
             }
         }
+
+        // No Cookies?  Few headers?  Probably a robot.
+        if ($request->getCookieParams() === [] && count($request->getHeaders()) <= 10) {
+            // Claims to be a browser?
+            if (preg_match('~^Mozilla/5.0 \(.*\) AppleWebKit/[0-9.]+ \(KHTML, like Gecko\) Chrome/[0-9.]+ Safari/[0-9.]+$~', $ua) === 1) {
+                // Prove it by setting a cookie
+                $content =
+                    '<!DOCTYPE html>' .
+                    '<html lang="en">' .
+                    '<head>' .
+                    '<meta charset="utf-8">' .
+                    '<title>Cookie check</title>' .
+                    '<meta http-equiv="refresh" content="0">' .
+                    '</head>' .
+                    '<body>Cookie check</body>' .
+                    '</html>';
+
+                return response($content)->withHeader('set-cookie', 'x=y; HttpOnly; SameSite=Strict');
+            }
+
+            $request = $request->withAttribute(self::ROBOT_ATTRIBUTE_NAME, true);
+        }
+
+        // Scans for WordPress vulnerabilities?
+        // Block these before wasting resources on DB connections, sessions, etc.
+        $path = $request->getUri()->getPath();
+
+        if (str_starts_with($path, '/xmlrpc.php') || str_starts_with($path, '/wp-')) {
+            return $this->response();
+        }
+        $request = $request->withAttribute(self::ROBOT_ATTRIBUTE_NAME, true);
 
         return $handler->handle($request);
     }
@@ -335,8 +365,8 @@ class BadBotBlocker implements MiddlewareInterface
         }, random_int(self::WHOIS_TTL_MIN, self::WHOIS_TTL_MAX));
     }
 
-    private function response(): ResponseInterface
+    private function response(string $content = 'Not acceptable'): ResponseInterface
     {
-        return response('Not acceptable', StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
+        return response($content, StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
     }
 }
