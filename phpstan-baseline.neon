@@ -175,6 +175,12 @@ parameters:
 			path: app/Cli/Commands/TreeExport.php
 
 		-
+			message: '#^Strict comparison using \=\=\= between string and false will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: app/Cli/Commands/TreeExport.php
+
+		-
 			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
 			identifier: foreach.nonIterable
 			count: 1
@@ -605,12 +611,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Encodings/AbstractEncoding.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Encodings\\UTF8\:\:fromUtf8\(\) should return string but returns string\|false\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Encodings/UTF8.php
 
 		-
 			message: '#^Cannot access offset ''BURI'' on mixed\.$#'
@@ -1363,12 +1363,6 @@ parameters:
 			path: app/Http/Middleware/HandleExceptions.php
 
 		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/Middleware/HandleExceptions.php
-
-		-
 			message: '#^Parameter \#1 \$basepath of class Aura\\Router\\RouterContainer constructor expects string\|null, string\|false\|null given\.$#'
 			identifier: argument.type
 			count: 1
@@ -1651,7 +1645,7 @@ parameters:
 			path: app/Http/RequestHandlers/DataFixUpdate.php
 
 		-
-			message: '#^Binary operation "\+\=" between mixed and int results in an error\.$#'
+			message: '#^Binary operation "\+\=" between mixed and int\<0, max\> results in an error\.$#'
 			identifier: assignOp.invalid
 			count: 1
 			path: app/Http/RequestHandlers/DataFixUpdateAll.php
@@ -2089,12 +2083,6 @@ parameters:
 			path: app/Http/RequestHandlers/MapDataExportCSV.php
 
 		-
-			message: '#^Parameter \#1 \$content of function response expects array\<mixed\>\|object\|string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/MapDataExportCSV.php
-
-		-
 			message: '#^Parameter \#1 \$value of function count expects array\|Countable, mixed given\.$#'
 			identifier: argument.type
 			count: 3
@@ -2210,18 +2198,6 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$haystack of function str_contains expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/MapDataImportAction.php
-
-		-
-			message: '#^Parameter \#1 \$haystack of function str_contains expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/MapDataImportAction.php
-
-		-
-			message: '#^Parameter \#1 \$json of function json_decode expects string, string\|false given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/MapDataImportAction.php
@@ -3901,19 +3877,7 @@ parameters:
 			path: app/Module/FanChartModule.php
 
 		-
-			message: '#^Parameter \#4 \$string of function imagettfbbox expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/FanChartModule.php
-
-		-
 			message: '#^Parameter \#6 \$color of function imagefilledrectangle expects int, int\<0, max\>\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/FanChartModule.php
-
-		-
-			message: '#^Parameter \#8 \$text of function imagettftext expects string, string\|false given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/FanChartModule.php
@@ -6397,12 +6361,6 @@ parameters:
 			path: app/Services/GedcomExportService.php
 
 		-
-			message: '#^Parameter \#2 \$content of method ZipArchive\:\:addFromString\(\) expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 2
-			path: app/Services/GedcomExportService.php
-
-		-
 			message: '#^Parameter \#2 \$subject of function preg_match expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -6854,12 +6812,6 @@ parameters:
 
 		-
 			message: '#^Parameter \$stream of function stream_set_timeout expects resource, resource\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/NetworkService.php
-
-		-
-			message: '#^Parameter \$subject of function preg_match_all expects string, string\|false given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Services/NetworkService.php
@@ -7855,12 +7807,6 @@ parameters:
 			path: resources/views/components/select.phtml
 
 		-
-			message: '#^Unreachable statement \- code above always terminates\.$#'
-			identifier: deadCode.unreachable
-			count: 1
-			path: resources/views/edit/edit-gedcom-fields.phtml
-
-		-
 			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
 			identifier: foreach.nonIterable
 			count: 2
@@ -8291,3 +8237,9 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: tests/TestCase.php
+
+		-
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertIsString\(\) with string will always evaluate to true\.$#'
+			identifier: staticMethod.alreadyNarrowedType
+			count: 1
+			path: tests/app/TreeTest.php
