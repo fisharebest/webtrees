@@ -2593,12 +2593,6 @@ parameters:
 			path: app/Http/RequestHandlers/MapDataExportCSV.php
 
 		-
-			message: '#^Parameter \#1 \$content of function response expects array\<mixed\>\|object\|string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/MapDataExportCSV.php
-
-		-
 			message: '#^Parameter \#1 \$input of function array_pad expects array, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -2768,18 +2762,6 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$haystack of function str_contains expects string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/MapDataImportAction.php
-
-		-
-			message: '#^Parameter \#1 \$haystack of function str_contains expects string\|null, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/MapDataImportAction.php
-
-		-
-			message: '#^Parameter \#1 \$json of function json_decode expects string, string\|false given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/MapDataImportAction.php
@@ -4345,12 +4327,6 @@ parameters:
 			path: app/Module/FamilyBookChartModule.php
 
 		-
-			message: '#^Call to an undefined static method Fisharebest\\Webtrees\\Registry\:\:container\(\)\.$#'
-			identifier: staticMethod.notFound
-			count: 1
-			path: app/Module/FamilyNavigatorModule.php
-
-		-
 			message: '#^Cannot call method get\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
@@ -5837,12 +5813,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Module/RelationshipsChartModule.php
-
-		-
-			message: '#^Call to an undefined static method Fisharebest\\Webtrees\\Registry\:\:container\(\)\.$#'
-			identifier: staticMethod.notFound
-			count: 1
-			path: app/Module/RelativesTabModule.php
 
 		-
 			message: '#^Cannot call method get\(\) on mixed\.$#'
@@ -8143,12 +8113,6 @@ parameters:
 			path: app/Services/NetworkService.php
 
 		-
-			message: '#^Parameter \#2 \$subject of function preg_match_all expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/NetworkService.php
-
-		-
 			message: '#^Variable \$stream might not be defined\.$#'
 			identifier: variable.undefined
 			count: 1
@@ -9703,12 +9667,6 @@ parameters:
 			path: resources/views/edit-blocks-block.phtml
 
 		-
-			message: '#^Unreachable statement \- code above always terminates\.$#'
-			identifier: deadCode.unreachable
-			count: 1
-			path: resources/views/edit/edit-gedcom-fields.phtml
-
-		-
 			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
 			identifier: foreach.nonIterable
 			count: 2
@@ -10481,6 +10439,12 @@ parameters:
 			identifier: method.nonObject
 			count: 4
 			path: tests/app/Services/UserServiceTest.php
+
+		-
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertIsString\(\) with string will always evaluate to true\.$#'
+			identifier: staticMethod.alreadyNarrowedType
+			count: 1
+			path: tests/app/TreeTest.php
 
 		-
 			message: '#^Parameter \#1 \$values of method Fisharebest\\Webtrees\\Validator\:\:isInArrayKeys\(\) expects array\<string\>, array\<string, int\> given\.$#'
