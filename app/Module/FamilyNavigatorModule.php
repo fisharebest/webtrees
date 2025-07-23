@@ -79,7 +79,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
     {
         return view('modules/family_nav/sidebar', [
             'individual' => $individual,
-            'relationship_service' => Registry::container()->get(RelationshipService::class),
+            'relationship_service' => app()->get(RelationshipService::class),
         ]);
     }
 }
