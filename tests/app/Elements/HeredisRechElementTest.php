@@ -31,4 +31,9 @@ class HeredisRechElementTest extends AbstractElementTestCase
 
         self::$element = new HeredisRechElement('label');
     }
+
+    public function testCollapse(): void
+    {
+        self::assertTrue(self::$element->collapseChildren());
+    }
 }
