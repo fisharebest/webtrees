@@ -33,7 +33,7 @@ class HeredisTest extends TestCase
     public function testHeredis(): void
     {
         $heredis = new Heredis();
-        self::assertIsString($heredis->name());
+        self::assertSame('Heredis', $heredis->name());
         self::assertArrayHasKey('HEAD:_GUID', $heredis->tags());
         self::assertArrayHasKey('SOUR:_CREA', $heredis->tags());
     }
