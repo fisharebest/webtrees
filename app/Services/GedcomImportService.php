@@ -236,6 +236,15 @@ class GedcomImportService
             $gedrec = str_replace('@@', '@', $gedrec);
         }
 
+        if (preg_match('/^0 @([^@]+)@ (_STF|_PTF|_STE|_PTE)/', $gedrec, $match)) {
+            $xref = $match[1];
+
+            $exists = DB::table('other')->where('o_id', '=', $xref)->where('o_file', '=', $tree_id)->exists();
+            if ($exists) {
+                return; // Skip duplicate custom record
+            }
+        }
+
         // Standardise gedcom format
         $gedrec = $this->reformatRecord($gedrec, $tree);
 
