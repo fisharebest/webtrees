@@ -62,7 +62,7 @@
    * @param {string|FormData} body
    * @returns {Promise}
    */
-  webtrees.httpPost= function (url, body = '') {
+  webtrees.httpPost = function (url, body = '') {
     const csrfToken = document.head.querySelector('meta[name=csrf]').getAttribute('content');
 
     const options = {
@@ -75,7 +75,9 @@
         'x-requested-with': 'XMLHttpRequest',
       })
     };
-
+    if (! body) {
+      options.headers.append('Content-Type', 'application/x-www-form-urlencoded')
+    }
     return fetch(url, options, body);
   }
 
