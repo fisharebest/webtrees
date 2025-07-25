@@ -17,24 +17,18 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\CustomTags;
+namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(Heredis::class)]
-class HeredisTest extends TestCase
+#[CoversClass(AbstractElement::class)]
+#[CoversClass(HeredisRechElement::class)]
+class HeredisRechElementTest extends AbstractElementTestCase
 {
-    public function testClass(): void
+    public function setUp(): void
     {
-        self::assertTrue(class_exists(Heredis::class));
-    }
+        parent::setUp();
 
-    public function testHeredis(): void
-    {
-        $heredis = new Heredis();
-        self::assertIsString($heredis->name());
-        self::assertArrayHasKey('HEAD:_GUID', $heredis->tags());
-        self::assertArrayHasKey('SOUR:_CREA', $heredis->tags());
+        self::$element = new HeredisRechElement('label');
     }
 }
