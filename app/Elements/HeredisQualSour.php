@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\I18N;
  */
 class HeredisQualSour extends AbstractElement
 {
-
     /**
      * A list of controlled values for this element
      *
@@ -39,5 +38,4 @@ class HeredisQualSour extends AbstractElement
             'D'  => I18N::translate('Derived'),
         ];
     }
-
 }

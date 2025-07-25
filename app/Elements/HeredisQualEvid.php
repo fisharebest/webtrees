@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\I18N;
  */
 class HeredisQualEvid extends AbstractElement
 {
-
     /**
      * A list of controlled values for this element
      *
@@ -40,5 +39,4 @@ class HeredisQualEvid extends AbstractElement
             'N'  => I18N::translate('Negative'),
         ];
     }
-
 }

@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\I18N;
  */
 class HeredisFNA extends AbstractElement
 {
-
     /**
      * A list of controlled values for this element
      *
@@ -41,5 +40,4 @@ class HeredisFNA extends AbstractElement
             'IN_PROGRESS' => I18N::translate('Search in progress'),
         ];
     }
-
 }

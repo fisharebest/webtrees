@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\I18N;
  */
 class HeredisQualInfo extends AbstractElement
 {
-
     /**
      * A list of controlled values for this element
      *
@@ -39,5 +38,4 @@ class HeredisQualInfo extends AbstractElement
             'S'  => I18N::translate('Secondary'),
         ];
     }
-
 }

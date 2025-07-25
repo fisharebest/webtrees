@@ -24,7 +24,6 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class HeredisRechElement extends EmptyElement
 {
-
     protected const array SUBTAGS = [
         '_PROJ' => '0:1',
         'TYPE'  => '0:1',
@@ -45,5 +44,4 @@ class HeredisRechElement extends EmptyElement
     {
         return true;
     }
-
 }

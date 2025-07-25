@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\I18N;
  */
 class HeredisFIL extends AbstractElement
 {
-
     /**
      * A list of controlled values for this element
      *
@@ -46,5 +45,4 @@ class HeredisFIL extends AbstractElement
             'RELATIONSHIP_UNKNOW'  => I18N::translate('Unknown'),
         ];
     }
-
 }

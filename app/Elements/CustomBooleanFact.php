@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\I18N;
  */
 class CustomBooleanFact extends AbstractEventElement
 {
-
     /**
      * Convert a value to a canonical form.
      *
@@ -59,5 +58,4 @@ class CustomBooleanFact extends AbstractEventElement
             'N' => I18N::translate('no'),
         ];
     }
-
 }

@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\I18N;
  */
 class HeredisUST extends AbstractElement
 {
-
     /**
      * A list of controlled values for this element
      *
@@ -45,5 +44,4 @@ class HeredisUST extends AbstractElement
             'OTHER'         => I18N::translate('Other status'),
         ];
     }
-
 }
