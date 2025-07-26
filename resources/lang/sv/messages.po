@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-05-29 10:38+0000\n"
+"PO-Revision-Date: 2025-07-27 16:11+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sv/>\n"
@@ -5831,7 +5831,9 @@ msgstr "Aktiverad"
 #. I18N: Help text for the “Family tree” configuration setting
 #: resources/views/admin/trees-privacy.phtml:43
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
-msgstr "Med val av detta tvingas alla besökare att logga in innan de ser data på denna webbplats."
+msgstr ""
+"Om detta alternativ aktiveras måste alla besökare logga in innan de kan se "
+"någon information på webbplatsen."
 
 #: resources/views/modules/lifespans-chart/page.phtml:63
 msgid "End year"
@@ -6729,7 +6731,7 @@ msgstr "Till exempel, om du anger en sökväg längd 2, kommer personen att kunn
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
 msgstr ""
 "Till exempel kan vi snabbt hitta personer som inte har en dödshändelse, men "
-"det är mycket långsammare att beräkna om individen är död."
+"det är mycket långsammare att beräkna om personen är död."
 
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
@@ -8815,7 +8817,11 @@ msgstr "London, England"
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
 #: resources/views/admin/trees-preferences.phtml:371
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
-msgstr "Långa listor av personer med samma efternamn kan brytas upp till mindre underlistor efter första bokstaven i personen förnamn.<br><br>Detta val bestämmer när underlistor av efternamn ska skapas. För att stänga av detta val helt, sätt detta val till noll."
+msgstr ""
+"Långa listor med personer med samma efternamn kan delas upp i mindre "
+"underlistor baserat på första bokstaven i förnamnet.<br><br>Detta alternativ "
+"styr när sådan uppdelning sker. För att inaktivera uppdelningen helt, sätt "
+"värdet till noll."
 
 #: resources/views/statistics/families/marriage-length.phtml:22
 msgid "Longest marriage"
@@ -15198,7 +15204,9 @@ msgstr "Detta alternativ kontrollerar om man automatiskt visar innehållet i <i>
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: resources/views/admin/trees-preferences.phtml:573
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
-msgstr "Detta val kontrollerar om man automatiskt skall visa innehållet i en <i>källa</i> på personsidan."
+msgstr ""
+"Detta alternativ anger om man automatiskt skall visa innehållet i en "
+"<i>källa</i> på personsidan."
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: resources/views/admin/trees-preferences.phtml:416
@@ -15219,18 +15227,18 @@ msgstr "Detta alternativ kommer att göra det enklare för användare att ladda 
 #: resources/views/admin/trees-privacy.phtml:166
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
 msgstr ""
-"Detta val kommer att behålla familjelänkar i privata poster. Detta innebär "
-"att du kommer att se tomma ”privat” rutor på antavlan och på andra diagram "
-"för privata personer."
+"Detta alternativ kommer att behålla familjelänkar i privata poster. Detta "
+"innebär att du kommer att se tomma ”privat”-rutor på antavlan och på andra "
+"diagram för privata personer."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:147
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
 msgstr ""
-"Detta val visar namnen (men inga andra detaljer) för privata personer. "
-"Personer är privata om de fortfarande lever eller om integritetsbegränsning "
-"har lagts till deras individpost. Om du vill dölja ett visst namn, lägg till "
-"en integritetsbegränsning till namnposten."
+"Detta alternativ visar namnen (men inga andra detaljer) för privata "
+"personer. Personer är privata om de fortfarande lever eller om "
+"integritetsbegränsning har lagts till deras personpost. Om du vill dölja ett "
+"visst namn, lägg till en integritetsbegränsning till namnposten."
 
 #: resources/views/edit/raw-gedcom-fact.phtml:24
 #: resources/views/edit/raw-gedcom-record.phtml:25
@@ -16828,8 +16836,8 @@ msgstr "Du måste välja en person och en diagramtyp i blockinställningarna"
 #: resources/views/admin/users-edit.phtml:363
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
 msgstr ""
-"Du måste specificera en individpost innan du kan begränsa användaren till "
-"dess närmsta familj."
+"Du måste ange en personpost innan du kan begränsa användaren till dess "
+"närmsta familj."
 
 #: app/Http/RequestHandlers/LoginPage.php:91
 msgid "You need to be a family member to access this website."
