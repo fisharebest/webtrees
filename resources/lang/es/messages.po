@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-07-25 13:43+0000\n"
+"PO-Revision-Date: 2025-07-26 07:39+0000\n"
 "Last-Translator: Juanjo-GM <juanjo@juanjo.se>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/es/>\n"
@@ -6687,10 +6687,10 @@ msgstr ""
 #: resources/views/help/relationship-privacy.phtml:14
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
 msgstr ""
-"Por ejemplo, si especifica una longitud de dos, la persona será capaz de ver "
-"a su nieto (hijo de su hijo), su tía (hermana de sus padres), su hijastra ("
-"hija de su otra esposa), pero no a su primo hermano (hijo de un/a hermano/a "
-"de sus padres)."
+"Por ejemplo, si especifica una longitud de 2, la persona será capaz de ver a "
+"su nieto (hijo de su hijo/a), a su tía (hermana de sus padres), a su "
+"hijastra (hija de su otra esposa), pero no a su primo hermano (hijo de un/a "
+"hermano/a de sus padres)."
 
 #: resources/views/help/data-fixes.phtml:14
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
@@ -8566,7 +8566,7 @@ msgstr "Laos"
 
 #: resources/views/setup/step-2-server-checks.phtml:74
 msgid "Large systems (50,000 individuals): 64–128 MB, 40–80 seconds"
-msgstr "Sistemas grandes (50.000 personas): 64-128MB, 40-80 segundos"
+msgstr "Sistemas grandes (50.000 personas): 64-128 MB, 40-80 segundos"
 
 #: app/Statistics/Google/ChartFamilyLargest.php:109
 #: resources/views/modules/statistics-chart/children.phtml:41
@@ -8801,7 +8801,7 @@ msgstr "Vincular este objeto audiovisual a una persona"
 
 #: resources/views/admin/users-edit.phtml:306
 msgid "Link this user to an individual in the family tree."
-msgstr "Enlazar a este usuario a un individuo en el árbol genealógico."
+msgstr "Enlazar este usuario a un individuo en el árbol genealógico."
 
 #: resources/views/chart-box.phtml:113 resources/views/chart-box.phtml:125
 #: resources/views/chart-box.phtml:126
@@ -9778,7 +9778,7 @@ msgstr "Moldavia"
 #: app/Date/AbstractCalendarDate.php:273
 #: resources/views/edit/initialize-calendar-popup.phtml:26
 msgid "Mon"
-msgstr "lun"
+msgstr "Lun"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:319
@@ -10635,7 +10635,7 @@ msgstr ""
 #: resources/views/help/relationship-privacy.phtml:18
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
 msgstr ""
-"Nota: las longitudes más largas requieren mucha cálculo, de modo que su "
+"Nota: las longitudes más largas requieren mucho cálculo, de modo que su "
 "sitio puede ir más lento para estos usuarios."
 
 #. I18N: Name of a module
@@ -10873,7 +10873,7 @@ msgstr "Solo añadir nuevos registros"
 #: app/Elements/RestrictionNotice.php:97
 #: resources/views/modals/restriction-fields.phtml:26
 msgid "Only managers can edit"
-msgstr "Sólo los supervisores pueden editar"
+msgstr "Solo los supervisores pueden editar"
 
 #: resources/views/admin/map-import-form.phtml:63
 msgid "Only update existing records"
@@ -11193,7 +11193,7 @@ msgid "Pending changes are only shown when your account has permission to edit. 
 msgstr ""
 "Los cambios pendientes se muestran sólo cuando su cuenta tiene permiso para "
 "editar. Cuando cierre la sesión, no podrá verlos. Además, los cambios "
-"pendientes se muestran sólo en ciertas páginas. Por ejemplo, no se muestran "
+"pendientes se muestran solo en ciertas páginas. Por ejemplo, no se muestran "
 "en las listas, los informes, o los resultados de búsqueda."
 
 #: app/CustomTags/BrothersKeeper.php:67 app/CustomTags/BrothersKeeper.php:108
@@ -11331,7 +11331,7 @@ msgstr "Lista de lugares"
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
 msgstr ""
 "Los nombres de lugares son a menudo demasiado largos para caber en las "
-"cartas, listas, etc. Se puede abreviar, mostrando sólo la primera parte del "
+"cartas, listas, etc. Se puede abreviar, mostrando solo la primera parte del "
 "nombre, como <i>pueblo, condado</i>, o la última parte , como <i>región, "
 "país</i>."
 
@@ -11603,7 +11603,9 @@ msgstr "Texto predefinido que establece que todos los usuarios pueden solicitar 
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:50
 msgid "Predefined text that states only family members can request a user account"
-msgstr "Texto predefinido que establece que sólo los familiares pueden solicitar una cuenta de usuario"
+msgstr ""
+"Texto predefinido que establece que solo los familiares pueden solicitar una "
+"cuenta de usuario"
 
 #: app/Http/RequestHandlers/TreePageBlockEdit.php:60
 #: app/Http/RequestHandlers/TreePreferencesPage.php:160
@@ -15888,7 +15890,7 @@ msgstr "Número de personas"
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:50
 msgid "Total living"
-msgstr "Número de vivientes"
+msgstr "Número de personas vivas"
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:21
 msgid "Total males"
@@ -15948,13 +15950,13 @@ msgstr "Trinidad y Tobago"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:200
 msgid "Trujillo, Peru"
-msgstr "Trujillo, Peru"
+msgstr "Trujillo, Perú"
 
 #. I18N: abbreviation for Tuesday
 #: app/Date/AbstractCalendarDate.php:275
 #: resources/views/edit/initialize-calendar-popup.phtml:27
 msgid "Tue"
-msgstr "Martes"
+msgstr "Mar"
 
 #: app/Date/AbstractCalendarDate.php:247
 msgid "Tuesday"
@@ -16305,7 +16307,7 @@ msgstr "Use las letras A-Z, a-z, dígitos 0-9 o guiones bajos"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:44
 msgid "Use maps in webtrees."
-msgstr "Usa mapas en WEBTREES."
+msgstr "Usa mapas en webtrees."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:121
@@ -16391,7 +16393,10 @@ msgstr "Usuario o correo electrónico"
 #: resources/views/edit-account-page.phtml:37
 #: resources/views/register-page.phtml:66
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "En los nombres de usuario no distingue entre mayúsculas y minúsculas, y no se da cuenta a los diacríticos: así, por ejemplo, «sonador», «soñador» y «Soñador» se consideran iguales."
+msgstr ""
+"En los nombres de usuario no se distingue entre mayúsculas y minúsculas, y "
+"se ignoran los diacríticos: así, por ejemplo, «sonador», «soñador» y "
+"«Soñador» se consideran iguales."
 
 #: resources/views/admin/control-panel.phtml:497
 #: resources/views/modules/gedcom_stats/statistics.phtml:146
@@ -16556,7 +16561,7 @@ msgstr "Visible en línea"
 #: resources/views/admin/users-edit.phtml:174
 #: resources/views/edit-account-page.phtml:150
 msgid "Visible to other users when online"
-msgstr "Visible para los demás usuarios cuando esté conectado"
+msgstr "Visible para los demás usuarios cuando estén conectados"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:95
@@ -16611,12 +16616,22 @@ msgstr "Filigranas"
 #. I18N: Help text for the “Images without watermarks” configuration setting
 #: resources/views/admin/trees-preferences.phtml:326
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr "Las filigranas son opcionales y normalmente se muestran sólo a los visitantes."
+msgstr ""
+"Las marcas de agua en las fotos son opcionales y normalmente se muestran "
+"solo a los visitantes."
 
 #: resources/views/register-success-page.phtml:25
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "Ahora enviaremos un correo de confirmación a la dirección <b>%s</b>. Debe verificar su solicitud de cuenta siguiendo las instrucciones que se dan en ese correo. Si no confirma su solicitud de cuenta en siete días, su solicitud se rechazará automáticamente. Tendrá que hacer una nueva solicitud.<br><br>Después de haber seguido las instrucciones del correo de confirmación, el administrador aún habrá de aprobar la solicitud antes de que puede utilizarse su cuenta.<br><br>Para entrar a este sitio, necesitará conocer su identificador y su contraseña."
+msgstr ""
+"Ahora enviaremos un correo de confirmación a la dirección <b>%s</b>. Debe "
+"verificar su solicitud de cuenta siguiendo las instrucciones que se dan en "
+"ese correo. Si no confirma su solicitud de cuenta en siete días, su "
+"solicitud se rechazará automáticamente. Tendrá que hacer una nueva "
+"solicitud.<br><br>Después de haber seguido las instrucciones del correo de "
+"confirmación, el administrador aún habrá de aprobar la solicitud antes de "
+"que pueda utilizarse su cuenta.<br><br>Para entrar en este sitio, necesitará "
+"conocer su identificador y su contraseña."
 
 #: resources/views/admin/control-panel.phtml:165
 #: resources/views/admin/control-panel.phtml:591
@@ -16638,7 +16653,7 @@ msgstr "Preferencias del sitio"
 #: app/Date/AbstractCalendarDate.php:277
 #: resources/views/edit/initialize-calendar-popup.phtml:28
 msgid "Wed"
-msgstr "Miércoles"
+msgstr "Mié"
 
 #: app/Date/AbstractCalendarDate.php:248
 msgid "Wednesday"
@@ -16661,30 +16676,42 @@ msgstr "Texto de bienvenida en la página de entrada"
 
 #: resources/views/login-page.phtml:23
 msgid "Welcome to this genealogy website"
-msgstr "Bienvenido a este sitio de Genealogía"
+msgstr "Bienvenido a este sitio de genealogía"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:179
 msgid "Western Sahara"
-msgstr "Sahara Occidental"
+msgstr "Sáhara Occidental"
 
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml:712
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Cuando se edita un registro, el usuario y la fecha y hora se registran. A veces es deseable mantener la información de \"último cambio\" existente, por ejemplo al hacer pequeñas correcciones a los datos de otra persona. Esta opción controla si esta función está activada de forma predeterminada."
+msgstr ""
+"Cuando se edita un registro, el usuario, la fecha y la hora se registran. A "
+"veces es deseable mantener la información del \"último cambio\" existente, "
+"por ejemplo al hacer pequeñas correcciones a los datos de otra persona. Esta "
+"opción controla si esta función está activada de forma predeterminada."
 
 #: resources/views/admin/users-edit.phtml:109
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Cuando un usuario registra una cuenta nueva, se envía a su dirección de correo electrónico un mensaje con un enlace de verificación. Cuando el usuario utiliza este enlace, el sistema reconoce que la dirección de correo electrónico es correcta y automáticamente queda verificada."
+msgstr ""
+"Cuando un usuario registra una cuenta nueva, se envía a su dirección de "
+"correo electrónico un mensaje con un enlace de verificación. Cuando el "
+"usuario utiliza este enlace, el sistema reconoce que la dirección de correo "
+"electrónico es correcta y automáticamente queda verificada."
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr "Cuando un individuo tuvo mas de un cónyuge, debe ordenar las familias por orden de fechas."
+msgstr ""
+"Cuando un individuo tuvo más de un cónyuge, debe ordenar las familias por "
+"orden de fechas."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:699
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
-msgstr "Cuando añada un nuevo miembro a la familia, se puede dar un apellido por defecto.  El apellido dependerá de la costumbre local."
+msgstr ""
+"Cuando añada un nuevo miembro a la familia, se le puede dar un apellido por "
+"defecto. El apellido dependerá de la costumbre local."
 
 #: resources/views/help/pending-changes.phtml:14
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
@@ -16692,17 +16719,21 @@ msgstr "Cuando usted agrega, edita, o elimina información, los cambios no son g
 
 #: resources/views/help/relationship-privacy.phtml:10
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr "Cuando un usuario está asociado a un registro individual en un árbol genealògico y tiene una función de miembro, editor, o moderador, puede impedir el acceso a los detalles de parientes lejanos vivos. Puede especificar el número de grados que el usuario podrá ver."
+msgstr ""
+"Cuando un usuario está asociado a un registro individual en un árbol "
+"genealógico y tiene una función de miembro, editor, o moderador, puede "
+"impedir el acceso a los detalles de parientes lejanos vivos. Puede "
+"especificar el número de grados que el usuario podrá ver."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:28
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Qué árboles genealógicos deben ser incluidos en los mapas de sitio"
+msgstr "Qué árboles genealógicos deben ser incluidos en los mapas del sitio"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:265
 msgid "Who can upload new media files"
-msgstr "Quién puede subir nuevos ficheros"
+msgstr "Quién puede subir nuevos objetos audiovisuales"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:43
@@ -16773,7 +16804,7 @@ msgstr "Testigos"
 #: app/SurnameTradition/PaternalSurnameTradition.php:51
 #: app/SurnameTradition/PolishSurnameTradition.php:67
 msgid "Wives take their husband’s surname."
-msgstr "Esposas llevar el apellido de su marido."
+msgstr "Las esposas llevan el apellido de su marido."
 
 #: app/Http/RequestHandlers/MapDataAdd.php:75
 #: resources/views/modules/place-hierarchy/page.phtml:30
@@ -16816,12 +16847,12 @@ msgstr "Usted (o alguien que pretende ser usted) ha solicitado una cuenta en %1$
 #: app/Http/RequestHandlers/ContactAction.php:122
 #: app/Http/RequestHandlers/RegisterAction.php:271
 msgid "You are not allowed to send messages that contain external links."
-msgstr "No se permiten enviar mensajes con enlaces externos."
+msgstr "No se permite enviar mensajes con enlaces externos."
 
 #: resources/views/modules/login_block/sign-out.phtml:17
 #, php-format
 msgid "You are signed in as %s."
-msgstr "Está firmado como %s."
+msgstr "Usted ha iniciado sesión como %s."
 
 #: app/Http/RequestHandlers/LoginPage.php:97
 msgid "You can apply for an account using the link below."
@@ -16835,7 +16866,9 @@ msgstr "Puede cambiar la apariencia de webtrees con «temas». Cada tema tiene s
 #: resources/views/admin/users-edit.phtml:177
 #: resources/views/edit-account-page.phtml:152
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr "Puedes elegir si quieres aparecer en la lista de usuarios actualmente conectados."
+msgstr ""
+"Usted puede elegir si quiere aparecer en la lista de usuarios actualmente "
+"conectados."
 
 #. I18N: %s is a URL
 #: resources/views/edit/raw-gedcom-fact.phtml:29
@@ -16850,7 +16883,10 @@ msgstr "Puede optar a no ser rastreado estableciendo esa opción en su navegador
 
 #: resources/views/admin/trees-renumber.phtml:28
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr "Puede volver a numerar los registros en un árbol genealógico, por lo que estos números de referencia internos no se duplicaran en cualquier otro árbol genealógico."
+msgstr ""
+"Puede volver a numerar los registros en un árbol genealógico, por lo que "
+"estos números de referencia internos no se duplicarán en cualquier otro "
+"árbol genealógico."
 
 #: resources/views/admin/trees-renumber.phtml:37
 msgid "You can renumber this family tree."
@@ -16859,7 +16895,11 @@ msgstr "Puede volver a numerar este árbol genealógico."
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:158
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr "Puedes configurar el acceso a un registro, hecho o evento específico agregando una restricción a él. Si un registro, hecho o evento no tiene restricciones, entonces las siguientes restricciones serán usadas por defecto."
+msgstr ""
+"Puede configurar el acceso a un registro, hecho o evento específico "
+"agregando una restricción a él. Si un registro, hecho o evento no tiene "
+"restricciones, entonces las siguientes restricciones serán usadas por "
+"defecto."
 
 #: resources/views/admin/tags.phtml:39
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
@@ -16868,7 +16908,11 @@ msgstr "Puede simplificar los formularios de edición ocultando las etiquetas GE
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:61
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Se puede acelerar los cálculos de privacidad mediante la adición de una partida de defunción a las personas cuya muerte se puede deducir de otras fechas, pero que no tienen un registro de la muerte, el entierro, la cremación, etc."
+msgstr ""
+"Se pueden acelerar los cálculos de privacidad mediante la adición de una "
+"partida de defunción a las personas cuya muerte se puede deducir de otras "
+"fechas, pero que no tienen un registro de la muerte, el entierro, la "
+"cremación, etc."
 
 #: app/Http/RequestHandlers/LoginAction.php:108
 msgid "You cannot sign in because your browser does not accept cookies."
@@ -16885,7 +16929,7 @@ msgstr "Ha confirmado su petición de ser un usuario registrado."
 
 #: resources/views/admin/trees-import.phtml:33
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
-msgstr "Has elegido un GEDCOM con un nombre diferente. ¿Es correcto?"
+msgstr "Ha elegido un GEDCOM con un nombre diferente. ¿Es correcto?"
 
 #: app/Http/RequestHandlers/Logout.php:52
 msgid "You have signed out."
@@ -16893,7 +16937,9 @@ msgstr "Se ha desconectado."
 
 #: resources/views/modules/faq/config.phtml:29
 msgid "You may use HTML to format the answer and to add links to other websites."
-msgstr "Se puede usar HTML para la respuesta y para agregar vínculos a otros sitios web."
+msgstr ""
+"Usted puede usar HTML para dar formato a la respuesta y para agregar "
+"vínculos a otros sitios web."
 
 #: app/Http/RequestHandlers/SetupWizard.php:377
 msgid "You must enter all the administrator account fields."
@@ -16909,7 +16955,9 @@ msgstr "Hay que seleccionar una persona y un tipo de gráfico en la configuraci�
 
 #: resources/views/admin/users-edit.phtml:366
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
-msgstr "Debe especificar el registro de un individuo antes de que pueda restringir el usuario a sus parientes inmediatos."
+msgstr ""
+"Debe especificar el registro de un individuo antes de que pueda restringir "
+"al usuario a sus parientes inmediatos."
 
 #: app/Http/RequestHandlers/LoginPage.php:89
 msgid "You need to be a family member to access this website."
@@ -16927,7 +16975,7 @@ msgstr "Necesita crear un árbol genealógico."
 #: resources/views/emails/verify-notify-html.phtml:30
 #: resources/views/emails/verify-notify-text.phtml:23
 msgid "You need to review the account details."
-msgstr "Tienes que verificar los detalles de la cuenta."
+msgstr "Usted tiene que verificar los detalles de la cuenta."
 
 #: resources/views/setup/step-5-administrator.phtml:51
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
@@ -16956,7 +17004,10 @@ msgstr "No debe aprobar un usuario sin verificar que la dirección de correo ele
 #: resources/views/emails/register-notify-html.phtml:45
 #: resources/views/emails/register-notify-text.phtml:34
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr "Será informado por e-mail cuando este usuario potencial ha confirmado el pedido. Luego puede realizar el proceso de activación del nombre de usuario. El nuevo usuario no podrá iniciar sesión hasta que se habilite la cuenta."
+msgstr ""
+"Será informado por e-mail cuando este usuario potencial haya confirmado el "
+"pedido. Luego puede realizar el proceso de activación del nombre de usuario. "
+"El nuevo usuario no podrá iniciar sesión hasta que se habilite la cuenta."
 
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "You will use this to sign in to webtrees."
@@ -16968,7 +17019,7 @@ msgstr "Padre más joven"
 
 #: resources/views/modules/statistics-chart/marriage-age.phtml:28
 msgid "Youngest female"
-msgstr "Hembra más joven"
+msgstr "Mujer más joven"
 
 #: resources/views/modules/statistics-chart/marriage-age.phtml:18
 msgid "Youngest male"
@@ -17050,7 +17101,7 @@ msgstr "sobre %s"
 #: resources/views/record-page-pending.phtml:25
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr "aceptarlos"
+msgstr "aceptar"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:19
@@ -17060,7 +17111,7 @@ msgstr "aceptarlos"
 #: resources/views/record-page-pending.phtml:19
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr "aceptarlo"
+msgstr "aceptar"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:116
@@ -17154,17 +17205,17 @@ msgstr "tía"
 #: app/Services/RelationshipService.php:536
 msgctxt "father’s sibling"
 msgid "aunt/uncle"
-msgstr "tío"
+msgstr "tía/o"
 
 #: app/Services/RelationshipService.php:574
 msgctxt "mother’s sibling"
 msgid "aunt/uncle"
-msgstr "tío"
+msgstr "tía/tío"
 
 #: app/Services/RelationshipService.php:592
 msgctxt "parent’s sibling"
 msgid "aunt/uncle"
-msgstr "tío"
+msgstr "tía/tío"
 
 #: resources/views/admin/trees-import.phtml:86
 msgid "automatic"
@@ -17208,7 +17259,7 @@ msgstr "hermano"
 #: app/Services/RelationshipService.php:718
 msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
-msgstr "concuño"
+msgstr "cuñado"
 
 #: app/Services/RelationshipService.php:544
 msgctxt "husband’s brother"
@@ -17218,7 +17269,7 @@ msgstr "cuñado"
 #: app/Services/RelationshipService.php:834
 msgctxt "husband’s sister’s husband"
 msgid "brother-in-law"
-msgstr "concuño"
+msgstr "cuñado"
 
 #: app/Services/RelationshipService.php:612
 msgctxt "sister’s husband"
@@ -17228,7 +17279,7 @@ msgstr "cuñado"
 #: app/Services/RelationshipService.php:1018
 msgctxt "sister’s husband’s brother"
 msgid "brother-in-law"
-msgstr "concuño"
+msgstr "cuñado"
 
 #: app/Services/RelationshipService.php:624
 msgctxt "spouse’s brother"
@@ -17243,37 +17294,37 @@ msgstr "cuñado"
 #: app/Services/RelationshipService.php:1074
 msgctxt "wife’s sister’s husband"
 msgid "brother-in-law"
-msgstr "concuño"
+msgstr "cuñado"
 
 #: app/Services/RelationshipService.php:720
 msgctxt "brother’s wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr "concuño"
+msgstr "cuñado/a"
 
 #: app/Services/RelationshipService.php:554
 msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr "cuñado"
+msgstr "cuñado/a"
 
 #: app/Services/RelationshipService.php:606
 msgctxt "sibling’s spouse"
 msgid "brother/sister-in-law"
-msgstr "cuñado"
+msgstr "cuñado/a"
 
 #: app/Services/RelationshipService.php:1020
 msgctxt "sister’s husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr "concuño"
+msgstr "cuñado/a"
 
 #: app/Services/RelationshipService.php:640
 msgctxt "spouse’s sibling"
 msgid "brother/sister-in-law"
-msgstr "cuñado"
+msgstr "cuñado/a"
 
 #: app/Services/RelationshipService.php:652
 msgctxt "wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr "cuñado"
+msgstr "cuñado/a"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:265
@@ -17349,12 +17400,12 @@ msgstr "cambio de nombre"
 #: resources/views/admin/control-panel.phtml:193
 #: resources/views/admin/control-panel.phtml:214
 msgid "check now"
-msgstr "revisalo ahora"
+msgstr "revíselo ahora"
 
 #: app/Elements/AgeAtEvent.php:90 app/Elements/RoleInEvent.php:78
 #: app/Services/RelationshipService.php:429
 msgid "child"
-msgstr "niño/a"
+msgstr "hijo/a"
 
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
@@ -17542,7 +17593,7 @@ msgstr "hermano mayor"
 
 #: app/Services/RelationshipService.php:487
 msgid "elder sibling"
-msgstr "hermanos mayores"
+msgstr "hermanos/as mayores"
 
 #: app/Services/RelationshipService.php:466
 msgid "elder sister"
@@ -17998,7 +18049,7 @@ msgstr "geográficamente"
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:49
 msgid "go to new individual"
-msgstr "ir al nueva persona"
+msgstr "ir a la nueva persona"
 
 #: app/Services/RelationshipService.php:504
 msgctxt "child’s child"
@@ -18033,17 +18084,17 @@ msgstr "nieta"
 #: app/Services/RelationshipService.php:734
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "esposo del nieta"
+msgstr "esposo de la nieta"
 
 #: app/Services/RelationshipService.php:756
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "esposo del nieta"
+msgstr "esposo de la nieta"
 
 #: app/Services/RelationshipService.php:1054
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "esposo del nieta"
+msgstr "esposo de la nieta"
 
 #: app/Services/RelationshipService.php:586
 msgctxt "parent’s father"
@@ -19527,47 +19578,47 @@ msgstr "medio círculo"
 #: app/Services/RelationshipService.php:540
 msgctxt "father’s son"
 msgid "half-brother"
-msgstr "medio hermano"
+msgstr "hermanastro"
 
 #: app/Services/RelationshipService.php:578
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr "medio hermano"
+msgstr "hermanastro"
 
 #: app/Services/RelationshipService.php:596
 msgctxt "parent’s son"
 msgid "half-brother"
-msgstr "medio hermano"
+msgstr "hermanastro"
 
 #: app/Services/RelationshipService.php:526
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr "medio hermano"
+msgstr "hermanastro/a"
 
 #: app/Services/RelationshipService.php:562
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr "medio hermano"
+msgstr "hermanastro/a"
 
 #: app/Services/RelationshipService.php:582
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr "medio hermano"
+msgstr "hermanastro/a"
 
 #: app/Services/RelationshipService.php:528
 msgctxt "father’s daughter"
 msgid "half-sister"
-msgstr "media hermana"
+msgstr "hermanastra"
 
 #: app/Services/RelationshipService.php:564
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr "media hermana"
+msgstr "hermanastra"
 
 #: app/Services/RelationshipService.php:584
 msgctxt "parent’s daughter"
 msgid "half-sister"
-msgstr "media hermana"
+msgstr "hermanastra"
 
 #. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php:243
@@ -19661,7 +19712,7 @@ msgstr "%s (%s) interpretadas"
 #. I18N: reverse the selection (of a list of options)
 #: resources/views/search-trees.phtml:54
 msgid "invert selection"
-msgstr "Invertir seleccion"
+msgstr "Invertir selección"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:173
@@ -19752,7 +19803,7 @@ msgstr "casado"
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/Elements/NameType.php:85
 msgid "married name"
-msgstr "nombre de casado"
+msgstr "nombre de casada"
 
 #: app/Services/RelationshipService.php:566
 msgctxt "mother’s father"
@@ -19883,7 +19934,7 @@ msgstr "sobrino político"
 #: app/Services/RelationshipService.php:496
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr "sobrino"
+msgstr "sobrino/a"
 
 #: app/Services/RelationshipService.php:840
 msgctxt "husband’s brother’s child"
@@ -19903,12 +19954,12 @@ msgstr "sobrino/sobrina"
 #: app/Services/RelationshipService.php:600
 msgctxt "sibling’s child"
 msgid "nephew/niece"
-msgstr "sobrino"
+msgstr "sobrino/a"
 
 #: app/Services/RelationshipService.php:608
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr "sobrino"
+msgstr "sobrino/a"
 
 #: app/Services/RelationshipService.php:1080
 msgctxt "wife’s brother’s child"
@@ -20202,7 +20253,7 @@ msgstr "registros"
 #: resources/views/record-page-pending.phtml:25
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr "rechazarlos"
+msgstr "rechazar"
 
 #: resources/views/family-page-pending.phtml:19
 #: resources/views/individual-page-pending.phtml:20
@@ -20211,7 +20262,7 @@ msgstr "rechazarlos"
 #: resources/views/record-page-pending.phtml:19
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
-msgstr "rechazarlo"
+msgstr "rechazar"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:118
@@ -20231,7 +20282,7 @@ msgstr "nombre religioso"
 #. I18N: A button label.
 #: resources/views/search-replace-page.phtml:53
 msgid "replace"
-msgstr "reemplace"
+msgstr "reemplazar"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:106
@@ -20491,7 +20542,7 @@ msgstr "Todos"
 #. I18N: select none (of a list of options)
 #: resources/views/search-trees.phtml:50
 msgid "select none"
-msgstr "Ningún"
+msgstr "Ninguno"
 
 #: app/Services/RelationshipService.php:345
 msgid "self"
@@ -20550,7 +20601,7 @@ msgstr "mostrar"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:265
 msgid "show changes made in webtrees"
-msgstr "mostrar los cambios realizados en WEBTREES"
+msgstr "mostrar los cambios realizados en webtrees"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:267
@@ -20565,7 +20616,7 @@ msgstr "mostrar los cambios registrados en los datos genealógicos"
 #: resources/views/modules/user_blog/list.phtml:29
 #: resources/views/modules/yahrzeit/list.phtml:26
 msgid "show more"
-msgstr "Mostrar mas"
+msgstr "Mostrar más"
 
 #: resources/views/modules/statistics-chart/custom.phtml:208
 msgid "show the chart"
@@ -20573,7 +20624,7 @@ msgstr "mostrar el gráfico"
 
 #: app/Services/RelationshipService.php:492
 msgid "sibling"
-msgstr "hermano"
+msgstr "hermano/a"
 
 #. I18N: A button label.
 #: resources/views/login-page.phtml:57
@@ -20598,12 +20649,12 @@ msgstr "cuñada"
 #: app/Services/RelationshipService.php:722
 msgctxt "brother’s wife’s sister"
 msgid "sister-in-law"
-msgstr "concuña"
+msgstr "cuñada"
 
 #: app/Services/RelationshipService.php:832
 msgctxt "husband’s brother’s wife"
 msgid "sister-in-law"
-msgstr "concuña"
+msgstr "cuñada"
 
 #: app/Services/RelationshipService.php:556
 msgctxt "husband’s sister"
@@ -20613,7 +20664,7 @@ msgstr "cuñada"
 #: app/Services/RelationshipService.php:1022
 msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
-msgstr "concuña"
+msgstr "cuñada"
 
 #: app/Services/RelationshipService.php:634
 msgctxt "spouse’s sister"
@@ -20623,7 +20674,7 @@ msgstr "cuñada"
 #: app/Services/RelationshipService.php:1072
 msgctxt "wife’s brother’s wife"
 msgid "sister-in-law"
-msgstr "concuña"
+msgstr "cuñada"
 
 #: app/Services/RelationshipService.php:654
 msgctxt "wife’s sister"
@@ -20681,7 +20732,7 @@ msgstr "consuegro"
 #: app/Services/RelationshipService.php:512
 msgctxt "child’s spouse"
 msgid "son/daughter-in-law"
-msgstr "yerno"
+msgstr "yerno/nuera"
 
 #. I18N: An option in a list-box
 #: app/Module/UpcomingAnniversariesModule.php:323
@@ -20717,12 +20768,12 @@ msgstr "ordenar por fecha de matrimonio"
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:274 app/Module/RecentChangesModule.php:260
 msgid "sort by date, newest first"
-msgstr "ordenar de fecha; empezando con lo mas reciente"
+msgstr "ordenar por fecha; empezando con lo más reciente"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:272 app/Module/RecentChangesModule.php:258
 msgid "sort by date, oldest first"
-msgstr "ordenar de fecha; empezando con lo mas antiguo"
+msgstr "ordenar por fecha; empezando con lo más antiguo"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:270 app/Module/RecentChangesModule.php:256
@@ -20807,17 +20858,17 @@ msgstr "padrastro"
 #: app/Services/RelationshipService.php:826
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr "hermanastro"
+msgstr "hermanastro/a"
 
 #: app/Services/RelationshipService.php:874
 msgctxt "mother’s husband’s child"
 msgid "step-sibling"
-msgstr "hermanastro"
+msgstr "hermanastro/a"
 
 #: app/Services/RelationshipService.php:952
 msgctxt "parent’s spouse’s child"
 msgid "step-sibling"
-msgstr "hermanastro"
+msgstr "hermanastro/a"
 
 #: app/Services/RelationshipService.php:828
 msgctxt "father’s wife’s daughter"
@@ -20851,7 +20902,7 @@ msgstr "hijastro"
 
 #: app/Elements/AgeAtEvent.php:96
 msgid "stillborn"
-msgstr "Nacido muerto"
+msgstr "nacido muerto"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -21094,19 +21145,20 @@ msgstr "webtrees"
 
 #: app/Http/RequestHandlers/CheckTree.php:303
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr "WEBTREES no puede crear miniaturas para este formato de archivo."
+msgstr "webtrees no puede crear miniaturas para este formato de archivo."
 
 #: app/Http/RequestHandlers/CheckTree.php:300
 msgid "webtrees does not recognise this file format."
-msgstr "WEBTREES no reconoce este formato de archivo."
+msgstr "webtrees no reconoce este formato de archivo."
 
 #: app/Services/MessageService.php:134
 msgid "webtrees message"
-msgstr "Mensaje de webtrees"
+msgstr "mensaje de webtrees"
 
 #: resources/views/setup/step-3-database-type.phtml:50
 msgid "webtrees needs a database to store your genealogy data."
-msgstr "webtrees necesita una base de datos para almacenar tus datos genealógicos."
+msgstr ""
+"webtrees necesita una base de datos para almacenar sus datos genealógicos."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:49
@@ -21124,7 +21176,7 @@ msgstr "esposa"
 #. I18N: Name of a theme.
 #: app/Module/XeneaTheme.php:39
 msgid "xenea"
-msgstr "Xenea"
+msgstr "xenea"
 
 #: resources/views/modules/timeline-chart/chart.phtml:145
 msgid "years"
@@ -21172,7 +21224,9 @@ msgstr "sí"
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:32
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr "puede conectarse a la base de datos utilizando otras aplicaciones como, por ejemplo, phpmyadmin"
+msgstr ""
+"puede conectarse a la base de datos utilizando otras aplicaciones, como por "
+"ejemplo, phpmyadmin"
 
 #: app/Services/RelationshipService.php:441
 msgid "younger brother"
@@ -21180,7 +21234,7 @@ msgstr "hermano menor"
 
 #: app/Services/RelationshipService.php:483
 msgid "younger sibling"
-msgstr "hermanos menores"
+msgstr "hermanos/as menores"
 
 #: app/Services/RelationshipService.php:462
 msgid "younger sister"
