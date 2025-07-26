@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-07-26 11:55+0000\n"
+"PO-Revision-Date: 2025-07-26 19:41+0000\n"
 "Last-Translator: Juanjo-GM <juanjo@juanjo.se>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/es/>\n"
@@ -6834,7 +6834,7 @@ msgstr "Fresno, California, Estados Unidos"
 #: app/Date/AbstractCalendarDate.php:281
 #: resources/views/edit/initialize-calendar-popup.phtml:30
 msgid "Fri"
-msgstr "vie"
+msgstr "Vie"
 
 #: app/Date/AbstractCalendarDate.php:250
 msgid "Friday"
