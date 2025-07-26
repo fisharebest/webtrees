@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-07-26 07:39+0000\n"
+"PO-Revision-Date: 2025-07-26 11:55+0000\n"
 "Last-Translator: Juanjo-GM <juanjo@juanjo.se>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/es/>\n"
@@ -7839,11 +7839,31 @@ msgstr "En un árbol genealógico, cada registro tiene un número de referencia 
 
 #: resources/views/help/romanized.phtml:10
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "En muchas culturas es habitual tener un nombre tradicional escrito con los caracteres tradicionales y también una versión romanizada del nombre como se escribiría o pronunciaría en idiomas basados en el alfabeto latino como el español.<br><br>Si prefiere utilizar un alfabeto no latino como el hebreo, ruso, chino o árabe para introducir su nombre en los campos estándar de nombre, puede usar este campo para introducir el mismo nombre usando el alfabeto latino. Ambas versiones del nombre aparecerán en las listas y diagramas.<br><br>Aunque este campo se denomina «Romanizado», no está limitado a contener únicamente caracteres basados en el alfabeto latino. Esto puede ser útil con los nombres japoneses donde se puede llegar utilizar tres alfabetos distintos."
+msgstr ""
+"En muchas culturas es habitual tener un nombre tradicional escrito con los "
+"caracteres tradicionales y también una versión romanizada del nombre como se "
+"escribiría o pronunciaría en idiomas basados en el alfabeto latino como el "
+"español.<br><br>Si prefiere utilizar un alfabeto no latino como el hebreo, "
+"ruso, chino o árabe para introducir su nombre en los campos estándar de "
+"nombre, puede usar este campo para introducir el mismo nombre usando el "
+"alfabeto latino. Ambas versiones del nombre aparecerán en las listas y "
+"diagramas.<br><br>Aunque este campo se denomina «Romanizado», no está "
+"limitado a contener únicamente caracteres basados en el alfabeto latino. "
+"Esto puede ser útil con los nombres japoneses, donde se pueden llegar "
+"utilizar tres alfabetos distintos."
 
 #: resources/views/help/hebrew.phtml:10
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "En muchas culturas es la costumbre tener un nombre tradicional escrito en los caracteres tradicionales y también una versión romanizada del nombres como se escribiría o pronunciaría en idiomas basados en el alfabeto latino como el español.<br><br>Si prefiere usar el alfabeto latino para introducir el nombre en los campos de nombre estándar, puede usar este campo para introducir el mismo nombre en alfabeto no latino como el griego, hebreo, ruso, árabe o chino. Ambas versiones del nombre aparecerán en las listas y diagramas.<br><br>Aunque esta campo se denomina «Hebreo», no está limitado a contener únicamente caracteres hebreos."
+msgstr ""
+"En muchas culturas es costumbre tener un nombre tradicional escrito en los "
+"caracteres tradicionales y también una versión romanizada del nombre como se "
+"escribiría o pronunciaría en idiomas basados en el alfabeto latino como el "
+"español.<br><br>Si prefiere usar el alfabeto latino para introducir el "
+"nombre en los campos de nombre estándar, puede usar este campo para "
+"introducir el mismo nombre en alfabeto no latino como el griego, hebreo, "
+"ruso, árabe o chino. Ambas versiones del nombre aparecerán en las listas y "
+"diagramas.<br><br>Aunque este campo se denomina «Hebreo», no está limitado a "
+"contener únicamente caracteres hebreos."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:132
@@ -7855,8 +7875,8 @@ msgstr "En algunos calendarios los días comienzan a medianoche. En otros calend
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 msgstr ""
 "En algunos países, las leyes de privacidad se aplican no solo a las personas "
-"que viven, sino también a aquellos que han muerto recientemente. Esta opción "
-"le permitirá ampliar las normas de privacidad de personas con vida a los que "
+"vivas, sino también a aquellas que han muerto recientemente. Esta opción le "
+"permitirá ampliar las normas de privacidad de personas vivas a las que "
 "nacieron o murieron dentro de un número determinado de años. Déjelo vacío "
 "para desactivar esta función."
 
@@ -9558,7 +9578,7 @@ msgstr "Mediterráneo"
 
 #: resources/views/setup/step-2-server-checks.phtml:72
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
-msgstr "Sistemas medianos (5.000 personas): 32-64MB, 20-40 segundos"
+msgstr "Sistemas medianos (5.000 personas): 32-64 MB, 20-40 segundos"
 
 #: app/Date/JalaliDate.php:279
 msgctxt "Abbreviation for Persian month: Mehr"
@@ -11191,10 +11211,10 @@ msgstr "Cambios pendientes"
 #: resources/views/help/pending-changes.phtml:22
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
 msgstr ""
-"Los cambios pendientes se muestran sólo cuando su cuenta tiene permiso para "
+"Los cambios pendientes se muestran solo cuando su cuenta tiene permiso para "
 "editar. Cuando cierre la sesión, no podrá verlos. Además, los cambios "
 "pendientes se muestran solo en ciertas páginas. Por ejemplo, no se muestran "
-"en las listas, los informes, o los resultados de búsqueda."
+"en las listas, los informes o los resultados de búsqueda."
 
 #: app/CustomTags/BrothersKeeper.php:67 app/CustomTags/BrothersKeeper.php:108
 msgid "Permanent number"
@@ -11346,7 +11366,7 @@ msgstr ""
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
 msgstr ""
 "Los nombres de los lugares deben introducirse en una lista separada por "
-"comas, comenzando en la entidad más pequeña, y acabando en el país. Por "
+"comas, comenzando en la entidad más pequeña y acabando en el país. Por "
 "ejemplo, \"Pinto, Comunidad de Madrid, España\"."
 
 #: app/Gedcom.php:588
