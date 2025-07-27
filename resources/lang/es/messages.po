@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-07-26 19:41+0000\n"
+"PO-Revision-Date: 2025-07-27 16:11+0000\n"
 "Last-Translator: Juanjo-GM <juanjo@juanjo.se>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/es/>\n"
@@ -15091,8 +15091,7 @@ msgstr "Esta familia ha sido borrada. La supresión tendrá que ser aprobada por
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
-"Esta familia ha sido borrada. Debe revisar su borrado y luego %1$slo o "
-"%2$slo."
+"Esta familia ha sido borrada. Debe revisar su borrado y luego %1$s o %2$s."
 
 #: resources/views/family-page-pending.phtml:27
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
@@ -15105,8 +15104,7 @@ msgstr ""
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
-"Esta familia ha sido editada. Debe revisar los cambios y luego %1$slos o "
-"%2$slos."
+"Esta familia ha sido editada. Debe revisar los cambios y luego %1$s o %2$s."
 
 #: resources/views/admin/trees-renumber.phtml:32
 #, php-format
@@ -15178,8 +15176,8 @@ msgstr ""
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
-"Esta persona ha sido eliminada. Debe revisar la eliminación y entonces %1$"
-"sla o %2$sla."
+"Esta persona ha sido eliminada. Debe revisar el borrado y entonces %1$s o "
+"%2$s."
 
 #: resources/views/individual-page-pending.phtml:32
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
@@ -15191,8 +15189,7 @@ msgstr ""
 #: resources/views/individual-page-pending.phtml:29
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
-"Esta persona ha sido editada. Debe revisar los cambios y %1$slos o %2$slos."
+msgstr "Esta persona ha sido editada. Debe revisar los cambios y %1$s o %2$s."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml:100
@@ -15285,7 +15282,9 @@ msgstr ""
 #: resources/views/media-page-pending.phtml:18
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Este objeto audiovisual ha sido eliminado. Debe revisar la eliminación y %1$sla o %2$sla."
+msgstr ""
+"Este objeto audiovisual ha sido eliminado. Debe revisar el borrado y %1$s o "
+"%2$s."
 
 #: resources/views/media-page-pending.phtml:26
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
@@ -15297,7 +15296,9 @@ msgstr ""
 #: resources/views/media-page-pending.phtml:24
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Este objeto audiovisual ha sido cambiado. Debe revisar los cambios y %1$slos o %2$slos."
+msgstr ""
+"Este objeto audiovisual ha sido cambiado. Debe revisar los cambios y %1$s o "
+"%2$s."
 
 #: resources/views/emails/message-copy-html.phtml:35
 #: resources/views/emails/message-copy-text.phtml:25
@@ -15329,8 +15330,8 @@ msgstr "Esta nota ha sido borrada. El borrado deberá ser revisado por un modera
 #, php-format
 msgid "This note has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
-"Esta nota ha sido borrada. Debe revisar el borrado y entonces elegir %1$slo "
-"o %2$slo."
+"Esta nota ha sido borrada. Debe revisar el borrado y entonces elegir %1$s o "
+"%2$s."
 
 #: resources/views/note-page-pending.phtml:27
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
@@ -15341,8 +15342,8 @@ msgstr "Esta nota ha sido editada. Los cambios deben ser revisados por un modera
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
-"Esta nota ha sido editada. Debe revisar los cambios y entonces elegir %1$"
-"slos o %2$slos ."
+"Esta nota ha sido editada. Debe revisar los cambios y entonces elegir %1$s o "
+"%2$s ."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:534
@@ -15421,8 +15422,8 @@ msgstr "Este registro ha sido borrado. Esta acción debe ser revisada por un mod
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
-"Este registro ha sido eliminado. Debe revisar la eliminación y después %1$"
-"sla o %2$sla."
+"Este registro ha sido eliminado. Debe revisar el borrado y después %1$s o "
+"%2$s."
 
 #: resources/views/record-page-pending.phtml:27
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
@@ -15433,8 +15434,8 @@ msgstr "Este registro ha sido editado. Los cambios deben ser revisados por un mo
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
-"Este registro ha sido editado. Debe revisar los cambios y después %1$slos o "
-"%2$slos."
+"Este registro ha sido editado. Debe revisar los cambios y después %1$s o "
+"%2$s."
 
 #: app/Auth.php:463
 msgid "This repository does not exist or you do not have permission to view it."
@@ -17121,7 +17122,7 @@ msgstr "sobre %s"
 #: resources/views/record-page-pending.phtml:25
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr "aceptar"
+msgstr "aceptarlos"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:19
@@ -17131,7 +17132,7 @@ msgstr "aceptar"
 #: resources/views/record-page-pending.phtml:19
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr "aceptar"
+msgstr "aceptarlo"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:116
@@ -20273,7 +20274,7 @@ msgstr "registros"
 #: resources/views/record-page-pending.phtml:25
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr "rechazar"
+msgstr "rechazarlos"
 
 #: resources/views/family-page-pending.phtml:19
 #: resources/views/individual-page-pending.phtml:20
@@ -20282,7 +20283,7 @@ msgstr "rechazar"
 #: resources/views/record-page-pending.phtml:19
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
-msgstr "rechazar"
+msgstr "rechazarlo"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:118
