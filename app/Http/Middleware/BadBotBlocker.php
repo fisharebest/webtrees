@@ -34,6 +34,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function array_filter;
 use function array_map;
 use function assert;
+use function count;
 use function gethostbyaddr;
 use function gethostbyname;
 use function preg_match_all;
@@ -255,15 +256,25 @@ class BadBotBlocker implements MiddlewareInterface
             }
         }
 
+        $validated_bot =  false;
+
         foreach (self::ROBOT_REV_FWD_DNS as $robot => $valid_domains) {
-            if (str_contains($ua, $robot) && !$this->checkRobotDNS($ip, $valid_domains, false)) {
-                return $this->response();
+            if (str_contains($ua, $robot)) {
+                if ($this->checkRobotDNS($ip, $valid_domains, false)) {
+                    $validated_bot = true;
+                } else {
+                    return $this->response();
+                }
             }
         }
 
         foreach (self::ROBOT_REV_ONLY_DNS as $robot => $valid_domains) {
-            if (str_contains($ua, $robot) && !$this->checkRobotDNS($ip, $valid_domains, true)) {
-                return $this->response();
+            if (str_contains($ua, $robot)) {
+                if ($this->checkRobotDNS($ip, $valid_domains, true)) {
+                    $validated_bot = true;
+                } else {
+                    return $this->response();
+                }
             }
         }
 
@@ -274,6 +285,7 @@ class BadBotBlocker implements MiddlewareInterface
                 if (str_contains($ua, $robot)) {
                     foreach ($this->fetchIpRangesForAsn($asn) as $range) {
                         if ($range->contains($address)) {
+                            $validated_bot = true;
                             continue 2;
                         }
                     }
@@ -296,24 +308,37 @@ class BadBotBlocker implements MiddlewareInterface
         }
 
         // No Cookies?  Few headers?  Probably a robot.
-        if ($request->getCookieParams() === [] && count($request->getHeaders()) <= 10) {
-            // Claims to be a browser?
-            if (preg_match('~^Mozilla/5.0 \(.*\) AppleWebKit/[0-9.]+ \(KHTML, like Gecko\) Chrome/[0-9.]+ Safari/[0-9.]+$~', $ua) === 1) {
-                // Prove it by setting a cookie
-                $content =
-                    '<!DOCTYPE html>' .
-                    '<html lang="en">' .
-                    '<head>' .
-                    '<meta charset="utf-8">' .
-                    '<title>Cookie check</title>' .
-                    '<meta http-equiv="refresh" content="0">' .
-                    '</head>' .
-                    '<body>Cookie check</body>' .
-                    '</html>';
+        $has_cookies     = $request->getCookieParams() === [];
+        $has_few_headers = count($request->getHeaders()) <= 11;
+        $suspected_bot   = !$has_cookies && $has_few_headers;
 
-                return response($content)->withHeader('set-cookie', 'x=y; HttpOnly; SameSite=Strict');
-            }
+        // Robots often claim to be a browser.
+        $claims_to_be_human =
+            str_contains($ua, 'Chrome/') ||
+            str_contains($ua, 'Firefox/') ||
+            str_contains($ua, 'Opera/') ||
+            str_contains($ua, 'Safari/')
+        ;
 
+        // Validated bots (such as google and bing) use headless browsers.  This is OK.
+        // Anyone else claiming to be a browser needs to prove it by setting a cookie.
+        if (!$validated_bot && $claims_to_be_human && !$has_cookies) {
+            $content =
+                '<!DOCTYPE html>' .
+                '<html lang="en">' .
+                '<head>' .
+                '<meta charset="utf-8">' .
+                '<title>Cookie check</title>' .
+                '<meta http-equiv="refresh" content="0">' .
+                '</head>' .
+                '<body>Cookie check</body>' .
+                '</html>';
+
+            return $this->response($content)->withHeader('set-cookie', 'x=y; HttpOnly; SameSite=Strict');
+        }
+
+        // Bots get restricted access
+        if ($validated_bot || $suspected_bot) {
             $request = $request->withAttribute(self::ROBOT_ATTRIBUTE_NAME, true);
         }
 
