@@ -305,7 +305,7 @@ class BadBotBlocker implements MiddlewareInterface
         }
 
         // No Cookies?  Few headers?  Probably a robot.
-        $has_cookies     = $request->getCookieParams() === [];
+        $has_cookies     = $request->getCookieParams() !== [];
         $has_few_headers = count($request->getHeaders()) <= 11;
         $suspected_bot   = !$has_cookies && $has_few_headers;
 
