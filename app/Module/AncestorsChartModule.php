@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -79,6 +80,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST)
+            ->extras(['middleware' => [AuthNotRobot::class]])
             ->tokens([
                 'generations' => '\d+',
                 'style'       => implode('|', array_keys($this->styles())),

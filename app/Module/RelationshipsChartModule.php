@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -108,6 +109,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST)
+            ->extras(['middleware' => [AuthNotRobot::class]])
             ->tokens([
                 'ancestors' => '\d+',
                 'recursion' => '\d+',
