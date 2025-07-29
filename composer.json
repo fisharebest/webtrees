@@ -106,6 +106,8 @@
             "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
             "@composer install --no-dev --quiet",
             "cp -r vendor/ webtrees/vendor/",
+            "echo 'Workaround for orphaned file from Laravel 8 (webtrees 2.1) that breaks Laravel 11 (webtrees 2.2)'",
+            "echo \"<?php require __DIR__ . '/../../conditionable/Traits/Conditionable.php';\" > webtrees/vendor/illuminate/support/Traits/Conditionable.php",
             "php index.php compile-po-files",
             "for FILE in resources/lang/*/messages.php; do cp $FILE webtrees/$FILE; done",
             "zip --quiet --recurse-paths --move -9 webtrees-`git describe`.zip webtrees"
