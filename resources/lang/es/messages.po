@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-07-27 16:11+0000\n"
+"PO-Revision-Date: 2025-07-30 21:31+0000\n"
 "Last-Translator: Juanjo-GM <juanjo@juanjo.se>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/es/>\n"
@@ -6801,7 +6801,7 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr ""
 "Por ejemplo, si especifica una longitud de 2, la persona será capaz de ver a "
 "su nieto (hijo de su hijo/a), a su tía (hermana de sus padres), a su "
-"hijastra (hija de su otra esposa), pero no a su primo hermano (hijo de un/a "
+"hijastra (hija de su esposa), pero no a su primo hermano (hijo de un/a "
 "hermano/a de sus padres)."
 
 #: resources/views/help/data-fixes.phtml:12
