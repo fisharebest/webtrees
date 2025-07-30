@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-07-27 16:11+0000\n"
+"PO-Revision-Date: 2025-07-30 21:31+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sv/>\n"
@@ -859,7 +859,12 @@ msgstr "Lista över användare och gäster som är nu on-line."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "Ett media objekt är en post i släktträdet som innehåller information om en media fil. Denna information kan inkludera en titel, ett meddelande om upphovsrätt, en avskrift, privata begränsningar, etc. Media filen, som foto eller video, kan lagras lokalt (på denna webbserver) eller på distans (på en annan webbserver)."
+msgstr ""
+"Ett mediaobjekt är en post i släktträdet som innehåller information om en "
+"mediafil. Denna information kan inkludera en titel, upphovsrättsinformation, "
+"en transkription, sekretessbegränsningar osv. Själva mediafilen, till "
+"exempel ett foto eller en video, kan lagras lokalt (på denna webbserver) "
+"eller externt (på en annan webbserver)."
 
 #: login.php:264
 #, php-format
@@ -9486,7 +9491,7 @@ msgstr "Mitt släktträd"
 
 #: app/Module/UserWelcomeModule.php:61 app/Theme/AbstractTheme.php:1614
 msgid "My individual record"
-msgstr "Min personliga datapost"
+msgstr "Min personsida"
 
 #. I18N: Name of a module
 #: admin_modules.php:226 app/Module/UserWelcomeModule.php:29
