@@ -41,7 +41,7 @@ class AuthNotRobot implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if ($request->getAttribute(BadBotBlocker::ROBOT_ATTRIBUTE_NAME) !== null) {
-            return response('Not acceptable', StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
+            return response('Not acceptable: routing', StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
         }
 
         return $handler->handle($request);
