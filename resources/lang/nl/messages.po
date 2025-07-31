@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-07-31 08:26+0000\n"
+"PO-Revision-Date: 2025-08-01 08:59+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -4449,7 +4449,7 @@ msgstr "Niet-standaard feit"
 
 #: resources/views/admin/custom-module-info.phtml:12
 msgid "Custom module"
-msgstr "Niet-standaardmodule"
+msgstr "Uitbreidingsmodule"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:38
