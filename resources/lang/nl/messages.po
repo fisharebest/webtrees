@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-07-31 08:17+0000\n"
+"PO-Revision-Date: 2025-08-01 09:00+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/nl/>\n"
@@ -4321,7 +4321,7 @@ msgstr "Vrij te kiezen gebeurtenis"
 
 #: resources/views/admin/custom-module-info.phtml:14
 msgid "Custom module"
-msgstr "Niet-standaardmodule"
+msgstr "Uitbreidingsmodule"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:38
