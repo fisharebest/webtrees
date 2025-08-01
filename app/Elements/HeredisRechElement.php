@@ -20,12 +20,28 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 /**
- * An empty element with no data - only child elements.
+ * Heredis custom tag *:*:_RECH - Research data of an event.
  */
-class Coordinates extends EmptyElement
+class HeredisRechElement extends EmptyElement
 {
     protected const array SUBTAGS = [
-        'LATI' => '1:1',
-        'LONG' => '1:1',
+        '_PROJ' => '0:1',
+        'TYPE'  => '0:1',
+        'PLAC'  => '0:1',
+        'DATE'  => '0:1',
+        'REFN'  => '0:1',
+        'WWW'   => '0:1',
+        'NOTE'  => '0:1',
     ];
+
+    /**
+     * Should we collapse the children of this element when editing?
+     * FIXME: label is not shown, it does not have a control to collapse
+     *
+     * @return bool
+     */
+    public function collapseChildren(): bool
+    {
+        return true;
+    }
 }
