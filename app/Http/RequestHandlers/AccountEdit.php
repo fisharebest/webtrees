@@ -28,6 +28,8 @@ use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\QrcodeService;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -47,14 +49,18 @@ class AccountEdit implements RequestHandlerInterface
 
     private ModuleService $module_service;
 
+    private QrcodeService $qrcode_service;
+
     /**
      * @param MessageService $message_service
      * @param ModuleService  $module_service
+     * @param QrcodeService  $qrcode_service
      */
-    public function __construct(MessageService $message_service, ModuleService $module_service)
+    public function __construct(MessageService $message_service, ModuleService $module_service, QrcodeService $qrcode_service)
     {
         $this->message_service = $message_service;
         $this->module_service = $module_service;
+        $this->qrcode_service = $qrcode_service;
     }
 
     /**
@@ -83,6 +89,7 @@ class AccountEdit implements RequestHandlerInterface
             });
 
         $show_delete_option = $user->getPreference(UserInterface::PREF_IS_ADMINISTRATOR) !== '1';
+        $show_2fa = Site::getPreference('SHOW_2FA_OPTION') === '1';
         $timezone_ids       = DateTimeZone::listIdentifiers();
         $timezones          = array_combine($timezone_ids, $timezone_ids);
         $title              = I18N::translate('My account');
@@ -93,6 +100,8 @@ class AccountEdit implements RequestHandlerInterface
             'languages'            => $languages->all(),
             'my_individual_record' => $my_individual_record,
             'show_delete_option'   => $show_delete_option,
+            'show_2fa'             => $show_2fa,
+            'qrcode'               => $this->qrcode_service->genQRcode($user),
             'timezones'            => $timezones,
             'title'                => $title,
             'tree'                 => $tree,

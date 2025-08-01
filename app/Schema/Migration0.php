@@ -61,6 +61,7 @@ class Migration0 implements MigrationInterface
             $table->string('real_name', 64);
             $table->string('email', 64);
             $table->string('password', 128);
+            $table->string('secret', 128);
 
             $table->unique('user_name');
             $table->unique('email');

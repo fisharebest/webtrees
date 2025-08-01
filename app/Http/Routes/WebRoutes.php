@@ -142,6 +142,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\LinkSpouseToIndividualPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\LocationPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\LoginPageMfa;
 use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaData;
@@ -646,6 +647,7 @@ class WebRoutes
             // Visitor routes - with an optional tree (for sites with no public trees).
             $router->attach('', '', static function (Map $router) {
                 $router->get(LoginPage::class, '/login{/tree}');
+                $router->get(LoginPageMfa::class, '/loginmfa{/tree}');
                 $router->post(LoginAction::class, '/login{/tree}');
                 $router->get(PasswordRequestPage::class, '/password-request{/tree}');
                 $router->post(PasswordRequestAction::class, '/password-request{/tree}');

@@ -29,6 +29,8 @@ use Fisharebest\Webtrees\Tree;
 
 <form method="post" action="<?= e(route(LoginAction::class, ['tree' => $tree?->name()])) ?>" class="wt-page-options wt-page-options-login">
     <input type="hidden" name="url" value="<?= e($url) ?>">
+    <input type="hidden" id="loginstage" name="loginstage" value="1">
+
 
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="username">
@@ -47,7 +49,6 @@ use Fisharebest\Webtrees\Tree;
             <input autocomplete="current-password" class="form-control" id="password" name="password" required="required" type="password" data-wt-show-password-text="<?= e(I18N::translate('show')) ?>" data-wt-show-password-title="<?= e(I18N::translate('Show password')) ?>" data-wt-hide-password-text="<?= e(I18N::translate('hide')) ?>" data-wt-hide-password-title="<?= e(I18N::translate('Hide password')) ?>">
         </div>
     </div>
-
     <div class="row">
         <div class="col-sm-3 col-form-label wt-page-options-label">
         </div>

@@ -32,6 +32,7 @@ interface UserInterface
     public const string PREF_IS_EMAIL_VERIFIED    = 'verified';
     public const string PREF_IS_VISIBLE_ONLINE    = 'visibleonline';
     public const string PREF_LANGUAGE             = 'language';
+    public const string PREF_IS_STATUS_MFA        = 'statusmfa';
     public const string PREF_NEW_ACCOUNT_COMMENT  = 'comment';
     public const string PREF_TIMESTAMP_REGISTERED = 'reg_timestamp';
     public const string PREF_TIMESTAMP_ACTIVE     = 'sessiontime';
@@ -72,7 +73,6 @@ interface UserInterface
      * @return string
      */
     public function realName(): string;
-
     /**
      * The user‘s login name.
      *
