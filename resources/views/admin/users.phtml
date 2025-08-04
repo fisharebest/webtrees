@@ -43,7 +43,7 @@ use Fisharebest\Webtrees\View;
 
 <?php View::push('javascript') ?>
 <script>
-  $(".table-user-list").dataTable({
+  dt = $(".table-user-list").dataTable({
     processing:          true,
     serverSide:          true,
     ajax:                {
@@ -64,7 +64,10 @@ use Fisharebest\Webtrees\View;
       /* last_login        */ {dataSort: 8},
       /* verified          */ null,
       /* approved          */ null
-    ]
-  }).fnFilter("<?= e($filter) ?>"); // Pre-fill the search box
+    ],
+    search: {
+      search: "<?= e($filter) ?>" // Pre-fill the search box
+    }
+  });
 </script>
 <?php View::endpush() ?>
