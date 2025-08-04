@@ -350,7 +350,6 @@ class BadBotBlocker implements MiddlewareInterface
         if (str_starts_with($path, '/xmlrpc.php') || str_starts_with($path, '/wp-')) {
             return $this->response('Not acceptable: not-wp');
         }
-        $request = $request->withAttribute(self::ROBOT_ATTRIBUTE_NAME, true);
 
         return $handler->handle($request);
     }
