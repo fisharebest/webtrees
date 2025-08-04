@@ -286,7 +286,7 @@ class MediaFileService
 
         return $query
             ->orderBy(new Expression('setting_value || multimedia_file_refn'))
-            ->pluck(new Expression('setting_value || multimedia_file_refn'));
+            ->pluck(new Expression('setting_value || multimedia_file_refn AS value'));
     }
 
     /**
@@ -338,7 +338,7 @@ class MediaFileService
                     ->where('setting_name', '=', 'MEDIA_DIRECTORY');
             })
             ->where('gedcom.gedcom_id', '>', '0')
-            ->pluck(new Expression("COALESCE(setting_value, 'media/')"))
+            ->pluck(new Expression("COALESCE(setting_value, 'media/') AS value"))
             ->uniqueStrict();
 
         $disk_folders = new Collection($media_roots);
