@@ -117,11 +117,6 @@
             "for FILE in resources/lang/*/messages.php; do cp $FILE webtrees/$FILE; done",
             "zip --quiet --recurse-paths --move -9 webtrees-`git describe`.zip webtrees"
         ],
-        "webtrees:pre-commit-hook": [
-            "@composer webtrees:phpcs",
-            "@composer webtrees:phpstan",
-            "@composer webtrees:test"
-        ],
         "webtrees:phpcs": [
             "vendor/bin/phpcs --colors --exclude=Generic.Files.LineLength index.php app tests"
         ],
