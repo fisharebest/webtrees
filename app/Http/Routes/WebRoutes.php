@@ -662,11 +662,8 @@ class WebRoutes
                 $router->get(VerifyEmail::class, '/verify/{username}/{token}{/tree}');
             });
 
-            // Visitor routes with a tree.
+            // Visitor routes with a tree (robots allowed).
             $router->attach('', '/tree/{tree}', static function (Map $router) {
-                $router->get(AutoCompleteSurname::class, '/autocomplete/surname');
-                $router->get(ContactPage::class, '/contact');
-                $router->post(ContactAction::class, '/contact');
                 $router->get(FamilyPage::class, '/family/{xref}{/slug}')->tokens(['slug' => '.*']);
                 $router->get(HeaderPage::class, '/header/{xref}{/slug}')->tokens(['slug' => '.*']);
                 $router->get(IndividualPage::class, '/individual/{xref}{/slug}')->tokens(['slug' => '.*']);
@@ -678,32 +675,9 @@ class WebRoutes
                 $router->get(SharedNotePage::class, '/shared-note/{xref}{/slug}')->tokens(['slug' => '.*']);
                 $router->get(GedcomRecordPage::class, '/record/{xref}{/slug}')->tokens(['slug' => '.*']);
                 $router->get(RepositoryPage::class, '/repository/{xref}{/slug}')->tokens(['slug' => '.*']);
-                $router->get(ReportListPage::class, '/report');
-                $router->post(ReportListAction::class, '/report');
-                $router->get(ReportSetupPage::class, '/report/{report}');
-                $router->post(ReportSetupAction::class, '/report/{report}');
-                $router->get(ReportGenerate::class, '/report-run/{report}');
-                $router->get(SearchAdvancedPage::class, '/search-advanced');
-                $router->post(SearchAdvancedAction::class, '/search-advanced');
-                $router->get(SearchGeneralPage::class, '/search-general');
-                $router->post(SearchGeneralAction::class, '/search-general');
-                $router->get(SearchPhoneticPage::class, '/search-phonetic');
-                $router->post(SearchPhoneticAction::class, '/search-phonetic');
-                $router->post(SearchQuickAction::class, '/search-quick');
                 $router->get(SourcePage::class, '/source/{xref}{/slug}')->tokens(['slug' => '.*']);
                 $router->get(SubmissionPage::class, '/submission/{xref}{/slug}')->tokens(['slug' => '.*']);
                 $router->get(SubmitterPage::class, '/submitter/{xref}{/slug}')->tokens(['slug' => '.*']);
-                $router->get(TomSelectFamily::class, '/tom-select-family');
-                $router->get(TomSelectIndividual::class, '/tom-select-individual');
-                $router->get(TomSelectLocation::class, '/tom-select-location');
-                $router->get(TomSelectMediaObject::class, '/tom-select-media');
-                $router->get(TomSelectNote::class, '/tom-select-note');
-                $router->get(TomSelectSharedNote::class, '/tom-select-shared-note');
-                $router->get(TomSelectPlace::class, '/tom-select-place');
-                $router->get(TomSelectSource::class, '/tom-select-source');
-                $router->get(TomSelectSubmission::class, '/tom-select-submission');
-                $router->get(TomSelectSubmitter::class, '/tom-select-submitter');
-                $router->get(TomSelectRepository::class, '/tom-select-repository');
                 $router->get(TreePage::class, '');
                 $router->get(TreePageBlock::class, '/tree-page-block');
                 $router->get('example', '/…')->isRoutable(false);
@@ -717,9 +691,35 @@ class WebRoutes
                     ],
                 ]);
 
+                $router->get(AutoCompleteSurname::class, '/autocomplete/surname');
+                $router->get(ContactPage::class, '/contact');
+                $router->post(ContactAction::class, '/contact');
                 $router->get(CalendarPage::class, '/calendar/{view}');
                 $router->post(CalendarAction::class, '/calendar/{view}');
                 $router->get(CalendarEvents::class, '/calendar-events/{view}');
+                $router->get(ReportListPage::class, '/report');
+                $router->post(ReportListAction::class, '/report');
+                $router->get(ReportSetupPage::class, '/report/{report}');
+                $router->post(ReportSetupAction::class, '/report/{report}');
+                $router->get(ReportGenerate::class, '/report-run/{report}');
+                $router->get(SearchAdvancedPage::class, '/search-advanced');
+                $router->post(SearchAdvancedAction::class, '/search-advanced');
+                $router->get(SearchGeneralPage::class, '/search-general');
+                $router->post(SearchGeneralAction::class, '/search-general');
+                $router->get(SearchPhoneticPage::class, '/search-phonetic');
+                $router->post(SearchPhoneticAction::class, '/search-phonetic');
+                $router->post(SearchQuickAction::class, '/search-quick');
+                $router->get(TomSelectFamily::class, '/tom-select-family');
+                $router->get(TomSelectIndividual::class, '/tom-select-individual');
+                $router->get(TomSelectLocation::class, '/tom-select-location');
+                $router->get(TomSelectMediaObject::class, '/tom-select-media');
+                $router->get(TomSelectNote::class, '/tom-select-note');
+                $router->get(TomSelectSharedNote::class, '/tom-select-shared-note');
+                $router->get(TomSelectPlace::class, '/tom-select-place');
+                $router->get(TomSelectSource::class, '/tom-select-source');
+                $router->get(TomSelectSubmission::class, '/tom-select-submission');
+                $router->get(TomSelectSubmitter::class, '/tom-select-submitter');
+                $router->get(TomSelectRepository::class, '/tom-select-repository');
             });
 
             // Match module routes, with and without a tree.
