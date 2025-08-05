@@ -19,13 +19,23 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-/**
- * An empty element with no data - only child elements.
- */
-class Coordinates extends EmptyElement
+use PHPUnit\Framework\Attributes\CoversClass;
+
+#[CoversClass(AbstractElement::class)]
+#[CoversClass(CustomBooleanFact::class)]
+class CustomBooleanFactTest extends AbstractElementTestCase
 {
-    protected const array SUBTAGS = [
-        'LATI' => '1:1',
-        'LONG' => '1:1',
-    ];
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        self::$element = new CustomBooleanFact('label');
+    }
+
+    public function testCanonical(): void
+    {
+        self::assertSame('Y', self::$element->canonical(' y '));
+        self::assertSame('Y', self::$element->canonical('YES'));
+        self::assertSame('N', self::$element->canonical('NO'));
+    }
 }
