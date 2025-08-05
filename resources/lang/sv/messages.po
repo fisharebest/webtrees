@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-07-30 21:31+0000\n"
+"PO-Revision-Date: 2025-08-06 06:50+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sv/>\n"
@@ -15082,7 +15082,11 @@ msgstr "Detta är en lista med GEDCOM-fakta som dina användare kan lägga till 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:686
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "Detta är en lista med GEDCOM-fakta som dina användare kan lägga till till en person. Du kan modifiera denna lista genom att ta bort eller lägga till faktanamn, även egna, efter behov. Faktanamn som visas i denna lista får inte också finnas i <i>Unika personfakta</i>-listan."
+msgstr ""
+"Detta är listan med GEDCOM-fakta som dina användare kan lägga till på "
+"personer. Du kan ändra listan genom att ta bort eller lägga till faktanamn, "
+"även anpassade, vid behov. Faktanamn som finns i denna lista får inte också "
+"finnas i listan \"Unik personfakta\"."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:835
@@ -16142,7 +16146,7 @@ msgstr "Uppdatera de högre nivåerna av ortnamn samtidigt som du behåller de l
 #: resources/views/admin/control-panel.phtml:166
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "Uppgradera till webtrees v. %s."
+msgstr "Uppgradera till webtrees %s."
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:81
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
@@ -16873,7 +16877,8 @@ msgstr "Du skickade följande meddelande till ett webtrees användarkonto:"
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:213
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr "Du bör acceptera eller ignorera alla väntande ändringar innan du uppgraderar."
+msgstr ""
+"Du bör acceptera eller avvisa alla väntande ändringar innan du uppgraderar."
 
 #. I18N: e.g. ‘You should delete the “https://” from “https://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:133
@@ -16936,7 +16941,10 @@ msgstr "Ditt användarkonto har inte ”automatiskt acceptera förändringar” 
 #: app/Services/ServerCheckService.php:198
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
-msgstr "Din webbserver använder PHP versionen %s, som inte längre tar emot säkerhetsuppdateringar. Du bör uppgradera till en senare version så snart som möjligt."
+msgstr ""
+"Din webbserver använder PHP version %s, som inte längre får "
+"säkerhetsuppdateringar. Du bör uppgradera till en nyare version så snart som "
+"möjligt."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
