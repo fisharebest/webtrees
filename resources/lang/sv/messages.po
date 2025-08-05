@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-07-30 21:31+0000\n"
+"PO-Revision-Date: 2025-08-06 06:50+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sv/>\n"
@@ -15988,7 +15988,7 @@ msgstr "Uppdaterad"
 #: resources/views/admin/control-panel.phtml:205
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "Uppgradera till webtrees v. %s."
+msgstr "Uppgradera till webtrees %s."
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:78
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:117
@@ -16688,7 +16688,8 @@ msgstr "Du skickade följande meddelande till ett webtrees användarkonto:"
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:194
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr "Du bör acceptera eller ignorera alla väntande ändringar innan du uppgraderar."
+msgstr ""
+"Du bör acceptera eller avvisa alla väntande ändringar innan du uppgraderar."
 
 #. I18N: e.g. ‘You should delete the “https://” from “https://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:123
@@ -16747,7 +16748,10 @@ msgstr "Din registrering på %s"
 #: app/Services/ServerCheckService.php:195
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
-msgstr "Din webbserver använder PHP versionen %s, som inte längre tar emot säkerhetsuppdateringar. Du bör uppgradera till en senare version så snart som möjligt."
+msgstr ""
+"Din webbserver använder PHP version %s, som inte längre får "
+"säkerhetsuppdateringar. Du bör uppgradera till en nyare version så snart som "
+"möjligt."
 
 #. I18N: ZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:40
