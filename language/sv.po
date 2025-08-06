@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-08-06 06:50+0000\n"
+"PO-Revision-Date: 2025-08-06 22:22+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sv/>\n"
@@ -3111,7 +3111,7 @@ msgstr "Bulgarien"
 #: modules_v3/family_group_report/report.xml:1049
 #: modules_v3/missing_facts_report/report.xml:25
 msgid "Burial"
-msgstr "Begravning"
+msgstr "Gravsättning"
 
 #: app/GedcomTag.php:1177
 msgid "Burial of a brother"
