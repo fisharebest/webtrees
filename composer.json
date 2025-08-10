@@ -47,7 +47,7 @@
         "ext-session": "*",
         "ext-xml": "*",
         "aura/router": "3.4.2",
-        "doctrine/dbal": "3.10.0",
+        "doctrine/dbal": "3.10.1",
         "ezyang/htmlpurifier": "4.18.0",
         "fig/http-message-util": "1.1.5",
         "fisharebest/algorithm": "1.6.0",
@@ -91,11 +91,11 @@
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.8.0",
         "phpstan/extension-installer": "1.4.3",
-        "phpstan/phpstan": "2.1.19",
+        "phpstan/phpstan": "2.1.22",
         "phpstan/phpstan-deprecation-rules": "2.0.3",
         "phpstan/phpstan-phpunit": "2.0.7",
         "phpstan/phpstan-strict-rules": "2.0.6",
-        "phpunit/phpunit": "9.6.23",
+        "phpunit/phpunit": "9.6.24",
         "squizlabs/php_codesniffer": "4.0.0-RC1"
     },
     "suggest": {

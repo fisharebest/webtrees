@@ -7693,6 +7693,12 @@ parameters:
 			path: app/Services/GedcomImportService.php
 
 		-
+			message: '#^Strict comparison using \!\=\= between ''FILE'' and ''NOTE'' will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: app/Services/GedcomImportService.php
+
+		-
 			message: '#^Access to an undefined property object\:\:\$module_name\.$#'
 			identifier: property.notFound
 			count: 2
@@ -10439,12 +10445,6 @@ parameters:
 			identifier: method.nonObject
 			count: 4
 			path: tests/app/Services/UserServiceTest.php
-
-		-
-			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertIsString\(\) with string will always evaluate to true\.$#'
-			identifier: staticMethod.alreadyNarrowedType
-			count: 1
-			path: tests/app/TreeTest.php
 
 		-
 			message: '#^Parameter \#1 \$values of method Fisharebest\\Webtrees\\Validator\:\:isInArrayKeys\(\) expects array\<string\>, array\<string, int\> given\.$#'
