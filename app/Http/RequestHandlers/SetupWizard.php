@@ -136,7 +136,11 @@ class SetupWizard implements RequestHandlerInterface
 
         $data['cpu_limit']    = $this->php_service->maxExecutionTime();
         $data['locales']      = $locales;
-        $data['memory_limit'] = intdiv($this->php_service->memoryLimit(), 1024*1024);
+        $memoryLimit = $this->php_service->memoryLimit();
+        if ($memoryLimit != -1) {
+            $memoryLimit = intdiv($memoryLimit, 1024*1024);
+        }
+        $data['memory_limit'] = $memoryLimit;
 
         // Only show database errors after the user has chosen a driver.
         if ($step >= 4) {
