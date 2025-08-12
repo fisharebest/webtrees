@@ -68,7 +68,7 @@ class AccountUpdate implements RequestHandlerInterface
         $real_name      = Validator::parsedBody($request)->string('real_name');
         $password       = Validator::parsedBody($request)->string('password');
         $time_zone      = Validator::parsedBody($request)->string('timezone');
-        $user_name      = Validator::parsedBody($request)->string('user_name');
+        $username       = Validator::parsedBody($request)->string('user_name');
         $visible_online = Validator::parsedBody($request)->boolean('visible-online', false);
 
         // Change the password
@@ -76,21 +76,27 @@ class AccountUpdate implements RequestHandlerInterface
             $user->setPassword($password);
         }
 
-        // Change the username
-        if ($user_name !== $user->userName()) {
-            if ($this->user_service->findByUserName($user_name) === null) {
-                $user->setUserName($user_name);
+        // Changing the email address - make sure it isn't used by another user.
+        if ($user->email() !== $email) {
+            $existing = $this->user_service->findByEmail($email);
+
+            if ($existing instanceof User && $existing->id() !== $user->id()) {
+                $message = I18N::translate('Duplicate email address. A user with that email already exists.');
+                FlashMessages::addMessage($message, 'danger');
             } else {
-                FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
+                $user->setEmail($email);
             }
         }
 
-        // Change the email
-        if ($email !== $user->email()) {
-            if ($this->user_service->findByEmail($email) === null) {
-                $user->setEmail($email);
+        // Changing the username - make sure it isn't used by another user
+        if ($user->userName() !== $username) {
+            $existing = $this->user_service->findByUserName($username);
+
+            if ($existing instanceof User && $existing->id() !== $user->id()) {
+                $message = I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.');
+                FlashMessages::addMessage($message, 'danger');
             } else {
-                FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
+                $user->setUserName($username);
             }
         }
 
