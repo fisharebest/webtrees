@@ -75,7 +75,7 @@ use Illuminate\Support\Collection;
     </p>
 
     <p class="alert alert-<?= $memory_limit > 0 && $memory_limit < 33554432 || $cpu_limit > 0 && $cpu_limit < 20 ? 'danger' : 'success' ?>">
-        <?= I18N::translate('This server’s memory limit is %s MB and its CPU time limit is %s seconds.', $memory_limit <= 0 ? '∞' : I18N::number(intdiv($memory_limit, 1048576)), I18N::number($cpu_limit)) ?>
+        <?= I18N::translate('This server’s memory limit is %s MB and its CPU time limit is %s seconds.', $memory_limit <= 0 ? I18N::translate('unlimited') : I18N::number(intdiv($memory_limit, 1048576)), I18N::number($cpu_limit)) ?>
     </p>
 
     <p>
