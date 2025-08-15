@@ -138,7 +138,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         Registry::elementFactory()->registerTags([
             'INDI:EVEN:CEME'      => new CustomElement(I18N::translate('Cemetery')),
             'INDI:EVEN:_GODP'     => new CustomElement(I18N::translate('Godparent')),
-            'INDI:EVEN:FAMC'      => new XrefFamily(I18N::translate('Adoptive parents')),
+            'INDI:EVEN:FAMC'      => new XrefFamily(I18N::translate('Parents')), // Could come from BIRT or ADOP
             'INDI:EVEN:FAMC:ADOP' => new AdoptedByWhichParent(I18N::translate('Adoption')),
         ]);
 

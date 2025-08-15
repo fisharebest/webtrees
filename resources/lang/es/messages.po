@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-07-30 21:31+0000\n"
-"Last-Translator: Juanjo-GM <juanjo@juanjo.se>\n"
+"PO-Revision-Date: 2025-08-13 08:48+0000\n"
+"Last-Translator: Elián Hanisch <lambdae2@gmail.com>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/es/>\n"
 "Language: es\n"
@@ -6278,7 +6278,7 @@ msgstr "Árboles genealógicos"
 #: app/Individual.php:889
 #, php-format
 msgid "Family with %s"
-msgstr "Familia de %s"
+msgstr "Familia con %s"
 
 #: app/Individual.php:818
 msgid "Family with adoptive parents"
@@ -15579,7 +15579,7 @@ msgstr "Hora"
 #: app/CustomTags/Aldfaer.php:71 app/CustomTags/Gedcom7.php:124
 #: app/CustomTags/ProGen.php:56
 msgid "Time of birth"
-msgstr "Fecha de nacimiento"
+msgstr "Hora de nacimiento"
 
 #: resources/views/admin/tags.phtml:960
 msgid "Time of birth and time of death"
