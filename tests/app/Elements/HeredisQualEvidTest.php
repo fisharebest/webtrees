@@ -19,13 +19,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-/**
- * An empty element with no data - only child elements.
- */
-class Coordinates extends EmptyElement
+use PHPUnit\Framework\Attributes\CoversClass;
+
+#[CoversClass(AbstractElement::class)]
+#[CoversClass(HeredisQualEvid::class)]
+class HeredisQualEvidTest extends AbstractElementTestCase
 {
-    protected const array SUBTAGS = [
-        'LATI' => '1:1',
-        'LONG' => '1:1',
-    ];
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        self::$element = new HeredisQualEvid('label');
+    }
+
+    public function testValues(): void
+    {
+        self::assertArrayHasKey('N', self::$element->values());
+    }
 }
