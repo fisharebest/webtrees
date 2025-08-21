@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-07-31 23:55+0000\n"
+"PO-Revision-Date: 2025-08-21 17:35+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
@@ -5081,7 +5081,7 @@ msgstr "Het hangt van uw server configuratie af of u automatisch kunt upgraden."
 
 #: familybook.php:90
 msgid "Descendant generations"
-msgstr "Afstammings generaties"
+msgstr "Afstammingsgeneraties"
 
 #. I18N: gedcom tag DESC
 #. I18N: Name of a module/chart
