@@ -263,6 +263,7 @@ class GedcomEditService
         $next_level = substr_count($tag, ':') + 1;
         $factory    = Registry::elementFactory();
         $subtags    = $factory->make($tag)->subtags();
+        $hasUid     = str_contains($gedcom, "\n1 _UID ");
 
         // The first part is level N.  The remainder are level N+1.
         $parts  = preg_split('/\n(?=' . $next_level . ')/', $gedcom);
@@ -297,7 +298,7 @@ class GedcomEditService
             }
 
             // Allowed to have more of this subtag?
-            if ($count < $max) {
+            if ($count < $max && (($subtag != '_UID') || ($subtag == '_UID' && !$hasUid))) {
                 // Create a new one.
                 $gedcom  = $next_level . ' ' . $subtag;
                 $default = $factory->make($tag . ':' . $subtag)->default($tree);
