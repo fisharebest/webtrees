@@ -445,8 +445,14 @@ class Fact
      */
     public function label(): string
     {
-        if (str_ends_with($this->tag(), ':NOTE') && preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $this->value())) {
-            return I18N::translate('Shared note');
+        if (str_ends_with($this->tag(), ':NOTE') && preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $this->value(), $match)) {
+            $note = Registry::noteFactory()->make($match[1], $this->record->tree());
+
+            if ($note === null || !$note->canShow()) {
+                return I18N::translate('Shared note');
+            } else {
+                return '<a href="' . e($note->url()) . '">' . I18N::translate('Shared note') . '</a>';
+            }
         }
 
         // Marriages
