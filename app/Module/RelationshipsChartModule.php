@@ -60,6 +60,7 @@ use function redirect;
 use function response;
 use function route;
 use function sort;
+use function var_dump;
 use function view;
 
 /**
@@ -197,17 +198,17 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        $tree           = $individual->tree();
-        $ancestors_only = (int) $tree->getPreference('RELATIONSHIP_ANCESTORS', static::DEFAULT_ANCESTORS);
-        $max_recursion  = (int) $tree->getPreference('RELATIONSHIP_RECURSION', static::DEFAULT_RECURSION);
+        $tree = $individual->tree();
 
+        $default_parameters = [
+            'ancestors' => (int) $tree->getPreference('RELATIONSHIP_ANCESTORS', static::DEFAULT_ANCESTORS),
+            'recursion' => (int) $tree->getPreference('RELATIONSHIP_RECURSION', static::DEFAULT_RECURSION),
+        ];
 
         return route(static::class, [
-            'xref'      => $individual->xref(),
-            'tree'      => $individual->tree()->name(),
-            'ancestors' => $ancestors_only,
-            'recursion' => $max_recursion,
-        ] + $parameters);
+            'xref' => $individual->xref(),
+            'tree' => $tree->name(),
+        ] + $parameters + $default_parameters);
     }
 
     /**
@@ -221,8 +222,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         $xref      = Validator::attributes($request)->isXref()->string('xref');
         $xref2     = Validator::attributes($request)->isXref()->string('xref2', '');
         $ajax      = Validator::queryParams($request)->boolean('ajax', false);
-        $ancestors = (int) $request->getAttribute('ancestors');
-        $recursion = (int) $request->getAttribute('recursion');
+        $ancestors = Validator::attributes($request)->integer('ancestors');
+        $recursion = Validator::attributes($request)->integer('recursion');
         $user      = Validator::attributes($request)->user();
 
         // Convert POST requests into GET requests for pretty URLs.

@@ -5767,12 +5767,6 @@ parameters:
 			path: app/Module/RelationshipsChartModule.php
 
 		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 2
-			path: app/Module/RelationshipsChartModule.php
-
-		-
 			message: '#^Cannot cast mixed to string\.$#'
 			identifier: cast.string
 			count: 1
