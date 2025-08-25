@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Factories;
 
 use Fisharebest\Webtrees\CommonMark\CensusTableExtension;
 use Fisharebest\Webtrees\CommonMark\XrefExtension;
+use Fisharebest\Webtrees\CommonMark\UidExtension;
 use Fisharebest\Webtrees\Contracts\MarkdownFactoryInterface;
 use Fisharebest\Webtrees\Tree;
 use League\CommonMark\Environment\Environment;
@@ -98,6 +99,7 @@ class MarkdownFactory implements MarkdownFactoryInterface
         // Optionally create links to other records.
         if ($tree instanceof Tree) {
             $environment->addExtension(new XrefExtension($tree));
+            $environment->addExtension(new UidExtension($tree));
         }
 
         $converter = new MarkDownConverter($environment);
@@ -129,6 +131,7 @@ class MarkdownFactory implements MarkdownFactoryInterface
         // Optionally create links to other records.
         if ($tree instanceof Tree) {
             $environment->addExtension(new XrefExtension($tree));
+            $environment->addExtension(new UidExtension($tree));
         }
 
         $converter = new MarkDownConverter($environment);
