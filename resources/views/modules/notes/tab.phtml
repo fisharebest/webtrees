@@ -11,6 +11,8 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Illuminate\Support\Collection;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditNotePage;
+use Fisharebest\Webtrees\Auth;
 
 /**
  * @var bool                 $can_edit
@@ -65,6 +67,15 @@ use Illuminate\Support\Collection;
                                                 <?= I18N::translate('Shared note') ?>
                                                 <?= view('icons/note') ?>
                                             </a>
+                                            <?php if (Auth::isEditor($note->tree())): ?>
+                                                <a class="btn btn-link" href="<?= e(route(EditNotePage::class, ['xref' => $note->xref(), 'tree' => $note->tree()->name()])) ?>"
+                                                    title="<?= I18N::translate('Shared note') . ' - ' . I18N::translate('Edit') ?>">
+                                                    <?= view('icons/edit') ?>
+                                                    <span class="visually-hidden">
+                                                        <?= I18N::translate('Edit') ?>
+                                                    </span>
+                                                </a>
+                                            <?php endif ?>
                                             <?= (new SubmitterText(''))->value($note->getNote(), $individual->tree()) ?>
                                         <?php endif ?>
                                     <?php else : ?>
