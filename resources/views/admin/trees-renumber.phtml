@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\RenumberTreeAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -33,19 +34,23 @@ use Fisharebest\Webtrees\Tree;
 </p>
 
 <?php if (!empty($xrefs)) : ?>
-    <p>
-        <?= I18N::translate('You can renumber this family tree.') ?>
-    </p>
+    <?php if (!$tree->hasPendingEdit()): ?>
+        <p>
+            <?= I18N::translate('You can renumber this family tree.') ?>
+        </p>
 
-    <form method="post" action="<?= e(route(RenumberTreeAction::class, ['tree' => $tree->name()])) ?>">
-        <button type="submit" class="btn btn-primary">
-            <?= view('icons/save') ?>
-            <?= /* I18N: A button label. */
-            I18N::translate('continue') ?>
-        </button>
+        <form method="post" action="<?= e(route(RenumberTreeAction::class, ['tree' => $tree->name()])) ?>">
+            <button type="submit" class="btn btn-primary">
+                <?= view('icons/save') ?>
+                <?= /* I18N: A button label. */
+                I18N::translate('continue') ?>
+            </button>
 
-        <?= I18N::translate('Caution! This may take a long time. Be patient.') ?>
+            <?= I18N::translate('Caution! This may take a long time. Be patient.') ?>
 
-        <?= csrf_field() ?>
-    </form>
+            <?= csrf_field() ?>
+        </form>
+    <?php else: ?>
+        <p><a href="<?= e(route(PendingChanges::class, ['tree' => $tree->name()])) ?>"><?= I18N::translate('There are pending changes for you to moderate.') ?></a></p>
+    <?php endif ?>
 <?php endif ?>
