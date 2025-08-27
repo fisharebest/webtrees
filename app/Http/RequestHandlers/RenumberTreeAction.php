@@ -58,7 +58,7 @@ class RenumberTreeAction implements RequestHandlerInterface
      */
     public function __construct(AdminService $admin_service, TimeoutService $timeout_service)
     {
-        $this->admin_service = $admin_service;
+        $this->admin_service   = $admin_service;
         $this->timeout_service = $timeout_service;
     }
 
@@ -69,7 +69,7 @@ class RenumberTreeAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
+        $tree  = Validator::attributes($request)->tree();
         if ($tree->hasPendingEdit()) {
             FlashMessages::addMessage(I18N::translate('Renumber XREFs') . ' — ' . e($tree->title()) . '<br>' . I18N::translate('There are pending changes for you to moderate.'), 'warning');
             return redirect(route(PendingChanges::class, ['tree' => $tree->name()]));
@@ -86,7 +86,7 @@ class RenumberTreeAction implements RequestHandlerInterface
                         ->where('i_file', '=', $tree->id())
                         ->where('i_id', '=', $old_xref)
                         ->update([
-                            'i_id' => $new_xref,
+                            'i_id'     => $new_xref,
                             'i_gedcom' => new Expression("REPLACE(i_gedcom, '0 @$old_xref@ INDI', '0 @$new_xref@ INDI')"),
                         ]);
 
@@ -94,7 +94,7 @@ class RenumberTreeAction implements RequestHandlerInterface
                         ->where('f_husb', '=', $old_xref)
                         ->where('f_file', '=', $tree->id())
                         ->update([
-                            'f_husb' => $new_xref,
+                            'f_husb'   => $new_xref,
                             'f_gedcom' => new Expression("REPLACE(f_gedcom, ' HUSB @$old_xref@', ' HUSB @$new_xref@')"),
                         ]);
 
@@ -102,7 +102,7 @@ class RenumberTreeAction implements RequestHandlerInterface
                         ->where('f_wife', '=', $old_xref)
                         ->where('f_file', '=', $tree->id())
                         ->update([
-                            'f_wife' => $new_xref,
+                            'f_wife'   => $new_xref,
                             'f_gedcom' => new Expression("REPLACE(f_gedcom, ' WIFE @$old_xref@', ' WIFE @$new_xref@')"),
                         ]);
 
@@ -166,7 +166,7 @@ class RenumberTreeAction implements RequestHandlerInterface
                         ->where('f_file', '=', $tree->id())
                         ->where('f_id', '=', $old_xref)
                         ->update([
-                            'f_id' => $new_xref,
+                            'f_id'     => $new_xref,
                             'f_gedcom' => new Expression("REPLACE(f_gedcom, '0 @$old_xref@ FAM', '0 @$new_xref@ FAM')"),
                         ]);
 
@@ -206,7 +206,7 @@ class RenumberTreeAction implements RequestHandlerInterface
                         ->where('s_file', '=', $tree->id())
                         ->where('s_id', '=', $old_xref)
                         ->update([
-                            's_id' => $new_xref,
+                            's_id'     => $new_xref,
                             's_gedcom' => new Expression("REPLACE(s_gedcom, '0 @$old_xref@ SOUR', '0 @$new_xref@ SOUR')"),
                         ]);
 
@@ -269,7 +269,7 @@ class RenumberTreeAction implements RequestHandlerInterface
                         ->where('o_id', '=', $old_xref)
                         ->where('o_type', '=', 'REPO')
                         ->update([
-                            'o_id' => $new_xref,
+                            'o_id'     => $new_xref,
                             'o_gedcom' => new Expression("REPLACE(o_gedcom, '0 @$old_xref@ REPO', '0 @$new_xref@ REPO')"),
                         ]);
 
@@ -293,7 +293,7 @@ class RenumberTreeAction implements RequestHandlerInterface
                         ->where('o_id', '=', $old_xref)
                         ->where('o_type', '=', 'NOTE')
                         ->update([
-                            'o_id' => $new_xref,
+                            'o_id'     => $new_xref,
                             'o_gedcom' => new Expression("REPLACE(o_gedcom, '0 @$old_xref@ NOTE', '0 @$new_xref@ NOTE')"),
                         ]);
 
@@ -368,7 +368,7 @@ class RenumberTreeAction implements RequestHandlerInterface
                         ->where('m_file', '=', $tree->id())
                         ->where('m_id', '=', $old_xref)
                         ->update([
-                            'm_id' => $new_xref,
+                            'm_id'     => $new_xref,
                             'm_gedcom' => new Expression("REPLACE(m_gedcom, '0 @$old_xref@ OBJE', '0 @$new_xref@ OBJE')"),
                         ]);
 
@@ -438,7 +438,7 @@ class RenumberTreeAction implements RequestHandlerInterface
                         ->where('o_id', '=', $old_xref)
                         ->where('o_type', '=', $type)
                         ->update([
-                            'o_id' => $new_xref,
+                            'o_id'     => $new_xref,
                             'o_gedcom' => new Expression("REPLACE(o_gedcom, '0 @$old_xref@ $type', '0 @$new_xref@ $type')"),
                         ]);
 
