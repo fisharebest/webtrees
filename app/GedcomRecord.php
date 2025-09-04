@@ -178,20 +178,6 @@ class GedcomRecord
     }
 
     /**
-     * Get the first UID for this record
-     *
-     * @return string
-     */
-    public function firstUid(): string
-    {
-        $regexTmp = '/\n1 _?UID (' . Gedcom::REGEX_UID . ')(:?\n|$)/';
-        if (preg_match($regexTmp, $this->gedcom(), $matches)) {
-            return $matches[1];
-        }
-        return '';
-    }
-
-    /**
      * Get the tree to which this record belongs
      *
      * @return Tree
