@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -38,28 +39,17 @@ use function e;
 use function in_array;
 use function uasort;
 
-/**
- * Edit the tree privacy.
- */
 class TreePrivacyPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
     private TreeService $tree_service;
 
-    /**
-     * @param TreeService $tree_service
-     */
     public function __construct(TreeService $tree_service)
     {
         $this->tree_service = $tree_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -98,9 +88,7 @@ class TreePrivacyPage implements RequestHandlerInterface
     /**
      * The current privacy restrictions for a tree.
      *
-     * @param Tree $tree
-     *
-     * @return array<object>
+     * @return list<object{default_resn_id:int,resn:string,xref:string,record:GedcomRecord|null,label:string}>
      */
     private function privacyRestrictions(Tree $tree): array
     {

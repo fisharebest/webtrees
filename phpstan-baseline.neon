@@ -3505,21 +3505,21 @@ parameters:
 			path: app/Http/RequestHandlers/TreePreferencesAction.php
 
 		-
+			message: '#^Access to an undefined property object\:\:\$default_resn_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/RequestHandlers/TreePrivacyPage.php
+
+		-
 			message: '#^Access to an undefined property object\:\:\$label\.$#'
 			identifier: property.notFound
-			count: 1
+			count: 2
 			path: app/Http/RequestHandlers/TreePrivacyPage.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$record\.$#'
+			message: '#^Access to an undefined property object\:\:\$resn\.$#'
 			identifier: property.notFound
 			count: 1
-			path: app/Http/RequestHandlers/TreePrivacyPage.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$tag_label\.$#'
-			identifier: property.notFound
-			count: 4
 			path: app/Http/RequestHandlers/TreePrivacyPage.php
 
 		-
@@ -3541,7 +3541,13 @@ parameters:
 			path: app/Http/RequestHandlers/TreePrivacyPage.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Http\\RequestHandlers\\TreePrivacyPage\:\:privacyRestrictions\(\) should return array\<object\> but returns array\.$#'
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 1
+			path: app/Http/RequestHandlers/TreePrivacyPage.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Http\\RequestHandlers\\TreePrivacyPage\:\:privacyRestrictions\(\) should return list\<object\{default_resn_id\: int, resn\: string, xref\: string, record\: Fisharebest\\Webtrees\\GedcomRecord\|null, label\: string\}\> but returns array\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Http/RequestHandlers/TreePrivacyPage.php
