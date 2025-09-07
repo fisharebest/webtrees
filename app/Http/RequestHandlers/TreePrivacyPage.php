@@ -108,32 +108,37 @@ class TreePrivacyPage implements RequestHandlerInterface
             ->where('gedcom_id', '=', $tree->id())
             ->get()
             ->map(static function (object $row) use ($tree): object {
-                $row->record = null;
-                $row->label  = '';
+                $record = null;
 
                 if ($row->xref !== null) {
-                    $row->record = Registry::gedcomRecordFactory()->make($row->xref, $tree);
+                    $record = Registry::gedcomRecordFactory()->make($row->xref, $tree);
                 }
 
+                $label = '';
+
                 if ($row->tag_type) {
-                    $row->tag_label = $row->tag_type;
+                    $label = $row->tag_type;
 
                     foreach (['', Family::RECORD_TYPE . ':', Individual::RECORD_TYPE . ':'] as $prefix) {
                         $element = Registry::elementFactory()->make($prefix . $row->tag_type);
 
                         if (!$element instanceof UnknownElement) {
-                            $row->tag_label = $element->label();
+                            $label = $element->label();
                             break;
                         }
                     }
-                } else {
-                    $row->tag_label = '';
                 }
 
-                return $row;
+                return (object) [
+                    'default_resn_id' => (int) $row->default_resn_id,
+                    'resn'            => $row->resn,
+                    'record'          => $record,
+                    'xref'            => $row->xref,
+                    'label'           => $label,
+                ];
             })
             ->sort(static function (object $x, object $y): int {
-                return I18N::comparator()($x->tag_label, $y->tag_label);
+                return I18N::comparator()($x->label, $y->label);
             })
             ->all();
     }
