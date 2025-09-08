@@ -86,7 +86,7 @@ class VendorModuleService
             })
             ->filter()
             ->mapWithKeys(
-                static fn(ModuleCustomInterface $module): array => [
+                static fn (ModuleCustomInterface $module): array => [
                     $module->name() => $module,
                 ]
             );
@@ -156,8 +156,8 @@ class VendorModuleService
         $moduleFile = null;
 
         // Look for the module.php file
-        if (file_exists($packagePath . DIRECTORY_SEPARATOR  . 'module.php')) {
-            $moduleFile = $packagePath . DIRECTORY_SEPARATOR  . 'module.php';
+        if (file_exists($packagePath . DIRECTORY_SEPARATOR . 'module.php')) {
+            $moduleFile = $packagePath . DIRECTORY_SEPARATOR . 'module.php';
         }
 
         if ($moduleFile === null) {
