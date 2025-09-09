@@ -33,7 +33,6 @@ use function xml_get_current_line_number;
 use function xml_get_error_code;
 use function xml_parse;
 use function xml_parser_create;
-use function xml_parser_free;
 use function xml_parser_set_option;
 use function xml_set_character_data_handler;
 use function xml_set_element_handler;
@@ -91,8 +90,6 @@ class ReportParserBase
         }
 
         fclose($fp);
-
-        xml_parser_free($this->xml_parser);
     }
 
     /**
