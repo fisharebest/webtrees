@@ -95,7 +95,9 @@ class ReportParserBase
 
         fclose($fp);
 
-        xml_parser_free($this->xml_parser);
+        if (PHP_MAJOR_VERSION < 8) {
+            xml_parser_free($this->xml_parser);
+        }
     }
 
     /**

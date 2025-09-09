@@ -1219,7 +1219,10 @@ class ReportParserGenerate extends ReportParserBase
                         xml_get_current_line_number($repeat_parser)
                     ));
                 }
-                xml_parser_free($repeat_parser);
+
+                if (PHP_MAJOR_VERSION < 8) {
+                    xml_parser_free($repeat_parser);
+                }
             }
             // Restore original values
             $this->gedrec = $oldgedrec;
@@ -1427,7 +1430,11 @@ class ReportParserGenerate extends ReportParserBase
                         xml_get_current_line_number($repeat_parser)
                     ));
                 }
-                xml_parser_free($repeat_parser);
+
+                if (PHP_MAJOR_VERSION < 8) {
+                    xml_parser_free($repeat_parser);
+                }
+
                 $i++;
             }
             // Restore original values
@@ -2336,7 +2343,10 @@ class ReportParserGenerate extends ReportParserBase
                             xml_get_current_line_number($repeat_parser)
                         ));
                     }
-                    xml_parser_free($repeat_parser);
+
+                    if (PHP_MAJOR_VERSION < 8) {
+                        xml_parser_free($repeat_parser);
+                    }
                 } else {
                     $this->list_private++;
                 }
@@ -2561,7 +2571,10 @@ class ReportParserGenerate extends ReportParserBase
                 if (!xml_parse($repeat_parser, $reportxml, true)) {
                     throw new DomainException(sprintf('RelativesEHandler XML error: %s at line %d', xml_error_string(xml_get_error_code($repeat_parser)), xml_get_current_line_number($repeat_parser)));
                 }
-                xml_parser_free($repeat_parser);
+
+                if (PHP_MAJOR_VERSION < 8) {
+                    xml_parser_free($repeat_parser);
+                }
             }
             // Clean up the list array
             $this->list   = [];
