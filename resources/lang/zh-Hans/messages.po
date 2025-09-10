@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-12-04 09:07+0000\n"
+"PO-Revision-Date: 2025-09-10 08:58+0000\n"
 "Last-Translator: DaPoHou <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/zh_Hans/>\n"
@@ -13798,7 +13798,7 @@ msgstr "webtrees安装向导"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Sex"
-msgstr ""
+msgstr "性别"
 
 # I18N: The sixth day in the French republican calendar
 #. I18N: The sixth day in the French republican calendar
