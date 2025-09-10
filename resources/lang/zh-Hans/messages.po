@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-12-04 09:08+0000\n"
+"PO-Revision-Date: 2025-09-10 12:14+0000\n"
 "Last-Translator: DaPoHou <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/zh_Hans/>\n"
@@ -787,7 +787,7 @@ msgstr "家庭分支。"
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:91
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "需要主编人批准的变更汇总表，并进行电子邮件通知。"
+msgstr "需要主编人审核的更改列表，以及电子邮件通知。"
 
 # I18N: Description of the “FamilyListModule” module
 #. I18N: Description of the “Families” module
@@ -1975,7 +1975,7 @@ msgstr "管理员必须审批新用户账户，并设置用户角色。"
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:53
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "替代的“多媒体”选项卡，是一个增强图像查看器。"
+msgstr "“多媒体”选项卡的替代方案，以及增强的图像查看器。"
 
 # I18N: Description of the “Charts” module
 #. I18N: Description of the “Charts” module
@@ -6095,7 +6095,7 @@ msgstr "启用"
 #. I18N: Help text for the “Family tree” configuration setting
 #: resources/views/admin/trees-privacy.phtml:43
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
-msgstr "启用这个选项将迫使所有访问者登录才能查看网站上的任何数据。"
+msgstr "启用此选项将强制所有访问者在查看网站上的任何数据之前进行登录。"
 
 #: resources/views/modules/lifespans-chart/page.phtml:63
 msgid "End year"
@@ -7824,7 +7824,7 @@ msgstr "犹太人"
 # I18N: gedcom tag _HNM
 #: app/CustomTags/BrothersKeeper.php:81 app/CustomTags/BrothersKeeper.php:82
 msgid "Hebrew name"
-msgstr "犹太"
+msgstr "希伯来语中的名字"
 
 # I18N: gedcom tag _HEIG
 #: app/CustomTags/BrothersKeeper.php:101
@@ -7899,7 +7899,7 @@ msgstr "她的职业是"
 #. I18N: https://wego.here.com
 #: app/Module/HereMaps.php:96
 msgid "Here maps"
-msgstr "这个地图"
+msgstr "Here地图"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -10771,7 +10771,7 @@ msgstr "名称"
 
 #: app/CustomTags/PhpGedView.php:69
 msgid "Name in Hebrew"
-msgstr "犹太名称"
+msgstr "希伯来语中的名字"
 
 #: app/CustomTags/GedcomL.php:111 app/CustomTags/GedcomL.php:152
 #: app/CustomTags/GedcomL.php:165 app/CustomTags/GedcomL.php:208
@@ -10788,7 +10788,7 @@ msgstr "姓名前缀"
 # I18N: gedcom tag NSFX
 #: app/Gedcom.php:690 app/Gedcom.php:698 app/Gedcom.php:704
 msgid "Name suffix"
-msgstr "古代字/号"
+msgstr "名字后缀"
 
 #: resources/views/admin/tags.phtml:42
 #: resources/views/modules/statistics-chart/names.phtml:10
@@ -10952,7 +10952,7 @@ msgstr "尼加拉瓜"
 # I18N: gedcom tag NICK
 #: app/Gedcom.php:687 app/Gedcom.php:696 app/Gedcom.php:701
 msgid "Nickname"
-msgstr "辈/派行"
+msgstr "昵称"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -11183,7 +11183,7 @@ msgstr "夜间"
 #. I18N: https://nominatim.org
 #: app/Module/MapGeoLocationNominatim.php:39
 msgid "Nominatim"
-msgstr "未分层"
+msgstr "Nominatim名称"
 
 #: resources/views/admin/gedcom-export-options.phtml:104
 #: resources/xml/reports/cemetery_report.xml:7
@@ -11207,7 +11207,8 @@ msgstr "诺福克岛"
 
 #: resources/views/admin/users-edit.phtml:159
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr "通常，家谱的任何修改都需要由主编人批准。此选项允许用户将不需要主编人的批准的变更。"
+msgstr "通常，家谱的任何修改都需要由主编人批准。此选项允许用户在不需要主持人的情况下"
+"进行更改。"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -11332,7 +11333,7 @@ msgstr "数据来源说明"
 
 #: resources/views/help/restriction.phtml:13
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
-msgstr "注意：如果一个用户账户链接到一个记录,那么该用户能够查看该记录。"
+msgstr "请注意，如果用户帐户链接到记录，则该用户将始终能够查看该记录。"
 
 #: resources/views/help/relationship-privacy.phtml:18
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
@@ -11609,7 +11610,7 @@ msgstr "注意！webtrees 不能在这个目录创建文件。"
 #: app/Module/MapGeoLocationOpenRouteService.php:45
 #: app/Module/OpenRouteServiceAutocomplete.php:82
 msgid "OpenRouteService"
-msgstr "开放路线服务"
+msgstr "OpenRouteService服务"
 
 #: app/Module/MapLinkOpenStreetMap.php:41 app/Module/OpenStreetMap.php:51
 msgid "OpenStreetMap™"
@@ -12075,7 +12076,7 @@ msgstr "地方分布"
 
 #: app/CustomTags/PhpGedView.php:65
 msgid "Place in Hebrew"
-msgstr "犹太语中地方"
+msgstr "希伯来语中的地方"
 
 #: resources/views/modules/place-hierarchy/list.phtml:16
 msgid "Place list"
@@ -13161,7 +13162,7 @@ msgstr "隐私限制"
 
 #: resources/views/help/restriction.phtml:10
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr "限制可以被添加到记录和/或事实。限制谁可以查看数据和谁可以修改它。"
+msgstr "可以对记录和/或事实添加限制。它们限制谁可以查看数据以及谁可以编辑数据。"
 
 #: resources/views/modules/statistics-chart/custom.phtml:122
 msgid "Results"
@@ -13833,7 +13834,7 @@ msgstr "webtrees安装向导"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Sex"
-msgstr ""
+msgstr "性别"
 
 # I18N: The sixth day in the French republican calendar
 #. I18N: The sixth day in the French republican calendar
@@ -14059,7 +14060,7 @@ msgstr "显示"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:278
 msgid "Show a download link in the media viewer"
-msgstr "显示多媒体展示的下载链接"
+msgstr "在媒体查看器中显示下载链接"
 
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:76
@@ -14203,7 +14204,7 @@ msgstr "仅显示女性。"
 
 #: resources/views/lists/individuals-table.phtml:107
 msgid "Show only individuals for whom the sex is not known."
-msgstr "仅显示性别不知道的人。"
+msgstr "仅显示无性别的人。"
 
 #: resources/views/modules/random_media/config.phtml:19
 msgid "Show only individuals, events, or all"
@@ -15084,7 +15085,7 @@ msgstr "姓氏"
 # I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
 msgid "Surnames are inflected to indicate an individual’s sex and marital status."
-msgstr "姓氏是变化的,取决个人的性别和婚姻状况。"
+msgstr "姓氏是变化的，以表明个人的性别和婚姻状况。"
 
 # I18N: In the Polish surname tradition, ...
 #: app/SurnameTradition/PolishSurnameTradition.php:68
@@ -16051,18 +16052,18 @@ msgstr "发生了此事件，但细节未知。"
 
 #: app/Auth.php:230
 msgid "This family does not exist or you do not have permission to view it."
-msgstr "这个家庭不存在，或者您没有权限查看它。"
+msgstr "该家庭不存在或您没有查看该家庭的权限。"
 
 #: resources/views/family-page-pending.phtml:21
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "这个家庭已被删除。需要审批后才能生效。"
+msgstr "此家庭已被删除。需要审批后才能生效。"
 
 # I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:19
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "这个家庭已被删除。你应该检查此操作，然后决定是 %1$s 或 %2$s。"
+msgstr "此家庭已被删除。您应该检查删除操作，然后决定是 %1$s 或 %2$s。"
 
 #: resources/views/family-page-pending.phtml:27
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
@@ -16119,7 +16120,7 @@ msgstr "表单已过期。 再试一次。"
 
 #: app/Auth.php:289
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr "这个人不存在，或者您没有权限查看它。"
+msgstr "此人不存在或您没有权限查看。"
 
 #: resources/views/individual-page-pending.phtml:23
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
@@ -16320,7 +16321,7 @@ msgstr "这个选项控制当在个体列表和图表中当不知道确切日期
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:283
 msgid "This option will make it easier for users to download images."
-msgstr "多媒体查看器可以显示一个链接，点击后，将下载的多媒体文件到本地电脑。<br><br>因为安全原因你可能想要隐藏下载链接。"
+msgstr "此选项将使用户更容易下载图像。"
 
 # I18N: Help text for the “Show private relationships” configuration setting
 #. I18N: Help text for the “Show private relationships” configuration setting
