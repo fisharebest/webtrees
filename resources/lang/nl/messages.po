@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-08-22 05:19+0000\n"
+"PO-Revision-Date: 2025-09-14 06:40+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -6649,7 +6649,7 @@ msgstr "Zoek verwantschappen via voorouders"
 #: app/Module/RelationshipsChartModule.php:723
 #: resources/views/modules/relationships-chart/page.phtml:70
 msgid "Find the closest relationships"
-msgstr "Vind de dichtstbijzijnde verwantschap"
+msgstr "Vind de dichtstbijzijnde verwantschappen"
 
 #: app/Http/RequestHandlers/UnconnectedPage.php:109
 #: resources/views/admin/trees.phtml:189
