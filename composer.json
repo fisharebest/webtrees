@@ -84,11 +84,11 @@
         "league/flysystem-memory": "3.29.0",
         "php-coveralls/php-coveralls": "2.8.0",
         "phpstan/extension-installer": "1.4.3",
-        "phpstan/phpstan": "2.1.22",
+        "phpstan/phpstan": "2.1.24",
         "phpstan/phpstan-deprecation-rules": "2.0.3",
         "phpstan/phpstan-phpunit": "2.0.7",
         "phpstan/phpstan-strict-rules": "2.0.6",
-        "phpunit/phpunit": "12.3.2",
+        "phpunit/phpunit": "12.3.10",
         "squizlabs/php_codesniffer": "4.0.0-RC1"
     },
     "suggest": {

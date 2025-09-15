@@ -42,7 +42,7 @@ class ErrorHandler implements MiddlewareInterface
         return $response;
     }
 
-    private function errorHandler(int $errno, string $errstr, string $errfile, int $errline): bool
+    private function errorHandler(int $errno, string $errstr, string $errfile, int $errline): true
     {
         // Ignore errors that are silenced with '@'
         if ((error_reporting() & $errno) !== 0) {
