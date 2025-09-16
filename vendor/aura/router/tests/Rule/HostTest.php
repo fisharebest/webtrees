@@ -45,4 +45,23 @@ class HostTest extends AbstractRuleTest
         $this->assertIsMatch($request, $route);
         $this->assertEquals(['subdomain' => null, 'domain' => 'example'], $route->attributes);
     }
+
+    public function testIsMatchOnHostWithPort()
+    {
+        $proto = $this->newRoute("/foo/bar/baz")->host("127.0.0.1:8080");
+
+        // right host
+        $route = clone $proto;
+        $request = $this->newRequest("/foo/bar/baz", [
+            "HTTP_HOST" => "127.0.0.1:8080",
+        ]);
+        $this->assertIsMatch($request, $route);
+
+        // wrong host
+        $route = clone $proto;
+        $request = $this->newRequest("/foo/bar/baz", [
+            "HTTP_HOST" => "127.0.0.1:9090",
+        ]);
+        $this->assertIsNotMatch($request, $route);
+    }
 }

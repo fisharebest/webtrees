@@ -187,26 +187,27 @@ class Generator
     protected function buildTokenReplacements()
     {
         preg_match_all(self::REGEX, $this->url, $matches, PREG_SET_ORDER);
+
         foreach ($matches as $match) {
             $name = $match[1];
-            foreach ($this->data as $key => $val) {
-                if ($key === $name) {
-                    $token = isset($match[2]) ? $match[2] : null;
-                    if (isset($this->route->tokens[$name]) && is_string($this->route->tokens[$name])) {
-                        // if $token is null use route token
-                        $token = $token ?: $this->route->tokens[$name];
-                    }
-                    if ($token) {
-                        if (!preg_match('~^' . $token . '$~', (string)$val)) {
-                            throw new \RuntimeException(sprintf(
-                                'Parameter value for [%s] did not match the regex `%s`',
-                                $name,
-                                $token
-                            ));
-                        }
-                    }
-                    $this->repl[$match[0]] = $this->encode($val);
+
+            if (isset($this->data[$name])) {
+                $val = $this->data[$name];
+                $token = isset($match[2]) ? $match[2] : null;
+                if (isset($this->route->tokens[$name]) && is_string($this->route->tokens[$name])) {
+                    // if $token is null use route token
+                    $token = $token ?: $this->route->tokens[$name];
                 }
+                if ($token) {
+                    if (!preg_match('~^' . $token . '$~', (string)$val)) {
+                        throw new \RuntimeException(sprintf(
+                            'Parameter value for [%s] did not match the regex `%s`',
+                            $name,
+                            $token
+                        ));
+                    }
+                }
+                $this->repl[$match[0]] = $this->encode($val);
             }
         }
     }

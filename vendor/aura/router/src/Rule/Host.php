@@ -55,9 +55,10 @@ class Host implements RuleInterface
             return true;
         }
 
+        $hostWithPort = $request->getUri()->getPort() ? $request->getUri()->getHost() . ':' . $request->getUri()->getPort() : $request->getUri()->getHost();
         $match = preg_match(
             $this->buildRegex($route),
-            $request->getUri()->getHost(),
+            $hostWithPort,
             $matches
         );
 
