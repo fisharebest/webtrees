@@ -46,11 +46,14 @@ class SiteRegistrationAction implements RequestHandlerInterface
         $text               = Validator::parsedBody($request)->string('WELCOME_TEXT_AUTH_MODE_4');
         $allow_registration = Validator::parsedBody($request)->boolean('USE_REGISTRATION_MODULE');
         $show_caution       = Validator::parsedBody($request)->boolean('SHOW_REGISTER_CAUTION');
+        $disable_native_login = Validator::parsedBody($request)->boolean('DISABLE_NATIVE_LOGIN');
 
         Site::setPreference('WELCOME_TEXT_AUTH_MODE', $mode);
         Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . I18N::languageTag(), $text);
         Site::setPreference('USE_REGISTRATION_MODULE', (string) $allow_registration);
         Site::setPreference('SHOW_REGISTER_CAUTION', (string) $show_caution);
+        // Handle OAuth2 native login toggle setting
+        Site::setPreference('DISABLE_NATIVE_LOGIN', (string) $disable_native_login);
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 

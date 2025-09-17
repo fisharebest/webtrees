@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -99,13 +100,25 @@ class LoginPage implements RequestHandlerInterface
 
         $can_register = Site::getPreference('USE_REGISTRATION_MODULE') === '1';
 
+        // Check OAuth2 status and native login toggle setting
+        // This feature only activates when both the admin setting is enabled AND OAuth2 is active
+        // to prevent admin lockouts when OAuth2 is not properly configured
+        $oauth_active = (bool) Site::getPreference('DISABLE_NATIVE_LOGIN');
+        $oauth_enabled = DB::table('module_setting')
+            ->where('module_name', '=', '_oauth2_client_')
+            ->where('setting_name', '=', 'connect_with_providers')
+            ->value('setting_value') == '1';
+        // Only hide native login when both conditions are met
+        $hide_native_login = $oauth_active && $oauth_enabled;
+
         return $this->viewResponse('login-page', [
-            'can_register' => $can_register,
-            'title'        => $title,
-            'url'          => $url,
-            'tree'         => $tree,
-            'username'     => $username,
-            'welcome'      => $welcome,
+            'can_register'       => $can_register,
+            'title'              => $title,
+            'url'                => $url,
+            'tree'               => $tree,
+            'username'           => $username,
+            'welcome'            => $welcome,
+            'hide_native_login'  => $hide_native_login,
         ]);
     }
 }

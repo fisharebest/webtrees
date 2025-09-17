@@ -6,27 +6,37 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fisharebest/webtrees/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/fisharebest/webtrees/?branch=main)
 [![Code Climate](https://codeclimate.com/github/fisharebest/webtrees/badges/gpa.svg)](https://codeclimate.com/github/fisharebest/webtrees)
 [![StyleCI](https://github.styleci.io/repos/11836349/shield?branch=main)](https://github.styleci.io/repos/11836349?branch=main)
+
 # webtrees - online collaborative genealogy
 
 ## Contents
 
-* [License](#license)
-* [Coding styles and standards](#coding-styles-and-standards)
-* [Introduction](#introduction)
-* [System requirements](#system-requirements)
-* [Internet browser compatibility](#browser-compatibility)
-* [Installation](#installation)
-* [Upgrading](#upgrading)
-* [Building and developing](#building-and-developing)
-* [Gedcom (family tree) files](#gedcom-family-tree-files)
-* [Security](#security)
-* [Backup](#backup)
-* [Restore from Backup](#restore-from-backup)
+- [webtrees - online collaborative genealogy](#webtrees---online-collaborative-genealogy)
+  - [Contents](#contents)
+  - [License](#license)
+  - [Coding styles and standards](#coding-styles-and-standards)
+  - [Introduction](#introduction)
+  - [System requirements](#system-requirements)
+  - [Browser compatibility](#browser-compatibility)
+  - [Installation](#installation)
+  - [Upgrading](#upgrading)
+    - [Note for Macintosh users](#note-for-macintosh-users)
+  - [Building and developing](#building-and-developing)
+  - [Gedcom (family tree) files](#gedcom-family-tree-files)
+  - [Security](#security)
+  - [OAUTH2-Only Login Mode (`disable_native_login_form`)](#oauth2-only-login-mode-disable_native_login_form)
+    - [How to Enable](#how-to-enable)
+    - [Recovery and Emergencies](#recovery-and-emergencies)
+      - [To check the setting](#to-check-the-setting)
+      - [To RE-ENABLE (show) the native login (recovery)](#to-re-enable-show-the-native-login-recovery)
+      - [To DISABLE (hide) the native login](#to-disable-hide-the-native-login)
+  - [Backup](#backup)
+  - [Restore from backup](#restore-from-backup)
 
 ## License
 
-* **webtrees: online genealogy**
-* Copyright 2022 webtrees development team
+- **webtrees: online genealogy**
+- Copyright 2022 webtrees development team
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -45,15 +55,15 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 webtrees follows the [PHP Standards Recommendations](https://www.php-fig.org/psr).
 
-* [PSR-1](https://www.php-fig.org/psr/psr-1) - Basic Coding Standard
-* [PSR-2](https://www.php-fig.org/psr/psr-2) - Coding Style Guide
-* [PSR-4](https://www.php-fig.org/psr/psr-4) - Autoloading Standard
-* [PSR-6](https://www.php-fig.org/psr/psr-6) - Cache
-* [PSR-7](https://www.php-fig.org/psr/psr-7) - HTTP Message Interface
-* [PSR-11](https://www.php-fig.org/psr/psr-11) - Container Interface
-* [PSR-12](https://www.php-fig.org/psr/psr-12) - Extended Coding Style Guide
-* [PSR-15](https://www.php-fig.org/psr/psr-15) - HTTP Handlers
-* [PSR-17](https://www.php-fig.org/psr/psr-17) - HTTP Factories
+- [PSR-1](https://www.php-fig.org/psr/psr-1) - Basic Coding Standard
+- [PSR-2](https://www.php-fig.org/psr/psr-2) - Coding Style Guide
+- [PSR-4](https://www.php-fig.org/psr/psr-4) - Autoloading Standard
+- [PSR-6](https://www.php-fig.org/psr/psr-6) - Cache
+- [PSR-7](https://www.php-fig.org/psr/psr-7) - HTTP Message Interface
+- [PSR-11](https://www.php-fig.org/psr/psr-11) - Container Interface
+- [PSR-12](https://www.php-fig.org/psr/psr-12) - Extended Coding Style Guide
+- [PSR-15](https://www.php-fig.org/psr/psr-15) - HTTP Handlers
+- [PSR-17](https://www.php-fig.org/psr/psr-17) - HTTP Factories
 
 We do not currently use [PSR-3 (logging)](https://www.php-fig.org/psr/psr-3) - but we plan to do so in the future.
 
@@ -63,9 +73,9 @@ For JavaScript, we use [semistandard](https://github.com/standard/semistandard).
 
 **webtrees** is the web's leading online collaborative genealogy application.
 
-* It works from standard GEDCOM files, and is therefore compatible with every
+- It works from standard GEDCOM files, and is therefore compatible with every
 major desktop application.
-* It aims to to be efficient and effective by using the right combination of
+- It aims to to be efficient and effective by using the right combination of
 third-party tools, design techniques and open standards.
 
 **webtrees** allows you to view and edit your genealogy on your website. It has
@@ -91,16 +101,16 @@ the project even stronger and better.
 
 To install **webtrees**, you need:
 
-* A webserver. Apache, NGINX and IIS are the most common types. To use “Pretty URLs”, you will need to configure URL rewriting"
-* A database. MySQL is recommended, although PostgreSQL, SQL-Server and SQLite can be used. Some features rely on MySQL for collation.  Other database might not sort names according to local rules.  **webtrees** uses a prefix for its table names, so you can install several instances of webtrees in the same database.
-* Approximately 100MB of disk space for the application files, plus whatever is
+- A webserver. Apache, NGINX and IIS are the most common types. To use “Pretty URLs”, you will need to configure URL rewriting"
+- A database. MySQL is recommended, although PostgreSQL, SQL-Server and SQLite can be used. Some features rely on MySQL for collation.  Other database might not sort names according to local rules.  **webtrees** uses a prefix for its table names, so you can install several instances of webtrees in the same database.
+- Approximately 100MB of disk space for the application files, plus whatever is
   needed for your media files, GEDCOM files and database.
-* PHP 7.1 - 7.4. Servers with PHP 5.3 - 7.0 can use **webtrees** 1.7.
-   * PHP should be configured to allow sufficient server resources (memory and
+- PHP 7.1 - 7.4. Servers with PHP 5.3 - 7.0 can use **webtrees** 1.7.
+  - PHP should be configured to allow sufficient server resources (memory and
      execution time) for the size of your system. Typical requirements are:
-      * Small systems (500 individuals): 16–32 MB, 10–20 seconds
-      * Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds
-      * Large systems (50,000 individuals): 64–128 MB, 40–80 seconds
+    - Small systems (500 individuals): 16–32 MB, 10–20 seconds
+    - Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds
+    - Large systems (50,000 individuals): 64–128 MB, 40–80 seconds
 
 ## Browser compatibility
   
@@ -118,7 +128,7 @@ To install **webtrees**, you need:
 Your first task will be to create a family tree.
 
 If you have a GEDCOM file, you can import it into the tree. If not, just start
-entering your family tree. 
+entering your family tree.
 
 There are lots of configuration options. You'll probably want to review the
 privacy settings first. Don't worry too much about all the other options - the
@@ -132,14 +142,14 @@ upgrade your installation whenever a new version is made available. Even minor
 **webtrees** version updates usually contain a significant number of bug fixes
 as well as interface improvements and program enhancements.
 
-* **Automatic upgrade**
+- **Automatic upgrade**
 
   **webtrees** has an automatic upgrade facility. An administrator upon logging in
 will receive notification when a new version is available and an option to start
 the automatic upgrade. If for some reason the automatic upgrade should fail
 then a manual upgrade should be performed.
 
-* **Manual upgrade**
+- **Manual upgrade**
 
   1. Now would be a good time to make a [backup](#backup).
   2. Download the latest version of **webtrees** available from
@@ -170,20 +180,20 @@ a couple of tools first.
 You will need [composer](https://getcomposer.org/) to install the PHP dependencies.
 Then run this command::
 
-* php composer.phar install
+- php composer.phar install
 
 You will need [npm](https://www.npmjs.com/get-npm) to install the Javascript dependencies.
 Then run the commands:
 
-* npm install
-* npm run production
+- npm install
+- npm run production
 
 You will need to re-run the second of these any time you modify the file `webtrees.js`.
 
 ## Gedcom (family tree) files
 
 When you import a family tree (GEDCOM) file in **webtrees** the
-data from the file is transferred to the database tables. The file itself 
+data from the file is transferred to the database tables. The file itself
 remains in the **webtrees/data** folder and is no longer used or required
 by **webtrees**. Any subsequent editing of the **webtrees** data
 will not change this file
@@ -192,13 +202,13 @@ When or if you change your genealogy data outside of **webtrees**, it is not
 necessary to delete your GEDCOM file or database from **webtrees** and start
 over. Follow these steps to update a GEDCOM that has already been imported:
 
-* Go to ``Control panel`` -> ``Manage family trees`` On the line relating to this particular family tree (GEDCOM)
+- Go to ``Control panel`` -> ``Manage family trees`` On the line relating to this particular family tree (GEDCOM)
   file (or a new one) select IMPORT.
-* Take careful note of the media items option (_“If you have created media objects
+- Take careful note of the media items option (_“If you have created media objects
   in **webtrees**, and have edited your data off-line using software that
   deletes media objects, then tick this box to merge the current media objects
   with the new GEDCOM.”_) In most cases you should leave this box **UNCHECKED**.
-* Click “SAVE”. **webtrees** will validate the GEDCOM again before importing.
+- Click “SAVE”. **webtrees** will validate the GEDCOM again before importing.
   During this process, **webtrees** copies your entire family tree (GEDCOM file)
   to a 'chunk' table within your database. Depending on the coding of your file,
   its file size and the capabilities of your server and the supporting software,
@@ -215,7 +225,7 @@ and have made every attempt to ensure your data is safe.
 
 The area most at risk of intrusion would be the **/data** folder that contains your
 config.ini.php file, and various temporary files. If you are concerned there
-may be a risk there is a very simple test you can do: try to fetch the file 
+may be a risk there is a very simple test you can do: try to fetch the file
 config.ini.php by typing **``url_to_your_server/data/config.ini.php``** in your web
 browser.
 
@@ -255,8 +265,57 @@ location **/home/username/private/data**
 
 You will have **two** data directories:
 
-* [path to webtrees]/data - just needs to contain config.ini.php
-* /home/username/private/data - contains everything else
+- [path to webtrees]/data - just needs to contain config.ini.php
+- /home/username/private/data - contains everything else
+
+## OAUTH2-Only Login Mode (`disable_native_login_form`)
+
+This feature lets site administrators running OAUTH2-based authentication on webtrees **optionally hide the native username/password login form** (as well as the “Sign in” button and “Forgot Password?” link) from the login page. This can enhance security and enforce a single-sign-on (SSO)-only environment.
+
+### How to Enable
+
+When the OAUTH2 client is enabled and providing authentication, a new admin option will appear on the site registration/admin page:
+
+**“Disable username/password login form and related buttons when OAUTH is active and enabled”**
+
+- **NO (default):** Native login fields and flows are **visible** (standard webtrees behavior).
+- **YES:** Native login fields and related links/buttons are **hidden** on the login page, users must use OAUTH2/SSO to authenticate.
+
+This setting is stored as `disable_native_login_form` in the `ko_site_setting` table.
+
+### Recovery and Emergencies
+
+**Warning:** Setting this to YES (`1`) will hide the username/password login. If your OAUTH2 identity provider or configuration fails, all users—including admins—will be unable to log in via the native form.
+
+If you are locked out, reset the configuration directly in the database with the following SQL:
+
+#### To check the setting
+
+```sql
+SELECT setting_name, setting_value 
+FROM ko_site_setting 
+WHERE setting_name = 'disable_native_login_form';
+```
+
+#### To RE-ENABLE (show) the native login (recovery)
+
+```sql
+INSERT INTO ko_site_setting (setting_name, setting_value) 
+VALUES ('disable_native_login_form', '0') 
+ON DUPLICATE KEY UPDATE setting_value = '0';
+```
+
+#### To DISABLE (hide) the native login
+
+```sql
+INSERT INTO ko_site_setting (setting_name, setting_value) 
+VALUES ('disable_native_login_form', '1') 
+ON DUPLICATE KEY UPDATE setting_value = '1';
+```
+
+After making the database change, reload the login page. Native login fields will be restored (or hidden) based on your change.
+
+**Note:** You must have direct database access (via phpMyAdmin, MySQL CLI, or similar) to perform this operation if you are locked out.
 
 ## Backup
 
@@ -265,13 +324,13 @@ backup.
 
 To make a backup of **webtrees**, you need to make a copy of the following
 
-1. The files in the *webtrees/data* folder.
+1. The files in the _webtrees/data_ folder.
 2. The tables in the database. Freely available tools such as
-   [phpMyAdmin](https://www.phpmyadmin.net) allow you to do this in one click. Alternatively, You can also make a backup running a mysqldump command (just replace the words *[localhost]*, *[username]*, *[password]* and *[databasename]* with your own):
+   [phpMyAdmin](https://www.phpmyadmin.net) allow you to do this in one click. Alternatively, You can also make a backup running a mysqldump command (just replace the words _[localhost]_, _[username]_, _[password]_ and _[databasename]_ with your own):
 
     `mysqldump --host=[localhost] -u [username] -p[password] --databases [databasename] > dump_file.sql`
 
-    Note that '*-p[password]*' goes together with no space in between.
+    Note that '_-p[password]_' goes together with no space in between.
 
 Remember that most web hosting services do NOT backup your data, and this is
 your responsibility.
@@ -282,10 +341,10 @@ To restore a backup on a new server:
 
 1. Follow the steps in [Installation](#installation) to get a clean new installation.
 
-2. Replace the *data* folder with backup copy.
+2. Replace the _data_ folder with backup copy.
 
-3. Restore your mysql database using phpmyadmin or running the following command line on your database server using your mysqldumpfile (just replace the words *[username]*, *[password]* and *[databasename]* with your own):
+3. Restore your mysql database using phpmyadmin or running the following command line on your database server using your mysqldumpfile (just replace the words _[username]_, _[password]_ and _[databasename]_ with your own):
 
     `mysql -u [username] -p[password] [database_name] < [dump_file.sql]`
 
-4. Confirm the file *data/config.ini.php* contains to correct information to connect to the database and update it if needed.
+4. Confirm the file _data/config.ini.php_ contains to correct information to connect to the database and update it if needed.

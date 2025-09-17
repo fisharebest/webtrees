@@ -63,11 +63,27 @@ use Fisharebest\Webtrees\Site;
     <!-- SHOW_REGISTER_CAUTION -->
     <fieldset class="row mb-3">
         <legend class="col-form-label col-sm-3">
-            <?= /* I18N: A configuration setting */ I18N::translate('Show acceptable use agreement on “Request a new user account” page') ?>
+            <?= /* I18N: A configuration setting */ I18N::translate('Show acceptable use agreement on "Request a new user account" page') ?>
         </legend>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'SHOW_REGISTER_CAUTION', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) Site::getPreference('SHOW_REGISTER_CAUTION')]) ?>
             <div class="form-text">
+            </div>
+        </div>
+    </fieldset>
+
+    <!-- DISABLE_NATIVE_LOGIN -->
+    <!-- This setting hides native username/password login when OAuth2 is active -->
+    <!-- If accidentally locked out, set disable_native_login = 0 in the ko_site_setting table -->
+    <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-3">
+            <?= /* I18N: A configuration setting */ I18N::translate('Disable username/password login form and related buttons when OAUTH is active and enabled:') ?>
+        </legend>
+        <div class="col-sm-9">
+            <?= view('components/radios-inline', ['name' => 'DISABLE_NATIVE_LOGIN', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) Site::getPreference('DISABLE_NATIVE_LOGIN')]) ?>
+            <div class="form-text">
+                <?= I18N::translate('When enabled and OAuth2 is active, visitors can only sign in using OAuth2 providers. Native login fields will be hidden.') ?>
+                <br><small class="text-muted"><?= I18N::translate('If locked out due to misconfiguration, access the database directly and set disable_native_login = 0 in the site_setting table to restore native login access.') ?></small>
             </div>
         </div>
     </fieldset>

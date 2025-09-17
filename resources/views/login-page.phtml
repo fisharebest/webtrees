@@ -16,6 +16,7 @@ use Fisharebest\Webtrees\Tree;
  * @var string    $username
  * @var string    $warning
  * @var string    $welcome
+ * @var bool      $hide_native_login
  */
 ?>
 
@@ -27,47 +28,58 @@ use Fisharebest\Webtrees\Tree;
     <?= nl2br($welcome, false) ?>
 </p>
 
-<form method="post" action="<?= e(route(LoginAction::class, ['tree' => $tree?->name()])) ?>" class="wt-page-options wt-page-options-login">
-    <input type="hidden" name="url" value="<?= e($url) ?>">
-
-    <div class="row">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="username">
-            <?= I18N::translate('Username') ?>
-        </label>
-        <div class="col-sm-9 wt-page-options-value">
-            <input class="form-control" type="text" id="username" name="username" required="required" value="<?= e($username) ?>" autocomplete="username">
-        </div>
+<!-- Display OAuth2 login message if native login is hidden -->
+<?php if ($hide_native_login) : ?>
+    <div class="alert alert-info">
+        <?= I18N::translate('Please use an OAuth2 provider to sign in to this website.') ?>
     </div>
+<?php else : ?>
+    <form method="post" action="<?= e(route(LoginAction::class, ['tree' => $tree?->name()])) ?>" class="wt-page-options wt-page-options-login">
+        <input type="hidden" name="url" value="<?= e($url) ?>">
 
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="password">
-            <?= I18N::translate('Password') ?>
-        </label>
-        <div class="col-sm-9 wt-page-options-value">
-            <input autocomplete="current-password" class="form-control" id="password" name="password" required="required" type="password" data-wt-show-password-text="<?= e(I18N::translate('show')) ?>" data-wt-show-password-title="<?= e(I18N::translate('Show password')) ?>" data-wt-hide-password-text="<?= e(I18N::translate('hide')) ?>" data-wt-hide-password-title="<?= e(I18N::translate('Hide password')) ?>">
+        <div class="row">
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="username">
+                <?= I18N::translate('Username') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <input class="form-control" type="text" id="username" name="username" required="required" value="<?= e($username) ?>" autocomplete="username">
+            </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-sm-3 col-form-label wt-page-options-label">
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="password">
+                <?= I18N::translate('Password') ?>
+            </label>
+            <div class="col-sm-9 wt-page-options-value">
+                <input autocomplete="current-password" class="form-control" id="password" name="password" required="required" type="password" data-wt-show-password-text="<?= e(I18N::translate('show')) ?>" data-wt-show-password-title="<?= e(I18N::translate('Show password')) ?>" data-wt-hide-password-text="<?= e(I18N::translate('hide')) ?>" data-wt-hide-password-title="<?= e(I18N::translate('Hide password')) ?>">
+            </div>
         </div>
-        <div class="col-sm-9 wt-page-options-value">
-            <button class="btn btn-primary" type="submit">
-                <?= /* I18N: A button label. */
-                I18N::translate('sign in') ?>
-            </button>
 
-            <a class="btn btn-link" href="<?= e(route(PasswordRequestPage::class, ['tree' => $tree?->name()])) ?>">
-                <?= I18N::translate('Forgot password?') ?>
-            </a>
+        <div class="row">
+            <div class="col-sm-3 col-form-label wt-page-options-label">
+            </div>
+            <div class="col-sm-9 wt-page-options-value">
+                <button class="btn btn-primary" type="submit">
+                    <?= /* I18N: A button label. */
+                    I18N::translate('sign in') ?>
+                </button>
 
-            <?php if ($can_register) : ?>
-                <a class="btn btn-link" href="<?= e(route(RegisterPage::class, ['tree' => $tree?->name()])) ?>">
-                    <?= I18N::translate('Request a new user account') ?>
+                <a class="btn btn-link" href="<?= e(route(PasswordRequestPage::class, ['tree' => $tree?->name()])) ?>">
+                    <?= I18N::translate('Forgot password?') ?>
                 </a>
-            <?php endif ?>
-        </div>
-    </div>
 
-    <?= csrf_field() ?>
-</form>
+                <?php if ($can_register) : ?>
+                    <a class="btn btn-link" href="<?= e(route(RegisterPage::class, ['tree' => $tree?->name()])) ?>">
+                        <?= I18N::translate('Request a new user account') ?>
+                    </a>
+                <?php endif ?>
+            </div>
+        </div>
+
+        <?= csrf_field() ?>
+    </form>
+<?php endif ?>
+<!-- END Native Login Form -->
+
+<!-- OAuth2 providers should be displayed here if configured -->
+<!-- This is where OAuth2 login buttons would appear when the OAuth2 module is active -->
