@@ -391,7 +391,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      * @return Collection<int,object{
      *     block_id: int,
      *     block_order: int,
-     *     gedcom_id: int,
+     *     gedcom_id: int|null,
      *     header: string,
      *     faqbody: string,
      *     languages: string
@@ -418,7 +418,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             ->map(static function (object $row): object {
                 $row->block_id    = (int) $row->block_id;
                 $row->block_order = (int) $row->block_order;
-                $row->gedcom_id   = (int) $row->gedcom_id;
+                $row->gedcom_id   = $row->gedcom_id === null ? null : (int) $row->gedcom_id;
 
                 return $row;
             });

@@ -202,15 +202,15 @@ class MapDataService
     public function getPlaceListLocation(int|null $parent_id): Collection
     {
         $expression =
-            DB::prefix('p1') . '.place IS NOT NULL AND ' . DB::prefix('p1') . 'p1.latitude IS NULL OR ' .
-            DB::prefix('p2') . '.place IS NOT NULL AND ' . DB::prefix('p2') . 'p2.latitude IS NULL OR ' .
-            DB::prefix('p3') . '.place IS NOT NULL AND ' . DB::prefix('p3') . 'p3.latitude IS NULL OR ' .
-            DB::prefix('p4') . '.place IS NOT NULL AND ' . DB::prefix('p4') . 'p4.latitude IS NULL OR ' .
-            DB::prefix('p5') . '.place IS NOT NULL AND ' . DB::prefix('p5') . 'p5.latitude IS NULL OR ' .
-            DB::prefix('p6') . '.place IS NOT NULL AND ' . DB::prefix('p6') . 'p6.latitude IS NULL OR ' .
-            DB::prefix('p7') . '.place IS NOT NULL AND ' . DB::prefix('p7') . 'p7.latitude IS NULL OR ' .
-            DB::prefix('p8') . '.place IS NOT NULL AND ' . DB::prefix('p8') . 'p8.latitude IS NULL OR ' .
-            DB::prefix('p9') . '.place IS NOT NULL AND ' . DB::prefix('p9') . 'p9.latitude IS NULL';
+            DB::prefix('p1') . '.place IS NOT NULL AND ' . DB::prefix('p1') . '.latitude IS NULL OR ' .
+            DB::prefix('p2') . '.place IS NOT NULL AND ' . DB::prefix('p2') . '.latitude IS NULL OR ' .
+            DB::prefix('p3') . '.place IS NOT NULL AND ' . DB::prefix('p3') . '.latitude IS NULL OR ' .
+            DB::prefix('p4') . '.place IS NOT NULL AND ' . DB::prefix('p4') . '.latitude IS NULL OR ' .
+            DB::prefix('p5') . '.place IS NOT NULL AND ' . DB::prefix('p5') . '.latitude IS NULL OR ' .
+            DB::prefix('p6') . '.place IS NOT NULL AND ' . DB::prefix('p6') . '.latitude IS NULL OR ' .
+            DB::prefix('p7') . '.place IS NOT NULL AND ' . DB::prefix('p7') . '.latitude IS NULL OR ' .
+            DB::prefix('p8') . '.place IS NOT NULL AND ' . DB::prefix('p8') . '.latitude IS NULL OR ' .
+            DB::prefix('p9') . '.place IS NOT NULL AND ' . DB::prefix('p9') . '.latitude IS NULL';
 
         $expression = 'CASE ' . $expression . ' WHEN TRUE THEN 1 ELSE 0 END';
 

@@ -19,36 +19,31 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use ErrorException;
+use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function error_reporting;
-use function restore_error_handler;
-use function set_error_handler;
+use function response;
 
-class ErrorHandler implements MiddlewareInterface
+/**
+ * Middleware to deny access to robots.
+ */
+class AuthNotRobot implements MiddlewareInterface
 {
+    /**
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
+     *
+     * @return ResponseInterface
+     */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        set_error_handler(callback: $this->errorHandler(...));
-
-        $response = $handler->handle($request);
-
-        restore_error_handler();
-
-        return $response;
-    }
-
-    private function errorHandler(int $errno, string $errstr, string $errfile, int $errline): true
-    {
-        // Ignore errors that are silenced with '@'
-        if ((error_reporting() & $errno) !== 0) {
-            throw new ErrorException(message: $errstr, code: 0, severity: $errno, filename: $errfile, line: $errline);
+        if ($request->getAttribute(BadBotBlocker::ROBOT_ATTRIBUTE_NAME) !== null) {
+            return response('Not acceptable: routing', StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
         }
 
-        return true;
+        return $handler->handle($request);
     }
 }

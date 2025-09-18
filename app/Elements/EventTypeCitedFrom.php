@@ -44,56 +44,54 @@ class EventTypeCitedFrom extends AbstractElement
         'ROLE' => '0:1',
     ];
 
-    protected const array FAMILY_EVENTS = [
-        'ANUL',
-        'CENS',
-        'DIV',
-        'DIVF',
-        'ENGA',
-        'MARR',
-        'MARB',
-        'MARC',
-        'MARL',
-        'MARS',
-        'EVEN',
-    ];
-
-    protected const array INDIVIDUAL_EVENTS = [
-        'ADOP',
-        'BIRT',
-        'BAPM',
-        'BARM',
-        'BASM',
-        'BLES',
-        'BURI',
-        'CENS',
-        'CHR',
-        'CHRA',
-        'CONF',
-        'CREM',
-        'DEAT',
-        'EMIG',
-        'FCOM',
-        'GRAD',
-        'IMMI',
-        'NATU',
-        'ORDN',
-        'RETI',
-        'PROB',
-        'WILL',
-        'EVEN',
-    ];
-
-    protected const array ATTRIBUTE_TYPES = [
-        'CAST',
-        'EDUC',
-        'NATI',
-        'OCCU',
-        'PROP',
-        'RELI',
-        'RESI',
-        'TITL',
-        'FACT',
+    protected const array EVENT_TYPES = [
+        'FAM' => [
+            'ANUL',
+            'CENS',
+            'DIV',
+            'DIVF',
+            'ENGA',
+            'MARR',
+            'MARB',
+            'MARC',
+            'MARL',
+            'MARS',
+            'EVEN',
+        ],
+        'INDI' => [
+            'ADOP',
+            'BAPM',
+            'BARM',
+            'BASM',
+            'BIRT',
+            'BLES',
+            'BURI',
+            'CAST',
+            'CENS',
+            'CHR',
+            'CHRA',
+            'CONF',
+            'CREM',
+            'DEAT',
+            'EDUC',
+            'EMIG',
+            'EVEN',
+            'FACT',
+            'FCOM',
+            'GRAD',
+            'IMMI',
+            'NATI',
+            'NATU',
+            'OCCU',
+            'ORDN',
+            'PROB',
+            'PROP',
+            'RELI',
+            'RESI',
+            'RETI',
+            'TITL',
+            'WILL',
+        ],
     ];
 
     /**
@@ -103,19 +101,14 @@ class EventTypeCitedFrom extends AbstractElement
      */
     public function values(): array
     {
-        $data = [
-            Family::RECORD_TYPE     => static::FAMILY_EVENTS,
-            Individual::RECORD_TYPE => array_merge(static::INDIVIDUAL_EVENTS, static::ATTRIBUTE_TYPES),
-        ];
-
         $values = ['' => ''];
 
-        foreach ($data as $record_type => $subtags) {
-            foreach ($subtags as $subtag) {
-                $element = Registry::elementFactory()->make($record_type . ':' . $subtag);
+        foreach (self::EVENT_TYPES as $record_type => $tags) {
+            foreach ($tags as $tag) {
+                $element = Registry::elementFactory()->make($record_type . ':' . $tag);
 
                 if (!$element instanceof UnknownElement) {
-                    $values[$subtag] = $element->label();
+                    $values[$tag] = $element->label();
                 }
             }
         }

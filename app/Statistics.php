@@ -1143,17 +1143,17 @@ class Statistics
 
     public function lastDivorceName(): string
     {
-        return $this->data->firstEventName(['DIV'], true);
+        return $this->data->firstEventName(['DIV'], false);
     }
 
     public function lastDivorcePlace(): string
     {
-        return $this->data->firstEventPlace(['DIV'], true);
+        return $this->data->firstEventPlace(['DIV'], false);
     }
 
     public function lastDivorceYear(): string
     {
-        return $this->data->firstEventYear(['DIV'], true);
+        return $this->data->firstEventYear(['DIV'], false);
     }
 
     public function lastEvent(): string

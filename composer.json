@@ -1,6 +1,7 @@
 {
     "name": "fisharebest/webtrees",
     "description": "webtrees online genealogy",
+    "type": "project",
     "keywords": [
         "webtrees",
         "genealogy"
@@ -49,31 +50,31 @@
         "fisharebest/algorithm": "1.6.0",
         "fisharebest/ext-calendar": "2.6.0",
         "fisharebest/localization": "1.17.0",
-        "guzzlehttp/guzzle": "7.9.3",
-        "illuminate/database": "12.12.0",
-        "illuminate/support": "12.12.0",
-        "intervention/image": "3.11.2",
-        "league/commonmark": "2.7.0",
-        "league/flysystem": "3.29.1",
+        "guzzlehttp/guzzle": "7.10.0",
+        "illuminate/database": "12.28.1",
+        "illuminate/support": "12.28.1",
+        "intervention/image": "3.11.4",
+        "league/commonmark": "2.7.1",
+        "league/flysystem": "3.30.0",
         "league/flysystem-path-prefixing": "3.28.0",
         "league/flysystem-ziparchive": "3.29.0",
         "middlewares/client-ip": "2.1.0",
         "mlocati/ip-lib": "1.20.0",
-        "nesbot/carbon": "3.9.1",
+        "nesbot/carbon": "3.10.3",
         "nyholm/psr7": "1.8.2",
         "nyholm/psr7-server": "1.1.0",
         "psr/cache": "3.0.0",
         "psr/http-message": "2.0",
         "psr/http-server-handler": "1.0.2",
         "psr/http-server-middleware": "1.0.2",
-        "ramsey/uuid": "4.7.6",
+        "ramsey/uuid": "4.9.1",
         "sabre/vobject": "4.5.7",
-        "symfony/cache": "7.2.6",
-        "symfony/console": "7.2.6",
-        "symfony/expression-language": "7.2.0",
-        "symfony/mailer": "7.2.6",
-        "symfony/polyfill-mbstring": "1.32.0",
-        "tecnickcom/tcpdf": "6.9.3"
+        "symfony/cache": "7.3.2",
+        "symfony/console": "7.3.3",
+        "symfony/expression-language": "7.3.2",
+        "symfony/mailer": "7.3.3",
+        "symfony/polyfill-mbstring": "1.33.0",
+        "tecnickcom/tcpdf": "6.10.0"
     },
     "require-dev": {
         "ext-dom": "*",
@@ -81,14 +82,14 @@
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
         "league/flysystem-memory": "3.29.0",
-        "php-coveralls/php-coveralls": "2.7.0",
+        "php-coveralls/php-coveralls": "2.8.0",
         "phpstan/extension-installer": "1.4.3",
-        "phpstan/phpstan": "2.1.14",
-        "phpstan/phpstan-deprecation-rules": "2.0.2",
-        "phpstan/phpstan-phpunit": "2.0.6",
-        "phpstan/phpstan-strict-rules": "2.0.4",
-        "phpunit/phpunit": "12.1.4",
-        "squizlabs/php_codesniffer": "4.0.0beta1"
+        "phpstan/phpstan": "2.1.25",
+        "phpstan/phpstan-deprecation-rules": "2.0.3",
+        "phpstan/phpstan-phpunit": "2.0.7",
+        "phpstan/phpstan-strict-rules": "2.0.6",
+        "phpunit/phpunit": "12.3.11",
+        "squizlabs/php_codesniffer": "4.0.0-RC1"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
@@ -105,18 +106,14 @@
             "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
             "@composer install --no-dev --quiet",
             "cp -r vendor/ webtrees/vendor/",
+            "echo 'Workaround for orphaned file from Laravel 8 (webtrees 2.1) that breaks Laravel 11 (webtrees 2.2)'",
+            "echo \"<?php require __DIR__ . '/../../conditionable/Traits/Conditionable.php';\" > webtrees/vendor/illuminate/support/Traits/Conditionable.php",
             "php index.php compile-po-files",
             "for FILE in resources/lang/*/messages.php; do cp $FILE webtrees/$FILE; done",
             "zip --quiet --recurse-paths --move -9 webtrees-`git describe`.zip webtrees"
         ],
-        "webtrees:pre-commit-hook": [
-            "@composer webtrees:phpcs",
-            "@composer webtrees:phpstan",
-            "@composer webtrees:test"
-        ],
         "webtrees:phpcs": [
-            "vendor/bin/phpcs --colors --extensions=php   --standard=PSR12 --exclude=Generic.Files.LineLength index.php app tests",
-            "#vendor/bin/phpcs --colors --extensions=phtml --standard=PSR12 --exclude=Generic.Files.LineLength resources/views"
+            "vendor/bin/phpcs --colors --exclude=Generic.Files.LineLength index.php app tests"
         ],
         "webtrees:phpstan": [
             "vendor/bin/phpstan analyze -v --memory-limit=-1"

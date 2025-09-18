@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\MaintenanceModeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -29,13 +30,33 @@ use function response;
 #[CoversClass(CheckForMaintenanceMode::class)]
 class CheckForMaintenanceModeTest extends TestCase
 {
-    public function testMiddleware(): void
+    public function testSiteIsOffline(): void
     {
         $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response());
 
+        $maintenance_mode_service = $this->createMock(MaintenanceModeService::class);
+        $maintenance_mode_service->method('isOffline')->willReturn(true);
+        $maintenance_mode_service->method('message')->willReturn('XYZZY');
+
         $request    = self::createRequest();
-        $middleware = new CheckForMaintenanceMode();
+        $middleware = new CheckForMaintenanceMode($maintenance_mode_service);
+        $response   = $middleware->process($request, $handler);
+
+        self::assertSame(StatusCodeInterface::STATUS_SERVICE_UNAVAILABLE, $response->getStatusCode());
+        self::assertStringContainsString('XYZZY', $response->getBody()->getContents());
+    }
+
+    public function testSiteIsOnline(): void
+    {
+        $handler = $this->createMock(RequestHandlerInterface::class);
+        $handler->method('handle')->willReturn(response());
+
+        $maintenance_mode_service = $this->createMock(MaintenanceModeService::class);
+        $maintenance_mode_service->method('isOffline')->willReturn(false);
+
+        $request    = self::createRequest();
+        $middleware = new CheckForMaintenanceMode($maintenance_mode_service);
         $response   = $middleware->process($request, $handler);
 
         self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());

@@ -19,16 +19,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli\Commands;
 
-use Fisharebest\Webtrees\Webtrees;
+use Fisharebest\Webtrees\Services\MaintenanceModeService;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Throwable;
 
-use function file_exists;
-
 final class SiteOnline extends AbstractCommand
 {
+    public function __construct(
+        private readonly MaintenanceModeService $maintenanceModeService,
+    ) {
+        parent::__construct();
+    }
+
     protected function configure(): void
     {
         $this
@@ -40,17 +44,17 @@ final class SiteOnline extends AbstractCommand
     {
         $io = new SymfonyStyle(input: $input, output: $output);
 
-        $file_exists = file_exists(filename: Webtrees::OFFLINE_FILE);
+        $file = $this->maintenanceModeService->file();
 
-        if (!$file_exists) {
-            $io->success(message: Webtrees::OFFLINE_FILE . ' does not exist. Site is already online.');
+        if (!$this->maintenanceModeService->isOffline()) {
+            $io->success(message: $file . ' does not exist. Site is already online.');
         }
 
         try {
-            unlink(filename: Webtrees::OFFLINE_FILE);
-            $io->success(message: Webtrees::OFFLINE_FILE . ' deleted. Site is online.');
+            $this->maintenanceModeService->online();
+            $io->success(message: $file . ' deleted. Site is online.');
         } catch (Throwable $ex) {
-            $io->error(message: 'Unable to delete ' . Webtrees::OFFLINE_FILE . ' - ' . $ex->getMessage());
+            $io->error(message: 'Unable to delete ' . $file . ' - ' . $ex->getMessage());
         }
 
         return self::SUCCESS;

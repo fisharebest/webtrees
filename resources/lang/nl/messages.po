@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-04-26 11:39+0000\n"
+"PO-Revision-Date: 2025-09-14 06:40+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/nl/>\n"
@@ -4312,7 +4312,7 @@ msgstr "Vrij te kiezen gebeurtenis"
 
 #: resources/views/admin/custom-module-info.phtml:14
 msgid "Custom module"
-msgstr "Niet-standaard module"
+msgstr "Uitbreidingsmodule"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:38
@@ -5141,7 +5141,7 @@ msgstr "Het hangt van uw serverconfiguratie af of u automatisch kunt upgraden."
 
 #: resources/views/modules/family-book-chart/page.phtml:50
 msgid "Descendant generations"
-msgstr "Afstammings generaties"
+msgstr "Afstammingsgeneraties"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a module/sidebar
@@ -6489,7 +6489,7 @@ msgstr "Zoek verwantschappen via voorouders"
 #: app/Module/RelationshipsChartModule.php:734
 #: resources/views/modules/relationships-chart/page.phtml:67
 msgid "Find the closest relationships"
-msgstr "Vind de dichtstbijzijnde verwantschap"
+msgstr "Vind de dichtstbijzijnde verwantschappen"
 
 #: app/Http/RequestHandlers/UnconnectedPage.php:110
 #: resources/views/admin/trees.phtml:193
@@ -6600,7 +6600,9 @@ msgstr "Voetteksten"
 #: resources/views/admin/trees-import.phtml:129
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
-msgstr "Als het GEDCOM-bestand bijvoorbeeld %1$s bevat maar webtrees verwacht %2$s in the mediamap te vinden, dan moet u %3$s verwijderen."
+msgstr ""
+"Als het GEDCOM-bestand bijvoorbeeld %1$s bevat maar webtrees verwacht %2$s "
+"in de mediamap te vinden, dan moet u %3$s verwijderen."
 
 #: resources/views/help/relationship-privacy.phtml:14
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."

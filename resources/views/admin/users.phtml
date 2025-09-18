@@ -64,7 +64,10 @@ use Fisharebest\Webtrees\View;
       /* last_login        */ {dataSort: 8},
       /* verified          */ null,
       /* approved          */ null
-    ]
-  }).fnFilter("<?= e($filter) ?>"); // Pre-fill the search box
+    ],
+    search: {
+      search: "<?= e($filter) ?>" // Pre-fill the search box
+    }
+  });
 </script>
 <?php View::endpush() ?>

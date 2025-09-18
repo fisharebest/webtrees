@@ -22,11 +22,11 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(GoogleWebmasterToolsModule::class)]
-class GoogleWebmasterToolsModuleTest extends TestCase
+#[CoversClass(GoogleSearchConsole::class)]
+class GoogleSearchConsoleTest extends TestCase
 {
     public function testClass(): void
     {
-        self::assertTrue(class_exists(GoogleWebmasterToolsModule::class));
+        self::assertTrue(class_exists(GoogleSearchConsole::class));
     }
 }

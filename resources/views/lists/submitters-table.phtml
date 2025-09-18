@@ -33,7 +33,7 @@ $count_individuals = DB::table('individuals')
     ->where('l_type', '=', Submitter::RECORD_TYPE)
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
-    ->pluck(new Expression('COUNT(*)'), 'l_to')
+    ->pluck(new Expression('COUNT(*) AS total'), 'l_to')
     ->map(static fn (string $n): int => (int) $n)
     ->all();
 
@@ -45,7 +45,7 @@ $count_families = DB::table('families')
     ->where('l_type', '=', Submitter::RECORD_TYPE)
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
-    ->pluck(new Expression('COUNT(*)'), 'l_to')
+    ->pluck(new Expression('COUNT(*) AS total'), 'l_to')
     ->map(static fn (string $n): int => (int) $n)
     ->all();
 ?>
