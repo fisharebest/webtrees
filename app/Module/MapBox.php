@@ -65,16 +65,6 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
 
         $api_key = $this->getPreference('api_key');
 
-        if ($api_key === '') {
-            $message = I18N::translate('This service requires an API key.');
-
-            if (Auth::isAdmin()) {
-                $message = '<a href="' . e($this->getConfigLink()) . '">' . $message . '</a>';
-            }
-
-            throw new HttpServerErrorException($message);
-        }
-
         return $this->viewResponse('modules/map-box/config', [
             'api_key' => $api_key,
             'title'   => $this->title(),
@@ -115,6 +105,16 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
     public function leafletJsTileLayers(): array
     {
         $api_key = $this->getPreference('api_key');
+
+        if ($api_key === '') {
+            $message = I18N::translate('This service requires an API key.');
+
+            if (Auth::isAdmin()) {
+                $message = '<a href="' . e($this->getConfigLink()) . '">' . $message . '</a>';
+            }
+
+            throw new HttpServerErrorException($message);
+        }
 
         return [
             (object) [
