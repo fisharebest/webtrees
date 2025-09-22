@@ -129,6 +129,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
                 'tileSize'    => 512,
                 'url'         => 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
                 'zoomOffset'  => -1,
+                'localName'   => 'MapBoxDark',
             ],
             (object) [
                 'accessToken' => $api_key,
@@ -142,6 +143,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
                 'tileSize'    => 512,
                 'url'         => 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
                 'zoomOffset'  => -1,
+                'localName'   => 'MapBoxLight',
             ],
             (object) [
                 'accessToken' => $api_key,
@@ -155,6 +157,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
                 'tileSize'    => 512,
                 'url'         => 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
                 'zoomOffset'  => -1,
+                'localName'   => 'MapBoxOutdoors',
             ],
             (object) [
                 'accessToken' => $api_key,
@@ -168,6 +171,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
                 'tileSize'    => 512,
                 'url'         => 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
                 'zoomOffset'  => -1,
+                'localName'   => 'MapBoxSatellite',
             ],
             (object) [
                 'accessToken' => $api_key,
@@ -181,6 +185,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
                 'tileSize'    => 512,
                 'url'         => 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
                 'zoomOffset'  => -1,
+                'localName'   => 'MapBoxStreets',
             ],
         ];
     }
