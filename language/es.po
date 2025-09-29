@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-08-13 08:48+0000\n"
-"Last-Translator: Elián Hanisch <lambdae2@gmail.com>\n"
+"PO-Revision-Date: 2025-09-29 04:48+0000\n"
+"Last-Translator: elysch <ely.github.1@mitalteli.com>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/es/>\n"
 "Language: es\n"
@@ -8352,7 +8352,7 @@ msgstr "Lesoto"
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr "US Letter"
+msgstr "Carta"
 
 #: app/Module/GoogleMapsModule.php:384 app/Module/GoogleMapsModule.php:400
 #: app/Module/GoogleMapsModule.php:1438 app/Module/GoogleMapsModule.php:3444
