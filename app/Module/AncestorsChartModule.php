@@ -197,8 +197,8 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
                 case self::CHART_STYLE_FAMILIES:
                     $families = [];
 
-                    foreach ($ancestors as $individual) {
-                        foreach ($individual->childFamilies() as $family) {
+                    foreach ($ancestors as $ancestor) {
+                        foreach ($ancestor->childFamilies() as $family) {
                             $families[$family->xref()] = $family;
                         }
                     }

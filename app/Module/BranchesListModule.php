@@ -242,7 +242,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
                     $ancestors[$sosa * 2 + 1] = $family->wife();
                 }
             }
-        } while (next($ancestors));
+        } while (next($ancestors) !== false);
 
         return $ancestors;
     }
