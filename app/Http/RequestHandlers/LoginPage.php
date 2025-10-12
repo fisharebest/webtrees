@@ -90,6 +90,13 @@ class LoginPage implements RequestHandlerInterface
                 break;
             case '4':
                 $welcome = Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . I18N::languageTag());
+
+                if ($welcome === '') {
+                    // No value for this language?  Try the default language.
+                    $language = Site::getPreference('LANGUAGE');
+                    $welcome  = Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . $language);
+                }
+
                 break;
         }
 
