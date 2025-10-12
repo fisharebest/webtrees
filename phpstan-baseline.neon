@@ -1393,7 +1393,7 @@ parameters:
 			path: app/Http/Middleware/Router.php
 
 		-
-			rawMessage: 'Parameter #1 $key of method Illuminate\Support\Collection<(int|string),Fisharebest\Webtrees\Tree>::get() expects (int|string), mixed given.'
+			rawMessage: 'Parameter #1 $key of method Illuminate\Support\Collection<(int|string),Fisharebest\Webtrees\Tree>::get() expects int|string|null, mixed given.'
 			identifier: argument.type
 			count: 1
 			path: app/Http/Middleware/Router.php
@@ -1625,12 +1625,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/DataFixPreview.php
-
-		-
-			rawMessage: 'Parameter #1 $key of method Illuminate\Support\Collection<int,Fisharebest\Webtrees\Module\ModuleDataFixInterface>::get() expects int, string given.'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/DataFixSelect.php
 
 		-
 			rawMessage: 'Parameter #2 $params of method Fisharebest\Webtrees\Module\ModuleDataFixInterface::doesRecordNeedUpdate() expects array<string, string>, array given.'
@@ -3007,7 +3001,7 @@ parameters:
 			path: app/Http/RequestHandlers/UserListData.php
 
 		-
-			rawMessage: 'Parameter #1 $key of method Illuminate\Support\Collection<string,string>::get() expects string, mixed given.'
+			rawMessage: 'Parameter #1 $key of method Illuminate\Support\Collection<string,string>::get() expects int|string|null, mixed given.'
 			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/UserListData.php
@@ -3129,7 +3123,7 @@ parameters:
 		-
 			rawMessage: 'Cannot access offset int<0, max> on mixed.'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 4
+			count: 1
 			path: app/Individual.php
 
 		-
@@ -6397,6 +6391,12 @@ parameters:
 			path: app/Services/GedcomExportService.php
 
 		-
+			rawMessage: 'Offset ''uri'' might not exist on array{timed_out: bool, blocked: bool, eof: bool, unread_bytes: int, stream_type: string, wrapper_type: string, wrapper_data: mixed, mode: string, ...}.'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: app/Services/GedcomExportService.php
+
+		-
 			rawMessage: 'Parameter #1 $gedcom of method Fisharebest\Webtrees\Services\GedcomExportService::wrapLongLines() expects string, mixed given.'
 			identifier: argument.type
 			count: 1
@@ -6841,6 +6841,12 @@ parameters:
 			path: app/Services/ModuleService.php
 
 		-
+			rawMessage: Possibly invalid array key type mixed.
+			identifier: array.invalidKey
+			count: 1
+			path: app/Services/ModuleService.php
+
+		-
 			rawMessage: 'Parameter $stream of function fwrite expects resource, resource|false given.'
 			identifier: argument.type
 			count: 1
@@ -7221,6 +7227,12 @@ parameters:
 		-
 			rawMessage: 'Parameter #1 $stream of function stream_filter_append expects resource, resource|null given.'
 			identifier: argument.type
+			count: 1
+			path: app/Services/TreeService.php
+
+		-
+			rawMessage: Possibly invalid array key type mixed.
+			identifier: array.invalidKey
 			count: 1
 			path: app/Services/TreeService.php
 
@@ -7640,6 +7652,12 @@ parameters:
 
 		-
 			rawMessage: 'Method Fisharebest\Webtrees\Tree::getPreference() should return string but returns mixed.'
+			identifier: return.type
+			count: 1
+			path: app/Tree.php
+
+		-
+			rawMessage: 'Method Fisharebest\Webtrees\Tree::getUserPreference() should return string but returns mixed.'
 			identifier: return.type
 			count: 1
 			path: app/Tree.php
