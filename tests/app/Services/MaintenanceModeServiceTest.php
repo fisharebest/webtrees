@@ -42,15 +42,15 @@ class MaintenanceModeServiceTest extends TestCase
     {
         $service = new MaintenanceModeService(self::TEST_DATA_DIR);
 
-        $this->assertFalse($service->isOffline());
+        self::assertFalse($service->isOffline());
 
         $service->offline();
 
-        $this->assertTrue($service->isOffline());
+        self::assertTrue($service->isOffline());
 
         $service->online();
 
-        $this->assertFalse($service->isOffline());
+        self::assertFalse($service->isOffline());
     }
 
     public function testMessage(): void
@@ -59,7 +59,7 @@ class MaintenanceModeServiceTest extends TestCase
 
         $service->offline('foo bar');
 
-        $this->assertSame('foo bar', $service->message());
+        self::assertSame('foo bar', $service->message());
 
         $service->online();
     }
@@ -70,12 +70,12 @@ class MaintenanceModeServiceTest extends TestCase
 
         mkdir(self::TEST_DATA_DIR . 'offline.txt', 0777, true);
 
-        $this->assertTrue($service->isOffline());
-        $this->assertSame('', $service->message());
+        self::assertTrue($service->isOffline());
+        self::assertSame('', $service->message());
 
         $service->online();
 
-        $this->assertFalse($service->isOffline());
+        self::assertFalse($service->isOffline());
     }
 
     public function testOfflineFileIsUnreadable(): void
@@ -85,12 +85,12 @@ class MaintenanceModeServiceTest extends TestCase
         file_put_contents(self::TEST_DATA_DIR . 'offline.txt', 'foo');
         chmod(self::TEST_DATA_DIR . 'offline.txt', 0);
 
-        $this->assertTrue($service->isOffline());
-        $this->assertSame('', $service->message());
+        self::assertTrue($service->isOffline());
+        self::assertSame('', $service->message());
 
         $service->online();
 
-        $this->assertFalse($service->isOffline());
+        self::assertFalse($service->isOffline());
     }
 
     public function testOfflineFileIsSymbolicLink(): void
@@ -100,16 +100,16 @@ class MaintenanceModeServiceTest extends TestCase
         file_put_contents(self::TEST_DATA_DIR . 'foo', 'foo');
         symlink(self::TEST_DATA_DIR . 'foo', self::TEST_DATA_DIR . 'offline.txt');
 
-        $this->assertTrue($service->isOffline());
-        $this->assertSame('foo', $service->message());
+        self::assertTrue($service->isOffline());
+        self::assertSame('foo', $service->message());
 
         unlink(self::TEST_DATA_DIR . 'foo');
 
-        $this->assertTrue($service->isOffline());
-        $this->assertSame('', $service->message());
+        self::assertTrue($service->isOffline());
+        self::assertSame('', $service->message());
 
         $service->online();
 
-        $this->assertFalse($service->isOffline());
+        self::assertFalse($service->isOffline());
     }
 }

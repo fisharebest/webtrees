@@ -214,8 +214,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     protected function validateHtmlResponse(ResponseInterface $response): void
     {
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-
-        self::assertEquals('text/html; charset=UTF-8', $response->getHeaderLine('content-type'));
+        self::assertSame('text/html; charset=UTF-8', $response->getHeaderLine('content-type'));
 
         $html = $response->getBody()->getContents();
 
