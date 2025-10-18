@@ -40,8 +40,9 @@ readonly class MaintenanceModeService
 {
     private const string OFFLINE_FILE = 'offline.txt';
 
-    public function __construct(private string $data_dir = Webtrees::DATA_DIR)
-    {
+    public function __construct(
+        private string $data_dir = Webtrees::DATA_DIR
+    ) {
         if (!is_dir($data_dir)) {
             throw new InvalidArgumentException($data_dir . ' does not exist');
         }

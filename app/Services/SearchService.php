@@ -68,15 +68,9 @@ class SearchService
     // Do not attempt to show search results larger than this/
     protected const int MAX_SEARCH_RESULTS = 5000;
 
-    private TreeService $tree_service;
-
-    /**
-     * @param TreeService $tree_service
-     */
     public function __construct(
-        TreeService $tree_service
+        private readonly TreeService $tree_service,
     ) {
-        $this->tree_service = $tree_service;
     }
 
     /**

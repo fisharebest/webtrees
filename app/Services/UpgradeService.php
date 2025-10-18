@@ -78,14 +78,9 @@ class UpgradeService
     // If the update server doesn't respond after this time, give up.
     private const float HTTP_TIMEOUT = 3.0;
 
-    private TimeoutService $timeout_service;
-
-    /**
-     * @param TimeoutService $timeout_service
-     */
-    public function __construct(TimeoutService $timeout_service)
-    {
-        $this->timeout_service = $timeout_service;
+    public function __construct(
+        private readonly TimeoutService $timeout_service,
+    ) {
     }
 
     /**

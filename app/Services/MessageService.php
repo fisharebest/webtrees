@@ -49,18 +49,10 @@ class MessageService
     private const string BROADCAST_NEVER = 'never';
     private const string BROADCAST_GONE  = 'gone';
 
-    private EmailService $email_service;
-
-    private UserService $user_service;
-
-    /**
-     * @param EmailService $email_service
-     * @param UserService  $user_service
-     */
-    public function __construct(EmailService $email_service, UserService $user_service)
-    {
-        $this->email_service = $email_service;
-        $this->user_service  = $user_service;
+    public function __construct(
+        private readonly EmailService $email_service,
+        private readonly UserService $user_service,
+    ) {
     }
 
     /**

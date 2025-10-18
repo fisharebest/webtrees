@@ -59,14 +59,9 @@ class TreeService
         'pt-BR' => 'portuguese',
     ];
 
-    private GedcomImportService $gedcom_import_service;
-
-    /**
-     * @param GedcomImportService $gedcom_import_service
-     */
-    public function __construct(GedcomImportService $gedcom_import_service)
-    {
-        $this->gedcom_import_service = $gedcom_import_service;
+    public function __construct(
+        private readonly GedcomImportService $gedcom_import_service,
+    ) {
     }
 
     /**

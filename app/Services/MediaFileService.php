@@ -74,8 +74,9 @@ class MediaFileService
         '_DAV',
     ];
 
-    public function __construct(private PhpService $php_service)
-    {
+    public function __construct(
+        private readonly PhpService $php_service,
+    ) {
     }
 
     /**

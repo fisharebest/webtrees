@@ -38,14 +38,9 @@ use function is_object;
  */
 class HomePageService
 {
-    private ModuleService $module_service;
-
-    /**
-     * @param ModuleService $module_service
-     */
-    public function __construct(ModuleService $module_service)
-    {
-        $this->module_service = $module_service;
+    public function __construct(
+        private readonly ModuleService $module_service,
+    ) {
     }
 
     /**
