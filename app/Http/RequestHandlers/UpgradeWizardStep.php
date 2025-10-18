@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\MaintenanceModeService;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
@@ -80,18 +81,12 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
     public function __construct(
         private GedcomExportService $gedcom_export_service,
         private MaintenanceModeService $maintenance_mode_service,
+        private PendingChangesService $pending_changes_service,
         private TreeService $tree_service,
         private UpgradeService $upgrade_service,
     ) {
     }
 
-    /**
-     * Perform one step of the wizard
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $zip_file   = Webtrees::ROOT_DIR . self::ZIP_FILENAME;
@@ -130,9 +125,6 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
         }
     }
 
-    /**
-     * @return ResponseInterface
-     */
     private function wizardStepCheck(): ResponseInterface
     {
         $latest_version = $this->upgrade_service->latestVersion();
@@ -154,11 +146,6 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
         ]));
     }
 
-    /**
-     * Make sure the temporary folder exists.
-     *
-     * @return ResponseInterface
-     */
     private function wizardStepPrepare(): ResponseInterface
     {
         $root_filesystem = Registry::filesystem()->root();
@@ -170,14 +157,9 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
         ]));
     }
 
-    /**
-     * @return ResponseInterface
-     */
     private function wizardStepPending(): ResponseInterface
     {
-        $changes = DB::table('change')->where('status', '=', 'pending')->exists();
-
-        if ($changes) {
+        if ($this->pending_changes_service->pendingChangesExist()) {
             return response(view('components/alert-danger', [
                 'alert' => I18N::translate('You should accept or reject all pending changes before upgrading.'),
             ]), StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
@@ -188,11 +170,6 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
         ]));
     }
 
-    /**
-     * @param Tree $tree
-     *
-     * @return ResponseInterface
-     */
     private function wizardStepExport(Tree $tree): ResponseInterface
     {
         $data_filesystem = Registry::filesystem()->data();
@@ -206,9 +183,6 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
         ]));
     }
 
-    /**
-     * @return ResponseInterface
-     */
     private function wizardStepDownload(): ResponseInterface
     {
         $root_filesystem = Registry::filesystem()->root();
@@ -230,14 +204,6 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
         ]));
     }
 
-    /**
-     * For performance reasons, we use direct filesystem access for this step.
-     *
-     * @param string $zip_file
-     * @param string $zip_folder
-     *
-     * @return ResponseInterface
-     */
     private function wizardStepUnzip(string $zip_file, string $zip_folder): ResponseInterface
     {
         $start_time = Registry::timeFactory()->now();
@@ -254,11 +220,6 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
         ]));
     }
 
-    /**
-     * @param string $zip_file
-     *
-     * @return ResponseInterface
-     */
     private function wizardStepCopyAndCleanUp(string $zip_file): ResponseInterface
     {
         $source_filesystem = Registry::filesystem()->root(self::UPGRADE_FOLDER . self::ZIP_FILE_PREFIX);

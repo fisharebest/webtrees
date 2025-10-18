@@ -43,15 +43,12 @@ use ZipArchive;
 
 use function explode;
 use function fclose;
-use function file_exists;
-use function file_put_contents;
 use function fopen;
 use function ftell;
 use function fwrite;
 use function rewind;
 use function strlen;
 use function time;
-use function unlink;
 use function version_compare;
 
 use const PHP_VERSION;

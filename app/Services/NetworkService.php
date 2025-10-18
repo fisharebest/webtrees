@@ -55,7 +55,7 @@ class NetworkService
             } catch (Throwable) {
                 continue;
             } finally {
-                if (is_resource(value: $stream)) {
+                if (isset($stream) && is_resource(value: $stream)) {
                     fclose(stream: $stream);
                 }
             }

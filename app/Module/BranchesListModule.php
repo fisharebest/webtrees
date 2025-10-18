@@ -415,7 +415,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
                         $sosa_html  = '';
                     }
                     $marriage_year = $family->getMarriageYear();
-                    if ($marriage_year) {
+                    if ($marriage_year !== 0) {
                         $fam_html .= ' <a href="' . e($family->url()) . '" title="' . strip_tags($family->getMarriageDate()->display()) . '"><i class="icon-rings"></i>' . $marriage_year . '</a>';
                     } elseif ($family->facts(['MARR'])->isNotEmpty()) {
                         $fam_html .= ' <a href="' . e($family->url()) . '" title="' . I18N::translate('Marriage') . '"><i class="icon-rings"></i></a>';
