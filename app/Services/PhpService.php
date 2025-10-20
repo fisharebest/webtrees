@@ -27,6 +27,8 @@ use function ini_get;
 use function ini_parse_quantity;
 use function sys_get_temp_dir;
 
+use const PHP_OS_FAMILY;
+
 /**
  * Access to the PHP environment - to facilitate mocking/testing.
  */
@@ -60,6 +62,15 @@ class PhpService
     public function memoryLimit(): int
     {
         return ini_parse_quantity(shorthand: $this->iniGet(option: 'memory_limit'));
+    }
+
+    public function pdoMysqlDefaultSocket(): string
+    {
+        if (PHP_OS_FAMILY === 'Windows') {
+            return '';
+        }
+
+        return $this->iniGet(option: 'pdo_mysql.default_socket');
     }
 
     public function postMaxSize(): int

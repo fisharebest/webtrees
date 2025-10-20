@@ -241,7 +241,7 @@ class SetupWizard implements RequestHandlerInterface
             return $this->step3DatabaseType($data);
         }
 
-        $data['mysql_local'] = 'localhost:' . $this->php_service->iniGet(option: 'pdo_mysql.default_socket');
+        $data['mysql_local'] = 'localhost:' . $this->php_service->pdoMysqlDefaultSocket();
 
         return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
     }
@@ -260,7 +260,7 @@ class SetupWizard implements RequestHandlerInterface
             $data['errors']->push($ex->getMessage());
 
             // Don't jump to step 4, as the error will make it jump to step 3.
-            $data['mysql_local'] = 'localhost:' . $this->php_service->iniGet(option: 'pdo_mysql.default_socket');
+            $data['mysql_local'] = 'localhost:' . $this->php_service->pdoMysqlDefaultSocket();
 
             return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
         }
