@@ -341,9 +341,9 @@ class WebRoutes
      */
     public function load(Map $router): void
     {
-        $router->attach('', '', static function (Map $router) {
+        $router->attach('', '', static function (Map $router): void {
             // Admin routes.
-            $router->attach('', '/admin', static function (Map $router) {
+            $router->attach('', '/admin', static function (Map $router): void {
                 $router->extras([
                     'middleware' => [
                         AuthAdministrator::class,
@@ -456,7 +456,7 @@ class WebRoutes
             });
 
             // Manager routes (multiple trees).
-            $router->attach('', '/admin', static function (Map $router) {
+            $router->attach('', '/admin', static function (Map $router): void {
                 $router->extras([
                     'middleware' => [
                         AuthManager::class,
@@ -467,7 +467,7 @@ class WebRoutes
             });
 
             // Manager routes.
-            $router->attach('', '/tree/{tree}', static function (Map $router) {
+            $router->attach('', '/tree/{tree}', static function (Map $router): void {
                 $router->extras([
                     'middleware' => [
                         AuthManager::class,
@@ -513,7 +513,7 @@ class WebRoutes
             });
 
             // Moderator routes.
-            $router->attach('', '/tree/{tree}', static function (Map $router) {
+            $router->attach('', '/tree/{tree}', static function (Map $router): void {
                 $router->extras([
                     'middleware' => [
                         AuthModerator::class,
@@ -529,7 +529,7 @@ class WebRoutes
             });
 
             // Editor routes.
-            $router->attach('', '/tree/{tree}', static function (Map $router) {
+            $router->attach('', '/tree/{tree}', static function (Map $router): void {
                 $router->extras([
                     'middleware' => [
                         AuthEditor::class,
@@ -611,7 +611,7 @@ class WebRoutes
             });
 
             // User routes with a tree.
-            $router->attach('', '/tree/{tree}', static function (Map $router) {
+            $router->attach('', '/tree/{tree}', static function (Map $router): void {
                 $router->extras([
                     'middleware' => [
                         AuthLoggedIn::class,
@@ -630,7 +630,7 @@ class WebRoutes
             });
 
             // User routes without a tree.
-            $router->attach('', '', static function (Map $router) {
+            $router->attach('', '', static function (Map $router): void {
                 $router->extras([
                     'middleware' => [
                         AuthLoggedIn::class,
@@ -644,7 +644,7 @@ class WebRoutes
             });
 
             // Visitor routes - with an optional tree (for sites with no public trees).
-            $router->attach('', '', static function (Map $router) {
+            $router->attach('', '', static function (Map $router): void {
                 $router->get(LoginPage::class, '/login{/tree}');
                 $router->post(LoginAction::class, '/login{/tree}');
                 $router->get(PasswordRequestPage::class, '/password-request{/tree}');
@@ -657,7 +657,7 @@ class WebRoutes
             });
 
             // Visitor routes with a tree (robots allowed).
-            $router->attach('', '/tree/{tree}', static function (Map $router) {
+            $router->attach('', '/tree/{tree}', static function (Map $router): void {
                 $router->get(FamilyPage::class, '/family/{xref}{/slug}')->tokens(['slug' => '.*']);
                 $router->get(HeaderPage::class, '/header/{xref}{/slug}')->tokens(['slug' => '.*']);
                 $router->get(IndividualPage::class, '/individual/{xref}{/slug}')->tokens(['slug' => '.*']);
@@ -678,7 +678,7 @@ class WebRoutes
             });
 
             // Visitor routes with a tree (robots not allowed).
-            $router->attach('', '/tree/{tree}', static function (Map $router) {
+            $router->attach('', '/tree/{tree}', static function (Map $router): void {
                 $router->extras([
                     'middleware' => [
                         AuthNotRobot::class,
