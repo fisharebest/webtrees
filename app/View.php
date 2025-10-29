@@ -235,9 +235,7 @@ class View
      */
     public function getFilenameForView(string $view_name): string
     {
-        // If we request "::view", then use it explicitly.  Don't allow replacements.
-        // NOTE: cannot use str_starts_with() as it wasn't available in 2.0.6, and is called by the upgrade wizard.
-        $explicit = strncmp($view_name, self::NAMESPACE_SEPARATOR, strlen(self::NAMESPACE_SEPARATOR)) === 0;
+        $explicit = str_starts_with($view_name, self::NAMESPACE_SEPARATOR);
 
         if (!str_contains($view_name, self::NAMESPACE_SEPARATOR)) {
             $view_name = self::NAMESPACE_SEPARATOR . $view_name;
