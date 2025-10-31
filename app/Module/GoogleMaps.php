@@ -127,6 +127,7 @@ class GoogleMaps extends AbstractModule implements ModuleConfigInterface, Module
                 'subdomains'  => ['mt0', 'mt1', 'mt2', 'mt3'],
                 'label'       => 'Streets',
                 'url'         => 'https://{s}.google.com/vt/lyrs={lyrs}&x={x}&y={y}&z={z}',
+                'localName'   => 'GoogleStreets',
             ],
             (object) [
                 'GM_API_KEY'  => $api_key,
@@ -138,6 +139,7 @@ class GoogleMaps extends AbstractModule implements ModuleConfigInterface, Module
                 'subdomains'  => ['mt0', 'mt1', 'mt2', 'mt3'],
                 'label'       => 'Hybrid',
                 'url'         => 'https://{s}.google.com/vt/lyrs={lyrs}&x={x}&y={y}&z={z}',
+                'localName'   => 'GoogleHybrid',
             ],
             (object) [
                 'GM_API_KEY'  => $api_key,
@@ -149,6 +151,7 @@ class GoogleMaps extends AbstractModule implements ModuleConfigInterface, Module
                 'subdomains'  => ['mt0', 'mt1', 'mt2', 'mt3'],
                 'label'       => 'Satellite',
                 'url'         => 'https://{s}.google.com/vt/lyrs={lyrs}&x={x}&y={y}&z={z}',
+                'localName'   => 'GoogleSatellite',
             ],
             (object) [
                 'GM_API_KEY'  => $api_key,
@@ -160,6 +163,7 @@ class GoogleMaps extends AbstractModule implements ModuleConfigInterface, Module
                 'subdomains'  => ['mt0', 'mt1', 'mt2', 'mt3'],
                 'label'       => 'Terrain',
                 'url'         => 'https://{s}.google.com/vt/lyrs={lyrs}&x={x}&y={y}&z={z}',
+                'localName'   => 'GoogleTerrain',
             ],
         ];
     }
