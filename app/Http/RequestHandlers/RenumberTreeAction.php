@@ -39,6 +39,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function e;
 use function redirect;
 use function route;
 
@@ -70,6 +71,17 @@ class RenumberTreeAction implements RequestHandlerInterface
     {
         $tree  = Validator::attributes($request)->tree();
         $xrefs = $this->admin_service->duplicateXrefs($tree);
+
+        if ($xrefs !== [] && $tree->hasPendingEdit()) {
+            $message =
+                I18N::translate('You need to accept or reject all pending changes before proceeding.') .
+                ' <a href="' . e(route(PendingChanges::class, ['tree' => $tree->name()])) . '">' .
+                I18N::translate('Show pending changes') .
+                '</a>';
+            FlashMessages::addMessage($message, 'danger');
+
+            return redirect(route(RenumberTreePage::class, ['tree' => $tree->name()]));
+        }
 
         foreach ($xrefs as $old_xref => $type) {
             $new_xref = Registry::xrefFactory()->make($type);
