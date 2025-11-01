@@ -80,7 +80,18 @@ if ($tag === 'MARR') {
         <?php endif ?>
 
         <?php if ($tree->getPreference('SHOW_FACT_ICONS') === '1') : ?>
-            <span class="wt-fact-icon wt-fact-icon-<?= e($tag) ?>" title="<?= strip_tags($label) ?>"></span>
+            <span class="wt-fact-icon wt-fact-icon-<?= e($tag) ?>" title="<?= strip_tags($label) ?>">
+                <?php
+                    $iconMap = [
+                        'BIRT' => 'fa-baby',
+                        'DEAT' => 'fa-cross',
+                        'MARR' => 'fa-ring',
+                    ];
+                ?>
+                <?php if (isset($iconMap[$tag])) : ?>
+                    <i class="fa-solid <?= e($iconMap[$tag]) ?>"></i>
+                <?php endif ?>
+            </span>
         <?php endif ?>
     </th>
 
