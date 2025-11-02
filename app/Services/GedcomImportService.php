@@ -257,6 +257,9 @@ class GedcomImportService
             $tree->setPreference('imported', '1');
             $type = 'TRLR';
             $xref = 'TRLR'; // For records without an XREF, use the type as a pseudo XREF.
+        } elseif (preg_match('/^0 (_PTF|_PTE|_STF|_STE|_PLAC|_PEG|LABL) @/', $gedrec) === 1) {
+            // MacFamilyTree creates these records with duplicate XREFs.  We can't import these. See #5125
+            return;
         } elseif (str_starts_with($gedrec, '0 _PLAC_DEFN')) {
             $this->importLegacyPlacDefn($gedrec);
 
