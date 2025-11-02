@@ -48,7 +48,9 @@ import {
   // For the BeautifyMarker library
   faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater,
   // Fact icons
-  faBaby, faCross, faRing
+  faAt, faBaby, faBullhorn, faBuildingUser, faClipboardList, faCross, faDove, faFileContract, faGlobe,
+  faHammer, faHashtag, faHouseChimneyUser, faIdCard, faInfo, faMonument, faNoteSticky, faPenFancy,
+  faPeopleArrows, faPersonMilitaryRifle, faPhone, faRing, faUserGraduate
 } from '@fortawesome/free-solid-svg-icons';
 import 'corejs-typeahead';
 
@@ -97,7 +99,9 @@ library.add(
   // For the BeautifyMarker library
   faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater,
   // Fact icons
-  faBaby, faCross, faRing
+  faAt, faBaby, faBullhorn, faBuildingUser, faClipboardList, faCross, faDove, faFileContract, faGlobe,
+  faHammer, faHashtag, faHouseChimneyUser, faIdCard, faInfo, faMonument, faNoteSticky, faPenFancy,
+  faPeopleArrows, faPersonMilitaryRifle, faPhone, faRing, faUserGraduate
 );
 dom.watch();
 

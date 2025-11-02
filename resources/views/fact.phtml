@@ -83,9 +83,36 @@ if ($tag === 'MARR') {
             <span class="wt-fact-icon wt-fact-icon-<?= e($tag) ?>" title="<?= strip_tags($label) ?>">
                 <?php
                     $iconMap = [
-                        'BIRT' => 'fa-baby',
-                        'DEAT' => 'fa-cross',
-                        'MARR' => 'fa-ring',
+                        'AFN'     => 'fa-hashtag',
+                        'BAPL'    => 'fa-dove',
+                        'BAPM'    => 'fa-dove',
+                        'BIRT'    => 'fa-baby',
+                        'BURI'    => 'fa-monument',
+                        'CHR'     => 'fa-dove',
+                        'DEAT'    => 'fa-cross',
+                        'DIV'     => 'fa-people-arrows',
+                        'EMAIL'   => 'fa-at',
+                        'ENGA'    => 'fa-ring',
+                        'EVEN'    => 'fa-calendar',
+                        'FACT'    => 'fa-info',
+                        'GRAD'    => 'fa-user-graduate',
+                        'MARB'    => 'fa-bullhorn',
+                        'MARC'    => 'fa-pen-fancy',
+                        'MARR'    => 'fa-ring',
+                        'NOTE'    => 'fa-note-sticky',
+                        'OCCU'    => 'fa-hammer',
+                        'PHON'    => 'fa-phone',
+                        'PROB'    => 'fa-file-contract',
+                        'PROP'    => 'fa-building-user',
+                        'REFN'    => 'fa-hashtag',
+                        'RESI'    => 'fa-house-chimney-user',
+                        'RFN'     => 'fa-hashtag',
+                        'RIN'     => 'fa-hashtag',
+                        'WWW'     => 'fa-globe',
+                        '_FSFTID' => 'fa-id-card',
+                        '_MILI'   => 'fa-person-military-rifle',
+                        '_TODO'   => 'fa-clipboard-list',
+                        '_UID'    => 'fa-hashtag'
                     ];
                 ?>
                 <?php if (isset($iconMap[$tag])) : ?>
