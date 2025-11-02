@@ -721,7 +721,6 @@
 
     for (let [, provider] of Object.entries(config.mapProviders)) {
       for (let [, child] of Object.entries(provider.children)) {
-
         if ('bingMapsKey' in child) {
           child.layer = L.tileLayer.bing(child);
         } else {
@@ -732,7 +731,7 @@
           defaultLayer = child.layer;
         }
 
-        if (defaultLayer === null && provider["default"] && child["default"]) {
+        if (defaultLayer === null && provider['default'] && child['default']) {
           defaultLayer = child.layer;
         }
       }
