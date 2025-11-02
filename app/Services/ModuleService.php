@@ -30,7 +30,6 @@ use Fisharebest\Webtrees\Module\AlbumModule;
 use Fisharebest\Webtrees\Module\AncestorsChartModule;
 use Fisharebest\Webtrees\Module\AustrianHistoricEvents;
 use Fisharebest\Webtrees\Module\AustrianPresidents;
-use Fisharebest\Webtrees\Module\BingMaps;
 use Fisharebest\Webtrees\Module\BingWebmasterToolsModule;
 use Fisharebest\Webtrees\Module\BirthDeathMarriageReportModule;
 use Fisharebest\Webtrees\Module\BirthReportModule;
@@ -329,7 +328,6 @@ class ModuleService
         'austrian-history'        => AustrianHistoricEvents::class,
         'austrian-presidents'     => AustrianPresidents::class,
         'bdm_report'              => BirthDeathMarriageReportModule::class,
-        'bing-maps'               => BingMaps::class,
         'bing-webmaster-tools'    => BingWebmasterToolsModule::class,
         'birth_report'            => BirthReportModule::class,
         'branches_list'           => BranchesListModule::class,
