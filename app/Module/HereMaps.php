@@ -38,7 +38,7 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
     use ModuleConfigTrait;
     use ModuleMapProviderTrait;
 
-    // ISO-639-1 language schema
+    // This list comes from https://image.maps.hereapi.com/mia/v3/languages?apiKey={YOUR_API_KEY}
     private const array LANGUAGE_CODES = ["ar","as","az","be","bg","bn","bs","ca","cs","cy","da","de","el","en","es","et","eu","fi","fo","fr","ga","gl","gn","gu","he","hi","hr","hu","hy","id","is","it","ja","ka","kk","km","kn","ko","ky","lt","lv","mk","ml","mr","ms","mt","my","nl","no","or","pa","pl","pt","ro","ru","sk","sl","sq","sr","sv","ta","te","th","tr","uk","uz","vi","zh","zh-Hant"];
 
     /**
@@ -122,7 +122,7 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
         $tag = I18N::languageTag();
         $lang2 = 'en';
         foreach (self::LANGUAGE_CODES as $code) {
-            if (str_contains($tag, $code)) {
+            if ($tag === $lang2 || str_starts_with($tag, $code . '-')) {
                 $lang2 = $code;
                 break;
             }
@@ -135,8 +135,8 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
                 'label'       => 'Day',
                 'maxZoom'     => 18,
                 'minZoom'     => 2,
-		        'lang2'       => $lang2,
-                'url'         => "https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/jpeg?size=256&style={variant}&lang=en&lang2={lang2}&apiKey={apiKey}",
+                'lang2'       => $lang2,
+                'url'         => "https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/jpeg?size=256&style={variant}&lang2={lang2}&apiKey={apiKey}",
                 'variant'     => 'explore.day',
                 'localName'   => 'HEREDay',
             ],
@@ -146,8 +146,8 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
                 'label'       => 'Satellite Day',
                 'maxZoom'     => 18,
                 'minZoom'     => 2,
-		        'lang2'       => $lang2,
-                'url'         => "https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/jpeg?size=256&style={variant}&lang=en&lang2={lang2}&apiKey={apiKey}",
+                'lang2'       => $lang2,
+                'url'         => "https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/jpeg?size=256&style={variant}&lang2={lang2}&apiKey={apiKey}",
                 'variant'     => 'explore.satellite.day',
                 'localName'   => 'HEREDSatelliteDay',
             ],
@@ -157,8 +157,8 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
                 'label'       => 'Night',
                 'maxZoom'     => 18,
                 'minZoom'     => 2,
-		        'lang2'       => $lang2,
-                'url'         => "https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/jpeg?size=256&style={variant}&lang=en&lang2={lang2}&apiKey={apiKey}",
+                'lang2'       => $lang2,
+                'url'         => "https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/jpeg?size=256&style={variant}&lang2={lang2}&apiKey={apiKey}",
                 'variant'     => 'explore.night',
                 'localName'   => 'HERENight',
             ],
@@ -168,8 +168,8 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
                 'label'       => 'Terrain',
                 'maxZoom'     => 18,
                 'minZoom'     => 2,
-		        'lang2'       => $lang2,
-                'url'         => "https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/jpeg?size=256&style={variant}&lang=en&lang2={lang2}&apiKey={apiKey}",
+                'lang2'       => $lang2,
+                'url'         => "https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/jpeg?size=256&style={variant}&lang2={lang2}&apiKey={apiKey}",
                 'variant'     => 'topo.day',
                 'localName'   => 'HERETerrain',
             ],
