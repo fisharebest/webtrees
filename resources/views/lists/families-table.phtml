@@ -158,7 +158,11 @@ $("#<?= e($table_id) ?>")
                     </span>
                 </th>
                 <th><?= I18N::translate('Place') ?></th>
-                <th><i class="icon-children" title="<?= I18N::translate('Children') ?>"></i></th>
+                <th>
+                    <span title="<?= I18N::translate('Children') ?>">
+                        <?= view('icons/children') ?>
+                    </span>
+                </th>
                 <th><?= I18N::translate('Last change') ?></th>
                 <th hidden></th>
                 <th hidden></th>

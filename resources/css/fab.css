@@ -1006,7 +1006,7 @@ a > .wt-icon-arrow-up:hover {
 }
 
 /* Miscellaneous images */
-.icon-children {
+.wt-icon-children {
     content: url(images/children.png);
 }
 
