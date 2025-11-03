@@ -721,11 +721,7 @@
 
     for (let [, provider] of Object.entries(config.mapProviders)) {
       for (let [, child] of Object.entries(provider.children)) {
-        if ('bingMapsKey' in child) {
-          child.layer = L.tileLayer.bing(child);
-        } else {
-          child.layer = L.tileLayer(child.url, child);
-        }
+        child.layer = L.tileLayer(child.url, child);
 
         if (preferredLayer === child.localName) {
           defaultLayer = child.layer;
