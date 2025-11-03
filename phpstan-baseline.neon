@@ -3849,7 +3849,7 @@ parameters:
 		-
 			rawMessage: 'Cannot access offset int<0, max> on mixed.'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 4
+			count: 1
 			path: app/Individual.php
 
 		-
@@ -8179,6 +8179,12 @@ parameters:
 			path: app/Services/ModuleService.php
 
 		-
+			rawMessage: Possibly invalid array key type mixed.
+			identifier: array.invalidKey
+			count: 1
+			path: app/Services/ModuleService.php
+
+		-
 			rawMessage: 'Parameter #1 $fp of function fwrite expects resource, resource|false given.'
 			identifier: argument.type
 			count: 1
@@ -8623,6 +8629,12 @@ parameters:
 			path: app/Services/TreeService.php
 
 		-
+			rawMessage: Possibly invalid array key type mixed.
+			identifier: array.invalidKey
+			count: 1
+			path: app/Services/TreeService.php
+
+		-
 			rawMessage: 'Method Fisharebest\Webtrees\Services\UpgradeService::downloadFile() should return int but returns int|false.'
 			identifier: return.type
 			count: 1
@@ -8926,6 +8938,12 @@ parameters:
 			rawMessage: 'Parameter #2 $request of method Fisharebest\Webtrees\Services\UserService::contactLink() expects Psr\Http\Message\ServerRequestInterface, mixed given.'
 			identifier: argument.type
 			count: 2
+			path: app/Statistics.php
+
+		-
+			rawMessage: Possibly invalid array key type mixed.
+			identifier: array.invalidKey
+			count: 10
 			path: app/Statistics.php
 
 		-
@@ -9488,6 +9506,12 @@ parameters:
 
 		-
 			rawMessage: 'Method Fisharebest\Webtrees\Tree::getPreference() should return string but returns mixed.'
+			identifier: return.type
+			count: 1
+			path: app/Tree.php
+
+		-
+			rawMessage: 'Method Fisharebest\Webtrees\Tree::getUserPreference() should return string but returns mixed.'
 			identifier: return.type
 			count: 1
 			path: app/Tree.php
@@ -10147,6 +10171,12 @@ parameters:
 			path: resources/views/layouts/default.phtml
 
 		-
+			rawMessage: 'Property Aura\Router\Route::$name (string) on left side of ?? is not nullable.'
+			identifier: nullCoalesce.property
+			count: 1
+			path: resources/views/layouts/default.phtml
+
+		-
 			rawMessage: 'Parameter #1 $value of function e expects Illuminate\Contracts\Support\DeferringDisplayableValue|Illuminate\Contracts\Support\Htmlable|string|null, int given.'
 			identifier: argument.type
 			count: 3
@@ -10468,6 +10498,12 @@ parameters:
 			rawMessage: 'Parameter #1 (mixed) of echo cannot be converted to string.'
 			identifier: echo.nonString
 			count: 5
+			path: resources/views/modules/statistics-chart/custom.phtml
+
+		-
+			rawMessage: Possibly invalid array key type mixed.
+			identifier: array.invalidKey
+			count: 13
 			path: resources/views/modules/statistics-chart/custom.phtml
 
 		-
