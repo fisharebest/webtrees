@@ -1064,3 +1064,548 @@ document.addEventListener('click', (event) => {
     }
   }
 });
+
+///// Code for the Interactive Tree module /////
+
+function TreeViewHandler (treeview_instance, ged) {
+  var tv = this; // Store "this" for usage within jQuery functions where "this" is not this ;-)
+
+  this.treeview = $('#' + treeview_instance + '_in');
+  this.loadingImage = $('#' + treeview_instance + '_loading');
+  this.toolbox = $('#tv_tools');
+  this.buttons = $('.tv_button:first', this.toolbox);
+  this.zoom = 100; // in percent
+  this.boxWidth = 180; // default family box width
+  this.boxExpandedWidth = 250; // default expanded family box width
+  this.cookieDays = 3; // lifetime of preferences memory, in days
+  this.ajaxDetails = document.getElementById(treeview_instance + '_out').dataset.urlDetails + '&instance=' + encodeURIComponent(treeview_instance);
+  this.ajaxPersons = document.getElementById(treeview_instance + '_out').dataset.urlIndividuals + '&instance=' + encodeURIComponent(treeview_instance);
+
+  this.container = this.treeview.parent(); // Store the container element ("#" + treeview_instance + "_out")
+  this.auto_box_width = false;
+  this.updating = false;
+
+  // Restore user preferences
+  if (readCookie('compact') === 'true') {
+    tv.compact();
+  }
+
+  // Drag handlers for the treeview canvas
+  (function () {
+    let dragging = false;
+    let isDown = false;
+    let drag_start_x;
+    let drag_start_y;
+
+    tv.treeview.on('mousedown touchstart', function (event) {
+
+      let pageX = (event.type === 'touchstart') ? event.touches[0].pageX : event.pageX;
+      let pageY = (event.type === 'touchstart') ? event.touches[0].pageY : event.pageY;
+
+      drag_start_x = tv.treeview.offset().left - pageX;
+      drag_start_y = tv.treeview.offset().top - pageY;
+      isDown = true;
+    });
+
+    $(document).on('mousemove touchmove', function (event) {
+      if (isDown) {
+        event.preventDefault();
+        dragging = true;
+
+        let pageX = (event.type === 'touchmove') ? event.touches[0].pageX : event.pageX;
+        let pageY = (event.type === 'touchmove') ? event.touches[0].pageY : event.pageY;
+
+        tv.treeview.offset({
+          left: pageX + drag_start_x,
+          top: pageY + drag_start_y,
+        });
+      }
+    });
+
+    $(document).on('mouseup touchend', function (event) {
+      isDown = false;
+      if (dragging) {
+        event.preventDefault();
+        dragging = false;
+        tv.updateTree();
+      }
+    });
+  })();
+
+  // Add click handlers to buttons
+  tv.toolbox.find('#tvbCompact').each(function (index, tvCompact) {
+    tvCompact.onclick = function () {
+      tv.compact();
+    };
+  });
+  // If we click the "hide/show all partners" button, toggle the setting before reloading the page
+  tv.toolbox.find('#tvbAllPartners').each(function (index, tvAllPartners) {
+    tvAllPartners.onclick = function () {
+      createCookie('allPartners', readCookie('allPartners') === 'true' ? 'false' : 'true', tv.cookieDays);
+      document.location = document.location;
+    };
+  });
+  tv.toolbox.find('#tvbOpen').each(function (index, tvbOpen) {
+    var b = $(tvbOpen, tv.toolbox);
+    tvbOpen.onclick = function () {
+      b.addClass('tvPressed');
+      tv.setLoading();
+      var e = jQuery.Event('click');
+      tv.treeview.find('.tv_box:not(.boxExpanded)').each(function (index, box) {
+        var pos = $(box, tv.treeview).offset();
+        if (pos.left >= tv.leftMin && pos.left <= tv.leftMax && pos.top >= tv.topMin && pos.top <= tv.topMax) {
+          tv.expandBox(box, e);
+        }
+      });
+      b.removeClass('tvPressed');
+      tv.setComplete();
+    };
+  });
+  tv.toolbox.find('#tvbClose').each(function (index, tvbClose) {
+    var b = $(tvbClose, tv.toolbox);
+    tvbClose.onclick = function () {
+      b.addClass('tvPressed');
+      tv.setLoading();
+      tv.treeview.find('.tv_box.boxExpanded').each(function (index, box) {
+        $(box).css('display', 'none').removeClass('boxExpanded').parent().find('.tv_box.collapsedContent').css('display', 'block');
+      });
+      b.removeClass('tvPressed');
+      tv.setComplete();
+    };
+  });
+
+  tv.centerOnRoot(); // fire ajax update if needed, which call setComplete() when all is loaded
+}
+
+TreeViewHandler.prototype.setLoading = function () {
+  this.treeview.css('cursor', 'wait');
+  this.loadingImage.css('display', 'block');
+};
+
+TreeViewHandler.prototype.setComplete = function () {
+  this.treeview.css('cursor', 'move');
+  this.loadingImage.css('display', 'none');
+};
+
+TreeViewHandler.prototype.getSize = function () {
+  var tv = this;
+  var container = tv.container.parent();
+  var offset = container.offset();
+  tv.leftMin = offset.left;
+  tv.leftMax = tv.leftMin + container.innerWidth();
+  tv.topMin = offset.top;
+  tv.topMax = tv.topMin + container.innerHeight();
+};
+
+TreeViewHandler.prototype.updateTree = function (center, button) {
+  var tv = this; // Store "this" for usage within jQuery functions where "this" is not this ;-)
+  var to_load = [];
+  var elts = [];
+  this.getSize();
+
+  // check which td with datafld attribute are within the container bounding box
+  // and therefore need to be dynamically loaded
+  tv.treeview.find('td[abbr]').each(function (index, el) {
+    el = $(el, tv.treeview);
+    var pos = el.offset();
+    if (pos.left >= tv.leftMin && pos.left <= tv.leftMax && pos.top >= tv.topMin && pos.top <= tv.topMax) {
+      to_load.push(el.attr('abbr'));
+      elts.push(el);
+    }
+  });
+  // if some boxes need update, we perform an ajax request
+  if (to_load.length > 0) {
+    tv.updating = true;
+    tv.setLoading();
+    jQuery.ajax({
+      url: tv.ajaxPersons,
+      dataType: 'json',
+      data: 'q=' + to_load.join(';'),
+      success: function (ret) {
+        var nb = elts.length;
+        var root_element = $('.rootPerson', this.treeview);
+        var l = root_element.offset().left;
+        for (var i = 0; i < nb; i++) {
+          elts[i].removeAttr('abbr').html(ret[i]);
+        }
+        // we now adjust the draggable treeview size to its content size
+        tv.getSize();
+      },
+      complete: function () {
+        if (tv.treeview.find('td[abbr]').length) {
+          tv.updateTree(center, button); // recursive call
+        }
+        // the added boxes need that in mode compact boxes
+        if (tv.auto_box_width) {
+          tv.treeview.find('.tv_box').css('width', 'auto');
+        }
+        tv.updating = true; // avoid an unuseful recursive call when all requested persons are loaded
+        if (center) {
+          tv.centerOnRoot();
+        }
+        if (button) {
+          button.removeClass('tvPressed');
+        }
+        tv.setComplete();
+        tv.updating = false;
+      },
+      timeout: function () {
+        if (button) {
+          button.removeClass('tvPressed');
+        }
+        tv.updating = false;
+        tv.setComplete();
+      }
+    });
+  } else {
+    if (button) {
+      button.removeClass('tvPressed');
+    }
+    tv.setComplete();
+  }
+  return false;
+};
+
+TreeViewHandler.prototype.compact = function () {
+  var tv = this;
+  var b = $('#tvbCompact', tv.toolbox);
+  tv.setLoading();
+  if (tv.auto_box_width) {
+    var w = tv.boxWidth * (tv.zoom / 100) + 'px';
+    var ew = tv.boxExpandedWidth * (tv.zoom / 100) + 'px';
+    tv.treeview.find('.tv_box:not(boxExpanded)', tv.treeview).css('width', w);
+    tv.treeview.find('.boxExpanded', tv.treeview).css('width', ew);
+    tv.auto_box_width = false;
+    if (readCookie('compact')) {
+      createCookie('compact', false, tv.cookieDays);
+    }
+    b.removeClass('tvPressed');
+  } else {
+    tv.treeview.find('.tv_box').css('width', 'auto');
+    tv.auto_box_width = true;
+    if (!readCookie('compact')) {
+      createCookie('compact', true, tv.cookieDays);
+    }
+    if (!tv.updating) {
+      tv.updateTree();
+    }
+    b.addClass('tvPressed');
+  }
+  tv.setComplete();
+  return false;
+};
+
+TreeViewHandler.prototype.centerOnRoot = function () {
+  this.loadingImage.css('display', 'block');
+  var tv = this;
+  var tvc = this.container;
+  var tvc_width = tvc.innerWidth() / 2;
+  if (Number.isNaN(tvc_width)) {
+    return false;
+  }
+  var tvc_height = tvc.innerHeight() / 2;
+  var root_person = $('.rootPerson', this.treeview);
+
+  if (!this.updating) {
+    tv.setComplete();
+  }
+  return false;
+};
+
+TreeViewHandler.prototype.expandBox = function (box, event) {
+  var t = $(event.target);
+  if (t.hasClass('tv_link')) {
+    return false;
+  }
+
+  var box = $(box, this.treeview);
+  var bc = box.parent(); // bc is Box Container
+  var pid = box.attr('abbr');
+  var tv = this; // Store "this" for usage within jQuery functions where "this" is not this ;-)
+  var expanded;
+  var collapsed;
+
+  if (bc.hasClass('detailsLoaded')) {
+    collapsed = bc.find('.collapsedContent');
+    expanded = bc.find('.tv_box:not(.collapsedContent)');
+  } else {
+    // Cache the box content as an hidden person's box in the box's parent element
+    expanded = box;
+    collapsed = box.clone();
+    bc.append(collapsed.addClass('collapsedContent').css('display', 'none'));
+    // we add a waiting image at the right side of the box
+    var loading_image = this.loadingImage.find('img').clone().addClass('tv_box_loading').css('display', 'block');
+    box.prepend(loading_image);
+    tv.updating = true;
+    tv.setLoading();
+    // perform the Ajax request and load the result in the box
+    box.load(tv.ajaxDetails + '&pid=' + encodeURIComponent(pid), function () {
+      // If Lightbox module is active, we reinitialize it for the new links
+      if (typeof CB_Init === 'function') {
+        CB_Init();
+      }
+      box.css('width', tv.boxExpandedWidth * (tv.zoom / 100) + 'px');
+      loading_image.remove();
+      bc.addClass('detailsLoaded');
+      tv.setComplete();
+      tv.updating = false;
+    });
+  }
+  if (box.hasClass('boxExpanded')) {
+    expanded.css('display', 'none');
+    collapsed.css('display', 'block');
+    box.removeClass('boxExpanded');
+  } else {
+    expanded.css('display', 'block');
+    collapsed.css('display', 'none');
+    expanded.addClass('boxExpanded');
+  }
+  // we must adjust the draggable treeview size to its content size
+  this.getSize();
+  return false;
+};
+
+function createCookie (name, value, days) {
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie = name + '=' + value + '; expires=' + date.toGMTString() + '; path=/';
+  } else {
+    document.cookie = name + '=' + value + '; path=/';
+  }
+}
+
+function readCookie (name) {
+  var name_equals = name + '=';
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1, c.length);
+    }
+    if (c.indexOf(name_equals) === 0) {
+      return c.substring(name_equals.length, c.length);
+    }
+  }
+  return null;
+}
+
+///// Code for Google Charts /////
+
+const GOOGLE_CHARTS_LIB = 'https://www.gstatic.com/charts/loader.js';
+
+class Statistics {
+  constructor () {
+    if (!Statistics.instance) {
+      Statistics.instance = this;
+
+      this.callbacks = [];
+      this.initialized = false;
+      this.loading = false;
+    }
+
+    return Statistics.instance;
+  }
+
+  init (locale) {
+    if (this.loading || this.initialized) {
+      return;
+    }
+
+    var that = this;
+
+    Promise.all([
+      this.load(GOOGLE_CHARTS_LIB)
+    ]).then(() => {
+      google.charts.load(
+        'current',
+        {
+          packages: [
+            'corechart',
+            'geochart',
+            'bar'
+          ],
+          language: locale,
+          // Note: you will need to get a mapsApiKey for your project.
+          // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+          mapsApiKey: ''
+        }
+      );
+
+      google.charts.setOnLoadCallback(function () {
+        that.callbacks.forEach((element) => {
+          element();
+        });
+      });
+
+      that.initialized = true;
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  load (url) {
+    if (this.loading) {
+      return;
+    }
+
+    this.loading = true;
+
+    return new Promise(function (resolve, reject) {
+      const script = document.createElement('script');
+
+      script.async = true;
+      script.onload = function () {
+        resolve(url);
+      };
+      script.onerror = function () {
+        reject(url);
+      };
+
+      script.src = url;
+      document.body.appendChild(script);
+    });
+  }
+
+  addCallback (callback) {
+    if (this.initialized) {
+      google.charts.setOnLoadCallback(callback);
+    } else {
+      this.callbacks.push(callback);
+    }
+
+    $(window).resize(function () {
+      callback();
+    });
+  }
+
+  drawChart (containerId, chartType, data, options) {
+    const dataTable = google.visualization.arrayToDataTable(data);
+
+    const wrapper = new google.visualization.ChartWrapper({
+      chartType: chartType,
+      dataTable: dataTable,
+      options: options,
+      containerId: containerId
+    });
+
+    wrapper.draw();
+  }
+
+  drawPieChart (elementId, data, options) {
+    const defaults = {
+      title: '',
+      height: '100%',
+      width: '100%',
+      pieStartAngle: 0,
+      pieSliceText: 'none',
+      pieSliceTextStyle: {
+        color: '#777'
+      },
+      pieHole: 0.4, // Donut
+      legend: {
+        alignment: 'center',
+        labeledValueText: 'value',
+        position: 'labeled'
+      },
+      chartArea: {
+        left: 0,
+        top: '5%',
+        height: '90%',
+        width: '100%'
+      },
+      tooltip: {
+        trigger: 'none',
+        text: 'both'
+      },
+      backgroundColor: 'transparent',
+      colors: []
+    };
+
+    options = Object.assign(defaults, options);
+
+    this.drawChart(elementId, 'PieChart', data, options);
+  }
+
+  drawColumnChart (elementId, data, options) {
+    const defaults = {
+      title: '',
+      subtitle: '',
+      titleTextStyle: {
+        color: '#757575',
+        fontName: 'Roboto',
+        fontSize: '16px',
+        bold: false,
+        italic: false
+      },
+      height: '100%',
+      width: '100%',
+      vAxis: {
+        title: ''
+      },
+      hAxis: {
+        title: ''
+      },
+      legend: {
+        position: 'none'
+      },
+      backgroundColor: 'transparent'
+    };
+
+    options = Object.assign(defaults, options);
+
+    this.drawChart(elementId, 'ColumnChart', data, options);
+  }
+
+  drawComboChart (elementId, data, options) {
+    const defaults = {
+      title: '',
+      subtitle: '',
+      titleTextStyle: {
+        color: '#757575',
+        fontName: 'Roboto',
+        fontSize: '16px',
+        bold: false,
+        italic: false
+      },
+      height: '100%',
+      width: '100%',
+      vAxis: {
+        title: ''
+      },
+      hAxis: {
+        title: ''
+      },
+      legend: {
+        position: 'none'
+      },
+      seriesType: 'bars',
+      series: {
+        2: {
+          type: 'line'
+        }
+      },
+      colors: [],
+      backgroundColor: 'transparent'
+    };
+
+    options = Object.assign(defaults, options);
+
+    this.drawChart(elementId, 'ComboChart', data, options);
+  }
+
+  drawGeoChart (elementId, data, options) {
+    const defaults = {
+      title: '',
+      subtitle: '',
+      height: '100%',
+      width: '100%'
+    };
+
+    options = Object.assign(defaults, options);
+
+    this.drawChart(elementId, 'GeoChart', data, options);
+  }
+}
+
+const statistics = new Statistics();
