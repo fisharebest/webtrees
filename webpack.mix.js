@@ -16,10 +16,6 @@ const postcssImageInliner = require('postcss-image-inliner')({
   maxFileSize: 0
 });
 
-// https://github.com/postcss/postcss-custom-properties
-// Enable CSS variables in IE
-const postcssCustomProperties = require('postcss-custom-properties')();
-
 mix
   .autoload({
     jquery: ['$', 'jQuery']
@@ -36,8 +32,7 @@ mix
       postcssImport,
       postcssRTLCSS,
       postcssAutoprefixer,
-      postcssImageInliner,
-      postcssCustomProperties
+      postcssImageInliner
     ]
   })
   .postCss('resources/css/administration.css', 'public/css/administration.min.css')
