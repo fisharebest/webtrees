@@ -77,7 +77,6 @@ import 'leaflet.markercluster';
 import 'beautifymarker';
 import 'leaflet-control-geocoder';
 import 'leaflet.control.layers.tree';
-import 'leaflet-bing-layer';
 
 window.$ = window.jQuery = $;
 
