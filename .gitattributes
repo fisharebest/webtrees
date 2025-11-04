@@ -14,7 +14,7 @@ phpunit.xml.dist      export-ignore
 phpstan.neon.dist     export-ignore
 phpstan-baseline.neon export-ignore
 tests/                export-ignore
-webpack.mix.js        export-ignore
+vite.config.js        export-ignore
 
 vendor/*/*/tests      export-ignore
 vendor/*/*/Tests      export-ignore
