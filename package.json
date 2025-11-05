@@ -13,9 +13,7 @@
     "postcss-image-inliner": "7.0.1",
     "postcss-import": "16.1.1",
     "postcss-rtlcss": "5.7.1",
-    "resolve-url-loader": "5.0.0",
-    "sass": "1.93.3",
-    "sass-loader": "16.0.6"
+    "resolve-url-loader": "5.0.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "7.1.0",
