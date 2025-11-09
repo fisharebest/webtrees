@@ -132,10 +132,6 @@ class DB extends Manager
             return 'ILIKE';
         }
 
-        if (self::driverName() === self::SQL_SERVER) {
-            return 'COLLATE SQL_UTF8_General_CI_AI LIKE';
-        }
-
         return 'LIKE';
     }
 
