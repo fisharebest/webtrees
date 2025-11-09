@@ -698,10 +698,6 @@ div.faq_body {
 }
 
 /* Miscellaneous images */
-.icon-children {
-    content: url(images/children.png);
-}
-
 .icon-loading-small {
     content: url(images/indicator.gif);
 }
