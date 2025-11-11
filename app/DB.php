@@ -110,15 +110,16 @@ class DB extends Manager
 
         $capsule = new self();
         $capsule->addConnection([
-            'driver'         => $driver,
-            'host'           => $host,
-            'port'           => $port,
-            'database'       => $database,
-            'username'       => $username,
-            'password'       => $password,
-            'prefix'         => $prefix,
-            'prefix_indexes' => true,
-            'options'        => $options,
+            'driver'                   => $driver,
+            'host'                     => $host,
+            'port'                     => $port,
+            'database'                 => $database,
+            'username'                 => $username,
+            'password'                 => $password,
+            'prefix'                   => $prefix,
+            'prefix_indexes'           => true,
+            'options'                  => $options,
+            'trust_server_certificate' => true, // For SQL-Server - #5246
         ]);
         $capsule->setAsGlobal();
 
