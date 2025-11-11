@@ -125,6 +125,21 @@ class DB extends Manager
 
     /**
      * @internal
+     *
+     * @param list<string> $expressions
+     */
+    public static function concat(array $expressions): string
+    {
+        if (self::driverName() === self::SQL_SERVER) {
+            return 'CONCAT(' . implode(', ', $expressions) . ')';
+        }
+
+        // ANSI standard.  MySQL uses this with ANSI mode
+        return '(' . implode(' || ', $expressions) . ')';
+    }
+
+    /**
+     * @internal
      */
     public static function iLike(): string
     {
