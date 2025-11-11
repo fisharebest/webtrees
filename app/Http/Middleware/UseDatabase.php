@@ -104,6 +104,8 @@ class UseDatabase implements MiddlewareInterface
             ],
             // For SQLite
             'foreign_key_constraints' => true,
+            // For SQL-Server
+            'trust_server_certificate' => true
         ]);
 
         $capsule->setAsGlobal();
