@@ -1121,7 +1121,7 @@ class SearchService
                     ->on('media_file.m_id', '=', 'media.m_id');
             })
             ->join('gedcom_setting', 'media.m_file', '=', 'gedcom_setting.gedcom_id')
-            ->where(new Expression('setting_value || multimedia_file_refn'), '=', $file)
+            ->where(new Expression(DB::concat(['setting_value', 'multimedia_file_refn'])), '=', $file)
             ->select(['media.*'])
             ->distinct()
             ->get()
