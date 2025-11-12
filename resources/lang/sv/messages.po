@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-08-06 17:24+0000\n"
+"PO-Revision-Date: 2025-11-13 21:08+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sv/>\n"
@@ -12193,7 +12193,7 @@ msgstr "Forskningsuppgifter lagras med den anpassade GEDCOM-taggen ”_TODO”. 
 #: app/CustomTags/Gedcom7.php:186 app/Gedcom.php:731
 #: resources/views/admin/tags.phtml:1004
 msgid "Residence"
-msgstr "Bosatt"
+msgstr "Hemvist"
 
 #: resources/views/edit-blocks-page.phtml:74
 #: resources/views/edit-blocks-page.phtml:75
