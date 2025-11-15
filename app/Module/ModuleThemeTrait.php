@@ -512,4 +512,14 @@ trait ModuleThemeTrait
     {
         return [];
     }
+
+    /**
+     * Whether to set Bootstrap to dark mode (true) or light mode (false).
+     *
+     * @return bool
+     */
+    public function useDarkMode(): bool
+    {
+        return false; // default = light theme
+    }
 }
