@@ -70,9 +70,9 @@ interface ModuleThemeInterface extends ModuleInterface
     public function stylesheets(): array;
 
     /**
-     * Whether to set Bootstrap to dark mode (true) or light mode (false).
+     * Sets the base Bootstrap theme.
      *
-     * @return bool
+     * @return string
      */
-    public function useDarkMode(): bool;
+    public function bootstrapTheme(): string;
 }
