@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-06-29 17:28+0000\n"
+"PO-Revision-Date: 2025-11-17 17:08+0000\n"
 "Last-Translator: ro-la <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sk/>\n"
@@ -454,7 +454,7 @@ msgstr "bratranec z %s. kolena"
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;pred n.&nbsp;l."
+msgstr "%s&nbsp;pred&nbsp;n.&nbsp;l."
 
 #. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
