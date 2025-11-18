@@ -58,6 +58,6 @@ abstract class AbstractCommand extends Command
             return (string) $value;
         }
 
-        throw new InvalidArgumentException(message: 'Argument must be string : ' . $name);
+        throw new InvalidArgumentException(message: 'Option must be string : ' . $name);
     }
 }
