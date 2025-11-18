@@ -102,7 +102,7 @@ final class TreeEdit extends AbstractCommand
 
         if ($delete) {
             $this->tree_service->delete($tree);
-            $io->success(message: 'Tree ‘' . $name . '’ was deleted..');
+            $io->success(message: 'Tree ‘' . $name . '’ was deleted.');
 
             return self::SUCCESS;
         }
