@@ -915,7 +915,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         // Convert the chart data to percentage
         if ($y_axis_type === self::Y_AXIS_PERCENT) {
             // Normalise each (non-zero!) set of data to total 100%
-            array_walk($ydata, static function (array &$x) {
+            array_walk($ydata, static function (array &$x): void {
                 $sum = array_sum($x);
                 if ($sum > 0) {
                     $x = array_map(static fn (float $y): float => $y * 100.0 / $sum, $x);

@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\MaintenanceModeService;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -47,6 +48,7 @@ class UpgradeWizardStepTest extends TestCase
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
+            new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
             new UpgradeService(new TimeoutService(php_service: new PhpService())),
         );
@@ -65,6 +67,7 @@ class UpgradeWizardStepTest extends TestCase
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
+            new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
             $mock_upgrade_service
         );
@@ -84,6 +87,7 @@ class UpgradeWizardStepTest extends TestCase
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
+            new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
             $mock_upgrade_service
         );
@@ -101,6 +105,7 @@ class UpgradeWizardStepTest extends TestCase
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
+            new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
             $mock_upgrade_service
         );
@@ -114,6 +119,7 @@ class UpgradeWizardStepTest extends TestCase
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
+            new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
             new UpgradeService(new TimeoutService(php_service: new PhpService()))
         );
@@ -129,6 +135,7 @@ class UpgradeWizardStepTest extends TestCase
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
+            new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
             new UpgradeService(new TimeoutService(php_service: new PhpService()))
         );
@@ -151,6 +158,7 @@ class UpgradeWizardStepTest extends TestCase
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
+            new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
             new UpgradeService(new TimeoutService(php_service: new PhpService()))
         );
@@ -171,6 +179,7 @@ class UpgradeWizardStepTest extends TestCase
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
+            new PendingChangesService(new GedcomImportService()),
             $tree_service,
             new UpgradeService(new TimeoutService(php_service: new PhpService()))
         );
@@ -195,6 +204,7 @@ class UpgradeWizardStepTest extends TestCase
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
+            new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
             $mock_upgrade_service
         );
@@ -210,6 +220,7 @@ class UpgradeWizardStepTest extends TestCase
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
+            new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
             $mock_upgrade_service
         );
@@ -227,6 +238,7 @@ class UpgradeWizardStepTest extends TestCase
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
+            new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
             $mock_upgrade_service
         );

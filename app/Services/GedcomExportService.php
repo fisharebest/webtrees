@@ -79,14 +79,10 @@ class GedcomExportService
         'none'     => Auth::PRIV_HIDE,
     ];
 
-    private ResponseFactoryInterface $response_factory;
-
-    private StreamFactoryInterface $stream_factory;
-
-    public function __construct(ResponseFactoryInterface $response_factory, StreamFactoryInterface $stream_factory)
-    {
-        $this->response_factory = $response_factory;
-        $this->stream_factory   = $stream_factory;
+    public function __construct(
+        private readonly ResponseFactoryInterface $response_factory,
+        private readonly StreamFactoryInterface $stream_factory,
+    ) {
     }
 
     /**

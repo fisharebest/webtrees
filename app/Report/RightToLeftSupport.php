@@ -213,7 +213,7 @@ class RightToLeftSupport
                         $charArray = self::getChar($workingText . "\n", $offset);
                         if (!str_contains(self::NUMBERS, $charArray['letter'])) {
                             // This is not a digit. Is it numeric punctuation?
-                            if (substr($workingText . "\n", $offset, 6) === '&nbsp;') {
+                            if (str_starts_with($workingText . "\n", '&nbsp;')) {
                                 $offset += 6; // This could be numeric punctuation
                             } elseif (str_contains(self::NUMBER_PUNCTUATION, $charArray['letter'])) {
                                 $offset += $charArray['length']; // This could be numeric punctuation

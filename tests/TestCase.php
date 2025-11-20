@@ -103,6 +103,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         $uri = 'https://webtrees.test/index.php?' . http_build_query($query);
 
+        $route = new Route();
+        $route->name('dummy');
+
         $request = $server_request_factory
             ->createServerRequest($method, $uri)
             ->withQueryParams($query)
@@ -111,7 +114,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             ->withAttribute('base_url', 'https://webtrees.test')
             ->withAttribute('client-ip', '127.0.0.1')
             ->withAttribute('user', new GuestUser())
-            ->withAttribute('route', new Route());
+            ->withAttribute('route', $route);
 
         foreach ($attributes as $key => $value) {
             $request = $request->withAttribute($key, $value);
@@ -211,8 +214,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     protected function validateHtmlResponse(ResponseInterface $response): void
     {
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-
-        self::assertEquals('text/html; charset=UTF-8', $response->getHeaderLine('content-type'));
+        self::assertSame('text/html; charset=UTF-8', $response->getHeaderLine('content-type'));
 
         $html = $response->getBody()->getContents();
 

@@ -139,7 +139,7 @@ final class TreeImport extends AbstractCommand
             $progress_bar->setRedrawFrequency(1);
             $progress_bar->start();
 
-            foreach ($queries as $name => $query) {
+            foreach ($queries as $query) {
                 $query->delete();
                 $progress_bar->advance();
             }

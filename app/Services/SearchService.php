@@ -68,15 +68,9 @@ class SearchService
     // Do not attempt to show search results larger than this/
     protected const int MAX_SEARCH_RESULTS = 5000;
 
-    private TreeService $tree_service;
-
-    /**
-     * @param TreeService $tree_service
-     */
     public function __construct(
-        TreeService $tree_service
+        private readonly TreeService $tree_service,
     ) {
-        $this->tree_service = $tree_service;
     }
 
     /**
@@ -150,7 +144,7 @@ class SearchService
     public function searchFamiliesInPlace(Place $place): Collection
     {
         return DB::table('families')
-            ->join('placelinks', static function (JoinClause $query) {
+            ->join('placelinks', static function (JoinClause $query): void {
                 $query
                     ->on('families.f_file', '=', 'placelinks.pl_file')
                     ->on('families.f_id', '=', 'placelinks.pl_gid');
@@ -223,7 +217,7 @@ class SearchService
     public function searchIndividualsInPlace(Place $place): Collection
     {
         return DB::table('individuals')
-            ->join('placelinks', static function (JoinClause $join) {
+            ->join('placelinks', static function (JoinClause $join): void {
                 $join
                     ->on('i_file', '=', 'pl_file')
                     ->on('i_id', '=', 'pl_gid');
@@ -1127,7 +1121,7 @@ class SearchService
                     ->on('media_file.m_id', '=', 'media.m_id');
             })
             ->join('gedcom_setting', 'media.m_file', '=', 'gedcom_setting.gedcom_id')
-            ->where(new Expression('setting_value || multimedia_file_refn'), '=', $file)
+            ->where(new Expression(DB::concat(['setting_value', 'multimedia_file_refn'])), '=', $file)
             ->select(['media.*'])
             ->distinct()
             ->get()

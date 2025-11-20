@@ -67,7 +67,7 @@ use Psr\Http\Message\ServerRequestInterface;
         <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->headContent())->implode('') ?>
     </head>
 
-    <body class="wt-global wt-theme-<?= e(Registry::container()->get(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name ?? '/', ['\\' => '/']))) ?>">
+    <body class="wt-global wt-theme-<?= e(Registry::container()->get(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name, ['\\' => '/']))) ?>">
         <header class="wt-header-wrapper d-print-none">
             <div class="container-lg wt-header-container">
                 <div class="row wt-header-content">

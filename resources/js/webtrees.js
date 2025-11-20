@@ -716,16 +716,18 @@
       },
     });
 
+    const preferredLayer = localStorage.getItem('map_default_layer');
     let defaultLayer = null;
 
     for (let [, provider] of Object.entries(config.mapProviders)) {
       for (let [, child] of Object.entries(provider.children)) {
-        if ('bingMapsKey' in child) {
-          child.layer = L.tileLayer.bing(child);
-        } else {
-          child.layer = L.tileLayer(child.url, child);
+        child.layer = L.tileLayer(child.url, child);
+
+        if (preferredLayer === child.localName) {
+          defaultLayer = child.layer;
         }
-        if (provider.default && child.default) {
+
+        if (defaultLayer === null && provider['default'] && child['default']) {
           defaultLayer = child.layer;
         }
       }
@@ -735,7 +737,6 @@
       console.log('No default map layer defined - using the first one.');
       defaultLayer = config.mapProviders[0].children[0].layer;
     }
-
 
     // Create the map with all controls and layers
     return L.map(id, {
@@ -748,8 +749,10 @@
       .addControl(L.control.layers.tree(config.mapProviders, null, {
         closedSymbol: config.icons.expand,
         openedSymbol: config.icons.collapse,
-      }));
-
+      }))
+      .on('baselayerchange', (l) => {
+        localStorage.setItem('map_default_layer', l.layer.options.localName);
+      });
   };
 
   /**

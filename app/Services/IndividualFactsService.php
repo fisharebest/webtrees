@@ -37,20 +37,10 @@ use function str_replace;
  */
 class IndividualFactsService
 {
-    private LinkedRecordService $linked_record_service;
-
-    private ModuleService $module_service;
-
-    /**
-     * @param LinkedRecordService $linked_record_service
-     * @param ModuleService       $module_service
-     */
     public function __construct(
-        LinkedRecordService $linked_record_service,
-        ModuleService $module_service
+        private readonly LinkedRecordService $linked_record_service,
+        private readonly ModuleService $module_service,
     ) {
-        $this->linked_record_service = $linked_record_service;
-        $this->module_service        = $module_service;
     }
 
     /**

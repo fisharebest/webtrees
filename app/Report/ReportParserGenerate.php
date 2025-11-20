@@ -159,7 +159,7 @@ class ReportParserGenerate extends ReportParserBase
     /** The current generational level */
     private int $generation = 1;
 
-    /** @var array<static|GedcomRecord> Source data for processing lists */
+    /** @var array<GedcomRecord> Source data for processing lists */
     private array $list = [];
 
     /** Number of items in lists */
@@ -1047,7 +1047,7 @@ class ReportParserGenerate extends ReportParserBase
                     $value = str_replace('(', '<br>(', $value);
                     $value = str_replace('<span dir="ltr"><br>', '<br><span dir="ltr">', $value);
                     $value = str_replace('<span dir="rtl"><br>', '<br><span dir="rtl">', $value);
-                    if (substr($value, 0, 4) === '<br>') {
+                    if (str_starts_with($value, '<br>')) {
                         $value = substr($value, 4);
                     }
                 }
