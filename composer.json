@@ -74,7 +74,7 @@
         "symfony/expression-language": "7.3.2",
         "symfony/mailer": "7.3.5",
         "symfony/polyfill-mbstring": "1.33.0",
-        "tecnickcom/tcpdf": "6.10.0"
+        "tecnickcom/tcpdf": "6.10.1"
     },
     "require-dev": {
         "ext-dom": "*",
@@ -88,7 +88,7 @@
         "phpstan/phpstan-deprecation-rules": "2.0.3",
         "phpstan/phpstan-phpunit": "2.0.8",
         "phpstan/phpstan-strict-rules": "2.0.7",
-        "phpunit/phpunit": "12.4.3",
+        "phpunit/phpunit": "12.4.4",
         "squizlabs/php_codesniffer": "4.0.1"
     },
     "suggest": {
