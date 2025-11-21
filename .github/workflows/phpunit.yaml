@@ -6,18 +6,19 @@ jobs:
   run:
     if: ${{ !startsWith(github.event.head_commit.message, 'Translation:') }}
     runs-on: ${{ matrix.operating-system }}
-    name: phpunit - PHP ${{ matrix.php-version }}
+    name: Testing PHP ${{ matrix.php-version }} on ${{ matrix.operating-system }}
 
     strategy:
       matrix:
-        operating-system: [ 'ubuntu-latest' ]
-        php-version: [ '7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5' ]
+        operating-system: ['ubuntu-latest']
+        php-version: ['7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5', '8.6']
       fail-fast: false
 
     steps:
       - uses: shivammathur/setup-php@master
         with:
           php-version: ${{ matrix.php-version }}
+          ini-file: 'development'
           extensions: gd,intl,mbstring,sqlite,zip
           coverage: pcov
 
