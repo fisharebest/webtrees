@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * Is the individual's mother a foreigner.
+ * Is the individual's mother a foreigner?
  */
 class CensusColumnMotherForeign extends AbstractCensusColumn implements CensusColumnInterface
 {
@@ -38,7 +38,10 @@ class CensusColumnMotherForeign extends AbstractCensusColumn implements CensusCo
     {
         $mother = $this->mother($individual);
 
-        if ($mother && $this->lastPartOfPlace($mother->getBirthPlace()->gedcomName()) !== $this->place()) {
+        if (
+            $mother instanceof Individual &&
+            $this->lastPartOfPlace($mother->getBirthPlace()->gedcomName()) !== $this->place()
+        ) {
             return 'Y';
         }
 

@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * Is the individual's father a foreigner.
+ * Is the individual's father a foreigner?
  */
 class CensusColumnFatherForeign extends AbstractCensusColumn implements CensusColumnInterface
 {
@@ -38,7 +38,10 @@ class CensusColumnFatherForeign extends AbstractCensusColumn implements CensusCo
     {
         $father = $this->father($individual);
 
-        if ($father && $this->lastPartOfPlace($father->getBirthPlace()->gedcomName()) !== $this->place()) {
+        if (
+            $father instanceof Individual &&
+            $this->lastPartOfPlace($father->getBirthPlace()->gedcomName()) !== $this->place()
+        ) {
             return 'Y';
         }
 

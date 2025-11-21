@@ -72,7 +72,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         // Fatal errors.  We may be out of memory, so do not create any variables.
         register_shutdown_function(callback: function (): void {
             // Show any error message, unless PHP already did this.
-            if ((error_get_last()['type'] ?? 0) & E_ERROR && !$this->php_service->displayErrors()) {
+            if (((error_get_last()['type'] ?? 0) & E_ERROR) !== 0 && !$this->php_service->displayErrors()) {
                 echo
                 (error_get_last()['message'] ?? 'unknown'), '<br>',
                 (error_get_last()['file'] ?? 'unknown'), ': ',

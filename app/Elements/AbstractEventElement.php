@@ -61,8 +61,8 @@ abstract class AbstractEventElement extends AbstractElement
     {
         return
             '<div class="form-check">' .
-            $this->editHidden($id, $name, $value ? 'Y' : '') .
-            '<input class="form-check-input" type="checkbox" value="Y" id="' . e($id) . '-check" ' . ($value ? 'checked="checked"' : '') . ' />' .
+            $this->editHidden($id, $name, $value !== '' ? 'Y' : '') .
+            '<input class="form-check-input" type="checkbox" value="Y" id="' . e($id) . '-check" ' . ($value !== '' ? 'checked="checked"' : '') . ' />' .
             '<label class="form-check-label" for="' . e($id) . '-check">' .
             I18N::translate('This event occurred, but the details are unknown.') .
             '</label>' .

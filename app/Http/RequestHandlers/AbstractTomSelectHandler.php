@@ -54,13 +54,13 @@ abstract class AbstractTomSelectHandler implements RequestHandlerInterface
 
         // Perform the search.
         if ($query !== '') {
-            $results = $this->search($tree, $query, $offset, $limit, $at ? '@' : '');
+            $results = $this->search($tree, $query, $offset, $limit, $at);
         } else {
             $results = new Collection();
         }
 
         if ($results->count() > self::RESULTS_PER_PAGE) {
-            $next_url = route(static::class, ['tree' => $tree->name(), 'at' => $at ? '@' : '', 'page' => $page + 1]);
+            $next_url = route(static::class, ['tree' => $tree->name(), 'at' => $at, 'page' => $page + 1]);
         } else {
             $next_url = null;
         }
