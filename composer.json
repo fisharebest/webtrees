@@ -80,23 +80,23 @@
         "symfony/mailer": "5.4.45",
         "symfony/polyfill-mbstring": "1.33.0",
         "symfony/polyfill-php80": "1.33.0",
-        "tecnickcom/tcpdf": "6.10.0"
+        "tecnickcom/tcpdf": "6.10.1"
     },
     "require-dev": {
         "ext-dom": "*",
         "ext-libxml": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
-        "composer/composer": "2.8.12",
+        "composer/composer": "2.9.2",
         "league/flysystem-memory": "2.0.6",
-        "php-coveralls/php-coveralls": "2.8.0",
+        "php-coveralls/php-coveralls": "2.9.0",
         "phpstan/extension-installer": "1.4.3",
-        "phpstan/phpstan": "2.1.31",
+        "phpstan/phpstan": "2.1.32",
         "phpstan/phpstan-deprecation-rules": "2.0.3",
-        "phpstan/phpstan-phpunit": "2.0.7",
+        "phpstan/phpstan-phpunit": "2.0.8",
         "phpstan/phpstan-strict-rules": "2.0.7",
         "phpunit/phpunit": "9.6.29",
-        "squizlabs/php_codesniffer": "4.0.0"
+        "squizlabs/php_codesniffer": "4.0.1"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
