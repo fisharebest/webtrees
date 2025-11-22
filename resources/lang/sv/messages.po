@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-11-13 11:04+0000\n"
+"PO-Revision-Date: 2025-11-23 20:08+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sv/>\n"
@@ -2434,7 +2434,7 @@ msgstr "Bangladesh"
 #: app/Gedcom.php:592 resources/views/calendar-page.phtml:189
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Baptism"
-msgstr "Döpt"
+msgstr "Dop"
 
 #: app/Services/IndividualFactsService.php:225
 msgid "Baptism of a brother"
