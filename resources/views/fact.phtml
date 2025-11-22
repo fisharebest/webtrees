@@ -18,6 +18,7 @@ use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\RelationshipService;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditNotePage;
 
 /**
  * @var Fact         $fact
@@ -73,7 +74,28 @@ if ($tag === 'MARR') {
 ?>
 <tr class="<?= implode(' ', $styles) ?>">
     <th scope="row">
-        <div class="wt-fact-label ut"><?= $label?></div>
+        <div class="wt-fact-label ut">
+            <?php // shared note label as link to record
+                if (str_ends_with($tag, 'NOTE') && preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $value, $match)) : ?>
+            <?php   $note = Registry::noteFactory()->make($match[1], $tree);
+
+                    if ($note !== null && $note->canShow()) : ?>
+                    <a href="<?= e($note->url()); ?>"><?= $label ?> <?= view('icons/note') ?></a>
+
+                    <?php if (Auth::isEditor($tree)) : ?>
+                        <a class="btn btn-link" href="<?= e(route(EditNotePage::class, ['xref' => $note->xref(), 'tree' => $tree->name()])) ?>" title="<?= $label . ' - ' . I18N::translate('Edit') ?>">
+                            <?= view('icons/edit') ?>
+                            <span class="visually-hidden">
+                                <?= I18N::translate('Edit') ?>
+                            </span>
+                        </a>
+                    <?php endif ?>
+                <?php endif ?>
+            <?php else: ?>
+                <?= $label ?>
+            <?php endif ?>
+        
+        </div>
 
         <?php if ($id !== 'histo' && $id !== 'asso' && $fact->canEdit() && !in_array($tag, ['HUSB', 'WIFE', 'CHIL', 'FAMC', 'FAMS'], true)) : ?>
             <?= view('fact-edit-links', ['fact' => $fact, 'url' => $record->url()]) ?>
