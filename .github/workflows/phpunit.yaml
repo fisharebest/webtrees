@@ -22,7 +22,7 @@ jobs:
           extensions: gd,intl,mbstring,sqlite,zip
           coverage: pcov
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - run: composer validate
 
