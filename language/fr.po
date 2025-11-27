@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-12-04 11:33+0000\n"
-"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
+"PO-Revision-Date: 2025-11-28 18:08+0000\n"
+"Last-Translator: Gustine <gustine@ovh.fr>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fr/>\n"
 "Language: fr\n"
@@ -7640,7 +7640,7 @@ msgstr "Pages individuelles"
 
 #: admin_users.php:581 edituser.php:181
 msgid "Individual record"
-msgstr "Enregistrement indivuel"
+msgstr "Enregistrement individuel"
 
 #: app/Module/FamilyTreeStatisticsModule.php:170
 #: app/Module/FamilyTreeStatisticsModule.php:376
