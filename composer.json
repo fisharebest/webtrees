@@ -60,7 +60,7 @@
         "illuminate/support": "8.83.27",
         "intervention/image": "2.7.2",
         "io-developer/php-whois": "4.1.10",
-        "league/commonmark": "2.7.1",
+        "league/commonmark": "2.8.0",
         "league/flysystem": "2.5.0",
         "league/flysystem-ziparchive": "2.3.1",
         "middlewares/client-ip": "2.1.0",
