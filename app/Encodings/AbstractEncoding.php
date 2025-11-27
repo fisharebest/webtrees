@@ -54,7 +54,7 @@ abstract class AbstractEncoding implements EncodingInterface
 
         $chars = preg_split('//u', $text, -1, PREG_SPLIT_NO_EMPTY);
         $chars = array_map(static function (string $char) use ($utf8): string {
-            if (ord($char) < 128) {
+            if (ord($char[0]) < 128) {
                 return $char;
             }
 
