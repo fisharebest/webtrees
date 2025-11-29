@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\FamilyService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -34,6 +35,16 @@ use function redirect;
  */
 class LinkChildToFamilyAction implements RequestHandlerInterface
 {
+    private FamilyService $family_service;
+
+    /**
+     * @param FamilyService $family_service
+     */
+    public function __construct(FamilyService $family_service)
+    {
+        $this->family_service = $family_service;
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -90,7 +101,7 @@ class LinkChildToFamilyAction implements RequestHandlerInterface
         }
 
         if (!$chil_link_exists) {
-            $family->createFact('1 CHIL @' . $individual->xref() . '@', true);
+            $this->family_service->addChildToFamily($individual, $family);
         }
 
         return redirect($individual->url());
