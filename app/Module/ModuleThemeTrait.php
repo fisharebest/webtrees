@@ -512,4 +512,14 @@ trait ModuleThemeTrait
     {
         return [];
     }
+
+    /**
+     * Sets the base Bootstrap theme.
+     *
+     * @return string
+     */
+    public function bootstrapTheme(): string
+    {
+        return 'light';
+    }
 }
