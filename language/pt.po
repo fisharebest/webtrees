@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-07-04 23:28+0000\n"
+"PO-Revision-Date: 2025-12-07 01:01+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
@@ -2007,7 +2007,7 @@ msgstr ""
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr ""
-"Um diagrama em ampulheta dos antepassados e dos ascendentes de um indivídio."
+"Um diagrama em ampulheta dos antepassados e dos ascendentes de um indivíduo."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
@@ -2302,31 +2302,31 @@ msgstr "Atlanta, Geórgia"
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
-msgstr "Atendente"
+msgstr "Assistente"
 
 #: app/GedcomCode/GedcomCodeRela.php:60
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr "Atendente"
+msgstr "Assistente"
 
 #: app/GedcomCode/GedcomCodeRela.php:58
 msgctxt "MALE"
 msgid "Attendant"
-msgstr "Atendente"
+msgstr "Assistente"
 
 #: app/GedcomCode/GedcomCodeRela.php:71
 msgid "Attending"
-msgstr "Atendendo"
+msgstr "A assistir"
 
 #: app/GedcomCode/GedcomCodeRela.php:69
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr "Atender"
+msgstr "A assistir"
 
 #: app/GedcomCode/GedcomCodeRela.php:67
 msgctxt "MALE"
 msgid "Attending"
-msgstr "Atendendo"
+msgstr "A assistir"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1910
@@ -4058,7 +4058,7 @@ msgstr "Cookies"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:143
 msgid "Copenhagen, Denmark"
-msgstr "Copenhagen, Dinamarca"
+msgstr "Copenhaga, Dinamarca"
 
 #: app/Functions/FunctionsPrintFacts.php:191
 #: app/Functions/FunctionsPrintFacts.php:194
@@ -6706,7 +6706,7 @@ msgstr "Sexta-feira"
 
 #: app/GedcomCode/GedcomCodeRela.php:134
 msgid "Friend"
-msgstr "Amigo"
+msgstr "Amigo(a)"
 
 #: app/GedcomCode/GedcomCodeRela.php:132
 msgctxt "FEMALE"
@@ -8395,7 +8395,7 @@ msgstr "Legal"
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:548
 msgid "Legatee"
-msgstr "Herdeiro"
+msgstr "Legatário(a) / Herdeiro(a)"
 
 #: statistics.php:248
 msgid "Length of marriage"
@@ -10358,12 +10358,12 @@ msgstr "Número de sobrenomes"
 
 #: app/GedcomCode/GedcomCodeRela.php:203
 msgid "Nurse"
-msgstr "Ama"
+msgstr "Enfermeiro(a)"
 
 #: app/GedcomCode/GedcomCodeRela.php:201
 msgctxt "FEMALE"
 msgid "Nurse"
-msgstr "Ama"
+msgstr "Enfermeira"
 
 #: app/GedcomCode/GedcomCodeRela.php:199
 msgctxt "MALE"
@@ -11629,7 +11629,7 @@ msgstr "Regime de bens"
 
 #: app/GedcomCode/GedcomCodeRela.php:227
 msgid "Registry officer"
-msgstr "Oficial de Registo"
+msgstr "Oficial de registo"
 
 #: app/GedcomCode/GedcomCodeRela.php:225
 msgctxt "FEMALE"
