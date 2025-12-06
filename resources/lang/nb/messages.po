@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-04-13 21:59+0000\n"
+"PO-Revision-Date: 2025-12-06 09:07+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/nb_NO/>\n"
@@ -18213,11 +18213,11 @@ msgstr "tipptippoldeforelders søster/bror"
 
 #: app/Functions/Functions.php:2213
 msgid "great ×4 grandchild"
-msgstr "3. tippoldebarn"
+msgstr "3 x tippoldebarn"
 
 #: app/Functions/Functions.php:2210
 msgid "great ×4 granddaughter"
-msgstr "3. tippoldebarn"
+msgstr "3 x tippoldebarn"
 
 #: app/Functions/Functions.php:2060
 msgid "great ×4 grandfather"
@@ -18233,7 +18233,7 @@ msgstr "3× tippoldeforelder"
 
 #: app/Functions/Functions.php:2206
 msgid "great ×4 grandson"
-msgstr "3. tippoldebarn"
+msgstr "3 x tippoldebarn"
 
 #: app/Functions/Functions.php:1855
 msgctxt "(a man’s) brother’s great-great-great-grandson"
@@ -18305,11 +18305,11 @@ msgstr "3. tippoldeforelders søster/bror"
 
 #: app/Functions/Functions.php:2224
 msgid "great ×5 grandchild"
-msgstr "4. tippoldebarn"
+msgstr "4 x tippoldebarn"
 
 #: app/Functions/Functions.php:2221
 msgid "great ×5 granddaughter"
-msgstr "4. tippoldebarn"
+msgstr "4 x tippoldebarn"
 
 #: app/Functions/Functions.php:2071
 msgid "great ×5 grandfather"
@@ -18325,52 +18325,52 @@ msgstr "4× tippoldeforelder"
 
 #: app/Functions/Functions.php:2217
 msgid "great ×5 grandson"
-msgstr "4. tippoldebarn"
+msgstr "4 x tippoldebarn"
 
 #: app/Functions/Functions.php:1890
 msgctxt "(a man’s) brother’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr "3. tippoldebarn av søsken"
+msgstr "3 x tippoldebarn av søsken"
 
 #: app/Functions/Functions.php:1894
 msgctxt "(a man’s) sister’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr "3. tippoldebarn av søsken"
+msgstr "3 x tippoldebarn av søsken"
 
 #: app/Functions/Functions.php:1897
 msgctxt "(a woman’s) great ×5 nephew"
 msgid "great ×5 nephew"
-msgstr "3. tippoldebarn av søsken"
+msgstr "3 x tippoldebarn av søsken"
 
 #: app/Functions/Functions.php:1913
 msgctxt "(a man’s) brother’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr "3. tippoldebarn av søsken"
+msgstr "3 x tippoldebarn av søsken"
 
 #: app/Functions/Functions.php:1917
 msgctxt "(a man’s) sister’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr "3. tippoldebarn av søsken"
+msgstr "3 x tippoldebarn av søsken"
 
 #: app/Functions/Functions.php:1920
 msgctxt "(a woman’s) great ×5 nephew/niece"
 msgid "great ×5 nephew/niece"
-msgstr "3. tippoldebarn av søsken"
+msgstr "3 x tippoldebarn av søsken"
 
 #: app/Functions/Functions.php:1902
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr "3. tippoldebarn av søsken"
+msgstr "3 x tippoldebarn av søsken"
 
 #: app/Functions/Functions.php:1906
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr "3. tippoldebarn av søsken"
+msgstr "3 x tippoldebarn av søsken"
 
 #: app/Functions/Functions.php:1909
 msgctxt "(a woman’s) great ×5 niece"
 msgid "great ×5 niece"
-msgstr "3. tippoldebarn av søsken"
+msgstr "3 x tippoldebarn av søsken"
 
 #: app/Functions/Functions.php:1646
 msgctxt "great ×4 grandfather’s brother"
@@ -18397,11 +18397,11 @@ msgstr "4. tippoldeforelders søster/bror"
 
 #: app/Functions/Functions.php:2235
 msgid "great ×6 grandchild"
-msgstr "5. tippoldebarn"
+msgstr "5 x tippoldebarn"
 
 #: app/Functions/Functions.php:2232
 msgid "great ×6 granddaughter"
-msgstr "5. tippoldebarn"
+msgstr "5 x tippoldebarn"
 
 #: app/Functions/Functions.php:2082
 msgid "great ×6 grandfather"
@@ -18417,7 +18417,7 @@ msgstr "5× tippoldeforelder"
 
 #: app/Functions/Functions.php:2228
 msgid "great ×6 grandson"
-msgstr "5. tippoldebarn"
+msgstr "5 x tippoldebarn"
 
 #: app/Functions/Functions.php:1665
 msgctxt "great ×5 grandfather’s brother"
@@ -18444,11 +18444,11 @@ msgstr "5. tippoldeforelders søster/bror"
 
 #: app/Functions/Functions.php:2246
 msgid "great ×7 grandchild"
-msgstr "6. tippoldebarn"
+msgstr "6 x tippoldebarn"
 
 #: app/Functions/Functions.php:2243
 msgid "great ×7 granddaughter"
-msgstr "6. tippoldebarn"
+msgstr "6 x tippoldebarn"
 
 #: app/Functions/Functions.php:2093
 msgid "great ×7 grandfather"
@@ -18464,7 +18464,7 @@ msgstr "6× tippoldeforelder"
 
 #: app/Functions/Functions.php:2239
 msgid "great ×7 grandson"
-msgstr "6. tippoldebarn"
+msgstr "6 x tippoldebarn"
 
 #: app/Functions/Functions.php:1684
 msgctxt "great ×6 grandfather’s brother"
