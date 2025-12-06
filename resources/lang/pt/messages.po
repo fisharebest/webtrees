@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-07-04 23:28+0000\n"
+"PO-Revision-Date: 2025-12-07 00:48+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/pt/>\n"
@@ -1982,7 +1982,7 @@ msgstr ""
 #: app/Module/HourglassChartModule.php:101
 msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr ""
-"Um diagrama em ampulheta dos antepassados e dos ascendentes de um indivídio."
+"Um diagrama em ampulheta dos antepassados e dos ascendentes de um indivíduo."
 
 #: resources/views/edit/reorder-families.phtml:75
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
@@ -2286,36 +2286,36 @@ msgstr "Atlanta, Geórgia"
 #: app/Elements/RelationIsDescriptor.php:94
 #: app/GedcomCode/GedcomCodeRela.php:96
 msgid "Attendant"
-msgstr "Atendente"
+msgstr "Assistente"
 
 #: app/Elements/RelationIsDescriptor.php:73
 #: app/GedcomCode/GedcomCodeRela.php:93
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr "Atendente"
+msgstr "Assistente"
 
 #: app/Elements/RelationIsDescriptor.php:52
 #: app/GedcomCode/GedcomCodeRela.php:89
 msgctxt "MALE"
 msgid "Attendant"
-msgstr "Atendente"
+msgstr "Assistente"
 
 #: app/Elements/RelationIsDescriptor.php:95
 #: app/GedcomCode/GedcomCodeRela.php:107
 msgid "Attending"
-msgstr "Atendendo"
+msgstr "A assistir"
 
 #: app/Elements/RelationIsDescriptor.php:74
 #: app/GedcomCode/GedcomCodeRela.php:104
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr "Atender"
+msgstr "A assistir"
 
 #: app/Elements/RelationIsDescriptor.php:53
 #: app/GedcomCode/GedcomCodeRela.php:100
 msgctxt "MALE"
 msgid "Attending"
-msgstr "Atendendo"
+msgstr "A assistir"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:60 app/Factories/ElementFactory.php:438
@@ -4169,7 +4169,7 @@ msgstr "Coordenadas"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:84 app/GedcomCode/GedcomCodeTemp.php:318
 msgid "Copenhagen, Denmark"
-msgstr "Copenhagen, Dinamarca"
+msgstr "Copenhaga, Dinamarca"
 
 #: resources/views/edit/icon-fact-copy.phtml:13
 #: resources/views/edit/icon-fact-copy.phtml:15
@@ -6998,7 +6998,7 @@ msgstr "Sexta-feira"
 #: app/Elements/RelationIsDescriptor.php:106
 #: app/GedcomCode/GedcomCodeRela.php:186
 msgid "Friend"
-msgstr "Amigo"
+msgstr "Amigo(a)"
 
 #: app/Elements/RelationIsDescriptor.php:79
 #: app/GedcomCode/GedcomCodeRela.php:183
@@ -8841,7 +8841,7 @@ msgstr "URLs antigos"
 #. I18N: gedcom tag LEGA
 #: app/Factories/ElementFactory.php:858 app/GedcomTag.php:764
 msgid "Legatee"
-msgstr "Herdeiro"
+msgstr "Legatário(a) / Herdeiro(a)"
 
 #: resources/views/statistics/families/marriage-length.phtml:12
 msgid "Length of marriage"
@@ -10863,13 +10863,13 @@ msgstr "Número de sobrenomes"
 #: app/Elements/RelationIsDescriptor.php:117
 #: app/GedcomCode/GedcomCodeRela.php:272
 msgid "Nurse"
-msgstr "Ama"
+msgstr "Enfermeiro(a)"
 
 #: app/Elements/RelationIsDescriptor.php:85
 #: app/GedcomCode/GedcomCodeRela.php:269
 msgctxt "FEMALE"
 msgid "Nurse"
-msgstr "Ama"
+msgstr "Enfermeira"
 
 #: app/Elements/RelationIsDescriptor.php:64
 #: app/GedcomCode/GedcomCodeRela.php:265
@@ -11890,7 +11890,7 @@ msgstr "Provo, Utah, Estados Unidos"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr "Proxy"
+msgstr "Procurador / Representante"
 
 #. I18N: gedcom tag PUBL
 #: app/Factories/ElementFactory.php:1366 app/GedcomTag.php:890
@@ -12218,7 +12218,7 @@ msgstr "Regime de bens"
 #: app/Elements/RelationIsDescriptor.php:122
 #: app/GedcomCode/GedcomCodeRela.php:302
 msgid "Registry officer"
-msgstr "Oficial de Registo"
+msgstr "Oficial de registo"
 
 #: app/Elements/RelationIsDescriptor.php:87
 #: app/GedcomCode/GedcomCodeRela.php:299
