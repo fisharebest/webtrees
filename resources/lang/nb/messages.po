@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-12-06 09:07+0000\n"
+"PO-Revision-Date: 2025-12-07 00:48+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/nb_NO/>\n"
@@ -18058,21 +18058,21 @@ msgstr "%s× grandtante"
 #: app/Functions/Functions.php:1773
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr "%s× tipp-oldeforelders søsken"
+msgstr "%s× tippoldeforelders søsken"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2265 app/Functions/Functions.php:2275
 #: app/Functions/Functions.php:2296
 #, php-format
 msgid "great ×%s grandchild"
-msgstr "%s× tip-oldebarn"
+msgstr "%s× tippoldebarn"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2262 app/Functions/Functions.php:2273
 #: app/Functions/Functions.php:2292
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr "%s× tip-oldebarn"
+msgstr "%s× tippoldebarn"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2110 app/Functions/Functions.php:2124
@@ -18096,14 +18096,14 @@ msgstr "%s× tippoldemor"
 #: app/Functions/Functions.php:2174
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "%s× tip-oldeforelder"
+msgstr "%s× tippoldeforelder"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2258 app/Functions/Functions.php:2270
 #: app/Functions/Functions.php:2287
 #, php-format
 msgid "great ×%s grandson"
-msgstr "%s× tip-oldebarn"
+msgstr "%s× tippoldebarn"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1993 app/Functions/Functions.php:2005
@@ -18189,7 +18189,7 @@ msgstr "%s× grandonkel"
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr "%s× tipp-oldeforelders bror"
+msgstr "%s× tippoldeforelders bror"
 
 #: app/Functions/Functions.php:1724
 #, php-format
@@ -18283,12 +18283,12 @@ msgstr "tipptippoldebarn av søsken"
 #: app/Functions/Functions.php:1627
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr "tipp-tippoldefars bror"
+msgstr "tipptippoldefars bror"
 
 #: app/Functions/Functions.php:1631
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr "tipp-tippoldemors bror"
+msgstr "tipptippoldemors bror"
 
 #: app/Functions/Functions.php:1634
 msgctxt "great-great-great-grandparent’s brother"
@@ -18981,15 +18981,15 @@ msgstr "tipptippoldebarn"
 
 #: app/Functions/Functions.php:2049
 msgid "great-great-great-grandfather"
-msgstr "tipp-tippoldefar"
+msgstr "tipptippoldefar"
 
 #: app/Functions/Functions.php:2053
 msgid "great-great-great-grandmother"
-msgstr "tipp-tippoldemor"
+msgstr "tipptippoldemor"
 
 #: app/Functions/Functions.php:2056
 msgid "great-great-great-grandparent"
-msgstr "tipp-tippoldeforelder"
+msgstr "tipptippoldeforelder"
 
 #: app/Functions/Functions.php:2195
 msgid "great-great-great-grandson"
