@@ -934,33 +934,6 @@ class GedcomRecord
     }
 
     /**
-     * Remove all links from this record to $xref
-     *
-     * @param string $xref
-     * @param bool   $update_chan
-     *
-     * @return void
-     */
-    public function removeLinks(string $xref, bool $update_chan): void
-    {
-        $value = '@' . $xref . '@';
-
-        foreach ($this->facts() as $fact) {
-            if ($fact->value() === $value) {
-                $this->deleteFact($fact->id(), $update_chan);
-            } elseif (preg_match_all('/\n(\d) ' . Gedcom::REGEX_TAG . ' ' . $value . '/', $fact->gedcom(), $matches, PREG_SET_ORDER)) {
-                $gedcom = $fact->gedcom();
-                foreach ($matches as $match) {
-                    $next_level  = 1 + (int) $match[1];
-                    $next_levels = '[' . $next_level . '-9]';
-                    $gedcom      = preg_replace('/' . $match[0] . '(\n' . $next_levels . '.*)*/', '', $gedcom);
-                }
-                $this->updateFact($fact->id(), $gedcom, $update_chan);
-            }
-        }
-    }
-
-    /**
      * Each object type may have its own special rules, and re-implement this function.
      *
      * @param int $access_level
