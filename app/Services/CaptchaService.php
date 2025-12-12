@@ -74,15 +74,15 @@ class CaptchaService
         $y = Session::pull('captcha-y');
         $z = Session::pull('captcha-z');
 
-        assert(is_float($t));
-        assert(is_string($x));
-        assert(is_string($y));
-        assert(is_string($z));
+        // No session variables?  Maybe the visitor POSTed directly, without first visiting the paged.
+        if (!is_float($t) || !is_string($x) || !is_string($y) || !is_string($z)) {
+            return true;
+        }
 
         $value_x = Validator::parsedBody($request)->string($x, '');
         $value_y = Validator::parsedBody($request)->string($y, '');
 
-        // The captcha uses javascript to copy value z from field y to field x.
+        // The captcha uses JavaScript to copy value z from field y to field x.
         // Expect it in both fields.
         if ($value_x !== $z || $value_y !== $z) {
             return true;
