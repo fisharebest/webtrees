@@ -500,12 +500,7 @@ class GedcomRecord
      */
     public function formatList(): string
     {
-        $html = '<a href="' . e($this->url()) . '">';
-        $html .= '<b>' . $this->fullName() . '</b>';
-        $html .= '</a>';
-        $html .= $this->formatListDetails();
-
-        return $html;
+        return view('record-list-info', ['record' => $this]);
     }
 
     /**
