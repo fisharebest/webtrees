@@ -125,7 +125,7 @@ class Legacy implements CustomTagInterface
             'INDI:*:ADDR:_PRIV'            => new CustomElement(I18N::translate('Private')),
             'INDI:*:ADDR:_SORT'            => new CustomElement('The spelling of a name to be used when sorting addresses for a report'),
             'INDI:*:ADDR:_TAG'             => new CustomElement('Tag'),
-            'INDO:*:NOTE:SOUR'             => new XrefSource(I18N::translate('Source citation')),
+            'INDI:*:NOTE:SOUR'             => new XrefSource(I18N::translate('Source citation')),
             'INDI:*:NOTE:SOUR:PAGE'        => new WhereWithinSource(I18N::translate('Citation details')),
             'INDI:*:PLAC:_TAG'             => new CustomElement('Tag'),
             'INDI:*:PLAC:_VERI'            => new CustomElement(I18N::translate('Verified')),
