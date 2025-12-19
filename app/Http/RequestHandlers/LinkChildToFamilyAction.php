@@ -78,7 +78,11 @@ class LinkChildToFamilyAction implements RequestHandlerInterface
                 break;
         }
 
-        $individual->updateFact($fact_id, $gedcom, true);
+        if ($fact_id === '') {
+            $individual->createFact($gedcom, true);
+        } else {
+            $individual->updateFact($fact_id, $gedcom, true);
+        }
 
         // Only set the family->child link if it does not already exist
         $chil_link_exists = false;

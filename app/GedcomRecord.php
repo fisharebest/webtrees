@@ -54,9 +54,11 @@ use function str_pad;
 use function str_starts_with;
 use function strtoupper;
 use function strtr;
+use function trigger_error;
 use function trim;
 use function view;
 
+use const E_USER_DEPRECATED;
 use const PHP_INT_MAX;
 use const PREG_SET_ORDER;
 use const STR_PAD_LEFT;
@@ -791,6 +793,20 @@ class GedcomRecord
 
     public function updateFact(string $fact_id, string $gedcom, bool $update_chan): void
     {
+        if ($fact_id === '') {
+            trigger_error(I18N::translate('$fact_id cannot be empty.  Use createFact() instead.'), E_USER_DEPRECATED);
+            $this->createFact($gedcom, $update_chan);
+
+            return;
+        }
+
+        if ($gedcom === '') {
+            trigger_error(I18N::translate('$gedcom cannot be empty.  Use deleteFact() instead.'), E_USER_DEPRECATED);
+            $this->deleteFact($fact_id, $update_chan);
+
+            return;
+        }
+
         if (!preg_match('/^1 ' . Gedcom::REGEX_TAG . '/', $gedcom) || str_contains($gedcom, "\r")) {
             throw new InvalidArgumentException('Invalid GEDCOM passed to GedcomRecord::updateFact(' . $gedcom . ')');
         }
