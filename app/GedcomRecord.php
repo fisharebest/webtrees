@@ -20,13 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
-use Exception;
 use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Elements\RestrictionNotice;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Illuminate\Support\Collection;
+use InvalidArgumentException;
+use LogicException;
 
 use function array_combine;
 use function array_keys;
@@ -743,125 +744,80 @@ class GedcomRecord
         return $chan_user;
     }
 
-    /**
-     * Add a new fact to this record
-     *
-     * @param string $gedcom
-     * @param bool   $update_chan
-     *
-     * @return void
-     */
-    public function createFact(string $gedcom, bool $update_chan): void
+    public function createFact(string $gedcom, bool $update_chan, string $before_id = ''): void
     {
-        $this->updateFact('', $gedcom, $update_chan);
+        if (!preg_match('/^1 ' . Gedcom::REGEX_TAG . '/', $gedcom) || str_contains($gedcom, "\r")) {
+            throw new InvalidArgumentException('Invalid GEDCOM passed to GedcomRecord::createFact(' . $gedcom . ')');
+        }
+
+        // The first line of the record - 0 @XREF@ TAG [VALUE]
+        [$new_gedcom] = explode("\n", $this->pending ?? $this->gedcom, 2);
+
+        $inserted = false;
+
+        foreach ($this->facts([], false, Auth::PRIV_HIDE, true) as $fact) {
+            if (!$inserted && $fact->id() === $before_id) {
+                $new_gedcom .= "\n" . $gedcom;
+                $inserted = true;
+            }
+
+            $new_gedcom .= "\n" . $fact->gedcom();
+        }
+
+        if (!$inserted) {
+            $new_gedcom .= "\n" . $gedcom;
+        }
+
+        $this->updateRecord($new_gedcom, $update_chan);
     }
 
-    /**
-     * Delete a fact from this record
-     *
-     * @param string $fact_id
-     * @param bool   $update_chan
-     *
-     * @return void
-     */
     public function deleteFact(string $fact_id, bool $update_chan): void
     {
-        $this->updateFact($fact_id, '', $update_chan);
-    }
+        // The first line of the record - 0 @XREF@ TAG [VALUE]
+        [$new_gedcom] = explode("\n", $this->pending ?? $this->gedcom, 2);
 
-    /**
-     * Replace a fact with a new gedcom data.
-     *
-     * @param string $fact_id
-     * @param string $gedcom
-     * @param bool   $update_chan
-     *
-     * @return void
-     * @throws Exception
-     */
-    public function updateFact(string $fact_id, string $gedcom, bool $update_chan): void
-    {
-        // Not all record types allow a CHAN event.
-        $update_chan = $update_chan && in_array(static::RECORD_TYPE, Gedcom::RECORDS_WITH_CHAN, true);
+        $deleted = false;
 
-        // MSDOS line endings will break things in horrible ways
-        $gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom);
-        $gedcom = trim($gedcom);
-
-        if ($this->pending === '') {
-            throw new Exception('Cannot edit a deleted record');
-        }
-        if ($gedcom !== '' && !preg_match('/^1 ' . Gedcom::REGEX_TAG . '/', $gedcom)) {
-            throw new Exception('Invalid GEDCOM data passed to GedcomRecord::updateFact(' . $gedcom . ')');
-        }
-
-        if ($this->pending !== null && $this->pending !== '') {
-            $old_gedcom = $this->pending;
-        } else {
-            $old_gedcom = $this->gedcom;
-        }
-
-        // First line of record may contain data - e.g. NOTE records.
-        [$new_gedcom] = explode("\n", $old_gedcom, 2);
-
-        // Replacing (or deleting) an existing fact
         foreach ($this->facts([], false, Auth::PRIV_HIDE, true) as $fact) {
-            if ($fact->id() === $fact_id) {
-                if ($gedcom !== '') {
-                    $new_gedcom .= "\n" . $gedcom;
-                }
-                $fact_id = 'NOT A VALID FACT ID'; // Only replace/delete one copy of a duplicate fact
-            } elseif ($update_chan && str_ends_with($fact->tag(), ':CHAN')) {
-                $new_gedcom .= "\n" . $this->updateChange($fact->gedcom());
+            if (!$deleted && $fact->id() === $fact_id) {
+                $deleted = true;
             } else {
                 $new_gedcom .= "\n" . $fact->gedcom();
             }
         }
 
-        // Adding a new fact
-        if ($fact_id === '') {
-            $new_gedcom .= "\n" . $gedcom;
+        $this->updateRecord($new_gedcom, $update_chan);
+    }
+
+    public function updateFact(string $fact_id, string $gedcom, bool $update_chan): void
+    {
+        if (!preg_match('/^1 ' . Gedcom::REGEX_TAG . '/', $gedcom) || str_contains($gedcom, "\r")) {
+            throw new InvalidArgumentException('Invalid GEDCOM passed to GedcomRecord::updateFact(' . $gedcom . ')');
         }
 
-        if ($update_chan && !str_contains($new_gedcom, "\n1 CHAN")) {
-            $new_gedcom .= $this->updateChange("\n1 CHAN");
-        }
+        // The first line of the record - 0 @XREF@ TAG [VALUE]
+        [$new_gedcom] = explode("\n", $this->pending ?? $this->gedcom, 2);
 
-        if ($new_gedcom !== $old_gedcom) {
-            // Save the changes
-            DB::table('change')->insert([
-                'gedcom_id'  => $this->tree->id(),
-                'xref'       => $this->xref,
-                'old_gedcom' => $old_gedcom,
-                'new_gedcom' => $new_gedcom,
-                'status'     => 'pending',
-                'user_id'    => Auth::id(),
-            ]);
+        $updated = false;
 
-            $this->pending = $new_gedcom;
-
-            if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
-                $pending_changes_service = Registry::container()->get(PendingChangesService::class);
-
-                $pending_changes_service->acceptRecord($this);
-                $this->gedcom  = $new_gedcom;
-                $this->pending = null;
+        foreach ($this->facts([], false, Auth::PRIV_HIDE, true) as $fact) {
+            if (!$updated && $fact->id() === $fact_id) {
+                $new_gedcom .= "\n" . $gedcom;
+                $updated    = true;
+            } else {
+                $new_gedcom .= "\n" . $fact->gedcom();
             }
         }
 
-        $this->facts = $this->parseFacts();
+        $this->updateRecord($new_gedcom, $update_chan);
     }
 
-    /**
-     * Update this record
-     *
-     * @param string $gedcom
-     * @param bool   $update_chan
-     *
-     * @return void
-     */
     public function updateRecord(string $gedcom, bool $update_chan): void
     {
+        if ($this->pending === '') {
+            throw new LogicException('Cannot edit a deleted record');
+        }
+
         // Not all record types allow a CHAN event.
         $update_chan = $update_chan && in_array(static::RECORD_TYPE, Gedcom::RECORDS_WITH_CHAN, true);
 
@@ -893,9 +849,7 @@ class GedcomRecord
 
         // Accept this pending change
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
-            $pending_changes_service = Registry::container()->get(PendingChangesService::class);
-
-            $pending_changes_service->acceptRecord($this);
+            Registry::container()->get(PendingChangesService::class)->acceptRecord($this);
             $this->gedcom  = $gedcom;
             $this->pending = null;
         }
@@ -905,11 +859,6 @@ class GedcomRecord
         Log::addEditLog('Update: ' . static::RECORD_TYPE . ' ' . $this->xref, $this->tree);
     }
 
-    /**
-     * Delete this record
-     *
-     * @return void
-     */
     public function deleteRecord(): void
     {
         // Create a pending change
@@ -926,8 +875,7 @@ class GedcomRecord
 
         // Auto-accept this pending change
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
-            $pending_changes_service = Registry::container()->get(PendingChangesService::class);
-            $pending_changes_service->acceptRecord($this);
+            Registry::container()->get(PendingChangesService::class)->acceptRecord($this);
         }
 
         Log::addEditLog('Delete: ' . static::RECORD_TYPE . ' ' . $this->xref, $this->tree);
