@@ -29,9 +29,9 @@ class CensusColumnNullTest extends TestCase
 {
     public function testNull(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
 
         $column = new CensusColumnNull($census, '', '');
 

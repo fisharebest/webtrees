@@ -44,7 +44,7 @@ class AgeAtEventTest extends AbstractElementTestCase
 
     public function testValue(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
 
         self::assertSame('child', self::$element->value('cHiLd', $tree));
         self::assertSame('infant', self::$element->value('iNfAnT ', $tree));

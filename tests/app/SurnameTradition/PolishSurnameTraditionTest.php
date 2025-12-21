@@ -38,16 +38,16 @@ class PolishSurnameTraditionTest extends TestCase
 
     public function testNewSonNames(): void
     {
-        $father_fact = $this->createMock(Fact::class);
+        $father_fact = $this->createStub(Fact::class);
         $father_fact->method('value')->willReturn('John /White/');
 
-        $father = $this->createMock(Individual::class);
+        $father = $this->createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father_fact]));
 
-        $mother_fact = $this->createMock(Fact::class);
+        $mother_fact = $this->createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Mary /Black/');
 
-        $mother = $this->createMock(Individual::class);
+        $mother = $this->createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -58,16 +58,16 @@ class PolishSurnameTraditionTest extends TestCase
 
     public function testNewDaughterNames(): void
     {
-        $father_fact = $this->createMock(Fact::class);
+        $father_fact = $this->createStub(Fact::class);
         $father_fact->method('value')->willReturn('John /White/');
 
-        $father = $this->createMock(Individual::class);
+        $father = $this->createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father_fact]));
 
-        $mother_fact = $this->createMock(Fact::class);
+        $mother_fact = $this->createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Mary /Black/');
 
-        $mother = $this->createMock(Individual::class);
+        $mother = $this->createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -78,16 +78,16 @@ class PolishSurnameTraditionTest extends TestCase
 
     public function testNewDaughterNamesInflected(): void
     {
-        $father_fact = $this->createMock(Fact::class);
+        $father_fact = $this->createStub(Fact::class);
         $father_fact->method('value')->willReturn('John /Whitecki/');
 
-        $father = $this->createMock(Individual::class);
+        $father = $this->createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father_fact]));
 
-        $mother_fact = $this->createMock(Fact::class);
+        $mother_fact = $this->createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Mary /Black/');
 
-        $mother = $this->createMock(Individual::class);
+        $mother = $this->createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -95,16 +95,16 @@ class PolishSurnameTraditionTest extends TestCase
             $this->surname_tradition->newChildNames($father, $mother, 'F')
         );
 
-        $father_fact = $this->createMock(Fact::class);
+        $father_fact = $this->createStub(Fact::class);
         $father_fact->method('value')->willReturn('John /Whitedzki/');
 
-        $father = $this->createMock(Individual::class);
+        $father = $this->createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father_fact]));
 
-        $mother_fact = $this->createMock(Fact::class);
+        $mother_fact = $this->createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Mary /Black/');
 
-        $mother = $this->createMock(Individual::class);
+        $mother = $this->createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -112,16 +112,16 @@ class PolishSurnameTraditionTest extends TestCase
             $this->surname_tradition->newChildNames($father, $mother, 'F')
         );
 
-        $father_fact = $this->createMock(Fact::class);
+        $father_fact = $this->createStub(Fact::class);
         $father_fact->method('value')->willReturn('John /Whiteski/');
 
-        $father = $this->createMock(Individual::class);
+        $father = $this->createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father_fact]));
 
-        $mother_fact = $this->createMock(Fact::class);
+        $mother_fact = $this->createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Mary /Black/');
 
-        $mother = $this->createMock(Individual::class);
+        $mother = $this->createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -129,16 +129,16 @@ class PolishSurnameTraditionTest extends TestCase
             $this->surname_tradition->newChildNames($father, $mother, 'F')
         );
 
-        $father_fact = $this->createMock(Fact::class);
+        $father_fact = $this->createStub(Fact::class);
         $father_fact->method('value')->willReturn('John /Whiteżki/');
 
-        $father = $this->createMock(Individual::class);
+        $father = $this->createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father_fact]));
 
-        $mother_fact = $this->createMock(Fact::class);
+        $mother_fact = $this->createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Mary /Black/');
 
-        $mother = $this->createMock(Individual::class);
+        $mother = $this->createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -149,16 +149,16 @@ class PolishSurnameTraditionTest extends TestCase
 
     public function testNewChildNames(): void
     {
-        $father_fact = $this->createMock(Fact::class);
+        $father_fact = $this->createStub(Fact::class);
         $father_fact->method('value')->willReturn('John /White/');
 
-        $father = $this->createMock(Individual::class);
+        $father = $this->createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father_fact]));
 
-        $mother_fact = $this->createMock(Fact::class);
+        $mother_fact = $this->createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Mary /Black/');
 
-        $mother = $this->createMock(Individual::class);
+        $mother = $this->createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -177,10 +177,10 @@ class PolishSurnameTraditionTest extends TestCase
 
     public function testNewFatherNames(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
         $fact->method('value')->willReturn('Chris /White/');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -191,10 +191,10 @@ class PolishSurnameTraditionTest extends TestCase
 
     public function testNewFatherNamesInflected(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
         $fact->method('value')->willReturn('Chris /Whitecka/');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -202,10 +202,10 @@ class PolishSurnameTraditionTest extends TestCase
             $this->surname_tradition->newParentNames($individual, 'M')
         );
 
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
         $fact->method('value')->willReturn('Chris /Whitedzka/');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -213,10 +213,10 @@ class PolishSurnameTraditionTest extends TestCase
             $this->surname_tradition->newParentNames($individual, 'M')
         );
 
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
         $fact->method('value')->willReturn('Chris /Whiteska/');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -224,10 +224,10 @@ class PolishSurnameTraditionTest extends TestCase
             $this->surname_tradition->newParentNames($individual, 'M')
         );
 
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
         $fact->method('value')->willReturn('Chris /Whiteżka/');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -238,10 +238,10 @@ class PolishSurnameTraditionTest extends TestCase
 
     public function testNewMotherNames(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
         $fact->method('value')->willReturn('Chris /White/');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -252,10 +252,10 @@ class PolishSurnameTraditionTest extends TestCase
 
     public function testNewParentNames(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
         $fact->method('value')->willReturn('Chris /White/');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -266,10 +266,10 @@ class PolishSurnameTraditionTest extends TestCase
 
     public function testNewSpouseNames(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
         $fact->method('value')->willReturn('Chris /White/');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(

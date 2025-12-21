@@ -41,7 +41,7 @@ class RedirectModulePhpTest extends TestCase
 
     public function testRedirectPedigreeMap(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -52,7 +52,7 @@ class RedirectModulePhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
@@ -91,7 +91,7 @@ class RedirectModulePhpTest extends TestCase
 
     public function testRedirectInteractiveTree(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -102,7 +102,7 @@ class RedirectModulePhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
@@ -141,7 +141,7 @@ class RedirectModulePhpTest extends TestCase
 
     public function testNoSuchTree(): void
     {
-        $module_service  = $this->createMock(ModuleService::class);
+        $module_service  = $this->createStub(ModuleService::class);
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects($this->once())
@@ -162,7 +162,7 @@ class RedirectModulePhpTest extends TestCase
 
     public function testNoSuchIndividual(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -175,7 +175,7 @@ class RedirectModulePhpTest extends TestCase
             ->willReturn(null);
 
         Registry::individualFactory($individual_factory);
-        $module_service  = $this->createMock(ModuleService::class);
+        $module_service  = $this->createStub(ModuleService::class);
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects($this->once())
@@ -196,7 +196,7 @@ class RedirectModulePhpTest extends TestCase
 
     public function testPedigreeMapModuleDisabled(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -207,7 +207,7 @@ class RedirectModulePhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
@@ -239,7 +239,7 @@ class RedirectModulePhpTest extends TestCase
 
     public function testInteractiveTreeModuleDisabled(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -250,7 +250,7 @@ class RedirectModulePhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory

@@ -28,7 +28,7 @@ class UpcomingAnniversariesModuleTest extends TestCase
 {
     public function testModuleProperties(): void
     {
-        $calendar_service = $this->createMock(CalendarService::class);
+        $calendar_service = $this->createStub(CalendarService::class);
 
         $module = new UpcomingAnniversariesModule($calendar_service);
 

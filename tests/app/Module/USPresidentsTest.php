@@ -31,7 +31,7 @@ class USPresidentsTest extends TestCase
     {
         $module = new USPresidents();
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
 
         foreach ($module->historicEventsAll('en-US') as $gedcom) {
             $fact = new Fact($gedcom, $individual, 'test');

@@ -48,7 +48,7 @@ abstract class AbstractElementTestCase extends TestCase
 
     public function testXssInValue(): void
     {
-        $tree    = $this->createMock(Tree::class);
+        $tree    = $this->createStub(Tree::class);
         $html    = static::$element->value(self::EVIL_VALUE, $tree);
         $message = 'XSS vulnerability in value()';
 
@@ -57,7 +57,7 @@ abstract class AbstractElementTestCase extends TestCase
 
     public function testXssInLabelValue(): void
     {
-        $tree    = $this->createMock(Tree::class);
+        $tree    = $this->createStub(Tree::class);
         $html    = static::$element->labelValue(self::EVIL_VALUE, $tree);
         $message = 'XSS vulnerability in labelValue()';
 
@@ -66,7 +66,7 @@ abstract class AbstractElementTestCase extends TestCase
 
     public function testXssInEdit(): void
     {
-        $tree    = $this->createMock(Tree::class);
+        $tree    = $this->createStub(Tree::class);
         $html    = static::$element->edit('id', 'name', self::EVIL_VALUE, $tree);
         $message = 'XSS vulnerability in edit()';
 
@@ -75,7 +75,7 @@ abstract class AbstractElementTestCase extends TestCase
 
     public function testValidHtmlInValue(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
         $html = static::$element->value(self::TEST_VALUE, $tree);
 
         $this->validateHtml($html);
@@ -83,7 +83,7 @@ abstract class AbstractElementTestCase extends TestCase
 
     public function testValidHtmlInEdit(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
         $html = static::$element->edit('id', 'name', self::TEST_VALUE, $tree);
 
         $this->validateHtml($html);

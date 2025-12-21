@@ -41,7 +41,7 @@ class RedirectFamilyBookPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -52,7 +52,7 @@ class RedirectFamilyBookPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
@@ -87,13 +87,13 @@ class RedirectFamilyBookPhpTest extends TestCase
 
     public function testModuleDisabled(): void
     {
-        $module_service = $this->createMock(ModuleService::class);
+        $module_service = $this->createStub(ModuleService::class);
         $module_service
             ->method('findByComponent')
             ->with(ModuleChartInterface::class)
             ->willReturn(new Collection());
 
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
@@ -112,7 +112,7 @@ class RedirectFamilyBookPhpTest extends TestCase
 
     public function testNoSuchTree(): void
     {
-        $module_service = $this->createMock(ModuleService::class);
+        $module_service = $this->createStub(ModuleService::class);
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service

@@ -34,9 +34,9 @@ class AccountEditTest extends TestCase
 
     public function testHandler(): void
     {
-        $user            = $this->createMock(User::class);
-        $message_service = $this->createMock(MessageService::class);
-        $module_service  = $this->createMock(ModuleService::class);
+        $user            = $this->createStub(User::class);
+        $message_service = $this->createStub(MessageService::class);
+        $module_service  = $this->createStub(ModuleService::class);
 
         $module_service->method('findByInterface')->willReturn(new Collection([]));
 

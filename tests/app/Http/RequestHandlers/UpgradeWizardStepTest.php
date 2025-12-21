@@ -62,7 +62,7 @@ class UpgradeWizardStepTest extends TestCase
 
     public function testStepCheckOK(): void
     {
-        $mock_upgrade_service = $this->createMock(UpgradeService::class);
+        $mock_upgrade_service = $this->createStub(UpgradeService::class);
         $mock_upgrade_service->method('latestVersion')->willReturn('999.999.999');
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
@@ -82,7 +82,7 @@ class UpgradeWizardStepTest extends TestCase
     {
         $this->expectException(HttpServerErrorException::class);
 
-        $mock_upgrade_service = $this->createMock(UpgradeService::class);
+        $mock_upgrade_service = $this->createStub(UpgradeService::class);
         $mock_upgrade_service->method('latestVersion')->willReturn('');
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
@@ -100,7 +100,7 @@ class UpgradeWizardStepTest extends TestCase
     {
         $this->expectException(HttpServerErrorException::class);
 
-        $mock_upgrade_service = $this->createMock(UpgradeService::class);
+        $mock_upgrade_service = $this->createStub(UpgradeService::class);
         $mock_upgrade_service->method('latestVersion')->willReturn('0.0.0');
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
@@ -173,7 +173,7 @@ class UpgradeWizardStepTest extends TestCase
     {
         $tree            = $this->importTree('demo.ged');
         $all_trees       = Collection::make([$tree->name() => $tree]);
-        $tree_service    = $this->createMock(TreeService::class);
+        $tree_service    = $this->createStub(TreeService::class);
         $tree_service->method('all')->willReturn($all_trees);
 
         $handler = new UpgradeWizardStep(
@@ -199,7 +199,7 @@ class UpgradeWizardStepTest extends TestCase
     {
         $this->expectException(HttpServerErrorException::class);
 
-        $mock_upgrade_service = $this->createMock(UpgradeService::class);
+        $mock_upgrade_service = $this->createStub(UpgradeService::class);
         $mock_upgrade_service->method('downloadFile')->will($this->throwException(new Exception()));
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
@@ -215,7 +215,7 @@ class UpgradeWizardStepTest extends TestCase
 
     public function testStepDownload(): void
     {
-        $mock_upgrade_service = $this->createMock(UpgradeService::class);
+        $mock_upgrade_service = $this->createStub(UpgradeService::class);
         $mock_upgrade_service->method('downloadFile')->willReturn(123456);
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),
@@ -233,7 +233,7 @@ class UpgradeWizardStepTest extends TestCase
 
     public function testStepUnzip(): void
     {
-        $mock_upgrade_service = $this->createMock(UpgradeService::class);
+        $mock_upgrade_service = $this->createStub(UpgradeService::class);
         $mock_upgrade_service->method('webtreesZipContents')->willReturn(new Collection());
         $handler = new UpgradeWizardStep(
             new GedcomExportService(new Psr17Factory(), new Psr17Factory()),

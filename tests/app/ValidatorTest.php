@@ -30,7 +30,7 @@ class ValidatorTest extends TestCase
 {
     public function testAttributes(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getAttributes')
             ->willReturn(['param' => 'test']);
@@ -40,7 +40,7 @@ class ValidatorTest extends TestCase
 
     public function testParsedBody(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getParsedBody')
             ->willReturn(['param' => 'test']);
@@ -50,7 +50,7 @@ class ValidatorTest extends TestCase
 
     public function testQueryParams(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn(['param' => 'test']);
@@ -60,7 +60,7 @@ class ValidatorTest extends TestCase
 
     public function testServerParams(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getServerParams')
             ->willReturn(['param' => 'test']);
@@ -70,7 +70,7 @@ class ValidatorTest extends TestCase
 
     public function testNonUTF8QueryParameterName(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn(["\xFF" => 'test']);
@@ -82,7 +82,7 @@ class ValidatorTest extends TestCase
 
     public function testNonUTF8QueryParameterValue(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn(['test' => "\xFF"]);
@@ -94,7 +94,7 @@ class ValidatorTest extends TestCase
 
     public function testRequiredArrayParameter(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn(['param' => ['test'], 'invalid' => 'not_array']);
@@ -108,7 +108,7 @@ class ValidatorTest extends TestCase
 
     public function testRequiredBooleanParameter(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn([
@@ -135,7 +135,7 @@ class ValidatorTest extends TestCase
 
     public function testRequiredIntegerParameter(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn([
@@ -158,9 +158,9 @@ class ValidatorTest extends TestCase
 
     public function testRequiredRouteParameter(): void
     {
-        $route = $this->createMock(Route::class);
+        $route = $this->createStub(Route::class);
 
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn([
@@ -177,7 +177,7 @@ class ValidatorTest extends TestCase
 
     public function testRequiredStringParameter(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn(['param' => 'test', 'invalid' => ['not_string']]);
@@ -191,9 +191,9 @@ class ValidatorTest extends TestCase
 
     public function testRequiredTreeParameter(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
 
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn([
@@ -210,9 +210,9 @@ class ValidatorTest extends TestCase
 
     public function testOptionalTreeParameter(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
 
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn([
@@ -230,9 +230,9 @@ class ValidatorTest extends TestCase
 
     public function testRequiredUserParameter(): void
     {
-        $user = $this->createMock(UserInterface::class);
+        $user = $this->createStub(UserInterface::class);
 
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn([
@@ -249,7 +249,7 @@ class ValidatorTest extends TestCase
 
     public function testIsBetweenParameter(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn(['param' => '42', 'invalid' => '10', 'wrongtype' => 'not_integer']);
@@ -261,7 +261,7 @@ class ValidatorTest extends TestCase
 
     public function testIsInArray(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn(['param' => 'foo']);
@@ -275,7 +275,7 @@ class ValidatorTest extends TestCase
 
     public function testIsInArrayKeys(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn(['param' => 'foo']);
@@ -289,7 +289,7 @@ class ValidatorTest extends TestCase
 
     public function testIsNotEmpty(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn(['empty' => '', 'not-empty' => 'foo']);
@@ -303,7 +303,7 @@ class ValidatorTest extends TestCase
 
     public function testIsTagParameter(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn(['valid' => 'BIRT', 'invalid' => '@X1@']);
@@ -317,7 +317,7 @@ class ValidatorTest extends TestCase
 
     public function testIsXrefParameter(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn(['valid' => 'X1', 'invalid' => '@X1@', 'valid-array' => ['X1'], 'invalid-array' => ['@X1@']]);
@@ -333,7 +333,7 @@ class ValidatorTest extends TestCase
 
     public function testIsLocalUrlParameter(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getAttribute')
             ->with('base_url')->willReturn('http://example.local/wt');
@@ -347,7 +347,7 @@ class ValidatorTest extends TestCase
 
     public function testIsLocalUrlParameterWrongScheme(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getAttribute')
             ->with('base_url')
@@ -363,7 +363,7 @@ class ValidatorTest extends TestCase
 
     public function testIsLocalUrlParameterWrongDomain(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getAttribute')
             ->with('base_url')
@@ -379,7 +379,7 @@ class ValidatorTest extends TestCase
 
     public function testIsLocalUrlParameterWrongType(): void
     {
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = $this->createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn(['wrongtype' => ['42']]);

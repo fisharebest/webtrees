@@ -33,7 +33,7 @@ class PasswordResetPageTest extends TestCase
 
     public function testPasswordResetPageWithValidToken(): void
     {
-        $user = $this->createMock(User::class);
+        $user = $this->createStub(User::class);
 
         $user_service = $this->createMock(UserService::class);
         $user_service

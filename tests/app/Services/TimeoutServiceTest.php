@@ -29,7 +29,7 @@ class TimeoutServiceTest extends TestCase
 {
     public function testNoTimeOut(): void
     {
-        $php_service = $this->createMock(PhpService::class);
+        $php_service = $this->createStub(PhpService::class);
         $php_service->method('maxExecutionTime')->willReturn(0);
 
         $now = 1500000000.0;
@@ -41,14 +41,14 @@ class TimeoutServiceTest extends TestCase
 
     public function testTimeOutReached(): void
     {
-        $php_service = $this->createMock(PhpService::class);
+        $php_service = $this->createStub(PhpService::class);
         $php_service->method('maxExecutionTime')->willReturn(30);
 
         $now = 1500000000.0;
 
         $timeout_service = new TimeoutService($php_service, $now);
 
-        $time_factory = $this->createMock(TimeFactoryInterface::class);
+        $time_factory = $this->createStub(TimeFactoryInterface::class);
         $time_factory->method('now')->willReturn($now + 60.0);
         Registry::timeFactory($time_factory);
 
@@ -57,14 +57,14 @@ class TimeoutServiceTest extends TestCase
 
     public function testTimeOutNotReached(): void
     {
-        $php_service = $this->createMock(PhpService::class);
+        $php_service = $this->createStub(PhpService::class);
         $php_service->method('maxExecutionTime')->willReturn(30);
 
         $now = Registry::timeFactory()->now();
 
         $timeout_service = new TimeoutService($php_service, $now);
 
-        $time_factory = $this->createMock(TimeFactoryInterface::class);
+        $time_factory = $this->createStub(TimeFactoryInterface::class);
         $time_factory->method('now')->willReturn($now + 10.0);
         Registry::timeFactory($time_factory);
 
@@ -77,7 +77,7 @@ class TimeoutServiceTest extends TestCase
 
         $timeout_service = new TimeoutService(new PhpService(), $now);
 
-        $time_factory = $this->createMock(TimeFactoryInterface::class);
+        $time_factory = $this->createStub(TimeFactoryInterface::class);
         $time_factory->method('now')->willReturn($now + 1.4);
         Registry::timeFactory($time_factory);
 
@@ -90,7 +90,7 @@ class TimeoutServiceTest extends TestCase
 
         $timeout_service = new TimeoutService(new PhpService(), $now);
 
-        $time_factory = $this->createMock(TimeFactoryInterface::class);
+        $time_factory = $this->createStub(TimeFactoryInterface::class);
         $time_factory->method('now')->willReturn($now + 1.6);
         Registry::timeFactory($time_factory);
 

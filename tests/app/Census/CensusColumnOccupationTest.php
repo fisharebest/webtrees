@@ -31,10 +31,10 @@ class CensusColumnOccupationTest extends TestCase
 {
     public function testNoOccupation(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('facts')->with(['OCCU'])->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
 
         $column = new CensusColumnOccupation($census, '', '');
 
@@ -43,13 +43,13 @@ class CensusColumnOccupationTest extends TestCase
 
     public function testOccupation(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
         $fact->method('value')->willReturn('Farmer');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('facts')->with(['OCCU'])->willReturn(new Collection([$fact]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
 
         $column = new CensusColumnOccupation($census, '', '');
 

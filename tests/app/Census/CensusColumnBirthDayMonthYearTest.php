@@ -30,10 +30,10 @@ class CensusColumnBirthDayMonthYearTest extends TestCase
 {
     public function testGenerateColumn(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('02 MAR 1800'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1832');
 
         $column = new CensusColumnBirthDayMonthYear($census, '', '');

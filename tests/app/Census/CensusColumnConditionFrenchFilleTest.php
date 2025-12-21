@@ -33,12 +33,12 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
 {
     public function testNoSpouseFamiliesMale(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('spouseFamilies')->willReturn(new Collection());
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnConditionFrenchFille($census, '', '');
@@ -48,12 +48,12 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
 
     public function testNoSpouseFamiliesFemale(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('spouseFamilies')->willReturn(new Collection());
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnConditionFrenchFille($census, '', '');
@@ -63,16 +63,16 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
 
     public function testNoFamilyFactsMale(): void
     {
-        $family = $this->createMock(Family::class);
+        $family = $this->createStub(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
         $individual->method('sex')->willReturn('M');
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
 
         $column = new CensusColumnConditionFrenchFille($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
@@ -82,16 +82,16 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
 
     public function testNoFamilyFactsFemale(): void
     {
-        $family = $this->createMock(Family::class);
+        $family = $this->createStub(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
         $individual->method('sex')->willReturn('F');
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
 
         $column = new CensusColumnConditionFrenchFille($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
@@ -101,14 +101,14 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
 
     public function testSpouseDeadMale(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
 
-        $spouse = $this->createMock(Individual::class);
+        $spouse = $this->createStub(Individual::class);
         $spouse->method('getDeathDate')->willReturn(new Date('1820'));
 
         $family = $this->createMock(Family::class);
         $family
-            ->expects(self::exactly(2))
+            ->expects($this->exactly(2))
             ->method('facts')
             ->with(self::withConsecutive([['MARR'], ['DIV']]))
             ->willReturnOnConsecutiveCalls(
@@ -117,11 +117,11 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
             );
         $family->expects($this->once())->method('spouse')->willReturn($spouse);
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
 
         $column = new CensusColumnConditionFrenchFille($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
@@ -131,14 +131,14 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
 
     public function testSpouseDeadFemale(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
 
-        $spouse = $this->createMock(Individual::class);
+        $spouse = $this->createStub(Individual::class);
         $spouse->method('getDeathDate')->willReturn(new Date('1820'));
 
         $family = $this->createMock(Family::class);
         $family
-            ->expects(self::exactly(2))
+            ->expects($this->exactly(2))
             ->method('facts')
             ->with(self::withConsecutive([['MARR'], ['DIV']]))
             ->willReturnOnConsecutiveCalls(
@@ -147,11 +147,11 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
             );
         $family->expects($this->once())->method('spouse')->willReturn($spouse);
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
 
         $column = new CensusColumnConditionFrenchFille($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
@@ -161,16 +161,16 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
 
     public function testNoFamilyUnmarriedMale(): void
     {
-        $family = $this->createMock(Family::class);
+        $family = $this->createStub(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnConditionFrenchFille($census, '', '');
@@ -180,16 +180,16 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
 
     public function testNoFamilyUnmarriedFemale(): void
     {
-        $family = $this->createMock(Family::class);
+        $family = $this->createStub(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnConditionFrenchFille($census, '', '');
@@ -199,16 +199,16 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
 
     public function testChildMale(): void
     {
-        $family = $this->createMock(Family::class);
+        $family = $this->createStub(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1820'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnConditionFrenchFille($census, '', '');
@@ -218,16 +218,16 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
 
     public function testChildFemale(): void
     {
-        $family = $this->createMock(Family::class);
+        $family = $this->createStub(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1820'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnConditionFrenchFille($census, '', '');
@@ -237,11 +237,11 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
 
     public function testDivorcedMale(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
 
         $family = $this->createMock(Family::class);
         $family
-            ->expects(self::exactly(2))
+            ->expects($this->exactly(2))
             ->method('facts')
             ->with(self::withConsecutive([['MARR'], ['DIV']]))
             ->willReturn(
@@ -249,11 +249,11 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
                 new Collection([$fact])
             );
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
 
         $column = new CensusColumnConditionFrenchFille($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
@@ -263,11 +263,11 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
 
     public function testDivorcedFemale(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
 
         $family = $this->createMock(Family::class);
         $family
-            ->expects(self::exactly(2))
+            ->expects($this->exactly(2))
             ->method('facts')
             ->with(self::withConsecutive([['MARR'], ['DIV']]))
             ->willReturn(
@@ -275,11 +275,11 @@ class CensusColumnConditionFrenchFilleTest extends TestCase
                 new Collection([$fact])
             );
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
 
         $column = new CensusColumnConditionFrenchFille($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');

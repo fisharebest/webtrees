@@ -37,16 +37,16 @@ class DefaultSurnameTraditionTest extends TestCase
 
     public function testNewChildNames(): void
     {
-        $father_fact = $this->createMock(Fact::class);
+        $father_fact = $this->createStub(Fact::class);
         $father_fact->method('value')->willReturn('Chris /White/');
 
-        $father = $this->createMock(Individual::class);
+        $father = $this->createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father]));
 
-        $mother_fact = $this->createMock(Fact::class);
+        $mother_fact = $this->createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Chris /White/');
 
-        $mother = $this->createMock(Individual::class);
+        $mother = $this->createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -67,10 +67,10 @@ class DefaultSurnameTraditionTest extends TestCase
 
     public function testNewParentNames(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
         $fact->method('value')->willReturn('Chris /White/');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -91,10 +91,10 @@ class DefaultSurnameTraditionTest extends TestCase
 
     public function testNewSpouseNames(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
         $fact->method('value')->willReturn('Chris /White/');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(

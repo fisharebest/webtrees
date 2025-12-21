@@ -46,7 +46,7 @@ class TreeTest extends TestCase
     {
         parent::setUp();
 
-        $cache_factory = $this->createMock(CacheFactoryInterface::class);
+        $cache_factory = $this->createStub(CacheFactoryInterface::class);
         $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));
         Registry::cache($cache_factory);
     }

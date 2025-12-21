@@ -30,10 +30,10 @@ class CensusColumnMonthIfBornWithinYearTest extends TestCase
 {
     public function testBornWithinYear(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('getBirthDate')->willReturn(new Date('01 JAN 1860'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
@@ -43,10 +43,10 @@ class CensusColumnMonthIfBornWithinYearTest extends TestCase
 
     public function testBornOverYearBeforeTheCensus(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('getBirthDate')->willReturn(new Date('01 JAN 1859'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
@@ -56,10 +56,10 @@ class CensusColumnMonthIfBornWithinYearTest extends TestCase
 
     public function testBornAfterTheCensus(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('getBirthDate')->willReturn(new Date('02 JUN 1860'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
@@ -69,10 +69,10 @@ class CensusColumnMonthIfBornWithinYearTest extends TestCase
 
     public function testNoBirth(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('getBirthDate')->willReturn(new Date(''));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
