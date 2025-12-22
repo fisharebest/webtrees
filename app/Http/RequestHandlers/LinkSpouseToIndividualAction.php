@@ -71,11 +71,11 @@ class LinkSpouseToIndividualAction implements RequestHandlerInterface
 
         // Link the individual to the family
         $before_id = $this->factIdOfLaterMarriage($individual, $family);
-        $individual->createFact('1 FAMS @' . $family->xref() . '@', false, $before_id);
+        $individual->createFact('1 FAMS @' . $family->xref() . '@', true, $before_id);
 
         // Link the spouse to the family
         $before_id = $this->factIdOfLaterMarriage($spouse, $family);
-        $spouse->createFact('1 FAMS @' . $family->xref() . '@', false, $before_id);
+        $spouse->createFact('1 FAMS @' . $family->xref() . '@', true, $before_id);
 
         return redirect($family->url());
     }
