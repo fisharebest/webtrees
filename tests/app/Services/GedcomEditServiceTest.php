@@ -116,7 +116,7 @@ class GedcomEditServiceTest extends TestCase
     {
         $gedcom_edit_service = new GedcomEditService();
 
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
         $tree->method('getPreference')->with('QUICK_REQUIRED_FAMFACTS')->willReturn($required_famfacts);
 
         $new_facts = $gedcom_edit_service->newFamilyFacts($tree);
@@ -141,7 +141,7 @@ class GedcomEditServiceTest extends TestCase
     ): void {
         $gedcom_edit_service = new GedcomEditService();
 
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
         $tree->method('getPreference')->with('QUICK_REQUIRED_FACTS')->willReturn($required_facts);
 
         $new_facts = $gedcom_edit_service->newIndividualFacts($tree, $sex, $names);

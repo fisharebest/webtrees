@@ -31,16 +31,16 @@ class CensusColumnBirthMonthTest extends TestCase
 {
     public function testGenerateColumn(): void
     {
-        $cal_date = $this->createMock(GregorianDate::class);
+        $cal_date = $this->createStub(GregorianDate::class);
         $cal_date->method('format')->willReturn('Jan');
 
-        $date = $this->createMock(Date::class);
+        $date = $this->createStub(Date::class);
         $date->method('minimumDate')->willReturn($cal_date);
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('getEstimatedBirthDate')->willReturn($date);
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1832');
 
         $column = new CensusColumnBirthMonth($census, '', '');

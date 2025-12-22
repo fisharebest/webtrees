@@ -32,7 +32,7 @@ class MapLinkOpenStreetMapTest extends TestCase
     {
         $module = new MapLinkOpenStreetMap();
 
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
         $fact->method('latitude')->willReturn(null);
         $fact->method('longitude')->willReturn(null);
 
@@ -45,10 +45,10 @@ class MapLinkOpenStreetMapTest extends TestCase
     {
         $module = new MapLinkOpenStreetMap();
 
-        $record = $this->createMock(Individual::class);
+        $record = $this->createStub(Individual::class);
         $record->method('fullName')->willReturn('FULL NAME');
 
-        $fact = $this->createMock(Fact::class);
+        $fact = $this->createStub(Fact::class);
         $fact->method('latitude')->willReturn(54.321);
         $fact->method('longitude')->willReturn(-1.2345);
         $fact->method('label')->willReturn('LABEL');

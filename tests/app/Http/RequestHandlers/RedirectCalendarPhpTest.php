@@ -35,7 +35,7 @@ class RedirectCalendarPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');

@@ -110,15 +110,16 @@ class DB extends Manager
 
         $capsule = new self();
         $capsule->addConnection([
-            'driver'         => $driver,
-            'host'           => $host,
-            'port'           => $port,
-            'database'       => $database,
-            'username'       => $username,
-            'password'       => $password,
-            'prefix'         => $prefix,
-            'prefix_indexes' => true,
-            'options'        => $options,
+            'driver'                   => $driver,
+            'host'                     => $host,
+            'port'                     => $port,
+            'database'                 => $database,
+            'username'                 => $username,
+            'password'                 => $password,
+            'prefix'                   => $prefix,
+            'prefix_indexes'           => true,
+            'options'                  => $options,
+            'trust_server_certificate' => true, // For SQL-Server - #5246
         ]);
         $capsule->setAsGlobal();
 
@@ -193,15 +194,26 @@ class DB extends Manager
 
     /**
      * @internal
+     *
+     * @param list<string> $expressions
+     */
+    public static function concat(array $expressions): string
+    {
+        if (self::driverName() === self::SQL_SERVER) {
+            return 'CONCAT(' . implode(', ', $expressions) . ')';
+        }
+
+        // ANSI standard.  MySQL uses this with ANSI mode
+        return '(' . implode(' || ', $expressions) . ')';
+    }
+
+    /**
+     * @internal
      */
     public static function iLike(): string
     {
         if (self::driverName() === self::POSTGRES) {
             return 'ILIKE';
-        }
-
-        if (self::driverName() === self::SQL_SERVER) {
-            return 'COLLATE SQL_UTF8_General_CI_AI LIKE';
         }
 
         return 'LIKE';

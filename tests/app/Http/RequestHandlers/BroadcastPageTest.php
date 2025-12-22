@@ -33,7 +33,7 @@ class BroadcastPageTest extends TestCase
 
     public function testMissingParameterTo(): void
     {
-        $message_service = $this->createMock(MessageService::class);
+        $message_service = $this->createStub(MessageService::class);
         $message_service->method('recipientTypes')->willReturn(['foo' => 'FOO']);
 
         $request = self::createRequest()
@@ -47,7 +47,7 @@ class BroadcastPageTest extends TestCase
     }
     public function testHandler(): void
     {
-        $message_service = $this->createMock(MessageService::class);
+        $message_service = $this->createStub(MessageService::class);
         $message_service->method('recipientTypes')->willReturn(['foo' => 'FOO', 'bar' => 'BAR']);
         $message_service->method('recipientUsers')->willReturn(new Collection());
 

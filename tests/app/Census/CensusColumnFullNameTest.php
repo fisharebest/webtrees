@@ -33,11 +33,11 @@ class CensusColumnFullNameTest extends TestCase
 {
     public function xxxtestFullName(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('getAllNames')->willReturn([['full' => 'Joe Bloggs']]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('');
 
         $column = new CensusColumnFullName($census, '', '');
@@ -58,22 +58,22 @@ class CensusColumnFullNameTest extends TestCase
 
         $marriage_date = new Date('02 DATE 2019');
 
-        $marriage = $this->createMock(Fact::class);
+        $marriage = $this->createStub(Fact::class);
         $marriage->method('date')->willReturn($marriage_date);
 
-        $spouse = $this->createMock(Individual::class);
+        $spouse = $this->createStub(Individual::class);
         $spouse->method('getAllNames')->willReturn($husband_names);
 
-        $family = $this->createMock(Family::class);
+        $family = $this->createStub(Family::class);
         $family->method('facts')->willReturn(new Collection([$marriage]));
         $family->method('getMarriageDate')->willReturn($marriage_date);
         $family->method('spouse')->willReturn($spouse);
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('getAllNames')->willReturn($wife_names);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JAN 2020');
 
         $column = new CensusColumnFullName($census, '', '');

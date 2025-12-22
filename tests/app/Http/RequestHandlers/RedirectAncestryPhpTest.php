@@ -41,7 +41,7 @@ class RedirectAncestryPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -52,7 +52,7 @@ class RedirectAncestryPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
@@ -88,7 +88,7 @@ class RedirectAncestryPhpTest extends TestCase
 
     public function testModuleDisabled(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -122,7 +122,7 @@ class RedirectAncestryPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection([]));
 
-        $module_service = $this->createMock(ModuleService::class);
+        $module_service = $this->createStub(ModuleService::class);
 
         $handler = new RedirectAncestryPhp($module_service, $tree_service);
 

@@ -37,7 +37,7 @@ class XrefSubmitterTest extends TestCase
     {
         $element = new XrefSubmitter('');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
 
         $factory = $this->createMock(SubmitterFactory::class);
 
@@ -84,7 +84,7 @@ class XrefSubmitterTest extends TestCase
             ->method('url')
             ->willReturn('https://url');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
 
         $factory = $this->createMock(SubmitterFactory::class);
 
@@ -101,7 +101,7 @@ class XrefSubmitterTest extends TestCase
     {
         $element = new XrefSubmitter('');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
 
         self::assertSame('<span class="error">invalid</span>', $element->value('invalid', $tree));
     }
@@ -110,7 +110,7 @@ class XrefSubmitterTest extends TestCase
     {
         $element = new XrefSubmitter('');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = $this->createStub(Tree::class);
 
         $factory = $this->createMock(SubmitterFactory::class);
 

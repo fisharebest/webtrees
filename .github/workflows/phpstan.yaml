@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         operating-system: ['ubuntu-latest']
-        php-version: ['8.3', '8.4', '8.5']
+        php-version: ['8.3', '8.4', '8.5', '8.6']
       fail-fast: false
 
     steps:
@@ -20,7 +20,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
           ini-file: 'development'
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - run: composer validate
 

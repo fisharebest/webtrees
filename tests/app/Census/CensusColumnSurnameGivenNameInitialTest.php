@@ -30,7 +30,7 @@ class CensusColumnSurnameGivenNameInitialTest extends TestCase
 {
     public function testOneGivenName(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('getAllNames')->willReturn([
             [
                 'givn' => 'Joe',
@@ -39,7 +39,7 @@ class CensusColumnSurnameGivenNameInitialTest extends TestCase
         ]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('');
 
         $column = new CensusColumnSurnameGivenNameInitial($census, '', '');
@@ -49,7 +49,7 @@ class CensusColumnSurnameGivenNameInitialTest extends TestCase
 
     public function testMultipleGivenNames(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
         $individual->method('getAllNames')->willReturn([
             [
                 'givn' => 'Joe Fred',
@@ -58,7 +58,7 @@ class CensusColumnSurnameGivenNameInitialTest extends TestCase
         ]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = $this->createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('');
 
         $column = new CensusColumnSurnameGivenNameInitial($census, '', '');

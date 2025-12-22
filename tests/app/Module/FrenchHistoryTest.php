@@ -31,7 +31,7 @@ class FrenchHistoryTest extends TestCase
     {
         $module = new FrenchHistory();
 
-        $individual = $this->createMock(Individual::class);
+        $individual = $this->createStub(Individual::class);
 
         foreach ($module->historicEventsAll('fr') as $gedcom) {
             $fact = new Fact($gedcom, $individual, 'test');
