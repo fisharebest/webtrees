@@ -36,11 +36,6 @@ use function redirect;
  */
 class ChangeFamilyMembersAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();
@@ -82,7 +77,8 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
             }
             if ($new_father instanceof Individual) {
                 // Add new FAMS link
-                $new_father->createFact('1 FAMS @' . $family->xref() . '@', true);
+                $before_id = $this->factIdOfLaterMarriage($new_father, $family);
+                $new_father->createFact('1 FAMS @' . $family->xref() . '@', true, $before_id);
                 // Add new HUSB link
                 $family->createFact('1 HUSB @' . $new_father->xref() . '@', true);
             }
@@ -105,7 +101,8 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
             }
             if ($new_mother instanceof Individual) {
                 // Add new FAMS link
-                $new_mother->createFact('1 FAMS @' . $family->xref() . '@', true);
+                $before_id = $this->factIdOfLaterMarriage($new_mother, $family);
+                $new_mother->createFact('1 FAMS @' . $family->xref() . '@', true, $before_id);
                 // Add new WIFE link
                 $family->createFact('1 WIFE @' . $new_mother->xref() . '@', true);
             }
@@ -146,6 +143,17 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
         $child_birth_day = $child->getBirthDate()->julianDay();
         foreach ($family->facts(['CHIL'], false, Auth::PRIV_HIDE, true) as $fact) {
             if ($child_birth_day < $fact->target()->getBirthDate()->julianDay()) {
+                return $fact->id();
+            }
+        }
+        return '';
+    }
+
+    private function factIdOfLaterMarriage(Individual $partner, Family $family): string
+    {
+        $family_marriage_date = $family->getMarriageDate()->julianDay();
+        foreach ($partner->facts(['FAMS'], false, Auth::PRIV_HIDE, true) as $fact) {
+            if ($family_marriage_date < $fact->target()->getMarriageDate()->julianDay()) {
                 return $fact->id();
             }
         }

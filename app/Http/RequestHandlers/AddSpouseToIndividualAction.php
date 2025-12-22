@@ -38,19 +38,11 @@ class AddSpouseToIndividualAction implements RequestHandlerInterface
 {
     private GedcomEditService $gedcom_edit_service;
 
-    /**
-     * @param GedcomEditService $gedcom_edit_service
-     */
     public function __construct(GedcomEditService $gedcom_edit_service)
     {
         $this->gedcom_edit_service = $gedcom_edit_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = Validator::attributes($request)->tree();
@@ -75,13 +67,27 @@ class AddSpouseToIndividualAction implements RequestHandlerInterface
         $family = $tree->createFamily('0 @@ FAM' . $gedcom . $i_link . $s_link);
 
         // Link the individual to the family
-        $individual->createFact('1 FAMS @' . $family->xref() . '@', false);
+        $before_id = $this->factIdOfLaterMarriage($individual, $family);
+        $individual->createFact('1 FAMS @' . $family->xref() . '@', false, $before_id);
 
         // Link the spouse to the family
-        $spouse->createFact('1 FAMS @' . $family->xref() . '@', false);
+        $before_id = $this->factIdOfLaterMarriage($spouse, $family);
+        $spouse->createFact('1 FAMS @' . $family->xref() . '@', false, $before_id);
 
         $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $spouse->url());
 
         return redirect($url);
     }
+
+    private function factIdOfLaterMarriage(Individual $partner, Family $family): string
+    {
+        $family_marriage_date = $family->getMarriageDate()->julianDay();
+        foreach ($partner->facts(['FAMS'], false, Auth::PRIV_HIDE, true) as $fact) {
+            if ($family_marriage_date < $fact->target()->getMarriageDate()->julianDay()) {
+                return $fact->id();
+            }
+        }
+        return '';
+    }
+
 }

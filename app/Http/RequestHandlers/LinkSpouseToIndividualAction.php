@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Validator;
@@ -37,19 +38,11 @@ class LinkSpouseToIndividualAction implements RequestHandlerInterface
 {
     private GedcomEditService $gedcom_edit_service;
 
-    /**
-     * @param GedcomEditService $gedcom_edit_service
-     */
     public function __construct(GedcomEditService $gedcom_edit_service)
     {
         $this->gedcom_edit_service = $gedcom_edit_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = Validator::attributes($request)->tree();
@@ -76,9 +69,26 @@ class LinkSpouseToIndividualAction implements RequestHandlerInterface
 
         $family = $tree->createFamily($gedcom);
 
-        $individual->createFact('1 FAMS @' . $family->xref() . '@', false);
-        $spouse->createFact('1 FAMS @' . $family->xref() . '@', false);
+        // Link the individual to the family
+        $before_id = $this->factIdOfLaterMarriage($individual, $family);
+        $individual->createFact('1 FAMS @' . $family->xref() . '@', false, $before_id);
+
+        // Link the spouse to the family
+        $before_id = $this->factIdOfLaterMarriage($spouse, $family);
+        $spouse->createFact('1 FAMS @' . $family->xref() . '@', false, $before_id);
 
         return redirect($family->url());
     }
+
+    private function factIdOfLaterMarriage(Individual $partner, Family $family): string
+    {
+        $family_marriage_date = $family->getMarriageDate()->julianDay();
+        foreach ($partner->facts(['FAMS'], false, Auth::PRIV_HIDE, true) as $fact) {
+            if ($family_marriage_date < $fact->target()->getMarriageDate()->julianDay()) {
+                return $fact->id();
+            }
+        }
+        return '';
+    }
+
 }
