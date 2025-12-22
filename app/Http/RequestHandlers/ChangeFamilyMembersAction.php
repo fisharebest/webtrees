@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
@@ -132,10 +133,23 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
                 // Add new FAMC link
                 $new_child->createFact('1 FAMC @' . $family->xref() . '@', true);
                 // Add new CHIL link
-                $family->createFact('1 CHIL @' . $new_child->xref() . '@', true);
+                $before_id = $this->factIdOfYoungerSibling($family, $new_child);
+                $family->createFact('1 CHIL @' . $new_child->xref() . '@', true, $before_id);
             }
         }
 
         return redirect($family->url());
     }
+
+    private function factIdOfYoungerSibling(Family $family, Individual $child): string
+    {
+        $child_birth_day = $child->getBirthDate()->julianDay();
+        foreach ($family->facts(['CHIL'], false, Auth::PRIV_HIDE, true) as $fact) {
+            if ($child_birth_day < $fact->target()->getBirthDate()->julianDay()) {
+                return $fact->id();
+            }
+        }
+        return '';
+    }
+
 }

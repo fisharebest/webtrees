@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
@@ -37,19 +38,11 @@ class AddChildToFamilyAction implements RequestHandlerInterface
 {
     private GedcomEditService $gedcom_edit_service;
 
-    /**
-     * @param GedcomEditService $gedcom_edit_service
-     */
     public function __construct(GedcomEditService $gedcom_edit_service)
     {
         $this->gedcom_edit_service = $gedcom_edit_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();
@@ -66,10 +59,23 @@ class AddChildToFamilyAction implements RequestHandlerInterface
         $child  = $tree->createIndividual("0 @@ INDI\n1 FAMC @" . $xref . '@' . $gedcom);
 
         // Link the child to the family
-        $family->createFact('1 CHIL @' . $child->xref() . '@', false);
+        $before_id = $this->factIdOfYoungerSibling($family, $child);
+        $family->createFact('1 CHIL @' . $child->xref() . '@', true, $before_id);
 
         $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $child->url());
 
         return redirect($url);
     }
+
+    private function factIdOfYoungerSibling(Family $family, Individual $child): string
+    {
+        $child_birth_day = $child->getBirthDate()->julianDay();
+        foreach ($family->facts(['CHIL'], false, Auth::PRIV_HIDE, true) as $fact) {
+            if ($child_birth_day < $fact->target()->getBirthDate()->julianDay()) {
+                return $fact->id();
+            }
+        }
+        return '';
+    }
+
 }
