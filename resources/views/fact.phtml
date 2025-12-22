@@ -73,12 +73,6 @@ if ($tag === 'MARR') {
 ?>
 <tr class="<?= implode(' ', $styles) ?>">
     <th scope="row">
-        <div class="wt-fact-label ut"><?= $label?></div>
-
-        <?php if ($id !== 'histo' && $id !== 'asso' && $fact->canEdit() && !in_array($tag, ['HUSB', 'WIFE', 'CHIL', 'FAMC', 'FAMS'], true)) : ?>
-            <?= view('fact-edit-links', ['fact' => $fact, 'url' => $record->url()]) ?>
-        <?php endif ?>
-
         <?php if ($tree->getPreference('SHOW_FACT_ICONS') === '1') : ?>
             <span class="wt-fact-icon wt-fact-icon-<?= e($tag) ?>" title="<?= strip_tags($label) ?>">
                 <?php
@@ -120,6 +114,13 @@ if ($tag === 'MARR') {
                 <?php endif ?>
             </span>
         <?php endif ?>
+        <span class="wt-fact-label ut"><?= $label?></span>
+
+        <?php if ($id !== 'histo' && $id !== 'asso' && $fact->canEdit() && !in_array($tag, ['HUSB', 'WIFE', 'CHIL', 'FAMC', 'FAMS'], true)) : ?>
+            <?= view('fact-edit-links', ['fact' => $fact, 'url' => $record->url()]) ?>
+        <?php endif ?>
+
+
     </th>
 
     <td>
