@@ -20,6 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -70,25 +72,25 @@ class LinkSpouseToIndividualAction implements RequestHandlerInterface
         $family = $tree->createFamily($gedcom);
 
         // Link the individual to the family
-        $before_id = $this->factIdOfLaterMarriage($individual, $family);
+        $before_id = $this->famsFactOfLaterMarriage($individual, $family)?->id() ?? '';
         $individual->createFact('1 FAMS @' . $family->xref() . '@', true, $before_id);
 
         // Link the spouse to the family
-        $before_id = $this->factIdOfLaterMarriage($spouse, $family);
+        $before_id = $this->famsFactOfLaterMarriage($spouse, $family)?->id() ?? '';
         $spouse->createFact('1 FAMS @' . $family->xref() . '@', true, $before_id);
 
         return redirect($family->url());
     }
 
-    private function factIdOfLaterMarriage(Individual $partner, Family $family): string
+    private function famsFactOfLaterMarriage(Individual $partner, Family $family): Fact | null
     {
-        $family_marriage_date = $family->getMarriageDate()->julianDay();
-        foreach ($partner->facts(['FAMS'], false, Auth::PRIV_HIDE, true) as $fact) {
-            if ($family_marriage_date < $fact->target()->getMarriageDate()->julianDay()) {
-                return $fact->id();
-            }
-        }
-        return '';
+        $filter = function (Fact $fact) use ($family): bool {
+            return $fact->target() instanceof Family &&
+                Date::compare($family->getMarriageDate(), $fact->target()->getMarriageDate()) < 0;
+        };
+        return $partner
+            ->facts(['FAMS'], false, Auth::PRIV_HIDE, true)
+            ->first($filter);
     }
 
 }

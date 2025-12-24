@@ -20,6 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -77,7 +79,7 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
             }
             if ($new_father instanceof Individual) {
                 // Add new FAMS link
-                $before_id = $this->factIdOfLaterMarriage($new_father, $family);
+                $before_id = $this->famsFactOfLaterMarriage($new_father, $family)?->id() ?? '';
                 $new_father->createFact('1 FAMS @' . $family->xref() . '@', true, $before_id);
                 // Add new HUSB link
                 $family->createFact('1 HUSB @' . $new_father->xref() . '@', true);
@@ -101,7 +103,7 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
             }
             if ($new_mother instanceof Individual) {
                 // Add new FAMS link
-                $before_id = $this->factIdOfLaterMarriage($new_mother, $family);
+                $before_id = $this->famsFactOfLaterMarriage($new_mother, $family)?->id() ?? '';
                 $new_mother->createFact('1 FAMS @' . $family->xref() . '@', true, $before_id);
                 // Add new WIFE link
                 $family->createFact('1 WIFE @' . $new_mother->xref() . '@', true);
@@ -130,7 +132,7 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
                 // Add new FAMC link
                 $new_child->createFact('1 FAMC @' . $family->xref() . '@', true);
                 // Add new CHIL link
-                $before_id = $this->factIdOfYoungerSibling($family, $new_child);
+                $before_id = $this->childFactOfYoungerSibling($family, $new_child)?->id() ?? '';
                 $family->createFact('1 CHIL @' . $new_child->xref() . '@', true, $before_id);
             }
         }
@@ -138,26 +140,26 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
         return redirect($family->url());
     }
 
-    private function factIdOfYoungerSibling(Family $family, Individual $child): string
+    private function famsFactOfLaterMarriage(Individual $partner, Family $family): Fact | null
     {
-        $child_birth_day = $child->getBirthDate()->julianDay();
-        foreach ($family->facts(['CHIL'], false, Auth::PRIV_HIDE, true) as $fact) {
-            if ($child_birth_day < $fact->target()->getBirthDate()->julianDay()) {
-                return $fact->id();
-            }
-        }
-        return '';
+        $filter = function (Fact $fact) use ($family): bool {
+            return $fact->target() instanceof Family &&
+                Date::compare($family->getMarriageDate(), $fact->target()->getMarriageDate()) < 0;
+        };
+        return $partner
+            ->facts(['FAMS'], false, Auth::PRIV_HIDE, true)
+            ->first($filter);
     }
 
-    private function factIdOfLaterMarriage(Individual $partner, Family $family): string
+    private function childFactOfYoungerSibling(Family $family, Individual $child): Fact | null
     {
-        $family_marriage_date = $family->getMarriageDate()->julianDay();
-        foreach ($partner->facts(['FAMS'], false, Auth::PRIV_HIDE, true) as $fact) {
-            if ($family_marriage_date < $fact->target()->getMarriageDate()->julianDay()) {
-                return $fact->id();
-            }
-        }
-        return '';
+        $filter = function (Fact $fact) use ($child): bool {
+            return $fact->target() instanceof Individual &&
+                Date::compare($child->getBirthDate(), $fact->target()->getBirthDate()) < 0;
+        };
+        return $family
+            ->facts(['CHIL'], false, Auth::PRIV_HIDE, true)
+            ->first($filter);
     }
 
 }
