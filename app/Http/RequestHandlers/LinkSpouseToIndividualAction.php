@@ -20,7 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Validator;
@@ -37,19 +40,11 @@ class LinkSpouseToIndividualAction implements RequestHandlerInterface
 {
     private GedcomEditService $gedcom_edit_service;
 
-    /**
-     * @param GedcomEditService $gedcom_edit_service
-     */
     public function __construct(GedcomEditService $gedcom_edit_service)
     {
         $this->gedcom_edit_service = $gedcom_edit_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = Validator::attributes($request)->tree();
@@ -76,9 +71,26 @@ class LinkSpouseToIndividualAction implements RequestHandlerInterface
 
         $family = $tree->createFamily($gedcom);
 
-        $individual->createFact('1 FAMS @' . $family->xref() . '@', false);
-        $spouse->createFact('1 FAMS @' . $family->xref() . '@', false);
+        // Link the individual to the family
+        $before_id = $this->famsFactOfLaterMarriage($individual, $family)?->id() ?? '';
+        $individual->createFact('1 FAMS @' . $family->xref() . '@', true, $before_id);
+
+        // Link the spouse to the family
+        $before_id = $this->famsFactOfLaterMarriage($spouse, $family)?->id() ?? '';
+        $spouse->createFact('1 FAMS @' . $family->xref() . '@', true, $before_id);
 
         return redirect($family->url());
     }
+
+    private function famsFactOfLaterMarriage(Individual $partner, Family $family): Fact | null
+    {
+        $filter = function (Fact $fact) use ($family): bool {
+            return $fact->target() instanceof Family &&
+                Date::compare($family->getMarriageDate(), $fact->target()->getMarriageDate()) < 0;
+        };
+        return $partner
+            ->facts(['FAMS'], false, Auth::PRIV_HIDE, true)
+            ->first($filter);
+    }
+
 }

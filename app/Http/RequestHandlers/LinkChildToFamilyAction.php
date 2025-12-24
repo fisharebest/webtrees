@@ -20,7 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -34,11 +38,7 @@ use function redirect;
  */
 class LinkChildToFamilyAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
+
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = Validator::attributes($request)->tree();
@@ -94,9 +94,22 @@ class LinkChildToFamilyAction implements RequestHandlerInterface
         }
 
         if (!$chil_link_exists) {
-            $family->createFact('1 CHIL @' . $individual->xref() . '@', true);
+            $before_id = $this->childFactOfYoungerSibling($family, $individual)?->id() ?? '';
+            $family->createFact('1 CHIL @' . $individual->xref() . '@', true, $before_id);
         }
 
         return redirect($individual->url());
     }
+
+    private function childFactOfYoungerSibling(Family $family, Individual $child): Fact | null
+    {
+        $filter = function (Fact $fact) use ($child): bool {
+            return $fact->target() instanceof Individual &&
+                Date::compare($child->getBirthDate(), $fact->target()->getBirthDate()) < 0;
+        };
+        return $family
+            ->facts(['CHIL'], false, Auth::PRIV_HIDE, true)
+            ->first($filter);
+    }
+
 }
