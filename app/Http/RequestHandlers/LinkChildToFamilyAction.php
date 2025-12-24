@@ -33,9 +33,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
 
-/**
- * Link an existing individual as child in an existing family.
- */
 class LinkChildToFamilyAction implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request): ResponseInterface

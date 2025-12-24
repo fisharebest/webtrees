@@ -33,16 +33,11 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
 
-/**
- * Link an existing individual as a new spouse.
- */
 class LinkSpouseToIndividualAction implements RequestHandlerInterface
 {
-    private GedcomEditService $gedcom_edit_service;
-
-    public function __construct(GedcomEditService $gedcom_edit_service)
-    {
-        $this->gedcom_edit_service = $gedcom_edit_service;
+    public function __construct(
+        private GedcomEditService $gedcom_edit_service,
+    ) {
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface

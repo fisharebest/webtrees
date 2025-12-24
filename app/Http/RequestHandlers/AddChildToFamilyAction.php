@@ -33,16 +33,11 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
 
-/**
- * Add a new child to a family.
- */
 class AddChildToFamilyAction implements RequestHandlerInterface
 {
-    private GedcomEditService $gedcom_edit_service;
-
-    public function __construct(GedcomEditService $gedcom_edit_service)
-    {
-        $this->gedcom_edit_service = $gedcom_edit_service;
+    public function __construct(
+        private GedcomEditService $gedcom_edit_service,
+    ) {
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface

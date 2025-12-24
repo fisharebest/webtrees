@@ -63,9 +63,6 @@ use const PHP_INT_MAX;
 use const PREG_SET_ORDER;
 use const STR_PAD_LEFT;
 
-/**
- * A GEDCOM object.
- */
 class GedcomRecord
 {
     public const string RECORD_TYPE = 'UNKNOWN';
