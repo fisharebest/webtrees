@@ -38,7 +38,6 @@ use function redirect;
  */
 class LinkChildToFamilyAction implements RequestHandlerInterface
 {
-
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = Validator::attributes($request)->tree();
@@ -94,8 +93,8 @@ class LinkChildToFamilyAction implements RequestHandlerInterface
         }
 
         if (!$chil_link_exists) {
-            $before_id = $this->childFactOfYoungerSibling($family, $individual)?->id() ?? '';
-            $family->createFact('1 CHIL @' . $individual->xref() . '@', true, $before_id);
+            $before = $this->childFactOfYoungerSibling($family, $individual);
+            $family->createFact('1 CHIL @' . $individual->xref() . '@', true, $before);
         }
 
         return redirect($individual->url());
@@ -111,5 +110,4 @@ class LinkChildToFamilyAction implements RequestHandlerInterface
             ->facts(['CHIL'], false, Auth::PRIV_HIDE, true)
             ->first($filter);
     }
-
 }

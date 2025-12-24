@@ -61,8 +61,8 @@ class AddChildToFamilyAction implements RequestHandlerInterface
         $child  = $tree->createIndividual("0 @@ INDI\n1 FAMC @" . $xref . '@' . $gedcom);
 
         // Link the child to the family
-        $before_id = $this->childFactOfYoungerSibling($family, $child)?->id() ?? '';
-        $family->createFact('1 CHIL @' . $child->xref() . '@', true, $before_id);
+        $before = $this->childFactOfYoungerSibling($family, $child);
+        $family->createFact('1 CHIL @' . $child->xref() . '@', true, $before);
 
         $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $child->url());
 
@@ -79,5 +79,4 @@ class AddChildToFamilyAction implements RequestHandlerInterface
             ->facts(['CHIL'], false, Auth::PRIV_HIDE, true)
             ->first($filter);
     }
-
 }

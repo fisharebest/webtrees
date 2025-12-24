@@ -69,12 +69,12 @@ class AddSpouseToIndividualAction implements RequestHandlerInterface
         $family = $tree->createFamily('0 @@ FAM' . $gedcom . $i_link . $s_link);
 
         // Link the individual to the family
-        $before_id = $this->famsFactOfLaterMarriage($individual, $family)?->id() ?? '';
-        $individual->createFact('1 FAMS @' . $family->xref() . '@', false, $before_id);
+        $before = $this->famsFactOfLaterMarriage($individual, $family);
+        $individual->createFact('1 FAMS @' . $family->xref() . '@', false, $before);
 
         // Link the spouse to the family
-        $before_id = $this->famsFactOfLaterMarriage($spouse, $family)?->id();
-        $spouse->createFact('1 FAMS @' . $family->xref() . '@', false, $before_id);
+        $before = $this->famsFactOfLaterMarriage($spouse, $family);
+        $spouse->createFact('1 FAMS @' . $family->xref() . '@', false, $before);
 
         $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $spouse->url());
 
@@ -91,5 +91,4 @@ class AddSpouseToIndividualAction implements RequestHandlerInterface
             ->facts(['FAMS'], false, Auth::PRIV_HIDE, true)
             ->first($filter);
     }
-
 }

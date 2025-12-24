@@ -70,7 +70,7 @@ class GedcomRecordTest extends TestCase
 
         $this->assertCount(4, $facts);
 
-        $individual->createFact('1 FACT baz', false, $facts[2]->id());
+        $individual->createFact('1 FACT baz', false, $facts[2]);
 
         $facts = $individual->facts(['FACT']);
 

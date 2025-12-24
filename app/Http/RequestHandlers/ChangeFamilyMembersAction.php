@@ -79,8 +79,8 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
             }
             if ($new_father instanceof Individual) {
                 // Add new FAMS link
-                $before_id = $this->famsFactOfLaterMarriage($new_father, $family)?->id() ?? '';
-                $new_father->createFact('1 FAMS @' . $family->xref() . '@', true, $before_id);
+                $before = $this->famsFactOfLaterMarriage($new_father, $family);
+                $new_father->createFact('1 FAMS @' . $family->xref() . '@', true, $before);
                 // Add new HUSB link
                 $family->createFact('1 HUSB @' . $new_father->xref() . '@', true);
             }
@@ -103,8 +103,8 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
             }
             if ($new_mother instanceof Individual) {
                 // Add new FAMS link
-                $before_id = $this->famsFactOfLaterMarriage($new_mother, $family)?->id() ?? '';
-                $new_mother->createFact('1 FAMS @' . $family->xref() . '@', true, $before_id);
+                $before = $this->famsFactOfLaterMarriage($new_mother, $family);
+                $new_mother->createFact('1 FAMS @' . $family->xref() . '@', true, $before);
                 // Add new WIFE link
                 $family->createFact('1 WIFE @' . $new_mother->xref() . '@', true);
             }
@@ -132,8 +132,8 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
                 // Add new FAMC link
                 $new_child->createFact('1 FAMC @' . $family->xref() . '@', true);
                 // Add new CHIL link
-                $before_id = $this->childFactOfYoungerSibling($family, $new_child)?->id() ?? '';
-                $family->createFact('1 CHIL @' . $new_child->xref() . '@', true, $before_id);
+                $before = $this->childFactOfYoungerSibling($family, $new_child);
+                $family->createFact('1 CHIL @' . $new_child->xref() . '@', true, $before);
             }
         }
 
@@ -161,5 +161,4 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
             ->facts(['CHIL'], false, Auth::PRIV_HIDE, true)
             ->first($filter);
     }
-
 }

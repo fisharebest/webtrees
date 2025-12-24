@@ -746,7 +746,7 @@ class GedcomRecord
         return $chan_user;
     }
 
-    public function createFact(string $gedcom, bool $update_chan, string $before_id = ''): void
+    public function createFact(string $gedcom, bool $update_chan, Fact|null $before = null): void
     {
         if (!preg_match('/^1 ' . Gedcom::REGEX_TAG . '/', $gedcom) || str_contains($gedcom, "\r")) {
             throw new InvalidArgumentException('Invalid GEDCOM passed to GedcomRecord::createFact(' . $gedcom . ')');
@@ -758,7 +758,7 @@ class GedcomRecord
         $inserted = false;
 
         foreach ($this->facts([], false, Auth::PRIV_HIDE, true) as $fact) {
-            if (!$inserted && $fact->id() === $before_id) {
+            if (!$inserted && $fact->id() === $before?->id()) {
                 $new_gedcom .= "\n" . $gedcom;
                 $inserted = true;
             }

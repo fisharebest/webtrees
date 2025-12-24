@@ -72,12 +72,12 @@ class LinkSpouseToIndividualAction implements RequestHandlerInterface
         $family = $tree->createFamily($gedcom);
 
         // Link the individual to the family
-        $before_id = $this->famsFactOfLaterMarriage($individual, $family)?->id() ?? '';
-        $individual->createFact('1 FAMS @' . $family->xref() . '@', true, $before_id);
+        $before = $this->famsFactOfLaterMarriage($individual, $family);
+        $individual->createFact('1 FAMS @' . $family->xref() . '@', true, $before);
 
         // Link the spouse to the family
-        $before_id = $this->famsFactOfLaterMarriage($spouse, $family)?->id() ?? '';
-        $spouse->createFact('1 FAMS @' . $family->xref() . '@', true, $before_id);
+        $before = $this->famsFactOfLaterMarriage($spouse, $family);
+        $spouse->createFact('1 FAMS @' . $family->xref() . '@', true, $before);
 
         return redirect($family->url());
     }
@@ -92,5 +92,4 @@ class LinkSpouseToIndividualAction implements RequestHandlerInterface
             ->facts(['FAMS'], false, Auth::PRIV_HIDE, true)
             ->first($filter);
     }
-
 }
