@@ -34,18 +34,10 @@ use const INFO_ALL;
 use const INFO_CREDITS;
 use const INFO_LICENSE;
 
-/**
- * Show PHP information.
- */
-class PhpInformation implements RequestHandlerInterface
+final class PhpInformation implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';

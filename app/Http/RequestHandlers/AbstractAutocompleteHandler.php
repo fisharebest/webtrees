@@ -27,9 +27,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Autocomplete handler
- */
 abstract class AbstractAutocompleteHandler implements RequestHandlerInterface
 {
     // The client software only shows the first few results
@@ -38,21 +35,11 @@ abstract class AbstractAutocompleteHandler implements RequestHandlerInterface
     // Tell the browser to cache the results
     protected const int CACHE_LIFE = 1200;
 
-    protected SearchService $search_service;
-
-    /**
-     * @param SearchService $search_service
-     */
-    public function __construct(SearchService $search_service)
-    {
-        $this->search_service = $search_service;
+    public function __construct(
+        protected SearchService $search_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $data = $this->search($request)

@@ -34,10 +34,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Edit a user.
- */
-class UserEditPage implements RequestHandlerInterface
+final class UserEditPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -67,11 +64,6 @@ class UserEditPage implements RequestHandlerInterface
         $this->user_service    = $user_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';

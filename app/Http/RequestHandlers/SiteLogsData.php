@@ -31,10 +31,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
 
-/**
- * Find logs.
- */
-class SiteLogsData implements RequestHandlerInterface
+final class SiteLogsData implements RequestHandlerInterface
 {
     private DatatablesService $datatables_service;
 

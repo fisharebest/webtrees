@@ -37,10 +37,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function redirect;
 use function route;
 
-/**
- * Synchronize GEDCOM files with trees.
- */
-class SynchronizeTrees implements RequestHandlerInterface
+final class SynchronizeTrees implements RequestHandlerInterface
 {
     private AdminService $admin_service;
 
@@ -68,11 +65,6 @@ class SynchronizeTrees implements RequestHandlerInterface
         $this->tree_service    = $tree_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $data_filesystem = Registry::filesystem()->data();

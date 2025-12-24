@@ -31,28 +31,15 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function route;
 
-/**
- * Show a form to edit the default blocks for new trees.
- */
-class TreePageDefaultEdit implements RequestHandlerInterface
+final class TreePageDefaultEdit implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private HomePageService $home_page_service;
-
-    /**
-     * @param HomePageService $home_page_service
-     */
-    public function __construct(HomePageService $home_page_service)
-    {
-        $this->home_page_service = $home_page_service;
+    public function __construct(
+        private readonly HomePageService $home_page_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';

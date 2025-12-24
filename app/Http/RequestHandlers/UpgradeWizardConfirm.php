@@ -26,16 +26,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function redirect;
 use function route;
 
-/**
- * Upgrade to a new version of webtrees.
- */
-class UpgradeWizardConfirm implements RequestHandlerInterface
+final class UpgradeWizardConfirm implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return redirect(route(UpgradeWizardPage::class, ['continue' => 1]));

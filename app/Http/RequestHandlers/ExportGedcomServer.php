@@ -40,28 +40,15 @@ use function strtolower;
 
 use const PATHINFO_EXTENSION;
 
-/**
- * Save a GEDCOM file on the server.
- */
-class ExportGedcomServer implements RequestHandlerInterface
+final class ExportGedcomServer implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private GedcomExportService $gedcom_export_service;
-
-    /**
-     * @param GedcomExportService $gedcom_export_service
-     */
-    public function __construct(GedcomExportService $gedcom_export_service)
-    {
-        $this->gedcom_export_service = $gedcom_export_service;
+    public function __construct(
+        private readonly GedcomExportService $gedcom_export_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

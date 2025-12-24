@@ -27,16 +27,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function response;
 use function view;
 
-/**
- * Show a form to create a new location.
- */
-class CreateLocationModal implements RequestHandlerInterface
+final class CreateLocationModal implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

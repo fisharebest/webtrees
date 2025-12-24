@@ -24,16 +24,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Select a recipient for a message from a logged-in user.
- */
-class MessageSelect implements RequestHandlerInterface
+final class MessageSelect implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return redirect(route(MessagePage::class, [

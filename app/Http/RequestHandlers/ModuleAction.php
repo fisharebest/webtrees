@@ -34,19 +34,11 @@ use function method_exists;
 use function str_contains;
 use function strtolower;
 
-/**
- * Controller for module actions.
- */
-class ModuleAction implements RequestHandlerInterface
+final class ModuleAction implements RequestHandlerInterface
 {
-    private ModuleService $module_service;
-
-    /**
-     * @param ModuleService $module_service
-     */
-    public function __construct(ModuleService $module_service)
-    {
-        $this->module_service = $module_service;
+    public function __construct(
+        private readonly ModuleService $module_service,
+    ) {
     }
 
     /**

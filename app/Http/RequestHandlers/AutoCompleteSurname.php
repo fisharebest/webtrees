@@ -23,10 +23,7 @@ use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * Autocomplete handler for surnames
- */
-class AutoCompleteSurname extends AbstractAutocompleteHandler
+final class AutoCompleteSurname extends AbstractAutocompleteHandler
 {
     /**
      * @param ServerRequestInterface $request

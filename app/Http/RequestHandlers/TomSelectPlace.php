@@ -21,22 +21,15 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
-/**
- * Autocomplete for places.
- */
-class TomSelectPlace extends AbstractTomSelectHandler
+final class TomSelectPlace extends AbstractTomSelectHandler
 {
-    protected SearchService $search_service;
-
-    /**
-     * @param SearchService $search_service
-     */
-    public function __construct(SearchService $search_service)
-    {
-        $this->search_service = $search_service;
+    public function __construct(
+        private readonly SearchService $search_service,
+    ) {
     }
 
     /**

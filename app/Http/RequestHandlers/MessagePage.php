@@ -32,28 +32,15 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function route;
 
-/**
- * Compose a message from a logged-in user.
- */
-class MessagePage implements RequestHandlerInterface
+final class MessagePage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private UserService $user_service;
-
-    /**
-     * @param UserService $user_service
-     */
-    public function __construct(UserService $user_service)
-    {
-        $this->user_service = $user_service;
+    public function __construct(
+        private readonly UserService $user_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();

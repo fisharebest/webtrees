@@ -43,28 +43,13 @@ use function response;
 use function rewind;
 use function stream_get_contents;
 
-/**
- * Export geographic data.
- */
-class MapDataExportCSV implements RequestHandlerInterface
+final class MapDataExportCSV implements RequestHandlerInterface
 {
-    private MapDataService $map_data_service;
-
-    /**
-     * Dependency injection.
-     *
-     * @param MapDataService $map_data_service
-     */
-    public function __construct(MapDataService $map_data_service)
-    {
-        $this->map_data_service = $map_data_service;
+    public function __construct(
+        private readonly MapDataService $map_data_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id = $request->getAttribute('parent_id');

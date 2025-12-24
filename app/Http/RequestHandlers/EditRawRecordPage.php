@@ -30,18 +30,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function explode;
 
-/**
- * Edit the raw GEDCOM of a record.
- */
-class EditRawRecordPage implements RequestHandlerInterface
+final class EditRawRecordPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();

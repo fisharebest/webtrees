@@ -29,10 +29,7 @@ use function array_filter;
 use function explode;
 use function view;
 
-/**
- * Autocomplete for submitters.
- */
-class TomSelectSubmitter extends AbstractTomSelectHandler
+final class TomSelectSubmitter extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 

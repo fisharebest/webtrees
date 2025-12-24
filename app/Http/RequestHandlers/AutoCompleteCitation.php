@@ -31,10 +31,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use function preg_match_all;
 use function preg_quote;
 
-/**
- * Autocomplete handler for source citations
- */
-class AutoCompleteCitation extends AbstractAutocompleteHandler
+final class AutoCompleteCitation extends AbstractAutocompleteHandler
 {
     /**
      * @param ServerRequestInterface $request

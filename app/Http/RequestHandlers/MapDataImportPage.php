@@ -34,18 +34,10 @@ use function pathinfo;
 
 use const PATHINFO_EXTENSION;
 
-/**
- * Import geographic data.
- */
-class MapDataImportPage implements RequestHandlerInterface
+final class MapDataImportPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';

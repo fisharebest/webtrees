@@ -39,32 +39,14 @@ use function route;
 use const UPLOAD_ERR_NO_FILE;
 use const UPLOAD_ERR_OK;
 
-/**
- * Import a GEDCOM file into a tree.
- */
-class ImportGedcomAction implements RequestHandlerInterface
+final class ImportGedcomAction implements RequestHandlerInterface
 {
-    private StreamFactoryInterface $stream_factory;
-
-    private TreeService $tree_service;
-
-    /**
-     * @param StreamFactoryInterface $stream_factory
-     * @param TreeService            $tree_service
-     */
-    public function __construct(StreamFactoryInterface $stream_factory, TreeService $tree_service)
-    {
-        $this->tree_service   = $tree_service;
-        $this->stream_factory = $stream_factory;
+    public function __construct(
+        private readonly StreamFactoryInterface $stream_factory,
+        private readonly TreeService $tree_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     * @throws FilesystemException
-     * @throws UnableToReadFile
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree               = Validator::attributes($request)->tree();

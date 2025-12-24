@@ -26,26 +26,13 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Show a form to create a new media object.
- */
-class CreateMediaObjectModal implements RequestHandlerInterface
+final class CreateMediaObjectModal implements RequestHandlerInterface
 {
-    private MediaFileService $media_file_service;
-
-    /**
-     * @param MediaFileService $media_file_service
-     */
-    public function __construct(MediaFileService $media_file_service)
-    {
-        $this->media_file_service = $media_file_service;
+    public function __construct(
+        private readonly MediaFileService $media_file_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree            = Validator::attributes($request)->tree();

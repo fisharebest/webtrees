@@ -30,18 +30,17 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function intdiv;
 
-/**
- * Manage media from the control panel.
- */
-class UploadMediaPage implements RequestHandlerInterface
+final class UploadMediaPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
     // How many files to upload on one form.
     private const int MAX_UPLOAD_FILES = 10;
 
-    public function __construct(private MediaFileService $media_file_service, private PhpService $php_service)
-    {
+    public function __construct(
+        private readonly MediaFileService $media_file_service,
+        private readonly PhpService $php_service,
+    ) {
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface

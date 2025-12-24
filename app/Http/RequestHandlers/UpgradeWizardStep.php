@@ -79,11 +79,11 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
     ];
 
     public function __construct(
-        private GedcomExportService $gedcom_export_service,
-        private MaintenanceModeService $maintenance_mode_service,
-        private PendingChangesService $pending_changes_service,
-        private TreeService $tree_service,
-        private UpgradeService $upgrade_service,
+        private readonly GedcomExportService $gedcom_export_service,
+        private readonly MaintenanceModeService $maintenance_mode_service,
+        private readonly PendingChangesService $pending_changes_service,
+        private readonly TreeService $tree_service,
+        private readonly UpgradeService $upgrade_service,
     ) {
     }
 

@@ -25,21 +25,10 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Move media links from records to facts.
- */
-class FixLevel0MediaPage implements RequestHandlerInterface
+final class FixLevel0MediaPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /**
-     * If media objects are wronly linked to top-level records, reattach them
-     * to facts/events.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';

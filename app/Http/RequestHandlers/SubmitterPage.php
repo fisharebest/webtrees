@@ -32,32 +32,16 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
 
-/**
- * Show a submitter's page.
- */
-class SubmitterPage implements RequestHandlerInterface
+final class SubmitterPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private ClipboardService $clipboard_service;
-
-    private LinkedRecordService $linked_record_service;
-
-    /**
-     * @param ClipboardService $clipboard_service
-     * @param LinkedRecordService $linked_record_service
-     */
-    public function __construct(ClipboardService $clipboard_service, LinkedRecordService $linked_record_service)
-    {
-        $this->clipboard_service     = $clipboard_service;
-        $this->linked_record_service = $linked_record_service;
+    public function __construct(
+        private readonly ClipboardService $clipboard_service,
+        private readonly LinkedRecordService $linked_record_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();

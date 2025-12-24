@@ -27,28 +27,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function redirect;
 use function route;
 
-/**
- * Delete a location from the control panel.
- */
-class MapDataDelete implements RequestHandlerInterface
+final class MapDataDelete implements RequestHandlerInterface
 {
-    private MapDataService $map_data_service;
-
-    /**
-     * Dependency injection.
-     *
-     * @param MapDataService $map_data_service
-     */
-    public function __construct(MapDataService $map_data_service)
-    {
-        $this->map_data_service = $map_data_service;
+    public function __construct(
+        private readonly MapDataService $map_data_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $location_id = (int) $request->getAttribute('location_id');

@@ -27,22 +27,13 @@ use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * Autocomplete handler for places
- */
-class AutoCompletePlace extends AbstractAutocompleteHandler
+final class AutoCompletePlace extends AbstractAutocompleteHandler
 {
-    private ModuleService $module_service;
-
-    /**
-     * @param ModuleService $module_service
-     * @param SearchService $search_service
-     */
-    public function __construct(ModuleService $module_service, SearchService $search_service)
-    {
+    public function __construct(
+        private readonly ModuleService $module_service,
+        SearchService $search_service,
+    ) {
         parent::__construct($search_service);
-
-        $this->module_service = $module_service;
     }
 
     /**

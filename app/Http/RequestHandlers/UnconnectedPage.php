@@ -35,18 +35,10 @@ use function count;
 use function in_array;
 use function strtolower;
 
-/**
- * Find groups of unrelated individuals.
- */
-class UnconnectedPage implements RequestHandlerInterface
+final class UnconnectedPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = Validator::attributes($request)->tree();

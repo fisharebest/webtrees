@@ -31,26 +31,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function redirect;
 use function route;
 
-/**
- * Save updated blocks on a tree's page.
- */
-class TreePageUpdate implements RequestHandlerInterface
+final class TreePageUpdate implements RequestHandlerInterface
 {
-    private HomePageService $home_page_service;
-
-    /**
-     * @param HomePageService $home_page_service
-     */
-    public function __construct(HomePageService $home_page_service)
-    {
-        $this->home_page_service = $home_page_service;
+    public function __construct(
+        private readonly HomePageService $home_page_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();

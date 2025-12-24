@@ -35,21 +35,14 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function date;
 
-/**
- * Show pending changes.
- */
-class PendingChangesLogPage implements RequestHandlerInterface
+final class PendingChangesLogPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private TreeService $tree_service;
-
-    private UserService $user_service;
-
-    public function __construct(TreeService $tree_service, UserService $user_service)
-    {
-        $this->tree_service = $tree_service;
-        $this->user_service = $user_service;
+    public function __construct(
+        private readonly TreeService $tree_service,
+        private readonly UserService $user_service,
+    ) {
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface

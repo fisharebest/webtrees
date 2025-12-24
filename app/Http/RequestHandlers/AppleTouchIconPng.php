@@ -26,16 +26,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function file_get_contents;
 use function response;
 
-/**
- * Respond to /apple-touch-icon.png.
- */
-class AppleTouchIconPng implements RequestHandlerInterface
+final class AppleTouchIconPng implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $content = file_get_contents(__DIR__ . '/../../../apple-touch-icon.png');

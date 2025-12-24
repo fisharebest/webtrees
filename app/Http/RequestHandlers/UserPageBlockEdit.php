@@ -29,28 +29,15 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function route;
 
-/**
- * Show a form to edit block config options.
- */
-class UserPageBlockEdit implements RequestHandlerInterface
+final class UserPageBlockEdit implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private HomePageService $home_page_service;
-
-    /**
-     * @param HomePageService $home_page_service
-     */
-    public function __construct(HomePageService $home_page_service)
-    {
-        $this->home_page_service = $home_page_service;
+    public function __construct(
+        private readonly HomePageService $home_page_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();

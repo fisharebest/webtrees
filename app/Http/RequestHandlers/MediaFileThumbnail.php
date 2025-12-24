@@ -28,18 +28,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
 
-/**
- * Create a thumbnail of a media file.
- */
-class MediaFileThumbnail implements RequestHandlerInterface
+final class MediaFileThumbnail implements RequestHandlerInterface
 {
-    /**
-     * Show an image/thumbnail, with/without a watermark.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

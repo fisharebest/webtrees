@@ -33,10 +33,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
 
-class AddSpouseToIndividualAction implements RequestHandlerInterface
+final class AddSpouseToIndividualAction implements RequestHandlerInterface
 {
     public function __construct(
-        private GedcomEditService $gedcom_edit_service,
+        private readonly GedcomEditService $gedcom_edit_service,
     ) {
     }
 

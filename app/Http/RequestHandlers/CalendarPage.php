@@ -28,30 +28,15 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Show anniversaries for events in a given day/month/year.
- */
-class CalendarPage implements RequestHandlerInterface
+final class CalendarPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private CalendarService $calendar_service;
-
-    /**
-     * @param CalendarService $calendar_service
-     */
-    public function __construct(CalendarService $calendar_service)
-    {
-        $this->calendar_service = $calendar_service;
+    public function __construct(
+        private readonly CalendarService $calendar_service,
+    ) {
     }
 
-    /**
-     * A form to request the page parameters.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();

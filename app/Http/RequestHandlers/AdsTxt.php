@@ -25,16 +25,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Respond to /ads.txt.
- */
-class AdsTxt implements RequestHandlerInterface
+final class AdsTxt implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return response('#No pesky ads here')

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -26,30 +27,17 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Check the server is up.
- */
-class Ping implements RequestHandlerInterface
+final class Ping implements RequestHandlerInterface
 {
-    private ServerCheckService $server_check_service;
-
-    /**
-     * @param ServerCheckService $server_check_service
-     */
-    public function __construct(ServerCheckService $server_check_service)
-    {
-        $this->server_check_service = $server_check_service;
+    public function __construct(
+        private readonly ServerCheckService $server_check_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         if ($this->server_check_service->serverErrors()->isNotEmpty()) {
-            return response('ERROR');
+            return response('ERROR', StatusCodeInterface::STATUS_SERVICE_UNAVAILABLE);
         }
 
         if ($this->server_check_service->serverWarnings()->isNotEmpty()) {

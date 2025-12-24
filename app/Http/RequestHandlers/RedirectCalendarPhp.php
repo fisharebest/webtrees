@@ -30,10 +30,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Redirect URLs created by webtrees 1.x (and PhpGedView).
- */
-class RedirectCalendarPhp implements RequestHandlerInterface
+final class RedirectCalendarPhp implements RequestHandlerInterface
 {
     public function __construct(
         private readonly TreeService $tree_service,

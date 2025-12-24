@@ -32,28 +32,15 @@ use function e;
 use function redirect;
 use function route;
 
-/**
- * Send messages from an administrator.
- */
-class BroadcastAction implements RequestHandlerInterface
+final class BroadcastAction implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private MessageService $message_service;
-
-    /**
-     * @param MessageService $message_service
-     */
-    public function __construct(MessageService $message_service)
-    {
-        $this->message_service = $message_service;
+    public function __construct(
+        private readonly MessageService $message_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $recipients = $this->message_service->recipientTypes();

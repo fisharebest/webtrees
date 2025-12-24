@@ -34,10 +34,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Redirect URLs created by webtrees 1.x (and PhpGedView).
- */
-class RedirectHourGlassPhp implements RequestHandlerInterface
+final class RedirectHourGlassPhp implements RequestHandlerInterface
 {
     public function __construct(
         private readonly ModuleService $module_service,

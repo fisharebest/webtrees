@@ -31,30 +31,15 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Search and replace genealogy data
- */
-class SearchReplaceAction implements RequestHandlerInterface
+final class SearchReplaceAction implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private SearchService $search_service;
-
-    /**
-     * @param SearchService $search_service
-     */
-    public function __construct(SearchService $search_service)
-    {
-        $this->search_service = $search_service;
+    public function __construct(
+        private readonly SearchService $search_service,
+    ) {
     }
 
-    /**
-     * Search and replace.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();

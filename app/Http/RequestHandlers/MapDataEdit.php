@@ -32,34 +32,16 @@ use function e;
 use function redirect;
 use function route;
 
-/**
- * Edit location data.
- */
-class MapDataEdit implements RequestHandlerInterface
+final class MapDataEdit implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private LeafletJsService $leaflet_js_service;
-
-    private MapDataService $map_data_service;
-
-    /**
-     * Dependency injection.
-     *
-     * @param LeafletJsService $leaflet_js_service
-     * @param MapDataService   $map_data_service
-     */
-    public function __construct(LeafletJsService $leaflet_js_service, MapDataService $map_data_service)
-    {
-        $this->leaflet_js_service = $leaflet_js_service;
-        $this->map_data_service   = $map_data_service;
+    public function __construct(
+        private readonly LeafletJsService $leaflet_js_service,
+        private readonly MapDataService $map_data_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';

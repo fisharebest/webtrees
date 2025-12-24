@@ -26,16 +26,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Respond to /apple-touch-icon.png.
- */
-class WebmanifestJson implements RequestHandlerInterface
+final class WebmanifestJson implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $content = View::make('webmanifest-json');

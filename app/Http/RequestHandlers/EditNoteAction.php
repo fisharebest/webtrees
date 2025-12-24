@@ -26,18 +26,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Edit note objects.
- */
-class EditNoteAction implements RequestHandlerInterface
+final class EditNoteAction implements RequestHandlerInterface
 {
-    /**
-     * Show a form to create a new note object.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

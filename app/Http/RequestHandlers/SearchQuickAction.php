@@ -29,18 +29,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function redirect;
 use function route;
 
-/**
- * Search for genealogy data
- */
-class SearchQuickAction implements RequestHandlerInterface
+final class SearchQuickAction implements RequestHandlerInterface
 {
-    /**
-     * The "omni-search" box in the header.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();

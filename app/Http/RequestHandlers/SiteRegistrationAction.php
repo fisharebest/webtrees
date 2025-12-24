@@ -30,16 +30,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function redirect;
 use function route;
 
-/**
- * Edit the site preferences.
- */
-class SiteRegistrationAction implements RequestHandlerInterface
+final class SiteRegistrationAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $mode               = Validator::parsedBody($request)->string('WELCOME_TEXT_AUTH_MODE');

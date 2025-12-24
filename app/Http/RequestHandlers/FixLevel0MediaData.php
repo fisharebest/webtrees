@@ -39,35 +39,14 @@ use function in_array;
 use function preg_match;
 use function view;
 
-/**
- * Move media links from records to facts.
- */
-class FixLevel0MediaData implements RequestHandlerInterface
+final class FixLevel0MediaData implements RequestHandlerInterface
 {
-    private DatatablesService $datatables_service;
-
-    private TreeService $tree_service;
-
-    /**
-     * FixLevel0MediaController constructor.
-     *
-     * @param DatatablesService $datatables_service
-     * @param TreeService       $tree_service
-     */
-    public function __construct(DatatablesService $datatables_service, TreeService $tree_service)
-    {
-        $this->datatables_service = $datatables_service;
-        $this->tree_service       = $tree_service;
+    public function __construct(
+        private readonly DatatablesService $datatables_service,
+        private readonly TreeService $tree_service,
+    ) {
     }
 
-    /**
-     * If media objects are wronly linked to top-level records, reattach them
-     * to facts/events.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $ignore_facts = [

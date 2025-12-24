@@ -26,16 +26,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
 
-/**
- * Select a new fact to add.
- */
-class SelectNewFact implements RequestHandlerInterface
+final class SelectNewFact implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return redirect(route(AddNewFact::class, [

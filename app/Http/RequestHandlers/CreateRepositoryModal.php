@@ -31,16 +31,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function response;
 use function view;
 
-/**
- * Show a form to create a new repository.
- */
-class CreateRepositoryModal implements RequestHandlerInterface
+final class CreateRepositoryModal implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

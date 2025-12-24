@@ -35,28 +35,15 @@ use function gethostname;
 
 use const FILTER_VALIDATE_DOMAIN;
 
-/**
- * Edit the email preferences.
- */
-class EmailPreferencesPage implements RequestHandlerInterface
+final class EmailPreferencesPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private EmailService $email_service;
-
-    /**
-     * @param EmailService $email_service
-     */
-    public function __construct(EmailService $email_service)
-    {
-        $this->email_service = $email_service;
+    public function __construct(
+        private readonly EmailService $email_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $mail_ssl_options       = $this->email_service->mailSslOptions();

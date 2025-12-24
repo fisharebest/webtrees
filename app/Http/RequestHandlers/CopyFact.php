@@ -31,28 +31,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Copy a fact to the clipboard.
- */
-class CopyFact implements RequestHandlerInterface
+final class CopyFact implements RequestHandlerInterface
 {
-    private ClipboardService $clipboard_service;
-
-    /**
-     * @param ClipboardService $clipboard_service
-     */
-    public function __construct(ClipboardService $clipboard_service)
-    {
-        $this->clipboard_service = $clipboard_service;
+    public function __construct(
+        private readonly ClipboardService $clipboard_service,
+    ) {
     }
 
-    /**
-     * Copy a fact to the clipboard.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();

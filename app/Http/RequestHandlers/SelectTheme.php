@@ -30,16 +30,8 @@ use function assert;
 use function is_string;
 use function response;
 
-/**
- * Select a new theme for the current session.
- */
-class SelectTheme implements RequestHandlerInterface
+final class SelectTheme implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $user = Validator::attributes($request)->user();

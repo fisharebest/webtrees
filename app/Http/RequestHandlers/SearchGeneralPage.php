@@ -45,34 +45,16 @@ use function trim;
 
 use const PREG_SET_ORDER;
 
-/**
- * Search for genealogy data
- */
-class SearchGeneralPage implements RequestHandlerInterface
+final class SearchGeneralPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private SearchService $search_service;
-
-    private TreeService $tree_service;
-
-    /**
-     * @param SearchService $search_service
-     * @param TreeService   $tree_service
-     */
-    public function __construct(SearchService $search_service, TreeService $tree_service)
-    {
-        $this->search_service = $search_service;
-        $this->tree_service   = $tree_service;
+    public function __construct(
+        private readonly SearchService $search_service,
+        private readonly TreeService $tree_service,
+    ) {
     }
 
-    /**
-     * The standard search.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

@@ -29,10 +29,7 @@ use function array_filter;
 use function explode;
 use function view;
 
-/**
- * Autocomplete for locations.
- */
-class TomSelectLocation extends AbstractTomSelectHandler
+final class TomSelectLocation extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 

@@ -32,28 +32,15 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function is_string;
 
-/**
- * Show a registration page.
- */
-class RegisterPage implements RequestHandlerInterface
+final class RegisterPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private CaptchaService $captcha_service;
-
-    /**
-     * @param CaptchaService $captcha_service
-     */
-    public function __construct(CaptchaService $captcha_service)
-    {
-        $this->captcha_service = $captcha_service;
+    public function __construct(
+        private readonly CaptchaService $captcha_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->checkRegistrationAllowed();

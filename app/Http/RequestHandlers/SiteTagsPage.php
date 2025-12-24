@@ -31,18 +31,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function explode;
 
-/**
- * Edit the tree preferences.
- */
-class SiteTagsPage implements RequestHandlerInterface
+final class SiteTagsPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';

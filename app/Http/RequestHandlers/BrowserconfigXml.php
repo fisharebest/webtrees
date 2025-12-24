@@ -26,16 +26,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Respond to /apple-touch-icon.png.
- */
-class BrowserconfigXml implements RequestHandlerInterface
+final class BrowserconfigXml implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $content = View::make('browserconfig-xml');

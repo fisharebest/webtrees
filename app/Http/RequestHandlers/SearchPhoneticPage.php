@@ -35,34 +35,16 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function in_array;
 
-/**
- * Search for (and optionally replace) genealogy data
- */
-class SearchPhoneticPage implements RequestHandlerInterface
+final class SearchPhoneticPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private SearchService $search_service;
-
-    private TreeService $tree_service;
-
-    /**
-     * @param SearchService $search_service
-     * @param TreeService   $tree_service
-     */
-    public function __construct(SearchService $search_service, TreeService $tree_service)
-    {
-        $this->search_service = $search_service;
-        $this->tree_service   = $tree_service;
+    public function __construct(
+        private readonly SearchService $search_service,
+        private readonly TreeService $tree_service,
+    ) {
     }
 
-    /**
-     * The phonetic search.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree      = Validator::attributes($request)->tree();

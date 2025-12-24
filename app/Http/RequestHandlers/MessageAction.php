@@ -35,32 +35,16 @@ use function e;
 use function redirect;
 use function route;
 
-/**
- * Send a message from a logged-in user.
- */
-class MessageAction implements RequestHandlerInterface
+final class MessageAction implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private MessageService $message_service;
-
-    private UserService $user_service;
-
-    /**
-     * @param MessageService $message_service
-     * @param UserService    $user_service
-     */
-    public function __construct(MessageService $message_service, UserService $user_service)
-    {
-        $this->user_service    = $user_service;
-        $this->message_service = $message_service;
+    public function __construct(
+        private readonly MessageService $message_service,
+        private readonly UserService $user_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();

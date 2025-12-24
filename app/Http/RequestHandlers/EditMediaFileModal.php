@@ -34,28 +34,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function response;
 use function view;
 
-/**
- * Edit a media file.
- */
-class EditMediaFileModal implements RequestHandlerInterface
+final class EditMediaFileModal implements RequestHandlerInterface
 {
-    private MediaFileService $media_file_service;
-
-    /**
-     * @param MediaFileService $media_file_service
-     */
-    public function __construct(MediaFileService $media_file_service)
-    {
-        $this->media_file_service = $media_file_service;
+    public function __construct(
+        private readonly MediaFileService $media_file_service,
+    ) {
     }
 
-    /**
-     * Edit an existing media file.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();

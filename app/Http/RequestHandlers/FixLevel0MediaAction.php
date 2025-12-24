@@ -30,30 +30,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Move media links from records to facts.
- */
-class FixLevel0MediaAction implements RequestHandlerInterface
+final class FixLevel0MediaAction implements RequestHandlerInterface
 {
-    private TreeService $tree_service;
-
-    /**
-     * FixLevel0MediaController constructor.
-     *
-     * @param TreeService $tree_service
-     */
-    public function __construct(TreeService $tree_service)
-    {
-        $this->tree_service = $tree_service;
+    public function __construct(
+        private readonly TreeService $tree_service,
+    ) {
     }
 
-    /**
-     * Move a link to a media object from a level 0 record to a level 1 record.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $fact_id   = Validator::parsedBody($request)->string('fact_id');

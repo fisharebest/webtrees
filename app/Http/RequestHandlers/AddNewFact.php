@@ -33,28 +33,15 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function route;
 use function trim;
 
-/**
- * Add a new fact.
- */
-class AddNewFact implements RequestHandlerInterface
+final class AddNewFact implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private GedcomEditService $gedcom_edit_service;
-
-    /**
-     * @param GedcomEditService $gedcom_edit_service
-     */
-    public function __construct(GedcomEditService $gedcom_edit_service)
-    {
-        $this->gedcom_edit_service = $gedcom_edit_service;
+    public function __construct(
+        private readonly GedcomEditService $gedcom_edit_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();

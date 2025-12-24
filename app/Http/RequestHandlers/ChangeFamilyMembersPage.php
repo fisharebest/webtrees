@@ -28,10 +28,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Change the members of a family.
- */
-class ChangeFamilyMembersPage implements RequestHandlerInterface
+final class ChangeFamilyMembersPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 

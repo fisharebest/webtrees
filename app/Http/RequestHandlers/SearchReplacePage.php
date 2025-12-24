@@ -26,20 +26,10 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Search and replace genealogy data
- */
-class SearchReplacePage implements RequestHandlerInterface
+final class SearchReplacePage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /**
-     * Search and replace.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();

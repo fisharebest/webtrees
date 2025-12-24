@@ -35,10 +35,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
 
-/**
- * List of users.
- */
-class UserListData implements RequestHandlerInterface
+final class UserListData implements RequestHandlerInterface
 {
     private DatatablesService $datatables_service;
 
@@ -61,11 +58,6 @@ class UserListData implements RequestHandlerInterface
         $this->user_service       = $user_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $self = Validator::attributes($request)->user();

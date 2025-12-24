@@ -28,28 +28,13 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Download a media file.
- */
-class AdminMediaFileDownload implements RequestHandlerInterface
+final class AdminMediaFileDownload implements RequestHandlerInterface
 {
-    private MediaFileService $media_file_service;
-
-    /**
-     * @param MediaFileService $media_file_service
-     */
-    public function __construct(MediaFileService $media_file_service)
-    {
-        $this->media_file_service = $media_file_service;
+    public function __construct(
+        private readonly MediaFileService $media_file_service,
+    ) {
     }
 
-    /**
-     * Download a non-image media file.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $filesystem = Registry::filesystem()->data();

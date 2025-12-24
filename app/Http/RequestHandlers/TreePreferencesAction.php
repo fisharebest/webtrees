@@ -37,16 +37,8 @@ use function redirect;
 use function route;
 use function trim;
 
-/**
- * Edit the tree preferences.
- */
-class TreePreferencesAction implements RequestHandlerInterface
+final class TreePreferencesAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

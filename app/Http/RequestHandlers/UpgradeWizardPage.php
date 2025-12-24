@@ -34,10 +34,7 @@ use function e;
 use function route;
 use function version_compare;
 
-/**
- * Upgrade to a new version of webtrees.
- */
-class UpgradeWizardPage implements RequestHandlerInterface
+final class UpgradeWizardPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -50,25 +47,12 @@ class UpgradeWizardPage implements RequestHandlerInterface
     private const string STEP_UNZIP    = 'Unzip';
     private const string STEP_COPY     = 'Copy';
 
-    private TreeService $tree_service;
-
-    private UpgradeService $upgrade_service;
-
-    /**
-     * @param TreeService    $tree_service
-     * @param UpgradeService $upgrade_service
-     */
-    public function __construct(TreeService $tree_service, UpgradeService $upgrade_service)
-    {
-        $this->tree_service    = $tree_service;
-        $this->upgrade_service = $upgrade_service;
+    public function __construct(
+        private readonly TreeService $tree_service,
+        private readonly UpgradeService $upgrade_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';

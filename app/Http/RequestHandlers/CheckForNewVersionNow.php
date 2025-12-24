@@ -25,26 +25,13 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Check for a new version of webtrees.
- */
-class CheckForNewVersionNow implements RequestHandlerInterface
+final class CheckForNewVersionNow implements RequestHandlerInterface
 {
-    private UpgradeService $upgrade_service;
-
-    /**
-     * @param UpgradeService $upgrade_service
-     */
-    public function __construct(UpgradeService $upgrade_service)
-    {
-        $this->upgrade_service = $upgrade_service;
+    public function __construct(
+        private readonly UpgradeService $upgrade_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->upgrade_service->isUpgradeAvailable(true);

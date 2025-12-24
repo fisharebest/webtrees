@@ -37,20 +37,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
 
-/**
- * Merge records
- */
-class MergeRecordsPage implements RequestHandlerInterface
+final class MergeRecordsPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /**
-     * Merge two genealogy records.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';

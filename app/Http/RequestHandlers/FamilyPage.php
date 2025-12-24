@@ -42,28 +42,15 @@ use function redirect;
 use function strip_tags;
 use function trim;
 
-/**
- * Show a family's page.
- */
-class FamilyPage implements RequestHandlerInterface
+final class FamilyPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private ClipboardService $clipboard_service;
-
-    /**
-     * @param ClipboardService $clipboard_service
-     */
-    public function __construct(ClipboardService $clipboard_service)
-    {
-        $this->clipboard_service = $clipboard_service;
+    public function __construct(
+        private readonly ClipboardService $clipboard_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();

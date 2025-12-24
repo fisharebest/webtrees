@@ -29,10 +29,7 @@ use function array_filter;
 use function explode;
 use function view;
 
-/**
- * Autocomplete for media objects.
- */
-class TomSelectMediaObject extends AbstractTomSelectHandler
+final class TomSelectMediaObject extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 

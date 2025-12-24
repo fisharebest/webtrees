@@ -35,15 +35,13 @@ use function substr;
 
 use const PATHINFO_EXTENSION;
 
-/**
- * Show download forms/options.
- */
-class ExportGedcomPage implements RequestHandlerInterface
+final class ExportGedcomPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    public function __construct(private PhpService $php_service)
-    {
+    public function __construct(
+        private readonly PhpService $php_service,
+    ) {
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface

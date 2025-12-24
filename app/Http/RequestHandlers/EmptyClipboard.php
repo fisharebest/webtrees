@@ -27,28 +27,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
 
-/**
- * Empty the clipboard.
- */
-class EmptyClipboard implements RequestHandlerInterface
+final class EmptyClipboard implements RequestHandlerInterface
 {
-    private ClipboardService $clipboard_service;
-
-    /**
-     * @param ClipboardService $clipboard_service
-     */
-    public function __construct(ClipboardService $clipboard_service)
-    {
-        $this->clipboard_service = $clipboard_service;
+    public function __construct(
+        private readonly ClipboardService $clipboard_service,
+    ) {
     }
 
-    /**
-     * Paste a fact from the clipboard into a record.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->clipboard_service->emptyClipboard();

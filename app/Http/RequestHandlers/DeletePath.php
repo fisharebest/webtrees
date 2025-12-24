@@ -36,10 +36,7 @@ use function in_array;
 use function response;
 use function str_ends_with;
 
-/**
- * Delete a file or folder from the data filesystem.
- */
-class DeletePath implements RequestHandlerInterface
+final class DeletePath implements RequestHandlerInterface
 {
     private const array PROTECTED_PATHS = [
         'config.ini.php',
@@ -47,21 +44,11 @@ class DeletePath implements RequestHandlerInterface
         '.htaccess',
     ];
 
-    private WhitespacePathNormalizer $whitespace_path_normalizer;
-
-    /**
-     * @param WhitespacePathNormalizer $whitespace_path_normalizer
-     */
-    public function __construct(WhitespacePathNormalizer $whitespace_path_normalizer)
-    {
-        $this->whitespace_path_normalizer = $whitespace_path_normalizer;
+    public function __construct(
+        private readonly WhitespacePathNormalizer $whitespace_path_normalizer,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $data_filesystem = Registry::filesystem()->data();

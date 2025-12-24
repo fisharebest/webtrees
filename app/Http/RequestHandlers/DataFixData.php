@@ -35,10 +35,7 @@ use function e;
 use function route;
 use function view;
 
-/**
- * Run a data-fix.
- */
-class DataFixData implements RequestHandlerInterface
+final class DataFixData implements RequestHandlerInterface
 {
     private DataFixService $data_fix_service;
 
@@ -61,11 +58,6 @@ class DataFixData implements RequestHandlerInterface
         $this->datatables_service = $datatables_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();

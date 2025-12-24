@@ -39,10 +39,7 @@ use function explode;
 use function implode;
 use function preg_replace_callback;
 
-/**
- * Find pending changes.
- */
-class PendingChangesLogData implements RequestHandlerInterface
+final class PendingChangesLogData implements RequestHandlerInterface
 {
     private DatatablesService $datatables_service;
 
@@ -65,11 +62,6 @@ class PendingChangesLogData implements RequestHandlerInterface
         $this->pending_changes_service = $pending_changes_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree           = Validator::attributes($request)->tree();

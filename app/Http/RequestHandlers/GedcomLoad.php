@@ -39,10 +39,7 @@ use function str_starts_with;
 use function strlen;
 use function substr;
 
-/**
- * Load a chunk of GEDCOM data.
- */
-class GedcomLoad implements RequestHandlerInterface
+final class GedcomLoad implements RequestHandlerInterface
 {
     use ViewResponseTrait;
     use DetectsConcurrencyErrors;
@@ -63,11 +60,6 @@ class GedcomLoad implements RequestHandlerInterface
         $this->timeout_service       = $timeout_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';

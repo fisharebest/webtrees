@@ -39,12 +39,13 @@ use function e;
 use function in_array;
 use function uasort;
 
-class TreePrivacyPage implements RequestHandlerInterface
+final class TreePrivacyPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    public function __construct(private readonly TreeService $tree_service)
-    {
+    public function __construct(
+        private readonly TreeService $tree_service,
+    ) {
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface

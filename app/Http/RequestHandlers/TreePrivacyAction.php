@@ -32,16 +32,8 @@ use function e;
 use function redirect;
 use function route;
 
-/**
- * Edit the tree privacy.
- */
-class TreePrivacyAction implements RequestHandlerInterface
+final class TreePrivacyAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

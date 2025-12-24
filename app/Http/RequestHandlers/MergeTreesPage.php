@@ -28,32 +28,16 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Merge two family trees.
- */
-class MergeTreesPage implements RequestHandlerInterface
+final class MergeTreesPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private AdminService $admin_service;
-
-    private TreeService $tree_service;
-
-    /**
-     * @param AdminService   $admin_service
-     * @param TreeService    $tree_service
-     */
-    public function __construct(AdminService $admin_service, TreeService $tree_service)
-    {
-        $this->admin_service   = $admin_service;
-        $this->tree_service    = $tree_service;
+    public function __construct(
+        private readonly AdminService $admin_service,
+        private readonly TreeService $tree_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';

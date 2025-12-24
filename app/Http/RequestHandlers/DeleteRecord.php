@@ -38,28 +38,13 @@ use function preg_replace;
 use function response;
 use function sprintf;
 
-/**
- * Delete a record.
- */
-class DeleteRecord implements RequestHandlerInterface
+final class DeleteRecord implements RequestHandlerInterface
 {
-    private LinkedRecordService $linked_record_service;
-
-    /**
-     * @param LinkedRecordService $linked_record_service
-     */
-    public function __construct(LinkedRecordService $linked_record_service)
-    {
-        $this->linked_record_service = $linked_record_service;
+    public function __construct(
+        private readonly LinkedRecordService $linked_record_service,
+    ) {
     }
 
-    /**
-     * Delete a record.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();

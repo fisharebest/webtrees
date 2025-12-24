@@ -24,18 +24,10 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Find groups of unrelated individuals.
- */
-class UnconnectedAction implements RequestHandlerInterface
+final class UnconnectedAction implements RequestHandlerInterface
 {
     protected string $layout = 'layouts/administration';
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return redirect(route(UnconnectedPage::class, [

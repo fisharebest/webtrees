@@ -26,28 +26,15 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Compose messages from an administrator.
- */
-class BroadcastPage implements RequestHandlerInterface
+final class BroadcastPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private MessageService $message_service;
-
-    /**
-     * @param MessageService $message_service
-     */
-    public function __construct(MessageService $message_service)
-    {
-        $this->message_service = $message_service;
+    public function __construct(
+        private readonly MessageService $message_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $recipient_types = $this->message_service->recipientTypes();

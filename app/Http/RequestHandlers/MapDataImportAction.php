@@ -53,31 +53,13 @@ use const JSON_THROW_ON_ERROR;
 use const UPLOAD_ERR_NO_FILE;
 use const UPLOAD_ERR_OK;
 
-/**
- * Import geographic data.
- */
-class MapDataImportAction implements RequestHandlerInterface
+final class MapDataImportAction implements RequestHandlerInterface
 {
-    private StreamFactoryInterface $stream_factory;
-
-    /**
-     * @param StreamFactoryInterface $stream_factory
-     */
-    public function __construct(StreamFactoryInterface $stream_factory)
-    {
-        $this->stream_factory = $stream_factory;
+    public function __construct(
+        private readonly StreamFactoryInterface $stream_factory,
+    ) {
     }
 
-    /**
-     * This function assumes the input file layout is
-     * level followed by a variable number of placename fields
-     * followed by Longitude, Latitude, Zoom & Icon
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     * @throws Exception
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $source  = Validator::parsedBody($request)->isInArray(['client', 'server'])->string('source');

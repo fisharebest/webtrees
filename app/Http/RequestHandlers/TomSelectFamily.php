@@ -29,10 +29,7 @@ use function array_filter;
 use function explode;
 use function view;
 
-/**
- * Autocomplete for families.
- */
-class TomSelectFamily extends AbstractTomSelectHandler
+final class TomSelectFamily extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 

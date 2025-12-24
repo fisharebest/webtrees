@@ -35,10 +35,7 @@ use function e;
 use function redirect;
 use function route;
 
-/**
- * Show a list of map data.
- */
-class MapDataList implements RequestHandlerInterface
+final class MapDataList implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -65,11 +62,6 @@ class MapDataList implements RequestHandlerInterface
         $this->tree_service     = $tree_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id = $request->getAttribute('parent_id');

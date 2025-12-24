@@ -29,31 +29,18 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function route;
 
-/**
- * Show all pending changes.
- */
-class PendingChanges implements RequestHandlerInterface
+final class PendingChanges implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
     // Some servers may not have enough resources to show all the changes.
     private const int MAX_CHANGES = 1000;
 
-    private PendingChangesService $pending_changes_service;
-
-    /**
-     * @param PendingChangesService $pending_changes_service
-     */
-    public function __construct(PendingChangesService $pending_changes_service)
-    {
-        $this->pending_changes_service = $pending_changes_service;
+    public function __construct(
+        private readonly PendingChangesService $pending_changes_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();

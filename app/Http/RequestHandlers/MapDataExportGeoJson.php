@@ -35,28 +35,13 @@ use function implode;
 use function preg_replace;
 use function response;
 
-/**
- * Export geographic data.
- */
-class MapDataExportGeoJson implements RequestHandlerInterface
+final class MapDataExportGeoJson implements RequestHandlerInterface
 {
-    private MapDataService $map_data_service;
-
-    /**
-     * Dependency injection.
-     *
-     * @param MapDataService $map_data_service
-     */
-    public function __construct(MapDataService $map_data_service)
-    {
-        $this->map_data_service = $map_data_service;
+    public function __construct(
+        private readonly MapDataService $map_data_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id = $request->getAttribute('parent_id');

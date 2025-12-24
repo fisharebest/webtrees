@@ -32,16 +32,8 @@ use function implode;
 use function redirect;
 use function uksort;
 
-/**
- * Reorder the media files of a media object.
- */
-class ReorderMediaFilesAction implements RequestHandlerInterface
+final class ReorderMediaFilesAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();

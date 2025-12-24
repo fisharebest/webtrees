@@ -33,7 +33,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function in_array;
 use function redirect;
 
-class ChangeFamilyMembersAction implements RequestHandlerInterface
+final class ChangeFamilyMembersAction implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request): ResponseInterface
     {

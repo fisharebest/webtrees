@@ -31,26 +31,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Masquerade as another user, for testing and administration.
- */
-class Masquerade implements RequestHandlerInterface
+final class Masquerade implements RequestHandlerInterface
 {
-    private UserService $user_service;
-
-    /**
-     * @param UserService $user_service
-     */
-    public function __construct(UserService $user_service)
-    {
-        $this->user_service = $user_service;
+    public function __construct(
+        private readonly UserService $user_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $user_id = Validator::attributes($request)->integer('user_id');

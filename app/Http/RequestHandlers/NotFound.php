@@ -32,7 +32,7 @@ use function redirect;
 use function response;
 use function route;
 
-class NotFound implements RequestHandlerInterface
+final class NotFound implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request): ResponseInterface
     {

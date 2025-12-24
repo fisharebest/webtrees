@@ -29,10 +29,7 @@ use function array_filter;
 use function explode;
 use function view;
 
-/**
- * Autocomplete for notes.
- */
-class TomSelectSharedNote extends AbstractTomSelectHandler
+final class TomSelectSharedNote extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 

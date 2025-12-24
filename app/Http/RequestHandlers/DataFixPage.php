@@ -32,28 +32,15 @@ use function e;
 use function redirect;
 use function route;
 
-/**
- * Run a data-fix.
- */
-class DataFixPage implements RequestHandlerInterface
+final class DataFixPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private ModuleService $module_service;
-
-    /**
-     * @param ModuleService $module_service
-     */
-    public function __construct(ModuleService $module_service)
-    {
-        $this->module_service = $module_service;
+    public function __construct(
+        private readonly ModuleService $module_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

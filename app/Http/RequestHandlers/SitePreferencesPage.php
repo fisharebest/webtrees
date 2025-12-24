@@ -28,15 +28,13 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Edit the site preferences.
- */
-class SitePreferencesPage implements RequestHandlerInterface
+final class SitePreferencesPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    public function __construct(private ModuleService $module_service)
-    {
+    public function __construct(
+        private readonly ModuleService $module_service,
+    ) {
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface

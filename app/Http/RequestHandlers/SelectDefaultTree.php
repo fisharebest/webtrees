@@ -32,16 +32,8 @@ use function e;
 use function redirect;
 use function route;
 
-/**
- * Set the default tree.
- */
-class SelectDefaultTree implements RequestHandlerInterface, StatusCodeInterface
+final class SelectDefaultTree implements RequestHandlerInterface, StatusCodeInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

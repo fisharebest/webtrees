@@ -28,26 +28,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
 
-/**
- * Create a new unlinked individual.
- */
-class AddUnlinkedAction implements RequestHandlerInterface
+final class AddUnlinkedAction implements RequestHandlerInterface
 {
-    private GedcomEditService $gedcom_edit_service;
-
-    /**
-     * @param GedcomEditService $gedcom_edit_service
-     */
-    public function __construct(GedcomEditService $gedcom_edit_service)
-    {
-        $this->gedcom_edit_service = $gedcom_edit_service;
+    public function __construct(
+        private readonly GedcomEditService $gedcom_edit_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

@@ -30,16 +30,8 @@ use function preg_replace;
 use function redirect;
 use function trim;
 
-/**
- * Edit the raw GEDCOM of a fact.
- */
-class EditRawFactAction implements RequestHandlerInterface
+final class EditRawFactAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();

@@ -26,16 +26,8 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function view;
 
-/**
- * Show a list of modules.
- */
-class ModulesMapAutocompletePage extends AbstractModuleComponentPage
+final class ModulesMapAutocompletePage extends AbstractModuleComponentPage
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return $this->listComponents(

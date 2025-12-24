@@ -32,16 +32,8 @@ use function implode;
 use function redirect;
 use function uksort;
 
-/**
- * Reorder the names of an individual.
- */
-class ReorderNamesAction implements RequestHandlerInterface
+final class ReorderNamesAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();

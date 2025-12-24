@@ -29,26 +29,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Accept pending changes for a record.
- */
-class PendingChangesAcceptChange implements RequestHandlerInterface
+final class PendingChangesAcceptChange implements RequestHandlerInterface
 {
-    private PendingChangesService $pending_changes_service;
-
-    /**
-     * @param PendingChangesService $pending_changes_service
-     */
-    public function __construct(PendingChangesService $pending_changes_service)
-    {
-        $this->pending_changes_service = $pending_changes_service;
+    public function __construct(
+        private readonly PendingChangesService $pending_changes_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();

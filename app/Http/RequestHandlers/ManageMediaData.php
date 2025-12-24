@@ -53,10 +53,7 @@ use function strlen;
 use function substr;
 use function view;
 
-/**
- * Manage media from the control panel.
- */
-class ManageMediaData implements RequestHandlerInterface
+final class ManageMediaData implements RequestHandlerInterface
 {
     private DatatablesService $datatables_service;
 
@@ -84,11 +81,6 @@ class ManageMediaData implements RequestHandlerInterface
         $this->tree_service          = $tree_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $data_filesystem = Registry::filesystem()->data();

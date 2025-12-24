@@ -31,10 +31,7 @@ use function response;
 use function strip_tags;
 use function view;
 
-/**
- * Show help text.
- */
-class HelpText implements RequestHandlerInterface
+final class HelpText implements RequestHandlerInterface
 {
     private const array FRENCH_DATES = [
         '@#DFRENCH R@ 12',
@@ -177,11 +174,6 @@ class HelpText implements RequestHandlerInterface
         ],
     ];
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $topic = $request->getAttribute('topic');

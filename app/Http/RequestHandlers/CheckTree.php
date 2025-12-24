@@ -69,15 +69,14 @@ use function str_starts_with;
 use function strtoupper;
 use function substr_count;
 
-/**
- * Check a tree for errors.
- */
-class CheckTree implements RequestHandlerInterface
+final class CheckTree implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    public function __construct(private readonly Gedcom $gedcom, private readonly TimeoutService $timeout_service)
-    {
+    public function __construct(
+        private readonly Gedcom $gedcom,
+        private readonly TimeoutService $timeout_service,
+    ) {
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface

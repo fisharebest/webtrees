@@ -42,10 +42,7 @@ use function preg_quote;
 use function redirect;
 use function route;
 
-/**
- * Send a message from a visitor.
- */
-class ContactAction implements RequestHandlerInterface
+final class ContactAction implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -80,11 +77,6 @@ class ContactAction implements RequestHandlerInterface
         $this->message_service    = $message_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = Validator::attributes($request)->tree();

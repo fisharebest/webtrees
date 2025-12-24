@@ -33,26 +33,13 @@ use function e;
 use function redirect;
 use function route;
 
-/**
- * Edit the email preferences.
- */
-class EmailPreferencesAction implements RequestHandlerInterface
+final class EmailPreferencesAction implements RequestHandlerInterface
 {
-    private EmailService $email_service;
-
-    /**
-     * @param EmailService $email_service
-     */
-    public function __construct(EmailService $email_service)
-    {
-        $this->email_service = $email_service;
+    public function __construct(
+        private readonly EmailService $email_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $user          = Validator::attributes($request)->user();

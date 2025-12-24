@@ -32,32 +32,14 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
 
-/**
- * Add a new media file to a media object.
- */
-class AddMediaFileAction implements RequestHandlerInterface
+final class AddMediaFileAction implements RequestHandlerInterface
 {
-    private MediaFileService $media_file_service;
-
-    private PendingChangesService $pending_changes_service;
-
-    /**
-     * @param MediaFileService      $media_file_service
-     * @param PendingChangesService $pending_changes_service
-     */
-    public function __construct(MediaFileService $media_file_service, PendingChangesService $pending_changes_service)
-    {
-        $this->media_file_service      = $media_file_service;
-        $this->pending_changes_service = $pending_changes_service;
+    public function __construct(
+        private readonly MediaFileService $media_file_service,
+        private readonly PendingChangesService $pending_changes_service,
+    ) {
     }
 
-    /**
-     * Add a media file to an existing media object.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();

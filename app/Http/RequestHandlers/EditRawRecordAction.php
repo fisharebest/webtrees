@@ -34,16 +34,8 @@ use function preg_replace;
 use function redirect;
 use function trim;
 
-/**
- * Edit the raw GEDCOM of a record.
- */
-class EditRawRecordAction implements RequestHandlerInterface
+final class EditRawRecordAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();

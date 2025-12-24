@@ -36,32 +36,16 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_combine;
 
-/**
- * Edit user account details.
- */
-class AccountEdit implements RequestHandlerInterface
+final class AccountEdit implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private MessageService $message_service;
-
-    private ModuleService $module_service;
-
-    /**
-     * @param MessageService $message_service
-     * @param ModuleService  $module_service
-     */
-    public function __construct(MessageService $message_service, ModuleService $module_service)
-    {
-        $this->message_service = $message_service;
-        $this->module_service = $module_service;
+    public function __construct(
+        private readonly MessageService $message_service,
+        private readonly ModuleService $module_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->treeOptional();

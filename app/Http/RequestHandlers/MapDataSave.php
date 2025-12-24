@@ -31,16 +31,8 @@ use function e;
 use function redirect;
 use function round;
 
-/**
- * Controller for maintaining geographic data.
- */
-class MapDataSave implements RequestHandlerInterface
+final class MapDataSave implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id = Validator::parsedBody($request)->string('parent_id');

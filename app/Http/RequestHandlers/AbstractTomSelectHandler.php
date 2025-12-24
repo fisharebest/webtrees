@@ -28,19 +28,11 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Autocomplete for TomSelect based controls.
- */
 abstract class AbstractTomSelectHandler implements RequestHandlerInterface
 {
     // For clients that request one page of data at a time.
     private const int RESULTS_PER_PAGE = 50;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();

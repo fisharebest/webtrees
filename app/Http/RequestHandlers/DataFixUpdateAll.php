@@ -37,10 +37,7 @@ use function response;
 
 use const JSON_THROW_ON_ERROR;
 
-/**
- * Run a data-fix.
- */
-class DataFixUpdateAll implements RequestHandlerInterface
+final class DataFixUpdateAll implements RequestHandlerInterface
 {
     // Process this number of records in each HTTP request
     private const int CHUNK_SIZE = 250;
@@ -61,11 +58,6 @@ class DataFixUpdateAll implements RequestHandlerInterface
         $this->module_service   = $module_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();
@@ -100,12 +92,8 @@ class DataFixUpdateAll implements RequestHandlerInterface
     }
 
     /**
-     * @param Tree                                            $tree
-     * @param ModuleDataFixInterface                          $module
      * @param Collection<int,object{xref:string,type:string}> $rows
      * @param array<string>                                   $params
-     *
-     * @return ResponseInterface
      */
     private function createUpdateRanges(
         Tree $tree,

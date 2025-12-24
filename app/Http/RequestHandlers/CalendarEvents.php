@@ -49,10 +49,7 @@ use function range;
 use function response;
 use function view;
 
-/**
- * Show anniversaries for events in a given day/month/year.
- */
-class CalendarEvents implements RequestHandlerInterface
+final class CalendarEvents implements RequestHandlerInterface
 {
     public function __construct(
         private readonly CalendarService $calendar_service,

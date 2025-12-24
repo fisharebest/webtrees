@@ -55,10 +55,7 @@ use function touch;
 use function unlink;
 use function view;
 
-/**
- * Controller for the installation wizard
- */
-class SetupWizard implements RequestHandlerInterface
+final class SetupWizard implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -92,11 +89,11 @@ class SetupWizard implements RequestHandlerInterface
     ];
 
     public function __construct(
-        private MigrationService $migration_service,
-        private ModuleService $module_service,
-        private PhpService $php_service,
-        private ServerCheckService $server_check_service,
-        private UserService $user_service
+        private readonly MigrationService $migration_service,
+        private readonly ModuleService $module_service,
+        private readonly PhpService $php_service,
+        private readonly ServerCheckService $server_check_service,
+        private readonly UserService $user_service
     ) {
     }
 

@@ -29,19 +29,11 @@ use function array_filter;
 use function explode;
 use function view;
 
-/**
- * Autocomplete for individuals.
- */
-class TomSelectIndividual extends AbstractTomSelectHandler
+final class TomSelectIndividual extends AbstractTomSelectHandler
 {
-    protected SearchService $search_service;
-
-    /**
-     * @param SearchService $search_service
-     */
-    public function __construct(SearchService $search_service)
-    {
-        $this->search_service = $search_service;
+    public function __construct(
+        private readonly SearchService $search_service,
+    ) {
     }
 
     /**

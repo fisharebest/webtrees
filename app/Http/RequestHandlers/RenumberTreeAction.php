@@ -43,30 +43,14 @@ use function e;
 use function redirect;
 use function route;
 
-/**
- * Renumber the XREFs in a family tree.
- */
-class RenumberTreeAction implements RequestHandlerInterface
+final class RenumberTreeAction implements RequestHandlerInterface
 {
-    private AdminService $admin_service;
-
-    private TimeoutService $timeout_service;
-
-    /**
-     * @param AdminService   $admin_service
-     * @param TimeoutService $timeout_service
-     */
-    public function __construct(AdminService $admin_service, TimeoutService $timeout_service)
-    {
-        $this->admin_service   = $admin_service;
-        $this->timeout_service = $timeout_service;
+    public function __construct(
+        private readonly AdminService $admin_service,
+        private readonly TimeoutService $timeout_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();

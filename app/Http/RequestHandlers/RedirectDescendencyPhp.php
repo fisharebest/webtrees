@@ -34,10 +34,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Redirect URLs created by webtrees 1.x (and PhpGedView).
- */
-class RedirectDescendencyPhp implements RequestHandlerInterface
+final class RedirectDescendencyPhp implements RequestHandlerInterface
 {
     private const array CHART_STYLES = [
         0 => 'tree',

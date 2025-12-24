@@ -29,10 +29,7 @@ use function array_filter;
 use function explode;
 use function view;
 
-/**
- * Autocomplete for repositories.
- */
-class TomSelectRepository extends AbstractTomSelectHandler
+final class TomSelectRepository extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 

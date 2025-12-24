@@ -35,34 +35,16 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Acknowledge an email verification code.
- */
-class VerifyEmail implements RequestHandlerInterface
+final class VerifyEmail implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private EmailService $email_service;
-
-    private UserService $user_service;
-
-    /**
-     * @param EmailService $email_service
-     * @param UserService  $user_service
-     */
-    public function __construct(EmailService $email_service, UserService $user_service)
-    {
-        $this->email_service = $email_service;
-        $this->user_service  = $user_service;
+    public function __construct(
+        private readonly EmailService $email_service,
+        private readonly UserService $user_service,
+    ) {
     }
 
-    /**
-     * Respond to a verification link that was emailed to a user.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $token    = $request->getAttribute('token');

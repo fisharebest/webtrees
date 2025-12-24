@@ -32,16 +32,8 @@ use function is_writable;
 use function redirect;
 use function route;
 
-/**
- * Edit the site preferences.
- */
-class SitePreferencesAction implements RequestHandlerInterface
+final class SitePreferencesAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $index_directory     = Validator::parsedBody($request)->string('INDEX_DIRECTORY');

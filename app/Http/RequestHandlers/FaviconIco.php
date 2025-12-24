@@ -26,16 +26,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function file_get_contents;
 use function response;
 
-/**
- * Respond to /favicon.ico.
- */
-class FaviconIco implements RequestHandlerInterface
+final class FaviconIco implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $content = file_get_contents(__DIR__ . '/../../../favicon.ico');

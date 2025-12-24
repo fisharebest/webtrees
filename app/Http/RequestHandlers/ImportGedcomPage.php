@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\AdminService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -30,28 +31,15 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
 
-/**
- * Import a GEDCOM file into a tree.
- */
-class ImportGedcomPage implements RequestHandlerInterface
+final class ImportGedcomPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private AdminService $admin_service;
-
-    /**
-     * @param AdminService $admin_service
-     */
-    public function __construct(AdminService $admin_service)
-    {
-        $this->admin_service = $admin_service;
+    public function __construct(
+        private readonly AdminService $admin_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';

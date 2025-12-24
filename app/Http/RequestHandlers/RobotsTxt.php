@@ -33,12 +33,7 @@ use function response;
 
 use const PHP_URL_PATH;
 
-/**
- * Generate a robots exclusion file.
- *
- * @link https://robotstxt.org
- */
-class RobotsTxt implements RequestHandlerInterface
+final class RobotsTxt implements RequestHandlerInterface
 {
     private const array DISALLOWED_PATHS = [
         'admin',
@@ -48,14 +43,10 @@ class RobotsTxt implements RequestHandlerInterface
         'account',
     ];
 
-    private ModuleService $module_service;
-
-    private TreeService $tree_service;
-
-    public function __construct(ModuleService $module_service, TreeService $tree_service)
-    {
-        $this->module_service = $module_service;
-        $this->tree_service   = $tree_service;
+    public function __construct(
+        private readonly ModuleService $module_service,
+        private readonly TreeService $tree_service,
+    ) {
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface

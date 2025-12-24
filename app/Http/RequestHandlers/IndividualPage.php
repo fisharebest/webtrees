@@ -51,10 +51,7 @@ use function strip_tags;
 use function strtoupper;
 use function trim;
 
-/**
- * Show an individual's page.
- */
-class IndividualPage implements RequestHandlerInterface
+final class IndividualPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -79,11 +76,6 @@ class IndividualPage implements RequestHandlerInterface
         $this->user_service      = $user_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = Validator::attributes($request)->tree();

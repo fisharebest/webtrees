@@ -35,8 +35,8 @@ use function redirect;
 readonly class EditFactAction implements RequestHandlerInterface
 {
     public function __construct(
-        private GedcomEditService $gedcom_edit_service,
-        private ModuleService $module_service
+        private readonly GedcomEditService $gedcom_edit_service,
+        private readonly ModuleService $module_service
     ) {
     }
 

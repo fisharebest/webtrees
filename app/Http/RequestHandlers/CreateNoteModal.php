@@ -27,18 +27,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function response;
 use function view;
 
-/**
- * Show a form to create a new note object.
- */
-class CreateNoteModal implements RequestHandlerInterface
+final class CreateNoteModal implements RequestHandlerInterface
 {
-    /**
-     * Show a form to create a new note object.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

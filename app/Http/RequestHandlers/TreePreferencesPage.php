@@ -41,10 +41,7 @@ use function e;
 use function explode;
 use function in_array;
 
-/**
- * Edit the tree preferences.
- */
-class TreePreferencesPage implements RequestHandlerInterface
+final class TreePreferencesPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -69,11 +66,6 @@ class TreePreferencesPage implements RequestHandlerInterface
         $this->user_service   = $user_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';

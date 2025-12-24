@@ -33,16 +33,8 @@ use function implode;
 use function redirect;
 use function route;
 
-/**
- * Edit the tree preferences.
- */
-class SiteTagsAction implements RequestHandlerInterface
+final class SiteTagsAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         foreach (array_keys(Gedcom::HIDDEN_TAGS) as $setting) {

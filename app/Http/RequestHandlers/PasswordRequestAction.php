@@ -40,10 +40,7 @@ use function redirect;
 use function route;
 use function view;
 
-/**
- * Request a new password.
- */
-class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterface
+final class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterface
 {
     private const int TOKEN_LENGTH = 40;
 
@@ -74,11 +71,6 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
         $this->user_service       = $user_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->treeOptional();

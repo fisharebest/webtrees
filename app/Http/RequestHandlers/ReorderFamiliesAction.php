@@ -32,16 +32,8 @@ use function implode;
 use function redirect;
 use function uksort;
 
-/**
- * Reorder the parents and/or spouses of an individual.
- */
-class ReorderFamiliesAction implements RequestHandlerInterface
+final class ReorderFamiliesAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();

@@ -27,16 +27,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function redirect;
 use function route;
 
-/**
- * Show anniversaries for events in a given day/month/year.
- */
-class CalendarAction implements RequestHandlerInterface
+final class CalendarAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return redirect(route(CalendarPage::class, [

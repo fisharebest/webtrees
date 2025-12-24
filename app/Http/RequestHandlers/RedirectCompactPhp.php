@@ -34,10 +34,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Redirect URLs created by webtrees 1.x (and PhpGedView).
- */
-class RedirectCompactPhp implements RequestHandlerInterface
+final class RedirectCompactPhp implements RequestHandlerInterface
 {
     public function __construct(
         private readonly ModuleService $module_service,
@@ -45,11 +42,6 @@ class RedirectCompactPhp implements RequestHandlerInterface
     ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $ged  = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));

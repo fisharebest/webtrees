@@ -29,18 +29,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
 
-/**
- * Download a media file.
- */
-class MediaFileDownload implements RequestHandlerInterface
+final class MediaFileDownload implements RequestHandlerInterface
 {
-    /**
-     * Download a non-image media file.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

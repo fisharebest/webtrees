@@ -28,35 +28,20 @@ use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Show a list of modules.
- */
 abstract class AbstractModuleComponentPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private ModuleService $module_service;
-
-    private TreeService $tree_service;
-
-    /**
-     * @param ModuleService $module_service
-     * @param TreeService   $tree_service
-     */
-    public function __construct(ModuleService $module_service, TreeService $tree_service)
-    {
-        $this->module_service = $module_service;
-        $this->tree_service   = $tree_service;
+    public function __construct(
+        private readonly ModuleService $module_service,
+        private readonly TreeService $tree_service,
+    ) {
     }
 
     /**
      * @template T of ModuleInterface
      *
      * @param class-string<T> $interface
-     * @param string          $title
-     * @param string          $description
-     *
-     * @return ResponseInterface
      */
     protected function listComponents(string $interface, string $title, string $description): ResponseInterface
     {

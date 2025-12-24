@@ -33,10 +33,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function basename;
 use function dirname;
 
-/**
- * Redirect URLs created by webtrees 1.x (and PhpGedView).
- */
-class RedirectReportEnginePhp implements RequestHandlerInterface
+final class RedirectReportEnginePhp implements RequestHandlerInterface
 {
     public function __construct(
         private readonly TreeService $tree_service,

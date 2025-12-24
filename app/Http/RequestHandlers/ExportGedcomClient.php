@@ -31,28 +31,15 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Download a GEDCOM file to the client.
- */
-class ExportGedcomClient implements RequestHandlerInterface
+final class ExportGedcomClient implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private GedcomExportService $gedcom_export_service;
-
-    /**
-     * @param GedcomExportService $gedcom_export_service
-     */
-    public function __construct(GedcomExportService $gedcom_export_service)
-    {
-        $this->gedcom_export_service = $gedcom_export_service;
+    public function __construct(
+        private readonly GedcomExportService $gedcom_export_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree         = Validator::attributes($request)->tree();

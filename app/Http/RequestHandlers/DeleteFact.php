@@ -28,18 +28,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Controller for edit forms and responses.
- */
-class DeleteFact implements RequestHandlerInterface
+final class DeleteFact implements RequestHandlerInterface
 {
-    /**
-     * Delete a fact.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();

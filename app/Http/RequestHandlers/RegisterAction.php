@@ -46,10 +46,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function view;
 
-/**
- * Process a user registration.
- */
-class RegisterAction implements RequestHandlerInterface
+final class RegisterAction implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -79,13 +76,6 @@ class RegisterAction implements RequestHandlerInterface
         $this->user_service       = $user_service;
     }
 
-    /**
-     * Perform a registration.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->checkRegistrationAllowed();

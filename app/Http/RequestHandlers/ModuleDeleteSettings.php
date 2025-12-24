@@ -30,18 +30,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function redirect;
 use function route;
 
-/**
- * Delete the database settings for a deleted module.
- */
-class ModuleDeleteSettings implements RequestHandlerInterface
+final class ModuleDeleteSettings implements RequestHandlerInterface
 {
-    /**
-     * Delete the database settings for a deleted module.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $module_name = Validator::parsedBody($request)->string('module_name');

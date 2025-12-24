@@ -70,10 +70,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * The control panel shows a summary of the site and links to admin functions.
- */
-class ControlPanel implements RequestHandlerInterface
+final class ControlPanel implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -123,11 +120,6 @@ class ControlPanel implements RequestHandlerInterface
         $this->user_service         = $user_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
