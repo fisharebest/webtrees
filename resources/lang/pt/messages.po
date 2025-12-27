@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-12-07 00:48+0000\n"
+"PO-Revision-Date: 2025-12-28 22:40+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/pt/>\n"
@@ -4344,7 +4344,7 @@ msgstr "Cremação de uma filha"
 
 #: app/Module/IndividualFactsTabModule.php:749
 msgid "Cremation of a father"
-msgstr "Cremação do pai"
+msgstr "Cremação de um pai"
 
 #: app/Module/IndividualFactsTabModule.php:545
 msgid "Cremation of a grandchild"
@@ -5015,7 +5015,7 @@ msgstr "Óbito de uma filha"
 #: app/Functions/FunctionsPrint.php:221
 #: app/Module/IndividualFactsTabModule.php:739
 msgid "Death of a father"
-msgstr "Óbito do pai"
+msgstr "Óbito de um pai"
 
 #: app/Module/IndividualFactsTabModule.php:499
 #: app/Module/IndividualFactsTabModule.php:517
