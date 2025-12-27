@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-12-07 01:01+0000\n"
+"PO-Revision-Date: 2025-12-28 19:39+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
@@ -4222,7 +4222,7 @@ msgstr "Cremação de uma filha"
 
 #: app/GedcomTag.php:1325
 msgid "Cremation of a father"
-msgstr "Cremação do pai"
+msgstr "Cremação de um pai"
 
 #: app/GedcomTag.php:1293 app/GedcomTag.php:1302 app/GedcomTag.php:1311
 msgid "Cremation of a grand-parent"
@@ -4801,7 +4801,7 @@ msgstr "Óbito de uma filha"
 
 #: app/GedcomTag.php:1428
 msgid "Death of a father"
-msgstr "Óbito do pai"
+msgstr "Óbito de um pai"
 
 #: app/GedcomTag.php:1396 app/GedcomTag.php:1405 app/GedcomTag.php:1414
 msgid "Death of a grand-parent"
