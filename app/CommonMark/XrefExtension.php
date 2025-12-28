@@ -23,24 +23,15 @@ use Fisharebest\Webtrees\Tree;
 use League\CommonMark\Environment\EnvironmentBuilderInterface;
 use League\CommonMark\Extension\ExtensionInterface;
 
-/**
- * Convert XREFs within markdown text to links
- */
 class XrefExtension implements ExtensionInterface
 {
     private Tree $tree;
 
-    /**
-     * @param Tree $tree Match XREFs in this tree
-     */
     public function __construct(Tree $tree)
     {
         $this->tree = $tree;
     }
 
-    /**
-     * @param EnvironmentBuilderInterface $environment
-     */
     public function register(EnvironmentBuilderInterface $environment): void
     {
         $environment

@@ -27,16 +27,10 @@ use League\CommonMark\Parser\Inline\InlineParserInterface;
 use League\CommonMark\Parser\Inline\InlineParserMatch;
 use League\CommonMark\Parser\InlineParserContext;
 
-/**
- * Convert XREFs within markdown text to links
- */
 class XrefParser implements InlineParserInterface
 {
     private Tree $tree;
 
-    /**
-     * @param Tree $tree Match XREFs in this tree
-     */
     public function __construct(Tree $tree)
     {
         $this->tree = $tree;

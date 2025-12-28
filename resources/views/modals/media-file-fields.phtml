@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Tree;
             <option value="upload">
                 <?= I18N::translate('A file on your computer') ?>
             </option>
-            <?php if (!empty($unused_files)) : ?>
+            <?php if ($unused_files !== []) : ?>
             <option value="unused">
                 <?= I18N::translate('A file on the server') ?>
             </option>
@@ -68,7 +68,7 @@ use Fisharebest\Webtrees\Tree;
                 </div>
             </div>
             <div class="col-sm-6">
-                <input aria-label="<?= I18N::translate('Filename') ?>" class="form-control" name="new_file" type="text" placeholder="<?= I18N::translate('Same as uploaded file') ?>" value="<?= e(basename($media_file ? $media_file->filename() : '')) ?>">
+                <input aria-label="<?= I18N::translate('Filename') ?>" class="form-control" name="new_file" type="text" placeholder="<?= I18N::translate('Same as uploaded file') ?>" value="<?= e(basename($media_file instanceof MediaFile  ? $media_file->filename() : '')) ?>">
             </div>
         </div>
         <div class="form-text">
@@ -94,12 +94,12 @@ use Fisharebest\Webtrees\Tree;
     </div>
 </div>
 
-<div class="row file-location file-location-url mb-3 <?= $media_file && $media_file->isExternal() ? '' : 'd-none' ?>">
+<div class="row file-location file-location-url mb-3 <?= $media_file instanceof MediaFile  && $media_file->isExternal() ? '' : 'd-none' ?>">
     <label class="col-form-label col-sm-2" for="remote">
         <?= I18N::translate('URL') ?>
     </label>
     <div class="col-sm-10">
-        <input class="form-control" type="url" id="remote" name="remote" placeholder="https://www.example.com/photo.jpeg" value="<?= e($media_file && $media_file->isExternal() ? $media_file->filename() : '') ?>">
+        <input class="form-control" type="url" id="remote" name="remote" placeholder="https://www.example.com/photo.jpeg" value="<?= e($media_file instanceof MediaFile  && $media_file->isExternal() ? $media_file->filename() : '') ?>">
     </div>
 </div>
 
@@ -108,7 +108,7 @@ use Fisharebest\Webtrees\Tree;
         <?= I18N::translate('Title') ?>
     </label>
     <div class="col-sm-10">
-        <input class="form-control" id="title" name="title" type="text" value="<?= e($media_file ? $media_file->title() : '') ?>">
+        <input class="form-control" id="title" name="title" type="text" value="<?= e($media_file instanceof MediaFile  ? $media_file->title() : '') ?>">
     </div>
 </div>
 
@@ -117,7 +117,7 @@ use Fisharebest\Webtrees\Tree;
         <?= I18N::translate('Media type') ?>
     </label>
     <div class="col-sm-10">
-        <?= (new SourceMediaType(''))->edit('type', 'type', $media_file ? $media_file->type() : '', $tree) ?>
+        <?= (new SourceMediaType(''))->edit('type', 'type', $media_file instanceof MediaFile  ? $media_file->type() : '', $tree) ?>
     </div>
 </div>
 

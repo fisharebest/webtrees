@@ -67,7 +67,7 @@ final class TreeList extends AbstractCommand
             'name'            => $tree->name(),
             'title'           => $tree->title(),
             'media_directory' => $tree->getPreference(setting_name: 'MEDIA_DIRECTORY'),
-            'imported'        => $tree->getPreference(setting_name: 'imported') ? 'yes' : 'no',
+            'imported'        => $tree->getPreference(setting_name: 'imported') === '1' ? 'yes' : 'no',
         ])
             ->values()
             ->all();

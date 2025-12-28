@@ -30,22 +30,21 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
 
 /**
- * @var array<Tree> $all_trees
- * @var string      $title
- * @var Tree        $tree
+ * @var Collection<Tree> $all_trees
+ * @var string           $title
+ * @var Tree             $tree
  */
 
 ?>
 
-<?php if (!empty($all_trees)) : ?>
-    <?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
-<?php endif ?>
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
-<?php if (empty($all_trees)) : ?>
+<?php if ($all_trees->isEmpty()) : ?>
     <div class="alert alert-info">
         <?= I18N::translate('You need to create a family tree.') ?>
     </div>

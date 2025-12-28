@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\DB;
+use stdClass;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -98,7 +99,6 @@ final class UserTreeSetting extends AbstractCommand
             $table = new Table(output: $output);
             $table->setHeaders(headers: ['Setting name', 'Setting value']);
 
-            /** @var array<object{setting_name:string,setting_value:string}> $settings */
             $settings = DB::table(table: 'user_gedcom_setting')
                 ->where(column: 'user_id', operator: '=', value: $user_id)
                 ->where(column: 'gedcom_id', operator: '=', value: $tree_id)

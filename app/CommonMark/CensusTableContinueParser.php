@@ -32,6 +32,7 @@ use League\CommonMark\Parser\Cursor;
 
 use function array_map;
 use function explode;
+use function iterator_to_array;
 use function str_starts_with;
 use function strlen;
 use function substr;
@@ -91,7 +92,7 @@ class CensusTableContinueParser extends AbstractBlockContinueParser
 
         $tr = new TableRow();
 
-        if (empty($this->thead->children())) {
+        if (iterator_to_array($this->thead->children()) === []) {
             $cells = array_map($callback, $cells);
 
             foreach ($cells as $cell) {

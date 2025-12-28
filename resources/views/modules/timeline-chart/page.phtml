@@ -67,7 +67,7 @@ use Illuminate\Support\Collection;
             <?= view('icons/sex', ['sex' => $individual->sex()]) ?>
             <a href="<?= e($individual->url()) ?>">
                 <?= $individual->fullName() ?>
-                <?php if ($individual->alternateName() !== '') : ?>
+                <?php if ($individual->alternateName() !== null) : ?>
                     <br>
                     <?= $individual->alternateName() ?>
                 <?php endif ?>

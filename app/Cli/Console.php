@@ -55,7 +55,7 @@ final class Console extends Application
     public function loadCommands(): self
     {
         foreach (self::COMMANDS as $command) {
-            $this->add(Registry::container()->get($command));
+            $this->addCommand(command: Registry::container()->get($command));
         }
 
         return $this;

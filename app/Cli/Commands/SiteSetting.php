@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\DB;
+use stdClass;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -70,7 +71,6 @@ final class SiteSetting extends AbstractCommand
             $table = new Table(output: $output);
             $table->setHeaders(headers: ['Setting name', 'Setting value']);
 
-            /** @var array<object{setting_name:string,setting_value:string}> $settings */
             $settings = DB::table(table: 'site_setting')
                 ->orderBy(column: 'setting_name')
                 ->select(columns: ['setting_name', 'setting_value'])

@@ -27,7 +27,7 @@ I18N::translate('A prospective user has registered with webtrees at %s.', $base_
 
 <?= I18N::translate('Comments') ?> - <?= e($comments) ?>
 
-<?= I18N::translate('Tree') ?> - <?= e($tree ? $tree->name() : '') ?>
+<?= I18N::translate('Tree') ?> - <?= e($tree instanceof Tree ? $tree->name() : '') ?>
 
 <?= I18N::translate('The user has been sent an email with the information necessary to confirm the access request.') ?>
 

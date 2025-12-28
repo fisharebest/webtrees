@@ -52,7 +52,9 @@ final class MapDataExportGeoJson implements RequestHandlerInterface
             $parent = $this->map_data_service->findById((int) $parent_id);
         }
 
-        for ($tmp = $parent, $hierarchy = []; $tmp->id() !== null; $tmp = $tmp->parent()) {
+        $hierarchy = [];
+
+        for ($tmp = $parent; $tmp->id() !== null; $tmp = $tmp->parent()) {
             $hierarchy[] = $tmp->locationName();
         }
 

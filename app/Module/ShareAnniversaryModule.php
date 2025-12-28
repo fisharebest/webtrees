@@ -101,12 +101,9 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
             ]);
 
         if ($facts->isNotEmpty()) {
-            $url = route(static::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()]);
-
             return view('modules/share-anniversary/share', [
                 'facts'  => $facts,
                 'record' => $record,
-                'url'    => $url,
             ]);
         }
 

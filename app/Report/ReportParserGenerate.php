@@ -978,7 +978,7 @@ class ReportParserGenerate extends ReportParserBase
                 if (!empty($attrs['truncate'])) {
                     $name = Str::limit($name, (int) $attrs['truncate'], I18N::translate('…'));
                 } else {
-                    $addname = (string) $record->alternateName();
+                    $addname = $record->alternateName() ?? '';
                     $addname = strip_tags($addname);
                     if (!empty($addname)) {
                         $name .= ' ' . $addname;

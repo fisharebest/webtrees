@@ -223,8 +223,9 @@ $("#<?= e($table_id) ?>")
                     </td>
 
                     <!-- Marriage date -->
+                    <?php $marriage_dates = $family->getAllMarriageDates() ?>
                     <td data-sort="<?= sprintf('x%07d', $family->getMarriageDate()->julianDay()) ?>">
-                        <?php if ($marriage_dates = $family->getAllMarriageDates()) : ?>
+                        <?php if ($marriage_dates !== []) : ?>
                             <?php foreach ($marriage_dates as $marriage_date) : ?>
                                 <div><?= $marriage_date->display($tree, null, true) ?></div>
                             <?php endforeach ?>

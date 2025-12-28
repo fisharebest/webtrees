@@ -22,16 +22,10 @@ namespace Fisharebest\Webtrees\CommonMark;
 use Fisharebest\Webtrees\GedcomRecord;
 use League\CommonMark\Node\Node;
 
-/**
- * Convert XREFs within markdown text to links
- */
 class XrefNode extends Node
 {
     private GedcomRecord $record;
 
-    /**
-     * @param GedcomRecord $record
-     */
     public function __construct(GedcomRecord $record)
     {
         parent::__construct();
@@ -39,9 +33,6 @@ class XrefNode extends Node
         $this->record = $record;
     }
 
-    /**
-     * @return GedcomRecord
-     */
     public function record(): GedcomRecord
     {
         return $this->record;

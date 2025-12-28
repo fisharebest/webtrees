@@ -25,17 +25,8 @@ use League\CommonMark\Renderer\NodeRendererInterface;
 use League\CommonMark\Util\HtmlElement;
 use Stringable;
 
-/**
- * Convert XREFs within markdown text to links
- */
 class XrefRenderer implements NodeRendererInterface
 {
-    /**
-     * @param Node                       $node
-     * @param ChildNodeRendererInterface $childRenderer
-     *
-     * @return Stringable
-     */
     public function render(Node $node, ChildNodeRendererInterface $childRenderer): Stringable
     {
         XrefNode::assertInstanceOf($node);

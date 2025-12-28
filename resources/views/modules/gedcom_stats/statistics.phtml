@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<?php if ($show_last_update) : ?>
+<?php if ($show_last_update === '1') : ?>
     <p class="card-text">
         <?= I18N::translate('This family tree was last updated on %s.', '#gedcomUpdated#') ?>
     </p>
@@ -40,7 +40,7 @@ use Fisharebest\Webtrees\I18N;
                 <?= I18N::translate('Statistics') ?>
             </caption>
             <tbody>
-            <?php if ($stat_indi) : ?>
+            <?php if ($stat_indi === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Individuals') ?>
@@ -73,7 +73,7 @@ use Fisharebest\Webtrees\I18N;
                 </tr>
             <?php endif ?>
 
-            <?php if ($stat_surname) : ?>
+            <?php if ($stat_surname === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Surnames') ?>
@@ -84,7 +84,7 @@ use Fisharebest\Webtrees\I18N;
                 </tr>
             <?php endif ?>
 
-            <?php if ($stat_fam) : ?>
+            <?php if ($stat_fam === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Families') ?>
@@ -96,7 +96,7 @@ use Fisharebest\Webtrees\I18N;
             <?php endif ?>
 
 
-            <?php if ($stat_sour) : ?>
+            <?php if ($stat_sour === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Sources') ?>
@@ -107,7 +107,7 @@ use Fisharebest\Webtrees\I18N;
                 </tr>
             <?php endif ?>
 
-            <?php if ($stat_media) : ?>
+            <?php if ($stat_media === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Media objects') ?>
@@ -118,7 +118,7 @@ use Fisharebest\Webtrees\I18N;
                 </tr>
             <?php endif ?>
 
-            <?php if ($stat_repo) : ?>
+            <?php if ($stat_repo === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Repositories') ?>
@@ -129,7 +129,7 @@ use Fisharebest\Webtrees\I18N;
                 </tr>
             <?php endif ?>
 
-            <?php if ($stat_events) : ?>
+            <?php if ($stat_events === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Events') ?>
@@ -140,7 +140,7 @@ use Fisharebest\Webtrees\I18N;
                 </tr>
             <?php endif ?>
 
-            <?php if ($stat_users) : ?>
+            <?php if ($stat_users === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Users') ?>
@@ -161,7 +161,7 @@ use Fisharebest\Webtrees\I18N;
             </caption>
 
             <tbody>
-            <?php if ($stat_first_birth) : ?>
+            <?php if ($stat_first_birth === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Earliest birth') ?>
@@ -172,7 +172,7 @@ use Fisharebest\Webtrees\I18N;
                 </tr>
             <?php endif ?>
 
-            <?php if ($stat_last_birth) : ?>
+            <?php if ($stat_last_birth === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Latest birth') ?>
@@ -183,7 +183,7 @@ use Fisharebest\Webtrees\I18N;
                 </tr>
             <?php endif ?>
 
-            <?php if ($stat_first_death) : ?>
+            <?php if ($stat_first_death === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Earliest death') ?>
@@ -194,7 +194,7 @@ use Fisharebest\Webtrees\I18N;
                 </tr>
             <?php endif ?>
 
-            <?php if ($stat_last_death) : ?>
+            <?php if ($stat_last_death === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Latest death') ?>
@@ -205,7 +205,7 @@ use Fisharebest\Webtrees\I18N;
                 </tr>
             <?php endif ?>
 
-            <?php if ($stat_long_life) : ?>
+            <?php if ($stat_long_life === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Individual who lived the longest') ?>
@@ -216,7 +216,7 @@ use Fisharebest\Webtrees\I18N;
                 </tr>
             <?php endif ?>
 
-            <?php if ($stat_avg_life) : ?>
+            <?php if ($stat_avg_life === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Average age at death') ?>
@@ -231,7 +231,7 @@ use Fisharebest\Webtrees\I18N;
                 </tr>
             <?php endif ?>
 
-            <?php if ($stat_most_chil) : ?>
+            <?php if ($stat_most_chil === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Family with the most children') ?>
@@ -244,7 +244,7 @@ use Fisharebest\Webtrees\I18N;
                 </tr>
             <?php endif ?>
 
-            <?php if ($stat_avg_chil) : ?>
+            <?php if ($stat_avg_chil === '1') : ?>
                 <tr>
                     <th scope="row">
                         <?= I18N::translate('Average number of children per family') ?>
