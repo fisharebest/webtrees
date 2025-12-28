@@ -32,10 +32,10 @@ class CheckForMaintenanceModeTest extends TestCase
 {
     public function testSiteIsOffline(): void
     {
-        $handler = $this->createStub(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response());
 
-        $maintenance_mode_service = $this->createStub(MaintenanceModeService::class);
+        $maintenance_mode_service = self::createStub(MaintenanceModeService::class);
         $maintenance_mode_service->method('isOffline')->willReturn(true);
         $maintenance_mode_service->method('message')->willReturn('XYZZY');
 
@@ -49,10 +49,10 @@ class CheckForMaintenanceModeTest extends TestCase
 
     public function testSiteIsOnline(): void
     {
-        $handler = $this->createStub(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response());
 
-        $maintenance_mode_service = $this->createStub(MaintenanceModeService::class);
+        $maintenance_mode_service = self::createStub(MaintenanceModeService::class);
         $maintenance_mode_service->method('isOffline')->willReturn(false);
 
         $request    = self::createRequest();

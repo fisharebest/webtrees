@@ -38,7 +38,7 @@ class RedirectBranchesPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -83,7 +83,7 @@ class RedirectBranchesPhpTest extends TestCase
 
     public function testModuleDisabled(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
@@ -91,7 +91,7 @@ class RedirectBranchesPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $module_service = $this->createStub(ModuleService::class);
+        $module_service = self::createStub(ModuleService::class);
         $module_service
             ->method('findByComponent')
             ->with(ModuleListInterface::class)
@@ -117,7 +117,7 @@ class RedirectBranchesPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection([]));
 
-        $module_service = $this->createStub(ModuleService::class);
+        $module_service = self::createStub(ModuleService::class);
 
         $handler = new RedirectBranchesPhp($module_service, $tree_service);
 

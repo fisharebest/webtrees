@@ -33,10 +33,10 @@ class CensusColumnYearsMarriedTest extends TestCase
 {
     public function testNoSpouseFamily(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnYearsMarried($census, '', '');
@@ -46,13 +46,13 @@ class CensusColumnYearsMarriedTest extends TestCase
 
     public function testNoMarriage(): void
     {
-        $family = $this->createStub(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('facts')->with(['MARR'], true)->willReturn(new Collection());
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnYearsMarried($census, '', '');
@@ -62,16 +62,16 @@ class CensusColumnYearsMarriedTest extends TestCase
 
     public function testUndatedMarriage(): void
     {
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('date')->willReturn(new Date(''));
 
-        $family = $this->createStub(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('facts')->with(['MARR'], true)->willReturn(new Collection([$fact]));
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnYearsMarried($census, '', '');
@@ -81,16 +81,16 @@ class CensusColumnYearsMarriedTest extends TestCase
 
     public function testMarriageAfterCensus(): void
     {
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('date')->willReturn(new Date('1861'));
 
-        $family = $this->createStub(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('facts')->with(['MARR'], true)->willReturn(new Collection([$fact]));
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnYearsMarried($census, '', '');
@@ -100,16 +100,16 @@ class CensusColumnYearsMarriedTest extends TestCase
 
     public function testMarriageBeforeCensus(): void
     {
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('date')->willReturn(new Date('OCT 1851'));
 
-        $family = $this->createStub(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('facts')->with(['MARR'], true)->willReturn(new Collection([$fact]));
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnYearsMarried($census, '', '');

@@ -34,7 +34,7 @@ class CheckCsrfTest extends TestCase
 {
     public function testMiddleware(): void
     {
-        $handler = $this->createStub(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response());
 
         $uri_factory = Registry::container()->get(UriFactoryInterface::class);

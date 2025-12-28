@@ -35,7 +35,7 @@ class RedirectReportEnginePhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');

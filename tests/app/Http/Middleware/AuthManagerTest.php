@@ -36,13 +36,13 @@ class AuthManagerTest extends TestCase
 {
     public function testAllowed(): void
     {
-        $handler = $this->createStub(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $user = $this->createStub(User::class);
+        $user = self::createStub(User::class);
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree->method('getUserPreference')->with($user, UserInterface::PREF_TREE_ROLE)->willReturn(UserInterface::ROLE_MANAGER);
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', $user);
@@ -58,13 +58,13 @@ class AuthManagerTest extends TestCase
         $this->expectException(HttpAccessDeniedException::class);
         $this->expectExceptionMessage('You do not have permission to view this page.');
 
-        $handler = $this->createStub(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $user = $this->createStub(User::class);
+        $user = self::createStub(User::class);
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree->method('getUserPreference')->with($user, UserInterface::PREF_TREE_ROLE)->willReturn(UserInterface::ROLE_MODERATOR);
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', $user);
@@ -75,10 +75,10 @@ class AuthManagerTest extends TestCase
 
     public function testNotLoggedIn(): void
     {
-        $handler = $this->createStub(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', new GuestUser());
         $middleware = new AuthManager();

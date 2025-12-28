@@ -36,7 +36,7 @@ class XrefSharedNoteTest extends TestCase
     {
         $element = new XrefSharedNote('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(SharedNoteFactory::class);
 
@@ -79,7 +79,7 @@ class XrefSharedNoteTest extends TestCase
             ->method('url')
             ->willReturn('https://url');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(SharedNoteFactory::class);
 
@@ -96,7 +96,7 @@ class XrefSharedNoteTest extends TestCase
     {
         $element = new XrefSharedNote('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         self::assertSame('<span class="error">invalid</span>', $element->value('invalid', $tree));
     }
@@ -105,7 +105,7 @@ class XrefSharedNoteTest extends TestCase
     {
         $element = new XrefSharedNote('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(SharedNoteFactory::class);
 

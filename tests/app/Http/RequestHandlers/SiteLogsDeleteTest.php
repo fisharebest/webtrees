@@ -32,10 +32,10 @@ class SiteLogsDeleteTest extends TestCase
     {
         $request = self::createRequest();
 
-        $query = $this->createStub(Builder::class);
+        $query = self::createStub(Builder::class);
         $query->method('delete');
 
-        $site_logs_service = $this->createStub(SiteLogsService::class);
+        $site_logs_service = self::createStub(SiteLogsService::class);
         $site_logs_service->method('logsQuery')->willReturn($query);
 
         $handler  = new SiteLogsDelete($site_logs_service);

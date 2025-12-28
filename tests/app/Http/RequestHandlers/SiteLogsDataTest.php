@@ -38,15 +38,15 @@ class SiteLogsDataTest extends TestCase
             ['tree' => 'a', 'from' => 'b', 'to' => 'c', 'type' => 'd', 'text' => 'e', 'ip' => 'f', 'username' => 'g']
         );
 
-        $query = $this->createStub(Builder::class);
+        $query = self::createStub(Builder::class);
 
-        $site_logs_service = $this->createStub(SiteLogsService::class);
+        $site_logs_service = self::createStub(SiteLogsService::class);
         $site_logs_service->method('logsQuery')->willReturn($query);
 
-        $response = $this->createStub(ResponseInterface::class);
+        $response = self::createStub(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(StatusCodeInterface::STATUS_OK);
 
-        $data_tables_service = $this->createStub(DatatablesService::class);
+        $data_tables_service = self::createStub(DatatablesService::class);
         $data_tables_service->method('handleQuery')->willReturn($response);
 
         $handler  = new SiteLogsData($data_tables_service, $site_logs_service);

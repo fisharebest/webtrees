@@ -35,7 +35,7 @@ class BootModulesTest extends TestCase
     {
         $theme = new WebtreesTheme();
 
-        $handler = $this->createStub(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('It works!'));
 
         $module_service = $this->createMock(ModuleService::class);

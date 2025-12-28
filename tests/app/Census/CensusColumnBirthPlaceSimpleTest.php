@@ -30,7 +30,7 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
 {
     private function getPlaceMock(string $place): Place
     {
-        $placeMock = $this->createStub(Place::class);
+        $placeMock = self::createStub(Place::class);
         $placeMock->method('gedcomName')->willReturn($place);
 
         return $placeMock;
@@ -38,10 +38,10 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
 
     public function testForeignCountry(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('Westminster, London, England'));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('United States');
 
         $column = new CensusColumnBirthPlaceSimple($census, '', '');
@@ -51,10 +51,10 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
 
     public function testJustCountry(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('United States'));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('United States');
 
         $column = new CensusColumnBirthPlaceSimple($census, '', '');
@@ -64,10 +64,10 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
 
     public function testKnownState(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('Maryland, United States'));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('United States');
 
         $column = new CensusColumnBirthPlaceSimple($census, '', '');
@@ -77,10 +77,10 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
 
     public function testKnownStateAndTown(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('Miami, Florida, United States'));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('United States');
 
         $column = new CensusColumnBirthPlaceSimple($census, '', '');

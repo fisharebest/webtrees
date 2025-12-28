@@ -34,7 +34,7 @@ class DoHousekeepingTest extends TestCase
 
     public function testMiddleware(): void
     {
-        $handler = $this->createStub(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response());
 
         $request    = self::createRequest();

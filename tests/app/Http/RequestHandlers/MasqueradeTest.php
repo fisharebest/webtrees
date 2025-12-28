@@ -35,10 +35,10 @@ class MasqueradeTest extends TestCase
 
     public function testMasqueradeAsUser(): void
     {
-        $user1 = $this->createStub(User::class);
+        $user1 = self::createStub(User::class);
         $user1->method('id')->willReturn(1);
 
-        $user2 = $this->createStub(User::class);
+        $user2 = self::createStub(User::class);
         $user2->method('id')->willReturn(2);
 
         $user_service = $this->createMock(UserService::class);
@@ -58,7 +58,7 @@ class MasqueradeTest extends TestCase
 
     public function testCannotMasqueradeAsSelf(): void
     {
-        $user = $this->createStub(User::class);
+        $user = self::createStub(User::class);
         $user->method('id')->willReturn(1);
 
         $user_service = $this->createMock(UserService::class);
@@ -80,7 +80,7 @@ class MasqueradeTest extends TestCase
         $this->expectException(HttpNotFoundException::class);
         $this->expectExceptionMessage('User ID 2 not found');
 
-        $user = $this->createStub(User::class);
+        $user = self::createStub(User::class);
         $user->method('id')->willReturn(1);
 
         $user_service = $this->createMock(UserService::class);

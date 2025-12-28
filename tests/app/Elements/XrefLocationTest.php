@@ -37,7 +37,7 @@ class XrefLocationTest extends TestCase
     {
         $element = new XrefLocation('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(LocationFactory::class);
 
@@ -85,7 +85,7 @@ class XrefLocationTest extends TestCase
             ->method('url')
             ->willReturn('https://url');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(LocationFactory::class);
 
@@ -102,7 +102,7 @@ class XrefLocationTest extends TestCase
     {
         $element = new XrefLocation('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         self::assertSame('<span class="error">invalid</span>', $element->value('invalid', $tree));
     }
@@ -111,7 +111,7 @@ class XrefLocationTest extends TestCase
     {
         $element = new XrefLocation('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(LocationFactory::class);
 

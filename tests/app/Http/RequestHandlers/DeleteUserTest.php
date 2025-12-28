@@ -35,7 +35,7 @@ class DeleteUserTest extends TestCase
 
     public function testDeleteUser(): void
     {
-        $user = $this->createStub(User::class);
+        $user = self::createStub(User::class);
         $user->method('id')->willReturn(1);
 
         $user_service = $this->createMock(UserService::class);

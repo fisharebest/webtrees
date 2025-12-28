@@ -38,7 +38,7 @@ class CensusColumnReligionTest extends TestCase
             ->with(self::withConsecutive([['RELI'], []]))
             ->willReturnOnConsecutiveCalls(new Collection(), new Collection());
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnReligion($census, '', '');
 
@@ -47,12 +47,12 @@ class CensusColumnReligionTest extends TestCase
 
     public function testRecordReligion(): void
     {
-        $individual = $this->createStub(Individual::class);
-        $fact       = $this->createStub(Fact::class);
+        $individual = self::createStub(Individual::class);
+        $fact       = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Jedi');
         $individual->method('facts')->with(['RELI'])->willReturn(new Collection([$fact]));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnReligion($census, '', '');
 
@@ -62,7 +62,7 @@ class CensusColumnReligionTest extends TestCase
     public function testEventReligion(): void
     {
         $individual = $this->createMock(Individual::class);
-        $fact       = $this->createStub(Fact::class);
+        $fact       = self::createStub(Fact::class);
         $fact->method('attribute')->with('RELI')->willReturn('Jedi');
         $individual
             ->expects($this->exactly(2))
@@ -73,7 +73,7 @@ class CensusColumnReligionTest extends TestCase
                 new Collection([$fact])
             );
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnReligion($census, '', '');
 

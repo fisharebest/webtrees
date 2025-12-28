@@ -68,10 +68,10 @@ class RelationshipNamesTest extends TestCase
         // Individual suffixes - m(ale), f(emale), u(nknown), a(dopted), o(foster)
         // Family suffixes - m(arried), d(ivorced), e(ngaged)
         //
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
-        $individual_factory = $this->createStub(IndividualFactory::class);
-        $family_factory     = $this->createStub(FamilyFactory::class);
+        $individual_factory = self::createStub(IndividualFactory::class);
+        $family_factory     = self::createStub(FamilyFactory::class);
 
         Registry::familyFactory($family_factory);
         Registry::individualFactory($individual_factory);

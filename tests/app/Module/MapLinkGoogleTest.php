@@ -32,7 +32,7 @@ class MapLinkGoogleTest extends TestCase
     {
         $module = new MapLinkGoogle();
 
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('latitude')->willReturn(null);
         $fact->method('longitude')->willReturn(null);
 
@@ -45,10 +45,10 @@ class MapLinkGoogleTest extends TestCase
     {
         $module = new MapLinkGoogle();
 
-        $record = $this->createStub(Individual::class);
+        $record = self::createStub(Individual::class);
         $record->method('fullName')->willReturn('FULL NAME');
 
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('latitude')->willReturn(54.321);
         $fact->method('longitude')->willReturn(-1.2345);
         $fact->method('label')->willReturn('LABEL');

@@ -32,15 +32,15 @@ class CensusColumnRelationToHeadTest extends TestCase
 
     public function testNull(): void
     {
-        $individual1 = $this->createStub(Individual::class);
-        $individual2 = $this->createStub(Individual::class);
+        $individual1 = self::createStub(Individual::class);
+        $individual2 = self::createStub(Individual::class);
 
         $individual1->method('childFamilies')->willReturn(new Collection());
         $individual1->method('spouseFamilies')->willReturn(new Collection());
         $individual2->method('childFamilies')->willReturn(new Collection());
         $individual2->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnRelationToHead($census, '', '');
 

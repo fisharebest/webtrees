@@ -40,7 +40,7 @@ class ManageMediaDataTest extends TestCase
         $datatables_service    = new DatatablesService();
         $gedcom_import_service = new GedcomImportService();
         $linked_record_service = new LinkedRecordService();
-        $media_file_service    = $this->createStub(MediaFileService::class);
+        $media_file_service    = self::createStub(MediaFileService::class);
         $media_file_service->method('allMediaFolders')->willReturn(new Collection(['media/']));
         $tree_service          = new TreeService($gedcom_import_service);
         $handler               = new ManageMediaData($datatables_service, $linked_record_service, $media_file_service, $tree_service);
@@ -62,7 +62,7 @@ class ManageMediaDataTest extends TestCase
         $datatables_service    = new DatatablesService();
         $gedcom_import_service = new GedcomImportService();
         $linked_record_service = new LinkedRecordService();
-        $media_file_service    = $this->createStub(MediaFileService::class);
+        $media_file_service    = self::createStub(MediaFileService::class);
         $media_file_service->method('allMediaFolders')->willReturn(new Collection(['media/']));
         $tree_service          = new TreeService($gedcom_import_service);
         $handler               = new ManageMediaData($datatables_service, $linked_record_service, $media_file_service, $tree_service);
@@ -84,7 +84,7 @@ class ManageMediaDataTest extends TestCase
         $datatables_service    = new DatatablesService();
         $gedcom_import_service = new GedcomImportService();
         $linked_record_service = new LinkedRecordService();
-        $media_file_service    = $this->createStub(MediaFileService::class);
+        $media_file_service    = self::createStub(MediaFileService::class);
         $media_file_service->method('allMediaFolders')->willReturn(new Collection(['media/']));
         $tree_service          = new TreeService($gedcom_import_service);
         $handler               = new ManageMediaData($datatables_service, $linked_record_service, $media_file_service, $tree_service);

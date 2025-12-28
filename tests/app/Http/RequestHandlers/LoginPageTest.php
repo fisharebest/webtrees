@@ -46,7 +46,7 @@ class LoginPageTest extends TestCase
     {
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
-        $user                  = $this->createStub(User::class);
+        $user                  = self::createStub(User::class);
         $request               = self::createRequest()->withAttribute('user', $user);
         $handler               = new LoginPage($tree_service);
         $response              = $handler->handle($request);

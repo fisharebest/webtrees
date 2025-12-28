@@ -37,16 +37,16 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     public function testNewSonNames(): void
     {
-        $father_fact = $this->createStub(Fact::class);
+        $father_fact = self::createStub(Fact::class);
         $father_fact->method('value')->willReturn('Jon Einarsson');
 
-        $father = $this->createStub(Individual::class);
+        $father = self::createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father_fact]));
 
-        $mother_fact = $this->createStub(Fact::class);
+        $mother_fact = self::createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Eva Stefansdottir');
 
-        $mother = $this->createStub(Individual::class);
+        $mother = self::createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -57,16 +57,16 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     public function testNewDaughterNames(): void
     {
-        $father_fact = $this->createStub(Fact::class);
+        $father_fact = self::createStub(Fact::class);
         $father_fact->method('value')->willReturn('Jon Einarsson');
 
-        $father = $this->createStub(Individual::class);
+        $father = self::createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father_fact]));
 
-        $mother_fact = $this->createStub(Fact::class);
+        $mother_fact = self::createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Eva Stefansdottir');
 
-        $mother = $this->createStub(Individual::class);
+        $mother = self::createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -77,16 +77,16 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     public function testNewChildNames(): void
     {
-        $father_fact = $this->createStub(Fact::class);
+        $father_fact = self::createStub(Fact::class);
         $father_fact->method('value')->willReturn('Jon Einarsson');
 
-        $father = $this->createStub(Individual::class);
+        $father = self::createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father_fact]));
 
-        $mother_fact = $this->createStub(Fact::class);
+        $mother_fact = self::createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Eva Stefansdottir');
 
-        $mother = $this->createStub(Individual::class);
+        $mother = self::createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -97,10 +97,10 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     public function testNewFatherNames(): void
     {
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Jon Einarsson');
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -111,10 +111,10 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     public function testNewMotherNames(): void
     {
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Jon Evasdottir');
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -125,10 +125,10 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     public function testNewParentNames(): void
     {
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Jon Einarsson');
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -139,10 +139,10 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     public function testNewSpouseNames(): void
     {
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Jon Einarsson');
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(

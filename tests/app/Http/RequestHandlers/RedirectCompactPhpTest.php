@@ -41,7 +41,7 @@ class RedirectCompactPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -52,7 +52,7 @@ class RedirectCompactPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
@@ -94,7 +94,7 @@ class RedirectCompactPhpTest extends TestCase
             ->with(ModuleChartInterface::class)
             ->willReturn(new Collection());
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
@@ -119,7 +119,7 @@ class RedirectCompactPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection([]));
 
-        $module_service = $this->createStub(ModuleService::class);
+        $module_service = self::createStub(ModuleService::class);
 
         $handler = new RedirectCompactPhp($module_service, $tree_service);
 

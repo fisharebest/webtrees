@@ -32,7 +32,7 @@ class AccountUpdateTest extends TestCase
 {
     public function testHandler(): void
     {
-        $user_service = $this->createStub(UserService::class);
+        $user_service = self::createStub(UserService::class);
 
         $user = $this->createMock(User::class);
         $user->expects($this->once())->method('setEmail')->with('b');

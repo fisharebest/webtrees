@@ -35,10 +35,10 @@ class AuthAdministratorTest extends TestCase
 {
     public function testAllowed(): void
     {
-        $handler = $this->createStub(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $user = $this->createStub(User::class);
+        $user = self::createStub(User::class);
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('1');
 
         $request    = self::createRequest()->withAttribute('user', $user);
@@ -54,10 +54,10 @@ class AuthAdministratorTest extends TestCase
         $this->expectException(HttpAccessDeniedException::class);
         $this->expectExceptionMessage('You do not have permission to view this page.');
 
-        $handler = $this->createStub(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $user = $this->createStub(User::class);
+        $user = self::createStub(User::class);
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('');
 
         $request    = self::createRequest()->withAttribute('user', $user);
@@ -68,7 +68,7 @@ class AuthAdministratorTest extends TestCase
 
     public function testNotLoggedIn(): void
     {
-        $handler = $this->createStub(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
         $request    = self::createRequest()->withAttribute('user', new GuestUser());

@@ -33,12 +33,12 @@ class CensusColumnConditionDanishTest extends TestCase
 {
     public function testNoSpouseFamiliesMale(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('spouseFamilies')->willReturn(new Collection());
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnConditionDanish($census, '', '');
@@ -48,12 +48,12 @@ class CensusColumnConditionDanishTest extends TestCase
 
     public function testNoSpouseFamiliesFemale(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('spouseFamilies')->willReturn(new Collection());
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnConditionDanish($census, '', '');
@@ -63,16 +63,16 @@ class CensusColumnConditionDanishTest extends TestCase
 
     public function testNoFamilyFactsMale(): void
     {
-        $family = $this->createStub(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
         $individual->method('sex')->willReturn('M');
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnConditionDanish($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
@@ -82,16 +82,16 @@ class CensusColumnConditionDanishTest extends TestCase
 
     public function testNoFamilyFactsFemale(): void
     {
-        $family = $this->createStub(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
         $individual->method('sex')->willReturn('F');
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnConditionDanish($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
@@ -101,9 +101,9 @@ class CensusColumnConditionDanishTest extends TestCase
 
     public function testSpouseDeadMale(): void
     {
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
 
-        $spouse = $this->createStub(Individual::class);
+        $spouse = self::createStub(Individual::class);
         $spouse->method('getDeathDate')->willReturn(new Date('1820'));
 
         $family = $this->createMock(Family::class);
@@ -117,11 +117,11 @@ class CensusColumnConditionDanishTest extends TestCase
             );
         $family->expects($this->once())->method('spouse')->willReturn($spouse);
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnConditionDanish($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
@@ -131,9 +131,9 @@ class CensusColumnConditionDanishTest extends TestCase
 
     public function testSpouseDeadFemale(): void
     {
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
 
-        $spouse = $this->createStub(Individual::class);
+        $spouse = self::createStub(Individual::class);
         $spouse->method('getDeathDate')->willReturn(new Date('1820'));
 
         $family = $this->createMock(Family::class);
@@ -147,11 +147,11 @@ class CensusColumnConditionDanishTest extends TestCase
             );
         $family->expects($this->once())->method('spouse')->willReturn($spouse);
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnConditionDanish($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
@@ -161,16 +161,16 @@ class CensusColumnConditionDanishTest extends TestCase
 
     public function testNoFamilyUnmarriedMale(): void
     {
-        $family = $this->createStub(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnConditionDanish($census, '', '');
@@ -180,16 +180,16 @@ class CensusColumnConditionDanishTest extends TestCase
 
     public function testNoFamilyUnmarriedFemale(): void
     {
-        $family = $this->createStub(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnConditionDanish($census, '', '');
@@ -199,16 +199,16 @@ class CensusColumnConditionDanishTest extends TestCase
 
     public function testChildMale(): void
     {
-        $family = $this->createStub(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1820'));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnConditionDanish($census, '', '');
@@ -218,16 +218,16 @@ class CensusColumnConditionDanishTest extends TestCase
 
     public function testChildFemale(): void
     {
-        $family = $this->createStub(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1820'));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnConditionDanish($census, '', '');
@@ -237,7 +237,7 @@ class CensusColumnConditionDanishTest extends TestCase
 
     public function testDivorcedMale(): void
     {
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
 
         $family = $this->createMock(Family::class);
         $family
@@ -249,11 +249,11 @@ class CensusColumnConditionDanishTest extends TestCase
                 new Collection([$fact])
             );
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnConditionDanish($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
@@ -263,7 +263,7 @@ class CensusColumnConditionDanishTest extends TestCase
 
     public function testDivorcedFemale(): void
     {
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
 
         $family = $this->createMock(Family::class);
         $family
@@ -275,11 +275,11 @@ class CensusColumnConditionDanishTest extends TestCase
                 new Collection([$fact])
             );
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnConditionDanish($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');

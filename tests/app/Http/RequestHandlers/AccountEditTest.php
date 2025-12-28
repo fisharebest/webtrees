@@ -34,9 +34,9 @@ class AccountEditTest extends TestCase
 
     public function testHandler(): void
     {
-        $user            = $this->createStub(User::class);
-        $message_service = $this->createStub(MessageService::class);
-        $module_service  = $this->createStub(ModuleService::class);
+        $user            = self::createStub(User::class);
+        $message_service = self::createStub(MessageService::class);
+        $module_service  = self::createStub(ModuleService::class);
 
         $module_service->method('findByInterface')->willReturn(new Collection([]));
 

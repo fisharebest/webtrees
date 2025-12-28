@@ -30,7 +30,7 @@ class CensusColumnBirthPlaceTest extends TestCase
 {
     private function getPlaceMock(string $place): Place
     {
-        $placeMock = $this->createStub(Place::class);
+        $placeMock = self::createStub(Place::class);
         $placeMock->method('gedcomName')->willReturn($place);
 
         return $placeMock;
@@ -38,10 +38,10 @@ class CensusColumnBirthPlaceTest extends TestCase
 
     public function testPlaceCountry(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('Westminster, London, England'));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('England');
 
         $column = new CensusColumnBirthPlace($census, '', '');
@@ -51,10 +51,10 @@ class CensusColumnBirthPlaceTest extends TestCase
 
     public function testPlaceAndCountry(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('England'));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('England');
 
         $column = new CensusColumnBirthPlace($census, '', '');
@@ -64,10 +64,10 @@ class CensusColumnBirthPlaceTest extends TestCase
 
     public function testDifferentCountry(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('Paris, France'));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('England');
 
         $column = new CensusColumnBirthPlace($census, '', '');

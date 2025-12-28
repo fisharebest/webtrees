@@ -37,7 +37,7 @@ class XrefRepositoryTest extends TestCase
     {
         $element = new XrefRepository('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(RepositoryFactory::class);
 
@@ -84,7 +84,7 @@ class XrefRepositoryTest extends TestCase
             ->method('url')
             ->willReturn('https://url');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(RepositoryFactory::class);
 
@@ -101,7 +101,7 @@ class XrefRepositoryTest extends TestCase
     {
         $element = new XrefRepository('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         self::assertSame('<span class="error">invalid</span>', $element->value('invalid', $tree));
     }
@@ -110,7 +110,7 @@ class XrefRepositoryTest extends TestCase
     {
         $element = new XrefRepository('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(RepositoryFactory::class);
 

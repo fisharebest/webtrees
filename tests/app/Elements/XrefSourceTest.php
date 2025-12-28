@@ -39,7 +39,7 @@ class XrefSourceTest extends TestCase
     {
         $element = new XrefSource('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(SourceFactory::class);
 
@@ -70,7 +70,7 @@ class XrefSourceTest extends TestCase
     {
         $element = new XrefSource('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $request = self::createRequest();
 
@@ -105,7 +105,7 @@ class XrefSourceTest extends TestCase
             ->method('url')
             ->willReturn('https://url');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(SourceFactory::class);
 
@@ -122,7 +122,7 @@ class XrefSourceTest extends TestCase
     {
         $element = new XrefSource('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         self::assertSame('<span class="error">@invalid@</span>', $element->value('@invalid@', $tree));
     }
@@ -131,7 +131,7 @@ class XrefSourceTest extends TestCase
     {
         $element = new XrefSource('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         self::assertSame('<p>invalid</p>', $element->value('invalid', $tree));
     }
@@ -140,7 +140,7 @@ class XrefSourceTest extends TestCase
     {
         $element = new XrefSource('');
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(SourceFactory::class);
 

@@ -38,7 +38,7 @@ class RedirectLifeSpanPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -80,7 +80,7 @@ class RedirectLifeSpanPhpTest extends TestCase
             ->with(ModuleChartInterface::class)
             ->willReturn(new Collection());
 
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
@@ -99,7 +99,7 @@ class RedirectLifeSpanPhpTest extends TestCase
 
     public function testNoSuchTree(): void
     {
-        $module_service = $this->createStub(ModuleService::class);
+        $module_service = self::createStub(ModuleService::class);
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service

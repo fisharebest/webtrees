@@ -68,18 +68,18 @@ class GedcomRecordTest extends TestCase
 
         $facts = $individual->facts(['FACT']);
 
-        $this->assertCount(4, $facts);
+        self::assertCount(4, $facts);
 
         $individual->createFact('1 FACT baz', false, $facts[2]);
 
         $facts = $individual->facts(['FACT']);
 
-        $this->assertCount(5, $facts);
-        $this->assertSame('1 FACT foo', $facts[0]->gedcom());
-        $this->assertSame('1 FACT foo', $facts[1]->gedcom());
-        $this->assertSame('1 FACT baz', $facts[2]->gedcom());
-        $this->assertSame('1 FACT bar', $facts[3]->gedcom());
-        $this->assertSame('1 FACT bar', $facts[4]->gedcom());
+        self::assertCount(5, $facts);
+        self::assertSame('1 FACT foo', $facts[0]->gedcom());
+        self::assertSame('1 FACT foo', $facts[1]->gedcom());
+        self::assertSame('1 FACT baz', $facts[2]->gedcom());
+        self::assertSame('1 FACT bar', $facts[3]->gedcom());
+        self::assertSame('1 FACT bar', $facts[4]->gedcom());
     }
 
     public function createFactWithInvalidData(): void
@@ -105,10 +105,10 @@ class GedcomRecordTest extends TestCase
 
         $facts = $individual->facts(['FACT']);
 
-        $this->assertCount(3, $facts);
-        $this->assertSame('1 FACT foo', $facts[0]->gedcom());
-        $this->assertSame('1 FACT foo', $facts[1]->gedcom());
-        $this->assertSame('1 FACT bar', $facts[2]->gedcom());
+        self::assertCount(3, $facts);
+        self::assertSame('1 FACT foo', $facts[0]->gedcom());
+        self::assertSame('1 FACT foo', $facts[1]->gedcom());
+        self::assertSame('1 FACT bar', $facts[2]->gedcom());
     }
 
     public function testUpdateFact(): void
@@ -126,11 +126,11 @@ class GedcomRecordTest extends TestCase
 
         $facts = $individual->facts(['FACT']);
 
-        $this->assertCount(4, $facts);
-        $this->assertSame('1 FACT foo', $facts[0]->gedcom());
-        $this->assertSame('1 FACT foo', $facts[1]->gedcom());
-        $this->assertSame('1 FACT baz', $facts[2]->gedcom());
-        $this->assertSame('1 FACT bar', $facts[3]->gedcom());
+        self::assertCount(4, $facts);
+        self::assertSame('1 FACT foo', $facts[0]->gedcom());
+        self::assertSame('1 FACT foo', $facts[1]->gedcom());
+        self::assertSame('1 FACT baz', $facts[2]->gedcom());
+        self::assertSame('1 FACT bar', $facts[3]->gedcom());
     }
 
     public function updateFactWithInvalidData(): void

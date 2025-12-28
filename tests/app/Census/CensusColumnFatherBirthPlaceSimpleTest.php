@@ -34,7 +34,7 @@ class CensusColumnFatherBirthPlaceSimpleTest extends TestCase
     {
         $placeParts = explode(', ', $place);
 
-        $placeMock = $this->createStub(Place::class);
+        $placeMock = self::createStub(Place::class);
         $placeMock->method('gedcomName')->willReturn($place);
         $placeMock->method('lastParts')->willReturn(new Collection($placeParts));
 
@@ -43,16 +43,16 @@ class CensusColumnFatherBirthPlaceSimpleTest extends TestCase
 
     public function testKnownStateAndTown(): void
     {
-        $father = $this->createStub(Individual::class);
+        $father = self::createStub(Individual::class);
         $father->method('getBirthPlace')->willReturn($this->getPlaceMock('Miami, Florida, United States'));
 
-        $family = $this->createStub(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('husband')->willReturn($father);
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('childFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('United States');
 
         $column = new CensusColumnFatherBirthPlaceSimple($census, '', '');

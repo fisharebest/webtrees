@@ -29,10 +29,10 @@ class CensusColumnGivenNamesTest extends TestCase
 {
     public function testGivenNames(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getAllNames')->willReturn([['givn' => 'Joe']]);
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnGivenNames($census, '', '');
 
@@ -41,10 +41,10 @@ class CensusColumnGivenNamesTest extends TestCase
 
     public function testNoName(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getAllNames')->willReturn([]);
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnGivenNames($census, '', '');
 

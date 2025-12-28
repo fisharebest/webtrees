@@ -32,7 +32,7 @@ class DefaultUserTest extends TestCase
     {
         parent::setUp();
 
-        $cache_factory = $this->createStub(CacheFactoryInterface::class);
+        $cache_factory = self::createStub(CacheFactoryInterface::class);
         $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));
         Registry::cache($cache_factory);
     }

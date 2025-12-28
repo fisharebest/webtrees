@@ -32,11 +32,11 @@ class CensusColumnChildrenLivingTest extends TestCase
 {
     public function testMale(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('spouseFamilies')->willReturn(new Collection([]));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnChildrenLiving($census, '', '');
 
@@ -46,26 +46,26 @@ class CensusColumnChildrenLivingTest extends TestCase
     public function testCountChildren(): void
     {
         // Stillborn
-        $child1 = $this->createStub(Individual::class);
+        $child1 = self::createStub(Individual::class);
         $child1->method('getBirthDate')->willReturn(new Date('01 FEB 1904'));
         $child1->method('getDeathDate')->willReturn(new Date('01 FEB 1904'));
 
         // Died after census
-        $child2 = $this->createStub(Individual::class);
+        $child2 = self::createStub(Individual::class);
         $child2->method('getBirthDate')->willReturn(new Date('02 FEB 1904'));
         $child2->method('getDeathDate')->willReturn(new Date('20 DEC 1912'));
 
         // Died before census
-        $child3 = $this->createStub(Individual::class);
+        $child3 = self::createStub(Individual::class);
         $child3->method('getBirthDate')->willReturn(new Date('02 FEB 1904'));
         $child3->method('getDeathDate')->willReturn(new Date('20 DEC 1910'));
 
         // Still living
-        $child4 = $this->createStub(Individual::class);
+        $child4 = self::createStub(Individual::class);
         $child4->method('getBirthDate')->willReturn(new Date('01 FEB 1904'));
         $child4->method('getDeathDate')->willReturn(new Date(''));
 
-        $family = $this->createStub(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('children')->willReturn(new Collection([
             $child1,
             $child2,
@@ -73,11 +73,11 @@ class CensusColumnChildrenLivingTest extends TestCase
             $child4,
         ]));
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 MAR 1911');
 
         $column = new CensusColumnChildrenLiving($census, '', '');

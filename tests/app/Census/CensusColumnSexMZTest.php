@@ -29,10 +29,10 @@ class CensusColumnSexMZTest extends TestCase
 {
     public function testMale(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('M');
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnSexMZ($census, '', '');
 
@@ -41,10 +41,10 @@ class CensusColumnSexMZTest extends TestCase
 
     public function testFeale(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('F');
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnSexMZ($census, '', '');
 
@@ -53,10 +53,10 @@ class CensusColumnSexMZTest extends TestCase
 
     public function testUnknownSex(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('U');
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnSexMZ($census, '', '');
 

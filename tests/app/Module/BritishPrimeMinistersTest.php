@@ -31,7 +31,7 @@ class BritishPrimeMinistersTest extends TestCase
     {
         $module = new BritishPrimeMinisters();
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
 
         foreach ($module->historicEventsAll('en-GB') as $gedcom) {
             $fact = new Fact($gedcom, $individual, 'test');

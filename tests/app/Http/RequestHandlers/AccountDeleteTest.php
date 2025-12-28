@@ -29,7 +29,7 @@ class AccountDeleteTest extends TestCase
 {
     public function testHandler(): void
     {
-        $user_service = $this->createStub(UserService::class);
+        $user_service = self::createStub(UserService::class);
 
         $request = self::createRequest();
 
