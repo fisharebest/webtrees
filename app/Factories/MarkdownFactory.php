@@ -28,6 +28,7 @@ use League\CommonMark\Extension\Autolink\AutolinkExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
 use League\CommonMark\Extension\CommonMark\Renderer\Inline\LinkRenderer;
+use League\CommonMark\Extension\Strikethrough\StrikethroughExtension;
 use League\CommonMark\Extension\Table\TableExtension;
 use League\CommonMark\MarkdownConverter;
 use League\CommonMark\Node\Block\Document;
@@ -130,6 +131,8 @@ class MarkdownFactory implements MarkdownFactoryInterface
         if ($tree instanceof Tree) {
             $environment->addExtension(new XrefExtension($tree));
         }
+
+        $environment->addExtension(new StrikethroughExtension());
 
         $converter = new MarkDownConverter($environment);
 
