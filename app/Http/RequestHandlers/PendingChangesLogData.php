@@ -25,6 +25,7 @@ use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
@@ -101,14 +102,18 @@ final class PendingChangesLogData implements RequestHandlerInterface
                 $row->change_id,
                 $change_time,
                 I18N::translate($row->status),
-                $record ? '<a href="' . e($record->url()) . '">' . $record->xref() . '</a>' : $row->xref,
+                $record instanceof GedcomRecord ?
+                    '<a href="' . e($record->url()) . '" title="' . e(strip_tags($record->fullName())) . '">' . e($record->xref()) . '</a>' :
+                    e($row->xref),
                 '<div class="gedcom-data" dir="ltr">' .
                 preg_replace_callback(
                     '/@(' . Gedcom::REGEX_XREF . ')@/',
                     static function (array $match) use ($tree): string {
                         $record = Registry::gedcomRecordFactory()->make($match[1], $tree);
 
-                        return $record ? '<a href="' . e($record->url()) . '">' . $match[0] . '</a>' : $match[0];
+                        return $record instanceof GedcomRecord ?
+                            '<a href="' . e($record->url()) . '" title="' . e(strip_tags($record->fullName())) . '">' . e($match[0]) . '</a>' :
+                            '@<span class="text-bg-danger">' . e($match[1]) . '</span>@';
                     },
                     implode("\n", $diff_lines)
                 ) .
