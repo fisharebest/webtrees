@@ -254,6 +254,34 @@ class DB extends Manager
         return new Expression($sql);
     }
 
+    /**
+     * @return Expression<string>
+     */
+    public static function columnToUpper(string $column): Expression
+    {
+        if (self::driverName() === self::POSTGRES) {
+            $sql = 'UPPER(' . $column . ')';
+        } else {
+            $sql = $column;
+        }
+
+        return new Expression($sql);
+    }
+
+    /**
+     * @return Expression<string>
+     */
+    public static function columnToLower(string $column): Expression
+    {
+        if (self::driverName() === self::POSTGRES) {
+            $sql = 'LOWER(' . $column . ')';
+        } else {
+            $sql = $column;
+        }
+
+        return new Expression($sql);
+    }
+
     public static function regexOperator(): string
     {
         return self::REGEX_OPERATOR[self::driverName()];
