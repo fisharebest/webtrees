@@ -26,23 +26,60 @@ use Fisharebest\Webtrees\I18N;
  */
 class HeredisFIL extends AbstractElement
 {
+
+    private const string VALUE_LEGITIMATE_CHILD     = 'LEGITIMATE_CHILD';
+    private const string VALUE_NATURAL_CHILD        = 'NATURAL_CHILD';
+    private const string VALUE_RECOGNIZED_CHILD     = 'RECOGNIZED_CHILD';
+    private const string VALUE_LEGITIMIZED_CHILD    = 'LEGITIMIZED_CHILD';
+    private const string VALUE_CHILD_FOUND          = 'CHILD_FOUND';
+    private const string VALUE_ADOPTED_CHILD        = 'ADOPTED_CHILD';
+    private const string VALUE_ADULTEROUS_CHILD     = 'ADULTEROUS_CHILD';
+    private const string VALUE_STILLBORN_CHILD      = 'STILLBORN_CHILD';
+    private const string VALUE_RELATIONSHIP_UNKNOWN = 'RELATIONSHIP_UNKNOW';
+
     /**
      * A list of controlled values for this element
      *
      * @return array<int|string,string>
      */
-    public function values(): array
+    public function values(string $sex = 'U'): array
     {
-        return [
-            'LEGITIMATE_CHILD'     => I18N::translate('Legitimate'),
-            'NATURAL_CHILD'        => I18N::translate('Natural'),
-            'RECOGNIZED_CHILD'     => I18N::translate('Legally recognised'),
-            'LEGITIMIZED_CHILD'    => I18N::translate('Legitimated'),
-            'CHILD_FOUND'          => I18N::translate('Foundling'),
-            'ADOPTED_CHILD'        => I18N::translate('Adopted'),
-            'ADULTEROUS_CHILD'     => I18N::translate('Illegitimate'),
-            'STILLBORN_CHILD'      => I18N::translate('Stillborn'),
-            'RELATIONSHIP_UNKNOW'  => I18N::translate('Unknown'),
+        $values = [
+            'M' => [
+                self::VALUE_LEGITIMATE_CHILD     => I18N::translate('Legitimate'),
+                self::VALUE_NATURAL_CHILD        => I18N::translate('Natural'),
+                self::VALUE_RECOGNIZED_CHILD     => I18N::translate('Legally recognised'),
+                self::VALUE_LEGITIMIZED_CHILD    => I18N::translate('Legitimated'),
+                self::VALUE_CHILD_FOUND          => I18N::translate('Foundling'),
+                self::VALUE_ADOPTED_CHILD        => I18N::translateContext('Male pedigree', 'Adopted'),
+                self::VALUE_ADULTEROUS_CHILD     => I18N::translate('Illegitimate'),
+                self::VALUE_STILLBORN_CHILD      => I18N::translate('stillborn'),
+                self::VALUE_RELATIONSHIP_UNKNOWN => I18N::translate('Unknown'),
+            ],
+            'F' => [
+                self::VALUE_LEGITIMATE_CHILD     => I18N::translate('Legitimate'),
+                self::VALUE_NATURAL_CHILD        => I18N::translate('Natural'),
+                self::VALUE_RECOGNIZED_CHILD     => I18N::translate('Legally recognised'),
+                self::VALUE_LEGITIMIZED_CHILD    => I18N::translate('Legitimated'),
+                self::VALUE_CHILD_FOUND          => I18N::translate('Foundling'),
+                self::VALUE_ADOPTED_CHILD        => I18N::translateContext('Female pedigree', 'Adopted'),
+                self::VALUE_ADULTEROUS_CHILD     => I18N::translate('Illegitimate'),
+                self::VALUE_STILLBORN_CHILD      => I18N::translate('stillborn'),
+                self::VALUE_RELATIONSHIP_UNKNOWN => I18N::translate('Unknown'),
+            ],
+            'U' => [
+                self::VALUE_LEGITIMATE_CHILD     => I18N::translate('Legitimate'),
+                self::VALUE_NATURAL_CHILD        => I18N::translate('Natural'),
+                self::VALUE_RECOGNIZED_CHILD     => I18N::translate('Legally recognised'),
+                self::VALUE_LEGITIMIZED_CHILD    => I18N::translate('Legitimated'),
+                self::VALUE_CHILD_FOUND          => I18N::translate('Foundling'),
+                self::VALUE_ADOPTED_CHILD        => I18N::translateContext('Pedigree', 'Adopted'),
+                self::VALUE_ADULTEROUS_CHILD     => I18N::translate('Illegitimate'),
+                self::VALUE_STILLBORN_CHILD      => I18N::translate('stillborn'),
+                self::VALUE_RELATIONSHIP_UNKNOWN => I18N::translate('Unknown'),
+            ],
         ];
+
+        return $values[$sex] ?? $values['U'];
     }
 }
