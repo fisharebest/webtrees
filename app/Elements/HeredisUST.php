@@ -34,9 +34,9 @@ class HeredisUST extends AbstractElement
     public function values(): array
     {
         return [
-            'MARRIED'       => I18N::translate('Marriage'),
+            'MARRIED'       => I18N::translateContext('FAM:_UST','Marriage'),
             'ENGAGEMENT'    => I18N::translate('Engaged'),
-            'SEPARATED'     => I18N::translate('Separation'),
+            'SEPARATED'     => I18N::translateContext('FAM:_UST','Separation'),
             'DIVORCED'      => I18N::translate('Divorce'),
             'COMMON_LAW'    => I18N::translate('Other type of marriage'),
             'COHABITATION'  => I18N::translate('Cohabitee'),
