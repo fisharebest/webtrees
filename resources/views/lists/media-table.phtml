@@ -60,6 +60,7 @@ $count_sources = DB::table('sources')
 ?>
 
 <table
+    id="wt-datatables-media"
     class="table table-bordered table-sm wt-table-media datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([

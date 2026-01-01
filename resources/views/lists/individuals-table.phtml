@@ -36,36 +36,14 @@ $module = Registry::container()->get(ModuleService::class)
 
 <?php View::push('javascript') ?>
 <script>
-$("#<?= e($table_id) ?> > .wt-table-individual").dataTable({
-    processing: true,
-    retrieve: true,
-    columns: [
-        /* Given names  */ { type: "text" },
-        /* Surnames     */ { type: "text" },
-        /* SOSA number  */ { type: "num", visible: <?= json_encode($sosa, JSON_THROW_ON_ERROR) ?> },
-        /* Birth date   */ { type: "text" },
-        /* Anniversary  */ { type: "num" },
-        /* Birthplace   */ { type: "text" },
-        /* Children     */ { type: "num" },
-        /* Deate date   */ { type: "text" },
-        /* Anniversary  */ { type: "num" },
-        /* Age          */ { type: "num" },
-        /* Death place  */ { type: "text" },
-        /* Last change  */ { visible: <?= json_encode($tree->getPreference('SHOW_LAST_CHANGE'), JSON_THROW_ON_ERROR) ?> },
-        /* Filter sex   */ { sortable: false },
-        /* Filter birth */ { sortable: false },
-        /* Filter death */ { sortable: false },
-        /* Filter tree  */ { sortable: false }
-    ],
-    sorting: <?= json_encode($sosa ? [[4, 'asc']] : [[1, 'asc']], JSON_THROW_ON_ERROR) ?>
-});
+$("#<?= e($table_id) ?> > .wt-table-individual").dataTable();
 
 $("#<?= e($table_id) ?>")
     /* Hide/show parents */
     .on("click", "#btn-toggle-parents", function() {
         $(".wt-individual-list-parents").slideToggle();
     })
-    /* Filter buttons in table header */
+    /* Filter buttons in the table header */
     .on("click", "input[data-filter-column]", function() {
         let checkbox = $(this);
 
@@ -85,6 +63,8 @@ $("#<?= e($table_id) ?>")
 <div id="<?= e($table_id) ?>">
     <table class="table table-bordered table-sm wt-table-individual"
         <?= view('lists/datatables-attributes') ?>
+        data-columns='[{"type":"text"},{"type":"text"},{"type":"num",visible:"<?= $sosa ? 'true' : 'false' ?>"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"num"},{"type":"text"},{"visible":"<?= $tree->getPreference('SHOW_LAST_CHANGE') === '1' ? 'true' : 'false' ?>"},{"sortable":false},{"sortable":false},{"sortable":false},{"sortable":false}]'
+        data-sorting='<?= $sosa ? '[[4, "asc"]]' : '[[1, "asc"]]' ?>'
     >
         <thead>
             <tr>

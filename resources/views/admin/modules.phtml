@@ -55,7 +55,9 @@ use Illuminate\Support\Collection;
 <?php endforeach ?>
 
 <form method="post" action="<?= e(route(ModulesAllAction::class)) ?>">
-    <table class="table table-bordered table-hover table-sm table-module-administration"
+    <table
+        id="wt-datatables-admin-modules"
+        class="table table-bordered table-hover table-sm table-module-administration datatables"
         <?= view('lists/datatables-attributes') ?>
         data-info="false"
         data-paging="false"
@@ -297,11 +299,3 @@ use Illuminate\Support\Collection;
 
     <?= csrf_field() ?>
 </form>
-
-<?php View::push('javascript') ?>
-<script>
-  'use strict';
-
-  $(".table-module-administration").dataTable();
-</script>
-<?php View::endpush() ?>

@@ -27,36 +27,14 @@ $hundred_years_ago = Registry::timestampFactory()->now()->subtractYears(100)->ju
 
 <?php View::push('javascript') ?>
 <script>
-$("#<?= e($table_id) ?> > .wt-table-family").dataTable({
-    processing: true,
-    retrieve: true,
-    columns: [
-        /* Given names       */ { type: "text" },
-        /* Surnames          */ { type: "text" },
-        /* Age               */ { type: "num" },
-        /* Given names       */ { type: "text" },
-        /* Surnames          */ { type: "text" },
-        /* Age               */ { type: "num" },
-        /* Marriage date     */ { type: "text" },
-        /* Anniversary       */ { type: "num" },
-        /* Marriage place    */ { type: "text" },
-        /* Children          */ { type: "num" },
-        /* Last change       */ { visible: <?= json_encode((bool) $tree->getPreference('SHOW_LAST_CHANGE'), JSON_THROW_ON_ERROR) ?> },
-        /* Filter marriage   */ { sortable: false },
-        /* Filter alive/dead */ { sortable: false },
-        /* Filter tree       */ { sortable: false }
-    ],
-    sorting: [
-        [1, "asc"]
-    ]
-});
+$("#<?= e($table_id) ?> > .wt-table-family").dataTable();
 
 $("#<?= e($table_id) ?>")
     /* Hide/show parents */
     .on("click", "#btn-toggle-parents", function() {
         $(".wt-individual-list-parents").slideToggle();
     })
-    /* Filter buttons in table header */
+    /* Filter buttons in the table header */
     .on("click", "input[data-filter-column]", function() {
         let checkbox = $(this);
 
@@ -76,6 +54,8 @@ $("#<?= e($table_id) ?>")
 <div id="<?= e($table_id) ?>">
     <table class="table table-bordered table-sm wt-table-family"
         <?= view('lists/datatables-attributes') ?>
+        data-columns='[{"type":"text"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"visible":"<?=$tree->getPreference('SHOW_LAST_CHANGE')==='1'?'true':'false'?>"},{"sortable":false},{"sortable":false},{"sortable":false}]'
+        data-sorting='[[1,"asc"]]'
     >
         <thead>
             <tr>
