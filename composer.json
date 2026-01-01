@@ -87,7 +87,7 @@
         "ext-libxml": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
-        "composer/composer": "2.9.2",
+        "composer/composer": "2.9.3",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.9.1",
         "phpstan/extension-installer": "1.4.3",
