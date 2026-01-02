@@ -729,8 +729,8 @@ class GedcomImportService
         // Have we already created a media object with the same title/filename?
         $xref = DB::table('media_file')
             ->where('m_file', '=', $tree->id())
-            ->where('descriptive_title', '=', mb_substr($title, 0, 248))
-            ->where('multimedia_file_refn', '=', mb_substr($file, 0, 248))
+            ->where('descriptive_title', DB::iLike(), mb_substr($title, 0, 248))
+            ->where('multimedia_file_refn', DB::iLike(), mb_substr($file, 0, 248))
             ->value('m_id');
 
         if ($xref === null) {
