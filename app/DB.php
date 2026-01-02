@@ -254,32 +254,26 @@ class DB extends Manager
         return new Expression($sql);
     }
 
-    /**
-     * @return Expression<string>
-     */
-    public static function columnToUpper(string $column): Expression
+    public static function columnToUpper(string $column): string|Expression
     {
-        if (self::driverName() === self::POSTGRES) {
-            $sql = 'UPPER(' . $column . ')';
-        } else {
-            $sql = $column;
+        switch (self::driverName()) {
+            case self::POSTGRES:
+            case self::SQLITE:
+                return new Expression('UPPER(' . $column . ')');
+            default:
+                return $column;
         }
-
-        return new Expression($sql);
     }
 
-    /**
-     * @return Expression<string>
-     */
-    public static function columnToLower(string $column): Expression
+    public static function columnToLower(string $column): string|Expression
     {
-        if (self::driverName() === self::POSTGRES) {
-            $sql = 'LOWER(' . $column . ')';
-        } else {
-            $sql = $column;
+        switch (self::driverName()) {
+            case self::POSTGRES:
+            case self::SQLITE:
+                return new Expression('LOWER(' . $column . ')');
+            default:
+                return $column;
         }
-
-        return new Expression($sql);
     }
 
     public static function regexOperator(): string
