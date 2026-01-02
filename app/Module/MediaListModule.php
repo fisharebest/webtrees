@@ -279,7 +279,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
         }
 
         if ($format !== '') {
-            $query->where('source_media_type', '=', $format);
+            $query->where(DB::columnToUpper('source_media_type'), '=', $format);
         }
 
         switch ($sort) {

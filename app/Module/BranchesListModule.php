@@ -269,8 +269,8 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
             ->where('n_type', '<>', '_MARNM')
             ->where(static function (Builder $query) use ($surname, $soundex_dm, $soundex_std): void {
                 $query
-                    ->where('n_surn', '=', $surname)
-                    ->orWhere('n_surname', '=', $surname);
+                    ->where('n_surn', DB::iLike(), $surname)
+                    ->orWhere('n_surname', DB::iLike(), $surname);
 
                 if ($soundex_std) {
                     $sdx = Soundex::russell($surname);
