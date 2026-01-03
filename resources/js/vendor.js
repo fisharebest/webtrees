@@ -46,7 +46,11 @@ import {
   faStepForward, faStickyNote, faStop, faSyncAlt, faTags, faThList, faThumbtack, faTimes, faTransgender,
   faTrashAlt, faTree, faUndo, faUniversity, faUnlink, faUpload, faUser, faUsers, faVenus, faWrench,
   // For the BeautifyMarker library
-  faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater
+  faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater,
+  // Fact icons
+  faAt, faBaby, faBullhorn, faBuildingUser, faClipboardList, faCross, faDove, faFileContract, faGlobe,
+  faHammer, faHashtag, faHouseChimneyUser, faIdCard, faInfo, faMonument, faNoteSticky, faPenFancy,
+  faPeopleArrows, faPersonMilitaryRifle, faPhone, faRing, faUserGraduate
 } from '@fortawesome/free-solid-svg-icons';
 import 'corejs-typeahead';
 
@@ -92,7 +96,11 @@ library.add(
   faStepForward, faStickyNote, faStop, faSyncAlt, faTags, faThList, faThumbtack, faTimes, faTransgender,
   faTrashAlt, faTree, faUndo, faUniversity, faUnlink, faUpload, faUser, faUsers, faVenus, faWrench,
   // For the BeautifyMarker library
-  faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater
+  faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater,
+  // Fact icons
+  faAt, faBaby, faBullhorn, faBuildingUser, faClipboardList, faCross, faDove, faFileContract, faGlobe,
+  faHammer, faHashtag, faHouseChimneyUser, faIdCard, faInfo, faMonument, faNoteSticky, faPenFancy,
+  faPeopleArrows, faPersonMilitaryRifle, faPhone, faRing, faUserGraduate
 );
 dom.watch();
 
