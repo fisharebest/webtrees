@@ -54,7 +54,7 @@ $("#<?= e($table_id) ?>")
 <div id="<?= e($table_id) ?>">
     <table class="table table-bordered table-sm wt-table-family"
         <?= view('lists/datatables-attributes') ?>
-        data-columns='[{"type":"text"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"visible":"<?=$tree->getPreference('SHOW_LAST_CHANGE')==='1'?'true':'false'?>"},{"sortable":false},{"sortable":false},{"sortable":false}]'
+        data-columns='[{"type":"text"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"visible":"<?= $tree->getPreference('SHOW_LAST_CHANGE')==='1' ? 'true' : 'false'?>"},{"sortable":false},{"sortable":false},{"sortable":false}]'
         data-sorting='[[1,"asc"]]'
     >
         <thead>

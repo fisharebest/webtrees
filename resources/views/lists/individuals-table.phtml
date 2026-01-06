@@ -59,11 +59,10 @@ $("#<?= e($table_id) ?>")
     });
 </script>
 <?php View::endpush() ?>
-
 <div id="<?= e($table_id) ?>">
     <table class="table table-bordered table-sm wt-table-individual"
         <?= view('lists/datatables-attributes') ?>
-        data-columns='[{"type":"text"},{"type":"text"},{"type":"num",visible:"<?= $sosa ? 'true' : 'false' ?>"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"num"},{"type":"text"},{"visible":"<?= $tree->getPreference('SHOW_LAST_CHANGE') === '1' ? 'true' : 'false' ?>"},{"sortable":false},{"sortable":false},{"sortable":false},{"sortable":false}]'
+        data-columns='[{"type":"text"},{"type":"text"},{"type":"num","visible":<?= $sosa ? 'true' : 'false' ?>},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"num"},{"type":"text"},{"visible":<?= $tree->getPreference('SHOW_LAST_CHANGE') === '1' ? 'true' : 'false' ?>},{"sortable":false},{"sortable":false},{"sortable":false},{"sortable":false}]'
         data-sorting='<?= $sosa ? '[[4, "asc"]]' : '[[1, "asc"]]' ?>'
     >
         <thead>
