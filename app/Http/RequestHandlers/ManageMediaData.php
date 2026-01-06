@@ -83,6 +83,7 @@ final class ManageMediaData implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $this->fixTreePreferences();
         $data_filesystem = Registry::filesystem()->data();
 
         $files = Validator::queryParams($request)->isInArray(['local', 'external', 'unused'])->string('files');
@@ -167,7 +168,7 @@ final class ManageMediaData implements RequestHandlerInterface
                         'media.*',
                         'multimedia_file_refn',
                         'descriptive_title',
-                        new Expression("COALESCE(setting_value, 'media/') AS media_folder"),
+                        'setting_value AS media_folder',
                     ]);
 
                 $query->where(new Expression(DB::concat(['setting_value', 'multimedia_file_refn'])), 'LIKE', $media_folder . '%');
@@ -366,5 +367,15 @@ final class ManageMediaData implements RequestHandlerInterface
         $html .= '</dl>';
 
         return $html;
+    }
+
+    private function fixTreePreferences() : void
+    {
+        foreach ($this->tree_service->all() as $tree) {
+            if ($tree->getPreference('MEDIA_DIRECTORY', ':none:') === ':none:') {
+                $defaultValue = $tree->getPreference('MEDIA_DIRECTORY');
+                $tree->setPreference('MEDIA_DIRECTORY', $defaultValue, true);
+            };
+        }
     }
 }

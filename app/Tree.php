@@ -171,9 +171,9 @@ class Tree
      *
      * @return self
      */
-    public function setPreference(string $setting_name, string $setting_value): Tree
+    public function setPreference(string $setting_name, string $setting_value, bool $force = false): Tree
     {
-        if ($setting_value !== $this->getPreference($setting_name)) {
+        if ($force || $setting_value !== $this->getPreference($setting_name)) {
             DB::table('gedcom_setting')->updateOrInsert([
                 'gedcom_id'    => $this->id,
                 'setting_name' => $setting_name,
