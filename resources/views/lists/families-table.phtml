@@ -139,10 +139,12 @@ $("#<?= e($table_id) ?>")
                 <th title="<?= I18N::translate('Children') ?>">
                     <?= view('icons/children') ?>
                 </th>
-                <th><?= I18N::translate('Last change') ?></th>
-                <th hidden></th>
-                <th hidden></th>
-                <th hidden></th>
+                <th <?= $tree->getPreference('SHOW_LAST_CHANGE')==='1' ? '' : 'hidden="hidden"'?>>
+                    <?= I18N::translate('Last change') ?>
+                </th>
+                <th hidden="hidden"></th>
+                <th hidden="hidden"></th>
+                <th hidden="hidden"></th>
             </tr>
         </thead>
 
@@ -235,12 +237,15 @@ $("#<?= e($table_id) ?>")
                     </td>
 
                     <!-- Last change -->
-                    <td data-sort="<?= sprintf('x%07d', $family->lastChangeTimestamp()->timestamp()) ?>">
+                    <td
+                        <?= $tree->getPreference('SHOW_LAST_CHANGE') === '1' ? '' : 'hidden="hidden"' ?>
+                        data-sort="<?= sprintf('x%07d', $family->lastChangeTimestamp()->timestamp()) ?>"
+                    >
                         <?= view('components/datetime', ['timestamp' => $family->lastChangeTimestamp()]) ?>
                     </td>
 
                     <!-- Filter by marriage date -->
-                    <td hidden>
+                    <td hidden="hidden">
                         <?php if ($family->getMarriageDate()->maximumJulianDay() > $hundred_years_ago && $family->getMarriageDate()->maximumJulianDay() <= $today_jd) : ?>
                             Y100
                         <?php elseif ($family->facts(['MARR'])->isNotEmpty()) : ?>
@@ -257,7 +262,7 @@ $("#<?= e($table_id) ?>")
                     </td>
 
                     <!-- Filter by alive/dead -->
-                    <td hidden>
+                    <td hidden="hidden">
                         <?php if ($husb->isDead() && $wife->isDead()) : ?>
                             Y
                         <?php endif ?>
@@ -283,7 +288,7 @@ $("#<?= e($table_id) ?>")
                     </td>
 
                     <!-- Filter by roots/leaves -->
-                    <td hidden>
+                    <td hidden="hidden">
                         <?php if ($husb->childFamilies()->isEmpty() && $wife->childFamilies()->isEmpty()) : ?>
                             R
                         <?php elseif (!$husb->isDead() && !$wife->isDead() && $family->numberOfChildren() === 0) : ?>

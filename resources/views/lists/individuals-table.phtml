@@ -62,7 +62,7 @@ $("#<?= e($table_id) ?>")
 <div id="<?= e($table_id) ?>">
     <table class="table table-bordered table-sm wt-table-individual"
         <?= view('lists/datatables-attributes') ?>
-        data-columns='[{"type":"text"},{"type":"text"},{"type":"num","visible":<?= $sosa ? 'true' : 'false' ?>},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"num"},{"type":"text"},{"visible":<?= $tree->getPreference('SHOW_LAST_CHANGE') === '1' ? 'true' : 'false' ?>},{"sortable":false},{"sortable":false},{"sortable":false},{"sortable":false}]'
+        data-columns='[{"type":"text"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"num"},{"type":"text"},{"type":"text"},{"sortable":false},{"sortable":false},{"sortable":false},{"sortable":false}]'
         data-sorting='<?= $sosa ? '[[4, "asc"]]' : '[[1, "asc"]]' ?>'
     >
         <thead>
@@ -139,27 +139,20 @@ $("#<?= e($table_id) ?>")
             <tr>
                 <th><?= I18N::translate('Given names') ?></th>
                 <th><?= I18N::translate('Surname') ?></th>
-                <th><?= /* I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets. */
-                    I18N::translate('Sosa') ?></th>
+                <th <?= $sosa ? '' : 'hidden="hidden"' ?>><?= /* I18N: Abbreviation for “Sosa-Stradonitz number” */ I18N::translate('Sosa') ?></th>
                 <th><?= I18N::translate('Birth') ?></th>
-                <th title="<?= I18N::translate('Anniversary') ?>">
-                    <?= view('icons/anniversary') ?>
-                </th>
+                <th title="<?= I18N::translate('Anniversary') ?>"><?= view('icons/anniversary') ?></th>
                 <th><?= I18N::translate('Place') ?></th>
-                <th title="<?= I18N::translate('Children') ?>">
-                    <?= view('icons/children') ?>
-                </th>
+                <th title="<?= I18N::translate('Children') ?>"><?= view('icons/children') ?></th>
                 <th><?= I18N::translate('Death') ?></th>
-                <th title="<?= I18N::translate('Anniversary') ?>">
-                    <?= view('icons/anniversary') ?>
-                </th>
+                <th title="<?= I18N::translate('Anniversary') ?>"><?= view('icons/anniversary') ?></th>
                 <th><?= I18N::translate('Age') ?></th>
                 <th><?= I18N::translate('Place') ?></th>
-                <th><?= I18N::translate('Last change') ?></th>
-                <th hidden></th>
-                <th hidden></th>
-                <th hidden></th>
-                <th hidden></th>
+                <th <?= $tree->getPreference('SHOW_LAST_CHANGE') === '1' ? '' : 'hidden="hidden"' ?>><?= I18N::translate('Last change') ?></th>
+                <th hidden="hidden"></th>
+                <th hidden="hidden"></th>
+                <th hidden="hidden"></th>
+                <th hidden="hidden"></th>
             </tr>
         </thead>
 
@@ -180,9 +173,9 @@ $("#<?= e($table_id) ?>")
                         <?= view('lists/individual-table-parents', ['individual' => $individual]) ?>
                     </td>
 
-                    <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $individual->sortName())) ?>"></td>
+                    <td hidden="hidden" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $individual->sortName())) ?>"></td>
 
-                    <td class="text-center" data-sort="<?= $key ?>">
+                    <td <?= $sosa ? '' : 'hidden="hidden"' ?> class="text-center" data-sort="<?= $key ?>">
                         <?php if ($sosa) : ?>
                             <?php if ($module instanceof RelationshipsChartModule) : ?>
                                 <a href="<?= e($module->chartUrl($individuals[1], ['xref2' => $individual->xref()])) ?>" rel="nofollow" title="<?= I18N::translate('Relationships') ?>" rel="nofollow">
@@ -257,17 +250,17 @@ $("#<?= e($table_id) ?>")
                     </td>
 
                     <!-- Last change -->
-                    <td data-sort="<?= sprintf('x%07d', $individual->lastChangeTimestamp()->timestamp()) ?>">
+                    <td <?= $tree->getPreference('SHOW_LAST_CHANGE') === '1' ? '' : 'hidden="hidden"' ?> data-sort="<?= sprintf('x%07d', $individual->lastChangeTimestamp()->timestamp()) ?>">
                         <?= view('components/datetime', ['timestamp' => $individual->lastChangeTimestamp()]) ?>
                     </td>
 
                     <!-- Filter by sex -->
-                    <td hidden>
+                    <td hidden="hidden">
                         <?= $individual->sex() ?>
                     </td>
 
                     <!-- Filter by birthdate -->
-                    <td hidden>
+                    <td hidden="hidden">
                         <?php if ($estimated_birth_date->maximumJulianDay() > $hundred_years_ago && $estimated_birth_date->maximumJulianDay() <= $today_jd) : ?>
                             Y100
                         <?php else : ?>
@@ -276,7 +269,7 @@ $("#<?= e($table_id) ?>")
                     </td>
 
                     <!-- Filter by death date -->
-                    <td hidden>
+                    <td hidden="hidden">
                         <?php if ($individual->getEstimatedDeathDate()->maximumJulianDay() > $hundred_years_ago && $individual->getEstimatedDeathDate()->maximumJulianDay() <= $today_jd) : ?>
                             Y100
                         <?php elseif ($individual->isDead()) : ?>
@@ -287,7 +280,7 @@ $("#<?= e($table_id) ?>")
                     </td>
 
                     <!-- Filter by roots/leaves -->
-                    <td hidden>
+                    <td hidden="hidden">
                         <?php if ($individual->childFamilies()->isEmpty()) : ?>
                             R
                         <?php elseif (!$individual->isDead() && $individual->numberOfChildren() < 1) : ?>
