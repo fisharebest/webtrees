@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-09-14 06:40+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
+"PO-Revision-Date: 2026-01-12 13:34+0000\n"
+"Last-Translator: Carmen <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
 "Language: nl\n"
@@ -10916,7 +10916,7 @@ msgstr "Orlando, Florida, Verenigde Staten"
 #: app/Statistics/Google/ChartCommonSurname.php:150
 #: resources/views/admin/control-panel.phtml:667
 msgid "Other"
-msgstr "Andere"
+msgstr "Overige"
 
 #: resources/views/admin/trees-preferences.phtml:425
 msgid "Other facts to show in charts"
