@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-12-28 22:40+0000\n"
+"PO-Revision-Date: 2026-01-13 23:02+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/pt/>\n"
@@ -4039,7 +4039,7 @@ msgstr "Concatenação"
 #: app/Factories/ElementFactory.php:1165 app/GedcomTag.php:587
 #: resources/xml/reports/missing_facts_report.xml:19
 msgid "Confirmation"
-msgstr "Crisma / Confirmação"
+msgstr "Crisma / confirmação"
 
 #: resources/views/setup/step-3-database-type.phtml:35
 msgid "Connection to database server"
@@ -7307,7 +7307,7 @@ msgstr "Madrinha"
 #: app/Elements/RelationIsDescriptor.php:109
 #: app/GedcomCode/GedcomCodeRela.php:205 app/GedcomTag.php:1118
 msgid "Godparent"
-msgstr "Padrinho/Madrinha"
+msgstr "Padrinho / Madrinha"
 
 #: app/Factories/ElementFactory.php:1162
 msgid "Godparents"
@@ -7771,7 +7771,7 @@ msgstr "Idaho Falls, Idaho, Estados Unidos"
 #. I18N: gedcom tag IDNO
 #: app/Factories/ElementFactory.php:1209 app/GedcomTag.php:742
 msgid "Identification number"
-msgstr "Número de identificação"
+msgstr "Número de identificação civil"
 
 #: resources/views/admin/fix-level-0-media.phtml:20
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
@@ -12270,7 +12270,7 @@ msgstr "Indivíduos relacionados"
 #: app/GedcomTag.php:899 app/Module/BranchesListModule.php:399
 #: app/Module/BranchesListModule.php:437
 msgid "Relationship"
-msgstr "Parentesco"
+msgstr "Relação"
 
 #. I18N: gedcom tag _FREL
 #: app/Factories/ElementFactory.php:341 app/GedcomTag.php:1112
@@ -13845,7 +13845,7 @@ msgstr "Snowflake, Arizona, Estados Unidos"
 #. I18N: gedcom tag SSN
 #: app/Factories/ElementFactory.php:1283 app/GedcomTag.php:967
 msgid "Social security number"
-msgstr "Número da Segurança Social"
+msgstr "Número da segurança social"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:445
