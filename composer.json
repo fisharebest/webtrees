@@ -33,7 +33,7 @@
         }
     },
     "require": {
-        "php": "7.4 - 8.5",
+        "php": "7.4 - 8.6",
         "ext-ctype": "*",
         "ext-curl": "*",
         "ext-fileinfo": "*",
@@ -74,7 +74,7 @@
         "psr/http-server-handler": "1.0.2",
         "psr/http-server-middleware": "1.0.2",
         "ramsey/uuid": "4.2.3",
-        "sabre/vobject": "4.5.7",
+        "sabre/vobject": "4.5.8",
         "symfony/cache": "5.4.46",
         "symfony/expression-language": "5.4.45",
         "symfony/mailer": "5.4.45",
