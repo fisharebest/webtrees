@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 
 /**
- * @covers \Fisharebest\Webtrees\Services\GedcomImportService;
+ * @covers \Fisharebest\Webtrees\Services\GedcomImportService
  */
 class ImportGedcomTest extends TestCase
 {

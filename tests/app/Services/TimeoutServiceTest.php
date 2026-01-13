@@ -54,9 +54,9 @@ class TimeoutServiceTest extends TestCase
 
     protected function tearDown(): void
     {
-        parent::setUp();
-
         self::$mock_functions = null;
+
+        parent::tearDown();
     }
 
     public function testNoTimeOut(): void

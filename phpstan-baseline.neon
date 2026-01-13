@@ -1417,12 +1417,6 @@ parameters:
 			path: app/GedcomRecord.php
 
 		-
-			rawMessage: 'Parameter #2 $gedcom of method Fisharebest\Webtrees\GedcomRecord::updateFact() expects string, string|null given.'
-			identifier: argument.type
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
 			rawMessage: 'Parameter #2 $haystack of function array_search expects array, array<int<1, max>, string>|false given.'
 			identifier: argument.type
 			count: 2
@@ -1443,7 +1437,7 @@ parameters:
 		-
 			rawMessage: 'Parameter #3 $subject of function preg_replace expects array<float|int|string>|string, string|null given.'
 			identifier: argument.type
-			count: 2
+			count: 1
 			path: app/GedcomRecord.php
 
 		-

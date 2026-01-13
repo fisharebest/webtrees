@@ -102,7 +102,7 @@ class RedirectFanChartPhpTest extends TestCase
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects($this->once())->method('findByComponent')
+            ->expects(self::once())->method('findByComponent')
             ->with(ModuleChartInterface::class)
             ->willReturn(new Collection());
 

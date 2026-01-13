@@ -27,10 +27,7 @@
             "php": "7.4"
         },
         "sort-packages": true,
-        "process-timeout": 3600,
-        "allow-plugins": {
-            "phpstan/extension-installer": true
-        }
+        "process-timeout": 3600
     },
     "require": {
         "php": "7.4 - 8.6",
@@ -90,11 +87,7 @@
         "composer/composer": "2.9.3",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.9.1",
-        "phpstan/extension-installer": "1.4.3",
         "phpstan/phpstan": "2.1.33",
-        "phpstan/phpstan-deprecation-rules": "2.0.3",
-        "phpstan/phpstan-phpunit": "2.0.11",
-        "phpstan/phpstan-strict-rules": "2.0.7",
         "phpunit/phpunit": "9.6.31",
         "squizlabs/php_codesniffer": "4.0.1"
     },

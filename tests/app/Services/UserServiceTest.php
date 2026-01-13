@@ -133,7 +133,7 @@ class UserServiceTest extends TestCase
 
         $users = $user_service->all();
 
-        self::assertSame(2, $users->count());
+        self::assertCount(2, $users);
         self::assertSame($user2->id(), $users[0]->id());
         self::assertSame($user1->id(), $users[1]->id());
     }

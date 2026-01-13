@@ -552,7 +552,7 @@ class StatisticsData
             ->where('d_file', '=', $this->tree->id())
             ->whereIn('d_fact', $events)
             ->distinct()
-            ->count(['i_id']);
+            ->count('i_id');
     }
 
     public function countIndividualsWithSources(): int
