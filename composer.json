@@ -32,7 +32,7 @@
         }
     },
     "require": {
-        "php": "8.3 - 8.5",
+        "php": "8.3 - 8.6",
         "ext-ctype": "*",
         "ext-curl": "*",
         "ext-gd": "*",
@@ -51,8 +51,8 @@
         "fisharebest/ext-calendar": "2.6.0",
         "fisharebest/localization": "1.17.0",
         "guzzlehttp/guzzle": "7.10.0",
-        "illuminate/database": "12.44.0",
-        "illuminate/support": "12.44.0",
+        "illuminate/database": "12.46.0",
+        "illuminate/support": "12.46.0",
         "intervention/image": "3.11.6",
         "league/commonmark": "2.8.0",
         "league/flysystem": "3.30.2",
@@ -68,7 +68,7 @@
         "psr/http-server-handler": "1.0.2",
         "psr/http-server-middleware": "1.0.2",
         "ramsey/uuid": "4.9.2",
-        "sabre/vobject": "4.5.7",
+        "sabre/vobject": "4.5.8",
         "symfony/cache": "7.4.3",
         "symfony/console": "7.4.3",
         "symfony/expression-language": "7.4.0",
