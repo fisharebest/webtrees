@@ -22,11 +22,11 @@ use Fisharebest\Webtrees\View;
             <div class="card my-2 wt-sortable-item">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                 <div class="card-header">
-                    <?= view('edit/reorder-card-header', ['title' => $fact->target()?->fullName() ?? '']) ?>
+                    <?= view('edit/reorder-card-header', ['title' => $fact->target() ? $fact->target()->fullName() : '']) ?>
                 </div>
 
                 <div class="card-body">
-                    <?= $fact->target()?->displayImage(100, 100, 'contain', []) ?? '<div class="alert alert-danger">' . I18N::translate('%s does not exist.', e($fact->value())) . '</div>' ?>
+                    <?= $fact->target() ? $fact->target()->displayImage(100, 100, 'contain', []) : '<div class="alert alert-danger">' . I18N::translate('%s does not exist.', e($fact->value())) . '</div>' ?>
                 </div>
             </div>
         <?php endforeach ?>
