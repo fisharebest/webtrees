@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-12-28 19:39+0000\n"
+"PO-Revision-Date: 2026-01-13 23:02+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
@@ -3989,7 +3989,7 @@ msgstr "Confirmar senha"
 #. I18N: gedcom tag CONF
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
 msgid "Confirmation"
-msgstr "Crisma / Confirmação"
+msgstr "Crisma / confirmação"
 
 #: setup.php:275
 msgid "Connection to database server"
@@ -6969,7 +6969,7 @@ msgstr "Madrinha"
 #. I18N: gedcom tag _GODP
 #: app/GedcomCode/GedcomCodeRela.php:149 app/GedcomTag.php:1513
 msgid "Godparent"
-msgstr "Padrinho/Madrinha"
+msgstr "Padrinho / Madrinha"
 
 #: app/GedcomCode/GedcomCodeRela.php:153 app/GedcomCode/GedcomCodeRela.php:160
 msgid "Godson"
@@ -7410,7 +7410,7 @@ msgstr "Idaho Falls, Idaho, Estados Unidos"
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:520
 msgid "Identification number"
-msgstr "Número de identificação"
+msgstr "Número de identificação civil"
 
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:646
@@ -11677,7 +11677,7 @@ msgstr "Indivíduos relacionados"
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:720
 msgid "Relationship"
-msgstr "Parentesco"
+msgstr "Relação"
 
 #. I18N: gedcom tag _FREL
 #: app/GedcomTag.php:1505
@@ -13220,7 +13220,7 @@ msgstr "Snowflake, Arizona, Estados Unidos"
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:796
 msgid "Social security number"
-msgstr "Número da Segurança Social"
+msgstr "Número da segurança social"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6876
