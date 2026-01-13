@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-12-28 22:40+0000\n"
+"PO-Revision-Date: 2026-01-13 23:02+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -3863,7 +3863,7 @@ msgstr "Data de conclusão"
 
 #: app/Gedcom.php:625 resources/xml/reports/missing_facts_report.xml:19
 msgid "Confirmation"
-msgstr "Crisma / Confirmação"
+msgstr "Crisma / confirmação"
 
 #: resources/views/setup/step-3-database-type.phtml:38
 msgid "Connection to database server"
@@ -7082,7 +7082,7 @@ msgstr "Madrinha"
 
 #: app/Elements/RelationIsDescriptor.php:109
 msgid "Godparent"
-msgstr "Padrinho/Madrinha"
+msgstr "Padrinho / Madrinha"
 
 #: app/CustomTags/GedcomL.php:187 app/CustomTags/GedcomL.php:188
 #: app/Gedcom.php:621
@@ -7568,7 +7568,7 @@ msgstr "Idaho Falls, Idaho, Estados Unidos"
 
 #: app/Gedcom.php:669
 msgid "Identification number"
-msgstr "Número de identificação"
+msgstr "Número de identificação civil"
 
 #: resources/views/admin/tags.phtml:778
 msgid "Identifiers"
@@ -11921,7 +11921,7 @@ msgstr "Indivíduos relacionados"
 #: app/Module/BranchesListModule.php:380 app/Module/BranchesListModule.php:418
 #: resources/views/fact-association-structure.phtml:89
 msgid "Relationship"
-msgstr "Parentesco"
+msgstr "Relação"
 
 #: app/CustomTags/BrothersKeeper.php:61 app/CustomTags/FamilyTreeMaker.php:54
 #: app/CustomTags/FamilyTreeMaker.php:107 app/CustomTags/Legacy.php:61
@@ -13489,7 +13489,7 @@ msgstr "Snowflake, Arizona, Estados Unidos"
 
 #: app/Gedcom.php:757
 msgid "Social security number"
-msgstr "Número da Segurança Social"
+msgstr "Número da segurança social"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:447
