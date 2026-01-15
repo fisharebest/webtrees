@@ -89,7 +89,7 @@ class AddSpouseToFamilyAction implements RequestHandlerInterface
         $levels = Validator::parsedBody($request)->array('flevels');
         $tags   = Validator::parsedBody($request)->array('ftags');
         $values = Validator::parsedBody($request)->array('fvalues');
-        $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Family::RECORD_TYPE, $levels, $tags, $values);
+        $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Family::RECORD_TYPE, $levels, $tags, $values, false);
 
         if ($gedcom !== '') {
             $family->createFact($gedcom, false);
