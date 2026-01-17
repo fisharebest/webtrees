@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,11 +28,10 @@ class UpcomingAnniversariesModuleTest extends TestCase
 {
     public function testModuleProperties(): void
     {
-        $calendar_service = $this->createMock(CalendarService::class);
+        $calendar_service = self::createStub(CalendarService::class);
 
         $module = new UpcomingAnniversariesModule($calendar_service);
 
-        self::assertInstanceOf(ModuleBlockInterface::class, $module);
         self::assertTrue($module->loadAjax());
         self::assertTrue($module->isTreeBlock());
         self::assertTrue($module->isUserBlock());

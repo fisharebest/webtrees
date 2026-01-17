@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,9 +42,6 @@ use function view;
 
 use const EXTR_OVERWRITE;
 
-/**
- * Class RecentChangesModule
- */
 class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
@@ -75,11 +72,6 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
         $this->user_service = $user_service;
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module */

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Query\Builder;
@@ -38,12 +39,11 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
-use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
-use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use RuntimeException;
+use ZipArchive;
 
 use function addcslashes;
 use function date;
@@ -79,14 +79,10 @@ class GedcomExportService
         'none'     => Auth::PRIV_HIDE,
     ];
 
-    private ResponseFactoryInterface $response_factory;
-
-    private StreamFactoryInterface $stream_factory;
-
-    public function __construct(ResponseFactoryInterface $response_factory, StreamFactoryInterface $stream_factory)
-    {
-        $this->response_factory = $response_factory;
-        $this->stream_factory   = $stream_factory;
+    public function __construct(
+        private readonly ResponseFactoryInterface $response_factory,
+        private readonly StreamFactoryInterface $stream_factory,
+    ) {
     }
 
     /**
@@ -123,9 +119,8 @@ class GedcomExportService
 
         // Create a new/empty .ZIP file
         $temp_zip_file  = stream_get_meta_data(tmpfile())['uri'];
-        $zip_provider   = new FilesystemZipArchiveProvider($temp_zip_file, 0755);
-        $zip_adapter    = new ZipArchiveAdapter($zip_provider);
-        $zip_filesystem = new Filesystem($zip_adapter);
+        $zip_filesystem = new ZipArchive();
+        $zip_filesystem->open($temp_zip_file, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
         if ($format === 'zipmedia') {
             $media_path = $tree->getPreference('MEDIA_DIRECTORY');
@@ -139,14 +134,16 @@ class GedcomExportService
         $resource = $this->export($tree, $sort_by_xref, $encoding, $access_level, $line_endings, $records, $zip_filesystem, $media_path);
 
         if ($format === 'gedzip') {
-            $zip_filesystem->writeStream('gedcom.ged', $resource);
+            $zip_filesystem->addFromString('gedcom.ged', stream_get_contents($resource));
             $extension = '.gdz';
         } else {
-            $zip_filesystem->writeStream($filename . '.ged', $resource);
+            $zip_filesystem->addFromString($filename . '.ged', stream_get_contents($resource));
             $extension = '.zip';
         }
 
         fclose($resource);
+
+        $zip_filesystem->close();
 
         $stream = $this->stream_factory->createStreamFromFile($temp_zip_file);
 
@@ -165,7 +162,7 @@ class GedcomExportService
      * @param int                                             $access_level   Apply privacy filtering
      * @param string                                          $line_endings   CRLF or LF
      * @param Collection<int,string|object|GedcomRecord>|null $records        Just export these records
-     * @param FilesystemOperator|null                         $zip_filesystem Write media files to this filesystem
+     * @param ZipArchive|FilesystemOperator|null              $zip_filesystem Write media files to this filesystem
      * @param string|null                                     $media_path     Location within the zip filesystem
      *
      * @return resource
@@ -177,7 +174,7 @@ class GedcomExportService
         int $access_level = Auth::PRIV_HIDE,
         string $line_endings = 'CRLF',
         Collection|null $records = null,
-        FilesystemOperator|null $zip_filesystem = null,
+        ZipArchive|FilesystemOperator|null $zip_filesystem = null,
         string|null $media_path = null
     ) {
         $stream = fopen('php://memory', 'wb+');
@@ -242,14 +239,24 @@ class GedcomExportService
                         $datum->o_gedcom;
                 }
 
-                if ($media_path !== null && $zip_filesystem !== null && preg_match('/0 @' . Gedcom::REGEX_XREF . '@ OBJE/', $gedcom) === 1) {
+                if ($media_path !== null && preg_match('/^0 @' . Gedcom::REGEX_XREF . '@ OBJE/', $gedcom) === 1) {
                     preg_match_all('/\n1 FILE (.+)/', $gedcom, $matches, PREG_SET_ORDER);
 
                     foreach ($matches as $match) {
                         $media_file = $match[1];
 
                         if ($media_filesystem->fileExists($media_file)) {
-                            $zip_filesystem->writeStream($media_path . $media_file, $media_filesystem->readStream($media_file));
+                            if ($zip_filesystem instanceof Filesystem) {
+                                $zip_filesystem->writeStream($media_path . $media_file, $media_filesystem->readStream($media_file));
+                            }
+
+                            if ($zip_filesystem instanceof ZipArchive) {
+                                // If the media file is stored locally, we can add it directly to the ZipArchive
+                                // $local_file = Site::getPreference('INDEX_DIRECTORY') . $tree->getPreference('MEDIA_DIRECTORY') . $media_path . $media_file;
+                                // $zip_filesystem->addFile($local_file, $media_path . $media_file);
+
+                                $zip_filesystem->addFromString($media_path . $media_file, $media_filesystem->read($media_file));
+                            }
                         }
                     }
                 }

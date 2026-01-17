@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Validator;
@@ -37,7 +38,6 @@ use Throwable;
 
 use function dirname;
 use function error_get_last;
-use function ini_get;
 use function nl2br;
 use function ob_end_clean;
 use function ob_get_level;
@@ -56,14 +56,8 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
 {
     use ViewResponseTrait;
 
-    private TreeService $tree_service;
-
-    /**
-     * @param TreeService $tree_service
-     */
-    public function __construct(TreeService $tree_service)
+    public function __construct(private PhpService $php_service, private TreeService $tree_service)
     {
-        $this->tree_service = $tree_service;
     }
 
     /**
@@ -76,12 +70,13 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // Fatal errors.  We may be out of memory, so do not create any variables.
-        register_shutdown_function(static function (): void {
-            if (error_get_last() !== null && error_get_last()['type'] & E_ERROR) {
-                // If PHP does not display the error, then we must display it.
-                if (ini_get('display_errors') !== '1') {
-                    echo error_get_last()['message'], '<br><br>', error_get_last()['file'], ': ', error_get_last()['line'];
-                }
+        register_shutdown_function(callback: function (): void {
+            // Show any error message, unless PHP already did this.
+            if (((error_get_last()['type'] ?? 0) & E_ERROR) !== 0 && !$this->php_service->displayErrors()) {
+                echo
+                (error_get_last()['message'] ?? 'unknown'), '<br>',
+                (error_get_last()['file'] ?? 'unknown'), ': ',
+                (error_get_last()['line'] ?? 'unknown');
             }
         });
 

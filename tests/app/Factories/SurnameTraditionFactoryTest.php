@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -50,9 +50,6 @@ class SurnameTraditionFactoryTest extends TestCase
         self::assertInstanceOf(SpanishSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::SPANISH));
     }
 
-    /**
-     * Test create() with invalid input
-     */
     public function testCreateInvalid(): void
     {
         $factory = new SurnameTraditionFactory();
@@ -60,9 +57,6 @@ class SurnameTraditionFactoryTest extends TestCase
         self::assertInstanceOf(DefaultSurnameTradition::class, $factory->make('FOOBAR'));
     }
 
-    /**
-     * Test allDescriptions()
-     */
     public function testAllDescriptions(): void
     {
         $descriptions = Registry::surnameTraditionFactory()->list();

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,9 +37,6 @@ use function in_array;
 use function redirect;
 use function route;
 
-/**
- * Class FrequentlyAskedQuestionsModule
- */
 class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface
 {
     use ModuleConfigTrait;
@@ -59,11 +56,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $this->tree_service = $tree_service;
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module. Abbreviation for “Frequently Asked Questions” */
@@ -130,7 +122,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             return redirect(route(ControlPanel::class));
         }
 
-        $faqs = $this->faqsForTree($tree);
+        $faqs = $this->faqsForTree($tree)->all();
 
         $min_block_order = (int) DB::table('block')
             ->where('module_name', '=', $this->name())
@@ -383,7 +375,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         // Filter foreign languages.
         $faqs = $this->faqsForTree($tree)
-            ->filter(static fn (object $faq): bool => $faq->languages === '' || in_array(I18N::languageTag(), explode(',', $faq->languages), true));
+            ->filter(static fn (object $faq): bool => $faq->languages === '' || in_array(I18N::languageTag(), explode(',', $faq->languages), true))
+            ->all();
 
         return $this->viewResponse('modules/faq/show', [
             'faqs'  => $faqs,
@@ -395,7 +388,14 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     /**
      * @param Tree $tree
      *
-     * @return Collection<int,object>
+     * @return Collection<int,object{
+     *     block_id: int,
+     *     block_order: int,
+     *     gedcom_id: int|null,
+     *     header: string,
+     *     faqbody: string,
+     *     languages: string
+     * }>
      */
     private function faqsForTree(Tree $tree): Collection
     {
@@ -418,7 +418,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             ->map(static function (object $row): object {
                 $row->block_id    = (int) $row->block_id;
                 $row->block_order = (int) $row->block_order;
-                $row->gedcom_id   = (int) $row->gedcom_id;
+                $row->gedcom_id   = $row->gedcom_id === null ? null : (int) $row->gedcom_id;
 
                 return $row;
             });

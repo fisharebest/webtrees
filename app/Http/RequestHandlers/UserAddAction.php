@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,26 +33,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function route;
 
-/**
- * Add a user.
- */
-class UserAddAction implements RequestHandlerInterface
+final class UserAddAction implements RequestHandlerInterface
 {
-    private UserService $user_service;
-
-    /**
-     * @param UserService $user_service
-     */
-    public function __construct(UserService $user_service)
-    {
-        $this->user_service = $user_service;
+    public function __construct(
+        private readonly UserService $user_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $username  = Validator::parsedBody($request)->string('username');

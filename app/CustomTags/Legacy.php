@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,7 +24,11 @@ use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Elements\AddressWebPage;
 use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Elements\DateValue;
+use Fisharebest\Webtrees\Elements\NoteStructure;
 use Fisharebest\Webtrees\Elements\PafUid;
+use Fisharebest\Webtrees\Elements\SourceMediaType;
+use Fisharebest\Webtrees\Elements\WhereWithinSource;
+use Fisharebest\Webtrees\Elements\XrefSource;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -53,7 +57,10 @@ class Legacy implements CustomTagInterface
     public function tags(): array
     {
         return [
+            'FAM:*:ADDR:NOTE'              => new NoteStructure(I18N::translate('Note')),
             'FAM:*:ADDR:_PRIV'             => new CustomElement(I18N::translate('Private')),
+            'FAM:*:NOTE:SOUR'              => new XrefSource(I18N::translate('Source citation')),
+            'FAM:*:NOTE:SOUR:PAGE'         => new WhereWithinSource(I18N::translate('Citation details')),
             'FAM:*:PLAC:_VERI'             => new CustomElement(I18N::translate('Verified')),
             'FAM:*:SOUR:DATE'              => new DateValue(I18N::translate('Date')),
             'FAM:*:SOUR:_VERI'             => new CustomElement(I18N::translate('Verified')),
@@ -106,6 +113,7 @@ class Legacy implements CustomTagInterface
             'HEAD:_EVENT_DEFN:_SENU'       => new CustomElement('Event sentence, unknown sex, place only'),
             'HEAD:_PLAC_DEFN'              => new CustomElement('Place definition'),
             'HEAD:_PLAC_DEFN:_PREP'        => new CustomElement('Place preposition'),
+            'INDI:*:ADDR:NOTE'             => new NoteStructure(I18N::translate('Note')),
             'INDI:*:ADDR:_EMAIL'           => new CustomElement(I18N::translate('Email')),
             'INDI:*:ADDR:_LIST1'           => new CustomElement('Include in the “newsletter” group'),
             'INDI:*:ADDR:_LIST2'           => new CustomElement('Include in the “family association” group'),
@@ -117,6 +125,8 @@ class Legacy implements CustomTagInterface
             'INDI:*:ADDR:_PRIV'            => new CustomElement(I18N::translate('Private')),
             'INDI:*:ADDR:_SORT'            => new CustomElement('The spelling of a name to be used when sorting addresses for a report'),
             'INDI:*:ADDR:_TAG'             => new CustomElement('Tag'),
+            'INDI:*:NOTE:SOUR'             => new XrefSource(I18N::translate('Source citation')),
+            'INDI:*:NOTE:SOUR:PAGE'        => new WhereWithinSource(I18N::translate('Citation details')),
             'INDI:*:PLAC:_TAG'             => new CustomElement('Tag'),
             'INDI:*:PLAC:_VERI'            => new CustomElement(I18N::translate('Verified')),
             'INDI:*:SOUR:DATE'             => new DateValue(I18N::translate('Date')),
@@ -147,7 +157,9 @@ class Legacy implements CustomTagInterface
             'OBJE:_SOUND'                  => new CustomElement(I18N::translate('Audio')),
             'OBJE:_TYPE'                   => new CustomElement(I18N::translate('Type')),
             'OBJE:_UID'                    => new PafUid(I18N::translate('Unique identifier')),
+            'REPO:ADDR:NOTE'               => new NoteStructure(I18N::translate('Note')),
             'REPO:_UID'                    => new PafUid(I18N::translate('Unique identifier')),
+            'SOUR:MEDI'                    => new SourceMediaType(I18N::translate('Media type')),
             'SOUR:_ITALIC'                 => new CustomElement('The source title should be printed in italic on reports'),
             'SOUR:_PAREN'                  => new CustomElement('The source title should be printed within parentheses on reports'),
             'SOUR:_QUOTED'                 => new CustomElement('The source title should be printed within quotes on reports'),

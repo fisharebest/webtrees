@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,10 +29,10 @@ class CensusColumnSexMZTest extends TestCase
 {
     public function testMale(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('M');
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnSexMZ($census, '', '');
 
@@ -41,10 +41,10 @@ class CensusColumnSexMZTest extends TestCase
 
     public function testFeale(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('F');
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnSexMZ($census, '', '');
 
@@ -53,10 +53,10 @@ class CensusColumnSexMZTest extends TestCase
 
     public function testUnknownSex(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('U');
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnSexMZ($census, '', '');
 

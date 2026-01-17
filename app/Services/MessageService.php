@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -49,18 +49,10 @@ class MessageService
     private const string BROADCAST_NEVER = 'never';
     private const string BROADCAST_GONE  = 'gone';
 
-    private EmailService $email_service;
-
-    private UserService $user_service;
-
-    /**
-     * @param EmailService $email_service
-     * @param UserService  $user_service
-     */
-    public function __construct(EmailService $email_service, UserService $user_service)
-    {
-        $this->email_service = $email_service;
-        $this->user_service  = $user_service;
+    public function __construct(
+        private readonly EmailService $email_service,
+        private readonly UserService $user_service,
+    ) {
     }
 
     /**

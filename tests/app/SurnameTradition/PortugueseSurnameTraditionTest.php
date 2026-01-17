@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,9 +30,6 @@ class PortugueseSurnameTraditionTest extends TestCase
 {
     private SurnameTraditionInterface $surname_tradition;
 
-    /**
-     * Prepare the environment for these tests
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -40,29 +37,23 @@ class PortugueseSurnameTraditionTest extends TestCase
         $this->surname_tradition = new PortugueseSurnameTradition();
     }
 
-    /**
-     * Test whether surnames are used
-     */
     public function testSurnames(): void
     {
         self::assertSame('// //', $this->surname_tradition->defaultName());
     }
 
-    /**
-     * Test new child names
-     */
     public function testNewChildNames(): void
     {
-        $father_fact = $this->createMock(Fact::class);
+        $father_fact = self::createStub(Fact::class);
         $father_fact->method('value')->willReturn('Gabriel /Garcia/ /Iglesias/');
 
-        $father = $this->createMock(Individual::class);
+        $father = self::createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father_fact]));
 
-        $mother_fact = $this->createMock(Fact::class);
+        $mother_fact = self::createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Maria /Ruiz/ /Lorca/');
 
-        $mother = $this->createMock(Individual::class);
+        $mother = self::createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -81,9 +72,6 @@ class PortugueseSurnameTraditionTest extends TestCase
         );
     }
 
-    /**
-     * Test new child names
-     */
     public function testNewChildNamesWithNoParentsNames(): void
     {
         self::assertSame(
@@ -92,21 +80,18 @@ class PortugueseSurnameTraditionTest extends TestCase
         );
     }
 
-    /**
-     * Test new child names
-     */
     public function testNewChildNamesCompunds(): void
     {
-        $father_fact = $this->createMock(Fact::class);
+        $father_fact = self::createStub(Fact::class);
         $father_fact->method('value')->willReturn('Gabriel /Garcia/ y /Iglesias/');
 
-        $father = $this->createMock(Individual::class);
+        $father = self::createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father_fact]));
 
-        $mother_fact = $this->createMock(Fact::class);
+        $mother_fact = self::createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Maria /Ruiz/ y /Lorca/');
 
-        $mother = $this->createMock(Individual::class);
+        $mother = self::createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -115,15 +100,12 @@ class PortugueseSurnameTraditionTest extends TestCase
         );
     }
 
-    /**
-     * Test new parent names
-     */
     public function testNewParentNames(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Gabriel /Garcia/ /Iglesias/');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -141,15 +123,12 @@ class PortugueseSurnameTraditionTest extends TestCase
         );
     }
 
-    /**
-     * Test new spouse names
-     */
     public function testNewSpouseNames(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Gabriel /Garcia/ /Iglesias/');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(

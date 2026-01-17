@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -54,7 +54,7 @@ abstract class AbstractEncoding implements EncodingInterface
 
         $chars = preg_split('//u', $text, -1, PREG_SPLIT_NO_EMPTY);
         $chars = array_map(static function (string $char) use ($utf8): string {
-            if (ord($char) < 128) {
+            if (ord($char[0]) < 128) {
                 return $char;
             }
 

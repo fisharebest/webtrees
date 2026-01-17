@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,30 +31,15 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Search and replace genealogy data
- */
-class SearchReplaceAction implements RequestHandlerInterface
+final class SearchReplaceAction implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private SearchService $search_service;
-
-    /**
-     * @param SearchService $search_service
-     */
-    public function __construct(SearchService $search_service)
-    {
-        $this->search_service = $search_service;
+    public function __construct(
+        private readonly SearchService $search_service,
+    ) {
     }
 
-    /**
-     * Search and replace.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();

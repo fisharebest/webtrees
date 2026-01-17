@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -62,9 +62,12 @@ class AdminService
      */
     public function countCommonXrefs(Tree $tree1, Tree $tree2): int
     {
-        $subquery1 = DB::table('individuals')
-            ->where('i_file', '=', $tree1->id())
-            ->select(['i_id AS xref'])
+        $subquery1 = DB::table('change')
+            ->where('gedcom_id', '=', $tree1->id())
+            ->select(['xref AS xref1'])
+            ->union(DB::table('individuals')
+                ->where('i_file', '=', $tree1->id())
+                ->select(['i_id AS xref']))
             ->union(DB::table('families')
                 ->where('f_file', '=', $tree1->id())
                 ->select(['f_id AS xref']))
@@ -81,7 +84,7 @@ class AdminService
 
         $subquery2 = DB::table('change')
             ->where('gedcom_id', '=', $tree2->id())
-            ->select(['xref AS other_xref'])
+            ->select(['xref AS xref2'])
             ->union(DB::table('individuals')
                 ->where('i_file', '=', $tree2->id())
                 ->select(['i_id AS xref']))
@@ -99,9 +102,9 @@ class AdminService
                 ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
                 ->select(['o_id AS xref']));
 
-        return DB::table(new Expression('(' . $subquery1->toSql() . ') AS sub1'))
-            ->mergeBindings($subquery1)
-            ->joinSub($subquery2, 'sub2', 'other_xref', '=', 'xref')
+        return DB::query()
+            ->fromSub($subquery1, 'sub1')
+            ->joinSub($subquery2, 'sub2', 'xref1', '=', 'xref2')
             ->count();
     }
 

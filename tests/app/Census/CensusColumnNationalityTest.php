@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,7 +33,7 @@ class CensusColumnNationalityTest extends TestCase
 {
     private function getPlaceMock(string $place): Place
     {
-        $placeMock = $this->createMock(Place::class);
+        $placeMock = self::createStub(Place::class);
         $placeMock->method('gedcomName')->willReturn($place);
 
         return $placeMock;
@@ -41,11 +41,11 @@ class CensusColumnNationalityTest extends TestCase
 
     public function testNoBirthPlace(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock(''));
         $individual->method('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('Deutschland');
 
         $column = new CensusColumnNationality($census, '', '');
@@ -55,11 +55,11 @@ class CensusColumnNationalityTest extends TestCase
 
     public function testPlaceCountry(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('Australia'));
         $individual->method('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('England');
 
         $column = new CensusColumnNationality($census, '', '');
@@ -69,11 +69,11 @@ class CensusColumnNationalityTest extends TestCase
 
     public function testBritish(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('London, England'));
         $individual->method('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('England');
 
         $column = new CensusColumnNationality($census, '', '');
@@ -83,28 +83,28 @@ class CensusColumnNationalityTest extends TestCase
 
     public function testEmigrated(): void
     {
-        $place1 = $this->createMock(Place::class);
+        $place1 = self::createStub(Place::class);
         $place1->method('gedcomName')->willReturn('United States');
 
-        $fact1 = $this->createMock(Fact::class);
+        $fact1 = self::createStub(Fact::class);
         $fact1->method('place')->willReturn($place1);
         $fact1->method('date')->willReturn(new Date('1855'));
 
-        $place2 = $this->createMock(Place::class);
+        $place2 = self::createStub(Place::class);
         $place2->method('gedcomName')->willReturn('Australia');
 
-        $fact2 = $this->createMock(Fact::class);
+        $fact2 = self::createStub(Fact::class);
         $fact2->method('place')->willReturn($place2);
         $fact2->method('date')->willReturn(new Date('1865'));
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('London, England'));
         $individual->method('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->willReturn(new Collection([
             $fact1,
             $fact2,
         ]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('England');
         $census->method('censusDate')->willReturn('01 JUN 1860');
 

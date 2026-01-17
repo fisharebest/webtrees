@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,6 +38,9 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
     use ModuleConfigTrait;
     use ModuleMapProviderTrait;
 
+    // This list comes from https://image.maps.hereapi.com/mia/v3/languages?apiKey={YOUR_API_KEY}
+    private const array LANGUAGE_CODES = ["ar","as","az","be","bg","bn","bs","ca","cs","cy","da","de","el","en","es","et","eu","fi","fo","fr","ga","gl","gn","gu","he","hi","hr","hu","hy","id","is","it","ja","ka","kk","km","kn","ko","ky","lt","lv","mk","ml","mr","ms","mt","my","nl","no","or","pa","pl","pt","ro","ru","sk","sl","sq","sr","sv","ta","te","th","tr","uk","uz","vi","zh","zh-Hant"];
+
     /**
      * Name of the map provider.
      *
@@ -51,11 +54,6 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
         return I18N::translate('Create maps using %s.', $link);
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;
@@ -69,16 +67,6 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
         $this->layout = 'layouts/administration';
 
         $api_key = $this->getPreference('api_key');
-
-        if ($api_key === '') {
-            $message = I18N::translate('This service requires an API key.');
-
-            if (Auth::isAdmin()) {
-                $message = '<a href="' . e($this->getConfigLink()) . '">' . $message . '</a>';
-            }
-
-            throw new HttpServerErrorException($message);
-        }
 
         return $this->viewResponse('modules/here-maps/config', [
             'api_key' => $api_key,
@@ -121,51 +109,69 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
     {
         $api_key = $this->getPreference('api_key');
 
+        if ($api_key === '') {
+            $message = I18N::translate('This service requires an API key.');
+
+            if (Auth::isAdmin()) {
+                $message = '<a href="' . e($this->getConfigLink()) . '">' . $message . '</a>';
+            }
+
+            throw new HttpServerErrorException($message);
+        }
+
+        $tag = I18N::languageTag();
+        $lang2 = 'en';
+        foreach (self::LANGUAGE_CODES as $code) {
+            if ($tag === $lang2 || str_starts_with($tag, $code . '-')) {
+                $lang2 = $code;
+                break;
+            }
+        }
+
         return [
             (object) [
                 'apiKey'      => $api_key,
-                'attribution' => '<a href="https://legal.here.com/en/terms/serviceterms/us">Terms of use</a> ©1987-2021 HERE',
-                'base'        => 'base',
-                'format'      => 'png8',
-                'label'       => 'Normal',
-                'mapID'       => 'newest',
-                'maxZoom'     => 19,
+                'attribution' => '&copy;2024 HERE Technologies',
+                'label'       => 'Day',
+                'maxZoom'     => 18,
                 'minZoom'     => 2,
-                'size'        => 512,
-                'subdomains'  => ['1', '2', '3', '4'],
-                'type'        => 'maptile',
-                'url'         => 'https://{s}.{base}.maps.ls.hereapi.com/maptile/2.1/{type}/{mapID}/{variant}/{z}/{x}/{y}/{size}/{format}?apiKey={apiKey}',
-                'variant'     => 'normal.day',
+                'lang2'       => $lang2,
+                'url'         => "https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/jpeg?size=256&style={variant}&lang2={lang2}&apiKey={apiKey}",
+                'variant'     => 'explore.day',
+                'localName'   => 'HEREDay',
             ],
             (object) [
                 'apiKey'      => $api_key,
-                'attribution' => '<a href="https://legal.here.com/en/terms/serviceterms/us">Terms of use</a> ©1987-2021 HERE',
-                'base'        => 'base',
-                'format'      => 'png8',
-                'label'       => 'Grey',
-                'mapID'       => 'newest',
-                'maxZoom'     => 19,
+                'attribution' => '&copy;2024 HERE Technologies',
+                'label'       => 'Satellite Day',
+                'maxZoom'     => 18,
                 'minZoom'     => 2,
-                'size'        => 512,
-                'subdomains'  => ['1', '2', '3', '4'],
-                'type'        => 'maptile',
-                'url'         => 'https://{s}.{base}.maps.ls.hereapi.com/maptile/2.1/{type}/{mapID}/{variant}/{z}/{x}/{y}/{size}/{format}?apiKey={apiKey}',
-                'variant'     => 'normal.day.grey',
+                'lang2'       => $lang2,
+                'url'         => "https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/jpeg?size=256&style={variant}&lang2={lang2}&apiKey={apiKey}",
+                'variant'     => 'explore.satellite.day',
+                'localName'   => 'HEREDSatelliteDay',
             ],
             (object) [
                 'apiKey'      => $api_key,
-                'attribution' => '<a href="https://legal.here.com/en/terms/serviceterms/us">Terms of use</a> ©1987-2021 HERE',
-                'base'        => 'aerial',
-                'format'      => 'png8',
+                'attribution' => '&copy;2024 HERE Technologies',
+                'label'       => 'Night',
+                'maxZoom'     => 18,
+                'minZoom'     => 2,
+                'lang2'       => $lang2,
+                'url'         => "https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/jpeg?size=256&style={variant}&lang2={lang2}&apiKey={apiKey}",
+                'variant'     => 'explore.night',
+                'localName'   => 'HERENight',
+            ],
+            (object) [
+                'apiKey'      => $api_key,
+                'attribution' => '&copy;2024 HERE Technologies',
                 'label'       => 'Terrain',
-                'mapID'       => 'newest',
-                'maxZoom'     => 19,
+                'maxZoom'     => 18,
                 'minZoom'     => 2,
-                'size'        => 512,
-                'subdomains'  => ['1', '2', '3', '4'],
-                'type'        => 'maptile',
-                'url'         => 'https://{s}.{base}.maps.ls.hereapi.com/maptile/2.1/{type}/{mapID}/{variant}/{z}/{x}/{y}/{size}/{format}?apiKey={apiKey}',
-                'variant'     => 'terrain.day',
+                'lang2'       => $lang2,
+                'url'         => "https://maps.hereapi.com/v3/base/mc/{z}/{x}/{y}/jpeg?size=256&style={variant}&lang2={lang2}&apiKey={apiKey}",
+                'variant'     => 'topo.day',
+                'localName'   => 'HERETerrain',
             ],
         ];
     }

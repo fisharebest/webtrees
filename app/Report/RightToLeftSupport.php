@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -213,7 +213,7 @@ class RightToLeftSupport
                         $charArray = self::getChar($workingText . "\n", $offset);
                         if (!str_contains(self::NUMBERS, $charArray['letter'])) {
                             // This is not a digit. Is it numeric punctuation?
-                            if (substr($workingText . "\n", $offset, 6) === '&nbsp;') {
+                            if (str_starts_with($workingText . "\n", '&nbsp;')) {
                                 $offset += 6; // This could be numeric punctuation
                             } elseif (str_contains(self::NUMBER_PUNCTUATION, $charArray['letter'])) {
                                 $offset += $charArray['length']; // This could be numeric punctuation

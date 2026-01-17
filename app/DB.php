@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Closure;
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -109,15 +110,16 @@ class DB extends Manager
 
         $capsule = new self();
         $capsule->addConnection([
-            'driver'         => $driver,
-            'host'           => $host,
-            'port'           => $port,
-            'database'       => $database,
-            'username'       => $username,
-            'password'       => $password,
-            'prefix'         => $prefix,
-            'prefix_indexes' => true,
-            'options'        => $options,
+            'driver'                   => $driver,
+            'host'                     => $host,
+            'port'                     => $port,
+            'database'                 => $database,
+            'username'                 => $username,
+            'password'                 => $password,
+            'prefix'                   => $prefix,
+            'prefix_indexes'           => true,
+            'options'                  => $options,
+            'trust_server_certificate' => true, // For SQL-Server - #5246
         ]);
         $capsule->setAsGlobal();
 
@@ -162,9 +164,27 @@ class DB extends Manager
         return parent::connection()->getPdo();
     }
 
-    public static function prefix(string $identifier = ''): string
+    public static function prefix(string $identifier): string
     {
         return parent::connection()->getTablePrefix() . $identifier;
+    }
+
+    /**
+     * SQL-Server needs to be told that we are going to insert into an identity column.
+     *
+     * @param Closure(): void $callback
+     */
+    public static function identityInsert(string $table, Closure $callback): void
+    {
+        if (self::driverName() === self::SQL_SERVER) {
+            self::exec('SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] ON');
+        }
+
+        $callback();
+
+        if (self::driverName() === self::SQL_SERVER) {
+            self::exec('SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] OFF');
+        }
     }
 
     public static function rollBack(): void
@@ -174,15 +194,26 @@ class DB extends Manager
 
     /**
      * @internal
+     *
+     * @param list<string> $expressions
+     */
+    public static function concat(array $expressions): string
+    {
+        if (self::driverName() === self::SQL_SERVER) {
+            return 'CONCAT(' . implode(', ', $expressions) . ')';
+        }
+
+        // ANSI standard.  MySQL uses this with ANSI mode
+        return '(' . implode(' || ', $expressions) . ')';
+    }
+
+    /**
+     * @internal
      */
     public static function iLike(): string
     {
         if (self::driverName() === self::POSTGRES) {
             return 'ILIKE';
-        }
-
-        if (self::driverName() === self::SQL_SERVER) {
-            return 'COLLATE SQL_UTF8_General_CI_AI LIKE';
         }
 
         return 'LIKE';
@@ -205,6 +236,9 @@ class DB extends Manager
         }
     }
 
+    /**
+     * @return Expression<string>
+     */
     public static function binaryColumn(string $column, string|null $alias = null): Expression
     {
         if (self::driverName() === self::MYSQL) {

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,14 +42,11 @@ class TreeTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * Things to run before every test.
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        $cache_factory = $this->createMock(CacheFactoryInterface::class);
+        $cache_factory = self::createStub(CacheFactoryInterface::class);
         $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));
         Registry::cache($cache_factory);
     }
@@ -300,15 +297,23 @@ class TreeTest extends TestCase
         $resource = $gedcom_export_service->export($tree, true);
         $original = file_get_contents(__DIR__ . '/../data/demo.ged');
         $export   = stream_get_contents($resource);
+        self::assertIsString($original);
+        self::assertIsString($export);
         fclose($resource);
 
         // The version, date and time in the HEAD record will be different.
         $original = preg_replace('/\n2 VERS .*/', '', $original, 1);
         $export   = preg_replace('/\n2 VERS .*/', '', $export, 1);
+        self::assertIsString($original);
+        self::assertIsString($export);
         $original = preg_replace('/\n1 DATE .. ... ..../', '', $original, 1);
         $export   = preg_replace('/\n1 DATE .. ... ..../', '', $export, 1);
+        self::assertIsString($original);
+        self::assertIsString($export);
         $original = preg_replace('/\n2 TIME ..:..:../', '', $original, 1);
         $export   = preg_replace('/\n2 TIME ..:..:../', '', $export, 1);
+        self::assertIsString($original);
+        self::assertIsString($export);
 
         self::assertSame($original, $export);
     }

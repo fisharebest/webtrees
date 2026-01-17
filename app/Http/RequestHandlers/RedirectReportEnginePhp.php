@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,10 +33,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function basename;
 use function dirname;
 
-/**
- * Redirect URLs created by webtrees 1.x (and PhpGedView).
- */
-class RedirectReportEnginePhp implements RequestHandlerInterface
+final class RedirectReportEnginePhp implements RequestHandlerInterface
 {
     public function __construct(
         private readonly TreeService $tree_service,

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,9 +40,6 @@ use function route;
 use function strip_tags;
 use function view;
 
-/**
- * Class ShareAnniversaryModule
- */
 class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterface, RequestHandlerInterface
 {
     use ModuleShareTrait;
@@ -63,11 +60,6 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
             ->get(static::class, static::ROUTE_URL, $this);
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         return I18N::translate('Share the anniversary of an event');
@@ -109,12 +101,9 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
             ]);
 
         if ($facts->isNotEmpty()) {
-            $url = route(static::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()]);
-
             return view('modules/share-anniversary/share', [
                 'facts'  => $facts,
                 'record' => $record,
-                'url'    => $url,
             ]);
         }
 

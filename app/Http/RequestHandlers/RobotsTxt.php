@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,12 +33,7 @@ use function response;
 
 use const PHP_URL_PATH;
 
-/**
- * Generate a robots exclusion file.
- *
- * @link https://robotstxt.org
- */
-class RobotsTxt implements RequestHandlerInterface
+final class RobotsTxt implements RequestHandlerInterface
 {
     private const array DISALLOWED_PATHS = [
         'admin',
@@ -48,24 +43,12 @@ class RobotsTxt implements RequestHandlerInterface
         'account',
     ];
 
-    private ModuleService $module_service;
-
-    private TreeService $tree_service;
-
-    /**
-     * @param ModuleService $module_service
-     */
-    public function __construct(ModuleService $module_service, TreeService $tree_service)
-    {
-        $this->module_service = $module_service;
-        $this->tree_service   = $tree_service;
+    public function __construct(
+        private readonly ModuleService $module_service,
+        private readonly TreeService $tree_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $base_url = Validator::attributes($request)->string('base_url');

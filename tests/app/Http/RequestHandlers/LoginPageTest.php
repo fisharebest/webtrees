@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -46,7 +46,7 @@ class LoginPageTest extends TestCase
     {
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
-        $user                  = $this->createMock(User::class);
+        $user                  = self::createStub(User::class);
         $request               = self::createRequest()->withAttribute('user', $user);
         $handler               = new LoginPage($tree_service);
         $response              = $handler->handle($request);

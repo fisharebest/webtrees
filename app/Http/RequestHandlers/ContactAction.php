@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,10 +42,7 @@ use function preg_quote;
 use function redirect;
 use function route;
 
-/**
- * Send a message from a visitor.
- */
-class ContactAction implements RequestHandlerInterface
+final class ContactAction implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -80,11 +77,6 @@ class ContactAction implements RequestHandlerInterface
         $this->message_service    = $message_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = Validator::attributes($request)->tree();

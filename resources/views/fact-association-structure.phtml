@@ -78,9 +78,7 @@ foreach ($amatches as $amatch) {
 
         $module = Registry::container()->get(ModuleService::class)
             ->findByComponent(ModuleChartInterface::class, $person->tree(), Auth::user())
-            ->first(static function (ModuleInterface $module) {
-                return $module instanceof RelationshipsChartModule;
-            });
+            ->first(static fn (ModuleInterface $module): bool => $module instanceof RelationshipsChartModule);
 
         if ($module instanceof RelationshipsChartModule) {
             foreach ($associates as $associate) {

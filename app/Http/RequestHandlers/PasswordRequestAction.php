@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\RateLimitService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SiteUser;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
@@ -41,10 +40,7 @@ use function redirect;
 use function route;
 use function view;
 
-/**
- * Request a new password.
- */
-class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterface
+final class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterface
 {
     private const int TOKEN_LENGTH = 40;
 
@@ -75,11 +71,6 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
         $this->user_service       = $user_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->treeOptional();

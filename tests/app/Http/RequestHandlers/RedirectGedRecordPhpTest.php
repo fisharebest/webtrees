@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,7 +39,7 @@ class RedirectGedRecordPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -50,7 +50,7 @@ class RedirectGedRecordPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $gedcom_record = $this->createMock(GedcomRecord::class);
+        $gedcom_record = self::createStub(GedcomRecord::class);
         $gedcom_record
             ->method('url')
             ->willReturn('https://www.example.com');
@@ -79,7 +79,7 @@ class RedirectGedRecordPhpTest extends TestCase
 
     public function testNoSuchRecord(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
@@ -101,7 +101,7 @@ class RedirectGedRecordPhpTest extends TestCase
 
     public function testMissingXrefParameter(): void
     {
-        $tree_service = $this->createMock(TreeService::class);
+        $tree_service = self::createStub(TreeService::class);
 
         $handler = new RedirectGedRecordPhp($tree_service);
 

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -86,7 +86,6 @@ use function xml_get_current_line_number;
 use function xml_get_error_code;
 use function xml_parse;
 use function xml_parser_create;
-use function xml_parser_free;
 use function xml_parser_set_option;
 use function xml_set_character_data_handler;
 use function xml_set_element_handler;
@@ -160,7 +159,7 @@ class ReportParserGenerate extends ReportParserBase
     /** The current generational level */
     private int $generation = 1;
 
-    /** @var array<static|GedcomRecord> Source data for processing lists */
+    /** @var array<GedcomRecord> Source data for processing lists */
     private array $list = [];
 
     /** Number of items in lists */
@@ -241,7 +240,7 @@ class ReportParserGenerate extends ReportParserBase
         if ($ct < $num) {
             return '';
         }
-        $pos1 = $match[$num - 1][0][1];
+        $pos1 = (int) $match[$num - 1][0][1];
         $pos2 = strpos($gedrec, "\n$level", $pos1 + 1);
         if (!$pos2) {
             $pos2 = strpos($gedrec, "\n1", $pos1 + 1);
@@ -617,8 +616,8 @@ class ReportParserGenerate extends ReportParserBase
         $this->print_data         = true;
 
         $this->current_element = $this->report_root->createCell(
-            (int) $width,
-            (int) $height,
+            $width,
+            $height,
             $border,
             $align,
             $bgcolor,
@@ -709,22 +708,20 @@ class ReportParserGenerate extends ReportParserBase
                         $tmp       = Registry::gedcomRecordFactory()->make($match[1], $this->tree);
                         $newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
                     }
-                } else {
-                    if (preg_match('/@(.+)/', $tag, $match)) {
-                        $gmatch = [];
-                        if (preg_match("/\d $match[1] @([^@]+)@/", $tgedrec, $gmatch)) {
-                            $tmp       = Registry::gedcomRecordFactory()->make($gmatch[1], $this->tree);
-                            $newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
-                            $tgedrec   = $newgedrec;
-                        } else {
-                            $newgedrec = '';
-                            break;
-                        }
-                    } else {
-                        $level     = 1 + (int) explode(' ', trim($tgedrec))[0];
-                        $newgedrec = self::getSubRecord($level, "$level $tag", $tgedrec);
+                } elseif (preg_match('/@(.+)/', $tag, $match)) {
+                    $gmatch = [];
+                    if (preg_match("/\d $match[1] @([^@]+)@/", $tgedrec, $gmatch)) {
+                        $tmp       = Registry::gedcomRecordFactory()->make($gmatch[1], $this->tree);
+                        $newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
                         $tgedrec   = $newgedrec;
+                    } else {
+                        $newgedrec = '';
+                        break;
                     }
+                } else {
+                    $level     = 1 + (int) explode(' ', trim($tgedrec))[0];
+                    $newgedrec = self::getSubRecord($level, "$level $tag", $tgedrec);
+                    $tgedrec   = $newgedrec;
                 }
             }
         }
@@ -956,21 +953,17 @@ class ReportParserGenerate extends ReportParserBase
             if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
                 $id = $match[1];
             }
-        } else {
-            if (preg_match('/\$(.+)/', $attrs['id'], $match)) {
-                if (isset($this->vars[$match[1]]['id'])) {
-                    $id = $this->vars[$match[1]]['id'];
-                }
-            } else {
-                if (preg_match('/@(.+)/', $attrs['id'], $match)) {
-                    $gmatch = [];
-                    if (preg_match("/\d $match[1] @([^@]+)@/", $this->gedrec, $gmatch)) {
-                        $id = $gmatch[1];
-                    }
-                } else {
-                    $id = $attrs['id'];
-                }
+        } elseif (preg_match('/\$(.+)/', $attrs['id'], $match)) {
+            if (isset($this->vars[$match[1]]['id'])) {
+                $id = $this->vars[$match[1]]['id'];
             }
+        } elseif (preg_match('/@(.+)/', $attrs['id'], $match)) {
+            $gmatch = [];
+            if (preg_match("/\d $match[1] @([^@]+)@/", $this->gedrec, $gmatch)) {
+                $id = $gmatch[1];
+            }
+        } else {
+            $id = $attrs['id'];
         }
         if (!empty($id)) {
             $record = Registry::gedcomRecordFactory()->make($id, $this->tree);
@@ -985,7 +978,7 @@ class ReportParserGenerate extends ReportParserBase
                 if (!empty($attrs['truncate'])) {
                     $name = Str::limit($name, (int) $attrs['truncate'], I18N::translate('…'));
                 } else {
-                    $addname = (string) $record->alternateName();
+                    $addname = $record->alternateName() ?? '';
                     $addname = strip_tags($addname);
                     if (!empty($addname)) {
                         $name .= ' ' . $addname;
@@ -1054,7 +1047,7 @@ class ReportParserGenerate extends ReportParserBase
                     $value = str_replace('(', '<br>(', $value);
                     $value = str_replace('<span dir="ltr"><br>', '<br><span dir="ltr">', $value);
                     $value = str_replace('<span dir="rtl"><br>', '<br><span dir="rtl">', $value);
-                    if (substr($value, 0, 4) === '<br>') {
+                    if (str_starts_with($value, '<br>')) {
                         $value = substr($value, 4);
                     }
                 }
@@ -1224,7 +1217,6 @@ class ReportParserGenerate extends ReportParserBase
                         xml_get_current_line_number($repeat_parser)
                     ));
                 }
-                xml_parser_free($repeat_parser);
             }
             // Restore original values
             $this->gedrec = $oldgedrec;
@@ -1432,7 +1424,7 @@ class ReportParserGenerate extends ReportParserBase
                         xml_get_current_line_number($repeat_parser)
                     ));
                 }
-                xml_parser_free($repeat_parser);
+
                 $i++;
             }
             // Restore original values
@@ -1783,22 +1775,20 @@ class ReportParserGenerate extends ReportParserBase
                     $this->wt_report->addElement($image);
                 }
             }
-        } else {
-            if (file_exists($file) && preg_match('/(jpg|jpeg|png|gif)$/i', $file)) {
-                $size = getimagesize($file);
-                if ($width > 0 && $height == 0) {
-                    $perc   = $width / $size[0];
-                    $height = round($size[1] * $perc);
-                } elseif ($height > 0 && $width == 0) {
-                    $perc  = $height / $size[1];
-                    $width = round($size[0] * $perc);
-                } else {
-                    $width  = $size[0];
-                    $height = $size[1];
-                }
-                $image = $this->report_root->createImage($file, $left, $top, $width, $height, $align, $ln);
-                $this->wt_report->addElement($image);
+        } elseif (file_exists($file) && preg_match('/(jpg|jpeg|png|gif)$/i', $file)) {
+            $size = getimagesize($file);
+            if ($width > 0 && $height == 0) {
+                $perc   = $width / $size[0];
+                $height = round($size[1] * $perc);
+            } elseif ($height > 0 && $width == 0) {
+                $perc  = $height / $size[1];
+                $width = round($size[0] * $perc);
+            } else {
+                $width  = $size[0];
+                $height = $size[1];
             }
+            $image = $this->report_root->createImage($file, $left, $top, $width, $height, $align, $ln);
+            $this->wt_report->addElement($image);
         }
     }
 
@@ -2105,10 +2095,8 @@ class ReportParserGenerate extends ReportParserBase
                             $value = "'" . $this->fact . "'";
                         } elseif ($id === 'desc') {
                             $value = "'" . $this->desc . "'";
-                        } else {
-                            if (preg_match("/\d $id (.+)/", $this->gedrec, $match)) {
-                                $value = "'" . str_replace('@', '', trim($match[1])) . "'";
-                            }
+                        } elseif (preg_match("/\d $id (.+)/", $this->gedrec, $match)) {
+                            $value = "'" . str_replace('@', '', trim($match[1])) . "'";
                         }
                         $condition = preg_replace("/@$id/", $value, $condition);
                     }
@@ -2345,7 +2333,6 @@ class ReportParserGenerate extends ReportParserBase
                             xml_get_current_line_number($repeat_parser)
                         ));
                     }
-                    xml_parser_free($repeat_parser);
                 } else {
                     $this->list_private++;
                 }
@@ -2570,7 +2557,6 @@ class ReportParserGenerate extends ReportParserBase
                 if (!xml_parse($repeat_parser, $reportxml, true)) {
                     throw new DomainException(sprintf('RelativesEHandler XML error: %s at line %d', xml_error_string(xml_get_error_code($repeat_parser)), xml_get_current_line_number($repeat_parser)));
                 }
-                xml_parser_free($repeat_parser);
             }
             // Clean up the list array
             $this->list   = [];

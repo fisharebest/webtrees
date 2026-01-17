@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,7 +28,7 @@ class FactTest extends TestCase
 
     public function testAttribute(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('tag')->willReturn('INDI');
 
         $fact = new Fact("1 BIRT\n2 ADDR address", $individual, '');
@@ -43,7 +43,7 @@ class FactTest extends TestCase
      */
     public function testIssue4417(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('tag')->willReturn('INDI');
 
         $fact = new Fact("1 BIRT\n2 PLACXYZ\n3 CONT place", $individual, '');

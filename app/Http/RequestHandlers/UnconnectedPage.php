@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,18 +35,10 @@ use function count;
 use function in_array;
 use function strtolower;
 
-/**
- * Find groups of unrelated individuals.
- */
-class UnconnectedPage implements RequestHandlerInterface
+final class UnconnectedPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = Validator::attributes($request)->tree();

@@ -31,26 +31,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function redirect;
 use function route;
 
-/**
- * Update a list of modules.
- */
-class ModulesAllAction implements RequestHandlerInterface
+final class ModulesAllAction implements RequestHandlerInterface
 {
-    private ModuleService $module_service;
-
-    /**
-     * @param ModuleService $module_service
-     */
-    public function __construct(ModuleService $module_service)
-    {
-        $this->module_service = $module_service;
+    public function __construct(
+        private readonly ModuleService $module_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $modules = $this->module_service->all(true);

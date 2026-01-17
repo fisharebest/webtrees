@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -70,10 +70,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * The control panel shows a summary of the site and links to admin functions.
- */
-class ControlPanel implements RequestHandlerInterface
+final class ControlPanel implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -123,11 +120,6 @@ class ControlPanel implements RequestHandlerInterface
         $this->user_service         = $user_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -232,7 +224,7 @@ class ControlPanel implements RequestHandlerInterface
                     ->where('change.status', '=', 'pending');
             })
             ->groupBy(['gedcom.gedcom_id'])
-            ->pluck(new Expression('COUNT(change_id) AS aggregate'), 'gedcom.gedcom_id')
+            ->pluck(new Expression('COUNT(change_id) AS total'), 'gedcom.gedcom_id')
             ->map(static fn (string $count): int => (int) $count)
             ->all();
     }
@@ -247,7 +239,7 @@ class ControlPanel implements RequestHandlerInterface
         return DB::table('gedcom')
             ->leftJoin('individuals', 'i_file', '=', 'gedcom_id')
             ->groupBy(['gedcom_id'])
-            ->pluck(new Expression('COUNT(i_id) AS aggregate'), 'gedcom_id')
+            ->pluck(new Expression('COUNT(i_id) AS total'), 'gedcom_id')
             ->map(static fn (string $count): int => (int) $count);
     }
 
@@ -261,7 +253,7 @@ class ControlPanel implements RequestHandlerInterface
         return DB::table('gedcom')
             ->leftJoin('families', 'f_file', '=', 'gedcom_id')
             ->groupBy(['gedcom_id'])
-            ->pluck(new Expression('COUNT(f_id) AS aggregate'), 'gedcom_id')
+            ->pluck(new Expression('COUNT(f_id) AS total'), 'gedcom_id')
             ->map(static fn (string $count): int => (int) $count);
     }
 
@@ -275,7 +267,7 @@ class ControlPanel implements RequestHandlerInterface
         return DB::table('gedcom')
             ->leftJoin('sources', 's_file', '=', 'gedcom_id')
             ->groupBy(['gedcom_id'])
-            ->pluck(new Expression('COUNT(s_id) AS aggregate'), 'gedcom_id')
+            ->pluck(new Expression('COUNT(s_id) AS total'), 'gedcom_id')
             ->map(static fn (string $count): int => (int) $count);
     }
 
@@ -289,7 +281,7 @@ class ControlPanel implements RequestHandlerInterface
         return DB::table('gedcom')
             ->leftJoin('media', 'm_file', '=', 'gedcom_id')
             ->groupBy(['gedcom_id'])
-            ->pluck(new Expression('COUNT(m_id) AS aggregate'), 'gedcom_id')
+            ->pluck(new Expression('COUNT(m_id) AS total'), 'gedcom_id')
             ->map(static fn (string $count): int => (int) $count);
     }
 
@@ -307,7 +299,7 @@ class ControlPanel implements RequestHandlerInterface
                     ->where('o_type', '=', Repository::RECORD_TYPE);
             })
             ->groupBy(['gedcom_id'])
-            ->pluck(new Expression('COUNT(o_id) AS aggregate'), 'gedcom_id')
+            ->pluck(new Expression('COUNT(o_id) AS total'), 'gedcom_id')
             ->map(static fn (string $count): int => (int) $count);
     }
 
@@ -325,7 +317,7 @@ class ControlPanel implements RequestHandlerInterface
                     ->where('o_type', '=', Note::RECORD_TYPE);
             })
             ->groupBy(['gedcom_id'])
-            ->pluck(new Expression('COUNT(o_id) AS aggregate'), 'gedcom_id')
+            ->pluck(new Expression('COUNT(o_id) AS total'), 'gedcom_id')
             ->map(static fn (string $count): int => (int) $count);
     }
 
@@ -343,7 +335,7 @@ class ControlPanel implements RequestHandlerInterface
                     ->where('o_type', '=', Submitter::RECORD_TYPE);
             })
             ->groupBy(['gedcom_id'])
-            ->pluck(new Expression('COUNT(o_id) AS aggregate'), 'gedcom_id')
+            ->pluck(new Expression('COUNT(o_id) AS total'), 'gedcom_id')
             ->map(static fn (string $count): int => (int) $count);
     }
 }

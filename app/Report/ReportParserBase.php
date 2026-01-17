@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,16 +33,12 @@ use function xml_get_current_line_number;
 use function xml_get_error_code;
 use function xml_parse;
 use function xml_parser_create;
-use function xml_parser_free;
 use function xml_parser_set_option;
 use function xml_set_character_data_handler;
 use function xml_set_element_handler;
 
 use const XML_OPTION_CASE_FOLDING;
 
-/**
- * Class ReportParserBase
- */
 class ReportParserBase
 {
     // The XML parser
@@ -94,8 +90,6 @@ class ReportParserBase
         }
 
         fclose($fp);
-
-        xml_parser_free($this->xml_parser);
     }
 
     /**

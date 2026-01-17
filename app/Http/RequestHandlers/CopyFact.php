@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,28 +31,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Copy a fact to the clipboard.
- */
-class CopyFact implements RequestHandlerInterface
+final class CopyFact implements RequestHandlerInterface
 {
-    private ClipboardService $clipboard_service;
-
-    /**
-     * @param ClipboardService $clipboard_service
-     */
-    public function __construct(ClipboardService $clipboard_service)
-    {
-        $this->clipboard_service = $clipboard_service;
+    public function __construct(
+        private readonly ClipboardService $clipboard_service,
+    ) {
     }
 
-    /**
-     * Copy a fact to the clipboard.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();

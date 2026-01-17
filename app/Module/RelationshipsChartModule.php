@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -58,11 +59,9 @@ use function redirect;
 use function response;
 use function route;
 use function sort;
+use function var_dump;
 use function view;
 
-/**
- * Class RelationshipsChartModule
- */
 class RelationshipsChartModule extends AbstractModule implements ModuleChartInterface, ModuleConfigInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;
@@ -107,6 +106,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST)
+            ->extras(['middleware' => [AuthNotRobot::class]])
             ->tokens([
                 'ancestors' => '\d+',
                 'recursion' => '\d+',
@@ -173,11 +173,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         return 'menu-chart-relationship';
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module/chart */
@@ -194,17 +189,17 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        $tree           = $individual->tree();
-        $ancestors_only = (int) $tree->getPreference('RELATIONSHIP_ANCESTORS', static::DEFAULT_ANCESTORS);
-        $max_recursion  = (int) $tree->getPreference('RELATIONSHIP_RECURSION', static::DEFAULT_RECURSION);
+        $tree = $individual->tree();
 
+        $default_parameters = [
+            'ancestors' => (int) $tree->getPreference('RELATIONSHIP_ANCESTORS', static::DEFAULT_ANCESTORS),
+            'recursion' => (int) $tree->getPreference('RELATIONSHIP_RECURSION', static::DEFAULT_RECURSION),
+        ];
 
         return route(static::class, [
-            'xref'      => $individual->xref(),
-            'tree'      => $individual->tree()->name(),
-            'ancestors' => $ancestors_only,
-            'recursion' => $max_recursion,
-        ] + $parameters);
+            'xref' => $individual->xref(),
+            'tree' => $tree->name(),
+        ] + $parameters + $default_parameters);
     }
 
     /**
@@ -218,8 +213,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         $xref      = Validator::attributes($request)->isXref()->string('xref');
         $xref2     = Validator::attributes($request)->isXref()->string('xref2', '');
         $ajax      = Validator::queryParams($request)->boolean('ajax', false);
-        $ancestors = (int) $request->getAttribute('ancestors');
-        $recursion = (int) $request->getAttribute('recursion');
+        $ancestors = Validator::attributes($request)->integer('ancestors');
+        $recursion = Validator::attributes($request)->integer('recursion');
         $user      = Validator::attributes($request)->user();
 
         // Convert POST requests into GET requests for pretty URLs.

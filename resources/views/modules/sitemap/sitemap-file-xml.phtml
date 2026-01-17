@@ -27,10 +27,8 @@ use Illuminate\Support\Collection;
             <loc><?= e($record->url()) ?></loc>
             <priority><?= e($priority) ?></priority>
             <?php if ($record->facts(['CHAN'])->isNotEmpty()) : ?>
-                <lastmod><?= $record->facts(['CHAN'])->first()->date()->minimumDate()->Format('%Y-%m-%d') ?></lastmod>
+                <lastmod><?= $record->facts(['CHAN'])->first()->date()->minimumDate()->format('%Y-%m-%d') ?></lastmod>
             <?php endif ?>
         </url>
     <?php endforeach ?>
 </urlset>
-
-

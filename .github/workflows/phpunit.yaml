@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         operating-system: ['ubuntu-latest']
-        php-version: ['8.3', '8.4']
+        php-version: ['8.3', '8.4', '8.5', '8.6']
       fail-fast: false
 
     steps:
@@ -22,7 +22,7 @@ jobs:
           extensions: gd,intl,mbstring,sqlite,zip
           coverage: pcov
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - run: composer validate
 
@@ -30,7 +30,7 @@ jobs:
 
       - run: vendor/bin/phpunit --coverage-clover=tests/coverage.xml
 
-      - uses: codecov/codecov-action@v4
+      - uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: tests/coverage.xml
+          files: tests/coverage.xml

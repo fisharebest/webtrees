@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,30 +28,15 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Show anniversaries for events in a given day/month/year.
- */
-class CalendarPage implements RequestHandlerInterface
+final class CalendarPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private CalendarService $calendar_service;
-
-    /**
-     * @param CalendarService $calendar_service
-     */
-    public function __construct(CalendarService $calendar_service)
-    {
-        $this->calendar_service = $calendar_service;
+    public function __construct(
+        private readonly CalendarService $calendar_service,
+    ) {
     }
 
-    /**
-     * A form to request the page parameters.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -66,7 +66,7 @@ class AgeAtEvent extends AbstractElement
         $canonical = parent::canonical($value);
         $upper     = strtoupper($canonical);
 
-        if (in_array($upper, self::KEYWORDS)) {
+        if (in_array($upper, self::KEYWORDS, true)) {
             return $upper;
         }
 

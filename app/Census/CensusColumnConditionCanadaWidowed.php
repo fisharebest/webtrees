@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,7 +42,7 @@ class CensusColumnConditionCanadaWidowed extends AbstractCensusColumnCondition
     // Text to display for female children
     protected const string GIRL = '';
 
-    // Text to display for divorced individuals
+    // Text to display for divorced males
     protected const string DIVORCE = '';
 
     // Text to display for divorced females

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,10 +37,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function redirect;
 use function route;
 
-/**
- * Synchronize GEDCOM files with trees.
- */
-class SynchronizeTrees implements RequestHandlerInterface
+final class SynchronizeTrees implements RequestHandlerInterface
 {
     private AdminService $admin_service;
 
@@ -68,11 +65,6 @@ class SynchronizeTrees implements RequestHandlerInterface
         $this->tree_service    = $tree_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $data_filesystem = Registry::filesystem()->data();

@@ -525,11 +525,6 @@ div.fact_SHARED_NOTE {
     margin-bottom: 12px;
 }
 
-.current_day {
-    font-weight: bold;
-    font-size: 16px;
-}
-
 .cal_day {
     font-weight: bold;
 }
@@ -1011,28 +1006,8 @@ a > .wt-icon-arrow-up:hover {
 }
 
 /* Miscellaneous images */
-.icon-cfamily {
-    content: url(fab/images/cfamily.png);
-}
-
-.icon-childless {
-    content: url(images/childless.png);
-}
-
-.icon-children {
+.wt-icon-children {
     content: url(images/children.png);
-}
-
-.icon-edit_indi {
-    content: url(fab/images/edit_indi.png);
-}
-
-.icon-fam-list {
-    content: url(fab/images/sfamily.png);
-}
-
-.icon-indi-list {
-    content: url(fab/images/indis.png);
 }
 
 .icon-loading-small {
@@ -1041,18 +1016,6 @@ a > .wt-icon-arrow-up:hover {
 
 .icon-minus {
     content: url(icons/minus.png);
-}
-
-.icon-mypage {
-    content: url(fab/images/mypage.png);
-}
-
-.icon-pin-in {
-    content: url(fab/images/pin-in.png);
-}
-
-.icon-pin-out {
-    content: url(fab/images/pin-out.png);
 }
 
 .icon-plus {
@@ -1079,10 +1042,6 @@ a > .wt-icon-arrow-up:hover {
     content: url(images/rings.png);
 }
 
-.icon-selected {
-    content: url(fab/images/selected.png);
-}
-
 /* Silhouettes on charts */
 .icon-silhouette-f {
     content: url(fab/images/silhouette_female_small.png);
@@ -1103,26 +1062,6 @@ a > .wt-icon-arrow-up:hover {
 
 .menu-theme li {
     text-align: left; /* The theme menu is always LTR, even on RTL pages */
-}
-
-.icon-indis {
-    content: url(fab/images/indis.png);
-}
-
-.icon-patriarch {
-    content: url(fab/images/patriarch.png);
-}
-
-.icon-pedigree {
-    content: url(fab/images/pedigree.png);
-}
-
-.icon-sfamily {
-    content: url(fab/images/sfamily.png);
-}
-
-.icon-user_add {
-    content: url(fab/images/user_add.png);
 }
 
 /* Census assistant */

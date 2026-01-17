@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,10 +40,7 @@ use function array_merge;
 use function implode;
 use function strtr;
 
-/**
- * Search for genealogy data
- */
-class SearchAdvancedPage implements RequestHandlerInterface
+final class SearchAdvancedPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -87,6 +84,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
         'INDI:CREM:DATE',
         'INDI:CREM:PLAC',
         'INDI:DSCR',
+        'INDI:EDUC',
         'INDI:EMIG:DATE',
         'INDI:EMIG:PLAC',
         'INDI:ENDL:DATE',
@@ -112,6 +110,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
         'INDI:OCCU',
         'INDI:ORDN:DATE',
         'INDI:ORDN:PLAC',
+        'INDI:PROP',
         'INDI:REFN',
         'INDI:RELI',
         'INDI:RESI:DATE',
@@ -125,21 +124,11 @@ class SearchAdvancedPage implements RequestHandlerInterface
         'FAM:SLGS:PLAC',
     ];
 
-    private SearchService $search_service;
-
-    /**
-     * @param SearchService $search_service
-     */
-    public function __construct(SearchService $search_service)
-    {
-        $this->search_service = $search_service;
+    public function __construct(
+        private readonly SearchService $search_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree           = Validator::attributes($request)->tree();

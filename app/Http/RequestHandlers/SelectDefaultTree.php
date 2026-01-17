@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,16 +32,8 @@ use function e;
 use function redirect;
 use function route;
 
-/**
- * Set the default tree.
- */
-class SelectDefaultTree implements RequestHandlerInterface, StatusCodeInterface
+final class SelectDefaultTree implements RequestHandlerInterface, StatusCodeInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

@@ -2,15 +2,20 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * @var array<array> $records
+ * @var array<array{family:Family,count:int}> $records
  */
 
 ?>
 
-<?php if ($records) : ?>
+<?php if ($records === []) : ?>
+    <div class="card-body">
+        <?= I18N::translate('This information is not available.') ?>
+    </div>
+<?php else : ?>
     <ul class="list-group list-group-flush">
         <?php foreach ($records as $record) : ?>
             <?php $family = $record['family']; ?>
@@ -22,8 +27,4 @@ use Fisharebest\Webtrees\I18N;
             </li>
         <?php endforeach; ?>
     </ul>
-<?php else : ?>
-    <div class="card-body">
-        <?= I18N::translate('This information is not available.') ?>
-    </div>
 <?php endif; ?>

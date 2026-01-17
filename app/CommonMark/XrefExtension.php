@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,24 +23,15 @@ use Fisharebest\Webtrees\Tree;
 use League\CommonMark\Environment\EnvironmentBuilderInterface;
 use League\CommonMark\Extension\ExtensionInterface;
 
-/**
- * Convert XREFs within markdown text to links
- */
 class XrefExtension implements ExtensionInterface
 {
     private Tree $tree;
 
-    /**
-     * @param Tree $tree Match XREFs in this tree
-     */
     public function __construct(Tree $tree)
     {
         $this->tree = $tree;
     }
 
-    /**
-     * @param EnvironmentBuilderInterface $environment
-     */
     public function register(EnvironmentBuilderInterface $environment): void
     {
         $environment

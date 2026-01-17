@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,7 +38,7 @@ class RedirectBranchesPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -83,7 +83,7 @@ class RedirectBranchesPhpTest extends TestCase
 
     public function testModuleDisabled(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
@@ -91,7 +91,7 @@ class RedirectBranchesPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $module_service = $this->createMock(ModuleService::class);
+        $module_service = self::createStub(ModuleService::class);
         $module_service
             ->method('findByComponent')
             ->with(ModuleListInterface::class)
@@ -117,7 +117,7 @@ class RedirectBranchesPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection([]));
 
-        $module_service = $this->createMock(ModuleService::class);
+        $module_service = self::createStub(ModuleService::class);
 
         $handler = new RedirectBranchesPhp($module_service, $tree_service);
 

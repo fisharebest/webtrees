@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,7 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
 {
     private function getPlaceMock(string $place): Place
     {
-        $placeMock = $this->createMock(Place::class);
+        $placeMock = self::createStub(Place::class);
         $placeMock->method('gedcomName')->willReturn($place);
 
         return $placeMock;
@@ -38,10 +38,10 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
 
     public function testForeignCountry(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('Westminster, London, England'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('United States');
 
         $column = new CensusColumnBirthPlaceSimple($census, '', '');
@@ -51,10 +51,10 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
 
     public function testJustCountry(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('United States'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('United States');
 
         $column = new CensusColumnBirthPlaceSimple($census, '', '');
@@ -64,10 +64,10 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
 
     public function testKnownState(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('Maryland, United States'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('United States');
 
         $column = new CensusColumnBirthPlaceSimple($census, '', '');
@@ -77,10 +77,10 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
 
     public function testKnownStateAndTown(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('Miami, Florida, United States'));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('United States');
 
         $column = new CensusColumnBirthPlaceSimple($census, '', '');

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -73,6 +73,7 @@ use Fisharebest\Webtrees\Http\Middleware\UseLanguage;
 use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
+use Fisharebest\Webtrees\Services\PhpService;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -108,9 +109,6 @@ class Webtrees
     // Location of the file containing the database connection details.
     public const string CONFIG_FILE = self::DATA_DIR . 'config.ini.php';
 
-    // Location of the file that triggers maintenance mode.
-    public const string OFFLINE_FILE = self::DATA_DIR . 'offline.txt';
-
     // Location of our modules.
     public const string MODULES_PATH = 'modules_v4/';
     public const string MODULES_DIR  = self::ROOT_DIR . self::MODULES_PATH;
@@ -137,7 +135,7 @@ class Webtrees
     public const string STABILITY = '-dev';
 
     // Version number.
-    public const string VERSION = '2.2.2' . self::STABILITY;
+    public const string VERSION = '2.2.6' . self::STABILITY;
 
     // Project website.
     public const string URL = 'https://webtrees.net/';
@@ -205,7 +203,7 @@ class Webtrees
         Registry::gedcomRecordFactory(new GedcomRecordFactory());
         Registry::headerFactory(new HeaderFactory());
         Registry::idFactory(new IdFactory());
-        Registry::imageFactory(new ImageFactory());
+        Registry::imageFactory(new ImageFactory(new PhpService()));
         Registry::individualFactory(new IndividualFactory());
         Registry::locationFactory(new LocationFactory());
         Registry::markdownFactory(new MarkdownFactory());
@@ -215,7 +213,7 @@ class Webtrees
         Registry::responseFactory(new ResponseFactory(new Psr17Factory(), new Psr17Factory()));
         Registry::routeFactory(new RouteFactory());
         Registry::sharedNoteFactory(new SharedNoteFactory());
-        Registry::slugFactory(new SlugFactory());
+        Registry::slugFactory(new SlugFactory(new PhpService()));
         Registry::sourceFactory(new SourceFactory());
         Registry::submissionFactory(new SubmissionFactory());
         Registry::submitterFactory(new SubmitterFactory());

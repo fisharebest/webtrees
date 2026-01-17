@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,26 +29,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Reject a pending change for a record.
- */
-class PendingChangesRejectChange implements RequestHandlerInterface
+final class PendingChangesRejectChange implements RequestHandlerInterface
 {
-    private PendingChangesService $pending_changes_service;
-
-    /**
-     * @param PendingChangesService $pending_changes_service
-     */
-    public function __construct(PendingChangesService $pending_changes_service)
-    {
-        $this->pending_changes_service = $pending_changes_service;
+    public function __construct(
+        private readonly PendingChangesService $pending_changes_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();

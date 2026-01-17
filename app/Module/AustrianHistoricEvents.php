@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,28 +21,15 @@ namespace Fisharebest\Webtrees\Module;
 
 use Illuminate\Support\Collection;
 
-/**
- * Class AustrianHistoricEvents
- */
 class AustrianHistoricEvents extends AbstractModule implements ModuleHistoricEventsInterface
 {
     use ModuleHistoricEventsTrait;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         return 'Historische Ereignisse Österreich 🇦🇹';
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;
@@ -62,9 +49,9 @@ class AustrianHistoricEvents extends AbstractModule implements ModuleHistoricEve
                     "1 EVEN Erhebung Österreichs zum Herzogtum\n2 DATE 1156\n2 TYPE Österreichische Geschichte\n2 SOUR [Wikipedia:Geschichte Österreichs](https://de.wikipedia.org/wiki/Geschichte_%C3%96sterreichs#Herzogtum_%C3%96sterreich_unter_den_Babenbergern_(1156%E2%80%931246))\n3 CONT Im Zuge des Konfliktes zwischen den Staufern und den Welfen kam 1139 das Herzogtum Bayern an die Babenberger. Als Friedrich I. Barbarossa diesen Streit beenden wollte, gab er den Welfen das Herzogtum Bayern zurück – gleichsam als Entschädigung wurde Österreich mit dem Privilegium minus von 1156 zum Herzogtum des Heiligen Römischen Reiches erhoben.",
                     "1 EVEN Tod des letzten Babenbergers\n2 DATE 1246\n2 TYPE Österreichische Geschichte\n2 SOUR [Wikipedia:Geschichte Österreichs](https://de.wikipedia.org/wiki/Geschichte_%C3%96sterreichs#Herzogtum_%C3%96sterreich_unter_den_Babenbergern_(1156%E2%80%931246))\n3 CONT Im Kapf gegen Ungarn starb Friedrich II. in der Schlacht an der Leitha. Mit ihm starben die Babenberger in männlicher Linie aus. Es begann die als „österreichisches Interregnum“ bezeichnete Periode, während der die Länder Friedrichs II. in ein länger andauerndes Kräftespiel rivalisierender Mächte gerieten.",
                     "1 EVEN Habsburger werden Herzöge von Österreich und der Steiermark\n2 DATE 1278\n2 TYPE Österreichische Geschichte\n2 SOUR [Wikipedia:Geschichte Österreichs](https://de.wikipedia.org/wiki/Geschichte_%C3%96sterreichs#Herzogtum_%C3%96sterreich_als_Streitobjekt_(1246%E2%80%931282))\n3 CONT Rudolf von Habsburg besiegte den König von Böhmen, Ottokar II. Přemysl, in der Schlacht auf dem Marchfeld. Die Habsburger konnten sich daraufhin als Herzöge von Österreich und der Steiermark etablieren und sollten hier bis 1918, also 640 Jahre lang herrschen.",
-                    "1 EVEN Kärnten und Krain fällt an die Habsburger\n2 DATE 1335\n2 TYPE Österreichische Geschichte\n2 SOUR [Wikipedia:Geschichte Österreichs](hhttps://de.wikipedia.org/wiki/Geschichte_%C3%96sterreichs#Herzogtum_%C3%96sterreich_unter_den_Habsburgern_(1282%E2%80%931452))",
-                    "1 EVEN Tirol fällt an die Habsburger\n2 DATE 1363\n2 TYPE Österreichische Geschichte\n2 SOUR [Wikipedia:Geschichte Österreichs](hhttps://de.wikipedia.org/wiki/Geschichte_%C3%96sterreichs#Herzogtum_%C3%96sterreich_unter_den_Habsburgern_(1282%E2%80%931452))",
-                    "1 EVEN Friedrich III. aus dem Hause Habsburg wird zum Kaiser des Heiligen Römischen Reiches gekrönt\n2 DATE 1452\n2 TYPE Österreichische Geschichte\n2 SOUR [Wikipedia:Geschichte Österreichs](hhttps://de.wikipedia.org/wiki/Geschichte_%C3%96sterreichs#Herzogtum_%C3%96sterreich_unter_den_Habsburgern_(1282%E2%80%931452))",
+                    "1 EVEN Kärnten und Krain fällt an die Habsburger\n2 DATE 1335\n2 TYPE Österreichische Geschichte\n2 SOUR [Wikipedia:Geschichte Österreichs](https://de.wikipedia.org/wiki/Geschichte_%C3%96sterreichs#Herzogtum_%C3%96sterreich_unter_den_Habsburgern_(1282%E2%80%931452))",
+                    "1 EVEN Tirol fällt an die Habsburger\n2 DATE 1363\n2 TYPE Österreichische Geschichte\n2 SOUR [Wikipedia:Geschichte Österreichs](https://de.wikipedia.org/wiki/Geschichte_%C3%96sterreichs#Herzogtum_%C3%96sterreich_unter_den_Habsburgern_(1282%E2%80%931452))",
+                    "1 EVEN Friedrich III. aus dem Hause Habsburg wird zum Kaiser des Heiligen Römischen Reiches gekrönt\n2 DATE 1452\n2 TYPE Österreichische Geschichte\n2 SOUR [Wikipedia:Geschichte Österreichs](https://de.wikipedia.org/wiki/Geschichte_%C3%96sterreichs#Herzogtum_%C3%96sterreich_unter_den_Habsburgern_(1282%E2%80%931452))",
                     "1 EVEN Erste Wiener Türkenbelagerung\n2 DATE 27 SEP 1529\n2 TYPE Österreichische Geschichte\n2 SOUR [Wikipedia:Geschichte Österreichs](https://de.wikipedia.org/wiki/Geschichte_%C3%96sterreichs#Das_Habsburgerreich_und_die_osmanische_Bedrohung), [Wikipedia:Erste Wiener Türkenbelagerung](https://de.wikipedia.org/wiki/Erste_Wiener_T%C3%BCrkenbelagerung)\n3 CONT Die Erste Wiener Türkenbelagerung war ein Höhepunkt der Türkenkriege zwischen dem Osmanischen Reich und den christlichen Staaten Europas. Nur die Tatsache, dass die Angreifer wegen der späten Jahreszeit zum Abbruch der Belagerung gezwungen waren, konnte die Stadt damals retten.",
                     "1 EVEN Prager Fenstersturz\n2 DATE 23 MAY 1618\n2 TYPE Österreichische Geschichte\n2 SOUR [Wikipedia:Zweiter Prager Fenstersturz](https://de.wikipedia.org/wiki/Zweiter_Prager_Fenstersturz), [Wikipedia:Dreißigjähriger Krieg](https://de.wikipedia.org/wiki/Drei%C3%9Figj%C3%A4hriger_Krieg)\n3 CONT Als Auslöser des 30-jährigen Krieges gilt der Prager Fenstersturz vom 23. Mai 1618, mit dem der Aufstand der protestantischen böhmischen Stände offen ausbrach.",
                     "1 EVEN Westfälischer Friede\n2 DATE 24 OCT 1648\n2 TYPE Österreichische Geschichte\n2 SOUR [Wikipedia:Westfälischer Friede](https://de.wikipedia.org/wiki/Westf%C3%A4lischer_Friede), [Wikipedia:Dreißigjähriger Krieg](https://de.wikipedia.org/wiki/Drei%C3%9Figj%C3%A4hriger_Krieg)\n3 CONT Die Unterzeichnung zweier Friedensverträge am 24. Oktober 1648 zu Münster markiert das Ende des 30-jährigen Krieges.",

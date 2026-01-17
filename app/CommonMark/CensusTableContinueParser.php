@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,6 +32,7 @@ use League\CommonMark\Parser\Cursor;
 
 use function array_map;
 use function explode;
+use function iterator_to_array;
 use function str_starts_with;
 use function strlen;
 use function substr;
@@ -91,7 +92,7 @@ class CensusTableContinueParser extends AbstractBlockContinueParser
 
         $tr = new TableRow();
 
-        if (empty($this->thead->children())) {
+        if (iterator_to_array($this->thead->children()) === []) {
             $cells = array_map($callback, $cells);
 
             foreach ($cells as $cell) {

@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
  * @var string                 $dbuser
  * @var Collection<int,string> $errors
  * @var string                 $lang
+ * @var string                 $mysql_local
  * @var string                 $tblpfx
  * @var Collection<int,string> $warnings
  * @var string                 $wtemail
@@ -61,7 +62,7 @@ use Illuminate\Support\Collection;
         </div>
 
         <div class="col-sm-9">
-            <input type="text" value="localhost:<?= ini_get('pdo_mysql.default_socket') ?>" class="form-control" readonly="readonly">
+            <input type="text" value="<?= e($mysql_local) ?>" class="form-control" disabled="disabled">
         </div>
     </div>
 

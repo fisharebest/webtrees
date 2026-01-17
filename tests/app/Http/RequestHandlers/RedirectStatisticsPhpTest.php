@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,7 +24,6 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
-use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\StatisticsChartModule;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -40,7 +39,7 @@ class RedirectStatisticsPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -76,7 +75,7 @@ class RedirectStatisticsPhpTest extends TestCase
 
     public function testModuleDisabled(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -87,7 +86,7 @@ class RedirectStatisticsPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $module_service = $this->createMock(ModuleService::class);
+        $module_service = self::createStub(ModuleService::class);
         $module_service
             ->method('findByComponent')
             ->with(ModuleChartInterface::class, $tree, new GuestUser())
@@ -104,7 +103,7 @@ class RedirectStatisticsPhpTest extends TestCase
 
     public function testNoSuchTree(): void
     {
-        $module_service  = $this->createMock(ModuleService::class);
+        $module_service  = self::createStub(ModuleService::class);
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service

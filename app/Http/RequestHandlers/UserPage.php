@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,28 +31,15 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Show a user's page.
- */
-class UserPage implements RequestHandlerInterface
+final class UserPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private HomePageService $home_page_service;
-
-    /**
-     * @param HomePageService $home_page_service
-     */
-    public function __construct(HomePageService $home_page_service)
-    {
-        $this->home_page_service = $home_page_service;
+    public function __construct(
+        private readonly HomePageService $home_page_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

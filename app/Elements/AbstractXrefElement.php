@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,7 +31,7 @@ use function preg_match;
 /**
  * Common behaviour for all XREF links
  */
-class AbstractXrefElement extends AbstractElement
+abstract class AbstractXrefElement extends AbstractElement
 {
     /**
      * Should we collapse the children of this element when editing?

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,16 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Factories;
 
 use Fisharebest\Webtrees\Contracts\IdFactoryInterface;
-use Ramsey\Uuid\Exception\RandomSourceException;
 use Ramsey\Uuid\Uuid;
+use Throwable;
 
-use function dechex;
 use function hexdec;
-use function str_pad;
+use function sprintf;
+use function str_split;
 use function strtoupper;
-use function substr;
-
-use const STR_PAD_LEFT;
 
 /**
  * Create a unique identifier.
@@ -42,9 +39,9 @@ class IdFactory implements IdFactoryInterface
     public function uuid(): string
     {
         try {
-            return strtolower(strtr(Uuid::uuid4()->toString(), ['-' => '']));
-        } catch (RandomSourceException) {
-            // uuid4() can fail if there is insufficient entropy in the system.
+            return strtolower(Uuid::uuid7()->toString());
+        } catch (Throwable) {
+            // uuid7() can fail for various reasons.
             return '';
         }
     }
@@ -78,23 +75,18 @@ class IdFactory implements IdFactoryInterface
     }
 
     /**
-     * @param string $uid exactly 32 hex characters
-     *
-     * @return string
+     * Based on the C implementation in "GEDCOM Unique Identifiers" by Gordon Clarke, dated 2007-06-08
      */
     public function pafUidChecksum(string $uid): string
     {
         $checksum_a = 0; // a sum of the bytes
         $checksum_b = 0; // a sum of the incremental values of $checksum_a
 
-        for ($i = 0; $i < 32; $i += 2) {
-            $checksum_a += hexdec(substr($uid, $i, 2));
-            $checksum_b += $checksum_a & 0xff;
+        foreach (str_split($uid, 2) as $byte) {
+            $checksum_a += hexdec($byte);
+            $checksum_b += $checksum_a;
         }
 
-        $digit1 = str_pad(dechex($checksum_a), 2, '0', STR_PAD_LEFT);
-        $digit2 = str_pad(dechex($checksum_b), 2, '0', STR_PAD_LEFT);
-
-        return strtoupper($digit1 . $digit2);
+        return sprintf('%02X%02X', $checksum_a & 0xff, $checksum_b & 0xff);
     }
 }

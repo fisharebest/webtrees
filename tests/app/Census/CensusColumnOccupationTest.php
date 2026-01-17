@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,10 +31,10 @@ class CensusColumnOccupationTest extends TestCase
 {
     public function testNoOccupation(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('facts')->with(['OCCU'])->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnOccupation($census, '', '');
 
@@ -43,13 +43,13 @@ class CensusColumnOccupationTest extends TestCase
 
     public function testOccupation(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Farmer');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('facts')->with(['OCCU'])->willReturn(new Collection([$fact]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnOccupation($census, '', '');
 

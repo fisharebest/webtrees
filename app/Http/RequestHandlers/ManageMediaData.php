@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -53,10 +53,7 @@ use function strlen;
 use function substr;
 use function view;
 
-/**
- * Manage media from the control panel.
- */
-class ManageMediaData implements RequestHandlerInterface
+final class ManageMediaData implements RequestHandlerInterface
 {
     private DatatablesService $datatables_service;
 
@@ -84,11 +81,6 @@ class ManageMediaData implements RequestHandlerInterface
         $this->tree_service          = $tree_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $data_filesystem = Registry::filesystem()->data();
@@ -106,7 +98,7 @@ class ManageMediaData implements RequestHandlerInterface
 
         $sort_columns = [
             0 => 'multimedia_file_refn',
-            2 => new Expression('descriptive_title || multimedia_file_refn'),
+            2 => new Expression(DB::concat(['descriptive_title', 'multimedia_file_refn'])),
         ];
 
         // Convert a row from the database into a row for datatables
@@ -178,10 +170,10 @@ class ManageMediaData implements RequestHandlerInterface
                         new Expression("COALESCE(setting_value, 'media/') AS media_folder"),
                     ]);
 
-                $query->where(new Expression('setting_value || multimedia_file_refn'), 'LIKE', $media_folder . '%');
+                $query->where(new Expression(DB::concat(['setting_value', 'multimedia_file_refn'])), 'LIKE', $media_folder . '%');
 
                 if ($subfolders === 'exclude') {
-                    $query->where(new Expression('setting_value || multimedia_file_refn'), 'NOT LIKE', $media_folder . '%/%');
+                    $query->where(new Expression(DB::concat(['setting_value', 'multimedia_file_refn'])), 'NOT LIKE', $media_folder . '%/%');
                 }
 
                 return $this->datatables_service->handleQuery($request, $query, $search_columns, $sort_columns, $callback);
@@ -365,7 +357,7 @@ class ManageMediaData implements RequestHandlerInterface
                 $imgsize = getimagesizefromstring($data_filesystem->read($file));
                 $html .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
                 /* I18N: image dimensions, width × height */
-                $html .= '<dd>' . I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
+                $html .= '<dd>' . I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize[0]), I18N::number($imgsize[1])) . '</dd>';
             } catch (FilesystemException | UnableToReadFile | Throwable) {
                 // Not an image, or not a valid image?
             }

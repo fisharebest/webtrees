@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\MediaFileService;
+use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -31,8 +32,9 @@ class UploadMediaPageTest extends TestCase
 
     public function testResponseIsOK(): void
     {
-        $media_file_service = new MediaFileService();
-        $handler            = new UploadMediaPage($media_file_service);
+        $php_service        = new PhpService();
+        $media_file_service = new MediaFileService($php_service);
+        $handler            = new UploadMediaPage($media_file_service, $php_service);
         $request            = self::createRequest();
         $response           = $handler->handle($request);
 

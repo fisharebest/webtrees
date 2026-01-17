@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -335,6 +335,10 @@ class UserService
      */
     public function delete(User $user): void
     {
+        DB::table('session')
+            ->where('user_id', '=', $user->id())
+            ->delete();
+
         // Don't delete the logs, just set the user to null.
         DB::table('log')
             ->where('user_id', '=', $user->id())

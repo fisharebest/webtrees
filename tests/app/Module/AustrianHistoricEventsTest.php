@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,11 +31,11 @@ class AustrianHistoricEventsTest extends TestCase
     {
         $module = new AustrianHistoricEvents();
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
 
-        foreach ($module->historicEventsAll(language_tag: 'de') as $gedcom) {
-            $fact = new Fact(gedcom: $gedcom, parent: $individual, id: 'test');
-            self::assertTrue($fact->date()->isOK(), 'No date found in: ' . $gedcom);
+        foreach ($module->historicEventsAll('de') as $gedcom) {
+            $fact = new Fact($gedcom, $individual, 'test');
+            self::assertTrue($fact->date()->isOK(), 'No date found in:' . $gedcom);
         }
     }
 }

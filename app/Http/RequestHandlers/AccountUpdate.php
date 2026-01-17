@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,26 +35,13 @@ use function assert;
 use function redirect;
 use function route;
 
-/**
- * Edit user account details.
- */
-class AccountUpdate implements RequestHandlerInterface
+final class AccountUpdate implements RequestHandlerInterface
 {
-    private UserService $user_service;
-
-    /**
-     * @param UserService $user_service
-     */
-    public function __construct(UserService $user_service)
-    {
-        $this->user_service = $user_service;
+    public function __construct(
+        private readonly UserService $user_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->treeOptional();
@@ -68,7 +55,7 @@ class AccountUpdate implements RequestHandlerInterface
         $real_name      = Validator::parsedBody($request)->string('real_name');
         $password       = Validator::parsedBody($request)->string('password');
         $time_zone      = Validator::parsedBody($request)->string('timezone');
-        $user_name      = Validator::parsedBody($request)->string('user_name');
+        $username       = Validator::parsedBody($request)->string('user_name');
         $visible_online = Validator::parsedBody($request)->boolean('visible-online', false);
 
         // Change the password
@@ -76,21 +63,27 @@ class AccountUpdate implements RequestHandlerInterface
             $user->setPassword($password);
         }
 
-        // Change the username
-        if ($user_name !== $user->userName()) {
-            if ($this->user_service->findByUserName($user_name) === null) {
-                $user->setUserName($user_name);
+        // Changing the email address - make sure it isn't used by another user.
+        if ($user->email() !== $email) {
+            $existing = $this->user_service->findByEmail($email);
+
+            if ($existing instanceof User && $existing->id() !== $user->id()) {
+                $message = I18N::translate('Duplicate email address. A user with that email already exists.');
+                FlashMessages::addMessage($message, 'danger');
             } else {
-                FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
+                $user->setEmail($email);
             }
         }
 
-        // Change the email
-        if ($email !== $user->email()) {
-            if ($this->user_service->findByEmail($email) === null) {
-                $user->setEmail($email);
+        // Changing the username - make sure it isn't used by another user
+        if ($user->userName() !== $username) {
+            $existing = $this->user_service->findByUserName($username);
+
+            if ($existing instanceof User && $existing->id() !== $user->id()) {
+                $message = I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.');
+                FlashMessages::addMessage($message, 'danger');
             } else {
-                FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
+                $user->setUserName($username);
             }
         }
 

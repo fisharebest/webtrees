@@ -6,12 +6,12 @@ jobs:
   run:
     if: ${{ !startsWith(github.event.head_commit.message, 'Translation:') }}
     runs-on: ${{ matrix.operating-system }}
-    name: PHP/PHTML/CSS
+    name: PHP/PHTML
 
     strategy:
       matrix:
         operating-system: ['ubuntu-latest']
-        php-version: ['8.3', '8.4']
+        php-version: ['8.3', '8.4', '8.5', '8.6']
       fail-fast: false
 
     steps:
@@ -20,14 +20,10 @@ jobs:
           php-version: ${{ matrix.php-version }}
           ini-file: 'development'
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - run: composer validate
 
-      - run: composer global require squizlabs/php_codesniffer
+      - run: composer install --no-progress
 
-      - name: PHP
-        run: ~/.composer/vendor/bin/phpcs --colors --standard=PSR12 --exclude=Generic.Files.LineLength --extensions=php index.php app tests
-
-      - name: Style sheets
-        run: ~/.composer/vendor/bin/phpcs --colors --extensions=css resources/css
+      - run: composer webtrees:phpcs

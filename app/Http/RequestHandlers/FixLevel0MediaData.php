@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,35 +39,14 @@ use function in_array;
 use function preg_match;
 use function view;
 
-/**
- * Move media links from records to facts.
- */
-class FixLevel0MediaData implements RequestHandlerInterface
+final class FixLevel0MediaData implements RequestHandlerInterface
 {
-    private DatatablesService $datatables_service;
-
-    private TreeService $tree_service;
-
-    /**
-     * FixLevel0MediaController constructor.
-     *
-     * @param DatatablesService $datatables_service
-     * @param TreeService       $tree_service
-     */
-    public function __construct(DatatablesService $datatables_service, TreeService $tree_service)
-    {
-        $this->datatables_service = $datatables_service;
-        $this->tree_service       = $tree_service;
+    public function __construct(
+        private readonly DatatablesService $datatables_service,
+        private readonly TreeService $tree_service,
+    ) {
     }
 
-    /**
-     * If media objects are wronly linked to top-level records, reattach them
-     * to facts/events.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $ignore_facts = [
@@ -79,8 +58,6 @@ class FixLevel0MediaData implements RequestHandlerInterface
             'INDI:SUBM',
             'INDI:RESN',
         ];
-
-        $prefix = DB::prefix();
 
         $search = Validator::queryParams($request)->array('search')['value'] ?? '';
 
@@ -101,7 +78,7 @@ class FixLevel0MediaData implements RequestHandlerInterface
                     ->on('individuals.i_file', '=', 'link.l_file')
                     ->on('individuals.i_id', '=', 'link.l_from');
             })
-            ->where('i_gedcom', 'LIKE', new Expression("('%\n1 OBJE @' || " . $prefix . "media.m_id || '@%')"))
+            ->where('i_gedcom', 'LIKE', new Expression("('%\n1 OBJE @' || " . DB::prefix('media') . ".m_id || '@%')"))
             ->orderBy('individuals.i_file')
             ->orderBy('individuals.i_id')
             ->orderBy('media.m_id')

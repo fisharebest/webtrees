@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,7 +37,7 @@ class XrefFamilyTest extends TestCase
     {
         $element = new XrefFamily('');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(FamilyFactory::class);
 
@@ -58,8 +58,10 @@ class XrefFamilyTest extends TestCase
         $select_nodes = $dom->getElementsByTagName('select');
         self::assertEquals(1, $select_nodes->count());
 
-        $option_nodes = $select_nodes[0]->getElementsByTagName('option');
-        self::assertEquals(1, $option_nodes->count());
+        foreach ($select_nodes as $select_node) {
+            $option_nodes = $select_node->getElementsByTagName('option');
+            self::assertEquals(1, $option_nodes->count());
+        }
     }
 
     public function testEscape(): void
@@ -83,7 +85,7 @@ class XrefFamilyTest extends TestCase
             ->method('url')
             ->willReturn('https://url');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(FamilyFactory::class);
 
@@ -100,7 +102,7 @@ class XrefFamilyTest extends TestCase
     {
         $element = new XrefFamily('');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         self::assertSame('<span class="error">invalid</span>', $element->value('invalid', $tree));
     }
@@ -109,7 +111,7 @@ class XrefFamilyTest extends TestCase
     {
         $element = new XrefFamily('');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(FamilyFactory::class);
 

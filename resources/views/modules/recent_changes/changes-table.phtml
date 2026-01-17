@@ -29,6 +29,7 @@ use Illuminate\Support\Collection;
 
 <div class="table-responsive">
     <table
+        id="wt-datatables-changes"
         class="table table-sm wt-table-changes datatables d-none"
         <?= view('lists/datatables-attributes') ?>
         data-paging="<?= $rows->count() >= $limit_high ? 'true' : 'false' ?>"

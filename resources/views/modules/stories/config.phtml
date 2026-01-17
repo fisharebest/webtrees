@@ -5,14 +5,15 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<int,object> $stories
- * @var string                 $title
- * @var Tree                   $tree
- * @var array<string>          $tree_names
+ * @var Collection<int,object{block_id:int,xref:string,individual:Individual|null,title:string}> $stories
+ * @var string                                                                                   $title
+ * @var Tree                                                                                     $tree
+ * @var array<string>                                                                            $tree_names
  */
 
 ?>
@@ -40,6 +41,7 @@ use Illuminate\Support\Collection;
 </p>
 
 <table
+    id="wt-datatables-stories"
     class="table table-bordered table-sm datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([

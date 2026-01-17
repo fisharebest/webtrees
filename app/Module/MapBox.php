@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -51,11 +51,6 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
         return I18N::translate('Create maps using %s.', $link);
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;
@@ -69,16 +64,6 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
         $this->layout = 'layouts/administration';
 
         $api_key = $this->getPreference('api_key');
-
-        if ($api_key === '') {
-            $message = I18N::translate('This service requires an API key.');
-
-            if (Auth::isAdmin()) {
-                $message = '<a href="' . e($this->getConfigLink()) . '">' . $message . '</a>';
-            }
-
-            throw new HttpServerErrorException($message);
-        }
 
         return $this->viewResponse('modules/map-box/config', [
             'api_key' => $api_key,
@@ -121,6 +106,16 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
     {
         $api_key = $this->getPreference('api_key');
 
+        if ($api_key === '') {
+            $message = I18N::translate('This service requires an API key.');
+
+            if (Auth::isAdmin()) {
+                $message = '<a href="' . e($this->getConfigLink()) . '">' . $message . '</a>';
+            }
+
+            throw new HttpServerErrorException($message);
+        }
+
         return [
             (object) [
                 'accessToken' => $api_key,
@@ -134,6 +129,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
                 'tileSize'    => 512,
                 'url'         => 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
                 'zoomOffset'  => -1,
+                'localName'   => 'MapBoxDark',
             ],
             (object) [
                 'accessToken' => $api_key,
@@ -147,6 +143,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
                 'tileSize'    => 512,
                 'url'         => 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
                 'zoomOffset'  => -1,
+                'localName'   => 'MapBoxLight',
             ],
             (object) [
                 'accessToken' => $api_key,
@@ -160,6 +157,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
                 'tileSize'    => 512,
                 'url'         => 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
                 'zoomOffset'  => -1,
+                'localName'   => 'MapBoxOutdoors',
             ],
             (object) [
                 'accessToken' => $api_key,
@@ -173,6 +171,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
                 'tileSize'    => 512,
                 'url'         => 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
                 'zoomOffset'  => -1,
+                'localName'   => 'MapBoxSatellite',
             ],
             (object) [
                 'accessToken' => $api_key,
@@ -186,6 +185,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
                 'tileSize'    => 512,
                 'url'         => 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
                 'zoomOffset'  => -1,
+                'localName'   => 'MapBoxStreets',
             ],
         ];
     }

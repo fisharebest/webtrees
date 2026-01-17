@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
@@ -40,32 +39,16 @@ use function date;
 use function max;
 use function min;
 
-/**
- * Show logs.
- */
-class SiteLogsPage implements RequestHandlerInterface
+final class SiteLogsPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private TreeService $tree_service;
-
-    private UserService $user_service;
-
-    /**
-     * @param TreeService $tree_service
-     * @param UserService $user_service
-     */
-    public function __construct(TreeService $tree_service, UserService $user_service)
-    {
-        $this->tree_service = $tree_service;
-        $this->user_service = $user_service;
+    public function __construct(
+        private readonly TreeService $tree_service,
+        private readonly UserService $user_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';

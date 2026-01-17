@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -44,14 +44,14 @@ class UTF16BETest extends TestCase
             $expected = iconv(UTF16BE::NAME, UTF8::NAME, $char);
             $actual   = $encoding->toUtf8($char);
 
-            static::assertSame($expected, $actual, 'U+' . dechex($code));
+            self::assertSame($expected, $actual, 'U+' . dechex($code));
         }
 
         foreach (range(0x80, 0xFF) as $code) {
             $char   = chr(intdiv($code, 256)) . chr($code % 256);
             $actual = $encoding->toUtf8($char);
 
-            static::assertSame(UTF8::REPLACEMENT_CHARACTER, $actual, 'U+' . dechex($code));
+            self::assertSame(UTF8::REPLACEMENT_CHARACTER, $actual, 'U+' . dechex($code));
         }
 
         foreach (range(0x100, 0xD7FF) as $code) {
@@ -59,14 +59,14 @@ class UTF16BETest extends TestCase
             $expected = iconv(UTF16BE::NAME, UTF8::NAME, $char);
             $actual   = $encoding->toUtf8($char);
 
-            static::assertSame($expected, $actual, 'U+' . dechex($code));
+            self::assertSame($expected, $actual, 'U+' . dechex($code));
         }
 
         foreach (range(0xD800, 0xDFFF) as $code) {
             $char   = chr(intdiv($code, 256)) . chr($code % 256);
             $actual = $encoding->toUtf8($char);
 
-            static::assertSame(UTF8::REPLACEMENT_CHARACTER, $actual, 'U+' . dechex($code));
+            self::assertSame(UTF8::REPLACEMENT_CHARACTER, $actual, 'U+' . dechex($code));
         }
 
         foreach (range(0xE000, 0xFFFF) as $code) {
@@ -74,7 +74,7 @@ class UTF16BETest extends TestCase
             $expected = iconv(UTF16BE::NAME, UTF8::NAME, $char);
             $actual   = $encoding->toUtf8($char);
 
-            static::assertSame($expected, $actual, 'U+' . dechex($code));
+            self::assertSame($expected, $actual, 'U+' . dechex($code));
         }
     }
 }

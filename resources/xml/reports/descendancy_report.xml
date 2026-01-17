@@ -55,7 +55,7 @@
 						<Cell align="center" height="20" newline="1" style="subheader"><var var="I18N::translate('Generation ')" /> <Generation /></Cell>
 						<SetVar name="generation" value="@generation" />
 					</if>
-					<TextBox border="" width="25" height="40">
+					<TextBox border="" width="30" height="40">
 						<Text style="name"><var var="personNumber" />.</Text>
 					</TextBox>
 
@@ -475,7 +475,7 @@
 									</Gedcom>
 								</RepeatTag>
 
-								<TextBox height="20" left="25" newline="1">
+								<TextBox height="20" left="30" newline="1">
 									<if condition="$numberOfChildren==1">
 										<Text style="label1"><var var="I18N::translate('Child of ')" /></Text>
 									</if>
@@ -517,7 +517,7 @@
 												<SetVar name="showChildNumber" value="true" />
 											</Gedcom>
 										</RepeatTag>
-										<TextBox left="25" height="20" width="25">
+										<TextBox left="30" height="20" width="30">
 											<if condition="$showChildNumber=='true'">
 												<Text style="name"><var var="childNumber" />.</Text>
 												<SetVar name="childNumber" value="$childNumber + 1" />

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,37 +39,33 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function e;
 use function redirect;
 use function route;
 
-/**
- * Renumber the XREFs in a family tree.
- */
-class RenumberTreeAction implements RequestHandlerInterface
+final class RenumberTreeAction implements RequestHandlerInterface
 {
-    private AdminService $admin_service;
-
-    private TimeoutService $timeout_service;
-
-    /**
-     * @param AdminService   $admin_service
-     * @param TimeoutService $timeout_service
-     */
-    public function __construct(AdminService $admin_service, TimeoutService $timeout_service)
-    {
-        $this->admin_service   = $admin_service;
-        $this->timeout_service = $timeout_service;
+    public function __construct(
+        private readonly AdminService $admin_service,
+        private readonly TimeoutService $timeout_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();
         $xrefs = $this->admin_service->duplicateXrefs($tree);
+
+        if ($xrefs !== [] && $tree->hasPendingEdit()) {
+            $message =
+                I18N::translate('You need to accept or reject all pending changes before proceeding.') .
+                ' <a href="' . e(route(PendingChanges::class, ['tree' => $tree->name()])) . '">' .
+                I18N::translate('Show pending changes') .
+                '</a>';
+            FlashMessages::addMessage($message, 'danger');
+
+            return redirect(route(RenumberTreePage::class, ['tree' => $tree->name()]));
+        }
 
         foreach ($xrefs as $old_xref => $type) {
             $new_xref = Registry::xrefFactory()->make($type);

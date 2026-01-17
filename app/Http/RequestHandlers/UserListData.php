@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,10 +35,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
 
-/**
- * List of users.
- */
-class UserListData implements RequestHandlerInterface
+final class UserListData implements RequestHandlerInterface
 {
     private DatatablesService $datatables_service;
 
@@ -61,14 +58,9 @@ class UserListData implements RequestHandlerInterface
         $this->user_service       = $user_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $user = Validator::attributes($request)->user();
+        $self = Validator::attributes($request)->user();
 
         $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class, true)
             ->mapWithKeys(static function (ModuleLanguageInterface $module): array {
@@ -122,10 +114,10 @@ class UserListData implements RequestHandlerInterface
         $search_columns = ['user_name', 'real_name', 'email'];
         $sort_columns   = [];
 
-        $callback = function (object $row) use ($languages, $user): array {
-            $row_user = $this->user_service->find((int) $row->user_id);
+        $callback = function (object $row) use ($languages, $self): array {
+            $user  = $this->user_service->find((int) $row->user_id);
             $datum = [
-                view('admin/users-table-options', ['row' => $row, 'self' => $user, 'user' => $row_user]),
+                view('admin/users-table-options', ['self' => $self, 'user' => $user]),
                 $row->user_id,
                 '<bdi>' . e($row->user_name) . '</bdi>',
                 '<bdi>' . e($row->real_name) . '</bdi>',

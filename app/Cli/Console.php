@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\Console\Application;
+use Throwable;
 
 use function parse_ini_file;
 
@@ -31,21 +32,30 @@ final class Console extends Application
 {
     private const array COMMANDS = [
         Commands\CompilePoFiles::class,
-        Commands\TreeCreate::class,
+        Commands\ConfigIni::class,
+        Commands\SiteOffline::class,
+        Commands\SiteOnline::class,
+        Commands\SiteSetting::class,
+        Commands\TreeEdit::class,
+        Commands\TreeExport::class,
+        Commands\TreeImport::class,
         Commands\TreeList::class,
-        Commands\UserCreate::class,
+        Commands\TreeSetting::class,
+        Commands\UserEdit::class,
         Commands\UserList::class,
+        Commands\UserSetting::class,
+        Commands\UserTreeSetting::class,
     ];
 
     public function __construct()
     {
-        parent::__construct(Webtrees::NAME, Webtrees::VERSION);
+        parent::__construct(name: Webtrees::NAME, version: Webtrees::VERSION);
     }
 
     public function loadCommands(): self
     {
         foreach (self::COMMANDS as $command) {
-            $this->add(Registry::container()->get($command));
+            $this->addCommand(command: Registry::container()->get($command));
         }
 
         return $this;
@@ -55,27 +65,25 @@ final class Console extends Application
     {
         I18N::init(code: 'en-US', setup: true);
 
-        $config = parse_ini_file(filename: Webtrees::CONFIG_FILE);
+        try {
+            $config = parse_ini_file(filename: Webtrees::CONFIG_FILE) ?: [];
 
-        if ($config === false) {
-            return $this;
+            DB::connect(
+                driver: $config['dbtype'] ?? DB::MYSQL,
+                host: $config['dbhost'] ?? '',
+                port: $config['dbport'] ?? '',
+                database: $config['dbname'] ?? '',
+                username: $config['dbuser'] ?? '',
+                password: $config['dbpass'] ?? '',
+                prefix: $config['tblpfx'] ?? '',
+                key: $config['dbkey'] ?? '',
+                certificate: $config['dbcert'] ?? '',
+                ca: $config['dbca'] ?? '',
+                verify_certificate: (bool) ($config['dbverify'] ?? ''),
+            );
+        } catch (Throwable) {
+            // Ignore errors
         }
-
-        DB::connect(
-            driver: $config['dbtype'] ?? DB::MYSQL,
-            host: $config['dbhost'],
-            port: $config['dbport'],
-            database: $config['dbname'],
-            username: $config['dbuser'],
-            password: $config['dbpass'],
-            prefix: $config['tblpfx'],
-            key: $config['dbkey'] ?? '',
-            certificate: $config['dbcert'] ?? '',
-            ca: $config['dbca'] ?? '',
-            verify_certificate: (bool) ($config['dbverify'] ?? ''),
-        );
-
-        DB::exec('START TRANSACTION');
 
         return $this;
     }

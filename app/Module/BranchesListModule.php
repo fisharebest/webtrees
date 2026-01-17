@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -55,9 +56,6 @@ use function strtolower;
 use function usort;
 use function view;
 
-/**
- * Class BranchesListModule
- */
 class BranchesListModule extends AbstractModule implements ModuleListInterface, RequestHandlerInterface
 {
     use ModuleListTrait;
@@ -83,14 +81,10 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
     {
         Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST);
+            ->allows(RequestMethodInterface::METHOD_POST)
+            ->extras(['middleware' => [AuthNotRobot::class]]);
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module/list */
@@ -248,7 +242,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
                     $ancestors[$sosa * 2 + 1] = $family->wife();
                 }
             }
-        } while (next($ancestors));
+        } while (next($ancestors) !== false);
 
         return $ancestors;
     }
@@ -421,7 +415,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
                         $sosa_html  = '';
                     }
                     $marriage_year = $family->getMarriageYear();
-                    if ($marriage_year) {
+                    if ($marriage_year !== 0) {
                         $fam_html .= ' <a href="' . e($family->url()) . '" title="' . strip_tags($family->getMarriageDate()->display()) . '"><i class="icon-rings"></i>' . $marriage_year . '</a>';
                     } elseif ($family->facts(['MARR'])->isNotEmpty()) {
                         $fam_html .= ' <a href="' . e($family->url()) . '" title="' . I18N::translate('Marriage') . '"><i class="icon-rings"></i></a>';
@@ -466,6 +460,9 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         }
 
         // One is a substring of the other.  e.g. Halen / Van Halen
+        $surname1 = I18N::language()->normalize($surname1);
+        $surname2 = I18N::language()->normalize($surname2);
+
         return stripos($surname1, $surname2) !== false || stripos($surname2, $surname1) !== false;
     }
 

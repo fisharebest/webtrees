@@ -681,90 +681,6 @@ div.faq_body {
 /*
  * Default icons are provided by FontAwesome.
  */
-.wt-icon-anniversary {
-}
-
-.wt-icon-arrow-down {
-}
-
-a > .wt-icon-arrow-down:hover {
-}
-
-.wt-icon-arrow-left {
-}
-
-a > .wt-icon-arrow-left:hover {
-}
-
-.wt-icon-arrow-right {
-}
-
-a > .wt-icon-arrow-right:hover {
-}
-
-.wt-icon-arrow-up {
-}
-
-a > .wt-icon-arrow-up:hover {
-}
-
-.wt-icon-bing-maps {
-}
-
-.wt-icon-calendar {
-}
-
-.wt-icon-collapse {
-}
-
-.wt-icon-coordinates {
-}
-
-.wt-icon-copy {
-}
-
-.wt-icon-delete {
-}
-
-.wt-icon-edit {
-}
-
-.wt-icon-expand {
-}
-
-.wt-icon-family {
-}
-
-.wt-icon-google-maps {
-}
-
-.wt-icon-help {
-}
-
-.wt-icon-individual {
-}
-
-.wt-icon-keyboard {
-}
-
-.wt-icon-media {
-}
-
-.wt-icon-note {
-}
-
-.wt-icon-openstreetmap {
-}
-
-.wt-icon-preferences {
-}
-
-.wt-icon-reorder {
-}
-
-.wt-icon-repository {
-}
-
 .wt-icon-sex-f {
     color: var(--sex-f-fg);
 }
@@ -781,45 +697,7 @@ a > .wt-icon-arrow-up:hover {
     color: var(--sex-x-fg);
 }
 
-.wt-icon-source {
-}
-
-.wt-icon-submitter {
-}
-
-.wt-icon-warning {
-}
-
-.wt-icon-zoom-in {
-}
-
-.wt-icon-zoom-out {
-}
-
 /* Miscellaneous images */
-.icon-cfamily {
-}
-
-.icon-childless {
-    content: url(images/childless.png);
-}
-
-.icon-children {
-    content: url(images/children.png);
-}
-
-.icon-edit_indi {
-    content: url(minimal/images/edit_indi.png);
-}
-
-.icon-fam-list {
-    content: url(minimal/images/sfamily.png);
-}
-
-.icon-indi-list {
-    content: url(minimal/images/indis.png);
-}
-
 .icon-loading-small {
     content: url(images/indicator.gif);
 }
@@ -832,40 +710,12 @@ a > .wt-icon-arrow-up:hover {
     content: url(icons/minus.png);
 }
 
-.icon-mypage {
-    content: url(minimal/images/mypage.png);
-}
-
 .icon-plus {
     content: url(icons/plus.png);
 }
 
-.icon-resn-confidential {
-    content: none;
-}
-
-.icon-resn-locked {
-    content: none;
-}
-
-.icon-resn-none {
-    content: none;
-}
-
-.icon-resn-privacy {
-    content: none;
-}
-
 .icon-rings {
     content: url(images/rings.png);
-}
-
-.icon-selected {
-    content: url(minimal/images/selected.png);
-}
-
-.icon-sfamily {
-    content: url(minimal/images/sfamily.png);
 }
 
 /* Silhouettes on charts */
@@ -880,14 +730,6 @@ a > .wt-icon-arrow-up:hover {
 .icon-silhouette-u,
 .icon-silhouette-x {
     content: url(minimal/images/silhouette_unknown_small.png);
-}
-
-.icon-indis {
-    content: url(minimal/images/indis.png);
-}
-
-.icon-pedigree {
-    content: url(minimal/images/pedigree.png);
 }
 
 /* Census assistant */

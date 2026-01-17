@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,22 +27,13 @@ use Illuminate\Support\Collection;
 use League\Flysystem\FilesystemException;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * Autocomplete handler for media folders
- */
-class AutoCompleteFolder extends AbstractAutocompleteHandler
+final class AutoCompleteFolder extends AbstractAutocompleteHandler
 {
-    private MediaFileService $media_file_service;
-
-    /**
-     * @param MediaFileService $media_file_service
-     * @param SearchService    $search_service
-     */
-    public function __construct(MediaFileService $media_file_service, SearchService $search_service)
-    {
+    public function __construct(
+        private readonly MediaFileService $media_file_service,
+        SearchService $search_service,
+    ) {
         parent::__construct($search_service);
-
-        $this->media_file_service = $media_file_service;
     }
 
     /**

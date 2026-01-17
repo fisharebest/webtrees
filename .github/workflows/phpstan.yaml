@@ -11,23 +11,19 @@ jobs:
     strategy:
       matrix:
         operating-system: ['ubuntu-latest']
-        php-version: ['8.3', '8.4']
+        php-version: ['8.3', '8.4', '8.5', '8.6']
       fail-fast: false
 
     steps:
-      - uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@master
         with:
           php-version: ${{ matrix.php-version }}
           ini-file: 'development'
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - run: composer validate
 
-      - run: composer global config --no-plugins allow-plugins.phpstan/extension-installer true
-
-      - run: composer global require phpstan/phpstan phpstan/extension-installer phpstan/phpstan-deprecation-rules phpstan/phpstan-strict-rules phpstan/phpstan-phpunit
-
       - run: composer install --no-progress
 
-      - run: ~/.composer/vendor/bin/phpstan analyze --no-progress --level=max app index.php
+      - run: composer webtrees:phpstan

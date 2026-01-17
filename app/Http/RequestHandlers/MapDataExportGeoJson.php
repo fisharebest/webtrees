@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,28 +35,13 @@ use function implode;
 use function preg_replace;
 use function response;
 
-/**
- * Export geographic data.
- */
-class MapDataExportGeoJson implements RequestHandlerInterface
+final class MapDataExportGeoJson implements RequestHandlerInterface
 {
-    private MapDataService $map_data_service;
-
-    /**
-     * Dependency injection.
-     *
-     * @param MapDataService $map_data_service
-     */
-    public function __construct(MapDataService $map_data_service)
-    {
-        $this->map_data_service = $map_data_service;
+    public function __construct(
+        private readonly MapDataService $map_data_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id = $request->getAttribute('parent_id');
@@ -67,7 +52,9 @@ class MapDataExportGeoJson implements RequestHandlerInterface
             $parent = $this->map_data_service->findById((int) $parent_id);
         }
 
-        for ($tmp = $parent, $hierarchy = []; $tmp->id() !== null; $tmp = $tmp->parent()) {
+        $hierarchy = [];
+
+        for ($tmp = $parent; $tmp->id() !== null; $tmp = $tmp->parent()) {
             $hierarchy[] = $tmp->locationName();
         }
 

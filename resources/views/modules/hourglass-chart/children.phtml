@@ -15,9 +15,7 @@ use Illuminate\Support\Collection;
 ?>
 <div class="align-self-center">
     <?php foreach ($children as $n => $child) : ?>
-        <?php $grandchildren = $child->spouseFamilies()->map(static function (Family $family): Collection {
-    return $family->children();
-        })->flatten() ?>
+        <?php $grandchildren = $child->spouseFamilies()->map(static fn (Family $family): Collection => $family->children())->flatten() ?>
         <div class="d-flex justify-content-end">
             <?php if ($grandchildren->isNotEmpty()) : ?>
                 <?php if ($generations > 1) : ?>

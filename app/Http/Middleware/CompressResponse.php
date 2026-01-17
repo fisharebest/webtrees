@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fisharebest\Webtrees\Services\PhpService;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -26,7 +27,6 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function extension_loaded;
 use function gzdeflate;
 use function gzencode;
 use function in_array;
@@ -50,14 +50,8 @@ class CompressResponse implements MiddlewareInterface
         'image/svg+xml',
     ];
 
-    protected StreamFactoryInterface $stream_factory;
-
-    /**
-     * @param StreamFactoryInterface $stream_factory
-     */
-    public function __construct(StreamFactoryInterface $stream_factory)
+    public function __construct(private PhpService $php_service, private StreamFactoryInterface $stream_factory)
     {
-        $this->stream_factory = $stream_factory;
     }
 
     /**
@@ -103,7 +97,7 @@ class CompressResponse implements MiddlewareInterface
     protected function compressionMethod(RequestInterface $request): string|null
     {
         $accept_encoding = strtolower($request->getHeaderLine('accept-encoding'));
-        $zlib_available  = extension_loaded('zlib');
+        $zlib_available  = $this->php_service->extensionLoaded(extension: 'zlib');
 
         if ($zlib_available) {
             if (str_contains($accept_encoding, 'gzip')) {

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,8 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\TestCase;
-use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SearchService::class)]
@@ -34,37 +35,41 @@ class SearchServiceTest extends TestCase
         $search_service = new SearchService($tree_service);
         $tree = $this->importTree('demo.ged');
 
-        $result = $search_service->searchFamilies([$tree], ['windsor']);
-        self::assertInstanceOf(Collection::class, $result);
+        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
+        Auth::login($user);
 
-        $result = $search_service->searchFamilyNames([$tree], ['charles', 'diana']);
-        self::assertInstanceOf(Collection::class, $result);
+        $result = $search_service->searchFamilies([$tree], ['windsor'])->all();
+        self::assertNotEmpty($result);
 
-        $result = $search_service->searchIndividuals([$tree], ['windsor']);
-        self::assertInstanceOf(Collection::class, $result);
+        $result = $search_service->searchFamilyNames([$tree], ['charles', 'diana'])->all();
+        //self::assertNotEmpty($result);
 
-        $result = $search_service->searchIndividualNames([$tree], ['windsor']);
-        self::assertInstanceOf(Collection::class, $result);
+        $result = $search_service->searchIndividuals([$tree], ['windsor'])->all();
+        self::assertNotEmpty($result);
 
-        $result = $search_service->searchMedia([$tree], ['windsor']);
-        self::assertInstanceOf(Collection::class, $result);
+        $result = $search_service->searchIndividualNames([$tree], ['windsor'])->all();
+        //self::assertNotEmpty($result);
 
-        $result = $search_service->searchNotes([$tree], ['windsor']);
-        self::assertInstanceOf(Collection::class, $result);
+        $result = $search_service->searchMedia([$tree], ['windsor'])->all();
+        self::assertNotEmpty($result);
 
-        $result = $search_service->searchRepositories([$tree], ['national']);
-        self::assertInstanceOf(Collection::class, $result);
+        $result = $search_service->searchNotes([$tree], ['windsor'])->all();
+        //self::assertNotEmpty($result);
 
-        $result = $search_service->searchSources([$tree], ['england']);
-        self::assertInstanceOf(Collection::class, $result);
+        $result = $search_service->searchRepositories([$tree], ['national'])->all();
+        self::assertNotEmpty($result);
 
-        $result = $search_service->searchSourcesByName([$tree], ['england']);
-        self::assertInstanceOf(Collection::class, $result);
+        $result = $search_service->searchSources([$tree], ['england'])->all();
+        self::assertNotEmpty($result);
 
-        $result = $search_service->searchSubmitters([$tree], ['greg']);
-        self::assertInstanceOf(Collection::class, $result);
+        $result = $search_service->searchSourcesByName([$tree], ['england'])->all();
+        self::assertNotEmpty($result);
 
-        $result = $search_service->searchPlaces($tree, 'England');
-        self::assertInstanceOf(Collection::class, $result);
+        $result = $search_service->searchSubmitters([$tree], ['greg'])->all();
+        self::assertNotEmpty($result);
+
+        $result = $search_service->searchPlaces($tree, 'England')->all();
+        //self::assertNotEmpty($result);
     }
 }

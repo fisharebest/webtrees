@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -124,8 +124,9 @@ class Family extends GedcomRecord
         // Hide a family if any member is private
         preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches);
         foreach ($matches[1] as $match) {
-            $person = Registry::individualFactory()->make($match, $this->tree);
-            if ($person && !$person->canShow($access_level)) {
+            $individual = Registry::individualFactory()->make($match, $this->tree);
+
+            if ($individual instanceof Individual && !$individual->canShow($access_level)) {
                 return false;
             }
         }
@@ -320,9 +321,9 @@ class Family extends GedcomRecord
             // Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
             $husb_names = [];
             if ($this->husb instanceof Individual) {
-                $husb_names = array_filter($this->husb->getAllNames(), static fn (array $x): bool => $x['type'] !== '_MARNM');
+                $husb_names = $this->husb->getAllNames();
             }
-            // If the individual only has married names, create a fake birth name.
+            // use Nomen Nescio when no name is known
             if ($husb_names === []) {
                 $husb_names[] = [
                     'type' => 'BIRT',
@@ -336,9 +337,9 @@ class Family extends GedcomRecord
 
             $wife_names = [];
             if ($this->wife instanceof Individual) {
-                $wife_names = array_filter($this->wife->getAllNames(), static fn (array $x): bool => $x['type'] !== '_MARNM');
+                $wife_names = $this->wife->getAllNames();
             }
-            // If the individual only has married names, create a fake birth name.
+            // use Nomen Nescio when no name is known
             if ($wife_names === []) {
                 $wife_names[] = [
                     'type' => 'BIRT',

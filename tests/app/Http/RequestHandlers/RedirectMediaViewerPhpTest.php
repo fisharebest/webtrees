@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,7 +39,7 @@ class RedirectMediaViewerPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -50,7 +50,7 @@ class RedirectMediaViewerPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $media = $this->createMock(Media::class);
+        $media = self::createStub(Media::class);
         $media
             ->method('url')
             ->willReturn('https://www.example.com');
@@ -76,7 +76,7 @@ class RedirectMediaViewerPhpTest extends TestCase
 
     public function testNoSuchRecord(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
@@ -112,7 +112,7 @@ class RedirectMediaViewerPhpTest extends TestCase
 
     public function testMissingTreeParameter(): void
     {
-        $tree_service = $this->createMock(TreeService::class);
+        $tree_service = self::createStub(TreeService::class);
 
         $handler = new RedirectFamilyPhp($tree_service);
 
@@ -125,7 +125,7 @@ class RedirectMediaViewerPhpTest extends TestCase
 
     public function testMissingXrefParameter(): void
     {
-        $tree_service = $this->createMock(TreeService::class);
+        $tree_service = self::createStub(TreeService::class);
 
         $handler = new RedirectFamilyPhp($tree_service);
 

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,26 +33,13 @@ use function e;
 use function redirect;
 use function route;
 
-/**
- * Edit the email preferences.
- */
-class EmailPreferencesAction implements RequestHandlerInterface
+final class EmailPreferencesAction implements RequestHandlerInterface
 {
-    private EmailService $email_service;
-
-    /**
-     * @param EmailService $email_service
-     */
-    public function __construct(EmailService $email_service)
-    {
-        $this->email_service = $email_service;
+    public function __construct(
+        private readonly EmailService $email_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $user          = Validator::attributes($request)->user();

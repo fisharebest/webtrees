@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,28 +33,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function response;
 use function view;
 
-/**
- * Add a new media file to a media object.
- */
-class AddMediaFileModal implements RequestHandlerInterface
+final class AddMediaFileModal implements RequestHandlerInterface
 {
-    private MediaFileService $media_file_service;
-
-    /**
-     * @param MediaFileService $media_file_service
-     */
-    public function __construct(MediaFileService $media_file_service)
-    {
-        $this->media_file_service = $media_file_service;
+    public function __construct(
+        private readonly MediaFileService $media_file_service,
+    ) {
     }
 
-    /**
-     * Add a media file to an existing media object.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();

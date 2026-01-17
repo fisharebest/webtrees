@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,10 +35,10 @@ class MasqueradeTest extends TestCase
 
     public function testMasqueradeAsUser(): void
     {
-        $user1 = $this->createMock(User::class);
+        $user1 = self::createStub(User::class);
         $user1->method('id')->willReturn(1);
 
-        $user2 = $this->createMock(User::class);
+        $user2 = self::createStub(User::class);
         $user2->method('id')->willReturn(2);
 
         $user_service = $this->createMock(UserService::class);
@@ -58,7 +58,7 @@ class MasqueradeTest extends TestCase
 
     public function testCannotMasqueradeAsSelf(): void
     {
-        $user = $this->createMock(User::class);
+        $user = self::createStub(User::class);
         $user->method('id')->willReturn(1);
 
         $user_service = $this->createMock(UserService::class);
@@ -80,7 +80,7 @@ class MasqueradeTest extends TestCase
         $this->expectException(HttpNotFoundException::class);
         $this->expectExceptionMessage('User ID 2 not found');
 
-        $user = $this->createMock(User::class);
+        $user = self::createStub(User::class);
         $user->method('id')->willReturn(1);
 
         $user_service = $this->createMock(UserService::class);

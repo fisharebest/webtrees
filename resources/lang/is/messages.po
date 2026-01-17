@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-12-16 07:25+0000\n"
+"PO-Revision-Date: 2025-02-13 14:07+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -302,8 +302,8 @@ msgstr[1] "%s mánuðir"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] "%s minnisatriði hefur verið uppfært."
-msgstr[1] "%s minnisatriði hafa verið uppfærð."
+msgstr[0] "%s glósa hefur verið uppfærð."
+msgstr[1] "%s glósur hafa verið uppfærðar."
 
 #: app/Http/RequestHandlers/CheckTree.php:314
 #: app/Http/RequestHandlers/CheckTree.php:318
@@ -662,37 +662,37 @@ msgstr "Veffang"
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:119
 msgid "A chart displaying relationships between two individuals."
-msgstr "Graf sem birtir tengsl milli tveggja einstaklinga."
+msgstr "Tafla sem birtir tengsl milli tveggja einstaklinga."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:86
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "Graf yfir forfeður og afkomendur einstaklings, sem fjölskyldubók."
+msgstr "Tafla yfir forfeður og afkomendur einstaklings, sem fjölskyldubók."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:81
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "Graf af forfeðrum einstaklings, sem þjappað tré."
+msgstr "Tafla af forfeðrum einstaklings, sem þjappað tré."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:108
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "Graf af forfeðrum einstaklings, sniðið sem tré."
+msgstr "Tafla af forfeðrum einstaklings, sniðið sem tré."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:102
 msgid "A chart of an individual’s ancestors."
-msgstr "Graf af forfeðrum einstaklings."
+msgstr "Tafla af forfeðrum einstaklings."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:98
 msgid "A chart of an individual’s descendants."
-msgstr "Graf af afkomendum einstaklings."
+msgstr "Tafla af afkomendum einstaklings."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:110
 msgid "A chart of individuals’ lifespans."
-msgstr "Graf yfir líftíma eintaklinga."
+msgstr "Tafla yfir líftíma eintaklinga."
 
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -1717,7 +1717,7 @@ msgstr "Aldur foreldra við hliðina á fæðingardegi barns"
 #: app/CustomTags/GedcomL.php:234 app/Gedcom.php:410 app/Gedcom.php:544
 #: app/Gedcom.php:835
 msgid "Agency"
-msgstr "Ábyrgðaraðili"
+msgstr "Stofnun"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:50
@@ -1866,7 +1866,7 @@ msgstr "Önnur leið fyrir innskráningu og útskráningu."
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:85
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr "Stundaglasagraf yfir forfeður og afkomendur einstaklings."
+msgstr "Stundaglasatafla yfir forfeður og afkomendur einstaklings."
 
 #: resources/views/edit/reorder-families.phtml:75
 msgid "An individual can have more than one set of parents. For example, birth and adopted."
@@ -3453,18 +3453,18 @@ msgstr "Stafasett"
 #: resources/views/admin/modules.phtml:224
 #: resources/views/admin/modules.phtml:227
 msgid "Chart"
-msgstr "Graf"
+msgstr "Tafla"
 
 #: app/Module/RelationshipsChartModule.php:426
 msgid "Chart preferences"
-msgstr "Graf stillingar"
+msgstr "Töflu stillingar"
 
 #: resources/views/modules/charts/config.phtml:20
 #: resources/views/modules/statistics-chart/custom.phtml:26
 #: resources/views/modules/statistics-chart/custom.phtml:155
 #: resources/views/modules/statistics-chart/custom.phtml:157
 msgid "Chart type"
-msgstr "Gerð grafs"
+msgstr "Gerð töflu"
 
 #. I18N: Name of a module/block
 #. I18N: Name of a module
@@ -4111,7 +4111,7 @@ msgstr "Útbúa kort með því að nota %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:20
 msgid "Create your own chart"
-msgstr "Stofna þitt eigið graf"
+msgstr "Stofna þína eigin töflu"
 
 #: resources/views/admin/synchronize-trees.phtml:20
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
@@ -5006,7 +5006,7 @@ msgstr "Decidi"
 
 #: app/Module/UserWelcomeModule.php:89 app/Module/WelcomeBlockModule.php:88
 msgid "Default chart"
-msgstr "Sjálfgefið kort"
+msgstr "Sjálfgefin tafla"
 
 #: resources/views/admin/trees.phtml:129
 msgid "Default family tree"
@@ -6668,7 +6668,7 @@ msgstr "Snið"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:584
 msgid "Format text and notes"
-msgstr "Forsníða texta og skýringar"
+msgstr "Forsníða texta og glósur"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:94
@@ -7502,13 +7502,13 @@ msgstr "Hong Kong"
 #: app/Module/ChartsBlockModule.php:156 app/Module/ChartsBlockModule.php:252
 #: app/Module/HourglassChartModule.php:79
 msgid "Hourglass chart"
-msgstr "Stundaglasagraf"
+msgstr "Stundaglasatafla"
 
 #. I18N: %s is an individual’s name
 #: app/Module/HourglassChartModule.php:120
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "Stundaglasagraf fyrir %s"
+msgstr "Stundaglasatafla fyrir %s"
 
 #: resources/views/modules/census-assistant.phtml:112
 msgid "Household"
@@ -7841,7 +7841,7 @@ msgstr "Einstaklingur 2"
 
 #: app/Statistics/Google/ChartDistribution.php:317
 msgid "Individual distribution chart"
-msgstr "Einstaklings dreifingargraf"
+msgstr "Einstaklings dreifingarkort"
 
 #: resources/views/admin/tags.phtml:1032
 msgid "Individual facts and events"
@@ -10837,7 +10837,7 @@ msgstr "Annað"
 
 #: resources/views/admin/trees-preferences.phtml:410
 msgid "Other facts to show in charts"
-msgstr "Aðrar staðreyndir til að birta í grafi"
+msgstr "Aðrar staðreyndir til að birta í töflu"
 
 #: resources/views/admin/trees-preferences.phtml:689
 msgid "Other preferences"
@@ -11024,7 +11024,7 @@ msgstr "Ættartala"
 
 #: resources/xml/reports/pedigree_report.xml:750
 msgid "Pedigree chart"
-msgstr "Ættartölugraf"
+msgstr "Ættartölutafla"
 
 #. I18N: Name of a module
 #: app/Module/PedigreeMapModule.php:109
@@ -11196,7 +11196,10 @@ msgstr "Staðarheiti eru oft of löng til að passa í töflur, lista o.s.frv. H
 
 #: resources/views/help/place.phtml:14
 msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr "Staðarheiti geta breyst með tímanum. Í ættfræði er venja að nota núverandi nafn fyrir bæ eða land. Sögulegt nafn er hægt að sýna í heimildum, skýringum o.s.frv."
+msgstr ""
+"Staðarheiti geta breyst með tímanum. Í ættfræði er venja að nota núverandi "
+"nafn fyrir bæ eða land. Sögulegt nafn er hægt að sýna í heimildum, glósum o.s"
+".frv."
 
 #: resources/views/help/place.phtml:10
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
@@ -13928,7 +13931,7 @@ msgstr "Eftirnafn"
 
 #: app/Statistics/Google/ChartDistribution.php:295
 msgid "Surname distribution chart"
-msgstr "Dreifingargraf eftirnafna"
+msgstr "Dreifingartafla eftirnafna"
 
 #: resources/views/admin/trees-preferences.phtml:336
 msgid "Surname list style"
@@ -14253,7 +14256,7 @@ msgstr "Breytingarnar við „%s“ hefur verið hafnað."
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php:62
 msgid "The charts menu."
-msgstr "Valmynd grafa."
+msgstr "Valmynd taflna."
 
 #: resources/views/modules/clippings/show.phtml:21
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -14466,7 +14469,7 @@ msgstr "Skilaboðin voru ekki send til %s."
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:99
 #: app/Http/RequestHandlers/MessageAction.php:96
 msgid "The message was not sent."
-msgstr "Skilaboð var ekki sent."
+msgstr "Skilaboðin voru ekki send."
 
 #: app/Http/RequestHandlers/BroadcastAction.php:78
 #: app/Http/RequestHandlers/ContactAction.php:144
@@ -14843,8 +14846,8 @@ msgstr "Þessi reikningur hefur ekki verið samþykktur. Vinsamlega bíðið eft
 #: app/Http/RequestHandlers/LoginAction.php:125
 msgid "This account has not been verified. Please check your email for a verification message."
 msgstr ""
-"Þessi reikningur hefur ekki verið staðfestur. Vinsamlega athugaðu "
-"tölvupóstinn þinn gagnvart staðfestingar skilaboði."
+"Þessi reikningur hefur ekki verið staðfestur. Vinsamlega skoðaðu "
+"tölvupóstinn þinn með staðfestingarskilaboð."
 
 #: resources/views/modules/review_changes/config.phtml:15
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
@@ -15056,7 +15059,7 @@ msgstr "Þessum gagnahlut hefur verið breytt. Þú ættir að endurskoða breyt
 #: resources/views/emails/message-user-html.phtml:36
 #: resources/views/emails/message-user-text.phtml:26
 msgid "This message was sent while viewing the following URL: "
-msgstr "Þetta skilaboð var sent á meðan eftirfarandi veffang var skoðað: "
+msgstr "Þessi skilaboð voru send á meðan eftirfarandi veffang var skoðað: "
 
 #: resources/views/setup/step-5-administrator.phtml:85
 msgid "This must be at least six characters long. It is case-sensitive."
@@ -15105,7 +15108,9 @@ msgstr "Þessi valkostur stjórnar því hvort birting innihalds sé sjálfvirk 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: resources/views/admin/trees-preferences.phtml:402
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
-msgstr "Þessi valkostur stjórnar því hvort sýna eigi aldur föðurs og móður við hliðina á fæðingardegi barns á grafi eða ekki."
+msgstr ""
+"Þessi valkostur stjórnar því hvort sýna eigi aldur föðurs og móður við "
+"hliðina á fæðingardegi barns í töflu eða ekki."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:375
@@ -15120,7 +15125,10 @@ msgstr "Þessi valkostur mun auðvelda notendum að hlaða niður myndum."
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:152
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Þessi valkostur mun halda eftir fjölskyldu krækjum í færslum með friðhelgi. Þetta þýðir að þú sérð auða „friðhelgis“ kassa í ættartölugrafinu og á öðrum töflum hjá fólki með friðhelgi."
+msgstr ""
+"Þessi valkostur mun halda eftir fjölskyldu krækjum í færslum með friðhelgi. "
+"Þetta þýðir að þú sérð auða „friðhelgis“ kassa í ættartölutöflunni og á "
+"öðrum töflum hjá fólki með friðhelgi."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:133
@@ -15449,7 +15457,10 @@ msgstr "Til að birta kort þá þarftu að virkja kortaveitu á stjórnborðinu
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:589
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "Til að tryggja samhæfni við önnur ættfræðiforrit ættu skýringar, texti og afrit að vera skráð í einfaldan, ósniðinn texta. Hins vegar er snið oft æskilegt til að auðvelda framsetningu, skilning o.s.frv."
+msgstr ""
+"Til að tryggja samhæfni við önnur ættfræðiforrit ættu glósur, texti og afrit "
+"að vera skráð í einfaldan, ósniðin texta. Hins vegar er snið oft æskilegt "
+"til að auðvelda framsetningu, skilning o.s.frv."
 
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:37
@@ -16644,7 +16655,7 @@ msgstr "Þú verður að endurnúmera færslurnar í einu af ættartölunum áð
 
 #: app/Module/ChartsBlockModule.php:177
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Þú verður að velja einstakling og gerð grafs í blokkarstillingunum"
+msgstr "Þú verður að velja einstakling og gerð töflu í blokkarstillingunum"
 
 #: resources/views/admin/users-edit.phtml:366
 msgid "You must specify an individual record before you can restrict the user to their immediate family."

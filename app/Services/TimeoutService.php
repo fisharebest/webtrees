@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,24 +35,19 @@ class TimeoutService
     // The start time of the request
     private float $start_time;
 
-    /**
-     * @param float|null $start_time
-     */
-    public function __construct(float|null $start_time = null)
-    {
+    public function __construct(
+        private PhpService $php_service,
+        float|null $start_time = null,
+    ) {
         $this->start_time = $start_time ?? Registry::timeFactory()->now();
     }
 
     /**
      * Some long-running scripts need to know when to stop.
-     *
-     * @param float $threshold
-     *
-     * @return bool
      */
     public function isTimeNearlyUp(float $threshold = self::TIME_UP_THRESHOLD): bool
     {
-        $max_execution_time = (int) ini_get('max_execution_time');
+        $max_execution_time = $this->php_service->maxExecutionTime();
 
         // If there's no time limit, then we can't run out of time.
         if ($max_execution_time === 0) {
@@ -66,10 +61,6 @@ class TimeoutService
 
     /**
      * Some long-running scripts are broken down into small chunks.
-     *
-     * @param float $limit
-     *
-     * @return bool
      */
     public function isTimeLimitUp(float $limit = self::TIME_LIMIT): bool
     {

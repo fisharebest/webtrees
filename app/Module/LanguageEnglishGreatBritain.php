@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,9 +22,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Localization\Locale\LocaleEnGb;
 use Fisharebest\Localization\Locale\LocaleInterface;
 
-/**
- * Class LanguageEnglishGreatBritain.
- */
 class LanguageEnglishGreatBritain extends LanguageEnglishUnitedStates
 {
     // British English changes "three-times" to "thrice"
@@ -61,19 +58,11 @@ class LanguageEnglishGreatBritain extends LanguageEnglishUnitedStates
         ' twenty-nine times removed',
     ];
 
-    /**
-     * One of: 'DMY', 'MDY', 'YMD'.
-     *
-     * @return string
-     */
     public function dateOrder(): string
     {
         return 'DMY';
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleEnGb();

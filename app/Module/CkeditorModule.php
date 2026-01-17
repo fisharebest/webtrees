@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,9 +21,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 
-/**
- * Class CkeditorModule
- */
 class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterface, ModuleGlobalInterface
 {
     use ModuleExternalUrlTrait;
@@ -32,11 +29,6 @@ class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterfac
     // Location of our installation of CK editor.
     public const string CKEDITOR_PATH = 'ckeditor-4.15.1-custom/';
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module. CKEditor is a trademark. Do not translate it? https://ckeditor.com */

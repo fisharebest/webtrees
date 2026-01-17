@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,20 +22,14 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\RelationshipService;
 use Illuminate\Support\Collection;
 
-/**
- * Class RelativesTabModule
- */
 class RelativesTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module */
@@ -79,6 +73,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
             'can_edit'             => $individual->canEdit(),
             'individual'           => $individual,
             'parent_families'      => $individual->childFamilies(),
+            'relationship_service' => Registry::container()->get(RelationshipService::class),
             'spouse_families'      => $individual->spouseFamilies(),
             'step_child_families'  => $individual->spouseStepFamilies(),
             'step_parent_families' => $individual->childStepFamilies(),

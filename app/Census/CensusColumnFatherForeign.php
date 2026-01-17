@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * Is the individual's father a foreigner.
+ * Is the individual's father a foreigner?
  */
 class CensusColumnFatherForeign extends AbstractCensusColumn implements CensusColumnInterface
 {
@@ -38,7 +38,10 @@ class CensusColumnFatherForeign extends AbstractCensusColumn implements CensusCo
     {
         $father = $this->father($individual);
 
-        if ($father && $this->lastPartOfPlace($father->getBirthPlace()->gedcomName()) !== $this->place()) {
+        if (
+            $father instanceof Individual &&
+            $this->lastPartOfPlace($father->getBirthPlace()->gedcomName()) !== $this->place()
+        ) {
             return 'Y';
         }
 

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(FixLevel0MediaActionTest::class)]
+#[CoversClass(FixLevel0MediaAction::class)]
 class FixLevel0MediaActionTest extends TestCase
 {
     protected static bool $uses_database = true;
@@ -38,7 +38,7 @@ class FixLevel0MediaActionTest extends TestCase
         $tree                  = $tree_service->create('name', 'title');
         $handler               = new FixLevel0MediaAction($tree_service);
         $request               = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
-            'tree_id'   => $tree->id(),
+            'tree_id'   => (string) $tree->id(),
             'fact_id'   => '',
             'indi_xref' => 'X1',
             'obje_xref' => 'X2',

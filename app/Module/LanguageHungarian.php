@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,21 +22,15 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Localization\Locale\LocaleHu;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Encodings\UTF8;
-use Illuminate\Database\Query\Builder;
 
 use function mb_substr;
 use function str_starts_with;
 
-/**
- * Class LanguageHungarian.
- */
 class LanguageHungarian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -89,23 +83,11 @@ class LanguageHungarian extends AbstractModule implements ModuleLanguageInterfac
         ];
     }
 
-    /**
-     * One of: 'DMY', 'MDY', 'YMD'.
-     *
-     * @return string
-     */
     public function dateOrder(): string
     {
         return 'YMD';
     }
 
-    /**
-     * Some languages use digraphs and trigraphs.
-     *
-     * @param string $string
-     *
-     * @return string
-     */
     public function initialLetter(string $string): string
     {
         foreach (['CS', 'DZS', 'DZ', 'GY', 'LY', 'NY', 'SZ', 'TY', 'ZS'] as $digraph) {
@@ -117,9 +99,6 @@ class LanguageHungarian extends AbstractModule implements ModuleLanguageInterfac
         return mb_substr($string, 0, 1);
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleHu();

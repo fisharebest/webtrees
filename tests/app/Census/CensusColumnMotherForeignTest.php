@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,7 +32,7 @@ class CensusColumnMotherForeignTest extends TestCase
 {
     private function getPlaceMock(string $place): Place
     {
-        $placeMock = $this->createMock(Place::class);
+        $placeMock = self::createStub(Place::class);
         $placeMock->method('gedcomName')->willReturn($place);
 
         return $placeMock;
@@ -40,16 +40,16 @@ class CensusColumnMotherForeignTest extends TestCase
 
     public function testSameCountry(): void
     {
-        $mother = $this->createMock(Individual::class);
+        $mother = self::createStub(Individual::class);
         $mother->method('getBirthPlace')->willReturn($this->getPlaceMock('London, England'));
 
-        $family = $this->createMock(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('wife')->willReturn($mother);
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('childFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('England');
 
         $column = new CensusColumnMotherForeign($census, '', '');
@@ -59,16 +59,16 @@ class CensusColumnMotherForeignTest extends TestCase
 
     public function testDifferentCountry(): void
     {
-        $mother = $this->createMock(Individual::class);
+        $mother = self::createStub(Individual::class);
         $mother->method('getBirthPlace')->willReturn($this->getPlaceMock('London, England'));
 
-        $family = $this->createMock(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('wife')->willReturn($mother);
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('childFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('Ireland');
 
         $column = new CensusColumnMotherForeign($census, '', '');
@@ -78,13 +78,13 @@ class CensusColumnMotherForeignTest extends TestCase
 
     public function testPlaceNoParent(): void
     {
-        $family = $this->createMock(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('wife')->willReturn(null);
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('childFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('England');
 
         $column = new CensusColumnMotherForeign($census, '', '');
@@ -94,10 +94,10 @@ class CensusColumnMotherForeignTest extends TestCase
 
     public function testPlaceNoParentFamily(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('childFamilies')->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('England');
 
         $column = new CensusColumnMotherForeign($census, '', '');

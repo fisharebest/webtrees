@@ -30,6 +30,7 @@ Disallow: <?= $base_path ?>/editor
 Disallow: <?= $base_path ?>/account
 <?php foreach ($trees as $tree) : ?>
 Disallow: <?= $base_path ?>/tree/<?= $tree ?>/ancestors
+Disallow: <?= $base_path ?>/tree/<?= $tree ?>/branches
 Disallow: <?= $base_path ?>/tree/<?= $tree ?>/calendar
 Disallow: <?= $base_path ?>/tree/<?= $tree ?>/compact
 Disallow: <?= $base_path ?>/tree/<?= $tree ?>/descendants
@@ -39,10 +40,15 @@ Disallow: <?= $base_path ?>/tree/<?= $tree ?>/fan-chart
 Disallow: <?= $base_path ?>/tree/<?= $tree ?>/hourglass
 Disallow: <?= $base_path ?>/tree/<?= $tree ?>/individual-list
 Disallow: <?= $base_path ?>/tree/<?= $tree ?>/lifespans
+Disallow: <?= $base_path ?>/tree/<?= $tree ?>/media-objects
 Disallow: <?= $base_path ?>/tree/<?= $tree ?>/pedigree
+Disallow: <?= $base_path ?>/tree/<?= $tree ?>/relationships
 Disallow: <?= $base_path ?>/tree/<?= $tree ?>/report
+Disallow: <?= $base_path ?>/tree/<?= $tree ?>/search
 Disallow: <?= $base_path ?>/tree/<?= $tree ?>/timeline
 <?php endforeach ?>
+Disallow: <?= $base_path ?>/module/statistics_chart
+Disallow: <?= $base_path ?>/module/tree
 Crawl-delay: 10
 
 <?php if ($sitemap_url !== '') : ?>

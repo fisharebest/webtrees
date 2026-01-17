@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,19 +28,11 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Autocomplete for TomSelect based controls.
- */
 abstract class AbstractTomSelectHandler implements RequestHandlerInterface
 {
     // For clients that request one page of data at a time.
     private const int RESULTS_PER_PAGE = 50;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();
@@ -54,13 +46,13 @@ abstract class AbstractTomSelectHandler implements RequestHandlerInterface
 
         // Perform the search.
         if ($query !== '') {
-            $results = $this->search($tree, $query, $offset, $limit, $at ? '@' : '');
+            $results = $this->search($tree, $query, $offset, $limit, $at);
         } else {
             $results = new Collection();
         }
 
         if ($results->count() > self::RESULTS_PER_PAGE) {
-            $next_url = route(static::class, ['tree' => $tree->name(), 'at' => $at ? '@' : '', 'page' => $page + 1]);
+            $next_url = route(static::class, ['tree' => $tree->name(), 'at' => $at, 'page' => $page + 1]);
         } else {
             $next_url = null;
         }

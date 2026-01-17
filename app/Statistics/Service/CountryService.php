@@ -22,7 +22,10 @@ namespace Fisharebest\Webtrees\Statistics\Service;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * Functions for managing country codes and names.
+ * This class is used by the fancy-tree-view and fancy-research-links modules.
+ * It will be removed in webtrees 2.3.
+ *
+ * @deprecated
  */
 class CountryService
 {

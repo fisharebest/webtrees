@@ -713,11 +713,6 @@ div.fact_SHARED_NOTE {
     margin-bottom: 12px;
 }
 
-.current_day {
-    font-weight: bold;
-    font-size: 16px;
-}
-
 .cal_day {
     font-weight: bold;
 }
@@ -1366,28 +1361,8 @@ a > .wt-icon-arrow-up:hover {
 }
 
 /* Miscellaneous images */
-.icon-cfamily {
-    content: url(xenea/images/cfamily.png);
-}
-
-.icon-childless {
-    content: url(images/childless.png);
-}
-
-.icon-children {
+.wt-icon-children {
     content: url(images/children.png);
-}
-
-.icon-edit_indi {
-    content: url(xenea/images/edit_indi.png);
-}
-
-.icon-fam-list {
-    content: url(xenea/images/cfamily.png);
-}
-
-.icon-indi-list {
-    content: url(xenea/images/indis.png);
 }
 
 .icon-loading-small {
@@ -1448,16 +1423,8 @@ a > .wt-icon-arrow-up:hover {
     content: url(xenea/images/indis.png);
 }
 
-.icon-patriarch {
-    content: url(xenea/images/patriarch.png);
-}
-
 .icon-pedigree {
     content: url(xenea/images/pedigree.png);
-}
-
-.icon-sfamily {
-    content: url(xenea/images/sfamily.png);
 }
 
 .icon-user_add {

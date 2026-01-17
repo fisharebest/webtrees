@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,12 +20,18 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\Services\TreeService;
-use Symfony\Component\Console\Command\Command;
+use Fisharebest\Webtrees\Tree;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
-class TreeList extends Command
+use function addcslashes;
+use function array_map;
+use function implode;
+
+final class TreeList extends AbstractCommand
 {
     public function __construct(private readonly TreeService $tree_service)
     {
@@ -36,28 +42,77 @@ class TreeList extends Command
     {
         $this
             ->setName(name: 'tree-list')
-            ->setDescription(description: 'List trees');
+            ->setDescription(description: 'List trees')
+            ->addOption(
+                name: 'format',
+                shortcut: 'f',
+                mode: InputOption::VALUE_REQUIRED,
+                description: 'Output format (table, json, csv)',
+                default: 'table',
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $format = $this->stringOption(input: $input, name: 'format');
+
+        $io = new SymfonyStyle(input: $input, output: $output);
+
         $trees = $this->tree_service->all()->sort(callback: fn ($a, $b) => $a->id() <=> $b->id());
 
-        $table = new Table(output: $output);
+        $headers = ['ID', 'Name', 'Title', 'Media directory', 'Imported'];
 
-        $table->setHeaders(headers: ['ID', 'Name', 'Title', 'Imported']);
+        $rows = $trees->map(callback: static fn (Tree $tree): array => [
+            'id'              => $tree->id(),
+            'name'            => $tree->name(),
+            'title'           => $tree->title(),
+            'media_directory' => $tree->getPreference(setting_name: 'MEDIA_DIRECTORY'),
+            'imported'        => $tree->getPreference(setting_name: 'imported') === '1' ? 'yes' : 'no',
+        ])
+            ->values()
+            ->all();
 
-        foreach ($trees as $tree) {
-            $table->addRow(row: [
-                $tree->id(),
-                $tree->name(),
-                $tree->title(),
-                $tree->getPreference(setting_name: 'imported') ? 'Yes' : 'No'
-            ]);
+        switch ($format) {
+            case 'table':
+                $table = new Table(output: $output);
+                $table->setHeaders(headers: $headers);
+                $table->setRows(rows: $rows);
+                $table->render();
+                break;
+
+            case 'csv':
+                $output->writeln(messages: $this->quoteCsvRow(columns: $headers));
+
+                foreach ($rows as $row) {
+                    $output->writeln(messages: $this->quoteCsvRow(columns: $row));
+                }
+                break;
+
+            case 'json':
+                $output->writeln(messages: json_encode(value: $rows, flags: JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT));
+                break;
+
+            default:
+                $io->error(message: 'Invalid format: ‘' . $format . '’');
+
+                return self::FAILURE;
         }
 
-        $table->render();
+        return self::SUCCESS;
+    }
 
-        return Command::SUCCESS;
+    /**
+     * @param array<string|int> $columns
+     */
+    private function quoteCsvRow(array $columns): string
+    {
+        $columns = array_map(callback: $this->quoteCsvValue(...), array: $columns);
+
+        return implode(separator: ',', array: $columns);
+    }
+
+    private function quoteCsvValue(string|int $value): string
+    {
+        return '"' . addcslashes(string: (string) $value, characters: '"') . '"';
     }
 }

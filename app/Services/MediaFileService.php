@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,9 +42,7 @@ use function array_diff;
 use function array_intersect;
 use function dirname;
 use function explode;
-use function ini_get;
 use function intdiv;
-use function is_float;
 use function min;
 use function pathinfo;
 use function sha1;
@@ -52,11 +50,9 @@ use function sort;
 use function str_contains;
 use function strtoupper;
 use function strtr;
-use function substr;
 use function trim;
 
 use const PATHINFO_EXTENSION;
-use const PHP_INT_MAX;
 use const UPLOAD_ERR_OK;
 
 /**
@@ -78,48 +74,20 @@ class MediaFileService
         '_DAV',
     ];
 
+    public function __construct(
+        private readonly PhpService $php_service,
+    ) {
+    }
+
     /**
      * What is the largest file a user may upload?
      */
     public function maxUploadFilesize(): string
     {
-        $sizePostMax   = $this->parseIniFileSize((string) ini_get('post_max_size'));
-        $sizeUploadMax = $this->parseIniFileSize((string) ini_get('upload_max_filesize'));
-
-        $bytes = min($sizePostMax, $sizeUploadMax);
+        $bytes = min($this->php_service->postMaxSize(), $this->php_service->uploadMaxFilesize());
         $kb    = intdiv($bytes + 1023, 1024);
 
         return I18N::translate('%s KB', I18N::number($kb));
-    }
-
-    /**
-     * Returns the given size from an ini value in bytes.
-     *
-     * @param string $size
-     *
-     * @return int
-     */
-    private function parseIniFileSize(string $size): int
-    {
-        $number = (int) $size;
-
-        $units = [
-            'g' => 1073741824,
-            'G' => 1073741824,
-            'm' => 1048576,
-            'M' => 1048576,
-            'k' => 1024,
-            'K' => 1024,
-        ];
-
-        $number *= $units[substr($size, -1)] ?? 1;
-
-        if (is_float($number)) {
-            // Probably a 32bit version of PHP, with an INI setting >= 2GB
-            return PHP_INT_MAX;
-        }
-
-        return $number;
     }
 
     /**
@@ -305,21 +273,22 @@ class MediaFileService
      */
     public function allFilesInDatabase(string $media_folder, bool $subfolders): Collection
     {
+        $path = DB::concat(['setting_value', 'multimedia_file_refn']);
+
         $query = DB::table('media_file')
             ->join('gedcom_setting', 'gedcom_id', '=', 'm_file')
             ->where('setting_name', '=', 'MEDIA_DIRECTORY')
-            //->where('multimedia_file_refn', 'LIKE', '%/%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->where(new Expression('setting_value || multimedia_file_refn'), 'LIKE', $media_folder . '%');
+            ->where(new Expression($path), 'LIKE', $media_folder . '%');
 
         if (!$subfolders) {
-            $query->where(new Expression('setting_value || multimedia_file_refn'), 'NOT LIKE', $media_folder . '%/%');
+            $query->where(new Expression($path), 'NOT LIKE', $media_folder . '%/%');
         }
 
         return $query
-            ->orderBy(new Expression('setting_value || multimedia_file_refn'))
-            ->pluck(new Expression('setting_value || multimedia_file_refn AS path'));
+            ->orderBy(new Expression($path))
+            ->pluck(new Expression($path . ' AS value'));
     }
 
     /**
@@ -352,6 +321,7 @@ class MediaFileService
      */
     public function allMediaFolders(FilesystemOperator $data_filesystem): Collection
     {
+        /** Issue #5114 - columns containing '||' get a trailing space added by MySQL.  The alias is a workaround */
         $db_folders = DB::table('media_file')
             ->leftJoin('gedcom_setting', static function (JoinClause $join): void {
                 $join
@@ -360,7 +330,7 @@ class MediaFileService
             })
             ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->pluck(new Expression("COALESCE(setting_value, 'media/') || multimedia_file_refn AS path"))
+            ->pluck(new Expression("COALESCE(setting_value, 'media/') || multimedia_file_refn AS value"))
             ->map(static fn (string $path): string => dirname($path) . '/');
 
         $media_roots = DB::table('gedcom')
@@ -370,7 +340,7 @@ class MediaFileService
                     ->where('setting_name', '=', 'MEDIA_DIRECTORY');
             })
             ->where('gedcom.gedcom_id', '>', '0')
-            ->pluck(new Expression("COALESCE(setting_value, 'media/') AS path"))
+            ->pluck(new Expression("COALESCE(setting_value, 'media/') AS value"))
             ->uniqueStrict();
 
         $disk_folders = new Collection($media_roots);

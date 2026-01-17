@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +25,7 @@ use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
@@ -39,10 +40,7 @@ use function explode;
 use function implode;
 use function preg_replace_callback;
 
-/**
- * Find pending changes.
- */
-class PendingChangesLogData implements RequestHandlerInterface
+final class PendingChangesLogData implements RequestHandlerInterface
 {
     private DatatablesService $datatables_service;
 
@@ -65,11 +63,6 @@ class PendingChangesLogData implements RequestHandlerInterface
         $this->pending_changes_service = $pending_changes_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree           = Validator::attributes($request)->tree();
@@ -109,14 +102,18 @@ class PendingChangesLogData implements RequestHandlerInterface
                 $row->change_id,
                 $change_time,
                 I18N::translate($row->status),
-                $record ? '<a href="' . e($record->url()) . '">' . $record->xref() . '</a>' : $row->xref,
+                $record instanceof GedcomRecord ?
+                    '<a href="' . e($record->url()) . '" title="' . e(strip_tags($record->fullName())) . '">' . e($record->xref()) . '</a>' :
+                    e($row->xref),
                 '<div class="gedcom-data" dir="ltr">' .
                 preg_replace_callback(
                     '/@(' . Gedcom::REGEX_XREF . ')@/',
                     static function (array $match) use ($tree): string {
                         $record = Registry::gedcomRecordFactory()->make($match[1], $tree);
 
-                        return $record ? '<a href="' . e($record->url()) . '">' . $match[0] . '</a>' : $match[0];
+                        return $record instanceof GedcomRecord ?
+                            '<a href="' . e($record->url()) . '" title="' . e(strip_tags($record->fullName())) . '">' . e($match[0]) . '</a>' :
+                            '@<span class="text-bg-danger">' . e($match[1]) . '</span>@';
                     },
                     implode("\n", $diff_lines)
                 ) .

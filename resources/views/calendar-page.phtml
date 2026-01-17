@@ -110,7 +110,7 @@ use Fisharebest\Webtrees\Tree;
         </th>
 
         <td class="wt-page-options-value">
-            <?php if (!$tree->getPreference('HIDE_LIVE_PEOPLE') || Auth::check()) : ?>
+            <?php if ($tree->getPreference('HIDE_LIVE_PEOPLE') !== '1' || Auth::check()) : ?>
             <form method="post" action="<?= e(route(CalendarAction::class, ['tree' => $tree->name(), 'view' => $view])) ?>" class="d-inline">
                 <input type="hidden" name="cal" value="<?= e($cal) ?>">
                 <input type="hidden" name="day" value="<?= e($cal_date->day()) ?>">
@@ -231,13 +231,14 @@ use Fisharebest\Webtrees\Tree;
         </td>
         <td class="wt-page-options-value text-center">
             <?php
-                $n = 0;
+                $separator = false;
             foreach (Registry::calendarDateFactory()->supportedCalendars() as $newcal => $cal_name) {
                 $tmp = $cal_date->convertToCalendar($newcal);
                 if ($tmp->inValidRange()) {
-                    if ($n++) {
+                    if ($separator) {
                         echo ' | ';
                     }
+                    $separator = true;
                     echo '<a ' . (get_class($tmp) === get_class($cal_date) ? 'class="error"' : '') . ' href="' . e(route(CalendarPage::class, ['cal' => $tmp->format('%@'), 'day' => $tmp->day(), 'month' => $tmp->format('%O'), 'year' => $tmp->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => $view, 'tree' => $tree->name()])) . '" rel="nofollow">', $cal_name, '</a>';
                 }
             } ?>

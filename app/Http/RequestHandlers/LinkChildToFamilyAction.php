@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,7 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -29,16 +33,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
 
-/**
- * Link an existing individual as child in an existing family.
- */
-class LinkChildToFamilyAction implements RequestHandlerInterface
+final class LinkChildToFamilyAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = Validator::attributes($request)->tree();
@@ -78,7 +74,11 @@ class LinkChildToFamilyAction implements RequestHandlerInterface
                 break;
         }
 
-        $individual->updateFact($fact_id, $gedcom, true);
+        if ($fact_id === '') {
+            $individual->createFact($gedcom, true);
+        } else {
+            $individual->updateFact($fact_id, $gedcom, true);
+        }
 
         // Only set the family->child link if it does not already exist
         $chil_link_exists = false;
@@ -90,9 +90,21 @@ class LinkChildToFamilyAction implements RequestHandlerInterface
         }
 
         if (!$chil_link_exists) {
-            $family->createFact('1 CHIL @' . $individual->xref() . '@', true);
+            $before = $this->childFactOfYoungerSibling($family, $individual);
+            $family->createFact('1 CHIL @' . $individual->xref() . '@', true, $before);
         }
 
         return redirect($individual->url());
+    }
+
+    private function childFactOfYoungerSibling(Family $family, Individual $child): Fact | null
+    {
+        $filter = function (Fact $fact) use ($child): bool {
+            return $fact->target() instanceof Individual &&
+                Date::compare($child->getBirthDate(), $fact->target()->getBirthDate()) < 0;
+        };
+        return $family
+            ->facts(['CHIL'], false, Auth::PRIV_HIDE, true)
+            ->first($filter);
     }
 }

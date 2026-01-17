@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,12 +33,12 @@ class CensusColumnReligionTest extends TestCase
     {
         $individual = $this->createMock(Individual::class);
         $individual
-            ->expects(self::exactly(2))
+            ->expects($this->exactly(2))
             ->method('facts')
             ->with(self::withConsecutive([['RELI'], []]))
             ->willReturnOnConsecutiveCalls(new Collection(), new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnReligion($census, '', '');
 
@@ -47,12 +47,12 @@ class CensusColumnReligionTest extends TestCase
 
     public function testRecordReligion(): void
     {
-        $individual = $this->createMock(Individual::class);
-        $fact       = $this->createMock(Fact::class);
+        $individual = self::createStub(Individual::class);
+        $fact       = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Jedi');
         $individual->method('facts')->with(['RELI'])->willReturn(new Collection([$fact]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnReligion($census, '', '');
 
@@ -62,10 +62,10 @@ class CensusColumnReligionTest extends TestCase
     public function testEventReligion(): void
     {
         $individual = $this->createMock(Individual::class);
-        $fact       = $this->createMock(Fact::class);
+        $fact       = self::createStub(Fact::class);
         $fact->method('attribute')->with('RELI')->willReturn('Jedi');
         $individual
-            ->expects(self::exactly(2))
+            ->expects($this->exactly(2))
             ->method('facts')
             ->with(self::withConsecutive([['RELI'], []]))
             ->willReturnOnConsecutiveCalls(
@@ -73,7 +73,7 @@ class CensusColumnReligionTest extends TestCase
                 new Collection([$fact])
             );
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnReligion($census, '', '');
 

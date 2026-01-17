@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,16 +37,32 @@ use function uasort;
 /**
  * The colors theme.
  */
-class ColorsTheme extends CloudsTheme
+class ColorsTheme extends CloudsTheme implements ModuleGlobalInterface
 {
+    use ModuleGlobalTrait;
+
     // If no valid palette has been selected, use this one.
     private const string DEFAULT_PALETTE = 'ash';
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
+    private const CSS = [
+        'aquamarine'       => ':root{--color-1:#007e94;--color-2:#085360;--color-3:#00a9c7;--color-4:#dcf2f9;--color-5:#ffffff;--color-6:#ffffff;}',
+        'ash'              => ':root{--color-1:#5d6779;--color-2:#2a2b2d;--color-3:#9da5b4;--color-4:#ededee;--color-5:#ffffff;--color-6:#ffffff;}',
+        'belgianchocolate' => ':root{--color-1:#971702;--color-2:#311900;--color-3:#af2604;--color-4:#f6edd5;--color-5:#ffffff;--color-6:#ffffff;}',
+        'bluelagoon'       => ':root{--color-1:#5ab5ee;--color-2:#2385c2;--color-3:#5ab5ee;--color-4:#e6f5ff;--color-5:#ffffff;--color-6:#ffffff;}',
+        'bluemarine'       => ':root{--color-1:#6598cb;--color-2:#98badd;--color-3:#6598cb;--color-4:#e0e7ff;--color-5:#ffffff;--color-6:#ffffff;}',
+        'coffeeandcream'   => ':root{--color-1:#d4c7a7;--color-2:#93724f;--color-3:#93724f;--color-4:#f4ead1;--color-5:#553e2f;--color-6:#ffffff;}',
+        'coldday'          => ':root{--color-1:#1a1575;--color-2:#4d91ff;--color-3:#5997e3;--color-4:#e6e1ff;--color-5:#ffffff;--color-6:#ffffff;}',
+        'greenbeam'        => ':root{--color-1:#03961e;--color-2:#7be000;--color-3:#04af23;--color-4:#e6ffc7;--color-5:#ffffff;--color-6:#ffffff;}',
+        'mediterranio'     => ':root{--color-1:#a30f42;--color-2:#fc6d1d;--color-3:#d23014;--color-4:#fef9dc;--color-5:#ffffff;--color-6:#ffffff;}',
+        'mercury'          => ':root{--color-1:#d4d4d4;--color-2:#a9adbc;--color-3:#c6c8d2;--color-4:#f0f2f5;--color-5:#707070;--color-6:#707070;}',
+        'nocturnal'        => ':root{--color-1:#0a2352;--color-2:#9fa8d5;--color-3:#6a78be;--color-4:#e0e1f0;--color-5:#ffffff;--color-6:#ffffff;}',
+        'olivia'           => ':root{--color-1:#7db323;--color-2:#b5d52a;--color-3:#7db323;--color-4:#eef9dc;--color-5:#ffffff;--color-6:#ffffff;}',
+        'pinkplastic'      => ':root{--color-1:#f41063;--color-2:#f391c6;--color-3:#f75993;--color-4:#fbdaed;--color-5:#ffffff;--color-6:#ffffff;}',
+        'sage'             => ':root{--color-1:#767647;--color-2:#ccccaa;--color-3:#ccccaa;--color-4:#eeeedd;--color-5:#ffffff;--color-6:#333333;}',
+        'shinytomato'      => ':root{--color-1:#f21107;--color-2:#a1443a;--color-3:#f96058;--color-4:#f0eaf0;--color-5:#ffffff;--color-6:#ffffff;}',
+        'tealtop'          => ':root{--color-1:#34775a;--color-2:#52bf90;--color-3:#51b389;--color-4:#d2f4e6;--color-5:#ffffff;--color-6:#ffffff;}',
+    ];
+
     public function title(): string
     {
         /* I18N: Name of a theme. */
@@ -106,8 +122,12 @@ class ColorsTheme extends CloudsTheme
     {
         return [
             asset('css/colors.min.css'),
-            asset('css/colors/' . $this->palette() . '.min.css'),
         ];
+    }
+
+    public function headContent(): string
+    {
+        return '<style>' . self::CSS[$this->palette()] . '</style>';
     }
 
     /**

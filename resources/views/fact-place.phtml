@@ -25,8 +25,8 @@ use Fisharebest\Webtrees\Services\ModuleService;
         <?= $fact->place()->fullName($fact->id() !== 'histo') ?>
 
         <?php if (preg_match_all('/\n3 (?:_HEB|ROMN|FONE) (.+)/', $placerec, $matches) === 1) : ?>
-            <?php foreach ($matches[1] as $match) : ?>
-                — <?= (new Place($match, $record->tree()))->fullName() ?>
+            <?php foreach ($matches[1] as $match_place) : ?>
+                — <?= (new Place($match_place, $record->tree()))->fullName() ?>
             <?php endforeach ?>
         <?php endif ?>
 
@@ -39,8 +39,8 @@ use Fisharebest\Webtrees\Services\ModuleService;
         <?php endif ?>
 
         <?php if (preg_match_all('/\n(3 NOTE\b.*(?:\n[^3].*)*)/', $placerec, $matches, PREG_SET_ORDER) > 0) : ?>
-            <?php foreach ($matches as $match) : ?>
-                <?= view('fact-gedcom-fields', ['gedcom' => $match[1], 'parent' => $fact->tag() . ':PLAC:NOTE', 'tree' => $record->tree()]) ?>
+            <?php foreach ($matches as $match_note) : ?>
+                <?= view('fact-gedcom-fields', ['gedcom' => $match_note[1], 'parent' => $fact->tag() . ':PLAC:NOTE', 'tree' => $record->tree()]) ?>
             <?php endforeach ?>
         <?php endif ?>
     <?php endif ?>

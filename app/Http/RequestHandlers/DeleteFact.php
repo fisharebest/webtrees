@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,18 +28,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Controller for edit forms and responses.
- */
-class DeleteFact implements RequestHandlerInterface
+final class DeleteFact implements RequestHandlerInterface
 {
-    /**
-     * Delete a fact.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();

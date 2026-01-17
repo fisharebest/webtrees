@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,16 +36,16 @@ class EmailServiceTest extends TestCase
     {
         $email_service = new EmailService();
 
-        $user_from = $this->createMock(UserInterface::class);
+        $user_from = self::createStub(UserInterface::class);
         $user_from->method('email')->willReturn('user.from@example.com');
 
-        $user_from = $this->createMock(UserInterface::class);
+        $user_from = self::createStub(UserInterface::class);
         $user_from->method('email')->willReturn('user.from@example.com');
 
-        $user_to = $this->createMock(UserInterface::class);
+        $user_to = self::createStub(UserInterface::class);
         $user_to->method('email')->willReturn('user.to@example.com');
 
-        $user_reply_to = $this->createMock(UserInterface::class);
+        $user_reply_to = self::createStub(UserInterface::class);
         $user_reply_to->method('email')->willReturn('user.replyto@example.com');
 
         Site::setPreference('SMTP_ACTIVE', 'internal');

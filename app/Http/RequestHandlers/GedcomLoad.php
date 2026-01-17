@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,10 +39,7 @@ use function str_starts_with;
 use function strlen;
 use function substr;
 
-/**
- * Load a chunk of GEDCOM data.
- */
-class GedcomLoad implements RequestHandlerInterface
+final class GedcomLoad implements RequestHandlerInterface
 {
     use ViewResponseTrait;
     use DetectsConcurrencyErrors;
@@ -63,11 +60,6 @@ class GedcomLoad implements RequestHandlerInterface
         $this->timeout_service       = $timeout_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';

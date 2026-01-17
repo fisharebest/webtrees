@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,9 +40,6 @@ use function view;
 
 use const EXTR_OVERWRITE;
 
-/**
- * Class TopSurnamesModule
- */
 class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
@@ -61,11 +58,6 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
         $this->module_service = $module_service;
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module. Top=Most common */
@@ -110,7 +102,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
                 DB::binaryColumn('n_surname'),
             ]);
 
-        /** @var array<array<int>> $top_surnames */
+        /** @var array<non-empty-array<int>> $top_surnames */
         $top_surnames = [];
 
         foreach ($query->get() as $row) {

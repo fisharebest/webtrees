@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,35 +24,25 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Validator;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function is_string;
 use function method_exists;
 use function str_contains;
 use function strtolower;
 
-/**
- * Controller for module actions.
- */
-class ModuleAction implements RequestHandlerInterface
+final class ModuleAction implements RequestHandlerInterface
 {
-    private ModuleService $module_service;
-
-    /**
-     * @param ModuleService $module_service
-     */
-    public function __construct(ModuleService $module_service)
-    {
-        $this->module_service = $module_service;
+    public function __construct(
+        private readonly ModuleService $module_service,
+    ) {
     }
 
     /**
      * Perform an HTTP action for one of the modules.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
@@ -60,13 +50,21 @@ class ModuleAction implements RequestHandlerInterface
         $action      = $request->getAttribute('action');
         $user        = Validator::attributes($request)->user();
 
+        if (!is_string($module_name)) {
+            throw new InvalidArgumentException('Invalid module_name');
+        }
+
+        if (!is_string($action)) {
+            throw new InvalidArgumentException('Invalid action');
+        }
+
         // Check that the module is enabled.
         // The module itself will need to check any tree-level access,
         // which may be different for each component (tab, menu, etc.) of the module.
         $module = $this->module_service->findByName($module_name);
 
         if ($module === null) {
-            throw new HttpNotFoundException('Module ' . $module_name . ' does not exist');
+            throw new HttpNotFoundException('Module ' . e($module_name) . ' does not exist');
         }
 
         // We'll call a function such as Module::getFooBarAction()
@@ -79,7 +77,7 @@ class ModuleAction implements RequestHandlerInterface
         }
 
         if (!method_exists($module, $method)) {
-            throw new HttpNotFoundException('Method ' . $method . '() not found in ' . $module_name);
+            throw new HttpNotFoundException('Method ' . e($method) . '() not found in ' . e($module_name));
         }
 
         return $module->$method($request);

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -46,6 +46,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
+use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
@@ -62,7 +63,6 @@ use function array_search;
 use function assert;
 use function count;
 use function date;
-use function extension_loaded;
 use function in_array;
 use function is_array;
 use function is_string;
@@ -75,9 +75,6 @@ use function view;
 
 use const PREG_SET_ORDER;
 
-/**
- * Class ClippingsCartModule
- */
 class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 {
     use ModuleMenuTrait;
@@ -107,16 +104,11 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     /** @var int The default access level for this module.  It can be changed in the control panel. */
     protected int $access_level = Auth::PRIV_USER;
 
-    private GedcomExportService $gedcom_export_service;
-
-    private LinkedRecordService $linked_record_service;
-
     public function __construct(
-        GedcomExportService $gedcom_export_service,
-        LinkedRecordService $linked_record_service
+        private GedcomExportService $gedcom_export_service,
+        private LinkedRecordService $linked_record_service,
+        private PhpService $php_service,
     ) {
-        $this->gedcom_export_service = $gedcom_export_service;
-        $this->linked_record_service = $linked_record_service;
     }
 
     public function description(): string
@@ -210,7 +202,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             'module'             => $this->name(),
             'title'              => $title,
             'tree'               => $tree,
-            'zip_available'      => extension_loaded('zip'),
+            'zip_available'      => $this->php_service->extensionLoaded(extension: 'zip'),
         ]);
     }
 

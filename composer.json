@@ -1,6 +1,7 @@
 {
     "name": "fisharebest/webtrees",
     "description": "webtrees online genealogy",
+    "type": "project",
     "keywords": [
         "webtrees",
         "genealogy"
@@ -17,7 +18,6 @@
     "autoload-dev": {
         "classmap": [
             "tests/TestCase.php",
-            "tests/MockGlobalFunctions.php",
             "tests/app/Elements/AbstractElementTestCase.php"
         ]
     },
@@ -26,10 +26,13 @@
             "php": "8.3.0"
         },
         "sort-packages": true,
-        "process-timeout": 3600
+        "process-timeout": 3600,
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
     },
     "require": {
-        "php": "8.3 - 8.4",
+        "php": "8.3 - 8.6",
         "ext-ctype": "*",
         "ext-curl": "*",
         "ext-gd": "*",
@@ -41,37 +44,37 @@
         "ext-pdo": "*",
         "ext-session": "*",
         "ext-xml": "*",
-        "aura/router": "3.3.0",
-        "ezyang/htmlpurifier": "4.18.0",
+        "aura/router": "3.4.2",
+        "ezyang/htmlpurifier": "4.19.0",
         "fig/http-message-util": "1.1.5",
         "fisharebest/algorithm": "1.6.0",
         "fisharebest/ext-calendar": "2.6.0",
         "fisharebest/localization": "1.17.0",
-        "guzzlehttp/guzzle": "7.9.2",
-        "illuminate/database": "11.36.1",
-        "illuminate/support": "11.36.1",
-        "intervention/image": "3.10.0",
-        "league/commonmark": "2.6.0",
-        "league/flysystem": "3.29.1",
+        "guzzlehttp/guzzle": "7.10.0",
+        "illuminate/database": "12.46.0",
+        "illuminate/support": "12.46.0",
+        "intervention/image": "3.11.6",
+        "league/commonmark": "2.8.0",
+        "league/flysystem": "3.30.2",
         "league/flysystem-path-prefixing": "3.28.0",
         "league/flysystem-ziparchive": "3.29.0",
-        "middlewares/client-ip": "2.0.1",
-        "mlocati/ip-lib": "1.18.1",
-        "nesbot/carbon": "3.8.3",
+        "middlewares/client-ip": "2.1.0",
+        "mlocati/ip-lib": "1.22.0",
+        "nesbot/carbon": "3.11.0",
         "nyholm/psr7": "1.8.2",
         "nyholm/psr7-server": "1.1.0",
         "psr/cache": "3.0.0",
-        "psr/http-message": "1.1",
+        "psr/http-message": "2.0",
         "psr/http-server-handler": "1.0.2",
         "psr/http-server-middleware": "1.0.2",
-        "ramsey/uuid": "4.7.6",
-        "sabre/vobject": "4.5.6",
-        "symfony/cache": "7.2.1",
-        "symfony/console": "7.2.1",
-        "symfony/expression-language": "7.2.0",
-        "symfony/mailer": "7.2.0",
-        "symfony/polyfill-mbstring": "1.31.0",
-        "tecnickcom/tcpdf": "6.8.0"
+        "ramsey/uuid": "4.9.2",
+        "sabre/vobject": "4.5.8",
+        "symfony/cache": "7.4.3",
+        "symfony/console": "7.4.3",
+        "symfony/expression-language": "7.4.0",
+        "symfony/mailer": "7.4.3",
+        "symfony/polyfill-mbstring": "1.33.0",
+        "tecnickcom/tcpdf": "6.10.1"
     },
     "require-dev": {
         "ext-dom": "*",
@@ -79,8 +82,14 @@
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
         "league/flysystem-memory": "3.29.0",
-        "php-coveralls/php-coveralls": "2.7.0",
-        "phpunit/phpunit": "11.5.2"
+        "php-coveralls/php-coveralls": "2.9.1",
+        "phpstan/extension-installer": "1.4.3",
+        "phpstan/phpstan": "2.1.33",
+        "phpstan/phpstan-deprecation-rules": "2.0.3",
+        "phpstan/phpstan-phpunit": "2.0.11",
+        "phpstan/phpstan-strict-rules": "2.0.7",
+        "phpunit/phpunit": "12.5.4",
+        "squizlabs/php_codesniffer": "4.0.1"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
@@ -97,56 +106,26 @@
             "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
             "@composer install --no-dev --quiet",
             "cp -r vendor/ webtrees/vendor/",
+            "echo 'Workaround for orphaned file from Laravel 8 (webtrees 2.1) that breaks Laravel 11 (webtrees 2.2)'",
+            "echo \"<?php require __DIR__ . '/../../conditionable/Traits/Conditionable.php';\" > webtrees/vendor/illuminate/support/Traits/Conditionable.php",
             "php index.php compile-po-files",
             "for FILE in resources/lang/*/messages.php; do cp $FILE webtrees/$FILE; done",
             "zip --quiet --recurse-paths --move -9 webtrees-`git describe`.zip webtrees"
         ],
-        "webtrees:pre-commit-hook": [
-            "@composer webtrees:phpcs",
-            "@composer webtrees:phpstan",
-            "@composer webtrees:test"
-        ],
-        "webtrees:check": [
-            "### PHP-CODE-SNIFFER",
-            "@composer webtrees:phpcs",
-            "### PHPSTAN",
-            "@composer webtrees:phpstan",
-            "### PSALM",
-            "@composer webtrees:psalm"
-        ],
         "webtrees:phpcs": [
-            "@composer global require squizlabs/php_codesniffer=* --quiet",
-            "~/.composer/vendor/bin/phpcs --colors --extensions=php   --standard=PSR12 --exclude=Generic.Files.LineLength index.php app tests",
-            "#~/.composer/vendor/bin/phpcs --colors --extensions=phtml --standard=PSR12 --exclude=Generic.Files.LineLength resources/views",
-            "~/.composer/vendor/bin/phpcs --colors --extensions=css resources/css"
+            "vendor/bin/phpcs --colors --exclude=Generic.Files.LineLength index.php app tests"
         ],
         "webtrees:phpstan": [
-            "@composer global require --quiet phpstan/phpstan=* phpstan/extension-installer=* phpstan/phpstan-deprecation-rules=* phpstan/phpstan-strict-rules=* phpstan/phpstan-phpunit=*",
-            "@composer install --quiet",
-            "~/.composer/vendor/bin/phpstan analyze -v --memory-limit=-1",
-            "@composer install --no-dev --quiet"
+            "vendor/bin/phpstan analyze -v --memory-limit=-1"
         ],
         "webtrees:phpstan-baseline": [
-            "@composer global require --quiet phpstan/phpstan=* phpstan/extension-installer=* phpstan/phpstan-deprecation-rules=* phpstan/phpstan-strict-rules=* phpstan/phpstan-phpunit=*",
-            "@composer install --quiet",
-            "~/.composer/vendor/bin/phpstan analyze --memory-limit=-1 --generate-baseline=phpstan-baseline.neon",
-            "@composer install --no-dev --quiet"
-        ],
-        "webtrees:psalm": [
-            "@composer global require --quiet vimeo/psalm",
-            "@composer install --quiet",
-            "~/.composer/vendor/bin/psalm --threads=8 --php-version=8.1",
-            "@composer install --no-dev --quiet"
+            "vendor/bin/phpstan analyze --memory-limit=-1 --generate-baseline=phpstan-baseline.neon"
         ],
         "webtrees:test": [
-            "@composer install --quiet",
-            "@php vendor/bin/phpunit",
-            "@composer install --no-dev --quiet"
+            "vendor/bin/phpunit"
         ],
         "webtrees:coverage": [
-            "@composer install --dev --quiet",
-            "vendor/bin/phpunit --coverage-html=tests/coverage",
-            "@composer install --no-dev --quiet"
+            "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html=tests/coverage"
         ],
         "webtrees:po": [
             "sed -i.bak -e 's/\\(I18N::[^)]*[)]\\)/<?php echo \\1; ?>/g' resources/xml/reports/*.xml",
@@ -169,9 +148,7 @@
     },
     "scripts-descriptions": {
         "webtrees:build": "Create a distribution file (webtrees.zip)",
-        "webtrees:check": "Run various static analysis tools",
         "webtrees:coverage": "Generate test coverage report",
-        "webtrees:lang": "Compile the language files (messages.php)",
         "webtrees:po": "Update the language (webtrees.pot, *.po)"
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,10 +31,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use function preg_match_all;
 use function preg_quote;
 
-/**
- * Autocomplete handler for source citations
- */
-class AutoCompleteCitation extends AbstractAutocompleteHandler
+final class AutoCompleteCitation extends AbstractAutocompleteHandler
 {
     /**
      * @param ServerRequestInterface $request

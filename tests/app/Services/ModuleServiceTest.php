@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -78,9 +78,6 @@ class ModuleServiceTest extends TestCase
         self::assertNotEmpty($module_service->findByInterface(ModuleSidebarInterface::class, true)->all());
         self::assertNotEmpty($module_service->findByInterface(ModuleTabInterface::class, true)->all());
         self::assertNotEmpty($module_service->findByInterface(ModuleThemeInterface::class, true)->all());
-
-        // Search for an invalid module type
-        self::assertEmpty($module_service->findByInterface('not-a-valid-class-or-interface')->all());
     }
 
     public function testOtherModules(): void

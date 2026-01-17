@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,22 +21,29 @@ namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\TreeService;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use ZipArchive;
 
 use function addcslashes;
+use function filesize;
 use function stream_get_contents;
 
-class TreeExport extends Command
+final class TreeExport extends AbstractCommand
 {
+    private const array ACCESS_LEVELS = [
+        'none'    => Auth::PRIV_HIDE,
+        'manager' => Auth::PRIV_NONE,
+        'member'  => Auth::PRIV_USER,
+        'visitor' => Auth::PRIV_PRIVATE,
+    ];
+
     public function __construct(
         private readonly GedcomExportService $gedcom_export_service,
         private readonly TreeService $tree_service,
@@ -49,8 +56,8 @@ class TreeExport extends Command
         $this
             ->setName(name: 'tree-export')
             ->addArgument(name: 'tree_name', mode: InputArgument::REQUIRED, description: 'The name of the tree', suggestedValues: self::autoCompleteTreeName(...))
-            ->addOption(name: 'format', shortcut: null, mode: InputOption::VALUE_REQUIRED, description: 'Export format')
-            ->addOption(name: 'filename', shortcut: null, mode: InputOption::VALUE_REQUIRED, description: 'Export filename')
+            ->addOption(name: 'format', mode: InputOption::VALUE_REQUIRED, description: 'Export format: gedcom (default), gedzip, zip or zipmedia')
+            ->addOption(name: 'privacy', mode: InputOption::VALUE_REQUIRED, description: 'Apply privacy: none (default), manager, member or visitor')
             ->setDescription(description: 'Export a tree to a GEDCOM file');
     }
 
@@ -69,33 +76,110 @@ class TreeExport extends Command
     {
         $io = new SymfonyStyle(input: $input, output: $output);
 
-        $tree_name = $input->getArgument(name: 'tree_name');
-        $format   = $input->getOption(name: 'format');
-        $filename = $input->getOption(name: 'filename');
+        $tree_name = $this->stringArgument(input: $input, name: 'tree_name');
+        $format    = $this->stringOption(input: $input, name: 'format');
+        $privacy   = $this->stringOption(input: $input, name: 'privacy');
+
+        if ($format === '') {
+            $format = 'gedcom';
+        }
+
+        if ($privacy === '') {
+            $privacy = 'none';
+        }
+
+        $access_level = self::ACCESS_LEVELS[$privacy] ?? null;
+
+        if ($access_level === null) {
+            $io->error(message: 'privacy option should be none, manager, member or visitor');
+
+            return self::FAILURE;
+        }
 
         $tree = $this->tree_service->all()[$tree_name] ?? null;
 
         if ($tree === null) {
             $io->error(message: 'Tree "' . $tree_name . '" not found.');
 
-            return Command::FAILURE;
+            return self::FAILURE;
         }
 
-        $stream = $this->gedcom_export_service->export(
+        $start_time = microtime(true);
+
+        switch ($format) {
+            case 'gedcom':
+                $media_path     = null;
+                $filename       = $tree_name . '.ged';
+                $zip_filesystem = null;
+                break;
+
+            case 'gedzip':
+                $media_path     = '';
+                $filename       = $tree_name . '.gdz';
+                $zip_filesystem = new ZipArchive();
+                $zip_filesystem->open($filename, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+                break;
+
+            case 'zip':
+                $media_path     = null;
+                $filename       = $tree_name . '.zip';
+                $zip_filesystem = new ZipArchive();
+                $zip_filesystem->open($filename, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+                break;
+
+            case 'zipmedia':
+                $media_path     = $tree->getPreference('MEDIA_DIRECTORY');
+                $filename       = $tree_name . '.zip';
+                $zip_filesystem = new ZipArchive();
+                $zip_filesystem->open($filename, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+                break;
+
+            default:
+                $io->error(message: 'Format option should be gedcom, gedzip, zip or zipmedia');
+
+                return self::FAILURE;
+        }
+
+        $resource = $this->gedcom_export_service->export(
             tree: $tree,
-            sort_by_xref: false,
-            encoding: UTF8::NAME,
-            access_level: Auth::PRIV_HIDE,
-            line_endings: 'CRLF',
-            records: null,
-            zip_filesystem: null,
-            media_path: null,
+            sort_by_xref: true,
+            access_level: $access_level,
+            zip_filesystem: $zip_filesystem,
+            media_path: $media_path,
         );
 
-        echo stream_get_contents($stream);
+        $gedcom = stream_get_contents($resource);
+        fclose($resource);
 
-        $io->success('File exported successfully.');
+        if ($gedcom === false) {
+            $io->error(message: 'Failed to read GEDCOM');
 
-        return Command::SUCCESS;
+            return self::FAILURE;
+        }
+
+        switch ($format) {
+            case 'gedcom':
+                file_put_contents($filename, $gedcom);
+                break;
+
+            case 'gedzip':
+                $zip_filesystem->addFromString('gedcom.ged', $gedcom);
+                $zip_filesystem->close();
+                break;
+
+            case 'zip':
+            case 'zipmedia':
+                $zip_filesystem->addFromString($tree_name . '.ged', $gedcom);
+                $zip_filesystem->close();
+                break;
+        }
+
+        $bytes = filesize($filename);
+        $seconds = microtime(true) - $start_time;
+        $message = sprintf('File exported successfully.  %d bytes written to %s in %.3f seconds', $bytes, $filename, $seconds);
+
+        $io->success($message);
+
+        return self::SUCCESS;
     }
 }

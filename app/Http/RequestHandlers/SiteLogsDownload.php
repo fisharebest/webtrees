@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,26 +28,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function str_replace;
 
-/**
- * Download logs.
- */
-class SiteLogsDownload implements RequestHandlerInterface
+final class SiteLogsDownload implements RequestHandlerInterface
 {
-    private SiteLogsService $site_logs_service;
-
-    /**
-     * @param SiteLogsService $site_logs_service
-     */
-    public function __construct(SiteLogsService $site_logs_service)
-    {
-        $this->site_logs_service = $site_logs_service;
+    public function __construct(
+        private readonly SiteLogsService $site_logs_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $content = $this->site_logs_service->logsQuery($request)

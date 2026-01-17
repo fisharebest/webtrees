@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,10 +43,7 @@ use function get_class;
 use function in_array;
 use function redirect;
 
-/**
- * Display non-standard genealogy records.
- */
-class GedcomRecordPage implements RequestHandlerInterface
+final class GedcomRecordPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -64,27 +61,12 @@ class GedcomRecordPage implements RequestHandlerInterface
         Submitter::class,
     ];
 
-    private ClipboardService $clipboard_service;
-
-    private LinkedRecordService $linked_record_service;
-
-    /**
-     * @param ClipboardService $clipboard_service
-     * @param LinkedRecordService $linked_record_service
-     */
-    public function __construct(ClipboardService $clipboard_service, LinkedRecordService $linked_record_service)
-    {
-        $this->clipboard_service     = $clipboard_service;
-        $this->linked_record_service = $linked_record_service;
+    public function __construct(
+        private readonly ClipboardService $clipboard_service,
+        private readonly LinkedRecordService $linked_record_service,
+    ) {
     }
 
-    /**
-     * Show a gedcom record's page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();

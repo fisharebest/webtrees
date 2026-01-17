@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,13 +25,18 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(PafUid::class)]
 class PafUidTest extends AbstractElementTestCase
 {
-    /**
-     * Standard tests for all elements.
-     */
-    public static function setupBeforeClass(): void
+    public function setUp(): void
     {
-        parent::setUpBeforeClass();
+        parent::setUp();
 
         self::$element = new PafUid('label');
+    }
+
+    public function testCanonical(): void
+    {
+        self::assertSame(
+            'FEF44CA3CA7543ED9A05F005913152746CA8',
+            self::$element->canonical('fef44CA3CA7543ED9A05F005913152740000'),
+        );
     }
 }

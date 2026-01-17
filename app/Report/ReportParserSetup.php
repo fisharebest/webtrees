@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,10 +30,22 @@ use function strtoupper;
  */
 class ReportParserSetup extends ReportParserBase
 {
-    /** @var array<string,string|array<string>> An array of report options/parameters */
-    private array $data = [];
+    /**
+     * @var array{
+     *     title:string,
+     *     description:string,
+     *     inputs:array<array{name:string,type:string,lookup:string,options:string,default:string,value:string}>
+     * }
+     */
+    private array $data = [
+        'description' => '',
+        'title'       => '',
+        'inputs'      => [],
+    ];
 
-    /** @var array<string> An array of input attributes */
+    /**
+     * @var array{name:string,type:string,lookup:string,options:string,default:string,value:string} An array of input attributes
+     */
     private array $input;
 
     /**

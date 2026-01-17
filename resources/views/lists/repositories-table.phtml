@@ -11,6 +11,7 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
 /**
+ * @var string|null                $caption
  * @var Collection<int,Repository> $repositories
  * @var Tree                       $tree
  */
@@ -30,11 +31,12 @@ $count_sources = DB::table('sources')
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
     ->pluck(new Expression('COUNT(*) AS total'), 'l_to')
-    ->map(static fn ($n) => (int) $n)
+    ->map(static fn (string $n): int => (int) $n)
     ->all();
 ?>
 
 <table
+    id="wt-datatables-repositories"
     class="table table-bordered table-sm wt-table-repository datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([

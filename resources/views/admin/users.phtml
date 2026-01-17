@@ -18,8 +18,17 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<table class="table table-sm table-bordered table-user-list"
+<table
+    id="wt-datatables-admin-users"
+    class="table table-sm table-bordered table-user-list datatables"
     <?= view('lists/datatables-attributes') ?>
+    data-processing="true"
+    data-server-side="true"
+    data-ajax='{"url":"<?= e(route(UserListData::class)) ?>"}'
+    data-auto-width="false"
+    data-sorting='[[2,"asc"]]'
+    data-search='{"search":"<?= e($filter) ?>"}'
+    data-columns='[{"sortable":false},{"visible":false},{},{},{},{},{"visible":false},{"dataSort":6},{"visible":false},{"dataSort":8},{},{}]'
 >
     <thead>
         <tr>
@@ -40,31 +49,3 @@ use Fisharebest\Webtrees\View;
     <tbody>
     </tbody>
 </table>
-
-<?php View::push('javascript') ?>
-<script>
-  $(".table-user-list").dataTable({
-    processing:          true,
-    serverSide:          true,
-    ajax:                {
-      url: "<?= e(route(UserListData::class)) ?>"
-    },
-    autoWidth:           false,
-    sorting:             [[2, "asc"]],
-    columns:             [
-      /* details           */ {sortable: false},
-      /* user-id           */ {visible: false},
-      /* user_name         */ null,
-      /* real_name         */ null,
-      /* email             */ null,
-      /* language          */ null,
-      /* registered (sort) */ {visible: false},
-      /* registered        */ {dataSort: 6},
-      /* last_login (sort) */ {visible: false},
-      /* last_login        */ {dataSort: 8},
-      /* verified          */ null,
-      /* approved          */ null
-    ]
-  }).fnFilter("<?= e($filter) ?>"); // Pre-fill the search box
-</script>
-<?php View::endpush() ?>

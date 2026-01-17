@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\MaintenanceModeService;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -29,19 +30,18 @@ use Psr\Http\Server\RequestHandlerInterface;
 /**
  * Middleware to check whether the site is offline.
  */
-class CheckForMaintenanceMode implements MiddlewareInterface, StatusCodeInterface
+readonly class CheckForMaintenanceMode implements MiddlewareInterface, StatusCodeInterface
 {
-    /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
-     */
+    public function __construct(
+        private MaintenanceModeService $maintenance_mode_service,
+    ) {
+    }
+
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if (file_exists(Webtrees::OFFLINE_FILE) && !is_dir(Webtrees::OFFLINE_FILE)) {
+        if ($this->maintenance_mode_service->isOffline()) {
             $html = view('layouts/offline', [
-                'message' => file_get_contents(Webtrees::OFFLINE_FILE),
+                'message' => $this->maintenance_mode_service->message(),
                 'url'     => (string) $request->getUri(),
             ]);
 

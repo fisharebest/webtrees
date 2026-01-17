@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -542,7 +542,10 @@ class Fact
             // Fact date
             $date = $this->date();
             if ($date->isOK()) {
-                if ($this->record instanceof Individual && in_array($this->tag, Gedcom::BIRTH_EVENTS, true) && $this->record->tree()->getPreference('SHOW_PARENTS_AGE')) {
+                if (
+                    $this->record instanceof Individual && in_array($this->tag, Gedcom::BIRTH_EVENTS, true) &&
+                    $this->record->tree()->getPreference('SHOW_PARENTS_AGE') === '1'
+                ) {
                     $attributes[] = $date->display() . view('fact-parents-age', ['individual' => $this->record, 'birth_date' => $date]);
                 } else {
                     $attributes[] = $date->display();

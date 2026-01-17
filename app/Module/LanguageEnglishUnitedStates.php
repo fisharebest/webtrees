@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,9 +27,6 @@ use function abs;
 use function min;
 use function str_repeat;
 
-/**
- * Class LanguageEnglishUnitedStates.
- */
 class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
@@ -107,19 +104,11 @@ class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLangua
         1  => ' ascending',
     ];
 
-    /**
-     * One of: 'DMY', 'MDY', 'YMD'.
-     *
-     * @return string
-     */
     public function dateOrder(): string
     {
         return 'MDY';
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleEnUs();

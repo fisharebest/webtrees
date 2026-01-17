@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -53,7 +53,9 @@ class IndividualListTest extends TestCase
         $this->user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, '1');
         Auth::login($this->user);
         // The default "John Doe" individual will confuse the test results...
-        Registry::individualFactory()->make('X1', $this->tree)->deleteRecord();
+        $john_doe = Registry::individualFactory()->make('X1', $this->tree);
+        self::assertInstanceOf(Individual::class, $john_doe);
+        $john_doe->deleteRecord();
     }
 
     public function testCollationOfInitials(): void

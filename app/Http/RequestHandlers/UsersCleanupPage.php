@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,28 +27,15 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Delete old/inactive users.
- */
-class UsersCleanupPage implements RequestHandlerInterface
+final class UsersCleanupPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private UserService $user_service;
-
-    /**
-     * @param UserService $user_service
-     */
-    public function __construct(UserService $user_service)
-    {
-        $this->user_service = $user_service;
+    public function __construct(
+        private readonly UserService $user_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $inactive_threshold   = Registry::timestampFactory()->now()->subtractMonths(6)->timestamp();

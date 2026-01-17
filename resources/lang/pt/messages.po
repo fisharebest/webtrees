@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-12-08 21:54+0000\n"
-"Last-Translator: DeLinuxCo <john@delinuxco.com>\n"
+"PO-Revision-Date: 2026-01-13 23:02+0000\n"
+"Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
 "Language: pt\n"
@@ -1643,7 +1643,7 @@ msgstr "Pais adotivos"
 
 #: app/Gedcom.php:623
 msgid "Adult christening"
-msgstr "Batizado adulto"
+msgstr "Batizado em adulto"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:170
 #: app/Module/SearchMenuModule.php:120
@@ -1746,7 +1746,7 @@ msgstr "Argélia"
 
 #: app/Gedcom.php:582
 msgid "Alias"
-msgstr "Apelido"
+msgstr "Nome alternativo"
 
 #: resources/views/lists/individuals-table.phtml:115
 msgid "Alive"
@@ -1823,7 +1823,7 @@ msgstr "Permitir aos visitantes solicitarem uma nova conta de utilizador"
 #: app/CustomTags/PersonalAncestralFile.php:64
 #: app/CustomTags/PersonalAncestralFile.php:65
 msgid "Also known as"
-msgstr "Também conhecido(a) como"
+msgstr "Também conhecida(o) por"
 
 #: app/CustomTags/Aldfaer.php:79
 msgid "Alternative spelling of surname"
@@ -1871,7 +1871,8 @@ msgstr "Uma forma alternativa para iniciar sessão e terminar sessão."
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:85
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr "Um diagrama em ampulheta dos antepassados e dos ascendentes de um indivídio."
+msgstr ""
+"Um diagrama em ampulheta dos antepassados e dos ascendentes de um indivíduo."
 
 #: resources/views/edit/reorder-families.phtml:75
 msgid "An individual can have more than one set of parents. For example, birth and adopted."
@@ -2174,31 +2175,31 @@ msgstr "Atlanta, Geórgia"
 
 #: app/Elements/RelationIsDescriptor.php:94
 msgid "Attendant"
-msgstr "Atendente"
+msgstr "Assistente"
 
 #: app/Elements/RelationIsDescriptor.php:73
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr "Atendente"
+msgstr "Assistente"
 
 #: app/Elements/RelationIsDescriptor.php:52
 msgctxt "MALE"
 msgid "Attendant"
-msgstr "Atendente"
+msgstr "Assistente"
 
 #: app/Elements/RelationIsDescriptor.php:95
 msgid "Attending"
-msgstr "Atendendo"
+msgstr "A assistir"
 
 #: app/Elements/RelationIsDescriptor.php:74
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr "Atender"
+msgstr "A assistir"
 
 #: app/Elements/RelationIsDescriptor.php:53
 msgctxt "MALE"
 msgid "Attending"
-msgstr "Atendendo"
+msgstr "A assistir"
 
 #. I18N: Type of media object
 #: app/CustomTags/Legacy.php:147 app/Elements/SourceMediaType.php:79
@@ -2438,7 +2439,7 @@ msgstr "Batismo de um irmão"
 
 #: app/Services/IndividualFactsService.php:204
 msgid "Baptism of a child"
-msgstr "Batismo de um filho"
+msgstr "Batismo de um(a) filho(a)"
 
 #: app/Services/IndividualFactsService.php:203
 msgid "Baptism of a daughter"
@@ -2494,11 +2495,11 @@ msgstr "Batismo de uma meia-irmã"
 
 #: app/Services/IndividualFactsService.php:227
 msgid "Baptism of a sibling"
-msgstr "Batismo de um irmão"
+msgstr "Batismo de um irmão / uma irmã"
 
 #: app/Services/IndividualFactsService.php:226
 msgid "Baptism of a sister"
-msgstr "Batismo da irmã"
+msgstr "Batismo de uma irmã"
 
 #: app/Services/IndividualFactsService.php:202
 msgid "Baptism of a son"
@@ -3316,7 +3317,8 @@ msgstr "Causa do óbito"
 #: resources/views/admin/trees-merge.phtml:66
 #: resources/views/admin/trees-renumber.phtml:47
 msgid "Caution! This may take a long time. Be patient."
-msgstr "Cuidado! Isto poderá levar muito tempo. Seja paciente."
+msgstr ""
+"Atenção! Esta ação poderá ser demorada. Por favor aguarde com paciência."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:153
@@ -3447,7 +3449,7 @@ msgstr "Lista de alterações"
 #: resources/views/admin/gedcom-export-options.phtml:79
 #: resources/views/admin/trees-import.phtml:82
 msgid "Character encoding"
-msgstr "Codificação de caractéres"
+msgstr "Codificação de caracteres"
 
 #: app/Gedcom.php:499
 msgid "Character set"
@@ -3611,7 +3613,7 @@ msgstr "Batizado de um irmão"
 
 #: app/Services/IndividualFactsService.php:199
 msgid "Christening of a child"
-msgstr "Batizado de um filho"
+msgstr "Batizado de um(a) filho(a)"
 
 #: app/Services/IndividualFactsService.php:198
 msgid "Christening of a daughter"
@@ -3665,7 +3667,7 @@ msgstr "Batizado de uma meia-irmã"
 
 #: app/Services/IndividualFactsService.php:222
 msgid "Christening of a sibling"
-msgstr "Batizado de um irmão"
+msgstr "Batizado de um irmão / uma irmã"
 
 #: app/Services/IndividualFactsService.php:221
 msgid "Christening of a sister"
@@ -3861,7 +3863,7 @@ msgstr "Data de conclusão"
 
 #: app/Gedcom.php:625 resources/xml/reports/missing_facts_report.xml:19
 msgid "Confirmation"
-msgstr "Confirmação"
+msgstr "Crisma / confirmação"
 
 #: resources/views/setup/step-3-database-type.phtml:38
 msgid "Connection to database server"
@@ -3983,7 +3985,7 @@ msgstr "Coordenadas"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:84
 msgid "Copenhagen, Denmark"
-msgstr "Copenhagen, Dinamarca"
+msgstr "Copenhaga, Dinamarca"
 
 #: resources/views/edit/icon-fact-copy.phtml:15
 #: resources/views/edit/icon-fact-copy.phtml:17
@@ -4167,7 +4169,7 @@ msgstr "Cremação de uma filha"
 
 #: app/Services/IndividualFactsService.php:634
 msgid "Cremation of a father"
-msgstr "Cremação do pai"
+msgstr "Cremação de um pai"
 
 #: app/Services/IndividualFactsService.php:432
 msgid "Cremation of a grandchild"
@@ -4515,7 +4517,7 @@ msgstr "Data de nascimento"
 
 #: app/Gedcom.php:606
 msgid "Date of blessing"
-msgstr "Data da Bênção"
+msgstr "Data da bênção"
 
 #: app/CustomTags/BrothersKeeper.php:95
 msgid "Date of brit milah"
@@ -4528,11 +4530,11 @@ msgstr "Data de enterro"
 
 #: app/Gedcom.php:620 resources/xml/reports/missing_facts_report.xml:170
 msgid "Date of christening"
-msgstr "Data do batismo"
+msgstr "Data do batizado"
 
 #: app/Gedcom.php:626 resources/xml/reports/missing_facts_report.xml:294
 msgid "Date of confirmation"
-msgstr "Data da confirmação"
+msgstr "Data do crisma / confirmação"
 
 #: app/Gedcom.php:635
 msgid "Date of cremation"
@@ -4566,7 +4568,7 @@ msgstr "Data do registo na fonte original"
 
 #: app/CustomTags/GedcomL.php:236 app/Gedcom.php:655
 msgid "Date of event"
-msgstr "Data do Evento"
+msgstr "Data do evento"
 
 #: app/Gedcom.php:665 resources/xml/reports/missing_facts_report.xml:378
 msgid "Date of first communion"
@@ -4833,7 +4835,7 @@ msgstr "Óbito de uma filha"
 #: app/Services/IndividualFactsService.php:624
 #: resources/views/fact-parent-age.phtml:28
 msgid "Death of a father"
-msgstr "Óbito do pai"
+msgstr "Óbito de um pai"
 
 #: app/Services/IndividualFactsService.php:386
 #: app/Services/IndividualFactsService.php:404
@@ -5348,7 +5350,7 @@ msgstr "Divórcio"
 
 #: app/Gedcom.php:455
 msgid "Divorce filed"
-msgstr "Pedido de Divórcio"
+msgstr "Pedido de divórcio"
 
 #: app/Statistics/Google/ChartDivorce.php:108
 #: resources/views/modules/statistics-chart/family-totals.phtml:70
@@ -6467,7 +6469,7 @@ msgstr "Encontrar um caracter especial"
 
 #: app/Module/RelationshipsChartModule.php:728
 msgid "Find all possible relationships"
-msgstr "Encontrar todas os parentescos possíveis"
+msgstr "Encontrar todos os parentescos possíveis"
 
 #: app/Module/RelationshipsChartModule.php:458
 msgid "Find any relationship"
@@ -6754,7 +6756,7 @@ msgstr "Sexta-feira"
 
 #: app/Elements/RelationIsDescriptor.php:106
 msgid "Friend"
-msgstr "Amigo"
+msgstr "Amigo(a)"
 
 #: app/Elements/RelationIsDescriptor.php:79
 msgctxt "FEMALE"
@@ -7080,7 +7082,7 @@ msgstr "Madrinha"
 
 #: app/Elements/RelationIsDescriptor.php:109
 msgid "Godparent"
-msgstr "Padrinho/Madrinha"
+msgstr "Padrinho / Madrinha"
 
 #: app/CustomTags/GedcomL.php:187 app/CustomTags/GedcomL.php:188
 #: app/Gedcom.php:621
@@ -7566,7 +7568,7 @@ msgstr "Idaho Falls, Idaho, Estados Unidos"
 
 #: app/Gedcom.php:669
 msgid "Identification number"
-msgstr "Número de identificação"
+msgstr "Número de identificação civil"
 
 #: resources/views/admin/tags.phtml:778
 msgid "Identifiers"
@@ -7598,7 +7600,10 @@ msgstr "Se um indivíduo tem dois sobrenomes separados, cada um deve ser envolvi
 #: resources/views/help/name.phtml:30
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Se uma pessoa era conhecida por uma alcunha que não faz parte do seu nome formal, esta deve ser colocada entre aspas. Por exemplo, <%s>John &quot;Nobby&quot; /Clark/<%s>."
+msgstr ""
+"Se uma pessoa era conhecida por um apelido que não faz parte do seu nome "
+"formal, esta deve ser colocada entre aspas. Por exemplo, <%s>John "
+"&quot;Nobby&quot; /Clark/<%s>."
 
 #: resources/views/help/name.phtml:27
 #, php-format
@@ -7744,7 +7749,7 @@ msgstr "Este Ano em nossa História…"
 
 #: resources/views/admin/trees-unconnected.phtml:30
 msgid "Include aliases"
-msgstr "Incluir aliases"
+msgstr "Incluir nomes alternativos"
 
 #: resources/views/admin/trees-unconnected.phtml:29
 msgid "Include associates"
@@ -8566,7 +8571,7 @@ msgstr "URLs antigos"
 
 #: app/CustomTags/Reunion.php:57
 msgid "Legatee"
-msgstr "Herdeiro"
+msgstr "Legatário(a) / Herdeiro(a)"
 
 #: app/CustomTags/Aldfaer.php:72
 msgid "Length"
@@ -9234,7 +9239,7 @@ msgstr "Casamentos por século"
 #: resources/xml/reports/cemetery_report.xml:7
 #: resources/xml/reports/death_report.xml:10
 msgid "Married name"
-msgstr "Nome de casada"
+msgstr "Nome de casada(o)"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:329
@@ -10592,12 +10597,12 @@ msgstr "Número de sobrenomes"
 
 #: app/Elements/RelationIsDescriptor.php:118
 msgid "Nurse"
-msgstr "Ama"
+msgstr "Enfermeiro(a)"
 
 #: app/Elements/RelationIsDescriptor.php:85
 msgctxt "FEMALE"
 msgid "Nurse"
-msgstr "Ama"
+msgstr "Enfermeira"
 
 #: app/Elements/RelationIsDescriptor.php:64
 msgctxt "MALE"
@@ -11175,7 +11180,7 @@ msgstr "Local em Hebraico"
 
 #: resources/views/modules/place-hierarchy/list.phtml:16
 msgid "Place list"
-msgstr "Lista de Local"
+msgstr "Lista de locais"
 
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: resources/views/admin/trees-preferences.phtml:574
@@ -11188,7 +11193,10 @@ msgstr "Os nomes dos lugares podem mudar ao longo do tempo. Em genealogia, é ha
 
 #: resources/views/help/place.phtml:10
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr "Os nomes dos locais devem ser introduzidos como uma lista separada por vírgulas, começando pelo local mais pequeno e terminando no país. Por exemplo, “Westminster, Londres, Inglaterra”."
+msgstr ""
+"Os nomes dos locais devem ser introduzidos como uma lista separada por "
+"vírgulas, começando pelo local mais específico e terminando no país. Por "
+"exemplo, “Westminster, Londres, Inglaterra”."
 
 #: app/Gedcom.php:588
 msgid "Place of LDS baptism"
@@ -11233,7 +11241,7 @@ msgstr "Local de nascimento"
 
 #: app/Gedcom.php:607
 msgid "Place of blessing"
-msgstr "Local da Bênção"
+msgstr "Local da bênção"
 
 #: app/CustomTags/BrothersKeeper.php:96
 msgid "Place of brit milah"
@@ -11247,11 +11255,11 @@ msgstr "Local de enterro"
 #: app/Gedcom.php:622 app/Gedcom.php:624
 #: resources/xml/reports/missing_facts_report.xml:181
 msgid "Place of christening"
-msgstr "Local do batismo"
+msgstr "Local do batizado"
 
 #: app/Gedcom.php:627 resources/xml/reports/missing_facts_report.xml:305
 msgid "Place of confirmation"
-msgstr "Local da confirmação"
+msgstr "Local do crisma / confirmação"
 
 #: app/Gedcom.php:636
 msgid "Place of cremation"
@@ -11272,7 +11280,7 @@ msgstr "Local do noivado"
 
 #: app/CustomTags/GedcomL.php:242 app/Gedcom.php:656
 msgid "Place of event"
-msgstr "Local do Evento"
+msgstr "Local do evento"
 
 #: app/Gedcom.php:666 resources/xml/reports/missing_facts_report.xml:389
 msgid "Place of first communion"
@@ -11560,7 +11568,7 @@ msgstr "Provo, Utah, Estados Unidos"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:120
 msgid "Proxy"
-msgstr "Proxy"
+msgstr "Procurador / Representante"
 
 #: app/Gedcom.php:842 resources/views/lists/sources-table.phtml:99
 #: resources/views/modals/source-fields.phtml:38
@@ -11865,7 +11873,7 @@ msgstr "Regime de bens"
 
 #: app/Elements/RelationIsDescriptor.php:123
 msgid "Registry officer"
-msgstr "Oficial de Registo"
+msgstr "Oficial de registo"
 
 #: app/Elements/RelationIsDescriptor.php:87
 msgctxt "FEMALE"
@@ -11913,7 +11921,7 @@ msgstr "Indivíduos relacionados"
 #: app/Module/BranchesListModule.php:380 app/Module/BranchesListModule.php:418
 #: resources/views/fact-association-structure.phtml:89
 msgid "Relationship"
-msgstr "Parentesco"
+msgstr "Relação"
 
 #: app/CustomTags/BrothersKeeper.php:61 app/CustomTags/FamilyTreeMaker.php:54
 #: app/CustomTags/FamilyTreeMaker.php:107 app/CustomTags/Legacy.php:61
@@ -13013,7 +13021,7 @@ msgstr "Exibir todas as notas"
 
 #: app/Module/PlaceHierarchyListModule.php:196
 msgid "Show all places in a list"
-msgstr "Exibir lista de todos os Locais"
+msgstr "Ver lista de todos os locais"
 
 #: resources/views/modules/sources_tab/tab.phtml:26
 msgid "Show all sources"
@@ -13481,7 +13489,7 @@ msgstr "Snowflake, Arizona, Estados Unidos"
 
 #: app/Gedcom.php:757
 msgid "Social security number"
-msgstr "Número da Segurança Social"
+msgstr "Número da segurança social"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:447
@@ -16243,7 +16251,7 @@ msgstr "Vietnam"
 #: resources/views/modules/place-hierarchy/page.phtml:51
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr "Ver tabela de eventos a ocorrer em %s"
+msgstr "Ver tabela de eventos ocorridos em %s"
 
 #: resources/views/calendar-page.phtml:221
 msgid "View this day"
@@ -16833,7 +16841,7 @@ msgstr "idade"
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/Elements/NameType.php:73
 msgid "also known as"
-msgstr "também conhecido(a) por"
+msgstr "também conhecida(o) por"
 
 #: app/Statistics/Repository/FamilyRepository.php:475
 #: app/Statistics/Repository/UserRepository.php:93
@@ -16852,22 +16860,22 @@ msgstr "e"
 #: app/Services/RelationshipService.php:780
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr "tia"
+msgstr "tia paterna"
 
 #: app/Services/RelationshipService.php:538
 msgctxt "father’s sister"
 msgid "aunt"
-msgstr "tia"
+msgstr "tia paterna"
 
 #: app/Services/RelationshipService.php:860
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr "tia"
+msgstr "tia materna"
 
 #: app/Services/RelationshipService.php:576
 msgctxt "mother’s sister"
 msgid "aunt"
-msgstr "tia"
+msgstr "tia materna"
 
 #: app/Services/RelationshipService.php:912
 msgctxt "parent’s brother’s wife"
@@ -17235,7 +17243,7 @@ msgstr "baixo"
 #: resources/views/report-setup-page.phtml:82
 #: resources/views/report-setup-page.phtml:95
 msgid "download"
-msgstr "descarregar"
+msgstr "Descarregar"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:19
 msgid "d’Aboville number"
@@ -17247,7 +17255,7 @@ msgstr "número de d’Aboville"
 #: resources/views/media-page-menu.phtml:28
 #: resources/views/record-page-menu.phtml:23
 msgid "edit"
-msgstr "editar"
+msgstr "Editar"
 
 #: app/Services/RelationshipService.php:2337
 msgid "eighth cousin"
@@ -17466,7 +17474,7 @@ msgstr "primo(a) de primeiro grau"
 #: app/Services/RelationshipService.php:776
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr "primo de primeiro grau"
+msgstr "prima de primeiro grau"
 
 #: app/Services/RelationshipService.php:778
 msgctxt "father’s brother’s son"
@@ -17481,7 +17489,7 @@ msgstr "primo(a) de primeiro grau"
 #: app/Services/RelationshipService.php:820
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr "primo de primeiro grau"
+msgstr "prima de primeiro grau"
 
 #: app/Services/RelationshipService.php:824
 msgctxt "father’s sister’s son"
@@ -17496,7 +17504,7 @@ msgstr "primo(a) de primeiro grau"
 #: app/Services/RelationshipService.php:856
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr "primo de primeiro grau"
+msgstr "prima de primeiro grau"
 
 #: app/Services/RelationshipService.php:858
 msgctxt "mother’s brother’s son"
@@ -17511,7 +17519,7 @@ msgstr "primo(a) de primeiro grau"
 #: app/Services/RelationshipService.php:906
 msgctxt "mother’s sister’s daughter"
 msgid "first cousin"
-msgstr "primo de primeiro grau"
+msgstr "prima de primeiro grau"
 
 #: app/Services/RelationshipService.php:910
 msgctxt "mother’s sister’s son"
@@ -19456,7 +19464,7 @@ msgstr "locais actualizados: %s, locais adicionados: %s"
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/Elements/NameType.php:83
 msgid "maiden name"
-msgstr "nome de solteira"
+msgstr "nome de solteira(o)"
 
 #: resources/views/admin/trees-privacy.phtml:127
 msgid "managers"
@@ -19480,7 +19488,7 @@ msgstr "casado"
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/Elements/NameType.php:85
 msgid "married name"
-msgstr "nome de casada"
+msgstr "nome de casada(o)"
 
 #: app/Services/RelationshipService.php:566
 msgctxt "mother’s father"
@@ -20719,22 +20727,22 @@ msgstr "irmã gémea"
 #: app/Services/RelationshipService.php:524
 msgctxt "father’s brother"
 msgid "uncle"
-msgstr "tio"
+msgstr "tio paterno"
 
 #: app/Services/RelationshipService.php:822
 msgctxt "father’s sister’s husband"
 msgid "uncle"
-msgstr "tio"
+msgstr "tio paterno"
 
 #: app/Services/RelationshipService.php:560
 msgctxt "mother’s brother"
 msgid "uncle"
-msgstr "tio"
+msgstr "tio materno"
 
 #: app/Services/RelationshipService.php:908
 msgctxt "mother’s sister’s husband"
 msgid "uncle"
-msgstr "tio"
+msgstr "tio materno"
 
 #: app/Services/RelationshipService.php:580
 msgctxt "parent’s brother"

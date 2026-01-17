@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,7 +34,7 @@ class CensusColumnMotherBirthPlaceSimpleTest extends TestCase
     {
         $placeParts = explode(', ', $place);
 
-        $placeMock = $this->createMock(Place::class);
+        $placeMock = self::createStub(Place::class);
         $placeMock->method('gedcomName')->willReturn($place);
         $placeMock->method('lastParts')->willReturn(new Collection($placeParts));
 
@@ -43,16 +43,16 @@ class CensusColumnMotherBirthPlaceSimpleTest extends TestCase
 
     public function testKnownStateAndTown(): void
     {
-        $father = $this->createMock(Individual::class);
+        $father = self::createStub(Individual::class);
         $father->method('getBirthPlace')->willReturn($this->getPlaceMock('Miami, Florida, United States'));
 
-        $family = $this->createMock(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('wife')->willReturn($father);
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('childFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusPlace')->willReturn('United States');
 
         $column = new CensusColumnMotherBirthPlaceSimple($census, '', '');

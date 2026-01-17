@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,70 +20,35 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Contracts\TimeFactoryInterface;
-use Fisharebest\Webtrees\MockGlobalFunctions;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Mock function.
- *
- * @param mixed ...$args
- *
- * @return mixed
- */
-function ini_get(...$args)
-{
-    if (TestCase::$mock_functions === null) {
-        return \ini_get(...$args);
-    }
-
-    return TestCase::$mock_functions->iniGet(...$args);
-}
-
 #[CoversClass(TimeoutService::class)]
 class TimeoutServiceTest extends TestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        self::$mock_functions = $this->createMock(MockGlobalFunctions::class);
-    }
-
-    protected function tearDown(): void
-    {
-        parent::setUp();
-
-        self::$mock_functions = null;
-    }
-
     public function testNoTimeOut(): void
     {
+        $php_service = self::createStub(PhpService::class);
+        $php_service->method('maxExecutionTime')->willReturn(0);
+
         $now = 1500000000.0;
 
-        $timeout_service = new TimeoutService($now);
-
-        self::$mock_functions
-            ->method('iniGet')
-            ->with('max_execution_time')
-            ->willReturn('0');
+        $timeout_service = new TimeoutService($php_service, $now);
 
         self::assertFalse($timeout_service->isTimeNearlyUp());
     }
 
     public function testTimeOutReached(): void
     {
+        $php_service = self::createStub(PhpService::class);
+        $php_service->method('maxExecutionTime')->willReturn(30);
+
         $now = 1500000000.0;
 
-        $timeout_service = new TimeoutService($now);
+        $timeout_service = new TimeoutService($php_service, $now);
 
-        self::$mock_functions
-            ->method('iniGet')
-            ->with('max_execution_time')
-            ->willReturn('30');
-
-        $time_factory = $this->createMock(TimeFactoryInterface::class);
+        $time_factory = self::createStub(TimeFactoryInterface::class);
         $time_factory->method('now')->willReturn($now + 60.0);
         Registry::timeFactory($time_factory);
 
@@ -92,16 +57,14 @@ class TimeoutServiceTest extends TestCase
 
     public function testTimeOutNotReached(): void
     {
+        $php_service = self::createStub(PhpService::class);
+        $php_service->method('maxExecutionTime')->willReturn(30);
+
         $now = Registry::timeFactory()->now();
 
-        $timeout_service = new TimeoutService($now);
+        $timeout_service = new TimeoutService($php_service, $now);
 
-        self::$mock_functions
-            ->method('iniGet')
-            ->with('max_execution_time')
-            ->willReturn('30');
-
-        $time_factory = $this->createMock(TimeFactoryInterface::class);
+        $time_factory = self::createStub(TimeFactoryInterface::class);
         $time_factory->method('now')->willReturn($now + 10.0);
         Registry::timeFactory($time_factory);
 
@@ -112,9 +75,9 @@ class TimeoutServiceTest extends TestCase
     {
         $now = Registry::timeFactory()->now();
 
-        $timeout_service = new TimeoutService($now);
+        $timeout_service = new TimeoutService(new PhpService(), $now);
 
-        $time_factory = $this->createMock(TimeFactoryInterface::class);
+        $time_factory = self::createStub(TimeFactoryInterface::class);
         $time_factory->method('now')->willReturn($now + 1.4);
         Registry::timeFactory($time_factory);
 
@@ -125,9 +88,9 @@ class TimeoutServiceTest extends TestCase
     {
         $now = Registry::timeFactory()->now();
 
-        $timeout_service = new TimeoutService($now);
+        $timeout_service = new TimeoutService(new PhpService(), $now);
 
-        $time_factory = $this->createMock(TimeFactoryInterface::class);
+        $time_factory = self::createStub(TimeFactoryInterface::class);
         $time_factory->method('now')->willReturn($now + 1.6);
         Registry::timeFactory($time_factory);
 

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
@@ -30,16 +33,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function in_array;
 use function redirect;
 
-/**
- * Change the members of a family.
- */
-class ChangeFamilyMembersAction implements RequestHandlerInterface
+final class ChangeFamilyMembersAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();
@@ -81,7 +76,8 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
             }
             if ($new_father instanceof Individual) {
                 // Add new FAMS link
-                $new_father->createFact('1 FAMS @' . $family->xref() . '@', true);
+                $before = $this->famsFactOfLaterMarriage($new_father, $family);
+                $new_father->createFact('1 FAMS @' . $family->xref() . '@', true, $before);
                 // Add new HUSB link
                 $family->createFact('1 HUSB @' . $new_father->xref() . '@', true);
             }
@@ -104,7 +100,8 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
             }
             if ($new_mother instanceof Individual) {
                 // Add new FAMS link
-                $new_mother->createFact('1 FAMS @' . $family->xref() . '@', true);
+                $before = $this->famsFactOfLaterMarriage($new_mother, $family);
+                $new_mother->createFact('1 FAMS @' . $family->xref() . '@', true, $before);
                 // Add new WIFE link
                 $family->createFact('1 WIFE @' . $new_mother->xref() . '@', true);
             }
@@ -132,10 +129,33 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
                 // Add new FAMC link
                 $new_child->createFact('1 FAMC @' . $family->xref() . '@', true);
                 // Add new CHIL link
-                $family->createFact('1 CHIL @' . $new_child->xref() . '@', true);
+                $before = $this->childFactOfYoungerSibling($family, $new_child);
+                $family->createFact('1 CHIL @' . $new_child->xref() . '@', true, $before);
             }
         }
 
         return redirect($family->url());
+    }
+
+    private function famsFactOfLaterMarriage(Individual $partner, Family $family): Fact | null
+    {
+        $filter = function (Fact $fact) use ($family): bool {
+            return $fact->target() instanceof Family &&
+                Date::compare($family->getMarriageDate(), $fact->target()->getMarriageDate()) < 0;
+        };
+        return $partner
+            ->facts(['FAMS'], false, Auth::PRIV_HIDE, true)
+            ->first($filter);
+    }
+
+    private function childFactOfYoungerSibling(Family $family, Individual $child): Fact | null
+    {
+        $filter = function (Fact $fact) use ($child): bool {
+            return $fact->target() instanceof Individual &&
+                Date::compare($child->getBirthDate(), $fact->target()->getBirthDate()) < 0;
+        };
+        return $family
+            ->facts(['CHIL'], false, Auth::PRIV_HIDE, true)
+            ->first($filter);
     }
 }

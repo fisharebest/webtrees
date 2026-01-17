@@ -13,9 +13,10 @@ use Fisharebest\Webtrees\I18N;
 
 $id   = 'google-chart-' . bin2hex(random_bytes(8));
 $name = 'callback_' . bin2hex(random_bytes(12));
+
 ?>
 
-<?php if (count($data) === 1) : ?>
+<?php if (array_sum(array_map(intval(...), array_column($data, 1))) === 0) : ?>
     <?= I18N::translate('This information is not available.') ?>
 <?php else : ?>
     <div id="<?= $id ?>"></div>

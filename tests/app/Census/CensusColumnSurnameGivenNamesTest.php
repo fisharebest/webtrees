@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,7 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
 {
     public function testOneGivenName(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getAllNames')->willReturn([
             [
                 'givn' => 'Joe',
@@ -39,7 +39,7 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
         ]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('');
 
         $column = new CensusColumnSurnameGivenNames($census, '', '');
@@ -49,7 +49,7 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
 
     public function testMultipleGivenNames(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getAllNames')->willReturn([
             [
                 'givn'    => 'Joe Fred',
@@ -58,7 +58,7 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
         ]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('');
 
         $column = new CensusColumnSurnameGivenNames($census, '', '');
@@ -68,7 +68,7 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
 
     public function testNoName(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getAllNames')->willReturn([
             [
                 'givn'    => Individual::PRAENOMEN_NESCIO,
@@ -77,7 +77,7 @@ class CensusColumnSurnameGivenNamesTest extends TestCase
         ]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('');
 
         $column = new CensusColumnSurnameGivenNames($census, '', '');

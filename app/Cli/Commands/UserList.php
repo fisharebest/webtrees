@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,16 +19,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli\Commands;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
-use Symfony\Component\Console\Command\Command;
+use Fisharebest\Webtrees\User;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
-class UserList extends Command
+use function addcslashes;
+use function array_map;
+use function implode;
+
+final class UserList extends AbstractCommand
 {
     public function __construct(private readonly UserService $user_service)
     {
@@ -39,51 +44,93 @@ class UserList extends Command
     {
         $this
             ->setName(name: 'user-list')
-            ->setDescription(description: 'List users');
+            ->setDescription(description: 'List users')
+            ->addOption(
+                name: 'format',
+                shortcut: 'f',
+                mode: InputOption::VALUE_REQUIRED,
+                description: 'Output format (table, json, csv)',
+                default: 'table',
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $format = $this->stringOption(input: $input, name: 'format');
+
+        $io = new SymfonyStyle(input: $input, output: $output);
+
         $users = $this->user_service->all()->sort(callback: fn ($a, $b) => $a->id() <=> $b->id());
 
-        $table = new Table(output: $output);
+        $headers = ['ID', 'Username', 'Real Name', 'Email', 'Admin', 'Approved', 'Verified', 'Language', 'Timezone', 'Contact', 'Registered', 'Last login'];
 
-        $table->setHeaders(headers: ['ID', 'Username', 'Real Name', 'Email', 'Admin', 'Approved', 'Verified', 'Language', 'Timezone', 'Contact', 'Registered', 'Last login']);
+        $rows = $users->map(callback: fn (User $user): array => [
+            'id'         => $user->id(),
+            'username'   => $user->userName(),
+            'real_name'  => $user->realName(),
+            'email'      => $user->email(),
+            'admin'      => $user->getPreference(setting_name: UserInterface::PREF_IS_ADMINISTRATOR) === '1' ? 'yes' : 'no',
+            'approved'   => $user->getPreference(setting_name: UserInterface::PREF_IS_ACCOUNT_APPROVED) === '1' ? 'yes' : 'no',
+            'verified'   => $user->getPreference(setting_name: UserInterface::PREF_IS_EMAIL_VERIFIED) === '1' ? 'yes' : 'no',
+            'language'   => $user->getPreference(setting_name: UserInterface::PREF_LANGUAGE),
+            'timezone'   => $user->getPreference(setting_name: UserInterface::PREF_TIME_ZONE),
+            'contact'    => $user->getPreference(setting_name: UserInterface::PREF_CONTACT_METHOD),
+            'registered' => $this->formatTimestamp(timestamp: (int) $user->getPreference(setting_name: UserInterface::PREF_TIMESTAMP_REGISTERED)),
+            'last_login' => $this->formatTimestamp(timestamp: (int) $user->getPreference(setting_name: UserInterface::PREF_TIMESTAMP_ACTIVE)),
+        ])
+        ->values()
+        ->all();
 
-        foreach ($users as $user) {
-            $registered = (int) $user->getPreference(setting_name: UserInterface::PREF_TIMESTAMP_REGISTERED);
-            $last_login = (int) $user->getPreference(setting_name: UserInterface::PREF_TIMESTAMP_ACTIVE);
+        switch ($format) {
+            case 'table':
+                $table = new Table(output: $output);
+                $table->setHeaders(headers: $headers);
+                $table->setRows(rows: $rows);
+                $table->render();
+                break;
 
-            if ($registered === 0) {
-                $registered = 'Never';
-            } else {
-                $registered = Registry::timestampFactory()->make(timestamp: $registered)->format(format: 'Y-m-d H:i:s');
-            }
+            case 'csv':
+                $output->writeln(messages: $this->quoteCsvRow(columns: $headers));
 
-            if ($last_login === 0) {
-                $last_login = 'Never';
-            } else {
-                $last_login = Registry::timestampFactory()->make(timestamp: $last_login)->format(format: 'Y-m-d H:i:s');
-            }
+                foreach ($rows as $row) {
+                    $output->writeln(messages: $this->quoteCsvRow(columns: $row));
+                }
+                break;
 
-            $table->addRow(row: [
-                $user->id(),
-                $user->userName(),
-                $user->realName(),
-                $user->email(),
-                Auth::isAdmin(user: $user) ? 'Yes' : 'No',
-                $user->getPreference(setting_name: UserInterface::PREF_IS_ACCOUNT_APPROVED) ? 'Yes' : 'No',
-                $user->getPreference(setting_name: UserInterface::PREF_IS_EMAIL_VERIFIED) ? 'Yes' : 'No',
-                $user->getPreference(setting_name: UserInterface::PREF_LANGUAGE),
-                $user->getPreference(setting_name: UserInterface::PREF_TIME_ZONE),
-                $user->getPreference(setting_name: UserInterface::PREF_CONTACT_METHOD),
-                $registered,
-                $last_login,
-            ]);
+            case 'json':
+                $output->writeln(messages: json_encode(value: $rows, flags: JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT));
+                break;
+
+            default:
+                $io->error(message: 'Invalid format: ‘' . $format . '’');
+
+                return self::FAILURE;
         }
 
-        $table->render();
+        return self::SUCCESS;
+    }
 
-        return Command::SUCCESS;
+    private function formatTimestamp(int $timestamp): string
+    {
+        if ($timestamp === 0) {
+            return '';
+        }
+
+        return Registry::timestampFactory()->make(timestamp: $timestamp)->format(format: 'Y-m-d H:i:s');
+    }
+
+    /**
+     * @param array<string|int> $columns
+     */
+    private function quoteCsvRow(array $columns): string
+    {
+        $columns = array_map(callback: $this->quoteCsvValue(...), array: $columns);
+
+        return implode(separator: ',', array: $columns);
+    }
+
+    private function quoteCsvValue(string|int $value): string
+    {
+        return '"' . addcslashes(string: (string) $value, characters: '"') . '"';
     }
 }

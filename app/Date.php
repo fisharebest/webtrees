@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -390,13 +390,13 @@ class Date
      */
     public function isOK(): bool
     {
-        return $this->minimumJulianDay() && $this->maximumJulianDay();
+        return $this->minimumJulianDay() !== 0 && $this->maximumJulianDay() !== 0;
     }
 
     /**
      * Calculate the gregorian year for a date. This should NOT be used internally
      * within WT - we should keep the code "calendar neutral" to allow support for
-     * jewish/arabic users. This is only for interfacing with external entities,
+     * Jewish/Arabic users. This is only for interfacing with external entities,
      * such as the ancestry.com search interface or the dated fact icons.
      *
      * @return int

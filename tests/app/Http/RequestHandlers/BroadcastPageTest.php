@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,7 +33,7 @@ class BroadcastPageTest extends TestCase
 
     public function testMissingParameterTo(): void
     {
-        $message_service = $this->createMock(MessageService::class);
+        $message_service = self::createStub(MessageService::class);
         $message_service->method('recipientTypes')->willReturn(['foo' => 'FOO']);
 
         $request = self::createRequest()
@@ -47,7 +47,7 @@ class BroadcastPageTest extends TestCase
     }
     public function testHandler(): void
     {
-        $message_service = $this->createMock(MessageService::class);
+        $message_service = self::createStub(MessageService::class);
         $message_service->method('recipientTypes')->willReturn(['foo' => 'FOO', 'bar' => 'BAR']);
         $message_service->method('recipientUsers')->willReturn(new Collection());
 

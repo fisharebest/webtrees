@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,20 +37,10 @@ use function str_replace;
  */
 class IndividualFactsService
 {
-    private LinkedRecordService $linked_record_service;
-
-    private ModuleService $module_service;
-
-    /**
-     * @param LinkedRecordService $linked_record_service
-     * @param ModuleService       $module_service
-     */
     public function __construct(
-        LinkedRecordService $linked_record_service,
-        ModuleService $module_service
+        private readonly LinkedRecordService $linked_record_service,
+        private readonly ModuleService $module_service,
     ) {
-        $this->linked_record_service = $linked_record_service;
-        $this->module_service        = $module_service;
     }
 
     /**

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,28 +32,15 @@ use function e;
 use function redirect;
 use function route;
 
-/**
- * Send messages from an administrator.
- */
-class BroadcastAction implements RequestHandlerInterface
+final class BroadcastAction implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private MessageService $message_service;
-
-    /**
-     * @param MessageService $message_service
-     */
-    public function __construct(MessageService $message_service)
-    {
-        $this->message_service = $message_service;
+    public function __construct(
+        private readonly MessageService $message_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $recipients = $this->message_service->recipientTypes();

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,6 +31,7 @@ use function count;
 use function ctype_alpha;
 use function dechex;
 use function in_array;
+use function normalizer_normalize;
 use function preg_split;
 use function range;
 use function strlen;
@@ -141,10 +142,13 @@ class AnselTest extends TestCase
         foreach ($latin_code_blocks as $codes) {
             foreach ($codes as $code) {
                 $utf8 = UTF8::chr($code);
-                $norm = Normalizer::normalize($utf8, Normalizer::FORM_D);
+                $norm = normalizer_normalize($utf8, Normalizer::FORM_D);
+                self::assertIsString($norm);
 
                 if ($norm !== $utf8) {
                     $chars = preg_split('//u', $norm, -1, PREG_SPLIT_NO_EMPTY);
+                    self::assertIsArray($chars);
+
                     if (!ctype_alpha($chars[0])) {
                         continue;
                     }
@@ -155,7 +159,7 @@ class AnselTest extends TestCase
                         continue;
                     }
 
-                    static::assertSame($utf8, $encoding->toUtf8($encoding->fromUtf8($utf8)), 'U+' . dechex($code));
+                    self::assertSame($utf8, $encoding->toUtf8($encoding->fromUtf8($utf8)), 'U+' . dechex($code));
                 }
             }
         }

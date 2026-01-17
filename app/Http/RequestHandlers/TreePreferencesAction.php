@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,16 +37,8 @@ use function redirect;
 use function route;
 use function trim;
 
-/**
- * Edit the tree preferences.
- */
-class TreePreferencesAction implements RequestHandlerInterface
+final class TreePreferencesAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
@@ -127,7 +119,7 @@ class TreePreferencesAction implements RequestHandlerInterface
         $tree->setPreference('SURNAME_LIST_STYLE', $surname_list_style);
         $tree->setPreference('SURNAME_TRADITION', $surname_tradition);
         $tree->setPreference('USE_SILHOUETTE', (string) $use_silhouette);
-        $tree->setPreference('WEBMASTER_USER_ID', (string) $webmaster_user_id);
+        $tree->setPreference('WEBMASTER_USER_ID', $webmaster_user_id);
         $tree->setPreference('title', $title);
 
         $url = route(ManageTrees::class, ['tree' => $tree->name()]);

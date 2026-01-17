@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -51,11 +51,6 @@ class EsriMaps extends AbstractModule implements ModuleMapProviderInterface
         return I18N::translate('Create maps using %s.', $link);
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;
@@ -76,6 +71,7 @@ class EsriMaps extends AbstractModule implements ModuleMapProviderInterface
                 'maxZoom'     => 17,
                 'minZoom'     => 2,
                 'url'         => 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+                'localName'   => 'ESRIWorldStreetMap',
             ],
             (object) [
                 'attribution' => 'Tiles ©Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community',
@@ -84,6 +80,7 @@ class EsriMaps extends AbstractModule implements ModuleMapProviderInterface
                 'maxZoom'     => 17,
                 'minZoom'     => 2,
                 'url'         => 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+                'localName'   => 'ESRIWorldTopoMap',
             ],
             (object) [
                 'attribution' => 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
@@ -92,6 +89,7 @@ class EsriMaps extends AbstractModule implements ModuleMapProviderInterface
                 'maxZoom'     => 12,
                 'minZoom'     => 2,
                 'url'         => 'https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
+                'localName'   => 'ESRINatGeoWorldMap',
             ],
         ];
     }

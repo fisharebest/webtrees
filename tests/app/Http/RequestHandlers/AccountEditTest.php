@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,9 +34,9 @@ class AccountEditTest extends TestCase
 
     public function testHandler(): void
     {
-        $user            = $this->createMock(User::class);
-        $message_service = $this->createMock(MessageService::class);
-        $module_service  = $this->createMock(ModuleService::class);
+        $user            = self::createStub(User::class);
+        $message_service = self::createStub(MessageService::class);
+        $module_service  = self::createStub(ModuleService::class);
 
         $module_service->method('findByInterface')->willReturn(new Collection([]));
 

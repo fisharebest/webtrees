@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,13 +36,13 @@ class AuthEditorTest extends TestCase
 {
     public function testAllowed(): void
     {
-        $handler = $this->createMock(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $user = $this->createMock(User::class);
+        $user = self::createStub(User::class);
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree->method('getUserPreference')->with($user, UserInterface::PREF_TREE_ROLE)->willReturn(UserInterface::ROLE_EDITOR);
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', $user);
@@ -58,13 +58,13 @@ class AuthEditorTest extends TestCase
         $this->expectException(HttpAccessDeniedException::class);
         $this->expectExceptionMessage('You do not have permission to view this page.');
 
-        $handler = $this->createMock(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $user = $this->createMock(User::class);
+        $user = self::createStub(User::class);
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree->method('getUserPreference')->with($user, UserInterface::PREF_TREE_ROLE)->willReturn(UserInterface::ROLE_MEMBER);
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', $user);
@@ -75,10 +75,10 @@ class AuthEditorTest extends TestCase
 
     public function testNotLoggedIn(): void
     {
-        $handler = $this->createMock(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', new GuestUser());
         $middleware = new AuthEditor();

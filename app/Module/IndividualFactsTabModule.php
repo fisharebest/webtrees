@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,9 +34,6 @@ use Illuminate\Support\Collection;
 
 use function view;
 
-/**
- * Class IndividualFactsTabModule
- */
 class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
@@ -62,11 +59,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         $this->module_service           = $module_service;
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module/tab on the individual page. */
@@ -123,7 +115,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             ->flatten();
 
         // Don't show family meta-data tags
-        $exclude_facts  = new Collection(['FAM:CHAN', 'FAM:_UID']);
+        $exclude_facts  = new Collection(['FAM:CHAN', 'FAM:_UID', 'FAM:UID', 'FAM:SUBM']);
         // Don't show tags that are shown in tabs or sidebars
         $exclude_facts = $exclude_facts->merge($sidebar_facts)->merge($tab_facts);
 
@@ -144,9 +136,9 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         // Facts of relatives take the form 1 EVEN / 2 TYPE Event of Individual
         // Ensure custom tags from there are recognised
         Registry::elementFactory()->registerTags([
-            'INDI:EVEN:CEME'      => new CustomElement('Cemetery'),
-            'INDI:EVEN:_GODP'     => new CustomElement('Godparent'),
-            'INDI:EVEN:FAMC'      => new XrefFamily(I18N::translate('Adoptive parents')),
+            'INDI:EVEN:CEME'      => new CustomElement(I18N::translate('Cemetery')),
+            'INDI:EVEN:_GODP'     => new CustomElement(I18N::translate('Godparent')),
+            'INDI:EVEN:FAMC'      => new XrefFamily(I18N::translate('Parents')), // Could come from BIRT or ADOP
             'INDI:EVEN:FAMC:ADOP' => new AdoptedByWhichParent(I18N::translate('Adoption')),
         ]);
 

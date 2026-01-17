@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,30 +36,14 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function redirect;
 use function route;
 
-/**
- * Merge two family trees.
- */
-class MergeTreesAction implements RequestHandlerInterface
+final class MergeTreesAction implements RequestHandlerInterface
 {
-    private AdminService $admin_service;
-
-    private TreeService $tree_service;
-
-    /**
-     * @param AdminService $admin_service
-     * @param TreeService  $tree_service
-     */
-    public function __construct(AdminService $admin_service, TreeService $tree_service)
-    {
-        $this->admin_service = $admin_service;
-        $this->tree_service  = $tree_service;
+    public function __construct(
+        private readonly AdminService $admin_service,
+        private readonly TreeService $tree_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree1_name = Validator::parsedBody($request)->string('tree1_name');

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,14 +32,14 @@ class AccountUpdateTest extends TestCase
 {
     public function testHandler(): void
     {
-        $user_service = $this->createMock(UserService::class);
+        $user_service = self::createStub(UserService::class);
 
         $user = $this->createMock(User::class);
         $user->expects($this->once())->method('setEmail')->with('b');
         $user->expects($this->once())->method('setPassword')->with('e');
         $user->expects($this->once())->method('setRealName')->with('d');
         $user->expects($this->once())->method('setUserName')->with('h');
-        $user->expects(self::exactly(4))
+        $user->expects($this->exactly(4))
             ->method('setPreference')
             ->with(
                 self::withConsecutive([UserInterface::PREF_CONTACT_METHOD, UserInterface::PREF_LANGUAGE, UserInterface::PREF_TIME_ZONE, UserInterface::PREF_IS_VISIBLE_ONLINE]),

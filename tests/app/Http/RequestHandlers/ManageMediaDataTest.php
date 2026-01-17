@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,7 +40,7 @@ class ManageMediaDataTest extends TestCase
         $datatables_service    = new DatatablesService();
         $gedcom_import_service = new GedcomImportService();
         $linked_record_service = new LinkedRecordService();
-        $media_file_service    = $this->createMock(MediaFileService::class);
+        $media_file_service    = self::createStub(MediaFileService::class);
         $media_file_service->method('allMediaFolders')->willReturn(new Collection(['media/']));
         $tree_service          = new TreeService($gedcom_import_service);
         $handler               = new ManageMediaData($datatables_service, $linked_record_service, $media_file_service, $tree_service);
@@ -62,7 +62,7 @@ class ManageMediaDataTest extends TestCase
         $datatables_service    = new DatatablesService();
         $gedcom_import_service = new GedcomImportService();
         $linked_record_service = new LinkedRecordService();
-        $media_file_service    = $this->createMock(MediaFileService::class);
+        $media_file_service    = self::createStub(MediaFileService::class);
         $media_file_service->method('allMediaFolders')->willReturn(new Collection(['media/']));
         $tree_service          = new TreeService($gedcom_import_service);
         $handler               = new ManageMediaData($datatables_service, $linked_record_service, $media_file_service, $tree_service);
@@ -84,7 +84,7 @@ class ManageMediaDataTest extends TestCase
         $datatables_service    = new DatatablesService();
         $gedcom_import_service = new GedcomImportService();
         $linked_record_service = new LinkedRecordService();
-        $media_file_service    = $this->createMock(MediaFileService::class);
+        $media_file_service    = self::createStub(MediaFileService::class);
         $media_file_service->method('allMediaFolders')->willReturn(new Collection(['media/']));
         $tree_service          = new TreeService($gedcom_import_service);
         $handler               = new ManageMediaData($datatables_service, $linked_record_service, $media_file_service, $tree_service);
@@ -93,8 +93,8 @@ class ManageMediaDataTest extends TestCase
             'media_folder' => 'media/',
             'subfolders'   => 'include',
             'search'       => ['value' => ''],
-            'start'        => '0',
-            'length'       => '10',
+            'start'  => '0',
+            'length' => '10',
         ]);
         $response              = $handler->handle($request);
 

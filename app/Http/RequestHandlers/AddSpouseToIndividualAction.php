@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -31,26 +33,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
 
-/**
- * Add a new spouse to an individual, creating a new family.
- */
-class AddSpouseToIndividualAction implements RequestHandlerInterface
+final class AddSpouseToIndividualAction implements RequestHandlerInterface
 {
-    private GedcomEditService $gedcom_edit_service;
-
-    /**
-     * @param GedcomEditService $gedcom_edit_service
-     */
-    public function __construct(GedcomEditService $gedcom_edit_service)
-    {
-        $this->gedcom_edit_service = $gedcom_edit_service;
+    public function __construct(
+        private readonly GedcomEditService $gedcom_edit_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = Validator::attributes($request)->tree();
@@ -75,13 +64,26 @@ class AddSpouseToIndividualAction implements RequestHandlerInterface
         $family = $tree->createFamily('0 @@ FAM' . $gedcom . $i_link . $s_link);
 
         // Link the individual to the family
-        $individual->createFact('1 FAMS @' . $family->xref() . '@', false);
+        $before = $this->famsFactOfLaterMarriage($individual, $family);
+        $individual->createFact('1 FAMS @' . $family->xref() . '@', false, $before);
 
         // Link the spouse to the family
-        $spouse->createFact('1 FAMS @' . $family->xref() . '@', false);
+        $before = $this->famsFactOfLaterMarriage($spouse, $family);
+        $spouse->createFact('1 FAMS @' . $family->xref() . '@', false, $before);
 
         $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $spouse->url());
 
         return redirect($url);
+    }
+
+    private function famsFactOfLaterMarriage(Individual $partner, Family $family): Fact | null
+    {
+        $filter = function (Fact $fact) use ($family): bool {
+            return $fact->target() instanceof Family &&
+                Date::compare($family->getMarriageDate(), $fact->target()->getMarriageDate()) < 0;
+        };
+        return $partner
+            ->facts(['FAMS'], false, Auth::PRIV_HIDE, true)
+            ->first($filter);
     }
 }

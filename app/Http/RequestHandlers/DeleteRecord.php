@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,28 +38,13 @@ use function preg_replace;
 use function response;
 use function sprintf;
 
-/**
- * Delete a record.
- */
-class DeleteRecord implements RequestHandlerInterface
+final class DeleteRecord implements RequestHandlerInterface
 {
-    private LinkedRecordService $linked_record_service;
-
-    /**
-     * @param LinkedRecordService $linked_record_service
-     */
-    public function __construct(LinkedRecordService $linked_record_service)
-    {
-        $this->linked_record_service = $linked_record_service;
+    public function __construct(
+        private readonly LinkedRecordService $linked_record_service,
+    ) {
     }
 
-    /**
-     * Delete a record.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();

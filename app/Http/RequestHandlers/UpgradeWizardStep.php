@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomExportService;
+use Fisharebest\Webtrees\Services\MaintenanceModeService;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
@@ -49,7 +51,7 @@ use function view;
 /**
  * Upgrade to a new version of webtrees.
  */
-class UpgradeWizardStep implements RequestHandlerInterface
+readonly class UpgradeWizardStep implements RequestHandlerInterface
 {
     // We make the upgrade in a number of small steps to keep within server time limits.
     private const string STEP_CHECK   = 'Check';
@@ -76,34 +78,15 @@ class UpgradeWizardStep implements RequestHandlerInterface
         'vendor',
     ];
 
-    private GedcomExportService $gedcom_export_service;
-
-    private UpgradeService $upgrade_service;
-
-    private TreeService $tree_service;
-
-    /**
-     * @param GedcomExportService $gedcom_export_service
-     * @param TreeService         $tree_service
-     * @param UpgradeService      $upgrade_service
-     */
     public function __construct(
-        GedcomExportService $gedcom_export_service,
-        TreeService $tree_service,
-        UpgradeService $upgrade_service
+        private readonly GedcomExportService $gedcom_export_service,
+        private readonly MaintenanceModeService $maintenance_mode_service,
+        private readonly PendingChangesService $pending_changes_service,
+        private readonly TreeService $tree_service,
+        private readonly UpgradeService $upgrade_service,
     ) {
-        $this->gedcom_export_service = $gedcom_export_service;
-        $this->tree_service          = $tree_service;
-        $this->upgrade_service       = $upgrade_service;
     }
 
-    /**
-     * Perform one step of the wizard
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $zip_file   = Webtrees::ROOT_DIR . self::ZIP_FILENAME;
@@ -142,9 +125,6 @@ class UpgradeWizardStep implements RequestHandlerInterface
         }
     }
 
-    /**
-     * @return ResponseInterface
-     */
     private function wizardStepCheck(): ResponseInterface
     {
         $latest_version = $this->upgrade_service->latestVersion();
@@ -166,11 +146,6 @@ class UpgradeWizardStep implements RequestHandlerInterface
         ]));
     }
 
-    /**
-     * Make sure the temporary folder exists.
-     *
-     * @return ResponseInterface
-     */
     private function wizardStepPrepare(): ResponseInterface
     {
         $root_filesystem = Registry::filesystem()->root();
@@ -182,14 +157,9 @@ class UpgradeWizardStep implements RequestHandlerInterface
         ]));
     }
 
-    /**
-     * @return ResponseInterface
-     */
     private function wizardStepPending(): ResponseInterface
     {
-        $changes = DB::table('change')->where('status', '=', 'pending')->exists();
-
-        if ($changes) {
+        if ($this->pending_changes_service->pendingChangesExist()) {
             return response(view('components/alert-danger', [
                 'alert' => I18N::translate('You should accept or reject all pending changes before upgrading.'),
             ]), StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
@@ -200,11 +170,6 @@ class UpgradeWizardStep implements RequestHandlerInterface
         ]));
     }
 
-    /**
-     * @param Tree $tree
-     *
-     * @return ResponseInterface
-     */
     private function wizardStepExport(Tree $tree): ResponseInterface
     {
         $data_filesystem = Registry::filesystem()->data();
@@ -218,9 +183,6 @@ class UpgradeWizardStep implements RequestHandlerInterface
         ]));
     }
 
-    /**
-     * @return ResponseInterface
-     */
     private function wizardStepDownload(): ResponseInterface
     {
         $root_filesystem = Registry::filesystem()->root();
@@ -242,14 +204,6 @@ class UpgradeWizardStep implements RequestHandlerInterface
         ]));
     }
 
-    /**
-     * For performance reasons, we use direct filesystem access for this step.
-     *
-     * @param string $zip_file
-     * @param string $zip_folder
-     *
-     * @return ResponseInterface
-     */
     private function wizardStepUnzip(string $zip_file, string $zip_folder): ResponseInterface
     {
         $start_time = Registry::timeFactory()->now();
@@ -266,19 +220,14 @@ class UpgradeWizardStep implements RequestHandlerInterface
         ]));
     }
 
-    /**
-     * @param string $zip_file
-     *
-     * @return ResponseInterface
-     */
     private function wizardStepCopyAndCleanUp(string $zip_file): ResponseInterface
     {
         $source_filesystem = Registry::filesystem()->root(self::UPGRADE_FOLDER . self::ZIP_FILE_PREFIX);
         $root_filesystem   = Registry::filesystem()->root();
 
-        $this->upgrade_service->startMaintenanceMode();
+        $this->maintenance_mode_service->offline();
         $this->upgrade_service->moveFiles($source_filesystem, $root_filesystem);
-        $this->upgrade_service->endMaintenanceMode();
+        $this->maintenance_mode_service->online();
 
         // While we have time, clean up any old files.
         $files_to_keep    = $this->upgrade_service->webtreesZipContents($zip_file);

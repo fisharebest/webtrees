@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -28,25 +29,21 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function date;
 use function e;
-use function extension_loaded;
 use function pathinfo;
 use function strtolower;
 use function substr;
 
 use const PATHINFO_EXTENSION;
 
-/**
- * Show download forms/optiosn.
- */
-class ExportGedcomPage implements RequestHandlerInterface
+final class ExportGedcomPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
+    public function __construct(
+        private readonly PhpService $php_service,
+    ) {
+    }
+
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();
@@ -73,7 +70,7 @@ class ExportGedcomPage implements RequestHandlerInterface
             'filename'           => $filename,
             'title'              => $title,
             'tree'               => $tree,
-            'zip_available'      => extension_loaded('zip'),
+            'zip_available'      => $this->php_service->extensionLoaded('zip'),
         ]);
     }
 }

@@ -5,11 +5,11 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\I18N;
 
 /**
- * @var string|null   $class
- * @var string|null   $id
- * @var string        $name
- * @var mixed         $selected
- * @var array<string> $options
+ * @var string|null $class
+ * @var string|null $id
+ * @var string      $name
+ * @var int         $selected
+ * @var array<int>  $options
  */
 
 ?>
@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\I18N;
     id="<?= e($id ?? $name) ?>"
 >
     <?php foreach ($options as $n) : ?>
-        <option value="<?= (int) $n ?>" <?= (int) $n === (int) $selected ?  'selected' : '' ?>>
+        <option value="<?= $n ?>" <?= $n === $selected ?  'selected' : '' ?>>
             <?= I18N::number($n) ?>
         </option>
     <?php endforeach ?>

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\CustomTags;
 
 use Fisharebest\Webtrees\Contracts\CustomTagInterface;
 use Fisharebest\Webtrees\Contracts\ElementInterface;
+use Fisharebest\Webtrees\Elements\CertaintyAssessment;
 use Fisharebest\Webtrees\Elements\Creation;
 use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\I18N;
@@ -53,6 +54,8 @@ class Heredis implements CustomTagInterface
             'FAM:_CREA'                   => new Creation(I18N::translate('Created at')),
             'INDI:_CREA'                  => new Creation(I18N::translate('Created at')),
             'INDI:SIGN'                   => new CustomElement(I18N::translate('Signature')),
+            'SOUR:QUAY'                   => new CertaintyAssessment(I18N::translate('Quality of data')),
+            'SOUR:TYPE'                   => new CustomElement(I18N::translate('Type')),
             /* Reported on the forum - but what do they mean?
             'INDI:_FIL'                   => new CustomElement(I18N::translate('???')),
             'INDI:*:_FNA'                 => new CustomElement(I18N::translate('???')),

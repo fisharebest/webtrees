@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,14 +29,10 @@ use function class_exists;
 use function date;
 use function e;
 use function explode;
-use function extension_loaded;
-use function function_exists;
 use function in_array;
 use function str_ends_with;
 use function str_starts_with;
 use function strtolower;
-use function sys_get_temp_dir;
-use function trim;
 use function version_compare;
 
 use const PATH_SEPARATOR;
@@ -60,6 +56,11 @@ class ServerCheckService
 
     // As required by illuminate/database 8.x
     private const string MINIMUM_SQLITE_VERSION = '3.8.8';
+
+    public function __construct(
+        private readonly PhpService $php_service
+    ) {
+    }
 
     /**
      * Things that may cause webtrees to break.
@@ -111,33 +112,18 @@ class ServerCheckService
             ->filter();
     }
 
-    /**
-     * Check if a PHP extension is loaded.
-     *
-     * @param string $extension
-     *
-     * @return string
-     */
     private function checkPhpExtension(string $extension): string
     {
-        if (!extension_loaded($extension)) {
+        if (!$this->php_service->extensionLoaded(extension: $extension)) {
             return I18N::translate('The PHP extension “%s” is not installed.', $extension);
         }
 
         return '';
     }
 
-    /**
-     * Check if a PHP setting is correct.
-     *
-     * @param string $varname
-     * @param bool   $expected
-     *
-     * @return string
-     */
     private function checkPhpIni(string $varname, bool $expected): string
     {
-        $actual = (bool) ini_get($varname);
+        $actual = (bool) $this->php_service->iniGet(option: $varname);
 
         if ($expected && !$actual) {
             return I18N::translate('The PHP.INI setting “%1$s” is disabled.', $varname);
@@ -150,29 +136,21 @@ class ServerCheckService
         return '';
     }
 
-    /**
-     * Check if a PHP function is in the list of disabled functions.
-     *
-     * @param string $function
-     *
-     * @return bool
-     */
     public function isFunctionDisabled(string $function): bool
     {
         $function = strtolower($function);
 
-        $disable_functions = explode(',', (string) ini_get('disable_functions'));
-        $disable_functions = array_map(static fn (string $func): string => strtolower(trim($func)), $disable_functions);
+        $disable_functions = explode(',', $this->php_service->iniGet('disable_functions'));
+        $disable_functions = array_map(trim(...), $disable_functions);
+        $disable_functions = array_map(strtolower(...), $disable_functions);
 
-        return in_array($function, $disable_functions, true) || !function_exists($function);
+        return
+            in_array($function, $disable_functions, true) ||
+            !$this->php_service->functionExists(function: $function);
     }
 
     /**
      * Create a warning message for a disabled function.
-     *
-     * @param string $function
-     *
-     * @return string
      */
     private function checkPhpFunction(string $function): string
     {
@@ -183,9 +161,6 @@ class ServerCheckService
         return '';
     }
 
-    /**
-     * Some servers configure their temporary folder in an inaccessible place.
-     */
     private function checkPhpVersion(): string
     {
         $today = date('Y-m-d');
@@ -199,11 +174,6 @@ class ServerCheckService
         return '';
     }
 
-    /**
-     * Check the
-     *
-     * @return string
-     */
     private function checkSqliteVersion(): string
     {
         if (class_exists(SQLite3::class)) {
@@ -222,7 +192,7 @@ class ServerCheckService
      */
     private function checkSystemTemporaryFolder(): string
     {
-        $open_basedir = ini_get('open_basedir');
+        $open_basedir = $this->php_service->iniGet(option: 'open_basedir');
 
         if ($open_basedir === '') {
             // open_basedir not used.
@@ -231,7 +201,7 @@ class ServerCheckService
 
         $open_basedirs = explode(PATH_SEPARATOR, $open_basedir);
 
-        $sys_temp_dir = sys_get_temp_dir();
+        $sys_temp_dir = $this->php_service->sysGetTempDir();
         $sys_temp_dir = $this->normalizeFolder($sys_temp_dir);
 
         foreach ($open_basedirs as $dir) {
@@ -255,10 +225,6 @@ class ServerCheckService
      * - trailing slash.
      * We can't use realpath() as this can trigger open_basedir restrictions,
      * and we are using this code to find out whether open_basedir will affect us.
-     *
-     * @param string $path
-     *
-     * @return string
      */
     private function normalizeFolder(string $path): string
     {
@@ -272,8 +238,6 @@ class ServerCheckService
     }
 
     /**
-     * @param string $driver
-     *
      * @return Collection<int,string>
      */
     private function databaseDriverErrors(string $driver): Collection
@@ -302,7 +266,7 @@ class ServerCheckService
             case DB::SQL_SERVER:
                 return Collection::make([
                     $this->checkPhpExtension('pdo'),
-                    $this->checkPhpExtension('pdo_odbc'),
+                    $this->checkPhpExtension('pdo_sqlsrv'),
                 ]);
 
             default:
@@ -311,8 +275,6 @@ class ServerCheckService
     }
 
     /**
-     * @param string $driver
-     *
      * @return Collection<int,string>
      */
     private function databaseDriverWarnings(string $driver): Collection

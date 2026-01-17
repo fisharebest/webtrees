@@ -6,15 +6,21 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
 
 /**
- * @var Collection<int,object> $faqs
- * @var int                    $max_block_order
- * @var int                    $min_block_order
- * @var string                 $title
- * @var Tree                   $tree
- * @var array<string,string>   $tree_names
+ * @var array<int,object{
+ *       block_id: int,
+ *       block_order: int,
+ *       gedcom_id: int|null,
+ *       header: string,
+ *       faqbody: string,
+ *       languages: string
+ *   }>                      $faqs
+ * @var int                  $max_block_order
+ * @var int                  $min_block_order
+ * @var string               $title
+ * @var Tree                 $tree
+ * @var array<string,string> $tree_names
  */
 
 ?>

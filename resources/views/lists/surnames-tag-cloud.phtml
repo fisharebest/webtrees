@@ -9,15 +9,15 @@ use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var IndividualListModule|null $module
- * @var array<string,string>      $params
- * @var array<array<int>>         $surnames
- * @var bool                      $totals
- * @var Tree                      $tree
+ * @var IndividualListModule|null   $module
+ * @var array<string,string>        $params
+ * @var array<non-empty-array<int>> $surnames
+ * @var bool                        $totals
+ * @var Tree                        $tree
  */
 
-$maximum = max(array_map(static fn (array $x): int => max($x), $surnames));
-$minimum = min(array_map(static fn (array $x): int => min($x), $surnames));
+$maximum = $surnames === [] ? 0 : max(array_map(static fn (array $x): int => max($x), $surnames));
+$minimum = $surnames === [] ? 0 : min(array_map(static fn (array $x): int => min($x), $surnames));
 
 ?>
 

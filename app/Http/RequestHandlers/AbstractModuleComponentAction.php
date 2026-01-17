@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,23 +31,12 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_flip;
 
-/**
- * Update a list of modules.
- */
 abstract class AbstractModuleComponentAction implements RequestHandlerInterface
 {
-    protected ModuleService $module_service;
-
-    protected TreeService $tree_service;
-
-    /**
-     * @param ModuleService $module_service
-     * @param TreeService   $tree_service
-     */
-    public function __construct(ModuleService $module_service, TreeService $tree_service)
-    {
-        $this->module_service = $module_service;
-        $this->tree_service   = $tree_service;
+    public function __construct(
+        protected ModuleService $module_service,
+        protected TreeService $tree_service,
+    ) {
     }
 
     /**

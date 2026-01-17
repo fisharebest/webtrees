@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,11 +34,14 @@ class CheckCsrfTest extends TestCase
 {
     public function testMiddleware(): void
     {
-        $handler = $this->createMock(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response());
 
+        $uri_factory = Registry::container()->get(UriFactoryInterface::class);
+        self::assertInstanceOf(UriFactoryInterface::class, $uri_factory);
+
         $request = self::createRequest(RequestMethodInterface::METHOD_POST)
-            ->withUri(Registry::container()->get(UriFactoryInterface::class)->createUri('https://example.com'));
+            ->withUri($uri_factory->createUri('https://example.com'));
 
         $middleware = new CheckCsrf();
         $response   = $middleware->process($request, $handler);

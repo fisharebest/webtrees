@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,7 +27,7 @@ use function e;
 /**
  * Events which can take "Y" to indicate that they occurred, but date/place are unknown.
  */
-class AbstractEventElement extends AbstractElement
+abstract class AbstractEventElement extends AbstractElement
 {
     /**
      * Convert a value to a canonical form.
@@ -61,8 +61,8 @@ class AbstractEventElement extends AbstractElement
     {
         return
             '<div class="form-check">' .
-            $this->editHidden($id, $name, $value ? 'Y' : '') .
-            '<input class="form-check-input" type="checkbox" value="Y" id="' . e($id) . '-check" ' . ($value ? 'checked="checked"' : '') . ' />' .
+            $this->editHidden($id, $name, $value !== '' ? 'Y' : '') .
+            '<input class="form-check-input" type="checkbox" value="Y" id="' . e($id) . '-check" ' . ($value !== '' ? 'checked="checked"' : '') . ' />' .
             '<label class="form-check-label" for="' . e($id) . '-check">' .
             I18N::translate('This event occurred, but the details are unknown.') .
             '</label>' .

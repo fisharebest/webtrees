@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,9 +29,6 @@ use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * Class UpcomingAnniversariesModule
- */
 class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
@@ -111,11 +108,6 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
         $this->calendar_service = $calendar_service;
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module */

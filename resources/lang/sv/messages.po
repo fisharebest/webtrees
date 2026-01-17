@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-12-08 06:08+0000\n"
+"PO-Revision-Date: 2026-01-09 07:46+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sv/>\n"
@@ -48,13 +48,13 @@ msgstr " i "
 #: app/Services/RelationshipService.php:2177
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s är %2$s generationer mera"
+msgstr "%1$s %2$s generationer bakåt"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Services/RelationshipService.php:2182
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr "%1$s är %2$s generationer mindre"
+msgstr "%1$s %2$s generationer framåt"
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:23
@@ -359,13 +359,13 @@ msgstr[1] "%s källor har uppdaterats."
 #: app/Services/RelationshipService.php:2168
 #, php-format
 msgid "%s three times removed ascending"
-msgstr "%s tre generationer mera"
+msgstr "%s tre generationer bakåt"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2173
 #, php-format
 msgid "%s three times removed descending"
-msgstr "%s tre generationer mindre"
+msgstr "%s tre generationer framåt"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2159
@@ -850,7 +850,12 @@ msgstr "Lista över användare och gäster som är nu on-line."
 
 #: resources/views/help/media-object.phtml:10
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "Ett media objekt är en post i släktträdet som innehåller information om en media fil. Denna information kan inkludera en titel, ett meddelande om upphovsrätt, en avskrift, privata begränsningar, etc. Media filen, som foto eller video, kan lagras lokalt (på denna webbserver) eller på distans (på en annan webbserver)."
+msgstr ""
+"Ett mediaobjekt är en post i släktträdet som innehåller information om en "
+"mediafil. Denna information kan inkludera en titel, upphovsrättsinformation, "
+"en transkription, sekretessbegränsningar osv. Själva mediafilen, till "
+"exempel ett foto eller en video, kan lagras lokalt (på denna webbserver) "
+"eller externt (på en annan webbserver)."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: resources/views/emails/verify-notify-html.phtml:22
@@ -1582,7 +1587,7 @@ msgstr "Dotters adoption"
 #: app/Services/IndividualFactsService.php:301
 #: app/Services/IndividualFactsService.php:324
 msgid "Adoption of a grandchild"
-msgstr "Barnbarnets adoption"
+msgstr "Adoption av ett barnbarn"
 
 #: app/Services/IndividualFactsService.php:277
 msgid "Adoption of a granddaughter"
@@ -2429,7 +2434,7 @@ msgstr "Bangladesh"
 #: app/Gedcom.php:592 resources/views/calendar-page.phtml:189
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Baptism"
-msgstr "Döpt"
+msgstr "Dop"
 
 #: app/Services/IndividualFactsService.php:225
 msgid "Baptism of a brother"
@@ -2778,7 +2783,7 @@ msgstr "Dotters födelse"
 #: app/Services/IndividualFactsService.php:309
 #: resources/views/admin/trees-preferences.phtml:430
 msgid "Birth of a grandchild"
-msgstr "Barnbarnets födelse"
+msgstr "Barnbarns födelse"
 
 #: app/Services/IndividualFactsService.php:262
 msgid "Birth of a granddaughter"
@@ -3042,7 +3047,7 @@ msgstr "Bulgarien"
 #: resources/xml/reports/family_group_report.xml:1049
 #: resources/xml/reports/missing_facts_report.xml:25
 msgid "Burial"
-msgstr "Begravning"
+msgstr "Gravsättning"
 
 #: app/Services/IndividualFactsService.php:353
 msgid "Burial of a brother"
@@ -3064,7 +3069,7 @@ msgstr "Fars begravning"
 #: app/Services/IndividualFactsService.php:409
 #: app/Services/IndividualFactsService.php:427
 msgid "Burial of a grandchild"
-msgstr "Barnbarnets begravning"
+msgstr "Barnbarns begravning"
 
 #: app/Services/IndividualFactsService.php:390
 msgid "Burial of a granddaughter"
@@ -3620,7 +3625,7 @@ msgstr "Dop av en dotter"
 #: app/Services/IndividualFactsService.php:291
 #: app/Services/IndividualFactsService.php:314
 msgid "Christening of a grandchild"
-msgstr "Dop av ett barnbarn"
+msgstr "Barnbarns dop"
 
 #: app/Services/IndividualFactsService.php:267
 msgid "Christening of a granddaughter"
@@ -3813,7 +3818,7 @@ msgstr "Sambo"
 
 #: app/Elements/MarriageType.php:61
 msgid "Common-law marriage"
-msgstr ""
+msgstr "Samvetsäktenskap"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:71
@@ -4170,7 +4175,7 @@ msgstr "Fars kremering"
 
 #: app/Services/IndividualFactsService.php:432
 msgid "Cremation of a grandchild"
-msgstr "Barnbarnets kremering"
+msgstr "Barnbarns kremering"
 
 #: app/Services/IndividualFactsService.php:395
 msgid "Cremation of a granddaughter"
@@ -4467,7 +4472,7 @@ msgstr "Datum"
 
 #: resources/views/modules/relatives/tab.phtml:37
 msgid "Date differences"
-msgstr "Datum-avvikelser"
+msgstr "Datumskillnader"
 
 #: app/Gedcom.php:587
 msgid "Date of LDS baptism"
@@ -4839,7 +4844,7 @@ msgstr "Faderns död"
 #: app/Services/IndividualFactsService.php:422
 #: resources/views/admin/trees-preferences.phtml:476
 msgid "Death of a grandchild"
-msgstr "Barnbarnets död"
+msgstr "Barnbarns död"
 
 #: app/Services/IndividualFactsService.php:385
 msgid "Death of a granddaughter"
@@ -5687,7 +5692,9 @@ msgstr "Aktiverad"
 #. I18N: Help text for the “Family tree” configuration setting
 #: resources/views/admin/trees-privacy.phtml:43
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
-msgstr "Med val av detta tvingas alla besökare att logga in innan de ser data på denna webbplats."
+msgstr ""
+"Om detta alternativ aktiveras måste alla besökare logga in innan de kan se "
+"någon information på webbplatsen."
 
 #: resources/views/modules/lifespans-chart/page.phtml:63
 msgid "End year"
@@ -6608,7 +6615,9 @@ msgstr "Till exempel, om du anger en sökväg längd 2, kommer personen att kunn
 
 #: resources/views/help/data-fixes.phtml:14
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr "Till exempel kan vi snabbt hitta personer som inte har en dödshändelse, men det är mycket långsammare att beräkna om individen är död."
+msgstr ""
+"Till exempel kan vi snabbt hitta personer som inte har en dödshändelse, men "
+"det är mycket långsammare att beräkna om personen är död."
 
 #: app/Module/ContactsFooterModule.php:142
 #, php-format
@@ -8768,7 +8777,11 @@ msgstr "London, England"
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
 #: resources/views/admin/trees-preferences.phtml:362
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
-msgstr "Långa listor av personer med samma efternamn kan brytas upp till mindre underlistor efter första bokstaven i personen förnamn.<br><br>Detta val bestämmer när underlistor av efternamn ska skapas. För att stänga av detta val helt, sätt detta val till noll."
+msgstr ""
+"Långa listor med personer med samma efternamn kan delas upp i mindre "
+"underlistor baserat på första bokstaven i förnamnet.<br><br>Detta alternativ "
+"styr när sådan uppdelning sker. För att inaktivera uppdelningen helt, sätt "
+"värdet till noll."
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:17
 msgid "Longest marriage"
@@ -9133,7 +9146,7 @@ msgstr "Faderns vigsel"
 #: app/Services/IndividualFactsService.php:457
 #: resources/views/admin/trees-preferences.phtml:450
 msgid "Marriage of a grandchild"
-msgstr "Barnbarnets vigsel"
+msgstr "Barnbarns vigsel"
 
 #: app/Services/IndividualFactsService.php:444
 msgid "Marriage of a granddaughter"
@@ -9909,7 +9922,7 @@ msgstr "Mitt släktträd"
 
 #: app/Module/ModuleThemeTrait.php:332 app/Module/UserWelcomeModule.php:96
 msgid "My individual record"
-msgstr "Min personliga datapost"
+msgstr "Min personsida"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/UserPage.php:83 app/Module/ModuleThemeTrait.php:347
@@ -10820,7 +10833,7 @@ msgstr "Orlando, Florida, Förenta staterna"
 #: app/Statistics/Google/ChartCommonSurname.php:137
 #: resources/views/admin/control-panel.phtml:757
 msgid "Other"
-msgstr "Andra"
+msgstr "Annat"
 
 #: resources/views/admin/trees-preferences.phtml:410
 msgid "Other facts to show in charts"
@@ -12146,7 +12159,7 @@ msgstr "Forskningsuppgifter lagras med den anpassade GEDCOM-taggen ”_TODO”. 
 #: app/CustomTags/Gedcom7.php:186 app/Gedcom.php:731
 #: resources/views/admin/tags.phtml:1004
 msgid "Residence"
-msgstr "Bosatt"
+msgstr "Hemvist"
 
 #: resources/views/edit-blocks-page.phtml:74
 #: resources/views/edit-blocks-page.phtml:75
@@ -14812,7 +14825,7 @@ msgstr "Thermidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:39
 msgid "These cookies are “essential”, and do not require consent."
-msgstr "Dessa kakor är ”väsentliga” och kräver inte samtycke."
+msgstr "Dessa kakor är ”nödvändiga” och kräver inte samtycke."
 
 #: resources/views/admin/trees-unconnected.phtml:39
 #, php-format
@@ -14895,7 +14908,7 @@ msgstr "Detta släktträd uppdaterades senast den %s."
 
 #: app/Http/RequestHandlers/CheckTree.php:307
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr "Det här filnamnet är inte kompatibelt med GEDZIP filformatet."
+msgstr "Det här filnamnet är inte kompatibelt med filformatet GEDZIP."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:33
@@ -15085,7 +15098,9 @@ msgstr "Detta alternativ kontrollerar om man automatiskt visar innehållet i <i>
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: resources/views/admin/trees-preferences.phtml:548
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
-msgstr "Detta val kontrollerar om man automatiskt skall visa innehållet i en <i>källa</i> på personsidan."
+msgstr ""
+"Detta alternativ anger om man automatiskt skall visa innehållet i en "
+"<i>källa</i> på personsidan."
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: resources/views/admin/trees-preferences.phtml:402
@@ -15105,12 +15120,19 @@ msgstr "Detta alternativ kommer att göra det enklare för användare att ladda 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:152
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Detta val kommer att behålla familjelänkar i privata poster. Detta innebär att du kommer att se tomma ”privat” rutor på antavlan och på andra diagram för privata personer."
+msgstr ""
+"Detta alternativ kommer att behålla familjelänkar i privata poster. Detta "
+"innebär att du kommer att se tomma ”privat”-rutor på antavlan och på andra "
+"diagram för privata personer."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:133
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr "Detta val visar namnen (men inga andra detaljer) för privata personer. Personer är privata om de fortfarande lever eller om integritetsbegränsning har lagts till deras individpost. Om du vill dölja ett visst namn, lägg till en integritetsbegränsning till namnposten."
+msgstr ""
+"Detta alternativ visar namnen (men inga andra detaljer) för privata "
+"personer. Personer är privata om de fortfarande lever eller om "
+"integritetsbegränsning har lagts till deras personpost. Om du vill dölja ett "
+"visst namn, lägg till en integritetsbegränsning till namnposten."
 
 #: resources/views/edit/raw-gedcom-fact.phtml:26
 #: resources/views/edit/raw-gedcom-record.phtml:26
@@ -15288,7 +15310,7 @@ msgstr "Tid"
 #: app/CustomTags/Aldfaer.php:71 app/CustomTags/Gedcom7.php:124
 #: app/CustomTags/ProGen.php:56
 msgid "Time of birth"
-msgstr "Födelsetiden"
+msgstr "Födelsetid"
 
 #: resources/views/admin/tags.phtml:960
 msgid "Time of birth and time of death"
@@ -15297,7 +15319,7 @@ msgstr "Födelsetiden och dödstiden"
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:128
 #: app/CustomTags/Geneatique.php:59
 msgid "Time of death"
-msgstr "Dödstiden"
+msgstr "Dödstid"
 
 #: app/CustomTags/GedcomL.php:223 app/Gedcom.php:450 app/Gedcom.php:617
 #: app/Gedcom.php:764 app/Gedcom.php:785 app/Gedcom.php:816 app/Gedcom.php:832
@@ -15966,7 +15988,7 @@ msgstr "Uppdaterad"
 #: resources/views/admin/control-panel.phtml:205
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "Uppgradera till webtrees v. %s."
+msgstr "Uppgradera till webtrees %s."
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:78
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:117
@@ -16633,7 +16655,9 @@ msgstr "Du måste välja en person och en diagramtyp i blockinställningarna"
 
 #: resources/views/admin/users-edit.phtml:366
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
-msgstr "Du måste specificera en individpost innan du kan begränsa användaren till dess närmsta familj."
+msgstr ""
+"Du måste ange en personpost innan du kan begränsa användaren till dess "
+"närmsta familj."
 
 #: app/Http/RequestHandlers/LoginPage.php:89
 msgid "You need to be a family member to access this website."
@@ -16664,7 +16688,8 @@ msgstr "Du skickade följande meddelande till ett webtrees användarkonto:"
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:194
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr "Du bör acceptera eller ignorera alla väntande ändringar innan du uppgraderar."
+msgstr ""
+"Du bör acceptera eller avvisa alla väntande ändringar innan du uppgraderar."
 
 #. I18N: e.g. ‘You should delete the “https://” from “https://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:123
@@ -16723,7 +16748,10 @@ msgstr "Din registrering på %s"
 #: app/Services/ServerCheckService.php:195
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
-msgstr "Din webbserver använder PHP versionen %s, som inte längre tar emot säkerhetsuppdateringar. Du bör uppgradera till en senare version så snart som möjligt."
+msgstr ""
+"Din webbserver använder PHP version %s, som inte längre får "
+"säkerhetsuppdateringar. Du bör uppgradera till en nyare version så snart som "
+"möjligt."
 
 #. I18N: ZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:40
@@ -17732,12 +17760,12 @@ msgstr "barnbarn"
 #: app/Services/RelationshipService.php:516
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr "dottersbarn"
+msgstr "barnbarn"
 
 #: app/Services/RelationshipService.php:616
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr "sonsbarn"
+msgstr "barnbarn"
 
 #: app/Services/RelationshipService.php:506
 msgctxt "child’s daughter"
@@ -17841,7 +17869,7 @@ msgstr "%s. generations tant/onkel"
 #: app/Services/RelationshipService.php:2097
 #, php-format
 msgid "great ×%s grandchild"
-msgstr "barnbarn %s generationer fram"
+msgstr "barnbarn %s generationer framåt"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2051
@@ -17861,7 +17889,7 @@ msgstr "barnets dotter %s generationer fram"
 #: app/Services/RelationshipService.php:1954
 #, php-format
 msgid "great ×%s grandfather"
-msgstr "gammelfar %s generationer bak"
+msgstr "gammelfar %s generationer bakåt"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1892
@@ -17872,7 +17900,7 @@ msgstr "gammelfar %s generationer bak"
 #: app/Services/RelationshipService.php:1959
 #, php-format
 msgid "great ×%s grandmother"
-msgstr "gammelmor %s generationer bak"
+msgstr "gammelmor %s generationer bakåt"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1895
@@ -17883,7 +17911,7 @@ msgstr "gammelmor %s generationer bak"
 #: app/Services/RelationshipService.php:1963
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "gammelförälder %s generationer bak"
+msgstr "gammelförälder %s generationer bakåt"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2047
@@ -18034,15 +18062,15 @@ msgstr "barnets dotter 4 generationer fram"
 
 #: app/Services/RelationshipService.php:1838
 msgid "great ×4 grandfather"
-msgstr "gammelfar 4 generationer bak"
+msgstr "gammelfar 4 generationer bakåt"
 
 #: app/Services/RelationshipService.php:1842
 msgid "great ×4 grandmother"
-msgstr "gammelmor 4 generationer bak"
+msgstr "gammelmor 4 generationer bakåt"
 
 #: app/Services/RelationshipService.php:1845
 msgid "great ×4 grandparent"
-msgstr "gammelförälder 4 generationer bak"
+msgstr "gammelförälder 4 generationer bakåt"
 
 #: app/Services/RelationshipService.php:1995
 msgid "great ×4 grandson"
@@ -18118,7 +18146,7 @@ msgstr "5. generations tant/onkel"
 
 #: app/Services/RelationshipService.php:2013
 msgid "great ×5 grandchild"
-msgstr "barnbarn 5 generationer fram"
+msgstr "barnbarn 5 generationer framåt"
 
 #: app/Services/RelationshipService.php:2010
 msgid "great ×5 granddaughter"
@@ -18126,15 +18154,15 @@ msgstr "barnets dotter 5 generationer fram"
 
 #: app/Services/RelationshipService.php:1849
 msgid "great ×5 grandfather"
-msgstr "gammelfar 5 generationer bak"
+msgstr "gammelfar 5 generationer bakåt"
 
 #: app/Services/RelationshipService.php:1853
 msgid "great ×5 grandmother"
-msgstr "gammelmor 5 generationer bak"
+msgstr "gammelmor 5 generationer bakåt"
 
 #: app/Services/RelationshipService.php:1856
 msgid "great ×5 grandparent"
-msgstr "gammelförälder 5 generationer bak"
+msgstr "gammelförälder 5 generationer bakåt"
 
 #: app/Services/RelationshipService.php:2006
 msgid "great ×5 grandson"
@@ -18218,15 +18246,15 @@ msgstr "barnets dotter 6 generationer fram"
 
 #: app/Services/RelationshipService.php:1860
 msgid "great ×6 grandfather"
-msgstr "gammelfar 6 generationer bak"
+msgstr "gammelfar 6 generationer bakåt"
 
 #: app/Services/RelationshipService.php:1864
 msgid "great ×6 grandmother"
-msgstr "gammelmor 6 generationer bak"
+msgstr "gammelmor 6 generationer bakåt"
 
 #: app/Services/RelationshipService.php:1867
 msgid "great ×6 grandparent"
-msgstr "gammelförälder 6 generationer bak"
+msgstr "gammelförälder 6 generationer bakåt"
 
 #: app/Services/RelationshipService.php:2017
 msgid "great ×6 grandson"
@@ -18265,15 +18293,15 @@ msgstr "barnets dotter 7 generationer fram"
 
 #: app/Services/RelationshipService.php:1871
 msgid "great ×7 grandfather"
-msgstr "gammelfar 7 generationer bak"
+msgstr "gammelfar 7 generationer bakåt"
 
 #: app/Services/RelationshipService.php:1875
 msgid "great ×7 grandmother"
-msgstr "gammelmor 7 generationer bak"
+msgstr "gammelmor 7 generationer bakåt"
 
 #: app/Services/RelationshipService.php:1878
 msgid "great ×7 grandparent"
-msgstr "gammelförälder 7 generationer bak"
+msgstr "gammelförälder 7 generationer bakåt"
 
 #: app/Services/RelationshipService.php:2028
 msgid "great ×7 grandson"
@@ -18482,12 +18510,12 @@ msgstr "barnbarns barn"
 #: app/Services/RelationshipService.php:730
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr "barns dotterbarn"
+msgstr "barnbarns barn"
 
 #: app/Services/RelationshipService.php:738
 msgctxt "child’s son’s child"
 msgid "great-grandchild"
-msgstr "barnets sons barn"
+msgstr "barnbarns barn"
 
 #: app/Services/RelationshipService.php:746
 msgctxt "daughter’s child’s child"
@@ -18497,7 +18525,7 @@ msgstr "dotters barnbarn"
 #: app/Services/RelationshipService.php:752
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr "dotters dotterbarn"
+msgstr "dotters barnbarn"
 
 #: app/Services/RelationshipService.php:766
 msgctxt "daughter’s son’s child"
@@ -18512,7 +18540,7 @@ msgstr "sons barnbarn"
 #: app/Services/RelationshipService.php:1050
 msgctxt "son’s daughter’s child"
 msgid "great-grandchild"
-msgstr "sondotters barn"
+msgstr "sons barnbarn"
 
 #: app/Services/RelationshipService.php:1058
 msgctxt "son’s son’s child"
@@ -18762,15 +18790,15 @@ msgstr "barnbarns barns dotter"
 
 #: app/Services/RelationshipService.php:1816
 msgid "great-great-grandfather"
-msgstr "gammelfar 2 generationer bak"
+msgstr "gammelfar 2 generationer bakåt"
 
 #: app/Services/RelationshipService.php:1820
 msgid "great-great-grandmother"
-msgstr "gammelmor 2 generationer bak"
+msgstr "gammelmor 2 generationer bakåt"
 
 #: app/Services/RelationshipService.php:1823
 msgid "great-great-grandparent"
-msgstr "gammelförälder 2 generationer bak"
+msgstr "gammelförälder 2 generationer bakåt"
 
 #: app/Services/RelationshipService.php:1973
 msgid "great-great-grandson"
@@ -18794,15 +18822,15 @@ msgstr "barnbarns barnbarns dotter"
 
 #: app/Services/RelationshipService.php:1827
 msgid "great-great-great-grandfather"
-msgstr "gammelfar 3 generationer bak"
+msgstr "gammelfar 3 generationer bakåt"
 
 #: app/Services/RelationshipService.php:1831
 msgid "great-great-great-grandmother"
-msgstr "gammelmor 3 generationer bak"
+msgstr "gammelmor 3 generationer bakåt"
 
 #: app/Services/RelationshipService.php:1834
 msgid "great-great-great-grandparent"
-msgstr "gammelförälder 3 generationer bak"
+msgstr "gammelförälder 3 generationer bakåt"
 
 #: app/Services/RelationshipService.php:1984
 msgid "great-great-great-grandson"

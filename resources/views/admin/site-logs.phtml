@@ -112,11 +112,15 @@ use Illuminate\Support\Collection;
 </form>
 
 <table
-    class="table table-bordered table-sm table-hover table-site-logs"
+    id="wt-datatables-admin-logs"
+    class="table table-bordered table-sm table-hover table-site-logs datatables"
     <?= view('lists/datatables-attributes') ?>
     data-ajax="<?= e(route(SiteLogsData::class, ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'tree' => $tree])) ?>"
     data-server-side="true"
     data-filter="false"
+    data-processing="true"
+    data-sorting='[[0,"desc"]]'
+    data-columns='[{"visible":false},{"sort":0},{},{},{},{},{}]'
 >
     <thead>
         <tr>
@@ -130,21 +134,3 @@ use Illuminate\Support\Collection;
         </tr>
     </thead>
 </table>
-
-<?php View::push('javascript') ?>
-<script>
-  $(".table-site-logs").dataTable( {
-    processing: true,
-    sorting: [[ 0, "desc" ]],
-    columns: [
-      /* log_id      */ { visible: false },
-      /* Timestamp   */ { sort: 0 },
-      /* Type        */ { },
-      /* message     */ { },
-      /* IP address  */ { },
-      /* User        */ { },
-      /* Family tree */ { }
-    ]
-  });
-</script>
-<?php View::endpush() ?>

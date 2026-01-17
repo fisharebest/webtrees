@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,9 +27,6 @@ use function mb_substr;
 use function str_repeat;
 use function str_starts_with;
 
-/**
- * Class LanguageSlovakian.
- */
 class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
@@ -77,8 +74,6 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
     ];
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -86,13 +81,6 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
         return ['A', 'Á', 'Ä', 'B', 'C', 'Č', 'D', 'Ď', 'DZ', 'DŽ', 'E', 'É', 'F', 'G', 'H', 'CH', 'I', 'Í', 'J', 'K', 'L', 'Ľ', 'Ĺ', 'M', 'N', 'Ň', 'O', 'Ó', 'Ô', 'P', 'Q', 'R', 'Ŕ', 'S', 'Š', 'T', 'Ť', 'U', 'Ú', 'V', 'W', 'X', 'Y', 'Ý', 'Z', 'Ž'];
     }
 
-    /**
-     * Some languages use digraphs and trigraphs.
-     *
-     * @param string $string
-     *
-     * @return string
-     */
     public function initialLetter(string $string): string
     {
         foreach (['CH', 'DZ', 'DŽ'] as $digraph) {
@@ -104,9 +92,6 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
         return mb_substr($string, 0, 1);
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleSk();

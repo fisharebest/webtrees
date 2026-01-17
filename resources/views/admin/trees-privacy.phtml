@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePrivacyAction;
@@ -11,12 +12,12 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 
 /**
- * @var array<string,string> $all_tags
- * @var int                  $count_trees
- * @var array<string,string> $privacy_constants
- * @var array<int,object>    $privacy_restrictions
- * @var string               $title
- * @var Tree                 $tree
+ * @var array<string,string>                                                                            $all_tags
+ * @var int                                                                                             $count_trees
+ * @var array<string,string>                                                                            $privacy_constants
+ * @var list<object{default_resn_id:int,resn:string,xref:string,record:GedcomRecord|null,label:string}> $privacy_restrictions
+ * @var string                                                                                          $title
+ * @var Tree                                                                                            $tree
  */
 
 ?>
@@ -257,12 +258,12 @@ use Fisharebest\Webtrees\View;
                         <?php endif ?>
                     </td>
                     <td>
-                        <?php if ($privacy_restriction->tag_label === '') : ?>
+                        <?php if ($privacy_restriction->label === '') : ?>
                             <div class="text-muted">
                                 <?= I18N::translate('All facts and events') ?>
                             </div>
                         <?php else : ?>
-                            <?= $privacy_restriction->tag_label ?>
+                            <?= $privacy_restriction->label ?>
                         <?php endif ?>
                     </td>
                     <td>

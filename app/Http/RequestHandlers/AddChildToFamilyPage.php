@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,28 +31,15 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function route;
 
-/**
- * Add a new child to a family.
- */
-class AddChildToFamilyPage implements RequestHandlerInterface
+final class AddChildToFamilyPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private GedcomEditService $gedcom_edit_service;
-
-    /**
-     * @param GedcomEditService $gedcom_edit_service
-     */
-    public function __construct(GedcomEditService $gedcom_edit_service)
-    {
-        $this->gedcom_edit_service = $gedcom_edit_service;
+    public function __construct(
+        private readonly GedcomEditService $gedcom_edit_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();

@@ -6,12 +6,12 @@ use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection|Individual[] $ancestors   Indexed by sosa number
- * @var int                     $generation  Draw this generation
- * @var int                     $generations Final generation to draw
- * @var Collection|string[]     $links       Links to extend the tree
- * @var int                     $sosa        Draw this individual
- * @var string                  $spacer
+ * @var Collection<int,Individual> $ancestors   Indexed by sosa number
+ * @var int                        $generation  Draw this generation
+ * @var int                        $generations Final generation to draw
+ * @var Collection<int,string>     $links       Links to extend the tree
+ * @var int                        $sosa        Draw this individual
+ * @var string                     $spacer
  */
 ?>
 
@@ -43,4 +43,3 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 </div>
-

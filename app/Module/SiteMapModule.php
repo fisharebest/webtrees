@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -50,9 +49,6 @@ use function response;
 use function route;
 use function view;
 
-/**
- * Class SiteMapModule
- */
 class SiteMapModule extends AbstractModule implements ModuleConfigInterface, RequestHandlerInterface
 {
     use ModuleConfigTrait;
@@ -103,11 +99,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         return I18N::translate('Generate sitemap files for search engines.');
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;
@@ -131,11 +122,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         ]);
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module - see https://en.wikipedia.org/wiki/Sitemaps */
@@ -339,7 +325,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
                 break;
 
             default:
-                throw new HttpNotFoundException('Invalid record type: ' . $type);
+                throw new HttpNotFoundException('Invalid record type: ' . e($type));
         }
 
         // Skip private records.

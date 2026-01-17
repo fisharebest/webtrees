@@ -21,9 +21,11 @@ use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * @var string                 $content
+ * @var string|null            $meta_description
+ * @var string|null            $meta_robots
  * @var ServerRequestInterface $request
  * @var string                 $title
- * @var Tree                   $tree
+ * @var Tree|null              $tree
  */
 
 ?>
@@ -34,7 +36,7 @@ use Psr\Http\Message\ServerRequestInterface;
         <meta charset="UTF-8">
         <meta name="csrf" content="<?= e(csrf_token()) ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="<?= e($meta_robots ?? 'noindex') ?>">
+        <meta name="robots" content="<?= e($meta_robots ?? 'noindex,nofollow') ?>">
         <meta name="generator" content="<?= e(Webtrees::NAME) ?> <?= e(Webtrees::VERSION) ?>">
         <meta name="description" content="<?= $meta_description ?? '' ?>">
 
@@ -62,12 +64,10 @@ use Psr\Http\Message\ServerRequestInterface;
 
         <?= View::stack('styles') ?>
 
-        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
-            return $module->headContent();
-        })->implode('') ?>
+        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->headContent())->implode('') ?>
     </head>
 
-    <body class="wt-global wt-theme-<?= e(Registry::container()->get(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name ?? '/', ['\\' => '/']))) ?>">
+    <body class="wt-global wt-theme-<?= e(Registry::container()->get(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name, ['\\' => '/']))) ?>">
         <header class="wt-header-wrapper d-print-none">
             <div class="container-lg wt-header-container">
                 <div class="row wt-header-content">
@@ -137,9 +137,7 @@ use Psr\Http\Message\ServerRequestInterface;
         </main>
 
         <footer class="container-lg wt-footers d-print-none">
-            <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static function (ModuleFooterInterface $module) use ($request): string {
-                return $module->getFooter($request);
-            })->implode('') ?>
+            <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static fn (ModuleFooterInterface $module): string => $module->getFooter($request))->implode('') ?>
         </footer>
 
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
@@ -182,8 +180,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
         <?= View::stack('javascript') ?>
 
-        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
-            return $module->bodyContent();
-        })->implode('') ?>
+        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->bodyContent())->implode('') ?>
     </body>
 </html>

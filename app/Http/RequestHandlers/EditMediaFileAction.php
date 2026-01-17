@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,38 +35,19 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function preg_replace;
 use function redirect;
 use function route;
 use function str_replace;
 use function trim;
 
-/**
- * Edit a media file.
- */
-class EditMediaFileAction implements RequestHandlerInterface
+final class EditMediaFileAction implements RequestHandlerInterface
 {
-    private MediaFileService $media_file_service;
-
-    private PendingChangesService $pending_changes_service;
-
-    /**
-     * @param MediaFileService      $media_file_service
-     * @param PendingChangesService $pending_changes_service
-     */
-    public function __construct(MediaFileService $media_file_service, PendingChangesService $pending_changes_service)
-    {
-        $this->media_file_service      = $media_file_service;
-        $this->pending_changes_service = $pending_changes_service;
+    public function __construct(
+        private readonly MediaFileService $media_file_service,
+        private readonly PendingChangesService $pending_changes_service,
+    ) {
     }
 
-    /**
-     * Save an edited media file.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();

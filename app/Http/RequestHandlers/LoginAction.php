@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -37,32 +36,14 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function route;
 use function time;
 
-/**
- * Perform a login.
- */
-class LoginAction implements RequestHandlerInterface
+final class LoginAction implements RequestHandlerInterface
 {
-    private UpgradeService $upgrade_service;
-
-    private UserService $user_service;
-
-    /**
-     * @param UpgradeService $upgrade_service
-     * @param UserService    $user_service
-     */
-    public function __construct(UpgradeService $upgrade_service, UserService $user_service)
-    {
-        $this->upgrade_service = $upgrade_service;
-        $this->user_service    = $user_service;
+    public function __construct(
+        private readonly UpgradeService $upgrade_service,
+        private readonly UserService $user_service,
+    ) {
     }
 
-    /**
-     * Perform a login.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->treeOptional();

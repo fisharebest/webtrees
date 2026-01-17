@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,12 +34,10 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function redirect;
 use function route;
 
-/**
- * Edit a user.
- */
-class UserEditAction implements RequestHandlerInterface
+final class UserEditAction implements RequestHandlerInterface
 {
     private EmailService $email_service;
 
@@ -62,11 +60,6 @@ class UserEditAction implements RequestHandlerInterface
         $this->user_service  = $user_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $user           = Validator::attributes($request)->user();
@@ -144,16 +137,28 @@ class UserEditAction implements RequestHandlerInterface
             $tree->setUserPreference($edit_user, UserInterface::PREF_TREE_PATH_LENGTH, (string) $path_length);
         }
 
-        if ($edit_user->email() !== $email && $this->user_service->findByEmail($email) instanceof User) {
-            FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.') . $email, 'danger');
+        // Changing the email address - make sure it isn't used by another user.
+        if ($edit_user->email() !== $email) {
+            $existing = $this->user_service->findByEmail($email);
 
-            return redirect(route('admin-users-edit', ['user_id' => $edit_user->id()]));
+            if ($existing instanceof User && $existing->id() !== $edit_user->id()) {
+                $message = I18N::translate('Duplicate email address. A user with that email already exists.') . ' ' . $existing->email();
+                FlashMessages::addMessage($message, 'danger');
+
+                return redirect(route(UserEditPage::class, ['user_id' => $edit_user->id()]));
+            }
         }
 
-        if ($edit_user->userName() !== $username && $this->user_service->findByUserName($username) instanceof User) {
-            FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'), 'danger');
+        // Changing the username - make sure it isn't used by another user
+        if ($edit_user->userName() !== $username) {
+            $existing = $this->user_service->findByUserName($username);
 
-            return redirect(route(UserEditPage::class, ['user_id' => $edit_user->id()]));
+            if ($existing instanceof User && $existing->id() !== $edit_user->id()) {
+                $message = I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.') . ' ' . $existing->userName();
+                FlashMessages::addMessage($message, 'danger');
+
+                return redirect(route(UserEditPage::class, ['user_id' => $edit_user->id()]));
+            }
         }
 
         $edit_user

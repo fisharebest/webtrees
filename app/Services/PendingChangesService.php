@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,6 +23,7 @@ use DateInterval;
 use DateTimeImmutable;
 use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
@@ -52,21 +53,23 @@ use function preg_match;
  */
 class PendingChangesService
 {
-    private GedcomImportService $gedcom_import_service;
+    public function __construct(
+        private readonly GedcomImportService $gedcom_import_service,
+    ) {
+    }
 
-    /**
-     * @param GedcomImportService $gedcom_import_service
-     */
-    public function __construct(GedcomImportService $gedcom_import_service)
+    public function pendingChangesExist(Tree|null $tree = null): bool
     {
-        $this->gedcom_import_service = $gedcom_import_service;
+        $query = DB::table(table: 'change')->where(column: 'status', operator: '=', value: 'pending');
+
+        if ($tree instanceof Tree) {
+            $query = $query->where(column: 'tree_id', operator: '=', value: $tree->id());
+        }
+
+        return $query->exists();
     }
 
     /**
-     * Which records have pending changes
-     *
-     * @param Tree $tree
-     *
      * @return Collection<int,string>
      */
     public function pendingXrefs(Tree $tree): Collection
@@ -80,10 +83,16 @@ class PendingChangesService
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $n
-     *
-     * @return array<array<object>>
+     * @return array<array<object{
+     *     xref:string,
+     *     change_id:string,
+     *     old_gedcom:string|null,
+     *     new_gedcom:string|null,
+     *     change_time:TimestampInterface,
+     *     record:GedcomRecord,
+     *     user_name:string,
+     *     real_name:string
+     * }>>
      */
     public function pendingChanges(Tree $tree, int $n): array
     {
@@ -128,16 +137,6 @@ class PendingChangesService
         return $changes;
     }
 
-    /**
-     * Accept all changes to a tree.
-     *
-     * @param Tree $tree
-     *
-     * @param int  $n
-     *
-     * @return void
-     * @throws GedcomErrorException
-     */
     public function acceptTree(Tree $tree, int $n): void
     {
         $xrefs = $this->pendingXrefs($tree);
@@ -165,11 +164,6 @@ class PendingChangesService
         }
     }
 
-    /**
-     * Accept all changes to a record.
-     *
-     * @param GedcomRecord $record
-     */
     public function acceptRecord(GedcomRecord $record): void
     {
         $changes = DB::table('change')
@@ -195,12 +189,6 @@ class PendingChangesService
         }
     }
 
-    /**
-     * Accept a change (and previous changes) to a record.
-     *
-     * @param GedcomRecord $record
-     * @param string $change_id
-     */
     public function acceptChange(GedcomRecord $record, string $change_id): void
     {
         $changes = DB::table('change')
@@ -226,11 +214,6 @@ class PendingChangesService
         }
     }
 
-    /**
-     * Reject all changes to a tree.
-     *
-     * @param Tree $tree
-     */
     public function rejectTree(Tree $tree): void
     {
         DB::table('change')
@@ -239,12 +222,6 @@ class PendingChangesService
             ->update(['status' => 'rejected']);
     }
 
-    /**
-     * Reject a change (subsequent changes) to a record.
-     *
-     * @param GedcomRecord $record
-     * @param string       $change_id
-     */
     public function rejectChange(GedcomRecord $record, string $change_id): void
     {
         DB::table('change')
@@ -255,11 +232,6 @@ class PendingChangesService
             ->update(['status' => 'rejected']);
     }
 
-    /**
-     * Reject all changes to a record.
-     *
-     * @param GedcomRecord $record
-     */
     public function rejectRecord(GedcomRecord $record): void
     {
         DB::table('change')
@@ -270,11 +242,7 @@ class PendingChangesService
     }
 
     /**
-     * Generate a query for filtering the changes log.
-     *
-     * @param array<string> $params
-     *
-     * @return Builder
+     * @param array<string,string> $params
      */
     public function changesQuery(array $params): Builder
     {

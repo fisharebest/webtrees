@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -53,31 +53,13 @@ use const JSON_THROW_ON_ERROR;
 use const UPLOAD_ERR_NO_FILE;
 use const UPLOAD_ERR_OK;
 
-/**
- * Import geographic data.
- */
-class MapDataImportAction implements RequestHandlerInterface
+final class MapDataImportAction implements RequestHandlerInterface
 {
-    private StreamFactoryInterface $stream_factory;
-
-    /**
-     * @param StreamFactoryInterface $stream_factory
-     */
-    public function __construct(StreamFactoryInterface $stream_factory)
-    {
-        $this->stream_factory = $stream_factory;
+    public function __construct(
+        private readonly StreamFactoryInterface $stream_factory,
+    ) {
     }
 
-    /**
-     * This function assumes the input file layout is
-     * level followed by a variable number of placename fields
-     * followed by Longitude, Latitude, Zoom & Icon
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     * @throws Exception
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $source  = Validator::parsedBody($request)->isInArray(['client', 'server'])->string('source');
@@ -135,7 +117,7 @@ class MapDataImportAction implements RequestHandlerInterface
             }
         } else {
             rewind($fp);
-            while (($row = fgetcsv($fp, 0, MapDataService::CSV_SEPARATOR)) !== false) {
+            while (($row = fgetcsv(stream: $fp, separator: MapDataService::CSV_SEPARATOR, escape: '\\')) !== false) {
                 // Skip the header
                 if (!is_numeric($row[0])) {
                     continue;

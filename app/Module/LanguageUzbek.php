@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,20 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocalePl;
 use Fisharebest\Localization\Locale\LocaleUz;
 use Fisharebest\Webtrees\Encodings\UTF8;
 
-/**
- * Class LanguageUzbek.
- */
 class LanguageUzbek extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -71,13 +65,6 @@ class LanguageUzbek extends AbstractModule implements ModuleLanguageInterface
         ];
     }
 
-    /**
-     * Some languages use digraphs and trigraphs.
-     *
-     * @param string $string
-     *
-     * @return string
-     */
     public function initialLetter(string $string): string
     {
         if (str_starts_with($string, 'O' . UTF8::MODIFIER_LETTER_TURNED_COMMA)) {
@@ -103,19 +90,11 @@ class LanguageUzbek extends AbstractModule implements ModuleLanguageInterface
         return mb_substr($string, 0, 1);
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleUz();

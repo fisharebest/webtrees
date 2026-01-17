@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
-use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -43,7 +42,7 @@ class RedirectRelationshipPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -54,7 +53,7 @@ class RedirectRelationshipPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
@@ -90,7 +89,7 @@ class RedirectRelationshipPhpTest extends TestCase
 
     public function testModuleDisabled(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
@@ -101,7 +100,7 @@ class RedirectRelationshipPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $module_service = $this->createMock(ModuleService::class);
+        $module_service = self::createStub(ModuleService::class);
         $module_service
             ->method('findByComponent')
             ->with(ModuleChartInterface::class, $tree, new GuestUser())
@@ -118,7 +117,7 @@ class RedirectRelationshipPhpTest extends TestCase
 
     public function testNoSuchTree(): void
     {
-        $module_service  = $this->createMock(ModuleService::class);
+        $module_service  = self::createStub(ModuleService::class);
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service

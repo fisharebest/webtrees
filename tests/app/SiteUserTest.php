@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SiteUser::class)]
@@ -33,7 +32,6 @@ class SiteUserTest extends TestCase
         Site::setPreference('SMTP_FROM_NAME', 'email@example.com');
         Site::setPreference('SMTP_DISP_NAME', 'My site');
 
-        self::assertInstanceOf(UserInterface::class, $user);
         self::assertSame(0, $user->id());
         self::assertSame('email@example.com', $user->email());
         self::assertSame('My site', $user->realName());

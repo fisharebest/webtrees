@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(GuestUser::class)]
@@ -29,7 +28,6 @@ class GuestUserTest extends TestCase
     {
         $user = new GuestUser();
 
-        self::assertInstanceOf(UserInterface::class, $user);
         self::assertSame(0, $user->id());
         self::assertSame('GUEST_USER', $user->email());
         self::assertSame('GUEST_USER', $user->realName());
@@ -40,7 +38,6 @@ class GuestUserTest extends TestCase
     {
         $user = new GuestUser('guest@example.com', 'guest user');
 
-        self::assertInstanceOf(UserInterface::class, $user);
         self::assertSame(0, $user->id());
         self::assertSame('guest@example.com', $user->email());
         self::assertSame('guest user', $user->realName());

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,7 +33,7 @@ class PasswordResetPageTest extends TestCase
 
     public function testPasswordResetPageWithValidToken(): void
     {
-        $user = $this->createMock(User::class);
+        $user = self::createStub(User::class);
 
         $user_service = $this->createMock(UserService::class);
         $user_service

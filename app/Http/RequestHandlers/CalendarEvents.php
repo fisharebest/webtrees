@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -49,10 +49,7 @@ use function range;
 use function response;
 use function view;
 
-/**
- * Show anniversaries for events in a given day/month/year.
- */
-class CalendarEvents implements RequestHandlerInterface
+final class CalendarEvents implements RequestHandlerInterface
 {
     public function __construct(
         private readonly CalendarService $calendar_service,
@@ -198,7 +195,14 @@ class CalendarEvents implements RequestHandlerInterface
             if (($d + $cal_date->minimumJulianDay() - $week_start) % $days_in_week === 1) {
                 echo '<tr>';
             }
-            echo '<td class="wt-page-options-value">';
+
+            if ($d === $today->day && $cal_date->month === $today->month) {
+                $today_class = 'wt-calendar-today';
+            } else {
+                $today_class = '';
+            }
+
+            echo '<td class="wt-page-options-value ' . $today_class . '">';
             if ($d < 1 || $d > $days_in_month) {
                 if (count($cal_facts[0]) > 0) {
                     echo '<div class="cal_day">', I18N::translate('Day not set'), '</div>';
@@ -212,11 +216,8 @@ class CalendarEvents implements RequestHandlerInterface
                 $tmp   = new Date($cal_date->format('%@ ' . $d . ' %O %E'));
                 $d_fmt = $tmp->minimumDate()->format('%j');
                 echo '<div class="d-flex d-flex justify-content-between">';
-                if ($d === $today->day && $cal_date->month === $today->month) {
-                    echo '<span class="cal_day current_day">', $d_fmt, '</span>';
-                } else {
-                    echo '<span class="cal_day">', $d_fmt, '</span>';
-                }
+                echo '<span class="cal_day">', $d_fmt, '</span>';
+
                 // Show a converted date
                 foreach (explode('_and_', $CALENDAR_FORMAT) as $convcal) {
                     $alt_date = match ($convcal) {

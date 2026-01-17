@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,9 +37,6 @@ use function in_array;
 use function redirect;
 use function route;
 
-/**
- * Class StoriesModule
- */
 class StoriesModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface, ModuleTabInterface
 {
     use ModuleTabTrait;
@@ -107,9 +104,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     }
 
     /**
-     * @param Individual $individual
-     *
-     * @return array<object>
+     * @return array<object{block_id:int,title:string,story_body:string}>
      */
     private function getStoriesForIndividual(Individual $individual): array
     {
@@ -188,11 +183,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         ]), 'menu-story');
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module */
