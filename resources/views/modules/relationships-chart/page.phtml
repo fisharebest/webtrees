@@ -90,7 +90,11 @@ use Fisharebest\Webtrees\View;
 </form>
 
 <?php if ($individual1 !== null && $individual2 !== null) : ?>
-    <div class="wt-ajax-load wt-page-content wt-chart wt-chart-relationships" data-wt-ajax-url="<?= e($ajax_url) ?>"></div>
+    <div class="wt-ajax-load wt-page-content wt-chart wt-chart-relationships" data-wt-ajax-url="<?= e($ajax_url) ?>">
+        <div class="d-flex justify-content-center">
+            <?= view('icons/loading') ?>
+        </div>
+    </div>
 <?php endif ?>
 
 <?php View::push('javascript') ?>
