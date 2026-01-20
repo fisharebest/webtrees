@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-04-09 20:59+0000\n"
+"PO-Revision-Date: 2026-01-21 03:04+0000\n"
 "Last-Translator: ByteFloor <Catelixor+GitHub@proton.me>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/cs/>\n"
@@ -1191,7 +1191,7 @@ msgstr "Přijmout"
 
 #: edit_changes.php:214 edit_changes.php:225
 msgid "Accept all changes"
-msgstr "Schválit všechny změny"
+msgstr "Přijmout všechny změny"
 
 #: admin_module_blocks.php:75 admin_module_charts.php:68
 #: admin_module_menus.php:90 admin_module_reports.php:68
@@ -1325,7 +1325,7 @@ msgstr "Přidat otce"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
 msgid "Add a favorite"
-msgstr "Přidat oblíbeného"
+msgstr "Přidat oblíbené"
 
 #: app/Module/GoogleMapsModule.php:4016
 msgid "Add a geographic location"
@@ -5378,7 +5378,10 @@ msgstr "Každý pramen zaznamenává určité události, obecně pro daný časo
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "Každý uživatelský účet má volbu „automaticky přijmout změny“. Pokud je toto aktivováno, všechny změny provedené uživatelem se ihned uloží. Mnoho správců toto povoluje pro svůj vlastní účet."
+msgstr ""
+"Každý uživatelský účet má volbu „automaticky přijmout změny“. Pokud je "
+"aktivována, všechny změny provedené uživatelem se uloží ihned. Mnoho správců "
+"toto povoluje pro svůj vlastní účet."
 
 #: statistics.php:129
 msgid "Earliest birth"
@@ -10289,11 +10292,11 @@ msgstr "Omán"
 #. I18N: Name of a module
 #: app/Module/OnThisDayModule.php:31
 msgid "On this day"
-msgstr "Toho dne"
+msgstr "V tento den"
 
 #: calendar.php:122
 msgid "On this day…"
-msgstr "Tohoto dne v naší historii…"
+msgstr "V tento den…"
 
 #: app/Functions/FunctionsEdit.php:229
 #: app/Functions/FunctionsPrintFacts.php:274
@@ -10624,11 +10627,15 @@ msgstr "Vývod pro %s"
 #: app/Theme/AbstractTheme.php:1678 edit_changes.php:35 edit_changes.php:49
 #: help_text.php:302 modules_v3/change_report/report.xml:52
 msgid "Pending changes"
-msgstr "Dosud neschválené změny"
+msgstr "Dosud nepřijaté změny"
 
 #: help_text.php:309
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr "Dosud nepřijaté změny se zobrazí pouze tehdy, pokud váš účet má oprávnění upravit dané data. Pokud se odhlásíte, nebudete schopni už to vidět. Probíhající změny se také zobrazí pouze na určitých stránkách. Například se nezobrazují v seznamech, výpisech nebo výsledcích vyhledávání."
+msgstr ""
+"Dosud nepřijaté změny se zobrazí pouze tehdy, pokud váš účet má oprávnění "
+"upravit daná data. Po odhlášení je již neuvidíte. Dosud nepřijaté změny se "
+"navíc zobrazují pouze na určitých stránkách. Například se nezobrazují v "
+"seznamech, výpisech nebo výsledcích vyhledávání."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1719
@@ -12647,7 +12654,7 @@ msgstr "Ukázat rodiče"
 
 #: modules_v3/change_report/report.xml:8
 msgid "Show pending changes"
-msgstr "Zobrazit dosud neschválené změny"
+msgstr "Zobrazit dosud nepřijaté změny"
 
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
@@ -14608,7 +14615,9 @@ msgstr "Toto místo nemá souřadnice"
 
 #: help_text.php:307
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
-msgstr "Tento proces dovoluje vlastníkovi webu se ujistit, že nová informace není v rozporu s konvencemi a standardy, je správně přiřazena k prameni atd."
+msgstr ""
+"Tento proces umožňuje vlastníkovi webu se ujistit, že nová informace není v "
+"rozporu s konvencemi a standardy webu, je správně přiřazena k prameni atd."
 
 #: gedrecord.php:72
 msgid "This record does not exist or you do not have permission to view it."
@@ -14660,7 +14669,9 @@ msgstr "Tento repozitář byl upraven. Měli byste úpravu posoudit a pak ji %1$
 
 #: admin_users.php:552
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr "Tato role má práva role Editor plus práva schvalovat/odmítat změny provedené jinými uživateli."
+msgstr ""
+"Tato role má všechna práva role Editor a navíc práva přijímat/odmítat změny "
+"provedené jinými uživateli."
 
 #: admin_users.php:566
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
@@ -15877,7 +15888,10 @@ msgstr "Když přidáváte nového člena rodiny, může se vám nabídnout př�
 
 #: help_text.php:305
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "Když přidáte, upravíte nebo smažete různé informace, změny se neprojeví ihned. Místo toho se udržují v „probíhající“ oblasti. Tyto probíhající změny musí být zrevidovány moderátorem před tím, než budou přijaty."
+msgstr ""
+"Když přidáte, upravíte nebo smažete informace, změny se neprojeví ihned. "
+"Místo toho jsou uchovány v oblasti „dosud nepřijaté změny“. Tyto změny musí "
+"být zrevidovány moderátorem před tím, než budou přijaty."
 
 #: message.php:132
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
@@ -16225,7 +16239,9 @@ msgstr "Tuto zprávu jste poslali na webtrees uživatelský účet:"
 
 #: admin_site_upgrade.php:99
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr "Před aktualizací byste měli přijmout nebo odmítnout všechny dosud neschválené změny."
+msgstr ""
+"Před aktualizací byste měli přijmout nebo odmítnout všechny dosud nepřijaté "
+"změny."
 
 #: admin_site_upgrade.php:136
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
