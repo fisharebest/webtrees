@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-03-04 12:16+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
+"PO-Revision-Date: 2026-01-21 02:23+0000\n"
+"Last-Translator: Alex Camilleri <camilleri.alex@gmail.com>\n"
+"Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3273,7 +3274,7 @@ msgstr "Canada"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "Impossibile scrivere nella cartella “%s”."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3818,7 +3819,7 @@ msgstr "Convivenza"
 
 #: app/Elements/MarriageType.php:61
 msgid "Common-law marriage"
-msgstr ""
+msgstr "Convivenza"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:76
@@ -3877,7 +3878,7 @@ msgstr "Connessione al database"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "Tipo di connessione"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -10381,7 +10382,7 @@ msgstr "Notturno"
 #. I18N: https://nominatim.org
 #: app/Module/MapGeoLocationNominatim.php:39
 msgid "Nominatim"
-msgstr ""
+msgstr "Nominatim"
 
 #: resources/views/admin/gedcom-export-options.phtml:104
 #: resources/xml/reports/cemetery_report.xml:7
@@ -12297,12 +12298,12 @@ msgstr "La versione installata di SQLite è %s. È richiesta almeno la versione 
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:209
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #. I18N: Use SMTP with STARTTLS, or Explicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:211
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173
@@ -12820,7 +12821,7 @@ msgstr "Configurazione guidata di webtrees"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Sex"
-msgstr ""
+msgstr "Sesso"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
@@ -12872,7 +12873,7 @@ msgstr "Condividi l'URL"
 
 #: app/Module/ShareAnniversaryModule.php:73
 msgid "Share the anniversary of an event"
-msgstr ""
+msgstr "Condividi l'anniversario di un evento"
 
 #: app/CustomTags/Gedcom7.php:87 app/CustomTags/Gedcom7.php:102
 #: app/CustomTags/Gedcom7.php:116 app/CustomTags/Gedcom7.php:138
@@ -12897,7 +12898,7 @@ msgstr "Note condivise"
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
 #: resources/views/admin/control-panel.phtml:748
 msgid "Shares"
-msgstr ""
+msgstr "Condivisioni"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:160
@@ -13039,7 +13040,7 @@ msgstr "Mostra l’accordo sulle condizioni d’uso nella pagina «Richiesta di 
 
 #: resources/views/modules/media/tab.phtml:24
 msgid "Show all media"
-msgstr ""
+msgstr "Mostra tutti i media"
 
 #: resources/views/modules/notes/tab.phtml:30
 msgid "Show all notes"
@@ -13190,7 +13191,7 @@ msgstr "Visualizza i genitori"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:85
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "Show password"
-msgstr ""
+msgstr "Mostra la password"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
@@ -13285,7 +13286,7 @@ msgstr "Mostra l’elenco dei cognomi"
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:44
 #: app/Module/ModuleMapLinkTrait.php:49
 msgid "Show the location of an event on an external map."
-msgstr ""
+msgstr "Mostra il luogo di un evento in una mappa esterna."
 
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:94
@@ -13394,7 +13395,7 @@ msgstr "Accesso e registrazione"
 
 #: app/CustomTags/Heredis.php:55
 msgid "Signature"
-msgstr ""
+msgstr "Firma"
 
 #: resources/views/help/date.phtml:138
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13536,10 +13537,13 @@ msgstr "Alcuni programmi creano file GEDCOM contenenti i percorsi completi dei f
 #: app/Module/FixNameTags.php:93
 msgid "Some genealogy software stores all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr ""
+"Alcuni programmi mettono insieme tutti i nomi in un singolo record, usando "
+"tag come _MARNM e _AKA. Un'alternativa è quella di creare un nuovo record "
+"per ogni nome."
 
 #: resources/views/admin/tags.phtml:37
 msgid "Some of these GEDCOM tags are used infrequently or never used."
-msgstr ""
+msgstr "Alcune di queste tag GEDCOM sono usate raramente o mai."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:632
@@ -13567,7 +13571,7 @@ msgstr "Figlio di %s"
 #: app/CustomTags/Gedcom7.php:84 app/CustomTags/Gedcom7.php:113
 #: app/CustomTags/TheMasterGenealogist.php:52
 msgid "Sort date"
-msgstr ""
+msgstr "Ordina data"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:58
@@ -13590,7 +13594,7 @@ msgstr "Criterio di ordinamento"
 
 #: app/CustomTags/Gedcom7.php:86 app/CustomTags/Gedcom7.php:115
 msgid "Sort time"
-msgstr ""
+msgstr "Ordina orario"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:166
@@ -13653,7 +13657,7 @@ msgstr "Citazione fonte"
 
 #: resources/views/admin/tags.phtml:326
 msgid "Source citations"
-msgstr ""
+msgstr "Citazioni fonte"
 
 #: resources/xml/reports/fact_sources.xml:6
 msgid "Source type"
@@ -13773,7 +13777,7 @@ msgstr "St. Paul, Minnesota, Stati Uniti d'America"
 
 #: resources/views/admin/tags.phtml:32
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Tag GEDCOM standard"
 
 #: resources/views/modules/random_media/config.phtml:48
 msgid "Start slide show on page load"
@@ -14136,7 +14140,7 @@ msgstr "Tegucigalpa, Honduras"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
-msgstr ""
+msgstr "Modello"
 
 #: resources/views/modules/html/config.phtml:29
 msgid "Templates"
@@ -14185,7 +14189,7 @@ msgstr "Testo"
 
 #: app/CustomTags/MyHeritage.php:57
 msgid "Text direction"
-msgstr ""
+msgstr "Direzione testo"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:484
@@ -14207,7 +14211,7 @@ msgstr "Il file GEDCOM <i>%s</i> è stato importato."
 
 #: resources/views/admin/tags.phtml:35
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
-msgstr ""
+msgstr "Lo standard GEDCOM offre un grande numero di campi dati, chiamati tag."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104
@@ -14241,7 +14245,7 @@ msgstr "L'opzione “%1$s” è attivata in PHP.INI."
 
 #: resources/views/modules/share-url/share.phtml:31
 msgid "The URL was copied to the clipboard"
-msgstr ""
+msgstr "L'URL è stata copiata negli appunti"
 
 #: resources/views/emails/approve-user-html.phtml:22
 #: resources/views/emails/approve-user-text.phtml:16
@@ -14420,6 +14424,8 @@ msgstr "L’elenco seguente riporta i requisiti tipici."
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
 msgstr ""
+"I dati del form sono incompleti. Forse devi aumentare il max_input_vars sul "
+"tuo server?"
 
 #: app/Http/RequestHandlers/HelpText.php:281
 msgid "The help text has not been written for this item."
@@ -14482,7 +14488,7 @@ msgstr "I requisiti di memoria e di tempi di calcolo dipendono dal numero di per
 #: app/Http/RequestHandlers/BroadcastAction.php:83
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "Il messaggio non è stato inviato a %s."
 
 #: app/Http/RequestHandlers/ContactAction.php:149
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:99
