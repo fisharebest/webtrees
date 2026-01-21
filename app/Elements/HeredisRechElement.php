@@ -17,24 +17,31 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\CustomTags;
+namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\TestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
-
-#[CoversClass(Heredis::class)]
-class HeredisTest extends TestCase
+/**
+ * Heredis custom tag *:*:_RECH - Research data of an event.
+ */
+class HeredisRechElement extends EmptyElement
 {
-    public function testClass(): void
-    {
-        self::assertTrue(class_exists(Heredis::class));
-    }
+    protected const array SUBTAGS = [
+        '_PROJ' => '0:1',
+        'TYPE'  => '0:1',
+        'PLAC'  => '0:1',
+        'DATE'  => '0:1',
+        'REFN'  => '0:1',
+        'WWW'   => '0:1',
+        'NOTE'  => '0:1',
+    ];
 
-    public function testHeredis(): void
+    /**
+     * Should we collapse the children of this element when editing?
+     * FIXME: label is not shown, it does not have a control to collapse
+     *
+     * @return bool
+     */
+    public function collapseChildren(): bool
     {
-        $heredis = new Heredis();
-        self::assertSame('Heredis', $heredis->name());
-        self::assertArrayHasKey('HEAD:_GUID', $heredis->tags());
-        self::assertArrayHasKey('SOUR:_CREA', $heredis->tags());
+        return true;
     }
 }
