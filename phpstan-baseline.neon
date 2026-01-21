@@ -1,6 +1,24 @@
 parameters:
 	ignoreErrors:
 		-
+			rawMessage: '''
+				Call to deprecated method legacyNameAlgorithm() of class Fisharebest\Webtrees\Services\RelationshipService:
+				This code was originally Functions::getRelationshipNameFromPath
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: app/Module/PedigreeMapModule.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method legacyNameAlgorithm() of class Fisharebest\Webtrees\Services\RelationshipService:
+				This code was originally Functions::getRelationshipNameFromPath
+			'''
+			identifier: method.deprecated
+			count: 5
+			path: app/Module/RelationshipsChartModule.php
+
+		-
 			rawMessage: Access to an undefined property Fisharebest\Webtrees\GedcomRecord::$generation.
 			identifier: property.notFound
 			count: 1
@@ -11,6 +29,15 @@ parameters:
 			identifier: method.notFound
 			count: 17
 			path: app/Services/IndividualFactsService.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method legacyNameAlgorithm() of class Fisharebest\Webtrees\Services\RelationshipService:
+				This code was originally Functions::getRelationshipNameFromPath
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: app/Services/RelationshipService.php
 
 		-
 			rawMessage: 'Call to an undefined method Fisharebest\Webtrees\GedcomRecord::getBirthDate().'
