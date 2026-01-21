@@ -2505,7 +2505,7 @@ parameters:
 		-
 			rawMessage: 'Parameter #1 $value of function e expects Illuminate\Contracts\Support\DeferringDisplayableValue|Illuminate\Contracts\Support\Htmlable|string|null, mixed given.'
 			identifier: argument.type
-			count: 4
+			count: 5
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
@@ -2535,7 +2535,7 @@ parameters:
 		-
 			rawMessage: 'Parameter #2 $parameters of function route expects array<array<string>|bool|int|string|null>, array<string, mixed> given.'
 			identifier: argument.type
-			count: 3
+			count: 4
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
@@ -7147,15 +7147,15 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			rawMessage: 'Property Fisharebest\Webtrees\Report\ReportParserGenerate::$list (array<Fisharebest\Webtrees\GedcomRecord|static(Fisharebest\Webtrees\Report\ReportParserGenerate)>) does not accept array<(object{generation: int}&stdClass)>.'
-			identifier: assign.propertyType
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
 			rawMessage: 'Property Fisharebest\Webtrees\Report\ReportParserGenerate::$list (array<Fisharebest\Webtrees\GedcomRecord|static(Fisharebest\Webtrees\Report\ReportParserGenerate)>) does not accept array<Fisharebest\Webtrees\GedcomRecord|static(Fisharebest\Webtrees\Report\ReportParserGenerate)|null>.'
 			identifier: assign.propertyType
 			count: 2
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			rawMessage: 'Property Fisharebest\Webtrees\Report\ReportParserGenerate::$list (array<Fisharebest\Webtrees\GedcomRecord|static(Fisharebest\Webtrees\Report\ReportParserGenerate)>) does not accept array<object{generation: int}&stdClass>.'
+			identifier: assign.propertyType
+			count: 1
 			path: app/Report/ReportParserGenerate.php
 
 		-
@@ -9235,6 +9235,12 @@ parameters:
 			path: app/StatisticsData.php
 
 		-
+			rawMessage: Cannot cast mixed to string.
+			identifier: cast.string
+			count: 1
+			path: app/StatisticsData.php
+
+		-
 			rawMessage: 'Method Fisharebest\Webtrees\StatisticsData::ageBetweenSpousesQuery() should return array<array{family: Fisharebest\Webtrees\Family, age: string}> but returns array.'
 			identifier: return.type
 			count: 1
@@ -9435,7 +9441,7 @@ parameters:
 		-
 			rawMessage: Possibly invalid array key type mixed.
 			identifier: offsetAccess.invalidOffset
-			count: 10
+			count: 11
 			path: app/StatisticsData.php
 
 		-

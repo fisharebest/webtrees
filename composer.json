@@ -87,7 +87,7 @@
         "composer/composer": "2.9.3",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.9.1",
-        "phpstan/phpstan": "2.1.33",
+        "phpstan/phpstan": "2.1.36",
         "phpunit/phpunit": "9.6.31",
         "squizlabs/php_codesniffer": "4.0.1"
     },
