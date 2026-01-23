@@ -254,6 +254,28 @@ class DB extends Manager
         return new Expression($sql);
     }
 
+    public static function columnToUpper(string $column): string|Expression
+    {
+        switch (self::driverName()) {
+            case self::POSTGRES:
+            case self::SQLITE:
+                return new Expression('UPPER(' . $column . ')');
+            default:
+                return $column;
+        }
+    }
+
+    public static function columnToLower(string $column): string|Expression
+    {
+        switch (self::driverName()) {
+            case self::POSTGRES:
+            case self::SQLITE:
+                return new Expression('LOWER(' . $column . ')');
+            default:
+                return $column;
+        }
+    }
+
     public static function regexOperator(): string
     {
         return self::REGEX_OPERATOR[self::driverName()];
