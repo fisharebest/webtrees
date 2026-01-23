@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2026-01-21 02:23+0000\n"
+"PO-Revision-Date: 2026-01-23 19:59+0000\n"
 "Last-Translator: Alex Camilleri <camilleri.alex@gmail.com>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/it/>\n"
@@ -14535,6 +14535,8 @@ msgstr "Ai nuovi utenti sarà richiesto di confermare i loro indirizzi email pri
 #: resources/views/admin/tags.phtml:939
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"La prossima versione dello standard GEDCOM aggiungerà nuovi tag e ne "
+"rimuoverà altri. Puoi già utilizzare alcuni dei nuovi tag."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:62
 msgid "The note has been created"
@@ -14550,7 +14552,7 @@ msgstr "Parametro “%s” mancante."
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "Il parametro “percorso” non è valido."
 
 #: app/Http/RequestHandlers/SetupWizard.php:379
 msgid "The password needs to be at least six characters long."
@@ -14776,7 +14778,7 @@ msgstr "Non ci sono fatti per questa persona."
 #: app/Module/AbstractIndividualListModule.php:180
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "Non ci sono individui con il cognome “%s”"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:326
 msgid "There are no links to this media object."
@@ -14818,7 +14820,7 @@ msgstr[1] "Non ci sono modifiche negli ultimi %s giorni."
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
-msgstr ""
+msgstr "Si è verificato un errore durante la ricerca della nuova versione."
 
 #: app/Http/RequestHandlers/AddMediaFileAction.php:76
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:88
@@ -14936,7 +14938,7 @@ msgstr "Questo albero genealogico è stato aggiornato il %s."
 
 #: app/Http/RequestHandlers/CheckTree.php:307
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "Il nome del file non è compatibile con il formato file GEDZIP."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:33
@@ -15160,7 +15162,7 @@ msgstr "Questa pagina permette di aggirare i moduli usuali, andando a modificare
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "Questa pagina è stata eliminata."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -15238,7 +15240,7 @@ msgstr "Il limite di memoria del server è pari a %s MB e il limite dei tempi di
 #: app/Module/BingMaps.php:115 app/Module/GoogleMaps.php:115
 #: app/Module/HereMaps.php:74 app/Module/MapBox.php:74
 msgid "This service requires an API key."
-msgstr ""
+msgstr "Questo servizio richiede una chiave API."
 
 #: app/Auth.php:496
 msgid "This source does not exist or you do not have permission to view it."
@@ -15330,7 +15332,7 @@ msgstr "Ora"
 #: app/CustomTags/Aldfaer.php:71 app/CustomTags/Gedcom7.php:124
 #: app/CustomTags/ProGen.php:56
 msgid "Time of birth"
-msgstr ""
+msgstr "Ora di nascita"
 
 #: resources/views/admin/tags.phtml:960
 msgid "Time of birth and time of death"
