@@ -215,7 +215,11 @@ final class ManageMediaData implements RequestHandlerInterface
                     ->map(static fn (string $file): array => (array) $file);
 
                 $search_columns = [0];
-                $sort_columns   = [0 => 0];
+                $sort_columns   = [
+                    0 => 0,
+                    1 => 0,
+                    2 => 0,
+                ];
 
                 $callback = function (array $row) use ($data_filesystem, $media_trees): array {
                     try {
