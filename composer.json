@@ -84,11 +84,11 @@
         "ext-libxml": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
-        "composer/composer": "2.9.3",
+        "composer/composer": "2.9.4",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.9.1",
-        "phpstan/phpstan": "2.1.36",
-        "phpunit/phpunit": "9.6.31",
+        "phpstan/phpstan": "2.1.37",
+        "phpunit/phpunit": "9.6.32",
         "squizlabs/php_codesniffer": "4.0.1"
     },
     "suggest": {
