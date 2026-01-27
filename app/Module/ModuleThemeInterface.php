@@ -68,4 +68,11 @@ interface ModuleThemeInterface extends ModuleInterface
      * @return array<string>
      */
     public function stylesheets(): array;
+
+    /**
+     * Sets the base Bootstrap theme.
+     *
+     * @return string
+     */
+    public function bootstrapTheme(): string;
 }

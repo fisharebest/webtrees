@@ -31,7 +31,7 @@ use Psr\Http\Message\ServerRequestInterface;
 ?>
 
 <!DOCTYPE html>
-<html dir="<?= I18N::locale()->direction() ?>" lang="<?= I18N::locale()->languageTag() ?>">
+<html dir="<?= I18N::locale()->direction() ?>" lang="<?= I18N::locale()->languageTag() ?>" data-bs-theme="<?= e(Registry::container()->get(ModuleThemeInterface::class)->bootstrapTheme()) ?>">
     <head>
         <meta charset="UTF-8">
         <meta name="csrf" content="<?= e(csrf_token()) ?>">
