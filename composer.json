@@ -88,7 +88,7 @@
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.9.1",
         "phpstan/phpstan": "2.1.37",
-        "phpunit/phpunit": "9.6.32",
+        "phpunit/phpunit": "9.6.34",
         "squizlabs/php_codesniffer": "4.0.1"
     },
     "suggest": {
