@@ -54,10 +54,10 @@ use Fisharebest\Webtrees\I18N;
 </div>
 
 <div class="row mb-3">
-    <label class="col-sm-3 col-form-label">
+    <label for="delay" class="col-sm-3 col-form-label">
         <?= I18N::translate('How long to show each slide (seconds)') ?>
     </label>
     <div class="col-sm-9">
-        <?= view('components/select-number', ['name' => 'delay', 'selected' => $delay, 'options' => [1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 30, 45, 60, 75, 90, 120, 150, 180, 240, 300, 360, 480, 600, 720, 900]]) ?>
+        <input type="number" name="delay" id="delay" class="form-control" value="<?= $delay ?>" min="1" max="999">
     </div>
 </div>
