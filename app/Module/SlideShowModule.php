@@ -46,7 +46,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
     private const string LINK_INDIVIDUAL = 'indi';
 
     // How long to show each slide (seconds)
-    private const int DELAY = 6;
+    private const string DEFAULT_DELAY = '6';
 
     // New data is normalized.  Old data may contain jpg/jpeg, tif/tiff.
     private const array SUPPORTED_FORMATS = ['bmp', 'gif', 'jpeg', 'jpg', 'png', 'tif', 'tiff', 'webp'];
@@ -81,9 +81,11 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
     {
         $request       = Registry::container()->get(ServerRequestInterface::class);
         $default_start = (bool) $this->getBlockSetting($block_id, 'start');
+        $default_delay = (int) $this->getBlockSetting($block_id, 'delay', self::DEFAULT_DELAY);
         $filter_links  = $this->getBlockSetting($block_id, 'filter', self::LINK_ALL);
         $controls      = $this->getBlockSetting($block_id, 'controls', '1');
         $start         = Validator::queryParams($request)->boolean('start', $default_start);
+        $delay         = Validator::queryParams($request)->integer('delay', $default_delay);
 
         $filter_types = [
             $this->getBlockSetting($block_id, 'filter_audio', '0') ? SourceMediaType::VALUE_AUDIO : null,
@@ -158,7 +160,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         if ($random_media instanceof Media) {
             $content = view('modules/random_media/slide-show', [
                 'block_id'            => $block_id,
-                'delay'               => self::DELAY,
+                'delay'               => $delay,
                 'linked_families'     => $this->linked_record_service->linkedFamilies($random_media),
                 'linked_individuals'  => $this->linked_record_service->linkedIndividuals($random_media),
                 'linked_sources'      => $this->linked_record_service->linkedSources($random_media),
@@ -236,6 +238,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         $this->setBlockSetting($block_id, 'filter', Validator::parsedBody($request)->string('filter'));
         $this->setBlockSetting($block_id, 'controls', Validator::parsedBody($request)->string('controls'));
         $this->setBlockSetting($block_id, 'start', Validator::parsedBody($request)->string('start'));
+        $this->setBlockSetting($block_id, 'delay', (string)Validator::parsedBody($request)->integer('delay'));
         $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_AUDIO), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_AUDIO, false));
         $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_BOOK), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_BOOK, false));
         $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_CARD), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_CARD, false));
@@ -269,6 +272,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         $filter   = $this->getBlockSetting($block_id, 'filter', self::LINK_ALL);
         $controls = $this->getBlockSetting($block_id, 'controls', '1');
         $start    = $this->getBlockSetting($block_id, 'start', '0');
+        $delay    = (int) $this->getBlockSetting($block_id, 'delay', self::DEFAULT_DELAY);
 
         $filters = [
             SourceMediaType::VALUE_AUDIO       => $this->getBlockSetting($block_id, 'filter_audio', '0'),
@@ -299,6 +303,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             'filters'  => $filters,
             'formats'  => $formats,
             'start'    => $start,
+            'delay'    => $delay,
         ]);
     }
 }
