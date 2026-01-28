@@ -10,6 +10,7 @@ use Fisharebest\Webtrees\I18N;
  * @var array<string,string> $filters
  * @var array<string,string> $formats
  * @var string               $start
+ * @var int                  $delay
  */
 
 ?>
@@ -49,5 +50,14 @@ use Fisharebest\Webtrees\I18N;
     </label>
     <div class="col-sm-9">
         <?= view('components/radios-inline', ['name' => 'start', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $start]) ?>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <label for="delay" class="col-sm-3 col-form-label">
+        <?= I18N::translate('How long to show each slide (seconds)') ?>
+    </label>
+    <div class="col-sm-9">
+        <input type="number" name="delay" id="delay" class="form-control" value="<?= $delay ?>" min="1" max="999">
     </div>
 </div>
