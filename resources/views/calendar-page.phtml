@@ -246,6 +246,8 @@ use Fisharebest\Webtrees\Tree;
     </tr>
 </table>
 
-<div class="wt-ajax-load wt-page-content" data-wt-ajax-url="<?= e(route(CalendarEvents::class, ['tree' => $tree->name(), 'cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $year, 'view' => $view, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx])) ?>"></div>
+<div class="wt-ajax-load wt-page-content" data-wt-ajax-url="<?= e(route(CalendarEvents::class, ['tree' => $tree->name(), 'cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $year, 'view' => $view, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx])) ?>">
+    <?= view('icons/loading') ?>
+</div>
 
 <?= view('modals/ajax') ?>

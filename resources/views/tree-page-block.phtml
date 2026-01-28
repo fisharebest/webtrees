@@ -15,7 +15,9 @@ use Fisharebest\Webtrees\Tree;
 ?>
 
 <?php if ($block->loadAjax()) : ?>
-    <div class="wt-ajax-load" data-wt-ajax-url="<?= e(route(TreePageBlock::class, ['tree' => $tree->name(), 'block_id' => $block_id])) ?>"></div>
+    <div class="wt-ajax-load" data-wt-ajax-url="<?= e(route(TreePageBlock::class, ['tree' => $tree->name(), 'block_id' => $block_id])) ?>">
+        <?= view('icons/loading') ?>
+    </div>
 <?php else : ?>
     <?= $block->getBlock($tree, $block_id, ModuleBlockInterface::CONTEXT_TREE_PAGE) ?>
 <?php endif ?>
