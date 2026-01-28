@@ -669,13 +669,10 @@ div.faq_body {
     left: 0;
 }
 
-/*
- * Any element that is loaded dynamically has the class wt-ajax-load.
- * We can provide a "loading" placeholder for empty elements with this class.
- */
-.wt-ajax-load:empty {
-    height: 32px;
-    background: url(images/loading-32x32.gif) no-repeat 50% 50%;
+.wt-icon-loading {
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
 }
 
 /*
