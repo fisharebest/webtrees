@@ -37,11 +37,11 @@ import { dom, library } from '@fortawesome/fontawesome-svg-core';
 import {
   // For resources/views/icons/*
   faAddressCard, faArrowDown, faArrowLeft, faArrowRight, faArrowsAltV, faArrowUp, faBan, faBars, faBell,
-  faCalendar, faCaretDown, faCaretUp, faCheck, faChildren, faCodeBranch, faCompress, faCopy, faDatabase,
-  faDownload, faEnvelope, faExclamationTriangle, faExpand, faFile, faFileAlt, faFileImage, faFolder,
-  faGenderless, faGripHorizontal, faGripLines, faHistory, faInfoCircle, faKeyboard, faLanguage, faLink,
-  faList, faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faMinusSquare, faPaintBrush, faPause,
-  faPencilAlt, faPlay, faPlus, faPlusSquare, faPuzzlePiece, faQuestionCircle, faRedo, faSearch,
+  faCalendar, faCaretDown, faCaretUp, faCheck, faChildren, faCircleNotch, faCodeBranch, faCompress, faCopy,
+  faDatabase, faDownload, faEnvelope, faExclamationTriangle, faExpand, faFile, faFileAlt, faFileImage,
+  faFolder, faGenderless, faGripHorizontal, faGripLines, faHistory, faInfoCircle, faKeyboard, faLanguage,
+  faLink, faList, faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faMinusSquare, faPaintBrush,
+  faPause, faPencilAlt, faPlay, faPlus, faPlusSquare, faPuzzlePiece, faQuestionCircle, faRedo, faSearch,
   faSearchLocation, faSearchMinus, faSearchPlus, faServer, faShareAlt, faSitemap, faSortAmountDown, faStar,
   faStepForward, faStickyNote, faStop, faSyncAlt, faTags, faThList, faThumbtack, faTimes, faTransgender,
   faTrashAlt, faTree, faUndo, faUniversity, faUnlink, faUpload, faUser, faUsers, faVenus, faWrench,
@@ -83,11 +83,11 @@ window.$ = window.jQuery = $;
 library.add(
   // For resources/views/icons/*
   faAddressCard, faArrowDown, faArrowLeft, faArrowRight, faArrowsAltV, faArrowUp, faBan, faBars, faBell,
-  faCalendar, faCaretDown, faCaretUp, faCheck, faChildren, faCodeBranch, faCompress, faCopy, faDatabase,
-  faDownload, faEnvelope, faExclamationTriangle, faExpand, faFile, faFileAlt, faFileImage, faFolder,
-  faGenderless, faGripHorizontal, faGripLines, faHistory, faInfoCircle, faKeyboard, faLanguage, faLink,
-  faList, faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faMinusSquare, faPaintBrush, faPause,
-  faPencilAlt, faPlay, faPlus, faPlusSquare, faPuzzlePiece, faQuestionCircle, faRedo, faSearch,
+  faCalendar, faCaretDown, faCaretUp, faCheck, faChildren, faCircleNotch, faCodeBranch, faCompress, faCopy,
+  faDatabase, faDownload, faEnvelope, faExclamationTriangle, faExpand, faFile, faFileAlt, faFileImage,
+  faFolder, faGenderless, faGripHorizontal, faGripLines, faHistory, faInfoCircle, faKeyboard, faLanguage,
+  faLink, faList, faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faMinusSquare, faPaintBrush,
+  faPause, faPencilAlt, faPlay, faPlus, faPlusSquare, faPuzzlePiece, faQuestionCircle, faRedo, faSearch,
   faSearchLocation, faSearchMinus, faSearchPlus, faServer, faShareAlt, faSitemap, faSortAmountDown, faStar,
   faStepForward, faStickyNote, faStop, faSyncAlt, faTags, faThList, faThumbtack, faTimes, faTransgender,
   faTrashAlt, faTree, faUndo, faUniversity, faUnlink, faUpload, faUser, faUsers, faVenus, faWrench,
