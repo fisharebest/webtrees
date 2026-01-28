@@ -69,6 +69,12 @@ use League\Flysystem\Local\LocalFilesystemAdapter;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Throwable;
+
+use function file_get_contents;
+use function file_put_contents;
+use function str_replace;
+use function strtolower;
 
 final class ControlPanel implements RequestHandlerInterface
 {

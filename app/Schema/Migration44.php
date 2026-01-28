@@ -67,9 +67,9 @@ class Migration44 implements MigrationInterface
         }
 
         // This table should only exist if we are upgrading an old installation, which would have been
-        // created with MySQL.  Therefore we can safely use MySQL-specific SQL.
+        // created with MySQL.  Therefore, we can safely use MySQL-specific SQL.
         if (DB::schema()->hasTable('placelocation')) {
-            if (DB::driverName() === DB::MYSQL) {
+            if (DB::driverName() === DB::MYSQL || DB::driverName() === DB::MARIADB) {
                 DB::table('placelocation')
                     ->where('pl_lati', '=', '')
                     ->orWhere('pl_long', '=', '')

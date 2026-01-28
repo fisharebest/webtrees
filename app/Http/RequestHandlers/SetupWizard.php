@@ -82,6 +82,7 @@ final class SetupWizard implements RequestHandlerInterface
     ];
 
     private const array DEFAULT_PORTS = [
+        DB::MARIADB    => '3306',
         DB::MYSQL      => '3306',
         DB::POSTGRES   => '5432',
         DB::SQLITE     => '',
@@ -356,6 +357,7 @@ final class SetupWizard implements RequestHandlerInterface
                 touch(Webtrees::ROOT_DIR . 'data/' . $data['dbname'] . '.sqlite');
                 break;
 
+            case DB::MARIADB:
             case DB::MYSQL:
                 DB::connect(
                     driver: $data['dbtype'],

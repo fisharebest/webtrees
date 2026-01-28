@@ -71,7 +71,7 @@ class ServerCheckService
      */
     public function serverErrors(string $driver = ''): Collection
     {
-        $errors = Collection::make([
+        $errors = new Collection([
             $this->databaseDriverErrors($driver),
             $this->checkPhpExtension('mbstring'),
             $this->checkPhpExtension('iconv'),
@@ -95,7 +95,7 @@ class ServerCheckService
      */
     public function serverWarnings(string $driver = ''): Collection
     {
-        $warnings = Collection::make([
+        $warnings = new Collection([
             $this->databaseDriverWarnings($driver),
             $this->checkPhpExtension('curl'),
             $this->checkPhpExtension('fileinfo'),
@@ -242,36 +242,28 @@ class ServerCheckService
      */
     private function databaseDriverErrors(string $driver): Collection
     {
-        switch ($driver) {
-            case DB::MYSQL:
-                return Collection::make([
-                    $this->checkPhpExtension('pdo'),
-                    $this->checkPhpExtension('pdo_mysql'),
-                ]);
-
-            case DB::SQLITE:
-                return Collection::make([
-                    $this->checkPhpExtension('pdo'),
-                    $this->checkPhpExtension('sqlite3'),
-                    $this->checkPhpExtension('pdo_sqlite'),
-                    $this->checkSqliteVersion(),
-                ]);
-
-            case DB::POSTGRES:
-                return Collection::make([
-                    $this->checkPhpExtension('pdo'),
-                    $this->checkPhpExtension('pdo_pgsql'),
-                ]);
-
-            case DB::SQL_SERVER:
-                return Collection::make([
-                    $this->checkPhpExtension('pdo'),
-                    $this->checkPhpExtension('pdo_sqlsrv'),
-                ]);
-
-            default:
-                return new Collection();
-        }
+        return match ($driver) {
+            DB::MARIADB,
+            DB::MYSQL => new Collection([
+                $this->checkPhpExtension('pdo'),
+                $this->checkPhpExtension('pdo_mysql'),
+            ]),
+            DB::SQLITE             => new Collection([
+                $this->checkPhpExtension('pdo'),
+                $this->checkPhpExtension('sqlite3'),
+                $this->checkPhpExtension('pdo_sqlite'),
+                $this->checkSqliteVersion(),
+            ]),
+            DB::POSTGRES           => new Collection([
+                $this->checkPhpExtension('pdo'),
+                $this->checkPhpExtension('pdo_pgsql'),
+            ]),
+            DB::SQL_SERVER         => new Collection([
+                $this->checkPhpExtension('pdo'),
+                $this->checkPhpExtension('pdo_sqlsrv'),
+            ]),
+            default                => new Collection(),
+        };
     }
 
     /**
