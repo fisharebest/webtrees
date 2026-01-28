@@ -91,9 +91,7 @@ use Fisharebest\Webtrees\View;
 
 <?php if ($individual1 !== null && $individual2 !== null) : ?>
     <div class="wt-ajax-load wt-page-content wt-chart wt-chart-relationships" data-wt-ajax-url="<?= e($ajax_url) ?>">
-        <div class="d-flex justify-content-center">
-            <?= view('icons/loading') ?>
-        </div>
+        <?= view('icons/loading') ?>
     </div>
 <?php endif ?>
 
