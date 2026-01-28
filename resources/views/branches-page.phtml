@@ -57,5 +57,7 @@ use Fisharebest\Webtrees\Tree;
 </form>
 
 <?php if ($ajax_url !== '') : ?>
-    <div class="wt-ajax-load wt-page-content wt-chart wt-branches" data-wt-ajax-url="<?= e($ajax_url) ?>"></div>
+    <div class="wt-ajax-load wt-page-content wt-chart wt-branches" data-wt-ajax-url="<?= e($ajax_url) ?>">
+        <?= view('icons/loading') ?>
+    </div>
 <?php endif ?>

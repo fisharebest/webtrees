@@ -62,4 +62,6 @@ use Fisharebest\Webtrees\Tree;
     <?= csrf_field() ?>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-chart-descendants" data-wt-ajax-url="<?= e($ajax_url) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-chart-descendants" data-wt-ajax-url="<?= e($ajax_url) ?>">
+    <?= view('icons/loading') ?>
+</div>
