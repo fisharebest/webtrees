@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -188,53 +188,53 @@
     datestr = datestr.replace(/([A-Z])(\d)/g, '$1 $2');
 
     // Shortcut for quarter format, "Q1 1900" => "BET JAN 1900 AND MAR 1900".
-    if (datestr.match(/^Q ([1-4]) (\d\d\d\d)$/)) {
-      datestr = 'BET ' + months[RegExp.$1 * 3 - 3] + ' ' + RegExp.$2 + ' AND ' + months[RegExp.$1 * 3 - 1] + ' ' + RegExp.$2;
-    }
+    datestr = datestr.replace(/^Q ([1-4]) (\d\d\d\d)$/, function (match, c1, c2) {
+      return 'BET ' + months[c1 * 3 - 3] + ' ' + c2 + ' AND ' + months[c1 * 3 - 1] + ' ' + c2;
+    });
 
-    // Shortcut for @#Dxxxxx@ 01 01 1400, etc.
-    if (datestr.match(/^(@#DHIJRI@|HIJRI)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-      datestr = '@#DHIJRI@' + RegExp.$2 + hijri_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
-    }
-    if (datestr.match(/^(@#DJALALI@|JALALI)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-      datestr = '@#DJALALI@' + RegExp.$2 + jalali_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
-    }
-    if (datestr.match(/^(@#DHEBREW@|HEBREW)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-      datestr = '@#DHEBREW@' + RegExp.$2 + hebrew_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
-    }
-    if (datestr.match(/^(@#DFRENCH R@|FRENCH)( \d?\d )(\d?\d)( \d?\d?\d?\d)$/)) {
-      datestr = '@#DFRENCH R@' + RegExp.$2 + french_months[parseInt(RegExp.$3, 10) - 1] + RegExp.$4;
-    }
+    // Shortcuts for @#Dxxxxx@ 01 01 1400
+    datestr = datestr.replace(/(@#DHIJRI@|HIJRI)( \d?\d )(\d?\d)( \d?\d?\d?\d)/, function (match,c1, c2, c3, c4) {
+      return '@#DHIJRI@' + c2 + hijri_months[c3 - 1] + c4;
+    });
+    datestr = datestr.replace(/(@#DJALALI@|JALALI)( \d?\d )(\d?\d)( \d?\d?\d?\d)/, function (match,c1, c2, c3, c4) {
+      return '@#DJALALI@' + c2 + jalali_months[c3 - 1] + c4;
+    });
+    datestr = datestr.replace(/(@#DHEBREW@|HEBREW)( \d?\d )(\d?\d)( \d?\d?\d?\d)/, function (match,c1, c2, c3, c4) {
+      return '@#HEBREW@' + c2 + hebrew_months[c3 - 1] + c4;
+    });
+    datestr = datestr.replace(/(@#DFRENCH R@|FRENCH)( \d?\d )(\d?\d)( \d?\d?\d?\d)/, function (match,c1, c2, c3, c4) {
+      return '@#DFRENCH R@' + c2 + french_months[c3 - 1] + c4;
+    });
 
     // All digit dates
-    datestr = datestr.replace(/(\d\d)(\d\d)(\d\d)(\d\d)/g, function () {
-      if (RegExp.$1 > '12' && RegExp.$3 <= '12' && RegExp.$4 <= '31') {
-        return RegExp.$4 + ' ' + months[RegExp.$3 - 1] + ' ' + RegExp.$1 + RegExp.$2;
+    datestr = datestr.replace(/(\d\d)(\d\d)(\d\d)(\d\d)/g, function (match, c1, c2, c3, c4) {
+      if (c1 > '12' && c3 <= '12' && c4 <= '31') {
+        return c4 + ' ' + months[c3 - 1] + ' ' + c1 + c2;
       }
-      if (RegExp.$1 <= '31' && RegExp.$2 <= '12' && RegExp.$3 > '12') {
-        return RegExp.$1 + ' ' + months[RegExp.$2 - 1] + ' ' + RegExp.$3 + RegExp.$4;
+      if (c1 <= '31' && c2 <= '12' && c3 > '12') {
+        return c1 + ' ' + months[c2 - 1] + ' ' + c3 + c4;
       }
-      return RegExp.$1 + RegExp.$2 + RegExp.$3 + RegExp.$4;
+      return match;
     });
 
     // e.g. 17.11.1860, 2 4 1987, 3/4/2005, 1999-12-31. Use locale settings since DMY order is ambiguous.
-    datestr = datestr.replace(/(\d+)([ ./-])(\d+)(\2)(\d+)/g, function () {
-      let f1 = parseInt(RegExp.$1, 10);
-      let f2 = parseInt(RegExp.$3, 10);
-      let f3 = parseInt(RegExp.$5, 10);
+    datestr = datestr.replace(/(\d+)([ ./-])(\d+)(\2)(\d+)/g, function (match, c1, c2, c3, c4, c5) {
+      c1 = parseInt(c1, 10);
+      c2 = parseInt(c3, 10);
+      c3 = parseInt(c5, 10);
       let yyyy = new Date().getFullYear();
       let yy = yyyy % 100;
       let cc = yyyy - yy;
-      if ((dmy === 'DMY' || f1 > 13 && f3 > 31) && f1 <= 31 && f2 <= 12) {
-        return f1 + ' ' + months[f2 - 1] + ' ' + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
+      if ((dmy === 'DMY' || c1 > 13 && c3 > 31) && c1 <= 31 && c2 <= 12) {
+        return c1 + ' ' + months[c2 - 1] + ' ' + (c3 >= 100 ? c3 : (c3 <= yy ? c3 + cc : c3 + cc - 100));
       }
-      if ((dmy === 'MDY' || f2 > 13 && f3 > 31) && f1 <= 12 && f2 <= 31) {
-        return f2 + ' ' + months[f1 - 1] + ' ' + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
+      if ((dmy === 'MDY' || c2 > 13 && c3 > 31) && c1 <= 12 && c2 <= 31) {
+        return c2 + ' ' + months[c1 - 1] + ' ' + (c3 >= 100 ? c3 : (c3 <= yy ? c3 + cc : c3 + cc - 100));
       }
-      if ((dmy === 'YMD' || f1 > 31) && f2 <= 12 && f3 <= 31) {
-        return f3 + ' ' + months[f2 - 1] + ' ' + (f1 >= 100 ? f1 : (f1 <= yy ? f1 + cc : f1 + cc - 100));
+      if ((dmy === 'YMD' || c1 > 31) && c2 <= 12 && c3 <= 31) {
+        return c3 + ' ' + months[c2 - 1] + ' ' + (c1 >= 100 ? c1 : (c1 <= yy ? c1 + cc : c1 + cc - 100));
       }
-      return RegExp.$1 + RegExp.$2 + RegExp.$3 + RegExp.$4 + RegExp.$5;
+      return match;
     });
 
     datestr = datestr
@@ -381,13 +381,14 @@
       return false;
     }
 
-    /* Javascript calendar functions only work with precise gregorian dates "D M Y" or "Y" */
+    /* JavaScript calendar functions only work with precise gregorian dates "D M Y" or "Y" */
     let greg_regex = /(?:(\d*) ?(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) )?(\d+)/i;
+    let match = greg_regex.exec(dateField.value);
     let date;
-    if (greg_regex.exec(dateField.value)) {
-      let day   = RegExp.$1 || '1';
-      let month = RegExp.$2 || 'JAN'
-      let year  = RegExp.$3;
+    if (match) {
+      let day   = match[1] || '1';
+      let month = match[2] || 'JAN'
+      let year  = match[3];
       date = new Date(day + ' ' + month + ' ' + year);
     } else {
       date = new Date();
