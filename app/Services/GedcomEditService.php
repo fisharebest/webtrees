@@ -125,7 +125,6 @@ class GedcomEditService
     {
         // Assert all arrays are the same size.
         $count = count($levels);
-        assert($count > 0);
         assert(count($tags) === $count);
         assert(count($values) === $count);
 
