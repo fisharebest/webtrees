@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Cli\Console;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
@@ -170,7 +171,12 @@ class Auth
     {
         $user_service = Registry::container()->get(UserService::class);
 
-        return $user_service->find(self::id()) ?? new GuestUser();
+        return $user_service->find(self::id()) ?? self::newVirtualUser();
+    }
+
+    private static function newVirtualUser(): UserInterface
+    {
+        return Console::isActive() ? new CliUser() : new GuestUser();
     }
 
     /**
@@ -604,4 +610,5 @@ class Auth
             'hidden'       => I18N::translate('Hide from everyone'),
         ];
     }
+
 }

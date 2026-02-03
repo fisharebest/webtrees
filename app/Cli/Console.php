@@ -47,6 +47,8 @@ final class Console extends Application
         Commands\UserTreeSetting::class,
     ];
 
+    private static bool $active = false;
+
     public function __construct()
     {
         parent::__construct(name: Webtrees::NAME, version: Webtrees::VERSION);
@@ -85,6 +87,14 @@ final class Console extends Application
             // Ignore errors
         }
 
+        self::$active = true;
+
         return $this;
     }
+
+    public static function isActive(): bool
+    {
+        return self::$active;
+    }
+
 }
