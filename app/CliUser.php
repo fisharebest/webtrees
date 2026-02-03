@@ -19,31 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
-
 /**
  * Virtual user for command-line invoked functions.
  */
 class CliUser extends GuestUser
 {
-    public function __construct(string $email = 'CLI_USER', string $real_name = 'CLI_USER')
+    public function __construct(string $user_name = '_CLI_', string $real_name = 'CLI_USER', string $email = 'CLI_USER')
     {
-        parent::__construct($email, $real_name);
-    }
-
-    public function getPreference(string $setting_name, string $default = ''): string
-    {
-        if ($setting_name === UserInterface::PREF_IS_ADMINISTRATOR) {
-            return '1';
-        }
-
-        $preference = Session::get('_CLI_' . $setting_name);
-        return is_string($preference) ? $preference : $default;
-    }
-
-    public function setPreference(string $setting_name, string $setting_value): void
-    {
-        Session::put('_CLI_' . $setting_name, $setting_value);
+        parent::__construct($user_name, $real_name, $email);
     }
 
 }

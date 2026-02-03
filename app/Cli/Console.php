@@ -19,9 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\Console\Application;
 use Throwable;
@@ -87,6 +89,7 @@ final class Console extends Application
             // Ignore errors
         }
 
+        Session::put('_CLI_' . UserInterface::PREF_IS_ADMINISTRATOR, '1');
         self::$active = true;
 
         return $this;

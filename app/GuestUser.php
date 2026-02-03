@@ -28,18 +28,15 @@ use function is_string;
  */
 class GuestUser implements UserInterface
 {
+    private string $user_name;
+    private string $real_name;
     private string $email;
 
-    private string $real_name;
-
-    /**
-     * @param string $email
-     * @param string $real_name
-     */
-    public function __construct(string $email = 'GUEST_USER', string $real_name = 'GUEST_USER')
+    public function __construct(string $user_name = '_GUEST_', string $real_name = 'GUEST_USER', string $email = 'GUEST_USER')
     {
-        $this->email = $email;
+        $this->user_name = $user_name;
         $this->real_name = $real_name;
+        $this->email = $email;
     }
 
     /**
@@ -79,7 +76,7 @@ class GuestUser implements UserInterface
      */
     public function userName(): string
     {
-        return '';
+        return $this->user_name;
     }
 
     /**
@@ -90,7 +87,7 @@ class GuestUser implements UserInterface
      */
     public function getPreference(string $setting_name, string $default = ''): string
     {
-        $preference = Session::get('_GUEST_' . $setting_name);
+        $preference = Session::get($this->userName() . $setting_name);
 
         return is_string($preference) ? $preference : $default;
     }
@@ -103,6 +100,6 @@ class GuestUser implements UserInterface
      */
     public function setPreference(string $setting_name, string $setting_value): void
     {
-        Session::put('_GUEST_' . $setting_name, $setting_value);
+        Session::put($this->userName() . $setting_name, $setting_value);
     }
 }
