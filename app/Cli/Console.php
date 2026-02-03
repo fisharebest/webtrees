@@ -26,6 +26,9 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 use Throwable;
 
 use function parse_ini_file;
@@ -90,9 +93,20 @@ final class Console extends Application
         }
 
         Session::put('_CLI_' . UserInterface::PREF_IS_ADMINISTRATOR, '1');
-        self::$active = true;
 
         return $this;
+    }
+
+    protected function doRunCommand(Command $command,InputInterface $input,OutputInterface $output) : int{
+        self::$active = true;
+
+        try {
+            $result = parent::doRunCommand($command, $input, $output);
+        } finally {
+            self::$active = false;
+        }
+
+        return $result;
     }
 
     public static function isActive(): bool
