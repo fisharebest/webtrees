@@ -28,39 +28,73 @@ use PDOException;
 use RuntimeException;
 use SensitiveParameter;
 
-/**
- * Database abstraction
- */
-class DB extends Manager
+final class DB extends Manager
 {
     // Supported drivers
+    public const string MARIADB    = 'mariadb';
     public const string MYSQL      = 'mysql';
     public const string POSTGRES   = 'pgsql';
     public const string SQLITE     = 'sqlite';
     public const string SQL_SERVER = 'sqlsrv';
 
+    // For databases that support it, ASCII gives faster indexes
     private const array COLLATION_ASCII = [
+        self::MARIADB    => 'ascii_bin',
         self::MYSQL      => 'ascii_bin',
         self::POSTGRES   => 'C',
         self::SQLITE     => 'BINARY',
         self::SQL_SERVER => 'Latin1_General_Bin',
     ];
 
-    private const array COLLATION_UTF8 = [
-        self::MYSQL      => 'utf8mb4_unicode_ci',
-        self::POSTGRES   => 'und-x-icu',
+    // MySQL 5.x uses utf8mb4_unicode_ci (Unicode 4.0) for utf8mb4
+    // MySQL 5.7 uses utf8mb4_unicode_520_ci (Unicode 5.2) for utf8mb4
+    // MySQL 8.x uses utf8mb4_0900_ai_ci (Unicode 9.0) for utf8mb4
+    // MySQL 9.x uses utf8mb4_uca1400_ai_ci (Unicode 14.0) for utf8mb4
+    // Just specify the character set and let MySQL choose the latest collation
+    private const array CHARSET_UTF8 = [
+        self::MARIADB    => 'utf8mb4',
+        self::MYSQL      => 'utf8mb4',
+        self::POSTGRES   => null,
+        self::SQLITE     => null,
+        self::SQL_SERVER => null,
+    ];
+
+    // Case-insensitive, accent-insensitive.  Default for MySQL and MariaDB
+    private const array COLLATION_UTF8_CI_AI = [
+        self::MARIADB    => null,
+        self::MYSQL      => null,
+        self::POSTGRES   => null, // Need to create a custom ci/ai collation, e.g. icu_und_webtrees_ci_ai
         self::SQLITE     => 'NOCASE',
-        self::SQL_SERVER => 'utf8_CI_AI',
+        self::SQL_SERVER => 'Latin1_General_100_CI_AI_UTF8', // Yes, UTF8 collations are called "Latin1..."
+    ];
+
+    // Case-sensitive, accent-sensitive.  Default for Postgres, SQLite and SqlServer
+    private const array COLLATION_UTF8_CS_AS = [
+        self::MARIADB    => 'utf8mb4_bin',
+        self::MYSQL      => 'utf8mb4_bin',
+        self::POSTGRES   => 'und-x-icu',
+        self::SQLITE     => null,
+        self::SQL_SERVER => 'Latin1_General_100_BIN2_UTF8',
     ];
 
     private const array REGEX_OPERATOR = [
+        self::MARIADB    => 'REGEXP',
         self::MYSQL      => 'REGEXP',
         self::POSTGRES   => '~',
         self::SQLITE     => 'REGEXP',
         self::SQL_SERVER => 'REGEXP',
     ];
 
+    private const array GROUP_CONCAT_FUNCTION = [
+        self::MARIADB    => 'GROUP_CONCAT(%s)',
+        self::MYSQL      => 'GROUP_CONCAT(%s)',
+        self::POSTGRES   => "STRING_AGG(%s, ',')",
+        self::SQLITE     => 'GROUP_CONCAT(%s)',
+        self::SQL_SERVER => "STRING_AGG(%s, ',')",
+    ];
+
     private const array DRIVER_INITIALIZATION = [
+        self::MARIADB    => "SET NAMES utf8mb4, sql_mode := 'ANSI,STRICT_ALL_TABLES', TIME_ZONE := '+00:00', SQL_BIG_SELECTS := 1, GROUP_CONCAT_MAX_LEN := 1048576",
         self::MYSQL      => "SET NAMES utf8mb4, sql_mode := 'ANSI,STRICT_ALL_TABLES', TIME_ZONE := '+00:00', SQL_BIG_SELECTS := 1, GROUP_CONCAT_MAX_LEN := 1048576",
         self::POSTGRES   => '',
         self::SQLITE     => 'PRAGMA foreign_keys = ON',
@@ -97,7 +131,10 @@ class DB extends Manager
         ];
 
         // MySQL/MariaDB support encrypted connections
-        if ($driver === self::MYSQL && $key !== '' && $certificate !== '' && $ca !== '') {
+        if (
+            ($driver === self::MYSQL || $driver === self::MARIADB) &&
+            $key !== '' && $certificate !== '' && $ca !== ''
+        ) {
             $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = $verify_certificate;
             $options[PDO::MYSQL_ATTR_SSL_KEY]                = Webtrees::ROOT_DIR . 'data/' . $key;
             $options[PDO::MYSQL_ATTR_SSL_CERT]               = Webtrees::ROOT_DIR . 'data/' . $certificate;
@@ -123,7 +160,7 @@ class DB extends Manager
         ]);
         $capsule->setAsGlobal();
 
-        // Eager-load the connection, to prevent database credentials appearing in error logs.
+        // Eager-load the connection to prevent database credentials appearing in error logs.
         try {
             self::pdo();
         } catch (PDOException $exception) {
@@ -164,26 +201,46 @@ class DB extends Manager
         return parent::connection()->getPdo();
     }
 
+    /**
+     * @param non-empty-string $identifier
+     *
+     * @return non-empty-string
+     */
     public static function prefix(string $identifier): string
     {
         return parent::connection()->getTablePrefix() . $identifier;
     }
 
+    public static function charset(): string
+    {
+        return self::CHARSET_UTF8[self::driverName()];
+    }
+
+    public static function collation(bool $csas): string
+    {
+        if ($csas) {
+            return self::COLLATION_UTF8_CS_AS[self::driverName()];
+        }
+
+        return self::COLLATION_UTF8_CI_AI[self::driverName()];
+    }
+
     /**
      * SQL-Server needs to be told that we are going to insert into an identity column.
      *
-     * @param Closure(): void $callback
+     * @param non-empty-string $table
+     * @param Closure(): void  $callback
      */
     public static function identityInsert(string $table, Closure $callback): void
     {
         if (self::driverName() === self::SQL_SERVER) {
-            self::exec('SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] ON');
+            self::exec(sql: 'SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] ON');
         }
 
         $callback();
 
         if (self::driverName() === self::SQL_SERVER) {
-            self::exec('SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] OFF');
+            self::exec(sql: 'SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] OFF');
         }
     }
 
@@ -193,9 +250,10 @@ class DB extends Manager
     }
 
     /**
+     * @param list<string> $expressions
+     *
      * @internal
      *
-     * @param list<string> $expressions
      */
     public static function concat(array $expressions): string
     {
@@ -224,16 +282,7 @@ class DB extends Manager
      */
     public static function groupConcat(string $column): string
     {
-        switch (self::driverName()) {
-            case self::POSTGRES:
-            case self::SQL_SERVER:
-                return 'STRING_AGG(' . $column . ", ',')";
-
-            case self::MYSQL:
-            case self::SQLITE:
-            default:
-                return 'GROUP_CONCAT(' . $column . ')';
-        }
+        return sprintf(self::GROUP_CONCAT_FUNCTION[self::driverName()], $column);
     }
 
     /**
@@ -241,7 +290,7 @@ class DB extends Manager
      */
     public static function binaryColumn(string $column, string|null $alias = null): Expression
     {
-        if (self::driverName() === self::MYSQL) {
+        if (self::driverName() === self::MYSQL || self::driverName() === self::MARIADB) {
             $sql = 'CAST(' . $column . ' AS binary)';
         } else {
             $sql = $column;
