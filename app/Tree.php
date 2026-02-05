@@ -95,12 +95,6 @@ class Tree
         'WORD_WRAPPED_NOTES'           => '0',
     ];
 
-    private int $id;
-
-    private string $name;
-
-    private string $title;
-
     /** @var array<int> Default access rules for facts in this tree */
     private array $fact_privacy;
 
@@ -116,18 +110,16 @@ class Tree
     /** @var array<array<string>> Cached copy of the wt_user_gedcom_setting table. */
     private array $user_preferences = [];
 
-    /**
-     * Create a tree object.
-     *
-     * @param int    $id
-     * @param string $name
-     * @param string $title
-     */
-    public function __construct(int $id, string $name, string $title)
-    {
-        $this->id                      = $id;
-        $this->name                    = $name;
-        $this->title                   = $title;
+    public function __construct(
+        private readonly int $id,
+        private readonly string $name,
+        private readonly string $title,
+        private readonly string $media_folder,
+        private readonly bool $imported,
+        private readonly bool $private,
+        private readonly int|null $contact_user_id,
+        private readonly int|null $support_user_id,
+    ) {
         $this->fact_privacy            = [];
         $this->individual_privacy      = [];
         $this->individual_fact_privacy = [];
@@ -164,13 +156,31 @@ class Tree
     }
 
     /**
-     * Set the tree’s configuration settings.
-     *
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return self
+     * @param object{
+     *     gedcom_id:string|int,
+     *     gedcom_name:string,
+     *     title:string,
+     *     media_folder:string,
+     *     private:string|int,
+     *     imported:string|int,
+     *     contact_user_id:string|int|null,
+     *     support_user_id:string|int|null,
+ *     } $row
      */
+    public static function fromDB(object $row): self
+    {
+        return new self(
+            id: (int) $row->gedcom_id,
+            name: $row->gedcom_name,
+            title: $row->title,
+            media_folder: $row->media_folder,
+            imported: (bool) $row->imported,
+            private: (bool) $row->private,
+            contact_user_id: $row->contact_user_id === null ? null : (int) $row->contact_user_id,
+            support_user_id: $row->support_user_id === null ? null : (int) $row->support_user_id,
+        );
+    }
+
     public function setPreference(string $setting_name, string $setting_value): Tree
     {
         if ($setting_value !== $this->getPreference($setting_name)) {
@@ -189,16 +199,15 @@ class Tree
         return $this;
     }
 
-    /**
-     * Get the tree’s configuration settings.
-     *
-     * @param string      $setting_name
-     * @param string|null $default
-     *
-     * @return string
-     */
     public function getPreference(string $setting_name, string|null $default = null): string
     {
+        switch ($setting_name) {
+            case 'imported':
+                return $this->imported() ? '1' : '';
+            case 'REQUIRE_AUTHENTICATION':
+                return $this->private() ? '1' : '';
+        }
+
         if ($this->preferences === []) {
             $this->preferences = DB::table('gedcom_setting')
                 ->where('gedcom_id', '=', $this->id)
@@ -209,24 +218,39 @@ class Tree
         return $this->preferences[$setting_name] ?? $default ?? self::DEFAULT_PREFERENCES[$setting_name] ?? '';
     }
 
-    /**
-     * The name of this tree
-     *
-     * @return string
-     */
+    public function mediaFolder(): string
+    {
+        return $this->media_folder;
+    }
+
     public function name(): string
     {
         return $this->name;
     }
 
-    /**
-     * The title of this tree
-     *
-     * @return string
-     */
+    public function imported(): bool
+    {
+        return $this->imported;
+    }
+
+    public function private(): bool
+    {
+        return $this->private;
+    }
+
     public function title(): string
     {
         return $this->title;
+    }
+
+    public function contactUserId(): int|null
+    {
+        return $this->contact_user_id;
+    }
+
+    public function supportUserId(): int|null
+    {
+        return $this->support_user_id;
     }
 
     /**

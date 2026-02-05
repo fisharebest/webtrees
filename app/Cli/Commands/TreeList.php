@@ -60,14 +60,14 @@ final class TreeList extends AbstractCommand
 
         $trees = $this->tree_service->all()->sort(callback: fn ($a, $b) => $a->id() <=> $b->id());
 
-        $headers = ['ID', 'Name', 'Title', 'Media directory', 'Imported'];
+        $headers = ['ID', 'Name', 'Title', 'Media folder', 'Imported'];
 
         $rows = $trees->map(callback: static fn (Tree $tree): array => [
-            'id'              => $tree->id(),
-            'name'            => $tree->name(),
-            'title'           => $tree->title(),
-            'media_directory' => $tree->getPreference(setting_name: 'MEDIA_DIRECTORY'),
-            'imported'        => $tree->getPreference(setting_name: 'imported') === '1' ? 'yes' : 'no',
+            'id'           => $tree->id(),
+            'name'         => $tree->name(),
+            'title'        => $tree->title(),
+            'media_folder' => $tree->mediaFolder(),
+            'imported'     => $tree->imported() ? 'yes' : 'no',
         ])
             ->values()
             ->all();
