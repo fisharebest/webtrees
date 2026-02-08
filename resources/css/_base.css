@@ -152,3 +152,10 @@ a:hover, .btn-link:hover, .nav-link:hover {
 .leaflet-bottom, .leaflet-top {
     z-index: 999;
 }
+
+.date.phrase::before {
+    content: "(";
+}
+.date.phrase::after {
+    content: ")";
+}

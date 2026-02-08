@@ -18,6 +18,7 @@ use Fisharebest\Webtrees\Site;
  * @var bool                    $custom_fam_nchi
  * @var bool                    $custom_resi_value
  * @var bool                    $custom_time_tags
+ * @var bool                    $custom_datephrase_tags
  * @var ElementFactoryInterface $element_factory
  * @var string                  $title
  */
@@ -968,6 +969,22 @@ use Fisharebest\Webtrees\Site;
 
                 <td>
                     <?= view('components/checkbox', ['id' => 'custom_time_tags', 'name' => 'custom_time_tags', 'label' => I18N::translate('show'), 'checked' => $custom_time_tags]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= I18N::translate('Textual information that cannot be expressed in the date itself') ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:*:DATE:PHRASE</code>
+                    <br>
+                    <code dir="ltr">FAM:*:DATE:PHRASE</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox', ['id' => 'custom_datephrase_tags', 'name' => 'custom_datephrase_tags', 'label' => I18N::translate('show'), 'checked' => $custom_datephrase_tags]) ?>
                 </td>
             </tr>
 

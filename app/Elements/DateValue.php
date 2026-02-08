@@ -81,6 +81,16 @@ class DateValue extends AbstractElement
     }
 
     /**
+     * Should we collapse the children of this element when editing?
+     *
+     * @return bool
+     */
+    public function collapseChildren(): bool
+    {
+        return true;
+    }
+
+    /**
      * Escape @ signs in a GEDCOM export.
      *
      * @param string $value

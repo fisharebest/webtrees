@@ -60,7 +60,7 @@ class Date
         $calendar_date_factory = Registry::calendarDateFactory();
 
         // Extract any explanatory text
-        if (preg_match('/^(.*) ?[(](.*)[)]/', $date, $match)) {
+        if (preg_match('/^(.*?) ?[(](.*)[)]/', $date, $match)) {
             $date       = $match[1];
             $this->text = $match[2];
         }
@@ -123,7 +123,7 @@ class Date
         } else {
             $d2 = $this->date2->format($date_format, $this->qual2);
         }
-        // Con vert to other calendars, if requested
+        // Convert to other calendars, if requested
         $conv1 = '';
         $conv2 = '';
         foreach ($calendar_format as $cal_fmt) {
@@ -180,7 +180,7 @@ class Date
             case '':
                 $tmp = $d1 . $conv1;
                 if ($this->text !== '') {
-                    $tmp .= '(' . e($this->text) . ')';
+                    $tmp .= ' <span class="date phrase">' . e($this->text) . '</span>';
                 }
                 break;
             case 'ABT':
@@ -197,7 +197,9 @@ class Date
                 break;
             case 'INT':
                 /* I18N: Gedcom INT dates */
-                $tmp = I18N::translate('interpreted %s (%s)', $d1 . $conv1, e($this->text));
+                $tmp = I18N::translate('interpreted %s (%s)', $d1 . $conv1, '${DATE_PHRASE}');
+                $phrase = ($this->text == '') ? '' : '<span class="date phrase">' . e($this->text) . '</span>';
+                $tmp = str_replace('(${DATE_PHRASE})', $phrase, $tmp);
                 break;
             case 'BEF':
                 /* I18N: Gedcom BEF dates */
