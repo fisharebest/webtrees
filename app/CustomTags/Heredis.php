@@ -88,6 +88,7 @@ class Heredis implements CustomTagInterface
             'FAM:*:SOUR:_QUAL:_SOUR'      => new HeredisQualSour(I18N::translate('Quality of the source')),
             'FAM:*:SOUR:_QUAL:_INFO'      => new HeredisQualInfo(I18N::translate('Quality of the information')),
             'FAM:*:SOUR:_QUAL:_EVID'      => new HeredisQualEvid(I18N::translate('Quality of the evidence')),
+            'FAM:*:_FNA'                  => new HeredisFNA(I18N::translate('Research status')),
             'FAM:*:_RECH'                 => new EmptyElement(I18N::translate('Research data')),
             'FAM:*:_RECH:_PROJ'           => new CustomElement(I18N::translate('Research project')),
             'FAM:*:_RECH:TYPE'            => new CustomElement(I18N::translate('Document')),
