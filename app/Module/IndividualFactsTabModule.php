@@ -115,7 +115,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             ->flatten();
 
         // Don't show family meta-data tags
-        $exclude_facts  = new Collection(['FAM:CHAN', 'FAM:_UID', 'FAM:UID', 'FAM:SUBM']);
+        $exclude_facts  = new Collection(['FAM:CHAN', 'FAM:_UID', 'FAM:UID', 'FAM:SUBM', 'FAM:_CREA']);
         // Don't show tags that are shown in tabs or sidebars
         $exclude_facts = $exclude_facts->merge($sidebar_facts)->merge($tab_facts);
 
