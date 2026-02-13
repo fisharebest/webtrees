@@ -41,6 +41,7 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
         'CHAN',
         'DESI',
         'IDNO',
+        'PAGE',
         'REFN',
         'RESN',
         'RFN',

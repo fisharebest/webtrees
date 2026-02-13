@@ -110,6 +110,8 @@ class Heredis implements CustomTagInterface
             'INDI:ASSO:_ROLE'             => new RoleInEvent(I18N::translate('Role')),
             'INDI:ASSO:_TITL'             => new CustomElement(I18N::translate('Title')),
             'INDI:ASSO:_TYPE'             => new CustomElement(I18N::translate('Type')),
+            'INDI:HEAL'                   => new CustomElement(I18N::translate('Health')),
+            'INDI:PAGE'                   => new CustomElement(I18N::translate('Reference number')),
             'INDI:*:DATE:_TIME'           => new TimeValue(I18N::translate('Time')),
             'INDI:*:PLAC:_SUBMAP'         => new Coordinates(I18N::translate('Geolocation of subdivisions')),
             'INDI:*:PLAC:_SUBMAP:LATI'    => new PlaceLatitude(I18N::translate('Latitude of subdivision')),
