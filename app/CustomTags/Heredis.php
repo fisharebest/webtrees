@@ -39,13 +39,13 @@ use Fisharebest\Webtrees\Elements\HeredisQualSour;
 use Fisharebest\Webtrees\Elements\HeredisRechElement;
 use Fisharebest\Webtrees\Elements\HeredisUST;
 use Fisharebest\Webtrees\Elements\NoteStructure;
-use Fisharebest\Webtrees\Elements\PafUid;
 use Fisharebest\Webtrees\Elements\PlaceLatitude;
 use Fisharebest\Webtrees\Elements\PlaceLongtitude;
 use Fisharebest\Webtrees\Elements\PlaceName;
 use Fisharebest\Webtrees\Elements\RoleInEvent;
 use Fisharebest\Webtrees\Elements\SourceCallNumber;
 use Fisharebest\Webtrees\Elements\TimeValue;
+use Fisharebest\Webtrees\Elements\Uid;
 use Fisharebest\Webtrees\Elements\UserReferenceNumber;
 use Fisharebest\Webtrees\I18N;
 
@@ -77,7 +77,7 @@ class Heredis implements CustomTagInterface
     public function tags(): array
     {
         return [
-            'HEAD:_GUID'                  => new PafUid(I18N::translate('File identifier')),
+            'HEAD:_GUID'                  => new Uid(I18N::translate('File identifier')),
             'FAM:_CREA'                   => new Creation(I18N::translate('Created at')),
             'FAM:_UST'                    => new HeredisUST(I18N::translate('Union type')),
             'FAM:*:DATE:_TIME'            => new TimeValue(I18N::translate('Time')),
