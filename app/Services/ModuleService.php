@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,6 @@ use Fisharebest\Webtrees\Module\AlbumModule;
 use Fisharebest\Webtrees\Module\AncestorsChartModule;
 use Fisharebest\Webtrees\Module\AustrianHistoricEvents;
 use Fisharebest\Webtrees\Module\AustrianPresidents;
-use Fisharebest\Webtrees\Module\BingMaps;
 use Fisharebest\Webtrees\Module\BingWebmasterToolsModule;
 use Fisharebest\Webtrees\Module\BirthDeathMarriageReportModule;
 use Fisharebest\Webtrees\Module\BirthReportModule;
@@ -84,7 +83,7 @@ use Fisharebest\Webtrees\Module\FrequentlyAskedQuestionsModule;
 use Fisharebest\Webtrees\Module\GeonamesAutocomplete;
 use Fisharebest\Webtrees\Module\GoogleAnalyticsModule;
 use Fisharebest\Webtrees\Module\GoogleMaps;
-use Fisharebest\Webtrees\Module\GoogleWebmasterToolsModule;
+use Fisharebest\Webtrees\Module\GoogleSearchConsole;
 use Fisharebest\Webtrees\Module\HereMaps;
 use Fisharebest\Webtrees\Module\HitCountFooterModule;
 use Fisharebest\Webtrees\Module\HourglassChartModule;
@@ -327,7 +326,6 @@ class ModuleService
         'austrian-history'        => AustrianHistoricEvents::class,
         'austrian-presidents'     => AustrianPresidents::class,
         'bdm_report'              => BirthDeathMarriageReportModule::class,
-        'bing-maps'               => BingMaps::class,
         'bing-webmaster-tools'    => BingWebmasterToolsModule::class,
         'birth_report'            => BirthReportModule::class,
         'branches_list'           => BranchesListModule::class,
@@ -381,7 +379,7 @@ class ModuleService
         'geonames'                => GeonamesAutocomplete::class,
         'google-analytics'        => GoogleAnalyticsModule::class,
         'google-maps'             => GoogleMaps::class,
-        'google-webmaster-tools'  => GoogleWebmasterToolsModule::class,
+        'google-webmaster-tools'  => GoogleSearchConsole::class,
         'here-maps'               => HereMaps::class,
         'hit-counter'             => HitCountFooterModule::class,
         'hourglass_chart'         => HourglassChartModule::class,
@@ -886,7 +884,16 @@ class ModuleService
                 continue;
             }
 
-            $module->boot();
+            if ($module instanceof ModuleCustomInterface) {
+                try {
+                    $module->boot();
+                } catch (Throwable $exception) {
+                    $message = 'Fatal error in module: ' . $module->name() . '<br>' . $exception;
+                    FlashMessages::addMessage($message, 'danger');
+                }
+            } else {
+                $module->boot();
+            }
         }
     }
 

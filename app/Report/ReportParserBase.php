@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,12 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use DomainException;
-use Exception;
 use XMLParser;
 
-use function fclose;
-use function feof;
-use function fread;
 use function method_exists;
 use function sprintf;
 use function xml_error_string;
@@ -33,7 +29,6 @@ use function xml_get_current_line_number;
 use function xml_get_error_code;
 use function xml_parse;
 use function xml_parser_create;
-use function xml_parser_free;
 use function xml_parser_set_option;
 use function xml_set_character_data_handler;
 use function xml_set_element_handler;
@@ -42,69 +37,27 @@ use const XML_OPTION_CASE_FOLDING;
 
 class ReportParserBase
 {
-    // The XML parser
     protected XMLParser $xml_parser;
 
-    /** @var string Text contents of tags */
     protected string $text = '';
 
-    /**
-     * Create a parser for a report
-     *
-     * @param string $report The XML filename
-     *
-     * @throws Exception
-     */
     public function __construct(string $report)
     {
         $this->xml_parser = xml_parser_create();
-
         xml_parser_set_option($this->xml_parser, XML_OPTION_CASE_FOLDING, 0);
+        xml_set_element_handler($this->xml_parser, $this->startElement(...), $this->endElement(...));
+        xml_set_character_data_handler($this->xml_parser, $this->characterData(...));
 
-        xml_set_element_handler(
-            $this->xml_parser,
-            function ($parser, string $name, array $attrs): void {
-                $this->startElement($parser, $name, $attrs);
-            },
-            function ($parser, string $name): void {
-                $this->endElement($parser, $name);
-            }
-        );
-
-        xml_set_character_data_handler(
-            $this->xml_parser,
-            function ($parser, string $data): void {
-                $this->characterData($parser, $data);
-            }
-        );
-
-        $fp = fopen($report, 'rb');
-
-        while ($data = fread($fp, 4096)) {
-            if (!xml_parse($this->xml_parser, $data, feof($fp))) {
-                throw new DomainException(sprintf(
-                    'XML error: %s at line %d',
-                    xml_error_string(xml_get_error_code($this->xml_parser)),
-                    xml_get_current_line_number($this->xml_parser)
-                ));
-            }
+        if (!xml_parse($this->xml_parser, file_get_contents($report), true)) {
+            throw new DomainException(sprintf(
+                'XML error: %s at line %d',
+                xml_error_string(xml_get_error_code($this->xml_parser)),
+                xml_get_current_line_number($this->xml_parser)
+            ));
         }
-
-        fclose($fp);
-
-        xml_parser_free($this->xml_parser);
     }
 
-    /**
-     * XML handler for an opening (or self-closing) tag.
-     *
-     * @param resource      $parser The resource handler for the xml parser
-     * @param string        $name   The name of the xml element parsed
-     * @param array<string> $attrs  An array of key value pairs for the attributes
-     *
-     * @return void
-     */
-    protected function startElement($parser, string $name, array $attrs): void
+    protected function startElement(XMLParser $parser, string $name, array $attrs): void
     {
         $method = $name . 'StartHandler';
 
@@ -113,15 +66,7 @@ class ReportParserBase
         }
     }
 
-    /**
-     * XML handler for a closing tag.
-     *
-     * @param resource $parser the resource handler for the xml parser
-     * @param string   $name   the name of the xml element parsed
-     *
-     * @return void
-     */
-    protected function endElement($parser, string $name): void
+    protected function endElement(XMLParser $parser, string $name): void
     {
         $method = $name . 'EndHandler';
 
@@ -130,15 +75,7 @@ class ReportParserBase
         }
     }
 
-    /**
-     * XML handler for character data.
-     *
-     * @param resource $parser The resource handler for the xml parser
-     * @param string   $data   The name of the xml element parsed
-     *
-     * @return void
-     */
-    protected function characterData($parser, string $data): void
+    protected function characterData(XMLParser $parser, string $data): void
     {
         $this->text .= $data;
     }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,15 +43,12 @@ use ZipArchive;
 
 use function explode;
 use function fclose;
-use function file_exists;
-use function file_put_contents;
 use function fopen;
 use function ftell;
 use function fwrite;
 use function rewind;
 use function strlen;
 use function time;
-use function unlink;
 use function version_compare;
 
 use const PHP_VERSION;
@@ -81,14 +78,9 @@ class UpgradeService
     // If the update server doesn't respond after this time, give up.
     private const float HTTP_TIMEOUT = 3.0;
 
-    private TimeoutService $timeout_service;
-
-    /**
-     * @param TimeoutService $timeout_service
-     */
-    public function __construct(TimeoutService $timeout_service)
-    {
-        $this->timeout_service = $timeout_service;
+    public function __construct(
+        private readonly TimeoutService $timeout_service,
+    ) {
     }
 
     /**

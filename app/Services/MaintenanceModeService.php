@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,8 +40,9 @@ readonly class MaintenanceModeService
 {
     private const string OFFLINE_FILE = 'offline.txt';
 
-    public function __construct(private string $data_dir = Webtrees::DATA_DIR)
-    {
+    public function __construct(
+        private string $data_dir = Webtrees::DATA_DIR
+    ) {
         if (!is_dir($data_dir)) {
             throw new InvalidArgumentException($data_dir . ' does not exist');
         }

@@ -120,6 +120,7 @@ use Fisharebest\Webtrees\Tree;
 </form>
 
 <table
+    id="wt-datatables-admin-changes"
     class="table table-bordered table-sm table-hover table-site-changes datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-ajax="<?= route(PendingChangesLogData::class, ['from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'tree' => $tree->name(), 'username' => $username]) ?>"

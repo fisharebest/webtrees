@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -391,7 +391,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      * @return Collection<int,object{
      *     block_id: int,
      *     block_order: int,
-     *     gedcom_id: int,
+     *     gedcom_id: int|null,
      *     header: string,
      *     faqbody: string,
      *     languages: string
@@ -418,7 +418,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             ->map(static function (object $row): object {
                 $row->block_id    = (int) $row->block_id;
                 $row->block_order = (int) $row->block_order;
-                $row->gedcom_id   = (int) $row->gedcom_id;
+                $row->gedcom_id   = $row->gedcom_id === null ? null : (int) $row->gedcom_id;
 
                 return $row;
             });

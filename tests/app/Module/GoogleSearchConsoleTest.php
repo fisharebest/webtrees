@@ -1,6 +1,8 @@
+<?php
+
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -13,13 +15,18 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-/* Pinkplastic Palette */
+declare(strict_types=1);
 
-:root {
-    --color-1: #f41063;
-    --color-2: #f391c6;
-    --color-3: #f75993;
-    --color-4: #fbdaed;
-    --color-5: #ffffff;
-    --color-6: #ffffff;
+namespace Fisharebest\Webtrees\Module;
+
+use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+
+#[CoversClass(GoogleSearchConsole::class)]
+class GoogleSearchConsoleTest extends TestCase
+{
+    public function testClass(): void
+    {
+        self::assertTrue(class_exists(GoogleSearchConsole::class));
+    }
 }

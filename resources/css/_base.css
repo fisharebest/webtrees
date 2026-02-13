@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -151,4 +151,16 @@ a:hover, .btn-link:hover, .nav-link:hover {
 /* Leaflet sets this to 1000, which conflicts with bootstrap dropdowns */
 .leaflet-bottom, .leaflet-top {
     z-index: 999;
+}
+
+/* Show a spinner if the page takes more than 1 second to load. */
+@keyframes spinner-fade-in {
+    to { opacity: 1; }
+}
+
+.wt-icon-spinner {
+    color: lightgrey;
+    opacity: 0;
+    animation: spinner-fade-in 0.5s ease-in forwards;
+    animation-delay: 1s;
 }

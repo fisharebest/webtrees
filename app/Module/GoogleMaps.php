@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -127,6 +127,7 @@ class GoogleMaps extends AbstractModule implements ModuleConfigInterface, Module
                 'subdomains'  => ['mt0', 'mt1', 'mt2', 'mt3'],
                 'label'       => 'Streets',
                 'url'         => 'https://{s}.google.com/vt/lyrs={lyrs}&x={x}&y={y}&z={z}',
+                'localName'   => 'GoogleStreets',
             ],
             (object) [
                 'GM_API_KEY'  => $api_key,
@@ -138,6 +139,7 @@ class GoogleMaps extends AbstractModule implements ModuleConfigInterface, Module
                 'subdomains'  => ['mt0', 'mt1', 'mt2', 'mt3'],
                 'label'       => 'Hybrid',
                 'url'         => 'https://{s}.google.com/vt/lyrs={lyrs}&x={x}&y={y}&z={z}',
+                'localName'   => 'GoogleHybrid',
             ],
             (object) [
                 'GM_API_KEY'  => $api_key,
@@ -149,6 +151,7 @@ class GoogleMaps extends AbstractModule implements ModuleConfigInterface, Module
                 'subdomains'  => ['mt0', 'mt1', 'mt2', 'mt3'],
                 'label'       => 'Satellite',
                 'url'         => 'https://{s}.google.com/vt/lyrs={lyrs}&x={x}&y={y}&z={z}',
+                'localName'   => 'GoogleSatellite',
             ],
             (object) [
                 'GM_API_KEY'  => $api_key,
@@ -160,6 +163,7 @@ class GoogleMaps extends AbstractModule implements ModuleConfigInterface, Module
                 'subdomains'  => ['mt0', 'mt1', 'mt2', 'mt3'],
                 'label'       => 'Terrain',
                 'url'         => 'https://{s}.google.com/vt/lyrs={lyrs}&x={x}&y={y}&z={z}',
+                'localName'   => 'GoogleTerrain',
             ],
         ];
     }

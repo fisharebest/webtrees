@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -53,10 +53,7 @@ use function strlen;
 use function substr;
 use function view;
 
-/**
- * Manage media from the control panel.
- */
-class ManageMediaData implements RequestHandlerInterface
+final class ManageMediaData implements RequestHandlerInterface
 {
     private DatatablesService $datatables_service;
 
@@ -84,11 +81,6 @@ class ManageMediaData implements RequestHandlerInterface
         $this->tree_service          = $tree_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $data_filesystem = Registry::filesystem()->data();
@@ -106,7 +98,7 @@ class ManageMediaData implements RequestHandlerInterface
 
         $sort_columns = [
             0 => 'multimedia_file_refn',
-            2 => new Expression('descriptive_title || multimedia_file_refn'),
+            2 => new Expression(DB::concat(['descriptive_title', 'multimedia_file_refn'])),
         ];
 
         // Convert a row from the database into a row for datatables
@@ -164,24 +156,15 @@ class ManageMediaData implements RequestHandlerInterface
                             ->on('media.m_file', '=', 'media_file.m_file')
                             ->on('media.m_id', '=', 'media_file.m_id');
                     })
-                    ->leftJoin('gedcom_setting', static function (JoinClause $join): void {
-                        $join
-                            ->on('gedcom_setting.gedcom_id', '=', 'media.m_file')
-                            ->where('setting_name', '=', 'MEDIA_DIRECTORY');
-                    })
+                    ->join('gedcom', 'gedcom.gedcom_id', '=', 'media.m_file')
                     ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
                     ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-                    ->select([
-                        'media.*',
-                        'multimedia_file_refn',
-                        'descriptive_title',
-                        new Expression("COALESCE(setting_value, 'media/') AS media_folder"),
-                    ]);
+                    ->select(['media.*', 'multimedia_file_refn', 'descriptive_title', 'media_folder']);
 
-                $query->where(new Expression('setting_value || multimedia_file_refn'), 'LIKE', $media_folder . '%');
+                $query->where(new Expression(DB::concat(['media_folder', 'multimedia_file_refn'])), 'LIKE', $media_folder . '%');
 
                 if ($subfolders === 'exclude') {
-                    $query->where(new Expression('setting_value || multimedia_file_refn'), 'NOT LIKE', $media_folder . '%/%');
+                    $query->where(new Expression(DB::concat(['media_folder', 'multimedia_file_refn'])), 'NOT LIKE', $media_folder . '%/%');
                 }
 
                 return $this->datatables_service->handleQuery($request, $query, $search_columns, $sort_columns, $callback);
@@ -210,10 +193,8 @@ class ManageMediaData implements RequestHandlerInterface
             case 'unused':
                 // Which trees use which media folder?
                 $media_trees = DB::table('gedcom')
-                    ->join('gedcom_setting', 'gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
-                    ->where('setting_name', '=', 'MEDIA_DIRECTORY')
-                    ->where('gedcom.gedcom_id', '>', 0)
-                    ->pluck('setting_value', 'gedcom_name');
+                    ->where('gedcom_id', '>', 0)
+                    ->pluck('media_folder', 'gedcom_name');
 
                 $disk_files = $this->media_file_service->allFilesOnDisk($data_filesystem, $media_folder, $subfolders === 'include');
                 $db_files   = $this->media_file_service->allFilesInDatabase($media_folder, $subfolders === 'include');

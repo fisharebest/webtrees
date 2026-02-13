@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -511,6 +511,7 @@ class UTF8 extends AbstractEncoding
     public const string ARABIC_LETTER_WAW                                     = "\u{0648}";
     public const string ARABIC_LETTER_ALEF_MAKSURA                            = "\u{0649}";
     public const string ARABIC_LETTER_YEH                                     = "\u{064A}";
+    public const string ARABIC_LETTER_ALEF_WASLA                              = "\u{0671}";
     public const string LATIN_CAPITAL_LETTER_A_WITH_RING_BELOW                = "\u{1E00}";
     public const string LATIN_SMALL_LETTER_A_WITH_RING_BELOW                  = "\u{1E01}";
     public const string LATIN_CAPITAL_LETTER_B_WITH_DOT_ABOVE                 = "\u{1E02}";
@@ -703,6 +704,8 @@ class UTF8 extends AbstractEncoding
     public const string LATIN_SMALL_LETTER_Y_WITH_TILDE                       = "\u{1EF9}";
     public const string ZERO_WIDTH_NON_JOINER                                 = "\u{200C}";
     public const string ZERO_WIDTH_JOINER                                     = "\u{200D}";
+    public const string LEFT_TO_RIGHT_MARK                                    = "\u{200E}";
+    public const string RIGHT_TO_LEFT_MARK                                    = "\u{200F}";
     public const string EN_DASH                                               = "\u{2013}";
     public const string EM_DASH                                               = "\u{2014}";
     public const string DOUBLE_LOW_LINE                                       = "\u{2017}";
@@ -716,6 +719,11 @@ class UTF8 extends AbstractEncoding
     public const string DOUBLE_DAGGER                                         = "\u{2021}";
     public const string BULLET                                                = "\u{2022}";
     public const string HORIZONTAL_ELLIPSIS                                   = "\u{2026}";
+    public const string LEFT_TO_RIGHT_EMBEDDING                               = "\u{202A}";
+    public const string RIGHT_TO_LEFT_EMBEDDING                               = "\u{202B}";
+    public const string POP_DIRECTIONAL_FORMATTING                            = "\u{202C}";
+    public const string LEFT_TO_RIGHT_OVERRIDE                                = "\u{202D}";
+    public const string RIGHT_TO_LEFT_OVERRIDE                                = "\u{202E}";
     public const string PER_MILLE_SIGN                                        = "\u{2030}";
     public const string SINGLE_LEFT_POINTING_ANGLE_QUOTATION_MARK             = "\u{2039}";
     public const string SINGLE_RIGHT_POINTING_ANGLE_QUOTATION_MARK            = "\u{203A}";
@@ -831,42 +839,5 @@ class UTF8 extends AbstractEncoding
     public function toUtf8(string $text): string
     {
         return $this->fromUtf8($text);
-    }
-
-    /**
-     * Create a UTF8 character from a code.
-     *
-     * @param int $code
-     *
-     * @return string
-     */
-    public static function chr(int $code): string
-    {
-        if ($code < 0 || $code > 0x1FFFFF) {
-            throw new InvalidArgumentException((string)$code);
-        }
-
-        if ($code <= 0x7F) {
-            return chr($code);
-        }
-
-        if ($code <= 0x7FF) {
-            return
-                chr(($code >> 6) + 0xC0) .
-                chr(($code & 0x3F) + 0x80);
-        }
-
-        if ($code <= 0xFFFF) {
-            return
-                chr(($code >> 12) + 0xE0) .
-                chr((($code >> 6) & 0x3F) + 0x80) .
-                chr(($code & 0x3F) + 0x80);
-        }
-
-        return
-            chr(($code >> 18) + 0xF0) .
-            chr((($code >> 12) & 0x3F) + 0x80) .
-            chr((($code >> 6) & 0x3F) + 0x80) .
-            chr(($code & 0x3F) + 0x80);
     }
 }

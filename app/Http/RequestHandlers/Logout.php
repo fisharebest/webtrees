@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,18 +30,11 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
+use function response;
 use function route;
 
-/**
- * Perform a logout.
- */
-class Logout implements RequestHandlerInterface
+final class Logout implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $user = Validator::attributes($request)->user();
@@ -52,6 +45,12 @@ class Logout implements RequestHandlerInterface
             FlashMessages::addMessage(I18N::translate('You have signed out.'));
         }
 
+        if ($request->getHeaderLine('x-requested-with') === 'XMLHttpRequest') {
+            // Ajax request - send empty response
+            return response();
+        }
+
+        // Form submission - redirect to home page
         return redirect(route(HomePage::class));
     }
 }

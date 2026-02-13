@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,32 +31,16 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Show the manager options for trees.
- */
-class ManageTrees implements RequestHandlerInterface
+final class ManageTrees implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private AdminService $admin_service;
-
-    private TreeService $tree_service;
-
-    /**
-     * @param AdminService $admin_service
-     * @param TreeService  $tree_service
-     */
-    public function __construct(AdminService $admin_service, TreeService $tree_service)
-    {
-        $this->admin_service = $admin_service;
-        $this->tree_service  = $tree_service;
+    public function __construct(
+        private readonly AdminService $admin_service,
+        private readonly TreeService $tree_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -69,11 +53,11 @@ class ManageTrees implements RequestHandlerInterface
         $all_trees = $this->tree_service->all();
 
         // On sites with hundreds or thousands of trees, this page becomes very large.
-        // Just show the current tree, the default tree, and un-imported trees
+        // Just show the current tree, the default tree, and unimported trees
         if ($gedcom_file_count >= $multiple_tree_threshold) {
             $default   = Site::getPreference('DEFAULT_GEDCOM');
             $all_trees = $all_trees->filter(static function (Tree $x) use ($tree, $default): bool {
-                if ($x->getPreference('imported') === '0') {
+                if (!$x->imported()) {
                     return true;
                 }
                 if ($tree instanceof Tree && $tree->id() === $x->id()) {

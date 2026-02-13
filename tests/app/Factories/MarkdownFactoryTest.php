@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -41,7 +41,7 @@ class MarkdownFactoryTest extends TestCase
     public function testAutoLinkWithTree(): void
     {
         $factory = new MarkdownFactory();
-        $tree    = $this->createMock(Tree::class);
+        $tree    = self::createStub(Tree::class);
 
         self::assertSame(
             '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
@@ -76,7 +76,7 @@ class MarkdownFactoryTest extends TestCase
 
     public function testMarkdownWithTree(): void
     {
-        $tree    = $this->createMock(Tree::class);
+        $tree    = self::createStub(Tree::class);
         $factory = new MarkdownFactory();
 
         self::assertSame(

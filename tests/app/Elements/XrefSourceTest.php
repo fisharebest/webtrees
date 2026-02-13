@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,7 +39,7 @@ class XrefSourceTest extends TestCase
     {
         $element = new XrefSource('');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(SourceFactory::class);
 
@@ -70,7 +70,7 @@ class XrefSourceTest extends TestCase
     {
         $element = new XrefSource('');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $request = self::createRequest();
 
@@ -105,7 +105,7 @@ class XrefSourceTest extends TestCase
             ->method('url')
             ->willReturn('https://url');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(SourceFactory::class);
 
@@ -122,7 +122,7 @@ class XrefSourceTest extends TestCase
     {
         $element = new XrefSource('');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         self::assertSame('<span class="error">@invalid@</span>', $element->value('@invalid@', $tree));
     }
@@ -131,7 +131,7 @@ class XrefSourceTest extends TestCase
     {
         $element = new XrefSource('');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         self::assertSame('<p>invalid</p>', $element->value('invalid', $tree));
     }
@@ -140,7 +140,7 @@ class XrefSourceTest extends TestCase
     {
         $element = new XrefSource('');
 
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         $factory = $this->createMock(SourceFactory::class);
 

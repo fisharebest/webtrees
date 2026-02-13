@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -86,8 +86,8 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
             return '';
         }
 
-        $contact_user   = $this->user_service->find((int) $tree->getPreference('CONTACT_USER_ID'));
-        $webmaster_user = $this->user_service->find((int) $tree->getPreference('WEBMASTER_USER_ID'));
+        $contact_user   = $this->user_service->find(user_id: $tree->contactUserId());
+        $webmaster_user = $this->user_service->find(user_id: $tree->supportUserId());
 
         if ($contact_user instanceof User && $contact_user === $webmaster_user) {
             return view('modules/contact-links/footer', [

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -154,9 +154,10 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     $module = $this->module_service->findByInterface(InteractiveTreeModule::class)->first();
 
                     if ($module instanceof InteractiveTreeModule) {
-                        $title  = I18N::translate('Interactive tree of %s', $individual->fullName());
-                        $tv     = new TreeView();
+                        $title = I18N::translate('Interactive tree of %s', $individual->fullName());
+                        $tv    = new TreeView();
                         [$html, $js] = $tv->drawViewport($individual, 2);
+                        $js      = 'document.addEventListener("DOMContentLoaded", function() {' . $js . '});';
                         $content = $html . '<script>' . $js . '</script>';
                     } else {
                         $title   = I18N::translate('Interactive tree');
@@ -180,18 +181,6 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
         }
 
         return $content;
-    }
-
-    /**
-     * Should this block load asynchronously using AJAX?
-     *
-     * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
-     */
-    public function loadAjax(): bool
-    {
-        return true;
     }
 
     /**

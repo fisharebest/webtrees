@@ -27,36 +27,14 @@ $hundred_years_ago = Registry::timestampFactory()->now()->subtractYears(100)->ju
 
 <?php View::push('javascript') ?>
 <script>
-$("#<?= e($table_id) ?> > .wt-table-family").dataTable({
-    processing: true,
-    retrieve: true,
-    columns: [
-        /* Given names       */ { type: "text" },
-        /* Surnames          */ { type: "text" },
-        /* Age               */ { type: "num" },
-        /* Given names       */ { type: "text" },
-        /* Surnames          */ { type: "text" },
-        /* Age               */ { type: "num" },
-        /* Marriage date     */ { type: "text" },
-        /* Anniversary       */ { type: "num" },
-        /* Marriage place    */ { type: "text" },
-        /* Children          */ { type: "num" },
-        /* Last change       */ { visible: <?= json_encode((bool) $tree->getPreference('SHOW_LAST_CHANGE'), JSON_THROW_ON_ERROR) ?> },
-        /* Filter marriage   */ { sortable: false },
-        /* Filter alive/dead */ { sortable: false },
-        /* Filter tree       */ { sortable: false }
-    ],
-    sorting: [
-        [1, "asc"]
-    ]
-});
+$("#<?= e($table_id) ?> > .wt-table-family").dataTable();
 
 $("#<?= e($table_id) ?>")
     /* Hide/show parents */
     .on("click", "#btn-toggle-parents", function() {
         $(".wt-individual-list-parents").slideToggle();
     })
-    /* Filter buttons in table header */
+    /* Filter buttons in the table header */
     .on("click", "input[data-filter-column]", function() {
         let checkbox = $(this);
 
@@ -76,6 +54,8 @@ $("#<?= e($table_id) ?>")
 <div id="<?= e($table_id) ?>">
     <table class="table table-bordered table-sm wt-table-family"
         <?= view('lists/datatables-attributes') ?>
+        data-columns='[{"type":"text"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"visible":"<?= $tree->getPreference('SHOW_LAST_CHANGE')==='1' ? 'true' : 'false'?>"},{"sortable":false},{"sortable":false},{"sortable":false}]'
+        data-sorting='[[1,"asc"]]'
     >
         <thead>
             <tr>
@@ -152,17 +132,19 @@ $("#<?= e($table_id) ?>")
                 <th><?= I18N::translate('Surname') ?></th>
                 <th><?= I18N::translate('Age') ?></th>
                 <th><?= I18N::translate('Marriage') ?></th>
-                <th>
-                    <span title="<?= I18N::translate('Anniversary') ?>">
-                        <?= view('icons/anniversary') ?>
-                    </span>
+                <th title="<?= I18N::translate('Anniversary') ?>">
+                    <?= view('icons/anniversary') ?>
                 </th>
                 <th><?= I18N::translate('Place') ?></th>
-                <th><i class="icon-children" title="<?= I18N::translate('Children') ?>"></i></th>
-                <th><?= I18N::translate('Last change') ?></th>
-                <th hidden></th>
-                <th hidden></th>
-                <th hidden></th>
+                <th title="<?= I18N::translate('Children') ?>">
+                    <?= view('icons/children') ?>
+                </th>
+                <th <?= $tree->getPreference('SHOW_LAST_CHANGE')==='1' ? '' : 'hidden="hidden"'?>>
+                    <?= I18N::translate('Last change') ?>
+                </th>
+                <th hidden="hidden"></th>
+                <th hidden="hidden"></th>
+                <th hidden="hidden"></th>
             </tr>
         </thead>
 
@@ -223,8 +205,9 @@ $("#<?= e($table_id) ?>")
                     </td>
 
                     <!-- Marriage date -->
+                    <?php $marriage_dates = $family->getAllMarriageDates() ?>
                     <td data-sort="<?= sprintf('x%07d', $family->getMarriageDate()->julianDay()) ?>">
-                        <?php if ($marriage_dates = $family->getAllMarriageDates()) : ?>
+                        <?php if ($marriage_dates !== []) : ?>
                             <?php foreach ($marriage_dates as $marriage_date) : ?>
                                 <div><?= $marriage_date->display($tree, null, true) ?></div>
                             <?php endforeach ?>
@@ -254,12 +237,15 @@ $("#<?= e($table_id) ?>")
                     </td>
 
                     <!-- Last change -->
-                    <td data-sort="<?= sprintf('x%07d', $family->lastChangeTimestamp()->timestamp()) ?>">
+                    <td
+                        <?= $tree->getPreference('SHOW_LAST_CHANGE') === '1' ? '' : 'hidden="hidden"' ?>
+                        data-sort="<?= sprintf('x%07d', $family->lastChangeTimestamp()->timestamp()) ?>"
+                    >
                         <?= view('components/datetime', ['timestamp' => $family->lastChangeTimestamp()]) ?>
                     </td>
 
                     <!-- Filter by marriage date -->
-                    <td hidden>
+                    <td hidden="hidden">
                         <?php if ($family->getMarriageDate()->maximumJulianDay() > $hundred_years_ago && $family->getMarriageDate()->maximumJulianDay() <= $today_jd) : ?>
                             Y100
                         <?php elseif ($family->facts(['MARR'])->isNotEmpty()) : ?>
@@ -276,7 +262,7 @@ $("#<?= e($table_id) ?>")
                     </td>
 
                     <!-- Filter by alive/dead -->
-                    <td hidden>
+                    <td hidden="hidden">
                         <?php if ($husb->isDead() && $wife->isDead()) : ?>
                             Y
                         <?php endif ?>
@@ -302,7 +288,7 @@ $("#<?= e($table_id) ?>")
                     </td>
 
                     <!-- Filter by roots/leaves -->
-                    <td hidden>
+                    <td hidden="hidden">
                         <?php if ($husb->childFamilies()->isEmpty() && $wife->childFamilies()->isEmpty()) : ?>
                             R
                         <?php elseif (!$husb->isDead() && !$wife->isDead() && $family->numberOfChildren() === 0) : ?>

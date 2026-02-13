@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -59,14 +59,9 @@ class TreeService
         'pt-BR' => 'portuguese',
     ];
 
-    private GedcomImportService $gedcom_import_service;
-
-    /**
-     * @param GedcomImportService $gedcom_import_service
-     */
-    public function __construct(GedcomImportService $gedcom_import_service)
-    {
-        $this->gedcom_import_service = $gedcom_import_service;
+    public function __construct(
+        private readonly GedcomImportService $gedcom_import_service,
+    ) {
     }
 
     /**
@@ -79,61 +74,43 @@ class TreeService
         return Registry::cache()->array()->remember('all-trees', static function (): Collection {
             // All trees
             $query = DB::table('gedcom')
-                ->leftJoin('gedcom_setting', static function (JoinClause $join): void {
-                    $join->on('gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
-                        ->where('gedcom_setting.setting_name', '=', 'title');
-                })
                 ->where('gedcom.gedcom_id', '>', 0)
-                ->select([
-                    'gedcom.gedcom_id AS tree_id',
-                    'gedcom.gedcom_name AS tree_name',
-                    'gedcom_setting.setting_value AS tree_title',
-                ])
-                ->orderBy('gedcom.sort_order')
-                ->orderBy('gedcom_setting.setting_value');
-
-            // Non-admins may not see all trees
-            if (!Auth::isAdmin()) {
-                $query
-                    ->join('gedcom_setting AS gs2', static function (JoinClause $join): void {
-                        $join
-                            ->on('gs2.gedcom_id', '=', 'gedcom.gedcom_id')
-                            ->where('gs2.setting_name', '=', 'imported');
-                    })
-                    ->join('gedcom_setting AS gs3', static function (JoinClause $join): void {
-                        $join
-                            ->on('gs3.gedcom_id', '=', 'gedcom.gedcom_id')
-                            ->where('gs3.setting_name', '=', 'REQUIRE_AUTHENTICATION');
-                    })
-                    ->leftJoin('user_gedcom_setting', static function (JoinClause $join): void {
+                ->when(!Auth::isAdmin(), function (Builder $query): void {
+                    $query->leftJoin('user_gedcom_setting', static function (JoinClause $join): void {
                         $join
                             ->on('user_gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
-                            ->where('user_gedcom_setting.user_id', '=', Auth::id())
-                            ->where('user_gedcom_setting.setting_name', '=', UserInterface::PREF_TREE_ROLE);
-                    })
-                    ->where(static function (Builder $query): void {
+                            ->where('user_id', '=', Auth::id())
+                            ->where('setting_name', '=', UserInterface::PREF_TREE_ROLE);
+                    });
+
+                    $query->where(static function (Builder $query): void {
                         $query
                             // Managers
-                            ->where('user_gedcom_setting.setting_value', '=', UserInterface::ROLE_MANAGER)
+                            ->where('setting_value', '=', UserInterface::ROLE_MANAGER)
                             // Members
                             ->orWhere(static function (Builder $query): void {
                                 $query
-                                    ->where('gs2.setting_value', '=', '1')
-                                    ->where('gs3.setting_value', '=', '1')
-                                    ->where('user_gedcom_setting.setting_value', '<>', UserInterface::ROLE_VISITOR);
+                                    ->where('imported', '=', 1)
+                                    ->where('private', '=', 1)
+                                    ->where('setting_value', '<>', UserInterface::ROLE_VISITOR);
                             })
                             // Public trees
                             ->orWhere(static function (Builder $query): void {
                                 $query
-                                    ->where('gs2.setting_value', '=', '1')
-                                    ->where('gs3.setting_value', '<>', '1');
+                                    ->where('imported', '=', 1)
+                                    ->where('private', '=', 0);
                             });
                     });
-            }
+                })
+                ->select(['gedcom.*'])
+                ->orderBy('gedcom.sort_order')
+                ->orderBy('gedcom.title');
 
+            // TODO - do we need the array keys, or would a list of trees be sufficient?
             return $query
                 ->get()
-                ->mapWithKeys(static fn (object $row): array => [$row->tree_name => Tree::rowMapper()($row)]);
+                ->map(Tree::fromDB(...))
+                ->mapWithKeys(static fn (Tree $tree): array => [$tree->name() => $tree]);
         });
     }
 
@@ -156,40 +133,37 @@ class TreeService
     }
 
     /**
-     * All trees, name => title
-     *
-     * @return array<string>
+     * @return array<array-key,string>
      */
     public function titles(): array
     {
-        return $this->all()->map(static fn (Tree $tree): string => $tree->title())->all();
+        return $this->all()
+            ->mapWithKeys(static fn (Tree $tree): array => [$tree->name() => $tree->title()])
+            ->all();
     }
 
-    /**
-     * @param string $name
-     * @param string $title
-     *
-     * @return Tree
-     */
     public function create(string $name, string $title): Tree
     {
         DB::table('gedcom')->insert([
-            'gedcom_name' => $name,
+            'contact_user_id' => Auth::id(),
+            'gedcom_filename' => $name . '.ged',
+            'gedcom_name'     => $name,
+            'support_user_id' => Auth::id(),
+            'title'           => $title,
         ]);
 
-        $tree_id = DB::lastInsertId();
+        $tree = DB::table('gedcom')
+            ->where('gedcom_id', '=', DB::lastInsertId())
+            ->get()
+            ->map(Tree::fromDB(...))
+            ->first();
 
-        $tree = new Tree($tree_id, $name, $title);
-
-        $tree->setPreference('imported', '1');
-        $tree->setPreference('title', $title);
-
-        // Set preferences from default tree
+        // Set preferences from the default tree
         DB::query()->from('gedcom_setting')->insertUsing(
             ['gedcom_id', 'setting_name', 'setting_value'],
-            static function (Builder $query) use ($tree_id): void {
+            static function (Builder $query) use ($tree): void {
                 $query
-                    ->select([new Expression($tree_id), 'setting_name', 'setting_value'])
+                    ->select([new Expression($tree->id()), 'setting_name', 'setting_value'])
                     ->from('gedcom_setting')
                     ->where('gedcom_id', '=', -1);
             }
@@ -197,19 +171,15 @@ class TreeService
 
         DB::query()->from('default_resn')->insertUsing(
             ['gedcom_id', 'tag_type', 'resn'],
-            static function (Builder $query) use ($tree_id): void {
+            static function (Builder $query) use ($tree): void {
                 $query
-                    ->select([new Expression($tree_id), 'tag_type', 'resn'])
+                    ->select([new Expression($tree->id()), 'tag_type', 'resn'])
                     ->from('default_resn')
                     ->where('gedcom_id', '=', -1);
             }
         );
 
         // Gedcom and privacy settings
-        $tree->setPreference('REQUIRE_AUTHENTICATION', '');
-        $tree->setPreference('CONTACT_USER_ID', (string) Auth::id());
-        $tree->setPreference('WEBMASTER_USER_ID', (string) Auth::id());
-        $tree->setPreference('LANGUAGE', I18N::languageTag()); // Default to the current admin’s language
         $tree->setPreference('SURNAME_TRADITION', self::DEFAULT_SURNAME_TRADITIONS[I18N::languageTag()] ?? 'paternal');
 
         // A tree needs at least one record.
@@ -239,13 +209,15 @@ class TreeService
     {
         // Read the file in blocks of roughly 64K. Ensure that each block
         // contains complete gedcom records. This will ensure we don’t split
-        // multi-byte characters, as well as simplifying the code to import
+        // multibyte characters, as well as simplifying the code to import
         // each block.
 
         $file_data = '';
 
-        $tree->setPreference('gedcom_filename', $filename);
-        $tree->setPreference('imported', '0');
+        DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update([
+            'gedcom_filename' => $filename,
+            'imported' => 0,
+        ]);
 
         DB::table('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
 
@@ -309,7 +281,6 @@ class TreeService
         DB::table('module_privacy')->where('gedcom_id', '=', $tree->id())->delete();
         DB::table('hit_counter')->where('gedcom_id', '=', $tree->id())->delete();
         DB::table('default_resn')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
         DB::table('log')->where('gedcom_id', '=', $tree->id())->delete();
         DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->delete();
     }

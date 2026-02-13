@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -100,7 +100,7 @@ readonly class StatisticsData
 
         $rows = $query
             ->groupBy(['n_givn'])
-            ->pluck(new Expression('COUNT(DISTINCT n_id)'), 'n_givn')
+            ->pluck(new Expression('COUNT(DISTINCT n_id) AS total'), 'n_givn')
             ->map(static fn (int|string $count): int => (int) $count);
 
 
@@ -257,7 +257,7 @@ readonly class StatisticsData
     {
         return $this->countEventQuery($event, $year1, $year2)
             ->groupBy(['d_month'])
-            ->pluck(new Expression('COUNT(*)'), 'd_month')
+            ->pluck(new Expression('COUNT(*) AS total'), 'd_month')
             ->map(static fn (string $total): int => (int) $total)
             ->all();
     }
@@ -350,7 +350,7 @@ readonly class StatisticsData
     {
         return $this->countFirstChildrenQuery($year1, $year2)
             ->groupBy(['d_month'])
-            ->pluck(new Expression('COUNT(*)'), 'd_month')
+            ->pluck(new Expression('COUNT(*) AS total'), 'd_month')
             ->map(static fn (string $total): int => (int) $total)
             ->all();
     }
@@ -548,7 +548,8 @@ readonly class StatisticsData
             })
             ->where('d_file', '=', $this->tree->id())
             ->whereIn('d_fact', $events)
-            ->count();
+            ->distinct()
+            ->count(['i_id']);
     }
 
     public function countIndividualsWithSources(): int
@@ -1241,7 +1242,7 @@ readonly class StatisticsData
                     ->on('pl_gid', '=', 'i_id');
             })
             ->groupBy('p_place')
-            ->pluck(new Expression('COUNT(*)'), 'p_place')
+            ->pluck(new Expression('COUNT(*) AS total'), 'p_place')
             ->all();
 
         $totals = [];
@@ -1281,7 +1282,7 @@ readonly class StatisticsData
                 })
                 ->where('n_surn', '=', $surname)
                 ->groupBy('p_place')
-                ->pluck(new Expression('COUNT(*)'), 'p_place');
+                ->pluck(new Expression('COUNT(*) AS total'), 'p_place');
 
         $totals = [];
 

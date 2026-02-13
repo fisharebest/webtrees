@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -69,9 +69,9 @@ final class UserList extends AbstractCommand
             'username'   => $user->userName(),
             'real_name'  => $user->realName(),
             'email'      => $user->email(),
-            'admin'      => $user->getPreference(setting_name: UserInterface::PREF_IS_ADMINISTRATOR) ? 'yes' : 'no',
-            'approved'   => $user->getPreference(setting_name: UserInterface::PREF_IS_ACCOUNT_APPROVED) ? 'yes' : 'no',
-            'verified'   => $user->getPreference(setting_name: UserInterface::PREF_IS_EMAIL_VERIFIED) ? 'yes' : 'no',
+            'admin'      => $user->getPreference(setting_name: UserInterface::PREF_IS_ADMINISTRATOR) === '1' ? 'yes' : 'no',
+            'approved'   => $user->getPreference(setting_name: UserInterface::PREF_IS_ACCOUNT_APPROVED) === '1' ? 'yes' : 'no',
+            'verified'   => $user->getPreference(setting_name: UserInterface::PREF_IS_EMAIL_VERIFIED) === '1' ? 'yes' : 'no',
             'language'   => $user->getPreference(setting_name: UserInterface::PREF_LANGUAGE),
             'timezone'   => $user->getPreference(setting_name: UserInterface::PREF_TIME_ZONE),
             'contact'    => $user->getPreference(setting_name: UserInterface::PREF_CONTACT_METHOD),

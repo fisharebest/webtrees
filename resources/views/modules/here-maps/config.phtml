@@ -33,9 +33,13 @@ use Fisharebest\Webtrees\I18N;
                     value="<?= e($api_key) ?>"
             >
             <div class="form-text">
-                <?= I18N::translate('To use this service, you need an API key.') ?>
+                <?php if (strlen($api_key) > 0 ) : ?>
+                    <?= I18N::translate('If you obtained this key prior to 2024 then it will be necessary to create a new key.') ?>
+                <?php else: ?>
+                    <?= I18N::translate('To use this service, you need an API key.') ?>
+                <?php endif ?>
                 <br>
-                <?= I18N::translate('For more information, see %s.', '<a href="https://developer.here.com">developer.here.com</a>') ?>
+                <?= I18N::translate('For more information, see %s.', '<a href="https://platform.here.com/access/apps">Platform.here.com</a>') ?>
             </div>
         </div>
     </div>

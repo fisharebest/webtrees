@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -46,8 +46,8 @@ class Migration39 implements MigrationInterface
                 $table->index('user_id');
                 $table->index(['gedcom_id', 'user_id']);
 
-                $table->foreign('user_id')->references('user_id')->on('user')->onDelete('cascade');
-                $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom')->onDelete('cascade');
+                $table->foreign('user_id')->references('user_id')->on('user')->cascadeOnDelete();
+                $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom')->cascadeOnDelete();
             });
         }
     }

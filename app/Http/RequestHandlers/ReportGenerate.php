@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,30 +40,15 @@ use function redirect;
 use function response;
 use function route;
 
-/**
- * Show all available reports.
- */
-class ReportGenerate implements RequestHandlerInterface
+final class ReportGenerate implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private ModuleService $module_service;
-
-    /**
-     * @param ModuleService $module_service
-     */
-    public function __construct(ModuleService $module_service)
-    {
-        $this->module_service = $module_service;
+    public function __construct(
+        private readonly ModuleService $module_service,
+    ) {
     }
 
-    /**
-     * A list of available reports.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();
@@ -77,12 +62,12 @@ class ReportGenerate implements RequestHandlerInterface
 
         Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
 
-        $varnames  = Validator::queryParams($request)->array('varnames');
-        $vars      = Validator::queryParams($request)->array('vars');
-        $variables = [];
+        $varnames = Validator::queryParams($request)->array('varnames');
+        $vars     = Validator::queryParams($request)->array('vars');
 
+        // Ensure we have an empty value for checkboxes in the report options.
         foreach ($varnames as $name) {
-            $variables[$name]['id'] = $vars[$name] ?? '';
+            $vars[$name] = $vars[$name] ?? '';
         }
 
         $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
@@ -96,7 +81,7 @@ class ReportGenerate implements RequestHandlerInterface
             default:
             case 'HTML':
                 ob_start();
-                new ReportParserGenerate($xml_filename, new HtmlRenderer(), $variables, $tree);
+                new ReportParserGenerate($xml_filename, new HtmlRenderer(), $vars, $tree);
                 $html = ob_get_clean();
 
                 $this->layout = 'layouts/report';
@@ -114,7 +99,7 @@ class ReportGenerate implements RequestHandlerInterface
 
             case 'PDF':
                 ob_start();
-                new ReportParserGenerate($xml_filename, new PdfRenderer(), $variables, $tree);
+                new ReportParserGenerate($xml_filename, new PdfRenderer(), $vars, $tree);
                 $pdf = ob_get_clean();
 
                 $headers = ['content-type' => 'application/pdf'];

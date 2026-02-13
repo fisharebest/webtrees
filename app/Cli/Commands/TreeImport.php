@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -102,7 +102,7 @@ final class TreeImport extends AbstractCommand
         try {
             DB::connection()->beginTransaction();
 
-            $tree->setPreference('imported', '0');
+            DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update(['imported' => 0]);
             $tree->setPreference('keep_media', $keep_media ? '1' : '0');
             $tree->setPreference('WORD_WRAPPED_NOTES', $word_wrapped_notes ? '1' : '0');
             $tree->setPreference('GEDCOM_MEDIA_PATH', $gedcom_media_path);
@@ -139,7 +139,7 @@ final class TreeImport extends AbstractCommand
             $progress_bar->setRedrawFrequency(1);
             $progress_bar->start();
 
-            foreach ($queries as $name => $query) {
+            foreach ($queries as $query) {
                 $query->delete();
                 $progress_bar->advance();
             }
@@ -164,7 +164,7 @@ final class TreeImport extends AbstractCommand
             while ($bytes_loaded < $total_bytes) {
                 $tmp = fread($fp, 8192);
                 $buffer .= $tmp;
-                $bytes_loaded += strlen($buffer);
+                $bytes_loaded += strlen($tmp);
 
                 $records = preg_split('/[\r\n]+(?=0)/', $buffer);
                 $buffer = array_pop($records);
@@ -179,7 +179,7 @@ final class TreeImport extends AbstractCommand
 
             $output->writeln('');
 
-            $tree->setPreference('imported', '1');
+            DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update(['imported' => 1]);
 
             DB::connection()->commit();
         } catch (Throwable $ex) {

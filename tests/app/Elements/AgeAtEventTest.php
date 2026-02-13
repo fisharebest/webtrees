@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -44,7 +44,7 @@ class AgeAtEventTest extends AbstractElementTestCase
 
     public function testValue(): void
     {
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
         self::assertSame('child', self::$element->value('cHiLd', $tree));
         self::assertSame('infant', self::$element->value('iNfAnT ', $tree));

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -55,10 +55,7 @@ use function touch;
 use function unlink;
 use function view;
 
-/**
- * Controller for the installation wizard
- */
-class SetupWizard implements RequestHandlerInterface
+final class SetupWizard implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -92,11 +89,11 @@ class SetupWizard implements RequestHandlerInterface
     ];
 
     public function __construct(
-        private MigrationService $migration_service,
-        private ModuleService $module_service,
-        private PhpService $php_service,
-        private ServerCheckService $server_check_service,
-        private UserService $user_service
+        private readonly MigrationService $migration_service,
+        private readonly ModuleService $module_service,
+        private readonly PhpService $php_service,
+        private readonly ServerCheckService $server_check_service,
+        private readonly UserService $user_service
     ) {
     }
 
@@ -136,7 +133,7 @@ class SetupWizard implements RequestHandlerInterface
 
         $data['cpu_limit']    = $this->php_service->maxExecutionTime();
         $data['locales']      = $locales;
-        $data['memory_limit'] = intdiv($this->php_service->maxExecutionTime(), 1048576);
+        $data['memory_limit'] = $this->php_service->memoryLimit();
 
         // Only show database errors after the user has chosen a driver.
         if ($step >= 4) {
@@ -241,7 +238,7 @@ class SetupWizard implements RequestHandlerInterface
             return $this->step3DatabaseType($data);
         }
 
-        $data['mysql_local'] = 'localhost:' . $this->php_service->iniGet(option: 'pdo_mysql.default_socket');
+        $data['mysql_local'] = 'localhost:' . $this->php_service->pdoMysqlDefaultSocket();
 
         return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
     }
@@ -260,7 +257,7 @@ class SetupWizard implements RequestHandlerInterface
             $data['errors']->push($ex->getMessage());
 
             // Don't jump to step 4, as the error will make it jump to step 3.
-            $data['mysql_local'] = 'localhost:' . $this->php_service->iniGet(option: 'pdo_mysql.default_socket');
+            $data['mysql_local'] = 'localhost:' . $this->php_service->pdoMysqlDefaultSocket();
 
             return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
         }

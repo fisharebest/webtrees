@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -670,15 +670,6 @@ div.faq_body {
 }
 
 /*
- * Any element that is loaded dynamically has the class wt-ajax-load.
- * We can provide a "loading" placeholder for empty elements with this class.
- */
-.wt-ajax-load:empty {
-    height: 32px;
-    background: url(images/loading-32x32.gif) no-repeat 50% 50%;
-}
-
-/*
  * Default icons are provided by FontAwesome.
  */
 .wt-icon-sex-f {
@@ -698,10 +689,6 @@ div.faq_body {
 }
 
 /* Miscellaneous images */
-.icon-children {
-    content: url(images/children.png);
-}
-
 .icon-loading-small {
     content: url(images/indicator.gif);
 }

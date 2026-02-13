@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,41 +27,9 @@ use Fisharebest\Webtrees\Individual;
  */
 interface CensusColumnInterface
 {
-    /**
-     * A short version of the column's name.
-     *
-     * @return string
-     */
+    public function title(): string;
+
     public function abbreviation(): string;
 
-    /**
-     * When did this census occur
-     *
-     * @return Date
-     */
-    public function date(): Date;
-
-    /**
-     * Generate the likely value of this census column, based on available information.
-     *
-     * @param Individual $individual
-     * @param Individual $head
-     *
-     * @return string
-     */
     public function generate(Individual $individual, Individual $head): string;
-
-    /**
-     * Where did this census occur
-     *
-     * @return string
-     */
-    public function place(): string;
-
-    /**
-     * The full version of the column's name.
-     *
-     * @return string
-     */
-    public function title(): string;
 }

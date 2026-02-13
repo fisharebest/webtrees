@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\View;
 <dl>
     <?php foreach ($steps as $url => $text) : ?>
     <dt><?= $text ?></dt>
-    <dd class="wt-ajax-load" data-url="<?= e($url) ?>"></dd>
+    <dd data-url="<?= e($url) ?>"></dd>
     <?php endforeach ?>
 </dl>
 
@@ -32,10 +32,10 @@ use Fisharebest\Webtrees\View;
 <script>
   function nextAjaxStep() {
     $("dd:empty:first").each(function(n, el) {
+      el.innerHTML=<?= json_encode(view('icons/spinner')) ?>;
       $(el).load(el.dataset.url, {}, function (responseText, textStatus, req) {
         el.innerHTML = responseText;
         if (textStatus === "error") {
-          $(".wt-ajax-load").removeClass("wt-ajax-load");
         } else {
           nextAjaxStep();
         }

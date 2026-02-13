@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -186,46 +186,46 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
                 ->join('gedcom', 'f_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->groupBy(['gedcom_id'])
-                ->pluck(new Expression('COUNT(*)'), 'gedcom_name');
+                ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
             $count_individuals = DB::table('individuals')
                 ->join('gedcom', 'i_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->groupBy(['gedcom_id'])
-                ->pluck(new Expression('COUNT(*)'), 'gedcom_name');
+                ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
             $count_media = DB::table('media')
                 ->join('gedcom', 'm_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->groupBy(['gedcom_id'])
-                ->pluck(new Expression('COUNT(*)'), 'gedcom_name');
+                ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
             $count_notes = DB::table('other')
                 ->join('gedcom', 'o_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->where('o_type', '=', Note::RECORD_TYPE)
                 ->groupBy(['gedcom_id'])
-                ->pluck(new Expression('COUNT(*)'), 'gedcom_name');
+                ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
             $count_repositories = DB::table('other')
                 ->join('gedcom', 'o_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->where('o_type', '=', Repository::RECORD_TYPE)
                 ->groupBy(['gedcom_id'])
-                ->pluck(new Expression('COUNT(*)'), 'gedcom_name');
+                ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
             $count_sources = DB::table('sources')
                 ->join('gedcom', 's_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->groupBy(['gedcom_id'])
-                ->pluck(new Expression('COUNT(*)'), 'gedcom_name');
+                ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
             $count_submitters = DB::table('other')
                 ->join('gedcom', 'o_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->where('o_type', '=', Submitter::RECORD_TYPE)
                 ->groupBy(['gedcom_id'])
-                ->pluck(new Expression('COUNT(*)'), 'gedcom_name');
+                ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
             // Versions 2.0.1 and earlier of this module stored large amounts of data in the settings.
             DB::table('module_setting')

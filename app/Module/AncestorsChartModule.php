@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -54,7 +55,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
     // Limits
     protected const int MINIMUM_GENERATIONS = 2;
-    protected const int MAXIMUM_GENERATIONS = 10;
+    protected const int MAXIMUM_GENERATIONS = PHP_INT_SIZE === 4 ? 31 : 63;
 
     private ChartService $chart_service;
 
@@ -76,6 +77,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST)
+            ->extras(['middleware' => [AuthNotRobot::class]])
             ->tokens([
                 'generations' => '\d+',
                 'style'       => implode('|', array_keys($this->styles())),
@@ -195,8 +197,8 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
                 case self::CHART_STYLE_FAMILIES:
                     $families = [];
 
-                    foreach ($ancestors as $individual) {
-                        foreach ($individual->childFamilies() as $family) {
+                    foreach ($ancestors as $ancestor) {
+                        foreach ($ancestor->childFamilies() as $family) {
                             $families[$family->xref()] = $family;
                         }
                     }

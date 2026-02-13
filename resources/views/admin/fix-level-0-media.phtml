@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\I18N;
 </p>
 
 <table
+    id="wt-datatables-fix-level-0-media"
     class="table table-bordered table-sm table-hover wt-fix-table datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-ajax="<?= e(json_encode(['url' => route(FixLevel0MediaData::class)], JSON_THROW_ON_ERROR)) ?>"

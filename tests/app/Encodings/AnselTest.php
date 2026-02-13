@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -141,7 +141,7 @@ class AnselTest extends TestCase
 
         foreach ($latin_code_blocks as $codes) {
             foreach ($codes as $code) {
-                $utf8 = UTF8::chr($code);
+                $utf8 = mb_chr($code, 'UTF-8');
                 $norm = normalizer_normalize($utf8, Normalizer::FORM_D);
                 self::assertIsString($norm);
 

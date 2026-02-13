@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -67,6 +67,7 @@ use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
 use Fisharebest\Webtrees\Http\Middleware\RegisterGedcomTags;
 use Fisharebest\Webtrees\Http\Middleware\Router;
 use Fisharebest\Webtrees\Http\Middleware\SecurityHeaders;
+use Fisharebest\Webtrees\Http\Middleware\DebugLogger;
 use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
 use Fisharebest\Webtrees\Http\Middleware\UseDatabase;
 use Fisharebest\Webtrees\Http\Middleware\UseLanguage;
@@ -129,13 +130,13 @@ class Webtrees
     public const string NAME = 'webtrees';
 
     // Required version of database tables/columns/indexes/etc.
-    public const int SCHEMA_VERSION = 45;
+    public const int SCHEMA_VERSION = 46;
 
     // e.g. "-dev", "-alpha", "-beta", etc.
     public const string STABILITY = '-dev';
 
     // Version number.
-    public const string VERSION = '2.2.2' . self::STABILITY;
+    public const string VERSION = '2.2.6' . self::STABILITY;
 
     // Project website.
     public const string URL = 'https://webtrees.net/';
@@ -159,6 +160,7 @@ class Webtrees
         CompressResponse::class,
         BadBotBlocker::class,
         UseDatabase::class,
+        DebugLogger::class,
         UpdateDatabaseSchema::class,
         UseSession::class,
         UseLanguage::class,

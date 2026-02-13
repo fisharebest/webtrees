@@ -7,7 +7,7 @@ parameters:
         - php
         - phtml
 
-    level: max
+    level: 2
 
     paths:
         - index.php

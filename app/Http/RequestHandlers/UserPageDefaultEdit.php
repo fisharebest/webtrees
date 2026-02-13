@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,36 +31,23 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function route;
 
-/**
- * Show a form to edit the default blocks for new users.
- */
-class UserPageDefaultEdit implements RequestHandlerInterface
+final class UserPageDefaultEdit implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private HomePageService $home_page_service;
-
-    /**
-     * @param HomePageService $home_page_service
-     */
-    public function __construct(HomePageService $home_page_service)
-    {
-        $this->home_page_service = $home_page_service;
+    public function __construct(
+        private readonly HomePageService $home_page_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
         $this->home_page_service->checkDefaultUserBlocksExist();
 
-        $default_tree = new Tree(-1, 'DEFAULT', 'DEFAULT');
-        $default_user = new User(-1, 'DEFAULT', 'DEFAULT', 'DEFAULT');
+        $default_tree = new Tree(-1, '', '', '', '', true, true, null, null);
+        $default_user = new User(-1, '', '', '');
 
         $main_blocks = $this->home_page_service->userBlocks($default_tree, $default_user, ModuleBlockInterface::MAIN_BLOCKS);
         $side_blocks = $this->home_page_service->userBlocks($default_tree, $default_user, ModuleBlockInterface::SIDE_BLOCKS);

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Tree;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -46,7 +47,6 @@ final class TreeExport extends AbstractCommand
 
     public function __construct(
         private readonly GedcomExportService $gedcom_export_service,
-        private readonly TreeService $tree_service,
     ) {
         parent::__construct();
     }
@@ -96,7 +96,12 @@ final class TreeExport extends AbstractCommand
             return self::FAILURE;
         }
 
-        $tree = $this->tree_service->all()[$tree_name] ?? null;
+        $tree = DB::table('gedcom')
+            ->where('gedcom_name', '=', $tree_name)
+            ->get()
+            ->map(Tree::fromDB(...))
+            ->first();
+
 
         if ($tree === null) {
             $io->error(message: 'Tree "' . $tree_name . '" not found.');
@@ -128,7 +133,7 @@ final class TreeExport extends AbstractCommand
                 break;
 
             case 'zipmedia':
-                $media_path     = $tree->getPreference('MEDIA_DIRECTORY');
+                $media_path     = $tree->mediaFolder();
                 $filename       = $tree_name . '.zip';
                 $zip_filesystem = new ZipArchive();
                 $zip_filesystem->open($filename, ZipArchive::CREATE | ZipArchive::OVERWRITE);

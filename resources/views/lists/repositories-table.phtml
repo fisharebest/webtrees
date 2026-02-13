@@ -36,6 +36,7 @@ $count_sources = DB::table('sources')
 ?>
 
 <table
+    id="wt-datatables-repositories"
     class="table table-bordered table-sm wt-table-repository datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([
