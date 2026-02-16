@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2026-02-12 15:54+0000\n"
+"PO-Revision-Date: 2026-02-17 12:34+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/da/>\n"
@@ -1269,7 +1269,7 @@ msgstr "Tilføj en datter"
 
 #: resources/views/edit/raw-gedcom-record.phtml:53
 msgid "Add a fact"
-msgstr "Tilføj fakta"
+msgstr "Tilføj et faktum"
 
 #: app/Http/RequestHandlers/AddParentToIndividualPage.php:61
 #: resources/views/family-page-grandparents.phtml:33
@@ -4749,7 +4749,9 @@ msgstr "Dato-interval"
 
 #: resources/views/help/date.phtml:97
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr "Dato-intervaller bruges til at indikere at et fakta, som fx et erhverv, var gældende inden for et tidsrum."
+msgstr ""
+"Dato-intervaller bruges til at indikere at fakta, som fx erhverv, var "
+"gældende inden for et tidsrum."
 
 #: app/Factories/ElementFactory.php:1361 resources/views/help/date.phtml:66
 #: resources/views/modules/statistics-chart/custom.phtml:96
@@ -6114,72 +6116,72 @@ msgstr ""
 #. I18N: gedcom tag FACT
 #: app/Factories/ElementFactory.php:1198 app/GedcomTag.php:691
 msgid "Fact"
-msgstr "Fakta"
+msgstr "Faktum"
 
 #: app/Factories/ElementFactory.php:363 app/Factories/ElementFactory.php:381
 #: app/GedcomTag.php:1082
 msgid "Fact 1"
-msgstr "Fakta 1"
+msgstr "Faktum 1"
 
 #: app/Factories/ElementFactory.php:364 app/Factories/ElementFactory.php:382
 #: app/GedcomTag.php:1100
 msgid "Fact 10"
-msgstr "Fakta 10"
+msgstr "Faktum 10"
 
 #: app/Factories/ElementFactory.php:365 app/Factories/ElementFactory.php:383
 #: app/GedcomTag.php:1102
 msgid "Fact 11"
-msgstr "Fakta 11"
+msgstr "Faktum 11"
 
 #: app/Factories/ElementFactory.php:366 app/Factories/ElementFactory.php:384
 #: app/GedcomTag.php:1104
 msgid "Fact 12"
-msgstr "Fakta 12"
+msgstr "Faktum 12"
 
 #: app/Factories/ElementFactory.php:367 app/Factories/ElementFactory.php:385
 #: app/GedcomTag.php:1106
 msgid "Fact 13"
-msgstr "Fakta 13"
+msgstr "Faktum 13"
 
 #: app/Factories/ElementFactory.php:368 app/Factories/ElementFactory.php:386
 #: app/GedcomTag.php:1084
 msgid "Fact 2"
-msgstr "Fakta 2"
+msgstr "Faktum 2"
 
 #: app/Factories/ElementFactory.php:369 app/Factories/ElementFactory.php:387
 #: app/GedcomTag.php:1086
 msgid "Fact 3"
-msgstr "Fakta 3"
+msgstr "Faktum 3"
 
 #: app/Factories/ElementFactory.php:370 app/Factories/ElementFactory.php:388
 #: app/GedcomTag.php:1088
 msgid "Fact 4"
-msgstr "Fakta 4"
+msgstr "Faktum 4"
 
 #: app/Factories/ElementFactory.php:371 app/Factories/ElementFactory.php:389
 #: app/GedcomTag.php:1090
 msgid "Fact 5"
-msgstr "Fakta 5"
+msgstr "Faktum 5"
 
 #: app/Factories/ElementFactory.php:372 app/Factories/ElementFactory.php:390
 #: app/GedcomTag.php:1092
 msgid "Fact 6"
-msgstr "Fakta 6"
+msgstr "Faktum 6"
 
 #: app/Factories/ElementFactory.php:373 app/Factories/ElementFactory.php:391
 #: app/GedcomTag.php:1094
 msgid "Fact 7"
-msgstr "Fakta 7"
+msgstr "Faktum 7"
 
 #: app/Factories/ElementFactory.php:374 app/Factories/ElementFactory.php:392
 #: app/GedcomTag.php:1096
 msgid "Fact 8"
-msgstr "Fakta 8"
+msgstr "Faktum 8"
 
 #: app/Factories/ElementFactory.php:375 app/Factories/ElementFactory.php:393
 #: app/GedcomTag.php:1098
 msgid "Fact 9"
-msgstr "Fakta 9"
+msgstr "Faktum 9"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:536
@@ -6189,7 +6191,7 @@ msgstr "Ikoner for fakta"
 #: resources/views/admin/trees-privacy.phtml:240
 #: resources/views/edit/add-fact-row.phtml:22
 msgid "Fact or event"
-msgstr "Fakta eller hændelse"
+msgstr "Faktum eller hændelse"
 
 #. I18N: Name of a module/tab on the individual page.
 #: app/Module/IndividualFactsTabModule.php:67
@@ -11773,11 +11775,11 @@ msgstr "Quetzaltenango , Guatemala"
 
 #: resources/views/admin/trees-preferences.phtml:774
 msgid "Quick family facts"
-msgstr "Hurtig Familie fakta"
+msgstr "Hurtige familiefakta"
 
 #: resources/views/admin/trees-preferences.phtml:720
 msgid "Quick individual facts"
-msgstr "Hurtig person fakta"
+msgstr "Hurtige personfakta"
 
 #: resources/views/admin/trees-preferences.phtml:856
 msgid "Quick repository facts"
@@ -12380,7 +12382,9 @@ msgstr "Restriktion"
 
 #: resources/views/help/restriction.phtml:8
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr "Restriktioner kan tilføjes til poster og/eller fakta. De begrænser hvem der kan se eller ændre data."
+msgstr ""
+"Restriktioner kan tilføjes til poster og/eller fakta. De begrænser, hvem der "
+"kan se eller ændre data."
 
 #: resources/views/modules/statistics-chart/custom.phtml:122
 msgid "Results"
