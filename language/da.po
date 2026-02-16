@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2026-02-13 13:34+0000\n"
+"PO-Revision-Date: 2026-02-16 15:59+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/da/>\n"
@@ -1296,7 +1296,7 @@ msgstr "Tilføj et barn til denne familie"
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr "Tilføj fakta"
+msgstr "Tilføj et faktum"
 
 #: app/Module/RelativesTabModule.php:326 edit_interface.php:655 family.php:92
 msgid "Add a father"
@@ -4553,7 +4553,9 @@ msgstr "Dato-interval"
 
 #: help_text.php:157
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr "Dato-intervaller bruges til at indikere at et fakta, som fx et erhverv, var gældende inden for et tidsrum."
+msgstr ""
+"Dato-intervaller bruges til at indikere at fakta, som fx erhverv, var "
+"gældende inden for et tidsrum."
 
 #: help_text.php:148 statistics.php:723
 msgid "Date range"
@@ -5897,59 +5899,59 @@ msgstr ""
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:438
 msgid "Fact"
-msgstr "Fakta"
+msgstr "Faktum"
 
 #: app/GedcomTag.php:1473
 msgid "Fact 1"
-msgstr "Fakta 1"
+msgstr "Faktum 1"
 
 #: app/GedcomTag.php:1491
 msgid "Fact 10"
-msgstr "Fakta 10"
+msgstr "Faktum 10"
 
 #: app/GedcomTag.php:1493
 msgid "Fact 11"
-msgstr "Fakta 11"
+msgstr "Faktum 11"
 
 #: app/GedcomTag.php:1495
 msgid "Fact 12"
-msgstr "Fakta 12"
+msgstr "Faktum 12"
 
 #: app/GedcomTag.php:1497
 msgid "Fact 13"
-msgstr "Fakta 13"
+msgstr "Faktum 13"
 
 #: app/GedcomTag.php:1475
 msgid "Fact 2"
-msgstr "Fakta 2"
+msgstr "Faktum 2"
 
 #: app/GedcomTag.php:1477
 msgid "Fact 3"
-msgstr "Fakta 3"
+msgstr "Faktum 3"
 
 #: app/GedcomTag.php:1479
 msgid "Fact 4"
-msgstr "Fakta 4"
+msgstr "Faktum 4"
 
 #: app/GedcomTag.php:1481
 msgid "Fact 5"
-msgstr "Fakta 5"
+msgstr "Faktum 5"
 
 #: app/GedcomTag.php:1483
 msgid "Fact 6"
-msgstr "Fakta 6"
+msgstr "Faktum 6"
 
 #: app/GedcomTag.php:1485
 msgid "Fact 7"
-msgstr "Fakta 7"
+msgstr "Faktum 7"
 
 #: app/GedcomTag.php:1487
 msgid "Fact 8"
-msgstr "Fakta 8"
+msgstr "Faktum 8"
 
 #: app/GedcomTag.php:1489
 msgid "Fact 9"
-msgstr "Fakta 9"
+msgstr "Faktum 9"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1459
@@ -5958,7 +5960,7 @@ msgstr "Ikoner for fakta"
 
 #: admin_trees_config.php:529 app/Functions/FunctionsPrint.php:614
 msgid "Fact or event"
-msgstr "Fakta eller hændelse"
+msgstr "Faktum eller hændelse"
 
 #. I18N: Name of a module/tab on the individual page.
 #: app/Module/IndividualFactsTabModule.php:36
@@ -11263,11 +11265,11 @@ msgstr "Quetzaltenango , Guatemala"
 
 #: admin_trees_config.php:1823
 msgid "Quick family facts"
-msgstr "Hurtig Familie fakta"
+msgstr "Hurtige familiefakta"
 
 #: admin_trees_config.php:1705
 msgid "Quick individual facts"
-msgstr "Hurtig person fakta"
+msgstr "Hurtige personfakta"
 
 #: admin_trees_config.php:2001
 msgid "Quick repository facts"
@@ -11769,7 +11771,9 @@ msgstr "Restriktion"
 
 #: help_text.php:259
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr "Restriktioner kan tilføjes til poster og/eller fakta. De begrænser hvem der kan se eller ændre data."
+msgstr ""
+"Restriktioner kan tilføjes til poster og/eller fakta. De begrænser, hvem der "
+"kan se eller ændre data."
 
 #: app/Stats.php:87
 msgid "Resulting value"
