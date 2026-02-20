@@ -20,3 +20,5 @@
 /tests/clover.xml
 /tests/coverage
 /vendor/
+
+.vs/
