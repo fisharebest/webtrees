@@ -83,7 +83,7 @@ final class SetupWizard implements RequestHandlerInterface
 
     private const array DEFAULT_PORTS = [
         DB::MYSQL      => '3306',
-        DB::POSTGRES   => '5432',
+        DB::POSTGRESQL => '5432',
         DB::SQLITE     => '',
         DB::SQL_SERVER => '', // Do not use default, as it is valid to have no port number.
     ];

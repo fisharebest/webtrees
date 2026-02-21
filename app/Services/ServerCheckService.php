@@ -257,7 +257,7 @@ class ServerCheckService
                     $this->checkSqliteVersion(),
                 ]);
 
-            case DB::POSTGRES:
+            case DB::POSTGRESQL:
                 return Collection::make([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('pdo_pgsql'),
@@ -285,7 +285,7 @@ class ServerCheckService
                     I18N::translate('SQLite is only suitable for small sites, testing and evaluation.'),
                 ]);
 
-            case DB::POSTGRES:
+            case DB::POSTGRESQL:
                 return new Collection([
                     I18N::translate('Support for PostgreSQL is experimental.'),
                 ]);

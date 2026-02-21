@@ -33,46 +33,14 @@ final class DB extends Manager
     // Supported drivers
     public const string MARIADB    = 'mariadb';
     public const string MYSQL      = 'mysql';
-    public const string POSTGRES   = 'pgsql';
+    public const string POSTGRESQL = 'pgsql';
     public const string SQLITE     = 'sqlite';
     public const string SQL_SERVER = 'sqlsrv';
 
-    // For databases that support it, ASCII gives faster indexes
-    private const array COLLATION_ASCII = [
-        self::MARIADB    => 'ascii_bin',
-        self::MYSQL      => 'ascii_bin',
-        self::POSTGRES   => 'C',
-        self::SQLITE     => 'BINARY',
-        self::SQL_SERVER => 'Latin1_General_Bin',
-    ];
-
-    // MySQL 5.x uses utf8mb4_unicode_ci (Unicode 4.0) for utf8mb4
-    // MySQL 5.7 uses utf8mb4_unicode_520_ci (Unicode 5.2) for utf8mb4
-    // MySQL 8.x uses utf8mb4_0900_ai_ci (Unicode 9.0) for utf8mb4
-    // MySQL 9.x uses utf8mb4_uca1400_ai_ci (Unicode 14.0) for utf8mb4
-    // Just specify the character set and let MySQL choose the latest collation
-    private const array CHARSET_UTF8 = [
-        self::MARIADB    => 'utf8mb4',
-        self::MYSQL      => 'utf8mb4',
-        self::POSTGRES   => null,
-        self::SQLITE     => null,
-        self::SQL_SERVER => null,
-    ];
-
-    // Case-insensitive, accent-insensitive.  Default for MySQL and MariaDB
-    private const array COLLATION_UTF8_CI_AI = [
-        self::MARIADB    => null,
-        self::MYSQL      => null,
-        self::POSTGRES   => null, // Need to create a custom ci/ai collation, e.g. icu_und_webtrees_ci_ai
-        self::SQLITE     => 'NOCASE',
-        self::SQL_SERVER => 'Latin1_General_100_CI_AI_UTF8', // Yes, UTF8 collations are called "Latin1..."
-    ];
-
-    // Case-sensitive, accent-sensitive.  Default for Postgres, SQLite and SqlServer
-    private const array COLLATION_UTF8_CS_AS = [
+    private const array COLLATION_UTF8 = [
         self::MARIADB    => 'utf8mb4_bin',
         self::MYSQL      => 'utf8mb4_bin',
-        self::POSTGRES   => 'und-x-icu',
+        self::POSTGRESQL => 'und-x-icu',
         self::SQLITE     => null,
         self::SQL_SERVER => 'Latin1_General_100_BIN2_UTF8',
     ];
@@ -80,7 +48,7 @@ final class DB extends Manager
     private const array REGEX_OPERATOR = [
         self::MARIADB    => 'REGEXP',
         self::MYSQL      => 'REGEXP',
-        self::POSTGRES   => '~',
+        self::POSTGRESQL => '~',
         self::SQLITE     => 'REGEXP',
         self::SQL_SERVER => 'REGEXP',
     ];
@@ -88,7 +56,7 @@ final class DB extends Manager
     private const array GROUP_CONCAT_FUNCTION = [
         self::MARIADB    => 'GROUP_CONCAT(%s)',
         self::MYSQL      => 'GROUP_CONCAT(%s)',
-        self::POSTGRES   => "STRING_AGG(%s, ',')",
+        self::POSTGRESQL => "STRING_AGG(%s, ',')",
         self::SQLITE     => 'GROUP_CONCAT(%s)',
         self::SQL_SERVER => "STRING_AGG(%s, ',')",
     ];
@@ -96,7 +64,7 @@ final class DB extends Manager
     private const array DRIVER_INITIALIZATION = [
         self::MARIADB    => "SET NAMES utf8mb4, sql_mode := 'ANSI,STRICT_ALL_TABLES', TIME_ZONE := '+00:00', SQL_BIG_SELECTS := 1, GROUP_CONCAT_MAX_LEN := 1048576",
         self::MYSQL      => "SET NAMES utf8mb4, sql_mode := 'ANSI,STRICT_ALL_TABLES', TIME_ZONE := '+00:00', SQL_BIG_SELECTS := 1, GROUP_CONCAT_MAX_LEN := 1048576",
-        self::POSTGRES   => '',
+        self::POSTGRESQL => '',
         self::SQLITE     => 'PRAGMA foreign_keys = ON',
         self::SQL_SERVER => 'SET language us_english', // For timestamp columns
     ];
@@ -211,18 +179,9 @@ final class DB extends Manager
         return parent::connection()->getTablePrefix() . $identifier;
     }
 
-    public static function charset(): string
+    public static function collation(): string|null
     {
-        return self::CHARSET_UTF8[self::driverName()];
-    }
-
-    public static function collation(bool $csas): string
-    {
-        if ($csas) {
-            return self::COLLATION_UTF8_CS_AS[self::driverName()];
-        }
-
-        return self::COLLATION_UTF8_CI_AI[self::driverName()];
+        return self::COLLATION_UTF8[self::driverName()];
     }
 
     /**
@@ -270,7 +229,7 @@ final class DB extends Manager
      */
     public static function iLike(): string
     {
-        if (self::driverName() === self::POSTGRES) {
+        if (self::driverName() === self::POSTGRESQL) {
             return 'ILIKE';
         }
 
