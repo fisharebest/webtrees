@@ -17,20 +17,20 @@
 @import "_base.css";
 
 :root {
-    --chart-line-radius: 1rem;
-    --chart-line: solid gray thin;
-    --link-color-hover: #0a58ca;
-    --link-color: #0d6efd;
-    --link-decoration-hover: underline;
-    --link-decoration: underline;
-    --sex-f-bg: #ffffff;
-    --sex-f-fg: #888888;
-    --sex-m-bg: #ffffff;
-    --sex-m-fg: #888888;
-    --sex-u-bg: #ffffff;
-    --sex-u-fg: #888888;
-    --sex-x-bg: #ffffff;
-    --sex-x-fg: #888888;
+    --chart-line-radius: var(--bs-border-radius-xl);
+    --chart-line: solid var(--bs-dark-border-subtle) var(--bs-border-width);
+    --link-color-hover: var(--bs-link-hover-color);
+    --link-color: var(--bs-link-color);
+    --link-decoration-hover: var(--bs-link-decoration);
+    --link-decoration: var(--bs-link-decoration);
+    --sex-f-bg: var(--bs-body-bg);
+    --sex-f-fg: var(--bs-pink);
+    --sex-m-bg: var(--bs-body-bg);
+    --sex-m-fg: var(--bs-blue);
+    --sex-u-bg: var(--bs-body-bg);
+    --sex-u-fg: var(--bs-gray);
+    --sex-x-bg: var(--bs-body-bg);
+    --sex-x-fg: var(--bs-gray);
 }
 
 /* Override Bootstrap formatting */
