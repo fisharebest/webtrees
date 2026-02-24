@@ -159,7 +159,7 @@ a:hover, .btn-link:hover, .nav-link:hover {
 }
 
 .wt-icon-spinner {
-    color: lightgrey;
+    color: var(--bs-body-color);
     opacity: 0;
     animation: spinner-fade-in 0.5s ease-in forwards;
     animation-delay: 1s;
