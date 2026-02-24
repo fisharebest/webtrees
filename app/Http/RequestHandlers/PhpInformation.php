@@ -45,8 +45,11 @@ final class PhpInformation implements RequestHandlerInterface
         ob_start();
         phpinfo(INFO_ALL & ~INFO_CREDITS & ~INFO_LICENSE);
         $phpinfo = ob_get_clean();
-        preg_match('%<body>(.*)</body>%s', $phpinfo, $matches);
-        $phpinfo = $matches[1];
+        if (preg_match('%<body>(.*)</body>%s', $phpinfo, $matches)) {
+            $phpinfo = $matches[1];
+        } else {
+            $phpinfo = '<pre>' . $phpinfo . '</pre>';
+        }
 
         return $this->viewResponse('admin/server-information', [
             'title'   => I18N::translate('Server information'),
