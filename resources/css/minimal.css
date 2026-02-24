@@ -82,6 +82,7 @@ table {
  */
 
 .wt-header-wrapper {
+    background: var(--bs-primary-bg-subtle);
 }
 
 .wt-header-container {
@@ -103,6 +104,7 @@ table {
     flex: 1 1 auto;
     width: auto;
     font-size: 1.75rem;
+    color: var(--bs-primary-text-emphasis);
 }
 
 .wt-header-search {
