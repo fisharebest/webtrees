@@ -81,12 +81,6 @@ table {
  *     +---wt-footer wt-footer-xxxxx
  */
 
-::backdrop, .wt-global {
-    /* Avoid extremes of black and white.  It is better for users with dyslexia. */
-    color: #0a0a0a;
-    background-color: #f9f9f9;
-}
-
 .wt-header-wrapper {
 }
 
@@ -148,7 +142,6 @@ table {
     /* Recalculate margins for content */
     margin: 0 calc(50% - 50vw);
     padding: 0 calc(50vw - 50%);
-    border-bottom: 2px solid #aaa;
 }
 
 .wt-genealogy-menu {
@@ -223,11 +216,9 @@ table {
  */
 
 .wt-block {
-    border: solid #000 1px;
 }
 
 .wt-block-header {
-    background-color: #fff;
 }
 
 .wt-block-content {
@@ -410,7 +401,6 @@ table {
 }
 
 .wt-facts-table th {
-    border: 1px solid #000;
     font-weight: normal;
 }
 
@@ -419,7 +409,6 @@ table {
 }
 
 .wt-facts-table td {
-    border: solid #000 1px;
 }
 
 .parentdeath {
