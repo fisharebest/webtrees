@@ -605,7 +605,7 @@ div.faq_body {
 }
 
 .optionbox, .descriptionbox {
-    border: solid #000 1px;
+    border: solid var(--bs-border-color) var(--bs-border-width);
     vertical-align: top;
     padding: 3px;
 }
@@ -626,8 +626,8 @@ div.faq_body {
 }
 
 .person0, .person1, .person2, .person3, .person4, .person5 {
-    border:outset #555 1px;
-    vertical-align:top;
+    border: outset var(--bs-border-color) var(--bs-border-width);
+    vertical-align: top;
 }
 .person0{
     background-color:#eee;
@@ -741,7 +741,7 @@ div.faq_body {
 
 .wt-calendar-month .wt-page-options-label,
 .wt-calendar-month .wt-page-options-value {
-    border: solid grey thin;
+    border: solid var(--bs-border-color) var(--bs-border-width);
     padding: 0.2rem;
 }
 
