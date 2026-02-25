@@ -743,6 +743,10 @@ div.faq_body {
     padding: 0.2rem;
 }
 
+.wt-page-options-value {
+    padding: 0.2rem;
+}
+
 /* Forms */
 .col-form-label {
     font-weight: bold;
