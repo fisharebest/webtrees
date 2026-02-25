@@ -627,12 +627,12 @@ div.faq_body {
     border: outset var(--bs-border-color) var(--bs-border-width);
     vertical-align: top;
 }
-.person0{
-    background-color:#eee;
+.person0 {
+    background-color: var(--bs-secondary-bg);
 }
 
-.person1{
-    background-color:#bfbfbf;
+.person1 {
+    background-color: var(--bs-tertiary-bg);
 }
 
 .person2{
