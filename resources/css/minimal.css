@@ -228,7 +228,7 @@ table {
 
 .wt-block-content .list_table {
     border-spacing: 1px;
-    border: solid #000 1px;
+    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
     border-right: 0;
 }
 
@@ -281,31 +281,31 @@ table {
     height: 5rem;
     padding: 2px;
     line-height: 1.1;
-    border: solid gray thin;
+    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
 }
 
 .wt-chart-box-f,
 .wt-chart-box-f .wt-chart-box-dropdown {
     background: var(--sex-f-bg);
-    border: solid var(--sex-f-fg) thin;
+    border: var(--bs-border-style) var(--sex-f-fg) var(--bs-border-width);
 }
 
 .wt-chart-box-m,
 .wt-chart-box-m .wt-chart-box-dropdown {
     background: var(--sex-m-bg);
-    border: solid var(--sex-m-fg) thin;
+    border: var(--bs-border-style) var(--sex-m-fg) var(--bs-border-width);
 }
 
 .wt-chart-box-u,
 .wt-chart-box-u .wt-chart-box-dropdown {
     background: var(--sex-u-bg);
-    border: solid var(--sex-u-fg) thin;
+    border: var(--bs-border-style) var(--sex-u-fg) var(--bs-border-width);
 }
 
 .wt-chart-box-x,
 .wt-chart-box-x .wt-chart-box-dropdown {
     background: var(--sex-x-bg);
-    border: solid var(--sex-x-fg) thin;
+    border: var(--bs-border-style) var(--sex-x-fg) var(--bs-border-width);
 }
 
 /* ---Pending edits--- */
@@ -352,7 +352,7 @@ table {
 .block {
     background-color: #fff;
     color: #555;
-    border: solid #ccc 1px;
+    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
     padding: 3px;
     vertical-align: top;
 }
@@ -364,7 +364,7 @@ table {
 
 .blockcontent .list_table {
     border-spacing: 0;
-    border: solid #555 1px;
+    border: var(--bs-border-style) #555 1px;
     border-right: 0;
 }
 
@@ -594,7 +594,7 @@ div.faq_body {
 
 .wt-lifespans-summary {
     background: #ffffff;
-    border: thin solid #000;
+    border: thin var(--bs-border-style) #000;
     z-index: 1;
 }
 
@@ -608,7 +608,7 @@ div.faq_body {
 }
 
 .optionbox, .descriptionbox {
-    border: solid var(--bs-border-color) var(--bs-border-width);
+    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
     vertical-align: top;
     padding: 3px;
 }
@@ -744,7 +744,7 @@ div.faq_body {
 
 .wt-calendar-month .wt-page-options-label,
 .wt-calendar-month .wt-page-options-value {
-    border: solid var(--bs-border-color) var(--bs-border-width);
+    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
     padding: 0.2rem;
 }
 
