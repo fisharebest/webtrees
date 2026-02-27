@@ -235,8 +235,9 @@ table {
 .wt-block-content .list_value,
 .wt-block-content .list_value_wrap {
     border: 0;
-    border-top: solid #000 1px;
-    border-right: solid #000 1px;
+    border-top: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
+    border-right: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
+    border-radius: var(--bs-border-radius);
 }
 
 /*
@@ -318,7 +319,9 @@ table {
 
 .list_value,
 .list_value_wrap {
-    border: solid #000 1px;
+    background: var(--bs-body-bg);
+    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
+    border-radius: var(--bs-border-radius);
     vertical-align: top;
     padding: 4px;
 }
@@ -368,8 +371,8 @@ table {
 .blockcontent .list_value,
 .blockcontent .list_value_wrap {
     border: 0;
-    border-top: solid #555 1px;
-    border-right: solid #555 1px;
+    border-top: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
+    border-right: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
 }
 
 .blockheader {
