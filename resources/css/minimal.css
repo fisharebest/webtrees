@@ -476,10 +476,12 @@ div.faq_body {
 }
 
 .odometer {
-    font-family: courier, monospace;
-    font-weight: bold;
-    background: #000;
-    color: #fff;
+    font-family: var(--bs-font-monospace);
+    font-weight: var(--bs-font-weight-bold);
+    color: var(--bs-emphasis-color);
+    background-color: var(--bs-secondary-bg);
+    padding: 0.1rem 0.25rem;
+    border-radius: var(--bs-border-radius-sm);
 }
 
 .upcoming_events_block button,
