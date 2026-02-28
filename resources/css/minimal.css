@@ -424,17 +424,11 @@ table {
 
 /* ==== FAQ table styles ===== */
 table.faq {
-    background-color: #ddd;
     margin: 5px 0 50px 5px;
     width: 98%;
 }
 
-table.faq tr:nth-child(odd) td {
-    background-color: #fff;
-}
-
 div.faq_title {
-    background-color: #ddd;
     margin: 1em 0;
     padding: .25em;
     font-weight: bold;
