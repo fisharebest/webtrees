@@ -87,7 +87,7 @@ a:hover {
 /* Accordions */
 .accordion-button,
 .accordion-button:not(.collapsed) {
-    background-color: rgba(0,0,0,.03);
+    background-color: var(--bs-tertiary-bg);
     color: currentcolor;
 }
 
