@@ -18,7 +18,7 @@
 
 :root {
     --chart-line-radius: var(--bs-border-radius-xl);
-    --chart-line: solid var(--bs-dark-border-subtle) var(--bs-border-width);
+    --chart-line: solid var(--bs-secondary-color) var(--bs-border-width);
     --link-color-hover: var(--bs-link-hover-color);
     --link-color: var(--bs-link-color);
     --link-decoration-hover: var(--bs-link-decoration);
