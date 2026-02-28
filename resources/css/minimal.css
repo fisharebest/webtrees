@@ -552,10 +552,12 @@ div.faq_body {
 
 /*-- Fan chart ---- */
 .fan_chart_menu {
-    background: #fff;
-    position: absolute;
-    display: none;
-    z-index: 100;
+	background: var(--bs-body-bg);
+	border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
+	border-radius: var(--bs-border-radius);
+	position: absolute;
+	display: none;
+	z-index: 100;
 }
 
 #fan_chart ul {
