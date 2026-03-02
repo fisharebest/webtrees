@@ -36,6 +36,8 @@ final class DB extends Manager
     public const string POSTGRESQL = 'pgsql';
     public const string SQLITE     = 'sqlite';
     public const string SQL_SERVER = 'sqlsrv';
+    // Unsupported drivers ;-)
+    public const string FIREBIRD   = 'firebird';
 
     private const array COLLATION_UTF8 = [
         self::MARIADB    => 'utf8mb4_bin',
@@ -43,6 +45,7 @@ final class DB extends Manager
         self::POSTGRESQL => 'und-x-icu',
         self::SQLITE     => null,
         self::SQL_SERVER => 'Latin1_General_100_BIN2_UTF8',
+        self::FIREBIRD   => 'UTF8',
     ];
 
     private const array REGEX_OPERATOR = [
@@ -51,6 +54,7 @@ final class DB extends Manager
         self::POSTGRESQL => '~',
         self::SQLITE     => 'REGEXP',
         self::SQL_SERVER => 'REGEXP',
+        self::FIREBIRD   => '~',
     ];
 
     private const array GROUP_CONCAT_FUNCTION = [
@@ -59,6 +63,7 @@ final class DB extends Manager
         self::POSTGRESQL => "STRING_AGG(%s, ',')",
         self::SQLITE     => 'GROUP_CONCAT(%s)',
         self::SQL_SERVER => "STRING_AGG(%s, ',')",
+        self::FIREBIRD   => 'LIST(%s)',
     ];
 
     private const array DRIVER_INITIALIZATION = [
@@ -67,6 +72,7 @@ final class DB extends Manager
         self::POSTGRESQL => '',
         self::SQLITE     => 'PRAGMA foreign_keys = ON',
         self::SQL_SERVER => 'SET language us_english', // For timestamp columns
+        self::FIREBIRD   => '',
     ];
 
     public static function connect(
