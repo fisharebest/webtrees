@@ -112,7 +112,7 @@
    * @param {string|FormData} body
    * @returns {Promise}
    */
-  webtrees.httpPost= function (url, body = '') {
+  webtrees.httpPost = function (url, body = null) {
     const csrfToken = document.head.querySelector('meta[name=csrf]').getAttribute('content');
 
     const options = {
