@@ -48,6 +48,7 @@ final class PhpInformation implements RequestHandlerInterface
         if (preg_match('%<body>(.*)</body>%s', $phpinfo, $matches)) {
             $phpinfo = $matches[1];
         } else {
+            // Some web hosts use custom PHP builds with a non-standard phpinfo()
             $phpinfo = '<pre>' . $phpinfo . '</pre>';
         }
 
