@@ -183,13 +183,6 @@ table {
 .wt-footer-contact {
 }
 
-/* Is this used? */
-.wt-footer-cookies {
-    background: #aaa;
-    color: #fff;
-    transition: height 0.5s;
-}
-
 .wt-footer-page-views {
 }
 
@@ -349,40 +342,6 @@ table {
 #place-hierarchy h4 {
     text-align: center;
 }
-
-/* Is this used? */
-/* ======== Block styles ===== */
-.block {
-    background-color: #fff;
-    color: #555;
-    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
-    padding: 3px;
-    vertical-align: top;
-}
-
-.blockcontent {
-    margin: 5px;
-    overflow: auto;
-}
-
-.blockcontent .list_table {
-    border-spacing: 0;
-    border: var(--bs-border-style) #555 1px;
-    border-right: 0;
-}
-
-.blockcontent .list_value,
-.blockcontent .list_value_wrap {
-    border: 0;
-    border-top: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
-    border-right: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
-}
-
-.blockheader {
-    font-weight: bold;
-}
-
-/* end Block styles */
 
 .user_welcome_block table,
 .gedcom_block_block table {
