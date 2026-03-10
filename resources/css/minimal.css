@@ -279,26 +279,22 @@ table {
     border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
 }
 
-.wt-chart-box-f,
-.wt-chart-box-f .wt-chart-box-dropdown {
+.wt-chart-box-f {
     background: var(--sex-f-bg);
     border: var(--bs-border-style) var(--sex-f-fg) var(--bs-border-width);
 }
 
-.wt-chart-box-m,
-.wt-chart-box-m .wt-chart-box-dropdown {
+.wt-chart-box-m {
     background: var(--sex-m-bg);
     border: var(--bs-border-style) var(--sex-m-fg) var(--bs-border-width);
 }
 
-.wt-chart-box-u,
-.wt-chart-box-u .wt-chart-box-dropdown {
+.wt-chart-box-u {
     background: var(--sex-u-bg);
     border: var(--bs-border-style) var(--sex-u-fg) var(--bs-border-width);
 }
 
-.wt-chart-box-x,
-.wt-chart-box-x .wt-chart-box-dropdown {
+.wt-chart-box-x {
     background: var(--sex-x-bg);
     border: var(--bs-border-style) var(--sex-x-fg) var(--bs-border-width);
 }
