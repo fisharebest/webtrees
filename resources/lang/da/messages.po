@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2026-02-16 11:54+0000\n"
+"PO-Revision-Date: 2026-03-11 17:45+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
@@ -1420,7 +1420,7 @@ msgstr "Tilføj individer"
 
 #: resources/views/modules/relatives/family.phtml:150
 msgid "Add marriage details"
-msgstr "Tilføj oplysninger for bryllup"
+msgstr "Tilføj oplysninger for ægteskab"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:55
@@ -1711,7 +1711,7 @@ msgstr "Aldersforskel"
 #: app/Module/StatisticsChartModule.php:635
 #: resources/views/modules/statistics-chart/custom.phtml:40
 msgid "Age in year of first marriage"
-msgstr "Alder ved første vielse"
+msgstr "Alder ved første ægteskab"
 
 #: app/Module/StatisticsChartModule.php:574
 #: resources/views/modules/statistics-chart/custom.phtml:39
@@ -2333,7 +2333,7 @@ msgstr "Gennemsnitlig alder ved dødsfald"
 
 #: app/Statistics/Google/ChartMarriageAge.php:153
 msgid "Average age at marriage"
-msgstr "Gennemsnitlig alder ved vielse"
+msgstr "Gennemsnitlig alder ved ægteskab"
 
 #: app/Statistics/Google/ChartMarriageAge.php:150
 msgid "Average age in century of marriage"
@@ -5463,7 +5463,7 @@ msgstr "Brugernavnet eksisterer allerede. Vælg venligst et andet brugernavn."
 #: resources/views/help/source-events.phtml:10
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr ""
-"Hver kilde registrerer særlige begivenheder, normalt indenfor en dato og et "
+"Hver kilde registrerer særlige begivenheder, normalt inden for en dato og et "
 "sted/område. For eksempel optegnelser i en folketælling eller kirkebøgernes "
 "oplysninger om begivenheder som fødsel, vielse og død.<br><br>Vælg den "
 "ønskede begivenhed fra den liste over begivenheder som webtrees indeholder. "
@@ -5501,7 +5501,7 @@ msgstr "Tidligste skilsmisse"
 
 #: resources/views/modules/statistics-chart/family-totals.phtml:37
 msgid "Earliest marriage"
-msgstr "Tidligste vielse"
+msgstr "Tidligste ægteskab"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:171
@@ -8567,7 +8567,7 @@ msgstr "Seneste skilsmisse"
 
 #: resources/views/modules/statistics-chart/family-totals.phtml:48
 msgid "Latest marriage"
-msgstr "Seneste vielse"
+msgstr "Seneste ægteskab"
 
 #: app/CustomTags/GedcomL.php:247 app/CustomTags/GedcomL.php:259
 #: app/Gedcom.php:425 app/Gedcom.php:557
@@ -8632,7 +8632,7 @@ msgstr "Længde"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
-msgstr "Længde af ægteskabs"
+msgstr "Ægteskabets varighed"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:306
@@ -9136,7 +9136,7 @@ msgstr "Lysning"
 
 #: app/CustomTags/FamilyTreeMaker.php:71 app/CustomTags/FamilyTreeMaker.php:91
 msgid "Marriage beginning status"
-msgstr "Ægteskab start status"
+msgstr "Ægteskabs begyndelsesstatus"
 
 #: app/CustomTags/BrothersKeeper.php:65
 msgid "Marriage bond"
@@ -9152,15 +9152,15 @@ msgstr "Ægtepagt"
 
 #: resources/xml/reports/marriage_report.xml:8
 msgid "Marriage date range end"
-msgstr "Interval for dato for ægteskab slut"
+msgstr "Datointerval for ægteskabs afslutning"
 
 #: resources/xml/reports/marriage_report.xml:7
 msgid "Marriage date range start"
-msgstr "Interval for dato for ægteskab start"
+msgstr "Datointerval for ægteskabs begyndelse"
 
 #: app/CustomTags/FamilyTreeMaker.php:70 app/CustomTags/FamilyTreeMaker.php:90
 msgid "Marriage ending status"
-msgstr "Ægteskab slut status"
+msgstr "Ægteskabs slutstatus"
 
 #: app/CustomTags/BrothersKeeper.php:64
 msgid "Marriage intention"
@@ -9283,7 +9283,7 @@ msgstr "Ægteskaber"
 #: app/Statistics/Google/ChartMarriage.php:108
 #: resources/views/modules/statistics-chart/family-totals.phtml:26
 msgid "Marriages by century"
-msgstr "Vielser efter århundrede"
+msgstr "Ægteskaber efter århundrede"
 
 #: app/CustomTags/FamilyTreeMaker.php:113 app/CustomTags/Geneatique.php:61
 #: resources/views/lists/families-table.phtml:180
@@ -15777,7 +15777,7 @@ msgstr "Antal mænd"
 
 #: resources/views/modules/statistics-chart/family-totals.phtml:19
 msgid "Total marriages"
-msgstr "Vielser i alt"
+msgstr "Ægteskaber i alt"
 
 #: resources/xml/reports/change_report.xml:87
 msgid "Total pending changes: "
