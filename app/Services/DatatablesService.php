@@ -76,6 +76,10 @@ class DatatablesService
         if ($order !== []) {
             $collection = $collection->sort(static function (array $row1, array $row2) use ($order, $sort_columns): int {
                 foreach ($order as $column) {
+                    if (!isset($sort_columns[$column['column']])) {
+                        continue;
+                    }
+
                     $key = $sort_columns[$column['column']];
                     $dir = $column['dir'];
 
