@@ -22,7 +22,7 @@
     --link-color-hover: var(--bs-link-hover-color);
     --link-color: var(--bs-link-color);
     --link-decoration-hover: var(--bs-link-decoration);
-    --link-decoration: var(--bs-link-decoration);
+    --link-decoration: none;
     --sex-f-bg: var(--bs-body-bg);
     --sex-f-fg: var(--bs-pink);
     --sex-m-bg: var(--bs-body-bg);
