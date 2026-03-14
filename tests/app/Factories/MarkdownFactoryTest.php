@@ -110,7 +110,7 @@ class MarkdownFactoryTest extends TestCase
         );
 
         self::assertSame(
-            '<p>alpha<br />beta<br />gamma<br />delta</p>',
+            "<p>alpha<br />beta<br />gamma<br />\ndelta</p>",
             $factory->markdown("alpha\nbeta\ngamma  \ndelta")
         );
     }
@@ -125,8 +125,23 @@ class MarkdownFactoryTest extends TestCase
         );
 
         self::assertSame(
-            '<p>alpha<br />beta</p><p>gamma<br />delta</p>',
+            "<p>alpha<br />beta</p>\n<p>gamma<br />delta</p>",
             $factory->markdown("alpha\nbeta\n\n\n\ngamma\ndelta")
+        );
+    }
+
+    public function testMarkdownCodeBlock(): void
+    {
+        $factory = new MarkdownFactory();
+        // code block within backticks
+        self::assertSame(
+            "<pre><code>alpha\n beta\n  gamma\n   delta\n</code></pre>",
+            $factory->markdown("````\nalpha\n beta\n  gamma\n   delta\n````")
+        );
+        // code block through indentation
+        self::assertSame(
+            "<pre><code>alpha\n beta\n  gamma\n   delta\n</code></pre>",
+            $factory->markdown("    alpha\n     beta\n      gamma\n       delta")
         );
     }
 }
