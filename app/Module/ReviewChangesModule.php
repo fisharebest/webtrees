@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -163,7 +164,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
             foreach ($changes as $change) {
                 $record = Registry::gedcomRecordFactory()->make($change->xref, $tree, $change->new_gedcom ?: $change->old_gedcom);
-                if ($record->canShow()) {
+                if ($record instanceof GedcomRecord && $record->canShow()) {
                     $content .= '<li><a href="' . e($record->url()) . '">' . $record->fullName() . '</a></li>';
                 }
             }
