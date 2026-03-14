@@ -745,42 +745,6 @@ div.fact_SHARED_NOTE {
     bottom: 20px;
 }
 
-.person0 {
-    background-color: #aaf;
-    border: outset #aaf 1px;
-    vertical-align: top;
-}
-
-.person1 {
-    background-color: #afa;
-    border: outset #afa 1px;
-    vertical-align: top;
-}
-
-.person2 {
-    background-color: #faa;
-    border: outset #faa 1px;
-    vertical-align: top;
-}
-
-.person3 {
-    background-color: #55f;
-    border: outset #55f 1px;
-    vertical-align: top;
-}
-
-.person4 {
-    background-color: #f55;
-    border: outset #f55 1px;
-    vertical-align: top;
-}
-
-.person5 {
-    background-color: #5f5;
-    border: outset #5f5 1px;
-    vertical-align: top;
-}
-
 .starredname {
     text-decoration: underline;
 }
@@ -1043,13 +1007,6 @@ div.faq_body {
 
 .wt-lifespans-summary-link {
     font-weight: bold;
-}
-
-/*-- timeline  --*/
-#timeline_chart {
-    position: relative;
-    top: 0;
-    left: 0;
 }
 
 /*

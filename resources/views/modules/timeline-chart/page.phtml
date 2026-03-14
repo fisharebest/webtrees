@@ -63,7 +63,7 @@ use Illuminate\Support\Collection;
 
 <div class="row my-4">
     <?php foreach ($individuals as $n => $individual) : ?>
-        <div class="col-md-6 col-lg-4 col-xl-3 person<?= $n % 6 ?>">
+        <div class="col-md-6 col-lg-4 col-xl-3 person<?= $n % 8 ?>">
             <?= view('icons/sex', ['sex' => $individual->sex()]) ?>
             <a href="<?= e($individual->url()) ?>">
                 <?= $individual->fullName() ?>

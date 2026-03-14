@@ -587,37 +587,6 @@ div.faq_body {
     vertical-align: top;
 }
 
-.person0 {
-    background-color: var(--bs-primary-bg-subtle);
-}
-
-.person1 {
-    background-color: var(--bs-secondary-bg-subtle);
-}
-
-.person2 {
-    background-color: var(--bs-success-bg-subtle);
-}
-
-.person3 {
-    background-color: var(--bs-danger-bg-subtle);
-}
-
-.person4 {
-    background-color: var(--bs-warning-bg-subtle);
-}
-
-.person5 {
-    background-color: var(--bs-info-bg-subtle);
-}
-
-/*-- timeline  --*/
-#timeline_chart {
-    position: relative;
-    top: 0;
-    left: 0;
-}
-
 /*
  * Default icons are provided by FontAwesome.
  */

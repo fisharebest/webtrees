@@ -18,3 +18,40 @@
  *
  * wt-chart, wt-chart-timeline
  */
+#timeline_chart {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.person0 {
+    background-color: #ffb3ba;
+}
+
+.person1 {
+    background-color: #ffd8ba;
+}
+
+.person2 {
+    background-color: #fff3ba;
+}
+
+.person3 {
+    background-color: #d4ffba;
+}
+
+.person4 {
+    background-color: #baffc9;
+}
+
+.person5 {
+    background-color: #bae1ff;
+}
+
+.person6 {
+    background-color: #e2baff;
+}
+
+.person7 {
+    background-color: #ffbaf3;
+}
