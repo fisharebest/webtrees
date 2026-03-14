@@ -65,15 +65,15 @@
 
 #cboxContent,
 #cboxOverlay {
-    background: #fff;
+    background: var(--bs-body-bg);
 }
 
 #cboxContent {
     overflow: hidden;
     position: relative;
     padding: 0.5rem;
-    border: 0.25rem solid #ccc;
-    border-radius: 0.5rem;
+    border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+    border-radius: var(--bs-border-radius-lg);
     box-sizing: content-box;
 }
 
@@ -93,7 +93,6 @@
 }
 
 #cboxTitle {
-    background: #fff;
     position: absolute;
     bottom: 0.25rem;
     margin: 0 2rem 0 4.5rem;
@@ -105,9 +104,10 @@
 }
 
 #cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {
-    background: #eee;
+    background-color: transparent;
     border: 0;
-    border-radius: 0.5rem;
+    border-radius: var(--bs-border-radius);
+    color: var(--bs-emphasis-color);
     overflow: visible;
     padding: 0 0.5rem;
     position: absolute;

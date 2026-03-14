@@ -14,6 +14,7 @@
  */
 
 import $ from 'jquery';
+window.$ = window.jQuery = $;
 
 import '@popperjs/core';
 import { Alert, Button, Carousel, Collapse, Dropdown, Modal, Offcanvas, Popover, ScrollSpy, Tab, Toast, Tooltip } from 'bootstrap';
@@ -75,8 +76,6 @@ import 'leaflet.markercluster';
 import 'beautifymarker';
 import 'leaflet-control-geocoder';
 import 'leaflet.control.layers.tree';
-
-window.$ = window.jQuery = $;
 
 library.add(
   // For resources/views/icons/*

@@ -56,3 +56,8 @@ table.dataTable {
 table.datatables > thead > tr > th.dt-type-numeric {
     text-align: inherit;
 }
+
+/* Don't hardcode color in tom select control */
+.ts-control, .ts-control input, .ts-dropdown {
+    color: inherit;
+}

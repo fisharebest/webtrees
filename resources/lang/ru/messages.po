@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2026-03-13 11:45+0000\n"
+"PO-Revision-Date: 2026-03-14 15:45+0000\n"
 "Last-Translator: Reveritus <t102b@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ru/>\n"
@@ -4679,7 +4679,7 @@ msgstr "Дочь"
 #: app/Module/InteractiveTree/TreeView.php:365
 #, php-format
 msgid "Daughter of %s"
-msgstr "Дочь от %s"
+msgstr "Дочь %s"
 
 #: app/Module/CalendarMenuModule.php:82 resources/views/calendar-page.phtml:43
 msgid "Day"
@@ -12969,7 +12969,7 @@ msgstr "Она умерла"
 #: resources/xml/reports/ahnentafel_report.xml:261
 #: resources/xml/reports/descendancy_report.xml:242
 msgid "She married"
-msgstr "Она вышла замуж за"
+msgstr "Она вышла замуж"
 
 #: resources/xml/reports/ahnentafel_report.xml:224
 msgid "She resided at"
@@ -13573,7 +13573,7 @@ msgstr "Сын"
 #: app/Module/InteractiveTree/TreeView.php:361
 #, php-format
 msgid "Son of %s"
-msgstr "Сын от %s"
+msgstr "Сын %s"
 
 #: app/CustomTags/Gedcom7.php:84 app/CustomTags/Gedcom7.php:113
 #: app/CustomTags/TheMasterGenealogist.php:52
@@ -17227,7 +17227,7 @@ msgstr "дочь"
 
 #: resources/xml/reports/descendancy_report.xml:226
 msgid "daughter of"
-msgstr "дочь от"
+msgstr "дочь"
 
 #: app/Services/RelationshipService.php:514
 msgctxt "child’s wife"
@@ -20445,7 +20445,7 @@ msgstr "сын"
 
 #: resources/xml/reports/descendancy_report.xml:295
 msgid "son of"
-msgstr "сын от"
+msgstr "сын"
 
 #: app/Services/RelationshipService.php:508
 msgctxt "child’s husband"
