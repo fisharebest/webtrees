@@ -41,8 +41,7 @@ class PafUid extends AbstractElement
 
             return $value . Registry::idFactory()->pafUidChecksum($value);
         }
-
-        return Registry::idFactory()->pafUid();
+        return $value;
     }
 
     public function edit(string $id, string $name, string $value, Tree $tree): string
