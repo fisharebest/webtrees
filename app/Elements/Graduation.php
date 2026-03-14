@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
 class Graduation extends AbstractEventElement
 {
     protected const array SUBTAGS = [
-        'TYPE'  => '0:1:?',
+        'TYPE'  => '0:1',
         'DATE'  => '0:1',
         'AGE'   => '0:1',
         'PLAC'  => '0:1',
