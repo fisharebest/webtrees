@@ -78,15 +78,54 @@ if ($fact->target() instanceof Note) {
 ?>
 <tr class="<?= implode(' ', $styles) ?>">
     <th scope="row">
-        <div class="wt-fact-label ut"><?= $label?></div>
+        <?php if ($tree->getPreference('SHOW_FACT_ICONS') === '1') : ?>
+            <span class="wt-fact-icon wt-fact-icon-<?= e($tag) ?>" title="<?= strip_tags($label) ?>">
+                <?php
+                    $iconMap = [
+                        'AFN'     => 'fa-hashtag',
+                        'BAPL'    => 'fa-dove',
+                        'BAPM'    => 'fa-dove',
+                        'BIRT'    => 'fa-baby',
+                        'BURI'    => 'fa-monument',
+                        'CHR'     => 'fa-dove',
+                        'DEAT'    => 'fa-cross',
+                        'DIV'     => 'fa-people-arrows',
+                        'EMAIL'   => 'fa-at',
+                        'ENGA'    => 'fa-ring',
+                        'EVEN'    => 'fa-calendar',
+                        'FACT'    => 'fa-info',
+                        'GRAD'    => 'fa-user-graduate',
+                        'MARB'    => 'fa-bullhorn',
+                        'MARC'    => 'fa-pen-fancy',
+                        'MARR'    => 'fa-ring',
+                        'NOTE'    => 'fa-note-sticky',
+                        'OCCU'    => 'fa-hammer',
+                        'PHON'    => 'fa-phone',
+                        'PROB'    => 'fa-file-contract',
+                        'PROP'    => 'fa-building-user',
+                        'REFN'    => 'fa-hashtag',
+                        'RESI'    => 'fa-house-chimney-user',
+                        'RFN'     => 'fa-hashtag',
+                        'RIN'     => 'fa-hashtag',
+                        'WWW'     => 'fa-globe',
+                        '_FSFTID' => 'fa-id-card',
+                        '_MILI'   => 'fa-person-military-rifle',
+                        '_TODO'   => 'fa-clipboard-list',
+                        '_UID'    => 'fa-hashtag'
+                    ];
+                ?>
+                <?php if (isset($iconMap[$tag])) : ?>
+                    <i class="fa-solid <?= e($iconMap[$tag]) ?>"></i>
+                <?php endif ?>
+            </span>
+        <?php endif ?>
+        <span class="wt-fact-label ut"><?= $label?></span>
 
         <?php if ($id !== 'histo' && $id !== 'asso' && $fact->canEdit() && !in_array($tag, ['HUSB', 'WIFE', 'CHIL', 'FAMC', 'FAMS'], true)) : ?>
             <?= view('fact-edit-links', ['fact' => $fact, 'url' => $record->url()]) ?>
         <?php endif ?>
 
-        <?php if ($tree->getPreference('SHOW_FACT_ICONS') === '1') : ?>
-            <span class="wt-fact-icon wt-fact-icon-<?= e($tag) ?>" title="<?= strip_tags($label) ?>"></span>
-        <?php endif ?>
+
     </th>
 
     <td>
