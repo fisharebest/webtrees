@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2026 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,29 +19,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(GuestUser::class)]
-class GuestUserTest extends TestCase
+#[CoversClass(CliUser::class)]
+class CliUserTest extends TestCase
 {
-    public function testAnonymous(): void
+    public function testCliUser(): void
     {
-        $user = new GuestUser();
+        $user = new CliUser();
 
         self::assertSame(0, $user->id());
-        self::assertSame('_GUEST_', $user->userName());
-        self::assertSame('GUEST_USER', $user->realName());
+        self::assertSame('_CLI_', $user->userName());
+        self::assertSame('CLI_USER', $user->realName());
         self::assertSame('N/A', $user->email());
-    }
-
-    public function testVisitor(): void
-    {
-        $user = new GuestUser('guest user');
-
-        self::assertSame(0, $user->id());
-        self::assertSame('_GUEST_', $user->userName());
-        self::assertSame('guest user', $user->realName());
-        self::assertSame('N/A', $user->email());
+        self::assertSame('1', $user->getPreference(UserInterface::PREF_IS_ADMINISTRATOR));
     }
 
     public function testPreferences(): void
