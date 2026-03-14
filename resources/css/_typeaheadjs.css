@@ -31,7 +31,7 @@
     border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
     border-radius: var(--bs-border-radius);
     box-shadow: var(--bs-box-shadow);
-    margin-top: 0.125rem;
+    margin-top: 0.25rem;
     padding: 0.25rem 0;
     width: 100%;
 }
