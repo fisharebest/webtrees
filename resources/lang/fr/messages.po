@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-01-04 15:58+0000\n"
-"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
+"PO-Revision-Date: 2026-02-14 23:34+0000\n"
+"Last-Translator: Evan <evan_g@orange.fr>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/fr/>\n"
 "Language: fr\n"
@@ -7849,7 +7849,7 @@ msgstr "Pages individuelles"
 #: resources/views/admin/users-edit.phtml:292
 #: resources/views/edit-account-page.phtml:57
 msgid "Individual record"
-msgstr "Enregistrement indivuel"
+msgstr "Enregistrement individuel"
 
 #: resources/views/modules/gedcom_stats/config.phtml:59
 #: resources/views/modules/gedcom_stats/statistics.phtml:211
@@ -11540,7 +11540,7 @@ msgstr "Clé privée"
 
 #: app/Gedcom.php:726
 msgid "Probate"
-msgstr "Testament validé"
+msgstr "Succession"
 
 #: app/Gedcom.php:727
 msgid "Property"

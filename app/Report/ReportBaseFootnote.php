@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,49 +21,35 @@ namespace Fisharebest\Webtrees\Report;
 
 use function str_contains;
 
-class ReportBaseFootnote extends ReportBaseElement
+abstract class ReportBaseFootnote extends ReportBaseElement
 {
     // The name of the style for this element
-    public string $styleName = '';
+    protected string $styleName = '';
 
     // Numbers for the links
     public int $num;
 
     // The text that will be printed with the number
-    public string $numText = '';
+    protected string $numText = '';
 
     // Remaining width of a cell
-    public float $wrapWidthRemaining;
+    protected float $wrapWidthRemaining;
 
     // Original width of a cell (points)
-    public float $wrapWidthCell;
+    protected float $wrapWidthCell;
 
     // A link
-    public string $addlink;
+    protected string $addlink;
 
-    /**
-     * Create an element.
-     *
-     * @param string $style
-     */
-    public function __construct(string $style = '')
+    public function __construct(string $styleName)
     {
-        $this->text = '';
-        if ($style !== '') {
-            $this->styleName = $style;
+        if ($styleName !== '') {
+            $this->styleName = $styleName;
         } else {
             $this->styleName = 'footnote';
         }
     }
 
-    /**
-     * Set the width to wrap text.
-     *
-     * @param float $wrapwidth
-     * @param float $cellwidth
-     *
-     * @return float
-     */
     public function setWrapWidth(float $wrapwidth, float $cellwidth): float
     {
         $this->wrapWidthCell = $cellwidth;
@@ -76,26 +62,12 @@ class ReportBaseFootnote extends ReportBaseElement
         return $this->wrapWidthRemaining;
     }
 
-    /**
-     * Set the number.
-     *
-     * @param int $n
-     *
-     * @return void
-     */
     public function setNum(int $n): void
     {
         $this->num     = $n;
         $this->numText = $n . ' ';
     }
 
-    /**
-     * Add a link.
-     *
-     * @param string $a
-     *
-     * @return void
-     */
     public function setAddlink(string $a): void
     {
         $this->addlink = $a;

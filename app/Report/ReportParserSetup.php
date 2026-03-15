@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,50 +26,44 @@ use function preg_match;
 use function strtoupper;
 
 /**
- * Class ReportParserSetup - parse a report.xml file and extract the setup options.
+ * Parse a report.xml file and extract the setup options.
  */
 class ReportParserSetup extends ReportParserBase
 {
-    /**
-     * @var array{
-     *     title:string,
-     *     description:string,
-     *     inputs:array<array{name:string,type:string,lookup:string,options:string,default:string,value:string}>
-     * }
-     */
-    private array $data = [
-        'description' => '',
-        'title'       => '',
-        'inputs'      => [],
-    ];
+    private string $title;
+
+    private string $description;
+
+    /** @var array<array{name:string,type:string,lookup:string,options:string,default:string,value:string,extra:string}> */
+    private array $inputs = [];
 
     /**
-     * @var array{name:string,type:string,lookup:string,options:string,default:string,value:string} An array of input attributes
+     * @var array{name:string,type:string,lookup:string,options:string,default:string,value:string,extra:string} An array of input attributes
      */
     private array $input;
 
-    /**
-     * Return the parsed data.
-     *
-     * @return array{"title":string,"description":string,"inputs":array<array{"name":string,"type":string,"lookup":string,"options":string,"default":string,"value":string}>}
-     */
-    public function reportProperties(): array
+    public function reportTitle(): string
     {
-        return $this->data;
+        return $this->title;
+    }
+
+    public function reportDescription(): string
+    {
+        return $this->description;
+    }
+
+    /** @return array<array{name:string,type:string,lookup:string,options:string,default:string,value:string,extra:string}> */
+    public function reportInputs(): array
+    {
+        return $this->inputs;
     }
 
     /**
-     * Handle <var var="" />
-     *
-     * @param array<string> $attrs
-     *
-     * @return void
+     * @param array<string,string> $attrs
      */
     protected function varStartHandler(array $attrs): void
     {
-        if (preg_match('/^I18N::number\((.+)\)$/', $attrs['var'], $match)) {
-            $this->text .= I18N::number((int) $match[1]);
-        } elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $attrs['var'], $match)) {
+        if (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $attrs['var'], $match)) {
             $this->text .= I18N::translate($match[1]);
         } elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $attrs['var'], $match)) {
             $this->text .= I18N::translateContext($match[1], $match[2]);
@@ -78,46 +72,25 @@ class ReportParserSetup extends ReportParserBase
         }
     }
 
-    /**
-     * Handle <title>
-     *
-     * @return void
-     */
     protected function titleStartHandler(): void
     {
         $this->text = '';
     }
 
-    /**
-     * Handle </title>
-     *
-     * @return void
-     */
     protected function titleEndHandler(): void
     {
-        $this->data['title'] = $this->text;
-
-        $this->text = '';
+        $this->title = $this->text;
+        $this->text  = '';
     }
 
-    /**
-     * Handle </description>
-     *
-     * @return void
-     */
     protected function descriptionEndHandler(): void
     {
-        $this->data['description'] = $this->text;
-
-        $this->text = '';
+        $this->description = $this->text;
+        $this->text        = '';
     }
 
     /**
-     * Handle <input>
-     *
-     * @param array<string> $attrs
-     *
-     * @return void
+     * @param array<string,string> $attrs
      */
     protected function inputStartHandler(array $attrs): void
     {
@@ -129,38 +102,28 @@ class ReportParserSetup extends ReportParserBase
             'options' => $attrs['options'] ?? '',
             'default' => '',
             'value'   => '',
+            'extra'   => '',
         ];
 
         if (isset($attrs['default'])) {
             if ($attrs['default'] === 'NOW') {
-                $date = Registry::timestampFactory()->now();
+                $date                   = Registry::timestampFactory()->now();
+                $this->input['default'] = strtoupper($date->format('d M Y'));
+            } elseif (preg_match('/NOW([+\-]\d+)/', $attrs['default'], $match) > 0) {
+                $date                   = Registry::timestampFactory()->now()->addDays((int) $match[1]);
                 $this->input['default'] = strtoupper($date->format('d M Y'));
             } else {
-                $match = [];
-                if (preg_match('/NOW([+\-]\d+)/', $attrs['default'], $match) > 0) {
-                    $date = Registry::timestampFactory()->now()->addDays((int)$match[1]);
-                    $this->input['default'] = strtoupper($date->format('d M Y'));
-                } else {
-                    $this->input['default'] = $attrs['default'];
-                }
+                $this->input['default'] = $attrs['default'];
             }
         } elseif ($attrs['name'] === 'pageSize') {
             $this->input['default'] = I18N::locale()->territory()->paperSize();
         }
     }
 
-    /**
-     * Handle </input>
-     *
-     * @return void
-     */
     protected function inputEndHandler(): void
     {
         $this->input['value'] = $this->text;
-        if (!isset($this->data['inputs'])) {
-            $this->data['inputs'] = [];
-        }
-        $this->data['inputs'][] = $this->input;
-        $this->text             = '';
+        $this->inputs[]       = $this->input;
+        $this->text           = '';
     }
 }

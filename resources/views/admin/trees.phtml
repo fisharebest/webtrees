@@ -30,22 +30,21 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
 
 /**
- * @var array<Tree> $all_trees
- * @var string      $title
- * @var Tree        $tree
+ * @var Collection<Tree> $all_trees
+ * @var string           $title
+ * @var Tree             $tree
  */
 
 ?>
 
-<?php if (!empty($all_trees)) : ?>
-    <?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
-<?php endif ?>
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
-<?php if (empty($all_trees)) : ?>
+<?php if ($all_trees->isEmpty()) : ?>
     <div class="alert alert-info">
         <?= I18N::translate('You need to create a family tree.') ?>
     </div>
@@ -56,7 +55,7 @@ use Fisharebest\Webtrees\View;
         <?php if (Auth::isManager($managed_tree)) : ?>
             <div class="accordion-item">
                 <div class="accordion-header" id="card-tree-header-<?= $managed_tree->id() ?>">
-                    <button class="accordion-button <?= $managed_tree->id() === $tree->id() || $managed_tree->getPreference('imported') === '0' ? ' ' : ' collapsed' ?>" type="button" data-bs-toggle="collapse" data-bs-target="#card-tree-content-<?= $managed_tree->id() ?>" aria-expanded="<?= $managed_tree->id() === $tree->id() || $managed_tree->getPreference('imported') === '0' ? 'true' : 'false' ?>" aria-controls="card-tree-content-<?= $managed_tree->id() ?>">
+                    <button class="accordion-button <?= $managed_tree->id() === $tree->id() || !$managed_tree->imported() ? ' ' : ' collapsed' ?>" type="button" data-bs-toggle="collapse" data-bs-target="#card-tree-content-<?= $managed_tree->id() ?>" aria-expanded="<?= $managed_tree->id() === $tree->id() || !$managed_tree->imported() ? 'true' : 'false' ?>" aria-controls="card-tree-content-<?= $managed_tree->id() ?>">
                         <h2>
                             <?= view('icons/tree') ?>
                             <?= e($managed_tree->name()) ?> — <?= e($managed_tree->title()) ?>
@@ -64,7 +63,7 @@ use Fisharebest\Webtrees\View;
                     </button>
                 </div>
 
-                <div id="card-tree-content-<?= $managed_tree->id() ?>" class="accordion-collapse collapse<?= $managed_tree->id() === $tree->id() || $managed_tree->getPreference('imported') === '0' ? ' show' : '' ?>" aria-labelledby="panel-tree-header-<?= $managed_tree->id() ?>">
+                <div id="card-tree-content-<?= $managed_tree->id() ?>" class="accordion-collapse collapse<?= $managed_tree->id() === $tree->id() || !$managed_tree->imported() ? ' show' : '' ?>" aria-labelledby="panel-tree-header-<?= $managed_tree->id() ?>">
                     <div class="accordion-body">
                         <?php $importing = DB::table('gedcom_chunk')->where('gedcom_id', '=', $managed_tree->id())->where('imported', '=', 0)->exists() ?>
                         <?php if ($importing) : ?>

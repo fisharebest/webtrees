@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -78,5 +78,15 @@ class LanguageArabic extends AbstractModule implements ModuleLanguageInterface
     public function locale(): LocaleInterface
     {
         return new LocaleAr();
+    }
+
+    protected function normalizeExceptions(): array
+    {
+        // Issue #5262 - the INTL library doesn't convert these.
+        return [
+            UTF8::ARABIC_LETTER_TEH_MARBUTA  => UTF8::ARABIC_LETTER_TEH,
+            UTF8::ARABIC_LETTER_ALEF_MAKSURA => UTF8::ARABIC_LETTER_YEH,
+            UTF8::ARABIC_LETTER_ALEF_WASLA   => UTF8::ARABIC_LETTER_ALEF,
+        ];
     }
 }

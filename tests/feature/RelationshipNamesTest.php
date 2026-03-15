@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -68,10 +68,10 @@ class RelationshipNamesTest extends TestCase
         // Individual suffixes - m(ale), f(emale), u(nknown), a(dopted), o(foster)
         // Family suffixes - m(arried), d(ivorced), e(ngaged)
         //
-        $tree = $this->createMock(Tree::class);
+        $tree = self::createStub(Tree::class);
 
-        $individual_factory = $this->createMock(IndividualFactory::class);
-        $family_factory     = $this->createMock(FamilyFactory::class);
+        $individual_factory = self::createStub(IndividualFactory::class);
+        $family_factory     = self::createStub(FamilyFactory::class);
 
         Registry::familyFactory($family_factory);
         Registry::individualFactory($individual_factory);

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,16 +32,8 @@ use function e;
 use function redirect;
 use function route;
 
-/**
- * Edit the tree privacy.
- */
-class TreePrivacyAction implements RequestHandlerInterface
+final class TreePrivacyAction implements RequestHandlerInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
@@ -114,11 +106,16 @@ class TreePrivacyAction implements RequestHandlerInterface
         $show_living_names          = Validator::parsedBody($request)->string('SHOW_LIVING_NAMES');
         $show_private_relationships = Validator::parsedBody($request)->string('SHOW_PRIVATE_RELATIONSHIPS');
 
+        DB::table('gedcom')
+            ->where('gedcom_id', '=', $tree->id())
+            ->update([
+                'private' => (int) $require_authentication,
+            ]);
+
         $tree->setPreference('HIDE_LIVE_PEOPLE', $hide_live_people);
         $tree->setPreference('KEEP_ALIVE_YEARS_BIRTH', (string) $keep_alive_years_birth);
         $tree->setPreference('KEEP_ALIVE_YEARS_DEATH', (string) $keep_alive_years_death);
         $tree->setPreference('MAX_ALIVE_AGE', (string) $max_alive_age);
-        $tree->setPreference('REQUIRE_AUTHENTICATION', $require_authentication);
         $tree->setPreference('SHOW_DEAD_PEOPLE', $show_dead_people);
         $tree->setPreference('SHOW_LIVING_NAMES', $show_living_names);
         $tree->setPreference('SHOW_PRIVATE_RELATIONSHIPS', $show_private_relationships);

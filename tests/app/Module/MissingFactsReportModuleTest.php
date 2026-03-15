@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,14 +30,14 @@ use Fisharebest\Webtrees\Report\ReportBaseFootnote;
 use Fisharebest\Webtrees\Report\ReportBaseImage;
 use Fisharebest\Webtrees\Report\ReportBaseLine;
 use Fisharebest\Webtrees\Report\ReportBaseText;
-use Fisharebest\Webtrees\Report\ReportBaseTextbox;
+use Fisharebest\Webtrees\Report\ReportBaseTextBox;
 use Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider;
 use Fisharebest\Webtrees\Report\ReportHtmlCell;
 use Fisharebest\Webtrees\Report\ReportHtmlFootnote;
 use Fisharebest\Webtrees\Report\ReportHtmlImage;
 use Fisharebest\Webtrees\Report\ReportHtmlLine;
 use Fisharebest\Webtrees\Report\ReportHtmlText;
-use Fisharebest\Webtrees\Report\ReportHtmlTextbox;
+use Fisharebest\Webtrees\Report\ReportHtmlTextBox;
 use Fisharebest\Webtrees\Report\ReportParserBase;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
@@ -49,8 +49,10 @@ use Fisharebest\Webtrees\Report\ReportPdfText;
 use Fisharebest\Webtrees\Report\ReportPdfTextBox;
 use Fisharebest\Webtrees\Report\TcpdfWrapper;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 #[CoversClass(PedigreeReportModule::class)]
 #[CoversClass(AbstractRenderer::class)]
@@ -62,14 +64,14 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(ReportBaseImage::class)]
 #[CoversClass(ReportBaseLine::class)]
 #[CoversClass(ReportBaseText::class)]
-#[CoversClass(ReportBaseTextbox::class)]
+#[CoversClass(ReportBaseTextBox::class)]
 #[CoversClass(ReportExpressionLanguageProvider::class)]
 #[CoversClass(ReportHtmlCell::class)]
 #[CoversClass(ReportHtmlFootnote::class)]
 #[CoversClass(ReportHtmlImage::class)]
 #[CoversClass(ReportHtmlLine::class)]
 #[CoversClass(ReportHtmlText::class)]
-#[CoversClass(ReportHtmlTextbox::class)]
+#[CoversClass(ReportHtmlTextBox::class)]
 #[CoversClass(ReportParserBase::class)]
 #[CoversClass(ReportParserGenerate::class)]
 #[CoversClass(ReportParserSetup::class)]
@@ -84,8 +86,168 @@ class MissingFactsReportModuleTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    public function testReportRunsWithoutError(): void
+    /**
+     * @return array<int,array<string,string>>
+     */
+    public static function reportOptions(): array
     {
+        return [
+            [
+                'fbapm'     => 'on',
+                'fbarm'     => '',
+                'fbasm'     => 'on',
+                'fbirt'     => '',
+                'fburi'     => 'on',
+                'fconf'     => '',
+                'fdeat'     => 'on',
+                'fenga'     => '',
+                'ffcom'     => 'on',
+                'fmarb'     => '',
+                'fmarr'     => 'on',
+                'freli'     => '',
+                'fsour'     => 'on',
+                'maxgen'    => '-1',
+                'page_size' => 'A4',
+                'pid'       => 'X1030',
+                'relatives' => 'child-family',
+            ],
+            [
+                'fbapm'     => '',
+                'fbarm'     => 'on',
+                'fbasm'     => '',
+                'fbirt'     => 'on',
+                'fburi'     => '',
+                'fconf'     => 'on',
+                'fdeat'     => '',
+                'fenga'     => 'on',
+                'ffcom'     => '',
+                'fmarb'     => 'on',
+                'fmarr'     => '',
+                'freli'     => 'on',
+                'fsour'     => '',
+                'maxgen'    => '-1',
+                'page_size' => 'US-Letter',
+                'pid'       => 'X1030',
+                'relatives' => 'spouse-family',
+            ],
+            [
+                'fbapm'     => 'on',
+                'fbarm'     => '',
+                'fbasm'     => 'on',
+                'fbirt'     => '',
+                'fburi'     => 'on',
+                'fconf'     => '',
+                'fdeat'     => 'on',
+                'fenga'     => '',
+                'ffcom'     => 'on',
+                'fmarb'     => '',
+                'fmarr'     => 'on',
+                'freli'     => '',
+                'fsour'     => 'on',
+                'maxgen'    => '-1',
+                'page_size' => 'A4',
+                'pid'       => 'X1030',
+                'relatives' => 'direct-ancestors',
+            ],
+            [
+                'fbapm'     => '',
+                'fbarm'     => 'on',
+                'fbasm'     => '',
+                'fbirt'     => 'on',
+                'fburi'     => '',
+                'fconf'     => 'on',
+                'fdeat'     => '',
+                'fenga'     => 'on',
+                'ffcom'     => '',
+                'fmarb'     => 'on',
+                'fmarr'     => '',
+                'freli'     => 'on',
+                'fsour'     => '',
+                'maxgen'    => '-1',
+                'page_size' => 'US-Letter',
+                'pid'       => 'X1030',
+                'relatives' => 'ancestors',
+            ],
+            [
+                'fbapm'     => 'on',
+                'fbarm'     => '',
+                'fbasm'     => 'on',
+                'fbirt'     => '',
+                'fburi'     => 'on',
+                'fconf'     => '',
+                'fdeat'     => 'on',
+                'fenga'     => '',
+                'ffcom'     => 'on',
+                'fmarb'     => '',
+                'fmarr'     => 'on',
+                'freli'     => '',
+                'fsour'     => 'on',
+                'maxgen'    => '-1',
+                'page_size' => 'A4',
+                'pid'       => 'X1030',
+                'relatives' => 'descendants',
+            ],
+            [
+                'fbapm'     => '',
+                'fbarm'     => 'on',
+                'fbasm'     => '',
+                'fbirt'     => 'on',
+                'fburi'     => '',
+                'fconf'     => 'on',
+                'fdeat'     => '',
+                'fenga'     => 'on',
+                'ffcom'     => '',
+                'fmarb'     => 'on',
+                'fmarr'     => '',
+                'freli'     => 'on',
+                'fsour'     => '',
+                'maxgen'    => '-1',
+                'page_size' => 'US-Letter',
+                'pid'       => 'X1030',
+                'relatives' => 'all',
+            ],
+            [
+                'fbapm'     => '',
+                'fbarm'     => '',
+                'fbasm'     => '',
+                'fbirt'     => '',
+                'fburi'     => '',
+                'fconf'     => '',
+                'fdeat'     => '',
+                'fenga'     => '',
+                'ffcom'     => '',
+                'fmarb'     => '',
+                'fmarr'     => '',
+                'freli'     => '',
+                'fsour'     => '',
+                'maxgen'    => '',
+                'page_size' => '',
+                'pid'       => '',
+                'relatives' => '',
+            ],
+        ];
+    }
+
+    #[DataProvider('reportOptions')]
+    public function testReportRunsWithoutError(
+        string $fbapm,
+        string $fbarm,
+        string $fbasm,
+        string $fbirt,
+        string $fburi,
+        string $fconf,
+        string $fdeat,
+        string $fenga,
+        string $ffcom,
+        string $fmarb,
+        string $fmarr,
+        string $freli,
+        string $fsour,
+        string $maxgen,
+        string $page_size,
+        string $pid,
+        string $relatives,
+    ): void {
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
@@ -96,27 +258,31 @@ class MissingFactsReportModuleTest extends TestCase
 
         $xml  = 'resources/' . $module->xmlFilename();
         $vars = [
-            'pid'       => ['id' => 'X1030'],
-            'relatives' => ['id' => 'direct-ancestors'],
-            'maxgen'    => ['id' => '*'],
-            'pageSize'  => ['id' => 'A4'],
-            'sortby'    => ['id' => 'NAME'],
-            'fbirt'     => ['id' => 'on'],
-            'fburi'     => ['id' => 'on'],
-            'fdeat'     => ['id' => 'on'],
-            'fsour'     => ['id' => 'on'],
-            'fbapm'     => ['id' => 'on'],
-            'fbarm'     => ['id' => 'on'],
-            'fbasm'     => ['id' => 'on'],
-            'fconf'     => ['id' => 'on'],
-            'fenga'     => ['id' => 'on'],
-            'ffcom'     => ['id' => 'on'],
-            'fmarb'     => ['id' => 'on'],
-            'fmarr'     => ['id' => 'on'],
-            'freli'     => ['id' => 'on'],
+            'fbapm'     => $fbapm,
+            'fbarm'     => $fbarm,
+            'fbasm'     => $fbasm,
+            'fbirt'     => $fbirt,
+            'fburi'     => $fburi,
+            'fconf'     => $fconf,
+            'fdeat'     => $fdeat,
+            'fenga'     => $fenga,
+            'ffcom'     => $ffcom,
+            'fmarb'     => $fmarb,
+            'fmarr'     => $fmarr,
+            'freli'     => $freli,
+            'fsour'     => $fsour,
+            'maxgen'    => $maxgen,
+            'pageSize'  => $page_size,
+            'pid'       => $pid,
+            'relatives' => $relatives,
         ];
 
-        new ReportParserSetup($xml);
+        $parser = new ReportParserSetup($xml);
+        $this->assertNotEmpty($parser->reportDescription());
+        $this->assertNotEmpty($parser->reportTitle());
+        $this->assertNotEmpty($parser->reportInputs());
+
+        Site::setPreference('INDEX_DIRECTORY', 'tests/data/');
 
         ob_start();
         new ReportParserGenerate($xml, new HtmlRenderer(), $vars, $tree);

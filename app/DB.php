@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,43 +28,51 @@ use PDOException;
 use RuntimeException;
 use SensitiveParameter;
 
-/**
- * Database abstraction
- */
-class DB extends Manager
+final class DB extends Manager
 {
     // Supported drivers
+    public const string MARIADB    = 'mariadb';
     public const string MYSQL      = 'mysql';
-    public const string POSTGRES   = 'pgsql';
+    public const string POSTGRESQL = 'pgsql';
     public const string SQLITE     = 'sqlite';
     public const string SQL_SERVER = 'sqlsrv';
-
-    private const array COLLATION_ASCII = [
-        self::MYSQL      => 'ascii_bin',
-        self::POSTGRES   => 'C',
-        self::SQLITE     => 'BINARY',
-        self::SQL_SERVER => 'Latin1_General_Bin',
-    ];
+    // Unsupported drivers ;-)
+    public const string FIREBIRD   = 'firebird';
 
     private const array COLLATION_UTF8 = [
-        self::MYSQL      => 'utf8mb4_unicode_ci',
-        self::POSTGRES   => 'und-x-icu',
-        self::SQLITE     => 'NOCASE',
-        self::SQL_SERVER => 'utf8_CI_AI',
+        self::MARIADB    => 'utf8mb4_bin',
+        self::MYSQL      => 'utf8mb4_bin',
+        self::POSTGRESQL => 'und-x-icu',
+        self::SQLITE     => null,
+        self::SQL_SERVER => 'Latin1_General_100_BIN2_UTF8',
+        self::FIREBIRD   => 'UTF8',
     ];
 
     private const array REGEX_OPERATOR = [
+        self::MARIADB    => 'REGEXP',
         self::MYSQL      => 'REGEXP',
-        self::POSTGRES   => '~',
+        self::POSTGRESQL => '~',
         self::SQLITE     => 'REGEXP',
         self::SQL_SERVER => 'REGEXP',
+        self::FIREBIRD   => '~',
+    ];
+
+    private const array GROUP_CONCAT_FUNCTION = [
+        self::MARIADB    => 'GROUP_CONCAT(%s)',
+        self::MYSQL      => 'GROUP_CONCAT(%s)',
+        self::POSTGRESQL => "STRING_AGG(%s, ',')",
+        self::SQLITE     => 'GROUP_CONCAT(%s)',
+        self::SQL_SERVER => "STRING_AGG(%s, ',')",
+        self::FIREBIRD   => 'LIST(%s)',
     ];
 
     private const array DRIVER_INITIALIZATION = [
+        self::MARIADB    => "SET NAMES utf8mb4, sql_mode := 'ANSI,STRICT_ALL_TABLES', TIME_ZONE := '+00:00', SQL_BIG_SELECTS := 1, GROUP_CONCAT_MAX_LEN := 1048576",
         self::MYSQL      => "SET NAMES utf8mb4, sql_mode := 'ANSI,STRICT_ALL_TABLES', TIME_ZONE := '+00:00', SQL_BIG_SELECTS := 1, GROUP_CONCAT_MAX_LEN := 1048576",
-        self::POSTGRES   => '',
+        self::POSTGRESQL => '',
         self::SQLITE     => 'PRAGMA foreign_keys = ON',
         self::SQL_SERVER => 'SET language us_english', // For timestamp columns
+        self::FIREBIRD   => '',
     ];
 
     public static function connect(
@@ -97,7 +105,10 @@ class DB extends Manager
         ];
 
         // MySQL/MariaDB support encrypted connections
-        if ($driver === self::MYSQL && $key !== '' && $certificate !== '' && $ca !== '') {
+        if (
+            ($driver === self::MYSQL || $driver === self::MARIADB) &&
+            $key !== '' && $certificate !== '' && $ca !== ''
+        ) {
             $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = $verify_certificate;
             $options[PDO::MYSQL_ATTR_SSL_KEY]                = Webtrees::ROOT_DIR . 'data/' . $key;
             $options[PDO::MYSQL_ATTR_SSL_CERT]               = Webtrees::ROOT_DIR . 'data/' . $certificate;
@@ -123,7 +134,7 @@ class DB extends Manager
         ]);
         $capsule->setAsGlobal();
 
-        // Eager-load the connection, to prevent database credentials appearing in error logs.
+        // Eager-load the connection to prevent database credentials appearing in error logs.
         try {
             self::pdo();
         } catch (PDOException $exception) {
@@ -164,26 +175,37 @@ class DB extends Manager
         return parent::connection()->getPdo();
     }
 
+    /**
+     * @param non-empty-string $identifier
+     *
+     * @return non-empty-string
+     */
     public static function prefix(string $identifier): string
     {
         return parent::connection()->getTablePrefix() . $identifier;
     }
 
+    public static function collation(): string|null
+    {
+        return self::COLLATION_UTF8[self::driverName()];
+    }
+
     /**
      * SQL-Server needs to be told that we are going to insert into an identity column.
      *
-     * @param Closure(): void $callback
+     * @param non-empty-string $table
+     * @param Closure(): void  $callback
      */
     public static function identityInsert(string $table, Closure $callback): void
     {
         if (self::driverName() === self::SQL_SERVER) {
-            self::exec('SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] ON');
+            self::exec(sql: 'SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] ON');
         }
 
         $callback();
 
         if (self::driverName() === self::SQL_SERVER) {
-            self::exec('SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] OFF');
+            self::exec(sql: 'SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] OFF');
         }
     }
 
@@ -193,9 +215,10 @@ class DB extends Manager
     }
 
     /**
+     * @param list<string> $expressions
+     *
      * @internal
      *
-     * @param list<string> $expressions
      */
     public static function concat(array $expressions): string
     {
@@ -212,7 +235,7 @@ class DB extends Manager
      */
     public static function iLike(): string
     {
-        if (self::driverName() === self::POSTGRES) {
+        if (self::driverName() === self::POSTGRESQL) {
             return 'ILIKE';
         }
 
@@ -224,16 +247,7 @@ class DB extends Manager
      */
     public static function groupConcat(string $column): string
     {
-        switch (self::driverName()) {
-            case self::POSTGRES:
-            case self::SQL_SERVER:
-                return 'STRING_AGG(' . $column . ", ',')";
-
-            case self::MYSQL:
-            case self::SQLITE:
-            default:
-                return 'GROUP_CONCAT(' . $column . ')';
-        }
+        return sprintf(self::GROUP_CONCAT_FUNCTION[self::driverName()], $column);
     }
 
     /**
@@ -241,7 +255,7 @@ class DB extends Manager
      */
     public static function binaryColumn(string $column, string|null $alias = null): Expression
     {
-        if (self::driverName() === self::MYSQL) {
+        if (self::driverName() === self::MYSQL || self::driverName() === self::MARIADB) {
             $sql = 'CAST(' . $column . ' AS binary)';
         } else {
             $sql = $column;

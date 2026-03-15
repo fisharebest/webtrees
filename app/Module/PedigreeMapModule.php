@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -44,6 +44,8 @@ use function route;
 use function ucfirst;
 use function view;
 
+use const PHP_INT_SIZE;
+
 class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;
@@ -58,7 +60,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     // Limits
     public const int MINIMUM_GENERATIONS = 1;
-    public const int MAXIMUM_GENERATIONS = 10;
+    public const int MAXIMUM_GENERATIONS = PHP_INT_SIZE === 4 ? 31 : 63;
 
     // CSS colors for each generation
     protected const int COUNT_CSS_COLORS = 12;
@@ -192,14 +194,15 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         ]);
 
         return $this->viewResponse('modules/pedigree-map/page', [
-            'module'         => $this->name(),
+            'module'              => $this->name(),
             /* I18N: %s is an individual’s name */
-            'title'          => I18N::translate('Pedigree map of %s', $individual->fullName()),
-            'tree'           => $tree,
-            'individual'     => $individual,
-            'generations'    => $generations,
-            'maxgenerations' => self::MAXIMUM_GENERATIONS,
-            'map'            => $map,
+            'title'               => I18N::translate('Pedigree map of %s', $individual->fullName()),
+            'tree'                => $tree,
+            'individual'          => $individual,
+            'generations'         => $generations,
+            'minimum_generations' => self::MINIMUM_GENERATIONS,
+            'maximum_generations' => self::MAXIMUM_GENERATIONS,
+            'map'                 => $map,
         ]);
     }
 

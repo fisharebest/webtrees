@@ -89,6 +89,7 @@ use Illuminate\Support\Collection;
 <br>
 
 <table
+    id="wt-datatables-admin-media"
     class="table table-bordered table-sm datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-ajax="<?= e(route(ManageMediaData::class, ['files' => $files, 'media_folder' => $media_folder, 'subfolders' => $subfolders])) ?>"

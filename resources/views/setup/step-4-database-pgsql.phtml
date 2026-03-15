@@ -82,7 +82,7 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('Database password') ?>
         </label>
         <div class="col-sm-9">
-            <input class="form-control" id="dbpass" name="dbpass" type="password" value="<?= e($dbpass) ?>" dir="ltr" autocomplete="off" data-wt-show-password-text="<?= e(I18N::translate('show')) ?>" data-wt-show-password-title="<?= e(I18N::translate('Show password')) ?>" data-wt-hide-password-text="<?= e(I18N::translate('hide')) ?>" data-wt-hide-password-title="<?= e(I18N::translate('Hide password')) ?>">
+            <?= view('edit/password', ['id' => 'dbpass', 'value' => $dbpass]) ?>
         </div>
     </div>
 

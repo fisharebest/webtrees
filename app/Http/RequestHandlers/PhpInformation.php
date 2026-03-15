@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,18 +34,10 @@ use const INFO_ALL;
 use const INFO_CREDITS;
 use const INFO_LICENSE;
 
-/**
- * Show PHP information.
- */
-class PhpInformation implements RequestHandlerInterface
+final class PhpInformation implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -53,8 +45,12 @@ class PhpInformation implements RequestHandlerInterface
         ob_start();
         phpinfo(INFO_ALL & ~INFO_CREDITS & ~INFO_LICENSE);
         $phpinfo = ob_get_clean();
-        preg_match('%<body>(.*)</body>%s', $phpinfo, $matches);
-        $phpinfo = $matches[1];
+        if (preg_match('%<body>(.*)</body>%s', $phpinfo, $matches)) {
+            $phpinfo = $matches[1];
+        } else {
+            // Some web hosts use custom PHP builds with a non-standard phpinfo()
+            $phpinfo = '<pre>' . $phpinfo . '</pre>';
+        }
 
         return $this->viewResponse('admin/server-information', [
             'title'   => I18N::translate('Server information'),

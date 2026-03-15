@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,26 +31,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function redirect;
 use function route;
 
-/**
- * Save updated blocks on a tree's page.
- */
-class TreePageUpdate implements RequestHandlerInterface
+final class TreePageUpdate implements RequestHandlerInterface
 {
-    private HomePageService $home_page_service;
-
-    /**
-     * @param HomePageService $home_page_service
-     */
-    public function __construct(HomePageService $home_page_service)
-    {
-        $this->home_page_service = $home_page_service;
+    public function __construct(
+        private readonly HomePageService $home_page_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();
@@ -58,7 +45,7 @@ class TreePageUpdate implements RequestHandlerInterface
         $defaults = Validator::parsedBody($request)->boolean('defaults', false);
 
         if ($defaults) {
-            $default_tree = new Tree(-1, 'DEFAULT', 'DEFAULT');
+            $default_tree = new Tree(-1, '', '', '', '', true, true, null, null);
 
             $main_blocks = $this->home_page_service->treeBlocks($default_tree, $user, ModuleBlockInterface::MAIN_BLOCKS)
                 ->map(static fn (ModuleBlockInterface $block) => $block->name());

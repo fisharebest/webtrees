@@ -10,6 +10,6 @@ use Fisharebest\Webtrees\Tree;
 
 ?>
 <script>
-  $("#import<?= e($tree->id()) ?>").addClass("d-none");
-  $("#actions<?= e($tree->id()) ?>").removeClass("d-none");
+  document.getElementById('import<?= e($tree->id()) ?>').classList.add('d-none');
+  document.getElementById('actions<?= e($tree->id()) ?>').classList.remove('d-none');
 </script>

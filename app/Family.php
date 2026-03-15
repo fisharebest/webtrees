@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -124,8 +124,9 @@ class Family extends GedcomRecord
         // Hide a family if any member is private
         preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches);
         foreach ($matches[1] as $match) {
-            $person = Registry::individualFactory()->make($match, $this->tree);
-            if ($person && !$person->canShow($access_level)) {
+            $individual = Registry::individualFactory()->make($match, $this->tree);
+
+            if ($individual instanceof Individual && !$individual->canShow($access_level)) {
                 return false;
             }
         }

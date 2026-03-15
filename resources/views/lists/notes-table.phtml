@@ -72,6 +72,7 @@ $count_sources = DB::table('sources')
 ?>
 
 <table
+    id="wt-datatables-notes"
     class="table table-bordered table-sm wt-table-note datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([

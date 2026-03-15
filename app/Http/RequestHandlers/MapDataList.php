@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,10 +35,7 @@ use function e;
 use function redirect;
 use function route;
 
-/**
- * Show a list of map data.
- */
-class MapDataList implements RequestHandlerInterface
+final class MapDataList implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -65,11 +62,6 @@ class MapDataList implements RequestHandlerInterface
         $this->tree_service     = $tree_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $parent_id = $request->getAttribute('parent_id');

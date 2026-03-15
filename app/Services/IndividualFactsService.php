@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -459,6 +459,7 @@ class IndividualFactsService
             'U' => I18N::translate('Marriage of a half-sibling'),
         ];
 
+        /** @var Collection<Fact> $facts */
         $facts = new Collection();
 
         // Deal with recursion.
@@ -502,24 +503,24 @@ class IndividualFactsService
                             case '_GCHI':
                                 switch ($relation) {
                                     case 'dau':
-                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild1[$fact->tag()], $fact->record()->sex());
+                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild1[$fact->tag()], $child->sex());
                                         break;
                                     case 'son':
-                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild2[$fact->tag()], $fact->record()->sex());
+                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild2[$fact->tag()], $child->sex());
                                         break;
                                     case 'chil':
-                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild[$fact->tag()], $fact->record()->sex());
+                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild[$fact->tag()], $child->sex());
                                         break;
                                 }
                                 break;
                             case '_SIBL':
-                                $facts[] = $this->convertEvent($fact, $birth_of_a_sibling[$fact->tag()], $fact->record()->sex());
+                                $facts[] = $this->convertEvent($fact, $birth_of_a_sibling[$fact->tag()], $child->sex());
                                 break;
                             case '_HSIB':
-                                $facts[] = $this->convertEvent($fact, $birth_of_a_half_sibling[$fact->tag()], $fact->record()->sex());
+                                $facts[] = $this->convertEvent($fact, $birth_of_a_half_sibling[$fact->tag()], $child->sex());
                                 break;
                             case '_CHIL':
-                                $facts[] = $this->convertEvent($fact, $birth_of_a_child[$fact->tag()], $fact->record()->sex());
+                                $facts[] = $this->convertEvent($fact, $birth_of_a_child[$fact->tag()], $child->sex());
                                 break;
                         }
                     }
@@ -533,24 +534,24 @@ class IndividualFactsService
                             case '_GCHI':
                                 switch ($relation) {
                                     case 'dau':
-                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild1[$fact->tag()], $fact->record()->sex());
+                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild1[$fact->tag()], $child->sex());
                                         break;
                                     case 'son':
-                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild2[$fact->tag()], $fact->record()->sex());
+                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild2[$fact->tag()], $child->sex());
                                         break;
                                     case 'chi':
-                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild[$fact->tag()], $fact->record()->sex());
+                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild[$fact->tag()], $child->sex());
                                         break;
                                 }
                                 break;
                             case '_SIBL':
-                                $facts[] = $this->convertEvent($fact, $death_of_a_sibling[$fact->tag()], $fact->record()->sex());
+                                $facts[] = $this->convertEvent($fact, $death_of_a_sibling[$fact->tag()], $child->sex());
                                 break;
                             case '_HSIB':
-                                $facts[] = $this->convertEvent($fact, $death_of_a_half_sibling[$fact->tag()], $fact->record()->sex());
+                                $facts[] = $this->convertEvent($fact, $death_of_a_half_sibling[$fact->tag()], $child->sex());
                                 break;
                             case '_CHIL':
-                                $facts[] = $this->convertEvent($fact, $death_of_a_child[$fact->tag()], $fact->record()->sex());
+                                $facts[] = $this->convertEvent($fact, $death_of_a_child[$fact->tag()], $child->sex());
                                 break;
                         }
                     }
@@ -687,6 +688,7 @@ class IndividualFactsService
             'U' => I18N::translate('Marriage of a parent'),
         ];
 
+        /** @var Collection<Fact> $facts */
         $facts = new Collection();
 
         if ($sosa === 1) {
@@ -740,19 +742,19 @@ class IndividualFactsService
                         if ($sosa === 1 && Date::compare($fact->date(), $min_date) < 0 || $this->includeFact($fact, $min_date, $max_date)) {
                             switch ($sosa) {
                                 case 1:
-                                    $facts[] = $this->convertEvent($fact, $death_of_a_parent[$fact->tag()], $fact->record()->sex());
+                                    $facts[] = $this->convertEvent($fact, $death_of_a_parent[$fact->tag()], $parent->sex());
                                     break;
                                 case 2:
                                 case 3:
                                     switch ($person->sex()) {
                                         case 'M':
-                                            $facts[] = $this->convertEvent($fact, $death_of_a_paternal_grandparent[$fact->tag()], $fact->record()->sex());
+                                            $facts[] = $this->convertEvent($fact, $death_of_a_paternal_grandparent[$fact->tag()], $parent->sex());
                                             break;
                                         case 'F':
-                                            $facts[] = $this->convertEvent($fact, $death_of_a_maternal_grandparent[$fact->tag()], $fact->record()->sex());
+                                            $facts[] = $this->convertEvent($fact, $death_of_a_maternal_grandparent[$fact->tag()], $parent->sex());
                                             break;
                                         default:
-                                            $facts[] = $this->convertEvent($fact, $death_of_a_grandparent[$fact->tag()], $fact->record()->sex());
+                                            $facts[] = $this->convertEvent($fact, $death_of_a_grandparent[$fact->tag()], $parent->sex());
                                             break;
                                     }
                             }
@@ -797,12 +799,13 @@ class IndividualFactsService
             ],
         ];
 
+        /** @var Collection<Fact> $facts */
         $facts = new Collection();
 
         if (str_contains($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
             foreach ($spouse->facts(['DEAT', 'BURI', 'CREM']) as $fact) {
                 if ($this->includeFact($fact, $min_date, $max_date)) {
-                    $facts[] = $this->convertEvent($fact, $death_of_a_spouse[$fact->tag()], $fact->record()->sex());
+                    $facts[] = $this->convertEvent($fact, $death_of_a_spouse[$fact->tag()], $spouse->sex());
                 }
             }
         }

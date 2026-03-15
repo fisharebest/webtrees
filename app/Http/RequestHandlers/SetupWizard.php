@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -55,10 +55,7 @@ use function touch;
 use function unlink;
 use function view;
 
-/**
- * Controller for the installation wizard
- */
-class SetupWizard implements RequestHandlerInterface
+final class SetupWizard implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -86,17 +83,17 @@ class SetupWizard implements RequestHandlerInterface
 
     private const array DEFAULT_PORTS = [
         DB::MYSQL      => '3306',
-        DB::POSTGRES   => '5432',
+        DB::POSTGRESQL => '5432',
         DB::SQLITE     => '',
         DB::SQL_SERVER => '', // Do not use default, as it is valid to have no port number.
     ];
 
     public function __construct(
-        private MigrationService $migration_service,
-        private ModuleService $module_service,
-        private PhpService $php_service,
-        private ServerCheckService $server_check_service,
-        private UserService $user_service
+        private readonly MigrationService $migration_service,
+        private readonly ModuleService $module_service,
+        private readonly PhpService $php_service,
+        private readonly ServerCheckService $server_check_service,
+        private readonly UserService $user_service
     ) {
     }
 

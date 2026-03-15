@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,42 +21,18 @@ namespace Fisharebest\Webtrees\Report;
 
 use function abs;
 
-class ReportBaseLine extends ReportBaseElement
+abstract class ReportBaseLine extends ReportBaseElement
 {
-    // Start horizontal position, current position (default)
-    public float $x1 = ReportBaseElement::CURRENT_POSITION;
-
-    // Start vertical position, current position (default)
-    public float $y1 = ReportBaseElement::CURRENT_POSITION;
-
-    // End horizontal position, maximum width (default)
-    public float $x2 = ReportBaseElement::CURRENT_POSITION;
-
-    // End vertical position
-    public float $y2 = ReportBaseElement::CURRENT_POSITION;
-
-    /**
-     * Create a line class - Base
-     *
-     * @param float $x1
-     * @param float $y1
-     * @param float $x2
-     * @param float $y2
-     */
-    public function __construct(float $x1, float $y1, float $x2, float $y2)
-    {
-        $this->x1 = $x1;
-        $this->y1 = $y1;
-        $this->x2 = $x2;
-        $this->y2 = $y2;
+    public function __construct(
+        protected float $x1,
+        protected float $y1,
+        protected float $x2,
+        protected float $y2,
+    ) {
     }
 
     /**
-     * Get the height of the line.
-     *
      * @param HtmlRenderer|PdfRenderer $renderer
-     *
-     * @return float
      */
     public function getHeight($renderer): float
     {
@@ -64,8 +40,6 @@ class ReportBaseLine extends ReportBaseElement
     }
 
     /**
-     * Get the width of the line.
-     *
      * @param HtmlRenderer|PdfRenderer $renderer
      *
      * @return array{0:float,1:int,2:float}

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,16 +37,16 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     public function testNewSonNames(): void
     {
-        $father_fact = $this->createMock(Fact::class);
+        $father_fact = self::createStub(Fact::class);
         $father_fact->method('value')->willReturn('Jon Einarsson');
 
-        $father = $this->createMock(Individual::class);
+        $father = self::createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father_fact]));
 
-        $mother_fact = $this->createMock(Fact::class);
+        $mother_fact = self::createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Eva Stefansdottir');
 
-        $mother = $this->createMock(Individual::class);
+        $mother = self::createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -57,16 +57,16 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     public function testNewDaughterNames(): void
     {
-        $father_fact = $this->createMock(Fact::class);
+        $father_fact = self::createStub(Fact::class);
         $father_fact->method('value')->willReturn('Jon Einarsson');
 
-        $father = $this->createMock(Individual::class);
+        $father = self::createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father_fact]));
 
-        $mother_fact = $this->createMock(Fact::class);
+        $mother_fact = self::createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Eva Stefansdottir');
 
-        $mother = $this->createMock(Individual::class);
+        $mother = self::createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -77,16 +77,16 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     public function testNewChildNames(): void
     {
-        $father_fact = $this->createMock(Fact::class);
+        $father_fact = self::createStub(Fact::class);
         $father_fact->method('value')->willReturn('Jon Einarsson');
 
-        $father = $this->createMock(Individual::class);
+        $father = self::createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father_fact]));
 
-        $mother_fact = $this->createMock(Fact::class);
+        $mother_fact = self::createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Eva Stefansdottir');
 
-        $mother = $this->createMock(Individual::class);
+        $mother = self::createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -97,10 +97,10 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     public function testNewFatherNames(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Jon Einarsson');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -111,10 +111,10 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     public function testNewMotherNames(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Jon Evasdottir');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -125,10 +125,10 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     public function testNewParentNames(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Jon Einarsson');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -139,10 +139,10 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     public function testNewSpouseNames(): void
     {
-        $fact = $this->createMock(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Jon Einarsson');
 
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(

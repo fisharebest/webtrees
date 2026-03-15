@@ -28,16 +28,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use function redirect;
 use function route;
 
-/**
- * Update a list of modules.
- */
-class ModulesAnalyticsAction extends AbstractModuleComponentAction
+final class ModulesAnalyticsAction extends AbstractModuleComponentAction
 {
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->updateStatus(ModuleAnalyticsInterface::class, $request);

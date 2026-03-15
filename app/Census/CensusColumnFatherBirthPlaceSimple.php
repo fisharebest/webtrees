@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,21 +21,18 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
 
-/**
- * The individual's father's birth place.
- */
-class CensusColumnFatherBirthPlaceSimple extends CensusColumnFatherBirthPlace
+final readonly class CensusColumnFatherBirthPlaceSimple extends AbstractCensusColumn implements CensusColumnInterface
 {
-    /**
-     * Generate the likely value of this census column, based on available information.
-     *
-     * @param Individual $individual
-     * @param Individual $head
-     *
-     * @return string
-     */
     public function generate(Individual $individual, Individual $head): string
     {
-        return $this->lastPartOfPlace(parent::generate($individual, $head));
+        $father = $this->father($individual);
+
+        if ($father instanceof Individual) {
+            $place = $this->notCountry($father->getBirthPlace()->gedcomName());
+
+            return $this->lastPartOfPlace($place);
+        }
+
+        return '';
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -29,10 +30,10 @@ class CensusColumnSexMZTest extends TestCase
 {
     public function testMale(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('M');
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnSexMZ($census, '', '');
 
@@ -41,22 +42,22 @@ class CensusColumnSexMZTest extends TestCase
 
     public function testFeale(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('F');
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnSexMZ($census, '', '');
 
-        self::assertSame('Ž', $column->generate($individual, $individual));
+        self::assertSame(UTF8::LATIN_CAPITAL_LETTER_Z_WITH_CARON, $column->generate($individual, $individual));
     }
 
     public function testUnknownSex(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('sex')->willReturn('U');
 
-        $census = $this->createMock(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnSexMZ($census, '', '');
 
