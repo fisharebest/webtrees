@@ -68,4 +68,6 @@ interface ModuleThemeInterface extends ModuleInterface
      * @return array<string>
      */
     public function stylesheets(): array;
+
+    public function supportsDarkTheme(): bool;
 }

@@ -952,6 +952,22 @@
       });
     });
   };
+
+  webtrees.setColorTheme = function (mode) {
+    if (document.body.dataset.bsTheme === undefined) {
+      return;
+    }
+
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.dataset.bsTheme = 'dark';
+    } else {
+      document.body.dataset.bsTheme = 'light';
+    }
+  };
+
+  webtrees.watchForColorThemeChanges =function() {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => webtrees.setColorTheme());
+  };
 }(window.webtrees = window.webtrees || {}));
 
 // Send the CSRF token on all AJAX requests
@@ -965,6 +981,10 @@ $.ajaxSetup({
  * Initialisation
  */
 document.addEventListener('DOMContentLoaded', function() {
+  // Set light/dark mode
+  webtrees.setColorTheme();
+  webtrees.watchForColorThemeChanges();
+
   // Page elements that load automatically via AJAX.
   // This prevents bad robots from crawling resource-intensive pages.
   document.querySelectorAll('[data-wt-ajax-url]').forEach(function (element) {

@@ -45,4 +45,9 @@ class MinimalTheme extends AbstractModule implements ModuleThemeInterface
                 asset('css/minimal.min.css'),
         ];
     }
+
+    public function supportsDarkTheme(): bool
+    {
+        return true;
+    }
 }
