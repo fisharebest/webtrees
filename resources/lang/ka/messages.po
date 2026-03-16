@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-03-04 12:16+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Georgian <http://translate.webtrees.net/projects/webtrees/webtrees/ka/>\n"
+"PO-Revision-Date: 2026-03-17 18:45+0000\n"
+"Last-Translator: Reveritus <t102b@yandex.ru>\n"
+"Language-Team: Georgian <http://translate.webtrees.net/projects/webtrees/"
+"webtrees/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17661,7 +17662,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1195
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "დედის დედის დის შვილი"
 
 #: app/Services/RelationshipService.php:2350
 msgid "fourteenth cousin"
@@ -17729,13 +17730,13 @@ msgstr[0] "начиная с %1$s интервал %2$s год"
 #: app/Date.php:212
 #, php-format
 msgid "from %s"
-msgstr "с %s"
+msgstr "დან %s"
 
 #. I18N: Gedcom FROM-TO dates
 #: app/Date.php:224
 #, php-format
 msgid "from %s to %s"
-msgstr "с %s до %s"
+msgstr "დან %s ადრე %s"
 
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php:518
@@ -17745,7 +17746,7 @@ msgstr "მთლიანი წრე"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "geographic"
-msgstr ""
+msgstr "გეოგრაფიული"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:49
@@ -17760,7 +17761,7 @@ msgstr "შვილიშვილი"
 #: app/Services/RelationshipService.php:517
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "ქალიშვილის შვილი"
 
 #: app/Services/RelationshipService.php:617
 msgctxt "son’s child"
@@ -17820,12 +17821,12 @@ msgstr "შვილიშვილი"
 #: app/Services/RelationshipService.php:523
 msgctxt "daughter’s son"
 msgid "grandson"
-msgstr ""
+msgstr "ქალიშვილის შვილი"
 
 #: app/Services/RelationshipService.php:621
 msgctxt "son’s son"
 msgid "grandson"
-msgstr ""
+msgstr "შვილის შვილი"
 
 #: app/Services/RelationshipService.php:745
 msgctxt "child’s son’s wife"
@@ -17878,7 +17879,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2094
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr "пра(х%s) внучка"
+msgstr "დიდი (х%s) შვილიშვილი"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1889
@@ -17911,7 +17912,7 @@ msgstr "%sх დიდი ბებია"
 #: app/Services/RelationshipService.php:1964
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "пра(х%s)-дед/бабушка"
+msgstr "დიდი ბაბუა (x%s) - ბაბუა / ბებია"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2048
@@ -17920,7 +17921,7 @@ msgstr "пра(х%s)-дед/бабушка"
 #: app/Services/RelationshipService.php:2089
 #, php-format
 msgid "great ×%s grandson"
-msgstr ""
+msgstr "დიდი ×%s შვილიშვილი"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1772
@@ -17964,10 +17965,10 @@ msgstr ""
 #: app/Services/RelationshipService.php:1695
 #: app/Services/RelationshipService.php:1730
 #: app/Services/RelationshipService.php:1762
-#, fuzzy, php-format
+#, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "правнучатый племянник/племянница"
+msgstr "დიდი შვილიშვილი / დისშვილი"
 
 #: app/Services/RelationshipService.php:1699
 #: app/Services/RelationshipService.php:1734
