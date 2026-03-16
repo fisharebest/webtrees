@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2026-03-13 11:45+0000\n"
+"PO-Revision-Date: 2026-03-17 15:08+0000\n"
 "Last-Translator: Reveritus <t102b@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ru/>\n"
@@ -110,7 +110,7 @@ msgstr "%1$s не существует."
 #: admin_trees_check.php:164
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr "%1$s Не существует. Возможно, Вы имели в виду %2$s?"
+msgstr "%1$s не существует. Возможно, Вы имели в виду %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:204
@@ -229,7 +229,7 @@ msgstr "%s и его предки"
 #: app/Module/ClippingsCartModule.php:305
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s и лица, которые на нее ссылаются."
+msgstr "%s и лица, ссылающиеся на это."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:134
@@ -3644,7 +3644,7 @@ msgstr "Детей в семье"
 #: modules_v3/ahnentafel_report/report.xml:391
 #: modules_v3/descendancy_report/report.xml:483
 msgid "Children of "
-msgstr "Дети от "
+msgstr "Дети "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:88
@@ -4600,7 +4600,7 @@ msgstr "Дочь"
 #: app/Module/InteractiveTree/TreeView.php:349
 #, php-format
 msgid "Daughter of %s"
-msgstr "Дочь от %s"
+msgstr "Дочь %s"
 
 #: app/Theme/AbstractTheme.php:1063 calendar.php:151
 msgid "Day"
@@ -9705,7 +9705,7 @@ msgstr "Новая Каледония"
 #. I18N: Location of an historic LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:267
 msgid "New York, New York, United States"
-msgstr "Нью-Йорк, Нью-Йорк, США"
+msgstr "Нью-Йорк, штат Нью-Йорк, США"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6845
@@ -11148,7 +11148,7 @@ msgstr "Ограничения доступа - эти настройки вли
 #: app/Report/ReportParserGenerate.php:847 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1467 app/Stats.php:2972 expand_view.php:33
 msgid "Private"
-msgstr "Приватно"
+msgstr "Скрыто"
 
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:700
@@ -11206,11 +11206,11 @@ msgstr "Кесальтенанго, Гватемала"
 
 #: admin_trees_config.php:1823
 msgid "Quick family facts"
-msgstr "Факты семьи для быстрого ввода"
+msgstr "Краткие семейные факты"
 
 #: admin_trees_config.php:1705
 msgid "Quick individual facts"
-msgstr "Факты персоны для быстрого ввода"
+msgstr "Краткие отдельные факты"
 
 #: admin_trees_config.php:2001
 msgid "Quick repository facts"
@@ -11380,7 +11380,7 @@ msgstr "Последние изменения"
 
 #: calendar.php:234
 msgid "Recent years (&lt; 100 yrs)"
-msgstr "Последние года (< 100 лет)"
+msgstr "Последние годы (< 100 лет)"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:311
@@ -12537,11 +12537,11 @@ msgstr "Показать семьи, где скончался только су
 
 #: app/Functions/FunctionsPrintLists.php:684
 msgid "Show couples who married more than 100 years ago."
-msgstr "Показать семьи, вступившие в брак раньше ста лет назад."
+msgstr "Показать семьи, вступившие в брак более 100 лет назад."
 
 #: app/Functions/FunctionsPrintLists.php:693
 msgid "Show couples who married within the last 100 years."
-msgstr "Показать пары вступившие в брак в последние сто лет."
+msgstr "Показать пары вступившие в брак в последние 100 лет."
 
 #: app/Functions/FunctionsPrintLists.php:675
 msgid "Show couples with an unknown marriage date."
@@ -12580,11 +12580,11 @@ msgstr "Показать неиспользуемые места"
 
 #: app/Functions/FunctionsPrintLists.php:244
 msgid "Show individuals born more than 100 years ago."
-msgstr "Показать персон, родившихся раньше ста лет назад."
+msgstr "Показать персон, родившихся больше 100 лет назад."
 
 #: app/Functions/FunctionsPrintLists.php:253
 msgid "Show individuals born within the last 100 years."
-msgstr "Показать людей родившихся в последние сто лет."
+msgstr "Показать людей родившихся в последние 100 лет."
 
 #: app/Functions/FunctionsPrintLists.php:206
 #: app/Functions/FunctionsPrintLists.php:617
@@ -12594,15 +12594,15 @@ msgstr "Показать только живых персон или семьи,
 #: app/Functions/FunctionsPrintLists.php:215
 #: app/Functions/FunctionsPrintLists.php:644
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr "Показать только скончавшихся персон или семьи, где оба супруга скончались."
+msgstr "Показать скончавшихся персон или семьи, где оба супруга скончались."
 
 #: app/Functions/FunctionsPrintLists.php:224
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Показать персон, скончавшихся раньше ста лет назад."
+msgstr "Показать персон, скончавшихся больше 100 лет назад."
 
 #: app/Functions/FunctionsPrintLists.php:233
 msgid "Show individuals who died within the last 100 years."
-msgstr "Показать персон, скончавшихся до ста лет назад включительно."
+msgstr "Показать персон, скончавшихся до 100 лет назад включительно."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:278
@@ -13028,7 +13028,7 @@ msgstr "Сын"
 #: app/Module/InteractiveTree/TreeView.php:346
 #, php-format
 msgid "Son of %s"
-msgstr "Сын от %s"
+msgstr "Сын %s"
 
 #. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:207
@@ -16732,7 +16732,7 @@ msgstr "дочь"
 
 #: modules_v3/descendancy_report/report.xml:226
 msgid "daughter of"
-msgstr "дочь от"
+msgstr "дочь"
 
 #: app/Functions/Functions.php:824
 msgctxt "child’s wife"
@@ -19701,7 +19701,7 @@ msgstr "сын"
 
 #: modules_v3/descendancy_report/report.xml:295
 msgid "son of"
-msgstr "сын от"
+msgstr "сын"
 
 #: app/Functions/Functions.php:818
 msgctxt "child’s husband"
