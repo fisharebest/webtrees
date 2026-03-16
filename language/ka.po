@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-03-04 12:15+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2026-03-17 15:08+0000\n"
+"Last-Translator: Reveritus <t102b@yandex.ru>\n"
 "Language-Team: Georgian <http://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ka/>\n"
 "Language: ka\n"
@@ -17128,7 +17128,7 @@ msgstr ""
 #: app/Functions/Functions.php:1470
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "დედის დედის დის შვილი"
 
 #: app/Functions/Functions.php:581
 msgid "fourteenth cousin"
@@ -17190,13 +17190,13 @@ msgstr[0] "начиная с %1$s интервал %2$s год"
 #: app/Date.php:316
 #, php-format
 msgid "from %s"
-msgstr "с %s"
+msgstr "დან %s"
 
 #. I18N: Gedcom FROM-TO dates
 #: app/Date.php:325
 #, php-format
 msgid "from %s to %s"
-msgstr "с %s до %s"
+msgstr "დან %s ადრე %s"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:69
@@ -17220,7 +17220,7 @@ msgstr "შვილიშვილი"
 #: app/Functions/Functions.php:826
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "ქალიშვილის შვილი"
 
 #: app/Functions/Functions.php:926
 msgctxt "son’s child"
@@ -17280,12 +17280,12 @@ msgstr "შვილიშვილი"
 #: app/Functions/Functions.php:832
 msgctxt "daughter’s son"
 msgid "grandson"
-msgstr ""
+msgstr "ქალიშვილის შვილი"
 
 #: app/Functions/Functions.php:930
 msgctxt "son’s son"
 msgid "grandson"
-msgstr ""
+msgstr "შვილის შვილი"
 
 #: app/Functions/Functions.php:1056
 msgctxt "child’s son’s wife"
@@ -17322,7 +17322,7 @@ msgstr ""
 #: app/Functions/Functions.php:2040 app/Functions/Functions.php:2055
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr "пра(х%s) внучка"
+msgstr "დიდი (х%s) შვილიშვილი"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1912 app/Functions/Functions.php:1922
@@ -17344,13 +17344,13 @@ msgstr "%sх დიდი ბებია"
 #: app/Functions/Functions.php:1958
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "пра(х%s)-дед/бабушка"
+msgstr "დიდი ბაბუა (x%s) - ბაბუა / ბებია"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2038 app/Functions/Functions.php:2053
 #, php-format
 msgid "great ×%s grandson"
-msgstr ""
+msgstr "დიდი ×%s შვილიშვილი"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1823 app/Functions/Functions.php:1836
@@ -17382,10 +17382,10 @@ msgid "great ×%s nephew/niece"
 msgstr ""
 
 #: app/Functions/Functions.php:1813
-#, fuzzy, php-format
+#, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "правнучатый племянник/племянница"
+msgstr "დიდი შვილიშვილი / დისშვილი"
 
 #: app/Functions/Functions.php:1815
 #, php-format
