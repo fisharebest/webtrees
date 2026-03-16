@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2026-03-14 23:22+0000\n"
+"PO-Revision-Date: 2026-03-16 18:43+0000\n"
 "Last-Translator: Reveritus <t102b@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/ru/>\n"
@@ -91,7 +91,7 @@ msgstr "%1$s не существует."
 #: app/Http/RequestHandlers/CheckTree.php:223
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr "%1$s Не существует. Возможно, Вы имели в виду %2$s?"
+msgstr "%1$s не существует. Возможно, Вы имели в виду %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: app/Http/RequestHandlers/CheckTree.php:256
@@ -198,7 +198,7 @@ msgstr "%s и его предки"
 #: app/Module/ClippingsCartModule.php:939
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s и лица, которые на нее ссылаются."
+msgstr "%s и лица, ссылающиеся на это."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:503
@@ -3660,7 +3660,7 @@ msgstr "Детей в семье"
 #: resources/xml/reports/ahnentafel_report.xml:391
 #: resources/xml/reports/descendancy_report.xml:483
 msgid "Children of "
-msgstr "Дети от "
+msgstr "Дети "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:99
@@ -10216,7 +10216,7 @@ msgstr "Новый тег GEDCOM"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:146 app/GedcomCode/GedcomCodeTemp.php:504
 msgid "New York, New York, United States"
-msgstr "Нью-Йорк, Нью-Йорк, США"
+msgstr "Нью-Йорк, штат Нью-Йорк, США"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:383
@@ -11640,7 +11640,7 @@ msgstr "Ограничения доступа - эти настройки вли
 #: app/Report/ReportParserGenerate.php:967
 #: app/Statistics/Repository/EventRepository.php:417
 msgid "Private"
-msgstr "Приватно"
+msgstr "Скрыто"
 
 #: resources/views/admin/site-mail.phtml:207
 msgid "Private key"
@@ -11716,11 +11716,11 @@ msgstr "Кесальтенанго, Гватемала"
 
 #: resources/views/admin/trees-preferences.phtml:774
 msgid "Quick family facts"
-msgstr "Факты семьи для быстрого ввода"
+msgstr "Краткие семейные факты"
 
 #: resources/views/admin/trees-preferences.phtml:720
 msgid "Quick individual facts"
-msgstr "Факты персоны для быстрого ввода"
+msgstr "Краткие отдельные факты"
 
 #: resources/views/admin/trees-preferences.phtml:856
 msgid "Quick repository facts"
@@ -11926,7 +11926,7 @@ msgstr "Последние изменения"
 
 #: resources/views/calendar-page.phtml:127
 msgid "Recent years (&lt; 100 yrs)"
-msgstr "Последние года (< 100 лет)"
+msgstr "Последние годы (< 100 лет)"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:168 app/GedcomCode/GedcomCodeTemp.php:570
@@ -13028,7 +13028,7 @@ msgstr "Она умерла"
 #: resources/xml/reports/ahnentafel_report.xml:261
 #: resources/xml/reports/descendancy_report.xml:242
 msgid "She married"
-msgstr "Она вышла замуж"
+msgstr "Она вышла замуж за"
 
 #: resources/xml/reports/ahnentafel_report.xml:224
 msgid "She resided at"
@@ -13105,7 +13105,7 @@ msgstr "Показать ссылку на скачивание в медиап�
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr "Покажите политику конфиденциальности."
+msgstr "Показать политику конфиденциальности."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:69
@@ -13147,11 +13147,11 @@ msgstr "Показать семьи, где скончался только су
 
 #: resources/views/lists/families-table.phtml:193
 msgid "Show couples who married more than 100 years ago."
-msgstr "Показать семьи, вступившие в брак раньше ста лет назад."
+msgstr "Показать семьи, вступившие в брак более 100 лет назад."
 
 #: resources/views/lists/families-table.phtml:197
 msgid "Show couples who married within the last 100 years."
-msgstr "Показать пары вступившие в брак в последние сто лет."
+msgstr "Показать пары вступившие в брак в последние 100 лет."
 
 #: resources/views/lists/families-table.phtml:189
 msgid "Show couples with an unknown marriage date."
@@ -13173,11 +13173,11 @@ msgstr "Показать разведенных супругов."
 
 #: resources/views/lists/individuals-table.phtml:208
 msgid "Show individuals born more than 100 years ago."
-msgstr "Показать персон, родившихся раньше ста лет назад."
+msgstr "Показать персон, родившихся больше 100 лет назад."
 
 #: resources/views/lists/individuals-table.phtml:212
 msgid "Show individuals born within the last 100 years."
-msgstr "Показать людей родившихся в последние сто лет."
+msgstr "Показать людей родившихся в последние 100 лет."
 
 #: resources/views/lists/individuals-table.phtml:189
 msgid "Show individuals who are alive or couples where both partners are alive."
@@ -13186,15 +13186,15 @@ msgstr "Показать только живых персон или семьи,
 #: resources/views/lists/families-table.phtml:171
 #: resources/views/lists/individuals-table.phtml:193
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr "Показать только скончавшихся персон или семьи, где оба супруга скончались."
+msgstr "Показать скончавшихся персон или семьи, где оба супруга скончались."
 
 #: resources/views/lists/individuals-table.phtml:197
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Показать персон, скончавшихся раньше ста лет назад."
+msgstr "Показать персон, скончавшихся больше 100 лет назад."
 
 #: resources/views/lists/individuals-table.phtml:201
 msgid "Show individuals who died within the last 100 years."
-msgstr "Показать персон, скончавшихся до ста лет назад включительно."
+msgstr "Показать персон, скончавшихся до 100 лет назад включительно."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:99
