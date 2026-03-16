@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-01-30 17:58+0000\n"
-"Last-Translator: abu1omar1 <abu1omar1@hotmail.com>\n"
+"PO-Revision-Date: 2026-03-16 18:43+0000\n"
+"Last-Translator: Mohammed Alkindy <mohammed@omantel.net.om>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ar/>\n"
 "Language: ar\n"
@@ -20171,17 +20171,17 @@ msgstr "والد"
 
 #: app/Functions/Functions.php:694
 msgid "partner"
-msgstr "خليل"
+msgstr "زوج"
 
 #: app/Functions/Functions.php:671
 msgctxt "FEMALE"
 msgid "partner"
-msgstr "خليلة"
+msgstr "زوجة"
 
 #: app/Functions/Functions.php:647
 msgctxt "MALE"
 msgid "partner"
-msgstr "خليل"
+msgstr "زوج"
 
 #: app/SurnameTradition.php:77
 msgctxt "Surname tradition"
