@@ -6,9 +6,6 @@
 	<Input name="spouses" type="checkbox" default=""><var var="I18N::translate('Show spouses')" /></Input>
 	<Input name="orientation" type="select" default="portrait" options="portrait=>I18N::translate('Portrait')|landscape=>I18N::translate('Landscape')"><var var="I18N::translate('Orientation')"/></Input>
 	<Input name="pageSize" type="select" options="A4=>I18N::translateContext('paper size','A4')|A3=>I18N::translateContext('paper size', 'A3')|US-Letter=>I18N::translateContext('paper size','Letter')|US-Tabloid=>I18N::translateContext('paper size','Tabloid')"><var var="I18N::translate('Page size')" /></Input>
-	<!--
-	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translateContext('font name', 'Arial')|dejavusans=>I18N::translateContext('font name', 'DejaVu')|helvetica=>I18N::translateContext('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
-	-->
 	<SetVar name="fonts" value="dejavusans" />
 
 	<if condition="$orientation=='portrait'">
@@ -34,9 +31,9 @@
 		<!-- Truncate variables -->
 		<SetVar name="trunc_name_gen_1" value="26" />
 		<SetVar name="trunc_name_gen_2" value="24" />
-		<SetVar name="trunc_name_gen_3" value="26" />
-		<SetVar name="trunc_name_gen_4" value="26" />
-		<SetVar name="trunc_name_gen_5" value="26" />
+		<SetVar name="trunc_name_gen_3" value="24" />
+		<SetVar name="trunc_name_gen_4" value="24" />
+		<SetVar name="trunc_name_gen_5" value="24" />
 		<SetVar name="trunc_fact_gen_1" value="50" />
 		<SetVar name="trunc_fact_gen_2" value="50" />
 		<SetVar name="trunc_fact_gen_3" value="50" />
@@ -712,7 +709,7 @@
 			</Body>
 		</Doc>
 	</if>
-	
+
 	<if condition="$orientation=='landscape'">
 		<Style name="header" font="$fonts" size="18"/>
 		<Style name="label1" font="$fonts" size="9" />

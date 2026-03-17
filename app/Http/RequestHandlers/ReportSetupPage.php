@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,28 +35,15 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function redirect;
 use function route;
 
-/**
- * Get parameters for a report.
- */
-class ReportSetupPage implements RequestHandlerInterface
+final class ReportSetupPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private ModuleService $module_service;
-
-    /**
-     * @param ModuleService $module_service
-     */
-    public function __construct(ModuleService $module_service)
-    {
-        $this->module_service = $module_service;
+    public function __construct(
+        private readonly ModuleService $module_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
@@ -74,21 +61,12 @@ class ReportSetupPage implements RequestHandlerInterface
         $xref = Validator::queryParams($request)->isXref()->string('xref', '');
 
         $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
+        $xml_parser   = new ReportParserSetup($xml_filename);
+        $description  = $xml_parser->reportDescription();
+        $title        = $xml_parser->reportTitle();
+        $inputs       = [];
 
-        $report_array = (new ReportParserSetup($xml_filename))->reportProperties();
-        $description  = $report_array['description'];
-        $title        = $report_array['title'];
-
-        $inputs = [];
-
-        foreach ($report_array['inputs'] ?? [] as $n => $input) {
-            $input += [
-                'type'    => 'text',
-                'default' => '',
-                'lookup'  => '',
-                'extra'   => '',
-            ];
-
+        foreach ($xml_parser->reportInputs() as $n => $input) {
             $attributes = [
                 'id'    => 'input-' . $n,
                 'name'  => 'vars[' . $input['name'] . ']',
@@ -130,20 +108,20 @@ class ReportSetupPage implements RequestHandlerInterface
                     // Need to know if the user prefers DMY/MDY/YMD so we can validate dates properly.
                     $dmy = I18N::language()->dateOrder();
 
-                    $attributes += [
+                    $attributes       += [
                         'type'     => 'text',
                         'value'    => $input['default'],
                         'dir'      => 'ltr',
-                        'onchange' => 'webtrees.reformatDate(this, "' . $dmy . '")'
+                        'onchange' => 'webtrees.reformatDate(this, "' . $dmy . '")',
                     ];
                     $input['control'] = '<input ' . Html::attributes($attributes) . '>';
-                    $input['extra'] = view('edit/input-addon-calendar', ['id' => 'input-' . $n]);
+                    $input['extra']   = view('edit/input-addon-calendar', ['id' => 'input-' . $n]);
                     break;
 
                 default:
                     switch ($input['type']) {
                         case 'text':
-                            $attributes += [
+                            $attributes       += [
                                 'type'  => 'text',
                                 'value' => $input['default'],
                             ];
@@ -151,7 +129,7 @@ class ReportSetupPage implements RequestHandlerInterface
                             break;
 
                         case 'checkbox':
-                            $attributes += [
+                            $attributes       += [
                                 'type'    => 'checkbox',
                                 'checked' => (bool) $input['default'],
                             ];

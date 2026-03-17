@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\I18N;
 
 use function ord;
@@ -41,16 +42,7 @@ use const STR_PAD_RIGHT;
  */
 class RightToLeftSupport
 {
-    private const string UTF8_LRM = "\xE2\x80\x8E"; // U+200E (Left to Right mark:  zero-width character with LTR directionality)
-    private const string UTF8_RLM = "\xE2\x80\x8F"; // U+200F (Right to Left mark:  zero-width character with RTL directionality)
-    private const string UTF8_LRO = "\xE2\x80\xAD"; // U+202D (Left to Right override: force everything following to LTR mode)
-    private const string UTF8_RLO = "\xE2\x80\xAE"; // U+202E (Right to Left override: force everything following to RTL mode)
-    private const string UTF8_LRE = "\xE2\x80\xAA"; // U+202A (Left to Right embedding: treat everything following as LTR text)
-    private const string UTF8_RLE = "\xE2\x80\xAB"; // U+202B (Right to Left embedding: treat everything following as RTL text)
-    private const string UTF8_PDF = "\xE2\x80\xAC"; // U+202C (Pop directional formatting: restore state prior to last LRO, RLO, LRE, RLE)
-
     private const string OPEN_PARENTHESES = '([{';
-
     private const string CLOSE_PARENTHESES = ')]}';
 
     private const string NUMBERS = '0123456789';
@@ -81,25 +73,16 @@ class RightToLeftSupport
     /* Offset into the text. */
     private static int $posSpanStart;
 
-    /**
-     * This function strips &lrm; and &rlm; from the input string. It should be used for all
-     * text that has been passed through the PrintReady() function before that text is stored
-     * in the database. The database should NEVER contain these characters.
-     *
-     * @param string $inputText The string from which the &lrm; and &rlm; characters should be stripped
-     *
-     * @return string The input string, with &lrm; and &rlm; stripped
-     */
     private static function stripLrmRlm(string $inputText): string
     {
         return str_replace([
-            self::UTF8_LRM,
-            self::UTF8_RLM,
-            self::UTF8_LRO,
-            self::UTF8_RLO,
-            self::UTF8_LRE,
-            self::UTF8_RLE,
-            self::UTF8_PDF,
+            UTF8::LEFT_TO_RIGHT_MARK,
+            UTF8::RIGHT_TO_LEFT_MARK,
+            UTF8::LEFT_TO_RIGHT_OVERRIDE,
+            UTF8::RIGHT_TO_LEFT_OVERRIDE,
+            UTF8::LEFT_TO_RIGHT_EMBEDDING,
+            UTF8::RIGHT_TO_LEFT_EMBEDDING,
+            UTF8::POP_DIRECTIONAL_FORMATTING,
             '&lrm;',
             '&rlm;',
             '&LRM;',
@@ -110,10 +93,6 @@ class RightToLeftSupport
     /**
      * This function encapsulates all texts in the input with <span dir='xxx'> and </span>
      * according to the directionality specified.
-     *
-     * @param string $inputText Raw input
-     *
-     * @return string The string with all texts encapsulated as required
      */
     public static function spanLtrRtl(string $inputText): string
     {
@@ -160,7 +139,7 @@ class RightToLeftSupport
                         if ($numberState) {
                             $numberState = false;
                             if (self::$currentState === 'RTL') {
-                                self::$waitingText .= self::UTF8_PDF;
+                                self::$waitingText .= UTF8::POP_DIRECTIONAL_FORMATTING;
                             }
                         }
                         self::breakCurrentSpan($result);
@@ -225,9 +204,9 @@ class RightToLeftSupport
                                 $numberState = false;
                                 if (self::$currentState === 'RTL') {
                                     if (!str_contains(self::NUMBER_PREFIX, $currentLetter)) {
-                                        $currentLetter = self::UTF8_PDF . $currentLetter;
+                                        $currentLetter = UTF8::POP_DIRECTIONAL_FORMATTING . $currentLetter;
                                     } else {
-                                        $currentLetter .= self::UTF8_PDF; // Include a trailing + or - in the run
+                                        $currentLetter .= UTF8::POP_DIRECTIONAL_FORMATTING; // Include a trailing + or - in the run
                                     }
                                 }
                             }
@@ -240,13 +219,13 @@ class RightToLeftSupport
                         if (str_contains(self::NUMBERS, $nextChar)) {
                             $numberState = true; // We found a digit: the lead-in is therefore numeric
                             if (self::$currentState === 'RTL') {
-                                $currentLetter = self::UTF8_LRE . $currentLetter;
+                                $currentLetter = UTF8::LEFT_TO_RIGHT_EMBEDDING . $currentLetter;
                             }
                         }
                     } elseif (str_contains(self::NUMBERS, $currentLetter)) {
                         $numberState = true; // The current letter is a digit
                         if (self::$currentState === 'RTL') {
-                            $currentLetter = self::UTF8_LRE . $currentLetter;
+                            $currentLetter = UTF8::LEFT_TO_RIGHT_EMBEDDING . $currentLetter;
                         }
                     }
 
@@ -289,8 +268,8 @@ class RightToLeftSupport
                                     break;
                                 }
                             }
-                            // This is a solitary RTL letter : wrap it in UTF8 control codes to force LTR directionality
-                            $currentLetter = self::UTF8_LRO . $currentLetter . self::UTF8_PDF;
+                            // This is a solitary RTL letter - wrap it in UTF8 control codes to force LTR directionality
+                            $currentLetter = UTF8::LEFT_TO_RIGHT_OVERRIDE . $currentLetter . UTF8::POP_DIRECTIONAL_FORMATTING;
                             $newState      = 'LTR';
                             break;
                         }
@@ -373,10 +352,10 @@ class RightToLeftSupport
         if ($numberState) {
             if (self::$waitingText === '') {
                 if (self::$currentState === 'RTL') {
-                    $result .= self::UTF8_PDF;
+                    $result .= UTF8::POP_DIRECTIONAL_FORMATTING;
                 }
             } elseif (self::$currentState === 'RTL') {
-                self::$waitingText .= self::UTF8_PDF;
+                self::$waitingText .= UTF8::POP_DIRECTIONAL_FORMATTING;
             }
         }
         self::finishCurrentSpan($result, true);
@@ -399,7 +378,7 @@ class RightToLeftSupport
 
         // Move leading RTL numeric strings to following LTR text
         // (this happens when the page direction is RTL and the original text begins with a number and is followed by LTR text)
-        while (substr($result, 0, self::LENGTH_START + 3) === self::START_RTL . self::UTF8_LRE) {
+        while (substr($result, 0, self::LENGTH_START + 3) === self::START_RTL . UTF8::LEFT_TO_RIGHT_EMBEDDING) {
             $spanEnd = strpos($result, self::END_RTL . self::START_LTR);
             if ($spanEnd === false) {
                 break;
@@ -414,7 +393,7 @@ class RightToLeftSupport
 
         // On RTL pages, put trailing "." in RTL numeric strings into its own RTL span
         if (I18N::direction() === 'rtl') {
-            $result = str_replace(self::UTF8_PDF . '.' . self::END_RTL, self::UTF8_PDF . self::END_RTL . self::START_RTL . '.' . self::END_RTL, $result);
+            $result = str_replace(UTF8::POP_DIRECTIONAL_FORMATTING . '.' . self::END_RTL, UTF8::POP_DIRECTIONAL_FORMATTING . self::END_RTL . self::START_RTL . '.' . self::END_RTL, $result);
         }
 
         // Trim trailing blanks preceding <br> in LTR text
@@ -487,11 +466,6 @@ class RightToLeftSupport
             '+',
         ], $result);
 
-        //$result = strtr($result, [
-        //    self::END_RTL . self::START_LTR . '-' . self::END_LTR . self::START_RTL => '-',
-        //    self::END_RTL . self::START_LTR . '+' . self::END_LTR . self::START_RTL => '+',
-        //]);
-
         // Remove empty spans
         $result = str_replace([
             self::START_LTR . self::END_LTR,
@@ -502,7 +476,7 @@ class RightToLeftSupport
         // LTR text: <span dir="ltr"> text </span>
         // RTL text: <span dir="rtl"> text </span>
 
-        $result = str_replace([
+        return str_replace([
             self::START_LTR,
             self::END_LTR,
             self::START_RTL,
@@ -513,18 +487,11 @@ class RightToLeftSupport
             '<span dir="rtl">',
             '</span>',
         ], $result);
-
-        return $result;
     }
 
     /**
      * Wrap words that have an asterisk suffix in <u> and </u> tags.
      * This should underline starred names to show the preferred name.
-     *
-     * @param string $textSpan
-     * @param string $direction
-     *
-     * @return string
      */
     private static function starredName(string $textSpan, string $direction): string
     {
@@ -602,13 +569,6 @@ class RightToLeftSupport
         ];
     }
 
-    /**
-     * Insert <br> into current span
-     *
-     * @param string $result
-     *
-     * @return void
-     */
     private static function breakCurrentSpan(string &$result): void
     {
         // Interrupt the current span, insert that <br>, and then continue the current span
@@ -619,13 +579,6 @@ class RightToLeftSupport
         $result      .= $breakString;
     }
 
-    /**
-     * Begin current span
-     *
-     * @param string $result
-     *
-     * @return void
-     */
     private static function beginCurrentSpan(string &$result): void
     {
         if (self::$currentState === 'LTR') {
@@ -638,14 +591,6 @@ class RightToLeftSupport
         self::$posSpanStart = strlen($result);
     }
 
-    /**
-     * Finish current span
-     *
-     * @param string $result
-     * @param bool   $theEnd
-     *
-     * @return void
-     */
     private static function finishCurrentSpan(string &$result, bool $theEnd = false): void
     {
         $textSpan = substr($result, self::$posSpanStart);
@@ -664,11 +609,11 @@ class RightToLeftSupport
             if ($posColon === false) {
                 break;
             } // No more possible time strings
-            $posLRE = strpos($textSpan, self::UTF8_LRE);
+            $posLRE = strpos($textSpan, UTF8::LEFT_TO_RIGHT_EMBEDDING);
             if ($posLRE === false) {
                 break;
             } // No more numeric strings
-            $posPDF = strpos($textSpan, self::UTF8_PDF, $posLRE);
+            $posPDF = strpos($textSpan, UTF8::POP_DIRECTIONAL_FORMATTING, $posLRE);
             if ($posPDF === false) {
                 break;
             } // No more numeric strings
@@ -694,9 +639,9 @@ class RightToLeftSupport
             if ($posColon > $posSeparator) {
                 // We have a time string preceded by a blank: Exclude that blank from the numeric string
                 $tempResult    .= substr($numericString, 0, $posSeparator);
-                $tempResult    .= self::UTF8_PDF;
+                $tempResult    .= UTF8::POP_DIRECTIONAL_FORMATTING;
                 $tempResult    .= substr($numericString, $posSeparator, $lengthSeparator);
-                $tempResult    .= self::UTF8_LRE;
+                $tempResult    .= UTF8::LEFT_TO_RIGHT_EMBEDDING;
                 $numericString = substr($numericString, $posSeparator + $lengthSeparator);
             }
 
@@ -723,11 +668,11 @@ class RightToLeftSupport
                 $lengthSeparator = 6;
             }
             $tempResult    .= substr($numericString, 0, $posSeparator);
-            $tempResult    .= self::UTF8_PDF;
+            $tempResult    .= UTF8::POP_DIRECTIONAL_FORMATTING;
             $tempResult    .= substr($numericString, $posSeparator, $lengthSeparator);
             $posSeparator  += $lengthSeparator;
             $numericString = substr($numericString, $posSeparator);
-            $textSpan      = self::UTF8_LRE . $numericString . $textSpan;
+            $textSpan      = UTF8::LEFT_TO_RIGHT_EMBEDDING . $numericString . $textSpan;
         }
         $textSpan       = $tempResult . $textSpan;
         $trailingBlanks = '';
@@ -752,14 +697,14 @@ class RightToLeftSupport
                         $textSpan       = substr($textSpan, 0, -1);
                         continue;
                     }
-                    if (substr($textSpan, -3) !== self::UTF8_PDF) {
+                    if (substr($textSpan, -3) !== UTF8::POP_DIRECTIONAL_FORMATTING) {
                         // There is no trailing numeric string
                         $textSpan = $savedSpan;
                         break;
                     }
 
                     // We have a numeric string
-                    $posStartNumber = strrpos($textSpan, self::UTF8_LRE);
+                    $posStartNumber = strrpos($textSpan, UTF8::LEFT_TO_RIGHT_EMBEDDING);
                     if ($posStartNumber === false) {
                         $posStartNumber = 0;
                     }
@@ -1020,14 +965,14 @@ class RightToLeftSupport
                         $textSpan       = substr($textSpan, 0, -1);
                         continue;
                     }
-                    if (substr($textSpan, -3) !== self::UTF8_PDF) {
+                    if (substr($textSpan, -3) !== UTF8::POP_DIRECTIONAL_FORMATTING) {
                         // There is no trailing numeric string
                         $textSpan = $savedSpan;
                         break;
                     }
 
                     // We have a numeric string
-                    $posStartNumber = strrpos($textSpan, self::UTF8_LRE);
+                    $posStartNumber = strrpos($textSpan, UTF8::LEFT_TO_RIGHT_EMBEDDING);
                     if ($posStartNumber === false) {
                         $posStartNumber = 0;
                     }

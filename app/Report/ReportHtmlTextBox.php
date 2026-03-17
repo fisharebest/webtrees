@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,14 +26,10 @@ use function ksort;
 use function str_replace;
 use function trim;
 
-class ReportHtmlTextbox extends ReportBaseTextbox
+class ReportHtmlTextBox extends ReportBaseTextBox
 {
     /**
-     * Render the elements.
-     *
      * @param HtmlRenderer $renderer
-     *
-     * @return void
      */
     public function render($renderer): void
     {
@@ -65,7 +61,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                         $lastelement   = $element;
                     }
                 } elseif ($element instanceof ReportHtmlFootnote) {
-                    // Check if the Footnote has been set with it’s link number
+                    // Check if the Footnote has been set with its link number
                     $renderer->checkFootnote($element);
                     // Save first the last element if any
                     if (!empty($lastelement)) {

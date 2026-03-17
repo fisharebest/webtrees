@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-12-07 01:23+0000\n"
+"PO-Revision-Date: 2026-02-16 11:54+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/nb_NO/>\n"
@@ -410,7 +410,7 @@ msgstr "%s kusine"
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr "%s slektning"
+msgstr "%s menning"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2280
@@ -18050,42 +18050,42 @@ msgstr "3 x tippoldebarn"
 #: app/Services/RelationshipService.php:1595
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr "tipptippoldebarn av søsken"
+msgstr "brors tipptippoldebarn"
 
 #: app/Services/RelationshipService.php:1599
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr "tipptippoldebarn av søsken"
+msgstr "brors tipptippoldebarn"
 
 #: app/Services/RelationshipService.php:1602
 msgctxt "(a woman’s) great ×4 nephew"
 msgid "great ×4 nephew"
-msgstr "tipptippoldebarn av søsken"
+msgstr "søsters tipptippoldebarn"
 
 #: app/Services/RelationshipService.php:1618
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr "tipptippoldebarn av søsken"
+msgstr "brors tipptippoldebarn"
 
 #: app/Services/RelationshipService.php:1622
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr "tipptippoldebarn av søsken"
+msgstr "brors tipptippoldebarn"
 
 #: app/Services/RelationshipService.php:1625
 msgctxt "(a woman’s) great ×4 nephew/niece"
 msgid "great ×4 nephew/niece"
-msgstr "tipptippoldebarn av søsken"
+msgstr "søsters tipptippoldebarn"
 
 #: app/Services/RelationshipService.php:1607
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr "tipptippoldebarn av søsken"
+msgstr "brors tipptippoldebarn"
 
 #: app/Services/RelationshipService.php:1611
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr "tipptippoldebarn av søsken"
+msgstr "brors tipptippoldebarn"
 
 #: app/Services/RelationshipService.php:1614
 msgctxt "(a woman’s) great ×4 niece"
@@ -18109,11 +18109,11 @@ msgstr "tipptippoldeforelders bror"
 
 #: app/Services/RelationshipService.php:1385
 msgid "great ×5 aunt"
-msgstr "3. tippoldeforelders søster"
+msgstr "3 x tippoldeforelders søster"
 
 #: app/Services/RelationshipService.php:1388
 msgid "great ×5 aunt/uncle"
-msgstr "3. tippoldeforelders søster/bror"
+msgstr "3 x tippoldeforelders søsken"
 
 #: app/Services/RelationshipService.php:2013
 msgid "great ×5 grandchild"
@@ -18187,25 +18187,25 @@ msgstr "3 x tippoldebarn av søsken"
 #: app/Services/RelationshipService.php:1374
 msgctxt "great ×4 grandfather’s brother"
 msgid "great ×5 uncle"
-msgstr "3. tippoldefars bror"
+msgstr "3 x tippoldefars bror"
 
 #: app/Services/RelationshipService.php:1378
 msgctxt "great ×4 grandmother’s brother"
 msgid "great ×5 uncle"
-msgstr "3. tippoldemors bror"
+msgstr "3 x tippoldemors bror"
 
 #: app/Services/RelationshipService.php:1381
 msgctxt "great ×4 grandparent’s brother"
 msgid "great ×5 uncle"
-msgstr "3. tippoldeforelders bror"
+msgstr "3 x tippoldeforelders bror"
 
 #: app/Services/RelationshipService.php:1404
 msgid "great ×6 aunt"
-msgstr "4. tippoldeforelders søster"
+msgstr "4 x tippoldeforelders søster"
 
 #: app/Services/RelationshipService.php:1407
 msgid "great ×6 aunt/uncle"
-msgstr "4. tippoldeforelders søster/bror"
+msgstr "4 x tippoldeforelders søsken"
 
 #: app/Services/RelationshipService.php:2024
 msgid "great ×6 grandchild"
@@ -18234,25 +18234,25 @@ msgstr "5 x tippoldebarn"
 #: app/Services/RelationshipService.php:1393
 msgctxt "great ×5 grandfather’s brother"
 msgid "great ×6 uncle"
-msgstr "4. tippoldefars bror"
+msgstr "4 x tippoldefars bror"
 
 #: app/Services/RelationshipService.php:1397
 msgctxt "great ×5 grandmother’s brother"
 msgid "great ×6 uncle"
-msgstr "4. tippoldemors bror"
+msgstr "4 x tippoldemors bror"
 
 #: app/Services/RelationshipService.php:1400
 msgctxt "great ×5 grandparent’s brother"
 msgid "great ×6 uncle"
-msgstr "4. tippoldeforelders bror"
+msgstr "4 x tippoldeforelders bror"
 
 #: app/Services/RelationshipService.php:1423
 msgid "great ×7 aunt"
-msgstr "5. tippoldeforelders søster"
+msgstr "5 x tippoldeforelders søster"
 
 #: app/Services/RelationshipService.php:1426
 msgid "great ×7 aunt/uncle"
-msgstr "5. tippoldeforelders søster/bror"
+msgstr "5 x tippoldeforelders søsken"
 
 #: app/Services/RelationshipService.php:2035
 msgid "great ×7 grandchild"
@@ -18281,17 +18281,17 @@ msgstr "6 x tippoldebarn"
 #: app/Services/RelationshipService.php:1412
 msgctxt "great ×6 grandfather’s brother"
 msgid "great ×7 uncle"
-msgstr "5. tippoldefars bror"
+msgstr "5 x tippoldefars bror"
 
 #: app/Services/RelationshipService.php:1416
 msgctxt "great ×6 grandmother’s brother"
 msgid "great ×7 uncle"
-msgstr "5. tippoldemors bror"
+msgstr "5 x tippoldemors bror"
 
 #: app/Services/RelationshipService.php:1419
 msgctxt "great ×6 grandparent’s brother"
 msgid "great ×7 uncle"
-msgstr "5. tippoldeforelders bror"
+msgstr "5 x tippoldeforelders bror"
 
 #: app/Services/RelationshipService.php:1096
 msgctxt "father’s father’s brother’s wife"

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -63,9 +63,6 @@ use const PHP_INT_MAX;
 use const PREG_SET_ORDER;
 use const STR_PAD_LEFT;
 
-/**
- * A GEDCOM object.
- */
 class GedcomRecord
 {
     public const string RECORD_TYPE = 'UNKNOWN';
@@ -746,7 +743,7 @@ class GedcomRecord
         return $chan_user;
     }
 
-    public function createFact(string $gedcom, bool $update_chan, string $before_id = ''): void
+    public function createFact(string $gedcom, bool $update_chan, Fact|null $before = null): void
     {
         if (!preg_match('/^1 ' . Gedcom::REGEX_TAG . '/', $gedcom) || str_contains($gedcom, "\r")) {
             throw new InvalidArgumentException('Invalid GEDCOM passed to GedcomRecord::createFact(' . $gedcom . ')');
@@ -758,7 +755,7 @@ class GedcomRecord
         $inserted = false;
 
         foreach ($this->facts([], false, Auth::PRIV_HIDE, true) as $fact) {
-            if (!$inserted && $fact->id() === $before_id) {
+            if (!$inserted && $fact->id() === $before?->id()) {
                 $new_gedcom .= "\n" . $gedcom;
                 $inserted = true;
             }

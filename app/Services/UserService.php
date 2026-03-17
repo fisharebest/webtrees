@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,11 +42,12 @@ use function time;
  */
 class UserService
 {
-    /**
-     * Find the user with a specified user_id.
-     */
     public function find(int|null $user_id): User|null
     {
+        if ($user_id === null) {
+            return null;
+        }
+
         return Registry::cache()->array()
             ->remember('user-' . $user_id, static fn (): User|null => DB::table('user')
                 ->where('user_id', '=', $user_id)
@@ -55,9 +56,6 @@ class UserService
                 ->first());
     }
 
-    /**
-     * Find the user with a specified email address.
-     */
     public function findByEmail(string $email): User|null
     {
         return DB::table('user')
@@ -67,9 +65,6 @@ class UserService
             ->first();
     }
 
-    /**
-     * Find the user with a specified user_name or email address.
-     */
     public function findByIdentifier(string $identifier): User|null
     {
         return DB::table('user')
@@ -81,10 +76,6 @@ class UserService
     }
 
     /**
-     * Find the user(s) with a specified genealogy record.
-     *
-     * @param Individual $individual
-     *
      * @return Collection<int,User>
      */
     public function findByIndividual(Individual $individual): Collection
@@ -99,9 +90,6 @@ class UserService
             ->map(User::rowMapper());
     }
 
-    /**
-     * Find the user with a specified password reset token.
-     */
     public function findByToken(string $token): User|null
     {
         return DB::table('user')
@@ -117,9 +105,6 @@ class UserService
             ->first();
     }
 
-    /**
-     * Find the user with a specified user_name.
-     */
     public function findByUserName(string $user_name): User|null
     {
         return DB::table('user')
@@ -130,8 +115,6 @@ class UserService
     }
 
     /**
-     * Callback to sort users by their last-login (or registration) time.
-     *
      * @return Closure(UserInterface,UserInterface):int
      */
     public function sortByLastLogin(): Closure
@@ -147,10 +130,6 @@ class UserService
     }
 
     /**
-     * Callback to filter users who have not logged in since a given time.
-     *
-     * @param int $timestamp
-     *
      * @return Closure(UserInterface):bool
      */
     public function filterInactive(int $timestamp): Closure
@@ -164,8 +143,6 @@ class UserService
     }
 
     /**
-     * Get a list of all users.
-     *
      * @return Collection<int,User>
      */
     public function all(): Collection
@@ -178,8 +155,6 @@ class UserService
     }
 
     /**
-     * Get a list of all administrators.
-     *
      * @return Collection<int,User>
      */
     public function administrators(): Collection
@@ -196,8 +171,6 @@ class UserService
     }
 
     /**
-     * Get a list of all managers.
-     *
      * @return Collection<int,User>
      */
     public function managers(): Collection
@@ -215,8 +188,6 @@ class UserService
     }
 
     /**
-     * Get a list of all moderators.
-     *
      * @return Collection<int,User>
      */
     public function moderators(): Collection
@@ -234,8 +205,6 @@ class UserService
     }
 
     /**
-     * Get a list of all verified users.
-     *
      * @return Collection<int,User>
      */
     public function unapproved(): Collection
@@ -259,8 +228,6 @@ class UserService
     }
 
     /**
-     * Get a list of all verified users.
-     *
      * @return Collection<int,User>
      */
     public function unverified(): Collection
@@ -284,8 +251,6 @@ class UserService
     }
 
     /**
-     * Get a list of all users who are currently logged in.
-     *
      * @return Collection<int,User>
      */
     public function allLoggedIn(): Collection
@@ -300,18 +265,6 @@ class UserService
             ->map(User::rowMapper());
     }
 
-    /**
-     * Create a new user.
-     * The calling code needs to check for duplicates identifiers before calling
-     * this function.
-     *
-     * @param string $user_name
-     * @param string $real_name
-     * @param string $email
-     * @param string $password
-     *
-     * @return User
-     */
     public function create(string $user_name, string $real_name, string $email, #[\SensitiveParameter] string $password): User
     {
         DB::table('user')->insert([
@@ -326,13 +279,6 @@ class UserService
         return new User($user_id, $user_name, $real_name, $email);
     }
 
-    /**
-     * Delete a user
-     *
-     * @param User $user
-     *
-     * @return void
-     */
     public function delete(User $user): void
     {
         DB::table('session')
@@ -367,12 +313,6 @@ class UserService
         DB::table('user')->where('user_id', '=', $user->id())->delete();
     }
 
-    /**
-     * @param User                   $contact_user
-     * @param ServerRequestInterface $request
-     *
-     * @return string
-     */
     public function contactLink(User $contact_user, ServerRequestInterface $request): string
     {
         $tree = Validator::attributes($request)->tree();

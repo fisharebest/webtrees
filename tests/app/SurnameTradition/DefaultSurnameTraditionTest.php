@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,16 +37,16 @@ class DefaultSurnameTraditionTest extends TestCase
 
     public function testNewChildNames(): void
     {
-        $father_fact = $this->createStub(Fact::class);
+        $father_fact = self::createStub(Fact::class);
         $father_fact->method('value')->willReturn('Chris /White/');
 
-        $father = $this->createStub(Individual::class);
+        $father = self::createStub(Individual::class);
         $father->method('facts')->willReturn(new Collection([$father]));
 
-        $mother_fact = $this->createStub(Fact::class);
+        $mother_fact = self::createStub(Fact::class);
         $mother_fact->method('value')->willReturn('Chris /White/');
 
-        $mother = $this->createStub(Individual::class);
+        $mother = self::createStub(Individual::class);
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
@@ -67,10 +67,10 @@ class DefaultSurnameTraditionTest extends TestCase
 
     public function testNewParentNames(): void
     {
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Chris /White/');
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
@@ -91,10 +91,10 @@ class DefaultSurnameTraditionTest extends TestCase
 
     public function testNewSpouseNames(): void
     {
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Chris /White/');
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -49,10 +49,7 @@ use function range;
 use function response;
 use function view;
 
-/**
- * Show anniversaries for events in a given day/month/year.
- */
-class CalendarEvents implements RequestHandlerInterface
+final class CalendarEvents implements RequestHandlerInterface
 {
     public function __construct(
         private readonly CalendarService $calendar_service,

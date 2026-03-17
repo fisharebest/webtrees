@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -747,8 +747,7 @@ class Statistics
 
     public function contactGedcom(): string
     {
-        $user_id = (int) $this->tree->getPreference('CONTACT_USER_ID');
-        $user    = $this->user_service->find($user_id);
+        $user = $this->user_service->find(user_id: $this->tree->contactUserId());
 
         if ($user instanceof User) {
             $request = Registry::container()->get(ServerRequestInterface::class);
@@ -761,8 +760,7 @@ class Statistics
 
     public function contactWebmaster(): string
     {
-        $user_id = (int) $this->tree->getPreference('WEBMASTER_USER_ID');
-        $user    = $this->user_service->find($user_id);
+        $user = $this->user_service->find($this->tree->supportUserId());
 
         if ($user instanceof User) {
             $request = Registry::container()->get(ServerRequestInterface::class);

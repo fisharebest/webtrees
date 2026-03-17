@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,25 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
-/**
- * Definitions for a census
- */
-class CensusOfFrance1866 extends CensusOfFrance implements CensusInterface
+readonly class CensusOfFrance1866 extends CensusOfFrance implements CensusInterface
 {
-    /**
-     * When did this census occur.
-     *
-     * @return string
-     */
     public function censusDate(): string
     {
         return '18 JAN 1866';
     }
 
     /**
-     * The columns of the census.
-     *
-     * @return array<CensusColumnInterface>
+     * @return list<CensusColumnInterface>
      */
     public function columns(): array
     {

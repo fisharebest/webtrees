@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,7 +32,7 @@ class MapLinkOpenStreetMapTest extends TestCase
     {
         $module = new MapLinkOpenStreetMap();
 
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('latitude')->willReturn(null);
         $fact->method('longitude')->willReturn(null);
 
@@ -45,10 +45,10 @@ class MapLinkOpenStreetMapTest extends TestCase
     {
         $module = new MapLinkOpenStreetMap();
 
-        $record = $this->createStub(Individual::class);
+        $record = self::createStub(Individual::class);
         $record->method('fullName')->willReturn('FULL NAME');
 
-        $fact = $this->createStub(Fact::class);
+        $fact = self::createStub(Fact::class);
         $fact->method('latitude')->willReturn(54.321);
         $fact->method('longitude')->willReturn(-1.2345);
         $fact->method('label')->willReturn('LABEL');

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,14 +28,14 @@ use Fisharebest\Webtrees\Report\ReportBaseFootnote;
 use Fisharebest\Webtrees\Report\ReportBaseImage;
 use Fisharebest\Webtrees\Report\ReportBaseLine;
 use Fisharebest\Webtrees\Report\ReportBaseText;
-use Fisharebest\Webtrees\Report\ReportBaseTextbox;
+use Fisharebest\Webtrees\Report\ReportBaseTextBox;
 use Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider;
 use Fisharebest\Webtrees\Report\ReportHtmlCell;
 use Fisharebest\Webtrees\Report\ReportHtmlFootnote;
 use Fisharebest\Webtrees\Report\ReportHtmlImage;
 use Fisharebest\Webtrees\Report\ReportHtmlLine;
 use Fisharebest\Webtrees\Report\ReportHtmlText;
-use Fisharebest\Webtrees\Report\ReportHtmlTextbox;
+use Fisharebest\Webtrees\Report\ReportHtmlTextBox;
 use Fisharebest\Webtrees\Report\ReportParserBase;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
@@ -46,8 +46,10 @@ use Fisharebest\Webtrees\Report\ReportPdfLine;
 use Fisharebest\Webtrees\Report\ReportPdfText;
 use Fisharebest\Webtrees\Report\ReportPdfTextBox;
 use Fisharebest\Webtrees\Report\TcpdfWrapper;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 #[CoversClass(PedigreeReportModule::class)]
 #[CoversClass(AbstractRenderer::class)]
@@ -59,14 +61,14 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(ReportBaseImage::class)]
 #[CoversClass(ReportBaseLine::class)]
 #[CoversClass(ReportBaseText::class)]
-#[CoversClass(ReportBaseTextbox::class)]
+#[CoversClass(ReportBaseTextBox::class)]
 #[CoversClass(ReportExpressionLanguageProvider::class)]
 #[CoversClass(ReportHtmlCell::class)]
 #[CoversClass(ReportHtmlFootnote::class)]
 #[CoversClass(ReportHtmlImage::class)]
 #[CoversClass(ReportHtmlLine::class)]
 #[CoversClass(ReportHtmlText::class)]
-#[CoversClass(ReportHtmlTextbox::class)]
+#[CoversClass(ReportHtmlTextBox::class)]
 #[CoversClass(ReportParserBase::class)]
 #[CoversClass(ReportParserGenerate::class)]
 #[CoversClass(ReportParserSetup::class)]
@@ -81,25 +83,88 @@ class BirthDeathMarriageReportModuleTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    public function testReportRunsWithoutError(): void
+    /**
+     * @return array<int,array<string,string>>
+     */
+    public static function reportOptions(): array
     {
+        return [
+            [
+                'name'       => '',
+                'bdmplace'   => '',
+                'birthdate1' => '01 JAN 1900',
+                'birthdate2' => '31 DEC 1999',
+                'deathdate1' => '',
+                'deathdate2' => '',
+                'sortby'     => 'BIRT:DATE',
+                'page_size'  => 'A4',
+            ],
+            [
+                'name'       => '',
+                'bdmplace'   => '',
+                'birthdate1' => '',
+                'birthdate2' => '',
+                'deathdate1' => '01 JAN 1900',
+                'deathdate2' => '31 DEC 1999',
+                'sortby'     => 'DEAT:DATE',
+                'page_size'  => 'US-Letter',
+            ],
+            [
+                'name'       => 'Windsor',
+                'bdmplace'   => 'England',
+                'birthdate1' => '',
+                'birthdate2' => '',
+                'deathdate1' => '',
+                'deathdate2' => '',
+                'sortby'     => '',
+                'page_size'  => 'A4',
+            ],
+            [
+                'name'       => '',
+                'bdmplace'   => '',
+                'birthdate1' => '',
+                'birthdate2' => '',
+                'deathdate1' => '',
+                'deathdate2' => '',
+                'sortby'     => '',
+                'page_size'  => '',
+            ],
+        ];
+    }
+
+    #[DataProvider('reportOptions')]
+    public function testReportRunsWithoutError(
+        string $name,
+        string $bdmplace,
+        string $birthdate1,
+        string $birthdate2,
+        string $deathdate1,
+        string $deathdate2,
+        string $sortby,
+        string $page_size,
+    ): void {
         $tree   = $this->importTree('demo.ged');
         $module = new BirthDeathMarriageReportModule();
         $module->setName('bdm_report');
 
         $xml  = 'resources/' . $module->xmlFilename();
         $vars = [
-            'name'       => ['id' => ''],
-            'bdmplace'   => ['id' => ''],
-            'birthdate1' => ['id' => ''],
-            'birthdate2' => ['id' => ''],
-            'deathdate1' => ['id' => ''],
-            'deathdate2' => ['id' => ''],
-            'sortby'     => ['id' => 'BIRT:DATE'],
-            'pageSize'   => ['id' => 'A4'],
+            'name'       => $name,
+            'bdmplace'   => $bdmplace,
+            'birthdate1' => $birthdate1,
+            'birthdate2' => $birthdate2,
+            'deathdate1' => $deathdate1,
+            'deathdate2' => $deathdate2,
+            'sortby'     => $sortby,
+            'pageSize'   => $page_size,
         ];
 
-        new ReportParserSetup($xml);
+        $parser = new ReportParserSetup($xml);
+        $this->assertNotEmpty($parser->reportDescription());
+        $this->assertNotEmpty($parser->reportTitle());
+        $this->assertNotEmpty($parser->reportInputs());
+
+        Site::setPreference('INDEX_DIRECTORY', 'tests/data/');
 
         ob_start();
         new ReportParserGenerate($xml, new HtmlRenderer(), $vars, $tree);

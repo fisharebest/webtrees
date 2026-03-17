@@ -48,6 +48,7 @@ $count_families = DB::table('families')
 ?>
 
 <table
+    id="wt-datatables-locations"
     class="table table-bordered table-sm wt-table-location datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([

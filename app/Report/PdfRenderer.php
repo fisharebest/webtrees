@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\MediaFile;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Webtrees;
 
 use function count;
@@ -64,11 +66,6 @@ class PdfRenderer extends AbstractRenderer
     // The last pictures page number
     public int $lastpicpage = 0;
 
-    /**
-     * PDF Header -PDF
-     *
-     * @return void
-     */
     public function header(): void
     {
         foreach ($this->headerElements as $element) {
@@ -82,11 +79,6 @@ class PdfRenderer extends AbstractRenderer
         }
     }
 
-    /**
-     * PDF Body -PDF
-     *
-     * @return void
-     */
     public function body(): void
     {
         $this->tcpdf->AddPage();
@@ -102,11 +94,6 @@ class PdfRenderer extends AbstractRenderer
         }
     }
 
-    /**
-     * Generate footnotes
-     *
-     * @return void
-     */
     public function footnotes(): void
     {
         foreach ($this->printedfootnotes as $element) {
@@ -122,11 +109,6 @@ class PdfRenderer extends AbstractRenderer
         }
     }
 
-    /**
-     * PDF Footer -PDF
-     *
-     * @return void
-     */
     public function footer(): void
     {
         foreach ($this->footerElements as $element) {
@@ -140,58 +122,11 @@ class PdfRenderer extends AbstractRenderer
         }
     }
 
-    /**
-     * Remove the header.
-     *
-     * @param int $index
-     *
-     * @return void
-     */
-    public function removeHeader(int $index): void
-    {
-        unset($this->headerElements[$index]);
-    }
-
-    /**
-     * Remove the body.
-     *
-     * @param int $index
-     *
-     * @return void
-     */
-    public function removeBody(int $index): void
-    {
-        unset($this->bodyElements[$index]);
-    }
-
-    /**
-     * Clear the Header -PDF
-     *
-     * @return void
-     */
-    public function clearHeader(): void
-    {
-        unset($this->headerElements);
-        $this->headerElements = [];
-    }
-
-    /**
-     * Get the currently used style name -PDF
-     *
-     * @return string
-     */
     public function getCurrentStyle(): string
     {
         return $this->currentStyle;
     }
 
-    /**
-     * Setup a style for usage -PDF
-     *
-     * @param string $s Style name
-     *
-     * @return void
-     */
     public function setCurrentStyle(string $s): void
     {
         $this->currentStyle = $s;
@@ -216,8 +151,6 @@ class PdfRenderer extends AbstractRenderer
      * RTL supported
      *
      * @param float $x Static position
-     *
-     * @return float
      */
     public function addMarginX(float $x): float
     {
@@ -232,12 +165,6 @@ class PdfRenderer extends AbstractRenderer
         return $x;
     }
 
-    /**
-     * Get the maximum line width to draw from the current position -PDF
-     * RTL supported
-     *
-     * @return float
-     */
     public function getMaxLineWidth(): float
     {
         $m = $this->tcpdf->getMargins();
@@ -248,11 +175,6 @@ class PdfRenderer extends AbstractRenderer
         return $this->tcpdf->getRemainingWidth() + $m['left'];
     }
 
-    /**
-     * Get the height of the footnote.
-     *
-     * @return float
-     */
     public function getFootnotesHeight(): float
     {
         $h = 0;
@@ -263,11 +185,6 @@ class PdfRenderer extends AbstractRenderer
         return $h;
     }
 
-    /**
-     * Returns the the current font size height -PDF
-     *
-     * @return float
-     */
     public function getCurrentStyleHeight(): float
     {
         if ($this->currentStyle === '') {
@@ -278,14 +195,7 @@ class PdfRenderer extends AbstractRenderer
         return $style['size'];
     }
 
-    /**
-     * Checks the Footnote and numbers them
-     *
-     * @param ReportPdfFootnote $footnote
-     *
-     * @return ReportPdfFootnote|bool object if already numbered, false otherwise
-     */
-    public function checkFootnote(ReportPdfFootnote $footnote)
+    public function checkFootnote(ReportPdfFootnote $footnote): ReportPdfFootnote|false
     {
         $ct  = count($this->printedfootnotes);
         $val = $footnote->getValue();
@@ -311,8 +221,6 @@ class PdfRenderer extends AbstractRenderer
     /**
      * Used this function instead of AddPage()
      * This function will make sure that images will not be overwritten
-     *
-     * @return void
      */
     public function newPage(): void
     {
@@ -322,32 +230,16 @@ class PdfRenderer extends AbstractRenderer
         $this->tcpdf->AddPage();
     }
 
-    /**
-     * Add a page if needed -PDF
-     *
-     * @param float $height Cell height
-     *
-     * @return bool true in case of page break, false otherwise
-     */
     public function checkPageBreakPDF(float $height): bool
     {
         return $this->tcpdf->checkPageBreak($height);
     }
 
-    /**
-     * Returns the remaining width between the current position and margins -PDF
-     *
-     * @return float Remaining width
-     */
     public function getRemainingWidthPDF(): float
     {
         return $this->tcpdf->getRemainingWidth();
     }
-    /**
-     * PDF Setup - ReportPdf
-     *
-     * @return void
-     */
+
     public function setup(): void
     {
         parent::setup();
@@ -385,60 +277,17 @@ class PdfRenderer extends AbstractRenderer
         }
     }
 
-    /**
-     * Run the report.
-     *
-     * @return void
-     */
     public function run(): void
     {
         $this->body();
         echo $this->tcpdf->Output('doc.pdf', 'S');
     }
 
-    /**
-     * Create a new Cell object.
-     *
-     * @param float  $width   cell width (expressed in points)
-     * @param float  $height  cell height (expressed in points)
-     * @param string $border  Border style
-     * @param string $align   Text alignment
-     * @param string $bgcolor Background color code
-     * @param string $style   The name of the text style
-     * @param int    $ln      Indicates where the current position should go after the call
-     * @param float  $top     Y-position
-     * @param float  $left    X-position
-     * @param bool   $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
-     * @param int    $stretch Stretch carachter mode
-     * @param string $bocolor Border color
-     * @param string $tcolor  Text color
-     * @param bool   $reseth
-     *
-     * @return ReportBaseCell
-     */
-    public function createCell(float $width, float $height, string $border, string $align, string $bgcolor, string $style, int $ln, float $top, float $left, bool $fill, int $stretch, string $bocolor, string $tcolor, bool $reseth): ReportBaseCell
+    public function createCell(float $width, float $height, string $border, string $align, string $bgcolor, string $style, int $ln, float $top, float $left, bool $fill, int $stretch, string $bocolor, string $tcolor, bool $reseth): ReportPdfCell
     {
         return new ReportPdfCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
     }
 
-    /**
-     * Create a new TextBox object.
-     *
-     * @param float  $width   Text box width
-     * @param float  $height  Text box height
-     * @param bool   $border
-     * @param string $bgcolor Background color code in HTML
-     * @param bool   $newline
-     * @param float  $left
-     * @param float  $top
-     * @param bool   $pagecheck
-     * @param string $style
-     * @param bool   $fill
-     * @param bool   $padding
-     * @param bool   $reseth
-     *
-     * @return ReportBaseTextbox
-     */
     public function createTextBox(
         float $width,
         float $height,
@@ -452,66 +301,34 @@ class PdfRenderer extends AbstractRenderer
         bool $fill,
         bool $padding,
         bool $reseth
-    ): ReportBaseTextbox {
+    ): ReportPdfTextBox {
         return new ReportPdfTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
     }
 
-    /**
-     * Create a text element.
-     *
-     * @param string $style
-     * @param string $color
-     *
-     * @return ReportBaseText
-     */
-    public function createText(string $style, string $color): ReportBaseText
+    public function createText(string $style, string $color): ReportPdfText
     {
         return new ReportPdfText($style, $color);
     }
 
-    /**
-     * Create a new Footnote object.
-     *
-     * @param string $style Style name
-     *
-     * @return ReportBaseFootnote
-     */
-    public function createFootnote(string $style): ReportBaseFootnote
+    public function createFootnote(string $style): ReportPdfFootnote
     {
         return new ReportPdfFootnote($style);
     }
 
-    /**
-     * Create a new image object.
-     *
-     * @param string $file  Filename
-     * @param float  $x
-     * @param float  $y
-     * @param float  $w     Image width
-     * @param float  $h     Image height
-     * @param string $align L:left, C:center, R:right or empty to use x/y
-     * @param string $ln    T:same line, N:next line
-     *
-     * @return ReportBaseImage
-     */
-    public function createImage(string $file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportBaseImage
-    {
-        return new ReportPdfImage($file, $x, $y, $w, $h, $align, $ln);
+    public function createImage(
+        string $file,
+        float $x,
+        float $y,
+        float $w,
+        float $h,
+        string $align,
+        string $ln,
+    ): ReportPdfImage {
+        $src = '@' . file_get_contents($file);
+
+        return new ReportPdfImage($src, $x, $y, $w, $h, $align, $ln);
     }
 
-    /**
-     * Create a new image object from Media Object.
-     *
-     * @param MediaFile $media_file
-     * @param float     $x
-     * @param float     $y
-     * @param float     $w     Image width
-     * @param float     $h     Image height
-     * @param string    $align L:left, C:center, R:right or empty to use x/y
-     * @param string    $ln    T:same line, N:next line
-     *
-     * @return ReportBaseImage
-     */
     public function createImageFromObject(
         MediaFile $media_file,
         float $x,
@@ -520,21 +337,24 @@ class PdfRenderer extends AbstractRenderer
         float $h,
         string $align,
         string $ln
-    ): ReportBaseImage {
-        return new ReportPdfImage('@' . $media_file->fileContents(), $x, $y, $w, $h, $align, $ln);
+    ): ReportPdfImage {
+        // Send higher-resolution image at the same aspect ratio.
+        $add_watermark = Registry::imageFactory()->fileNeedsWatermark($media_file, Auth::user());
+
+        $data = Registry::imageFactory()->mediaFileThumbnail(
+            $media_file,
+            (int) ($w * 4),
+            (int) ($h * 4),
+            'crop',
+            $add_watermark,
+        );
+
+        $src = '@' . $data;
+
+        return new ReportPdfImage($src, $x, $y, $w, $h, $align, $ln);
     }
 
-    /**
-     * Create a line.
-     *
-     * @param float $x1
-     * @param float $y1
-     * @param float $x2
-     * @param float $y2
-     *
-     * @return ReportBaseLine
-     */
-    public function createLine(float $x1, float $y1, float $x2, float $y2): ReportBaseLine
+    public function createLine(float $x1, float $y1, float $x2, float $y2): ReportPdfLine
     {
         return new ReportPdfLine($x1, $y1, $x2, $y2);
     }

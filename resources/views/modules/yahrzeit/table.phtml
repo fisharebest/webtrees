@@ -46,7 +46,7 @@ use Illuminate\Support\Collection;
                     <td data-sort="<?= e($yahrzeit->individual->sortName()) ?>">
                         <a href="<?= e($yahrzeit->individual->url()) ?>">
                             <?= $yahrzeit->individual->fullName() ?>
-                            <?php if ($yahrzeit->individual->alternateName()) : ?>
+                            <?php if ($yahrzeit->individual->alternateName() !== null) : ?>
                                 <br>
                                 <?= $yahrzeit->individual->alternateName() ?>
                             <?php endif ?>

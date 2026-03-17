@@ -58,7 +58,7 @@ use Illuminate\Support\Collection;
                 name="title"
                 required
                 type="text"
-                value="<?= e($tree->getPreference('title')) ?>"
+                value="<?= e($tree->title()) ?>"
             >
         </div>
     </div>
@@ -158,7 +158,7 @@ use Illuminate\Support\Collection;
             <select id="CONTACT_USER_ID" name="CONTACT_USER_ID" class="form-select">
                 <option value="">&nbsp;</option>
                 <?php foreach ($members as $member) : ?>
-                    <option value="<?= $member->id() ?>" <?= (int) $tree->getPreference('CONTACT_USER_ID') === $member->id() ? 'selected' : '' ?>>
+                    <option value="<?= $member->id() ?>" <?= $member->id() === $tree->contactUserId() ? 'selected' : '' ?>>
                         <?= e($member->realName()) ?> - <?= e($member->userName()) ?>
                     </option>
                 <?php endforeach ?>
@@ -178,7 +178,7 @@ use Illuminate\Support\Collection;
             <select id="WEBMASTER_USER_ID" name="WEBMASTER_USER_ID" class="form-select">
                 <option value="">&nbsp;</option>
                 <?php foreach ($members as $member) : ?>
-                    <option value="<?= $member->id() ?>" <?= (int) $tree->getPreference('WEBMASTER_USER_ID') === $member->id() ? 'selected' : '' ?>>
+                    <option value="<?= $member->id() ?>" <?= $member->id() === $tree->supportUserId() ? 'selected' : '' ?>>
                         <?= e($member->realName()) ?> - <?= e($member->userName()) ?>
                     </option>
                 <?php endforeach ?>
@@ -245,7 +245,7 @@ use Illuminate\Support\Collection;
                         <?= e($data_folder) ?>
                     </span>
 
-                    <input class="form-control" dir="ltr" id="MEDIA_DIRECTORY" maxlength="255" name="MEDIA_DIRECTORY" type="text" value="<?= e($tree->getPreference('MEDIA_DIRECTORY')) ?>">
+                    <input class="form-control" dir="ltr" id="MEDIA_DIRECTORY" maxlength="255" name="MEDIA_DIRECTORY" type="text" value="<?= e($tree->mediaFolder()) ?>">
                 </div>
 
                 <div class="form-text">

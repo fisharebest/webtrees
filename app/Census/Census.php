@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,154 +19,132 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
-/**
- * Definitions for a census
- */
-class Census
+readonly class Census
 {
     /**
-     * @param string $locale
-     *
-     * @return array<CensusPlaceInterface>
+     * @return list<CensusPlaceInterface>
      */
     public static function censusPlaces(string $locale): array
     {
-        switch ($locale) {
-            case 'cs':
-                return [
-                    new CensusOfCzechRepublic(),
-                    new CensusOfSlovakia(),
-                    new CensusOfDenmark(),
-                    new CensusOfDeutschland(),
-                    new CensusOfEngland(),
-                    new CensusOfFrance(),
-                    new CensusOfScotland(),
-                    new CensusOfUnitedStates(),
-                    new CensusOfRhodeIsland(),
-                    new CensusOfWales(),
-                    new CensusOfCanada(),
-                ];
-
-            case 'da':
-                return [
-                    new CensusOfDenmark(),
-                    new CensusOfDeutschland(),
-                    new CensusOfCzechRepublic(),
-                    new CensusOfEngland(),
-                    new CensusOfFrance(),
-                    new CensusOfScotland(),
-                    new CensusOfSlovakia(),
-                    new CensusOfUnitedStates(),
-                    new CensusOfRhodeIsland(),
-                    new CensusOfWales(),
-                    new CensusOfCanada(),
-                ];
-
-            case 'de':
-                return [
-                    new CensusOfDeutschland(),
-                    new CensusOfCzechRepublic(),
-                    new CensusOfDenmark(),
-                    new CensusOfEngland(),
-                    new CensusOfFrance(),
-                    new CensusOfScotland(),
-                    new CensusOfSlovakia(),
-                    new CensusOfUnitedStates(),
-                    new CensusOfRhodeIsland(),
-                    new CensusOfWales(),
-                    new CensusOfCanada(),
-                ];
-
-            case 'en-AU':
-            case 'en-GB':
-                return [
-                    new CensusOfEngland(),
-                    new CensusOfScotland(),
-                    new CensusOfWales(),
-                    new CensusOfCanada(),
-                    new CensusOfUnitedStates(),
-                    new CensusOfRhodeIsland(),
-                    new CensusOfCzechRepublic(),
-                    new CensusOfDenmark(),
-                    new CensusOfDeutschland(),
-                    new CensusOfFrance(),
-                    new CensusOfSlovakia(),
-                ];
-
-            case 'en-US':
-                return [
-                    new CensusOfUnitedStates(),
-                    new CensusOfRhodeIsland(),
-                    new CensusOfCanada(),
-                    new CensusOfCzechRepublic(),
-                    new CensusOfDenmark(),
-                    new CensusOfDeutschland(),
-                    new CensusOfEngland(),
-                    new CensusOfFrance(),
-                    new CensusOfScotland(),
-                    new CensusOfSlovakia(),
-                    new CensusOfWales(),
-                ];
-
-            case 'fr':
-                return [
-                    new CensusOfFrance(),
-                    new CensusOfCanada(),
-                    new CensusOfCzechRepublic(),
-                    new CensusOfDenmark(),
-                    new CensusOfDeutschland(),
-                    new CensusOfEngland(),
-                    new CensusOfScotland(),
-                    new CensusOfSlovakia(),
-                    new CensusOfUnitedStates(),
-                    new CensusOfRhodeIsland(),
-                    new CensusOfWales(),
-                ];
-
-            case 'fr-CA':
-                return [
-                    new CensusOfCanada(),
-                    new CensusOfFrance(),
-                    new CensusOfCzechRepublic(),
-                    new CensusOfDenmark(),
-                    new CensusOfDeutschland(),
-                    new CensusOfEngland(),
-                    new CensusOfScotland(),
-                    new CensusOfSlovakia(),
-                    new CensusOfUnitedStates(),
-                    new CensusOfRhodeIsland(),
-                    new CensusOfWales(),
-                ];
-
-            case 'sk':
-                return [
-                    new CensusOfSlovakia(),
-                    new CensusOfCzechRepublic(),
-                    new CensusOfDenmark(),
-                    new CensusOfDeutschland(),
-                    new CensusOfEngland(),
-                    new CensusOfFrance(),
-                    new CensusOfScotland(),
-                    new CensusOfUnitedStates(),
-                    new CensusOfRhodeIsland(),
-                    new CensusOfWales(),
-                    new CensusOfCanada(),
-                ];
-
-            default:
-                return [
-                    new CensusOfUnitedStates(),
-                    new CensusOfRhodeIsland(),
-                    new CensusOfEngland(),
-                    new CensusOfScotland(),
-                    new CensusOfWales(),
-                    new CensusOfDeutschland(),
-                    new CensusOfFrance(),
-                    new CensusOfCzechRepublic(),
-                    new CensusOfSlovakia(),
-                    new CensusOfDenmark(),
-                    new CensusOfCanada(),
-                ];
-        }
+        return match ($locale) {
+            'cs'    => [
+                new CensusOfCzechRepublic(),
+                new CensusOfSlovakia(),
+                new CensusOfDenmark(),
+                new CensusOfDeutschland(),
+                new CensusOfEngland(),
+                new CensusOfFrance(),
+                new CensusOfScotland(),
+                new CensusOfUnitedStates(),
+                new CensusOfRhodeIsland(),
+                new CensusOfWales(),
+                new CensusOfCanada(),
+            ],
+            'da'    => [
+                new CensusOfDenmark(),
+                new CensusOfDeutschland(),
+                new CensusOfCzechRepublic(),
+                new CensusOfEngland(),
+                new CensusOfFrance(),
+                new CensusOfScotland(),
+                new CensusOfSlovakia(),
+                new CensusOfUnitedStates(),
+                new CensusOfRhodeIsland(),
+                new CensusOfWales(),
+                new CensusOfCanada(),
+            ],
+            'de'    => [
+                new CensusOfDeutschland(),
+                new CensusOfCzechRepublic(),
+                new CensusOfDenmark(),
+                new CensusOfEngland(),
+                new CensusOfFrance(),
+                new CensusOfScotland(),
+                new CensusOfSlovakia(),
+                new CensusOfUnitedStates(),
+                new CensusOfRhodeIsland(),
+                new CensusOfWales(),
+                new CensusOfCanada(),
+            ],
+            'en-AU',
+            'en-GB' => [
+                new CensusOfEngland(),
+                new CensusOfScotland(),
+                new CensusOfWales(),
+                new CensusOfCanada(),
+                new CensusOfUnitedStates(),
+                new CensusOfRhodeIsland(),
+                new CensusOfCzechRepublic(),
+                new CensusOfDenmark(),
+                new CensusOfDeutschland(),
+                new CensusOfFrance(),
+                new CensusOfSlovakia(),
+            ],
+            'en-US' => [
+                new CensusOfUnitedStates(),
+                new CensusOfRhodeIsland(),
+                new CensusOfCanada(),
+                new CensusOfCzechRepublic(),
+                new CensusOfDenmark(),
+                new CensusOfDeutschland(),
+                new CensusOfEngland(),
+                new CensusOfFrance(),
+                new CensusOfScotland(),
+                new CensusOfSlovakia(),
+                new CensusOfWales(),
+            ],
+            'fr'    => [
+                new CensusOfFrance(),
+                new CensusOfCanada(),
+                new CensusOfCzechRepublic(),
+                new CensusOfDenmark(),
+                new CensusOfDeutschland(),
+                new CensusOfEngland(),
+                new CensusOfScotland(),
+                new CensusOfSlovakia(),
+                new CensusOfUnitedStates(),
+                new CensusOfRhodeIsland(),
+                new CensusOfWales(),
+            ],
+            'fr-CA' => [
+                new CensusOfCanada(),
+                new CensusOfFrance(),
+                new CensusOfCzechRepublic(),
+                new CensusOfDenmark(),
+                new CensusOfDeutschland(),
+                new CensusOfEngland(),
+                new CensusOfScotland(),
+                new CensusOfSlovakia(),
+                new CensusOfUnitedStates(),
+                new CensusOfRhodeIsland(),
+                new CensusOfWales(),
+            ],
+            'sk'    => [
+                new CensusOfSlovakia(),
+                new CensusOfCzechRepublic(),
+                new CensusOfDenmark(),
+                new CensusOfDeutschland(),
+                new CensusOfEngland(),
+                new CensusOfFrance(),
+                new CensusOfScotland(),
+                new CensusOfUnitedStates(),
+                new CensusOfRhodeIsland(),
+                new CensusOfWales(),
+                new CensusOfCanada(),
+            ],
+            default => [
+                new CensusOfUnitedStates(),
+                new CensusOfRhodeIsland(),
+                new CensusOfEngland(),
+                new CensusOfScotland(),
+                new CensusOfWales(),
+                new CensusOfDeutschland(),
+                new CensusOfFrance(),
+                new CensusOfCzechRepublic(),
+                new CensusOfSlovakia(),
+                new CensusOfDenmark(),
+                new CensusOfCanada(),
+            ],
+        };
     }
 }

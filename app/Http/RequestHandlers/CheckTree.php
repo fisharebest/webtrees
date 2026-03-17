@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -69,15 +69,14 @@ use function str_starts_with;
 use function strtoupper;
 use function substr_count;
 
-/**
- * Check a tree for errors.
- */
-class CheckTree implements RequestHandlerInterface
+final class CheckTree implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    public function __construct(private readonly Gedcom $gedcom, private readonly TimeoutService $timeout_service)
-    {
+    public function __construct(
+        private readonly Gedcom $gedcom,
+        private readonly TimeoutService $timeout_service,
+    ) {
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface

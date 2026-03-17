@@ -63,11 +63,11 @@ use Illuminate\Support\Collection;
 
 <div class="row my-4">
     <?php foreach ($individuals as $n => $individual) : ?>
-        <div class="col-md-6 col-lg-4 col-xl-3 person<?= $n % 6 ?>">
+        <div class="col-md-6 col-lg-4 col-xl-3 person<?= $n % 8 ?>">
             <?= view('icons/sex', ['sex' => $individual->sex()]) ?>
             <a href="<?= e($individual->url()) ?>">
                 <?= $individual->fullName() ?>
-                <?php if ($individual->alternateName() !== '') : ?>
+                <?php if ($individual->alternateName() !== null) : ?>
                     <br>
                     <?= $individual->alternateName() ?>
                 <?php endif ?>
@@ -87,4 +87,6 @@ use Illuminate\Support\Collection;
     <?php endforeach ?>
 </div>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-timeline-chart" data-wt-ajax-url="<?= e($ajax_url) ?>"></div>
+<div class="wt-page-content wt-chart wt-timeline-chart" data-wt-ajax-url="<?= e($ajax_url) ?>">
+    <?= view('icons/spinner') ?>
+</div>

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -101,12 +101,9 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
             ]);
 
         if ($facts->isNotEmpty()) {
-            $url = route(static::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()]);
-
             return view('modules/share-anniversary/share', [
                 'facts'  => $facts,
                 'record' => $record,
-                'url'    => $url,
             ]);
         }
 

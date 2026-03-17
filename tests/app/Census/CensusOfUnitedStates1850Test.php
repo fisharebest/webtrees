@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -46,7 +46,7 @@ class CensusOfUnitedStates1850Test extends TestCase
         self::assertInstanceOf(CensusColumnNull::class, $columns[3]);
         self::assertInstanceOf(CensusColumnOccupation::class, $columns[4]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[5]);
-        self::assertInstanceOf(CensusColumnBirthPlace::class, $columns[6]);
+        self::assertInstanceOf(CensusColumnBirthPlaceSimple::class, $columns[6]);
         self::assertInstanceOf(CensusColumnMarriedWithinYear::class, $columns[7]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[8]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[9]);

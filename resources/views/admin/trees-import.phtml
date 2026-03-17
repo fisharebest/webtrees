@@ -31,7 +31,7 @@ use Illuminate\Support\Collection;
 </div>
 
 <form method="post" action="<?= e(route(ImportGedcomAction::class, ['tree' => $tree->name()])) ?>" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= e(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
-    <input type="hidden" id="gedcom_filename" value="<?= e($default_gedcom_file) ?>">
+    <input type="hidden" id="gedcom_file" value="<?= e($default_gedcom_file) ?>">
 
     <h2><?= I18N::translate('Select a GEDCOM file to import') ?></h2>
 
@@ -143,7 +143,7 @@ use Illuminate\Support\Collection;
 <?php View::push('javascript') ?>
 <script>
   function checkGedcomImportForm (message) {
-    let oldFile = $('#gedcom_filename').val();
+    let oldFile = $('#gedcom_file').val();
     let method = $('input[name=source]:checked').val();
     let newFile = method === 'server' ? $('#import-server-file').val() : $('#import-client-file').val();
 

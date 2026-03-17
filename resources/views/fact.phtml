@@ -15,6 +15,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
+use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\RelationshipService;
@@ -68,6 +69,10 @@ if ($id === 'histo') {
 if ($tag === 'MARR') {
     $label = $fact->label();
     $type  = '';
+}
+
+if ($fact->target() instanceof Note) {
+    $label = '<a href="' . e($fact->target()->url()) . '">' . $label . '</a>';
 }
 
 ?>

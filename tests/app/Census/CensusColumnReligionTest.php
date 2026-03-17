@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,7 +38,7 @@ class CensusColumnReligionTest extends TestCase
             ->with(self::withConsecutive([['RELI'], []]))
             ->willReturnOnConsecutiveCalls(new Collection(), new Collection());
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnReligion($census, '', '');
 
@@ -47,12 +47,12 @@ class CensusColumnReligionTest extends TestCase
 
     public function testRecordReligion(): void
     {
-        $individual = $this->createStub(Individual::class);
-        $fact       = $this->createStub(Fact::class);
+        $individual = self::createStub(Individual::class);
+        $fact       = self::createStub(Fact::class);
         $fact->method('value')->willReturn('Jedi');
         $individual->method('facts')->with(['RELI'])->willReturn(new Collection([$fact]));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnReligion($census, '', '');
 
@@ -62,7 +62,7 @@ class CensusColumnReligionTest extends TestCase
     public function testEventReligion(): void
     {
         $individual = $this->createMock(Individual::class);
-        $fact       = $this->createStub(Fact::class);
+        $fact       = self::createStub(Fact::class);
         $fact->method('attribute')->with('RELI')->willReturn('Jedi');
         $individual
             ->expects($this->exactly(2))
@@ -73,7 +73,7 @@ class CensusColumnReligionTest extends TestCase
                 new Collection([$fact])
             );
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
 
         $column = new CensusColumnReligion($census, '', '');
 

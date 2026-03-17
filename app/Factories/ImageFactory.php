@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -54,9 +54,6 @@ use function view;
 
 use const PATHINFO_EXTENSION;
 
-/**
- * Make an image (from another image).
- */
 class ImageFactory implements ImageFactoryInterface
 {
     // Imagick can detect the quality setting for images.  GD cannot.
@@ -80,9 +77,6 @@ class ImageFactory implements ImageFactoryInterface
     {
     }
 
-    /**
-     * Send the original file - either inline or as a download.
-     */
     public function fileResponse(FilesystemOperator $filesystem, string $path, bool $download): ResponseInterface
     {
         try {
@@ -101,9 +95,6 @@ class ImageFactory implements ImageFactoryInterface
         }
     }
 
-    /**
-     * Send a thumbnail.
-     */
     public function thumbnailResponse(
         FilesystemOperator $filesystem,
         string $path,
@@ -134,9 +125,6 @@ class ImageFactory implements ImageFactoryInterface
         }
     }
 
-    /**
-     * Create a full-size version of an image.
-     */
     public function mediaFileResponse(MediaFile $media_file, bool $add_watermark, bool $download): ResponseInterface
     {
         $filesystem = $media_file->media()->tree()->mediaFilesystem();
@@ -168,9 +156,46 @@ class ImageFactory implements ImageFactoryInterface
         }
     }
 
-    /**
-     * Create a smaller version of an image.
-     */
+    public function mediaFileThumbnail(
+        MediaFile $media_file,
+        int $width,
+        int $height,
+        string $fit,
+        bool $add_watermark
+    ): string {
+        // Where are the images stored.
+        $filesystem = $media_file->media()->tree()->mediaFilesystem();
+
+        // Where is the image stored in the filesystem.
+        $path = $media_file->filename();
+
+        $key = implode(separator: ':', array: [
+            $media_file->media()->tree()->name(),
+            $path,
+            $filesystem->lastModified(path: $path),
+            (string) $width,
+            (string) $height,
+            $fit,
+            (string) $add_watermark,
+        ]);
+
+        $closure = function () use ($filesystem, $path, $width, $height, $fit, $add_watermark, $media_file): string {
+            $image = $this->imageManager()->read(input: $filesystem->readStream($path));
+            $image = $this->resizeImage(image: $image, width: $width, height: $height, fit: $fit);
+
+            if ($add_watermark) {
+                $watermark = $this->createWatermark(width: $image->width(), height: $image->height(), media_file: $media_file);
+                $image     = $this->addWatermark(image: $image, watermark: $watermark);
+            }
+
+            $quality = $this->extractImageQuality(image: $image, default:  static::GD_DEFAULT_THUMBNAIL_QUALITY);
+
+            return $image->encodeByMediaType(type: $media_file->mimeType(), quality: $quality)->toString();
+        };
+
+        return Registry::cache()->file()->remember(key: $key, closure: $closure, ttl: static::THUMBNAIL_CACHE_TTL);
+    }
+
     public function mediaFileThumbnailResponse(
         MediaFile $media_file,
         int $width,
@@ -187,33 +212,7 @@ class ImageFactory implements ImageFactoryInterface
         try {
             $mime_type = $filesystem->mimeType(path: $path);
 
-            $key = implode(separator: ':', array: [
-                $media_file->media()->tree()->name(),
-                $path,
-                $filesystem->lastModified(path: $path),
-                (string) $width,
-                (string) $height,
-                $fit,
-                (string) $add_watermark,
-            ]);
-
-            $closure = function () use ($filesystem, $path, $width, $height, $fit, $add_watermark, $media_file): string {
-                $image = $this->imageManager()->read(input: $filesystem->readStream($path));
-                $image = $this->resizeImage(image: $image, width: $width, height: $height, fit: $fit);
-
-                if ($add_watermark) {
-                    $watermark = $this->createWatermark(width: $image->width(), height: $image->height(), media_file: $media_file);
-                    $image     = $this->addWatermark(image: $image, watermark: $watermark);
-                }
-
-                $quality = $this->extractImageQuality(image: $image, default:  static::GD_DEFAULT_THUMBNAIL_QUALITY);
-
-                return $image->encodeByMediaType(type: $media_file->mimeType(), quality: $quality)->toString();
-            };
-
-            // Images and Responses both contain resources - which cannot be serialized.
-            // So cache the raw image data.
-            $data = Registry::cache()->file()->remember(key: $key, closure: $closure, ttl: static::THUMBNAIL_CACHE_TTL);
+            $data = $this->mediaFileThumbnail($media_file, $width, $height, $fit, $add_watermark);
 
             return $this->imageResponse(data: $data, mime_type:  $mime_type, filename:  '');
         } catch (NotReadableException $ex) {
@@ -231,9 +230,6 @@ class ImageFactory implements ImageFactoryInterface
         }
     }
 
-    /**
-     * Does a full-sized image need a watermark?
-     */
     public function fileNeedsWatermark(MediaFile $media_file, UserInterface $user): bool
     {
         $tree = $media_file->media()->tree();
@@ -241,17 +237,11 @@ class ImageFactory implements ImageFactoryInterface
         return Auth::accessLevel(tree: $tree, user: $user) > (int) $tree->getPreference(setting_name: 'SHOW_NO_WATERMARK');
     }
 
-    /**
-     * Does a thumbnail image need a watermark?
-     */
     public function thumbnailNeedsWatermark(MediaFile $media_file, UserInterface $user): bool
     {
         return $this->fileNeedsWatermark(media_file: $media_file, user:  $user);
     }
 
-    /**
-     * Create a watermark image, perhaps specific to a media-file.
-     */
     public function createWatermark(int $width, int $height, MediaFile $media_file): ImageInterface
     {
         return $this->imageManager()
@@ -259,17 +249,11 @@ class ImageFactory implements ImageFactoryInterface
             ->scale(width: $width, height: $height);
     }
 
-    /**
-     * Add a watermark to an image.
-     */
     public function addWatermark(ImageInterface $image, ImageInterface $watermark): ImageInterface
     {
         return $image->place(element: $watermark, position: 'center');
     }
 
-    /**
-     * Send a replacement image, to replace one that could not be found or created.
-     */
     public function replacementImageResponse(string $text): ResponseInterface
     {
         // We can't create a PNG/BMP/JPEG image, as the GD/IMAGICK libraries may be missing.
@@ -281,9 +265,6 @@ class ImageFactory implements ImageFactoryInterface
         ]);
     }
 
-    /**
-     * Create a response from image data.
-     */
     protected function imageResponse(string $data, string $mime_type, string $filename): ResponseInterface
     {
         if ($mime_type === 'image/svg+xml' && str_contains(haystack: $data, needle: '<script')) {
@@ -304,9 +285,6 @@ class ImageFactory implements ImageFactoryInterface
             ->withHeader('content-disposition', 'attachment; filename="' . addcslashes(string: basename(path: $filename), characters: '"'));
     }
 
-    /**
-     * Choose an image library, based on what is installed.
-     */
     protected function imageManager(): ImageManager
     {
         if ($this->php_service->extensionLoaded(extension: 'imagick')) {
@@ -320,9 +298,6 @@ class ImageFactory implements ImageFactoryInterface
         throw new RuntimeException(message: 'No PHP graphics library is installed.  Need Imagick or GD');
     }
 
-    /**
-     * Resize an image.
-     */
     protected function resizeImage(ImageInterface $image, int $width, int $height, string $fit): ImageInterface
     {
         return match ($fit) {
@@ -332,9 +307,6 @@ class ImageFactory implements ImageFactoryInterface
         };
     }
 
-    /**
-     * Extract the quality/compression parameter from an image.
-     */
     protected function extractImageQuality(ImageInterface $image, int $default): int
     {
         $native = $image->core()->native();

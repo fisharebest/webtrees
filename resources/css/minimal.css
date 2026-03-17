@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -17,20 +17,20 @@
 @import "_base.css";
 
 :root {
-    --chart-line-radius: 1rem;
-    --chart-line: solid gray thin;
-    --link-color-hover: #0a58ca;
-    --link-color: #0d6efd;
-    --link-decoration-hover: underline;
-    --link-decoration: underline;
-    --sex-f-bg: #ffffff;
-    --sex-f-fg: #888888;
-    --sex-m-bg: #ffffff;
-    --sex-m-fg: #888888;
-    --sex-u-bg: #ffffff;
-    --sex-u-fg: #888888;
-    --sex-x-bg: #ffffff;
-    --sex-x-fg: #888888;
+    --chart-line-radius: var(--bs-border-radius-xl);
+    --chart-line: solid var(--bs-secondary-color) var(--bs-border-width);
+    --link-color-hover: var(--bs-link-hover-color);
+    --link-color: var(--bs-link-color);
+    --link-decoration-hover: var(--bs-link-decoration);
+    --link-decoration: none;
+    --sex-f-bg: var(--bs-body-bg);
+    --sex-f-fg: var(--bs-pink);
+    --sex-m-bg: var(--bs-body-bg);
+    --sex-m-fg: var(--bs-blue);
+    --sex-u-bg: var(--bs-body-bg);
+    --sex-u-fg: var(--bs-gray);
+    --sex-x-bg: var(--bs-body-bg);
+    --sex-x-fg: var(--bs-gray);
 }
 
 /* Override Bootstrap formatting */
@@ -81,13 +81,8 @@ table {
  *     +---wt-footer wt-footer-xxxxx
  */
 
-::backdrop, .wt-global {
-    /* Avoid extremes of black and white.  It is better for users with dyslexia. */
-    color: #0a0a0a;
-    background-color: #f9f9f9;
-}
-
 .wt-header-wrapper {
+    background: var(--bs-primary-bg-subtle);
 }
 
 .wt-header-container {
@@ -109,6 +104,7 @@ table {
     flex: 1 1 auto;
     width: auto;
     font-size: 1.75rem;
+    color: var(--bs-primary-text-emphasis);
 }
 
 .wt-header-search {
@@ -148,7 +144,6 @@ table {
     /* Recalculate margins for content */
     margin: 0 calc(50% - 50vw);
     padding: 0 calc(50vw - 50%);
-    border-bottom: 2px solid #aaa;
 }
 
 .wt-genealogy-menu {
@@ -188,12 +183,6 @@ table {
 .wt-footer-contact {
 }
 
-.wt-footer-cookies {
-    background: #aaa;
-    color: #fff;
-    transition: height 0.5s;
-}
-
 .wt-footer-page-views {
 }
 
@@ -223,11 +212,9 @@ table {
  */
 
 .wt-block {
-    border: solid #000 1px;
 }
 
 .wt-block-header {
-    background-color: #fff;
 }
 
 .wt-block-content {
@@ -235,15 +222,16 @@ table {
 
 .wt-block-content .list_table {
     border-spacing: 1px;
-    border: solid #000 1px;
+    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
     border-right: 0;
 }
 
 .wt-block-content .list_value,
 .wt-block-content .list_value_wrap {
     border: 0;
-    border-top: solid #000 1px;
-    border-right: solid #000 1px;
+    border-top: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
+    border-right: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
+    border-radius: var(--bs-border-radius);
 }
 
 /*
@@ -283,35 +271,32 @@ table {
  * +--- wt-chart-box-facts
  *     +--- wt-chart-box-fact
  */
+
 .wt-chart-box {
     height: 5rem;
     padding: 2px;
     line-height: 1.1;
-    border: solid gray thin;
+    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
 }
 
-.wt-chart-box-f,
-.wt-chart-box-f .wt-chart-box-dropdown {
+.wt-chart-box-f {
     background: var(--sex-f-bg);
-    border: solid var(--sex-f-fg) thin;
+    border: var(--bs-border-style) var(--sex-f-fg) var(--bs-border-width);
 }
 
-.wt-chart-box-m,
-.wt-chart-box-m .wt-chart-box-dropdown {
+.wt-chart-box-m {
     background: var(--sex-m-bg);
-    border: solid var(--sex-m-fg) thin;
+    border: var(--bs-border-style) var(--sex-m-fg) var(--bs-border-width);
 }
 
-.wt-chart-box-u,
-.wt-chart-box-u .wt-chart-box-dropdown {
+.wt-chart-box-u {
     background: var(--sex-u-bg);
-    border: solid var(--sex-u-fg) thin;
+    border: var(--bs-border-style) var(--sex-u-fg) var(--bs-border-width);
 }
 
-.wt-chart-box-x,
-.wt-chart-box-x .wt-chart-box-dropdown {
+.wt-chart-box-x {
     background: var(--sex-x-bg);
-    border: solid var(--sex-x-fg) thin;
+    border: var(--bs-border-style) var(--sex-x-fg) var(--bs-border-width);
 }
 
 /* ---Pending edits--- */
@@ -325,7 +310,9 @@ table {
 
 .list_value,
 .list_value_wrap {
-    border: solid #000 1px;
+    background: var(--bs-body-bg);
+    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
+    border-radius: var(--bs-border-radius);
     vertical-align: top;
     padding: 4px;
 }
@@ -352,39 +339,6 @@ table {
     text-align: center;
 }
 
-/* ======== Block styles ===== */
-.block {
-    background-color: #fff;
-    color: #555;
-    border: solid #ccc 1px;
-    padding: 3px;
-    vertical-align: top;
-}
-
-.blockcontent {
-    margin: 5px;
-    overflow: auto;
-}
-
-.blockcontent .list_table {
-    border-spacing: 0;
-    border: solid #555 1px;
-    border-right: 0;
-}
-
-.blockcontent .list_value,
-.blockcontent .list_value_wrap {
-    border: 0;
-    border-top: solid #555 1px;
-    border-right: solid #555 1px;
-}
-
-.blockheader {
-    font-weight: bold;
-}
-
-/* end Block styles */
-
 .user_welcome_block table,
 .gedcom_block_block table {
     margin: auto;
@@ -410,7 +364,6 @@ table {
 }
 
 .wt-facts-table th {
-    border: 1px solid #000;
     font-weight: normal;
 }
 
@@ -419,7 +372,6 @@ table {
 }
 
 .wt-facts-table td {
-    border: solid #000 1px;
 }
 
 .parentdeath {
@@ -428,17 +380,11 @@ table {
 
 /* ==== FAQ table styles ===== */
 table.faq {
-    background-color: #ddd;
     margin: 5px 0 50px 5px;
     width: 98%;
 }
 
-table.faq tr:nth-child(odd) td {
-    background-color: #fff;
-}
-
 div.faq_title {
-    background-color: #ddd;
     margin: 1em 0;
     padding: .25em;
     font-weight: bold;
@@ -485,10 +431,12 @@ div.faq_body {
 }
 
 .odometer {
-    font-family: courier, monospace;
-    font-weight: bold;
-    background: #000;
-    color: #fff;
+    font-family: var(--bs-font-monospace);
+    font-weight: var(--bs-font-weight-bold);
+    color: var(--bs-emphasis-color);
+    background-color: var(--bs-secondary-bg);
+    padding: 0.1rem 0.25rem;
+    border-radius: var(--bs-border-radius-sm);
 }
 
 .upcoming_events_block button,
@@ -560,7 +508,9 @@ div.faq_body {
 
 /*-- Fan chart ---- */
 .fan_chart_menu {
-    background: #fff;
+    background: var(--bs-body-bg);
+    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
+    border-radius: var(--bs-border-radius);
     position: absolute;
     display: none;
     z-index: 100;
@@ -591,16 +541,14 @@ div.faq_body {
 }
 
 .wt-lifespans-individuals {
-    background: #fafafa;
 }
 
 .wt-lifespans-individual {
-
 }
 
 .wt-lifespans-summary {
-    background: #ffffff;
-    border: thin solid #000;
+    background: var(--bs-secondary-bg);
+    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
     z-index: 1;
 }
 
@@ -614,7 +562,7 @@ div.faq_body {
 }
 
 .optionbox, .descriptionbox {
-    border: solid #000 1px;
+    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
     vertical-align: top;
     padding: 3px;
 }
@@ -635,47 +583,8 @@ div.faq_body {
 }
 
 .person0, .person1, .person2, .person3, .person4, .person5 {
-    border:outset #555 1px;
-    vertical-align:top;
-}
-.person0{
-    background-color:#eee;
-}
-
-.person1{
-    background-color:#bfbfbf;
-}
-
-.person2{
-    background-color:#999;
-}
-
-.person3{
-    background-color:#dfdfdf;
-}
-
-.person4{
-    background-color:#eee;
-}
-
-.person5{
-    background-color:#fefefe;
-}
-
-/*-- timeline  --*/
-#timeline_chart {
-    position: relative;
-    top: 0;
-    left: 0;
-}
-
-/*
- * Any element that is loaded dynamically has the class wt-ajax-load.
- * We can provide a "loading" placeholder for empty elements with this class.
- */
-.wt-ajax-load:empty {
-    height: 32px;
-    background: url(images/loading-32x32.gif) no-repeat 50% 50%;
+    border: outset var(--bs-border-color) var(--bs-border-width);
+    vertical-align: top;
 }
 
 /*
@@ -759,7 +668,11 @@ div.faq_body {
 
 .wt-calendar-month .wt-page-options-label,
 .wt-calendar-month .wt-page-options-value {
-    border: solid grey thin;
+    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
+    padding: 0.2rem;
+}
+
+.wt-page-options-value {
     padding: 0.2rem;
 }
 

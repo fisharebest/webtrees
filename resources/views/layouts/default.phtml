@@ -28,6 +28,8 @@ use Psr\Http\Message\ServerRequestInterface;
  * @var Tree|null              $tree
  */
 
+$theme = Registry::container()->get(ModuleThemeInterface::class);
+
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +60,7 @@ use Psr\Http\Message\ServerRequestInterface;
         <link rel="manifest" href="<?= e(route(WebmanifestJson::class)) ?>" crossorigin="use-credentials">
 
         <link rel="stylesheet" href="<?= e(asset('css/vendor.min.css')) ?>">
-        <?php foreach (Registry::container()->get(ModuleThemeInterface::class)->stylesheets() as $stylesheet) : ?>
+        <?php foreach ($theme->stylesheets() as $stylesheet) : ?>
             <link rel="stylesheet" href="<?= e($stylesheet) ?>">
         <?php endforeach ?>
 
@@ -67,7 +69,7 @@ use Psr\Http\Message\ServerRequestInterface;
         <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->headContent())->implode('') ?>
     </head>
 
-    <body class="wt-global wt-theme-<?= e(Registry::container()->get(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name, ['\\' => '/']))) ?>">
+    <body class="wt-global wt-theme-<?= e($theme->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name, ['\\' => '/']))) ?>" <?= $theme->supportsDarkTheme() ? 'data-bs-theme="light"' : '' ?>>
         <header class="wt-header-wrapper d-print-none">
             <div class="container-lg wt-header-container">
                 <div class="row wt-header-content">
@@ -84,9 +86,9 @@ use Psr\Http\Message\ServerRequestInterface;
 
                         <div class="col wt-header-search">
                             <form method="post" action="<?= e(route(SearchQuickAction::class, ['tree' => $tree->name()])) ?>" class="wt-header-search-form" role="search">
-                                <div class="input-group">
-                                    <label class="visually-hidden" for="quick-search"><?= I18N::translate('Search') ?></label>
+                                <label class="visually-hidden" for="quick-search"><?= I18N::translate('Search') ?></label>
 
+                                <div class="input-group">
                                     <input type="search" class="form-control wt-header-search-field" id="quick-search" name="query" size="15" placeholder="<?= I18N::translate('Search') ?>">
 
                                     <button type="submit" class="btn btn-primary wt-header-search-button" aria-label="<?= I18N::translate('Search') ?>">
@@ -101,7 +103,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
                     <div class="col wt-secondary-navigation">
                         <ul class="nav wt-user-menu">
-                            <?php foreach (Registry::container()->get(ModuleThemeInterface::class)->userMenu($tree) as $menu) : ?>
+                            <?php foreach ($theme->userMenu($tree) as $menu) : ?>
                                 <?= view('components/menu-item', ['menu' => $menu]) ?>
                             <?php endforeach ?>
                         </ul>
@@ -110,7 +112,7 @@ use Psr\Http\Message\ServerRequestInterface;
                     <?php if ($tree !== null) : ?>
                         <nav class="col wt-primary-navigation">
                             <ul class="nav wt-genealogy-menu">
-                                <?php foreach (Registry::container()->get(ModuleThemeInterface::class)->genealogyMenu($tree) as $menu) : ?>
+                                <?php foreach ($theme->genealogyMenu($tree) as $menu) : ?>
                                     <?= view('components/menu-item', ['menu' => $menu]) ?>
                                 <?php endforeach ?>
                             </ul>

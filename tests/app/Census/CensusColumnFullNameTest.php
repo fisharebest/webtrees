@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,11 +33,11 @@ class CensusColumnFullNameTest extends TestCase
 {
     public function xxxtestFullName(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getAllNames')->willReturn([['full' => 'Joe Bloggs']]);
         $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('');
 
         $column = new CensusColumnFullName($census, '', '');
@@ -58,22 +58,22 @@ class CensusColumnFullNameTest extends TestCase
 
         $marriage_date = new Date('02 DATE 2019');
 
-        $marriage = $this->createStub(Fact::class);
+        $marriage = self::createStub(Fact::class);
         $marriage->method('date')->willReturn($marriage_date);
 
-        $spouse = $this->createStub(Individual::class);
+        $spouse = self::createStub(Individual::class);
         $spouse->method('getAllNames')->willReturn($husband_names);
 
-        $family = $this->createStub(Family::class);
+        $family = self::createStub(Family::class);
         $family->method('facts')->willReturn(new Collection([$marriage]));
         $family->method('getMarriageDate')->willReturn($marriage_date);
         $family->method('spouse')->willReturn($spouse);
 
-        $individual = $this->createStub(Individual::class);
+        $individual = self::createStub(Individual::class);
         $individual->method('getAllNames')->willReturn($wife_names);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = $this->createStub(CensusInterface::class);
+        $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JAN 2020');
 
         $column = new CensusColumnFullName($census, '', '');

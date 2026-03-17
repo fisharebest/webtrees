@@ -51,6 +51,7 @@ $count_families = DB::table('families')
 ?>
 
 <table
+    id="wt-datatables-submitters"
     class="table table-bordered table-sm wt-table-submitter datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([

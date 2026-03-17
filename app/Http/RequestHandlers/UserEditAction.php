@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,10 +37,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function redirect;
 use function route;
 
-/**
- * Edit a user.
- */
-class UserEditAction implements RequestHandlerInterface
+final class UserEditAction implements RequestHandlerInterface
 {
     private EmailService $email_service;
 
@@ -63,11 +60,6 @@ class UserEditAction implements RequestHandlerInterface
         $this->user_service  = $user_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $user           = Validator::attributes($request)->user();

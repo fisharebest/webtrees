@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,12 +37,12 @@ class HandleExceptionsTest extends TestCase
 
     public function testMiddleware(): void
     {
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = self::createStub(TreeService::class);
 
-        $handler = $this->createStub(RequestHandlerInterface::class);
+        $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willThrowException(new HttpServerErrorException('eek'));
 
-        $module_service = $this->createStub(ModuleService::class);
+        $module_service = self::createStub(ModuleService::class);
         $module_service->method('findByInterface')->willReturn(new Collection());
         $module_service->method('findByComponent')->willReturn(new Collection());
         Registry::container()->set(ModuleService::class, $module_service);
