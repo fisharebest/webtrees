@@ -954,14 +954,14 @@
   };
 
   webtrees.setColorTheme = function (mode) {
-    if (document.body.dataset.bsTheme === undefined) {
+    if (document.documentElement.dataset.bsTheme === undefined) {
       return;
     }
 
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.body.dataset.bsTheme = 'dark';
+      document.documentElement.dataset.bsTheme = 'dark';
     } else {
-      document.body.dataset.bsTheme = 'light';
+      document.documentElement.dataset.bsTheme = 'light';
     }
   };
 
