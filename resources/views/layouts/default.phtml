@@ -33,7 +33,7 @@ $theme = Registry::container()->get(ModuleThemeInterface::class);
 ?>
 
 <!DOCTYPE html>
-<html dir="<?= I18N::locale()->direction() ?>" lang="<?= I18N::locale()->languageTag() ?>">
+<html dir="<?= I18N::locale()->direction() ?>" lang="<?= I18N::locale()->languageTag() ?>" <?= $theme->supportsDarkTheme() ? 'data-bs-theme="light"' : '' ?>>
     <head>
         <meta charset="UTF-8">
         <meta name="csrf" content="<?= e(csrf_token()) ?>">
@@ -69,7 +69,7 @@ $theme = Registry::container()->get(ModuleThemeInterface::class);
         <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->headContent())->implode('') ?>
     </head>
 
-    <body class="wt-global wt-theme-<?= e($theme->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name, ['\\' => '/']))) ?>" <?= $theme->supportsDarkTheme() ? 'data-bs-theme="light"' : '' ?>>
+    <body class="wt-global wt-theme-<?= e($theme->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name, ['\\' => '/']))) ?>">
         <header class="wt-header-wrapper d-print-none">
             <div class="container-lg wt-header-container">
                 <div class="row wt-header-content">
