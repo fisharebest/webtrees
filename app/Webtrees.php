@@ -256,7 +256,7 @@ class Webtrees
     {
         $console = new Console();
 
-        return $console->loadCommands()->bootstrap()->run();
+        return $console->bootstrap()->run();
     }
 
     /**
