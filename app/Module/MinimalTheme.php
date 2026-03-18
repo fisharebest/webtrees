@@ -46,8 +46,8 @@ class MinimalTheme extends AbstractModule implements ModuleThemeInterface
         ];
     }
 
-    public function supportsDarkTheme(): bool
+    public function bootstrapColorScheme(): string
     {
-        return true;
+        return 'auto';
     }
 }

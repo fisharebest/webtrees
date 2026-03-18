@@ -513,8 +513,8 @@ trait ModuleThemeTrait
         return [];
     }
 
-    public function supportsDarkTheme(): bool
+    public function bootstrapColorScheme(): string
     {
-        return false;
+        return 'light';
     }
 }

@@ -69,5 +69,5 @@ interface ModuleThemeInterface extends ModuleInterface
      */
     public function stylesheets(): array;
 
-    public function supportsDarkTheme(): bool;
+    public function bootstrapColorScheme(): string;
 }

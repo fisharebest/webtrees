@@ -33,7 +33,7 @@ $theme = Registry::container()->get(ModuleThemeInterface::class);
 ?>
 
 <!DOCTYPE html>
-<html dir="<?= I18N::locale()->direction() ?>" lang="<?= I18N::locale()->languageTag() ?>" <?= $theme->supportsDarkTheme() ? 'data-bs-theme="light"' : '' ?>>
+<html dir="<?= I18N::locale()->direction() ?>" lang="<?= I18N::locale()->languageTag() ?>" data-bs-theme="<?= $theme->bootstrapColorScheme() ?>">
     <head>
         <meta charset="UTF-8">
         <meta name="csrf" content="<?= e(csrf_token()) ?>">
