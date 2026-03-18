@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2026-03-18 00:04+0000\n"
+"PO-Revision-Date: 2026-03-18 00:18+0000\n"
 "Last-Translator: Reveritus <t102b@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/ru/>\n"
@@ -11091,13 +11091,13 @@ msgstr "Восходящее Дерево"
 #. I18N: Name of a module
 #: app/Module/PedigreeMapModule.php:123
 msgid "Pedigree map"
-msgstr "Карта родословной"
+msgstr "Родословная на карте"
 
 #. I18N: %s is an individual’s name
 #: app/Module/PedigreeMapModule.php:169 app/Module/PedigreeMapModule.php:233
 #, php-format
 msgid "Pedigree map of %s"
-msgstr "Карта родословной для %s"
+msgstr "Родословная на карте для %s"
 
 #. I18N: %s is an individual’s name
 #: app/Module/PedigreeChartModule.php:164
