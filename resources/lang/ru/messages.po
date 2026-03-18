@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2026-03-17 18:45+0000\n"
+"PO-Revision-Date: 2026-03-18 03:11+0000\n"
 "Last-Translator: Reveritus <t102b@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ru/>\n"
@@ -158,7 +158,7 @@ msgstr "%1$s–%2$s"
 #: app/Services/RelationshipService.php:2204
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr "%1$s бывший/бывшая %2$s"
+msgstr "%1$s неполнородн(ый/ая) %2$s"
 
 #. I18N: This is the format string for the time-of-day. See https://php.net/date for codes
 #: app/I18N.php:603
@@ -11096,13 +11096,13 @@ msgstr "Восходящее Дерево"
 #. I18N: Name of a module
 #: app/Module/PedigreeMapModule.php:109
 msgid "Pedigree map"
-msgstr "Карта родословной"
+msgstr "Родословная на карте"
 
 #. I18N: %s is an individual’s name
 #: app/Module/PedigreeMapModule.php:155 app/Module/PedigreeMapModule.php:208
 #, php-format
 msgid "Pedigree map of %s"
-msgstr "Карта родословной для %s"
+msgstr "Родословная на карте для %s"
 
 #. I18N: %s is an individual’s name
 #: app/Module/PedigreeChartModule.php:148
