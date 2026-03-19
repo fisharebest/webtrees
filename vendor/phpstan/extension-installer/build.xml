@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="PHPStan Extension Installer" default="check">
+
+	<target name="check" depends="
+		composer,
+		lint,
+		cs,
+		phpstan
+	"/>
+
+	<target name="composer">
+		<exec
+				executable="composer"
+				logoutput="true"
+				passthru="true"
+				checkreturn="true"
+		>
+			<arg value="install"/>
+		</exec>
+	</target>
+
+	<target name="lint">
+		<exec
+				executable="vendor/bin/parallel-lint"
+				logoutput="true"
+				passthru="true"
+				checkreturn="true"
+		>
+			<arg path="src" />
+		</exec>
+	</target>
+
+	<target name="cs">
+		<exec
+				executable="composer"
+				logoutput="true"
+				passthru="true"
+				checkreturn="true"
+		>
+			<arg value="install"/>
+			<arg value="--working-dir"/>
+			<arg path="build-cs"/>
+			<arg value="--ansi"/>
+		</exec>
+		<exec
+				executable="build-cs/vendor/bin/phpcs"
+				logoutput="true"
+				passthru="true"
+				checkreturn="true"
+		>
+			<arg value="--extensions=php"/>
+			<arg value="--encoding=utf-8"/>
+			<arg value="--tab-width=4"/>
+			<arg value="-sp"/>
+			<arg path="src"/>
+		</exec>
+	</target>
+
+	<target name="cs-fix">
+		<exec
+				executable="build-cs/vendor/bin/phpcbf"
+				logoutput="true"
+				passthru="true"
+				checkreturn="true"
+		>
+			<arg value="--extensions=php"/>
+			<arg value="--encoding=utf-8"/>
+			<arg value="--tab-width=4"/>
+			<arg value="-sp"/>
+			<arg path="src"/>
+		</exec>
+	</target>
+
+	<target name="phpstan">
+		<exec
+				executable="vendor/bin/phpstan"
+				logoutput="true"
+				passthru="true"
+				checkreturn="true"
+		>
+			<arg value="analyse"/>
+			<arg value="-l"/>
+			<arg value="7"/>
+			<arg value="-c"/>
+			<arg path="phpstan.neon"/>
+			<arg path="src"/>
+		</exec>
+	</target>
+
+</project>

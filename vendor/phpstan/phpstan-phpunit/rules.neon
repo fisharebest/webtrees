@@ -1,0 +1,6 @@
+rules:
+	- PHPStan\Rules\PHPUnit\AssertSameBooleanExpectedRule
+	- PHPStan\Rules\PHPUnit\AssertSameNullExpectedRule
+	- PHPStan\Rules\PHPUnit\AssertSameWithCountRule
+	- PHPStan\Rules\PHPUnit\MockMethodCallRule
+	- PHPStan\Rules\PHPUnit\ShouldCallParentMethodsRule

@@ -1,0 +1,45 @@
+{
+	"name": "phpstan/phpstan-deprecation-rules",
+	"type": "phpstan-extension",
+	"description": "PHPStan rules for detecting usage of deprecated classes, methods, properties, constants and traits.",
+	"license": [
+		"MIT"
+	],
+	"require": {
+		"php": "^7.1 || ^8.0",
+		"phpstan/phpstan": "^1.0"
+	},
+	"require-dev": {
+		"php-parallel-lint/php-parallel-lint": "^1.2",
+		"phpstan/phpstan-phpunit": "^1.0",
+		"phpunit/phpunit": "^9.5"
+	},
+	"config": {
+		"platform": {
+			"php": "7.4.6"
+		},
+		"sort-packages": true
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.0-dev"
+		},
+		"phpstan": {
+			"includes": [
+				"rules.neon"
+			]
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"PHPStan\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"classmap": [
+			"tests/"
+		]
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}

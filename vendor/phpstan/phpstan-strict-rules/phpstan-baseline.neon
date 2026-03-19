@@ -1,0 +1,540 @@
+
+
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInBooleanNotRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/BooleansInConditions/BooleanInBooleanNotRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\BooleanNot\\) of method PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInBooleanNotRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/BooleansInConditions/BooleanInBooleanNotRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInElseIfConditionRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/BooleansInConditions/BooleanInElseIfConditionRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Stmt\\\\ElseIf_\\) of method PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInElseIfConditionRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/BooleansInConditions/BooleanInElseIfConditionRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInIfConditionRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/BooleansInConditions/BooleanInIfConditionRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Stmt\\\\If_\\) of method PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInIfConditionRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/BooleansInConditions/BooleanInIfConditionRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInTernaryOperatorRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/BooleansInConditions/BooleanInTernaryOperatorRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\Ternary\\) of method PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInTernaryOperatorRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/BooleansInConditions/BooleanInTernaryOperatorRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Cast\\\\UselessCastRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/Cast/UselessCastRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\Cast\\) of method PHPStan\\\\Rules\\\\Cast\\\\UselessCastRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/Cast/UselessCastRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Classes\\\\RequireParentConstructCallRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/Classes/RequireParentConstructCallRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Stmt\\\\ClassMethod\\) of method PHPStan\\\\Rules\\\\Classes\\\\RequireParentConstructCallRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/Classes/RequireParentConstructCallRule.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Classes\\\\RequireParentConstructCallRule\\:\\:getParentConstructorClass\\(\\) has parameter \\$classReflection with generic class ReflectionClass but does not specify its types\\: T$#"
+			count: 1
+			path: src/Rules/Classes/RequireParentConstructCallRule.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Classes\\\\RequireParentConstructCallRule\\:\\:getParentConstructorClass\\(\\) return type with generic class ReflectionClass does not specify its types\\: T$#"
+			count: 1
+			path: src/Rules/Classes/RequireParentConstructCallRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\DisallowedConstructs\\\\DisallowedBacktickRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/DisallowedConstructs/DisallowedBacktickRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\Empty_\\) of method PHPStan\\\\Rules\\\\DisallowedConstructs\\\\DisallowedBacktickRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/DisallowedConstructs/DisallowedBacktickRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\DisallowedConstructs\\\\DisallowedEmptyRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/DisallowedConstructs/DisallowedEmptyRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\Empty_\\) of method PHPStan\\\\Rules\\\\DisallowedConstructs\\\\DisallowedEmptyRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/DisallowedConstructs/DisallowedEmptyRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\DisallowedConstructs\\\\DisallowedImplicitArrayCreationRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/DisallowedConstructs/DisallowedImplicitArrayCreationRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\Assign\\) of method PHPStan\\\\Rules\\\\DisallowedConstructs\\\\DisallowedImplicitArrayCreationRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/DisallowedConstructs/DisallowedImplicitArrayCreationRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\ForeachLoop\\\\OverwriteVariablesWithForeachRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/ForeachLoop/OverwriteVariablesWithForeachRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Stmt\\\\Foreach_\\) of method PHPStan\\\\Rules\\\\ForeachLoop\\\\OverwriteVariablesWithForeachRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/ForeachLoop/OverwriteVariablesWithForeachRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Methods\\\\WrongCaseOfInheritedMethodRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/Methods/WrongCaseOfInheritedMethodRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Stmt\\\\ClassMethod\\) of method PHPStan\\\\Rules\\\\Methods\\\\WrongCaseOfInheritedMethodRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/Methods/WrongCaseOfInheritedMethodRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Operators\\\\OperandInArithmeticIncrementOrDecrementRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/Operators/OperandInArithmeticIncrementOrDecrementRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\PostDec\\|PhpParser\\\\Node\\\\Expr\\\\PostInc\\|PhpParser\\\\Node\\\\Expr\\\\PreDec\\|PhpParser\\\\Node\\\\Expr\\\\PreInc\\) of method PHPStan\\\\Rules\\\\Operators\\\\OperandInArithmeticIncrementOrDecrementRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/Operators/OperandInArithmeticIncrementOrDecrementRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticAdditionRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/Operators/OperandsInArithmeticAdditionRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\BinaryOp\\\\BooleanAnd\\) of method PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticAdditionRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/Operators/OperandsInArithmeticAdditionRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticDivisionRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/Operators/OperandsInArithmeticDivisionRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\BinaryOp\\\\BooleanAnd\\) of method PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticDivisionRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/Operators/OperandsInArithmeticDivisionRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticExponentiationRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/Operators/OperandsInArithmeticExponentiationRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\BinaryOp\\\\BooleanAnd\\) of method PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticExponentiationRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/Operators/OperandsInArithmeticExponentiationRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticModuloRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/Operators/OperandsInArithmeticModuloRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\BinaryOp\\\\BooleanAnd\\) of method PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticModuloRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/Operators/OperandsInArithmeticModuloRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticMultiplicationRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/Operators/OperandsInArithmeticMultiplicationRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\BinaryOp\\\\BooleanAnd\\) of method PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticMultiplicationRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/Operators/OperandsInArithmeticMultiplicationRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticSubtractionRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/Operators/OperandsInArithmeticSubtractionRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\BinaryOp\\\\BooleanAnd\\) of method PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticSubtractionRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/Operators/OperandsInArithmeticSubtractionRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\StrictCalls\\\\DynamicCallOnStaticMethodsRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/StrictCalls/DynamicCallOnStaticMethodsRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\MethodCall\\) of method PHPStan\\\\Rules\\\\StrictCalls\\\\DynamicCallOnStaticMethodsRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/StrictCalls/DynamicCallOnStaticMethodsRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\StrictCalls\\\\StrictFunctionCallsRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/StrictCalls/StrictFunctionCallsRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\FuncCall\\) of method PHPStan\\\\Rules\\\\StrictCalls\\\\StrictFunctionCallsRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/StrictCalls/StrictFunctionCallsRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\VariableVariables\\\\VariableMethodCallRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/VariableVariables/VariableMethodCallRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\MethodCall\\) of method PHPStan\\\\Rules\\\\VariableVariables\\\\VariableMethodCallRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/VariableVariables/VariableMethodCallRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\VariableVariables\\\\VariablePropertyFetchRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/VariableVariables/VariablePropertyFetchRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\PropertyFetch\\) of method PHPStan\\\\Rules\\\\VariableVariables\\\\VariablePropertyFetchRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/VariableVariables/VariablePropertyFetchRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\VariableVariables\\\\VariableStaticMethodCallRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/VariableVariables/VariableStaticMethodCallRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\StaticCall\\) of method PHPStan\\\\Rules\\\\VariableVariables\\\\VariableStaticMethodCallRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/VariableVariables/VariableStaticMethodCallRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\VariableVariables\\\\VariableStaticPropertyFetchRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/VariableVariables/VariableStaticPropertyFetchRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\StaticPropertyFetch\\) of method PHPStan\\\\Rules\\\\VariableVariables\\\\VariableStaticPropertyFetchRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/VariableVariables/VariableStaticPropertyFetchRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\VariableVariables\\\\VariableVariablesRule implements generic interface PHPStan\\\\Rules\\\\Rule but does not specify its types\\: TNodeType$#"
+			count: 1
+			path: src/Rules/VariableVariables/VariableVariablesRule.php
+
+		-
+			message: "#^Parameter \\#1 \\$node \\(PhpParser\\\\Node\\\\Expr\\\\Variable\\) of method PHPStan\\\\Rules\\\\VariableVariables\\\\VariableVariablesRule\\:\\:processNode\\(\\) should be contravariant with parameter \\$node \\(PhpParser\\\\Node\\) of method PHPStan\\\\Rules\\\\Rule\\<PhpParser\\\\Node\\>\\:\\:processNode\\(\\)$#"
+			count: 1
+			path: src/Rules/VariableVariables/VariableVariablesRule.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInBooleanNotRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/BooleansInConditions/BooleanInBooleanNotRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInBooleanNotRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/BooleansInConditions/BooleanInBooleanNotRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInElseIfConditionRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/BooleansInConditions/BooleanInElseIfConditionRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInElseIfConditionRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/BooleansInConditions/BooleanInElseIfConditionRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInIfConditionRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/BooleansInConditions/BooleanInIfConditionRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInIfConditionRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/BooleansInConditions/BooleanInIfConditionRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInTernaryOperatorRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/BooleansInConditions/BooleanInTernaryOperatorRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\BooleansInConditions\\\\BooleanInTernaryOperatorRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/BooleansInConditions/BooleanInTernaryOperatorRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Cast\\\\UselessCastRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/Cast/UselessCastRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Cast\\\\UselessCastRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/Cast/UselessCastRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Classes\\\\RequireParentConstructCallRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/Classes/RequireParentConstructCallRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Classes\\\\RequireParentConstructCallRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/Classes/RequireParentConstructCallRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\DisallowedConstructs\\\\DisallowedBacktickRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/DisallowedConstructs/DisallowedBacktickRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\DisallowedConstructs\\\\DisallowedBacktickRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/DisallowedConstructs/DisallowedBacktickRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\DisallowedConstructs\\\\DisallowedEmptyRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/DisallowedConstructs/DisallowedEmptyRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\DisallowedConstructs\\\\DisallowedEmptyRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/DisallowedConstructs/DisallowedEmptyRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\DisallowedConstructs\\\\DisallowedImplicitArrayCreationRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/DisallowedConstructs/DisallowedImplicitArrayCreationRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\DisallowedConstructs\\\\DisallowedImplicitArrayCreationRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/DisallowedConstructs/DisallowedImplicitArrayCreationRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\ForeachLoop\\\\OverwriteVariablesWithForeachRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/ForeachLoop/OverwriteVariablesWithForeachRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\ForeachLoop\\\\OverwriteVariablesWithForeachRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/ForeachLoop/OverwriteVariablesWithForeachRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Methods\\\\WrongCaseOfInheritedMethodRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/Methods/WrongCaseOfInheritedMethodRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Methods\\\\WrongCaseOfInheritedMethodRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/Methods/WrongCaseOfInheritedMethodRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Operators\\\\OperandInArithmeticIncrementOrDecrementRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/Operators/OperandInArithmeticIncrementOrDecrementRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Operators\\\\OperandInArithmeticIncrementOrDecrementRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/Operators/OperandInArithmeticIncrementOrDecrementRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Operators\\\\OperandInArithmeticIncrementOrDecrementRuleTest\\:\\:createRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/Operators/OperandInArithmeticIncrementOrDecrementRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Operators\\\\OperandInArithmeticPostDecrementRuleTest\\:\\:createRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/Operators/OperandInArithmeticPostDecrementRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Operators\\\\OperandInArithmeticPostIncrementRuleTest\\:\\:createRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/Operators/OperandInArithmeticPostIncrementRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Operators\\\\OperandInArithmeticPreDecrementRuleTest\\:\\:createRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/Operators/OperandInArithmeticPreDecrementRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Operators\\\\OperandInArithmeticPreIncrementRuleTest\\:\\:createRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/Operators/OperandInArithmeticPreIncrementRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticAdditionRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/Operators/OperandsInArithmeticAdditionRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticAdditionRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/Operators/OperandsInArithmeticAdditionRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticDivisionRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/Operators/OperandsInArithmeticDivisionRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticDivisionRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/Operators/OperandsInArithmeticDivisionRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticExponentiationRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/Operators/OperandsInArithmeticExponentiationRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticExponentiationRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/Operators/OperandsInArithmeticExponentiationRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticModuloRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/Operators/OperandsInArithmeticModuloRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticModuloRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/Operators/OperandsInArithmeticModuloRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticMultiplicationRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/Operators/OperandsInArithmeticMultiplicationRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticMultiplicationRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/Operators/OperandsInArithmeticMultiplicationRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticSubtractionRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/Operators/OperandsInArithmeticSubtractionRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\Operators\\\\OperandsInArithmeticSubtractionRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/Operators/OperandsInArithmeticSubtractionRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\StrictCalls\\\\DynamicCallOnStaticMethodsRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/StrictCalls/DynamicCallOnStaticMethodsRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\StrictCalls\\\\DynamicCallOnStaticMethodsRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/StrictCalls/DynamicCallOnStaticMethodsRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\StrictCalls\\\\StrictFunctionCallsRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/StrictCalls/StrictFunctionCallsRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\StrictCalls\\\\StrictFunctionCallsRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/StrictCalls/StrictFunctionCallsRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\VariableVariables\\\\VariableMethodCallRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/VariableVariables/VariableMethodCallRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\VariableVariables\\\\VariableMethodCallRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/VariableVariables/VariableMethodCallRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\VariableVariables\\\\VariablePropertyFetchRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/VariableVariables/VariablePropertyFetchRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\VariableVariables\\\\VariablePropertyFetchRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/VariableVariables/VariablePropertyFetchRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\VariableVariables\\\\VariableStaticMethodCallRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/VariableVariables/VariableStaticMethodCallRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\VariableVariables\\\\VariableStaticMethodCallRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/VariableVariables/VariableStaticMethodCallRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\VariableVariables\\\\VariableStaticPropertyFetchRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/VariableVariables/VariableStaticPropertyFetchRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\VariableVariables\\\\VariableStaticPropertyFetchRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/VariableVariables/VariableStaticPropertyFetchRuleTest.php
+
+		-
+			message: "#^Class PHPStan\\\\Rules\\\\VariableVariables\\\\VariableVariablesRuleTest extends generic class PHPStan\\\\Testing\\\\RuleTestCase but does not specify its types\\: TRule$#"
+			count: 1
+			path: tests/Rules/VariableVariables/VariableVariablesRuleTest.php
+
+		-
+			message: "#^Method PHPStan\\\\Rules\\\\VariableVariables\\\\VariableVariablesRuleTest\\:\\:getRule\\(\\) return type with generic interface PHPStan\\\\Rules\\\\Rule does not specify its types\\: TNodeType$#"
+			count: 1
+			path: tests/Rules/VariableVariables/VariableVariablesRuleTest.php
+
+
