@@ -6,13 +6,11 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'AmitysDotCom\\AmitysAgeAtEvent' => $baseDir . '/modules_v4/amitys-dot-com.disable/AmitysAgeAtEvent.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Datamatrix' => $vendorDir . '/tecnickcom/tcpdf/include/barcodes/datamatrix.php',
     'Fisharebest\\Webtrees\\MockGlobalFunctions' => $baseDir . '/tests/MockGlobalFunctions.php',
     'Fisharebest\\Webtrees\\TestCase' => $baseDir . '/tests/TestCase.php',
-    'Ghezibde\\GhezibdeSurnameTradition' => $baseDir . '/modules_v4/ghezibde.disable/GhezibdeSurnameTradition.php',
     'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
     'MyCustomNamespace\\ExampleServerConfigurationModule' => $baseDir . '/modules_v4/example-server-configuration.disable/ExampleServerConfigurationModule.php',
     'Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',

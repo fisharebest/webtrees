@@ -10,6 +10,23 @@ namespace IPLib\Service;
 class BinaryMath
 {
     /**
+     * @var \IPLib\Service\BinaryMath|null
+     */
+    private static $instance;
+
+    /**
+     * @return \IPLib\Service\BinaryMath
+     */
+    public static function getInstance()
+    {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
+    }
+
+    /**
      * Trim the leading zeroes from a non-negative integer represented in binary form.
      *
      * @param string $value
@@ -98,12 +115,121 @@ class BinaryMath
     }
 
     /**
+     * Compute 2 raised to the given exponent.
+     *
+     * If the result fits into a native PHP integer, an int is returned.
+     * If the result exceeds PHP_INT_MAX, a string containing the exact decimal representation is returned.
+     *
+     * @param int $exponent The non-negative exponent
+     *
+     * @return int|numeric-string
+     */
+    public function pow2string($exponent)
+    {
+        if ($exponent < PHP_INT_SIZE * 8 - 1) {
+            return 1 << $exponent;
+        }
+        $digits = array(1);
+        for ($i = 0; $i < $exponent; $i++) {
+            $carry = 0;
+            foreach ($digits as $index => $digit) {
+                $product = $digit * 2 + $carry;
+                $digits[$index] = $product % 10;
+                $carry = (int) ($product / 10);
+            }
+            if ($carry !== 0) {
+                $digits[] = $carry;
+            }
+        }
+        $result = implode('', array_reverse($digits));
+        /** @var numeric-string $result */
+
+        return $result;
+    }
+
+    /**
+     * @param numeric-string|mixed $value
+     *
+     * @return numeric-string|'' empty string if $value is not a valid numeric string
+     */
+    public function normalizeIntegerString($value)
+    {
+        if (!is_string($value) || $value === '') {
+            return '';
+        }
+        $sign = $value[0];
+        if ($sign === '-' || $sign === '+') {
+            $value = substr($value, 1);
+        }
+        $matches = null;
+        if (!preg_match('/^0*([0-9]+)$/', $value, $matches)) {
+            return '';
+        }
+        $numericString = $matches[1];
+        if ($sign === '-' && $numericString !== '0') {
+            $numericString = '-' . $numericString;
+        }
+        /** @var numeric-string $numericString */
+
+        return $numericString;
+    }
+
+    /**
+     * @param numeric-string $value a string that has been normalized with normalizeIntegerString()
+     *
+     * @return numeric-string
+     */
+    public function add1ToIntegerString($value)
+    {
+        if ($value[0] === '-') {
+            if ($value === '-1') {
+                return '0';
+            }
+            $digits = str_split(substr($value, 1));
+            $i = count($digits) - 1;
+            while ($i >= 0) {
+                if ($digits[$i] !== '0') {
+                    $digits[$i] = (string) ((int) $digits[$i] - 1);
+                    break;
+                }
+                $digits[$i] = '9';
+                $i--;
+            }
+            $imploded = implode('', $digits);
+            if ($imploded[0] === '0') {
+                $imploded = substr($imploded, 1);
+            }
+            $result = '-' . $imploded;
+            /** @var numeric-string $result */
+
+            return $result; // @phpstan-ignore varTag.nativeType
+        }
+        $digits = str_split($value);
+        $carry = 1;
+        for ($i = count($digits) - 1; $i >= 0; $i--) {
+            $sum = (int) $digits[$i] + $carry;
+            $digits[$i] = (string) ($sum % 10);
+            $carry = (int) ($sum / 10);
+            if ($carry === 0) {
+                break;
+            }
+            if ($i === 0) {
+                array_unshift($digits, (string) $carry);
+            }
+        }
+        $result = implode('', $digits);
+        /** @var numeric-string $result */
+
+        return $result;
+    }
+
+    /**
      * Zero-padding of two non-negative integers represented in binary form, so that they have the same length.
      *
      * @param string $num1
      * @param string $num2
      *
-     * @return string[],int[] The first array element is $num1 (padded), the first array element is $num2 (padded), the third array element is the number of bits
+     * @return array{string, string, int} The first array element is $num1 (padded), the first array element is $num2 (padded), the third array element is the number of bits
      */
     private function toSameLength($num1, $num2)
     {

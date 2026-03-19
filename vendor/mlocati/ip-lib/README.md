@@ -1,7 +1,6 @@
-[![Tests](https://github.com/mlocati/ip-lib/actions/workflows/tests.yml/badge.svg)](https://github.com/mlocati/ip-lib/actions?query=workflow%3A%22tests%22)
-[![Coverage Status](https://coveralls.io/repos/github/mlocati/ip-lib/badge.svg?branch=master)](https://coveralls.io/github/mlocati/ip-lib?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mlocati/ip-lib/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mlocati/ip-lib/?branch=master)
-![Packagist Downloads](https://img.shields.io/packagist/dm/mlocati/ip-lib)
+[![Tests](https://github.com/mlocati/ip-lib/actions/workflows/tests.yml/badge.svg)](https://github.com/mlocati/ip-lib/actions/workflows/tests.yml)
+[![Code Coverage](https://img.shields.io/coverallsCoverage/github/mlocati/ip-lib?branch=main&label=Coverage)](https://coveralls.io/github/mlocati/ip-lib?branch=main)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/mlocati/ip-lib?label=Downloads)](https://packagist.org/packages/mlocati/ip-lib)
 [![Open in Gitpod](https://img.shields.io/badge/Open%20in-Gitpod-%232cb64c?logo=gitpod)](https://gitpod.io/#https://github.com/mlocati/ip-lib)
 
 # IPLib - Handle IPv4, IPv6 and IP ranges
@@ -136,6 +135,10 @@ echo (string) $address->getAddressAtOffset(-1);
 
 // This will print NULL
 echo var_dump($address->getAddressAtOffset(-2));
+
+// This will print ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+echo (string) $address->getAddressAtOffset('340282366920938463463374607431768211454');
+
 ```
 
 For ranges:
@@ -166,6 +169,19 @@ echo (string) $range->getAddressAtOffset(-256);
 
 // This will print NULL because the address ::feff is out of the range
 var_dump($range->getAddressAtOffset(-257));
+
+
+$range2 = \IPLib\Factory::parseRangeString('::/0');
+
+// This will print ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+echo (string) $range2->getAddressAtOffset(-1);
+
+// This will print ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+echo (string) $range2->getAddressAtOffset('340282366920938463463374607431768211455');
+
+// This will print ::1
+echo (string) $range2->getAddressAtOffset('-340282366920938463463374607431768211455');
+
 ```
 
 ### Parse an IP address range
@@ -217,6 +233,21 @@ $ranges = \IPLib\Factory::getRangesFromBoundaries('192.168.0.0', '192.168.0.5');
 
 // This will print 192.168.0.0/30 192.168.0.4/31
 echo implode(' ', $ranges);
+```
+
+### Retrieve a range that contains a set of IP addresses
+
+You can use `IPLib\Factory::getRangeFromAddresses()` to retrieve the minimal IP range that contains all the provided IP addresses:
+
+```php
+$range = \IPLib\Factory::getRangeFromAddresses(array(
+  '1.2.2.225',
+  '1.2.1.124',
+  '1.2.3.237',
+));
+
+// This will print 1.2.0.0/22
+echo (string) $range;
 ```
 
 ### Retrieve the boundaries of a range
@@ -272,6 +303,16 @@ echo \IPLib\Factory::parseAddressString('1:2:3:4:5:6:7:8')->toString(true);
 
 // This will print 0000:0000:0000:0000:0000:0000:0000:0001/64
 echo \IPLib\Factory::parseRangeString('0:0::1/64')->toString();
+```
+
+You may also want a *long* representation for IPv4 addresses: here again you can use `true`as the parameter for the `toString` method:
+
+```php
+// This will print 1.2.3.4
+echo \IPLib\Factory::parseAddressString('1.2.3.4')->toString();
+
+// This will print 001.002.003.004
+echo \IPLib\Factory::parseAddressString('1.2.3.4')->toString(true);
 ```
 
 The address and range objects implements the `__toString()` method, which call the `toString()` method.
@@ -479,6 +520,36 @@ echo \IPLib\Factory::parseRangeString('192.168.0.12/30')->getSize();
 
 // This will print 1
 echo \IPLib\Factory::parseRangeString('192.168.0.1')->getSize();
+```
+
+Please note that if the number of IP addresses contained in the range is greater than the maximum integer supported by the operating system (2,147,483,647 for 32-bit systems, 9,223,372,036,854,775,807 for 64-bit systems), the `getSize()` method will return a `float` (which may be not precise).
+
+If instead you want the exact number of IP addresses, you can use the `getExactSize()` method, which will return a string containing the number of IP addresses in decimal format in case of such big numbers.
+
+```php
+// This will print:
+// int(1)
+var_dump(\IPLib\Factory::parseRangeString('0.0.0.0/32')->getExactSize());
+
+// On 32-bit systems, this will print
+// string(10) "2147483648"
+// On 64-bit systems, this will print
+// int(2147483648)
+var_dump(\IPLib\Factory::parseRangeString('0.0.0.0/1')->getExactSize());
+
+// This will print:
+// int(1073741824)
+var_dump(\IPLib\Factory::parseRangeString('::/98')->getExactSize());
+
+// On 32-bit systems, this will print
+// string(10) "2147483648"
+// On 64-bit systems, this will print
+// int(2147483648)
+var_dump(\IPLib\Factory::parseRangeString('::/97')->getExactSize());
+
+// On 32-bit and 64-bit systems, this will print
+// string(39) "170141183460469231731687303715884105728"
+var_dump(\IPLib\Factory::parseRangeString('::/1')->getExactSize());
 ```
 
 ### Getting the reverse DNS lookup address

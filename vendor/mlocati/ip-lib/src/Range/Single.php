@@ -13,6 +13,8 @@ use IPLib\ParseStringFlag;
  *
  * @example 127.0.0.1
  * @example ::1
+ *
+ * @phpstan-consistent-constructor
  */
 class Single extends AbstractRange
 {
@@ -233,6 +235,16 @@ class Single extends AbstractRange
      * @see \IPLib\Range\RangeInterface::getSize()
      */
     public function getSize()
+    {
+        return 1;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see \IPLib\Range\RangeInterface::getExactSize()
+     */
+    public function getExactSize()
     {
         return 1;
     }
