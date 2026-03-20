@@ -64,6 +64,7 @@ class AdminService
     {
         $subquery1 = DB::table('change')
             ->where('gedcom_id', '=', $tree1->id())
+            ->where('status', '=', 'pending')
             ->select(['xref AS xref1'])
             ->union(DB::table('individuals')
                 ->where('i_file', '=', $tree1->id())
