@@ -257,6 +257,7 @@ use Fisharebest\Webtrees\Module\WelcomeBlockModule;
 use Fisharebest\Webtrees\Module\XeneaTheme;
 use Fisharebest\Webtrees\Module\YahrzeitModule;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\Composer\VendorModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
@@ -622,6 +623,7 @@ class ModuleService
 
             return $this->coreModules()
                 ->merge($this->customModules())
+                ->merge($this->vendorModules())
                 ->map(static function (ModuleInterface $module) use ($module_info): ModuleInterface {
                     $info = $module_info->get($module->name());
 
@@ -711,6 +713,16 @@ class ModuleService
             })
             ->filter()
             ->mapWithKeys(static fn (ModuleCustomInterface $module): array => [$module->name() => $module]);
+    }
+
+    /**
+     * All vendor modules in the system. Vendor modules are installed via Composer.
+     *
+     * @return Collection<string, ModuleCustomInterface>
+     */
+    private function vendorModules(): Collection
+    {
+        return (new VendorModuleService())->getVendorModules();
     }
 
     /**
