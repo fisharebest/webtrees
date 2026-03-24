@@ -113,7 +113,7 @@ class Place
      */
     public function id(): int
     {
-        return Registry::cache()->array()->remember('place-' . $this->place_name, function (): int {
+        return Registry::cache()->array()->remember('place-' . $this->place_name . '@' . $this->tree->id(), function (): int {
             // The "top-level" place won't exist in the database.
             if ($this->parts->isEmpty()) {
                 return 0;
