@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\Tree;
 
 ?>
 
-<div class="row text-center">
+<div class="row text-center align-items-center">
     <div class="col">
         <?php if ($page > 1) : ?>
             <a class="btn btn-outline-secondary" href="<?= e($module->listUrl($tree, ['go' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'page' => 1])) ?>">
