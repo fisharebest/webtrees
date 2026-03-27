@@ -41,6 +41,7 @@ use League\CommonMark\Renderer\Inline\NewlineRenderer;
 use League\CommonMark\Renderer\Inline\TextRenderer;
 use League\CommonMark\Util\HtmlFilter;
 
+use function rtrim;
 use function strip_tags;
 use function strtr;
 
@@ -135,7 +136,7 @@ class MarkdownFactory implements MarkdownFactoryInterface
 
         $html = $converter->convert($markdown)->getContent();
 
-        // The markdown convert adds newlines, but not in a documented way.  Safest to ignore them.
-        return strtr($html, ["\n"   => '']);
+        // The markdown convert adds newlines, remove the last one.
+        return rtrim($html, "\n");
     }
 }
