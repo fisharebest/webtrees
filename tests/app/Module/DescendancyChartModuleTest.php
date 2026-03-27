@@ -19,14 +19,49 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Services\ChartService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 #[CoversClass(DescendancyChartModule::class)]
 class DescendancyChartModuleTest extends TestCase
 {
-    public function testClassExists(): void
+    protected static bool $uses_database = true;
+
+    /**
+     * @return array<string,array{style:string}>
+     */
+    public static function chartStyles(): array
     {
-        self::assertTrue(class_exists(DescendancyChartModule::class));
+        return [
+            'tree'        => ['style' => 'tree'],
+            'individuals' => ['style' => 'individuals'],
+            'families'    => ['style' => 'families'],
+        ];
+    }
+
+    #[DataProvider('chartStyles')]
+    public function testHandleReturnsPage(string $style): void
+    {
+        $tree = $this->importTree('demo.ged');
+        $user = (new UserService())->create('admin', 'Admin', 'admin@example.com', 'secret');
+        $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
+        Auth::login($user);
+
+        $module  = new DescendancyChartModule(new ChartService());
+        $request = self::createRequest()
+            ->withAttribute('tree', $tree)
+            ->withAttribute('xref', 'X1030')
+            ->withAttribute('style', $style)
+            ->withAttribute('generations', 3);
+
+        $response = $module->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

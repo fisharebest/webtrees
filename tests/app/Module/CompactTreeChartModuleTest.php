@@ -19,14 +19,51 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Services\ChartService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(CompactTreeChartModule::class)]
 class CompactTreeChartModuleTest extends TestCase
 {
-    public function testClassExists(): void
+    protected static bool $uses_database = true;
+
+    public function testHandleReturnsPage(): void
     {
-        self::assertTrue(class_exists(CompactTreeChartModule::class));
+        $tree = $this->importTree('demo.ged');
+        $user = (new UserService())->create('admin', 'Admin', 'admin@example.com', 'secret');
+        $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
+        Auth::login($user);
+
+        $module  = new CompactTreeChartModule(new ChartService());
+        $request = self::createRequest()
+            ->withAttribute('tree', $tree)
+            ->withAttribute('xref', 'X1030');
+
+        $response = $module->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleAjaxReturnsContent(): void
+    {
+        $tree = $this->importTree('demo.ged');
+        $user = (new UserService())->create('admin', 'Admin', 'admin@example.com', 'secret');
+        $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
+        Auth::login($user);
+
+        $module  = new CompactTreeChartModule(new ChartService());
+        $request = self::createRequest(query: ['ajax' => '1'])
+            ->withAttribute('tree', $tree)
+            ->withAttribute('xref', 'X1030');
+
+        $response = $module->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertNotEmpty($response->getBody()->getContents());
     }
 }
