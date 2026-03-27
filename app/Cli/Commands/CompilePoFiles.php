@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Localization\Translation;
 use Fisharebest\Webtrees\Webtrees;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -40,6 +41,7 @@ final class CompilePoFiles extends AbstractCommand
     {
         $this
             ->setName(name: 'compile-po-files')
+            ->addArgument(name: 'pattern', mode: InputArgument::OPTIONAL, description: 'Path and glob pattern to po language files', default: self::PO_FILE_PATTERN)
             ->setDescription(description: 'Convert the PO files into PHP files');
     }
 
@@ -47,10 +49,11 @@ final class CompilePoFiles extends AbstractCommand
     {
         $io = new SymfonyStyle(input: $input, output: $output);
 
-        $po_files = glob(pattern: self::PO_FILE_PATTERN);
+        $po_file_pattern = $this->stringArgument(input: $input, name: 'pattern');
+        $po_files = glob($po_file_pattern);
 
         if ($po_files === false || $po_files === []) {
-            $io->error('Failed to find any PO files matching ' . self::PO_FILE_PATTERN);
+            $io->error('Failed to find any PO files matching ' . $po_file_pattern);
 
             return self::FAILURE;
         }
