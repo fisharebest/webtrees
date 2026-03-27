@@ -19,14 +19,32 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SubmitterListModule::class)]
 class SubmitterListModuleTest extends TestCase
 {
-    public function testClass(): void
+    protected static bool $uses_database = true;
+
+    public function testHandleReturnsPage(): void
     {
-        self::assertTrue(class_exists(SubmitterListModule::class));
+        $tree = $this->importTree('demo.ged');
+        $user = (new UserService())->create('admin', 'Admin', 'admin@example.com', 'secret');
+        $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
+        Auth::login($user);
+
+        $module  = new SubmitterListModule();
+        $request = self::createRequest()
+            ->withAttribute('tree', $tree)
+            ->withAttribute('user', $user);
+
+        $response = $module->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }
