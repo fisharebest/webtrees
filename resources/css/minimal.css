@@ -23,14 +23,14 @@
     --link-color: var(--bs-link-color);
     --link-decoration-hover: var(--bs-link-decoration);
     --link-decoration: none;
-    --sex-f-bg: var(--bs-body-bg);
+    --sex-f-bg: var(--bs-danger-bg-subtle);
     --sex-f-fg: var(--bs-pink);
-    --sex-m-bg: var(--bs-body-bg);
+    --sex-m-bg: var(--bs-primary-bg-subtle);
     --sex-m-fg: var(--bs-blue);
-    --sex-u-bg: var(--bs-body-bg);
-    --sex-u-fg: var(--bs-gray);
-    --sex-x-bg: var(--bs-body-bg);
-    --sex-x-fg: var(--bs-gray);
+    --sex-u-bg: var(--bs-dark-bg-subtle);
+    --sex-u-fg: var(--bs-dark);
+    --sex-x-bg: var(--bs-dark-bg-subtle);
+    --sex-x-fg: var(--bs-dark);
 }
 
 /* Override Bootstrap formatting */
@@ -281,22 +281,22 @@ table {
 
 .wt-chart-box-f {
     background: var(--sex-f-bg);
-    border: var(--bs-border-style) var(--sex-f-fg) var(--bs-border-width);
+    border-color: var(--bs-danger-border-subtle);
 }
 
 .wt-chart-box-m {
     background: var(--sex-m-bg);
-    border: var(--bs-border-style) var(--sex-m-fg) var(--bs-border-width);
+    border-color: var(--bs-primary-border-subtle);
 }
 
 .wt-chart-box-u {
     background: var(--sex-u-bg);
-    border: var(--bs-border-style) var(--sex-u-fg) var(--bs-border-width);
+    border-color: var(--bs-dark-border-subtle);
 }
 
 .wt-chart-box-x {
     background: var(--sex-x-bg);
-    border: var(--bs-border-style) var(--sex-x-fg) var(--bs-border-width);
+    border-color: var(--bs-dark-border-subtle);
 }
 
 /* ---Pending edits--- */
