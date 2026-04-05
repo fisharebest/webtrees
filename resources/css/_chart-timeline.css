@@ -24,34 +24,39 @@
     left: 0;
 }
 
+.person0, .person1, .person2, .person3,
+.person4, .person5, .person6, .person7 {
+    --person-bg-alpha: 30%;
+}
+
 .person0 {
-    background-color: #ffb3ba;
+    background-color: color-mix(in srgb, var(--bs-red) var(--person-bg-alpha), transparent);
 }
 
 .person1 {
-    background-color: #ffd8ba;
+    background-color: color-mix(in srgb, var(--bs-orange) var(--person-bg-alpha), transparent);
 }
 
 .person2 {
-    background-color: #fff3ba;
+    background-color: color-mix(in srgb, var(--bs-yellow) var(--person-bg-alpha), transparent);
 }
 
 .person3 {
-    background-color: #d4ffba;
+    background-color: color-mix(in srgb, var(--bs-green) var(--person-bg-alpha), transparent);
 }
 
 .person4 {
-    background-color: #baffc9;
+    background-color: color-mix(in srgb, var(--bs-teal) var(--person-bg-alpha), transparent);
 }
 
 .person5 {
-    background-color: #bae1ff;
+    background-color: color-mix(in srgb, var(--bs-cyan) var(--person-bg-alpha), transparent);
 }
 
 .person6 {
-    background-color: #e2baff;
+    background-color: color-mix(in srgb, var(--bs-purple) var(--person-bg-alpha), transparent);
 }
 
 .person7 {
-    background-color: #ffbaf3;
+    background-color: color-mix(in srgb, var(--bs-pink) var(--person-bg-alpha), transparent);
 }
