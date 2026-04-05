@@ -582,7 +582,7 @@ div.faq_body {
     bottom: 20px;
 }
 
-.person0, .person1, .person2, .person3, .person4, .person5 {
+.person0, .person1, .person2, .person3, .person4, .person5, .person6, .person7 {
     border: outset var(--bs-border-color) var(--bs-border-width);
     vertical-align: top;
 }
