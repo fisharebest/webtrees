@@ -20,10 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(LoginPage::class)]
@@ -33,24 +34,56 @@ class LoginPageTest extends TestCase
 
     public function testLoginPage(): void
     {
-        $gedcom_import_service = new GedcomImportService();
-        $tree_service          = new TreeService($gedcom_import_service);
-        $request               = self::createRequest();
-        $handler               = new LoginPage($tree_service);
-        $response              = $handler->handle($request);
+        $tree_service = $this->createMock(TreeService::class);
+        $tree_service->method('all')->willReturn(new Collection());
+
+        $handler  = new LoginPage($tree_service);
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
     public function testLoginPageAlreadyLoggedIn(): void
     {
-        $gedcom_import_service = new GedcomImportService();
-        $tree_service          = new TreeService($gedcom_import_service);
-        $user                  = self::createStub(User::class);
-        $request               = self::createRequest()->withAttribute('user', $user);
-        $handler               = new LoginPage($tree_service);
-        $response              = $handler->handle($request);
+        $tree_service = $this->createMock(TreeService::class);
 
+        $user    = self::createStub(User::class);
+        $handler = new LoginPage($tree_service);
+        $request = self::createRequest()->withAttribute('user', $user);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+    }
+
+    public function testLoginPageWithTree(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('name')->willReturn('demo');
+
+        $tree_service = $this->createMock(TreeService::class);
+
+        $handler  = new LoginPage($tree_service);
+        $request  = self::createRequest()
+            ->withAttribute('tree', $tree);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testLoginPageWithNoTreeRedirectsToDefault(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('name')->willReturn('default');
+
+        $tree_service = $this->createMock(TreeService::class);
+        $tree_service->method('all')->willReturn(new Collection(['default' => $tree]));
+
+        $handler  = new LoginPage($tree_service);
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        // Redirects to login page with tree parameter
         self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

@@ -20,19 +20,23 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\GuestUser;
-use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SelectLanguage::class)]
 class SelectLanguageTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     public function testSelectLanguageForGuest(): void
     {
-        $user     = new GuestUser();
+        $user = $this->createMock(GuestUser::class);
+        $user->expects(self::once())
+            ->method('setPreference')
+            ->with(UserInterface::PREF_LANGUAGE, 'fr');
+
         $handler  = new SelectLanguage();
         $request  = self::createRequest()
             ->withAttribute('user', $user)
@@ -40,18 +44,23 @@ class SelectLanguageTest extends TestCase
         $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
+        self::assertSame('fr', Session::get('language'));
     }
 
     public function testSelectLanguageForUser(): void
     {
-        $user_service = new UserService();
-        $user         = $user_service->create('user', 'real', 'email', 'pass');
-        $handler      = new SelectLanguage();
-        $request      = self::createRequest()
+        $user = $this->createMock(User::class);
+        $user->expects(self::once())
+            ->method('setPreference')
+            ->with(UserInterface::PREF_LANGUAGE, 'de');
+
+        $handler  = new SelectLanguage();
+        $request  = self::createRequest()
             ->withAttribute('user', $user)
-            ->withAttribute('language', 'fr');
-        $response     = $handler->handle($request);
+            ->withAttribute('language', 'de');
+        $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
+        self::assertSame('de', Session::get('language'));
     }
 }
