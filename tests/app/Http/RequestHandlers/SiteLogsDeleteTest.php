@@ -28,15 +28,24 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(SiteLogsDelete::class)]
 class SiteLogsDeleteTest extends TestCase
 {
-    public function testResponse(): void
+    public function testClass(): void
+    {
+        self::assertTrue(class_exists(SiteLogsDelete::class));
+    }
+
+    public function testHandleDeletesLogsAndReturnsNoContent(): void
     {
         $request = self::createRequest();
 
-        $query = self::createStub(Builder::class);
-        $query->method('delete');
+        $query = $this->createMock(Builder::class);
+        $query->expects(self::once())
+            ->method('delete');
 
-        $site_logs_service = self::createStub(SiteLogsService::class);
-        $site_logs_service->method('logsQuery')->willReturn($query);
+        $site_logs_service = $this->createMock(SiteLogsService::class);
+        $site_logs_service->expects(self::once())
+            ->method('logsQuery')
+            ->with(self::isInstanceOf(\Psr\Http\Message\ServerRequestInterface::class))
+            ->willReturn($query);
 
         $handler  = new SiteLogsDelete($site_logs_service);
         $response = $handler->handle($request);

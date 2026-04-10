@@ -19,14 +19,38 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(PendingChangesLogAction::class)]
 class PendingChangesLogActionTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(PendingChangesLogAction::class));
+    }
+
+    public function testHandleRedirectsToLogPage(): void
+    {
+        $request = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
+            'tree'     => 'test-tree',
+            'from'     => '2026-01-01',
+            'to'       => '2026-12-31',
+            'type'     => 'pending',
+            'oldged'   => '',
+            'newged'   => '',
+            'xref'     => 'I1',
+            'username' => 'admin',
+        ]);
+
+        $handler  = new PendingChangesLogAction();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        self::assertStringContainsString('test-tree', $response->getHeaderLine('location'));
+        self::assertStringContainsString('from=2026-01-01', $response->getHeaderLine('location'));
     }
 }

@@ -19,14 +19,30 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(FaviconIco::class)]
 class FaviconIcoTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(FaviconIco::class));
+    }
+
+    public function testHandleReturnsOkWithIconContent(): void
+    {
+        $handler  = new FaviconIco();
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame('image/x-icon', $response->getHeaderLine('content-type'));
+        self::assertSame('public,max-age=31536000', $response->getHeaderLine('cache-control'));
+
+        $body = (string) $response->getBody();
+        self::assertNotEmpty($body);
     }
 }

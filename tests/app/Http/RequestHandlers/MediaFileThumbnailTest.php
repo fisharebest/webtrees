@@ -19,14 +19,77 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\MediaFactoryInterface;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(MediaFileThumbnail::class)]
 class MediaFileThumbnailTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(MediaFileThumbnail::class));
+    }
+
+    public function testHandleReturnsNotFoundImageWhenMediaIsNull(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('test', 'Test');
+
+        $media_factory = $this->createMock(MediaFactoryInterface::class);
+        $media_factory
+            ->expects($this->once())
+            ->method('make')
+            ->with('X999', $tree)
+            ->willReturn(null);
+
+        Registry::mediaFactory($media_factory);
+
+        $handler  = new MediaFileThumbnail();
+        $request  = self::createRequest(
+            query: ['xref' => 'X999', 'fact_id' => 'abc', 'w' => '100', 'h' => '100', 'fit' => 'contain'],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        // When media is null, returns a replacement "not found" image
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleReturnsForbiddenImageWhenNotVisible(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('test2', 'Test 2');
+
+        $media = self::createStub(Media::class);
+        $media->method('xref')->willReturn('M1');
+        $media->method('tree')->willReturn($tree);
+        $media->method('canShow')->willReturn(false);
+
+        $media_factory = $this->createMock(MediaFactoryInterface::class);
+        $media_factory
+            ->expects($this->once())
+            ->method('make')
+            ->with('M1', $tree)
+            ->willReturn($media);
+
+        Registry::mediaFactory($media_factory);
+
+        $handler  = new MediaFileThumbnail();
+        $request  = self::createRequest(
+            query: ['xref' => 'M1', 'fact_id' => 'abc', 'w' => '100', 'h' => '100', 'fit' => 'contain'],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        // When canShow() is false, returns a replacement "forbidden" image
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

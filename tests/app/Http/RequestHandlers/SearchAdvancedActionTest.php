@@ -19,14 +19,53 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SearchAdvancedAction::class)]
 class SearchAdvancedActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(SearchAdvancedAction::class));
+    }
+
+    public function testHandleRedirects(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('test', 'Test');
+
+        $handler  = new SearchAdvancedAction();
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
+            'fields'      => ['NAME' => 'John'],
+            'modifiers'   => ['NAME' => 'exact'],
+            'other_field' => '',
+        ], [], ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+    }
+
+    public function testHandleWithOtherField(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('test2', 'Test 2');
+
+        $handler  = new SearchAdvancedAction();
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
+            'fields'      => ['NAME' => 'Jane'],
+            'modifiers'   => [],
+            'other_field' => 'BIRT:PLAC',
+        ], [], ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        self::assertStringContainsString('BIRT%3APLAC', $response->getHeaderLine('location'));
     }
 }

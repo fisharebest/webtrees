@@ -19,14 +19,62 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(PendingChanges::class)]
 class PendingChangesTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(PendingChanges::class));
+    }
+
+    public function testHandleReturnsOkResponse(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('name')->willReturn('test');
+        $tree->method('id')->willReturn(1);
+
+        $pending_changes_service = self::createStub(PendingChangesService::class);
+        $pending_changes_service->method('pendingXrefs')->willReturn(new Collection());
+        $pending_changes_service->method('pendingChanges')->willReturn([]);
+
+        $handler  = new PendingChanges($pending_changes_service);
+        $request  = self::createRequest('GET', ['url' => 'https://webtrees.test/'])
+            ->withAttribute('tree', $tree);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleWithCustomLimit(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('name')->willReturn('test');
+        $tree->method('id')->willReturn(1);
+
+        $pending_changes_service = $this->createMock(PendingChangesService::class);
+        $pending_changes_service->expects(self::once())
+            ->method('pendingXrefs')
+            ->with($tree)
+            ->willReturn(new Collection());
+        $pending_changes_service->expects(self::once())
+            ->method('pendingChanges')
+            ->with($tree, 50)
+            ->willReturn([]);
+
+        $handler  = new PendingChanges($pending_changes_service);
+        $request  = self::createRequest('GET', ['n' => '50', 'url' => 'https://webtrees.test/'])
+            ->withAttribute('tree', $tree);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

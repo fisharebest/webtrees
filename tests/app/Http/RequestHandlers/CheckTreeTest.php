@@ -19,14 +19,71 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(CheckTree::class)]
 class CheckTreeTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(CheckTree::class));
+    }
+
+    public function testHandleReturnsOkForEmptyTree(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('check-empty', 'Check Empty');
+
+        $timeout_service = $this->createMock(TimeoutService::class);
+        $timeout_service->method('isTimeNearlyUp')->willReturn(false);
+
+        $handler  = new CheckTree(new Gedcom(), $timeout_service);
+        $request  = self::createRequest()
+            ->withAttribute('tree', $tree);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleReturnsOkWithSkipTo(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('check-skip', 'Check Skip');
+
+        $timeout_service = $this->createMock(TimeoutService::class);
+        $timeout_service->method('isTimeNearlyUp')->willReturn(false);
+
+        $handler  = new CheckTree(new Gedcom(), $timeout_service);
+        // Passing a skip_to query parameter that does not match any record
+        $request  = self::createRequest('GET', ['skip_to' => 'X999'])
+            ->withAttribute('tree', $tree);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleReturnsOkWithTimeoutPagination(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('check-timeout', 'Check Timeout');
+
+        // Simulate timeout being nearly up on the first call
+        $timeout_service = $this->createMock(TimeoutService::class);
+        $timeout_service->method('isTimeNearlyUp')->willReturn(true);
+
+        $handler  = new CheckTree(new Gedcom(), $timeout_service);
+        $request  = self::createRequest()
+            ->withAttribute('tree', $tree);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

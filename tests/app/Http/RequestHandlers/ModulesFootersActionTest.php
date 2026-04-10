@@ -19,14 +19,37 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ModulesFootersAction::class)]
 class ModulesFootersActionTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(ModulesFootersAction::class));
+    }
+
+    public function testHandleUpdatesAndRedirects(): void
+    {
+        $module_service = $this->createMock(ModuleService::class);
+        // updateStatus + updateOrder = 2 calls to findByInterface
+        $module_service->expects(self::exactly(2))
+            ->method('findByInterface')
+            ->willReturn(new Collection());
+
+        $tree_service = $this->createMock(TreeService::class);
+
+        $handler  = new ModulesFootersAction($module_service, $tree_service);
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['order' => []]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

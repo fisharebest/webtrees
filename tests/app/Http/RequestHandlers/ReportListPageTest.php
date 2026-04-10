@@ -19,14 +19,66 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ReportListPage::class)]
 class ReportListPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(ReportListPage::class));
+    }
+
+    public function testHandleReturnsOkResponse(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('name')->willReturn('test');
+
+        $user = self::createStub(UserInterface::class);
+
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service->expects(self::once())
+            ->method('findByComponent')
+            ->with(ModuleReportInterface::class, $tree, $user)
+            ->willReturn(new Collection());
+
+        $handler  = new ReportListPage($module_service);
+        $request  = self::createRequest()
+            ->withAttribute('tree', $tree)
+            ->withAttribute('user', $user);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleWithAvailableReports(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('name')->willReturn('test');
+
+        $user = self::createStub(UserInterface::class);
+
+        $report = self::createStub(ModuleReportInterface::class);
+        $report->method('name')->willReturn('test-report');
+
+        $module_service = self::createStub(ModuleService::class);
+        $module_service->method('findByComponent')->willReturn(new Collection([$report]));
+
+        $handler  = new ReportListPage($module_service);
+        $request  = self::createRequest()
+            ->withAttribute('tree', $tree)
+            ->withAttribute('user', $user);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

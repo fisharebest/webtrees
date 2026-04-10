@@ -19,14 +19,78 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\NoteFactoryInterface;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(EditNotePage::class)]
 class EditNotePageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(EditNotePage::class));
+    }
+
+    public function testHandleReturnsOkForValidNote(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('test', 'Test');
+
+        $note = self::createStub(Note::class);
+        $note->method('xref')->willReturn('N1');
+        $note->method('tree')->willReturn($tree);
+        $note->method('canShow')->willReturn(true);
+        $note->method('canEdit')->willReturn(true);
+        $note->method('fullName')->willReturn('Test Note');
+        $note->method('url')->willReturn('https://webtrees.test/note/N1');
+
+        $note_factory = $this->createMock(NoteFactoryInterface::class);
+        $note_factory
+            ->expects($this->once())
+            ->method('make')
+            ->with('N1', $tree)
+            ->willReturn($note);
+
+        Registry::noteFactory($note_factory);
+
+        $handler  = new EditNotePage();
+        $request  = self::createRequest(
+            attributes: ['tree' => $tree, 'xref' => 'N1'],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleThrowsNotFoundForUnknownNote(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('test2', 'Test 2');
+
+        $note_factory = $this->createMock(NoteFactoryInterface::class);
+        $note_factory
+            ->expects($this->once())
+            ->method('make')
+            ->with('X999', $tree)
+            ->willReturn(null);
+
+        Registry::noteFactory($note_factory);
+
+        $handler = new EditNotePage();
+        $request = self::createRequest(
+            attributes: ['tree' => $tree, 'xref' => 'X999'],
+        );
+
+        $this->expectException(HttpNotFoundException::class);
+
+        $handler->handle($request);
     }
 }

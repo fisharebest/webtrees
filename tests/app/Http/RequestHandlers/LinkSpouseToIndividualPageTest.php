@@ -19,14 +19,112 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\IndividualFactoryInterface;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomEditService;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(LinkSpouseToIndividualPage::class)]
 class LinkSpouseToIndividualPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(LinkSpouseToIndividualPage::class));
+    }
+
+    public function testHandleReturnsOkForMaleIndividual(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('test', 'Test');
+
+        $individual = self::createStub(Individual::class);
+        $individual->method('xref')->willReturn('I1');
+        $individual->method('tree')->willReturn($tree);
+        $individual->method('canEdit')->willReturn(true);
+        $individual->method('canShow')->willReturn(true);
+        $individual->method('fullName')->willReturn('John Doe');
+        $individual->method('url')->willReturn('https://webtrees.test/individual/I1');
+        $individual->method('sex')->willReturn('M');
+
+        $individual_factory = self::createStub(IndividualFactoryInterface::class);
+        $individual_factory
+            ->method('make')
+            ->willReturn($individual);
+
+        Registry::individualFactory($individual_factory);
+
+        $gedcom_edit_service = self::createStub(GedcomEditService::class);
+
+        $handler  = new LinkSpouseToIndividualPage($gedcom_edit_service);
+        $request  = self::createRequest(
+            attributes: ['tree' => $tree, 'xref' => 'I1'],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleReturnsOkForFemaleIndividual(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('test2', 'Test 2');
+
+        $individual = self::createStub(Individual::class);
+        $individual->method('xref')->willReturn('I2');
+        $individual->method('tree')->willReturn($tree);
+        $individual->method('canEdit')->willReturn(true);
+        $individual->method('canShow')->willReturn(true);
+        $individual->method('fullName')->willReturn('Jane Doe');
+        $individual->method('url')->willReturn('https://webtrees.test/individual/I2');
+        $individual->method('sex')->willReturn('F');
+
+        $individual_factory = self::createStub(IndividualFactoryInterface::class);
+        $individual_factory
+            ->method('make')
+            ->willReturn($individual);
+
+        Registry::individualFactory($individual_factory);
+
+        $gedcom_edit_service = self::createStub(GedcomEditService::class);
+
+        $handler  = new LinkSpouseToIndividualPage($gedcom_edit_service);
+        $request  = self::createRequest(
+            attributes: ['tree' => $tree, 'xref' => 'I2'],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleThrowsNotFoundForUnknownIndividual(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('test3', 'Test 3');
+
+        $individual_factory = self::createStub(IndividualFactoryInterface::class);
+        $individual_factory
+            ->method('make')
+            ->willReturn(null);
+
+        Registry::individualFactory($individual_factory);
+
+        $gedcom_edit_service = self::createStub(GedcomEditService::class);
+
+        $handler = new LinkSpouseToIndividualPage($gedcom_edit_service);
+        $request = self::createRequest(
+            attributes: ['tree' => $tree, 'xref' => 'X999'],
+        );
+
+        $this->expectException(HttpNotFoundException::class);
+
+        $handler->handle($request);
     }
 }

@@ -19,14 +19,67 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SubmitterListModule::class)]
 class SubmitterListModuleTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(SubmitterListModule::class));
+    }
+
+    public function testTitleIsNotEmpty(): void
+    {
+        $module = new SubmitterListModule();
+
+        self::assertNotEmpty($module->title());
+    }
+
+    public function testHandleReturnsOkResponseWhenAccessGranted(): void
+    {
+        $tree   = $this->importTree('demo.ged');
+        $module = new SubmitterListModule();
+        $module->setName('submitter_list');
+
+        // Grant public access for this module (default is PRIV_NONE).
+        DB::table('module_privacy')->insert([
+            'module_name'  => 'submitter_list',
+            'gedcom_id'    => $tree->id(),
+            'interface'    => ModuleListInterface::class,
+            'access_level' => Auth::PRIV_PRIVATE,
+        ]);
+
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], [
+            'tree' => $tree,
+        ]);
+
+        $response = $module->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleDeniesAccessToGuest(): void
+    {
+        $tree   = $this->importTree('demo.ged');
+        $module = new SubmitterListModule();
+        $module->setName('submitter_list');
+
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], [
+            'tree' => $tree,
+        ]);
+
+        $this->expectException(HttpAccessDeniedException::class);
+
+        $module->handle($request);
     }
 }

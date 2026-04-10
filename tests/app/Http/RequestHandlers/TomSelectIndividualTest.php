@@ -19,14 +19,62 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(TomSelectIndividual::class)]
 class TomSelectIndividualTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(TomSelectIndividual::class));
+    }
+
+    public function testHandleEmptyQueryReturnsEmptyResults(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('name')->willReturn('test');
+
+        $search_service = $this->createMock(SearchService::class);
+        $search_service->expects(self::never())
+            ->method('searchIndividualNames');
+
+        $handler  = new TomSelectIndividual($search_service);
+        $request  = self::createRequest('GET', ['query' => '', 'at' => ''], [], [], ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        $data = json_decode((string) $response->getBody(), true);
+        self::assertIsArray($data);
+        self::assertEmpty($data['data']);
+    }
+
+    public function testHandleWithQueryReturnsJsonResponse(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('name')->willReturn('test');
+
+        $search_service = $this->createMock(SearchService::class);
+        $search_service->expects(self::once())
+            ->method('searchIndividualNames')
+            ->willReturn(new Collection());
+
+        $handler  = new TomSelectIndividual($search_service);
+        $request  = self::createRequest('GET', ['query' => 'John', 'at' => ''], [], [], ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        $data = json_decode((string) $response->getBody(), true);
+        self::assertIsArray($data);
+        self::assertArrayHasKey('data', $data);
+        self::assertArrayHasKey('nextUrl', $data);
     }
 }

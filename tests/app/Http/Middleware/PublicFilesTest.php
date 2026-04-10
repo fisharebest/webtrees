@@ -19,8 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use Psr\Http\Server\RequestHandlerInterface;
+
+use function response;
 
 #[CoversClass(PublicFiles::class)]
 class PublicFilesTest extends TestCase
@@ -28,5 +32,53 @@ class PublicFilesTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(PublicFiles::class));
+    }
+
+    public function testNonPublicPathDelegatesToHandler(): void
+    {
+        $request = self::createRequest();
+        $request = $request->withUri($request->getUri()->withPath('/some/page'));
+
+        $inner_handler = $this->createMock(RequestHandlerInterface::class);
+        $inner_handler->expects(self::once())
+            ->method('handle')
+            ->willReturn(response('OK', StatusCodeInterface::STATUS_OK));
+
+        $middleware = new PublicFiles();
+        $response   = $middleware->process($request, $inner_handler);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testPublicPathWithTraversalDelegatesToHandler(): void
+    {
+        $request = self::createRequest();
+        $request = $request->withUri($request->getUri()->withPath('/public/../etc/passwd'));
+
+        $inner_handler = $this->createMock(RequestHandlerInterface::class);
+        $inner_handler->expects(self::once())
+            ->method('handle')
+            ->willReturn(response('OK', StatusCodeInterface::STATUS_OK));
+
+        $middleware = new PublicFiles();
+        $response   = $middleware->process($request, $inner_handler);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testPublicPathFileNotFoundDelegatesToHandler(): void
+    {
+        $request = self::createRequest();
+        $request = $request->withUri($request->getUri()->withPath('/public/nonexistent-file.js'));
+
+        $inner_handler = $this->createMock(RequestHandlerInterface::class);
+        $inner_handler->expects(self::once())
+            ->method('handle')
+            ->willReturn(response('Not Found', StatusCodeInterface::STATUS_NOT_FOUND));
+
+        $middleware = new PublicFiles();
+        $response   = $middleware->process($request, $inner_handler);
+
+        self::assertSame(StatusCodeInterface::STATUS_NOT_FOUND, $response->getStatusCode());
     }
 }

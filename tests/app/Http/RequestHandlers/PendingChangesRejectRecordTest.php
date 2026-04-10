@@ -19,14 +19,83 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(PendingChangesRejectRecord::class)]
 class PendingChangesRejectRecordTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(PendingChangesRejectRecord::class));
+    }
+
+    public function testHandleRejectsExistingRecord(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('id')->willReturn(1);
+
+        $record = self::createStub(GedcomRecord::class);
+        $record->method('fullName')->willReturn('John Doe');
+
+        $gedcom_record_factory = $this->createMock(GedcomRecordFactory::class);
+        $gedcom_record_factory
+            ->expects(self::once())
+            ->method('make')
+            ->with('X100', $tree)
+            ->willReturn($record);
+
+        Registry::gedcomRecordFactory($gedcom_record_factory);
+
+        $pending_changes_service = $this->createMock(PendingChangesService::class);
+        $pending_changes_service
+            ->expects(self::once())
+            ->method('rejectRecord')
+            ->with($record);
+
+        $handler = new PendingChangesRejectRecord($pending_changes_service);
+        $request = self::createRequest()
+            ->withAttribute('tree', $tree)
+            ->withAttribute('xref', 'X100');
+
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
+    }
+
+    public function testHandleWithNonExistingRecordSkipsReject(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('id')->willReturn(1);
+
+        $gedcom_record_factory = $this->createMock(GedcomRecordFactory::class);
+        $gedcom_record_factory
+            ->expects(self::once())
+            ->method('make')
+            ->with('X999', $tree)
+            ->willReturn(null);
+
+        Registry::gedcomRecordFactory($gedcom_record_factory);
+
+        $pending_changes_service = $this->createMock(PendingChangesService::class);
+        $pending_changes_service
+            ->expects(self::never())
+            ->method('rejectRecord');
+
+        $handler = new PendingChangesRejectRecord($pending_changes_service);
+        $request = self::createRequest()
+            ->withAttribute('tree', $tree)
+            ->withAttribute('xref', 'X999');
+
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 }

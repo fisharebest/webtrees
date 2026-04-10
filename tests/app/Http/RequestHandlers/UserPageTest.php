@@ -19,14 +19,41 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\HomePageService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(UserPage::class)]
 class UserPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(UserPage::class));
+    }
+
+    public function testHandleReturnsOkResponse(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('user-page', 'User Page');
+
+        $user_service = new UserService();
+        $user         = $user_service->create('user-page', 'User Page', 'user@example.com', 'secret');
+
+        // Mock HomePageService to avoid view-rendering of real block modules.
+        $home_page_service = $this->createMock(HomePageService::class);
+        $home_page_service->method('userBlocks')->willReturn(new Collection());
+
+        $handler  = new UserPage($home_page_service);
+        $request  = self::createRequest('GET', [], [], [], ['tree' => $tree, 'user' => $user]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

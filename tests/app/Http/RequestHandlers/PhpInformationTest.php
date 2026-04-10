@@ -19,14 +19,29 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(PhpInformation::class)]
 class PhpInformationTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(PhpInformation::class));
+    }
+
+    public function testHandleReturnsOkWithPhpInfo(): void
+    {
+        $handler  = new PhpInformation();
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        $body = (string) $response->getBody();
+        self::assertNotEmpty($body);
     }
 }

@@ -19,14 +19,37 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\HomePageService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(TreePage::class)]
 class TreePageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(TreePage::class));
+    }
+
+    public function testHandleReturnsOkResponse(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('tree-page', 'Tree Page');
+
+        // Mock HomePageService to avoid view-rendering of real block modules.
+        $home_page_service = $this->createMock(HomePageService::class);
+        $home_page_service->method('treeBlocks')->willReturn(new Collection());
+
+        $handler  = new TreePage($home_page_service);
+        $request  = self::createRequest('GET', [], [], [], ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

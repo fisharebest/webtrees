@@ -19,14 +19,118 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(PendingChangesAcceptRecord::class)]
 class PendingChangesAcceptRecordTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(PendingChangesAcceptRecord::class));
+    }
+
+    public function testHandleAcceptsExistingRecord(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('id')->willReturn(1);
+
+        $record = self::createStub(GedcomRecord::class);
+        $record->method('isPendingDeletion')->willReturn(false);
+        $record->method('fullName')->willReturn('John Doe');
+
+        $gedcom_record_factory = $this->createMock(GedcomRecordFactory::class);
+        $gedcom_record_factory
+            ->expects(self::once())
+            ->method('make')
+            ->with('X100', $tree)
+            ->willReturn($record);
+
+        Registry::gedcomRecordFactory($gedcom_record_factory);
+
+        $pending_changes_service = $this->createMock(PendingChangesService::class);
+        $pending_changes_service
+            ->expects(self::once())
+            ->method('acceptRecord')
+            ->with($record);
+
+        $handler = new PendingChangesAcceptRecord($pending_changes_service);
+        $request = self::createRequest()
+            ->withAttribute('tree', $tree)
+            ->withAttribute('xref', 'X100');
+
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
+    }
+
+    public function testHandleAcceptsPendingDeletion(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('id')->willReturn(1);
+
+        $record = self::createStub(GedcomRecord::class);
+        $record->method('isPendingDeletion')->willReturn(true);
+        $record->method('fullName')->willReturn('Jane Doe');
+
+        $gedcom_record_factory = $this->createMock(GedcomRecordFactory::class);
+        $gedcom_record_factory
+            ->expects(self::once())
+            ->method('make')
+            ->with('X200', $tree)
+            ->willReturn($record);
+
+        Registry::gedcomRecordFactory($gedcom_record_factory);
+
+        $pending_changes_service = $this->createMock(PendingChangesService::class);
+        $pending_changes_service
+            ->expects(self::once())
+            ->method('acceptRecord')
+            ->with($record);
+
+        $handler = new PendingChangesAcceptRecord($pending_changes_service);
+        $request = self::createRequest()
+            ->withAttribute('tree', $tree)
+            ->withAttribute('xref', 'X200');
+
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
+    }
+
+    public function testHandleWithNonExistingRecordSkipsAccept(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('id')->willReturn(1);
+
+        $gedcom_record_factory = $this->createMock(GedcomRecordFactory::class);
+        $gedcom_record_factory
+            ->expects(self::once())
+            ->method('make')
+            ->with('X999', $tree)
+            ->willReturn(null);
+
+        Registry::gedcomRecordFactory($gedcom_record_factory);
+
+        $pending_changes_service = $this->createMock(PendingChangesService::class);
+        $pending_changes_service
+            ->expects(self::never())
+            ->method('acceptRecord');
+
+        $handler = new PendingChangesAcceptRecord($pending_changes_service);
+        $request = self::createRequest()
+            ->withAttribute('tree', $tree)
+            ->withAttribute('xref', 'X999');
+
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 }

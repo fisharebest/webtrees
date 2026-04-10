@@ -28,7 +28,12 @@ class MapDataImportPageTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    public function testImportPage(): void
+    public function testClass(): void
+    {
+        self::assertTrue(class_exists(MapDataImportPage::class));
+    }
+
+    public function testHandleReturnsOkResponse(): void
     {
         $handler  = new MapDataImportPage();
         $request  = self::createRequest();

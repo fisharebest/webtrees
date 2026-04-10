@@ -31,6 +31,11 @@ class UserListDataTest extends TestCase
 {
     protected static bool $uses_database = true;
 
+    public function testClass(): void
+    {
+        self::assertTrue(class_exists(UserListData::class));
+    }
+
     public function testHandler(): void
     {
         $datatables_service = new DatatablesService();

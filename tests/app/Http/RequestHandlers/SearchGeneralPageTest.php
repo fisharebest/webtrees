@@ -19,14 +19,106 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SearchGeneralPage::class)]
 class SearchGeneralPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(SearchGeneralPage::class));
+    }
+
+    /**
+     * The default page (no query) renders with STATUS_OK.
+     */
+    public function testHandleDefaultPage(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+        $search_service        = new SearchService($tree_service);
+
+        $handler  = new SearchGeneralPage($search_service, $tree_service);
+        $request  = self::createRequest(attributes: ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        $body = (string) $response->getBody();
+        self::assertNotEmpty($body);
+    }
+
+    /**
+     * An empty query string renders the page without performing a search.
+     */
+    public function testHandleWithEmptyQuery(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+        $search_service        = new SearchService($tree_service);
+
+        $handler  = new SearchGeneralPage($search_service, $tree_service);
+        $request  = self::createRequest(
+            query: ['query' => ''],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    /**
+     * A query with no results renders the page with STATUS_OK.
+     */
+    public function testHandleWithQueryNoResults(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+        $search_service        = new SearchService($tree_service);
+
+        $handler  = new SearchGeneralPage($search_service, $tree_service);
+        $request  = self::createRequest(
+            query: [
+                'query'              => 'nonexistent-person-xyz',
+                'search_individuals' => '1',
+            ],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    /**
+     * When no record-type checkboxes are ticked, default to individuals + families.
+     */
+    public function testHandleDefaultsToIndividualsAndFamilies(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+        $search_service        = new SearchService($tree_service);
+
+        $handler  = new SearchGeneralPage($search_service, $tree_service);
+        $request  = self::createRequest(
+            query: ['query' => 'test'],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        $body = (string) $response->getBody();
+        self::assertNotEmpty($body);
     }
 }

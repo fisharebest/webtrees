@@ -19,14 +19,40 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Services\LeafletJsService;
+use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(MapDataEdit::class)]
 class MapDataEditTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(MapDataEdit::class));
+    }
+
+    public function testHandleNonExistentLocationRedirects(): void
+    {
+        // findById returns a PlaceLocation with id() === null for unknown IDs
+        $location = new PlaceLocation('');
+
+        $map_data_service = $this->createMock(MapDataService::class);
+        $map_data_service->expects(self::once())
+            ->method('findById')
+            ->with(999)
+            ->willReturn($location);
+
+        $leaflet_js_service = $this->createMock(LeafletJsService::class);
+
+        $handler  = new MapDataEdit($leaflet_js_service, $map_data_service);
+        $request  = self::createRequest('GET', [], [], [], ['location_id' => '999']);
+        $response = $handler->handle($request);
+
+        // Non-existent location redirects to the list
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

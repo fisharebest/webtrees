@@ -19,14 +19,46 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(UnconnectedPage::class)]
 class UnconnectedPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(UnconnectedPage::class));
+    }
+
+    public function testHandleReturnsOkForEmptyTree(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('unconnected', 'Unconnected');
+
+        $handler  = new UnconnectedPage();
+        $request  = self::createRequest('GET', [], [], [], ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleReturnsOkWithAliasesAndAssociates(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('uncon-opts', 'Unconnected Opts');
+
+        $handler  = new UnconnectedPage();
+        $request  = self::createRequest('GET', [
+            'aliases'    => '1',
+            'associates' => '1',
+        ], [], [], ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

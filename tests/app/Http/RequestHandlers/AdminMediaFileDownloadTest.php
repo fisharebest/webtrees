@@ -19,14 +19,33 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
+use Fisharebest\Webtrees\Services\MediaFileService;
+use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(AdminMediaFileDownload::class)]
 class AdminMediaFileDownloadTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(AdminMediaFileDownload::class));
+    }
+
+    public function testHandleThrowsBadRequestForInvalidPath(): void
+    {
+        $media_file_service = new MediaFileService(new PhpService());
+
+        $handler = new AdminMediaFileDownload($media_file_service);
+        $request = self::createRequest(
+            query: ['path' => '../../../etc/passwd'],
+        );
+
+        $this->expectException(HttpBadRequestException::class);
+
+        $handler->handle($request);
     }
 }

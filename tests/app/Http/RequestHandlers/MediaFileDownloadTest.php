@@ -19,14 +19,81 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\MediaFactoryInterface;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(MediaFileDownload::class)]
 class MediaFileDownloadTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(MediaFileDownload::class));
+    }
+
+    public function testHandleReturnsReplacementImageWhenFactIdNotMatched(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('test', 'Test');
+
+        // A media object with no matching fact_id returns a replacement image
+        $media = self::createStub(Media::class);
+        $media->method('xref')->willReturn('M1');
+        $media->method('tree')->willReturn($tree);
+        $media->method('canShow')->willReturn(true);
+        $media->method('canEdit')->willReturn(true);
+        $media->method('mediaFiles')->willReturn(collect([]));
+
+        $media_factory = $this->createMock(MediaFactoryInterface::class);
+        $media_factory
+            ->expects($this->once())
+            ->method('make')
+            ->with('M1', $tree)
+            ->willReturn($media);
+
+        Registry::mediaFactory($media_factory);
+
+        $handler  = new MediaFileDownload();
+        $request  = self::createRequest(
+            query: ['xref' => 'M1', 'fact_id' => 'missing', 'disposition' => 'inline'],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        // Replacement image response is returned for missing fact_id
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleThrowsNotFoundWhenMediaDoesNotExist(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('test2', 'Test 2');
+
+        $media_factory = $this->createMock(MediaFactoryInterface::class);
+        $media_factory
+            ->expects($this->once())
+            ->method('make')
+            ->with('X999', $tree)
+            ->willReturn(null);
+
+        Registry::mediaFactory($media_factory);
+
+        $handler = new MediaFileDownload();
+        $request = self::createRequest(
+            query: ['xref' => 'X999', 'fact_id' => 'abc', 'disposition' => 'inline'],
+            attributes: ['tree' => $tree],
+        );
+
+        $this->expectException(HttpNotFoundException::class);
+
+        $handler->handle($request);
     }
 }

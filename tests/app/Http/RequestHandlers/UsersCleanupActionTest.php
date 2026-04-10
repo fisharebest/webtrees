@@ -19,14 +19,46 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(UsersCleanupAction::class)]
 class UsersCleanupActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(UsersCleanupAction::class));
+    }
+
+    public function testHandleWithNoDeletesRedirects(): void
+    {
+        $user_service = new UserService();
+
+        $handler  = new UsersCleanupAction($user_service);
+        $request  = self::createRequest('POST', [], ['delete' => []]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+    }
+
+    public function testHandleDeletesUserAndRedirects(): void
+    {
+        $user_service = new UserService();
+        $user         = $user_service->create('cleanup', 'Cleanup User', 'cleanup@example.com', 'secret');
+
+        $handler  = new UsersCleanupAction($user_service);
+        $request  = self::createRequest('POST', [], ['delete' => [(string) $user->id()]]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+
+        // Verify user was deleted (query DB directly — UserService::find() caches results)
+        $row = DB::table('user')->where('user_id', '=', $user->id())->first();
+        self::assertNull($row);
     }
 }

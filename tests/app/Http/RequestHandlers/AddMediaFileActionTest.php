@@ -19,14 +19,69 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\MediaFactoryInterface;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\MediaFileService;
+use Fisharebest\Webtrees\Services\PendingChangesService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(AddMediaFileAction::class)]
 class AddMediaFileActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(AddMediaFileAction::class));
+    }
+
+    public function testHandleRedirectsWhenUploadFails(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('test', 'Test');
+
+        $media = self::createStub(Media::class);
+        $media->method('xref')->willReturn('M1');
+        $media->method('tree')->willReturn($tree);
+        $media->method('canShow')->willReturn(true);
+        $media->method('canEdit')->willReturn(true);
+        $media->method('url')->willReturn('https://webtrees.test/media/M1');
+
+        $media_factory = $this->createMock(MediaFactoryInterface::class);
+        $media_factory
+            ->expects($this->once())
+            ->method('make')
+            ->with('M1', $tree)
+            ->willReturn($media);
+
+        Registry::mediaFactory($media_factory);
+
+        // uploadFile returns empty string when no file was uploaded
+        $media_file_service = $this->createMock(MediaFileService::class);
+        $media_file_service
+            ->expects($this->once())
+            ->method('uploadFile')
+            ->willReturn('');
+
+        $pending_changes_service = self::createStub(PendingChangesService::class);
+
+        $handler  = new AddMediaFileAction($media_file_service, $pending_changes_service);
+        $request  = self::createRequest(
+            RequestMethodInterface::METHOD_POST,
+            [],
+            ['title' => 'Photo', 'type' => 'photo'],
+            [],
+            ['tree' => $tree, 'xref' => 'M1'],
+        );
+        $response = $handler->handle($request);
+
+        // Redirects back to media URL on upload failure
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

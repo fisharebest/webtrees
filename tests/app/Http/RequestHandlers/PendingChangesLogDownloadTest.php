@@ -19,14 +19,137 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(PendingChangesLogDownload::class)]
 class PendingChangesLogDownloadTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(PendingChangesLogDownload::class));
+    }
+
+    public function testHandleReturnsCsvResponse(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('name')->willReturn('test');
+
+        $row = (object) [
+            'change_time' => '2026-01-01 12:00:00',
+            'status'      => 'pending',
+            'xref'        => 'I1',
+            'old_gedcom'  => '0 @I1@ INDI',
+            'new_gedcom'  => '0 @I1@ INDI\n1 NAME Test /User/',
+            'user_name'   => 'admin',
+            'gedcom_name' => 'tree1',
+        ];
+
+        $query = self::createStub(Builder::class);
+        $query->method('get')->willReturn(new Collection([$row]));
+
+        $pending_changes_service = self::createStub(PendingChangesService::class);
+        $pending_changes_service->method('changesQuery')->willReturn($query);
+
+        $handler  = new PendingChangesLogDownload($pending_changes_service);
+        $request  = self::createRequest()
+            ->withAttribute('tree', $tree);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame('text/csv; charset=UTF-8', $response->getHeaderLine('content-type'));
+        self::assertSame('attachment; filename="changes.csv"', $response->getHeaderLine('content-disposition'));
+    }
+
+    public function testHandleReturnsBodyContent(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('name')->willReturn('test');
+
+        $row = (object) [
+            'change_time' => '2026-01-01 12:00:00',
+            'status'      => 'pending',
+            'xref'        => 'I1',
+            'old_gedcom'  => '',
+            'new_gedcom'  => '0 @I1@ INDI',
+            'user_name'   => 'admin',
+            'gedcom_name' => 'tree1',
+        ];
+
+        $query = self::createStub(Builder::class);
+        $query->method('get')->willReturn(new Collection([$row]));
+
+        $pending_changes_service = self::createStub(PendingChangesService::class);
+        $pending_changes_service->method('changesQuery')->willReturn($query);
+
+        $handler  = new PendingChangesLogDownload($pending_changes_service);
+        $request  = self::createRequest()
+            ->withAttribute('tree', $tree);
+        $response = $handler->handle($request);
+
+        $body = (string) $response->getBody();
+        self::assertStringContainsString('2026-01-01 12:00:00', $body);
+        self::assertStringContainsString('pending', $body);
+        self::assertStringContainsString('I1', $body);
+        self::assertStringContainsString('admin', $body);
+        self::assertStringContainsString('tree1', $body);
+    }
+
+    public function testHandleEscapesDoubleQuotesInCsv(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('name')->willReturn('test');
+
+        $row = (object) [
+            'change_time' => '2026-01-01 12:00:00',
+            'status'      => 'pending',
+            'xref'        => 'I1',
+            'old_gedcom'  => 'old "data"',
+            'new_gedcom'  => 'new "data"',
+            'user_name'   => 'user "name"',
+            'gedcom_name' => 'tree "1"',
+        ];
+
+        $query = self::createStub(Builder::class);
+        $query->method('get')->willReturn(new Collection([$row]));
+
+        $pending_changes_service = self::createStub(PendingChangesService::class);
+        $pending_changes_service->method('changesQuery')->willReturn($query);
+
+        $handler  = new PendingChangesLogDownload($pending_changes_service);
+        $request  = self::createRequest()
+            ->withAttribute('tree', $tree);
+        $response = $handler->handle($request);
+
+        $body = (string) $response->getBody();
+        // Double quotes are escaped as "" in CSV
+        self::assertStringContainsString('""data""', $body);
+        self::assertStringContainsString('""name""', $body);
+        self::assertStringContainsString('""1""', $body);
+    }
+
+    public function testHandleWithEmptyChanges(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('name')->willReturn('test');
+
+        $query = self::createStub(Builder::class);
+        $query->method('get')->willReturn(new Collection());
+
+        $pending_changes_service = self::createStub(PendingChangesService::class);
+        $pending_changes_service->method('changesQuery')->willReturn($query);
+
+        $handler  = new PendingChangesLogDownload($pending_changes_service);
+        $request  = self::createRequest()
+            ->withAttribute('tree', $tree);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 }

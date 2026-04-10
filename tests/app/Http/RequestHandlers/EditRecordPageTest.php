@@ -19,14 +19,47 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Services\GedcomEditService;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(EditRecordPage::class)]
 class EditRecordPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(EditRecordPage::class));
+    }
+
+    public function testHandleReturnsOkForSourceRecord(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('test', 'Test');
+
+        // checkRecordAccess($record, true) requires edit permission.
+        $user = (new UserService())->create('editor', 'Editor', 'editor@example.com', 'secret');
+        $tree->setUserPreference($user, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MANAGER);
+        Auth::login($user);
+
+        $gedcom_import_service->importRecord("0 @S1@ SOUR\n1 TITL Test Source", $tree, false);
+
+        $gedcom_edit_service = new GedcomEditService();
+
+        $handler  = new EditRecordPage($gedcom_edit_service);
+        $request  = self::createRequest(
+            attributes: ['tree' => $tree, 'xref' => 'S1'],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

@@ -19,14 +19,85 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Factories\IndividualFactory;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(HourglassChartModule::class)]
 class HourglassChartModuleTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(HourglassChartModule::class));
+    }
+
+    public function testTitleIsNotEmpty(): void
+    {
+        $module = new HourglassChartModule();
+
+        self::assertNotEmpty($module->title());
+    }
+
+    public function testHandleReturnsOkResponseForValidIndividual(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $individual = self::createStub(Individual::class);
+        $individual->method('canShow')->willReturn(true);
+        $individual->method('xref')->willReturn('X123');
+        $individual->method('tree')->willReturn($tree);
+        $individual->method('fullName')->willReturn('Test Person');
+
+        // The view layout also calls the factory, so use atLeastOnce().
+        $individual_factory = $this->createMock(IndividualFactory::class);
+        $individual_factory->expects(self::atLeastOnce())
+            ->method('make')
+            ->willReturn($individual);
+        Registry::individualFactory($individual_factory);
+
+        $module = new HourglassChartModule();
+
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], [
+            'tree'        => $tree,
+            'xref'        => 'X123',
+            'generations' => 3,
+            'spouses'     => false,
+        ]);
+
+        $response = $module->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleThrowsExceptionForNullIndividual(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $individual_factory = $this->createMock(IndividualFactory::class);
+        $individual_factory->expects(self::atLeastOnce())
+            ->method('make')
+            ->willReturn(null);
+        Registry::individualFactory($individual_factory);
+
+        $module = new HourglassChartModule();
+
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], [
+            'tree'        => $tree,
+            'xref'        => 'X999',
+            'generations' => 3,
+            'spouses'     => false,
+        ]);
+
+        $this->expectException(HttpNotFoundException::class);
+
+        $module->handle($request);
     }
 }

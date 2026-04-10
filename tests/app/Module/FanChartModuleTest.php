@@ -19,14 +19,91 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Factories\IndividualFactory;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(FanChartModule::class)]
 class FanChartModuleTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(FanChartModule::class));
+    }
+
+    public function testTitleIsNotEmpty(): void
+    {
+        $chart_service = self::createStub(ChartService::class);
+        $module        = new FanChartModule($chart_service);
+
+        self::assertNotEmpty($module->title());
+    }
+
+    public function testHandleReturnsOkResponseForValidIndividual(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $individual = self::createStub(Individual::class);
+        $individual->method('canShow')->willReturn(true);
+        $individual->method('xref')->willReturn('X123');
+        $individual->method('tree')->willReturn($tree);
+        $individual->method('fullName')->willReturn('Test Person');
+
+        // The view layout also calls the factory, so use atLeastOnce().
+        $individual_factory = $this->createMock(IndividualFactory::class);
+        $individual_factory->expects(self::atLeastOnce())
+            ->method('make')
+            ->willReturn($individual);
+        Registry::individualFactory($individual_factory);
+
+        $chart_service = self::createStub(ChartService::class);
+        $module        = new FanChartModule($chart_service);
+
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], [
+            'tree'        => $tree,
+            'xref'        => 'X123',
+            'style'       => FanChartModule::DEFAULT_STYLE,
+            'generations' => FanChartModule::DEFAULT_GENERATIONS,
+            'width'       => FanChartModule::DEFAULT_WIDTH,
+        ]);
+
+        $response = $module->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleThrowsExceptionForNullIndividual(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $individual_factory = $this->createMock(IndividualFactory::class);
+        $individual_factory->expects(self::atLeastOnce())
+            ->method('make')
+            ->willReturn(null);
+        Registry::individualFactory($individual_factory);
+
+        $chart_service = self::createStub(ChartService::class);
+        $module        = new FanChartModule($chart_service);
+
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], [
+            'tree'        => $tree,
+            'xref'        => 'X999',
+            'style'       => FanChartModule::DEFAULT_STYLE,
+            'generations' => FanChartModule::DEFAULT_GENERATIONS,
+            'width'       => FanChartModule::DEFAULT_WIDTH,
+        ]);
+
+        $this->expectException(HttpNotFoundException::class);
+
+        $module->handle($request);
     }
 }

@@ -19,14 +19,86 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\GedcomRecordFactoryInterface;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(MergeRecordsPage::class)]
 class MergeRecordsPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(MergeRecordsPage::class));
+    }
+
+    public function testHandleReturnsOkWithNoRecords(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $record_factory = $this->createMock(GedcomRecordFactoryInterface::class);
+        $record_factory
+            ->expects($this->exactly(2))
+            ->method('make')
+            ->willReturn(null);
+
+        Registry::gedcomRecordFactory($record_factory);
+
+        $handler  = new MergeRecordsPage();
+        $request  = self::createRequest(
+            RequestMethodInterface::METHOD_GET,
+            ['xref1' => '', 'xref2' => ''],
+            [],
+            [],
+            ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleReturnsOkWithIndividualRecords(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $individual1 = self::createStub(Individual::class);
+        $individual1->method('xref')->willReturn('I1');
+        $individual1->method('tree')->willReturn($tree);
+        $individual1->method('canShow')->willReturn(true);
+
+        $individual2 = self::createStub(Individual::class);
+        $individual2->method('xref')->willReturn('I2');
+        $individual2->method('tree')->willReturn($tree);
+        $individual2->method('canShow')->willReturn(true);
+
+        $record_factory = $this->createMock(GedcomRecordFactoryInterface::class);
+        $record_factory
+            ->expects($this->exactly(2))
+            ->method('make')
+            ->willReturnCallback(static fn (string $xref) => match ($xref) {
+                'I1'    => $individual1,
+                'I2'    => $individual2,
+                default => null,
+            });
+
+        Registry::gedcomRecordFactory($record_factory);
+
+        $handler  = new MergeRecordsPage();
+        $request  = self::createRequest(
+            RequestMethodInterface::METHOD_GET,
+            ['xref1' => 'I1', 'xref2' => 'I2'],
+            [],
+            [],
+            ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

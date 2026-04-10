@@ -19,14 +19,49 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(CreateLocationAction::class)]
 class CreateLocationActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(CreateLocationAction::class));
+    }
+
+    public function testHandleCreatesLocationAndReturnsJsonResponse(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('test', 'Test');
+
+        $user_service = new UserService();
+        $user         = $user_service->create('testuser', 'Test User', 'test@example.com', 'secret');
+        Auth::login($user);
+
+        $handler  = new CreateLocationAction();
+        $request  = self::createRequest(
+            RequestMethodInterface::METHOD_POST,
+            [],
+            ['location_name' => 'Test Location'],
+            [],
+            ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertStringContainsString('application/json', $response->getHeaderLine('content-type'));
+
+        $body = json_decode((string) $response->getBody(), true);
+        self::assertArrayHasKey('value', $body);
+        self::assertNotEmpty($body['value']);
     }
 }

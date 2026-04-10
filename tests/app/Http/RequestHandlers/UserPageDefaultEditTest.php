@@ -19,14 +19,34 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\HomePageService;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(UserPageDefaultEdit::class)]
 class UserPageDefaultEditTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(UserPageDefaultEdit::class));
+    }
+
+    public function testHandleReturnsOkResponse(): void
+    {
+        // Mock HomePageService to avoid view-rendering of real block modules.
+        $home_page_service = $this->createMock(HomePageService::class);
+        $home_page_service->method('checkDefaultUserBlocksExist');
+        $home_page_service->method('userBlocks')->willReturn(new Collection());
+        $home_page_service->method('availableUserBlocks')->willReturn(new Collection());
+
+        $handler  = new UserPageDefaultEdit($home_page_service);
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

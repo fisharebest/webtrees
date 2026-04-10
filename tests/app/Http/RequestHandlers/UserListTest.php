@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -34,6 +35,19 @@ class UserListTest extends TestCase
         $handler  = new UserListPage();
         $request  = self::createRequest()
             ->withAttribute('user', Auth::user());
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandlerWithRegisteredUser(): void
+    {
+        $user_service = new UserService();
+        $user         = $user_service->create('ulist', 'User List', 'ulist@example.com', 'secret');
+
+        $handler  = new UserListPage();
+        $request  = self::createRequest()
+            ->withAttribute('user', $user);
         $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());

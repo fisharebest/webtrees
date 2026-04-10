@@ -19,14 +19,39 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(PendingChangesRejectTree::class)]
 class PendingChangesRejectTreeTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(PendingChangesRejectTree::class));
+    }
+
+    public function testHandleRejectsTreeChanges(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('id')->willReturn(1);
+        $tree->method('title')->willReturn('Test Tree');
+
+        $pending_changes_service = $this->createMock(PendingChangesService::class);
+        $pending_changes_service
+            ->expects(self::once())
+            ->method('rejectTree')
+            ->with($tree);
+
+        $handler = new PendingChangesRejectTree($pending_changes_service);
+        $request = self::createRequest()
+            ->withAttribute('tree', $tree);
+
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 }

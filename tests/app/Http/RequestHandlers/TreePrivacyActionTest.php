@@ -19,14 +19,44 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(TreePrivacyAction::class)]
 class TreePrivacyActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(TreePrivacyAction::class));
+    }
+
+    public function testHandleRedirectsAfterSave(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('priv-act', 'Privacy Action');
+
+        $handler  = new TreePrivacyAction();
+        $request  = self::createRequest('POST', [], [
+            'delete'                    => [],
+            'xref'                      => [],
+            'tag_type'                  => [],
+            'resn'                      => [],
+            'HIDE_LIVE_PEOPLE'          => '1',
+            'KEEP_ALIVE_YEARS_BIRTH'    => '0',
+            'KEEP_ALIVE_YEARS_DEATH'    => '0',
+            'MAX_ALIVE_AGE'             => '120',
+            'REQUIRE_AUTHENTICATION'    => '0',
+            'SHOW_DEAD_PEOPLE'          => '2',
+            'SHOW_LIVING_NAMES'         => '2',
+            'SHOW_PRIVATE_RELATIONSHIPS' => '1',
+        ], [], ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

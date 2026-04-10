@@ -19,14 +19,41 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SearchPhoneticAction::class)]
 class SearchPhoneticActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(SearchPhoneticAction::class));
+    }
+
+    public function testHandleRedirects(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('test', 'Test');
+
+        $handler  = new SearchPhoneticAction();
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
+            'firstname'    => 'John',
+            'lastname'     => 'Smith',
+            'place'        => 'London',
+            'search_trees' => ['test'],
+            'soundex'      => 'Russell',
+        ], [], ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        self::assertStringContainsString('John', $response->getHeaderLine('location'));
+        self::assertStringContainsString('Smith', $response->getHeaderLine('location'));
+        self::assertStringContainsString('London', $response->getHeaderLine('location'));
     }
 }

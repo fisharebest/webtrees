@@ -31,7 +31,12 @@ class SiteLogsPageTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    public function testResponse(): void
+    public function testClass(): void
+    {
+        self::assertTrue(class_exists(SiteLogsPage::class));
+    }
+
+    public function testHandleReturnsOkResponse(): void
     {
         $request = self::createRequest();
 
@@ -41,6 +46,28 @@ class SiteLogsPageTest extends TestCase
         $user_service = self::createStub(UserService::class);
         $user_service->method('all')->willReturn(new Collection());
 
+        $handler  = new SiteLogsPage($tree_service, $user_service);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleWithQueryFilters(): void
+    {
+        $tree_service = self::createStub(TreeService::class);
+        $tree_service->method('all')->willReturn(new Collection());
+
+        $user_service = self::createStub(UserService::class);
+        $user_service->method('all')->willReturn(new Collection());
+
+        $request  = self::createRequest('GET', [
+            'action'   => 'auth',
+            'type'     => 'config',
+            'text'     => 'search text',
+            'ip'       => '127.0.0.1',
+            'username' => 'admin',
+            'tree'     => 'tree1',
+        ]);
         $handler  = new SiteLogsPage($tree_service, $user_service);
         $response = $handler->handle($request);
 

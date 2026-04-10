@@ -19,14 +19,79 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\IndividualFactoryInterface;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ReorderNamesPage::class)]
 class ReorderNamesPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(ReorderNamesPage::class));
+    }
+
+    public function testHandleReturnsOkForEditableIndividual(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $individual = self::createStub(Individual::class);
+        $individual->method('xref')->willReturn('X1');
+        $individual->method('tree')->willReturn($tree);
+        $individual->method('canEdit')->willReturn(true);
+        $individual->method('canShow')->willReturn(true);
+        $individual->method('fullName')->willReturn('John /Doe/');
+        $individual->method('url')->willReturn('https://webtrees.test/individual/X1');
+
+        $individual_factory = self::createStub(IndividualFactoryInterface::class);
+        $individual_factory
+            ->method('make')
+            ->willReturn($individual);
+
+        Registry::individualFactory($individual_factory);
+
+        $handler  = new ReorderNamesPage();
+        $request  = self::createRequest(
+            RequestMethodInterface::METHOD_GET,
+            [],
+            [],
+            [],
+            ['tree' => $tree, 'xref' => 'X1'],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleWithUnknownIndividualThrowsNotFoundException(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $individual_factory = self::createStub(IndividualFactoryInterface::class);
+        $individual_factory
+            ->method('make')
+            ->willReturn(null);
+
+        Registry::individualFactory($individual_factory);
+
+        $handler = new ReorderNamesPage();
+        $request = self::createRequest(
+            RequestMethodInterface::METHOD_GET,
+            [],
+            [],
+            [],
+            ['tree' => $tree, 'xref' => 'X999'],
+        );
+
+        $this->expectException(HttpNotFoundException::class);
+
+        $handler->handle($request);
     }
 }

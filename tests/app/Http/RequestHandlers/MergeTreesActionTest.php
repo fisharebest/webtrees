@@ -19,14 +19,54 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\AdminService;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(MergeTreesAction::class)]
 class MergeTreesActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(MergeTreesAction::class));
+    }
+
+    public function testHandleMergesEmptyTreesAndRedirects(): void
+    {
+        $tree_service  = new TreeService(new GedcomImportService());
+        $tree1         = $tree_service->create('merge-src', 'Merge Source');
+        $tree2         = $tree_service->create('merge-dst', 'Merge Destination');
+        $admin_service = new AdminService();
+
+        $handler  = new MergeTreesAction($admin_service, $tree_service);
+        $request  = self::createRequest('POST', [], [
+            'tree1_name' => $tree1->name(),
+            'tree2_name' => $tree2->name(),
+        ]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+    }
+
+    public function testHandleWithSameTreeRedirectsToPage(): void
+    {
+        $tree_service  = new TreeService(new GedcomImportService());
+        $tree          = $tree_service->create('merge-same', 'Merge Same');
+        $admin_service = new AdminService();
+
+        $handler  = new MergeTreesAction($admin_service, $tree_service);
+        $request  = self::createRequest('POST', [], [
+            'tree1_name' => $tree->name(),
+            'tree2_name' => $tree->name(),
+        ]);
+        $response = $handler->handle($request);
+
+        // Same tree cannot be merged, redirects back to the merge page
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

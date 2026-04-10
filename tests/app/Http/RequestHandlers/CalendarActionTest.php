@@ -19,14 +19,42 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(CalendarAction::class)]
 class CalendarActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(CalendarAction::class));
+    }
+
+    public function testHandleRedirects(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('test', 'Test');
+
+        $handler  = new CalendarAction();
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
+            'cal'      => '@#DGREGORIAN@',
+            'day'      => 15,
+            'month'    => 'JUN',
+            'year'     => 2026,
+            'filterev' => 'BIRT',
+            'filterof' => 'all',
+            'filtersx' => 'M',
+        ], [], ['tree' => $tree, 'view' => 'day']);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        self::assertStringContainsString('calendar%2Fday', $response->getHeaderLine('location'));
+        self::assertStringContainsString('JUN', $response->getHeaderLine('location'));
     }
 }

@@ -19,14 +19,35 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\LeafletJsService;
+use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(MapDataAdd::class)]
 class MapDataAddTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(MapDataAdd::class));
+    }
+
+    public function testHandleWithNoParentReturnsOk(): void
+    {
+        $leaflet_js_service = $this->createMock(LeafletJsService::class);
+        $leaflet_js_service->expects(self::once())
+            ->method('config')
+            ->willReturn((object) ['tileProviders' => []]);
+
+        $map_data_service = $this->createMock(MapDataService::class);
+
+        $handler  = new MapDataAdd($leaflet_js_service, $map_data_service);
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

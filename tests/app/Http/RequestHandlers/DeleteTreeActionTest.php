@@ -19,14 +19,35 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(DeleteTreeAction::class)]
 class DeleteTreeActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(DeleteTreeAction::class));
+    }
+
+    public function testHandleDeletesTreeAndReturnsNoContent(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('delete-me', 'Tree to Delete');
+
+        $handler  = new DeleteTreeAction($tree_service);
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], [], [], [
+            'tree' => $tree,
+        ]);
+        $response = $handler->handle($request);
+
+        // response() with no content returns 204
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 }

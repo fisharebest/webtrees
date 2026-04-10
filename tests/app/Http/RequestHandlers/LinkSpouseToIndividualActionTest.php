@@ -19,14 +19,58 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Services\GedcomEditService;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(LinkSpouseToIndividualAction::class)]
 class LinkSpouseToIndividualActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(LinkSpouseToIndividualAction::class));
+    }
+
+    public function testHandleCreatesNewFamilyAndRedirects(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('test', 'Test');
+
+        // checkIndividualAccess($individual, true) requires edit permission.
+        $user = (new UserService())->create('editor', 'Editor', 'editor@example.com', 'secret');
+        $tree->setUserPreference($user, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MANAGER);
+        Auth::login($user);
+
+        // Create two individuals in the database
+        $gedcom_import_service->importRecord("0 @I1@ INDI\n1 NAME John /Doe/\n1 SEX M", $tree, false);
+        $gedcom_import_service->importRecord("0 @I2@ INDI\n1 NAME Jane /Smith/\n1 SEX F", $tree, false);
+
+        $gedcom_edit_service = $this->createMock(GedcomEditService::class);
+        $gedcom_edit_service
+            ->expects($this->once())
+            ->method('editLinesToGedcom')
+            ->willReturn('');
+
+        $handler  = new LinkSpouseToIndividualAction($gedcom_edit_service);
+        $request  = self::createRequest(
+            RequestMethodInterface::METHOD_POST,
+            [],
+            ['spid' => 'I2', 'flevels' => [], 'ftags' => [], 'fvalues' => []],
+            [],
+            ['tree' => $tree, 'xref' => 'I1'],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

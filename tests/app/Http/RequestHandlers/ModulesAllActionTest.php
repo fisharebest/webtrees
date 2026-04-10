@@ -19,14 +19,34 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ModulesAllAction::class)]
 class ModulesAllActionTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(ModulesAllAction::class));
+    }
+
+    public function testHandleWithNoModulesRedirects(): void
+    {
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service->expects(self::once())
+            ->method('all')
+            ->with(true)
+            ->willReturn(new Collection());
+
+        $handler  = new ModulesAllAction($module_service);
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

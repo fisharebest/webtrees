@@ -19,14 +19,35 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(CreateNoteModal::class)]
 class CreateNoteModalTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(CreateNoteModal::class));
+    }
+
+    public function testHandleReturnsModalContent(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $handler  = new CreateNoteModal();
+        $request  = self::createRequest(
+            RequestMethodInterface::METHOD_GET,
+            [],
+            [],
+            [],
+            ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

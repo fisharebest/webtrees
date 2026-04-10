@@ -19,8 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Algorithm\MyersDiff;
+use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Query\Builder;
 use PHPUnit\Framework\Attributes\CoversClass;
+use Psr\Http\Message\ResponseInterface;
 
 #[CoversClass(PendingChangesLogData::class)]
 class PendingChangesLogDataTest extends TestCase
@@ -28,5 +35,35 @@ class PendingChangesLogDataTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(PendingChangesLogData::class));
+    }
+
+    public function testHandleDelegatesQueryToDatatablesService(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('name')->willReturn('test');
+
+        $query = self::createStub(Builder::class);
+
+        $pending_changes_service = $this->createMock(PendingChangesService::class);
+        $pending_changes_service->expects(self::once())
+            ->method('changesQuery')
+            ->willReturn($query);
+
+        $expected_response = self::createStub(ResponseInterface::class);
+        $expected_response->method('getStatusCode')->willReturn(StatusCodeInterface::STATUS_OK);
+
+        $datatables_service = $this->createMock(DatatablesService::class);
+        $datatables_service->expects(self::once())
+            ->method('handleQuery')
+            ->willReturn($expected_response);
+
+        $myers_diff = self::createStub(MyersDiff::class);
+
+        $handler  = new PendingChangesLogData($datatables_service, $myers_diff, $pending_changes_service);
+        $request  = self::createRequest()
+            ->withAttribute('tree', $tree);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

@@ -19,14 +19,85 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SearchPhoneticPage::class)]
 class SearchPhoneticPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(SearchPhoneticPage::class));
+    }
+
+    /**
+     * The default page (no search terms) renders with STATUS_OK.
+     */
+    public function testHandleDefaultPage(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+        $search_service        = new SearchService($tree_service);
+
+        $handler  = new SearchPhoneticPage($search_service, $tree_service);
+        $request  = self::createRequest(attributes: ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        $body = (string) $response->getBody();
+        self::assertNotEmpty($body);
+    }
+
+    /**
+     * A phonetic search with a lastname renders the page.
+     */
+    public function testHandleWithLastname(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+        $search_service        = new SearchService($tree_service);
+
+        $handler  = new SearchPhoneticPage($search_service, $tree_service);
+        $request  = self::createRequest(
+            query: ['lastname' => 'Smith', 'soundex' => 'Russell'],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    /**
+     * A phonetic search with Daitch-Mokotoff soundex renders the page.
+     */
+    public function testHandleWithDaitchMokotoff(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+        $search_service        = new SearchService($tree_service);
+
+        $handler  = new SearchPhoneticPage($search_service, $tree_service);
+        $request  = self::createRequest(
+            query: [
+                'firstname' => 'John',
+                'lastname'  => 'Doe',
+                'place'     => 'London',
+                'soundex'   => 'DaitchM',
+            ],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

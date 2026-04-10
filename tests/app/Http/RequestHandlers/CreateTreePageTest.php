@@ -19,14 +19,58 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(CreateTreePage::class)]
 class CreateTreePageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(CreateTreePage::class));
+    }
+
+    public function testHandleReturnsOkResponse(): void
+    {
+        $tree_service = $this->createMock(TreeService::class);
+        $tree_service->expects(self::once())
+            ->method('uniqueTreeName')
+            ->willReturn('tree1');
+
+        $handler  = new CreateTreePage($tree_service);
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleWithCustomQueryParams(): void
+    {
+        $tree_service = self::createStub(TreeService::class);
+        $tree_service->method('uniqueTreeName')->willReturn('default');
+
+        $handler  = new CreateTreePage($tree_service);
+        $request  = self::createRequest('GET', ['name' => 'custom-tree', 'title' => 'Custom Title']);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleUsesDefaultsWhenNoQueryParams(): void
+    {
+        $tree_service = $this->createMock(TreeService::class);
+        $tree_service->expects(self::once())
+            ->method('uniqueTreeName')
+            ->willReturn('tree-auto');
+
+        $handler  = new CreateTreePage($tree_service);
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

@@ -19,14 +19,47 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(EditNoteAction::class)]
 class EditNoteActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(EditNoteAction::class));
+    }
+
+    public function testHandleUpdatesNoteAndRedirects(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('test', 'Test');
+
+        $user_service = new UserService();
+        $user         = $user_service->create('testuser', 'Test User', 'test@example.com', 'secret');
+        Auth::login($user);
+
+        $gedcom_import_service->importRecord("0 @N1@ NOTE This is a test note", $tree, false);
+
+        $handler  = new EditNoteAction();
+        $request  = self::createRequest(
+            RequestMethodInterface::METHOD_POST,
+            [],
+            ['NOTE' => 'Updated note text'],
+            [],
+            ['tree' => $tree, 'xref' => 'N1'],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

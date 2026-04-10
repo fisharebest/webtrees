@@ -19,14 +19,46 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\AdminService;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ManageTrees::class)]
 class ManageTreesTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(ManageTrees::class));
+    }
+
+    public function testHandleReturnsOkWithTree(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('manage', 'Manage Tree');
+
+        $admin_service = new AdminService();
+
+        $handler  = new ManageTrees($admin_service, $tree_service);
+        $request  = self::createRequest('GET', [], [], [], ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleReturnsOkWithoutTree(): void
+    {
+        $tree_service  = new TreeService(new GedcomImportService());
+        $admin_service = new AdminService();
+
+        $handler  = new ManageTrees($admin_service, $tree_service);
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

@@ -19,14 +19,61 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SearchReplacePage::class)]
 class SearchReplacePageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(SearchReplacePage::class));
+    }
+
+    /**
+     * The default page renders with STATUS_OK.
+     */
+    public function testHandleDefaultPage(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+
+        $handler  = new SearchReplacePage();
+        $request  = self::createRequest(attributes: ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        $body = (string) $response->getBody();
+        self::assertNotEmpty($body);
+    }
+
+    /**
+     * The page renders with query params pre-filled.
+     */
+    public function testHandleWithQueryParams(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+
+        $handler  = new SearchReplacePage();
+        $request  = self::createRequest(
+            query: [
+                'search'  => 'Doe',
+                'replace' => 'Smith',
+                'context' => 'all',
+            ],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

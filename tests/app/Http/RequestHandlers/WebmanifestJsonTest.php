@@ -19,14 +19,30 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(WebmanifestJson::class)]
 class WebmanifestJsonTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(WebmanifestJson::class));
+    }
+
+    public function testHandleReturnsOkWithJsonContent(): void
+    {
+        $handler  = new WebmanifestJson();
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame('application/json', $response->getHeaderLine('content-type'));
+        self::assertSame('public,max-age=31536000', $response->getHeaderLine('cache-control'));
+
+        $body = (string) $response->getBody();
+        self::assertNotEmpty($body);
     }
 }

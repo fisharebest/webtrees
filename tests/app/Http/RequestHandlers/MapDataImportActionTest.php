@@ -32,13 +32,37 @@ class MapDataImportActionTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    public function testImportAction(): void
+    public function testClass(): void
     {
-        $csv              = $this->createUploadedFile(dirname(__DIR__, 3) . '/data/places.csv', 'text/csv');
-        $handler          = new MapDataImportAction(new Psr17Factory());
-        $request          = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['options' => 'add', 'source' => 'client'], ['localfile' => $csv]);
-        $response         = $handler->handle($request);
+        self::assertTrue(class_exists(MapDataImportAction::class));
+    }
 
+    public function testHandleClientUploadImportsCsvAndRedirects(): void
+    {
+        $csv     = $this->createUploadedFile(dirname(__DIR__, 3) . '/data/places.csv', 'text/csv');
+        $handler = new MapDataImportAction(new Psr17Factory());
+        $request = self::createRequest(
+            RequestMethodInterface::METHOD_POST,
+            [],
+            ['options' => 'add', 'source' => 'client'],
+            ['client_file' => $csv]
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+    }
+
+    public function testHandleClientUploadWithNoFileRedirects(): void
+    {
+        $handler = new MapDataImportAction(new Psr17Factory());
+        $request = self::createRequest(
+            RequestMethodInterface::METHOD_POST,
+            [],
+            ['options' => 'add', 'source' => 'client']
+        );
+        $response = $handler->handle($request);
+
+        // No file provided => redirects to import page
         self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

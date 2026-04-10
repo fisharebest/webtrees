@@ -19,14 +19,54 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomExportService;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 
 #[CoversClass(ExportGedcomClient::class)]
 class ExportGedcomClientTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(ExportGedcomClient::class));
+    }
+
+    public function testHandleReturnsDownloadableResponse(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('test', 'Test');
+        $response_factory      = Registry::container()->get(ResponseFactoryInterface::class);
+        $stream_factory        = Registry::container()->get(StreamFactoryInterface::class);
+        $export_service        = new GedcomExportService($response_factory, $stream_factory);
+
+        $handler  = new ExportGedcomClient($export_service);
+        $request  = self::createRequest(
+            RequestMethodInterface::METHOD_POST,
+            [],
+            [
+                'filename'     => 'test.ged',
+                'format'       => 'gedcom',
+                'privacy'      => 'none',
+                'encoding'     => UTF8::NAME,
+                'line_endings' => 'LF',
+            ],
+            [],
+            ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertNotEmpty($response->getHeaderLine('content-type'));
     }
 }

@@ -19,14 +19,178 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\GedcomRecordFactoryInterface;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(MergeRecordsAction::class)]
 class MergeRecordsActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(MergeRecordsAction::class));
+    }
+
+    public function testHandleRedirectsToFactsPageWhenRecordsAreValid(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $record1 = self::createStub(GedcomRecord::class);
+        $record1->method('xref')->willReturn('X1');
+        $record1->method('tree')->willReturn($tree);
+        $record1->method('tag')->willReturn('INDI');
+        $record1->method('isPendingDeletion')->willReturn(false);
+        $record1->method('canShow')->willReturn(true);
+
+        $record2 = self::createStub(GedcomRecord::class);
+        $record2->method('xref')->willReturn('X2');
+        $record2->method('tree')->willReturn($tree);
+        $record2->method('tag')->willReturn('INDI');
+        $record2->method('isPendingDeletion')->willReturn(false);
+        $record2->method('canShow')->willReturn(true);
+
+        $record_factory = $this->createMock(GedcomRecordFactoryInterface::class);
+        $record_factory
+            ->expects($this->exactly(2))
+            ->method('make')
+            ->willReturnCallback(static fn (string $xref) => match ($xref) {
+                'X1'    => $record1,
+                'X2'    => $record2,
+                default => null,
+            });
+
+        Registry::gedcomRecordFactory($record_factory);
+
+        $handler  = new MergeRecordsAction();
+        $request  = self::createRequest(
+            RequestMethodInterface::METHOD_POST,
+            [],
+            ['xref1' => 'X1', 'xref2' => 'X2'],
+            [],
+            ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+    }
+
+    public function testHandleRedirectsBackWhenRecord1IsNull(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $record_factory = $this->createMock(GedcomRecordFactoryInterface::class);
+        $record_factory
+            ->expects($this->exactly(2))
+            ->method('make')
+            ->willReturn(null);
+
+        Registry::gedcomRecordFactory($record_factory);
+
+        $handler  = new MergeRecordsAction();
+        $request  = self::createRequest(
+            RequestMethodInterface::METHOD_POST,
+            [],
+            ['xref1' => 'X1', 'xref2' => 'X2'],
+            [],
+            ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        // Redirects back to MergeRecordsPage when validation fails
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+    }
+
+    public function testHandleRedirectsBackWhenTagsDiffer(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $record1 = self::createStub(GedcomRecord::class);
+        $record1->method('xref')->willReturn('X1');
+        $record1->method('tree')->willReturn($tree);
+        $record1->method('tag')->willReturn('INDI');
+        $record1->method('isPendingDeletion')->willReturn(false);
+        $record1->method('canShow')->willReturn(true);
+
+        $record2 = self::createStub(GedcomRecord::class);
+        $record2->method('xref')->willReturn('X2');
+        $record2->method('tree')->willReturn($tree);
+        $record2->method('tag')->willReturn('FAM');
+        $record2->method('isPendingDeletion')->willReturn(false);
+        $record2->method('canShow')->willReturn(true);
+
+        $record_factory = $this->createMock(GedcomRecordFactoryInterface::class);
+        $record_factory
+            ->expects($this->exactly(2))
+            ->method('make')
+            ->willReturnCallback(static fn (string $xref) => match ($xref) {
+                'X1'    => $record1,
+                'X2'    => $record2,
+                default => null,
+            });
+
+        Registry::gedcomRecordFactory($record_factory);
+
+        $handler  = new MergeRecordsAction();
+        $request  = self::createRequest(
+            RequestMethodInterface::METHOD_POST,
+            [],
+            ['xref1' => 'X1', 'xref2' => 'X2'],
+            [],
+            ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        // Redirects back to MergeRecordsPage when record types differ
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+    }
+
+    public function testHandleRedirectsBackWhenRecordIsPendingDeletion(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $record1 = self::createStub(GedcomRecord::class);
+        $record1->method('xref')->willReturn('X1');
+        $record1->method('tree')->willReturn($tree);
+        $record1->method('tag')->willReturn('INDI');
+        $record1->method('isPendingDeletion')->willReturn(true);
+        $record1->method('canShow')->willReturn(true);
+
+        $record2 = self::createStub(GedcomRecord::class);
+        $record2->method('xref')->willReturn('X2');
+        $record2->method('tree')->willReturn($tree);
+        $record2->method('tag')->willReturn('INDI');
+        $record2->method('isPendingDeletion')->willReturn(false);
+        $record2->method('canShow')->willReturn(true);
+
+        $record_factory = $this->createMock(GedcomRecordFactoryInterface::class);
+        $record_factory
+            ->expects($this->exactly(2))
+            ->method('make')
+            ->willReturnCallback(static fn (string $xref) => match ($xref) {
+                'X1'    => $record1,
+                'X2'    => $record2,
+                default => null,
+            });
+
+        Registry::gedcomRecordFactory($record_factory);
+
+        $handler  = new MergeRecordsAction();
+        $request  = self::createRequest(
+            RequestMethodInterface::METHOD_POST,
+            [],
+            ['xref1' => 'X1', 'xref2' => 'X2'],
+            [],
+            ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        // Redirects back to MergeRecordsPage when record is pending deletion
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

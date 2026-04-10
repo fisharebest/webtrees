@@ -19,14 +19,32 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(EmailPreferencesPage::class)]
 class EmailPreferencesPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(EmailPreferencesPage::class));
+    }
+
+    public function testHandleReturnsOkResponse(): void
+    {
+        $email_service = self::createStub(EmailService::class);
+        $email_service->method('mailSslOptions')->willReturn(['ssl' => 'SSL', 'tls' => 'TLS']);
+        $email_service->method('mailTransportOptions')->willReturn(['internal' => 'PHP', 'smtp' => 'SMTP']);
+        $email_service->method('isValidEmail')->willReturn(true);
+
+        $handler  = new EmailPreferencesPage($email_service);
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

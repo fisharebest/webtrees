@@ -19,14 +19,36 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SelectDefaultTree::class)]
 class SelectDefaultTreeTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(SelectDefaultTree::class));
+    }
+
+    public function testHandleSetsDefaultTreeAndRedirects(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('default-test', 'Default Test');
+
+        $handler  = new SelectDefaultTree();
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], [], [], [
+            'tree' => $tree,
+        ]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        self::assertSame('default-test', Site::getPreference('DEFAULT_GEDCOM'));
     }
 }

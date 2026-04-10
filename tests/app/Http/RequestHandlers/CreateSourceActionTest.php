@@ -19,14 +19,92 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(CreateSourceAction::class)]
 class CreateSourceActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(CreateSourceAction::class));
+    }
+
+    /**
+     * Creating a source with mandatory title returns STATUS_OK JSON.
+     */
+    public function testHandleCreatesSourceWithTitleOnly(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+
+        $user_service = new UserService();
+        $user         = $user_service->create('testuser', 'Test User', 'test@example.com', 'secret');
+        Auth::login($user);
+
+        $handler  = new CreateSourceAction();
+        $request  = self::createRequest(
+            method: RequestMethodInterface::METHOD_POST,
+            params: [
+                'source-title'        => 'Census 1901',
+                'source-abbreviation' => '',
+                'source-author'       => '',
+                'source-publication'  => '',
+                'source-repository'   => '',
+                'source-call-number'  => '',
+                'source-text'         => '',
+                'restriction'         => '',
+            ],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        $body = (string) $response->getBody();
+        self::assertStringContainsString('"value":', $body);
+        self::assertStringContainsString('"html":', $body);
+    }
+
+    /**
+     * Creating a source with all optional fields returns STATUS_OK JSON.
+     */
+    public function testHandleCreatesSourceWithAllFields(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+
+        $user_service = new UserService();
+        $user         = $user_service->create('testuser2', 'Test User', 'test2@example.com', 'secret');
+        Auth::login($user);
+
+        $handler  = new CreateSourceAction();
+        $request  = self::createRequest(
+            method: RequestMethodInterface::METHOD_POST,
+            params: [
+                'source-title'        => 'Census 1901',
+                'source-abbreviation' => 'C1901',
+                'source-author'       => 'Census Office',
+                'source-publication'  => 'HMSO',
+                'source-repository'   => '',
+                'source-call-number'  => '',
+                'source-text'         => 'Full census text',
+                'restriction'         => 'confidential',
+            ],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

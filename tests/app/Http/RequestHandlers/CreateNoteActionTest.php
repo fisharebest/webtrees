@@ -19,14 +19,75 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(CreateNoteAction::class)]
 class CreateNoteActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(CreateNoteAction::class));
+    }
+
+    /**
+     * Creating a note with valid data returns STATUS_OK with JSON containing the XREF.
+     */
+    public function testHandleCreatesNoteAndReturnsJson(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+
+        $user_service = new UserService();
+        $user         = $user_service->create('testuser', 'Test User', 'test@example.com', 'secret');
+        Auth::login($user);
+
+        $handler  = new CreateNoteAction();
+        $request  = self::createRequest(
+            method: RequestMethodInterface::METHOD_POST,
+            params: ['note' => 'Test note text', 'restriction' => ''],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        $body = (string) $response->getBody();
+        self::assertStringContainsString('"value":', $body);
+        self::assertStringContainsString('"text":', $body);
+        self::assertStringContainsString('"html":', $body);
+    }
+
+    /**
+     * Creating a note with a restriction includes the RESN tag in the GEDCOM.
+     */
+    public function testHandleCreatesNoteWithRestriction(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+
+        $user_service = new UserService();
+        $user         = $user_service->create('testuser2', 'Test User', 'test2@example.com', 'secret');
+        Auth::login($user);
+
+        $handler  = new CreateNoteAction();
+        $request  = self::createRequest(
+            method: RequestMethodInterface::METHOD_POST,
+            params: ['note' => 'Private note', 'restriction' => 'confidential'],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

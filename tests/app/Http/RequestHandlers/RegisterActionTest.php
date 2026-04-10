@@ -19,14 +19,46 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Services\CaptchaService;
+use Fisharebest\Webtrees\Services\EmailService;
+use Fisharebest\Webtrees\Services\RateLimitService;
+use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(RegisterAction::class)]
 class RegisterActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(RegisterAction::class));
+    }
+
+    public function testHandleThrowsNotFoundWhenRegistrationDisabled(): void
+    {
+        Site::setPreference('USE_REGISTRATION_MODULE', '0');
+
+        $captcha_service    = self::createStub(CaptchaService::class);
+        $email_service      = self::createStub(EmailService::class);
+        $rate_limit_service = self::createStub(RateLimitService::class);
+        $user_service       = self::createStub(UserService::class);
+
+        $handler = new RegisterAction($captcha_service, $email_service, $rate_limit_service, $user_service);
+        $request = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
+            'username' => 'test',
+            'realname' => 'Test',
+            'email'    => 'test@example.com',
+            'password' => 'secret',
+            'comments' => 'Hello',
+        ]);
+
+        $this->expectException(HttpNotFoundException::class);
+
+        $handler->handle($request);
     }
 }

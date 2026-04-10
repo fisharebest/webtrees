@@ -19,14 +19,37 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ModulesAllPage::class)]
 class ModulesAllPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(ModulesAllPage::class));
+    }
+
+    public function testHandleReturnsOkWithEmptyModuleList(): void
+    {
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service->expects(self::once())
+            ->method('all')
+            ->with(true)
+            ->willReturn(new Collection());
+        $module_service->expects(self::once())
+            ->method('deletedModules')
+            ->willReturn(new Collection());
+
+        $handler  = new ModulesAllPage($module_service);
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

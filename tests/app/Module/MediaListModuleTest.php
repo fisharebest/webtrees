@@ -19,14 +19,44 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(MediaListModule::class)]
 class MediaListModuleTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(MediaListModule::class));
+    }
+
+    public function testTitleIsNotEmpty(): void
+    {
+        $linked_record_service = self::createStub(LinkedRecordService::class);
+        $module                = new MediaListModule($linked_record_service);
+
+        self::assertNotEmpty($module->title());
+    }
+
+    public function testHandleReturnsOkResponse(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $linked_record_service = self::createStub(LinkedRecordService::class);
+        $module                = new MediaListModule($linked_record_service);
+
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], [
+            'tree' => $tree,
+        ]);
+
+        $response = $module->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

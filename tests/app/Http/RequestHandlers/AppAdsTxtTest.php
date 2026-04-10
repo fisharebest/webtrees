@@ -19,14 +19,29 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(AppAdsTxt::class)]
 class AppAdsTxtTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(AppAdsTxt::class));
+    }
+
+    public function testHandleReturnsOkWithPlainText(): void
+    {
+        $handler  = new AppAdsTxt();
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame('text/plain', $response->getHeaderLine('content-type'));
+
+        $body = (string) $response->getBody();
+        self::assertStringContainsString('#No pesky ads here', $body);
     }
 }

@@ -19,14 +19,34 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(UnconnectedAction::class)]
 class UnconnectedActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(UnconnectedAction::class));
+    }
+
+    public function testHandleRedirectsToUnconnectedPage(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('uncon-act', 'Unconnected Action');
+
+        $handler  = new UnconnectedAction();
+        $request  = self::createRequest('POST', [], [
+            'aliases'    => '0',
+            'associates' => '0',
+        ], [], ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

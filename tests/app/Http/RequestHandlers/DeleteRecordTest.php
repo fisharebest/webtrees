@@ -19,14 +19,43 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(DeleteRecord::class)]
 class DeleteRecordTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(DeleteRecord::class));
+    }
+
+    /**
+     * When the record XREF does not exist, Auth::checkRecordAccess(null) throws HttpNotFoundException.
+     */
+    public function testHandleThrowsNotFoundForMissingRecord(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+
+        $linked_record_service = $this->createMock(LinkedRecordService::class);
+        $linked_record_service->expects(self::never())->method('allLinkedRecords');
+
+        $handler = new DeleteRecord($linked_record_service);
+        $request = self::createRequest(
+            method: RequestMethodInterface::METHOD_POST,
+            attributes: ['tree' => $tree, 'xref' => 'X_NONEXISTENT'],
+        );
+
+        $this->expectException(HttpNotFoundException::class);
+        $handler->handle($request);
     }
 }

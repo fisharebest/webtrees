@@ -19,14 +19,31 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(MapDataDeleteUnused::class)]
 class MapDataDeleteUnusedTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(MapDataDeleteUnused::class));
+    }
+
+    public function testHandleDeletesUnusedAndRedirects(): void
+    {
+        $map_data_service = $this->createMock(MapDataService::class);
+        $map_data_service->expects(self::once())
+            ->method('deleteUnusedLocations')
+            ->with(null, [0]);
+
+        $handler  = new MapDataDeleteUnused($map_data_service);
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

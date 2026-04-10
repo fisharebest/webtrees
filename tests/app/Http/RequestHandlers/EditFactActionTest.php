@@ -19,14 +19,47 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Services\GedcomEditService;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(EditFactAction::class)]
 class EditFactActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(EditFactAction::class));
+    }
+
+    /**
+     * When the record XREF does not exist, Auth::checkRecordAccess(null) throws HttpNotFoundException.
+     */
+    public function testHandleThrowsNotFoundForMissingRecord(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+
+        $gedcom_edit_service = $this->createMock(GedcomEditService::class);
+        $gedcom_edit_service->expects(self::never())->method('editLinesToGedcom');
+
+        $module_service = $this->createMock(ModuleService::class);
+
+        $handler = new EditFactAction($gedcom_edit_service, $module_service);
+        $request = self::createRequest(
+            method: RequestMethodInterface::METHOD_POST,
+            params: ['levels' => [], 'tags' => [], 'values' => []],
+            attributes: ['tree' => $tree, 'xref' => 'X_NONEXISTENT', 'fact_id' => 'new'],
+        );
+
+        $this->expectException(HttpNotFoundException::class);
+        $handler->handle($request);
     }
 }

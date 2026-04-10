@@ -19,14 +19,52 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Services\MapDataService;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(MapDataList::class)]
 class MapDataListTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(MapDataList::class));
+    }
+
+    public function testHandleWithNoParentId(): void
+    {
+        $map_data_service = $this->createMock(MapDataService::class);
+        $map_data_service->expects(self::once())
+            ->method('importMissingLocations');
+        $map_data_service->expects(self::once())
+            ->method('activePlaces')
+            ->willReturn([]);
+        $map_data_service->expects(self::once())
+            ->method('getPlaceListLocation')
+            ->with(null)
+            ->willReturn(new Collection());
+
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service->expects(self::once())
+            ->method('findByInterface')
+            ->willReturn(new Collection());
+
+        $tree_service = $this->createMock(TreeService::class);
+        $tree_service->expects(self::once())
+            ->method('all')
+            ->willReturn(new Collection());
+
+        $handler  = new MapDataList($map_data_service, $module_service, $tree_service);
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

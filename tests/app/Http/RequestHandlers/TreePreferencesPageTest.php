@@ -19,14 +19,47 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(TreePreferencesPage::class)]
 class TreePreferencesPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(TreePreferencesPage::class));
+    }
+
+    public function testHandleReturnsOkResponse(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('prefs-tree', 'Preferences Tree');
+
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service->expects(self::once())
+            ->method('findByInterface')
+            ->willReturn(new Collection());
+        $module_service->expects(self::once())
+            ->method('titleMapper')
+            ->willReturn(static fn ($module): string => $module->title());
+
+        $user_service = $this->createMock(UserService::class);
+        $user_service->expects(self::once())
+            ->method('all')
+            ->willReturn(new Collection());
+
+        $handler  = new TreePreferencesPage($module_service, $tree_service, $user_service);
+        $request  = self::createRequest('GET', [], [], [], ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

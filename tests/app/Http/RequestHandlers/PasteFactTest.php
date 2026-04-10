@@ -19,14 +19,49 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(PasteFact::class)]
 class PasteFactTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(PasteFact::class));
+    }
+
+    public function testHandlePastesFactAndRedirects(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('paste-fact', 'Paste Fact');
+
+        $user_service = new UserService();
+        $user         = $user_service->create('testuser', 'Test User', 'test@example.com', 'secret');
+        Auth::login($user);
+
+        // Create an individual record for the paste target
+        $tree->createIndividual("0 @@ INDI\n1 NAME Test /User/\n1 SEX M");
+
+        $clipboard_service = $this->createMock(ClipboardService::class);
+        $clipboard_service->expects(self::once())
+            ->method('pasteFact');
+
+        $handler  = new PasteFact($clipboard_service);
+        $request  = self::createRequest('POST', [], ['fact_id' => 'some-fact-id'], [], [
+            'tree' => $tree,
+            'xref' => 'X1',
+        ]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

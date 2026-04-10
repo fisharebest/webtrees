@@ -19,14 +19,84 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(CreateRepositoryAction::class)]
 class CreateRepositoryActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(CreateRepositoryAction::class));
+    }
+
+    /**
+     * Creating a repository with just a name returns STATUS_OK JSON.
+     */
+    public function testHandleCreatesRepositoryWithNameOnly(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+
+        $user_service = new UserService();
+        $user         = $user_service->create('testuser', 'Test User', 'test@example.com', 'secret');
+        Auth::login($user);
+
+        $handler  = new CreateRepositoryAction();
+        $request  = self::createRequest(
+            method: RequestMethodInterface::METHOD_POST,
+            params: [
+                'name'        => 'National Archives',
+                'address'     => '',
+                'url'         => '',
+                'restriction' => '',
+            ],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        $body = (string) $response->getBody();
+        self::assertStringContainsString('"value":', $body);
+        self::assertStringContainsString('"html":', $body);
+    }
+
+    /**
+     * Creating a repository with all optional fields returns STATUS_OK JSON.
+     */
+    public function testHandleCreatesRepositoryWithAllFields(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+
+        $user_service = new UserService();
+        $user         = $user_service->create('testuser2', 'Test User', 'test2@example.com', 'secret');
+        Auth::login($user);
+
+        $handler  = new CreateRepositoryAction();
+        $request  = self::createRequest(
+            method: RequestMethodInterface::METHOD_POST,
+            params: [
+                'name'        => 'British Library',
+                'address'     => '96 Euston Road, London',
+                'url'         => 'https://www.bl.uk',
+                'restriction' => 'confidential',
+            ],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

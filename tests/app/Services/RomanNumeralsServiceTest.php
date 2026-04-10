@@ -25,8 +25,46 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(RomanNumeralsService::class)]
 class RomanNumeralsServiceTest extends TestCase
 {
-    public function testClass(): void
+    public function testNumberToRomanNumerals(): void
     {
-        self::assertTrue(class_exists(RomanNumeralsService::class));
+        $service = new RomanNumeralsService();
+
+        self::assertSame('I', $service->numberToRomanNumerals(1));
+        self::assertSame('IV', $service->numberToRomanNumerals(4));
+        self::assertSame('IX', $service->numberToRomanNumerals(9));
+        self::assertSame('XIV', $service->numberToRomanNumerals(14));
+        self::assertSame('XLII', $service->numberToRomanNumerals(42));
+        self::assertSame('XCIX', $service->numberToRomanNumerals(99));
+        self::assertSame('MDCCCLXXXVIII', $service->numberToRomanNumerals(1888));
+        self::assertSame('MMXXIV', $service->numberToRomanNumerals(2024));
+    }
+
+    public function testNumberToRomanNumeralsEdgeCases(): void
+    {
+        $service = new RomanNumeralsService();
+
+        self::assertSame('0', $service->numberToRomanNumerals(0));
+        self::assertSame('-1', $service->numberToRomanNumerals(-1));
+    }
+
+    public function testRomanNumeralsToNumber(): void
+    {
+        $service = new RomanNumeralsService();
+
+        self::assertSame(1, $service->romanNumeralsToNumber('I'));
+        self::assertSame(4, $service->romanNumeralsToNumber('IV'));
+        self::assertSame(9, $service->romanNumeralsToNumber('IX'));
+        self::assertSame(14, $service->romanNumeralsToNumber('XIV'));
+        self::assertSame(42, $service->romanNumeralsToNumber('XLII'));
+        self::assertSame(99, $service->romanNumeralsToNumber('XCIX'));
+        self::assertSame(1888, $service->romanNumeralsToNumber('MDCCCLXXXVIII'));
+        self::assertSame(2024, $service->romanNumeralsToNumber('MMXXIV'));
+    }
+
+    public function testRomanNumeralsToNumberEmpty(): void
+    {
+        $service = new RomanNumeralsService();
+
+        self::assertSame(0, $service->romanNumeralsToNumber(''));
     }
 }

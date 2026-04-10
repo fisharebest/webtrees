@@ -19,14 +19,54 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(PasswordResetAction::class)]
 class PasswordResetActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(PasswordResetAction::class));
+    }
+
+    public function testHandleWithValidToken(): void
+    {
+        $real_user_service = new UserService();
+        $user = $real_user_service->create('resetuser', 'Reset User', 'reset@example.com', 'oldpass');
+
+        $user_service = $this->createMock(UserService::class);
+        $user_service->expects(self::once())
+            ->method('findByToken')
+            ->with('valid-token')
+            ->willReturn($user);
+
+        $handler  = new PasswordResetAction($user_service);
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['password' => 'newpass123'])
+            ->withAttribute('token', 'valid-token');
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+    }
+
+    public function testHandleWithExpiredToken(): void
+    {
+        $user_service = $this->createMock(UserService::class);
+        $user_service->expects(self::once())
+            ->method('findByToken')
+            ->with('expired-token')
+            ->willReturn(null);
+
+        $handler  = new PasswordResetAction($user_service);
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['password' => 'newpass123'])
+            ->withAttribute('token', 'expired-token');
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

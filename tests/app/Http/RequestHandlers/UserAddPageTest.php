@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -28,10 +29,41 @@ class UserAddPageTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    public function testHandler(): void
+    public function testClass(): void
+    {
+        self::assertTrue(class_exists(UserAddPage::class));
+    }
+
+    public function testHandleReturnsOk(): void
     {
         $handler  = new UserAddPage();
         $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleWithPrefillQueryParams(): void
+    {
+        $handler  = new UserAddPage();
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [
+            'email'     => 'prefill@example.com',
+            'real_name' => 'Prefilled Name',
+            'username'  => 'prefilluser',
+        ]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleWithEmptyQueryParams(): void
+    {
+        $handler  = new UserAddPage();
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [
+            'email'     => '',
+            'real_name' => '',
+            'username'  => '',
+        ]);
         $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());

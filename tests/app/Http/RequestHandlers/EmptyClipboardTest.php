@@ -19,14 +19,32 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(EmptyClipboard::class)]
 class EmptyClipboardTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(EmptyClipboard::class));
+    }
+
+    public function testHandleEmptiesClipboardAndRedirects(): void
+    {
+        $clipboard_service = $this->createMock(ClipboardService::class);
+        $clipboard_service->expects(self::once())
+            ->method('emptyClipboard');
+
+        $handler  = new EmptyClipboard($clipboard_service);
+        $request  = self::createRequest('POST', [], [
+            'url' => 'https://webtrees.test/index.php',
+        ]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

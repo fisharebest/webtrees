@@ -29,7 +29,12 @@ class MapDataExportCSVTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    public function testExportCSV(): void
+    public function testClass(): void
+    {
+        self::assertTrue(class_exists(MapDataExportCSV::class));
+    }
+
+    public function testHandleExportsCSVWithOkResponse(): void
     {
         $map_data_service = new MapDataService();
         $handler          = new MapDataExportCSV($map_data_service);

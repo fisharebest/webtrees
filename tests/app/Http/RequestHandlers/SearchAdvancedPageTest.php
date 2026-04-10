@@ -19,14 +19,87 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SearchAdvancedPage::class)]
 class SearchAdvancedPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(SearchAdvancedPage::class));
+    }
+
+    /**
+     * The default page (no search fields filled) renders with STATUS_OK.
+     */
+    public function testHandleDefaultPage(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+        $search_service        = new SearchService($tree_service);
+
+        $handler  = new SearchAdvancedPage($search_service);
+        $request  = self::createRequest(attributes: ['tree' => $tree]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        $body = (string) $response->getBody();
+        self::assertNotEmpty($body);
+    }
+
+    /**
+     * When search fields are provided but empty, no search is performed.
+     */
+    public function testHandleWithEmptyFields(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+        $search_service        = new SearchService($tree_service);
+
+        $handler  = new SearchAdvancedPage($search_service);
+        $request  = self::createRequest(
+            query: [
+                'fields' => ['INDI:NAME:GIVN' => '', 'INDI:NAME:SURN' => ''],
+            ],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    /**
+     * When search fields contain values, a search is performed and the page renders.
+     */
+    public function testHandleWithSearchFields(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+        $search_service        = new SearchService($tree_service);
+
+        $handler  = new SearchAdvancedPage($search_service);
+        $request  = self::createRequest(
+            query: [
+                'fields' => ['INDI:NAME:GIVN' => 'John', 'INDI:NAME:SURN' => 'Doe'],
+            ],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        $body = (string) $response->getBody();
+        self::assertNotEmpty($body);
     }
 }

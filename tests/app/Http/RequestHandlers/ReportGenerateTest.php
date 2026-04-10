@@ -19,14 +19,45 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ReportGenerate::class)]
 class ReportGenerateTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(ReportGenerate::class));
+    }
+
+    public function testHandleRedirectsWhenModuleNotFound(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('name')->willReturn('test');
+
+        $user = self::createStub(UserInterface::class);
+
+        $module_service = self::createStub(ModuleService::class);
+        $module_service->method('findByName')->willReturn(null);
+
+        $handler  = new ReportGenerate($module_service);
+        $request  = self::createRequest('GET', [
+            'format'      => 'HTML',
+            'destination' => 'view',
+            'varnames'    => [],
+            'vars'        => [],
+        ])
+            ->withAttribute('tree', $tree)
+            ->withAttribute('user', $user)
+            ->withAttribute('report', 'nonexistent');
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

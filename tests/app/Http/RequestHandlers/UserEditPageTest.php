@@ -21,13 +21,14 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Services\EmailService;
-use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(UserEditPage::class)]
@@ -35,18 +36,50 @@ class UserEditPageTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    public function testHandler(): void
+    public function testClass(): void
     {
-        $mail_service    = new EmailService();
-        $module_service  = new ModuleService();
-        $tree_service    = new TreeService(new GedcomImportService());
+        self::assertTrue(class_exists(UserEditPage::class));
+    }
+
+    public function testHandleReturnsEditPageForExistingUser(): void
+    {
         $user_service    = new UserService();
+        $user            = $user_service->create('edituser', 'Edit User', 'edit@example.com', 'password1');
+
+        $module_service  = $this->createMock(ModuleService::class);
+        $module_service->expects(self::exactly(2))
+            ->method('findByInterface')
+            ->willReturn(new Collection([]));
+        $module_service->expects(self::once())
+            ->method('titleMapper')
+            ->willReturn(static fn ($module) => $module->title());
+
+        $mail_service    = new EmailService();
         $message_service = new MessageService($mail_service, $user_service);
-        $user            = $user_service->create('user', 'real', 'email', 'pass');
-        $handler         = new UserEditPage($message_service, $module_service, $tree_service, $user_service);
-        $request         = self::createRequest(RequestMethodInterface::METHOD_GET, ['user_id' => (string) $user->id()]);
-        $response        = $handler->handle($request);
+        $tree_service    = $this->createMock(TreeService::class);
+        $tree_service->expects(self::once())
+            ->method('all')
+            ->willReturn(new Collection([]));
+
+        $handler  = new UserEditPage($message_service, $module_service, $tree_service, $user_service);
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['user_id' => (string) $user->id()]);
+        $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleThrowsNotFoundForNonExistingUser(): void
+    {
+        $this->expectException(HttpNotFoundException::class);
+
+        $user_service    = new UserService();
+        $module_service  = self::createStub(ModuleService::class);
+        $mail_service    = new EmailService();
+        $message_service = new MessageService($mail_service, $user_service);
+        $tree_service    = self::createStub(TreeService::class);
+
+        $handler = new UserEditPage($message_service, $module_service, $tree_service, $user_service);
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['user_id' => '99999']);
+        $handler->handle($request);
     }
 }

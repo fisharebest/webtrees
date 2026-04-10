@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
@@ -32,12 +33,35 @@ class AccountEditTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    public function testHandler(): void
+    public function testClass(): void
     {
-        $user            = self::createStub(User::class);
+        self::assertTrue(class_exists(AccountEdit::class));
+    }
+
+    public function testHandleWithoutTree(): void
+    {
+        $user = self::createStub(User::class);
+
         $message_service = self::createStub(MessageService::class);
         $module_service  = self::createStub(ModuleService::class);
+        $module_service->method('findByInterface')->willReturn(new Collection([]));
 
+        $request = self::createRequest()
+            ->withAttribute('user', $user);
+
+        $handler  = new AccountEdit($message_service, $module_service);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleWithRealUser(): void
+    {
+        $user_service = new UserService();
+        $user         = $user_service->create('accedituser', 'Acc Edit', 'accedit@example.com', 'password1');
+
+        $message_service = self::createStub(MessageService::class);
+        $module_service  = self::createStub(ModuleService::class);
         $module_service->method('findByInterface')->willReturn(new Collection([]));
 
         $request = self::createRequest()

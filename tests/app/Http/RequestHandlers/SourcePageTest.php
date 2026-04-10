@@ -19,14 +19,150 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\SlugFactoryInterface;
+use Fisharebest\Webtrees\Contracts\SourceFactoryInterface;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
+use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SourcePage::class)]
 class SourcePageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(SourcePage::class));
+    }
+
+    public function testHandleReturnsOkForVisibleSource(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $source = self::createStub(Source::class);
+        $source->method('xref')->willReturn('S1');
+        $source->method('tree')->willReturn($tree);
+        $source->method('canShow')->willReturn(true);
+        $source->method('canEdit')->willReturn(false);
+        $source->method('fullName')->willReturn('Test Source');
+        $source->method('url')->willReturn('https://webtrees.test/source/S1');
+        $source->method('facts')->willReturn(new Collection());
+
+        $source_factory = $this->createMock(SourceFactoryInterface::class);
+        $source_factory
+            ->expects($this->once())
+            ->method('make')
+            ->with('S1', $tree)
+            ->willReturn($source);
+
+        Registry::sourceFactory($source_factory);
+
+        $slug_factory = $this->createMock(SlugFactoryInterface::class);
+        $slug_factory->method('make')->willReturn('');
+
+        Registry::slugFactory($slug_factory);
+
+        $clipboard_service = $this->createMock(ClipboardService::class);
+        $clipboard_service
+            ->expects($this->once())
+            ->method('pastableFacts')
+            ->willReturn(new Collection());
+
+        $linked_record_service = $this->createMock(LinkedRecordService::class);
+        $linked_record_service->method('linkedFamilies')->willReturn(new Collection());
+        $linked_record_service->method('linkedIndividuals')->willReturn(new Collection());
+        $linked_record_service->method('linkedLocations')->willReturn(new Collection());
+        $linked_record_service->method('linkedMedia')->willReturn(new Collection());
+        $linked_record_service->method('linkedNotes')->willReturn(new Collection());
+
+        $handler  = new SourcePage($clipboard_service, $linked_record_service);
+        $request  = self::createRequest(
+            RequestMethodInterface::METHOD_GET,
+            [],
+            [],
+            [],
+            ['tree' => $tree, 'xref' => 'S1', 'slug' => ''],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleRedirectsOnSlugMismatch(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $source = self::createStub(Source::class);
+        $source->method('xref')->willReturn('S1');
+        $source->method('tree')->willReturn($tree);
+        $source->method('canShow')->willReturn(true);
+        $source->method('canEdit')->willReturn(false);
+        $source->method('url')->willReturn('https://webtrees.test/source/S1/test-source');
+
+        $source_factory = $this->createMock(SourceFactoryInterface::class);
+        $source_factory
+            ->expects($this->once())
+            ->method('make')
+            ->with('S1', $tree)
+            ->willReturn($source);
+
+        Registry::sourceFactory($source_factory);
+
+        $slug_factory = $this->createMock(SlugFactoryInterface::class);
+        $slug_factory->method('make')->willReturn('test-source');
+
+        Registry::slugFactory($slug_factory);
+
+        $clipboard_service = self::createStub(ClipboardService::class);
+        $linked_record_service = self::createStub(LinkedRecordService::class);
+
+        $handler  = new SourcePage($clipboard_service, $linked_record_service);
+        $request  = self::createRequest(
+            RequestMethodInterface::METHOD_GET,
+            [],
+            [],
+            [],
+            ['tree' => $tree, 'xref' => 'S1', 'slug' => 'wrong-slug'],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_MOVED_PERMANENTLY, $response->getStatusCode());
+    }
+
+    public function testHandleWithUnknownSourceThrowsNotFoundException(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $source_factory = $this->createMock(SourceFactoryInterface::class);
+        $source_factory
+            ->expects($this->once())
+            ->method('make')
+            ->with('X999', $tree)
+            ->willReturn(null);
+
+        Registry::sourceFactory($source_factory);
+
+        $clipboard_service = self::createStub(ClipboardService::class);
+        $linked_record_service = self::createStub(LinkedRecordService::class);
+
+        $handler = new SourcePage($clipboard_service, $linked_record_service);
+        $request = self::createRequest(
+            RequestMethodInterface::METHOD_GET,
+            [],
+            [],
+            [],
+            ['tree' => $tree, 'xref' => 'X999', 'slug' => ''],
+        );
+
+        $this->expectException(HttpNotFoundException::class);
+
+        $handler->handle($request);
     }
 }

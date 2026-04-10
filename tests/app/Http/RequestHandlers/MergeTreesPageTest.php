@@ -19,14 +19,49 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\AdminService;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(MergeTreesPage::class)]
 class MergeTreesPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(MergeTreesPage::class));
+    }
+
+    public function testHandleReturnsOkWithoutTrees(): void
+    {
+        $tree_service  = new TreeService(new GedcomImportService());
+        $admin_service = new AdminService();
+
+        $handler  = new MergeTreesPage($admin_service, $tree_service);
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleReturnsOkWithSelectedTrees(): void
+    {
+        $tree_service  = new TreeService(new GedcomImportService());
+        $tree1         = $tree_service->create('merge-a', 'Merge A');
+        $tree2         = $tree_service->create('merge-b', 'Merge B');
+        $admin_service = new AdminService();
+
+        $handler  = new MergeTreesPage($admin_service, $tree_service);
+        $request  = self::createRequest('GET', [
+            'tree1_name' => $tree1->name(),
+            'tree2_name' => $tree2->name(),
+        ]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

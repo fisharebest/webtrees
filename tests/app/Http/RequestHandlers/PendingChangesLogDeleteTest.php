@@ -19,14 +19,41 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Query\Builder;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(PendingChangesLogDelete::class)]
 class PendingChangesLogDeleteTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(PendingChangesLogDelete::class));
+    }
+
+    public function testHandleDeletesChangesAndReturnsNoContent(): void
+    {
+        $tree = self::createStub(Tree::class);
+        $tree->method('name')->willReturn('test');
+
+        $query = $this->createMock(Builder::class);
+        $query->expects(self::once())
+            ->method('delete');
+
+        $pending_changes_service = $this->createMock(PendingChangesService::class);
+        $pending_changes_service->expects(self::once())
+            ->method('changesQuery')
+            ->willReturn($query);
+
+        $handler  = new PendingChangesLogDelete($pending_changes_service);
+        $request  = self::createRequest()
+            ->withAttribute('tree', $tree);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 }

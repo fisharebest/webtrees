@@ -19,14 +19,86 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(CreateSubmitterAction::class)]
 class CreateSubmitterActionTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(CreateSubmitterAction::class));
+    }
+
+    /**
+     * Creating a submitter with just a name returns STATUS_OK JSON.
+     */
+    public function testHandleCreatesSubmitterWithNameOnly(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+
+        $user_service = new UserService();
+        $user         = $user_service->create('testuser', 'Test User', 'test@example.com', 'secret');
+        Auth::login($user);
+
+        $handler  = new CreateSubmitterAction();
+        $request  = self::createRequest(
+            method: RequestMethodInterface::METHOD_POST,
+            params: [
+                'submitter_name'    => 'John Doe',
+                'submitter_address' => '',
+                'submitter_email'   => '',
+                'submitter_phone'   => '',
+                'restriction'       => '',
+            ],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        $body = (string) $response->getBody();
+        self::assertStringContainsString('"value":', $body);
+        self::assertStringContainsString('"html":', $body);
+    }
+
+    /**
+     * Creating a submitter with all optional fields returns STATUS_OK JSON.
+     */
+    public function testHandleCreatesSubmitterWithAllFields(): void
+    {
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+
+        $user_service = new UserService();
+        $user         = $user_service->create('testuser2', 'Test User', 'test2@example.com', 'secret');
+        Auth::login($user);
+
+        $handler  = new CreateSubmitterAction();
+        $request  = self::createRequest(
+            method: RequestMethodInterface::METHOD_POST,
+            params: [
+                'submitter_name'    => 'Jane Smith',
+                'submitter_address' => '123 High Street',
+                'submitter_email'   => 'jane@example.com',
+                'submitter_phone'   => '+44 1234 567890',
+                'restriction'       => 'confidential',
+            ],
+            attributes: ['tree' => $tree],
+        );
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

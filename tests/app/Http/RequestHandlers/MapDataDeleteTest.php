@@ -19,14 +19,42 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(MapDataDelete::class)]
 class MapDataDeleteTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(MapDataDelete::class));
+    }
+
+    public function testHandleDeletesLocationAndRedirects(): void
+    {
+        $parent = self::createStub(PlaceLocation::class);
+        $parent->method('id')->willReturn(null);
+
+        $location = self::createStub(PlaceLocation::class);
+        $location->method('parent')->willReturn($parent);
+
+        $map_data_service = $this->createMock(MapDataService::class);
+        $map_data_service->expects(self::once())
+            ->method('findById')
+            ->with(42)
+            ->willReturn($location);
+        $map_data_service->expects(self::once())
+            ->method('deleteRecursively')
+            ->with(42);
+
+        $handler  = new MapDataDelete($map_data_service);
+        $request  = self::createRequest('GET', [], [], [], ['location_id' => '42']);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

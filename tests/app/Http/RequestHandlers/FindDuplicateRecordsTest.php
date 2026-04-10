@@ -25,8 +25,12 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(FindDuplicateRecords::class)]
 class FindDuplicateRecordsTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(FindDuplicateRecords::class));
     }
+
+    // AdminService::duplicateRecords() uses LEAST/GREATEST SQL functions
+    // which are not available in SQLite. Layer 3 only.
 }

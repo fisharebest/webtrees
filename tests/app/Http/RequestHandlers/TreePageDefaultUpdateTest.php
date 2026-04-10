@@ -19,14 +19,35 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Services\HomePageService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(TreePageDefaultUpdate::class)]
 class TreePageDefaultUpdateTest extends TestCase
 {
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(TreePageDefaultUpdate::class));
+    }
+
+    public function testHandleRedirectsToControlPanel(): void
+    {
+        $home_page_service = $this->createMock(HomePageService::class);
+        $home_page_service->expects(self::once())
+            ->method('updateTreeBlocks')
+            ->with(-1, self::anything(), self::anything());
+
+        $handler  = new TreePageDefaultUpdate($home_page_service);
+        $request  = self::createRequest('POST', [], [
+            ModuleBlockInterface::MAIN_BLOCKS => [],
+            ModuleBlockInterface::SIDE_BLOCKS => [],
+        ]);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

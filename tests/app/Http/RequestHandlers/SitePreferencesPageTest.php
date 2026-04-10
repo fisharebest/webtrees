@@ -19,14 +19,36 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SitePreferencesPage::class)]
 class SitePreferencesPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(SitePreferencesPage::class));
+    }
+
+    public function testHandleReturnsOkResponse(): void
+    {
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service->expects(self::once())
+            ->method('findByInterface')
+            ->willReturn(new Collection());
+        $module_service->expects(self::once())
+            ->method('titleMapper')
+            ->willReturn(static fn ($module): string => $module->title());
+
+        $handler  = new SitePreferencesPage($module_service);
+        $request  = self::createRequest();
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

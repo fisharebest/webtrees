@@ -19,14 +19,47 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\PhpService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ExportGedcomPage::class)]
 class ExportGedcomPageTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(ExportGedcomPage::class));
+    }
+
+    public function testHandleReturnsOkForTree(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('export-test', 'Export Test');
+
+        $handler  = new ExportGedcomPage(new PhpService());
+        $request  = self::createRequest()
+            ->withAttribute('tree', $tree);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    }
+
+    public function testHandleStripsGedExtension(): void
+    {
+        // When the tree name ends with .ged, the download filename should strip it
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('family.ged', 'Family Ged');
+
+        $handler  = new ExportGedcomPage(new PhpService());
+        $request  = self::createRequest()
+            ->withAttribute('tree', $tree);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }

@@ -19,14 +19,59 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use Psr\Http\Server\RequestHandlerInterface;
+
+use function response;
 
 #[CoversClass(SecurityHeaders::class)]
 class SecurityHeadersTest extends TestCase
 {
-    public function testClass(): void
+    public function testSecurityHeadersAreAdded(): void
     {
-        self::assertTrue(class_exists(SecurityHeaders::class));
+        $handler = self::createStub(RequestHandlerInterface::class);
+        $handler->method('handle')->willReturn(response('', StatusCodeInterface::STATUS_OK));
+
+        $request    = self::createRequest();
+        $middleware = new SecurityHeaders();
+        $response   = $middleware->process($request, $handler);
+
+        self::assertSame('browsing-topics=()', $response->getHeaderLine('Permissions-Policy'));
+        self::assertSame('same-origin', $response->getHeaderLine('Referrer-Policy'));
+        self::assertSame('nosniff', $response->getHeaderLine('X-Content-Type-Options'));
+        self::assertSame('SAMEORIGIN', $response->getHeaderLine('X-Frame-Options'));
+        self::assertSame('1; mode=block', $response->getHeaderLine('X-XSS-Protection'));
+        self::assertSame('max-age=31536000', $response->getHeaderLine('Strict-Transport-Security'));
+    }
+
+    public function testExistingHeadersAreNotOverwritten(): void
+    {
+        $inner_response = response('', StatusCodeInterface::STATUS_OK)
+            ->withHeader('X-Frame-Options', 'DENY');
+
+        $handler = self::createStub(RequestHandlerInterface::class);
+        $handler->method('handle')->willReturn($inner_response);
+
+        $request    = self::createRequest();
+        $middleware = new SecurityHeaders();
+        $response   = $middleware->process($request, $handler);
+
+        self::assertSame('DENY', $response->getHeaderLine('X-Frame-Options'));
+    }
+
+    public function testHstsOnlyForHttps(): void
+    {
+        $handler = self::createStub(RequestHandlerInterface::class);
+        $handler->method('handle')->willReturn(response('', StatusCodeInterface::STATUS_OK));
+
+        $request    = self::createRequest('GET', [], [], [], ['base_url' => 'http://webtrees.test']);
+        $middleware = new SecurityHeaders();
+        $response   = $middleware->process($request, $handler);
+
+        self::assertSame('', $response->getHeaderLine('Strict-Transport-Security'));
+        // Other security headers should still be present.
+        self::assertSame('nosniff', $response->getHeaderLine('X-Content-Type-Options'));
     }
 }

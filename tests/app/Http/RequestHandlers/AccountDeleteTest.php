@@ -20,20 +20,64 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(AccountDelete::class)]
 class AccountDeleteTest extends TestCase
 {
-    public function testHandler(): void
+    protected static bool $uses_database = true;
+
+    public function testClass(): void
+    {
+        self::assertTrue(class_exists(AccountDelete::class));
+    }
+
+    public function testHandleDeletesNonAdminUser(): void
+    {
+        $user_service = new UserService();
+        $user         = $user_service->create('delme', 'Delete Me', 'delme@example.com', 'password1');
+
+        $handler = new AccountDelete($user_service);
+        $request = self::createRequest()
+            ->withAttribute('user', $user);
+
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+
+        // User should be deleted
+        self::assertNull($user_service->findByUserName('delme'));
+    }
+
+    public function testHandleDoesNotDeleteAdministrator(): void
+    {
+        $user_service = new UserService();
+        $admin        = $user_service->create('nodeladmin', 'No Del Admin', 'nodeladmin@example.com', 'password1');
+        $admin->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
+
+        $handler = new AccountDelete($user_service);
+        $request = self::createRequest()
+            ->withAttribute('user', $admin);
+
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+
+        // Administrator should NOT be deleted
+        self::assertNotNull($user_service->findByUserName('nodeladmin'));
+    }
+
+    public function testHandleWithGuestUserRedirects(): void
     {
         $user_service = self::createStub(UserService::class);
 
-        $request = self::createRequest();
-
+        // Default request has GuestUser which is not instanceof User
         $handler  = new AccountDelete($user_service);
+        $request  = self::createRequest();
         $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
