@@ -189,11 +189,11 @@ class PendingChangesService
         }
     }
 
-    public function acceptChange(GedcomRecord $record, string $change_id): void
+    public function acceptChange(Tree $tree, string $xref, string $change_id): void
     {
         $changes = DB::table('change')
-            ->where('gedcom_id', '=', $record->tree()->id())
-            ->where('xref', '=', $record->xref())
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('xref', '=', $xref)
             ->where('change_id', '<=', $change_id)
             ->where('status', '=', 'pending')
             ->orderBy('change_id')
@@ -202,10 +202,10 @@ class PendingChangesService
         foreach ($changes as $change) {
             if ($change->new_gedcom === '') {
                 // delete
-                $this->gedcom_import_service->updateRecord($change->old_gedcom, $record->tree(), true);
+                $this->gedcom_import_service->updateRecord($change->old_gedcom, $tree, true);
             } else {
                 // add/update
-                $this->gedcom_import_service->updateRecord($change->new_gedcom, $record->tree(), false);
+                $this->gedcom_import_service->updateRecord($change->new_gedcom, $tree, false);
             }
 
             DB::table('change')
@@ -222,11 +222,11 @@ class PendingChangesService
             ->update(['status' => 'rejected']);
     }
 
-    public function rejectChange(GedcomRecord $record, string $change_id): void
+    public function rejectChange(Tree $tree, string $xref, string $change_id): void
     {
         DB::table('change')
-            ->where('gedcom_id', '=', $record->tree()->id())
-            ->where('xref', '=', $record->xref())
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('xref', '=', $xref)
             ->where('change_id', '>=', $change_id)
             ->where('status', '=', 'pending')
             ->update(['status' => 'rejected']);

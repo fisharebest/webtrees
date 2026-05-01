@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -40,12 +38,9 @@ final class PendingChangesAcceptChange implements RequestHandlerInterface
     {
         $tree   = Validator::attributes($request)->tree();
         $xref   = Validator::attributes($request)->isXref()->string('xref');
-        $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $change = $request->getAttribute('change');
 
-        if ($record instanceof GedcomRecord) {
-            $this->pending_changes_service->acceptChange($record, $change);
-        }
+        $this->pending_changes_service->acceptChange($tree, $xref, $change);
 
         return response();
     }
