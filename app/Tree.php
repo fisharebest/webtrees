@@ -156,14 +156,18 @@ class Tree
             case 'CONTACT_USER_ID':
             case 'WEBMASTER_USER_ID':
                 trigger_error('Deprecated since 2.2.6 - update the table directly');
-                DB::table('gedcom')->update(['support_user_id' => $setting_value === '' ? null : (int) $setting_value]);
+                DB::table('gedcom')
+                    ->where('gedcom_id', '=', $this->id)
+                    ->update(['support_user_id' => $setting_value === '' ? null : (int) $setting_value]);
 
                 return $this;
 
             case 'imported':
             case 'REQUIRE_AUTHENTICATION':
                 trigger_error('Deprecated since 2.2.6 - update the table directly');
-                DB::table('gedcom')->update(['private' => (int) $setting_value]);
+                DB::table('gedcom')
+                    ->where('gedcom_id', '=', $this->id)
+                    ->update(['private' => (int) $setting_value]);
 
                 return $this;
 
@@ -171,7 +175,9 @@ class Tree
             case 'MEDIA_DIRECTORY':
             case 'title':
                 trigger_error('Deprecated since 2.2.6 - update the table directly');
-                DB::table('gedcom')->update(['title' => $setting_value]);
+                DB::table('gedcom')
+                    ->where('gedcom_id', '=', $this->id)
+                    ->update(['title' => $setting_value]);
 
                 return $this;
         }
