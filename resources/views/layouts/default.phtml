@@ -49,13 +49,9 @@ $theme = Registry::container()->get(ModuleThemeInterface::class);
             <?php endif ?>
         </title>
 
-        <!--iOS-->
-        <link rel="apple-touch-icon" sizes="180x180" href="<?= e(route(AppleTouchIconPng::class)) ?>">
-        <!--Generic favicons-->
-        <link rel="icon" sizes="32x32" href="<?= e(asset('favicon-32.png')) ?>">
-        <link rel="icon" sizes="192x192" href="<?= e(asset('favicon-192.png')) ?>">
-        <!--IE11/Edge-->
-        <meta name="msapplication-config" content="<?= e(route(BrowserconfigXml::class)) ?>">
+        <!--Favicons-->
+        <?= View::make('layouts/favicons') ?>
+
 
         <link rel="manifest" href="<?= e(route(WebmanifestJson::class)) ?>" crossorigin="use-credentials">
 
