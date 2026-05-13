@@ -52,6 +52,7 @@ use Fisharebest\Webtrees\Http\Dispatcher;
 use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Http\Middleware\BaseUrl;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
+use Fisharebest\Webtrees\Http\Middleware\BootstrapAdminWizard;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\CheckForNewVersion;
 use Fisharebest\Webtrees\Http\Middleware\ClientIp;
@@ -162,6 +163,7 @@ class Webtrees
         UseDatabase::class,
         DebugLogger::class,
         UpdateDatabaseSchema::class,
+        BootstrapAdminWizard::class,
         UseSession::class,
         UseLanguage::class,
         CheckForMaintenanceMode::class,

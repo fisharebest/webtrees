@@ -55,7 +55,7 @@ use function touch;
 use function unlink;
 use function view;
 
-final class SetupWizard implements RequestHandlerInterface
+class SetupWizard implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
@@ -79,6 +79,15 @@ final class SetupWizard implements RequestHandlerInterface
         'wtuser'   => '',
         'wtpass'   => '',
         'wtemail'  => '',
+    ];
+
+    /**
+     * Map form field names to config.ini.php key names where the two differ.
+     * The wizard's form uses `baseurl`; config.ini.php uses `base_url`. All
+     * other DB-related keys (dbhost, dbport, dbuser, …) share the same name.
+     */
+    private const array CONFIG_INI_KEYS = [
+        'baseurl' => 'base_url',
     ];
 
     private const array DEFAULT_PORTS = [
@@ -177,7 +186,15 @@ final class SetupWizard implements RequestHandlerInterface
         $data = [];
 
         foreach (self::DEFAULT_DATA as $key => $default) {
-            $data[$key] = Validator::parsedBody($request)->string($key, $default);
+            // Request attributes carry values from config.ini.php (set by the
+            // ReadConfigIni middleware). They act as fallback defaults when
+            // the POST body does not supply the same field — so an install
+            // diverted to the wizard from a pre-written config.ini.php
+            // arrives at step 5 with the DB fields already filled in.
+            $attribute = $request->getAttribute(self::CONFIG_INI_KEYS[$key] ?? $key);
+            $fallback  = is_string($attribute) ? $attribute : $default;
+
+            $data[$key] = Validator::parsedBody($request)->string($key, $fallback);
         }
 
         return $data;
