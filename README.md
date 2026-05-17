@@ -3,7 +3,6 @@
 [![Unit tests](https://github.com/fisharebest/webtrees/actions/workflows/phpunit.yaml/badge.svg)](https://github.com/fisharebest/webtrees/actions/workflows/phpunit.yaml)
 [![codecov](https://codecov.io/gh/fisharebest/webtrees/branch/main/graph/badge.svg?token=zREQBP4GBs)](https://codecov.io/gh/fisharebest/webtrees)
 [![Translation status](https://translate.webtrees.net/widgets/webtrees/-/webtrees-22/svg-badge.svg)](https://weblate.iet.open.ac.uk/projects/webtrees/webtrees-22)
-[![Code Climate](https://codeclimate.com/github/fisharebest/webtrees/badges/gpa.svg)](https://codeclimate.com/github/fisharebest/webtrees)
 # webtrees - online collaborative genealogy
 
 ## Contents
