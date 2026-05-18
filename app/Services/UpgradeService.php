@@ -80,6 +80,7 @@ class UpgradeService
 
     public function __construct(
         private readonly TimeoutService $timeout_service,
+        private readonly ModuleService $module_service,
     ) {
     }
 
@@ -356,6 +357,7 @@ class UpgradeService
             'p' => PHP_VERSION,
             's' => $site_uuid,
             'd' => DB::driverName(),
+            'm' => $this->module_service->all()->map(static fn ($module) => $module->name())->implode(','),
         ];
     }
 }
