@@ -6,7 +6,7 @@
 	<Input name="birthplace" lookup="PLAC" type="text"><var var="I18N::translate('Birthplace contains')" /></Input>
 	<Input name="birthdate1" lookup="DATE" type="text"><var var="I18N::translate('Birth date range start')" /></Input>
 	<Input name="birthdate2" lookup="DATE" type="text"><var var="I18N::translate('Birth date range end')" /></Input>
-	<Input name="sortby" type="select" default="NAME" options="NAME=>I18N::translate('sort by name')|BIRT:DATE=>I18N::translate('sort by date of birth')"><var var="I18N::translate('Sort order')" /></Input>
+	<Input name="sortby" type="select" default="NAME" options="NAME=>I18N::translate('sort by name')|BIRT:DATE=>I18N::translate('sort by date of birth')|BIRT:PLAC=>I18N::translate('sort by place of birth')"><var var="I18N::translate('Sort order')" /></Input>
 	<Input name="pageSize" type="select" options="A4=>I18N::translateContext('paper size','A4')|A3=>I18N::translateContext('paper size', 'A3')|US-Letter=>I18N::translateContext('paper size','Letter')|US-Tabloid=>I18N::translateContext('paper size','Tabloid')"><var var="I18N::translate('Page size')" /></Input>
 	<SetVar name="fonts" value="dejavusans" />
 
@@ -36,7 +36,9 @@
 			<if condition="$sortby=='BIRT:DATE'"><SetVar name="fill" value="#AAAAAA" /></if>
 			<Cell bgcolor="$fill" border="1" width="100" style="label"><var var="I18N::translate('Date')" /></Cell>
 
-			<Cell border="1" width="150" style="label"><var var="I18N::translate('Place')" /></Cell>
+            <SetVar name="fill" value="" />
+            <if condition="$sortby=='BIRT:PLAC'"><SetVar name="fill" value="#AAAAAA" /></if>
+			<Cell bgcolor="$fill" border="1" width="150" style="label"><var var="I18N::translate('Place')" /></Cell>
 			<Cell border="1" newline="1" style="label"><var var="I18N::translate('Source')" /></Cell>
 		</Header>
 

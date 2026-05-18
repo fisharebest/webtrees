@@ -6,7 +6,7 @@
 	<Input name="marrplace" lookup="PLAC" type="text"><var var="I18N::translate('Marriage place contains')" /> </Input>
 	<Input name="marrdate1" lookup="DATE" type="text"><var var="I18N::translate('Marriage date range start')" /></Input>
 	<Input name="marrdate2" lookup="DATE" type="text"><var var="I18N::translate('Marriage date range end')" /></Input>
-	<Input name="sortby" type="select" default="NAME" options="NAME=>I18N::translate('sort by name')|MARR:DATE=>I18N::translate('sort by date of marriage')"><var var="I18N::translate('Sort order')" /></Input>
+	<Input name="sortby" type="select" default="NAME" options="NAME=>I18N::translate('sort by name')|MARR:DATE=>I18N::translate('sort by date of marriage')|MARR:PLAC=>I18N::translate('sort by place of marriage')"><var var="I18N::translate('Sort order')" /></Input>
 	<Input name="pageSize" type="select" options="A4=>I18N::translateContext('paper size','A4')|A3=>I18N::translateContext('paper size', 'A3')|US-Letter=>I18N::translateContext('paper size','Letter')|US-Tabloid=>I18N::translateContext('paper size','Tabloid')"><var var="I18N::translate('Page size')" /></Input>
 	<SetVar name="fonts" value="dejavusans" />
 
@@ -43,7 +43,11 @@
 				<Text style="label"><var var="I18N::translate('Date')" /></Text>
 			</TextBox>
 
-			<TextBox border="1" height="12" width="150">
+            <SetVar name="fill" value="" />
+            <if condition="$sortby=='MARR:PLAC'">
+                <SetVar name="fill" value="#AAAAAA" />
+            </if>
+			<TextBox bgcolor="$fill" border="1" height="12" width="150">
 				<Text style="label"><var var="I18N::translate('Place')" /></Text>
 			</TextBox>
 

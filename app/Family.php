@@ -311,6 +311,16 @@ class Family extends GedcomRecord
     }
 
     /**
+     * A closure which will compare families by marriage place.
+     *
+     * @return Closure(Family,Family):int
+     */
+    public static function marriagePlaceComparator(): Closure
+    {
+        return static fn (Family $x, Family $y): int => Place::compare($x->getMarriagePlace(), $y->getMarriagePlace());
+    }
+
+    /**
      * Derived classes should redefine this function, otherwise the object will have no name
      *
      * @return array<int,array<string,string>>

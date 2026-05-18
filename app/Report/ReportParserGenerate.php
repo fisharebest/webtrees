@@ -1699,11 +1699,23 @@ class ReportParserGenerate extends ReportParserBase
             case 'BIRT:DATE':
                 uasort($this->list, Individual::birthDateComparator());
                 break;
+            case 'BIRT:PLAC':
+                uasort($this->list, Individual::birthPlaceComparator());
+                break;
             case 'DEAT:DATE':
                 uasort($this->list, Individual::deathDateComparator());
                 break;
+            case 'DEAT:PLAC':
+                uasort($this->list, Individual::deathPlaceComparator());
+                break;
+            case 'BURI:PLAC':
+                uasort($this->list, Individual::burialPlaceComparator());
+                break;
             case 'MARR:DATE':
                 uasort($this->list, Family::marriageDateComparator());
+                break;
+            case 'MARR:PLAC':
+                uasort($this->list, Family::marriagePlaceComparator());
                 break;
             default:
                 // unsorted or already sorted by SQL

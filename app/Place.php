@@ -292,4 +292,28 @@ class Place
 
         return '<span class="ut">' . e($short_name) . '</span>';
     }
+
+    /**
+     * Compare two places, so they can be sorted.
+     * return -1 if $a<$b
+     * return +1 if $b>$a
+     * return 0 if places are the same
+     *
+     * @param Place $a
+     * @param Place $b
+     * @return int
+     */
+    public static function compare(Place $a, Place $b): int
+    {
+        return strcasecmp($a->reversedFullName(), $b->reversedFullName());
+    }
+
+    private function reversedFullName(): string
+    {
+        if ($this->parts->isEmpty()) {
+            return '';
+        }
+        return $this->parts->reverse()->implode(I18N::$list_separator);
+    }
+
 }
