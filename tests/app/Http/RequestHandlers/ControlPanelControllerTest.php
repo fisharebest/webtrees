@@ -50,7 +50,7 @@ class ControlPanelControllerTest extends TestCase
         $timeout_service       = new TimeoutService(php_service: new PhpService());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
-        $upgrade_service       = new UpgradeService($timeout_service);
+        $upgrade_service       = new UpgradeService($timeout_service, $module_service);
         $user_service          = new UserService();
         $handler               = new ControlPanel(
             $admin_service,

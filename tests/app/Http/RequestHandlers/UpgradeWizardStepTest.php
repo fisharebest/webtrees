@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\MaintenanceModeService;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Services\TimeoutService;
@@ -50,7 +51,7 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
-            new UpgradeService(new TimeoutService(php_service: new PhpService())),
+            new UpgradeService(new TimeoutService(php_service: new PhpService()), new ModuleService()),
         );
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Invalid']);
@@ -121,7 +122,7 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
-            new UpgradeService(new TimeoutService(php_service: new PhpService()))
+            new UpgradeService(new TimeoutService(php_service: new PhpService()), new ModuleService())
         );
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Prepare']);
@@ -137,7 +138,7 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
-            new UpgradeService(new TimeoutService(php_service: new PhpService()))
+            new UpgradeService(new TimeoutService(php_service: new PhpService()), new ModuleService())
         );
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Pending']);
@@ -160,7 +161,7 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
-            new UpgradeService(new TimeoutService(php_service: new PhpService()))
+            new UpgradeService(new TimeoutService(php_service: new PhpService()), new ModuleService())
         );
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Pending']);
@@ -181,7 +182,7 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             $tree_service,
-            new UpgradeService(new TimeoutService(php_service: new PhpService()))
+            new UpgradeService(new TimeoutService(php_service: new PhpService()), new ModuleService())
         );
 
         $request  = self::createRequest()->withQueryParams(['step' => 'Export', 'tree' => $tree->name()]);
