@@ -77,7 +77,6 @@ class TelemetryDataService
             'changes_count'            => $this->changesCount(),
             'trees'                    => $this->treesData(),
             'default_theme'            => Site::getPreference('THEME_DIR'),
-            'media_count'              => $this->mediaCount(),
             'users_count'              => $this->user_service->all()->count(),
             'user_settings'            => $this->userSettings(),
             'enabled_standard_modules' => $this->enabledStandardModules(),
@@ -112,17 +111,13 @@ class TelemetryDataService
                 'families_count'     => (int) DB::table('families')->where('f_file', '=', $treeId)->count(),
                 'sources_count'      => (int) DB::table('sources')->where('s_file', '=', $treeId)->count(),
                 'repositories_count' => (int) DB::table('other')->where('o_file', '=', $treeId)->where('o_type', '=', 'REPO')->count(),
+                'media_count'        => (int) DB::table('media')->where('m_file', '=', $treeId)->count(),
                 'notes_count'        => (int) DB::table('other')->where('o_file', '=', $treeId)->where('o_type', '=', 'NOTE')->count(),
                 'places_count'       => (int) DB::table('places')->where('p_file', '=', $treeId)->count(),
             ];
         }
 
         return $data;
-    }
-
-    private function mediaCount(): int
-    {
-        return (int) DB::table('media')->count();
     }
 
     /**
