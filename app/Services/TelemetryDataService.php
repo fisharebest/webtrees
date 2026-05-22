@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Site;
@@ -170,9 +171,16 @@ class TelemetryDataService
      */
     private function customModules(): array
     {
-        return $this->module_service->findByInterface(ModuleCustomInterface::class)
-            ->map(static fn (ModuleCustomInterface $module): string => $module->name())
+        $currentLanguage = I18N::languageTag();
+        I18N::init('en-US');
+
+        $modules = $this->module_service->findByInterface(ModuleCustomInterface::class)
+            ->map(static fn (ModuleCustomInterface $module): string => $module->title())
             ->values()
             ->all();
+
+        I18N::init($currentLanguage);
+
+        return $modules;
     }
 }
