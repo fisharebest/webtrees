@@ -344,17 +344,10 @@ class UpgradeService
      */
     private function serverParameters(): array
     {
-        $site_uuid = Site::getPreference('SITE_UUID');
-
-        if ($site_uuid === '') {
-            $site_uuid = Registry::idFactory()->uuid();
-            Site::setPreference('SITE_UUID', $site_uuid);
-        }
-
         return [
             'w' => Webtrees::VERSION,
             'p' => PHP_VERSION,
-            's' => $site_uuid,
+            's' => Site::getUuid(),
             'd' => DB::driverName(),
         ];
     }

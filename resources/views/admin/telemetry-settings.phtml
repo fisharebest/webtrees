@@ -1,0 +1,61 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\TelemetrySettingsAction;
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var string $title
+ * @var string $endpoint_url
+ * @var string $publishable_key
+ */
+
+?>
+
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
+
+<h1><?= $title ?></h1>
+
+<form method="post" action="<?= e(route(TelemetrySettingsAction::class)) ?>">
+    <div class="row mb-3">
+        <label for="TELEMETRY_ENDPOINT_URL" class="col-sm-3 col-form-label">
+            <?= I18N::translate('Telemetry endpoint URL') ?>
+        </label>
+        <div class="col-sm-9">
+            <input type="url" class="form-control" id="TELEMETRY_ENDPOINT_URL" name="TELEMETRY_ENDPOINT_URL" value="<?= e($endpoint_url) ?>" required="required">
+            <div class="form-text">
+                <?= I18N::translate('The base URL of the telemetry service endpoint.') ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="TELEMETRY_PUBLISHABLE_KEY" class="col-sm-3 col-form-label">
+            <?= I18N::translate('Publishable key') ?>
+        </label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="TELEMETRY_PUBLISHABLE_KEY" name="TELEMETRY_PUBLISHABLE_KEY" value="<?= e($publishable_key) ?>" required="required">
+            <div class="form-text">
+                <?= I18N::translate('The publishable API key for the telemetry service.') ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-9">
+            <button type="submit" class="btn btn-primary">
+                <?= view('icons/save') ?>
+                <?= I18N::translate('save') ?>
+            </button>
+
+            <a href="<?= e(route(ControlPanel::class)) ?>" class="btn btn-secondary">
+                <?= view('icons/cancel') ?>
+                <?= I18N::translate('cancel') ?>
+            </a>
+        </div>
+    </div>
+
+    <?= csrf_field() ?>
+</form>
