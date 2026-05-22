@@ -106,14 +106,24 @@ class TelemetryDataService
         foreach ($trees as $tree) {
             $treeId = $tree->id();
 
+            $roleCounts = DB::table('user_gedcom_setting')
+                ->where('gedcom_id', '=', $treeId)
+                ->where('setting_name', '=', UserInterface::PREF_TREE_ROLE)
+                ->selectRaw('setting_value, COUNT(*) as total')
+                ->groupBy('setting_value')
+                ->pluck('total', 'setting_value')
+                ->map(static fn (string $count): int => (int) $count)
+                ->all();
+
             $data[] = [
-                'individuals_count'  => (int) DB::table('individuals')->where('i_file', '=', $treeId)->count(),
-                'families_count'     => (int) DB::table('families')->where('f_file', '=', $treeId)->count(),
-                'sources_count'      => (int) DB::table('sources')->where('s_file', '=', $treeId)->count(),
-                'repositories_count' => (int) DB::table('other')->where('o_file', '=', $treeId)->where('o_type', '=', 'REPO')->count(),
-                'media_count'        => (int) DB::table('media')->where('m_file', '=', $treeId)->count(),
-                'notes_count'        => (int) DB::table('other')->where('o_file', '=', $treeId)->where('o_type', '=', 'NOTE')->count(),
-                'places_count'       => (int) DB::table('places')->where('p_file', '=', $treeId)->count(),
+                'individuals_count'      => (int) DB::table('individuals')->where('i_file', '=', $treeId)->count(),
+                'families_count'         => (int) DB::table('families')->where('f_file', '=', $treeId)->count(),
+                'sources_count'          => (int) DB::table('sources')->where('s_file', '=', $treeId)->count(),
+                'repositories_count'     => (int) DB::table('other')->where('o_file', '=', $treeId)->where('o_type', '=', 'REPO')->count(),
+                'media_count'            => (int) DB::table('media')->where('m_file', '=', $treeId)->count(),
+                'notes_count'            => (int) DB::table('other')->where('o_file', '=', $treeId)->where('o_type', '=', 'NOTE')->count(),
+                'places_count'           => (int) DB::table('places')->where('p_file', '=', $treeId)->count(),
+                'user_permissions_count' => $roleCounts,
             ];
         }
 
@@ -133,16 +143,8 @@ class TelemetryDataService
             $registeredTimestamp = (int) $user->getPreference(UserInterface::PREF_TIMESTAMP_REGISTERED);
             $lastLoginTimestamp  = (int) $user->getPreference(UserInterface::PREF_TIMESTAMP_ACTIVE);
 
-            $gedcomCanEdit = DB::table('user_gedcom_setting')
-                ->where('user_id', '=', $user->id())
-                ->where('setting_name', '=', UserInterface::PREF_TREE_ROLE)
-                ->pluck('setting_value')
-                ->all();
-
             $settings[] = [
                 'language'            => $user->getPreference(UserInterface::PREF_LANGUAGE),
-                'theme'               => $user->getPreference(UserInterface::PREF_THEME),
-                'gedcom_canedit'      => $gedcomCanEdit,
                 'last_login_age_days' => $lastLoginTimestamp > 0 ? (int) (($now - $lastLoginTimestamp) / 86400) : -1,
                 'account_age_days'    => $registeredTimestamp > 0 ? (int) (($now - $registeredTimestamp) / 86400) : -1,
             ];
