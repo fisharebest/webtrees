@@ -135,8 +135,23 @@ class Site
         }
     }
 
-    /**
-     * Get the site’s configuration settings
+    /**     * Get or generate the unique site identifier.
+     *
+     * @return string
+     */
+    public static function getUuid(): string
+    {
+        $site_uuid = self::getPreference('SITE_UUID');
+
+        if ($site_uuid === '') {
+            $site_uuid = Registry::idFactory()->uuid();
+            self::setPreference('SITE_UUID', $site_uuid);
+        }
+
+        return $site_uuid;
+    }
+
+    /**     * Get the site’s configuration settings
      *
      * @param string $setting_name
      *

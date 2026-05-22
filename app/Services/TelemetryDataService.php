@@ -25,11 +25,9 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use PDO;
 
-use function hash;
 use function ini_get;
 use function php_uname;
 
@@ -60,14 +58,7 @@ class TelemetryDataService
 
     private function siteUuid(): string
     {
-        $siteId = Site::getPreference('SITE_UUID');
-
-        if ($siteId === '') {
-            $siteId = bin2hex(random_bytes(16));
-            Site::setPreference('SITE_UUID', $siteId);
-        }
-
-        return hash('sha256', $siteId);
+        return Site::getUuid();
     }
 
     /**
