@@ -102,7 +102,6 @@ class TelemetryDataService
     private function changesCount(): int
     {
         return (int) DB::table('change')
-            ->where('status', '=', 'pending')
             ->count();
     }
 
