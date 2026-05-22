@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Services\TelemetryDataService;
 use Fisharebest\Webtrees\Site;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -51,7 +52,7 @@ final class TelemetrySubmitAction implements RequestHandlerInterface
         $endpointUrl    = Site::getPreference('TELEMETRY_ENDPOINT_URL') ?: 'https://vjdwtasmykejamkdprro.supabase.co';
         $publishableKey = Site::getPreference('TELEMETRY_PUBLISHABLE_KEY') ?: 'sb_publishable_mzCwYJ8Fs2yjE2gvQgDDeg_Vwpj5uDQ';
 
-        $url = rtrim($endpointUrl, '/') . '/rest/v1/telemetry';
+        $url = rtrim($endpointUrl, '/') . '/rest/v1/rpc/submit_webtrees_telemetry';
 
         try {
             $client = new Client([
@@ -70,7 +71,14 @@ final class TelemetrySubmitAction implements RequestHandlerInterface
 
             FlashMessages::addMessage(I18N::translate('Telemetry data has been sent successfully. Thank you!'), 'success');
         } catch (GuzzleException $exception) {
-            FlashMessages::addMessage(I18N::translate('Failed to send telemetry data.') . ' ' . $exception->getMessage(), 'danger');
+            $errorDetail = '';
+            if ($exception instanceof RequestException && $exception->getResponse() !== null) {
+                $errorDetail = (string) $exception->getResponse()->getBody();
+            }
+            if ($errorDetail === '') {
+                $errorDetail = $exception->getMessage();
+            }
+            FlashMessages::addMessage(I18N::translate('Failed to send telemetry data.') . ' ' . $errorDetail, 'danger');
         }
 
         return redirect(route(ControlPanel::class));
