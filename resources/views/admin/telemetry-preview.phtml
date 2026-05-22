@@ -18,14 +18,8 @@ use Fisharebest\Webtrees\I18N;
 <h1><?= $title ?></h1>
 
 <p class="alert alert-info">
-    <?= I18N::translate('Please review the telemetry data below. Click "Confirm" to send this data, or "Cancel" to return to the control panel.') ?>
+    <?= I18N::translate('Thank you for supporting the development of webtrees! Please review the telemetry data that will be submitted below. Click "Confirm" to send this data, or "Cancel" to return to the control panel.') ?>
 </p>
-
-<div class="card mb-4">
-    <div class="card-body">
-        <pre><code><?= e($payload) ?></code></pre>
-    </div>
-</div>
 
 <form method="post" action="<?= e(route(TelemetrySubmitAction::class)) ?>">
     <?= csrf_field() ?>
@@ -44,3 +38,10 @@ use Fisharebest\Webtrees\I18N;
         </div>
     </div>
 </form>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <pre><code><?= e($payload) ?></code></pre>
+    </div>
+</div>
+
