@@ -39,6 +39,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SitePreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteRegistrationPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteTagsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\TelemetryPreviewPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\TelemetrySettingsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePageDefaultEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\UpgradeWizardPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UploadMediaPage;
@@ -218,6 +220,13 @@ use Illuminate\Support\Collection;
             </p>
         <?php endif ?>
 
+        <p class="card-text">
+            <?= I18N::translate('Please send telemetry data to support development, you will see the submitted data before confirming.') ?>
+            <a href="<?= e(route(TelemetryPreviewPage::class)) ?>" class="btn btn-primary">
+                <?= I18N::translate('Send data') ?>
+            </a>
+        </p>
+
         <?php foreach ($custom_updates as $module) : ?>
         <div class="alert alert-info">
             <?= view('icons/information') ?>
@@ -282,6 +291,12 @@ use Illuminate\Support\Collection;
                         <span class="fa-li"><?= view('icons/tag') ?></span>
                         <a href="<?= e(route(SiteTagsPage::class)) ?>">
                             <?= I18N::translate('GEDCOM tags') ?>
+                        </a>
+                    </li>
+                    <li>
+                        <span class="fa-li"><?= view('icons/telemetry') ?></span>
+                        <a href="<?= e(route(TelemetrySettingsPage::class)) ?>">
+                            <?= I18N::translate('Telemetry settings') ?>
                         </a>
                     </li>
                 </ul>
