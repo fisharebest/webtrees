@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Cli\Console;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
@@ -140,14 +141,15 @@ class Auth
     {
         $user ??= self::user();
 
+        if (self::isAdmin($user)) {
+            return self::PRIV_HIDE;
+        }
         if (self::isManager($tree, $user)) {
             return self::PRIV_NONE;
         }
-
         if (self::isMember($tree, $user)) {
             return self::PRIV_USER;
         }
-
         return self::PRIV_PRIVATE;
     }
 
@@ -157,7 +159,6 @@ class Auth
     public static function id(): int|null
     {
         $wt_user = Session::get('wt_user');
-
         return is_int($wt_user) ? $wt_user : null;
     }
 
@@ -169,9 +170,19 @@ class Auth
     public static function user(): UserInterface
     {
         $user_service = Registry::container()->get(UserService::class);
-
-        return $user_service->find(self::id()) ?? new GuestUser();
+        return $user_service->find(self::id()) ?? self::newVolatileUser();
     }
+
+    private static function newVolatileUser(): UserInterface
+    {
+        return self::isCliActive() ? new CliUser() : new GuestUser();
+    }
+
+    private static function isCliActive(): bool
+    {
+        return php_sapi_name() === 'cli' && Session::get(Console::CLI_SESSION) === '1';
+    }
+
 
     /**
      * Login directly as an explicit user - for masquerading.

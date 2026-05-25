@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2026 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,15 +19,24 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-/**
- * A site visitor.
- */
-class GuestUser extends VolatileUser
-{
+use Fisharebest\Webtrees\Contracts\UserInterface;
 
-    public function __construct(string $real_name = 'GUEST_USER')
+/**
+ * User for command-line invoked functions.
+ */
+class CliUser extends VolatileUser
+{
+    public function __construct(string $real_name = 'CLI_USER')
     {
-        parent::__construct('_GUEST_', $real_name);
+        parent::__construct('_CLI_', $real_name);
+    }
+
+    public function getPreference(string $setting_name, string $default = ''): string
+    {
+        if ($setting_name === UserInterface::PREF_IS_ADMINISTRATOR) {
+            return '1';
+        }
+        return parent::getPreference($setting_name, $default);
     }
 
 }
