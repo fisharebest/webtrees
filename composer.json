@@ -69,11 +69,11 @@
         "psr/http-server-middleware": "1.0.2",
         "ramsey/uuid": "4.9.2",
         "sabre/vobject": "4.5.8",
-        "symfony/cache": "7.4.9",
-        "symfony/console": "7.4.9",
+        "symfony/cache": "7.4.12",
+        "symfony/console": "7.4.11",
         "symfony/expression-language": "7.4.8",
-        "symfony/mailer": "7.4.8",
-        "symfony/polyfill-mbstring": "1.37.0",
+        "symfony/mailer": "7.4.12",
+        "symfony/polyfill-mbstring": "1.38.1",
         "tecnickcom/tcpdf": "6.11.3"
     },
     "require-dev": {
