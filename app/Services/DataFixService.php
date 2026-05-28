@@ -77,12 +77,6 @@ class DataFixService
 
     /**
      * Default preview generator.
-     *
-     * @param Tree   $tree
-     * @param string $old_gedcom
-     * @param string $new_gedcom
-     *
-     * @return string
      */
     public function gedcomDiff(Tree $tree, string $old_gedcom, string $new_gedcom): string
     {

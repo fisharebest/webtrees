@@ -74,8 +74,6 @@ class Menu
      * Set the optional attributes.
      *
      * @param array<string> $attrs
-     *
-     * @return self
      */
     public function setAttrs(array $attrs): self
     {
@@ -86,8 +84,6 @@ class Menu
 
     /**
      * Get the class.
-     *
-     * @return string
      */
     public function getClass(): string
     {
@@ -96,10 +92,6 @@ class Menu
 
     /**
      * Set the class.
-     *
-     * @param string $class
-     *
-     * @return self
      */
     public function setClass(string $class): self
     {
@@ -110,8 +102,6 @@ class Menu
 
     /**
      * Get the label.
-     *
-     * @return string
      */
     public function getLabel(): string
     {
@@ -120,10 +110,6 @@ class Menu
 
     /**
      * Set the label.
-     *
-     * @param string $label
-     *
-     * @return self
      */
     public function setLabel(string $label): self
     {
@@ -134,8 +120,6 @@ class Menu
 
     /**
      * Get the link.
-     *
-     * @return string
      */
     public function getLink(): string
     {
@@ -144,10 +128,6 @@ class Menu
 
     /**
      * Set the link.
-     *
-     * @param string $link
-     *
-     * @return self
      */
     public function setLink(string $link): self
     {
@@ -158,10 +138,6 @@ class Menu
 
     /**
      * Add a submenu to this menu
-     *
-     * @param Menu $menu
-     *
-     * @return self
      */
     public function addSubmenu(Menu $menu): self
     {
@@ -184,8 +160,6 @@ class Menu
      * Set the sub-menus.
      *
      * @param array<Menu> $submenus
-     *
-     * @return self
      */
     public function setSubmenus(array $submenus): self
     {

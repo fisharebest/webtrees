@@ -26,8 +26,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(RouteFactory::class)]
 class RouteFactoryTest extends TestCase
 {
-    /**
-     */
     public function testEmptyQueryParameterInURL(): void
     {
         $route_factory = new RouteFactory();

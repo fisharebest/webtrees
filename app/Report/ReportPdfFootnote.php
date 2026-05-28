@@ -59,9 +59,6 @@ class ReportPdfFootnote extends ReportBaseFootnote
         $renderer->tcpdf->writeHTML($temptext, true, false, true);
     }
 
-    /**
-     * @param PdfRenderer $renderer
-     */
     public function getFootnoteHeight(PdfRenderer $renderer): float
     {
         return 0;

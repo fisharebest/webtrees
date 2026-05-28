@@ -40,10 +40,6 @@ class LdsSpouseSealingDateStatus extends AbstractElement
     /**
      * Convert a value to a canonical form.
      * Some applications use the British spelling instead of the US spelling.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {

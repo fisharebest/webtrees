@@ -67,11 +67,6 @@ class RelationshipService
 
     /**
      * For close family relationships, such as the families tab, associates, and the family navigator.
-     *
-     * @param Individual $individual1
-     * @param Individual $individual2
-     *
-     * @return string
      */
     public function getCloseRelationshipName(Individual $individual1, Individual $individual2): string
     {
@@ -94,9 +89,6 @@ class RelationshipService
      * takes account of pending changes, so we can display names of newly added
      * relations.
      *
-     * @param Individual $individual1
-     * @param Individual $individual2
-     * @param int        $maxlength
      *
      * @return array<Individual|Family> An array of nodes on the relationship path
      */
@@ -194,9 +186,6 @@ class RelationshipService
 
     /**
      * @param array<Individual|Family> $nodes
-     * @param ModuleLanguageInterface  $language
-     *
-     * @return string
      */
     public function nameFromPath(array $nodes, ModuleLanguageInterface $language): string
     {
@@ -227,10 +216,6 @@ class RelationshipService
 
     /**
      * Generate a reflexive pronoun for an individual
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     protected function reflexivePronoun(Individual $individual): string
     {

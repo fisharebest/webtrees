@@ -230,7 +230,6 @@ class HousekeepingService
      * Delete files and folders that belonged to an earlier version of webtrees.
      * Return a list of those that we could not delete.
      *
-     * @param FilesystemOperator $filesystem
      *
      * @return array<string>
      */
@@ -250,11 +249,7 @@ class HousekeepingService
     /**
      * Delete old cache files.
      *
-     * @param FilesystemOperator $filesystem
-     * @param string             $path
      * @param int                $max_age Seconds
-     *
-     * @return void
      */
     public function deleteOldFiles(FilesystemOperator $filesystem, string $path, int $max_age): void
     {
@@ -272,11 +267,6 @@ class HousekeepingService
         }
     }
 
-    /**
-     * @param int $max_age_in_seconds
-     *
-     * @return void
-     */
     public function deleteOldLogs(int $max_age_in_seconds): void
     {
         DB::table('log')
@@ -285,11 +275,6 @@ class HousekeepingService
             ->delete();
     }
 
-    /**
-     * @param int $max_age_in_seconds
-     *
-     * @return void
-     */
     public function deleteOldSessions(int $max_age_in_seconds): void
     {
         DB::table('session')
@@ -299,11 +284,6 @@ class HousekeepingService
 
     /**
      * Delete a file or folder, if we can.
-     *
-     * @param FilesystemOperator $filesystem
-     * @param string             $path
-     *
-     * @return bool
      */
     private function deleteFileOrFolder(FilesystemOperator $filesystem, string $path): bool
     {

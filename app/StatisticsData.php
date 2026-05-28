@@ -1728,9 +1728,7 @@ readonly class StatisticsData
     /**
      * General query on age at marriage.
      *
-     * @param string $type
      * @param string $age_dir "ASC" or "DESC"
-     * @param int    $limit
      */
     public function ageOfMarriageQuery(string $type, string $age_dir, int $limit): string
     {
@@ -2021,7 +2019,6 @@ readonly class StatisticsData
      * @param string $show    "full", "name" or "age"
      * @param string $age_dir "ASC" or "DESC"
      * @param string $sex     "F" or "M"
-     * @param bool   $show_years
      */
     public function marriageQuery(string $show, string $age_dir, string $sex, bool $show_years): string
     {

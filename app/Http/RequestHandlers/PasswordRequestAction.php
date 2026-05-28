@@ -56,11 +56,6 @@ final class PasswordRequestAction implements RequestHandlerInterface, StatusCode
 
     private UserService $user_service;
 
-    /**
-     * @param EmailService     $email_service
-     * @param RateLimitService $rate_limit_service
-     * @param UserService      $user_service
-     */
     public function __construct(
         EmailService $email_service,
         RateLimitService $rate_limit_service,

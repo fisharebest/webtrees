@@ -38,10 +38,6 @@ class CalendarDateFactory implements CalendarDateFactoryInterface
 {
     /**
      * Parse a string containing a calendar date.
-     *
-     * @param string $date
-     *
-     * @return AbstractCalendarDate
      */
     public function make(string $date): AbstractCalendarDate
     {

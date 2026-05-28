@@ -1106,12 +1106,6 @@ class Gedcom
         return $subtags;
     }
 
-    /**
-     * @param ElementFactoryInterface $element_factory
-     * @param bool                    $include_custom_tags
-     *
-     * @return void
-     */
     public function registerTags(ElementFactoryInterface $element_factory, bool $include_custom_tags): void
     {
         // Standard GEDCOM.

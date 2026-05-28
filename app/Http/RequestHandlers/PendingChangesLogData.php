@@ -48,11 +48,6 @@ final class PendingChangesLogData implements RequestHandlerInterface
 
     private PendingChangesService $pending_changes_service;
 
-    /**
-     * @param DatatablesService     $datatables_service
-     * @param MyersDiff             $myers_diff
-     * @param PendingChangesService $pending_changes_service
-     */
     public function __construct(
         DatatablesService $datatables_service,
         MyersDiff $myers_diff,

@@ -45,8 +45,6 @@ class DatatablesService
      * @param array<string>|array<int> $search_columns The names of searchable columns.
      * @param array<string>|array<int> $sort_columns   Sort column mapping.
      * @param Closure                  $callback       Converts a row-object to an array-of-columns.
-     *
-     * @return ResponseInterface
      */
     public function handleCollection(ServerRequestInterface $request, Collection $collection, array $search_columns, array $sort_columns, Closure $callback): ResponseInterface
     {
@@ -121,8 +119,6 @@ class DatatablesService
      * @param array<string>                            $search_columns The names of searchable columns.
      * @param array<string|Expression<literal-string>> $sort_columns   Sort column mapping.
      * @param Closure                                  $callback       Converts a row-object to an array-of-columns.
-     *
-     * @return ResponseInterface
      */
     public function handleQuery(ServerRequestInterface $request, Builder $query, array $search_columns, array $sort_columns, Closure $callback): ResponseInterface
     {

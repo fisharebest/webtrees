@@ -39,10 +39,6 @@ class LoadRoutes implements MiddlewareInterface
 
     private WebRoutes $web_routes;
 
-    /**
-     * @param ApiRoutes $api_routes
-     * @param WebRoutes $web_routes
-     */
     public function __construct(ApiRoutes $api_routes, WebRoutes $web_routes)
     {
         $this->api_routes = $api_routes;

@@ -58,12 +58,6 @@ final class RegisterAction implements RequestHandlerInterface
 
     private UserService $user_service;
 
-    /**
-     * @param CaptchaService   $captcha_service
-     * @param EmailService     $email_service
-     * @param RateLimitService $rate_limit_service
-     * @param UserService      $user_service
-     */
     public function __construct(
         CaptchaService $captcha_service,
         EmailService $email_service,
@@ -207,9 +201,6 @@ final class RegisterAction implements RequestHandlerInterface
 
     /**
      * Check that visitors are allowed to register on this site.
-     *
-     * @return void
-     * @throws HttpNotFoundException
      */
     private function checkRegistrationAllowed(): void
     {
@@ -220,16 +211,6 @@ final class RegisterAction implements RequestHandlerInterface
 
     /**
      * Check the registration details.
-     *
-     * @param ServerRequestInterface $request
-     * @param string                 $username
-     * @param string                 $email
-     * @param string                 $realname
-     * @param string                 $comments
-     * @param string                 $password
-     *
-     * @return void
-     * @throws Exception
      */
     private function doValidateRegistration(
         ServerRequestInterface $request,

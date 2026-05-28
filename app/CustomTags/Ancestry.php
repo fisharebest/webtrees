@@ -42,8 +42,6 @@ class Ancestry implements CustomTagInterface
 {
     /**
      * The name of the application.
-     *
-     * @return string
      */
     public function name(): string
     {

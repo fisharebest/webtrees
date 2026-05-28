@@ -47,10 +47,6 @@ final class MapDataList implements RequestHandlerInterface
 
     /**
      * Dependency injection.
-     *
-     * @param MapDataService $map_data_service
-     * @param ModuleService  $module_service
-     * @param TreeService    $tree_service
      */
     public function __construct(
         MapDataService $map_data_service,

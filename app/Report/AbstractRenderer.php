@@ -142,7 +142,6 @@ abstract class AbstractRenderer
      * @param int    $stretch Stretch character mode
      * @param string $bocolor Border color
      * @param string $tcolor  Text color
-     * @param bool   $reseth
      */
     abstract public function createCell(
         float $width,
@@ -164,16 +163,7 @@ abstract class AbstractRenderer
     /**
      * @param float  $width   Text box width
      * @param float  $height  Text box height
-     * @param bool   $border
      * @param string $bgcolor Background color code in HTML
-     * @param bool   $newline
-     * @param float  $left
-     * @param float  $top
-     * @param bool   $pagecheck
-     * @param string $style
-     * @param bool   $fill
-     * @param bool   $padding
-     * @param bool   $reseth
      */
     abstract public function createTextBox(
         float $width,

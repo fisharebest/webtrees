@@ -43,11 +43,6 @@ final class UserListData implements RequestHandlerInterface
 
     private UserService $user_service;
 
-    /**
-     * @param DatatablesService $datatables_service
-     * @param ModuleService     $module_service
-     * @param UserService       $user_service
-     */
     public function __construct(
         DatatablesService $datatables_service,
         ModuleService $module_service,

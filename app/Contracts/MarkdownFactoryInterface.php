@@ -26,19 +26,7 @@ use Fisharebest\Webtrees\Tree;
  */
 interface MarkdownFactoryInterface
 {
-    /**
-     * @param string    $markdown
-     * @param Tree|null $tree
-     *
-     * @return string
-     */
-    public function autolink(string $markdown, Tree|null $tree = null): string;
+b    public function autolink(string $markdown, Tree|null $tree = null): string;
 
-    /**
-     * @param string    $markdown
-     * @param Tree|null $tree
-     *
-     * @return string
-     */
     public function markdown(string $markdown, Tree|null $tree = null): string;
 }

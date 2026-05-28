@@ -49,11 +49,6 @@ class CensusAssistantModule extends AbstractModule
         return I18N::translate('An alternative way to enter census transcripts and link them to individuals.');
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postCensusHeaderAction(ServerRequestInterface $request): ResponseInterface
     {
         $census_class = Validator::parsedBody($request)->string('census');
@@ -63,11 +58,6 @@ class CensusAssistantModule extends AbstractModule
         return response($html);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postCensusIndividualAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree         = Validator::attributes($request)->tree();
@@ -93,11 +83,6 @@ class CensusAssistantModule extends AbstractModule
         return response($html);
     }
 
-    /**
-     * @param Individual $individual
-     *
-     * @return string
-     */
     public function createCensusAssistant(Individual $individual): string
     {
         return view('modules/census-assistant', [
@@ -105,15 +90,6 @@ class CensusAssistantModule extends AbstractModule
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param Individual             $individual
-     * @param string                 $fact_id
-     * @param string                 $newged
-     * @param bool                   $keep_chan
-     *
-     * @return string
-     */
     public function updateCensusAssistant(ServerRequestInterface $request, Individual $individual, string $fact_id, string $newged, bool $keep_chan): string
     {
         $ca_title       = Validator::parsedBody($request)->string('ca_title');
@@ -145,14 +121,7 @@ class CensusAssistantModule extends AbstractModule
     }
 
     /**
-     * @param CensusInterface      $census
-     * @param string               $ca_title
-     * @param string               $ca_place
-     * @param string               $ca_citation
      * @param array<array<string>> $ca_individuals
-     * @param string               $ca_notes
-     *
-     * @return string
      */
     private function createNoteText(CensusInterface $census, string $ca_title, string $ca_place, string $ca_citation, array $ca_individuals, string $ca_notes): string
     {
@@ -193,10 +162,6 @@ class CensusAssistantModule extends AbstractModule
      * Generate an HTML row of data for the census header
      * Add prefix cell (store XREF and drag/drop)
      * Add suffix cell (delete button)
-     *
-     * @param CensusInterface $census
-     *
-     * @return string
      */
     protected function censusTableHeader(CensusInterface $census): string
     {
@@ -212,10 +177,6 @@ class CensusAssistantModule extends AbstractModule
      * Generate an HTML row of data for the census
      * Add prefix cell (store XREF and drag/drop)
      * Add suffix cell (delete button)
-     *
-     * @param CensusInterface $census
-     *
-     * @return string
      */
     public function censusTableEmptyRow(CensusInterface $census): string
     {
@@ -234,12 +195,6 @@ class CensusAssistantModule extends AbstractModule
      * Generate an HTML row of data for the census
      * Add prefix cell (store XREF and drag/drop)
      * Add suffix cell (delete button)
-     *
-     * @param CensusInterface $census
-     * @param Individual      $individual
-     * @param Individual      $head
-     *
-     * @return string
      */
     public function censusTableRow(CensusInterface $census, Individual $individual, Individual $head): string
     {

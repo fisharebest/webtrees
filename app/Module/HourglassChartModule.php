@@ -56,8 +56,6 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -81,8 +79,6 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -91,10 +87,6 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * Return a menu item for this chart - for use in individual boxes.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu|null
      */
     public function chartBoxMenu(Individual $individual): Menu|null
     {
@@ -103,10 +95,6 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * The title for a specific instance of this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function chartTitle(Individual $individual): string
     {
@@ -117,10 +105,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
@@ -130,11 +115,6 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
@@ -190,10 +170,6 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * Generate an extension to the chart
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
      */
     public function getAncestorsAction(ServerRequestInterface $request): ResponseInterface
     {
@@ -210,10 +186,6 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * Generate an extension to the chart
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
      */
     public function getDescendantsAction(ServerRequestInterface $request): ResponseInterface
     {

@@ -72,7 +72,6 @@ class ColorsTheme extends CloudsTheme implements ModuleGlobalInterface
     /**
      * Generate a list of items for the user menu.
      *
-     * @param Tree|null $tree
      *
      * @return array<Menu>
      */
@@ -91,10 +90,6 @@ class ColorsTheme extends CloudsTheme implements ModuleGlobalInterface
 
     /**
      * Switch to a new palette
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
      */
     public function postPaletteAction(ServerRequestInterface $request): ResponseInterface
     {
@@ -132,8 +127,6 @@ class ColorsTheme extends CloudsTheme implements ModuleGlobalInterface
 
     /**
      * Create a menu of palette options
-     *
-     * @return Menu
      */
     protected function menuPalette(): Menu
     {
@@ -205,9 +198,6 @@ class ColorsTheme extends CloudsTheme implements ModuleGlobalInterface
         return $palettes;
     }
 
-    /**
-     * @return string
-     */
     private function palette(): string
     {
         // If we are logged in, use our preference

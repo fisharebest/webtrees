@@ -38,9 +38,6 @@ class RateLimitService
 {
     private int $now;
 
-    /**
-     *
-     */
     public function __construct()
     {
         $this->now = time();
@@ -53,8 +50,6 @@ class RateLimitService
      * @param int    $num     allow this number of events
      * @param int    $seconds in a rolling window of this number of seconds
      * @param string $limit   name of limit to enforce
-     *
-     * @return void
      */
     public function limitRateForSite(int $num, int $seconds, string $limit): void
     {
@@ -73,8 +68,6 @@ class RateLimitService
      * @param int           $num     allow this number of events
      * @param int           $seconds in a rolling window of this number of seconds
      * @param string        $limit   name of limit to enforce
-     *
-     * @return void
      */
     public function limitRateForUser(UserInterface $user, int $num, int $seconds, string $limit): void
     {
@@ -93,7 +86,6 @@ class RateLimitService
      * @param string $history comma-separated list of previous timestamps
      *
      * @return string updated list of timestamps
-     * @throws HttpTooManyRequestsException
      */
     private function checkLimitReached(int $num, int $seconds, string $history): string
     {

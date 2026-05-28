@@ -56,8 +56,6 @@ class CalendarService
     /**
      * List all the months in a given year.
      *
-     * @param string $calendar
-     * @param int    $year
      *
      * @return array<string>
      */
@@ -194,12 +192,6 @@ class CalendarService
     /**
      * Get the list of current and upcoming events, sorted by anniversary date
      *
-     * @param int    $jd1
-     * @param int    $jd2
-     * @param string $events
-     * @param bool   $only_living
-     * @param string $sort_by
-     * @param Tree   $tree
      *
      * @return Collection<int,Fact>
      */
@@ -398,9 +390,6 @@ class CalendarService
     /**
      * By default, missing days have anniversaries on the first of the month,
      * and invalid days have anniversaries on the last day of the month.
-     *
-     * @param Builder              $query
-     * @param AbstractCalendarDate $anniv
      */
     private function defaultAnniversaries(Builder $query, AbstractCalendarDate $anniv): void
     {
@@ -417,9 +406,6 @@ class CalendarService
 
     /**
      * 29 CSH does not include 30 CSH (but would include an invalid 31 CSH if there were no 30 CSH).
-     *
-     * @param Builder    $query
-     * @param JewishDate $anniv
      */
     private function cheshvanAnniversaries(Builder $query, JewishDate $anniv): void
     {
@@ -436,9 +422,6 @@ class CalendarService
     /**
      * 1 KSL includes 30 CSH (if this year didn’t have 30 CSH).
      * 29 KSL does not include 30 KSL (but would include an invalid 31 KSL if there were no 30 KSL).
-     *
-     * @param Builder    $query
-     * @param JewishDate $anniv
      */
     private function kislevAnniversaries(Builder $query, JewishDate $anniv): void
     {
@@ -464,9 +447,6 @@ class CalendarService
 
     /**
      * 1 TVT includes 30 KSL (if this year didn’t have 30 KSL).
-     *
-     * @param Builder    $query
-     * @param JewishDate $anniv
      */
     private function tevetAnniversaries(Builder $query, JewishDate $anniv): void
     {
@@ -487,9 +467,6 @@ class CalendarService
 
     /**
      * ADS includes non-leap ADR.
-     *
-     * @param Builder    $query
-     * @param JewishDate $anniv
      */
     private function adarIIAnniversaries(Builder $query, JewishDate $anniv): void
     {
@@ -514,9 +491,6 @@ class CalendarService
 
     /**
      * 1 NSN includes 30 ADR, if this year is non-leap.
-     *
-     * @param Builder    $query
-     * @param JewishDate $anniv
      */
     private function nisanAnniversaries(Builder $query, JewishDate $anniv): void
     {

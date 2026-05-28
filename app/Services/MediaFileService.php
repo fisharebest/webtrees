@@ -114,7 +114,6 @@ class MediaFileService
     /**
      * A list of media files not already linked to a media object.
      *
-     * @param Tree $tree
      *
      * @return array<string>
      */
@@ -140,7 +139,6 @@ class MediaFileService
      * Store an uploaded file (or URL), either to be added to a media object
      * or to create a media object.
      *
-     * @param ServerRequestInterface $request
      *
      * @return string The value to be stored in the 'FILE' field of the media object.
      * @throws FilesystemException
@@ -235,13 +233,6 @@ class MediaFileService
 
     /**
      * Convert the media file attributes into GEDCOM format.
-     *
-     * @param string $file
-     * @param string $type
-     * @param string $title
-     * @param string $note
-     *
-     * @return string
      */
     public function createMediaFileGedcom(string $file, string $type, string $title, string $note): string
     {
@@ -331,7 +322,6 @@ class MediaFileService
     /**
      * Generate a list of all folders used by a tree.
      *
-     * @param Tree $tree
      *
      * @return Collection<int,string>
      * @throws FilesystemException
@@ -351,7 +341,6 @@ class MediaFileService
     /**
      * Generate a list of all folders in either the database or the filesystem.
      *
-     * @param FilesystemOperator $data_filesystem
      *
      * @return Collection<array-key,string>
      * @throws FilesystemException
@@ -392,10 +381,6 @@ class MediaFileService
 
     /**
      * Ignore special media folders.
-     *
-     * @param string $path
-     *
-     * @return bool
      */
     private function ignorePath(string $path): bool
     {

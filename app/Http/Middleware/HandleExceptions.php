@@ -58,10 +58,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
     }
 
     /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
      *
-     * @return ResponseInterface
      * @throws Throwable
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
@@ -135,12 +132,6 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         }
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param HttpException          $exception
-     *
-     * @return ResponseInterface
-     */
     private function httpExceptionResponse(ServerRequestInterface $request, HttpException $exception): ResponseInterface
     {
         $tree    = Validator::attributes($request)->treeOptional();
@@ -166,12 +157,6 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         ], $status_code);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param Throwable              $exception
-     *
-     * @return ResponseInterface
-     */
     private function thirdPartyExceptionResponse(ServerRequestInterface $request, Throwable $exception): ResponseInterface
     {
         $tree = Validator::attributes($request)->treeOptional();
@@ -190,12 +175,6 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param Throwable              $exception
-     *
-     * @return ResponseInterface
-     */
     private function unhandledExceptionResponse(ServerRequestInterface $request, Throwable $exception): ResponseInterface
     {
         $this->layout = 'layouts/default';

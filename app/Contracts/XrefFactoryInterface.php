@@ -26,10 +26,6 @@ interface XrefFactoryInterface
 {
     /**
      * Create a new XREF.
-     *
-     * @param string $record_type
-     *
-     * @return string
      */
     public function make(string $record_type): string;
 }

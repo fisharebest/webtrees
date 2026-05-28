@@ -34,7 +34,6 @@ use function str_starts_with;
 abstract class AbstractGedcomRecordFactory
 {
     /**
-     * @param Tree $tree
      *
      * @return Collection<array-key,string>
      */
@@ -57,11 +56,6 @@ abstract class AbstractGedcomRecordFactory
 
     /**
      * We may have searched for X123, but found the record for x123.
-     *
-     * @param string $gedcom
-     * @param string $xref
-     *
-     * @return string
      */
     protected function extractXref(string $gedcom, string $xref): string
     {

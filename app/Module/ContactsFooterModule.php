@@ -36,8 +36,6 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     /**
      * Dependency injection.
-     *
-     * @param UserService $user_service
      */
     public function __construct(UserService $user_service)
     {
@@ -46,8 +44,6 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     /**
      * How should this module be labelled on tabs, footers, etc.?
-     *
-     * @return string
      */
     public function title(): string
     {
@@ -63,8 +59,6 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     /**
      * The default position for this footer.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultFooterOrder(): int
     {
@@ -73,10 +67,6 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     /**
      * A footer, to be added at the bottom of every page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return string
      */
     public function getFooter(ServerRequestInterface $request): string
     {
@@ -118,11 +108,6 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     /**
      * Create contact link for both technical and genealogy support.
-     *
-     * @param User                   $user
-     * @param ServerRequestInterface $request
-     *
-     * @return string
      */
     public function contactLinkEverything(User $user, ServerRequestInterface $request): string
     {
@@ -131,11 +116,6 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     /**
      * Create contact link for genealogy support.
-     *
-     * @param User                   $user
-     * @param ServerRequestInterface $request
-     *
-     * @return string
      */
     public function contactLinkGenealogy(User $user, ServerRequestInterface $request): string
     {
@@ -144,11 +124,6 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     /**
      * Create contact link for technical support.
-     *
-     * @param User                   $user
-     * @param ServerRequestInterface $request
-     *
-     * @return string
      */
     public function contactLinkTechnical(User $user, ServerRequestInterface $request): string
     {

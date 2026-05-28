@@ -611,11 +611,6 @@ class Soundex
 
     /**
      * Is there a match between two soundex codes?
-     *
-     * @param string $soundex1
-     * @param string $soundex2
-     *
-     * @return bool
      */
     public static function compare(string $soundex1, string $soundex2): bool
     {
@@ -628,10 +623,6 @@ class Soundex
 
     /**
      * Generate Russell soundex codes for a given text.
-     *
-     * @param string $text
-     *
-     * @return string
      */
     public static function russell(string $text): string
     {
@@ -660,10 +651,6 @@ class Soundex
 
     /**
      * Generate Daitch–Mokotoff soundex codes for a given text.
-     *
-     * @param string $text
-     *
-     * @return string
      */
     public static function daitchMokotoff(string $text): string
     {
@@ -687,7 +674,6 @@ class Soundex
     /**
      * Calculate the Daitch-Mokotoff soundex for a word.
      *
-     * @param string $name
      *
      * @return array<string> List of possible DM codes for the word.
      */

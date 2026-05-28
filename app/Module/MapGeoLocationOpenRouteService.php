@@ -37,8 +37,6 @@ class MapGeoLocationOpenRouteService extends AbstractModule implements ModuleCon
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function title(): string
     {
@@ -50,9 +48,6 @@ class MapGeoLocationOpenRouteService extends AbstractModule implements ModuleCon
         return false;
     }
 
-    /**
-     * @return ResponseInterface
-     */
     public function getAdminAction(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -63,11 +58,6 @@ class MapGeoLocationOpenRouteService extends AbstractModule implements ModuleCon
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $api_key = Validator::parsedBody($request)->string('api_key');

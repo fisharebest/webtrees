@@ -26,10 +26,6 @@ interface ElementFactoryInterface
 {
     /**
      * Create a GEDCOM primitive object.
-     *
-     * @param string $tag
-     *
-     * @return ElementInterface
      */
     public function make(string $tag): ElementInterface;
 

@@ -73,10 +73,6 @@ class Individual extends GedcomRecord
 
     /**
      * Can the name of this record be shown?
-     *
-     * @param int|null $access_level
-     *
-     * @return bool
      */
     public function canShowName(int|null $access_level = null): bool
     {
@@ -87,10 +83,6 @@ class Individual extends GedcomRecord
 
     /**
      * Can this individual be shown?
-     *
-     * @param int $access_level
-     *
-     * @return bool
      */
     protected function canShowByType(int $access_level): bool
     {
@@ -137,11 +129,6 @@ class Individual extends GedcomRecord
 
     /**
      * For relationship privacy calculations - is this individual a close relative?
-     *
-     * @param Individual $target
-     * @param int        $distance
-     *
-     * @return bool
      */
     private static function isRelated(Individual $target, int $distance): bool
     {
@@ -214,8 +201,6 @@ class Individual extends GedcomRecord
     /**
      * Calculate whether this individual is living or dead.
      * If not known to be dead, then assume living.
-     *
-     * @return bool
      */
     public function isDead(): bool
     {
@@ -336,8 +321,6 @@ class Individual extends GedcomRecord
      * @param int           $height     Pixels
      * @param string        $fit        "crop" or "contain"
      * @param array<string> $attributes Additional HTML attributes
-     *
-     * @return string
      */
     public function displayImage(int $width, int $height, string $fit, array $attributes): string
     {
@@ -356,8 +339,6 @@ class Individual extends GedcomRecord
 
     /**
      * Get the date of birth
-     *
-     * @return Date
      */
     public function getBirthDate(): Date
     {
@@ -372,8 +353,6 @@ class Individual extends GedcomRecord
 
     /**
      * Get the place of birth
-     *
-     * @return Place
      */
     public function getBirthPlace(): Place
     {
@@ -386,8 +365,6 @@ class Individual extends GedcomRecord
 
     /**
      * Get the date of death
-     *
-     * @return Date
      */
     public function getDeathDate(): Date
     {
@@ -402,8 +379,6 @@ class Individual extends GedcomRecord
 
     /**
      * Get the place of death
-     *
-     * @return Place
      */
     public function getDeathPlace(): Place
     {
@@ -419,8 +394,6 @@ class Individual extends GedcomRecord
      * Provide the place and full date using a tooltip.
      * For consistent layout in charts, etc., show just a “–” when no dates are known.
      * Note that this is a (non-breaking) en-dash, and not a hyphen.
-     *
-     * @return string
      */
     public function lifespan(): string
     {
@@ -527,8 +500,6 @@ class Individual extends GedcomRecord
 
     /**
      * Generate an estimate for the date of birth, based on dates of parents/children/spouses
-     *
-     * @return Date
      */
     public function getEstimatedBirthDate(): Date
     {
@@ -615,8 +586,6 @@ class Individual extends GedcomRecord
 
     /**
      * Generate an estimated date of death.
-     *
-     * @return Date
      */
     public function getEstimatedDeathDate(): Date
     {
@@ -644,8 +613,6 @@ class Individual extends GedcomRecord
      * Get the sex - M F or U
      * Use the un-privatised gedcom record. We call this function during
      * the privatize-gedcom function, and we are allowed to know this.
-     *
-     * @return string
      */
     public function sex(): string
     {
@@ -659,7 +626,6 @@ class Individual extends GedcomRecord
     /**
      * Get a list of this individual’s spouse families
      *
-     * @param int|null $access_level
      *
      * @return Collection<int,Family>
      */
@@ -687,8 +653,6 @@ class Individual extends GedcomRecord
      *
      * Where an individual has multiple spouses, assume they are stored
      * in chronological order, and take the last one found.
-     *
-     * @return Individual|null
      */
     public function getCurrentSpouse(): Individual|null
     {
@@ -703,8 +667,6 @@ class Individual extends GedcomRecord
 
     /**
      * Count the children belonging to this individual.
-     *
-     * @return int
      */
     public function numberOfChildren(): int
     {
@@ -725,7 +687,6 @@ class Individual extends GedcomRecord
     /**
      * Get a list of this individual’s child families (i.e. their parents).
      *
-     * @param int|null $access_level
      *
      * @return Collection<int,Family>
      */
@@ -798,10 +759,6 @@ class Individual extends GedcomRecord
 
     /**
      * A label for a parental family group
-     *
-     * @param Family $family
-     *
-     * @return string
      */
     public function getChildFamilyLabel(Family $family): string
     {
@@ -828,10 +785,6 @@ class Individual extends GedcomRecord
 
     /**
      * Create a label for a step family
-     *
-     * @param Family $step_family
-     *
-     * @return string
      */
     public function getStepFamilyLabel(Family $step_family): string
     {
@@ -875,10 +828,6 @@ class Individual extends GedcomRecord
      * Get the description for the family.
      *
      * For example, "XXX's family with new wife".
-     *
-     * @param Family $family
-     *
-     * @return string
      */
     public function getSpouseFamilyLabel(Family $family): string
     {
@@ -894,8 +843,6 @@ class Individual extends GedcomRecord
 
     /**
      * If this object has no name, what do we call it?
-     *
-     * @return string
      */
     public function getFallBackName(): string
     {
@@ -926,12 +873,6 @@ class Individual extends GedcomRecord
      * 1 NAME Carlos /Vasquez y Sante/
      * 2 GIVN Carlos
      * 2 SURN Vasquez,Sante
-     *
-     * @param string $type
-     * @param string $value
-     * @param string $gedcom
-     *
-     * @return void
      */
     protected function addName(string $type, string $value, string $gedcom): void
     {
@@ -1054,8 +995,6 @@ class Individual extends GedcomRecord
 
     /**
      * Extract names from the GEDCOM record.
-     *
-     * @return void
      */
     public function extractNames(): void
     {
@@ -1071,8 +1010,6 @@ class Individual extends GedcomRecord
     /**
      * Extra info to display when displaying this record in a list of
      * selection items or favorites.
-     *
-     * @return string
      */
     public function formatListDetails(): string
     {

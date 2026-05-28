@@ -56,13 +56,6 @@ final class ContactAction implements RequestHandlerInterface
 
     private UserService $user_service;
 
-    /**
-     * @param CaptchaService   $captcha_service
-     * @param EmailService     $email_service
-     * @param MessageService   $message_service
-     * @param RateLimitService $rate_limit_service
-     * @param UserService      $user_service
-     */
     public function __construct(
         CaptchaService $captcha_service,
         EmailService $email_service,

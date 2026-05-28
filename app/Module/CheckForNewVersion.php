@@ -44,11 +44,6 @@ class CheckForNewVersion extends AbstractModule implements MiddlewareInterface
 
     private UserService $user_service;
 
-    /**
-     * @param EmailService   $email_service
-     * @param UpgradeService $upgrade_service
-     * @param UserService    $user_service
-     */
     public function __construct(EmailService $email_service, UpgradeService $upgrade_service, UserService $user_service)
     {
         $this->email_service   = $email_service;

@@ -59,8 +59,6 @@ class RedirectLegacyUrlsModule extends AbstractModule
 {
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {

@@ -30,8 +30,6 @@ class PatrilinealSurnameTradition extends DefaultSurnameTradition
 {
     /**
      * The name of this surname tradition
-     *
-     * @return string
      */
     public function name(): string
     {
@@ -41,8 +39,6 @@ class PatrilinealSurnameTradition extends DefaultSurnameTradition
 
     /**
      * A short description of this surname tradition
-     *
-     * @return string
      */
     public function description(): string
     {
@@ -53,9 +49,6 @@ class PatrilinealSurnameTradition extends DefaultSurnameTradition
     /**
      * What name is given to a new child
      *
-     * @param Individual|null $father
-     * @param Individual|null $mother
-     * @param string          $sex
      *
      * @return array<int,string>
      */
@@ -77,8 +70,6 @@ class PatrilinealSurnameTradition extends DefaultSurnameTradition
     /**
      * What name is given to a new parent
      *
-     * @param Individual $child
-     * @param string     $sex
      *
      * @return array<int,string>
      */

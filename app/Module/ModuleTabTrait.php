@@ -44,8 +44,6 @@ trait ModuleTabTrait
 
     /**
      * The text that appears on the tab.
-     *
-     * @return string
      */
     public function tabTitle(): string
     {
@@ -57,19 +55,12 @@ trait ModuleTabTrait
      *
      * @template T of ModuleInterface
      *
-     * @param Tree            $tree
      * @param class-string<T> $interface
-     *
-     * @return int
      */
     abstract public function accessLevel(Tree $tree, string $interface): int;
 
     /**
      * Users change change the order of tabs using the control panel.
-     *
-     * @param int $tab_order
-     *
-     * @return void
      */
     public function setTabOrder(int $tab_order): void
     {
@@ -78,8 +69,6 @@ trait ModuleTabTrait
 
     /**
      * Users change change the order of tabs using the control panel.
-     *
-     * @return int
      */
     public function getTabOrder(): int
     {
@@ -88,8 +77,6 @@ trait ModuleTabTrait
 
     /**
      * The default position for this tab.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultTabOrder(): int
     {
@@ -108,21 +95,12 @@ trait ModuleTabTrait
 
     /**
      * Generate the HTML content of this tab.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function getTabContent(Individual $individual): string
     {
         return '';
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getTabAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

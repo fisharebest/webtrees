@@ -58,7 +58,6 @@ class MessageService
     /**
      * Contact messages can only be sent to the designated contacts
      *
-     * @param Tree $tree
      *
      * @return array<UserInterface>
      */
@@ -74,15 +73,6 @@ class MessageService
 
     /**
      * Add a message to a user's inbox, send it to them via email, or both.
-     *
-     * @param UserInterface $sender
-     * @param UserInterface $recipient
-     * @param string        $subject
-     * @param string        $body
-     * @param string        $url
-     * @param string        $ip
-     *
-     * @return bool
      */
     public function deliverMessage(UserInterface $sender, UserInterface $recipient, string $subject, string $body, string $url, string $ip): bool
     {
@@ -136,10 +126,6 @@ class MessageService
 
     /**
      * Should we send messages to this user via internal messaging?
-     *
-     * @param UserInterface $user
-     *
-     * @return bool
      */
     public function sendInternalMessage(UserInterface $user): bool
     {
@@ -153,10 +139,6 @@ class MessageService
 
     /**
      * Should we send messages to this user via email?
-     *
-     * @param UserInterface $user
-     *
-     * @return bool
      */
     public function sendEmail(UserInterface $user): bool
     {
@@ -171,7 +153,6 @@ class MessageService
     /**
      * Convert a username (or mailing list name) into an array of recipients.
      *
-     * @param string $to
      *
      * @return Collection<int,User>
      */

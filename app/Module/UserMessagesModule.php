@@ -43,9 +43,6 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 
     private UserService $user_service;
 
-    /**
-     * @param UserService $user_service
-     */
     public function __construct(UserService $user_service)
     {
         $this->user_service = $user_service;
@@ -65,10 +62,6 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Delete one or messages belonging to a user.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
      */
     public function postDeleteMessageAction(ServerRequestInterface $request): ResponseInterface
     {
@@ -93,12 +86,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -151,8 +139,6 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
      * Should this block load asynchronously using AJAX?
      *
      * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
      */
     public function loadAjax(): bool
     {
@@ -161,8 +147,6 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the user’s home page?
-     *
-     * @return bool
      */
     public function isUserBlock(): bool
     {
@@ -171,8 +155,6 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {

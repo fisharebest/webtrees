@@ -28,33 +28,21 @@ interface ModuleFooterInterface extends ModuleInterface
 {
     /**
      * Users change change the order of footers using the control panel.
-     *
-     * @param int $footer_order
-     *
-     * @return void
      */
     public function setFooterOrder(int $footer_order): void;
 
     /**
      * Users change change the order of footers using the control panel.
-     *
-     * @return int
      */
     public function getFooterOrder(): int;
 
     /**
      * The default position for this footer.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultFooterOrder(): int;
 
     /**
      * A footer, to be added at the bottom of every page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return string
      */
     public function getFooter(ServerRequestInterface $request): string;
 }

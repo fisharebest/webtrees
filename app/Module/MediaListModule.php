@@ -53,9 +53,6 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
 
     private LinkedRecordService $linked_record_service;
 
-    /**
-     * @param LinkedRecordService $linked_record_service
-     */
     public function __construct(LinkedRecordService $linked_record_service)
     {
         $this->linked_record_service = $linked_record_service;
@@ -63,8 +60,6 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -87,8 +82,6 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function listMenuClass(): string
     {
@@ -96,10 +89,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
     }
 
     /**
-     * @param Tree                                      $tree
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function listUrl(Tree $tree, array $parameters = []): string
     {
@@ -116,11 +106,6 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
         return [];
     }
 
-    /**
-     * @param Tree $tree
-     *
-     * @return bool
-     */
     public function listIsEmpty(Tree $tree): bool
     {
         return !DB::table('media')
@@ -128,11 +113,6 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
             ->exists();
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
@@ -201,7 +181,6 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
     /**
      * Generate a list of all the folders in a current tree.
      *
-     * @param Tree $tree
      *
      * @return array<string>
      */
@@ -229,7 +208,6 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
      *
      * @param Tree   $tree       find media in this tree
      * @param string $folder     folder to search
-     * @param bool   $subfolders
      * @param string $sort       either "file" or "title"
      * @param string $filter     optional search string
      * @param string $format     option OBJE/FILE/FORM/TYPE

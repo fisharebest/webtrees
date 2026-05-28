@@ -51,12 +51,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -84,8 +79,6 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Should this block load asynchronously using AJAX?
      * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
      */
     public function loadAjax(): bool
     {
@@ -94,8 +87,6 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the user’s home page?
-     *
-     * @return bool
      */
     public function isUserBlock(): bool
     {
@@ -104,8 +95,6 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {
@@ -115,8 +104,6 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Get the favorites for a user
      *
-     * @param Tree          $tree
-     * @param UserInterface $user
      *
      * @return array<int,object{
      *      favorite_id:string,
@@ -151,11 +138,6 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
             ->all();
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAddFavoriteAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();
@@ -182,11 +164,6 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
         return redirect($url);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postDeleteFavoriteAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
@@ -205,15 +182,6 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
         return redirect($url);
     }
 
-    /**
-     * @param Tree          $tree
-     * @param UserInterface $user
-     * @param string        $url
-     * @param string        $title
-     * @param string        $note
-     *
-     * @return void
-     */
     private function addUrlFavorite(Tree $tree, UserInterface $user, string $url, string $title, string $note): void
     {
         DB::table('favorite')->updateOrInsert([
@@ -227,14 +195,6 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
         ]);
     }
 
-    /**
-     * @param Tree          $tree
-     * @param UserInterface $user
-     * @param GedcomRecord  $record
-     * @param string        $note
-     *
-     * @return void
-     */
     private function addRecordFavorite(Tree $tree, UserInterface $user, GedcomRecord $record, string $note): void
     {
         DB::table('favorite')->updateOrInsert([

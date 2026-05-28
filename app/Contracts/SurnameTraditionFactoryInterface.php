@@ -45,18 +45,8 @@ interface SurnameTraditionFactoryInterface
 
     /**
      * Create a named surname tradition.
-     *
-     * @param string $name
-     *
-     * @return SurnameTraditionInterface
      */
     public function make(string $name): SurnameTraditionInterface;
 
-    /**
-     * @param string                    $name
-     * @param SurnameTraditionInterface $surname_tradition
-     *
-     * @return void
-     */
     public function register(string $name, SurnameTraditionInterface $surname_tradition): void;
 }

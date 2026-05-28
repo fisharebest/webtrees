@@ -45,9 +45,6 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
      * @template T of ModuleInterface
      *
      * @param class-string<T>        $interface
-     * @param ServerRequestInterface $request
-     *
-     * @return void
      */
     protected function updateStatus(string $interface, ServerRequestInterface $request): void
     {
@@ -78,9 +75,6 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
      * @template T of ModuleInterface
      *
      * @param class-string<T>        $interface
-     * @param ServerRequestInterface $request
-     *
-     * @return void
      */
     protected function updateAccessLevel(string $interface, ServerRequestInterface $request): void
     {
@@ -111,10 +105,6 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
      * @template T of ModuleInterface
      *
      * @param class-string<T>        $interface
-     * @param string                 $column
-     * @param ServerRequestInterface $request
-     *
-     * @return void
      */
     protected function updateOrder(string $interface, string $column, ServerRequestInterface $request): void
     {

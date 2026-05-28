@@ -40,8 +40,6 @@ class Container implements ContainerInterface
 
     /**
      * @param class-string<T> $id
-     *
-     * @return bool
      */
     public function has(string $id): bool
     {

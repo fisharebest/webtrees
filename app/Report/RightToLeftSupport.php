@@ -536,8 +536,6 @@ class RightToLeftSupport
     /**
      * Get the next character from an input string
      *
-     * @param string $text
-     * @param int    $offset
      *
      * @return array{letter:string,length:int}
      */

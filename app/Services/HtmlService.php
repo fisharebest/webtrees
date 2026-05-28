@@ -34,10 +34,6 @@ class HtmlService
     /**
      * Take some dirty HTML (as provided by the user), and clean it before
      * we save/display it.
-     *
-     * @param string $html
-     *
-     * @return string
      */
     public function sanitize(string $html): string
     {

@@ -61,11 +61,6 @@ final class IndividualPage implements RequestHandlerInterface
 
     private UserService $user_service;
 
-    /**
-     * @param ClipboardService $clipboard_service
-     * @param ModuleService    $module_service
-     * @param UserService      $user_service
-     */
     public function __construct(
         ClipboardService $clipboard_service,
         ModuleService $module_service,
@@ -131,11 +126,6 @@ final class IndividualPage implements RequestHandlerInterface
         ])->withHeader('Link', '<' . $individual->url() . '>; rel="canonical"');
     }
 
-    /**
-     * @param Individual $individual
-     *
-     * @return string
-     */
     private function ageString(Individual $individual): string
     {
         if ($individual->isDead()) {
@@ -171,11 +161,6 @@ final class IndividualPage implements RequestHandlerInterface
         return I18N::translate('(age %s)', $age);
     }
 
-    /**
-     * @param Individual $individual
-     *
-     * @return string
-     */
     private function metaDescription(Individual $individual): string
     {
         $meta_facts = [];
@@ -225,7 +210,6 @@ final class IndividualPage implements RequestHandlerInterface
      * Which tabs should we show on this individual's page.
      * We don't show empty tabs.
      *
-     * @param Individual $individual
      *
      * @return Collection<int,ModuleSidebarInterface>
      */
@@ -240,7 +224,6 @@ final class IndividualPage implements RequestHandlerInterface
      * Which tabs should we show on this individual's page.
      * We don't show empty tabs.
      *
-     * @param Individual $individual
      *
      * @return Collection<int,ModuleTabInterface>
      */
@@ -254,10 +237,6 @@ final class IndividualPage implements RequestHandlerInterface
     /**
      * What are the significant elements of this page?
      * The layout will need them to generate URLs for charts and reports.
-     *
-     * @param Individual $individual
-     *
-     * @return object
      */
     private function significant(Individual $individual): object
     {

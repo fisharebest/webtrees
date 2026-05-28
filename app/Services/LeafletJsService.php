@@ -35,9 +35,6 @@ class LeafletJsService
     ) {
     }
 
-    /**
-     * @return object
-     */
     public function config(): object
     {
         $default = 'openstreetmap';

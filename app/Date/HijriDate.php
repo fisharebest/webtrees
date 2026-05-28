@@ -81,10 +81,7 @@ class HijriDate extends AbstractCalendarDate
     /**
      * Full month name in nominative case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     protected function monthNameNominativeCase(int $month, bool $leap_year): string
     {
@@ -126,10 +123,7 @@ class HijriDate extends AbstractCalendarDate
     /**
      * Full month name in genitive case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     protected function monthNameGenitiveCase(int $month, bool $leap_year): string
     {
@@ -171,10 +165,7 @@ class HijriDate extends AbstractCalendarDate
     /**
      * Full month name in locative case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     protected function monthNameLocativeCase(int $month, bool $leap_year): string
     {
@@ -216,10 +207,7 @@ class HijriDate extends AbstractCalendarDate
     /**
      * Full month name in instrumental case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     protected function monthNameInstrumentalCase(int $month, bool $leap_year): string
     {
@@ -261,10 +249,7 @@ class HijriDate extends AbstractCalendarDate
     /**
      * Abbreviated month name
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     protected function monthNameAbbreviated(int $month, bool $leap_year): string
     {

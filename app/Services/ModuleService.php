@@ -549,8 +549,6 @@ class ModuleService
      * @template T of ModuleInterface
      *
      * @param class-string<T> $interface
-     * @param Tree            $tree
-     * @param UserInterface   $user
      *
      * @return Collection<int,T>
      */
@@ -566,8 +564,6 @@ class ModuleService
      * @template T of ModuleInterface|MiddlewareInterface
      *
      * @param class-string<T> $interface
-     * @param bool            $include_disabled
-     * @param bool            $sort
      *
      * @return Collection<int,T&ModuleInterface>
      */
@@ -607,7 +603,6 @@ class ModuleService
     /**
      * All modules.
      *
-     * @param bool $include_disabled
      *
      * @return Collection<int,ModuleInterface>
      */
@@ -732,7 +727,6 @@ class ModuleService
     /**
      * A function filter modules by enabled/disabled
      *
-     * @param bool $include_disabled
      *
      * @return Closure(ModuleInterface):bool
      */
@@ -838,7 +832,6 @@ class ModuleService
      * Configuration settings are available through the various "module component" pages.
      * For modules that do not provide a component, we need to list them separately.
      *
-     * @param bool $include_disabled
      *
      * @return Collection<int,ModuleInterface>
      */
@@ -873,8 +866,6 @@ class ModuleService
 
     /**
      * Boot all the modules.
-     *
-     * @param ModuleThemeInterface $current_theme
      */
     public function bootModules(ModuleThemeInterface $current_theme): void
     {

@@ -39,8 +39,6 @@ class ClientIp extends \Middlewares\ClientIp
     }
 
     /**
-     * @param ServerRequestInterface $request
-     * @param string                 $attribute
      *
      * @return array<string>
      */

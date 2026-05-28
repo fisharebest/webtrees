@@ -73,10 +73,7 @@ class TreeView
     /**
      * Return a JSON structure to a JSON request
      *
-     * @param Tree   $tree
      * @param string $request list of JSON requests
-     *
-     * @return string
      */
     public function getIndividuals(Tree $tree, string $request): string
     {
@@ -120,8 +117,6 @@ class TreeView
      * Get the details for a person and their life partner(s)
      *
      * @param Individual $individual the individual to return the details for
-     *
-     * @return string
      */
     public function getDetails(Individual $individual): string
     {
@@ -138,11 +133,6 @@ class TreeView
 
     /**
      * Return the details for a person
-     *
-     * @param Individual  $individual
-     * @param Family|null $family
-     *
-     * @return string
      */
     private function getPersonDetails(Individual $individual, Family|null $family = null): string
     {
@@ -176,8 +166,6 @@ class TreeView
      * @param Collection<int,Family> $familyList array of families to draw the children for
      * @param int                    $gen        number of generations to draw
      * @param bool                   $ajax       true for an ajax call
-     *
-     * @return string
      */
     private function drawChildren(Collection $familyList, int $gen = 1, bool $ajax = false): string
     {
@@ -226,11 +214,7 @@ class TreeView
      * @param Individual  $person The Person object to draw the box for
      * @param int         $gen    The number of generations up or down to print
      * @param int         $state  Whether we are going up or down the tree, -1 for descendents +1 for ancestors
-     * @param Family|null $pfamily
      * @param string      $line   b, c, h, t. Required for drawing lines between boxes
-     * @param bool        $isRoot
-     *
-     * @return string
      */
     private function drawPerson(Individual $person, int $gen, int $state, Family|null $pfamily, string $line, bool $isRoot): string
     {
@@ -341,8 +325,6 @@ class TreeView
      *
      * @param Individual $individual The individual to draw
      * @param string     $dashed     Either "dashed", to print dashed top border to separate multiple spouses, or ""
-     *
-     * @return string
      */
     private function drawPersonName(Individual $individual, string $dashed): string
     {
@@ -373,10 +355,6 @@ class TreeView
 
     /**
      * Get the thumbnail image for the given person
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     private function getThumbnail(Individual $individual): string
     {
@@ -392,7 +370,6 @@ class TreeView
      *
      * @param string $line A parameter that set how to draw this line with auto-resizing capabilities
      *
-     * @return string
      * WARNING : some tricky hacks are required in CSS to ensure cross-browser compliance
      * some browsers shows an image, which imply a size limit in height,
      * and some other browsers (ex: firefox) shows a <div> tag, which have no size limit in height

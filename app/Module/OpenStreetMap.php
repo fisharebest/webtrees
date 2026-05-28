@@ -30,8 +30,6 @@ class OpenStreetMap extends AbstractModule implements ModuleMapProviderInterface
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function description(): string
     {
@@ -43,8 +41,6 @@ class OpenStreetMap extends AbstractModule implements ModuleMapProviderInterface
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function title(): string
     {

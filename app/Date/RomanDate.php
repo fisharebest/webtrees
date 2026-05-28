@@ -33,8 +33,6 @@ class RomanDate extends JulianDate
 
     /**
      * Generate the %E format for a date.
-     *
-     * @return string
      */
     protected function formatGedcomYear(): string
     {
@@ -43,8 +41,6 @@ class RomanDate extends JulianDate
 
     /**
      * Generate the %Y format for a date.
-     *
-     * @return string
      */
     protected function formatLongYear(): string
     {

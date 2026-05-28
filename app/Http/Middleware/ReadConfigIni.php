@@ -33,9 +33,6 @@ class ReadConfigIni implements MiddlewareInterface
 {
     private SetupWizard $setup_wizard;
 
-    /**
-     * @param SetupWizard $setup_wizard
-     */
     public function __construct(SetupWizard $setup_wizard)
     {
         $this->setup_wizard = $setup_wizard;

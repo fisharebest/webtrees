@@ -43,8 +43,6 @@ class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterfac
 
     /**
      * Home page for the service.
-     *
-     * @return string
      */
     public function externalUrl(): string
     {
@@ -54,8 +52,6 @@ class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterfac
     /**
      * Raw content, to be added at the end of the <body> element.
      * Typically, this will be <script> elements.
-     *
-     * @return string
      */
     public function bodyContent(): string
     {

@@ -65,7 +65,6 @@ class ServerCheckService
     /**
      * Things that may cause webtrees to break.
      *
-     * @param string $driver
      *
      * @return Collection<int,string>
      */
@@ -89,7 +88,6 @@ class ServerCheckService
     /**
      * Things that should be fixed, but which won't stop completely webtrees from running.
      *
-     * @param string $driver
      *
      * @return Collection<int,string>
      */

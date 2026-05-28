@@ -63,12 +63,6 @@ final class ManageMediaData implements RequestHandlerInterface
 
     private TreeService $tree_service;
 
-    /**
-     * @param DatatablesService   $datatables_service
-     * @param LinkedRecordService $linked_record_service
-     * @param MediaFileService    $media_file_service
-     * @param TreeService         $tree_service
-     */
     public function __construct(
         DatatablesService $datatables_service,
         LinkedRecordService $linked_record_service,
@@ -254,7 +248,6 @@ final class ManageMediaData implements RequestHandlerInterface
     /**
      * Generate some useful information and links about a media object.
      *
-     * @param Media $media
      *
      * @return string HTML
      */
@@ -310,11 +303,6 @@ final class ManageMediaData implements RequestHandlerInterface
 
     /**
      * Generate some useful information and links about a media file.
-     *
-     * @param FilesystemOperator $data_filesystem
-     * @param string             $file
-     *
-     * @return string
      */
     private function mediaFileInfo(FilesystemOperator $data_filesystem, string $file): string
     {

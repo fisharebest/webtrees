@@ -41,8 +41,6 @@ class SourceListModule extends AbstractModule implements ModuleListInterface, Re
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -64,8 +62,6 @@ class SourceListModule extends AbstractModule implements ModuleListInterface, Re
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function listMenuClass(): string
     {
@@ -73,10 +69,7 @@ class SourceListModule extends AbstractModule implements ModuleListInterface, Re
     }
 
     /**
-     * @param Tree                                      $tree
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function listUrl(Tree $tree, array $parameters = []): string
     {
@@ -93,11 +86,6 @@ class SourceListModule extends AbstractModule implements ModuleListInterface, Re
         return [];
     }
 
-    /**
-     * @param Tree $tree
-     *
-     * @return bool
-     */
     public function listIsEmpty(Tree $tree): bool
     {
         return !DB::table('sources')
@@ -105,11 +93,6 @@ class SourceListModule extends AbstractModule implements ModuleListInterface, Re
             ->exists();
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

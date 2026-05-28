@@ -812,10 +812,6 @@ class UTF8 extends AbstractEncoding
 
     /**
      * Convert text from (potentially invalid) UTF-8 to UTF-8.
-     *
-     * @param string $text
-     *
-     * @return string
      */
     public function fromUtf8(string $text): string
     {
@@ -831,10 +827,6 @@ class UTF8 extends AbstractEncoding
 
     /**
      * Convert text from (potentially invalid) UTF-8 to UTF-8.
-     *
-     * @param string $text
-     *
-     * @return string
      */
     public function toUtf8(string $text): string
     {

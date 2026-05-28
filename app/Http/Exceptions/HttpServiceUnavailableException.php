@@ -26,9 +26,6 @@ use Fig\Http\Message\StatusCodeInterface;
  */
 class HttpServiceUnavailableException extends HttpException
 {
-    /**
-     * @param string $message
-     */
     public function __construct(string $message)
     {
         parent::__construct($message, StatusCodeInterface::STATUS_SERVICE_UNAVAILABLE);

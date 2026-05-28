@@ -62,7 +62,6 @@ use const PHP_INT_MAX;
 class GedcomEditService
 {
     /**
-     * @param Tree $tree
      *
      * @return Collection<int,Fact>
      */
@@ -77,8 +76,6 @@ class GedcomEditService
     }
 
     /**
-     * @param Tree          $tree
-     * @param string        $sex
      * @param array<string> $names
      *
      * @return Collection<int,Fact>
@@ -95,12 +92,6 @@ class GedcomEditService
         return $sex_fact->concat($name_facts)->concat(Fact::sortFacts($facts));
     }
 
-    /**
-     * @param GedcomRecord $record
-     * @param string       $tag
-     *
-     * @return Fact
-     */
     private function createNewFact(GedcomRecord $record, string $tag): Fact
     {
         $element = Registry::elementFactory()->make($record->tag() . ':' . $tag);
@@ -113,13 +104,10 @@ class GedcomEditService
     /**
      * Reassemble edited GEDCOM fields into a GEDCOM fact/event string.
      *
-     * @param string        $record_type
      * @param array<string> $levels
      * @param array<string> $tags
      * @param array<string> $values
      * @param bool          $append Are we appending to a level 0 record, or replacing a level 1 record?
-     *
-     * @return string
      */
     public function editLinesToGedcom(string $record_type, array $levels, array $tags, array $values, bool $append = true): string
     {
@@ -185,11 +173,6 @@ class GedcomEditService
 
     /**
      * Add blank lines, to allow a user to add/edit new values.
-     *
-     * @param Fact $fact
-     * @param bool $include_hidden
-     *
-     * @return string
      */
     public function insertMissingFactSubtags(Fact $fact, bool $include_hidden): string
     {
@@ -201,11 +184,6 @@ class GedcomEditService
 
     /**
      * Add blank lines, to allow a user to add/edit new values.
-     *
-     * @param GedcomRecord $record
-     * @param bool         $include_hidden
-     *
-     * @return string
      */
     public function insertMissingRecordSubtags(GedcomRecord $record, bool $include_hidden): string
     {
@@ -225,8 +203,6 @@ class GedcomEditService
     /**
      * List of facts/events to add to families and individuals.
      *
-     * @param Family|Individual $record
-     * @param bool              $include_hidden
      *
      * @return array<string>
      */
@@ -249,14 +225,6 @@ class GedcomEditService
         return array_diff($subtags, ['HUSB', 'WIFE', 'CHIL', 'FAMC', 'FAMS', 'CHAN']);
     }
 
-    /**
-     * @param Tree   $tree
-     * @param string $tag
-     * @param string $gedcom
-     * @param bool   $include_hidden
-     *
-     * @return string
-     */
     protected function insertMissingLevels(Tree $tree, string $tag, string $gedcom, bool $include_hidden): string
     {
         $next_level = substr_count($tag, ':') + 1;
@@ -321,10 +289,6 @@ class GedcomEditService
 
     /**
      * List of tags to exclude when creating new data.
-     *
-     * @param string $tag
-     *
-     * @return bool
      */
     private function isHiddenTag(string $tag): bool
     {

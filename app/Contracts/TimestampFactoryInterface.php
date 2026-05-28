@@ -24,27 +24,12 @@ namespace Fisharebest\Webtrees\Contracts;
  */
 interface TimestampFactoryInterface
 {
-    /**
-     * @param int                $timestamp
-     * @param UserInterface|null $user
-     *
-     * @return TimestampInterface
-     */
     public function make(int $timestamp, UserInterface|null $user = null): TimestampInterface;
 
     /**
      * @param string|null        $string YYYY-MM-DD HH:MM:SS (as provided by SQL).
-     * @param string             $format
-     * @param UserInterface|null $user
-     *
-     * @return TimestampInterface
      */
     public function fromString(string|null $string, string $format = 'Y-m-d H:i:s', UserInterface|null $user = null): TimestampInterface;
 
-    /**
-     * @param UserInterface|null $user
-     *
-     * @return TimestampInterface
-     */
     public function now(UserInterface|null $user = null): TimestampInterface;
 }

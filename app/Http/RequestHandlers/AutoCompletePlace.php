@@ -37,7 +37,6 @@ final class AutoCompletePlace extends AbstractAutocompleteHandler
     }
 
     /**
-     * @param ServerRequestInterface $request
      *
      * @return Collection<int,string>
      */

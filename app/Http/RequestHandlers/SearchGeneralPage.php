@@ -207,7 +207,6 @@ final class SearchGeneralPage implements RequestHandlerInterface
     /**
      * Convert the query into an array of search terms
      *
-     * @param string $query
      *
      * @return array<string>
      */

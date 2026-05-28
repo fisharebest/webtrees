@@ -75,12 +75,6 @@ final class LoginAction implements RequestHandlerInterface
 
     /**
      * Log in, if we can.  Throw an exception, if we can't.
-     *
-     * @param string $username
-     * @param string $password
-     *
-     * @return void
-     * @throws Exception
      */
     private function doLogin(string $username, #[\SensitiveParameter] string $password): void
     {

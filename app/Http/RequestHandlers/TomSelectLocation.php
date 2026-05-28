@@ -33,9 +33,6 @@ final class TomSelectLocation extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 
-    /**
-     * @param SearchService $search_service
-     */
     public function __construct(
         SearchService $search_service
     ) {
@@ -45,11 +42,6 @@ final class TomSelectLocation extends AbstractTomSelectHandler
     /**
      * Perform the search
      *
-     * @param Tree   $tree
-     * @param string $query
-     * @param int    $offset
-     * @param int    $limit
-     * @param string $at
      *
      * @return Collection<int,array{text:string,value:string}>
      */

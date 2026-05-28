@@ -60,9 +60,6 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
 
     private DataFixService $data_fix_service;
 
-    /**
-     * @param DataFixService $data_fix_service
-     */
     public function __construct(DataFixService $data_fix_service)
     {
         $this->data_fix_service = $data_fix_service;
@@ -83,7 +80,6 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
     /**
      * XREFs of media records that might need fixing.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,string>
@@ -102,10 +98,7 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
     /**
      * Does a record need updating?
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return bool
      */
     public function doesRecordNeedUpdate(GedcomRecord $record, array $params): bool
     {
@@ -117,10 +110,7 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
     /**
      * Show the changes we would make
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return string
      */
     public function previewUpdate(GedcomRecord $record, array $params): string
     {
@@ -141,10 +131,7 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
     /**
      * Fix a record
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return void
      */
     public function updateRecord(GedcomRecord $record, array $params): void
     {
@@ -160,11 +147,6 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
         }
     }
 
-    /**
-     * @param Fact $fact
-     *
-     * @return string
-     */
     private function updateGedcom(Fact $fact): string
     {
         $gedcom    = $fact->gedcom();
