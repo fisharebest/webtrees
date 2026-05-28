@@ -251,7 +251,7 @@ final class DB extends Manager
     }
 
     /**
-     * @return Expression<string>
+     * @return Expression<literal-string>
      */
     public static function binaryColumn(string $column, string|null $alias = null): Expression
     {
