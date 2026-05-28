@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\RequestHandlers\CalendarPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
@@ -30,6 +31,9 @@ use Fisharebest\Webtrees\Tree;
 class CalendarMenuModule extends AbstractModule implements ModuleMenuInterface
 {
     use ModuleMenuTrait;
+
+    /** @var int The default access level for this module.  It can be changed in the control panel. */
+    protected int $access_level = Auth::PRIV_USER;
 
     public function title(): string
     {
