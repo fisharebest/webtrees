@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Report\ReportParserSetup;
+use Fisharebest\Webtrees\Report\ParserSetup;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -61,7 +61,7 @@ final class ReportSetupPage implements RequestHandlerInterface
         $xref = Validator::queryParams($request)->isXref()->string('xref', '');
 
         $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
-        $xml_parser   = new ReportParserSetup($xml_filename);
+        $xml_parser   = new ParserSetup($xml_filename);
         $description  = $xml_parser->reportDescription();
         $title        = $xml_parser->reportTitle();
         $inputs       = [];

@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PdfRenderer;
-use Fisharebest\Webtrees\Report\ReportParserGenerate;
+use Fisharebest\Webtrees\Report\ParserGenerate;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -81,7 +81,7 @@ final class ReportGenerate implements RequestHandlerInterface
             default:
             case 'HTML':
                 ob_start();
-                new ReportParserGenerate($xml_filename, new HtmlRenderer(), $vars, $tree);
+                new ParserGenerate($xml_filename, new HtmlRenderer(), $vars, $tree);
                 $html = ob_get_clean();
 
                 $this->layout = 'layouts/report';
@@ -99,7 +99,7 @@ final class ReportGenerate implements RequestHandlerInterface
 
             case 'PDF':
                 ob_start();
-                new ReportParserGenerate($xml_filename, new PdfRenderer(), $vars, $tree);
+                new ParserGenerate($xml_filename, new PdfRenderer(), $vars, $tree);
                 $pdf = ob_get_clean();
 
                 $headers = ['content-type' => 'application/pdf'];

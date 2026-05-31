@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Webtrees;
 
-abstract class AbstractRenderer implements ReportElementContainer
+abstract class AbstractRenderer implements ElementContainerInterface
 {
     // Reports layouts are measured in points.
     protected const string UNITS = 'pt';
@@ -89,18 +89,24 @@ abstract class AbstractRenderer implements ReportElementContainer
 
     public string $rsubject = '';
 
-    /** @var array<ReportBaseElement|string> */
+    /** @var array<AbstractElement|string> */
     public array $headerElements = [];
 
-    /** @var array<ReportBaseElement|string> */
+    /** @var array<AbstractElement|string> */
     public array $footerElements = [];
 
-    /** @var array<ReportBaseElement|string> */
+    /** @var array<AbstractElement|string> */
     public array $bodyElements = [];
 
     public string $currentStyle = '';
 
-    public function addElement(ReportBaseElement|string $element): void
+    // The largest font size within a TextBox, used to calculate text height
+    public float $largestFontHeight = 0.0;
+
+    // The last cell height
+    public float $lastCellHeight = 0.0;
+
+    public function addElement(AbstractElement|string $element): void
     {
         if ($this->processing === 'B') {
             $this->addElementToBody($element);
@@ -111,22 +117,24 @@ abstract class AbstractRenderer implements ReportElementContainer
         }
     }
 
-    public function addElementToHeader(ReportBaseElement|string $element): void
+    public function addElementToHeader(AbstractElement|string $element): void
     {
         $this->headerElements[] = $element;
     }
 
-    public function addElementToBody(ReportBaseElement|string $element): void
+    public function addElementToBody(AbstractElement|string $element): void
     {
         $this->bodyElements[] = $element;
     }
 
-    public function addElementToFooter(ReportBaseElement|string $element): void
+    public function addElementToFooter(AbstractElement|string $element): void
     {
         $this->footerElements[] = $element;
     }
 
     abstract public function run(): void;
+
+    abstract public function setCurrentStyle(string $s): void;
 
     /**
      * @param float  $width   cell width (expressed in points)
@@ -158,7 +166,7 @@ abstract class AbstractRenderer implements ReportElementContainer
         string $bocolor,
         string $tcolor,
         bool $reseth
-    ): ReportBaseCell;
+    ): AbstractCell;
 
     /**
      * @param float  $width   Text box width
@@ -178,11 +186,11 @@ abstract class AbstractRenderer implements ReportElementContainer
         bool $fill,
         bool $padding,
         bool $reseth
-    ): ReportBaseTextBox;
+    ): AbstractTextBox;
 
-    abstract public function createText(string $style, string $color): ReportBaseText;
+    abstract public function createText(string $style, string $color): AbstractText;
 
-    abstract public function createLine(float $x1, float $y1, float $x2, float $y2): ReportBaseLine;
+    abstract public function createLine(float $x1, float $y1, float $x2, float $y2): AbstractLine;
 
     abstract public function createImage(
         string $file,
@@ -192,7 +200,7 @@ abstract class AbstractRenderer implements ReportElementContainer
         float $h,
         string $align, // L:left, C:center, R:right or empty to use x/y
         string $ln,    //  T:same line, N:next line
-    ): ReportBaseImage;
+    ): AbstractImage;
 
     abstract public function createImageFromObject(
         MediaFile $media_file,
@@ -202,9 +210,9 @@ abstract class AbstractRenderer implements ReportElementContainer
         float $h,
         string $align, // L:left, C:center, R:right or empty to use x/y
         string $ln,    // T:same line, N:next line
-    ): ReportBaseImage;
+    ): AbstractImage;
 
-    abstract public function createFootnote(string $style): ReportBaseFootnote;
+    abstract public function createFootnote(string $style): AbstractFootnote;
 
     public function setup(): void
     {
@@ -248,5 +256,21 @@ abstract class AbstractRenderer implements ReportElementContainer
     public function getStyle(string $style): array
     {
         return $this->styles[$style];
+    }
+
+    public function getCurrentStyle(): string
+    {
+        return $this->currentStyle;
+    }
+
+    public function getCurrentStyleHeight(): float
+    {
+        if ($this->currentStyle === '') {
+            return $this->default_font_size;
+        }
+
+        $style = $this->getStyle($this->currentStyle);
+
+        return $style['size'];
     }
 }

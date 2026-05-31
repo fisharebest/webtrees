@@ -24,29 +24,30 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Report\AbstractRenderer;
 use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PdfRenderer;
-use Fisharebest\Webtrees\Report\ReportBaseCell;
-use Fisharebest\Webtrees\Report\ReportBaseElement;
-use Fisharebest\Webtrees\Report\ReportBaseFootnote;
-use Fisharebest\Webtrees\Report\ReportBaseImage;
-use Fisharebest\Webtrees\Report\ReportBaseLine;
-use Fisharebest\Webtrees\Report\ReportBaseText;
-use Fisharebest\Webtrees\Report\ReportBaseTextBox;
-use Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider;
-use Fisharebest\Webtrees\Report\ReportHtmlCell;
-use Fisharebest\Webtrees\Report\ReportHtmlFootnote;
-use Fisharebest\Webtrees\Report\ReportHtmlImage;
-use Fisharebest\Webtrees\Report\ReportHtmlLine;
-use Fisharebest\Webtrees\Report\ReportHtmlText;
-use Fisharebest\Webtrees\Report\ReportHtmlTextBox;
-use Fisharebest\Webtrees\Report\ReportParserBase;
-use Fisharebest\Webtrees\Report\ReportParserGenerate;
-use Fisharebest\Webtrees\Report\ReportParserSetup;
-use Fisharebest\Webtrees\Report\ReportPdfCell;
-use Fisharebest\Webtrees\Report\ReportPdfFootnote;
-use Fisharebest\Webtrees\Report\ReportPdfImage;
-use Fisharebest\Webtrees\Report\ReportPdfLine;
-use Fisharebest\Webtrees\Report\ReportPdfText;
-use Fisharebest\Webtrees\Report\ReportPdfTextBox;
+use Fisharebest\Webtrees\Report\AbstractCell;
+use Fisharebest\Webtrees\Report\AbstractElement;
+use Fisharebest\Webtrees\Report\NullElement;
+use Fisharebest\Webtrees\Report\AbstractFootnote;
+use Fisharebest\Webtrees\Report\AbstractImage;
+use Fisharebest\Webtrees\Report\AbstractLine;
+use Fisharebest\Webtrees\Report\AbstractText;
+use Fisharebest\Webtrees\Report\AbstractTextBox;
+use Fisharebest\Webtrees\Report\ExpressionLanguageProvider;
+use Fisharebest\Webtrees\Report\HtmlCell;
+use Fisharebest\Webtrees\Report\HtmlFootnote;
+use Fisharebest\Webtrees\Report\HtmlImage;
+use Fisharebest\Webtrees\Report\HtmlLine;
+use Fisharebest\Webtrees\Report\HtmlText;
+use Fisharebest\Webtrees\Report\HtmlTextBox;
+use Fisharebest\Webtrees\Report\AbstractParser;
+use Fisharebest\Webtrees\Report\ParserGenerate;
+use Fisharebest\Webtrees\Report\ParserSetup;
+use Fisharebest\Webtrees\Report\PdfCell;
+use Fisharebest\Webtrees\Report\PdfFootnote;
+use Fisharebest\Webtrees\Report\PdfImage;
+use Fisharebest\Webtrees\Report\PdfLine;
+use Fisharebest\Webtrees\Report\PdfText;
+use Fisharebest\Webtrees\Report\PdfTextBox;
 use Fisharebest\Webtrees\Report\TcpdfWrapper;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
@@ -56,33 +57,34 @@ use PHPUnit\Framework\Attributes\DataProvider;
 
 use function ob_get_clean;
 
-#[CoversClass(PedigreeReportModule::class)]
+#[CoversClass(AbstractCell::class)]
+#[CoversClass(AbstractFootnote::class)]
+#[CoversClass(AbstractImage::class)]
+#[CoversClass(AbstractLine::class)]
+#[CoversClass(AbstractParser::class)]
 #[CoversClass(AbstractRenderer::class)]
+#[CoversClass(AbstractText::class)]
+#[CoversClass(AbstractTextBox::class)]
+#[CoversClass(AbstractElement::class)]
+#[CoversClass(ExpressionLanguageProvider::class)]
+#[CoversClass(HtmlCell::class)]
+#[CoversClass(HtmlFootnote::class)]
+#[CoversClass(HtmlImage::class)]
+#[CoversClass(HtmlLine::class)]
 #[CoversClass(HtmlRenderer::class)]
+#[CoversClass(HtmlText::class)]
+#[CoversClass(HtmlTextBox::class)]
+#[CoversClass(NullElement::class)]
+#[CoversClass(ParserGenerate::class)]
+#[CoversClass(ParserSetup::class)]
+#[CoversClass(PdfCell::class)]
+#[CoversClass(PdfFootnote::class)]
+#[CoversClass(PdfImage::class)]
+#[CoversClass(PdfLine::class)]
 #[CoversClass(PdfRenderer::class)]
-#[CoversClass(ReportBaseCell::class)]
-#[CoversClass(ReportBaseElement::class)]
-#[CoversClass(ReportBaseFootnote::class)]
-#[CoversClass(ReportBaseImage::class)]
-#[CoversClass(ReportBaseLine::class)]
-#[CoversClass(ReportBaseText::class)]
-#[CoversClass(ReportBaseTextBox::class)]
-#[CoversClass(ReportExpressionLanguageProvider::class)]
-#[CoversClass(ReportHtmlCell::class)]
-#[CoversClass(ReportHtmlFootnote::class)]
-#[CoversClass(ReportHtmlImage::class)]
-#[CoversClass(ReportHtmlLine::class)]
-#[CoversClass(ReportHtmlText::class)]
-#[CoversClass(ReportHtmlTextBox::class)]
-#[CoversClass(ReportParserBase::class)]
-#[CoversClass(ReportParserGenerate::class)]
-#[CoversClass(ReportParserSetup::class)]
-#[CoversClass(ReportPdfCell::class)]
-#[CoversClass(ReportPdfFootnote::class)]
-#[CoversClass(ReportPdfImage::class)]
-#[CoversClass(ReportPdfLine::class)]
-#[CoversClass(ReportPdfText::class)]
-#[CoversClass(ReportPdfTextBox::class)]
+#[CoversClass(PdfText::class)]
+#[CoversClass(PdfTextBox::class)]
+#[CoversClass(PedigreeReportModule::class)]
 #[CoversClass(TcpdfWrapper::class)]
 class DeathReportModuleTest extends TestCase
 {
@@ -162,7 +164,7 @@ class DeathReportModuleTest extends TestCase
             'sortby'     => $sortby,
         ];
 
-        $parser = new ReportParserSetup($xml);
+        $parser = new ParserSetup($xml);
         $this->assertNotEmpty($parser->reportDescription());
         $this->assertNotEmpty($parser->reportTitle());
         $this->assertNotEmpty($parser->reportInputs());
@@ -170,14 +172,14 @@ class DeathReportModuleTest extends TestCase
         Site::setPreference('INDEX_DIRECTORY', 'tests/data/');
 
         ob_start();
-        new ReportParserGenerate($xml, new HtmlRenderer(), $vars, $tree);
+        new ParserGenerate($xml, new HtmlRenderer(), $vars, $tree);
         $html = ob_get_clean();
         self::assertIsString($html);
         self::assertStringStartsWith('<', $html);
         self::assertStringEndsWith('>', $html);
 
         ob_start();
-        new ReportParserGenerate($xml, new PdfRenderer(), $vars, $tree);
+        new ParserGenerate($xml, new PdfRenderer(), $vars, $tree);
         $pdf = ob_get_clean();
         self::assertIsString($pdf);
         self::assertStringStartsWith('%PDF', $pdf);
