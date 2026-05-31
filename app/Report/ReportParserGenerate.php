@@ -118,8 +118,8 @@ class ReportParserGenerate extends ReportParserBase
     /** @var array<int,array{0:array<int,string>,1:int}> Nested repeating data */
     private array $repeats_stack = [];
 
-    /** @var array<AbstractRenderer> Nested repeating data */
-    private array $wt_report_stack = [];
+    /** @var array<ReportElementContainer> Stack of containers when nesting text boxes */
+    private array $container_stack = [];
 
     // Nested repeating data
     private XMLParser $parser;
@@ -158,8 +158,8 @@ class ReportParserGenerate extends ReportParserBase
 
     private AbstractRenderer $renderer;
 
-    // It's not clear what this variable does.
-    private ReportBaseElement|AbstractRenderer $wt_report;
+    /** The current target for addElement() — either the renderer or a nested text box */
+    private ReportElementContainer $current_container;
 
     /** @var array<string,string> Variables defined in the report at run-time */
     private array $vars;
@@ -168,12 +168,12 @@ class ReportParserGenerate extends ReportParserBase
 
     public function __construct(string $report, AbstractRenderer $renderer, array $vars, Tree $tree)
     {
-        $this->report          = $report;
-        $this->renderer        = $renderer;
-        $this->wt_report       = $renderer;
-        $this->current_element = new ReportBaseElement();
-        $this->vars            = $vars;
-        $this->tree            = $tree;
+        $this->report            = $report;
+        $this->renderer          = $renderer;
+        $this->current_container = $renderer;
+        $this->current_element   = new ReportBaseElement();
+        $this->vars              = $vars;
+        $this->tree              = $tree;
 
         parent::__construct($report);
     }
@@ -312,12 +312,12 @@ class ReportParserGenerate extends ReportParserBase
 
         $style = [
             'name'  => $attrs['name'],
-            'font'  => $attrs['font'] ?? $this->wt_report->default_font,
-            'size'  => (float) ($attrs['size'] ?? $this->wt_report->default_font_size),
+            'font'  => $attrs['font'] ?? $this->renderer->default_font,
+            'size'  => (float) ($attrs['size'] ?? $this->renderer->default_font_size),
             'style' => $attrs['style'] ?? '',
         ];
 
-        $this->wt_report->addStyle($style);
+        $this->renderer->addStyle($style);
     }
 
     /**
@@ -327,38 +327,38 @@ class ReportParserGenerate extends ReportParserBase
     {
         $this->parser = $this->xml_parser;
 
-        $this->wt_report->page_width        = (float) ($attrs['customwidth'] ?? $this->wt_report->page_width);
-        $this->wt_report->page_height       = (float) ($attrs['customheight'] ?? $this->wt_report->page_height);
-        $this->wt_report->left_margin       = (float) ($attrs['leftmargin'] ?? $this->wt_report->left_margin);
-        $this->wt_report->right_margin      = (float) ($attrs['rightmargin'] ?? $this->wt_report->right_margin);
-        $this->wt_report->top_margin        = (float) ($attrs['topmargin'] ?? $this->wt_report->top_margin);
-        $this->wt_report->bottom_margin     = (float) ($attrs['bottommargin'] ?? $this->wt_report->bottom_margin);
-        $this->wt_report->header_margin     = (float) ($attrs['headermargin'] ?? $this->wt_report->header_margin);
-        $this->wt_report->footer_margin     = (float) ($attrs['footermargin'] ?? $this->wt_report->footer_margin);
-        $this->wt_report->orientation       = $attrs['orientation'] ?? $this->wt_report->orientation;
-        $this->wt_report->page_format       = $attrs['pageSize'] ?? $this->wt_report->page_format;
-        $this->wt_report->show_generated_by = (bool) ($attrs['showGeneratedBy'] ?? $this->wt_report->show_generated_by);
-        $this->wt_report->setup();
+        $this->renderer->page_width        = (float) ($attrs['customwidth'] ?? $this->renderer->page_width);
+        $this->renderer->page_height       = (float) ($attrs['customheight'] ?? $this->renderer->page_height);
+        $this->renderer->left_margin       = (float) ($attrs['leftmargin'] ?? $this->renderer->left_margin);
+        $this->renderer->right_margin      = (float) ($attrs['rightmargin'] ?? $this->renderer->right_margin);
+        $this->renderer->top_margin        = (float) ($attrs['topmargin'] ?? $this->renderer->top_margin);
+        $this->renderer->bottom_margin     = (float) ($attrs['bottommargin'] ?? $this->renderer->bottom_margin);
+        $this->renderer->header_margin     = (float) ($attrs['headermargin'] ?? $this->renderer->header_margin);
+        $this->renderer->footer_margin     = (float) ($attrs['footermargin'] ?? $this->renderer->footer_margin);
+        $this->renderer->orientation       = $attrs['orientation'] ?? $this->renderer->orientation;
+        $this->renderer->page_format       = $attrs['pageSize'] ?? $this->renderer->page_format;
+        $this->renderer->show_generated_by = (bool) ($attrs['showGeneratedBy'] ?? $this->renderer->show_generated_by);
+        $this->renderer->setup();
     }
 
     protected function docEndHandler(): void
     {
-        $this->wt_report->run();
+        $this->renderer->run();
     }
 
     protected function headerStartHandler(): void
     {
-        $this->wt_report->setProcessing('H');
+        $this->renderer->setProcessing('H');
     }
 
     protected function bodyStartHandler(): void
     {
-        $this->wt_report->setProcessing('B');
+        $this->renderer->setProcessing('B');
     }
 
     protected function footerStartHandler(): void
     {
-        $this->wt_report->setProcessing('F');
+        $this->renderer->setProcessing('F');
     }
 
     /**
@@ -382,8 +382,8 @@ class ReportParserGenerate extends ReportParserBase
         $width   = (float) ($attrs['width'] ?? 0.0);
 
         $align = strtr($align, [
-            'leftrtl'  => $this->wt_report->rtl ? 'R' : 'L',
-            'rightrtl' => $this->wt_report->rtl ? 'L' : 'R',
+            'leftrtl'  => $this->renderer->rtl ? 'R' : 'L',
+            'rightrtl' => $this->renderer->rtl ? 'L' : 'R',
             'left'     => 'L',
             'right'    => 'R',
             'center'   => 'C',
@@ -414,7 +414,7 @@ class ReportParserGenerate extends ReportParserBase
     protected function cellEndHandler(): void
     {
         $this->print_data = array_pop($this->print_data_stack);
-        $this->wt_report->addElement($this->current_element);
+        $this->current_container->addElement($this->current_element);
     }
 
     protected function nowStartHandler(): void
@@ -517,8 +517,8 @@ class ReportParserGenerate extends ReportParserBase
         $this->print_data_stack[] = $this->print_data;
         $this->print_data         = false;
 
-        $this->wt_report_stack[] = $this->wt_report;
-        $this->wt_report         = $this->renderer->createTextBox(
+        $this->container_stack[] = $this->current_container;
+        $this->current_container         = $this->renderer->createTextBox(
             $width,
             $height,
             $border,
@@ -536,11 +536,14 @@ class ReportParserGenerate extends ReportParserBase
 
     protected function textBoxEndHandler(): void
     {
-        $this->print_data      = array_pop($this->print_data_stack);
-        $this->current_element = $this->wt_report;
+        $this->print_data = array_pop($this->print_data_stack);
 
-        $this->wt_report = array_pop($this->wt_report_stack);
-        $this->wt_report->addElement($this->current_element);
+        // The text box we were building becomes an element to add to the parent container.
+        assert($this->current_container instanceof ReportBaseTextBox);
+        $this->current_element = $this->current_container;
+
+        $this->current_container = array_pop($this->container_stack);
+        $this->current_container->addElement($this->current_element);
     }
 
     /**
@@ -560,7 +563,7 @@ class ReportParserGenerate extends ReportParserBase
     protected function textEndHandler(): void
     {
         $this->print_data = array_pop($this->print_data_stack);
-        $this->wt_report->addElement($this->current_element);
+        $this->current_container->addElement($this->current_element);
     }
 
     /**
@@ -1188,7 +1191,7 @@ class ReportParserGenerate extends ReportParserBase
             $this->print_data = array_pop($this->print_data_stack);
             $temp             = trim($this->current_element->getValue());
             if (strlen($temp) > 3) {
-                $this->wt_report->addElement($this->current_element);
+                $this->current_container->addElement($this->current_element);
             }
             $this->current_element = $this->footnote_element;
         } else {
@@ -1198,7 +1201,7 @@ class ReportParserGenerate extends ReportParserBase
 
     protected function footnoteTextsStartHandler(): void
     {
-        $this->wt_report->addElement('footnotetexts');
+        $this->current_container->addElement('footnotetexts');
     }
 
     protected function brStartHandler(): void
@@ -1243,7 +1246,7 @@ class ReportParserGenerate extends ReportParserBase
                 $height = (float) $attributes[1];
             }
             $image = $this->renderer->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln);
-            $this->wt_report->addElement($image);
+            $this->current_container->addElement($image);
         }
     }
 
@@ -1281,7 +1284,7 @@ class ReportParserGenerate extends ReportParserBase
                         $height = (float) $attributes[1];
                     }
                     $image = $this->renderer->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln);
-                    $this->wt_report->addElement($image);
+                    $this->current_container->addElement($image);
                 }
             }
         } elseif (file_exists($file) && preg_match('/(jpg|jpeg|png|gif)$/i', $file)) {
@@ -1297,7 +1300,7 @@ class ReportParserGenerate extends ReportParserBase
                 $height = $size[1];
             }
             $image = $this->renderer->createImage($file, $left, $top, $width, $height, $align, $ln);
-            $this->wt_report->addElement($image);
+            $this->current_container->addElement($image);
         }
     }
 
@@ -1312,7 +1315,7 @@ class ReportParserGenerate extends ReportParserBase
         $y2 = (float) ($attrs['y2'] ?? ReportBaseElement::CURRENT_POSITION);
 
         $line = $this->renderer->createLine($x1, $y1, $x2, $y2);
-        $this->wt_report->addElement($line);
+        $this->current_container->addElement($line);
     }
 
     /**
@@ -2002,7 +2005,7 @@ class ReportParserGenerate extends ReportParserBase
 
     protected function newPageStartHandler(): void
     {
-        $this->wt_report->addElement('addpage');
+        $this->current_container->addElement('addpage');
     }
 
     protected function titleEndHandler(): void

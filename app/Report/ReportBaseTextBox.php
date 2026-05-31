@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-abstract class ReportBaseTextBox extends ReportBaseElement
+abstract class ReportBaseTextBox extends ReportBaseElement implements ReportElementContainer
 {
     /** @var array<ReportBaseElement|string> */
     protected array $elements = [];

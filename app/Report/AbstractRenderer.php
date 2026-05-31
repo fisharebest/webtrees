@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Webtrees;
 
-abstract class AbstractRenderer
+abstract class AbstractRenderer implements ReportElementContainer
 {
     // Reports layouts are measured in points.
     protected const string UNITS = 'pt';
