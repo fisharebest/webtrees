@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Report;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Webtrees;
+use LogicException;
 
 abstract class AbstractRenderer implements ElementContainerInterface
 {
@@ -105,6 +106,19 @@ abstract class AbstractRenderer implements ElementContainerInterface
 
     // The last cell height
     public float $lastCellHeight = 0.0;
+
+    /** @var array<AbstractFootnote> Footnotes that have been rendered or queued for rendering */
+    public array $printedfootnotes = [];
+
+    // Properties used by HTML element renderers
+    public float $cPadding = 0.0;
+    public float $cellHeightRatio = 1.0;
+    public string $alignRTL = 'left';
+    public string $entityRTL = '&lrm;';
+
+    // Properties used by PDF element renderers
+    public TcpdfWrapper $tcpdf;
+    public int $lastpicpage = 0;
 
     public function addElement(AbstractElement|string $element): void
     {
@@ -272,5 +286,121 @@ abstract class AbstractRenderer implements ElementContainerInterface
         $style = $this->getStyle($this->currentStyle);
 
         return $style['size'];
+    }
+
+    // =========================================================================
+    // Methods used by both HTML and PDF element renderers
+    // =========================================================================
+
+    abstract public function footnotes(): void;
+
+    abstract public function checkFootnote(AbstractFootnote $footnote): AbstractFootnote|false;
+
+    // =========================================================================
+    // Methods used by HTML element renderers
+    // =========================================================================
+
+    public function addMaxY(float $y): void
+    {
+        throw new LogicException('addMaxY() is not available in ' . static::class);
+    }
+
+    public function addPage(): void
+    {
+        throw new LogicException('addPage() is not available in ' . static::class);
+    }
+
+    public function countLines(string $str): int
+    {
+        throw new LogicException('countLines() is not available in ' . static::class);
+    }
+
+    public function getFootnotesHeight(float $cellWidth = 0): float
+    {
+        throw new LogicException('getFootnotesHeight() is not available in ' . static::class);
+    }
+
+    public function getRemainingWidth(): float
+    {
+        throw new LogicException('getRemainingWidth() is not available in ' . static::class);
+    }
+
+    public function getStringWidth(string $text): float
+    {
+        throw new LogicException('getStringWidth() is not available in ' . static::class);
+    }
+
+    public function getTextCellHeight(string $str): float
+    {
+        throw new LogicException('getTextCellHeight() is not available in ' . static::class);
+    }
+
+    public function getX(): float
+    {
+        throw new LogicException('getX() is not available in ' . static::class);
+    }
+
+    public function getY(): float
+    {
+        throw new LogicException('getY() is not available in ' . static::class);
+    }
+
+    public function pageNo(): int
+    {
+        throw new LogicException('pageNo() is not available in ' . static::class);
+    }
+
+    public function setX(float $x): void
+    {
+        throw new LogicException('setX() is not available in ' . static::class);
+    }
+
+    public function setXy(float $x, float $y): void
+    {
+        throw new LogicException('setXy() is not available in ' . static::class);
+    }
+
+    public function setY(float $y): void
+    {
+        throw new LogicException('setY() is not available in ' . static::class);
+    }
+
+    public function textWrap(string $str, float $width): string
+    {
+        throw new LogicException('textWrap() is not available in ' . static::class);
+    }
+
+    public function write(string $text, string $color = '', bool $useclass = true): void
+    {
+        throw new LogicException('write() is not available in ' . static::class);
+    }
+
+    // =========================================================================
+    // Methods used by PDF element renderers
+    // =========================================================================
+
+    public function addMarginX(float $x): float
+    {
+        throw new LogicException('addMarginX() is not available in ' . static::class);
+    }
+
+    public function checkPageBreakPDF(float $height): bool
+    {
+        throw new LogicException('checkPageBreakPDF() is not available in ' . static::class);
+    }
+
+    public function getMaxLineWidth(): float
+    {
+        throw new LogicException('getMaxLineWidth() is not available in ' . static::class);
+    }
+
+    public function getRemainingWidthPDF(): float
+    {
+        throw new LogicException('getRemainingWidthPDF() is not available in ' . static::class);
+    }
+
+    public function newPage(): void
+    {
+        throw new LogicException('newPage() is not available in ' . static::class);
     }
 }

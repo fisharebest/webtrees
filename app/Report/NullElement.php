@@ -29,6 +29,9 @@ class NullElement extends AbstractElement
 {
     public function addText(string $t): void
     {
-        // Deliberately discard. Text added outside a container is not rendered.
+    }
+
+    public function render(AbstractRenderer $renderer, bool $attrib = true): void
+    {
     }
 }

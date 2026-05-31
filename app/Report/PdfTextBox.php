@@ -30,10 +30,7 @@ use function trim;
 
 class PdfTextBox extends AbstractTextBox
 {
-    /**
-     * @param PdfRenderer $renderer
-     */
-    public function render(AbstractRenderer $renderer): void
+    public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
         $newelements      = [];
         $lastelement      = '';
@@ -59,7 +56,7 @@ class PdfTextBox extends AbstractTextBox
                         $newelements[] = $lastelement;
                         $lastelement   = $element;
                     }
-                } elseif ($element instanceof PdfFootnote) {
+                } elseif ($element instanceof AbstractFootnote) {
                     // Check if the Footnote has been set with it’s link number
                     $renderer->checkFootnote($element);
                     // Save first the last element if any
@@ -69,7 +66,7 @@ class PdfTextBox extends AbstractTextBox
                     }
                     // Save the Footnote with it’s link number as key for sorting later
                     $footnote_element[$element->num] = $element;
-                } elseif (!$element instanceof PdfFootnote || trim($element->getValue()) !== '') {
+                } elseif (!$element instanceof AbstractFootnote || trim($element->getValue()) !== '') {
                     // Do not keep empty footnotes
                     if (!empty($footnote_element)) {
                         ksort($footnote_element);

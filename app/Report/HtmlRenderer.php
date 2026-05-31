@@ -39,12 +39,6 @@ use function substr_count;
 
 class HtmlRenderer extends AbstractRenderer
 {
-    // Cell padding
-    public float $cPadding = 2.0;
-
-    // Cell height ratio
-    public float $cellHeightRatio = 1.8;
-
     // Current horizontal position
     public float $X = 0.0;
 
@@ -55,28 +49,19 @@ class HtmlRenderer extends AbstractRenderer
     public int $pageN = 1;
 
     // Store the page width without left and right margins
-    // Only needed for PDF reports
     public float $noMarginWidth = 0.0;
 
-    // LTR or RTL alignement; "left" on LTR, "right" on RTL
-    // Used in <div>
-    public string $alignRTL = 'left';
-
-    // LTR or RTL entity
-    public string $entityRTL = '&lrm;';
 
     // Keep track of the highest Y position
     // Used with Header div / Body div / Footer div / "addpage" / The bottom of the last image etc.
     public float $maxY = 0.0;
 
-    /**
-     * @var HtmlFootnote[] Array of elements in the footer notes
-     */
-    public array $printedfootnotes = [];
-
     public function setup(): void
     {
         parent::setup();
+
+        $this->cPadding       = 2.0;
+        $this->cellHeightRatio = 1.8;
 
         // Setting up the correct dimensions if Portrait (default) or Landscape
         if ($this->orientation === 'landscape') {
@@ -298,7 +283,7 @@ class HtmlRenderer extends AbstractRenderer
         }
     }
 
-    public function checkFootnote(HtmlFootnote $footnote): HtmlFootnote|false
+    public function checkFootnote(AbstractFootnote $footnote): AbstractFootnote|false
     {
         $ct  = count($this->printedfootnotes);
         $i   = 0;
@@ -330,7 +315,7 @@ class HtmlRenderer extends AbstractRenderer
         return substr_count($str, "\n") + 1;
     }
 
-    public function getFootnotesHeight(float $cellWidth): float
+    public function getFootnotesHeight(float $cellWidth = 0): float
     {
         $h = 0;
         foreach ($this->printedfootnotes as $element) {

@@ -26,10 +26,7 @@ use function str_replace;
 
 class PdfCell extends AbstractCell
 {
-    /**
-     * @param PdfRenderer $renderer
-     */
-    public function render(AbstractRenderer $renderer): void
+    public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
         $temptext = str_replace('#PAGENUM#', (string) $renderer->tcpdf->PageNo(), $this->text);
         // underline «title» part of Source item

@@ -28,10 +28,7 @@ use function trim;
 
 class HtmlTextBox extends AbstractTextBox
 {
-    /**
-     * @param HtmlRenderer $renderer
-     */
-    public function render(AbstractRenderer $renderer): void
+    public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
         // checkFootnote
         $newelements      = [];
@@ -60,7 +57,7 @@ class HtmlTextBox extends AbstractTextBox
                         $newelements[] = $lastelement;
                         $lastelement   = $element;
                     }
-                } elseif ($element instanceof HtmlFootnote) {
+                } elseif ($element instanceof AbstractFootnote) {
                     // Check if the Footnote has been set with its link number
                     $renderer->checkFootnote($element);
                     // Save first the last element if any
@@ -247,7 +244,7 @@ class HtmlTextBox extends AbstractTextBox
 
         // Print the text elements
         foreach ($this->elements as $element) {
-            if ($element instanceof HtmlText) {
+            if ($element instanceof AbstractText) {
                 $element->render($renderer, false);
             } elseif ($element instanceof AbstractElement) {
                 $element->render($renderer);

@@ -26,10 +26,7 @@ use function substr_count;
 
 class HtmlFootnote extends AbstractFootnote
 {
-    /**
-     * @param HtmlRenderer $renderer
-     */
-    public function render(AbstractRenderer $renderer): void
+    public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
         $renderer->setCurrentStyle('footnotenum');
         echo '<a href="#footnote', $this->num, '"><sup>';
@@ -37,9 +34,6 @@ class HtmlFootnote extends AbstractFootnote
         echo "</sup></a>\n";
     }
 
-    /**
-     * @param HtmlRenderer $renderer
-     */
     public function renderFootnote(AbstractRenderer $renderer): void
     {
         if ($renderer->getCurrentStyle() !== $this->styleName) {
@@ -56,7 +50,7 @@ class HtmlFootnote extends AbstractFootnote
         $renderer->setXy(0, $renderer->getY() + $this->getFootnoteHeight($renderer));
     }
 
-    public function getFootnoteHeight(HtmlRenderer $renderer, float $cellWidth = 0): float
+    public function getFootnoteHeight(AbstractRenderer $renderer, float $cellWidth = 0): float
     {
         if ($renderer->getCurrentStyle() !== $this->styleName) {
             $renderer->setCurrentStyle($this->styleName);
@@ -77,7 +71,6 @@ class HtmlFootnote extends AbstractFootnote
      * Get the width of text
      * Breaks up a text into lines if needed
      *
-     * @param HtmlRenderer $renderer
      *
      * @return array{0:float,1:int,2:float}
      */

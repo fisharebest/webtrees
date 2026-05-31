@@ -72,4 +72,6 @@ abstract class AbstractFootnote extends AbstractElement
     {
         $this->addlink = $a;
     }
+
+    abstract public function getFootnoteHeight(AbstractRenderer $renderer, float $cellWidth = 0): float;
 }

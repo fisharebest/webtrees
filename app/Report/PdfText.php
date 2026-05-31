@@ -28,10 +28,7 @@ use function substr_count;
 
 class PdfText extends AbstractText
 {
-    /**
-     * @param PdfRenderer $renderer
-     */
-    public function render(AbstractRenderer $renderer): void
+    public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
         // Set up the style
         if ($renderer->getCurrentStyle() !== $this->styleName) {
@@ -72,9 +69,6 @@ class PdfText extends AbstractText
         $renderer->tcpdf->setTextColor(0, 0, 0);
     }
 
-    /**
-     * @param PdfRenderer $renderer
-     */
     public function getHeight(AbstractRenderer $renderer): float
     {
         return 0;
@@ -83,7 +77,6 @@ class PdfText extends AbstractText
     /**
      * Splits the text into lines if necessary to fit into a giving cell
      *
-     * @param PdfRenderer $renderer
      *
      * @return array{0:float,1:int,2:float}
      */

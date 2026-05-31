@@ -52,14 +52,6 @@ class PdfRenderer extends AbstractRenderer
     // Font sub-setting in TCPDF is slow.
     private const bool SUBSETTING = false;
 
-    public TcpdfWrapper $tcpdf;
-
-    /** @var array<PdfFootnote> Array of elements in the footer notes */
-    public array $printedfootnotes = [];
-
-    // The last pictures page number
-    public int $lastpicpage = 0;
-
     public function header(): void
     {
         foreach ($this->headerElements as $element) {
@@ -164,7 +156,7 @@ class PdfRenderer extends AbstractRenderer
         return $this->tcpdf->getRemainingWidth() + $m['left'];
     }
 
-    public function getFootnotesHeight(): float
+    public function getFootnotesHeight(float $cellWidth = 0): float
     {
         $h = 0;
         foreach ($this->printedfootnotes as $element) {
@@ -174,7 +166,7 @@ class PdfRenderer extends AbstractRenderer
         return $h;
     }
 
-    public function checkFootnote(PdfFootnote $footnote): PdfFootnote|false
+    public function checkFootnote(AbstractFootnote $footnote): AbstractFootnote|false
     {
         $ct  = count($this->printedfootnotes);
         $val = $footnote->getValue();

@@ -26,10 +26,6 @@ use function substr_count;
 
 class HtmlText extends AbstractText
 {
-    /**
-     * @param HtmlRenderer $renderer
-     * @param bool         $attrib Is is called from a different element?
-     */
     public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
         // Set up the style
@@ -74,9 +70,6 @@ class HtmlText extends AbstractText
         }
     }
 
-    /**
-     * @param HtmlRenderer $renderer
-     */
     public function getHeight(AbstractRenderer $renderer): float
     {
         $ct = substr_count($this->text, "\n");
@@ -91,7 +84,6 @@ class HtmlText extends AbstractText
     /**
      * Get the width of text and wrap it too
      *
-     * @param HtmlRenderer $renderer
      *
      * @return array{0:float,1:int,2:float}
      */

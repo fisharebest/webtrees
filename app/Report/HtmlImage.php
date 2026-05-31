@@ -21,10 +21,7 @@ namespace Fisharebest\Webtrees\Report;
 
 class HtmlImage extends AbstractImage
 {
-    /**
-     * @param HtmlRenderer $renderer
-     */
-    public function render(AbstractRenderer $renderer): void
+    public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
         static $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
@@ -75,7 +72,6 @@ class HtmlImage extends AbstractImage
      * This would be called from the TextBox only for multiple images
      * so we add a bit bottom space between the images
      *
-     * @param HtmlRenderer $renderer
      */
     public function getHeight(AbstractRenderer $renderer): float
     {

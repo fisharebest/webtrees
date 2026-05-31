@@ -27,18 +27,12 @@ use function substr_count;
 
 class PdfFootnote extends AbstractFootnote
 {
-    /**
-     * @param PdfRenderer $renderer
-     */
-    public function render(AbstractRenderer $renderer): void
+    public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
         $renderer->setCurrentStyle('footnotenum');
         $renderer->tcpdf->Write($renderer->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
     }
 
-    /**
-     * @param PdfRenderer $renderer
-     */
     public function renderFootnote(AbstractRenderer $renderer): void
     {
         if ($renderer->getCurrentStyle() !== $this->styleName) {
@@ -59,7 +53,7 @@ class PdfFootnote extends AbstractFootnote
         $renderer->tcpdf->writeHTML($temptext, true, false, true);
     }
 
-    public function getFootnoteHeight(PdfRenderer $renderer): float
+    public function getFootnoteHeight(AbstractRenderer $renderer, float $cellWidth = 0): float
     {
         return 0;
     }
@@ -68,7 +62,6 @@ class PdfFootnote extends AbstractFootnote
      * Splits the text into lines to fit into a giving cell
      * and returns the last lines width
      *
-     * @param PdfRenderer $renderer
      *
      * @return array{0:float,1:int,2:float}
      */

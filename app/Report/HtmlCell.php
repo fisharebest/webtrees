@@ -24,10 +24,7 @@ use function str_replace;
 
 class HtmlCell extends AbstractCell
 {
-    /**
-     * @param HtmlRenderer $renderer
-     */
-    public function render(AbstractRenderer $renderer): void
+    public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
         if (str_contains($this->text, '{{:ptp:}}')) {
             return;

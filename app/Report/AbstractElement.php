@@ -29,10 +29,10 @@ abstract class AbstractElement
 
     protected string $text = '';
 
-    public function render(AbstractRenderer $renderer): void
-    {
-        //-- to be implemented in inherited classes
-    }
+    /**
+     * @param bool $attrib - true (element handles position/layout) false (parent TextBox handles position/layout)
+     */
+    abstract public function render(AbstractRenderer $renderer, bool $attrib = true): void;
 
     public function getHeight(AbstractRenderer $renderer): float
     {
