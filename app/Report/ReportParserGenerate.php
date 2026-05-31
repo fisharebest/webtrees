@@ -2197,7 +2197,7 @@ class ReportParserGenerate extends ReportParserBase
     {
         return preg_replace_callback(
             '/\$(\w+)/',
-            function (array $matches) use ($quote): string {
+            function (array $matches) use ($quote, $expression): string {
                 if (isset($this->vars[$matches[1]])) {
                     if ($quote) {
                         return "'" . addcslashes($this->vars[$matches[1]], "'") . "'";
@@ -2206,11 +2206,56 @@ class ReportParserGenerate extends ReportParserBase
                     return $this->vars[$matches[1]];
                 }
 
-                throw new DomainException(sprintf('Undefined variable $%s in report', $matches[1]));
-
-                return '$' . $matches[1];
+                throw new DomainException(sprintf(
+                    'Undefined variable $%s in report %s on line %d for record %s in expression: %s',
+                    $matches[1],
+                    $this->report,
+                    $this->currentReportLine(),
+                    $this->currentRecordXref(),
+                    $expression,
+                ));
             },
             $expression
         );
+    }
+
+    /**
+     * Calculate the current line number in the original report XML file.
+     *
+     * The parser may be a sub-parser operating on an extracted XML fragment,
+     * so we add the offsets from the repeats stack to get the true line.
+     */
+    private function currentReportLine(): int
+    {
+        $line = xml_get_current_line_number($this->parser);
+
+        $lineoffset = 0;
+        foreach ($this->repeats_stack as $rep) {
+            $lineoffset += $rep[1];
+        }
+
+        return $line + $lineoffset + $this->repeat_bytes;
+    }
+
+    /**
+     * Find the XREF of the current record being processed.
+     *
+     * Checks the current gedrec first, then walks the gedrec_stack
+     * to find the nearest ancestor record with an XREF.
+     */
+    private function currentRecordXref(): string
+    {
+        if (preg_match('/^0 @(.+)@/', $this->gedrec, $match)) {
+            return $match[1];
+        }
+
+        // Walk the stack from most recent to oldest
+        for ($i = count($this->gedrec_stack) - 1; $i >= 0; $i--) {
+            if (preg_match('/^0 @(.+)@/', $this->gedrec_stack[$i][0], $match)) {
+                return $match[1];
+            }
+        }
+
+        return '(unknown)';
     }
 }

@@ -244,6 +244,7 @@
 						<Gedcom id="@FAMS">
 							<SetVar name="hpid" value="@HUSB"/>
 							<SetVar name="wpid" value="@WIFE"/>
+							<SetVar name="spid" value=""/>
 							<if condition="$cpid==$hpid">
 								<SetVar name="spid" value="@WIFE" />
 							</if>

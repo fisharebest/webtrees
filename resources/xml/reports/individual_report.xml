@@ -424,6 +424,7 @@
 				<RepeatTag tag="FAMS">
 					<Gedcom id="@FAMS">
 						<!-- find spouse -->
+						<SetVar name="spid" value=""/>
 						<if condition="@WIFE == $pid">
 							<SetVar name="spid" value="@HUSB"/>
 						</if>

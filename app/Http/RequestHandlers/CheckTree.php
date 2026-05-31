@@ -205,7 +205,7 @@ final class CheckTree implements RequestHandlerInterface
                 } elseif ($element instanceof AbstractXrefElement) {
                     if (preg_match('/@(' . Gedcom::REGEX_XREF . ')@/', $value, $match) === 1) {
                         $xref1  = $match[1];
-                        $xref2  = $xrefs[strtoupper($xref1)] ?? null;
+                        $xref2  = $xrefs[strtoupper($xref1)] ?? '';
                         $linked = $records[$xref2] ?? null;
 
                         if ($linked === null) {
