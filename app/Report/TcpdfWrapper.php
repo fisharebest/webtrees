@@ -21,21 +21,30 @@ namespace Fisharebest\Webtrees\Report;
 
 use TCPDF;
 
+/**
+ * Thin facade around TCPDF.
+ *
+ * Exposes a handful of TCPDF protected helpers that the Pdf* element
+ * renderers need, plus a `resetColors()` shortcut used at the tail of
+ * each cell render to keep color state from leaking from one element
+ * into the next.  Color parsing itself lives in HexColor.
+ */
 class TcpdfWrapper extends TCPDF
 {
-    /**
-     * Expose protected method in base class.
-     */
     public function getRemainingWidth(): float
     {
         return parent::getRemainingWidth();
     }
 
-    /**
-     * Expose protected method in base class.
-     */
     public function checkPageBreak($h = 0, $y = null, $addpage = true): bool
     {
         return parent::checkPageBreak($h, $y, $addpage);
+    }
+
+
+    public function resetColors(): void
+    {
+        $this->setDrawColor(0, 0, 0);
+        $this->setTextColor(0, 0, 0);
     }
 }

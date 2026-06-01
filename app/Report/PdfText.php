@@ -21,8 +21,6 @@ namespace Fisharebest\Webtrees\Report;
 
 use function count;
 use function explode;
-use function hexdec;
-use function preg_match;
 use function str_replace;
 use function substr_count;
 
@@ -38,16 +36,13 @@ class PdfText extends AbstractText
         // underline «title» part of Source item
         $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
 
-        // Paint the text color or they might use inherited colors by the previous function
-        $match = [];
-        if (preg_match('/#?(..)(..)(..)/', $this->color, $match)) {
-            $r = hexdec($match[1]);
-            $g = hexdec($match[2]);
-            $b = hexdec($match[3]);
-            $renderer->tcpdf->setTextColor($r, $g, $b);
-        } else {
+        if ($this->color === '') {
             $renderer->tcpdf->setTextColor(0, 0, 0);
+        } else {
+            $hex = new HexColor($this->color);
+            $renderer->tcpdf->setTextColor($hex->red, $hex->green, $hex->blue);
         }
+
         $temptext = RightToLeftSupport::spanLtrRtl($temptext);
         $temptext = str_replace(
             [

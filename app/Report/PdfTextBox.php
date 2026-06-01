@@ -20,11 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use function count;
-use function hexdec;
 use function is_array;
 use function is_object;
 use function ksort;
-use function preg_match;
 use function str_replace;
 use function trim;
 
@@ -217,31 +215,29 @@ class PdfTextBox extends AbstractTextBox
         }
         // Add a new page if needed
         if ($this->pagecheck) {
-            // Reset last cell height or Header/Footer will inherit it, in case of pagebreak
+            // Reset last cell height, or Header/Footer will inherit it, in case of page break
             $renderer->lastCellHeight = 0;
             if ($renderer->checkPageBreakPDF($cH)) {
                 $cY = $renderer->tcpdf->GetY();
             }
         }
 
-        // Setup the border and background color
+        // Set up the border and background color
         $cS = ''; // Class Style
+
         if ($this->border) {
             $cS = 'D';
         } // D or empty string: Draw (default)
-        $match = [];
-        // Fill the background
-        if ($this->fill) {
-            if (preg_match('/#?(..)(..)(..)/', $this->bgcolor, $match)) {
-                $cS .= 'F'; // F: Fill the background
-                $r  = hexdec($match[1]);
-                $g  = hexdec($match[2]);
-                $b  = hexdec($match[3]);
-                $renderer->tcpdf->setFillColor($r, $g, $b);
-            }
+
+        // Fill the background — only mark the cell-style 'F' if a
+        // background color was actually specified.
+        if ($this->fill && $this->bgcolor !== '') {
+            $hex = new HexColor($this->bgcolor);
+            $renderer->tcpdf->setFillColor($hex->red, $hex->green, $hex->blue);
+            $cS .= 'F';
         }
         // Clean up a bit
-        unset($lw, $w, $match, $cE, $eH);
+        unset($lw, $w, $cE, $eH);
         // Draw the border
         if (!empty($cS)) {
             if (!$renderer->tcpdf->getRTL()) {

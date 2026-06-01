@@ -19,9 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use function hexdec;
 use function is_array;
-use function preg_match;
 use function str_replace;
 
 /**
@@ -39,40 +37,28 @@ class PdfCell extends AbstractCell
         $renderer->setCurrentStyle($this->style);
 
         // Background color
-        $match = [];
-        // Indicates if the cell background must be painted (1) or transparent (0)
         if ($this->fill) {
-            if (!empty($this->bgcolor)) {
-                // HTML color to RGB
-                if (preg_match('/#?(..)(..)(..)/', $this->bgcolor, $match)) {
-                    $r = hexdec($match[1]);
-                    $g = hexdec($match[2]);
-                    $b = hexdec($match[3]);
-                    $renderer->tcpdf->setFillColor($r, $g, $b);
-                }
+            if ($this->bgcolor !== '') {
+                $hex = new HexColor($this->bgcolor);
+                $renderer->tcpdf->setFillColor($hex->red, $hex->green, $hex->blue);
             } else {
-                // If no color set then don't fill
                 $this->fill = false;
             }
         }
 
-        // Borders
-        // HTML color to RGB
-        if (preg_match('/#?(..)(..)(..)/', $this->bocolor, $match)) {
-            $r = hexdec($match[1]);
-            $g = hexdec($match[2]);
-            $b = hexdec($match[3]);
-            $renderer->tcpdf->setDrawColor($r, $g, $b);
+        // Border color
+        if ($this->bocolor !== '') {
+            $hex = new HexColor($this->bocolor);
+            $renderer->tcpdf->setDrawColor($hex->red, $hex->green, $hex->blue);
         }
 
-        // Paint the text color or they might use inherited colors by the previous function
-        if (preg_match('/#?(..)(..)(..)/', $this->tcolor, $match)) {
-            $r = hexdec($match[1]);
-            $g = hexdec($match[2]);
-            $b = hexdec($match[3]);
-            $renderer->tcpdf->setTextColor($r, $g, $b);
-        } else {
+        // Text color - falls back to black, so a missing tcolor does
+        // not inherit the previous cell's color.
+        if ($this->tcolor === '') {
             $renderer->tcpdf->setTextColor(0, 0, 0);
+        } else {
+            $hex = new HexColor($this->tcolor);
+            $renderer->tcpdf->setTextColor($hex->red, $hex->green, $hex->blue);
         }
 
         // If current position (left)
@@ -143,7 +129,6 @@ class PdfCell extends AbstractCell
             $renderer->tcpdf->Link($cX, $this->top, $this->width, $this->height, $this->url);
         }
         // Reset the border and the text color to black or they will be inherited
-        $renderer->tcpdf->setDrawColor(0, 0, 0);
-        $renderer->tcpdf->setTextColor(0, 0, 0);
+        $renderer->tcpdf->resetColors();
     }
 }

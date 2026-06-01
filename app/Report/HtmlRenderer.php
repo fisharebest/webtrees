@@ -30,7 +30,6 @@ use function ceil;
 use function count;
 use function explode;
 use function implode;
-use function preg_match;
 use function str_replace;
 use function stripos;
 use function substr_count;
@@ -382,8 +381,9 @@ class HtmlRenderer extends AbstractRenderer implements HtmlRendererInterface
         if ($useclass) {
             $htmlcode .= ' class="' . $this->currentStyle->name . '"';
         }
-        // Check if Text Color is set and if it’s valid HTML color
-        if (preg_match('/#?(..)(..)(..)/', $color)) {
+
+        if ($color !== '') {
+            new HexColor($color);
             $htmlcode .= ' style="color:' . $color . ';"';
         }
 
