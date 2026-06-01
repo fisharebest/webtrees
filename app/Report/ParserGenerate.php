@@ -424,12 +424,12 @@ class ParserGenerate extends AbstractParser
 
     protected function pageNumStartHandler(): void
     {
-        $this->current_element->addText('#PAGENUM#');
+        $this->current_element->addPageNumber();
     }
 
     protected function totalPagesStartHandler(): void
     {
-        $this->current_element->addText('{{:ptp:}}');
+        $this->current_element->addTotalPages();
     }
 
     /**

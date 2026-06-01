@@ -36,7 +36,7 @@ class PdfFootnote extends AbstractFootnote
     public function renderFootnote(AbstractRenderer $renderer): void
     {
         $renderer->setCurrentStyle($this->style);
-        $temptext = str_replace('#PAGENUM#', (string) $renderer->tcpdf->PageNo(), $this->text);
+        $temptext = $this->resolvedText($renderer);
         // Set the link to this y/page position
         $renderer->tcpdf->setLink($this->addlink, -1, -1);
         // Print first the source number

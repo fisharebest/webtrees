@@ -26,10 +26,10 @@ class HtmlCell extends AbstractCell
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
-        if (str_contains($this->text, '{{:ptp:}}')) {
+        if ($this->containsTotalPages()) {
             return;
         }
-        $temptext = str_replace('#PAGENUM#', (string) $renderer->pageNo(), $this->text);
+        $temptext = $this->resolvedText($renderer);
         // underline «title» part of Source item
         $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
 

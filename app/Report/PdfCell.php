@@ -28,7 +28,7 @@ class PdfCell extends AbstractCell
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
-        $temptext = str_replace('#PAGENUM#', (string) $renderer->tcpdf->PageNo(), $this->text);
+        $temptext = $this->resolvedText($renderer);
         // underline «title» part of Source item
         $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
 

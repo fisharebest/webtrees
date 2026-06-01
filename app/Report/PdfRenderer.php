@@ -98,6 +98,19 @@ class PdfRenderer extends AbstractRenderer
         }
     }
 
+    /**
+     * Return the current PDF page number, delegating to TCPDF.
+     *
+     * This override allows element renderers to obtain the current page
+     * number through the same {@see AbstractRenderer::pageNo()} interface
+     * used by the HTML backend, so that
+     * {@see AbstractElement::resolvedText()} can stay backend-agnostic.
+     */
+    public function pageNo(): int
+    {
+        return $this->tcpdf->PageNo();
+    }
+
     public function addMarginX(float $x): float
     {
         $m = $this->tcpdf->getMargins();

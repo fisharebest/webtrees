@@ -38,7 +38,7 @@ class HtmlFootnote extends AbstractFootnote
     {
         $renderer->setCurrentStyle($this->style);
 
-        $temptext = str_replace('#PAGENUM#', (string) $renderer->pageNo(), $this->text);
+        $temptext = $this->resolvedText($renderer);
         // underline «title» part of Source item
         $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
         echo '<div><a id="footnote', $this->num, '"></a>';

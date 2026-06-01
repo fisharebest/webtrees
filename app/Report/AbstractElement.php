@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use function str_contains;
+use function str_replace;
 use function strip_tags;
 use function trim;
 
@@ -26,6 +28,22 @@ abstract class AbstractElement
 {
     // Special value for X or Y position, to indicate the current position.
     public const float CURRENT_POSITION = -1.0;
+
+    /**
+     * Placeholder substring written into element text when the parser
+     * encounters <PageNum/>.  Resolved per-renderer in resolvedText().
+     */
+    private const string PAGE_NUMBER_TOKEN = '#PAGENUM#';
+
+    /**
+     * Placeholder substring written into element text when the parser
+     * encounters <TotalPages/>.  Identical to TCPDF's $alias_tot_pages so
+     * the PDF backend can rely on TCPDF's automatic substitution at PDF
+     * assembly time.  The HTML backend produces an unpaginated document
+     * and skips any element that contains this placeholder via
+     * containsTotalPages().
+     */
+    private const string TOTAL_PAGES_TOKEN = '{{:ptp:}}';
 
     protected string $text = '';
 
@@ -58,6 +76,51 @@ abstract class AbstractElement
     public function addNewline(): void
     {
         $this->text .= "\n";
+    }
+
+    /**
+     * Append a placeholder that will be substituted with the current
+     * page number when the element is rendered.  See resolvedText().
+     */
+    public function addPageNumber(): void
+    {
+        $this->text .= self::PAGE_NUMBER_TOKEN;
+    }
+
+    /**
+     * Append a placeholder that will be substituted with the total page
+     * count.  PDF substitution is performed by TCPDF at PDF assembly
+     * time; HTML output skips any element that contains the placeholder
+     * since the HTML backend produces an unpaginated document.
+     */
+    public function addTotalPages(): void
+    {
+        $this->text .= self::TOTAL_PAGES_TOKEN;
+    }
+
+    /**
+     * True when the element's text stream contains a <TotalPages/>
+     * placeholder.  Used by the HTML backend to suppress cells whose
+     * only purpose is to print "Page X of Y" footers.
+     */
+    public function containsTotalPages(): bool
+    {
+        return str_contains($this->text, self::TOTAL_PAGES_TOKEN);
+    }
+
+    /**
+     * Return the element text with dynamic placeholders substituted by
+     * values queried from the active renderer.  Element render methods
+     * call this just before consuming the text for measurement, wrapping
+     * or output, instead of touching $this->text directly.
+     *
+     * The total-pages placeholder is intentionally left in place: TCPDF
+     * substitutes it during PDF assembly, and the HTML backend filters
+     * affected cells out earlier via containsTotalPages().
+     */
+    public function resolvedText(AbstractRenderer $renderer): string
+    {
+        return str_replace(self::PAGE_NUMBER_TOKEN, (string) $renderer->pageNo(), $this->text);
     }
 
     public function getValue(): string
