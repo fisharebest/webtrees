@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use Closure;
 use DomainException;
 use XMLParser;
 
-use function method_exists;
 use function sprintf;
 use function xml_error_string;
 use function xml_get_current_line_number;
@@ -41,8 +41,22 @@ abstract class AbstractParser
 
     protected string $text = '';
 
-    public function __construct(string $report)
-    {
+    /** @var array<string,Closure(array<string,string>):void> */
+    protected array $start_handlers;
+
+    /** @var array<string,Closure():void> */
+    protected array $end_handlers;
+
+    public function __construct(
+        protected string $report,
+    ) {
+        // Resolve the dispatch table before xml_parse() begins delivering
+        // events.  Subclasses build the table from their own handler methods
+        // so the set of XML elements they recognise is declared in one place
+        // instead of inferred at runtime via method_exists().
+        $this->start_handlers = $this->startHandlers();
+        $this->end_handlers   = $this->endHandlers();
+
         $this->xml_parser = xml_parser_create();
         xml_parser_set_option($this->xml_parser, XML_OPTION_CASE_FOLDING, 0);
         xml_set_element_handler($this->xml_parser, $this->startElement(...), $this->endElement(...));
@@ -57,22 +71,59 @@ abstract class AbstractParser
         }
     }
 
+    /**
+     * Build the dispatch table for XML start tags.  Keys are XML element
+     * names (case-sensitive, matching the case used in the report files);
+     * values are closures that receive the element's attributes.
+     *
+     * @return array<string,Closure(array<string,string>):void>
+     */
+    abstract protected function startHandlers(): array;
+
+    /**
+     * Build the dispatch table for XML end tags.  See {@see startHandlers()}.
+     *
+     * @return array<string,Closure():void>
+     */
+    abstract protected function endHandlers(): array;
+
+    /**
+     * @param array<string,string> $attrs
+     */
     protected function startElement(XMLParser $parser, string $name, array $attrs): void
     {
-        $method = $name . 'StartHandler';
+        $handler = $this->start_handlers[$name] ?? null;
 
-        if (method_exists($this, $method)) {
-            $this->$method($attrs);
+        if ($handler === null) {
+            throw new DomainException(sprintf(
+                'Unknown XML element <%s> in report %s on line %d',
+                $name,
+                $this->report,
+                xml_get_current_line_number($parser)
+            ));
         }
+
+        $handler($attrs);
     }
 
     protected function endElement(XMLParser $parser, string $name): void
     {
-        $method = $name . 'EndHandler';
+        $handler = $this->end_handlers[$name] ?? null;
 
-        if (method_exists($this, $method)) {
-            $this->$method();
+        if ($handler === null) {
+            throw new DomainException(sprintf(
+                'Unknown XML element </%s> in report %s on line %d',
+                $name,
+                $this->report,
+                xml_get_current_line_number($parser)
+            ));
         }
+
+        $handler();
+    }
+
+    protected function noop(): void
+    {
     }
 
     protected function characterData(XMLParser $parser, string $data): void

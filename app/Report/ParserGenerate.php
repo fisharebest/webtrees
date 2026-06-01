@@ -19,18 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use Closure;
 use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\UnknownElement;
-use Fisharebest\Webtrees\Factories\MarkdownFactory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
@@ -40,7 +39,6 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
-use LogicException;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use XMLParser;
@@ -60,13 +58,11 @@ use function imagesx;
 use function imagesy;
 use function in_array;
 use function ltrim;
-use function method_exists;
 use function preg_match;
 use function preg_match_all;
 use function preg_replace;
 use function preg_replace_callback;
 use function preg_split;
-use function reset;
 use function round;
 use function sprintf;
 use function str_contains;
@@ -76,7 +72,6 @@ use function str_starts_with;
 use function strip_tags;
 use function strlen;
 use function strpos;
-use function strtoupper;
 use function substr;
 use function trim;
 use function uasort;
@@ -153,9 +148,6 @@ class ParserGenerate extends AbstractParser
     /** Number of items filtered from lists */
     private int $list_private = 0;
 
-    /** @var string The filename of the XML report */
-    protected string $report;
-
     private AbstractRenderer $renderer;
 
     /** The current target for addElement() — either the renderer or a nested text box */
@@ -168,7 +160,6 @@ class ParserGenerate extends AbstractParser
 
     public function __construct(string $report, AbstractRenderer $renderer, array $vars, Tree $tree)
     {
-        $this->report            = $report;
         $this->renderer          = $renderer;
         $this->current_container = $renderer;
         $this->current_element   = new NullElement();
@@ -259,12 +250,106 @@ class ParserGenerate extends AbstractParser
     }
 
     /**
+     * Dispatch table for opening XML tags.
+     *
+     * Every tag that may legally appear in a report must be present here,
+     * even if it requires no action on open (use a no-op).
+     *
+     * @return array<string,Closure(array<string,string>):void>
+     */
+    protected function startHandlers(): array
+    {
+        return [
+            'Body'             => $this->bodyStartHandler(...),
+            'Cell'             => $this->cellStartHandler(...),
+            'Description'      => $this->noop(...), // metadata consumed by ParserSetup
+            'Doc'              => $this->docStartHandler(...),
+            'Facts'            => $this->factsStartHandler(...),
+            'Footer'           => $this->footerStartHandler(...),
+            'Footnote'         => $this->footnoteStartHandler(...),
+            'FootnoteTexts'    => $this->footnoteTextsStartHandler(...),
+            'Gedcom'           => $this->gedcomStartHandler(...),
+            'GedcomValue'      => $this->gedcomValueStartHandler(...),
+            'Generation'       => $this->generationStartHandler(...),
+            'GetPersonName'    => $this->getPersonNameStartHandler(...),
+            'Header'           => $this->headerStartHandler(...),
+            'HighlightedImage' => $this->highlightedImageStartHandler(...),
+            'Image'            => $this->imageStartHandler(...),
+            'Input'            => $this->noop(...), // metadata consumed by ParserSetup
+            'Line'             => $this->lineStartHandler(...),
+            'List'             => $this->listStartHandler(...),
+            'ListTotal'        => $this->listTotalStartHandler(...),
+            'NewPage'          => $this->newPageStartHandler(...),
+            'Now'              => $this->nowStartHandler(...),
+            'PageNum'          => $this->pageNumStartHandler(...),
+            'Relatives'        => $this->relativesStartHandler(...),
+            'RepeatTag'        => $this->repeatTagStartHandler(...),
+            'Report'           => $this->noop(...), // the root tag carries no logic
+            'SetVar'           => $this->setVarStartHandler(...),
+            'Style'            => $this->styleStartHandler(...),
+            'Text'             => $this->textStartHandler(...),
+            'TextBox'          => $this->textBoxStartHandler(...),
+            'Title'            => $this->noop(...), // metadata consumed by ParserSetup
+            'TotalPages'       => $this->totalPagesStartHandler(...),
+            'br'               => $this->brStartHandler(...),
+            'if'               => $this->ifStartHandler(...),
+            'tempdoc'          => $this->noop(...), // synthetic wrapper injected during iteration
+            'var'              => $this->varStartHandler(...),
+        ];
+    }
+
+    /**
+     * @return array<string,Closure():void>
+     */
+    protected function endHandlers(): array
+    {
+        return [
+            'Body'             => $this->noop(...),
+            'Cell'             => $this->cellEndHandler(...),
+            'Description'      => $this->noop(...),
+            'Doc'              => $this->docEndHandler(...),
+            'Facts'            => $this->factsEndHandler(...),
+            'Footer'           => $this->noop(...),
+            'Footnote'         => $this->footnoteEndHandler(...),
+            'FootnoteTexts'    => $this->noop(...),
+            'Gedcom'           => $this->gedcomEndHandler(...),
+            'GedcomValue'      => $this->noop(...),
+            'Generation'       => $this->noop(...),
+            'GetPersonName'    => $this->noop(...),
+            'Header'           => $this->noop(...),
+            'HighlightedImage' => $this->noop(...),
+            'Image'            => $this->noop(...),
+            'Input'            => $this->noop(...),
+            'Line'             => $this->noop(...),
+            'List'             => $this->listEndHandler(...),
+            'ListTotal'        => $this->noop(...),
+            'NewPage'          => $this->noop(...),
+            'Now'              => $this->noop(...),
+            'PageNum'          => $this->noop(...),
+            'Relatives'        => $this->relativesEndHandler(...),
+            'RepeatTag'        => $this->repeatTagEndHandler(...),
+            'Report'           => $this->noop(...),
+            'SetVar'           => $this->noop(...),
+            'Style'            => $this->noop(...),
+            'Text'             => $this->textEndHandler(...),
+            'TextBox'          => $this->textBoxEndHandler(...),
+            'Title'            => $this->noop(...),
+            'TotalPages'       => $this->noop(...),
+            'br'               => $this->noop(...),
+            'if'               => $this->ifEndHandler(...),
+            'tempdoc'          => $this->noop(...),
+            'var'              => $this->noop(...),
+        ];
+    }
+
+    /**
      * @param array<string,string> $attrs
      */
     protected function startElement(XMLParser $parser, string $name, array $attrs): void
     {
+        // Expand any $variable references in attribute values up front so
+        // that individual handlers see fully resolved attributes.
         $newattrs = [];
-
         foreach ($attrs as $key => $value) {
             if (preg_match("/^\\$(\w+)$/", $value, $match)) {
                 if (isset($this->vars[$match[1]])) {
@@ -274,24 +359,47 @@ class ParserGenerate extends AbstractParser
             $newattrs[$key] = $value;
         }
         $attrs = $newattrs;
-        if ($this->process_footnote && ($this->process_ifs === 0 || $name === 'if') && ($this->process_gedcoms === 0 || $name === 'Gedcom') && ($this->process_repeats === 0 || $name === 'Facts' || $name === 'RepeatTag')) {
-            $method = $name . 'StartHandler';
 
-            if (method_exists($this, $method)) {
-                $this->{$method}($attrs);
-            }
+        // Gating: while we are skipping content inside <Footnote>, <if>,
+        // <Gedcom>, <Facts> or <RepeatTag>, only the tag(s) that can end
+        // (or re-enter) those scopes are dispatched.  Tags suppressed by a
+        // gate are not validated against the handler table either.
+        if (!$this->process_footnote) {
+            return;
         }
+        if ($this->process_ifs !== 0 && $name !== 'if') {
+            return;
+        }
+        if ($this->process_gedcoms !== 0 && $name !== 'Gedcom') {
+            return;
+        }
+        if ($this->process_repeats !== 0 && $name !== 'Facts' && $name !== 'RepeatTag') {
+            return;
+        }
+
+        parent::startElement($parser, $name, $attrs);
     }
 
     protected function endElement(XMLParser $parser, string $name): void
     {
-        if (($this->process_footnote || $name === 'Footnote') && ($this->process_ifs === 0 || $name === 'if') && ($this->process_gedcoms === 0 || $name === 'Gedcom') && ($this->process_repeats === 0 || $name === 'Facts' || $name === 'RepeatTag' || $name === 'List' || $name === 'Relatives')) {
-            $method = $name . 'EndHandler';
-
-            if (method_exists($this, $method)) {
-                $this->{$method}();
-            }
+        // Mirror image of the gating in startElement().  <Footnote>, <if>,
+        // <Gedcom>, <Facts>, <RepeatTag>, <List> and <Relatives> can each
+        // close the scope they opened, so they must be dispatched even when
+        // the corresponding gate is active.
+        if (!$this->process_footnote && $name !== 'Footnote') {
+            return;
         }
+        if ($this->process_ifs !== 0 && $name !== 'if') {
+            return;
+        }
+        if ($this->process_gedcoms !== 0 && $name !== 'Gedcom') {
+            return;
+        }
+        if ($this->process_repeats !== 0 && $name !== 'Facts' && $name !== 'RepeatTag' && $name !== 'List' && $name !== 'Relatives') {
+            return;
+        }
+
+        parent::endElement($parser, $name);
     }
 
     protected function characterData(XMLParser $parser, string $data): void

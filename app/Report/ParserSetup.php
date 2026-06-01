@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use Closure;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 
@@ -56,6 +57,104 @@ class ParserSetup extends AbstractParser
     public function reportInputs(): array
     {
         return $this->inputs;
+    }
+
+    /**
+     * Dispatch table for opening XML tags.
+     *
+     * Every tag that may legally appear in a report must be present here,
+     * even if it requires no action on open (use a no-op).
+     *
+     * @return array<string,Closure(array<string,string>):void>
+     */
+    protected function startHandlers(): array
+    {
+        return [
+            'Body'             => $this->noop(...),
+            'Cell'             => $this->noop(...),
+            'Description'      => $this->noop(...),
+            'Doc'              => $this->noop(...),
+            'Facts'            => $this->noop(...),
+            'Footer'           => $this->noop(...),
+            'Footnote'         => $this->noop(...),
+            'FootnoteTexts'    => $this->noop(...),
+            'Gedcom'           => $this->noop(...),
+            'GedcomValue'      => $this->noop(...),
+            'Generation'       => $this->noop(...),
+            'GetPersonName'    => $this->noop(...),
+            'Header'           => $this->noop(...),
+            'HighlightedImage' => $this->noop(...),
+            'Image'            => $this->noop(...),
+            'Input'            => $this->inputStartHandler(...),
+            'Line'             => $this->noop(...),
+            'List'             => $this->noop(...),
+            'ListTotal'        => $this->noop(...),
+            'NewPage'          => $this->noop(...),
+            'Now'              => $this->noop(...),
+            'PageNum'          => $this->noop(...),
+            'Relatives'        => $this->noop(...),
+            'RepeatTag'        => $this->noop(...),
+            'Report'           => $this->noop(...),
+            'SetVar'           => $this->noop(...),
+            'Style'            => $this->noop(...),
+            'Text'             => $this->noop(...),
+            'TextBox'          => $this->noop(...),
+            'Title'            => $this->titleStartHandler(...),
+            'TotalPages'       => $this->noop(...),
+            'br'               => $this->noop(...),
+            'if'               => $this->noop(...),
+            'tempdoc'          => $this->noop(...),
+            'var'              => $this->varStartHandler(...),
+        ];
+    }
+
+    /**
+     * Dispatch table for closing XML tags.
+     *
+     * Every tag that may legally appear in a report must be present here,
+     * even if it requires no action on open (use a no-op).
+     *
+     * @return array<string,Closure(array<string,string>):void>
+     */
+    protected function endHandlers(): array
+    {
+        return [
+            'Body'             => $this->noop(...),
+            'Cell'             => $this->noop(...),
+            'Description'      => $this->descriptionEndHandler(...),
+            'Doc'              => $this->noop(...),
+            'Facts'            => $this->noop(...),
+            'Footer'           => $this->noop(...),
+            'Footnote'         => $this->noop(...),
+            'FootnoteTexts'    => $this->noop(...),
+            'Gedcom'           => $this->noop(...),
+            'GedcomValue'      => $this->noop(...),
+            'Generation'       => $this->noop(...),
+            'GetPersonName'    => $this->noop(...),
+            'Header'           => $this->noop(...),
+            'HighlightedImage' => $this->noop(...),
+            'Image'            => $this->noop(...),
+            'Input'            => $this->inputEndHandler(...),
+            'Line'             => $this->noop(...),
+            'List'             => $this->noop(...),
+            'ListTotal'        => $this->noop(...),
+            'NewPage'          => $this->noop(...),
+            'Now'              => $this->noop(...),
+            'PageNum'          => $this->noop(...),
+            'Relatives'        => $this->noop(...),
+            'RepeatTag'        => $this->noop(...),
+            'Report'           => $this->noop(...),
+            'SetVar'           => $this->noop(...),
+            'Style'            => $this->noop(...),
+            'Text'             => $this->noop(...),
+            'TextBox'          => $this->noop(...),
+            'Title'            => $this->titleEndHandler(...),
+            'TotalPages'       => $this->noop(...),
+            'br'               => $this->noop(...),
+            'if'               => $this->noop(...),
+            'tempdoc'          => $this->noop(...),
+            'var'              => $this->noop(...),
+        ];
     }
 
     /**
