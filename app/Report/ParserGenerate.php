@@ -146,17 +146,20 @@ class ParserGenerate extends AbstractParser
     /** The current target for addElement() — either the renderer or a nested text box */
     private ElementContainerInterface $current_container;
 
-    /** @var array<string,string> Variables defined in the report at run-time */
-    private array $vars;
+    /** Variables defined in the report at run-time, seeded from the setup form. */
+    private VariableTable $variables;
 
     private Tree $tree;
 
+    /**
+     * @param array<string,string> $vars Initial variable bindings from the report setup form.
+     */
     public function __construct(string $report, AbstractRenderer $renderer, array $vars, Tree $tree)
     {
         $this->renderer          = $renderer;
         $this->current_container = $renderer;
         $this->current_element   = new NullElement();
-        $this->vars              = $vars;
+        $this->variables         = new VariableTable($vars);
         $this->tree              = $tree;
 
         parent::__construct($report);
@@ -344,10 +347,8 @@ class ParserGenerate extends AbstractParser
         // that individual handlers see fully resolved attributes.
         $newattrs = [];
         foreach ($attrs as $key => $value) {
-            if (preg_match("/^\\$(\w+)$/", $value, $match)) {
-                if (isset($this->vars[$match[1]])) {
-                    $value = $this->vars[$match[1]];
-                }
+            if (preg_match("/^\\$(\w+)$/", $value, $match) && $this->variables->has($match[1])) {
+                $value = $this->variables->get($match[1]);
             }
             $newattrs[$key] = $value;
         }
@@ -688,8 +689,8 @@ class ParserGenerate extends AbstractParser
                 $id = $match[1];
             }
         } elseif (preg_match('/\$(.+)/', $attrs['id'], $match)) {
-            if (isset($this->vars[$match[1]])) {
-                $id = $this->vars[$match[1]];
+            if ($this->variables->has($match[1])) {
+                $id = $this->variables->get($match[1]);
             }
         } elseif (preg_match('/@(.+)/', $attrs['id'], $match)) {
             $gmatch = [];
@@ -896,9 +897,9 @@ class ParserGenerate extends AbstractParser
         }
 
         $var = $attrs['var'];
-        // SetVar element preset variables
-        if (!empty($this->vars[$var])) {
-            $var = $this->vars[$var];
+
+        if ($this->variables->has($var)) {
+            $var = $this->variables->get($var);
         } else {
             $tfact = $this->fact;
             if (($this->fact === 'EVEN' || $this->fact === 'FACT') && $this->type !== '') {
@@ -962,7 +963,7 @@ class ParserGenerate extends AbstractParser
             $tag .= $attrs['ignore'];
         }
         if (preg_match('/\$(.+)/', $tag, $match)) {
-            $tag = $this->vars[$match[1]];
+            $tag = $this->variables->get($match[1]);
         }
 
         $record = Registry::gedcomRecordFactory()->make($id, $this->tree);
@@ -1054,13 +1055,10 @@ class ParserGenerate extends AbstractParser
                 $value = str_replace('@', '', trim($gmatch[1]));
             }
         }
-        if (preg_match("/\\$(\w+)/", $name, $match)) {
-            $name = $this->vars["'" . $match[1] . "'"];
-        }
         $count = preg_match_all("/\\$(\w+)/", $value, $match, PREG_SET_ORDER);
         $i     = 0;
         while ($i < $count) {
-            $t     = $this->vars[$match[$i][1]];
+            $t     = $this->variables->get($match[$i][1]);
             $value = preg_replace('/\$' . $match[$i][1] . '/', $t, $value, 1);
             $i++;
         }
@@ -1085,7 +1083,7 @@ class ParserGenerate extends AbstractParser
         if (str_contains($value, '@')) {
             $value = '';
         }
-        $this->vars[$name] = $value;
+        $this->variables->set($name, $value);
     }
 
     /**
@@ -1331,7 +1329,7 @@ class ParserGenerate extends AbstractParser
         if (isset($attrs['sortby'])) {
             $sortby = $attrs['sortby'];
             if (preg_match("/\\$(\w+)/", $sortby, $match)) {
-                $sortby = $this->vars[$match[1]];
+                $sortby = $this->variables->get($match[1]);
                 $sortby = trim($sortby);
             }
         } else {
@@ -1569,7 +1567,7 @@ class ParserGenerate extends AbstractParser
                         $expr = trim($match[2]);
                         $val  = trim($match[3]);
                         if (preg_match("/\\$(\w+)/", $val, $match)) {
-                            $val = $this->vars[$match[1]];
+                            $val = $this->variables->get($match[1]);
                             $val = trim($val);
                         }
                         if ($val !== '') {
@@ -1773,7 +1771,7 @@ class ParserGenerate extends AbstractParser
 
         $match = [];
         if (preg_match("/\\$(\w+)/", $sortby, $match)) {
-            $sortby = $this->vars[$match[1]];
+            $sortby = $this->variables->get($match[1]);
             $sortby = trim($sortby);
         }
 
@@ -1781,14 +1779,14 @@ class ParserGenerate extends AbstractParser
         $group  = $attrs['group'] ?? 'child-family';
 
         if (preg_match("/\\$(\w+)/", $group, $match)) {
-            $group = $this->vars[$match[1]];
+            $group = $this->variables->get($match[1]);
             $group = trim($group);
         }
 
         $id = $attrs['id'] ?? '';
 
         if (preg_match("/\\$(\w+)/", $id, $match)) {
-            $id = $this->vars[$match[1]];
+            $id = $this->variables->get($match[1]);
             $id = trim($id);
         }
 
@@ -2091,12 +2089,12 @@ class ParserGenerate extends AbstractParser
         return preg_replace_callback(
             '/\$(\w+)/',
             function (array $matches) use ($quote, $expression): string {
-                if (isset($this->vars[$matches[1]])) {
+                if ($this->variables->has($matches[1])) {
                     if ($quote) {
-                        return "'" . addcslashes($this->vars[$matches[1]], "'") . "'";
+                        return "'" . addcslashes($this->variables->get($matches[1]), "'") . "'";
                     }
 
-                    return $this->vars[$matches[1]];
+                    return $this->variables->get($matches[1]);
                 }
 
                 throw new DomainException(sprintf(
