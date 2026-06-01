@@ -73,8 +73,8 @@ abstract class AbstractRenderer implements ElementContainerInterface
 
     public float $default_font_size = 12.0;
 
-    /** @var string Header (H), Body (B) or Footer (F) */
-    public string $processing = 'H';
+    /** Which logical section of the report is currently being assembled. */
+    protected ReportSection $processing = ReportSection::Header;
 
     public bool $rtl = false;
 
@@ -122,13 +122,11 @@ abstract class AbstractRenderer implements ElementContainerInterface
 
     public function addElement(AbstractElement $element): void
     {
-        if ($this->processing === 'B') {
-            $this->addElementToBody($element);
-        } elseif ($this->processing === 'H') {
-            $this->addElementToHeader($element);
-        } elseif ($this->processing === 'F') {
-            $this->addElementToFooter($element);
-        }
+        match ($this->processing) {
+            ReportSection::Body   => $this->addElementToBody($element),
+            ReportSection::Header => $this->addElementToHeader($element),
+            ReportSection::Footer => $this->addElementToFooter($element),
+        };
     }
 
     public function addElementToHeader(AbstractElement $element): void
@@ -151,28 +149,28 @@ abstract class AbstractRenderer implements ElementContainerInterface
     abstract public function setCurrentStyle(Style $style): void;
 
     /**
-     * @param float  $width   cell width (expressed in points)
-     * @param float  $height  cell height (expressed in points)
-     * @param string $border  Border style
-     * @param string $align   Text alignment
-     * @param string $bgcolor Background color code
-     * @param Style  $style   The text style
-     * @param int    $ln      Indicates where the current position should go after the call
-     * @param float  $top     Y-position
-     * @param float  $left    X-position
-     * @param bool   $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
-     * @param int    $stretch Stretch character mode
-     * @param string $bocolor Border color
-     * @param string $tcolor  Text color
+     * @param float       $width   cell width (expressed in points)
+     * @param float       $height  cell height (expressed in points)
+     * @param string      $border  Border style
+     * @param CellAlign   $align   Text alignment
+     * @param string      $bgcolor Background color code
+     * @param Style       $style   The text style
+     * @param CellNewline $ln      Where the cursor should go after the call
+     * @param float       $top     Y-position
+     * @param float       $left    X-position
+     * @param bool        $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
+     * @param int         $stretch Stretch character mode
+     * @param string      $bocolor Border color
+     * @param string      $tcolor  Text color
      */
     abstract public function createCell(
         float $width,
         float $height,
         string $border,
-        string $align,
+        CellAlign $align,
         string $bgcolor,
         Style $style,
-        int $ln,
+        CellNewline $ln,
         float $top,
         float $left,
         bool $fill,
@@ -212,8 +210,8 @@ abstract class AbstractRenderer implements ElementContainerInterface
         float $y,
         float $w,
         float $h,
-        string $align, // L:left, C:center, R:right or empty to use x/y
-        string $ln,    //  T:same line, N:next line
+        CellAlign $align,
+        ImageContinuation $ln,
     ): AbstractImage;
 
     abstract public function createImageFromObject(
@@ -222,8 +220,8 @@ abstract class AbstractRenderer implements ElementContainerInterface
         float $y,
         float $w,
         float $h,
-        string $align, // L:left, C:center, R:right or empty to use x/y
-        string $ln,    // T:same line, N:next line
+        CellAlign $align,
+        ImageContinuation $ln,
     ): AbstractImage;
 
     abstract public function createFootnote(Style $style): AbstractFootnote;
@@ -241,9 +239,9 @@ abstract class AbstractRenderer implements ElementContainerInterface
         [$this->page_width, $this->page_height] = self::PAPER_SIZES[$this->page_format] ?? self::PAPER_SIZES['A4'];
     }
 
-    public function setProcessing(string $p): void
+    public function setProcessing(ReportSection $section): void
     {
-        $this->processing = $p;
+        $this->processing = $section;
     }
 
     public function addTitle(string $data): void

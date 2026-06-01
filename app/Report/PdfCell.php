@@ -118,9 +118,9 @@ class PdfCell extends AbstractCell
             $this->height,
             $temptext,
             $this->border,
-            $this->align,
+            $this->align->value,
             $this->fill,
-            $this->newline,
+            $this->newline->value,
             $cX,
             $this->top,
             $this->reseth,
@@ -128,7 +128,7 @@ class PdfCell extends AbstractCell
             true
         );
         // Reset the last cell height for the next line
-        if ($this->newline >= 1) {
+        if ($this->newline !== CellNewline::Right) {
             $renderer->lastCellHeight = 0;
         } elseif ($renderer->lastCellHeight < $renderer->tcpdf->getLastH()) {
             // OR save the last height if higher then before

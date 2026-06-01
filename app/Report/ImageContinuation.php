@@ -19,29 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-abstract class AbstractImage extends AbstractElement
+/**
+ * Where the rendering cursor should be placed after an image has been drawn.
+ *
+ * The single-letter scalar values match TCPDF's Image() $ln parameter so that
+ * the PDF backend can pass them through unchanged.
+ */
+enum ImageContinuation: string
 {
-    public function __construct(
-        protected string $src,
-        protected float $x,
-        protected float $y,
-        protected float $width,
-        protected float $height,
-        protected CellAlign $align,
-        protected ImageContinuation $line,
-    ) {
-    }
+    /** Continue rendering on the same line as the image. */
+    case SameLine = 'T';
 
-    public function getHeight(AbstractRenderer $renderer): float
-    {
-        return $this->height;
-    }
-
-    /**
-     * @return array{0:float,1:int,2:float}
-     */
-    public function getWidth(AbstractRenderer $renderer): array
-    {
-        return [$this->width, 1, $this->height];
-    }
+    /** Advance the cursor to the line below the image. */
+    case NextLine = 'N';
 }

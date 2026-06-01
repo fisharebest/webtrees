@@ -19,29 +19,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-abstract class AbstractImage extends AbstractElement
+/**
+ * Where the cursor should move to after a cell has been rendered.
+ *
+ * The integer scalar values match TCPDF's MultiCell() $ln parameter, so the
+ * PDF backend can pass them through unchanged.
+ */
+enum CellNewline: int
 {
-    public function __construct(
-        protected string $src,
-        protected float $x,
-        protected float $y,
-        protected float $width,
-        protected float $height,
-        protected CellAlign $align,
-        protected ImageContinuation $line,
-    ) {
-    }
+    /** Continue rendering to the right of the cell that was just emitted. */
+    case Right = 0;
 
-    public function getHeight(AbstractRenderer $renderer): float
-    {
-        return $this->height;
-    }
+    /** Move to the start of the next line, against the page margin. */
+    case NextLine = 1;
 
-    /**
-     * @return array{0:float,1:int,2:float}
-     */
-    public function getWidth(AbstractRenderer $renderer): array
-    {
-        return [$this->width, 1, $this->height];
-    }
+    /** Move to the next line, but start at the X position of the cell. */
+    case Below = 2;
 }

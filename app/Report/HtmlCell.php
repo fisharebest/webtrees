@@ -118,14 +118,19 @@ class HtmlCell extends AbstractCell
 
         // Text alignment
         switch ($this->align) {
-            case 'C':
+            case CellAlign::Center:
                 echo ' text-align:center;';
                 break;
-            case 'L':
+            case CellAlign::Left:
                 echo ' text-align:left;';
                 break;
-            case 'R':
+            case CellAlign::Right:
                 echo ' text-align:right;';
+                break;
+            default:
+                // CellAlign::None and CellAlign::Justify intentionally
+                // produce no text-align style, matching the historical
+                // behaviour of the HTML renderer.
                 break;
         }
 
@@ -147,20 +152,24 @@ class HtmlCell extends AbstractCell
         echo "</div>\n";
 
         // Where to place the next position
-        if ($this->newline === 0) {
-            // -> Next to this cell in the same line
-            $renderer->setXy($this->left + $this->width, $this->top);
-            $renderer->lastCellHeight = $this->height;
-        } elseif ($this->newline === 1) {
-            // -> On a new line at the margin - Default
-            $renderer->setXy(0, $renderer->getY() + $this->height + $cP * 2);
-            // Reset the last cell height for the next line
-            $renderer->lastCellHeight = 0;
-        } elseif ($this->newline === 2) {
-            // -> On a new line at the end of this cell
-            $renderer->setXy($renderer->getX() + $this->width, $renderer->getY() + $this->height + $cP * 2);
-            // Reset the last cell height for the next line
-            $renderer->lastCellHeight = 0;
+        switch ($this->newline) {
+            case CellNewline::Right:
+                // -> Next to this cell in the same line
+                $renderer->setXy($this->left + $this->width, $this->top);
+                $renderer->lastCellHeight = $this->height;
+                break;
+            case CellNewline::NextLine:
+                // -> On a new line at the margin - Default
+                $renderer->setXy(0, $renderer->getY() + $this->height + $cP * 2);
+                // Reset the last cell height for the next line
+                $renderer->lastCellHeight = 0;
+                break;
+            case CellNewline::Below:
+                // -> On a new line at the end of this cell
+                $renderer->setXy($renderer->getX() + $this->width, $renderer->getY() + $this->height + $cP * 2);
+                // Reset the last cell height for the next line
+                $renderer->lastCellHeight = 0;
+                break;
         }
     }
 }

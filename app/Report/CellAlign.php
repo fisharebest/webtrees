@@ -19,29 +19,23 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-abstract class AbstractImage extends AbstractElement
+/**
+ * Horizontal alignment of text within a cell or of an image within its line.
+ *
+ * The single-letter scalar values match TCPDF's MultiCell()/Image() alignment
+ * parameter so that the PDF backend can pass them through unchanged.  The
+ * HTML backend maps each case to the corresponding CSS text-align value.
+ *
+ * {@see CellAlign::None} represents "no explicit alignment" and is what the
+ * parser falls back to when the XML attribute is absent or contains a value
+ * we do not recognise (for example the alias keywords "leftrtl" / "rightrtl"
+ * that are resolved to Left / Right elsewhere in the parser).
+ */
+enum CellAlign: string
 {
-    public function __construct(
-        protected string $src,
-        protected float $x,
-        protected float $y,
-        protected float $width,
-        protected float $height,
-        protected CellAlign $align,
-        protected ImageContinuation $line,
-    ) {
-    }
-
-    public function getHeight(AbstractRenderer $renderer): float
-    {
-        return $this->height;
-    }
-
-    /**
-     * @return array{0:float,1:int,2:float}
-     */
-    public function getWidth(AbstractRenderer $renderer): array
-    {
-        return [$this->width, 1, $this->height];
-    }
+    case None    = '';
+    case Left    = 'L';
+    case Right   = 'R';
+    case Center  = 'C';
+    case Justify = 'J';
 }

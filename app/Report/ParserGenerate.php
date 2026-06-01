@@ -348,17 +348,17 @@ class ParserGenerate extends AbstractParser
 
     protected function headerStartHandler(): void
     {
-        $this->renderer->setProcessing('H');
+        $this->renderer->setProcessing(ReportSection::Header);
     }
 
     protected function bodyStartHandler(): void
     {
-        $this->renderer->setProcessing('B');
+        $this->renderer->setProcessing(ReportSection::Body);
     }
 
     protected function footerStartHandler(): void
     {
-        $this->renderer->setProcessing('F');
+        $this->renderer->setProcessing(ReportSection::Footer);
     }
 
     /**
@@ -366,29 +366,20 @@ class ParserGenerate extends AbstractParser
      */
     protected function cellStartHandler(array $attrs): void
     {
-        $align   = strtoupper($attrs['align'] ?? '');
         $bgcolor = $attrs['bgcolor'] ?? '';
         $bocolor = $attrs['bocolor'] ?? '';
         $border  = $attrs['border'] ?? '';
         $fill    = (bool) ($attrs['fill'] ?? false);
         $height  = (float) ($attrs['height'] ?? 0.0);
         $left    = (float) ($attrs['left'] ?? AbstractElement::CURRENT_POSITION);
-        $ln      = (int) ($attrs['newline'] ?? 0);
+        $ln      = CellNewline::tryFrom((int) ($attrs['newline'] ?? 0)) ?? CellNewline::Right;
         $reseth  = (bool) ($attrs['reseth'] ?? true);
         $stretch = (int) ($attrs['stretch'] ?? 0);
         $style   = $this->renderer->getStyle($attrs['style'] ?? '');
         $tcolor  = $attrs['tcolor'] ?? '';
         $top     = (float) ($attrs['top'] ?? AbstractElement::CURRENT_POSITION);
         $width   = (float) ($attrs['width'] ?? 0.0);
-
-        $align = strtr($align, [
-            'leftrtl'  => $this->renderer->rtl ? 'R' : 'L',
-            'rightrtl' => $this->renderer->rtl ? 'L' : 'R',
-            'left'     => 'L',
-            'right'    => 'R',
-            'center'   => 'C',
-            'justify'  => 'J',
-        ]);
+        $align   = $this->parseCellAlign($attrs['align'] ?? '');
 
         $this->print_data_stack[] = $this->print_data;
         $this->print_data         = true;
@@ -409,6 +400,19 @@ class ParserGenerate extends AbstractParser
             $tcolor,
             $reseth
         );
+    }
+
+    private function parseCellAlign(string $value): CellAlign
+    {
+        return match ($value) {
+            'center'   => CellAlign::Center,
+            'justify'  => CellAlign::Justify,
+            'left'     => CellAlign::Left,
+            'leftrtl'  => $this->renderer->rtl ? CellAlign::Right : CellAlign::Left,
+            'right'    => CellAlign::Right,
+            'rightrtl' => $this->renderer->rtl ? CellAlign::Left : CellAlign::Right,
+            default    => CellAlign::None,
+        };
     }
 
     protected function cellEndHandler(): void
@@ -1218,10 +1222,10 @@ class ParserGenerate extends AbstractParser
             $id = $match[1];
         }
 
-        $align  = $attrs['align'] ?? '';
+        $align  = $this->parseCellAlign($attrs['align'] ?? '');
         $height = (float) ($attrs['height'] ?? 0.0);
         $left   = (float) ($attrs['left'] ?? AbstractElement::CURRENT_POSITION);
-        $ln     = $attrs['ln'] ?? 'T';
+        $ln     = ImageContinuation::tryFrom($attrs['ln'] ?? 'T') ?? ImageContinuation::SameLine;
         $top    = (float) ($attrs['top'] ?? AbstractElement::CURRENT_POSITION);
         $width  = (float) ($attrs['width'] ?? 0.0);
 
@@ -1252,11 +1256,11 @@ class ParserGenerate extends AbstractParser
      */
     protected function imageStartHandler(array $attrs): void
     {
-        $align  = $attrs['align'] ?? '';
+        $align  = $this->parseCellAlign($attrs['align'] ?? '');
         $file   = $attrs['file'] ?? '';
         $height = (float) ($attrs['height'] ?? 0.0);
         $left   = (float) ($attrs['left'] ?? AbstractElement::CURRENT_POSITION);
-        $ln     = $attrs['ln'] ?? 'T';
+        $ln     = ImageContinuation::tryFrom($attrs['ln'] ?? 'T') ?? ImageContinuation::SameLine;
         $top    = (float) ($attrs['top'] ?? AbstractElement::CURRENT_POSITION);
         $width  = (float) ($attrs['width'] ?? 0.0);
 

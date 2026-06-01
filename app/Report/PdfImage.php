@@ -58,10 +58,10 @@ class PdfImage extends AbstractImage
                 $this->height,
                 '',
                 '',
-                $this->line,
+                $this->line->value,
                 false,
                 72,
-                $this->align
+                $this->align->value
             );
         } else {
             $renderer->tcpdf->Image(
@@ -72,10 +72,10 @@ class PdfImage extends AbstractImage
                 $this->height,
                 '',
                 '',
-                $this->line,
+                $this->line->value,
                 false,
                 72,
-                $this->align
+                $this->align->value
             );
         }
         $lastpicpage           = $renderer->tcpdf->PageNo();
@@ -84,7 +84,7 @@ class PdfImage extends AbstractImage
         $lastpicright          = $this->x + $this->width;
         $lastpicbottom         = $this->y + $this->height;
         // Setup for the next line
-        if ($this->line === 'N') {
+        if ($this->line === ImageContinuation::NextLine) {
             $renderer->tcpdf->setY($lastpicbottom);
         }
     }

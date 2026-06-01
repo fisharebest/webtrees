@@ -19,29 +19,22 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-abstract class AbstractImage extends AbstractElement
+/**
+ * Which logical section of a report is currently being assembled.
+ *
+ * Reports are composed of a header (rendered at the top of every page), a body
+ * (the main flowing content), and a footer (rendered at the bottom of every
+ * page).  The XML report parser switches between the three as it processes
+ * the matching <Header>, <Body> and <Footer> elements.
+ *
+ * The single-letter scalar values are kept identical to the historical
+ * "H"/"B"/"F" string sentinels so that any third-party renderer that
+ * subclasses {@see AbstractRenderer} continues to work after serialisation
+ * to and from the backed value.
+ */
+enum ReportSection: string
 {
-    public function __construct(
-        protected string $src,
-        protected float $x,
-        protected float $y,
-        protected float $width,
-        protected float $height,
-        protected CellAlign $align,
-        protected ImageContinuation $line,
-    ) {
-    }
-
-    public function getHeight(AbstractRenderer $renderer): float
-    {
-        return $this->height;
-    }
-
-    /**
-     * @return array{0:float,1:int,2:float}
-     */
-    public function getWidth(AbstractRenderer $renderer): array
-    {
-        return [$this->width, 1, $this->height];
-    }
+    case Header = 'H';
+    case Body   = 'B';
+    case Footer = 'F';
 }

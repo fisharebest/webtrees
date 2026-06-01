@@ -39,15 +39,15 @@ class HtmlImage extends AbstractImage
 
         // Image alignment
         switch ($this->align) {
-            case 'L':
+            case CellAlign::Left:
                 echo '<div style="position:absolute;top:', $this->y, 'pt;left:0pt;width:', $renderer->getRemainingWidth(), "pt;text-align:left;\">\n";
                 echo '<img src="', $this->src, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
                 break;
-            case 'C':
+            case CellAlign::Center:
                 echo '<div style="position:absolute;top:', $this->y, 'pt;left:0pt;width:', $renderer->getRemainingWidth(), "pt;text-align:center;\">\n";
                 echo '<img src="', $this->src, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
                 break;
-            case 'R':
+            case CellAlign::Right:
                 echo '<div style="position:absolute;top:', $this->y, 'pt;left:0pt;width:', $renderer->getRemainingWidth(), "pt;text-align:right;\">\n";
                 echo '<img src="', $this->src, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
                 break;
@@ -60,7 +60,7 @@ class HtmlImage extends AbstractImage
         $lastpicright  = $this->x + $this->width;
         $lastpicbottom = $this->y + $this->height;
         // Setup for the next line
-        if ($this->line === 'N') {
+        if ($this->line === ImageContinuation::NextLine) {
             $renderer->setY($lastpicbottom);
         }
         // Keep max Y updated

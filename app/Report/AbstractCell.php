@@ -27,10 +27,10 @@ abstract class AbstractCell extends AbstractElement
         protected float $width, // 0 uses available space to the right margin
         protected float $height,
         protected string $border, // '': none, 1: all, [LRTB]: combination of left, right, top, bottom
-        protected string $align, // left/center/right/justify
+        protected CellAlign $align,
         protected string $bgcolor,
         protected Style $style,
-        protected int $newline, // 0: to the right (default) 1: to the beginning of the next line 2: below
+        protected CellNewline $newline,
         protected float $top,
         protected float $left,
         protected bool $fill, // transparent background, 1: solid background
