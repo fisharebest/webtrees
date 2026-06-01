@@ -33,8 +33,6 @@ use function implode;
 use function preg_match;
 use function str_replace;
 use function stripos;
-use function strrpos;
-use function substr;
 use function substr_count;
 
 class HtmlRenderer extends AbstractRenderer
@@ -372,45 +370,11 @@ class HtmlRenderer extends AbstractRenderer
 
         $lines = explode("\n", $str);
 
-        $lines = array_map(fn (string $string): string => $this->utf8WordWrap($string, $line_width), $lines);
+        $lines = array_map(fn (string $string): string => Utf8WordWrap::wrap($string, $line_width), $lines);
 
         return implode("\n", $lines);
     }
 
-    /**
-     * Wrap text, similar to the PHP wordwrap() function.
-     */
-    private function utf8WordWrap(string $string, int $width): string
-    {
-        $out = '';
-        while ($string) {
-            if (mb_strlen($string) <= $width) {
-                // Do not wrap any text that is less than the output area.
-                $out    .= $string;
-                $string = '';
-            } else {
-                $sub1 = mb_substr($string, 0, $width + 1);
-                if (mb_substr($string, mb_strlen($sub1) - 1, 1) === ' ') {
-                    // include words that end by a space immediately after the area.
-                    $sub = $sub1;
-                } else {
-                    $sub = mb_substr($string, 0, $width);
-                }
-                $spacepos = strrpos($sub, ' ');
-                if ($spacepos === false) {
-                    // No space on the line?
-                    $out    .= $sub . "\n";
-                    $string = mb_substr($string, mb_strlen($sub));
-                } else {
-                    // Split at space;
-                    $out    .= substr($string, 0, $spacepos) . "\n";
-                    $string = substr($string, $spacepos + 1);
-                }
-            }
-        }
-
-        return $out;
-    }
 
     public function write(string $text, string $color = '', bool $useclass = true): void
     {
