@@ -55,13 +55,7 @@ class PdfRenderer extends AbstractRenderer
     public function header(): void
     {
         foreach ($this->headerElements as $element) {
-            if ($element instanceof AbstractElement) {
-                $element->render($this);
-            } elseif ($element === 'footnotetexts') {
-                $this->footnotes();
-            } elseif ($element === 'addpage') {
-                $this->newPage();
-            }
+            $element->render($this);
         }
     }
 
@@ -70,13 +64,7 @@ class PdfRenderer extends AbstractRenderer
         $this->tcpdf->AddPage();
 
         foreach ($this->bodyElements as $element) {
-            if ($element instanceof AbstractElement) {
-                $element->render($this);
-            } elseif ($element === 'footnotetexts') {
-                $this->footnotes();
-            } elseif ($element === 'addpage') {
-                $this->newPage();
-            }
+            $element->render($this);
         }
     }
 
@@ -98,13 +86,7 @@ class PdfRenderer extends AbstractRenderer
     public function footer(): void
     {
         foreach ($this->footerElements as $element) {
-            if ($element instanceof AbstractElement) {
-                $element->render($this);
-            } elseif ($element === 'footnotetexts') {
-                $this->footnotes();
-            } elseif ($element === 'addpage') {
-                $this->newPage();
-            }
+            $element->render($this);
         }
     }
 
@@ -190,8 +172,7 @@ class PdfRenderer extends AbstractRenderer
     }
 
     /**
-     * Used this function instead of AddPage()
-     * This function will make sure that images will not be overwritten
+     * Add a new page, ensuring images on later pages are not overwritten.
      */
     public function newPage(): void
     {

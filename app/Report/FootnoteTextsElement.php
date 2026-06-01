@@ -20,12 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 /**
- * A container that can receive report elements.
- *
- * Both the top-level renderer and text boxes can act as containers
- * for report elements during report generation.
+ * A report element that triggers rendering of all accumulated footnotes.
  */
-interface ElementContainerInterface
+class FootnoteTextsElement extends AbstractElement
 {
-    public function addElement(AbstractElement $element): void;
+    public function render(AbstractRenderer $renderer, bool $attrib = true): void
+    {
+        $renderer->footnotes();
+    }
 }

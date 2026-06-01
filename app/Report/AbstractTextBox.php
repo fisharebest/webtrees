@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Report;
 
 abstract class AbstractTextBox extends AbstractElement implements ElementContainerInterface
 {
-    /** @var array<AbstractElement|string> */
+    /** @var array<AbstractElement> */
     protected array $elements = [];
 
     public function __construct(
@@ -40,7 +40,7 @@ abstract class AbstractTextBox extends AbstractElement implements ElementContain
     ) {
     }
 
-    public function addElement(AbstractElement|string $element): void
+    public function addElement(AbstractElement $element): void
     {
         $this->elements[] = $element;
     }

@@ -90,13 +90,13 @@ abstract class AbstractRenderer implements ElementContainerInterface
 
     public string $rsubject = '';
 
-    /** @var array<AbstractElement|string> */
+    /** @var array<AbstractElement> */
     public array $headerElements = [];
 
-    /** @var array<AbstractElement|string> */
+    /** @var array<AbstractElement> */
     public array $footerElements = [];
 
-    /** @var array<AbstractElement|string> */
+    /** @var array<AbstractElement> */
     public array $bodyElements = [];
 
     public string $currentStyle = '';
@@ -120,7 +120,7 @@ abstract class AbstractRenderer implements ElementContainerInterface
     public TcpdfWrapper $tcpdf;
     public int $lastpicpage = 0;
 
-    public function addElement(AbstractElement|string $element): void
+    public function addElement(AbstractElement $element): void
     {
         if ($this->processing === 'B') {
             $this->addElementToBody($element);
@@ -131,17 +131,17 @@ abstract class AbstractRenderer implements ElementContainerInterface
         }
     }
 
-    public function addElementToHeader(AbstractElement|string $element): void
+    public function addElementToHeader(AbstractElement $element): void
     {
         $this->headerElements[] = $element;
     }
 
-    public function addElementToBody(AbstractElement|string $element): void
+    public function addElementToBody(AbstractElement $element): void
     {
         $this->bodyElements[] = $element;
     }
 
-    public function addElementToFooter(AbstractElement|string $element): void
+    public function addElementToFooter(AbstractElement $element): void
     {
         $this->footerElements[] = $element;
     }
@@ -294,6 +294,8 @@ abstract class AbstractRenderer implements ElementContainerInterface
 
     abstract public function footnotes(): void;
 
+    abstract public function newPage(): void;
+
     abstract public function checkFootnote(AbstractFootnote $footnote): AbstractFootnote|false;
 
     // =========================================================================
@@ -305,10 +307,6 @@ abstract class AbstractRenderer implements ElementContainerInterface
         throw new LogicException('addMaxY() is not available in ' . static::class);
     }
 
-    public function addPage(): void
-    {
-        throw new LogicException('addPage() is not available in ' . static::class);
-    }
 
     public function countLines(string $str): int
     {
@@ -397,10 +395,5 @@ abstract class AbstractRenderer implements ElementContainerInterface
     public function getRemainingWidthPDF(): float
     {
         throw new LogicException('getRemainingWidthPDF() is not available in ' . static::class);
-    }
-
-    public function newPage(): void
-    {
-        throw new LogicException('newPage() is not available in ' . static::class);
     }
 }

@@ -286,13 +286,7 @@ class PdfTextBox extends AbstractTextBox
 
         // Render the elements (write text, print picture...)
         foreach ($this->elements as $element) {
-            if ($element instanceof AbstractElement) {
-                $element->render($renderer);
-            } elseif ($element === 'footnotetexts') {
-                $renderer->footnotes();
-            } elseif ($element === 'addpage') {
-                $renderer->newPage();
-            }
+            $element->render($renderer);
         }
         // Restore the margins
         $renderer->tcpdf->setLeftMargin($cM['left']);

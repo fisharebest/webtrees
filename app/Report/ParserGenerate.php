@@ -1201,7 +1201,7 @@ class ParserGenerate extends AbstractParser
 
     protected function footnoteTextsStartHandler(): void
     {
-        $this->current_container->addElement('footnotetexts');
+        $this->current_container->addElement(new FootnoteTextsElement());
     }
 
     protected function brStartHandler(): void
@@ -2005,7 +2005,7 @@ class ParserGenerate extends AbstractParser
 
     protected function newPageStartHandler(): void
     {
-        $this->current_container->addElement('addpage');
+        $this->current_container->addElement(new NewPageElement());
     }
 
     protected function titleEndHandler(): void

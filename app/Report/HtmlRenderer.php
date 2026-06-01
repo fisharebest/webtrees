@@ -53,7 +53,7 @@ class HtmlRenderer extends AbstractRenderer
 
 
     // Keep track of the highest Y position
-    // Used with Header div / Body div / Footer div / "addpage" / The bottom of the last image etc.
+    // Used with Header div / Body div / Footer div / The bottom of the last image etc.
     public float $maxY = 0.0;
 
     public function setup(): void
@@ -130,13 +130,7 @@ class HtmlRenderer extends AbstractRenderer
         echo '<div id="headermargin" style="position: relative; top: auto; height: ', $this->header_margin, 'pt; width: ', $this->noMarginWidth, 'pt;"></div>';
         echo '<div id="headerdiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt;">';
         foreach ($this->headerElements as $element) {
-            if ($element instanceof AbstractElement) {
-                $element->render($this);
-            } elseif ($element === 'footnotetexts') {
-                $this->footnotes();
-            } elseif ($element === 'addpage') {
-                $this->addPage();
-            }
+            $element->render($this);
         }
         //-- body
         echo '</div>';
@@ -145,13 +139,7 @@ class HtmlRenderer extends AbstractRenderer
         $this->Y    = 0;
         $this->maxY = 0;
         foreach ($this->bodyElements as $element) {
-            if ($element instanceof AbstractElement) {
-                $element->render($this);
-            } elseif ($element === 'footnotetexts') {
-                $this->footnotes();
-            } elseif ($element === 'addpage') {
-                $this->addPage();
-            }
+            $element->render($this);
         }
         //-- footer
         echo '</div>';
@@ -162,13 +150,7 @@ class HtmlRenderer extends AbstractRenderer
         $this->X    = 0;
         $this->maxY = 0;
         foreach ($this->footerElements as $element) {
-            if ($element instanceof AbstractElement) {
-                $element->render($this);
-            } elseif ($element === 'footnotetexts') {
-                $this->footnotes();
-            } elseif ($element === 'addpage') {
-                $this->addPage();
-            }
+            $element->render($this);
         }
         echo '</div>';
         echo '<script>document.getElementById("footerdiv").style.height="', $this->maxY, 'pt";</script>';
@@ -256,7 +238,7 @@ class HtmlRenderer extends AbstractRenderer
     /**
      * Update the Page Number and set a new Y if max Y is larger - ReportHtml
      */
-    public function addPage(): void
+    public function newPage(): void
     {
         $this->pageN++;
 

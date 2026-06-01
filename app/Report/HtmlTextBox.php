@@ -246,12 +246,8 @@ class HtmlTextBox extends AbstractTextBox
         foreach ($this->elements as $element) {
             if ($element instanceof AbstractText) {
                 $element->render($renderer, false);
-            } elseif ($element instanceof AbstractElement) {
+            } else {
                 $element->render($renderer);
-            } elseif ($element === 'footnotetexts') {
-                $renderer->footnotes();
-            } elseif ($element === 'addpage') {
-                $renderer->addPage();
             }
         }
         echo "</div>\n";
