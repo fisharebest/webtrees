@@ -41,7 +41,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
-use XMLParser;
 
 use function addcslashes;
 use function addslashes;
@@ -50,7 +49,6 @@ use function array_shift;
 use function count;
 use function end;
 use function explode;
-use function file;
 use function file_exists;
 use function getimagesize;
 use function imagecreatefromstring;
@@ -75,18 +73,9 @@ use function strpos;
 use function substr;
 use function trim;
 use function uasort;
-use function xml_error_string;
-use function xml_get_current_line_number;
-use function xml_get_error_code;
-use function xml_parse;
-use function xml_parser_create;
-use function xml_parser_set_option;
-use function xml_set_character_data_handler;
-use function xml_set_element_handler;
 
 use const PREG_OFFSET_CAPTURE;
 use const PREG_SET_ORDER;
-use const XML_OPTION_CASE_FOLDING;
 
 class ParserGenerate extends AbstractParser
 {
@@ -105,22 +94,26 @@ class ParserGenerate extends AbstractParser
 
     private int $process_repeats = 0;
 
-    private int $repeat_bytes = 0;
+    /** Approximate line number in the source XML where the active repeat block begins. */
+    private int $repeat_line = 0;
 
     /** @var array<string> Repeated data when iterating over loops */
     private array $repeats = [];
 
-    /** @var array<int,array{0:array<int,string>,1:int}> Nested repeating data */
+    /**
+     * Captured inner XML of the currently-open repeat block.  Set by the
+     * start handler (via XMLReader::readInnerXml()) and consumed by the
+     * matching end handler, which re-parses it once per iteration through
+     * {@see AbstractParser::parseFragment()}.
+     */
+    private string $repeat_xml = '';
+
+    /** @var array<int,array{0:array<int,string>,1:string,2:int}> Nested repeating data: [$repeats, $repeat_xml, $repeat_line]. */
     private array $repeats_stack = [];
 
     /** @var array<ElementContainerInterface> Stack of containers when nesting text boxes */
     private array $container_stack = [];
 
-    // Nested repeating data
-    private XMLParser $parser;
-
-    /** @var XMLParser[] Nested repeating data */
-    private array $parser_stack = [];
 
     private string $gedrec = '';
 
@@ -345,7 +338,7 @@ class ParserGenerate extends AbstractParser
     /**
      * @param array<string,string> $attrs
      */
-    protected function startElement(XMLParser $parser, string $name, array $attrs): void
+    protected function startElement(string $name, array $attrs): void
     {
         // Expand any $variable references in attribute values up front so
         // that individual handlers see fully resolved attributes.
@@ -377,10 +370,10 @@ class ParserGenerate extends AbstractParser
             return;
         }
 
-        parent::startElement($parser, $name, $attrs);
+        parent::startElement($name, $attrs);
     }
 
-    protected function endElement(XMLParser $parser, string $name): void
+    protected function endElement(string $name): void
     {
         // Mirror image of the gating in startElement().  <Footnote>, <if>,
         // <Gedcom>, <Facts>, <RepeatTag>, <List> and <Relatives> can each
@@ -399,10 +392,10 @@ class ParserGenerate extends AbstractParser
             return;
         }
 
-        parent::endElement($parser, $name);
+        parent::endElement($name);
     }
 
-    protected function characterData(XMLParser $parser, string $data): void
+    protected function characterData(string $data): void
     {
         if ($this->print_data && $this->process_gedcoms === 0 && $this->process_ifs === 0 && $this->process_repeats === 0) {
             $this->current_element->addText($data);
@@ -433,8 +426,6 @@ class ParserGenerate extends AbstractParser
      */
     protected function docStartHandler(array $attrs): void
     {
-        $this->parser = $this->xml_parser;
-
         $this->renderer->page_width        = (float) ($attrs['customwidth'] ?? $this->renderer->page_width);
         $this->renderer->page_height       = (float) ($attrs['customheight'] ?? $this->renderer->page_height);
         $this->renderer->left_margin       = (float) ($attrs['leftmargin'] ?? $this->renderer->left_margin);
@@ -798,9 +789,10 @@ class ParserGenerate extends AbstractParser
             return;
         }
 
-        $this->repeats_stack[] = [$this->repeats, $this->repeat_bytes];
+        $this->repeats_stack[] = [$this->repeats, $this->repeat_xml, $this->repeat_line];
         $this->repeats         = [];
-        $this->repeat_bytes    = xml_get_current_line_number($this->parser);
+        $this->repeat_xml      = (string) $this->xml_reader->readInnerXml();
+        $this->repeat_line     = $this->currentLineNumber();
 
         $tag = $attrs['tag'] ?? '';
 
@@ -863,77 +855,20 @@ class ParserGenerate extends AbstractParser
             return;
         }
 
-        // Check if there is anything to repeat
-        if (count($this->repeats) > 0) {
-            // No need to load them if not used...
+        // Re-parse the captured inner XML once per matched GEDCOM subrecord.
+        if ($this->repeats !== []) {
+            $fragment  = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
+            $oldgedrec = $this->gedrec;
 
-            $lineoffset = 0;
-            foreach ($this->repeats_stack as $rep) {
-                $lineoffset += $rep[1];
-            }
-            //-- read the xml from the file
-            $lines = file($this->report);
-            while (!str_contains($lines[$lineoffset + $this->repeat_bytes], '<RepeatTag')) {
-                $lineoffset--;
-            }
-            $lineoffset++;
-            $reportxml = "<tempdoc>\n";
-            $line_nr   = $lineoffset + $this->repeat_bytes;
-            // RepeatTag Level counter
-            $count = 1;
-            while (0 < $count) {
-                if (str_contains($lines[$line_nr], '<RepeatTag')) {
-                    $count++;
-                } elseif (str_contains($lines[$line_nr], '</RepeatTag')) {
-                    $count--;
-                }
-                if (0 < $count) {
-                    $reportxml .= $lines[$line_nr];
-                }
-                $line_nr++;
-            }
-            // No need to drag this
-            unset($lines);
-            $reportxml .= "</tempdoc>\n";
-            // Save original values
-            $this->parser_stack[] = $this->parser;
-            $oldgedrec            = $this->gedrec;
             foreach ($this->repeats as $gedrec) {
-                $this->gedrec  = $gedrec;
-                $repeat_parser = xml_parser_create();
-                $this->parser  = $repeat_parser;
-                xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, 0);
-
-                xml_set_element_handler(
-                    $repeat_parser,
-                    function ($parser, string $name, array $attrs): void {
-                        $this->startElement($parser, $name, $attrs);
-                    },
-                    function ($parser, string $name): void {
-                        $this->endElement($parser, $name);
-                    }
-                );
-
-                xml_set_character_data_handler(
-                    $repeat_parser,
-                    function ($parser, string $data): void {
-                        $this->characterData($parser, $data);
-                    }
-                );
-
-                if (!xml_parse($repeat_parser, $reportxml, true)) {
-                    throw new DomainException(sprintf(
-                        'RepeatTagEHandler XML error: %s at line %d',
-                        xml_error_string(xml_get_error_code($repeat_parser)),
-                        xml_get_current_line_number($repeat_parser)
-                    ));
-                }
+                $this->gedrec = $gedrec;
+                $this->parseFragment($fragment);
             }
-            // Restore original values
+
             $this->gedrec = $oldgedrec;
-            $this->parser = array_pop($this->parser_stack);
         }
-        [$this->repeats, $this->repeat_bytes] = array_pop($this->repeats_stack);
+
+        [$this->repeats, $this->repeat_xml, $this->repeat_line] = array_pop($this->repeats_stack);
     }
 
     /**
@@ -950,7 +885,7 @@ class ParserGenerate extends AbstractParser
     protected function varStartHandler(array $attrs): void
     {
         if (empty($attrs['var'])) {
-            throw new DomainException('REPORT ERROR var: The attribute "var=" is missing or not set in the XML file on line: ' . xml_get_current_line_number($this->parser));
+            throw new DomainException('REPORT ERROR var: The attribute "var=" is missing or not set in the XML file on line: ' . $this->currentLineNumber());
         }
 
         $var = $attrs['var'];
@@ -1005,9 +940,10 @@ class ParserGenerate extends AbstractParser
             return;
         }
 
-        $this->repeats_stack[] = [$this->repeats, $this->repeat_bytes];
+        $this->repeats_stack[] = [$this->repeats, $this->repeat_xml, $this->repeat_line];
         $this->repeats         = [];
-        $this->repeat_bytes    = xml_get_current_line_number($this->parser);
+        $this->repeat_xml      = (string) $this->xml_reader->readInnerXml();
+        $this->repeat_line     = $this->currentLineNumber();
 
         $id    = '';
         $match = [];
@@ -1050,37 +986,12 @@ class ParserGenerate extends AbstractParser
             return;
         }
 
-        // Check if there is anything to repeat
-        if (count($this->repeats) > 0) {
-            $line       = xml_get_current_line_number($this->parser) - 1;
-            $lineoffset = 0;
-            foreach ($this->repeats_stack as $rep) {
-                $lineoffset += $rep[1];
-            }
+        if ($this->repeats !== []) {
+            $fragment  = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
+            $oldgedrec = $this->gedrec;
 
-            // Read the XML from the file
-            $lines = file($this->report);
-            while ($lineoffset + $this->repeat_bytes > 0 && !str_contains($lines[$lineoffset + $this->repeat_bytes], '<Facts ')) {
-                $lineoffset--;
-            }
-            $lineoffset++;
-            $reportxml = "<tempdoc>\n";
-            $i         = $line + $lineoffset;
-            $line_nr   = $this->repeat_bytes + $lineoffset;
-            while ($line_nr < $i) {
-                $reportxml .= $lines[$line_nr];
-                $line_nr++;
-            }
-            // No need to drag this
-            unset($lines);
-            $reportxml .= "</tempdoc>\n";
-            // Save original values
-            $this->parser_stack[] = $this->parser;
-            $oldgedrec            = $this->gedrec;
-            $count                = count($this->repeats);
-            $i                    = 0;
-            while ($i < $count) {
-                $this->gedrec = $this->repeats[$i];
+            foreach ($this->repeats as $gedrec) {
+                $this->gedrec = $gedrec;
                 $this->fact   = '';
                 $this->desc   = '';
                 if (preg_match('/1 (\w+)(.*)/', $this->gedrec, $match)) {
@@ -1096,42 +1007,14 @@ class ParserGenerate extends AbstractParser
                     $this->desc = trim($match[2]);
                     $this->desc .= self::getCont(2, $this->gedrec);
                 }
-                $repeat_parser = xml_parser_create();
-                $this->parser  = $repeat_parser;
-                xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, 0);
 
-                xml_set_element_handler(
-                    $repeat_parser,
-                    function ($parser, string $name, array $attrs): void {
-                        $this->startElement($parser, $name, $attrs);
-                    },
-                    function ($parser, string $name): void {
-                        $this->endElement($parser, $name);
-                    }
-                );
-
-                xml_set_character_data_handler(
-                    $repeat_parser,
-                    function ($parser, string $data): void {
-                        $this->characterData($parser, $data);
-                    }
-                );
-
-                if (!xml_parse($repeat_parser, $reportxml, true)) {
-                    throw new DomainException(sprintf(
-                        'FactsEHandler XML error: %s at line %d',
-                        xml_error_string(xml_get_error_code($repeat_parser)),
-                        xml_get_current_line_number($repeat_parser)
-                    ));
-                }
-
-                $i++;
+                $this->parseFragment($fragment);
             }
-            // Restore original values
-            $this->parser = array_pop($this->parser_stack);
+
             $this->gedrec = $oldgedrec;
         }
-        [$this->repeats, $this->repeat_bytes] = array_pop($this->repeats_stack);
+
+        [$this->repeats, $this->repeat_xml, $this->repeat_line] = array_pop($this->repeats_stack);
     }
 
     /**
@@ -1822,8 +1705,9 @@ class ParserGenerate extends AbstractParser
                 break;
         }
 
-        $this->repeats_stack[] = [$this->repeats, $this->repeat_bytes];
-        $this->repeat_bytes    = xml_get_current_line_number($this->parser) + 1;
+        $this->repeats_stack[] = [$this->repeats, $this->repeat_xml, $this->repeat_line];
+        $this->repeat_xml      = (string) $this->xml_reader->readInnerXml();
+        $this->repeat_line     = $this->currentLineNumber();
     }
 
     protected function listEndHandler(): void
@@ -1835,81 +1719,23 @@ class ParserGenerate extends AbstractParser
 
         // Check if there is any list
         if (count($this->list) > 0) {
-            $lineoffset = 0;
-            foreach ($this->repeats_stack as $rep) {
-                $lineoffset += $rep[1];
-            }
-            //-- read the xml from the file
-            $lines = file($this->report);
-            while ((!str_contains($lines[$lineoffset + $this->repeat_bytes], '<List')) && (($lineoffset + $this->repeat_bytes) > 0)) {
-                $lineoffset--;
-            }
-            $lineoffset++;
-            $reportxml = "<tempdoc>\n";
-            $line_nr   = $lineoffset + $this->repeat_bytes;
-            // List Level counter
-            $count = 1;
-            while (0 < $count) {
-                if (str_contains($lines[$line_nr], '<List')) {
-                    $count++;
-                } elseif (str_contains($lines[$line_nr], '</List')) {
-                    $count--;
-                }
-                if (0 < $count) {
-                    $reportxml .= $lines[$line_nr];
-                }
-                $line_nr++;
-            }
-            // No need to drag this
-            unset($lines);
-            $reportxml .= '</tempdoc>';
-            // Save original values
-            $this->parser_stack[] = $this->parser;
-            $oldgedrec            = $this->gedrec;
+            $fragment  = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
+            $oldgedrec = $this->gedrec;
 
             $this->list_total   = count($this->list);
             $this->list_private = 0;
             foreach ($this->list as $record) {
                 if ($record->canShow()) {
                     $this->gedrec = $record->privatizeGedcom(Auth::accessLevel($record->tree()));
-                    //-- start the sax parser
-                    $repeat_parser = xml_parser_create();
-                    $this->parser  = $repeat_parser;
-                    xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, 0);
-
-                    xml_set_element_handler(
-                        $repeat_parser,
-                        function ($parser, string $name, array $attrs): void {
-                            $this->startElement($parser, $name, $attrs);
-                        },
-                        function ($parser, string $name): void {
-                            $this->endElement($parser, $name);
-                        }
-                    );
-
-                    xml_set_character_data_handler(
-                        $repeat_parser,
-                        function ($parser, string $data): void {
-                            $this->characterData($parser, $data);
-                        }
-                    );
-
-                    if (!xml_parse($repeat_parser, $reportxml, true)) {
-                        throw new DomainException(sprintf(
-                            'ListEHandler XML error: %s at line %d',
-                            xml_error_string(xml_get_error_code($repeat_parser)),
-                            xml_get_current_line_number($repeat_parser)
-                        ));
-                    }
+                    $this->parseFragment($fragment);
                 } else {
                     $this->list_private++;
                 }
             }
             $this->list   = [];
-            $this->parser = array_pop($this->parser_stack);
             $this->gedrec = $oldgedrec;
         }
-        [$this->repeats, $this->repeat_bytes] = array_pop($this->repeats_stack);
+        [$this->repeats, $this->repeat_xml, $this->repeat_line] = array_pop($this->repeats_stack);
     }
 
     /**
@@ -2020,8 +1846,9 @@ class ParserGenerate extends AbstractParser
                 // unsorted
                 break;
         }
-        $this->repeats_stack[] = [$this->repeats, $this->repeat_bytes];
-        $this->repeat_bytes    = xml_get_current_line_number($this->parser) + 1;
+        $this->repeats_stack[] = [$this->repeats, $this->repeat_xml, $this->repeat_line];
+        $this->repeat_xml      = (string) $this->xml_reader->readInnerXml();
+        $this->repeat_line     = $this->currentLineNumber();
     }
 
     protected function relativesEndHandler(): void
@@ -2033,37 +1860,8 @@ class ParserGenerate extends AbstractParser
 
         // Check if there is any relatives
         if (count($this->list) > 0) {
-            $lineoffset = 0;
-            foreach ($this->repeats_stack as $rep) {
-                $lineoffset += $rep[1];
-            }
-            //-- read the xml from the file
-            $lines = file($this->report);
-            while (!str_contains($lines[$lineoffset + $this->repeat_bytes], '<Relatives') && $lineoffset + $this->repeat_bytes > 0) {
-                $lineoffset--;
-            }
-            $lineoffset++;
-            $reportxml = "<tempdoc>\n";
-            $line_nr   = $lineoffset + $this->repeat_bytes;
-            // Relatives Level counter
-            $count = 1;
-            while (0 < $count) {
-                if (str_contains($lines[$line_nr], '<Relatives')) {
-                    $count++;
-                } elseif (str_contains($lines[$line_nr], '</Relatives')) {
-                    $count--;
-                }
-                if (0 < $count) {
-                    $reportxml .= $lines[$line_nr];
-                }
-                $line_nr++;
-            }
-            // No need to drag this
-            unset($lines);
-            $reportxml .= "</tempdoc>\n";
-            // Save original values
-            $this->parser_stack[] = $this->parser;
-            $oldgedrec            = $this->gedrec;
+            $fragment  = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
+            $oldgedrec = $this->gedrec;
 
             $this->list_total   = count($this->list);
             $this->list_private = 0;
@@ -2074,37 +1872,13 @@ class ParserGenerate extends AbstractParser
                 $tmp          = Registry::gedcomRecordFactory()->make((string) $xref, $this->tree);
                 $this->gedrec = $tmp->privatizeGedcom(Auth::accessLevel($this->tree));
 
-                $repeat_parser = xml_parser_create();
-                $this->parser  = $repeat_parser;
-                xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, 0);
-
-                xml_set_element_handler(
-                    $repeat_parser,
-                    function ($parser, string $name, array $attrs): void {
-                        $this->startElement($parser, $name, $attrs);
-                    },
-                    function ($parser, string $name): void {
-                        $this->endElement($parser, $name);
-                    }
-                );
-
-                xml_set_character_data_handler(
-                    $repeat_parser,
-                    function ($parser, string $data): void {
-                        $this->characterData($parser, $data);
-                    }
-                );
-
-                if (!xml_parse($repeat_parser, $reportxml, true)) {
-                    throw new DomainException(sprintf('RelativesEHandler XML error: %s at line %d', xml_error_string(xml_get_error_code($repeat_parser)), xml_get_current_line_number($repeat_parser)));
-                }
+                $this->parseFragment($fragment);
             }
             // Clean up the list array
             $this->list   = [];
-            $this->parser = array_pop($this->parser_stack);
             $this->gedrec = $oldgedrec;
         }
-        [$this->repeats, $this->repeat_bytes] = array_pop($this->repeats_stack);
+        [$this->repeats, $this->repeat_xml, $this->repeat_line] = array_pop($this->repeats_stack);
     }
 
     protected function generationStartHandler(): void
@@ -2332,21 +2106,24 @@ class ParserGenerate extends AbstractParser
     }
 
     /**
-     * Calculate the current line number in the original report XML file.
+     * Best-effort line number in the original report XML.
      *
-     * The parser may be a sub-parser operating on an extracted XML fragment,
-     * so we add the offsets from the repeats stack to get the true line.
+     * When we are inside a sub-fragment parse, the active XMLReader is
+     * looking at an in-memory copy of the captured inner XML, so its line
+     * counter restarts at 1.  We add the original source line where each
+     * enclosing repeat block began to give a number that points roughly at
+     * the right place in the source file.
      */
     private function currentReportLine(): int
     {
-        $line = xml_get_current_line_number($this->parser);
+        $line = $this->currentLineNumber();
 
-        $lineoffset = 0;
+        $offset = $this->repeat_line;
         foreach ($this->repeats_stack as $rep) {
-            $lineoffset += $rep[1];
+            $offset += $rep[2];
         }
 
-        return $line + $lineoffset + $this->repeat_bytes;
+        return $line + $offset;
     }
 
     /**

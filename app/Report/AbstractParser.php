@@ -20,25 +20,22 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use Closure;
+use DOMNode;
 use DomainException;
-use XMLParser;
+use XMLReader;
 
+use function libxml_clear_errors;
+use function libxml_get_errors;
+use function libxml_use_internal_errors;
 use function sprintf;
-use function xml_error_string;
-use function xml_get_current_line_number;
-use function xml_get_error_code;
-use function xml_parse;
-use function xml_parser_create;
-use function xml_parser_set_option;
-use function xml_set_character_data_handler;
-use function xml_set_element_handler;
-
-use const XML_OPTION_CASE_FOLDING;
+use function trim;
 
 abstract class AbstractParser
 {
-    protected XMLParser $xml_parser;
+    /** The reader currently driving dispatch.  Sub-fragment parses push a fresh reader on top of this one. */
+    protected XMLReader $xml_reader;
 
+    /** Character data accumulator for the current text-bearing element. */
     protected string $text = '';
 
     /** @var array<string,Closure(array<string,string>):void> */
@@ -50,24 +47,21 @@ abstract class AbstractParser
     public function __construct(
         protected string $report,
     ) {
-        // Resolve the dispatch table before xml_parse() begins delivering
-        // events.  Subclasses build the table from their own handler methods
-        // so the set of XML elements they recognise is declared in one place
-        // instead of inferred at runtime via method_exists().
         $this->start_handlers = $this->startHandlers();
         $this->end_handlers   = $this->endHandlers();
 
-        $this->xml_parser = xml_parser_create();
-        xml_parser_set_option($this->xml_parser, XML_OPTION_CASE_FOLDING, 0);
-        xml_set_element_handler($this->xml_parser, $this->startElement(...), $this->endElement(...));
-        xml_set_character_data_handler($this->xml_parser, $this->characterData(...));
+        $reader = XMLReader::open($report);
 
-        if (!xml_parse($this->xml_parser, file_get_contents($report), true)) {
-            throw new DomainException(sprintf(
-                'XML error: %s at line %d',
-                xml_error_string(xml_get_error_code($this->xml_parser)),
-                xml_get_current_line_number($this->xml_parser)
-            ));
+        if ($reader === false) {
+            throw new DomainException(sprintf('Cannot open report XML file: %s', $report));
+        }
+
+        $this->xml_reader = $reader;
+
+        try {
+            $this->parse();
+        } finally {
+            $this->xml_reader->close();
         }
     }
 
@@ -88,9 +82,127 @@ abstract class AbstractParser
     abstract protected function endHandlers(): array;
 
     /**
+     * Parse an in-memory XML fragment with the same handler tables as the
+     * main document.  Used by ParserGenerate to evaluate the body of
+     * <RepeatTag>, <Facts>, <List> and <Relatives> once per iteration.
+     *
+     * The current reader is pushed aside for the duration of the call so
+     * that handlers calling {@see currentLineNumber()} report against the
+     * fragment they are actually inside.
+     */
+    protected function parseFragment(string $xml): void
+    {
+        $sub_reader = XMLReader::XML($xml);
+
+        if ($sub_reader === false) {
+            throw new DomainException('Cannot create XMLReader for fragment');
+        }
+
+        $previous_reader  = $this->xml_reader;
+        $this->xml_reader = $sub_reader;
+
+        try {
+            $this->parse();
+        } finally {
+            $sub_reader->close();
+            $this->xml_reader = $previous_reader;
+        }
+    }
+
+    /**
+     * Drive the pull-parser loop on the current reader, dispatching each
+     * node to the appropriate handler.  libxml errors are routed through
+     * the internal queue so we can convert them into exceptions instead of
+     * leaking PHP warnings.
+     */
+    protected function parse(): void
+    {
+        $previous_use_errors = libxml_use_internal_errors(true);
+        libxml_clear_errors();
+
+        try {
+            while ($this->xml_reader->read()) {
+                $this->dispatchNode();
+            }
+
+            $errors = libxml_get_errors();
+
+            if ($errors !== []) {
+                $first = $errors[0];
+
+                throw new DomainException(sprintf(
+                    'XML error in report %s: %s at line %d',
+                    $this->report,
+                    trim($first->message),
+                    $first->line
+                ));
+            }
+        } finally {
+            libxml_clear_errors();
+            libxml_use_internal_errors($previous_use_errors);
+        }
+    }
+
+    /**
+     * Dispatch the reader's current node.  Empty elements (<foo/>) are
+     * synthesised into a start/end pair so handler tables can stay
+     * symmetric.
+     */
+    protected function dispatchNode(): void
+    {
+        $reader = $this->xml_reader;
+
+        switch ($reader->nodeType) {
+            case XMLReader::ELEMENT:
+                $name     = $reader->name;
+                $is_empty = $reader->isEmptyElement;
+                $attrs    = $this->readAttributes();
+
+                $this->startElement($name, $attrs);
+
+                if ($is_empty) {
+                    $this->endElement($name);
+                }
+                break;
+
+            case XMLReader::END_ELEMENT:
+                $this->endElement($reader->name);
+                break;
+
+            case XMLReader::TEXT:
+            case XMLReader::CDATA:
+            case XMLReader::SIGNIFICANT_WHITESPACE:
+                $this->characterData($reader->value);
+                break;
+        }
+    }
+
+    /**
+     * Read every attribute of the element the reader is positioned on.
+     * After collecting them we move back to the element itself so the
+     * caller can still query element-level state (isEmptyElement, etc.).
+     *
+     * @return array<string,string>
+     */
+    protected function readAttributes(): array
+    {
+        $attrs = [];
+
+        if ($this->xml_reader->hasAttributes && $this->xml_reader->moveToFirstAttribute()) {
+            do {
+                $attrs[$this->xml_reader->name] = $this->xml_reader->value;
+            } while ($this->xml_reader->moveToNextAttribute());
+
+            $this->xml_reader->moveToElement();
+        }
+
+        return $attrs;
+    }
+
+    /**
      * @param array<string,string> $attrs
      */
-    protected function startElement(XMLParser $parser, string $name, array $attrs): void
+    protected function startElement(string $name, array $attrs): void
     {
         $handler = $this->start_handlers[$name] ?? null;
 
@@ -99,14 +211,14 @@ abstract class AbstractParser
                 'Unknown XML element <%s> in report %s on line %d',
                 $name,
                 $this->report,
-                xml_get_current_line_number($parser)
+                $this->currentLineNumber()
             ));
         }
 
         $handler($attrs);
     }
 
-    protected function endElement(XMLParser $parser, string $name): void
+    protected function endElement(string $name): void
     {
         $handler = $this->end_handlers[$name] ?? null;
 
@@ -115,19 +227,36 @@ abstract class AbstractParser
                 'Unknown XML element </%s> in report %s on line %d',
                 $name,
                 $this->report,
-                xml_get_current_line_number($parser)
+                $this->currentLineNumber()
             ));
         }
 
         $handler();
     }
 
-    protected function noop(): void
-    {
-    }
-
-    protected function characterData(XMLParser $parser, string $data): void
+    protected function characterData(string $data): void
     {
         $this->text .= $data;
+    }
+
+    /**
+     * Best-effort line number of the current reader position, used for
+     * error messages.  XMLReader does not expose this directly; expand()
+     * materialises the current node as a DOM node which carries the line
+     * information from libxml.
+     */
+    protected function currentLineNumber(): int
+    {
+        $node = @$this->xml_reader->expand();
+
+        if ($node instanceof DOMNode) {
+            return $node->getLineNo();
+        }
+
+        return 0;
+    }
+
+    protected function noop(): void
+    {
     }
 }
