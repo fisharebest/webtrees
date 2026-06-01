@@ -221,16 +221,16 @@ class HtmlTextBox extends AbstractTextBox
         echo '<div style="position:absolute;top:', $this->top, 'pt;';
         // LTR (left) or RTL (right)
         echo $renderer->alignRTL, ':', $cX, 'pt;';
-        // Background color
-        if ($this->fill && $this->bgcolor !== '') {
+
+        if ($this->bgcolor !== '') {
             echo ' background-color:', $this->bgcolor, ';';
         }
-        // Print padding only when it’s set
+
         if ($this->padding) {
             // Use Cell around padding to support RTL also
             echo 'padding:', $cP, 'pt;';
         }
-        // Border setup
+
         if ($this->border) {
             echo ' border:solid black 1pt;';
             echo 'width:', $this->width - 1 - $cP * 2, 'pt;height:', $cH - 1, 'pt;';

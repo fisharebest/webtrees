@@ -33,17 +33,12 @@ class PdfCell extends AbstractCell
         // underline «title» part of Source item
         $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
 
-        // Set up the text style
         $renderer->setCurrentStyle($this->style);
 
-        // Background color
-        if ($this->fill) {
-            if ($this->bgcolor !== '') {
-                $hex = new HexColor($this->bgcolor);
-                $renderer->tcpdf->setFillColor($hex->red, $hex->green, $hex->blue);
-            } else {
-                $this->fill = false;
-            }
+        $fill = $this->bgcolor !== '';
+        if ($fill) {
+            $hex = new HexColor($this->bgcolor);
+            $renderer->tcpdf->setFillColor($hex->red, $hex->green, $hex->blue);
         }
 
         // Border color
@@ -108,7 +103,7 @@ class PdfCell extends AbstractCell
             $temptext,
             $this->border,
             $this->align->value,
-            $this->fill,
+            $fill,
             $this->newline->value,
             $cX,
             $this->top,

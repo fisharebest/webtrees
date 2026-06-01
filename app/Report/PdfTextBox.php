@@ -229,9 +229,7 @@ class PdfTextBox extends AbstractTextBox
             $cS = 'D';
         } // D or empty string: Draw (default)
 
-        // Fill the background — only mark the cell-style 'F' if a
-        // background color was actually specified.
-        if ($this->fill && $this->bgcolor !== '') {
+        if ($this->bgcolor !== '') {
             $hex = new HexColor($this->bgcolor);
             $renderer->tcpdf->setFillColor($hex->red, $hex->green, $hex->blue);
             $cS .= 'F';
