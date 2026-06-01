@@ -433,7 +433,7 @@
 						</if>
 						<if condition="$spid == ''">
 							<!-- one parent family -->
-							<SerVar name="spid" value="$pid"/>
+                                                    <SetVar name="spid" value="$pid"/>
 						</if>
 						<!-- print information for spouse -->
 						<Gedcom id="$spid">

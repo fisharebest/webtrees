@@ -19,15 +19,70 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use DomainException;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+
+use function file_put_contents;
+use function ob_get_clean;
+use function ob_start;
+use function sys_get_temp_dir;
+use function tempnam;
+use function unlink;
 
 #[CoversClass(AbstractParser::class)]
 #[CoversClass(ParserGenerate::class)]
 class ParserGenerateTest extends TestCase
 {
-    public function testClass(): void
+    protected static bool $uses_database = true;
+
+    /**
+     * The parser must fail loudly on XML elements that are not part of the
+     * report schema rather than silently skipping them, so that typos like
+     * <SerVar> for <SetVar> are caught instead of hidden.
+     */
+    public function testUnknownXmlElementIsRejected(): void
     {
-        self::assertTrue(class_exists(ParserGenerate::class));
+        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
+        Auth::login($user);
+
+        $tree = $this->importTree('demo.ged');
+
+        // A minimally-valid report skeleton with an unknown <Whoops/> tag
+        // injected in the body.  The tag is not part of the schema so the
+        // parser must throw a DomainException identifying it.
+        $report_xml = <<<'XML'
+            <?xml version="1.0" encoding="UTF-8"?>
+            <Report>
+                <Doc showGeneratedBy="0">
+                    <Style name="text" font="dejavusans" size="10" style=""/>
+                    <Body>
+                        <Whoops/>
+                    </Body>
+                </Doc>
+            </Report>
+            XML;
+
+        $tmp_file = (string) tempnam(sys_get_temp_dir(), 'webtrees_report_test_');
+        file_put_contents($tmp_file, $report_xml);
+
+        try {
+            ob_start();
+            try {
+                new ParserGenerate($tmp_file, new HtmlRenderer(), [], $tree);
+                self::fail('Expected DomainException for unknown XML element was not thrown.');
+            } catch (DomainException $e) {
+                self::assertStringContainsString('<Whoops>', $e->getMessage());
+                self::assertStringContainsString($tmp_file, $e->getMessage());
+            } finally {
+                ob_get_clean();
+            }
+        } finally {
+            unlink($tmp_file);
+        }
     }
 }
