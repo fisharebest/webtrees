@@ -200,7 +200,7 @@ class ReportRegressionTest extends TestCase
 
         $vars = [];
         foreach ($setup->reportInputs() as $input) {
-            $vars[$input['name']] = $input['default'];
+            $vars[$input->name] = $input->default;
         }
 
         return array_merge($vars, $overrides);

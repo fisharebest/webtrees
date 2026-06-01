@@ -108,7 +108,7 @@ class ParserGenerate extends AbstractParser
      */
     private string $repeat_xml = '';
 
-    /** @var array<int,array{0:array<int,string>,1:string,2:int}> Nested repeating data: [$repeats, $repeat_xml, $repeat_line]. */
+    /** @var array<RepeatFrame> Snapshots of the loop state captured when nesting <RepeatTag>, <Facts>, <List> or <Relatives>. */
     private array $repeats_stack = [];
 
     /** @var array<ElementContainerInterface> Stack of containers when nesting text boxes */
@@ -117,7 +117,7 @@ class ParserGenerate extends AbstractParser
 
     private string $gedrec = '';
 
-    /** @var array<int,array{0:string,1:string,2:string}> Nested GEDCOM records */
+    /** @var array<GedcomFrame> Snapshots of the GEDCOM-record state captured when nesting <Gedcom>. */
     private array $gedrec_stack = [];
 
     private AbstractElement $current_element;
@@ -579,7 +579,11 @@ class ParserGenerate extends AbstractParser
             }
         }
         if (!empty($newgedrec)) {
-            $this->gedrec_stack[] = [$this->gedrec, $this->fact, $this->desc];
+            $this->gedrec_stack[] = new GedcomFrame(
+                gedrec: $this->gedrec,
+                fact:   $this->fact,
+                desc:   $this->desc,
+            );
             $this->gedrec         = $newgedrec;
             if (preg_match("/(\d+) (_?[A-Z0-9]+) (.*)/", $this->gedrec, $match)) {
                 $this->fact = $match[2];
@@ -595,7 +599,10 @@ class ParserGenerate extends AbstractParser
         if ($this->process_gedcoms > 0) {
             $this->process_gedcoms--;
         } else {
-            [$this->gedrec, $this->fact, $this->desc] = array_pop($this->gedrec_stack);
+            $frame        = array_pop($this->gedrec_stack);
+            $this->gedrec = $frame->gedrec;
+            $this->fact   = $frame->fact;
+            $this->desc   = $frame->desc;
         }
     }
 
@@ -789,7 +796,7 @@ class ParserGenerate extends AbstractParser
             return;
         }
 
-        $this->repeats_stack[] = [$this->repeats, $this->repeat_xml, $this->repeat_line];
+        $this->pushRepeatFrame();
         $this->repeats         = [];
         $this->repeat_xml      = (string) $this->xml_reader->readInnerXml();
         $this->repeat_line     = $this->currentLineNumber();
@@ -868,7 +875,7 @@ class ParserGenerate extends AbstractParser
             $this->gedrec = $oldgedrec;
         }
 
-        [$this->repeats, $this->repeat_xml, $this->repeat_line] = array_pop($this->repeats_stack);
+        $this->popRepeatFrame();
     }
 
     /**
@@ -940,7 +947,7 @@ class ParserGenerate extends AbstractParser
             return;
         }
 
-        $this->repeats_stack[] = [$this->repeats, $this->repeat_xml, $this->repeat_line];
+        $this->pushRepeatFrame();
         $this->repeats         = [];
         $this->repeat_xml      = (string) $this->xml_reader->readInnerXml();
         $this->repeat_line     = $this->currentLineNumber();
@@ -1014,7 +1021,7 @@ class ParserGenerate extends AbstractParser
             $this->gedrec = $oldgedrec;
         }
 
-        [$this->repeats, $this->repeat_xml, $this->repeat_line] = array_pop($this->repeats_stack);
+        $this->popRepeatFrame();
     }
 
     /**
@@ -1705,7 +1712,7 @@ class ParserGenerate extends AbstractParser
                 break;
         }
 
-        $this->repeats_stack[] = [$this->repeats, $this->repeat_xml, $this->repeat_line];
+        $this->pushRepeatFrame();
         $this->repeat_xml      = (string) $this->xml_reader->readInnerXml();
         $this->repeat_line     = $this->currentLineNumber();
     }
@@ -1735,7 +1742,7 @@ class ParserGenerate extends AbstractParser
             $this->list   = [];
             $this->gedrec = $oldgedrec;
         }
-        [$this->repeats, $this->repeat_xml, $this->repeat_line] = array_pop($this->repeats_stack);
+        $this->popRepeatFrame();
     }
 
     /**
@@ -1846,7 +1853,7 @@ class ParserGenerate extends AbstractParser
                 // unsorted
                 break;
         }
-        $this->repeats_stack[] = [$this->repeats, $this->repeat_xml, $this->repeat_line];
+        $this->pushRepeatFrame();
         $this->repeat_xml      = (string) $this->xml_reader->readInnerXml();
         $this->repeat_line     = $this->currentLineNumber();
     }
@@ -1878,7 +1885,7 @@ class ParserGenerate extends AbstractParser
             $this->list   = [];
             $this->gedrec = $oldgedrec;
         }
-        [$this->repeats, $this->repeat_xml, $this->repeat_line] = array_pop($this->repeats_stack);
+        $this->popRepeatFrame();
     }
 
     protected function generationStartHandler(): void
@@ -2119,11 +2126,37 @@ class ParserGenerate extends AbstractParser
         $line = $this->currentLineNumber();
 
         $offset = $this->repeat_line;
-        foreach ($this->repeats_stack as $rep) {
-            $offset += $rep[2];
+        foreach ($this->repeats_stack as $frame) {
+            $offset += $frame->repeat_line;
         }
 
         return $line + $offset;
+    }
+
+    /**
+     * Push the current repeat-loop state onto the stack so that nested
+     * <RepeatTag>, <Facts>, <List> or <Relatives> blocks can restore it
+     * when they finish iterating.
+     */
+    private function pushRepeatFrame(): void
+    {
+        $this->repeats_stack[] = new RepeatFrame(
+            repeats:     $this->repeats,
+            repeat_xml:  $this->repeat_xml,
+            repeat_line: $this->repeat_line,
+        );
+    }
+
+    /**
+     * Restore the repeat-loop state saved by the matching
+     * {@see pushRepeatFrame()} call.
+     */
+    private function popRepeatFrame(): void
+    {
+        $frame             = array_pop($this->repeats_stack);
+        $this->repeats     = $frame->repeats;
+        $this->repeat_xml  = $frame->repeat_xml;
+        $this->repeat_line = $frame->repeat_line;
     }
 
     /**
@@ -2140,7 +2173,7 @@ class ParserGenerate extends AbstractParser
 
         // Walk the stack from most recent to oldest
         for ($i = count($this->gedrec_stack) - 1; $i >= 0; $i--) {
-            if (preg_match('/^0 @(.+)@/', $this->gedrec_stack[$i][0], $match)) {
+            if (preg_match('/^0 @(.+)@/', $this->gedrec_stack[$i]->gedrec, $match)) {
                 return $match[1];
             }
         }

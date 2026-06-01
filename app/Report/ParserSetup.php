@@ -35,13 +35,11 @@ class ParserSetup extends AbstractParser
 
     private string $description;
 
-    /** @var array<array{name:string,type:string,lookup:string,options:string,default:string,value:string,extra:string}> */
+    /** @var array<InputDefinition> */
     private array $inputs = [];
 
-    /**
-     * @var array{name:string,type:string,lookup:string,options:string,default:string,value:string,extra:string} An array of input attributes
-     */
-    private array $input;
+    /** Definition for the <Input> currently being parsed.  Promoted to $inputs by inputEndHandler(). */
+    private InputDefinition $input;
 
     public function reportTitle(): string
     {
@@ -53,7 +51,7 @@ class ParserSetup extends AbstractParser
         return $this->description;
     }
 
-    /** @return array<array{name:string,type:string,lookup:string,options:string,default:string,value:string,extra:string}> */
+    /** @return array<InputDefinition> */
     public function reportInputs(): array
     {
         return $this->inputs;
@@ -193,36 +191,36 @@ class ParserSetup extends AbstractParser
      */
     protected function inputStartHandler(array $attrs): void
     {
-        $this->text  = '';
-        $this->input = [
-            'name'    => $attrs['name'] ?? '',
-            'type'    => $attrs['type'] ?? '',
-            'lookup'  => $attrs['lookup'] ?? '',
-            'options' => $attrs['options'] ?? '',
-            'default' => '',
-            'value'   => '',
-            'extra'   => '',
-        ];
+        $this->text = '';
+
+        $default = '';
 
         if (isset($attrs['default'])) {
             if ($attrs['default'] === 'NOW') {
-                $date                   = Registry::timestampFactory()->now();
-                $this->input['default'] = strtoupper($date->format('d M Y'));
+                $date    = Registry::timestampFactory()->now();
+                $default = strtoupper($date->format('d M Y'));
             } elseif (preg_match('/NOW([+\-]\d+)/', $attrs['default'], $match) > 0) {
-                $date                   = Registry::timestampFactory()->now()->addDays((int) $match[1]);
-                $this->input['default'] = strtoupper($date->format('d M Y'));
+                $date    = Registry::timestampFactory()->now()->addDays((int) $match[1]);
+                $default = strtoupper($date->format('d M Y'));
             } else {
-                $this->input['default'] = $attrs['default'];
+                $default = $attrs['default'];
             }
-        } elseif ($attrs['name'] === 'pageSize') {
-            $this->input['default'] = I18N::locale()->territory()->paperSize();
+        } elseif (($attrs['name'] ?? '') === 'pageSize') {
+            $default = I18N::locale()->territory()->paperSize();
         }
+
+        $this->input = new InputDefinition(
+            name:    $attrs['name'] ?? '',
+            type:    $attrs['type'] ?? '',
+            lookup:  $attrs['lookup'] ?? '',
+            options: $attrs['options'] ?? '',
+            default: $default,
+        );
     }
 
     protected function inputEndHandler(): void
     {
-        $this->input['value'] = $this->text;
-        $this->inputs[]       = $this->input;
-        $this->text           = '';
+        $this->inputs[] = $this->input->withValue($this->text);
+        $this->text     = '';
     }
 }
