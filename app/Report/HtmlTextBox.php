@@ -26,6 +26,9 @@ use function ksort;
 use function str_replace;
 use function trim;
 
+/**
+ * @extends AbstractTextBox<AbstractRenderer&HtmlRendererInterface>
+ */
 class HtmlTextBox extends AbstractTextBox
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void

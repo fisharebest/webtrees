@@ -19,6 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+/**
+ * @extends AbstractLine<AbstractRenderer&PdfRendererInterface>
+ */
 class PdfLine extends AbstractLine
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void

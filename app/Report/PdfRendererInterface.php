@@ -20,14 +20,19 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 /**
- * A report element that triggers rendering of all accumulated footnotes.
+ * Operations specific to the PDF report backend.
  *
- * @extends AbstractElement<AbstractRenderer>
+ * Element renderers that target the PDF backend (PdfCell, PdfText,
+ * PdfTextBox, PdfImage, PdfLine, PdfFootnote) require these page-break
+ * and margin helpers, which delegate to TCPDF.
  */
-class FootnoteTextsElement extends AbstractElement
+interface PdfRendererInterface
 {
-    public function render(AbstractRenderer $renderer, bool $attrib = true): void
-    {
-        $renderer->footnotes();
-    }
+    public function addMarginX(float $x): float;
+
+    public function checkPageBreakPDF(float $height): bool;
+
+    public function getMaxLineWidth(): float;
+
+    public function getRemainingWidthPDF(): float;
 }

@@ -21,6 +21,11 @@ namespace Fisharebest\Webtrees\Report;
 
 use function str_contains;
 
+/**
+ * @template TRenderer of AbstractRenderer
+ *
+ * @extends AbstractElement<TRenderer>
+ */
 abstract class AbstractFootnote extends AbstractElement
 {
     // The style for this element
@@ -69,5 +74,8 @@ abstract class AbstractFootnote extends AbstractElement
         $this->addlink = $a;
     }
 
+    /**
+     * @param TRenderer $renderer
+     */
     abstract public function getFootnoteHeight(AbstractRenderer $renderer, float $cellWidth = 0): float;
 }

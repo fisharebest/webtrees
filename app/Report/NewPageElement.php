@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Report;
 
 /**
  * A report element that triggers a page break in the output.
+ *
+ * @extends AbstractElement<AbstractRenderer>
  */
 class NewPageElement extends AbstractElement
 {

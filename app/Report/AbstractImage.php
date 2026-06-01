@@ -19,6 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+/**
+ * @template TRenderer of AbstractRenderer
+ *
+ * @extends AbstractElement<TRenderer>
+ */
 abstract class AbstractImage extends AbstractElement
 {
     public function __construct(

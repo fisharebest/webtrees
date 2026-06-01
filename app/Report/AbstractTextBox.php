@@ -19,9 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+/**
+ * @template TRenderer of AbstractRenderer
+ *
+ * @extends AbstractElement<TRenderer>
+ */
 abstract class AbstractTextBox extends AbstractElement implements ElementContainerInterface
 {
-    /** @var array<AbstractElement> */
+    /** @var array<AbstractElement<TRenderer>> */
     protected array $elements = [];
 
     public function __construct(
@@ -40,6 +45,9 @@ abstract class AbstractTextBox extends AbstractElement implements ElementContain
     ) {
     }
 
+    /**
+     * @param AbstractElement<TRenderer> $element
+     */
     public function addElement(AbstractElement $element): void
     {
         $this->elements[] = $element;

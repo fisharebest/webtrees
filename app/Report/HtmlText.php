@@ -24,6 +24,9 @@ use function explode;
 use function str_replace;
 use function substr_count;
 
+/**
+ * @extends AbstractText<AbstractRenderer&HtmlRendererInterface>
+ */
 class HtmlText extends AbstractText
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void

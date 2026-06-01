@@ -24,6 +24,9 @@ use function explode;
 use function str_replace;
 use function substr_count;
 
+/**
+ * @extends AbstractFootnote<AbstractRenderer&HtmlRendererInterface>
+ */
 class HtmlFootnote extends AbstractFootnote
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void
@@ -48,6 +51,9 @@ class HtmlFootnote extends AbstractFootnote
         $renderer->setXy(0, $renderer->getY() + $this->getFootnoteHeight($renderer));
     }
 
+    /**
+     * @param AbstractRenderer&HtmlRendererInterface $renderer
+     */
     public function getFootnoteHeight(AbstractRenderer $renderer, float $cellWidth = 0): float
     {
         $renderer->setCurrentStyle($this->style);

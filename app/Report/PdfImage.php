@@ -19,6 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+/**
+ * @extends AbstractImage<AbstractRenderer&PdfRendererInterface>
+ */
 class PdfImage extends AbstractImage
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void

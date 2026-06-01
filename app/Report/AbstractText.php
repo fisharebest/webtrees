@@ -21,6 +21,11 @@ namespace Fisharebest\Webtrees\Report;
 
 use function str_contains;
 
+/**
+ * @template TRenderer of AbstractRenderer
+ *
+ * @extends AbstractElement<TRenderer>
+ */
 abstract class AbstractText extends AbstractElement
 {
     // Remaining width of a cell (points)

@@ -24,6 +24,8 @@ namespace Fisharebest\Webtrees\Report;
  *
  * This allows us to use <Var> elements in the Setup phase of the report,
  * where we use it for translating report titles.
+ *
+ * @extends AbstractElement<AbstractRenderer>
  */
 class NullElement extends AbstractElement
 {

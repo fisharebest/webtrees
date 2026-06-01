@@ -22,6 +22,9 @@ namespace Fisharebest\Webtrees\Report;
 use function str_contains;
 use function str_replace;
 
+/**
+ * @extends AbstractCell<AbstractRenderer&HtmlRendererInterface>
+ */
 class HtmlCell extends AbstractCell
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void

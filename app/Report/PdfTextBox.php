@@ -28,6 +28,9 @@ use function preg_match;
 use function str_replace;
 use function trim;
 
+/**
+ * @extends AbstractTextBox<AbstractRenderer&PdfRendererInterface>
+ */
 class PdfTextBox extends AbstractTextBox
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void

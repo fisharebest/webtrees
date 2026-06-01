@@ -25,6 +25,9 @@ use function explode;
 use function str_replace;
 use function substr_count;
 
+/**
+ * @extends AbstractFootnote<AbstractRenderer&PdfRendererInterface>
+ */
 class PdfFootnote extends AbstractFootnote
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void

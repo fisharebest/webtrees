@@ -21,6 +21,11 @@ namespace Fisharebest\Webtrees\Report;
 
 use function abs;
 
+/**
+ * @template TRenderer of AbstractRenderer
+ *
+ * @extends AbstractElement<TRenderer>
+ */
 abstract class AbstractLine extends AbstractElement
 {
     public function __construct(

@@ -35,7 +35,7 @@ use function str_replace;
 use function stripos;
 use function substr_count;
 
-class HtmlRenderer extends AbstractRenderer
+class HtmlRenderer extends AbstractRenderer implements HtmlRendererInterface
 {
     // Current horizontal position
     public float $X = 0.0;

@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Webtrees;
 
 use function count;
 
-class PdfRenderer extends AbstractRenderer
+class PdfRenderer extends AbstractRenderer implements PdfRendererInterface
 {
     /**
      * PDF compression - Zlib extension is required

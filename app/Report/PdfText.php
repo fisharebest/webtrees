@@ -26,6 +26,9 @@ use function preg_match;
 use function str_replace;
 use function substr_count;
 
+/**
+ * @extends AbstractText<AbstractRenderer&PdfRendererInterface>
+ */
 class PdfText extends AbstractText
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void

@@ -24,6 +24,9 @@ use function is_array;
 use function preg_match;
 use function str_replace;
 
+/**
+ * @extends AbstractCell<AbstractRenderer&PdfRendererInterface>
+ */
 class PdfCell extends AbstractCell
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void

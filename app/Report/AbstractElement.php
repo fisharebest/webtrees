@@ -24,6 +24,19 @@ use function str_replace;
 use function strip_tags;
 use function trim;
 
+/**
+ * Base class for every report element.
+ *
+ * The TRenderer template parameter records which renderer family the
+ * element is designed for, so the element's render(), getHeight(),
+ * getWidth() and friends can use renderer methods that only exist on
+ * one backend (HtmlRendererInterface or PdfRendererInterface) without
+ * either lying about the runtime type or duplicating per-method
+ * intersection PHPDoc.  The native parameter type stays AbstractRenderer
+ * because PHP forbids narrowing a parameter type in a subclass.
+ *
+ * @template TRenderer of AbstractRenderer
+ */
 abstract class AbstractElement
 {
     // Special value for X or Y position, to indicate the current position.
@@ -48,16 +61,22 @@ abstract class AbstractElement
     protected string $text = '';
 
     /**
-     * @param bool $attrib - true (element handles position/layout) false (parent TextBox handles position/layout)
+     * @param TRenderer $renderer
+     * @param bool      $attrib - true (element handles position/layout) false (parent TextBox handles position/layout)
      */
     abstract public function render(AbstractRenderer $renderer, bool $attrib = true): void;
 
+    /**
+     * @param TRenderer $renderer
+     */
     public function getHeight(AbstractRenderer $renderer): float
     {
         return 0.0;
     }
 
     /**
+     * @param TRenderer $renderer
+     *
      * @return array{0:float,1:int,2:float}
      */
     public function getWidth(AbstractRenderer $renderer): array
@@ -117,6 +136,8 @@ abstract class AbstractElement
      * The total-pages placeholder is intentionally left in place: TCPDF
      * substitutes it during PDF assembly, and the HTML backend filters
      * affected cells out earlier via containsTotalPages().
+     *
+     * @param TRenderer $renderer
      */
     public function resolvedText(AbstractRenderer $renderer): string
     {
@@ -133,6 +154,9 @@ abstract class AbstractElement
         return 0;
     }
 
+    /**
+     * @param TRenderer $renderer
+     */
     public function renderFootnote(AbstractRenderer $renderer): void
     {
     }
