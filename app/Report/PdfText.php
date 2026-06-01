@@ -30,10 +30,7 @@ class PdfText extends AbstractText
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
-        // Set up the style
-        if ($renderer->getCurrentStyle() !== $this->styleName) {
-            $renderer->setCurrentStyle($this->styleName);
-        }
+        $renderer->setCurrentStyle($this->style);
         $temptext = str_replace('#PAGENUM#', (string) $renderer->tcpdf->PageNo(), $this->text);
         // underline «title» part of Source item
         $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
@@ -82,10 +79,7 @@ class PdfText extends AbstractText
      */
     public function getWidth(AbstractRenderer $renderer): array
     {
-        // Setup the style name, a font must be selected to calculate the width
-        if ($renderer->getCurrentStyle() !== $this->styleName) {
-            $renderer->setCurrentStyle($this->styleName);
-        }
+        $renderer->setCurrentStyle($this->style);
 
         // Check for the largest font size in the box
         $fsize = $renderer->getCurrentStyleHeight();

@@ -29,9 +29,7 @@ class HtmlText extends AbstractText
     public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
         // Set up the style
-        if ($renderer->getCurrentStyle() !== $this->styleName) {
-            $renderer->setCurrentStyle($this->styleName);
-        }
+        $renderer->setCurrentStyle($this->style);
         $temptext = str_replace('#PAGENUM#', (string) $renderer->pageNo(), $this->text);
         // underline «title» part of Source item
         $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
@@ -76,9 +74,9 @@ class HtmlText extends AbstractText
         if ($ct > 0) {
             $ct += 1;
         }
-        $style = $renderer->getStyle($this->styleName);
+        $style = $this->style;
 
-        return $style['size'] * $ct * $renderer->cellHeightRatio;
+        return $style->size * $ct * $renderer->cellHeightRatio;
     }
 
     /**
@@ -90,9 +88,7 @@ class HtmlText extends AbstractText
     public function getWidth(AbstractRenderer $renderer): array
     {
         // Setup the style name, a font must be selected to calculate the width
-        if ($renderer->getCurrentStyle() !== $this->styleName) {
-            $renderer->setCurrentStyle($this->styleName);
-        }
+        $renderer->setCurrentStyle($this->style);
 
         // Check for the largest font size in the box
         $fsize = $renderer->getCurrentStyleHeight();

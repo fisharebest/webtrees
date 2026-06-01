@@ -66,7 +66,7 @@ abstract class AbstractRenderer implements ElementContainerInterface
 
     public float $page_width = 0.0;
 
-    /** @var array<array{'name': string, 'font': string, 'style': string, 'size': float}> Style elements found in the document */
+    /** @var array<string, Style> Style elements found in the document, keyed by name */
     public array $styles = [];
 
     public string $default_font = 'dejavusans';
@@ -99,7 +99,7 @@ abstract class AbstractRenderer implements ElementContainerInterface
     /** @var array<AbstractElement> */
     public array $bodyElements = [];
 
-    public string $currentStyle = '';
+    public Style|null $currentStyle = null;
 
     // The largest font size within a TextBox, used to calculate text height
     public float $largestFontHeight = 0.0;
@@ -148,7 +148,7 @@ abstract class AbstractRenderer implements ElementContainerInterface
 
     abstract public function run(): void;
 
-    abstract public function setCurrentStyle(string $s): void;
+    abstract public function setCurrentStyle(Style $style): void;
 
     /**
      * @param float  $width   cell width (expressed in points)
@@ -156,7 +156,7 @@ abstract class AbstractRenderer implements ElementContainerInterface
      * @param string $border  Border style
      * @param string $align   Text alignment
      * @param string $bgcolor Background color code
-     * @param string $style   The name of the text style
+     * @param Style  $style   The text style
      * @param int    $ln      Indicates where the current position should go after the call
      * @param float  $top     Y-position
      * @param float  $left    X-position
@@ -171,7 +171,7 @@ abstract class AbstractRenderer implements ElementContainerInterface
         string $border,
         string $align,
         string $bgcolor,
-        string $style,
+        Style $style,
         int $ln,
         float $top,
         float $left,
@@ -202,7 +202,7 @@ abstract class AbstractRenderer implements ElementContainerInterface
         bool $reseth
     ): AbstractTextBox;
 
-    abstract public function createText(string $style, string $color): AbstractText;
+    abstract public function createText(Style $style, string $color): AbstractText;
 
     abstract public function createLine(float $x1, float $y1, float $x2, float $y2): AbstractLine;
 
@@ -226,7 +226,7 @@ abstract class AbstractRenderer implements ElementContainerInterface
         string $ln,    // T:same line, N:next line
     ): AbstractImage;
 
-    abstract public function createFootnote(string $style): AbstractFootnote;
+    abstract public function createFootnote(Style $style): AbstractFootnote;
 
     public function setup(): void
     {
@@ -256,36 +256,19 @@ abstract class AbstractRenderer implements ElementContainerInterface
         $this->rsubject .= $data;
     }
 
-    /**
-     * @param array{'name': string, 'font': string, 'style': string, 'size': float} $style
-     */
-    public function addStyle(array $style): void
+    public function addStyle(Style $style): void
     {
-        $this->styles[$style['name']] = $style;
+        $this->styles[$style->name] = $style;
     }
 
-    /**
-     * @return array{'name': string, 'font': string, 'style': string, 'size': float}
-     */
-    public function getStyle(string $style): array
+    public function getStyle(string $style): Style
     {
         return $this->styles[$style];
     }
 
-    public function getCurrentStyle(): string
-    {
-        return $this->currentStyle;
-    }
-
     public function getCurrentStyleHeight(): float
     {
-        if ($this->currentStyle === '') {
-            return $this->default_font_size;
-        }
-
-        $style = $this->getStyle($this->currentStyle);
-
-        return $style['size'];
+        return $this->currentStyle?->size ?? $this->default_font_size;
     }
 
     // =========================================================================

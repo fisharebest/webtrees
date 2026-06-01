@@ -23,8 +23,8 @@ use function str_contains;
 
 abstract class AbstractFootnote extends AbstractElement
 {
-    // The name of the style for this element
-    protected string $styleName = '';
+    // The style for this element
+    protected Style $style;
 
     // Numbers for the links
     public int $num;
@@ -41,13 +41,9 @@ abstract class AbstractFootnote extends AbstractElement
     // A link
     protected string $addlink;
 
-    public function __construct(string $styleName)
+    public function __construct(Style $style)
     {
-        if ($styleName !== '') {
-            $this->styleName = $styleName;
-        } else {
-            $this->styleName = 'footnote';
-        }
+        $this->style = $style;
     }
 
     public function setWrapWidth(float $wrapwidth, float $cellwidth): float

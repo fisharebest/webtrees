@@ -29,7 +29,7 @@ abstract class AbstractCell extends AbstractElement
         protected string $border, // '': none, 1: all, [LRTB]: combination of left, right, top, bottom
         protected string $align, // left/center/right/justify
         protected string $bgcolor,
-        protected string $styleName,
+        protected Style $style,
         protected int $newline, // 0: to the right (default) 1: to the beginning of the next line 2: below
         protected float $top,
         protected float $left,

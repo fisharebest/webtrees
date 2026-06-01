@@ -19,38 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use function str_contains;
-
-abstract class AbstractText extends AbstractElement
+readonly class Style
 {
-    // Remaining width of a cell (points)
-    public float $wrapWidthRemaining;
-
-    // Original width of a cell (points)
-    public float $wrapWidthCell;
-
     public function __construct(
-        protected Style $style,
-        protected string $color,
+        public string $name,
+        public string $font,
+        public string $style,
+        public float $size,
     ) {
-        $this->text               = '';
-        $this->wrapWidthRemaining = 0.0;
-    }
-
-    public function setWrapWidth(float $wrapwidth, float $cellwidth): float
-    {
-        $this->wrapWidthCell = $cellwidth;
-        if (str_contains($this->text, "\n")) {
-            $this->wrapWidthRemaining = $cellwidth;
-        } else {
-            $this->wrapWidthRemaining = $wrapwidth;
-        }
-
-        return $this->wrapWidthRemaining;
-    }
-
-    public function getStyle(): Style
-    {
-        return $this->style;
     }
 }

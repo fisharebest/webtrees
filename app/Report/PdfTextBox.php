@@ -49,7 +49,7 @@ class PdfTextBox extends AbstractTextBox
                     $footnote_element = [];
                     if (empty($lastelement)) {
                         $lastelement = $element;
-                    } elseif ($element->getStyleName() === $lastelement->getStyleName()) {
+                    } elseif ($element->getStyle() === $lastelement->getStyle()) {
                         // Checking if the Text has the same style
                         $lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
                     } else {

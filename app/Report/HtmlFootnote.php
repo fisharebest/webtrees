@@ -28,7 +28,7 @@ class HtmlFootnote extends AbstractFootnote
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
-        $renderer->setCurrentStyle('footnotenum');
+        $renderer->setCurrentStyle($renderer->getStyle('footnotenum'));
         echo '<a href="#footnote', $this->num, '"><sup>';
         $renderer->write($renderer->entityRTL . $this->num);
         echo "</sup></a>\n";
@@ -36,9 +36,7 @@ class HtmlFootnote extends AbstractFootnote
 
     public function renderFootnote(AbstractRenderer $renderer): void
     {
-        if ($renderer->getCurrentStyle() !== $this->styleName) {
-            $renderer->setCurrentStyle($this->styleName);
-        }
+        $renderer->setCurrentStyle($this->style);
 
         $temptext = str_replace('#PAGENUM#', (string) $renderer->pageNo(), $this->text);
         // underline «title» part of Source item
@@ -52,9 +50,7 @@ class HtmlFootnote extends AbstractFootnote
 
     public function getFootnoteHeight(AbstractRenderer $renderer, float $cellWidth = 0): float
     {
-        if ($renderer->getCurrentStyle() !== $this->styleName) {
-            $renderer->setCurrentStyle($this->styleName);
-        }
+        $renderer->setCurrentStyle($this->style);
 
         if ($cellWidth > 0) {
             $this->text = $renderer->textWrap($this->text, $cellWidth);
@@ -77,7 +73,7 @@ class HtmlFootnote extends AbstractFootnote
     public function getWidth(AbstractRenderer $renderer): array
     {
         // Setup the style name
-        $renderer->setCurrentStyle('footnotenum');
+        $renderer->setCurrentStyle($renderer->getStyle('footnotenum'));
 
         // Check for the largest font size in the box
         $fsize = $renderer->getCurrentStyleHeight();

@@ -34,9 +34,7 @@ class HtmlCell extends AbstractCell
         $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
 
         // Set up the text style
-        if ($renderer->getCurrentStyle() !== $this->styleName) {
-            $renderer->setCurrentStyle($this->styleName);
-        }
+        $renderer->setCurrentStyle($this->style);
 
         // If (Future-feature-enable/disable cell padding)
         $cP = $renderer->cPadding;
@@ -55,7 +53,7 @@ class HtmlCell extends AbstractCell
         }
 
         // Start collecting the HTML code
-        echo '<div class="', $this->styleName, '" style="position:absolute;top:', $this->top, 'pt;';
+        echo '<div class="', $this->style->name, '" style="position:absolute;top:', $this->top, 'pt;';
         // Use Cell around padding to support RTL also
         echo 'padding:', $cP, 'pt;';
         // LTR (left) or RTL (right)

@@ -29,15 +29,13 @@ class PdfFootnote extends AbstractFootnote
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
-        $renderer->setCurrentStyle('footnotenum');
+        $renderer->setCurrentStyle($renderer->getStyle('footnotenum'));
         $renderer->tcpdf->Write($renderer->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
     }
 
     public function renderFootnote(AbstractRenderer $renderer): void
     {
-        if ($renderer->getCurrentStyle() !== $this->styleName) {
-            $renderer->setCurrentStyle($this->styleName);
-        }
+        $renderer->setCurrentStyle($this->style);
         $temptext = str_replace('#PAGENUM#', (string) $renderer->tcpdf->PageNo(), $this->text);
         // Set the link to this y/page position
         $renderer->tcpdf->setLink($this->addlink, -1, -1);
@@ -68,7 +66,7 @@ class PdfFootnote extends AbstractFootnote
     public function getWidth(AbstractRenderer $renderer): array
     {
         // Setup the style name, a font must be selected to calculate the width
-        $renderer->setCurrentStyle('footnotenum');
+        $renderer->setCurrentStyle($renderer->getStyle('footnotenum'));
 
         // Check for the largest font size in the box
         $fsize = $renderer->getCurrentStyleHeight();

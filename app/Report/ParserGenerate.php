@@ -310,12 +310,12 @@ class ParserGenerate extends AbstractParser
             throw new DomainException('REPORT ERROR Style: The "name" of the style is missing or not set in the XML file.');
         }
 
-        $style = [
-            'name'  => $attrs['name'],
-            'font'  => $attrs['font'] ?? $this->renderer->default_font,
-            'size'  => (float) ($attrs['size'] ?? $this->renderer->default_font_size),
-            'style' => $attrs['style'] ?? '',
-        ];
+        $style = new Style(
+            name:  $attrs['name'],
+            font:  $attrs['font'] ?? $this->renderer->default_font,
+            size:  (float) ($attrs['size'] ?? $this->renderer->default_font_size),
+            style: $attrs['style'] ?? '',
+        );
 
         $this->renderer->addStyle($style);
     }
@@ -376,7 +376,7 @@ class ParserGenerate extends AbstractParser
         $ln      = (int) ($attrs['newline'] ?? 0);
         $reseth  = (bool) ($attrs['reseth'] ?? true);
         $stretch = (int) ($attrs['stretch'] ?? 0);
-        $style   = $attrs['style'] ?? '';
+        $style   = $this->renderer->getStyle($attrs['style'] ?? '');
         $tcolor  = $attrs['tcolor'] ?? '';
         $top     = (float) ($attrs['top'] ?? AbstractElement::CURRENT_POSITION);
         $width   = (float) ($attrs['width'] ?? 0.0);
@@ -554,7 +554,7 @@ class ParserGenerate extends AbstractParser
         $this->print_data_stack[] = $this->print_data;
         $this->print_data         = true;
 
-        $style = $attrs['style'] ?? '';
+        $style = $this->renderer->getStyle($attrs['style'] ?? '');
         $color = $attrs['color'] ?? '';
 
         $this->current_element = $this->renderer->createText($style, $color);
@@ -1173,10 +1173,7 @@ class ParserGenerate extends AbstractParser
         if ($record && $record->canShow()) {
             $this->print_data_stack[] = $this->print_data;
             $this->print_data         = true;
-            $style                    = '';
-            if (!empty($attrs['style'])) {
-                $style = $attrs['style'];
-            }
+            $style                    = $this->renderer->getStyle($attrs['style'] ?? 'footnote');
             $this->footnote_element = $this->current_element;
             $this->current_element  = $this->renderer->createFootnote($style);
         } else {

@@ -33,9 +33,7 @@ class PdfCell extends AbstractCell
         $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
 
         // Set up the text style
-        if ($renderer->getCurrentStyle() !== $this->styleName) {
-            $renderer->setCurrentStyle($this->styleName);
-        }
+        $renderer->setCurrentStyle($this->style);
 
         // Background color
         $match = [];
