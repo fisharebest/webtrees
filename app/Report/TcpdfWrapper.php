@@ -28,9 +28,46 @@ use TCPDF;
  * renderers need, plus a `resetColors()` shortcut used at the tail of
  * each cell render to keep color state from leaking from one element
  * into the next.  Color parsing itself lives in HexColor.
+ *
+ * Overrides TCPDF's Header() and Footer() so that the report XML's
+ * header/footer elements are rendered on every page instead of TCPDF's
+ * default title-only header.
  */
 class TcpdfWrapper extends TCPDF
 {
+    private PdfRenderer|null $renderer = null;
+
+    /**
+     * Connect this TCPDF instance to the PdfRenderer that owns it.
+     * Must be called after construction and before AddPage().
+     */
+    public function setRenderer(PdfRenderer $renderer): void
+    {
+        $this->renderer = $renderer;
+    }
+
+    /**
+     * Called by TCPDF on every AddPage().  Renders the report XML's
+     * header elements (if any) into the header area of the page.
+     */
+    public function Header(): void
+    {
+        if ($this->renderer !== null) {
+            $this->renderer->header();
+        }
+    }
+
+    /**
+     * Called by TCPDF when a page ends.  Renders the report XML's
+     * footer elements (if any) into the footer area of the page.
+     */
+    public function Footer(): void
+    {
+        if ($this->renderer !== null) {
+            $this->renderer->footer();
+        }
+    }
+
     public function getRemainingWidth(): float
     {
         return parent::getRemainingWidth();
