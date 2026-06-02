@@ -23,31 +23,29 @@ use Fisharebest\Webtrees\MediaFile;
 
 abstract class AbstractRenderer implements ElementContainerInterface
 {
+    // The default font size when none is specified in the XML
+    public const float DEFAULT_FONT_SIZE = 12.0;
+
     // Reports layouts are measured in points.
     protected const string UNITS = 'pt';
 
     /** Report layout configuration, set by setup(). */
     public ReportConfig $config;
 
-
     /** @var array<string, Style> Style elements found in the document, keyed by name */
-    public array $styles = [];
-
-    public string $default_font = 'dejavusans';
-
-    public float $default_font_size = 12.0;
+    protected array $styles = [];
 
     /** Which logical section of the report is currently being assembled. */
     protected ReportSection $processing = ReportSection::Header;
 
     /** @var array<AbstractElement> */
-    public array $headerElements = [];
+    protected array $headerElements = [];
 
     /** @var array<AbstractElement> */
-    public array $footerElements = [];
+    protected array $footerElements = [];
 
     /** @var array<AbstractElement> */
-    public array $bodyElements = [];
+    protected array $bodyElements = [];
 
     public Style|null $currentStyle = null;
 
@@ -58,7 +56,7 @@ abstract class AbstractRenderer implements ElementContainerInterface
     public float $lastCellHeight = 0.0;
 
     /** @var array<AbstractFootnote> Footnotes that have been rendered or queued for rendering */
-    public array $printedfootnotes = [];
+    protected array $printedfootnotes = [];
 
     public function addElement(AbstractElement $element): void
     {
@@ -189,12 +187,8 @@ abstract class AbstractRenderer implements ElementContainerInterface
 
     public function getCurrentStyleHeight(): float
     {
-        return $this->currentStyle?->size ?? $this->default_font_size;
+        return $this->currentStyle?->size ?? self::DEFAULT_FONT_SIZE;
     }
-
-    // =========================================================================
-    // Methods used by both HTML and PDF element renderers
-    // =========================================================================
 
     abstract public function footnotes(): void;
 
@@ -202,10 +196,6 @@ abstract class AbstractRenderer implements ElementContainerInterface
 
     abstract public function checkFootnote(AbstractFootnote $footnote): AbstractFootnote|false;
 
-    /**
-     * The current page number.  HTML output is unpaginated and returns the
-     * single page it is assembling; the PDF backend delegates to TCPDF.
-     */
     abstract public function pageNo(): int;
 
     /**

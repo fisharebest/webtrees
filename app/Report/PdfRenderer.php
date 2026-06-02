@@ -105,7 +105,7 @@ class PdfRenderer extends AbstractRenderer implements PdfRendererInterface
     {
         if ($this->currentStyle !== $style) {
             $this->currentStyle = $style;
-            $this->tcpdf->setFont($style->font, $style->style, $style->size);
+            $this->tcpdf->setFont($this->config->font, $style->style, $style->size);
         }
     }
 
@@ -162,7 +162,7 @@ class PdfRenderer extends AbstractRenderer implements PdfRendererInterface
         $i   = 0;
         while ($i < $ct) {
             if ($this->printedfootnotes[$i]->getValue() === $val) {
-                // If this footnote already exist then set up the numbers for this object
+                // If this footnote already exists then set up the numbers for this object
                 $footnote->setNum($i + 1);
                 $footnote->setAddlink((string) ($i + 1));
 

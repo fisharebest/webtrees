@@ -46,6 +46,7 @@ final readonly class ReportConfig
         public string $description,
         public string $align_rtl,
         public string $entity_rtl,
+        public string $font,
     ) {
     }
 }

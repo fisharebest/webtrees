@@ -23,7 +23,6 @@ readonly class Style
 {
     public function __construct(
         public string $name,
-        public string $font,
         public string $style,
         public float $size,
     ) {

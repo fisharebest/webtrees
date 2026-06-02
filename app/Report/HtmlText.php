@@ -47,7 +47,7 @@ class HtmlText extends AbstractText
                 $startX = $renderer->getX();
                 $startY = $renderer->getY();
                 $width  = $renderer->getRemainingWidth();
-                // If text is wider then page width then wrap it
+                // If text is wider than the page then wrap it
                 if ($renderer->getStringWidth($temptext) > $width) {
                     $lines = explode("\n", $temptext);
                     foreach ($lines as $line) {

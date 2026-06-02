@@ -80,6 +80,10 @@ use const PREG_SET_ORDER;
 
 class ParserGenerate extends AbstractParser
 {
+    // The default font when none is specified in the XML
+    private const string DEFAULT_FONT = 'dejavusans';
+    private const float DEFAULT_FONT_SIZE = 12.0;
+
     private bool $process_footnote = true;
 
     // We only print character data for certain element types.
@@ -102,9 +106,9 @@ class ParserGenerate extends AbstractParser
     private array $repeats = [];
 
     /**
-     * Captured inner XML of the currently-open repeat block.  Set by the
+     * Captured inner XML of the currently open repeat block.  Set by the
      * start handler (via XMLReader::readInnerXml()) and consumed by the
-     * matching end handler, which re-parses it once per iteration through
+     * matching end handler, which reparses it once per iteration through
      * {@see AbstractParser::parseFragment()}.
      */
     private string $repeat_xml = '';
@@ -420,10 +424,9 @@ class ParserGenerate extends AbstractParser
         }
 
         $style = new Style(
-            name:  $attrs['name'],
-            font:  $attrs['font'] ?? $this->renderer->default_font,
-            size:  (float) ($attrs['size'] ?? $this->renderer->default_font_size),
+            name: $attrs['name'],
             style: $attrs['style'] ?? '',
+            size: (float) ($attrs['size'] ?? AbstractRenderer::DEFAULT_FONT_SIZE),
         );
 
         $this->renderer->addStyle($style);
@@ -468,6 +471,7 @@ class ParserGenerate extends AbstractParser
             description:       $this->report_description,
             align_rtl:         I18N::direction() === 'rtl' ? 'right' : 'left',
             entity_rtl:        I18N::direction() === 'rtl' ? '&rlm;' : '&lrm;',
+            font:              $this->variables->has('font') ? $this->variables->get('font') : self::DEFAULT_FONT,
         );
 
         $this->renderer->setup($config);

@@ -6,16 +6,15 @@
 	<Input name="spouses" type="checkbox" default=""><var var="I18N::translate('Show spouses')" /></Input>
 	<Input name="orientation" type="select" default="portrait" options="portrait=>I18N::translate('Portrait')|landscape=>I18N::translate('Landscape')"><var var="I18N::translate('Orientation')"/></Input>
 	<Input name="pageSize" type="select" options="A4=>I18N::translateContext('paper size','A4')|A3=>I18N::translateContext('paper size', 'A3')|US-Letter=>I18N::translateContext('paper size','Letter')|US-Tabloid=>I18N::translateContext('paper size','Tabloid')"><var var="I18N::translate('Page size')" /></Input>
-	<SetVar name="fonts" value="dejavusans" />
 
 	<if condition="$orientation=='portrait'">
-		<Style name="header" font="$fonts" size="18" />
-		<Style name="label1" font="$fonts" size="9" />
-		<Style name="name" font="$fonts" size="9" />
-		<Style name="text" font="$fonts" size="7" />
-		<Style name="genby" font="$fonts" size="8" />
+		<Style name="header" size="18" />
+		<Style name="label1" size="9" />
+		<Style name="name" size="9" />
+		<Style name="text" size="7" />
+		<Style name="genby" size="8" />
 		<!-- Date text -->
-		<Style name="date" font="$fonts" size="8"/>
+		<Style name="date" size="8"/>
 
 		<!-- Horizontal Number/Name/Fact text -->
 		<SetVar name="number_1_2_3" value="18" />
@@ -711,13 +710,13 @@
 	</if>
 
 	<if condition="$orientation=='landscape'">
-		<Style name="header" font="$fonts" size="18"/>
-		<Style name="label1" font="$fonts" size="9" />
-		<Style name="name" font="$fonts" size="9" />
-		<Style name="text" font="$fonts" size="7" />
-		<Style name="genby" font="$fonts" size="8" />
+		<Style name="header" size="18"/>
+		<Style name="label1" size="9" />
+		<Style name="name" size="9" />
+		<Style name="text" size="7" />
+		<Style name="genby" size="8" />
 		<!-- Date text -->
-		<Style name="date" font="$fonts" size="8"/>
+		<Style name="date" size="8"/>
 
 		<!-- Horizontal Number/Name/Fact text -->
 		<SetVar name="number_1_2_3" value="19" />
