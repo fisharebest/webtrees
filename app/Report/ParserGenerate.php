@@ -364,53 +364,77 @@ class ParserGenerate extends AbstractParser
         }
         $attrs = $newattrs;
 
-        // Gating: while we are skipping content inside <Footnote>, <if>,
-        // <Gedcom>, <Facts> or <RepeatTag>, only the tag(s) that can end
-        // (or re-enter) those scopes are dispatched.  Tags suppressed by a
-        // gate are not validated against the handler table either.
-        if (!$this->process_footnote) {
-            return;
+        if ($this->gateAllowsStart($name)) {
+            parent::startElement($name, $attrs);
         }
-        if ($this->process_ifs !== 0 && $name !== 'if') {
-            return;
-        }
-        if ($this->process_gedcoms !== 0 && $name !== 'Gedcom') {
-            return;
-        }
-        if ($this->process_repeats !== 0 && $name !== 'Facts' && $name !== 'RepeatTag') {
-            return;
-        }
-
-        parent::startElement($name, $attrs);
     }
 
     protected function endElement(string $name): void
     {
-        // Mirror image of the gating in startElement().  <Footnote>, <if>,
-        // <Gedcom>, <Facts>, <RepeatTag>, <List> and <Relatives> can each
-        // close the scope they opened, so they must be dispatched even when
-        // the corresponding gate is active.
-        if (!$this->process_footnote && $name !== 'Footnote') {
-            return;
+        if ($this->gateAllowsEnd($name)) {
+            parent::endElement($name);
         }
-        if ($this->process_ifs !== 0 && $name !== 'if') {
-            return;
-        }
-        if ($this->process_gedcoms !== 0 && $name !== 'Gedcom') {
-            return;
-        }
-        if ($this->process_repeats !== 0 && $name !== 'Facts' && $name !== 'RepeatTag' && $name !== 'List' && $name !== 'Relatives') {
-            return;
-        }
-
-        parent::endElement($name);
     }
 
     protected function characterData(string $data): void
     {
-        if ($this->print_data && $this->process_gedcoms === 0 && $this->process_ifs === 0 && $this->process_repeats === 0) {
+        if ($this->print_data && $this->gateAllowsCharacterData()) {
             $this->current_element->addText($data);
         }
+    }
+
+    /**
+     * While skipping content inside <Footnote>, <if>, <Gedcom>, or a
+     * repeat block, only the tag(s) that can close or re-enter those
+     * scopes are dispatched.  Gates are checked in priority order.
+     */
+    private function gateAllowsStart(string $name): bool
+    {
+        if (!$this->process_footnote) {
+            return false;
+        }
+        if ($this->process_ifs !== 0 && $name !== 'if') {
+            return false;
+        }
+        if ($this->process_gedcoms !== 0 && $name !== 'Gedcom') {
+            return false;
+        }
+        if ($this->process_repeats !== 0 && $name !== 'Facts' && $name !== 'RepeatTag') {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Mirror of gateAllowsStart() for closing tags.  The end tag that
+     * closes a gate scope must always pass through so the handler can
+     * decrement the counter and re-enable normal dispatch.
+     */
+    private function gateAllowsEnd(string $name): bool
+    {
+        if (!$this->process_footnote && $name !== 'Footnote') {
+            return false;
+        }
+        if ($this->process_ifs !== 0 && $name !== 'if') {
+            return false;
+        }
+        if ($this->process_gedcoms !== 0 && $name !== 'Gedcom') {
+            return false;
+        }
+        if ($this->process_repeats !== 0 && $name !== 'Facts' && $name !== 'RepeatTag' && $name !== 'List' && $name !== 'Relatives') {
+            return false;
+        }
+
+        return true;
+    }
+
+    /** Character data is only processed when no gate is active. */
+    private function gateAllowsCharacterData(): bool
+    {
+        return $this->process_gedcoms === 0
+            && $this->process_ifs === 0
+            && $this->process_repeats === 0;
     }
 
     /**
