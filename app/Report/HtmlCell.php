@@ -60,7 +60,7 @@ class HtmlCell extends AbstractCell
         // Use Cell around padding to support RTL also
         echo 'padding:', $cP, 'pt;';
         // LTR (left) or RTL (right)
-        echo $renderer->alignRTL, ':', $this->left, 'pt;';
+        echo $renderer->config->align_rtl, ':', $this->left, 'pt;';
 
         // Background color
         if (!empty($this->bgcolor)) {

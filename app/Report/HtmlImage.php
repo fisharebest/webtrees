@@ -55,7 +55,7 @@ class HtmlImage extends AbstractImage
                 echo '<img src="', $this->src, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
                 break;
             default:
-                echo '<img src="', $this->src, '" style="position:absolute;', $renderer->alignRTL, ':', $this->x, 'pt;top:', $this->y, 'pt;width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n";
+                echo '<img src="', $this->src, '" style="position:absolute;', $renderer->config->align_rtl, ':', $this->x, 'pt;top:', $this->y, 'pt;width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n";
         }
 
         $lastpicpage   = $renderer->pageNo();

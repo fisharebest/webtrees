@@ -20,16 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 /**
- * A no-op element used as the initial current_element before the report
- * body is reached.  Text added via addText() accumulates normally (inherited
- * from AbstractElement) so the parser can read it back for metadata like
- * Title and Description; render() does nothing.
- *
- * @extends AbstractElement<AbstractRenderer>
+ * Page orientation for report layout.
+ * The string values match those used in XML report definitions and by TCPDF.
  */
-class NullElement extends AbstractElement
+enum PageOrientation: string
 {
-    public function render(AbstractRenderer $renderer, bool $attrib = true): void
-    {
-    }
+    case Portrait  = 'portrait';
+    case Landscape = 'landscape';
 }

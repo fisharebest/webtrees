@@ -126,7 +126,7 @@ class ChangeReportModuleTest extends TestCase
                 'pending'            => '',
                 'sortby'             => '',
                 'page_size'          => '',
-                'pageorient'         => '',
+                'pageorient'         => 'portrait',
             ],
         ];
     }

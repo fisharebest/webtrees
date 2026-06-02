@@ -51,7 +51,7 @@ class HtmlText extends AbstractText
                 if ($renderer->getStringWidth($temptext) > $width) {
                     $lines = explode("\n", $temptext);
                     foreach ($lines as $line) {
-                        echo '<div style="position:absolute;top:', $startY, 'pt;', $renderer->alignRTL, ':', $startX, 'pt;width:', $width, 'pt;">';
+                        echo '<div style="position:absolute;top:', $startY, 'pt;', $renderer->config->align_rtl, ':', $startX, 'pt;width:', $width, 'pt;">';
                         $line = $renderer->textWrap($line, $width);
                         $startY += $renderer->getTextCellHeight($line);
                         $renderer->setY($startY);
@@ -59,7 +59,7 @@ class HtmlText extends AbstractText
                         echo "</div>\n";
                     }
                 } else {
-                    echo '<div style="position:absolute;top:', $startY, 'pt;', $renderer->alignRTL, ':', $startX, 'pt;width:', $width, 'pt;">';
+                    echo '<div style="position:absolute;top:', $startY, 'pt;', $renderer->config->align_rtl, ':', $startX, 'pt;width:', $width, 'pt;">';
                     $renderer->write($temptext, $this->color);
                     echo "</div>\n";
                     $renderer->setX($startX + $renderer->getStringWidth($temptext));

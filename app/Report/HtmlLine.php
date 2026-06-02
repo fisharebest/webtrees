@@ -40,11 +40,11 @@ class HtmlLine extends AbstractLine
         }
         // Vertical line
         if ($this->x1 === $this->x2) {
-            echo '<div style="position:absolute;overflow:hidden;border-', $renderer->alignRTL, ':solid black 1pt;', $renderer->alignRTL, ':', $this->x1, 'pt;top:', $this->y1 + 1, 'pt;width:1pt;height:', $this->y2 - $this->y1, "pt;\"> </div>\n";
+            echo '<div style="position:absolute;overflow:hidden;border-', $renderer->config->align_rtl, ':solid black 1pt;', $renderer->config->align_rtl, ':', $this->x1, 'pt;top:', $this->y1 + 1, 'pt;width:1pt;height:', $this->y2 - $this->y1, "pt;\"> </div>\n";
         }
         // Horizontal line
         if ($this->y1 === $this->y2) {
-            echo '<div style="position:absolute;overflow:hidden;border-top:solid black 1pt;', $renderer->alignRTL, ':', $this->x1, 'pt;top:', $this->y1 + 1, 'pt;width:', $this->x2 - $this->x1, "pt;height:1pt;\"> </div>\n";
+            echo '<div style="position:absolute;overflow:hidden;border-top:solid black 1pt;', $renderer->config->align_rtl, ':', $this->x1, 'pt;top:', $this->y1 + 1, 'pt;width:', $this->x2 - $this->x1, "pt;height:1pt;\"> </div>\n";
         }
         // Keep max Y updated
         // One or the other will be higher... lasy mans way...

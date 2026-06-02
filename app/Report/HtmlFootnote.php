@@ -33,7 +33,7 @@ class HtmlFootnote extends AbstractFootnote
     {
         $renderer->setCurrentStyle($renderer->getStyle('footnotenum'));
         echo '<a href="#footnote', $this->num, '"><sup>';
-        $renderer->write($renderer->entityRTL . $this->num);
+        $renderer->write($renderer->config->entity_rtl . $this->num);
         echo "</sup></a>\n";
     }
 

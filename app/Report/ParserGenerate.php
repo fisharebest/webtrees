@@ -35,6 +35,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
@@ -140,6 +141,12 @@ class ParserGenerate extends AbstractParser
 
     /** Number of items filtered from lists */
     private int $list_private = 0;
+
+    /** Report title, captured from the <Title> element */
+    private string $report_title = '';
+
+    /** Report description, captured from the <Description> element */
+    private string $report_description = '';
 
     private AbstractRenderer $renderer;
 
@@ -258,7 +265,7 @@ class ParserGenerate extends AbstractParser
         return [
             'Body'             => $this->bodyStartHandler(...),
             'Cell'             => $this->cellStartHandler(...),
-            'Description'      => $this->noop(...), // metadata consumed by ParserSetup
+            'Description'      => $this->descriptionStartHandler(...),
             'Doc'              => $this->docStartHandler(...),
             'Facts'            => $this->factsStartHandler(...),
             'Footer'           => $this->footerStartHandler(...),
@@ -285,7 +292,7 @@ class ParserGenerate extends AbstractParser
             'Style'            => $this->styleStartHandler(...),
             'Text'             => $this->textStartHandler(...),
             'TextBox'          => $this->textBoxStartHandler(...),
-            'Title'            => $this->noop(...), // metadata consumed by ParserSetup
+            'Title'            => $this->titleStartHandler(...),
             'TotalPages'       => $this->totalPagesStartHandler(...),
             'br'               => $this->brStartHandler(...),
             'if'               => $this->ifStartHandler(...),
@@ -302,7 +309,7 @@ class ParserGenerate extends AbstractParser
         return [
             'Body'             => $this->noop(...),
             'Cell'             => $this->cellEndHandler(...),
-            'Description'      => $this->noop(...),
+            'Description'      => $this->descriptionEndHandler(...),
             'Doc'              => $this->docEndHandler(...),
             'Facts'            => $this->factsEndHandler(...),
             'Footer'           => $this->noop(...),
@@ -329,7 +336,7 @@ class ParserGenerate extends AbstractParser
             'Style'            => $this->noop(...),
             'Text'             => $this->textEndHandler(...),
             'TextBox'          => $this->textBoxEndHandler(...),
-            'Title'            => $this->noop(...),
+            'Title'            => $this->titleEndHandler(...),
             'TotalPages'       => $this->noop(...),
             'br'               => $this->noop(...),
             'if'               => $this->ifEndHandler(...),
@@ -427,18 +434,43 @@ class ParserGenerate extends AbstractParser
      */
     protected function docStartHandler(array $attrs): void
     {
-        $this->renderer->page_width        = (float) ($attrs['customwidth'] ?? $this->renderer->page_width);
-        $this->renderer->page_height       = (float) ($attrs['customheight'] ?? $this->renderer->page_height);
-        $this->renderer->left_margin       = (float) ($attrs['leftmargin'] ?? $this->renderer->left_margin);
-        $this->renderer->right_margin      = (float) ($attrs['rightmargin'] ?? $this->renderer->right_margin);
-        $this->renderer->top_margin        = (float) ($attrs['topmargin'] ?? $this->renderer->top_margin);
-        $this->renderer->bottom_margin     = (float) ($attrs['bottommargin'] ?? $this->renderer->bottom_margin);
-        $this->renderer->header_margin     = (float) ($attrs['headermargin'] ?? $this->renderer->header_margin);
-        $this->renderer->footer_margin     = (float) ($attrs['footermargin'] ?? $this->renderer->footer_margin);
-        $this->renderer->orientation       = $attrs['orientation'] ?? $this->renderer->orientation;
-        $this->renderer->page_format       = $attrs['pageSize'] ?? $this->renderer->page_format;
-        $this->renderer->show_generated_by = (bool) ($attrs['showGeneratedBy'] ?? $this->renderer->show_generated_by);
-        $this->renderer->setup();
+        // Default margins are in millimeters, converted to points (1 point = 1/72 inch).
+        $mm_to_points = 72.0 / 25.4;
+
+        $page_size = PageSize::tryFrom($attrs['pageSize'] ?? 'A4') ?? PageSize::A4;
+
+        // Resolve page dimensions: use custom dimensions if specified, otherwise look up the paper size.
+        $page_width  = (float) ($attrs['customwidth'] ?? 0.0);
+        $page_height = (float) ($attrs['customheight'] ?? 0.0);
+
+        if ($page_width === 0.0 || $page_height === 0.0) {
+            $page_width  = $page_size->width();
+            $page_height = $page_size->height();
+        }
+
+        $config = new ReportConfig(
+            page_width:        $page_width,
+            page_height:       $page_height,
+            left_margin:       (float) ($attrs['leftmargin'] ?? 18.0 * $mm_to_points),
+            right_margin:      (float) ($attrs['rightmargin'] ?? 9.9 * $mm_to_points),
+            top_margin:        (float) ($attrs['topmargin'] ?? 26.8 * $mm_to_points),
+            bottom_margin:     (float) ($attrs['bottommargin'] ?? 21.6 * $mm_to_points),
+            header_margin:     (float) ($attrs['headermargin'] ?? 4.9 * $mm_to_points),
+            footer_margin:     (float) ($attrs['footermargin'] ?? 9.9 * $mm_to_points),
+            orientation:       PageOrientation::from($attrs['orientation'] ?? 'portrait'),
+            page_size:         $page_size,
+            show_generated_by: (bool) ($attrs['showGeneratedBy'] ?? true),
+            rtl:               I18N::direction() === 'rtl',
+            // I18N: This is a report footer. %s is the name of the application.
+            generated_by:      I18N::translate('Generated by %s', Webtrees::NAME . ' ' . Webtrees::VERSION),
+            author:            Webtrees::NAME . ' ' . Webtrees::VERSION,
+            title:             $this->report_title,
+            description:       $this->report_description,
+            align_rtl:         I18N::direction() === 'rtl' ? 'right' : 'left',
+            entity_rtl:        I18N::direction() === 'rtl' ? '&rlm;' : '&lrm;',
+        );
+
+        $this->renderer->setup($config);
     }
 
     protected function docEndHandler(): void
@@ -508,9 +540,9 @@ class ParserGenerate extends AbstractParser
             'center'   => CellAlign::Center,
             'justify'  => CellAlign::Justify,
             'left'     => CellAlign::Left,
-            'leftrtl'  => $this->renderer->rtl ? CellAlign::Right : CellAlign::Left,
+            'leftrtl'  => $this->renderer->config->rtl ? CellAlign::Right : CellAlign::Left,
             'right'    => CellAlign::Right,
-            'rightrtl' => $this->renderer->rtl ? CellAlign::Left : CellAlign::Right,
+            'rightrtl' => $this->renderer->config->rtl ? CellAlign::Left : CellAlign::Right,
             default    => CellAlign::None,
         };
     }
@@ -935,7 +967,6 @@ class ParserGenerate extends AbstractParser
             }
         }
         $this->current_element->addText($var);
-        $this->text = $var; // Used for title/descriptio
     }
 
     /**
@@ -1896,14 +1927,24 @@ class ParserGenerate extends AbstractParser
         $this->current_container->addElement(new NewPageElement());
     }
 
+    protected function titleStartHandler(): void
+    {
+        $this->current_element = new NullElement();
+    }
+
     protected function titleEndHandler(): void
     {
-        $this->renderer->addTitle($this->text);
+        $this->report_title = $this->current_element->getValue();
+    }
+
+    protected function descriptionStartHandler(): void
+    {
+        $this->current_element = new NullElement();
     }
 
     protected function descriptionEndHandler(): void
     {
-        $this->renderer->addDescription($this->text);
+        $this->report_description = $this->current_element->getValue();
     }
 
     /**

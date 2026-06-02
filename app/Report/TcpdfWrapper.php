@@ -50,7 +50,7 @@ class TcpdfWrapper extends TCPDF
      * Called by TCPDF on every AddPage().  Renders the report XML's
      * header elements (if any) into the header area of the page.
      */
-    public function Header(): void
+    public function header(): void
     {
         if ($this->renderer !== null) {
             $this->renderer->header();
@@ -61,7 +61,7 @@ class TcpdfWrapper extends TCPDF
      * Called by TCPDF when a page ends.  Renders the report XML's
      * footer elements (if any) into the footer area of the page.
      */
-    public function Footer(): void
+    public function footer(): void
     {
         if ($this->renderer !== null) {
             $this->renderer->footer();

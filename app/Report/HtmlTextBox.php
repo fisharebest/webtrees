@@ -220,7 +220,7 @@ class HtmlTextBox extends AbstractTextBox
         // Start to print HTML
         echo '<div style="position:absolute;top:', $this->top, 'pt;';
         // LTR (left) or RTL (right)
-        echo $renderer->alignRTL, ':', $cX, 'pt;';
+        echo $renderer->config->align_rtl, ':', $cX, 'pt;';
 
         if ($this->bgcolor !== '') {
             echo ' background-color:', $this->bgcolor, ';';
