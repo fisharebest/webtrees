@@ -47,13 +47,13 @@ abstract class AbstractRenderer implements ElementContainerInterface
     /** @var array<AbstractElement> */
     protected array $bodyElements = [];
 
-    public Style|null $currentStyle = null;
+    protected Style|null $currentStyle = null;
 
     // The largest font size within a TextBox, used to calculate text height
-    public float $largestFontHeight = 0.0;
+    private float $largestFontHeight = 0.0;
 
     // The last cell height
-    public float $lastCellHeight = 0.0;
+    private float $lastCellHeight = 0.0;
 
     /** @var array<AbstractFootnote> Footnotes that have been rendered or queued for rendering */
     protected array $printedfootnotes = [];
@@ -188,6 +188,44 @@ abstract class AbstractRenderer implements ElementContainerInterface
     public function getCurrentStyleHeight(): float
     {
         return $this->currentStyle?->size ?? self::DEFAULT_FONT_SIZE;
+    }
+
+    /** Reset the largest-font tracker at the start of a new TextBox. */
+    public function resetLargestFontHeight(): void
+    {
+        $this->largestFontHeight = 0.0;
+    }
+
+    /** Track the maximum font height seen within the current TextBox. */
+    public function trackFontHeight(float $size): void
+    {
+        if ($size > $this->largestFontHeight) {
+            $this->largestFontHeight = $size;
+        }
+    }
+
+    /** The largest font height recorded since the last reset. */
+    public function getLargestFontHeight(): float
+    {
+        return $this->largestFontHeight;
+    }
+
+    /** Reset the last-cell-height tracker. */
+    public function resetLastCellHeight(): void
+    {
+        $this->lastCellHeight = 0.0;
+    }
+
+    /** Set the last cell height to a specific value. */
+    public function setLastCellHeight(float $height): void
+    {
+        $this->lastCellHeight = $height;
+    }
+
+    /** The height of the last rendered cell. */
+    public function getLastCellHeight(): float
+    {
+        return $this->lastCellHeight;
     }
 
     abstract public function footnotes(): void;

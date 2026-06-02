@@ -76,8 +76,8 @@ class PdfCell extends AbstractCell
         }
 
         // Check the last cell height and adjust the current cell height if needed
-        if ($renderer->lastCellHeight > $this->height) {
-            $this->height = $renderer->lastCellHeight;
+        if ($renderer->getLastCellHeight() > $this->height) {
+            $this->height = $renderer->getLastCellHeight();
         }
         // Check for pagebreak
         if (!empty($temptext)) {
@@ -113,10 +113,10 @@ class PdfCell extends AbstractCell
         );
         // Reset the last cell height for the next line
         if ($this->newline !== CellNewline::Right) {
-            $renderer->lastCellHeight = 0;
-        } elseif ($renderer->lastCellHeight < $renderer->tcpdf->getLastH()) {
+            $renderer->resetLastCellHeight();
+        } elseif ($renderer->getLastCellHeight() < $renderer->tcpdf->getLastH()) {
             // OR save the last height if higher then before
-            $renderer->lastCellHeight = $renderer->tcpdf->getLastH();
+            $renderer->setLastCellHeight($renderer->tcpdf->getLastH());
         }
 
         // Set up the url link if exists on top of the cell

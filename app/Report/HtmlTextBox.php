@@ -115,7 +115,7 @@ class HtmlTextBox extends AbstractTextBox
         $cP = 0; // Class Padding
 
         // Used with line breaks and cell height calculation within this box only
-        $renderer->largestFontHeight = 0;
+        $renderer->resetLargestFontHeight();
 
         // If current position (left)
         if ($this->left === AbstractElement::CURRENT_POSITION) {
@@ -193,7 +193,7 @@ class HtmlTextBox extends AbstractTextBox
                 // Number of LF but at least one line
                 $cHT = ($cHT + 1) * $renderer->cellHeightRatio;
                 // Calculate the cell height with the largest font size used
-                $cHT *= $renderer->largestFontHeight;
+                $cHT *= $renderer->getLargestFontHeight();
                 if ($cH < $cHT) {
                     $cH = $cHT;
                 }
@@ -210,8 +210,8 @@ class HtmlTextBox extends AbstractTextBox
         unset($lw, $cHT, $fH, $w);
 
         // Finally, check the last cells height
-        if ($cH < $renderer->lastCellHeight) {
-            $cH = $renderer->lastCellHeight;
+        if ($cH < $renderer->getLastCellHeight()) {
+            $cH = $renderer->getLastCellHeight();
         }
         // Update max Y in case of a pagebreak
         // We don't want to over write any images or other stuff
@@ -261,13 +261,13 @@ class HtmlTextBox extends AbstractTextBox
         if ($this->reseth) {
             $cH = 0;
         }
-        // New line and some clean up
+        // New line and some clean-up
         if (!$this->newline) {
             $renderer->setXy($cX + $this->width, $this->top);
-            $renderer->lastCellHeight = $cH;
+            $renderer->setLastCellHeight($cH);
         } else {
             $renderer->setXy(0, $this->top + $cH + $cP * 2);
-            $renderer->lastCellHeight = 0;
+            $renderer->resetLastCellHeight();
         }
     }
 }

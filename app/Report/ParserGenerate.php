@@ -82,7 +82,6 @@ class ParserGenerate extends AbstractParser
 {
     // The default font when none is specified in the XML
     private const string DEFAULT_FONT = 'dejavusans';
-    private const float DEFAULT_FONT_SIZE = 12.0;
 
     private bool $process_footnote = true;
 

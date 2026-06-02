@@ -83,9 +83,7 @@ class HtmlFootnote extends AbstractFootnote
 
         // Check for the largest font size in the box
         $fsize = $renderer->getCurrentStyleHeight();
-        if ($fsize > $renderer->largestFontHeight) {
-            $renderer->largestFontHeight = $fsize;
-        }
+        $renderer->trackFontHeight($fsize);
 
         // Returns the Object if already numbered else false
         if (empty($this->num)) {

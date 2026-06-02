@@ -114,8 +114,8 @@ class HtmlCell extends AbstractCell
             }
         }
         // Check the last cell height and adjust the current cell height if needed
-        if ($renderer->lastCellHeight > $this->height) {
-            $this->height = $renderer->lastCellHeight;
+        if ($renderer->getLastCellHeight() > $this->height) {
+            $this->height = $renderer->getLastCellHeight();
         }
         echo ' width:', $cW - $bpixX, 'pt;height:', $this->height - $bpixY, 'pt;';
 
@@ -159,19 +159,19 @@ class HtmlCell extends AbstractCell
             case CellNewline::Right:
                 // -> Next to this cell in the same line
                 $renderer->setXy($this->left + $this->width, $this->top);
-                $renderer->lastCellHeight = $this->height;
+                $renderer->setLastCellHeight($this->height);
                 break;
             case CellNewline::NextLine:
                 // -> On a new line at the margin - Default
                 $renderer->setXy(0, $renderer->getY() + $this->height + $cP * 2);
                 // Reset the last cell height for the next line
-                $renderer->lastCellHeight = 0;
+                $renderer->resetLastCellHeight();
                 break;
             case CellNewline::Below:
                 // -> On a new line at the end of this cell
                 $renderer->setXy($renderer->getX() + $this->width, $renderer->getY() + $this->height + $cP * 2);
                 // Reset the last cell height for the next line
-                $renderer->lastCellHeight = 0;
+                $renderer->resetLastCellHeight();
                 break;
         }
     }

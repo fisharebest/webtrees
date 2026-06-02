@@ -95,9 +95,7 @@ class HtmlText extends AbstractText
 
         // Check for the largest font size in the box
         $fsize = $renderer->getCurrentStyleHeight();
-        if ($fsize > $renderer->largestFontHeight) {
-            $renderer->largestFontHeight = $fsize;
-        }
+        $renderer->trackFontHeight($fsize);
 
         // Get the line width for the text in points
         $lw = $renderer->getStringWidth($this->text);

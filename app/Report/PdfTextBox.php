@@ -110,7 +110,7 @@ class PdfTextBox extends AbstractTextBox
         unset($footnote_element, $lastelement, $links, $newelements);
 
         // Used with line breaks and cell height calculation within this box
-        $renderer->largestFontHeight = 0;
+        $renderer->resetLargestFontHeight();
 
         // If current position (left)
         if ($this->left === AbstractElement::CURRENT_POSITION) {
@@ -192,7 +192,7 @@ class PdfTextBox extends AbstractTextBox
                 // This is text elements. Number of LF but at least one line
                 $cHT = ($cHT + 1) * $renderer->tcpdf->getCellHeightRatio();
                 // Calculate the cell height with the largest font size used within this Box
-                $cHT *= $renderer->largestFontHeight;
+                $cHT *= $renderer->getLargestFontHeight();
                 // Add cell padding
                 if ($this->padding) {
                     if (is_array($cM['cell'])) {
@@ -210,13 +210,13 @@ class PdfTextBox extends AbstractTextBox
             }
         }
         // Finally, check the last cells height
-        if ($cH < $renderer->lastCellHeight) {
-            $cH = $renderer->lastCellHeight;
+        if ($cH < $renderer->getLastCellHeight()) {
+            $cH = $renderer->getLastCellHeight();
         }
         // Add a new page if needed
         if ($this->pagecheck) {
             // Reset last cell height, or Header/Footer will inherit it, in case of page break
-            $renderer->lastCellHeight = 0;
+            $renderer->resetLastCellHeight();
             if ($renderer->checkPageBreakPDF($cH)) {
                 $cY = $renderer->tcpdf->GetY();
             }
@@ -300,12 +300,12 @@ class PdfTextBox extends AbstractTextBox
         // New line and some clean up
         if (!$this->newline) {
             $renderer->tcpdf->setXY($cX + $cW, $cY);
-            $renderer->lastCellHeight = $cH;
+            $renderer->setLastCellHeight($cH);
         } else {
             // addMarginX() also updates X
             $renderer->addMarginX(0);
             $renderer->tcpdf->setY($cY + $cH);
-            $renderer->lastCellHeight = 0;
+            $renderer->resetLastCellHeight();
         }
     }
 }
