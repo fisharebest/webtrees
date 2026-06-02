@@ -35,8 +35,13 @@ class PdfImage extends AbstractImage
 
         $curx = $renderer->tcpdf->GetX();
 
+        // Track whether the image has an explicit X position so we can
+        // restore the cursor afterward — explicitly placed images should
+        // not shift the horizontal flow for subsequent elements.
+        $explicit_position = ($this->x !== AbstractElement::CURRENT_POSITION);
+
         // Get the current positions
-        if ($this->x === AbstractElement::CURRENT_POSITION) {
+        if (!$explicit_position) {
             $this->x = $renderer->tcpdf->GetX();
         } else {
             // For static position add margin
@@ -89,6 +94,12 @@ class PdfImage extends AbstractImage
         // Setup for the next line
         if ($this->line === ImageContinuation::NextLine) {
             $renderer->tcpdf->setY($lastpicbottom);
+        }
+        // When the image was placed at an explicit X position, restore
+        // the cursor so subsequent elements flow from the original position
+        // rather than from the right edge of this image.
+        if ($explicit_position) {
+            $renderer->tcpdf->setX($curx);
         }
     }
 }
