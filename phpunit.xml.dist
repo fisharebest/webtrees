@@ -6,6 +6,7 @@
   colors="true"
   cacheDirectory=".phpunit.cache"
   displayDetailsOnPhpunitDeprecations="true"
+  displayDetailsOnPhpunitNotices="true"
   displayDetailsOnTestsThatTriggerDeprecations="true"
   displayDetailsOnTestsThatTriggerWarnings="true"
   requireCoverageMetadata="true"

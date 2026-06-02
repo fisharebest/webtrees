@@ -39,11 +39,8 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
-use Symfony\Component\Cache\Adapter\NullAdapter;
-use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
 use function addcslashes;
-use function addslashes;
 use function array_pop;
 use function array_shift;
 use function count;
@@ -59,11 +56,8 @@ use function ltrim;
 use function preg_match;
 use function preg_match_all;
 use function preg_replace;
-use function preg_replace_callback;
 use function preg_split;
 use function round;
-use function sprintf;
-use function str_contains;
 use function str_ends_with;
 use function str_replace;
 use function str_starts_with;
@@ -160,6 +154,9 @@ class ParserGenerate extends AbstractParser
 
     private Tree $tree;
 
+    /** Resolves $variable, @token and I18N placeholders in attribute values and expressions. */
+    private PlaceholderExpander $expander;
+
     /**
      * @param array<string,string> $vars Initial variable bindings from the report setup form.
      */
@@ -170,6 +167,7 @@ class ParserGenerate extends AbstractParser
         $this->current_element   = new NullElement();
         $this->variables         = new VariableTable($vars);
         $this->tree              = $tree;
+        $this->expander          = new PlaceholderExpander($this->variables, $this->tree);
 
         parent::__construct($report);
     }
@@ -1012,54 +1010,14 @@ class ParserGenerate extends AbstractParser
         }
 
         $name  = $attrs['name'];
-        $value = $attrs['value'];
-        $match = [];
+        $value = $this->expander->resolveSetVarValue(
+            $attrs['value'],
+            $this->gedrec,
+            $this->fact,
+            $this->desc,
+            $this->generation,
+        );
 
-        // Current GEDCOM record strings
-        if ($value === '@ID') {
-            if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
-                $value = $match[1];
-            }
-        } elseif ($value === '@fact') {
-            $value = $this->fact;
-        } elseif ($value === '@desc') {
-            $value = $this->desc;
-        } elseif ($value === '@generation') {
-            $value = (string) $this->generation;
-        } elseif (preg_match("/@(\w+)/", $value, $match)) {
-            $gmatch = [];
-            if (preg_match("/\d $match[1] (.+)/", $this->gedrec, $gmatch)) {
-                $value = str_replace('@', '', trim($gmatch[1]));
-            }
-        }
-        $count = preg_match_all("/\\$(\w+)/", $value, $match, PREG_SET_ORDER);
-        $i     = 0;
-        while ($i < $count) {
-            $t     = $this->variables->get($match[$i][1]);
-            $value = preg_replace('/\$' . $match[$i][1] . '/', $t, $value, 1);
-            $i++;
-        }
-        if (preg_match('/^I18N::number\((.+)\)$/', $value, $match)) {
-            $value = I18N::number((int) $match[1]);
-        } elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $value, $match)) {
-            $value = I18N::translate($match[1]);
-        } elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $value, $match)) {
-            $value = I18N::translateContext($match[1], $match[2]);
-        }
-
-        // Arithmetic functions
-        if (preg_match("/(\d+)\s*([-+*\/])\s*(\d+)/", $value, $match)) {
-            // Create an expression language with the functions used by our reports.
-            $expression_provider  = new ExpressionLanguageProvider();
-            $expression_cache     = new NullAdapter();
-            $expression_language  = new ExpressionLanguage($expression_cache, [$expression_provider]);
-
-            $value = (string) $expression_language->evaluate($value);
-        }
-
-        if (str_contains($value, '@')) {
-            $value = '';
-        }
         $this->variables->set($name, $value);
     }
 
@@ -1074,58 +1032,15 @@ class ParserGenerate extends AbstractParser
             return;
         }
 
-        $condition = $attrs['condition'];
-        $condition = $this->substituteVars($condition, true);
-        $condition = str_replace([
-            ' LT ',
-            ' GT ',
-        ], [
-            '<',
-            '>',
-        ], $condition);
-        // Replace the first occurrence only once of @fact:DATE or in any other combinations to the current fact, such as BIRT
-        $condition = str_replace('@fact:', $this->fact . ':', $condition);
-        $match     = [];
-        $count     = preg_match_all("/@([\w:.]+)/", $condition, $match, PREG_SET_ORDER);
-        $i         = 0;
-        while ($i < $count) {
-            $id    = $match[$i][1];
-            $value = '""';
-            if ($id === 'ID') {
-                if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
-                    $value = "'" . $match[1] . "'";
-                }
-            } elseif ($id === 'fact') {
-                $value = '"' . $this->fact . '"';
-            } elseif ($id === 'desc') {
-                $value = '"' . addslashes($this->desc) . '"';
-            } elseif ($id === 'generation') {
-                $value = '"' . $this->generation . '"';
-            } else {
-                $level = (int) explode(' ', trim($this->gedrec))[0];
-                if ($level === 0) {
-                    $level++;
-                }
-                $value = GedcomTextReader::getGedcomValue($id, $level, $this->gedrec, $this->tree);
-                if (empty($value)) {
-                    $level++;
-                    $value = GedcomTextReader::getGedcomValue($id, $level, $this->gedrec, $this->tree);
-                }
-                $value = preg_replace('/^@(' . Gedcom::REGEX_XREF . ')@$/', '$1', $value);
-                $value = '"' . addslashes($value) . '"';
-            }
-            $condition = str_replace("@$id", $value, $condition);
-            $i++;
-        }
+        $result = $this->expander->evaluateCondition(
+            $attrs['condition'],
+            $this->gedrec,
+            $this->fact,
+            $this->desc,
+            $this->generation,
+        );
 
-        // Create an expression language with the functions used by our reports.
-        $expression_provider  = new ExpressionLanguageProvider();
-        $expression_cache     = new NullAdapter();
-        $expression_language  = new ExpressionLanguage($expression_cache, [$expression_provider]);
-
-        $ret = $expression_language->evaluate($condition);
-
-        if (!$ret) {
+        if (!$result) {
             $this->process_ifs++;
         }
     }
@@ -2001,27 +1916,12 @@ class ParserGenerate extends AbstractParser
      */
     private function substituteVars(string $expression, bool $quote): string
     {
-        return preg_replace_callback(
-            '/\$(\w+)/',
-            function (array $matches) use ($quote, $expression): string {
-                if ($this->variables->has($matches[1])) {
-                    if ($quote) {
-                        return "'" . addcslashes($this->variables->get($matches[1]), "'") . "'";
-                    }
-
-                    return $this->variables->get($matches[1]);
-                }
-
-                throw new DomainException(sprintf(
-                    'Undefined variable $%s in report %s on line %d for record %s in expression: %s',
-                    $matches[1],
-                    $this->report,
-                    $this->currentReportLine(),
-                    $this->currentRecordXref(),
-                    $expression,
-                ));
-            },
-            $expression
+        return $this->expander->substituteVars(
+            $expression,
+            $quote,
+            $this->report,
+            $this->currentReportLine(),
+            $this->currentRecordXref(),
         );
     }
 
