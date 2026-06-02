@@ -31,7 +31,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\MediaFile;
-use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -173,86 +172,6 @@ class ParserGenerate extends AbstractParser
         $this->tree              = $tree;
 
         parent::__construct($report);
-    }
-
-    /**
-     * get a gedcom subrecord
-     *
-     * searches a gedcom record and returns a subrecord of it. A subrecord is defined starting at a
-     * line with level N and all subsequent lines greater than N until the next N level is reached.
-     * For example, the following is a BIRT subrecord:
-     * <code>1 BIRT
-     * 2 DATE 1 JAN 1900
-     * 2 PLAC Phoenix, Maricopa, Arizona</code>
-     * The following example is the DATE subrecord of the above BIRT subrecord:
-     * <code>2 DATE 1 JAN 1900</code>
-     *
-     * @param int    $level   the N level of the subrecord to get
-     * @param string $tag     a gedcom tag or string to search for in the record (ie 1 BIRT or 2 DATE)
-     * @param string $gedrec  the parent gedcom record to search in
-     * @param int    $num     this allows you to specify which matching <var>$tag</var> to get. Oftentimes a
-     *                        gedcom record will have more that 1 of the same type of subrecord. An individual may have
-     *                        multiple events for example. Passing $num=1 would get the first 1. Passing $num=2 would get the
-     *                        second one, etc.
-     */
-    public static function getSubRecord(int $level, string $tag, string $gedrec, int $num = 1): string
-    {
-        if ($gedrec === '') {
-            return '';
-        }
-        // -- adding \n before and after gedrec
-        $gedrec       = "\n" . $gedrec . "\n";
-        $tag          = trim($tag);
-        $searchTarget = "~[\n]" . $tag . "[\s]~";
-        $ct           = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
-        if ($ct === 0) {
-            return '';
-        }
-        if ($ct < $num) {
-            return '';
-        }
-        $pos1 = (int) $match[$num - 1][0][1];
-        $pos2 = strpos($gedrec, "\n$level", $pos1 + 1);
-        if (!$pos2) {
-            $pos2 = strpos($gedrec, "\n1", $pos1 + 1);
-        }
-        if (!$pos2) {
-            $pos2 = strpos($gedrec, "\nWT_", $pos1 + 1); // WT_SPOUSE, WT_FAMILY_ID ...
-        }
-        if (!$pos2) {
-            return ltrim(substr($gedrec, $pos1));
-        }
-        $subrec = substr($gedrec, $pos1, $pos2 - $pos1);
-
-        return ltrim($subrec);
-    }
-
-    /**
-     * get CONT lines
-     *
-     * get the N+1 CONT or CONC lines of a gedcom subrecord
-     *
-     * @param int    $nlevel the level of the CONT lines to get
-     * @param string $nrec   the gedcom subrecord to search in
-     *
-     * @return string a string with all CONT lines merged
-     */
-    public static function getCont(int $nlevel, string $nrec): string
-    {
-        $text = '';
-
-        $subrecords = explode("\n", $nrec);
-        foreach ($subrecords as $thisSubrecord) {
-            if (substr($thisSubrecord, 0, 2) !== $nlevel . ' ') {
-                continue;
-            }
-            $subrecordType = substr($thisSubrecord, 2, 4);
-            if ($subrecordType === 'CONT') {
-                $text .= "\n" . substr($thisSubrecord, 7);
-            }
-        }
-
-        return $text;
     }
 
     /**
@@ -633,7 +552,7 @@ class ParserGenerate extends AbstractParser
                     }
                 } else {
                     $level     = 1 + (int) explode(' ', trim($tgedrec))[0];
-                    $newgedrec = self::getSubRecord($level, "$level $tag", $tgedrec);
+                    $newgedrec = GedcomTextReader::getSubRecord($level, "$level $tag", $tgedrec);
                     $tgedrec   = $newgedrec;
                 }
             }
@@ -816,7 +735,7 @@ class ParserGenerate extends AbstractParser
                     $level = (int) $attrs['level'];
                 }
                 $tags  = preg_split('/[: ]/', $tag);
-                $value = $this->getGedcomValue($tag, $level, $this->gedrec);
+                $value = GedcomTextReader::getGedcomValue($tag, $level, $this->gedrec, $this->tree);
                 switch (end($tags)) {
                     case 'DATE':
                         $tmp   = new Date($value);
@@ -883,10 +802,10 @@ class ParserGenerate extends AbstractParser
                     $t = $tags[$i];
                     if (!empty($t)) {
                         if ($i < ($count - 1)) {
-                            $subrec = self::getSubRecord($level, "$level $t", $subrec);
+                            $subrec = GedcomTextReader::getSubRecord($level, "$level $t", $subrec);
                             if (empty($subrec)) {
                                 $level--;
-                                $subrec = self::getSubRecord($level, "@ $t", $this->gedrec);
+                                $subrec = GedcomTextReader::getSubRecord($level, "@ $t", $this->gedrec);
                                 if (empty($subrec)) {
                                     return;
                                 }
@@ -902,7 +821,7 @@ class ParserGenerate extends AbstractParser
                 while ($i < $count) {
                     $i++;
                     // Privacy check - is this a link, and are we allowed to view the linked object?
-                    $subrecord = self::getSubRecord($level, "$level $t", $subrec, $i);
+                    $subrecord = GedcomTextReader::getSubRecord($level, "$level $t", $subrec, $i);
                     if (preg_match('/^\d ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@/', $subrecord, $xref_match)) {
                         $linked_object = Registry::gedcomRecordFactory()->make($xref_match[1], $this->tree);
                         if ($linked_object && !$linked_object->canShow()) {
@@ -1071,7 +990,7 @@ class ParserGenerate extends AbstractParser
                         }
                     }
                     $this->desc = trim($match[2]);
-                    $this->desc .= self::getCont(2, $this->gedrec);
+                    $this->desc .= GedcomTextReader::getCont(2, $this->gedrec);
                 }
 
                 $this->parseFragment($fragment);
@@ -1187,10 +1106,10 @@ class ParserGenerate extends AbstractParser
                 if ($level === 0) {
                     $level++;
                 }
-                $value = $this->getGedcomValue($id, $level, $this->gedrec);
+                $value = GedcomTextReader::getGedcomValue($id, $level, $this->gedrec, $this->tree);
                 if (empty($value)) {
                     $level++;
-                    $value = $this->getGedcomValue($id, $level, $this->gedrec);
+                    $value = GedcomTextReader::getGedcomValue($id, $level, $this->gedrec, $this->tree);
                 }
                 $value = preg_replace('/^@(' . Gedcom::REGEX_XREF . ')@$/', '$1', $value);
                 $value = '"' . addslashes($value) . '"';
@@ -1702,13 +1621,13 @@ class ParserGenerate extends AbstractParser
                         }
                         $tags = explode(':', $tag);
                         $t    = end($tags);
-                        $v    = $this->getGedcomValue($tag, 1, $grec);
+                        $v    = GedcomTextReader::getGedcomValue($tag, 1, $grec, $this->tree);
                         //-- check for EMAIL and _EMAIL (silly double gedcom standard :P)
                         if ($t === 'EMAIL' && empty($v)) {
                             $tag  = str_replace('EMAIL', '_EMAIL', $tag);
                             $tags = explode(':', $tag);
                             $t    = end($tags);
-                            $v    = self::getSubRecord(1, $tag, $grec);
+                            $v    = GedcomTextReader::getSubRecord(1, $tag, $grec);
                         }
 
                         switch ($expr) {
@@ -2072,78 +1991,6 @@ class ParserGenerate extends AbstractParser
                 }
             }
         }
-    }
-
-    private function getGedcomValue(string $tag, int $level, string $gedrec): string
-    {
-        if ($gedrec === '') {
-            return '';
-        }
-        $tags      = explode(':', $tag);
-        $origlevel = $level;
-        if ($level === 0) {
-            $level = 1 + (int) $gedrec[0];
-        }
-
-        $subrec = $gedrec;
-        $t = 'XXXX';
-        foreach ($tags as $t) {
-            $lastsubrec = $subrec;
-            $subrec     = self::getSubRecord($level, "$level $t", $subrec);
-            if (empty($subrec) && $origlevel == 0) {
-                $level--;
-                $subrec = self::getSubRecord($level, "$level $t", $lastsubrec);
-            }
-            if (empty($subrec)) {
-                if ($t === 'TITL') {
-                    $subrec = self::getSubRecord($level, "$level ABBR", $lastsubrec);
-                    if (!empty($subrec)) {
-                        $t = 'ABBR';
-                    }
-                }
-                if ($subrec === '') {
-                    if ($level > 0) {
-                        $level--;
-                    }
-                    $subrec = self::getSubRecord($level, "@ $t", $gedrec);
-                    if ($subrec === '') {
-                        return '';
-                    }
-                }
-            }
-            $level++;
-        }
-        $level--;
-        $ct = preg_match("/$level $t(.*)/", $subrec, $match);
-        if ($ct === 0) {
-            $ct = preg_match("/$level @.+@ (.+)/", $subrec, $match);
-        }
-        if ($ct === 0) {
-            $ct = preg_match("/@ $t (.+)/", $subrec, $match);
-        }
-        if ($ct > 0) {
-            $value = trim($match[1]);
-            if ($t === 'NOTE' && preg_match('/^@(.+)@$/', $value, $match)) {
-                $note = Registry::noteFactory()->make($match[1], $this->tree);
-                if ($note instanceof Note) {
-                    $value = $note->getNote();
-                } else {
-                    //-- set the value to the id without the @
-                    $value = $match[1];
-                }
-            }
-            if ($level !== 0 || $t !== 'NOTE') {
-                $value .= self::getCont($level + 1, $subrec);
-            }
-
-            if ($tag === 'NAME' || $tag === '_MARNM' || $tag === '_AKA') {
-                return strtr($value, ['/' => '']);
-            }
-
-            return $value;
-        }
-
-        return '';
     }
 
     /**
