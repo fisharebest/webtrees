@@ -23,7 +23,6 @@ use Closure;
 use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
@@ -35,12 +34,8 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
 
-use function addcslashes;
 use function array_pop;
 use function array_shift;
 use function count;
@@ -52,10 +47,8 @@ use function imagecreatefromstring;
 use function imagesx;
 use function imagesy;
 use function in_array;
-use function ltrim;
 use function preg_match;
 use function preg_match_all;
-use function preg_replace;
 use function preg_split;
 use function round;
 use function str_ends_with;
@@ -63,7 +56,6 @@ use function str_replace;
 use function str_starts_with;
 use function strip_tags;
 use function strlen;
-use function strpos;
 use function substr;
 use function trim;
 use function uasort;
@@ -1230,377 +1222,17 @@ class ParserGenerate extends AbstractParser
 
         $listname = $attrs['list'] ?? 'individual';
 
-        // Some filters/sorts can be applied using SQL, while others require PHP
-        switch ($listname) {
-            case 'pending':
-                $this->list = DB::table('change')
-                    ->whereIn('change_id', function (Builder $query): void {
-                        $query->select([new Expression('MAX(change_id)')])
-                            ->from('change')
-                            ->where('gedcom_id', '=', $this->tree->id())
-                            ->where('status', '=', 'pending')
-                            ->groupBy(['xref']);
-                    })
-                    ->get()
-                    ->map(fn (object $row): GedcomRecord|null => Registry::gedcomRecordFactory()->make($row->xref, $this->tree, $row->new_gedcom ?: $row->old_gedcom))
-                    ->filter()
-                    ->all();
-                break;
-
-            case 'individual':
-                $query = DB::table('individuals')
-                    ->where('i_file', '=', $this->tree->id())
-                    ->select(['i_id AS xref', 'i_gedcom AS gedcom'])
-                    ->distinct();
-
-                foreach ($attrs as $attr => $value) {
-                    if (str_starts_with($attr, 'filter') && $value !== '') {
-                        $value = $this->substituteVars($value, false);
-                        // Convert the various filters into SQL
-                        if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
-                            $query->join('dates AS ' . $attr, static function (JoinClause $join) use ($attr): void {
-                                $join
-                                    ->on($attr . '.d_gid', '=', 'i_id')
-                                    ->on($attr . '.d_file', '=', 'i_file');
-                            });
-
-                            $query->where($attr . '.d_fact', '=', $match[1]);
-
-                            $date = new Date($match[3]);
-
-                            if ($match[2] === 'LTE') {
-                                $query->where($attr . '.d_julianday2', '<=', $date->maximumJulianDay());
-                            } else {
-                                $query->where($attr . '.d_julianday1', '>=', $date->minimumJulianDay());
-                            }
-
-                            // This filter has been fully processed
-                            unset($attrs[$attr]);
-                        } elseif (preg_match('/^NAME CONTAINS (.+)$/', $value, $match)) {
-                            $query->join('name AS ' . $attr, static function (JoinClause $join) use ($attr): void {
-                                $join
-                                    ->on($attr . '.n_id', '=', 'i_id')
-                                    ->on($attr . '.n_file', '=', 'i_file');
-                            });
-                            // Search the DB only if there is any name supplied
-                            $names = explode(' ', $match[1]);
-                            foreach ($names as $name) {
-                                $query->where($attr . '.n_full', 'LIKE', '%' . addcslashes($name, '\\%_') . '%');
-                            }
-
-                            // This filter has been fully processed
-                            unset($attrs[$attr]);
-                        } elseif (preg_match('/^LIKE \/(.+)\/$/', $value, $match)) {
-                            // Convert newline escape sequences to actual new lines
-                            $match[1] = str_replace('\n', "\n", $match[1]);
-
-                            $query->where('i_gedcom', 'LIKE', $match[1]);
-
-                            // This filter has been fully processed
-                            unset($attrs[$attr]);
-                        } elseif (preg_match('/^(?:\w*):PLAC CONTAINS (.+)$/', $value, $match)) {
-                            // Don't unset this filter. This is just initial filtering for performance
-                            $query
-                                ->join('placelinks AS ' . $attr . 'a', static function (JoinClause $join) use ($attr): void {
-                                    $join
-                                        ->on($attr . 'a.pl_file', '=', 'i_file')
-                                        ->on($attr . 'a.pl_gid', '=', 'i_id');
-                                })
-                                ->join('places AS ' . $attr . 'b', static function (JoinClause $join) use ($attr): void {
-                                    $join
-                                        ->on($attr . 'b.p_file', '=', $attr . 'a.pl_file')
-                                        ->on($attr . 'b.p_id', '=', $attr . 'a.pl_p_id');
-                                })
-                                ->where($attr . 'b.p_place', 'LIKE', '%' . addcslashes($match[1], '\\%_') . '%');
-                        } elseif (preg_match('/^(\w*):(\w+) CONTAINS (.+)$/', $value, $match)) {
-                            // Don't unset this filter. This is just initial filtering for performance
-                            $match[3] = strtr($match[3], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
-                            $like = "%\n1 " . $match[1] . "%\n2 " . $match[2] . '%' . $match[3] . '%';
-                            $query->where('i_gedcom', 'LIKE', $like);
-                        } elseif (preg_match('/^(\w+) CONTAINS (.*)$/', $value, $match)) {
-                            // Don't unset this filter. This is just initial filtering for performance
-                            $match[2] = strtr($match[2], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
-                            $like = "%\n1 " . $match[1] . '%' . $match[2] . '%';
-                            $query->where('i_gedcom', 'LIKE', $like);
-                        }
-                    }
-                }
-
-                $this->list = [];
-
-                foreach ($query->get() as $row) {
-                    $this->list[$row->xref] = Registry::individualFactory()->make($row->xref, $this->tree, $row->gedcom);
-                }
-                break;
-
-            case 'family':
-                $query = DB::table('families')
-                    ->where('f_file', '=', $this->tree->id())
-                    ->select(['f_id AS xref', 'f_gedcom AS gedcom'])
-                    ->distinct();
-
-                foreach ($attrs as $attr => $value) {
-                    if (str_starts_with($attr, 'filter') && $value !== '') {
-                        $value = $this->substituteVars($value, false);
-                        // Convert the various filters into SQL
-                        if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
-                            $query->join('dates AS ' . $attr, static function (JoinClause $join) use ($attr): void {
-                                $join
-                                    ->on($attr . '.d_gid', '=', 'f_id')
-                                    ->on($attr . '.d_file', '=', 'f_file');
-                            });
-
-                            $query->where($attr . '.d_fact', '=', $match[1]);
-
-                            $date = new Date($match[3]);
-
-                            if ($match[2] === 'LTE') {
-                                $query->where($attr . '.d_julianday2', '<=', $date->maximumJulianDay());
-                            } else {
-                                $query->where($attr . '.d_julianday1', '>=', $date->minimumJulianDay());
-                            }
-
-                            // This filter has been fully processed
-                            unset($attrs[$attr]);
-                        } elseif (preg_match('/^LIKE \/(.+)\/$/', $value, $match)) {
-                            // Convert newline escape sequences to actual new lines
-                            $match[1] = str_replace('\n', "\n", $match[1]);
-
-                            $query->where('f_gedcom', 'LIKE', $match[1]);
-
-                            // This filter has been fully processed
-                            unset($attrs[$attr]);
-                        } elseif (preg_match('/^NAME CONTAINS (.*)$/', $value, $match)) {
-                            if ($sortby === 'NAME' || $match[1] !== '') {
-                                $query->join('name AS ' . $attr, static function (JoinClause $join) use ($attr): void {
-                                    $join
-                                        ->on($attr . '.n_file', '=', 'f_file')
-                                        ->where(static function (Builder $query): void {
-                                            $query
-                                                ->whereColumn('n_id', '=', 'f_husb')
-                                                ->orWhereColumn('n_id', '=', 'f_wife');
-                                        });
-                                });
-                                // Search the DB only if there is any name supplied
-                                if ($match[1] != '') {
-                                    $names = explode(' ', $match[1]);
-                                    foreach ($names as $name) {
-                                        $query->where($attr . '.n_full', 'LIKE', '%' . addcslashes($name, '\\%_') . '%');
-                                    }
-                                }
-                            }
-
-                            // This filter has been fully processed
-                            unset($attrs[$attr]);
-                        } elseif (preg_match('/^(?:\w*):PLAC CONTAINS (.+)$/', $value, $match)) {
-                            // Don't unset this filter. This is just initial filtering for performance
-                            $query
-                                ->join('placelinks AS ' . $attr . 'a', static function (JoinClause $join) use ($attr): void {
-                                    $join
-                                        ->on($attr . 'a.pl_file', '=', 'f_file')
-                                        ->on($attr . 'a.pl_gid', '=', 'f_id');
-                                })
-                                ->join('places AS ' . $attr . 'b', static function (JoinClause $join) use ($attr): void {
-                                    $join
-                                        ->on($attr . 'b.p_file', '=', $attr . 'a.pl_file')
-                                        ->on($attr . 'b.p_id', '=', $attr . 'a.pl_p_id');
-                                })
-                                ->where($attr . 'b.p_place', 'LIKE', '%' . addcslashes($match[1], '\\%_') . '%');
-                        } elseif (preg_match('/^(\w*):(\w+) CONTAINS (.+)$/', $value, $match)) {
-                            // Don't unset this filter. This is just initial filtering for performance
-                            $match[3] = strtr($match[3], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
-                            $like = "%\n1 " . $match[1] . "%\n2 " . $match[2] . '%' . $match[3] . '%';
-                            $query->where('f_gedcom', 'LIKE', $like);
-                        } elseif (preg_match('/^(\w+) CONTAINS (.+)$/', $value, $match)) {
-                            // Don't unset this filter. This is just initial filtering for performance
-                            $match[2] = strtr($match[2], ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
-                            $like = "%\n1 " . $match[1] . '%' . $match[2] . '%';
-                            $query->where('f_gedcom', 'LIKE', $like);
-                        }
-                    }
-                }
-
-                $this->list = [];
-
-                foreach ($query->get() as $row) {
-                    $this->list[$row->xref] = Registry::familyFactory()->make($row->xref, $this->tree, $row->gedcom);
-                }
-                break;
-
-            default:
-                throw new DomainException('Invalid list name: ' . $listname);
-        }
-
-        $filters  = [];
-        $filters2 = [];
-        if (isset($attrs['filter1']) && count($this->list) > 0) {
-            foreach ($attrs as $key => $value) {
-                if (preg_match("/filter(\d)/", $key)) {
-                    $condition = $value;
-                    if (preg_match("/@(\w+)/", $condition, $match)) {
-                        $id    = $match[1];
-                        $value = "''";
-                        if ($id === 'ID') {
-                            if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
-                                $value = "'" . $match[1] . "'";
-                            }
-                        } elseif ($id === 'fact') {
-                            $value = "'" . $this->fact . "'";
-                        } elseif ($id === 'desc') {
-                            $value = "'" . $this->desc . "'";
-                        } elseif (preg_match("/\d $id (.+)/", $this->gedrec, $match)) {
-                            $value = "'" . str_replace('@', '', trim($match[1])) . "'";
-                        }
-                        $condition = preg_replace("/@$id/", $value, $condition);
-                    }
-                    //-- handle regular expressions
-                    if (preg_match("/([A-Z:]+)\s*([^\s]+)\s*(.+)/", $condition, $match)) {
-                        $tag  = trim($match[1]);
-                        $expr = trim($match[2]);
-                        $val  = trim($match[3]);
-                        if (preg_match("/\\$(\w+)/", $val, $match)) {
-                            $val = $this->variables->get($match[1]);
-                            $val = trim($val);
-                        }
-                        if ($val !== '') {
-                            $searchstr = '';
-                            $tags      = explode(':', $tag);
-                            //-- only limit to a level number if we are specifically looking at a level
-                            if (count($tags) > 1) {
-                                $level = 1;
-                                $t = 'XXXX';
-                                foreach ($tags as $t) {
-                                    if (!empty($searchstr)) {
-                                        $searchstr .= "[^\n]*(\n[2-9][^\n]*)*\n";
-                                    }
-                                    //-- search for both EMAIL and _EMAIL... silly double gedcom standard
-                                    if ($t === 'EMAIL' || $t === '_EMAIL') {
-                                        $t = '_?EMAIL';
-                                    }
-                                    $searchstr .= $level . ' ' . $t;
-                                    $level++;
-                                }
-                            } else {
-                                if ($tag === 'EMAIL' || $tag === '_EMAIL') {
-                                    $tag = '_?EMAIL';
-                                }
-                                $t         = $tag;
-                                $searchstr = '1 ' . $tag;
-                            }
-                            switch ($expr) {
-                                case 'CONTAINS':
-                                    if ($t === 'PLAC') {
-                                        $searchstr .= "[^\n]*[, ]*" . $val;
-                                    } else {
-                                        $searchstr .= "[^\n]*" . $val;
-                                    }
-                                    $filters[] = $searchstr;
-                                    break;
-                                default:
-                                    $filters2[] = [
-                                        'tag'  => $tag,
-                                        'expr' => $expr,
-                                        'val'  => $val,
-                                    ];
-                                    break;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        //-- apply other filters to the list that could not be added to the search string
-        if ($filters !== []) {
-            foreach ($this->list as $key => $record) {
-                foreach ($filters as $filter) {
-                    if (!preg_match('/' . $filter . '/i', $record->privatizeGedcom(Auth::accessLevel($this->tree)))) {
-                        unset($this->list[$key]);
-                        break;
-                    }
-                }
-            }
-        }
-        if ($filters2 !== []) {
-            $mylist = [];
-            foreach ($this->list as $indi) {
-                $key  = $indi->xref();
-                $grec = $indi->privatizeGedcom(Auth::accessLevel($this->tree));
-                $keep = true;
-                foreach ($filters2 as $filter) {
-                    if ($keep) {
-                        $tag  = $filter['tag'];
-                        $expr = $filter['expr'];
-                        $val  = $filter['val'];
-                        if ($val === "''") {
-                            $val = '';
-                        }
-                        $tags = explode(':', $tag);
-                        $t    = end($tags);
-                        $v    = GedcomTextReader::getGedcomValue($tag, 1, $grec, $this->tree);
-                        //-- check for EMAIL and _EMAIL (silly double gedcom standard :P)
-                        if ($t === 'EMAIL' && empty($v)) {
-                            $tag  = str_replace('EMAIL', '_EMAIL', $tag);
-                            $tags = explode(':', $tag);
-                            $t    = end($tags);
-                            $v    = GedcomTextReader::getSubRecord(1, $tag, $grec);
-                        }
-
-                        switch ($expr) {
-                            case 'GTE':
-                                if ($t === 'DATE') {
-                                    $date1 = new Date($v);
-                                    $date2 = new Date($val);
-                                    $keep  = (Date::compare($date1, $date2) >= 0);
-                                } elseif ($val >= $v) {
-                                    $keep = true;
-                                }
-                                break;
-                            case 'LTE':
-                                if ($t === 'DATE') {
-                                    $date1 = new Date($v);
-                                    $date2 = new Date($val);
-                                    $keep  = (Date::compare($date1, $date2) <= 0);
-                                } elseif ($val >= $v) {
-                                    $keep = true;
-                                }
-                                break;
-                            default:
-                                if ($v == $val) {
-                                    $keep = true;
-                                } else {
-                                    $keep = false;
-                                }
-                                break;
-                        }
-                    }
-                }
-                if ($keep) {
-                    $mylist[$key] = $indi;
-                }
-            }
-            $this->list = $mylist;
-        }
-
-        switch ($sortby) {
-            case 'NAME':
-                uasort($this->list, GedcomRecord::nameComparator());
-                break;
-            case 'CHAN':
-                uasort($this->list, GedcomRecord::lastChangeComparator());
-                break;
-            case 'BIRT:DATE':
-                uasort($this->list, Individual::birthDateComparator());
-                break;
-            case 'DEAT:DATE':
-                uasort($this->list, Individual::deathDateComparator());
-                break;
-            case 'MARR:DATE':
-                uasort($this->list, Family::marriageDateComparator());
-                break;
-            default:
-                // unsorted or already sorted by SQL
-                break;
-        }
+        $list_builder = new ReportListBuilder($this->tree);
+        $this->list   = $list_builder->buildList(
+            $listname,
+            $attrs,
+            $sortby,
+            $this->substituteVars(...),
+            $this->gedrec,
+            $this->fact,
+            $this->desc,
+            $this->variables,
+        );
 
         $this->pushRepeatFrame();
         $this->repeat_xml      = (string) $this->xml_reader->readInnerXml();
