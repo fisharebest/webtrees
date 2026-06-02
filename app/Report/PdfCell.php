@@ -94,7 +94,7 @@ class PdfCell extends AbstractCell
             if ($renderer->checkPageBreakPDF($cHT)) {
                 $this->top = $renderer->tcpdf->GetY();
             }
-            $temptext = RightToLeftSupport::spanLtrRtl($temptext);
+            $temptext = (new RightToLeftFormatter())->format($temptext);
         }
         // HTML ready - last value is true
         $renderer->tcpdf->MultiCell(

@@ -88,7 +88,7 @@ use function str_replace;
 #[CoversClass(PdfRenderer::class)]
 #[CoversClass(PdfText::class)]
 #[CoversClass(PdfTextBox::class)]
-#[CoversClass(RightToLeftSupport::class)]
+#[CoversClass(RightToLeftFormatter::class)]
 #[CoversClass(Style::class)]
 #[CoversClass(TcpdfWrapper::class)]
 class ReportRegressionTest extends TestCase

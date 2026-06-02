@@ -43,7 +43,7 @@ class PdfText extends AbstractText
             $renderer->tcpdf->setTextColor($hex->red, $hex->green, $hex->blue);
         }
 
-        $temptext = RightToLeftSupport::spanLtrRtl($temptext);
+        $temptext = (new RightToLeftFormatter())->format($temptext);
         $temptext = str_replace(
             [
                 '<br><span dir="rtl">',
