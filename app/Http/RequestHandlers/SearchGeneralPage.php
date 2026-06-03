@@ -92,7 +92,7 @@ final class SearchGeneralPage implements RequestHandlerInterface
             ->exists();
 
         // Default to families and individuals only
-        if (!$search_individuals && !$search_families && !$search_repositories && !$search_sources && !$search_notes) {
+        if (!$search_individuals && !$search_families && !$search_locations && !$search_repositories && !$search_sources && !$search_notes) {
             $search_families    = true;
             $search_individuals = true;
         }
