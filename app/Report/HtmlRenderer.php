@@ -36,11 +36,9 @@ use function substr_count;
 
 class HtmlRenderer extends AbstractRenderer implements HtmlRendererInterface
 {
-    // Cell padding for HTML elements
-    public float $cPadding = 2.0;
+    public const float CELL_PADDING = 2.0;
 
-    // Cell height ratio for text height calculations
-    public float $cellHeightRatio = 1.8;
+    public const float LINE_HEIGHT_RATIO = 1.8;
 
     // Current horizontal position
     public float $X = 0.0;
@@ -313,7 +311,7 @@ class HtmlRenderer extends AbstractRenderer implements HtmlRendererInterface
         $nl = $this->countLines($str);
 
         // Calculate the cell height
-        return ceil($this->getCurrentStyleHeight() * $this->cellHeightRatio * $nl);
+        return ceil($this->getCurrentStyleHeight() * self::LINE_HEIGHT_RATIO * $nl);
     }
 
     public function getX(): float

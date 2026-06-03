@@ -49,9 +49,9 @@ class PdfRenderer extends AbstractRenderer implements PdfRendererInterface
     private const bool SUBSETTING = false;
 
     // Tracks the page an image was last rendered on, for page-break recovery.
-    public int $lastpicpage = 0;
+    private int $lastpicpage = 0;
 
-    public TcpdfWrapper $tcpdf;
+    private TcpdfWrapper $tcpdf;
 
     public function header(): void
     {
@@ -314,5 +314,278 @@ class PdfRenderer extends AbstractRenderer implements PdfRendererInterface
     public function createLine(float $x1, float $y1, float $x2, float $y2): PdfLine
     {
         return new PdfLine($x1, $y1, $x2, $y2);
+    }
+
+    // =========================================================================
+    // Cursor positioning
+    // =========================================================================
+
+    public function getX(): float
+    {
+        return $this->tcpdf->GetX();
+    }
+
+    public function getY(): float
+    {
+        return $this->tcpdf->GetY();
+    }
+
+    public function setX(float $x): void
+    {
+        $this->tcpdf->setX($x);
+    }
+
+    public function setY(float $y): void
+    {
+        $this->tcpdf->setY($y);
+    }
+
+    public function setXY(float $x, float $y): void
+    {
+        $this->tcpdf->setXY($x, $y);
+    }
+
+    // =========================================================================
+    // Text measurement
+    // =========================================================================
+
+    public function getStringWidth(string $text): float
+    {
+        return $this->tcpdf->GetStringWidth($text);
+    }
+
+    public function getNumLines(string $text, float $width): int
+    {
+        return $this->tcpdf->getNumLines($text, $width);
+    }
+
+    public function getCellHeightRatio(): float
+    {
+        return $this->tcpdf->getCellHeightRatio();
+    }
+
+    /**
+     * Return the height of the last rendered MultiCell.
+     */
+    public function getLastRenderedHeight(): float
+    {
+        return $this->tcpdf->getLastH();
+    }
+
+    // =========================================================================
+    // Margins
+    // =========================================================================
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getMargins(): array
+    {
+        return $this->tcpdf->getMargins();
+    }
+
+    public function setLeftMargin(float $margin): void
+    {
+        $this->tcpdf->setLeftMargin($margin);
+    }
+
+    public function setRightMargin(float $margin): void
+    {
+        $this->tcpdf->setRightMargin($margin);
+    }
+
+    // =========================================================================
+    // Page operations
+    // =========================================================================
+
+    public function getPageWidth(): float
+    {
+        return $this->tcpdf->getPageWidth();
+    }
+
+    public function getPageHeight(): float
+    {
+        return $this->tcpdf->getPageHeight();
+    }
+
+    public function getPageIndex(): int
+    {
+        return $this->tcpdf->getPage();
+    }
+
+    public function setPageIndex(int $page): void
+    {
+        $this->tcpdf->setPage($page);
+    }
+
+    public function isRTL(): bool
+    {
+        return $this->tcpdf->getRTL();
+    }
+
+    // =========================================================================
+    // Color operations
+    // =========================================================================
+
+    public function setFillColor(int $red, int $green, int $blue): void
+    {
+        $this->tcpdf->setFillColor($red, $green, $blue);
+    }
+
+    public function setDrawColor(int $red, int $green, int $blue): void
+    {
+        $this->tcpdf->setDrawColor($red, $green, $blue);
+    }
+
+    public function setTextColor(int $red, int $green, int $blue): void
+    {
+        $this->tcpdf->setTextColor($red, $green, $blue);
+    }
+
+    public function resetColors(): void
+    {
+        $this->tcpdf->resetColors();
+    }
+
+    // =========================================================================
+    // Rendering operations
+    // =========================================================================
+
+    /**
+     * Write a multi-line text cell with wrapping, border, and alignment.
+     */
+    public function multiCell(
+        float $width,
+        float $height,
+        string $text,
+        string $border,
+        string $align,
+        bool $fill,
+        int $newline,
+        float $x,
+        float $y,
+        bool $reseth,
+        int $stretch,
+        bool $is_html,
+    ): void {
+        $this->tcpdf->MultiCell(
+            $width,
+            $height,
+            $text,
+            $border,
+            $align,
+            $fill,
+            $newline,
+            $x,
+            $y,
+            $reseth,
+            $stretch,
+            $is_html
+        );
+    }
+
+    /**
+     * Write HTML content at the current position.
+     */
+    public function writeHTML(string $html, bool $newline = true, bool $fill = false, bool $reseth = true): void
+    {
+        $this->tcpdf->writeHTML($html, $newline, $fill, $reseth);
+    }
+
+    /**
+     * Write text at the current position with a given line height and optional link.
+     */
+    public function writeText(float $height, string $text, string $link = ''): void
+    {
+        $this->tcpdf->Write($height, $text, $link);
+    }
+
+    /**
+     * Embed an image on the page.
+     */
+    public function drawImage(
+        string $file,
+        float $x,
+        float $y,
+        float $width,
+        float $height,
+        string $type,
+        string $link,
+        string $ln,
+        bool $fitonpage,
+        int $dpi,
+        string $align,
+    ): void {
+        $this->tcpdf->Image(
+            $file,
+            $x,
+            $y,
+            $width,
+            $height,
+            $type,
+            $link,
+            $ln,
+            $fitonpage,
+            $dpi,
+            $align
+        );
+    }
+
+    /**
+     * Draw a line between two points.
+     */
+    public function drawLine(float $x1, float $y1, float $x2, float $y2): void
+    {
+        $this->tcpdf->Line($x1, $y1, $x2, $y2);
+    }
+
+    /**
+     * Draw a rectangle.
+     */
+    public function drawRect(float $x, float $y, float $width, float $height, string $style): void
+    {
+        $this->tcpdf->Rect($x, $y, $width, $height, $style);
+    }
+
+    /**
+     * Add a clickable link area on the current page.
+     */
+    public function addLinkArea(float $x, float $y, float $width, float $height, string $url): void
+    {
+        $this->tcpdf->Link($x, $y, $width, $height, $url);
+    }
+
+    // =========================================================================
+    // Link management
+    // =========================================================================
+
+    /**
+     * Create a new internal link reference and return its ID.
+     */
+    public function createLink(): int
+    {
+        return $this->tcpdf->AddLink();
+    }
+
+    /**
+     * Set the destination of a previously created link.
+     */
+    public function setLinkDestination(string $link, float $y = -1, int $page = -1): void
+    {
+        $this->tcpdf->setLink($link, $y, $page);
+    }
+
+    // =========================================================================
+    // Image page tracking
+    // =========================================================================
+
+    public function getLastPicPage(): int
+    {
+        return $this->lastpicpage;
+    }
+
+    public function setLastPicPage(int $page): void
+    {
+        $this->lastpicpage = $page;
     }
 }

@@ -38,27 +38,27 @@ class PdfCell extends AbstractCell
         $fill = $this->bgcolor !== '';
         if ($fill) {
             $hex = new HexColor($this->bgcolor);
-            $renderer->tcpdf->setFillColor($hex->red, $hex->green, $hex->blue);
+            $renderer->setFillColor($hex->red, $hex->green, $hex->blue);
         }
 
         // Border color
         if ($this->bocolor !== '') {
             $hex = new HexColor($this->bocolor);
-            $renderer->tcpdf->setDrawColor($hex->red, $hex->green, $hex->blue);
+            $renderer->setDrawColor($hex->red, $hex->green, $hex->blue);
         }
 
         // Text color - falls back to black, so a missing tcolor does
         // not inherit the previous cell's color.
         if ($this->tcolor === '') {
-            $renderer->tcpdf->setTextColor(0, 0, 0);
+            $renderer->setTextColor(0, 0, 0);
         } else {
             $hex = new HexColor($this->tcolor);
-            $renderer->tcpdf->setTextColor($hex->red, $hex->green, $hex->blue);
+            $renderer->setTextColor($hex->red, $hex->green, $hex->blue);
         }
 
         // If current position (left)
         if ($this->left === AbstractElement::CURRENT_POSITION) {
-            $cX = $renderer->tcpdf->GetX();
+            $cX = $renderer->getX();
         } else {
             // For static position add margin (also updates X)
             $cX = $renderer->addMarginX($this->left);
@@ -70,9 +70,9 @@ class PdfCell extends AbstractCell
         }
         // For current position
         if ($this->top === AbstractElement::CURRENT_POSITION) {
-            $this->top = $renderer->tcpdf->GetY();
+            $this->top = $renderer->getY();
         } else {
-            $renderer->tcpdf->setY($this->top);
+            $renderer->setY($this->top);
         }
 
         // Check the last cell height and adjust the current cell height if needed
@@ -81,9 +81,9 @@ class PdfCell extends AbstractCell
         }
         // Check for pagebreak
         if (!empty($temptext)) {
-            $cHT = $renderer->tcpdf->getNumLines($temptext, $this->width);
-            $cHT = $cHT * $renderer->tcpdf->getCellHeightRatio() * $renderer->getCurrentStyleHeight();
-            $cM  = $renderer->tcpdf->getMargins();
+            $cHT = $renderer->getNumLines($temptext, $this->width);
+            $cHT = $cHT * $renderer->getCellHeightRatio() * $renderer->getCurrentStyleHeight();
+            $cM  = $renderer->getMargins();
             // Add padding
             if (is_array($cM['cell'])) {
                 $cHT += $cM['padding_bottom'] + $cM['padding_top'];
@@ -92,12 +92,12 @@ class PdfCell extends AbstractCell
             }
             // Add a new page if needed
             if ($renderer->checkPageBreakPDF($cHT)) {
-                $this->top = $renderer->tcpdf->GetY();
+                $this->top = $renderer->getY();
             }
             $temptext = (new RightToLeftFormatter())->format($temptext);
         }
         // HTML ready - last value is true
-        $renderer->tcpdf->MultiCell(
+        $renderer->multiCell(
             $this->width,
             $this->height,
             $temptext,
@@ -114,16 +114,16 @@ class PdfCell extends AbstractCell
         // Reset the last cell height for the next line
         if ($this->newline !== CellNewline::Right) {
             $renderer->resetLastCellHeight();
-        } elseif ($renderer->getLastCellHeight() < $renderer->tcpdf->getLastH()) {
+        } elseif ($renderer->getLastCellHeight() < $renderer->getLastRenderedHeight()) {
             // OR save the last height if higher then before
-            $renderer->setLastCellHeight($renderer->tcpdf->getLastH());
+            $renderer->setLastCellHeight($renderer->getLastRenderedHeight());
         }
 
         // Set up the url link if exists on top of the cell
         if (!empty($this->url)) {
-            $renderer->tcpdf->Link($cX, $this->top, $this->width, $this->height, $this->url);
+            $renderer->addLinkArea($cX, $this->top, $this->width, $this->height, $this->url);
         }
         // Reset the border and the text color to black or they will be inherited
-        $renderer->tcpdf->resetColors();
+        $renderer->resetColors();
     }
 }

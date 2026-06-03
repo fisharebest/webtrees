@@ -35,7 +35,7 @@ class HtmlImage extends AbstractImage
         if ($this->y === AbstractElement::CURRENT_POSITION) {
             //-- first check for a collision with the last picture
             if ($lastpicbottom !== null && $renderer->pageNo() === $lastpicpage && $lastpicbottom >= $renderer->getY() && $this->x >= $lastpicleft && $this->x <= $lastpicright) {
-                $renderer->setY($lastpicbottom + $renderer->cPadding * 2);
+                $renderer->setY($lastpicbottom + $renderer::CELL_PADDING * 2);
             }
             $this->y = $renderer->getY();
         }
@@ -77,6 +77,6 @@ class HtmlImage extends AbstractImage
      */
     public function getHeight(AbstractRenderer $renderer): float
     {
-        return $this->height + $renderer->cPadding * 2;
+        return $this->height + $renderer::CELL_PADDING * 2;
     }
 }

@@ -79,7 +79,7 @@ class HtmlText extends AbstractText
         }
         $style = $this->style;
 
-        return $style->size * $ct * $renderer->cellHeightRatio;
+        return $style->size * $ct * $renderer::LINE_HEIGHT_RATIO;
     }
 
     /**

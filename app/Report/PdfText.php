@@ -37,10 +37,10 @@ class PdfText extends AbstractText
         $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
 
         if ($this->color === '') {
-            $renderer->tcpdf->setTextColor(0, 0, 0);
+            $renderer->setTextColor(0, 0, 0);
         } else {
             $hex = new HexColor($this->color);
-            $renderer->tcpdf->setTextColor($hex->red, $hex->green, $hex->blue);
+            $renderer->setTextColor($hex->red, $hex->green, $hex->blue);
         }
 
         $temptext = (new RightToLeftFormatter())->format($temptext);
@@ -59,9 +59,9 @@ class PdfText extends AbstractText
             ],
             $temptext
         );
-        $renderer->tcpdf->writeHTML($temptext, false, false, true);
+        $renderer->writeHTML($temptext, false, false, true);
         // Reset the text color to black, or it will be inherited
-        $renderer->tcpdf->setTextColor(0, 0, 0);
+        $renderer->setTextColor(0, 0, 0);
     }
 
     public function getHeight(AbstractRenderer $renderer): float
@@ -84,7 +84,7 @@ class PdfText extends AbstractText
         $renderer->trackFontHeight($fsize);
 
         // Get the line width for the text in points
-        $lw = $renderer->tcpdf->GetStringWidth($this->text);
+        $lw = $renderer->getStringWidth($this->text);
         // Line Feed counter - Number of lines in the text
         $lfct = substr_count($this->text, "\n") + 1;
         // If there is still remaining wrap width...
@@ -97,7 +97,7 @@ class PdfText extends AbstractText
                 // Go through the text line by line
                 foreach ($lines as $line) {
                     // Line width in points + a little margin
-                    $lw = $renderer->tcpdf->GetStringWidth($line);
+                    $lw = $renderer->getStringWidth($line);
                     // If the line has to be wrapped
                     if ($lw > $wrapWidthRemaining) {
                         $words    = explode(' ', $line);
@@ -105,14 +105,14 @@ class PdfText extends AbstractText
                         $lw       = 0;
                         foreach ($words as $word) {
                             $addspace--;
-                            $lw += $renderer->tcpdf->GetStringWidth($word . ' ');
+                            $lw += $renderer->getStringWidth($word . ' ');
                             if ($lw <= $wrapWidthRemaining) {
                                 $newtext .= $word;
                                 if ($addspace !== 0) {
                                     $newtext .= ' ';
                                 }
                             } else {
-                                $lw = $renderer->tcpdf->GetStringWidth($word . ' ');
+                                $lw = $renderer->getStringWidth($word . ' ');
                                 $newtext .= "\n$word";
                                 if ($addspace !== 0) {
                                     $newtext .= ' ';
@@ -126,7 +126,7 @@ class PdfText extends AbstractText
                     }
                     // Check the Line Feed counter
                     if ($lfct > 1) {
-                        // Add a new line as long as it’s not the last line
+                        // Add a new line as long as it's not the last line
                         $newtext .= "\n";
                         // Reset the line width
                         $lw = 0;

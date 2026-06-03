@@ -112,7 +112,7 @@ class HtmlTextBox extends AbstractTextBox
         $this->elements = $newelements;
         unset($footnote_element, $lastelement, $newelements);
 
-        $cP = 0; // Class Padding
+        $cell_padding = $this->padding ? $renderer::CELL_PADDING : 0.0;
 
         // Used with line breaks and cell height calculation within this box only
         $renderer->resetLargestFontHeight();
@@ -135,13 +135,8 @@ class HtmlTextBox extends AbstractTextBox
         if ($this->width === 0.0 || $this->width > $renderer->getRemainingWidth()) {
             $this->width = $renderer->getRemainingWidth();
         }
-        // Setup the CellPadding
-        if ($this->padding) {
-            $cP = $renderer->cPadding;
-        }
-
         // For padding, we have to use less wrap width
-        $cW = $this->width - $cP * 2.0;
+        $cW = $this->width - $cell_padding * 2.0;
 
         //-- calculate the text box height
         // Number of lines, will be converted to height
@@ -191,7 +186,7 @@ class HtmlTextBox extends AbstractTextBox
             // Check if this is text or some other element, like images
             if ($eH === 0.0) {
                 // Number of LF but at least one line
-                $cHT = ($cHT + 1) * $renderer->cellHeightRatio;
+                $cHT = ($cHT + 1) * $renderer::LINE_HEIGHT_RATIO;
                 // Calculate the cell height with the largest font size used
                 $cHT *= $renderer->getLargestFontHeight();
                 if ($cH < $cHT) {
@@ -228,14 +223,14 @@ class HtmlTextBox extends AbstractTextBox
 
         if ($this->padding) {
             // Use Cell around padding to support RTL also
-            echo 'padding:', $cP, 'pt;';
+            echo 'padding:', $cell_padding, 'pt;';
         }
 
         if ($this->border) {
             echo ' border:solid black 1pt;';
-            echo 'width:', $this->width - 1 - $cP * 2, 'pt;height:', $cH - 1, 'pt;';
+            echo 'width:', $this->width - 1 - $cell_padding * 2, 'pt;height:', $cH - 1, 'pt;';
         } else {
-            echo 'width:', $this->width - $cP * 2, 'pt;height:', $cH, 'pt;';
+            echo 'width:', $this->width - $cell_padding * 2, 'pt;height:', $cH, 'pt;';
         }
         echo '">';
 
@@ -266,7 +261,7 @@ class HtmlTextBox extends AbstractTextBox
             $renderer->setXy($cX + $this->width, $this->top);
             $renderer->setLastCellHeight($cH);
         } else {
-            $renderer->setXy(0, $this->top + $cH + $cP * 2);
+            $renderer->setXy(0, $this->top + $cH + $cell_padding * 2);
             $renderer->resetLastCellHeight();
         }
     }

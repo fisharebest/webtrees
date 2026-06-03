@@ -39,9 +39,6 @@ class HtmlCell extends AbstractCell
         // Set up the text style
         $renderer->setCurrentStyle($this->style);
 
-        // If (Future-feature-enable/disable cell padding)
-        $cP = $renderer->cPadding;
-
         // Adjust the positions
         if ($this->left === AbstractElement::CURRENT_POSITION) {
             $this->left = $renderer->getX();
@@ -58,7 +55,7 @@ class HtmlCell extends AbstractCell
         // Start collecting the HTML code
         echo '<div class="', $this->style->name, '" style="position:absolute;top:', $this->top, 'pt;';
         // Use Cell around padding to support RTL also
-        echo 'padding:', $cP, 'pt;';
+        echo 'padding:', $renderer::CELL_PADDING, 'pt;';
         // LTR (left) or RTL (right)
         echo $renderer->config->align_rtl, ':', $this->left, 'pt;';
 
@@ -100,7 +97,7 @@ class HtmlCell extends AbstractCell
             $this->width = $renderer->getRemainingWidth();
         }
         // We have to calculate a different width for the padding, counting on both side
-        $cW = $this->width - $cP * 2.0;
+        $cW = $this->width - $renderer::CELL_PADDING * 2.0;
 
         // If there is any text
         if (!empty($temptext)) {
@@ -108,7 +105,7 @@ class HtmlCell extends AbstractCell
             $temptext = $renderer->textWrap($temptext, $cW);
             $tmph     = $renderer->getTextCellHeight($temptext);
             // Add some cell padding
-            $this->height += $cP;
+            $this->height += $renderer::CELL_PADDING;
             if ($tmph > $this->height) {
                 $this->height = $tmph;
             }
@@ -163,13 +160,13 @@ class HtmlCell extends AbstractCell
                 break;
             case CellNewline::NextLine:
                 // -> On a new line at the margin - Default
-                $renderer->setXy(0, $renderer->getY() + $this->height + $cP * 2);
+                $renderer->setXy(0, $renderer->getY() + $this->height + $renderer::CELL_PADDING * 2);
                 // Reset the last cell height for the next line
                 $renderer->resetLastCellHeight();
                 break;
             case CellNewline::Below:
                 // -> On a new line at the end of this cell
-                $renderer->setXy($renderer->getX() + $this->width, $renderer->getY() + $this->height + $cP * 2);
+                $renderer->setXy($renderer->getX() + $this->width, $renderer->getY() + $this->height + $renderer::CELL_PADDING * 2);
                 // Reset the last cell height for the next line
                 $renderer->resetLastCellHeight();
                 break;

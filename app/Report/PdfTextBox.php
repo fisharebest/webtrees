@@ -58,14 +58,14 @@ class PdfTextBox extends AbstractTextBox
                         $lastelement   = $element;
                     }
                 } elseif ($element instanceof AbstractFootnote) {
-                    // Check if the Footnote has been set with it’s link number
+                    // Check if the Footnote has been set with its link number
                     $renderer->checkFootnote($element);
                     // Save first the last element if any
                     if (!empty($lastelement)) {
                         $newelements[] = $lastelement;
                         $lastelement   = [];
                     }
-                    // Save the Footnote with it’s link number as key for sorting later
+                    // Save the Footnote with its link number as key for sorting later
                     $footnote_element[$element->num] = $element;
                 } elseif (!$element instanceof AbstractFootnote || trim($element->getValue()) !== '') {
                     // Do not keep empty footnotes
@@ -114,7 +114,7 @@ class PdfTextBox extends AbstractTextBox
 
         // If current position (left)
         if ($this->left === AbstractElement::CURRENT_POSITION) {
-            $cX = $renderer->tcpdf->GetX();
+            $cX = $renderer->getX();
         } else {
             // For static position add margin (returns and updates X)
             $cX = $renderer->addMarginX($this->left);
@@ -122,10 +122,10 @@ class PdfTextBox extends AbstractTextBox
 
         // If current position (top)
         if ($this->top === AbstractElement::CURRENT_POSITION) {
-            $cY = $renderer->tcpdf->GetY();
+            $cY = $renderer->getY();
         } else {
             $cY = $this->top;
-            $renderer->tcpdf->setY($cY);
+            $renderer->setY($cY);
         }
 
         // Check the width if set to page wide OR set by xml to larger then page width (margin)
@@ -136,7 +136,7 @@ class PdfTextBox extends AbstractTextBox
         }
 
         // Save the original margins
-        $cM = $renderer->tcpdf->getMargins();
+        $cM = $renderer->getMargins();
         // Use cell padding to wrap the width
         // Temp Width with cell padding
         if (is_array($cM['cell'])) {
@@ -176,21 +176,21 @@ class PdfTextBox extends AbstractTextBox
                 if ($w > $cWT) {
                     $w = $lw[0];
                 }
-                // Footnote is at the bottom of the page. No need to calculate it’s height or wrap the text!
+                // Footnote is at the bottom of the page. No need to calculate it's height or wrap the text!
                 // We are changing the margins anyway!
                 // For anything else but text (images), get the height
                 $eH += $this->elements[$i]->getHeight($renderer);
             }
         }
 
-        // Add up what’s the final height
+        // Add up what's the final height
         $cH = $this->height;
         // If any element exist
         if ($cE > 0) {
             // Check if this is text or some other element, like images
             if ($eH === 0.0) {
                 // This is text elements. Number of LF but at least one line
-                $cHT = ($cHT + 1) * $renderer->tcpdf->getCellHeightRatio();
+                $cHT = ($cHT + 1) * $renderer->getCellHeightRatio();
                 // Calculate the cell height with the largest font size used within this Box
                 $cHT *= $renderer->getLargestFontHeight();
                 // Add cell padding
@@ -218,7 +218,7 @@ class PdfTextBox extends AbstractTextBox
             // Reset last cell height, or Header/Footer will inherit it, in case of page break
             $renderer->resetLastCellHeight();
             if ($renderer->checkPageBreakPDF($cH)) {
-                $cY = $renderer->tcpdf->GetY();
+                $cY = $renderer->getY();
             }
         }
 
@@ -231,80 +231,80 @@ class PdfTextBox extends AbstractTextBox
 
         if ($this->bgcolor !== '') {
             $hex = new HexColor($this->bgcolor);
-            $renderer->tcpdf->setFillColor($hex->red, $hex->green, $hex->blue);
+            $renderer->setFillColor($hex->red, $hex->green, $hex->blue);
             $cS .= 'F';
         }
         // Clean up a bit
         unset($lw, $w, $cE, $eH);
         // Draw the border
         if (!empty($cS)) {
-            if (!$renderer->tcpdf->getRTL()) {
+            if (!$renderer->isRTL()) {
                 $cXM = $cX;
             } else {
-                $cXM = $renderer->tcpdf->getPageWidth() - $cX - $cW;
+                $cXM = $renderer->getPageWidth() - $cX - $cW;
             }
-            $renderer->tcpdf->Rect($cXM, $cY, $cW, $cH, $cS);
+            $renderer->drawRect($cXM, $cY, $cW, $cH, $cS);
         }
         // Add cell padding if set and if any text (element) exist
         if ($this->padding) {
             if ($cHT > 0) {
                 if (is_array($cM['cell'])) {
-                    $renderer->tcpdf->setY($cY + $cM['padding_top']);
+                    $renderer->setY($cY + $cM['padding_top']);
                 } else {
-                    $renderer->tcpdf->setY($cY + $cM['cell']);
+                    $renderer->setY($cY + $cM['cell']);
                 }
             }
         }
         // Change the margins X, Width
-        if (!$renderer->tcpdf->getRTL()) {
+        if (!$renderer->isRTL()) {
             if ($this->padding) {
                 if (is_array($cM['cell'])) {
-                    $renderer->tcpdf->setLeftMargin($cX + $cM['padding_left']);
+                    $renderer->setLeftMargin($cX + $cM['padding_left']);
                 } else {
-                    $renderer->tcpdf->setLeftMargin($cX + $cM['cell']);
+                    $renderer->setLeftMargin($cX + $cM['cell']);
                 }
             } else {
-                $renderer->tcpdf->setLeftMargin($cX);
+                $renderer->setLeftMargin($cX);
             }
-            $renderer->tcpdf->setRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
+            $renderer->setRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
         } elseif ($this->padding) {
             if (is_array($cM['cell'])) {
-                $renderer->tcpdf->setRightMargin($cX + $cM['padding_right']);
+                $renderer->setRightMargin($cX + $cM['padding_right']);
             } else {
-                $renderer->tcpdf->setRightMargin($cX + $cM['cell']);
+                $renderer->setRightMargin($cX + $cM['cell']);
             }
-            $renderer->tcpdf->setLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
+            $renderer->setLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
         } else {
-            $renderer->tcpdf->setRightMargin($cX);
-            $renderer->tcpdf->setLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
+            $renderer->setRightMargin($cX);
+            $renderer->setLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
         }
         // Save the current page number
-        $cPN = $renderer->tcpdf->getPage();
+        $cPN = $renderer->getPageIndex();
 
         // Render the elements (write text, print picture...)
         foreach ($this->elements as $element) {
             $element->render($renderer);
         }
         // Restore the margins
-        $renderer->tcpdf->setLeftMargin($cM['left']);
-        $renderer->tcpdf->setRightMargin($cM['right']);
+        $renderer->setLeftMargin($cM['left']);
+        $renderer->setRightMargin($cM['right']);
 
         // This will be mostly used to trick the multiple images last height
         if ($this->reseth) {
             $cH = 0;
             // This can only happen with multiple images and with pagebreak
-            if ($cPN !== $renderer->tcpdf->getPage()) {
-                $renderer->tcpdf->setPage($cPN);
+            if ($cPN !== $renderer->getPageIndex()) {
+                $renderer->setPageIndex($cPN);
             }
         }
         // New line and some clean up
         if (!$this->newline) {
-            $renderer->tcpdf->setXY($cX + $cW, $cY);
+            $renderer->setXY($cX + $cW, $cY);
             $renderer->setLastCellHeight($cH);
         } else {
             // addMarginX() also updates X
             $renderer->addMarginX(0);
-            $renderer->tcpdf->setY($cY + $cH);
+            $renderer->setY($cY + $cH);
             $renderer->resetLastCellHeight();
         }
     }

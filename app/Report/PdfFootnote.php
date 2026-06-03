@@ -33,7 +33,7 @@ class PdfFootnote extends AbstractFootnote
     public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
         $renderer->setCurrentStyle($renderer->getStyle('footnotenum'));
-        $renderer->tcpdf->Write($renderer->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
+        $renderer->writeText($renderer->getCurrentStyleHeight(), $this->numText, $this->addlink);
     }
 
     public function renderFootnote(AbstractRenderer $renderer): void
@@ -41,17 +41,16 @@ class PdfFootnote extends AbstractFootnote
         $renderer->setCurrentStyle($this->style);
         $temptext = $this->resolvedText($renderer);
         // Set the link to this y/page position
-        $renderer->tcpdf->setLink($this->addlink, -1, -1);
+        $renderer->setLinkDestination($this->addlink, -1, -1);
         // Print first the source number
-        // working
-        if ($renderer->tcpdf->getRTL()) {
-            $renderer->tcpdf->writeHTML('<span> .' . $this->num . '</span>', false);
+        if ($renderer->isRTL()) {
+            $renderer->writeHTML('<span> .' . $this->num . '</span>', false);
         } else {
             $temptext = '<span>' . $this->num . '. </span>' . $temptext;
         }
         // underline «title» part of Source item
         $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
-        $renderer->tcpdf->writeHTML($temptext, true, false, true);
+        $renderer->writeHTML($temptext, true, false, true);
     }
 
     public function getFootnoteHeight(AbstractRenderer $renderer, float $cellWidth = 0): float
@@ -81,7 +80,7 @@ class PdfFootnote extends AbstractFootnote
         }
 
         // Get the line width
-        $lw = ceil($renderer->tcpdf->GetStringWidth($this->numText));
+        $lw = ceil($renderer->getStringWidth($this->numText));
         // Line Feed counter - Number of lines in the text
         $lfct = substr_count($this->numText, "\n") + 1;
         // If there is still remaining wrap width...
@@ -94,7 +93,7 @@ class PdfFootnote extends AbstractFootnote
                 // Go through the text line by line
                 foreach ($lines as $line) {
                     // Line width in points
-                    $lw = ceil($renderer->tcpdf->GetStringWidth($line));
+                    $lw = ceil($renderer->getStringWidth($line));
                     // If the line has to be wrapped
                     if ($lw >= $wrapWidthRemaining) {
                         $words    = explode(' ', $line);
@@ -102,14 +101,14 @@ class PdfFootnote extends AbstractFootnote
                         $lw       = 0;
                         foreach ($words as $word) {
                             $addspace--;
-                            $lw += ceil($renderer->tcpdf->GetStringWidth($word . ' '));
+                            $lw += ceil($renderer->getStringWidth($word . ' '));
                             if ($lw < $wrapWidthRemaining) {
                                 $newtext .= $word;
                                 if ($addspace !== 0) {
                                     $newtext .= ' ';
                                 }
                             } else {
-                                $lw = $renderer->tcpdf->GetStringWidth($word . ' ');
+                                $lw = $renderer->getStringWidth($word . ' ');
                                 $newtext .= "\n$word";
                                 if ($addspace !== 0) {
                                     $newtext .= ' ';
@@ -123,7 +122,7 @@ class PdfFootnote extends AbstractFootnote
                     }
                     // Check the Line Feed counter
                     if ($lfct > 1) {
-                        // Add a new line feed as long as it’s not the last line
+                        // Add a new line feed as long as it's not the last line
                         $newtext .= "\n";
                         // Reset the line width
                         $lw = 0;

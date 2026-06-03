@@ -66,7 +66,7 @@ class HtmlFootnote extends AbstractFootnote
         $ct         = substr_count($this->text, "\n");
         $fsize      = $renderer->getCurrentStyleHeight();
 
-        return $fsize * $ct * $renderer->cellHeightRatio;
+        return $fsize * $ct * $renderer::LINE_HEIGHT_RATIO;
     }
 
     /**

@@ -30,10 +30,10 @@ class PdfImage extends AbstractImage
 
         // Check for a pagebreak first
         if ($renderer->checkPageBreakPDF($this->height + 5)) {
-            $this->y = $renderer->tcpdf->GetY();
+            $this->y = $renderer->getY();
         }
 
-        $curx = $renderer->tcpdf->GetX();
+        $curx = $renderer->getX();
 
         // Track whether the image has an explicit X position so we can
         // restore the cursor afterward — explicitly placed images should
@@ -42,25 +42,25 @@ class PdfImage extends AbstractImage
 
         // Get the current positions
         if (!$explicit_position) {
-            $this->x = $renderer->tcpdf->GetX();
+            $this->x = $renderer->getX();
         } else {
             // For static position add margin
             $this->x = $renderer->addMarginX($this->x);
-            $renderer->tcpdf->setX($curx);
+            $renderer->setX($curx);
         }
         if ($this->y === AbstractElement::CURRENT_POSITION) {
             //-- first check for a collision with the last picture
-            if ($lastpicbottom !== null && $renderer->tcpdf->PageNo() === $lastpicpage && $lastpicbottom >= $renderer->tcpdf->GetY() && $this->x >= $lastpicleft && $this->x <= $lastpicright) {
-                $renderer->tcpdf->setY($lastpicbottom + 5);
+            if ($lastpicbottom !== null && $renderer->pageNo() === $lastpicpage && $lastpicbottom >= $renderer->getY() && $this->x >= $lastpicleft && $this->x <= $lastpicright) {
+                $renderer->setY($lastpicbottom + 5);
             }
-            $this->y = $renderer->tcpdf->GetY();
+            $this->y = $renderer->getY();
         } else {
-            $renderer->tcpdf->setY($this->y);
+            $renderer->setY($this->y);
         }
-        if ($renderer->tcpdf->getRTL()) {
-            $renderer->tcpdf->Image(
+        if ($renderer->isRTL()) {
+            $renderer->drawImage(
                 $this->src,
-                $renderer->tcpdf->getPageWidth() - $this->x,
+                $renderer->getPageWidth() - $this->x,
                 $this->y,
                 $this->width,
                 $this->height,
@@ -72,7 +72,7 @@ class PdfImage extends AbstractImage
                 $this->align->value
             );
         } else {
-            $renderer->tcpdf->Image(
+            $renderer->drawImage(
                 $this->src,
                 $this->x,
                 $this->y,
@@ -86,20 +86,20 @@ class PdfImage extends AbstractImage
                 $this->align->value
             );
         }
-        $lastpicpage           = $renderer->tcpdf->PageNo();
-        $renderer->lastpicpage = $renderer->tcpdf->getPage();
+        $lastpicpage = $renderer->pageNo();
+        $renderer->setLastPicPage($renderer->getPageIndex());
         $lastpicleft           = $this->x;
         $lastpicright          = $this->x + $this->width;
         $lastpicbottom         = $this->y + $this->height;
         // Setup for the next line
         if ($this->line === ImageContinuation::NextLine) {
-            $renderer->tcpdf->setY($lastpicbottom);
+            $renderer->setY($lastpicbottom);
         }
         // When the image was placed at an explicit X position, restore
         // the cursor so subsequent elements flow from the original position
         // rather than from the right edge of this image.
         if ($explicit_position) {
-            $renderer->tcpdf->setX($curx);
+            $renderer->setX($curx);
         }
     }
 }

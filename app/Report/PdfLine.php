@@ -27,21 +27,21 @@ class PdfLine extends AbstractLine
     public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
         if ($this->x1 === AbstractElement::CURRENT_POSITION) {
-            $this->x1 = $renderer->tcpdf->GetX();
+            $this->x1 = $renderer->getX();
         }
         if ($this->y1 === AbstractElement::CURRENT_POSITION) {
-            $this->y1 = $renderer->tcpdf->GetY();
+            $this->y1 = $renderer->getY();
         }
         if ($this->x2 === AbstractElement::CURRENT_POSITION) {
             $this->x2 = $renderer->getMaxLineWidth();
         }
         if ($this->y2 === AbstractElement::CURRENT_POSITION) {
-            $this->y2 = $renderer->tcpdf->GetY();
+            $this->y2 = $renderer->getY();
         }
-        if ($renderer->tcpdf->getRTL()) {
-            $renderer->tcpdf->Line($renderer->tcpdf->getPageWidth() - $this->x1, $this->y1, $renderer->tcpdf->getPageWidth() - $this->x2, $this->y2);
+        if ($renderer->isRTL()) {
+            $renderer->drawLine($renderer->getPageWidth() - $this->x1, $this->y1, $renderer->getPageWidth() - $this->x2, $this->y2);
         } else {
-            $renderer->tcpdf->Line($this->x1, $this->y1, $this->x2, $this->y2);
+            $renderer->drawLine($this->x1, $this->y1, $this->x2, $this->y2);
         }
     }
 }
