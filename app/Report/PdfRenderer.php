@@ -155,27 +155,23 @@ class PdfRenderer extends AbstractRenderer implements PdfRendererInterface
         return $h;
     }
 
-    public function checkFootnote(AbstractFootnote $footnote): AbstractFootnote|false
+    public function checkFootnote(AbstractFootnote $footnote): void
     {
-        $ct  = count($this->printedfootnotes);
         $val = $footnote->getValue();
-        $i   = 0;
-        while ($i < $ct) {
-            if ($this->printedfootnotes[$i]->getValue() === $val) {
-                // If this footnote already exists then set up the numbers for this object
-                $footnote->setNum($i + 1);
-                $footnote->setAddlink((string) ($i + 1));
 
-                return $this->printedfootnotes[$i];
+        foreach ($this->printedfootnotes as $i => $printed_footnote) {
+            if ($printed_footnote->getValue() === $val) {
+                // Previously seen footnote
+                $footnote->setNumAndLink($i + 1, (string) ($i + 1));
+
+                return;
             }
-            $i++;
         }
-        // If this Footnote has not been set up yet
-        $footnote->setNum($ct + 1);
-        $footnote->setAddlink((string) $this->tcpdf->AddLink());
-        $this->printedfootnotes[] = $footnote;
 
-        return false;
+        // New footnote
+        $num = count($this->printedfootnotes) + 1;
+        $footnote->setNumAndLink($num, (string) $this->tcpdf->AddLink());
+        $this->printedfootnotes[] = $footnote;
     }
 
     /**

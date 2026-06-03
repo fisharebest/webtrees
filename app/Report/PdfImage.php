@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees\Report;
  */
 class PdfImage extends AbstractImage
 {
-    public function render(AbstractRenderer $renderer, bool $attrib = true): void
+    public function render(AbstractRenderer $renderer, bool $layout = true): void
     {
         static $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 

@@ -26,7 +26,7 @@ namespace Fisharebest\Webtrees\Report;
  */
 class FootnoteTextsElement extends AbstractElement
 {
-    public function render(AbstractRenderer $renderer, bool $attrib = true): void
+    public function render(AbstractRenderer $renderer, bool $layout = true): void
     {
         $renderer->footnotes();
     }

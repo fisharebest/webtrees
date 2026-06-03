@@ -80,7 +80,7 @@ class HtmlRenderer extends AbstractRenderer implements HtmlRendererInterface
     public function footnotes(): void
     {
         $this->currentStyle = null;
-        if (!empty($this->printedfootnotes)) {
+        if ($this->printedfootnotes !== []) {
             foreach ($this->printedfootnotes as $element) {
                 $element->renderFootnote($this);
             }
@@ -252,27 +252,23 @@ class HtmlRenderer extends AbstractRenderer implements HtmlRendererInterface
         }
     }
 
-    public function checkFootnote(AbstractFootnote $footnote): AbstractFootnote|false
+    public function checkFootnote(AbstractFootnote $footnote): void
     {
-        $ct  = count($this->printedfootnotes);
-        $i   = 0;
         $val = $footnote->getValue();
-        while ($i < $ct) {
-            if ($this->printedfootnotes[$i]->getValue() === $val) {
-                // If this footnote already exists, then set up the numbers for this object
-                $footnote->setNum($i + 1);
-                $footnote->setAddlink((string) ($i + 1));
 
-                return $this->printedfootnotes[$i];
+        foreach ($this->printedfootnotes as $i => $printed_footnote) {
+            if ($printed_footnote->getValue() === $val) {
+                // Previously seen footnote
+                $footnote->setNumAndLink($i + 1, (string) ($i + 1));
+
+                return;
             }
-            $i++;
         }
-        // If this Footnote has not been set up yet
-        $footnote->setNum($ct + 1);
-        $footnote->setAddlink((string) ($ct + 1));
-        $this->printedfootnotes[] = $footnote;
 
-        return false;
+        // New footnote
+        $num = count($this->printedfootnotes) + 1;
+        $footnote->setNumAndLink($num, (string) $num);
+        $this->printedfootnotes[] = $footnote;
     }
 
     public function getFootnotesHeight(float $cellWidth = 0): float
@@ -337,7 +333,7 @@ class HtmlRenderer extends AbstractRenderer implements HtmlRendererInterface
         }
     }
 
-    public function setXy(float $x, float $y): void
+    public function setXY(float $x, float $y): void
     {
         $this->setX($x);
         $this->setY($y);

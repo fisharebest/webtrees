@@ -28,23 +28,25 @@ namespace Fisharebest\Webtrees\Report;
  */
 interface HtmlRendererInterface
 {
-    public function addMaxY(float $y): void;
-
-    public function getRemainingWidth(): float;
-
-    public function getStringWidth(string $text): float;
-
-    public function getTextCellHeight(string $str): float;
-
+    // Cursor positioning
     public function getX(): float;
 
     public function getY(): float;
 
     public function setX(float $x): void;
 
-    public function setXy(float $x, float $y): void;
-
     public function setY(float $y): void;
+
+    public function setXY(float $x, float $y): void;
+
+    // Text measurement
+    public function getStringWidth(string $text): float;
+
+    public function addMaxY(float $y): void;
+
+    public function getRemainingWidth(): float;
+
+    public function getTextCellHeight(string $str): float;
 
     public function textWrap(string $str, float $width): string;
 

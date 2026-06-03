@@ -26,7 +26,7 @@ use function is_array;
  */
 class PdfCell extends AbstractCell
 {
-    public function render(AbstractRenderer $renderer, bool $attrib = true): void
+    public function render(AbstractRenderer $renderer, bool $layout = true): void
     {
         $temptext = $this->resolvedText($renderer);
 
@@ -77,7 +77,7 @@ class PdfCell extends AbstractCell
             $this->height = $renderer->getLastCellHeight();
         }
         // Check for pagebreak
-        if (!empty($temptext)) {
+        if ($temptext !== '') {
             $cHT = $renderer->getNumLines($temptext, $this->width);
             $cHT = $cHT * $renderer->getCellHeightRatio() * $renderer->getCurrentStyleHeight();
             $cM  = $renderer->getMargins();
@@ -117,7 +117,7 @@ class PdfCell extends AbstractCell
         }
 
         // Set up the url link if exists on top of the cell
-        if (!empty($this->url)) {
+        if ($this->url !== '') {
             $renderer->addLinkArea($cX, $this->top, $this->width, $this->height, $this->url);
         }
         // Reset the border and the text color to black or they will be inherited

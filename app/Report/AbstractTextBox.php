@@ -19,9 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use function abs;
 use function count;
-use function is_object;
 use function ksort;
 use function str_replace;
 use function trim;
@@ -69,7 +67,7 @@ abstract class AbstractTextBox extends AbstractElement implements ElementContain
     protected function collapseElements(AbstractRenderer $renderer): void
     {
         $newelements      = [];
-        $lastelement      = '';
+        $lastelement      = null;
         $footnote_element = [];
         $cE               = count($this->elements);
 
@@ -77,14 +75,14 @@ abstract class AbstractTextBox extends AbstractElement implements ElementContain
             $element = $this->elements[$i];
             if ($element instanceof AbstractElement) {
                 if ($element instanceof AbstractText) {
-                    if (!empty($footnote_element)) {
+                    if ($footnote_element !== []) {
                         ksort($footnote_element);
                         foreach ($footnote_element as $links) {
                             $newelements[] = $links;
                         }
                         $footnote_element = [];
                     }
-                    if (empty($lastelement)) {
+                    if ($lastelement === null) {
                         $lastelement = $element;
                     } elseif ($element->getStyle() === $lastelement->getStyle()) {
                         // Merge text with the same style
@@ -97,33 +95,33 @@ abstract class AbstractTextBox extends AbstractElement implements ElementContain
                     // Check if the Footnote has been set with its link number
                     $renderer->checkFootnote($element);
                     // Save the last element if any
-                    if (!empty($lastelement)) {
+                    if ($lastelement !== null) {
                         $newelements[] = $lastelement;
-                        $lastelement   = '';
+                        $lastelement   = null;
                     }
                     // Save the Footnote with its link number as key for sorting later
                     $footnote_element[$element->num] = $element;
                 } elseif (trim($element->getValue()) !== '') {
                     // Do not keep empty elements
-                    if (!empty($footnote_element)) {
+                    if ($footnote_element !== []) {
                         ksort($footnote_element);
                         foreach ($footnote_element as $links) {
                             $newelements[] = $links;
                         }
                         $footnote_element = [];
                     }
-                    if (!empty($lastelement)) {
+                    if ($lastelement !== null) {
                         $newelements[] = $lastelement;
-                        $lastelement   = '';
+                        $lastelement   = null;
                     }
                     $newelements[] = $element;
                 }
             } else {
-                if (!empty($lastelement)) {
+                if ($lastelement !== null) {
                     $newelements[] = $lastelement;
-                    $lastelement   = '';
+                    $lastelement   = null;
                 }
-                if (!empty($footnote_element)) {
+                if ($footnote_element !== []) {
                     ksort($footnote_element);
                     foreach ($footnote_element as $links) {
                         $newelements[] = $links;
@@ -133,10 +131,10 @@ abstract class AbstractTextBox extends AbstractElement implements ElementContain
                 $newelements[] = $element;
             }
         }
-        if (!empty($lastelement)) {
+        if ($lastelement !== null) {
             $newelements[] = $lastelement;
         }
-        if (!empty($footnote_element)) {
+        if ($footnote_element !== []) {
             ksort($footnote_element);
             foreach ($footnote_element as $links) {
                 $newelements[] = $links;
@@ -159,32 +157,27 @@ abstract class AbstractTextBox extends AbstractElement implements ElementContain
         $element_height  = 0.0;
         $footnote_height = 0.0;
         $w               = 0;
-        $cE              = count($this->elements);
 
-        for ($i = 0; $i < $cE; $i++) {
-            if (is_object($this->elements[$i])) {
-                $ew = $this->elements[$i]->setWrapWidth($wrap_width - $w, $wrap_width);
-                if ($ew === $wrap_width) {
-                    $w = 0;
-                }
-                $lw = $this->elements[$i]->getWidth($renderer);
-                // Accumulate line feed count
-                $line_count += $lw[2];
-                if ($lw[1] === 1) {
-                    $w = $lw[0];
-                } elseif ($lw[1] === 2) {
-                    $w = 0;
-                } else {
-                    $w += $lw[0];
-                }
-                if ($w > $wrap_width) {
-                    $w = $lw[0];
-                }
-                // For non-text elements (images), accumulate height
-                $element_height += $this->elements[$i]->getHeight($renderer);
-            } else {
-                $footnote_height += abs($renderer->getFootnotesHeight($wrap_width));
+        foreach ($this->elements as $element) {
+            $ew = $element->setWrapWidth($wrap_width - $w, $wrap_width);
+            if ($ew === $wrap_width) {
+                $w = 0;
             }
+            $lw = $element->getWidth($renderer);
+            // Accumulate line feed count
+            $line_count += $lw[2];
+            if ($lw[1] === 1) {
+                $w = $lw[0];
+            } elseif ($lw[1] === 2) {
+                $w = 0;
+            } else {
+                $w += $lw[0];
+            }
+            if ($w > $wrap_width) {
+                $w = $lw[0];
+            }
+            // For non-text elements (images), accumulate height
+            $element_height += $element->getHeight($renderer);
         }
 
         return [

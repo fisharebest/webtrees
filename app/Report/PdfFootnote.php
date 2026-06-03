@@ -19,13 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-
 /**
  * @extends AbstractFootnote<AbstractRenderer&PdfRendererInterface>
  */
 class PdfFootnote extends AbstractFootnote
 {
-    public function render(AbstractRenderer $renderer, bool $attrib = true): void
+    public function render(AbstractRenderer $renderer, bool $layout = true): void
     {
         $renderer->setCurrentStyle($renderer->getStyle('footnotenum'));
         $renderer->writeText($renderer->getCurrentStyleHeight(), $this->numText, $this->addlink);

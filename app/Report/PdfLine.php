@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees\Report;
  */
 class PdfLine extends AbstractLine
 {
-    public function render(AbstractRenderer $renderer, bool $attrib = true): void
+    public function render(AbstractRenderer $renderer, bool $layout = true): void
     {
         if ($this->x1 === AbstractElement::CURRENT_POSITION) {
             $this->x1 = $renderer->getX();

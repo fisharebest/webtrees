@@ -27,7 +27,7 @@ use function is_array;
  */
 class PdfTextBox extends AbstractTextBox
 {
-    public function render(AbstractRenderer $renderer, bool $attrib = true): void
+    public function render(AbstractRenderer $renderer, bool $layout = true): void
     {
         $this->collapseElements($renderer);
 
@@ -123,7 +123,7 @@ class PdfTextBox extends AbstractTextBox
             $cS .= 'F';
         }
         // Draw the border
-        if (!empty($cS)) {
+        if ($cS !== '') {
             if (!$renderer->isRTL()) {
                 $cXM = $cX;
             } else {

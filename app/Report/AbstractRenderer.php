@@ -246,7 +246,7 @@ abstract class AbstractRenderer implements ElementContainerInterface
 
     abstract public function newPage(): void;
 
-    abstract public function checkFootnote(AbstractFootnote $footnote): AbstractFootnote|false;
+    abstract public function checkFootnote(AbstractFootnote $footnote): void;
 
     abstract public function pageNo(): int;
 

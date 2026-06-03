@@ -28,15 +28,6 @@ namespace Fisharebest\Webtrees\Report;
  */
 interface PdfRendererInterface
 {
-    // Margin and layout helpers
-    public function addMarginX(float $x): float;
-
-    public function checkPageBreakPDF(float $height): bool;
-
-    public function getMaxLineWidth(): float;
-
-    public function getRemainingWidthPDF(): float;
-
     // Cursor positioning
     public function getX(): float;
 
@@ -50,6 +41,15 @@ interface PdfRendererInterface
 
     // Text measurement
     public function getStringWidth(string $text): float;
+
+   // Margin and layout helpers
+    public function addMarginX(float $x): float;
+
+    public function checkPageBreakPDF(float $height): bool;
+
+    public function getMaxLineWidth(): float;
+
+    public function getRemainingWidthPDF(): float;
 
     public function getNumLines(string $text, float $width): int;
 

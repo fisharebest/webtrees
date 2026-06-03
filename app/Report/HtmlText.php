@@ -27,16 +27,16 @@ use function substr_count;
  */
 class HtmlText extends AbstractText
 {
-    public function render(AbstractRenderer $renderer, bool $attrib = true): void
+    public function render(AbstractRenderer $renderer, bool $layout = true): void
     {
         // Set up the style
         $renderer->setCurrentStyle($this->style);
         $temptext = $this->resolvedText($renderer);
 
         // If any text at all
-        if (!empty($temptext)) {
+        if ($temptext !== '') {
             // If called by an other element
-            if (!$attrib) {
+            if (!$layout) {
                 $renderer->write($temptext, $this->color);
             } else {
                 // Save the start positions
@@ -60,7 +60,7 @@ class HtmlText extends AbstractText
                     echo "</div>\n";
                     $renderer->setX($startX + $renderer->getStringWidth($temptext));
                     if ($renderer->countLines($temptext) !== 1) {
-                        $renderer->setXy(0, $startY + $renderer->getTextCellHeight($temptext));
+                        $renderer->setXY(0, $startY + $renderer->getTextCellHeight($temptext));
                     }
                 }
             }

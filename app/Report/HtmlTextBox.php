@@ -26,7 +26,7 @@ use function count;
  */
 class HtmlTextBox extends AbstractTextBox
 {
-    public function render(AbstractRenderer $renderer, bool $attrib = true): void
+    public function render(AbstractRenderer $renderer, bool $layout = true): void
     {
         $this->collapseElements($renderer);
 
@@ -120,7 +120,7 @@ class HtmlTextBox extends AbstractTextBox
         // to get the correct current position => "."
         $cXT = $renderer->getX();
         $cYT = $renderer->getY();
-        $renderer->setXy(0, 0);
+        $renderer->setXY(0, 0);
 
         // Print the text elements
         foreach ($this->elements as $element) {
@@ -133,17 +133,17 @@ class HtmlTextBox extends AbstractTextBox
         echo "</div>\n";
 
         // Reset "margins"
-        $renderer->setXy($cXT, $cYT);
+        $renderer->setXY($cXT, $cYT);
         // This will be mostly used to trick the multiple images last height
         if ($this->reseth) {
             $cH = 0;
         }
         // New line and some clean-up
         if (!$this->newline) {
-            $renderer->setXy($cX + $this->width, $this->top);
+            $renderer->setXY($cX + $this->width, $this->top);
             $renderer->setLastCellHeight($cH);
         } else {
-            $renderer->setXy(0, $this->top + $cH + $cell_padding * 2);
+            $renderer->setXY(0, $this->top + $cH + $cell_padding * 2);
             $renderer->resetLastCellHeight();
         }
     }

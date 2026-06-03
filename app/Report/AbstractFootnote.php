@@ -35,7 +35,7 @@ abstract class AbstractFootnote extends AbstractElement
     protected Style $style;
 
     // Numbers for the links
-    public int $num;
+    public int $num = 0;
 
     // The text that will be printed with the number
     protected string $numText = '';
@@ -66,15 +66,11 @@ abstract class AbstractFootnote extends AbstractElement
         return $this->wrapWidthRemaining;
     }
 
-    public function setNum(int $n): void
+    public function setNumAndLink(int $num, string $link): void
     {
-        $this->num     = $n;
-        $this->numText = $n . ' ';
-    }
-
-    public function setAddlink(string $a): void
-    {
-        $this->addlink = $a;
+        $this->num     = $num;
+        $this->numText = $num . ' ';
+        $this->addlink = $link;
     }
 
     /**
@@ -111,7 +107,7 @@ abstract class AbstractFootnote extends AbstractElement
         $renderer->trackFontHeight($fsize);
 
         // Returns the Object if already numbered else false
-        if (empty($this->num)) {
+        if ($this->num === 0) {
             $renderer->checkFootnote($this);
         }
 

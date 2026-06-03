@@ -26,7 +26,7 @@ use function str_contains;
  */
 class HtmlCell extends AbstractCell
 {
-    public function render(AbstractRenderer $renderer, bool $attrib = true): void
+    public function render(AbstractRenderer $renderer, bool $layout = true): void
     {
         if ($this->containsTotalPages()) {
             return;
@@ -57,14 +57,14 @@ class HtmlCell extends AbstractCell
         echo $renderer->config->align_rtl, ':', $this->left, 'pt;';
 
         // Background color
-        if (!empty($this->bgcolor)) {
+        if ($this->bgcolor !== '') {
             echo 'background-color:', $this->bgcolor, ';';
         }
 
         // Borders
         $bpixX = 0;
         $bpixY = 0;
-        if (!empty($this->border)) {
+        if ($this->border !== '') {
             // Border all around
             if ($this->border === '1') {
                 echo ' border:solid ', $this->bocolor ?: 'black', ' 1pt;';
@@ -97,7 +97,7 @@ class HtmlCell extends AbstractCell
         $cW = $this->width - $renderer::CELL_PADDING * 2.0;
 
         // If there is any text
-        if (!empty($temptext)) {
+        if ($temptext !== '') {
             // Wrap the text
             $temptext = $renderer->textWrap($temptext, $cW);
             $tmph     = $renderer->getTextCellHeight($temptext);
@@ -135,14 +135,14 @@ class HtmlCell extends AbstractCell
         echo '">';
 
         // Print URL
-        if (!empty($this->url)) {
+        if ($this->url !== "") {
             echo '<a href="', $this->url, '">';
         }
         // Print any text if exists
-        if (!empty($temptext)) {
+        if ($temptext !== '') {
             $renderer->write($temptext, $this->tcolor, false);
         }
-        if (!empty($this->url)) {
+        if ($this->url !== "") {
             echo '</a>';
         }
         // Finish the cell printing and start to clean up
@@ -152,18 +152,18 @@ class HtmlCell extends AbstractCell
         switch ($this->newline) {
             case CellNewline::Right:
                 // -> Next to this cell in the same line
-                $renderer->setXy($this->left + $this->width, $this->top);
+                $renderer->setXY($this->left + $this->width, $this->top);
                 $renderer->setLastCellHeight($this->height);
                 break;
             case CellNewline::NextLine:
                 // -> On a new line at the margin - Default
-                $renderer->setXy(0, $renderer->getY() + $this->height + $renderer::CELL_PADDING * 2);
+                $renderer->setXY(0, $renderer->getY() + $this->height + $renderer::CELL_PADDING * 2);
                 // Reset the last cell height for the next line
                 $renderer->resetLastCellHeight();
                 break;
             case CellNewline::Below:
                 // -> On a new line at the end of this cell
-                $renderer->setXy($renderer->getX() + $this->width, $renderer->getY() + $this->height + $renderer::CELL_PADDING * 2);
+                $renderer->setXY($renderer->getX() + $this->width, $renderer->getY() + $this->height + $renderer::CELL_PADDING * 2);
                 // Reset the last cell height for the next line
                 $renderer->resetLastCellHeight();
                 break;

@@ -62,9 +62,9 @@ abstract class AbstractElement
 
     /**
      * @param TRenderer $renderer
-     * @param bool      $attrib - true (element handles position/layout) false (parent TextBox handles position/layout)
+     * @param bool      $layout - true (element handles layout) false (parent handles layout)
      */
-    abstract public function render(AbstractRenderer $renderer, bool $attrib = true): void;
+    abstract public function render(AbstractRenderer $renderer, bool $layout = true): void;
 
     /**
      * @param TRenderer $renderer

@@ -29,7 +29,7 @@ namespace Fisharebest\Webtrees\Report;
  */
 class NullElement extends AbstractElement
 {
-    public function render(AbstractRenderer $renderer, bool $attrib = true): void
+    public function render(AbstractRenderer $renderer, bool $layout = true): void
     {
     }
 }

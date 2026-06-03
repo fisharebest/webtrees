@@ -26,7 +26,7 @@ use function str_replace;
  */
 class PdfText extends AbstractText
 {
-    public function render(AbstractRenderer $renderer, bool $attrib = true): void
+    public function render(AbstractRenderer $renderer, bool $layout = true): void
     {
         $renderer->setCurrentStyle($this->style);
         $temptext = $this->resolvedText($renderer);
