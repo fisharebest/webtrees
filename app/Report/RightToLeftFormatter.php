@@ -713,7 +713,7 @@ final class RightToLeftFormatter
                 }
                 if (str_ends_with($textSpan, '&nbsp;')) {
                     $trailingString = '&nbsp;' . $trailingString;
-                    $textSpan       = substr($textSpan, 0, -1);
+                    $textSpan       = substr($textSpan, 0, -6);
                     continue;
                 }
                 if (substr($textSpan, -3) !== UTF8::POP_DIRECTIONAL_FORMATTING) {
@@ -735,7 +735,7 @@ final class RightToLeftFormatter
                     }
                     if (str_ends_with($textSpan, '&nbsp;')) {
                         $trailingString = '&nbsp;' . $trailingString;
-                        $textSpan       = substr($textSpan, 0, -1);
+                        $textSpan       = substr($textSpan, 0, -6);
                         continue;
                     }
                     break;
@@ -800,7 +800,7 @@ final class RightToLeftFormatter
                     }
                     if (str_ends_with($textSpan, '&nbsp;')) {
                         $trailingBlanks = '&nbsp;' . $trailingBlanks;
-                        $textSpan       = substr($textSpan, 0, -1);
+                        $textSpan       = substr($textSpan, 0, -6);
                         continue;
                     }
                     break;
@@ -965,7 +965,7 @@ final class RightToLeftFormatter
                 }
                 if (str_ends_with($textSpan, '&nbsp;')) {
                     $trailingString = '&nbsp;' . $trailingString;
-                    $textSpan       = substr($textSpan, 0, -1);
+                    $textSpan       = substr($textSpan, 0, -6);
                     continue;
                 }
                 if (substr($textSpan, -3) !== UTF8::POP_DIRECTIONAL_FORMATTING) {
@@ -987,7 +987,7 @@ final class RightToLeftFormatter
                     }
                     if (str_ends_with($textSpan, '&nbsp;')) {
                         $trailingString = '&nbsp;' . $trailingString;
-                        $textSpan       = substr($textSpan, 0, -1);
+                        $textSpan       = substr($textSpan, 0, -6);
                         continue;
                     }
                     break;
