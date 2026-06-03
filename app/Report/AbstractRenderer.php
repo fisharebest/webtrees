@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\MediaFile;
 
+use function substr_count;
+
 abstract class AbstractRenderer implements ElementContainerInterface
 {
     // The default font size when none is specified in the XML
@@ -85,6 +87,18 @@ abstract class AbstractRenderer implements ElementContainerInterface
     abstract public function run(): void;
 
     abstract public function setCurrentStyle(Style $style): void;
+
+    abstract public function getStringWidth(string $text): float;
+
+    /** Count the number of lines in a string. Returns 0 for empty text. */
+    public function countLines(string $text): int
+    {
+        if ($text === '') {
+            return 0;
+        }
+
+        return substr_count($text, "\n") + 1;
+    }
 
     /**
      * @param float       $width   cell width (expressed in points)

@@ -141,7 +141,11 @@ abstract class AbstractElement
      */
     public function resolvedText(AbstractRenderer $renderer): string
     {
-        return str_replace(self::PAGE_NUMBER_TOKEN, (string) $renderer->pageNo(), $this->text);
+        return str_replace(
+            [self::PAGE_NUMBER_TOKEN, '«', '»'],
+            [(string) $renderer->pageNo(), '<u>', '</u>'],
+            $this->text
+        );
     }
 
     public function getValue(): string

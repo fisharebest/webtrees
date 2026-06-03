@@ -19,6 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use function abs;
+use function count;
+use function is_object;
+use function ksort;
+use function str_replace;
+use function trim;
+
 /**
  * @template TRenderer of AbstractRenderer
  *
@@ -51,5 +58,139 @@ abstract class AbstractTextBox extends AbstractElement implements ElementContain
     public function addElement(AbstractElement $element): void
     {
         $this->elements[] = $element;
+    }
+
+    /**
+     * Merge consecutive text elements that share the same style, sort
+     * footnotes by number, and discard empty non-text elements.
+     *
+     * @param TRenderer $renderer
+     */
+    protected function collapseElements(AbstractRenderer $renderer): void
+    {
+        $newelements      = [];
+        $lastelement      = '';
+        $footnote_element = [];
+        $cE               = count($this->elements);
+
+        for ($i = 0; $i < $cE; $i++) {
+            $element = $this->elements[$i];
+            if ($element instanceof AbstractElement) {
+                if ($element instanceof AbstractText) {
+                    if (!empty($footnote_element)) {
+                        ksort($footnote_element);
+                        foreach ($footnote_element as $links) {
+                            $newelements[] = $links;
+                        }
+                        $footnote_element = [];
+                    }
+                    if (empty($lastelement)) {
+                        $lastelement = $element;
+                    } elseif ($element->getStyle() === $lastelement->getStyle()) {
+                        // Merge text with the same style
+                        $lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
+                    } else {
+                        $newelements[] = $lastelement;
+                        $lastelement   = $element;
+                    }
+                } elseif ($element instanceof AbstractFootnote) {
+                    // Check if the Footnote has been set with its link number
+                    $renderer->checkFootnote($element);
+                    // Save the last element if any
+                    if (!empty($lastelement)) {
+                        $newelements[] = $lastelement;
+                        $lastelement   = '';
+                    }
+                    // Save the Footnote with its link number as key for sorting later
+                    $footnote_element[$element->num] = $element;
+                } elseif (trim($element->getValue()) !== '') {
+                    // Do not keep empty elements
+                    if (!empty($footnote_element)) {
+                        ksort($footnote_element);
+                        foreach ($footnote_element as $links) {
+                            $newelements[] = $links;
+                        }
+                        $footnote_element = [];
+                    }
+                    if (!empty($lastelement)) {
+                        $newelements[] = $lastelement;
+                        $lastelement   = '';
+                    }
+                    $newelements[] = $element;
+                }
+            } else {
+                if (!empty($lastelement)) {
+                    $newelements[] = $lastelement;
+                    $lastelement   = '';
+                }
+                if (!empty($footnote_element)) {
+                    ksort($footnote_element);
+                    foreach ($footnote_element as $links) {
+                        $newelements[] = $links;
+                    }
+                    $footnote_element = [];
+                }
+                $newelements[] = $element;
+            }
+        }
+        if (!empty($lastelement)) {
+            $newelements[] = $lastelement;
+        }
+        if (!empty($footnote_element)) {
+            ksort($footnote_element);
+            foreach ($footnote_element as $links) {
+                $newelements[] = $links;
+            }
+        }
+        $this->elements = $newelements;
+    }
+
+    /**
+     * Iterate elements to calculate line count, element height, and footnote height.
+     *
+     * @param TRenderer $renderer
+     * @param float     $wrap_width Available width for text wrapping
+     *
+     * @return array{line_count: int, element_height: float, footnote_height: float}
+     */
+    protected function calculateElementDimensions(AbstractRenderer $renderer, float $wrap_width): array
+    {
+        $line_count      = 0;
+        $element_height  = 0.0;
+        $footnote_height = 0.0;
+        $w               = 0;
+        $cE              = count($this->elements);
+
+        for ($i = 0; $i < $cE; $i++) {
+            if (is_object($this->elements[$i])) {
+                $ew = $this->elements[$i]->setWrapWidth($wrap_width - $w, $wrap_width);
+                if ($ew === $wrap_width) {
+                    $w = 0;
+                }
+                $lw = $this->elements[$i]->getWidth($renderer);
+                // Accumulate line feed count
+                $line_count += $lw[2];
+                if ($lw[1] === 1) {
+                    $w = $lw[0];
+                } elseif ($lw[1] === 2) {
+                    $w = 0;
+                } else {
+                    $w += $lw[0];
+                }
+                if ($w > $wrap_width) {
+                    $w = $lw[0];
+                }
+                // For non-text elements (images), accumulate height
+                $element_height += $this->elements[$i]->getHeight($renderer);
+            } else {
+                $footnote_height += abs($renderer->getFootnotesHeight($wrap_width));
+            }
+        }
+
+        return [
+            'line_count'      => $line_count,
+            'element_height'  => $element_height,
+            'footnote_height' => $footnote_height,
+        ];
     }
 }

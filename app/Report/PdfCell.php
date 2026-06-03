@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use function is_array;
-use function str_replace;
 
 /**
  * @extends AbstractCell<AbstractRenderer&PdfRendererInterface>
@@ -30,8 +29,6 @@ class PdfCell extends AbstractCell
     public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
         $temptext = $this->resolvedText($renderer);
-        // underline «title» part of Source item
-        $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
 
         $renderer->setCurrentStyle($this->style);
 

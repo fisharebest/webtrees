@@ -19,10 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use function count;
-use function explode;
 use function str_replace;
-use function substr_count;
 
 /**
  * @extends AbstractText<AbstractRenderer&PdfRendererInterface>
@@ -33,8 +30,6 @@ class PdfText extends AbstractText
     {
         $renderer->setCurrentStyle($this->style);
         $temptext = $this->resolvedText($renderer);
-        // underline «title» part of Source item
-        $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
 
         if ($this->color === '') {
             $renderer->setTextColor(0, 0, 0);
@@ -67,94 +62,5 @@ class PdfText extends AbstractText
     public function getHeight(AbstractRenderer $renderer): float
     {
         return 0;
-    }
-
-    /**
-     * Splits the text into lines if necessary to fit into a giving cell
-     *
-     *
-     * @return array{0:float,1:int,2:float}
-     */
-    public function getWidth(AbstractRenderer $renderer): array
-    {
-        $renderer->setCurrentStyle($this->style);
-
-        // Check for the largest font size in the box
-        $fsize = $renderer->getCurrentStyleHeight();
-        $renderer->trackFontHeight($fsize);
-
-        // Get the line width for the text in points
-        $lw = $renderer->getStringWidth($this->text);
-        // Line Feed counter - Number of lines in the text
-        $lfct = substr_count($this->text, "\n") + 1;
-        // If there is still remaining wrap width...
-        $wrapWidthRemaining = $this->wrapWidthRemaining;
-        if ($wrapWidthRemaining > 0) {
-            // Check with line counter too!
-            if ($lw >= $wrapWidthRemaining || $lfct > 1) {
-                $newtext = '';
-                $lines   = explode("\n", $this->text);
-                // Go through the text line by line
-                foreach ($lines as $line) {
-                    // Line width in points + a little margin
-                    $lw = $renderer->getStringWidth($line);
-                    // If the line has to be wrapped
-                    if ($lw > $wrapWidthRemaining) {
-                        $words    = explode(' ', $line);
-                        $addspace = count($words);
-                        $lw       = 0;
-                        foreach ($words as $word) {
-                            $addspace--;
-                            $lw += $renderer->getStringWidth($word . ' ');
-                            if ($lw <= $wrapWidthRemaining) {
-                                $newtext .= $word;
-                                if ($addspace !== 0) {
-                                    $newtext .= ' ';
-                                }
-                            } else {
-                                $lw = $renderer->getStringWidth($word . ' ');
-                                $newtext .= "\n$word";
-                                if ($addspace !== 0) {
-                                    $newtext .= ' ';
-                                }
-                                // Reset the wrap width to the cell width
-                                $wrapWidthRemaining = $this->wrapWidthCell;
-                            }
-                        }
-                    } else {
-                        $newtext .= $line;
-                    }
-                    // Check the Line Feed counter
-                    if ($lfct > 1) {
-                        // Add a new line as long as it's not the last line
-                        $newtext .= "\n";
-                        // Reset the line width
-                        $lw = 0;
-                        // Reset the wrap width to the cell width
-                        $wrapWidthRemaining = $this->wrapWidthCell;
-                    }
-                    $lfct--;
-                }
-                $this->text = $newtext;
-                $lfct       = substr_count($this->text, "\n");
-
-                return [
-                    $lw,
-                    1,
-                    $lfct,
-                ];
-            }
-        }
-        $l    = 0;
-        $lfct = substr_count($this->text, "\n");
-        if ($lfct > 0) {
-            $l = 2;
-        }
-
-        return [
-            $lw,
-            $l,
-            $lfct,
-        ];
     }
 }

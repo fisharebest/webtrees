@@ -30,8 +30,6 @@ interface HtmlRendererInterface
 {
     public function addMaxY(float $y): void;
 
-    public function countLines(string $str): int;
-
     public function getRemainingWidth(): float;
 
     public function getStringWidth(string $text): float;

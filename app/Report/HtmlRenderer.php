@@ -32,7 +32,6 @@ use function explode;
 use function implode;
 use function str_replace;
 use function stripos;
-use function substr_count;
 
 class HtmlRenderer extends AbstractRenderer implements HtmlRendererInterface
 {
@@ -274,15 +273,6 @@ class HtmlRenderer extends AbstractRenderer implements HtmlRendererInterface
         $this->printedfootnotes[] = $footnote;
 
         return false;
-    }
-
-    public function countLines(string $str): int
-    {
-        if ($str === '') {
-            return 0;
-        }
-
-        return substr_count($str, "\n") + 1;
     }
 
     public function getFootnotesHeight(float $cellWidth = 0): float

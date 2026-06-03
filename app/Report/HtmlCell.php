@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use function str_contains;
-use function str_replace;
 
 /**
  * @extends AbstractCell<AbstractRenderer&HtmlRendererInterface>
@@ -33,8 +32,6 @@ class HtmlCell extends AbstractCell
             return;
         }
         $temptext = $this->resolvedText($renderer);
-        // underline «title» part of Source item
-        $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
 
         // Set up the text style
         $renderer->setCurrentStyle($this->style);

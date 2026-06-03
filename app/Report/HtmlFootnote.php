@@ -19,9 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use function count;
-use function explode;
-use function str_replace;
 use function substr_count;
 
 /**
@@ -39,11 +36,7 @@ class HtmlFootnote extends AbstractFootnote
 
     public function renderFootnote(AbstractRenderer $renderer): void
     {
-        $renderer->setCurrentStyle($this->style);
-
-        $temptext = $this->resolvedText($renderer);
-        // underline «title» part of Source item
-        $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
+        $temptext = $this->resolvedFootnoteText($renderer);
         echo '<div><a id="footnote', $this->num, '"></a>';
         $renderer->write($this->num . '. ' . $temptext);
         echo '</div>';
@@ -67,101 +60,5 @@ class HtmlFootnote extends AbstractFootnote
         $fsize      = $renderer->getCurrentStyleHeight();
 
         return $fsize * $ct * $renderer::LINE_HEIGHT_RATIO;
-    }
-
-    /**
-     * Get the width of text
-     * Breaks up a text into lines if needed
-     *
-     *
-     * @return array{0:float,1:int,2:float}
-     */
-    public function getWidth(AbstractRenderer $renderer): array
-    {
-        // Setup the style name
-        $renderer->setCurrentStyle($renderer->getStyle('footnotenum'));
-
-        // Check for the largest font size in the box
-        $fsize = $renderer->getCurrentStyleHeight();
-        $renderer->trackFontHeight($fsize);
-
-        // Returns the Object if already numbered else false
-        if (empty($this->num)) {
-            $renderer->checkFootnote($this);
-        }
-
-        // Get the line width for the text in points + a little margin
-        $lw = $renderer->getStringWidth($this->numText);
-        // Line Feed counter - Number of lines in the text
-        $lfct = $renderer->countLines($this->numText);
-        // If there is still remaining wrap width...
-        if ($this->wrapWidthRemaining > 0) {
-            // Check with line counter too!
-            if ($lw >= $this->wrapWidthRemaining || $lfct > 1) {
-                $newtext            = '';
-                $wrapWidthRemaining = $this->wrapWidthRemaining;
-                $lines              = explode("\n", $this->numText);
-                // Go through the text line by line
-                foreach ($lines as $line) {
-                    // Line width in points + a little margin
-                    $lw = $renderer->getStringWidth($line);
-                    // If the line has to be wrapped
-                    if ($lw > $wrapWidthRemaining) {
-                        $words    = explode(' ', $line);
-                        $addspace = count($words);
-                        $lw       = 0;
-                        foreach ($words as $word) {
-                            $addspace--;
-                            $lw += $renderer->getStringWidth($word . ' ');
-                            if ($lw <= $wrapWidthRemaining) {
-                                $newtext .= $word;
-                                if ($addspace !== 0) {
-                                    $newtext .= ' ';
-                                }
-                            } else {
-                                $lw = $renderer->getStringWidth($word . ' ');
-                                $newtext .= "\n$word";
-                                if ($addspace !== 0) {
-                                    $newtext .= ' ';
-                                }
-                                // Reset the wrap width to the cell width
-                                $wrapWidthRemaining = $this->wrapWidthCell;
-                            }
-                        }
-                    } else {
-                        $newtext .= $line;
-                    }
-                    // Check the Line Feed counter
-                    if ($lfct > 1) {
-                        // Add a new line feed as long as it’s not the last line
-                        $newtext .= "\n";
-                        // Reset the line width
-                        $lw = 0;
-                        // Reset the wrap width to the cell width
-                        $wrapWidthRemaining = $this->wrapWidthCell;
-                    }
-                    $lfct--;
-                }
-                $this->numText = $newtext;
-                $lfct          = substr_count($this->numText, "\n");
-
-                return [
-                    $lw,
-                    1,
-                    $lfct,
-                ];
-            }
-        }
-        $l    = 0;
-        $lfct = substr_count($this->numText, "\n");
-        if ($lfct > 0) {
-            $l = 2;
-        }
-
-        return [
-            $lw,
-            $l,
-            $lfct,
-        ];
     }
 }

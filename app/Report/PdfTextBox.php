@@ -21,10 +21,6 @@ namespace Fisharebest\Webtrees\Report;
 
 use function count;
 use function is_array;
-use function is_object;
-use function ksort;
-use function str_replace;
-use function trim;
 
 /**
  * @extends AbstractTextBox<AbstractRenderer&PdfRendererInterface>
@@ -33,81 +29,7 @@ class PdfTextBox extends AbstractTextBox
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
-        $newelements      = [];
-        $lastelement      = '';
-        $footnote_element = [];
-        // Element counter
-        $cE = count($this->elements);
-        //-- collapse duplicate elements
-        for ($i = 0; $i < $cE; $i++) {
-            $element = $this->elements[$i];
-            if ($element instanceof AbstractElement) {
-                if ($element instanceof AbstractText) {
-                    ksort($footnote_element);
-                    foreach ($footnote_element as $links) {
-                        $newelements[] = $links;
-                    }
-                    $footnote_element = [];
-                    if (empty($lastelement)) {
-                        $lastelement = $element;
-                    } elseif ($element->getStyle() === $lastelement->getStyle()) {
-                        // Checking if the Text has the same style
-                        $lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
-                    } else {
-                        $newelements[] = $lastelement;
-                        $lastelement   = $element;
-                    }
-                } elseif ($element instanceof AbstractFootnote) {
-                    // Check if the Footnote has been set with its link number
-                    $renderer->checkFootnote($element);
-                    // Save first the last element if any
-                    if (!empty($lastelement)) {
-                        $newelements[] = $lastelement;
-                        $lastelement   = [];
-                    }
-                    // Save the Footnote with its link number as key for sorting later
-                    $footnote_element[$element->num] = $element;
-                } elseif (!$element instanceof AbstractFootnote || trim($element->getValue()) !== '') {
-                    // Do not keep empty footnotes
-                    if (!empty($footnote_element)) {
-                        ksort($footnote_element);
-                        foreach ($footnote_element as $links) {
-                            $newelements[] = $links;
-                        }
-                        $footnote_element = [];
-                    }
-                    if (!empty($lastelement)) {
-                        $newelements[] = $lastelement;
-                        $lastelement   = [];
-                    }
-                    $newelements[] = $element;
-                }
-            } else {
-                if (!empty($lastelement)) {
-                    $newelements[] = $lastelement;
-                    $lastelement   = [];
-                }
-                if (!empty($footnote_element)) {
-                    ksort($footnote_element);
-                    foreach ($footnote_element as $links) {
-                        $newelements[] = $links;
-                    }
-                    $footnote_element = [];
-                }
-                $newelements[] = $element;
-            }
-        }
-        if (!empty($lastelement)) {
-            $newelements[] = $lastelement;
-        }
-        if (!empty($footnote_element)) {
-            ksort($footnote_element);
-            foreach ($footnote_element as $links) {
-                $newelements[] = $links;
-            }
-        }
-        $this->elements = $newelements;
-        unset($footnote_element, $lastelement, $links, $newelements);
+        $this->collapseElements($renderer);
 
         // Used with line breaks and cell height calculation within this box
         $renderer->resetLargestFontHeight();
@@ -144,49 +66,15 @@ class PdfTextBox extends AbstractTextBox
         } else {
             $cWT = $cW - $cM['cell'] * 2;
         }
-        // Element height (except text)
-        $eH = 0.0;
-        $w  = 0;
-        // Temp Height
-        $cHT = 0;
-        //-- $lw is an array
-        // 0 => last line width
-        // 1 => 1 if text was wrapped, 0 if text did not wrap
-        // 2 => number of LF
-        $lw = [];
-        // Element counter
-        $cE = count($this->elements);
-        //-- calculate the text box height + width
-        for ($i = 0; $i < $cE; $i++) {
-            if (is_object($this->elements[$i])) {
-                $ew = $this->elements[$i]->setWrapWidth($cWT - $w, $cWT);
-                if ($ew === $cWT) {
-                    $w = 0;
-                }
-                $lw = $this->elements[$i]->getWidth($renderer);
-                // Text is already gets the # LF
-                $cHT += $lw[2];
-                if ($lw[1] === 1) {
-                    $w = $lw[0];
-                } elseif ($lw[1] === 2) {
-                    $w = 0;
-                } else {
-                    $w += $lw[0];
-                }
-                if ($w > $cWT) {
-                    $w = $lw[0];
-                }
-                // Footnote is at the bottom of the page. No need to calculate it's height or wrap the text!
-                // We are changing the margins anyway!
-                // For anything else but text (images), get the height
-                $eH += $this->elements[$i]->getHeight($renderer);
-            }
-        }
+        // Calculate element dimensions
+        $dimensions = $this->calculateElementDimensions($renderer, $cWT);
+        $cHT        = $dimensions['line_count'];
+        $eH         = $dimensions['element_height'];
 
         // Add up what's the final height
         $cH = $this->height;
         // If any element exist
-        if ($cE > 0) {
+        if (count($this->elements) > 0) {
             // Check if this is text or some other element, like images
             if ($eH === 0.0) {
                 // This is text elements. Number of LF but at least one line
@@ -234,8 +122,6 @@ class PdfTextBox extends AbstractTextBox
             $renderer->setFillColor($hex->red, $hex->green, $hex->blue);
             $cS .= 'F';
         }
-        // Clean up a bit
-        unset($lw, $w, $cE, $eH);
         // Draw the border
         if (!empty($cS)) {
             if (!$renderer->isRTL()) {

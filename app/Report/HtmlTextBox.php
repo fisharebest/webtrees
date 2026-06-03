@@ -19,12 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use function abs;
 use function count;
-use function is_object;
-use function ksort;
-use function str_replace;
-use function trim;
 
 /**
  * @extends AbstractTextBox<AbstractRenderer&HtmlRendererInterface>
@@ -33,84 +28,7 @@ class HtmlTextBox extends AbstractTextBox
 {
     public function render(AbstractRenderer $renderer, bool $attrib = true): void
     {
-        // checkFootnote
-        $newelements      = [];
-        $lastelement      = [];
-        $footnote_element = [];
-        // Element counter
-        $cE = count($this->elements);
-        //-- collapse duplicate elements
-        for ($i = 0; $i < $cE; $i++) {
-            $element = $this->elements[$i];
-            if ($element instanceof AbstractElement) {
-                if ($element instanceof AbstractText) {
-                    if (!empty($footnote_element)) {
-                        ksort($footnote_element);
-                        foreach ($footnote_element as $links) {
-                            $newelements[] = $links;
-                        }
-                        $footnote_element = [];
-                    }
-                    if (empty($lastelement)) {
-                        $lastelement = $element;
-                    } elseif ($element->getStyle() === $lastelement->getStyle()) {
-                        // Checking if the Text has the same style
-                        $lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
-                    } else {
-                        $newelements[] = $lastelement;
-                        $lastelement   = $element;
-                    }
-                } elseif ($element instanceof AbstractFootnote) {
-                    // Check if the Footnote has been set with its link number
-                    $renderer->checkFootnote($element);
-                    // Save first the last element if any
-                    if (!empty($lastelement)) {
-                        $newelements[] = $lastelement;
-                        $lastelement   = [];
-                    }
-                    // Save the Footnote with it’s link number as key for sorting later
-                    $footnote_element[$element->num] = $element;
-                } elseif (trim($element->getValue()) !== '') {
-                    // Do not keep empty footnotes
-                    if (!empty($footnote_element)) {
-                        ksort($footnote_element);
-                        foreach ($footnote_element as $links) {
-                            $newelements[] = $links;
-                        }
-                        $footnote_element = [];
-                    }
-                    if (!empty($lastelement)) {
-                        $newelements[] = $lastelement;
-                        $lastelement   = [];
-                    }
-                    $newelements[] = $element;
-                }
-            } else {
-                if (!empty($lastelement)) {
-                    $newelements[] = $lastelement;
-                    $lastelement   = [];
-                }
-                if (!empty($footnote_element)) {
-                    ksort($footnote_element);
-                    foreach ($footnote_element as $links) {
-                        $newelements[] = $links;
-                    }
-                    $footnote_element = [];
-                }
-                $newelements[] = $element;
-            }
-        }
-        if (!empty($lastelement)) {
-            $newelements[] = $lastelement;
-        }
-        if (!empty($footnote_element)) {
-            ksort($footnote_element);
-            foreach ($footnote_element as $links) {
-                $newelements[] = $links;
-            }
-        }
-        $this->elements = $newelements;
-        unset($footnote_element, $lastelement, $newelements);
+        $this->collapseElements($renderer);
 
         $cell_padding = $this->padding ? $renderer::CELL_PADDING : 0.0;
 
@@ -138,51 +56,16 @@ class HtmlTextBox extends AbstractTextBox
         // For padding, we have to use less wrap width
         $cW = $this->width - $cell_padding * 2.0;
 
-        //-- calculate the text box height
-        // Number of lines, will be converted to height
-        $cHT = 0;
-        // Element height (except text)
-        $eH = 0.0;
-        // Footnote height (in points)
-        $fH = 0;
-        $w  = 0;
-        //-- $lw is an array
-        // 0 => last line width
-        // 1 => 1 if text was wrapped, 0 if text did not wrap
-        // 2 => number of LF
-        $lw = [];
-        // Element counter
-        $cE = count($this->elements);
-        for ($i = 0; $i < $cE; $i++) {
-            if (is_object($this->elements[$i])) {
-                $ew = $this->elements[$i]->setWrapWidth($cW - $w - 2, $cW);
-                if ($ew === $cW) {
-                    $w = 0;
-                }
-                $lw = $this->elements[$i]->getWidth($renderer);
-                // Text is already gets the # LF
-                $cHT += $lw[2];
-                if ($lw[1] === 1) {
-                    $w = $lw[0];
-                } elseif ($lw[1] === 2) {
-                    $w = 0;
-                } else {
-                    $w += $lw[0];
-                }
-                if ($w > $cW) {
-                    $w = $lw[0];
-                }
-                // For anything else but text (images), get the height
-                $eH += $this->elements[$i]->getHeight($renderer);
-            } else {
-                $fH += abs($renderer->getFootnotesHeight($cW));
-            }
-        }
+        // Calculate element dimensions
+        $dimensions = $this->calculateElementDimensions($renderer, $cW);
+        $cHT        = $dimensions['line_count'];
+        $eH         = $dimensions['element_height'];
+        $fH         = $dimensions['footnote_height'];
 
-        // Add up what’s the final height
+        // Add up what's the final height
         $cH = $this->height;
         // If any element exist
-        if ($cE > 0) {
+        if (count($this->elements) > 0) {
             // Check if this is text or some other element, like images
             if ($eH === 0.0) {
                 // Number of LF but at least one line
@@ -202,7 +85,6 @@ class HtmlTextBox extends AbstractTextBox
             }
         }
 
-        unset($lw, $cHT, $fH, $w);
 
         // Finally, check the last cells height
         if ($cH < $renderer->getLastCellHeight()) {
