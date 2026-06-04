@@ -59,9 +59,6 @@ final class GedcomTextReader
         $tag          = trim($tag);
         $searchTarget = "~[\n]" . $tag . "[\s]~";
         $ct           = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
-        if ($ct === 0) {
-            return '';
-        }
         if ($ct < $num) {
             return '';
         }
@@ -69,9 +66,6 @@ final class GedcomTextReader
         $pos2 = strpos($gedrec, "\n$level", $pos1 + 1);
         if (!$pos2) {
             $pos2 = strpos($gedrec, "\n1", $pos1 + 1);
-        }
-        if (!$pos2) {
-            $pos2 = strpos($gedrec, "\nWT_", $pos1 + 1); // WT_SPOUSE, WT_FAMILY_ID ...
         }
         if (!$pos2) {
             return ltrim(substr($gedrec, $pos1));
