@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use LogicException;
+
 use function str_contains;
 use function str_replace;
 use function strip_tags;
@@ -86,8 +88,17 @@ abstract class AbstractElement
 
     public function addText(string $t): void
     {
+        // The handler for <br/> inserts a '<br>' string into the text.
+        // There should be no HTML entities. The XMLReader will error if they
+        // exist, or convert them if defined using: <!ENTITY nbsp "&#xA0;">
+
         $t = trim($t, "\r\n\t");
         $t = strtr($t, ['<br>' => "\n", '&nbsp;' => "\u{A0}"]);
+
+        // Embedded variables report logic should not generate HTML.
+        if ($t !== strip_tags($t)) {
+            throw new LogicException('HTML tags are not allowed in text: ' . $t);
+        }
 
         $this->text .= strip_tags($t);
     }

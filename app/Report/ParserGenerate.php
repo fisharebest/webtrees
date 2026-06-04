@@ -733,7 +733,7 @@ class ParserGenerate extends AbstractParser
                         break;
                     case 'PLAC':
                         $tmp   = new Place($value, $this->tree);
-                        $value = $tmp->shortName();
+                        $value = strip_tags($tmp->shortName());
                         break;
                 }
                 if ($use_break) {
@@ -899,7 +899,7 @@ class ParserGenerate extends AbstractParser
         if (isset($attrs['date'])) {
             if ($attrs['date'] === '1') {
                 $g   = new Date($var);
-                $var = $g->display();
+                $var = strip_tags($g->display());
             }
         }
         $this->current_element->addText($var);
