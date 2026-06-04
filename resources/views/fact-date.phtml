@@ -49,7 +49,7 @@ if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
     $date = new Date($match[1]);
     $html .= ' ' . $date->display($cal_link ? $record->tree() : null, null, true);
     // Time isn't valid GEDCOM, but it is widely used.
-    if ($time && preg_match('/\n3 TIME (.+)/', $factrec, $match) === 1) {
+    if ($time && preg_match('/\n3 [_]?TIME (.+)/', $factrec, $match) === 1) {
         $html .= ' – <span class="date">' . $match[1] . '</span>';
     }
 

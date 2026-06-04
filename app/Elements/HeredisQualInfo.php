@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2026 webtrees development team
+ * Copyright (C) 2025 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -17,24 +17,25 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\CustomTags;
+namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\TestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
+use Fisharebest\Webtrees\I18N;
 
-#[CoversClass(Heredis::class)]
-class HeredisTest extends TestCase
+/**
+ * Heredis custom tag *:*:SOUR:_QUAL:_INFO - quality of the information
+ */
+class HeredisQualInfo extends AbstractElement
 {
-    public function testClass(): void
+    /**
+     * A list of controlled values for this element
+     *
+     * @return array<int|string,string>
+     */
+    public function values(): array
     {
-        self::assertTrue(class_exists(Heredis::class));
-    }
-
-    public function testHeredis(): void
-    {
-        $heredis = new Heredis();
-        self::assertSame('Heredis', $heredis->name());
-        self::assertArrayHasKey('HEAD:_GUID', $heredis->tags());
-        self::assertArrayHasKey('SOUR:_CREA', $heredis->tags());
+        return [
+            'P'  => I18N::translate('Primary'),
+            'S'  => I18N::translate('Secondary'),
+        ];
     }
 }
