@@ -30,4 +30,13 @@ class FootnoteTextsElement extends AbstractElement
     {
         $renderer->footnotes();
     }
+
+    public function getValue(): string
+    {
+        // This element doesn't have any content of its own - it is just
+        // a placeholder to display footnotes accumulated in the renderer.
+        // But we need it to appear non-empty, so it doesn't get filtered out
+        // in AbstractTextBox::collapseElements()
+        return 'dummy';
+    }
 }

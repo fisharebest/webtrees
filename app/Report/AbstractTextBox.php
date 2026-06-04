@@ -102,7 +102,6 @@ abstract class AbstractTextBox extends AbstractElement implements ElementContain
                     // Save the Footnote with its link number as key for sorting later
                     $footnote_element[$element->num] = $element;
                 } elseif (trim($element->getValue()) !== '') {
-                    // Do not keep empty elements
                     if ($footnote_element !== []) {
                         ksort($footnote_element);
                         foreach ($footnote_element as $links) {
