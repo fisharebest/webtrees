@@ -724,6 +724,7 @@ class UTF8 extends AbstractEncoding
     public const string POP_DIRECTIONAL_FORMATTING                            = "\u{202C}";
     public const string LEFT_TO_RIGHT_OVERRIDE                                = "\u{202D}";
     public const string RIGHT_TO_LEFT_OVERRIDE                                = "\u{202E}";
+    public const string NARROW_NO_BREAK_SPACE                                 = "\u{202F}";
     public const string PER_MILLE_SIGN                                        = "\u{2030}";
     public const string SINGLE_LEFT_POINTING_ANGLE_QUOTATION_MARK             = "\u{2039}";
     public const string SINGLE_RIGHT_POINTING_ANGLE_QUOTATION_MARK            = "\u{203A}";

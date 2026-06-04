@@ -69,7 +69,7 @@ abstract class AbstractFootnote extends AbstractElement
     public function setNumAndLink(int $num, string $link): void
     {
         $this->num     = $num;
-        $this->numText = $num . ' ';
+        $this->numText = (string) $num;
         $this->addlink = $link;
     }
 

@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use Fisharebest\Webtrees\Encodings\UTF8;
+
 use function substr_count;
 
 /**
@@ -28,10 +30,10 @@ class HtmlFootnote extends AbstractFootnote
 {
     public function render(AbstractRenderer $renderer, bool $layout = true): void
     {
-        $renderer->setCurrentStyle($renderer->getStyle('footnotenum'));
-        echo '<a href="#footnote', $this->num, '"><sup>';
-        $renderer->write($renderer->config->entity_rtl . $this->num);
-        echo "</sup></a>\n";
+        // Ignore the 'footnotenum' style.  Just use HTML superscript.
+        echo
+            UTF8::NARROW_NO_BREAK_SPACE .
+            '<a href="#footnote' . $this->num . '" dir="ltr"><sup>' . $this->num . '</sup></a>';
     }
 
     public function renderFootnote(AbstractRenderer $renderer): void

@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use Fisharebest\Webtrees\Encodings\UTF8;
+
 /**
  * @extends AbstractFootnote<AbstractRenderer&PdfRendererInterface>
  */
@@ -27,7 +29,7 @@ class PdfFootnote extends AbstractFootnote
     public function render(AbstractRenderer $renderer, bool $layout = true): void
     {
         $renderer->setCurrentStyle($renderer->getStyle('footnotenum'));
-        $renderer->writeText($renderer->getCurrentStyleHeight(), $this->numText, $this->addlink);
+        $renderer->writeText($renderer->getCurrentStyleHeight(), UTF8::NARROW_NO_BREAK_SPACE . $this->numText, $this->addlink);
     }
 
     public function renderFootnote(AbstractRenderer $renderer): void
