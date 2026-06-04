@@ -93,7 +93,7 @@ abstract class AbstractElement
         // exist, or convert them if defined using: <!ENTITY nbsp "&#xA0;">
 
         $t = trim($t, "\r\n\t");
-        $t = strtr($t, ['<br>' => "\n", '&nbsp;' => "\u{A0}"]);
+        $t = strtr($t, ['<br>' => "\n"]);
 
         // Embedded variables report logic should not generate HTML.
         if ($t !== strip_tags($t)) {

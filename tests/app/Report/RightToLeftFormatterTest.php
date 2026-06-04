@@ -51,14 +51,6 @@ class RightToLeftFormatterTest extends TestCase
         I18N::init('en-US', true);
         self::assertSame(
             '<span dir="ltr">foobar</span>',
-            (new RightToLeftFormatter())->format('foo&lrm;bar')
-        );
-        self::assertSame(
-            '<span dir="ltr">foobar</span>',
-            (new RightToLeftFormatter())->format('foo&rlm;bar')
-        );
-        self::assertSame(
-            '<span dir="ltr">foobar</span>',
             (new RightToLeftFormatter())->format("foo\xE2\x80\x8Ebar")
         );
         self::assertSame(
@@ -87,14 +79,6 @@ class RightToLeftFormatterTest extends TestCase
         );
 
         I18N::init('he', true);
-        self::assertSame(
-            '<span dir="ltr">foobar</span>',
-            (new RightToLeftFormatter())->format('foo&lrm;bar')
-        );
-        self::assertSame(
-            '<span dir="ltr">foobar</span>',
-            (new RightToLeftFormatter())->format('foo&rlm;bar')
-        );
         self::assertSame(
             '<span dir="ltr">foobar</span>',
             (new RightToLeftFormatter())->format("foo\xE2\x80\x8Ebar")
@@ -171,36 +155,6 @@ class RightToLeftFormatterTest extends TestCase
         );
     }
 
-    public function testHtmlEntities(): void
-    {
-        I18N::init('en-US', true);
-        self::assertSame(
-            '<span dir="ltr">foo&nbsp;bar</span>',
-            (new RightToLeftFormatter())->format('foo&nbsp;bar')
-        );
-        self::assertSame(
-            '<span dir="rtl">אבג&nbsp;דהו</span>',
-            (new RightToLeftFormatter())->format('אבג&nbsp;דהו')
-        );
-        self::assertSame(
-            '<span dir="ltr">foo&bar</span>',
-            (new RightToLeftFormatter())->format('foo&bar')
-        );
-
-        I18N::init('he', true);
-        self::assertSame(
-            '<span dir="ltr">foo&nbsp;bar</span>',
-            (new RightToLeftFormatter())->format('foo&nbsp;bar')
-        );
-        self::assertSame(
-            '<span dir="rtl">אבג&nbsp;דהו</span>',
-            (new RightToLeftFormatter())->format('אבג&nbsp;דהו')
-        );
-        self::assertSame(
-            '<span dir="ltr">foo&bar</span>',
-            (new RightToLeftFormatter())->format('foo&bar')
-        );
-    }
 
     public function testBraces(): void
     {

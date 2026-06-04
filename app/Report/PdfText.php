@@ -43,14 +43,10 @@ class PdfText extends AbstractText
             [
                 '<br><span dir="rtl">',
                 '<br><span dir="ltr">',
-                '> ',
-                ' <',
             ],
             [
                 '<span dir="rtl" ><br>',
                 '<span dir="ltr" ><br>',
-                '>&nbsp;',
-                '&nbsp;<',
             ],
             $temptext
         );

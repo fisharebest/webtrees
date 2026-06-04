@@ -117,9 +117,6 @@ final class RightToLeftFormatter
                 case '<':
                     $workingText = $this->processHtmlElement($workingText, $currentLen, $result, $numberState);
                     break;
-                case '&':
-                    $workingText = $this->processHtmlEntity($workingText, $currentLen, $result);
-                    break;
                 case '{':
                     if (substr($workingText, 1, 1) === '{') {
                         $workingText = $this->processTcpdfDirective($workingText, $result);
@@ -199,29 +196,6 @@ final class RightToLeftFormatter
     }
 
     /**
-     * Process an HTML entity (anything starting with '&').
-     */
-    private function processHtmlEntity(string $workingText, int $currentLen, string &$result): string
-    {
-        $endPos = strpos($workingText, ';');
-        if ($endPos === false) {
-            $endPos = 0;
-        }
-        $currentLen += $endPos;
-        $entity     = substr($workingText, 0, $currentLen);
-        if (strtolower($entity) === '&nbsp;') {
-            $entity = '&nbsp;';
-        }
-        if ($this->waitingText === '') {
-            $result .= $entity;
-        } else {
-            $this->waitingText .= $entity;
-        }
-
-        return substr($workingText, $currentLen);
-    }
-
-    /**
      * Process a TCPDF directive (anything starting with '{{').
      */
     private function processTcpdfDirective(string $workingText, string &$result): string
@@ -291,10 +265,6 @@ final class RightToLeftFormatter
                     if ($nextLetter === ' ') {
                         break;
                     }
-                    $nextLetter .= substr($tempText . "\n", 0, 5);
-                    if ($nextLetter === '&nbsp;') {
-                        break;
-                    }
                 }
                 // Solitary RTL letter — force LTR directionality
                 $currentLetter = UTF8::LEFT_TO_RIGHT_OVERRIDE . $currentLetter . UTF8::POP_DIRECTIONAL_FORMATTING;
@@ -325,11 +295,6 @@ final class RightToLeftFormatter
                     if (str_starts_with($workingText, ' ')) {
                         $this->waitingText .= ' ';
                         $workingText       = substr($workingText, 1);
-                        continue;
-                    }
-                    if (str_starts_with($workingText, '&nbsp;')) {
-                        $this->waitingText .= '&nbsp;';
-                        $workingText       = substr($workingText, 6);
                         continue;
                     }
                     break;
@@ -370,7 +335,7 @@ final class RightToLeftFormatter
     /**
      * Handle numeric string detection and embedding.
      *
-     * Updates $numberState and may prepend/append Unicode embedding codes
+     * Updates $number_state and may prepend/append Unicode embedding codes
      * to the current letter.
      */
     private function processNumericState(string $workingText, string $currentLetter, int $currentLen, bool &$numberState): string
@@ -381,9 +346,7 @@ final class RightToLeftFormatter
             $charArray = self::getChar($workingText . "\n", $offset);
             if (!str_contains(self::NUMBERS, $charArray['letter'])) {
                 // Not a digit — check for numeric punctuation
-                if (str_starts_with($workingText . "\n", '&nbsp;')) {
-                    $offset += 6;
-                } elseif (str_contains(self::NUMBER_PUNCTUATION, $charArray['letter'])) {
+                if (str_contains(self::NUMBER_PUNCTUATION, $charArray['letter'])) {
                     $offset += $charArray['length'];
                 }
                 // If next character is a digit, this is numeric punctuation
@@ -450,16 +413,8 @@ final class RightToLeftFormatter
                 $result = str_replace(' <LTRbr>', '<LTRbr>', $result);
                 continue;
             }
-            if (str_contains($result, '&nbsp;<LTRbr>')) {
-                $result = str_replace('&nbsp;<LTRbr>', '<LTRbr>', $result);
-                continue;
-            }
             if (str_contains($result, ' <br>')) {
                 $result = str_replace(' <br>', '<br>', $result);
-                continue;
-            }
-            if (str_contains($result, '&nbsp;<br>')) {
-                $result = str_replace('&nbsp;<br>', '<br>', $result);
                 continue;
             }
             break;
@@ -469,10 +424,6 @@ final class RightToLeftFormatter
         while (true) {
             if (str_contains($result, ' <RTLbr>')) {
                 $result = str_replace(' <RTLbr>', '<RTLbr>', $result);
-                continue;
-            }
-            if (str_contains($result, '&nbsp;<RTLbr>')) {
-                $result = str_replace('&nbsp;<RTLbr>', '<RTLbr>', $result);
                 continue;
             }
             break;
@@ -540,10 +491,6 @@ final class RightToLeftFormatter
             UTF8::LEFT_TO_RIGHT_EMBEDDING,
             UTF8::RIGHT_TO_LEFT_EMBEDDING,
             UTF8::POP_DIRECTIONAL_FORMATTING,
-            '&lrm;',
-            '&rlm;',
-            '&LRM;',
-            '&RLM;',
         ], '', $inputText);
     }
 
@@ -648,15 +595,8 @@ final class RightToLeftFormatter
                 $tempResult .= $numericString;
                 continue;
             }
-            $posBlank = strpos($numericString . ' ', ' ');
-            $posNbsp  = strpos($numericString . '&nbsp;', '&nbsp;');
-            if ($posBlank < $posNbsp) {
-                $posSeparator    = $posBlank;
-                $lengthSeparator = 1;
-            } else {
-                $posSeparator    = $posNbsp;
-                $lengthSeparator = 6;
-            }
+            $posSeparator    = strpos($numericString . ' ', ' ');
+            $lengthSeparator = 1;
             if ($posColon > $posSeparator) {
                 $tempResult    .= substr($numericString, 0, $posSeparator);
                 $tempResult    .= UTF8::POP_DIRECTIONAL_FORMATTING;
@@ -666,25 +606,13 @@ final class RightToLeftFormatter
             }
 
             $posBlank = strpos($numericString, ' ');
-            $posNbsp  = strpos($numericString, '&nbsp;');
-            if ($posBlank === false && $posNbsp === false) {
+            if ($posBlank === false) {
                 $textSpan = $numericString . $textSpan;
                 continue;
             }
 
-            if ($posBlank === false) {
-                $posSeparator    = $posNbsp;
-                $lengthSeparator = 6;
-            } elseif ($posNbsp === false) {
-                $posSeparator    = $posBlank;
-                $lengthSeparator = 1;
-            } elseif ($posBlank < $posNbsp) {
-                $posSeparator    = $posBlank;
-                $lengthSeparator = 1;
-            } else {
-                $posSeparator    = $posNbsp;
-                $lengthSeparator = 6;
-            }
+            $posSeparator      = $posBlank;
+            $lengthSeparator   = 1;
             $tempResult    .= substr($numericString, 0, $posSeparator);
             $tempResult    .= UTF8::POP_DIRECTIONAL_FORMATTING;
             $tempResult    .= substr($numericString, $posSeparator, $lengthSeparator);
@@ -711,11 +639,6 @@ final class RightToLeftFormatter
                     $textSpan       = substr($textSpan, 0, -1);
                     continue;
                 }
-                if (str_ends_with($textSpan, '&nbsp;')) {
-                    $trailingString = '&nbsp;' . $trailingString;
-                    $textSpan       = substr($textSpan, 0, -6);
-                    continue;
-                }
                 if (substr($textSpan, -3) !== UTF8::POP_DIRECTIONAL_FORMATTING) {
                     $textSpan = $savedSpan;
                     break;
@@ -733,11 +656,6 @@ final class RightToLeftFormatter
                         $textSpan       = substr($textSpan, 0, -1);
                         continue;
                     }
-                    if (str_ends_with($textSpan, '&nbsp;')) {
-                        $trailingString = '&nbsp;' . $trailingString;
-                        $textSpan       = substr($textSpan, 0, -6);
-                        continue;
-                    }
                     break;
                 }
                 $this->waitingText = $trailingString . $this->waitingText;
@@ -753,11 +671,6 @@ final class RightToLeftFormatter
                 $textSpan       = substr($textSpan, 0, -1);
                 continue;
             }
-            if (str_ends_with('......' . $textSpan, '&nbsp;')) {
-                $trailingBlanks = '&nbsp;' . $trailingBlanks;
-                $textSpan       = substr($textSpan, 0, -6);
-                continue;
-            }
             break;
         }
         while (str_ends_with($textSpan, '<LTRbr>')) {
@@ -769,11 +682,6 @@ final class RightToLeftFormatter
                 if (str_ends_with($textSpan, ' ')) {
                     $trailingBreaks = ' ' . $trailingBreaks;
                     $textSpan       = substr($textSpan, 0, -1);
-                    continue;
-                }
-                if (str_ends_with($textSpan, '&nbsp;')) {
-                    $trailingBreaks = '&nbsp;' . $trailingBreaks;
-                    $textSpan       = substr($textSpan, 0, -6);
                     continue;
                 }
                 break;
@@ -796,11 +704,6 @@ final class RightToLeftFormatter
                     if (str_ends_with($textSpan, ' ')) {
                         $trailingBlanks = ' ' . $trailingBlanks;
                         $textSpan       = substr($textSpan, 0, -1);
-                        continue;
-                    }
-                    if (str_ends_with($textSpan, '&nbsp;')) {
-                        $trailingBlanks = '&nbsp;' . $trailingBlanks;
-                        $textSpan       = substr($textSpan, 0, -6);
                         continue;
                     }
                     break;
@@ -848,11 +751,6 @@ final class RightToLeftFormatter
                         $textSpan          = substr($textSpan, 0, -1);
                         continue;
                     }
-                    if (str_ends_with($textSpan, '&nbsp;')) {
-                        $trailingSeparator = '&nbsp;' . $trailingSeparator;
-                        $textSpan          = substr($textSpan, 0, -6);
-                        continue;
-                    }
                     if (str_ends_with($textSpan, '-')) {
                         $trailingSeparator = '-' . $trailingSeparator;
                         $textSpan          = substr($textSpan, 0, -1);
@@ -869,11 +767,6 @@ final class RightToLeftFormatter
                 if (str_starts_with($textSpan, ' ')) {
                     $leadingSeparator = ' ' . $leadingSeparator;
                     $textSpan         = substr($textSpan, 1);
-                    continue;
-                }
-                if (str_starts_with($textSpan, '&nbsp;')) {
-                    $leadingSeparator = '&nbsp;' . $leadingSeparator;
-                    $textSpan         = substr($textSpan, 6);
                     continue;
                 }
                 if (str_starts_with($textSpan, '-')) {
@@ -896,10 +789,6 @@ final class RightToLeftFormatter
         while (true) {
             if (str_contains($textSpan, ' <LTRbr>')) {
                 $textSpan = str_replace(' <LTRbr>', '<LTRbr>', $textSpan);
-                continue;
-            }
-            if (str_contains($textSpan, '&nbsp;<LTRbr>')) {
-                $textSpan = str_replace('&nbsp;<LTRbr>', '<LTRbr>', $textSpan);
                 continue;
             }
             break;
@@ -936,11 +825,6 @@ final class RightToLeftFormatter
                 $textSpan       = substr($textSpan, 0, -1);
                 continue;
             }
-            if (str_ends_with('......' . $textSpan, '&nbsp;')) {
-                $trailingBlanks = '&nbsp;' . $trailingBlanks;
-                $textSpan       = substr($textSpan, 0, -6);
-                continue;
-            }
             break;
         }
         while (str_ends_with($textSpan, '<RTLbr>')) {
@@ -963,11 +847,6 @@ final class RightToLeftFormatter
                     $textSpan       = substr($textSpan, 0, -1);
                     continue;
                 }
-                if (str_ends_with($textSpan, '&nbsp;')) {
-                    $trailingString = '&nbsp;' . $trailingString;
-                    $textSpan       = substr($textSpan, 0, -6);
-                    continue;
-                }
                 if (substr($textSpan, -3) !== UTF8::POP_DIRECTIONAL_FORMATTING) {
                     $textSpan = $savedSpan;
                     break;
@@ -983,11 +862,6 @@ final class RightToLeftFormatter
                     if (str_ends_with($textSpan, ' ')) {
                         $trailingString = ' ' . $trailingString;
                         $textSpan       = substr($textSpan, 0, -1);
-                        continue;
-                    }
-                    if (str_ends_with($textSpan, '&nbsp;')) {
-                        $trailingString = '&nbsp;' . $trailingString;
-                        $textSpan       = substr($textSpan, 0, -6);
                         continue;
                     }
                     break;
@@ -1026,11 +900,6 @@ final class RightToLeftFormatter
                 $textSpan = substr($textSpan, 1);
                 continue;
             }
-            if (str_starts_with($textSpan, '&nbsp;')) {
-                $countLeadingSpaces++;
-                $textSpan = substr($textSpan, 6);
-                continue;
-            }
             break;
         }
 
@@ -1040,11 +909,6 @@ final class RightToLeftFormatter
             if (str_ends_with($textSpan, ' ')) {
                 $countTrailingSpaces++;
                 $textSpan = substr($textSpan, 0, -1);
-                continue;
-            }
-            if (str_ends_with($textSpan, '&nbsp;')) {
-                $countTrailingSpaces++;
-                $textSpan = substr($textSpan, 0, -6);
                 continue;
             }
             break;
@@ -1108,7 +972,6 @@ final class RightToLeftFormatter
                 $textSpan = $leadingText . '<u>' . $wordText . '</u>' . $trailingText;
             }
             $textSpan = preg_replace('~<span class="starredname">(.*)</span>~', '<u>\1</u>', $textSpan);
-            $textSpan = str_replace([' <u>', '</u> '], ['&nbsp;<u>', '</u>&nbsp;'], $textSpan);
         } else {
             $textSpan = preg_replace('~(.*)\*~', '\1', $textSpan);
             $textSpan = preg_replace('~<span class="starredname">(.*)</span>~', '\1', $textSpan);
