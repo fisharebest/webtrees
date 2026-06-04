@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use DomainException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use LogicException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -159,10 +159,10 @@ class PlaceholderExpanderTest extends TestCase
     {
         $expander = $this->createExpander();
 
-        $this->expectException(DomainException::class);
+        $this->expectException(LogicException::class);
         $this->expectExceptionMessage('Undefined variable $missing');
 
-        $expander->substituteVars('$missing', false, 'test.xml', 10, 'I1');
+        $expander->substituteVars('$missing', false);
     }
 
     // --- applyI18nFunctions tests ---
@@ -232,6 +232,7 @@ class PlaceholderExpanderTest extends TestCase
     public function testEvaluateConditionWithAtId(): void
     {
         $expander = $this->createExpander();
+        $gedrec   = "0 @I99@ INDI\n1 NAME Test /Person/";
         $gedrec   = "0 @I99@ INDI\n1 NAME Test /Person/";
 
         $result = $expander->evaluateCondition('@ID == "I99"', $gedrec, '', '', 1);

@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use Closure;
-use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Elements\UnknownElement;
@@ -35,9 +34,12 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Str;
+use LogicException;
+use Throwable;
 
 use function array_pop;
 use function array_shift;
+use function basename;
 use function count;
 use function end;
 use function explode;
@@ -51,6 +53,7 @@ use function preg_match;
 use function preg_match_all;
 use function preg_split;
 use function round;
+use function sprintf;
 use function str_ends_with;
 use function str_replace;
 use function str_starts_with;
@@ -274,14 +277,22 @@ class ParserGenerate extends AbstractParser
         $attrs = $newattrs;
 
         if ($this->gateAllowsStart($name)) {
-            parent::startElement($name, $attrs);
+            try {
+                parent::startElement($name, $attrs);
+            } catch (Throwable $exception) {
+                throw $this->addContextToException($exception, $name);
+            }
         }
     }
 
     protected function endElement(string $name): void
     {
         if ($this->gateAllowsEnd($name)) {
-            parent::endElement($name);
+            try {
+                parent::endElement($name);
+            } catch (Throwable $exception) {
+                throw $this->addContextToException($exception, $name);
+            }
         }
     }
 
@@ -352,7 +363,7 @@ class ParserGenerate extends AbstractParser
     protected function styleStartHandler(array $attrs): void
     {
         if (empty($attrs['name'])) {
-            throw new DomainException('REPORT ERROR Style: The "name" of the style is missing or not set in the XML file.');
+            throw new LogicException('The "name" attribute is missing.');
         }
 
         $style = new Style(
@@ -861,7 +872,7 @@ class ParserGenerate extends AbstractParser
     protected function varStartHandler(array $attrs): void
     {
         if (empty($attrs['var'])) {
-            throw new DomainException('REPORT ERROR var: The attribute "var=" is missing or not set in the XML file on line: ' . $this->currentLineNumber());
+            throw new LogicException('The "var" attribute is missing.');
         }
 
         $var = $attrs['var'];
@@ -998,7 +1009,7 @@ class ParserGenerate extends AbstractParser
     protected function setVarStartHandler(array $attrs): void
     {
         if (empty($attrs['name'])) {
-            throw new DomainException('REPORT ERROR var: The attribute "name" is missing or not set in the XML file');
+            throw new LogicException('The "name" attribute is missing.');
         }
 
         $name  = $attrs['name'];
@@ -1227,7 +1238,7 @@ class ParserGenerate extends AbstractParser
             $listname,
             $attrs,
             $sortby,
-            $this->substituteVars(...),
+            $this->expander->substituteVars(...),
             $this->gedrec,
             $this->fact,
             $this->desc,
@@ -1541,44 +1552,6 @@ class ParserGenerate extends AbstractParser
     }
 
     /**
-     * Replace variable identifiers with their values.
-     *
-     * @param string $expression An expression such as "$foo == 123"
-     * @param bool   $quote      Whether to add quotation marks
-     */
-    private function substituteVars(string $expression, bool $quote): string
-    {
-        return $this->expander->substituteVars(
-            $expression,
-            $quote,
-            $this->report,
-            $this->currentReportLine(),
-            $this->currentRecordXref(),
-        );
-    }
-
-    /**
-     * Best-effort line number in the original report XML.
-     *
-     * When we are inside a sub-fragment parse, the active XMLReader is
-     * looking at an in-memory copy of the captured inner XML, so its line
-     * counter restarts at 1.  We add the original source line where each
-     * enclosing repeat block began to give a number that points roughly at
-     * the right place in the source file.
-     */
-    private function currentReportLine(): int
-    {
-        $line = $this->currentLineNumber();
-
-        $offset = $this->repeat_line;
-        foreach ($this->repeats_stack as $frame) {
-            $offset += $frame->repeat_line;
-        }
-
-        return $line + $offset;
-    }
-
-    /**
      * Push the current repeat-loop state onto the stack so that nested
      * <RepeatTag>, <Facts>, <List> or <Relatives> blocks can restore it
      * when they finish iterating.
@@ -1605,24 +1578,56 @@ class ParserGenerate extends AbstractParser
     }
 
     /**
-     * Find the XREF of the current record being processed.
+     * Best-effort line number in the original report XML.
      *
-     * Checks the current gedrec first, then walks the gedrec_stack
-     * to find the nearest ancestor record with an XREF.
+     * When we are inside a sub-fragment parse, the active XMLReader is
+     * looking at an in-memory copy of the captured inner XML, so its line
+     * counter restarts at 1.  We add the original source line where each
+     * enclosing repeat block began to give a number that points roughly at
+     * the right place in the source file.
      */
+    private function currentReportLine(): int
+    {
+        $line = $this->currentLineNumber();
+
+        $offset = $this->repeat_line;
+        foreach ($this->repeats_stack as $frame) {
+            $offset += $frame->repeat_line;
+        }
+
+        return $line + $offset;
+    }
+
     private function currentRecordXref(): string
     {
-        if (preg_match('/^0 @(.+)@/', $this->gedrec, $match)) {
+        if (preg_match('/^0 (@.+@)/', $this->gedrec, $match)) {
             return $match[1];
         }
 
         // Walk the stack from most recent to oldest
-        for ($i = count($this->gedrec_stack) - 1; $i >= 0; $i--) {
-            if (preg_match('/^0 @(.+)@/', $this->gedrec_stack[$i]->gedrec, $match)) {
+        foreach (array_reverse($this->gedrec_stack) as $frame) {
+            if (preg_match('/^0 (@.+@)/', $frame->gedrec, $match)) {
                 return $match[1];
             }
         }
 
-        return '(unknown)';
+        return '@unknown@';
+    }
+
+    /**
+     * Add context to a parse error.
+     */
+    private function addContextToException(Throwable $exception, string $element): LogicException
+    {
+        $message = sprintf(
+            '%s (%s:%d, <%s>, %s)',
+            $exception->getMessage(),
+            basename($this->report),
+            $this->currentReportLine(),
+            $element,
+            $this->currentRecordXref(),
+        );
+
+        return new LogicException($message, 0, $exception);
     }
 }

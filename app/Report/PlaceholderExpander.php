@@ -183,15 +183,12 @@ final class PlaceholderExpander
      *
      * @param string $expression An expression such as "$foo == 123"
      * @param bool   $quote      Whether to wrap replacement values in single quotes
-     * @param string $report     Report filename for error context
-     * @param int    $line       Line number for error context
-     * @param string $xref       Current record XREF for error context
      */
-    public function substituteVars(string $expression, bool $quote, string $report = '', int $line = 0, string $xref = ''): string
+    public function substituteVars(string $expression, bool $quote,): string
     {
         return preg_replace_callback(
             '/\$(\w+)/',
-            function (array $matches) use ($quote, $expression, $report, $line, $xref): string {
+            function (array $matches) use ($quote, $expression): string {
                 if ($this->variables->has($matches[1])) {
                     if ($quote) {
                         return "'" . addcslashes($this->variables->get($matches[1]), "'") . "'";
@@ -201,11 +198,8 @@ final class PlaceholderExpander
                 }
 
                 throw new DomainException(sprintf(
-                    'Undefined variable $%s in report %s on line %d for record %s in expression: %s',
+                    'Undefined variable $%s in expression %s',
                     $matches[1],
-                    $report,
-                    $line,
-                    $xref,
                     $expression,
                 ));
             },
