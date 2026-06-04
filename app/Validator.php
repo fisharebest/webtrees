@@ -260,7 +260,7 @@ class Validator
         }
 
         if ($default === null) {
-            throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+            throw $this->newBadRequestException($parameter);
         }
 
         return $default;
@@ -276,7 +276,7 @@ class Validator
         $value = $this->parameters[$parameter] ?? null;
 
         if (!is_array($value) && $value !== null) {
-            throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+            throw $this->newBadRequestException($parameter);
         }
 
         $callback = static fn (array|null $value, Closure $rule): array|null => $rule($value);
@@ -305,7 +305,7 @@ class Validator
         $value = array_reduce($this->rules, $callback, $value) ?? $default;
 
         if ($value === null) {
-            throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+            throw $this->newBadRequestException($parameter);
         }
 
         return $value;
@@ -338,7 +338,7 @@ class Validator
         $value = array_reduce($this->rules, $callback, $value) ?? $default;
 
         if ($value === null) {
-            throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+            throw $this->newBadRequestException($parameter);
         }
 
         return $value;
@@ -357,7 +357,7 @@ class Validator
             return $value;
         }
 
-        throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+        throw $this->newBadRequestException($parameter);
     }
 
     /**
@@ -379,7 +379,7 @@ class Validator
         $value =  array_reduce($this->rules, $callback, $value) ?? $default;
 
         if ($value === null) {
-            throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+            throw $this->newBadRequestException($parameter);
         }
 
         return $value;
@@ -398,7 +398,7 @@ class Validator
             return $value;
         }
 
-        throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+        throw $this->newBadRequestException($parameter);
     }
 
     public function treeOptional(string $parameter = 'tree'): Tree|null
@@ -409,7 +409,7 @@ class Validator
             return $value;
         }
 
-        throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+        throw $this->newBadRequestException($parameter);
     }
 
     public function user(string $parameter = 'user'): UserInterface
@@ -420,6 +420,12 @@ class Validator
             return $value;
         }
 
-        throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+        throw $this->newBadRequestException($parameter);
     }
+
+    private function newBadRequestException(string $parameter): HttpBadRequestException
+    {
+        return new HttpBadRequestException('The parameter “' . $parameter . '” is missing.');
+    }
+
 }
