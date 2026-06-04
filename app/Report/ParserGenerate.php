@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use Closure;
+use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Elements\UnknownElement;
@@ -63,7 +64,6 @@ use function substr;
 use function trim;
 use function uasort;
 
-use const PREG_OFFSET_CAPTURE;
 use const PREG_SET_ORDER;
 
 class ParserGenerate extends AbstractParser
@@ -714,55 +714,57 @@ class ParserGenerate extends AbstractParser
             $id = $match[1];
         }
 
-        $tag       = $attrs['tag'];
+        $tag       = $attrs['tag'] ?? '';
         $use_break = (bool) ($attrs['use_break'] ?? false);
+        $truncate  = (int) ($attrs['truncate'] ?? 0);
 
-        if (!empty($tag)) {
-            if ($tag === '@desc') {
-                $value = $this->desc;
-                $value = trim($value);
-                $this->current_element->addText($value);
-            }
-            if ($tag === '@id') {
-                $this->current_element->addText($id);
+        if ($tag === '') {
+            throw new LogicException('The "tag" attribute is missing.');
+        }
+
+        if ($tag === '@desc') {
+            $this->current_element->addText($this->desc);
+        } elseif ($tag === '@id') {
+            // Not used in core reports. Should be @ID for consistency with <SetVar>
+            $this->current_element->addText($id);
+        } else {
+            // $tag is (TAG|@fact)(:SUBTAG(:SUBSUBTAG)?)?
+            $tag = str_replace('@fact', $this->fact, $tag);
+            if (empty($attrs['level'])) {
+                $level = (int) explode(' ', trim($this->gedrec))[0];
+                if ($level === 0) {
+                    $level++;
+                }
             } else {
-                $tag = str_replace('@fact', $this->fact, $tag);
-                if (empty($attrs['level'])) {
-                    $level = (int) explode(' ', trim($this->gedrec))[0];
-                    if ($level === 0) {
-                        $level++;
-                    }
-                } else {
-                    $level = (int) $attrs['level'];
-                }
-                $tags  = preg_split('/[: ]/', $tag);
-                $value = GedcomTextReader::getGedcomValue($tag, $level, $this->gedrec, $this->tree);
-                switch (end($tags)) {
-                    case 'DATE':
-                        $tmp   = new Date($value);
-                        $value = strip_tags($tmp->display());
-                        break;
-                    case 'PLAC':
-                        $tmp   = new Place($value, $this->tree);
-                        $value = strip_tags($tmp->shortName());
-                        break;
-                }
-                if ($use_break) {
-                    // Insert <br> when multiple dates exist.
-                    // This works around a TCPDF bug that incorrectly wraps RTL dates on LTR pages
-                    $value = str_replace('(', '<br>(', $value);
-                    $value = str_replace('<span dir="ltr"><br>', '<br><span dir="ltr">', $value);
-                    $value = str_replace('<span dir="rtl"><br>', '<br><span dir="rtl">', $value);
-                    if (str_starts_with($value, '<br>')) {
-                        $value = substr($value, 4);
-                    }
-                }
-
-                if (!empty($attrs['truncate'])) {
-                    $value = Str::limit($value, (int) $attrs['truncate'], I18N::translate('…'));
-                }
-                $this->current_element->addText($value);
+                $level = (int) $attrs['level'];
             }
+
+            $value = GedcomTextReader::getGedcomValue($tag, $level, $this->gedrec, $this->tree);
+
+            if ($tag === 'DATE' || str_ends_with($tag, ':DATE')) {
+                $value = strip_tags((new Date($value))->display());
+            }
+
+            if ($tag === 'PLAC' || str_ends_with($tag, ':PLAC')) {
+                $value = strip_tags((new Place($value, $this->tree))->shortName());
+            }
+
+            if ($use_break) {
+                // Insert <br> when multiple dates exist.
+                // This works around a TCPDF bug that incorrectly wraps RTL dates on LTR pages
+                $value = str_replace('(', '<br>(', $value);
+                $value = str_replace('<span dir="ltr"><br>', '<br><span dir="ltr">', $value);
+                $value = str_replace('<span dir="rtl"><br>', '<br><span dir="rtl">', $value);
+                if (str_starts_with($value, '<br>')) {
+                    $value = substr($value, 4);
+                }
+            }
+
+            if ($truncate !== 0) {
+                $value = Str::limit($value, $truncate, I18N::translate('…'));
+            }
+
+            $this->current_element->addText($value);
         }
     }
 
@@ -778,59 +780,59 @@ class ParserGenerate extends AbstractParser
 
         $this->pushRepeatFrame();
         $this->repeats         = [];
-        $this->repeat_xml      = (string) $this->xml_reader->readInnerXml();
+        $this->repeat_xml      = $this->xml_reader->readInnerXml();
         $this->repeat_line     = $this->currentLineNumber();
 
         $tag = $attrs['tag'] ?? '';
 
-        if (!empty($tag)) {
-            if ($tag === '@desc') {
-                $value = $this->desc;
-                $value = trim($value);
-                $this->current_element->addText($value);
-            } else {
-                $tag   = str_replace('@fact', $this->fact, $tag);
-                $tags  = explode(':', $tag);
-                $level = (int) explode(' ', trim($this->gedrec))[0];
-                if ($level === 0) {
-                    $level++;
-                }
-                $subrec = $this->gedrec;
-                $t      = $tag;
-                $count  = count($tags);
-                $i      = 0;
-                while ($i < $count) {
-                    $t = $tags[$i];
-                    if (!empty($t)) {
-                        if ($i < ($count - 1)) {
-                            $subrec = GedcomTextReader::getSubRecord($level, "$level $t", $subrec);
+        if ($tag === '') {
+            throw new LogicException('The "tag" attribute is missing.');
+        }
+
+        if ($tag === '@desc') {
+            $this->current_element->addText($this->desc);
+        } else {
+            $tag   = str_replace('@fact', $this->fact, $tag);
+            $tags  = explode(':', $tag);
+            $level = (int) explode(' ', trim($this->gedrec))[0];
+            if ($level === 0) {
+                $level++;
+            }
+            $subrec = $this->gedrec;
+            $t      = $tag;
+            $count  = count($tags);
+            $i      = 0;
+            while ($i < $count) {
+                $t = $tags[$i];
+                if (!empty($t)) {
+                    if ($i < ($count - 1)) {
+                        $subrec = GedcomTextReader::getSubRecord($level, "$level $t", $subrec);
+                        if (empty($subrec)) {
+                            $level--;
+                            $subrec = GedcomTextReader::getSubRecord($level, "@ $t", $this->gedrec);
                             if (empty($subrec)) {
-                                $level--;
-                                $subrec = GedcomTextReader::getSubRecord($level, "@ $t", $this->gedrec);
-                                if (empty($subrec)) {
-                                    return;
-                                }
+                                return;
                             }
                         }
-                        $level++;
                     }
-                    $i++;
+                    $level++;
                 }
-                $level--;
-                $count = preg_match_all("/$level $t(.*)/", $subrec, $match, PREG_SET_ORDER);
-                $i     = 0;
-                while ($i < $count) {
-                    $i++;
-                    // Privacy check - is this a link, and are we allowed to view the linked object?
-                    $subrecord = GedcomTextReader::getSubRecord($level, "$level $t", $subrec, $i);
-                    if (preg_match('/^\d ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@/', $subrecord, $xref_match)) {
-                        $linked_object = Registry::gedcomRecordFactory()->make($xref_match[1], $this->tree);
-                        if ($linked_object && !$linked_object->canShow()) {
-                            continue;
-                        }
+                $i++;
+            }
+            $level--;
+            $count = preg_match_all("/$level $t(.*)/", $subrec, $match, PREG_SET_ORDER);
+            $i     = 0;
+            while ($i < $count) {
+                $i++;
+                // Privacy check - is this a link, and are we allowed to view the linked object?
+                $subrecord = GedcomTextReader::getSubRecord($level, "$level $t", $subrec, $i);
+                if (preg_match('/^\d ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@/', $subrecord, $xref_match)) {
+                    $linked_object = Registry::gedcomRecordFactory()->make($xref_match[1], $this->tree);
+                    if ($linked_object && !$linked_object->canShow()) {
+                        continue;
                     }
-                    $this->repeats[] = $subrecord;
                 }
+                $this->repeats[] = $subrecord;
             }
         }
     }
@@ -842,7 +844,7 @@ class ParserGenerate extends AbstractParser
             return;
         }
 
-        // Re-parse the captured inner XML once per matched GEDCOM subrecord.
+        // Reparse the captured inner XML once per matched GEDCOM subrecord.
         if ($this->repeats !== []) {
             $fragment  = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
             $oldgedrec = $this->gedrec;
@@ -860,7 +862,7 @@ class ParserGenerate extends AbstractParser
 
     /**
      * Variable lookup
-     * Retrieve predefined variables :
+     * Retrieve predefined variables:
      * @ desc GEDCOM fact description, example:
      *        1 EVEN This is a description
      * @ fact GEDCOM fact tag, such as BIRT, DEAT etc.
@@ -871,11 +873,11 @@ class ParserGenerate extends AbstractParser
      */
     protected function varStartHandler(array $attrs): void
     {
-        if (empty($attrs['var'])) {
+        $var = $attrs['var'] ?? '';
+
+        if ($var === '') {
             throw new LogicException('The "var" attribute is missing.');
         }
-
-        $var = $attrs['var'];
 
         if ($this->variables->has($var)) {
             $var = $this->variables->get($var);
@@ -909,8 +911,7 @@ class ParserGenerate extends AbstractParser
         // Check if variable is set as a date and reformat the date
         if (isset($attrs['date'])) {
             if ($attrs['date'] === '1') {
-                $g   = new Date($var);
-                $var = strip_tags($g->display());
+                $var = strip_tags((new Date($var))->display());
             }
         }
         $this->current_element->addText($var);
@@ -928,7 +929,7 @@ class ParserGenerate extends AbstractParser
 
         $this->pushRepeatFrame();
         $this->repeats         = [];
-        $this->repeat_xml      = (string) $this->xml_reader->readInnerXml();
+        $this->repeat_xml      = $this->xml_reader->readInnerXml();
         $this->repeat_line     = $this->currentLineNumber();
 
         $id    = '';

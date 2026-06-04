@@ -19,11 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use LogicException;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 use function file_put_contents;
@@ -74,8 +74,8 @@ class ParserGenerateTest extends TestCase
             ob_start();
             try {
                 new ParserGenerate($tmp_file, new HtmlRenderer(), [], $tree);
-                self::fail('Expected DomainException for unknown XML element was not thrown.');
-            } catch (DomainException $e) {
+                self::fail('Expected LogicException for unknown XML element was not thrown.');
+            } catch (LogicException $e) {
                 self::assertStringContainsString('<Whoops>', $e->getMessage());
                 self::assertStringContainsString($tmp_file, $e->getMessage());
             } finally {

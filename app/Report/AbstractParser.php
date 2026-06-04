@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Report;
 
 use Closure;
 use DOMNode;
-use DomainException;
+use LogicException;
 use XMLReader;
 
 use function libxml_clear_errors;
@@ -207,7 +207,7 @@ abstract class AbstractParser
         $handler = $this->start_handlers[$name] ?? null;
 
         if ($handler === null) {
-            throw new DomainException(sprintf(
+            throw new LogicException(sprintf(
                 'Unknown XML element <%s> in report %s on line %d',
                 $name,
                 $this->report,
