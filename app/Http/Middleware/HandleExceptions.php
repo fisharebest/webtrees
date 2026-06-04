@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Error;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpException;
@@ -143,10 +144,14 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
      */
     private function httpExceptionResponse(ServerRequestInterface $request, HttpException $exception): ResponseInterface
     {
-        $tree    = Validator::attributes($request)->treeOptional();
-        $default = Site::getPreference('DEFAULT_GEDCOM');
-        $tree    ??= $this->tree_service->all()[$default] ?? $this->tree_service->all()->first();
-
+        $tree = Validator::attributes($request)->treeOptional();
+        try {
+            $default = Site::getPreference('DEFAULT_GEDCOM');
+            $tree ??= $this->tree_service->all()[$default] ?? $this->tree_service->all()->first();
+        } catch (Error) {
+            // httpException can be thrown before database connection is made: return a simple stack trace dump
+            return response(nl2br((string) $exception), $exception->getCode());
+        }
         $status_code = $exception->getCode();
 
         // If this was a GET request, then we were probably fetching HTML to display, for
