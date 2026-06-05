@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Report;
 use Closure;
 use DOMNode;
 use LogicException;
+use RuntimeException;
 use XMLReader;
 
 use function libxml_clear_errors;
@@ -53,7 +54,7 @@ abstract class AbstractParser
         $reader = XMLReader::open($report);
 
         if ($reader === false) {
-            throw new DomainException(sprintf('Cannot open report XML file: %s', $report));
+            throw new RuntimeException(sprintf('Cannot open report XML file: %s', $report));
         }
 
         $this->xml_reader = $reader;
@@ -95,7 +96,7 @@ abstract class AbstractParser
         $sub_reader = XMLReader::XML($xml);
 
         if ($sub_reader === false) {
-            throw new DomainException('Cannot create XMLReader for fragment');
+            throw new RuntimeException('Cannot create XMLReader for fragment');
         }
 
         $previous_reader  = $this->xml_reader;
@@ -130,7 +131,7 @@ abstract class AbstractParser
             if ($errors !== []) {
                 $first = $errors[0];
 
-                throw new DomainException(sprintf(
+                throw new LogicException(sprintf(
                     'XML error in report %s: %s at line %d',
                     $this->report,
                     trim($first->message),
@@ -220,18 +221,10 @@ abstract class AbstractParser
 
     protected function endElement(string $name): void
     {
-        $handler = $this->end_handlers[$name] ?? null;
-
-        if ($handler === null) {
-            throw new DomainException(sprintf(
-                'Unknown XML element </%s> in report %s on line %d',
-                $name,
-                $this->report,
-                $this->currentLineNumber()
-            ));
-        }
-
-        $handler();
+        // Invalid tags are caught by the startElement() handler.
+        // The parser will catch mismatched tags.
+        // Therefore, we will always have an end-handler for this tag.
+        $this->end_handlers[$name]();
     }
 
     protected function characterData(string $data): void

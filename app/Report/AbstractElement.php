@@ -103,11 +103,6 @@ abstract class AbstractElement
         $this->text .= strip_tags($t);
     }
 
-    public function addNewline(): void
-    {
-        $this->text .= "\n";
-    }
-
     /**
      * Append a placeholder that will be substituted with the current
      * page number when the element is rendered.  See resolvedText().

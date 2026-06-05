@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report>
+    <Doc showGeneratedBy="0">
+        <Style name="text" font="dejavusans" size="10" style=""/>
+        <Body>
+            <Whoops/>
+        </Body>
+    </Doc>
+</Report>

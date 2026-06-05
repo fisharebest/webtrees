@@ -271,16 +271,6 @@ class HtmlRenderer extends AbstractRenderer implements HtmlRendererInterface
         $this->printedfootnotes[] = $footnote;
     }
 
-    public function getFootnotesHeight(float $cellWidth = 0): float
-    {
-        $h = 0;
-        foreach ($this->printedfootnotes as $element) {
-            $h += $element->getFootnoteHeight($this, $cellWidth);
-        }
-
-        return $h;
-    }
-
     public function getRemainingWidth(): float
     {
         return $this->noMarginWidth - $this->X;

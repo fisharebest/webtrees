@@ -78,13 +78,13 @@ class PdfRenderer extends AbstractRenderer implements PdfRendererInterface
     public function footnotes(): void
     {
         foreach ($this->printedfootnotes as $element) {
-            if ($this->tcpdf->GetY() + $element->getFootnoteHeight($this) > $this->tcpdf->getPageHeight()) {
+            if ($this->tcpdf->GetY() + $element->getFootnoteHeight($this) > $this->getPageHeight()) {
                 $this->tcpdf->AddPage();
             }
 
             $element->renderFootnote($this);
 
-            if ($this->tcpdf->GetY() > $this->tcpdf->getPageHeight()) {
+            if ($this->tcpdf->GetY() > $this->getPageHeight()) {
                 $this->tcpdf->AddPage();
             }
         }
@@ -145,16 +145,6 @@ class PdfRenderer extends AbstractRenderer implements PdfRendererInterface
         return $this->tcpdf->getRemainingWidth() + $m['left'];
     }
 
-    public function getFootnotesHeight(float $cellWidth = 0): float
-    {
-        $h = 0;
-        foreach ($this->printedfootnotes as $element) {
-            $h += $element->getHeight($this);
-        }
-
-        return $h;
-    }
-
     public function checkFootnote(AbstractFootnote $footnote): void
     {
         $val = $footnote->getValue();
@@ -170,7 +160,7 @@ class PdfRenderer extends AbstractRenderer implements PdfRendererInterface
 
         // New footnote
         $num = count($this->printedfootnotes) + 1;
-        $footnote->setNumAndLink($num, (string) $this->tcpdf->AddLink());
+        $footnote->setNumAndLink($num, (string) $this->createLink());
         $this->printedfootnotes[] = $footnote;
     }
 
@@ -179,8 +169,8 @@ class PdfRenderer extends AbstractRenderer implements PdfRendererInterface
      */
     public function newPage(): void
     {
-        if ($this->lastpicpage > $this->tcpdf->getPage()) {
-            $this->tcpdf->setPage($this->lastpicpage);
+        if ($this->getLastPicPage() > $this->tcpdf->getPage()) {
+            $this->tcpdf->setPage($this->getLastPicPage());
         }
         $this->tcpdf->AddPage();
     }

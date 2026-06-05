@@ -23,21 +23,44 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Webtrees;
 use LogicException;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-use function file_put_contents;
 use function ob_get_clean;
 use function ob_start;
-use function sys_get_temp_dir;
-use function tempnam;
-use function unlink;
 
 #[CoversClass(AbstractParser::class)]
 #[CoversClass(ParserGenerate::class)]
 class ParserGenerateTest extends TestCase
 {
     protected static bool $uses_database = true;
+
+    /**
+     * Malformed XML (e.g. mismatched open/close tags) must produce a clear
+     * exception rather than silently producing broken output.
+     */
+    public function testMalformedXmlIsRejected(): void
+    {
+        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
+        Auth::login($user);
+
+        $tree = $this->importTree('demo.ged');
+
+        $report_file = Webtrees::ROOT_DIR . 'tests/data/report-with-mismatched-tags.xml';
+
+        ob_start();
+        try {
+            new ParserGenerate($report_file, new HtmlRenderer(), [], $tree);
+            self::fail('Expected LogicException for malformed XML was not thrown.');
+        } catch (LogicException $exception) {
+            self::assertStringContainsString('XML error', $exception->getMessage());
+            self::assertStringContainsString($report_file, $exception->getMessage());
+        } finally {
+            ob_get_clean();
+        }
+    }
 
     /**
      * The parser must fail loudly on XML elements that are not part of the
@@ -52,37 +75,17 @@ class ParserGenerateTest extends TestCase
 
         $tree = $this->importTree('demo.ged');
 
-        // A minimally-valid report skeleton with an unknown <Whoops/> tag
-        // injected in the body.  The tag is not part of the schema so the
-        // parser must throw a DomainException identifying it.
-        $report_xml = <<<'XML'
-            <?xml version="1.0" encoding="UTF-8"?>
-            <Report>
-                <Doc showGeneratedBy="0">
-                    <Style name="text" font="dejavusans" size="10" style=""/>
-                    <Body>
-                        <Whoops/>
-                    </Body>
-                </Doc>
-            </Report>
-            XML;
+        $report_file = Webtrees::ROOT_DIR . 'tests/data/report-with-unknown-element.xml';
 
-        $tmp_file = (string) tempnam(sys_get_temp_dir(), 'webtrees_report_test_');
-        file_put_contents($tmp_file, $report_xml);
-
+        ob_start();
         try {
-            ob_start();
-            try {
-                new ParserGenerate($tmp_file, new HtmlRenderer(), [], $tree);
-                self::fail('Expected LogicException for unknown XML element was not thrown.');
-            } catch (LogicException $e) {
-                self::assertStringContainsString('<Whoops>', $e->getMessage());
-                self::assertStringContainsString($tmp_file, $e->getMessage());
-            } finally {
-                ob_get_clean();
-            }
+            new ParserGenerate($report_file, new HtmlRenderer(), [], $tree);
+            self::fail('Expected LogicException for unknown XML element was not thrown.');
+        } catch (LogicException $e) {
+            self::assertStringContainsString('<Whoops>', $e->getMessage());
+            self::assertStringContainsString($report_file, $e->getMessage());
         } finally {
-            unlink($tmp_file);
+            ob_get_clean();
         }
     }
 }

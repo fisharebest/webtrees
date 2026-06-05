@@ -249,10 +249,4 @@ abstract class AbstractRenderer implements ElementContainerInterface
     abstract public function checkFootnote(AbstractFootnote $footnote): void;
 
     abstract public function pageNo(): int;
-
-    /**
-     * Combined height of all footnotes queued for rendering at the bottom
-     * of the current page or text box.
-     */
-    abstract public function getFootnotesHeight(float $cellWidth = 0): float;
 }
