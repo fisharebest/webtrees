@@ -16,10 +16,9 @@
         ]
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php",
-            "tests/app/Elements/AbstractElementTestCase.php"
-        ]
+        "psr-4": {
+            "Fisharebest\\Webtrees\\Tests\\": "tests/"
+        }
     },
     "config": {
         "platform": {

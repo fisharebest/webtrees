@@ -13,10 +13,10 @@
 >
   <testsuites>
     <testsuite name="Unit tests">
-      <directory>tests/app</directory>
+      <directory>tests/Unit</directory>
     </testsuite>
     <testsuite name="Feature tests">
-      <directory>tests/feature</directory>
+      <directory>tests/Feature</directory>
     </testsuite>
   </testsuites>
   <source>
