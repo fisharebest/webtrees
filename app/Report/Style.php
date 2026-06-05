@@ -19,12 +19,41 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-readonly class Style
+use LogicException;
+
+use function array_key_exists;
+use function preg_match;
+
+final readonly class Style
 {
+    /**
+     * @param array<string,string> $attrs
+     */
+    public static function fromXmlAttributes(array $attrs): self
+    {
+        if (!array_key_exists('name', $attrs)) {
+            throw new LogicException('The "name" attribute is missing.');
+        }
+
+        if ($attrs['name'] === '') {
+            throw new LogicException('The "name" attribute is empty.');
+        }
+
+        return new self(
+            name: $attrs['name'],
+            style: $attrs['style'] ?? '',
+            size: (float) ($attrs['size'] ?? StyleDefaults::DEFAULT_FONT_SIZE),
+        );
+    }
+
     public function __construct(
         public string $name,
         public string $style,
         public float $size,
     ) {
+        if (preg_match('/^[biud]*$/', $this->style) !== 1) {
+            $message = sprintf('Invalid style flags "%s". Use only lowercase b, i, u, and d.', $this->style);
+            throw new LogicException($message);
+        }
     }
 }

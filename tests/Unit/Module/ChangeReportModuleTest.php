@@ -23,15 +23,15 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Module\ChangeReportModule;
 use Fisharebest\Webtrees\Module\PedigreeReportModule;
-use Fisharebest\Webtrees\Report\AbstractCell;
-use Fisharebest\Webtrees\Report\AbstractElement;
-use Fisharebest\Webtrees\Report\AbstractFootnote;
-use Fisharebest\Webtrees\Report\AbstractImage;
-use Fisharebest\Webtrees\Report\AbstractLine;
+use Fisharebest\Webtrees\Report\Cell;
+use Fisharebest\Webtrees\Report\Element;
+use Fisharebest\Webtrees\Report\Footnote;
+use Fisharebest\Webtrees\Report\Image;
+use Fisharebest\Webtrees\Report\Line;
 use Fisharebest\Webtrees\Report\AbstractParser;
 use Fisharebest\Webtrees\Report\AbstractRenderer;
-use Fisharebest\Webtrees\Report\AbstractText;
-use Fisharebest\Webtrees\Report\AbstractTextBox;
+use Fisharebest\Webtrees\Report\Text;
+use Fisharebest\Webtrees\Report\TextBox;
 use Fisharebest\Webtrees\Report\CellAlign;
 use Fisharebest\Webtrees\Report\CellNewline;
 use Fisharebest\Webtrees\Report\ExpressionLanguageProvider;
@@ -39,37 +39,25 @@ use Fisharebest\Webtrees\Report\FootnoteTextsElement;
 use Fisharebest\Webtrees\Report\GedcomFrame;
 use Fisharebest\Webtrees\Report\GedcomTextReader;
 use Fisharebest\Webtrees\Report\HexColor;
-use Fisharebest\Webtrees\Report\HtmlCell;
-use Fisharebest\Webtrees\Report\HtmlFootnote;
-use Fisharebest\Webtrees\Report\HtmlImage;
-use Fisharebest\Webtrees\Report\HtmlLine;
 use Fisharebest\Webtrees\Report\HtmlRenderer;
-use Fisharebest\Webtrees\Report\HtmlText;
-use Fisharebest\Webtrees\Report\HtmlTextBox;
 use Fisharebest\Webtrees\Report\ImageContinuation;
 use Fisharebest\Webtrees\Report\InputDefinition;
 use Fisharebest\Webtrees\Report\NewPageElement;
 use Fisharebest\Webtrees\Report\NullElement;
 use Fisharebest\Webtrees\Report\PageOrientation;
-use Fisharebest\Webtrees\Report\PageSize;
+use Fisharebest\Webtrees\Report\PaperSize;
 use Fisharebest\Webtrees\Report\ParserGenerate;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Webtrees;
 use Fisharebest\Webtrees\Report\ParserSetup;
-use Fisharebest\Webtrees\Report\PdfCell;
-use Fisharebest\Webtrees\Report\PdfFootnote;
-use Fisharebest\Webtrees\Report\PdfImage;
-use Fisharebest\Webtrees\Report\PdfLine;
 use Fisharebest\Webtrees\Report\PdfRenderer;
-use Fisharebest\Webtrees\Report\PdfText;
-use Fisharebest\Webtrees\Report\PdfTextBox;
 use Fisharebest\Webtrees\Report\PlaceholderExpander;
 use Fisharebest\Webtrees\Report\RepeatFrame;
-use Fisharebest\Webtrees\Report\ReportConfig;
-use Fisharebest\Webtrees\Report\ReportListBuilder;
-use Fisharebest\Webtrees\Report\ReportSection;
-use Fisharebest\Webtrees\Report\RightToLeftFormatter;
+use Fisharebest\Webtrees\Report\Config;
+use Fisharebest\Webtrees\Report\ListBuilder;
+use Fisharebest\Webtrees\Report\Section;
 use Fisharebest\Webtrees\Report\Style;
-use Fisharebest\Webtrees\Report\TcpdfWrapper;
-use Fisharebest\Webtrees\Report\Utf8WordWrap;
+use Fisharebest\Webtrees\Report\TcLibPdfAdaptor;
 use Fisharebest\Webtrees\Report\VariableTable;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
@@ -77,17 +65,15 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 
-use function ob_get_clean;
-
-#[CoversClass(AbstractCell::class)]
-#[CoversClass(AbstractElement::class)]
-#[CoversClass(AbstractFootnote::class)]
-#[CoversClass(AbstractImage::class)]
-#[CoversClass(AbstractLine::class)]
+#[CoversClass(Cell::class)]
+#[CoversClass(Element::class)]
+#[CoversClass(Footnote::class)]
+#[CoversClass(Image::class)]
+#[CoversClass(Line::class)]
 #[CoversClass(AbstractParser::class)]
 #[CoversClass(AbstractRenderer::class)]
-#[CoversClass(AbstractText::class)]
-#[CoversClass(AbstractTextBox::class)]
+#[CoversClass(Text::class)]
+#[CoversClass(TextBox::class)]
 #[CoversClass(CellAlign::class)]
 #[CoversClass(CellNewline::class)]
 #[CoversClass(ExpressionLanguageProvider::class)]
@@ -95,38 +81,24 @@ use function ob_get_clean;
 #[CoversClass(GedcomFrame::class)]
 #[CoversClass(GedcomTextReader::class)]
 #[CoversClass(HexColor::class)]
-#[CoversClass(HtmlCell::class)]
-#[CoversClass(HtmlFootnote::class)]
-#[CoversClass(HtmlImage::class)]
-#[CoversClass(HtmlLine::class)]
 #[CoversClass(HtmlRenderer::class)]
-#[CoversClass(HtmlText::class)]
-#[CoversClass(HtmlTextBox::class)]
 #[CoversClass(ImageContinuation::class)]
 #[CoversClass(InputDefinition::class)]
 #[CoversClass(NewPageElement::class)]
 #[CoversClass(NullElement::class)]
 #[CoversClass(PageOrientation::class)]
-#[CoversClass(PageSize::class)]
+#[CoversClass(PaperSize::class)]
 #[CoversClass(ParserGenerate::class)]
 #[CoversClass(ParserSetup::class)]
-#[CoversClass(PdfCell::class)]
-#[CoversClass(PdfFootnote::class)]
-#[CoversClass(PdfImage::class)]
-#[CoversClass(PdfLine::class)]
 #[CoversClass(PdfRenderer::class)]
-#[CoversClass(PdfText::class)]
-#[CoversClass(PdfTextBox::class)]
 #[CoversClass(PedigreeReportModule::class)]
 #[CoversClass(PlaceholderExpander::class)]
 #[CoversClass(RepeatFrame::class)]
-#[CoversClass(ReportConfig::class)]
-#[CoversClass(ReportListBuilder::class)]
-#[CoversClass(ReportSection::class)]
-#[CoversClass(RightToLeftFormatter::class)]
+#[CoversClass(Config::class)]
+#[CoversClass(ListBuilder::class)]
+#[CoversClass(Section::class)]
 #[CoversClass(Style::class)]
-#[CoversClass(TcpdfWrapper::class)]
-#[CoversClass(Utf8WordWrap::class)]
+#[CoversClass(TcLibPdfAdaptor::class)]
 #[CoversClass(VariableTable::class)]
 class ChangeReportModuleTest extends TestCase
 {
@@ -201,22 +173,23 @@ class ChangeReportModuleTest extends TestCase
         ];
 
         $parser = new ParserSetup($xml);
+        $parser->process();
         $this->assertNotEmpty($parser->reportDescription());
         $this->assertNotEmpty($parser->reportTitle());
         $this->assertNotEmpty($parser->reportInputs());
 
         Site::setPreference('INDEX_DIRECTORY', 'tests/data/');
 
-        ob_start();
-        new ParserGenerate($xml, new HtmlRenderer(), $vars, $tree);
-        $html = ob_get_clean();
+        $renderer = new HtmlRenderer();
+        (new ParserGenerate($xml, $renderer, $vars, $tree, Webtrees::NAME . ' ' . Webtrees::VERSION, Registry::timestampFactory()->now()))->process();
+        $html = $renderer->output();
         self::assertIsString($html);
         self::assertStringStartsWith('<', $html);
         self::assertStringEndsWith('>', $html);
 
-        ob_start();
-        new ParserGenerate($xml, new PdfRenderer(), $vars, $tree);
-        $pdf = ob_get_clean();
+        $renderer = new PdfRenderer();
+        (new ParserGenerate($xml, $renderer, $vars, $tree, Webtrees::NAME . ' ' . Webtrees::VERSION, Registry::timestampFactory()->now()))->process();
+        $pdf = $renderer->output();
         self::assertIsString($pdf);
         self::assertStringStartsWith('%PDF', $pdf);
         self::assertStringEndsWith("%%EOF\n", $pdf);

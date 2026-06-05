@@ -55,24 +55,24 @@ final class GedcomTextReader
             return '';
         }
         // Adding \n before and after gedrec to simplify boundary matching
-        $gedrec       = "\n" . $gedrec . "\n";
-        $tag          = trim($tag);
-        $searchTarget = "~[\n]" . $tag . "[\s]~";
-        $ct           = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
-        if ($ct < $num) {
+        $gedrec            = "\n" . $gedrec . "\n";
+        $tag               = trim($tag);
+        $searchTarget      = "~[\n]" . $tag . "[\s]~";
+        $match_count       = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
+        if ($match_count < $num) {
             return '';
         }
-        $pos1 = (int) $match[$num - 1][0][1];
-        $pos2 = strpos($gedrec, "\n$level", $pos1 + 1);
-        if (!$pos2) {
-            $pos2 = strpos($gedrec, "\n1", $pos1 + 1);
+        $start_position = (int) $match[$num - 1][0][1];
+        $end_position   = strpos($gedrec, "\n$level", $start_position + 1);
+        if (!$end_position) {
+            $end_position = strpos($gedrec, "\n1", $start_position + 1);
         }
-        if (!$pos2) {
-            return ltrim(substr($gedrec, $pos1));
+        if (!$end_position) {
+            return ltrim(substr($gedrec, $start_position));
         }
-        $subrec = substr($gedrec, $pos1, $pos2 - $pos1);
+        $subrecord = substr($gedrec, $start_position, $end_position - $start_position);
 
-        return ltrim($subrec);
+        return ltrim($subrecord);
     }
 
     /**
@@ -119,34 +119,34 @@ final class GedcomTextReader
         if ($gedrec === '') {
             return '';
         }
-        $tags          = explode(':', $tag);
+        $tags           = explode(':', $tag);
         $original_level = $level;
         if ($level === 0) {
             $level = 1 + (int) $gedrec[0];
         }
 
-        $subrec = $gedrec;
-        $t      = 'XXXX';
-        foreach ($tags as $t) {
-            $last_subrec = $subrec;
-            $subrec      = self::getSubRecord($level, "$level $t", $subrec);
-            if (empty($subrec) && $original_level == 0) {
+        $subrecord = $gedrec;
+        $final_tag = 'XXXX';
+        foreach ($tags as $final_tag) {
+            $previous_subrecord = $subrecord;
+            $subrecord          = self::getSubRecord($level, "$level $final_tag", $subrecord);
+            if ($subrecord === '' && $original_level === 0) {
                 $level--;
-                $subrec = self::getSubRecord($level, "$level $t", $last_subrec);
+                $subrecord = self::getSubRecord($level, "$level $final_tag", $previous_subrecord);
             }
-            if (empty($subrec)) {
-                if ($t === 'TITL') {
-                    $subrec = self::getSubRecord($level, "$level ABBR", $last_subrec);
-                    if (!empty($subrec)) {
-                        $t = 'ABBR';
+            if ($subrecord === '') {
+                if ($final_tag === 'TITL') {
+                    $subrecord = self::getSubRecord($level, "$level ABBR", $previous_subrecord);
+                    if ($subrecord !== '') {
+                        $final_tag = 'ABBR';
                     }
                 }
-                if ($subrec === '') {
+                if ($subrecord === '') {
                     if ($level > 0) {
                         $level--;
                     }
-                    $subrec = self::getSubRecord($level, "@ $t", $gedrec);
-                    if ($subrec === '') {
+                    $subrecord = self::getSubRecord($level, "@ $final_tag", $gedrec);
+                    if ($subrecord === '') {
                         return '';
                     }
                 }
@@ -154,17 +154,17 @@ final class GedcomTextReader
             $level++;
         }
         $level--;
-        $ct = preg_match("/$level $t(.*)/", $subrec, $match);
-        if ($ct === 0) {
-            $ct = preg_match("/$level @.+@ (.+)/", $subrec, $match);
+        $match_count = preg_match("/$level $final_tag(.*)/", $subrecord, $match);
+        if ($match_count === 0) {
+            $match_count = preg_match("/$level @.+@ (.+)/", $subrecord, $match);
         }
-        if ($ct === 0) {
-            $ct = preg_match("/@ $t (.+)/", $subrec, $match);
+        if ($match_count === 0) {
+            $match_count = preg_match("/@ $final_tag (.+)/", $subrecord, $match);
         }
-        if ($ct > 0) {
+        if ($match_count > 0) {
             $value = trim($match[1]);
             // Resolve linked NOTE records to their text content
-            if ($t === 'NOTE' && preg_match('/^@(.+)@$/', $value, $match)) {
+            if ($final_tag === 'NOTE' && preg_match('/^@(.+)@$/', $value, $match)) {
                 $note = Registry::noteFactory()->make($match[1], $tree);
                 if ($note instanceof Note) {
                     $value = $note->getNote();
@@ -172,8 +172,8 @@ final class GedcomTextReader
                     $value = $match[1];
                 }
             }
-            if ($level !== 0 || $t !== 'NOTE') {
-                $value .= self::getCont($level + 1, $subrec);
+            if ($level !== 0 || $final_tag !== 'NOTE') {
+                $value .= self::getCont($level + 1, $subrecord);
             }
 
             // Strip name-delimiting slashes from NAME-type values

@@ -19,17 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
+use Fisharebest\Webtrees\Report\Element;
+use Fisharebest\Webtrees\Report\NewPageElement;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Report\AbstractElement;
-use Fisharebest\Webtrees\Report\NewPageElement;
 
-#[CoversClass(AbstractElement::class)]
+#[CoversClass(Element::class)]
 #[CoversClass(NewPageElement::class)]
 class NewPageElementTest extends TestCase
 {
-    public function testClass(): void
+    public function testCanBeConstructedAsMarkerElement(): void
     {
-        self::assertTrue(class_exists(NewPageElement::class));
+        self::assertInstanceOf(NewPageElement::class, new NewPageElement());
     }
 }

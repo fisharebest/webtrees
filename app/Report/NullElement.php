@@ -22,14 +22,9 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * A no-op element used as the initial current_element before the report
  * body is reached.  Text added via addText() accumulates normally (inherited
- * from AbstractElement) so the parser can read it back for metadata like
- * Title and Description; render() does nothing.
- *
- * @extends AbstractElement<AbstractRenderer>
+ * from Element) so the parser can read it back for metadata like
+ * Title and Description.
  */
-class NullElement extends AbstractElement
+final class NullElement extends Element
 {
-    public function render(AbstractRenderer $renderer, bool $layout = true): void
-    {
-    }
 }

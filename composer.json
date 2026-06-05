@@ -73,7 +73,7 @@
         "symfony/expression-language": "7.4.8",
         "symfony/mailer": "7.4.12",
         "symfony/polyfill-mbstring": "1.38.1",
-        "tecnickcom/tcpdf": "6.11.3"
+        "tecnickcom/tc-lib-pdf": "8.33.1"
     },
     "require-dev": {
         "ext-dom": "*",

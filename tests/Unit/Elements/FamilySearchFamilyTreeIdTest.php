@@ -23,9 +23,9 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Elements\AbstractExternalLink;
 use Fisharebest\Webtrees\Elements\AncestralFileNumber;
 use Fisharebest\Webtrees\Elements\FamilySearchFamilyTreeId;
-use Fisharebest\Webtrees\Report\AbstractElement;
+use Fisharebest\Webtrees\Report\Element;
 
-#[CoversClass(AbstractElement::class)]
+#[CoversClass(Element::class)]
 #[CoversClass(AbstractExternalLink::class)]
 #[CoversClass(FamilySearchFamilyTreeId::class)]
 class FamilySearchFamilyTreeIdTest extends AbstractElementTestCase

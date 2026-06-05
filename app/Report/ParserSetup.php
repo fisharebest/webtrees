@@ -29,7 +29,7 @@ use function strtoupper;
 /**
  * Parse a report.xml file and extract the setup options.
  */
-class ParserSetup extends AbstractParser
+final class ParserSetup extends AbstractParser
 {
     private string $title;
 
@@ -78,6 +78,7 @@ class ParserSetup extends AbstractParser
             'FootnoteTexts'    => $this->noop(...),
             'Gedcom'           => $this->noop(...),
             'GedcomValue'      => $this->noop(...),
+            'GeneratedBy'      => $this->noop(...),
             'Generation'       => $this->noop(...),
             'GetPersonName'    => $this->noop(...),
             'Header'           => $this->noop(...),
@@ -94,11 +95,12 @@ class ParserSetup extends AbstractParser
             'RepeatTag'        => $this->noop(...),
             'Report'           => $this->noop(...),
             'SetVar'           => $this->noop(...),
-            'Style'            => $this->noop(...),
+            'Style'            => $this->styleStartHandler(...),
             'Text'             => $this->noop(...),
             'TextBox'          => $this->noop(...),
             'Title'            => $this->titleStartHandler(...),
             'TotalPages'       => $this->noop(...),
+            'WebtreesLogo'     => $this->noop(...),
             'br'               => $this->noop(...),
             'if'               => $this->noop(...),
             'tempdoc'          => $this->noop(...),
@@ -112,7 +114,7 @@ class ParserSetup extends AbstractParser
      * Every tag that may legally appear in a report must be present here,
      * even if it requires no action on open (use a no-op).
      *
-     * @return array<string,Closure(array<string,string>):void>
+     * @return array<string,Closure():void>
      */
     protected function endHandlers(): array
     {
@@ -127,6 +129,7 @@ class ParserSetup extends AbstractParser
             'FootnoteTexts'    => $this->noop(...),
             'Gedcom'           => $this->noop(...),
             'GedcomValue'      => $this->noop(...),
+            'GeneratedBy'      => $this->noop(...),
             'Generation'       => $this->noop(...),
             'GetPersonName'    => $this->noop(...),
             'Header'           => $this->noop(...),
@@ -148,6 +151,7 @@ class ParserSetup extends AbstractParser
             'TextBox'          => $this->noop(...),
             'Title'            => $this->titleEndHandler(...),
             'TotalPages'       => $this->noop(...),
+            'WebtreesLogo'     => $this->noop(...),
             'br'               => $this->noop(...),
             'if'               => $this->noop(...),
             'tempdoc'          => $this->noop(...),
@@ -158,29 +162,33 @@ class ParserSetup extends AbstractParser
     /**
      * @param array<string,string> $attrs
      */
-    protected function varStartHandler(array $attrs): void
+    private function styleStartHandler(array $attrs): void
     {
-        if (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $attrs['var'], $match)) {
-            $this->text .= I18N::translate($match[1]);
-        } elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $attrs['var'], $match)) {
-            $this->text .= I18N::translateContext($match[1], $match[2]);
-        } else {
-            $this->text .= $attrs['var'];
-        }
+        Style::fromXmlAttributes($attrs);
     }
 
-    protected function titleStartHandler(): void
+    /**
+     * @param array<string,string> $attrs
+     */
+    private function varStartHandler(array $attrs): void
+    {
+        $placeholder_expander = new PlaceholderExpander(new VariableTable([]));
+
+        $this->text .= $placeholder_expander->applyI18nFunctions($attrs['var']);
+    }
+
+    private function titleStartHandler(): void
     {
         $this->text = '';
     }
 
-    protected function titleEndHandler(): void
+    private function titleEndHandler(): void
     {
         $this->title = $this->text;
         $this->text  = '';
     }
 
-    protected function descriptionEndHandler(): void
+    private function descriptionEndHandler(): void
     {
         $this->description = $this->text;
         $this->text        = '';
@@ -189,7 +197,7 @@ class ParserSetup extends AbstractParser
     /**
      * @param array<string,string> $attrs
      */
-    protected function inputStartHandler(array $attrs): void
+    private function inputStartHandler(array $attrs): void
     {
         $this->text = '';
 
@@ -218,7 +226,7 @@ class ParserSetup extends AbstractParser
         );
     }
 
-    protected function inputEndHandler(): void
+    private function inputEndHandler(): void
     {
         $this->inputs[] = $this->input->withValue($this->text);
         $this->text     = '';

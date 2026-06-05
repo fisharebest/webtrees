@@ -22,36 +22,45 @@ namespace Fisharebest\Webtrees\Tests\Unit\Report;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Report\AbstractCell;
-use Fisharebest\Webtrees\Report\AbstractElement;
-use Fisharebest\Webtrees\Report\AbstractFootnote;
-use Fisharebest\Webtrees\Report\AbstractImage;
-use Fisharebest\Webtrees\Report\AbstractLine;
 use Fisharebest\Webtrees\Report\AbstractParser;
 use Fisharebest\Webtrees\Report\AbstractRenderer;
-use Fisharebest\Webtrees\Report\AbstractText;
-use Fisharebest\Webtrees\Report\AbstractTextBox;
+use Fisharebest\Webtrees\Report\Cell;
+use Fisharebest\Webtrees\Report\CellAlign;
+use Fisharebest\Webtrees\Report\CellNewline;
+use Fisharebest\Webtrees\Report\Config;
+use Fisharebest\Webtrees\Report\Element;
 use Fisharebest\Webtrees\Report\ExpressionLanguageProvider;
-use Fisharebest\Webtrees\Report\HtmlCell;
-use Fisharebest\Webtrees\Report\HtmlFootnote;
-use Fisharebest\Webtrees\Report\HtmlImage;
-use Fisharebest\Webtrees\Report\HtmlLine;
+use Fisharebest\Webtrees\Report\Footnote;
+use Fisharebest\Webtrees\Report\FootnoteTextsElement;
+use Fisharebest\Webtrees\Report\GedcomFrame;
+use Fisharebest\Webtrees\Report\GedcomTextReader;
+use Fisharebest\Webtrees\Report\HexColor;
 use Fisharebest\Webtrees\Report\HtmlRenderer;
-use Fisharebest\Webtrees\Report\HtmlText;
-use Fisharebest\Webtrees\Report\HtmlTextBox;
+use Fisharebest\Webtrees\Report\HtmlWriter;
+use Fisharebest\Webtrees\Report\Image;
+use Fisharebest\Webtrees\Report\ImageContinuation;
+use Fisharebest\Webtrees\Report\ImageData;
+use Fisharebest\Webtrees\Report\InputDefinition;
+use Fisharebest\Webtrees\Report\Line;
+use Fisharebest\Webtrees\Report\ListBuilder;
+use Fisharebest\Webtrees\Report\NewPageElement;
 use Fisharebest\Webtrees\Report\NullElement;
+use Fisharebest\Webtrees\Report\PageOrientation;
+use Fisharebest\Webtrees\Report\PaperSize;
 use Fisharebest\Webtrees\Report\ParserGenerate;
 use Fisharebest\Webtrees\Report\ParserSetup;
-use Fisharebest\Webtrees\Report\PdfCell;
-use Fisharebest\Webtrees\Report\PdfFootnote;
-use Fisharebest\Webtrees\Report\PdfImage;
-use Fisharebest\Webtrees\Report\PdfLine;
+use Fisharebest\Webtrees\Report\PdfBlockWriter;
 use Fisharebest\Webtrees\Report\PdfRenderer;
-use Fisharebest\Webtrees\Report\PdfText;
-use Fisharebest\Webtrees\Report\PdfTextBox;
-use Fisharebest\Webtrees\Report\RightToLeftFormatter;
+use Fisharebest\Webtrees\Report\PdfTextMeasurer;
+use Fisharebest\Webtrees\Report\PdfWriter;
+use Fisharebest\Webtrees\Report\PlaceholderExpander;
+use Fisharebest\Webtrees\Report\RepeatFrame;
+use Fisharebest\Webtrees\Report\Section;
 use Fisharebest\Webtrees\Report\Style;
-use Fisharebest\Webtrees\Report\TcpdfWrapper;
+use Fisharebest\Webtrees\Report\TcLibPdfAdaptor;
+use Fisharebest\Webtrees\Report\Text;
+use Fisharebest\Webtrees\Report\TextBox;
+use Fisharebest\Webtrees\Report\VariableTable;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -66,41 +75,47 @@ use function file_put_contents;
 use function getenv;
 use function is_dir;
 use function mkdir;
-use function ob_get_clean;
-use function ob_start;
 use function preg_replace;
-use function str_replace;
 
-#[CoversClass(AbstractCell::class)]
-#[CoversClass(AbstractElement::class)]
-#[CoversClass(AbstractFootnote::class)]
-#[CoversClass(AbstractImage::class)]
-#[CoversClass(AbstractLine::class)]
 #[CoversClass(AbstractParser::class)]
 #[CoversClass(AbstractRenderer::class)]
-#[CoversClass(AbstractText::class)]
-#[CoversClass(AbstractTextBox::class)]
+#[CoversClass(Cell::class)]
+#[CoversClass(CellAlign::class)]
+#[CoversClass(CellNewline::class)]
+#[CoversClass(Config::class)]
+#[CoversClass(Element::class)]
 #[CoversClass(ExpressionLanguageProvider::class)]
-#[CoversClass(HtmlCell::class)]
-#[CoversClass(HtmlFootnote::class)]
-#[CoversClass(HtmlImage::class)]
-#[CoversClass(HtmlLine::class)]
+#[CoversClass(Footnote::class)]
+#[CoversClass(FootnoteTextsElement::class)]
+#[CoversClass(GedcomFrame::class)]
+#[CoversClass(GedcomTextReader::class)]
+#[CoversClass(HexColor::class)]
 #[CoversClass(HtmlRenderer::class)]
-#[CoversClass(HtmlText::class)]
-#[CoversClass(HtmlTextBox::class)]
+#[CoversClass(HtmlWriter::class)]
+#[CoversClass(Image::class)]
+#[CoversClass(ImageData::class)]
+#[CoversClass(ImageContinuation::class)]
+#[CoversClass(InputDefinition::class)]
+#[CoversClass(Line::class)]
+#[CoversClass(ListBuilder::class)]
+#[CoversClass(NewPageElement::class)]
 #[CoversClass(NullElement::class)]
+#[CoversClass(PageOrientation::class)]
+#[CoversClass(PaperSize::class)]
 #[CoversClass(ParserGenerate::class)]
 #[CoversClass(ParserSetup::class)]
-#[CoversClass(PdfCell::class)]
-#[CoversClass(PdfFootnote::class)]
-#[CoversClass(PdfImage::class)]
-#[CoversClass(PdfLine::class)]
+#[CoversClass(PdfBlockWriter::class)]
 #[CoversClass(PdfRenderer::class)]
-#[CoversClass(PdfText::class)]
-#[CoversClass(PdfTextBox::class)]
-#[CoversClass(RightToLeftFormatter::class)]
+#[CoversClass(PdfTextMeasurer::class)]
+#[CoversClass(PdfWriter::class)]
+#[CoversClass(PlaceholderExpander::class)]
+#[CoversClass(RepeatFrame::class)]
+#[CoversClass(Section::class)]
 #[CoversClass(Style::class)]
-#[CoversClass(TcpdfWrapper::class)]
+#[CoversClass(TcLibPdfAdaptor::class)]
+#[CoversClass(Text::class)]
+#[CoversClass(TextBox::class)]
+#[CoversClass(VariableTable::class)]
 class ReportRegressionTest extends TestCase
 {
     protected static bool $uses_database = true;
@@ -113,6 +128,9 @@ class ReportRegressionTest extends TestCase
     private const string DEMO_FAMILY     = 'f1';
     private const string DEMO_SOURCE     = 'X1102';
 
+    // A Hebrew-named individual for mixed-direction (bidi) testing.
+    private const string DEMO_BIDI_INDIVIDUAL = 'X1167';
+
     /**
      * One data-provider row per bundled XML report.
      *
@@ -121,11 +139,11 @@ class ReportRegressionTest extends TestCase
      * tests stay fast; pick fixed date ranges so reports that filter on dates
      * do not depend on "now".
      *
-     * @return array<string,array{string,array<string,string>}>
+     * @return array<string,array{string,array<string,string>,string}>
      */
     public static function reportProvider(): array
     {
-        $small_generations = ['maxgen' => '3'];
+        $maximum_generations = ['maxgen' => '3'];
 
         $wide_date_range = [
             'changeRangeStart' => '1 JAN 1900',
@@ -134,22 +152,23 @@ class ReportRegressionTest extends TestCase
         ];
 
         return [
-            'ahnentafel_report'    => ['ahnentafel_report.xml',    array_merge(['pid' => self::DEMO_INDIVIDUAL], $small_generations)],
-            'bdm_report'           => ['bdm_report.xml',           []],
-            'birth_report'         => ['birth_report.xml',         []],
-            'cemetery_report'      => ['cemetery_report.xml',      []],
-            'change_report'        => ['change_report.xml',        $wide_date_range],
-            'death_report'         => ['death_report.xml',         []],
-            'descendancy_report'   => ['descendancy_report.xml',   array_merge(['pid' => self::DEMO_INDIVIDUAL], $small_generations)],
-            'fact_sources'         => ['fact_sources.xml',         ['sid' => self::DEMO_SOURCE]],
-            'family_group_report'  => ['family_group_report.xml',  ['famid' => self::DEMO_FAMILY]],
-            'individual_ext_report' => ['individual_ext_report.xml', array_merge(['pid' => self::DEMO_INDIVIDUAL, 'relatives' => 'child-family'], $small_generations)],
-            'individual_report'    => ['individual_report.xml',    ['pid' => self::DEMO_INDIVIDUAL]],
-            'marriage_report'      => ['marriage_report.xml',      []],
-            'missing_facts_report' => ['missing_facts_report.xml', array_merge(['pid' => self::DEMO_INDIVIDUAL], $small_generations)],
-            'occupation_report'    => ['occupation_report.xml',    []],
-            'pedigree_report'      => ['pedigree_report.xml',      ['pid' => self::DEMO_INDIVIDUAL]],
-            'relative_ext_report'  => ['relative_ext_report.xml',  ['pid' => self::DEMO_INDIVIDUAL, 'relatives' => 'child-family']],
+            'ahnentafel_report'      => ['ahnentafel_report.xml', array_merge(['pid' => self::DEMO_INDIVIDUAL, 'sources' => 'on', 'notes' => 'on', 'occu' => 'on', 'resi' => 'on', 'children' => 'on'], $maximum_generations), 'ahnentafel_report.xml'],
+            'bdm_report'             => ['bdm_report.xml', [], 'bdm_report.xml'],
+            'birth_report'           => ['birth_report.xml', [], 'birth_report.xml'],
+            'cemetery_report'        => ['cemetery_report.xml', [], 'cemetery_report.xml'],
+            'change_report'          => ['change_report.xml', $wide_date_range, 'change_report.xml'],
+            'death_report'           => ['death_report.xml', [], 'death_report.xml'],
+            'descendancy_report'     => ['descendancy_report.xml', array_merge(['pid' => self::DEMO_INDIVIDUAL, 'sources' => 'on'], $maximum_generations), 'descendancy_report.xml'],
+            'fact_sources'           => ['fact_sources.xml', ['sid' => self::DEMO_SOURCE], 'fact_sources.xml'],
+            'family_group_report'    => ['family_group_report.xml', ['famid' => self::DEMO_FAMILY, 'sources' => 'on', 'notes' => 'on', 'photos' => 'on', 'blanks' => 'on', 'colors' => 'on'], 'family_group_report.xml'],
+            'individual_ext_report'  => ['individual_ext_report.xml', array_merge(['pid' => self::DEMO_INDIVIDUAL, 'relatives' => 'child-family', 'sources' => 'on', 'notes' => 'on', 'photos' => 'highlighted', 'colors' => 'on'], $maximum_generations), 'individual_ext_report.xml'],
+            'individual_report'      => ['individual_report.xml', ['pid' => self::DEMO_INDIVIDUAL, 'sources' => 'on', 'notes' => 'on', 'photos' => 'highlighted', 'colors' => 'on'], 'individual_report.xml'],
+            'marriage_report'        => ['marriage_report.xml', [], 'marriage_report.xml'],
+            'missing_facts_report'   => ['missing_facts_report.xml', array_merge(['pid' => self::DEMO_INDIVIDUAL, 'fsour' => 'on', 'fbirt' => 'on', 'fbapm' => 'on', 'fbarm' => 'on', 'fbasm' => 'on', 'fconf' => 'on', 'fenga' => 'on', 'ffcom' => 'on', 'fmarb' => 'on', 'fmarr' => 'on', 'fdeat' => 'on', 'fburi' => 'on', 'freli' => 'on'], $maximum_generations), 'missing_facts_report.xml'],
+            'occupation_report'      => ['occupation_report.xml', [], 'occupation_report.xml'],
+            'pedigree_report'        => ['pedigree_report.xml', ['pid' => self::DEMO_INDIVIDUAL, 'layout' => 'A4-landscape'], 'pedigree_report.xml'],
+            'relative_ext_report'    => ['relative_ext_report.xml', ['pid' => self::DEMO_INDIVIDUAL, 'relatives' => 'child-family'], 'relative_ext_report.xml'],
+            'individual_report_bidi' => ['individual_report.xml', ['pid' => self::DEMO_BIDI_INDIVIDUAL], 'individual_report_bidi.xml'],
         ];
     }
 
@@ -157,42 +176,42 @@ class ReportRegressionTest extends TestCase
      * @param array<string,string> $overrides
      */
     #[DataProvider('reportProvider')]
-    public function testReportHtmlOutputMatchesSnapshot(string $report_file, array $overrides): void
+    public function testReportHtmlOutputMatchesSnapshot(string $report_file, array $overrides, string $snapshot_key): void
     {
         $xml_filename = self::REPORTS_DIR . $report_file;
         $vars         = $this->buildVars($xml_filename, $overrides);
         $tree         = $this->prepareTreeAndLogin();
+        $author       = Webtrees::NAME;
+        $timestamp    = Registry::timestampFactory()->make(0);
 
-        ob_start();
-        new ParserGenerate($xml_filename, new HtmlRenderer(), $vars, $tree);
-        $html = (string) ob_get_clean();
+        $renderer = new HtmlRenderer();
+        (new ParserGenerate($xml_filename, $renderer, $vars, $tree, $author, $timestamp))->process();
+        $html = $renderer->output();
 
-        $normalised = $this->normaliseHtml($html);
-
-        $this->assertSnapshot($report_file, $normalised);
+        $this->assertSnapshot($snapshot_key, $html, 'html');
     }
 
     /**
-     * Smoke-test the PDF backend. PDF byte-output is not deterministic across
-     * runs (TCPDF embeds a creation timestamp and assigns generation-dependent
-     * object ids), so we deliberately only check the structural envelope.
-     *
      * @param array<string,string> $overrides
      */
     #[DataProvider('reportProvider')]
-    public function testReportPdfOutputIsWellFormed(string $report_file, array $overrides): void
+    public function testReportPdfOutputMatchesSnapshot(string $report_file, array $overrides, string $snapshot_key): void
     {
         $xml_filename = self::REPORTS_DIR . $report_file;
         $vars         = $this->buildVars($xml_filename, $overrides);
         $tree         = $this->prepareTreeAndLogin();
+        $author       = Webtrees::NAME;
+        $timestamp    = Registry::timestampFactory()->make(0);
 
-        ob_start();
-        new ParserGenerate($xml_filename, new PdfRenderer(), $vars, $tree);
-        $pdf = (string) ob_get_clean();
+        $renderer = new PdfRenderer();
+        (new ParserGenerate($xml_filename, $renderer, $vars, $tree, $author, $timestamp))->process();
+        $pdf = $renderer->output();
 
-        self::assertNotSame('', $pdf, 'PDF output is empty for ' . $report_file);
         self::assertStringStartsWith('%PDF', $pdf, 'PDF output is missing the %PDF header for ' . $report_file);
-        self::assertStringEndsWith("%%EOF\n", $pdf, 'PDF output is missing the %%EOF trailer for ' . $report_file);
+
+        $pdf = $this->normalisePdf($pdf);
+
+        $this->assertSnapshot($snapshot_key, $pdf, 'pdf');
     }
 
     /**
@@ -206,7 +225,7 @@ class ReportRegressionTest extends TestCase
      */
     private function buildVars(string $xml_filename, array $overrides): array
     {
-        $setup = new ParserSetup($xml_filename);
+        $setup = (new ParserSetup($xml_filename))->process();
 
         $vars = [];
         foreach ($setup->reportInputs() as $input) {
@@ -229,25 +248,43 @@ class ReportRegressionTest extends TestCase
     }
 
     /**
-     * Replace volatile substrings with stable placeholders so that snapshots
-     * survive across machines, days and webtrees releases.
+     * Replace non-deterministic fields in the PDF output with fixed placeholders.
+     *
+     * The tc-lib-pdf library embeds the current time and a random file ID
+     * into the PDF document metadata.  We normalise these so that snapshot
+     * comparisons remain stable regardless of when the tests run.
      */
-    private function normaliseHtml(string $html): string
+    private function normalisePdf(string $pdf): string
     {
-        // The "Generated by webtrees X.Y.Z" footer embeds the current version.
-        $html = str_replace(Webtrees::VERSION, '{{VERSION}}', $html);
-
-        // <Now/> expands to a localised long-form timestamp via
-        // Registry::timestampFactory()->now()->isoFormat('LLLL').
-        // In the en-US locale (set by TestCase::setUp) this produces output
-        // such as "Monday, June 1, 2026 12:00 AM".
-        $html = (string) preg_replace(
-            '/[A-Z][a-z]+, [A-Z][a-z]+ \d{1,2}, \d{4} \d{1,2}:\d{2} (?:AM|PM)/',
-            '{{NOW}}',
-            $html
+        // PDF date strings: (D:YYYYMMDDHHmmSS+HH'MM') or (D:YYYYMMDDHHMMSSZ)
+        $pdf = (string) preg_replace(
+            '/\(D:\d{14}[^)]*\)/',
+            '(D:19700101000000Z)',
+            $pdf
         );
 
-        return $html;
+        // PDF trailer file ID: /ID [ <32-hex-chars> <32-hex-chars> ]
+        $pdf = (string) preg_replace(
+            '/\/ID \[ <[0-9a-f]{32}> <[0-9a-f]{32}> \]/',
+            '/ID [ <cfcd208495d565ef66e7dff9f98764da> <cfcd208495d565ef66e7dff9f98764da> ]',
+            $pdf
+        );
+
+        // XMP UUID references: uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+        $pdf = (string) preg_replace(
+            '/uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/',
+            'uuid:cfcd2084-95d5-65ef-66e7-dff9f98764da',
+            $pdf
+        );
+
+        // XMP ISO date strings: YYYY-MM-DDTHH:MM:SS(Z or +offset)
+        $pdf = (string) preg_replace(
+            '/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[Z+][^<]*/',
+            '1970-01-01T00:00:00Z',
+            $pdf
+        );
+
+        return $pdf;
     }
 
     /**
@@ -257,13 +294,13 @@ class ReportRegressionTest extends TestCase
      * UPDATE_SNAPSHOTS=1 environment variable is set, silently overwrite the
      * snapshot to support intentional refactor-induced changes.
      */
-    private function assertSnapshot(string $report_file, string $actual): void
+    private function assertSnapshot(string $report_file, string $actual, string $extension): void
     {
         if (!is_dir(self::SNAPSHOT_DIR)) {
             mkdir(self::SNAPSHOT_DIR, 0o755, true);
         }
 
-        $snapshot_file = self::SNAPSHOT_DIR . $report_file . '.html';
+        $snapshot_file = self::SNAPSHOT_DIR . $report_file . '.' . $extension;
 
         if (getenv('UPDATE_SNAPSHOTS') === '1') {
             file_put_contents($snapshot_file, $actual);
@@ -286,7 +323,7 @@ class ReportRegressionTest extends TestCase
         self::assertSame(
             $expected,
             $actual,
-            'Rendered HTML for ' . $report_file . ' differs from the stored snapshot. '
+            'Rendered ' . $extension . ' for ' . $report_file . ' differs from the stored snapshot. '
             . 'If the change is intentional, re-run with UPDATE_SNAPSHOTS=1 to regenerate.'
         );
     }

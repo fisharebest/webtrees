@@ -21,9 +21,9 @@ namespace Fisharebest\Webtrees\Tests\Unit\Elements;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Elements\MultimediaFormat;
-use Fisharebest\Webtrees\Report\AbstractElement;
+use Fisharebest\Webtrees\Report\Element;
 
-#[CoversClass(AbstractElement::class)]
+#[CoversClass(Element::class)]
 #[CoversClass(MultimediaFormat::class)]
 class MultimediaFormatTest extends AbstractElementTestCase
 {

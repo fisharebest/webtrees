@@ -25,8 +25,9 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Report\InputDefinition;
 use Fisharebest\Webtrees\Report\ParserSetup;
+use Fisharebest\Webtrees\Report\PlaceholderExpander;
+use Fisharebest\Webtrees\Report\VariableTable;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -61,13 +62,14 @@ final class ReportSetupPage implements RequestHandlerInterface
 
         $xref = Validator::queryParams($request)->isXref()->string('xref', '');
 
-        $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
-        $xml_parser   = new ParserSetup($xml_filename);
-        $description  = $xml_parser->reportDescription();
-        $title        = $xml_parser->reportTitle();
-        $inputs       = [];
+        $filename = $module->resourcesFolder() . $module->xmlFilename();
+        $parser   = new ParserSetup($filename);
+        $parser->process();
+        $description = $parser->reportDescription();
+        $title       = $parser->reportTitle();
+        $inputs      = [];
 
-        foreach ($xml_parser->reportInputs() as $n => $input) {
+        foreach ($parser->reportInputs() as $n => $input) {
             $attributes = [
                 'id'    => 'input-' . $n,
                 'name'  => 'vars[' . $input->name . ']',
@@ -118,8 +120,8 @@ final class ReportSetupPage implements RequestHandlerInterface
                         'dir'      => 'ltr',
                         'onchange' => 'webtrees.reformatDate(this, "' . $dmy . '")',
                     ];
-                    $control = '<input ' . Html::attributes($attributes) . '>';
-                    $extra   = view('edit/input-addon-calendar', ['id' => 'input-' . $n]);
+                    $control    = '<input ' . Html::attributes($attributes) . '>';
+                    $extra      = view('edit/input-addon-calendar', ['id' => 'input-' . $n]);
                     break;
 
                 default:
@@ -129,7 +131,7 @@ final class ReportSetupPage implements RequestHandlerInterface
                                 'type'  => 'text',
                                 'value' => $input->default,
                             ];
-                            $control = '<input ' . Html::attributes($attributes) . '>';
+                            $control    = '<input ' . Html::attributes($attributes) . '>';
                             break;
 
                         case 'checkbox':
@@ -137,22 +139,15 @@ final class ReportSetupPage implements RequestHandlerInterface
                                 'type'    => 'checkbox',
                                 'checked' => (bool) $input->default,
                             ];
-                            $control = '<input ' . Html::attributes($attributes) . '>';
+                            $control    = '<input ' . Html::attributes($attributes) . '>';
                             break;
 
                         case 'select':
                             $options = [];
                             foreach (explode('|', $input->options) as $option) {
                                 [$key, $value] = explode('=>', $option);
-                                if (preg_match('/^I18N::number\((.+?)(,([\d+]))?\)$/', $value, $match)) {
-                                    $number        = (float) $match[1];
-                                    $precision     = (int) ($match[3] ?? 0);
-                                    $options[$key] = I18N::number($number, $precision);
-                                } elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $value, $match)) {
-                                    $options[$key] = I18N::translate($match[1]);
-                                } elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $value, $match)) {
-                                    $options[$key] = I18N::translateContext($match[1], $match[2]);
-                                }
+                                $placeholder_expander = new PlaceholderExpander(new VariableTable([]));
+                                $options[$key]        = $placeholder_expander->applyI18nFunctions($value);
                             }
                             $control = view('components/select', ['name' => 'vars[' . $input->name . ']', 'id' => 'input-' . $n, 'selected' => $input->default, 'options' => $options]);
                             break;

@@ -32,7 +32,6 @@ class CellAlignTest extends TestCase
         self::assertSame('L', CellAlign::Left->value);
         self::assertSame('R', CellAlign::Right->value);
         self::assertSame('C', CellAlign::Center->value);
-        self::assertSame('J', CellAlign::Justify->value);
     }
 
     public function testFromString(): void

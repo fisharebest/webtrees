@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report>
+  <Style name="header" size="16" style="x"/>
+  <Doc>
+    <Body>
+      <Text style="header">Hello</Text>
+    </Body>
+  </Doc>
+</Report>
