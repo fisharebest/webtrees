@@ -131,7 +131,7 @@
 								<SetVar name="source_exist" value="1" />
 							</RepeatTag>
 						</if>
-						<Text style="name">  </Text>
+						<Text style="name"> </Text>
 						<!-- Individual, birth... -->
 						<Gedcom id="BIRT">
 							<Text style="text">
@@ -154,7 +154,7 @@
 							</if>
 							<Text style="text">
 								<if condition="@DATE!=''"> <GedcomValue tag="DATE" level="2" /></if>
-								<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>
+								<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /><GedcomValue tag="PLAC" level="2" /></if>
 								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')"><var var="I18N::translate(' but the details are unknown')" /></if>.
 							</Text>
 						</Gedcom>
@@ -209,7 +209,7 @@
 								</if>
 								<Text style="text">
 									<if condition="@DATE!=''"> <GedcomValue tag="DATE" level="2" /></if>
-									<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>.
+									<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /><GedcomValue tag="PLAC" level="2" /></if>.
 								</Text>
 							</RepeatTag>
 						</if>
@@ -302,7 +302,7 @@
 							</if>
 							<Text style="text">
 								<if condition="@DATE!=''"> <GedcomValue tag="DATE" level="2" /></if>
-								<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>
+								<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /><GedcomValue tag="PLAC" level="2" /></if>
 								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')"><var var="I18N::translate(' but the details are unknown')" /></if>.
 							</Text>
 						</Gedcom>
@@ -327,7 +327,7 @@
 							</if>
 							<Text style="text">
 								<if condition="@DATE!=''"> <GedcomValue tag="DATE" level="2" /></if>
-								<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>
+								<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /><GedcomValue tag="PLAC" level="2" /></if>
 								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')"><var var="I18N::translate(' but the details are unknown')" /></if>.
 							</Text>
 						</Gedcom>
@@ -352,7 +352,7 @@
 							</if>
 							<Text style="text">
 								<if condition="@DATE!=''"> <GedcomValue tag="DATE" level="2" /></if>
-								<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>
+								<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /><GedcomValue tag="PLAC" level="2" /></if>
 								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')"><var var="I18N::translate(' but the details are unknown')" /></if>.
 							</Text>
 						</Gedcom>
