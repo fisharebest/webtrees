@@ -55,10 +55,9 @@ if ($id === 'asso') {
     $styles[] = 'wt-associate-fact collapse';
 }
 
-if ($element instanceof UnknownElement && $tree->getPreference('HIDE_GEDCOM_ERRORS') === '0') {
+if ($element instanceof UnknownElement && $tree->getPreference('HIDE_GEDCOM_ERRORS') === '1') {
     $styles[] = 'd-none';
 }
-
 
 // historical facts
 if ($id === 'histo') {
