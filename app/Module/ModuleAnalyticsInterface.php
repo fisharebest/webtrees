@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,15 +29,11 @@ interface ModuleAnalyticsInterface extends ModuleInterface
 {
     /**
      * Should we add this tracker?
-     *
-     * @return bool
      */
     public function analyticsCanShow(): bool;
 
     /**
      * Form fields to edit the parameters.
-     *
-     * @return string
      */
     public function analyticsFormFields(): string;
 
@@ -52,29 +48,15 @@ interface ModuleAnalyticsInterface extends ModuleInterface
      * Embed placeholders in the snippet.
      *
      * @param array<string> $parameters
-     *
-     * @return string
      */
     public function analyticsSnippet(array $parameters): string;
 
     /**
      * Is this a tracker, as opposed to just a site-verification.
-     *
-     * @return bool
      */
     public function isTracker(): bool;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface;
 }

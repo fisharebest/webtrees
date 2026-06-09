@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -64,8 +64,6 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     /**
      * How should this module be labelled on tabs, footers, etc.?
-     *
-     * @return string
      */
     public function title(): string
     {
@@ -81,8 +79,6 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     /**
      * The default position for this footer.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultFooterOrder(): int
     {
@@ -91,10 +87,6 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     /**
      * A footer, to be added at the bottom of every page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return string
      */
     public function getFooter(ServerRequestInterface $request): string
     {
@@ -109,12 +101,6 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
-     */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $route = Validator::attributes($request)->route();
@@ -151,12 +137,6 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     /**
      * Increment the page count.
-     *
-     * @param Tree   $tree
-     * @param string $page
-     * @param string $parameter
-     *
-     * @return int
      */
     protected function countHit(Tree $tree, string $page, string $parameter): int
     {

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -50,12 +50,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -83,8 +78,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
     /**
      * Should this block load asynchronously using AJAX?
      * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
      */
     public function loadAjax(): bool
     {
@@ -93,8 +86,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
     /**
      * Can this block be shown on the user’s home page?
-     *
-     * @return bool
      */
     public function isUserBlock(): bool
     {
@@ -103,8 +94,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {
@@ -114,7 +103,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
     /**
      * Get the favorites for a family tree
      *
-     * @param Tree $tree
      *
      * @return array<int,object{
      *      favorite_id:string,
@@ -149,11 +137,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
             ->all();
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAddFavoriteAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();
@@ -180,11 +163,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
         return redirect($url);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postDeleteFavoriteAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
@@ -203,14 +181,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
         return redirect($url);
     }
 
-    /**
-     * @param Tree   $tree
-     * @param string $url
-     * @param string $title
-     * @param string $note
-     *
-     * @return void
-     */
     private function addUrlFavorite(Tree $tree, string $url, string $title, string $note): void
     {
         DB::table('favorite')->updateOrInsert([
@@ -224,13 +194,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
         ]);
     }
 
-    /**
-     * @param Tree         $tree
-     * @param GedcomRecord $record
-     * @param string       $note
-     *
-     * @return void
-     */
     private function addRecordFavorite(Tree $tree, GedcomRecord $record, string $note): void
     {
         DB::table('favorite')->updateOrInsert([

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,8 +39,6 @@ class CaptchaService
 
     /**
      * Create the captcha
-     *
-     * @return string
      */
     public function createCaptcha(): string
     {
@@ -62,10 +60,6 @@ class CaptchaService
 
     /**
      * Check the user's response.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return bool
      */
     public function isRobot(ServerRequestInterface $request): bool
     {

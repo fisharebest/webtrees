@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,31 +24,20 @@ namespace Fisharebest\Webtrees\Contracts;
  */
 interface IdFactoryInterface
 {
-    /**
-     * @return string
-     */
     public function uuid(): string;
 
     /**
      * An identifier for use in CSS/HTML
-     *
-     * @param string $prefix
-     *
-     * @return string
      */
     public function id(string $prefix = 'id-'): string;
 
     /**
      * A value for _UID fields, as created by PAF
-     *
-     * @return string
      */
     public function pafUid(): string;
 
     /**
      * @param string $uid exactly 32 hex characters
-     *
-     * @return string
      */
     public function pafUidChecksum(string $uid): string;
 }

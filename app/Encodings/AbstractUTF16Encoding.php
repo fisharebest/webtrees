@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,10 +35,6 @@ abstract class AbstractUTF16Encoding implements EncodingInterface
 
     /**
      * Convert a string from UTF-8 to another encoding.
-     *
-     * @param string $text
-     *
-     * @return string
      */
     public function fromUtf8(string $text): string
     {
@@ -83,10 +79,6 @@ abstract class AbstractUTF16Encoding implements EncodingInterface
 
     /**
      * Convert a string from another encoding to UTF-8.
-     *
-     * @param string $text
-     *
-     * @return string
      */
     public function toUtf8(string $text): string
     {
@@ -121,10 +113,6 @@ abstract class AbstractUTF16Encoding implements EncodingInterface
 
     /**
      * When reading multi-byte encodings using a stream, we must avoid incomplete characters.
-     *
-     * @param string $text
-     *
-     * @return int
      */
     public function convertibleBytes(string $text): int
     {
@@ -133,19 +121,11 @@ abstract class AbstractUTF16Encoding implements EncodingInterface
 
     /**
      * Convert two bytes to a code-point, taking care of byte-order.
-     *
-     * @param string $character
-     *
-     * @return int
      */
     abstract protected function characterToCodePoint(string $character): int;
 
     /**
      * Convert a code-point to two bytes, taking care of byte-order.
-     *
-     * @param int $code_point
-     *
-     * @return string
      */
     abstract protected function codePointToCharacter(int $code_point): string;
 }

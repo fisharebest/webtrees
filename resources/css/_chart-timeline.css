@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -18,3 +18,45 @@
  *
  * wt-chart, wt-chart-timeline
  */
+#timeline_chart {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.person0, .person1, .person2, .person3,
+.person4, .person5, .person6, .person7 {
+    --person-bg-alpha: 30%;
+}
+
+.person0 {
+    background-color: color-mix(in srgb, var(--bs-red) var(--person-bg-alpha), transparent);
+}
+
+.person1 {
+    background-color: color-mix(in srgb, var(--bs-orange) var(--person-bg-alpha), transparent);
+}
+
+.person2 {
+    background-color: color-mix(in srgb, var(--bs-yellow) var(--person-bg-alpha), transparent);
+}
+
+.person3 {
+    background-color: color-mix(in srgb, var(--bs-green) var(--person-bg-alpha), transparent);
+}
+
+.person4 {
+    background-color: color-mix(in srgb, var(--bs-teal) var(--person-bg-alpha), transparent);
+}
+
+.person5 {
+    background-color: color-mix(in srgb, var(--bs-cyan) var(--person-bg-alpha), transparent);
+}
+
+.person6 {
+    background-color: color-mix(in srgb, var(--bs-purple) var(--person-bg-alpha), transparent);
+}
+
+.person7 {
+    background-color: color-mix(in srgb, var(--bs-pink) var(--person-bg-alpha), transparent);
+}

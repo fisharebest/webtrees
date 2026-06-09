@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2026 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Report;
+
+/**
+ * Horizontal alignment of text within a cell or of an image within its line.
+ *
+ * The single-letter scalar values match TCPDF's MultiCell()/Image() alignment
+ * parameter so that the PDF backend can pass them through unchanged.  The
+ * HTML backend maps each case to the corresponding CSS text-align value.
+ *
+ * {@see CellAlign::None} represents "no explicit alignment" and is what the
+ * parser falls back to when the XML attribute is absent or contains a value
+ * we do not recognise (for example the alias keywords "leftrtl" / "rightrtl"
+ * that are resolved to Left / Right elsewhere in the parser).
+ */
+enum CellAlign: string
+{
+    case None    = '';
+    case Left    = 'L';
+    case Right   = 'R';
+    case Center  = 'C';
+    case Justify = 'J';
+}

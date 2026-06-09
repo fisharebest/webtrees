@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -49,9 +49,6 @@ use function view;
 use const E_ERROR;
 use const PHP_EOL;
 
-/**
- * Middleware to handle and render errors.
- */
 class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
 {
     use ViewResponseTrait;
@@ -61,10 +58,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
     }
 
     /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
      *
-     * @return ResponseInterface
      * @throws Throwable
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
@@ -138,12 +132,6 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         }
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param HttpException          $exception
-     *
-     * @return ResponseInterface
-     */
     private function httpExceptionResponse(ServerRequestInterface $request, HttpException $exception): ResponseInterface
     {
         $tree    = Validator::attributes($request)->treeOptional();
@@ -169,12 +157,6 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         ], $status_code);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param Throwable              $exception
-     *
-     * @return ResponseInterface
-     */
     private function thirdPartyExceptionResponse(ServerRequestInterface $request, Throwable $exception): ResponseInterface
     {
         $tree = Validator::attributes($request)->treeOptional();
@@ -193,12 +175,6 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param Throwable              $exception
-     *
-     * @return ResponseInterface
-     */
     private function unhandledExceptionResponse(ServerRequestInterface $request, Throwable $exception): ResponseInterface
     {
         $this->layout = 'layouts/default';

@@ -1,0 +1,172 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2026 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Tests\Unit\SurnameTradition;
+
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tests\TestCase;
+use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
+use Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition;
+use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
+
+#[CoversClass(IcelandicSurnameTradition::class)]
+class IcelandicSurnameTraditionTest extends TestCase
+{
+    private SurnameTraditionInterface $surname_tradition;
+
+    public function testSurnames(): void
+    {
+        self::assertSame('', $this->surname_tradition->defaultName());
+    }
+
+    public function testNewSonNames(): void
+    {
+        $father_fact = self::createStub(Fact::class);
+        $father_fact->method('value')->willReturn('Jon Einarsson');
+
+        $father = self::createStub(Individual::class);
+        $father->method('facts')->willReturn(new Collection([$father_fact]));
+
+        $mother_fact = self::createStub(Fact::class);
+        $mother_fact->method('value')->willReturn('Eva Stefansdottir');
+
+        $mother = self::createStub(Individual::class);
+        $mother->method('facts')->willReturn(new Collection([$mother_fact]));
+
+        self::assertSame(
+            ["1 NAME Jonsson\n2 TYPE BIRTH\n2 GIVN Jonsson"],
+            $this->surname_tradition->newChildNames($father, $mother, 'M')
+        );
+    }
+
+    public function testNewDaughterNames(): void
+    {
+        $father_fact = self::createStub(Fact::class);
+        $father_fact->method('value')->willReturn('Jon Einarsson');
+
+        $father = self::createStub(Individual::class);
+        $father->method('facts')->willReturn(new Collection([$father_fact]));
+
+        $mother_fact = self::createStub(Fact::class);
+        $mother_fact->method('value')->willReturn('Eva Stefansdottir');
+
+        $mother = self::createStub(Individual::class);
+        $mother->method('facts')->willReturn(new Collection([$mother_fact]));
+
+        self::assertSame(
+            ["1 NAME Jonsdottir\n2 TYPE BIRTH\n2 GIVN Jonsdottir"],
+            $this->surname_tradition->newChildNames($father, $mother, 'F')
+        );
+    }
+
+    public function testNewChildNames(): void
+    {
+        $father_fact = self::createStub(Fact::class);
+        $father_fact->method('value')->willReturn('Jon Einarsson');
+
+        $father = self::createStub(Individual::class);
+        $father->method('facts')->willReturn(new Collection([$father_fact]));
+
+        $mother_fact = self::createStub(Fact::class);
+        $mother_fact->method('value')->willReturn('Eva Stefansdottir');
+
+        $mother = self::createStub(Individual::class);
+        $mother->method('facts')->willReturn(new Collection([$mother_fact]));
+
+        self::assertSame(
+            ["1 NAME\n2 TYPE BIRTH"],
+            $this->surname_tradition->newChildNames($father, $mother, 'U')
+        );
+    }
+
+    public function testNewFatherNames(): void
+    {
+        $fact = self::createStub(Fact::class);
+        $fact->method('value')->willReturn('Jon Einarsson');
+
+        $individual = self::createStub(Individual::class);
+        $individual->method('facts')->willReturn(new Collection([$fact]));
+
+        self::assertSame(
+            ["1 NAME Einar\n2 TYPE BIRTH\n2 GIVN Einar"],
+            $this->surname_tradition->newParentNames($individual, 'M')
+        );
+    }
+
+    public function testNewMotherNames(): void
+    {
+        $fact = self::createStub(Fact::class);
+        $fact->method('value')->willReturn('Jon Evasdottir');
+
+        $individual = self::createStub(Individual::class);
+        $individual->method('facts')->willReturn(new Collection([$fact]));
+
+        self::assertSame(
+            ["1 NAME Eva\n2 TYPE BIRTH\n2 GIVN Eva"],
+            $this->surname_tradition->newParentNames($individual, 'F')
+        );
+    }
+
+    public function testNewParentNames(): void
+    {
+        $fact = self::createStub(Fact::class);
+        $fact->method('value')->willReturn('Jon Einarsson');
+
+        $individual = self::createStub(Individual::class);
+        $individual->method('facts')->willReturn(new Collection([$fact]));
+
+        self::assertSame(
+            ["1 NAME\n2 TYPE BIRTH"],
+            $this->surname_tradition->newParentNames($individual, 'U')
+        );
+    }
+
+    public function testNewSpouseNames(): void
+    {
+        $fact = self::createStub(Fact::class);
+        $fact->method('value')->willReturn('Jon Einarsson');
+
+        $individual = self::createStub(Individual::class);
+        $individual->method('facts')->willReturn(new Collection([$fact]));
+
+        self::assertSame(
+            ["1 NAME\n2 TYPE BIRTH"],
+            $this->surname_tradition->newSpouseNames($individual, 'M')
+        );
+
+        self::assertSame(
+            ["1 NAME\n2 TYPE BIRTH"],
+            $this->surname_tradition->newSpouseNames($individual, 'F')
+        );
+
+        self::assertSame(
+            ["1 NAME\n2 TYPE BIRTH"],
+            $this->surname_tradition->newSpouseNames($individual, 'U')
+        );
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->surname_tradition = new IcelandicSurnameTradition();
+    }
+}

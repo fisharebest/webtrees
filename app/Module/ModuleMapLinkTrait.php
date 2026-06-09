@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,11 +39,6 @@ trait ModuleMapLinkTrait
         return I18N::translate('Show the location of an event on an external map.');
     }
 
-    /**
-     * @param Fact $fact
-     *
-     * @return string
-     */
     public function mapLink(Fact $fact): string
     {
         if ($this->isMapAvailableForLocation($fact)) {
@@ -59,37 +54,22 @@ trait ModuleMapLinkTrait
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     protected function providerName(): string
     {
         return 'example.com';
     }
 
-    /**
-     * @param Fact $fact
-     *
-     * @return bool
-     */
     protected function isMapAvailableForLocation(Fact $fact): bool
     {
         return $fact->latitude() !== null && $fact->longitude() !== null;
     }
 
-    /**
-     * @return string
-     */
     protected function icon(): string
     {
         return 'icon';
     }
 
-    /**
-     * @param Fact $fact
-     *
-     * @return string
-     */
     protected function mapUrl(Fact $fact): string
     {
         return 'https://example.com';

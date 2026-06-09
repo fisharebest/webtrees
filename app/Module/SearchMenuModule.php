@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -51,8 +51,6 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * The default position for this menu.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultMenuOrder(): int
     {
@@ -61,10 +59,6 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * A menu, to be added to the main application menu.
-     *
-     * @param Tree $tree
-     *
-     * @return Menu|null
      */
     public function getMenu(Tree $tree): Menu|null
     {
@@ -80,21 +74,11 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
         return new Menu(I18N::translate('Search'), '#', 'menu-search', ['rel' => 'nofollow'], $submenu);
     }
 
-    /**
-     * @param Tree $tree
-     *
-     * @return Menu
-     */
     protected function menuSearchGeneral(Tree $tree): Menu
     {
         return new Menu(I18N::translate('General search'), route(SearchGeneralPage::class, ['tree' => $tree->name()]), 'menu-search-general', ['rel' => 'nofollow']);
     }
 
-    /**
-     * @param Tree $tree
-     *
-     * @return Menu
-     */
     protected function menuSearchPhonetic(Tree $tree): Menu
     {
         $url = route(SearchPhoneticPage::class, ['tree' => $tree->name()]);
@@ -103,11 +87,6 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
         return new Menu(I18N::translate('Phonetic search'), $url, 'menu-search-soundex', ['rel' => 'nofollow']);
     }
 
-    /**
-     * @param Tree $tree
-     *
-     * @return Menu
-     */
     protected function menuSearchAdvanced(Tree $tree): Menu
     {
         $url = route(SearchAdvancedPage::class, ['tree' => $tree->name()]);
@@ -115,11 +94,6 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
         return new Menu(I18N::translate('Advanced search'), $url, 'menu-search-advanced', ['rel' => 'nofollow']);
     }
 
-    /**
-     * @param Tree $tree
-     *
-     * @return Menu|null
-     */
     protected function menuSearchAndReplace(Tree $tree): Menu|null
     {
         if (Auth::isEditor($tree)) {

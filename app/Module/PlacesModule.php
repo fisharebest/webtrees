@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -64,10 +64,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
     private ModuleService $module_service;
 
-    /**
-     * @param LeafletJsService $leaflet_js_service
-     * @param ModuleService    $module_service
-     */
     public function __construct(LeafletJsService $leaflet_js_service, ModuleService $module_service)
     {
         $this->leaflet_js_service = $leaflet_js_service;
@@ -88,8 +84,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * The default position for this tab.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultTabOrder(): int
     {
@@ -98,10 +92,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * Is this tab empty? If so, we don't always need to display it.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
      */
     public function hasTabContent(Individual $individual): bool
     {
@@ -110,11 +100,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
         return $map_providers->isNotEmpty() && $this->getMapData($individual)->features !== [];
     }
 
-    /**
-     * @param Individual $indi
-     *
-     * @return object
-     */
     private function getMapData(Individual $indi): object
     {
         $facts = $this->getPersonalFacts($indi);
@@ -160,7 +145,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     }
 
     /**
-     * @param Individual $individual
      *
      * @return Collection<int,Fact>
      * @throws Exception
@@ -186,8 +170,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     }
 
     /**
-     * @param Individual $individual
-     * @param Fact       $fact
      *
      * @return array<string|Place>
      */
@@ -225,10 +207,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     /**
      * A greyed out tab has no actual content, but may perhaps have
      * options to create content.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
      */
     public function isGrayedOut(Individual $individual): bool
     {
@@ -237,8 +215,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * Can this tab load asynchronously?
-     *
-     * @return bool
      */
     public function canLoadAjax(): bool
     {
@@ -247,10 +223,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * Generate the HTML content of this tab.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function getTabContent(Individual $individual): string
     {

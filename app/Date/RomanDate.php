@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,8 +33,6 @@ class RomanDate extends JulianDate
 
     /**
      * Generate the %E format for a date.
-     *
-     * @return string
      */
     protected function formatGedcomYear(): string
     {
@@ -43,8 +41,6 @@ class RomanDate extends JulianDate
 
     /**
      * Generate the %Y format for a date.
-     *
-     * @return string
      */
     protected function formatLongYear(): string
     {

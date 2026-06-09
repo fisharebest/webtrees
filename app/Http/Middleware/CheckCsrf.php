@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,9 +34,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function in_array;
 
-/**
- * Middleware to wrap a request in a transaction.
- */
 class CheckCsrf implements MiddlewareInterface
 {
     private const array EXCLUDE_ROUTES = [
@@ -45,12 +42,6 @@ class CheckCsrf implements MiddlewareInterface
         SelectTheme::class,
     ];
 
-    /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
-     */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {

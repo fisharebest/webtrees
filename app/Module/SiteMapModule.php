@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -68,9 +68,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
 
     private TreeService $tree_service;
 
-    /**
-     * @param TreeService $tree_service
-     */
     public function __construct(TreeService $tree_service)
     {
         $this->tree_service = $tree_service;
@@ -78,8 +75,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -104,11 +99,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         return false;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -128,11 +118,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         return I18N::translate('Sitemaps');
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         foreach ($this->tree_service->all() as $tree) {
@@ -145,11 +130,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         return redirect($this->getConfigLink());
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $route = Validator::attributes($request)->route();
@@ -169,11 +149,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         return $this->siteMapFile($request);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     private function siteMapIndex(ServerRequestInterface $request): ResponseInterface
     {
         $content = Registry::cache()->file()->remember('sitemap.xml', function (): string {
@@ -252,11 +227,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     private function siteMapFile(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree('tree');
@@ -286,10 +256,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     }
 
     /**
-     * @param Tree   $tree
-     * @param string $type
-     * @param int    $limit
-     * @param int    $offset
      *
      * @return Collection<int,GedcomRecord>
      */
@@ -335,9 +301,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $limit
-     * @param int  $offset
      *
      * @return Collection<int,Family>
      */
@@ -353,9 +316,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $limit
-     * @param int  $offset
      *
      * @return Collection<int,Individual>
      */
@@ -371,9 +331,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $limit
-     * @param int  $offset
      *
      * @return Collection<int,Media>
      */
@@ -389,9 +346,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $limit
-     * @param int  $offset
      *
      * @return Collection<int,Note>
      */
@@ -408,9 +362,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $limit
-     * @param int  $offset
      *
      * @return Collection<int,Repository>
      */
@@ -427,9 +378,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $limit
-     * @param int  $offset
      *
      * @return Collection<int,Source>
      */
@@ -445,9 +393,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $limit
-     * @param int  $offset
      *
      * @return Collection<int,Submitter>
      */

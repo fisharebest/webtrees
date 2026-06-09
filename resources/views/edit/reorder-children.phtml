@@ -64,10 +64,12 @@ use Fisharebest\Webtrees\View;
         handle: ".card-header",
     });
 
-    $("#btn-default-order").on("click", function () {
-        $(".wt-sortable-list .wt-sortable-item").sort(function (x, y) {
-            return Math.sign(x.dataset.wtSortByDate - y.dataset.wtSortByDate);
-        }).appendTo(".wt-sortable-list");
+    document.querySelector('#btn-default-order').addEventListener('click', function () {
+      const items = Array.from(document.querySelectorAll('.wt-sortable-list .wt-sortable-item'));
+      items.sort(function (x, y) {
+        return Math.sign(x.dataset.wtSortByDate - y.dataset.wtSortByDate);
+      })
+      .forEach(item => document.querySelector('.wt-sortable-list').appendChild(item));
     });
 </script>
 <?php View::endpush() ?>

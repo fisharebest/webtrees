@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -44,11 +44,6 @@ class CheckForNewVersion extends AbstractModule implements MiddlewareInterface
 
     private UserService $user_service;
 
-    /**
-     * @param EmailService   $email_service
-     * @param UpgradeService $upgrade_service
-     * @param UserService    $user_service
-     */
     public function __construct(EmailService $email_service, UpgradeService $upgrade_service, UserService $user_service)
     {
         $this->email_service   = $email_service;
@@ -66,12 +61,6 @@ class CheckForNewVersion extends AbstractModule implements MiddlewareInterface
         return I18N::translate('Send an email to all administrators when an upgrade is available.');
     }
 
-    /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
-     */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if ($this->upgrade_service->isUpgradeAvailable()) {

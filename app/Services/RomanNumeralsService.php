@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -47,10 +47,6 @@ class RomanNumeralsService
 
     /**
      * Convert a decimal number to roman numerals
-     *
-     * @param int $number
-     *
-     * @return string
      */
     public function numberToRomanNumerals(int $number): string
     {
@@ -71,10 +67,6 @@ class RomanNumeralsService
 
     /**
      * Convert a roman numeral to decimal
-     *
-     * @param string $roman
-     *
-     * @return int
      */
     public function romanNumeralsToNumber(string $roman): int
     {

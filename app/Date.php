@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -95,8 +95,6 @@ class Date
      * @param Tree|null   $tree              Wrap the date in a link to the calendar page for the tree
      * @param string|null $date_format       Override the default date format
      * @param bool        $convert_calendars Convert the date into other calendars (requires a tree)
-     *
-     * @return string
      */
     public function display(Tree|null $tree = null, string|null $date_format = null, bool $convert_calendars = false): string
     {
@@ -239,8 +237,6 @@ class Date
      * Get the earliest calendar date from this GEDCOM date.
      *
      * In the date “FROM 1900 TO 1910”, this would be 1900.
-     *
-     * @return AbstractCalendarDate
      */
     public function minimumDate(): AbstractCalendarDate
     {
@@ -251,8 +247,6 @@ class Date
      * Get the latest calendar date from this GEDCOM date.
      *
      * In the date “FROM 1900 TO 1910”, this would be 1910.
-     *
-     * @return AbstractCalendarDate
      */
     public function maximumDate(): AbstractCalendarDate
     {
@@ -261,8 +255,6 @@ class Date
 
     /**
      * Get the earliest Julian day number from this GEDCOM date.
-     *
-     * @return int
      */
     public function minimumJulianDay(): int
     {
@@ -271,8 +263,6 @@ class Date
 
     /**
      * Get the latest Julian day number from this GEDCOM date.
-     *
-     * @return int
      */
     public function maximumJulianDay(): int
     {
@@ -284,8 +274,6 @@ class Date
      *
      * For a month-only date, this would be somewhere around the 16th day.
      * For a year-only date, this would be somewhere around 1st July.
-     *
-     * @return int
      */
     public function julianDay(): int
     {
@@ -300,8 +288,6 @@ class Date
      *
      * @param int    $years     a number of years, positive or negative
      * @param string $qualifier typically “BEF” or “AFT”
-     *
-     * @return Date
      */
     public function addYears(int $years, string $qualifier = ''): Date
     {
@@ -324,11 +310,6 @@ class Date
      * return +1 if $b>$a
      * return  0 if dates same/overlap
      * BEF/AFT sort as the day before/after
-     *
-     * @param Date $a
-     * @param Date $b
-     *
-     * @return int
      */
     public static function compare(Date $a, Date $b): int
     {
@@ -385,8 +366,6 @@ class Date
      *
      * An incomplete date such as "12 AUG" would be invalid, as
      * we cannot sort it.
-     *
-     * @return bool
      */
     public function isOK(): bool
     {
@@ -398,8 +377,6 @@ class Date
      * within WT - we should keep the code "calendar neutral" to allow support for
      * Jewish/Arabic users. This is only for interfacing with external entities,
      * such as the ancestry.com search interface or the dated fact icons.
-     *
-     * @return int
      */
     public function gregorianYear(): int
     {

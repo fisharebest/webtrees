@@ -29,6 +29,7 @@
 4 TEXT Name: Elizabeth A M Windsor
 5 CONT Mother’s maiden surname: Bowes-Lyon
 3 OBJE @X1161@
+1 OCCU Queen
 1 CHAN
 2 DATE 03 FEB 2013
 3 TIME 17:42:33
@@ -1327,6 +1328,7 @@
 3 TIME 09:06:53
 2 _WT_USER greg
 1 FAMS @f29@
+1 OCCU Queen
 1 BIRT
 2 DATE 24 MAY 1819
 2 SOUR @X1102@
@@ -1881,7 +1883,7 @@
 3 TIME 15:30:44
 2 _WT_USER greg
 0 @X1104@ OBJE
-1 FILE Elizabeth_II_greets_NASA_GSFC_employees,_May_8,_2007_edit.jpg
+1 FILE Elizabeth_II.jpg
 2 TITL Queen Elizabeth II
 1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Elizabeth_II on 24th May 2012
 1 CHAN

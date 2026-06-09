@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -64,9 +64,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
     private ModuleService $module_service;
 
-    /**
-     * @param ModuleService $module_service
-     */
     public function __construct(ModuleService $module_service)
     {
         $this->module_service = $module_service;
@@ -74,8 +71,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -99,8 +94,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function listMenuClass(): string
     {
@@ -108,10 +101,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
     }
 
     /**
-     * @param Tree                                      $tree
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function listUrl(Tree $tree, array $parameters = []): string
     {
@@ -139,11 +129,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         return [];
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
@@ -219,7 +204,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
     /**
      * Find all ancestors of an individual, indexed by the Sosa-Stradonitz number.
      *
-     * @param Individual $individual
      *
      * @return array<Individual>
      */
@@ -250,10 +234,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
     /**
      * Fetch all individuals with a matching surname
      *
-     * @param Tree   $tree
-     * @param string $surname
-     * @param bool   $soundex_dm
-     * @param bool   $soundex_std
      *
      * @return array<Individual>
      */
@@ -305,14 +285,8 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
     /**
      * For each individual with no ancestors, list their descendants.
      *
-     * @param Tree              $tree
      * @param array<Individual> $individuals
      * @param array<Individual> $ancestors
-     * @param string            $surname
-     * @param bool              $soundex_dm
-     * @param bool              $soundex_std
-     *
-     * @return string
      */
     private function getPatriarchsHtml(Tree $tree, array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std): string
     {
@@ -335,16 +309,8 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
      * Generate a recursive list of descendants of an individual.
      * If parents are specified, we can also show the pedigree (adopted, etc.).
      *
-     * @param Tree              $tree
      * @param array<Individual> $individuals
      * @param array<Individual> $ancestors
-     * @param string            $surname
-     * @param bool              $soundex_dm
-     * @param bool              $soundex_std
-     * @param Individual        $individual
-     * @param Family|null       $parents
-     *
-     * @return string
      */
     private function getDescendantsHtml(Tree $tree, array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std, Individual $individual, Family|null $parents = null): string
     {
@@ -441,13 +407,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
     /**
      * Do two surnames match?
-     *
-     * @param string $surname1
-     * @param string $surname2
-     * @param bool   $soundex_std
-     * @param bool   $soundex_dm
-     *
-     * @return bool
      */
     private function surnamesMatch(string $surname1, string $surname2, bool $soundex_std, bool $soundex_dm): bool
     {
@@ -468,10 +427,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
     /**
      * Convert a SOSA number into a generation number. e.g. 8 = great-grandfather = 3 generations
-     *
-     * @param int $sosa
-     *
-     * @return string
      */
     private static function sosaGeneration(int $sosa): string
     {

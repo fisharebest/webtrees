@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,10 +30,6 @@ use Psr\Http\Message\ServerRequestInterface;
 /**
  * Generate a URL to an asset file in the public folder.
  * Add a version parameter for cache-busting.
- *
- * @param string $path
- *
- * @return string
  */
 function asset(string $path): string
 {
@@ -53,8 +49,6 @@ function asset(string $path): string
 
 /**
  * Generate a CSRF token form field.
- *
- * @return string
  */
 function csrf_field(): string
 {
@@ -63,20 +57,12 @@ function csrf_field(): string
 
 /**
  * Get the CSRF token value.
- *
- * @return string
  */
 function csrf_token(): string
 {
     return WebtreesSession::getCsrfToken();
 }
 
-/**
- * @param string $url
- * @param int    $code
- *
- * @return ResponseInterface
- */
 function redirect(string $url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface
 {
     $response_factory = Registry::container()->get(ResponseFactoryInterface::class);
@@ -90,10 +76,7 @@ function redirect(string $url, int $code = StatusCodeInterface::STATUS_FOUND): R
  * Create a response.
  *
  * @param array<mixed>|object|string $content
- * @param int                        $code
  * @param array<string>              $headers
- *
- * @return ResponseInterface
  */
 function response(array|object|string $content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
 {
@@ -103,10 +86,7 @@ function response(array|object|string $content = '', int $code = StatusCodeInter
 /**
  * Generate a URL for a named route.
  *
- * @param string                                    $route_name
  * @param array<bool|int|string|array<string>|null> $parameters
- *
- * @return string
  */
 function route(string $route_name, array $parameters = []): string
 {
@@ -116,10 +96,7 @@ function route(string $route_name, array $parameters = []): string
 /**
  * Create and render a view in a single operation.
  *
- * @param string       $name
  * @param array<mixed> $data
- *
- * @return string
  */
 function view(string $name, array $data = []): string
 {

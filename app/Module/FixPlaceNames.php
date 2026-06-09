@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,9 +37,6 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
 
     private DataFixService $data_fix_service;
 
-    /**
-     * @param DataFixService $data_fix_service
-     */
     public function __construct(DataFixService $data_fix_service)
     {
         $this->data_fix_service = $data_fix_service;
@@ -59,10 +56,6 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
 
     /**
      * Options form.
-     *
-     * @param Tree $tree
-     *
-     * @return string
      */
     public function fixOptions(Tree $tree): string
     {
@@ -73,7 +66,6 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
      * A list of all records that need examining.  This may include records
      * that do not need updating, if we can't detect this quickly using SQL.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,string>|null
@@ -95,7 +87,6 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
      * A list of all records that need examining.  This may include records
      * that do not need updating, if we can't detect this quickly using SQL.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,string>|null
@@ -117,10 +108,7 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
     /**
      * Does a record need updating?
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return bool
      */
     public function doesRecordNeedUpdate(GedcomRecord $record, array $params): bool
     {
@@ -133,10 +121,7 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
     /**
      * Show the changes we would make
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return string
      */
     public function previewUpdate(GedcomRecord $record, array $params): string
     {
@@ -149,10 +134,7 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
     /**
      * Fix a record
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return void
      */
     public function updateRecord(GedcomRecord $record, array $params): void
     {
@@ -160,10 +142,7 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
     }
 
     /**
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return string
      */
     private function updateGedcom(GedcomRecord $record, array $params): string
     {

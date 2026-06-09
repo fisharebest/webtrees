@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -205,7 +205,7 @@ final class CheckTree implements RequestHandlerInterface
                 } elseif ($element instanceof AbstractXrefElement) {
                     if (preg_match('/@(' . Gedcom::REGEX_XREF . ')@/', $value, $match) === 1) {
                         $xref1  = $match[1];
-                        $xref2  = $xrefs[strtoupper($xref1)] ?? null;
+                        $xref2  = $xrefs[strtoupper($xref1)] ?? '';
                         $linked = $records[$xref2] ?? null;
 
                         if ($linked === null) {

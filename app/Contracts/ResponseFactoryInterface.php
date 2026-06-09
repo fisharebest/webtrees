@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,12 +32,7 @@ interface ResponseFactoryInterface
     /**
      * Redirect to a named route.
      *
-     * @param string                                    $route_name
      * @param array<bool|int|string|array<string>|null> $parameters
-     * @param int                                       $status
-     *
-     * @return ResponseInterface
-     *
      */
     public function redirect(
         string $route_name,
@@ -47,32 +42,19 @@ interface ResponseFactoryInterface
 
     /**
      * Redirect to a URL.
-     *
-     * @param UriInterface|string $url
-     * @param int                 $code
-     *
-     * @return ResponseInterface
      */
     public function redirectUrl(UriInterface|string $url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface;
 
     /**
      * @param string|array<mixed>|object $content
-     * @param int                        $code
      * @param array<string,string>       $headers
-     *
-     * @return ResponseInterface
      */
     public function response(string|array|object $content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface;
 
     /**
      * Create and render a view, and embed it in an HTML page.
      *
-     * @param string              $view_name
      * @param array<string,mixed> $view_data
-     * @param int                 $status
-     * @param string              $layout_name
-     *
-     * @return ResponseInterface
      */
     public function view(
         string $view_name,

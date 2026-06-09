@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,11 +36,7 @@ trait ViewResponseTrait
     protected string $layout = 'layouts/default';
 
     /**
-     * @param string       $view_name
      * @param array<mixed> $view_data
-     * @param int          $status
-     *
-     * @return ResponseInterface
      */
     protected function viewResponse(string $view_name, array $view_data, int $status = StatusCodeInterface::STATUS_OK): ResponseInterface
     {

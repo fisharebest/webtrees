@@ -1,0 +1,82 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2026 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Report;
+
+/**
+ * @extends AbstractImage<AbstractRenderer&HtmlRendererInterface>
+ */
+class HtmlImage extends AbstractImage
+{
+    public function render(AbstractRenderer $renderer, bool $layout = true): void
+    {
+        static $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
+
+        // Get the current positions
+        if ($this->x === AbstractElement::CURRENT_POSITION) {
+            $this->x = $renderer->getX();
+        }
+        if ($this->y === AbstractElement::CURRENT_POSITION) {
+            //-- first check for a collision with the last picture
+            if ($lastpicbottom !== null && $renderer->pageNo() === $lastpicpage && $lastpicbottom >= $renderer->getY() && $this->x >= $lastpicleft && $this->x <= $lastpicright) {
+                $renderer->setY($lastpicbottom + $renderer::CELL_PADDING * 2);
+            }
+            $this->y = $renderer->getY();
+        }
+
+        // Image alignment
+        switch ($this->align) {
+            case CellAlign::Left:
+                echo '<div style="position:absolute;top:', $this->y, 'pt;left:0pt;width:', $renderer->getRemainingWidth(), "pt;text-align:left;\">\n";
+                echo '<img src="', $this->src, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
+                break;
+            case CellAlign::Center:
+                echo '<div style="position:absolute;top:', $this->y, 'pt;left:0pt;width:', $renderer->getRemainingWidth(), "pt;text-align:center;\">\n";
+                echo '<img src="', $this->src, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
+                break;
+            case CellAlign::Right:
+                echo '<div style="position:absolute;top:', $this->y, 'pt;left:0pt;width:', $renderer->getRemainingWidth(), "pt;text-align:right;\">\n";
+                echo '<img src="', $this->src, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
+                break;
+            default:
+                echo '<img src="', $this->src, '" style="position:absolute;', $renderer->config->align_rtl, ':', $this->x, 'pt;top:', $this->y, 'pt;width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n";
+        }
+
+        $lastpicpage   = $renderer->pageNo();
+        $lastpicleft   = $this->x;
+        $lastpicright  = $this->x + $this->width;
+        $lastpicbottom = $this->y + $this->height;
+        // Setup for the next line
+        if ($this->line === ImageContinuation::NextLine) {
+            $renderer->setY($lastpicbottom);
+        }
+        // Keep max Y updated
+        $renderer->addMaxY($lastpicbottom);
+    }
+
+    /**
+     * Get the image height
+     * This would be called from the TextBox only for multiple images
+     * so we add a bit bottom space between the images
+     */
+    public function getHeight(AbstractRenderer $renderer): float
+    {
+        return $this->height + $renderer::CELL_PADDING * 2;
+    }
+}

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,8 +28,6 @@ class NoReplyUser implements UserInterface
 {
     /**
      * The user‘s internal identifier.
-     *
-     * @return int
      */
     public function id(): int
     {
@@ -38,8 +36,6 @@ class NoReplyUser implements UserInterface
 
     /**
      * The users email address.
-     *
-     * @return string
      */
     public function email(): string
     {
@@ -50,8 +46,6 @@ class NoReplyUser implements UserInterface
 
     /**
      * The user‘s real name.
-     *
-     * @return string
      */
     public function realName(): string
     {
@@ -60,31 +54,17 @@ class NoReplyUser implements UserInterface
 
     /**
      * The user‘s login name.
-     *
-     * @return string
      */
     public function userName(): string
     {
         return '';
     }
 
-    /**
-     * @param string $setting_name
-     * @param string $default
-     *
-     * @return string
-     */
     public function getPreference(string $setting_name, string $default = ''): string
     {
         return $default;
     }
 
-    /**
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return void
-     */
     public function setPreference(string $setting_name, string $setting_value): void
     {
     }

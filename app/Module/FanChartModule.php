@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -102,9 +102,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 
     private ChartService $chart_service;
 
-    /**
-     * @param ChartService $chart_service
-     */
     public function __construct(ChartService $chart_service)
     {
         $this->chart_service = $chart_service;
@@ -112,8 +109,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -137,8 +132,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -155,10 +148,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 
     /**
      * The title for a specific instance of this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function chartTitle(Individual $individual): string
     {
@@ -169,10 +158,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     /**
      * A form to request the chart parameters.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
@@ -182,11 +168,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
@@ -243,13 +224,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 
     /**
      * Generate both the HTML and PNG components of the fan chart
-     *
-     * @param Individual $individual
-     * @param int        $style
-     * @param int        $width
-     * @param int        $generations
-     *
-     * @return ResponseInterface
      */
     protected function chart(Individual $individual, int $style, int $width, int $generations): ResponseInterface
     {
@@ -468,11 +442,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 
     /**
      * Convert a CSS color into a GD color.
-     *
-     * @param GdImage $image
-     * @param string  $css_color
-     *
-     * @return int
      */
     protected function imageColor(GdImage $image, string $css_color): int
     {
@@ -504,11 +473,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     /**
      * Fit text to a given number of pixels by either cropping to fit,
      * or adding spaces to center.
-     *
-     * @param string $text
-     * @param int    $pixels
-     *
-     * @return string
      */
     protected function fitTextToPixelWidth(string $text, int $pixels): string
     {
@@ -524,11 +488,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         return rtrim($text);
     }
 
-    /**
-     * @param string $text
-     *
-     * @return int
-     */
     protected function textWidthInPixels(string $text): int
     {
         // If PHP is compiled with --enable-gd-jis-conv, then the function

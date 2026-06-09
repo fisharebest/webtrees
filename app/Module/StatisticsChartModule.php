@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -90,8 +90,6 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -101,10 +99,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * The URL for this chart.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
@@ -117,10 +112,6 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 
     /**
      * A form to request the chart parameters.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
      */
     public function getChartAction(ServerRequestInterface $request): ResponseInterface
     {
@@ -160,11 +151,6 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getIndividualsAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
@@ -175,11 +161,6 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getFamiliesAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
@@ -189,11 +170,6 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getOtherAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
@@ -203,11 +179,6 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getCustomAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
@@ -220,11 +191,6 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postCustomChartAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -79,8 +79,6 @@ class JewishDate extends AbstractCalendarDate
 
     /**
      * Generate the %j format for a date.
-     *
-     * @return string
      */
     protected function formatDay(): string
     {
@@ -96,8 +94,6 @@ class JewishDate extends AbstractCalendarDate
      *
      * NOTE Short year is NOT a 2-digit year. It is for calendars such as hebrew
      * which have a 3-digit form of 4-digit years.
-     *
-     * @return string
      */
     protected function formatShortYear(): string
     {
@@ -110,8 +106,6 @@ class JewishDate extends AbstractCalendarDate
 
     /**
      * Generate the %Y format for a date.
-     *
-     * @return string
      */
     protected function formatLongYear(): string
     {
@@ -125,10 +119,7 @@ class JewishDate extends AbstractCalendarDate
     /**
      * Full month name in nominative case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     protected function monthNameNominativeCase(int $month, bool $leap_year): string
     {
@@ -177,10 +168,7 @@ class JewishDate extends AbstractCalendarDate
     /**
      * Full month name in genitive case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     protected function monthNameGenitiveCase(int $month, bool $leap_year): string
     {
@@ -229,10 +217,7 @@ class JewishDate extends AbstractCalendarDate
     /**
      * Full month name in locative case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     protected function monthNameLocativeCase(int $month, bool $leap_year): string
     {
@@ -281,10 +266,7 @@ class JewishDate extends AbstractCalendarDate
     /**
      * Full month name in instrumental case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     protected function monthNameInstrumentalCase(int $month, bool $leap_year): string
     {
@@ -333,10 +315,7 @@ class JewishDate extends AbstractCalendarDate
     /**
      * Abbreviated month name
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     protected function monthNameAbbreviated(int $month, bool $leap_year): string
     {

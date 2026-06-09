@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,10 +34,6 @@ class HtmlService
     /**
      * Take some dirty HTML (as provided by the user), and clean it before
      * we save/display it.
-     *
-     * @param string $html
-     *
-     * @return string
      */
     public function sanitize(string $html): string
     {

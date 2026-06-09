@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -103,10 +103,6 @@ final class SearchReplaceAction implements RequestHandlerInterface
 
     /**
      * @param Collection<int,GedcomRecord> $records
-     * @param string                       $search
-     * @param string                       $replace
-     *
-     * @return int
      */
     private function replaceRecords(Collection $records, string $search, string $replace): int
     {
@@ -128,11 +124,7 @@ final class SearchReplaceAction implements RequestHandlerInterface
 
     /**
      * @param Collection<int,GedcomRecord> $records
-     * @param string                       $search
-     * @param string                       $replace
      * @param array<string>                $name_tags
-     *
-     * @return int
      */
     private function replaceIndividualNames(Collection $records, string $search, string $replace, array $name_tags): int
     {
@@ -155,10 +147,6 @@ final class SearchReplaceAction implements RequestHandlerInterface
 
     /**
      * @param Collection<int,GedcomRecord> $records
-     * @param string                       $search
-     * @param string                       $replace
-     *
-     * @return int
      */
     private function replacePlaces(Collection $records, string $search, string $replace): int
     {

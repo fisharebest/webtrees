@@ -2,9 +2,19 @@ name: Unit tests
 
 on: [push, pull_request]
 
+# Change default permissions from all to none.
+permissions: {}
+
+# Cancel previous runs of the same workflow for the same pull request or branch.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   run:
     if: ${{ !startsWith(github.event.head_commit.message, 'Translation:') }}
+    # The CODECOV_TOKEN is stored as environment secret.
+    environment: codecov
     runs-on: ${{ matrix.operating-system }}
     name: Testing PHP ${{ matrix.php-version }} on ${{ matrix.operating-system }}
 
@@ -15,14 +25,17 @@ jobs:
       fail-fast: false
 
     steps:
-      - uses: shivammathur/setup-php@master
+      - uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # v2
         with:
           php-version: ${{ matrix.php-version }}
           ini-file: 'development'
           extensions: gd,intl,mbstring,sqlite,zip
           coverage: pcov
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          # Don't leave GITHUB_TOKEN in .git/config
+          persist-credentials: false
 
       - run: composer validate
 
@@ -30,7 +43,7 @@ jobs:
 
       - run: vendor/bin/phpunit --coverage-clover=tests/coverage.xml
 
-      - uses: codecov/codecov-action@v5
+      - uses: codecov/codecov-action@57e3a136b779b570ffcdbf80b3bdc90e7fab3de2 # v6
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: tests/coverage.xml

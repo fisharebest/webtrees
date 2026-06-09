@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -73,8 +73,6 @@ class Age
      * Show an empty string for invalid/missing dates.
      * Show a warning icon for negative ages.
      * Show zero ages without any units.
-     *
-     * @return string
      */
     public function __toString(): string
     {
@@ -104,8 +102,6 @@ class Age
     /**
      * How many days between two events?
      * If either date is invalid return -1.
-     *
-     * @return int
      */
     public function ageDays(): int
     {
@@ -119,8 +115,6 @@ class Age
     /**
      * How many years between two events?
      * Return -1 for invalid or reversed dates.
-     *
-     * @return int
      */
     public function ageYears(): int
     {
@@ -134,8 +128,6 @@ class Age
     /**
      * How many years between two events?
      * If either date is invalid return -1.
-     *
-     * @return string
      */
     public function ageYearsString(): string
     {

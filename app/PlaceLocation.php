@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,8 +39,6 @@ class PlaceLocation
 
     /**
      * Create a place-location.
-     *
-     * @param string $location_name
      */
     public function __construct(string $location_name)
     {
@@ -54,8 +52,6 @@ class PlaceLocation
 
     /**
      * Get the higher level location.
-     *
-     * @return PlaceLocation
      */
     public function parent(): PlaceLocation
     {
@@ -65,8 +61,6 @@ class PlaceLocation
     /**
      * The database row id that contains this location.
      * Note that due to database collation, both "Quebec" and "Québec" will share the same row.
-     *
-     * @return int|null
      */
     public function id(): int|null
     {
@@ -105,8 +99,6 @@ class PlaceLocation
     /**
      * Does this location exist in the database?  Note that calls to PlaceLocation::id() will
      * create the row, so this function is only meaningful when called before a call to PlaceLocation::id().
-     *
-     * @return bool
      */
     public function exists(): bool
     {
@@ -133,9 +125,6 @@ class PlaceLocation
         return true;
     }
 
-    /**
-     * @return object
-     */
     private function details(): object
     {
         return Registry::cache()->array()->remember('location-details-' . $this->id(), function () {
@@ -180,9 +169,6 @@ class PlaceLocation
         return $this->details()->longitude;
     }
 
-    /**
-     * @return string
-     */
     public function locationName(): string
     {
         return (string) $this->parts->first();

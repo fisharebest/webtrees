@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -46,8 +46,6 @@ class PolishSurnameTradition extends PaternalSurnameTradition
 
     /**
      * The name of this surname tradition
-     *
-     * @return string
      */
     public function name(): string
     {
@@ -56,8 +54,6 @@ class PolishSurnameTradition extends PaternalSurnameTradition
 
     /**
      * A short description of this surname tradition
-     *
-     * @return string
      */
     public function description(): string
     {
@@ -71,9 +67,6 @@ class PolishSurnameTradition extends PaternalSurnameTradition
     /**
      * What name is given to a new child
      *
-     * @param Individual|null $father
-     * @param Individual|null $mother
-     * @param string          $sex
      *
      * @return array<int,string>
      */
@@ -97,8 +90,6 @@ class PolishSurnameTradition extends PaternalSurnameTradition
     /**
      * What name is given to a new parent
      *
-     * @param Individual $child
-     * @param string     $sex
      *
      * @return array<int,string>
      */
@@ -119,8 +110,6 @@ class PolishSurnameTradition extends PaternalSurnameTradition
     /**
      * What names are given to a new spouse
      *
-     * @param Individual $spouse
-     * @param string     $sex
      *
      * @return array<int,string>
      */

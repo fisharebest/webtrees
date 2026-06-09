@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -85,11 +85,6 @@ class UpgradeService
 
     /**
      * Unpack webtrees.zip.
-     *
-     * @param string $zip_file
-     * @param string $target_folder
-     *
-     * @return void
      */
     public function extractWebtreesZip(string $zip_file, string $target_folder): void
     {
@@ -107,7 +102,6 @@ class UpgradeService
     /**
      * Create a list of all the files in a webtrees .ZIP archive
      *
-     * @param string $zip_file
      *
      * @return Collection<int,string>
      * @throws FilesystemException
@@ -129,9 +123,6 @@ class UpgradeService
      * Fetch a file from a URL and save it in a filesystem.
      * Use streams so that we can copy files larger than our available memory.
      *
-     * @param string             $url
-     * @param FilesystemOperator $filesystem
-     * @param string             $path
      *
      * @return int The number of bytes downloaded
      * @throws GuzzleException
@@ -177,10 +168,7 @@ class UpgradeService
     /**
      * Move (copy and delete) all files from one filesystem to another.
      *
-     * @param FilesystemOperator $source
-     * @param FilesystemOperator $destination
      *
-     * @return void
      * @throws FilesystemException
      */
     public function moveFiles(FilesystemOperator $source, FilesystemOperator $destination): void
@@ -200,11 +188,8 @@ class UpgradeService
     /**
      * Delete files in $destination that aren't in $source.
      *
-     * @param FilesystemOperator $filesystem
      * @param Collection<int,string> $folders_to_clean
      * @param Collection<int,string> $files_to_keep
-     *
-     * @return void
      */
     public function cleanFiles(FilesystemOperator $filesystem, Collection $folders_to_clean, Collection $files_to_keep): void
     {
@@ -230,11 +215,6 @@ class UpgradeService
         }
     }
 
-    /**
-     * @param bool $force
-     *
-     * @return bool
-     */
     public function isUpgradeAvailable(bool $force = false): bool
     {
         // If the latest version is unavailable, we will have an empty string which equates to version 0.
@@ -244,8 +224,6 @@ class UpgradeService
 
     /**
      * What is the latest version of webtrees.
-     *
-     * @return string
      */
     public function latestVersion(): string
     {
@@ -258,8 +236,6 @@ class UpgradeService
 
     /**
      * What, if any, error did we have when fetching the latest version of webtrees.
-     *
-     * @return string
      */
     public function latestVersionError(): string
     {
@@ -268,8 +244,6 @@ class UpgradeService
 
     /**
      * When did we last try to fetch the latest version of webtrees.
-     *
-     * @return TimestampInterface
      */
     public function latestVersionTimestamp(): TimestampInterface
     {
@@ -280,8 +254,6 @@ class UpgradeService
 
     /**
      * Where can we download the latest version of webtrees.
-     *
-     * @return string
      */
     public function downloadUrl(): string
     {
@@ -298,10 +270,6 @@ class UpgradeService
      * Pass the current versions of webtrees, PHP and database, as the response
      * may be different for each. The server logs are used to generate
      * installation statistics which can be found at https://dev.webtrees.net/statistics.html
-     *
-     * @param bool $force
-     *
-     * @return string
      */
     private function fetchLatestVersion(bool $force): string
     {

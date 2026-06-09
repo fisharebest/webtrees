@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -174,12 +174,6 @@ class Fact
      * Create an event object from a gedcom fragment.
      * We need the parent object (to check privacy) and a (pseudo) fact ID to
      * identify the fact within the record.
-     *
-     * @param string       $gedcom
-     * @param GedcomRecord $parent
-     * @param string       $id
-     *
-     * @throws InvalidArgumentException
      */
     public function __construct(string $gedcom, GedcomRecord $parent, string $id)
     {
@@ -196,8 +190,6 @@ class Fact
     /**
      * Get the value of level 1 data in the fact
      * Allow for multi-line values
-     *
-     * @return string
      */
     public function value(): string
     {
@@ -261,7 +253,6 @@ class Fact
     /**
      * Get the value of level 2 data in the fact
      *
-     * @param string $tag
      *
      * @return string
      */
@@ -306,10 +297,6 @@ class Fact
 
     /**
      * Do the privacy rules allow us to display this fact to the current user
-     *
-     * @param int|null $access_level
-     *
-     * @return bool
      */
     public function canShow(int|null $access_level = null): bool
     {
@@ -355,8 +342,6 @@ class Fact
 
     /**
      * Check whether this fact is protected against edit
-     *
-     * @return bool
      */
     public function canEdit(): bool
     {
@@ -374,8 +359,6 @@ class Fact
 
     /**
      * The place where the event occurred.
-     *
-     * @return Place
      */
     public function place(): Place
     {
@@ -388,8 +371,6 @@ class Fact
      * Get the date for this fact.
      * We can call this function many times, especially when sorting,
      * so keep a copy of the date.
-     *
-     * @return Date
      */
     public function date(): Date
     {
@@ -400,8 +381,6 @@ class Fact
 
     /**
      * The raw GEDCOM data for this fact
-     *
-     * @return string
      */
     public function gedcom(): string
     {
@@ -410,8 +389,6 @@ class Fact
 
     /**
      * Get a (pseudo) primary key for this fact.
-     *
-     * @return string
      */
     public function id(): string
     {
@@ -420,8 +397,6 @@ class Fact
 
     /**
      * What is the tag (type) of this fact, such as BIRT, MARR or DEAT.
-     *
-     * @return string
      */
     public function tag(): string
     {
@@ -430,8 +405,6 @@ class Fact
 
     /**
      * The GEDCOM record where this Fact came from
-     *
-     * @return GedcomRecord
      */
     public function record(): GedcomRecord
     {
@@ -440,8 +413,6 @@ class Fact
 
     /**
      * Get the name of this fact type, for use as a label.
-     *
-     * @return string
      */
     public function label(): string
     {
@@ -482,8 +453,6 @@ class Fact
 
     /**
      * This is a newly deleted fact, pending approval.
-     *
-     * @return void
      */
     public function setPendingDeletion(): void
     {
@@ -493,8 +462,6 @@ class Fact
 
     /**
      * Is this a newly deleted fact, pending approval.
-     *
-     * @return bool
      */
     public function isPendingDeletion(): bool
     {
@@ -503,8 +470,6 @@ class Fact
 
     /**
      * This is a newly added fact, pending approval.
-     *
-     * @return void
      */
     public function setPendingAddition(): void
     {
@@ -514,8 +479,6 @@ class Fact
 
     /**
      * Is this a newly added fact, pending approval.
-     *
-     * @return bool
      */
     public function isPendingAddition(): bool
     {
@@ -524,8 +487,6 @@ class Fact
 
     /**
      * A one-line summary of the fact - for charts, etc.
-     *
-     * @return string
      */
     public function summary(): string
     {
@@ -573,8 +534,6 @@ class Fact
 
     /**
      * A one-line summary of the fact - for the clipboard, etc.
-     *
-     * @return string
      */
     public function name(): string
     {
@@ -778,8 +737,6 @@ class Fact
 
     /**
      * Allow native PHP functions such as array_unique() to work with objects
-     *
-     * @return string
      */
     public function __toString(): string
     {

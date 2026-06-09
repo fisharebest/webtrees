@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -58,12 +58,6 @@ final class RegisterAction implements RequestHandlerInterface
 
     private UserService $user_service;
 
-    /**
-     * @param CaptchaService   $captcha_service
-     * @param EmailService     $email_service
-     * @param RateLimitService $rate_limit_service
-     * @param UserService      $user_service
-     */
     public function __construct(
         CaptchaService $captcha_service,
         EmailService $email_service,
@@ -207,9 +201,6 @@ final class RegisterAction implements RequestHandlerInterface
 
     /**
      * Check that visitors are allowed to register on this site.
-     *
-     * @return void
-     * @throws HttpNotFoundException
      */
     private function checkRegistrationAllowed(): void
     {
@@ -220,16 +211,6 @@ final class RegisterAction implements RequestHandlerInterface
 
     /**
      * Check the registration details.
-     *
-     * @param ServerRequestInterface $request
-     * @param string                 $username
-     * @param string                 $email
-     * @param string                 $realname
-     * @param string                 $comments
-     * @param string                 $password
-     *
-     * @return void
-     * @throws Exception
      */
     private function doValidateRegistration(
         ServerRequestInterface $request,

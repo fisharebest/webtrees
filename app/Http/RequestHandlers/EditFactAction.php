@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -77,10 +77,14 @@ readonly class EditFactAction implements RequestHandlerInterface
             }
         }
 
-        if ($fact_id === 'new') {
-            $record->createFact($gedcom, !$keep_chan);
-        } else {
-            $record->updateFact($fact_id, $gedcom, !$keep_chan);
+        if ($gedcom !== '') {
+            if ($fact_id === 'new') {
+                $record->createFact($gedcom, !$keep_chan);
+            } else {
+                $record->updateFact($fact_id, $gedcom, !$keep_chan);
+            }
+        } elseif ($fact_id !== 'new') {
+            $record->deleteFact($fact_id, !$keep_chan);
         }
 
         $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $record->url());

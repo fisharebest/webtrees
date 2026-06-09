@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -44,9 +44,6 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface
 
     /**
      * Dependency injection.
-     *
-     * @param ModuleService $module_service
-     * @param UserService   $user_service
      */
     public function __construct(ModuleService $module_service, UserService $user_service)
     {
@@ -56,8 +53,6 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface
 
     /**
      * How should this module be labelled on tabs, footers, etc.?
-     *
-     * @return string
      */
     public function title(): string
     {
@@ -73,8 +68,6 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface
 
     /**
      * The default position for this footer.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultFooterOrder(): int
     {
@@ -83,10 +76,6 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface
 
     /**
      * A footer, to be added at the bottom of every page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return string
      */
     public function getFooter(ServerRequestInterface $request): string
     {
@@ -103,11 +92,6 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getPageAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
@@ -124,8 +108,6 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface
     }
 
     /**
-     * @param Tree          $tree
-     * @param UserInterface $user
      *
      * @return Collection<int,ModuleAnalyticsInterface>
      */

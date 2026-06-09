@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -53,15 +53,6 @@ class EmailService
     /**
      * Send an external email message
      * Caution! gmail may rewrite the "From" header unless you have added the address to your account.
-     *
-     * @param UserInterface $from
-     * @param UserInterface $to
-     * @param UserInterface $reply_to
-     * @param string        $subject
-     * @param string        $message_text
-     * @param string        $message_html
-     *
-     * @return bool
      */
     public function send(UserInterface $from, UserInterface $to, UserInterface $reply_to, string $subject, string $message_text, string $message_html): bool
     {
@@ -85,15 +76,6 @@ class EmailService
 
     /**
      * Create a message
-     *
-     * @param UserInterface $from
-     * @param UserInterface $to
-     * @param UserInterface $reply_to
-     * @param string        $subject
-     * @param string        $message_text
-     * @param string        $message_html
-     *
-     * @return Message
      */
     protected function message(UserInterface $from, UserInterface $to, UserInterface $reply_to, string $subject, string $message_text, string $message_html): Message
     {
@@ -129,8 +111,6 @@ class EmailService
 
     /**
      * Create a transport mechanism for sending mail
-     *
-     * @return TransportInterface
      */
     protected function transport(): TransportInterface
     {
@@ -172,10 +152,6 @@ class EmailService
 
     /**
      * Many mail relays require a valid sender email.
-     *
-     * @param string $email
-     *
-     * @return bool
      */
     public function isValidEmail(string $email): bool
     {

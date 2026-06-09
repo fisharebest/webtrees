@@ -1,2 +1,14 @@
-order allow,deny
-deny from all
+# Apache >= 2.4
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+
+# Apache <= 2.2
+<IfModule !mod_authz_core.c>
+  <IfModule !mod_access_compat.c>
+    <IfModule mod_authz_host.c>
+      Order Allow,Deny
+      Deny from all
+    </IfModule>
+  </IfModule>
+</IfModule>

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -44,11 +44,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
     private ModuleService $module_service;
 
-    /**
-     * @param ClipboardService       $clipboard_service
-     * @param IndividualFactsService $individual_facts_service
-     * @param ModuleService          $module_service
-     */
     public function __construct(
         ClipboardService $clipboard_service,
         IndividualFactsService $individual_facts_service,
@@ -73,8 +68,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
     /**
      * The default position for this tab.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultTabOrder(): int
     {
@@ -84,10 +77,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     /**
      * A greyed out tab has no actual content, but may perhaps have
      * options to create content.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
      */
     public function isGrayedOut(Individual $individual): bool
     {
@@ -96,10 +85,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
     /**
      * Generate the HTML content of this tab.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function getTabContent(Individual $individual): string
     {
@@ -155,10 +140,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
     /**
      * Is this tab empty? If so, we don't always need to display it.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
      */
     public function hasTabContent(Individual $individual): bool
     {
@@ -167,8 +148,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
     /**
      * Can this tab load asynchronously?
-     *
-     * @return bool
      */
     public function canLoadAjax(): bool
     {

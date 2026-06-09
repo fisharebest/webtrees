@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,8 +42,6 @@ class Note extends GedcomRecord
 
     /**
      * Get the text contents of the note
-     *
-     * @return string
      */
     public function getNote(): string
     {
@@ -56,10 +54,6 @@ class Note extends GedcomRecord
 
     /**
      * Each object type may have its own special rules, and re-implement this function.
-     *
-     * @param int $access_level
-     *
-     * @return bool
      */
     protected function canShowByType(int $access_level): bool
     {
@@ -83,8 +77,6 @@ class Note extends GedcomRecord
     /**
      * Create a name for this note - apply (and remove) markup, then take
      * a maximum of 100 characters from the first non-empty line.
-     *
-     * @return void
      */
     public function extractNames(): void
     {
@@ -103,10 +95,6 @@ class Note extends GedcomRecord
 
     /**
      * Notes are converted to HTML for display.  We want the first line
-     *
-     * @param string $html
-     *
-     * @return string
      */
     public static function firstLineOfTextFromHtml(string $html): string
     {

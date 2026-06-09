@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Factories;
 
+use DOMDocument;
+use DOMElement;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\ImageFactoryInterface;
@@ -29,15 +31,14 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Webtrees;
 use Imagick;
-use Intervention\Gif\Exceptions\NotReadableException;
 use Intervention\Image\Drivers\Gd\Driver as GdDriver;
 use Intervention\Image\Drivers\Imagick\Driver as ImagickDriver;
+use Intervention\Image\Exceptions\ImageException;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Interfaces\ImageInterface;
 use InvalidArgumentException;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
-use League\Flysystem\UnableToReadFile;
 use League\Flysystem\UnableToRetrieveMetadata;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
@@ -47,16 +48,18 @@ use function addcslashes;
 use function basename;
 use function get_class;
 use function implode;
+use function libxml_clear_errors;
+use function libxml_use_internal_errors;
 use function pathinfo;
+use function preg_replace;
 use function response;
-use function str_contains;
+use function str_starts_with;
+use function strtolower;
 use function view;
 
+use const LIBXML_NONET;
 use const PATHINFO_EXTENSION;
 
-/**
- * Make an image (from another image).
- */
 class ImageFactory implements ImageFactoryInterface
 {
     // Imagick can detect the quality setting for images.  GD cannot.
@@ -66,6 +69,15 @@ class ImageFactory implements ImageFactoryInterface
     protected const string WATERMARK_FILE = 'resources/img/watermark.png';
 
     protected const int THUMBNAIL_CACHE_TTL = 8640000;
+
+    private const array DANGEROUS_SVG_TAGS = [
+        'script',
+        'foreignobject',
+        'iframe',
+        'object',
+        'embed',
+        'handler',
+    ];
 
     public const array SUPPORTED_FORMATS = [
         'image/jpeg' => 'jpg',
@@ -80,9 +92,6 @@ class ImageFactory implements ImageFactoryInterface
     {
     }
 
-    /**
-     * Send the original file - either inline or as a download.
-     */
     public function fileResponse(FilesystemOperator $filesystem, string $path, bool $download): ResponseInterface
     {
         try {
@@ -95,15 +104,12 @@ class ImageFactory implements ImageFactoryInterface
             $filename = $download ? addcslashes(string: basename(path: $path), characters: '"') : '';
 
             return $this->imageResponse(data: $filesystem->read(location: $path), mime_type: $mime_type, filename: $filename);
-        } catch (UnableToReadFile | FilesystemException $ex) {
+        } catch (FilesystemException $ex) {
             return $this->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_NOT_FOUND)
-                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
+                ->withHeader('x-file-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
         }
     }
 
-    /**
-     * Send a thumbnail.
-     */
     public function thumbnailResponse(
         FilesystemOperator $filesystem,
         string $path,
@@ -113,17 +119,17 @@ class ImageFactory implements ImageFactoryInterface
     ): ResponseInterface {
         try {
             $mime_type = $filesystem->mimeType(path: $path);
-            $image     = $this->imageManager()->read(input: $filesystem->readStream($path));
+            $image     = $this->imageManager()->decodeBinary(binary: $filesystem->read(location: $path));
             $image     = $this->resizeImage(image: $image, width: $width, height: $height, fit: $fit);
             $quality   = $this->extractImageQuality(image: $image, default: static::GD_DEFAULT_THUMBNAIL_QUALITY);
-            $data      = $image->encodeByMediaType(type: $mime_type, quality: $quality)->toString();
+            $data      = $image->encodeUsingMediaType(mediaType: $mime_type, quality: $quality)->toString();
 
             return $this->imageResponse(data: $data, mime_type: $mime_type, filename: '');
-        } catch (FilesystemException | UnableToReadFile $ex) {
+        } catch (FilesystemException $ex) {
             return $this
                 ->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_NOT_FOUND)
                 ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
-        } catch (RuntimeException $ex) {
+        } catch (ImageException $ex) {
             return $this
                 ->replacementImageResponse(text: '.' . pathinfo(path: $path, flags: PATHINFO_EXTENSION))
                 ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
@@ -134,9 +140,6 @@ class ImageFactory implements ImageFactoryInterface
         }
     }
 
-    /**
-     * Create a full-size version of an image.
-     */
     public function mediaFileResponse(MediaFile $media_file, bool $add_watermark, bool $download): ResponseInterface
     {
         $filesystem = $media_file->media()->tree()->mediaFilesystem();
@@ -148,29 +151,66 @@ class ImageFactory implements ImageFactoryInterface
 
         try {
             $mime_type = $media_file->mimeType();
-            $image     = $this->imageManager()->read(input: $filesystem->readStream($path));
+            $image     = $this->imageManager()->decodeBinary(binary: $filesystem->read(location: $path));
             $watermark = $this->createWatermark(width: $image->width(), height: $image->height(), media_file: $media_file);
             $image     = $this->addWatermark(image: $image, watermark: $watermark);
             $filename  = $download ? basename(path: $path) : '';
             $quality   = $this->extractImageQuality(image: $image, default: static::GD_DEFAULT_IMAGE_QUALITY);
-            $data      = $image->encodeByMediaType(type: $mime_type, quality:  $quality)->toString();
+            $data      = $image->encodeUsingMediaType(mediaType: $mime_type, quality: $quality)->toString();
 
             return $this->imageResponse(data: $data, mime_type: $mime_type, filename: $filename);
-        } catch (NotReadableException $ex) {
+        } catch (ImageException $ex) {
             return $this->replacementImageResponse(text: pathinfo(path: $path, flags: PATHINFO_EXTENSION))
                 ->withHeader('x-image-exception', $ex->getMessage());
-        } catch (FilesystemException | UnableToReadFile $ex) {
+        } catch (FilesystemException $ex) {
             return $this->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_NOT_FOUND)
-                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
+                ->withHeader('x-image-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
         } catch (Throwable $ex) {
             return $this->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
                 ->withHeader('x-image-exception', $ex->getMessage());
         }
     }
 
-    /**
-     * Create a smaller version of an image.
-     */
+    public function mediaFileThumbnail(
+        MediaFile $media_file,
+        int $width,
+        int $height,
+        string $fit,
+        bool $add_watermark
+    ): string {
+        // Where are the images stored?
+        $filesystem = $media_file->media()->tree()->mediaFilesystem();
+
+        // Where is the image stored in the filesystem?
+        $path = $media_file->filename();
+
+        $key = implode(separator: ':', array: [
+            $media_file->media()->tree()->name(),
+            $path,
+            $filesystem->lastModified(path: $path),
+            (string) $width,
+            (string) $height,
+            $fit,
+            (string) $add_watermark,
+        ]);
+
+        $closure = function () use ($filesystem, $path, $width, $height, $fit, $add_watermark, $media_file): string {
+            $image = $this->imageManager()->decodeBinary(binary: $filesystem->read(location: $path));
+            $image = $this->resizeImage(image: $image, width: $width, height: $height, fit: $fit);
+
+            if ($add_watermark) {
+                $watermark = $this->createWatermark(width: $image->width(), height: $image->height(), media_file: $media_file);
+                $image     = $this->addWatermark(image: $image, watermark: $watermark);
+            }
+
+            $quality = $this->extractImageQuality(image: $image, default: static::GD_DEFAULT_THUMBNAIL_QUALITY);
+
+            return $image->encodeUsingMediaType(mediaType: $media_file->mimeType(), quality: $quality)->toString();
+        };
+
+        return Registry::cache()->file()->remember(key: $key, closure: $closure, ttl: static::THUMBNAIL_CACHE_TTL);
+    }
+
     public function mediaFileThumbnailResponse(
         MediaFile $media_file,
         int $width,
@@ -178,49 +218,19 @@ class ImageFactory implements ImageFactoryInterface
         string $fit,
         bool $add_watermark
     ): ResponseInterface {
-        // Where are the images stored.
+        // Where are the images stored?
         $filesystem = $media_file->media()->tree()->mediaFilesystem();
 
-        // Where is the image stored in the filesystem.
+        // Where is the image stored in the filesystem?
         $path = $media_file->filename();
 
         try {
             $mime_type = $filesystem->mimeType(path: $path);
 
-            $key = implode(separator: ':', array: [
-                $media_file->media()->tree()->name(),
-                $path,
-                $filesystem->lastModified(path: $path),
-                (string) $width,
-                (string) $height,
-                $fit,
-                (string) $add_watermark,
-            ]);
+            $data = $this->mediaFileThumbnail($media_file, $width, $height, $fit, $add_watermark);
 
-            $closure = function () use ($filesystem, $path, $width, $height, $fit, $add_watermark, $media_file): string {
-                $image = $this->imageManager()->read(input: $filesystem->readStream($path));
-                $image = $this->resizeImage(image: $image, width: $width, height: $height, fit: $fit);
-
-                if ($add_watermark) {
-                    $watermark = $this->createWatermark(width: $image->width(), height: $image->height(), media_file: $media_file);
-                    $image     = $this->addWatermark(image: $image, watermark: $watermark);
-                }
-
-                $quality = $this->extractImageQuality(image: $image, default:  static::GD_DEFAULT_THUMBNAIL_QUALITY);
-
-                return $image->encodeByMediaType(type: $media_file->mimeType(), quality: $quality)->toString();
-            };
-
-            // Images and Responses both contain resources - which cannot be serialized.
-            // So cache the raw image data.
-            $data = Registry::cache()->file()->remember(key: $key, closure: $closure, ttl: static::THUMBNAIL_CACHE_TTL);
-
-            return $this->imageResponse(data: $data, mime_type:  $mime_type, filename:  '');
-        } catch (NotReadableException $ex) {
-            return $this
-                ->replacementImageResponse(text: '.' . pathinfo(path: $path, flags:  PATHINFO_EXTENSION))
-                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
-        } catch (FilesystemException | UnableToReadFile $ex) {
+            return $this->imageResponse(data: $data, mime_type: $mime_type, filename: '');
+        } catch (FilesystemException $ex) {
             return $this
                 ->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_NOT_FOUND)
                 ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
@@ -231,9 +241,6 @@ class ImageFactory implements ImageFactoryInterface
         }
     }
 
-    /**
-     * Does a full-sized image need a watermark?
-     */
     public function fileNeedsWatermark(MediaFile $media_file, UserInterface $user): bool
     {
         $tree = $media_file->media()->tree();
@@ -241,72 +248,124 @@ class ImageFactory implements ImageFactoryInterface
         return Auth::accessLevel(tree: $tree, user: $user) > (int) $tree->getPreference(setting_name: 'SHOW_NO_WATERMARK');
     }
 
-    /**
-     * Does a thumbnail image need a watermark?
-     */
     public function thumbnailNeedsWatermark(MediaFile $media_file, UserInterface $user): bool
     {
-        return $this->fileNeedsWatermark(media_file: $media_file, user:  $user);
+        return $this->fileNeedsWatermark(media_file: $media_file, user: $user);
     }
 
-    /**
-     * Create a watermark image, perhaps specific to a media-file.
-     */
     public function createWatermark(int $width, int $height, MediaFile $media_file): ImageInterface
     {
         return $this->imageManager()
-            ->read(input: Webtrees::ROOT_DIR . static::WATERMARK_FILE)
+            ->decodePath(path: Webtrees::ROOT_DIR . static::WATERMARK_FILE)
             ->scale(width: $width, height: $height);
     }
 
-    /**
-     * Add a watermark to an image.
-     */
     public function addWatermark(ImageInterface $image, ImageInterface $watermark): ImageInterface
     {
-        return $image->place(element: $watermark, position: 'center');
+        return $image->insert(image: $watermark, alignment: 'center');
     }
 
-    /**
-     * Send a replacement image, to replace one that could not be found or created.
-     */
     public function replacementImageResponse(string $text): ResponseInterface
     {
         // We can't create a PNG/BMP/JPEG image, as the GD/IMAGICK libraries may be missing.
         $svg = view(name: 'errors/image-svg', data: ['status' => $text]);
 
         // We can't send the actual status code, as browsers won't show images with 4xx/5xx.
-        return response(content: $svg, code: StatusCodeInterface::STATUS_OK, headers: [
-            'content-type' => 'image/svg+xml',
-        ]);
+        return response(content: $svg)
+            ->withHeader('content-type', 'image/svg+xml')
+            ->withHeader('content-security-policy', 'default-src none');
     }
 
-    /**
-     * Create a response from image data.
-     */
     protected function imageResponse(string $data, string $mime_type, string $filename): ResponseInterface
     {
-        if ($mime_type === 'image/svg+xml' && str_contains(haystack: $data, needle: '<script')) {
-            return $this->replacementImageResponse(text: 'XSS')
-                ->withHeader('x-image-exception', 'SVG image blocked due to XSS.');
+        if ($mime_type === 'image/svg+xml') {
+            if (!$this->php_service->extensionLoaded(extension: 'dom')) {
+                return $this->replacementImageResponse(text: 'DOM')
+                    ->withHeader('x-image-exception', 'Need the PHP dom extension to verify SVG files.');
+            }
+
+            if ($this->svgContainsActiveContent(data: $data)) {
+                return $this->replacementImageResponse(text: 'XSS')
+                    ->withHeader('x-image-exception', 'SVG image blocked due to XSS.');
+            }
         }
 
-        // HTML files may contain javascript and iframes, so use content-security-policy to disable them.
+        // HTML files may contain JavaScript and iframes, so use content-security-policy to disable them.
         $response = response($data)
             ->withHeader('content-type', $mime_type)
-            ->withHeader('content-security-policy', 'script-src none;frame-src none');
+            ->withHeader('content-security-policy', 'default-src none');
 
         if ($filename === '') {
             return $response;
         }
 
-        return $response
-            ->withHeader('content-disposition', 'attachment; filename="' . addcslashes(string: basename(path: $filename), characters: '"'));
+        $filename = addcslashes(string: basename(path: $filename), characters: '"');
+
+        return $response->withHeader('content-disposition', 'attachment; filename="' . $filename . '"');
     }
 
     /**
-     * Choose an image library, based on what is installed.
+     * Determine whether an SVG document contains active content (script elements,
+     * event-handler attributes, javascript: URLs) that could execute in a browser.
+     *
+     * Although we have a content-security-policy to disable scripts, a user may
+     * download this file and distribute it, so better to block it.
      */
+    private function svgContainsActiveContent(string $data): bool
+    {
+        $previous_error_state = libxml_use_internal_errors(true);
+
+        try {
+            $document = new DOMDocument();
+            // LIBXML_NONET disables network access so external DTDs and entities
+            // cannot be fetched — mitigates XXE/SSRF on malformed payloads.
+            $loaded = $document->loadXML($data, LIBXML_NONET);
+
+            if ($loaded === false || !$document->documentElement instanceof DOMElement) {
+                // Malformed SVG — treat conservatively and block.
+                return true;
+            }
+
+            return $this->svgElementIsDangerous($document->documentElement);
+        } finally {
+            libxml_clear_errors();
+            libxml_use_internal_errors($previous_error_state);
+        }
+    }
+
+    private function svgElementIsDangerous(DOMElement $element): bool
+    {
+        if (in_array(strtolower($element->localName), self::DANGEROUS_SVG_TAGS, true)) {
+            return true;
+        }
+
+        foreach ($element->attributes as $attribute) {
+            $name = strtolower($attribute->nodeName);
+
+            // Event-handler attributes such as "onload"
+            if (str_starts_with($name, 'on')) {
+                return true;
+            }
+
+            // Normalize whitespace to catch malformed values that browsers might accept,
+            // such as "java\tscript:".
+            $value         = (string) $attribute->nodeValue;
+            $value_compact = preg_replace('/\s+/', '', $value) ?? '';
+
+            if (str_starts_with(strtolower($value_compact), 'javascript:')) {
+                return true;
+            }
+        }
+
+        foreach ($element->childNodes as $child) {
+            if ($child instanceof DOMElement && $this->svgElementIsDangerous(element: $child)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     protected function imageManager(): ImageManager
     {
         if ($this->php_service->extensionLoaded(extension: 'imagick')) {
@@ -320,9 +379,6 @@ class ImageFactory implements ImageFactoryInterface
         throw new RuntimeException(message: 'No PHP graphics library is installed.  Need Imagick or GD');
     }
 
-    /**
-     * Resize an image.
-     */
     protected function resizeImage(ImageInterface $image, int $width, int $height, string $fit): ImageInterface
     {
         return match ($fit) {
@@ -332,9 +388,6 @@ class ImageFactory implements ImageFactoryInterface
         };
     }
 
-    /**
-     * Extract the quality/compression parameter from an image.
-     */
     protected function extractImageQuality(ImageInterface $image, int $default): int
     {
         $native = $image->core()->native();

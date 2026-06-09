@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,19 +38,12 @@ class XrefParser implements InlineParserInterface
 
     /**
      * We are only interested in text that begins with '@'.
-     *
-     * @return InlineParserMatch
      */
     public function getMatchDefinition(): InlineParserMatch
     {
         return InlineParserMatch::regex('@(' . Gedcom::REGEX_XREF . ')@');
     }
 
-    /**
-     * @param InlineParserContext $inlineContext
-     *
-     * @return bool
-     */
     public function parse(InlineParserContext $inlineContext): bool
     {
         $cursor = $inlineContext->getCursor();

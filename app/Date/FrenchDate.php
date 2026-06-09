@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -85,10 +85,7 @@ class FrenchDate extends AbstractCalendarDate
     /**
      * Full month name in nominative case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     protected function monthNameNominativeCase(int $month, bool $leap_year): string
     {
@@ -133,10 +130,7 @@ class FrenchDate extends AbstractCalendarDate
     /**
      * Full month name in genitive case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     protected function monthNameGenitiveCase(int $month, bool $leap_year): string
     {
@@ -180,10 +174,7 @@ class FrenchDate extends AbstractCalendarDate
     /**
      * Full month name in locative case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     protected function monthNameLocativeCase(int $month, bool $leap_year): string
     {
@@ -227,10 +218,7 @@ class FrenchDate extends AbstractCalendarDate
     /**
      * Full month name in instrumental case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     protected function monthNameInstrumentalCase(int $month, bool $leap_year): string
     {
@@ -274,10 +262,7 @@ class FrenchDate extends AbstractCalendarDate
     /**
      * Abbreviated month name
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     protected function monthNameAbbreviated(int $month, bool $leap_year): string
     {
@@ -286,10 +271,6 @@ class FrenchDate extends AbstractCalendarDate
 
     /**
      * Full day of the week
-     *
-     * @param int $day_number
-     *
-     * @return string
      */
     public function dayNames(int $day_number): string
     {
@@ -325,10 +306,6 @@ class FrenchDate extends AbstractCalendarDate
 
     /**
      * Abbreviated day of the week
-     *
-     * @param int $day_number
-     *
-     * @return string
      */
     protected function dayNamesAbbreviated(int $day_number): string
     {
@@ -337,8 +314,6 @@ class FrenchDate extends AbstractCalendarDate
 
     /**
      * Generate the %Y format for a date.
-     *
-     * @return string
      */
     protected function formatLongYear(): string
     {

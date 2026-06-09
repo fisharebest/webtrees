@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,22 +40,16 @@ trait ModuleCustomTrait
 {
     /**
      * A unique internal name for this module (based on the installation folder).
-     *
-     * @return string
      */
     abstract public function name(): string;
 
     /**
      * Where does this module store its resources
-     *
-     * @return string
      */
     abstract public function resourcesFolder(): string;
 
     /**
      * The person or organisation who created this module.
-     *
-     * @return string
      */
     public function customModuleAuthorName(): string
     {
@@ -74,8 +68,6 @@ trait ModuleCustomTrait
 
     /**
      * A URL that will provide the latest version of this module.
-     *
-     * @return string
      */
     public function customModuleLatestVersionUrl(): string
     {
@@ -84,8 +76,6 @@ trait ModuleCustomTrait
 
     /**
      * Fetch the latest version of this module.
-     *
-     * @return string
      */
     public function customModuleLatestVersion(): string
     {
@@ -120,8 +110,6 @@ trait ModuleCustomTrait
 
     /**
      * Where to get support for this module.  Perhaps a github repository?
-     *
-     * @return string
      */
     public function customModuleSupportUrl(): string
     {
@@ -131,7 +119,6 @@ trait ModuleCustomTrait
     /**
      * Additional/updated translations.
      *
-     * @param string $language
      *
      * @return array<string,string>
      */
@@ -144,8 +131,6 @@ trait ModuleCustomTrait
      * Create a URL for an asset.
      *
      * @param string $asset e.g. "css/theme.css" or "img/banner.png"
-     *
-     * @return string
      */
     public function assetUrl(string $asset): string
     {
@@ -164,10 +149,6 @@ trait ModuleCustomTrait
 
     /**
      * Serve a CSS/JS file.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
      */
     public function getAssetAction(ServerRequestInterface $request): ResponseInterface
     {

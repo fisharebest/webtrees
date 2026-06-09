@@ -10,7 +10,8 @@ use Fisharebest\Webtrees\Tree;
  * @var int        $generations
  * @var Individual $individual
  * @var string     $map
- * @var int        $maxgenerations
+ * @var int        $maximum_generations
+ * @var int        $minimum_generations
  * @var string     $title
  * @var Tree       $tree
  */
@@ -34,7 +35,7 @@ use Fisharebest\Webtrees\Tree;
             <?= I18N::translate('Generations') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select-number', ['name' => 'generations', 'selected' => $generations, 'options' => range(2, $maxgenerations)]) ?>
+            <input class="form-control" id="generations" name="generations" type="number" min="<?= e($minimum_generations) ?>" max="<?= e($maximum_generations) ?>" value="<?= e($generations) ?>" required="required">
         </div>
     </div>
 
@@ -51,7 +52,6 @@ use Fisharebest\Webtrees\Tree;
 </form>
 
 
-<div class="wt-ajax-load wt-page-content">
+<div class="wt-page-content">
     <?= $map ?>
 </div>
-

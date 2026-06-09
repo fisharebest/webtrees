@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -45,9 +45,6 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
      * @template T of ModuleInterface
      *
      * @param class-string<T>        $interface
-     * @param ServerRequestInterface $request
-     *
-     * @return void
      */
     protected function updateStatus(string $interface, ServerRequestInterface $request): void
     {
@@ -78,9 +75,6 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
      * @template T of ModuleInterface
      *
      * @param class-string<T>        $interface
-     * @param ServerRequestInterface $request
-     *
-     * @return void
      */
     protected function updateAccessLevel(string $interface, ServerRequestInterface $request): void
     {
@@ -111,10 +105,6 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
      * @template T of ModuleInterface
      *
      * @param class-string<T>        $interface
-     * @param string                 $column
-     * @param ServerRequestInterface $request
-     *
-     * @return void
      */
     protected function updateOrder(string $interface, string $column, ServerRequestInterface $request): void
     {

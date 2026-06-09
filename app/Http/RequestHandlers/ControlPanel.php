@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -90,16 +90,6 @@ final class ControlPanel implements RequestHandlerInterface
 
     private UserService $user_service;
 
-    /**
-     * @param AdminService        $admin_service
-     * @param HousekeepingService $housekeeping_service
-     * @param MessageService      $message_service
-     * @param ModuleService       $module_service
-     * @param ServerCheckService  $server_check_service
-     * @param TreeService         $tree_service
-     * @param UpgradeService      $upgrade_service
-     * @param UserService         $user_service
-     */
     public function __construct(
         AdminService $admin_service,
         HousekeepingService $housekeeping_service,

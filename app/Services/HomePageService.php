@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -45,10 +45,6 @@ class HomePageService
 
     /**
      * Load a tree block.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ModuleBlockInterface
      */
     public function treeBlock(ServerRequestInterface $request): ModuleBlockInterface
     {
@@ -74,11 +70,6 @@ class HomePageService
 
     /**
      * Load a user block.
-     *
-     * @param ServerRequestInterface $request
-     * @param UserInterface          $user
-     *
-     * @return ModuleBlockInterface
      */
     public function userBlock(ServerRequestInterface $request, UserInterface $user): ModuleBlockInterface
     {
@@ -103,11 +94,6 @@ class HomePageService
 
     /**
      * Get a specific block.
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return ModuleBlockInterface
      */
     public function getBlockModule(Tree $tree, int $block_id): ModuleBlockInterface
     {
@@ -129,8 +115,6 @@ class HomePageService
     /**
      * Get all the available blocks for a tree page.
      *
-     * @param Tree          $tree
-     * @param UserInterface $user
      *
      * @return Collection<string,ModuleBlockInterface>
      */
@@ -144,8 +128,6 @@ class HomePageService
     /**
      * Get all the available blocks for a user page.
      *
-     * @param Tree          $tree
-     * @param UserInterface $user
      *
      * @return Collection<string,ModuleBlockInterface>
      */
@@ -159,8 +141,6 @@ class HomePageService
     /**
      * Get the blocks for a specified tree.
      *
-     * @param Tree          $tree
-     * @param UserInterface $user
      * @param string        $location "main" or "side"
      *
      * @return Collection<int,ModuleBlockInterface>
@@ -178,8 +158,6 @@ class HomePageService
 
     /**
      * Make sure that default blocks exist for a tree.
-     *
-     * @return void
      */
     public function checkDefaultTreeBlocksExist(): void
     {
@@ -209,8 +187,6 @@ class HomePageService
     /**
      * Get the blocks for a specified user.
      *
-     * @param Tree          $tree
-     * @param UserInterface $user
      * @param string        $location "main" or "side"
      *
      * @return Collection<int,ModuleBlockInterface>
@@ -228,8 +204,6 @@ class HomePageService
 
     /**
      * Make sure that default blocks exist for a user.
-     *
-     * @return void
      */
     public function checkDefaultUserBlocksExist(): void
     {
@@ -259,11 +233,8 @@ class HomePageService
     /**
      * Save the updated blocks for a user.
      *
-     * @param int                    $user_id
      * @param Collection<int,string> $main_block_ids
      * @param Collection<int,string> $side_block_ids
-     *
-     * @return void
      */
     public function updateUserBlocks(int $user_id, Collection $main_block_ids, Collection $side_block_ids): void
     {
@@ -316,11 +287,8 @@ class HomePageService
     /**
      * Save the updated blocks for a tree.
      *
-     * @param int                    $tree_id
      * @param Collection<int,string> $main_block_ids
      * @param Collection<int,string> $side_block_ids
-     *
-     * @return void
      */
     public function updateTreeBlocks(int $tree_id, Collection $main_block_ids, Collection $side_block_ids): void
     {

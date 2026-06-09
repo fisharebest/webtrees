@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -62,8 +62,7 @@ final class CleanDataFolder implements RequestHandlerInterface
 
         // Protect the media folders
         foreach ($this->tree_service->all() as $tree) {
-            $media_directory = $tree->getPreference('MEDIA_DIRECTORY');
-            [$folder] = explode('/', $media_directory);
+            [$folder] = explode('/', $tree->mediaFolder());
 
             $protected[] = $folder . '/';
         }

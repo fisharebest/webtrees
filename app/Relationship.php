@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -61,9 +61,6 @@ class Relationship
     /** @var array<Closure> List of rules that need to match */
     private array $matchers;
 
-    /**
-     * @param Closure $callback
-     */
     private function __construct(Closure $callback)
     {
         $this->callback = $callback;
@@ -72,11 +69,6 @@ class Relationship
 
     /**
      * Allow fluent constructor.
-     *
-     * @param string $nominative
-     * @param string $genitive
-     *
-     * @return Relationship
      */
     public static function fixed(string $nominative, string $genitive): Relationship
     {
@@ -85,10 +77,6 @@ class Relationship
 
     /**
      * Allow fluent constructor.
-     *
-     * @param Closure $callback
-     *
-     * @return Relationship
      */
     public static function dynamic(Closure $callback): Relationship
     {
@@ -120,9 +108,6 @@ class Relationship
         return null;
     }
 
-    /**
-     * @return Relationship
-     */
     public function adopted(): Relationship
     {
         $this->matchers[] = static fn (array $nodes): bool => count($nodes) > 2 && $nodes[2]
@@ -132,9 +117,6 @@ class Relationship
         return $this;
     }
 
-    /**
-     * @return Relationship
-     */
     public function adoptive(): Relationship
     {
         $this->matchers[] = static fn (array $nodes): bool => $nodes[0]
@@ -144,9 +126,6 @@ class Relationship
         return $this;
     }
 
-    /**
-     * @return Relationship
-     */
     public function brother(): Relationship
     {
         return $this->relation([self::BROTHER]);
@@ -156,8 +135,6 @@ class Relationship
      * Match the next relationship in the path.
      *
      * @param array<string> $relationships
-     *
-     * @return Relationship
      */
     protected function relation(array $relationships): Relationship
     {
@@ -177,17 +154,12 @@ class Relationship
 
     /**
      * The number of ancestors may be different to the number of descendants
-     *
-     * @return Relationship
      */
     public function cousin(): Relationship
     {
         return $this->ancestor()->sibling()->descendant();
     }
 
-    /**
-     * @return Relationship
-     */
     public function descendant(): Relationship
     {
         return $this->repeatedRelationship(self::CHILDREN);
@@ -197,8 +169,6 @@ class Relationship
      * Match a repeated number of the same type of component
      *
      * @param array<string> $relationships
-     *
-     * @return Relationship
      */
     protected function repeatedRelationship(array $relationships): Relationship
     {
@@ -225,41 +195,26 @@ class Relationship
         return $this;
     }
 
-    /**
-     * @return Relationship
-     */
     public function sibling(): Relationship
     {
         return $this->relation(self::SIBLINGS);
     }
 
-    /**
-     * @return Relationship
-     */
     public function ancestor(): Relationship
     {
         return $this->repeatedRelationship(self::PARENTS);
     }
 
-    /**
-     * @return Relationship
-     */
     public function child(): Relationship
     {
         return $this->relation(self::CHILDREN);
     }
 
-    /**
-     * @return Relationship
-     */
     public function daughter(): Relationship
     {
         return $this->relation([self::DAUGHTER]);
     }
 
-    /**
-     * @return Relationship
-     */
     public function divorced(): Relationship
     {
         return $this->marriageStatus('DIV');
@@ -267,10 +222,6 @@ class Relationship
 
     /**
      * Match a marriage status
-     *
-     * @param string $status
-     *
-     * @return Relationship
      */
     protected function marriageStatus(string $status): Relationship
     {
@@ -300,25 +251,16 @@ class Relationship
         return $this;
     }
 
-    /**
-     * @return Relationship
-     */
     public function engaged(): Relationship
     {
         return $this->marriageStatus('ENGA');
     }
 
-    /**
-     * @return Relationship
-     */
     public function father(): Relationship
     {
         return $this->relation([self::FATHER]);
     }
 
-    /**
-     * @return Relationship
-     */
     public function female(): Relationship
     {
         return $this->sex('F');
@@ -326,10 +268,6 @@ class Relationship
 
     /**
      * Match the sex of the current individual
-     *
-     * @param string $sex
-     *
-     * @return Relationship
      */
     protected function sex(string $sex): Relationship
     {
@@ -338,9 +276,6 @@ class Relationship
         return $this;
     }
 
-    /**
-     * @return Relationship
-     */
     public function fostered(): Relationship
     {
         $this->matchers[] = static fn (array $nodes): bool => count($nodes) > 2 && $nodes[2]
@@ -350,9 +285,6 @@ class Relationship
         return $this;
     }
 
-    /**
-     * @return Relationship
-     */
     public function fostering(): Relationship
     {
         $this->matchers[] = static fn (array $nodes): bool => $nodes[0]
@@ -362,41 +294,26 @@ class Relationship
         return $this;
     }
 
-    /**
-     * @return Relationship
-     */
     public function husband(): Relationship
     {
         return $this->married()->relation([self::HUSBAND]);
     }
 
-    /**
-     * @return Relationship
-     */
     public function married(): Relationship
     {
         return $this->marriageStatus('MARR');
     }
 
-    /**
-     * @return Relationship
-     */
     public function male(): Relationship
     {
         return $this->sex('M');
     }
 
-    /**
-     * @return Relationship
-     */
     public function mother(): Relationship
     {
         return $this->relation([self::MOTHER]);
     }
 
-    /**
-     * @return Relationship
-     */
     public function older(): Relationship
     {
         $this->matchers[] = static function (array $nodes): bool {
@@ -409,41 +326,26 @@ class Relationship
         return $this;
     }
 
-    /**
-     * @return Relationship
-     */
     public function parent(): Relationship
     {
         return $this->relation(self::PARENTS);
     }
 
-    /**
-     * @return Relationship
-     */
     public function sister(): Relationship
     {
         return $this->relation([self::SISTER]);
     }
 
-    /**
-     * @return Relationship
-     */
     public function son(): Relationship
     {
         return $this->relation([self::SON]);
     }
 
-    /**
-     * @return Relationship
-     */
     public function spouse(): Relationship
     {
         return $this->married()->partner();
     }
 
-    /**
-     * @return Relationship
-     */
     public function partner(): Relationship
     {
         return $this->relation(self::SPOUSES);
@@ -451,8 +353,6 @@ class Relationship
 
     /**
      * The number of ancestors must be the same as the number of descendants
-     *
-     * @return Relationship
      */
     public function symmetricCousin(): Relationship
     {
@@ -493,9 +393,6 @@ class Relationship
         return $this;
     }
 
-    /**
-     * @return Relationship
-     */
     public function twin(): Relationship
     {
         $this->matchers[] = static function (array $nodes): bool {
@@ -513,17 +410,11 @@ class Relationship
         return $this;
     }
 
-    /**
-     * @return Relationship
-     */
     public function wife(): Relationship
     {
         return $this->married()->relation([self::WIFE]);
     }
 
-    /**
-     * @return Relationship
-     */
     public function younger(): Relationship
     {
         $this->matchers[] = static function (array $nodes): bool {

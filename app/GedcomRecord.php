@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -94,11 +94,9 @@ class GedcomRecord
     /**
      * Create a GedcomRecord object from raw GEDCOM data.
      *
-     * @param string      $xref
      * @param string      $gedcom  an empty string for new/pending records
      * @param string|null $pending null for a record with no pending edits,
      *                             empty string for records with pending deletions
-     * @param Tree        $tree
      */
     public function __construct(string $xref, string $gedcom, string|null $pending, Tree $tree)
     {
@@ -157,8 +155,6 @@ class GedcomRecord
 
     /**
      * Get the GEDCOM tag for this record.
-     *
-     * @return string
      */
     public function tag(): string
     {
@@ -169,8 +165,6 @@ class GedcomRecord
 
     /**
      * Get the XREF for this record
-     *
-     * @return string
      */
     public function xref(): string
     {
@@ -179,8 +173,6 @@ class GedcomRecord
 
     /**
      * Get the tree to which this record belongs
-     *
-     * @return Tree
      */
     public function tree(): Tree
     {
@@ -190,8 +182,6 @@ class GedcomRecord
     /**
      * Application code should access data via Fact objects.
      * This function exists to support old code.
-     *
-     * @return string
      */
     public function gedcom(): string
     {
@@ -200,8 +190,6 @@ class GedcomRecord
 
     /**
      * Does this record have a pending change?
-     *
-     * @return bool
      */
     public function isPendingAddition(): bool
     {
@@ -210,8 +198,6 @@ class GedcomRecord
 
     /**
      * Does this record have a pending deletion?
-     *
-     * @return bool
      */
     public function isPendingDeletion(): bool
     {
@@ -220,8 +206,6 @@ class GedcomRecord
 
     /**
      * Generate a URL to this record.
-     *
-     * @return string
      */
     public function url(): string
     {
@@ -234,10 +218,6 @@ class GedcomRecord
 
     /**
      * Can the details of this record be shown?
-     *
-     * @param int|null $access_level
-     *
-     * @return bool
      */
     public function canShow(int|null $access_level = null): bool
     {
@@ -256,10 +236,6 @@ class GedcomRecord
 
     /**
      * Can the name of this record be shown?
-     *
-     * @param int|null $access_level
-     *
-     * @return bool
      */
     public function canShowName(int|null $access_level = null): bool
     {
@@ -268,8 +244,6 @@ class GedcomRecord
 
     /**
      * Can we edit this record?
-     *
-     * @return bool
      */
     public function canEdit(): bool
     {
@@ -331,8 +305,6 @@ class GedcomRecord
 
     /**
      * Default for "other" object types
-     *
-     * @return void
      */
     public function extractNames(): void
     {
@@ -364,8 +336,6 @@ class GedcomRecord
 
     /**
      * If this object has no name, what do we call it?
-     *
-     * @return string
      */
     public function getFallBackName(): string
     {
@@ -374,8 +344,6 @@ class GedcomRecord
 
     /**
      * Which of the (possibly several) names of this record is the primary one.
-     *
-     * @return int
      */
     public function getPrimaryName(): int
     {
@@ -400,8 +368,6 @@ class GedcomRecord
 
     /**
      * Which of the (possibly several) names of this record is the secondary one.
-     *
-     * @return int
      */
     public function getSecondaryName(): int
     {
@@ -426,10 +392,6 @@ class GedcomRecord
 
     /**
      * Allow the choice of primary name to be overridden, e.g. in a search result
-     *
-     * @param int|null $n
-     *
-     * @return void
      */
     public function setPrimaryName(int|null $n = null): void
     {
@@ -439,8 +401,6 @@ class GedcomRecord
 
     /**
      * Allow native PHP functions such as array_unique() to work with objects
-     *
-     * @return string
      */
     public function __toString(): string
     {
@@ -450,8 +410,6 @@ class GedcomRecord
     /**
      * /**
      * Get variants of the name
-     *
-     * @return string
      */
     public function fullName(): string
     {
@@ -466,8 +424,6 @@ class GedcomRecord
 
     /**
      * Get a sortable version of the name. Do not display this!
-     *
-     * @return string
      */
     public function sortName(): string
     {
@@ -479,8 +435,6 @@ class GedcomRecord
 
     /**
      * Get the full name in an alternative character set
-     *
-     * @return string|null
      */
     public function alternateName(): string|null
     {
@@ -495,8 +449,6 @@ class GedcomRecord
 
     /**
      * Format this object for display in a list
-     *
-     * @return string
      */
     public function formatList(): string
     {
@@ -511,8 +463,6 @@ class GedcomRecord
     /**
      * This function should be redefined in derived classes to show any major
      * identifying characteristics of this record.
-     *
-     * @return string
      */
     public function formatListDetails(): string
     {
@@ -523,9 +473,6 @@ class GedcomRecord
      * Extract/format the first fact from a list of facts.
      *
      * @param array<string> $facts
-     * @param int           $style
-     *
-     * @return string
      */
     public function formatFirstMajorFact(array $facts, int $style): string
     {
@@ -601,9 +548,6 @@ class GedcomRecord
      * The facts and events for this record.
      *
      * @param array<string> $filter
-     * @param bool          $sort
-     * @param int|null      $access_level
-     * @param bool          $ignore_deleted
      *
      * @return Collection<int,Fact>
      */
@@ -692,8 +636,6 @@ class GedcomRecord
 
     /**
      * Get the last-change timestamp for this record
-     *
-     * @return TimestampInterface
      */
     public function lastChangeTimestamp(): TimestampInterface
     {
@@ -724,8 +666,6 @@ class GedcomRecord
 
     /**
      * Get the last-change user for this record
-     *
-     * @return string
      */
     public function lastChangeUser(): string
     {
@@ -896,10 +836,6 @@ class GedcomRecord
 
     /**
      * Each object type may have its own special rules, and re-implement this function.
-     *
-     * @param int $access_level
-     *
-     * @return bool
      */
     protected function canShowByType(int $access_level): bool
     {
@@ -917,12 +853,6 @@ class GedcomRecord
     /**
      * Convert a name record into sortable and full/display versions. This default
      * should be OK for simple record types. INDI/FAM records will need to redefine it.
-     *
-     * @param string $type
-     * @param string $value
-     * @param string $gedcom
-     *
-     * @return void
      */
     protected function addName(string $type, string $value, string $gedcom): void
     {
@@ -945,11 +875,7 @@ class GedcomRecord
      * ['full'] = the name as specified in the record, e.g. 'Vincent van Gogh' or 'John Unknown'
      * ['sort'] = a sortable version of the name (not for display), e.g. 'Gogh, Vincent' or '@N.N., John'
      *
-     * @param int              $level
-     * @param string           $fact_type
      * @param Collection<int,Fact> $facts
-     *
-     * @return void
      */
     protected function extractNamesFromFacts(int $level, string $fact_type, Collection $facts): void
     {
@@ -1019,10 +945,6 @@ class GedcomRecord
 
     /**
      * Work out whether this record can be shown to a user with a given access level
-     *
-     * @param int $access_level
-     *
-     * @return bool
      */
     private function canShowRecord(int $access_level): bool
     {
@@ -1082,10 +1004,6 @@ class GedcomRecord
 
     /**
      * Change records may contain notes and other fields.  Just update the date/time/author.
-     *
-     * @param string $gedcom
-     *
-     * @return string
      */
     private function updateChange(string $gedcom): string
     {

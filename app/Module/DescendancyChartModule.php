@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -55,13 +55,10 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
 
     // Limits
     protected const int MINIMUM_GENERATIONS = 2;
-    protected const int MAXIMUM_GENERATIONS = 10;
+    protected const int MAXIMUM_GENERATIONS = PHP_INT_SIZE === 4 ? 31 : 63;
 
     private ChartService $chart_service;
 
-    /**
-     * @param ChartService $chart_service
-     */
     public function __construct(ChartService $chart_service)
     {
         $this->chart_service = $chart_service;
@@ -69,8 +66,6 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -94,8 +89,6 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -112,10 +105,6 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
 
     /**
      * The title for a specific instance of this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function chartTitle(Individual $individual): string
     {
@@ -126,10 +115,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
@@ -139,11 +125,6 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -41,8 +41,6 @@ trait ModuleMapGeoLocationTrait
 {
     /**
      * A unique internal name for this module (based on the installation folder).
-     *
-     * @return string
      */
     abstract public function name(): string;
 
@@ -52,7 +50,6 @@ trait ModuleMapGeoLocationTrait
     }
 
     /**
-     * @param string $place
      *
      * @return array<string>
      */
@@ -83,11 +80,6 @@ trait ModuleMapGeoLocationTrait
         }, $ttl);
     }
 
-    /**
-     * @param string $place
-     *
-     * @return RequestInterface
-     */
     protected function searchLocationsRequest(string $place): RequestInterface
     {
         $uri = Html::url('https://nominatim.openstreetmap.org/search', [
@@ -101,7 +93,6 @@ trait ModuleMapGeoLocationTrait
     }
 
     /**
-     * @param ResponseInterface $response
      *
      * @return array<string>
      */

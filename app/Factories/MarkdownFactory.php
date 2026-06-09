@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -78,12 +78,6 @@ class MarkdownFactory implements MarkdownFactoryInterface
         ],
     ];
 
-    /**
-     * @param string    $markdown
-     * @param Tree|null $tree
-     *
-     * @return string
-     */
     public function autolink(string $markdown, Tree|null $tree = null): string
     {
         // Create a minimal commonmark processor - just add support for auto-links.
@@ -112,12 +106,6 @@ class MarkdownFactory implements MarkdownFactoryInterface
         return strtr($html, ["\n"   => '']);
     }
 
-    /**
-     * @param string    $markdown
-     * @param Tree|null $tree
-     *
-     * @return string
-     */
     public function markdown(string $markdown, Tree|null $tree = null): string
     {
         $environment = new Environment(static::CONFIG_MARKDOWN);

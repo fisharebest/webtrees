@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,7 +24,6 @@
 }
 
 .wt-osk-keys {
-    background: #eee;
     padding: 0.25rem;
     font-size: larger;
 }
@@ -36,21 +35,22 @@
 }
 
 .wt-osk-key {
-    background: #ddd;
+    background: var(--bs-secondary-bg);
     border-radius: .25rem;
+    color: var(--bs-emphasis-color);
     padding: 0.25rem;
     cursor: pointer;
 }
 
 .wt-osk-key-shift {
-    color: #aaa;
+    color: var(--bs-secondary-color);
     font-size: smaller;
 }
 
 .wt-osk-keys.shifted .wt-osk-key {
-    color: #aaa;
+    color: var(--bs-secondary-color);
 }
 
 .wt-osk-keys.shifted .wt-osk-key-shift {
-    color: #555;
+    color: var(--bs-tertiary-color);
 }

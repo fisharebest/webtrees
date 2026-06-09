@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,133 +26,92 @@ interface TimestampInterface
 {
     /**
      * Convert a datetime to the user's Julian day number.
-     *
-     * @return int
      */
     public function julianDay(): int;
 
-    /**
-     * @return string
-     */
     public function diffForHumans(): string;
 
-    /**
-     * @param string $format
-     *
-     * @return string
-     */
     public function format(string $format): string;
 
-    /**
-     * @param string $format
-     *
-     * @return string
-     */
     public function isoFormat(string $format): string;
 
-    /**
-     * @return string
-     */
     public function toDateString(): string;
 
-    /**
-     * @return string
-     */
     public function toDateTimeString(): string;
 
-    /**
-     * @param TimestampInterface $timestamp
-     *
-     * @return int
-     */
     public function compare(TimestampInterface $timestamp): int;
 
     /**
-     * @param int $seconds
      *
      * @return self
      */
     public function addSeconds(int $seconds): TimestampInterface;
 
     /**
-     * @param int $minutes
      *
      * @return self
      */
     public function addMinutes(int $minutes): TimestampInterface;
 
     /**
-     * @param int $hours
      *
      * @return self
      */
     public function addHours(int $hours): TimestampInterface;
 
     /**
-     * @param int $days
      *
      * @return self
      */
     public function addDays(int $days): TimestampInterface;
 
     /**
-     * @param int $months
      *
      * @return self
      */
     public function addMonths(int $months): TimestampInterface;
 
     /**
-     * @param int $years
      *
      * @return self
      */
     public function addYears(int $years): TimestampInterface;
 
     /**
-     * @param int $seconds
      *
      * @return self
      */
     public function subtractSeconds(int $seconds): TimestampInterface;
 
     /**
-     * @param int $minutes
      *
      * @return self
      */
     public function subtractMinutes(int $minutes): TimestampInterface;
 
     /**
-     * @param int $hours
      *
      * @return self
      */
     public function subtractHours(int $hours): TimestampInterface;
 
     /**
-     * @param int $days
      *
      * @return self
      */
     public function subtractDays(int $days): TimestampInterface;
 
     /**
-     * @param int $months
      *
      * @return self
      */
     public function subtractMonths(int $months): TimestampInterface;
 
     /**
-     * @param int $years
      *
      * @return self
      */
     public function subtractYears(int $years): TimestampInterface;
 
-    /**
-     * @return int
-     */
     public function timestamp(): int;
 }

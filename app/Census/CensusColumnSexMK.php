@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,10 +19,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
-/**
- * The individual's sex.
- */
-class CensusColumnSexMK extends CensusColumnSexMF
+use Fisharebest\Webtrees\Individual;
+
+final readonly class CensusColumnSexMK extends AbstractCensusColumn implements CensusColumnInterface
 {
-    protected const string FEMALE = 'K';
+    public function generate(Individual $individual, Individual $head): string
+    {
+        return match ($individual->sex()) {
+            'M'     => 'M',
+            'F'     => 'K',
+            default => '',
+        };
+    }
 }

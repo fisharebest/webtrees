@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -57,7 +57,6 @@ class NoteFactory extends AbstractGedcomRecordFactory implements NoteFactoryInte
     /**
      * Create a note from a row in the database.
      *
-     * @param Tree $tree
      *
      * @return Closure(object):Note
      */
@@ -69,13 +68,9 @@ class NoteFactory extends AbstractGedcomRecordFactory implements NoteFactoryInte
     /**
      * Create a note from raw GEDCOM data.
      *
-     * @param string      $xref
      * @param string      $gedcom  an empty string for new/pending records
      * @param string|null $pending null for a record with no pending edits,
      *                             empty string for records with pending deletions
-     * @param Tree        $tree
-     *
-     * @return Note
      */
     public function new(string $xref, string $gedcom, string|null $pending, Tree $tree): Note
     {
@@ -84,11 +79,6 @@ class NoteFactory extends AbstractGedcomRecordFactory implements NoteFactoryInte
 
     /**
      * Fetch GEDCOM data from the database.
-     *
-     * @param string $xref
-     * @param Tree   $tree
-     *
-     * @return string|null
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {

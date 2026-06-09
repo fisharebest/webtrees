@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -111,10 +111,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param CacheFactoryInterface|null $factory
-     *
-     * @return CacheFactoryInterface
      */
     public static function cache(CacheFactoryInterface|null $factory = null): CacheFactoryInterface
     {
@@ -127,10 +123,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param CalendarDateFactoryInterface|null $factory
-     *
-     * @return CalendarDateFactoryInterface
      */
     public static function calendarDateFactory(CalendarDateFactoryInterface|null $factory = null): CalendarDateFactoryInterface
     {
@@ -143,10 +135,6 @@ class Registry
 
     /**
      * Store or retrieve a PSR-11 container.
-     *
-     * @param ContainerInterface|null $container
-     *
-     * @return ContainerInterface
      */
     public static function container(ContainerInterface|null $container = null): ContainerInterface
     {
@@ -159,10 +147,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param ElementFactoryInterface|null $factory
-     *
-     * @return ElementFactoryInterface
      */
     public static function elementFactory(ElementFactoryInterface|null $factory = null): ElementFactoryInterface
     {
@@ -175,10 +159,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param EncodingFactoryInterface|null $factory
-     *
-     * @return EncodingFactoryInterface
      */
     public static function encodingFactory(EncodingFactoryInterface|null $factory = null): EncodingFactoryInterface
     {
@@ -191,10 +171,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param FamilyFactoryInterface|null $factory
-     *
-     * @return FamilyFactoryInterface
      */
     public static function familyFactory(FamilyFactoryInterface|null $factory = null): FamilyFactoryInterface
     {
@@ -207,10 +183,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param FilesystemFactoryInterface|null $factory
-     *
-     * @return FilesystemFactoryInterface
      */
     public static function filesystem(FilesystemFactoryInterface|null $factory = null): FilesystemFactoryInterface
     {
@@ -223,10 +195,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param GedcomRecordFactoryInterface|null $factory
-     *
-     * @return GedcomRecordFactoryInterface
      */
     public static function gedcomRecordFactory(GedcomRecordFactoryInterface|null $factory = null): GedcomRecordFactoryInterface
     {
@@ -239,10 +207,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param HeaderFactoryInterface|null $factory
-     *
-     * @return HeaderFactoryInterface
      */
     public static function headerFactory(HeaderFactoryInterface|null $factory = null): HeaderFactoryInterface
     {
@@ -255,10 +219,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param IdFactoryInterface|null $factory
-     *
-     * @return IdFactoryInterface
      */
     public static function idFactory(IdFactoryInterface|null $factory = null): IdFactoryInterface
     {
@@ -271,10 +231,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param ImageFactoryInterface|null $factory
-     *
-     * @return ImageFactoryInterface
      */
     public static function imageFactory(ImageFactoryInterface|null $factory = null): ImageFactoryInterface
     {
@@ -287,10 +243,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param IndividualFactoryInterface|null $factory
-     *
-     * @return IndividualFactoryInterface
      */
     public static function individualFactory(IndividualFactoryInterface|null $factory = null): IndividualFactoryInterface
     {
@@ -303,10 +255,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param LocationFactoryInterface|null $factory
-     *
-     * @return LocationFactoryInterface
      */
     public static function locationFactory(LocationFactoryInterface|null $factory = null): LocationFactoryInterface
     {
@@ -319,10 +267,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param MarkdownFactoryInterface|null $factory
-     *
-     * @return MarkdownFactoryInterface
      */
     public static function markdownFactory(MarkdownFactoryInterface|null $factory = null): MarkdownFactoryInterface
     {
@@ -335,10 +279,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param MediaFactoryInterface|null $factory
-     *
-     * @return MediaFactoryInterface
      */
     public static function mediaFactory(MediaFactoryInterface|null $factory = null): MediaFactoryInterface
     {
@@ -351,10 +291,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param NoteFactoryInterface|null $factory
-     *
-     * @return NoteFactoryInterface
      */
     public static function noteFactory(NoteFactoryInterface|null $factory = null): NoteFactoryInterface
     {
@@ -367,10 +303,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param RepositoryFactoryInterface|null $factory
-     *
-     * @return RepositoryFactoryInterface
      */
     public static function repositoryFactory(RepositoryFactoryInterface|null $factory = null): RepositoryFactoryInterface
     {
@@ -383,10 +315,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param ResponseFactoryInterface|null $factory
-     *
-     * @return ResponseFactoryInterface
      */
     public static function responseFactory(ResponseFactoryInterface|null $factory = null): ResponseFactoryInterface
     {
@@ -399,10 +327,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param RouteFactoryInterface|null $factory
-     *
-     * @return RouteFactoryInterface
      */
     public static function routeFactory(RouteFactoryInterface|null $factory = null): RouteFactoryInterface
     {
@@ -415,10 +339,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param SharedNoteFactoryInterface|null $factory
-     *
-     * @return SharedNoteFactoryInterface
      */
     public static function sharedNoteFactory(SharedNoteFactoryInterface|null $factory = null): SharedNoteFactoryInterface
     {
@@ -431,10 +351,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param SlugFactoryInterface|null $factory
-     *
-     * @return SlugFactoryInterface
      */
     public static function slugFactory(SlugFactoryInterface|null $factory = null): SlugFactoryInterface
     {
@@ -447,10 +363,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param SourceFactoryInterface|null $factory
-     *
-     * @return SourceFactoryInterface
      */
     public static function sourceFactory(SourceFactoryInterface|null $factory = null): SourceFactoryInterface
     {
@@ -463,10 +375,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param SubmissionFactoryInterface|null $factory
-     *
-     * @return SubmissionFactoryInterface
      */
     public static function submissionFactory(SubmissionFactoryInterface|null $factory = null): SubmissionFactoryInterface
     {
@@ -479,10 +387,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param SubmitterFactoryInterface|null $factory
-     *
-     * @return SubmitterFactoryInterface
      */
     public static function submitterFactory(SubmitterFactoryInterface|null $factory = null): SubmitterFactoryInterface
     {
@@ -495,10 +399,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param SurnameTraditionFactoryInterface|null $factory
-     *
-     * @return SurnameTraditionFactoryInterface
      */
     public static function surnameTraditionFactory(SurnameTraditionFactoryInterface|null $factory = null): SurnameTraditionFactoryInterface
     {
@@ -511,10 +411,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param TimeFactoryInterface|null $factory
-     *
-     * @return TimeFactoryInterface
      */
     public static function timeFactory(TimeFactoryInterface|null $factory = null): TimeFactoryInterface
     {
@@ -527,10 +423,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param TimestampFactoryInterface|null $factory
-     *
-     * @return TimestampFactoryInterface
      */
     public static function timestampFactory(TimestampFactoryInterface|null $factory = null): TimestampFactoryInterface
     {
@@ -543,10 +435,6 @@ class Registry
 
     /**
      * Store or retrieve a factory object.
-     *
-     * @param XrefFactoryInterface|null $factory
-     *
-     * @return XrefFactoryInterface
      */
     public static function xrefFactory(XrefFactoryInterface|null $factory = null): XrefFactoryInterface
     {

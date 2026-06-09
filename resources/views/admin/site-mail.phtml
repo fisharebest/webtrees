@@ -93,7 +93,7 @@ use Fisharebest\Webtrees\Webtrees;
             I18N::translate('Server name') ?>
         </label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="SMTP_HOST" name="SMTP_HOST" value="<?= e($SMTP_HOST) ?>" placeholder="smtp.example.com" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
+            <input type="text" class="form-control" id="SMTP_HOST" name="SMTP_HOST" value="<?= e($SMTP_HOST) ?>" placeholder="smtp.example.com" maxlength="255" pattern="[a-z0-9\-]+(\.[a-z0-9\-]+)*">
             <div class="form-text">
                 <?= /* I18N: Help text for the “Server name” site configuration setting */
                 I18N::translate('This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server.') ?>
@@ -149,10 +149,9 @@ use Fisharebest\Webtrees\Webtrees;
             I18N::translate('Password') ?>
         </label>
         <div class="col-sm-9">
-            <input type="password" class="form-control" id="SMTP_AUTH_PASS" name="SMTP_AUTH_PASS" value="" autocomplete="new-password" data-wt-show-password-text="<?= e(I18N::translate('show')) ?>" data-wt-show-password-title="<?= e(I18N::translate('Show password')) ?>" data-wt-hide-password-text="<?= e(I18N::translate('hide')) ?>" data-wt-hide-password-title="<?= e(I18N::translate('Hide password')) ?>">
+            <?= view('edit/password', ['id' => 'SMTP_AUTH_PASS']) ?>
             <div class="form-text">
-                <?= /* I18N: Help text for the "Password" site configuration setting */
-                I18N::translate('The password required for authentication with the SMTP server.') ?>
+                <?= I18N::translate('The password required for authentication with the SMTP server.') ?>
             </div>
         </div>
     </div>
@@ -177,7 +176,7 @@ use Fisharebest\Webtrees\Webtrees;
             I18N::translate('Sending server name') ?>
         </label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="SMTP_HELO" name="SMTP_HELO" value="<?= e($SMTP_HELO) ?>" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
+            <input type="text" class="form-control" id="SMTP_HELO" name="SMTP_HELO" value="<?= e($SMTP_HELO) ?>" maxlength="255" pattern="[a-z0-9\-]+(\.[a-z0-9\-]+)*">
             <div class="form-text">
                 <?= /* I18N: Help text for the "Sending server name" site configuration setting */
                 I18N::translate('Most mail servers require that the sending server identifies itself correctly, using a valid domain name.') ?>

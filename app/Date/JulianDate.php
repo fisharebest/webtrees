@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -49,10 +49,6 @@ class JulianDate extends AbstractGregorianJulianDate
 
     /**
      * Most years are 1 more than the previous, but not always (e.g. 1BC->1AD)
-     *
-     * @param int $year
-     *
-     * @return int
      */
     protected function nextYear(int $year): int
     {
@@ -65,10 +61,6 @@ class JulianDate extends AbstractGregorianJulianDate
 
     /**
      * Process new-style/old-style years and years BC
-     *
-     * @param string $year
-     *
-     * @return int
      */
     protected function extractYear(string $year): int
     {
@@ -88,8 +80,6 @@ class JulianDate extends AbstractGregorianJulianDate
 
     /**
      * Generate the %Y format for a date.
-     *
-     * @return string
      */
     protected function formatLongYear(): string
     {
@@ -108,8 +98,6 @@ class JulianDate extends AbstractGregorianJulianDate
 
     /**
      * Generate the %E format for a date.
-     *
-     * @return string
      */
     protected function formatGedcomYear(): string
     {

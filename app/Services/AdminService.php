@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -54,11 +54,6 @@ class AdminService
 {
     /**
      * Count of XREFs used by two trees at the same time.
-     *
-     * @param Tree $tree1
-     * @param Tree $tree2
-     *
-     * @return int
      */
     public function countCommonXrefs(Tree $tree1, Tree $tree2): int
     {
@@ -109,7 +104,6 @@ class AdminService
     }
 
     /**
-     * @param Tree $tree
      *
      * @return array<string,array<int,array<int,GedcomRecord>>>
      */
@@ -189,7 +183,6 @@ class AdminService
     /**
      * Every XREF used by this tree and also used by some other tree
      *
-     * @param Tree $tree
      *
      * @return array<string>
      */
@@ -242,7 +235,6 @@ class AdminService
     /**
      * A list of GEDCOM files in the data folder.
      *
-     * @param FilesystemOperator $filesystem
      *
      * @return Collection<int,string>
      */
@@ -273,8 +265,6 @@ class AdminService
 
     /**
      * Change the behaviour a little, when there are a lot of trees.
-     *
-     * @return int
      */
     public function multipleTreeThreshold(): int
     {

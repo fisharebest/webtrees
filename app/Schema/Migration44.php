@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -48,26 +48,21 @@ class Migration44 implements MigrationInterface
                 $table->index(['longitude']);
             });
 
-            // SQL-server cannot cascade-delete/update on self-relations.
+            // SqlServer cannot cascade-delete/update on self-relations.
             // Users will need to delete all child locations before deleting the parent.
-            if (DB::driverName() === DB::SQL_SERVER) {
-                // SQL-Server doesn't support 'RESTRICT'
-                $action = 'NO ACTION';
-            } else {
-                $action = 'CASCADE';
+            if (DB::driverName() !== DB::SQL_SERVER) {
+                DB::schema()->table('place_location', static function (Blueprint $table): void {
+                    $table->foreign(['parent_id'])
+                        ->references(['id'])
+                        ->on('place_location')
+                        ->cascadeOnDelete()
+                        ->cascadeOnUpdate();
+                });
             }
-
-            DB::schema()->table('place_location', static function (Blueprint $table) use ($action): void {
-                $table->foreign(['parent_id'])
-                    ->references(['id'])
-                    ->on('place_location')
-                    ->onDelete($action)
-                    ->onUpdate($action);
-            });
         }
 
         // This table should only exist if we are upgrading an old installation, which would have been
-        // created with MySQL.  Therefore we can safely use MySQL-specific SQL.
+        // created with MySQL. Therefore, we can safely use MySQL-specific SQL.
         if (DB::schema()->hasTable('placelocation')) {
             if (DB::driverName() === DB::MYSQL) {
                 DB::table('placelocation')

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -77,12 +77,6 @@ class DataFixService
 
     /**
      * Default preview generator.
-     *
-     * @param Tree   $tree
-     * @param string $old_gedcom
-     * @param string $new_gedcom
-     *
-     * @return string
      */
     public function gedcomDiff(Tree $tree, string $old_gedcom, string $new_gedcom): string
     {

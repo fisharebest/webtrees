@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,11 +43,6 @@ final class ContactPage implements RequestHandlerInterface
 
     private UserService $user_service;
 
-    /**
-     * @param CaptchaService $captcha_service
-     * @param MessageService $message_service
-     * @param UserService    $user_service
-     */
     public function __construct(
         CaptchaService $captcha_service,
         MessageService $message_service,

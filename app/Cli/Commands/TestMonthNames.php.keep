@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2026 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Cli\Commands;
+
+use Fisharebest\Webtrees\Date\GregorianDate;
+use Fisharebest\Webtrees\I18N;
+use Symfony\Component\Console\Helper\Table;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
+
+final class TestCommand extends AbstractCommand
+{
+    private const array LANGUAGES = ['en-GB', 'fr', 'de', 'es', 'it'];
+
+    private const array HEADERS = ['Language', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    protected function configure(): void
+    {
+        $this->setName(name: 'test')->setDescription(description: 'Run a test script');
+    }
+
+    protected function execute(InputInterface $input, OutputInterface $output): int
+    {
+        $io = new SymfonyStyle(input: $input, output: $output);
+
+        $rows = [];
+
+        foreach (I18N::activeLocales() as $locale) {
+            I18N::init($locale->languageTag(), true);
+
+            if ($locale->script()->code() !== 'Latn') {
+                continue;
+            }
+
+            $rows[] = [
+                0  => I18N::languageTag() . ' ' . I18N::locale()->endonym(),
+                1  => I18N::translateContext('Abbreviation for January', 'Jan'),
+                2  => I18N::translateContext('Abbreviation for February', 'Feb'),
+                3  => I18N::translateContext('Abbreviation for March', 'Mar'),
+                4  => I18N::translateContext('Abbreviation for April', 'Apr'),
+                5  => I18N::translateContext('Abbreviation for May', 'May'),
+                6  => I18N::translateContext('Abbreviation for June', 'Jun'),
+                7  => I18N::translateContext('Abbreviation for July', 'Jul'),
+                8  => I18N::translateContext('Abbreviation for August', 'Aug'),
+                9  => I18N::translateContext('Abbreviation for September', 'Sep'),
+                10 => I18N::translateContext('Abbreviation for October', 'Oct'),
+                11 => I18N::translateContext('Abbreviation for November', 'Nov'),
+                12 => I18N::translateContext('Abbreviation for December', 'Dec'),
+            ];
+        }
+
+        $table = new Table(output: $output);
+        $table->setHeaders(headers: self::HEADERS);
+        $table->setRows(rows: $rows);
+        $table->render();
+
+        return self::SUCCESS;
+    }
+}

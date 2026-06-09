@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -81,8 +81,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -106,8 +104,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -117,10 +113,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * The URL for this chart.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
@@ -130,11 +123,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();
@@ -229,10 +217,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * @param Tree          $tree
      * @param array<string> $xrefs
-     *
-     * @return ResponseInterface
      */
     protected function chart(Tree $tree, array $xrefs): ResponseInterface
     {
@@ -272,8 +257,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      * Find the latest event year for individuals
      *
      * @param array<Individual> $individuals
-     *
-     * @return int
      */
     protected function maxYear(array $individuals): int
     {
@@ -285,6 +268,11 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             return $carry;
         }, 0);
 
+        // No dates?  Show the current year.
+        if ($jd === 0) {
+            return (int) date('Y');
+        }
+
         $year = $this->jdToYear($jd);
 
         // Don't show future dates
@@ -295,8 +283,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      * Find the earliest event year for individuals
      *
      * @param array<Individual> $individuals
-     *
-     * @return int
      */
     protected function minYear(array $individuals): int
     {
@@ -308,15 +294,16 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             return $carry;
         }, PHP_INT_MAX);
 
+        // No dates?  Show the current year.
+        if ($jd === PHP_INT_MAX) {
+            return (int) date('Y');
+        }
+
         return $this->jdToYear($jd);
     }
 
     /**
      * Convert a julian day to a gregorian year
-     *
-     * @param int $jd
-     *
-     * @return int
      */
     protected function jdToYear(int $jd): int
     {
@@ -331,9 +318,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * @param Date $start
-     * @param Date $end
-     * @param Tree $tree
      *
      * @return array<string>
      */
@@ -354,8 +338,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * @param Place $place
-     * @param Tree  $tree
      *
      * @return array<string>
      */
@@ -376,7 +358,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * Find the close family members of an individual.
      *
-     * @param Individual $individual
      *
      * @return array<string>
      */

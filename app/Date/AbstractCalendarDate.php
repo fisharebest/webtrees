@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -157,41 +157,26 @@ abstract class AbstractCalendarDate
         $this->setJdFromYmd();
     }
 
-    /**
-     * @return int
-     */
     public function maximumJulianDay(): int
     {
         return $this->maximum_julian_day;
     }
 
-    /**
-     * @return int
-     */
     public function year(): int
     {
         return $this->year;
     }
 
-    /**
-     * @return int
-     */
     public function month(): int
     {
         return $this->month;
     }
 
-    /**
-     * @return int
-     */
     public function day(): int
     {
         return $this->day;
     }
 
-    /**
-     * @return int
-     */
     public function minimumJulianDay(): int
     {
         return $this->minimum_julian_day;
@@ -199,8 +184,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Is the current year a leap year?
-     *
-     * @return bool
      */
     public function isLeapYear(): bool
     {
@@ -209,8 +192,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Set the object’s Julian day number from a potentially incomplete year/month/day
-     *
-     * @return void
      */
     public function setJdFromYmd(): void
     {
@@ -232,10 +213,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Full day of the week
-     *
-     * @param int $day_number
-     *
-     * @return string
      */
     public function dayNames(int $day_number): string
     {
@@ -258,10 +235,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Abbreviated day of the week
-     *
-     * @param int $day_number
-     *
-     * @return string
      */
     protected function dayNamesAbbreviated(int $day_number): string
     {
@@ -291,10 +264,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Most years are 1 more than the previous, but not always (e.g. 1BC->1AD)
-     *
-     * @param int $year
-     *
-     * @return int
      */
     protected function nextYear(int $year): int
     {
@@ -303,10 +272,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Calendars that use suffixes, etc. (e.g. “B.C.”) or OS/NS notation should redefine this.
-     *
-     * @param string $year
-     *
-     * @return int
      */
     protected function extractYear(string $year): int
     {
@@ -315,11 +280,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Compare two dates, for sorting
-     *
-     * @param AbstractCalendarDate $d1
-     * @param AbstractCalendarDate $d2
-     *
-     * @return int
      */
     public static function compare(AbstractCalendarDate $d1, AbstractCalendarDate $d2): int
     {
@@ -340,7 +300,6 @@ abstract class AbstractCalendarDate
      * 4 February -> 3 July is 27 days (3 March) and 4 months.
      * It is not 4 months (4 June) and 29 days.
      *
-     * @param AbstractCalendarDate $date
      *
      * @return array<int> Age in years/months/days
      */
@@ -379,10 +338,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Convert a date from one calendar to another.
-     *
-     * @param string $calendar
-     *
-     * @return AbstractCalendarDate
      */
     public function convertToCalendar(string $calendar): AbstractCalendarDate
     {
@@ -406,8 +361,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Is this date within the valid range of the calendar
-     *
-     * @return bool
      */
     public function inValidRange(): bool
     {
@@ -416,8 +369,6 @@ abstract class AbstractCalendarDate
 
     /**
      * How many months in a year
-     *
-     * @return int
      */
     public function monthsInYear(): int
     {
@@ -426,8 +377,6 @@ abstract class AbstractCalendarDate
 
     /**
      * How many days in the current month
-     *
-     * @return int
      */
     public function daysInMonth(): int
     {
@@ -442,8 +391,6 @@ abstract class AbstractCalendarDate
 
     /**
      * How many days in the current week
-     *
-     * @return int
      */
     public function daysInWeek(): int
     {
@@ -455,8 +402,6 @@ abstract class AbstractCalendarDate
      *
      * @param string $format    See https://php.net/date
      * @param string $qualifier GEDCOM qualifier, so we can choose the right case for the month name.
-     *
-     * @return string
      */
     public function format(string $format, string $qualifier = ''): string
     {
@@ -569,8 +514,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Generate the %d format for a date.
-     *
-     * @return string
      */
     protected function formatDayZeros(): string
     {
@@ -583,8 +526,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Generate the %j format for a date.
-     *
-     * @return string
      */
     protected function formatDay(): string
     {
@@ -593,8 +534,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Generate the %l format for a date.
-     *
-     * @return string
      */
     protected function formatLongWeekday(): string
     {
@@ -603,8 +542,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Generate the %D format for a date.
-     *
-     * @return string
      */
     protected function formatShortWeekday(): string
     {
@@ -613,8 +550,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Generate the %N format for a date.
-     *
-     * @return string
      */
     protected function formatIsoWeekday(): string
     {
@@ -623,8 +558,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Generate the %w format for a date.
-     *
-     * @return string
      */
     protected function formatNumericWeekday(): string
     {
@@ -633,8 +566,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Generate the %z format for a date.
-     *
-     * @return string
      */
     protected function formatDayOfYear(): string
     {
@@ -643,8 +574,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Generate the %n format for a date.
-     *
-     * @return string
      */
     protected function formatMonth(): string
     {
@@ -653,8 +582,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Generate the %m format for a date.
-     *
-     * @return string
      */
     protected function formatMonthZeros(): string
     {
@@ -669,8 +596,6 @@ abstract class AbstractCalendarDate
      * Generate the %F format for a date.
      *
      * @param string $case Which grammatical case shall we use
-     *
-     * @return string
      */
     protected function formatLongMonth(string $case = 'NOMINATIVE'): string
     {
@@ -691,57 +616,40 @@ abstract class AbstractCalendarDate
     /**
      * Full month name in genitive case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     abstract protected function monthNameGenitiveCase(int $month, bool $leap_year): string;
 
     /**
      * Full month name in nominative case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     abstract protected function monthNameNominativeCase(int $month, bool $leap_year): string;
 
     /**
      * Full month name in locative case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     abstract protected function monthNameLocativeCase(int $month, bool $leap_year): string;
 
     /**
      * Full month name in instrumental case.
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     abstract protected function monthNameInstrumentalCase(int $month, bool $leap_year): string;
 
     /**
      * Abbreviated month name
      *
-     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
-     *
-     * @return string
      */
     abstract protected function monthNameAbbreviated(int $month, bool $leap_year): string;
 
     /**
      * Generate the %M format for a date.
-     *
-     * @return string
      */
     protected function formatShortMonth(): string
     {
@@ -752,8 +660,6 @@ abstract class AbstractCalendarDate
      * Generate the %y format for a date.
      * NOTE Short year is NOT a 2-digit year. It is for calendars such as hebrew
      * which have a 3-digit form of 4-digit years.
-     *
-     * @return string
      */
     protected function formatShortYear(): string
     {
@@ -762,8 +668,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Generate the %A format for a date.
-     *
-     * @return string
      */
     protected function formatGedcomDay(): string
     {
@@ -776,8 +680,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Generate the %O format for a date.
-     *
-     * @return string
      */
     protected function formatGedcomMonth(): string
     {
@@ -791,8 +693,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Generate the %E format for a date.
-     *
-     * @return string
      */
     protected function formatGedcomYear(): string
     {
@@ -805,8 +705,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Generate the %@ format for a calendar escape.
-     *
-     * @return string
      */
     protected function formatGedcomCalendarEscape(): string
     {
@@ -815,8 +713,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Generate the %Y format for a date.
-     *
-     * @return string
      */
     protected function formatLongYear(): string
     {
@@ -848,8 +744,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Convert to today’s date.
-     *
-     * @return AbstractCalendarDate
      */
     public function today(): AbstractCalendarDate
     {
@@ -865,11 +759,6 @@ abstract class AbstractCalendarDate
 
     /**
      * Create a URL that links this date to the WT calendar
-     *
-     * @param string $date_format
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function calendarUrl(string $date_format, Tree $tree): string
     {

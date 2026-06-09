@@ -39,7 +39,7 @@ use Fisharebest\Webtrees\View;
             </div>
         </div>
         <div class="col-sm-8">
-            <?= view('components/select', ['name' => 'REQUIRE_AUTHENTICATION', 'selected' => $tree->getPreference('REQUIRE_AUTHENTICATION'), 'options' => ['0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')]]) ?>
+            <?= view('components/select', ['name' => 'REQUIRE_AUTHENTICATION', 'selected' => (int) $tree->private(), 'options' => [I18N::translate('Show to visitors'), I18N::translate('Show to members')]]) ?>
             <div class="form-text">
                 <?= /* I18N: Help text for the “Family tree” configuration setting */ I18N::translate('Enabling this option will force all visitors to sign in before they can view any data on the website.') ?>
             </div>

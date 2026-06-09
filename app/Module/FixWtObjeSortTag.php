@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,9 +37,6 @@ class FixWtObjeSortTag extends AbstractModule implements ModuleDataFixInterface
 
     private DataFixService $data_fix_service;
 
-    /**
-     * @param DataFixService $data_fix_service
-     */
     public function __construct(DataFixService $data_fix_service)
     {
         $this->data_fix_service = $data_fix_service;
@@ -60,7 +57,6 @@ class FixWtObjeSortTag extends AbstractModule implements ModuleDataFixInterface
     /**
      * XREFs of media records that might need fixing.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,string>
@@ -80,10 +76,7 @@ class FixWtObjeSortTag extends AbstractModule implements ModuleDataFixInterface
     /**
      * Does a record need updating?
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return bool
      */
     public function doesRecordNeedUpdate(GedcomRecord $record, array $params): bool
     {
@@ -93,10 +86,7 @@ class FixWtObjeSortTag extends AbstractModule implements ModuleDataFixInterface
     /**
      * Show the changes we would make
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return string
      */
     public function previewUpdate(GedcomRecord $record, array $params): string
     {
@@ -109,21 +99,13 @@ class FixWtObjeSortTag extends AbstractModule implements ModuleDataFixInterface
     /**
      * Fix a record
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return void
      */
     public function updateRecord(GedcomRecord $record, array $params): void
     {
         $record->updateRecord($this->reorderMediaLinks($record), false);
     }
 
-    /**
-     * @param GedcomRecord $record
-     *
-     * @return string
-     */
     private function reorderMediaLinks(GedcomRecord $record): string
     {
         // Sort the level 1 media links in this order

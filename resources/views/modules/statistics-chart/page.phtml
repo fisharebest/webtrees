@@ -28,7 +28,9 @@ use Fisharebest\Webtrees\View;
 
     <div class="tab-content">
         <?php foreach ($tabs as $url) : ?>
-            <div class="tab-pane fade wt-ajax-load" role="tabpanel" id="tab-<?= e(md5($url)) ?>"></div>
+            <div class="tab-pane fade" role="tabpanel" id="tab-<?= e(md5($url)) ?>">
+                <?= view('icons/spinner') ?>
+            </div>
         <?php endforeach ?>
     </div>
 </div>
@@ -39,7 +41,10 @@ use Fisharebest\Webtrees\View;
 
   // Bootstrap tabs - load content dynamically using AJAX
   $('a[data-bs-toggle="tab"][data-wt-href]').on('show.bs.tab', function () {
-    $(this.getAttribute('href') + ':empty').load(this.dataset.wtHref);
+    if (this.dataset.wtHref !== '') {
+      $(this.getAttribute('href')).load(this.dataset.wtHref);
+      this.dataset.wtHref = '';
+    }
   });
 
   // If the URL contains a fragment, then activate the corresponding tab.

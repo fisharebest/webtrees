@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -231,8 +231,6 @@ class I18N
 
     /**
      * What format is used to display dates in the current locale?
-     *
-     * @return string
      */
     public static function dateFormat(): string
     {
@@ -243,10 +241,6 @@ class I18N
     /**
      * Convert the digits 0-9 into the local script
      * Used for years, etc., where we do not want thousands-separators, decimals, etc.
-     *
-     * @param string|int $n
-     *
-     * @return string
      */
     public static function digits(string|int $n): string
     {
@@ -255,8 +249,6 @@ class I18N
 
     /**
      * What is the direction of the current locale
-     *
-     * @return string "ltr" or "rtl"
      */
     public static function direction(): string
     {
@@ -265,11 +257,6 @@ class I18N
 
     /**
      * Initialise the translation adapter with a locale setting.
-     *
-     * @param string $code
-     * @param bool   $setup
-     *
-     * @return void
      */
     public static function init(string $code, bool $setup = false): void
     {
@@ -333,10 +320,7 @@ class I18N
      * echo I18N::translate('Hello World!');
      * echo I18N::translate('The %s sat on the mat', 'cat');
      *
-     * @param string $message
      * @param string ...$args
-     *
-     * @return string
      */
     public static function translate(string $message, ...$args): string
     {
@@ -345,9 +329,6 @@ class I18N
         return sprintf($message, ...$args);
     }
 
-    /**
-     * @return string
-     */
     public static function languageTag(): string
     {
         return self::$locale->languageTag();
@@ -358,9 +339,6 @@ class I18N
         return self::$locale;
     }
 
-    /**
-     * @return ModuleLanguageInterface
-     */
     public static function language(): ModuleLanguageInterface
     {
         return self::$language;
@@ -372,11 +350,6 @@ class I18N
      * en: 12,345.67
      * fr: 12 345,67
      * de: 12.345,67
-     *
-     * @param float $n
-     * @param int   $precision
-     *
-     * @return string
      */
     public static function number(float $n, int $precision = 0): string
     {
@@ -389,11 +362,6 @@ class I18N
      * en: 12.3%
      * fr: 12,3 %
      * de: 12,3%
-     *
-     * @param float $n
-     * @param int   $precision
-     *
-     * @return string
      */
     public static function percentage(float $n, int $precision = 0): string
     {
@@ -406,12 +374,7 @@ class I18N
      * echo self::plural('There is one error', 'There are %s errors', $num_errors);
      * echo self::plural('There is %1$s %2$s cat', 'There are %1$s %2$s cats', $num, $num, $colour);
      *
-     * @param string $singular
-     * @param string $plural
-     * @param int    $count
      * @param string ...$args
-     *
-     * @return string
      */
     public static function plural(string $singular, string $plural, int $count, ...$args): string
     {
@@ -428,8 +391,6 @@ class I18N
      * The visual direction of characters such as parentheses should be reversed.
      *
      * @param string $text Text to be reversed
-     *
-     * @return string
      */
     public static function reverseText(string $text): string
     {
@@ -466,10 +427,6 @@ class I18N
      * Return the direction (ltr or rtl) for a given script
      * The PHP/intl library does not provde this information, so we need
      * our own lookup table.
-     *
-     * @param string $script
-     *
-     * @return string
      */
     public static function scriptDirection(string $script): string
     {
@@ -486,10 +443,6 @@ class I18N
 
     /**
      * Identify the script used for a piece of text
-     *
-     * @param string $string
-     *
-     * @return string
      */
     public static function textScript(string $string): string
     {
@@ -554,10 +507,6 @@ class I18N
 
     /**
      * Convert a string to lower case.
-     *
-     * @param string $string
-     *
-     * @return string
      */
     public static function strtolower(string $string): string
     {
@@ -570,10 +519,6 @@ class I18N
 
     /**
      * Convert a string to upper case.
-     *
-     * @param string $string
-     *
-     * @return string
      */
     public static function strtoupper(string $string): string
     {
@@ -586,8 +531,6 @@ class I18N
 
     /**
      * What format is used to display dates in the current locale?
-     *
-     * @return string
      */
     public static function timeFormat(): string
     {
@@ -600,11 +543,7 @@ class I18N
      * echo I18N::translateContext('NOMINATIVE', 'January');
      * echo I18N::translateContext('GENITIVE', 'January');
      *
-     * @param string $context
-     * @param string $message
      * @param string ...$args
-     *
-     * @return string
      */
     public static function translateContext(string $context, string $message, ...$args): string
     {

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,34 +29,23 @@ interface ModuleListInterface extends ModuleInterface
 {
     /**
      * A main menu item for this list, or null if the list is empty.
-     *
-     * @param Tree $tree
-     *
-     * @return Menu|null
      */
     public function listMenu(Tree $tree): Menu|null;
 
     /**
      * CSS class for the menu.
-     *
-     * @return string
      */
     public function listMenuClass(): string;
 
     /**
      * The title for a specific instance of this list.
-     *
-     * @return string
      */
     public function listTitle(): string;
 
     /**
      * The URL for a page showing list options.
      *
-     * @param Tree                                      $tree
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function listUrl(Tree $tree, array $parameters = []): string;
 
@@ -67,10 +56,5 @@ interface ModuleListInterface extends ModuleInterface
      */
     public function listUrlAttributes(): array;
 
-    /**
-     * @param Tree $tree
-     *
-     * @return bool
-     */
     public function listIsEmpty(Tree $tree): bool;
 }

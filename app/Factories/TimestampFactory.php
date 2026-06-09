@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,12 +37,6 @@ use function time;
  */
 class TimestampFactory implements TimestampFactoryInterface
 {
-    /**
-     * @param int                $timestamp
-     * @param UserInterface|null $user
-     *
-     * @return TimestampInterface
-     */
     public function make(int $timestamp, UserInterface|null $user = null): TimestampInterface
     {
         $user     ??= Auth::user();
@@ -54,10 +48,6 @@ class TimestampFactory implements TimestampFactoryInterface
 
     /**
      * @param string|null        $string YYYY-MM-DD HH:MM:SS (as provided by SQL).
-     * @param string             $format
-     * @param UserInterface|null $user
-     *
-     * @return TimestampInterface
      */
     public function fromString(string|null $string, string $format = 'Y-m-d H:i:s', UserInterface|null $user = null): TimestampInterface
     {
@@ -71,11 +61,6 @@ class TimestampFactory implements TimestampFactoryInterface
         return $this->make($timestamp->getTimestamp(), $user);
     }
 
-    /**
-     * @param UserInterface|null $user
-     *
-     * @return TimestampInterface
-     */
     public function now(UserInterface|null $user = null): TimestampInterface
     {
         return $this->make(time(), $user);

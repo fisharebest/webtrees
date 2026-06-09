@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -54,9 +54,11 @@ final class TreePreferencesAction implements RequestHandlerInterface
         $expand_sources              = Validator::parsedBody($request)->boolean('EXPAND_SOURCES');
         $fam_facts_quick             = Validator::parsedBody($request)->array('FAM_FACTS_QUICK');
         $format_text                 = Validator::parsedBody($request)->string('FORMAT_TEXT');
+        $gedcom                      = Validator::parsedBody($request)->isNotEmpty()->string('gedcom');
         $generate_uuids              = Validator::parsedBody($request)->boolean('GENERATE_UIDS');
         $hide_gedcom_errors          = Validator::parsedBody($request)->boolean('HIDE_GEDCOM_ERRORS');
         $indi_facts_quick            = Validator::parsedBody($request)->array('INDI_FACTS_QUICK');
+        $MEDIA_DIRECTORY             = Validator::parsedBody($request)->string('MEDIA_DIRECTORY');
         $media_upload                = Validator::parsedBody($request)->integer('MEDIA_UPLOAD');
         $meta_description            = Validator::parsedBody($request)->string('META_DESCRIPTION');
         $meta_title                  = Validator::parsedBody($request)->string('META_TITLE');
@@ -83,12 +85,8 @@ final class TreePreferencesAction implements RequestHandlerInterface
         $webmaster_user_id           = Validator::parsedBody($request)->integer('WEBMASTER_USER_ID', 0);
         $title                       = Validator::parsedBody($request)->string('title');
 
-        $contact_user_id   = $contact_user_id === 0 ? '' : (string) $contact_user_id;
-        $webmaster_user_id = $webmaster_user_id === 0 ? '' : (string) $webmaster_user_id;
-
         $tree->setPreference('CALENDAR_FORMAT', $calendar_format);
         $tree->setPreference('CHART_BOX_TAGS', implode(',', $chart_box_tags));
-        $tree->setPreference('CONTACT_USER_ID', $contact_user_id);
         $tree->setPreference('EXPAND_NOTES', (string) $expand_notes);
         $tree->setPreference('EXPAND_SOURCES', (string) $expand_sources);
         $tree->setPreference('FAM_FACTS_QUICK', implode(',', $fam_facts_quick));
@@ -119,38 +117,42 @@ final class TreePreferencesAction implements RequestHandlerInterface
         $tree->setPreference('SURNAME_LIST_STYLE', $surname_list_style);
         $tree->setPreference('SURNAME_TRADITION', $surname_tradition);
         $tree->setPreference('USE_SILHOUETTE', (string) $use_silhouette);
-        $tree->setPreference('WEBMASTER_USER_ID', $webmaster_user_id);
-        $tree->setPreference('title', $title);
-
-        $url = route(ManageTrees::class, ['tree' => $tree->name()]);
 
         if (Auth::isAdmin()) {
             // Only accept valid folders for MEDIA_DIRECTORY
-            $MEDIA_DIRECTORY = Validator::parsedBody($request)->string('MEDIA_DIRECTORY');
             $MEDIA_DIRECTORY = preg_replace('/[:\/\\\\]+/', '/', $MEDIA_DIRECTORY);
             $MEDIA_DIRECTORY = trim($MEDIA_DIRECTORY, '/') . '/';
 
-            $tree->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
+            // Tree name needs to be unique
+            $duplicate = DB::table('gedcom')
+                ->where('gedcom_name', '=', $gedcom)
+                ->where('gedcom_id', '<>', $tree->id())
+                ->exists();
 
-            $gedcom = Validator::parsedBody($request)->isNotEmpty()->string('gedcom');
-
-            if ($gedcom !== $tree->name()) {
-                try {
-                    DB::table('gedcom')
-                        ->where('gedcom_id', '=', $tree->id())
-                        ->update(['gedcom_name' => $gedcom]);
-
-                    // Did we rename the default tree?
-                    DB::table('site_setting')
-                        ->where('setting_name', '=', 'DEFAULT_GEDCOM')
-                        ->where('setting_value', '=', $tree->name())
-                        ->update(['setting_value' => $gedcom]);
-
-                    $url = route(ManageTrees::class, ['tree' => $gedcom]);
-                } catch (PDOException) {
-                    // Probably a duplicate name.
-                }
+            if ($duplicate) {
+                FlashMessages::addMessage(I18N::translate('The family tree “%s” already exists.', e($gedcom)), 'danger');
+                $gedcom = $tree->name();
             }
+        } else {
+            $MEDIA_DIRECTORY = $tree->mediaFolder();
+            $gedcom          = $tree->name();
+        }
+
+        DB::table('gedcom')
+            ->where('gedcom_id', '=', $tree->id())
+            ->update([
+                'contact_user_id' => $contact_user_id === 0 ? null : $contact_user_id,
+                'media_folder'    => $MEDIA_DIRECTORY,
+                'gedcom_name'     => $gedcom,
+                'support_user_id' => $webmaster_user_id === 0 ? null : $webmaster_user_id,
+                'title'           => $title,
+            ]);
+
+        if ($tree->name() !== $gedcom) {
+            DB::table('site_setting')
+                ->where('setting_name', '=', 'DEFAULT_GEDCOM')
+                ->where('setting_value', '=', $tree->name())
+                ->update(['setting_value' => $gedcom]);
         }
 
         FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->title())), 'success');
@@ -166,6 +168,8 @@ final class TreePreferencesAction implements RequestHandlerInterface
         if ($new_trees) {
             FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.'), 'success');
         }
+
+        $url = route(ManageTrees::class, ['tree' => $gedcom]);
 
         return redirect($url);
     }

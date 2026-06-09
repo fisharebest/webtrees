@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -102,8 +102,6 @@ class SearchService
      *
      * @param array<Tree>   $trees
      * @param array<string> $search
-     * @param int           $offset
-     * @param int           $limit
      *
      * @return Collection<int,Family>
      */
@@ -137,7 +135,6 @@ class SearchService
     }
 
     /**
-     * @param Place $place
      *
      * @return Collection<int,Family>
      */
@@ -187,8 +184,6 @@ class SearchService
      *
      * @param array<Tree>   $trees
      * @param array<string> $search
-     * @param int           $offset
-     * @param int           $limit
      *
      * @return Collection<int,Individual>
      */
@@ -210,7 +205,6 @@ class SearchService
     }
 
     /**
-     * @param Place $place
      *
      * @return Collection<int,Individual>
      */
@@ -236,8 +230,6 @@ class SearchService
      *
      * @param array<Tree>   $trees
      * @param array<string> $search
-     * @param int           $offset
-     * @param int           $limit
      *
      * @return Collection<int,Location>
      */
@@ -257,8 +249,6 @@ class SearchService
      *
      * @param array<Tree>   $trees
      * @param array<string> $search
-     * @param int           $offset
-     * @param int           $limit
      *
      * @return Collection<int,Media>
      */
@@ -277,8 +267,6 @@ class SearchService
      *
      * @param array<Tree>   $trees
      * @param array<string> $search
-     * @param int           $offset
-     * @param int           $limit
      *
      * @return Collection<int,Note>
      */
@@ -298,8 +286,6 @@ class SearchService
      *
      * @param array<Tree>   $trees
      * @param array<string> $search
-     * @param int           $offset
-     * @param int           $limit
      *
      * @return Collection<int,SharedNote>
      */
@@ -319,8 +305,6 @@ class SearchService
      *
      * @param array<Tree>   $trees
      * @param array<string> $search
-     * @param int           $offset
-     * @param int           $limit
      *
      * @return Collection<int,Repository>
      */
@@ -340,8 +324,6 @@ class SearchService
      *
      * @param array<Tree>   $trees
      * @param array<string> $search
-     * @param int      $offset
-     * @param int      $limit
      *
      * @return Collection<int,Source>
      */
@@ -360,8 +342,6 @@ class SearchService
      *
      * @param array<Tree>   $trees
      * @param array<string> $search
-     * @param int           $offset
-     * @param int           $limit
      *
      * @return Collection<int,Source>
      */
@@ -381,8 +361,6 @@ class SearchService
      *
      * @param array<Tree>   $trees
      * @param array<string> $search
-     * @param int           $offset
-     * @param int           $limit
      *
      * @return Collection<int,string>
      */
@@ -406,8 +384,6 @@ class SearchService
      *
      * @param array<Tree>   $trees
      * @param array<string> $search
-     * @param int           $offset
-     * @param int           $limit
      *
      * @return Collection<int,Submission>
      */
@@ -427,8 +403,6 @@ class SearchService
      *
      * @param array<Tree>   $trees
      * @param array<string> $search
-     * @param int           $offset
-     * @param int           $limit
      *
      * @return Collection<int,Submitter>
      */
@@ -446,10 +420,6 @@ class SearchService
     /**
      * Search for places.
      *
-     * @param Tree   $tree
-     * @param string $search
-     * @param int    $offset
-     * @param int    $limit
      *
      * @return Collection<int,Place>
      */
@@ -503,7 +473,6 @@ class SearchService
     }
 
     /**
-     * @param Tree                 $tree
      * @param array<string,string> $fields
      * @param array<string,string> $modifiers
      *
@@ -944,10 +913,6 @@ class SearchService
     }
 
     /**
-     * @param string      $soundex
-     * @param string      $lastname
-     * @param string      $firstname
-     * @param string      $place
      * @param array<Tree> $search_trees
      *
      * @return Collection<int,Individual>
@@ -1023,7 +988,6 @@ class SearchService
      *
      * @param Builder $query      Searches the database for the desired records.
      * @param Closure $row_mapper Converts a row from the query into a record.
-     * @param Closure $row_filter
      * @param int     $offset     Skip this many rows.
      * @param int     $limit      Take this many rows.
      *
@@ -1064,8 +1028,7 @@ class SearchService
     /**
      * Apply search filters to a SQL query column.  Apply collation rules to MySQL.
      *
-     * @param Builder                   $query
-     * @param Expression<string>|string $column
+     * @param Expression<literal-string>|string $column
      * @param array<string>             $search_terms
      */
     private function whereSearch(Builder $query, Expression|string $column, array $search_terms): void
@@ -1078,9 +1041,7 @@ class SearchService
     /**
      * Apply soundex search filters to a SQL query column.
      *
-     * @param Builder                   $query
-     * @param Expression<string>|string $field
-     * @param string                    $soundex
+     * @param Expression<literal-string>|string $field
      */
     private function wherePhonetic(Builder $query, $field, string $soundex): void
     {
@@ -1094,8 +1055,6 @@ class SearchService
     }
 
     /**
-     * @param Builder     $query
-     * @param string      $tree_id_field
      * @param array<Tree> $trees
      */
     private function whereTrees(Builder $query, string $tree_id_field, array $trees): void
@@ -1108,7 +1067,6 @@ class SearchService
     /**
      * Find the media object that uses a particular media file.
      *
-     * @param string $file
      *
      * @return array<Media>
      */
@@ -1168,7 +1126,6 @@ class SearchService
     /**
      * Searching for short or common text can give more results than the system can process.
      *
-     * @param int $limit
      *
      * @return Closure():void
      */

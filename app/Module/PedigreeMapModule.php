@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -44,6 +44,8 @@ use function route;
 use function ucfirst;
 use function view;
 
+use const PHP_INT_SIZE;
+
 class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;
@@ -58,7 +60,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     // Limits
     public const int MINIMUM_GENERATIONS = 1;
-    public const int MAXIMUM_GENERATIONS = 10;
+    public const int MAXIMUM_GENERATIONS = PHP_INT_SIZE === 4 ? 31 : 63;
 
     // CSS colors for each generation
     protected const int COUNT_CSS_COLORS = 12;
@@ -69,11 +71,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     protected RelationshipService $relationship_service;
 
-    /**
-     * @param ChartService        $chart_service
-     * @param LeafletJsService    $leaflet_js_service
-     * @param RelationshipService $relationship_service
-     */
     public function __construct(
         ChartService $chart_service,
         LeafletJsService $leaflet_js_service,
@@ -86,8 +83,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -111,8 +106,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -121,10 +114,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     /**
      * Return a menu item for this chart - for use in individual boxes.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu|null
      */
     public function chartBoxMenu(Individual $individual): Menu|null
     {
@@ -133,10 +122,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     /**
      * The title for a specific instance of this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function chartTitle(Individual $individual): string
     {
@@ -147,10 +132,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
@@ -160,11 +142,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
@@ -192,19 +169,19 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         ]);
 
         return $this->viewResponse('modules/pedigree-map/page', [
-            'module'         => $this->name(),
+            'module'              => $this->name(),
             /* I18N: %s is an individual’s name */
-            'title'          => I18N::translate('Pedigree map of %s', $individual->fullName()),
-            'tree'           => $tree,
-            'individual'     => $individual,
-            'generations'    => $generations,
-            'maxgenerations' => self::MAXIMUM_GENERATIONS,
-            'map'            => $map,
+            'title'               => I18N::translate('Pedigree map of %s', $individual->fullName()),
+            'tree'                => $tree,
+            'individual'          => $individual,
+            'generations'         => $generations,
+            'minimum_generations' => self::MINIMUM_GENERATIONS,
+            'maximum_generations' => self::MAXIMUM_GENERATIONS,
+            'map'                 => $map,
         ]);
     }
 
     /**
-     * @param ServerRequestInterface $request
      *
      * @return array<mixed> $geojson
      */
@@ -280,8 +257,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     }
 
     /**
-     * @param ServerRequestInterface $request
-     * @param ChartService           $chart_service
      *
      * @return array<Fact>
      */
@@ -313,8 +288,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      * builds and returns sosa relationship name in the active language
      *
      * @param int $sosa Sosa number
-     *
-     * @return string
      */
     protected function getSosaName(int $sosa): string
     {
