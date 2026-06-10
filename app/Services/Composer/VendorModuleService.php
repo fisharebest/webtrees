@@ -19,14 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services\Composer;
 
+use Composer\Autoload\ClassLoader;
 use Composer\InstalledVersions;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Illuminate\Support\Collection;
 use Throwable;
 
 use function dirname;
+use function realpath;
 
 /**
  * Service for loading Webtrees modules from the vendor directory using Composer's InstalledVersions API.
@@ -49,11 +52,12 @@ use function dirname;
 class VendorModuleService
 {
     /**
-     * The Composer package type identifier for Webtrees modules.
+     * The Composer package types identifying Webtrees modules and themes.
+     * Mirrors the package types handled by the webtrees-module-installer-plugin.
      *
-     * @var string The package type identifier
+     * @var list<string> The package type identifiers
      */
-    private const string MODULE_TYPE = 'webtrees-module';
+    private const array MODULE_TYPES = ['webtrees-module', 'webtrees-theme'];
 
     /**
      * Discovers and loads all Webtrees modules from the vendor directory.
@@ -62,8 +66,8 @@ class VendorModuleService
      * during Webtrees' bootstrap process. It orchestrates the entire discovery and loading
      * process for Composer-installed modules.
      *
-     * @return Collection<string, ModuleCustomInterface> A collection of successfully loaded vendor modules.
-     *                                                   Empty collection if no modules are found or an error.
+     * @return Collection<string, ModuleCustomInterface|ModuleThemeInterface> A collection of successfully loaded
+     *                                                   vendor modules and themes. Empty when none are found or on error.
      */
     public function getVendorModules(): Collection
     {
@@ -73,10 +77,13 @@ class VendorModuleService
         }
 
         return Collection::make($this->getInstalledWebtreesModules())
-            ->map(function (string $packageName): ModuleCustomInterface|null {
+            ->map(function (string $packageName): ModuleCustomInterface|ModuleThemeInterface|null {
                 $module = $this->loadVendorModule($packageName);
 
-                if (!($module instanceof ModuleCustomInterface)) {
+                if (
+                    !($module instanceof ModuleCustomInterface)
+                    && !($module instanceof ModuleThemeInterface)
+                ) {
                     return null;
                 }
 
@@ -86,7 +93,7 @@ class VendorModuleService
             })
             ->filter()
             ->mapWithKeys(
-                static fn (ModuleCustomInterface $module): array => [
+                static fn (ModuleCustomInterface|ModuleThemeInterface $module): array => [
                     $module->name() => $module,
                 ]
             );
@@ -103,13 +110,19 @@ class VendorModuleService
     }
 
     /**
-     * Get a list of all installed Composer packages of the type "webtrees-module".
+     * Get a list of all installed Composer packages of a Webtrees module or theme type.
      *
      * @return string[]
      */
-    private function getInstalledWebtreesModules(): array
+    protected function getInstalledWebtreesModules(): array
     {
-        return InstalledVersions::getInstalledPackagesByType(self::MODULE_TYPE);
+        $packages = [];
+
+        foreach (self::MODULE_TYPES as $type) {
+            $packages = [...$packages, ...InstalledVersions::getInstalledPackagesByType($type)];
+        }
+
+        return $packages;
     }
 
     /**
@@ -119,7 +132,7 @@ class VendorModuleService
      *
      * @return null|string
      */
-    private function getPackageInstallPath(string $packageName): ?string
+    protected function getPackageInstallPath(string $packageName): ?string
     {
         try {
             return InstalledVersions::getInstallPath($packageName);
@@ -131,6 +144,25 @@ class VendorModuleService
 
             return null;
         }
+    }
+
+    /**
+     * Absolute path of the Composer vendor directory this service is autoloaded
+     * from. Composer exposes no dedicated accessor (composer/composer#2904), so
+     * — like drupal-finder — we ask each registered class loader which one can
+     * resolve this class; its registered vendor directory is the one we live
+     * in. Robust against a renamed `config.vendor-dir` and against the nested
+     * vendor directories that bundled modules register for their own autoload.
+     */
+    protected function mainVendorDirectory(): string
+    {
+        foreach (ClassLoader::getRegisteredLoaders() as $vendorDir => $loader) {
+            if ($loader->findFile(self::class) !== false) {
+                return $vendorDir;
+            }
+        }
+
+        return '';
     }
 
     /**
@@ -150,6 +182,24 @@ class VendorModuleService
         $packagePath = $this->getPackageInstallPath($packageName);
 
         if ($packagePath === null) {
+            return null;
+        }
+
+        // Only load a package that sits at its standard Composer location
+        // (<vendor>/<package>). A package relocated into modules_v4/ by the
+        // installer-plugin — or a nested-vendor self-entry from a module that
+        // bundles its own installed.php — reports a different install path and
+        // is already discovered by ModuleService::customModules(); loading it
+        // here too would include its module.php a second time and redeclare
+        // its class.
+        $packageRealPath = realpath($packagePath);
+        $standardPath    = realpath($this->mainVendorDirectory() . '/' . $packageName);
+
+        if (
+            ($packageRealPath === false)
+            || ($standardPath === false)
+            || ($packageRealPath !== $standardPath)
+        ) {
             return null;
         }
 

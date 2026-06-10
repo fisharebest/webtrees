@@ -713,7 +713,7 @@ class ModuleService
     /**
      * All vendor modules in the system. Vendor modules are installed via Composer.
      *
-     * @return Collection<string, ModuleCustomInterface>
+     * @return Collection<string, ModuleCustomInterface|ModuleThemeInterface>
      */
     private function vendorModules(): Collection
     {
