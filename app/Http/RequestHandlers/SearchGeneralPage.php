@@ -95,6 +95,7 @@ final class SearchGeneralPage implements RequestHandlerInterface
         if (!$search_individuals && !$search_families && !$search_repositories && !$search_sources && !$search_notes) {
             $search_families    = true;
             $search_individuals = true;
+            $search_notes       = true;
         }
 
         // What to search for?
