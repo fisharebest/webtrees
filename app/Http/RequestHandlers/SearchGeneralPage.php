@@ -62,15 +62,12 @@ final class SearchGeneralPage implements RequestHandlerInterface
         $query = Validator::queryParams($request)->string('query', '');
 
         // What type of records to search?
-        $search_individuals  = Validator::queryParams($request)->boolean('search_individuals', false);
-        $search_families     = Validator::queryParams($request)->boolean('search_families', false);
+        $search_individuals  = Validator::queryParams($request)->boolean('search_individuals', true);
+        $search_families     = Validator::queryParams($request)->boolean('search_families', true);
         $search_locations    = Validator::queryParams($request)->boolean('search_locations', false);
         $search_repositories = Validator::queryParams($request)->boolean('search_repositories', false);
         $search_sources      = Validator::queryParams($request)->boolean('search_sources', false);
-        $search_notes        = Validator::queryParams($request)->boolean('search_notes', false);
-
-        // Where to search
-        $search_tree_names = Validator::queryParams($request)->array('search_trees');
+        $search_notes        = Validator::queryParams($request)->boolean('search_notes', true);
 
         $exist_notes = DB::table('other')
             ->where('o_file', '=', $tree->id())
@@ -91,17 +88,11 @@ final class SearchGeneralPage implements RequestHandlerInterface
             ->where('s_file', '=', $tree->id())
             ->exists();
 
-        // Default to families and individuals only
-        if (!$search_individuals && !$search_families && !$search_repositories && !$search_sources && !$search_notes) {
-            $search_families    = true;
-            $search_individuals = true;
-            $search_notes       = true;
-        }
-
         // What to search for?
         $search_terms = $this->extractSearchTerms($query);
 
         // What trees to search?
+        $search_tree_names = Validator::queryParams($request)->array('search_trees');
         if (Site::getPreference('ALLOW_CHANGE_GEDCOM') === '1') {
             $all_trees = $this->tree_service->all();
         } else {
