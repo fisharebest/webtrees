@@ -149,24 +149,28 @@ final class SearchGeneralPage implements RequestHandlerInterface
         }
 
         // If only 1 item is returned, automatically forward to that item
-        if ($individuals->count() === 1 && $families->isEmpty() && $sources->isEmpty() && $notes->isEmpty() && $locations->isEmpty()) {
+        if ($individuals->count() === 1 && $families->isEmpty() && $sources->isEmpty() && $notes->isEmpty() && $locations->isEmpty() && $repositories->isEmpty()) {
             return redirect($individuals->first()->url());
         }
 
-        if ($individuals->isEmpty() && $families->count() === 1 && $sources->isEmpty() && $notes->isEmpty() && $locations->isEmpty()) {
+        if ($individuals->isEmpty() && $families->count() === 1 && $sources->isEmpty() && $notes->isEmpty() && $locations->isEmpty() && $repositories->isEmpty()) {
             return redirect($families->first()->url());
         }
 
-        if ($individuals->isEmpty() && $families->isEmpty() && $sources->count() === 1 && $notes->isEmpty() && $locations->isEmpty()) {
+        if ($individuals->isEmpty() && $families->isEmpty() && $sources->count() === 1 && $notes->isEmpty() && $locations->isEmpty() && $repositories->isEmpty()) {
             return redirect($sources->first()->url());
         }
 
-        if ($individuals->isEmpty() && $families->isEmpty() && $sources->isEmpty() && $notes->count() === 1 && $locations->isEmpty()) {
+        if ($individuals->isEmpty() && $families->isEmpty() && $sources->isEmpty() && $notes->count() === 1 && $locations->isEmpty() && $repositories->isEmpty()) {
             return redirect($notes->first()->url());
         }
 
-        if ($individuals->isEmpty() && $families->isEmpty() && $sources->isEmpty() && $notes->isEmpty() && $locations->count() === 1) {
+        if ($individuals->isEmpty() && $families->isEmpty() && $sources->isEmpty() && $notes->isEmpty() && $locations->count() === 1 && $repositories->isEmpty()) {
             return redirect($locations->first()->url());
+        }
+
+        if ($individuals->isEmpty() && $families->isEmpty() && $sources->isEmpty() && $notes->isEmpty() && $locations->isEmpty() && $repositories->count() === 1) {
+            return redirect($repositories->first()->url());
         }
 
         $title = I18N::translate('General search');
