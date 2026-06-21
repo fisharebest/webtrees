@@ -49,7 +49,7 @@
         "fisharebest/algorithm": "1.6.0",
         "fisharebest/ext-calendar": "2.6.0",
         "fisharebest/localization": "1.17.0",
-        "guzzlehttp/guzzle": "7.11.0",
+        "guzzlehttp/guzzle": "7.12.1",
         "illuminate/database": "13.14.0",
         "illuminate/support": "13.14.0",
         "intervention/image": "4.1.2",
