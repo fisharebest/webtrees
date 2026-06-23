@@ -76,6 +76,15 @@ final class DeleteRecord implements RequestHandlerInterface
                             /* I18N: %s are names of records, such as sources, repositories or individuals */
                             FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', sprintf('<a href="%1$s" class="alert-link">%2$s</a>', e($relict->url()), $relict->fullName()), $linker->fullName()));
                         }
+                    } else if (
+                        // If we have removed the last member from a family
+                        $linker instanceof Family &&
+                        preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . Gedcom::REGEX_XREF . ')@/', $new_gedcom, $match) === 0
+                    ) {
+                        // Delete the family
+                        /* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */
+                        FlashMessages::addMessage(I18N::translate('The family “%s” has been deleted because the last member has been deleted.', $linker->fullName()));
+                        $linker->deleteRecord();
                     } else {
                         // Remove links from $linker to $record
                         /* I18N: %s are names of records, such as sources, repositories or individuals */
