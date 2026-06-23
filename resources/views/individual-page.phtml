@@ -48,7 +48,7 @@ use Illuminate\Support\Collection;
     <?= view('individual-page-tabs', ['record' => $record, 'tabs' => $tabs]) ?>
 <?php else : ?>
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-md-8">
             <div class="row mb-4">
                 <?= view('individual-page-images', ['can_upload_media' => $can_upload_media, 'individual_media' => $individual_media, 'record' => $record, 'tree' => $tree]) ?>
 
@@ -58,7 +58,7 @@ use Illuminate\Support\Collection;
             <?= view('individual-page-tabs', ['record' => $record, 'tabs' => $tabs]) ?>
         </div>
 
-        <div class="col-sm-4">
+        <div class="col-md-4">
             <?= view('individual-page-sidebars', ['record' => $record, 'sidebars' => $sidebars]) ?>
         </div>
     </div>
