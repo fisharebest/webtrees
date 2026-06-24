@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Validator;
@@ -79,12 +80,14 @@ final class GedcomLoad implements RequestHandlerInterface
             // Finished?
             if ($import_offset === $import_total) {
                 if (!$tree->imported()) {
+                    Log::addErrorLog('Tree import failed: no trailer record', $tree);
                     return $this->viewResponse('admin/import-fail', [
                         'error' => I18N::translate('Invalid GEDCOM file - no trailer record found.'),
                         'tree'  => $tree,
                     ]);
                 }
 
+                Log::addConfigurationLog('Tree import complete', $tree);
                 return $this->viewResponse('admin/import-complete', ['tree' => $tree]);
             }
 
@@ -214,6 +217,7 @@ final class GedcomLoad implements RequestHandlerInterface
                 ]);
             }
 
+            Log::addErrorLog('Tree import failed: ' . e($ex->getMessage()), $tree);
             return $this->viewResponse('admin/import-fail', [
                 'error' => e($ex->getMessage()),
                 'tree'  => $tree,
