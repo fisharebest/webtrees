@@ -24,9 +24,11 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Webtrees;
+use RuntimeException;
 
 use function define;
 use function defined;
+use function is_dir;
 use function realpath;
 use function strtoupper;
 
@@ -105,7 +107,13 @@ final class PdfRenderer extends AbstractRenderer implements ElementFactoryInterf
 
         // Ensure tc-lib-pdf-font can find the converted JSON font definitions
         if (!defined('K_PATH_FONTS')) {
-            define('K_PATH_FONTS', realpath(Webtrees::ROOT_DIR . 'resources/fonts'));
+            $font_path = realpath(Webtrees::ROOT_DIR . 'resources/fonts');
+
+            if ($font_path === false || !is_dir($font_path)) {
+                throw new RuntimeException('Unable to resolve PDF font directory: ' . Webtrees::ROOT_DIR . 'resources/fonts');
+            }
+
+            define('K_PATH_FONTS', $font_path);
         }
 
         $tcpdf = new Tcpdf(
@@ -113,7 +121,16 @@ final class PdfRenderer extends AbstractRenderer implements ElementFactoryInterf
             self::UNICODE,
             $config->font_subsetting,
             $config->compression,
+            '',
+            null,
+            [
+                // Keep remote resource loading disabled unless explicitly enabled.
+                'allowedHosts' => [],
+            ],
         );
+
+        // Emit page transparency groups only when the page actually blends.
+        $tcpdf->setPageTransparencyGroup('auto');
 
         $this->adaptor = new TcLibPdfAdaptor($tcpdf, $this, $this->config);
     }

@@ -22,12 +22,9 @@ namespace Fisharebest\Webtrees\Report;
 use Com\Tecnick\Pdf\Tcpdf;
 use Fisharebest\Webtrees\Encodings\UTF8;
 
-use function array_reverse;
-use function count;
 use function max;
 use function min;
 use function str_replace;
-use function strlen;
 use function strtolower;
 
 final class TcLibPdfAdaptor
@@ -177,37 +174,6 @@ final class TcLibPdfAdaptor
     public function output(): string
     {
         $this->renderFooter();
-
-        $total_pages = (string) $this->pdf_page_state->pageCount();
-
-        // Replace total-pages tokens in page content streams before PDF
-        // serialization.
-        // The token may appear as ASCII or UTF-16BE depending on the font
-        // encoding used by addTextCell().
-        $token_ascii = Element::TOTAL_PAGES_TOKEN;
-        $token_utf16be = $this->toUtf16beAscii($token_ascii);
-        $replacement_utf16be = $this->toUtf16beAscii($total_pages);
-
-        foreach ($this->tcpdf->page->getPages() as $page_id => $page_data) {
-            $num_entries = count($page_data['content']);
-            $entries = [];
-
-            for ($index = 0; $index < $num_entries; $index++) {
-                $entry = $this->tcpdf->page->popContent($page_id);
-                // Skip the empty sentinel string that tc-lib-pdf-page uses to
-                // initialize the content array
-                if ($entry !== '') {
-                    $entries[] = $entry;
-                }
-            }
-
-            foreach (array_reverse($entries) as $entry) {
-                $this->tcpdf->page->addContent(
-                    str_replace([$token_ascii, $token_utf16be], [$total_pages, $replacement_utf16be], $entry),
-                    $page_id,
-                );
-            }
-        }
 
         return $this->tcpdf->getOutPDFString();
     }
@@ -508,22 +474,5 @@ final class TcLibPdfAdaptor
         $this->addCurrentPageContent(
             $this->tcpdf->color->getPdfColor($this->text_color->hex(), false)
         );
-    }
-
-
-    /**
-     * Encode an ASCII string as UTF-16BE (null byte before each character).
-     * Used to match tokens embedded in PDF text streams by addTextCell().
-     */
-    private function toUtf16beAscii(string $text): string
-    {
-        $encoded = '';
-        $length = strlen($text);
-
-        for ($index = 0; $index < $length; $index++) {
-            $encoded .= "\x00" . $text[$index];
-        }
-
-        return $encoded;
     }
 }

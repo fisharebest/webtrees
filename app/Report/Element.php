@@ -42,15 +42,13 @@ class Element
 
     /**
      * Placeholder substring written into element text when the parser
-     * encounters <TotalPages/>.  This token is replaced with the actual page
-     * count in the PDF content streams before serialization.  The HTML backend
-     * produces an unpaginated document and skips any element that contains
-     * this placeholder via containsTotalPages().
+     * encounters <TotalPages/>.
      *
-     * The token uses only characters that are not BiDi-mirrored, so that RTL
-     * text reordering in the PDF library does not mangle the placeholder.
+     * tc-lib-pdf-page expands this token to the page-group total during PDF
+     * assembly, which avoids any post-processing of generated page streams in
+     * our adapter.
      */
-    public const string TOTAL_PAGES_TOKEN = '#:PTP:#';
+    public const string TOTAL_PAGES_TOKEN = '~#PT';
 
     protected string $text = '';
 
@@ -90,10 +88,10 @@ class Element
     }
 
     /**
-     * Append a placeholder that will be substituted with the total page
-     * count.  PDF substitution is performed by TCPDF at PDF assembly
-     * time; HTML output skips any element that contains the placeholder
-     * since the HTML backend produces an unpaginated document.
+     * Append a placeholder that tc-lib-pdf resolves to the total page count in
+     * the current page group at PDF assembly time. HTML output skips any
+     * element that contains the placeholder since the HTML backend produces an
+     * unpaginated document.
      */
     public function addTotalPages(): void
     {
