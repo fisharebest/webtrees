@@ -1,15 +1,19 @@
 name: GitHub Actions Security Analysis with zizmor 🌈
 
-on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["**"]
+on: [push, pull_request]
 
+# Change default permissions from all to none.
 permissions: {}
 
+# Cancel previous runs of the same workflow for the same pull request or branch.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  zizmor:
+  run:
+    name: zizmor
+    if: ${{ !startsWith(github.event.head_commit.message, 'Translation:') }}
     runs-on: ubuntu-latest
     permissions:
       security-events: write

@@ -12,13 +12,11 @@ concurrency:
 
 jobs:
   run:
+    name: phpcs
     if: ${{ !startsWith(github.event.head_commit.message, 'Translation:') }}
-    runs-on: ${{ matrix.operating-system }}
-    name: PHP/PHTML
-
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        operating-system: ['ubuntu-latest']
         php-version: ['8.3', '8.4', '8.5', '8.6']
       fail-fast: false
 
