@@ -16,9 +16,9 @@ jobs:
     if: ${{ !startsWith(github.event.head_commit.message, 'Translation:') }}
     runs-on: ubuntu-latest
     permissions:
-      security-events: write
-      contents: read # only needed for private or internal repos
-      actions: read # only needed for private or internal repos
+      security-events: write # Update the security tab in github
+      contents: read # Only needed for private or internal repos
+      actions: read # Only needed for private or internal repos
     steps:
       - name: Checkout repository
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
