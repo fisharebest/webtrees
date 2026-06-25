@@ -2,7 +2,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');  // bundled with webpack
+const TerserPlugin = require('terser-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 // CSS entry points
@@ -48,6 +48,7 @@ module.exports = (env, argv) => ({
           use: {
             loader: 'babel-loader',
             options: {
+              targets: 'defaults',
               presets: ['@babel/preset-env'],
             },
           },
