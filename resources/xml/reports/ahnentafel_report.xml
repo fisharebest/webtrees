@@ -118,7 +118,7 @@
           <!-- Sentence 1 Individual, name... -->
           <TextBox height="12" newline="1">
             <Text style="name">
-              <GetPersonName id=""/>
+              <GetPersonName/>
             </Text>
             <if condition="$sources=='on'">
               <!-- print level 1 sources -->
@@ -451,7 +451,7 @@
                       <!-- Child details column -->
                       <TextBox height="20" newline="1">
                         <Text style="namech">
-                          <GetPersonName id=""/>
+                          <GetPersonName/>
                         </Text>
                         <if condition="$sources=='on'">
                           <RepeatTag tag="SOUR">

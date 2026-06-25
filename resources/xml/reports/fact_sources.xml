@@ -77,7 +77,7 @@
           <SetVar name="printedsource" value="$printedsource + 1"/>
           <!-- Individual Name -->
           <Cell style="text" width="$column_1_width">
-            <GetPersonName id=""/>
+            <GetPersonName/>
           </Cell>
           <!-- Birth date -->
           <Cell style="text" width="$column_2_width">
@@ -177,7 +177,7 @@
           <SetVar name="printedsource" value="$printedsource + 1"/>
           <!-- Family Name -->
           <Cell style="text" width="$column_3_width">
-            <GetPersonName id=""/>
+            <GetPersonName/>
           </Cell>
           <Facts ignore="$ignore">
             <SetVar name="printfact" value="0"/>
@@ -293,7 +293,7 @@
           <SetVar name="printedsource" value="$printedsource + 1"/>
           <!-- Individual Name -->
           <Cell style="text" width="$column_1_width">
-            <GetPersonName id=""/>
+            <GetPersonName/>
           </Cell>
           <!-- Birth date -->
           <Cell style="text" width="$column_5_width">
@@ -360,7 +360,7 @@
           <SetVar name="printedsource" value="$printedsource + 1"/>
           <!-- Family Name -->
           <Cell style="text" width="$column_3_width">
-            <GetPersonName id=""/>
+            <GetPersonName/>
           </Cell>
           <!-- Date of the fact -->
           <Cell style="text" width="$column_5_width">

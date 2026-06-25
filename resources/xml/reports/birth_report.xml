@@ -56,7 +56,7 @@
     <Body>
       <List list="individual" filter1="BIRT:PLAC CONTAINS $birthplace" filter2="BIRT:DATE GTE $birthdate1" filter3="BIRT:DATE LTE $birthdate2" filter4="NAME CONTAINS $name" sortby="$sortby">
         <Cell width="$column_1_width" style="text">
-          <GetPersonName id=""/>
+          <GetPersonName/>
         </Cell>
         <Cell width="$column_2_width" style="text">
           <GedcomValue tag="BIRT:DATE"/>

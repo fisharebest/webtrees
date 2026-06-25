@@ -100,7 +100,7 @@
         <!-- Individual name -->
         <TextBox newline="1">
           <Text style="subheader">
-            <GetPersonName id=""/>
+            <GetPersonName/>
           </Text>
           <if condition="$sources=='on'">
             <!-- print level 1 sources -->
@@ -192,7 +192,7 @@
                 </if>
               </Text>
               <Gedcom id="@ASSO">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Gedcom>
             </TextBox>
           </if>
@@ -232,7 +232,7 @@
             <Gedcom id="@HUSB">
               <TextBox bgcolor="$mbgcolor" border="1" newline="1" width="$title_width">
                 <Text color="$tcolor" style="text">
-                  <var var="I18N::translate('Father')"/>: <GetPersonName id=""/>
+                  <var var="I18N::translate('Father')"/>: <GetPersonName/>
                 </Text>
                 <if condition="$sources=='on'">
                   <!-- print level 1 sources -->
@@ -267,7 +267,7 @@
             <Gedcom id="@WIFE">
               <TextBox bgcolor="$fbgcolor" border="1" newline="1" width="$title_width">
                 <Text color="$tcolor" style="text">
-                  <var var="I18N::translate('Mother')"/>: <GetPersonName id=""/>
+                  <var var="I18N::translate('Mother')"/>: <GetPersonName/>
                 </Text>
                 <if condition="$sources=='on'">
                   <!-- print level 1 sources -->
@@ -306,7 +306,7 @@
                   <if condition="@SEX=='M'">
                     <TextBox bgcolor="$mbgcolor" border="1" left="$indent_width" newline="1" width="$details_width">
                       <Text color="$tcolor" style="text">
-                        <var var="I18N::translate('Brother')"/>: <GetPersonName id=""/>
+                        <var var="I18N::translate('Brother')"/>: <GetPersonName/>
                       </Text>
                       <if condition="$sources=='on'">
                         <!-- print level 1 sources -->
@@ -341,7 +341,7 @@
                   <if condition="@SEX=='F'">
                     <TextBox bgcolor="$fbgcolor" border="1" left="$indent_width" newline="1" width="$details_width">
                       <Text color="$tcolor" style="text">
-                        <var var="I18N::translate('Sister')"/>: <GetPersonName id=""/>
+                        <var var="I18N::translate('Sister')"/>: <GetPersonName/>
                       </Text>
                       <if condition="$sources=='on'">
                         <!-- print level 1 sources -->
@@ -376,7 +376,7 @@
                   <if condition="@SEX=='U'">
                     <TextBox bgcolor="$ugbgcolor" border="1" left="$indent_width" newline="1" width="$details_width">
                       <Text color="$tcolor" style="text">
-                        <var var="I18N::translate('Sex')"/><var var="I18N::translateContext('unknown sex', 'Unknown')"/>: <GetPersonName id=""/>
+                        <var var="I18N::translate('Sex')"/><var var="I18N::translateContext('unknown sex', 'Unknown')"/>: <GetPersonName/>
                       </Text>
                       <if condition="$sources=='on'">
                         <!-- print level 1 sources -->
@@ -437,7 +437,7 @@
                 </Cell>
                 <TextBox bgcolor="$mbgcolor" border="1" newline="1" width="$title_width">
                   <Text color="$tcolor" style="text">
-                    <var var="I18N::translate('Husband')"/>: <GetPersonName id=""/>
+                    <var var="I18N::translate('Husband')"/>: <GetPersonName/>
                   </Text>
                   <if condition="$sources=='on'">
                     <!-- print level 1 sources -->
@@ -476,7 +476,7 @@
                 </Cell>
                 <TextBox bgcolor="$fbgcolor" border="1" newline="1" width="$title_width">
                   <Text color="$tcolor" style="text">
-                    <var var="I18N::translate('Wife')"/>: <GetPersonName id=""/>
+                    <var var="I18N::translate('Wife')"/>: <GetPersonName/>
                   </Text>
                   <if condition="$sources=='on'">
                     <!-- print level 1 sources -->
@@ -516,7 +516,7 @@
                   <if condition="@SEX=='M'">
                     <TextBox bgcolor="$mbgcolor" border="1" left="$indent_width" newline="1" width="$details_width">
                       <Text color="$tcolor" style="text">
-                        <var var="I18N::translate('Son')"/>: <GetPersonName id=""/>
+                        <var var="I18N::translate('Son')"/>: <GetPersonName/>
                       </Text>
                       <if condition="$sources=='on'">
                         <!-- print level 1 sources -->
@@ -551,7 +551,7 @@
                   <if condition="@SEX=='F'">
                     <TextBox bgcolor="$fbgcolor" border="1" left="$indent_width" newline="1" width="$details_width">
                       <Text color="$tcolor" style="text">
-                        <var var="I18N::translate('Daughter')"/>: <GetPersonName id=""/>
+                        <var var="I18N::translate('Daughter')"/>: <GetPersonName/>
                       </Text>
                       <if condition="$sources=='on'">
                         <!-- print level 1 sources -->
@@ -586,7 +586,7 @@
                   <if condition="@SEX=='U'">
                     <TextBox bgcolor="$ugbgcolor" border="1" left="$indent_width" newline="1" width="$details_width">
                       <Text color="$tcolor" style="text">
-                        <var var="I18N::translate('Sex')"/> <var var="I18N::translateContext('unknown sex', 'Unknown')"/>: <GetPersonName id=""/>
+                        <var var="I18N::translate('Sex')"/> <var var="I18N::translateContext('unknown sex', 'Unknown')"/>: <GetPersonName/>
                       </Text>
                       <if condition="$sources=='on'">
                         <!-- print level 1 sources -->

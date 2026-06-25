@@ -60,7 +60,7 @@
         <List list="pending" sortby="$sortby">
           <TextBox height="12" width="$column_1_width">
             <Text style="text">
-              <GetPersonName id=""/>
+              <GetPersonName/>
             </Text>
           </TextBox>
           <TextBox height="12" width="$column_2_width">
@@ -97,7 +97,7 @@
       <List list="individual" filter1="CHAN:DATE LTE $changeRangeEnd" filter2="CHAN:DATE GTE $changeRangeStart" sortby="$sortby">
         <TextBox height="12" width="$column_1_width">
           <Text style="text">
-            <GetPersonName id=""/>
+            <GetPersonName/>
           </Text>
         </TextBox>
         <TextBox height="12" width="$column_2_width">

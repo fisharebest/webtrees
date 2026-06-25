@@ -74,7 +74,7 @@
         <!-- Printed List counter -->
         <SetVar name="printedoccupation" value="$printedoccupation + 1"/>
         <Cell style="text" width="$column_1_width">
-          <GetPersonName id=""/>
+          <GetPersonName/>
         </Cell>
         <Cell style="text" width="$column_2_width">
           <GedcomValue tag="BIRT:DATE" newline="1"/>

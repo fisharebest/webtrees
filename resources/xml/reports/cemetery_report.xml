@@ -54,7 +54,7 @@
     <Body>
       <List list="individual" filter1="BURI:PLAC CONTAINS $deathplace" filter2="LIKE /%\n1 BURI%/" sortby="$sortby">
         <Cell style="text" width="$column_1_width">
-          <GetPersonName id=""/>
+          <GetPersonName/>
           <if condition="$adlist=='_MARNM'">
             <RepeatTag tag="NAME:_MARNM">
               <br/>
@@ -65,7 +65,7 @@
             <RepeatTag tag="FAMS">
               <Gedcom id="@FAMS:@HUSB">
                 <br/>
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Gedcom>
             </RepeatTag>
           </if>

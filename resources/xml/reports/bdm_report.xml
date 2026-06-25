@@ -93,7 +93,7 @@
         <SetVar name="spid" value="@ID"/>
         <TextBox width="$column_1_width" height="46">
           <Text style="text">
-            <GetPersonName id=""/>
+            <GetPersonName/>
             <br/>
           </Text>
           <Text style="text"><var var="I18N::translate('Father')"/>:

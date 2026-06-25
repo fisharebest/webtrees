@@ -60,7 +60,7 @@
       <List list="individual" filter1="DEAT:PLAC CONTAINS $deathplace" filter2="DEAT:DATE GTE $deathdate1" filter3="DEAT:DATE LTE $deathdate2" filter4="NAME CONTAINS $name" filter5="LIKE /%\n1 DEAT%/" sortby="$sortby">
         <TextBox width="$column_1_width">
           <Text style="text">
-            <GetPersonName id=""/>
+            <GetPersonName/>
             <if condition="$adlist=='_MARNM'">
               <RepeatTag tag="NAME">
                 <if condition="@NAME:TYPE=='married'">
@@ -77,7 +77,7 @@
               <RepeatTag tag="FAMS">
                 <Gedcom id="@FAMS:@HUSB">
                   <br/>
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Gedcom>
               </RepeatTag>
             </if>

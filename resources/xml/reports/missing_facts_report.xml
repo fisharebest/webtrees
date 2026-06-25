@@ -101,7 +101,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
             <SetVar name="nrmissingevent" value="$nrmissingevent + 1"/>
             <if condition="$printname=='0'">
               <Cell style="text" width="$name">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Cell>
               <SetVar name="printname" value="1"/>
             </if>
@@ -117,7 +117,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
             </if>
             <if condition="$printname=='0'">
               <Cell style="text" width="$name">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Cell>
               <SetVar name="printname" value="1"/>
             </if>
@@ -136,7 +136,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -160,7 +160,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -175,7 +175,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -192,7 +192,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
                 </if>
                 <if condition="$printname=='0'">
                   <Cell style="text" width="$name">
-                    <GetPersonName id=""/>
+                    <GetPersonName/>
                   </Cell>
                   <SetVar name="printname" value="1"/>
                 </if>
@@ -212,7 +212,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -227,7 +227,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -244,7 +244,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
                 </if>
                 <if condition="$printname=='0'">
                   <Cell style="text" width="$name">
-                    <GetPersonName id=""/>
+                    <GetPersonName/>
                   </Cell>
                   <SetVar name="printname" value="1"/>
                 </if>
@@ -265,7 +265,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
             </if>
             <if condition="$printname=='0'">
               <Cell style="text" width="$name">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Cell>
               <SetVar name="printname" value="1"/>
             </if>
@@ -280,7 +280,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
             </if>
             <if condition="$printname=='0'">
               <Cell style="text" width="$name">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Cell>
               <SetVar name="printname" value="1"/>
             </if>
@@ -297,7 +297,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -317,7 +317,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
             </if>
             <if condition="$printname=='0'">
               <Cell style="text" width="$name">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Cell>
               <SetVar name="printname" value="1"/>
             </if>
@@ -332,7 +332,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
             </if>
             <if condition="$printname=='0'">
               <Cell style="text" width="$name">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Cell>
               <SetVar name="printname" value="1"/>
             </if>
@@ -349,7 +349,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -369,7 +369,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
             </if>
             <if condition="$printname=='0'">
               <Cell style="text" width="$name">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Cell>
               <SetVar name="printname" value="1"/>
             </if>
@@ -384,7 +384,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
             </if>
             <if condition="$printname=='0'">
               <Cell style="text" width="$name">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Cell>
               <SetVar name="printname" value="1"/>
             </if>
@@ -401,7 +401,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -422,7 +422,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -437,7 +437,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -454,7 +454,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
                 </if>
                 <if condition="$printname=='0'">
                   <Cell style="text" width="$name">
-                    <GetPersonName id=""/>
+                    <GetPersonName/>
                   </Cell>
                   <SetVar name="printname" value="1"/>
                 </if>
@@ -475,7 +475,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
             </if>
             <if condition="$printname=='0'">
               <Cell style="text" width="$name">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Cell>
               <SetVar name="printname" value="1"/>
             </if>
@@ -490,7 +490,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
             </if>
             <if condition="$printname=='0'">
               <Cell style="text" width="$name">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Cell>
               <SetVar name="printname" value="1"/>
             </if>
@@ -507,7 +507,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -528,7 +528,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -543,7 +543,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -560,7 +560,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
                 </if>
                 <if condition="$printname=='0'">
                   <Cell style="text" width="$name">
-                    <GetPersonName id=""/>
+                    <GetPersonName/>
                   </Cell>
                   <SetVar name="printname" value="1"/>
                 </if>
@@ -582,7 +582,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -597,7 +597,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -614,7 +614,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
                 </if>
                 <if condition="$printname=='0'">
                   <Cell style="text" width="$name">
-                    <GetPersonName id=""/>
+                    <GetPersonName/>
                   </Cell>
                   <SetVar name="printname" value="1"/>
                 </if>
@@ -635,7 +635,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
             </if>
             <if condition="$printname=='0'">
               <Cell style="text" width="$name">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Cell>
               <SetVar name="printname" value="1"/>
             </if>
@@ -650,7 +650,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
             </if>
             <if condition="$printname=='0'">
               <Cell style="text" width="$name">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Cell>
               <SetVar name="printname" value="1"/>
             </if>
@@ -667,7 +667,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -687,7 +687,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
             </if>
             <if condition="$printname=='0'">
               <Cell style="text" width="$name">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Cell>
               <SetVar name="printname" value="1"/>
             </if>
@@ -702,7 +702,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
             </if>
             <if condition="$printname=='0'">
               <Cell style="text" width="$name">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Cell>
               <SetVar name="printname" value="1"/>
             </if>
@@ -719,7 +719,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
               </if>
               <if condition="$printname=='0'">
                 <Cell style="text" width="$name">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Cell>
                 <SetVar name="printname" value="1"/>
               </if>
@@ -739,7 +739,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
             </if>
             <if condition="$printname=='0'">
               <Cell style="text" width="$name">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Cell>
               <SetVar name="printname" value="1"/>
             </if>

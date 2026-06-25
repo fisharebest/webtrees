@@ -83,12 +83,12 @@
         <!-- 1. Block -->
         <TextBox height="$row_height" width="$name_column">
           <Text style="label">
-            <GetPersonName id=""/>
+            <GetPersonName/>
           </Text>
         </TextBox>
         <TextBox height="$row_height" width="$birth_column">
           <Text style="text">
-            <GedcomValue tag="BIRT:DATE" />
+            <GedcomValue tag="BIRT:DATE"/>
             <br/>
           </Text>
           <Text style="mini">
@@ -97,7 +97,7 @@
         </TextBox>
         <TextBox height="$row_height" width="$death_column">
           <Text style="text">
-            <GedcomValue tag="DEAT:DATE" />
+            <GedcomValue tag="DEAT:DATE"/>
             <br/>
           </Text>
           <Text style="mini">
@@ -109,14 +109,14 @@
           <TextBox height="$row_height" width="$father_column">
             <Gedcom id="@HUSB">
               <Text style="text">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Text>
             </Gedcom>
           </TextBox>
           <TextBox height="$row_height" newline="1" width="$mother_column">
             <Gedcom id="@WIFE">
               <Text style="text">
-                <GetPersonName id=""/>
+                <GetPersonName/>
               </Text>
             </Gedcom>
           </TextBox>
@@ -151,7 +151,7 @@
                   <Text style="mini">
                     <!-- Print this only when more than one child exist -->
                     <if condition="$morechildren==1">, </if>
-                    <GetPersonName id=""/>
+                    <GetPersonName/>
                   </Text>
                   <SetVar name="morechildren" value="1"/>
                 </Gedcom>

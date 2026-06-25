@@ -96,7 +96,7 @@
         <!-- Print the Family name with Level 1 sources -->
         <TextBox newline="1">
           <Text style="subheader">
-            <var var="I18N::translate('Family')"/> <GetPersonName id=""/>
+            <var var="I18N::translate('Family')"/> <GetPersonName/>
           </Text>
           <if condition="$sources=='on'">
             <!-- print level 1 sources -->
@@ -147,7 +147,7 @@
           <!-- print the name and any level 1 sources -->
           <TextBox bgcolor="$malebox_bgcolor" border="1" left="0" width="$individual_width" newline="1">
             <Text color="$tcolor" style="text">
-              <var var="I18N::translate('Husband')"/>: <GetPersonName id=""/>
+              <var var="I18N::translate('Husband')"/>: <GetPersonName/>
             </Text>
             <if condition="$sources=='on'">
               <!-- print level 1 sources -->
@@ -294,7 +294,7 @@
                   </if>
                 </Text>
                 <Gedcom id="@ASSO">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Gedcom>
               </TextBox>
             </if>
@@ -459,7 +459,7 @@
                     </if>
                   </Text>
                   <Gedcom id="@ASSO">
-                    <GetPersonName id=""/>
+                    <GetPersonName/>
                   </Gedcom>
                 </TextBox>
               </if>
@@ -523,7 +523,7 @@
           <!-- print the name and sources -->
           <TextBox bgcolor="$femalebox_bgcolor" border="1" left="0" width="$individual_width" newline="1">
             <Text color="$tcolor" style="text">
-              <var var="I18N::translate('Wife')"/>: <GetPersonName id=""/>
+              <var var="I18N::translate('Wife')"/>: <GetPersonName/>
             </Text>
             <if condition="$sources=='on'">
               <!-- print level 1 sources -->
@@ -670,7 +670,7 @@
                   </if>
                 </Text>
                 <Gedcom id="@ASSO">
-                  <GetPersonName id=""/>
+                  <GetPersonName/>
                 </Gedcom>
               </TextBox>
             </if>
@@ -818,7 +818,7 @@
             <if condition="@SEX=='M'">
               <TextBox bgcolor="$malebox_bgcolor" border="1" left="$indent_width" newline="1" width="$details_width">
                 <Text color="$tcolor" style="text">
-                  <var var="I18N::translate('Son')"/>: <GetPersonName id=""/>
+                  <var var="I18N::translate('Son')"/>: <GetPersonName/>
                 </Text>
                 <if condition="$sources=='on'">
                   <!-- print level 1 sources -->
@@ -852,7 +852,7 @@
             <if condition="@SEX=='F'">
               <TextBox bgcolor="$femalebox_bgcolor" border="1" left="$indent_width" newline="1" width="$details_width">
                 <Text color="$tcolor" style="text">
-                  <var var="I18N::translate('Daughter')"/>: <GetPersonName id=""/>
+                  <var var="I18N::translate('Daughter')"/>: <GetPersonName/>
                 </Text>
                 <if condition="$sources=='on'">
                   <!-- print level 1 sources -->
@@ -886,7 +886,7 @@
             <if condition="@SEX=='U'">
               <TextBox bgcolor="$unknowngenderbox_bgcolor" border="1" left="$indent_width" newline="1" width="$details_width">
                 <Text color="$tcolor" style="text">
-                  <var var="I18N::translate('Sex')"/> <var var="I18N::translateContext('unknown sex', 'Unknown')"/>: <GetPersonName id=""/>
+                  <var var="I18N::translate('Sex')"/> <var var="I18N::translateContext('unknown sex', 'Unknown')"/>: <GetPersonName/>
                 </Text>
                 <if condition="$sources=='on'">
                   <!-- print level 1 sources -->
@@ -1034,7 +1034,7 @@
                     </if>
                   </Text>
                   <Gedcom id="@ASSO">
-                    <GetPersonName id=""/>
+                    <GetPersonName/>
                   </Gedcom>
                 </TextBox>
               </if>

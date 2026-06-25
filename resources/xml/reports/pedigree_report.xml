@@ -55,7 +55,7 @@
     <SetVar name="page_size" value="A4"/>
     <SetVar name="canvas_width" value="$a4_long_side - $margin_x"/>
     <SetVar name="canvas_height" value="$a4_short_side - $margin_y"/>
-    <SetVar name="generations" value="5" />
+    <SetVar name="generations" value="5"/>
     <SetVar name="show_gen_5_marriage" value="0"/>
     <SetVar name="show_gen_5_death" value="0"/>
   </if>
@@ -65,7 +65,7 @@
     <SetVar name="page_size" value="A4"/>
     <SetVar name="canvas_width" value="$a4_short_side - $margin_x"/>
     <SetVar name="canvas_height" value="$a4_long_side - $margin_y"/>
-    <SetVar name="generations" value="5" />
+    <SetVar name="generations" value="5"/>
   </if>
 
   <if condition="$layout=='US-Letter-landscape'">
@@ -73,7 +73,7 @@
     <SetVar name="page_size" value="US-Letter"/>
     <SetVar name="canvas_width" value="$letter_long_side - $margin_x"/>
     <SetVar name="canvas_height" value="$letter_short_side - $margin_y"/>
-    <SetVar name="generations" value="5" />
+    <SetVar name="generations" value="5"/>
     <SetVar name="show_gen_5_marriage" value="0"/>
     <SetVar name="show_gen_5_death" value="0"/>
   </if>
@@ -83,7 +83,7 @@
     <SetVar name="page_size" value="US-Letter"/>
     <SetVar name="canvas_width" value="$letter_short_side - $margin_x"/>
     <SetVar name="canvas_height" value="$letter_long_side - $margin_y"/>
-    <SetVar name="generations" value="5" />
+    <SetVar name="generations" value="5"/>
   </if>
 
   <if condition="$layout=='A3-landscape'">
@@ -91,7 +91,7 @@
     <SetVar name="page_size" value="A3"/>
     <SetVar name="canvas_width" value="$a3_long_side - $margin_x"/>
     <SetVar name="canvas_height" value="$a3_short_side - $margin_y"/>
-    <SetVar name="generations" value="6" />
+    <SetVar name="generations" value="6"/>
     <SetVar name="show_gen_6_marriage" value="0"/>
     <SetVar name="show_gen_6_death" value="0"/>
   </if>
@@ -101,7 +101,7 @@
     <SetVar name="page_size" value="A3"/>
     <SetVar name="canvas_width" value="$a3_short_side - $margin_x"/>
     <SetVar name="canvas_height" value="$a3_long_side - $margin_y"/>
-    <SetVar name="generations" value="6" />
+    <SetVar name="generations" value="6"/>
     <SetVar name="show_gen_6_marriage" value="0"/>
   </if>
 
@@ -110,7 +110,7 @@
     <SetVar name="page_size" value="US-Tabloid"/>
     <SetVar name="canvas_width" value="$US-Tabloid_long_side - $margin_x"/>
     <SetVar name="canvas_height" value="$US-Tabloid_short_side - $margin_y"/>
-    <SetVar name="generations" value="6" />
+    <SetVar name="generations" value="6"/>
     <SetVar name="show_gen_6_marriage" value="0"/>
     <SetVar name="show_gen_6_death" value="0"/>
   </if>
@@ -120,7 +120,7 @@
     <SetVar name="page_size" value="US-Tabloid"/>
     <SetVar name="canvas_width" value="$US-Tabloid_short_side - $margin_x"/>
     <SetVar name="canvas_height" value="$US-Tabloid_long_side - $margin_y"/>
-    <SetVar name="generations" value="6" />
+    <SetVar name="generations" value="6"/>
     <SetVar name="show_gen_6_marriage" value="0"/>
   </if>
 
@@ -129,7 +129,7 @@
     <SetVar name="page_size" value="A2"/>
     <SetVar name="canvas_width" value="$a2_long_side - $margin_x"/>
     <SetVar name="canvas_height" value="$a2_short_side - $margin_y"/>
-    <SetVar name="generations" value="7" />
+    <SetVar name="generations" value="7"/>
   </if>
 
   <if condition="$layout=='A2-portrait'">
@@ -137,7 +137,7 @@
     <SetVar name="page_size" value="A2"/>
     <SetVar name="canvas_width" value="$a2_short_side - $margin_x"/>
     <SetVar name="canvas_height" value="$a2_long_side - $margin_y"/>
-    <SetVar name="generations" value="7" />
+    <SetVar name="generations" value="7"/>
     <SetVar name="show_gen_7_marriage" value="0"/>
     <SetVar name="show_gen_7_death" value="0"/>
   </if>
@@ -147,7 +147,7 @@
     <SetVar name="page_size" value="A1"/>
     <SetVar name="canvas_width" value="$a1_short_side - $margin_x"/>
     <SetVar name="canvas_height" value="$a1_long_side - $margin_y"/>
-    <SetVar name="generations" value="8" />
+    <SetVar name="generations" value="8"/>
     <SetVar name="show_gen_7_marriage" value="0"/>
     <SetVar name="show_gen_8_birth" value="0"/>
   </if>
@@ -157,7 +157,7 @@
     <SetVar name="page_size" value="A0"/>
     <SetVar name="canvas_width" value="$a0_short_side - $margin_x"/>
     <SetVar name="canvas_height" value="$a0_long_side - $margin_y"/>
-    <SetVar name="generations" value="9" />
+    <SetVar name="generations" value="9"/>
   </if>
 
   <if condition="$layout=='US-Tabloid-landscape'">

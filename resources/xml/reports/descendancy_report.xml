@@ -60,7 +60,7 @@
           </TextBox>
           <TextBox border="" height="40" newline="1">
             <Text style="name">
-              <GetPersonName id=""/>
+              <GetPersonName/>
             </Text>
             <if condition="$sources=='on'">
               <!-- print level 1 sources -->
@@ -209,7 +209,7 @@
                   </Gedcom>
                   <if condition="$marrExists=='true'">
                     <Gedcom id="@WIFE">
-                      <Text style="name"> <GetPersonName id=""/></Text>
+                      <Text style="name"> <GetPersonName/></Text>
                       <if condition="$sources=='on'">
                         <!-- print level 1 sources -->
                         <RepeatTag tag="SOUR">
@@ -285,7 +285,7 @@
                   </Gedcom>
                   <if condition="$marrExists=='true'">
                     <Gedcom id="@HUSB">
-                      <Text style="name"> <GetPersonName id=""/></Text>
+                      <Text style="name"> <GetPersonName/></Text>
                       <if condition="$sources=='on'">
                         <!-- print level 1 sources -->
                         <RepeatTag tag="SOUR">
@@ -572,7 +572,7 @@
                     <TextBox height="20" newline="1">
                       <Text style="text"><var var="familyChildNumber" format="roman"/> </Text>
                       <Text style="name">
-                        <GetPersonName id=""/>
+                        <GetPersonName/>
                       </Text>
                       <if condition="$sources=='on'">
                         <!-- print level 1 sources -->
