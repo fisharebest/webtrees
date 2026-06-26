@@ -450,22 +450,33 @@
         <!-- print family with spouse and children -->
         <RepeatTag tag="FAMS">
           <Gedcom id="@FAMS">
-            <!-- print wife if person is husband -->
-            <if condition="$sex=='M'">
-              <TextBox height="$sheight" newline="1" padding="0" width="15"/>
-              <Cell bgcolor="$stbgcolor" border="1" newline="1" style="title" tcolor="$tcolor" width="$title_width">
-                <var var="I18N::translate('Family with wife')"/>
-              </Cell>
-              <SetVar name="spid" value="@WIFE"/>
-            </if>
-            <!-- print husband if person is wife -->
-            <if condition="$sex=='F'">
-              <TextBox height="$sheight" newline="1" padding="0" width="15"/>
-              <Cell bgcolor="$stbgcolor" border="1" newline="1" style="title" tcolor="$tcolor" width="$title_width">
-                <var var="I18N::translate('Family with husband')"/>
-              </Cell>
+            <!-- find spouse: the other person in this family -->
+            <SetVar name="spid" value=""/>
+            <if condition="@WIFE == $mid">
               <SetVar name="spid" value="@HUSB"/>
             </if>
+            <if condition="@HUSB == $mid">
+              <SetVar name="spid" value="@WIFE"/>
+            </if>
+            <if condition="$spid == ''">
+              <!-- one parent family -->
+              <SetVar name="spid" value="$mid"/>
+            </if>
+            <!-- print heading and spouse details based on spouse's actual sex -->
+            <Gedcom id="$spid">
+              <if condition="@SEX=='M'">
+                <TextBox height="$sheight" newline="1" padding="0" width="15"/>
+                <Cell bgcolor="$stbgcolor" border="1" newline="1" style="title" tcolor="$tcolor" width="$title_width">
+                  <var var="I18N::translate('Family with husband')"/>
+                </Cell>
+              </if>
+              <if condition="@SEX!='M'">
+                <TextBox height="$sheight" newline="1" padding="0" width="15"/>
+                <Cell bgcolor="$stbgcolor" border="1" newline="1" style="title" tcolor="$tcolor" width="$title_width">
+                  <var var="I18N::translate('Family with wife')"/>
+                </Cell>
+              </if>
+            </Gedcom>
             <!-- print information for spouse -->
             <Gedcom id="$spid">
               <!-- husband -->

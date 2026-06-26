@@ -80,6 +80,7 @@
     <Body>
       <Relatives id="$pid" group="$relatives" sortby="$sortby">
         <SetVar name="sex" value="@SEX"/>
+        <SetVar name="curpid" value="@ID"/>
         <!-- 1. Block -->
         <TextBox height="$row_height" width="$name_column">
           <Text style="label">
@@ -127,19 +128,30 @@
         </if>
         <RepeatTag tag="FAMS">
           <Gedcom id="@FAMS">
+            <!-- find spouse: the other person in this family -->
+            <SetVar name="spid" value=""/>
+            <if condition="@WIFE == $curpid">
+              <SetVar name="spid" value="@HUSB"/>
+            </if>
+            <if condition="@HUSB == $curpid">
+              <SetVar name="spid" value="@WIFE"/>
+            </if>
             <TextBox height="$detail_row_height" left="$detail_indent" width="$spouse_column">
-              <if condition="$sex=='M'">
-                <Text style="minibold"><var var="I18N::translate('Wife')"/>: </Text>
+              <Gedcom id="$spid">
+                <if condition="@SEX=='M'">
+                  <Text style="minibold"><var var="I18N::translate('Husband')"/>: </Text>
+                </if>
+                <if condition="@SEX=='F'">
+                  <Text style="minibold"><var var="I18N::translate('Wife')"/>: </Text>
+                </if>
+                <if condition="@SEX!='M' and @SEX!='F'">
+                  <Text style="minibold"><var var="I18N::translate('Spouse')"/>: </Text>
+                </if>
                 <Text style="mini">
-                  <GetPersonName id="@WIFE"/> <GedcomValue tag="MARR:DATE"/>
+                  <GetPersonName/>
                 </Text>
-              </if>
-              <if condition="$sex=='F'">
-                <Text style="minibold"><var var="I18N::translate('Husband')"/>: </Text>
-                <Text style="mini">
-                  <GetPersonName id="@HUSB"/> <GedcomValue tag="MARR:DATE"/>
-                </Text>
-              </if>
+              </Gedcom>
+              <Text style="mini"> <GedcomValue tag="MARR:DATE"/></Text>
             </TextBox>
             <TextBox height="$detail_row_height" width="$children_label_column">
               <Text style="minibold"><var var="I18N::translate('Children')"/>:</Text>

@@ -147,7 +147,9 @@
           <!-- print the name and any level 1 sources -->
           <TextBox bgcolor="$malebox_bgcolor" border="1" left="0" width="$individual_width" newline="1">
             <Text color="$tcolor" style="text">
-              <var var="I18N::translate('Husband')"/>: <GetPersonName/>
+              <if condition="@SEX=='M'"><var var="I18N::translate('Husband')"/>: <GetPersonName/></if>
+              <if condition="@SEX=='F'"><var var="I18N::translate('Wife')"/>: <GetPersonName/></if>
+              <if condition="@SEX!='M' and @SEX!='F'"><var var="I18N::translate('Spouse')"/>: <GetPersonName/></if>
             </Text>
             <if condition="$sources=='on'">
               <!-- print level 1 sources -->
@@ -523,7 +525,9 @@
           <!-- print the name and sources -->
           <TextBox bgcolor="$femalebox_bgcolor" border="1" left="0" width="$individual_width" newline="1">
             <Text color="$tcolor" style="text">
-              <var var="I18N::translate('Wife')"/>: <GetPersonName/>
+              <if condition="@SEX=='M'"><var var="I18N::translate('Husband')"/>: <GetPersonName/></if>
+              <if condition="@SEX=='F'"><var var="I18N::translate('Wife')"/>: <GetPersonName/></if>
+              <if condition="@SEX!='M' and @SEX!='F'"><var var="I18N::translate('Spouse')"/>: <GetPersonName/></if>
             </Text>
             <if condition="$sources=='on'">
               <!-- print level 1 sources -->
@@ -1139,20 +1143,20 @@
               <Gedcom id="@FAMS">
                 <if condition="$spid==@HUSB">
                   <TextBox bgcolor="$femalebox_bgcolor" border="1" left="$indent_width" width="$details_width" newline="1">
-                    <Text color="$tcolor" style="text">
-                      <var var="I18N::translate('Wife')"/>: <GetPersonName id="@WIFE"/>
-                    </Text>
                     <Gedcom id="@WIFE">
+                      <Text color="$tcolor" style="text">
+                        <if condition="@SEX=='M'"><var var="I18N::translate('Husband')"/></if><if condition="@SEX!='M'"><var var="I18N::translate('Wife')"/></if>: <GetPersonName/>
+                      </Text>
                       <Text color="$tcolor" style="text"> (<var var="I18N::translate('Birth')"/> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
                     </Gedcom>
                   </TextBox>
                 </if>
                 <if condition="$spid==@WIFE">
                   <TextBox bgcolor="$malebox_bgcolor" border="1" left="$indent_width" width="$details_width" newline="1">
-                    <Text color="$tcolor" style="text">
-                      <var var="I18N::translate('Husband')"/>: <GetPersonName id="@HUSB"/>
-                    </Text>
                     <Gedcom id="@HUSB">
+                      <Text color="$tcolor" style="text">
+                        <if condition="@SEX=='F'"><var var="I18N::translate('Wife')"/></if><if condition="@SEX!='F'"><var var="I18N::translate('Husband')"/></if>: <GetPersonName/>
+                      </Text>
                       <Text color="$tcolor" style="text"> (<var var="I18N::translate('Birth')"/> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <var var="I18N::translate('Death')"/> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
                     </Gedcom>
                   </TextBox>
