@@ -54,7 +54,7 @@
         "illuminate/support": "13.17.0",
         "intervention/image": "4.1.4",
         "league/commonmark": "2.8.2",
-        "league/flysystem": "3.35.0",
+        "league/flysystem": "3.35.1",
         "league/flysystem-path-prefixing": "3.31.0",
         "league/flysystem-ziparchive": "3.31.0",
         "middlewares/client-ip": "2.1.0",
@@ -73,7 +73,7 @@
         "symfony/expression-language": "7.4.8",
         "symfony/mailer": "7.4.12",
         "symfony/polyfill-mbstring": "1.38.2",
-        "tecnickcom/tc-lib-pdf": "8.64.0"
+        "tecnickcom/tc-lib-pdf": "8.65.0"
     },
     "require-dev": {
         "ext-dom": "*",
