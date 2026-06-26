@@ -88,10 +88,11 @@ final class SearchGeneralPage implements RequestHandlerInterface
             ->where('s_file', '=', $tree->id())
             ->exists();
 
-        // Default to families and individuals only
+        // If no record types selected, select individuals, families, and shared notes (if they exist)
         if (!$search_individuals && !$search_families && !$search_locations && !$search_repositories && !$search_sources && !$search_notes) {
             $search_families    = true;
             $search_individuals = true;
+            $search_notes       = $exist_notes;
         }
 
         // What to search for?
@@ -139,19 +140,19 @@ final class SearchGeneralPage implements RequestHandlerInterface
                 $families = $tmp1->merge($tmp2)->unique(static fn (Family $family): string => $family->xref() . '@' . $family->tree()->id());
             }
 
-            if ($search_repositories) {
+            if ($search_repositories && $exist_repositories) {
                 $repositories = $this->search_service->searchRepositories($search_trees->all(), $search_terms);
             }
 
-            if ($search_sources) {
+            if ($search_sources && $exist_sources) {
                 $sources = $this->search_service->searchSources($search_trees->all(), $search_terms);
             }
 
-            if ($search_notes) {
+            if ($search_notes && $exist_notes) {
                 $notes = $this->search_service->searchNotes($search_trees->all(), $search_terms);
             }
 
-            if ($search_locations) {
+            if ($search_locations && $exist_locations) {
                 $locations = $this->search_service->searchLocations($search_trees->all(), $search_terms);
             }
         }
