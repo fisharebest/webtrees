@@ -101,17 +101,18 @@ class Date
      */
     public function display(Tree|null $tree = null, string|null $date_format = null, bool $convert_calendars = false): string
     {
-        $link_to_calendar = false;
         if ($tree instanceof Tree) {
-            $module = Registry::container()->get(ModuleService::class)
+            $CALENDAR_FORMAT  = $tree->getPreference('CALENDAR_FORMAT');
+            $link_to_calendar = Registry::container()
+                ->get(ModuleService::class)
                 ->findByComponent(ModuleMenuInterface::class, $tree, Auth::user())
-                ->first(static fn (ModuleMenuInterface $module): bool => $module instanceof CalendarMenuModule);
-            if ($module instanceof CalendarMenuModule) {
-                $link_to_calendar = true;
-            }
+                ->whereInstanceOf(CalendarMenuModule::class)
+                ->isNotEmpty();
+        } else {
+            $CALENDAR_FORMAT  = 'none';
+            $link_to_calendar = false;
         }
 
-        $CALENDAR_FORMAT = ($tree instanceof Tree) ? $tree->getPreference('CALENDAR_FORMAT') : 'none';
         $date_format ??= I18N::dateFormat();
 
         if ($convert_calendars) {
@@ -241,9 +242,18 @@ class Date
         return '<span class="date">' . $tmp . '</span>';
     }
 
-    private function renderLink(bool $link_to_calendar, AbstractCalendarDate $calendar_date, string $date_format, Tree $tree, string $date_text): string
-    {
-        return !$link_to_calendar ? $date_text : '<a href="' . e($calendar_date->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $date_text . '</a>';
+    private function renderLink(
+        bool $link_to_calendar,
+        AbstractCalendarDate $calendar_date,
+        string $date_format,
+        Tree $tree,
+        string $date_text,
+    ): string {
+        if ($link_to_calendar) {
+            return '<a href="' . e($calendar_date->calendarUrl($date_format, $tree)) . '">' . $date_text . '</a>';
+        }
+
+        return $date_text;
     }
 
     /**

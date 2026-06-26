@@ -32,7 +32,6 @@ class CalendarMenuModule extends AbstractModule implements ModuleMenuInterface
 {
     use ModuleMenuTrait;
 
-    /** @var int The default access level for this module.  It can be changed in the control panel. */
     protected int $access_level = Auth::PRIV_USER;
 
     public function title(): string
