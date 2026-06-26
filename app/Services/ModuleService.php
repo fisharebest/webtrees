@@ -604,7 +604,7 @@ class ModuleService
      * All modules.
      *
      *
-     * @return Collection<int,ModuleInterface>
+     * @return Collection<string,ModuleInterface>
      */
     public function all(bool $include_disabled = false): Collection
     {
@@ -655,7 +655,7 @@ class ModuleService
     /**
      * All core modules in the system.
      *
-     * @return Collection<int,ModuleInterface>
+     * @return Collection<string,ModuleInterface>
      */
     private function coreModules(): Collection
     {
@@ -672,7 +672,7 @@ class ModuleService
     /**
      * All custom modules in the system.  Custom modules are defined in modules_v4/
      *
-     * @return Collection<int,ModuleCustomInterface>
+     * @return Collection<string,ModuleCustomInterface>
      */
     private function customModules(): Collection
     {
@@ -810,7 +810,7 @@ class ModuleService
     /**
      * During setup, we'll need access to some languages.
      *
-     * @return Collection<int,ModuleLanguageInterface>
+     * @return Collection<string,ModuleInterface>
      */
     public function setupLanguages(): Collection
     {
