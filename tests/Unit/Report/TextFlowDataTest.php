@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
 use Fisharebest\Webtrees\Report\FootnoteRefData;
-use Fisharebest\Webtrees\Report\LayoutBlockData;
 use Fisharebest\Webtrees\Report\Style;
 use Fisharebest\Webtrees\Report\TextFlowData;
 use Fisharebest\Webtrees\Report\TextRun;
@@ -57,12 +56,5 @@ class TextFlowDataTest extends TestCase
 
         self::assertCount(2, $data->runs);
         self::assertInstanceOf(FootnoteRefData::class, $data->runs[1]);
-    }
-
-    public function testImplementsLayoutBlockData(): void
-    {
-        $data = new TextFlowData(runs: []);
-
-        self::assertInstanceOf(LayoutBlockData::class, $data);
     }
 }

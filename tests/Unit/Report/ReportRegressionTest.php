@@ -304,7 +304,6 @@ class ReportRegressionTest extends TestCase
 
         if (getenv('UPDATE_SNAPSHOTS') === '1') {
             file_put_contents($snapshot_file, $actual);
-            self::assertTrue(true, 'Snapshot regenerated: ' . $snapshot_file);
 
             return;
         }

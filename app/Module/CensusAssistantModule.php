@@ -68,13 +68,13 @@ class CensusAssistantModule extends AbstractModule
         $census_class = Validator::parsedBody($request)->string('census');
         $census       = new $census_class();
 
-        // No head of household?  Create a fake one.
-        $head ??= Registry::individualFactory()->new('X', '0 @X@ INDI', null, $tree);
-
         // Generate columns (e.g. relationship name) using the correct language.
         I18N::init($census->censusLanguage());
 
-        if ($individual instanceof Individual && $head instanceof Individual) {
+        if ($individual instanceof Individual) {
+            // No head-of-household?  Create a fake one.
+            $head ??= Registry::individualFactory()->new('X', '0 @X@ INDI', null, $tree);
+
             $html = $this->censusTableRow($census, $individual, $head);
         } else {
             $html = $this->censusTableEmptyRow($census);

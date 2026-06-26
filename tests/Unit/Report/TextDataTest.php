@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
-use Fisharebest\Webtrees\Report\LayoutBlockData;
 use Fisharebest\Webtrees\Report\Style;
 use Fisharebest\Webtrees\Report\TextData;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -40,13 +39,5 @@ class TextDataTest extends TestCase
         self::assertSame('Some text', $data->text);
         self::assertSame($style, $data->style);
         self::assertSame('#000000', $data->color);
-    }
-
-    public function testImplementsLayoutBlockData(): void
-    {
-        $style = new Style('body', '', 12.0);
-        $data  = new TextData(text: '', style: $style, color: '');
-
-        self::assertInstanceOf(LayoutBlockData::class, $data);
     }
 }

@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
 use Fisharebest\Webtrees\Report\CellAlign;
 use Fisharebest\Webtrees\Report\ImageData;
-use Fisharebest\Webtrees\Report\LayoutBlockData;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -37,12 +36,5 @@ class ImageDataTest extends TestCase
 
         self::assertSame('/path/to/photo.jpg', $data->src);
         self::assertSame(CellAlign::Center, $data->align);
-    }
-
-    public function testImplementsLayoutBlockData(): void
-    {
-        $data = new ImageData(src: '', align: CellAlign::Left);
-
-        self::assertInstanceOf(LayoutBlockData::class, $data);
     }
 }

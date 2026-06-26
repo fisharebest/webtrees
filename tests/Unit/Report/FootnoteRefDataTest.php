@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
 use Fisharebest\Webtrees\Report\FootnoteRefData;
-use Fisharebest\Webtrees\Report\LayoutBlockData;
 use Fisharebest\Webtrees\Report\Style;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -40,17 +39,5 @@ class FootnoteRefDataTest extends TestCase
         self::assertSame(5, $data->number);
         self::assertSame('footnote5', $data->link_target);
         self::assertSame($style, $data->style);
-    }
-
-    public function testImplementsLayoutBlockData(): void
-    {
-        $style = new Style('body', '', 10.0);
-        $data  = new FootnoteRefData(
-            number: 1,
-            link_target: '',
-            style: $style,
-        );
-
-        self::assertInstanceOf(LayoutBlockData::class, $data);
     }
 }

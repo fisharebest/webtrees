@@ -107,7 +107,6 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
             case self::STEP_EXPORT:
                 $tree_name = Validator::queryParams($request)->string('tree');
                 $tree      = $this->tree_service->all()[$tree_name];
-                assert($tree instanceof Tree);
 
                 return $this->wizardStepExport($tree);
 

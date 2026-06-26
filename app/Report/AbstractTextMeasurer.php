@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\Encodings\UTF8;
 
-use function mb_str_split;
 use function mb_substr;
 use function str_repeat;
 
@@ -70,24 +69,5 @@ abstract class AbstractTextMeasurer implements TextMeasurerInterface
 
         // Nothing fits?
         return $ellipsis;
-    }
-
-    /**
-     * Count unclosed FSI (U+2068) isolates in a string and return the
-     * necessary PDI (U+2069) closing characters.
-     */
-    private function bidiClosers(string $text): string
-    {
-        $depth = 0;
-
-        foreach (mb_str_split($text) as $character) {
-            if ($character === UTF8::FIRST_STRONG_ISOLATE) {
-                $depth++;
-            } elseif ($character === UTF8::POP_DIRECTIONAL_ISOLATE) {
-                $depth = max(0, $depth - 1);
-            }
-        }
-
-        return str_repeat(UTF8::POP_DIRECTIONAL_ISOLATE, $depth);
     }
 }

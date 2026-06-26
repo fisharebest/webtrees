@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
-use Fisharebest\Webtrees\Report\LayoutBlockData;
 use Fisharebest\Webtrees\Report\RectData;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -36,12 +35,5 @@ class RectDataTest extends TestCase
 
         self::assertSame('#FF0000', $data->background_color);
         self::assertTrue($data->border);
-    }
-
-    public function testImplementsLayoutBlockData(): void
-    {
-        $data = new RectData(background_color: '', border: false);
-
-        self::assertInstanceOf(LayoutBlockData::class, $data);
     }
 }

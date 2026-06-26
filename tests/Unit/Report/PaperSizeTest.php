@@ -50,17 +50,6 @@ class PaperSizeTest extends TestCase
         self::assertEqualsWithDelta($expected_height, $letter->height(), 0.001);
     }
 
-    public function testFromString(): void
-    {
-        self::assertSame(PaperSize::A4, PaperSize::from('A4'));
-        self::assertSame(PaperSize::USLetter, PaperSize::from('US-Letter'));
-    }
-
-    public function testTryFromInvalidReturnsNull(): void
-    {
-        self::assertNull(PaperSize::tryFrom('Unknown'));
-    }
-
     public function testWidthIsAlwaysPositive(): void
     {
         foreach (PaperSize::cases() as $size) {

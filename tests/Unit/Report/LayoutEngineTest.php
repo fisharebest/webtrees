@@ -375,7 +375,6 @@ class LayoutEngineTest extends TestCase
 
         self::assertCount(1, $blocks);
         self::assertInstanceOf(TextCellData::class, $blocks[0]->data);
-        self::assertSame('~#PT', Element::TOTAL_PAGES_TOKEN);
         self::assertStringContainsString(Element::TOTAL_PAGES_TOKEN, $blocks[0]->data->text);
     }
 
@@ -523,7 +522,7 @@ class LayoutEngineTest extends TestCase
                 $second_rect = $block;
                 continue;
             }
-            if ($block->data instanceof TextFlowData && $second_flow === null) {
+            if ($block->data instanceof TextFlowData) {
                 $second_flow = $block;
                 break;
             }

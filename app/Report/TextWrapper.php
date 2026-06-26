@@ -76,7 +76,7 @@ final class TextWrapper
             // when the line starts with a space. Prefix the space onto the
             // first real word so it appears in the rendered output (e.g. the
             // gap after footnote references).
-            if ($words !== [] && $words[0] === '') {
+            if ($words[0] === '') {
                 array_shift($words);
                 if ($words !== []) {
                     $words[0] = ' ' . $words[0];

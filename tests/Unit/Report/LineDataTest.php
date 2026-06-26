@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
-use Fisharebest\Webtrees\Report\LayoutBlockData;
 use Fisharebest\Webtrees\Report\LineData;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -40,12 +39,5 @@ class LineDataTest extends TestCase
         self::assertSame(20.0, $data->y1);
         self::assertSame(100.0, $data->x2);
         self::assertSame(20.0, $data->y2);
-    }
-
-    public function testImplementsLayoutBlockData(): void
-    {
-        $data = new LineData(x1: 0.0, y1: 0.0, x2: 0.0, y2: 0.0);
-
-        self::assertInstanceOf(LayoutBlockData::class, $data);
     }
 }

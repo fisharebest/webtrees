@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
 use Fisharebest\Webtrees\Report\CellAlign;
-use Fisharebest\Webtrees\Report\LayoutBlockData;
 use Fisharebest\Webtrees\Report\Style;
 use Fisharebest\Webtrees\Report\TextCellData;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -51,22 +50,5 @@ class TextCellDataTest extends TestCase
         self::assertSame('#000000', $data->border_color);
         self::assertSame('#333333', $data->text_color);
         self::assertSame('https://example.com', $data->url);
-    }
-
-    public function testImplementsLayoutBlockData(): void
-    {
-        $style = new Style('body', '', 12.0);
-        $data  = new TextCellData(
-            text: '',
-            style: $style,
-            align: CellAlign::Left,
-            background_color: '',
-            border: '',
-            border_color: '',
-            text_color: '',
-            url: '',
-        );
-
-        self::assertInstanceOf(LayoutBlockData::class, $data);
     }
 }

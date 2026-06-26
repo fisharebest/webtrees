@@ -69,7 +69,7 @@ class ListsMenuModule extends AbstractModule implements ModuleMenuInterface
             ->filter()
             ->sort(static fn (Menu $x, Menu $y): int => I18N::comparator()($x->getLabel(), $y->getLabel()));
 
-        if ($submenus->isEmpty()) {
+        if ($submenus->count() === 0) {
             return null;
         }
 

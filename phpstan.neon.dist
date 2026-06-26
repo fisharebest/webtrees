@@ -6,7 +6,7 @@ parameters:
         - php
         - phtml
 
-    level: 3
+    level: 4
 
     paths:
         - index.php

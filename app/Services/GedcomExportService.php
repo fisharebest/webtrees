@@ -320,16 +320,13 @@ class GedcomExportService
         // Preserve some values from the original header
         $header = Registry::headerFactory()->make('HEAD', $tree) ?? Registry::headerFactory()->new('HEAD', '0 HEAD', null, $tree);
 
-        // There should always be a header record.
-        if ($header instanceof Header) {
-            foreach ($header->facts(['COPR', 'LANG', 'PLAC', 'NOTE'], false, $access_level) as $fact) {
-                $gedcom .= "\n" . $fact->gedcom();
-            }
+        foreach ($header->facts(['COPR', 'LANG', 'PLAC', 'NOTE'], false, $access_level) as $fact) {
+            $gedcom .= "\n" . $fact->gedcom();
+        }
 
-            if ($include_sub) {
-                foreach ($header->facts(['SUBM', 'SUBN'], false, $access_level) as $fact) {
-                    $gedcom .= "\n" . $fact->gedcom();
-                }
+        if ($include_sub) {
+            foreach ($header->facts(['SUBM', 'SUBN'], false, $access_level) as $fact) {
+                $gedcom .= "\n" . $fact->gedcom();
             }
         }
 

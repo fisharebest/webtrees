@@ -165,14 +165,12 @@ class DescendancyReportModuleTest extends TestCase
         $renderer = new HtmlRenderer();
         (new ParserGenerate($xml, $renderer, $vars, $tree, Webtrees::NAME . ' ' . Webtrees::VERSION, Registry::timestampFactory()->now()))->process();
         $html = $renderer->output();
-        self::assertIsString($html);
         self::assertStringStartsWith('<', $html);
         self::assertStringEndsWith('>', $html);
 
         $renderer = new PdfRenderer();
         (new ParserGenerate($xml, $renderer, $vars, $tree, Webtrees::NAME . ' ' . Webtrees::VERSION, Registry::timestampFactory()->now()))->process();
         $pdf = $renderer->output();
-        self::assertIsString($pdf);
         self::assertStringStartsWith('%PDF', $pdf);
         self::assertStringEndsWith("%%EOF\n", $pdf);
     }
