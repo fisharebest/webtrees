@@ -69,9 +69,6 @@ final class SearchGeneralPage implements RequestHandlerInterface
         $search_sources      = Validator::queryParams($request)->boolean('search_sources', false);
         $search_notes        = Validator::queryParams($request)->boolean('search_notes', false);
 
-        // Where to search
-        $search_tree_names = Validator::queryParams($request)->list('search_trees');
-
         $exist_notes = DB::table('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Note::RECORD_TYPE)
@@ -106,6 +103,9 @@ final class SearchGeneralPage implements RequestHandlerInterface
         } else {
             $all_trees = new Collection([$tree]);
         }
+
+        // Where to search
+        $search_tree_names = Validator::queryParams($request)->list('search_trees');
 
         $search_trees = $all_trees
             ->filter(static fn (Tree $tree): bool => in_array($tree->name(), $search_tree_names, true));
@@ -211,7 +211,6 @@ final class SearchGeneralPage implements RequestHandlerInterface
         ) {
             return redirect($locations->first()->url());
         }
-
 
         if (
             $individuals->isEmpty() &&
