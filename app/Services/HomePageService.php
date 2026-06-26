@@ -339,9 +339,9 @@ class HomePageService
     }
 
     /**
-     * Take a list of block names, and return block (module) objects.
+     * Take a list of block names and return block (module) objects.
      *
-     * @param Collection<int,string>               $blocks
+     * @param Collection<int,string>                      $blocks
      * @param Collection<array-key,ModuleBlockInterface> $active_blocks
      *
      * @return Collection<array-key,ModuleBlockInterface>

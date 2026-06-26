@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenAction;
@@ -23,18 +22,21 @@ use Fisharebest\Webtrees\View;
 <form method="post" action="<?= e(route(ReorderChildrenAction::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>" class="wt-page-content">
     <input type="hidden" name="url" value="<?= e($url) ?>">
     <div class="wt-sortable-list">
-        <?php foreach ($family->facts(['CHIL'])->filter(static fn (Fact $fact): bool => $fact->target() instanceof Individual) as $fact) : ?>
-            <div class="card my-2 wt-sortable-item" data-wt-sort-by-date="<?= $fact->target()->getBirthDate()->julianDay() ?>">
-                <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
-                <div class="card-header">
-                    <?= view('edit/reorder-card-header', ['title' => $fact->target()->fullName()]) ?>
-                </div>
+        <?php foreach ($family->facts(['CHIL']) as $fact) : ?>
+            <?php $child = $fact->target(); ?>
+            <?php if ($child instanceof Individual) : ?>
+                <div class="card my-2 wt-sortable-item" data-wt-sort-by-date="<?= $child->getBirthDate()->julianDay() ?>">
+                    <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
+                    <div class="card-header">
+                        <?= view('edit/reorder-card-header', ['title' => $child->fullName()]) ?>
+                    </div>
 
-                <div class="card-body">
-                    <?= $fact->target()->formatFirstMajorFact(Gedcom::BIRTH_EVENTS, 2) ?>
-                    <?= $fact->target()->formatFirstMajorFact(Gedcom::DEATH_EVENTS, 2) ?>
+                    <div class="card-body">
+                        <?= $child->formatFirstMajorFact(Gedcom::BIRTH_EVENTS, 2) ?>
+                        <?= $child->formatFirstMajorFact(Gedcom::DEATH_EVENTS, 2) ?>
+                    </div>
                 </div>
-            </div>
+            <?php endif ?>
         <?php endforeach ?>
     </div>
 

@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Report\VariableTable;
 #[CoversClass(PlaceholderExpander::class)]
 class PlaceholderExpanderTest extends TestCase
 {
+    /** @param array<string,string> $vars */
     private function createExpander(array $vars = []): PlaceholderExpander
     {
         return new PlaceholderExpander(new VariableTable($vars));

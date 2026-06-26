@@ -1028,8 +1028,8 @@ class SearchService
     /**
      * Apply search filters to a SQL query column.  Apply collation rules to MySQL.
      *
-     * @param Expression|string $column
-     * @param array<string>     $search_terms
+     * @param Expression<literal-string|int|float>|string $column
+     * @param array<string>                                $search_terms
      */
     private function whereSearch(Builder $query, Expression|string $column, array $search_terms): void
     {
