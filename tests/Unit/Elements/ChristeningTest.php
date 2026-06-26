@@ -21,9 +21,9 @@ namespace Fisharebest\Webtrees\Tests\Unit\Elements;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Elements\Christening;
-use Fisharebest\Webtrees\Report\AbstractElement;
+use Fisharebest\Webtrees\Report\Element;
 
-#[CoversClass(AbstractElement::class)]
+#[CoversClass(Element::class)]
 #[CoversClass(Christening::class)]
 class ChristeningTest extends AbstractElementTestCase
 {

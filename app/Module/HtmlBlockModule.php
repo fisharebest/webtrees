@@ -133,7 +133,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $title          = Validator::parsedBody($request)->string('title');
         $html           = Validator::parsedBody($request)->string('html');
         $show_timestamp = Validator::parsedBody($request)->boolean('show_timestamp');
-        $languages      = Validator::parsedBody($request)->array('languages');
+        $languages      = Validator::parsedBody($request)->list('languages');
 
         $this->setBlockSetting($block_id, 'title', $title);
         $this->setBlockSetting($block_id, 'html', $this->html_service->sanitize($html));

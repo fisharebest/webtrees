@@ -35,8 +35,8 @@ use function redirect;
 readonly class EditFactAction implements RequestHandlerInterface
 {
     public function __construct(
-        private readonly GedcomEditService $gedcom_edit_service,
-        private readonly ModuleService $module_service
+        private GedcomEditService $gedcom_edit_service,
+        private ModuleService $module_service
     ) {
     }
 
@@ -50,15 +50,15 @@ readonly class EditFactAction implements RequestHandlerInterface
         $record = Auth::checkRecordAccess($record, true);
 
         $keep_chan = Validator::parsedBody($request)->boolean('keep_chan', false);
-        $levels    = Validator::parsedBody($request)->array('levels');
-        $tags      = Validator::parsedBody($request)->array('tags');
-        $values    = Validator::parsedBody($request)->array('values');
+        $levels    = Validator::parsedBody($request)->list('levels');
+        $tags      = Validator::parsedBody($request)->list('tags');
+        $values    = Validator::parsedBody($request)->list('values');
         $gedcom    = $this->gedcom_edit_service->editLinesToGedcom($record::RECORD_TYPE, $levels, $tags, $values, false);
 
         $census_assistant = $this->module_service->findByInterface(CensusAssistantModule::class)->first();
 
         if ($census_assistant instanceof CensusAssistantModule && $record instanceof Individual) {
-            $ca_individuals = Validator::parsedBody($request)->array('ca_individuals')['xref'] ?? [];
+            $ca_individuals = Validator::parsedBody($request)->arrayArray('ca_individuals')['xref'] ?? [];
 
             if ($ca_individuals !== []) {
                 $gedcom = $census_assistant->updateCensusAssistant($request, $record, $fact_id, $gedcom, $keep_chan);

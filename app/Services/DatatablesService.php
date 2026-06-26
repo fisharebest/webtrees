@@ -51,7 +51,7 @@ class DatatablesService
         $search = Validator::queryParams($request)->array('search')['value'] ?? '';
         $start  = Validator::queryParams($request)->integer('start', 0);
         $length = Validator::queryParams($request)->integer('length', 0);
-        $order  = Validator::queryParams($request)->array('order');
+        $order  = Validator::queryParams($request)->arrayArray('order');
         $draw   = Validator::queryParams($request)->integer('draw', 0);
 
         // Count unfiltered records
@@ -114,18 +114,18 @@ class DatatablesService
     /**
      * Apply filtering and pagination to a database query, and generate a response suitable for datatables.
      *
-     * @param ServerRequestInterface                   $request        Includes the datatables request parameters.
-     * @param Builder                                  $query          A query to fetch the unfiltered rows and columns.
-     * @param array<string>                            $search_columns The names of searchable columns.
-     * @param array<string|Expression<literal-string>> $sort_columns   Sort column mapping.
-     * @param Closure                                  $callback       Converts a row-object to an array-of-columns.
+     * @param ServerRequestInterface                            $request        Includes the datatables request parameters.
+     * @param Builder                                           $query          A query to fetch the unfiltered rows and columns.
+     * @param array<string>                                     $search_columns The names of searchable columns.
+     * @param array<string|Expression<literal-string|int|float>> $sort_columns   Sort column mapping.
+     * @param Closure                                           $callback       Converts a row-object to an array-of-columns.
      */
     public function handleQuery(ServerRequestInterface $request, Builder $query, array $search_columns, array $sort_columns, Closure $callback): ResponseInterface
     {
         $search = Validator::queryParams($request)->array('search')['value'] ?? '';
         $start  = Validator::queryParams($request)->integer('start', 0);
         $length = Validator::queryParams($request)->integer('length', 0);
-        $order  = Validator::queryParams($request)->array('order');
+        $order  = Validator::queryParams($request)->arrayArray('order');
         $draw   = Validator::queryParams($request)->integer('draw', 0);
 
         // Count unfiltered records
@@ -149,7 +149,7 @@ class DatatablesService
                 // Columns in datatables are numbered from zero.
                 // Columns in MySQL are numbered starting with one.
                 // If not specified, the Nth table column maps onto the Nth query column.
-                $sort_column = $sort_columns[$value['column']] ?? new Expression(1 + $value['column']);
+                $sort_column = $sort_columns[$value['column']] ?? new Expression(1 + (int) $value['column']);
 
                 $query->orderBy($sort_column, $value['dir']);
             }

@@ -202,7 +202,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
         $filter     = Validator::parsedBody($request)->string('filter');
         $info_style = Validator::parsedBody($request)->string('infoStyle');
         $sort_style = Validator::parsedBody($request)->string('sortStyle');
-        $events     = Validator::parsedBody($request)->array('events');
+        $events     = Validator::parsedBody($request)->list('events');
 
         $this->setBlockSetting($block_id, 'filter', $filter);
         $this->setBlockSetting($block_id, 'infoStyle', $info_style);

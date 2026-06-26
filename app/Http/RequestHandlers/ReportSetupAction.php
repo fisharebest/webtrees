@@ -58,7 +58,7 @@ final class ReportSetupAction implements RequestHandlerInterface
             'report'      => $report,
             'destination' => Validator::parsedBody($request)->string('destination'),
             'format'      => Validator::parsedBody($request)->string('format'),
-            'varnames'    => Validator::parsedBody($request)->array('varnames'),
+            'varnames'    => Validator::parsedBody($request)->list('varnames'),
             'vars'        => Validator::parsedBody($request)->array('vars'),
         ]));
     }

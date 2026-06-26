@@ -33,6 +33,8 @@ use Fisharebest\Webtrees\Services\ModuleService;
 
 use function array_merge;
 use function class_exists;
+use function file_put_contents;
+use function is_file;
 use function html_entity_decode;
 use function in_array;
 use function mb_strtolower;
@@ -262,16 +264,13 @@ class I18N
     {
         self::$locale = Locale::create($code);
 
-        // Load the translation file
-        $translation_file = __DIR__ . '/../resources/lang/' . self::$locale->languageTag() . '/messages.php';
+        // Use the generated translations when they are present, otherwise build them from the source .po file.
+        $translation_file = Webtrees::ROOT_DIR . 'resources/lang/' . self::$locale->languageTag() . '/messages.php';
 
-        try {
+        if (is_file($translation_file)) {
             $translation  = new Translation($translation_file);
             $translations = $translation->asArray();
-        } catch (Exception) {
-            // The translations files are created during the build process, and are
-            // not included in the source code.
-            // Assuming we are using dev code, and build (or rebuild) the files.
+        } else {
             $po_file      = Webtrees::ROOT_DIR . 'resources/lang/' . self::$locale->languageTag() . '/messages.po';
             $translation  = new Translation($po_file);
             $translations = $translation->asArray();

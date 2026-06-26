@@ -100,7 +100,7 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
     }
 
     /**
-     * Update the access levels of the modules.
+     * Update the order of the modules.
      *
      * @template T of ModuleInterface
      *
@@ -109,7 +109,7 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
     protected function updateOrder(string $interface, string $column, ServerRequestInterface $request): void
     {
         $modules = $this->module_service->findByInterface($interface, true);
-        $order   = Validator::parsedBody($request)->array('order');
+        $order   = Validator::parsedBody($request)->list('order');
         $order   = array_flip($order);
 
         foreach ($modules as $module) {

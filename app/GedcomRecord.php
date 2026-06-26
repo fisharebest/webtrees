@@ -646,7 +646,7 @@ class GedcomRecord
             $date = $chan->date()->minimumDate();
             $ymd = sprintf('%04d-%02d-%02d', $date->year(), $date->month(), $date->day());
 
-            if ($ymd !== '') {
+            if ($ymd !== '0000-00-00') {
                 // The CHAN event has a valid DATE.
                 if (preg_match('/\n3 TIME (([01]\d|2[0-3]):([0-5]\d):([0-5]\d))/', $chan->gedcom(), $match) === 1) {
                     return Registry::timestampFactory()->fromString($ymd . $match[1], 'Y-m-d H:i:s');

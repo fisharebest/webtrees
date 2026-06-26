@@ -23,6 +23,7 @@ use DomainException;
 
 use function hexdec;
 use function preg_match;
+use function sprintf;
 
 /**
  * An RGB color parsed from an HTML "#RRGGBB" string.
@@ -55,5 +56,13 @@ final readonly class HexColor
         $this->red   = (int) hexdec($match[1]);
         $this->green = (int) hexdec($match[2]);
         $this->blue  = (int) hexdec($match[3]);
+    }
+
+    /**
+     * Return the color as a normalized "#RRGGBB" uppercase hex string.
+     */
+    public function hex(): string
+    {
+        return sprintf('#%02X%02X%02X', $this->red, $this->green, $this->blue);
     }
 }

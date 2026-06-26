@@ -300,7 +300,7 @@ class TreeView
                 $nb = count($fop);
                 foreach ($fop as $p) {
                     $n++;
-                    $u = $unique ? 'c' : ($n === $nb || empty($p[1]) ? 'b' : 'h');
+                    $u = $unique ? 'c' : ($n === $nb ? 'b' : 'h');
                     $html .= '<tr><td ' . ($gen === 0 ? ' abbr="p' . $p[1]->xref() . '@' . $u . '"' : '') . '>' . $this->drawPerson($p[0], $gen - 1, 1, $p[1], $u, false) . '</td></tr>';
                 }
             }

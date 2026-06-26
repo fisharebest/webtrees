@@ -21,13 +21,7 @@ namespace Fisharebest\Webtrees\Report;
 
 /**
  * A report element that triggers a page break in the output.
- *
- * @extends AbstractElement<AbstractRenderer>
  */
-class NewPageElement extends AbstractElement
+final class NewPageElement extends Element
 {
-    public function render(AbstractRenderer $renderer, bool $layout = true): void
-    {
-        $renderer->newPage();
-    }
 }

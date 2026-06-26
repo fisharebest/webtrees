@@ -42,7 +42,7 @@ final class ReorderChildrenAction implements RequestHandlerInterface
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
-        $order = Validator::parsedBody($request)->array('order');
+        $order = Validator::parsedBody($request)->list('order');
         $url   = Validator::parsedBody($request)->isLocalUrl()->string('url', $family->url());
 
         $fake_facts = ['0 @' . $family->xref() . '@ FAM'];

@@ -79,11 +79,11 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
     ];
 
     public function __construct(
-        private readonly GedcomExportService $gedcom_export_service,
-        private readonly MaintenanceModeService $maintenance_mode_service,
-        private readonly PendingChangesService $pending_changes_service,
-        private readonly TreeService $tree_service,
-        private readonly UpgradeService $upgrade_service,
+        private GedcomExportService $gedcom_export_service,
+        private MaintenanceModeService $maintenance_mode_service,
+        private PendingChangesService $pending_changes_service,
+        private TreeService $tree_service,
+        private UpgradeService $upgrade_service,
     ) {
     }
 
@@ -107,7 +107,6 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
             case self::STEP_EXPORT:
                 $tree_name = Validator::queryParams($request)->string('tree');
                 $tree      = $this->tree_service->all()[$tree_name];
-                assert($tree instanceof Tree);
 
                 return $this->wizardStepExport($tree);
 

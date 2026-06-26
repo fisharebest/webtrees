@@ -12,27 +12,25 @@ concurrency:
 
 jobs:
   run:
+    name: phpunit PHP ${{ matrix.php-version }}
     if: ${{ !startsWith(github.event.head_commit.message, 'Translation:') }}
-    # The CODECOV_TOKEN is stored as environment secret.
-    environment: codecov
-    runs-on: ${{ matrix.operating-system }}
-    name: Testing PHP ${{ matrix.php-version }} on ${{ matrix.operating-system }}
-
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        operating-system: ['ubuntu-latest']
         php-version: ['8.3', '8.4', '8.5', '8.6']
       fail-fast: false
+    # The CODECOV_TOKEN is stored as environment secret.
+    environment: codecov
 
     steps:
-      - uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # v2
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: ${{ matrix.php-version }}
           ini-file: 'development'
           extensions: gd,intl,mbstring,sqlite,zip
           coverage: pcov
 
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           # Don't leave GITHUB_TOKEN in .git/config
           persist-credentials: false
@@ -43,7 +41,7 @@ jobs:
 
       - run: vendor/bin/phpunit --coverage-clover=tests/coverage.xml
 
-      - uses: codecov/codecov-action@57e3a136b779b570ffcdbf80b3bdc90e7fab3de2 # v6
+      - uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: tests/coverage.xml
