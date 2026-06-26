@@ -117,7 +117,7 @@ class DatatablesService
      * @param ServerRequestInterface                   $request        Includes the datatables request parameters.
      * @param Builder                                  $query          A query to fetch the unfiltered rows and columns.
      * @param array<string>                            $search_columns The names of searchable columns.
-     * @param array<string|Expression<literal-string>> $sort_columns   Sort column mapping.
+     * @param array<string|Expression>               $sort_columns   Sort column mapping.
      * @param Closure                                  $callback       Converts a row-object to an array-of-columns.
      */
     public function handleQuery(ServerRequestInterface $request, Builder $query, array $search_columns, array $sort_columns, Closure $callback): ResponseInterface

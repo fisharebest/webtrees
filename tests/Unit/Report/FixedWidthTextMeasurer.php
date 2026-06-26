@@ -33,6 +33,6 @@ final class FixedWidthTextMeasurer implements TextMeasurerInterface
 
     public function truncate(string $text, float $width, Style $style): string
     {
-        return mb_substr($text, 0, $width);
+        return mb_substr($text, 0, (int) $width);
     }
 }

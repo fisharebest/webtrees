@@ -342,9 +342,9 @@ class HomePageService
      * Take a list of block names, and return block (module) objects.
      *
      * @param Collection<int,string>               $blocks
-     * @param Collection<int,ModuleBlockInterface> $active_blocks
+     * @param Collection<array-key,ModuleBlockInterface> $active_blocks
      *
-     * @return Collection<int,ModuleBlockInterface>
+     * @return Collection<array-key,ModuleBlockInterface>
      */
     private function filterActiveBlocks(Collection $blocks, Collection $active_blocks): Collection
     {

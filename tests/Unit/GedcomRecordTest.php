@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\User;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Auth;
@@ -35,7 +36,7 @@ class GedcomRecordTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    private UserInterface $user;
+    private User $user;
     private Tree $tree;
 
     public function setUp(): void

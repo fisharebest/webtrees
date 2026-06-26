@@ -810,12 +810,13 @@ class ModuleService
     /**
      * During setup, we'll need access to some languages.
      *
-     * @return Collection<string,ModuleInterface>
+     * @return Collection<string,ModuleLanguageInterface>
      */
     public function setupLanguages(): Collection
     {
         return $this->coreModules()
-            ->filter(static fn (ModuleInterface $module): bool => $module instanceof ModuleLanguageInterface && $module->isEnabledByDefault())
+            ->whereInstanceOf(ModuleLanguageInterface::class)
+            ->filter(static fn (ModuleLanguageInterface $module): bool => $module->isEnabledByDefault())
             ->sort(static fn (ModuleLanguageInterface $x, ModuleLanguageInterface $y): int => $x->locale()->endonymSortable() <=> $y->locale()->endonymSortable());
     }
 

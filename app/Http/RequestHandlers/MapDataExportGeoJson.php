@@ -96,7 +96,7 @@ final class MapDataExportGeoJson implements RequestHandlerInterface
             }
 
             $rows = $query
-                ->orderBy('place', 'DESC')
+                ->orderBy('place', 'desc')
                 ->select(['id', 'place', 'latitude', 'longitude'])
                 ->get();
 

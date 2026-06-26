@@ -968,7 +968,7 @@ class Statistics
         $row = DB::table('change')
             ->where('gedcom_id', '=', $this->tree->id())
             ->where('status', '=', 'accepted')
-            ->orderBy('change_id', 'DESC')
+            ->orderBy('change_id', 'desc')
             ->select(['change_time'])
             ->first();
 
@@ -1368,62 +1368,62 @@ class Statistics
 
     public function oldestFather(): string
     {
-        return $this->data->parentsQuery('full', 'DESC', 'M', false);
+        return $this->data->parentsQuery('full', 'desc', 'M', false);
     }
 
     public function oldestFatherAge(string $show_years = '0'): string
     {
-        return $this->data->parentsQuery('age', 'DESC', 'M', (bool) $show_years);
+        return $this->data->parentsQuery('age', 'desc', 'M', (bool) $show_years);
     }
 
     public function oldestFatherName(): string
     {
-        return $this->data->parentsQuery('name', 'DESC', 'M', false);
+        return $this->data->parentsQuery('name', 'desc', 'M', false);
     }
 
     public function oldestMarriageFemale(): string
     {
-        return $this->data->marriageQuery('full', 'DESC', 'F', false);
+        return $this->data->marriageQuery('full', 'desc', 'F', false);
     }
 
     public function oldestMarriageFemaleAge(string $show_years = '0'): string
     {
-        return $this->data->marriageQuery('age', 'DESC', 'F', (bool) $show_years);
+        return $this->data->marriageQuery('age', 'desc', 'F', (bool) $show_years);
     }
 
     public function oldestMarriageFemaleName(): string
     {
-        return $this->data->marriageQuery('name', 'DESC', 'F', false);
+        return $this->data->marriageQuery('name', 'desc', 'F', false);
     }
 
     public function oldestMarriageMale(): string
     {
-        return $this->data->marriageQuery('full', 'DESC', 'M', false);
+        return $this->data->marriageQuery('full', 'desc', 'M', false);
     }
 
     public function oldestMarriageMaleAge(string $show_years = '0'): string
     {
-        return $this->data->marriageQuery('age', 'DESC', 'M', (bool) $show_years);
+        return $this->data->marriageQuery('age', 'desc', 'M', (bool) $show_years);
     }
 
     public function oldestMarriageMaleName(): string
     {
-        return $this->data->marriageQuery('name', 'DESC', 'M', false);
+        return $this->data->marriageQuery('name', 'desc', 'M', false);
     }
 
     public function oldestMother(): string
     {
-        return $this->data->parentsQuery('full', 'DESC', 'F', false);
+        return $this->data->parentsQuery('full', 'desc', 'F', false);
     }
 
     public function oldestMotherAge(string $show_years = '0'): string
     {
-        return $this->data->parentsQuery('age', 'DESC', 'F', (bool) $show_years);
+        return $this->data->parentsQuery('age', 'desc', 'F', (bool) $show_years);
     }
 
     public function oldestMotherName(): string
     {
-        return $this->data->parentsQuery('name', 'DESC', 'F', false);
+        return $this->data->parentsQuery('name', 'desc', 'F', false);
     }
 
     public function serverDate(): string
@@ -1785,22 +1785,22 @@ class Statistics
 
     public function topAgeOfMarriage(): string
     {
-        return $this->data->ageOfMarriageQuery('age', 'DESC', 1);
+        return $this->data->ageOfMarriageQuery('age', 'desc', 1);
     }
 
     public function topAgeOfMarriageFamilies(string $limit = '10'): string
     {
-        return $this->data->ageOfMarriageQuery('nolist', 'DESC', (int) $limit);
+        return $this->data->ageOfMarriageQuery('nolist', 'desc', (int) $limit);
     }
 
     public function topAgeOfMarriageFamiliesList(string $limit = '10'): string
     {
-        return $this->data->ageOfMarriageQuery('list', 'DESC', (int) $limit);
+        return $this->data->ageOfMarriageQuery('list', 'desc', (int) $limit);
     }
 
     public function topAgeOfMarriageFamily(): string
     {
-        return $this->data->ageOfMarriageQuery('name', 'DESC', 1);
+        return $this->data->ageOfMarriageQuery('name', 'desc', 1);
     }
 
     public function topTenLargestFamily(string $limit = '10'): string
