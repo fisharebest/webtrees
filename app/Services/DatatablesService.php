@@ -149,7 +149,7 @@ class DatatablesService
                 // Columns in datatables are numbered from zero.
                 // Columns in MySQL are numbered starting with one.
                 // If not specified, the Nth table column maps onto the Nth query column.
-                $sort_column = $sort_columns[$value['column']] ?? new Expression(1 + $value['column']);
+                $sort_column = $sort_columns[$value['column']] ?? new Expression(1 + (int) $value['column']);
 
                 $query->orderBy($sort_column, $value['dir']);
             }
