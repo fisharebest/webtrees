@@ -70,7 +70,7 @@ final class SearchGeneralPage implements RequestHandlerInterface
         $search_notes        = Validator::queryParams($request)->boolean('search_notes', false);
 
         // Where to search
-        $search_tree_names = Validator::queryParams($request)->array('search_trees');
+        $search_tree_names = Validator::queryParams($request)->list('search_trees');
 
         $exist_notes = DB::table('other')
             ->where('o_file', '=', $tree->id())

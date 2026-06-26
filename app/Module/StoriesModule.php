@@ -263,7 +263,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $xref        = Validator::parsedBody($request)->string('xref');
         $story_body  = Validator::parsedBody($request)->string('story_body');
         $story_title = Validator::parsedBody($request)->string('story_title');
-        $languages   = Validator::parsedBody($request)->array('languages');
+        $languages   = Validator::parsedBody($request)->list('languages');
         $default_url = route('module', ['module' => $this->name(), 'action' => 'Admin', 'tree' => $tree->name()]);
         $url         = Validator::parsedBody($request)->isLocalUrl()->string('url', $default_url);
         $story_body  = $this->html_service->sanitize($story_body);

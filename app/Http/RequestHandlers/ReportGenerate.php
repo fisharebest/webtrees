@@ -62,7 +62,7 @@ final class ReportGenerate implements RequestHandlerInterface
 
         Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
 
-        $varnames = Validator::queryParams($request)->array('varnames');
+        $varnames = Validator::queryParams($request)->list('varnames');
         $vars     = Validator::queryParams($request)->array('vars');
 
         // Ensure we have an empty value for checkboxes in the report options.

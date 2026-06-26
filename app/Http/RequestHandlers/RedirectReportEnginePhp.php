@@ -51,7 +51,7 @@ final class RedirectReportEnginePhp implements RequestHandlerInterface
             $params = [
                 'report'   => basename(dirname($report)),
                 'tree'     => $tree->name(),
-                'varnames' => Validator::queryParams($request)->array('varnames'),
+                'varnames' => Validator::queryParams($request)->list('varnames'),
                 'vars'     => Validator::queryParams($request)->array('vars'),
             ];
 

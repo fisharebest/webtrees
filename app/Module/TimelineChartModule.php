@@ -117,7 +117,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         $tree  = Validator::attributes($request)->tree();
         $user  = Validator::attributes($request)->user();
         $scale = Validator::attributes($request)->isBetween(self::MINIMUM_SCALE, self::MAXIMUM_SCALE)->integer('scale');
-        $xrefs = Validator::queryParams($request)->array('xrefs');
+        $xrefs = Validator::queryParams($request)->list('xrefs');
         $ajax  = Validator::queryParams($request)->boolean('ajax', false);
         $xrefs = array_filter(array_unique($xrefs));
 

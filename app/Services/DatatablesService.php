@@ -51,7 +51,7 @@ class DatatablesService
         $search = Validator::queryParams($request)->array('search')['value'] ?? '';
         $start  = Validator::queryParams($request)->integer('start', 0);
         $length = Validator::queryParams($request)->integer('length', 0);
-        $order  = Validator::queryParams($request)->array('order');
+        $order  = Validator::queryParams($request)->arrayArray('order');
         $draw   = Validator::queryParams($request)->integer('draw', 0);
 
         // Count unfiltered records
@@ -125,7 +125,7 @@ class DatatablesService
         $search = Validator::queryParams($request)->array('search')['value'] ?? '';
         $start  = Validator::queryParams($request)->integer('start', 0);
         $length = Validator::queryParams($request)->integer('length', 0);
-        $order  = Validator::queryParams($request)->array('order');
+        $order  = Validator::queryParams($request)->arrayArray('order');
         $draw   = Validator::queryParams($request)->integer('draw', 0);
 
         // Count unfiltered records

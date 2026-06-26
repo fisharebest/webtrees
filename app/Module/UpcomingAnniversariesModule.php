@@ -228,7 +228,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
         $filter     = Validator::parsedBody($request)->boolean('filter');
         $info_style = Validator::parsedBody($request)->isInArrayKeys($this->infoStyles())->string('infoStyle');
         $sort_style = Validator::parsedBody($request)->isInArrayKeys($this->sortStyles())->string('sortStyle');
-        $events     = Validator::parsedBody($request)->array('events');
+        $events     = Validator::parsedBody($request)->list('events');
 
         $this->setBlockSetting($block_id, 'days', (string)$days);
         $this->setBlockSetting($block_id, 'filter', (string)$filter);

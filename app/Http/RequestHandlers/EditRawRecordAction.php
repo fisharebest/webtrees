@@ -43,8 +43,8 @@ final class EditRawRecordAction implements RequestHandlerInterface
         $record   = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record   = Auth::checkRecordAccess($record, true);
         $level0   = Validator::parsedBody($request)->string('level0');
-        $facts    = Validator::parsedBody($request)->array('fact');
-        $fact_ids = Validator::parsedBody($request)->array('fact_id');
+        $facts    = Validator::parsedBody($request)->list('fact');
+        $fact_ids = Validator::parsedBody($request)->list('fact_id');
 
         // Generate the level-0 line for the record.
         switch ($record->tag()) {

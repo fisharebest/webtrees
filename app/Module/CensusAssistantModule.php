@@ -95,7 +95,7 @@ class CensusAssistantModule extends AbstractModule
         $ca_title       = Validator::parsedBody($request)->string('ca_title');
         $ca_place       = Validator::parsedBody($request)->string('ca_place');
         $ca_citation    = Validator::parsedBody($request)->string('ca_citation');
-        $ca_individuals = Validator::parsedBody($request)->array('ca_individuals');
+        $ca_individuals = Validator::parsedBody($request)->arrayArray('ca_individuals');
         $ca_notes       = Validator::parsedBody($request)->string('ca_notes');
         $ca_census      = Validator::parsedBody($request)->string('ca_census');
 

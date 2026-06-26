@@ -95,18 +95,63 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request);
     }
 
-    public function testRequiredArrayParameter(): void
+    public function testRequiredListParameter(): void
     {
         $request = self::createStub(ServerRequestInterface::class);
         $request
             ->method('getQueryParams')
             ->willReturn(['param' => ['test'], 'invalid' => 'not_array']);
 
-        self::assertSame(['test'], Validator::queryParams($request)->array('param'));
+        self::assertSame(['test'], Validator::queryParams($request)->list('param'));
+
+        $this->expectException(HttpBadRequestException::class);
+
+        Validator::queryParams($request)->list('invalid');
+    }
+
+    public function testRequiredArrayParameter(): void
+    {
+        $request = self::createStub(ServerRequestInterface::class);
+        $request
+            ->method('getQueryParams')
+            ->willReturn(['param' => ['key' => 'value'], 'invalid' => ['key' => 1]]);
+
+        self::assertSame(['key' => 'value'], Validator::queryParams($request)->array('param'));
 
         $this->expectException(HttpBadRequestException::class);
 
         Validator::queryParams($request)->array('invalid');
+    }
+
+    public function testRequiredArrayArrayParameter(): void
+    {
+        $request = self::createStub(ServerRequestInterface::class);
+        $request
+            ->method('getQueryParams')
+            ->willReturn([
+                'param'   => ['xref' => ['X1']],
+                'invalid' => ['xref' => 'X1'],
+            ]);
+
+        self::assertSame(['xref' => ['X1']], Validator::queryParams($request)->arrayArray('param'));
+
+        $this->expectException(HttpBadRequestException::class);
+
+        Validator::queryParams($request)->arrayArray('invalid');
+    }
+
+    public function testRequiredArrayArrayParameterNestedArray(): void
+    {
+        $request = self::createStub(ServerRequestInterface::class);
+        $request
+            ->method('getQueryParams')
+            ->willReturn([
+                'invalid-nesting' => ['xref' => [['X1']]],
+            ]);
+
+        $this->expectException(HttpBadRequestException::class);
+
+        Validator::queryParams($request)->arrayArray('invalid-nesting');
     }
 
     public function testRequiredBooleanParameter(): void
@@ -326,8 +371,8 @@ class ValidatorTest extends TestCase
             ->willReturn(['valid' => 'X1', 'invalid' => '@X1@', 'valid-array' => ['X1'], 'invalid-array' => ['@X1@']]);
 
         self::assertSame('X1', Validator::queryParams($request)->isXref()->string('valid'));
-        self::assertSame(['X1'], Validator::queryParams($request)->isXref()->array('valid-array'));
-        self::assertSame([], Validator::queryParams($request)->isXref()->array('invalid-array'));
+        self::assertSame(['X1'], Validator::queryParams($request)->isXref()->list('valid-array'));
+        self::assertSame([], Validator::queryParams($request)->isXref()->list('invalid-array'));
 
         $this->expectException(HttpBadRequestException::class);
 

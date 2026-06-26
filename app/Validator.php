@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function array_reduce;
+use function array_is_list;
 use function array_walk_recursive;
 use function ctype_digit;
 use function in_array;
@@ -42,7 +43,7 @@ use function substr;
  */
 class Validator
 {
-    /** @var array<int|string|Tree|UserInterface|array<int|string>> */
+    /** @var array<int|string|Tree|UserInterface|array<mixed>> */
     private array $parameters;
 
     private ServerRequestInterface $request;
@@ -51,7 +52,7 @@ class Validator
     private array $rules = [];
 
     /**
-     * @param array<int|string|Tree|UserInterface|array<int|string>> $parameters
+     * @param array<int|string|Tree|UserInterface|array<mixed>> $parameters
      */
     private function __construct(array $parameters, ServerRequestInterface $request, string $encoding)
     {
@@ -217,15 +218,69 @@ class Validator
     }
 
     /**
-     *
+     * @return list<string>
+     */
+    public function list(string $parameter): array
+    {
+        $values = $this->array($parameter);
+
+        if (!array_is_list($values)) {
+            throw new HttpBadRequestException(I18N::translate('The parameter “%s” is not a list.', $parameter));
+        }
+
+        return $values;
+    }
+
+    /**
      * @return array<string>
      */
     public function array(string $parameter): array
     {
-        $value = $this->parameters[$parameter] ?? null;
+        $values = $this->arrayData($parameter);
 
-        if (!is_array($value) && $value !== null) {
-            throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+        foreach ($values as $value) {
+            if (!is_string($value)) {
+                throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+            }
+        }
+
+        return $values;
+    }
+
+    /**
+     * @return array<array<string>>
+     */
+    public function arrayArray(string $parameter): array
+    {
+        $values = $this->arrayData($parameter);
+
+        foreach ($values as $array_value) {
+            if (!is_array($array_value)) {
+                $message = I18N::translate('The parameter “%s” is not an array of arrays.', $parameter);
+                throw new HttpBadRequestException($message);
+            }
+
+            foreach ($array_value as $value) {
+                if (!is_string($value)) {
+                    $message = I18N::translate('The parameter “%s” is not an array of array of strings.', $parameter);
+
+                    throw new HttpBadRequestException($message);
+                }
+            }
+        }
+
+        return $values;
+    }
+
+    /**
+     * @return array<mixed>
+     */
+    private function arrayData(string $parameter): array
+    {
+        $value = $this->parameters[$parameter] ?? [];
+
+        if (!is_array($value)) {
+            throw new HttpBadRequestException(I18N::translate('The parameter “%s” is not an array.', $parameter));
         }
 
         $callback = static fn (array|null $value, Closure $rule): array|null => $rule($value);
