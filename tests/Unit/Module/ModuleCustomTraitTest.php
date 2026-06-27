@@ -23,9 +23,9 @@ use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\Tests\TestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 
-#[CoversClass(ModuleCustomTrait::class)]
+#[CoversTrait(ModuleCustomTrait::class)]
 class ModuleCustomTraitTest extends TestCase
 {
     private function createCustomModule(): AbstractModule&ModuleCustomInterface
