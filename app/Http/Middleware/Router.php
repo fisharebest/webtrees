@@ -24,7 +24,9 @@ use Aura\Router\RouterContainer;
 use Aura\Router\Rule\Accepts;
 use Aura\Router\Rule\Allows;
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Dispatcher;
+use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -37,6 +39,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function explode;
 use function implode;
+use function redirect;
+use function route;
 use function str_contains;
 
 readonly class Router implements MiddlewareInterface
@@ -118,8 +122,18 @@ readonly class Router implements MiddlewareInterface
                     Registry::container()->set(Tree::class, $value);
                 }
 
-                // Missing mandatory parameter? Let the default handler take care of it.
+                // The tree is missing, or it is private and the current user cannot see it.
                 if ($value === null && str_contains($route->path, '{tree}')) {
+                    // A guest may be able to see this tree once they sign in - and we must
+                    // not reveal whether a private tree exists. Send them to the login page,
+                    // preserving the requested URL so they return to it afterwards (the same
+                    // pattern as AuthLoggedIn/AuthMember). LoginPage and LoginAction both
+                    // enforce isLocalUrl() on that URL, so this is not an open redirect.
+                    if (Auth::id() === null) {
+                        return redirect(route(LoginPage::class, ['url' => (string) $request->getUri()]));
+                    }
+
+                    // A logged-in user has nothing to gain by signing in again.
                     return $handler->handle($request);
                 }
             }
