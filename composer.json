@@ -116,10 +116,7 @@
         "webtrees:phpstan": [
             "vendor/bin/phpstan analyze -v --memory-limit=-1"
         ],
-        "webtrees:phpstan-baseline": [
-            "vendor/bin/phpstan analyze --memory-limit=-1 --generate-baseline=phpstan-baseline.neon"
-        ],
-        "webtrees:test": [
+        "webtrees:phpunit": [
             "vendor/bin/phpunit"
         ],
         "webtrees:coverage": [
