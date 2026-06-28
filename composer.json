@@ -111,16 +111,16 @@
             "zip --quiet --recurse-paths --move -9 webtrees-`git describe`.zip webtrees"
         ],
         "webtrees:phpcs": [
-            "vendor/bin/phpcs --colors --exclude=Generic.Files.LineLength index.php app tests"
+            "phpcs --colors --exclude=Generic.Files.LineLength index.php app tests"
         ],
         "webtrees:phpstan": [
-            "vendor/bin/phpstan analyze -v --memory-limit=-1"
+            "phpstan analyze -v --memory-limit=-1"
         ],
         "webtrees:phpunit": [
-            "vendor/bin/phpunit"
+            "phpunit"
         ],
         "webtrees:coverage": [
-            "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html=tests/coverage"
+            "XDEBUG_MODE=coverage phpunit --coverage-html=tests/coverage"
         ],
         "webtrees:po": [
             "sed -i.bak -e 's/\\(I18N::[^)]*[)]\\)/<?php echo \\1; ?>/g' resources/xml/reports/*.xml",
