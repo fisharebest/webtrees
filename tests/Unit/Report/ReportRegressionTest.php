@@ -21,7 +21,9 @@ namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Factories\ImageFactory;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Report\AbstractParser;
 use Fisharebest\Webtrees\Report\AbstractRenderer;
 use Fisharebest\Webtrees\Report\Cell;
@@ -69,6 +71,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 use function array_merge;
+use function extension_loaded;
 use function file_exists;
 use function file_get_contents;
 use function file_put_contents;
@@ -243,6 +246,15 @@ class ReportRegressionTest extends TestCase
 
         // Some reports (those that embed media) rely on this preference.
         Site::setPreference('INDEX_DIRECTORY', 'tests/data/');
+
+        // Force the GD image driver for deterministic thumbnail output.
+        // Imagick and GD produce different bytes for the same operations,
+        // so snapshots must be generated with a consistent driver.
+        $php_service = self::createStub(PhpService::class);
+        $php_service->method('extensionLoaded')->willReturnCallback(
+            static fn (string $extension): bool => $extension !== 'imagick' && extension_loaded($extension)
+        );
+        Registry::imageFactory(new ImageFactory($php_service));
 
         return $this->importTree('demo.ged');
     }
