@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Cli\Commands;
 use Fisharebest\Localization\Translation;
 use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
@@ -30,27 +31,50 @@ use function count;
 use function dirname;
 use function file_put_contents;
 use function glob;
+use function is_dir;
+use function rtrim;
 use function var_export;
+
+use const DIRECTORY_SEPARATOR;
 
 final class CompilePoFiles extends AbstractCommand
 {
-    private const string PO_FILE_PATTERN = Webtrees::ROOT_DIR . 'resources/lang/*/*.po';
+    private const string DEFAULT_SOURCE = Webtrees::ROOT_DIR . 'resources/lang';
 
     protected function configure(): void
     {
         $this
             ->setName(name: 'compile-po-files')
-            ->setDescription(description: 'Convert the PO files into PHP files');
+            ->setDescription(description: 'Convert the PO files into PHP files')
+            ->addOption(name: 'source', shortcut: 's', mode: InputOption::VALUE_REQUIRED, description: 'Source folder containing LANG/messages.po files', default: self::DEFAULT_SOURCE)
+            ->addOption(name: 'destination', shortcut: 'd', mode: InputOption::VALUE_REQUIRED, description: 'Destination folder for LANG/messages.php files');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle(input: $input, output: $output);
 
-        $po_files = glob(pattern: self::PO_FILE_PATTERN);
+        $source      = rtrim($this->stringOption(input: $input, name: 'source'), DIRECTORY_SEPARATOR);
+        $destination = $this->stringOption(input: $input, name: 'destination');
+        $destination = $destination === '' ? $source : rtrim($destination, DIRECTORY_SEPARATOR);
+
+        if (!is_dir($source)) {
+            $io->error('The source directory does not exist: ' . $source);
+
+            return self::FAILURE;
+        }
+
+        if (!is_dir($destination)) {
+            $io->error('The destination directory does not exist: ' . $destination);
+
+            return self::FAILURE;
+        }
+
+        $po_file_pattern = $source . DIRECTORY_SEPARATOR . '*' . DIRECTORY_SEPARATOR . 'messages.po';
+        $po_files        = glob(pattern: $po_file_pattern);
 
         if ($po_files === false || $po_files === []) {
-            $io->error('Failed to find any PO files matching ' . self::PO_FILE_PATTERN);
+            $io->error('Failed to find any PO files matching ' . $po_file_pattern);
 
             return self::FAILURE;
         }
@@ -60,7 +84,8 @@ final class CompilePoFiles extends AbstractCommand
         foreach ($po_files as $po_file) {
             $translation  = new Translation(filename: $po_file);
             $translations = $translation->asArray();
-            $php_file     = dirname(path: $po_file) . '/' . basename(path: $po_file, suffix: '.po') . '.php';
+            $language     = basename(path: dirname(path: $po_file));
+            $php_file     = $destination . DIRECTORY_SEPARATOR . $language . DIRECTORY_SEPARATOR . 'messages.php';
             $php_code     = "<?php\n\nreturn " . var_export(value: $translations, return: true) . ";\n";
             $bytes        = file_put_contents(filename: $php_file, data: $php_code);
 

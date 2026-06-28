@@ -136,7 +136,7 @@
         "ci" : [
             "@composer validate",
             "@composer install --quiet",
-            "@composer webtrees:test",
+            "@composer webtrees:phpunit",
             "@composer webtrees:phpcs",
             "@composer webtrees:phpstan"
         ]
