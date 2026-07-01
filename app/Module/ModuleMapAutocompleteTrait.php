@@ -36,13 +36,10 @@ trait ModuleMapAutocompleteTrait
 {
     /**
      * A unique internal name for this module (based on the installation folder).
-     *
-     * @return string
      */
     abstract public function name(): string;
 
     /**
-     * @param string $place
      *
      * @return array<string>
      */
@@ -81,18 +78,12 @@ trait ModuleMapAutocompleteTrait
         }
     }
 
-    /**
-     * @param string $place
-     *
-     * @return RequestInterface
-     */
     protected function createPlaceNameSearchRequest(string $place): RequestInterface
     {
         return new Request('GET', '');
     }
 
     /**
-     * @param ResponseInterface $response
      *
      * @return array<string>
      */

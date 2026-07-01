@@ -19,10 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Services\CalendarService;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -33,6 +36,7 @@ final class CalendarPage implements RequestHandlerInterface
     use ViewResponseTrait;
 
     public function __construct(
+        private readonly ModuleService $module_service,
         private readonly CalendarService $calendar_service,
     ) {
     }
@@ -40,6 +44,10 @@ final class CalendarPage implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();
+        $user     = Validator::attributes($request)->user();
+        $module   = $this->module_service->findByName('calendar-menu');
+        Auth::checkComponentAccess($module, ModuleMenuInterface::class, $tree, $user);
+
         $view     = Validator::attributes($request)->isInArray(['day', 'month', 'year'])->string('view');
         $cal      = Validator::queryParams($request)->string('cal', '');
         $day      = Validator::queryParams($request)->string('day', '');

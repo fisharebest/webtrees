@@ -28,10 +28,6 @@ trait ModuleShareTrait
 {
     /**
      * HTML to include in the share links page.
-     *
-     * @param GedcomRecord $record
-     *
-     * @return string
      */
     public function share(GedcomRecord $record): string
     {

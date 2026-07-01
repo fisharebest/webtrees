@@ -43,11 +43,6 @@ final class ContactPage implements RequestHandlerInterface
 
     private UserService $user_service;
 
-    /**
-     * @param CaptchaService $captcha_service
-     * @param MessageService $message_service
-     * @param UserService    $user_service
-     */
     public function __construct(
         CaptchaService $captcha_service,
         MessageService $message_service,

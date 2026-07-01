@@ -103,11 +103,6 @@ class CompressResponse implements MiddlewareInterface
         return null;
     }
 
-    /**
-     * @param ResponseInterface $response
-     *
-     * @return bool
-     */
     protected function isCompressible(ResponseInterface $response): bool
     {
         // Already encoded?

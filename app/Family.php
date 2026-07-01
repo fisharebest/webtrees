@@ -41,11 +41,9 @@ class Family extends GedcomRecord
     /**
      * Create a GedcomRecord object from raw GEDCOM data.
      *
-     * @param string      $xref
      * @param string      $gedcom  an empty string for new/pending records
      * @param string|null $pending null for a record with no pending edits,
      *                             empty string for records with pending deletions
-     * @param Tree        $tree
      */
     public function __construct(string $xref, string $gedcom, string|null $pending, Tree $tree)
     {
@@ -74,10 +72,6 @@ class Family extends GedcomRecord
 
     /**
      * Get the male (or first female) partner of the family
-     *
-     * @param int|null $access_level
-     *
-     * @return Individual|null
      */
     public function husband(int|null $access_level = null): Individual|null
     {
@@ -94,10 +88,6 @@ class Family extends GedcomRecord
 
     /**
      * Get the female (or second male) partner of the family
-     *
-     * @param int|null $access_level
-     *
-     * @return Individual|null
      */
     public function wife(int|null $access_level = null): Individual|null
     {
@@ -114,10 +104,6 @@ class Family extends GedcomRecord
 
     /**
      * Each object type may have its own special rules, and re-implement this function.
-     *
-     * @param int $access_level
-     *
-     * @return bool
      */
     protected function canShowByType(int $access_level): bool
     {
@@ -136,10 +122,6 @@ class Family extends GedcomRecord
 
     /**
      * Can the name of this record be shown?
-     *
-     * @param int|null $access_level
-     *
-     * @return bool
      */
     public function canShowName(int|null $access_level = null): bool
     {
@@ -150,11 +132,6 @@ class Family extends GedcomRecord
 
     /**
      * Find the spouse of a person.
-     *
-     * @param Individual $person
-     * @param int|null   $access_level
-     *
-     * @return Individual|null
      */
     public function spouse(Individual $person, int|null $access_level = null): Individual|null
     {
@@ -168,7 +145,6 @@ class Family extends GedcomRecord
     /**
      * Get the (zero, one or two) spouses from this family.
      *
-     * @param int|null $access_level
      *
      * @return Collection<int,Individual>
      */
@@ -185,7 +161,6 @@ class Family extends GedcomRecord
     /**
      * Get a list of this family’s children.
      *
-     * @param int|null $access_level
      *
      * @return Collection<int,Individual>
      */
@@ -212,8 +187,6 @@ class Family extends GedcomRecord
 
     /**
      * Number of children - for the individual list
-     *
-     * @return int
      */
     public function numberOfChildren(): int
     {
@@ -236,8 +209,6 @@ class Family extends GedcomRecord
 
     /**
      * Get marriage date
-     *
-     * @return Date
      */
     public function getMarriageDate(): Date
     {
@@ -251,8 +222,6 @@ class Family extends GedcomRecord
 
     /**
      * Get the marriage year - displayed on lists of families
-     *
-     * @return int
      */
     public function getMarriageYear(): int
     {
@@ -261,8 +230,6 @@ class Family extends GedcomRecord
 
     /**
      * Get the marriage place
-     *
-     * @return Place
      */
     public function getMarriagePlace(): Place
     {
@@ -386,8 +353,6 @@ class Family extends GedcomRecord
     /**
      * This function should be redefined in derived classes to show any major
      * identifying characteristics of this record.
-     *
-     * @return string
      */
     public function formatListDetails(): string
     {

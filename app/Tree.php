@@ -354,12 +354,6 @@ class Tree
 
     /**
      * Set the tree’s user-configuration settings.
-     *
-     * @param UserInterface $user
-     * @param string        $setting_name
-     * @param string        $setting_value
-     *
-     * @return self
      */
     public function setUserPreference(UserInterface $user, string $setting_name, string $setting_value): self
     {
@@ -384,12 +378,6 @@ class Tree
 
     /**
      * Get the tree’s user-configuration settings.
-     *
-     * @param UserInterface $user
-     * @param string        $setting_name
-     * @param string        $default
-     *
-     * @return string
      */
     public function getUserPreference(UserInterface $user, string $setting_name, string $default = ''): string
     {
@@ -408,8 +396,6 @@ class Tree
 
     /**
      * The ID of this tree
-     *
-     * @return int
      */
     public function id(): int
     {
@@ -418,10 +404,6 @@ class Tree
 
     /**
      * Can a user accept changes for this tree?
-     *
-     * @param UserInterface $user
-     *
-     * @return bool
      */
     public function canAcceptChanges(UserInterface $user): bool
     {
@@ -473,7 +455,7 @@ class Tree
         return Registry::gedcomRecordFactory()->new($xref, '', $gedcom, $this);
     }
 
-    public function createFamily(string $gedcom): GedcomRecord
+    public function createFamily(string $gedcom): Family
     {
         if (!str_starts_with($gedcom, '0 @@ FAM')) {
             throw new InvalidArgumentException('GedcomRecord::createFamily(' . $gedcom . ') does not begin 0 @@ FAM');

@@ -26,9 +26,6 @@ use Fig\Http\Message\StatusCodeInterface;
  */
 class HttpServerErrorException extends HttpException
 {
-    /**
-     * @param string $message
-     */
     public function __construct(string $message)
     {
         parent::__construct($message, StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);

@@ -39,8 +39,6 @@ class CaptchaService
 
     /**
      * Create the captcha
-     *
-     * @return string
      */
     public function createCaptcha(): string
     {
@@ -62,10 +60,6 @@ class CaptchaService
 
     /**
      * Check the user's response.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return bool
      */
     public function isRobot(ServerRequestInterface $request): bool
     {

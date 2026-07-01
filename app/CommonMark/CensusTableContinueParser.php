@@ -61,12 +61,6 @@ class CensusTableContinueParser extends AbstractBlockContinueParser
         $this->table->appendChild($this->tbody);
     }
 
-    /**
-     * @param Cursor                       $cursor
-     * @param BlockContinueParserInterface $activeBlockParser
-     *
-     * @return BlockContinue|null
-     */
     public function tryContinue(Cursor $cursor, BlockContinueParserInterface $activeBlockParser): BlockContinue|null
     {
         $line = $cursor->getLine();

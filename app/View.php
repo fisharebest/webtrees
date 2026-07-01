@@ -80,7 +80,6 @@ class View
     /**
      * Create a view from a template name and optional data.
      *
-     * @param string       $name
      * @param array<mixed> $data
      */
     public function __construct(string $name, array $data = [])
@@ -93,10 +92,6 @@ class View
      * Implementation of Blade "stacks".
      *
      * @see https://laravel.com/docs/5.5/blade#stacks
-     *
-     * @param string $stack
-     *
-     * @return void
      */
     public static function push(string $stack): void
     {
@@ -107,8 +102,6 @@ class View
 
     /**
      * Implementation of Blade "stacks".
-     *
-     * @return void
      */
     public static function endpush(): void
     {
@@ -123,10 +116,6 @@ class View
 
     /**
      * Variant of push that will only add one copy of each item.
-     *
-     * @param string $stack
-     *
-     * @return void
      */
     public static function pushunique(string $stack): void
     {
@@ -137,8 +126,6 @@ class View
 
     /**
      * Variant of push that will only add one copy of each item.
-     *
-     * @return void
      */
     public static function endpushunique(): void
     {
@@ -153,10 +140,6 @@ class View
 
     /**
      * Implementation of Blade "stacks".
-     *
-     * @param string $stack
-     *
-     * @return string
      */
     public static function stack(string $stack): string
     {
@@ -170,7 +153,6 @@ class View
     /**
      * Render a view.
      *
-     * @return string
      * @throws Throwable
      */
     public function render(): string
@@ -191,12 +173,6 @@ class View
         }
     }
 
-    /**
-     * @param string $namespace
-     * @param string $path
-     *
-     * @throws InvalidArgumentException
-     */
     public static function registerNamespace(string $namespace, string $path): void
     {
         if ($namespace === '') {
@@ -210,12 +186,6 @@ class View
         self::$namespaces[$namespace] = $path;
     }
 
-    /**
-     * @param string $old
-     * @param string $new
-     *
-     * @throws InvalidArgumentException
-     */
     public static function registerCustomView(string $old, string $new): void
     {
         if (str_contains($old, self::NAMESPACE_SEPARATOR) && str_contains($new, self::NAMESPACE_SEPARATOR)) {
@@ -228,9 +198,7 @@ class View
     /**
      * Find the file for a view.
      *
-     * @param string $view_name
      *
-     * @return string
      * @throws Exception
      */
     public function getFilenameForView(string $view_name): string
@@ -264,10 +232,7 @@ class View
     /**
      * Create and render a view in a single operation.
      *
-     * @param string       $name
      * @param array<mixed> $data
-     *
-     * @return string
      */
     public static function make(string $name, array $data = []): string
     {

@@ -24,8 +24,5 @@ namespace Fisharebest\Webtrees\Contracts;
  */
 interface TimeFactoryInterface
 {
-    /**
-     * @return float
-     */
     public function now(): float;
 }

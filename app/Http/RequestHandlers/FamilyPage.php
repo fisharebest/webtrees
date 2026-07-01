@@ -85,10 +85,6 @@ final class FamilyPage implements RequestHandlerInterface
     /**
      * What are the significant elements of this page?
      * The layout will need them to generate URLs for charts and reports.
-     *
-     * @param Family $family
-     *
-     * @return object
      */
     private function significant(Family $family): object
     {
@@ -108,11 +104,6 @@ final class FamilyPage implements RequestHandlerInterface
         return $significant;
     }
 
-    /**
-     * @param Family $family
-     *
-     * @return string
-     */
     private function metaDescription(Family $family): string
     {
         $meta_facts = [

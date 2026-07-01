@@ -28,8 +28,6 @@ class UnknownElement extends AbstractElement
 {
     /**
      * Name for this GEDCOM primitive.
-     *
-     * @return string
      */
     public function label(): string
     {

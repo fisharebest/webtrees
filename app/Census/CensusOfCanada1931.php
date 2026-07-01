@@ -23,8 +23,6 @@ readonly class CensusOfCanada1931 extends CensusOfCanada implements CensusInterf
 {
     /**
      * When did this census occur.
-     *
-* @return string
      */
     public function censusDate(): string
     {

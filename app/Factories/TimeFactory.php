@@ -28,9 +28,6 @@ use function microtime;
  */
 class TimeFactory implements TimeFactoryInterface
 {
-    /**
-     * @return float
-     */
     public function now(): float
     {
         return microtime(true);

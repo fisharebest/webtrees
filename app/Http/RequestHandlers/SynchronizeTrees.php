@@ -47,12 +47,6 @@ final class SynchronizeTrees implements RequestHandlerInterface
 
     private TreeService $tree_service;
 
-    /**
-     * @param AdminService        $admin_service
-     * @param StreamFactoryInterface $stream_factory
-     * @param TimeoutService      $timeout_service
-     * @param TreeService         $tree_service
-     */
     public function __construct(
         AdminService $admin_service,
         StreamFactoryInterface $stream_factory,

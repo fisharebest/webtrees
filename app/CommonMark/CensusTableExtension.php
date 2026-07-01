@@ -42,8 +42,6 @@ class CensusTableExtension implements ConfigurableExtensionInterface
 
     /**
      * The core TableExtension will already have configured tables.
-     *
-     * @param ConfigurationBuilderInterface $builder
      */
     public function configureSchema(ConfigurationBuilderInterface $builder): void
     {
@@ -51,8 +49,6 @@ class CensusTableExtension implements ConfigurableExtensionInterface
 
     /**
      * Assumes we have also registered the core TableExtension.
-     *
-     * @param EnvironmentBuilderInterface $environment
      */
     public function register(EnvironmentBuilderInterface $environment): void
     {

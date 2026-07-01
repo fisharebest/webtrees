@@ -77,9 +77,6 @@ final class RegisterPage implements RequestHandlerInterface
 
     /**
      * Check that visitors are allowed to register on this site.
-     *
-     * @return void
-     * @throws HttpNotFoundException
      */
     private function checkRegistrationAllowed(): void
     {

@@ -69,22 +69,12 @@ class SurnameTraditionFactory implements SurnameTraditionFactoryInterface
 
     /**
      * Create a named surname tradition.
-     *
-     * @param string $name
-     *
-     * @return SurnameTraditionInterface
      */
     public function make(string $name): SurnameTraditionInterface
     {
         return $this->surname_traditions[$name] ?? new DefaultSurnameTradition();
     }
 
-    /**
-     * @param string                    $name
-     * @param SurnameTraditionInterface $surname_tradition
-     *
-     * @return void
-     */
     public function register(string $name, SurnameTraditionInterface $surname_tradition): void
     {
         $this->surname_traditions[$name] = $surname_tradition;

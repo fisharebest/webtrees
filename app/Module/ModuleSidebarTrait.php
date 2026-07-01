@@ -34,10 +34,6 @@ trait ModuleSidebarTrait
 
     /**
      * The text that appears on the sidebar's title.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function sidebarTitle(Individual $individual): string
     {
@@ -46,10 +42,6 @@ trait ModuleSidebarTrait
 
     /**
      * Users change change the order of sidebars using the control panel.
-     *
-     * @param int $sidebar_order
-     *
-     * @return void
      */
     public function setSidebarOrder(int $sidebar_order): void
     {
@@ -58,8 +50,6 @@ trait ModuleSidebarTrait
 
     /**
      * Users change change the order of sidebars using the control panel.
-     *
-     * @return int
      */
     public function getSidebarOrder(): int
     {
@@ -68,8 +58,6 @@ trait ModuleSidebarTrait
 
     /**
      * The default position for this sidebar.
-     *
-     * @return int
      */
     public function defaultSidebarOrder(): int
     {

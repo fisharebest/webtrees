@@ -35,10 +35,6 @@ class UTF16LE extends AbstractUTF16Encoding
 
     /**
      * Convert two bytes to a code-point, taking care of byte-order.
-     *
-     * @param string $character
-     *
-     * @return int
      */
     protected function characterToCodePoint(string $character): int
     {
@@ -47,10 +43,6 @@ class UTF16LE extends AbstractUTF16Encoding
 
     /**
      * Convert a code-point to two bytes, taking care of byte-order.
-     *
-     * @param int $code_point
-     *
-     * @return string
      */
     protected function codePointToCharacter(int $code_point): string
     {

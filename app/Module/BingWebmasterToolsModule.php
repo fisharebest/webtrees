@@ -43,8 +43,6 @@ class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalytics
 
     /**
      * Is this a tracker, as opposed to just a site-verification.
-     *
-     * @return bool
      */
     public function isTracker(): bool
     {
@@ -53,8 +51,6 @@ class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalytics
 
     /**
      * Form fields to edit the parameters.
-     *
-     * @return string
      */
     public function analyticsFormFields(): string
     {
@@ -63,8 +59,6 @@ class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalytics
 
     /**
      * Home page for the service.
-     *
-     * @return string
      */
     public function externalUrl(): string
     {
@@ -87,8 +81,6 @@ class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalytics
      * Embed placeholders in the snippet.
      *
      * @param array<string> $parameters
-     *
-     * @return string
      */
     public function analyticsSnippet(array $parameters): string
     {
@@ -98,8 +90,6 @@ class BingWebmasterToolsModule extends AbstractModule implements ModuleAnalytics
     /**
      * Raw content, to be added at the end of the <head> element.
      * Typically, this will be <link> and <meta> elements.
-     *
-     * @return string
      */
     public function headContent(): string
     {

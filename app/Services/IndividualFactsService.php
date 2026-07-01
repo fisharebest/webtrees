@@ -46,7 +46,6 @@ class IndividualFactsService
     /**
      * The individuals own facts, such as birth and death.
      *
-     * @param Individual             $individual
      * @param Collection<int,string> $exclude_facts
      *
      * @return Collection<int,Fact>
@@ -60,7 +59,6 @@ class IndividualFactsService
     /**
      * The individuals own family facts, such as marriage and divorce.
      *
-     * @param Individual             $individual
      * @param Collection<int,string> $exclude_facts
      *
      * @return Collection<int,Fact>
@@ -76,7 +74,6 @@ class IndividualFactsService
     /**
      * Get the events of associates.
      *
-     * @param Individual $individual
      *
      * @return Collection<int,Fact>
      */
@@ -120,7 +117,6 @@ class IndividualFactsService
     /**
      * Get the events of close relatives.
      *
-     * @param Individual $individual
      *
      * @return Collection<int,Fact>
      */
@@ -150,7 +146,6 @@ class IndividualFactsService
     /**
      * Get any historical events.
      *
-     * @param Individual $individual
      *
      * @return Collection<int,Fact>
      */
@@ -164,12 +159,6 @@ class IndividualFactsService
     /**
      * Get the events of children and grandchildren.
      *
-     * @param Individual $person
-     * @param Family     $family
-     * @param string     $option
-     * @param string     $relation
-     * @param Date       $min_date
-     * @param Date       $max_date
      *
      * @return Collection<int,Fact>
      */
@@ -459,7 +448,7 @@ class IndividualFactsService
             'U' => I18N::translate('Marriage of a half-sibling'),
         ];
 
-        /** @var Collection<Fact> $facts */
+        /** @var Collection<int,Fact> $facts */
         $facts = new Collection();
 
         // Deal with recursion.
@@ -599,10 +588,6 @@ class IndividualFactsService
     /**
      * Get the events of parents and grandparents.
      *
-     * @param Individual $person
-     * @param int        $sosa
-     * @param Date       $min_date
-     * @param Date       $max_date
      *
      * @return Collection<int,Fact>
      */
@@ -688,7 +673,7 @@ class IndividualFactsService
             'U' => I18N::translate('Marriage of a parent'),
         ];
 
-        /** @var Collection<Fact> $facts */
+        /** @var Collection<int,Fact> $facts */
         $facts = new Collection();
 
         if ($sosa === 1) {
@@ -772,8 +757,6 @@ class IndividualFactsService
      *
      * @param Individual $individual Show events that occurred during the lifetime of this individual
      * @param Individual $spouse     Show events of this individual
-     * @param Date       $min_date
-     * @param Date       $max_date
      *
      * @return Collection<int,Fact>
      */
@@ -799,7 +782,7 @@ class IndividualFactsService
             ],
         ];
 
-        /** @var Collection<Fact> $facts */
+        /** @var Collection<int,Fact> $facts */
         $facts = new Collection();
 
         if (str_contains($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
@@ -815,12 +798,6 @@ class IndividualFactsService
 
     /**
      * Does a relative event occur within a date range (i.e. the individual's lifetime)?
-     *
-     * @param Fact $fact
-     * @param Date $min_date
-     * @param Date $max_date
-     *
-     * @return bool
      */
     private function includeFact(Fact $fact, Date $min_date, Date $max_date): bool
     {
@@ -832,11 +809,7 @@ class IndividualFactsService
     /**
      * Convert an event into a special "event of a close relative".
      *
-     * @param Fact          $fact
      * @param array<string> $types
-     * @param string        $sex
-     *
-     * @return Fact
      */
     private function convertEvent(Fact $fact, array $types, string $sex): Fact
     {

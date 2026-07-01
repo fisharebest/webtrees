@@ -48,16 +48,16 @@ final class AddSpouseToIndividualAction implements RequestHandlerInterface
         $individual = Auth::checkIndividualAccess($individual, true);
 
         // Create the new spouse
-        $levels = Validator::parsedBody($request)->array('ilevels');
-        $tags   = Validator::parsedBody($request)->array('itags');
-        $values = Validator::parsedBody($request)->array('ivalues');
+        $levels = Validator::parsedBody($request)->list('ilevels');
+        $tags   = Validator::parsedBody($request)->list('itags');
+        $values = Validator::parsedBody($request)->list('ivalues');
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
         $spouse = $tree->createIndividual('0 @@ INDI' . $gedcom);
 
         // Create the new family
-        $levels = Validator::parsedBody($request)->array('flevels');
-        $tags   = Validator::parsedBody($request)->array('ftags');
-        $values = Validator::parsedBody($request)->array('fvalues');
+        $levels = Validator::parsedBody($request)->list('flevels');
+        $tags   = Validator::parsedBody($request)->list('ftags');
+        $values = Validator::parsedBody($request)->list('fvalues');
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Family::RECORD_TYPE, $levels, $tags, $values);
         $i_link = "\n1 " . ($individual->sex() === 'F' ? 'WIFE' : 'HUSB') . ' @' . $individual->xref() . '@';
         $s_link = "\n1 " . ($individual->sex() !== 'F' ? 'WIFE' : 'HUSB') . ' @' . $spouse->xref() . '@';

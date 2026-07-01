@@ -336,8 +336,6 @@ class WebRoutes
 {
     /**
      * @param Map<Route> $router
-     *
-     * @return void
      */
     public function load(Map $router): void
     {

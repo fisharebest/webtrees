@@ -13,6 +13,8 @@ use Fisharebest\Webtrees\Encodings\EncodingInterface;
 use Fisharebest\Webtrees\Registry;
 use php_user_filter;
 
+use function assert;
+use function is_int;
 use function stream_bucket_append;
 use function stream_bucket_make_writeable;
 use function stream_bucket_new;
@@ -74,7 +76,10 @@ class GedcomEncodingFilter extends php_user_filter
         // While input data is available, continue to read it.
         while ($bucket_in = stream_bucket_make_writeable($in)) {
             $this->data .= $bucket_in->data;
-            $consumed   += $bucket_in->datalen;
+
+            $tmp = $consumed + $bucket_in->datalen;
+            assert(is_int($tmp), 'Integer overflow in $consumed');
+            $consumed = $tmp;
 
             $this->src_encoding ??= Registry::encodingFactory()->detect($this->data);
 

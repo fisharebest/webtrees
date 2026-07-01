@@ -36,8 +36,6 @@ trait ModuleAnalyticsTrait
 
     /**
      * A unique internal name for this module (based on the installation folder).
-     *
-     * @return string
      */
     abstract public function name(): string;
 
@@ -48,18 +46,11 @@ trait ModuleAnalyticsTrait
      *
      * Since module settings are NOT NULL, setting a value to NULL will cause
      * it to be deleted.
-     *
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return void
      */
     abstract public function setPreference(string $setting_name, string $setting_value): void;
 
     /**
      * Should we add this tracker?
-     *
-     * @return bool
      */
     public function analyticsCanShow(): bool
     {
@@ -94,11 +85,6 @@ trait ModuleAnalyticsTrait
         return I18N::translate('Tracking and analytics');
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -113,8 +99,6 @@ trait ModuleAnalyticsTrait
 
     /**
      * Form fields to edit the parameters.
-     *
-     * @return string
      */
     public function analyticsFormFields(): string
     {
@@ -125,8 +109,6 @@ trait ModuleAnalyticsTrait
      * Embed placeholders in the snippet.
      *
      * @param array<string> $parameters
-     *
-     * @return string
      */
     public function analyticsSnippet(array $parameters): string
     {
@@ -135,19 +117,12 @@ trait ModuleAnalyticsTrait
 
     /**
      * Is this a tracker, as opposed to just a site-verification.
-     *
-     * @return bool
      */
     public function isTracker(): bool
     {
         return true;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         foreach (array_keys($this->analyticsParameters()) as $parameter) {

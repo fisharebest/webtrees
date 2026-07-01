@@ -21,6 +21,9 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Date\AbstractCalendarDate;
+use Fisharebest\Webtrees\Module\CalendarMenuModule;
+use Fisharebest\Webtrees\Module\ModuleMenuInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 
 /**
  * A representation of GEDCOM dates and date ranges.
@@ -95,15 +98,19 @@ class Date
      * @param Tree|null   $tree              Wrap the date in a link to the calendar page for the tree
      * @param string|null $date_format       Override the default date format
      * @param bool        $convert_calendars Convert the date into other calendars (requires a tree)
-     *
-     * @return string
      */
     public function display(Tree|null $tree = null, string|null $date_format = null, bool $convert_calendars = false): string
     {
         if ($tree instanceof Tree) {
-            $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
+            $CALENDAR_FORMAT  = $tree->getPreference('CALENDAR_FORMAT');
+            $link_to_calendar = Registry::container()
+                ->get(ModuleService::class)
+                ->findByComponent(ModuleMenuInterface::class, $tree, Auth::user())
+                ->whereInstanceOf(CalendarMenuModule::class)
+                ->isNotEmpty();
         } else {
-            $CALENDAR_FORMAT = 'none';
+            $CALENDAR_FORMAT  = 'none';
+            $link_to_calendar = false;
         }
 
         $date_format ??= I18N::dateFormat();
@@ -123,7 +130,7 @@ class Date
         } else {
             $d2 = $this->date2->format($date_format, $this->qual2);
         }
-        // Con vert to other calendars, if requested
+        // Convert to other calendars, if requested
         $conv1 = '';
         $conv2 = '';
         foreach ($calendar_format as $cal_fmt) {
@@ -149,9 +156,9 @@ class Date
                 if ($d1 !== $d1tmp && $d1tmp !== '') {
                     if ($tree instanceof Tree) {
                         if ($CALENDAR_FORMAT !== 'none') {
-                            $conv1 .= ' <span dir="' . I18N::direction() . '">(<a href="' . e($d1conv->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d1tmp . '</a>)</span>';
+                            $conv1 .= ' <span dir="' . I18N::direction() . '">(' . $this->renderLink($link_to_calendar, $d1conv, $date_format, $tree, $d1tmp) . ')</span>';
                         } else {
-                            $conv1 .= ' <span dir="' . I18N::direction() . '"><br><a href="' . e($d1conv->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d1tmp . '</a></span>';
+                            $conv1 .= ' <span dir="' . I18N::direction() . '"><br>' . $this->renderLink($link_to_calendar, $d1conv, $date_format, $tree, $d1tmp) . '</span>';
                         }
                     } else {
                         $conv1 .= ' <span dir="' . I18N::direction() . '">(' . $d1tmp . ')</span>';
@@ -159,7 +166,7 @@ class Date
                 }
                 if ($this->date2 !== null && $d2 !== $d2tmp && $d1tmp !== '') {
                     if ($tree instanceof Tree) {
-                        $conv2 .= ' <span dir="' . I18N::direction() . '">(<a href="' . e($d2conv->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d2tmp . '</a>)</span>';
+                        $conv2 .= ' <span dir="' . I18N::direction() . '">(' . $this->renderLink($link_to_calendar, $d2conv, $date_format, $tree, $d2tmp) . ')</span>';
                     } else {
                         $conv2 .= ' <span dir="' . I18N::direction() . '">(' . $d2tmp . ')</span>';
                     }
@@ -169,9 +176,9 @@ class Date
 
         // Add URLs, if requested
         if ($tree instanceof Tree) {
-            $d1 = '<a href="' . e($this->date1->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d1 . '</a>';
+            $d1 = $this->renderLink($link_to_calendar, $this->date1, $date_format, $tree, $d1);
             if ($this->date2 instanceof AbstractCalendarDate) {
-                $d2 = '<a href="' . e($this->date2->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d2 . '</a>';
+                $d2 = $this->renderLink($link_to_calendar, $this->date2, $date_format, $tree, $d2);
             }
         }
 
@@ -235,12 +242,24 @@ class Date
         return '<span class="date">' . $tmp . '</span>';
     }
 
+    private function renderLink(
+        bool $link_to_calendar,
+        AbstractCalendarDate $calendar_date,
+        string $date_format,
+        Tree $tree,
+        string $date_text,
+    ): string {
+        if ($link_to_calendar) {
+            return '<a href="' . e($calendar_date->calendarUrl($date_format, $tree)) . '">' . $date_text . '</a>';
+        }
+
+        return $date_text;
+    }
+
     /**
      * Get the earliest calendar date from this GEDCOM date.
      *
      * In the date “FROM 1900 TO 1910”, this would be 1900.
-     *
-     * @return AbstractCalendarDate
      */
     public function minimumDate(): AbstractCalendarDate
     {
@@ -251,8 +270,6 @@ class Date
      * Get the latest calendar date from this GEDCOM date.
      *
      * In the date “FROM 1900 TO 1910”, this would be 1910.
-     *
-     * @return AbstractCalendarDate
      */
     public function maximumDate(): AbstractCalendarDate
     {
@@ -261,8 +278,6 @@ class Date
 
     /**
      * Get the earliest Julian day number from this GEDCOM date.
-     *
-     * @return int
      */
     public function minimumJulianDay(): int
     {
@@ -271,8 +286,6 @@ class Date
 
     /**
      * Get the latest Julian day number from this GEDCOM date.
-     *
-     * @return int
      */
     public function maximumJulianDay(): int
     {
@@ -284,8 +297,6 @@ class Date
      *
      * For a month-only date, this would be somewhere around the 16th day.
      * For a year-only date, this would be somewhere around 1st July.
-     *
-     * @return int
      */
     public function julianDay(): int
     {
@@ -300,8 +311,6 @@ class Date
      *
      * @param int    $years     a number of years, positive or negative
      * @param string $qualifier typically “BEF” or “AFT”
-     *
-     * @return Date
      */
     public function addYears(int $years, string $qualifier = ''): Date
     {
@@ -324,11 +333,6 @@ class Date
      * return +1 if $b>$a
      * return  0 if dates same/overlap
      * BEF/AFT sort as the day before/after
-     *
-     * @param Date $a
-     * @param Date $b
-     *
-     * @return int
      */
     public static function compare(Date $a, Date $b): int
     {
@@ -385,8 +389,6 @@ class Date
      *
      * An incomplete date such as "12 AUG" would be invalid, as
      * we cannot sort it.
-     *
-     * @return bool
      */
     public function isOK(): bool
     {
@@ -398,8 +400,6 @@ class Date
      * within WT - we should keep the code "calendar neutral" to allow support for
      * Jewish/Arabic users. This is only for interfacing with external entities,
      * such as the ancestry.com search interface or the dated fact icons.
-     *
-     * @return int
      */
     public function gregorianYear(): int
     {

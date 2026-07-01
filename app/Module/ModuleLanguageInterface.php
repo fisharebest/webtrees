@@ -43,10 +43,6 @@ interface ModuleLanguageInterface extends ModuleInterface
 
     /**
      * Ignore diacritics on letters - unless the language considers them a different letter.
-     *
-     * @param string $text
-     *
-     * @return string
      */
     public function normalize(string $text): string;
 

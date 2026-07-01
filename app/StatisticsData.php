@@ -136,7 +136,7 @@ readonly class StatisticsData
             ->select(['n_surn'])
             ->groupBy(['n_surn'])
             ->orderByRaw('COUNT(n_surn) DESC')
-            ->orderBy(new Expression('COUNT(n_surn)'), 'DESC')
+            ->orderBy(new Expression('COUNT(n_surn)'), 'desc')
             ->having(new Expression('COUNT(n_surn)'), '>=', $threshold)
             ->take($limit)
             ->pluck('n_surn')
@@ -549,7 +549,7 @@ readonly class StatisticsData
             ->where('d_file', '=', $this->tree->id())
             ->whereIn('d_fact', $events)
             ->distinct()
-            ->count(['i_id']);
+            ->count('i_id');
     }
 
     public function countIndividualsWithSources(): int
@@ -801,7 +801,7 @@ readonly class StatisticsData
             ->where('d_file', '=', $this->tree->id())
             ->whereIn('d_fact', $events)
             ->where('d_julianday1', '<>', 0)
-            ->orderBy('d_julianday1', $ascending ? 'ASC' : 'DESC')
+            ->orderBy('d_julianday1', $ascending ? 'asc' : 'desc')
             ->limit(1)
             ->get()
             ->map(static fn (object $row): object => (object) [
@@ -970,7 +970,7 @@ readonly class StatisticsData
             ->where('link1.l_file', '=', $this->tree->id())
             ->distinct()
             ->select(['link1.l_from AS family', 'link1.l_to AS child1', 'link2.l_to AS child2', new Expression(DB::prefix('child2.d_julianday2') . ' - ' . DB::prefix('child1.d_julianday1') . ' AS age')])
-            ->orderBy('age', 'DESC')
+            ->orderBy('age', 'desc')
             ->take($limit)
             ->get()
             ->map(fn (object $row): object => (object) [
@@ -1446,7 +1446,7 @@ readonly class StatisticsData
             })
             ->where('f_file', '=', $this->tree->id())
             ->groupBy(['f_id', 'f_file'])
-            ->orderBy(new Expression('COUNT(*)'), 'DESC')
+            ->orderBy(new Expression('COUNT(*)'), 'desc')
             ->select(['families.*'])
             ->limit($limit)
             ->get()
@@ -1619,7 +1619,7 @@ readonly class StatisticsData
     {
         return DB::table('families')
             ->where('f_file', '=', $this->tree->id())
-            ->orderBy('f_numchil', 'DESC')
+            ->orderBy('f_numchil', 'desc')
             ->limit($limit)
             ->get()
             ->map(Registry::familyFactory()->mapper($this->tree))
@@ -1657,8 +1657,8 @@ readonly class StatisticsData
             $sex_field = 'HUSB';
         }
 
-        if ($age_dir !== 'ASC') {
-            $age_dir = 'DESC';
+        if ($age_dir !== 'asc') {
+            $age_dir = 'desc';
         }
 
         $row = DB::table('link AS parentfamily')
@@ -1728,9 +1728,7 @@ readonly class StatisticsData
     /**
      * General query on age at marriage.
      *
-     * @param string $type
      * @param string $age_dir "ASC" or "DESC"
-     * @param int    $limit
      */
     public function ageOfMarriageQuery(string $type, string $age_dir, int $limit): string
     {
@@ -1816,7 +1814,7 @@ readonly class StatisticsData
             }
         }
 
-        if ($age_dir === 'DESC') {
+        if ($age_dir === 'desc') {
             arsort($rows);
         } else {
             asort($rows);
@@ -1909,14 +1907,14 @@ readonly class StatisticsData
                     ->where('husb.d_julianday1', '<>', 0);
             });
 
-        if ($age_dir === 'DESC') {
+        if ($age_dir === 'desc') {
             $query
                 ->whereColumn('wife.d_julianday1', '>=', 'husb.d_julianday1')
-                ->orderBy(new Expression('MIN(' . DB::prefix('wife.d_julianday1') . ') - MIN(' . DB::prefix('husb.d_julianday1') . ')'), 'DESC');
+                ->orderBy(new Expression('MIN(' . DB::prefix('wife.d_julianday1') . ') - MIN(' . DB::prefix('husb.d_julianday1') . ')'), 'desc');
         } else {
             $query
                 ->whereColumn('husb.d_julianday1', '>=', 'wife.d_julianday1')
-                ->orderBy(new Expression('MIN(' . DB::prefix('husb.d_julianday1') . ') - MIN(' . DB::prefix('wife.d_julianday1') . ')'), 'DESC');
+                ->orderBy(new Expression('MIN(' . DB::prefix('husb.d_julianday1') . ') - MIN(' . DB::prefix('wife.d_julianday1') . ')'), 'desc');
         }
 
         return $query
@@ -1930,7 +1928,7 @@ readonly class StatisticsData
                 $husb_birt_jd = $family->husband()->getBirthDate()->minimumJulianDay();
                 $wife_birt_jd = $family->wife()->getBirthDate()->minimumJulianDay();
 
-                if ($age_dir === 'DESC') {
+                if ($age_dir === 'desc') {
                     $diff = $wife_birt_jd - $husb_birt_jd;
                 } else {
                     $diff = $husb_birt_jd - $wife_birt_jd;
@@ -1946,7 +1944,7 @@ readonly class StatisticsData
 
     public function ageBetweenSpousesMF(int $limit = 10): string
     {
-        $records = $this->ageBetweenSpousesQuery('DESC', $limit);
+        $records = $this->ageBetweenSpousesQuery('desc', $limit);
 
         return view('statistics/families/top10-nolist-spouses', [
             'records' => $records,
@@ -1955,7 +1953,7 @@ readonly class StatisticsData
 
     public function ageBetweenSpousesMFList(int $limit = 10): string
     {
-        $records = $this->ageBetweenSpousesQuery('DESC', $limit);
+        $records = $this->ageBetweenSpousesQuery('desc', $limit);
 
         return view('statistics/families/top10-list-spouses', [
             'records' => $records,
@@ -1965,14 +1963,14 @@ readonly class StatisticsData
     public function ageBetweenSpousesFM(int $limit = 10): string
     {
         return view('statistics/families/top10-nolist-spouses', [
-            'records' => $this->ageBetweenSpousesQuery('ASC', $limit),
+            'records' => $this->ageBetweenSpousesQuery('asc', $limit),
         ]);
     }
 
     public function ageBetweenSpousesFMList(int $limit = 10): string
     {
         return view('statistics/families/top10-list-spouses', [
-            'records' => $this->ageBetweenSpousesQuery('ASC', $limit),
+            'records' => $this->ageBetweenSpousesQuery('asc', $limit),
         ]);
     }
 
@@ -2021,7 +2019,6 @@ readonly class StatisticsData
      * @param string $show    "full", "name" or "age"
      * @param string $age_dir "ASC" or "DESC"
      * @param string $sex     "F" or "M"
-     * @param bool   $show_years
      */
     public function marriageQuery(string $show, string $age_dir, string $sex, bool $show_years): string
     {
@@ -2031,8 +2028,8 @@ readonly class StatisticsData
             $sex_field = 'f_husb';
         }
 
-        if ($age_dir !== 'ASC') {
-            $age_dir = 'DESC';
+        if ($age_dir !== 'asc') {
+            $age_dir = 'desc';
         }
 
         $row = DB::table('families')

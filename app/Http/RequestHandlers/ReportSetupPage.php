@@ -25,7 +25,9 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Report\ReportParserSetup;
+use Fisharebest\Webtrees\Report\ParserSetup;
+use Fisharebest\Webtrees\Report\PlaceholderExpander;
+use Fisharebest\Webtrees\Report\VariableTable;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -60,24 +62,28 @@ final class ReportSetupPage implements RequestHandlerInterface
 
         $xref = Validator::queryParams($request)->isXref()->string('xref', '');
 
-        $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
-        $xml_parser   = new ReportParserSetup($xml_filename);
-        $description  = $xml_parser->reportDescription();
-        $title        = $xml_parser->reportTitle();
-        $inputs       = [];
+        $filename = $module->resourcesFolder() . $module->xmlFilename();
+        $parser   = new ParserSetup($filename);
+        $parser->process();
+        $description = $parser->reportDescription();
+        $title       = $parser->reportTitle();
+        $inputs      = [];
 
-        foreach ($xml_parser->reportInputs() as $n => $input) {
+        foreach ($parser->reportInputs() as $n => $input) {
             $attributes = [
                 'id'    => 'input-' . $n,
-                'name'  => 'vars[' . $input['name'] . ']',
-                'class' => $input['type'] === 'checkbox' ? 'form-control-check' : 'form-control',
+                'name'  => 'vars[' . $input->name . ']',
+                'class' => $input->type === 'checkbox' ? 'form-control-check' : 'form-control',
             ];
 
-            switch ($input['lookup']) {
+            $control = '';
+            $extra   = '';
+
+            switch ($input->lookup) {
                 case 'INDI':
-                    $input['control'] = view('components/select-individual', [
+                    $control = view('components/select-individual', [
                         'id'         => 'input-' . $n,
-                        'name'       => 'vars[' . $input['name'] . ']',
+                        'name'       => 'vars[' . $input->name . ']',
                         'individual' => Registry::individualFactory()->make($xref, $tree),
                         'tree'       => $tree,
                         'required'   => true,
@@ -85,9 +91,9 @@ final class ReportSetupPage implements RequestHandlerInterface
                     break;
 
                 case 'FAM':
-                    $input['control'] = view('components/select-family', [
+                    $control = view('components/select-family', [
                         'id'       => 'input-' . $n,
-                        'name'     => 'vars[' . $input['name'] . ']',
+                        'name'     => 'vars[' . $input->name . ']',
                         'family'   => Registry::familyFactory()->make($xref, $tree),
                         'tree'     => $tree,
                         'required' => true,
@@ -95,9 +101,9 @@ final class ReportSetupPage implements RequestHandlerInterface
                     break;
 
                 case 'SOUR':
-                    $input['control'] = view('components/select-source', [
+                    $control = view('components/select-source', [
                         'id'       => 'input-' . $n,
-                        'name'     => 'vars[' . $input['name'] . ']',
+                        'name'     => 'vars[' . $input->name . ']',
                         'family'   => Registry::sourceFactory()->make($xref, $tree),
                         'tree'     => $tree,
                         'required' => true,
@@ -108,54 +114,47 @@ final class ReportSetupPage implements RequestHandlerInterface
                     // Need to know if the user prefers DMY/MDY/YMD so we can validate dates properly.
                     $dmy = I18N::language()->dateOrder();
 
-                    $attributes       += [
+                    $attributes += [
                         'type'     => 'text',
-                        'value'    => $input['default'],
+                        'value'    => $input->default,
                         'dir'      => 'ltr',
                         'onchange' => 'webtrees.reformatDate(this, "' . $dmy . '")',
                     ];
-                    $input['control'] = '<input ' . Html::attributes($attributes) . '>';
-                    $input['extra']   = view('edit/input-addon-calendar', ['id' => 'input-' . $n]);
+                    $control    = '<input ' . Html::attributes($attributes) . '>';
+                    $extra      = view('edit/input-addon-calendar', ['id' => 'input-' . $n]);
                     break;
 
                 default:
-                    switch ($input['type']) {
+                    switch ($input->type) {
                         case 'text':
-                            $attributes       += [
+                            $attributes += [
                                 'type'  => 'text',
-                                'value' => $input['default'],
+                                'value' => $input->default,
                             ];
-                            $input['control'] = '<input ' . Html::attributes($attributes) . '>';
+                            $control    = '<input ' . Html::attributes($attributes) . '>';
                             break;
 
                         case 'checkbox':
-                            $attributes       += [
+                            $attributes += [
                                 'type'    => 'checkbox',
-                                'checked' => (bool) $input['default'],
+                                'checked' => (bool) $input->default,
                             ];
-                            $input['control'] = '<input ' . Html::attributes($attributes) . '>';
+                            $control    = '<input ' . Html::attributes($attributes) . '>';
                             break;
 
                         case 'select':
                             $options = [];
-                            foreach (explode('|', $input['options']) as $option) {
+                            foreach (explode('|', $input->options) as $option) {
                                 [$key, $value] = explode('=>', $option);
-                                if (preg_match('/^I18N::number\((.+?)(,([\d+]))?\)$/', $value, $match)) {
-                                    $number        = (float) $match[1];
-                                    $precision     = (int) ($match[3] ?? 0);
-                                    $options[$key] = I18N::number($number, $precision);
-                                } elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $value, $match)) {
-                                    $options[$key] = I18N::translate($match[1]);
-                                } elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $value, $match)) {
-                                    $options[$key] = I18N::translateContext($match[1], $match[2]);
-                                }
+                                $placeholder_expander = new PlaceholderExpander(new VariableTable([]));
+                                $options[$key]        = $placeholder_expander->applyI18nFunctions($value);
                             }
-                            $input['control'] = view('components/select', ['name' => 'vars[' . $input['name'] . ']', 'id' => 'input-' . $n, 'selected' => $input['default'], 'options' => $options]);
+                            $control = view('components/select', ['name' => 'vars[' . $input->name . ']', 'id' => 'input-' . $n, 'selected' => $input->default, 'options' => $options]);
                             break;
                     }
             }
 
-            $inputs[] = $input;
+            $inputs[] = $input->withControl($control, $extra);
         }
 
         $destination = $user->getPreference('default-report-destination', 'view');

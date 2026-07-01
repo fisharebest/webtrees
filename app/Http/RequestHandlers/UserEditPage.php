@@ -46,12 +46,6 @@ final class UserEditPage implements RequestHandlerInterface
 
     private TreeService $tree_service;
 
-    /**
-     * @param MessageService $message_service
-     * @param ModuleService  $module_service
-     * @param TreeService    $tree_service
-     * @param UserService    $user_service
-     */
     public function __construct(
         MessageService $message_service,
         ModuleService $module_service,

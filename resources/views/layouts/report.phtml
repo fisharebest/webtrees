@@ -19,8 +19,84 @@ use Fisharebest\Webtrees\I18N;
         <title><?= $title ?></title>
 
         <link rel="icon" href="<?= e(asset('favicon.ico')) ?>" type="image/x-icon">
+
+        <style>
+            body {
+                margin: 0;
+                background-color: #d9d9d9;
+                padding: 2rem 1rem;
+                box-sizing: border-box;
+                overflow-x: auto;
+                font: 10px sans-serif;
+            }
+
+            .report-container {
+                margin: 0 auto;
+                padding: 2rem;
+                box-sizing: content-box;
+                background-color: #ffffff;
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 6px 18px rgba(0, 0, 0, 0.18);
+            }
+
+            header, main, footer {
+                position: relative;
+            }
+
+            .report-footnotes {
+                border-top: 1px solid #ccc;
+                margin-top: 1em;
+                padding-top: 0.5em;
+            }
+
+            .report-block {
+                position: absolute;
+                box-sizing: border-box;
+            }
+
+            .report-row {
+                display: flex;
+                align-items: stretch;
+                width: 100%;
+            }
+
+            .report-col {
+                box-sizing: border-box;
+                padding: 2pt;
+                word-wrap: break-word;
+            }
+
+            .report-text {
+                word-wrap: break-word;
+            }
+
+            .report-line {
+                position: absolute;
+            }
+
+            .report-image {
+                position: absolute;
+                outline: 1px solid #fff;
+                outline-offset: -1px; /* pulls it inward */
+                border-radius: 10px;
+            }
+
+            @media print {
+                .report-page-break {
+                    break-before: page;
+                }
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: #0000ee;
+            }
+        </style>
     </head>
-    <body class="container-lg wt-global wt-report-page">
+    <body>
         <?= $content ?>
     </body>
 </html>

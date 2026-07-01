@@ -225,8 +225,6 @@ class GedcomImportService
      * @param string $gedrec the raw gedcom record to parse
      * @param Tree   $tree   import the record into this tree
      * @param bool   $update whether this is an updated record that has been accepted
-     *
-     * @throws GedcomErrorException
      */
     public function importRecord(string $gedrec, Tree $tree, bool $update): void
     {

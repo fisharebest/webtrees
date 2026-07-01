@@ -70,8 +70,6 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -95,8 +93,6 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -106,10 +102,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * The URL for this chart.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
@@ -119,17 +112,12 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();
         $user  = Validator::attributes($request)->user();
         $scale = Validator::attributes($request)->isBetween(self::MINIMUM_SCALE, self::MAXIMUM_SCALE)->integer('scale');
-        $xrefs = Validator::queryParams($request)->array('xrefs');
+        $xrefs = Validator::queryParams($request)->list('xrefs');
         $ajax  = Validator::queryParams($request)->boolean('ajax', false);
         $xrefs = array_filter(array_unique($xrefs));
 
@@ -217,11 +205,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
     }
 
     /**
-     * @param Tree          $tree
      * @param array<string> $xrefs
-     * @param int           $scale
-     *
-     * @return ResponseInterface
      */
     protected function chart(Tree $tree, array $xrefs, int $scale): ResponseInterface
     {

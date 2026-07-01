@@ -49,8 +49,6 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
 
     /**
      * The name of this surname tradition
-     *
-     * @return string
      */
     public function name(): string
     {
@@ -59,8 +57,6 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
 
     /**
      * A short description of this surname tradition
-     *
-     * @return string
      */
     public function description(): string
     {
@@ -69,8 +65,6 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
 
     /**
      * A default/empty name
-     *
-     * @return string
      */
     public function defaultName(): string
     {
@@ -80,9 +74,6 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     /**
      * What name is given to a new child
      *
-     * @param Individual|null $father
-     * @param Individual|null $mother
-     * @param string          $sex
      *
      * @return array<int,string>
      */
@@ -96,8 +87,6 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     /**
      * What name is given to a new parent
      *
-     * @param Individual $child
-     * @param string     $sex
      *
      * @return array<int,string>
      */
@@ -111,8 +100,6 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     /**
      * What names are given to a new spouse
      *
-     * @param Individual $spouse
-     * @param string     $sex
      *
      * @return array<int,string>
      */
@@ -126,10 +113,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     /**
      * Build a GEDCOM name record
      *
-     * @param string               $name
      * @param array<string,string> $parts
-     *
-     * @return string
      */
     protected function buildName(string $name, array $parts): string
     {
@@ -150,10 +134,6 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
 
     /**
      * Extract an individual's name.
-     *
-     * @param Individual|null $individual
-     *
-     * @return string
      */
     protected function extractName(Individual|null $individual): string
     {

@@ -33,10 +33,6 @@ interface EncodingFactoryInterface
 
     /**
      * Create a named encoding.
-     *
-     * @param string $name
-     *
-     * @return EncodingInterface
      */
     public function make(string $name): EncodingInterface;
 

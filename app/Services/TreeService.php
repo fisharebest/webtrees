@@ -116,10 +116,6 @@ class TreeService
 
     /**
      * Find a tree by its ID.
-     *
-     * @param int $id
-     *
-     * @return Tree
      */
     public function find(int $id): Tree
     {
@@ -198,12 +194,9 @@ class TreeService
     /**
      * Import data from a gedcom file into this tree.
      *
-     * @param Tree            $tree
      * @param StreamInterface $stream   The GEDCOM file.
      * @param string          $filename The preferred filename, for export/download.
      * @param string          $encoding Override the encoding specified in the header.
-     *
-     * @return void
      */
     public function importGedcomFile(Tree $tree, StreamInterface $stream, string $filename, string $encoding): void
     {
@@ -248,9 +241,6 @@ class TreeService
         fclose($stream);
     }
 
-    /**
-     * @param Tree $tree
-     */
     public function delete(Tree $tree): void
     {
         // If this is the default tree, then unset it
@@ -287,8 +277,6 @@ class TreeService
 
     /**
      * Generate a unique name for a new tree.
-     *
-     * @return string
      */
     public function uniqueTreeName(): string
     {

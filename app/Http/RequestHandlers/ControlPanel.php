@@ -90,16 +90,6 @@ final class ControlPanel implements RequestHandlerInterface
 
     private UserService $user_service;
 
-    /**
-     * @param AdminService        $admin_service
-     * @param HousekeepingService $housekeeping_service
-     * @param MessageService      $message_service
-     * @param ModuleService       $module_service
-     * @param ServerCheckService  $server_check_service
-     * @param TreeService         $tree_service
-     * @param UpgradeService      $upgrade_service
-     * @param UserService         $user_service
-     */
     public function __construct(
         AdminService $admin_service,
         HousekeepingService $housekeeping_service,

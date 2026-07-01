@@ -47,9 +47,9 @@ final class AddChildToFamilyAction implements RequestHandlerInterface
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
-        $levels = Validator::parsedBody($request)->array('ilevels');
-        $tags   = Validator::parsedBody($request)->array('itags');
-        $values = Validator::parsedBody($request)->array('ivalues');
+        $levels = Validator::parsedBody($request)->list('ilevels');
+        $tags   = Validator::parsedBody($request)->list('itags');
+        $values = Validator::parsedBody($request)->list('ivalues');
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
 
         // Create the new child

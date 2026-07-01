@@ -51,8 +51,6 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -72,10 +70,6 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
 
     /**
      * HTML to include in the share links page.
-     *
-     * @param GedcomRecord $record
-     *
-     * @return string
      */
     public function share(GedcomRecord $record): string
     {
@@ -110,11 +104,6 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
         return '';
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();

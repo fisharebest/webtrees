@@ -36,8 +36,6 @@ class SeedDefaultResnTable implements SeedInterface
 
     /**
      *  Run the seeder.
-     *
-     * @return void
      */
     public function run(): void
     {

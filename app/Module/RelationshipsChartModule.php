@@ -86,10 +86,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
     private RelationshipService $relationship_service;
 
-    /**
-     * @param RelationshipService $relationship_service
-     * @param TreeService         $tree_service
-     */
     public function __construct(RelationshipService $relationship_service, TreeService $tree_service)
     {
         $this->relationship_service = $relationship_service;
@@ -98,8 +94,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -121,10 +115,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
     /**
      * Return a menu item for this chart - for use in individual boxes.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu|null
      */
     public function chartBoxMenu(Individual $individual): Menu|null
     {
@@ -133,10 +123,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
     /**
      * A main menu item for this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
      */
     public function chartMenu(Individual $individual): Menu
     {
@@ -165,8 +151,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -182,10 +166,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
@@ -202,11 +183,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         ] + $parameters + $default_parameters);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree      = Validator::attributes($request)->tree();
@@ -280,14 +256,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         ]);
     }
 
-    /**
-     * @param Individual $individual1
-     * @param Individual $individual2
-     * @param int        $recursion
-     * @param int        $ancestors
-     *
-     * @return ResponseInterface
-     */
     public function chart(Individual $individual1, Individual $individual2, int $recursion, int $ancestors): ResponseInterface
     {
         $tree = $individual1->tree();
@@ -410,11 +378,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         return response($html);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -429,11 +392,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         foreach ($this->tree_service->all() as $tree) {
@@ -481,8 +439,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     /**
      * Calculate the shortest paths - or all paths - between two individuals.
      *
-     * @param Individual $individual1
-     * @param Individual $individual2
      * @param int        $recursion How many levels of recursion to use
      * @param bool       $ancestor  Restrict to relationships via a common ancestor
      *
@@ -588,9 +544,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     /**
      * Find all ancestors of a list of individuals
      *
-     * @param string $xref1
-     * @param string $xref2
-     * @param int    $tree_id
      *
      * @return array<string>
      */
@@ -633,9 +586,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     /**
      * Find all families of two individuals
      *
-     * @param string $xref1
-     * @param string $xref2
-     * @param int    $tree_id
      *
      * @return array<string>
      */
@@ -660,7 +610,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      * Convert a path (list of XREFs) to an "old-style" string of relationships.
      * Return an empty array, if privacy rules prevent us viewing any node.
      *
-     * @param Tree          $tree
      * @param array<string> $path Alternately Individual / Family
      *
      * @return array<string>
@@ -720,7 +669,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     /**
      * Possible options for the recursion option
      *
-     * @param int $max_recursion
      *
      * @return array<string>
      */

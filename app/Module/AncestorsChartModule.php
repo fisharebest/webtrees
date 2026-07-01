@@ -59,9 +59,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
     private ChartService $chart_service;
 
-    /**
-     * @param ChartService $chart_service
-     */
     public function __construct(ChartService $chart_service)
     {
         $this->chart_service = $chart_service;
@@ -69,8 +66,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -98,8 +93,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -116,10 +109,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * The title for a specific instance of this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function chartTitle(Individual $individual): string
     {
@@ -130,10 +119,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
@@ -143,11 +129,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();

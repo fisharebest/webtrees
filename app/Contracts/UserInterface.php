@@ -54,45 +54,25 @@ interface UserInterface
 
     /**
      * The user‘s internal identifier
-     *
-     * @return int
      */
     public function id(): int;
 
     /**
      * The users email address.
-     *
-     * @return string
      */
     public function email(): string;
 
     /**
      * The user‘s real name.
-     *
-     * @return string
      */
     public function realName(): string;
 
     /**
      * The user‘s login name.
-     *
-     * @return string
      */
     public function userName(): string;
 
-    /**
-     * @param string $setting_name
-     * @param string $default
-     *
-     * @return string
-     */
     public function getPreference(string $setting_name, string $default = ''): string;
 
-    /**
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return void
-     */
     public function setPreference(string $setting_name, string $setting_value): void;
 }

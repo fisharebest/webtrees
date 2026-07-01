@@ -35,11 +35,6 @@ final class TomSelectPlace extends AbstractTomSelectHandler
     /**
      * Perform the search
      *
-     * @param Tree   $tree
-     * @param string $query
-     * @param int    $offset
-     * @param int    $limit
-     * @param string $at
      *
      * @return Collection<int,array{text:string,value:string}>
      */

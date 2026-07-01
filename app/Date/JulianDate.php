@@ -49,10 +49,6 @@ class JulianDate extends AbstractGregorianJulianDate
 
     /**
      * Most years are 1 more than the previous, but not always (e.g. 1BC->1AD)
-     *
-     * @param int $year
-     *
-     * @return int
      */
     protected function nextYear(int $year): int
     {
@@ -65,10 +61,6 @@ class JulianDate extends AbstractGregorianJulianDate
 
     /**
      * Process new-style/old-style years and years BC
-     *
-     * @param string $year
-     *
-     * @return int
      */
     protected function extractYear(string $year): int
     {
@@ -88,8 +80,6 @@ class JulianDate extends AbstractGregorianJulianDate
 
     /**
      * Generate the %Y format for a date.
-     *
-     * @return string
      */
     protected function formatLongYear(): string
     {
@@ -108,8 +98,6 @@ class JulianDate extends AbstractGregorianJulianDate
 
     /**
      * Generate the %E format for a date.
-     *
-     * @return string
      */
     protected function formatGedcomYear(): string
     {

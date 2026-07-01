@@ -37,9 +37,6 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
 
     private ModuleService $module_service;
 
-    /**
-     * @param ModuleService $module_service
-     */
     public function __construct(ModuleService $module_service)
     {
         $this->module_service = $module_service;
@@ -59,8 +56,6 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * The default position for this menu.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultMenuOrder(): int
     {

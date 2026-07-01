@@ -57,7 +57,6 @@ class MediaFactory extends AbstractGedcomRecordFactory implements MediaFactoryIn
     /**
      * Create a media object from a row in the database.
      *
-     * @param Tree $tree
      *
      * @return Closure(object):Media
      */
@@ -69,13 +68,9 @@ class MediaFactory extends AbstractGedcomRecordFactory implements MediaFactoryIn
     /**
      * Create a media object from raw GEDCOM data.
      *
-     * @param string      $xref
      * @param string      $gedcom  an empty string for new/pending records
      * @param string|null $pending null for a record with no pending edits,
      *                             empty string for records with pending deletions
-     * @param Tree        $tree
-     *
-     * @return Media
      */
     public function new(string $xref, string $gedcom, string|null $pending, Tree $tree): Media
     {
@@ -84,11 +79,6 @@ class MediaFactory extends AbstractGedcomRecordFactory implements MediaFactoryIn
 
     /**
      * Fetch GEDCOM data from the database.
-     *
-     * @param string $xref
-     * @param Tree   $tree
-     *
-     * @return string|null
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {

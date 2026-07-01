@@ -29,15 +29,11 @@ interface ModuleAnalyticsInterface extends ModuleInterface
 {
     /**
      * Should we add this tracker?
-     *
-     * @return bool
      */
     public function analyticsCanShow(): bool;
 
     /**
      * Form fields to edit the parameters.
-     *
-     * @return string
      */
     public function analyticsFormFields(): string;
 
@@ -52,29 +48,15 @@ interface ModuleAnalyticsInterface extends ModuleInterface
      * Embed placeholders in the snippet.
      *
      * @param array<string> $parameters
-     *
-     * @return string
      */
     public function analyticsSnippet(array $parameters): string;
 
     /**
      * Is this a tracker, as opposed to just a site-verification.
-     *
-     * @return bool
      */
     public function isTracker(): bool;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface;
 }

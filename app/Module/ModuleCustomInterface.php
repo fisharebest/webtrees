@@ -26,43 +26,32 @@ interface ModuleCustomInterface extends ModuleInterface
 {
     /**
      * The person or organisation who created this module.
-     *
-     * @return string
      */
     public function customModuleAuthorName(): string;
 
     /**
      * The version of this module.
-     *
-     * @return string
      */
     public function customModuleVersion(): string;
 
     /**
      * A URL that will provide the latest version of this module.
-     *
-     * @return string
      */
     public function customModuleLatestVersionUrl(): string;
 
     /**
      * Fetch the latest version of this module.
-     *
-     * @return string
      */
     public function customModuleLatestVersion(): string;
 
     /**
      * Where to get support for this module.  Perhaps a github repository?
-     *
-     * @return string
      */
     public function customModuleSupportUrl(): string;
 
     /**
      * Additional/updated translations.
      *
-     * @param string $language
      *
      * @return array<string,string>
      */

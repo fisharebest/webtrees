@@ -37,9 +37,6 @@ class UseLanguage implements MiddlewareInterface
 {
     private ModuleService $module_service;
 
-    /**
-     * @param ModuleService $module_service
-     */
     public function __construct(ModuleService $module_service)
     {
         $this->module_service = $module_service;
@@ -62,7 +59,6 @@ class UseLanguage implements MiddlewareInterface
      * The language can be chosen in various ways.
      * Language module names have the form "language-<code>>".
      *
-     * @param ServerRequestInterface $request
      *
      * @return Generator<ModuleLanguageInterface|null>
      */

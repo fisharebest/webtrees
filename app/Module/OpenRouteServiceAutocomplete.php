@@ -47,8 +47,6 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function description(): string
     {
@@ -57,9 +55,6 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
         return I18N::translate('Search for place names using %s.', $link);
     }
 
-    /**
-     * @return ResponseInterface
-     */
     public function getAdminAction(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -74,8 +69,6 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function title(): string
     {
@@ -87,11 +80,6 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
         return false;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $api_key = Validator::parsedBody($request)->string('api_key');
@@ -103,11 +91,6 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
         return redirect($this->getConfigLink());
     }
 
-    /**
-     * @param string $place
-     *
-     * @return RequestInterface
-     */
     protected function createPlaceNameSearchRequest(string $place): RequestInterface
     {
         $api_key = $this->getPreference('api_key');
@@ -122,7 +105,6 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
     }
 
     /**
-     * @param ResponseInterface $response
      *
      * @return array<string>
      */

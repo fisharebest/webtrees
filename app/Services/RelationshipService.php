@@ -67,11 +67,6 @@ class RelationshipService
 
     /**
      * For close family relationships, such as the families tab, associates, and the family navigator.
-     *
-     * @param Individual $individual1
-     * @param Individual $individual2
-     *
-     * @return string
      */
     public function getCloseRelationshipName(Individual $individual1, Individual $individual2): string
     {
@@ -94,9 +89,6 @@ class RelationshipService
      * takes account of pending changes, so we can display names of newly added
      * relations.
      *
-     * @param Individual $individual1
-     * @param Individual $individual2
-     * @param int        $maxlength
      *
      * @return array<Individual|Family> An array of nodes on the relationship path
      */
@@ -194,9 +186,6 @@ class RelationshipService
 
     /**
      * @param array<Individual|Family> $nodes
-     * @param ModuleLanguageInterface  $language
-     *
-     * @return string
      */
     public function nameFromPath(array $nodes, ModuleLanguageInterface $language): string
     {
@@ -222,15 +211,11 @@ class RelationshipService
         $relationships = $this->matchRelationships($nodes, $pattern, $relationships);
 
         // Reduce the genitive-nominative chain to a single string.
-        return array_reduce($relationships, static fn (array $carry, array $item): array => [sprintf($carry[1], $item[0]), sprintf($carry[1], $item[1])], [0 => '', 1 => '%s'])[0];
+        return array_reduce($relationships, static fn (array $carry, array $item): array => [sprintf($carry[1], $item[0]), sprintf($carry[1], $item[1])], ['', '%s'])[0];
     }
 
     /**
      * Generate a reflexive pronoun for an individual
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     protected function reflexivePronoun(Individual $individual): string
     {
@@ -282,7 +267,7 @@ class RelationshipService
      * @param array<string>            $pattern
      * @param array<Relationship>      $relationships
      *
-     * @return array<Relationship>
+     * @return array<array{string,string}>
      */
     protected function matchRelationships(array $nodes, array $pattern, array $relationships): array
     {

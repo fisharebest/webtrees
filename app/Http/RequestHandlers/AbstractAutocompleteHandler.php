@@ -50,7 +50,6 @@ abstract class AbstractAutocompleteHandler implements RequestHandlerInterface
     }
 
     /**
-     * @param ServerRequestInterface $request
      *
      * @return Collection<int,string>
      */

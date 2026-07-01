@@ -40,8 +40,6 @@ class GoogleMaps extends AbstractModule implements ModuleConfigInterface, Module
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function description(): string
     {
@@ -56,9 +54,6 @@ class GoogleMaps extends AbstractModule implements ModuleConfigInterface, Module
         return false;
     }
 
-    /**
-     * @return ResponseInterface
-     */
     public function getAdminAction(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -73,19 +68,12 @@ class GoogleMaps extends AbstractModule implements ModuleConfigInterface, Module
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function title(): string
     {
         return I18N::translate('Google™ maps');
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $api_key = Validator::parsedBody($request)->string('api_key');

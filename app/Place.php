@@ -48,9 +48,6 @@ class Place
 
     /**
      * Create a place.
-     *
-     * @param string $place_name
-     * @param Tree   $tree
      */
     public function __construct(string $place_name, Tree $tree)
     {
@@ -66,11 +63,6 @@ class Place
 
     /**
      * Find a place by its ID.
-     *
-     * @param int  $id
-     * @param Tree $tree
-     *
-     * @return Place
      */
     public static function find(int $id, Tree $tree): Place
     {
@@ -97,8 +89,6 @@ class Place
 
     /**
      * Get the higher level place.
-     *
-     * @return Place
      */
     public function parent(): Place
     {
@@ -108,8 +98,6 @@ class Place
     /**
      * The database row that contains this place.
      * Note that due to database collation, both "Quebec" and "Québec" will share the same row.
-     *
-     * @return int
      */
     public function id(): int
     {
@@ -145,9 +133,6 @@ class Place
         });
     }
 
-    /**
-     * @return Tree
-     */
     public function tree(): Tree
     {
         return $this->tree;
@@ -156,7 +141,6 @@ class Place
     /**
      * Extract the locality (first parts) of a place name.
      *
-     * @param int $n
      *
      * @return Collection<int,string>
      */
@@ -168,7 +152,6 @@ class Place
     /**
      * Extract the country (last parts) of a place name.
      *
-     * @param int $n
      *
      * @return Collection<int,string>
      */
@@ -201,8 +184,6 @@ class Place
 
     /**
      * Create a URL to the place-hierarchy page.
-     *
-     * @return string
      */
     public function url(): string
     {
@@ -224,8 +205,6 @@ class Place
 
     /**
      * Format this place for GEDCOM data.
-     *
-     * @return string
      */
     public function gedcomName(): string
     {

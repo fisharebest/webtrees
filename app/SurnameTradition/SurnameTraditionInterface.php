@@ -29,31 +29,22 @@ interface SurnameTraditionInterface
 {
     /**
      * The name of this surname tradition
-     *
-     * @return string
      */
     public function name(): string;
 
     /**
      * A short description of this surname tradition
-     *
-     * @return string
      */
     public function description(): string;
 
     /**
      * A default/empty name
-     *
-     * @return string
      */
     public function defaultName(): string;
 
     /**
      * What name is given to a new child
      *
-     * @param Individual|null $father
-     * @param Individual|null $mother
-     * @param string          $sex
      *
      * @return array<int,string>
      */
@@ -62,8 +53,6 @@ interface SurnameTraditionInterface
     /**
      * What name is given to a new parent
      *
-     * @param Individual $child
-     * @param string     $sex
      *
      * @return array<int,string>
      */
@@ -72,8 +61,6 @@ interface SurnameTraditionInterface
     /**
      * What names are given to a new spouse
      *
-     * @param Individual $spouse
-     * @param string     $sex
      *
      * @return array<int,string>
      */

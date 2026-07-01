@@ -34,8 +34,6 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
 {
     /**
      * The name of this surname tradition
-     *
-     * @return string
      */
     public function name(): string
     {
@@ -44,8 +42,6 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
 
     /**
      * A short description of this surname tradition
-     *
-     * @return string
      */
     public function description(): string
     {
@@ -55,8 +51,6 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
 
     /**
      * A default/empty name
-     *
-     * @return string
      */
     public function defaultName(): string
     {
@@ -66,9 +60,6 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
     /**
      * What name is given to a new child
      *
-     * @param Individual|null $father
-     * @param Individual|null $mother
-     * @param string          $sex
      *
      * @return array<int,string>
      */
@@ -97,8 +88,6 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
     /**
      * What name is given to a new parent
      *
-     * @param Individual $child
-     * @param string     $sex
      *
      * @return array<int,string>
      */
@@ -132,8 +121,6 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
     /**
      * What names are given to a new spouse
      *
-     * @param Individual $spouse
-     * @param string     $sex
      *
      * @return array<int,string>
      */

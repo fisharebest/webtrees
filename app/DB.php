@@ -251,7 +251,11 @@ final class DB extends Manager
     }
 
     /**
-     * @return Expression<string>
+     * @TODO - the next version of illumate/database will change literal-string to string.
+     *
+     * @param literal-string $column
+     * @param literal-string|null $alias
+     * @return Expression<literal-string>
      */
     public static function binaryColumn(string $column, string|null $alias = null): Expression
     {

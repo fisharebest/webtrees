@@ -39,10 +39,6 @@ class SiteLogsService
 {
     /**
      * Generate a query for filtering the changes log.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return Builder
      */
     public function logsQuery(ServerRequestInterface $request): Builder
     {

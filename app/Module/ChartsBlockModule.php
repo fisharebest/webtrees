@@ -43,9 +43,6 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
     private ModuleService $module_service;
 
-    /**
-     * @param ModuleService $module_service
-     */
     public function __construct(ModuleService $module_service)
     {
         $this->module_service = $module_service;
@@ -66,12 +63,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -185,8 +177,6 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {
@@ -195,11 +185,6 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Update the configuration for a block.
-     *
-     * @param ServerRequestInterface $request
-     * @param int     $block_id
-     *
-     * @return void
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
@@ -212,11 +197,6 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * An HTML form to edit block settings
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return string
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {

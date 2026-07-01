@@ -56,8 +56,6 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
 
     /**
      * The name of this surname tradition
-     *
-     * @return string
      */
     public function name(): string
     {
@@ -66,8 +64,6 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
 
     /**
      * A short description of this surname tradition
-     *
-     * @return string
      */
     public function description(): string
     {
@@ -81,9 +77,6 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
     /**
      * What name is given to a new child
      *
-     * @param Individual|null $father
-     * @param Individual|null $mother
-     * @param string          $sex
      *
      * @return array<int,string>
      */
@@ -111,8 +104,6 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
     /**
      * What name is given to a new parent
      *
-     * @param Individual $child
-     * @param string     $sex
      *
      * @return array<int,string>
      */
@@ -135,8 +126,6 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
     /**
      * What names are given to a new spouse
      *
-     * @param Individual $spouse
-     * @param string     $sex
      *
      * @return array<int,string>
      */

@@ -24,18 +24,18 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PdfRenderer;
-use Fisharebest\Webtrees\Report\ReportParserGenerate;
+use Fisharebest\Webtrees\Report\ParserGenerate;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function addcslashes;
-use function ob_get_clean;
-use function ob_start;
 use function redirect;
 use function response;
 use function route;
@@ -62,7 +62,7 @@ final class ReportGenerate implements RequestHandlerInterface
 
         Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
 
-        $varnames = Validator::queryParams($request)->array('varnames');
+        $varnames = Validator::queryParams($request)->list('varnames');
         $vars     = Validator::queryParams($request)->array('vars');
 
         // Ensure we have an empty value for checkboxes in the report options.
@@ -80,15 +80,23 @@ final class ReportGenerate implements RequestHandlerInterface
         switch ($format) {
             default:
             case 'HTML':
-                ob_start();
-                new ReportParserGenerate($xml_filename, new HtmlRenderer(), $vars, $tree);
-                $html = ob_get_clean();
+                $renderer = new HtmlRenderer();
+                $parser = new ParserGenerate(
+                    report:    $xml_filename,
+                    renderer:  $renderer,
+                    vars:      $vars,
+                    tree:      $tree,
+                    author:    Webtrees::NAME . ' ' . Webtrees::VERSION,
+                    timestamp: Registry::timestampFactory()->now(),
+                );
+                $parser->process();
+                $html = $renderer->output();
 
                 $this->layout = 'layouts/report';
 
                 $response = $this->viewResponse('report-page', [
                     'content' => $html,
-                    'title'   => I18N::translate('Report'),
+                    'title'   => $module->title(),
                 ]);
 
                 if ($destination === 'download') {
@@ -98,9 +106,17 @@ final class ReportGenerate implements RequestHandlerInterface
                 return $response;
 
             case 'PDF':
-                ob_start();
-                new ReportParserGenerate($xml_filename, new PdfRenderer(), $vars, $tree);
-                $pdf = ob_get_clean();
+                $renderer = new PdfRenderer();
+                $parser = new ParserGenerate(
+                    report:    $xml_filename,
+                    renderer:  $renderer,
+                    vars:      $vars,
+                    tree:      $tree,
+                    author:    Webtrees::NAME . ' ' . Webtrees::VERSION,
+                    timestamp: Registry::timestampFactory()->now(),
+                );
+                $parser->process();
+                $pdf = $renderer->output();
 
                 $headers = ['content-type' => 'application/pdf'];
 

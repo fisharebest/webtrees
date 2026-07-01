@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\RequestHandlers\CalendarPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
@@ -30,6 +31,8 @@ use Fisharebest\Webtrees\Tree;
 class CalendarMenuModule extends AbstractModule implements ModuleMenuInterface
 {
     use ModuleMenuTrait;
+
+    protected int $access_level = Auth::PRIV_USER;
 
     public function title(): string
     {
@@ -45,8 +48,6 @@ class CalendarMenuModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * The default position for this menu.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultMenuOrder(): int
     {
@@ -67,11 +68,6 @@ class CalendarMenuModule extends AbstractModule implements ModuleMenuInterface
         return new Menu(I18N::translate('Calendar'), '#', 'menu-calendar', ['rel' => 'nofollow'], $submenu);
     }
 
-    /**
-     * @param Tree $tree
-     *
-     * @return Menu
-     */
     protected function calendarDayMenu(Tree $tree): Menu
     {
         return new Menu(I18N::translate('Day'), route(CalendarPage::class, [
@@ -80,11 +76,6 @@ class CalendarMenuModule extends AbstractModule implements ModuleMenuInterface
         ]), 'menu-calendar-day', ['rel' => 'nofollow']);
     }
 
-    /**
-     * @param Tree $tree
-     *
-     * @return Menu
-     */
     protected function calendarMonthMenu(Tree $tree): Menu
     {
         return new Menu(I18N::translate('Month'), route(CalendarPage::class, [
@@ -93,11 +84,6 @@ class CalendarMenuModule extends AbstractModule implements ModuleMenuInterface
         ]), 'menu-calendar-month', ['rel' => 'nofollow']);
     }
 
-    /**
-     * @param Tree $tree
-     *
-     * @return Menu
-     */
     protected function calendarYearMenu(Tree $tree): Menu
     {
         return new Menu(I18N::translate('Year'), route(CalendarPage::class, [

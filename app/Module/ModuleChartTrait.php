@@ -29,8 +29,6 @@ trait ModuleChartTrait
 {
     /**
      * A unique internal name for this module (based on the installation folder).
-     *
-     * @return string
      */
     abstract public function name(): string;
 
@@ -38,10 +36,6 @@ trait ModuleChartTrait
 
     /**
      * A menu item for this chart for an individual box in a chart.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu|null
      */
     public function chartBoxMenu(Individual $individual): Menu|null
     {
@@ -50,10 +44,6 @@ trait ModuleChartTrait
 
     /**
      * A main menu item for this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
      */
     public function chartMenu(Individual $individual): Menu
     {
@@ -67,8 +57,6 @@ trait ModuleChartTrait
 
     /**
      * CSS class for the menu.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -77,10 +65,6 @@ trait ModuleChartTrait
 
     /**
      * The title for a specific instance of this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function chartTitle(Individual $individual): string
     {
@@ -90,10 +74,7 @@ trait ModuleChartTrait
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {

@@ -32,10 +32,6 @@ class Source extends GedcomRecord
 
     /**
      * Each object type may have its own special rules, and re-implement this function.
-     *
-     * @param int $access_level
-     *
-     * @return bool
      */
     protected function canShowByType(int $access_level): bool
     {
@@ -54,8 +50,6 @@ class Source extends GedcomRecord
 
     /**
      * Extract names from the GEDCOM record.
-     *
-     * @return void
      */
     public function extractNames(): void
     {

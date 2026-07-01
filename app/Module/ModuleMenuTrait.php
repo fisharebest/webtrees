@@ -32,10 +32,6 @@ trait ModuleMenuTrait
 
     /**
      * Users change change the order of menus using the control panel.
-     *
-     * @param int $menu_order
-     *
-     * @return void
      */
     public function setMenuOrder(int $menu_order): void
     {
@@ -44,8 +40,6 @@ trait ModuleMenuTrait
 
     /**
      * Users change change the order of menus using the control panel.
-     *
-     * @return int
      */
     public function getMenuOrder(): int
     {
@@ -54,8 +48,6 @@ trait ModuleMenuTrait
 
     /**
      * The default position for this menu.
-     *
-     * @return int
      */
     public function defaultMenuOrder(): int
     {
@@ -64,10 +56,6 @@ trait ModuleMenuTrait
 
     /**
      * A menu, to be added to the main application menu.
-     *
-     * @param Tree $tree
-     *
-     * @return Menu|null
      */
     public function getMenu(Tree $tree): Menu|null
     {

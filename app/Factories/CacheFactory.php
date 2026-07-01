@@ -52,8 +52,6 @@ class CacheFactory implements CacheFactoryInterface
 
     /**
      * Create an array-based cache.
-     *
-     * @return Cache
      */
     public function array(): Cache
     {
@@ -62,8 +60,6 @@ class CacheFactory implements CacheFactoryInterface
 
     /**
      * Create an file-based cache.
-     *
-     * @return Cache
      */
     public function file(): Cache
     {

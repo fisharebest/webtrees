@@ -549,8 +549,6 @@ class ModuleService
      * @template T of ModuleInterface
      *
      * @param class-string<T> $interface
-     * @param Tree            $tree
-     * @param UserInterface   $user
      *
      * @return Collection<int,T>
      */
@@ -566,8 +564,6 @@ class ModuleService
      * @template T of ModuleInterface|MiddlewareInterface
      *
      * @param class-string<T> $interface
-     * @param bool            $include_disabled
-     * @param bool            $sort
      *
      * @return Collection<int,T&ModuleInterface>
      */
@@ -607,9 +603,8 @@ class ModuleService
     /**
      * All modules.
      *
-     * @param bool $include_disabled
      *
-     * @return Collection<int,ModuleInterface>
+     * @return Collection<string,ModuleInterface>
      */
     public function all(bool $include_disabled = false): Collection
     {
@@ -660,7 +655,7 @@ class ModuleService
     /**
      * All core modules in the system.
      *
-     * @return Collection<int,ModuleInterface>
+     * @return Collection<string,ModuleInterface>
      */
     private function coreModules(): Collection
     {
@@ -677,7 +672,7 @@ class ModuleService
     /**
      * All custom modules in the system.  Custom modules are defined in modules_v4/
      *
-     * @return Collection<int,ModuleCustomInterface>
+     * @return Collection<string,ModuleCustomInterface>
      */
     private function customModules(): Collection
     {
@@ -732,7 +727,6 @@ class ModuleService
     /**
      * A function filter modules by enabled/disabled
      *
-     * @param bool $include_disabled
      *
      * @return Closure(ModuleInterface):bool
      */
@@ -816,12 +810,13 @@ class ModuleService
     /**
      * During setup, we'll need access to some languages.
      *
-     * @return Collection<int,ModuleLanguageInterface>
+     * @return Collection<string,ModuleLanguageInterface>
      */
     public function setupLanguages(): Collection
     {
         return $this->coreModules()
-            ->filter(static fn (ModuleInterface $module): bool => $module instanceof ModuleLanguageInterface && $module->isEnabledByDefault())
+            ->whereInstanceOf(ModuleLanguageInterface::class)
+            ->filter(static fn (ModuleLanguageInterface $module): bool => $module->isEnabledByDefault())
             ->sort(static fn (ModuleLanguageInterface $x, ModuleLanguageInterface $y): int => $x->locale()->endonymSortable() <=> $y->locale()->endonymSortable());
     }
 
@@ -838,7 +833,6 @@ class ModuleService
      * Configuration settings are available through the various "module component" pages.
      * For modules that do not provide a component, we need to list them separately.
      *
-     * @param bool $include_disabled
      *
      * @return Collection<int,ModuleInterface>
      */
@@ -873,8 +867,6 @@ class ModuleService
 
     /**
      * Boot all the modules.
-     *
-     * @param ModuleThemeInterface $current_theme
      */
     public function bootModules(ModuleThemeInterface $current_theme): void
     {

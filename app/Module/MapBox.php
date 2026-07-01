@@ -40,8 +40,6 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function description(): string
     {
@@ -56,9 +54,6 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
         return false;
     }
 
-    /**
-     * @return ResponseInterface
-     */
     public function getAdminAction(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -73,19 +68,12 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function title(): string
     {
         return /* I18N: mapbox.com */ I18N::translate('Mapbox');
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $api_key = Validator::parsedBody($request)->string('api_key');

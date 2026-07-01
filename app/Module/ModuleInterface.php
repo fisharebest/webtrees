@@ -33,33 +33,21 @@ interface ModuleInterface
 
     /**
      * A unique internal name for this module (based on the installation folder).
-     *
-     * @param string $name
-     *
-     * @return void
      */
     public function setName(string $name): void;
 
     /**
      * A unique internal name for this module (based on the installation folder).
-     *
-     * @return string
      */
     public function name(): string;
 
     /**
      * Has the module been disabled in the control panel?
-     *
-     * @param bool $enabled
-     *
-     * @return self
      */
     public function setEnabled(bool $enabled): self;
 
     /**
      * Has the module been disabled in the control panel?
-     *
-     * @return bool
      */
     public function isEnabled(): bool;
 
@@ -74,20 +62,12 @@ interface ModuleInterface
      *
      * @template T of ModuleInterface
      *
-     * @param Tree            $tree
      * @param class-string<T> $interface
-     *
-     * @return int
      */
     public function accessLevel(Tree $tree, string $interface): int;
 
     /**
      * Get a module setting. Return a default if the setting is not set.
-     *
-     * @param string $setting_name
-     * @param string $default
-     *
-     * @return string
      */
     public function getPreference(string $setting_name, string $default = ''): string;
 
@@ -96,18 +76,11 @@ interface ModuleInterface
      *
      * Since module settings are NOT NULL, setting a value to NULL will cause
      * it to be deleted.
-     *
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return void
      */
     public function setPreference(string $setting_name, string $setting_value): void;
 
     /**
      * Where does this module store its resources
-     *
-     * @return string
      */
     public function resourcesFolder(): string;
 }

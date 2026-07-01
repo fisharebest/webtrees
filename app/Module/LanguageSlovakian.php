@@ -121,17 +121,26 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
             Relationship::fixed('dcéra', '%s dcéry')->daughter(),
             Relationship::fixed('dieťa', '%s dieťaťa')->child(),
             // Siblings
+            Relationship::fixed('dvojička', '%s dvojičky')->twin()->sister(),
+            Relationship::fixed('dvojička', '%s dvojičky')->twin()->brother(),
+            Relationship::fixed('dvojička', '%s dvojičky')->twin()->sibling(),
+            Relationship::fixed('staršia sestra', '%s staršej sestry')->older()->sister(),
+            Relationship::fixed('starší brat', '%s staršieho brata')->older()->brother(),
+            Relationship::fixed('starší súrodenec', '%s staršieho súrodenca')->older()->sibling(),
+            Relationship::fixed('mladšia sestra', 'mladšej sestry %s')->younger()->sister(),
+            Relationship::fixed('mladší brat', '%s mladšieho brata')->younger()->brother(),
+            Relationship::fixed('mladší súrodenec', '%s mladšieho súrodenca')->younger()->sibling(),
             Relationship::fixed('brat', '%s brata')->brother(),
             Relationship::fixed('sestra', '%s sestry')->sister(),
             Relationship::fixed('súrodenec', '%s súrodenca')->sibling(),
             // Divorced partners
             Relationship::fixed('exmanželka', '%s exmanželky')->divorced()->partner()->female(),
             Relationship::fixed('exmanžel', '%s exmanžela')->divorced()->partner()->male(),
-            Relationship::fixed('exmanžel/manželka', '%s exmanžela/manželky')->divorced()->partner(),
+            Relationship::fixed('expartner/expartnerka', '%s expartnera/expartnerky')->divorced()->partner(),
             // Engaged partners
-            Relationship::fixed('snúbenec', '%s snúbence')->engaged()->partner()->female(),
-            Relationship::fixed('snúbenica', '%s snúbenice')->engaged()->partner()->male(),
-            // Married parters
+            Relationship::fixed('snúbenica', '%s snúbenice')->engaged()->partner()->female(),
+            Relationship::fixed('snúbenec', '%s snúbenca')->engaged()->partner()->male(),
+            // Married partners
             Relationship::fixed('manželka', '%s manželky')->wife(),
             Relationship::fixed('manžel', '%s manžela')->husband(),
             Relationship::fixed('manžel/manželka', '%s manžela/manželky')->spouse(),
