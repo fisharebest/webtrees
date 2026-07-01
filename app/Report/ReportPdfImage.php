@@ -31,13 +31,14 @@ class ReportPdfImage extends ReportBaseImage
      *
      * @return void
      */
-    public function render($renderer): void
+    public function render($renderer,bool $headerorfoot=false): void //sfqas
     {
         static $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
         // Check for a pagebreak first
-        if ($renderer->checkPageBreakPDF($this->height + 5)) {
-            $this->y = $renderer->tcpdf->GetY();
+        if ($renderer->tcpdf->checkPageBreak($this->height + 5,null,false) and !$headerorfoot){  //sfqas
+            $renderer->checkPageBreakPDF($this->height + 5);
+			$this->y = $renderer->tcpdf->GetY();
         }
 
         $curx = $renderer->tcpdf->GetX();
