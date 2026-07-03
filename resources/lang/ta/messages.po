@@ -3511,7 +3511,7 @@ msgstr ""
 #: resources/views/edit/change-family-members.phtml:73
 #: resources/views/modules/pedigree-chart/previous.phtml:42
 msgid "Child"
-msgstr "%s குழந்தை"
+msgstr "குழந்தை"
 
 #: resources/xml/reports/ahnentafel_report.xml:388
 #: resources/xml/reports/descendancy_report.xml:480
