@@ -60,7 +60,7 @@ final class DataFixData implements RequestHandlerInterface
         $module   = $this->module_service->findByName($data_fix);
         assert($module instanceof ModuleDataFixInterface);
 
-        $params  = $request->getQueryParams();
+        $params  = (array) $request->getParsedBody();
         $records = $module->recordsToFix($tree, $params);
 
         $callback = function (object $row) use ($module, $params, $tree): array {

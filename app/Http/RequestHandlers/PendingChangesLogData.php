@@ -61,7 +61,7 @@ final class PendingChangesLogData implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree           = Validator::attributes($request)->tree();
-        $params         = $request->getQueryParams();
+        $params         = (array) $request->getParsedBody();
         $params['tree'] = $tree->name();
 
         $query = $this->pending_changes_service->changesQuery($params);

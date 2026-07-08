@@ -156,6 +156,7 @@ use Fisharebest\Webtrees\View;
         $(table).DataTable({
           'ajax': {
             'url': <?= json_encode(route(DataFixData::class, ['tree' => $tree->name(), 'data_fix' => $data_fix->name()]), JSON_THROW_ON_ERROR) ?>,
+            'type': 'POST',
             'data': function (data) {
               $.extend(data, getParams());
             }

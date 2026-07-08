@@ -50,11 +50,11 @@ class DataFixDataTest extends TestCase
 
         $handler = new DataFixData($data_fix_service, $datatables_service, $module_service);
 
-        $request = self::createRequest(RequestMethodInterface::METHOD_GET, [
+        $request = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
                 'type'       => Individual::RECORD_TYPE,
                 'search-for' => 'DOE',
                 'method'     => 'exact',
-                'case'       =>  ''
+                'case'       => '',
             ])
             ->withAttribute('tree', $tree)
             ->withAttribute('data_fix', 'fix-search-and-replace');

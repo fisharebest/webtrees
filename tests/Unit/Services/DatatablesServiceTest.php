@@ -19,15 +19,49 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Services;
 
-use Fisharebest\Webtrees\Tests\TestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Tests\TestCase;
+use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
+
+use function json_decode;
+
+use const JSON_THROW_ON_ERROR;
 
 #[CoversClass(DatatablesService::class)]
 class DatatablesServiceTest extends TestCase
 {
-    public function testClass(): void
+    public function testHandleCollectionUsesPostParameters(): void
     {
-        self::assertTrue(class_exists(DatatablesService::class));
+        $service = new DatatablesService();
+
+        $collection = new Collection([
+            ['name' => 'John Doe'],
+            ['name' => 'Jane Doe'],
+        ]);
+
+        $request = self::createRequest(
+            RequestMethodInterface::METHOD_POST,
+            ['draw' => '1'],
+            [
+                'draw'   => '7',
+                'search' => ['value' => 'Jane'],
+            ]
+        );
+
+        $response = $service->handleCollection(
+            $request,
+            $collection,
+            ['name'],
+            [0 => 'name'],
+            static fn (array $row): array => [$row['name']]
+        );
+
+        $data = json_decode((string) $response->getBody(), true, 512, JSON_THROW_ON_ERROR);
+
+        self::assertSame(7, $data['draw']);
+        self::assertSame(1, $data['recordsFiltered']);
+        self::assertSame([['Jane Doe']], $data['data']);
     }
 }
