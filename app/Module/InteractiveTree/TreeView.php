@@ -64,10 +64,14 @@ class TreeView
             'tree'       => $individual->tree(),
         ]);
 
-        return [
-            $html,
-            'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '", "' . e($individual->tree()->name()) . '");',
-        ];
+        $js =
+            'window[' . json_encode($this->name . 'Handler', JSON_THROW_ON_ERROR) . '] =' .
+            ' new TreeViewHandler(' .
+            json_encode($this->name, JSON_THROW_ON_ERROR) . ', ' .
+            json_encode($individual->tree()->name(), JSON_THROW_ON_ERROR) .
+            ');';
+
+        return [$html, $js];
     }
 
     /**
