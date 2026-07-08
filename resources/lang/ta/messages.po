@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-02-27 05:46+0000\n"
-"Last-Translator: Ashok <ashokavarthanan@gmail.com>\n"
-"Language-Team: \n"
-"Language: ta\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2024-11-30 20:48+0000\nPO-Revision-Date: 2026-07-08 11:54+0000\nLast-Translator: Ashok <ashokavarthanan@gmail.com>\nLanguage-Team: Tamil <http://localhost:8080/projects/webtrees/webtrees-2-2/ta/>\nLanguage: ta\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3511,7 +3499,7 @@ msgstr ""
 #: resources/views/edit/change-family-members.phtml:73
 #: resources/views/modules/pedigree-chart/previous.phtml:42
 msgid "Child"
-msgstr "%s குழந்தை"
+msgstr "குழந்தை"
 
 #: resources/xml/reports/ahnentafel_report.xml:388
 #: resources/xml/reports/descendancy_report.xml:480
@@ -20977,12 +20965,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid "Action"
-#~ msgstr "செயல்"
-
-#~ msgid "Configure"
-#~ msgstr "கட்டமைப்பு"
-
-#~ msgid "Gender"
-#~ msgstr "பாலினம்"
