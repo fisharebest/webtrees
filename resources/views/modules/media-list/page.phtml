@@ -97,86 +97,88 @@ use Illuminate\Support\Collection;
     <?php if ($media_objects->isNotEmpty()) : ?>
         <?= view('modules/media-list/pagination', ['module' => $module, 'page' => $page, 'pages' => $pages, 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'tree' => $tree]) ?>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
-            <?php foreach ($media_objects as $media_object) : ?>
-                <div class="col">
-                    <div class="card h-100">
-                        <div class="card-header">
-                            <h4 class="card-title">
-                                <a href="<?= e($media_object->url()) ?>"><?= $media_object->fullName() ?></a>
-                            </h4>
-                        </div>
-                        <div class="card-body">
-                            <?php foreach ($media_object->mediaFiles() as $media_file) : ?>
-                                <?= $media_file->displayImage(300, 200, 'contain', ['class' => 'img-fluid']) ?>
-                            <?php endforeach ?>
+        <div class="my-3">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+                <?php foreach ($media_objects as $media_object) : ?>
+                    <div class="col">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h6 class="card-title">
+                                    <a href="<?= e($media_object->url()) ?>"><?= $media_object->fullName() ?></a>
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <?php foreach ($media_object->mediaFiles() as $media_file) : ?>
+                                    <?= $media_file->displayImage(300, 200, 'contain', ['class' => 'img-fluid']) ?>
+                                <?php endforeach ?>
 
-                            <?php $media_file = $media_object->mediaFiles()->first() ?>
-                            <?php if ($media_file instanceof MediaFile) : ?>
-                                <p class="card-text">
-                                    <?php
-                                    // Show file details
-                                    if ($media_file->type() !== '') {
-                                        $element = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE');
-                                        echo $element->labelValue($media_file->type(), $media_object->tree());
-                                    }
-
-                                    foreach ($media_object->facts(['SOUR']) as $fact) {
-                                        echo view('fact-gedcom-fields', ['gedcom' => $fact->gedcom(), 'parent' => $media_object->tag(), 'tree' => $tree]);
-                                    }
-
-                                    foreach ($media_object->facts(['NOTE']) as $fact) {
-                                        echo view('fact-gedcom-fields', ['gedcom' => $fact->gedcom(), 'parent' => $media_object->tag(), 'tree' => $tree]);
-                                    }
-
-                                    if ($media_file->isExternal()) {
-                                        echo Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $media_object->tree());
-                                    } elseif ($media_file->fileExists()) {
-                                        if (Auth::isEditor($tree)) {
-                                            echo Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $media_object->tree());
-
-                                            foreach ($media_file->attributes() as $label => $value) {
-                                                $label = '<span class="label">' . $label . '</span>';
-                                                $value = '<span class="value">' . $value . '</span>';
-
-                                                echo '<div>' . I18N::translate(/* I18N: e.g. "Occupation: farmer" */ '%1$s: %2$s', $label, $value) . '</div>';
-                                            }
+                                <?php $media_file = $media_object->mediaFiles()->first() ?>
+                                <?php if ($media_file instanceof MediaFile) : ?>
+                                    <p class="card-text">
+                                        <?php
+                                        // Show file details
+                                        if ($media_file->type() !== '') {
+                                            $element = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE');
+                                            echo $element->labelValue($media_file->type(), $media_object->tree());
                                         }
-                                    } else {
-                                        echo '<p class="alert alert-danger">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', e($media_file->filename())), '</p>';
-                                    }
-                                    ?>
-                                </p>
-                            <?php endif ?>
-                        </div>
-                        <div class="card-footer">
-                            <?php foreach ($linked_record_service->linkedIndividuals($media_object) as $record) : ?>
-                                <?= view('icons/individual') ?>
-                                <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
-                                <br>
-                            <?php endforeach ?>
 
-                            <?php foreach ($linked_record_service->linkedFamilies($media_object) as $record) : ?>
-                                <?= view('icons/family') ?>
-                                <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
-                                <br>
-                            <?php endforeach ?>
+                                        foreach ($media_object->facts(['SOUR']) as $fact) {
+                                            echo view('fact-gedcom-fields', ['gedcom' => $fact->gedcom(), 'parent' => $media_object->tag(), 'tree' => $tree]);
+                                        }
 
-                            <?php foreach ($linked_record_service->linkedSources($media_object) as $record) : ?>
-                                <?= view('icons/source') ?>
-                                <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
-                                <br>
-                            <?php endforeach ?>
+                                        foreach ($media_object->facts(['NOTE']) as $fact) {
+                                            echo view('fact-gedcom-fields', ['gedcom' => $fact->gedcom(), 'parent' => $media_object->tag(), 'tree' => $tree]);
+                                        }
+
+                                        if ($media_file->isExternal()) {
+                                            echo Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $media_object->tree());
+                                        } elseif ($media_file->fileExists()) {
+                                            if (Auth::isEditor($tree)) {
+                                                echo Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $media_object->tree());
+
+                                                foreach ($media_file->attributes() as $label => $value) {
+                                                    $label = '<span class="label">' . $label . '</span>';
+                                                    $value = '<span class="value">' . $value . '</span>';
+
+                                                    echo '<div>' . I18N::translate(/* I18N: e.g. "Occupation: farmer" */ '%1$s: %2$s', $label, $value) . '</div>';
+                                                }
+                                            }
+                                        } else {
+                                            echo '<p class="alert alert-danger">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', e($media_file->filename())), '</p>';
+                                        }
+                                        ?>
+                                    </p>
+                                <?php endif ?>
+                            </div>
+                            <div class="card-footer">
+                                <?php foreach ($linked_record_service->linkedIndividuals($media_object) as $record) : ?>
+                                    <?= view('icons/individual') ?>
+                                    <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
+                                    <br>
+                                <?php endforeach ?>
+
+                                <?php foreach ($linked_record_service->linkedFamilies($media_object) as $record) : ?>
+                                    <?= view('icons/family') ?>
+                                    <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
+                                    <br>
+                                <?php endforeach ?>
+
+                                <?php foreach ($linked_record_service->linkedSources($media_object) as $record) : ?>
+                                    <?= view('icons/source') ?>
+                                    <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
+                                    <br>
+                                <?php endforeach ?>
                                 
-                            <?php foreach ($linked_record_service->linkedLocations($media_object) as $record) : ?>
-                                <?= view('icons/location') ?>
-                                <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
-                                <br>
-                            <?php endforeach ?>
+                                <?php foreach ($linked_record_service->linkedLocations($media_object) as $record) : ?>
+                                    <?= view('icons/location') ?>
+                                    <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
+                                    <br>
+                                <?php endforeach ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php endforeach ?>
+                <?php endforeach ?>
+            </div>
         </div>
 
         <?= view('modules/media-list/pagination', ['module' => $module, 'page' => $page, 'pages' => $pages, 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'tree' => $tree]) ?>
