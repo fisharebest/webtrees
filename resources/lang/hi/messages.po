@@ -9,7 +9,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (webtrees 1.0)  #-#-#-#-#\n"
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-08 16:52+0100\n"
+"POT-Creation-Date: 2026-07-08 17:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  messages.po (webtrees 1.0)  #-#-#-#-#\n"
+"#-#-#-#-#  messages.po (webtrees 1.0)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 4.14.2\n"
 "#-#-#-#-#  webtrees.pot (webtrees 1.0)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "#-#-#-#-#  webtrees.pot (webtrees 1.0)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"#-#-#-#-#  webtrees.pot (webtrees 1.0)  #-#-#-#-#\n"
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-08 16:52+0100\n"
+"POT-Creation-Date: 2026-07-08 17:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,14 +46,6 @@ msgstr " किन्तु विवरण अज्ञात हैं"
 #: resources/xml/reports/descendancy_report.xml
 msgid " in "
 msgstr " में "
-
-#: app/GedcomRecord.php app/GedcomRecord.php:734
-msgid "$fact_id cannot be empty.  Use createFact() instead."
-msgstr ""
-
-#: app/GedcomRecord.php app/GedcomRecord.php:741
-msgid "$gedcom cannot be empty.  Use deleteFact() instead."
-msgstr ""
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Services/RelationshipService.php

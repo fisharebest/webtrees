@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-08 16:52+0100\n"
+"POT-Creation-Date: 2026-07-08 17:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6138,14 +6138,6 @@ msgstr ""
 
 #: app/Gedcom.php:887
 msgid "Trailer"
-msgstr ""
-
-#: app/GedcomRecord.php:734
-msgid "$fact_id cannot be empty.  Use createFact() instead."
-msgstr ""
-
-#: app/GedcomRecord.php:741
-msgid "$gedcom cannot be empty.  Use deleteFact() instead."
 msgstr ""
 
 #: app/Http/Exceptions/HttpAccessDeniedException.php:32

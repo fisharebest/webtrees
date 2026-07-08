@@ -731,14 +731,14 @@ class GedcomRecord
     public function updateFact(string $fact_id, string $gedcom, bool $update_chan): void
     {
         if ($fact_id === '') {
-            trigger_error(I18N::translate('$fact_id cannot be empty.  Use createFact() instead.'), E_USER_DEPRECATED);
+            trigger_error('$fact_id cannot be empty.  Use createFact() instead.', E_USER_DEPRECATED);
             $this->createFact($gedcom, $update_chan);
 
             return;
         }
 
         if ($gedcom === '') {
-            trigger_error(I18N::translate('$gedcom cannot be empty.  Use deleteFact() instead.'), E_USER_DEPRECATED);
+            trigger_error('$gedcom cannot be empty.  Use deleteFact() instead.', E_USER_DEPRECATED);
             $this->deleteFact($fact_id, $update_chan);
 
             return;
