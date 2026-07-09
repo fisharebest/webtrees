@@ -80,7 +80,7 @@ use Fisharebest\Webtrees\View;
             <?= $content ?>
         </main>
 
-
+        <!-- Runtime contract: keep vendor bundle before webtrees bundle so legacy globals and plugins are available. -->
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
         <script src="<?= e(asset('js/webtrees.min.js')) ?>"></script>
 

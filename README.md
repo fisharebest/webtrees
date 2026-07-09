@@ -175,7 +175,9 @@ Then run the commands:
 * npm install
 * npm run build
 
-You will need to re-run the second of these any time you modify the file `webtrees.js`.
+You will need to re-run the second of these any time you modify files in `resources/js` or `resources/css`.
+
+During the JavaScript module migration, runtime compatibility globals (such as `window.webtrees`, `window.TreeViewHandler`, and `window.statistics`) are preserved by adapter entrypoints.
 
 ## Gedcom (family tree) files
 

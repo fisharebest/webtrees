@@ -15,6 +15,26 @@
 
 'use strict';
 
+import {
+  autocomplete,
+  buildLeafletJsMap,
+  getWebtreesGlobal,
+  httpGet,
+  httpPost,
+  initializeWebtreesPage,
+  pasteAtCursor,
+  persistentToggle,
+  reformatLatitude,
+  reformatLongitude,
+  setColorTheme,
+  textareaPatterns,
+  watchForColorThemeChanges,
+} from './webtrees/index';
+
+// Runtime contract: this bundle augments a shared global object so existing templates and inline handlers can call webtrees.* APIs.
+
+const webtrees = getWebtreesGlobal(window);
+
 (function (webtrees) {
   const lang = document.documentElement.lang;
 
@@ -36,24 +56,17 @@
     return str.replace(/\s+/g, ' ').trim();
   }
 
-  /**
-   * Simple wrapper around fetch() with our preferred headers
-   *
-   * @param {string} url
-   * @returns {Promise}
-   */
-  webtrees.httpGet = function (url) {
-    const options = {
-      method: 'GET',
-      credentials: 'same-origin',
-      referrerPolicy: 'same-origin',
-      headers: new Headers({
-        'x-requested-with': 'XMLHttpRequest',
-      })
-    };
-
-    return fetch(url, options);
-  }
+  webtrees.httpGet = httpGet;
+  webtrees.httpPost = httpPost;
+  webtrees.autocomplete = autocomplete;
+  webtrees.buildLeafletJsMap = buildLeafletJsMap;
+  webtrees.pasteAtCursor = pasteAtCursor;
+  webtrees.persistentToggle = persistentToggle;
+  webtrees.reformatLatitude = reformatLatitude;
+  webtrees.reformatLongitude = reformatLongitude;
+  webtrees.textareaPatterns = textareaPatterns;
+  webtrees.setColorTheme = setColorTheme;
+  webtrees.watchForColorThemeChanges = watchForColorThemeChanges;
 
   /**
    * Simple replacement for jQuery().load() - fetch HTML, insert into an element, and execute any scripts.
@@ -111,29 +124,6 @@
     }
   }
 
-  /**
-   * Simple wrapper around fetch() with our preferred headers
-   *
-   * @param {string} url
-   * @param {string|FormData} body
-   * @returns {Promise}
-   */
-  webtrees.httpPost= function (url, body = '') {
-    const csrfToken = document.head.querySelector('meta[name=csrf]').getAttribute('content');
-
-    const options = {
-      body: body,
-      method: 'POST',
-      credentials: 'same-origin',
-      referrerPolicy:  'same-origin',
-      headers: new Headers({
-        'X-CSRF-TOKEN': csrfToken,
-        'x-requested-with': 'XMLHttpRequest',
-      })
-    };
-
-    return fetch(url, options, body);
-  }
 
   /**
    * Look for non-latin characters in a string.
@@ -200,18 +190,6 @@
     const name = surnameFirst ? slash + surname + slash + separator + givn : givn + separator + slash + surname + slash;
 
     return trim(npfx + separator + name + separator + nsfx);
-  };
-
-  // Insert text at the current cursor position in a text field.
-  webtrees.pasteAtCursor = function (element, text) {
-    if (element !== null) {
-      const caret_pos = element.selectionStart + text.length;
-      const textBefore = element.value.substring(0, element.selectionStart);
-      const textAfter = element.value.substring(element.selectionEnd);
-      element.value = textBefore + text + textAfter;
-      element.setSelectionRange(caret_pos, caret_pos);
-      element.focus();
-    }
   };
 
   /**
@@ -603,215 +581,6 @@
     webtrees.calendarWidget(dateDivId, dateFieldId);
     return false;
   };
-
-  /**
-   * Make bootstrap "collapse" elements persistent.
-   *
-   * @param {HTMLElement} element
-   */
-  webtrees.persistentToggle = function (element) {
-    const key = 'state-of-' + element.dataset.wtPersist;
-    const previous_state = localStorage.getItem(key);
-
-    // Accordion buttons have aria-expanded.  Checkboxes are checked/unchecked
-    const current_state = element.getAttribute('aria-expanded') ?? element.checked.toString();
-
-    // Previously selected? Select again now.
-    if (previous_state !== null && previous_state !== current_state) {
-      element.click();
-    }
-
-    // Remember state for the next page load.
-    element.addEventListener('click', function () {
-      if (element.type === 'checkbox') {
-        localStorage.setItem(key, element.checked.toString());
-      }
-      if (element.type === 'button') {
-        localStorage.setItem(key, element.getAttribute('aria-expanded'));
-      }
-    });
-  };
-
-  /**
-   * @param {Element} field
-   * @param {string} pos
-   * @param {string} neg
-   */
-  function reformatLatLong (field, pos, neg) {
-    // valid LATI or LONG according to Gedcom standard
-    // pos (+) : N or E
-    // neg (-) : S or W
-    let txt = field.value.toUpperCase();
-    txt = txt.replace(/(^\s*)|(\s*$)/g, ''); // trim
-    txt = txt.replace(/ /g, ':'); // N12 34 ==> N12.34
-    txt = txt.replace(/\+/g, ''); // +17.1234 ==> 17.1234
-    txt = txt.replace(/-/g, neg); // -0.5698 ==> W0.5698
-    txt = txt.replace(/,/g, '.'); // 0,5698 ==> 0.5698
-    // 0°34'11 ==> 0:34:11
-    txt = txt.replace(/\u00b0/g, ':'); // °
-    txt = txt.replace(/\u0027/g, ':'); // '
-    // 0:34:11.2W ==> W0.5698
-    txt = txt.replace(/^([0-9]+):([0-9]+):([0-9.]+)(.*)/g, function ($0, $1, $2, $3, $4) {
-      let n = parseFloat($1);
-      n += ($2 / 60);
-      n += ($3 / 3600);
-      n = Math.round(n * 1E4) / 1E4;
-      return $4 + n;
-    });
-    // 0:34W ==> W0.5667
-    txt = txt.replace(/^([0-9]+):([0-9]+)(.*)/g, function ($0, $1, $2, $3) {
-      let n = parseFloat($1);
-      n += ($2 / 60);
-      n = Math.round(n * 1E4) / 1E4;
-      return $3 + n;
-    });
-    // 0.5698W ==> W0.5698
-    txt = txt.replace(/(.*)(NSEW])$/g, '$2$1');
-    // 17.1234 ==> N17.1234
-    if (txt && txt.charAt(0) !== neg && txt.charAt(0) !== pos) {
-      txt = pos + txt;
-    }
-    field.value = txt;
-  }
-
-  /**
-   * @param {Element} field
-   */
-  webtrees.reformatLatitude = function (field) {
-    return reformatLatLong(field, 'N', 'S');
-  };
-
-  /**
-   * @param {Element} field
-   */
-  webtrees.reformatLongitude = function (field) {
-    return reformatLatLong(field, 'E', 'W');
-  };
-
-  /**
-   * Initialize autocomplete elements.
-   * @param {string} selector
-   */
-  webtrees.autocomplete = function (selector) {
-    // Use typeahead/bloodhound for autocomplete
-    $(selector).each(function () {
-      const that = this;
-      $(this).typeahead(null, {
-        display: 'value',
-        limit: 10,
-        minLength: 2,
-        source: new Bloodhound({
-          datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-          queryTokenizer: Bloodhound.tokenizers.whitespace,
-          remote: {
-            url: this.dataset.wtAutocompleteUrl,
-            replace: function (url, uriEncodedQuery) {
-              const symbol = (url.indexOf("?") > 0) ? '&' : '?';
-              if (that.dataset.wtAutocompleteExtra === 'SOUR') {
-                let row_group = that.closest('.wt-nested-edit-fields').previousElementSibling;
-                while (row_group.querySelector('select') === null) {
-                  row_group = row_group.previousElementSibling;
-                }
-                const element = row_group.querySelector('select');
-                const extra   = element.options[element.selectedIndex].value.replace(/@/g, '');
-                return url + symbol + "query=" + uriEncodedQuery + '&extra=' + encodeURIComponent(extra);
-              }
-              return url + symbol + "query=" + uriEncodedQuery
-            }
-          }
-        })
-      });
-    });
-  };
-
-  /**
-   * Create a LeafletJS map from a list of providers/layers.
-   * @param {string} id
-   * @param {object} config
-   * @param {function} resetCallback
-   * @returns Map
-   */
-  webtrees.buildLeafletJsMap = function (id, config, resetCallback) {
-    const zoomControl = new L.control.zoom({
-      zoomInTitle: config.i18n.zoomIn,
-      zoomoutTitle: config.i18n.zoomOut,
-    });
-
-    const resetControl = L.Control.extend({
-      options: {
-        position: 'topleft',
-      },
-      onAdd: () => {
-        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-        const anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
-
-        anchor.href = '#';
-        anchor.setAttribute('aria-label', config.i18n.reset); /* Firefox doesn't yet support element.ariaLabel */
-        anchor.title = config.i18n.reset;
-        anchor.setAttribute('role', 'button');
-        anchor.innerHTML = config.icons.reset;
-        anchor.onclick = resetCallback;
-
-        return container;
-      },
-    });
-
-    const fullscreenControl = L.Control.extend({
-      options: {
-        position: 'topleft',
-      },
-      onAdd: (map) => {
-        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-        const anchor = L.DomUtil.create('a', 'leaflet-control-fullscreen', container);
-
-        anchor.href = '#';
-        anchor.setAttribute('role', 'button');
-        anchor.dataset.wtFullscreen = '.wt-fullscreen-container';
-        anchor.innerHTML = config.icons.fullScreen;
-
-        return container;
-      },
-    });
-
-    const preferredLayer = localStorage.getItem('map_default_layer');
-    let defaultLayer = null;
-
-    for (let [, provider] of Object.entries(config.mapProviders)) {
-      for (let [, child] of Object.entries(provider.children)) {
-        child.layer = L.tileLayer(child.url, child);
-
-        if (preferredLayer === child.localName) {
-          defaultLayer = child.layer;
-        }
-
-        if (defaultLayer === null && provider['default'] && child['default']) {
-          defaultLayer = child.layer;
-        }
-      }
-    }
-
-    if (defaultLayer === null) {
-      console.log('No default map layer defined - using the first one.');
-      defaultLayer = config.mapProviders[0].children[0].layer;
-    }
-
-    // Create the map with all controls and layers
-    return L.map(id, {
-      zoomControl: false,
-    })
-      .addControl(zoomControl)
-      .addControl(new fullscreenControl())
-      .addControl(new resetControl())
-      .addLayer(defaultLayer)
-      .addControl(L.control.layers.tree(config.mapProviders, null, {
-        closedSymbol: config.icons.expand,
-        openedSymbol: config.icons.collapse,
-      }))
-      .on('baselayerchange', (l) => {
-        localStorage.setItem('map_default_layer', l.layer.options.localName);
-      });
-  };
-
   /**
    * Initialize a tom-select input
    * @param {Element} element
@@ -937,175 +706,15 @@
       });
   };
 
-  /**
-   * Text areas don't support the pattern attribute, so apply it manually via data-wt-pattern.
-   *
-   * @param {HTMLFormElement} form
-   */
-  webtrees.textareaPatterns = function (form) {
-    form.addEventListener('submit', function (event) {
-      event.target.querySelectorAll('textarea[data-wt-pattern]').forEach(function (element) {
-        const pattern = new RegExp('^' + element.dataset.wtPattern + '$');
+}(webtrees));
 
-        if (!element.readOnly && element.value !== '' && !pattern.test(element.value)) {
-          event.preventDefault();
-          event.stopPropagation();
-          element.classList.add('is-invalid');
-          element.scrollIntoView();
-        } else {
-          element.classList.remove('is-invalid');
-        }
-      });
-    });
-  };
-
-  webtrees.setColorTheme = function (mode) {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.dataset.bsTheme = 'dark';
-    } else {
-      document.documentElement.dataset.bsTheme = 'light';
-    }
-  };
-
-  webtrees.watchForColorThemeChanges =function() {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => webtrees.setColorTheme());
-  };
-}(window.webtrees = window.webtrees || {}));
-
-// Send the CSRF token on all AJAX requests
-$.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name=csrf]').attr('content')
-  }
-});
-
-/**
- * Initialisation
- */
-document.addEventListener('DOMContentLoaded', function() {
-  // Set light/dark mode
-  if (document.documentElement.dataset.bsTheme === 'auto') {
-    webtrees.setColorTheme();
-    webtrees.watchForColorThemeChanges();
-  }
-
-  // Page elements that load automatically via AJAX.
-  // This prevents bad robots from crawling resource-intensive pages.
-  document.querySelectorAll('[data-wt-ajax-url]').forEach(function (element) {
-    webtrees.load(element, element.dataset.wtAjaxUrl);
-  });
-
-  // Autocomplete
-  webtrees.autocomplete('input[data-wt-autocomplete-url]');
-
-  document.querySelectorAll('.tom-select').forEach(element => webtrees.initializeTomSelect(element));
-
-  // If we clear the select (using the "X" button), we need an empty value
-  // (rather than no value at all) for (non-multiple) selects with name="array[]"
-  document.querySelectorAll('select.tom-select:not([multiple])')
-    .forEach(function (element) {
-      element.addEventListener('clear', function () {
-        webtrees.resetTomSelect(element.tomselect, '', '');
-      });
-    });
-
-  // Datatables - locale-aware sorting
-  DataTable.ext.oSort['text-asc'] = (x, y) => x.localeCompare(y, document.documentElement.lang, { sensitivity: 'base' });
-  DataTable.ext.oSort['text-desc'] = (x, y) => y.localeCompare(x, document.documentElement.lang, { sensitivity: 'base' });
-
-  // DataTables - start hidden to prevent FOUC.
-  document.querySelectorAll('table.datatables').forEach(function (element) {
-    new DataTable(element);
-    element.classList.remove('d-none');
-  });
-
-  // Save button/checkbox state between pages
-  document.querySelectorAll('[data-wt-persist]')
-    .forEach((element) => webtrees.persistentToggle(element));
-
-  // Activate the on-screen keyboard
-  let osk_focus_element;
-  $('.wt-osk-trigger').on('click', function () {
-    // When a user clicks the icon, set focus to the corresponding input
-    osk_focus_element = document.getElementById(this.dataset.wtId);
-    osk_focus_element.focus();
-    $('.wt-osk').show();
-  });
-  $('.wt-osk-script-button').on('change', function () {
-    $('.wt-osk-script').prop('hidden', true);
-    $('.wt-osk-script-' + this.dataset.wtOskScript).prop('hidden', false);
-  });
-  $('.wt-osk-shift-button').on('click', function () {
-    document.querySelector('.wt-osk-keys').classList.toggle('shifted');
-  });
-  $('.wt-osk-keys').on('click', '.wt-osk-key', function () {
-    let key = $(this).contents().get(0).nodeValue;
-    let shift_state = $('.wt-osk-shift-button').hasClass('active');
-    let shift_key = $('sup', this)[0];
-    if (shift_state && shift_key !== undefined) {
-      key = shift_key.innerText;
-    }
-    webtrees.pasteAtCursor(osk_focus_element, key);
-    if ($('.wt-osk-pin-button').hasClass('active') === false) {
-      $('.wt-osk').hide();
-    }
-    osk_focus_element.dispatchEvent(new Event('input'));
-  });
-
-  $('.wt-osk-close').on('click', function () {
-    $('.wt-osk').hide();
-  });
-});
-
-// Prevent form re-submission via accidental double-click.
-document.addEventListener('submit', function (event) {
-  if (event.target.method === 'POST') {
-    if (event.target.classList.contains('form-is-submitting')) {
-      event.preventDefault();
-    } else {
-      event.target.classList.add('form-is-submitting');
-    }
-  }
-});
-
-// Convert data-wt-* attributes into useful behavior.
-document.addEventListener('click', (event) => {
-  const target = event.target.closest('a,button');
-
-  if (target === null) {
-    return;
-  }
-
-  if ('wtConfirm' in target.dataset && !confirm(target.dataset.wtConfirm)) {
-    event.preventDefault();
-    return;
-  }
-
-  if ('wtPostUrl' in target.dataset) {
-    webtrees.httpPost(target.dataset.wtPostUrl).then(() => {
-      if ('wtReloadUrl' in target.dataset) {
-        // Go somewhere else. e.g. the home page after logout.
-        document.location = target.dataset.wtReloadUrl;
-      } else {
-        // Reload the current page. e.g. change language.
-        document.location.reload();
-      }
-    }).catch((error) => {
-      alert(error);
-    });
-  }
-
-  if (('wtFullscreen' in target.dataset)) {
-    event.stopPropagation();
-
-    const element = target.closest(target.dataset.wtFullscreen);
-
-    if (document.fullscreenElement === element) {
-      document.exitFullscreen()
-        .catch((error) => alert(error));
-    } else {
-      element.requestFullscreen()
-        .catch((error) => alert(error));
-    }
-  }
+initializeWebtreesPage({
+  httpPost: webtrees.httpPost,
+  initializeTomSelect: webtrees.initializeTomSelect,
+  load: webtrees.load,
+  pasteAtCursor: webtrees.pasteAtCursor,
+  persistentToggle: webtrees.persistentToggle,
+  resetTomSelect: webtrees.resetTomSelect,
+  setColorTheme: webtrees.setColorTheme,
+  watchForColorThemeChanges: webtrees.watchForColorThemeChanges,
 });

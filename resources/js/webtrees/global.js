@@ -13,9 +13,16 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-'use strict';
-import { Statistics } from './statistics/Statistics';
+/**
+ * Runtime contract: expose a stable window.webtrees object for legacy callers.
+ *
+ * @param {Window} globalWindow
+ *
+ * @returns {object}
+ */
+export function getWebtreesGlobal(globalWindow) {
+  globalWindow.webtrees = globalWindow.webtrees || {};
 
-// Runtime contract: chart templates call a shared global statistics singleton.
-const statistics = new Statistics();
-window.statistics = statistics;
+  return globalWindow.webtrees;
+}
+

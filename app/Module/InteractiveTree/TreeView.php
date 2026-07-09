@@ -64,6 +64,7 @@ class TreeView
             'tree'       => $individual->tree(),
         ]);
 
+        // Runtime contract: this inline bootstrap calls the global TreeViewHandler constructor from treeview.js.
         $js =
             'window[' . json_encode($this->name . 'Handler', JSON_THROW_ON_ERROR) . '] =' .
             ' new TreeViewHandler(' .

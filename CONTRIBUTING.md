@@ -61,7 +61,8 @@ If not, you'll need to replace `composer` with `php /path/to/your/copy/of/compos
 
 ### NPM
 
-* After modifying any CSS or JS files, you'll need to rebuild the files in `public/js` and `public/css`.  You do this with the command `npm run production`.
+* After modifying any CSS or JS files, you'll need to rebuild the files in `public/js` and `public/css`. You do this with the command `npm run build`.
+* During the JavaScript module migration, keep the compatibility globals `window.webtrees`, `window.TreeViewHandler`, and `window.statistics` available for existing templates and inline callers.
 
 ## Third-party libraries and compiled files in the source tree
 
@@ -74,7 +75,7 @@ We include the non-development PHP libraries from `/vendor`.
 These are created using the command `composer install --no-dev`.
 
 We include the compiled JS and CSS assets from `/public/{css,js}`).
-These are created using the command `npm run production`.
+These are created using the command `npm run build`.
 
 
 ## Creating a pull request
