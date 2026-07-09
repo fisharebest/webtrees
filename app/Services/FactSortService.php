@@ -221,7 +221,15 @@ final class FactSortService
     {
         $fact_type_order = FactComparator::typeOrder($fact);
 
-        foreach ($sorted as $i => $existing) {
+        for ($i = 0; $i < count($sorted); $i++) {
+            $existing = $sorted[$i];
+
+            // Dated events of close relatives should not influence placement of
+            // undated personal/family facts.
+            if ($this->isDatedCloseRelativeEvent($existing)) {
+                continue;
+            }
+
             if (FactComparator::typeOrder($existing) > $fact_type_order) {
                 array_splice($sorted, $i, 0, [$fact]);
 
@@ -233,5 +241,15 @@ final class FactSortService
         $sorted[] = $fact;
 
         return $sorted;
+    }
+
+    /**
+     * Is this a dated event synthesized from a close relative's record?
+     *
+     * These are represented as EVEN CLOSE_RELATIVE in IndividualFactsService.
+     */
+    private function isDatedCloseRelativeEvent(Fact $fact): bool
+    {
+        return $fact->date()->isOK() && $fact->tag() === 'INDI:EVEN' && $fact->value() === 'CLOSE_RELATIVE';
     }
 }

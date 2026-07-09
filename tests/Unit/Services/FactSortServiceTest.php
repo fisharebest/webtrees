@@ -519,6 +519,33 @@ class FactSortServiceTest extends TestCase
     // Edge cases
     // =========================================================================
 
+    public function testIssue3841UndatedOccuSortsAfterBirthWhenCloseRelativeEventPrecedesBirth(): void
+    {
+        $individual = $this->stubIndividual();
+
+        $occu           = new Fact('1 OCCU occupation', $individual, 'occu');
+        $birth          = new Fact("1 BIRT\n2 DATE 1 JUL 1818", $individual, 'birth');
+        $relative_death = new Fact("1 EVEN CLOSE_RELATIVE\n2 TYPE Death of father\n2 DATE 1 FEB 1818", $individual, 'relative_death');
+
+        $sorted = $this->fact_sort_service->sort(new Collection([$occu, $birth, $relative_death]));
+
+        self::assertSame(['relative_death', 'birth', 'occu'], $this->ids($sorted));
+    }
+
+    public function testIssue3841UndatedMarriageSortsAfterDatedBirth(): void
+    {
+        $individual = $this->stubIndividual();
+        $family     = $this->stubFamily('F1');
+
+        $marr           = new Fact('1 MARR', $family, 'marr');
+        $birth          = new Fact("1 BIRT\n2 DATE 1 JUL 1818", $individual, 'birth');
+        $relative_death = new Fact("1 EVEN CLOSE_RELATIVE\n2 TYPE Death of father\n2 DATE 1 FEB 1818", $individual, 'relative_death');
+
+        $sorted = $this->fact_sort_service->sort(new Collection([$marr, $birth, $relative_death]));
+
+        self::assertSame(['relative_death', 'birth', 'marr'], $this->ids($sorted));
+    }
+
     public function testDatedPostDeathFactsSortChronologically(): void
     {
         $individual = $this->stubIndividual();
