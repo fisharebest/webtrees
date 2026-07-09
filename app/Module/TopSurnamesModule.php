@@ -116,7 +116,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($info_style) {
             case 'tagcloud':
-                uksort($top_surnames, I18N::comparator());
+                uksort($top_surnames, I18N::compare(...));
                 $content = view('lists/surnames-tag-cloud', [
                     'module'   => $module,
                     'params'   => [],
@@ -148,7 +148,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
             case 'table':
             default:
-                uksort($top_surnames, I18N::comparator());
+                uksort($top_surnames, I18N::compare(...));
                 $content = view('lists/surnames-table', [
                     'families' => false,
                     'module'   => $module,

@@ -188,7 +188,7 @@ final class SearchAdvancedPage implements RequestHandlerInterface
             $label1 = $element_factory->make(strtr($x, [':DATE' => '', ':PLAC' => '', ':TYPE' => '']))->label();
             $label2 = $element_factory->make(strtr($y, [':DATE' => '', ':PLAC' => '', ':TYPE' => '']))->label();
 
-            return I18N::comparator()($label1, $label2) ?: strcmp($x, $y);
+            return I18N::compare($label1, $label2) ?: strcmp($x, $y);
         };
 
         return $default_facts

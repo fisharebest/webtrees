@@ -489,19 +489,32 @@ class I18N
     }
 
     /**
+     * Compare strings using local collation rules.
+     */
+    public static function compare(string $first, string $second): int
+    {
+        $collator = self::$collator;
+
+        if ($collator instanceof Collator) {
+            return (int) $collator->compare($first, $second);
+        }
+
+        return strcmp(self::strtolower($first), self::strtolower($second));
+    }
+
+    /**
      * A closure which will compare strings using local collation rules.
      *
      * @return Closure(string,string):int
      */
     public static function comparator(): Closure
     {
-        $collator = self::$collator;
+        trigger_error(
+            'I18N::comparator() is deprecated and will be removed in version 2.3. Use I18N::compare(...) instead.',
+            E_USER_DEPRECATED
+        );
 
-        if ($collator instanceof Collator) {
-            return static fn (string $x, string $y): int => (int) $collator->compare($x, $y);
-        }
-
-        return static fn (string $x, string $y): int => strcmp(self::strtolower($x), self::strtolower($y));
+        return self::compare(...);
     }
 
     /**

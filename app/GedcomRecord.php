@@ -20,6 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Fisharebest\Webtrees\Comparators\FactComparator;
+use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Elements\RestrictionNotice;
@@ -124,21 +126,12 @@ class GedcomRecord
      */
     public static function nameComparator(): Closure
     {
-        return static function (GedcomRecord $x, GedcomRecord $y): int {
-            if ($x->canShowName()) {
-                if ($y->canShowName()) {
-                    return I18N::comparator()($x->sortName(), $y->sortName());
-                }
+        trigger_error(
+            'GedcomRecord::nameComparator() is deprecated and will be removed in version 2.3. Use GedcomRecordComparator::byName(...) instead.',
+            E_USER_DEPRECATED
+        );
 
-                return -1; // only $y is private
-            }
-
-            if ($y->canShowName()) {
-                return 1; // only $x is private
-            }
-
-            return 0; // both $x and $y private
-        };
+        return GedcomRecordComparator::byName(...);
     }
 
     /**
@@ -150,7 +143,12 @@ class GedcomRecord
      */
     public static function lastChangeComparator(int $direction = 1): Closure
     {
-        return static fn (GedcomRecord $x, GedcomRecord $y): int => $direction * ($x->lastChangeTimestamp() <=> $y->lastChangeTimestamp());
+        trigger_error(
+            'GedcomRecord::lastChangeComparator() is deprecated and will be removed in version 2.3. Use GedcomRecordComparator::byLastChange(...) instead.',
+            E_USER_DEPRECATED
+        );
+
+        return static fn (GedcomRecord $x, GedcomRecord $y): int => $direction * GedcomRecordComparator::byLastChange($x, $y);
     }
 
     /**
@@ -575,7 +573,10 @@ class GedcomRecord
             switch ($this->tag()) {
                 case Family::RECORD_TYPE:
                 case Individual::RECORD_TYPE:
-                    $facts = Fact::sortFacts($facts);
+                    $facts = $facts
+                        ->sort(FactComparator::byType(...))
+                        ->sort(FactComparator::byDate(...))
+                        ->values();
                     break;
 
                 default:
@@ -583,7 +584,7 @@ class GedcomRecord
                     $subtags = array_map(fn (string $tag): string => $this->tag() . ':' . $tag, array_keys($subtags));
 
                     if ($subtags !== []) {
-                        // Renumber keys from 1.
+                        // Renumber keys from 1.  Dirty hack for false/zero.
                         $subtags = array_combine(range(1, count($subtags)), $subtags);
                     }
 
@@ -622,7 +623,7 @@ class GedcomRecord
             }
         }
 
-        uasort($missing_facts, I18N::comparator());
+        uasort($missing_facts, I18N::compare(...));
 
         if (!Auth::canUploadMedia($this->tree, Auth::user())) {
             unset($missing_facts['OBJE']);

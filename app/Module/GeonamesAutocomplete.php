@@ -137,7 +137,7 @@ class GeonamesAutocomplete extends AbstractModule implements ModuleConfigInterfa
             $places[] = implode(Gedcom::PLACE_SEPARATOR, array_filter($parts));
         }
 
-        usort($places, I18N::comparator());
+        usort($places, I18N::compare(...));
 
         return $places;
     }

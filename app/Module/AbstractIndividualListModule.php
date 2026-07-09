@@ -206,7 +206,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
             } else {
                 // The surname parameter is a root/canonical form. Display the actual surnames found.
                 $variants = array_keys($all_surnames[$surname] ?? [$surname => $surname]);
-                usort($variants, I18N::comparator());
+                usort($variants, I18N::compare(...));
                 $variants = array_map(static fn (string $x): string => $x === '' ? I18N::translate('No surname') : $x, $variants);
                 $legend   = implode('/', $variants);
             }
@@ -606,7 +606,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
             $list[$normalized][] = $row->n_surn;
         }
 
-        uksort($list, I18N::comparator());
+        uksort($list, I18N::compare(...));
 
         return $list;
     }
@@ -631,7 +631,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
             $list[$n_surn][$row->n_surname] += $row->total;
         }
 
-        uksort($list, I18N::comparator());
+        uksort($list, I18N::compare(...));
 
         return $list;
     }

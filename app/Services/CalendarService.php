@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\ExtCalendar\PersianCalendar;
+use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\AbstractCalendarDate;
 use Fisharebest\Webtrees\Date\FrenchDate;
@@ -236,7 +237,7 @@ class CalendarService
                 break;
 
             case 'alpha':
-                $facts = $facts->sort(static fn (Fact $x, Fact $y): int => GedcomRecord::nameComparator()($x->record(), $y->record()));
+                $facts = $facts->sort(static fn (Fact $x, Fact $y): int => GedcomRecordComparator::byName($x->record(), $y->record()));
                 break;
         }
 

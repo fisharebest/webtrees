@@ -207,7 +207,7 @@ class LanguageId extends AbstractElement
             'YIDDISH'       => (new LocaleYi())->endonym(),
         ];
 
-        uasort($values, I18N::comparator());
+        uasort($values, I18N::compare(...));
 
         return $values;
     }

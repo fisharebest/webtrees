@@ -803,7 +803,7 @@ class ModuleService
             $title1 = $x instanceof ModuleLanguageInterface ? $x->locale()->endonymSortable() : $x->title();
             $title2 = $y instanceof ModuleLanguageInterface ? $y->locale()->endonymSortable() : $y->title();
 
-            return I18N::comparator()($title1, $title2);
+            return I18N::compare($title1, $title2);
         };
     }
 

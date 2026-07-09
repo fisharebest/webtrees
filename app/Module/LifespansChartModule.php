@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Comparators\IndividualComparator;
 use Fisharebest\Webtrees\ColorGenerator;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\DB;
@@ -226,8 +227,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
         $individuals = array_filter($individuals, static fn (Individual|null $individual): bool => $individual instanceof Individual && $individual->canShow());
 
-        // Sort the array in order of birth year
-        usort($individuals, Individual::birthDateComparator());
+        usort($individuals, IndividualComparator::byBirthDate(...));
 
         // Round to whole decades
         $start_year = intdiv($this->minYear($individuals), 10) * 10;

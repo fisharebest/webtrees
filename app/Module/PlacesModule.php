@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Services\FactSortService;
 use Fisharebest\Webtrees\Services\LeafletJsService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Support\Collection;
@@ -60,14 +61,11 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
     protected const array DEFAULT_ICON = ['color' => 'gold', 'name' => 'bullseye fas'];
 
-    private LeafletJsService $leaflet_js_service;
-
-    private ModuleService $module_service;
-
-    public function __construct(LeafletJsService $leaflet_js_service, ModuleService $module_service)
-    {
-        $this->leaflet_js_service = $leaflet_js_service;
-        $this->module_service = $module_service;
+    public function __construct(
+        private LeafletJsService $leaflet_js_service,
+        private ModuleService $module_service,
+        private FactSortService $fact_sort_service,
+    ) {
     }
 
     public function title(): string
@@ -164,7 +162,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
             }
         }
 
-        $facts = Fact::sortFacts($facts);
+        $facts = $this->fact_sort_service->sort($facts);
 
         return $facts->filter(static fn (Fact $item): bool => $item->place()->gedcomName() !== '');
     }

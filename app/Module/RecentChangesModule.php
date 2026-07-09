@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -103,7 +104,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($sortStyle) {
             case 'name':
-                $rows  = $rows->sort(static fn (object $x, object $y): int => GedcomRecord::nameComparator()($x->record, $y->record));
+                $rows  = $rows->sort(static fn (object $x, object $y): int => GedcomRecordComparator::byName($x->record, $y->record));
                 $order = [[1, 'asc']];
                 break;
 

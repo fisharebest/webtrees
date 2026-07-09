@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Report;
 
 use Closure;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
+use Fisharebest\Webtrees\Comparators\IndividualComparator;
 use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Elements\UnknownElement;
@@ -1577,13 +1579,13 @@ final class ParserGenerate extends AbstractParser
 
         switch ($sortby) {
             case 'NAME':
-                uasort($individual_list, GedcomRecord::nameComparator());
+                uasort($individual_list, GedcomRecordComparator::byName(...));
                 break;
             case 'BIRT:DATE':
-                uasort($individual_list, Individual::birthDateComparator());
+                uasort($individual_list, IndividualComparator::byBirthDate(...));
                 break;
             case 'DEAT:DATE':
-                uasort($individual_list, Individual::deathDateComparator());
+                uasort($individual_list, IndividualComparator::byDeathDate(...));
                 break;
             case 'generation':
                 uasort($individual_list, static fn ($x, $y): int => $x->generation <=> $y->generation);

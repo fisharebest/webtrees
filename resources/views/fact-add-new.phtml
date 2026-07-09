@@ -3,13 +3,12 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Comparators\TagComparator;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
-use Illuminate\Support\Collection;
 
 /**
  * @var Family|Individual $record
@@ -24,7 +23,7 @@ $add_facts = (new GedcomEditService())->factsToAdd($record, false);
 switch ($record->tag()) {
     case Individual::RECORD_TYPE:
         $quick_facts  = array_filter(explode(',', $record->tree()->getPreference('INDI_FACTS_QUICK')));
-        $quick_facts = Fact::sortFactTags(Collection::make($quick_facts))->all();
+        usort($quick_facts, TagComparator::byOrder(...));
         $unique_facts = [
             'ADOP',
             'AFN',
@@ -64,7 +63,7 @@ switch ($record->tag()) {
 
     case Family::RECORD_TYPE:
         $quick_facts  = array_filter(explode(',', $record->tree()->getPreference('FAM_FACTS_QUICK')));
-        $quick_facts = Fact::sortFactTags(Collection::make($quick_facts))->all();
+        usort($quick_facts, TagComparator::byOrder(...));
         $unique_facts = [
             'DIV',
             'DIVF',
@@ -91,7 +90,7 @@ $label_fn = static fn (string $subtag): string => Registry::elementFactory()->ma
 $quick_facts = array_combine($quick_facts, array_map($label_fn, $quick_facts));
 $add_facts   = array_combine($add_facts, array_map($label_fn, $add_facts));
 
-uasort($add_facts, I18N::comparator());
+uasort($add_facts, I18N::compare(...));
 
 if (!Auth::canUploadMedia($record->tree(), Auth::user())) {
     unset($add_facts['OBJE'], $quick_facts['OBJE']);

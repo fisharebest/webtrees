@@ -40,7 +40,7 @@ class I18NTest extends TestCase
 
     public function testComparator(): void
     {
-        $comparator = I18N::comparator();
+        $comparator = I18N::compare(...);
 
         self::assertSame($comparator('', ''), 0);
         self::assertSame($comparator('Abc', 'abc'), 0);

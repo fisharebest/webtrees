@@ -145,7 +145,7 @@ trait ModuleThemeTrait
             }
         }
 
-        usort($menus, static fn (Menu $x, Menu $y): int => I18N::comparator()($x->getLabel(), $y->getLabel()));
+        usort($menus, static fn (Menu $x, Menu $y): int => I18N::compare($x->getLabel(), $y->getLabel()));
 
         return $menus;
     }

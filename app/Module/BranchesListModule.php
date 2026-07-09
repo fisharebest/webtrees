@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Comparators\FamilyComparator;
+use Fisharebest\Webtrees\Comparators\IndividualComparator;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
@@ -277,7 +279,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
             ->filter(GedcomRecord::accessFilter())
             ->all();
 
-        usort($individuals, Individual::birthDateComparator());
+        usort($individuals, IndividualComparator::byBirthDate(...));
 
         return $individuals;
     }
@@ -363,7 +365,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
         // spouses and children
         $spouse_families = $individual->spouseFamilies()
-            ->sort(Family::marriageDateComparator());
+            ->sort(FamilyComparator::byMarriageDate(...));
 
         if ($spouse_families->isNotEmpty()) {
             $fam_html = '';

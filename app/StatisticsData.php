@@ -160,7 +160,7 @@ readonly class StatisticsData
         switch ($sort) {
             default:
             case 'alpha':
-                uksort($surnames, I18N::comparator());
+                uksort($surnames, I18N::compare(...));
                 break;
             case 'count':
                 break;

@@ -130,7 +130,7 @@ final class TreePreferencesPage implements RequestHandlerInterface
             ->map(static fn (string $tag): ElementInterface => Registry::elementFactory()->make($tag))
             ->filter(static fn (ElementInterface $element): bool => !$element instanceof UnknownElement)
             ->map(static fn (ElementInterface $element): string => $element->label())
-            ->sort(I18N::comparator());
+            ->sort(I18N::compare(...));
 
         $all_individual_facts = Collection::make(Registry::elementFactory()->make('INDI')->subtags())
             ->filter(static fn (string $value, string $key): bool => !in_array($key, $ignore_facts, true))
@@ -138,7 +138,7 @@ final class TreePreferencesPage implements RequestHandlerInterface
             ->map(static fn (string $tag): ElementInterface => Registry::elementFactory()->make($tag))
             ->filter(static fn (ElementInterface $element): bool => !$element instanceof UnknownElement)
             ->map(static fn (ElementInterface $element): string => $element->label())
-            ->sort(I18N::comparator());
+            ->sort(I18N::compare(...));
 
         $all_surname_traditions = Registry::surnameTraditionFactory()->list();
 
