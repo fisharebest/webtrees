@@ -4,5 +4,6 @@ export { pasteAtCursor, persistentToggle, setColorTheme, watchForColorThemeChang
 export { reformatLatitude, reformatLongitude, textareaPatterns } from './forms';
 export { autocomplete } from './autocomplete';
 export { buildLeafletJsMap } from './map';
+export { confirmDialog } from './confirm';
 export { initializeWebtreesPage } from './init';
 

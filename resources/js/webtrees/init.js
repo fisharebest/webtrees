@@ -22,6 +22,7 @@ import { autocomplete } from './autocomplete';
  */
 export function initializeWebtreesPage(dependencies) {
   const {
+    confirmDialog,
     httpPost,
     initializeTomSelect,
     load,
@@ -127,19 +128,41 @@ export function initializeWebtreesPage(dependencies) {
   });
 
   // Convert data-wt-* attributes into useful behavior.
-  document.addEventListener('click', (event) => {
+  document.addEventListener('click', async (event) => {
     const target = event.target.closest('a,button');
 
     if (target === null) {
       return;
     }
 
-    if ('wtConfirm' in target.dataset && !confirm(target.dataset.wtConfirm)) {
+    const skip_confirm = target.dataset.wtConfirmBypass === '1';
+
+    if (skip_confirm) {
+      delete target.dataset.wtConfirmBypass;
+    }
+
+    if ('wtConfirm' in target.dataset && !skip_confirm) {
       event.preventDefault();
+
+      const confirmed = await confirmDialog(target.dataset.wtConfirm);
+
+      if (!confirmed) {
+        return;
+      }
+
+      if (target instanceof HTMLButtonElement && target.type === 'submit' && target.form !== null) {
+        target.form.requestSubmit(target);
+      } else {
+        target.dataset.wtConfirmBypass = '1';
+        target.click();
+      }
+
       return;
     }
 
     if ('wtPostUrl' in target.dataset) {
+      event.preventDefault();
+
       httpPost(target.dataset.wtPostUrl).then(() => {
         if ('wtReloadUrl' in target.dataset) {
           // Go somewhere else. e.g. the home page after logout.
@@ -154,6 +177,7 @@ export function initializeWebtreesPage(dependencies) {
     }
 
     if (('wtFullscreen' in target.dataset)) {
+      event.preventDefault();
       event.stopPropagation();
 
       const element = target.closest(target.dataset.wtFullscreen);

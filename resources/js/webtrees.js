@@ -18,6 +18,7 @@
 import {
   autocomplete,
   buildLeafletJsMap,
+  confirmDialog,
   getWebtreesGlobal,
   httpGet,
   httpPost,
@@ -60,6 +61,7 @@ const webtrees = getWebtreesGlobal(window);
   webtrees.httpPost = httpPost;
   webtrees.autocomplete = autocomplete;
   webtrees.buildLeafletJsMap = buildLeafletJsMap;
+  webtrees.confirmDialog = confirmDialog;
   webtrees.pasteAtCursor = pasteAtCursor;
   webtrees.persistentToggle = persistentToggle;
   webtrees.reformatLatitude = reformatLatitude;
@@ -709,6 +711,7 @@ const webtrees = getWebtreesGlobal(window);
 }(webtrees));
 
 initializeWebtreesPage({
+  confirmDialog: webtrees.confirmDialog,
   httpPost: webtrees.httpPost,
   initializeTomSelect: webtrees.initializeTomSelect,
   load: webtrees.load,

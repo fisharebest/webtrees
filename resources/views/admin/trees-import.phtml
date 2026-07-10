@@ -30,7 +30,7 @@ use Illuminate\Support\Collection;
     <?= /* I18N: %s is the name of a family tree */ I18N::translate('This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file.', e($tree->title())) ?>
 </div>
 
-<form method="post" action="<?= e(route(ImportGedcomAction::class, ['tree' => $tree->name()])) ?>" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= e(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
+<form id="wt-gedcom-import-form" method="post" action="<?= e(route(ImportGedcomAction::class, ['tree' => $tree->name()])) ?>" enctype="multipart/form-data">
     <input type="hidden" id="gedcom_file" value="<?= e($default_gedcom_file) ?>">
 
     <h2><?= I18N::translate('Select a GEDCOM file to import') ?></h2>
@@ -150,11 +150,27 @@ use Illuminate\Support\Collection;
     // Some browsers include c:\fakepath\ in the filename.
     newFile = newFile.replace(/.*[/\\]/, '');
     if (newFile !== oldFile && oldFile !== '') {
-      return window.confirm(message);
+      return webtrees.confirmDialog(message);
     } else {
-      return true;
+      return Promise.resolve(true);
     }
   }
+
+  document.getElementById('wt-gedcom-import-form').addEventListener('submit', async function (event) {
+    if (this.dataset.wtConfirmBypass === '1') {
+      delete this.dataset.wtConfirmBypass;
+      return;
+    }
+
+    event.preventDefault();
+
+    const confirmed = await checkGedcomImportForm(<?= json_encode(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?'), JSON_THROW_ON_ERROR) ?>);
+
+    if (confirmed) {
+      this.dataset.wtConfirmBypass = '1';
+      this.submit();
+    }
+  });
 
   document.getElementById('import-client-file').addEventListener('focus', function () {
     document.getElementById('import-client').checked = true;
