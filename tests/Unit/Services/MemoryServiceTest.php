@@ -71,4 +71,3 @@ class MemoryServiceTest extends TestCase
         self::assertTrue($memory_service->isMemoryNearlyUp(3 * 1024 * 1024));
     }
 }
-
