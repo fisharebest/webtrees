@@ -219,7 +219,7 @@ class MediaFile
             Site::setPreference('glide-key', $glide_key);
         }
 
-        // The "mark" parameter is ignored, but needed for cache-busting.
+        // The "mark" parameter is ignored but needed for cache-busting.
         $params = [
             'xref'      => $this->media->xref(),
             'tree'      => $this->media->tree()->name(),
@@ -227,7 +227,7 @@ class MediaFile
             'w'         => $width,
             'h'         => $height,
             'fit'       => $fit,
-            'mark'      => Registry::imageFactory()->thumbnailNeedsWatermark($this, Auth::user())
+            'mark'      => Auth::needsWatermark($this->media->tree()),
         ];
 
         $params['s'] = $this->signature($params);
@@ -261,13 +261,13 @@ class MediaFile
      */
     public function downloadUrl(string $disposition): string
     {
-        // The "mark" parameter is ignored, but needed for cache-busting.
+        // The "mark" parameter is ignored but needed for cache-busting.
         return route(MediaFileDownload::class, [
             'xref'        => $this->media->xref(),
             'tree'        => $this->media->tree()->name(),
             'fact_id'     => $this->fact_id,
             'disposition' => $disposition,
-            'mark'        => Registry::imageFactory()->fileNeedsWatermark($this, Auth::user())
+            'mark'        => Auth::needsWatermark($this->media->tree()),
         ]);
     }
 

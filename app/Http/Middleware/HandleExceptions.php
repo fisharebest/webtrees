@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Log;
@@ -76,6 +77,8 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
 
         try {
             return $handler->handle($request);
+        } catch (ImageException $exception) {
+            return $this->imageExceptionResponse($exception);
         } catch (HttpException $exception) {
             // The router added the tree attribute to the request, and we need it for the error response.
             if (Registry::container()->has(ServerRequestInterface::class)) {
@@ -173,6 +176,14 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             'title' => $exception->getMessage(),
             'tree'  => $tree,
         ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+    }
+
+    private function imageExceptionResponse(ImageException $exception): ResponseInterface
+    {
+        // We can't send the actual status code, as browsers won't show images with 4xx/5xx.
+        return response(content: $exception->toSvg())
+            ->withHeader('content-type', 'image/svg+xml')
+            ->withHeader('content-security-policy', 'default-src none');
     }
 
     private function unhandledExceptionResponse(ServerRequestInterface $request, Throwable $exception): ResponseInterface

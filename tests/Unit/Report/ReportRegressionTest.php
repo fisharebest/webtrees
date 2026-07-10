@@ -254,7 +254,6 @@ class ReportRegressionTest extends TestCase
         // Report snapshots validate report layout/content, not image encoding.
         // Use fixed image bytes so snapshots remain stable across platforms.
         $image_factory = self::createStub(ImageFactoryInterface::class);
-        $image_factory->method('fileNeedsWatermark')->willReturn(false);
         $image_factory->method('mediaFileThumbnail')->willReturnCallback(
             fn (
                 mixed $media_file,
@@ -266,7 +265,10 @@ class ReportRegressionTest extends TestCase
         );
         Registry::imageFactory($image_factory);
 
-        return $this->importTree('demo.ged');
+        $tree = $this->importTree('demo.ged');
+        $tree->setPreference('SHOW_NO_WATERMARK', (string) Auth::PRIV_NONE);
+
+        return $tree;
     }
 
     private function dummyThumbnailForMime(string $mime_type): string

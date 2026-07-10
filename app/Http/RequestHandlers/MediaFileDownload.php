@@ -21,13 +21,17 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function addcslashes;
+use function basename;
 use function redirect;
+use function response;
 
 final class MediaFileDownload implements RequestHandlerInterface
 {
@@ -50,15 +54,29 @@ final class MediaFileDownload implements RequestHandlerInterface
                     return redirect($media_file->filename());
                 }
 
-                $watermark = $media_file->isImage() && $image_factory->fileNeedsWatermark($media_file, $user);
+                $tree      = $media_file->media()->tree();
+                $watermark = $media_file->isImage() && Auth::needsWatermark($tree, $user);
                 $download  = $disposition === 'attachment';
+                $mime_type = $media_file->mimeType();
+                $data      = $image_factory->mediaFileContents($media_file, $watermark);
 
-                $response = $image_factory->mediaFileResponse($media_file, $watermark, $download);
+                $response = response($data)
+                    ->withHeader('content-type', $mime_type)
+                    ->withHeader('content-security-policy', 'default-src none');
+
+                if ($download) {
+                    $filename = addcslashes(string: basename(path: $media_file->filename()), characters: '"');
+                    $response = $response->withHeader('content-disposition', 'attachment; filename="' . $filename . '"');
+                }
 
                 return $response->withHeader('cache-control', 'public,max-age=31536000');
             }
         }
 
-        return $image_factory->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
+        throw new ImageException(
+            status_code: StatusCodeInterface::STATUS_NOT_FOUND,
+            filename: $xref,
+            error: 'File not found',
+        );
     }
 }

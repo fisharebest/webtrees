@@ -198,14 +198,13 @@ final class PdfRenderer extends AbstractRenderer implements ElementFactoryInterf
         ImageContinuation $ln,
     ): Image {
         // Send higher-resolution image at the same aspect ratio.
-        $add_watermark = Registry::imageFactory()->fileNeedsWatermark($media_file, Auth::user());
 
         $data = Registry::imageFactory()->mediaFileThumbnail(
             $media_file,
             (int) ($w * 4),
             (int) ($h * 4),
             ImageOperation::Crop,
-            $add_watermark,
+            Auth::needsWatermark($media_file->media()->tree()),
         );
 
         $src = '@' . $data;

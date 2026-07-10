@@ -21,23 +21,23 @@ namespace Fisharebest\Webtrees\Contracts;
 
 use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\MediaFile;
-use GdImage;
 use League\Flysystem\FilesystemOperator;
-use Psr\Http\Message\ResponseInterface;
 
 interface ImageFactoryInterface
 {
-    public function fileResponse(FilesystemOperator $filesystem, string $path, bool $download): ResponseInterface;
+    public function fileContents(FilesystemOperator $filesystem, string $path): string;
 
-    public function thumbnailResponse(
+    public function fileMimeType(FilesystemOperator $filesystem, string $path): string;
+
+    public function thumbnailContents(
         FilesystemOperator $filesystem,
         string $path,
         int $width,
         int $height,
         ImageOperation $operation
-    ): ResponseInterface;
+    ): string;
 
-    public function mediaFileResponse(MediaFile $media_file, bool $add_watermark, bool $download): ResponseInterface;
+    public function mediaFileContents(MediaFile $media_file, bool $add_watermark): string;
 
     public function mediaFileThumbnail(
         MediaFile $media_file,
@@ -46,22 +46,4 @@ interface ImageFactoryInterface
         ImageOperation $operation,
         bool $add_watermark
     ): string;
-
-    public function mediaFileThumbnailResponse(
-        MediaFile $media_file,
-        int $width,
-        int $height,
-        ImageOperation $operation,
-        bool $add_watermark
-    ): ResponseInterface;
-
-    public function fileNeedsWatermark(MediaFile $media_file, UserInterface $user): bool;
-
-    public function thumbnailNeedsWatermark(MediaFile $media_file, UserInterface $user): bool;
-
-    public function createWatermark(int $width, int $height, MediaFile $media_file): GdImage;
-
-    public function addWatermark(GdImage $image, GdImage $watermark): GdImage;
-
-    public function replacementImageResponse(string $text): ResponseInterface;
 }

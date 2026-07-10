@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -53,5 +54,24 @@ class HandleExceptionsTest extends TestCase
         $response   = $middleware->process($request, $handler);
 
         self::assertSame(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR, $response->getStatusCode());
+    }
+
+    public function testMiddlewareRendersSvgForImageException(): void
+    {
+        $tree_service = self::createStub(TreeService::class);
+
+        $handler = self::createStub(RequestHandlerInterface::class);
+        $handler->method('handle')->willThrowException(new ImageException(500, 'broken.jpg', 'File is corrupt'));
+
+        $request    = self::createRequest();
+        $middleware = new HandleExceptions(new PhpService(), $tree_service);
+        $response   = $middleware->process($request, $handler);
+        $body       = $response->getBody()->getContents();
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame('image/svg+xml', $response->getHeaderLine('content-type'));
+        self::assertStringContainsString('500', $body);
+        self::assertStringContainsString('broken.jpg', $body);
+        self::assertStringContainsString('File is corrupt', $body);
     }
 }

@@ -28,6 +28,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function response;
+
 final class AdminMediaFileDownload implements RequestHandlerInterface
 {
     public function __construct(
@@ -44,7 +46,13 @@ final class AdminMediaFileDownload implements RequestHandlerInterface
 
         foreach ($media_folders as $media_folder) {
             if (str_starts_with($path, $media_folder)) {
-                return Registry::imageFactory()->fileResponse($filesystem, $path, false);
+                $image_factory = Registry::imageFactory();
+                $mime_type     = $image_factory->fileMimeType($filesystem, $path);
+                $data          = $image_factory->fileContents($filesystem, $path);
+
+                return response($data)
+                    ->withHeader('content-type', $mime_type)
+                    ->withHeader('content-security-policy', 'default-src none');
             }
         }
 

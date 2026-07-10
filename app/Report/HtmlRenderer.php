@@ -140,14 +140,12 @@ final class HtmlRenderer extends AbstractRenderer implements ElementFactoryInter
         CellAlign $align,
         ImageContinuation $ln,
     ): Image {
-        $add_watermark = Registry::imageFactory()->fileNeedsWatermark($media_file, Auth::user());
-
         $data = Registry::imageFactory()->mediaFileThumbnail(
             $media_file,
             (int) ($w * 4),
             (int) ($h * 4),
             ImageOperation::Crop,
-            $add_watermark,
+            Auth::needsWatermark($media_file->media()->tree()),
         );
 
         $src = 'data:' . $media_file->mimeType() . ';base64,' . base64_encode($data);

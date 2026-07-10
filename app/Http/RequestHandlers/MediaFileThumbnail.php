@@ -20,17 +20,25 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Enums\ImageOperation;
+use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
+use League\Flysystem\FilesystemException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function basename;
+use function implode;
 use function redirect;
+use function response;
 
 final class MediaFileThumbnail implements RequestHandlerInterface
 {
+    private const int THUMBNAIL_CACHE_TTL = 8640000;
+
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
@@ -42,11 +50,19 @@ final class MediaFileThumbnail implements RequestHandlerInterface
         $media   = Registry::mediaFactory()->make($xref, $tree);
 
         if ($media === null) {
-            return Registry::imageFactory()->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_NOT_FOUND,
+                filename: $xref,
+                error: 'Not found',
+            );
         }
 
         if (!$media->canShow()) {
-            return Registry::imageFactory()->replacementImageResponse((string) StatusCodeInterface::STATUS_FORBIDDEN);
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_FORBIDDEN,
+                filename: $xref,
+                error: 'Access denied',
+            );
         }
 
         foreach ($media->mediaFiles() as $media_file) {
@@ -60,25 +76,66 @@ final class MediaFileThumbnail implements RequestHandlerInterface
                 $params['tree'] = $media_file->media()->tree()->name();
 
                 if ($media_file->signature($params) !== $params['s']) {
-                    return Registry::imageFactory()->replacementImageResponse((string) StatusCodeInterface::STATUS_FORBIDDEN)
-                        ->withHeader('x-signature-exception', 'Signature mismatch');
+                    throw new ImageException(
+                        status_code: StatusCodeInterface::STATUS_FORBIDDEN,
+                        filename: $media_file->filename(),
+                        error: 'Bad signature',
+                    );
                 }
 
                 $image_factory = Registry::imageFactory();
                 $operation     = ImageOperation::from($params['fit']);
 
-                $response = $image_factory->mediaFileThumbnailResponse(
-                    $media_file,
-                    (int) $params['w'],
-                    (int) $params['h'],
-                    $operation,
-                    $image_factory->fileNeedsWatermark($media_file, $user)
+                $width         = (int) $params['w'];
+                $height        = (int) $params['h'];
+                $add_watermark = Auth::needsWatermark($media_file->media()->tree(), $user);
+                $path          = $media_file->filename();
+                $filename      = basename($path);
+                $filesystem    = $media_file->media()->tree()->mediaFilesystem();
+
+                try {
+                    $last_modified = $filesystem->lastModified(path: $path);
+                } catch (FilesystemException $exception) {
+                    throw new ImageException(
+                        status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                        filename: $filename,
+                        error: 'File is not readable',
+                    );
+                }
+
+                $cache_key = implode(separator: ':', array: [
+                    $media_file->media()->tree()->name(),
+                    $path,
+                    (string) $last_modified,
+                    (string) $width,
+                    (string) $height,
+                    $operation->value,
+                    (string) $add_watermark,
+                ]);
+
+                $thumbnail = Registry::cache()->file()->remember(
+                    key: $cache_key,
+                    closure: fn (): string => $image_factory->mediaFileThumbnail(
+                        media_file: $media_file,
+                        width: $width,
+                        height: $height,
+                        operation: $operation,
+                        add_watermark: $add_watermark,
+                    ),
+                    ttl: self::THUMBNAIL_CACHE_TTL,
                 );
 
-                return $response->withHeader('cache-control', 'public,max-age=31536000');
+                return response($thumbnail)
+                    ->withHeader('content-type', $media_file->mimeType())
+                    ->withHeader('content-security-policy', 'default-src none')
+                    ->withHeader('cache-control', 'public,max-age=31536000');
             }
         }
 
-        return Registry::imageFactory()->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
+        throw new ImageException(
+            status_code: StatusCodeInterface::STATUS_NOT_FOUND,
+            filename: $xref,
+            error: 'No image',
+        );
     }
 }
