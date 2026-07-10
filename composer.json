@@ -52,7 +52,6 @@
         "guzzlehttp/guzzle": "7.12.3",
         "illuminate/database": "13.17.0",
         "illuminate/support": "13.17.0",
-        "intervention/image": "4.1.4",
         "league/commonmark": "2.8.2",
         "league/flysystem": "3.35.1",
         "league/flysystem-path-prefixing": "3.31.0",
@@ -90,7 +89,7 @@
         "squizlabs/php_codesniffer": "4.0.1"
     },
     "suggest": {
-        "ext-imagick": "Required to generate thumbnail images",
+        "ext-exif": "Recommended to auto-rotate JPEG images using EXIF orientation metadata",
         "ext-pdo_mysql": "Required to use MySQL for database storage",
         "ext-pdo_sqlite": "Required to use SQLite for database storage",
         "ext-pdo_pgsql": "Required to use PostgreSQL for database storage",

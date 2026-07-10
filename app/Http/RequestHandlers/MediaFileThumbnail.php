@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -64,12 +65,13 @@ final class MediaFileThumbnail implements RequestHandlerInterface
                 }
 
                 $image_factory = Registry::imageFactory();
+                $operation     = ImageOperation::from($params['fit']);
 
                 $response = $image_factory->mediaFileThumbnailResponse(
                     $media_file,
                     (int) $params['w'],
                     (int) $params['h'],
-                    $params['fit'],
+                    $operation,
                     $image_factory->fileNeedsWatermark($media_file, $user)
                 );
 

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -44,7 +45,7 @@ final class AdminMediaFileThumbnail implements RequestHandlerInterface
 
         foreach ($media_folders as $media_folder) {
             if (str_starts_with($path, $media_folder)) {
-                return Registry::imageFactory()->thumbnailResponse($filesystem, $path, 120, 120, 'contain');
+                return Registry::imageFactory()->thumbnailResponse($filesystem, $path, 120, 120, ImageOperation::Contain);
             }
         }
 

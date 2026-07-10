@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Registry;
 
@@ -145,7 +146,7 @@ final class HtmlRenderer extends AbstractRenderer implements ElementFactoryInter
             $media_file,
             (int) ($w * 4),
             (int) ($h * 4),
-            'crop',
+            ImageOperation::Crop,
             $add_watermark,
         );
 

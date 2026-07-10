@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Report;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\ImageFactoryInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\AbstractParser;
 use Fisharebest\Webtrees\Report\AbstractRenderer;
@@ -259,7 +260,7 @@ class ReportRegressionTest extends TestCase
                 mixed $media_file,
                 int $width,
                 int $height,
-                string $fit,
+                ImageOperation $operation,
                 bool $add_watermark,
             ): string => $this->dummyThumbnailForMime($media_file->mimeType())
         );

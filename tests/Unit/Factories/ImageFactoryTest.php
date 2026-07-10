@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Factories;
 
+use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\Factories\ImageFactory;
 use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -137,7 +138,7 @@ class ImageFactoryTest extends TestCase
             path: 'Elizabeth_II.jpg',
             width: 40,
             height: 40,
-            fit: 'contain',
+            operation: ImageOperation::Contain,
         );
 
         self::assertSame('image/jpeg', $response->getHeaderLine('content-type'));
@@ -156,7 +157,7 @@ class ImageFactoryTest extends TestCase
             path: 'missing.jpg',
             width: 40,
             height: 40,
-            fit: 'contain',
+            operation: ImageOperation::Contain,
         );
 
         self::assertSame('image/svg+xml', $response->getHeaderLine('content-type'));

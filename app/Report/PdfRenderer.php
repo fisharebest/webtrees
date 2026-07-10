@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Report;
 
 use Com\Tecnick\Pdf\Tcpdf;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Webtrees;
@@ -203,7 +204,7 @@ final class PdfRenderer extends AbstractRenderer implements ElementFactoryInterf
             $media_file,
             (int) ($w * 4),
             (int) ($h * 4),
-            'crop',
+            ImageOperation::Crop,
             $add_watermark,
         );
 

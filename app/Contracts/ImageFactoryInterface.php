@@ -19,8 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Contracts;
 
+use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\MediaFile;
-use Intervention\Image\Interfaces\ImageInterface;
+use GdImage;
 use League\Flysystem\FilesystemOperator;
 use Psr\Http\Message\ResponseInterface;
 
@@ -33,7 +34,7 @@ interface ImageFactoryInterface
         string $path,
         int $width,
         int $height,
-        string $fit
+        ImageOperation $operation
     ): ResponseInterface;
 
     public function mediaFileResponse(MediaFile $media_file, bool $add_watermark, bool $download): ResponseInterface;
@@ -42,7 +43,7 @@ interface ImageFactoryInterface
         MediaFile $media_file,
         int $width,
         int $height,
-        string $fit,
+        ImageOperation $operation,
         bool $add_watermark
     ): string;
 
@@ -50,7 +51,7 @@ interface ImageFactoryInterface
         MediaFile $media_file,
         int $width,
         int $height,
-        string $fit,
+        ImageOperation $operation,
         bool $add_watermark
     ): ResponseInterface;
 
@@ -58,9 +59,9 @@ interface ImageFactoryInterface
 
     public function thumbnailNeedsWatermark(MediaFile $media_file, UserInterface $user): bool;
 
-    public function createWatermark(int $width, int $height, MediaFile $media_file): ImageInterface;
+    public function createWatermark(int $width, int $height, MediaFile $media_file): GdImage;
 
-    public function addWatermark(ImageInterface $image, ImageInterface $watermark): ImageInterface;
+    public function addWatermark(GdImage $image, GdImage $watermark): GdImage;
 
     public function replacementImageResponse(string $text): ResponseInterface;
 }
