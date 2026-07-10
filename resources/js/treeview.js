@@ -316,9 +316,9 @@ export class TreeViewHandler {
       tv.setLoading();
       // perform the Ajax request and load the result in the box
       box.load(tv.ajaxDetails + '&pid=' + encodeURIComponent(pid), function () {
-        // If Lightbox module is active, we reinitialize it for the new links
-        if (typeof CB_Init === 'function') {
-          CB_Init();
+        // Re-run gallery setup for newly loaded content.
+        if (typeof window.webtrees?.initializeGallery === 'function') {
+          window.webtrees.initializeGallery();
         }
         box.css('width', tv.boxExpandedWidth * (tv.zoom / 100) + 'px');
         loading_image.remove();

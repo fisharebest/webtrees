@@ -24,6 +24,7 @@ export function initializeWebtreesPage(dependencies) {
   const {
     confirmDialog,
     httpPost,
+    initializeGallery,
     initializeTomSelect,
     load,
     pasteAtCursor,
@@ -56,6 +57,8 @@ export function initializeWebtreesPage(dependencies) {
 
     // Autocomplete
     autocomplete('input[data-wt-autocomplete-url]');
+
+    initializeGallery();
 
     document.querySelectorAll('.tom-select').forEach(element => initializeTomSelect(element));
 

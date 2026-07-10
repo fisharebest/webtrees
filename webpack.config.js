@@ -54,16 +54,6 @@ module.exports = (env, argv) => ({
           },
         },
         {
-          // jquery-colorbox uses jQuery/$ as free variables without importing
-          test: /jquery-colorbox/,
-          use: {
-            loader: 'imports-loader',
-            options: {
-              imports: ['default jquery jQuery', 'default jquery $'],
-            },
-          },
-        },
-        {
           test: /\.css$/,
           use: [
             MiniCssExtractPlugin.loader,

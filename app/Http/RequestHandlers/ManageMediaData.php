@@ -129,7 +129,7 @@ final class ManageMediaData implements RequestHandlerInterface
                 }
 
                 $url = route(AdminMediaFileDownload::class, ['path' => $path]);
-                $img = '<a href="' . e($url) . '" type="' . $mime_type . '" class="gallery">' . $img . '</a>';
+                $img = '<a href="' . e($url) . '" data-wt-gallery="1" data-wt-gallery-title="' . e($row->multimedia_file_refn) . '">' . $img . '</a>';
             } catch (UnableToReadFile) {
                 $url = route(AdminMediaFileThumbnail::class, ['path' => $path]);
                 $img = '<img src="' . e($url) . '">';
@@ -215,7 +215,7 @@ final class ManageMediaData implements RequestHandlerInterface
                     }
 
                     $url = route(AdminMediaFileDownload::class, ['path' => $row[0]]);
-                    $img = '<a href="' . e($url) . '">' . $img . '</a>';
+                    $img = '<a href="' . e($url) . '" data-wt-gallery="1" data-wt-gallery-title="' . e($row[0]) . '">' . $img . '</a>';
 
                     // Form to create new media object in each tree
                     $create_form = '';

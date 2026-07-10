@@ -177,16 +177,17 @@ class MediaFile
                     ]) . '>';
 
             $link_attributes = Html::attributes([
-                'class'      => 'gallery',
-                'type'       => $this->mimeType(),
-                'href'       => $this->downloadUrl('inline'),
-                'data-title' => strip_tags($this->media->fullName()),
+                'href'                  => $this->downloadUrl('inline'),
+                'data-wt-gallery'       => '1',
+                'data-wt-gallery-title' => strip_tags($this->media->fullName()),
+                'data-wt-gallery-title-url' => $this->media->url(),
+                'data-wt-gallery-format' => $this->multimedia_format,
+                'data-wt-gallery-media-type' => $this->source_media_type,
             ]);
         } else {
             $image = view('icons/mime', ['type' => $this->mimeType()]);
 
             $link_attributes = Html::attributes([
-                'type' => $this->mimeType(),
                 'href' => $this->downloadUrl('inline'),
             ]);
         }

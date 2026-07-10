@@ -1,4 +1,4 @@
-// jQuery 4 removed these utilities; shim them for legacy plugins (corejs-typeahead, jquery-colorbox).
+// jQuery 4 removed these utilities; shim them for remaining legacy plugins.
 import $ from 'jquery';
 
 $.isArray = Array.isArray;

@@ -19,9 +19,11 @@ import {
   autocomplete,
   buildLeafletJsMap,
   confirmDialog,
+  createDialogModal,
   getWebtreesGlobal,
   httpGet,
   httpPost,
+  initializeGallery,
   initializeWebtreesPage,
   pasteAtCursor,
   persistentToggle,
@@ -62,6 +64,7 @@ const webtrees = getWebtreesGlobal(window);
   webtrees.autocomplete = autocomplete;
   webtrees.buildLeafletJsMap = buildLeafletJsMap;
   webtrees.confirmDialog = confirmDialog;
+  webtrees.createDialogModal = createDialogModal;
   webtrees.pasteAtCursor = pasteAtCursor;
   webtrees.persistentToggle = persistentToggle;
   webtrees.reformatLatitude = reformatLatitude;
@@ -69,6 +72,7 @@ const webtrees = getWebtreesGlobal(window);
   webtrees.textareaPatterns = textareaPatterns;
   webtrees.setColorTheme = setColorTheme;
   webtrees.watchForColorThemeChanges = watchForColorThemeChanges;
+  webtrees.initializeGallery = initializeGallery;
 
   /**
    * Simple replacement for jQuery().load() - fetch HTML, insert into an element, and execute any scripts.
@@ -713,6 +717,7 @@ const webtrees = getWebtreesGlobal(window);
 initializeWebtreesPage({
   confirmDialog: webtrees.confirmDialog,
   httpPost: webtrees.httpPost,
+  initializeGallery: webtrees.initializeGallery,
   initializeTomSelect: webtrees.initializeTomSelect,
   load: webtrees.load,
   pasteAtCursor: webtrees.pasteAtCursor,
