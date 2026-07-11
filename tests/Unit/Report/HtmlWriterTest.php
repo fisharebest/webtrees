@@ -56,7 +56,10 @@ class HtmlWriterTest extends TestCase
             align_rtl: 'left',
             entity_rtl: '&lrm;',
             font: 'dejavusans',
-            timestamp: self::createStub(TimestampInterface::class),
+            timestamp: $this->createStub(TimestampInterface::class),
+            primary_font: 'dejavusans',
+            fallback_fonts: [],
+            timestamp: $this->createStub(TimestampInterface::class),
         );
     }
 

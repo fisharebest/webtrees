@@ -76,7 +76,15 @@ use const PREG_SET_ORDER;
 
 final class ParserGenerate extends AbstractParser
 {
-    private const string DEFAULT_FONT = 'dejavusans';
+    private const string DEFAULT_PRIMARY_FONT = 'notosans';
+
+    /** @var list<string> */
+    private const array DEFAULT_FALLBACK_FONTS = [
+        'notosansthai',
+        'notosansarabic',
+        'notosanshebrew',
+        'notosansdevanagari',
+    ];
 
     // Millimeters to points (1 point = 1/72 inch).
     private const float MM_TO_POINTS = 72.0 / 25.4;
@@ -411,6 +419,9 @@ final class ParserGenerate extends AbstractParser
      */
     private function docStartHandler(array $attrs): void
     {
+        $primary_font = $this->parsePrimaryFont();
+        $fallback_fonts = $this->parseFallbackFonts();
+
         $page_size = PaperSize::tryFrom($attrs['pageSize'] ?? 'A4') ?? PaperSize::A4;
 
         // Resolve page dimensions: use custom dimensions if specified, otherwise look up the paper size.
@@ -441,7 +452,8 @@ final class ParserGenerate extends AbstractParser
             description: $this->report_description,
             align_rtl: I18N::textDirection() === TextDirection::RTL ? 'right' : 'left',
             entity_rtl: I18N::textDirection() === TextDirection::RTL ? '&rlm;' : '&lrm;',
-            font: $this->variables->has('font') ? $this->variables->get('font') : self::DEFAULT_FONT,
+            primary_font: $primary_font,
+            fallback_fonts: $fallback_fonts,
             timestamp: $this->timestamp,
             font_subsetting: $this->font_subsetting,
             compression: $this->compression,
@@ -470,6 +482,43 @@ final class ParserGenerate extends AbstractParser
             $this->variables->set('PAGE_WIDTH', (string) ($config->paper_height - $config->top_margin - $config->bottom_margin));
             $this->variables->set('PAGE_HEIGHT', (string) ($config->paper_width - $config->left_margin - $config->right_margin));
         }
+    }
+
+    private function parsePrimaryFont(): string
+    {
+        $primary_font = self::DEFAULT_PRIMARY_FONT;
+
+        if ($primary_font === '') {
+            throw new LogicException('Report variable "primary_font" must not be empty.');
+        }
+
+        if (!preg_match('/^[a-z0-9_]+$/', $primary_font)) {
+            throw new LogicException('Report variable "primary_font" must contain only lowercase letters, numbers, and underscores.');
+        }
+
+        return $primary_font;
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function parseFallbackFonts(): array
+    {
+        $fallback_fonts = [];
+
+        foreach (self::DEFAULT_FALLBACK_FONTS as $font_name) {
+            if ($font_name === '') {
+                throw new LogicException('Default fallback font list contains an empty font name.');
+            }
+
+            if (!preg_match('/^[a-z0-9_]+$/', $font_name)) {
+                throw new LogicException('Default fallback font list contains an invalid font name: ' . $font_name);
+            }
+
+            $fallback_fonts[] = $font_name;
+        }
+
+        return $fallback_fonts;
     }
 
     private function docEndHandler(): void

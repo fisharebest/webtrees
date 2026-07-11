@@ -49,7 +49,9 @@ final readonly class Config
         public string $description,
         public string $align_rtl,
         public string $entity_rtl,
-        public string $font,
+        public string $primary_font,
+        /** @var list<string> */
+        public array $fallback_fonts,
         public TimestampInterface $timestamp,
         public bool $font_subsetting = true,
         public bool $compression = true,

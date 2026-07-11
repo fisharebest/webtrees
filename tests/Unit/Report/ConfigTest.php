@@ -51,7 +51,8 @@ class ConfigTest extends TestCase
             description:     'A test report',
             align_rtl:       'right',
             entity_rtl:      'rlm',
-            font:            'dejavusans',
+            primary_font:    'dejavusans',
+            fallback_fonts:  [],
             timestamp:       $timestamp,
         );
 
@@ -72,7 +73,8 @@ class ConfigTest extends TestCase
         self::assertSame('A test report', $config->description);
         self::assertSame('right', $config->align_rtl);
         self::assertSame('rlm', $config->entity_rtl);
-        self::assertSame('dejavusans', $config->font);
+        self::assertSame('dejavusans', $config->primary_font);
+        self::assertSame([], $config->fallback_fonts);
         self::assertSame($timestamp, $config->timestamp);
     }
 }

@@ -74,7 +74,7 @@ final class PdfRenderer extends AbstractRenderer implements ElementFactoryInterf
     {
         $this->setCurrentStyleValue($saved_style);
         if ($saved_style !== null) {
-            $this->adaptor->setFont($this->config->font, strtoupper($saved_style->style), $saved_style->size);
+            $this->adaptor->setFont($this->config->primary_font, strtoupper($saved_style->style), $saved_style->size);
         }
     }
 
@@ -82,7 +82,7 @@ final class PdfRenderer extends AbstractRenderer implements ElementFactoryInterf
     {
         if ($this->currentStyleValue() !== $style) {
             $this->setCurrentStyleValue($style);
-            $this->adaptor->setFont($this->config->font, strtoupper($style->style), $style->size);
+            $this->adaptor->setFont($this->config->primary_font, strtoupper($style->style), $style->size);
         }
     }
 

@@ -20,12 +20,19 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use Com\Tecnick\Pdf\Tcpdf;
-use Fisharebest\Webtrees\Encodings\UTF8;
+use RuntimeException;
 
+use function array_values;
+use function count;
+use function in_array;
+use function is_array;
 use function max;
 use function min;
-use function str_replace;
+use function preg_split;
+use function sprintf;
 use function strtolower;
+
+use const PREG_SPLIT_NO_EMPTY;
 
 final class TcLibPdfAdaptor
 {
@@ -42,37 +49,22 @@ final class TcLibPdfAdaptor
 
     private string $font_family = '';
 
+    private readonly string $primary_font;
+
+    /** @var list<string> */
+    private readonly array $fallback_fonts;
+
+    private readonly FontCoverageIndex $font_coverage_index;
+
+    /** @var array<int,int> */
+    private array $unsupported_codepoints = [];
+
+
     // Consistent cell padding applied to all text cells (left and right).
     // This insets text from the cell edge, improves readability, and ensures
     // that our splitTextIntoLines() width calculation matches the effective
     // text width used by tc-lib-pdf's addTextCell() during rendering.
     private const float CELL_PADDING = 1.0;
-
-    // Unicode bidi isolate characters (FSI U+2068, PDI U+2069) are not present
-    // in most PDF fonts, causing visible tofu boxes.  However, simply stripping
-    // them breaks bidi for mixed-direction text: without isolation, neutral
-    // characters (commas, spaces) in LTR place names like "Mayfair, London,
-    // England" get assigned RTL level in an RTL paragraph, reversing word order.
-    //
-    // The fix: replace FSI/PDI with the older embedding equivalents (LRE/PDF)
-    // that ARE in the font with zero-width glyphs and are fully supported by
-    // tc-lib-unicode's Bidi algorithm.  LRE (U+202A) opens an LTR embedding
-    // scope and PDF (U+202C) closes it — providing the directional context
-    // that keeps neutral characters between LTR words at the correct level.
-    //
-    // FSI auto-detects direction from the first strong character; replacing
-    // with LRE forces LTR embedding.  This is correct because GEDCOM values
-    // (names, places) that contain RTL text will have strong RTL characters
-    // that override the LRE embedding level via the Bidi algorithm's rules.
-    private const array BIDI_ISOLATE_SEARCH = [
-        UTF8::FIRST_STRONG_ISOLATE,
-        UTF8::POP_DIRECTIONAL_ISOLATE,
-    ];
-
-    private const array BIDI_ISOLATE_REPLACE = [
-        UTF8::LEFT_TO_RIGHT_EMBEDDING,
-        UTF8::POP_DIRECTIONAL_FORMATTING,
-    ];
 
     private readonly bool $is_rtl;
 
@@ -90,6 +82,9 @@ final class TcLibPdfAdaptor
         $this->draw_color = new HexColor('#000000');
         $this->fill_color = new HexColor('#FFFFFF');
         $this->text_color = new HexColor('#000000');
+        $this->font_coverage_index = new FontCoverageIndex();
+        $this->primary_font = $config->primary_font;
+        $this->fallback_fonts = $config->fallback_fonts;
 
         $this->pdf_page_state = new PdfPageState();
         $this->pdf_internal_link_service = new PdfInternalLinkService(new InternalLinkRegistry());
@@ -178,23 +173,25 @@ final class TcLibPdfAdaptor
         return $this->tcpdf->getOutPDFString();
     }
 
+    /**
+     * @return list<string>
+     */
+    public function unsupportedGlyphDiagnostics(): array
+    {
+        $diagnostics = [];
+
+        foreach ($this->unsupported_codepoints as $codepoint => $count) {
+            $diagnostics[] = sprintf('U+%04X x%d', $codepoint, $count);
+        }
+
+        return array_values($diagnostics);
+    }
+
     // Public wrapper API: drawing primitives and text/image output.
 
     public function setFont(string $family, string $style = '', float $size = 0): void
     {
-        if ($size > 0.0) {
-            $this->font_size = $size;
-        }
-
-        if ($family !== '') {
-            $this->font_family = $family;
-        }
-
-        $this->tcpdf->font->insert($this->tcpdf->pon, $this->font_family, $style, $this->font_size);
-
-        if ($this->pdf_page_state->hasCurrentPage()) {
-            $this->addCurrentPageContent($this->tcpdf->font->getOutCurrentFont());
-        }
+        $this->switchFont($family, $style, $size, true);
     }
 
     public function getStringWidth(string $text): float
@@ -203,13 +200,24 @@ final class TcLibPdfAdaptor
             return 0.0;
         }
 
-        // Replace unsupported isolates with zero-width embedding equivalents.
-        $text = str_replace(self::BIDI_ISOLATE_SEARCH, self::BIDI_ISOLATE_REPLACE, $text);
+        // If report defaults ever switch back to DejaVu Sans, this is the
+        // place to add an FSI/PDI substitution for fonts that cannot keep
+        // U+2068/U+2069 non-visible.
 
-        $ord_array = $this->tcpdf->uniconv->strToOrdArr($text);
-        $width_points = $this->tcpdf->font->getOrdArrWidth($ord_array);
+        $saved_font_style = (string) $this->tcpdf->font->getCurrentFont()['style'];
+        $saved_font_size = $this->font_size;
+        $saved_font_family = $this->font_family;
+        $font_runs = $this->splitTextIntoFontRuns($text);
+        $text_width = 0.0;
 
-        return $this->tcpdf->toUnit($width_points);
+        foreach ($font_runs as $font_run) {
+            $this->switchFont($font_run['font'], $saved_font_style, $saved_font_size, false);
+            $text_width += $this->measureCurrentFontTextWidth($font_run['text']);
+        }
+
+        $this->switchFont($saved_font_family, $saved_font_style, $saved_font_size, false);
+
+        return $text_width;
     }
 
     public function setDrawColor(HexColor $color): void
@@ -248,9 +256,9 @@ final class TcLibPdfAdaptor
             return;
         }
 
-        // Replace bidi isolate characters (not in font) with embedding
-        // equivalents (zero-width in font) to preserve directional context.
-        $text = str_replace(self::BIDI_ISOLATE_SEARCH, self::BIDI_ISOLATE_REPLACE, $text);
+        // If report defaults ever switch back to DejaVu Sans, this is the
+        // place to add an FSI/PDI substitution for fonts that cannot keep
+        // U+2068/U+2069 non-visible.
 
 
         $text_width = $with_padding ? $width - self::CELL_PADDING * 2 : $width;
@@ -298,7 +306,7 @@ final class TcLibPdfAdaptor
 
             $cell_height = min($line_height, $block_bottom - $line_y);
 
-            $this->addTextCellAt($line_text, $x, $line_y, $width, $cell_height, $halign, $with_padding);
+            $this->drawTextLineWithFallbackRuns($line_text, $x, $line_y, $width, $cell_height, $halign, $with_padding);
         }
     }
 
@@ -474,5 +482,171 @@ final class TcLibPdfAdaptor
         $this->addCurrentPageContent(
             $this->tcpdf->color->getPdfColor($this->text_color->hex(), false)
         );
+    }
+
+    private function switchFont(string $family, string $style, float $size, bool $emit_font_operation): void
+    {
+        if ($size > 0.0) {
+            $this->font_size = $size;
+        }
+
+        if ($family !== '') {
+            $this->font_family = $family;
+        }
+
+        $this->tcpdf->font->insert($this->tcpdf->pon, $this->font_family, $style, $this->font_size);
+
+        if ($emit_font_operation && $this->pdf_page_state->hasCurrentPage()) {
+            $this->addCurrentPageContent($this->tcpdf->font->getOutCurrentFont());
+        }
+    }
+
+    private function drawTextLineWithFallbackRuns(
+        string $line_text,
+        float $cell_x,
+        float $line_y,
+        float $cell_width,
+        float $cell_height,
+        string $horizontal_align,
+        bool $with_padding,
+    ): void {
+        $font_runs = $this->splitTextIntoFontRuns($line_text);
+
+        if (count($font_runs) <= 1) {
+            $this->addTextCellAt($line_text, $cell_x, $line_y, $cell_width, $cell_height, $horizontal_align, $with_padding);
+
+            return;
+        }
+
+        $saved_font_style = (string) $this->tcpdf->font->getCurrentFont()['style'];
+        $saved_font_size = $this->font_size;
+        $saved_font_family = $this->font_family;
+
+        $line_width = 0.0;
+        foreach ($font_runs as $font_run) {
+            $this->switchFont($font_run['font'], $saved_font_style, $saved_font_size, false);
+            $line_width += $this->measureCurrentFontTextWidth($font_run['text']);
+        }
+
+        $available_width = $with_padding
+            ? $cell_width - self::CELL_PADDING * 2
+            : $cell_width;
+
+        if ($available_width <= 0.0) {
+            $this->switchFont($saved_font_family, $saved_font_style, $saved_font_size, true);
+
+            return;
+        }
+
+        $text_origin_x = $with_padding
+            ? $cell_x + self::CELL_PADDING
+            : $cell_x;
+
+        $line_start_x = match ($horizontal_align) {
+            'C' => $text_origin_x + max(0.0, ($available_width - $line_width) / 2),
+            'R' => $text_origin_x + max(0.0, $available_width - $line_width),
+            default => $text_origin_x,
+        };
+
+        foreach ($font_runs as $font_run) {
+            $this->switchFont($font_run['font'], $saved_font_style, $saved_font_size, true);
+            $run_width = $this->measureCurrentFontTextWidth($font_run['text']);
+
+            if ($run_width <= 0.0) {
+                continue;
+            }
+
+            $this->addTextCellAt(
+                $font_run['text'],
+                $line_start_x,
+                $line_y,
+                $run_width,
+                $cell_height,
+                'L',
+                false,
+            );
+
+            $line_start_x += $run_width;
+        }
+
+        $this->switchFont($saved_font_family, $saved_font_style, $saved_font_size, true);
+    }
+
+    private function measureCurrentFontTextWidth(string $text): float
+    {
+        if ($text === '') {
+            return 0.0;
+        }
+
+        $ord_array = $this->tcpdf->uniconv->strToOrdArr($text);
+        $width_points = $this->tcpdf->font->getOrdArrWidth($ord_array);
+
+        return $this->tcpdf->toUnit($width_points);
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function fallbackFontOrder(): array
+    {
+        $active_font = $this->font_family !== '' ? $this->font_family : $this->primary_font;
+        $font_order = [$active_font];
+
+        foreach ($this->fallback_fonts as $fallback_font) {
+            if ($fallback_font !== '' && !in_array($fallback_font, $font_order, true)) {
+                $font_order[] = $fallback_font;
+            }
+        }
+
+        return array_values($font_order);
+    }
+
+    /**
+     * @return list<array{font:string,text:string}>
+     */
+    private function splitTextIntoFontRuns(string $text): array
+    {
+        if ($text === '') {
+            return [];
+        }
+
+        $font_order = $this->fallbackFontOrder();
+        $characters = preg_split('//u', $text, -1, PREG_SPLIT_NO_EMPTY);
+
+        if ($characters === false || !is_array($characters)) {
+            throw new RuntimeException('Unable to split text into Unicode characters.');
+        }
+
+        $font_runs = [];
+
+        foreach ($characters as $character) {
+            $ord_array = $this->tcpdf->uniconv->strToOrdArr($character);
+            $codepoint = $ord_array[0] ?? null;
+
+            if ($codepoint === null) {
+                throw new RuntimeException('Unable to determine Unicode codepoint for text run segmentation.');
+            }
+
+            $selected_font = $this->font_coverage_index->firstSupportingFont($font_order, $codepoint);
+            $output_character = $character;
+
+            if ($selected_font === null) {
+                $this->unsupported_codepoints[$codepoint] = ($this->unsupported_codepoints[$codepoint] ?? 0) + 1;
+                $selected_font = $font_order[0];
+            }
+
+            $last_run_index = count($font_runs) - 1;
+
+            if ($last_run_index >= 0 && $font_runs[$last_run_index]['font'] === $selected_font) {
+                $font_runs[$last_run_index]['text'] .= $output_character;
+            } else {
+                $font_runs[] = [
+                    'font' => $selected_font,
+                    'text' => $output_character,
+                ];
+            }
+        }
+
+        return $font_runs;
     }
 }
