@@ -213,7 +213,7 @@ msgstr[1] "%s אַנאָנימע באַנוצערס איינגעשריבן בא�
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] "איין קינד"
+msgstr[0] "%s איין קינד"
 msgstr[1] "%s קינדער"
 
 #: app/Age.php:98 app/Elements/AgeAtEvent.php:103
@@ -222,7 +222,7 @@ msgstr[1] "%s קינדער"
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] "איין טאָג"
+msgstr[0] "%s איין טאָג"
 msgstr[1] "%s טעג"
 
 #: app/Http/RequestHandlers/CheckTree.php:228
@@ -245,14 +245,14 @@ msgstr[1] "%s משפחות"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] "איין משפּחה האט שוין דערהייַנטיקן."
+msgstr[0] "%s איין משפּחה האט שוין דערהייַנטיקן."
 msgstr[1] "%s משפּחות האט שוין דערהייַנטיקן."
 
 #: resources/views/admin/locations.phtml:111
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] "איין פאמיליע בוים"
+msgstr[0] "%s איין פאמיליע בוים"
 msgstr[1] "%s פאמיליע ביימער"
 
 #: resources/views/statistics/families/top10-list-grand.phtml:20
@@ -278,7 +278,7 @@ msgstr[1] "%s מענטשן"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] "איין מענטש האט שוין דערהייַנטיקן."
+msgstr[0] "%s איין מענטש האט שוין דערהייַנטיקן."
 msgstr[1] "%s מענטשן האָבן שוין דערהייַנטיקן."
 
 #: app/Module/UserMessagesModule.php:151
@@ -302,7 +302,7 @@ msgstr[1] "%s מאנאטן"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] "איין צעטל איז דערהייַנטיקט."
+msgstr[0] "%s איין צעטל איז דערהייַנטיקט."
 msgstr[1] "%s צעטאלעך געווען דערהייַנטיקט."
 
 #: app/Http/RequestHandlers/CheckTree.php:314
@@ -379,7 +379,7 @@ msgstr "%s צוויי מאָל אַוועקגענומען אַראָפּגיין
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] "איין וואָך"
+msgstr[0] "%s איין וואָך"
 msgstr[1] "%s וואָכן"
 
 #: app/Age.php:90 app/Elements/AgeAtEvent.php:100
@@ -3431,7 +3431,7 @@ msgstr "ענדערונגען"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "ענדערונגען אין די לעצטע טאָג"
+msgstr[0] "ענדערונגען אין די לעצטע %s טאָג"
 msgstr[1] "ענדערונגען אין די לעצטע %s טעג"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:95
@@ -14768,7 +14768,7 @@ msgstr "עס זענען פּענדינג ענדערונגען פֿאַר איר 
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] "עס זענען געווען קיין ענדערונגען אין די לעצטע טעג."
+msgstr[0] "עס זענען געווען קיין ענדערונגען אין די לעצטע %s טעג."
 msgstr[1] "עס זענען געווען קיין ענדערונגען אין די לעצטע %s טעג."
 
 #: resources/views/admin/control-panel.phtml:187
@@ -15121,7 +15121,7 @@ msgstr "דער בלאט איז אויסגעמעקט געווארן."
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] "דעם בלאַט איז געווען וויוד איין מאָל."
+msgstr[0] "דעם בלאַט איז געווען וויוד %s מאָל."
 msgstr[1] "דעם בלאַט איז געווען וויוד %s מאל."
 
 #: resources/views/help/pending-changes.phtml:18
@@ -15493,7 +15493,7 @@ msgstr "צו פילע בעטונגען. פּרוּווט ווידער שפּעט
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "די מערסט פּראָסט געגעבן נאָמען"
+msgstr[0] "די מערסט פּראָסט %s געגעבן נאָמען"
 msgstr[1] "די %s מערסט פּראָסט געגעבן נעמען"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
@@ -15501,7 +15501,7 @@ msgstr[1] "די %s מערסט פּראָסט געגעבן נעמען"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "די מערסט פּראָסט לעצטע נעמען"
+msgstr[0] "די מערסט פּראָסט %s לעצטע נעמען"
 msgstr[1] "די %s מערסט פּראָסט לעצטע נעמען"
 
 #. I18N: i.e. most popular given name.
@@ -20914,7 +20914,7 @@ msgstr "יינגער שוועסטער"
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
-msgstr[0] "± איין יאָר"
+msgstr[0] "%s± איין יאָר"
 msgstr[1] "±%s יאָר"
 
 #. I18N: Name of a country or state

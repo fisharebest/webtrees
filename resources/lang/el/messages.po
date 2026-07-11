@@ -3434,7 +3434,7 @@ msgstr "Αλλαγές"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Αλλαγές την τελευταία ημέρα"
+msgstr[0] "Αλλαγές την τελευταία %s ημέρα"
 msgstr[1] "Αλλαγές τις τελευταίες %s ημέρες"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:95

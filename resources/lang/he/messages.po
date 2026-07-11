@@ -206,7 +206,7 @@ msgstr "%s וצאצאיהם"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] "משתמש אלמוני מחובר"
+msgstr[0] "%s משתמש אלמוני מחובר"
 msgstr[1] "%s משתמשים אלמוניים מחוברים"
 
 #: resources/views/family-page-children.phtml:21
@@ -226,7 +226,7 @@ msgstr[1] "%s ילדים"
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] "יום אחד"
+msgstr[0] "%s יום אחד"
 msgstr[1] "%s ימים"
 
 #: app/Http/RequestHandlers/CheckTree.php:228
@@ -299,7 +299,7 @@ msgstr[1] "%s הודעות"
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] "חודש אחד"
+msgstr[0] "%s חודש אחד"
 msgstr[1] "%s חודשים"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:85
@@ -383,7 +383,7 @@ msgstr "%s מוזח/ת פעמיים למטה"
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] "שבוע אחד"
+msgstr[0] "%s שבוע אחד"
 msgstr[1] "%s שבועות"
 
 #: app/Age.php:90 app/Elements/AgeAtEvent.php:100
@@ -396,7 +396,7 @@ msgstr[1] "%s שבועות"
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] "שנה אחת"
+msgstr[0] "%s שנה אחת"
 msgstr[1] "%s שנים"
 
 #: app/Http/RequestHandlers/CalendarEvents.php:154
@@ -3435,7 +3435,7 @@ msgstr "שינויים"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "השינויים ביממה האחרונה"
+msgstr[0] "השינויים ב-%s יממה האחרונה"
 msgstr[1] "השינויים ב-%s הימים האחרונים"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:95
@@ -10234,7 +10234,7 @@ msgstr "לא נמצאו שגיאות."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] "אין אירוע ביום הבא."
+msgstr[0] "אין אירוע ב-%s יום הבא."
 msgstr[1] "אין אירוע ב %s הימים הבאים."
 
 #: app/Module/OnThisDayModule.php:152
@@ -10257,7 +10257,7 @@ msgstr "אין אירוע של אנשים חיים למחר."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "אין אירועים של אנשים חיים למחרת."
+msgstr[0] "אין אירועים של אנשים חיים ל-%s יום הבא."
 msgstr[1] "אין אירועים של אנשים חיים ב %s הימים הבאים."
 
 #: resources/views/family-page.phtml:41
@@ -14650,7 +14650,7 @@ msgstr "אזור הזמן נדרש לביצוע חישובי תאריך, כגו�
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "בשני עצי המשפחה יש רשומה אחת המשתמשת באותו \"XREF\"."
+msgstr[0] "בשני עצי המשפחה יש %1$s רשומה המשתמשת באותו \"XREF\"."
 msgstr[1] "בשני עצי המשפחה יש %1$s רשומות המשתמשות באותו \"XREF\"."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:290
@@ -14775,7 +14775,7 @@ msgstr "ישנם שינויים שממתינים לאישורך."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] "לא היו שינויים במשך היממה האחרונה."
+msgstr[0] "לא היו שינויים במשך %s היממה האחרונה."
 msgstr[1] "לא היו שינויים במשך %s הימים האחרונים."
 
 #: resources/views/admin/control-panel.phtml:187
@@ -14878,7 +14878,7 @@ msgstr "המשפחה הזו עודכנה. סקור את השינויים ואח�
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "בעץ משפחה זה יש רשומה אחת המשתמשת באותו \"XREF\" כמו עץ משפחה אחר."
+msgstr[0] "בעץ משפחה זה יש %s רשומה המשתמשת באותו \"XREF\" כמו עץ משפחה אחר."
 msgstr[1] "בעץ משפחה זה יש %s רשומות המשתמשות באותו \"XREF\" כמו עץ משפחה אחר."
 
 #: app/Module/SlideShowModule.php:175
@@ -15128,7 +15128,7 @@ msgstr "הדף הזה נמחק."
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] "הדף הזה נצפה פעם אחת."
+msgstr[0] "הדף הזה נצפה %s פעם."
 msgstr[1] "הדף הזה נצפה %s פעמים."
 
 #: resources/views/help/pending-changes.phtml:18
@@ -15500,7 +15500,7 @@ msgstr "יותר מדי בקשות. נסה שוב מאוחר יותר."
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "השם הפרטי הנפוץ"
+msgstr[0] "השם הפרטי הנפוץ %s"
 msgstr[1] "%s השמות הפרטיים הנפוצים"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
@@ -15508,7 +15508,7 @@ msgstr[1] "%s השמות הפרטיים הנפוצים"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "שם המשפחה הנפוץ"
+msgstr[0] "שם המשפחה הנפוץ %s"
 msgstr[1] "%s שמות המשפחה הנפוצים"
 
 #. I18N: i.e. most popular given name.
@@ -16009,7 +16009,7 @@ msgstr "השתמש בשירות חיצוני למציאת מיקומים."
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] "השתמש לפחות בתו אחד."
+msgstr[0] "השתמש לפחות ב-%s תו."
 msgstr[1] "השתמש לפחות ב-%s תוים."
 
 #: resources/xml/reports/family_group_report.xml:12
@@ -17699,7 +17699,7 @@ msgstr "דודן מדרגה 4"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] "מ-%1$s מרווח שנה אחת"
+msgstr[0] "מ-%1$s מרווח %2$s שנה"
 msgstr[1] "מ-%1$s מרווח %2$s שנים"
 
 #. I18N: Gedcom FROM dates
@@ -19509,7 +19509,7 @@ msgstr "מצד האם"
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] "לכל היותר יום אחד"
+msgstr[0] "לכל היותר %s יום"
 msgstr[1] "לכל היותר %s ימים"
 
 #: resources/views/admin/trees-privacy.phtml:37
@@ -20923,7 +20923,7 @@ msgstr "אחות צעירה"
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
-msgstr[0] "± שנה"
+msgstr[0] "%s± שנה"
 msgstr[1] "± %s שנים"
 
 #. I18N: Name of a country or state

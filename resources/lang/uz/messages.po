@@ -17689,8 +17689,8 @@ msgstr "to'rtinchi amakivachcha"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] "%1$s oraliqdan %2$s yildan %1$s oraliqdan %2$s yil"
-msgstr[1] "%1$s oraliqdan %2$s yildan %1$s oraliqdan %2$s yil"
+msgstr[0] "%1$s oraliqdan %2$s yil"
+msgstr[1] "%1$s oraliqdan %2$s yil"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:212

@@ -19502,7 +19502,7 @@ msgstr "ama-lerrokoa"
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] "egun bat gehienez"
+msgstr[0] "%s egun gehienez"
 msgstr[1] "%s egun gehienez"
 
 #: resources/views/admin/trees-privacy.phtml:37
