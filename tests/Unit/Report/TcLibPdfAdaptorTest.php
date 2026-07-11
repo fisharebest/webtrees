@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
 use Com\Tecnick\Pdf\Tcpdf;
 use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Fisharebest\Webtrees\Webtrees;
 use Fisharebest\Webtrees\Report\PageOrientation;
 use Fisharebest\Webtrees\Report\PaperSize;
 use Fisharebest\Webtrees\Report\PdfRenderTargetInterface;
@@ -30,9 +31,25 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use RuntimeException;
 
+use function define;
+use function defined;
+use function is_dir;
+use function realpath;
+
 #[CoversClass(TcLibPdfAdaptor::class)]
 class TcLibPdfAdaptorTest extends TestCase
 {
+    private function configurePdfFontPath(): void
+    {
+        if (!defined('K_PATH_FONTS')) {
+            $font_path = realpath(Webtrees::ROOT_DIR . 'resources/fonts');
+            self::assertNotFalse($font_path);
+            self::assertTrue(is_dir($font_path));
+
+            define('K_PATH_FONTS', $font_path);
+        }
+    }
+
     private function createConfig(bool $rtl = false): Config
     {
         return new Config(
@@ -53,7 +70,8 @@ class TcLibPdfAdaptorTest extends TestCase
             description: 'test',
             align_rtl: $rtl ? 'right' : 'left',
             entity_rtl: $rtl ? '&rlm;' : '&lrm;',
-            font: 'dejavusans',
+            primary_font: 'notosans',
+            fallback_fonts: [],
             timestamp: $this->createStub(TimestampInterface::class),
         );
     }
@@ -144,5 +162,32 @@ class TcLibPdfAdaptorTest extends TestCase
         $adaptor->addPage();
 
         self::assertSame(2, $header_calls);
+    }
+
+    public function testUnsupportedGlyphDoesNotBreakWidthMeasurement(): void
+    {
+        $this->configurePdfFontPath();
+
+        $renderer = $this->createStub(PdfRenderTargetInterface::class);
+        $adaptor = new TcLibPdfAdaptor(new Tcpdf('pt', true, false, true), $renderer, $this->createConfig());
+
+        $adaptor->setFont('notosans', '', 12.0);
+
+        $width_with_unsupported_glyph = $adaptor->getStringWidth('X😀Y');
+
+        self::assertGreaterThan(0.0, $width_with_unsupported_glyph);
+    }
+
+    public function testUnsupportedGlyphDiagnosticsAreRecorded(): void
+    {
+        $this->configurePdfFontPath();
+
+        $renderer = $this->createStub(PdfRenderTargetInterface::class);
+        $adaptor = new TcLibPdfAdaptor(new Tcpdf('pt', true, false, true), $renderer, $this->createConfig());
+
+        $adaptor->setFont('notosans', '', 12.0);
+        $adaptor->getStringWidth('😀😀');
+
+        self::assertSame(['U+1F600 x2'], $adaptor->unsupportedGlyphDiagnostics());
     }
 }

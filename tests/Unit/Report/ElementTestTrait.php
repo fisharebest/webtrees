@@ -60,7 +60,8 @@ trait ElementTestTrait
             description: '',
             align_rtl: 'left',
             entity_rtl: '&lrm;',
-            font: 'dejavusans',
+            primary_font: 'dejavusans',
+            fallback_fonts: [],
             timestamp: new Timestamp(0, 'UTC', 'en-US'),
         ));
 

@@ -54,7 +54,8 @@ class PdfRendererTest extends TestCase
             description: 'test',
             align_rtl: 'left',
             entity_rtl: '&lrm;',
-            font: 'dejavusans',
+            primary_font: 'dejavusans',
+            fallback_fonts: [],
             timestamp: $this->createStub(TimestampInterface::class),
         );
     }

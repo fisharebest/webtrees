@@ -128,4 +128,32 @@ class ParserGenerateTest extends TestCase
 
         (new ParserGenerate($report_file, new HtmlRenderer(), [], $tree, Webtrees::NAME, Registry::timestampFactory()->now()))->process();
     }
+
+    public function testFontVariablesAreIgnoredInFavorOfEngineDefaults(): void
+    {
+        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
+        Auth::login($user);
+
+        $tree = $this->importTree('demo.ged');
+
+        $report_file = Webtrees::ROOT_DIR . 'tests/data/reports/report-with-textbox-inline-text.xml';
+
+        $renderer = new HtmlRenderer();
+        (new ParserGenerate(
+            $report_file,
+            $renderer,
+            [
+                'primary_font' => 'INVALID-FONT-NAME',
+                'fallback_fonts' => 'notosansthai,INVALID-FONT-NAME',
+            ],
+            $tree,
+            Webtrees::NAME,
+            Registry::timestampFactory()->make(0),
+        ))->process();
+
+        $html = $renderer->output();
+
+        self::assertStringContainsString('<span class="text">Hello </span>', $html);
+    }
 }
