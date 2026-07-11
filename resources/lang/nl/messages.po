@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 21:59+0100\n"
+"POT-Creation-Date: 2026-07-11 23:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13714,7 +13714,7 @@ msgstr "Er zijn uitstaande wijzigingen die u moet beoordelen."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] "Er zijn geen wijzigingen aangebracht in de laatste 24 uur."
+msgstr[0] "Er zijn geen wijzigingen aangebracht in de laatste %s uur."
 msgstr[1] "Er zijn geen wijzigingen aangebracht in de laatste %s dagen."
 
 #: resources/views/admin/control-panel.phtml
@@ -14402,7 +14402,7 @@ msgstr "Te veel aanvragen. Probeer het later opnieuw."
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "Meest voorkomende voornaam"
+msgstr[0] "Meest voorkomende %s voornaam"
 msgstr[1] "Top-%s meest voorkomende voornamen"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
@@ -14410,7 +14410,7 @@ msgstr[1] "Top-%s meest voorkomende voornamen"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "Meest voorkomende achternaam"
+msgstr[0] "Meest voorkomende %s achternaam"
 msgstr[1] "Top-%s meest voorkomende achternamen"
 
 #. I18N: i.e. most popular given name.

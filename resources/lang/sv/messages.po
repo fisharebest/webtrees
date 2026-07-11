@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 21:59+0100\n"
+"POT-Creation-Date: 2026-07-11 23:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3179,7 +3179,7 @@ msgstr "Ändringar"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Sista dagens förändringar"
+msgstr[0] "Frndringar de senaste %s dagen"
 msgstr[1] "Förändringar de senaste %s dagarna"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php
@@ -9423,7 +9423,7 @@ msgstr "Inga händelser för levande personer existerar för imorgon."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Inga händelser för levande människor existerar för den nästa dagen."
+msgstr[0] "Inga händelser för levande människor existerar för den nästa %s dagen."
 msgstr[1] "Inga händelser för levande människor existerar för de kommande %s dagarna."
 
 #: resources/views/family-page.phtml
@@ -13593,7 +13593,7 @@ msgstr "Tidszonen krävs för datumberäkningar, såsom för att veta dagens dat
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "De två släktträden har en post som använder samma ”XREF”."
+msgstr[0] "De två släktträden har %1$s post som använder samma ”XREF”."
 msgstr[1] "De två släktträden har %1$s poster som använder samma ”XREF”."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php
@@ -13714,7 +13714,7 @@ msgstr "Det finns väntande ändringar för dig att moderera."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] "Inga förändringar senaste dag."
+msgstr[0] "Inga förändringar senaste %s dag."
 msgstr[1] "Inga förändringar inom de senaste %s dagarna."
 
 #: resources/views/admin/control-panel.phtml
@@ -13816,7 +13816,7 @@ msgstr "Denna familj har redigerats. Granska ändringarna och sen %1$s eller %2$
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Detta släktträden har en post som använder samma ”XREF” som ett annat släktträd."
+msgstr[0] "Detta släktträden har %s post som använder samma ”XREF” som ett annat släktträd."
 msgstr[1] "Detta släktträden har %s poster som använder samma ”XREF” som ett annat släktträd."
 
 #: app/Module/SlideShowModule.php
@@ -14402,7 +14402,7 @@ msgstr "För många förfrågningar. Försök igen senare."
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "Vanligast förnamn"
+msgstr[0] "Vanligast %s förnamn"
 msgstr[1] "De %s vanligaste förnamnen"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
@@ -14410,7 +14410,7 @@ msgstr[1] "De %s vanligaste förnamnen"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "Vanligaste efternamn"
+msgstr[0] "Vanligaste %s efternamn"
 msgstr[1] "De %s vanligaste efternamnen"
 
 #. I18N: i.e. most popular given name.

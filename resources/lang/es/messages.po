@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 21:59+0100\n"
+"POT-Creation-Date: 2026-07-11 23:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9401,7 +9401,7 @@ msgstr "﻿No se han encontrado errores."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] "No hay eventos mañana."
+msgstr[0] "No hay eventos mañana para el próximo %s día."
 msgstr[1] "No hay eventos en los próximos %s días."
 
 #: app/Module/OnThisDayModule.php
@@ -9424,7 +9424,7 @@ msgstr "No hay eventos para personas vivas mañana."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "No hay eventos para las personas vivas mañana."
+msgstr[0] "No hay eventos para las personas vivas el próximo %s día."
 msgstr[1] "No hay eventos para las personas vivas en los próximos %s días."
 
 #: resources/views/family-page.phtml
@@ -13715,7 +13715,7 @@ msgstr "Hay cambios pendientes para moderar."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] "No se han producido cambios en el último día."
+msgstr[0] "No se han producido cambios en el último %s día."
 msgstr[1] "No se han producido cambios en los últimos %s días."
 
 #: resources/views/admin/control-panel.phtml
@@ -14403,7 +14403,7 @@ msgstr "Demasiadas solicitudes. Vuelva a intentarlo más tarde."
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "El nombre más común"
+msgstr[0] "El nombre más común %s"
 msgstr[1] "Los %s nombres más comunes"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
@@ -14411,7 +14411,7 @@ msgstr[1] "Los %s nombres más comunes"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "El apellido más común"
+msgstr[0] "El apellido más común %s"
 msgstr[1] "Los %s apellidos más comunes"
 
 #. I18N: i.e. most popular given name.
@@ -18195,7 +18195,7 @@ msgstr "matrilineal"
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] "máximo: un día"
+msgstr[0] "máximo: %s día"
 msgstr[1] "máximo: %s días"
 
 #: resources/views/admin/trees-privacy.phtml

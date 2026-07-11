@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 21:59+0100\n"
+"POT-Creation-Date: 2026-07-11 23:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3175,7 +3175,7 @@ msgstr "Endringer"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Endringer siste dag"
+msgstr[0] "Endringer siste %s dag"
 msgstr[1] "Endringer de siste %s dager"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php
@@ -14398,7 +14398,7 @@ msgstr "For mange spørringer. Prøv igjen senere."
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "Vanligste fornavn"
+msgstr[0] "Vanligste %s fornavn"
 msgstr[1] "De %s vanligste fornavn"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
@@ -14406,7 +14406,7 @@ msgstr[1] "De %s vanligste fornavn"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "Vanligste etternavn"
+msgstr[0] "Vanligste %s etternavn"
 msgstr[1] "De %s vanligste etternavn"
 
 #. I18N: i.e. most popular given name.
@@ -16484,7 +16484,7 @@ msgstr "femmenning"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] "fra %1$s med ett års intervall"
+msgstr[0] "fra %1$s med %2$s års intervall"
 msgstr[1] "fra %1$s med %2$s års intervall"
 
 #. I18N: Gedcom FROM dates

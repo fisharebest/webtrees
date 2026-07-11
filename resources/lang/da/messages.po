@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 21:59+0100\n"
+"POT-Creation-Date: 2026-07-11 23:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,7 +76,7 @@ msgstr "%1$s linker ikke tilbage til %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "fil blev udpakket på %2$s sekunder."
+msgstr[0] "%1$s fil blev udpakket på %2$s sekunder."
 msgstr[1] "%1$s blev udpakket på %2$s sekunder."
 
 #: app/Http/RequestHandlers/CheckTree.php
@@ -3179,7 +3179,7 @@ msgstr "Ændringer"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Ændringer siden i går"
+msgstr[0] "Ændringer i den sidste %s dag"
 msgstr[1] "Ændringer for de sidste %s dage"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php
@@ -13714,7 +13714,7 @@ msgstr "Der findes ventende ændringer du kan moderere."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] "Der er ikke foretaget nogen ændringer de siden igår."
+msgstr[0] "Der er ikke foretaget nogen ændringer inden for den sidste %s dag."
 msgstr[1] "Der er ikke foretaget nogen ændringer de seneste %s dage."
 
 #: resources/views/admin/control-panel.phtml

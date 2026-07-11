@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 21:59+0100\n"
+"POT-Creation-Date: 2026-07-11 23:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3180,7 +3180,7 @@ msgstr "Változtatások"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Az elmúlt 24 óra módosításai"
+msgstr[0] "Az elmúlt %s óra módosításai"
 msgstr[1] "Az elmúlt %s nap módosításai"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php
@@ -9401,7 +9401,7 @@ msgstr "Nem található hiba."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] "A következő napra nem várható esemény."
+msgstr[0] "A következő %s napra nem várható esemény."
 msgstr[1] "A következő %s napra nem várható esemény."
 
 #: app/Module/OnThisDayModule.php
@@ -9424,7 +9424,7 @@ msgstr "Holnapra nincs semmi esemény az élők körében."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "A következő napon nincs esemény az élő személyek körében."
+msgstr[0] "A következő %s napon nincs esemény az élő személyek körében."
 msgstr[1] "A következő %s napon belül nincs esemény az élő személyek körében."
 
 #: resources/views/family-page.phtml
@@ -14403,7 +14403,7 @@ msgstr ""
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "Leggyakoribb utónév"
+msgstr[0] "Leggyakoribb %s utónév"
 msgstr[1] "Leggyakoribb %s utónév"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
@@ -14411,7 +14411,7 @@ msgstr[1] "Leggyakoribb %s utónév"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "Leggyakoribb vezetéknév"
+msgstr[0] "Leggyakoribb %s vezetéknév"
 msgstr[1] "Leggyakoribb %s vezetéknév"
 
 #. I18N: i.e. most popular given name.

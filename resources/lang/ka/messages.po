@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 21:59+0100\n"
+"POT-Creation-Date: 2026-07-11 23:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1351,7 +1351,7 @@ msgstr ""
 
 #: resources/views/modules/lifespans-chart/page.phtml
 msgid "Add individuals"
-msgstr "%s პერსონა"
+msgstr "პერსონა"
 
 #: resources/views/modules/relatives/family.phtml
 msgid "Add marriage details"
@@ -16185,18 +16185,18 @@ msgstr "მეხუთე %s"
 
 #: app/Services/RelationshipService.php
 msgid "fifth cousin"
-msgstr "მეხუთე %s"
+msgstr "მეხუთე"
 
 #: app/Services/RelationshipService.php
 msgctxt "FEMALE"
 msgid "fifth cousin"
-msgstr "მეხუთე %s"
+msgstr "მეხუთე"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php
 msgctxt "MALE"
 msgid "fifth cousin"
-msgstr "მეხუთე %s"
+msgstr "მეხუთე"
 
 #. I18N: A button label, first page
 #: resources/views/admin/trees-preferences.phtml
@@ -16428,18 +16428,18 @@ msgstr "დედის დედის დის შვილი"
 
 #: app/Services/RelationshipService.php
 msgid "fourteenth cousin"
-msgstr "მეოთხე %s"
+msgstr "მეოთხე"
 
 #: app/Services/RelationshipService.php
 msgctxt "FEMALE"
 msgid "fourteenth cousin"
-msgstr "მეოთხე %s"
+msgstr "მეოთხე"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php
 msgctxt "MALE"
 msgid "fourteenth cousin"
-msgstr "მეოთხე %s"
+msgstr "მეოთხე"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php
@@ -16463,18 +16463,18 @@ msgstr "მეოთხე %s"
 
 #: app/Services/RelationshipService.php
 msgid "fourth cousin"
-msgstr "მეოთხე %s"
+msgstr "მეოთხე"
 
 #: app/Services/RelationshipService.php
 msgctxt "FEMALE"
 msgid "fourth cousin"
-msgstr "მეოთხე %s"
+msgstr "მეოთხე"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php
 msgctxt "MALE"
 msgid "fourth cousin"
-msgstr "მეოთხე %s"
+msgstr "მეოთხე"
 
 #. I18N: from 1700 interval 50 years
 #: resources/views/modules/statistics-chart/custom.phtml
@@ -16679,7 +16679,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "დიდი შვილიშვილი / დისშვილი"
+msgstr "დიდი %s შვილიშვილი / დისშვილი"
 
 #: app/Services/RelationshipService.php
 #, php-format
@@ -16758,11 +16758,11 @@ msgstr "пра(х7) внучка"
 
 #: app/Services/RelationshipService.php
 msgid "great ×4 grandfather"
-msgstr "%sх დიდი ბაბუა"
+msgstr "х დიდი ბაბუა"
 
 #: app/Services/RelationshipService.php
 msgid "great ×4 grandmother"
-msgstr "%sх დიდი ბებია"
+msgstr "х დიდი ბებია"
 
 #: app/Services/RelationshipService.php
 msgid "great ×4 grandparent"
@@ -16850,11 +16850,11 @@ msgstr "пра(х7) внучка"
 
 #: app/Services/RelationshipService.php
 msgid "great ×5 grandfather"
-msgstr "%sх დიდი ბაბუა"
+msgstr "х დიდი ბაბუა"
 
 #: app/Services/RelationshipService.php
 msgid "great ×5 grandmother"
-msgstr "%sх დიდი ბებია"
+msgstr "х დიდი ბებია"
 
 #: app/Services/RelationshipService.php
 msgid "great ×5 grandparent"
@@ -16942,11 +16942,11 @@ msgstr "пра(х7) внучка"
 
 #: app/Services/RelationshipService.php
 msgid "great ×6 grandfather"
-msgstr "%sх დიდი ბაბუა"
+msgstr "х დიდი ბაბუა"
 
 #: app/Services/RelationshipService.php
 msgid "great ×6 grandmother"
-msgstr "%sх დიდი ბებია"
+msgstr "х დიდი ბებია"
 
 #: app/Services/RelationshipService.php
 msgid "great ×6 grandparent"
@@ -16989,11 +16989,11 @@ msgstr "пра(х7) внучка"
 
 #: app/Services/RelationshipService.php
 msgid "great ×7 grandfather"
-msgstr "%sх დიდი ბაბუა"
+msgstr "х დიდი ბაბუა"
 
 #: app/Services/RelationshipService.php
 msgid "great ×7 grandmother"
-msgstr "%sх დიდი ბებია"
+msgstr "х დიდი ბებია"
 
 #: app/Services/RelationshipService.php
 msgid "great ×7 grandparent"
@@ -18710,153 +18710,153 @@ msgstr "მეორე %s"
 
 #: app/Services/RelationshipService.php
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "FEMALE"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php
 msgctxt "MALE"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandfather’s brother’s grandchild"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandfather’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandfather’s brother’s grandson"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandfather’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandfather’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandfather’s sibling’s grandson"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandfather’s sister’s grandchild"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandfather’s sister’s granddaughter"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandfather’s sister’s grandson"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandmother’s brother’s grandchild"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandmother’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandmother’s brother’s grandson"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandmother’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandmother’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandmother’s sibling’s grandson"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandmother’s sister’s grandchild"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandmother’s sister’s granddaughter"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandmother’s sister’s grandson"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandparent’s brother’s grandchild"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandparent’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandparent’s brother’s grandson"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandparent’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandparent’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandparent’s sibling’s grandson"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandparent’s sister’s grandchild"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandparent’s sister’s granddaughter"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #: app/Services/RelationshipService.php
 msgctxt "grandparent’s sister’s grandson"
 msgid "second cousin"
-msgstr "მეორე %s"
+msgstr "მეორე"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/Elements/CertaintyAssessment.php
@@ -18997,18 +18997,18 @@ msgstr ""
 
 #: app/Services/RelationshipService.php
 msgid "sixth cousin"
-msgstr "(%s+1)-тиюродная сестра"
+msgstr "( +1)-тиюродная сестра"
 
 #: app/Services/RelationshipService.php
 msgctxt "FEMALE"
 msgid "sixth cousin"
-msgstr "(%s+1)-тиюродная сестра"
+msgstr "( +1)-тиюродная сестра"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php
 msgctxt "MALE"
 msgid "sixth cousin"
-msgstr "(%s+1)-тиюродная сестра"
+msgstr "( +1)-тиюродная сестра"
 
 #: app/Services/RelationshipService.php
 msgid "son"
@@ -19284,18 +19284,18 @@ msgstr "მესამე %s"
 
 #: app/Services/RelationshipService.php
 msgid "third cousin"
-msgstr "მესამე %s"
+msgstr "მესამე"
 
 #: app/Services/RelationshipService.php
 msgctxt "FEMALE"
 msgid "third cousin"
-msgstr "მესამე %s"
+msgstr "მესამე"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php
 msgctxt "MALE"
 msgid "third cousin"
-msgstr "მესამე %s"
+msgstr "მესამე"
 
 #: app/Services/RelationshipService.php
 msgid "thirteenth cousin"

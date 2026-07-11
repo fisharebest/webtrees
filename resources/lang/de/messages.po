@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 21:59+0100\n"
+"POT-Creation-Date: 2026-07-11 23:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3175,7 +3175,7 @@ msgstr "Änderungen"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Änderungen in den letzten 24 Stunden"
+msgstr[0] "Änderungen in den letzten %s Stunden"
 msgstr[1] "Änderungen der letzten %s Tage"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php
@@ -9396,7 +9396,7 @@ msgstr "Es wurden keine Fehler gefunden."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] "Für den nächsten Tag steht kein Ereignis an."
+msgstr[0] "Für den nächsten %s Tag steht kein Ereignis an."
 msgstr[1] "Für die nächsten %s Tage steht kein Ereignis an."
 
 #: app/Module/OnThisDayModule.php
@@ -9419,7 +9419,7 @@ msgstr "Für morgen stehen keine Ereignisse für lebende Personen an."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Es stehen keine Ereignisse für lebende Personen für den nächsten Tag an."
+msgstr[0] "Es stehen keine Ereignisse für lebende Personen für den nächsten %s Tag an."
 msgstr[1] "Es stehen keine Ereignisse für lebende Personen in den nächsten %s Tagen an."
 
 #: resources/views/family-page.phtml
@@ -13589,7 +13589,7 @@ msgstr "Die Angabe der Zeitzone wird für die Datumsberechnungen, wie z.B das he
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "Die beiden Stammbäume haben einen Datensatz, welcher die gleiche „xref_ID“ verwendet."
+msgstr[0] "Die beiden Stammbäume haben %1$s Datensatz, welcher die gleiche „xref_ID“ verwendet."
 msgstr[1] "Die beiden Stammbäume haben %1$s Datensätze, welche die gleiche „xref_ID“ verwenden."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php
@@ -13710,7 +13710,7 @@ msgstr "Es warten ausstehende Änderungen auf Ihre Moderation."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] "Es gab keine Veränderungen in den letzten 24 Stunden."
+msgstr[0] "Es gab keine Veränderungen in den letzten %s Stunden."
 msgstr[1] "Es gab keine Veränderungen in den letzten %s Tagen."
 
 #: resources/views/admin/control-panel.phtml
@@ -13812,7 +13812,7 @@ msgstr "Diese Familie wurde bearbeitet. Sie sollten die Änderungen prüfen und 
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Dieser Stammbaum hat einen Datensatz, welcher die gleiche „xref_ID“ verwendet wie ein anderer Stammbaum."
+msgstr[0] "Dieser Stammbaum hat %s Datensatz, welcher die gleiche „xref_ID“ verwendet wie ein anderer Stammbaum."
 msgstr[1] "Dieser Stammbaum hat %s Datensätze, welche die gleiche „xref_ID“ verwenden wie ein anderer Stammbaum."
 
 #: app/Module/SlideShowModule.php
@@ -14398,7 +14398,7 @@ msgstr "Zu viele Anfragen. Versuchen Sie es später noch einmal."
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "Häufigster Vorname"
+msgstr[0] "Häufigster %s Vorname"
 msgstr[1] "%s häufigsten Vornamen"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
@@ -14406,7 +14406,7 @@ msgstr[1] "%s häufigsten Vornamen"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "häufigster Nachname"
+msgstr[0] "häufigster %s Nachname"
 msgstr[1] "%s häufigsten Nachnamen"
 
 #. I18N: i.e. most popular given name.
@@ -16484,7 +16484,7 @@ msgstr "Cousin 4. Grades"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] "beginnend mit %1$s Zeitraum von einem Jahr"
+msgstr[0] "beginnend mit %1$s Zeitraum von %2$s Jahr"
 msgstr[1] "beginnend mit %1$s Zeitraum von %2$s Jahren"
 
 #. I18N: Gedcom FROM dates
@@ -18190,7 +18190,7 @@ msgstr "matrilinear"
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] "maximal ein Tag"
+msgstr[0] "maximal %s Tag"
 msgstr[1] "maximal %s Tage"
 
 #: resources/views/admin/trees-privacy.phtml

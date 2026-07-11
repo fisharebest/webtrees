@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 21:59+0100\n"
+"POT-Creation-Date: 2026-07-11 23:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,7 +79,7 @@ msgstr "%1$s nemá odkaz zpět na %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "Soubor byl rozbalen za %2$s sekund."
+msgstr[0] "%1$s soubor byl rozbalen za %2$s sekund."
 msgstr[1] "%1$s soubory byly rozbaleny za %2$s sekund."
 msgstr[2] "%1$s souborů bylo rozbaleno za %2$s sekund."
 
@@ -3200,7 +3200,7 @@ msgstr "Změny"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Změny během posledního dne"
+msgstr[0] "Změny během posledního %s dne"
 msgstr[1] "Změny v posledních %s dnech"
 msgstr[2] "Změny v posledních %s dnech"
 
@@ -9422,7 +9422,7 @@ msgstr "Nebyly nalezeny žádné chyby."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] "Pro zítřek neexistuje žádná událost."
+msgstr[0] "Pro %s den neexistuje žádná událost."
 msgstr[1] "Neexistuje žádná událost pro další %s dny."
 msgstr[2] "Neexistuje žádná událost pro dalších %s dnů."
 
@@ -14430,7 +14430,7 @@ msgstr "Příliš mnoho požadavků. Zkuste později."
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "Nejčastější křestní jméno"
+msgstr[0] "Nejčastějš %s křestn jmno"
 msgstr[1] "Nejčastější %s křestní jména"
 msgstr[2] "Nejčastějších %s křestních jmen"
 
@@ -14439,7 +14439,7 @@ msgstr[2] "Nejčastějších %s křestních jmen"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "Nejčastější příjmení"
+msgstr[0] "Nejčastějš %s přjmen"
 msgstr[1] "Nejčastější %s příjmení"
 msgstr[2] "Nejčastějších %s příjmení"
 
@@ -14873,7 +14873,7 @@ msgstr "K nalezení míst použít externí službu."
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] "Použijte aspoň 1 znak."
+msgstr[0] "Použijte aspoň %s znak."
 msgstr[1] "Použijte nejméně %s znaky."
 msgstr[2] "Použijte nejméně %s znaků."
 

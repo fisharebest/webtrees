@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 21:59+0100\n"
+"POT-Creation-Date: 2026-07-11 23:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3181,7 +3181,7 @@ msgstr "Aggiornamenti"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Modifiche nell’ultimo giorno"
+msgstr[0] "Modifiche nell’ultimo %s giorno"
 msgstr[1] "Modifiche negli ultimi %s giorni"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php
@@ -9402,7 +9402,7 @@ msgstr "Nessun errore riscontrato."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] "Non esiste alcun evento per domani."
+msgstr[0] "Non esiste alcun evento per il prossimo %s giorno."
 msgstr[1] "Non esiste alcun evento nei prossimi %s giorni."
 
 #: app/Module/OnThisDayModule.php
@@ -13716,7 +13716,7 @@ msgstr "Ci sono aggiornamenti in sospeso da verificare."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] "Non ci sono modifiche nell'ultimo giorno."
+msgstr[0] "Non ci sono modifiche nell'ultimo %s giorno."
 msgstr[1] "Non ci sono modifiche negli ultimi %s giorni."
 
 #: resources/views/admin/control-panel.phtml
@@ -14404,7 +14404,7 @@ msgstr ""
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "Il nome più diffuso"
+msgstr[0] "Il nome più diffuso %s"
 msgstr[1] "I %s nomi più diffusi"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
@@ -14412,7 +14412,7 @@ msgstr[1] "I %s nomi più diffusi"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "Il cognome più diffuso"
+msgstr[0] "Il cognome più diffuso %s"
 msgstr[1] "I %s cognomi più diffusi"
 
 #. I18N: i.e. most popular given name.
