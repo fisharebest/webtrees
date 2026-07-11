@@ -112,8 +112,8 @@ readonly class ImageFactory implements ImageFactoryInterface
     public function fileContents(FilesystemOperator $filesystem, string $path): string
     {
         $filename  = basename($path);
-        $mime_type = $this->fileMimeType($filesystem, $path);
         $data      = $this->readFile($filesystem, $path, $filename);
+        $mime_type = $this->fileMimeType($filesystem, $path);
 
         if ($mime_type === 'image/svg+xml') {
             $this->validateSvgFile($data, $filename);
@@ -149,11 +149,11 @@ readonly class ImageFactory implements ImageFactoryInterface
         ImageOperation $operation,
     ): string {
         $filename  = basename($path);
-        $mime_type = $this->fileMimeType($filesystem, $path);
         $binary    = $this->readFile($filesystem, $path, $filename);
         $image     = $this->decodeImage(binary: $binary, filename: $filename);
         $image     = $this->autoRotateImage(image: $image, binary: $binary, filename: $filename);
         $image     = $this->resizeImage(image: $image, width: $width, height: $height, operation: $operation, filename: $filename);
+        $mime_type = $this->fileMimeType($filesystem, $path);
 
         return $this->encodeImage(image: $image, mime_type: $mime_type, quality: self::THUMBNAIL_QUALITY);
     }
@@ -168,7 +168,6 @@ readonly class ImageFactory implements ImageFactoryInterface
             return $this->fileContents($filesystem, $path);
         }
 
-        $mime_type = $media_file->mimeType();
         $binary    = $this->readFile($filesystem, $path, $filename);
         $image     = $this->decodeImage(binary: $binary, filename: $filename);
         $image     = $this->autoRotateImage(image: $image, binary: $binary, filename: $filename);
@@ -176,6 +175,7 @@ readonly class ImageFactory implements ImageFactoryInterface
         $height    = imagesy($image);
         $watermark = $this->createWatermark(width: $width, height: $height);
         $image     = $this->addWatermark(image: $image, watermark: $watermark);
+        $mime_type = $media_file->mimeType();
 
         return $this->encodeImage(image: $image, mime_type: $mime_type, quality: self::IMAGE_QUALITY);
     }
@@ -190,11 +190,11 @@ readonly class ImageFactory implements ImageFactoryInterface
         $filesystem = $media_file->media()->tree()->mediaFilesystem();
         $path       = $media_file->filename();
         $filename   = basename($path);
-        $mime_type  = $media_file->mimeType();
         $binary     = $this->readFile($filesystem, $path, $filename);
         $image      = $this->decodeImage(binary: $binary, filename: $filename);
         $image      = $this->autoRotateImage(image: $image, binary: $binary, filename: $filename);
         $image      = $this->resizeImage(image: $image, width: $width, height: $height, operation: $operation, filename: $filename);
+        $mime_type  = $media_file->mimeType();
 
         if ($add_watermark) {
             $thumbnail_width  = imagesx($image);
