@@ -16,7 +16,9 @@
 import { createDialogModal } from './modal';
 
 const GALLERY_ATTRIBUTE = 'data-wt-gallery';
-const GALLERY_DATA_PREFIX = 'data-wt-gallery-';
+const GALLERY_TITLE_ATTRIBUTE = 'data-wt-gallery-title';
+const GALLERY_TITLE_URL_ATTRIBUTE = 'data-wt-gallery-title-url';
+const GALLERY_SOURCE_ATTRIBUTE = 'data-wt-gallery-src';
 const MIN_ZOOM = 1;
 const MAX_ZOOM = 8;
 
@@ -24,8 +26,7 @@ let gallery_modal = null;
 let initialized = false;
 
 /**
- * @typedef {{label: string, value: string}} GalleryField
- * @typedef {{source: string, title: string, title_url: string, fields: GalleryField[]}} GalleryItem
+ * @typedef {{source: string, title: string, title_url: string}} GalleryItem
  */
 
 /**
@@ -42,8 +43,10 @@ function hasGalleryAttributes(element) {
  * @returns {string|null}
  */
 function extractImageSource(element) {
-  if ('wtGallerySrc' in element.dataset && element.dataset.wtGallerySrc !== '') {
-    return element.dataset.wtGallerySrc;
+  const source_attribute = element.getAttribute(GALLERY_SOURCE_ATTRIBUTE);
+
+  if (source_attribute !== null && source_attribute !== '') {
+    return source_attribute;
   }
 
   if (element instanceof HTMLImageElement && element.currentSrc !== '') {
@@ -79,51 +82,21 @@ function normalizeSource(source) {
   return new URL(source, document.baseURI).href;
 }
 
-/**
- * @param {string} key
- * @returns {string}
- */
-function formatMetadataLabel(key) {
-  return key
-    .split('-')
-    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(' ');
-}
 
 /**
  * @param {Element} element
- * @returns {{title: string, title_url: string, fields: GalleryField[]}}
+ * @returns {{title: string, title_url: string}}
  */
 function extractMetadata(element) {
-  const title = element.dataset.wtGalleryTitle ?? element.dataset.title ?? '';
-  const title_url = element.dataset.wtGalleryTitleUrl ?? '';
-  const fields = [];
+  const title = element.getAttribute(GALLERY_TITLE_ATTRIBUTE) ?? element.dataset.title ?? '';
+  const title_url = element.getAttribute(GALLERY_TITLE_URL_ATTRIBUTE) ?? '';
 
-  for (const attribute of Array.from(element.attributes)) {
-    if (!attribute.name.startsWith(GALLERY_DATA_PREFIX)) {
-      continue;
-    }
-
-    if (attribute.name === 'data-wt-gallery-title' || attribute.name === 'data-wt-gallery-title-url' || attribute.name === 'data-wt-gallery-src') {
-      continue;
-    }
-
-    if (attribute.value === '') {
-      continue;
-    }
-
-    fields.push({
-      label: formatMetadataLabel(attribute.name.slice(GALLERY_DATA_PREFIX.length)),
-      value: attribute.value,
-    });
-  }
-
-  return { title, title_url, fields };
+  return { title, title_url };
 }
 
 /**
  * @param {GalleryItem} target_item
- * @param {{title: string, fields: GalleryField[]}} metadata
+ * @param {{title: string, title_url: string}} metadata
  * @returns {void}
  */
 function mergeMetadata(target_item, metadata) {
@@ -133,16 +106,6 @@ function mergeMetadata(target_item, metadata) {
 
   if (target_item.title_url === '' && metadata.title_url !== '') {
     target_item.title_url = metadata.title_url;
-  }
-
-  for (const field of metadata.fields) {
-    const duplicate = target_item.fields.find(existing_field => {
-      return existing_field.label === field.label && existing_field.value === field.value;
-    });
-
-    if (duplicate === undefined) {
-      target_item.fields.push(field);
-    }
   }
 }
 
@@ -204,7 +167,6 @@ function collectGalleryItems() {
       source: normalized_source,
       title: metadata.title,
       title_url: metadata.title_url,
-      fields: metadata.fields,
     };
 
     unique_sources.set(normalized_source, items.length);
@@ -252,9 +214,6 @@ class GalleryModal {
       '    <button type="button" class="wt-gallery-button wt-gallery-button-previous" data-wt-gallery-action="previous" aria-label="' + labels.previous + '">&lt;</button>',
       '    <button type="button" class="wt-gallery-button wt-gallery-button-next" data-wt-gallery-action="next" aria-label="' + labels.next + '">&gt;</button>',
       '  </div>',
-      '  <div class="wt-gallery-metadata">',
-      '    <dl class="wt-gallery-fields"></dl>',
-      '  </div>',
       '</div>',
       ].join(''),
       on_close: () => this.resetState(),
@@ -265,9 +224,7 @@ class GalleryModal {
 
     this.image = modal.findRequired('.wt-gallery-image');
     this.stage = modal.findRequired('.wt-gallery-stage');
-    this.metadata = modal.findRequired('.wt-gallery-metadata');
     this.title = modal.findRequired('.wt-gallery-title');
-    this.fields = modal.findRequired('.wt-gallery-fields');
     this.previous_button = modal.findRequired('[data-wt-gallery-action="previous"]');
     this.next_button = modal.findRequired('[data-wt-gallery-action="next"]');
     this.close_button = modal.findRequired('[data-wt-gallery-action="close"]');
@@ -387,21 +344,6 @@ class GalleryModal {
 
     this.title.hidden = item.title === '';
 
-    const nodes = [];
-
-    for (const field of item.fields) {
-      const term = document.createElement('dt');
-      term.textContent = field.label;
-
-      const definition = document.createElement('dd');
-      definition.textContent = field.value;
-
-      nodes.push(term, definition);
-    }
-
-    this.fields.replaceChildren(...nodes);
-    this.fields.hidden = nodes.length === 0;
-    this.metadata.hidden = nodes.length === 0;
   }
 
   /**
@@ -564,4 +506,3 @@ export function initializeGallery() {
     gallery_modal.open(items, index);
   });
 }
-

@@ -181,8 +181,6 @@ class MediaFile
                 'data-wt-gallery'       => '1',
                 'data-wt-gallery-title' => strip_tags($this->media->fullName()),
                 'data-wt-gallery-title-url' => $this->media->url(),
-                'data-wt-gallery-format' => $this->multimedia_format,
-                'data-wt-gallery-media-type' => $this->source_media_type,
             ]);
         } else {
             $image = view('icons/mime', ['type' => $this->mimeType()]);
