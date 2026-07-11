@@ -71,12 +71,6 @@ $theme = Registry::container()->get(ModuleThemeInterface::class);
 
     <body
         class="wt-global wt-theme-<?= e($theme->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name, ['\\' => '/']))) ?>"
-        data-wt-i18n-confirm-cancel="<?= e(I18N::translate('Cancel')) ?>"
-        data-wt-i18n-confirm-ok="<?= e(I18N::translate('OK')) ?>"
-        data-wt-i18n-gallery-close="<?= e(I18N::translate('close')) ?>"
-        data-wt-i18n-gallery-image="<?= e(I18N::translate('Image')) ?>"
-        data-wt-i18n-gallery-next="<?= e(I18N::translate('next')) ?>"
-        data-wt-i18n-gallery-previous="<?= e(I18N::translate('previous')) ?>"
     >
         <header class="wt-header-wrapper d-print-none">
             <div class="container-lg wt-header-container">
@@ -150,10 +144,9 @@ $theme = Registry::container()->get(ModuleThemeInterface::class);
             <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static fn (ModuleFooterInterface $module): string => $module->getFooter($request))->implode('') ?>
         </footer>
 
-        <!-- Runtime contract: keep vendor bundle before webtrees bundle so legacy globals and plugins are available. -->
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
+        <script src="<?= e(asset('js/i18n/' . I18N::locale()->languageTag() . '.js')) ?>"></script>
         <script src="<?= e(asset('js/webtrees.min.js')) ?>"></script>
-
 
         <?= View::stack('javascript') ?>
 

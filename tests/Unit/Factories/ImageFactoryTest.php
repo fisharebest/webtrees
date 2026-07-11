@@ -255,7 +255,7 @@ class ImageFactoryTest extends TestCase
         try {
             $image_factory->fileContents(filesystem: $filesystem, path: 'missing.svg');
         } catch (ImageException $exception) {
-            self::assertStringStartsWith('Unable to read MIME type:', $exception->getMessage());
+            self::assertStringStartsWith('Unable to read file contents:', $exception->getMessage());
 
             throw $exception;
         }

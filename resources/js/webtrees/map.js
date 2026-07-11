@@ -13,6 +13,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { i18n } from './i18n';
+
 /**
  * Create a LeafletJS map from a list of providers/layers.
  *
@@ -24,8 +26,8 @@
  */
 export function buildLeafletJsMap(id, config, resetCallback) {
   const zoomControl = new L.control.zoom({
-    zoomInTitle: config.i18n.zoomIn,
-    zoomoutTitle: config.i18n.zoomOut,
+    zoomInTitle: i18n.get('Zoom in'),
+    zoomoutTitle: i18n.get('Zoom out'),
   });
 
   const resetControl = L.Control.extend({
@@ -37,8 +39,8 @@ export function buildLeafletJsMap(id, config, resetCallback) {
       const anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
 
       anchor.href = '#';
-      anchor.setAttribute('aria-label', config.i18n.reset); // Firefox does not yet support element.ariaLabel
-      anchor.title = config.i18n.reset;
+      anchor.setAttribute('aria-label', i18n.get('Reload map')); // Firefox does not yet support element.ariaLabel
+      anchor.title = i18n.get('Reload map');
       anchor.setAttribute('role', 'button');
       anchor.innerHTML = config.icons.reset;
       anchor.onclick = resetCallback;
@@ -102,4 +104,3 @@ export function buildLeafletJsMap(id, config, resetCallback) {
       localStorage.setItem('map_default_layer', layer.layer.options.localName);
     });
 }
-

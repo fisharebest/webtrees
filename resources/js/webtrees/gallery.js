@@ -14,6 +14,7 @@
  */
 
 import { createDialogModal } from './modal';
+import { i18n } from './i18n';
 
 const GALLERY_ATTRIBUTE = 'data-wt-gallery';
 const GALLERY_TITLE_ATTRIBUTE = 'data-wt-gallery-title';
@@ -196,10 +197,7 @@ function findGalleryTrigger(target) {
 }
 
 class GalleryModal {
-  /**
-   * @param {{close: string, previous: string, next: string, image: string, close_icon: string, previous_icon: string, next_icon: string}} labels
-   */
-  constructor(labels) {
+  constructor() {
     const modal = createDialogModal({
       class_name: 'wt-gallery-dialog',
       action_attribute: 'data-wt-gallery-action',
@@ -207,12 +205,12 @@ class GalleryModal {
       '<div class="wt-gallery-shell">',
       '  <div class="wt-gallery-header">',
       '    <div class="wt-gallery-title"></div>',
-      '    <button type="button" class="wt-gallery-button wt-gallery-button-close" data-wt-gallery-action="close" aria-label="' + labels.close + '">x</button>',
+      '    <button type="button" class="wt-gallery-button wt-gallery-button-close" data-wt-gallery-action="close" aria-label="' + i18n.get('close') + '"><i class="fa-solid fa-check"></i></button>',
       '  </div>',
       '  <div class="wt-gallery-stage">',
-      '    <img class="wt-gallery-image" alt="' + labels.image + '">',
-      '    <button type="button" class="wt-gallery-button wt-gallery-button-previous" data-wt-gallery-action="previous" aria-label="' + labels.previous + '">&lt;</button>',
-      '    <button type="button" class="wt-gallery-button wt-gallery-button-next" data-wt-gallery-action="next" aria-label="' + labels.next + '">&gt;</button>',
+      '    <img class="wt-gallery-image">',
+      '    <button type="button" class="wt-gallery-button wt-gallery-button-previous" data-wt-gallery-action="previous" aria-label="' + i18n.get('previous') + '">&lt;</button>',
+      '    <button type="button" class="wt-gallery-button wt-gallery-button-next" data-wt-gallery-action="next" aria-label="' + i18n.get('next') + '">&gt;</button>',
       '  </div>',
       '</div>',
       ].join(''),
@@ -229,9 +227,9 @@ class GalleryModal {
     this.next_button = modal.findRequired('[data-wt-gallery-action="next"]');
     this.close_button = modal.findRequired('[data-wt-gallery-action="close"]');
 
-    this.close_button.innerHTML = labels.close_icon;
-    this.previous_button.innerHTML = labels.previous_icon;
-    this.next_button.innerHTML = labels.next_icon;
+    this.close_button.innerHTML = '<i class="fa-solid fa-times"></i>';
+    this.previous_button.innerHTML = '<i class="fa-solid fa-arrow-left wt-icon-flip-rtl"></i>';
+    this.next_button.innerHTML = '<i class="fa-solid fa-arrow-right wt-icon-flip-rtl"></i>';
 
     this.items = [];
     this.current_index = 0;
@@ -456,21 +454,6 @@ class GalleryModal {
   }
 }
 
-/**
- * @returns {{close: string, previous: string, next: string, image: string, close_icon: string, previous_icon: string, next_icon: string}}
- */
-function getLabels() {
-  return {
-    close: document.body.dataset.wtI18nGalleryClose ?? 'Close',
-    close_icon: '<i class="fa-solid fa-times"></i>',
-    previous: document.body.dataset.wtI18nGalleryPrevious ?? 'Previous',
-    previous_icon: '<i class="fa-solid fa-arrow-left wt-icon-flip-rtl"></i>',
-    next: document.body.dataset.wtI18nGalleryNext ?? 'Next',
-    next_icon: '<i class="fa-solid fa-arrow-right wt-icon-flip-rtl"></i>',
-    image: document.body.dataset.wtI18nGalleryImage ?? 'Gallery image',
-  };
-}
-
 export function initializeGallery() {
   if (initialized) {
     return;
@@ -500,7 +483,7 @@ export function initializeGallery() {
     event.preventDefault();
 
     if (gallery_modal === null) {
-      gallery_modal = new GalleryModal(getLabels());
+      gallery_modal = new GalleryModal();
     }
 
     gallery_modal.open(items, index);

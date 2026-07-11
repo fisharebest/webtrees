@@ -23,6 +23,7 @@ import {
   getWebtreesGlobal,
   httpGet,
   httpPost,
+  i18n,
   initializeGallery,
   initializeWebtreesPage,
   pasteAtCursor,
@@ -61,6 +62,7 @@ const webtrees = getWebtreesGlobal(window);
 
   webtrees.httpGet = httpGet;
   webtrees.httpPost = httpPost;
+  webtrees.i18n = i18n;
   webtrees.autocomplete = autocomplete;
   webtrees.buildLeafletJsMap = buildLeafletJsMap;
   webtrees.confirmDialog = confirmDialog;

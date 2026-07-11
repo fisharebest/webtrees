@@ -11,9 +11,11 @@
 /public/js/*.js.LICENSE.txt
 /public/robots.txt
 
-/resources/lang/webtees.pot
+/resources/lang/webtrees-js.pot
+/resources/lang/webtrees-phtml.pot
+/resources/lang/webtrees-php.pot
+/resources/lang/webtrees-xml.pot
 /resources/lang/*/messages.php
-!/resources/lang/en-US/messages.php
 
 /robots.txt
 

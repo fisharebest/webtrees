@@ -14,6 +14,7 @@
  */
 
 import { createDialogModal } from './modal';
+import { i18n } from './i18n';
 
 let confirm_modal = null;
 let pending_resolver = null;
@@ -31,9 +32,6 @@ function getConfirmModal() {
     return confirm_modal;
   }
 
-  const cancel_label = document.body.dataset.wtI18nConfirmCancel ?? 'Cancel';
-  const ok_label = document.body.dataset.wtI18nConfirmOk ?? 'OK';
-
   const modal = createDialogModal({
     action_attribute: 'data-wt-confirm-action',
     class_name: 'wt-confirm-dialog',
@@ -41,8 +39,12 @@ function getConfirmModal() {
       '<div class="wt-confirm-shell">',
       '  <p class="wt-confirm-message"></p>',
       '  <div class="wt-confirm-actions">',
-      '    <button type="button" class="btn btn-secondary" data-wt-confirm-action="cancel">' + cancel_label + '</button>',
-      '    <button type="button" class="btn btn-primary" data-wt-confirm-action="confirm">' + ok_label + '</button>',
+      '    <button type="button" class="btn btn-secondary" data-wt-confirm-action="cancel">' +
+      '      <i class="fa-solid fa-times"></i> ' + i18n.get('cancel') +
+      '    </button>',
+      '    <button type="button" class="btn btn-primary" data-wt-confirm-action="confirm">' +
+      '      <i class="fa-solid fa-check"></i> ' + i18n.get('OK') +
+      '    </button>',
       '  </div>',
       '</div>',
     ].join(''),
@@ -105,4 +107,3 @@ export function confirmDialog(message) {
     modal.open();
   });
 }
-
