@@ -19,10 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Charts\ChartDataInterface;
+use Fisharebest\Webtrees\Charts\PieChartData;
+
 use function array_column;
 use function array_map;
+use function array_slice;
 use function array_sum;
-use function array_unshift;
+use function count;
 use function e;
 use function hexdec;
 use function ltrim;
@@ -162,29 +166,39 @@ readonly class StatisticsFormat
     }
 
     /**
+     * @return array<int,string>
+     */
+    public function qualitativeColors(int $count): array
+    {
+        $colors = [];
+
+        for ($i = 0; $i < $count; ++$i) {
+            $colors[$i] = ChartDataInterface::COLOR_PALETTE[$i % count(ChartDataInterface::COLOR_PALETTE)];
+        }
+
+        return $colors;
+    }
+
+    /**
      * @param array<array{0:string,1:int}> $data
      * @param array<string>                $colors
      */
-    public function pieChart(
-        array $data,
-        array $colors,
-        string $title,
-        string $category,
-        string $quantity,
-        bool $percentage = false
-    ): string {
+    public function pieChart(array $data, array $colors, string $title, bool $percentage = false): string
+    {
         // Cannot display a pie chart if there is no data.
         if (array_sum(array_column($data, 1)) === 0) {
             return $this->missing();
         }
 
-        // Google Charts require a header row.
-        array_unshift($data, [$category, $quantity]);
+        $chart_data = new PieChartData(
+            array_map(static fn (array $row): string => $row[0], $data),
+            array_map(static fn (array $row): int => $row[1], $data),
+            $colors,
+        );
 
         return view('statistics/other/charts/pie', [
             'title'            => $title,
-            'data'             => $data,
-            'colors'           => $colors,
+            'chart_data'       => $chart_data,
             'labeledValueText' => $percentage ? 'percentage' : 'value',
             'language'         => I18N::languageTag(),
         ]);

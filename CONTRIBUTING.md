@@ -62,7 +62,7 @@ If not, you'll need to replace `composer` with `php /path/to/your/copy/of/compos
 ### NPM
 
 * After modifying any CSS or JS files, you'll need to rebuild the files in `public/js` and `public/css`. You do this with the command `npm run build`.
-* During the JavaScript module migration, keep the compatibility globals `window.webtrees`, `window.TreeViewHandler`, and `window.statistics` available for existing templates and inline callers.
+* During the JavaScript module migration, keep the compatibility globals `window.webtrees` and `window.TreeViewHandler` available for existing templates and inline callers. The statistics module is fully self-initializing and requires no globals.
 
 ## Third-party libraries and compiled files in the source tree
 
@@ -109,4 +109,3 @@ There is a [translators forum](http://webtrees.net/index.php/en/forum/8-translat
 Updates to translations should be made at [translate.webtrees.net](https://translate.webtrees.net). 
 Changes made there will be pushed to webtrees git repository periodically and will be available 
 on the development version of webtrees. They will be included in the next release of webtrees.
-

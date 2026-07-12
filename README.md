@@ -177,7 +177,7 @@ Then run the commands:
 
 You will need to re-run the second of these any time you modify files in `resources/js` or `resources/css`.
 
-During the JavaScript module migration, runtime compatibility globals (such as `window.webtrees`, `window.TreeViewHandler`, and `window.statistics`) are preserved by adapter entrypoints.
+During the JavaScript module migration, runtime compatibility globals (such as `window.webtrees` and `window.TreeViewHandler`) are preserved by adapter entrypoints. The statistics module is fully self-initializing and requires no globals.
 
 ## Gedcom (family tree) files
 

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Charts\GeoChartData;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
@@ -1168,12 +1169,14 @@ readonly class StatisticsData
     }
 
     /**
-     * @return array<string>
+     * Build a lookup from country names and alpha-3 codes to ISO 3166-1 numeric codes.
+     * The numeric codes match the feature IDs used by world-atlas topology data.
+     *
+     * @return array<string,int>
      */
-    private function getIso3166Countries(): array
+    private function getCountryToNumericMap(): array
     {
-        // Get the country names for each language
-        $country_to_iso3166 = [];
+        $country_to_numeric = [];
 
         $current_language = I18N::languageTag();
 
@@ -1182,49 +1185,37 @@ readonly class StatisticsData
 
             $countries = $this->getAllCountries();
 
-            foreach ($this->iso3166() as $three => $two) {
-                $country_to_iso3166[$three]             = $two;
-                $country_to_iso3166[$countries[$three]] = $two;
+            foreach ($this->iso3166Numeric() as $three => $numeric) {
+                $country_to_numeric[$three]             = $numeric;
+                $country_to_numeric[$countries[$three]] = $numeric;
             }
         }
 
         I18N::init($current_language);
 
-        return $country_to_iso3166;
+        return $country_to_numeric;
     }
 
     /**
-     * Returns the data structure required by google geochart.
-     *
-     * @param array<int> $places
-     *
-     * @return array<int,array<int|string|array<string,string>>>
+     * @param array<int,int> $places
      */
-    private function createChartData(array $places): array
+    private function createChartData(array $places): GeoChartData
     {
-        $data = [
-            [
-                I18N::translate('Country'),
-                I18N::translate('Total'),
-            ],
-        ];
+        $features = [];
 
-        // webtrees uses 3-letter country codes and localised country names, but google uses 2 letter codes.
-        foreach ($places as $country => $count) {
-            $data[] = [
-                [
-                    'v' => $country,
-                    'f' => $this->mapTwoLetterToName($country),
-                ],
-                $count
+        foreach ($places as $numeric_code => $count) {
+            $features[] = [
+                'id'    => sprintf('%03d', $numeric_code),
+                'label' => $this->mapNumericToName($numeric_code),
+                'value' => $count,
             ];
         }
 
-        return $data;
+        return new GeoChartData($features);
     }
 
     /**
-     * @return array<string,int>
+     * @return array<int,int>
      */
     private function countIndividualsByCountry(Tree $tree): array
     {
@@ -1247,10 +1238,10 @@ readonly class StatisticsData
 
         $totals = [];
 
-        $country_to_iso3166 = $this->getIso3166Countries();
+        $country_to_numeric = $this->getCountryToNumericMap();
 
         foreach ($rows as $country => $count) {
-            $country_code = $country_to_iso3166[$country] ?? null;
+            $country_code = $country_to_numeric[$country] ?? null;
 
             if ($country_code !== null) {
                 $totals[$country_code] ??= 0;
@@ -1262,7 +1253,7 @@ readonly class StatisticsData
     }
 
     /**
-     * @return array<string,int>
+     * @return array<int,int>
      */
     private function countSurnamesByCountry(Tree $tree, string $surname): array
     {
@@ -1286,10 +1277,10 @@ readonly class StatisticsData
 
         $totals = [];
 
-        $country_to_iso3166 = $this->getIso3166Countries();
+        $country_to_numeric = $this->getCountryToNumericMap();
 
         foreach ($rows as $country => $count) {
-            $country_code = $country_to_iso3166[$country] ?? null;
+            $country_code = $country_to_numeric[$country] ?? null;
 
             if ($country_code !== null) {
                 $totals[$country_code] ??= 0;
@@ -1301,7 +1292,7 @@ readonly class StatisticsData
     }
 
     /**
-     * @return array<string,int>
+     * @return array<int,int>
      */
     private function countFamilyEventsByCountry(Tree $tree, string $fact): array
     {
@@ -1324,7 +1315,7 @@ readonly class StatisticsData
     }
 
     /**
-     * @return array<string,int>
+     * @return array<int,int>
      */
     private function countIndividualEventsByCountry(Tree $tree, string $fact): array
     {
@@ -1347,16 +1338,16 @@ readonly class StatisticsData
     }
 
     /**
-     * @return array<string,int>
+     * @return array<int,int>
      */
     private function filterEventPlaces(Builder $query, string $fact): array
     {
         $totals = [];
 
-        $country_to_iso3166 = $this->getIso3166Countries();
+        $country_to_numeric = $this->getCountryToNumericMap();
 
         foreach ($query->cursor() as $row) {
-            $country_code = $country_to_iso3166[$row->place] ?? null;
+            $country_code = $country_to_numeric[$row->place] ?? null;
 
             if ($country_code !== null) {
                 $place_regex = '/\n1 ' . $fact . '(?:\n[2-9].*)*\n2 PLAC.*[, ]' . preg_quote($row->place, '(?:\n|$)/i') . '\n/';
@@ -1417,7 +1408,7 @@ readonly class StatisticsData
             'chart_color2' => '84beff',
             'chart_color3' => 'c3dfff',
             'region'       => $chart_shows,
-            'data'         => $data,
+            'chart_data'   => $data,
             'language'     => I18N::languageTag(),
         ]);
     }
@@ -2740,270 +2731,271 @@ readonly class StatisticsData
     }
 
     /**
-     * ISO3166 3 letter codes, with their 2 letter equivalent.
-     * NOTE: this is not 1:1. ENG/SCO/WAL/NIR => GB
-     * NOTE: this also includes chapman codes and others. Should it?
+     * Map ISO 3166-1 alpha-3 country codes to numeric codes.
+     * The numeric codes are the feature IDs used by world-atlas topology data.
+     * Countries that share a numeric code (e.g. ENG, NIR, SCT, WLS → 826/GBR)
+     * are listed after the primary entry.
      *
-     * @return array<string>
+     * @return array<string,int>
      */
-    private function iso3166(): array
+    private function iso3166Numeric(): array
     {
         return [
-            'GBR' => 'GB', // Must come before ENG, NIR, SCT and WLS
-            'ABW' => 'AW',
-            'AFG' => 'AF',
-            'AGO' => 'AO',
-            'AIA' => 'AI',
-            'ALA' => 'AX',
-            'ALB' => 'AL',
-            'AND' => 'AD',
-            'ARE' => 'AE',
-            'ARG' => 'AR',
-            'ARM' => 'AM',
-            'ASM' => 'AS',
-            'ATA' => 'AQ',
-            'ATF' => 'TF',
-            'ATG' => 'AG',
-            'AUS' => 'AU',
-            'AUT' => 'AT',
-            'AZE' => 'AZ',
-            'BDI' => 'BI',
-            'BEL' => 'BE',
-            'BEN' => 'BJ',
-            'BFA' => 'BF',
-            'BGD' => 'BD',
-            'BGR' => 'BG',
-            'BHR' => 'BH',
-            'BHS' => 'BS',
-            'BIH' => 'BA',
-            'BLR' => 'BY',
-            'BLZ' => 'BZ',
-            'BMU' => 'BM',
-            'BOL' => 'BO',
-            'BRA' => 'BR',
-            'BRB' => 'BB',
-            'BRN' => 'BN',
-            'BTN' => 'BT',
-            'BVT' => 'BV',
-            'BWA' => 'BW',
-            'CAF' => 'CF',
-            'CAN' => 'CA',
-            'CCK' => 'CC',
-            'CHE' => 'CH',
-            'CHL' => 'CL',
-            'CHN' => 'CN',
-            'CIV' => 'CI',
-            'CMR' => 'CM',
-            'COD' => 'CD',
-            'COG' => 'CG',
-            'COK' => 'CK',
-            'COL' => 'CO',
-            'COM' => 'KM',
-            'CPV' => 'CV',
-            'CRI' => 'CR',
-            'CUB' => 'CU',
-            'CXR' => 'CX',
-            'CYM' => 'KY',
-            'CYP' => 'CY',
-            'CZE' => 'CZ',
-            'DEU' => 'DE',
-            'DJI' => 'DJ',
-            'DMA' => 'DM',
-            'DNK' => 'DK',
-            'DOM' => 'DO',
-            'DZA' => 'DZ',
-            'ECU' => 'EC',
-            'EGY' => 'EG',
-            'ENG' => 'GB',
-            'ERI' => 'ER',
-            'ESH' => 'EH',
-            'ESP' => 'ES',
-            'EST' => 'EE',
-            'ETH' => 'ET',
-            'FIN' => 'FI',
-            'FJI' => 'FJ',
-            'FLK' => 'FK',
-            'FRA' => 'FR',
-            'FRO' => 'FO',
-            'FSM' => 'FM',
-            'GAB' => 'GA',
-            'GEO' => 'GE',
-            'GHA' => 'GH',
-            'GIB' => 'GI',
-            'GIN' => 'GN',
-            'GLP' => 'GP',
-            'GMB' => 'GM',
-            'GNB' => 'GW',
-            'GNQ' => 'GQ',
-            'GRC' => 'GR',
-            'GRD' => 'GD',
-            'GRL' => 'GL',
-            'GTM' => 'GT',
-            'GUF' => 'GF',
-            'GUM' => 'GU',
-            'GUY' => 'GY',
-            'HKG' => 'HK',
-            'HMD' => 'HM',
-            'HND' => 'HN',
-            'HRV' => 'HR',
-            'HTI' => 'HT',
-            'HUN' => 'HU',
-            'IDN' => 'ID',
-            'IND' => 'IN',
-            'IOT' => 'IO',
-            'IRL' => 'IE',
-            'IRN' => 'IR',
-            'IRQ' => 'IQ',
-            'ISL' => 'IS',
-            'ISR' => 'IL',
-            'ITA' => 'IT',
-            'JAM' => 'JM',
-            'JOR' => 'JO',
-            'JPN' => 'JP',
-            'KAZ' => 'KZ',
-            'KEN' => 'KE',
-            'KGZ' => 'KG',
-            'KHM' => 'KH',
-            'KIR' => 'KI',
-            'KNA' => 'KN',
-            'KOR' => 'KO',
-            'KWT' => 'KW',
-            'LAO' => 'LA',
-            'LBN' => 'LB',
-            'LBR' => 'LR',
-            'LBY' => 'LY',
-            'LCA' => 'LC',
-            'LIE' => 'LI',
-            'LKA' => 'LK',
-            'LSO' => 'LS',
-            'LTU' => 'LT',
-            'LUX' => 'LU',
-            'LVA' => 'LV',
-            'MAC' => 'MO',
-            'MAR' => 'MA',
-            'MCO' => 'MC',
-            'MDA' => 'MD',
-            'MDG' => 'MG',
-            'MDV' => 'MV',
-            'MEX' => 'MX',
-            'MHL' => 'MH',
-            'MKD' => 'MK',
-            'MLI' => 'ML',
-            'MLT' => 'MT',
-            'MMR' => 'MM',
-            'MNG' => 'MN',
-            'MNP' => 'MP',
-            'MNT' => 'ME',
-            'MOZ' => 'MZ',
-            'MRT' => 'MR',
-            'MSR' => 'MS',
-            'MTQ' => 'MQ',
-            'MUS' => 'MU',
-            'MWI' => 'MW',
-            'MYS' => 'MY',
-            'MYT' => 'YT',
-            'NAM' => 'NA',
-            'NCL' => 'NC',
-            'NER' => 'NE',
-            'NFK' => 'NF',
-            'NGA' => 'NG',
-            'NIC' => 'NI',
-            'NIR' => 'GB',
-            'NIU' => 'NU',
-            'NLD' => 'NL',
-            'NOR' => 'NO',
-            'NPL' => 'NP',
-            'NRU' => 'NR',
-            'NZL' => 'NZ',
-            'OMN' => 'OM',
-            'PAK' => 'PK',
-            'PAN' => 'PA',
-            'PCN' => 'PN',
-            'PER' => 'PE',
-            'PHL' => 'PH',
-            'PLW' => 'PW',
-            'PNG' => 'PG',
-            'POL' => 'PL',
-            'PRI' => 'PR',
-            'PRK' => 'KP',
-            'PRT' => 'PT',
-            'PRY' => 'PY',
-            'PSE' => 'PS',
-            'PYF' => 'PF',
-            'QAT' => 'QA',
-            'REU' => 'RE',
-            'ROM' => 'RO',
-            'RUS' => 'RU',
-            'RWA' => 'RW',
-            'SAU' => 'SA',
-            'SCT' => 'GB',
-            'SDN' => 'SD',
-            'SEN' => 'SN',
-            'SER' => 'RS',
-            'SGP' => 'SG',
-            'SGS' => 'GS',
-            'SHN' => 'SH',
-            'SJM' => 'SJ',
-            'SLB' => 'SB',
-            'SLE' => 'SL',
-            'SLV' => 'SV',
-            'SMR' => 'SM',
-            'SOM' => 'SO',
-            'SPM' => 'PM',
-            'STP' => 'ST',
-            'SUR' => 'SR',
-            'SVK' => 'SK',
-            'SVN' => 'SI',
-            'SWE' => 'SE',
-            'SWZ' => 'SZ',
-            'SYC' => 'SC',
-            'SYR' => 'SY',
-            'TCA' => 'TC',
-            'TCD' => 'TD',
-            'TGO' => 'TG',
-            'THA' => 'TH',
-            'TJK' => 'TJ',
-            'TKL' => 'TK',
-            'TKM' => 'TM',
-            'TLS' => 'TL',
-            'TON' => 'TO',
-            'TTO' => 'TT',
-            'TUN' => 'TN',
-            'TUR' => 'TR',
-            'TUV' => 'TV',
-            'TWN' => 'TW',
-            'TZA' => 'TZ',
-            'UGA' => 'UG',
-            'UKR' => 'UA',
-            'UMI' => 'UM',
-            'URY' => 'UY',
-            'USA' => 'US',
-            'UZB' => 'UZ',
-            'VAT' => 'VA',
-            'VCT' => 'VC',
-            'VEN' => 'VE',
-            'VGB' => 'VG',
-            'VIR' => 'VI',
-            'VNM' => 'VN',
-            'VUT' => 'VU',
-            'WLF' => 'WF',
-            'WLS' => 'GB',
-            'WSM' => 'WS',
-            'YEM' => 'YE',
-            'ZAF' => 'ZA',
-            'ZMB' => 'ZM',
-            'ZWE' => 'ZW',
+            'GBR' => 826, // Must come before ENG, NIR, SCT and WLS
+            'ABW' => 533,
+            'AFG' => 4,
+            'AGO' => 24,
+            'AIA' => 660,
+            'ALA' => 248,
+            'ALB' => 8,
+            'AND' => 20,
+            'ARE' => 784,
+            'ARG' => 32,
+            'ARM' => 51,
+            'ASM' => 16,
+            'ATA' => 10,
+            'ATF' => 260,
+            'ATG' => 28,
+            'AUS' => 36,
+            'AUT' => 40,
+            'AZE' => 31,
+            'BDI' => 108,
+            'BEL' => 56,
+            'BEN' => 204,
+            'BFA' => 854,
+            'BGD' => 50,
+            'BGR' => 100,
+            'BHR' => 48,
+            'BHS' => 44,
+            'BIH' => 70,
+            'BLR' => 112,
+            'BLZ' => 84,
+            'BMU' => 60,
+            'BOL' => 68,
+            'BRA' => 76,
+            'BRB' => 52,
+            'BRN' => 96,
+            'BTN' => 64,
+            'BVT' => 74,
+            'BWA' => 72,
+            'CAF' => 140,
+            'CAN' => 124,
+            'CCK' => 166,
+            'CHE' => 756,
+            'CHL' => 152,
+            'CHN' => 156,
+            'CIV' => 384,
+            'CMR' => 120,
+            'COD' => 180,
+            'COG' => 178,
+            'COK' => 184,
+            'COL' => 170,
+            'COM' => 174,
+            'CPV' => 132,
+            'CRI' => 188,
+            'CUB' => 192,
+            'CXR' => 162,
+            'CYM' => 136,
+            'CYP' => 196,
+            'CZE' => 203,
+            'DEU' => 276,
+            'DJI' => 262,
+            'DMA' => 212,
+            'DNK' => 208,
+            'DOM' => 214,
+            'DZA' => 12,
+            'ECU' => 218,
+            'EGY' => 818,
+            'ENG' => 826,
+            'ERI' => 232,
+            'ESH' => 732,
+            'ESP' => 724,
+            'EST' => 233,
+            'ETH' => 231,
+            'FIN' => 246,
+            'FJI' => 242,
+            'FLK' => 238,
+            'FRA' => 250,
+            'FRO' => 234,
+            'FSM' => 583,
+            'GAB' => 266,
+            'GEO' => 268,
+            'GHA' => 288,
+            'GIB' => 292,
+            'GIN' => 324,
+            'GLP' => 312,
+            'GMB' => 270,
+            'GNB' => 624,
+            'GNQ' => 226,
+            'GRC' => 300,
+            'GRD' => 308,
+            'GRL' => 304,
+            'GTM' => 320,
+            'GUF' => 254,
+            'GUM' => 316,
+            'GUY' => 328,
+            'HKG' => 344,
+            'HMD' => 334,
+            'HND' => 340,
+            'HRV' => 191,
+            'HTI' => 332,
+            'HUN' => 348,
+            'IDN' => 360,
+            'IND' => 356,
+            'IOT' => 86,
+            'IRL' => 372,
+            'IRN' => 364,
+            'IRQ' => 368,
+            'ISL' => 352,
+            'ISR' => 376,
+            'ITA' => 380,
+            'JAM' => 388,
+            'JOR' => 400,
+            'JPN' => 392,
+            'KAZ' => 398,
+            'KEN' => 404,
+            'KGZ' => 417,
+            'KHM' => 116,
+            'KIR' => 296,
+            'KNA' => 659,
+            'KOR' => 410,
+            'KWT' => 414,
+            'LAO' => 418,
+            'LBN' => 422,
+            'LBR' => 430,
+            'LBY' => 434,
+            'LCA' => 662,
+            'LIE' => 438,
+            'LKA' => 144,
+            'LSO' => 426,
+            'LTU' => 440,
+            'LUX' => 442,
+            'LVA' => 428,
+            'MAC' => 446,
+            'MAR' => 504,
+            'MCO' => 492,
+            'MDA' => 498,
+            'MDG' => 450,
+            'MDV' => 462,
+            'MEX' => 484,
+            'MHL' => 584,
+            'MKD' => 807,
+            'MLI' => 466,
+            'MLT' => 470,
+            'MMR' => 104,
+            'MNG' => 496,
+            'MNP' => 580,
+            'MNT' => 499,
+            'MOZ' => 508,
+            'MRT' => 478,
+            'MSR' => 500,
+            'MTQ' => 474,
+            'MUS' => 480,
+            'MWI' => 454,
+            'MYS' => 458,
+            'MYT' => 175,
+            'NAM' => 516,
+            'NCL' => 540,
+            'NER' => 562,
+            'NFK' => 574,
+            'NGA' => 566,
+            'NIC' => 558,
+            'NIR' => 826,
+            'NIU' => 570,
+            'NLD' => 528,
+            'NOR' => 578,
+            'NPL' => 524,
+            'NRU' => 520,
+            'NZL' => 554,
+            'OMN' => 512,
+            'PAK' => 586,
+            'PAN' => 591,
+            'PCN' => 612,
+            'PER' => 604,
+            'PHL' => 608,
+            'PLW' => 585,
+            'PNG' => 598,
+            'POL' => 616,
+            'PRI' => 630,
+            'PRK' => 408,
+            'PRT' => 620,
+            'PRY' => 600,
+            'PSE' => 275,
+            'PYF' => 258,
+            'QAT' => 634,
+            'REU' => 638,
+            'ROM' => 642,
+            'RUS' => 643,
+            'RWA' => 646,
+            'SAU' => 682,
+            'SCT' => 826,
+            'SDN' => 729,
+            'SEN' => 686,
+            'SER' => 688,
+            'SGP' => 702,
+            'SGS' => 239,
+            'SHN' => 654,
+            'SJM' => 744,
+            'SLB' => 90,
+            'SLE' => 694,
+            'SLV' => 222,
+            'SMR' => 674,
+            'SOM' => 706,
+            'SPM' => 666,
+            'STP' => 678,
+            'SUR' => 740,
+            'SVK' => 703,
+            'SVN' => 705,
+            'SWE' => 752,
+            'SWZ' => 748,
+            'SYC' => 690,
+            'SYR' => 760,
+            'TCA' => 796,
+            'TCD' => 148,
+            'TGO' => 768,
+            'THA' => 764,
+            'TJK' => 762,
+            'TKL' => 772,
+            'TKM' => 795,
+            'TLS' => 626,
+            'TON' => 776,
+            'TTO' => 780,
+            'TUN' => 788,
+            'TUR' => 792,
+            'TUV' => 798,
+            'TWN' => 158,
+            'TZA' => 834,
+            'UGA' => 800,
+            'UKR' => 804,
+            'UMI' => 581,
+            'URY' => 858,
+            'USA' => 840,
+            'UZB' => 860,
+            'VAT' => 336,
+            'VCT' => 670,
+            'VEN' => 862,
+            'VGB' => 92,
+            'VIR' => 850,
+            'VNM' => 704,
+            'VUT' => 548,
+            'WLF' => 876,
+            'WLS' => 826,
+            'WSM' => 882,
+            'YEM' => 887,
+            'ZAF' => 710,
+            'ZMB' => 894,
+            'ZWE' => 716,
         ];
     }
 
     /**
-     * Returns the translated country name based on the given two letter country code.
+     * Returns the translated country name for the given ISO 3166-1 numeric code.
      */
-    private function mapTwoLetterToName(string $twoLetterCode): string
+    private function mapNumericToName(int $numeric_code): string
     {
-        $threeLetterCode = array_search($twoLetterCode, $this->iso3166(), true);
-        $threeLetterCode = $threeLetterCode ?: '???';
+        $three_letter_code = array_search($numeric_code, $this->iso3166Numeric(), true);
+        $three_letter_code = $three_letter_code ?: '???';
 
-        return $this->getAllCountries()[$threeLetterCode];
+        return $this->getAllCountries()[$three_letter_code];
     }
 }

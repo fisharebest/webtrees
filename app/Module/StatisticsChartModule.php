@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Charts\BarChartData;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -44,7 +45,6 @@ use function count;
 use function explode;
 use function in_array;
 use function is_numeric;
-use function sprintf;
 
 class StatisticsChartModule extends AbstractModule implements ModuleChartInterface
 {
@@ -889,53 +889,51 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             });
         }
 
-        $data = [
-            array_merge(
-                [I18N::translate('Century')],
-                array_values($z_axis)
-            ),
-        ];
+        $labels = array_values($x_axis);
+        $datasets = [];
 
-        $intermediate = [];
-        foreach ($ydata as $months) {
-            foreach ($months as $month => $value) {
-                $intermediate[$month][] = [
-                    'v' => $value,
-                    'f' => $y_axis_type === self::Y_AXIS_PERCENT ? sprintf('%.1f%%', $value) : $value,
-                ];
-            }
+        $color_index = 0;
+
+        foreach ($ydata as $index => $values) {
+            $datasets[] = [
+                'label'           => array_key_exists($index, $z_axis) ? $z_axis[$index] : (string) $index,
+                'data'            => array_values($values),
+                'backgroundColor' => '#' . $colors[$color_index % count($colors)],
+            ];
+
+            $color_index++;
         }
 
-        foreach ($intermediate as $key => $values) {
-            $data[] = array_merge(
-                [$x_axis[$key]],
-                $values
-            );
-        }
+        $chart_data = new BarChartData($labels, $datasets);
 
         $chart_options = [
-            'title'    => '',
-            'subtitle' => '',
-            'height'   => 400,
-            'width'    => '100%',
-            'legend'   => [
-                'position'  => count($z_axis) > 1 ? 'right' : 'none',
-                'alignment' => 'center',
+            'plugins' => [
+                'legend' => [
+                    'display'  => count($z_axis) > 1,
+                    'position' => 'right',
+                ],
+                'tooltip' => [
+                    'enabled' => true,
+                ],
             ],
-            'tooltip'  => [
-                'format' => '\'%\'',
+            'scales' => [
+                'y' => [
+                    'title' => [
+                        'display' => true,
+                        'text'    => $y_axis_title,
+                    ],
+                ],
+                'x' => [
+                    'title' => [
+                        'display' => true,
+                        'text'    => $x_axis_title,
+                    ],
+                ],
             ],
-            'vAxis'    => [
-                'title' => $y_axis_title,
-            ],
-            'hAxis'    => [
-                'title' => $x_axis_title,
-            ],
-            'colors'   => $colors,
         ];
 
         return view('statistics/other/charts/custom', [
-            'data'          => $data,
+            'chart_data'    => $chart_data,
             'chart_options' => $chart_options,
             'chart_title'   => $chart_title,
             'language'      => I18N::languageTag(),
