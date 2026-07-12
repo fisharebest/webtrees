@@ -552,7 +552,6 @@ final class Xgettext extends AbstractCommand
         foreach ($lines as $line) {
             if ($line === '') {
                 if ($entry !== null && $entry['msgid'] !== null) {
-                    $entry['msgid'] = $entry['msgid'] ?? '';
                     $entries[] = [
                         'translator_comments' => $entry['translator_comments'],
                         'extracted_comments' => $entry['extracted_comments'],
@@ -866,40 +865,9 @@ final class Xgettext extends AbstractCommand
         $current_msgstrs = [];
         $active_field    = null;
 
-        $finalize_entry = function () use (&$issues, &$current_msgid, &$current_plural, &$current_msgstrs): void {
-            if ($current_msgid === null || $current_msgid === '' || $current_msgstrs === []) {
-                return;
-            }
-
-            $expected_singular = $this->countPlaceholders($current_msgid);
-            $expected_plural   = $current_plural === null ? $expected_singular : $this->countPlaceholders($current_plural);
-
-            foreach ($current_msgstrs as $index => $translated_value) {
-                if ($translated_value === '') {
-                    continue;
-                }
-
-                $source_value = $index === 0 || $current_plural === null ? $current_msgid : $current_plural;
-
-                if ($this->isPlaceholderCheckException($source_value)) {
-                    continue;
-                }
-
-                $expected_placeholders = $index === 0 ? $expected_singular : $expected_plural;
-                $actual_placeholders   = $this->countPlaceholders($translated_value);
-
-                if ($expected_placeholders !== $actual_placeholders) {
-                    $issues[] = [
-                        'source' => $source_value,
-                        'translated' => $translated_value,
-                    ];
-                }
-            }
-        };
-
         foreach ($lines as $line) {
             if ($line === '') {
-                $finalize_entry();
+                $issues = $this->appendPoPlaceholderIssues($issues, $current_msgid, $current_plural, $current_msgstrs);
                 $current_msgid   = null;
                 $current_plural  = null;
                 $current_msgstrs = [];
@@ -966,7 +934,47 @@ final class Xgettext extends AbstractCommand
             }
         }
 
-        $finalize_entry();
+        $issues = $this->appendPoPlaceholderIssues($issues, $current_msgid, $current_plural, $current_msgstrs);
+
+        return $issues;
+    }
+
+    /**
+     * @param array<int,array{source:string,translated:string}> $issues
+     * @param array<int,string>                                  $current_msgstrs
+     *
+     * @return array<int,array{source:string,translated:string}>
+     */
+    private function appendPoPlaceholderIssues(array $issues, string|null $current_msgid, string|null $current_plural, array $current_msgstrs): array
+    {
+        if ($current_msgid === null || $current_msgid === '' || $current_msgstrs === []) {
+            return $issues;
+        }
+
+        $expected_singular = $this->countPlaceholders($current_msgid);
+        $expected_plural   = $current_plural === null ? $expected_singular : $this->countPlaceholders($current_plural);
+
+        foreach ($current_msgstrs as $index => $translated_value) {
+            if ($translated_value === '') {
+                continue;
+            }
+
+            $source_value = $index === 0 || $current_plural === null ? $current_msgid : $current_plural;
+
+            if ($this->isPlaceholderCheckException($source_value)) {
+                continue;
+            }
+
+            $expected_placeholders = $index === 0 ? $expected_singular : $expected_plural;
+            $actual_placeholders   = $this->countPlaceholders($translated_value);
+
+            if ($expected_placeholders !== $actual_placeholders) {
+                $issues[] = [
+                    'source' => $source_value,
+                    'translated' => $translated_value,
+                ];
+            }
+        }
 
         return $issues;
     }
