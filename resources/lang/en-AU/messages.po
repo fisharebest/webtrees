@@ -4,21 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # webtrees JavaScript translation template.
-#, fuzzy
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 23:04+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-07-11 23:04+0100\nPO-Revision-Date: 2026-07-13 16:22+0000\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: English (Australia) <http://localhost:8080/projects/webtrees/webtrees-2-2/en_AU/>\nLanguage: en-AU\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml
 msgid " but the details are unknown"
@@ -1001,17 +988,17 @@ msgstr "A user will not be able to sign in until both ‘e-mail verified’ and 
 #: resources/xml/reports/pedigree_report.xml
 msgctxt "paper size"
 msgid "A0"
-msgstr ""
+msgstr "A0"
 
 #: resources/xml/reports/pedigree_report.xml
 msgctxt "paper size"
 msgid "A1"
-msgstr ""
+msgstr "A1"
 
 #: resources/xml/reports/pedigree_report.xml
 msgctxt "paper size"
 msgid "A2"
-msgstr ""
+msgstr "A2"
 
 #: resources/xml/reports/ahnentafel_report.xml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
@@ -6460,7 +6447,7 @@ msgstr "Godson"
 
 #: app/Module/GoogleSearchConsole.php
 msgid "Google™ Search Console"
-msgstr ""
+msgstr "Google™ Search Console"
 
 #: app/Module/GoogleAnalyticsModule.php
 msgid "Google™ analytics"
@@ -6971,7 +6958,7 @@ msgstr "If you modify the filename, you should also rename the file."
 
 #: resources/views/modules/here-maps/config.phtml
 msgid "If you obtained this key prior to 2024 then it will be necessary to create a new key."
-msgstr ""
+msgstr "If you obtained this key prior to 2024 then it will be necessary to create a new key."
 
 #: resources/views/admin/site-preferences.phtml
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -8546,7 +8533,7 @@ msgstr "Media"
 
 #: app/Statistics.php
 msgid "Media by type"
-msgstr ""
+msgstr "Media by type"
 
 #: resources/views/admin/media-upload.phtml resources/views/admin/media.phtml
 #: resources/views/media-page-details.phtml
@@ -9742,7 +9729,7 @@ msgstr "Nurse"
 
 #: resources/js/webtrees/confirm.js
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -10018,7 +10005,7 @@ msgstr "Page %s of %s"
 
 #: resources/xml/reports/pedigree_report.xml
 msgid "Page setup"
-msgstr ""
+msgstr "Page setup"
 
 #: resources/xml/reports/ahnentafel_report.xml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
@@ -12462,7 +12449,7 @@ msgstr "Slide show"
 
 #: resources/views/modules/random_media/config.phtml
 msgid "Slide show interval"
-msgstr ""
+msgstr "Slide show interval"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -13540,7 +13527,7 @@ msgstr "The server could not understand this request."
 
 #: app/Http/RequestHandlers/CheckTree.php
 msgid "The server’s memory limit has been reached."
-msgstr ""
+msgstr "The server’s memory limit has been reached."
 
 #: app/Services/ServerCheckService.php
 msgid "The server’s temporary folder cannot be accessed."
@@ -14855,7 +14842,7 @@ msgstr "Use compact layout"
 #: resources/views/modules/gedcom_news/edit.phtml
 #: resources/views/modules/user_blog/edit.phtml
 msgid "Use current timestamp"
-msgstr ""
+msgstr "Use current timestamp"
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -15344,7 +15331,7 @@ msgstr "Yemen"
 
 #: app/Statistics.php
 msgid "Yes"
-msgstr ""
+msgstr "Yes"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
 #: resources/views/emails/register-user-html.phtml
@@ -15453,7 +15440,7 @@ msgstr "You must specify an individual record before you can restrict the user t
 
 #: app/Http/RequestHandlers/RenumberTreeAction.php
 msgid "You need to accept or reject all pending changes before proceeding."
-msgstr ""
+msgstr "You need to accept or reject all pending changes before proceeding."
 
 #: app/Http/RequestHandlers/LoginPage.php
 msgid "You need to be a family member to access this website."
@@ -18870,7 +18857,7 @@ msgstr "secondary evidence"
 
 #: resources/views/modules/random_media/config.phtml
 msgid "seconds"
-msgstr ""
+msgstr "seconds"
 
 #. I18N: select all (of a list of options)
 #: resources/views/search-trees.phtml
@@ -19585,34 +19572,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid "Add/edit a journal/news entry"
-#~ msgstr "Add/edit a journal/news entry"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Font"
-#~ msgstr "Font"
-
-#~ msgid "Google™ webmaster tools"
-#~ msgstr "Google™ webmaster tools"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
-
-#~ msgid "Pedigree chart"
-#~ msgstr "Pedigree chart"
-
-#, php-format
-#~ msgid "The parameter “%s” is missing."
-#~ msgstr "The parameter “%s” is missing."
-
-#~ msgid "This website is being upgraded. Try again in a few minutes."
-#~ msgstr "This website is being upgraded. Try again in a few minutes."
