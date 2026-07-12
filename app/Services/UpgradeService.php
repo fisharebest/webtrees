@@ -49,6 +49,7 @@ use function fwrite;
 use function rewind;
 use function strlen;
 use function time;
+use function usort;
 use function version_compare;
 
 use const PHP_VERSION;
@@ -173,6 +174,8 @@ class UpgradeService
      */
     public function moveFiles(FilesystemOperator $source, FilesystemOperator $destination): void
     {
+        $folders = [];
+
         foreach ($source->listContents('', FilesystemReader::LIST_DEEP) as $attributes) {
             if ($attributes->isFile()) {
                 $destination->write($attributes->path(), $source->read($attributes->path()));
@@ -181,7 +184,17 @@ class UpgradeService
                 if ($this->timeout_service->isTimeNearlyUp()) {
                     throw new HttpServerErrorException(I18N::translate('The server’s time limit has been reached.'));
                 }
+            } else {
+                $folders[] = $attributes->path();
             }
+        }
+
+        // Sort folders by longest name, so we have a depth-first list.
+        usort($folders, static fn ($first, $second): int => strlen($second) <=> strlen($first));
+
+        // Delete these now empty folders.
+        foreach ($folders as $folder) {
+            $source->deleteDirectory($folder);
         }
     }
 
