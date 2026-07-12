@@ -52,6 +52,7 @@ use Fisharebest\Webtrees\Module\CompactTreeChartModule;
 use Fisharebest\Webtrees\Module\ContactsFooterModule;
 use Fisharebest\Webtrees\Module\CustomCssJsModule;
 use Fisharebest\Webtrees\Module\CzechMonarchsAndPresidents;
+use Fisharebest\Webtrees\Module\DanishHistoricalEvents;
 use Fisharebest\Webtrees\Module\DeathReportModule;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
 use Fisharebest\Webtrees\Module\DescendancyModule;
@@ -351,6 +352,7 @@ class ModuleService
         'descendancy_chart'       => DescendancyChartModule::class,
         'descendancy_report'      => DescendancyReportModule::class,
         'dutch_monarchs'          => DutchMonarchs::class,
+        'danish_history'          => DanishHistoricalEvents::class,
         'dutch_prime_ministers'   => DutchPrimeMinisters::class,
         'esri-maps'               => EsriMaps::class,
         'extra_info'              => IndividualMetadataModule::class,
