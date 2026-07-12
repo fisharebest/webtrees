@@ -4,21 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # webtrees JavaScript translation template.
-#, fuzzy
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 23:04+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-07-11 23:04+0100\nPO-Revision-Date: 2026-07-13 16:22+0000\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: English (United Kingdom) <http://localhost:8080/projects/webtrees/webtrees-2-2/en_GB/>\nLanguage: en-GB\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml
 msgid " but the details are unknown"
@@ -9742,7 +9729,7 @@ msgstr "Nurse"
 
 #: resources/js/webtrees/confirm.js
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -13540,7 +13527,7 @@ msgstr "The server could not understand this request."
 
 #: app/Http/RequestHandlers/CheckTree.php
 msgid "The server’s memory limit has been reached."
-msgstr ""
+msgstr "The server’s memory limit has been reached."
 
 #: app/Services/ServerCheckService.php
 msgid "The server’s temporary folder cannot be accessed."
