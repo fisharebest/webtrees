@@ -9,7 +9,6 @@ use Fisharebest\Webtrees\Encodings\UTF16BE;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var array<string> $download_filenames
@@ -19,6 +18,7 @@ use Fisharebest\Webtrees\View;
 
 ?>
 
+<div data-wt-format-options>
 <div class="row mb-3">
     <label class="col-sm-3" for="format">
         <?= I18N::translate('Format') ?>
@@ -69,7 +69,7 @@ use Fisharebest\Webtrees\View;
     <div class="col-sm-9">
         <div class="input-group">
             <?= view('components/select', ['name' => 'filename', 'id' => 'filename', 'selected' => 0, 'options' => $download_filenames]) ?>
-            <span class="input-group-text" id="extension">.ged</span>
+            <span class="input-group-text" data-wt-format-extension>.ged</span>
         </div>
     </div>
 </div>
@@ -111,15 +111,4 @@ use Fisharebest\Webtrees\View;
         <?php endif ?>
     </div>
 </div>
-
-<?php View::push('javascript') ?>
-<script>
-  'use strict';
-
-  document.querySelectorAll('[name=format]').forEach(element => element.addEventListener('change', event => document.getElementById('extension').innerText = event.target.dataset.wtExtension));
-
-  // Firefox will reload the page and change the selected item.
-  document.getElementById('extension').innerText = document.querySelector('[name=format]:checked').dataset.wtExtension;
-
-</script>
-<?php View::endpush(); ?>
+</div>

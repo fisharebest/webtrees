@@ -6,7 +6,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaData;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -24,99 +23,93 @@ use Illuminate\Support\Collection;
 
 <h1><?= $title ?></h1>
 
-<form method="post" action="<?= e(route(ManageMediaAction::class)) ?>" id="admin-media-form">
-    <table class="table table-bordered table-sm">
-        <thead>
-            <tr>
-                <th><?= I18N::translate('Media files') ?></th>
-                <th><?= I18N::translate('Media folders') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <label>
-                        <input type="radio" name="files" value="local" <?= $files === 'local' ? 'checked' : '' ?>>
-                        <?= /* I18N: “Local files” are stored on this computer */ I18N::translate('Local files') ?>
-                    </label>
-                    <br>
-                    <label>
-                        <input type="radio" name="files" value="external" <?= $files === 'external' ? 'checked' : '' ?>>
-                        <?= /* I18N: “External files” are stored on other computers */ I18N::translate('External files') ?>
-                    </label>
-                    <br>
-                    <label>
-                        <input type="radio" name="files" value="unused" <?= $files === 'unused' ? 'checked' : '' ?>>
-                        <?= I18N::translate('Unused files') ?>
-                    </label>
-                </td>
-                <td>
-                    <?php if ($files === 'local' || $files === 'unused') : ?>
-                        <div class="input-group mb-2" dir="ltr">
-                            <div class="input-group-text"><?= e($data_folder) ?></div>
-
-                            <?php if ($media_folders->count() > 1) : ?>
-                                <?= view('components/select', ['name' => 'media_folder', 'selected' => $media_folder, 'options' => $media_folders]) ?>
-                            <?php else : ?>
-                                <input aria-label="<?= I18N::translate('Media folder') ?>"
-                                       type="text" class="form-control" name="media_folder" value="<?= e($media_folder) ?>" readonly>
-                            <?php endif ?>
-                        </div>
-
+<div id="admin-media-page">
+    <form method="post" action="<?= e(route(ManageMediaAction::class)) ?>" id="admin-media-form">
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th><?= I18N::translate('Media files') ?></th>
+                    <th><?= I18N::translate('Media folders') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
                         <label>
-                            <input type="radio" name="subfolders" value="include" <?= $subfolders === 'include' ? 'checked' : '' ?>>
-                            <?= I18N::translate('Include subfolders') ?>
+                            <input type="radio" name="files" value="local" <?= $files === 'local' ? 'checked' : '' ?>>
+                            <?= /* I18N: “Local files” are stored on this computer */ I18N::translate('Local files') ?>
                         </label>
                         <br>
                         <label>
-                            <input type="radio" name="subfolders" value="exclude" <?= $subfolders === 'exclude' ? ' checked' : '' ?>>
-                            <?= I18N::translate('Exclude subfolders') ?>
+                            <input type="radio" name="files" value="external" <?= $files === 'external' ? 'checked' : '' ?>>
+                            <?= /* I18N: “External files” are stored on other computers */ I18N::translate('External files') ?>
                         </label>
+                        <br>
+                        <label>
+                            <input type="radio" name="files" value="unused" <?= $files === 'unused' ? 'checked' : '' ?>>
+                            <?= I18N::translate('Unused files') ?>
+                        </label>
+                    </td>
+                    <td>
+                        <?php if ($files === 'local' || $files === 'unused') : ?>
+                            <div class="input-group mb-2" dir="ltr">
+                                <div class="input-group-text"><?= e($data_folder) ?></div>
 
-                    <?php elseif ($files === 'external') : ?>
-                        <?= I18N::translate('External media files have a URL instead of a filename.') ?>
-                        <input type="hidden" name="media_folder" value="<?= e($media_folder) ?>">
-                        <input type="hidden" name="subfolders" value="<?= e($subfolders) ?>">
-                    <?php endif ?>
-                </td>
+                                <?php if ($media_folders->count() > 1) : ?>
+                                    <?= view('components/select', ['name' => 'media_folder', 'selected' => $media_folder, 'options' => $media_folders]) ?>
+                                <?php else : ?>
+                                    <input aria-label="<?= I18N::translate('Media folder') ?>"
+                                           type="text" class="form-control" name="media_folder" value="<?= e($media_folder) ?>" readonly>
+                                <?php endif ?>
+                            </div>
+
+                            <label>
+                                <input type="radio" name="subfolders" value="include" <?= $subfolders === 'include' ? 'checked' : '' ?>>
+                                <?= I18N::translate('Include subfolders') ?>
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="subfolders" value="exclude" <?= $subfolders === 'exclude' ? ' checked' : '' ?>>
+                                <?= I18N::translate('Exclude subfolders') ?>
+                            </label>
+
+                        <?php elseif ($files === 'external') : ?>
+                            <?= I18N::translate('External media files have a URL instead of a filename.') ?>
+                            <input type="hidden" name="media_folder" value="<?= e($media_folder) ?>">
+                            <input type="hidden" name="subfolders" value="<?= e($subfolders) ?>">
+                        <?php endif ?>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <?= csrf_field() ?>
+    </form>
+    <br>
+    <br>
+
+    <table
+        id="wt-datatables-admin-media"
+        class="table table-bordered table-sm wt-datatables d-none"
+        <?= view('lists/datatables-attributes') ?>
+        data-ajax='{"url":"<?= e(route(ManageMediaData::class, ['files' => $files, 'media_folder' => $media_folder, 'subfolders' => $subfolders])) ?>","type":"POST"}'
+        data-server-side="true"
+    >
+        <thead>
+            <tr>
+                <th>
+                    <?= I18N::translate('Media file') ?>
+                </th>
+
+                <th data-sortable="false">
+                    <?= I18N::translate('Media') ?>
+                </th>
+
+                <th data-sortable="<?= $files === 'unused' ? 'false' : 'true' ?>">
+                    <?= I18N::translate('Media object') ?>
+                </th>
             </tr>
-        </tbody>
+        </thead>
     </table>
-
-    <?= csrf_field() ?>
-</form>
-<br>
-<br>
-
-<table
-    id="wt-datatables-admin-media"
-    class="table table-bordered table-sm datatables d-none"
-    <?= view('lists/datatables-attributes') ?>
-    data-ajax='{"url":"<?= e(route(ManageMediaData::class, ['files' => $files, 'media_folder' => $media_folder, 'subfolders' => $subfolders])) ?>","type":"POST"}'
-    data-server-side="true"
->
-    <thead>
-        <tr>
-            <th>
-                <?= I18N::translate('Media file') ?>
-            </th>
-
-            <th data-sortable="false">
-                <?= I18N::translate('Media') ?>
-            </th>
-
-            <th data-sortable="<?= $files === 'unused' ? 'false' : 'true' ?>">
-                <?= I18N::translate('Media object') ?>
-            </th>
-        </tr>
-    </thead>
-</table>
-<?= view('modals/create-media-from-file', ['media_types' => $media_types]) ?>
-
-<?php View::push('javascript') ?>
-<script>
-    $("#admin-media-form input, #admin-media-form select").change(function () {
-        $("#admin-media-form").submit();
-    });
-</script>
-<?php View::endpush() ?>
+    <?= view('modals/create-media-from-file', ['media_types' => $media_types]) ?>
+</div>

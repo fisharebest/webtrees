@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var array<string,string> $steps
@@ -21,31 +20,10 @@ use Fisharebest\Webtrees\View;
     <?= I18N::translate('It can take several minutes to download and install the upgrade. Be patient.') ?>
 </p>
 
-<dl>
+<dl id="admin-upgrade-wizard-page">
     <?php foreach ($steps as $url => $text) : ?>
     <dt><?= $text ?></dt>
     <dd data-url="<?= e($url) ?>"></dd>
     <?php endforeach ?>
 </dl>
 
-<?php View::push('javascript') ?>
-<script>
-  function nextAjaxStep() {
-    $("dd:empty:first").each(function(n, el) {
-      el.innerHTML=<?= json_encode(view('icons/spinner')) ?>;
-      $(el).load(el.dataset.url, {}, function (responseText, textStatus, req) {
-        el.innerHTML = responseText;
-        if (textStatus === "error") {
-        } else {
-          nextAjaxStep();
-        }
-      });
-
-      // Only process one callback at a time.
-      return false;
-    });
-  }
-
-  nextAjaxStep();
-</script>
-<?php View::endpush() ?>

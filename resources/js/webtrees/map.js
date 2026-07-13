@@ -25,9 +25,20 @@ import { i18n } from './i18n';
  * @returns {Map}
  */
 export function buildLeafletJsMap(id, config, resetCallback) {
+  if (!config || typeof config !== 'object' || !config.icons || typeof config.icons !== 'object') {
+    throw new Error('Invalid map configuration: missing icons.');
+  }
+
+  const requiredIcons = ['reset', 'fullScreen', 'expand', 'collapse'];
+  requiredIcons.forEach((name) => {
+    if (typeof config.icons[name] !== 'string' || config.icons[name] === '') {
+      throw new Error('Invalid map configuration: missing icon "' + name + '".');
+    }
+  });
+
   const zoomControl = new L.control.zoom({
     zoomInTitle: i18n.get('Zoom in'),
-    zoomoutTitle: i18n.get('Zoom out'),
+    zoomOutTitle: i18n.get('Zoom out'),
   });
 
   const resetControl = L.Control.extend({
@@ -43,7 +54,10 @@ export function buildLeafletJsMap(id, config, resetCallback) {
       anchor.title = i18n.get('Reload map');
       anchor.setAttribute('role', 'button');
       anchor.innerHTML = config.icons.reset;
-      anchor.onclick = resetCallback;
+      anchor.addEventListener('click', (event) => {
+        event.preventDefault();
+        resetCallback(event);
+      });
 
       return container;
     },
@@ -53,7 +67,7 @@ export function buildLeafletJsMap(id, config, resetCallback) {
     options: {
       position: 'topleft',
     },
-    onAdd: (map) => {
+    onAdd: () => {
       const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
       const anchor = L.DomUtil.create('a', 'leaflet-control-fullscreen', container);
 
@@ -69,23 +83,34 @@ export function buildLeafletJsMap(id, config, resetCallback) {
   const preferredLayer = localStorage.getItem('map_default_layer');
   let defaultLayer = null;
 
-  for (let [, provider] of Object.entries(config.mapProviders)) {
-    for (let [, child] of Object.entries(provider.children)) {
+  if (!config || typeof config !== 'object' || !config.mapProviders || typeof config.mapProviders !== 'object') {
+    throw new Error('Invalid map configuration: missing mapProviders.');
+  }
+
+  for (let [providerName, provider] of Object.entries(config.mapProviders)) {
+    if (!provider || typeof provider !== 'object' || !provider.children || typeof provider.children !== 'object') {
+      throw new Error('Invalid map provider configuration: missing children for provider "' + providerName + '".');
+    }
+
+    for (let [childName, child] of Object.entries(provider.children)) {
+      if (!child || typeof child !== 'object' || typeof child.url !== 'string' || typeof child.localName !== 'string') {
+        throw new Error('Invalid map layer configuration for provider "' + providerName + '", layer "' + childName + '".');
+      }
+
       child.layer = L.tileLayer(child.url, child);
 
       if (preferredLayer === child.localName) {
         defaultLayer = child.layer;
       }
 
-      if (defaultLayer === null && provider['default'] && child['default']) {
+      if (defaultLayer === null && provider.default && child.default) {
         defaultLayer = child.layer;
       }
     }
   }
 
   if (defaultLayer === null) {
-    console.log('No default map layer defined - using the first one.');
-    defaultLayer = config.mapProviders[0].children[0].layer;
+    throw new Error('No default map layer configured.');
   }
 
   // Create the map with all controls and layers

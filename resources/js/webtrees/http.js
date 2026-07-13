@@ -42,7 +42,17 @@ export function httpGet(url) {
  * @returns {Promise}
  */
 export function httpPost(url, body = '') {
-  const csrfToken = document.head.querySelector('meta[name=csrf]').getAttribute('content');
+  const csrf = document.head.querySelector('meta[name=csrf]');
+
+  if (csrf === null) {
+    throw new Error('Missing CSRF token meta tag');
+  }
+
+  const csrfToken = csrf.getAttribute('content');
+
+  if (csrfToken === null || csrfToken === '') {
+    throw new Error('Missing CSRF token value');
+  }
 
   const options = {
     body: body,
@@ -55,6 +65,6 @@ export function httpPost(url, body = '') {
     })
   };
 
-  return fetch(url, options, body);
+  return fetch(url, options);
 }
 

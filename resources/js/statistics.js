@@ -35,6 +35,7 @@ import {
   ProjectionScale,
 } from 'chartjs-chart-geo';
 import { feature } from 'topojson-client';
+import { initializeWhenReady } from './webtrees/dom';
 import countriesTopology from 'world-atlas/countries-110m.json';
 
 Chart.register(
@@ -496,7 +497,9 @@ function drawNewCharts () {
       drawChart(element);
       element.setAttribute('data-wt-chart-rendered', '');
     } catch (error) {
-      console.error(error);
+      const chartType = element.dataset.wtChartType || 'unknown';
+      const reason = error instanceof Error ? error.message : String(error);
+      throw new Error('Failed to render chart type "' + chartType + '": ' + reason);
     }
   });
 }
@@ -557,9 +560,11 @@ registerChartRenderer('geo', (canvas, rawData, options) => {
     })
     .filter((entry) => entry !== null);
 
-  const colors = options.colorAxis && Array.isArray(options.colorAxis.colors)
-    ? options.colorAxis.colors
-    : ['#9ecae1', '#08519c'];
+  if (!options.colorAxis || !Array.isArray(options.colorAxis.colors) || options.colorAxis.colors.length < 2) {
+    throw new Error('Geo chart options must include colorAxis.colors with at least two colors.');
+  }
+
+  const colors = options.colorAxis.colors;
   const region = typeof options.region === 'string' ? options.region : 'world';
   const projection = REGION_PROJECTION_PRESETS[region] || REGION_PROJECTION_PRESETS.world;
   const outline = region === 'world'
@@ -571,18 +576,8 @@ registerChartRenderer('geo', (canvas, rawData, options) => {
     features: resolvedOutline,
   };
 
-  const geoOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    showOutline: true,
-    showGraticule: false,
+  const geoOptions = mergeOptions(options, {
     plugins: {
-      legend: {
-        display: false,
-      },
-      tooltip: {
-        enabled: true,
-      },
       title: {
         display: options.plugins?.title?.display === true,
         text: options.plugins?.title?.text || '',
@@ -597,11 +592,10 @@ registerChartRenderer('geo', (canvas, rawData, options) => {
       },
       color: {
         axis: 'x',
-        quantize: 5,
         interpolate: (value) => interpolateHexColor(colors[0], colors[1], value),
       },
     },
-  };
+  });
 
   return new Chart(canvas, {
     type: 'choropleth',
@@ -618,15 +612,5 @@ registerChartRenderer('geo', (canvas, rawData, options) => {
   });
 });
 
-// Observe the DOM for chart containers injected via AJAX.
-const observer = new MutationObserver(scanForCharts);
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    scanForCharts();
-    observer.observe(document.body, { childList: true, subtree: true });
-  });
-} else {
-  scanForCharts();
-  observer.observe(document.body, { childList: true, subtree: true });
-}
+// Initialize charts on initial page load and after AJAX-inserted DOM updates.
+initializeWhenReady(scanForCharts);

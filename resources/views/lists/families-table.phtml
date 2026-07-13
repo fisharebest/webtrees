@@ -9,10 +9,9 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
-// lists require a unique ID in case there are multiple lists per page
+// Unique ID prefix for HTML id/for attributes on checkbox/label pairs
 $table_id          = Registry::idFactory()->id();
 $today             = new Date(strtoupper(date('d M Y')));
 $today_jd          = Registry::timestampFactory()->now()->julianDay();
@@ -25,291 +24,263 @@ $hundred_years_ago = Registry::timestampFactory()->now()->subtractYears(100)->ju
 
 ?>
 
-<?php View::push('javascript') ?>
-<script>
-$("#<?= e($table_id) ?> > .wt-table-family").dataTable();
-
-$("#<?= e($table_id) ?>")
-    /* Hide/show parents */
-    .on("click", "#btn-toggle-parents", function() {
-        $(".wt-individual-list-parents").slideToggle();
-    })
-    /* Filter buttons in the table header */
-    .on("click", "input[data-filter-column]", function() {
-        let checkbox = $(this);
-
-        // Deselect other options
-        let siblings = checkbox.siblings("input[type='checkbox']");
-        siblings.prop("checked", false).removeAttr("checked");
-
-        // Apply (or clear) this filter
-        let checked = checkbox.prop("checked");
-        let filter  = checked ? checkbox.data("filter-value") : "";
-        let column  = $("#<?= e($table_id) ?> .wt-table-family").DataTable().column(checkbox.data("filter-column"));
-        column.search(filter).draw();
-    });
-</script>
-<?php View::endpush() ?>
-
-<div id="<?= e($table_id) ?>">
-    <table class="table table-bordered table-sm wt-table-family"
+<table class="table table-bordered table-sm wt-table-family wt-datatables d-none"
         <?= view('lists/datatables-attributes') ?>
         data-columns='[{"type":"text"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"visible":"<?= $tree->getPreference('SHOW_LAST_CHANGE')==='1' ? 'true' : 'false'?>"},{"sortable":false},{"sortable":false},{"sortable":false}]'
         data-sorting='[[1,"asc"]]'
     >
-        <thead>
-            <tr>
-                <th colspan="14">
-                    <div class="btn-toolbar d-flex justify-content-between mb-2">
-                        <div class="btn-group btn-group-sm" role="group">
-                            <input id="<?= e($table_id) ?>-bg-dead-N" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="N" autocomplete="off">
-                            <label for="<?= e($table_id) ?>-bg-dead-N" class="btn btn-outline-secondary btn-sm" title="' . I18N::translate('Show individuals who are alive or couples where both partners are alive.') ?>">
-                                <?= I18N::translate('Both alive') ?>
-                            </label>
+    <thead>
+        <tr>
+            <th colspan="14">
+                <div class="btn-toolbar d-flex justify-content-between mb-2">
+                    <div class="btn-group btn-group-sm" role="group">
+                        <input id="<?= e($table_id) ?>-bg-dead-N" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="N" autocomplete="off">
+                        <label for="<?= e($table_id) ?>-bg-dead-N" class="btn btn-outline-secondary btn-sm" title="' . I18N::translate('Show individuals who are alive or couples where both partners are alive.') ?>">
+                            <?= I18N::translate('Both alive') ?>
+                        </label>
 
-                            <input id="<?= e($table_id) ?>-bg-dead-W" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="W" autocomplete="off">
-                            <label for="<?= e($table_id) ?>-bg-dead-W" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples where only the female partner is dead.') ?>">
-                                <?= I18N::translate('Widower') ?>
-                            </label>
+                        <input id="<?= e($table_id) ?>-bg-dead-W" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="W" autocomplete="off">
+                        <label for="<?= e($table_id) ?>-bg-dead-W" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples where only the female partner is dead.') ?>">
+                            <?= I18N::translate('Widower') ?>
+                        </label>
 
-                            <input id="<?= e($table_id) ?>-bg-dead-H" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="H" autocomplete="off">
-                            <label for="<?= e($table_id) ?>-bg-dead-H" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples where only the male partner is dead.') ?>">
-                                <?= I18N::translate('Widow') ?>
-                            </label>
+                        <input id="<?= e($table_id) ?>-bg-dead-H" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="H" autocomplete="off">
+                        <label for="<?= e($table_id) ?>-bg-dead-H" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples where only the male partner is dead.') ?>">
+                            <?= I18N::translate('Widow') ?>
+                        </label>
 
-                            <input id="<?= e($table_id) ?>-bg-dead-Y" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="Y" autocomplete="off">
-                            <label for="<?= e($table_id) ?>-bg-dead-Y" class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals who are dead or couples where both partners are dead.') ?>">
-                                <?= I18N::translate('Both dead') ?>
-                            </label>
-                        </div>
-
-                        <div class="btn-group btn-group-sm" role="group">
-                            <input id="<?= e($table_id) ?>-bg-roots-R" class="btn-check" type="checkbox" data-filter-column="13" data-filter-value="R" autocomplete="off">
-                            <label for="<?= e($table_id) ?>-bg-roots-R" class="btn btn-outline-secondary" title="<?= I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') ?>">
-                                <?= I18N::translate('Roots') ?>
-                            </label>
-
-                            <input id="<?= e($table_id) ?>-bg-roots-L" class="btn-check" type="checkbox" data-filter-column="13" data-filter-value="L" autocomplete="off">
-                            <label for="<?= e($table_id) ?>-bg-roots-L" class="btn btn-outline-secondary" title="<?= I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') ?>">
-                                <?= I18N::translate('Leaves') ?>
-                            </label>
-                        </div>
-
-                        <div class="btn-group btn-group-sm" role="group">
-                            <input id="<?= e($table_id) ?>-bg-marr-U" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="U" autocomplete="off">
-                            <label for="<?= e($table_id) ?>-bg-marr-U" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples with an unknown marriage date.') ?>">
-                                <?= I18N::translate('Not married') ?>
-                            </label>
-
-                            <input id="<?= e($table_id) ?>-bg-marr-YES" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="YES" autocomplete="off">
-                            <label for="<?= e($table_id) ?>-bg-marr-YES" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples who married more than 100 years ago.') ?>">
-                                <?= I18N::translate('Marriage') ?>&gt;100
-                            </label>
-
-                            <input id="<?= e($table_id) ?>-bg-marr-Y100" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="Y100" autocomplete="off">
-                            <label for="<?= e($table_id) ?>-bg-marr-Y100" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples who married within the last 100 years.') ?>">
-                                <?= I18N::translate('Marriage') ?>&lt;=100
-                            </label>
-
-                            <input id="<?= e($table_id) ?>-bg-marr-D" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="D" autocomplete="off">
-                            <label for="<?= e($table_id) ?>-bg-marr-D" class="btn btn-outline-secondary" title="<?= I18N::translate('Show divorced couples.') ?>">
-                                <?= I18N::translate('Divorce') ?>
-                            </label>
-
-                            <input id="<?= e($table_id) ?>-bg-marr-M" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="M" autocomplete="off">
-                            <label for="<?= e($table_id) ?>-bg-marr-M" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples where either partner married more than once.') ?>">
-                                <?= I18N::translate('Multiple marriages') ?>
-                            </label>
-                        </div>
-                    </div>
-                </th>
-            </tr>
-            <tr>
-                <th><?= I18N::translate('Given names') ?></th>
-                <th><?= I18N::translate('Surname') ?></th>
-                <th><?= I18N::translate('Age') ?></th>
-                <th><?= I18N::translate('Given names') ?></th>
-                <th><?= I18N::translate('Surname') ?></th>
-                <th><?= I18N::translate('Age') ?></th>
-                <th><?= I18N::translate('Marriage') ?></th>
-                <th title="<?= I18N::translate('Anniversary') ?>">
-                    <?= view('icons/anniversary') ?>
-                </th>
-                <th><?= I18N::translate('Place') ?></th>
-                <th title="<?= I18N::translate('Children') ?>">
-                    <?= view('icons/children') ?>
-                </th>
-                <th <?= $tree->getPreference('SHOW_LAST_CHANGE')==='1' ? '' : 'hidden="hidden"'?>>
-                    <?= I18N::translate('Last change') ?>
-                </th>
-                <th hidden="hidden"></th>
-                <th hidden="hidden"></th>
-                <th hidden="hidden"></th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <?php foreach ($families as $family) : ?>
-                <?php $husb = $family->husband() ?? Registry::individualFactory()->new('H', '0 @H@ INDI', null, $family->tree()) ?>
-                <?php $wife = $family->wife() ?? Registry::individualFactory()->new('W', '0 @W@ INDI', null, $family->tree()) ?>
-
-                <tr class="<?= $family->isPendingAddition() ? 'wt-new' : '' ?> <?= $family->isPendingDeletion() ? 'wt-old' : '' ?>">
-                    <!-- Husband name -->
-                    <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $husb->sortName()))))) ?>">
-                        <?php foreach ($husb->getAllNames() as $num => $name) : ?>
-                            <?php if ($name['type'] !== '_MARNM' || $num === $husb->getPrimaryName()) : ?>
-                                <div>
-                                    <a title="<?= $name['type'] === '_MARNM' ? I18N::translate('Married name') :  '' ?>" href="<?= e($family->url()) ?>" class="<?= $num === $husb->getPrimaryName() ? '' : 'text-muted' ?>">
-                                        <?= $name['full'] ?>
-                                    </a>
-                                    <?php if ($num === $husb->getPrimaryName()) : ?>
-                                        <small><?= view('icons/sex', ['sex' => $husb->sex()]) ?></small>
-                                    <?php endif ?>
-                                </div>
-                            <?php endif ?>
-                        <?php endforeach ?>
-                        <?= view('lists/individual-table-parents', ['individual' => $husb]) ?>
-                    </td>
-
-                    <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $husb->sortName())) ?>"></td>
-
-                    <!-- Husband age -->
-                    <?php $age  = new Age($husb->getBirthDate(), $family->getMarriageDate()) ?>
-                    <td class="text-center" data-sort="<?= $age->ageDays() ?>">
-                        <?= $age->ageYearsString() ?>
-                    </td>
-
-                    <!-- Wife name -->
-                    <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $wife->sortName()))))) ?>">
-                        <?php foreach ($wife->getAllNames() as $num => $name) : ?>
-                            <?php if ($name['type'] !== '_MARNM' || $num === $wife->getPrimaryName()) : ?>
-                                <div>
-                                    <a title="<?= $name['type'] === '_MARNM' ? I18N::translate('Married name') :  '' ?>" href="<?= e($family->url()) ?>" class="<?= $num === $wife->getPrimaryName() ? '' : 'text-muted' ?>">
-                                        <?= $name['full'] ?>
-                                    </a>
-                                    <?php if ($num === $wife->getPrimaryName()) : ?>
-                                        <small><?= view('icons/sex', ['sex' => $wife->sex()]) ?></small>
-                                    <?php endif ?>
-                                </div>
-                            <?php endif ?>
-                        <?php endforeach ?>
-                        <?= view('lists/individual-table-parents', ['individual' => $wife]) ?>
-                    </td>
-
-                    <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $wife->sortName())) ?>"></td>
-
-                    <!-- Wife age -->
-                    <?php $age = new Age($wife->getBirthDate(), $family->getMarriageDate()) ?>
-                    <td class="text-center" data-sort="<?= $age->ageDays() ?>">
-                        <?= $age->ageYearsString() ?>
-                    </td>
-
-                    <!-- Marriage date -->
-                    <?php $marriage_dates = $family->getAllMarriageDates() ?>
-                    <td data-sort="<?= sprintf('x%07d', $family->getMarriageDate()->julianDay()) ?>">
-                        <?php if ($marriage_dates !== []) : ?>
-                            <?php foreach ($marriage_dates as $marriage_date) : ?>
-                                <div><?= $marriage_date->display($tree, null, true) ?></div>
-                            <?php endforeach ?>
-                        <?php elseif ($family->facts(['MARR'])->isEmpty()) : ?>
-                            <?= I18N::translate('no') ?>
-                        <?php elseif ($family->facts(['MARR'])->isNotEmpty()) : ?>
-                            <?= I18N::translate('yes') ?>
-                        <?php endif ?>
-                    </td>
-
-                    <!-- Marriage anniversary -->
-                    <?php $age = new Age($family->getMarriageDate(), $today) ?>
-                    <td class="text-center" data-sort="<?= $age->ageDays() ?>">
-                        <?= $age->ageYearsString() ?>
-                    </td>
-
-                    <!-- Marriage place -->
-                    <td data-sort="<?= e($family->getMarriagePlace()->gedcomName()) ?>">
-                        <?php foreach ($family->getAllMarriagePlaces() as $marriage_place) : ?>
-                            <div><?= $marriage_place->shortName(true) ?></div>
-                        <?php endforeach ?>
-                    </td>
-
-                    <!-- Number of children -->
-                    <td class="text-center" data-sort="<?= $family->numberOfChildren() ?>">
-                        <?= I18N::number($family->numberOfChildren()) ?>
-                    </td>
-
-                    <!-- Last change -->
-                    <td
-                        <?= $tree->getPreference('SHOW_LAST_CHANGE') === '1' ? '' : 'hidden="hidden"' ?>
-                        data-sort="<?= sprintf('x%07d', $family->lastChangeTimestamp()->timestamp()) ?>"
-                    >
-                        <?= view('components/datetime', ['timestamp' => $family->lastChangeTimestamp()]) ?>
-                    </td>
-
-                    <!-- Filter by marriage date -->
-                    <td hidden="hidden">
-                        <?php if ($family->getMarriageDate()->maximumJulianDay() > $hundred_years_ago && $family->getMarriageDate()->maximumJulianDay() <= $today_jd) : ?>
-                            Y100
-                        <?php elseif ($family->facts(['MARR'])->isNotEmpty()) : ?>
-                            YES
-                        <?php else : ?>
-                            U
-                        <?php endif ?>
-                        <?php if ($family->facts(['DIV'])->isNotEmpty()) : ?>
-                            D
-                        <?php endif ?>
-                        <?php if (count($husb->spouseFamilies()) > 1 || count($wife->spouseFamilies()) > 1) : ?>
-                            M
-                        <?php endif ?>
-                    </td>
-
-                    <!-- Filter by alive/dead -->
-                    <td hidden="hidden">
-                        <?php if ($husb->isDead() && $wife->isDead()) : ?>
-                            Y
-                        <?php endif ?>
-                        <?php if ($husb->isDead() && !$wife->isDead()) : ?>
-                            <?php if ($wife->sex() === 'F') : ?>
-                                H
-                            <?php endif ?>
-                            <?php if ($wife->sex() === 'M') : ?>
-                                W
-                            <?php endif ?>
-                        <?php endif ?>
-                        <?php if (!$husb->isDead() && $wife->isDead()) : ?>
-                            <?php if ($husb->sex() === 'M') : ?>
-                                W
-                            <?php endif ?>
-                            <?php if ($husb->sex() === 'F') : ?>
-                                H
-                            <?php endif ?>
-                        <?php endif ?>
-                        <?php if (!$husb->isDead() && !$wife->isDead()) : ?>
-                            N
-                        <?php endif ?>
-                    </td>
-
-                    <!-- Filter by roots/leaves -->
-                    <td hidden="hidden">
-                        <?php if ($husb->childFamilies()->isEmpty() && $wife->childFamilies()->isEmpty()) : ?>
-                            R
-                        <?php elseif (!$husb->isDead() && !$wife->isDead() && $family->numberOfChildren() === 0) : ?>
-                            L
-                        <?php endif ?>
-                    </td>
-                </tr>
-            <?php endforeach ?>
-        </tbody>
-
-        <tfoot>
-            <tr>
-                <th colspan="14">
-                    <div class="btn-group btn-group-sm">
-                        <input type="checkbox" class="btn-check" id="btn-toggle-parents" aria-expanded="false" autocomplete="off">
-                        <label class="btn btn-secondary" for="btn-toggle-parents">
-                            <?= I18N::translate('Show parents') ?>
+                        <input id="<?= e($table_id) ?>-bg-dead-Y" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="Y" autocomplete="off">
+                        <label for="<?= e($table_id) ?>-bg-dead-Y" class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals who are dead or couples where both partners are dead.') ?>">
+                            <?= I18N::translate('Both dead') ?>
                         </label>
                     </div>
-                </th>
+
+                    <div class="btn-group btn-group-sm" role="group">
+                        <input id="<?= e($table_id) ?>-bg-roots-R" class="btn-check" type="checkbox" data-filter-column="13" data-filter-value="R" autocomplete="off">
+                        <label for="<?= e($table_id) ?>-bg-roots-R" class="btn btn-outline-secondary" title="<?= I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') ?>">
+                            <?= I18N::translate('Roots') ?>
+                        </label>
+
+                        <input id="<?= e($table_id) ?>-bg-roots-L" class="btn-check" type="checkbox" data-filter-column="13" data-filter-value="L" autocomplete="off">
+                        <label for="<?= e($table_id) ?>-bg-roots-L" class="btn btn-outline-secondary" title="<?= I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') ?>">
+                            <?= I18N::translate('Leaves') ?>
+                        </label>
+                    </div>
+
+                    <div class="btn-group btn-group-sm" role="group">
+                        <input id="<?= e($table_id) ?>-bg-marr-U" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="U" autocomplete="off">
+                        <label for="<?= e($table_id) ?>-bg-marr-U" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples with an unknown marriage date.') ?>">
+                            <?= I18N::translate('Not married') ?>
+                        </label>
+
+                        <input id="<?= e($table_id) ?>-bg-marr-YES" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="YES" autocomplete="off">
+                        <label for="<?= e($table_id) ?>-bg-marr-YES" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples who married more than 100 years ago.') ?>">
+                            <?= I18N::translate('Marriage') ?>&gt;100
+                        </label>
+
+                        <input id="<?= e($table_id) ?>-bg-marr-Y100" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="Y100" autocomplete="off">
+                        <label for="<?= e($table_id) ?>-bg-marr-Y100" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples who married within the last 100 years.') ?>">
+                            <?= I18N::translate('Marriage') ?>&lt;=100
+                        </label>
+
+                        <input id="<?= e($table_id) ?>-bg-marr-D" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="D" autocomplete="off">
+                        <label for="<?= e($table_id) ?>-bg-marr-D" class="btn btn-outline-secondary" title="<?= I18N::translate('Show divorced couples.') ?>">
+                            <?= I18N::translate('Divorce') ?>
+                        </label>
+
+                        <input id="<?= e($table_id) ?>-bg-marr-M" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="M" autocomplete="off">
+                        <label for="<?= e($table_id) ?>-bg-marr-M" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples where either partner married more than once.') ?>">
+                            <?= I18N::translate('Multiple marriages') ?>
+                        </label>
+                    </div>
+                </div>
+            </th>
+        </tr>
+        <tr>
+            <th><?= I18N::translate('Given names') ?></th>
+            <th><?= I18N::translate('Surname') ?></th>
+            <th><?= I18N::translate('Age') ?></th>
+            <th><?= I18N::translate('Given names') ?></th>
+            <th><?= I18N::translate('Surname') ?></th>
+            <th><?= I18N::translate('Age') ?></th>
+            <th><?= I18N::translate('Marriage') ?></th>
+            <th title="<?= I18N::translate('Anniversary') ?>">
+                <?= view('icons/anniversary') ?>
+            </th>
+            <th><?= I18N::translate('Place') ?></th>
+            <th title="<?= I18N::translate('Children') ?>">
+                <?= view('icons/children') ?>
+            </th>
+            <th <?= $tree->getPreference('SHOW_LAST_CHANGE')==='1' ? '' : 'hidden="hidden"'?>>
+                <?= I18N::translate('Last change') ?>
+            </th>
+            <th hidden="hidden"></th>
+            <th hidden="hidden"></th>
+            <th hidden="hidden"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php foreach ($families as $family) : ?>
+            <?php $husb = $family->husband() ?? Registry::individualFactory()->new('H', '0 @H@ INDI', null, $family->tree()) ?>
+            <?php $wife = $family->wife() ?? Registry::individualFactory()->new('W', '0 @W@ INDI', null, $family->tree()) ?>
+
+            <tr class="<?= $family->isPendingAddition() ? 'wt-new' : '' ?> <?= $family->isPendingDeletion() ? 'wt-old' : '' ?>">
+                <!-- Husband name -->
+                <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $husb->sortName()))))) ?>">
+                    <?php foreach ($husb->getAllNames() as $num => $name) : ?>
+                        <?php if ($name['type'] !== '_MARNM' || $num === $husb->getPrimaryName()) : ?>
+                            <div>
+                                <a title="<?= $name['type'] === '_MARNM' ? I18N::translate('Married name') :  '' ?>" href="<?= e($family->url()) ?>" class="<?= $num === $husb->getPrimaryName() ? '' : 'text-muted' ?>">
+                                    <?= $name['full'] ?>
+                                </a>
+                                <?php if ($num === $husb->getPrimaryName()) : ?>
+                                    <small><?= view('icons/sex', ['sex' => $husb->sex()]) ?></small>
+                                <?php endif ?>
+                            </div>
+                        <?php endif ?>
+                    <?php endforeach ?>
+                    <?= view('lists/individual-table-parents', ['individual' => $husb]) ?>
+                </td>
+
+                <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $husb->sortName())) ?>"></td>
+
+                <!-- Husband age -->
+                <?php $age  = new Age($husb->getBirthDate(), $family->getMarriageDate()) ?>
+                <td class="text-center" data-sort="<?= $age->ageDays() ?>">
+                    <?= $age->ageYearsString() ?>
+                </td>
+
+                <!-- Wife name -->
+                <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $wife->sortName()))))) ?>">
+                    <?php foreach ($wife->getAllNames() as $num => $name) : ?>
+                        <?php if ($name['type'] !== '_MARNM' || $num === $wife->getPrimaryName()) : ?>
+                            <div>
+                                <a title="<?= $name['type'] === '_MARNM' ? I18N::translate('Married name') :  '' ?>" href="<?= e($family->url()) ?>" class="<?= $num === $wife->getPrimaryName() ? '' : 'text-muted' ?>">
+                                    <?= $name['full'] ?>
+                                </a>
+                                <?php if ($num === $wife->getPrimaryName()) : ?>
+                                    <small><?= view('icons/sex', ['sex' => $wife->sex()]) ?></small>
+                                <?php endif ?>
+                            </div>
+                        <?php endif ?>
+                    <?php endforeach ?>
+                    <?= view('lists/individual-table-parents', ['individual' => $wife]) ?>
+                </td>
+
+                <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $wife->sortName())) ?>"></td>
+
+                <!-- Wife age -->
+                <?php $age = new Age($wife->getBirthDate(), $family->getMarriageDate()) ?>
+                <td class="text-center" data-sort="<?= $age->ageDays() ?>">
+                    <?= $age->ageYearsString() ?>
+                </td>
+
+                <!-- Marriage date -->
+                <?php $marriage_dates = $family->getAllMarriageDates() ?>
+                <td data-sort="<?= sprintf('x%07d', $family->getMarriageDate()->julianDay()) ?>">
+                    <?php if ($marriage_dates !== []) : ?>
+                        <?php foreach ($marriage_dates as $marriage_date) : ?>
+                            <div><?= $marriage_date->display($tree, null, true) ?></div>
+                        <?php endforeach ?>
+                    <?php elseif ($family->facts(['MARR'])->isEmpty()) : ?>
+                        <?= I18N::translate('no') ?>
+                    <?php elseif ($family->facts(['MARR'])->isNotEmpty()) : ?>
+                        <?= I18N::translate('yes') ?>
+                    <?php endif ?>
+                </td>
+
+                <!-- Marriage anniversary -->
+                <?php $age = new Age($family->getMarriageDate(), $today) ?>
+                <td class="text-center" data-sort="<?= $age->ageDays() ?>">
+                    <?= $age->ageYearsString() ?>
+                </td>
+
+                <!-- Marriage place -->
+                <td data-sort="<?= e($family->getMarriagePlace()->gedcomName()) ?>">
+                    <?php foreach ($family->getAllMarriagePlaces() as $marriage_place) : ?>
+                        <div><?= $marriage_place->shortName(true) ?></div>
+                    <?php endforeach ?>
+                </td>
+
+                <!-- Number of children -->
+                <td class="text-center" data-sort="<?= $family->numberOfChildren() ?>">
+                    <?= I18N::number($family->numberOfChildren()) ?>
+                </td>
+
+                <!-- Last change -->
+                <td
+                    <?= $tree->getPreference('SHOW_LAST_CHANGE') === '1' ? '' : 'hidden="hidden"' ?>
+                    data-sort="<?= sprintf('x%07d', $family->lastChangeTimestamp()->timestamp()) ?>"
+                >
+                    <?= view('components/datetime', ['timestamp' => $family->lastChangeTimestamp()]) ?>
+                </td>
+
+                <!-- Filter by marriage date -->
+                <td hidden="hidden">
+                    <?php if ($family->getMarriageDate()->maximumJulianDay() > $hundred_years_ago && $family->getMarriageDate()->maximumJulianDay() <= $today_jd) : ?>
+                        Y100
+                    <?php elseif ($family->facts(['MARR'])->isNotEmpty()) : ?>
+                        YES
+                    <?php else : ?>
+                        U
+                    <?php endif ?>
+                    <?php if ($family->facts(['DIV'])->isNotEmpty()) : ?>
+                        D
+                    <?php endif ?>
+                    <?php if (count($husb->spouseFamilies()) > 1 || count($wife->spouseFamilies()) > 1) : ?>
+                        M
+                    <?php endif ?>
+                </td>
+
+                <!-- Filter by alive/dead -->
+                <td hidden="hidden">
+                    <?php if ($husb->isDead() && $wife->isDead()) : ?>
+                        Y
+                    <?php endif ?>
+                    <?php if ($husb->isDead() && !$wife->isDead()) : ?>
+                        <?php if ($wife->sex() === 'F') : ?>
+                            H
+                        <?php endif ?>
+                        <?php if ($wife->sex() === 'M') : ?>
+                            W
+                        <?php endif ?>
+                    <?php endif ?>
+                    <?php if (!$husb->isDead() && $wife->isDead()) : ?>
+                        <?php if ($husb->sex() === 'M') : ?>
+                            W
+                        <?php endif ?>
+                        <?php if ($husb->sex() === 'F') : ?>
+                            H
+                        <?php endif ?>
+                    <?php endif ?>
+                    <?php if (!$husb->isDead() && !$wife->isDead()) : ?>
+                        N
+                    <?php endif ?>
+                </td>
+
+                <!-- Filter by roots/leaves -->
+                <td hidden="hidden">
+                    <?php if ($husb->childFamilies()->isEmpty() && $wife->childFamilies()->isEmpty()) : ?>
+                        R
+                    <?php elseif (!$husb->isDead() && !$wife->isDead() && $family->numberOfChildren() === 0) : ?>
+                        L
+                    <?php endif ?>
+                </td>
             </tr>
-        </tfoot>
-    </table>
-</div>
+        <?php endforeach ?>
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <th colspan="14">
+                <div class="btn-group btn-group-sm">
+                    <input type="checkbox" class="btn-check" id="btn-toggle-parents" aria-expanded="false" autocomplete="off">
+                    <label class="btn btn-secondary" for="btn-toggle-parents">
+                        <?= I18N::translate('Show parents') ?>
+                    </label>
+                </div>
+            </th>
+        </tr>
+    </tfoot>
+</table>

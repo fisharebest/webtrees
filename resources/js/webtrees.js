@@ -21,16 +21,22 @@ import {
   confirmDialog,
   createDialogModal,
   getWebtreesGlobal,
+  hideElements,
   httpGet,
   httpPost,
   i18n,
+  initializeClippingsDownloadPage,
+  initializeDatatables,
   initializeGallery,
   initializeWebtreesPage,
+  initializeWhenReady,
+  onDocumentReady,
   pasteAtCursor,
   persistentToggle,
   reformatLatitude,
   reformatLongitude,
   setColorTheme,
+  showElements,
   textareaPatterns,
   watchForColorThemeChanges,
 } from './webtrees/index';
@@ -67,14 +73,20 @@ const webtrees = getWebtreesGlobal(window);
   webtrees.buildLeafletJsMap = buildLeafletJsMap;
   webtrees.confirmDialog = confirmDialog;
   webtrees.createDialogModal = createDialogModal;
+  webtrees.initializeWhenReady = initializeWhenReady;
+  webtrees.onDocumentReady = onDocumentReady;
   webtrees.pasteAtCursor = pasteAtCursor;
   webtrees.persistentToggle = persistentToggle;
+  webtrees.hideElements = hideElements;
   webtrees.reformatLatitude = reformatLatitude;
   webtrees.reformatLongitude = reformatLongitude;
+  webtrees.showElements = showElements;
   webtrees.textareaPatterns = textareaPatterns;
   webtrees.setColorTheme = setColorTheme;
   webtrees.watchForColorThemeChanges = watchForColorThemeChanges;
+  webtrees.initializeDatatables = initializeDatatables;
   webtrees.initializeGallery = initializeGallery;
+  webtrees.initializeClippingsDownloadPage = initializeClippingsDownloadPage;
 
   /**
    * Simple replacement for jQuery().load() - fetch HTML, insert into an element, and execute any scripts.
@@ -607,7 +619,7 @@ const webtrees = getWebtreesGlobal(window);
         render: {
           item: (data, escape) => '<div>' + data.text + '</div>',
           option: (data, escape) => '<div>' + data.text + '</div>',
-          no_results: (data, escape) => '<div class="no-results">' + element.dataset.wtI18nNoResults + '</div>',
+          no_results: (data, escape) => '<div class="no-results">' + i18n.get('No results found') + '</div>',
         },
         firstUrl: query => element.dataset.wtUrl + '&query=' + encodeURIComponent(query),
         load: function (query, callback) {
@@ -719,12 +731,16 @@ const webtrees = getWebtreesGlobal(window);
 initializeWebtreesPage({
   confirmDialog: webtrees.confirmDialog,
   httpPost: webtrees.httpPost,
+  initializeClippingsDownloadPage: webtrees.initializeClippingsDownloadPage,
+  initializeDatatables: webtrees.initializeDatatables,
   initializeGallery: webtrees.initializeGallery,
   initializeTomSelect: webtrees.initializeTomSelect,
   load: webtrees.load,
+  hideElements: webtrees.hideElements,
   pasteAtCursor: webtrees.pasteAtCursor,
   persistentToggle: webtrees.persistentToggle,
   resetTomSelect: webtrees.resetTomSelect,
   setColorTheme: webtrees.setColorTheme,
+  showElements: webtrees.showElements,
   watchForColorThemeChanges: webtrees.watchForColorThemeChanges,
 });

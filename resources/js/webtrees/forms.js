@@ -1,3 +1,5 @@
+import { requireDatasetValue, requireElement } from './dom';
+
 /**
  * webtrees: online genealogy
  * Copyright (C) 2026 webtrees development team
@@ -95,6 +97,45 @@ export function textareaPatterns(form) {
         element.classList.remove('is-invalid');
       }
     });
+  });
+}
+
+/**
+ * Initialize format/extension UI blocks.
+ *
+ * Each block should contain radios named "format" with data-wt-extension,
+ * and an element marked with data-wt-format-extension.
+ *
+ * @param {ParentNode} root
+ */
+export function initializeFormatExtensions(root = document) {
+  root.querySelectorAll('[data-wt-format-options]').forEach((container) => {
+    if (!(container instanceof HTMLElement)) {
+      return;
+    }
+
+    const extension = requireElement(container, '[data-wt-format-extension]', HTMLElement, 'format extension target');
+    const formatRadios = container.querySelectorAll('[name="format"]');
+
+    if (formatRadios.length === 0) {
+      throw new Error('Expected at least one format radio in format options container.');
+    }
+
+    const updateExtension = () => {
+      const selectedFormat = requireElement(container, '[name="format"]:checked', HTMLInputElement, 'selected format radio');
+      extension.innerText = requireDatasetValue(selectedFormat, 'wtExtension', 'format extension value');
+    };
+
+    formatRadios.forEach((element) => {
+      if (!(element instanceof HTMLInputElement)) {
+        throw new Error('Expected format controls to be input elements.');
+      }
+
+      element.addEventListener('change', updateExtension);
+    });
+
+    // Firefox may restore radio state when navigating back.
+    updateExtension();
   });
 }
 

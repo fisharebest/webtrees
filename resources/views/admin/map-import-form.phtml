@@ -6,7 +6,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataImportAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var array<string> $files
@@ -20,16 +19,17 @@ use Fisharebest\Webtrees\View;
 
 <h3><?= $title ?></h3>
 
-<form method="post" action="<?= e(route(MapDataImportAction::class)) ?>" id="upload_form" enctype="multipart/form-data">
-    <div class="row mb-3">
-        <label class="col-form-label col-sm-4">
-            <input type="radio" name="source" id="import-client" value="client" checked>
-            <?= I18N::translate('A file on your computer') ?>
-        </label>
-        <div class="col-sm-8">
-            <input id="import-client-file" type="file" name="client_file" class="form-control">
+<div id="admin-map-import-form-page">
+    <form method="post" action="<?= e(route(MapDataImportAction::class)) ?>" id="upload_form" enctype="multipart/form-data">
+        <div class="row mb-3">
+            <label class="col-form-label col-sm-4">
+                <input type="radio" name="source" id="import-client" value="client" checked>
+                <?= I18N::translate('A file on your computer') ?>
+            </label>
+            <div class="col-sm-8">
+                <input id="import-client-file" type="file" name="client_file" class="form-control">
+            </div>
         </div>
-    </div>
 
     <div class="row mb-3">
         <label class="col-form-label col-sm-4">
@@ -78,17 +78,7 @@ use Fisharebest\Webtrees\View;
         </div>
     </div>
 
-    <?= csrf_field() ?>
-</form>
+        <?= csrf_field() ?>
+    </form>
+</div>
 
-<?php View::push('javascript') ?>
-<script>
-  document.getElementById('import-client-file').addEventListener('focus', function () {
-    document.getElementById('import-client').checked = true;
-  });
-
-  document.getElementById('import-server-file').addEventListener('focus', function () {
-    document.getElementById('import-server').checked = true;
-  });
-</script>
-<?php View::endpush() ?>

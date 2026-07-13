@@ -12,65 +12,36 @@ use Fisharebest\Webtrees\I18N;
  */
 
 ?>
-<?php use Fisharebest\Webtrees\View; ?>
 
 <?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
-<p>
-    <?= I18N::translate('If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location.') ?>
-</p>
+<div id="admin-fix-level-0-media-page">
+    <p>
+        <?= I18N::translate('If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location.') ?>
+    </p>
 
-<table
-    id="wt-datatables-fix-level-0-media"
-    class="table table-bordered table-sm table-hover wt-fix-table datatables d-none"
-    <?= view('lists/datatables-attributes') ?>
-    data-ajax="<?= e(json_encode(['url' => route(FixLevel0MediaData::class), 'type' => 'POST'], JSON_THROW_ON_ERROR)) ?>"
-    data-server-side="true"
->
-    <caption class="visually-hidden">
-        <?= I18N::translate('Media objects') ?>
-    </caption>
-    <thead class="thead-dark">
-        <tr>
-            <th data-sortable="false"><?= I18N::translate('Family tree') ?></th>
-            <th data-sortable="false"><?= I18N::translate('Media object') ?></th>
-            <th data-sortable="false"><?= I18N::translate('Title') ?></th>
-            <th data-sortable="false"><?= I18N::translate('Individual') ?></th>
-            <th data-sortable="false"><?= I18N::translate('Facts and events') ?></th>
-        </tr>
-    </thead>
-</table>
+    <table
+        id="wt-datatables-fix-level-0-media"
+        class="table table-bordered table-sm table-hover wt-fix-table wt-datatables d-none"
+        <?= view('lists/datatables-attributes') ?>
+        data-ajax="<?= e(json_encode(['url' => route(FixLevel0MediaData::class), 'type' => 'POST'], JSON_THROW_ON_ERROR)) ?>"
+        data-wt-fix-action-url="<?= e(route(FixLevel0MediaAction::class)) ?>"
+        data-server-side="true"
+    >
+        <caption class="visually-hidden">
+            <?= I18N::translate('Media objects') ?>
+        </caption>
+        <thead class="thead-dark">
+            <tr>
+                <th data-sortable="false"><?= I18N::translate('Family tree') ?></th>
+                <th data-sortable="false"><?= I18N::translate('Media object') ?></th>
+                <th data-sortable="false"><?= I18N::translate('Title') ?></th>
+                <th data-sortable="false"><?= I18N::translate('Individual') ?></th>
+                <th data-sortable="false"><?= I18N::translate('Facts and events') ?></th>
+            </tr>
+        </thead>
+    </table>
+</div>
 
-<?php View::push('javascript') ?>
-<script>
-  'use strict';
-
-  // If we click on a button, post the request and reload the table
-  document.querySelector(".wt-fix-table").onclick = function (event) {
-    let element = event.target;
-    if (element.classList.contains("wt-fix-button")) {
-      event.stopPropagation();
-      webtrees.confirmDialog(element.dataset.confirm).then(function (confirmed) {
-        if (!confirmed) {
-          return;
-        }
-
-        $.ajax({
-          data: {
-            "fact_id":   element.dataset.factId,
-            "indi_xref": element.dataset.individualXref,
-            "obje_xref": element.dataset.mediaXref,
-            "tree_id":   element.dataset.treeId
-          },
-          method: "POST",
-          url: <?= json_encode(route(FixLevel0MediaAction::class), JSON_THROW_ON_ERROR) ?>
-        }).done(function () {
-          $(".wt-fix-table").DataTable().ajax.reload(null, false);
-        });
-      });
-    }
-  };
-</script>
-<?php View::endpush() ?>

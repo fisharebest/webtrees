@@ -96,7 +96,7 @@ function resolvePending(value) {
  */
 export function confirmDialog(message) {
   if (pending_resolver !== null) {
-    return Promise.resolve(false);
+    return Promise.reject(new Error('A confirmation dialog is already open.'));
   }
 
   const modal = getConfirmModal();

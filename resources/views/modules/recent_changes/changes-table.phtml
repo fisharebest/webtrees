@@ -14,7 +14,6 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Timestamp;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -30,7 +29,7 @@ use Illuminate\Support\Collection;
 <div class="table-responsive">
     <table
         id="wt-datatables-changes"
-        class="table table-sm wt-table-changes datatables d-none"
+        class="table table-sm wt-table-changes wt-datatables d-none"
         <?= view('lists/datatables-attributes') ?>
         data-paging="<?= $rows->count() >= $limit_high ? 'true' : 'false' ?>"
         data-filter="false"
@@ -105,8 +104,3 @@ use Illuminate\Support\Collection;
     </table>
 </div>
 
-<?php View::push('javascript') ?>
-<script>
-  $(".wt-table-changes").dataTable().removeClass("d-none");
-</script>
-<?php View::endpush() ?>

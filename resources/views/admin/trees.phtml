@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -44,11 +43,12 @@ use Illuminate\Support\Collection;
 
 <h1><?= $title ?></h1>
 
-<?php if ($all_trees->isEmpty()) : ?>
-    <div class="alert alert-info">
-        <?= I18N::translate('You need to create a family tree.') ?>
-    </div>
-<?php endif ?>
+<div id="admin-trees-page">
+    <?php if ($all_trees->isEmpty()) : ?>
+        <div class="alert alert-info">
+            <?= I18N::translate('You need to create a family tree.') ?>
+        </div>
+    <?php endif ?>
 
 <div id="accordion" aria-multiselectable="true">
     <?php foreach ($all_trees as $managed_tree) : ?>
@@ -67,18 +67,17 @@ use Illuminate\Support\Collection;
                     <div class="accordion-body">
                         <?php $importing = DB::table('gedcom_chunk')->where('gedcom_id', '=', $managed_tree->id())->where('imported', '=', 0)->exists() ?>
                         <?php if ($importing) : ?>
-                            <div id="import<?= $managed_tree->id() ?>" class="col-12">
+                            <div
+                                id="import<?= $managed_tree->id() ?>"
+                                class="col-12"
+                                data-wt-import-progress-url="<?= e(route(GedcomLoad::class, ['tree' => $managed_tree->name()])) ?>"
+                            >
                                 <div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar">
                                         <?= I18N::translate('Calculating…') ?>
                                     </div>
                                 </div>
                             </div>
-                            <?php View::push('javascript'); ?>
-                                <script>
-                                    $("#import<?= $managed_tree->id() ?>").load("<?= route(GedcomLoad::class, ['tree' => $managed_tree->name()]) ?>", {});
-                                </script>
-                                <?php View::endpush() ?>
                         <?php endif ?>
                         <div class="row<?= $importing ? ' d-none' : '' ?>" id="actions<?= $managed_tree->id() ?>">
                             <div class="col-sm-6 col-md-3">
@@ -127,11 +126,11 @@ use Illuminate\Support\Collection;
                                             <?php if ($managed_tree->name() === Site::getPreference('DEFAULT_GEDCOM')) : ?>
                                                 <?= I18N::translate('Default family tree') ?>
                                             <?php else : ?>
-                                                <a href="#" onclick="document.defaultform<?= $managed_tree->id() ?>.submit();">
+                                                <a href="#" data-wt-submit-form="defaultform<?= $managed_tree->id() ?>">
                                                     <?= I18N::translate('Set as default') ?>
                                                     <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                                 </a>
-                                                <form method="post" action="<?= route(SelectDefaultTree::class, ['tree' => $managed_tree->name()]) ?>" name="defaultform<?= $managed_tree->id() ?>">
+                                                <form id="defaultform<?= $managed_tree->id() ?>" method="post" action="<?= route(SelectDefaultTree::class, ['tree' => $managed_tree->name()]) ?>" name="defaultform<?= $managed_tree->id() ?>">
                                                     <!-- A11Y - forms need submit buttons, but they look ugly here -->
                                                     <button class="visually-hidden" type="submit">
                                                         <?= I18N::translate('Set as default') ?>
@@ -298,6 +297,8 @@ use Illuminate\Support\Collection;
             </div>
         <?php endif ?>
     <?php endforeach ?>
+</div>
+
 </div>
 
 <?= view('modals/ajax') ?>

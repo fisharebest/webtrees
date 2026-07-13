@@ -113,7 +113,7 @@ use Illuminate\Support\Collection;
 
 <table
     id="wt-datatables-admin-logs"
-    class="table table-bordered table-sm table-hover table-site-logs datatables"
+    class="table table-bordered table-sm table-hover table-site-logs wt-datatables"
     <?= view('lists/datatables-attributes') ?>
     data-ajax='{"url":"<?= e(route(SiteLogsData::class, ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'tree' => $tree])) ?>","type":"POST"}'
     data-server-side="true"

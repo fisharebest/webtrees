@@ -53,7 +53,7 @@ table.dataTable {
 }
 
 /* Don't right-align column headings of numeric data. */
-table.datatables > thead > tr > th.dt-type-numeric {
+table.wt-datatables > thead > tr > th.dt-type-numeric {
     text-align: inherit;
 }
 

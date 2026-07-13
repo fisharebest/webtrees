@@ -11,7 +11,6 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -31,6 +30,7 @@ use Illuminate\Support\Collection;
 
 <h1><?= $title ?></h1>
 
+<div id="admin-components-page">
 <p><?= $description ?></p>
 
 <form method="post">
@@ -172,19 +172,5 @@ use Illuminate\Support\Collection;
 
     <?= csrf_field() ?>
 </form>
+</div>
 
-<?php View::push('javascript') ?>
-<script>
-  $('.wt-table-components td.move').click(function () {
-    let row = $(this).closest('tr');
-
-    if ($(this).hasClass('up')) {
-      row.prev().before(row);
-    } else {
-      row.next().after(row);
-    }
-
-    return false;
-  });
-</script>
-<?php View::endpush() ?>

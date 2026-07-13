@@ -14,6 +14,8 @@
  */
 
 import { autocomplete } from './autocomplete';
+import { onDocumentReady } from './dom';
+import { initializeOnScreenKeyboard } from './on-screen-keyboard';
 
 /**
  * Register global initialization handlers.
@@ -24,13 +26,17 @@ export function initializeWebtreesPage(dependencies) {
   const {
     confirmDialog,
     httpPost,
+    initializeClippingsDownloadPage,
+    initializeDatatables,
     initializeGallery,
     initializeTomSelect,
     load,
+    hideElements,
     pasteAtCursor,
     persistentToggle,
     resetTomSelect,
     setColorTheme,
+    showElements,
     watchForColorThemeChanges,
   } = dependencies;
 
@@ -41,8 +47,9 @@ export function initializeWebtreesPage(dependencies) {
     }
   });
 
-  // Runtime contract: page-level behavior is initialized from this single DOMContentLoaded hook.
-  document.addEventListener('DOMContentLoaded', function () {
+  initializeDatatables();
+
+  onDocumentReady(function () {
     // Set light/dark mode
     if (document.documentElement.dataset.bsTheme === 'auto') {
       setColorTheme();
@@ -54,6 +61,8 @@ export function initializeWebtreesPage(dependencies) {
     document.querySelectorAll('[data-wt-ajax-url]').forEach(function (element) {
       load(element, element.dataset.wtAjaxUrl);
     });
+
+    initializeClippingsDownloadPage();
 
     // Autocomplete
     autocomplete('input[data-wt-autocomplete-url]');
@@ -71,52 +80,12 @@ export function initializeWebtreesPage(dependencies) {
         });
       });
 
-    // Datatables - locale-aware sorting
-    DataTable.ext.oSort['text-asc'] = (x, y) => x.localeCompare(y, document.documentElement.lang, { sensitivity: 'base' });
-    DataTable.ext.oSort['text-desc'] = (x, y) => y.localeCompare(x, document.documentElement.lang, { sensitivity: 'base' });
-
-    // DataTables - start hidden to prevent FOUC.
-    document.querySelectorAll('table.datatables').forEach(function (element) {
-      new DataTable(element);
-      element.classList.remove('d-none');
-    });
 
     // Save button/checkbox state between pages
     document.querySelectorAll('[data-wt-persist]')
       .forEach((element) => persistentToggle(element));
 
-    // Activate the on-screen keyboard
-    let osk_focus_element;
-    $('.wt-osk-trigger').on('click', function () {
-      // When a user clicks the icon, set focus to the corresponding input
-      osk_focus_element = document.getElementById(this.dataset.wtId);
-      osk_focus_element.focus();
-      $('.wt-osk').show();
-    });
-    $('.wt-osk-script-button').on('change', function () {
-      $('.wt-osk-script').prop('hidden', true);
-      $('.wt-osk-script-' + this.dataset.wtOskScript).prop('hidden', false);
-    });
-    $('.wt-osk-shift-button').on('click', function () {
-      document.querySelector('.wt-osk-keys').classList.toggle('shifted');
-    });
-    $('.wt-osk-keys').on('click', '.wt-osk-key', function () {
-      let key = $(this).contents().get(0).nodeValue;
-      let shift_state = $('.wt-osk-shift-button').hasClass('active');
-      let shift_key = $('sup', this)[0];
-      if (shift_state && shift_key !== undefined) {
-        key = shift_key.innerText;
-      }
-      pasteAtCursor(osk_focus_element, key);
-      if ($('.wt-osk-pin-button').hasClass('active') === false) {
-        $('.wt-osk').hide();
-      }
-      osk_focus_element.dispatchEvent(new Event('input'));
-    });
-
-    $('.wt-osk-close').on('click', function () {
-      $('.wt-osk').hide();
-    });
+    initializeOnScreenKeyboard({ hideElements, pasteAtCursor, showElements });
   });
 
   // Prevent form re-submission via accidental double-click.
@@ -130,6 +99,91 @@ export function initializeWebtreesPage(dependencies) {
     }
   });
 
+  /**
+   * @param {MouseEvent} event
+   * @param {HTMLAnchorElement|HTMLButtonElement} target
+   * @returns {Promise<boolean>}
+   */
+  const handleConfirmClick = async (event, target) => {
+    const skip_confirm = target.dataset.wtConfirmBypass === '1';
+
+    if (skip_confirm) {
+      delete target.dataset.wtConfirmBypass;
+    }
+
+    if (!('wtConfirm' in target.dataset) || skip_confirm) {
+      return false;
+    }
+
+    event.preventDefault();
+
+    const confirmed = await confirmDialog(target.dataset.wtConfirm);
+
+    if (!confirmed) {
+      return true;
+    }
+
+    if (target instanceof HTMLButtonElement && target.type === 'submit' && target.form !== null) {
+      target.form.requestSubmit(target);
+    } else {
+      target.dataset.wtConfirmBypass = '1';
+      target.click();
+    }
+
+    return true;
+  };
+
+  /**
+   * @param {MouseEvent} event
+   * @param {HTMLAnchorElement|HTMLButtonElement} target
+   */
+  const handlePostClick = (event, target) => {
+    if (!('wtPostUrl' in target.dataset)) {
+      return;
+    }
+
+    event.preventDefault();
+
+    httpPost(target.dataset.wtPostUrl).then(() => {
+      if ('wtReloadUrl' in target.dataset) {
+        // Go somewhere else. e.g. the home page after logout.
+        document.location = target.dataset.wtReloadUrl;
+      } else {
+        // Reload the current page. e.g. change language.
+        document.location.reload();
+      }
+    }).catch((error) => {
+      alert(error);
+    });
+  };
+
+  /**
+   * @param {MouseEvent} event
+   * @param {HTMLAnchorElement|HTMLButtonElement} target
+   */
+  const handleFullscreenClick = (event, target) => {
+    if (!('wtFullscreen' in target.dataset)) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const element = target.closest(target.dataset.wtFullscreen);
+
+    if (element === null) {
+      throw new Error('Fullscreen target element not found for selector: ' + target.dataset.wtFullscreen);
+    }
+
+    if (document.fullscreenElement === element) {
+      document.exitFullscreen()
+        .catch((error) => alert(error));
+    } else {
+      element.requestFullscreen()
+        .catch((error) => alert(error));
+    }
+  };
+
   // Convert data-wt-* attributes into useful behavior.
   document.addEventListener('click', async (event) => {
     const target = event.target.closest('a,button');
@@ -138,61 +192,16 @@ export function initializeWebtreesPage(dependencies) {
       return;
     }
 
-    const skip_confirm = target.dataset.wtConfirmBypass === '1';
-
-    if (skip_confirm) {
-      delete target.dataset.wtConfirmBypass;
-    }
-
-    if ('wtConfirm' in target.dataset && !skip_confirm) {
-      event.preventDefault();
-
-      const confirmed = await confirmDialog(target.dataset.wtConfirm);
-
-      if (!confirmed) {
-        return;
-      }
-
-      if (target instanceof HTMLButtonElement && target.type === 'submit' && target.form !== null) {
-        target.form.requestSubmit(target);
-      } else {
-        target.dataset.wtConfirmBypass = '1';
-        target.click();
-      }
-
+    if (await handleConfirmClick(event, target)) {
       return;
     }
 
-    if ('wtPostUrl' in target.dataset) {
-      event.preventDefault();
-
-      httpPost(target.dataset.wtPostUrl).then(() => {
-        if ('wtReloadUrl' in target.dataset) {
-          // Go somewhere else. e.g. the home page after logout.
-          document.location = target.dataset.wtReloadUrl;
-        } else {
-          // Reload the current page. e.g. change language.
-          document.location.reload();
-        }
-      }).catch((error) => {
-        alert(error);
-      });
+    if ('wtPostUrl' in target.dataset && 'wtFullscreen' in target.dataset) {
+      throw new Error('Element cannot use both data-wt-post-url and data-wt-fullscreen.');
     }
 
-    if (('wtFullscreen' in target.dataset)) {
-      event.preventDefault();
-      event.stopPropagation();
-
-      const element = target.closest(target.dataset.wtFullscreen);
-
-      if (document.fullscreenElement === element) {
-        document.exitFullscreen()
-          .catch((error) => alert(error));
-      } else {
-        element.requestFullscreen()
-          .catch((error) => alert(error));
-      }
-    }
+    handlePostClick(event, target);
+    handleFullscreenClick(event, target);
   });
 }
 

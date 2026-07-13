@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -19,7 +18,7 @@ use Illuminate\Support\Collection;
 
 <div class="table-responsive">
     <table
-        class="table table-sm datatable wt-table-events"
+        class="table table-sm wt-datatables wt-table-events"
         <?= view('lists/datatables-attributes') ?>
         data-paging="<?= $facts->count() >= $limit_high ? 'true' : 'false' ?>"
         data-filter="false"
@@ -72,8 +71,3 @@ use Illuminate\Support\Collection;
     </table>
 </div>
 
-<?php View::push('javascript') ?>
-<script>
-  $(".wt-table-events").dataTable();
-</script>
-<?php View::endpush() ?>

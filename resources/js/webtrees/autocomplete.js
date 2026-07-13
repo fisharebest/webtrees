@@ -35,9 +35,14 @@ export function autocomplete(selector) {
             const symbol = (url.indexOf('?') > 0) ? '&' : '?';
             if (that.dataset.wtAutocompleteExtra === 'SOUR') {
               let row_group = that.closest('.wt-nested-edit-fields').previousElementSibling;
-              while (row_group.querySelector('select') === null) {
+              while (row_group !== null && row_group.querySelector('select') === null) {
                 row_group = row_group.previousElementSibling;
               }
+
+              if (row_group === null) {
+                throw new Error('SOUR autocomplete failed: could not find the source selector field.');
+              }
+
               const element = row_group.querySelector('select');
               const extra = element.options[element.selectedIndex].value.replace(/@/g, '');
               return url + symbol + 'query=' + uriEncodedQuery + '&extra=' + encodeURIComponent(extra);

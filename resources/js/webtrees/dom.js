@@ -20,14 +20,24 @@
  * @param {string} text
  */
 export function pasteAtCursor(element, text) {
-  if (element !== null) {
-    const caretPos = element.selectionStart + text.length;
-    const textBefore = element.value.substring(0, element.selectionStart);
-    const textAfter = element.value.substring(element.selectionEnd);
-    element.value = textBefore + text + textAfter;
-    element.setSelectionRange(caretPos, caretPos);
-    element.focus();
+  if (element === null) {
+    return;
   }
+
+  if (!(element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement)) {
+    console.warn('pasteAtCursor() expects an input or textarea element.', element);
+    return;
+  }
+
+  const selectionStart = element.selectionStart ?? element.value.length;
+  const selectionEnd = element.selectionEnd ?? selectionStart;
+  const caretPos = selectionStart + text.length;
+  const textBefore = element.value.substring(0, selectionStart);
+  const textAfter = element.value.substring(selectionEnd);
+
+  element.value = textBefore + text + textAfter;
+  element.setSelectionRange(caretPos, caretPos);
+  element.focus();
 }
 
 /**
@@ -75,5 +85,97 @@ export function setColorTheme() {
  */
 export function watchForColorThemeChanges() {
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => setColorTheme());
+}
+
+/**
+ * Run a callback once the document is ready.
+ *
+ * @param {() => void} callback
+ */
+export function onDocumentReady(callback) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', callback, { once: true });
+  } else {
+    callback();
+  }
+}
+
+/**
+ * Run initialization when the document is ready, then watch for AJAX-inserted fragments.
+ *
+ * @param {() => void} callback
+ */
+export function initializeWhenReady(callback) {
+  onDocumentReady(() => {
+    callback();
+
+    const observer = new MutationObserver(() => callback());
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
+}
+
+/**
+ * Require exactly one matching element of the expected type under a root element.
+ *
+ * @param {ParentNode} root
+ * @param {string} selector
+ * @param {typeof Element} type
+ * @param {string} description
+ * @returns {Element}
+ */
+export function requireElement(root, selector, type, description) {
+  const elements = root.querySelectorAll(selector);
+
+  if (elements.length !== 1) {
+    throw new Error('Expected exactly one ' + description + '.');
+  }
+
+  const element = elements[0];
+
+  if (!(element instanceof type)) {
+    throw new Error('Invalid element type for ' + description + '.');
+  }
+
+  return element;
+}
+
+/**
+ * Require a dataset value from an element.
+ *
+ * @param {HTMLElement} element
+ * @param {string} key
+ * @param {string} description
+ * @returns {string}
+ */
+export function requireDatasetValue(element, key, description) {
+  const value = element.dataset[key];
+
+  if (value === undefined || value === '') {
+    throw new Error('Missing required dataset value for ' + description + '.');
+  }
+
+  return value;
+}
+
+/**
+ * Show a list of elements by clearing inline display style.
+ *
+ * @param {Iterable<Element>} elements
+ */
+export function showElements(elements) {
+  for (const element of elements) {
+    element.style.removeProperty('display');
+  }
+}
+
+/**
+ * Hide a list of elements using inline display style.
+ *
+ * @param {Iterable<Element>} elements
+ */
+export function hideElements(elements) {
+  for (const element of elements) {
+    element.style.display = 'none';
+  }
 }
 
