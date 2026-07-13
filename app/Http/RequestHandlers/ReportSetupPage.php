@@ -118,7 +118,7 @@ final class ReportSetupPage implements RequestHandlerInterface
                         'type'     => 'text',
                         'value'    => $input->default,
                         'dir'      => 'ltr',
-                        'onchange' => 'webtrees.reformatDate(this, "' . $dmy . '")',
+                        'data-wt-reformat-date-order' => $dmy,
                     ];
                     $control    = '<input ' . Html::attributes($attributes) . '>';
                     $extra      = view('edit/input-addon-calendar', ['id' => 'input-' . $n]);

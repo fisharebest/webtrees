@@ -92,43 +92,4 @@ use Illuminate\Support\Collection;
 </style>
 <?php View::endpush() ?>
 
-<?php View::push('javascript') ?>
-<script>
-    new Sortable(document.getElementById("main-blocks"), {
-        group:     "blocks",
-        handle:    ".wt-icon-drag-handle",
-        animation: 150,
-        pull:      "clone",
-    });
 
-    new Sortable(document.getElementById("side-blocks"), {
-        group:     "blocks",
-        handle:    ".wt-icon-drag-handle",
-        animation: 150,
-        pull:      "clone",
-    });
-
-    new Sortable(document.getElementById("available-blocks"), {
-        group:     {
-            name: "blocks",
-            pull: "clone",
-            put:  false,
-        },
-        handle:    ".wt-icon-drag-handle",
-        animation: 150,
-        sort:      false,
-    });
-
-    document.getElementById('current-blocks').addEventListener('click', function (event) {
-      if (event.target.closest('.wt-icon-delete')) {
-        const wtBlock = event.target.closest('.wt-block');
-        wtBlock.parentNode.removeChild(wtBlock);
-      }
-    });
-
-    document.getElementById('edit-blocks').addEventListener('submit', function (event) {
-      document.querySelectorAll('#main-blocks input').forEach((element) => { element.setAttribute('name', 'main[]'); })
-      document.querySelectorAll('#side-blocks input').forEach((element) => { element.setAttribute('name', 'side[]'); })
-    });
-</script>
-<?php View::endpush() ?>

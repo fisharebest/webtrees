@@ -24,6 +24,94 @@
     left: 0;
 }
 
+.wt-timeline-overlay {
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+}
+
+.wt-timeline-axis {
+    border-inline-start: 3px solid var(--bs-border-color);
+    inset-block: 0;
+    position: absolute;
+    z-index: 0;
+}
+
+.wt-timeline-axis-line,
+.wt-timeline-fact-line,
+.wt-timeline-age-line {
+    fill: none;
+    stroke-linecap: round;
+}
+
+.wt-timeline-axis-line {
+    stroke: color-mix(in srgb, var(--bs-border-color) 90%, transparent);
+    stroke-width: 2;
+}
+
+.wt-timeline-fact-line,
+.wt-timeline-age-line {
+    stroke: color-mix(in srgb, var(--bs-body-color) 50%, transparent);
+    stroke-width: 1.5;
+}
+
+.wt-timeline-fact {
+    cursor: move;
+    font-size: 8pt;
+    position: absolute;
+    z-index: 2;
+}
+
+[data-wt-timeline-agebox] {
+    position: absolute;
+    z-index: 4;
+}
+
+.wt-timeline-fact-handle {
+    align-items: center;
+    cursor: grab;
+    display: flex;
+    gap: 0.25rem;
+}
+
+.wt-timeline-age-handle {
+    align-items: center;
+    display: flex;
+    gap: 0.25rem;
+}
+
+.wt-timeline-fact-content,
+.wt-timeline-age-content {
+    display: inline-flex;
+    gap: 0.35rem;
+    padding: 0 0.2rem;
+}
+
+.wt-timeline-age-content {
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.wt-timeline-fact-line-marker,
+.wt-timeline-age-line-marker {
+    background-color: color-mix(in srgb, var(--bs-body-color) 55%, transparent);
+    border-radius: 999px;
+    display: block;
+    height: 3px;
+    width: 20px;
+}
+
+[dir="rtl"] .wt-timeline-fact-line-marker,
+[dir="rtl"] .wt-timeline-age-line-marker {
+    margin-inline-end: 3px;
+}
+
+[dir="ltr"] .wt-timeline-fact-line-marker,
+[dir="ltr"] .wt-timeline-age-line-marker {
+    margin-inline-start: 3px;
+}
+
 .person0, .person1, .person2, .person3,
 .person4, .person5, .person6, .person7 {
     --person-bg-alpha: 30%;

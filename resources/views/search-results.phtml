@@ -10,7 +10,6 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -31,7 +30,7 @@ use Illuminate\Support\Collection;
 
 ?>
 
-<div class="wt-search-results">
+<div class="wt-search-results" id="webtrees-search-results-page">
     <ul class="nav nav-tabs wt-search-results-tabs" role="tablist">
         <?php if ($search_individuals) : ?>
             <li class="nav-item" role="presentation">
@@ -139,8 +138,4 @@ use Illuminate\Support\Collection;
     </div>
 </div>
 
-<?php View::push('javascript') ?>
-<script>
-  document.querySelector('.wt-search-results-tabs li button').click();
-</script>
-<?php View::endpush() ?>
+

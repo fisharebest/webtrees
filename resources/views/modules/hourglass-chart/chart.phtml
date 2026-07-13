@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -17,7 +16,7 @@ $children = $individual->spouseFamilies()->map(static fn (Family $family): Colle
 
 ?>
 
-<div class="d-flex wt-chart-hourglass">
+<div class="d-flex wt-chart-hourglass" data-wt-hourglass-chart>
     <?= view('modules/hourglass-chart/children', ['children' => $children, 'generations' => $generations - 1, 'spouses' => $spouses]) ?>
     <div class="align-self-center">
         <?= view('chart-box', ['individual' => $individual]) ?>
@@ -32,12 +31,4 @@ $children = $individual->spouseFamilies()->map(static fn (Family $family): Colle
     <?php endif ?>
 </div>
 
-<?php View::push('javascript') ?>
-<script>
-    $(".wt-chart-hourglass").on("click", ".hourglass-arrow[data-wt-chart-xref]", function () {
-        $(this.parentNode).load(this.dataset.wtChartXref);
 
-        return false;
-    });
-</script>
-<?php View::endpush() ?>

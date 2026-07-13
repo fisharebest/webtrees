@@ -58,7 +58,7 @@ class DateValue extends AbstractElement
             'id'        => $id,
             'name'      => $name,
             'value'     => $value,
-            'onchange'  => 'webtrees.reformatDate(this, \'' . e($dmy) . '\')',
+            'data-wt-reformat-date-order' => $dmy,
             'maxlength' => static::MAXIMUM_LENGTH,
             'pattern'   => static::PATTERN,
         ];

@@ -14,38 +14,75 @@
  */
 
 import { autocomplete } from './autocomplete';
-import { onDocumentReady } from './dom';
+import { confirmDialog } from './confirm';
+import { hideElements, initializeWhenReady, onDocumentReady, pasteAtCursor, persistentToggle, setColorTheme, showElements, watchForColorThemeChanges } from './dom';
+import {
+  initializeCalendarLocalization,
+  initializeCalendarWidgetButtons,
+  initializeCaptchaFields,
+  initializeCensusSelectors,
+  initializeCheckboxActionButtons,
+  initializeCkeditorHtmlEdit,
+  initializeCopyButtons,
+  initializeDateReformatInputs,
+  initializeEditNameAddons,
+  initializeEventCheckboxControls,
+  initializeEventsRecordedSelectors,
+  initializeGeneratedValueButtons,
+  initializeLatLongReformatInputs,
+  initializeMediaFileFields,
+  initializeNoteStructureControls,
+  initializePasswordToggles,
+  initializeReorderButtons,
+  initializeRequiredSelectForms,
+  initializeSetupBaseUrlFields,
+  initializeSetupMysqlConnection,
+  initializeShowMoreButtons,
+  initializeSingleMessageDeleteButtons,
+  initializeSortableLists,
+  initializeSortByDateButtons,
+  initializeSubmitOnChangeControls,
+  initializeSubmitSelectedUrlButtons,
+  initializeSwapIndividualsButtons,
+  initializeTextareaPatternForms,
+  initializeToggleTargetControls,
+} from './forms';
+import { initializeDatatables } from './datatables';
+import { initializeGallery } from './gallery';
+import { httpPost } from './http';
 import { initializeOnScreenKeyboard } from './on-screen-keyboard';
+import {
+  initializeAjaxModalPage,
+  initializeAnniversariesListPage,
+  initializeCensusAssistantPage,
+  initializeClippingsDownloadPage,
+  initializeCookieWarnings,
+  initializeDescendancySidebarPage,
+  initializeEditBlocksPage,
+  initializeFanChartMaps,
+  initializeHourglassCharts,
+  initializeHtmlTemplateConfig,
+  initializeIndividualPageTabs,
+  initializePedigreeMapPage,
+  initializePlaceHierarchyMapPage,
+  initializePlacesTabMapPage,
+  initializeRandomMediaSlideshow,
+  initializeSearchResultsPage,
+  initializeStatisticsChartCustomPage,
+  initializeStatisticsChartPage,
+  initializeTimelineChartPage,
+} from './pages';
 
 /**
- * Register global initialization handlers.
+ * Initialize all page behavior for the webtrees public bundle.
  *
- * @param {object} dependencies
+ * Functions defined in webtrees.js (load, initializeTomSelect, resetTomSelect)
+ * are accessed via window.webtrees at runtime since they are part of the same bundle.
  */
-export function initializeWebtreesPage(dependencies) {
-  const {
-    confirmDialog,
-    httpPost,
-    initializeClippingsDownloadPage,
-    initializeDatatables,
-    initializeGallery,
-    initializeTomSelect,
-    load,
-    hideElements,
-    pasteAtCursor,
-    persistentToggle,
-    resetTomSelect,
-    setColorTheme,
-    showElements,
-    watchForColorThemeChanges,
-  } = dependencies;
-
-  // Send the CSRF token on all AJAX requests.
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name=csrf]').attr('content')
-    }
-  });
+export function initializeWebtreesPage() {
+  if (typeof window.webtreesLegacy?.configureAjaxCsrf === 'function') {
+    window.webtreesLegacy.configureAjaxCsrf();
+  }
 
   initializeDatatables();
 
@@ -59,24 +96,79 @@ export function initializeWebtreesPage(dependencies) {
     // Page elements that load automatically via AJAX.
     // This prevents bad robots from crawling resource-intensive pages.
     document.querySelectorAll('[data-wt-ajax-url]').forEach(function (element) {
-      load(element, element.dataset.wtAjaxUrl);
+      window.webtrees.load(element, element.dataset.wtAjaxUrl);
     });
+  });
 
+  initializeWhenReady(function () {
+    initializeAjaxModalPage();
+    initializeAnniversariesListPage();
+    initializeCensusAssistantPage();
+    initializeCalendarLocalization();
+    initializeCalendarWidgetButtons();
+    initializeCaptchaFields();
+    initializeCheckboxActionButtons();
+    initializeCkeditorHtmlEdit();
+    initializeCookieWarnings();
+    initializeCopyButtons();
     initializeClippingsDownloadPage();
+    initializeDateReformatInputs();
+    initializeDescendancySidebarPage();
+    initializeEditNameAddons();
+    initializeEditBlocksPage();
+    initializeEventCheckboxControls();
+    initializeEventsRecordedSelectors();
+    initializeFanChartMaps();
+    initializeGeneratedValueButtons();
+    initializeHtmlTemplateConfig();
+    initializeHourglassCharts();
+    initializeIndividualPageTabs();
+    initializeRandomMediaSlideshow();
+    initializeLatLongReformatInputs();
+    initializeMediaFileFields();
+    initializeNoteStructureControls();
+    initializePedigreeMapPage();
+    initializePasswordToggles();
+    initializePlaceHierarchyMapPage();
+    initializePlacesTabMapPage();
+    initializeReorderButtons();
+    initializeRequiredSelectForms();
+    initializeCensusSelectors();
+    initializeSetupBaseUrlFields();
+    initializeSetupMysqlConnection();
+    initializeShowMoreButtons();
+    initializeSingleMessageDeleteButtons();
+    initializeStatisticsChartCustomPage();
+    initializeStatisticsChartPage();
+    initializeSortableLists();
+    initializeSortByDateButtons();
+    initializeSubmitOnChangeControls();
+    initializeSubmitSelectedUrlButtons();
+    initializeTimelineChartPage();
+    initializeToggleTargetControls();
+    initializeSwapIndividualsButtons();
+    initializeSearchResultsPage();
+    initializeTextareaPatternForms();
 
     // Autocomplete
     autocomplete('input[data-wt-autocomplete-url]');
 
     initializeGallery();
 
-    document.querySelectorAll('.tom-select').forEach(element => initializeTomSelect(element));
+    document.querySelectorAll('.tom-select').forEach(element => window.webtrees.initializeTomSelect(element));
 
     // If we clear the select (using the "X" button), we need an empty value
     // (rather than no value at all) for (non-multiple) selects with name="array[]"
     document.querySelectorAll('select.tom-select:not([multiple])')
       .forEach(function (element) {
+        if (element.dataset.wtTomSelectClearInitialized === '1') {
+          return;
+        }
+
+        element.dataset.wtTomSelectClearInitialized = '1';
+
         element.addEventListener('clear', function () {
-          resetTomSelect(element.tomselect, '', '');
+          window.webtrees.resetTomSelect(element.tomselect, '', '');
         });
       });
 
@@ -204,4 +296,3 @@ export function initializeWebtreesPage(dependencies) {
     handleFullscreenClick(event, target);
   });
 }
-

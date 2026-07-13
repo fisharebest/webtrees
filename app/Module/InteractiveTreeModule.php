@@ -63,13 +63,11 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getTabContent(Individual $individual): string
     {
-        $treeview = new TreeView('tvTab');
-
-        [$html, $js] = $treeview->drawViewport($individual, 3);
+        $treeview = new TreeView();
+        $html     = $treeview->drawViewport($individual, 3);
 
         return view('modules/interactive-tree/tab', [
             'html' => $html,
-            'js'   => $js,
         ]);
     }
 
@@ -149,14 +147,12 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, false, true);
 
-        $tv = new TreeView('tv');
-
-        [$html, $js] = $tv->drawViewport($individual, 4);
+        $tv   = new TreeView();
+        $html = $tv->drawViewport($individual, 4);
 
         return $this->viewResponse('modules/interactive-tree/page', [
             'html'       => $html,
             'individual' => $individual,
-            'js'         => $js,
             'module'     => $this->name(),
             'title'      => $this->chartTitle($individual),
             'tree'       => $tree,
@@ -179,8 +175,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
         $pid        = Validator::queryParams($request)->string('pid');
         $individual = Registry::individualFactory()->make($pid, $tree);
         $individual = Auth::checkIndividualAccess($individual);
-        $instance   = Validator::queryParams($request)->string('instance');
-        $treeview   = new TreeView($instance);
+        $treeview   = new TreeView();
 
         return response($treeview->getDetails($individual));
     }
@@ -189,8 +184,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
     {
         $tree     = Validator::attributes($request)->tree();
         $q        = Validator::queryParams($request)->string('q');
-        $instance = Validator::queryParams($request)->string('instance');
-        $treeview = new TreeView($instance);
+        $treeview = new TreeView();
 
         return response($treeview->getIndividuals($tree, $q));
     }

@@ -122,16 +122,14 @@ class EventsRecorded extends AbstractElement
 
         // Our form element name contains "[]", and multiple selections would create multiple values.
         $hidden = '<input type="hidden" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />';
-        // Combine them into a single value.
-        $js = 'document.getElementById("' . $id2 . '").addEventListener("change", function () { document.getElementById("' . $id . '").value = Array.from(document.getElementById("' . $id2 . '").selectedOptions).map(x => x.value).join(","); });';
 
         return view('components/select', [
-            'class'    => 'tom-select',
+            'class'    => 'tom-select wt-events-recorded-select',
             'name'     => '',
             'id'       => $id2,
             'options'  => $options,
             'selected' => explode(',', strtr($value, [' ' => ''])),
-        ]) . $hidden . '<script>' . $js . '</script>';
+        ]) . $hidden;
     }
 
     /**

@@ -14,7 +14,7 @@ declare(strict_types=1);
 ?>
 <?= $html ?>
 
-<map id="fan-chart-map" name="fan-chart-map">
+<map id="fan-chart-map" name="fan-chart-map" data-wt-fanchart-map>
     <?= $areas ?>
 </map>
 
@@ -22,27 +22,4 @@ declare(strict_types=1);
     <img class="wt-chart-fan-img" src="data:image/png;base64,<?= base64_encode($png) ?>" width="<?= $fanw ?>" height="<?= $fanh ?>" alt="<?= strip_tags($title) ?>" usemap="#fan-chart-map">
 </div>
 
-<script>
-  document.querySelectorAll('area').forEach(function (area) {
-    area.addEventListener('click', function (e) {
-      e.stopPropagation();
-      e.preventDefault();
-      const target = document.querySelector(this.hash);
-      const display = target.style.display;
 
-      // Close any other open menus
-      target.parentElement.querySelectorAll('.fan_chart_menu')
-        .forEach(function (element) {
-          element.style.display = 'none';
-        });
-
-      // Toggle display
-      if (display !== 'block') {
-        // position the menu centered immediately above the mouse click position
-        target.style.display = 'block';
-        target.style.left = Math.max(0, e.pageX - (target.offsetWidth / 2)) + 'px';
-        target.style.top = Math.max(0, e.pageY - 1 - target.offsetHeight) + 'px';
-      }
-    });
-  });
-</script>

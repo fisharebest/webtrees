@@ -50,14 +50,9 @@ class PafUid extends AbstractElement
         return
             '<div class="input-group mb-3">' .
             parent::edit($id, $name, $value, $tree) .
-            '<button type="button" class="input-group-text btn btn-primary" id="create-' . e($id) . '">' .
+            '<button type="button" class="input-group-text btn btn-primary" data-wt-generated-value-target="' . e($id) . '" data-wt-generated-value="' . e(Registry::idFactory()->pafUid()) . '">' .
             I18N::translate('create') .
             '</button>' .
-            '</div>' .
-            '<script>' .
-            'document.getElementById("create-' . e($id) . '").addEventListener("click", function(event) {' .
-            ' document.getElementById("' . e($id) . '").value="' . e(Registry::idFactory()->pafUid()) . '";' .
-            '})' .
-            '</script>';
+            '</div>';
     }
 }

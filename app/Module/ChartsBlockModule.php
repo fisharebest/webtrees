@@ -147,10 +147,8 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
                     if ($module instanceof InteractiveTreeModule) {
                         $title = I18N::translate('Interactive tree of %s', $individual->fullName());
-                        $tv    = new TreeView();
-                        [$html, $js] = $tv->drawViewport($individual, 2);
-                        $js      = 'document.addEventListener("DOMContentLoaded", function() {' . $js . '});';
-                        $content = $html . '<script>' . $js . '</script>';
+                        $tv      = new TreeView();
+                        $content = $tv->drawViewport($individual, 2);
                     } else {
                         $title   = I18N::translate('Interactive tree');
                         $content = I18N::translate('The module “%s” has been disabled.', $title);

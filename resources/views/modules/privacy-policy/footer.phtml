@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var Tree $tree
@@ -19,23 +18,12 @@ use Fisharebest\Webtrees\View;
     </a>
 
     <?php if ($uses_analytics) : ?>
-        <div class="alert alert-info alert-dismissible fade collapse mb-0" id="privacy-warning">
+        <div class="alert alert-info alert-dismissible fade collapse mb-0" id="privacy-warning" data-wt-cookie-warning data-wt-cookie-warning-key="cookie-warning">
             <?= I18N::translate('This website uses cookies to learn about visitor behavior.') ?>
 
-            <button type="button" id="privacy-warning-button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= I18N::translate('close') ?>">
+            <button type="button" id="privacy-warning-button" class="btn-close" data-wt-cookie-warning-dismiss data-bs-dismiss="alert" aria-label="<?= I18N::translate('close') ?>">
             </button>
         </div>
-
-        <?php View::push('javascript') ?>
-            <script>
-                if (localStorage.getItem("cookie-warning") !== "ok") {
-                    document.getElementById("privacy-warning").classList.add("show");
-                }
-                document.getElementById("privacy-warning-button").addEventListener("click", function () {
-                    localStorage.setItem("cookie-warning", "ok");
-                });
-            </script>
-        <?php View::endpush() ?>
     <?php endif ?>
 </div>
 

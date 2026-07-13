@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var string $individual_list
@@ -13,7 +12,7 @@ use Fisharebest\Webtrees\View;
 
 ?>
 
-<form method="post" action="<?= e(route('module', ['module' => 'descendancy', 'action' => 'Descendants', 'tree' => $tree->name()])) ?>" onsubmit="return false;">
+<form method="post" action="<?= e(route('module', ['module' => 'descendancy', 'action' => 'Descendants', 'tree' => $tree->name()])) ?>" data-wt-descendancy-sidebar data-wt-descendancy-search-url="<?= e(route('module', ['module' => 'descendancy', 'action' => 'Search', 'tree' => $tree->name(), 'search' => ''])) ?>" data-wt-descendancy-placeholder="<?= e(I18N::translate('Search')) ?>">
     <input type="search" name="sb_desc_name" id="sb_desc_name" placeholder="<?= I18N::translate('Search') ?>">
 
     <?= csrf_field() ?>
@@ -25,44 +24,4 @@ use Fisharebest\Webtrees\View;
     </ul>
 </div>
 
-<?php View::push('javascript') ?>
-<script>
-  function dsearchQ() {
-    var query = $("#sb_desc_name").val();
-    if (query.length>1) {
-      $("#sb_desc_content").load(<?= json_encode(route('module', ['module' => 'descendancy', 'action' => 'Search', 'tree' => $tree->name(), 'search' => '']), JSON_THROW_ON_ERROR) ?> + encodeURIComponent(query));
-    }
-  }
 
-  $("#sb_desc_name").focus(function(){this.select();});
-  $("#sb_desc_name").blur(function(){if (this.value === "") this.value="<?= I18N::translate('Search') ?>";});
-  var dtimerid = null;
-  $("#sb_desc_name").keyup(function(e) {
-    if (dtimerid) window.clearTimeout(dtimerid);
-    dtimerid = window.setTimeout("dsearchQ()", 500);
-  });
-
-  $("#sb_desc_content").on("click", ".sb_desc_indi", function() {
-    var self = $(this),
-        state = self.children(".plusminus"),
-        target = self.siblings("div");
-    if(state.hasClass("icon-plus")) {
-      if (jQuery.trim(target.html())) {
-        target.show("fast"); // already got content so just show it
-      } else if (this.dataset.wtHref !== "#") {
-        target
-          .hide()
-          .load(this.dataset.wtHref, function(response, status, xhr) {
-            if(status === "success" && response !== "") {
-              target.show("fast");
-            }
-          })
-      }
-    } else {
-      target.hide("fast");
-    }
-    state.toggleClass("icon-minus icon-plus");
-    return false;
-  });
-</script>
-<?php View::endpush() ?>

@@ -119,7 +119,7 @@ use Fisharebest\Webtrees\Tree;
                 <input type="hidden" name="filtersx" value="<?= e($filtersx) ?>">
                 <input type="hidden" name="filterev" value="<?= e($filterev) ?>">
 
-                <select class="list_value" name="filterof" onchange="this.form.submit();" aria-label="<?= I18N::translate('Filter') ?>">
+                <select class="list_value" name="filterof" data-wt-submit-on-change aria-label="<?= I18N::translate('Filter') ?>">
                     <option value="all" <?= $filterof === 'all' ? 'selected' : '' ?>>
                         <?= I18N::translate('All individuals') ?>
                     </option>
@@ -175,7 +175,7 @@ use Fisharebest\Webtrees\Tree;
                 <input type="hidden" name="filtersx" value="<?= e($filtersx) ?>">
                 <input type="hidden" name="filterof" value="<?= e($filterof) ?>">
 
-                <select class="list_value" name="filterev" onchange="this.form.submit();" aria-label="<?= I18N::translate('Events') ?>">
+                <select class="list_value" name="filterev" data-wt-submit-on-change aria-label="<?= I18N::translate('Events') ?>">
                     <option value="BIRT-MARR-DEAT" <?= $filterev === 'BIRT-MARR-DEAT' ? 'selected' : '' ?>>
                         <?= I18N::translate('Vital records') ?>
                     </option>

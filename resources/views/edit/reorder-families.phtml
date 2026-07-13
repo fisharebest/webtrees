@@ -10,7 +10,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -38,13 +37,13 @@ use Illuminate\Support\Collection;
         </p>
 
         <p>
-            <button class="btn btn-secondary" id="btn-default-order" type="button">
+            <button class="btn btn-secondary" type="button" data-wt-sort-by-date-button data-wt-sort-list=".wt-sortable-list-fams" data-wt-sort-key="wtSortByDate">
                 <?= view('icons/sort') ?>
                 <?= /* I18N: A button label. */ I18N::translate('sort by date of marriage') ?>
             </button>
         </p>
 
-        <div class="wt-sortable-list wt-sortable-list-fams">
+        <div class="wt-sortable-list wt-sortable-list-fams" data-wt-sortable-list>
             <?php foreach ($fams_facts as $fact) : ?>
                 <?php $family = $fact->target(); ?>
                 <?php if ($family instanceof Family) : ?>
@@ -81,7 +80,7 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('The first family in the list will be used in charts, lists, reports, etc.') ?>
         </p>
 
-        <div class="wt-sortable-list wt-sortable-list-famc">
+        <div class="wt-sortable-list wt-sortable-list-famc" data-wt-sortable-list>
             <?php foreach ($famc_facts as $fact) : ?>
                 <?php $family = $fact->target(); ?>
                 <?php if ($family instanceof Family) : ?>
@@ -115,29 +114,4 @@ use Illuminate\Support\Collection;
     <?= csrf_field() ?>
 </form>
 
-<?php View::push('javascript') ?>
-<script>
-    const famc_list = document.querySelector(".wt-sortable-list-famc");
-    const fams_list = document.querySelector(".wt-sortable-list-fams");
 
-    if (famc_list !== null) {
-        new Sortable(famc_list, {
-            handle: ".card-header",
-        });
-    }
-
-    if (fams_list !== null) {
-        new Sortable(fams_list, {
-            handle: ".card-header",
-        });
-
-        document.querySelector('#btn-default-order').addEventListener('click', function () {
-            const items = Array.from(document.querySelectorAll('.wt-sortable-list-fams .wt-sortable-item'));
-            items.sort(function (x, y) {
-              return Math.sign(x.dataset.wtSortByDate - y.dataset.wtSortByDate);
-            })
-          .forEach(item => document.querySelector('.wt-sortable-list').appendChild(item));
-        });
-    }
-</script>
-<?php View::endpush() ?>

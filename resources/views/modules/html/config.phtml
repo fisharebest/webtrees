@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var string               $html
@@ -28,7 +27,7 @@ use Fisharebest\Webtrees\View;
     <label class="col-sm-3 col-form-label" for="template">
         <?= I18N::translate('Templates') ?>
     </label>
-    <div class="col-sm-9">
+    <div class="col-sm-9" data-wt-html-template-config>
         <?= view('components/select', ['name' => '', 'id' => 'template', 'selected' => '', 'options' => $templates]) ?>
         <div class="form-text">
             <?= I18N::translate('To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements.') ?>
@@ -66,11 +65,4 @@ use Fisharebest\Webtrees\View;
     </div>
 </fieldset>
 
-<?php View::push('javascript') ?>
-<script>
-    $("#template").change(function () {
-        this.form.html.value=this.options[this.selectedIndex].value;
-        CKEDITOR.instances.html.setData(document.getElementById("html").value);
-    });
-</script>
-<?php View::endpush() ?>
+

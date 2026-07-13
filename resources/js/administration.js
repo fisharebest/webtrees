@@ -1,5 +1,10 @@
 'use strict';
 
+// This is a separate webpack entry point from webtrees.js.  Admin page modules
+// use `window.webtrees.*` for shared functionality (httpPost, load,
+// initializeTomSelect, etc.) rather than importing directly from ../webtrees/,
+// because direct imports would duplicate the shared code into both bundles.
+
 import {
   initializeComponentsPage,
   initializeDataFixPage,

@@ -1,5 +1,3 @@
-import { requireDatasetValue, requireElement } from './dom';
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2026 webtrees development team
@@ -79,63 +77,41 @@ export function reformatLongitude(field) {
 }
 
 /**
- * Text areas do not support the pattern attribute, so apply it via data-wt-pattern.
- *
- * @param {HTMLFormElement} form
- */
-export function textareaPatterns(form) {
-  form.addEventListener('submit', function (event) {
-    event.target.querySelectorAll('textarea[data-wt-pattern]').forEach(function (element) {
-      const pattern = new RegExp('^' + element.dataset.wtPattern + '$');
-
-      if (!element.readOnly && element.value !== '' && !pattern.test(element.value)) {
-        event.preventDefault();
-        event.stopPropagation();
-        element.classList.add('is-invalid');
-        element.scrollIntoView();
-      } else {
-        element.classList.remove('is-invalid');
-      }
-    });
-  });
-}
-
-/**
- * Initialize format/extension UI blocks.
- *
- * Each block should contain radios named "format" with data-wt-extension,
- * and an element marked with data-wt-format-extension.
+ * Initialize latitude/longitude inputs that should be normalized on change.
  *
  * @param {ParentNode} root
  */
-export function initializeFormatExtensions(root = document) {
-  root.querySelectorAll('[data-wt-format-options]').forEach((container) => {
-    if (!(container instanceof HTMLElement)) {
+export function initializeLatLongReformatInputs(root = document) {
+  root.querySelectorAll('input[data-wt-reformat-latitude]').forEach((element) => {
+    if (!(element instanceof HTMLInputElement)) {
+      throw new Error('Latitude reformat control must be an input element.');
+    }
+
+    if (element.dataset.wtReformatLatitudeInitialized === '1') {
       return;
     }
 
-    const extension = requireElement(container, '[data-wt-format-extension]', HTMLElement, 'format extension target');
-    const formatRadios = container.querySelectorAll('[name="format"]');
+    element.dataset.wtReformatLatitudeInitialized = '1';
 
-    if (formatRadios.length === 0) {
-      throw new Error('Expected at least one format radio in format options container.');
+    element.addEventListener('change', () => {
+      reformatLatitude(element);
+    });
+  });
+
+  root.querySelectorAll('input[data-wt-reformat-longitude]').forEach((element) => {
+    if (!(element instanceof HTMLInputElement)) {
+      throw new Error('Longitude reformat control must be an input element.');
     }
 
-    const updateExtension = () => {
-      const selectedFormat = requireElement(container, '[name="format"]:checked', HTMLInputElement, 'selected format radio');
-      extension.innerText = requireDatasetValue(selectedFormat, 'wtExtension', 'format extension value');
-    };
+    if (element.dataset.wtReformatLongitudeInitialized === '1') {
+      return;
+    }
 
-    formatRadios.forEach((element) => {
-      if (!(element instanceof HTMLInputElement)) {
-        throw new Error('Expected format controls to be input elements.');
-      }
+    element.dataset.wtReformatLongitudeInitialized = '1';
 
-      element.addEventListener('change', updateExtension);
+    element.addEventListener('change', () => {
+      reformatLongitude(element);
     });
-
-    // Firefox may restore radio state when navigating back.
-    updateExtension();
   });
 }
 

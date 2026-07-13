@@ -23,9 +23,9 @@ use Fisharebest\Webtrees\I18N;
     </th>
     <td>
         <?php if ($add_facts !== []) : ?>
-            <form method="post" action="<?= e(route(SelectNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" onsubmit="if ($('#add-fact').val() === null) {event.preventDefault();}">
+            <form method="post" action="<?= e(route(SelectNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-wt-require-select>
                 <div class="input-group">
-                    <select class="form-select" id="add-fact" name="fact">
+                    <select class="form-select" id="add-fact" name="fact" data-wt-required-select-control>
                         <option value="" disabled selected>
                             <?= I18N::translate('&lt;select&gt;') ?>
                         </option>

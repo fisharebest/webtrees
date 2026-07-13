@@ -26,7 +26,7 @@ use Illuminate\Support\Collection;
 
 ?>
 
-<div class="wt-slide-show-container">
+<div class="wt-slide-show-container" data-wt-random-media-slideshow data-wt-random-media-block-id="block-<?= $block_id ?>" data-wt-random-media-start="<?= $start_automatically ? '1' : '0' ?>" data-wt-random-media-delay-ms="<?= $delay * 1000 ?>" data-wt-random-media-controls="<?= $show_controls ? '1' : '0' ?>">
     <?php if ($show_controls) : ?>
         <div class="wt-slide-show-controls text-center">
             <a href="#" title="<?= I18N::translate('Play') ?>" <?= $start_automatically ? 'hidden' : '' ?>>
@@ -90,48 +90,4 @@ use Illuminate\Support\Collection;
     </ul>
 </div>
 
-<script>
-  (function () {
-    let block = document.getElementById('block-<?= $block_id ?>');
 
-    let play = <?= json_encode($start_automatically, JSON_THROW_ON_ERROR) ?>;
-
-    function slideShowReload () {
-      clearTimeout(timeout);
-
-      if (document.hidden) {
-        // No point loading images when nobody is looking.
-        timeout = setTimeout(slideShowReload, 1000);
-      } else {
-        $(block.parentNode).load($(block).parent().data('wtAjaxUrl') + '&start=' + (play ? '1' : '0'));
-      }
-    }
-
-    let timeout = null;
-
-    if (play) {
-      timeout = setTimeout(slideShowReload, <?= json_encode($delay * 1000, JSON_THROW_ON_ERROR) ?>);
-    }
-
-    block.querySelector('.wt-icon-media-play').addEventListener('click', (event) => {
-      event.preventDefault();
-      block.querySelector('.wt-icon-media-play').parentNode.hidden = true;
-      block.querySelector('.wt-icon-media-stop').parentNode.hidden = false;
-      play = true;
-      slideShowReload();
-    });
-
-    block.querySelector('.wt-icon-media-stop').addEventListener('click', (event) => {
-      event.preventDefault();
-      block.querySelector('.wt-icon-media-stop').parentNode.hidden = true;
-      block.querySelector('.wt-icon-media-play').parentNode.hidden = false;
-      play = false;
-      clearTimeout(timeout);
-    });
-
-    block.querySelector('.wt-icon-media-next').addEventListener('click', (event) => {
-      event.preventDefault();
-      slideShowReload();
-    });
-  })();
-</script>

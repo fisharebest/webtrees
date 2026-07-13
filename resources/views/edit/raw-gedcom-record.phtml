@@ -7,7 +7,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawRecordAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
 
 /**
@@ -21,7 +20,7 @@ use Fisharebest\Webtrees\Webtrees;
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" id="edit-raw-gedcom" action="<?= e(route(EditRawRecordAction::class, ['tree' => $tree->name(), 'xref' => $record->xref()])) ?>" class="wt-page-content">
+<form method="post" id="edit-raw-gedcom" action="<?= e(route(EditRawRecordAction::class, ['tree' => $tree->name(), 'xref' => $record->xref()])) ?>" class="wt-page-content" data-wt-textarea-pattern-form>
     <div class="form-text">
         <?= I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix.') ?>
         <br>
@@ -35,7 +34,7 @@ use Fisharebest\Webtrees\Webtrees;
         <textarea class="card-body form-control py-1 px-2" id="level0" name="level0" rows="1" dir="ltr" readonly><?= e($level0) ?></textarea>
     </div>
 
-    <div class="wt-sortable-list">
+    <div class="wt-sortable-list" data-wt-sortable-list>
         <?php foreach ($record->facts([], false, null, true) as $fact) : ?>
             <div class="card my-2 wt-sortable-item">
                 <input type="hidden" name="fact_id[]" value="<?= e($fact->id()) ?>">
@@ -80,12 +79,4 @@ use Fisharebest\Webtrees\Webtrees;
     <?= csrf_field() ?>
 </form>
 
-<?php View::push('javascript') ?>
-<script>
-  new Sortable(document.querySelector('.wt-sortable-list'), {
-    handle: '.card-header',
-  });
 
-  webtrees.textareaPatterns(document.getElementById('edit-raw-gedcom'));
-</script>
-<?php View::endpush() ?>

@@ -11,7 +11,13 @@ use Fisharebest\Webtrees\I18N;
 ?>
 
 <span class="input-group-text">
-    <a href="#" onclick="return webtrees.calendarWidget('caldiv<?= e($id) ?>', '<?= e($id) ?>');" title="<?= I18N::translate('Select a date') ?>">
+    <a
+        href="#"
+        title="<?= I18N::translate('Select a date') ?>"
+        data-wt-calendar-widget-button
+        data-wt-calendar-div-id="caldiv<?= e($id) ?>"
+        data-wt-calendar-input-id="<?= e($id) ?>"
+    >
         <?= view('icons/calendar') ?>
         <span class="visually-hidden">
             <?= I18N::translate('Select a date') ?>

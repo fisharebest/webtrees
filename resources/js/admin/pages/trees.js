@@ -41,7 +41,13 @@ function synchronizeImportPanels (page) {
  * @param {string} url
  */
 function loadImportContainer (importContainer, url) {
-  $(importContainer).load(url, {});
+  if (typeof window.webtrees?.load !== 'function') {
+    throw new Error('window.webtrees.load() is required for import container loading.');
+  }
+
+  window.webtrees.load(importContainer, url).catch((error) => {
+    console.error('Failed to load import container', { url, error });
+  });
 }
 
 /**

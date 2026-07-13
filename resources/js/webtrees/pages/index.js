@@ -1,2 +1,20 @@
+export { initializeAjaxModalPage } from './ajax-modal';
+export { initializeAnniversariesListPage } from './anniversaries-list';
+export { initializeCensusAssistantPage } from './census-assistant';
 export { initializeClippingsDownloadPage } from './clippings-download';
+export { initializeCookieWarnings } from './cookie-warning';
+export { initializeDescendancySidebarPage } from './descendancy-sidebar';
+export { initializeEditBlocksPage } from './edit-blocks-page';
+export { initializeFanChartMaps } from './fan-chart';
+export { initializeHourglassCharts } from './hourglass-chart';
+export { initializeHtmlTemplateConfig } from './html-template-config';
+export { initializeIndividualPageTabs } from './individual-page-tabs';
+export { initializePedigreeMapPage } from './pedigree-map';
+export { initializePlaceHierarchyMapPage } from './place-hierarchy-map';
+export { initializePlacesTabMapPage } from './places-tab-map';
+export { initializeRandomMediaSlideshow } from './random-media-slideshow';
+export { initializeSearchResultsPage } from './search-results';
+export { initializeStatisticsChartCustomPage } from './statistics-chart-custom-page';
+export { initializeStatisticsChartPage } from './statistics-chart-page';
+export { initializeTimelineChartPage } from './timeline-chart';
 

@@ -50,6 +50,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 {
     use ModuleChartTrait;
 
+    // Keep these values in sync with resources/js/webtrees/pages/statistics-chart-custom-page.js.
     public const int X_AXIS_INDIVIDUAL_MAP        = 1;
     public const int X_AXIS_BIRTH_MAP             = 2;
     public const int X_AXIS_DEATH_MAP             = 3;
@@ -67,6 +68,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     public const int Y_AXIS_NUMBERS = 201;
     public const int Y_AXIS_PERCENT = 202;
 
+    // Keep these values in sync with resources/js/webtrees/pages/statistics-chart-custom-page.js.
     public const int Z_AXIS_ALL  = 300;
     public const int Z_AXIS_SEX  = 301;
     public const int Z_AXIS_TIME = 302;

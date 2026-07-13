@@ -24,6 +24,12 @@ export function initializeOnScreenKeyboard(dependencies) {
   let osk_focus_element = null;
 
   document.querySelectorAll('.wt-osk-trigger').forEach((trigger) => {
+    if (trigger.dataset.wtOskInitialized === '1') {
+      return;
+    }
+
+    trigger.dataset.wtOskInitialized = '1';
+
     trigger.addEventListener('click', function () {
       // When a user clicks the icon, set focus to the corresponding input
       osk_focus_element = document.getElementById(this.dataset.wtId);
@@ -38,6 +44,12 @@ export function initializeOnScreenKeyboard(dependencies) {
   });
 
   document.querySelectorAll('.wt-osk-script-button').forEach((button) => {
+    if (button.dataset.wtOskInitialized === '1') {
+      return;
+    }
+
+    button.dataset.wtOskInitialized = '1';
+
     button.addEventListener('change', function () {
       document.querySelectorAll('.wt-osk-script').forEach((script) => {
         script.hidden = true;
@@ -50,6 +62,12 @@ export function initializeOnScreenKeyboard(dependencies) {
   });
 
   document.querySelectorAll('.wt-osk-shift-button').forEach((button) => {
+    if (button.dataset.wtOskInitialized === '1') {
+      return;
+    }
+
+    button.dataset.wtOskInitialized = '1';
+
     button.addEventListener('click', () => {
       const key_container = document.querySelector('.wt-osk-keys');
 
@@ -62,6 +80,12 @@ export function initializeOnScreenKeyboard(dependencies) {
   });
 
   document.querySelectorAll('.wt-osk-keys').forEach((keys) => {
+    if (keys.dataset.wtOskInitialized === '1') {
+      return;
+    }
+
+    keys.dataset.wtOskInitialized = '1';
+
     keys.addEventListener('click', (event) => {
       const key_button = event.target.closest('.wt-osk-key');
 
@@ -96,6 +120,12 @@ export function initializeOnScreenKeyboard(dependencies) {
   });
 
   document.querySelectorAll('.wt-osk-close').forEach((close_button) => {
+    if (close_button.dataset.wtOskInitialized === '1') {
+      return;
+    }
+
+    close_button.dataset.wtOskInitialized = '1';
+
     close_button.addEventListener('click', () => {
       hideElements(document.querySelectorAll('.wt-osk'));
     });

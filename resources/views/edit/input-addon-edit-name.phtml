@@ -11,7 +11,13 @@ use Fisharebest\Webtrees\I18N;
 ?>
 
 <span class="input-group-text">
-    <a id="<?= e($id) ?>-edit" href="#" title="<?= I18N::translate('Edit the name') ?>">
+    <a
+        id="<?= e($id) ?>-edit"
+        href="#"
+        title="<?= I18N::translate('Edit the name') ?>"
+        data-wt-edit-name-addon
+        data-wt-name-input-id="<?= e($id) ?>"
+    >
         <?= view('icons/edit') ?>
         <span class="visually-hidden">
             <?= I18N::translate('Edit the name') ?>
@@ -19,76 +25,3 @@ use Fisharebest\Webtrees\I18N;
     </a>
 </span>
 
-<script>
-  document.getElementById('<?= e($id) ?>-edit').addEventListener('click', function (event) {
-    event.preventDefault();
-    // Toggle the visibility of the full name inputs
-    // Hide the disabled input - does not send any value when posting the form
-    let disabledElement = document.getElementById('<?= e($id) ?>-disabled');
-    disabledElement.classList.add('d-none');
-    // Show the editable input - send value when posting the form
-    let editElement = document.getElementById('<?= e($id) ?>');
-    editElement.classList.remove('d-none');
-    editElement.focus();
-
-    this.parentNode.parentNode.removeChild(this.parentNode);
-  });
-  document.addEventListener('DOMContentLoaded', function () {
-    let NAME = document.getElementById('<?= e($id) ?>');
-    let NAME_DISABLED = document.getElementById('<?= e($id) ?>-disabled');
-    let container = NAME.parentNode.parentNode.parentNode;
-
-    let setNameValue = function(name_value) {
-      NAME.value = name_value;
-      NAME_DISABLED.value = name_value;
-    }
-
-    if (NAME.id.endsWith('-INDI-NAME')) {
-      // NAME has children at the same level.
-      container = container.parentNode;
-    } else {
-      // ROMN/FONE have children in a collapsable panel
-      container = container.nextSibling.nextSibling;
-    }
-    let NPFX = container.querySelector('[id$="-NPFX"]');
-    let GIVN = container.querySelector('[id$="-GIVN"]');
-    let SPFX = container.querySelector('[id$="-SPFX"]');
-    let SURN = container.querySelector('[id$="-SURN"]');
-    let NSFX = container.querySelector('[id$="-NSFX"]');
-
-    let generated_name = webtrees.buildNameFromParts(
-      NPFX ? NPFX.value : '',
-      GIVN ? GIVN.value : '',
-      SPFX ? SPFX.value : '',
-      SURN ? SURN.value : '',
-      NSFX ? NSFX.value : '',
-      'U',
-    );
-
-    if (NAME.value === '') {
-      setNameValue(generated_name);
-    }
-    if (NAME.value !== generated_name) {
-      document.getElementById('<?= e($id) ?>-edit').click();
-    } else {
-      let fn = function () {
-        if (NAME.classList.contains("d-none") === true) {
-          setNameValue(webtrees.buildNameFromParts(
-            NPFX ? NPFX.value : '',
-            GIVN ? GIVN.value : '',
-            SPFX ? SPFX.value : '',
-            SURN ? SURN.value : '',
-            NSFX ? NSFX.value : '',
-            'U',
-          ));
-        }
-      };
-      NPFX && NPFX.addEventListener('input', fn);
-      GIVN && GIVN.addEventListener('input', fn);
-      SPFX && SPFX.addEventListener('input', fn);
-      SURN && SURN.addEventListener('input', fn);
-      SURN && SURN.addEventListener('blur', fn); // For autocompleted entries
-      NSFX && NSFX.addEventListener('input', fn);
-    }
-  });
-</script>

@@ -1,19 +1,6 @@
 'use strict';
 
-import { buildLeafletJsMap, requireDatasetValue, requireElement } from '../../webtrees/index';
-
-/**
- * @param {string} json
- * @param {string} description
- * @returns {*}
- */
-function parseJsonDataset (json, description) {
-  try {
-    return JSON.parse(json);
-  } catch (error) {
-    throw new Error('Invalid JSON dataset value for ' + description + '.');
-  }
-}
+import { buildLeafletJsMap, parseJsonDataset, requireDatasetValue, requireElement } from '../../webtrees/index';
 
 /**
  * Initialize the location-edit admin page.

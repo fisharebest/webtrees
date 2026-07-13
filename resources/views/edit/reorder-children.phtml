@@ -7,7 +7,6 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var Family $family
@@ -21,7 +20,7 @@ use Fisharebest\Webtrees\View;
 
 <form method="post" action="<?= e(route(ReorderChildrenAction::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>" class="wt-page-content">
     <input type="hidden" name="url" value="<?= e($url) ?>">
-    <div class="wt-sortable-list">
+    <div class="wt-sortable-list" data-wt-sortable-list>
         <?php foreach ($family->facts(['CHIL']) as $fact) : ?>
             <?php $child = $fact->target(); ?>
             <?php if ($child instanceof Individual) : ?>
@@ -46,7 +45,7 @@ use Fisharebest\Webtrees\View;
             <?= /* I18N: A button label. */ I18N::translate('save') ?>
         </button>
 
-        <button class="btn btn-secondary" id="btn-default-order" type="button">
+        <button class="btn btn-secondary" type="button" data-wt-sort-by-date-button data-wt-sort-list=".wt-sortable-list" data-wt-sort-key="wtSortByDate">
             <?= view('icons/sort') ?>
             <?= /* I18N: A button label. */ I18N::translate('sort by date of birth') ?>
         </button>
@@ -60,18 +59,4 @@ use Fisharebest\Webtrees\View;
     <?= csrf_field() ?>
 </form>
 
-<?php View::push('javascript') ?>
-<script>
-    new Sortable(document.querySelector(".wt-sortable-list"), {
-        handle: ".card-header",
-    });
 
-    document.querySelector('#btn-default-order').addEventListener('click', function () {
-      const items = Array.from(document.querySelectorAll('.wt-sortable-list .wt-sortable-item'));
-      items.sort(function (x, y) {
-        return Math.sign(x.dataset.wtSortByDate - y.dataset.wtSortByDate);
-      })
-      .forEach(item => document.querySelector('.wt-sortable-list').appendChild(item));
-    });
-</script>
-<?php View::endpush() ?>

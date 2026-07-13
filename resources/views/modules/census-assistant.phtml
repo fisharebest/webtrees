@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var Individual $individual
@@ -18,7 +17,15 @@ use Fisharebest\Webtrees\View;
     </a>
 </div>
 
-<div id="census-assistant" hidden>
+<div
+    id="census-assistant"
+    hidden
+    data-wt-census-header-url="<?= e(route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusHeader', 'tree' => $individual->tree()->name()])) ?>"
+    data-wt-census-individual-url="<?= e(route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual', 'tree' => $individual->tree()->name()])) ?>"
+    data-wt-census-transcript-label="<?= e(I18N::translate('Census transcript')) ?>"
+    data-wt-census-household-label="<?= e(I18N::translate('Household')) ?>"
+    data-wt-census-individual-name="<?= e(strip_tags($individual->fullName())) ?>"
+>
     <input type="hidden" name="ca_census" class="census-assistant-class">
     <div class="mb-3">
         <div class="input-group">
@@ -84,102 +91,4 @@ use Fisharebest\Webtrees\View;
     </div>
 </div>
 
-<?php View::push('javascript') ?>
-<script>
-  // When a census date/place is selected, activate the census-assistant
-  function censusAssistantSelect () {
-    const select = this;
-    const option = select.options[select.selectedIndex];
-    const form = select.closest('form');
 
-    form.querySelector('.census-assistant-class').value = option.dataset.wtCensus;
-
-    var censusAssistantLink = document.querySelector('.census-assistant-link');
-    var censusAssistant = document.querySelector('#census-assistant');
-    var censusOption = this.options[this.selectedIndex];
-    var census = censusOption.dataset.wtCensus;
-    var censusPlace = censusOption.dataset.wtPlace;
-    var censusYear = censusOption.dataset.wtDate.substr(-4);
-
-    if (censusOption.value !== '') {
-      censusAssistantLink.removeAttribute('hidden');
-    } else {
-      censusAssistantLink.setAttribute('hidden', '');
-    }
-
-    censusAssistant.setAttribute('hidden', '');
-    document.querySelector('.census-assistant-class').value = census;
-    document.querySelector('#census-assistant-title').value = censusYear + ' ' + censusPlace + ' - <?= I18N::translate('Census transcript') ?> - <?= strip_tags($individual->fullName()) ?> - <?= I18N::translate('Household') ?>';
-
-    let formData = new FormData();
-    formData.append('census', census);
-    formData.append('_csrf', document.querySelector('meta[name=csrf]').content);
-
-    const url = <?= json_encode(route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusHeader', 'tree' => $individual->tree()->name()]), JSON_THROW_ON_ERROR) ?>;
-    webtrees.httpPost(url, formData)
-      .then(response => response.text())
-      .then(function (text) {
-        document.querySelector('#census-assistant-table thead').innerHTML = text;
-        document.querySelector('#census-assistant-table tbody').innerHTML = '';
-      });
-  }
-
-  // When the census assistant is activated, show the input fields
-  function censusAssistantLink () {
-    document.querySelector('.census-selector').setAttribute('hidden', '');
-    this.setAttribute('hidden', '');
-    document.getElementById('census-assistant').removeAttribute('hidden');
-    // Set the current individual as the head of household.
-    censusAssistantAdd();
-
-    return false;
-  }
-
-  // Add the currently selected individual to the census
-  function censusAssistantAdd () {
-    var censusSelector = document.querySelector('.census-selector');
-    var census = censusSelector.options[censusSelector.selectedIndex].dataset.wtCensus;
-    var indi_selector = document.querySelector('#census-assistant-individual');
-    var xref = indi_selector.options[indi_selector.selectedIndex].value;
-    var headInput = document.querySelector('#census-assistant-table td input');
-    var head = headInput === null ? xref : headInput.value;
-
-    let formData = new FormData();
-    formData.append('census', census);
-    formData.append('_csrf', document.querySelector('meta[name=csrf]').content);
-    formData.append('head', head);
-    formData.append('xref', xref);
-
-    const url = <?= json_encode(route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual', 'tree' => $individual->tree()->name()]), JSON_THROW_ON_ERROR) ?>;
-
-    webtrees.httpPost(url, formData)
-      .then(response => response.text())
-      .then(function (text) {
-        document.querySelector('#census-assistant-table tbody').insertAdjacentHTML('beforeend', text);
-        webtrees.resetTomSelect(document.querySelector('#census-assistant-individual').tomselect, '', '');
-      });
-
-    return false;
-  }
-
-  document.querySelectorAll('.census-selector').forEach(function (el) {
-    el.addEventListener('change', censusAssistantSelect);
-  });
-
-  document.querySelectorAll('.census-assistant-link').forEach(function (el) {
-    el.addEventListener('click', censusAssistantLink);
-  });
-
-  document.querySelectorAll('.census-assistant-add').forEach(function (el) {
-    el.addEventListener('click', censusAssistantAdd);
-  });
-
-  document.querySelectorAll('#census-assistant-table').forEach(function (el) {
-    el.addEventListener('click', function (el) {
-      if (el.target.matches('.wt-icon-delete')) {
-        el.target.closest('tr').remove();
-      }
-    });
-  });
-</script>
-<?php View::endpush() ?>

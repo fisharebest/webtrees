@@ -29,23 +29,8 @@ use Illuminate\Support\Collection;
 
 use function count;
 
-use const JSON_THROW_ON_ERROR;
-
 class TreeView
 {
-    // HTML element name
-    private string $name;
-
-    /**
-     * Treeview Constructor
-     *
-     * @param string $name the name of the TreeView object’s instance
-     */
-    public function __construct(string $name = 'tree')
-    {
-        $this->name = $name;
-    }
-
     /**
      * Draw the viewport which creates the draggable/zoomable framework
      * Size is set by the container, as the viewport can scale itself automatically
@@ -53,26 +38,15 @@ class TreeView
      * @param Individual $individual  Draw the chart for this individual
      * @param int        $generations number of generations to draw
      *
-     * @return array<string>  HTML and Javascript
+     * @return string
      */
-    public function drawViewport(Individual $individual, int $generations): array
+    public function drawViewport(Individual $individual, int $generations): string
     {
-        $html = view('modules/interactive-tree/chart', [
+        return view('modules/interactive-tree/chart', [
             'module'     => 'tree',
-            'name'       => $this->name,
             'individual' => $this->drawPerson($individual, $generations, 0, null, '', true),
             'tree'       => $individual->tree(),
         ]);
-
-        // Runtime contract: this inline bootstrap calls the global TreeViewHandler constructor from treeview.js.
-        $js =
-            'window[' . json_encode($this->name . 'Handler', JSON_THROW_ON_ERROR) . '] =' .
-            ' new TreeViewHandler(' .
-            json_encode($this->name, JSON_THROW_ON_ERROR) . ', ' .
-            json_encode($individual->tree()->name(), JSON_THROW_ON_ERROR) .
-            ');';
-
-        return [$html, $js];
     }
 
     /**
@@ -99,7 +73,12 @@ class TreeView
                     break;
 
                 case 'p':
-                    [$xref, $order] = explode('@', $json_request);
+                    $parts = explode('@', $json_request, 2);
+                    if (count($parts) !== 2) {
+                        break;
+                    }
+
+                    [$xref, $order] = $parts;
 
                     $family = Registry::familyFactory()->make($xref, $tree);
                     if ($family instanceof Family) {
@@ -148,21 +127,21 @@ class TreeView
             'tree'   => $individual->tree()->name(),
         ]);
 
-        $hmtl = $this->getThumbnail($individual);
-        $hmtl .= '<a class="tv_link" href="' . e($individual->url()) . '">' . $individual->fullName() . '</a> <a href="' . e($chart_url) . '" title="' . I18N::translate('Interactive tree of %s', strip_tags($individual->fullName())) . '" class="tv_link tv_treelink">' . view('icons/individual') . '</a>';
+        $html = $this->getThumbnail($individual);
+        $html .= '<a class="tv_link" href="' . e($individual->url()) . '">' . $individual->fullName() . '</a> <a href="' . e($chart_url) . '" title="' . I18N::translate('Interactive tree of %s', strip_tags($individual->fullName())) . '" class="tv_link tv_treelink">' . view('icons/individual') . '</a>';
         foreach ($individual->facts(Gedcom::BIRTH_EVENTS, true) as $fact) {
-            $hmtl .= $fact->summary();
+            $html .= $fact->summary();
         }
         if ($family instanceof Family) {
             foreach ($family->facts(Gedcom::MARRIAGE_EVENTS, true) as $fact) {
-                $hmtl .= $fact->summary();
+                $html .= $fact->summary();
             }
         }
         foreach ($individual->facts(Gedcom::DEATH_EVENTS, true) as $fact) {
-            $hmtl .= $fact->summary();
+            $html .= $fact->summary();
         }
 
-        return '<div class="tv' . $individual->sex() . ' tv_person_expanded">' . $hmtl . '</div>';
+        return '<div class="tv' . $individual->sex() . ' tv_person_expanded">' . $html . '</div>';
     }
 
     /**
@@ -206,7 +185,7 @@ class TreeView
                 $html .= $this->drawPerson($child, $gen - 1, -1, null, $co, false);
             }
             if (!$ajax) {
-                $html = '<td align="right"' . ($gen === 0 ? ' abbr="c' . $f2load . '"' : '') . '>' . $html . '</td>' . $this->drawHorizontalLine();
+                $html = '<td class="tv_tree_children"' . ($gen === 0 ? ' data-wt-interactive-tree-request="c' . $f2load . '"' : '') . '>' . $html . '</td>' . $this->drawHorizontalLine();
             }
         }
 
@@ -234,12 +213,12 @@ class TreeView
         }
 
         if ($isRoot) {
-            $html = '<table id="tvTreeBorder" class="tv_tree"><tbody><tr><td id="tv_tree_topleft"></td><td id="tv_tree_top"></td><td id="tv_tree_topright"></td></tr><tr><td id="tv_tree_left"></td><td>';
+            $html = '<table class="tv_tree tv_tree_border"><tbody><tr><td class="tv_tree_topleft"></td><td class="tv_tree_top"></td><td class="tv_tree_topright"></td></tr><tr><td class="tv_tree_left"></td><td>';
         } else {
             $html = '';
         }
         /* height 1% : this hack enable the div auto-dimensioning in td for FF & Chrome */
-        $html .= '<table class="tv_tree"' . ($isRoot ? ' id="tv_tree"' : '') . ' style="height: 1%"><tbody><tr>';
+        $html .= '<table class="tv_tree' . ($isRoot ? ' tv_tree_root' : '') . '" style="height: 1%"><tbody><tr>';
 
         if ($state <= 0) {
             // draw children
@@ -251,7 +230,10 @@ class TreeView
 
         /* draw the person. Do NOT add person or family id as an id, since a same person could appear more than once in the tree !!! */
         // Fixing the width for td to the box initial width when the person is the root person fix a rare bug that happen when a person without child and without known parents is the root person : an unwanted white rectangle appear at the right of the person’s boxes, otherwise.
-        $html .= '<td' . ($isRoot ? ' style="width:1px"' : '') . '><div class="tv_box' . ($isRoot ? ' rootPerson' : '') . '" dir="' . I18N::direction() . '" style="text-align: ' . (I18N::direction() === 'rtl' ? 'right' : 'left') . '; direction: ' . I18N::direction() . '" abbr="' . $person->xref() . '" onclick="' . $this->name . 'Handler.expandBox(this, event);">';
+        $direction  = I18N::direction();
+        $text_align = $direction === 'rtl' ? 'right' : 'left';
+
+        $html .= '<td' . ($isRoot ? ' style="width:1px"' : '') . '><div class="tv_box' . ($isRoot ? ' rootPerson' : '') . '" dir="' . $direction . '" style="text-align: ' . $text_align . '; direction: ' . $direction . '" data-wt-interactive-tree-person-id="' . $person->xref() . '" data-wt-interactive-tree-box>';
         $html .= $this->drawPersonName($person, '');
 
         $fop = []; // $fop is fathers of partners
@@ -291,11 +273,11 @@ class TreeView
         /* draw the parents */
         if ($state >= 0 && ($parent instanceof Individual || $fop !== [])) {
             $unique = $parent === null || $fop === [];
-            $html .= '<td align="left"><table class="tv_tree"><tbody>';
+            $html .= '<td class="tv_tree_parents"><table class="tv_tree"><tbody>';
 
             if ($parent instanceof Individual) {
                 $u = $unique ? 'c' : 't';
-                $html .= '<tr><td ' . ($gen === 0 ? ' abbr="p' . $primaryChildFamily->xref() . '@' . $u . '"' : '') . '>';
+                $html .= '<tr><td' . ($gen === 0 ? ' data-wt-interactive-tree-request="p' . $primaryChildFamily->xref() . '@' . $u . '"' : '') . '>';
                 $html .= $this->drawPerson($parent, $gen - 1, 1, $primaryChildFamily, $u, false);
                 $html .= '</td></tr>';
             }
@@ -306,7 +288,7 @@ class TreeView
                 foreach ($fop as $p) {
                     $n++;
                     $u = $unique ? 'c' : ($n === $nb ? 'b' : 'h');
-                    $html .= '<tr><td ' . ($gen === 0 ? ' abbr="p' . $p[1]->xref() . '@' . $u . '"' : '') . '>' . $this->drawPerson($p[0], $gen - 1, 1, $p[1], $u, false) . '</td></tr>';
+                    $html .= '<tr><td' . ($gen === 0 ? ' data-wt-interactive-tree-request="p' . $p[1]->xref() . '@' . $u . '"' : '') . '>' . $this->drawPerson($p[0], $gen - 1, 1, $p[1], $u, false) . '</td></tr>';
                 }
             }
             $html .= '</tbody></table></td>';
@@ -319,7 +301,7 @@ class TreeView
         $html .= '</tr></tbody></table>';
 
         if ($isRoot) {
-            $html .= '</td><td id="tv_tree_right"></td></tr><tr><td id="tv_tree_bottomleft"></td><td id="tv_tree_bottom"></td><td id="tv_tree_bottomright"></td></tr></tbody></table>';
+            $html .= '</td><td class="tv_tree_right"></td></tr><tr><td class="tv_tree_bottomleft"></td><td class="tv_tree_bottom"></td><td class="tv_tree_bottomright"></td></tr></tbody></table>';
         }
 
         return $html;

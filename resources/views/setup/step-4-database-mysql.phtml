@@ -25,7 +25,7 @@ use Illuminate\Support\Collection;
 
 ?>
 
-<form method="post" autocomplete="off">
+<form method="post" autocomplete="off" data-wt-setup-mysql-connection>
     <input name="lang" type="hidden" value="<?= e($lang) ?>">
     <input name="dbtype" type="hidden" value="<?= e($dbtype) ?>">
     <input name="wtname" type="hidden" value="<?= e($wtname) ?>">
@@ -157,27 +157,4 @@ use Illuminate\Support\Collection;
     </div>
 </form>
 
-<script>
-  (function () {
-    const inputDbHost = document.getElementById('dbhost');
 
-    document.getElementById('mysql-type-local').addEventListener('click', () => inputDbHost.value = '');
-
-    inputDbHost.addEventListener('change', () => {
-      if (inputDbHost.value === 'localhost') {
-        inputDbHost.value = '';
-      }
-      if (inputDbHost.value === '') {
-        document.getElementById('mysql-type-local').click();
-      } else {
-        document.getElementById('mysql-type-network').click();
-      }
-    });
-
-    document.querySelector('form').addEventListener('submit', () => {
-      if (inputDbHost.value === '') {
-        inputDbHost.value = 'localhost'
-      }
-    });
-  })();
-</script>

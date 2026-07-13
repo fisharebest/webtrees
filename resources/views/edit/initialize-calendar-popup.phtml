@@ -5,31 +5,30 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\I18N;
 
 ?>
-<?php use Fisharebest\Webtrees\View; ?>
-
-<?php View::push('javascript') ?>
-<script>
-  webtrees.calLocalize(
-        <?= json_encode(I18N::translateContext('NOMINATIVE', 'January'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translateContext('NOMINATIVE', 'February'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translateContext('NOMINATIVE', 'March'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translateContext('NOMINATIVE', 'April'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translateContext('NOMINATIVE', 'May'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translateContext('NOMINATIVE', 'June'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translateContext('NOMINATIVE', 'July'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translateContext('NOMINATIVE', 'August'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translateContext('NOMINATIVE', 'September'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translateContext('NOMINATIVE', 'October'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translateContext('NOMINATIVE', 'November'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translateContext('NOMINATIVE', 'December'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translate('Sun'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translate('Mon'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translate('Tue'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translate('Wed'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translate('Thu'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translate('Fri'), JSON_THROW_ON_ERROR) ?>,
-        <?= json_encode(I18N::translate('Sat'), JSON_THROW_ON_ERROR) ?>,
-        <?= I18N::locale()->territory()->firstDay() ?>
-  );
-</script>
-<?php View::endpush() ?>
+<span
+    data-wt-calendar-localization
+    data-wt-calendar-months='<?= e(json_encode([
+        I18N::translateContext('NOMINATIVE', 'January'),
+        I18N::translateContext('NOMINATIVE', 'February'),
+        I18N::translateContext('NOMINATIVE', 'March'),
+        I18N::translateContext('NOMINATIVE', 'April'),
+        I18N::translateContext('NOMINATIVE', 'May'),
+        I18N::translateContext('NOMINATIVE', 'June'),
+        I18N::translateContext('NOMINATIVE', 'July'),
+        I18N::translateContext('NOMINATIVE', 'August'),
+        I18N::translateContext('NOMINATIVE', 'September'),
+        I18N::translateContext('NOMINATIVE', 'October'),
+        I18N::translateContext('NOMINATIVE', 'November'),
+        I18N::translateContext('NOMINATIVE', 'December'),
+    ], JSON_THROW_ON_ERROR)) ?>'
+    data-wt-calendar-days='<?= e(json_encode([
+        I18N::translate('Sun'),
+        I18N::translate('Mon'),
+        I18N::translate('Tue'),
+        I18N::translate('Wed'),
+        I18N::translate('Thu'),
+        I18N::translate('Fri'),
+        I18N::translate('Sat'),
+    ], JSON_THROW_ON_ERROR)) ?>'
+    data-wt-calendar-first-day='<?= I18N::locale()->territory()->firstDay() ?>'
+></span>

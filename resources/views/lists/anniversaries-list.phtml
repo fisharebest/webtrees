@@ -6,7 +6,6 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -21,22 +20,11 @@ use Illuminate\Support\Collection;
 <?php foreach ($facts as $n => $fact) : ?>
     <?php if ($n === $limit_low && $facts->count() > $limit_high) : ?>
         <div>
-            <button class="btn btn-sm btn-secondary" id="show-more-<?= e($id) ?>">
+            <button class="btn btn-sm btn-secondary" type="button" data-wt-anniversaries-show-more data-wt-anniversaries-block="#block-<?= e($id) ?>">
                 <?= view('icons/add') ?>
                 <?= /* I18N: button label */ I18N::translate('show more') ?>
             </button>
         </div>
-
-        <?php View::push('javascript') ?>
-        <script>
-            document.getElementById("show-more-<?= e($id) ?>").addEventListener("click", function (ev) {
-                document.querySelectorAll("#block-<?= e($id) ?> .d-none").forEach(function (el) {
-                    el.classList.remove("d-none");
-                });
-                ev.target.parentNode.removeChild(ev.target);
-            });
-        </script>
-        <?php View::endpush() ?>
     <?php endif ?>
 
     <div class="<?= $n >= $limit_low && $facts->count() > $limit_high ? 'd-none' : '' ?>">

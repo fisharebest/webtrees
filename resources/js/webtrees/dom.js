@@ -46,6 +46,12 @@ export function pasteAtCursor(element, text) {
  * @param {HTMLElement} element
  */
 export function persistentToggle(element) {
+  if (element.dataset.wtPersistInitialized === '1') {
+    return;
+  }
+
+  element.dataset.wtPersistInitialized = '1';
+
   const key = 'state-of-' + element.dataset.wtPersist;
   const previousState = localStorage.getItem(key);
 

@@ -61,29 +61,17 @@ class NoteStructure extends SubmitterText
 
         // New note - either inline or shared
         return
-            '<div id="' . e($id) . '-note-structure">' .
-            '<div id="' . e($id) . '-options">' .
+            '<div id="' . e($id) . '-note-structure" data-wt-note-structure>' .
+            '<div id="' . e($id) . '-options" data-wt-note-options>' .
             view('components/radios-inline', ['name' => $id . '-options', 'options' => $options, 'selected' => 'inline']) .
             '</div>' .
-            '<div id="' . e($id) . '-inline">' .
+            '<div id="' . e($id) . '-inline" data-wt-note-inline>' .
             $submitter_text->edit($id, $name, $value, $tree) .
             '</div>' .
-            '<div id="' . e($id) . '-shared" class="d-none">' .
+            '<div id="' . e($id) . '-shared" class="d-none" data-wt-note-shared>' .
             $xref_note->edit($id . '-select', $name, $value, $tree) .
             '</div>' .
-            '</div>' .
-            '<script>' .
-            'document.getElementById("' . e($id) . '-shared").querySelector("select").disabled=true;' .
-            'document.getElementById("' . e($id) . '-options").addEventListener("change", function(){' .
-            ' document.getElementById("' . e($id) . '-inline").classList.toggle("d-none");' .
-            ' document.getElementById("' . e($id) . '-shared").classList.toggle("d-none");' .
-            ' const inline = document.getElementById("' . e($id) . '-inline").querySelector("textarea");' .
-            ' const shared = document.getElementById("' . e($id) . '-shared").querySelector("select");' .
-            ' inline.disabled = !inline.disabled;' .
-            ' shared.disabled = !shared.disabled;' .
-            ' if (shared.disabled) { shared.tomselect.disable(); } else { shared.tomselect.enable(); }' .
-            '})' .
-            '</script>';
+            '</div>';
     }
 
     /**

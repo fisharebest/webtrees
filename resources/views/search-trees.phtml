@@ -43,14 +43,14 @@ use Illuminate\Support\Collection;
                             </div>
                         </div>
                         <div class="ms-auto <?= $all_trees->count() > $search_trees->count() ? 'collapse' : '' ?>" id="select-all">
-                            <button type="button" class="btn btn-sm btn-secondary mx-1" onclick="document.querySelectorAll('#search-trees [type=checkbox]').forEach((element) => {element.checked=true;});">
+                            <button type="button" class="btn btn-sm btn-secondary mx-1" data-wt-checkbox-action="all" data-wt-checkbox-target="#search-trees [type=checkbox]">
                                 <?= /* I18N: select all (of a list of options) */ I18N::translate('select all') ?>
                             </button>
-                            <button type="button" class="btn btn-sm btn-secondary mx-1" onclick="document.querySelectorAll('#search-trees [type=checkbox]').forEach((element) => {element.checked=false;});">
+                            <button type="button" class="btn btn-sm btn-secondary mx-1" data-wt-checkbox-action="none" data-wt-checkbox-target="#search-trees [type=checkbox]">
                                 <?= /* I18N: select none (of a list of options) */  I18N::translate('select none') ?>
                             </button>
                             <?php if ($all_trees->count() > 10) : ?>
-                                <button type="button"  class="btn btn-sm btn-secondary mx-1" onclick="document.querySelectorAll('#search-trees [type=checkbox]').forEach((element) => {element.checked=!element.checked;});">
+                                <button type="button" class="btn btn-sm btn-secondary mx-1" data-wt-checkbox-action="invert" data-wt-checkbox-target="#search-trees [type=checkbox]">
                                     <?= /* I18N: reverse the selection (of a list of options) */ I18N::translate('invert selection') ?>
                                 </button>
                             <?php endif ?>

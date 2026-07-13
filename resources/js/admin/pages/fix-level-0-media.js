@@ -43,7 +43,7 @@ export function initializeFixLevel0MediaPage () {
     body.set('tree_id', requireDatasetValue(target, 'treeId', 'treeId on .wt-fix-button'));
 
     await httpPost(actionUrl, body);
-    $(table).DataTable().ajax.reload(null, false);
+    new DataTable(table).ajax.reload(null, false);
   });
 }
 

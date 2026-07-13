@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\View;
 
 /**
  * @var array<string,string> $tabs
@@ -35,29 +34,4 @@ use Fisharebest\Webtrees\View;
     </div>
 </div>
 
-<?php View::push('javascript') ?>
-<script>
-  'use strict';
 
-  // Bootstrap tabs - load content dynamically using AJAX
-  $('a[data-bs-toggle="tab"][data-wt-href]').on('show.bs.tab', function () {
-    if (this.dataset.wtHref !== '') {
-      $(this.getAttribute('href')).load(this.dataset.wtHref);
-      this.dataset.wtHref = '';
-    }
-  });
-
-  // If the URL contains a fragment, then activate the corresponding tab.
-  // Use a prefix on the fragment, to prevent scrolling to the element.
-  let target = window.location.hash.replace("tab-", "");
-  let tab = document.querySelector("#statistics-tabs .nav-link[href='" + target + "']");
-  // If not, then activate the first tab.
-  tab = tab ?? document.querySelector("#statistics-tabs .nav-link");
-  tab.click();
-
-  // If the user selects a tab, update the URL to reflect this
-  $('#statistics-tabs a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
-    window.location.hash = "tab-" + e.target.href.substring(e.target.href.indexOf('#') + 1);
-  });
-</script>
-<?php View::endpush() ?>

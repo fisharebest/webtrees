@@ -7,7 +7,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var Individual $individual
@@ -20,7 +19,7 @@ use Fisharebest\Webtrees\View;
 <h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" action="<?= e(route(ReorderNamesAction::class, ['tree' => $tree->name(), 'xref' => $individual->xref()])) ?>" class="wt-page-content">
-    <div class="wt-sortable-list">
+    <div class="wt-sortable-list" data-wt-sortable-list>
         <?php foreach ($individual->facts(['NAME'], false, null, true) as $fact) : ?>
             <div class="card my-2 wt-sortable-item">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
@@ -50,10 +49,4 @@ use Fisharebest\Webtrees\View;
     <?= csrf_field() ?>
 </form>
 
-<?php View::push('javascript') ?>
-<script>
-    new Sortable(document.querySelector(".wt-sortable-list"), {
-        handle: ".card-header",
-    });
-</script>
-<?php View::endpush() ?>
+
