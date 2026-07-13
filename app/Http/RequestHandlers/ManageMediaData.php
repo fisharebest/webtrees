@@ -262,30 +262,8 @@ final class ManageMediaData implements RequestHandlerInterface
 
         $html .= $element->value($media->getNote(), $media->tree());
 
-        $linked = [];
-
-        foreach ($this->linked_record_service->linkedIndividuals($media) as $link) {
-            $linked[] = view('icons/individual') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
-        }
-
-        foreach ($this->linked_record_service->linkedFamilies($media) as $link) {
-            $linked[] = view('icons/family') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
-        }
-
-        foreach ($this->linked_record_service->linkedSources($media) as $link) {
-            $linked[] = view('icons/source') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
-        }
-
-        foreach ($this->linked_record_service->linkedNotes($media) as $link) {
-            $linked[] = view('icons/note') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
-        }
-
-        foreach ($this->linked_record_service->linkedRepositories($media) as $link) {
-            $linked[] = view('icons/media') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
-        }
-
-        foreach ($this->linked_record_service->linkedMedia($media) as $link) {
-            $linked[] = view('icons/location') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
+        foreach ($this->linked_record_service->allLinkedRecords($media) as $record) {
+            $linked[] = view('icons/record', ['record' => $record]) . ' <a href="' . e($record->url()) . '">' . $record->fullName() . '</a>';
         }
 
         if ($linked !== []) {
