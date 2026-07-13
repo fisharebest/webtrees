@@ -123,7 +123,19 @@ use Fisharebest\Webtrees\Tree;
     id="wt-datatables-admin-changes"
     class="table table-bordered table-sm table-hover table-site-changes datatables d-none"
     <?= view('lists/datatables-attributes') ?>
-    data-ajax="<?= route(PendingChangesLogData::class, ['from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'tree' => $tree->name(), 'username' => $username]) ?>"
+    data-ajax="<?= e(json_encode([
+        'url'  => route(PendingChangesLogData::class, ['tree' => $tree->name()]),
+        'type' => 'POST',
+        'data' => [
+            'from'     => $from,
+            'to'       => $to,
+            'type'     => $type,
+            'xref'     => $xref,
+            'oldged'   => $oldged,
+            'newged'   => $newged,
+            'username' => $username,
+        ],
+    ], JSON_THROW_ON_ERROR)) ?>"
     data-server-side="true"
     data-sorting="<?= e('[[ 0, "desc" ]]') ?>"
 >

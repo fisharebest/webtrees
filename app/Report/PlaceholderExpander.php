@@ -23,6 +23,7 @@ use DomainException;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use LogicException;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
@@ -34,7 +35,6 @@ use function preg_match_all;
 use function preg_replace;
 use function preg_replace_callback;
 use function sprintf;
-use function str_contains;
 use function str_replace;
 use function trim;
 
@@ -53,7 +53,6 @@ final class PlaceholderExpander
 {
     public function __construct(
         private readonly VariableTable $variables,
-        private readonly Tree $tree,
     ) {
     }
 
@@ -69,28 +68,37 @@ final class PlaceholderExpander
      * 3. `$variable` references replaced with their current values
      * 4. `I18N::number()` / `I18N::translate()` / `I18N::translateContext()`
      * 5. Arithmetic expressions (e.g. "3 + 4")
-     * 6. Any remaining `@` reference clears the value (legacy behavior)
      */
     public function resolveSetVarValue(string $value, string $gedrec, string $fact, string $desc, int $generation): string
     {
-        $match = [];
-
-        // Resolve exact @-tokens against the current GEDCOM context
         if ($value === '@ID') {
             if (preg_match('/0 @(.+)@/', $gedrec, $match)) {
-                $value = $match[1];
+                return $match[1];
             }
-        } elseif ($value === '@fact') {
-            $value = $fact;
-        } elseif ($value === '@desc') {
-            $value = $desc;
-        } elseif ($value === '@generation') {
-            $value = (string) $generation;
-        } elseif (preg_match("/@(\w+)/", $value, $match)) {
+
+            throw new LogicException('Unable to resolve @ID');
+        }
+
+        if ($value === '@fact') {
+            return $fact;
+        }
+
+        if ($value === '@desc') {
+            return $desc;
+        }
+
+        if ($value === '@generation') {
+            return (string) $generation;
+        }
+
+        // Extract value of GEDCOM tag
+        if (preg_match('/^@(\w+)$/', $value, $match)) {
             $gmatch = [];
             if (preg_match("/\d $match[1] (.+)/", $gedrec, $gmatch)) {
-                $value = str_replace('@', '', trim($gmatch[1]));
+                return str_replace('@', '', trim($gmatch[1]));
             }
+
+            return '';
         }
 
         // Resolve $variable references
@@ -108,11 +116,6 @@ final class PlaceholderExpander
         // Evaluate arithmetic expressions
         $value = $this->evaluateArithmetic($value);
 
-        // Clear any unresolved @-references (legacy behavior)
-        if (str_contains($value, '@')) {
-            $value = '';
-        }
-
         return $value;
     }
 
@@ -128,10 +131,11 @@ final class PlaceholderExpander
      * @param string $fact      Current fact tag (e.g. "BIRT")
      * @param string $desc      Current description text
      * @param int    $generation Current generation number
+     * @param Tree   $tree      Tree context used to resolve GEDCOM paths
      *
      * @return bool The result of evaluating the condition
      */
-    public function evaluateCondition(string $condition, string $gedrec, string $fact, string $desc, int $generation): bool
+    public function evaluateCondition(string $condition, string $gedrec, string $fact, string $desc, int $generation, Tree $tree): bool
     {
         $condition = $this->substituteVars($condition, true);
         $condition = str_replace([' LT ', ' GT ', '@fact:'], ['<', '>', $fact . ':'], $condition);
@@ -158,10 +162,10 @@ final class PlaceholderExpander
                 if ($level === 0) {
                     $level++;
                 }
-                $value = GedcomTextReader::getGedcomValue($id, $level, $gedrec, $this->tree);
-                if (empty($value)) {
+                $value = GedcomTextReader::getGedcomValue($id, $level, $gedrec, $tree);
+                if ($value === '') {
                     $level++;
-                    $value = GedcomTextReader::getGedcomValue($id, $level, $gedrec, $this->tree);
+                    $value = GedcomTextReader::getGedcomValue($id, $level, $gedrec, $tree);
                 }
                 $value = preg_replace('/^@(' . Gedcom::REGEX_XREF . ')@$/', '$1', $value);
                 $value = '"' . addslashes($value) . '"';
@@ -213,16 +217,34 @@ final class PlaceholderExpander
      */
     public function applyI18nFunctions(string $value): string
     {
-        if (preg_match('/^I18N::number\((.+)\)$/', $value, $match)) {
-            return I18N::number((int) $match[1]);
+        $value = preg_replace_callback(
+            '/I18N::translateContext\(\'([^\']+)\', *\'([^\']+)\'\)/',
+            static fn (array $match): string => I18N::translateContext($match[1], $match[2]),
+            $value,
+        );
+
+        if ($value === null) {
+            throw new LogicException('Unable to process I18N::translateContext() placeholders.');
         }
 
-        if (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $value, $match)) {
-            return I18N::translate($match[1]);
+        $value = preg_replace_callback(
+            '/I18N::translate\(\'([^\']+)\'\)/',
+            static fn (array $match): string => I18N::translate($match[1]),
+            $value,
+        );
+
+        if ($value === null) {
+            throw new LogicException('Unable to process I18N::translate() placeholders.');
         }
 
-        if (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $value, $match)) {
-            return I18N::translateContext($match[1], $match[2]);
+        $value = preg_replace_callback(
+            '/I18N::number\(([^)]+)\)/',
+            static fn (array $match): string => I18N::number((int) $match[1]),
+            $value,
+        );
+
+        if ($value === null) {
+            throw new LogicException('Unable to process I18N::number() placeholders.');
         }
 
         return $value;

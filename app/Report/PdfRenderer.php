@@ -19,257 +19,173 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use Com\Tecnick\Pdf\Tcpdf;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Webtrees;
+use RuntimeException;
 
-use function count;
+use function define;
+use function defined;
+use function is_dir;
+use function realpath;
+use function strtoupper;
 
-class PdfRenderer extends AbstractRenderer implements PdfRendererInterface
+final class PdfRenderer extends AbstractRenderer implements ElementFactoryInterface, PdfRenderTargetInterface
 {
     /**
-     * PDF compression - Zlib extension is required
-     */
-    private const bool COMPRESSION = true;
-
-    /**
-     * If true reduce the RAM memory usage by caching temporary data on filesystem (slower).
-     */
-    private const bool DISK_CACHE = false;
-
-    /**
      * true means that the input text is unicode (PDF)
-     *
-     * @var bool const
      */
     private const bool UNICODE = true;
 
-    // Font sub-setting in TCPDF is slow.
-    private const bool SUBSETTING = false;
 
-    // Tracks the page an image was last rendered on, for page-break recovery.
-    private int $lastpicpage = 0;
+    private TcLibPdfAdaptor $adaptor;
 
-    private TcpdfWrapper $tcpdf;
+    private readonly PdfWriter $pdf_writer;
 
-    public function header(): void
+    public function __construct()
     {
-        // Save the current style — TCPDF restores its own graphics state
-        // after Header(), but we must keep our style tracker in sync.
-        $saved_style = $this->currentStyle;
+        parent::__construct();
+        $this->pdf_writer = new PdfWriter();
+    }
 
-        foreach ($this->headerElements as $element) {
-            $element->render($this);
-        }
 
-        $this->currentStyle = $saved_style;
+    public function header(float $origin_x = 0.0, float $origin_y = 0.0): void
+    {
+        $saved_style = $this->currentStyleValue();
+        $this->pdf_writer->renderFixedSection($this, $this->headerElements(), $origin_x, $origin_y);
+        $this->restoreCurrentStyle($saved_style);
     }
 
     public function body(): void
     {
-        $this->tcpdf->AddPage();
-
-        foreach ($this->bodyElements as $element) {
-            $element->render($this);
-        }
+        $this->pdf_writer->renderBody($this, $this->bodyElements());
+    }
+    public function footer(float $origin_x = 0.0, float $origin_y = 0.0): void
+    {
+        $saved_style = $this->currentStyleValue();
+        $this->pdf_writer->renderFixedSection($this, $this->footerElements(), $origin_x, $origin_y);
+        $this->restoreCurrentStyle($saved_style);
     }
 
-    public function footnotes(): void
+    private function restoreCurrentStyle(Style|null $saved_style): void
     {
-        foreach ($this->printedfootnotes as $element) {
-            if ($this->tcpdf->GetY() + $element->getFootnoteHeight($this) > $this->getPageHeight()) {
-                $this->tcpdf->AddPage();
-            }
-
-            $element->renderFootnote($this);
-
-            if ($this->tcpdf->GetY() > $this->getPageHeight()) {
-                $this->tcpdf->AddPage();
-            }
+        $this->setCurrentStyleValue($saved_style);
+        if ($saved_style !== null) {
+            $this->adaptor->setFont($this->config->font, strtoupper($saved_style->style), $saved_style->size);
         }
-    }
-
-    public function footer(): void
-    {
-        $saved_style = $this->currentStyle;
-
-        foreach ($this->footerElements as $element) {
-            $element->render($this);
-        }
-
-        $this->currentStyle = $saved_style;
     }
 
     public function setCurrentStyle(Style $style): void
     {
-        if ($this->currentStyle !== $style) {
-            $this->currentStyle = $style;
-            $this->tcpdf->setFont($this->config->font, $style->style, $style->size);
+        if ($this->currentStyleValue() !== $style) {
+            $this->setCurrentStyleValue($style);
+            $this->adaptor->setFont($this->config->font, strtoupper($style->style), $style->size);
         }
     }
 
     /**
      * Return the current PDF page number, delegating to TCPDF.
-     *
      * This override allows element renderers to obtain the current page
-     * number through the same {@see AbstractRenderer::pageNo()} interface
-     * used by the HTML backend, so that
-     * {@see AbstractElement::resolvedText()} can stay backend-agnostic.
+     * number through the same {@see AbstractRenderer::pageNumber()} interface
+     * used by the HTML backend.
      */
-    public function pageNo(): int
+    public function pageNumber(): int
     {
-        return $this->tcpdf->PageNo();
+        return $this->adaptor->pageNumber();
     }
 
-    public function addMarginX(float $x): float
-    {
-        $m = $this->tcpdf->getMargins();
-        if ($this->tcpdf->getRTL()) {
-            $x += $m['right'];
-        } else {
-            $x += $m['left'];
-        }
-        $this->tcpdf->setX($x);
-
-        return $x;
-    }
-
-    public function getMaxLineWidth(): float
-    {
-        $m = $this->tcpdf->getMargins();
-        if ($this->tcpdf->getRTL()) {
-            return $this->tcpdf->getRemainingWidth() + $m['right'];
-        }
-
-        return $this->tcpdf->getRemainingWidth() + $m['left'];
-    }
-
-    public function checkFootnote(AbstractFootnote $footnote): void
-    {
-        $val = $footnote->getValue();
-
-        foreach ($this->printedfootnotes as $i => $printed_footnote) {
-            if ($printed_footnote->getValue() === $val) {
-                // Previously seen footnote
-                $footnote->setNumAndLink($i + 1, (string) ($i + 1));
-
-                return;
-            }
-        }
-
-        // New footnote
-        $num = count($this->printedfootnotes) + 1;
-        $footnote->setNumAndLink($num, (string) $this->createLink());
-        $this->printedfootnotes[] = $footnote;
-    }
-
-    /**
-     * Add a new page, ensuring images on later pages are not overwritten.
-     */
     public function newPage(): void
     {
-        if ($this->getLastPicPage() > $this->tcpdf->getPage()) {
-            $this->tcpdf->setPage($this->getLastPicPage());
-        }
-        $this->tcpdf->AddPage();
+        $this->adaptor->addPage();
     }
 
-    public function checkPageBreakPDF(float $height): bool
-    {
-        return $this->tcpdf->checkPageBreak($height);
-    }
-
-    public function getRemainingWidthPDF(): float
-    {
-        return $this->tcpdf->getRemainingWidth();
-    }
-
-    public function setup(ReportConfig $config): void
+    public function setup(Config $config): void
     {
         parent::setup($config);
 
-        $this->tcpdf = new TcpdfWrapper(
-            $this->config->orientation->value,
+        // Ensure tc-lib-pdf-font can find the converted JSON font definitions
+        if (!defined('K_PATH_FONTS')) {
+            $font_path = realpath(Webtrees::ROOT_DIR . 'resources/fonts');
+
+            if ($font_path === false || !is_dir($font_path)) {
+                throw new RuntimeException('Unable to resolve PDF font directory: ' . Webtrees::ROOT_DIR . 'resources/fonts');
+            }
+
+            define('K_PATH_FONTS', $font_path);
+        }
+
+        $tcpdf = new Tcpdf(
             self::UNITS,
-            [$this->config->page_width, $this->config->page_height],
             self::UNICODE,
-            'UTF-8',
-            self::DISK_CACHE
+            $config->font_subsetting,
+            $config->compression,
+            '',
+            null,
+            [
+                // Keep remote resource loading disabled unless explicitly enabled.
+                'allowedHosts' => [],
+            ],
         );
 
-        $this->tcpdf->setRenderer($this);
-        $this->tcpdf->setMargins($this->config->left_margin, $this->config->top_margin, $this->config->right_margin);
-        $this->tcpdf->setHeaderMargin($this->config->header_margin);
-        $this->tcpdf->setFooterMargin($this->config->footer_margin);
-        $this->tcpdf->setAutoPageBreak(true, $this->config->bottom_margin);
-        $this->tcpdf->setFontSubsetting(self::SUBSETTING);
-        $this->tcpdf->setCompression(self::COMPRESSION);
-        $this->tcpdf->setRTL($this->config->rtl);
-        $this->tcpdf->setCreator(Webtrees::NAME . ' ' . Webtrees::VERSION);
-        $this->tcpdf->setAuthor($this->config->author);
-        $this->tcpdf->setTitle($this->config->title);
-        $this->tcpdf->setSubject($this->config->description);
+        // Emit page transparency groups only when the page actually blends.
+        $tcpdf->setPageTransparencyGroup('auto');
 
-        if ($this->config->show_generated_by) {
-            // The default style name for Generated by.... is 'genby'
-            $element = new PdfCell(0.0, 10.0, '', CellAlign::Center, '', $this->getStyle('genby'), CellNewline::NextLine, AbstractElement::CURRENT_POSITION, AbstractElement::CURRENT_POSITION, false, 0, '', '', true);
-            $element->addText($this->config->generated_by);
-            $element->setUrl(Webtrees::URL);
-            $this->addElementToFooter($element);
-        }
+        $this->adaptor = new TcLibPdfAdaptor($tcpdf, $this, $this->config);
     }
 
-    public function run(): void
+    public function output(): string
     {
         $this->body();
-        echo $this->tcpdf->Output('doc.pdf', 'S');
+
+        return $this->adaptor->output();
     }
 
-    public function createCell(float $width, float $height, string $border, CellAlign $align, string $bgcolor, Style $style, CellNewline $ln, float $top, float $left, bool $fill, int $stretch, string $bocolor, string $tcolor, bool $reseth): PdfCell
+    public function createCell(float $width, float $height, string $border, CellAlign $align, string $background_color, Style $style, CellNewline $newline, float $top, float $left, string $border_color, string $text_color): Cell
     {
-        return new PdfCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
+        return new Cell($width, $height, $border, $align, $background_color, $style, $newline, $top, $left, $border_color, $text_color);
     }
 
     public function createTextBox(
         float $width,
         float $height,
         bool $border,
-        string $bgcolor,
+        string $background_color,
         bool $newline,
         float $left,
         float $top,
-        bool $pagecheck,
-        string $style,
-        bool $fill,
+        bool $check_page_break,
         bool $padding,
-        bool $reseth
-    ): PdfTextBox {
-        return new PdfTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
+        bool $reset_height,
+    ): TextBox {
+        return new TextBox($width, $height, $border, $background_color, $newline, $left, $top, $check_page_break, $padding, $reset_height);
     }
 
-    public function createText(Style $style, string $color): PdfText
+    public function createText(Style $style, string $color, float $truncate): Text
     {
-        return new PdfText($style, $color);
+        return new Text($style, $color, $truncate);
     }
 
-    public function createFootnote(Style $style): PdfFootnote
+    public function createFootnote(Style $style): Footnote
     {
-        return new PdfFootnote($style);
+        return new Footnote($style);
     }
 
     public function createImage(
-        string $file,
+        string $mime_type,
+        string $data,
         float $x,
         float $y,
         float $w,
         float $h,
         CellAlign $align,
         ImageContinuation $ln,
-    ): PdfImage {
-        $src = '@' . file_get_contents($file);
+    ): Image {
+        $src = '@' . $data;
 
-        return new PdfImage($src, $x, $y, $w, $h, $align, $ln);
+        return new Image($src, $x, $y, $w, $h, $align, $ln);
     }
 
     public function createImageFromObject(
@@ -280,298 +196,102 @@ class PdfRenderer extends AbstractRenderer implements PdfRendererInterface
         float $h,
         CellAlign $align,
         ImageContinuation $ln,
-    ): PdfImage {
+    ): Image {
         // Send higher-resolution image at the same aspect ratio.
-        $add_watermark = Registry::imageFactory()->fileNeedsWatermark($media_file, Auth::user());
 
         $data = Registry::imageFactory()->mediaFileThumbnail(
             $media_file,
             (int) ($w * 4),
             (int) ($h * 4),
-            'crop',
-            $add_watermark,
+            ImageOperation::Crop,
+            Auth::needsWatermark($media_file->media()->tree()),
         );
 
         $src = '@' . $data;
 
-        return new PdfImage($src, $x, $y, $w, $h, $align, $ln);
+        return new Image($src, $x, $y, $w, $h, $align, $ln);
     }
 
-    public function createLine(float $x1, float $y1, float $x2, float $y2): PdfLine
+    public function createLine(float $x1, float $y1, float $x2, float $y2): Line
     {
-        return new PdfLine($x1, $y1, $x2, $y2);
+        return new Line($x1, $y1, $x2, $y2);
     }
-
-    // =========================================================================
-    // Cursor positioning
-    // =========================================================================
-
-    public function getX(): float
-    {
-        return $this->tcpdf->GetX();
-    }
-
-    public function getY(): float
-    {
-        return $this->tcpdf->GetY();
-    }
-
-    public function setX(float $x): void
-    {
-        $this->tcpdf->setX($x);
-    }
-
-    public function setY(float $y): void
-    {
-        $this->tcpdf->setY($y);
-    }
-
-    public function setXY(float $x, float $y): void
-    {
-        $this->tcpdf->setXY($x, $y);
-    }
-
-    // =========================================================================
-    // Text measurement
-    // =========================================================================
 
     public function getStringWidth(string $text): float
     {
-        return $this->tcpdf->GetStringWidth($text);
+        return $this->adaptor->getStringWidth($text);
     }
-
-    public function getNumLines(string $text, float $width): int
-    {
-        return $this->tcpdf->getNumLines($text, $width);
-    }
-
-    public function getCellHeightRatio(): float
-    {
-        return $this->tcpdf->getCellHeightRatio();
-    }
-
-    /**
-     * Return the height of the last rendered MultiCell.
-     */
-    public function getLastRenderedHeight(): float
-    {
-        return $this->tcpdf->getLastH();
-    }
-
-    // =========================================================================
-    // Margins
-    // =========================================================================
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getMargins(): array
-    {
-        return $this->tcpdf->getMargins();
-    }
-
-    public function setLeftMargin(float $margin): void
-    {
-        $this->tcpdf->setLeftMargin($margin);
-    }
-
-    public function setRightMargin(float $margin): void
-    {
-        $this->tcpdf->setRightMargin($margin);
-    }
-
-    // =========================================================================
-    // Page operations
-    // =========================================================================
-
-    public function getPageWidth(): float
-    {
-        return $this->tcpdf->getPageWidth();
-    }
-
-    public function getPageHeight(): float
-    {
-        return $this->tcpdf->getPageHeight();
-    }
-
     public function getPageIndex(): int
     {
-        return $this->tcpdf->getPage();
+        return $this->adaptor->getPage();
     }
-
-    public function setPageIndex(int $page): void
-    {
-        $this->tcpdf->setPage($page);
-    }
-
     public function isRTL(): bool
     {
-        return $this->tcpdf->getRTL();
+        return $this->adaptor->getRTL();
     }
 
-    // =========================================================================
-    // Color operations
-    // =========================================================================
-
-    public function setFillColor(int $red, int $green, int $blue): void
+    public function setFillColor(HexColor $color): void
     {
-        $this->tcpdf->setFillColor($red, $green, $blue);
+        $this->adaptor->setFillColor($color);
     }
 
-    public function setDrawColor(int $red, int $green, int $blue): void
+    public function setDrawColor(HexColor $color): void
     {
-        $this->tcpdf->setDrawColor($red, $green, $blue);
+        $this->adaptor->setDrawColor($color);
     }
 
-    public function setTextColor(int $red, int $green, int $blue): void
+    public function setTextColor(HexColor $color): void
     {
-        $this->tcpdf->setTextColor($red, $green, $blue);
+        $this->adaptor->setTextColor($color);
     }
 
     public function resetColors(): void
     {
-        $this->tcpdf->resetColors();
+        $this->adaptor->resetColors();
     }
-
-    // =========================================================================
-    // Rendering operations
-    // =========================================================================
-
-    /**
-     * Write a multi-line text cell with wrapping, border, and alignment.
-     */
-    public function multiCell(
-        float $width,
-        float $height,
-        string $text,
-        string $border,
-        string $align,
-        bool $fill,
-        int $newline,
-        float $x,
-        float $y,
-        bool $reseth,
-        int $stretch,
-        bool $is_html,
-    ): void {
-        $this->tcpdf->MultiCell(
-            $width,
-            $height,
-            $text,
-            $border,
-            $align,
-            $fill,
-            $newline,
-            $x,
-            $y,
-            $reseth,
-            $stretch,
-            $is_html
-        );
-    }
-
-    /**
-     * Write HTML content at the current position.
-     */
-    public function writeHTML(string $html, bool $newline = true, bool $fill = false, bool $reseth = true): void
-    {
-        $this->tcpdf->writeHTML($html, $newline, $fill, $reseth);
-    }
-
-    /**
-     * Write text at the current position with a given line height and optional link.
-     */
-    public function writeText(float $height, string $text, string $link = ''): void
-    {
-        $this->tcpdf->Write($height, $text, $link);
-    }
-
-    /**
-     * Embed an image on the page.
-     */
     public function drawImage(
         string $file,
         float $x,
         float $y,
         float $width,
         float $height,
-        string $type,
-        string $link,
-        string $ln,
-        bool $fitonpage,
-        int $dpi,
-        string $align,
     ): void {
-        $this->tcpdf->Image(
+        $this->adaptor->drawImage(
             $file,
             $x,
             $y,
             $width,
             $height,
-            $type,
-            $link,
-            $ln,
-            $fitonpage,
-            $dpi,
-            $align
         );
     }
 
-    /**
-     * Draw a line between two points.
-     */
     public function drawLine(float $x1, float $y1, float $x2, float $y2): void
     {
-        $this->tcpdf->Line($x1, $y1, $x2, $y2);
+        $this->adaptor->drawLine($x1, $y1, $x2, $y2);
     }
 
-    /**
-     * Draw a rectangle.
-     */
     public function drawRect(float $x, float $y, float $width, float $height, string $style): void
     {
-        $this->tcpdf->Rect($x, $y, $width, $height, $style);
+        $this->adaptor->drawRect($x, $y, $width, $height, $style);
     }
 
-    /**
-     * Add a clickable link area on the current page.
-     */
+    public function drawTextBlock(string $text, float $x, float $y, float $width, float $height, string $align, float $line_height, bool $with_padding = true): void
+    {
+        $this->adaptor->drawTextBlock($text, $x, $y, $width, $height, $align, $line_height, $with_padding);
+    }
+
     public function addLinkArea(float $x, float $y, float $width, float $height, string $url): void
     {
-        $this->tcpdf->Link($x, $y, $width, $height, $url);
+        $this->adaptor->addLinkArea($x, $y, $width, $height, $url);
     }
 
-    // =========================================================================
-    // Link management
-    // =========================================================================
-
-    /**
-     * Create a new internal link reference and return its ID.
-     */
     public function createLink(): int
     {
-        return $this->tcpdf->AddLink();
+        return $this->adaptor->createInternalLink();
     }
 
-    /**
-     * Set the destination of a previously created link.
-     */
-    public function setLinkDestination(string $link, float $y = -1, int $page = -1): void
+    public function setLinkDestination(string $link, float $y, int $page = -1): void
     {
-        $this->tcpdf->setLink($link, $y, $page);
-    }
-
-    // =========================================================================
-    // Image page tracking
-    // =========================================================================
-
-    public function getLastPicPage(): int
-    {
-        return $this->lastpicpage;
-    }
-
-    public function setLastPicPage(int $page): void
-    {
-        $this->lastpicpage = $page;
+        $this->adaptor->setLinkDestination($link, $y, $page);
     }
 }

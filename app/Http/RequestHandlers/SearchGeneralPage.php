@@ -69,9 +69,6 @@ final class SearchGeneralPage implements RequestHandlerInterface
         $search_sources      = Validator::queryParams($request)->boolean('search_sources', false);
         $search_notes        = Validator::queryParams($request)->boolean('search_notes', false);
 
-        // Where to search
-        $search_tree_names = Validator::queryParams($request)->array('search_trees');
-
         $exist_notes = DB::table('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Note::RECORD_TYPE)
@@ -91,10 +88,11 @@ final class SearchGeneralPage implements RequestHandlerInterface
             ->where('s_file', '=', $tree->id())
             ->exists();
 
-        // Default to families and individuals only
-        if (!$search_individuals && !$search_families && !$search_repositories && !$search_sources && !$search_notes) {
+        // If no record types selected, select individuals, families, and shared notes (if they exist)
+        if (!$search_individuals && !$search_families && !$search_locations && !$search_repositories && !$search_sources && !$search_notes) {
             $search_families    = true;
             $search_individuals = true;
+            $search_notes       = $exist_notes;
         }
 
         // What to search for?
@@ -106,6 +104,9 @@ final class SearchGeneralPage implements RequestHandlerInterface
         } else {
             $all_trees = new Collection([$tree]);
         }
+
+        // Where to search
+        $search_tree_names = Validator::queryParams($request)->list('search_trees');
 
         $search_trees = $all_trees
             ->filter(static fn (Tree $tree): bool => in_array($tree->name(), $search_tree_names, true));
@@ -139,42 +140,88 @@ final class SearchGeneralPage implements RequestHandlerInterface
                 $families = $tmp1->merge($tmp2)->unique(static fn (Family $family): string => $family->xref() . '@' . $family->tree()->id());
             }
 
-            if ($search_repositories) {
+            if ($search_repositories && $exist_repositories) {
                 $repositories = $this->search_service->searchRepositories($search_trees->all(), $search_terms);
             }
 
-            if ($search_sources) {
+            if ($search_sources && $exist_sources) {
                 $sources = $this->search_service->searchSources($search_trees->all(), $search_terms);
             }
 
-            if ($search_notes) {
+            if ($search_notes && $exist_notes) {
                 $notes = $this->search_service->searchNotes($search_trees->all(), $search_terms);
             }
 
-            if ($search_locations) {
+            if ($search_locations && $exist_locations) {
                 $locations = $this->search_service->searchLocations($search_trees->all(), $search_terms);
             }
         }
 
         // If only 1 item is returned, automatically forward to that item
-        if ($individuals->count() === 1 && $families->isEmpty() && $sources->isEmpty() && $notes->isEmpty() && $locations->isEmpty()) {
+        if (
+            $individuals->count() === 1 &&
+            $families->isEmpty() &&
+            $sources->isEmpty() &&
+            $notes->isEmpty() &&
+            $locations->isEmpty() &&
+            $repositories->isEmpty()
+        ) {
             return redirect($individuals->first()->url());
         }
 
-        if ($individuals->isEmpty() && $families->count() === 1 && $sources->isEmpty() && $notes->isEmpty() && $locations->isEmpty()) {
+        if (
+            $individuals->isEmpty() &&
+            $families->count() === 1 &&
+            $sources->isEmpty() &&
+            $notes->isEmpty() &&
+            $locations->isEmpty() &&
+            $repositories->isEmpty()
+        ) {
             return redirect($families->first()->url());
         }
 
-        if ($individuals->isEmpty() && $families->isEmpty() && $sources->count() === 1 && $notes->isEmpty() && $locations->isEmpty()) {
+        if (
+            $individuals->isEmpty() &&
+            $families->isEmpty() &&
+            $sources->count() === 1 &&
+            $notes->isEmpty() &&
+            $locations->isEmpty() &&
+            $repositories->isEmpty()
+        ) {
             return redirect($sources->first()->url());
         }
 
-        if ($individuals->isEmpty() && $families->isEmpty() && $sources->isEmpty() && $notes->count() === 1 && $locations->isEmpty()) {
+        if (
+            $individuals->isEmpty() &&
+            $families->isEmpty() &&
+            $sources->isEmpty() &&
+            $notes->count() === 1 &&
+            $locations->isEmpty() &&
+            $repositories->isEmpty()
+        ) {
             return redirect($notes->first()->url());
         }
 
-        if ($individuals->isEmpty() && $families->isEmpty() && $sources->isEmpty() && $notes->isEmpty() && $locations->count() === 1) {
+        if (
+            $individuals->isEmpty() &&
+            $families->isEmpty() &&
+            $sources->isEmpty() &&
+            $notes->isEmpty() &&
+            $locations->count() === 1 &&
+            $repositories->isEmpty()
+        ) {
             return redirect($locations->first()->url());
+        }
+
+        if (
+            $individuals->isEmpty() &&
+            $families->isEmpty() &&
+            $sources->isEmpty() &&
+            $notes->isEmpty() &&
+            $locations->isEmpty() &&
+            $repositories->count() === 1
+        ) {
+            return redirect($repositories->first()->url());
         }
 
         $title = I18N::translate('General search');

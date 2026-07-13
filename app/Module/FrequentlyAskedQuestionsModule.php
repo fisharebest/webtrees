@@ -279,7 +279,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $block_id    = Validator::queryParams($request)->integer('block_id', 0);
         $body        = Validator::parsedBody($request)->string('body');
         $header      = Validator::parsedBody($request)->string('header');
-        $languages   = Validator::parsedBody($request)->array('languages');
+        $languages   = Validator::parsedBody($request)->list('languages');
         $gedcom_id   = Validator::parsedBody($request)->string('gedcom_id');
         $block_order = Validator::parsedBody($request)->integer('block_order');
 

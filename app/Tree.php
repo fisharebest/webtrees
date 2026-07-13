@@ -455,7 +455,7 @@ class Tree
         return Registry::gedcomRecordFactory()->new($xref, '', $gedcom, $this);
     }
 
-    public function createFamily(string $gedcom): GedcomRecord
+    public function createFamily(string $gedcom): Family
     {
         if (!str_starts_with($gedcom, '0 @@ FAM')) {
             throw new InvalidArgumentException('GedcomRecord::createFamily(' . $gedcom . ') does not begin 0 @@ FAM');

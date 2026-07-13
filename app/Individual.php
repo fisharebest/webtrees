@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Fisharebest\ExtCalendar\GregorianCalendar;
+use Fisharebest\Webtrees\Comparators\IndividualComparator;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
 use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
@@ -30,6 +31,9 @@ use function array_key_exists;
 use function count;
 use function in_array;
 use function preg_match;
+use function trigger_error;
+
+use const E_USER_DEPRECATED;
 
 /**
  * A GEDCOM individual (INDI) object.
@@ -58,7 +62,12 @@ class Individual extends GedcomRecord
      */
     public static function birthDateComparator(): Closure
     {
-        return static fn (Individual $x, Individual $y): int => Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
+        trigger_error(
+            'Individual::birthDateComparator() is deprecated and will be removed in version 2.3. Use IndividualComparator::byBirthDate(...) instead.',
+            E_USER_DEPRECATED
+        );
+
+        return IndividualComparator::byBirthDate(...);
     }
 
     /**
@@ -68,7 +77,12 @@ class Individual extends GedcomRecord
      */
     public static function deathDateComparator(): Closure
     {
-        return static fn (Individual $x, Individual $y): int => Date::compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
+        trigger_error(
+            'Individual::deathDateComparator() is deprecated and will be removed in version 2.3. Use IndividualComparator::byDeathDate(...) instead.',
+            E_USER_DEPRECATED
+        );
+
+        return IndividualComparator::byDeathDate(...);
     }
 
     /**

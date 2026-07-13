@@ -335,12 +335,12 @@ class RelationshipNamesTest extends TestCase
         self::assertRelationships('manželka', 'manžel', [$i1m, $f1m, $i2f], $sk);
         self::assertRelationships('partner', 'partner', [$i9u, $f6, $i15u], $sk);
         self::assertRelationships('exmanžel', 'exmanželka', [$i2f, $f2d, $i6m], $sk);
-        self::assertRelationships('snúbenica', 'snúbenec', [$i10f, $f3e, $i3m], $sk);
+        self::assertRelationships('snúbenec', 'snúbenica', [$i10f, $f3e, $i3m], $sk);
         self::assertRelationships('syn', 'otec', [$i1m, $f1m, $i3m], $sk);
         self::assertRelationships('dcéra', 'matka', [$i2f, $f1m, $i4f], $sk);
         self::assertRelationships('dieťa', 'otec', [$i1m, $f1m, $i5u], $sk);
-        self::assertRelationships('brat', 'sestra', [$i4f, $f1m, $i3m], $sk);
-        self::assertRelationships('súrodenec', 'brat', [$i3m, $f1m, $i5u], $sk);
+        self::assertRelationships('starší brat', 'mladšia sestra', [$i4f, $f1m, $i3m], $sk);
+        self::assertRelationships('mladší súrodenec', 'starší brat', [$i3m, $f1m, $i5u], $sk);
         self::assertRelationships('brat', 'sestra', [$i8f, $f2d, $i7ma], $sk);
         self::assertRelationships('súrodenec', 'brat', [$i7ma, $f2d, $i9u], $sk);
         self::assertRelationships('matka', 'syn', [$i7ma, $f2d, $i2f], $sk);

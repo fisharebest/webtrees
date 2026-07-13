@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\Comparators\FactComparator;
 use Fisharebest\Webtrees\Elements\AbstractXrefElement;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
@@ -72,7 +73,7 @@ class GedcomEditService
             ->filter(static fn (string $tag): bool => $tag !== '');
         $facts = $tags->map(fn (string $tag): Fact => $this->createNewFact($dummy, $tag));
 
-        return Fact::sortFacts($facts);
+        return $facts->sort(FactComparator::byType(...));
     }
 
     /**
@@ -89,7 +90,7 @@ class GedcomEditService
         $sex_fact   = new Collection([new Fact('1 SEX ' . $sex, $dummy, '')]);
         $name_facts = Collection::make($names)->map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''));
 
-        return $sex_fact->concat($name_facts)->concat(Fact::sortFacts($facts));
+        return $sex_fact->concat($name_facts)->concat($facts->sort(FactComparator::byType(...))->values());
     }
 
     private function createNewFact(GedcomRecord $record, string $tag): Fact

@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Comparators\PlaceComparator;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataEdit;
@@ -282,7 +283,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     private function getList(Tree $tree): array
     {
         $places = $this->search_service->searchPlaces($tree, '')
-            ->sort(static fn (Place $x, Place $y): int => I18N::comparator()($x->gedcomName(), $y->gedcomName()))
+            ->sort(PlaceComparator::byPlaceName(...))
             ->all();
 
         $count = count($places);

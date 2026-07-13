@@ -213,7 +213,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
             'hourglass'   => I18N::translate('Hourglass chart'),
             'treenav'     => I18N::translate('Interactive tree'),
         ];
-        uasort($charts, I18N::comparator());
+        uasort($charts, I18N::compare(...));
 
         $individual = Registry::individualFactory()->make($xref, $tree);
 

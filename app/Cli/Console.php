@@ -33,6 +33,7 @@ final class Console extends Application
     private const array COMMANDS = [
         Commands\CompilePoFiles::class,
         Commands\ConfigIni::class,
+        Commands\ConvertFont::class,
         Commands\SiteOffline::class,
         Commands\SiteOnline::class,
         Commands\SiteSetting::class,
@@ -41,6 +42,7 @@ final class Console extends Application
         Commands\TreeImport::class,
         Commands\TreeList::class,
         Commands\TreeSetting::class,
+        Commands\Xgettext::class,
         Commands\UserEdit::class,
         Commands\UserList::class,
         Commands\UserSetting::class,

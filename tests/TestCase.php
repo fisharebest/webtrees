@@ -94,7 +94,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * Create a request and bind it into the container.
      *
      * @param array<string|array<string>>  $query
-     * @param array<string>                $params
+     * @param array<string|array<string>>  $params
      * @param array<UploadedFileInterface> $files
      * @param array<string|Tree>           $attributes
      */

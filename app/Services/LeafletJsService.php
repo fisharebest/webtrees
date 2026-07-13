@@ -64,11 +64,6 @@ class LeafletJsService
         $exit_fullscreen_icon  = '<span title="' . I18N::translate('Exit fullscreen') . '">' . view('icons/exit-fullscreen') . '</span>';
 
         return (object) [
-            'i18n'         => [
-                'reset'   => I18N::translate('Reload map'),
-                'zoomIn'  => I18N::translate('Zoom in'),
-                'zoomOut' => I18N::translate('Zoom out'),
-            ],
             'icons'        => [
                 'collapse'   => view('icons/collapse'),
                 'expand'     => view('icons/expand'),

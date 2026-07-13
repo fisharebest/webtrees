@@ -193,7 +193,7 @@ class ColorsTheme extends CloudsTheme implements ModuleGlobalInterface
             'tealtop'          => I18N::translate('Teal Top'),
         ];
 
-        uasort($palettes, I18N::comparator());
+        uasort($palettes, I18N::compare(...));
 
         return $palettes;
     }

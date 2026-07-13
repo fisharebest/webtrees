@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Comparators\FamilyComparator;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
@@ -73,7 +74,7 @@ abstract readonly class AbstractCensusColumn
         return $individual->spouseFamilies()
                 // Exclude families that were created after this census date
             ->filter(fn (Family $family): bool => Date::compare($family->getMarriageDate(), $this->date()) <= 0)
-            ->sort(Family::marriageDateComparator())
+            ->sort(FamilyComparator::byMarriageDate(...))
             ->last();
     }
 

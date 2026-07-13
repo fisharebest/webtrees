@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -28,8 +29,13 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function implode;
+use function response;
+
 final class AdminMediaFileThumbnail implements RequestHandlerInterface
 {
+    private const int THUMBNAIL_CACHE_TTL = 8640000;
+
     public function __construct(
         private readonly MediaFileService $media_file_service,
     ) {
@@ -44,7 +50,32 @@ final class AdminMediaFileThumbnail implements RequestHandlerInterface
 
         foreach ($media_folders as $media_folder) {
             if (str_starts_with($path, $media_folder)) {
-                return Registry::imageFactory()->thumbnailResponse($filesystem, $path, 120, 120, 'contain');
+                $image_factory = Registry::imageFactory();
+                $mime_type     = $image_factory->fileMimeType($filesystem, $path);
+                $last_modified = $filesystem->lastModified(path: $path);
+                $cache_key     = implode(separator: ':', array: [
+                    'admin',
+                    $path,
+                    (string) $last_modified,
+                    '120',
+                    '120',
+                    ImageOperation::Contain->value,
+                ]);
+                $thumbnail = Registry::cache()->file()->remember(
+                    key: $cache_key,
+                    closure: fn (): string => $image_factory->thumbnailContents(
+                        filesystem: $filesystem,
+                        path: $path,
+                        width: 120,
+                        height: 120,
+                        operation: ImageOperation::Contain,
+                    ),
+                    ttl: self::THUMBNAIL_CACHE_TTL,
+                );
+
+                return response($thumbnail)
+                    ->withHeader('content-type', $mime_type)
+                    ->withHeader('content-security-policy', 'default-src none');
             }
         }
 

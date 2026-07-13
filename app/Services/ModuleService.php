@@ -52,6 +52,7 @@ use Fisharebest\Webtrees\Module\CompactTreeChartModule;
 use Fisharebest\Webtrees\Module\ContactsFooterModule;
 use Fisharebest\Webtrees\Module\CustomCssJsModule;
 use Fisharebest\Webtrees\Module\CzechMonarchsAndPresidents;
+use Fisharebest\Webtrees\Module\DanishHistoricalEvents;
 use Fisharebest\Webtrees\Module\DeathReportModule;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
 use Fisharebest\Webtrees\Module\DescendancyModule;
@@ -352,6 +353,7 @@ class ModuleService
         'descendancy_chart'       => DescendancyChartModule::class,
         'descendancy_report'      => DescendancyReportModule::class,
         'dutch_monarchs'          => DutchMonarchs::class,
+        'danish_history'          => DanishHistoricalEvents::class,
         'dutch_prime_ministers'   => DutchPrimeMinisters::class,
         'esri-maps'               => EsriMaps::class,
         'extra_info'              => IndividualMetadataModule::class,
@@ -605,7 +607,7 @@ class ModuleService
      * All modules.
      *
      *
-     * @return Collection<int,ModuleInterface>
+     * @return Collection<string,ModuleInterface>
      */
     public function all(bool $include_disabled = false): Collection
     {
@@ -657,7 +659,7 @@ class ModuleService
     /**
      * All core modules in the system.
      *
-     * @return Collection<int,ModuleInterface>
+     * @return Collection<string,ModuleInterface>
      */
     private function coreModules(): Collection
     {
@@ -674,7 +676,7 @@ class ModuleService
     /**
      * All custom modules in the system.  Custom modules are defined in modules_v4/
      *
-     * @return Collection<int,ModuleCustomInterface>
+     * @return Collection<string,ModuleCustomInterface>
      */
     private function customModules(): Collection
     {
@@ -815,19 +817,20 @@ class ModuleService
             $title1 = $x instanceof ModuleLanguageInterface ? $x->locale()->endonymSortable() : $x->title();
             $title2 = $y instanceof ModuleLanguageInterface ? $y->locale()->endonymSortable() : $y->title();
 
-            return I18N::comparator()($title1, $title2);
+            return I18N::compare($title1, $title2);
         };
     }
 
     /**
      * During setup, we'll need access to some languages.
      *
-     * @return Collection<int,ModuleLanguageInterface>
+     * @return Collection<string,ModuleLanguageInterface>
      */
     public function setupLanguages(): Collection
     {
         return $this->coreModules()
-            ->filter(static fn (ModuleInterface $module): bool => $module instanceof ModuleLanguageInterface && $module->isEnabledByDefault())
+            ->whereInstanceOf(ModuleLanguageInterface::class)
+            ->filter(static fn (ModuleLanguageInterface $module): bool => $module->isEnabledByDefault())
             ->sort(static fn (ModuleLanguageInterface $x, ModuleLanguageInterface $y): int => $x->locale()->endonymSortable() <=> $y->locale()->endonymSortable());
     }
 

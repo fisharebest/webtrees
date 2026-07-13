@@ -21,54 +21,64 @@ namespace Fisharebest\Webtrees\Report;
 
 use Closure;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
+use Fisharebest\Webtrees\Comparators\IndividualComparator;
+use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Elements\UnknownElement;
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\RomanNumeralsService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Support\Str;
 use LogicException;
 use Throwable;
 
+use function array_key_exists;
 use function array_pop;
 use function array_shift;
 use function basename;
 use function count;
-use function end;
 use function explode;
 use function file_exists;
+use function file_get_contents;
 use function getimagesize;
 use function imagecreatefromstring;
 use function imagesx;
 use function imagesy;
 use function in_array;
+use function is_numeric;
+use function pathinfo;
 use function preg_match;
 use function preg_match_all;
-use function preg_split;
 use function round;
 use function sprintf;
 use function str_ends_with;
 use function str_replace;
 use function str_starts_with;
 use function strip_tags;
+use function strtolower;
 use function strlen;
-use function substr;
 use function trim;
 use function uasort;
 
+use const PATHINFO_EXTENSION;
 use const PREG_SET_ORDER;
 
-class ParserGenerate extends AbstractParser
+final class ParserGenerate extends AbstractParser
 {
-    // The default font when none is specified in the XML
     private const string DEFAULT_FONT = 'dejavusans';
+
+    // Millimeters to points (1 point = 1/72 inch).
+    private const float MM_TO_POINTS = 72.0 / 25.4;
 
     private bool $process_footnote = true;
 
@@ -102,7 +112,7 @@ class ParserGenerate extends AbstractParser
     /** @var array<RepeatFrame> Snapshots of the loop state captured when nesting <RepeatTag>, <Facts>, <List> or <Relatives>. */
     private array $repeats_stack = [];
 
-    /** @var array<ElementContainerInterface> Stack of containers when nesting text boxes */
+    /** @var array<DocumentBuilder|TextBox> Stack of containers when nesting text boxes */
     private array $container_stack = [];
 
 
@@ -111,9 +121,9 @@ class ParserGenerate extends AbstractParser
     /** @var array<GedcomFrame> Snapshots of the GEDCOM-record state captured when nesting <Gedcom>. */
     private array $gedrec_stack = [];
 
-    private AbstractElement $current_element;
+    private Element $current_element;
 
-    private AbstractElement $footnote_element;
+    private Element $footnote_element;
 
     private string $fact = '';
 
@@ -123,7 +133,7 @@ class ParserGenerate extends AbstractParser
 
     private int $generation = 1;
 
-    /** @var array<GedcomRecord&object{generation:int}> Source data for processing lists */
+    /** @var array<GedcomRecord> Source data for processing lists */
     private array $list = [];
 
     /** Number of items in lists */
@@ -138,30 +148,52 @@ class ParserGenerate extends AbstractParser
     /** Report description, captured from the <Description> element */
     private string $report_description = '';
 
-    private AbstractRenderer $renderer;
+    private readonly OutputInterface&SetupInterface&ConfigProviderInterface $renderer;
 
-    /** The current target for addElement() — either the renderer or a nested text box */
-    private ElementContainerInterface $current_container;
+    private readonly DocumentAcceptorInterface $document_acceptor;
+
+    private readonly StyleConsumerInterface $style_consumer;
+
+    private readonly ElementFactoryInterface $element_factory;
+
+    private readonly DocumentBuilder $report_document_builder;
+
+    /** The current target for addElement() — root builder or a nested text box. */
+    private DocumentBuilder|TextBox $current_container;
 
     /** Variables defined in the report at run-time, seeded from the setup form. */
-    private VariableTable $variables;
-
-    private Tree $tree;
+    private readonly VariableTable $variables;
 
     /** Resolves $variable, @token and I18N placeholders in attribute values and expressions. */
-    private PlaceholderExpander $expander;
+    private readonly PlaceholderExpander $expander;
+
+    private readonly StyleRepository $style_repository;
+
+    private Document|null $report_document = null;
 
     /**
      * @param array<string,string> $vars Initial variable bindings from the report setup form.
      */
-    public function __construct(string $report, AbstractRenderer $renderer, array $vars, Tree $tree)
-    {
+    public function __construct(
+        string $report,
+        OutputInterface&SetupInterface&ConfigProviderInterface&ElementFactoryInterface&DocumentAcceptorInterface&StyleConsumerInterface $renderer,
+        array $vars,
+        private readonly Tree $tree,
+        private readonly string $author,
+        private readonly TimestampInterface $timestamp,
+        private readonly bool $compression = true,
+        private readonly bool $font_subsetting = true,
+    ) {
         $this->renderer          = $renderer;
-        $this->current_container = $renderer;
+        $this->element_factory   = $renderer;
+        $this->document_acceptor = $renderer;
+        $this->style_consumer    = $renderer;
+        $this->report_document_builder = new DocumentBuilder();
+        $this->current_container = $this->report_document_builder;
         $this->current_element   = new NullElement();
         $this->variables         = new VariableTable($vars);
-        $this->tree              = $tree;
-        $this->expander          = new PlaceholderExpander($this->variables, $this->tree);
+        $this->expander          = new PlaceholderExpander($this->variables);
+        $this->style_repository  = new StyleRepository();
 
         parent::__construct($report);
     }
@@ -187,6 +219,7 @@ class ParserGenerate extends AbstractParser
             'FootnoteTexts'    => $this->footnoteTextsStartHandler(...),
             'Gedcom'           => $this->gedcomStartHandler(...),
             'GedcomValue'      => $this->gedcomValueStartHandler(...),
+            'GeneratedBy'      => $this->generatedByStartHandler(...),
             'Generation'       => $this->generationStartHandler(...),
             'GetPersonName'    => $this->getPersonNameStartHandler(...),
             'Header'           => $this->headerStartHandler(...),
@@ -208,6 +241,7 @@ class ParserGenerate extends AbstractParser
             'TextBox'          => $this->textBoxStartHandler(...),
             'Title'            => $this->titleStartHandler(...),
             'TotalPages'       => $this->totalPagesStartHandler(...),
+            'WebtreesLogo'     => $this->webtreesLogoStartHandler(...),
             'br'               => $this->brStartHandler(...),
             'if'               => $this->ifStartHandler(...),
             'tempdoc'          => $this->noop(...), // synthetic wrapper injected during iteration
@@ -231,6 +265,7 @@ class ParserGenerate extends AbstractParser
             'FootnoteTexts'    => $this->noop(...),
             'Gedcom'           => $this->gedcomEndHandler(...),
             'GedcomValue'      => $this->noop(...),
+            'GeneratedBy'      => $this->noop(...),
             'Generation'       => $this->noop(...),
             'GetPersonName'    => $this->noop(...),
             'Header'           => $this->noop(...),
@@ -252,6 +287,7 @@ class ParserGenerate extends AbstractParser
             'TextBox'          => $this->textBoxEndHandler(...),
             'Title'            => $this->titleEndHandler(...),
             'TotalPages'       => $this->noop(...),
+            'WebtreesLogo'     => $this->noop(...),
             'br'               => $this->noop(...),
             'if'               => $this->ifEndHandler(...),
             'tempdoc'          => $this->noop(...),
@@ -264,16 +300,13 @@ class ParserGenerate extends AbstractParser
      */
     protected function startElement(string $name, array $attrs): void
     {
-        // Expand any $variable references in attribute values up front so
-        // that individual handlers see fully resolved attributes.
-        $newattrs = [];
         foreach ($attrs as $key => $value) {
-            if (preg_match("/^\\$(\w+)$/", $value, $match) && $this->variables->has($match[1])) {
+            if (preg_match('/^[$]([a-z_][a-z_0-9]*)$/i', $value, $match) && $this->variables->has($match[1])) {
                 $value = $this->variables->get($match[1]);
             }
-            $newattrs[$key] = $value;
+
+            $attrs[$key] = $value;
         }
-        $attrs = $newattrs;
 
         if ($this->gateAllowsStart($name)) {
             try {
@@ -341,7 +374,13 @@ class ParserGenerate extends AbstractParser
         if ($this->process_gedcoms !== 0 && $name !== 'Gedcom') {
             return false;
         }
-        if ($this->process_repeats !== 0 && $name !== 'Facts' && $name !== 'RepeatTag' && $name !== 'List' && $name !== 'Relatives') {
+        if (
+            $this->process_repeats !== 0 &&
+            $name !== 'Facts' &&
+            $name !== 'RepeatTag' &&
+            $name !== 'List' &&
+            $name !== 'Relatives'
+        ) {
             return false;
         }
 
@@ -359,30 +398,19 @@ class ParserGenerate extends AbstractParser
     /**
      * @param array<string,string> $attrs
      */
-    protected function styleStartHandler(array $attrs): void
+    private function styleStartHandler(array $attrs): void
     {
-        if (empty($attrs['name'])) {
-            throw new LogicException('The "name" attribute is missing.');
-        }
+        $style = Style::fromXmlAttributes($attrs);
 
-        $style = new Style(
-            name: $attrs['name'],
-            style: $attrs['style'] ?? '',
-            size: (float) ($attrs['size'] ?? AbstractRenderer::DEFAULT_FONT_SIZE),
-        );
-
-        $this->renderer->addStyle($style);
+        $this->style_repository->add($style);
     }
 
     /**
      * @param array<string,string> $attrs
      */
-    protected function docStartHandler(array $attrs): void
+    private function docStartHandler(array $attrs): void
     {
-        // Default margins are in millimeters, converted to points (1 point = 1/72 inch).
-        $mm_to_points = 72.0 / 25.4;
-
-        $page_size = PageSize::tryFrom($attrs['pageSize'] ?? 'A4') ?? PageSize::A4;
+        $page_size = PaperSize::tryFrom($attrs['pageSize'] ?? 'A4') ?? PaperSize::A4;
 
         // Resolve page dimensions: use custom dimensions if specified, otherwise look up the paper size.
         $page_width  = (float) ($attrs['customwidth'] ?? 0.0);
@@ -393,90 +421,120 @@ class ParserGenerate extends AbstractParser
             $page_height = $page_size->height();
         }
 
-        $config = new ReportConfig(
-            page_width:        $page_width,
-            page_height:       $page_height,
-            left_margin:       (float) ($attrs['leftmargin'] ?? 18.0 * $mm_to_points),
-            right_margin:      (float) ($attrs['rightmargin'] ?? 9.9 * $mm_to_points),
-            top_margin:        (float) ($attrs['topmargin'] ?? 26.8 * $mm_to_points),
-            bottom_margin:     (float) ($attrs['bottommargin'] ?? 21.6 * $mm_to_points),
-            header_margin:     (float) ($attrs['headermargin'] ?? 4.9 * $mm_to_points),
-            footer_margin:     (float) ($attrs['footermargin'] ?? 9.9 * $mm_to_points),
-            orientation:       PageOrientation::from($attrs['orientation'] ?? 'portrait'),
-            page_size:         $page_size,
-            show_generated_by: (bool) ($attrs['showGeneratedBy'] ?? true),
-            rtl:               I18N::direction() === 'rtl',
+        $config = new Config(
+            paper_width: $page_width,
+            paper_height: $page_height,
+            left_margin: (float) ($attrs['leftmargin'] ?? 20.0 * self::MM_TO_POINTS),
+            right_margin: (float) ($attrs['rightmargin'] ?? 25.0 * self::MM_TO_POINTS),
+            top_margin: (float) ($attrs['topmargin'] ?? 20.0 * self::MM_TO_POINTS),
+            bottom_margin: (float) ($attrs['bottommargin'] ?? 25.0 * self::MM_TO_POINTS),
+            header_margin: (float) ($attrs['headermargin'] ?? 5.0 * self::MM_TO_POINTS),
+            footer_margin: (float) ($attrs['footermargin'] ?? 10.0 * self::MM_TO_POINTS),
+            orientation: PageOrientation::from($attrs['orientation'] ?? 'portrait'),
+            paper_size: $page_size,
+            rtl: I18N::direction() === 'rtl',
             // I18N: This is a report footer. %s is the name of the application.
-            generated_by:      I18N::translate('Generated by %s', Webtrees::NAME . ' ' . Webtrees::VERSION),
-            author:            Webtrees::NAME . ' ' . Webtrees::VERSION,
-            title:             $this->report_title,
-            description:       $this->report_description,
-            align_rtl:         I18N::direction() === 'rtl' ? 'right' : 'left',
-            entity_rtl:        I18N::direction() === 'rtl' ? '&rlm;' : '&lrm;',
-            font:              $this->variables->has('font') ? $this->variables->get('font') : self::DEFAULT_FONT,
+            generated_by: I18N::translate('Generated by %s', $this->author),
+            author: $this->author,
+            title: $this->report_title,
+            description: $this->report_description,
+            align_rtl: I18N::direction() === 'rtl' ? 'right' : 'left',
+            entity_rtl: I18N::direction() === 'rtl' ? '&rlm;' : '&lrm;',
+            font: $this->variables->has('font') ? $this->variables->get('font') : self::DEFAULT_FONT,
+            timestamp: $this->timestamp,
+            font_subsetting: $this->font_subsetting,
+            compression: $this->compression,
         );
 
         $this->renderer->setup($config);
+
+        // Make these config variables available to the document
+        $this->variables->set('PAPER_SIZE', $config->paper_size->value);
+        $this->variables->set('PAPER_WIDTH', (string) $config->paper_width);
+        $this->variables->set('PAPER_HEIGHT', (string) $config->paper_height);
+        $this->variables->set('LEFT_MARGIN', (string) $config->left_margin);
+        $this->variables->set('RIGHT_MARGIN', (string) $config->right_margin);
+        $this->variables->set('TOP_MARGIN', (string) $config->top_margin);
+        $this->variables->set('BOTTOM_MARGIN', (string) $config->bottom_margin);
+        $this->variables->set('HEADER_MARGIN', (string) $config->header_margin);
+        $this->variables->set('FOOTER_MARGIN', (string) $config->footer_margin);
+        $this->variables->set('ORIENTATION', $config->orientation->value);
+        $this->variables->set('AUTHOR', $config->author);
+        $this->variables->set('TITLE', $config->title);
+        $this->variables->set('DESCRIPTION', $config->description);
+        if ($config->orientation === PageOrientation::Portrait) {
+            $this->variables->set('PAGE_WIDTH', (string) ($config->paper_width - $config->left_margin - $config->right_margin));
+            $this->variables->set('PAGE_HEIGHT', (string) ($config->paper_height - $config->top_margin - $config->bottom_margin));
+        } else {
+            $this->variables->set('PAGE_WIDTH', (string) ($config->paper_height - $config->top_margin - $config->bottom_margin));
+            $this->variables->set('PAGE_HEIGHT', (string) ($config->paper_width - $config->left_margin - $config->right_margin));
+        }
     }
 
-    protected function docEndHandler(): void
+    private function docEndHandler(): void
     {
-        $this->renderer->run();
+        $report_document = $this->report_document_builder->reportDocument($this->report_title);
+        $this->report_document = $report_document;
+
+        foreach ($this->style_repository->all() as $style) {
+            $this->style_consumer->addStyle($style);
+        }
+
+        $this->document_acceptor->applyDocument($report_document);
     }
 
-    protected function headerStartHandler(): void
+    public function reportDocument(): Document|null
     {
-        $this->renderer->setProcessing(ReportSection::Header);
+        return $this->report_document;
     }
 
-    protected function bodyStartHandler(): void
+    private function headerStartHandler(): void
     {
-        $this->renderer->setProcessing(ReportSection::Body);
+        $this->report_document_builder->setProcessing(Section::Header);
     }
 
-    protected function footerStartHandler(): void
+    private function bodyStartHandler(): void
     {
-        $this->renderer->setProcessing(ReportSection::Footer);
+        $this->report_document_builder->setProcessing(Section::Body);
+    }
+
+    private function footerStartHandler(): void
+    {
+        $this->report_document_builder->setProcessing(Section::Footer);
     }
 
     /**
      * @param array<string,string> $attrs
      */
-    protected function cellStartHandler(array $attrs): void
+    private function cellStartHandler(array $attrs): void
     {
-        $bgcolor = $attrs['bgcolor'] ?? '';
-        $bocolor = $attrs['bocolor'] ?? '';
-        $border  = $attrs['border'] ?? '';
-        $fill    = (bool) ($attrs['fill'] ?? false);
-        $height  = (float) ($attrs['height'] ?? 0.0);
-        $left    = (float) ($attrs['left'] ?? AbstractElement::CURRENT_POSITION);
-        $ln      = CellNewline::tryFrom((int) ($attrs['newline'] ?? 0)) ?? CellNewline::Right;
-        $reseth  = (bool) ($attrs['reseth'] ?? true);
-        $stretch = (int) ($attrs['stretch'] ?? 0);
-        $style   = $this->renderer->getStyle($attrs['style'] ?? '');
-        $tcolor  = $attrs['tcolor'] ?? '';
-        $top     = (float) ($attrs['top'] ?? AbstractElement::CURRENT_POSITION);
-        $width   = (float) ($attrs['width'] ?? 0.0);
-        $align   = $this->parseCellAlign($attrs['align'] ?? '');
+        $background_color = $attrs['bgcolor'] ?? '';
+        $border_color     = $attrs['bocolor'] ?? '';
+        $border           = $attrs['border'] ?? '';
+        $height           = (float) ($attrs['height'] ?? 0.0);
+        $left         = (float) ($attrs['left'] ?? Element::CURRENT_POSITION);
+        $newline      = CellNewline::tryFrom((int) ($attrs['newline'] ?? 0)) ?? CellNewline::Right;
+        $style            = $this->style_repository->get($attrs['style'] ?? '');
+        $text_color       = $attrs['tcolor'] ?? '';
+        $top              = (float) ($attrs['top'] ?? Element::CURRENT_POSITION);
+        $align            = $this->parseCellAlign($attrs['align'] ?? '');
+        $width            = (float) ($attrs['width'] ?? 0.0);
 
         $this->print_data_stack[] = $this->print_data;
         $this->print_data         = true;
 
-        $this->current_element = $this->renderer->createCell(
+        $this->current_element = $this->element_factory->createCell(
             $width,
             $height,
             $border,
             $align,
-            $bgcolor,
+            $background_color,
             $style,
-            $ln,
+            $newline,
             $top,
             $left,
-            $fill,
-            $stretch,
-            $bocolor,
-            $tcolor,
-            $reseth
+            $border_color,
+            $text_color,
         );
     }
 
@@ -484,32 +542,98 @@ class ParserGenerate extends AbstractParser
     {
         return match ($value) {
             'center'   => CellAlign::Center,
-            'justify'  => CellAlign::Justify,
             'left'     => CellAlign::Left,
-            'leftrtl'  => $this->renderer->config->rtl ? CellAlign::Right : CellAlign::Left,
+            'leftrtl'  => $this->renderer->reportConfig()->rtl ? CellAlign::Right : CellAlign::Left,
             'right'    => CellAlign::Right,
-            'rightrtl' => $this->renderer->config->rtl ? CellAlign::Left : CellAlign::Right,
+            'rightrtl' => $this->renderer->reportConfig()->rtl ? CellAlign::Left : CellAlign::Right,
             default    => CellAlign::None,
         };
     }
 
-    protected function cellEndHandler(): void
+    private function cellEndHandler(): void
     {
         $this->print_data = array_pop($this->print_data_stack);
         $this->current_container->addElement($this->current_element);
     }
 
-    protected function nowStartHandler(): void
+    private function nowStartHandler(): void
     {
-        $this->current_element->addText(Registry::timestampFactory()->now()->isoFormat('LLLL'));
+        $this->current_element->addText($this->timestamp->isoFormat('LLLL'));
     }
 
-    protected function pageNumStartHandler(): void
+    private function generatedByStartHandler(): void
+    {
+        $this->current_element->addText($this->renderer->reportConfig()->generated_by);
+    }
+
+    /**
+     * Handle <WebtreesLogo /> — embed the webtrees logo as a clickable image
+     * linking to https://webtrees.net.  Aspect ratio is 4:1.
+     *
+     * Uses SVG for HTML output and PNG for PDF output, since tc-lib-pdf
+     * does not support SVG images.
+     *
+     * @param array<string,string> $attrs
+     */
+    private function webtreesLogoStartHandler(array $attrs): void
+    {
+        $default_width  = 80.0;
+        $default_height = 20.0;
+
+        $has_width  = isset($attrs['width']);
+        $has_height = isset($attrs['height']);
+
+        if ($has_width && $has_height) {
+            $width  = (float) $attrs['width'];
+            $height = (float) $attrs['height'];
+        } elseif ($has_width) {
+            $width  = (float) $attrs['width'];
+            $height = $width * $default_height / $default_width;
+        } elseif ($has_height) {
+            $height = (float) $attrs['height'];
+            $width  = $height * $default_width / $default_height;
+        } else {
+            $width  = $default_width;
+            $height = $default_height;
+        }
+
+        // SVG for HTML (sharp at any size), PNG for PDF (tc-lib-pdf lacks SVG support).
+        if ($this->renderer instanceof HtmlRenderer) {
+            $logo_path = Webtrees::ROOT_DIR . 'resources/img/webtrees-logo.svg';
+            $mime_type = 'image/svg+xml';
+        } else {
+            $logo_path = Webtrees::ROOT_DIR . 'resources/img/webtrees-logo.png';
+            $mime_type = 'image/png';
+        }
+
+        $logo_data = file_get_contents($logo_path);
+
+        if ($logo_data === false) {
+            throw new LogicException('Cannot read webtrees logo: ' . $logo_path);
+        }
+
+        $image = $this->element_factory->createImage(
+            $mime_type,
+            $logo_data,
+            Element::CURRENT_POSITION,
+            Element::CURRENT_POSITION,
+            $width,
+            $height,
+            CellAlign::Left,
+            ImageContinuation::SameLine,
+        );
+
+        $url = route(TreePage::class, ['tree' => $this->tree->name()]);
+
+        $this->current_container->addElement($image->withLink($url));
+    }
+
+    private function pageNumStartHandler(): void
     {
         $this->current_element->addPageNumber();
     }
 
-    protected function totalPagesStartHandler(): void
+    private function totalPagesStartHandler(): void
     {
         $this->current_element->addTotalPages();
     }
@@ -517,7 +641,7 @@ class ParserGenerate extends AbstractParser
     /**
      * @param array<string,string> $attrs
      */
-    protected function gedcomStartHandler(array $attrs): void
+    private function gedcomStartHandler(array $attrs): void
     {
         if ($this->process_gedcoms > 0) {
             $this->process_gedcoms++;
@@ -525,45 +649,45 @@ class ParserGenerate extends AbstractParser
             return;
         }
 
-        $tag       = $attrs['id'];
-        $tag       = str_replace('@fact', $this->fact, $tag);
-        $tags      = explode(':', $tag);
-        $newgedrec = '';
-        if (count($tags) < 2) {
-            $tmp       = Registry::gedcomRecordFactory()->make($attrs['id'], $this->tree);
-            $newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
+        $gedcom_path     = str_replace('@fact', $this->fact, $attrs['id']);
+        $path_segments   = explode(':', $gedcom_path);
+        $resolved_gedcom = '';
+        if (count($path_segments) < 2) {
+            $record          = Registry::gedcomRecordFactory()->make($attrs['id'], $this->tree);
+            $resolved_gedcom = $record ? $record->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
         }
-        if (empty($newgedrec)) {
-            $tgedrec   = $this->gedrec;
-            $newgedrec = '';
-            foreach ($tags as $tag) {
-                if (preg_match('/\$(.+)/', $tag, $match)) {
-                    $tmp       = Registry::gedcomRecordFactory()->make($match[1], $this->tree);
-                    $newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
-                } elseif (preg_match('/@(.+)/', $tag, $match)) {
-                    $gmatch = [];
-                    if (preg_match("/\d $match[1] @([^@]+)@/", $tgedrec, $gmatch)) {
-                        $tmp       = Registry::gedcomRecordFactory()->make($gmatch[1], $this->tree);
-                        $newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
-                        $tgedrec   = $newgedrec;
+
+        if ($resolved_gedcom === '') {
+            $current_gedcom  = $this->gedrec;
+            foreach ($path_segments as $path_segment) {
+                if (preg_match('/\$(.+)/', $path_segment, $match)) {
+                    $record          = Registry::gedcomRecordFactory()->make($match[1], $this->tree);
+                    $resolved_gedcom = $record ? $record->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
+                } elseif (preg_match('/@(.+)/', $path_segment, $match)) {
+                    $link_match = [];
+                    if (preg_match("/\d $match[1] @([^@]+)@/", $current_gedcom, $link_match)) {
+                        $record          = Registry::gedcomRecordFactory()->make($link_match[1], $this->tree);
+                        $resolved_gedcom = $record ? $record->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
+                        $current_gedcom  = $resolved_gedcom;
                     } else {
-                        $newgedrec = '';
+                        $resolved_gedcom = '';
                         break;
                     }
                 } else {
-                    $level     = 1 + (int) explode(' ', trim($tgedrec))[0];
-                    $newgedrec = GedcomTextReader::getSubRecord($level, "$level $tag", $tgedrec);
-                    $tgedrec   = $newgedrec;
+                    $level           = 1 + (int) explode(' ', trim($current_gedcom))[0];
+                    $resolved_gedcom = GedcomTextReader::getSubRecord($level, "$level $path_segment", $current_gedcom);
+                    $current_gedcom  = $resolved_gedcom;
                 }
             }
         }
-        if (!empty($newgedrec)) {
+
+        if ($resolved_gedcom !== '') {
             $this->gedrec_stack[] = new GedcomFrame(
                 gedrec: $this->gedrec,
                 fact:   $this->fact,
                 desc:   $this->desc,
             );
-            $this->gedrec         = $newgedrec;
+            $this->gedrec         = $resolved_gedcom;
             if (preg_match("/(\d+) (_?[A-Z0-9]+) (.*)/", $this->gedrec, $match)) {
                 $this->fact = $match[2];
                 $this->desc = trim($match[3]);
@@ -573,7 +697,7 @@ class ParserGenerate extends AbstractParser
         }
     }
 
-    protected function gedcomEndHandler(): void
+    private function gedcomEndHandler(): void
     {
         if ($this->process_gedcoms > 0) {
             $this->process_gedcoms--;
@@ -588,47 +712,43 @@ class ParserGenerate extends AbstractParser
     /**
      * @param array<string,string> $attrs
      */
-    protected function textBoxStartHandler(array $attrs): void
+    private function textBoxStartHandler(array $attrs): void
     {
-        $bgcolor   = $attrs['bgcolor'] ?? '';
-        $border    = (bool) ($attrs['border'] ?? false);
-        $fill      = (bool) ($attrs['fill'] ?? false);
-        $height    = (float) ($attrs['height'] ?? 0.0);
-        $left      = (float) ($attrs['left'] ?? AbstractElement::CURRENT_POSITION);
-        $newline   = (bool) ($attrs['newline'] ?? false);
-        $padding   = (bool) ($attrs['pagecheck'] ?? true);
-        $pagecheck = (bool) ($attrs['pagecheck'] ?? false);
-        $reseth    = (bool) ($attrs['reseth'] ?? false);
-        $top       = (float) ($attrs['top'] ?? AbstractElement::CURRENT_POSITION);
-        $width     = (float) ($attrs['width'] ?? 0.0);
-        $style     = '';
+        $background_color = $attrs['bgcolor'] ?? '';
+        $border           = (bool) ($attrs['border'] ?? false);
+        $height           = (float) ($attrs['height'] ?? 0.0);
+        $left             = (float) ($attrs['left'] ?? Element::CURRENT_POSITION);
+        $newline          = (bool) ($attrs['newline'] ?? false);
+        $padding          = (bool) ($attrs['padding'] ?? true);
+        $check_page_break = (bool) ($attrs['pagecheck'] ?? false);
+        $reset_height     = (bool) ($attrs['reseth'] ?? false);
+        $top              = (float) ($attrs['top'] ?? Element::CURRENT_POSITION);
+        $width            = (float) ($attrs['width'] ?? 0.0);
 
         $this->print_data_stack[] = $this->print_data;
         $this->print_data         = false;
 
         $this->container_stack[] = $this->current_container;
-        $this->current_container         = $this->renderer->createTextBox(
+        $this->current_container         = $this->element_factory->createTextBox(
             $width,
             $height,
             $border,
-            $bgcolor,
+            $background_color,
             $newline,
             $left,
             $top,
-            $pagecheck,
-            $style,
-            $fill,
+            $check_page_break,
             $padding,
-            $reseth
+            $reset_height,
         );
     }
 
-    protected function textBoxEndHandler(): void
+    private function textBoxEndHandler(): void
     {
         $this->print_data = array_pop($this->print_data_stack);
 
         // The text box we were building becomes an element to add to the parent container.
-        assert($this->current_container instanceof AbstractTextBox);
+        assert($this->current_container instanceof TextBox);
         $this->current_element = $this->current_container;
 
         $this->current_container = array_pop($this->container_stack);
@@ -638,18 +758,19 @@ class ParserGenerate extends AbstractParser
     /**
      * @param array<string,string> $attrs
      */
-    protected function textStartHandler(array $attrs): void
+    private function textStartHandler(array $attrs): void
     {
         $this->print_data_stack[] = $this->print_data;
         $this->print_data         = true;
 
-        $style = $this->renderer->getStyle($attrs['style'] ?? '');
-        $color = $attrs['color'] ?? '';
+        $style    = $this->style_repository->get($attrs['style'] ?? '');
+        $color    = $attrs['color'] ?? '';
+        $truncate = (float) ($attrs['truncate'] ?? 0);
 
-        $this->current_element = $this->renderer->createText($style, $color);
+        $this->current_element = $this->element_factory->createText($style, $color, $truncate);
     }
 
-    protected function textEndHandler(): void
+    private function textEndHandler(): void
     {
         $this->print_data = array_pop($this->print_data_stack);
         $this->current_container->addElement($this->current_element);
@@ -658,11 +779,11 @@ class ParserGenerate extends AbstractParser
     /**
      * @param array<string,string> $attrs
      */
-    protected function getPersonNameStartHandler(array $attrs): void
+    private function getPersonNameStartHandler(array $attrs): void
     {
         $id    = '';
         $match = [];
-        if (empty($attrs['id'])) {
+        if (!array_key_exists('id', $attrs) || $attrs['id'] === '') {
             if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
                 $id = $match[1];
             }
@@ -678,26 +799,61 @@ class ParserGenerate extends AbstractParser
         } else {
             $id = $attrs['id'];
         }
-        if (!empty($id)) {
+        if ($id !== '') {
             $record = Registry::gedcomRecordFactory()->make($id, $this->tree);
             if ($record === null) {
                 return;
             }
-            if (!$record->canShowName()) {
-                $this->current_element->addText(I18N::translate('Private'));
-            } else {
+            if ($record->canShowName()) {
                 $name = $record->fullName();
                 $name = strip_tags($name);
-                if (!empty($attrs['truncate'])) {
-                    $name = Str::limit($name, (int) $attrs['truncate'], I18N::translate('…'));
+                $addname = $record->alternateName() ?? '';
+                $addname = strip_tags($addname);
+                if ($addname !== '') {
+                    $name .= ' ' . $addname;
+                }
+
+                // Names are user data and may have a different direction to the page.
+                $bidi_name = UTF8::FIRST_STRONG_ISOLATE . trim($name) . UTF8::POP_DIRECTIONAL_ISOLATE;
+
+                // When inside a Text element, split it so the link only wraps
+                // the name — not any preceding or following text in the same element.
+                if ($this->current_element instanceof Text) {
+                    // Flush any text accumulated before the name as a separate element.
+                    if ($this->current_element->getValue() !== '') {
+                        $this->current_container->addElement($this->current_element);
+                        $this->current_element = $this->element_factory->createText(
+                            $this->current_element->style,
+                            $this->current_element->color,
+                            0.0,
+                        );
+                    }
+
+                    // Emit the name as its own linked Text element.
+                    $name_element = $this->element_factory->createText(
+                        $this->current_element->style,
+                        $this->current_element->color,
+                        $this->current_element->truncate,
+                    );
+                    $name_element->addText($bidi_name);
+                    $name_element->url = $record->url();
+                    $this->current_container->addElement($name_element);
+
+                    // Continue with a fresh element for any text that follows.
+                    $this->current_element = $this->element_factory->createText(
+                        $this->current_element->style,
+                        $this->current_element->color,
+                        0.0,
+                    );
                 } else {
-                    $addname = $record->alternateName() ?? '';
-                    $addname = strip_tags($addname);
-                    if (!empty($addname)) {
-                        $name .= ' ' . $addname;
+                    $this->current_element->addText($bidi_name);
+                    // Set URL on Cell elements to make the cell a link.
+                    if ($this->current_element instanceof Cell) {
+                        $this->current_element->url = $record->url();
                     }
                 }
-                $this->current_element->addText(trim($name));
+            } else {
+                $this->current_element->addText(I18N::translate('Private'));
             }
         }
     }
@@ -705,7 +861,7 @@ class ParserGenerate extends AbstractParser
     /**
      * @param array<string,string> $attrs
      */
-    protected function gedcomValueStartHandler(array $attrs): void
+    private function gedcomValueStartHandler(array $attrs): void
     {
         $id    = '';
         $match = [];
@@ -713,64 +869,56 @@ class ParserGenerate extends AbstractParser
             $id = $match[1];
         }
 
-        $tag       = $attrs['tag'] ?? '';
-        $use_break = (bool) ($attrs['use_break'] ?? false);
-        $truncate  = (int) ($attrs['truncate'] ?? 0);
+        $tag = $attrs['tag'] ?? '';
 
         if ($tag === '') {
             throw new LogicException('The "tag" attribute is missing.');
         }
 
         if ($tag === '@desc') {
-            $this->current_element->addText($this->desc);
+            // User data may have a different ltr/rtl direction to the page.
+            $this->current_element->addText(UTF8::FIRST_STRONG_ISOLATE . $this->desc . UTF8::POP_DIRECTIONAL_ISOLATE);
         } elseif ($tag === '@id') {
-            // Not used in core reports. Should be @ID for consistency with <SetVar>
             $this->current_element->addText($id);
         } else {
-            // $tag is (TAG|@fact)(:SUBTAG(:SUBSUBTAG)?)?
             $tag = str_replace('@fact', $this->fact, $tag);
-            if (empty($attrs['level'])) {
+            if (array_key_exists('level', $attrs)) {
+                if (!is_numeric($attrs['level'])) {
+                    throw new LogicException('The "level" attribute is not numeric.');
+                }
+
+                $level = (int) $attrs['level'];
+            } else {
                 $level = (int) explode(' ', trim($this->gedrec))[0];
                 if ($level === 0) {
                     $level++;
                 }
-            } else {
-                $level = (int) $attrs['level'];
             }
 
             $value = GedcomTextReader::getGedcomValue($tag, $level, $this->gedrec, $this->tree);
 
             if ($tag === 'DATE' || str_ends_with($tag, ':DATE')) {
                 $value = strip_tags((new Date($value))->display());
+                // Some translations have NBSP between the epoch and the year.
+                $value = strtr($value, ['&nbsp;' => "\u{a0}"]);
             }
 
             if ($tag === 'PLAC' || str_ends_with($tag, ':PLAC')) {
                 $value = strip_tags((new Place($value, $this->tree))->shortName());
             }
 
-            if ($use_break) {
-                // Insert <br> when multiple dates exist.
-                // This works around a TCPDF bug that incorrectly wraps RTL dates on LTR pages
-                $value = str_replace('(', '<br>(', $value);
-                $value = str_replace('<span dir="ltr"><br>', '<br><span dir="ltr">', $value);
-                $value = str_replace('<span dir="rtl"><br>', '<br><span dir="rtl">', $value);
-                if (str_starts_with($value, '<br>')) {
-                    $value = substr($value, 4);
-                }
-            }
 
-            if ($truncate !== 0) {
-                $value = Str::limit($value, $truncate, I18N::translate('…'));
-            }
-
-            $this->current_element->addText($value);
+            // User data may have a different ltr/rtl direction to the page.
+            // FSI/PDI isolation prevents adjacent reversed-direction segments
+            // from merging and keeps weak characters with their logical segment.
+            $this->current_element->addText(UTF8::FIRST_STRONG_ISOLATE . $value . UTF8::POP_DIRECTIONAL_ISOLATE);
         }
     }
 
     /**
      * @param array<string,string> $attrs
      */
-    protected function repeatTagStartHandler(array $attrs): void
+    private function repeatTagStartHandler(array $attrs): void
     {
         $this->process_repeats++;
         if ($this->process_repeats > 1) {
@@ -791,59 +939,69 @@ class ParserGenerate extends AbstractParser
         if ($tag === '@desc') {
             $this->current_element->addText($this->desc);
         } else {
-            $tag   = str_replace('@fact', $this->fact, $tag);
-            $tags  = explode(':', $tag);
+            $tag_path = str_replace('@fact', $this->fact, $tag);
+            $tag_segments = explode(':', $tag_path);
             $level = (int) explode(' ', trim($this->gedrec))[0];
             if ($level === 0) {
                 $level++;
             }
-            $subrec = $this->gedrec;
-            $t      = $tag;
-            $count  = count($tags);
-            $i      = 0;
-            while ($i < $count) {
-                $t = $tags[$i];
-                if (!empty($t)) {
-                    if ($i < ($count - 1)) {
-                        $subrec = GedcomTextReader::getSubRecord($level, "$level $t", $subrec);
-                        if (empty($subrec)) {
+            $subrecord = $this->gedrec;
+            $current_tag = $tag_path;
+            $tag_count = count($tag_segments);
+            $tag_index = 0;
+            while ($tag_index < $tag_count) {
+                $current_tag = $tag_segments[$tag_index];
+                if ($current_tag !== '') {
+                    if ($tag_index < ($tag_count - 1)) {
+                        $subrecord = GedcomTextReader::getSubRecord($level, "$level $current_tag", $subrecord);
+                        if ($subrecord === '') {
                             $level--;
-                            $subrec = GedcomTextReader::getSubRecord($level, "@ $t", $this->gedrec);
-                            if (empty($subrec)) {
+                            $subrecord = GedcomTextReader::getSubRecord($level, "@ $current_tag", $this->gedrec);
+                            if ($subrecord === '') {
                                 return;
                             }
                         }
                     }
                     $level++;
                 }
-                $i++;
+                $tag_index++;
             }
             $level--;
-            $count = preg_match_all("/$level $t(.*)/", $subrec, $match, PREG_SET_ORDER);
-            $i     = 0;
-            while ($i < $count) {
-                $i++;
+            $subrecord_count = preg_match_all("/$level $current_tag(.*)/", $subrecord, $match, PREG_SET_ORDER);
+            $subrecord_index = 0;
+            while ($subrecord_index < $subrecord_count) {
+                $subrecord_index++;
                 // Privacy check - is this a link, and are we allowed to view the linked object?
-                $subrecord = GedcomTextReader::getSubRecord($level, "$level $t", $subrec, $i);
-                if (preg_match('/^\d ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@/', $subrecord, $xref_match)) {
+                $repeat_subrecord = GedcomTextReader::getSubRecord(
+                    $level,
+                    "$level $current_tag",
+                    $subrecord,
+                    $subrecord_index,
+                );
+                if (
+                    preg_match(
+                        '/^\d ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@/',
+                        $repeat_subrecord,
+                        $xref_match
+                    )
+                ) {
                     $linked_object = Registry::gedcomRecordFactory()->make($xref_match[1], $this->tree);
                     if ($linked_object && !$linked_object->canShow()) {
                         continue;
                     }
                 }
-                $this->repeats[] = $subrecord;
+                $this->repeats[] = $repeat_subrecord;
             }
         }
     }
 
-    protected function repeatTagEndHandler(): void
+    private function repeatTagEndHandler(): void
     {
         $this->process_repeats--;
         if ($this->process_repeats > 0) {
             return;
         }
 
-        // Reparse the captured inner XML once per matched GEDCOM subrecord.
         if ($this->repeats !== []) {
             $fragment  = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
             $oldgedrec = $this->gedrec;
@@ -870,56 +1028,51 @@ class ParserGenerate extends AbstractParser
      *
      * @param array<string,string> $attrs
      */
-    protected function varStartHandler(array $attrs): void
+    private function varStartHandler(array $attrs): void
     {
-        $var = $attrs['var'] ?? '';
+        $variable_value = $attrs['var'] ?? null;
 
-        if ($var === '') {
+        if ($variable_value === null) {
             throw new LogicException('The "var" attribute is missing.');
         }
 
-        if ($this->variables->has($var)) {
-            $var = $this->variables->get($var);
+        if ($this->variables->has($variable_value)) {
+            $variable_value = $this->variables->get($variable_value);
         } else {
-            $tfact = $this->fact;
+            $fact_label = $this->fact;
             if (($this->fact === 'EVEN' || $this->fact === 'FACT') && $this->type !== '') {
-                // Use :
-                // n TYPE This text if string
-                $tfact = $this->type;
+                $fact_label = $this->type;
             } else {
                 foreach ([Individual::RECORD_TYPE, Family::RECORD_TYPE] as $record_type) {
                     $element = Registry::elementFactory()->make($record_type . ':' . $this->fact);
 
                     if (!$element instanceof UnknownElement) {
-                        $tfact = $element->label();
+                        $fact_label = $element->label();
                         break;
                     }
                 }
             }
 
-            $var = strtr($var, ['@desc' => $this->desc, '@fact' => $tfact]);
+            $variable_value = strtr($variable_value, ['@desc' => $this->desc, '@fact' => $fact_label]);
+            $variable_value = $this->expander->applyI18nFunctions($variable_value);
+        }
+        if (isset($attrs['format'])) {
+            $roman_numerals_service = new RomanNumeralsService();
 
-            if (preg_match('/^I18N::number\((.+)\)$/', $var, $match)) {
-                $var = I18N::number((int) $match[1]);
-            } elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $var, $match)) {
-                $var = I18N::translate($match[1]);
-            } elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $var, $match)) {
-                $var = I18N::translateContext($match[1], $match[2]);
-            }
+            $variable_value = match ($attrs['format']) {
+                'date'   => strip_tags((new Date($variable_value))->display()),
+                'number' => I18N::number((int) $variable_value),
+                'roman'  => strtolower($roman_numerals_service->numberToRomanNumerals((int) $variable_value)),
+                default  => throw new LogicException(sprintf('Unknown format "%s" for <var>.', $attrs['format'])),
+            };
         }
-        // Check if variable is set as a date and reformat the date
-        if (isset($attrs['date'])) {
-            if ($attrs['date'] === '1') {
-                $var = strip_tags((new Date($var))->display());
-            }
-        }
-        $this->current_element->addText($var);
+        $this->current_element->addText($variable_value);
     }
 
     /**
      * @param array<string,string> $attrs
      */
-    protected function factsStartHandler(array $attrs): void
+    private function factsStartHandler(array $attrs): void
     {
         $this->process_repeats++;
         if ($this->process_repeats > 1) {
@@ -931,41 +1084,47 @@ class ParserGenerate extends AbstractParser
         $this->repeat_xml      = $this->xml_reader->readInnerXml();
         $this->repeat_line     = $this->currentLineNumber();
 
-        $id    = '';
+        $record_id = '';
         $match = [];
         if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
-            $id = $match[1];
+            $record_id = $match[1];
         }
-        $tag = '';
+        $ignored_tags = '';
         if (isset($attrs['ignore'])) {
-            $tag .= $attrs['ignore'];
+            $ignored_tags .= $attrs['ignore'];
         }
-        if (preg_match('/\$(.+)/', $tag, $match)) {
-            $tag = $this->variables->get($match[1]);
+        if (preg_match('/\$(.+)/', $ignored_tags, $match)) {
+            $ignored_tags = $this->variables->get($match[1]);
         }
 
-        $record = Registry::gedcomRecordFactory()->make($id, $this->tree);
-        if (empty($attrs['diff']) && !empty($id)) {
-            $facts = $record->facts([], true);
-            $this->repeats = [];
-            $nonfacts      = explode(',', $tag);
-            foreach ($facts as $fact) {
-                $tag = explode(':', $fact->tag())[1];
+        $record = Registry::gedcomRecordFactory()->make($record_id, $this->tree);
 
-                if (!in_array($tag, $nonfacts, true)) {
-                    $this->repeats[] = $fact->gedcom();
+        if ($record instanceof GedcomRecord) {
+            if (isset($attrs['diff']) && $attrs['diff'] === 'true') {
+                foreach ($record->facts() as $fact) {
+                    if (
+                        ($fact->isPendingAddition() || $fact->isPendingDeletion()) &&
+                        !str_ends_with($fact->tag(), ':CHAN')
+                    ) {
+                        $this->repeats[] = $fact->gedcom();
+                    }
                 }
-            }
-        } else {
-            foreach ($record->facts() as $fact) {
-                if (($fact->isPendingAddition() || $fact->isPendingDeletion()) && !str_ends_with($fact->tag(), ':CHAN')) {
-                    $this->repeats[] = $fact->gedcom();
+            } else {
+                $facts = $record->facts([], true);
+                $this->repeats = [];
+                $ignored_fact_tags = explode(',', $ignored_tags);
+                foreach ($facts as $fact) {
+                    $fact_tag = explode(':', $fact->tag())[1];
+
+                    if (!in_array($fact_tag, $ignored_fact_tags, true)) {
+                        $this->repeats[] = $fact->gedcom();
+                    }
                 }
             }
         }
     }
 
-    protected function factsEndHandler(): void
+    private function factsEndHandler(): void
     {
         $this->process_repeats--;
         if ($this->process_repeats > 0) {
@@ -1006,10 +1165,18 @@ class ParserGenerate extends AbstractParser
     /**
      * @param array<string,string> $attrs
      */
-    protected function setVarStartHandler(array $attrs): void
+    private function setVarStartHandler(array $attrs): void
     {
-        if (empty($attrs['name'])) {
+        if (!array_key_exists('name', $attrs)) {
             throw new LogicException('The "name" attribute is missing.');
+        }
+
+        if ($attrs['name'] === '') {
+            throw new LogicException('The "name" attribute is empty.');
+        }
+
+        if (!array_key_exists('value', $attrs)) {
+            throw new LogicException('The "value" attribute is missing.');
         }
 
         $name  = $attrs['name'];
@@ -1027,7 +1194,7 @@ class ParserGenerate extends AbstractParser
     /**
      * @param array<string,string> $attrs
      */
-    protected function ifStartHandler(array $attrs): void
+    private function ifStartHandler(array $attrs): void
     {
         if ($this->process_ifs > 0) {
             $this->process_ifs++;
@@ -1041,6 +1208,7 @@ class ParserGenerate extends AbstractParser
             $this->fact,
             $this->desc,
             $this->generation,
+            $this->tree,
         );
 
         if (!$result) {
@@ -1048,7 +1216,7 @@ class ParserGenerate extends AbstractParser
         }
     }
 
-    protected function ifEndHandler(): void
+    private function ifEndHandler(): void
     {
         if ($this->process_ifs > 0) {
             $this->process_ifs--;
@@ -1058,7 +1226,7 @@ class ParserGenerate extends AbstractParser
     /**
      * @param array<string,string> $attrs
      */
-    protected function footnoteStartHandler(array $attrs): void
+    private function footnoteStartHandler(array $attrs): void
     {
         $id = '';
         if (preg_match('/[0-9] (.+) @(.+)@/', $this->gedrec, $match)) {
@@ -1068,16 +1236,16 @@ class ParserGenerate extends AbstractParser
         if ($record && $record->canShow()) {
             $this->print_data_stack[] = $this->print_data;
             $this->print_data         = true;
-            $style                    = $this->renderer->getStyle($attrs['style'] ?? 'footnote');
+            $style                    = $this->style_repository->get($attrs['style'] ?? 'footnote');
             $this->footnote_element = $this->current_element;
-            $this->current_element  = $this->renderer->createFootnote($style);
+            $this->current_element  = $this->element_factory->createFootnote($style);
         } else {
             $this->print_data       = false;
             $this->process_footnote = false;
         }
     }
 
-    protected function footnoteEndHandler(): void
+    private function footnoteEndHandler(): void
     {
         if ($this->process_footnote) {
             $this->print_data = array_pop($this->print_data_stack);
@@ -1091,12 +1259,12 @@ class ParserGenerate extends AbstractParser
         }
     }
 
-    protected function footnoteTextsStartHandler(): void
+    private function footnoteTextsStartHandler(): void
     {
         $this->current_container->addElement(new FootnoteTextsElement());
     }
 
-    protected function brStartHandler(): void
+    private function brStartHandler(): void
     {
         if ($this->print_data && $this->process_gedcoms === 0) {
             $this->current_element->addText('<br>');
@@ -1106,7 +1274,7 @@ class ParserGenerate extends AbstractParser
     /**
      * @param array<string,string> $attrs
      */
-    protected function highlightedImageStartHandler(array $attrs): void
+    private function highlightedImageStartHandler(array $attrs): void
     {
         $id = '';
         if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
@@ -1115,29 +1283,42 @@ class ParserGenerate extends AbstractParser
 
         $align  = $this->parseCellAlign($attrs['align'] ?? '');
         $height = (float) ($attrs['height'] ?? 0.0);
-        $left   = (float) ($attrs['left'] ?? AbstractElement::CURRENT_POSITION);
-        $ln     = ImageContinuation::tryFrom($attrs['ln'] ?? 'T') ?? ImageContinuation::SameLine;
-        $top    = (float) ($attrs['top'] ?? AbstractElement::CURRENT_POSITION);
+        $left   = (float) ($attrs['left'] ?? Element::CURRENT_POSITION);
+        $line_continuation = ImageContinuation::tryFrom($attrs['ln'] ?? 'T') ?? ImageContinuation::SameLine;
+        $top    = (float) ($attrs['top'] ?? Element::CURRENT_POSITION);
         $width  = (float) ($attrs['width'] ?? 0.0);
 
         $person     = Registry::individualFactory()->make($id, $this->tree);
         $media_file = $person->findHighlightedMediaFile();
 
         if ($media_file instanceof MediaFile && $media_file->fileExists()) {
-            $image      = imagecreatefromstring($media_file->fileContents());
-            $attributes = [imagesx($image), imagesy($image)];
-
-            if ($width > 0 && $height == 0) {
-                $perc   = $width / $attributes[0];
-                $height = round($attributes[1] * $perc);
-            } elseif ($height > 0 && $width == 0) {
-                $perc  = $height / $attributes[1];
-                $width = round($attributes[0] * $perc);
-            } else {
-                $width  = (float) $attributes[0];
-                $height = (float) $attributes[1];
+            $gd_image = imagecreatefromstring($media_file->fileContents());
+            if ($gd_image === false) {
+                throw new LogicException(sprintf('Cannot decode highlighted media image for record: %s', $id));
             }
-            $image = $this->renderer->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln);
+
+            if ($width === 0.0 && $height === 0.0) {
+                throw new LogicException(sprintf('Need height, width or both for images'));
+            }
+
+            if ($height === 0.0) {
+                $height = $width * imagesy($gd_image)  / imagesx($gd_image);
+            }
+
+            if ($width === 0.0) {
+                $width = $height * imagesx($gd_image) / imagesy($gd_image);
+            }
+
+            $image = $this->element_factory->createImageFromObject(
+                $media_file,
+                $left,
+                $top,
+                $width,
+                $height,
+                $align,
+                $line_continuation,
+            );
+
             $this->current_container->addElement($image);
         }
     }
@@ -1145,14 +1326,14 @@ class ParserGenerate extends AbstractParser
     /**
      * @param array<string,string> $attrs
      */
-    protected function imageStartHandler(array $attrs): void
+    private function imageStartHandler(array $attrs): void
     {
         $align  = $this->parseCellAlign($attrs['align'] ?? '');
         $file   = $attrs['file'] ?? '';
         $height = (float) ($attrs['height'] ?? 0.0);
-        $left   = (float) ($attrs['left'] ?? AbstractElement::CURRENT_POSITION);
-        $ln     = ImageContinuation::tryFrom($attrs['ln'] ?? 'T') ?? ImageContinuation::SameLine;
-        $top    = (float) ($attrs['top'] ?? AbstractElement::CURRENT_POSITION);
+        $left   = (float) ($attrs['left'] ?? Element::CURRENT_POSITION);
+        $line_continuation = ImageContinuation::tryFrom($attrs['ln'] ?? 'T') ?? ImageContinuation::SameLine;
+        $top    = (float) ($attrs['top'] ?? Element::CURRENT_POSITION);
         $width  = (float) ($attrs['width'] ?? 0.0);
 
         if ($file === '@FILE') {
@@ -1162,58 +1343,89 @@ class ParserGenerate extends AbstractParser
                 $media_file  = $mediaobject->firstImageFile();
 
                 if ($media_file instanceof MediaFile && $media_file->fileExists()) {
-                    $image      = imagecreatefromstring($media_file->fileContents());
-                    $attributes = [imagesx($image), imagesy($image)];
-
-                    if ($width > 0 && $height == 0) {
-                        $perc   = $width / $attributes[0];
-                        $height = round($attributes[1] * $perc);
-                    } elseif ($height > 0 && $width == 0) {
-                        $perc  = $height / $attributes[1];
-                        $width = round($attributes[0] * $perc);
-                    } else {
-                        $width  = (float) $attributes[0];
-                        $height = (float) $attributes[1];
+                    $gd_image = imagecreatefromstring($media_file->fileContents());
+                    if ($gd_image === false) {
+                        throw new LogicException(sprintf('Cannot decode media image for object: %s', $match[1]));
                     }
-                    $image = $this->renderer->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln);
+
+                    if ($width === 0.0 && $height === 0.0) {
+                        throw new LogicException(sprintf('Need height, width or both for images'));
+                    }
+
+                    if ($height === 0.0) {
+                        $height = round(imagesy($gd_image) * $width / imagesx($gd_image));
+                    }
+
+                    if ($width === 0.0) {
+                        $width = round(imagesx($gd_image) * $height / imagesy($gd_image));
+                    }
+
+                    $image = $this->element_factory->createImageFromObject(
+                        $media_file,
+                        $left,
+                        $top,
+                        $width,
+                        $height,
+                        $align,
+                        $line_continuation,
+                    );
+
                     $this->current_container->addElement($image);
                 }
             }
-        } elseif (file_exists($file) && preg_match('/(jpg|jpeg|png|gif)$/i', $file)) {
+        } elseif (file_exists($file)) {
+            $mime_type = match (strtolower(pathinfo($file, PATHINFO_EXTENSION))) {
+                'jpg', 'jpeg' => 'image/jpeg',
+                'png'         => 'image/png',
+                'gif'         => 'image/gif',
+                default       => null,
+            };
+            if ($mime_type === null) {
+                return;
+            }
+
+            $data = file_get_contents($file);
+            if ($data === false) {
+                throw new LogicException(sprintf('Cannot read image file: %s', $file));
+            }
+
             $size = getimagesize($file);
-            if ($width > 0 && $height == 0) {
-                $perc   = $width / $size[0];
-                $height = round($size[1] * $perc);
-            } elseif ($height > 0 && $width == 0) {
-                $perc  = $height / $size[1];
-                $width = round($size[0] * $perc);
+            if ($size === false) {
+                throw new LogicException(sprintf('Cannot determine image size: %s', $file));
+            }
+
+            if ($width > 0 && $height === 0.0) {
+                $height      = $width * $size[1] / $size[0];
+            } elseif ($height > 0 && $width === 0.0) {
+                $width       = $height * $size[0] / $size[1];
             } else {
                 $width  = $size[0];
                 $height = $size[1];
             }
-            $image = $this->renderer->createImage($file, $left, $top, $width, $height, $align, $ln);
+            $image = $this->element_factory->createImage($mime_type, $data, $left, $top, $width, $height, $align, $line_continuation);
             $this->current_container->addElement($image);
         }
     }
 
+
     /**
      * @param array<string,string> $attrs
      */
-    protected function lineStartHandler(array $attrs): void
+    private function lineStartHandler(array $attrs): void
     {
-        $x1 = (float) ($attrs['x1'] ?? AbstractElement::CURRENT_POSITION);
-        $x2 = (float) ($attrs['x2'] ?? AbstractElement::CURRENT_POSITION);
-        $y1 = (float) ($attrs['y1'] ?? AbstractElement::CURRENT_POSITION);
-        $y2 = (float) ($attrs['y2'] ?? AbstractElement::CURRENT_POSITION);
+        $x1 = (float) ($attrs['x1'] ?? Element::CURRENT_POSITION);
+        $x2 = (float) ($attrs['x2'] ?? Element::CURRENT_POSITION);
+        $y1 = (float) ($attrs['y1'] ?? Element::CURRENT_POSITION);
+        $y2 = (float) ($attrs['y2'] ?? Element::CURRENT_POSITION);
 
-        $line = $this->renderer->createLine($x1, $y1, $x2, $y2);
+        $line = $this->element_factory->createLine($x1, $y1, $x2, $y2);
         $this->current_container->addElement($line);
     }
 
     /**
      * @param array<string,string> $attrs
      */
-    protected function listStartHandler(array $attrs): void
+    private function listStartHandler(array $attrs): void
     {
         $this->process_repeats++;
         if ($this->process_repeats > 1) {
@@ -1233,31 +1445,26 @@ class ParserGenerate extends AbstractParser
 
         $listname = $attrs['list'] ?? 'individual';
 
-        $list_builder = new ReportListBuilder($this->tree);
-        $this->list   = $list_builder->buildList(
-            $listname,
-            $attrs,
-            $sortby,
-            $this->expander->substituteVars(...),
-            $this->gedrec,
-            $this->fact,
-            $this->desc,
-            $this->variables,
-        );
+        $list_builder = new ListBuilder($this->tree);
+        $this->list = match ($listname) {
+            'pending'    => $list_builder->buildChangeList($attrs, $sortby, $this->gedrec, $this->fact, $this->desc, $this->variables),
+            'individual' => $list_builder->buildIndividualList($attrs, $sortby, $this->expander->substituteVars(...), $this->gedrec, $this->fact, $this->desc, $this->variables),
+            'family'     => $list_builder->buildFamilyList($attrs, $sortby, $this->expander->substituteVars(...), $this->gedrec, $this->fact, $this->desc, $this->variables),
+            default      => throw new LogicException('Invalid list name: ' . $listname),
+        };
 
         $this->pushRepeatFrame();
-        $this->repeat_xml      = (string) $this->xml_reader->readInnerXml();
+        $this->repeat_xml      = $this->xml_reader->readInnerXml();
         $this->repeat_line     = $this->currentLineNumber();
     }
 
-    protected function listEndHandler(): void
+    private function listEndHandler(): void
     {
         $this->process_repeats--;
         if ($this->process_repeats > 0) {
             return;
         }
 
-        // Check if there is any list
         if (count($this->list) > 0) {
             $fragment  = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
             $oldgedrec = $this->gedrec;
@@ -1283,9 +1490,9 @@ class ParserGenerate extends AbstractParser
      * Prints the total number of records in a list
      * The total number is collected from <list> and <relatives>
      */
-    protected function listTotalStartHandler(): void
+    private function listTotalStartHandler(): void
     {
-        if ($this->list_private == 0) {
+        if ($this->list_private === 0) {
             $this->current_element->addText((string) $this->list_total);
         } else {
             $this->current_element->addText(($this->list_total - $this->list_private) . ' / ' . $this->list_total);
@@ -1295,7 +1502,7 @@ class ParserGenerate extends AbstractParser
     /**
      * @param array<string,string> $attrs
      */
-    protected function relativesStartHandler(array $attrs): void
+    private function relativesStartHandler(array $attrs): void
     {
         $this->process_repeats++;
         if ($this->process_repeats > 1) {
@@ -1325,80 +1532,82 @@ class ParserGenerate extends AbstractParser
             $id = trim($id);
         }
 
-        $this->list = [];
+        $individual_list = [];
+
         $person     = Registry::individualFactory()->make($id, $this->tree);
         if ($person instanceof Individual) {
-            $this->list[$id] = $person;
+            $individual_list[$id] = $person;
             switch ($group) {
                 case 'child-family':
                     foreach ($person->childFamilies() as $family) {
                         foreach ($family->spouses() as $spouse) {
-                            $this->list[$spouse->xref()] = $spouse;
+                            $individual_list[$spouse->xref()] = $spouse;
                         }
 
                         foreach ($family->children() as $child) {
-                            $this->list[$child->xref()] = $child;
+                            $individual_list[$child->xref()] = $child;
                         }
                     }
                     break;
                 case 'spouse-family':
                     foreach ($person->spouseFamilies() as $family) {
                         foreach ($family->spouses() as $spouse) {
-                            $this->list[$spouse->xref()] = $spouse;
+                            $individual_list[$spouse->xref()] = $spouse;
                         }
 
                         foreach ($family->children() as $child) {
-                            $this->list[$child->xref()] = $child;
+                            $individual_list[$child->xref()] = $child;
                         }
                     }
                     break;
                 case 'direct-ancestors':
-                    $this->addAncestors($this->list, $id, false, $maxgen);
+                    $this->addAncestors($individual_list, $id, false, $maxgen);
                     break;
                 case 'ancestors':
-                    $this->addAncestors($this->list, $id, true, $maxgen);
+                    $this->addAncestors($individual_list, $id, true, $maxgen);
                     break;
                 case 'descendants':
-                    $this->list[$id]->generation = 1;
-                    $this->addDescendancy($this->list, $id, false, $maxgen);
+                    $individual_list[$id]->generation = 1;
+                    $this->addDescendancy($individual_list, $id, false, $maxgen);
                     break;
                 case 'all':
-                    $this->addAncestors($this->list, $id, true, $maxgen);
-                    $this->addDescendancy($this->list, $id, true, $maxgen);
+                    $this->addAncestors($individual_list, $id, true, $maxgen);
+                    $this->addDescendancy($individual_list, $id, true, $maxgen);
                     break;
             }
         }
 
         switch ($sortby) {
             case 'NAME':
-                uasort($this->list, GedcomRecord::nameComparator());
+                uasort($individual_list, GedcomRecordComparator::byName(...));
                 break;
             case 'BIRT:DATE':
-                uasort($this->list, Individual::birthDateComparator());
+                uasort($individual_list, IndividualComparator::byBirthDate(...));
                 break;
             case 'DEAT:DATE':
-                uasort($this->list, Individual::deathDateComparator());
+                uasort($individual_list, IndividualComparator::byDeathDate(...));
                 break;
             case 'generation':
-                uasort($this->list, static fn ($x, $y): int => $x->generation <=> $y->generation);
+                uasort($individual_list, static fn ($x, $y): int => $x->generation <=> $y->generation);
                 break;
             default:
-                // unsorted
                 break;
         }
+
+        $this->list = $individual_list;
+
         $this->pushRepeatFrame();
-        $this->repeat_xml      = (string) $this->xml_reader->readInnerXml();
+        $this->repeat_xml      = $this->xml_reader->readInnerXml();
         $this->repeat_line     = $this->currentLineNumber();
     }
 
-    protected function relativesEndHandler(): void
+    private function relativesEndHandler(): void
     {
         $this->process_repeats--;
         if ($this->process_repeats > 0) {
             return;
         }
 
-        // Check if there is any relatives
         if (count($this->list) > 0) {
             $fragment  = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
             $oldgedrec = $this->gedrec;
@@ -1409,44 +1618,43 @@ class ParserGenerate extends AbstractParser
                 if (isset($value->generation)) {
                     $this->generation = $value->generation;
                 }
-                $tmp          = Registry::gedcomRecordFactory()->make((string) $xref, $this->tree);
-                $this->gedrec = $tmp->privatizeGedcom(Auth::accessLevel($this->tree));
+                $record        = Registry::gedcomRecordFactory()->make((string) $xref, $this->tree);
+                $this->gedrec  = $record->privatizeGedcom(Auth::accessLevel($this->tree));
 
                 $this->parseFragment($fragment);
             }
-            // Clean up the list array
             $this->list   = [];
             $this->gedrec = $oldgedrec;
         }
         $this->popRepeatFrame();
     }
 
-    protected function generationStartHandler(): void
+    private function generationStartHandler(): void
     {
         $this->current_element->addText(I18N::number($this->generation));
     }
 
-    protected function newPageStartHandler(): void
+    private function newPageStartHandler(): void
     {
         $this->current_container->addElement(new NewPageElement());
     }
 
-    protected function titleStartHandler(): void
+    private function titleStartHandler(): void
     {
         $this->current_element = new NullElement();
     }
 
-    protected function titleEndHandler(): void
+    private function titleEndHandler(): void
     {
         $this->report_title = $this->current_element->getValue();
     }
 
-    protected function descriptionStartHandler(): void
+    private function descriptionStartHandler(): void
     {
         $this->current_element = new NullElement();
     }
 
-    protected function descriptionEndHandler(): void
+    private function descriptionEndHandler(): void
     {
         $this->report_description = $this->current_element->getValue();
     }
@@ -1491,14 +1699,12 @@ class ParserGenerate extends AbstractParser
             $children = $family->children();
 
             foreach ($children as $child) {
-                if ($child) {
-                    $list[$child->xref()] = $child;
+                $list[$child->xref()] = $child;
 
-                    if (isset($list[$pid]->generation)) {
-                        $list[$child->xref()]->generation = $list[$pid]->generation + 1;
-                    } else {
-                        $list[$child->xref()]->generation = 2;
-                    }
+                if (isset($list[$pid]->generation)) {
+                    $list[$child->xref()]->generation = $list[$pid]->generation + 1;
+                } else {
+                    $list[$child->xref()]->generation = 2;
                 }
             }
             if ($generations === -1 || $list[$pid]->generation + 1 < $generations) {

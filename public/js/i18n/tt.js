@@ -1,0 +1,2 @@
+window.webtrees = window.webtrees || {};
+window.webtrees.i18nCatalog = Object.assign(window.webtrees.i18nCatalog || {}, {"OK":"OK","Reload map":"Reload map","Zoom in":"\u0417\u0443\u0440\u0430\u0439\u0442\u044b\u0440\u0433\u0430","Zoom out":"\u041a\u0435\u0447\u0435\u0440\u04d9\u0439\u0442\u0435\u0440\u0433\u04d9","cancel":"\u0422\u0443\u043a\u0442\u0430\u0442\u044b\u0440\u0433\u0430","close":"close","next":"\u043a\u0438\u043b\u04d9\u0441\u0435","previous":"\u0430\u043b\u0434\u0430\u0433\u044b"});

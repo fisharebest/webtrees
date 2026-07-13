@@ -12,6 +12,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -140,8 +141,9 @@ use Illuminate\Support\Collection;
                                 <?php } ?>
                                 <button
                                     type="button"
-                                    class="btn btn-danger"
-                                    onclick="if (confirm('<?= I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') ?>')) {$('#messageform :checkbox').prop('checked', false); $('#cb_message<?= $message->message_id ?>').prop('checked', true); document.messageform.submit();}"
+                                    class="btn btn-danger wt-delete-message"
+                                    data-wt-confirm="<?= I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') ?>"
+                                    data-wt-message-id="<?= $message->message_id ?>"
                                 >
                                     <?= I18N::translate('Delete') ?>
                                 </button>
@@ -164,3 +166,23 @@ use Illuminate\Support\Collection;
 
     <?= csrf_field() ?>
 </form>
+
+<?php View::push('javascript') ?>
+<script>
+  'use strict';
+
+  document.querySelectorAll('.wt-delete-message').forEach(function (element) {
+    element.addEventListener('click', function () {
+      webtrees.confirmDialog(element.dataset.wtConfirm).then(function (confirmed) {
+        if (!confirmed) {
+          return;
+        }
+
+        $('#messageform :checkbox').prop('checked', false);
+        $('#cb_message' + element.dataset.wtMessageId).prop('checked', true);
+        document.messageform.submit();
+      });
+    });
+  });
+</script>
+<?php View::endpush() ?>

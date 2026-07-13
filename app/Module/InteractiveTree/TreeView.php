@@ -64,10 +64,15 @@ class TreeView
             'tree'       => $individual->tree(),
         ]);
 
-        return [
-            $html,
-            'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '", "' . e($individual->tree()->name()) . '");',
-        ];
+        // Runtime contract: this inline bootstrap calls the global TreeViewHandler constructor from treeview.js.
+        $js =
+            'window[' . json_encode($this->name . 'Handler', JSON_THROW_ON_ERROR) . '] =' .
+            ' new TreeViewHandler(' .
+            json_encode($this->name, JSON_THROW_ON_ERROR) . ', ' .
+            json_encode($individual->tree()->name(), JSON_THROW_ON_ERROR) .
+            ');';
+
+        return [$html, $js];
     }
 
     /**
@@ -300,7 +305,7 @@ class TreeView
                 $nb = count($fop);
                 foreach ($fop as $p) {
                     $n++;
-                    $u = $unique ? 'c' : ($n === $nb || empty($p[1]) ? 'b' : 'h');
+                    $u = $unique ? 'c' : ($n === $nb ? 'b' : 'h');
                     $html .= '<tr><td ' . ($gen === 0 ? ' abbr="p' . $p[1]->xref() . '@' . $u . '"' : '') . '>' . $this->drawPerson($p[0], $gen - 1, 1, $p[1], $u, false) . '</td></tr>';
                 }
             }

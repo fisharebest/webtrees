@@ -38,7 +38,7 @@ final class ReorderMediaFilesAction implements RequestHandlerInterface
     {
         $tree  = Validator::attributes($request)->tree();
         $xref  = Validator::attributes($request)->isXref()->string('xref');
-        $order = Validator::parsedBody($request)->array('order');
+        $order = Validator::parsedBody($request)->list('order');
 
         $media = Registry::mediaFactory()->make($xref, $tree);
         $media = Auth::checkMediaAccess($media, true);

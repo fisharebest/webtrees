@@ -131,7 +131,7 @@ class RelationIsDescriptor extends AbstractElement
 
         $tmp = $values[$sex] ?? $values['U'];
 
-        uasort($tmp, I18N::comparator());
+        uasort($tmp, I18N::compare(...));
 
         return $tmp;
     }

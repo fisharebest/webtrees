@@ -13,6 +13,7 @@ use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\View;
+use Fisharebest\Webtrees\Webtrees;
 
 /**
  * @var string $title
@@ -80,8 +81,8 @@ use Fisharebest\Webtrees\View;
             <?= $content ?>
         </main>
 
-
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
+        <script src="<?= e(asset('js/i18n/' . I18N::locale()->languageTag() . '.js')) ?>"></script>
         <script src="<?= e(asset('js/webtrees.min.js')) ?>"></script>
 
         <?= View::stack('javascript') ?>

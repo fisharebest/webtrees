@@ -19,17 +19,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
+use Fisharebest\Webtrees\Report\Element;
+use Fisharebest\Webtrees\Report\NullElement;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Report\AbstractElement;
-use Fisharebest\Webtrees\Report\NullElement;
 
-#[CoversClass(AbstractElement::class)]
+#[CoversClass(Element::class)]
 #[CoversClass(NullElement::class)]
 class NullElementTest extends TestCase
 {
-    public function testClass(): void
+    public function testPreservesTextValue(): void
     {
-        self::assertTrue(class_exists(NullElement::class));
+        $element = new NullElement();
+        $element->addText('Report title');
+
+        self::assertSame('Report title', $element->getValue());
     }
 }

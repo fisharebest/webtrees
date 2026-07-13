@@ -11,6 +11,7 @@ use Fisharebest\Webtrees\View;
 /**
  * @var array<object{message:string,tag:string}> $errors
  * @var array<object{message:string,tag:string}> $infos
+ * @var string                                   $reason
  * @var string                                   $more_url
  * @var string                                   $title
  * @var Tree                                     $tree
@@ -83,7 +84,7 @@ use Fisharebest\Webtrees\View;
 
 <?php if ($more_url !== '') : ?>
     <p>
-        <?= I18N::translate('The server’s time limit has been reached.') ?>
+        <?= $reason ?>
         <a class="btn btn-primary" href="<?= e($more_url) ?>">
             <?= I18N::translate('show more') ?>
         </a>

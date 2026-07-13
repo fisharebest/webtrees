@@ -23,9 +23,11 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\User;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\Tree;
@@ -35,7 +37,7 @@ class GedcomRecordTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    private UserInterface $user;
+    private User $user;
     private Tree $tree;
 
     public function setUp(): void
@@ -145,5 +147,30 @@ class GedcomRecordTest extends TestCase
         $individual->createFact('1 FACT foo', false);
         $facts = $individual->facts(['FACT']);
         $individual->updateFact($facts[0]->id(), '2 FOO bar', false);
+    }
+
+    public function testSortFactsForIndividualUsesDateAndTypeRules(): void
+    {
+        $individual = $this->tree->createIndividual('0 @@ INDI');
+
+        $individual->createFact('1 OCCU Farmer', false);
+        $individual->createFact("1 DEAT\n2 DATE 1 JAN 2000", false);
+        $individual->createFact("1 BIRT\n2 DATE 1 JAN 1950", false);
+
+        $facts = $individual->facts(['BIRT', 'OCCU', 'DEAT'], true);
+
+        self::assertSame(['INDI:BIRT', 'INDI:OCCU', 'INDI:DEAT'], $facts->map(static fn (Fact $fact): string => $fact->tag())->all());
+    }
+
+    public function testSortFactsForFamilyOrdersUndatedFactsByType(): void
+    {
+        $family = $this->tree->createFamily('0 @@ FAM');
+
+        $family->createFact('1 DIV', false);
+        $family->createFact('1 MARR', false);
+
+        $facts = $family->facts(['MARR', 'DIV'], true);
+
+        self::assertSame(['FAM:MARR', 'FAM:DIV'], $facts->map(static fn (Fact $fact): string => $fact->tag())->all());
     }
 }

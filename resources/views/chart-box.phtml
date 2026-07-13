@@ -10,6 +10,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\FactSortService;
 use Fisharebest\Webtrees\Services\ModuleService;
 
 /**
@@ -86,7 +87,7 @@ foreach ($individual->spouseFamilies() as $family) {
 
 $all_facts = $all_facts->filter(static fn (Fact $fact): bool => !in_array($fact->tag(), $exclude, true));
 
-$all_facts = Fact::sortFacts($all_facts);
+$all_facts = (new FactSortService())->sort($all_facts);
 
 $id = Registry::idFactory()->id();
 ?>

@@ -113,7 +113,7 @@ class EventTypeCitedFrom extends AbstractElement
             }
         }
 
-        uasort($values, I18N::comparator());
+        uasort($values, I18N::compare(...));
 
         return $values;
     }

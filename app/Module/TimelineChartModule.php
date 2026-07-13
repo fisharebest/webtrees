@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Comparators\FactComparator;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -38,6 +39,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function in_array;
 use function redirect;
 use function route;
+use function usort;
 
 class TimelineChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
@@ -117,7 +119,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         $tree  = Validator::attributes($request)->tree();
         $user  = Validator::attributes($request)->user();
         $scale = Validator::attributes($request)->isBetween(self::MINIMUM_SCALE, self::MAXIMUM_SCALE)->integer('scale');
-        $xrefs = Validator::queryParams($request)->array('xrefs');
+        $xrefs = Validator::queryParams($request)->list('xrefs');
         $ajax  = Validator::queryParams($request)->boolean('ajax', false);
         $xrefs = array_filter(array_unique($xrefs));
 
@@ -272,7 +274,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         $baseyear -= 5;
         $topyear  += 5;
 
-        $indifacts = Fact::sortFacts($indifacts);
+        $sorted_facts = $indifacts->all();
+        usort($sorted_facts, FactComparator::byDate(...));
+        $indifacts = new Collection($sorted_facts);
 
         $html = view('modules/timeline-chart/chart', [
             'baseyear'    => $baseyear,

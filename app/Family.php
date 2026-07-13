@@ -20,8 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Fisharebest\Webtrees\Comparators\FamilyComparator;
 use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
 use Illuminate\Support\Collection;
+
+use function trigger_error;
+
+use const E_USER_DEPRECATED;
 
 /**
  * A GEDCOM family (FAM) object.
@@ -67,7 +72,12 @@ class Family extends GedcomRecord
      */
     public static function marriageDateComparator(): Closure
     {
-        return static fn (Family $x, Family $y): int => Date::compare($x->getMarriageDate(), $y->getMarriageDate());
+        trigger_error(
+            'Family::marriageDateComparator() is deprecated and will be removed in version 2.3. Use FamilyComparator::byMarriageDate(...) instead.',
+            E_USER_DEPRECATED
+        );
+
+        return FamilyComparator::byMarriageDate(...);
     }
 
     /**

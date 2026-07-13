@@ -121,6 +121,14 @@ class Auth
     }
 
     /**
+     * Should media be watermarked for the specified/current user in a tree?
+     */
+    public static function needsWatermark(Tree $tree, UserInterface|null $user = null): bool
+    {
+        return self::accessLevel($tree, $user) > (int) $tree->getPreference('SHOW_NO_WATERMARK');
+    }
+
+    /**
      * The ID of the authenticated user, from the current session.
      */
     public static function id(): int|null

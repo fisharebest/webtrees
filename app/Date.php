@@ -21,6 +21,9 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Date\AbstractCalendarDate;
+use Fisharebest\Webtrees\Module\CalendarMenuModule;
+use Fisharebest\Webtrees\Module\ModuleMenuInterface;
+use Fisharebest\Webtrees\Services\ModuleService;
 
 /**
  * A representation of GEDCOM dates and date ranges.
@@ -99,9 +102,15 @@ class Date
     public function display(Tree|null $tree = null, string|null $date_format = null, bool $convert_calendars = false): string
     {
         if ($tree instanceof Tree) {
-            $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
+            $CALENDAR_FORMAT  = $tree->getPreference('CALENDAR_FORMAT');
+            $link_to_calendar = Registry::container()
+                ->get(ModuleService::class)
+                ->findByComponent(ModuleMenuInterface::class, $tree, Auth::user())
+                ->whereInstanceOf(CalendarMenuModule::class)
+                ->isNotEmpty();
         } else {
-            $CALENDAR_FORMAT = 'none';
+            $CALENDAR_FORMAT  = 'none';
+            $link_to_calendar = false;
         }
 
         $date_format ??= I18N::dateFormat();
@@ -121,7 +130,7 @@ class Date
         } else {
             $d2 = $this->date2->format($date_format, $this->qual2);
         }
-        // Con vert to other calendars, if requested
+        // Convert to other calendars, if requested
         $conv1 = '';
         $conv2 = '';
         foreach ($calendar_format as $cal_fmt) {
@@ -147,9 +156,9 @@ class Date
                 if ($d1 !== $d1tmp && $d1tmp !== '') {
                     if ($tree instanceof Tree) {
                         if ($CALENDAR_FORMAT !== 'none') {
-                            $conv1 .= ' <span dir="' . I18N::direction() . '">(<a href="' . e($d1conv->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d1tmp . '</a>)</span>';
+                            $conv1 .= ' <span dir="' . I18N::direction() . '">(' . $this->renderLink($link_to_calendar, $d1conv, $date_format, $tree, $d1tmp) . ')</span>';
                         } else {
-                            $conv1 .= ' <span dir="' . I18N::direction() . '"><br><a href="' . e($d1conv->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d1tmp . '</a></span>';
+                            $conv1 .= ' <span dir="' . I18N::direction() . '"><br>' . $this->renderLink($link_to_calendar, $d1conv, $date_format, $tree, $d1tmp) . '</span>';
                         }
                     } else {
                         $conv1 .= ' <span dir="' . I18N::direction() . '">(' . $d1tmp . ')</span>';
@@ -157,7 +166,7 @@ class Date
                 }
                 if ($this->date2 !== null && $d2 !== $d2tmp && $d1tmp !== '') {
                     if ($tree instanceof Tree) {
-                        $conv2 .= ' <span dir="' . I18N::direction() . '">(<a href="' . e($d2conv->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d2tmp . '</a>)</span>';
+                        $conv2 .= ' <span dir="' . I18N::direction() . '">(' . $this->renderLink($link_to_calendar, $d2conv, $date_format, $tree, $d2tmp) . ')</span>';
                     } else {
                         $conv2 .= ' <span dir="' . I18N::direction() . '">(' . $d2tmp . ')</span>';
                     }
@@ -167,9 +176,9 @@ class Date
 
         // Add URLs, if requested
         if ($tree instanceof Tree) {
-            $d1 = '<a href="' . e($this->date1->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d1 . '</a>';
+            $d1 = $this->renderLink($link_to_calendar, $this->date1, $date_format, $tree, $d1);
             if ($this->date2 instanceof AbstractCalendarDate) {
-                $d2 = '<a href="' . e($this->date2->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d2 . '</a>';
+                $d2 = $this->renderLink($link_to_calendar, $this->date2, $date_format, $tree, $d2);
             }
         }
 
@@ -231,6 +240,20 @@ class Date
         }
 
         return '<span class="date">' . $tmp . '</span>';
+    }
+
+    private function renderLink(
+        bool $link_to_calendar,
+        AbstractCalendarDate $calendar_date,
+        string $date_format,
+        Tree $tree,
+        string $date_text,
+    ): string {
+        if ($link_to_calendar) {
+            return '<a href="' . e($calendar_date->calendarUrl($date_format, $tree)) . '">' . $date_text . '</a>';
+        }
+
+        return $date_text;
     }
 
     /**

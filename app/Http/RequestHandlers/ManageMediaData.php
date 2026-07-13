@@ -129,7 +129,7 @@ final class ManageMediaData implements RequestHandlerInterface
                 }
 
                 $url = route(AdminMediaFileDownload::class, ['path' => $path]);
-                $img = '<a href="' . e($url) . '" type="' . $mime_type . '" class="gallery">' . $img . '</a>';
+                $img = '<a href="' . e($url) . '" data-wt-gallery="1" data-wt-gallery-title="' . e($row->multimedia_file_refn) . '">' . $img . '</a>';
             } catch (UnableToReadFile) {
                 $url = route(AdminMediaFileThumbnail::class, ['path' => $path]);
                 $img = '<img src="' . e($url) . '">';
@@ -215,7 +215,7 @@ final class ManageMediaData implements RequestHandlerInterface
                     }
 
                     $url = route(AdminMediaFileDownload::class, ['path' => $row[0]]);
-                    $img = '<a href="' . e($url) . '">' . $img . '</a>';
+                    $img = '<a href="' . e($url) . '" data-wt-gallery="1" data-wt-gallery-title="' . e($row[0]) . '">' . $img . '</a>';
 
                     // Form to create new media object in each tree
                     $create_form = '';
@@ -335,7 +335,7 @@ final class ManageMediaData implements RequestHandlerInterface
                 $html .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
                 /* I18N: image dimensions, width × height */
                 $html .= '<dd>' . I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize[0]), I18N::number($imgsize[1])) . '</dd>';
-            } catch (FilesystemException | UnableToReadFile | Throwable) {
+            } catch (Throwable) {
                 // Not an image, or not a valid image?
             }
         }

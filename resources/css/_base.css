@@ -19,11 +19,12 @@
 
 @import "_blocks.css";
 @import "_charts.css";
-@import "_colorbox.css";
+@import "_gallery.css";
 @import "_lists.css";
 @import "_markdown.css";
 @import "_maps.css";
 @import "_mime-type-icons.css";
+@import "_modal.css";
 @import "_on-screen-keyboard.css";
 @import "_pages.css";
 @import "_sortable.css";

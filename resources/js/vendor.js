@@ -67,8 +67,6 @@ window.TomSelect = TomSelect;
 
 import 'moment';
 
-import 'jquery-colorbox';
-import 'pinch-zoom-element';
 
 import 'leaflet';
 import 'leaflet.markercluster';

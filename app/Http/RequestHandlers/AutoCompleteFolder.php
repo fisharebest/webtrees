@@ -48,7 +48,7 @@ final class AutoCompleteFolder extends AbstractAutocompleteHandler
         try {
             return $this->media_file_service->mediaFolders($tree)
                 ->filter(fn (string $path): bool => stripos($path, $query) !== false)
-                ->sort(I18N::comparator())
+                ->sort(I18N::compare(...))
                 ->values();
         } catch (FilesystemException) {
             return new Collection();

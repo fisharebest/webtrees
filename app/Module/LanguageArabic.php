@@ -80,6 +80,9 @@ class LanguageArabic extends AbstractModule implements ModuleLanguageInterface
         return new LocaleAr();
     }
 
+    /**
+     * @return array<string,string>
+     */
     protected function normalizeExceptions(): array
     {
         // Issue #5262 - the INTL library doesn't convert these.

@@ -19,6 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Charts\BarChartData;
+use Fisharebest\Webtrees\Charts\ChartDataInterface;
+use Fisharebest\Webtrees\Charts\ComboChartData;
+use Fisharebest\Webtrees\Charts\PieChartData;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
@@ -43,11 +47,14 @@ use function e;
 use function htmlspecialchars_decode;
 use function implode;
 use function in_array;
+use function ltrim;
 use function preg_replace;
 use function round;
+use function strtolower;
 use function strip_tags;
 use function strpos;
 use function substr;
+use function trim;
 use function view;
 
 /**
@@ -163,7 +170,7 @@ class Statistics
         return $module->getBlock($this->tree, 0, ModuleBlockInterface::CONTEXT_EMBED, $cfg);
     }
 
-    public function chartCommonGiven(string $color1 = 'ffffff', string $color2 = '84beff', string $limit = '7'): string
+    public function chartCommonGiven(string $limit = '7'): string
     {
         $given = $this->data->commonGivenNames('ALL', 1, (int) $limit)->all();
 
@@ -176,39 +183,30 @@ class Statistics
             $tot += $count;
         }
 
-        $data = [
-            [
-                I18N::translate('Name'),
-                I18N::translate('Total'),
-            ],
-        ];
+        $labels = [];
+        $values = [];
 
         foreach ($given as $name => $count) {
-            $data[] = [$name, $count];
+            $labels[] = $name;
+            $values[] = $count;
         }
 
         $count_all_names = $this->data->commonGivenNames('ALL', 1, PHP_INT_MAX)->sum();
 
-        $data[] = [
-            I18N::translate('Other'),
-            $count_all_names - $tot,
-        ];
+        $labels[] = I18N::translate('Other');
+        $values[] = $count_all_names - $tot;
 
-        $colors = $this->format->interpolateRgb($color1, $color2, count($data) - 1);
+        $colors = $this->format->qualitativeColors(count($labels));
 
         return view('statistics/other/charts/pie', [
-            'title'    => null,
-            'data'     => $data,
-            'colors'   => $colors,
-            'language' => I18N::languageTag(),
+            'title'      => null,
+            'chart_data' => new PieChartData($labels, $values, $colors),
+            'language'   => I18N::languageTag(),
         ]);
     }
 
-    public function chartCommonSurnames(
-        string $color1 = 'ffffff',
-        string $color2 = '84beff',
-        string $limit = '10'
-    ): string {
+    public function chartCommonSurnames(string $limit = '10'): string
+    {
         $all_surnames = $this->data->commonSurnames((int) $limit, 0, 'count');
 
         if ($all_surnames === []) {
@@ -223,12 +221,8 @@ class Statistics
             $tot += array_sum($surnames);
         }
 
-        $data = [
-            [
-                I18N::translate('Name'),
-                I18N::translate('Total')
-            ],
-        ];
+        $labels = [];
+        $values = [];
 
         foreach ($all_surnames as $surns) {
             $max_name  = 0;
@@ -265,21 +259,19 @@ class Statistics
                 );
             }
 
-            $data[] = [(string) $top_name, $count_per];
+            $labels[] = (string) $top_name;
+            $values[] = $count_per;
         }
 
-        $data[] = [
-            I18N::translate('Other'),
-            $this->data->countIndividuals() - $tot
-        ];
+        $labels[] = I18N::translate('Other');
+        $values[] = $this->data->countIndividuals() - $tot;
 
-        $colors = $this->format->interpolateRgb($color1, $color2, count($data) - 1);
+        $colors = $this->format->qualitativeColors(count($labels));
 
         return view('statistics/other/charts/pie', [
-            'title'    => null,
-            'data'     => $data,
-            'colors'   => $colors,
-            'language' => I18N::languageTag(),
+            'title'      => null,
+            'chart_data' => new PieChartData($labels, $values, $colors),
+            'language'   => I18N::languageTag(),
         ]);
     }
 
@@ -291,8 +283,10 @@ class Statistics
         return $this->data->chartDistribution($chart_shows, $chart_type, $surname);
     }
 
-    public function chartFamsWithSources(string $color1 = 'c2dfff', string $color2 = '84beff'): string
-    {
+    public function chartFamsWithSources(
+        string $color1 = ChartDataInterface::COLOR_EMPTY,
+        string $color2 = ChartDataInterface::COLOR_DEFAULT
+    ): string {
         $total_families              = $this->data->countFamilies();
         $total_families_with_sources = $this->data->countFamiliesWithSources();
 
@@ -305,14 +299,14 @@ class Statistics
             $data,
             [$color1, $color2],
             I18N::translate('Families with sources'),
-            I18N::translate('Type'),
-            I18N::translate('Total'),
             true
         );
     }
 
-    public function chartIndisWithSources(string $color1 = 'c2dfff', string $color2 = '84beff'): string
-    {
+    public function chartIndisWithSources(
+        string $color1 = ChartDataInterface::COLOR_EMPTY,
+        string $color2 = ChartDataInterface::COLOR_DEFAULT
+    ): string {
         $total_individuals              = $this->data->countIndividuals();
         $total_individuals_with_sources = $this->data->countIndividualsWithSources();
 
@@ -325,15 +319,11 @@ class Statistics
             $data,
             [$color1, $color2],
             I18N::translate('Individuals with sources'),
-            I18N::translate('Type'),
-            I18N::translate('Total'),
             true
         );
     }
 
     public function chartLargestFamilies(
-        string $color1 = 'ffffff',
-        string $color2 = '84beff',
         string $limit = '7'
     ): string {
         $data = DB::table('families')
@@ -350,46 +340,57 @@ class Statistics
 
         return $this->format->pieChart(
             $data,
-            $this->format->interpolateRgb($color1, $color2, count($data)),
-            I18N::translate('Largest families'),
-            I18N::translate('Family'),
-            I18N::translate('Children')
+            $this->format->qualitativeColors(count($data)),
+            I18N::translate('Largest families')
         );
     }
 
-    public function chartMedia(string $color1 = 'ffffff', string $color2 = '84beff'): string
+    public function chartMedia(): string
     {
         $data = $this->data->countMediaByType();
 
+        $qualitative_colors = $this->format->qualitativeColors(16);
+        $colors             = [];
+        $color_index        = 0;
+
+        foreach ($data as [$category, $count]) {
+            if (trim($category) === '') {
+                $colors[] = ChartDataInterface::COLOR_EMPTY;
+            } else {
+                $colors[] = $qualitative_colors[$color_index % count($qualitative_colors)];
+                $color_index++;
+            }
+        }
+
         return $this->format->pieChart(
             $data,
-            $this->format->interpolateRgb($color1, $color2, count($data)),
+            $colors,
             I18N::translate('Media by type'),
-            I18N::translate('Type'),
-            I18N::translate('Total'),
         );
     }
 
-    public function chartMortality(string $color_living = '#ffffff', string $color_dead = '#cccccc'): string
-    {
+    public function chartMortality(
+        string $color_living = ChartDataInterface::COLOR_LIVING,
+        string $color_dead = ChartDataInterface::COLOR_DEAD
+    ): string {
         $total_living = $this->data->countIndividualsLiving();
         $total_dead   = $this->data->countIndividualsDeceased();
 
-        $data = [
-            [I18N::translate('Century'), I18N::translate('Total')],
-        ];
+        $labels = [];
+        $values = [];
 
         if ($total_living > 0 || $total_dead > 0) {
-            $data[] = [I18N::translate('Living'), $total_living];
-            $data[] = [I18N::translate('Dead'), $total_dead];
+            $labels[] = I18N::translate('Living');
+            $labels[] = I18N::translate('Dead');
+            $values[] = $total_living;
+            $values[] = $total_dead;
         }
 
-        $colors = $this->format->interpolateRgb($color_living, $color_dead, count($data) - 1);
+        $colors = [$color_living, $color_dead];
 
         return view('statistics/other/charts/pie', [
             'title'            => null,
-            'data'             => $data,
-            'colors'           => $colors,
+            'chart_data'       => new PieChartData($labels, $values, $colors),
             'labeledValueText' => 'percentage',
             'language'         => I18N::languageTag(),
         ]);
@@ -397,12 +398,8 @@ class Statistics
 
     public function chartNoChildrenFamilies(): string
     {
-        $data = [
-            [
-                I18N::translate('Century'),
-                I18N::translate('Total'),
-            ],
-        ];
+        $labels = [];
+        $values = [];
 
         $records = DB::table('families')
             ->selectRaw('ROUND((d_year + 49) / 100, 0) AS century')
@@ -429,43 +426,55 @@ class Statistics
         foreach ($records as $record) {
             $total += $record->total;
 
-            $data[] = [
-                $this->format->century($record->century),
-                $record->total,
-            ];
+            $labels[] = $this->format->century($record->century);
+            $values[] = $record->total;
         }
 
         $families_with_no_children = $this->data->countFamiliesWithNoChildren();
 
         if ($families_with_no_children - $total > 0) {
-            $data[] = [
-                I18N::translateContext('unknown century', 'Unknown'),
-                $families_with_no_children - $total,
-            ];
+            $labels[] = I18N::translateContext('unknown century', 'Unknown');
+            $values[] = $families_with_no_children - $total;
         }
+
+        $chart_data = new BarChartData(
+            $labels,
+            [[
+                 'label'           => I18N::translate('Total families'),
+                 'data'            => $values,
+                 'backgroundColor' => ChartDataInterface::COLOR_DEFAULT,
+            ]],
+        );
 
         $chart_title   = I18N::translate('Number of families without children');
         $chart_options = [
-            'title'    => $chart_title,
-            'subtitle' => '',
-            'legend'   => [
-                'position' => 'none',
+            'plugins' => [
+                'title' => [
+                    'display' => true,
+                    'text'    => $chart_title,
+                ],
+                'legend' => [
+                    'display' => false,
+                ],
             ],
-            'vAxis'    => [
-                'title' => I18N::translate('Total families'),
-            ],
-            'hAxis'    => [
-                'showTextEvery' => 1,
-                'slantedText'   => false,
-                'title'         => I18N::translate('Century'),
-            ],
-            'colors'   => [
-                '#84beff',
+            'scales'  => [
+                'y' => [
+                    'title' => [
+                        'display' => true,
+                        'text'    => I18N::translate('Total families'),
+                    ],
+                ],
+                'x' => [
+                    'title' => [
+                        'display' => true,
+                        'text'    => I18N::translate('Century'),
+                    ],
+                ],
             ],
         ];
 
         return view('statistics/other/charts/column', [
-            'data'          => $data,
+            'chart_data'    => $chart_data,
             'chart_options' => $chart_options,
             'chart_title'   => $chart_title,
             'language'      => I18N::languageTag(),
@@ -473,10 +482,10 @@ class Statistics
     }
 
     public function chartSex(
-        string $color_female = '#ffd1dc',
-        string $color_male = '#84beff',
-        string $color_unknown = '#777777',
-        string $color_other = '#777777'
+        string $color_female = ChartDataInterface::COLOR_FEMALE,
+        string $color_male = ChartDataInterface::COLOR_MALE,
+        string $color_unknown = ChartDataInterface::COLOR_UNKNOWN_SEX,
+        string $color_other = ChartDataInterface::COLOR_OTHER_SEX
     ): string {
         $data = [
             [I18N::translate('Males'), $this->data->countIndividualsBySex('M')],
@@ -489,8 +498,6 @@ class Statistics
             $data,
             [$color_male, $color_female, $color_unknown, $color_other],
             I18N::translate('Sex'),
-            I18N::translate('Sex'),
-            I18N::translate('Total'),
             true
         );
     }
@@ -968,7 +975,7 @@ class Statistics
         $row = DB::table('change')
             ->where('gedcom_id', '=', $this->tree->id())
             ->where('status', '=', 'accepted')
-            ->orderBy('change_id', 'DESC')
+            ->orderBy('change_id', 'desc')
             ->select(['change_time'])
             ->first();
 
@@ -1368,62 +1375,62 @@ class Statistics
 
     public function oldestFather(): string
     {
-        return $this->data->parentsQuery('full', 'DESC', 'M', false);
+        return $this->data->parentsQuery('full', 'desc', 'M', false);
     }
 
     public function oldestFatherAge(string $show_years = '0'): string
     {
-        return $this->data->parentsQuery('age', 'DESC', 'M', (bool) $show_years);
+        return $this->data->parentsQuery('age', 'desc', 'M', (bool) $show_years);
     }
 
     public function oldestFatherName(): string
     {
-        return $this->data->parentsQuery('name', 'DESC', 'M', false);
+        return $this->data->parentsQuery('name', 'desc', 'M', false);
     }
 
     public function oldestMarriageFemale(): string
     {
-        return $this->data->marriageQuery('full', 'DESC', 'F', false);
+        return $this->data->marriageQuery('full', 'desc', 'F', false);
     }
 
     public function oldestMarriageFemaleAge(string $show_years = '0'): string
     {
-        return $this->data->marriageQuery('age', 'DESC', 'F', (bool) $show_years);
+        return $this->data->marriageQuery('age', 'desc', 'F', (bool) $show_years);
     }
 
     public function oldestMarriageFemaleName(): string
     {
-        return $this->data->marriageQuery('name', 'DESC', 'F', false);
+        return $this->data->marriageQuery('name', 'desc', 'F', false);
     }
 
     public function oldestMarriageMale(): string
     {
-        return $this->data->marriageQuery('full', 'DESC', 'M', false);
+        return $this->data->marriageQuery('full', 'desc', 'M', false);
     }
 
     public function oldestMarriageMaleAge(string $show_years = '0'): string
     {
-        return $this->data->marriageQuery('age', 'DESC', 'M', (bool) $show_years);
+        return $this->data->marriageQuery('age', 'desc', 'M', (bool) $show_years);
     }
 
     public function oldestMarriageMaleName(): string
     {
-        return $this->data->marriageQuery('name', 'DESC', 'M', false);
+        return $this->data->marriageQuery('name', 'desc', 'M', false);
     }
 
     public function oldestMother(): string
     {
-        return $this->data->parentsQuery('full', 'DESC', 'F', false);
+        return $this->data->parentsQuery('full', 'desc', 'F', false);
     }
 
     public function oldestMotherAge(string $show_years = '0'): string
     {
-        return $this->data->parentsQuery('age', 'DESC', 'F', (bool) $show_years);
+        return $this->data->parentsQuery('age', 'desc', 'F', (bool) $show_years);
     }
 
     public function oldestMotherName(): string
     {
-        return $this->data->parentsQuery('name', 'DESC', 'F', false);
+        return $this->data->parentsQuery('name', 'desc', 'F', false);
     }
 
     public function serverDate(): string
@@ -1456,57 +1463,75 @@ class Statistics
             $out[$record->century][$record->sex] = $record->age;
         }
 
-        $data = [
-            [
-                I18N::translate('Century'),
-                I18N::translate('Males'),
-                I18N::translate('Females'),
-                I18N::translate('Average age'),
-            ]
-        ];
+        $labels = [];
+        $male_data = [];
+        $female_data = [];
+        $average_data = [];
 
         foreach ($out as $century => $values) {
             $female_age  = $values['F'] ?? 0;
             $male_age    = $values['M'] ?? 0;
             $average_age = ($female_age + $male_age) / 2.0;
 
-            $data[] = [
-                $this->format->century($century),
-                round($male_age, 1),
-                round($female_age, 1),
-                round($average_age, 1),
-            ];
+            $labels[] = $this->format->century($century);
+            $male_data[] = round($male_age, 1);
+            $female_data[] = round($female_age, 1);
+            $average_data[] = round($average_age, 1);
         }
+
+        $chart_data = new ComboChartData(
+            $labels,
+            [
+                ['label' => I18N::translate('Males'), 'data' => $male_data, 'type' => 'bar', 'backgroundColor' => ChartDataInterface::COLOR_MALE, 'borderColor' => ChartDataInterface::COLOR_MALE, 'order' => 2],
+                ['label' => I18N::translate('Females'), 'data' => $female_data, 'type' => 'bar', 'backgroundColor' => ChartDataInterface::COLOR_FEMALE, 'borderColor' => ChartDataInterface::COLOR_FEMALE, 'order' => 2],
+                ['label' => I18N::translate('Average age'), 'data' => $average_data, 'type' => 'line', 'backgroundColor' => ChartDataInterface::COLOR_CHART_RED, 'borderColor' => ChartDataInterface::COLOR_CHART_RED, 'order' => 1],
+            ],
+        );
 
         $chart_title   = I18N::translate('Average age related to death century');
         $chart_options = [
-            'title' => $chart_title,
-            'subtitle' => I18N::translate('Average age at death'),
-            'vAxis' => [
-                'title' => I18N::translate('Age'),
+            'plugins' => [
+                'title' => [
+                    'display' => true,
+                    'text'    => $chart_title,
+                ],
+                'subtitle' => [
+                    'display' => true,
+                    'text'    => I18N::translate('Average age at death'),
+                ],
+                'legend' => [
+                    'display' => true,
+                    'position' => 'right',
+                ],
             ],
-            'hAxis' => [
-                'showTextEvery' => 1,
-                'slantedText'   => false,
-                'title'         => I18N::translate('Century'),
-            ],
-            'colors' => [
-                '#84beff',
-                '#ffd1dc',
-                '#ff0000',
+            'scales' => [
+                'y' => [
+                    'title' => [
+                        'display' => true,
+                        'text'    => I18N::translate('Age'),
+                    ],
+                ],
+                'x' => [
+                    'title' => [
+                        'display' => true,
+                        'text'    => I18N::translate('Century'),
+                    ],
+                ],
             ],
         ];
 
         return view('statistics/other/charts/combo', [
-            'data'          => $data,
+            'chart_data'    => $chart_data,
             'chart_options' => $chart_options,
             'chart_title'   => $chart_title,
             'language'      => I18N::languageTag(),
         ]);
     }
 
-    public function statsBirth(string $color1 = 'ffffff', string $color2 = '84beff'): string
-    {
+    public function statsBirth(
+        string $color1 = ChartDataInterface::COLOR_WHITE,
+        string $color2 = ChartDataInterface::COLOR_DEFAULT
+    ): string {
         $data   = $this->data->countEventsByCentury('BIRT');
         $colors = $this->format->interpolateRgb($color1, $color2, count($data));
 
@@ -1514,8 +1539,6 @@ class Statistics
             $data,
             $colors,
             I18N::translate('Births by century'),
-            I18N::translate('Century'),
-            I18N::translate('Total'),
         );
     }
 
@@ -1540,42 +1563,52 @@ class Statistics
                 'total'   => (float) $row->total,
             ]);
 
-        $data = [
-            [
-                I18N::translate('Century'),
-                I18N::translate('Average number'),
-            ],
-        ];
+        $labels = [];
+        $values = [];
 
         foreach ($records as $record) {
-            $data[] = [
-                $this->format->century($record->century),
-                round($record->total, 2),
-            ];
+            $labels[] = $this->format->century($record->century);
+            $values[] = round($record->total, 2);
         }
+
+        $chart_data = new BarChartData(
+            $labels,
+            [[
+                 'label'           => I18N::translate('Average number'),
+                 'data'            => $values,
+                 'backgroundColor' => ChartDataInterface::COLOR_DEFAULT,
+            ]],
+        );
 
         $chart_title   = I18N::translate('Average number of children per family');
         $chart_options = [
-            'title'    => $chart_title,
-            'subtitle' => '',
-            'legend'   => [
-                'position' => 'none',
+            'plugins' => [
+                'title' => [
+                    'display' => true,
+                    'text'    => $chart_title,
+                ],
+                'legend' => [
+                    'display' => false,
+                ],
             ],
-            'vAxis'    => [
-                'title' => I18N::translate('Number of children'),
-            ],
-            'hAxis'    => [
-                'showTextEvery' => 1,
-                'slantedText'   => false,
-                'title'         => I18N::translate('Century'),
-            ],
-            'colors'   => [
-                '#84beff',
+            'scales'  => [
+                'y' => [
+                    'title' => [
+                        'display' => true,
+                        'text'    => I18N::translate('Number of children'),
+                    ],
+                ],
+                'x' => [
+                    'title' => [
+                        'display' => true,
+                        'text'    => I18N::translate('Century'),
+                    ],
+                ],
             ],
         ];
 
         return view('statistics/other/charts/column', [
-            'data'          => $data,
+            'chart_data'    => $chart_data,
             'chart_options' => $chart_options,
             'chart_title'   => $chart_title,
             'language'      => I18N::languageTag(),
@@ -1590,8 +1623,10 @@ class Statistics
         return $this->data->statsChildrenQuery($year1, $year2);
     }
 
-    public function statsDeath(string $color1 = 'ffffff', string $color2 = '84beff'): string
-    {
+    public function statsDeath(
+        string $color1 = ChartDataInterface::COLOR_WHITE,
+        string $color2 = ChartDataInterface::COLOR_DEFAULT
+    ): string {
         $data   = $this->data->countEventsByCentury('DEAT');
         $colors = $this->format->interpolateRgb($color1, $color2, count($data));
 
@@ -1599,13 +1634,13 @@ class Statistics
             $data,
             $colors,
             I18N::translate('Births by century'),
-            I18N::translate('Century'),
-            I18N::translate('Total'),
         );
     }
 
-    public function statsDiv(string $color1 = 'ffffff', string $color2 = '84beff'): string
-    {
+    public function statsDiv(
+        string $color1 = ChartDataInterface::COLOR_WHITE,
+        string $color2 = ChartDataInterface::COLOR_DEFAULT
+    ): string {
         $data   = $this->data->countEventsByCentury('DIV');
         $colors = $this->format->interpolateRgb($color1, $color2, count($data));
 
@@ -1613,13 +1648,13 @@ class Statistics
             $data,
             $colors,
             I18N::translate('Divorces by century'),
-            I18N::translate('Century'),
-            I18N::translate('Total'),
         );
     }
 
-    public function statsMarr(string $color1 = 'ffffff', string $color2 = '84beff'): string
-    {
+    public function statsMarr(
+        string $color1 = ChartDataInterface::COLOR_WHITE,
+        string $color2 = ChartDataInterface::COLOR_DEFAULT
+    ): string {
         $data   = $this->data->countEventsByCentury('MARR');
         $colors = $this->format->interpolateRgb($color1, $color2, count($data));
 
@@ -1627,8 +1662,6 @@ class Statistics
             $data,
             $colors,
             I18N::translate('Marriages by century'),
-            I18N::translate('Century'),
-            I18N::translate('Total'),
         );
     }
 
@@ -1696,49 +1729,65 @@ class Statistics
             $out[$record->century][$record->sex] = $record->age;
         }
 
-        $data = [
-            [
-                I18N::translate('Century'),
-                I18N::translate('Males'),
-                I18N::translate('Females'),
-                I18N::translate('Average age'),
-            ],
-        ];
+        $labels = [];
+        $male_data = [];
+        $female_data = [];
+        $average_data = [];
 
         foreach ($out as $century => $values) {
             $female_age  = $values['F'] ?? 0;
             $male_age    = $values['M'] ?? 0;
             $average_age = ($female_age + $male_age) / 2.0;
 
-            $data[] = [
-                $this->format->century($century),
-                round($male_age, 1),
-                round($female_age, 1),
-                round($average_age, 1),
-            ];
+            $labels[] = $this->format->century($century);
+            $male_data[] = round($male_age, 1);
+            $female_data[] = round($female_age, 1);
+            $average_data[] = round($average_age, 1);
         }
+
+        $chart_data = new ComboChartData(
+            $labels,
+            [
+                ['label' => I18N::translate('Males'), 'data' => $male_data, 'type' => 'bar', 'backgroundColor' => ChartDataInterface::COLOR_MALE, 'borderColor' => ChartDataInterface::COLOR_MALE, 'order' => 2],
+                ['label' => I18N::translate('Females'), 'data' => $female_data, 'type' => 'bar', 'backgroundColor' => ChartDataInterface::COLOR_FEMALE, 'borderColor' => ChartDataInterface::COLOR_FEMALE, 'order' => 2],
+                ['label' => I18N::translate('Average age'), 'data' => $average_data, 'type' => 'line', 'backgroundColor' => ChartDataInterface::COLOR_CHART_RED, 'borderColor' => ChartDataInterface::COLOR_CHART_RED, 'order' => 1],
+            ],
+        );
 
         $chart_title   = I18N::translate('Average age in century of marriage');
         $chart_options = [
-            'title'    => $chart_title,
-            'subtitle' => I18N::translate('Average age at marriage'),
-            'vAxis'    => [
-                'title' => I18N::translate('Age'),
+            'plugins' => [
+                'title' => [
+                    'display' => true,
+                    'text'    => $chart_title,
+                ],
+                'subtitle' => [
+                    'display' => true,
+                    'text'    => I18N::translate('Average age at marriage'),
+                ],
+                'legend' => [
+                    'display' => true,
+                    'position' => 'right',
+                ],
             ],
-            'hAxis'    => [
-                'showTextEvery' => 1,
-                'slantedText'   => false,
-                'title'         => I18N::translate('Century'),
-            ],
-            'colors'   => [
-                '#84beff',
-                '#ffd1dc',
-                '#ff0000',
+            'scales'  => [
+                'y' => [
+                    'title' => [
+                        'display' => true,
+                        'text'    => I18N::translate('Age'),
+                    ],
+                ],
+                'x' => [
+                    'title' => [
+                        'display' => true,
+                        'text'    => I18N::translate('Century'),
+                    ],
+                ],
             ],
         ];
 
         return view('statistics/other/charts/combo', [
-            'data'          => $data,
+            'chart_data'    => $chart_data,
             'chart_options' => $chart_options,
             'chart_title'   => $chart_title,
             'language'      => I18N::languageTag(),
@@ -1785,22 +1834,22 @@ class Statistics
 
     public function topAgeOfMarriage(): string
     {
-        return $this->data->ageOfMarriageQuery('age', 'DESC', 1);
+        return $this->data->ageOfMarriageQuery('age', 'desc', 1);
     }
 
     public function topAgeOfMarriageFamilies(string $limit = '10'): string
     {
-        return $this->data->ageOfMarriageQuery('nolist', 'DESC', (int) $limit);
+        return $this->data->ageOfMarriageQuery('nolist', 'desc', (int) $limit);
     }
 
     public function topAgeOfMarriageFamiliesList(string $limit = '10'): string
     {
-        return $this->data->ageOfMarriageQuery('list', 'DESC', (int) $limit);
+        return $this->data->ageOfMarriageQuery('list', 'desc', (int) $limit);
     }
 
     public function topAgeOfMarriageFamily(): string
     {
-        return $this->data->ageOfMarriageQuery('name', 'DESC', 1);
+        return $this->data->ageOfMarriageQuery('name', 'desc', 1);
     }
 
     public function topTenLargestFamily(string $limit = '10'): string

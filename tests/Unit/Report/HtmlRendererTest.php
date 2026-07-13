@@ -19,15 +19,28 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
-use Fisharebest\Webtrees\Tests\TestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Report\HtmlRenderer;
+use Fisharebest\Webtrees\Tests\TestCase;
+use LogicException;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(HtmlRenderer::class)]
 class HtmlRendererTest extends TestCase
 {
+    use ElementTestTrait;
+
     public function testClass(): void
     {
         self::assertTrue(class_exists(HtmlRenderer::class));
+    }
+
+    public function testOutputWithoutDocConfigThrowsException(): void
+    {
+        $renderer = new HtmlRenderer();
+
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Report configuration is not initialized.');
+
+        $renderer->output();
     }
 }

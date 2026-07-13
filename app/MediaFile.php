@@ -177,16 +177,15 @@ class MediaFile
                     ]) . '>';
 
             $link_attributes = Html::attributes([
-                'class'      => 'gallery',
-                'type'       => $this->mimeType(),
-                'href'       => $this->downloadUrl('inline'),
-                'data-title' => strip_tags($this->media->fullName()),
+                'href'                  => $this->downloadUrl('inline'),
+                'data-wt-gallery'       => '1',
+                'data-wt-gallery-title' => strip_tags($this->media->fullName()),
+                'data-wt-gallery-title-url' => $this->media->url(),
             ]);
         } else {
             $image = view('icons/mime', ['type' => $this->mimeType()]);
 
             $link_attributes = Html::attributes([
-                'type' => $this->mimeType(),
                 'href' => $this->downloadUrl('inline'),
             ]);
         }
@@ -219,7 +218,7 @@ class MediaFile
             Site::setPreference('glide-key', $glide_key);
         }
 
-        // The "mark" parameter is ignored, but needed for cache-busting.
+        // The "mark" parameter is ignored but needed for cache-busting.
         $params = [
             'xref'      => $this->media->xref(),
             'tree'      => $this->media->tree()->name(),
@@ -227,7 +226,7 @@ class MediaFile
             'w'         => $width,
             'h'         => $height,
             'fit'       => $fit,
-            'mark'      => Registry::imageFactory()->thumbnailNeedsWatermark($this, Auth::user())
+            'mark'      => Auth::needsWatermark($this->media->tree()),
         ];
 
         $params['s'] = $this->signature($params);
@@ -261,13 +260,13 @@ class MediaFile
      */
     public function downloadUrl(string $disposition): string
     {
-        // The "mark" parameter is ignored, but needed for cache-busting.
+        // The "mark" parameter is ignored but needed for cache-busting.
         return route(MediaFileDownload::class, [
             'xref'        => $this->media->xref(),
             'tree'        => $this->media->tree()->name(),
             'fact_id'     => $this->fact_id,
             'disposition' => $disposition,
-            'mark'        => Registry::imageFactory()->fileNeedsWatermark($this, Auth::user())
+            'mark'        => Auth::needsWatermark($this->media->tree()),
         ]);
     }
 

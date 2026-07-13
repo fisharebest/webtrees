@@ -40,21 +40,28 @@ abstract class AbstractParser
     protected string $text = '';
 
     /** @var array<string,Closure(array<string,string>):void> */
-    protected array $start_handlers;
+    private readonly array $start_handlers;
 
     /** @var array<string,Closure():void> */
-    protected array $end_handlers;
+    private readonly array $end_handlers;
 
     public function __construct(
-        protected string $report,
+        protected readonly string $report,
     ) {
         $this->start_handlers = $this->startHandlers();
         $this->end_handlers   = $this->endHandlers();
+    }
 
-        $reader = XMLReader::open($report);
+    /**
+     * Open the report XML file and execute the full parse/dispatch cycle.
+     * Call this after construction to process the report.
+     */
+    public function process(): static
+    {
+        $reader = XMLReader::open($this->report);
 
         if ($reader === false) {
-            throw new RuntimeException(sprintf('Cannot open report XML file: %s', $report));
+            throw new RuntimeException(sprintf('Cannot open report XML file: %s', $this->report));
         }
 
         $this->xml_reader = $reader;
@@ -64,6 +71,8 @@ abstract class AbstractParser
         } finally {
             $this->xml_reader->close();
         }
+
+        return $this;
     }
 
     /**
@@ -93,9 +102,9 @@ abstract class AbstractParser
      */
     protected function parseFragment(string $xml): void
     {
-        $sub_reader = XMLReader::XML($xml);
+        $sub_reader = new XMLReader();
 
-        if ($sub_reader === false) {
+        if ($sub_reader->XML($xml) === false) {
             throw new RuntimeException('Cannot create XMLReader for fragment');
         }
 
@@ -116,7 +125,7 @@ abstract class AbstractParser
      * the internal queue so we can convert them into exceptions instead of
      * leaking PHP warnings.
      */
-    protected function parse(): void
+    private function parse(): void
     {
         $previous_use_errors = libxml_use_internal_errors(true);
         libxml_clear_errors();
@@ -149,7 +158,7 @@ abstract class AbstractParser
      * synthesised into a start/end pair so handler tables can stay
      * symmetric.
      */
-    protected function dispatchNode(): void
+    private function dispatchNode(): void
     {
         $reader = $this->xml_reader;
 
@@ -180,12 +189,12 @@ abstract class AbstractParser
 
     /**
      * Read every attribute of the element the reader is positioned on.
-     * After collecting them we move back to the element itself so the
+     * After collecting them, we move back to the element itself so the
      * caller can still query element-level state (isEmptyElement, etc.).
      *
      * @return array<string,string>
      */
-    protected function readAttributes(): array
+    private function readAttributes(): array
     {
         $attrs = [];
 

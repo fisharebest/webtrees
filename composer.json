@@ -49,31 +49,30 @@
         "fisharebest/algorithm": "1.6.0",
         "fisharebest/ext-calendar": "2.6.0",
         "fisharebest/localization": "1.17.0",
-        "guzzlehttp/guzzle": "7.12.1",
-        "illuminate/database": "13.14.0",
-        "illuminate/support": "13.14.0",
-        "intervention/image": "4.1.2",
+        "guzzlehttp/guzzle": "7.12.3",
+        "illuminate/database": "13.17.0",
+        "illuminate/support": "13.17.0",
         "league/commonmark": "2.8.2",
-        "league/flysystem": "3.34.0",
+        "league/flysystem": "3.35.1",
         "league/flysystem-path-prefixing": "3.31.0",
         "league/flysystem-ziparchive": "3.31.0",
         "middlewares/client-ip": "2.1.0",
         "mlocati/ip-lib": "1.22.0",
-        "nesbot/carbon": "3.11.4",
+        "nesbot/carbon": "3.13.0",
         "nyholm/psr7": "1.8.2",
         "nyholm/psr7-server": "1.1.0",
         "psr/cache": "3.0.0",
         "psr/http-message": "2.0",
         "psr/http-server-handler": "1.0.2",
         "psr/http-server-middleware": "1.0.2",
-        "ramsey/uuid": "4.9.2",
+        "ramsey/uuid": "4.9.3",
         "sabre/vobject": "4.6.0",
         "symfony/cache": "7.4.13",
         "symfony/console": "7.4.13",
         "symfony/expression-language": "7.4.8",
         "symfony/mailer": "7.4.12",
-        "symfony/polyfill-mbstring": "1.38.1",
-        "tecnickcom/tcpdf": "6.11.3"
+        "symfony/polyfill-mbstring": "1.38.2",
+        "tecnickcom/tc-lib-pdf": "8.65.0"
     },
     "require-dev": {
         "ext-dom": "*",
@@ -86,11 +85,11 @@
         "phpstan/phpstan": "2.2.2",
         "phpstan/phpstan-deprecation-rules": "2.0.4",
         "phpstan/phpstan-phpunit": "2.0.16",
-        "phpunit/phpunit": "12.5.29",
+        "phpunit/phpunit": "12.5.30",
         "squizlabs/php_codesniffer": "4.0.1"
     },
     "suggest": {
-        "ext-imagick": "Required to generate thumbnail images",
+        "ext-exif": "Recommended to auto-rotate JPEG images using EXIF orientation metadata",
         "ext-pdo_mysql": "Required to use MySQL for database storage",
         "ext-pdo_sqlite": "Required to use SQLite for database storage",
         "ext-pdo_pgsql": "Required to use PostgreSQL for database storage",
@@ -106,30 +105,22 @@
             "cp -r vendor/ webtrees/vendor/",
             "echo 'Workaround for orphaned file from Laravel 8 (webtrees 2.1) that breaks Laravel 11 (webtrees 2.2)'",
             "echo \"<?php require __DIR__ . '/../../conditionable/Traits/Conditionable.php';\" > webtrees/vendor/illuminate/support/Traits/Conditionable.php",
-            "php index.php compile-po-files",
+            "php index.php xgettext",
             "for FILE in resources/lang/*/messages.php; do cp $FILE webtrees/$FILE; done",
+            "for FILE in public/js/i18n/*.js; do cp $FILE webtrees/$FILE; done",
             "zip --quiet --recurse-paths --move -9 webtrees-`git describe`.zip webtrees"
         ],
         "webtrees:phpcs": [
-            "vendor/bin/phpcs --colors --exclude=Generic.Files.LineLength index.php app tests"
+            "phpcs --colors --exclude=Generic.Files.LineLength index.php app tests"
         ],
         "webtrees:phpstan": [
-            "vendor/bin/phpstan analyze -v --memory-limit=-1"
+            "phpstan analyze -v --memory-limit=-1"
         ],
-        "webtrees:phpstan-baseline": [
-            "vendor/bin/phpstan analyze --memory-limit=-1 --generate-baseline=phpstan-baseline.neon"
-        ],
-        "webtrees:test": [
-            "vendor/bin/phpunit"
+        "webtrees:phpunit": [
+            "phpunit"
         ],
         "webtrees:coverage": [
-            "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html=tests/coverage"
-        ],
-        "webtrees:po": [
-            "sed -i.bak -e 's/\\(I18N::[^)]*[)]\\)/<?php echo \\1; ?>/g' resources/xml/reports/*.xml",
-            "git grep -I --name-only --fixed-strings -e I18N:: -- '*.php' '*.phtml' '*.xml' | xargs xgettext --package-name=webtrees --package-version=1.0 --output=resources/lang/webtrees.pot --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translateContext:1c,2 --keyword=plural:1,2",
-            "find resources/xml/reports/ -name '*.xml' -exec mv {}.bak {} \\;",
-            "find resources/lang -name '*.po' -exec msgmerge --no-wrap --sort-output --no-fuzzy-matching --quiet --output={} {} resources/lang/webtrees.pot \\;"
+            "XDEBUG_MODE=coverage phpunit --coverage-html=tests/coverage"
         ],
         "webtrees:png": [
             "find resources/css -name *.png -exec pngquant --ext .png --force --skip-if-larger --speed 1 {} \\;",
@@ -139,14 +130,18 @@
         "ci" : [
             "@composer validate",
             "@composer install --quiet",
-            "@composer webtrees:test",
+            "@composer webtrees:phpunit",
             "@composer webtrees:phpcs",
             "@composer webtrees:phpstan"
         ]
     },
     "scripts-descriptions": {
+        "ci": "Run validate, install, tests, code style, and static analysis",
         "webtrees:build": "Create a distribution file (webtrees.zip)",
         "webtrees:coverage": "Generate test coverage report",
-        "webtrees:po": "Update the language (webtrees.pot, *.po)"
+        "webtrees:phpcs": "Run PHP_CodeSniffer checks",
+        "webtrees:phpstan": "Run static analysis with PHPStan",
+        "webtrees:phpunit": "Run PHPUnit test suite",
+        "webtrees:png": "Optimize PNG assets"
     }
 }

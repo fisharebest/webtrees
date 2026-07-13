@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\View;
     <?= view('lists/datatables-attributes') ?>
     data-processing="true"
     data-server-side="true"
-    data-ajax='{"url":"<?= e(route(UserListData::class)) ?>"}'
+    data-ajax='{"url":"<?= e(route(UserListData::class)) ?>","type":"POST"}'
     data-auto-width="false"
     data-sorting='[[2,"asc"]]'
     data-search='{"search":"<?= e($filter) ?>"}'

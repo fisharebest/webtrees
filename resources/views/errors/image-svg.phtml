@@ -2,12 +2,17 @@
 
 declare(strict_types=1);
 
+
 /**
- * @var string $status
+ * @var int $status
+ * @var string $filename
+ * @var string $message
  */
 
 ?>
-<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
-    <rect width="100" height="100" fill="#F88" />
-    <text x="5" y="55" font-family="Verdana" font-size="35"><?= $status ?></text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" width="320" height="120">
+    <rect width="320" height="120" fill="#F88" />
+    <text x="12" y="56" font-family="Verdana" font-size="50" fill="#700"><?= $status ?></text>
+    <text x="12" y="88" font-family="Verdana" font-size="14" fill="#300"><?= e($filename) ?></text>
+    <text x="12" y="106" font-family="Verdana" font-size="11" fill="#300"><?= e($message) ?></text>
 </svg>

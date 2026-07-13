@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\Encodings\ANSEL;
 use Fisharebest\Webtrees\Encodings\ASCII;
 use Fisharebest\Webtrees\Encodings\UTF16BE;
@@ -69,6 +70,7 @@ use function is_string;
 use function preg_match_all;
 use function redirect;
 use function route;
+use function strval;
 use function str_replace;
 use function uasort;
 use function view;
@@ -230,7 +232,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $cart = is_array($cart) ? $cart : [];
 
         $xrefs = array_keys($cart[$tree->name()] ?? []);
-        $xrefs = array_map('strval', $xrefs); // PHP converts numeric keys to integers.
+        $xrefs = array_map(strval(...), $xrefs); // PHP converts numeric keys to integers.
 
         $records = new Collection();
 
@@ -342,7 +344,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $cart = is_array($cart) ? $cart : [];
 
         $xrefs = array_keys($cart[$tree->name()] ?? []);
-        $xrefs = array_map('strval', $xrefs); // PHP converts numeric keys to integers.
+        $xrefs = array_map(strval(...), $xrefs); // PHP converts numeric keys to integers.
 
         // Fetch all the records in the cart.
         $records = array_map(static fn (string $xref): GedcomRecord|null => Registry::gedcomRecordFactory()->make($xref, $tree), $xrefs);
@@ -350,8 +352,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         // Some records may have been deleted after they were added to the cart.
         $records = array_filter($records);
 
-        // Group and sort.
-        uasort($records, static fn (GedcomRecord $x, GedcomRecord $y): int => $x->tag() <=> $y->tag() ?: GedcomRecord::nameComparator()($x, $y));
+        // Sort by name and group by type.
+        uasort($records, GedcomRecordComparator::byName(...));
+        uasort($records, GedcomRecordComparator::byType(...));
 
         return $records;
     }

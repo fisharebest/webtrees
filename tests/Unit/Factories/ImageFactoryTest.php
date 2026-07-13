@@ -19,9 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Factories;
 
+use Fisharebest\Webtrees\Enums\ImageOperation;
+use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\Factories\ImageFactory;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Tests\TestCase;
+use Fisharebest\Webtrees\Tree;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\Local\LocalFilesystemAdapter;
@@ -32,20 +37,9 @@ use function dirname;
 #[CoversClass(ImageFactory::class)]
 class ImageFactoryTest extends TestCase
 {
-    public function testReplacementImageResponseSetsContentSecurityPolicyHeader(): void
-    {
-        $php_service   = $this->createStub(PhpService::class);
-        $image_factory = new ImageFactory($php_service);
-        $response      = $image_factory->replacementImageResponse('404');
+    // Happy-path behavior.
 
-        self::assertSame('image/svg+xml', $response->getHeaderLine('content-type'));
-        self::assertSame(
-            'default-src none',
-            $response->getHeaderLine('content-security-policy'),
-        );
-    }
-
-    public function testFileResponseAddsDownloadHeaderForSafeSvg(): void
+    public function testHappyPathFileContentsReturnsSafeSvgContent(): void
     {
         $php_service   = $this->createStub(PhpService::class);
         $image_factory = new ImageFactory($php_service);
@@ -55,18 +49,132 @@ class ImageFactoryTest extends TestCase
             ->method('extensionLoaded')
             ->willReturnCallback(static fn (string $extension): bool => $extension === 'dom');
 
-        $response = $image_factory->fileResponse(
-            filesystem: $filesystem,
-            path: 'safe.svg',
-            download: true,
-        );
+        $contents = $image_factory->fileContents($filesystem, 'safe.svg');
 
-        self::assertSame('image/svg+xml', $response->getHeaderLine('content-type'));
-        self::assertSame('default-src none', $response->getHeaderLine('content-security-policy'));
-        self::assertSame('attachment; filename="safe.svg"', $response->getHeaderLine('content-disposition'));
+        self::assertStringContainsString('<svg', $contents);
     }
 
-    public function testFileResponseBlocksSvgWithActiveContent(): void
+    public function testHappyPathThumbnailContentsReturnsImageForJpeg(): void
+    {
+        $image_factory = new ImageFactory(new PhpService());
+        $filesystem    = $this->mediaFilesystem();
+
+        $thumbnail = $image_factory->thumbnailContents(
+            filesystem: $filesystem,
+            path: 'Elizabeth_II.jpg',
+            width: 40,
+            height: 40,
+            operation: ImageOperation::Contain,
+        );
+
+        self::assertNotSame('', $thumbnail);
+    }
+
+    public function testHappyPathThumbnailContentsReturnsImageForJpegWithCrop(): void
+    {
+        $image_factory = new ImageFactory(new PhpService());
+        $filesystem    = $this->mediaFilesystem();
+
+        $thumbnail = $image_factory->thumbnailContents(
+            filesystem: $filesystem,
+            path: 'Elizabeth_II.jpg',
+            width: 40,
+            height: 40,
+            operation: ImageOperation::Crop,
+        );
+
+        self::assertNotSame('', $thumbnail);
+    }
+
+    public function testHappyPathMediaFileContentsReturnsOriginalContentsWhenNoWatermarkRequested(): void
+    {
+        $image_factory     = new ImageFactory(new PhpService());
+        $filesystem        = $this->mediaFilesystem();
+        $expected_contents = $filesystem->read('Elizabeth_II.jpg');
+        $media_file        = $this->createMediaFileStub(
+            filesystem: $filesystem,
+            filename: 'Elizabeth_II.jpg',
+            mime_type: 'image/jpeg',
+            is_image: true,
+        );
+
+        $contents = $image_factory->mediaFileContents(media_file: $media_file, add_watermark: false);
+
+        self::assertSame($expected_contents, $contents);
+    }
+
+    public function testHappyPathMediaFileContentsReturnsOriginalContentsForNonImageFile(): void
+    {
+        $image_factory = new ImageFactory(new PhpService());
+        $filesystem    = $this->createStub(FilesystemOperator::class);
+
+        $filesystem
+            ->method('mimeType')
+            ->willReturn('application/pdf');
+
+        $filesystem
+            ->method('read')
+            ->willReturn('PDF');
+
+        $media_file = $this->createMediaFileStub(
+            filesystem: $filesystem,
+            filename: 'document.pdf',
+            mime_type: 'application/pdf',
+            is_image: false,
+        );
+
+        $contents = $image_factory->mediaFileContents(media_file: $media_file, add_watermark: true);
+
+        self::assertSame('PDF', $contents);
+    }
+
+    public function testHappyPathMediaFileThumbnailReturnsImageWithoutWatermark(): void
+    {
+        $image_factory = new ImageFactory(new PhpService());
+        $filesystem    = $this->mediaFilesystem();
+        $media_file    = $this->createMediaFileStub(
+            filesystem: $filesystem,
+            filename: 'Elizabeth_II.jpg',
+            mime_type: 'image/jpeg',
+            is_image: true,
+        );
+
+        $thumbnail = $image_factory->mediaFileThumbnail(
+            media_file: $media_file,
+            width: 40,
+            height: 40,
+            operation: ImageOperation::Contain,
+            add_watermark: false,
+        );
+
+        self::assertNotSame('', $thumbnail);
+    }
+
+    public function testHappyPathMediaFileThumbnailReturnsImageWithWatermark(): void
+    {
+        $image_factory = new ImageFactory(new PhpService());
+        $filesystem    = $this->mediaFilesystem();
+        $media_file    = $this->createMediaFileStub(
+            filesystem: $filesystem,
+            filename: 'Elizabeth_II.jpg',
+            mime_type: 'image/jpeg',
+            is_image: true,
+        );
+
+        $thumbnail = $image_factory->mediaFileThumbnail(
+            media_file: $media_file,
+            width: 40,
+            height: 40,
+            operation: ImageOperation::Contain,
+            add_watermark: true,
+        );
+
+        self::assertNotSame('', $thumbnail);
+    }
+
+    // Guardrails and failure handling.
+
+    public function testGuardrailFileContentsBlocksSvgWithActiveContent(): void
     {
         $php_service   = $this->createStub(PhpService::class);
         $image_factory = new ImageFactory($php_service);
@@ -76,17 +184,19 @@ class ImageFactoryTest extends TestCase
             ->method('extensionLoaded')
             ->willReturnCallback(static fn (string $extension): bool => $extension === 'dom');
 
-        $response = $image_factory->fileResponse(
-            filesystem: $filesystem,
-            path: 'unsafe.svg',
-            download: false,
-        );
+        $this->expectException(ImageException::class);
+        $this->expectExceptionCode(403);
 
-        self::assertSame('image/svg+xml', $response->getHeaderLine('content-type'));
-        self::assertSame('SVG image blocked due to XSS.', $response->getHeaderLine('x-image-exception'));
+        try {
+            $image_factory->fileContents(filesystem: $filesystem, path: 'unsafe.svg');
+        } catch (ImageException $exception) {
+            self::assertSame('SVG contains active content', $exception->getMessage());
+
+            throw $exception;
+        }
     }
 
-    public function testFileResponseBlocksSvgWithoutDomExtension(): void
+    public function testGuardrailFileContentsBlocksSvgWithoutDomExtension(): void
     {
         $php_service   = $this->createStub(PhpService::class);
         $image_factory = new ImageFactory($php_service);
@@ -96,74 +206,128 @@ class ImageFactoryTest extends TestCase
             ->method('extensionLoaded')
             ->willReturnCallback(static fn (string $extension): bool => false);
 
-        $response = $image_factory->fileResponse(
-            filesystem: $filesystem,
-            path: 'safe.svg',
-            download: false,
-        );
+        $this->expectException(ImageException::class);
+        $this->expectExceptionCode(500);
 
-        self::assertSame('image/svg+xml', $response->getHeaderLine('content-type'));
-        self::assertSame(
-            'Need the PHP dom extension to verify SVG files.',
-            $response->getHeaderLine('x-image-exception'),
-        );
+        try {
+            $image_factory->fileContents(filesystem: $filesystem, path: 'safe.svg');
+        } catch (ImageException $exception) {
+            self::assertSame('PHP extension ext-dom is not installed', $exception->getMessage());
+
+            throw $exception;
+        }
     }
 
-    public function testFileResponseReturnsNotFoundForMissingFile(): void
+    public function testGuardrailFileContentsBlocksMalformedSvgAsActiveContent(): void
+    {
+        $php_service = $this->createStub(PhpService::class);
+        $filesystem  = $this->createStub(FilesystemOperator::class);
+
+        $php_service
+            ->method('extensionLoaded')
+            ->willReturnCallback(static fn (string $extension): bool => $extension === 'dom');
+
+        $filesystem
+            ->method('mimeType')
+            ->willReturn('image/svg+xml');
+
+        $filesystem
+            ->method('read')
+            ->willReturn('<svg><g></svg>');
+
+        $image_factory = new ImageFactory($php_service);
+
+        $this->expectException(ImageException::class);
+        $this->expectExceptionCode(403);
+        $this->expectExceptionMessage('SVG contains active content');
+
+        $image_factory->fileContents(filesystem: $filesystem, path: 'broken.svg');
+    }
+
+    public function testGuardrailFileContentsThrowsNotFoundForMissingFile(): void
     {
         $image_factory = new ImageFactory(new PhpService());
         $filesystem    = $this->mediaFilesystem();
 
-        $response = $image_factory->fileResponse(
-            filesystem: $filesystem,
-            path: 'missing.svg',
-            download: false,
-        );
+        $this->expectException(ImageException::class);
+        $this->expectExceptionCode(404);
 
-        self::assertSame('image/svg+xml', $response->getHeaderLine('content-type'));
-        self::assertStringContainsString(
-            'UnableToReadFile',
-            $response->getHeaderLine('x-file-exception'),
-        );
+        try {
+            $image_factory->fileContents(filesystem: $filesystem, path: 'missing.svg');
+        } catch (ImageException $exception) {
+            self::assertStringStartsWith('Unable to read file contents:', $exception->getMessage());
+
+            throw $exception;
+        }
     }
 
-    public function testThumbnailResponseReturnsImageForJpeg(): void
+    public function testGuardrailThumbnailContentsThrowsNotFoundForMissingFile(): void
     {
         $image_factory = new ImageFactory(new PhpService());
         $filesystem    = $this->mediaFilesystem();
 
-        $response = $image_factory->thumbnailResponse(
-            filesystem: $filesystem,
-            path: 'Elizabeth_II.jpg',
-            width: 40,
-            height: 40,
-            fit: 'contain',
-        );
+        $this->expectException(ImageException::class);
+        $this->expectExceptionCode(404);
 
-        self::assertSame('image/jpeg', $response->getHeaderLine('content-type'));
-        self::assertSame('default-src none', $response->getHeaderLine('content-security-policy'));
-        self::assertSame('', $response->getHeaderLine('content-disposition'));
-        self::assertNotSame('', $response->getBody()->getContents());
+        $image_factory->thumbnailContents(filesystem: $filesystem, path: 'missing.jpg', width: 40, height: 40, operation: ImageOperation::Contain);
     }
 
-    public function testThumbnailResponseReturnsNotFoundForMissingFile(): void
+    public function testGuardrailThumbnailContentsThrowsWhenGdExtensionMissing(): void
     {
-        $image_factory = new ImageFactory(new PhpService());
-        $filesystem    = $this->mediaFilesystem();
+        $php_service      = $this->createStub(PhpService::class);
+        $filesystem       = $this->createStub(FilesystemOperator::class);
+        $fixture_contents = $this->mediaFilesystem()->read('Elizabeth_II.jpg');
 
-        $response = $image_factory->thumbnailResponse(
-            filesystem: $filesystem,
-            path: 'missing.jpg',
-            width: 40,
-            height: 40,
-            fit: 'contain',
-        );
+        $php_service
+            ->method('extensionLoaded')
+            ->willReturn(false);
 
-        self::assertSame('image/svg+xml', $response->getHeaderLine('content-type'));
-        self::assertStringContainsString(
-            'UnableTo',
-            $response->getHeaderLine('x-thumbnail-exception'),
-        );
+        $filesystem
+            ->method('mimeType')
+            ->willReturn('image/jpeg');
+
+        $filesystem
+            ->method('read')
+            ->willReturn($fixture_contents);
+
+        $image_factory = new ImageFactory($php_service);
+
+        $this->expectException(ImageException::class);
+        $this->expectExceptionCode(500);
+        $this->expectExceptionMessage('PHP extension ext-gd is not installed');
+
+        $image_factory->thumbnailContents(filesystem: $filesystem, path: 'photo.jpg', width: 40, height: 40, operation: ImageOperation::Contain);
+    }
+
+
+
+    private function createMediaFileStub(FilesystemOperator $filesystem, string $filename, string $mime_type, bool $is_image): MediaFile
+    {
+        $tree = $this->createStub(Tree::class);
+        $tree
+            ->method('mediaFilesystem')
+            ->willReturn($filesystem);
+
+        $media = $this->createStub(Media::class);
+        $media
+            ->method('tree')
+            ->willReturn($tree);
+
+        $media_file = $this->createStub(MediaFile::class);
+        $media_file
+            ->method('media')
+            ->willReturn($media);
+        $media_file
+            ->method('filename')
+            ->willReturn($filename);
+        $media_file
+            ->method('mimeType')
+            ->willReturn($mime_type);
+        $media_file
+            ->method('isImage')
+            ->willReturn($is_image);
+
+        return $media_file;
     }
 
     private function mediaFilesystem(): FilesystemOperator

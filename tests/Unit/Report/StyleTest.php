@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
+use LogicException;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Report\Style;
@@ -28,10 +29,58 @@ class StyleTest extends TestCase
 {
     public function testConstructorAssignsProperties(): void
     {
-        $style = new Style('header', 'B', 14.0);
+        $style = new Style('header', 'bi', 14.0);
 
         self::assertSame('header', $style->name);
-        self::assertSame('B', $style->style);
+        self::assertSame('bi', $style->style);
         self::assertSame(14.0, $style->size);
+    }
+
+    public function testConstructorRejectsUppercaseStyleFlags(): void
+    {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Invalid style flags "B". Use only lowercase b, i, u, and d.');
+
+        new Style('header', 'B', 14.0);
+    }
+
+    public function testConstructorAcceptsLowercaseStyleFlags(): void
+    {
+        $style = new Style('header', 'b', 14.0);
+
+        self::assertSame('b', $style->style);
+    }
+
+    public function testConstructorRejectsUnknownStyleFlags(): void
+    {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Invalid style flags "X". Use only lowercase b, i, u, and d.');
+
+        new Style('header', 'X', 14.0);
+    }
+
+    public function testFromXmlAttributesCreatesStyle(): void
+    {
+        $style = Style::fromXmlAttributes([
+            'name'  => 'header',
+            'style' => 'bi',
+            'size'  => '14',
+        ]);
+
+        self::assertSame('header', $style->name);
+        self::assertSame('bi', $style->style);
+        self::assertSame(14.0, $style->size);
+    }
+
+    public function testFromXmlAttributesRejectsUppercaseStyleFlags(): void
+    {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Invalid style flags "BI". Use only lowercase b, i, u, and d.');
+
+        Style::fromXmlAttributes([
+            'name'  => 'header',
+            'style' => 'BI',
+            'size'  => '14',
+        ]);
     }
 }

@@ -448,7 +448,7 @@ class IndividualFactsService
             'U' => I18N::translate('Marriage of a half-sibling'),
         ];
 
-        /** @var Collection<Fact> $facts */
+        /** @var Collection<int,Fact> $facts */
         $facts = new Collection();
 
         // Deal with recursion.
@@ -673,7 +673,7 @@ class IndividualFactsService
             'U' => I18N::translate('Marriage of a parent'),
         ];
 
-        /** @var Collection<Fact> $facts */
+        /** @var Collection<int,Fact> $facts */
         $facts = new Collection();
 
         if ($sosa === 1) {
@@ -782,7 +782,7 @@ class IndividualFactsService
             ],
         ];
 
-        /** @var Collection<Fact> $facts */
+        /** @var Collection<int,Fact> $facts */
         $facts = new Collection();
 
         if (str_contains($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {

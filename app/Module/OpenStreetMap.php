@@ -28,6 +28,8 @@ class OpenStreetMap extends AbstractModule implements ModuleMapProviderInterface
 {
     use ModuleMapProviderTrait;
 
+    private const OSM_REFERRER_POLICY = 'strict-origin-when-cross-origin';
+
     /**
      * Name of the map provider.
      */
@@ -59,6 +61,7 @@ class OpenStreetMap extends AbstractModule implements ModuleMapProviderInterface
                 'attribution' => 'Map data ©<a href="https://www.openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC-BY-SA</a>',
                 'default'     => true,
                 'label'       => 'Mapnik',
+                'referrerPolicy' => self::OSM_REFERRER_POLICY,
                 'maxZoom'     => 19,
                 'minZoom'     => 2,
                 'subdomains'  => ['a', 'b', 'c'],
@@ -69,6 +72,7 @@ class OpenStreetMap extends AbstractModule implements ModuleMapProviderInterface
                 'attribution' => 'Map data ©<a href="https://www.openstreetmap.org">Karte hergestellt aus OpenStreetMap-Daten</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC-BY-SA</a>',
                 'default'     => false,
                 'label'       => 'Deutsch',
+                'referrerPolicy' => self::OSM_REFERRER_POLICY,
                 'maxZoom'     => 18,
                 'minZoom'     => 2,
                 'subdomains'  => ['a', 'b', 'c'],
@@ -79,6 +83,7 @@ class OpenStreetMap extends AbstractModule implements ModuleMapProviderInterface
                 'attribution' => 'Map data ©<a href="https://www.openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC-BY-SA</a>',
                 'default'     => false,
                 'label'       => 'Français',
+                'referrerPolicy' => self::OSM_REFERRER_POLICY,
                 'maxZoom'     => 20,
                 'minZoom'     => 2,
                 'subdomains'  => ['a', 'b', 'c'],

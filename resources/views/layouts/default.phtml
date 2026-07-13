@@ -69,7 +69,9 @@ $theme = Registry::container()->get(ModuleThemeInterface::class);
         <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->headContent())->implode('') ?>
     </head>
 
-    <body class="wt-global wt-theme-<?= e($theme->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name, ['\\' => '/']))) ?>">
+    <body
+        class="wt-global wt-theme-<?= e($theme->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name, ['\\' => '/']))) ?>"
+    >
         <header class="wt-header-wrapper d-print-none">
             <div class="container-lg wt-header-container">
                 <div class="row wt-header-content">
@@ -143,42 +145,8 @@ $theme = Registry::container()->get(ModuleThemeInterface::class);
         </footer>
 
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
+        <script src="<?= e(asset('js/i18n/' . I18N::locale()->languageTag() . '.js')) ?>"></script>
         <script src="<?= e(asset('js/webtrees.min.js')) ?>"></script>
-
-        <script>
-            // Trigger an event when we click on an (any) image
-            $('body').on('click', 'a.gallery', function () {
-                // Enable colorbox for images
-                $("a[type^=image].gallery").colorbox({
-                    // Don't scroll window with document
-                    fixed: true,
-                    width: "85%",
-                    height: "85%",
-                    current: "",
-                    previous: '<i class="fa-solid fa-arrow-left wt-icon-flip-rtl" title="<?= I18N::translate('previous') ?>"></i>',
-                    next: '<i class="fa-solid fa-arrow-right wt-icon-flip-rtl" title="<?= I18N::translate('next') ?>"></i>',
-                    slideshowStart: '<i class="fa-solid fa-play" title="<?= I18N::translate('Play') ?>"></i>',
-                    slideshowStop: '<i class="fa-solid fa-stop" title="<?= I18N::translate('Stop') ?>"></i>',
-                    close: '<i class="fa-solid fa-times" title="<?= I18N::translate('close') ?>"></i>',
-                    title: function () {
-                        return this.dataset.title;
-                    },
-                    photo: true,
-                    rel: "gallery", // Turn all images on the page into a slideshow
-                    slideshow: true,
-                    slideshowAuto: false,
-                    slideshowSpeed: 4000,
-                    // Add wheelzoom to the displayed image
-                    onComplete: function () {
-                        // Disable click on image triggering next image
-                        // https://github.com/jackmoore/colorbox/issues/668
-                        $(".cboxPhoto").unbind("click");
-                        // Enable wheel/pinch zooming
-                        $('.cboxPhoto').wrap("<pinch-zoom></pinch-zoom>");
-                    }
-                });
-            });
-        </script>
 
         <?= View::stack('javascript') ?>
 

@@ -47,6 +47,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\MemoryService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submission;
@@ -60,6 +61,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_key_exists;
 use function array_slice;
+use function count;
 use function e;
 use function implode;
 use function preg_match;
@@ -73,9 +75,14 @@ final class CheckTree implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
+    // Estimate how much memory will be needed to generate the response.
+    private const int VIEW_MEMORY_BASE = 2 * 1024 * 1024;
+    private const int VIEW_MEMORY_PER_ISSUE = 2 * 1024;
+
     public function __construct(
         private readonly Gedcom $gedcom,
         private readonly TimeoutService $timeout_service,
+        private readonly MemoryService $memory_service,
     ) {
     }
 
@@ -150,18 +157,24 @@ final class CheckTree implements RequestHandlerInterface
         $errors   = [];
         $warnings = [];
         $infos    = [];
+        $reason = '';
 
         $element_factory = new ElementFactory();
         $this->gedcom->registerTags($element_factory, false);
 
         foreach ($records as $record) {
-            // If we are nearly out of time, then stop processing here
+            // If we are nearly out of resources, then stop processing here
             if ($skip_to === $record->xref) {
                 $skip_to = '';
             } elseif ($skip_to !== '') {
                 continue;
             } elseif ($this->timeout_service->isTimeNearlyUp()) {
                 $skip_to = $record->xref;
+                $reason  = I18N::translate('The server’s time limit has been reached.');
+                break;
+            } elseif ($this->memory_service->isMemoryNearlyUp($this->memoryEstimate($errors, $warnings, $infos))) {
+                $skip_to = $record->xref;
+                $reason  = I18N::translate('The server’s memory limit has been reached.');
                 break;
             }
 
@@ -316,6 +329,7 @@ final class CheckTree implements RequestHandlerInterface
         return $this->viewResponse('admin/trees-check', [
             'errors'   => $errors,
             'infos'    => $infos,
+            'reason'   => $reason,
             'more_url' => $more_url,
             'title'    => $title,
             'tree'     => $tree,
@@ -355,6 +369,18 @@ final class CheckTree implements RequestHandlerInterface
         $type2 = $this->recordType($type2);
 
         return I18N::translate('%1$s is a %2$s but a %3$s is expected.', $link, $type1, $type2);
+    }
+
+    /**
+     * @param array<object{message:string,tag:string}> $errors
+     * @param array<object{message:string,tag:string}> $warnings
+     * @param array<object{message:string,tag:string}> $infos
+     */
+    private function memoryEstimate(array $errors, array $warnings, array $infos): int
+    {
+        $issues = count($errors) + count($warnings) + count($infos);
+
+        return self::VIEW_MEMORY_BASE + $issues * self::VIEW_MEMORY_PER_ISSUE;
     }
 
     /**

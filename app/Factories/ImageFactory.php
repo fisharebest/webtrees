@@ -22,53 +22,69 @@ namespace Fisharebest\Webtrees\Factories;
 use DOMDocument;
 use DOMElement;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\ImageFactoryInterface;
-use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\ExifOrientation;
+use Fisharebest\Webtrees\Enums\ImageOperation;
+use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\MediaFile;
-use Fisharebest\Webtrees\Mime;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Webtrees;
-use Imagick;
-use Intervention\Image\Drivers\Gd\Driver as GdDriver;
-use Intervention\Image\Drivers\Imagick\Driver as ImagickDriver;
-use Intervention\Image\Exceptions\ImageException;
-use Intervention\Image\ImageManager;
-use Intervention\Image\Interfaces\ImageInterface;
-use InvalidArgumentException;
+use GdImage;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\UnableToRetrieveMetadata;
-use Psr\Http\Message\ResponseInterface;
+use League\Flysystem\UnableToReadFile;
 use RuntimeException;
-use Throwable;
 
-use function addcslashes;
 use function basename;
-use function get_class;
-use function implode;
+use function file_get_contents;
+use function fclose;
+use function fopen;
+use function imagealphablending;
+use function imagebmp;
+use function imagecolorallocatealpha;
+use function imagecopy;
+use function imagecopyresampled;
+use function imagecreatefromstring;
+use function imagecreatetruecolor;
+use function imagefilledrectangle;
+use function imageflip;
+use function imagegif;
+use function imagejpeg;
+use function imagepng;
+use function imagerotate;
+use function imagesavealpha;
+use function imagesx;
+use function imagesy;
+use function imagewebp;
+use function in_array;
+use function is_array;
+use function is_string;
 use function libxml_clear_errors;
 use function libxml_use_internal_errors;
-use function pathinfo;
+use function max;
+use function min;
+use function ob_end_clean;
+use function ob_get_clean;
+use function ob_start;
 use function preg_replace;
-use function response;
+use function round;
+use function rewind;
 use function str_starts_with;
 use function strtolower;
-use function view;
+use function fwrite;
 
+use const IMG_FLIP_HORIZONTAL;
+use const IMG_FLIP_VERTICAL;
 use const LIBXML_NONET;
-use const PATHINFO_EXTENSION;
 
-class ImageFactory implements ImageFactoryInterface
+readonly class ImageFactory implements ImageFactoryInterface
 {
-    // Imagick can detect the quality setting for images.  GD cannot.
-    protected const int GD_DEFAULT_IMAGE_QUALITY     = 90;
-    protected const int GD_DEFAULT_THUMBNAIL_QUALITY = 70;
+    // GD does not expose source compression quality, so use stable defaults.
+    protected const int IMAGE_QUALITY     = 90;
+    protected const int THUMBNAIL_QUALITY = 70;
 
     protected const string WATERMARK_FILE = 'resources/img/watermark.png';
-
-    protected const int THUMBNAIL_CACHE_TTL = 8640000;
 
     private const array DANGEROUS_SVG_TAGS = [
         'script',
@@ -88,226 +104,182 @@ class ImageFactory implements ImageFactoryInterface
         'image/webp' => 'webp',
     ];
 
-    public function __construct(private PhpService $php_service)
-    {
+    public function __construct(
+        private PhpService $php_service,
+    ) {
     }
 
-    public function fileResponse(FilesystemOperator $filesystem, string $path, bool $download): ResponseInterface
+    public function fileContents(FilesystemOperator $filesystem, string $path): string
+    {
+        $filename  = basename($path);
+        $data      = $this->readFile($filesystem, $path, $filename);
+        $mime_type = $this->fileMimeType($filesystem, $path);
+
+        if ($mime_type === 'image/svg+xml') {
+            $this->validateSvgFile($data, $filename);
+        }
+
+        return $data;
+    }
+
+    public function fileMimeType(FilesystemOperator $filesystem, string $path): string
     {
         try {
-            try {
-                $mime_type = $filesystem->mimeType(path: $path);
-            } catch (UnableToRetrieveMetadata) {
-                $mime_type = Mime::DEFAULT_TYPE;
-            }
-
-            $filename = $download ? addcslashes(string: basename(path: $path), characters: '"') : '';
-
-            return $this->imageResponse(data: $filesystem->read(location: $path), mime_type: $mime_type, filename: $filename);
-        } catch (FilesystemException $ex) {
-            return $this->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_NOT_FOUND)
-                ->withHeader('x-file-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
+            return $filesystem->mimeType(path: $path);
+        } catch (UnableToRetrieveMetadata $exception) {
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_NOT_FOUND,
+                filename: $path,
+                error: 'Unable to read MIME type: ' . $exception->getMessage(),
+            );
+        } catch (FilesystemException $exception) {
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_NOT_FOUND,
+                filename: $path,
+                error: 'Filesystem error while reading MIME type: ' . $exception->getMessage(),
+            );
         }
     }
 
-    public function thumbnailResponse(
+    public function thumbnailContents(
         FilesystemOperator $filesystem,
         string $path,
         int $width,
         int $height,
-        string $fit
-    ): ResponseInterface {
-        try {
-            $mime_type = $filesystem->mimeType(path: $path);
-            $image     = $this->imageManager()->decodeBinary(binary: $filesystem->read(location: $path));
-            $image     = $this->resizeImage(image: $image, width: $width, height: $height, fit: $fit);
-            $quality   = $this->extractImageQuality(image: $image, default: static::GD_DEFAULT_THUMBNAIL_QUALITY);
-            $data      = $image->encodeUsingMediaType(mediaType: $mime_type, quality: $quality)->toString();
+        ImageOperation $operation,
+    ): string {
+        $filename  = basename($path);
+        $binary    = $this->readFile($filesystem, $path, $filename);
+        $image     = $this->decodeImage(binary: $binary, filename: $filename);
+        $image     = $this->autoRotateImage(image: $image, binary: $binary, filename: $filename);
+        $image     = $this->resizeImage(image: $image, width: $width, height: $height, operation: $operation, filename: $filename);
+        $mime_type = $this->fileMimeType($filesystem, $path);
 
-            return $this->imageResponse(data: $data, mime_type: $mime_type, filename: '');
-        } catch (FilesystemException $ex) {
-            return $this
-                ->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_NOT_FOUND)
-                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
-        } catch (ImageException $ex) {
-            return $this
-                ->replacementImageResponse(text: '.' . pathinfo(path: $path, flags: PATHINFO_EXTENSION))
-                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
-        } catch (Throwable $ex) {
-            return $this
-                ->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
-                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
-        }
+        return $this->encodeImage(image: $image, mime_type: $mime_type, quality: self::THUMBNAIL_QUALITY);
     }
 
-    public function mediaFileResponse(MediaFile $media_file, bool $add_watermark, bool $download): ResponseInterface
+    public function mediaFileContents(MediaFile $media_file, bool $add_watermark): string
     {
         $filesystem = $media_file->media()->tree()->mediaFilesystem();
         $path       = $media_file->filename();
+        $filename   = basename($path);
 
         if (!$add_watermark || !$media_file->isImage()) {
-            return $this->fileResponse(filesystem: $filesystem, path: $path, download: $download);
+            return $this->fileContents($filesystem, $path);
         }
 
-        try {
-            $mime_type = $media_file->mimeType();
-            $image     = $this->imageManager()->decodeBinary(binary: $filesystem->read(location: $path));
-            $watermark = $this->createWatermark(width: $image->width(), height: $image->height(), media_file: $media_file);
-            $image     = $this->addWatermark(image: $image, watermark: $watermark);
-            $filename  = $download ? basename(path: $path) : '';
-            $quality   = $this->extractImageQuality(image: $image, default: static::GD_DEFAULT_IMAGE_QUALITY);
-            $data      = $image->encodeUsingMediaType(mediaType: $mime_type, quality: $quality)->toString();
+        $binary    = $this->readFile($filesystem, $path, $filename);
+        $image     = $this->decodeImage(binary: $binary, filename: $filename);
+        $image     = $this->autoRotateImage(image: $image, binary: $binary, filename: $filename);
+        $width     = imagesx($image);
+        $height    = imagesy($image);
+        $watermark = $this->createWatermark(width: $width, height: $height);
+        $image     = $this->addWatermark(image: $image, watermark: $watermark);
+        $mime_type = $media_file->mimeType();
 
-            return $this->imageResponse(data: $data, mime_type: $mime_type, filename: $filename);
-        } catch (ImageException $ex) {
-            return $this->replacementImageResponse(text: pathinfo(path: $path, flags: PATHINFO_EXTENSION))
-                ->withHeader('x-image-exception', $ex->getMessage());
-        } catch (FilesystemException $ex) {
-            return $this->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_NOT_FOUND)
-                ->withHeader('x-image-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
-        } catch (Throwable $ex) {
-            return $this->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
-                ->withHeader('x-image-exception', $ex->getMessage());
-        }
+        return $this->encodeImage(image: $image, mime_type: $mime_type, quality: self::IMAGE_QUALITY);
     }
 
     public function mediaFileThumbnail(
         MediaFile $media_file,
         int $width,
         int $height,
-        string $fit,
-        bool $add_watermark
+        ImageOperation $operation,
+        bool $add_watermark,
     ): string {
-        // Where are the images stored?
         $filesystem = $media_file->media()->tree()->mediaFilesystem();
+        $path       = $media_file->filename();
+        $filename   = basename($path);
+        $binary     = $this->readFile($filesystem, $path, $filename);
+        $image      = $this->decodeImage(binary: $binary, filename: $filename);
+        $image      = $this->autoRotateImage(image: $image, binary: $binary, filename: $filename);
+        $image      = $this->resizeImage(image: $image, width: $width, height: $height, operation: $operation, filename: $filename);
+        $mime_type  = $media_file->mimeType();
 
-        // Where is the image stored in the filesystem?
-        $path = $media_file->filename();
-
-        $key = implode(separator: ':', array: [
-            $media_file->media()->tree()->name(),
-            $path,
-            $filesystem->lastModified(path: $path),
-            (string) $width,
-            (string) $height,
-            $fit,
-            (string) $add_watermark,
-        ]);
-
-        $closure = function () use ($filesystem, $path, $width, $height, $fit, $add_watermark, $media_file): string {
-            $image = $this->imageManager()->decodeBinary(binary: $filesystem->read(location: $path));
-            $image = $this->resizeImage(image: $image, width: $width, height: $height, fit: $fit);
-
-            if ($add_watermark) {
-                $watermark = $this->createWatermark(width: $image->width(), height: $image->height(), media_file: $media_file);
-                $image     = $this->addWatermark(image: $image, watermark: $watermark);
-            }
-
-            $quality = $this->extractImageQuality(image: $image, default: static::GD_DEFAULT_THUMBNAIL_QUALITY);
-
-            return $image->encodeUsingMediaType(mediaType: $media_file->mimeType(), quality: $quality)->toString();
-        };
-
-        return Registry::cache()->file()->remember(key: $key, closure: $closure, ttl: static::THUMBNAIL_CACHE_TTL);
-    }
-
-    public function mediaFileThumbnailResponse(
-        MediaFile $media_file,
-        int $width,
-        int $height,
-        string $fit,
-        bool $add_watermark
-    ): ResponseInterface {
-        // Where are the images stored?
-        $filesystem = $media_file->media()->tree()->mediaFilesystem();
-
-        // Where is the image stored in the filesystem?
-        $path = $media_file->filename();
-
-        try {
-            $mime_type = $filesystem->mimeType(path: $path);
-
-            $data = $this->mediaFileThumbnail($media_file, $width, $height, $fit, $add_watermark);
-
-            return $this->imageResponse(data: $data, mime_type: $mime_type, filename: '');
-        } catch (FilesystemException $ex) {
-            return $this
-                ->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_NOT_FOUND)
-                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
-        } catch (Throwable $ex) {
-            return $this
-                ->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
-                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
-        }
-    }
-
-    public function fileNeedsWatermark(MediaFile $media_file, UserInterface $user): bool
-    {
-        $tree = $media_file->media()->tree();
-
-        return Auth::accessLevel(tree: $tree, user: $user) > (int) $tree->getPreference(setting_name: 'SHOW_NO_WATERMARK');
-    }
-
-    public function thumbnailNeedsWatermark(MediaFile $media_file, UserInterface $user): bool
-    {
-        return $this->fileNeedsWatermark(media_file: $media_file, user: $user);
-    }
-
-    public function createWatermark(int $width, int $height, MediaFile $media_file): ImageInterface
-    {
-        return $this->imageManager()
-            ->decodePath(path: Webtrees::ROOT_DIR . static::WATERMARK_FILE)
-            ->scale(width: $width, height: $height);
-    }
-
-    public function addWatermark(ImageInterface $image, ImageInterface $watermark): ImageInterface
-    {
-        return $image->insert(image: $watermark, alignment: 'center');
-    }
-
-    public function replacementImageResponse(string $text): ResponseInterface
-    {
-        // We can't create a PNG/BMP/JPEG image, as the GD/IMAGICK libraries may be missing.
-        $svg = view(name: 'errors/image-svg', data: ['status' => $text]);
-
-        // We can't send the actual status code, as browsers won't show images with 4xx/5xx.
-        return response(content: $svg)
-            ->withHeader('content-type', 'image/svg+xml')
-            ->withHeader('content-security-policy', 'default-src none');
-    }
-
-    protected function imageResponse(string $data, string $mime_type, string $filename): ResponseInterface
-    {
-        if ($mime_type === 'image/svg+xml') {
-            if (!$this->php_service->extensionLoaded(extension: 'dom')) {
-                return $this->replacementImageResponse(text: 'DOM')
-                    ->withHeader('x-image-exception', 'Need the PHP dom extension to verify SVG files.');
-            }
-
-            if ($this->svgContainsActiveContent(data: $data)) {
-                return $this->replacementImageResponse(text: 'XSS')
-                    ->withHeader('x-image-exception', 'SVG image blocked due to XSS.');
-            }
+        if ($add_watermark) {
+            $thumbnail_width  = imagesx($image);
+            $thumbnail_height = imagesy($image);
+            $watermark        = $this->createWatermark(width: $thumbnail_width, height: $thumbnail_height);
+            $image            = $this->addWatermark(image: $image, watermark: $watermark);
         }
 
-        // HTML files may contain JavaScript and iframes, so use content-security-policy to disable them.
-        $response = response($data)
-            ->withHeader('content-type', $mime_type)
-            ->withHeader('content-security-policy', 'default-src none');
+        return $this->encodeImage(image: $image, mime_type: $mime_type, quality: self::THUMBNAIL_QUALITY);
+    }
+    private function createWatermark(int $width, int $height): GdImage
+    {
+        $this->requireGdExtension();
 
-        if ($filename === '') {
-            return $response;
+        $watermark_data = file_get_contents(Webtrees::ROOT_DIR . self::WATERMARK_FILE);
+
+        if (!is_string($watermark_data)) {
+            throw new RuntimeException(message: 'Unable to read watermark image: ' . self::WATERMARK_FILE);
         }
 
-        $filename = addcslashes(string: basename(path: $filename), characters: '"');
+        $watermark = $this->decodeImage(binary: $watermark_data, filename: self::WATERMARK_FILE);
 
-        return $response->withHeader('content-disposition', 'attachment; filename="' . $filename . '"');
+        return $this->resizeImage(image: $watermark, width: $width, height: $height, operation: ImageOperation::Contain, filename: self::WATERMARK_FILE);
+    }
+
+    private function addWatermark(GdImage $image, GdImage $watermark): GdImage
+    {
+        $watermark_width  = imagesx($watermark);
+        $watermark_height = imagesy($watermark);
+        $image_width      = imagesx($image);
+        $image_height     = imagesy($image);
+        $position_x       = (int) round(($image_width - $watermark_width) / 2);
+        $position_y       = (int) round(($image_height - $watermark_height) / 2);
+
+        imagealphablending($image, true);
+        imagesavealpha($image, true);
+        imagecopy($image, $watermark, $position_x, $position_y, 0, 0, $watermark_width, $watermark_height);
+
+        return $image;
     }
 
     /**
+     * Validate SVG files before they are served. We only allow passive SVG
+     * content so files cannot embed script-like behavior.
+     */
+    private function validateSvgFile(string $data, string $filename): void
+    {
+        if (!$this->php_service->extensionLoaded(extension: 'dom')) {
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                filename: $filename,
+                error: 'PHP extension ext-dom is not installed',
+            );
+        }
+
+        if ($this->svgContainsActiveContent(data: $data)) {
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_FORBIDDEN,
+                filename: $filename,
+                error: 'SVG contains active content',
+            );
+        }
+    }
+
+    private function readFile(FilesystemOperator $filesystem, string $path, string $filename): string
+    {
+        try {
+            return $filesystem->read(location: $path);
+        } catch (UnableToReadFile $exception) {
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_NOT_FOUND,
+                filename: $filename,
+                error: 'Unable to read file contents: ' . $exception->getMessage(),
+            );
+        } catch (FilesystemException $exception) {
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_NOT_FOUND,
+                filename: $filename,
+                error: 'Filesystem error while reading file: ' . $exception->getMessage(),
+            );
+        }
+    }
+    /**
      * Determine whether an SVG document contains active content (script elements,
      * event-handler attributes, javascript: URLs) that could execute in a browser.
-     *
      * Although we have a content-security-policy to disable scripts, a user may
      * download this file and distribute it, so better to block it.
      */
@@ -366,36 +338,218 @@ class ImageFactory implements ImageFactoryInterface
         return false;
     }
 
-    protected function imageManager(): ImageManager
+    private function requireGdExtension(): void
     {
-        if ($this->php_service->extensionLoaded(extension: 'imagick')) {
-            return new ImageManager(driver: new ImagickDriver());
+        if (!$this->php_service->extensionLoaded(extension: 'gd')) {
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                filename: '',
+                error: 'PHP extension ext-gd is not installed',
+            );
         }
-
-        if ($this->php_service->extensionLoaded(extension: 'gd')) {
-            return new ImageManager(driver: new GdDriver());
-        }
-
-        throw new RuntimeException(message: 'No PHP graphics library is installed.  Need Imagick or GD');
     }
 
-    protected function resizeImage(ImageInterface $image, int $width, int $height, string $fit): ImageInterface
+    private function decodeImage(string $binary, string $filename): GdImage
     {
-        return match ($fit) {
-            'crop'    => $image->cover(width: $width, height: $height),
-            'contain' => $image->scale(width: $width, height: $height),
-            default   => throw new InvalidArgumentException(message: 'Unknown fit type: ' . $fit),
+        $this->requireGdExtension();
+
+        $image = imagecreatefromstring($binary);
+
+        if (!$image instanceof GdImage) {
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                filename: $filename,
+                error: 'Unable to decode image',
+            );
+        }
+
+        return $image;
+    }
+
+    private function autoRotateImage(GdImage $image, string $binary, string $filename): GdImage
+    {
+        if (!$this->php_service->functionExists(function: 'exif_read_data')) {
+            return $image;
+        }
+
+        $stream = fopen('php://temp', 'r+b');
+
+        if ($stream === false) {
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                filename: $filename,
+                error: 'Unable to read EXIF metadata',
+            );
+        }
+
+        fwrite($stream, $binary);
+        rewind($stream);
+
+        $metadata = exif_read_data($stream, 'IFD0');
+        fclose($stream);
+
+        if (!is_array($metadata)) {
+            return $image;
+        }
+
+        $orientation = (int) ($metadata['Orientation'] ?? ExifOrientation::Normal->value);
+
+        $exif_orientation = ExifOrientation::tryFrom($orientation) ?? ExifOrientation::Normal;
+
+        return match ($exif_orientation) {
+            ExifOrientation::MirrorHorizontal         => $this->flipImage(image: $image, mode: IMG_FLIP_HORIZONTAL),
+            ExifOrientation::Rotate180                => $this->rotateImage(image: $image, angle: 180),
+            ExifOrientation::MirrorVertical           => $this->flipImage(image: $image, mode: IMG_FLIP_VERTICAL),
+            ExifOrientation::Transpose                => $this->flipImage(image: $this->rotateImage(image: $image, angle: -90), mode: IMG_FLIP_HORIZONTAL),
+            ExifOrientation::Rotate90Clockwise        => $this->rotateImage(image: $image, angle: -90),
+            ExifOrientation::Transverse               => $this->flipImage(image: $this->rotateImage(image: $image, angle: 90), mode: IMG_FLIP_HORIZONTAL),
+            ExifOrientation::Rotate90CounterClockwise => $this->rotateImage(image: $image, angle: 90),
+            ExifOrientation::Normal                   => $image,
         };
     }
 
-    protected function extractImageQuality(ImageInterface $image, int $default): int
+    private function rotateImage(GdImage $image, int $angle): GdImage
     {
-        $native = $image->core()->native();
+        $rotated = imagerotate($image, $angle, 0);
 
-        if ($native instanceof Imagick) {
-            return $native->getImageCompressionQuality();
+        if (!$rotated instanceof GdImage) {
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                filename: '',
+                error: 'Unable to rotate image',
+            );
         }
 
-        return $default;
+        return $rotated;
+    }
+
+    private function flipImage(GdImage $image, int $mode): GdImage
+    {
+        if (!imageflip($image, $mode)) {
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                filename: '',
+                error: 'Unable to flip image',
+            );
+        }
+
+        return $image;
+    }
+
+    private function encodeImage(GdImage $image, string $mime_type, int $quality): string
+    {
+        $this->requireGdExtension();
+
+        ob_start();
+
+        $written = match ($mime_type) {
+            'image/jpeg' => imagejpeg($image, null, $quality),
+            'image/png'  => imagepng($image, null, (int) round((100 - $quality) * 9 / 100)),
+            'image/gif'  => imagegif($image),
+            'image/bmp'  => imagebmp($image),
+            'image/webp' => $this->php_service->functionExists(function: 'imagewebp') ? imagewebp($image, null, $quality) : false,
+            default      => false,
+        };
+
+        if ($written !== true) {
+            ob_end_clean();
+
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                filename: $mime_type,
+                error: 'Unable to encode image',
+            );
+        }
+
+        $data = ob_get_clean();
+
+        if (!is_string($data)) {
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                filename: $mime_type,
+                error: 'Unable to capture image data',
+            );
+        }
+
+        return $data;
+    }
+
+    private function resizeImage(
+        GdImage $image,
+        int $width,
+        int $height,
+        ImageOperation $operation,
+        string $filename,
+    ): GdImage {
+        try {
+            return match ($operation) {
+                ImageOperation::Crop    => $this->cropToFit(image: $image, width: $width, height: $height),
+                ImageOperation::Contain => $this->scaleToFit(image: $image, width: $width, height: $height),
+            };
+        } catch (RuntimeException $exception) {
+            throw new ImageException(
+                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                filename: $filename,
+                error: 'Unable to resize image: ' . $exception->getMessage(),
+            );
+        }
+    }
+
+
+    private function cropToFit(GdImage $image, int $width, int $height): GdImage
+    {
+        $source_width  = imagesx($image);
+        $source_height = imagesy($image);
+        $target_ratio  = $width / $height;
+        $source_ratio  = $source_width / $source_height;
+
+        if ($source_ratio > $target_ratio) {
+            $crop_height = $source_height;
+            $crop_width  = (int) round($crop_height * $target_ratio);
+            $source_x    = (int) round(($source_width - $crop_width) / 2);
+            $source_y    = 0;
+        } else {
+            $crop_width  = $source_width;
+            $crop_height = (int) round($crop_width / $target_ratio);
+            $source_x    = 0;
+            $source_y    = (int) round(($source_height - $crop_height) / 2);
+        }
+
+        $target = $this->createCanvas(width: $width, height: $height);
+
+        imagecopyresampled($target, $image, 0, 0, $source_x, $source_y, $width, $height, $crop_width, $crop_height);
+
+        return $target;
+    }
+
+    private function scaleToFit(GdImage $image, int $width, int $height): GdImage
+    {
+        $source_width  = imagesx($image);
+        $source_height = imagesy($image);
+        $scale         = min($width / $source_width, $height / $source_height);
+        $target_width  = max(1, (int) round($source_width * $scale));
+        $target_height = max(1, (int) round($source_height * $scale));
+        $target        = $this->createCanvas(width: $target_width, height: $target_height);
+
+        imagecopyresampled($target, $image, 0, 0, 0, 0, $target_width, $target_height, $source_width, $source_height);
+
+        return $target;
+    }
+
+    private function createCanvas(int $width, int $height): GdImage
+    {
+        $target = imagecreatetruecolor($width, $height);
+
+        if (!$target instanceof GdImage) {
+            throw new RuntimeException(message: 'Unable to allocate image canvas.');
+        }
+
+        imagealphablending($target, false);
+        imagesavealpha($target, true);
+
+        $transparent = imagecolorallocatealpha($target, 0, 0, 0, 127);
+        imagefilledrectangle($target, 0, 0, $width, $height, $transparent);
+
+        return $target;
     }
 }

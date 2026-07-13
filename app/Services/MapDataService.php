@@ -250,7 +250,7 @@ class MapDataService
                 'child_count' => (int) $row->child_count,
                 'no_coord'    => (int) $row->no_coord,
             ])
-            ->sort(static fn (object $x, object $y): int => I18N::comparator()($x->place, $y->place));
+            ->sort(static fn (object $x, object $y): int => I18N::compare($x->place, $y->place));
     }
 
     public function writeLatitude(float $latitude): string

@@ -211,7 +211,7 @@ class RelationshipService
         $relationships = $this->matchRelationships($nodes, $pattern, $relationships);
 
         // Reduce the genitive-nominative chain to a single string.
-        return array_reduce($relationships, static fn (array $carry, array $item): array => [sprintf($carry[1], $item[0]), sprintf($carry[1], $item[1])], [0 => '', 1 => '%s'])[0];
+        return array_reduce($relationships, static fn (array $carry, array $item): array => [sprintf($carry[1], $item[0]), sprintf($carry[1], $item[1])], ['', '%s'])[0];
     }
 
     /**
@@ -267,7 +267,7 @@ class RelationshipService
      * @param array<string>            $pattern
      * @param array<Relationship>      $relationships
      *
-     * @return array<Relationship>
+     * @return array<array{string,string}>
      */
     protected function matchRelationships(array $nodes, array $pattern, array $relationships): array
     {
