@@ -48,11 +48,6 @@ export function initializeTextareaPatternForms(root) {
       throw new Error('Textarea pattern container must be a form element.');
     }
 
-    if (form.dataset.wtTextareaPatternFormInitialized === '1') {
-      return;
-    }
-
-    form.dataset.wtTextareaPatternFormInitialized = '1';
     textareaPatterns(form);
   });
 }
@@ -81,12 +76,6 @@ export function initializePasswordToggles(root) {
     if (!(button instanceof HTMLButtonElement)) {
       throw new Error('Password toggle control must be a button element.');
     }
-
-    if (button.dataset.wtPasswordToggleInitialized === '1') {
-      return;
-    }
-
-    button.dataset.wtPasswordToggleInitialized = '1';
 
     const targetId = requireDatasetValue(button, 'wtPasswordTarget', 'password input ID');
     const passwordField = document.getElementById(targetId);
@@ -121,12 +110,6 @@ export function initializeEditNameAddons(root) {
     if (!(link instanceof HTMLAnchorElement)) {
       throw new Error('Edit-name addon control must be a link element.');
     }
-
-    if (link.dataset.wtEditNameAddonInitialized === '1') {
-      return;
-    }
-
-    link.dataset.wtEditNameAddonInitialized = '1';
 
     const nameInputId = requireDatasetValue(link, 'wtNameInputId', 'name input ID');
     const nameInput = document.getElementById(nameInputId);
@@ -233,12 +216,6 @@ export function initializeCopyButtons(root) {
       throw new Error('Copy control must be a button element.');
     }
 
-    if (button.dataset.wtCopyButtonInitialized === '1') {
-      return;
-    }
-
-    button.dataset.wtCopyButtonInitialized = '1';
-
     button.addEventListener('click', () => {
       const targetSelector = requireDatasetValue(button, 'wtCopyTarget', 'copy target selector');
       const message = requireDatasetValue(button, 'wtCopyMessage', 'copy confirmation message');
@@ -267,12 +244,6 @@ export function initializeShowMoreButtons(root) {
       throw new Error('Show-more control must be a button element.');
     }
 
-    if (button.dataset.wtShowMoreInitialized === '1') {
-      return;
-    }
-
-    button.dataset.wtShowMoreInitialized = '1';
-
     button.addEventListener('click', () => {
       const blockSelector = requireDatasetValue(button, 'wtShowMoreBlock', 'show-more block selector');
       const block = requireElement(document, blockSelector, HTMLElement, 'show-more block');
@@ -298,12 +269,6 @@ export function initializeSingleMessageDeleteButtons(root) {
     if (!(button instanceof HTMLButtonElement)) {
       throw new Error('Single-message delete control must be a button element.');
     }
-
-    if (button.dataset.wtSingleMessageDeleteInitialized === '1') {
-      return;
-    }
-
-    button.dataset.wtSingleMessageDeleteInitialized = '1';
 
     button.addEventListener('click', async () => {
       const confirmed = await window.webtrees.confirmDialog(requireDatasetValue(button, 'wtConfirm', 'single-message delete confirmation'));
@@ -339,12 +304,6 @@ export function initializeCheckboxActionButtons(root) {
     if (!(button instanceof HTMLElement)) {
       throw new Error('Checkbox action control must be an HTML element.');
     }
-
-    if (button.dataset.wtCheckboxActionInitialized === '1') {
-      return;
-    }
-
-    button.dataset.wtCheckboxActionInitialized = '1';
 
     button.addEventListener('click', (event) => {
       event.preventDefault();
@@ -383,8 +342,6 @@ export function initializeCheckboxActionButtons(root) {
   });
 }
 
-
-
 /**
  * Initialize controls that toggle a target element's visibility.
  *
@@ -395,12 +352,6 @@ export function initializeToggleTargetControls(root) {
     if (!(control instanceof HTMLInputElement)) {
       throw new Error('Toggle target control must be an input element.');
     }
-
-    if (control.dataset.wtToggleTargetInitialized === '1') {
-      return;
-    }
-
-    control.dataset.wtToggleTargetInitialized = '1';
 
     control.addEventListener('change', () => {
       const selector = requireDatasetValue(control, 'wtToggleTarget', 'toggle target selector');
@@ -428,12 +379,6 @@ export function initializeGeneratedValueButtons(root) {
       throw new Error('Generated-value control must be a button element.');
     }
 
-    if (button.dataset.wtGeneratedValueInitialized === '1') {
-      return;
-    }
-
-    button.dataset.wtGeneratedValueInitialized = '1';
-
     const targetId = requireDatasetValue(button, 'wtGeneratedValueTarget', 'generated-value target ID');
     const target = document.getElementById(targetId);
 
@@ -447,10 +392,6 @@ export function initializeGeneratedValueButtons(root) {
   });
 }
 
-
-
-
-
 /**
  * Initialize relationships chart swap-individuals buttons.
  *
@@ -461,12 +402,6 @@ export function initializeSwapIndividualsButtons(root) {
     if (!(button instanceof HTMLButtonElement)) {
       throw new Error('Swap-individuals control must be a button element.');
     }
-
-    if (button.dataset.wtSwapIndividualsInitialized === '1') {
-      return;
-    }
-
-    button.dataset.wtSwapIndividualsInitialized = '1';
 
     button.addEventListener('click', () => {
       const first = requireElement(document, requireDatasetValue(button, 'wtSwapFirst', 'first individual selector'), HTMLInputElement, 'first individual input');
@@ -492,12 +427,6 @@ export function initializeSetupMysqlConnection(root) {
     if (!(form instanceof HTMLFormElement)) {
       throw new Error('MySQL setup container must be a form element.');
     }
-
-    if (form.dataset.wtSetupMysqlConnectionInitialized === '1') {
-      return;
-    }
-
-    form.dataset.wtSetupMysqlConnectionInitialized = '1';
 
     const inputDbHost = requireElement(form, '#dbhost', HTMLInputElement, 'database host input');
     const localType = requireElement(form, '#mysql-type-local', HTMLInputElement, 'local mysql type radio');
@@ -538,11 +467,6 @@ export function initializeSetupBaseUrlFields(root) {
       throw new Error('Base URL field must be an input element.');
     }
 
-    if (field.dataset.wtBaseUrlFieldInitialized === '1') {
-      return;
-    }
-
-    field.dataset.wtBaseUrlFieldInitialized = '1';
     field.value = decodeURI(location.href.split(/\?|#|index\.php/)[0].replace(/\/+$/, ''));
   });
 }

@@ -26,12 +26,6 @@ export function initializeHtmlTemplateConfig(root) {
       throw new Error('HTML template config container must be an HTML element.');
     }
 
-    if (container.dataset.wtHtmlTemplateConfigInitialized === '1') {
-      return;
-    }
-
-    container.dataset.wtHtmlTemplateConfigInitialized = '1';
-
     const template = requireElement(container, '#template', HTMLSelectElement, 'HTML template select');
     const html = requireElement(document, '#html', HTMLTextAreaElement, 'HTML content textarea');
 
@@ -52,4 +46,3 @@ export function initializeHtmlTemplateConfig(root) {
     });
   });
 }
-

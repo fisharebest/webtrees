@@ -26,12 +26,6 @@ export function initializeCookieWarnings(root) {
       throw new Error('Cookie warning container must be an HTML element.');
     }
 
-    if (warning.dataset.wtCookieWarningInitialized === '1') {
-      return;
-    }
-
-    warning.dataset.wtCookieWarningInitialized = '1';
-
     const key = requireDatasetValue(warning, 'wtCookieWarningKey', 'cookie warning storage key');
     const dismissButton = requireElement(warning, '[data-wt-cookie-warning-dismiss]', HTMLButtonElement, 'cookie warning dismiss button');
 
@@ -44,4 +38,3 @@ export function initializeCookieWarnings(root) {
     });
   });
 }
-

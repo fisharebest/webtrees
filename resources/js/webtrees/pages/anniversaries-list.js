@@ -11,12 +11,6 @@ export function initializeAnniversariesListPage (root) {
       throw new Error('Anniversaries show-more control must be a button.');
     }
 
-    if (element.dataset.wtAnniversariesShowMoreInitialized === '1') {
-      return;
-    }
-
-    element.dataset.wtAnniversariesShowMoreInitialized = '1';
-
     element.addEventListener('click', (event) => {
       const button = event.currentTarget;
 
@@ -35,4 +29,3 @@ export function initializeAnniversariesListPage (root) {
     });
   });
 }
-

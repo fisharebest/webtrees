@@ -12,12 +12,6 @@ export function initializeAjaxModalPage (root) {
     return;
   }
 
-  if (modal.dataset.wtAjaxModalInitialized === '1') {
-    return;
-  }
-
-  modal.dataset.wtAjaxModalInitialized = '1';
-
   if (document.body.dataset.wtModalSubmitInitialized !== '1') {
     document.body.dataset.wtModalSubmitInitialized = '1';
 
@@ -54,4 +48,3 @@ export function initializeAjaxModalPage (root) {
     });
   });
 }
-

@@ -35,12 +35,6 @@ export function initializeStatisticsChartCustomPage (root) {
       throw new Error('Statistics custom chart container must be a form.');
     }
 
-    if (form.dataset.wtStatisticsCustomChartInitialized === '1') {
-      return;
-    }
-
-    form.dataset.wtStatisticsCustomChartInitialized = '1';
-
     const chartTargetSelector = requireDatasetValue(form, 'wtStatisticsCustomTarget', 'statistics custom chart target selector');
     const spinnerMarkup = requireDatasetValue(form, 'wtStatisticsSpinner', 'statistics custom chart spinner markup');
 
@@ -168,12 +162,8 @@ export function initializeStatisticsChartCustomPage (root) {
         });
     });
 
-    if (surnameInput.dataset.wtAutocompleteInitialized !== '1') {
-      window.webtrees.autocomplete('#' + surnameInput.id, form);
-      surnameInput.dataset.wtAutocompleteInitialized = '1';
-    }
+    window.webtrees.autocomplete('#' + surnameInput.id, form);
 
     applyXAxisSelection();
   });
 }
-

@@ -74,12 +74,6 @@ export function autocomplete(selector, root) {
       return;
     }
 
-    if (element.dataset.wtAutocompleteInitialized === '1') {
-      return;
-    }
-
-    element.dataset.wtAutocompleteInitialized = '1';
-
     new autoComplete({
       selector: () => element,
       data: {

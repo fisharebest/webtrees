@@ -87,12 +87,6 @@ export function initializeLatLongReformatInputs(root) {
       throw new Error('Latitude reformat control must be an input element.');
     }
 
-    if (element.dataset.wtReformatLatitudeInitialized === '1') {
-      return;
-    }
-
-    element.dataset.wtReformatLatitudeInitialized = '1';
-
     element.addEventListener('change', () => {
       reformatLatitude(element);
     });
@@ -103,15 +97,8 @@ export function initializeLatLongReformatInputs(root) {
       throw new Error('Longitude reformat control must be an input element.');
     }
 
-    if (element.dataset.wtReformatLongitudeInitialized === '1') {
-      return;
-    }
-
-    element.dataset.wtReformatLongitudeInitialized = '1';
-
     element.addEventListener('change', () => {
       reformatLongitude(element);
     });
   });
 }
-

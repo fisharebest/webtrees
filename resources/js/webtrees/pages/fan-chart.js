@@ -26,12 +26,6 @@ export function initializeFanChartMaps(root) {
       throw new Error('Fan chart map container must be an HTML element.');
     }
 
-    if (map.dataset.wtFanchartMapInitialized === '1') {
-      return;
-    }
-
-    map.dataset.wtFanchartMapInitialized = '1';
-
     map.querySelectorAll('area').forEach((area) => {
       area.addEventListener('click', (event) => {
         event.stopPropagation();
@@ -65,4 +59,3 @@ export function initializeFanChartMaps(root) {
     });
   });
 }
-

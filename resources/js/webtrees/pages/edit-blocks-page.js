@@ -12,12 +12,6 @@ export function initializeEditBlocksPage (root) {
     return;
   }
 
-  if (form.dataset.wtEditBlocksInitialized === '1') {
-    return;
-  }
-
-  form.dataset.wtEditBlocksInitialized = '1';
-
   const currentBlocks = requireElement(form, '#current-blocks', HTMLElement, 'current blocks container');
   const mainBlocks = requireElement(form, '#main-blocks', HTMLElement, 'main blocks container');
   const sideBlocks = requireElement(form, '#side-blocks', HTMLElement, 'side blocks container');
@@ -70,4 +64,3 @@ export function initializeEditBlocksPage (root) {
     });
   });
 }
-

@@ -26,12 +26,6 @@ export function initializeEventCheckboxControls(root) {
       throw new Error('Event checkbox control must be a checkbox input element.');
     }
 
-    if (checkbox.dataset.wtEventCheckboxInitialized === '1') {
-      return;
-    }
-
-    checkbox.dataset.wtEventCheckboxInitialized = '1';
-
     const targetId = requireDatasetValue(checkbox, 'wtEventCheckboxTarget', 'event checkbox target ID');
     const target = document.getElementById(targetId);
 
@@ -56,12 +50,6 @@ export function initializeEventsRecordedSelectors(root) {
       throw new Error('Events-recorded control must be a select element.');
     }
 
-    if (select.dataset.wtEventsRecordedInitialized === '1') {
-      return;
-    }
-
-    select.dataset.wtEventsRecordedInitialized = '1';
-
     const target = select.nextElementSibling;
 
     if (!(target instanceof HTMLInputElement)) {
@@ -76,4 +64,3 @@ export function initializeEventsRecordedSelectors(root) {
     syncValue();
   });
 }
-

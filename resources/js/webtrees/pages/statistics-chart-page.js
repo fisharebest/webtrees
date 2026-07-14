@@ -13,12 +13,6 @@ export function initializeStatisticsChartPage (root) {
     return;
   }
 
-  if (page.dataset.wtStatisticsTabsInitialized === '1') {
-    return;
-  }
-
-  page.dataset.wtStatisticsTabsInitialized = '1';
-
   const tabs = Array.from(page.querySelectorAll('a[data-bs-toggle="tab"][data-wt-href]'));
 
   tabs.forEach((tab) => {
@@ -70,4 +64,3 @@ export function initializeStatisticsChartPage (root) {
     targetTab.click();
   }
 }
-

@@ -11,12 +11,6 @@ export function initializeTimelineChartPage (root) {
         throw new Error('Timeline chart container must be an HTML element.');
       }
 
-      if (chart.dataset.wtTimelineInitialized === '1') {
-        return;
-      }
-
-      chart.dataset.wtTimelineInitialized = '1';
-
       const overlay = requireElement(chart, '[data-wt-timeline-overlay]', SVGSVGElement, 'timeline SVG overlay');
       const axisOffset = Number(requireDatasetValue(chart, 'wtTimelineAxisOffset', 'timeline axis offset'));
       const boxHeight = Number(requireDatasetValue(chart, 'wtTimelineBoxHeight', 'timeline box height'));
@@ -342,4 +336,3 @@ export function initializeTimelineChartPage (root) {
       requestAnimationFrame(redrawOverlay);
     });
 }
-

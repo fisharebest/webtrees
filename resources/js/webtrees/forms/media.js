@@ -65,12 +65,6 @@ export function initializeMediaFileFields(root) {
       throw new Error('Media file location control must be a select element.');
     }
 
-    if (element.dataset.wtMediaFileLocationInitialized === '1') {
-      return;
-    }
-
-    element.dataset.wtMediaFileLocationInitialized = '1';
-
     const container = element.closest('form');
 
     if (!(container instanceof HTMLFormElement)) {
@@ -99,12 +93,7 @@ export function initializeMediaFileFields(root) {
     updateVisibility();
 
     const folder = requireElement(container, '#folder', HTMLInputElement, 'media folder input');
-
-    if (folder.dataset.wtAutocompleteInitialized !== '1') {
-      folder.dataset.wtAutocompleteInitialized = '1';
-      requireDatasetValue(folder, 'wtAutocompleteUrl', 'media folder autocomplete URL');
-      window.webtrees.autocomplete('#' + CSS.escape(folder.id), container);
-    }
+    requireDatasetValue(folder, 'wtAutocompleteUrl', 'media folder autocomplete URL');
+    window.webtrees.autocomplete('#' + CSS.escape(folder.id), container);
   });
 }
-

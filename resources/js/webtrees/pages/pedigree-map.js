@@ -13,12 +13,6 @@ export function initializePedigreeMapPage(root) {
         throw new Error('Pedigree map container must be an HTML element.');
       }
 
-      if (container.dataset.wtPedigreeMapInitialized === '1') {
-        return;
-      }
-
-      container.dataset.wtPedigreeMapInitialized = '1';
-
       const mapElement = requireElement(container, '[data-wt-map-canvas]', HTMLDivElement, 'pedigree map canvas');
       const sidebar = requireElement(container, '[data-wt-map-sidebar]', HTMLElement, 'pedigree map sidebar');
       const leafletConfig = parseJsonDataset(requireDatasetValue(container, 'wtLeafletConfig', 'pedigree map leaflet config'), 'pedigree map leaflet config');
@@ -77,4 +71,3 @@ export function initializePedigreeMapPage(root) {
       });
     });
 }
-

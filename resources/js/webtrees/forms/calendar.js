@@ -26,12 +26,6 @@ export function initializeCalendarLocalization(root) {
       return;
     }
 
-    if (element.dataset.wtCalendarLocalizationInitialized === '1') {
-      return;
-    }
-
-    element.dataset.wtCalendarLocalizationInitialized = '1';
-
     const months = JSON.parse(requireDatasetValue(element, 'wtCalendarMonths', 'calendar month labels'));
     const days = JSON.parse(requireDatasetValue(element, 'wtCalendarDays', 'calendar day labels'));
     const firstDay = parseInt(requireDatasetValue(element, 'wtCalendarFirstDay', 'calendar first day'), 10);
@@ -63,12 +57,6 @@ export function initializeCalendarWidgetButtons(root) {
       throw new Error('Calendar widget control must be an HTML element.');
     }
 
-    if (element.dataset.wtCalendarWidgetInitialized === '1') {
-      return;
-    }
-
-    element.dataset.wtCalendarWidgetInitialized = '1';
-
     element.addEventListener('click', (event) => {
       event.preventDefault();
 
@@ -91,15 +79,8 @@ export function initializeDateReformatInputs(root) {
       throw new Error('Date reformat control must be an input element.');
     }
 
-    if (element.dataset.wtReformatDateInitialized === '1') {
-      return;
-    }
-
-    element.dataset.wtReformatDateInitialized = '1';
-
     element.addEventListener('change', () => {
       window.webtrees.reformatDate(element, requireDatasetValue(element, 'wtReformatDateOrder', 'date reformat order'));
     });
   });
 }
-

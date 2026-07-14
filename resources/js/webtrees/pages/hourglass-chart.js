@@ -26,12 +26,6 @@ export function initializeHourglassCharts(root) {
       throw new Error('Hourglass chart container must be an HTML element.');
     }
 
-    if (chart.dataset.wtHourglassChartInitialized === '1') {
-      return;
-    }
-
-    chart.dataset.wtHourglassChartInitialized = '1';
-
     chart.addEventListener('click', (event) => {
       const arrow = event.target instanceof Element ? event.target.closest('.hourglass-arrow[data-wt-chart-xref]') : null;
 
@@ -53,4 +47,3 @@ export function initializeHourglassCharts(root) {
     });
   });
 }
-

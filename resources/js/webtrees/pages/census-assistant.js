@@ -18,12 +18,6 @@ export function initializeCensusAssistantPage (root) {
       return;
     }
 
-    if (assistant.dataset.wtCensusAssistantInitialized === '1') {
-      return;
-    }
-
-    assistant.dataset.wtCensusAssistantInitialized = '1';
-
     const hiddenCensus = requireElement(form, '.census-assistant-class', HTMLInputElement, 'census hidden input');
     const titleInput = requireElement(form, '#census-assistant-title', HTMLInputElement, 'census title input');
     const assistantTable = requireElement(form, '#census-assistant-table', HTMLTableElement, 'census assistant table');
@@ -144,4 +138,3 @@ export function initializeCensusAssistantPage (root) {
     });
   });
 }
-

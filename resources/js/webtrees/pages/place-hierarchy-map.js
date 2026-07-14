@@ -13,12 +13,6 @@ export function initializePlaceHierarchyMapPage(root) {
         throw new Error('Place hierarchy map container must be an HTML element.');
       }
 
-      if (container.dataset.wtPlaceHierarchyInitialized === '1') {
-        return;
-      }
-
-      container.dataset.wtPlaceHierarchyInitialized = '1';
-
       const mapElement = requireElement(container, '[data-wt-map-canvas]', HTMLDivElement, 'place hierarchy map canvas');
       const sidebar = requireElement(container, '[data-wt-map-sidebar]', HTMLElement, 'place hierarchy map sidebar');
       const leafletConfig = parseJsonDataset(requireDatasetValue(container, 'wtLeafletConfig', 'place hierarchy leaflet config'), 'place hierarchy leaflet config');
@@ -78,4 +72,3 @@ export function initializePlaceHierarchyMapPage(root) {
       });
     });
 }
-

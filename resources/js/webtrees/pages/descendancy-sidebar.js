@@ -11,12 +11,6 @@ export function initializeDescendancySidebarPage (root) {
       throw new Error('Descendancy sidebar container must be a form element.');
     }
 
-    if (form.dataset.wtDescendancySidebarInitialized === '1') {
-      return;
-    }
-
-    form.dataset.wtDescendancySidebarInitialized = '1';
-
     const searchInput = requireElement(form, '#sb_desc_name', HTMLInputElement, 'descendancy search input');
     const content = requireElement(document, '#sb_desc_content', HTMLElement, 'descendancy results container');
     const searchUrl = requireDatasetValue(form, 'wtDescendancySearchUrl', 'descendancy search URL');
@@ -90,5 +84,3 @@ export function initializeDescendancySidebarPage (root) {
      });
    });
  }
-
-

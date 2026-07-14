@@ -26,12 +26,6 @@ export function initializeCensusSelectors(root) {
       throw new Error('Census selector control must be a select element.');
     }
 
-    if (select.dataset.wtCensusSelectorInitialized === '1') {
-      return;
-    }
-
-    select.dataset.wtCensusSelectorInitialized = '1';
-
     const form = select.closest('form');
 
     if (!(form instanceof HTMLFormElement)) {
@@ -51,4 +45,3 @@ export function initializeCensusSelectors(root) {
     });
   });
 }
-

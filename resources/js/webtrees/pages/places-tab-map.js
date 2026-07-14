@@ -13,12 +13,6 @@ export function initializePlacesTabMapPage(root) {
         throw new Error('Places tab map container must be an HTML element.');
       }
 
-      if (container.dataset.wtPlacesTabInitialized === '1') {
-        return;
-      }
-
-      container.dataset.wtPlacesTabInitialized = '1';
-
       const mapElement = requireElement(container, '[data-wt-map-canvas]', HTMLDivElement, 'places tab map canvas');
       const sidebar = requireElement(container, '[data-wt-map-sidebar]', HTMLElement, 'places tab map sidebar');
       const leafletConfig = parseJsonDataset(requireDatasetValue(container, 'wtLeafletConfig', 'places tab leaflet config'), 'places tab leaflet config');
@@ -76,4 +70,3 @@ export function initializePlacesTabMapPage(root) {
       });
     });
 }
-

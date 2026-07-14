@@ -26,12 +26,6 @@ export function initializeNoteStructureControls(root) {
       throw new Error('Note-structure container must be an HTML element.');
     }
 
-    if (container.dataset.wtNoteStructureInitialized === '1') {
-      return;
-    }
-
-    container.dataset.wtNoteStructureInitialized = '1';
-
     const options = requireElement(container, '[data-wt-note-options]', HTMLElement, 'note-structure options');
     const inlineNote = requireElement(container, '[data-wt-note-inline]', HTMLElement, 'inline note container');
     const sharedNote = requireElement(container, '[data-wt-note-shared]', HTMLElement, 'shared note container');
@@ -61,4 +55,3 @@ export function initializeNoteStructureControls(root) {
     syncControls();
   });
 }
-

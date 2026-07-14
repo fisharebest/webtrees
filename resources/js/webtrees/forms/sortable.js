@@ -26,12 +26,6 @@ export function initializeSortableLists(root) {
       throw new Error('Sortable list must be an HTML element.');
     }
 
-    if (list.dataset.wtSortableListInitialized === '1') {
-      return;
-    }
-
-    list.dataset.wtSortableListInitialized = '1';
-
     new Sortable(list, {
       handle: list.dataset.wtSortableHandle || '.card-header',
     });
@@ -48,12 +42,6 @@ export function initializeSortByDateButtons(root) {
     if (!(button instanceof HTMLButtonElement)) {
       throw new Error('Sort-by-date control must be a button element.');
     }
-
-    if (button.dataset.wtSortByDateButtonInitialized === '1') {
-      return;
-    }
-
-    button.dataset.wtSortByDateButtonInitialized = '1';
 
     button.addEventListener('click', () => {
       const listSelector = requireDatasetValue(button, 'wtSortList', 'sortable list selector');
@@ -125,4 +113,3 @@ export function initializeReorderButtons(root) {
     }
   });
 }
-

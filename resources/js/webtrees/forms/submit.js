@@ -26,12 +26,6 @@ export function initializeRequiredSelectForms(root) {
       throw new Error('Required-select container must be a form element.');
     }
 
-    if (form.dataset.wtRequireSelectInitialized === '1') {
-      return;
-    }
-
-    form.dataset.wtRequireSelectInitialized = '1';
-
     const select = requireElement(form, '[data-wt-required-select-control]', HTMLSelectElement, 'required select control');
 
     form.addEventListener('submit', (event) => {
@@ -52,12 +46,6 @@ export function initializeSubmitOnChangeControls(root) {
     if (!(element instanceof HTMLSelectElement)) {
       throw new Error('Submit-on-change control must be a select element.');
     }
-
-    if (element.dataset.wtSubmitOnChangeInitialized === '1') {
-      return;
-    }
-
-    element.dataset.wtSubmitOnChangeInitialized = '1';
 
     const form = element.closest('form');
 
@@ -82,12 +70,6 @@ export function initializeSubmitSelectedUrlButtons(root) {
       throw new Error('Submit-selected-URL control must be a button element.');
     }
 
-    if (button.dataset.wtSubmitSelectedUrlInitialized === '1') {
-      return;
-    }
-
-    button.dataset.wtSubmitSelectedUrlInitialized = '1';
-
     button.addEventListener('click', () => {
       const selectSelector = requireDatasetValue(button, 'wtSubmitSelect', 'submit-selected-url select selector');
       const formSelector = requireDatasetValue(button, 'wtSubmitForm', 'submit-selected-url form selector');
@@ -105,4 +87,3 @@ export function initializeSubmitSelectedUrlButtons(root) {
     });
   });
 }
-

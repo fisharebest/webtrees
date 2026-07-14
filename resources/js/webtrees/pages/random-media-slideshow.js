@@ -11,12 +11,6 @@ export function initializeRandomMediaSlideshow (root) {
       throw new Error('Random media slideshow container must be an HTML element.');
     }
 
-    if (element.dataset.wtRandomMediaInitialized === '1') {
-      return;
-    }
-
-    element.dataset.wtRandomMediaInitialized = '1';
-
     const blockId = requireDatasetValue(element, 'wtRandomMediaBlockId', 'random media block ID');
     const block = requireElement(document, '#' + CSS.escape(blockId), HTMLElement, 'random media block');
 
@@ -89,4 +83,3 @@ export function initializeRandomMediaSlideshow (root) {
     });
   });
 }
-
