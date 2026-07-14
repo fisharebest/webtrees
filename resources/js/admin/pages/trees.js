@@ -45,7 +45,7 @@ function loadImportContainer (importContainer, url) {
     throw new Error('window.webtrees.load() is required for import container loading.');
   }
 
-  window.webtrees.load(importContainer, url).catch((error) => {
+  window.webtrees.load(importContainer, url, new FormData()).catch((error) => {
     console.error('Failed to load import container', { url, error });
   });
 }
@@ -139,4 +139,3 @@ export function initializeTreesPage () {
     synchronizeImportPanels(page);
   });
 }
-
