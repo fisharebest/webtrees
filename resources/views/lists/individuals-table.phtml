@@ -267,12 +267,10 @@ $module = Registry::container()->get(ModuleService::class)
     <tfoot>
         <tr>
             <th colspan="16">
-                <div class="btn-group btn-group-sm">
-                    <input type="checkbox" class="btn-check" id="btn-toggle-parents" data-wt-persist="individuals-parents" autocomplete="off">
-                    <label class="btn btn-secondary" for="btn-toggle-parents">
-                        <?= I18N::translate('Show parents') ?>
-                    </label>
-                </div>
+                <label>
+                    <input type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-table-individual .wt-individual-list-parents" data-wt-persist="show-individuals-parents" autocomplete="off">
+                    <?= I18N::translate('Show parents') ?>
+                </label>
             </th>
         </tr>
     </tfoot>

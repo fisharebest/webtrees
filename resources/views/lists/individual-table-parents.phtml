@@ -12,7 +12,7 @@ use Fisharebest\Webtrees\Individual;
 ?>
 
 <?php foreach ($individual->childFamilies() as $family) : ?>
-    <div class="wt-individual-list-parents small" style="display: none">
+    <div class="wt-individual-list-parents collapse small">
         <?php foreach ($family->spouses() as $spouse) : ?>
             <div class="wt-individual-list-parent">
                 <?php $spouse = clone $spouse; ?>

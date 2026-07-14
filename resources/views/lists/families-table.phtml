@@ -275,8 +275,8 @@ $hundred_years_ago = Registry::timestampFactory()->now()->subtractYears(100)->ju
         <tr>
             <th colspan="14">
                 <div class="btn-group btn-group-sm">
-                    <input type="checkbox" class="btn-check" id="btn-toggle-parents" aria-expanded="false" autocomplete="off">
-                    <label class="btn btn-secondary" for="btn-toggle-parents">
+                    <label>
+                        <input type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-table-family .wt-individual-list-parents" data-wt-persist="show-families-parents" autocomplete="off">
                         <?= I18N::translate('Show parents') ?>
                     </label>
                 </div>

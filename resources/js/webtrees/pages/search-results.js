@@ -12,7 +12,6 @@ export function initializeSearchResultsPage (root) {
     return;
   }
 
-  const firstTab = requireElement(page, '.wt-search-results-tabs li button', HTMLButtonElement, 'search results first tab button');
+  const firstTab = requireElement(page, '.wt-search-results-tabs li:first-child button', HTMLButtonElement, 'search results first tab button');
   firstTab.click();
 }
-
