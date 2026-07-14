@@ -12,7 +12,7 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<select class="form-select census-selector" aria-label="<?= I18N::translate('Census date and place') ?>" autocomplete="off" data-wt-census-selector data-wt-census-date-target="[id$=CENS-DATE]">
+<select class="form-select census-selector" aria-label="<?= I18N::translate('Census date and place') ?>" autocomplete="off" data-wt-census-selector="" data-wt-census-date-target="[id$=CENS-DATE]">
     <option value="" disabled="disabled" selected="selected" hidden="hidden"><?= I18N::translate('Census date') ?></option>
 
     <?php foreach ($census_places as $census_place) : ?>

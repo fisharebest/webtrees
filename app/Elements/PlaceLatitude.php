@@ -39,6 +39,6 @@ class PlaceLatitude extends AbstractElement
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
-        return '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" data-wt-reformat-latitude />';
+        return '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" data-wt-reformat-latitude="" />';
     }
 }
