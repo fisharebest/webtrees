@@ -134,14 +134,9 @@ export function initializeTreesPage () {
   processImportAutoloads(page);
   synchronizeImportPanels(page);
 
-  const observer = new MutationObserver(() => {
+  document.addEventListener('wt-content-loaded', () => {
     processImportAutoloads(page);
     synchronizeImportPanels(page);
-  });
-
-  observer.observe(page, {
-    childList: true,
-    subtree: true,
   });
 }
 

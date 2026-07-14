@@ -20,7 +20,7 @@ import { requireDatasetValue } from '../dom';
  *
  * @param {ParentNode} root
  */
-export function initializeEventCheckboxControls(root = document) {
+export function initializeEventCheckboxControls(root) {
   root.querySelectorAll('input[data-wt-event-checkbox-target]').forEach((checkbox) => {
     if (!(checkbox instanceof HTMLInputElement) || checkbox.type !== 'checkbox') {
       throw new Error('Event checkbox control must be a checkbox input element.');
@@ -50,7 +50,7 @@ export function initializeEventCheckboxControls(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeEventsRecordedSelectors(root = document) {
+export function initializeEventsRecordedSelectors(root) {
   root.querySelectorAll('select.wt-events-recorded-select').forEach((select) => {
     if (!(select instanceof HTMLSelectElement)) {
       throw new Error('Events-recorded control must be a select element.');

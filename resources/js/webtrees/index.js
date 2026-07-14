@@ -3,6 +3,7 @@ export { httpGet, httpPost } from './http';
 export {
   hideElements,
   initializeWhenReady,
+  notifyContentLoaded,
   onDocumentReady,
   pasteAtCursor,
   persistentToggle,

@@ -5,8 +5,8 @@ import { requireElement } from '../dom';
 /**
  * Initialize the search results page.
  */
-export function initializeSearchResultsPage () {
-  const page = document.getElementById('webtrees-search-results-page');
+export function initializeSearchResultsPage (root) {
+  const page = root.querySelector('#webtrees-search-results-page');
 
   if (!(page instanceof HTMLElement)) {
     return;

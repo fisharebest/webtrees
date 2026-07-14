@@ -42,7 +42,7 @@ export function textareaPatterns(form) {
  *
  * @param {ParentNode} root
  */
-export function initializeTextareaPatternForms(root = document) {
+export function initializeTextareaPatternForms(root) {
   root.querySelectorAll('form[data-wt-textarea-pattern-form]').forEach((form) => {
     if (!(form instanceof HTMLFormElement)) {
       throw new Error('Textarea pattern container must be a form element.');
@@ -62,7 +62,7 @@ export function initializeTextareaPatternForms(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeCaptchaFields(root = document) {
+export function initializeCaptchaFields(root) {
   root.querySelectorAll('[data-wt-captcha]').forEach((container) => {
     const xField = requireElement(container, '[data-wt-captcha-field="x"]', HTMLInputElement, 'captcha x field');
     const yField = requireElement(container, '[data-wt-captcha-field="y"]', HTMLInputElement, 'captcha y field');
@@ -76,7 +76,7 @@ export function initializeCaptchaFields(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializePasswordToggles(root = document) {
+export function initializePasswordToggles(root) {
   root.querySelectorAll('[data-wt-password-toggle]').forEach((button) => {
     if (!(button instanceof HTMLButtonElement)) {
       throw new Error('Password toggle control must be a button element.');
@@ -116,7 +116,7 @@ export function initializePasswordToggles(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeEditNameAddons(root = document) {
+export function initializeEditNameAddons(root) {
   root.querySelectorAll('[data-wt-edit-name-addon]').forEach((link) => {
     if (!(link instanceof HTMLAnchorElement)) {
       throw new Error('Edit-name addon control must be a link element.');
@@ -227,7 +227,7 @@ export function initializeEditNameAddons(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeCopyButtons(root = document) {
+export function initializeCopyButtons(root) {
   root.querySelectorAll('[data-wt-copy-button]').forEach((button) => {
     if (!(button instanceof HTMLButtonElement)) {
       throw new Error('Copy control must be a button element.');
@@ -261,7 +261,7 @@ export function initializeCopyButtons(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeShowMoreButtons(root = document) {
+export function initializeShowMoreButtons(root) {
   root.querySelectorAll('[data-wt-show-more-button]').forEach((button) => {
     if (!(button instanceof HTMLButtonElement)) {
       throw new Error('Show-more control must be a button element.');
@@ -293,7 +293,7 @@ export function initializeShowMoreButtons(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeSingleMessageDeleteButtons(root = document) {
+export function initializeSingleMessageDeleteButtons(root) {
   root.querySelectorAll('[data-wt-single-message-delete]').forEach((button) => {
     if (!(button instanceof HTMLButtonElement)) {
       throw new Error('Single-message delete control must be a button element.');
@@ -334,7 +334,7 @@ export function initializeSingleMessageDeleteButtons(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeCheckboxActionButtons(root = document) {
+export function initializeCheckboxActionButtons(root) {
   root.querySelectorAll('[data-wt-checkbox-action]').forEach((button) => {
     if (!(button instanceof HTMLElement)) {
       throw new Error('Checkbox action control must be an HTML element.');
@@ -390,7 +390,7 @@ export function initializeCheckboxActionButtons(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeToggleTargetControls(root = document) {
+export function initializeToggleTargetControls(root) {
   root.querySelectorAll('[data-wt-toggle-target]').forEach((control) => {
     if (!(control instanceof HTMLInputElement)) {
       throw new Error('Toggle target control must be an input element.');
@@ -422,7 +422,7 @@ export function initializeToggleTargetControls(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeGeneratedValueButtons(root = document) {
+export function initializeGeneratedValueButtons(root) {
   root.querySelectorAll('button[data-wt-generated-value-target][data-wt-generated-value]').forEach((button) => {
     if (!(button instanceof HTMLButtonElement)) {
       throw new Error('Generated-value control must be a button element.');
@@ -456,7 +456,7 @@ export function initializeGeneratedValueButtons(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeSwapIndividualsButtons(root = document) {
+export function initializeSwapIndividualsButtons(root) {
   root.querySelectorAll('[data-wt-swap-individuals-button]').forEach((button) => {
     if (!(button instanceof HTMLButtonElement)) {
       throw new Error('Swap-individuals control must be a button element.');
@@ -487,7 +487,7 @@ export function initializeSwapIndividualsButtons(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeSetupMysqlConnection(root = document) {
+export function initializeSetupMysqlConnection(root) {
   root.querySelectorAll('form[data-wt-setup-mysql-connection]').forEach((form) => {
     if (!(form instanceof HTMLFormElement)) {
       throw new Error('MySQL setup container must be a form element.');
@@ -532,7 +532,7 @@ export function initializeSetupMysqlConnection(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeSetupBaseUrlFields(root = document) {
+export function initializeSetupBaseUrlFields(root) {
   root.querySelectorAll('input[data-wt-base-url-field]').forEach((field) => {
     if (!(field instanceof HTMLInputElement)) {
       throw new Error('Base URL field must be an input element.');

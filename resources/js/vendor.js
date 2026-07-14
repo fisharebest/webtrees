@@ -48,7 +48,6 @@ import {
   // For the BeautifyMarker library
   faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater
 } from '@fortawesome/free-solid-svg-icons';
-import 'corejs-typeahead';
 
 import DataTable from 'datatables.net';
 import 'datatables.net-bs5';
@@ -90,7 +89,6 @@ library.add(
 );
 dom.watch();
 
-window.Bloodhound = require('corejs-typeahead/dist/bloodhound.min.js');
 
 // See https://github.com/RubaXa/Sortable/issues/1229
 // window.Sortable = require('sortablejs');

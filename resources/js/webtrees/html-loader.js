@@ -13,6 +13,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { notifyContentLoaded } from './dom';
+
 /**
  * Fetch HTML, insert it into an element, and execute any scripts.
  *
@@ -67,5 +69,8 @@ export async function load(element, url, data = null) {
     // Remove the script we just executed to reduce clutter.
     script.remove();
   }
+
+  // Notify listeners that new content has been loaded into the DOM.
+  notifyContentLoaded(element);
 }
 

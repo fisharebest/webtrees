@@ -6,8 +6,8 @@ import { initializeStatisticsChartCustomPage } from './statistics-chart-custom-p
 /**
  * Initialize statistics chart tab loading.
  */
-export function initializeStatisticsChartPage () {
-  const page = document.getElementById('statistics-tabs');
+export function initializeStatisticsChartPage (root) {
+  const page = root.querySelector('#statistics-tabs');
 
   if (!(page instanceof HTMLElement)) {
     return;

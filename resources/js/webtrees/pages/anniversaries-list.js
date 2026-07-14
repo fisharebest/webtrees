@@ -5,8 +5,8 @@ import { requireDatasetValue, requireElement } from '../dom';
 /**
  * Initialize anniversaries list "show more" buttons.
  */
-export function initializeAnniversariesListPage () {
-  document.querySelectorAll('[data-wt-anniversaries-show-more]').forEach((element) => {
+export function initializeAnniversariesListPage (root) {
+  root.querySelectorAll('[data-wt-anniversaries-show-more]').forEach((element) => {
     if (!(element instanceof HTMLButtonElement)) {
       throw new Error('Anniversaries show-more control must be a button.');
     }

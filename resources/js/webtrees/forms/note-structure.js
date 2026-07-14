@@ -20,7 +20,7 @@ import { requireElement } from '../dom';
  *
  * @param {ParentNode} root
  */
-export function initializeNoteStructureControls(root = document) {
+export function initializeNoteStructureControls(root) {
   root.querySelectorAll('[data-wt-note-structure]').forEach((container) => {
     if (!(container instanceof HTMLElement)) {
       throw new Error('Note-structure container must be an HTML element.');

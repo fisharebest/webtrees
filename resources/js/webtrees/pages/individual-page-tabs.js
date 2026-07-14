@@ -3,8 +3,8 @@
 /**
  * Initialize individual page tabs.
  */
-export function initializeIndividualPageTabs () {
-  const page = document.getElementById('individual-tabs');
+export function initializeIndividualPageTabs (root) {
+  const page = root.querySelector('#individual-tabs');
 
   if (!(page instanceof HTMLElement)) {
     return;

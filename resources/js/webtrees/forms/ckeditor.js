@@ -22,7 +22,7 @@ let ckeditorLoadPromise = null;
  *
  * @param {ParentNode} root
  */
-export function initializeCkeditorHtmlEdit(root = document) {
+export function initializeCkeditorHtmlEdit(root) {
   const editors = root.querySelectorAll('textarea.html-edit');
 
   if (editors.length === 0) {

@@ -20,7 +20,7 @@ import { requireElement } from '../dom';
  *
  * @param {ParentNode} root
  */
-export function initializeHtmlTemplateConfig(root = document) {
+export function initializeHtmlTemplateConfig(root) {
   root.querySelectorAll('[data-wt-html-template-config]').forEach((container) => {
     if (!(container instanceof HTMLElement)) {
       throw new Error('HTML template config container must be an HTML element.');

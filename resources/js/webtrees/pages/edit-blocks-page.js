@@ -5,8 +5,8 @@ import { requireElement } from '../dom';
 /**
  * Initialize the edit blocks page.
  */
-export function initializeEditBlocksPage () {
-  const form = document.getElementById('edit-blocks');
+export function initializeEditBlocksPage (root) {
+  const form = root.querySelector('#edit-blocks');
 
   if (!(form instanceof HTMLFormElement)) {
     return;

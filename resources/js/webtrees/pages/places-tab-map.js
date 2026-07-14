@@ -7,8 +7,8 @@ import { parseJsonDataset, stopNestedLinkClicks, zoomToFeaturePopup } from '../m
 /**
  * Initialize places tab map panels.
  */
-export function initializePlacesTabMapPage() {
-  document.querySelectorAll('[data-wt-places-tab-map]').forEach((container) => {
+export function initializePlacesTabMapPage(root) {
+  root.querySelectorAll('[data-wt-places-tab-map]').forEach((container) => {
       if (!(container instanceof HTMLElement)) {
         throw new Error('Places tab map container must be an HTML element.');
       }

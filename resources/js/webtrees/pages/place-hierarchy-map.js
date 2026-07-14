@@ -7,8 +7,8 @@ import { parseJsonDataset, stopNestedLinkClicks, zoomToFeaturePopup } from '../m
 /**
  * Initialize place hierarchy map pages.
  */
-export function initializePlaceHierarchyMapPage() {
-  document.querySelectorAll('[data-wt-place-hierarchy-map]').forEach((container) => {
+export function initializePlaceHierarchyMapPage(root) {
+  root.querySelectorAll('[data-wt-place-hierarchy-map]').forEach((container) => {
       if (!(container instanceof HTMLElement)) {
         throw new Error('Place hierarchy map container must be an HTML element.');
       }

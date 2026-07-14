@@ -100,84 +100,74 @@ export function initializeWebtreesPage() {
     });
   });
 
-  initializeWhenReady(function () {
-    initializeAjaxModalPage();
-    initializeAnniversariesListPage();
-    initializeCensusAssistantPage();
-    initializeCalendarLocalization();
-    initializeCalendarWidgetButtons();
-    initializeCaptchaFields();
-    initializeCheckboxActionButtons();
-    initializeCkeditorHtmlEdit();
-    initializeCookieWarnings();
-    initializeCopyButtons();
-    initializeClippingsDownloadPage();
-    initializeDateReformatInputs();
-    initializeDescendancySidebarPage();
-    initializeEditNameAddons();
-    initializeEditBlocksPage();
-    initializeEventCheckboxControls();
-    initializeEventsRecordedSelectors();
-    initializeFanChartMaps();
-    initializeGeneratedValueButtons();
-    initializeHtmlTemplateConfig();
-    initializeHourglassCharts();
-    initializeIndividualPageTabs();
-    initializeRandomMediaSlideshow();
-    initializeLatLongReformatInputs();
-    initializeMediaFileFields();
-    initializeNoteStructureControls();
-    initializePedigreeMapPage();
-    initializePasswordToggles();
-    initializePlaceHierarchyMapPage();
-    initializePlacesTabMapPage();
-    initializeReorderButtons();
-    initializeRequiredSelectForms();
-    initializeCensusSelectors();
-    initializeSetupBaseUrlFields();
-    initializeSetupMysqlConnection();
-    initializeShowMoreButtons();
-    initializeSingleMessageDeleteButtons();
-    initializeStatisticsChartCustomPage();
-    initializeStatisticsChartPage();
-    initializeSortableLists();
-    initializeSortByDateButtons();
-    initializeSubmitOnChangeControls();
-    initializeSubmitSelectedUrlButtons();
-    initializeTimelineChartPage();
-    initializeToggleTargetControls();
-    initializeSwapIndividualsButtons();
-    initializeSearchResultsPage();
-    initializeTextareaPatternForms();
-
-    // Autocomplete
-    autocomplete('input[data-wt-autocomplete-url]');
-
+  initializeWhenReady(function (root) {
+    autocomplete('input[data-wt-autocomplete-url]', root);
+    initializeAjaxModalPage(root);
+    initializeAnniversariesListPage(root);
+    initializeCalendarLocalization(root);
+    initializeCalendarWidgetButtons(root);
+    initializeCaptchaFields(root);
+    initializeCensusAssistantPage(root);
+    initializeCensusSelectors(root);
+    initializeCheckboxActionButtons(root);
+    initializeCkeditorHtmlEdit(root);
+    initializeClippingsDownloadPage(root);
+    initializeCookieWarnings(root);
+    initializeCopyButtons(root);
+    initializeDateReformatInputs(root);
+    initializeDescendancySidebarPage(root);
+    initializeEditBlocksPage(root);
+    initializeEditNameAddons(root);
+    initializeEventCheckboxControls(root);
+    initializeEventsRecordedSelectors(root);
+    initializeFanChartMaps(root);
     initializeGallery();
+    initializeGeneratedValueButtons(root);
+    initializeHourglassCharts(root);
+    initializeHtmlTemplateConfig(root);
+    initializeIndividualPageTabs(root);
+    initializeLatLongReformatInputs(root);
+    initializeMediaFileFields(root);
+    initializeNoteStructureControls(root);
+    initializeOnScreenKeyboard({ hideElements, pasteAtCursor, showElements }, root);
+    initializePasswordToggles(root);
+    initializePedigreeMapPage(root);
+    initializePlaceHierarchyMapPage(root);
+    initializePlacesTabMapPage(root);
+    initializeRandomMediaSlideshow(root);
+    initializeReorderButtons(root);
+    initializeRequiredSelectForms(root);
+    initializeSearchResultsPage(root);
+    initializeSetupBaseUrlFields(root);
+    initializeSetupMysqlConnection(root);
+    initializeShowMoreButtons(root);
+    initializeSingleMessageDeleteButtons(root);
+    initializeSortableLists(root);
+    initializeSortByDateButtons(root);
+    initializeStatisticsChartCustomPage(root);
+    initializeStatisticsChartPage(root);
+    initializeSubmitOnChangeControls(root);
+    initializeSubmitSelectedUrlButtons(root);
+    initializeSwapIndividualsButtons(root);
+    initializeTextareaPatternForms(root);
+    initializeTimelineChartPage(root);
+    initializeToggleTargetControls(root);
 
-    document.querySelectorAll('.tom-select').forEach(element => window.webtrees.initializeTomSelect(element));
+    // TomSelect
+    root.querySelectorAll('.tom-select').forEach(element => window.webtrees.initializeTomSelect(element));
 
     // If we clear the select (using the "X" button), we need an empty value
     // (rather than no value at all) for (non-multiple) selects with name="array[]"
-    document.querySelectorAll('select.tom-select:not([multiple])')
+    root.querySelectorAll('select.tom-select:not([multiple])')
       .forEach(function (element) {
-        if (element.dataset.wtTomSelectClearInitialized === '1') {
-          return;
-        }
-
-        element.dataset.wtTomSelectClearInitialized = '1';
-
         element.addEventListener('clear', function () {
           window.webtrees.resetTomSelect(element.tomselect, '', '');
         });
       });
 
-
     // Save button/checkbox state between pages
-    document.querySelectorAll('[data-wt-persist]')
+    root.querySelectorAll('[data-wt-persist]')
       .forEach((element) => persistentToggle(element));
-
-    initializeOnScreenKeyboard({ hideElements, pasteAtCursor, showElements });
   });
 
   // Prevent form re-submission via accidental double-click.

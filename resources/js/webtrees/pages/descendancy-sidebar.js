@@ -5,8 +5,8 @@ import { requireDatasetValue, requireElement } from '../dom';
 /**
  * Initialize the descendancy sidebar search and branch toggles.
  */
-export function initializeDescendancySidebarPage () {
-  document.querySelectorAll('form[data-wt-descendancy-sidebar]').forEach((form) => {
+export function initializeDescendancySidebarPage (root) {
+  root.querySelectorAll('form[data-wt-descendancy-sidebar]').forEach((form) => {
     if (!(form instanceof HTMLFormElement)) {
       throw new Error('Descendancy sidebar container must be a form element.');
     }

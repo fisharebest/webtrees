@@ -465,7 +465,7 @@ export class TreeViewHandler {
 /**
  * @param {ParentNode} root
  */
-function initializeInteractiveTree(root = document) {
+function initializeInteractiveTree(root) {
   root.querySelectorAll('[data-wt-interactive-tree]').forEach((container) => {
     if (!(container instanceof HTMLElement)) {
       return;
@@ -489,8 +489,7 @@ function startInteractiveTree() {
 
   observerInitialized = true;
 
-  const observer = new MutationObserver(() => initializeInteractiveTree(document));
-  observer.observe(document.body, { childList: true, subtree: true });
+  document.addEventListener('wt-content-loaded', () => initializeInteractiveTree(document));
 }
 
 if (document.readyState === 'loading') {

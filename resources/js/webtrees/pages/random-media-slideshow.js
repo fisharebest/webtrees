@@ -5,8 +5,8 @@ import { requireDatasetValue, requireElement } from '../dom';
 /**
  * Initialize random media slideshow controls.
  */
-export function initializeRandomMediaSlideshow () {
-  document.querySelectorAll('[data-wt-random-media-slideshow]').forEach((element) => {
+export function initializeRandomMediaSlideshow (root) {
+  root.querySelectorAll('[data-wt-random-media-slideshow]').forEach((element) => {
     if (!(element instanceof HTMLElement)) {
       throw new Error('Random media slideshow container must be an HTML element.');
     }

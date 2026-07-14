@@ -107,17 +107,35 @@ export function onDocumentReady(callback) {
 }
 
 /**
- * Run initialization when the document is ready, then watch for AJAX-inserted fragments.
+ * Run initialization when the document is ready, then re-run after dynamic content is loaded.
  *
- * @param {() => void} callback
+ * The callback receives the root element to scan — on initial page load this is document.body,
+ * and after AJAX loads it is the specific element that received new content.
+ * This means callbacks only need to scan within the given root, eliminating the need for
+ * double-initialization guards.
+ *
+ * @param {(root: ParentNode) => void} callback
  */
 export function initializeWhenReady(callback) {
   onDocumentReady(() => {
-    callback();
+    callback(document.body);
 
-    const observer = new MutationObserver(() => callback());
-    observer.observe(document.body, { childList: true, subtree: true });
+    document.addEventListener('wt-content-loaded', (event) => {
+      const root = event.detail?.root ?? document.body;
+      callback(root);
+    });
   });
+}
+
+/**
+ * Notify all initializeWhenReady listeners that new content has been loaded.
+ *
+ * Call this after inserting dynamic HTML content into the page.
+ *
+ * @param {Element} root - the element that received new content
+ */
+export function notifyContentLoaded(root) {
+  document.dispatchEvent(new CustomEvent('wt-content-loaded', { detail: { root } }));
 }
 
 /**

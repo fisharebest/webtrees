@@ -20,7 +20,7 @@ import { requireDatasetValue, requireElement } from '../dom';
  *
  * @param {ParentNode} root
  */
-export function initializeCookieWarnings(root = document) {
+export function initializeCookieWarnings(root) {
   root.querySelectorAll('[data-wt-cookie-warning]').forEach((warning) => {
     if (!(warning instanceof HTMLElement)) {
       throw new Error('Cookie warning container must be an HTML element.');

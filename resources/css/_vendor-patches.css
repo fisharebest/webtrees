@@ -35,8 +35,8 @@
     right: -2rem;
 }
 
-/* Allows twitter typeahead to work with bootstrap input groups */
-.input-group > .twitter-typeahead {
+/* Allows autocomplete.js to work with bootstrap input groups */
+.input-group > .autoComplete_wrapper {
     flex: 1 1;
 }
 

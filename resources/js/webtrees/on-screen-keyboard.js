@@ -17,13 +17,14 @@
  * Initialize the on-screen keyboard handlers.
  *
  * @param {object} dependencies
+ * @param {ParentNode} root
  */
-export function initializeOnScreenKeyboard(dependencies) {
+export function initializeOnScreenKeyboard(dependencies, root) {
   const { hideElements, pasteAtCursor, showElements } = dependencies;
 
   let osk_focus_element = null;
 
-  document.querySelectorAll('.wt-osk-trigger').forEach((trigger) => {
+  root.querySelectorAll('.wt-osk-trigger').forEach((trigger) => {
     if (trigger.dataset.wtOskInitialized === '1') {
       return;
     }
@@ -43,7 +44,7 @@ export function initializeOnScreenKeyboard(dependencies) {
     });
   });
 
-  document.querySelectorAll('.wt-osk-script-button').forEach((button) => {
+  root.querySelectorAll('.wt-osk-script-button').forEach((button) => {
     if (button.dataset.wtOskInitialized === '1') {
       return;
     }
@@ -61,7 +62,7 @@ export function initializeOnScreenKeyboard(dependencies) {
     });
   });
 
-  document.querySelectorAll('.wt-osk-shift-button').forEach((button) => {
+  root.querySelectorAll('.wt-osk-shift-button').forEach((button) => {
     if (button.dataset.wtOskInitialized === '1') {
       return;
     }
@@ -79,7 +80,7 @@ export function initializeOnScreenKeyboard(dependencies) {
     });
   });
 
-  document.querySelectorAll('.wt-osk-keys').forEach((keys) => {
+  root.querySelectorAll('.wt-osk-keys').forEach((keys) => {
     if (keys.dataset.wtOskInitialized === '1') {
       return;
     }
@@ -119,7 +120,7 @@ export function initializeOnScreenKeyboard(dependencies) {
     });
   });
 
-  document.querySelectorAll('.wt-osk-close').forEach((close_button) => {
+  root.querySelectorAll('.wt-osk-close').forEach((close_button) => {
     if (close_button.dataset.wtOskInitialized === '1') {
       return;
     }

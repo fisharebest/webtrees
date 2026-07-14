@@ -20,7 +20,7 @@ import { requireDatasetValue } from '../dom';
  *
  * @param {ParentNode} root
  */
-export function initializeHourglassCharts(root = document) {
+export function initializeHourglassCharts(root) {
   root.querySelectorAll('[data-wt-hourglass-chart]').forEach((chart) => {
     if (!(chart instanceof HTMLElement)) {
       throw new Error('Hourglass chart container must be an HTML element.');

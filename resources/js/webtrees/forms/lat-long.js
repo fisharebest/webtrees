@@ -81,7 +81,7 @@ export function reformatLongitude(field) {
  *
  * @param {ParentNode} root
  */
-export function initializeLatLongReformatInputs(root = document) {
+export function initializeLatLongReformatInputs(root) {
   root.querySelectorAll('input[data-wt-reformat-latitude]').forEach((element) => {
     if (!(element instanceof HTMLInputElement)) {
       throw new Error('Latitude reformat control must be an input element.');

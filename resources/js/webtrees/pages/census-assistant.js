@@ -5,8 +5,8 @@ import { requireDatasetValue, requireElement } from '../dom';
 /**
  * Initialize census assistant controls in edit forms.
  */
-export function initializeCensusAssistantPage () {
-  document.querySelectorAll('form').forEach((form) => {
+export function initializeCensusAssistantPage (root) {
+  root.querySelectorAll('form').forEach((form) => {
     if (!(form instanceof HTMLFormElement)) {
       return;
     }

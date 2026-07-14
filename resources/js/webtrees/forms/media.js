@@ -23,7 +23,7 @@ import { requireDatasetValue, requireElement } from '../dom';
  *
  * @param {ParentNode} root
  */
-export function initializeFormatExtensions(root = document) {
+export function initializeFormatExtensions(root) {
   root.querySelectorAll('[data-wt-format-options]').forEach((container) => {
     if (!(container instanceof HTMLElement)) {
       return;
@@ -59,7 +59,7 @@ export function initializeFormatExtensions(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeMediaFileFields(root = document) {
+export function initializeMediaFileFields(root) {
   root.querySelectorAll('select[data-wt-media-file-location]').forEach((element) => {
     if (!(element instanceof HTMLSelectElement)) {
       throw new Error('Media file location control must be a select element.');
@@ -103,7 +103,7 @@ export function initializeMediaFileFields(root = document) {
     if (folder.dataset.wtAutocompleteInitialized !== '1') {
       folder.dataset.wtAutocompleteInitialized = '1';
       requireDatasetValue(folder, 'wtAutocompleteUrl', 'media folder autocomplete URL');
-      window.webtrees.autocomplete('#' + CSS.escape(folder.id));
+      window.webtrees.autocomplete('#' + CSS.escape(folder.id), container);
     }
   });
 }

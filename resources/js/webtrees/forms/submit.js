@@ -20,7 +20,7 @@ import { requireDatasetValue, requireElement } from '../dom';
  *
  * @param {ParentNode} root
  */
-export function initializeRequiredSelectForms(root = document) {
+export function initializeRequiredSelectForms(root) {
   root.querySelectorAll('form[data-wt-require-select]').forEach((form) => {
     if (!(form instanceof HTMLFormElement)) {
       throw new Error('Required-select container must be a form element.');
@@ -47,7 +47,7 @@ export function initializeRequiredSelectForms(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeSubmitOnChangeControls(root = document) {
+export function initializeSubmitOnChangeControls(root) {
   root.querySelectorAll('[data-wt-submit-on-change]').forEach((element) => {
     if (!(element instanceof HTMLSelectElement)) {
       throw new Error('Submit-on-change control must be a select element.');
@@ -76,7 +76,7 @@ export function initializeSubmitOnChangeControls(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeSubmitSelectedUrlButtons(root = document) {
+export function initializeSubmitSelectedUrlButtons(root) {
   root.querySelectorAll('[data-wt-submit-selected-url-button]').forEach((button) => {
     if (!(button instanceof HTMLButtonElement)) {
       throw new Error('Submit-selected-URL control must be a button element.');

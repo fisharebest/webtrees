@@ -20,7 +20,7 @@ import { requireDatasetValue, requireElement } from '../dom';
  *
  * @param {ParentNode} root
  */
-export function initializeCensusSelectors(root = document) {
+export function initializeCensusSelectors(root) {
   root.querySelectorAll('select[data-wt-census-selector]').forEach((select) => {
     if (!(select instanceof HTMLSelectElement)) {
       throw new Error('Census selector control must be a select element.');

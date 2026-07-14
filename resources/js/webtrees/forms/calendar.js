@@ -20,7 +20,7 @@ import { requireDatasetValue } from '../dom';
  *
  * @param {ParentNode} root
  */
-export function initializeCalendarLocalization(root = document) {
+export function initializeCalendarLocalization(root) {
   root.querySelectorAll('[data-wt-calendar-localization]').forEach((element) => {
     if (!(element instanceof HTMLElement)) {
       return;
@@ -57,7 +57,7 @@ export function initializeCalendarLocalization(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeCalendarWidgetButtons(root = document) {
+export function initializeCalendarWidgetButtons(root) {
   root.querySelectorAll('[data-wt-calendar-widget-button]').forEach((element) => {
     if (!(element instanceof HTMLElement)) {
       throw new Error('Calendar widget control must be an HTML element.');
@@ -85,7 +85,7 @@ export function initializeCalendarWidgetButtons(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeDateReformatInputs(root = document) {
+export function initializeDateReformatInputs(root) {
   root.querySelectorAll('input[data-wt-reformat-date-order]').forEach((element) => {
     if (!(element instanceof HTMLInputElement)) {
       throw new Error('Date reformat control must be an input element.');

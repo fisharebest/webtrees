@@ -20,7 +20,7 @@ import { requireDatasetValue, requireElement } from '../dom';
  *
  * @param {ParentNode} root
  */
-export function initializeFanChartMaps(root = document) {
+export function initializeFanChartMaps(root) {
   root.querySelectorAll('map[data-wt-fanchart-map]').forEach((map) => {
     if (!(map instanceof HTMLElement)) {
       throw new Error('Fan chart map container must be an HTML element.');

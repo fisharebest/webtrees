@@ -5,8 +5,8 @@ import { requireDatasetValue, requireElement } from '../dom';
 /**
  * Initialize the shared AJAX modal.
  */
-export function initializeAjaxModalPage () {
-  const modal = document.getElementById('wt-ajax-modal');
+export function initializeAjaxModalPage (root) {
+  const modal = root.querySelector('#wt-ajax-modal');
 
   if (!(modal instanceof HTMLElement)) {
     return;
@@ -43,8 +43,8 @@ export function initializeAjaxModalPage () {
     modalContent.dataset.wtSelectId = event.relatedTarget.dataset.wtSelectId ?? '';
 
     // Clear existing content (to prevent FOUC) and load new content.
-    // The MutationObserver in initializeWhenReady will automatically
-    // initialize any new interactive elements after content is inserted.
+    // The load() function dispatches a 'wt-content-loaded' event, which
+    // initializeWhenReady listeners use to initialize new interactive elements.
     modalContent.replaceChildren();
 
     const url = requireDatasetValue(event.relatedTarget, 'wtHref', 'AJAX modal URL');

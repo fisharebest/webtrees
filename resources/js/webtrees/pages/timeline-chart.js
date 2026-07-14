@@ -5,8 +5,8 @@ import { requireDatasetValue, requireElement } from '../dom';
 /**
  * Initialize interactive timeline chart controls.
  */
-export function initializeTimelineChartPage () {
-  document.querySelectorAll('[data-wt-timeline-chart]').forEach((chart) => {
+export function initializeTimelineChartPage (root) {
+  root.querySelectorAll('[data-wt-timeline-chart]').forEach((chart) => {
       if (!(chart instanceof HTMLElement)) {
         throw new Error('Timeline chart container must be an HTML element.');
       }

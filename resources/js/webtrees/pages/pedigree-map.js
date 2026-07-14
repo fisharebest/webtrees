@@ -7,8 +7,8 @@ import { parseJsonDataset, zoomToFeaturePopup } from '../map-sidebar';
 /**
  * Initialize pedigree map pages.
  */
-export function initializePedigreeMapPage() {
-  document.querySelectorAll('[data-wt-pedigree-map]').forEach((container) => {
+export function initializePedigreeMapPage(root) {
+  root.querySelectorAll('[data-wt-pedigree-map]').forEach((container) => {
       if (!(container instanceof HTMLElement)) {
         throw new Error('Pedigree map container must be an HTML element.');
       }

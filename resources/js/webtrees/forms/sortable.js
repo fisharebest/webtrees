@@ -20,7 +20,7 @@ import { requireDatasetValue, requireElement } from '../dom';
  *
  * @param {ParentNode} root
  */
-export function initializeSortableLists(root = document) {
+export function initializeSortableLists(root) {
   root.querySelectorAll('[data-wt-sortable-list]').forEach((list) => {
     if (!(list instanceof HTMLElement)) {
       throw new Error('Sortable list must be an HTML element.');
@@ -43,7 +43,7 @@ export function initializeSortableLists(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeSortByDateButtons(root = document) {
+export function initializeSortByDateButtons(root) {
   root.querySelectorAll('[data-wt-sort-by-date-button]').forEach((button) => {
     if (!(button instanceof HTMLButtonElement)) {
       throw new Error('Sort-by-date control must be a button element.');
@@ -81,7 +81,7 @@ export function initializeSortByDateButtons(root = document) {
  *
  * @param {ParentNode} root
  */
-export function initializeReorderButtons(root = document) {
+export function initializeReorderButtons(root) {
   const body = root instanceof Document ? root.body : root.querySelector('body') ?? document.body;
 
   if (!(body instanceof HTMLBodyElement) || body.dataset.wtReorderButtonsInitialized === '1') {

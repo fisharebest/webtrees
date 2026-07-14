@@ -29,7 +29,7 @@ const Z_AXIS = {
  *
  * @param {ParentNode} root
  */
-export function initializeStatisticsChartCustomPage (root = document) {
+export function initializeStatisticsChartCustomPage (root) {
   root.querySelectorAll('form[data-wt-statistics-custom-chart]').forEach((form) => {
     if (!(form instanceof HTMLFormElement)) {
       throw new Error('Statistics custom chart container must be a form.');
@@ -169,7 +169,7 @@ export function initializeStatisticsChartCustomPage (root = document) {
     });
 
     if (surnameInput.dataset.wtAutocompleteInitialized !== '1') {
-      window.webtrees.autocomplete('#' + surnameInput.id);
+      window.webtrees.autocomplete('#' + surnameInput.id, form);
       surnameInput.dataset.wtAutocompleteInitialized = '1';
     }
 
