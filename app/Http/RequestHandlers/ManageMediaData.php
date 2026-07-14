@@ -262,6 +262,8 @@ final class ManageMediaData implements RequestHandlerInterface
 
         $html .= $element->value($media->getNote(), $media->tree());
 
+        $linked = [];
+
         foreach ($this->linked_record_service->allLinkedRecords($media) as $record) {
             $linked[] = view('icons/record', ['record' => $record]) . ' <a href="' . e($record->url()) . '">' . $record->fullName() . '</a>';
         }

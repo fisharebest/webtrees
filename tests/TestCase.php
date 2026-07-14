@@ -254,7 +254,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
                         static::fail('Closing tag matches nothing: ' . $match[0] . ' at ' . implode(':', $stack));
                     }
                     $html = substr($html, strlen($match[0]));
-                } elseif (preg_match('~^<([a-z]+)(?:\s+[a-z_\-]+="[^">]*")*\s*(/?)>~', $html, $match) === 1) {
+                } elseif (preg_match('~^<([a-z]+)(?:\s+[^\s"\'=<>\/]+(?:=(?:"[^"]*"|\'[^\']*\'|[^\s"\'=<>\/]+))?)*\s*(/?)>~', $html, $match) === 1) {
                     $tag = $match[1];
                     $self_closing = $match[2] === '/';
 
