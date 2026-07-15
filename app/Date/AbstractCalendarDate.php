@@ -213,53 +213,45 @@ abstract class AbstractCalendarDate
 
     /**
      * Full day of the week
+     *
+     * @param int<0,6> $day_number
      */
     public function dayNames(int $day_number): string
     {
-        static $translated_day_names;
-
-        if ($translated_day_names === null) {
-            $translated_day_names = [
-                0 => I18N::translate('Monday'),
-                1 => I18N::translate('Tuesday'),
-                2 => I18N::translate('Wednesday'),
-                3 => I18N::translate('Thursday'),
-                4 => I18N::translate('Friday'),
-                5 => I18N::translate('Saturday'),
-                6 => I18N::translate('Sunday'),
-            ];
-        }
-
-        return $translated_day_names[$day_number];
+        return match ($day_number) {
+            0 => I18N::translate('Monday'),
+            1 => I18N::translate('Tuesday'),
+            2 => I18N::translate('Wednesday'),
+            3 => I18N::translate('Thursday'),
+            4 => I18N::translate('Friday'),
+            5 => I18N::translate('Saturday'),
+            6 => I18N::translate('Sunday'),
+        };
     }
 
     /**
      * Abbreviated day of the week
+     *
+     * @param int<0,6> $day_number
      */
     protected function dayNamesAbbreviated(int $day_number): string
     {
-        static $translated_day_names;
-
-        if ($translated_day_names === null) {
-            $translated_day_names = [
-                /* I18N: abbreviation for Monday */
-                0 => I18N::translate('Mon'),
-                /* I18N: abbreviation for Tuesday */
-                1 => I18N::translate('Tue'),
-                /* I18N: abbreviation for Wednesday */
-                2 => I18N::translate('Wed'),
-                /* I18N: abbreviation for Thursday */
-                3 => I18N::translate('Thu'),
-                /* I18N: abbreviation for Friday */
-                4 => I18N::translate('Fri'),
-                /* I18N: abbreviation for Saturday */
-                5 => I18N::translate('Sat'),
-                /* I18N: abbreviation for Sunday */
-                6 => I18N::translate('Sun'),
-            ];
-        }
-
-        return $translated_day_names[$day_number];
+        return match ($day_number) {
+            /* I18N: abbreviation for Monday */
+            0 => I18N::translate('Mon'),
+            /* I18N: abbreviation for Tuesday */
+            1 => I18N::translate('Tue'),
+            /* I18N: abbreviation for Wednesday */
+            2 => I18N::translate('Wed'),
+            /* I18N: abbreviation for Thursday */
+            3 => I18N::translate('Thu'),
+            /* I18N: abbreviation for Friday */
+            4 => I18N::translate('Fri'),
+            /* I18N: abbreviation for Saturday */
+            5 => I18N::translate('Sat'),
+            /* I18N: abbreviation for Sunday */
+            6 => I18N::translate('Sun'),
+        };
     }
 
     /**
@@ -421,6 +413,8 @@ abstract class AbstractCalendarDate
             $format = strtr($format, ['%t' => '', '%L' => '', '%G' => '', '%y' => '', '年' => '', '%Y' => '']);
         }// 年 %n月%j日
         $format = trim($format, ',. /-');
+        // Collapse any runs of whitespace left after removing empty components
+        $format = preg_replace('/\s{2,}/', ' ', $format);
 
         if ($this->day !== 0 && preg_match('/%[djlDNSwz]/', $format)) {
             // If we have a day-number *and* we are being asked to display it, then genitive
@@ -616,6 +610,7 @@ abstract class AbstractCalendarDate
     /**
      * Full month name in genitive case.
      *
+     * @param int<0,13> $month
      * @param bool $leap_year Some calendars use leap months
      */
     abstract protected function monthNameGenitiveCase(int $month, bool $leap_year): string;
@@ -623,6 +618,7 @@ abstract class AbstractCalendarDate
     /**
      * Full month name in nominative case.
      *
+     * @param int<0,13> $month
      * @param bool $leap_year Some calendars use leap months
      */
     abstract protected function monthNameNominativeCase(int $month, bool $leap_year): string;
@@ -630,6 +626,7 @@ abstract class AbstractCalendarDate
     /**
      * Full month name in locative case.
      *
+     * @param int<0,13> $month
      * @param bool $leap_year Some calendars use leap months
      */
     abstract protected function monthNameLocativeCase(int $month, bool $leap_year): string;
@@ -637,6 +634,7 @@ abstract class AbstractCalendarDate
     /**
      * Full month name in instrumental case.
      *
+     * @param int<0,13> $month
      * @param bool $leap_year Some calendars use leap months
      */
     abstract protected function monthNameInstrumentalCase(int $month, bool $leap_year): string;
@@ -644,6 +642,7 @@ abstract class AbstractCalendarDate
     /**
      * Abbreviated month name
      *
+     * @param int<0,13> $month
      * @param bool $leap_year Some calendars use leap months
      */
     abstract protected function monthNameAbbreviated(int $month, bool $leap_year): string;

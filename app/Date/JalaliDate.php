@@ -78,198 +78,125 @@ class JalaliDate extends AbstractCalendarDate
     /**
      * Full month name in nominative case.
      *
+     * @param int<0,12> $month
      * @param bool $leap_year Some calendars use leap months
      */
     protected function monthNameNominativeCase(int $month, bool $leap_year): string
     {
-        static $translated_month_names;
-
-        if ($translated_month_names === null) {
-            $translated_month_names = [
-                0  => '',
-                /* I18N: 1st month in the Persian/Jalali calendar */
-                1  => I18N::translateContext('NOMINATIVE', 'Farvardin'),
-                /* I18N: 2nd month in the Persian/Jalali calendar */
-                2  => I18N::translateContext('NOMINATIVE', 'Ordibehesht'),
-                /* I18N: 3rd month in the Persian/Jalali calendar */
-                3  => I18N::translateContext('NOMINATIVE', 'Khordad'),
-                /* I18N: 4th month in the Persian/Jalali calendar */
-                4  => I18N::translateContext('NOMINATIVE', 'Tir'),
-                /* I18N: 5th month in the Persian/Jalali calendar */
-                5  => I18N::translateContext('NOMINATIVE', 'Mordad'),
-                /* I18N: 6th month in the Persian/Jalali calendar */
-                6  => I18N::translateContext('NOMINATIVE', 'Shahrivar'),
-                /* I18N: 7th month in the Persian/Jalali calendar */
-                7  => I18N::translateContext('NOMINATIVE', 'Mehr'),
-                /* I18N: 8th month in the Persian/Jalali calendar */
-                8  => I18N::translateContext('NOMINATIVE', 'Aban'),
-                /* I18N: 9th month in the Persian/Jalali calendar */
-                9  => I18N::translateContext('NOMINATIVE', 'Azar'),
-                /* I18N: 10th month in the Persian/Jalali calendar */
-                10 => I18N::translateContext('NOMINATIVE', 'Dey'),
-                /* I18N: 11th month in the Persian/Jalali calendar */
-                11 => I18N::translateContext('NOMINATIVE', 'Bahman'),
-                /* I18N: 12th month in the Persian/Jalali calendar */
-                12 => I18N::translateContext('NOMINATIVE', 'Esfand'),
-            ];
-        }
-
-        return $translated_month_names[$month];
+        return match ($month) {
+            0 => '',
+            1 => I18N::translateContext('NOMINATIVE', 'Farvardin'),
+            2 => I18N::translateContext('NOMINATIVE', 'Ordibehesht'),
+            3 => I18N::translateContext('NOMINATIVE', 'Khordad'),
+            4 => I18N::translateContext('NOMINATIVE', 'Tir'),
+            5 => I18N::translateContext('NOMINATIVE', 'Mordad'),
+            6 => I18N::translateContext('NOMINATIVE', 'Shahrivar'),
+            7 => I18N::translateContext('NOMINATIVE', 'Mehr'),
+            8 => I18N::translateContext('NOMINATIVE', 'Aban'),
+            9 => I18N::translateContext('NOMINATIVE', 'Azar'),
+            10 => I18N::translateContext('NOMINATIVE', 'Dey'),
+            11 => I18N::translateContext('NOMINATIVE', 'Bahman'),
+            12 => I18N::translateContext('NOMINATIVE', 'Esfand'),
+        };
     }
 
     /**
      * Full month name in genitive case.
      *
+     * @param int<0,12> $month
      * @param bool $leap_year Some calendars use leap months
      */
     protected function monthNameGenitiveCase(int $month, bool $leap_year): string
     {
-        static $translated_month_names;
-
-        if ($translated_month_names === null) {
-            $translated_month_names = [
-                0  => '',
-                /* I18N: 1st month in the Persian/Jalali calendar */
-                1  => I18N::translateContext('GENITIVE', 'Farvardin'),
-                /* I18N: 2nd month in the Persian/Jalali calendar */
-                2  => I18N::translateContext('GENITIVE', 'Ordibehesht'),
-                /* I18N: 3rd month in the Persian/Jalali calendar */
-                3  => I18N::translateContext('GENITIVE', 'Khordad'),
-                /* I18N: 4th month in the Persian/Jalali calendar */
-                4  => I18N::translateContext('GENITIVE', 'Tir'),
-                /* I18N: 5th month in the Persian/Jalali calendar */
-                5  => I18N::translateContext('GENITIVE', 'Mordad'),
-                /* I18N: 6th month in the Persian/Jalali calendar */
-                6  => I18N::translateContext('GENITIVE', 'Shahrivar'),
-                /* I18N: 7th month in the Persian/Jalali calendar */
-                7  => I18N::translateContext('GENITIVE', 'Mehr'),
-                /* I18N: 8th month in the Persian/Jalali calendar */
-                8  => I18N::translateContext('GENITIVE', 'Aban'),
-                /* I18N: 9th month in the Persian/Jalali calendar */
-                9  => I18N::translateContext('GENITIVE', 'Azar'),
-                /* I18N: 10th month in the Persian/Jalali calendar */
-                10 => I18N::translateContext('GENITIVE', 'Dey'),
-                /* I18N: 11th month in the Persian/Jalali calendar */
-                11 => I18N::translateContext('GENITIVE', 'Bahman'),
-                /* I18N: 12th month in the Persian/Jalali calendar */
-                12 => I18N::translateContext('GENITIVE', 'Esfand'),
-            ];
-        }
-
-        return $translated_month_names[$month];
+        return match ($month) {
+            0 => '',
+            1 => I18N::translateContext('GENITIVE', 'Farvardin'),
+            2 => I18N::translateContext('GENITIVE', 'Ordibehesht'),
+            3 => I18N::translateContext('GENITIVE', 'Khordad'),
+            4 => I18N::translateContext('GENITIVE', 'Tir'),
+            5 => I18N::translateContext('GENITIVE', 'Mordad'),
+            6 => I18N::translateContext('GENITIVE', 'Shahrivar'),
+            7 => I18N::translateContext('GENITIVE', 'Mehr'),
+            8 => I18N::translateContext('GENITIVE', 'Aban'),
+            9 => I18N::translateContext('GENITIVE', 'Azar'),
+            10 => I18N::translateContext('GENITIVE', 'Dey'),
+            11 => I18N::translateContext('GENITIVE', 'Bahman'),
+            12 => I18N::translateContext('GENITIVE', 'Esfand'),
+        };
     }
 
     /**
      * Full month name in locative case.
      *
+     * @param int<0,12> $month
      * @param bool $leap_year Some calendars use leap months
      */
     protected function monthNameLocativeCase(int $month, bool $leap_year): string
     {
-        static $translated_month_names;
-
-        if ($translated_month_names === null) {
-            $translated_month_names = [
-                0  => '',
-                /* I18N: 1st month in the Persian/Jalali calendar */
-                1  => I18N::translateContext('LOCATIVE', 'Farvardin'),
-                /* I18N: 2nd month in the Persian/Jalali calendar */
-                2  => I18N::translateContext('LOCATIVE', 'Ordibehesht'),
-                /* I18N: 3rd month in the Persian/Jalali calendar */
-                3  => I18N::translateContext('LOCATIVE', 'Khordad'),
-                /* I18N: 4th month in the Persian/Jalali calendar */
-                4  => I18N::translateContext('LOCATIVE', 'Tir'),
-                /* I18N: 5th month in the Persian/Jalali calendar */
-                5  => I18N::translateContext('LOCATIVE', 'Mordad'),
-                /* I18N: 6th month in the Persian/Jalali calendar */
-                6  => I18N::translateContext('LOCATIVE', 'Shahrivar'),
-                /* I18N: 7th month in the Persian/Jalali calendar */
-                7  => I18N::translateContext('LOCATIVE', 'Mehr'),
-                /* I18N: 8th month in the Persian/Jalali calendar */
-                8  => I18N::translateContext('LOCATIVE', 'Aban'),
-                /* I18N: 9th month in the Persian/Jalali calendar */
-                9  => I18N::translateContext('LOCATIVE', 'Azar'),
-                /* I18N: 10th month in the Persian/Jalali calendar */
-                10 => I18N::translateContext('LOCATIVE', 'Dey'),
-                /* I18N: 11th month in the Persian/Jalali calendar */
-                11 => I18N::translateContext('LOCATIVE', 'Bahman'),
-                /* I18N: 12th month in the Persian/Jalali calendar */
-                12 => I18N::translateContext('LOCATIVE', 'Esfand'),
-            ];
-        }
-
-        return $translated_month_names[$month];
+        return match ($month) {
+            0 => '',
+            1 => I18N::translateContext('LOCATIVE', 'Farvardin'),
+            2 => I18N::translateContext('LOCATIVE', 'Ordibehesht'),
+            3 => I18N::translateContext('LOCATIVE', 'Khordad'),
+            4 => I18N::translateContext('LOCATIVE', 'Tir'),
+            5 => I18N::translateContext('LOCATIVE', 'Mordad'),
+            6 => I18N::translateContext('LOCATIVE', 'Shahrivar'),
+            7 => I18N::translateContext('LOCATIVE', 'Mehr'),
+            8 => I18N::translateContext('LOCATIVE', 'Aban'),
+            9 => I18N::translateContext('LOCATIVE', 'Azar'),
+            10 => I18N::translateContext('LOCATIVE', 'Dey'),
+            11 => I18N::translateContext('LOCATIVE', 'Bahman'),
+            12 => I18N::translateContext('LOCATIVE', 'Esfand'),
+        };
     }
 
     /**
      * Full month name in instrumental case.
      *
+     * @param int<0,12> $month
      * @param bool $leap_year Some calendars use leap months
      */
     protected function monthNameInstrumentalCase(int $month, bool $leap_year): string
     {
-        static $translated_month_names;
-
-        if ($translated_month_names === null) {
-            $translated_month_names = [
-                0  => '',
-                /* I18N: 1st month in the Persian/Jalali calendar */
-                1  => I18N::translateContext('INSTRUMENTAL', 'Farvardin'),
-                /* I18N: 2nd month in the Persian/Jalali calendar */
-                2  => I18N::translateContext('INSTRUMENTAL', 'Ordibehesht'),
-                /* I18N: 3rd month in the Persian/Jalali calendar */
-                3  => I18N::translateContext('INSTRUMENTAL', 'Khordad'),
-                /* I18N: 4th month in the Persian/Jalali calendar */
-                4  => I18N::translateContext('INSTRUMENTAL', 'Tir'),
-                /* I18N: 5th month in the Persian/Jalali calendar */
-                5  => I18N::translateContext('INSTRUMENTAL', 'Mordad'),
-                /* I18N: 6th month in the Persian/Jalali calendar */
-                6  => I18N::translateContext('INSTRUMENTAL', 'Shahrivar'),
-                /* I18N: 7th month in the Persian/Jalali calendar */
-                7  => I18N::translateContext('INSTRUMENTAL', 'Mehr'),
-                /* I18N: 8th month in the Persian/Jalali calendar */
-                8  => I18N::translateContext('INSTRUMENTAL', 'Aban'),
-                /* I18N: 9th month in the Persian/Jalali calendar */
-                9  => I18N::translateContext('INSTRUMENTAL', 'Azar'),
-                /* I18N: 10th month in the Persian/Jalali calendar */
-                10 => I18N::translateContext('INSTRUMENTAL', 'Dey'),
-                /* I18N: 11th month in the Persian/Jalali calendar */
-                11 => I18N::translateContext('INSTRUMENTAL', 'Bahman'),
-                /* I18N: 12th month in the Persian/Jalali calendar */
-                12 => I18N::translateContext('INSTRUMENTAL', 'Esfand'),
-            ];
-        }
-
-        return $translated_month_names[$month];
+        return match ($month) {
+            0 => '',
+            1 => I18N::translateContext('INSTRUMENTAL', 'Farvardin'),
+            2 => I18N::translateContext('INSTRUMENTAL', 'Ordibehesht'),
+            3 => I18N::translateContext('INSTRUMENTAL', 'Khordad'),
+            4 => I18N::translateContext('INSTRUMENTAL', 'Tir'),
+            5 => I18N::translateContext('INSTRUMENTAL', 'Mordad'),
+            6 => I18N::translateContext('INSTRUMENTAL', 'Shahrivar'),
+            7 => I18N::translateContext('INSTRUMENTAL', 'Mehr'),
+            8 => I18N::translateContext('INSTRUMENTAL', 'Aban'),
+            9 => I18N::translateContext('INSTRUMENTAL', 'Azar'),
+            10 => I18N::translateContext('INSTRUMENTAL', 'Dey'),
+            11 => I18N::translateContext('INSTRUMENTAL', 'Bahman'),
+            12 => I18N::translateContext('INSTRUMENTAL', 'Esfand'),
+        };
     }
 
     /**
      * Abbreviated month name
      *
+     * @param int<0,12> $month
      * @param bool $leap_year Some calendars use leap months
      */
     protected function monthNameAbbreviated(int $month, bool $leap_year): string
     {
-        static $translated_month_names;
-
-        if ($translated_month_names === null) {
-            $translated_month_names = [
-                0  => '',
-                1  => I18N::translateContext('Abbreviation for Persian month: Farvardin', 'Far'),
-                2  => I18N::translateContext('Abbreviation for Persian month: Ordibehesht', 'Ord'),
-                3  => I18N::translateContext('Abbreviation for Persian month: Khordad', 'Khor'),
-                4  => I18N::translateContext('Abbreviation for Persian month: Tir', 'Tir'),
-                5  => I18N::translateContext('Abbreviation for Persian month: Mordad', 'Mor'),
-                6  => I18N::translateContext('Abbreviation for Persian month: Shahrivar', 'Shah'),
-                7  => I18N::translateContext('Abbreviation for Persian month: Mehr', 'Mehr'),
-                8  => I18N::translateContext('Abbreviation for Persian month: Aban', 'Aban'),
-                9  => I18N::translateContext('Abbreviation for Persian month: Azar', 'Azar'),
-                10 => I18N::translateContext('Abbreviation for Persian month: Dey', 'Dey'),
-                11 => I18N::translateContext('Abbreviation for Persian month: Bahman', 'Bah'),
-                12 => I18N::translateContext('Abbreviation for Persian month: Esfand', 'Esf'),
-            ];
-        }
-
-        return $translated_month_names[$month];
+        return match ($month) {
+            0 => '',
+            1 => I18N::translateContext('Abbreviation for Persian month: Farvardin', 'Far'),
+            2 => I18N::translateContext('Abbreviation for Persian month: Ordibehesht', 'Ord'),
+            3 => I18N::translateContext('Abbreviation for Persian month: Khordad', 'Khor'),
+            4 => I18N::translateContext('Abbreviation for Persian month: Tir', 'Tir'),
+            5 => I18N::translateContext('Abbreviation for Persian month: Mordad', 'Mor'),
+            6 => I18N::translateContext('Abbreviation for Persian month: Shahrivar', 'Shah'),
+            7 => I18N::translateContext('Abbreviation for Persian month: Mehr', 'Mehr'),
+            8 => I18N::translateContext('Abbreviation for Persian month: Aban', 'Aban'),
+            9 => I18N::translateContext('Abbreviation for Persian month: Azar', 'Azar'),
+            10 => I18N::translateContext('Abbreviation for Persian month: Dey', 'Dey'),
+            11 => I18N::translateContext('Abbreviation for Persian month: Bahman', 'Bah'),
+            12 => I18N::translateContext('Abbreviation for Persian month: Esfand', 'Esf'),
+        };
     }
 }

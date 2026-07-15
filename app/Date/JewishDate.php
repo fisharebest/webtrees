@@ -119,182 +119,127 @@ class JewishDate extends AbstractCalendarDate
     /**
      * Full month name in nominative case.
      *
+     * @param int<0,13> $month
      * @param bool $leap_year Some calendars use leap months
      */
     protected function monthNameNominativeCase(int $month, bool $leap_year): string
     {
         if ($month === 7 && $leap_year) {
-            /* I18N: a month in the Jewish calendar */
             return I18N::translateContext('NOMINATIVE', 'Adar II');
         }
 
         return match ($month) {
             0 => '',
-            /* I18N: a month in the Jewish calendar */
             1 => I18N::translateContext('NOMINATIVE', 'Tishrei'),
-            /* I18N: a month in the Jewish calendar */
             2 => I18N::translateContext('NOMINATIVE', 'Heshvan'),
-            /* I18N: a month in the Jewish calendar */
             3 => I18N::translateContext('NOMINATIVE', 'Kislev'),
-            /* I18N: a month in the Jewish calendar */
             4 => I18N::translateContext('NOMINATIVE', 'Tevet'),
-            /* I18N: a month in the Jewish calendar */
             5 => I18N::translateContext('NOMINATIVE', 'Shevat'),
-            /* I18N: a month in the Jewish calendar */
             6 => I18N::translateContext('NOMINATIVE', 'Adar I'),
-            /* I18N: a month in the Jewish calendar */
             7 => I18N::translateContext('NOMINATIVE', 'Adar'),
-            /* I18N: a month in the Jewish calendar */
             8 => I18N::translateContext('NOMINATIVE', 'Nissan'),
-            /* I18N: a month in the Jewish calendar */
             9 => I18N::translateContext('NOMINATIVE', 'Iyar'),
-            /* I18N: a month in the Jewish calendar */
             10 => I18N::translateContext('NOMINATIVE', 'Sivan'),
-            /* I18N: a month in the Jewish calendar */
             11 => I18N::translateContext('NOMINATIVE', 'Tamuz'),
-            /* I18N: a month in the Jewish calendar */
             12 => I18N::translateContext('NOMINATIVE', 'Av'),
-            /* I18N: a month in the Jewish calendar */
             13 => I18N::translateContext('NOMINATIVE', 'Elul'),
-            default => '',
         };
     }
 
     /**
      * Full month name in genitive case.
      *
+     * @param int<0,13> $month
      * @param bool $leap_year Some calendars use leap months
      */
     protected function monthNameGenitiveCase(int $month, bool $leap_year): string
     {
         if ($month === 7 && $leap_year) {
-            /* I18N: a month in the Jewish calendar */
             return I18N::translateContext('GENITIVE', 'Adar II');
         }
 
         return match ($month) {
             0 => '',
-            /* I18N: a month in the Jewish calendar */
             1 => I18N::translateContext('GENITIVE', 'Tishrei'),
-            /* I18N: a month in the Jewish calendar */
             2 => I18N::translateContext('GENITIVE', 'Heshvan'),
-            /* I18N: a month in the Jewish calendar */
             3 => I18N::translateContext('GENITIVE', 'Kislev'),
-            /* I18N: a month in the Jewish calendar */
             4 => I18N::translateContext('GENITIVE', 'Tevet'),
-            /* I18N: a month in the Jewish calendar */
             5 => I18N::translateContext('GENITIVE', 'Shevat'),
-            /* I18N: a month in the Jewish calendar */
             6 => I18N::translateContext('GENITIVE', 'Adar I'),
-            /* I18N: a month in the Jewish calendar */
             7 => I18N::translateContext('GENITIVE', 'Adar'),
-            /* I18N: a month in the Jewish calendar */
             8 => I18N::translateContext('GENITIVE', 'Nissan'),
-            /* I18N: a month in the Jewish calendar */
             9 => I18N::translateContext('GENITIVE', 'Iyar'),
-            /* I18N: a month in the Jewish calendar */
             10 => I18N::translateContext('GENITIVE', 'Sivan'),
-            /* I18N: a month in the Jewish calendar */
             11 => I18N::translateContext('GENITIVE', 'Tamuz'),
-            /* I18N: a month in the Jewish calendar */
             12 => I18N::translateContext('GENITIVE', 'Av'),
-            /* I18N: a month in the Jewish calendar */
             13 => I18N::translateContext('GENITIVE', 'Elul'),
-            default => '',
         };
     }
 
     /**
      * Full month name in locative case.
      *
+     * @param int<0,13> $month
      * @param bool $leap_year Some calendars use leap months
      */
     protected function monthNameLocativeCase(int $month, bool $leap_year): string
     {
         if ($month === 7 && $leap_year) {
-            /* I18N: a month in the Jewish calendar */
             return I18N::translateContext('LOCATIVE', 'Adar II');
         }
 
         return match ($month) {
             0 => '',
-            /* I18N: a month in the Jewish calendar */
             1 => I18N::translateContext('LOCATIVE', 'Tishrei'),
-            /* I18N: a month in the Jewish calendar */
             2 => I18N::translateContext('LOCATIVE', 'Heshvan'),
-            /* I18N: a month in the Jewish calendar */
             3 => I18N::translateContext('LOCATIVE', 'Kislev'),
-            /* I18N: a month in the Jewish calendar */
             4 => I18N::translateContext('LOCATIVE', 'Tevet'),
-            /* I18N: a month in the Jewish calendar */
             5 => I18N::translateContext('LOCATIVE', 'Shevat'),
-            /* I18N: a month in the Jewish calendar */
             6 => I18N::translateContext('LOCATIVE', 'Adar I'),
-            /* I18N: a month in the Jewish calendar */
             7 => I18N::translateContext('LOCATIVE', 'Adar'),
-            /* I18N: a month in the Jewish calendar */
             8 => I18N::translateContext('LOCATIVE', 'Nissan'),
-            /* I18N: a month in the Jewish calendar */
             9 => I18N::translateContext('LOCATIVE', 'Iyar'),
-            /* I18N: a month in the Jewish calendar */
             10 => I18N::translateContext('LOCATIVE', 'Sivan'),
-            /* I18N: a month in the Jewish calendar */
             11 => I18N::translateContext('LOCATIVE', 'Tamuz'),
-            /* I18N: a month in the Jewish calendar */
             12 => I18N::translateContext('LOCATIVE', 'Av'),
-            /* I18N: a month in the Jewish calendar */
             13 => I18N::translateContext('LOCATIVE', 'Elul'),
-            default => '',
         };
     }
 
     /**
      * Full month name in instrumental case.
      *
+     * @param int<0,13> $month
      * @param bool $leap_year Some calendars use leap months
      */
     protected function monthNameInstrumentalCase(int $month, bool $leap_year): string
     {
         if ($month === 7 && $leap_year) {
-            /* I18N: a month in the Jewish calendar */
             return I18N::translateContext('INSTRUMENTAL', 'Adar II');
         }
 
         return match ($month) {
             0 => '',
-            /* I18N: a month in the Jewish calendar */
             1 => I18N::translateContext('INSTRUMENTAL', 'Tishrei'),
-            /* I18N: a month in the Jewish calendar */
             2 => I18N::translateContext('INSTRUMENTAL', 'Heshvan'),
-            /* I18N: a month in the Jewish calendar */
             3 => I18N::translateContext('INSTRUMENTAL', 'Kislev'),
-            /* I18N: a month in the Jewish calendar */
             4 => I18N::translateContext('INSTRUMENTAL', 'Tevet'),
-            /* I18N: a month in the Jewish calendar */
             5 => I18N::translateContext('INSTRUMENTAL', 'Shevat'),
-            /* I18N: a month in the Jewish calendar */
             6 => I18N::translateContext('INSTRUMENTAL', 'Adar I'),
-            /* I18N: a month in the Jewish calendar */
             7 => I18N::translateContext('INSTRUMENTAL', 'Adar'),
-            /* I18N: a month in the Jewish calendar */
             8 => I18N::translateContext('INSTRUMENTAL', 'Nissan'),
-            /* I18N: a month in the Jewish calendar */
             9 => I18N::translateContext('INSTRUMENTAL', 'Iyar'),
-            /* I18N: a month in the Jewish calendar */
             10 => I18N::translateContext('INSTRUMENTAL', 'Sivan'),
-            /* I18N: a month in the Jewish calendar */
             11 => I18N::translateContext('INSTRUMENTAL', 'Tamuz'),
-            /* I18N: a month in the Jewish calendar */
             12 => I18N::translateContext('INSTRUMENTAL', 'Av'),
-            /* I18N: a month in the Jewish calendar */
             13 => I18N::translateContext('INSTRUMENTAL', 'Elul'),
-            default => '',
         };
     }
 
     /**
      * Abbreviated month name
      *
+     * @param int<0,13> $month
      * @param bool $leap_year Some calendars use leap months
      */
     protected function monthNameAbbreviated(int $month, bool $leap_year): string

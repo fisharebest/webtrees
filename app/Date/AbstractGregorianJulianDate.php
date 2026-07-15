@@ -78,31 +78,26 @@ abstract class AbstractGregorianJulianDate extends AbstractCalendarDate
      *
      * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
      *
+     * @param int<0,12> $month
      * @param bool $leap_year Some calendars use leap months
      */
     protected function monthNameNominativeCase(int $month, bool $leap_year): string
     {
-        static $translated_month_names;
-
-        if ($translated_month_names === null) {
-            $translated_month_names = [
-                0  => '',
-                1  => I18N::translateContext('NOMINATIVE', 'January'),
-                2  => I18N::translateContext('NOMINATIVE', 'February'),
-                3  => I18N::translateContext('NOMINATIVE', 'March'),
-                4  => I18N::translateContext('NOMINATIVE', 'April'),
-                5  => I18N::translateContext('NOMINATIVE', 'May'),
-                6  => I18N::translateContext('NOMINATIVE', 'June'),
-                7  => I18N::translateContext('NOMINATIVE', 'July'),
-                8  => I18N::translateContext('NOMINATIVE', 'August'),
-                9  => I18N::translateContext('NOMINATIVE', 'September'),
-                10 => I18N::translateContext('NOMINATIVE', 'October'),
-                11 => I18N::translateContext('NOMINATIVE', 'November'),
-                12 => I18N::translateContext('NOMINATIVE', 'December'),
-            ];
-        }
-
-        return $translated_month_names[$month];
+        return match ($month) {
+            0 => '',
+            1 => I18N::translateContext('NOMINATIVE', 'January'),
+            2 => I18N::translateContext('NOMINATIVE', 'February'),
+            3 => I18N::translateContext('NOMINATIVE', 'March'),
+            4 => I18N::translateContext('NOMINATIVE', 'April'),
+            5 => I18N::translateContext('NOMINATIVE', 'May'),
+            6 => I18N::translateContext('NOMINATIVE', 'June'),
+            7 => I18N::translateContext('NOMINATIVE', 'July'),
+            8 => I18N::translateContext('NOMINATIVE', 'August'),
+            9 => I18N::translateContext('NOMINATIVE', 'September'),
+            10 => I18N::translateContext('NOMINATIVE', 'October'),
+            11 => I18N::translateContext('NOMINATIVE', 'November'),
+            12 => I18N::translateContext('NOMINATIVE', 'December'),
+        };
     }
 
     /**
@@ -110,31 +105,26 @@ abstract class AbstractGregorianJulianDate extends AbstractCalendarDate
      *
      * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
      *
+     * @param int<0,12> $month
      * @param bool $leap_year Some calendars use leap months
      */
     protected function monthNameGenitiveCase(int $month, bool $leap_year): string
     {
-        static $translated_month_names;
-
-        if ($translated_month_names === null) {
-            $translated_month_names = [
-                0  => '',
-                1  => I18N::translateContext('GENITIVE', 'January'),
-                2  => I18N::translateContext('GENITIVE', 'February'),
-                3  => I18N::translateContext('GENITIVE', 'March'),
-                4  => I18N::translateContext('GENITIVE', 'April'),
-                5  => I18N::translateContext('GENITIVE', 'May'),
-                6  => I18N::translateContext('GENITIVE', 'June'),
-                7  => I18N::translateContext('GENITIVE', 'July'),
-                8  => I18N::translateContext('GENITIVE', 'August'),
-                9  => I18N::translateContext('GENITIVE', 'September'),
-                10 => I18N::translateContext('GENITIVE', 'October'),
-                11 => I18N::translateContext('GENITIVE', 'November'),
-                12 => I18N::translateContext('GENITIVE', 'December'),
-            ];
-        }
-
-        return $translated_month_names[$month];
+        return match ($month) {
+            0 => '',
+            1 => I18N::translateContext('GENITIVE', 'January'),
+            2 => I18N::translateContext('GENITIVE', 'February'),
+            3 => I18N::translateContext('GENITIVE', 'March'),
+            4 => I18N::translateContext('GENITIVE', 'April'),
+            5 => I18N::translateContext('GENITIVE', 'May'),
+            6 => I18N::translateContext('GENITIVE', 'June'),
+            7 => I18N::translateContext('GENITIVE', 'July'),
+            8 => I18N::translateContext('GENITIVE', 'August'),
+            9 => I18N::translateContext('GENITIVE', 'September'),
+            10 => I18N::translateContext('GENITIVE', 'October'),
+            11 => I18N::translateContext('GENITIVE', 'November'),
+            12 => I18N::translateContext('GENITIVE', 'December'),
+        };
     }
 
     /**
@@ -142,31 +132,26 @@ abstract class AbstractGregorianJulianDate extends AbstractCalendarDate
      *
      * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
      *
+     * @param int<0,12> $month
      * @param bool $leap_year Some calendars use leap months
      */
     protected function monthNameLocativeCase(int $month, bool $leap_year): string
     {
-        static $translated_month_names;
-
-        if ($translated_month_names === null) {
-            $translated_month_names = [
-                0  => '',
-                1  => I18N::translateContext('LOCATIVE', 'January'),
-                2  => I18N::translateContext('LOCATIVE', 'February'),
-                3  => I18N::translateContext('LOCATIVE', 'March'),
-                4  => I18N::translateContext('LOCATIVE', 'April'),
-                5  => I18N::translateContext('LOCATIVE', 'May'),
-                6  => I18N::translateContext('LOCATIVE', 'June'),
-                7  => I18N::translateContext('LOCATIVE', 'July'),
-                8  => I18N::translateContext('LOCATIVE', 'August'),
-                9  => I18N::translateContext('LOCATIVE', 'September'),
-                10 => I18N::translateContext('LOCATIVE', 'October'),
-                11 => I18N::translateContext('LOCATIVE', 'November'),
-                12 => I18N::translateContext('LOCATIVE', 'December'),
-            ];
-        }
-
-        return $translated_month_names[$month];
+        return match ($month) {
+            0 => '',
+            1 => I18N::translateContext('LOCATIVE', 'January'),
+            2 => I18N::translateContext('LOCATIVE', 'February'),
+            3 => I18N::translateContext('LOCATIVE', 'March'),
+            4 => I18N::translateContext('LOCATIVE', 'April'),
+            5 => I18N::translateContext('LOCATIVE', 'May'),
+            6 => I18N::translateContext('LOCATIVE', 'June'),
+            7 => I18N::translateContext('LOCATIVE', 'July'),
+            8 => I18N::translateContext('LOCATIVE', 'August'),
+            9 => I18N::translateContext('LOCATIVE', 'September'),
+            10 => I18N::translateContext('LOCATIVE', 'October'),
+            11 => I18N::translateContext('LOCATIVE', 'November'),
+            12 => I18N::translateContext('LOCATIVE', 'December'),
+        };
     }
 
     /**
@@ -174,60 +159,50 @@ abstract class AbstractGregorianJulianDate extends AbstractCalendarDate
      *
      * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
      *
+     * @param int<0,12> $month
      * @param bool $leap_year Some calendars use leap months
      */
     protected function monthNameInstrumentalCase(int $month, bool $leap_year): string
     {
-        static $translated_month_names;
-
-        if ($translated_month_names === null) {
-            $translated_month_names = [
-                0  => '',
-                1  => I18N::translateContext('INSTRUMENTAL', 'January'),
-                2  => I18N::translateContext('INSTRUMENTAL', 'February'),
-                3  => I18N::translateContext('INSTRUMENTAL', 'March'),
-                4  => I18N::translateContext('INSTRUMENTAL', 'April'),
-                5  => I18N::translateContext('INSTRUMENTAL', 'May'),
-                6  => I18N::translateContext('INSTRUMENTAL', 'June'),
-                7  => I18N::translateContext('INSTRUMENTAL', 'July'),
-                8  => I18N::translateContext('INSTRUMENTAL', 'August'),
-                9  => I18N::translateContext('INSTRUMENTAL', 'September'),
-                10 => I18N::translateContext('INSTRUMENTAL', 'October'),
-                11 => I18N::translateContext('INSTRUMENTAL', 'November'),
-                12 => I18N::translateContext('INSTRUMENTAL', 'December'),
-            ];
-        }
-
-        return $translated_month_names[$month];
+        return match ($month) {
+            0 => '',
+            1 => I18N::translateContext('INSTRUMENTAL', 'January'),
+            2 => I18N::translateContext('INSTRUMENTAL', 'February'),
+            3 => I18N::translateContext('INSTRUMENTAL', 'March'),
+            4 => I18N::translateContext('INSTRUMENTAL', 'April'),
+            5 => I18N::translateContext('INSTRUMENTAL', 'May'),
+            6 => I18N::translateContext('INSTRUMENTAL', 'June'),
+            7 => I18N::translateContext('INSTRUMENTAL', 'July'),
+            8 => I18N::translateContext('INSTRUMENTAL', 'August'),
+            9 => I18N::translateContext('INSTRUMENTAL', 'September'),
+            10 => I18N::translateContext('INSTRUMENTAL', 'October'),
+            11 => I18N::translateContext('INSTRUMENTAL', 'November'),
+            12 => I18N::translateContext('INSTRUMENTAL', 'December'),
+        };
     }
 
     /**
      * Abbreviated month name
      *
+     * @param int<0,12> $month
      * @param bool $leap_year Some calendars use leap months
      */
     protected function monthNameAbbreviated(int $month, bool $leap_year): string
     {
-        static $translated_month_names;
-
-        if ($translated_month_names === null) {
-            $translated_month_names = [
-                0  => '',
-                1  => I18N::translateContext('Abbreviation for January', 'Jan'),
-                2  => I18N::translateContext('Abbreviation for February', 'Feb'),
-                3  => I18N::translateContext('Abbreviation for March', 'Mar'),
-                4  => I18N::translateContext('Abbreviation for April', 'Apr'),
-                5  => I18N::translateContext('Abbreviation for May', 'May'),
-                6  => I18N::translateContext('Abbreviation for June', 'Jun'),
-                7  => I18N::translateContext('Abbreviation for July', 'Jul'),
-                8  => I18N::translateContext('Abbreviation for August', 'Aug'),
-                9  => I18N::translateContext('Abbreviation for September', 'Sep'),
-                10 => I18N::translateContext('Abbreviation for October', 'Oct'),
-                11 => I18N::translateContext('Abbreviation for November', 'Nov'),
-                12 => I18N::translateContext('Abbreviation for December', 'Dec'),
-            ];
-        }
-
-        return $translated_month_names[$month];
+        return match ($month) {
+            0 => '',
+            1 => I18N::translateContext('Abbreviation for January', 'Jan'),
+            2 => I18N::translateContext('Abbreviation for February', 'Feb'),
+            3 => I18N::translateContext('Abbreviation for March', 'Mar'),
+            4 => I18N::translateContext('Abbreviation for April', 'Apr'),
+            5 => I18N::translateContext('Abbreviation for May', 'May'),
+            6 => I18N::translateContext('Abbreviation for June', 'Jun'),
+            7 => I18N::translateContext('Abbreviation for July', 'Jul'),
+            8 => I18N::translateContext('Abbreviation for August', 'Aug'),
+            9 => I18N::translateContext('Abbreviation for September', 'Sep'),
+            10 => I18N::translateContext('Abbreviation for October', 'Oct'),
+            11 => I18N::translateContext('Abbreviation for November', 'Nov'),
+            12 => I18N::translateContext('Abbreviation for December', 'Dec'),
+        };
     }
 }
