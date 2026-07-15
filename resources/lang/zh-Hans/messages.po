@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 23:04+0100\n"
+"POT-Creation-Date: 2026-07-15 18:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3379,7 +3379,7 @@ msgstr "调查笔录"
 msgid "Central African Republic"
 msgstr "中非共和国"
 
-#: app/Module/StatisticsChartModule.php app/Statistics.php
+#: app/Statistics.php
 msgid "Century"
 msgstr "世纪"
 
@@ -3529,7 +3529,7 @@ msgstr "%s 孩子"
 
 #: app/Http/RequestHandlers/FamilyPage.php
 #: app/Http/RequestHandlers/IndividualPage.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
+#: app/Module/StatisticsChartModule.php
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 #: resources/views/modules/pedigree-chart/previous.phtml
@@ -4062,7 +4062,7 @@ msgstr "每个页面的访问计数"
 
 # I18N: gedcom tag CTRY
 #: app/CustomTags/GedcomL.php app/CustomTags/PersonalAncestralFile.php
-#: app/Gedcom.php app/StatisticsData.php
+#: app/Gedcom.php
 msgid "Country"
 msgstr "国家"
 
@@ -4455,6 +4455,7 @@ msgstr "数据库用户账户"
 #: app/Gedcom.php app/Http/RequestHandlers/HelpText.php
 #: app/Module/ResearchTaskModule.php resources/views/help/date.phtml
 #: resources/views/lists/anniversaries-table.phtml
+#: resources/views/modules/timeline-chart/chart.phtml
 #: resources/views/modules/todo/research-tasks.phtml
 #: resources/views/pending-changes-page.phtml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
@@ -5099,61 +5100,53 @@ msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "第十月"
 
-# I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Dhu al-Hijjah"
-msgstr "第十二月"
-
-# I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Dhu al-Hijjah"
-msgstr "第十二月"
-
-# I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Dhu al-Hijjah"
-msgstr "第十二月"
-
-# I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Dhu al-Hijjah"
-msgstr "第十二月"
-
-# I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Dhu al-Qi’dah"
-msgstr "第十一月"
+msgid "Dhū al-Qiʿdah"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Dhu al-Qi’dah"
-msgstr "第十一月"
+msgid "Dhū al-Qiʿdah"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Dhu al-Qi’dah"
-msgstr "第十一月"
+msgid "Dhū al-Qiʿdah"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Dhu al-Qi’dah"
-msgstr "第十一月"
+msgid "Dhū al-Qiʿdah"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#: app/Date/HijriDate.php
+msgctxt "GENITIVE"
+msgid "Dhū al-Ḥijjah"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#: app/Date/HijriDate.php
+msgctxt "INSTRUMENTAL"
+msgid "Dhū al-Ḥijjah"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#: app/Date/HijriDate.php
+msgctxt "LOCATIVE"
+msgid "Dhū al-Ḥijjah"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#: app/Date/HijriDate.php
+msgctxt "NOMINATIVE"
+msgid "Dhū al-Ḥijjah"
+msgstr ""
 
 # I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
@@ -5956,7 +5949,7 @@ msgstr "家庭来源信息"
 #. I18N: Name of a module/report
 #: app/CustomTags/FamilyTreeMaker.php app/Gedcom.php
 #: app/Http/RequestHandlers/CheckTree.php
-#: app/Module/FamilyGroupReportModule.php app/Statistics.php
+#: app/Module/FamilyGroupReportModule.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/edit/link-child-to-family.phtml
 #: resources/views/modals/link-media-to-family.phtml
@@ -8046,61 +8039,53 @@ msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "七月"
 
-# I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Jumada al-awwal"
-msgstr "第五月"
+msgid "Jumādá al-awwal"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Jumada al-awwal"
-msgstr "第五月"
+msgid "Jumādá al-awwal"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Jumada al-awwal"
-msgstr "第五月"
+msgid "Jumādá al-awwal"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Jumada al-awwal"
-msgstr "第五月"
+msgid "Jumādá al-awwal"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Jumada al-thani"
-msgstr "第六月"
+msgid "Jumādá al-thānī"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Jumada al-thani"
-msgstr "第六月"
+msgid "Jumādá al-thānī"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Jumada al-thani"
-msgstr "第六月"
+msgid "Jumādá al-thānī"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Jumada al-thani"
-msgstr "第六月"
+msgid "Jumādá al-thānī"
+msgstr ""
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "Abbreviation for June"
@@ -9813,34 +9798,6 @@ msgstr "上移"
 msgid "Mozambique"
 msgstr "莫桑比克"
 
-# I18N: https://en.wikipedia.org/wiki/Muharram
-#. I18N: https://en.wikipedia.org/wiki/Muharram
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Muharram"
-msgstr "第一月"
-
-# I18N: https://en.wikipedia.org/wiki/Muharram
-#. I18N: https://en.wikipedia.org/wiki/Muharram
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Muharram"
-msgstr "第一月"
-
-# I18N: https://en.wikipedia.org/wiki/Muharram
-#. I18N: https://en.wikipedia.org/wiki/Muharram
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Muharram"
-msgstr "第一月"
-
-# I18N: https://en.wikipedia.org/wiki/Muharram
-#. I18N: https://en.wikipedia.org/wiki/Muharram
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Muharram"
-msgstr "第一月"
-
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php
 msgid "Multiple birth"
@@ -9849,6 +9806,30 @@ msgstr "多胞胎"
 #: resources/views/lists/families-table.phtml
 msgid "Multiple marriages"
 msgstr "多次婚姻"
+
+#. I18N: https://en.wikipedia.org/wiki/Muḥarram
+#: app/Date/HijriDate.php
+msgctxt "GENITIVE"
+msgid "Muḥarram"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Muḥarram
+#: app/Date/HijriDate.php
+msgctxt "INSTRUMENTAL"
+msgid "Muḥarram"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Muḥarram
+#: app/Date/HijriDate.php
+msgctxt "LOCATIVE"
+msgid "Muḥarram"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Muḥarram
+#: app/Date/HijriDate.php
+msgctxt "NOMINATIVE"
+msgid "Muḥarram"
+msgstr ""
 
 #: app/Http/RequestHandlers/AccountEdit.php app/Module/ModuleThemeTrait.php
 #: app/Module/UserWelcomeModule.php
@@ -9886,7 +9867,7 @@ msgid "Myanmar"
 msgstr "缅甸"
 
 # I18N: gedcom tag NAME
-#: app/Gedcom.php app/Http/RequestHandlers/HelpText.php app/Statistics.php
+#: app/Gedcom.php app/Http/RequestHandlers/HelpText.php
 #: resources/views/individual-page-name.phtml
 #: resources/views/lists/anniversaries-table.phtml
 #: resources/views/modals/location-fields.phtml
@@ -10261,17 +10242,7 @@ msgstr "没有预定义的文本"
 msgid "No records to display"
 msgstr "没有要显示的记录"
 
-#: resources/views/components/select-family.phtml
-#: resources/views/components/select-individual.phtml
-#: resources/views/components/select-location.phtml
-#: resources/views/components/select-media.phtml
-#: resources/views/components/select-note.phtml
-#: resources/views/components/select-place.phtml
-#: resources/views/components/select-repository.phtml
-#: resources/views/components/select-shared-note.phtml
-#: resources/views/components/select-source.phtml
-#: resources/views/components/select-submission.phtml
-#: resources/views/components/select-submitter.phtml
+#: resources/js/webtrees/tom-select.js
 msgid "No results found"
 msgstr "没有找到内容"
 
@@ -11623,61 +11594,53 @@ msgstr "回复: "
 msgid "Rabbi"
 msgstr "先生"
 
-# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Rabi’ al-awwal"
-msgstr "第三月"
+msgid "Rabiʿ al-awwal"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Rabi’ al-awwal"
-msgstr "第三月"
+msgid "Rabiʿ al-awwal"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Rabi’ al-awwal"
-msgstr "第三月"
+msgid "Rabiʿ al-awwal"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Rabi’ al-awwal"
-msgstr "第三月"
+msgid "Rabiʿ al-awwal"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Rabi’ al-thani"
-msgstr "第四月"
+msgid "Rabiʿ al-thani"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Rabi’ al-thani"
-msgstr "第四月"
+msgid "Rabiʿ al-thani"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Rabi’ al-thani"
-msgstr "第四月"
+msgid "Rabiʿ al-thani"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Rabi’ al-thani"
-msgstr "第四月"
+msgid "Rabiʿ al-thani"
+msgstr ""
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php
@@ -12279,34 +12242,6 @@ msgstr ""
 #: app/Elements/TempleCode.php
 msgid "Sacramento, California, United States"
 msgstr "萨克拉门托，加利福尼亚"
-
-# I18N: https://en.wikipedia.org/wiki/Safar
-#. I18N: https://en.wikipedia.org/wiki/Safar
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Safar"
-msgstr "第二月"
-
-# I18N: https://en.wikipedia.org/wiki/Safar
-#. I18N: https://en.wikipedia.org/wiki/Safar
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Safar"
-msgstr "第二月"
-
-# I18N: https://en.wikipedia.org/wiki/Safar
-#. I18N: https://en.wikipedia.org/wiki/Safar
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Safar"
-msgstr "第二月"
-
-# I18N: https://en.wikipedia.org/wiki/Safar
-#. I18N: https://en.wikipedia.org/wiki/Safar
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Safar"
-msgstr "第二月"
 
 # I18N: The name of a colour-scheme
 #. I18N: The name of a colour-scheme
@@ -12935,33 +12870,29 @@ msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "第十月"
 
-# I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Sha’aban"
-msgstr "第八月"
+msgid "Shaʿbān"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Sha’aban"
-msgstr "第八月"
+msgid "Shaʿbān"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Sha’aban"
-msgstr "第八月"
+msgid "Shaʿbān"
+msgstr ""
 
-# I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Sha’aban"
-msgstr "第八月"
+msgid "Shaʿbān"
+msgstr ""
 
 #: resources/xml/reports/descendancy_report.xml
 msgid "She "
@@ -15658,8 +15589,8 @@ msgstr "最常用的姓氏"
 msgid "Toronto, Ontario, Canada"
 msgstr "多伦多安大略加拿大"
 
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Module/StatisticsChartModule.php
+#: resources/views/admin/control-panel.phtml
 msgid "Total"
 msgstr "共计"
 
@@ -15833,7 +15764,7 @@ msgstr "双子瀑布, 爱达荷州, 美国"
 # I18N: gedcom tag TYPE
 #: app/CustomTags/Gedcom7.php app/CustomTags/GedcomL.php
 #: app/CustomTags/Heredis.php app/CustomTags/Legacy.php
-#: app/CustomTags/PhpGedView.php app/Gedcom.php app/Statistics.php
+#: app/CustomTags/PhpGedView.php app/Gedcom.php
 #: resources/views/admin/site-logs.phtml
 #: resources/views/modules/media-list/page.phtml
 #: resources/views/modules/random_media/config.phtml
@@ -16733,7 +16664,7 @@ msgstr "这个记录不存在或您无权查看它。"
 msgid "You have confirmed your request to become a registered user."
 msgstr "你已经成功申请为注册会员。"
 
-#: resources/views/admin/trees-import.phtml
+#: resources/js/admin/pages/trees-import.js
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
 msgstr "您选择了一个不同名称的GEDCOM。请确认是否正确？"
 
@@ -16757,7 +16688,7 @@ msgstr "您必须重新编号其中一个家谱树中的记录才能合并它们
 msgid "You must select an individual and a chart type in the block preferences"
 msgstr "您必须在块的设置中选择个人和图表类型"
 
-#: resources/views/admin/users-edit.phtml
+#: resources/js/admin/pages/users-edit.js
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
 msgstr "您必须先指定一条记录，然后才能将用户限制为其直系亲属。"
 
@@ -20930,10 +20861,6 @@ msgstr "妻子"
 msgid "xenea"
 msgstr "xenea"
 
-#: resources/views/modules/timeline-chart/chart.phtml
-msgid "years"
-msgstr "年"
-
 #: app/Elements/AbstractEventElement.php app/Elements/OrdinanceProcessFlag.php
 #: app/Http/RequestHandlers/FamilyPage.php
 #: app/Http/RequestHandlers/UserListData.php
@@ -20986,6 +20913,30 @@ msgstr[0] "±%s 年"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Åland Islands"
 msgstr "阿兰群岛"
+
+#. I18N: https://en.wikipedia.org/wiki/Ṣafar
+#: app/Date/HijriDate.php
+msgctxt "GENITIVE"
+msgid "Ṣafar"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Ṣafar
+#: app/Date/HijriDate.php
+msgctxt "INSTRUMENTAL"
+msgid "Ṣafar"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Ṣafar
+#: app/Date/HijriDate.php
+msgctxt "LOCATIVE"
+msgid "Ṣafar"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Ṣafar
+#: app/Date/HijriDate.php
+msgctxt "NOMINATIVE"
+msgid "Ṣafar"
+msgstr ""
 
 #: app/Http/RequestHandlers/CheckTree.php
 #, php-format
@@ -21324,6 +21275,46 @@ msgstr "…"
 #~ msgid "Delete old files…"
 #~ msgstr "删除旧文件…"
 
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "第十二月"
+
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "第十二月"
+
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "第十二月"
+
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "第十二月"
+
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "第十一月"
+
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "第十一月"
+
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "第十一月"
+
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "第十一月"
+
 # I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #~ msgid "Died as an infant: exempt"
 #~ msgstr "去世的婴儿：免除"
@@ -21440,6 +21431,46 @@ msgstr "…"
 #~ msgid "Interred"
 #~ msgstr "下葬"
 
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
+#~ msgctxt "GENITIVE"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "第五月"
+
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "第五月"
+
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
+#~ msgctxt "LOCATIVE"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "第五月"
+
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "第五月"
+
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
+#~ msgctxt "GENITIVE"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "第六月"
+
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "第六月"
+
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
+#~ msgctxt "LOCATIVE"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "第六月"
+
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "第六月"
+
 #~ msgid "LDS temple"
 #~ msgstr "LDS 寺庙"
 
@@ -21509,6 +21540,26 @@ msgstr "…"
 #~ msgid "Move right"
 #~ msgstr "移到最右边"
 
+# I18N: https://en.wikipedia.org/wiki/Muharram
+#~ msgctxt "GENITIVE"
+#~ msgid "Muḥarram"
+#~ msgstr "第一月"
+
+# I18N: https://en.wikipedia.org/wiki/Muharram
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Muḥarram"
+#~ msgstr "第一月"
+
+# I18N: https://en.wikipedia.org/wiki/Muharram
+#~ msgctxt "LOCATIVE"
+#~ msgid "Muḥarram"
+#~ msgstr "第一月"
+
+# I18N: https://en.wikipedia.org/wiki/Muharram
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Muḥarram"
+#~ msgstr "第一月"
+
 # I18N: gedcom tag _NMAR
 #~ msgctxt "FEMALE"
 #~ msgid "Never married"
@@ -21571,6 +21622,46 @@ msgstr "…"
 #~ msgid "Quick source facts"
 #~ msgstr "快速添加的来源事件"
 
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "第三月"
+
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "第三月"
+
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "第三月"
+
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "第三月"
+
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "第四月"
+
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "第四月"
+
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "第四月"
+
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "第四月"
+
 # I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #~ msgid "Rada"
 #~ msgstr "抚育"
@@ -21608,8 +21699,48 @@ msgstr "…"
 #~ msgid "Romanized title"
 #~ msgstr "罗马标题"
 
+# I18N: https://en.wikipedia.org/wiki/Safar
+#~ msgctxt "GENITIVE"
+#~ msgid "Ṣafar"
+#~ msgstr "第二月"
+
+# I18N: https://en.wikipedia.org/wiki/Safar
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Ṣafar"
+#~ msgstr "第二月"
+
+# I18N: https://en.wikipedia.org/wiki/Safar
+#~ msgctxt "LOCATIVE"
+#~ msgid "Ṣafar"
+#~ msgstr "第二月"
+
+# I18N: https://en.wikipedia.org/wiki/Safar
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Ṣafar"
+#~ msgstr "第二月"
+
 #~ msgid "Select a block and use the arrows to move it."
 #~ msgstr "选中一个块名称,然后点击一个箭头图标移动那选中块到箭头方向。"
+
+# I18N: https://en.wikipedia.org/wiki/Sha%27aban
+#~ msgctxt "GENITIVE"
+#~ msgid "Shaʿbān"
+#~ msgstr "第八月"
+
+# I18N: https://en.wikipedia.org/wiki/Sha%27aban
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Shaʿbān"
+#~ msgstr "第八月"
+
+# I18N: https://en.wikipedia.org/wiki/Sha%27aban
+#~ msgctxt "LOCATIVE"
+#~ msgid "Shaʿbān"
+#~ msgstr "第八月"
+
+# I18N: https://en.wikipedia.org/wiki/Sha%27aban
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Shaʿbān"
+#~ msgstr "第八月"
 
 # I18N: gedcom tag _SUBQ
 #~ msgid "Short version"
@@ -22044,6 +22175,9 @@ msgstr "…"
 
 #~ msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 #~ msgstr "webtrees使用UTF-8编码的重音字母，特殊字符和非拉丁文字。如果你希望使用的族谱软件，这个GEDCOM文件不支持UTF-8，那么你可以使用ISO-8859-1编码创建它。"
+
+#~ msgid "years"
+#~ msgstr "年"
 
 #, php-format
 #~ msgid "“%s”"

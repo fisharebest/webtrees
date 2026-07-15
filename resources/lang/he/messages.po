@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 23:04+0100\n"
+"POT-Creation-Date: 2026-07-15 18:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3122,7 +3122,7 @@ msgstr "תעתיק מפקד אוכלוסין"
 msgid "Central African Republic"
 msgstr "הרפובליקה המרכז אפריקאית"
 
-#: app/Module/StatisticsChartModule.php app/Statistics.php
+#: app/Statistics.php
 msgid "Century"
 msgstr "מאה"
 
@@ -3262,7 +3262,7 @@ msgstr "בן/בת של %s"
 
 #: app/Http/RequestHandlers/FamilyPage.php
 #: app/Http/RequestHandlers/IndividualPage.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
+#: app/Module/StatisticsChartModule.php
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 #: resources/views/modules/pedigree-chart/previous.phtml
@@ -3750,7 +3750,7 @@ msgid "Count the visits to each page"
 msgstr "ספור את הביקורים לכל דף"
 
 #: app/CustomTags/GedcomL.php app/CustomTags/PersonalAncestralFile.php
-#: app/Gedcom.php app/StatisticsData.php
+#: app/Gedcom.php
 msgid "Country"
 msgstr "מדינה"
 
@@ -4127,6 +4127,7 @@ msgstr "חשבון המשתמש של מאגר המידע"
 #: app/Gedcom.php app/Http/RequestHandlers/HelpText.php
 #: app/Module/ResearchTaskModule.php resources/views/help/date.phtml
 #: resources/views/lists/anniversaries-table.phtml
+#: resources/views/modules/timeline-chart/chart.phtml
 #: resources/views/modules/todo/research-tasks.phtml
 #: resources/views/pending-changes-page.phtml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
@@ -4740,53 +4741,53 @@ msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "דיי"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Dhu al-Hijjah"
-msgstr "זו אל-חיג׳ה"
-
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Dhu al-Hijjah"
-msgstr "זו אל-חיג׳ה"
-
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Dhu al-Hijjah"
-msgstr "זו אל-חיג׳ה"
-
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Dhu al-Hijjah"
-msgstr "זו אל-חיג׳ה"
-
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Dhu al-Qi’dah"
-msgstr "ז׳ו אל-קעדה"
+msgid "Dhū al-Qiʿdah"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Dhu al-Qi’dah"
-msgstr "ז׳ו אל-קעדה"
+msgid "Dhū al-Qiʿdah"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Dhu al-Qi’dah"
-msgstr "ז׳ו אל-קעדה"
+msgid "Dhū al-Qiʿdah"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Dhu al-Qi’dah"
-msgstr "ז׳ו אל-קעדה"
+msgid "Dhū al-Qiʿdah"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#: app/Date/HijriDate.php
+msgctxt "GENITIVE"
+msgid "Dhū al-Ḥijjah"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#: app/Date/HijriDate.php
+msgctxt "INSTRUMENTAL"
+msgid "Dhū al-Ḥijjah"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#: app/Date/HijriDate.php
+msgctxt "LOCATIVE"
+msgid "Dhū al-Ḥijjah"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#: app/Date/HijriDate.php
+msgctxt "NOMINATIVE"
+msgid "Dhū al-Ḥijjah"
+msgstr ""
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php
@@ -5527,7 +5528,7 @@ msgstr "משפחות עם מקורות"
 #. I18N: Name of a module/report
 #: app/CustomTags/FamilyTreeMaker.php app/Gedcom.php
 #: app/Http/RequestHandlers/CheckTree.php
-#: app/Module/FamilyGroupReportModule.php app/Statistics.php
+#: app/Module/FamilyGroupReportModule.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/edit/link-child-to-family.phtml
 #: resources/views/modals/link-media-to-family.phtml
@@ -7453,50 +7454,50 @@ msgstr "יולי"
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Jumada al-awwal"
-msgstr "ג׳ומאדא אל-אוואל"
+msgid "Jumādá al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Jumada al-awwal"
-msgstr "ג׳ומאדא אל-אוואל"
+msgid "Jumādá al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Jumada al-awwal"
-msgstr "ג׳ומאדא אל-אוואל"
+msgid "Jumādá al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Jumada al-awwal"
-msgstr "ג׳ומאדא אל-אוואל"
+msgid "Jumādá al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Jumada al-thani"
-msgstr "ג׳ומאדא אל-ת׳אניה"
+msgid "Jumādá al-thānī"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Jumada al-thani"
-msgstr "ג׳ומאדא אל-ת׳אניה"
+msgid "Jumādá al-thānī"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Jumada al-thani"
-msgstr "ג׳ומאדא אל-ת׳אניה"
+msgid "Jumādá al-thānī"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Jumada al-thani"
-msgstr "ג׳ומאדא אל-ת׳אניה"
+msgid "Jumādá al-thānī"
+msgstr ""
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "Abbreviation for June"
@@ -9054,30 +9055,6 @@ msgstr "הזז כלפי מעלה"
 msgid "Mozambique"
 msgstr "מוזמביק"
 
-#. I18N: https://en.wikipedia.org/wiki/Muharram
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Muharram"
-msgstr "מוחרם"
-
-#. I18N: https://en.wikipedia.org/wiki/Muharram
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Muharram"
-msgstr "מוחרם"
-
-#. I18N: https://en.wikipedia.org/wiki/Muharram
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Muharram"
-msgstr "מוחרם"
-
-#. I18N: https://en.wikipedia.org/wiki/Muharram
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Muharram"
-msgstr "מוחרם"
-
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php
 msgid "Multiple birth"
@@ -9086,6 +9063,30 @@ msgstr "לידה מרובה"
 #: resources/views/lists/families-table.phtml
 msgid "Multiple marriages"
 msgstr "נישואין מרובים"
+
+#. I18N: https://en.wikipedia.org/wiki/Muḥarram
+#: app/Date/HijriDate.php
+msgctxt "GENITIVE"
+msgid "Muḥarram"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Muḥarram
+#: app/Date/HijriDate.php
+msgctxt "INSTRUMENTAL"
+msgid "Muḥarram"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Muḥarram
+#: app/Date/HijriDate.php
+msgctxt "LOCATIVE"
+msgid "Muḥarram"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Muḥarram
+#: app/Date/HijriDate.php
+msgctxt "NOMINATIVE"
+msgid "Muḥarram"
+msgstr ""
 
 #: app/Http/RequestHandlers/AccountEdit.php app/Module/ModuleThemeTrait.php
 #: app/Module/UserWelcomeModule.php
@@ -9120,7 +9121,7 @@ msgstr "אילן יוחסין שלי"
 msgid "Myanmar"
 msgstr "מינמר (בורמה)"
 
-#: app/Gedcom.php app/Http/RequestHandlers/HelpText.php app/Statistics.php
+#: app/Gedcom.php app/Http/RequestHandlers/HelpText.php
 #: resources/views/individual-page-name.phtml
 #: resources/views/lists/anniversaries-table.phtml
 #: resources/views/modals/location-fields.phtml
@@ -9460,17 +9461,7 @@ msgstr "חסר מלל מוגדר מראש"
 msgid "No records to display"
 msgstr "אין רשומות להצגה"
 
-#: resources/views/components/select-family.phtml
-#: resources/views/components/select-individual.phtml
-#: resources/views/components/select-location.phtml
-#: resources/views/components/select-media.phtml
-#: resources/views/components/select-note.phtml
-#: resources/views/components/select-place.phtml
-#: resources/views/components/select-repository.phtml
-#: resources/views/components/select-shared-note.phtml
-#: resources/views/components/select-source.phtml
-#: resources/views/components/select-submission.phtml
-#: resources/views/components/select-submitter.phtml
+#: resources/js/webtrees/tom-select.js
 msgid "No results found"
 msgstr "לא נמצאו תוצאות"
 
@@ -10718,50 +10709,50 @@ msgstr "רב"
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Rabi’ al-awwal"
-msgstr "רביע אל-אוול"
+msgid "Rabiʿ al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Rabi’ al-awwal"
-msgstr "רביע אל-אוול"
+msgid "Rabiʿ al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Rabi’ al-awwal"
-msgstr "רביע אל-אוול"
+msgid "Rabiʿ al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Rabi’ al-awwal"
-msgstr "רביע אל-אוול"
+msgid "Rabiʿ al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Rabi’ al-thani"
-msgstr "רביע א-ת׳אני"
+msgid "Rabiʿ al-thani"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Rabi’ al-thani"
-msgstr "רביע א-ת׳אני"
+msgid "Rabiʿ al-thani"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Rabi’ al-thani"
-msgstr "רביע א-ת׳אני"
+msgid "Rabiʿ al-thani"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Rabi’ al-thani"
-msgstr "רביע א-ת׳אני"
+msgid "Rabiʿ al-thani"
+msgstr ""
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php
@@ -11314,30 +11305,6 @@ msgstr "STARTTLS"
 #: app/Elements/TempleCode.php
 msgid "Sacramento, California, United States"
 msgstr "סקרמנטו, קליפורניה, ארצות הברית"
-
-#. I18N: https://en.wikipedia.org/wiki/Safar
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Safar"
-msgstr "צפר"
-
-#. I18N: https://en.wikipedia.org/wiki/Safar
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Safar"
-msgstr "צפר"
-
-#. I18N: https://en.wikipedia.org/wiki/Safar
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Safar"
-msgstr "צפר"
-
-#. I18N: https://en.wikipedia.org/wiki/Safar
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Safar"
-msgstr "צפר"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php
@@ -11914,26 +11881,26 @@ msgstr "שוואל"
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Sha’aban"
-msgstr "שעבאן"
+msgid "Shaʿbān"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Sha’aban"
-msgstr "שעבאן"
+msgid "Shaʿbān"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Sha’aban"
-msgstr "שעבאן"
+msgid "Shaʿbān"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Sha’aban"
-msgstr "שעבאן"
+msgid "Shaʿbān"
+msgstr ""
 
 #: resources/xml/reports/descendancy_report.xml
 msgid "She "
@@ -14440,8 +14407,8 @@ msgstr "שמות המשפחה הנפוצים"
 msgid "Toronto, Ontario, Canada"
 msgstr "טורונטו, אונטריו, קנדה"
 
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Module/StatisticsChartModule.php
+#: resources/views/admin/control-panel.phtml
 msgid "Total"
 msgstr "סה״כ"
 
@@ -14604,7 +14571,7 @@ msgstr "טווין פולס, אידהו, ארצות הברית"
 
 #: app/CustomTags/Gedcom7.php app/CustomTags/GedcomL.php
 #: app/CustomTags/Heredis.php app/CustomTags/Legacy.php
-#: app/CustomTags/PhpGedView.php app/Gedcom.php app/Statistics.php
+#: app/CustomTags/PhpGedView.php app/Gedcom.php
 #: resources/views/admin/site-logs.phtml
 #: resources/views/modules/media-list/page.phtml
 #: resources/views/modules/random_media/config.phtml
@@ -15427,7 +15394,7 @@ msgstr "אין לך הרשאה לראות את העמוד הזה."
 msgid "You have confirmed your request to become a registered user."
 msgstr "אישרת את בקשתך להפוך למשתמש רשום."
 
-#: resources/views/admin/trees-import.phtml
+#: resources/js/admin/pages/trees-import.js
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
 msgstr "בחרת GEDCOM עם שם אחר. האם זה נכון?"
 
@@ -15451,7 +15418,7 @@ msgstr "עליך למספר מחדש את הרשומות באחד מהעצים �
 msgid "You must select an individual and a chart type in the block preferences"
 msgstr "עליך לבחור אדם וסוג תרשים בהעדפות התצורה של הבלוק"
 
-#: resources/views/admin/users-edit.phtml
+#: resources/js/admin/pages/users-edit.js
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
 msgstr "עליך לציין רשימה אישית לפני שתוכל להגביל את המשתמש למשפחה מהדרגה הראשונה שלו."
 
@@ -19491,10 +19458,6 @@ msgstr "אישה"
 msgid "xenea"
 msgstr "קסנאה"
 
-#: resources/views/modules/timeline-chart/chart.phtml
-msgid "years"
-msgstr "שנים"
-
 #: app/Elements/AbstractEventElement.php app/Elements/OrdinanceProcessFlag.php
 #: app/Http/RequestHandlers/FamilyPage.php
 #: app/Http/RequestHandlers/UserListData.php
@@ -19546,6 +19509,30 @@ msgstr[1] "± %s שנים"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Åland Islands"
 msgstr "איי אולנד"
+
+#. I18N: https://en.wikipedia.org/wiki/Ṣafar
+#: app/Date/HijriDate.php
+msgctxt "GENITIVE"
+msgid "Ṣafar"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Ṣafar
+#: app/Date/HijriDate.php
+msgctxt "INSTRUMENTAL"
+msgid "Ṣafar"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Ṣafar
+#: app/Date/HijriDate.php
+msgctxt "LOCATIVE"
+msgid "Ṣafar"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Ṣafar
+#: app/Date/HijriDate.php
+msgctxt "NOMINATIVE"
+msgid "Ṣafar"
+msgstr ""
 
 #: app/Http/RequestHandlers/CheckTree.php
 #, php-format
@@ -20226,6 +20213,38 @@ msgstr "…"
 #~ msgid "Desired username"
 #~ msgstr "שם משתמש רצוי"
 
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "זו אל-חיג׳ה"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "זו אל-חיג׳ה"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "זו אל-חיג׳ה"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "זו אל-חיג׳ה"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "ז׳ו אל-קעדה"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "ז׳ו אל-קעדה"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "ז׳ו אל-קעדה"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "ז׳ו אל-קעדה"
+
 #~ msgid "Died as an infant: exempt"
 #~ msgstr "מת בהיותו תינוק: פטור"
 
@@ -20546,6 +20565,38 @@ msgstr "…"
 #~ msgid "Joint family name"
 #~ msgstr "שם משפחה משותף"
 
+#~ msgctxt "GENITIVE"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "ג׳ומאדא אל-אוואל"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "ג׳ומאדא אל-אוואל"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "ג׳ומאדא אל-אוואל"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "ג׳ומאדא אל-אוואל"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "ג׳ומאדא אל-ת׳אניה"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "ג׳ומאדא אל-ת׳אניה"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "ג׳ומאדא אל-ת׳אניה"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "ג׳ומאדא אל-ת׳אניה"
+
 #~ msgid "Keep"
 #~ msgstr "שמור"
 
@@ -20682,6 +20733,22 @@ msgstr "…"
 
 #~ msgid "Move right"
 #~ msgstr "העבר שמאלה"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Muḥarram"
+#~ msgstr "מוחרם"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Muḥarram"
+#~ msgstr "מוחרם"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Muḥarram"
+#~ msgstr "מוחרם"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Muḥarram"
+#~ msgstr "מוחרם"
 
 #~ msgid "MySQL gave the error: %s"
 #~ msgstr "MySQL נתן שגיאה של %s"
@@ -20918,6 +20985,38 @@ msgstr "…"
 #~ msgid "README documentation"
 #~ msgstr "תיעוד (Readme)"
 
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "רביע אל-אוול"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "רביע אל-אוול"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "רביע אל-אוול"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "רביע אל-אוול"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "רביע את-ת׳אני"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "רביע את-ת׳אני"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "רביע את-ת׳אני"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "רביע את-ת׳אני"
+
 #~ msgid "Rada"
 #~ msgstr "ראדה - קרבת מינקת משותפת"
 
@@ -20986,6 +21085,22 @@ msgstr "…"
 #~ msgid "Rule"
 #~ msgstr "כלל"
 
+#~ msgctxt "GENITIVE"
+#~ msgid "Ṣafar"
+#~ msgstr "צפר"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Ṣafar"
+#~ msgstr "צפר"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Ṣafar"
+#~ msgstr "צפר"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Ṣafar"
+#~ msgstr "צפר"
+
 #~ msgid "Satellite"
 #~ msgstr "לוויין"
 
@@ -21051,6 +21166,22 @@ msgstr "…"
 
 #~ msgid "Shared notes found"
 #~ msgstr "נמצאו הערות משותפות"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Shaʿbān"
+#~ msgstr "שעבאן"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Shaʿbān"
+#~ msgstr "שעבאן"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Shaʿbān"
+#~ msgstr "שעבאן"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Shaʿbān"
+#~ msgstr "שעבאן"
 
 #~ msgid "Short version"
 #~ msgstr "גרסה קצרה"
@@ -22111,6 +22242,9 @@ msgstr "…"
 
 #~ msgid "west"
 #~ msgstr "מערב"
+
+#~ msgid "years"
+#~ msgstr "שנים"
 
 #, php-format
 #~ msgid "“%s”"

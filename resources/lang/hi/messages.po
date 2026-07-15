@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-11 23:04+0100\n"
+"POT-Creation-Date: 2026-07-15 18:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3118,7 +3118,7 @@ msgstr "जनगणना प्रतिलेख"
 msgid "Central African Republic"
 msgstr "मध्य अफ़्रीकी गणराज्य"
 
-#: app/Module/StatisticsChartModule.php app/Statistics.php
+#: app/Statistics.php
 msgid "Century"
 msgstr "सदी"
 
@@ -3258,7 +3258,7 @@ msgstr "%s की संतान"
 
 #: app/Http/RequestHandlers/FamilyPage.php
 #: app/Http/RequestHandlers/IndividualPage.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
+#: app/Module/StatisticsChartModule.php
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 #: resources/views/modules/pedigree-chart/previous.phtml
@@ -3746,7 +3746,7 @@ msgid "Count the visits to each page"
 msgstr "प्रत्येक पेज के दौरों की गिनती करें"
 
 #: app/CustomTags/GedcomL.php app/CustomTags/PersonalAncestralFile.php
-#: app/Gedcom.php app/StatisticsData.php
+#: app/Gedcom.php
 msgid "Country"
 msgstr "देश"
 
@@ -4123,6 +4123,7 @@ msgstr "डेटाबेस उपयोगकर्ता खाता"
 #: app/Gedcom.php app/Http/RequestHandlers/HelpText.php
 #: app/Module/ResearchTaskModule.php resources/views/help/date.phtml
 #: resources/views/lists/anniversaries-table.phtml
+#: resources/views/modules/timeline-chart/chart.phtml
 #: resources/views/modules/todo/research-tasks.phtml
 #: resources/views/pending-changes-page.phtml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
@@ -4736,53 +4737,53 @@ msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "दे"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Dhu al-Hijjah"
-msgstr "ज़िल हज"
-
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Dhu al-Hijjah"
-msgstr "ज़िल हज"
-
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Dhu al-Hijjah"
-msgstr "ज़िल हज"
-
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Dhu al-Hijjah"
-msgstr "ज़िल हज"
-
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Dhu al-Qi’dah"
-msgstr "ज़िल क़दा"
+msgid "Dhū al-Qiʿdah"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Dhu al-Qi’dah"
-msgstr "ज़िल क़दा"
+msgid "Dhū al-Qiʿdah"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Dhu al-Qi’dah"
-msgstr "ज़िल क़दा"
+msgid "Dhū al-Qiʿdah"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Dhu al-Qi’dah"
-msgstr "ज़िल क़दा"
+msgid "Dhū al-Qiʿdah"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#: app/Date/HijriDate.php
+msgctxt "GENITIVE"
+msgid "Dhū al-Ḥijjah"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#: app/Date/HijriDate.php
+msgctxt "INSTRUMENTAL"
+msgid "Dhū al-Ḥijjah"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#: app/Date/HijriDate.php
+msgctxt "LOCATIVE"
+msgid "Dhū al-Ḥijjah"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#: app/Date/HijriDate.php
+msgctxt "NOMINATIVE"
+msgid "Dhū al-Ḥijjah"
+msgstr ""
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php
@@ -5523,7 +5524,7 @@ msgstr "स्रोत वाले परिवार"
 #. I18N: Name of a module/report
 #: app/CustomTags/FamilyTreeMaker.php app/Gedcom.php
 #: app/Http/RequestHandlers/CheckTree.php
-#: app/Module/FamilyGroupReportModule.php app/Statistics.php
+#: app/Module/FamilyGroupReportModule.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/edit/link-child-to-family.phtml
 #: resources/views/modals/link-media-to-family.phtml
@@ -7449,50 +7450,50 @@ msgstr "जुलाई"
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Jumada al-awwal"
-msgstr "जमादिल अव्वल"
+msgid "Jumādá al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Jumada al-awwal"
-msgstr "जमादिल अव्वल"
+msgid "Jumādá al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Jumada al-awwal"
-msgstr "जमादिल अव्वल"
+msgid "Jumādá al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Jumada al-awwal"
-msgstr "जमादिल अव्वल"
+msgid "Jumādá al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Jumada al-thani"
-msgstr "जमादिल सानी"
+msgid "Jumādá al-thānī"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Jumada al-thani"
-msgstr "जमादिल सानी"
+msgid "Jumādá al-thānī"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Jumada al-thani"
-msgstr "जमादिल सानी"
+msgid "Jumādá al-thānī"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Jumada al-thani"
-msgstr "जमादिल सानी"
+msgid "Jumādá al-thānī"
+msgstr ""
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "Abbreviation for June"
@@ -9050,30 +9051,6 @@ msgstr "ऊपर ले जाएं"
 msgid "Mozambique"
 msgstr "मोजाम्बिक"
 
-#. I18N: https://en.wikipedia.org/wiki/Muharram
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Muharram"
-msgstr "मुहर्रम"
-
-#. I18N: https://en.wikipedia.org/wiki/Muharram
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Muharram"
-msgstr "मुहर्रम"
-
-#. I18N: https://en.wikipedia.org/wiki/Muharram
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Muharram"
-msgstr "मुहर्रम"
-
-#. I18N: https://en.wikipedia.org/wiki/Muharram
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Muharram"
-msgstr "मुहर्रम"
-
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php
 msgid "Multiple birth"
@@ -9082,6 +9059,30 @@ msgstr "एकाधिक जन्म"
 #: resources/views/lists/families-table.phtml
 msgid "Multiple marriages"
 msgstr "एक से अधिक शादियां"
+
+#. I18N: https://en.wikipedia.org/wiki/Muḥarram
+#: app/Date/HijriDate.php
+msgctxt "GENITIVE"
+msgid "Muḥarram"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Muḥarram
+#: app/Date/HijriDate.php
+msgctxt "INSTRUMENTAL"
+msgid "Muḥarram"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Muḥarram
+#: app/Date/HijriDate.php
+msgctxt "LOCATIVE"
+msgid "Muḥarram"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Muḥarram
+#: app/Date/HijriDate.php
+msgctxt "NOMINATIVE"
+msgid "Muḥarram"
+msgstr ""
 
 #: app/Http/RequestHandlers/AccountEdit.php app/Module/ModuleThemeTrait.php
 #: app/Module/UserWelcomeModule.php
@@ -9116,7 +9117,7 @@ msgstr "मेरी वंशावली"
 msgid "Myanmar"
 msgstr "म्यांमार"
 
-#: app/Gedcom.php app/Http/RequestHandlers/HelpText.php app/Statistics.php
+#: app/Gedcom.php app/Http/RequestHandlers/HelpText.php
 #: resources/views/individual-page-name.phtml
 #: resources/views/lists/anniversaries-table.phtml
 #: resources/views/modals/location-fields.phtml
@@ -9456,17 +9457,7 @@ msgstr "कोई पूर्वनिर्धारित लेख नही
 msgid "No records to display"
 msgstr "दिखाने के लिए कोई रेकॉर्ड नहीं है"
 
-#: resources/views/components/select-family.phtml
-#: resources/views/components/select-individual.phtml
-#: resources/views/components/select-location.phtml
-#: resources/views/components/select-media.phtml
-#: resources/views/components/select-note.phtml
-#: resources/views/components/select-place.phtml
-#: resources/views/components/select-repository.phtml
-#: resources/views/components/select-shared-note.phtml
-#: resources/views/components/select-source.phtml
-#: resources/views/components/select-submission.phtml
-#: resources/views/components/select-submitter.phtml
+#: resources/js/webtrees/tom-select.js
 msgid "No results found"
 msgstr "कोई परिणाम नहीं मिला"
 
@@ -10714,50 +10705,50 @@ msgstr "रबी"
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Rabi’ al-awwal"
-msgstr "रबी ऊल-अव्वल"
+msgid "Rabiʿ al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Rabi’ al-awwal"
-msgstr "रबी ऊल-अव्वल"
+msgid "Rabiʿ al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Rabi’ al-awwal"
-msgstr "रबी ऊल-अव्वल"
+msgid "Rabiʿ al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Rabi’ al-awwal"
-msgstr "रबी ऊल-अव्वल"
+msgid "Rabiʿ al-awwal"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Rabi’ al-thani"
-msgstr "रबी ऊल-सानी"
+msgid "Rabiʿ al-thani"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Rabi’ al-thani"
-msgstr "रबी ऊल-सानी"
+msgid "Rabiʿ al-thani"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Rabi’ al-thani"
-msgstr "रबी ऊल-सानी"
+msgid "Rabiʿ al-thani"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Rabi’ al-thani"
-msgstr "रबी ऊल-सानी"
+msgid "Rabiʿ al-thani"
+msgstr ""
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php
@@ -11310,30 +11301,6 @@ msgstr "STARTTLS"
 #: app/Elements/TempleCode.php
 msgid "Sacramento, California, United States"
 msgstr "सैक्रामेंटो, कैलिफोर्निया, संयुक्त राज्य अमेरिका"
-
-#. I18N: https://en.wikipedia.org/wiki/Safar
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Safar"
-msgstr "सफर"
-
-#. I18N: https://en.wikipedia.org/wiki/Safar
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Safar"
-msgstr "सफर"
-
-#. I18N: https://en.wikipedia.org/wiki/Safar
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Safar"
-msgstr "सफर"
-
-#. I18N: https://en.wikipedia.org/wiki/Safar
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Safar"
-msgstr "सफर"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php
@@ -11910,26 +11877,26 @@ msgstr "शव्वाल"
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
-msgid "Sha’aban"
-msgstr "शाबान"
+msgid "Shaʿbān"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
-msgid "Sha’aban"
-msgstr "शाबान"
+msgid "Shaʿbān"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
-msgid "Sha’aban"
-msgstr "शाबान"
+msgid "Shaʿbān"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
-msgid "Sha’aban"
-msgstr "शाबान"
+msgid "Shaʿbān"
+msgstr ""
 
 #: resources/xml/reports/descendancy_report.xml
 msgid "She "
@@ -14436,8 +14403,8 @@ msgstr "सर्वोच्च कुलनाम"
 msgid "Toronto, Ontario, Canada"
 msgstr "टोरंटो, ओंटारियो, कनाडा"
 
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Module/StatisticsChartModule.php
+#: resources/views/admin/control-panel.phtml
 msgid "Total"
 msgstr "कुल"
 
@@ -14600,7 +14567,7 @@ msgstr "ट्विन फॉल्स, इडाहो, संयुक्त 
 
 #: app/CustomTags/Gedcom7.php app/CustomTags/GedcomL.php
 #: app/CustomTags/Heredis.php app/CustomTags/Legacy.php
-#: app/CustomTags/PhpGedView.php app/Gedcom.php app/Statistics.php
+#: app/CustomTags/PhpGedView.php app/Gedcom.php
 #: resources/views/admin/site-logs.phtml
 #: resources/views/modules/media-list/page.phtml
 #: resources/views/modules/random_media/config.phtml
@@ -15423,7 +15390,7 @@ msgstr "आपको यह पेज देखने की अनुमति 
 msgid "You have confirmed your request to become a registered user."
 msgstr "आपने एक रजिस्टर्ड उपयोगकर्ता बनने के लिए अपने अनुरोध की पुष्टि कर ली है।"
 
-#: resources/views/admin/trees-import.phtml
+#: resources/js/admin/pages/trees-import.js
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
 msgstr "आपने एक अलग नाम की GEDCOM फ़ाइल का चयन किया है। क्या ये सही है?"
 
@@ -15447,7 +15414,7 @@ msgstr "इससे पहले कि आप उन्हें मर्ज 
 msgid "You must select an individual and a chart type in the block preferences"
 msgstr "आपको “ब्लॉक प्रिफरेंसेस” में एक व्यक्ति और एक चार्ट प्रकार का चयन करना होगा"
 
-#: resources/views/admin/users-edit.phtml
+#: resources/js/admin/pages/users-edit.js
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
 msgstr "उपयोगकर्ता को उनके निकटतम परिवार तक सीमित करने से पहले आपको एक व्यक्तिगत रिकॉर्ड उल्लिखित करना होगा।"
 
@@ -19487,10 +19454,6 @@ msgstr "पत्नी"
 msgid "xenea"
 msgstr "शेन्या"
 
-#: resources/views/modules/timeline-chart/chart.phtml
-msgid "years"
-msgstr "साल"
-
 #: app/Elements/AbstractEventElement.php app/Elements/OrdinanceProcessFlag.php
 #: app/Http/RequestHandlers/FamilyPage.php
 #: app/Http/RequestHandlers/UserListData.php
@@ -19542,6 +19505,30 @@ msgstr[1] "±%s साल"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Åland Islands"
 msgstr "ऑलैण्ड द्वीपसमूह"
+
+#. I18N: https://en.wikipedia.org/wiki/Ṣafar
+#: app/Date/HijriDate.php
+msgctxt "GENITIVE"
+msgid "Ṣafar"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Ṣafar
+#: app/Date/HijriDate.php
+msgctxt "INSTRUMENTAL"
+msgid "Ṣafar"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Ṣafar
+#: app/Date/HijriDate.php
+msgctxt "LOCATIVE"
+msgid "Ṣafar"
+msgstr ""
+
+#. I18N: https://en.wikipedia.org/wiki/Ṣafar
+#: app/Date/HijriDate.php
+msgctxt "NOMINATIVE"
+msgid "Ṣafar"
+msgstr ""
 
 #: app/Http/RequestHandlers/CheckTree.php
 #, php-format
@@ -19859,6 +19846,38 @@ msgstr "…"
 #~ msgid "Delete old files…"
 #~ msgstr "पुरानी फ़ाइलें हटाएं…"
 
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "ज़िल हज"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "ज़िल हज"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "ज़िल हज"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "ज़िल हज"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "ज़िल क़दा"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "ज़िल क़दा"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "ज़िल क़दा"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "ज़िल क़दा"
+
 #~ msgid "Died as an infant: exempt"
 #~ msgstr "शैशवावस्था में मृत्यु: मुक्त"
 
@@ -19969,6 +19988,38 @@ msgstr "…"
 #~ msgid "Joint family name"
 #~ msgstr "संयुक्त परिवार का नाम"
 
+#~ msgctxt "GENITIVE"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "जमादिल अव्वल"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "जमादिल अव्वल"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "जमादिल अव्वल"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "जमादिल अव्वल"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "जमादिल सानी"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "जमादिल सानी"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "जमादिल सानी"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "जमादिल सानी"
+
 #~ msgid "LDS temple"
 #~ msgstr "लैटर डे संत मंदिर"
 
@@ -20014,6 +20065,22 @@ msgstr "…"
 
 #~ msgid "Most sites are configured to use the default value of 3306."
 #~ msgstr "अधिकांश साइटों को 3306 के डिफ़ॉल्ट मान का उपयोग करने के लिए कॉन्फ़िगर किया गया होता है।"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Muḥarram"
+#~ msgstr "मुहर्रम"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Muḥarram"
+#~ msgstr "मुहर्रम"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Muḥarram"
+#~ msgstr "मुहर्रम"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Muḥarram"
+#~ msgstr "मुहर्रम"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Never married"
@@ -20076,6 +20143,38 @@ msgstr "…"
 #~ msgid "Quick source facts"
 #~ msgstr "क्विक स्रोत तथ्य"
 
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "रबी उल-अव्वल"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "रबी उल-अव्वल"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "रबी उल-अव्वल"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "रबी उल-अव्वल"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "रबी उल-आख़िर"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "रबी उल-आख़िर"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "रबी उल-आख़िर"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "रबी उल-आख़िर"
+
 #~ msgid "Rada"
 #~ msgstr "रदा'अ"
 
@@ -20110,6 +20209,38 @@ msgstr "…"
 
 #~ msgid "Romanized title"
 #~ msgstr "रोमनकृत शीर्षक"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Ṣafar"
+#~ msgstr "सफर"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Ṣafar"
+#~ msgstr "सफर"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Ṣafar"
+#~ msgstr "सफर"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Ṣafar"
+#~ msgstr "सफर"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Shaʿbān"
+#~ msgstr "शाबान"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Shaʿbān"
+#~ msgstr "शाबान"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Shaʿbān"
+#~ msgstr "शाबान"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Shaʿbān"
+#~ msgstr "शाबान"
 
 #~ msgid "Short version"
 #~ msgstr "छोटा अनुवाद"
@@ -20447,6 +20578,9 @@ msgstr "…"
 
 #~ msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 #~ msgstr "webtrees उच्चारण अक्षरों, विशेष वर्णों और गैर-लैटिन लिपियों के लिए UTF-8 एन्कोडिंग का उपयोग करती है। यदि आप ऐसे वंशावली सॉफ़्टवेयर के साथ इस GEDCOM फ़ाइल का उपयोग करना चाहते हैं जो UTF-8 का समर्थन नहीं करता, तो आप इसे ISO-8859-1 एन्कोडिंग का उपयोग करके भी बना सकते हैं।"
+
+#~ msgid "years"
+#~ msgstr "साल"
 
 #, php-format
 #~ msgid "“%s”"
