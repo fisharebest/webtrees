@@ -6427,28 +6427,28 @@ msgstr "Flanders"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Floréal"
 
 # I18N: a month in the French republican calendar
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Floréal"
 
 # I18N: a month in the French republican calendar
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Floréal"
 
 # I18N: a month in the French republican calendar
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Floréal"
 
 #: resources/views/modals/media-file-fields.phtml
 #: resources/views/modules/media-list/page.phtml
@@ -7926,7 +7926,7 @@ msgstr "Italia"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Iyar"
-msgstr "Iyar"
+msgstr "lyar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
@@ -10116,25 +10116,25 @@ msgstr "Niue"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Nivose"
-msgstr "Nivose"
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
-msgstr "Nivose"
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Nivose"
-msgstr "Nivose"
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Nivose"
-msgstr "Nivose"
+msgstr "Nivôse"
 
 #: app/Statistics.php resources/views/admin/users-edit.phtml
 msgid "No"
@@ -11279,25 +11279,25 @@ msgstr ""
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Pluviose"
-msgstr "Pluviose"
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
-msgstr "Pluviose"
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Pluviose"
-msgstr "Pluviose"
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
-msgstr "Pluviose"
+msgstr "Pluviôse"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -11679,14 +11679,14 @@ msgstr "Ramazanit"
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
-msgstr "Ramazan"
+msgstr "Ramazanit"
 
 # I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ramadan"
-msgstr "Ramazani"
+msgstr "Ramazanit"
 
 # I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
@@ -16143,25 +16143,25 @@ msgstr "Vatikani"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
-msgstr "Vendemiaire"
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
-msgstr "Vendemiaire"
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
-msgstr "Vendemiaire"
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
-msgstr "Vendemiaire"
+msgstr "Vendémiaire"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -16173,25 +16173,25 @@ msgstr "Venecuela"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Ventose"
-msgstr "Ventose"
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
-msgstr "Ventose"
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Ventose"
-msgstr "Ventose"
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Ventose"
-msgstr "Ventose"
+msgstr "Ventôse"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -19330,25 +19330,25 @@ msgstr "zgjedhja e anasjelltë"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr "jours complementaires"
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr "jours complementaires"
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr "jours complementaires"
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr "jours complementaires"
+msgstr "jours complémentaires"
 
 # I18N: A button label, last page
 #. I18N: A button label, last page

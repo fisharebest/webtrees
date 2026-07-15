@@ -6715,25 +6715,25 @@ msgstr "Hermosillo, Mexique"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "Hechvane"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "Hechvane"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "Hechvane"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "Hechvane"
 
 #: resources/views/admin/tags.phtml
 msgid "Hide GEDCOM tags"
@@ -11972,25 +11972,25 @@ msgstr "Elle a été incinérée"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "Chevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "Chevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "Chevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "Chevat"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php
@@ -12419,25 +12419,25 @@ msgstr "Les cartes du site sont une façon pour les administrateurs de dire aux 
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Sivan"
-msgstr "Sivan"
+msgstr "Sivane"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
-msgstr "Sivan"
+msgstr "Sivane"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Sivan"
-msgstr "Sivan"
+msgstr "Sivane"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Sivan"
-msgstr "Sivan"
+msgstr "Sivane"
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml
@@ -13076,25 +13076,25 @@ msgstr "Temple"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tevet"
-msgstr "Tevet"
+msgstr "Téveth"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
-msgstr "Tevet"
+msgstr "Téveth"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tevet"
-msgstr "Tevet"
+msgstr "Téveth"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tevet"
-msgstr "Tevet"
+msgstr "Téveth"
 
 #: app/CustomTags/GedcomL.php app/CustomTags/RootsMagic.php app/Gedcom.php
 #: resources/views/admin/trees-preferences.phtml
@@ -14273,19 +14273,19 @@ msgstr "Tir"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tishrei"
-msgstr "Tishri"
+msgstr "Tichri"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
-msgstr "Tishri"
+msgstr "Tichri"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tishrei"
-msgstr "Tishri"
+msgstr "Tichri"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php

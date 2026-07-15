@@ -4746,13 +4746,13 @@ msgstr "ذوالحج"
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
-msgstr "ذوالحجہ"
+msgstr "ذوالحج"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
-msgstr "ذوالحجہ"
+msgstr "ذوالحج"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
@@ -9060,13 +9060,13 @@ msgstr "محرم"
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
-msgstr "محرم الحرام"
+msgstr "محرم"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muharram"
-msgstr "محرم الحرام"
+msgstr "محرم"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php
@@ -10787,13 +10787,13 @@ msgstr "رجب"
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
-msgstr "رجب المرجب"
+msgstr "رجب"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rajab"
-msgstr "رجب المرجب"
+msgstr "رجب"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
@@ -10816,13 +10816,13 @@ msgstr "رمضان"
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
-msgstr "رمضان المبارک"
+msgstr "رمضان"
 
 #. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ramadan"
-msgstr "رمضان المبارک"
+msgstr "رمضان"
 
 #. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
@@ -11321,13 +11321,13 @@ msgstr "صفر"
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
-msgstr "صفر المظفر"
+msgstr "صفر"
 
 #. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Safar"
-msgstr "صفر المظفر"
+msgstr "صفر"
 
 #. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php
@@ -11893,13 +11893,13 @@ msgstr "شوال"
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
-msgstr "شوال المکرم"
+msgstr "شوال"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shawwal"
-msgstr "شوال المکرم"
+msgstr "شوال"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php

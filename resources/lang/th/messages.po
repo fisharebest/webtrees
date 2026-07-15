@@ -1054,25 +1054,25 @@ msgstr "Aban"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr "Tháng Aban"
+msgstr "อาบาน"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr "Tháng Aban"
+msgstr "อาบาน"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr "Tháng Aban"
+msgstr "อาบาน"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Aban"
-msgstr "Tháng Aban"
+msgstr "อาบาน"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -1115,73 +1115,73 @@ msgstr "Accra, Ghana"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar"
-msgstr "Adar"
+msgstr "อาดาร์"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
-msgstr "Adar"
+msgstr "อาดาร์"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar"
-msgstr "Adar"
+msgstr "อาดาร์"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar"
-msgstr "Adar"
+msgstr "อาดาร์"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar I"
-msgstr "Adar I"
+msgstr "อาดาร์ 1"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr "Adar I"
+msgstr "อาดาร์ 1"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar I"
-msgstr "Adar I"
+msgstr "อาดาร์ 1"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr "Adar I"
+msgstr "อาดาร์ 1"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar II"
-msgstr "Adar II"
+msgstr "อาดาร์ 2"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr "Adar II"
+msgstr "อาดาร์ 2"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar II"
-msgstr "Adar II"
+msgstr "อาดาร์ 2"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr "Adar II"
+msgstr "อาดาร์ 2"
 
 #: app/Http/RequestHandlers/MapDataAdd.php
 msgid "Add"
@@ -1930,24 +1930,24 @@ msgstr "TH4"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "April"
-msgstr "Tháng Tư"
+msgstr "เมษายน"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "April"
-msgstr "Tháng Tư"
+msgstr "เมษายน"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "April"
-msgstr "Tháng Tư"
+msgstr "เมษายน"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "April"
-msgstr "Tháng Tư"
+msgstr "เมษายน"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php
@@ -2090,24 +2090,24 @@ msgstr "TH8"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "August"
-msgstr "Tháng Tám"
+msgstr "สิงหาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "August"
-msgstr "Tháng Tám"
+msgstr "สิงหาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "August"
-msgstr "Tháng Tám"
+msgstr "สิงหาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "August"
-msgstr "Tháng Tám"
+msgstr "สิงหาคม"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -2152,25 +2152,25 @@ msgstr "Tự động mở rông nguồn"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Av"
-msgstr "Av"
+msgstr "อัฟ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Av"
-msgstr "Av"
+msgstr "อัฟ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Av"
-msgstr "Av"
+msgstr "อัฟ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Av"
-msgstr "Av"
+msgstr "อัฟ"
 
 #: app/Statistics.php
 msgid "Average age"
@@ -2223,25 +2223,25 @@ msgstr "Azar"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Azar"
-msgstr "Tháng Azar"
+msgstr "อาซาร์"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr "Tháng Azar"
+msgstr "อาซาร์"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Azar"
-msgstr "Tháng Azar"
+msgstr "อาซาร์"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Azar"
-msgstr "Tháng Azar"
+msgstr "อาซาร์"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -2267,25 +2267,25 @@ msgstr "Bahamas"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Bahman"
-msgstr "Tháng Bahman"
+msgstr "บาห์มัน"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
-msgstr "Tháng Bahman"
+msgstr "บาห์มัน"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Bahman"
-msgstr "Tháng Bahman"
+msgstr "บาห์มัน"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Bahman"
-msgstr "Tháng Bahman"
+msgstr "บาห์มัน"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -2750,25 +2750,25 @@ msgstr "Anh (Em) trai"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "บรูแมร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "บรูแมร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "บรูแมร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "บรูแมร์"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -4500,24 +4500,24 @@ msgstr "T12"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "December"
-msgstr "Tháng Mười Hai"
+msgstr "ธันวาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "December"
-msgstr "Tháng Mười Hai"
+msgstr "ธันวาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "December"
-msgstr "Tháng Mười Hai"
+msgstr "ธันวาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "December"
-msgstr "Tháng Mười Hai"
+msgstr "ธันวาคม"
 
 #. I18N: The tenth day in the French republican calendar
 #: app/Date/FrenchDate.php
@@ -4697,49 +4697,49 @@ msgstr "Dey"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Dey"
-msgstr "Tháng Dey"
+msgstr "เดย์"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
-msgstr "Tháng Dey"
+msgstr "เดย์"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Dey"
-msgstr "Tháng Dey"
+msgstr "เดย์"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Dey"
-msgstr "Tháng Dey"
+msgstr "เดย์"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "ซุลฮิจญะฮ์"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "ซุลฮิจญะฮ์"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "ซุลฮิจญะฮ์"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "ซุลฮิจญะฮ์"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
@@ -5046,25 +5046,25 @@ msgstr "Điện tử"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Elul"
-msgstr "Elul"
+msgstr "เอลุล"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
-msgstr "Elul"
+msgstr "เอลุล"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Elul"
-msgstr "Elul"
+msgstr "เอลุล"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Elul"
-msgstr "Elul"
+msgstr "เอลุล"
 
 #: app/CustomTags/Aldfaer.php app/CustomTags/Legacy.php
 #: resources/views/modals/submitter-fields.phtml
@@ -5197,25 +5197,25 @@ msgstr "Est"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Esfand"
-msgstr "Tháng Esfand"
+msgstr "เอสฟานด์"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
-msgstr "Tháng Esfand"
+msgstr "เอสฟานด์"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Esfand"
-msgstr "Tháng Esfand"
+msgstr "เอสฟานด์"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Esfand"
-msgstr "Tháng Esfand"
+msgstr "เอสฟานด์"
 
 #. I18N: Name of a mapping organisation
 #: app/Module/EsriMaps.php
@@ -5681,25 +5681,25 @@ msgstr "Faroe Islands"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Farvardin"
-msgstr "Tháng Farvardin"
+msgstr "ฟาร์วาร์ดิน"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
-msgstr "Tháng Farvardin"
+msgstr "ฟาร์วาร์ดิน"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Farvardin"
-msgstr "Tháng Farvardin"
+msgstr "ฟาร์วาร์ดิน"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
-msgstr "Tháng Farvardin"
+msgstr "ฟาร์วาร์ดิน"
 
 #: resources/views/search-advanced-page.phtml
 #: resources/xml/reports/bdm_report.xml
@@ -5748,24 +5748,24 @@ msgstr "TH2"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "February"
-msgstr "Tháng Hai"
+msgstr "กุมภาพันธ์"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "February"
-msgstr "Tháng Hai"
+msgstr "กุมภาพันธ์"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "February"
-msgstr "Tháng Hai"
+msgstr "กุมภาพันธ์"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "February"
-msgstr "Tháng Hai"
+msgstr "กุมภาพันธ์"
 
 #: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
 msgid "Female"
@@ -5924,25 +5924,25 @@ msgstr "Flanders"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
-msgstr "Floréal"
+msgstr "ฟลอเรอัล"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
-msgstr "Floréal"
+msgstr "ฟลอเรอัล"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Floreal"
-msgstr "Floréal"
+msgstr "ฟลอเรอัล"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Floreal"
-msgstr "Floréal"
+msgstr "ฟลอเรอัล"
 
 #: resources/views/modals/media-file-fields.phtml
 #: resources/views/modules/media-list/page.phtml
@@ -6134,25 +6134,25 @@ msgstr "Bạn"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "ฟรีแมร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "ฟรีแมร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "ฟรีแมร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "ฟรีแมร์"
 
 #: resources/views/admin/broadcast.phtml resources/views/admin/email-page.phtml
 #: resources/views/message-page.phtml
@@ -6170,25 +6170,25 @@ msgstr "Từ"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Fructidor"
-msgstr "Fructidor"
+msgstr "ฟรุกตีดอร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
-msgstr "Fructidor"
+msgstr "ฟรุกตีดอร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Fructidor"
-msgstr "Fructidor"
+msgstr "ฟรุกตีดอร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
-msgstr "Fructidor"
+msgstr "ฟรุกตีดอร์"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -6357,26 +6357,26 @@ msgstr "Đức"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Germinal"
-msgstr "Germinal"
+msgstr "แฌร์มีนาล"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
-msgstr "Germinal"
+msgstr "แฌร์มีนาล"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Germinal"
-msgstr "Germinal"
+msgstr "แฌร์มีนาล"
 
 #. I18N: a month in the French republican calendar
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Germinal"
-msgstr "Germinal"
+msgstr "แฌร์มีนาล"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -6692,25 +6692,25 @@ msgstr "Hermosillo, Mexico"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "เฮชวาน"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "เฮชวาน"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "เฮชวาน"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "เฮชวาน"
 
 #: resources/views/admin/tags.phtml
 msgid "Hide GEDCOM tags"
@@ -7302,25 +7302,25 @@ msgstr "Italy"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Iyar"
-msgstr "Iyar"
+msgstr "อิยาร์"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
-msgstr "Iyar"
+msgstr "อิยาร์"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Iyar"
-msgstr "Iyar"
+msgstr "อิยาร์"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Iyar"
-msgstr "Iyar"
+msgstr "อิยาร์"
 
 #. I18N: The Persian/Jalali calendar
 #: app/Factories/CalendarDateFactory.php resources/views/help/date.phtml
@@ -7340,24 +7340,24 @@ msgstr "TH1"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "January"
-msgstr "Tháng Giêng"
+msgstr "มกราคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "January"
-msgstr "Tháng Giêng"
+msgstr "มกราคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "January"
-msgstr "Tháng Giêng"
+msgstr "มกราคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "January"
-msgstr "Tháng Giêng"
+msgstr "มกราคม"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7408,72 +7408,72 @@ msgstr "Lịch Julian"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "July"
-msgstr "Tháng Bảy"
+msgstr "กรกฎาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "July"
-msgstr "Tháng Bảy"
+msgstr "กรกฎาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "July"
-msgstr "Tháng Bảy"
+msgstr "กรกฎาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "July"
-msgstr "Tháng Bảy"
+msgstr "กรกฎาคม"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "ญุมาดัลอูลา"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "ญุมาดัลอูลา"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "ญุมาดัลอูลา"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "ญุมาดัลอูลา"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "ญุมาดัษษานียะฮ์"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "ญุมาดัษษานียะฮ์"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "ญุมาดัษษานียะฮ์"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "ญุมาดัษษานียะฮ์"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "Abbreviation for June"
@@ -7483,24 +7483,24 @@ msgstr "TH6"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "June"
-msgstr "Tháng Sáu"
+msgstr "มิถุนายน"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "June"
-msgstr "Tháng Sáu"
+msgstr "มิถุนายน"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "June"
-msgstr "Tháng Sáu"
+msgstr "มิถุนายน"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "June"
-msgstr "Tháng Sáu"
+msgstr "มิถุนายน"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -7545,25 +7545,25 @@ msgstr "Khor"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Khordad"
-msgstr "Tháng Khordad"
+msgstr "คอร์ดาด"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
-msgstr "Tháng Khordad"
+msgstr "คอร์ดาด"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Khordad"
-msgstr "Tháng Khordad"
+msgstr "คอร์ดาด"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Khordad"
-msgstr "Tháng Khordad"
+msgstr "คอร์ดาด"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7574,25 +7574,25 @@ msgstr "Kiribati"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Kislev"
-msgstr "Kislev"
+msgstr "คิสเลฟ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
-msgstr "Kislev"
+msgstr "คิสเลฟ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Kislev"
-msgstr "Kislev"
+msgstr "คิสเลฟ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Kislev"
-msgstr "Kislev"
+msgstr "คิสเลฟ"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -8233,24 +8233,24 @@ msgstr "TH3"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "March"
-msgstr "Tháng Ba"
+msgstr "มีนาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "March"
-msgstr "Tháng Ba"
+msgstr "มีนาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "March"
-msgstr "Tháng Ba"
+msgstr "มีนาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "March"
-msgstr "Tháng Ba"
+msgstr "มีนาคม"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -8488,24 +8488,24 @@ msgstr "TH5"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "May"
-msgstr "Tháng Năm"
+msgstr "พฤษภาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "May"
-msgstr "Tháng Năm"
+msgstr "พฤษภาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr "Tháng Năm"
+msgstr "พฤษภาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "May"
-msgstr "Tháng Năm"
+msgstr "พฤษภาคม"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -8618,25 +8618,25 @@ msgstr "Mehr"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mehr"
-msgstr "Tháng Mehr"
+msgstr "เมห์ร"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
-msgstr "Tháng Mehr"
+msgstr "เมห์ร"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mehr"
-msgstr "Tháng Mehr"
+msgstr "เมห์ร"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mehr"
-msgstr "Tháng Mehr"
+msgstr "เมห์ร"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -8711,25 +8711,25 @@ msgstr "Nội dung mail"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Messidor"
-msgstr "Messidor"
+msgstr "เมสซีดอร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
-msgstr "Messidor"
+msgstr "เมสซีดอร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Messidor"
-msgstr "Messidor"
+msgstr "เมสซีดอร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Messidor"
-msgstr "Messidor"
+msgstr "เมสซีดอร์"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -8906,25 +8906,25 @@ msgstr "Mor"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mordad"
-msgstr "Tháng Mordad"
+msgstr "มอร์ดาด"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
-msgstr "Tháng Mordad"
+msgstr "มอร์ดาด"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mordad"
-msgstr "Tháng Mordad"
+msgstr "มอร์ดาด"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mordad"
-msgstr "Tháng Mordad"
+msgstr "มอร์ดาด"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -9035,25 +9035,25 @@ msgstr "Mozambique"
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "มุฮัรรอม"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "มุฮัรรอม"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "มุฮัรรอม"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "มุฮัรรอม"
 
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php
@@ -9291,25 +9291,25 @@ msgstr "Nijerya"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Nissan"
-msgstr "Nissan"
+msgstr "นิสซาน"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
-msgstr "Nissan"
+msgstr "นิสซาน"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Nissan"
-msgstr "Nissan"
+msgstr "นิสซาน"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Nissan"
-msgstr "Nissan"
+msgstr "นิสซาน"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -9320,25 +9320,25 @@ msgstr "Niue"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Nivose"
-msgstr "Nivôse"
+msgstr "นีโวส"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
-msgstr "Nivôse"
+msgstr "นีโวส"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Nivose"
-msgstr "Nivôse"
+msgstr "นีโวส"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Nivose"
-msgstr "Nivôse"
+msgstr "นีโวส"
 
 #: app/Statistics.php resources/views/admin/users-edit.phtml
 msgid "No"
@@ -9645,24 +9645,24 @@ msgstr "T11"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "November"
-msgstr "Tháng Mười Một"
+msgstr "พฤศจิกายน"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr "Tháng Mười Một"
+msgstr "พฤศจิกายน"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr "Tháng Mười Một"
+msgstr "พฤศจิกายน"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "November"
-msgstr "Tháng Mười Một"
+msgstr "พฤศจิกายน"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9762,24 +9762,24 @@ msgstr "Octidi"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "October"
-msgstr "Tháng Mười"
+msgstr "ตุลาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "October"
-msgstr "Tháng Mười"
+msgstr "ตุลาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr "Tháng Mười"
+msgstr "ตุลาคม"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "October"
-msgstr "Tháng Mười"
+msgstr "ตุลาคม"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9883,25 +9883,25 @@ msgstr "Ord"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
-msgstr "Ordibehesht"
+msgstr "ออร์ดิเบเฮชต์"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
-msgstr "Ordibehesht"
+msgstr "ออร์ดิเบเฮชต์"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
-msgstr "Ordibehesht"
+msgstr "ออร์ดิเบเฮชต์"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
-msgstr "Ordibehesht"
+msgstr "ออร์ดิเบเฮชต์"
 
 #: app/Gedcom.php
 msgid "Ordinance"
@@ -10419,25 +10419,25 @@ msgstr "Xin vui lòng thử lại."
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Pluviose"
-msgstr "Pluviôse"
+msgstr "พลูวีโอส"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
-msgstr "Pluviôse"
+msgstr "พลูวีโอส"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Pluviose"
-msgstr "Pluviôse"
+msgstr "พลูวีโอส"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
-msgstr "Pluviôse"
+msgstr "พลูวีโอส"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -10498,25 +10498,25 @@ msgstr "Được vận hành bởi webtrees™"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr "แปรรีอัล"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr "แปรรีอัล"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr "แปรรีอัล"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr "แปรรีอัล"
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php
 msgid "Predefined text that states admin will decide on each request for a user account"
@@ -10760,25 +10760,25 @@ msgstr ""
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rajab"
-msgstr "Rajab"
+msgstr "รอญับ"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
-msgstr "Rajab"
+msgstr "รอญับ"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rajab"
-msgstr "Rajab"
+msgstr "รอญับ"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rajab"
-msgstr "Rajab"
+msgstr "รอญับ"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -10789,25 +10789,25 @@ msgstr "Raleigh, North Carolina, United States"
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ramadan"
-msgstr "Ramadan"
+msgstr "รอมะฎอน"
 
 #. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
-msgstr "Ramadan"
+msgstr "รอมะฎอน"
 
 #. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ramadan"
-msgstr "Ramadan"
+msgstr "รอมะฎอน"
 
 #. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
-msgstr "Ramadan"
+msgstr "รอมะฎอน"
 
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php
@@ -11294,25 +11294,25 @@ msgstr "Sacramento, California, United States"
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Safar"
-msgstr "Safar"
+msgstr "ซอฟัร"
 
 #. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
-msgstr "Safar"
+msgstr "ซอฟัร"
 
 #. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Safar"
-msgstr "Safar"
+msgstr "ซอฟัร"
 
 #. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Safar"
-msgstr "Safar"
+msgstr "ซอฟัร"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php
@@ -11682,24 +11682,24 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "September"
-msgstr "Tháng Chín"
+msgstr "กันยายน"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "September"
-msgstr "Tháng Chín"
+msgstr "กันยายน"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "September"
-msgstr "Tháng Chín"
+msgstr "กันยายน"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "September"
-msgstr "Tháng Chín"
+msgstr "กันยายน"
 
 #. I18N: The seventh day in the French republican calendar
 #: app/Date/FrenchDate.php
@@ -11809,25 +11809,25 @@ msgstr "Shah"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Shahrivar"
-msgstr "Tháng Shahrivar"
+msgstr "ชาห์ริวาร์"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
-msgstr "Tháng Shahrivar"
+msgstr "ชาห์ริวาร์"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
-msgstr "Tháng Shahrivar"
+msgstr "ชาห์ริวาร์"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
-msgstr "Tháng Shahrivar"
+msgstr "ชาห์ริวาร์"
 
 #: resources/views/individual-page-menu.phtml
 #: resources/views/individual-page.phtml
@@ -11866,25 +11866,25 @@ msgstr ""
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "เชาวาล"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "เชาวาล"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "เชาวาล"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "เชาวาล"
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
@@ -11947,25 +11947,25 @@ msgstr "Bà được hỏa táng"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "เชวัต"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "เชวัต"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "เชวัต"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "เชวัต"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php
@@ -12394,25 +12394,25 @@ msgstr "Sơ đồ site là cách để nhà quản trị truyền đạt cho cá
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Sivan"
-msgstr "Sivan"
+msgstr "สิวาน"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
-msgstr "Sivan"
+msgstr "สิวาน"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Sivan"
-msgstr "Sivan"
+msgstr "สิวาน"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Sivan"
-msgstr "Sivan"
+msgstr "สิวาน"
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml
@@ -12993,25 +12993,25 @@ msgstr "Tampico, Mexico"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tamuz"
-msgstr "Tamuz"
+msgstr "ทามุซ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
-msgstr "Tamuz"
+msgstr "ทามุซ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tamuz"
-msgstr "Tamuz"
+msgstr "ทามุซ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
-msgstr "Tamuz"
+msgstr "ทามุซ"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -13051,25 +13051,25 @@ msgstr "Nhà thờ"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tevet"
-msgstr "Tevet"
+msgstr "เตเวต"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
-msgstr "Tevet"
+msgstr "เตเวต"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tevet"
-msgstr "Tevet"
+msgstr "เตเวต"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tevet"
-msgstr "Tevet"
+msgstr "เตเวต"
 
 #: app/CustomTags/GedcomL.php app/CustomTags/RootsMagic.php app/Gedcom.php
 #: resources/views/admin/trees-preferences.phtml
@@ -13705,25 +13705,25 @@ msgstr "Có lỗi khi tải tập tin của bạn lên."
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Thermidor"
-msgstr "Thermidor"
+msgstr "แตร์มีดอร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
-msgstr "Thermidor"
+msgstr "แตร์มีดอร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Thermidor"
-msgstr "Thermidor"
+msgstr "แตร์มีดอร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
-msgstr "Thermidor"
+msgstr "แตร์มีดอร์"
 
 #: resources/views/modules/privacy-policy/page.phtml
 msgid "These cookies are “essential”, and do not require consent."
@@ -14220,49 +14220,49 @@ msgstr "Tir"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Tir"
-msgstr "tháng Tir"
+msgstr "ตีร์"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
-msgstr "tháng Tir"
+msgstr "ตีร์"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Tir"
-msgstr "tháng Tir"
+msgstr "ตีร์"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Tir"
-msgstr "tháng Tir"
+msgstr "ตีร์"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "ทิชเร"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "ทิชเร"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "ทิชเร"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "ทิชเร"
 
 #: app/CustomTags/Geneatique.php app/Gedcom.php
 #: resources/views/admin/fix-level-0-media.phtml
@@ -14960,25 +14960,25 @@ msgstr "Vatican City"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
-msgstr "Vendémiaire"
+msgstr "วองเดมีแยร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
-msgstr "Vendémiaire"
+msgstr "วองเดมีแยร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
-msgstr "Vendémiaire"
+msgstr "วองเดมีแยร์"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
-msgstr "Vendémiaire"
+msgstr "วองเดมีแยร์"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -14989,25 +14989,25 @@ msgstr "Venezüella"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Ventose"
-msgstr "Ventôse"
+msgstr "วองโตส"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
-msgstr "Ventôse"
+msgstr "วองโตส"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Ventose"
-msgstr "Ventôse"
+msgstr "วองโตส"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Ventose"
-msgstr "Ventôse"
+msgstr "วองโตส"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -18050,25 +18050,25 @@ msgstr "đảo chọn"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr "jours complémentaires"
+msgstr "วันเสริม"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr "jours complémentaires"
+msgstr "วันเสริม"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr "jours complémentaires"
+msgstr "วันเสริม"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr "jours complémentaires"
+msgstr "วันเสริม"
 
 #. I18N: A button label, last page
 #: resources/views/admin/trees-preferences.phtml

@@ -15016,25 +15016,25 @@ msgstr "Ватикан"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
-msgstr "Вандем'єр"
+msgstr "Вандем’єр"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
-msgstr "Вандем'єр"
+msgstr "Вандем’єр"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
-msgstr "Вандем'єр"
+msgstr "Вандем’єр"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
-msgstr "Вандем'єр"
+msgstr "Вандем’єр"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php

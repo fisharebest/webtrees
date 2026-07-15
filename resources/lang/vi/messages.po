@@ -1058,25 +1058,25 @@ msgstr "Aban"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr "Tháng Aban"
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr "Tháng Aban"
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr "Tháng Aban"
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Aban"
-msgstr "Tháng Aban"
+msgstr "Aban"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -2227,25 +2227,25 @@ msgstr "Azar"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Azar"
-msgstr "Tháng Azar"
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr "Tháng Azar"
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Azar"
-msgstr "Tháng Azar"
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Azar"
-msgstr "Tháng Azar"
+msgstr "Azar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -2271,25 +2271,25 @@ msgstr "Bahamas"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Bahman"
-msgstr "Tháng Bahman"
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
-msgstr "Tháng Bahman"
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Bahman"
-msgstr "Tháng Bahman"
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Bahman"
-msgstr "Tháng Bahman"
+msgstr "Bahman"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -4701,25 +4701,25 @@ msgstr "Dey"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Dey"
-msgstr "Tháng Dey"
+msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
-msgstr "Tháng Dey"
+msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Dey"
-msgstr "Tháng Dey"
+msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Dey"
-msgstr "Tháng Dey"
+msgstr "Dey"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
@@ -5201,25 +5201,25 @@ msgstr "Est"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Esfand"
-msgstr "Tháng Esfand"
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
-msgstr "Tháng Esfand"
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Esfand"
-msgstr "Tháng Esfand"
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Esfand"
-msgstr "Tháng Esfand"
+msgstr "Esfand"
 
 #. I18N: Name of a mapping organisation
 #: app/Module/EsriMaps.php
@@ -5685,25 +5685,25 @@ msgstr "Faroe Islands"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Farvardin"
-msgstr "Tháng Farvardin"
+msgstr "Farvardin"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
-msgstr "Tháng Farvardin"
+msgstr "Farvardin"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Farvardin"
-msgstr "Tháng Farvardin"
+msgstr "Farvardin"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
-msgstr "Tháng Farvardin"
+msgstr "Farvardin"
 
 #: resources/views/search-advanced-page.phtml
 #: resources/xml/reports/bdm_report.xml
@@ -7549,25 +7549,25 @@ msgstr "Khor"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Khordad"
-msgstr "Tháng Khordad"
+msgstr "Khordad"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
-msgstr "Tháng Khordad"
+msgstr "Khordad"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Khordad"
-msgstr "Tháng Khordad"
+msgstr "Khordad"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Khordad"
-msgstr "Tháng Khordad"
+msgstr "Khordad"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -8622,25 +8622,25 @@ msgstr "Mehr"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mehr"
-msgstr "Tháng Mehr"
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
-msgstr "Tháng Mehr"
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mehr"
-msgstr "Tháng Mehr"
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mehr"
-msgstr "Tháng Mehr"
+msgstr "Mehr"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -8910,25 +8910,25 @@ msgstr "Mor"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mordad"
-msgstr "Tháng Mordad"
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
-msgstr "Tháng Mordad"
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mordad"
-msgstr "Tháng Mordad"
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mordad"
-msgstr "Tháng Mordad"
+msgstr "Mordad"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -11820,25 +11820,25 @@ msgstr "Shah"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Shahrivar"
-msgstr "Tháng Shahrivar"
+msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
-msgstr "Tháng Shahrivar"
+msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
-msgstr "Tháng Shahrivar"
+msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
-msgstr "Tháng Shahrivar"
+msgstr "Shahrivar"
 
 #: resources/views/individual-page-menu.phtml
 #: resources/views/individual-page.phtml
@@ -14241,25 +14241,25 @@ msgstr "Tir"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Tir"
-msgstr "tháng Tir"
+msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
-msgstr "tháng Tir"
+msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Tir"
-msgstr "tháng Tir"
+msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Tir"
-msgstr "tháng Tir"
+msgstr "Tir"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php

@@ -2113,7 +2113,7 @@ msgstr "Aug"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "August"
-msgstr "august"
+msgstr "augusti"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -4524,7 +4524,7 @@ msgstr "Dets"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "December"
-msgstr "detsember"
+msgstr "detsembri"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -4534,7 +4534,7 @@ msgstr "detsember"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "December"
-msgstr "detsember"
+msgstr "detsembris"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -5772,7 +5772,7 @@ msgstr "Veebr"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "February"
-msgstr "veebruar"
+msgstr "veebruari"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -5782,7 +5782,7 @@ msgstr "veebruar"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "February"
-msgstr "veebruar"
+msgstr "veebruaris"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -5948,25 +5948,25 @@ msgstr "Flandria"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Floréal"
 
 #: resources/views/modals/media-file-fields.phtml
 #: resources/views/modules/media-list/page.phtml
@@ -7364,7 +7364,7 @@ msgstr "Jaan"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "January"
-msgstr "jaanuar"
+msgstr "jaanuari"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -7374,7 +7374,7 @@ msgstr "jaanuar"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "January"
-msgstr "jaanuar"
+msgstr "jaanuaris"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -7442,7 +7442,7 @@ msgstr "juuli"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "July"
-msgstr "juuli"
+msgstr "juulis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -7517,7 +7517,7 @@ msgstr "juuni"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "June"
-msgstr "juuni"
+msgstr "juunis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -8257,7 +8257,7 @@ msgstr "Märts"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "March"
-msgstr "märts"
+msgstr "märtsi"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -8267,7 +8267,7 @@ msgstr "märts"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "March"
-msgstr "märts"
+msgstr "märtsis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -8522,7 +8522,7 @@ msgstr "mai"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr "mai"
+msgstr "mais"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -9671,7 +9671,7 @@ msgstr "Nov"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "November"
-msgstr "november"
+msgstr "novembri"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -9681,7 +9681,7 @@ msgstr "november"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr "november"
+msgstr "novembris"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -9788,7 +9788,7 @@ msgstr "Octidi"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "October"
-msgstr "oktoober"
+msgstr "oktoobri"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -9798,7 +9798,7 @@ msgstr "oktoober"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr "oktoober"
+msgstr "oktoobris"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -11708,7 +11708,7 @@ msgstr "Lahutamine"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "September"
-msgstr "september"
+msgstr "septembri"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -11718,7 +11718,7 @@ msgstr "september"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "September"
-msgstr "september"
+msgstr "septembris"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -14268,7 +14268,7 @@ msgstr "Tir"
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Tir"
-msgstr "TIr"
+msgstr "Tir"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php

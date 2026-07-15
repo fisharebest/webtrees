@@ -9059,25 +9059,25 @@ msgstr "Mozambique"
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Muharram"
-msgstr "muharram"
+msgstr "Muharram"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
-msgstr "muharram"
+msgstr "Muharram"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muharram"
-msgstr "muharram"
+msgstr "Muharram"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Muharram"
-msgstr "muharram"
+msgstr "Muharram"
 
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php
@@ -10786,19 +10786,19 @@ msgstr "Rada"
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rajab"
-msgstr "rajab"
+msgstr "Rajab"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
-msgstr "rajab"
+msgstr "Rajab"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rajab"
-msgstr "rajab"
+msgstr "Rajab"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
@@ -11320,19 +11320,19 @@ msgstr "Sacramento, California, Estados Unidos"
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Safar"
-msgstr "safar"
+msgstr "Safar"
 
 #. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
-msgstr "safar"
+msgstr "Safar"
 
 #. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Safar"
-msgstr "safar"
+msgstr "Safar"
 
 #. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php
@@ -11892,19 +11892,19 @@ msgstr "Compartidos"
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shawwal"
-msgstr "shawwal"
+msgstr "Shawwal"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
-msgstr "shawwal"
+msgstr "Shawwal"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shawwal"
-msgstr "shawwal"
+msgstr "Shawwal"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php

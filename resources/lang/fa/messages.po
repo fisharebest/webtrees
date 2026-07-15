@@ -1159,49 +1159,49 @@ msgstr "ادار"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar I"
-msgstr "ادار I"
+msgstr "ادار ۱"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr "ادار I"
+msgstr "ادار ۱"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar I"
-msgstr "ادار I"
+msgstr "ادار ۱"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr "ادار I"
+msgstr "ادار ۱"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar II"
-msgstr "ادار II"
+msgstr "ادار ۲"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr "ادار II"
+msgstr "ادار ۲"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar II"
-msgstr "ادار II"
+msgstr "ادار ۲"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr "ادار II"
+msgstr "ادار ۲"
 
 #: app/Http/RequestHandlers/MapDataAdd.php
 msgid "Add"
@@ -5945,7 +5945,7 @@ msgstr "فلاندر"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
-msgstr "فلورال"
+msgstr "فلورل"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
@@ -10442,7 +10442,7 @@ msgstr "لطفا دوباره تلاش کنید."
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Pluviose"
-msgstr "پلوویسه"
+msgstr "پلویوسه"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php

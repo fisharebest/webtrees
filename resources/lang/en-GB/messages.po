@@ -18078,7 +18078,7 @@ msgstr "jours complémentaires"
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr "jours complementaires"
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php

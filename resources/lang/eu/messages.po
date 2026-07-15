@@ -1948,7 +1948,7 @@ msgstr "Api"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "April"
-msgstr "Apirilaren"
+msgstr "Apirila"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -1958,7 +1958,7 @@ msgstr "Apirila"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "April"
-msgstr "Apirileko"
+msgstr "Apirila"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -2108,7 +2108,7 @@ msgstr "Abu"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "August"
-msgstr "Abuztuaren"
+msgstr "Abuztua"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -2118,7 +2118,7 @@ msgstr "Abuztua"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "August"
-msgstr "Abuztuko"
+msgstr "Abuztua"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -2768,7 +2768,7 @@ msgstr "Anaia"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Brumaire"
-msgstr "Brumairearen"
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
@@ -2780,7 +2780,7 @@ msgstr "Brumaire"
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Brumaire"
-msgstr "Brumairean"
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
@@ -4519,7 +4519,7 @@ msgstr "Abe"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "December"
-msgstr "Abenduaren"
+msgstr "Abendua"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -4529,7 +4529,7 @@ msgstr "Abendua"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "December"
-msgstr "Abenduko"
+msgstr "Abendua"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -5767,7 +5767,7 @@ msgstr "Ots"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "February"
-msgstr "Otsailaren"
+msgstr "Otsaila"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -5777,7 +5777,7 @@ msgstr "Otsaila"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "February"
-msgstr "Otsaileko"
+msgstr "Otsaila"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -5943,25 +5943,25 @@ msgstr "Flandria"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Floréal"
 
 #: resources/views/modals/media-file-fields.phtml
 #: resources/views/modules/media-list/page.phtml
@@ -7359,7 +7359,7 @@ msgstr "Urt"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "January"
-msgstr "Urtarrilean"
+msgstr "Urtarrila"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -7369,7 +7369,7 @@ msgstr "Urtarrila"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "January"
-msgstr "Urtarrileko"
+msgstr "Urtarrila"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -7427,7 +7427,7 @@ msgstr "Julian"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "July"
-msgstr "Uztailaren"
+msgstr "Uztaila"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -7437,7 +7437,7 @@ msgstr "Uztaila"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "July"
-msgstr "Uztaileko"
+msgstr "Uztaila"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -7502,7 +7502,7 @@ msgstr "Eka"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "June"
-msgstr "Ekainaren"
+msgstr "Ekaina"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -7512,7 +7512,7 @@ msgstr "Ekaina"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "June"
-msgstr "Ekaineko"
+msgstr "Ekaina"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -8252,7 +8252,7 @@ msgstr "Mar"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "March"
-msgstr "Martxoaren"
+msgstr "Martxoa"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -8262,7 +8262,7 @@ msgstr "Martxoa"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "March"
-msgstr "Martxoko"
+msgstr "Martxoa"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -8507,7 +8507,7 @@ msgstr "Mai"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "May"
-msgstr "Maiatzaren"
+msgstr "Maiatza"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -8517,7 +8517,7 @@ msgstr "Maiatza"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr "Maiatzeko"
+msgstr "Maiatza"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -9339,25 +9339,25 @@ msgstr "Niue"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Nivose"
-msgstr "Nivose"
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
-msgstr "Nivose"
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Nivose"
-msgstr "Nivose"
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Nivose"
-msgstr "Nivose"
+msgstr "Nivôse"
 
 #: app/Statistics.php resources/views/admin/users-edit.phtml
 msgid "No"
@@ -9666,7 +9666,7 @@ msgstr "Aza"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "November"
-msgstr "Azaroaren"
+msgstr "Azaroa"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -9676,7 +9676,7 @@ msgstr "Azaroa"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr "Azaroko"
+msgstr "Azaroa"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -9783,7 +9783,7 @@ msgstr "Octidi"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "October"
-msgstr "Urriaren"
+msgstr "Urria"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -9793,7 +9793,7 @@ msgstr "Urria"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr "Urriko"
+msgstr "Urria"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -10440,25 +10440,25 @@ msgstr "Saiatu berriz faborez."
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Pluviose"
-msgstr "Pluviose"
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
-msgstr "Pluviose"
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Pluviose"
-msgstr "Pluviose"
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
-msgstr "Pluviose"
+msgstr "Pluviôse"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -11703,7 +11703,7 @@ msgstr "Banaketa"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "September"
-msgstr "Irailaren"
+msgstr "Iraila"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -11713,7 +11713,7 @@ msgstr "Iraila"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "September"
-msgstr "Iraileko"
+msgstr "Iraila"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -14988,25 +14988,25 @@ msgstr "Vatikanoa"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
-msgstr "Vendemiaire"
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
-msgstr "Vendemiaire"
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
-msgstr "Vendemiaire"
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
-msgstr "Vendemiaire"
+msgstr "Vendémiaire"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -15017,25 +15017,25 @@ msgstr "Venezuela"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Ventose"
-msgstr "Ventose"
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
-msgstr "Ventose"
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Ventose"
-msgstr "Ventose"
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Ventose"
-msgstr "Ventose"
+msgstr "Ventôse"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php

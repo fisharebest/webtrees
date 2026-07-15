@@ -1157,49 +1157,49 @@ msgstr "אדר"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar I"
-msgstr "אדר א'"
+msgstr "אדר א׳"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr "אדר א'"
+msgstr "אדר א׳"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar I"
-msgstr "אדר א'"
+msgstr "אדר א׳"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr "אדר א'"
+msgstr "אדר א׳"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar II"
-msgstr "אדר ב'"
+msgstr "אדר ב׳"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr "אדר ב'"
+msgstr "אדר ב׳"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar II"
-msgstr "אדר ב'"
+msgstr "אדר ב׳"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr "אדר ב'"
+msgstr "אדר ב׳"
 
 #: app/Http/RequestHandlers/MapDataAdd.php
 msgid "Add"
@@ -2247,7 +2247,7 @@ msgstr "אזר"
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr "אזאר"
+msgstr "אזר"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
@@ -4716,19 +4716,19 @@ msgstr "דע'"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Dey"
-msgstr "דעיי"
+msgstr "דיי"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
-msgstr "דעיי"
+msgstr "דיי"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Dey"
-msgstr "דעיי"
+msgstr "דיי"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
@@ -4740,19 +4740,19 @@ msgstr "דיי"
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
-msgstr "זו אל-חיג׳אה"
+msgstr "זו אל-חיג׳ה"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
-msgstr "זו אל-חיג׳אה"
+msgstr "זו אל-חיג׳ה"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
-msgstr "זו אל-חיג׳אה"
+msgstr "זו אל-חיג׳ה"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
@@ -5222,7 +5222,7 @@ msgstr "עספנד"
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
-msgstr "עספאנד"
+msgstr "עספנד"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
@@ -6376,26 +6376,26 @@ msgstr "דייטשלאנד"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Germinal"
-msgstr "ז'רמינאל"
+msgstr "ז׳רמינאל"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
-msgstr "ז'רמינאל"
+msgstr "ז׳רמינאל"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Germinal"
-msgstr "ז'רמינאל"
+msgstr "ז׳רמינאל"
 
 #. I18N: a month in the French republican calendar
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Germinal"
-msgstr "ז'רמינאל"
+msgstr "ז׳רמינאל"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7474,25 +7474,25 @@ msgstr "ג׳ומאדא אל-אוואל"
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
-msgstr "ג׳ומאדא אל-ת'אניה"
+msgstr "ג׳ומאדא אל-ת׳אניה"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-thani"
-msgstr "ג׳ומאדא אל-ת'אניה"
+msgstr "ג׳ומאדא אל-ת׳אניה"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumada al-thani"
-msgstr "ג׳ומאדא אל-ת'אניה"
+msgstr "ג׳ומאדא אל-ת׳אניה"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
-msgstr "ג׳ומאדא אל-ת'אניה"
+msgstr "ג׳ומאדא אל-ת׳אניה"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "Abbreviation for June"
@@ -9060,13 +9060,13 @@ msgstr "מוחראם"
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
-msgstr "מוחאראם"
+msgstr "מוחראם"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muharram"
-msgstr "מוחאראם"
+msgstr "מוחראם"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php
@@ -9904,19 +9904,19 @@ msgstr "אור'"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
-msgstr "אורדיבעהשת"
+msgstr "אורדיבהשת"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
-msgstr "אורדיבעהשת"
+msgstr "אורדיבהשת"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
-msgstr "אורדיבעהשת"
+msgstr "אורדיבהשת"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
@@ -11321,13 +11321,13 @@ msgstr "צאפר"
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
-msgstr "צאפאר"
+msgstr "צאפר"
 
 #. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Safar"
-msgstr "צאפאר"
+msgstr "צאפר"
 
 #. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php
@@ -15000,7 +15000,7 @@ msgstr "וענדעמיאר"
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
-msgstr "וונדמייר"
+msgstr "וענדעמיאר"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php

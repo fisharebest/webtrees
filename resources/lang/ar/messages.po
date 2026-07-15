@@ -1216,7 +1216,7 @@ msgstr "أدار"
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
-msgstr "آدار"
+msgstr "أدار"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
@@ -1240,7 +1240,7 @@ msgstr "أدار الأول"
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr "آدار الأول"
+msgstr "أدار الأول"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
@@ -1264,7 +1264,7 @@ msgstr "أدار الثاني"
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr "آدار الثاني"
+msgstr "أدار الثاني"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
@@ -5152,13 +5152,13 @@ msgstr "إيلول"
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
-msgstr "أيلول"
+msgstr "إيلول"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Elul"
-msgstr "أيلول"
+msgstr "إيلول"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
@@ -7657,7 +7657,7 @@ msgstr "خُرداد"
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Khordad"
-msgstr "ارديبهشت"
+msgstr "خُرداد"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
@@ -9018,7 +9018,7 @@ msgstr "مُرداد"
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mordad"
-msgstr "تير"
+msgstr "مُرداد"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
@@ -10005,7 +10005,7 @@ msgstr "ارديبهشت"
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
-msgstr "فروردين"
+msgstr "ارديبهشت"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
@@ -13167,13 +13167,13 @@ msgstr "طِيبيت"
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
-msgstr "طيبيت"
+msgstr "طِيبيت"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tevet"
-msgstr "طيبيت"
+msgstr "طِيبيت"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
@@ -14362,7 +14362,7 @@ msgstr "تير"
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Tir"
-msgstr "خُرداد"
+msgstr "تير"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
@@ -15105,19 +15105,19 @@ msgstr "الفاتيكان"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
-msgstr "فاندمير"
+msgstr "فاندميير"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
-msgstr "فاندمير"
+msgstr "فاندميير"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
-msgstr "فاندمير"
+msgstr "فاندميير"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php

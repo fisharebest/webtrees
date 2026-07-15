@@ -7548,7 +7548,7 @@ msgstr "julhet"
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumad-al-awwal"
+msgstr "Jumada-al-awwal"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
@@ -7611,7 +7611,7 @@ msgstr "junh"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "June"
-msgstr ""
+msgstr "junh"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
@@ -18333,25 +18333,25 @@ msgstr ""
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: A button label, last page
 #: resources/views/admin/trees-preferences.phtml

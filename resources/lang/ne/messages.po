@@ -1157,49 +1157,49 @@ msgstr "अडार"
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar I"
-msgstr "अडार I"
+msgstr "अडार १"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr "अडार I"
+msgstr "अडार १"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar I"
-msgstr "अडार I"
+msgstr "अडार १"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr "अडार I"
+msgstr "अडार १"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar II"
-msgstr "अडार II"
+msgstr "अडार २"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr "अडार II"
+msgstr "अडार २"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar II"
-msgstr "अडार II"
+msgstr "अडार २"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr "अडार II"
+msgstr "अडार २"
 
 #: app/Http/RequestHandlers/MapDataAdd.php
 msgid "Add"
@@ -5216,7 +5216,7 @@ msgstr "इएसफ"
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Esfand"
-msgstr "एसफान्ड"
+msgstr "इस्फान्ड"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
@@ -5943,7 +5943,7 @@ msgstr "फ्ल्यान्डर्स"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
-msgstr "Floreal (फूल)"
+msgstr "फ्लोरियल"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
@@ -18079,25 +18079,25 @@ msgstr ""
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "पूरक दिनहरू"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr ""
+msgstr "पूरक दिनहरू"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "पूरक दिनहरू"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "पूरक दिनहरू"
 
 #. I18N: A button label, last page
 #: resources/views/admin/trees-preferences.phtml

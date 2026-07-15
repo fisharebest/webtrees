@@ -18121,19 +18121,19 @@ msgstr "invertovať výber"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr "doplnkového dňa"
+msgstr "doplnkový deň"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr "doplnkovým dňom"
+msgstr "doplnkový deň"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr "doplnkovom dni"
+msgstr "doplnkový deň"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php

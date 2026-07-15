@@ -1188,7 +1188,7 @@ msgstr "Adar I"
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr "Ադար Ի"
+msgstr "Ադար Ա"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
@@ -1215,7 +1215,7 @@ msgstr "Adar II"
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr "Ադար II"
+msgstr "Ադար Բ"
 
 #: app/Http/RequestHandlers/MapDataAdd.php
 msgid "Add"
@@ -1964,7 +1964,7 @@ msgstr "ապր"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "April"
-msgstr "ապրիլին"
+msgstr "ապրիլ"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -1974,7 +1974,7 @@ msgstr "ապրիլ"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "April"
-msgstr "ապրիլին"
+msgstr "ապրիլ"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -2124,7 +2124,7 @@ msgstr "օգ"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "August"
-msgstr "օգոստոսին"
+msgstr "օգոստոս"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -2134,7 +2134,7 @@ msgstr "օգոստոս"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "August"
-msgstr "օգոստոսին"
+msgstr "օգոստոս"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -4546,7 +4546,7 @@ msgstr "դեկտ"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "December"
-msgstr "դեկտեմբերին"
+msgstr "դեկտեմբեր"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -4556,7 +4556,7 @@ msgstr "դեկտեմբեր"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "December"
-msgstr "դեկտեմբերին"
+msgstr "դեկտեմբեր"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -4771,7 +4771,7 @@ msgstr "Դեյ"
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Զուլ-Հիջա"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
@@ -4791,7 +4791,7 @@ msgstr "Dhu al-Hijjah"
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Զուլ-Հիջա"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
@@ -5815,7 +5815,7 @@ msgstr "փետր"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "February"
-msgstr "փետրվարին"
+msgstr "փետրվար"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -5825,7 +5825,7 @@ msgstr "փետրվար"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "February"
-msgstr "փետրվարին"
+msgstr "փետրվար"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -7414,7 +7414,7 @@ msgstr "հուն"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "January"
-msgstr "հունվարին"
+msgstr "հունվար"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -7424,7 +7424,7 @@ msgstr "հունվար"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "January"
-msgstr "հունվարին"
+msgstr "հունվար"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -7482,7 +7482,7 @@ msgstr "Ջուլիան"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "July"
-msgstr "հուլիսին"
+msgstr "հուլիս"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -7492,7 +7492,7 @@ msgstr "հուլիս"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "July"
-msgstr "հուլիսին"
+msgstr "հուլիս"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -7505,7 +7505,7 @@ msgstr "հուլիս"
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "Ջումադա ալ-Ավվալ"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
@@ -7525,13 +7525,13 @@ msgstr "Jumada al-awwal"
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "Ջումադա ալ-Ավվալ"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "Ջումադա աս-Սանի"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
@@ -7551,7 +7551,7 @@ msgstr "Jumada al-thani"
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "Ջումադա աս-Սանի"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "Abbreviation for June"
@@ -7561,7 +7561,7 @@ msgstr "հուն"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "June"
-msgstr "հունիսին"
+msgstr "հունիս"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -7571,7 +7571,7 @@ msgstr "հունիս"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "June"
-msgstr "հունիսին"
+msgstr "հունիս"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -8318,7 +8318,7 @@ msgstr "Մարտ"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "March"
-msgstr "մարտին"
+msgstr "մարտ"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -8328,7 +8328,7 @@ msgstr "մարտ"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "March"
-msgstr "մարտին"
+msgstr "մարտ"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -8573,7 +8573,7 @@ msgstr "մայիս"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "May"
-msgstr "մայիսին"
+msgstr "մայիս"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -8583,7 +8583,7 @@ msgstr "մայիս"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr "մայիսին"
+msgstr "մայիս"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -9128,7 +9128,7 @@ msgstr "Մոզամբիկ"
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "Մուհարամ"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php
@@ -9141,13 +9141,13 @@ msgstr "Muharram"
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "Մուհարամ"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "Մուհարամ"
 
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php
@@ -9406,7 +9406,7 @@ msgstr "Nissan"
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Nissan"
-msgstr "Նիսաn"
+msgstr "Նիսան"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -9744,7 +9744,7 @@ msgstr "նոյ"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "November"
-msgstr "նոյեմբերին"
+msgstr "նոյեմբեր"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -9754,7 +9754,7 @@ msgstr "նոյեմբեր"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr "նոյեմբերին"
+msgstr "նոյեմբեր"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -9861,7 +9861,7 @@ msgstr "Octidi"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "October"
-msgstr "հոկտեմբերին"
+msgstr "հոկտեմբեր"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -9871,7 +9871,7 @@ msgstr "հոկտեմբեր"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr "հոկտեմբերին"
+msgstr "հոկտեմբեր"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -10602,19 +10602,19 @@ msgstr "սնուցվում է webtrees™"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr "Մարգագետին"
+msgstr "Պրայրիալ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
-msgstr "Մարգագետին"
+msgstr "Պրայրիալ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Prairial"
-msgstr "Մարգագետին"
+msgstr "Պրայրիալ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
@@ -10870,7 +10870,7 @@ msgstr "Rada"
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rajab"
-msgstr "Rajab"
+msgstr "Ռաջաբ"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
@@ -10890,7 +10890,7 @@ msgstr "Rajab"
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rajab"
-msgstr "Rajab"
+msgstr "Ռաջաբ"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -10901,7 +10901,7 @@ msgstr "Raleigh, Հյուսիսային Կարոլինա, Միացյալ Նահ�
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ramadan"
-msgstr "Ramadan"
+msgstr "Ռամադան"
 
 #. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
@@ -10921,7 +10921,7 @@ msgstr "Ramadan"
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
-msgstr "Ramadan"
+msgstr "Ռամադան"
 
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php
@@ -11408,7 +11408,7 @@ msgstr "Սակրամենտո, Կալիֆորնիա, Ամերիկայի Միաց�
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Safar"
-msgstr "Safar"
+msgstr "Սաֆար"
 
 #. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php
@@ -11421,13 +11421,13 @@ msgstr "Safar"
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Safar"
-msgstr "Safar"
+msgstr "Սաֆար"
 
 #. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Safar"
-msgstr "Safar"
+msgstr "Սաֆար"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php
@@ -11797,7 +11797,7 @@ msgstr "Բաժանում"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "September"
-msgstr "սեպտեմբերին"
+msgstr "սեպտեմբեր"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -11807,7 +11807,7 @@ msgstr "սեպտեմբեր"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "September"
-msgstr "սեպտեմբերին"
+msgstr "սեպտեմբեր"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
@@ -11985,7 +11985,7 @@ msgstr "Բաժնետոմսեր"
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "Շավվալ"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
@@ -12005,7 +12005,7 @@ msgstr "Shawwal"
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "Շավվալ"
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
@@ -18200,19 +18200,19 @@ msgstr "շրջել ընտրությունը"
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr "լրացուցիչ օրեր"
+msgstr "լրացնող օրեր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr "լրացուցիչ օրեր"
+msgstr "լրացնող օրեր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr "լրացուցիչ օրեր"
+msgstr "լրացնող օրեր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php

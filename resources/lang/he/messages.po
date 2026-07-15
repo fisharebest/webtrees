@@ -1952,7 +1952,7 @@ msgstr "אפריל"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "April"
-msgstr "באפריל"
+msgstr "אפריל"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -2112,7 +2112,7 @@ msgstr "אוגוסט"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "August"
-msgstr "באוגוסט"
+msgstr "אוגוסט"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -4523,7 +4523,7 @@ msgstr "דצמבר"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "December"
-msgstr "בדצמבר"
+msgstr "דצמבר"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -5771,7 +5771,7 @@ msgstr "פברואר"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "February"
-msgstr "בפברואר"
+msgstr "פברואר"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -7363,7 +7363,7 @@ msgstr "ינואר"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "January"
-msgstr "בינואר"
+msgstr "ינואר"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -7431,7 +7431,7 @@ msgstr "יוליאני"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "July"
-msgstr "ביולי"
+msgstr "יולי"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -7506,7 +7506,7 @@ msgstr "יוני"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "June"
-msgstr "ביוני"
+msgstr "יוני"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -8256,7 +8256,7 @@ msgstr "מרץ"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "March"
-msgstr "במרץ"
+msgstr "מרץ"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -8511,7 +8511,7 @@ msgstr "מאי"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "May"
-msgstr "במאי"
+msgstr "מאי"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -9670,7 +9670,7 @@ msgstr "נובמבר"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "November"
-msgstr "בנובמבר"
+msgstr "נובמבר"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -9787,7 +9787,7 @@ msgstr "אוקטידי"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "October"
-msgstr "באוקטובר"
+msgstr "אוקטובר"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
@@ -11707,7 +11707,7 @@ msgstr "פִּרוּד"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "September"
-msgstr "בספטמבר"
+msgstr "ספטמבר"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"

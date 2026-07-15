@@ -1970,24 +1970,24 @@ msgstr "Bal"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "April"
-msgstr "Balandžio"
+msgstr "balandžio"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "April"
-msgstr "Balandžio"
+msgstr "balandis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "April"
-msgstr "Balandžio"
+msgstr "balandis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "April"
-msgstr "Balandžio"
+msgstr "balandis"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php
@@ -2130,24 +2130,24 @@ msgstr "Rgp"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "August"
-msgstr "Rugpjūčio"
+msgstr "rugpjūčio"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "August"
-msgstr "Rugpjūčio"
+msgstr "rugpjūtis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "August"
-msgstr "Rugpjūčio"
+msgstr "rugpjūtis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "August"
-msgstr "Rugpjūčio"
+msgstr "rugpjūtis"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -4542,24 +4542,24 @@ msgstr "Grd"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "December"
-msgstr "Gruodžio"
+msgstr "gruodžio"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "December"
-msgstr "Gruodžio"
+msgstr "gruodis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "December"
-msgstr "Gruodžio"
+msgstr "gruodis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "December"
-msgstr "Gruodžio"
+msgstr "gruodis"
 
 #. I18N: The tenth day in the French republican calendar
 #: app/Date/FrenchDate.php
@@ -5790,24 +5790,24 @@ msgstr "Vas"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "February"
-msgstr "Vasario"
+msgstr "vasario"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "February"
-msgstr "Vasario"
+msgstr "vasaris"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "February"
-msgstr "Vasario"
+msgstr "vasaris"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "February"
-msgstr "Vasario"
+msgstr "vasaris"
 
 #: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
 msgid "Female"
@@ -7382,24 +7382,24 @@ msgstr "Sau"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "January"
-msgstr "Sausio"
+msgstr "sausio"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "January"
-msgstr "Sausio"
+msgstr "sausis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "January"
-msgstr "Sausio"
+msgstr "sausis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "January"
-msgstr "Sausio"
+msgstr "sausis"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7450,24 +7450,24 @@ msgstr "Julijaus"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "July"
-msgstr "Liepos"
+msgstr "liepos"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "July"
-msgstr "Liepos"
+msgstr "liepa"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "July"
-msgstr "Liepos"
+msgstr "liepa"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "July"
-msgstr "Liepos"
+msgstr "liepa"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
@@ -7525,24 +7525,24 @@ msgstr "Bir"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "June"
-msgstr "Birželio"
+msgstr "birželio"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "June"
-msgstr "Birželio"
+msgstr "birželis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "June"
-msgstr "Birželio"
+msgstr "birželis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "June"
-msgstr "Birželio"
+msgstr "birželis"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -8275,24 +8275,24 @@ msgstr "Kov"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "March"
-msgstr "Kovo"
+msgstr "kovo"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "March"
-msgstr "Kovo"
+msgstr "kovas"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "March"
-msgstr "Kovo"
+msgstr "kovas"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "March"
-msgstr "Kovo"
+msgstr "kovas"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -8530,24 +8530,24 @@ msgstr "Geg"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "May"
-msgstr "Gegužės"
+msgstr "gegužės"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "May"
-msgstr "Gegužės"
+msgstr "gegužė"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr "Gegužės"
+msgstr "gegužė"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "May"
-msgstr "Gegužės"
+msgstr "gegužė"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -9691,24 +9691,24 @@ msgstr "Lap"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "November"
-msgstr "Lapkričio"
+msgstr "lapkričio"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr "Lapkričio"
+msgstr "lapkritis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr "Lapkričio"
+msgstr "lapkritis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "November"
-msgstr "Lapkričio"
+msgstr "lapkritis"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9808,24 +9808,24 @@ msgstr "Octidi"
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "October"
-msgstr "Spalio"
+msgstr "spalio"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "October"
-msgstr "Spalio"
+msgstr "spalis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr "Spalio"
+msgstr "spalis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "October"
-msgstr "Spalio"
+msgstr "spalis"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -11729,24 +11729,24 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "GENITIVE"
 msgid "September"
-msgstr "Rugsėjo"
+msgstr "rugsėjo"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "INSTRUMENTAL"
 msgid "September"
-msgstr "Rugsėjo"
+msgstr "rugsėjis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 msgctxt "LOCATIVE"
 msgid "September"
-msgstr "Rugsėjo"
+msgstr "rugsėjis"
 
 #: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "September"
-msgstr "Rugsėjo"
+msgstr "rugsėjis"
 
 #. I18N: The seventh day in the French republican calendar
 #: app/Date/FrenchDate.php
