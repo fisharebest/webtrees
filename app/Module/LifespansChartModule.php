@@ -242,7 +242,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         $subtitle = I18N::plural('%s individual', '%s individuals', $count, I18N::number($count));
 
         $html = view('modules/lifespans-chart/chart', [
-            'dir'        => I18N::direction(),
+            'text_direction' => I18N::textDirection(),
             'end_year'   => $end_year,
             'lifespans'  => $lifespans,
             'max_rows'   => $max_rows,

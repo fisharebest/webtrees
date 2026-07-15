@@ -70,9 +70,11 @@ class Relationship
     /**
      * Allow fluent constructor.
      */
-    public static function fixed(string $nominative, string $genitive): Relationship
+    public static function fixed(string $nominative, string $genitive, string $genitiveFemale = ''): Relationship
     {
-        return new self(fn () => [$nominative, $genitive]);
+        return new self(fn () => $genitiveFemale !== ''
+            ? [$nominative, $genitive, $genitiveFemale]
+            : [$nominative, $genitive]);
     }
 
     /**
@@ -309,6 +311,17 @@ class Relationship
         return $this->sex('M');
     }
 
+    /**
+     * Match when self (the first individual in the path) is female.
+     * Must be placed first in the matcher chain.
+     */
+    public function selfFemale(): Relationship
+    {
+        $this->matchers[] = static fn (array $nodes): bool => $nodes[0]->sex() === 'F';
+
+        return $this;
+    }
+
     public function mother(): Relationship
     {
         return $this->relation([self::MOTHER]);
@@ -318,7 +331,7 @@ class Relationship
     {
         $this->matchers[] = static function (array $nodes): bool {
             $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
-            $date2 = $nodes[2]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date2 = $nodes[count($nodes) - 1]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
 
             return Date::compare($date1, $date2) > 0;
         };
@@ -397,7 +410,7 @@ class Relationship
     {
         $this->matchers[] = static function (array $nodes): bool {
             $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
-            $date2 = $nodes[2]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date2 = $nodes[count($nodes) - 1]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
 
             return
                 $date1->isOK() &&
@@ -419,7 +432,7 @@ class Relationship
     {
         $this->matchers[] = static function (array $nodes): bool {
             $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
-            $date2 = $nodes[2]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date2 = $nodes[count($nodes) - 1]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
 
             return Date::compare($date1, $date2) < 0;
         };

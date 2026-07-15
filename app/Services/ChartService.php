@@ -70,6 +70,56 @@ class ChartService
     }
 
     /**
+     * Find the ancestors of an individual, indexed by their Sosa-Stradonitz number.
+     * Each ancestor contains a path from the starting individual to that ancestor,
+     * for use by the relationship-name algorithm.
+     *
+     * @param Individual $individual  Start with this individual
+     * @param int        $generations Fetch this number of generations
+     *
+     * @return array<int,array<int,Individual|Family>>
+     */
+    public function sosaStradonitzAncestorPaths(Individual $individual, int $generations): array
+    {
+        $ancestors = [1 => [$individual]];
+
+        $queue = [1];
+
+        $max = 2 ** ($generations - 1);
+
+        while ($queue !== []) {
+            $sosa_stradonitz_number = array_shift($queue);
+
+            if ($sosa_stradonitz_number >= $max) {
+                break;
+            }
+
+            $path   = $ancestors[$sosa_stradonitz_number];
+            $end    = $path[array_key_last($path)];
+            $family = $end->childFamilies()->first();
+
+            if ($family instanceof Family) {
+                if ($family->husband() instanceof Individual && $individual->canShow()) {
+                    $path   = $ancestors[$sosa_stradonitz_number];
+                    $path[] = $family;
+                    $path[] = $family->husband();
+                    $ancestors[$sosa_stradonitz_number * 2] = $path;
+                    $queue[] = $sosa_stradonitz_number * 2;
+                }
+
+                if ($family->wife() instanceof Individual && $individual->canShow()) {
+                    $path   = $ancestors[$sosa_stradonitz_number];
+                    $path[] = $family;
+                    $path[] = $family->wife();
+                    $ancestors[$sosa_stradonitz_number * 2 + 1] = $path;
+                }
+            }
+        }
+
+        return $ancestors;
+    }
+
+    /**
      * Find the descendants of an individual.
      *
      * @param Individual $individual  Start with this individual

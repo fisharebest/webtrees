@@ -19,23 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleEnAu;
-use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\I18N\Languages\EnglishAustralia;
 
 class LanguageEnglishAustralia extends LanguageEnglishGreatBritain
 {
+    public function __construct()
+    {
+        $this->language = new EnglishAustralia();
+    }
+
     public function isEnabledByDefault(): bool
     {
         return false;
-    }
-
-    public function dateOrder(): string
-    {
-        return 'DMY';
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleEnAu();
     }
 }

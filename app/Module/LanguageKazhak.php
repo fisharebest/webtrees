@@ -19,61 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleKk;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\I18N\Languages\Kazhak;
 
 class LanguageKazhak extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            UTF8::CYRILLIC_CAPITAL_LETTER_A,
-            UTF8::CYRILLIC_CAPITAL_LETTER_BE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_VE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_GHE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_DE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_IE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_IO,
-            UTF8::CYRILLIC_CAPITAL_LETTER_ZHE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_ZE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_I,
-            UTF8::CYRILLIC_CAPITAL_LETTER_SHORT_I,
-            UTF8::CYRILLIC_CAPITAL_LETTER_KA,
-            UTF8::CYRILLIC_CAPITAL_LETTER_EL,
-            UTF8::CYRILLIC_CAPITAL_LETTER_EM,
-            UTF8::CYRILLIC_CAPITAL_LETTER_EN,
-            UTF8::CYRILLIC_CAPITAL_LETTER_O,
-            UTF8::CYRILLIC_CAPITAL_LETTER_PE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_ER,
-            UTF8::CYRILLIC_CAPITAL_LETTER_ES,
-            UTF8::CYRILLIC_CAPITAL_LETTER_TE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_U,
-            UTF8::CYRILLIC_CAPITAL_LETTER_EF,
-            UTF8::CYRILLIC_CAPITAL_LETTER_HA,
-            UTF8::CYRILLIC_CAPITAL_LETTER_TSE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_CHE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_SHA,
-            UTF8::CYRILLIC_CAPITAL_LETTER_SHCHA,
-            UTF8::CYRILLIC_CAPITAL_LETTER_HARD_SIGN,
-            UTF8::CYRILLIC_CAPITAL_LETTER_YERU,
-            UTF8::CYRILLIC_CAPITAL_LETTER_SOFT_SIGN,
-            UTF8::CYRILLIC_CAPITAL_LETTER_E,
-            UTF8::CYRILLIC_CAPITAL_LETTER_YU,
-            UTF8::CYRILLIC_CAPITAL_LETTER_YA,
-        ];
+        $this->language = new Kazhak();
     }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleKk();
-    }
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

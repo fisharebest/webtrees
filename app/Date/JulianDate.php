@@ -20,31 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Date;
 
 use Fisharebest\ExtCalendar\JulianCalendar;
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Enums\CalendarEscape;
 
-/**
- * Definitions for proleptic Julian dates.
- */
-class JulianDate extends AbstractGregorianJulianDate
+final class JulianDate extends AbstractGregorianJulianDate
 {
-    // GEDCOM calendar escape
-    public const string ESCAPE = '@#DJULIAN@';
-
-    // For dates recorded in new-style/old-style format, e.g. 2 FEB 1743/44
-    private bool $new_old_style = false;
-
-    /**
-     * Create a date from either:
-     * a Julian day number
-     * day/month/year strings from a GEDCOM date
-     * another CalendarDate object
-     *
-     * @param array<string>|int|AbstractCalendarDate $date
-     */
     public function __construct($date)
     {
-        $this->calendar = new JulianCalendar();
-        parent::__construct($date);
+        parent::__construct($date, new JulianCalendar(), CalendarEscape::Julian);
     }
 
     /**
@@ -76,39 +58,5 @@ class JulianDate extends AbstractGregorianJulianDate
         }
 
         return (int) $year;
-    }
-
-    /**
-     * Generate the %Y format for a date.
-     */
-    protected function formatLongYear(): string
-    {
-        if ($this->year < 0) {
-            return /*  I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era */
-                I18N::translate('%s ʙᴄᴇ', I18N::digits(-$this->year));
-        }
-
-        if ($this->new_old_style) {
-            return I18N::translate('%s ᴄᴇ', I18N::digits(sprintf('%d/%02d', $this->year - 1, $this->year % 100)));
-        }
-
-        /* I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era */
-        return I18N::translate('%s ᴄᴇ', I18N::digits($this->year));
-    }
-
-    /**
-     * Generate the %E format for a date.
-     */
-    protected function formatGedcomYear(): string
-    {
-        if ($this->year < 0) {
-            return sprintf('%04d B.C.', -$this->year);
-        }
-
-        if ($this->new_old_style) {
-            return sprintf('%04d/%02d', $this->year - 1, $this->year % 100);
-        }
-
-        return sprintf('%04d', $this->year);
     }
 }

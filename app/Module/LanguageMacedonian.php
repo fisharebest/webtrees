@@ -19,61 +19,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleMk;
-use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\I18N\Languages\Macedonian;
 
 class LanguageMacedonian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            UTF8::CYRILLIC_CAPITAL_LETTER_A,
-            UTF8::CYRILLIC_CAPITAL_LETTER_BE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_VE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_GHE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_DE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_GJE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_IE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_ZHE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_ZE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_DZE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_I,
-            UTF8::CYRILLIC_CAPITAL_LETTER_SHORT_I,
-            UTF8::CYRILLIC_CAPITAL_LETTER_KA,
-            UTF8::CYRILLIC_CAPITAL_LETTER_EL,
-            UTF8::CYRILLIC_CAPITAL_LETTER_LJE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_EM,
-            UTF8::CYRILLIC_CAPITAL_LETTER_EN,
-            UTF8::CYRILLIC_CAPITAL_LETTER_NJE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_O,
-            UTF8::CYRILLIC_CAPITAL_LETTER_PE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_ER,
-            UTF8::CYRILLIC_CAPITAL_LETTER_ES,
-            UTF8::CYRILLIC_CAPITAL_LETTER_TE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_KJE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_U,
-            UTF8::CYRILLIC_CAPITAL_LETTER_EF,
-            UTF8::CYRILLIC_CAPITAL_LETTER_HA,
-            UTF8::CYRILLIC_CAPITAL_LETTER_TSE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_CHE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_DZHE,
-            UTF8::CYRILLIC_CAPITAL_LETTER_SHA,
-        ];
+        $this->language = new Macedonian();
     }
-
     public function isEnabledByDefault(): bool
     {
         return false;
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleMk();
     }
 }

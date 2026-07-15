@@ -19,31 +19,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Date;
 
+use Fisharebest\ExtCalendar\JulianCalendar;
+use Fisharebest\Webtrees\Enums\CalendarEscape;
+
 /**
- * Definitions for Roman dates.
- *
- * The 5.5.1 gedcom spec mentions this calendar, but gives no details of
- * how it is to be represented.... This class is just a place holder so that
+ * The 5.5.1 gedcom spec mentions this calendar but gives no details of
+ * how it is to be represented... This class is just a placeholder so that
  * webtrees won’t complain if it receives one.
  */
-class RomanDate extends JulianDate
+final class RomanDate extends AbstractGregorianJulianDate
 {
-    // GEDCOM calendar escape
-    public const string ESCAPE = '@#DROMAN@';
-
-    /**
-     * Generate the %E format for a date.
-     */
-    protected function formatGedcomYear(): string
+    public function __construct($date)
     {
-        return sprintf('%04d AUC', $this->year);
-    }
-
-    /**
-     * Generate the %Y format for a date.
-     */
-    protected function formatLongYear(): string
-    {
-        return $this->year . ' ᴀᴜᴄ';
+        parent::__construct($date, new JulianCalendar(), CalendarEscape::Roman);
     }
 }

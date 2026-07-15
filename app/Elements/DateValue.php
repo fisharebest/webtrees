@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
-use function e;
 use function preg_replace_callback;
 use function view;
 

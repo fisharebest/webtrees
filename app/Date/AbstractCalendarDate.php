@@ -21,19 +21,13 @@ namespace Fisharebest\Webtrees\Date;
 
 use Fisharebest\ExtCalendar\CalendarInterface;
 use Fisharebest\ExtCalendar\JewishCalendar;
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Enums\CalendarEscape;
 use Fisharebest\Webtrees\Registry;
 use InvalidArgumentException;
 
-use function get_class;
 use function intdiv;
 use function is_array;
 use function is_int;
-use function preg_match;
-use function sprintf;
-use function str_contains;
-use function strtr;
-use function trim;
 
 /**
  * Classes for Gedcom Date/Calendar functionality.
@@ -49,14 +43,11 @@ use function trim;
  */
 abstract class AbstractCalendarDate
 {
-    // GEDCOM calendar escape
-    public const string ESCAPE = '@#DUNKNOWN@';
+    /** @var array<string,int>  */
+    public const array MONTH_TO_NUMBER = [];
 
-    // Convert GEDCOM month names to month numbers.
-    protected const array MONTH_TO_NUMBER = [];
-    protected const array NUMBER_TO_MONTH = [];
-
-    protected CalendarInterface $calendar;
+    /** @var array<int,string>  */
+    public const array NUMBER_TO_MONTH = [];
 
     public int $year;
 
@@ -68,6 +59,10 @@ abstract class AbstractCalendarDate
 
     private int $maximum_julian_day;
 
+    // For dates recorded in new-style/old-style format, e.g. 2 FEB 1743/44
+    // Only used by Julian dates.
+    public bool $new_old_style = false;
+
     /**
      * Create a date from either:
      * a Julian day number
@@ -76,8 +71,11 @@ abstract class AbstractCalendarDate
      *
      * @param array<string>|int|AbstractCalendarDate $date
      */
-    public function __construct(array|int|AbstractCalendarDate $date)
-    {
+    protected function __construct(
+        array|int|AbstractCalendarDate $date,
+        private CalendarInterface $calendar,
+        private CalendarEscape $calendar_escape,
+    ) {
         // Construct from an integer (a julian day number)
         if (is_int($date)) {
             $this->minimum_julian_day = $date;
@@ -113,7 +111,7 @@ abstract class AbstractCalendarDate
         $this->maximum_julian_day = $date->maximum_julian_day;
 
         // Construct from an equivalent xxxxDate object
-        if (get_class($this) === get_class($date)) {
+        if ($this->calendar_escape === $date->calendar_escape) {
             $this->year  = $date->year;
             $this->month = $date->month;
             $this->day   = $date->day;
@@ -153,6 +151,11 @@ abstract class AbstractCalendarDate
         $this->setJdFromYmd();
     }
 
+    public function calendarEscape(): CalendarEscape
+    {
+        return $this->calendar_escape;
+    }
+
     public function maximumJulianDay(): int
     {
         return $this->maximum_julian_day;
@@ -166,6 +169,11 @@ abstract class AbstractCalendarDate
     public function month(): int
     {
         return $this->month;
+    }
+
+    public function gedcomMonth(): string
+    {
+        return static::NUMBER_TO_MONTH[$this->month];
     }
 
     public function day(): int
@@ -205,49 +213,6 @@ abstract class AbstractCalendarDate
             $this->minimum_julian_day = $this->calendar->ymdToJd($this->year, $this->month, $this->day);
             $this->maximum_julian_day = $this->minimum_julian_day;
         }
-    }
-
-    /**
-     * Full day of the week
-     *
-     * @param int<0,6> $day_number
-     */
-    public function dayNames(int $day_number): string
-    {
-        return match ($day_number) {
-            0 => I18N::translate('Monday'),
-            1 => I18N::translate('Tuesday'),
-            2 => I18N::translate('Wednesday'),
-            3 => I18N::translate('Thursday'),
-            4 => I18N::translate('Friday'),
-            5 => I18N::translate('Saturday'),
-            6 => I18N::translate('Sunday'),
-        };
-    }
-
-    /**
-     * Abbreviated day of the week
-     *
-     * @param int<0,6> $day_number
-     */
-    protected function dayNamesAbbreviated(int $day_number): string
-    {
-        return match ($day_number) {
-            /* I18N: abbreviation for Monday */
-            0 => I18N::translate('Mon'),
-            /* I18N: abbreviation for Tuesday */
-            1 => I18N::translate('Tue'),
-            /* I18N: abbreviation for Wednesday */
-            2 => I18N::translate('Wed'),
-            /* I18N: abbreviation for Thursday */
-            3 => I18N::translate('Thu'),
-            /* I18N: abbreviation for Friday */
-            4 => I18N::translate('Fri'),
-            /* I18N: abbreviation for Saturday */
-            5 => I18N::translate('Sat'),
-            /* I18N: abbreviation for Sunday */
-            6 => I18N::translate('Sun'),
-        };
     }
 
     /**
@@ -348,7 +313,7 @@ abstract class AbstractCalendarDate
     }
 
     /**
-     * Is this date within the valid range of the calendar
+     * Is this date within the valid range of the calendar?
      */
     public function inValidRange(): bool
     {
@@ -386,336 +351,7 @@ abstract class AbstractCalendarDate
     }
 
     /**
-     * Format a date, using similar codes to the PHP date() function.
-     *
-     * @param string $format    See https://php.net/date
-     * @param string $qualifier GEDCOM qualifier, so we can choose the right case for the month name.
-     */
-    public function format(string $format, string $qualifier = ''): string
-    {
-        // Dates can include additional punctuation and symbols. e.g.
-        // %F %j, %Y
-        // %Y. %F %d.
-        // %Y年 %n月 %j日
-        // %j. %F %Y
-        // Don’t show exact details or unnecessary punctuation for inexact dates.
-        if ($this->day === 0) {
-            $format = strtr($format, ['%d' => '', '日' => '', '%j,' => '', '%j' => '', '%l' => '', '%D' => '', '%N' => '', '%S' => '', '%w' => '', '%z' => '']);
-        }
-        if ($this->month === 0) {
-            $format = strtr($format, ['%F' => '', '%m' => '', '%M' => '', '月' => '', '%n' => '', '%t' => '']);
-        }
-        if ($this->year === 0) {
-            $format = strtr($format, ['%t' => '', '%L' => '', '%G' => '', '%y' => '', '年' => '', '%Y' => '']);
-        }// 年 %n月%j日
-        $format = trim($format, ',. /-');
-        // Collapse any runs of whitespace left after removing empty components
-        $format = preg_replace('/\s{2,}/', ' ', $format);
-
-        if ($this->day !== 0 && preg_match('/%[djlDNSwz]/', $format)) {
-            // If we have a day-number *and* we are being asked to display it, then genitive
-            $case = 'GENITIVE';
-        } else {
-            switch ($qualifier) {
-                case 'TO':
-                case 'ABT':
-                case 'FROM':
-                    $case = 'GENITIVE';
-                    break;
-                case 'AFT':
-                    $case = 'LOCATIVE';
-                    break;
-                case 'BEF':
-                case 'BET':
-                case 'AND':
-                    $case = 'INSTRUMENTAL';
-                    break;
-                case '':
-                case 'INT':
-                case 'EST':
-                case 'CAL':
-                default: // There shouldn't be any other options...
-                    $case = 'NOMINATIVE';
-                    break;
-            }
-        }
-        // Build up the formatted date, character at a time
-        if (str_contains($format, '%d')) {
-            $format = strtr($format, ['%d' => $this->formatDayZeros()]);
-        }
-        if (str_contains($format, '%j')) {
-            $format = strtr($format, ['%j' => $this->formatDay()]);
-        }
-        if (str_contains($format, '%l')) {
-            $format = strtr($format, ['%l' => $this->formatLongWeekday()]);
-        }
-        if (str_contains($format, '%D')) {
-            $format = strtr($format, ['%D' => $this->formatShortWeekday()]);
-        }
-        if (str_contains($format, '%N')) {
-            $format = strtr($format, ['%N' => $this->formatIsoWeekday()]);
-        }
-        if (str_contains($format, '%w')) {
-            $format = strtr($format, ['%w' => $this->formatNumericWeekday()]);
-        }
-        if (str_contains($format, '%z')) {
-            $format = strtr($format, ['%z' => $this->formatDayOfYear()]);
-        }
-        if (str_contains($format, '%F')) {
-            $format = strtr($format, ['%F' => $this->formatLongMonth($case)]);
-        }
-        if (str_contains($format, '%m')) {
-            $format = strtr($format, ['%m' => $this->formatMonthZeros()]);
-        }
-        if (str_contains($format, '%M')) {
-            $format = strtr($format, ['%M' => $this->formatShortMonth()]);
-        }
-        if (str_contains($format, '%n')) {
-            $format = strtr($format, ['%n' => $this->formatMonth()]);
-        }
-        if (str_contains($format, '%t')) {
-            $format = strtr($format, ['%t' => (string) $this->daysInMonth()]);
-        }
-        if (str_contains($format, '%L')) {
-            $format = strtr($format, ['%L' => $this->isLeapYear() ? '1' : '0']);
-        }
-        if (str_contains($format, '%Y')) {
-            $format = strtr($format, ['%Y' => $this->formatLongYear()]);
-        }
-        if (str_contains($format, '%y')) {
-            $format = strtr($format, ['%y' => $this->formatShortYear()]);
-        }
-        // These 4 extensions are useful for re-formatting gedcom dates.
-        if (str_contains($format, '%@')) {
-            $format = strtr($format, ['%@' => $this->formatGedcomCalendarEscape()]);
-        }
-        if (str_contains($format, '%A')) {
-            $format = strtr($format, ['%A' => $this->formatGedcomDay()]);
-        }
-        if (str_contains($format, '%O')) {
-            $format = strtr($format, ['%O' => $this->formatGedcomMonth()]);
-        }
-        if (str_contains($format, '%E')) {
-            $format = strtr($format, ['%E' => $this->formatGedcomYear()]);
-        }
-
-        return $format;
-    }
-
-    /**
-     * Generate the %d format for a date.
-     */
-    protected function formatDayZeros(): string
-    {
-        if ($this->day > 9) {
-            return I18N::digits($this->day);
-        }
-
-        return I18N::digits('0' . $this->day);
-    }
-
-    /**
-     * Generate the %j format for a date.
-     */
-    protected function formatDay(): string
-    {
-        return I18N::digits($this->day);
-    }
-
-    /**
-     * Generate the %l format for a date.
-     */
-    protected function formatLongWeekday(): string
-    {
-        return $this->dayNames($this->minimum_julian_day % $this->calendar->daysInWeek());
-    }
-
-    /**
-     * Generate the %D format for a date.
-     */
-    protected function formatShortWeekday(): string
-    {
-        return $this->dayNamesAbbreviated($this->minimum_julian_day % $this->calendar->daysInWeek());
-    }
-
-    /**
-     * Generate the %N format for a date.
-     */
-    protected function formatIsoWeekday(): string
-    {
-        return I18N::digits($this->minimum_julian_day % 7 + 1);
-    }
-
-    /**
-     * Generate the %w format for a date.
-     */
-    protected function formatNumericWeekday(): string
-    {
-        return I18N::digits(($this->minimum_julian_day + 1) % $this->calendar->daysInWeek());
-    }
-
-    /**
-     * Generate the %z format for a date.
-     */
-    protected function formatDayOfYear(): string
-    {
-        return I18N::digits($this->minimum_julian_day - $this->calendar->ymdToJd($this->year, 1, 1));
-    }
-
-    /**
-     * Generate the %n format for a date.
-     */
-    protected function formatMonth(): string
-    {
-        return I18N::digits($this->month);
-    }
-
-    /**
-     * Generate the %m format for a date.
-     */
-    protected function formatMonthZeros(): string
-    {
-        if ($this->month > 9) {
-            return I18N::digits($this->month);
-        }
-
-        return I18N::digits('0' . $this->month);
-    }
-
-    /**
-     * Generate the %F format for a date.
-     *
-     * @param string $case Which grammatical case shall we use
-     */
-    protected function formatLongMonth(string $case = 'NOMINATIVE'): string
-    {
-        switch ($case) {
-            case 'GENITIVE':
-                return $this->monthNameGenitiveCase($this->month, $this->isLeapYear());
-            case 'NOMINATIVE':
-                return $this->monthNameNominativeCase($this->month, $this->isLeapYear());
-            case 'LOCATIVE':
-                return $this->monthNameLocativeCase($this->month, $this->isLeapYear());
-            case 'INSTRUMENTAL':
-                return $this->monthNameInstrumentalCase($this->month, $this->isLeapYear());
-            default:
-                throw new InvalidArgumentException($case);
-        }
-    }
-
-    /**
-     * Full month name in genitive case.
-     *
-     * @param int<0,13> $month
-     * @param bool $leap_year Some calendars use leap months
-     */
-    abstract protected function monthNameGenitiveCase(int $month, bool $leap_year): string;
-
-    /**
-     * Full month name in nominative case.
-     *
-     * @param int<0,13> $month
-     * @param bool $leap_year Some calendars use leap months
-     */
-    abstract protected function monthNameNominativeCase(int $month, bool $leap_year): string;
-
-    /**
-     * Full month name in locative case.
-     *
-     * @param int<0,13> $month
-     * @param bool $leap_year Some calendars use leap months
-     */
-    abstract protected function monthNameLocativeCase(int $month, bool $leap_year): string;
-
-    /**
-     * Full month name in instrumental case.
-     *
-     * @param int<0,13> $month
-     * @param bool $leap_year Some calendars use leap months
-     */
-    abstract protected function monthNameInstrumentalCase(int $month, bool $leap_year): string;
-
-    /**
-     * Abbreviated month name
-     *
-     * @param int<0,13> $month
-     * @param bool $leap_year Some calendars use leap months
-     */
-    abstract protected function monthNameAbbreviated(int $month, bool $leap_year): string;
-
-    /**
-     * Generate the %M format for a date.
-     */
-    protected function formatShortMonth(): string
-    {
-        return $this->monthNameAbbreviated($this->month, $this->isLeapYear());
-    }
-
-    /**
-     * Generate the %y format for a date.
-     * NOTE Short year is NOT a 2-digit year. It is for calendars such as hebrew
-     * which have a 3-digit form of 4-digit years.
-     */
-    protected function formatShortYear(): string
-    {
-        return $this->formatLongYear();
-    }
-
-    /**
-     * Generate the %A format for a date.
-     */
-    protected function formatGedcomDay(): string
-    {
-        if ($this->day === 0) {
-            return '';
-        }
-
-        return sprintf('%02d', $this->day);
-    }
-
-    /**
-     * Generate the %O format for a date.
-     */
-    protected function formatGedcomMonth(): string
-    {
-        // Our simple lookup table doesn't work correctly for Adar on leap years
-        if ($this->month === 7 && $this->calendar instanceof JewishCalendar && !$this->calendar->isLeapYear($this->year)) {
-            return 'ADR';
-        }
-
-        return static::NUMBER_TO_MONTH[$this->month] ?? '';
-    }
-
-    /**
-     * Generate the %E format for a date.
-     */
-    protected function formatGedcomYear(): string
-    {
-        if ($this->year === 0) {
-            return '';
-        }
-
-        return sprintf('%04d', $this->year);
-    }
-
-    /**
-     * Generate the %@ format for a calendar escape.
-     */
-    protected function formatGedcomCalendarEscape(): string
-    {
-        return static::ESCAPE;
-    }
-
-    /**
-     * Generate the %Y format for a date.
-     */
-    protected function formatLongYear(): string
-    {
-        return I18N::digits($this->year);
-    }
-
-    /**
-     * Which months follows this one? Calendars with leap-months should provide their own implementation.
+     * Which month follows this one? Calendars with leap-months should provide their own implementation.
      *
      * @return array<int>
      */

@@ -65,7 +65,7 @@ final class Console extends Application
 
     public function bootstrap(): self
     {
-        I18N::init(code: 'en-US', setup: true);
+        I18N::init('en-US');
 
         try {
             $config = parse_ini_file(filename: Webtrees::CONFIG_FILE) ?: [];

@@ -28,7 +28,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_keys;
 use function response;
-use function strip_tags;
 use function view;
 
 final class HelpText implements RequestHandlerInterface

@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Factories\LanguageFactory;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -44,7 +45,7 @@ class AccountEditTest extends TestCase
         $request = self::createRequest()
             ->withAttribute('user', $user);
 
-        $handler  = new AccountEdit($message_service, $module_service);
+        $handler  = new AccountEdit(new LanguageFactory(), $message_service);
         $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());

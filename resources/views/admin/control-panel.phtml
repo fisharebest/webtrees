@@ -508,11 +508,8 @@ use Illuminate\Support\Collection;
                     <?= $label ?>
                 </dt>
                 <dd class="col-sm-6">
-                    <?php foreach ($list as $n => $user) : ?>
-                        <?= $n ? I18N::$list_separator : '' ?>
-                        <a href="<?= e(route(UserEditPage::class, ['user_id' => $user->id()])) ?>" dir="auto">
-                            <?= e($user->realName()) ?>
-                        </a>
+                    <?php foreach ($list as $user) : ?>
+                        <a href="<?= e(route(UserEditPage::class, ['user_id' => $user->id()])) ?>" dir="auto"><?= e($user->realName()) ?></a>
                     <?php endforeach ?>
                     <?php if ($list->isEmpty()) : ?>
                         —

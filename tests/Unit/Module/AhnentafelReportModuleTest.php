@@ -65,7 +65,6 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 
-use function preg_match;
 use function preg_match_all;
 
 #[CoversClass(Cell::class)]

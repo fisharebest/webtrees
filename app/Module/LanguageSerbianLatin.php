@@ -19,65 +19,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleSrLatn;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\I18N\Languages\SerbianLatin;
 
 class LanguageSerbianLatin extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            'A',
-            'B',
-            'C',
-            UTF8::LATIN_CAPITAL_LETTER_C_WITH_CARON,
-            UTF8::LATIN_CAPITAL_LETTER_C_WITH_ACUTE,
-            'D',
-            'D' . UTF8::LATIN_CAPITAL_LETTER_Z_WITH_CARON,
-            UTF8::LATIN_CAPITAL_LETTER_D_WITH_STROKE,
-            'E',
-            'F',
-            'G',
-            'H',
-            'I',
-            'J',
-            'K',
-            'L',
-            'LJ',
-            'M',
-            'N',
-            'NJ',
-            'O',
-            'P',
-            'Q',
-            'R',
-            'S',
-            UTF8::LATIN_CAPITAL_LETTER_S_WITH_CARON,
-            'T',
-            'U',
-            'V',
-            'W',
-            'X',
-            'Y',
-            'Z',
-            UTF8::LATIN_CAPITAL_LETTER_Z_WITH_CARON,
-        ];
+        $this->language = new SerbianLatin();
     }
-
     public function isEnabledByDefault(): bool
     {
         return false;
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleSrLatn();
     }
 
     /**

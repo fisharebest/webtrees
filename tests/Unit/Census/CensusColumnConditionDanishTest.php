@@ -110,6 +110,7 @@ class CensusColumnConditionDanishTest extends TestCase
         $spouse->method('getDeathDate')->willReturn(new Date('1820'));
 
         $family = $this->createMock(Family::class);
+        $family->method('getMarriageDate')->willReturn(new Date(''));
         $family
             ->expects($this->exactly(2))
             ->method('facts')
@@ -140,6 +141,7 @@ class CensusColumnConditionDanishTest extends TestCase
         $spouse->method('getDeathDate')->willReturn(new Date('1820'));
 
         $family = $this->createMock(Family::class);
+        $family->method('getMarriageDate')->willReturn(new Date(''));
         $family
             ->expects($this->exactly(2))
             ->method('facts')
@@ -243,6 +245,7 @@ class CensusColumnConditionDanishTest extends TestCase
         $fact = self::createStub(Fact::class);
 
         $family = $this->createMock(Family::class);
+        $family->method('getMarriageDate')->willReturn(new Date(''));
         $family
             ->expects($this->exactly(2))
             ->method('facts')
@@ -269,6 +272,7 @@ class CensusColumnConditionDanishTest extends TestCase
         $fact = self::createStub(Fact::class);
 
         $family = $this->createMock(Family::class);
+        $family->method('getMarriageDate')->willReturn(new Date(''));
         $family
             ->expects($this->exactly(2))
             ->method('facts')

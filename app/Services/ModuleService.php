@@ -801,24 +801,7 @@ class ModuleService
      */
     private function moduleComparator(): Closure
     {
-        return static function (ModuleInterface $x, ModuleInterface $y): int {
-            $title1 = $x instanceof ModuleLanguageInterface ? $x->locale()->endonymSortable() : $x->title();
-            $title2 = $y instanceof ModuleLanguageInterface ? $y->locale()->endonymSortable() : $y->title();
-
-            return I18N::compare($title1, $title2);
-        };
-    }
-
-    /**
-     * During setup, we'll need access to some languages.
-     *
-     * @return Collection<string,ModuleLanguageInterface>
-     */
-    public function setupLanguages(): Collection
-    {
-        return $this->coreModules()
-            ->whereInstanceOf(ModuleLanguageInterface::class)
-            ->sort(static fn (ModuleLanguageInterface $x, ModuleLanguageInterface $y): int => $x->locale()->endonymSortable() <=> $y->locale()->endonymSortable());
+        return static fn (ModuleInterface $x, ModuleInterface $y): int => I18N::compare($x->title(), $y->title());
     }
 
     /**

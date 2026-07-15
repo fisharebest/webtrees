@@ -19,18 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleFrCa;
-use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\I18N\Languages\FrenchCanada;
 
 class LanguageFrenchCanada extends LanguageFrench
 {
+    public function __construct()
+    {
+        $this->language = new FrenchCanada();
+    }
+
     public function isEnabledByDefault(): bool
     {
         return false;
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleFrCa();
     }
 }

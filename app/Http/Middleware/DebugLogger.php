@@ -28,7 +28,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function memory_get_peak_usage;
 use function sprintf;
-use function Symfony\Component\String\s;
 
 class DebugLogger implements MiddlewareInterface
 {

@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Comparators\IndividualComparator;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\Enums\DateType;
 use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
 use Illuminate\Support\Collection;
 
@@ -420,8 +421,8 @@ class Individual extends GedcomRecord
         $death_date = UTF8::FIRST_STRONG_ISOLATE . $this->getDeathDate()->display() . UTF8::POP_DIRECTIONAL_ISOLATE;
 
         // Use minimum and maximum dates - to agree with the age calculations.
-        $birth_year = $this->getBirthDate()->minimumDate()->format('%Y');
-        $death_year = $this->getDeathDate()->maximumDate()->format('%Y');
+        $birth_year = $this->getBirthDate()->yearOnly()->display();
+        $death_year = $this->getDeathDate()->yearOnly()->display();
 
         if ($birth_year === '') {
             $birth_year = I18N::translate('…');
@@ -612,7 +613,7 @@ class Individual extends GedcomRecord
             if ($this->estimated_death_date === null) {
                 if ($this->getEstimatedBirthDate()->minimumJulianDay() !== 0) {
                     $max_alive_age              = (int) $this->tree->getPreference('MAX_ALIVE_AGE');
-                    $this->estimated_death_date = $this->getEstimatedBirthDate()->addYears($max_alive_age, 'BEF');
+                    $this->estimated_death_date = $this->getEstimatedBirthDate()->addYears($max_alive_age, DateType::Before);
                 } else {
                     $this->estimated_death_date = new Date(''); // always return a date object
                 }

@@ -103,15 +103,15 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                         $hd1->setJdFromYmd();
                         // Special rules. See https://www.hebcal.com/help/anniv.html
                         // Everything else is taken care of by our standard anniversary rules.
-                        if ($hd->day === 30 && $hd->month === 2 && $hd->year !== 0 && $hd1->daysInMonth() < 30) {
+                        if ($hd->day() === 30 && $hd->month() === 2 && $hd->year() !== 0 && $hd1->daysInMonth() < 30) {
                             // 30 CSH - Last day in CSH
-                            $jd_yahrtzeit = $jewish_calendar->ymdToJd($today->year, 3, 1) - 1;
-                        } elseif ($hd->day === 30 && $hd->month === 3 && $hd->year !== 0 && $hd1->daysInMonth() < 30) {
+                            $jd_yahrtzeit = $jewish_calendar->ymdToJd($today->year(), 3, 1) - 1;
+                        } elseif ($hd->day() === 30 && $hd->month() === 3 && $hd->year() !== 0 && $hd1->daysInMonth() < 30) {
                             // 30 KSL - Last day in KSL
-                            $jd_yahrtzeit = $jewish_calendar->ymdToJd($today->year, 4, 1) - 1;
-                        } elseif ($hd->day === 30 && $hd->month === 6 && $hd->year !== 0 && $today->daysInMonth() < 30 && !$today->isLeapYear()) {
+                            $jd_yahrtzeit = $jewish_calendar->ymdToJd($today->year(), 4, 1) - 1;
+                        } elseif ($hd->day === 30 && $hd->month() === 6 && $hd->year() !== 0 && $today->daysInMonth() < 30 && !$today->isLeapYear()) {
                             // 30 ADR - Last day in SHV
-                            $jd_yahrtzeit = $jewish_calendar->ymdToJd($today->year, 6, 1) - 1;
+                            $jd_yahrtzeit = $jewish_calendar->ymdToJd($today->year(), 6, 1) - 1;
                         }
                     }
 
@@ -127,13 +127,12 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                                 $yahrzeit_calendar_date = new JewishDate($jd_yahrtzeit);
                                 break;
                         }
-                        $yahrzeit_date = new Date($yahrzeit_calendar_date->format('%@ %A %O %E'));
 
                         $yahrzeits->add((object) [
                             'individual'    => $fact->record(),
                             'fact_date'     => $fact->date(),
                             'fact'          => $fact,
-                            'yahrzeit_date' => $yahrzeit_date,
+                            'yahrzeit_date' => Date::fromCalendarDate($yahrzeit_calendar_date),
                         ]);
                     }
                 }

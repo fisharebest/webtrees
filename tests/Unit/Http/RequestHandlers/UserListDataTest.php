@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Factories\LanguageFactory;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -37,7 +38,7 @@ class UserListDataTest extends TestCase
         $datatables_service = new DatatablesService();
         $module_service     = new ModuleService();
         $user_service       = new UserService();
-        $handler            = new UserListData($datatables_service, $module_service, $user_service);
+        $handler            = new UserListData($datatables_service, new LanguageFactory(), $user_service);
         $request            = self::createRequest();
         $response           = $handler->handle($request);
 

@@ -32,7 +32,6 @@ use Fisharebest\Webtrees\Date\JulianDate;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -143,16 +142,16 @@ class CalendarService
             $query = DB::table('dates')
                 ->distinct()
                 ->where('d_file', '=', $tree->id())
-                ->where('d_type', '=', $anniv->format('%@'));
+                ->where('d_type', '=', $anniv->calendarEscape()->value);
 
             // SIMPLE CASES:
             // a) Non-hebrew anniversaries
             // b) Hebrew months TVT, SHV, IYR, SVN, TMZ, AAV, ELL
-            if (!$anniv instanceof JewishDate || in_array($anniv->month, [1, 5, 6, 9, 10, 11, 12, 13], true)) {
+            if (!$anniv instanceof JewishDate || in_array($anniv->month(), [1, 5, 6, 9, 10, 11, 12, 13], true)) {
                 $this->defaultAnniversaries($query, $anniv);
             } else {
                 // SPECIAL CASES:
-                switch ($anniv->month) {
+                switch ($anniv->month()) {
                     case 2:
                         $this->cheshvanAnniversaries($query, $anniv);
                         break;
@@ -240,8 +239,8 @@ class CalendarService
                         $min_date = $fact->date()->minimumDate();
                         $max_date = $fact->date()->maximumDate();
 
-                        if ($min_date->minimumJulianDay() === $anniv_date->minimumJulianDay() && $min_date::ESCAPE === $row->d_type || $max_date->maximumJulianDay() === $anniv_date->maximumJulianDay() && $max_date::ESCAPE === $row->d_type) {
-                            $fact->anniv   = $row->d_year === '0' ? 0 : $anniv->year - $row->d_year;
+                        if ($min_date->minimumJulianDay() === $anniv_date->minimumJulianDay() && $min_date->calendarEscape()->value === $row->d_type || $max_date->maximumJulianDay() === $anniv_date->maximumJulianDay() && $max_date->calendarEscape()->value === $row->d_type) {
+                            $fact->anniv   = $row->d_year === '0' ? 0 : $anniv->year() - $row->d_year;
                             $fact->jd      = $jd;
                             $found_facts[] = $fact;
                         }
@@ -291,7 +290,7 @@ class CalendarService
      */
     private function kislevAnniversaries(Builder $query, JewishDate $anniv): void
     {
-        $tmp = new JewishDate([(string) $anniv->year, 'CSH', '1']);
+        $tmp = new JewishDate([(string) $anniv->year(), 'CSH', '1']);
 
         if ($anniv->day() === 1 && $tmp->daysInMonth() === 29) {
             $query->where(static function (Builder $query): void {
@@ -316,7 +315,7 @@ class CalendarService
      */
     private function tevetAnniversaries(Builder $query, JewishDate $anniv): void
     {
-        $tmp = new JewishDate([(string) $anniv->year, 'KSL', '1']);
+        $tmp = new JewishDate([(string) $anniv->year(), 'KSL', '1']);
 
         if ($anniv->day === 1 && $tmp->daysInMonth() === 29) {
             $query->where(static function (Builder $query): void {

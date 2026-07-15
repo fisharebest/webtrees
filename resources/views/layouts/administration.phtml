@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Webtrees;
 ?>
 
 <!DOCTYPE html>
-<html dir="<?= I18N::locale()->direction() ?>" lang="<?= I18N::locale()->languageTag() ?>">
+<html dir="<?= I18N::textDirection()->value ?>" lang="<?= I18N::languageTag() ?>">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,8 +58,8 @@ use Fisharebest\Webtrees\Webtrees;
                         <?= I18N::translate('Language') ?>
                     </a>
                     <div class="dropdown-menu">
-                        <?php foreach (I18N::activeLocales() as $locale) : ?>
-                            <a class="dropdown-item menu-language-<?= $locale->languageTag() ?> <?= I18N::languageTag() === $locale->languageTag() ? ' active' : '' ?>" href="#" data-wt-post-url="<?= e(route(SelectLanguage::class, ['language' => $locale->languageTag()])) ?>"><?= $locale->endonym() ?></a>
+                        <?php foreach (I18N::activeLanguages() as $language_tag => $endonym) : ?>
+                            <a class="dropdown-item menu-language-<?= $language_tag ?> <?= I18N::languageTag() === $language_tag ? ' active' : '' ?>" href="#" data-wt-post-url="<?= e(route(SelectLanguage::class, ['language' => $language_tag])) ?>"><?= $endonym ?></a>
                         <?php endforeach ?>
                     </div>
                 </li>
@@ -82,7 +82,7 @@ use Fisharebest\Webtrees\Webtrees;
         </main>
 
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
-        <script src="<?= e(asset('js/i18n/' . I18N::locale()->languageTag() . '.js')) ?>"></script>
+        <script src="<?= e(asset('js/i18n/' . I18N::languageTag() . '.js')) ?>"></script>
         <script src="<?= e(asset('js/webtrees.min.js')) ?>"></script>
         <script src="<?= e(asset('js/administration.min.js')) ?>"></script>
 

@@ -36,8 +36,6 @@ use function ob_start;
 use function sha1;
 use function str_contains;
 use function str_ends_with;
-use function strlen;
-use function strncmp;
 
 use const EXTR_OVERWRITE;
 

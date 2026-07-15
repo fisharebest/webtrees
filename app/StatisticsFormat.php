@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Charts\PieChartData;
 
 use function array_column;
 use function array_map;
-use function array_slice;
 use function array_sum;
 use function count;
 use function e;

@@ -21,32 +21,28 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Collator;
-use Exception;
-use Fisharebest\Localization\Locale;
-use Fisharebest\Localization\Locale\LocaleEnUs;
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Translation;
-use Fisharebest\Localization\Translator;
+use Fisharebest\Webtrees\I18N\Translation;
+use Fisharebest\Webtrees\I18N\Translator;
+use Fisharebest\Webtrees\Contracts\LanguageInterface;
+use Fisharebest\Webtrees\Enums\Script;
+use Fisharebest\Webtrees\Enums\TextDirection;
+use Fisharebest\Webtrees\Factories\LanguageFactory;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Throwable;
 
+use function array_map;
 use function array_merge;
-use function class_exists;
 use function file_put_contents;
-use function is_file;
 use function html_entity_decode;
-use function in_array;
-use function mb_strtolower;
-use function mb_strtoupper;
+use function is_file;
 use function mb_substr;
-use function ord;
 use function sprintf;
 use function str_contains;
 use function str_replace;
 use function strcmp;
 use function strip_tags;
-use function strlen;
 use function strtr;
 use function var_export;
 
@@ -61,124 +57,6 @@ class I18N
 
     // Digits are always rendered LTR, even in RTL text.
     private const string DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
-
-    // These locales need special handling for the dotless letter I.
-    private const array DOTLESS_I_LOCALES = [
-        'az',
-        'tr',
-    ];
-
-    private const array DOTLESS_I_TOLOWER = [
-        'I' => 'ı',
-        'İ' => 'i',
-    ];
-
-    private const array DOTLESS_I_TOUPPER = [
-        'ı' => 'I',
-        'i' => 'İ',
-    ];
-
-    // The ranges of characters used by each script.
-    private const array SCRIPT_CHARACTER_RANGES = [
-        [
-            'Latn',
-            0x0041,
-            0x005A,
-        ],
-        [
-            'Latn',
-            0x0061,
-            0x007A,
-        ],
-        [
-            'Latn',
-            0x0100,
-            0x02AF,
-        ],
-        [
-            'Grek',
-            0x0370,
-            0x03FF,
-        ],
-        [
-            'Cyrl',
-            0x0400,
-            0x052F,
-        ],
-        [
-            'Hebr',
-            0x0590,
-            0x05FF,
-        ],
-        [
-            'Arab',
-            0x0600,
-            0x06FF,
-        ],
-        [
-            'Arab',
-            0x0750,
-            0x077F,
-        ],
-        [
-            'Arab',
-            0x08A0,
-            0x08FF,
-        ],
-        [
-            'Deva',
-            0x0900,
-            0x097F,
-        ],
-        [
-            'Taml',
-            0x0B80,
-            0x0BFF,
-        ],
-        [
-            'Sinh',
-            0x0D80,
-            0x0DFF,
-        ],
-        [
-            'Thai',
-            0x0E00,
-            0x0E7F,
-        ],
-        [
-            'Geor',
-            0x10A0,
-            0x10FF,
-        ],
-        [
-            'Grek',
-            0x1F00,
-            0x1FFF,
-        ],
-        [
-            'Deva',
-            0xA8E0,
-            0xA8FF,
-        ],
-        [
-            'Hans',
-            0x3000,
-            0x303F,
-        ],
-        // Mixed CJK, not just Hans
-        [
-            'Hans',
-            0x3400,
-            0xFAFF,
-        ],
-        // Mixed CJK, not just Hans
-        [
-            'Hans',
-            0x20000,
-            0x2FA1F,
-        ],
-        // Mixed CJK, not just Hans
-    ];
 
     // Characters that are displayed in mirror form in RTL text.
     private const array MIRROR_CHARACTERS = [
@@ -202,33 +80,46 @@ class I18N
         '’ ' => '‘',
     ];
 
-    // Punctuation used to separate list items, typically a comma
-    public static string $list_separator;
-
-    private static ModuleLanguageInterface $language;
-
-    private static LocaleInterface $locale;
+    private static LanguageInterface $language;
 
     private static Translator $translator;
 
     private static Collator|null $collator = null;
 
     /**
-     * The preferred locales for this site, or a default list if no preference.
-     *
-     * @return array<LocaleInterface>
+     * @return array<string,string>
      */
-    public static function activeLocales(): array
+    public static function activeLanguages(): array
     {
-        $locales = Registry::container()->get(ModuleService::class)
-            ->findByInterface(ModuleLanguageInterface::class, false, true)
-            ->map(static fn (ModuleLanguageInterface $module): LocaleInterface => $module->locale());
+        $language_factory = Registry::container()->get(LanguageFactory::class);
 
-        if ($locales->isEmpty()) {
-            return [new LocaleEnUs()];
+        $active_language_modules = Registry::container()->get(ModuleService::class)
+            ->findByInterface(ModuleLanguageInterface::class)
+            ->all();
+
+        $languages = [];
+
+        foreach ($active_language_modules as $module) {
+            $language = $language_factory->fromLanguageTag($module->language()->languageTag());
+
+            $languages[$language->languageTag()] = $language->endonym();
         }
 
-        return $locales->all();
+        return $languages;
+    }
+
+    /**
+     * @return array<string,string>
+     */
+    public static function allLanguages(): array
+    {
+        $languages = [];
+
+        foreach (Registry::container()->get(LanguageFactory::class)->allLanguages() as $language) {
+            $languages[$language->languageTag()] = $language->endonym();
+        }
+
+        return $languages;
     }
 
     /**
@@ -246,71 +137,58 @@ class I18N
      */
     public static function digits(string|int $n): string
     {
-        return self::$locale->digits((string) $n);
+        return self::$language->digits($n);
+    }
+
+
+    public static function textDirection(): TextDirection
+    {
+        return self::$language->textDirection();
     }
 
     /**
-     * What is the direction of the current locale
+     * Initialize the translation adapter with a locale setting.
      */
-    public static function direction(): string
+    public static function init(string $language_tag): void
     {
-        return self::$locale->direction();
-    }
-
-    /**
-     * Initialise the translation adapter with a locale setting.
-     */
-    public static function init(string $code, bool $setup = false): void
-    {
-        self::$locale = Locale::create($code);
+        self::$language = Registry::container()->get(LanguageFactory::class)->fromLanguageTag($language_tag);
 
         // Use the generated translations when they are present, otherwise build them from the source .po file.
-        $translation_file = Webtrees::ROOT_DIR . 'resources/lang/' . self::$locale->languageTag() . '/messages.php';
+        $translation_file = Webtrees::ROOT_DIR . 'resources/lang/' . self::$language->languageTag() . '/messages.php';
 
         if (is_file($translation_file)) {
+            // Official releases of webtrees will have these generated PHP files.
             $translation  = new Translation($translation_file);
-            $translations = $translation->asArray();
+            $translations = $translation->toArray();
         } else {
-            $po_file      = Webtrees::ROOT_DIR . 'resources/lang/' . self::$locale->languageTag() . '/messages.po';
-            $translation  = new Translation($po_file);
-            $translations = $translation->asArray();
-            file_put_contents($translation_file, "<?php\n\nreturn " . var_export($translations, true) . ";\n");
+            // Development versions of webtrees must create them on first use.
+            $po_file = Webtrees::ROOT_DIR . 'resources/lang/' . self::$language->languageTag() . '/messages.po';
+
+            if (is_file($po_file)) {
+                $translation  = new Translation($po_file);
+                $translations = $translation->toArray();
+                file_put_contents($translation_file, "<?php\n\nreturn " . var_export($translations, true) . ";\n");
+            } else {
+                $translations = [];
+            }
         }
 
-        // Add translations from custom modules (but not during setup, as we have no database/modules)
-        if (!$setup) {
-            $module_service = Registry::container()->get(ModuleService::class);
-
-            $translations = $module_service
+        // Add translations from custom modules.
+        try {
+            $translations = Registry::container()
+                ->get(ModuleService::class)
                 ->findByInterface(ModuleCustomInterface::class)
-                ->reduce(static fn (array $carry, ModuleCustomInterface $item): array => array_merge($carry, $item->customTranslations(self::$locale->languageTag())), $translations);
-
-            self::$language = $module_service
-                ->findByInterface(ModuleLanguageInterface::class, true)
-                ->first(fn (ModuleLanguageInterface $module): bool => $module->locale()->languageTag() === $code);
+                ->reduce(static fn (array $carry, ModuleCustomInterface $item): array => array_merge($carry, $item->customTranslations(self::$language->languageTag())), $translations);
+        } catch (Throwable) {
+            // During setup, there won't be a database, so won't be any modules.
         }
 
         // Create a translator
-        self::$translator = new Translator($translations, self::$locale->pluralRule());
+        self::$translator = new Translator($translations, self::$language->pluralRule());
 
-        /* I18N: This punctuation is used to separate lists of items */
-        self::$list_separator = self::translate(', ');
-
-        // Create a collator
-        try {
-            // Symfony provides a very incomplete polyfill - which cannot be used.
-            if (class_exists('Collator')) {
-                // Need phonebook collation rules for German Ä, Ö and Ü.
-                if (str_contains(self::$locale->code(), '@')) {
-                    self::$collator = new Collator(self::$locale->code() . ';collation=phonebook');
-                } else {
-                    self::$collator = new Collator(self::$locale->code() . '@collation=phonebook');
-                }
-                // Ignore upper/lower case differences
-                self::$collator->setStrength(Collator::SECONDARY);
-            }
-        } catch (Exception) {
-            // PHP-INTL is not installed?  We'll use a fallback later.
+        // Create a collator.
+        if (extension_loaded('intl')) {
+            self::$collator = self::$language->collator();
         }
     }
 
@@ -323,24 +201,35 @@ class I18N
      */
     public static function translate(string $message, ...$args): string
     {
-        $message = self::$translator->translate($message);
+        return sprintf(self::$translator->translate($message), ...$args);
+    }
 
-        return sprintf($message, ...$args);
+    public static function language(): LanguageInterface
+    {
+        return self::$language;
     }
 
     public static function languageTag(): string
     {
-        return self::$locale->languageTag();
+        return self::$language->languageTag();
     }
 
-    public static function locale(): LocaleInterface
+    /** @param array<string> $items */
+    public static function list(array $items): string
     {
-        return self::$locale;
+        return self::$language->formatList($items);
     }
 
-    public static function language(): ModuleLanguageInterface
+    /** @param array<string> $items */
+    public static function listAnd(array $items): string
     {
-        return self::$language;
+        return self::$language->formatListAnd($items);
+    }
+
+    /** @param array<string> $items */
+    public static function listOr(array $items): string
+    {
+        return self::$language->formatListOr($items);
     }
 
     /**
@@ -352,7 +241,7 @@ class I18N
      */
     public static function number(float $n, int $precision = 0): string
     {
-        return self::$locale->number(round($n, $precision));
+        return self::$language->number(round($n, $precision));
     }
 
     /**
@@ -364,7 +253,7 @@ class I18N
      */
     public static function percentage(float $n, int $precision = 0): string
     {
-        return self::$locale->percent(round($n, $precision + 2));
+        return self::$language->percentage(round($n, $precision + 2));
     }
 
     /**
@@ -377,9 +266,7 @@ class I18N
      */
     public static function plural(string $singular, string $plural, int $count, ...$args): string
     {
-        $message = self::$translator->translatePlural($singular, $plural, $count);
-
-        return sprintf($message, ...$args);
+        return sprintf(self::$translator->translatePlural($singular, $plural, $count), ...$args);
     }
 
     /**
@@ -399,7 +286,7 @@ class I18N
         $text = html_entity_decode($text, ENT_QUOTES, 'UTF-8');
 
         // LTR text doesn't need reversing
-        if (self::scriptDirection(self::textScript($text)) === 'ltr') {
+        if (self::textScript($text)->textDirection() === TextDirection::LTR) {
             return $text;
         }
 
@@ -423,27 +310,9 @@ class I18N
     }
 
     /**
-     * Return the direction (ltr or rtl) for a given script
-     * The PHP/intl library does not provde this information, so we need
-     * our own lookup table.
-     */
-    public static function scriptDirection(string $script): string
-    {
-        switch ($script) {
-            case 'Arab':
-            case 'Hebr':
-            case 'Mong':
-            case 'Thaa':
-                return 'rtl';
-            default:
-                return 'ltr';
-        }
-    }
-
-    /**
      * Identify the script used for a piece of text
      */
-    public static function textScript(string $string): string
+    public static function textScript(string $string): Script
     {
         $string = strip_tags($string); // otherwise HTML tags show up as latin
         $string = html_entity_decode($string, ENT_QUOTES, 'UTF-8'); // otherwise HTML entities show up as latin
@@ -451,41 +320,8 @@ class I18N
             Individual::NOMEN_NESCIO,
             Individual::PRAENOMEN_NESCIO,
         ], '', $string);
-        $pos    = 0;
-        $strlen = strlen($string);
-        while ($pos < $strlen) {
-            // get the Unicode Code Point for the character at position $pos
-            $byte1 = ord($string[$pos]);
-            if ($byte1 < 0x80) {
-                $code_point = $byte1;
-                $chrlen     = 1;
-            } elseif ($byte1 < 0xC0) {
-                // Invalid continuation character
-                return 'Latn';
-            } elseif ($byte1 < 0xE0) {
-                $code_point = (($byte1 & 0x1F) << 6) + (ord($string[$pos + 1]) & 0x3F);
-                $chrlen     = 2;
-            } elseif ($byte1 < 0xF0) {
-                $code_point = (($byte1 & 0x0F) << 12) + ((ord($string[$pos + 1]) & 0x3F) << 6) + (ord($string[$pos + 2]) & 0x3F);
-                $chrlen     = 3;
-            } elseif ($byte1 < 0xF8) {
-                $code_point = (($byte1 & 0x07) << 24) + ((ord($string[$pos + 1]) & 0x3F) << 12) + ((ord($string[$pos + 2]) & 0x3F) << 6) + (ord($string[$pos + 3]) & 0x3F);
-                $chrlen     = 3;
-            } else {
-                // Invalid UTF
-                return 'Latn';
-            }
 
-            foreach (self::SCRIPT_CHARACTER_RANGES as $range) {
-                if ($code_point >= $range[1] && $code_point <= $range[2]) {
-                    return $range[0];
-                }
-            }
-            // Not a recognised script. Maybe punctuation, spacing, etc. Keep looking.
-            $pos += $chrlen;
-        }
-
-        return 'Latn';
+        return Script::fromText($string);
     }
 
     /**
@@ -493,13 +329,11 @@ class I18N
      */
     public static function compare(string $first, string $second): int
     {
-        $collator = self::$collator;
-
-        if ($collator instanceof Collator) {
-            return (int) $collator->compare($first, $second);
+        if (self::$collator === null) {
+            return strcmp(self::strtolower($first), self::strtolower($second));
         }
 
-        return strcmp(self::strtolower($first), self::strtolower($second));
+        return (int) self::$collator->compare($first, $second);
     }
 
     /**
@@ -511,7 +345,7 @@ class I18N
     {
         trigger_error(
             'I18N::comparator() is deprecated and will be removed in version 2.3. Use I18N::compare(...) instead.',
-            E_USER_DEPRECATED
+            E_USER_DEPRECATED,
         );
 
         return self::compare(...);
@@ -522,11 +356,7 @@ class I18N
      */
     public static function strtolower(string $string): string
     {
-        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES, true)) {
-            $string = strtr($string, self::DOTLESS_I_TOLOWER);
-        }
-
-        return mb_strtolower($string);
+        return self::$language->strtolower($string);
     }
 
     /**
@@ -534,11 +364,7 @@ class I18N
      */
     public static function strtoupper(string $string): string
     {
-        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES, true)) {
-            $string = strtr($string, self::DOTLESS_I_TOUPPER);
-        }
-
-        return mb_strtoupper($string);
+        return self::$language->strtoupper($string);
     }
 
     /**

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-16 21:53+0100\n"
+"POT-Creation-Date: 2026-07-21 17:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,18 +27,6 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml
 #: resources/xml/reports/descendancy_report.xml
 msgid " in "
-msgstr ""
-
-#. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "%1$s %2$s times removed ascending"
-msgstr ""
-
-#. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "%1$s %2$s times removed descending"
 msgstr ""
 
 #. I18N: %s is a person's name
@@ -80,26 +68,6 @@ msgstr[1] ""
 msgid "%1$s is a %2$s but a %3$s is expected."
 msgstr ""
 
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "%1$s × %2$s"
-msgstr "%1$s × %2$s"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "FEMALE"
-msgid "%1$s × %2$s"
-msgstr "%1$s x %2$s"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "MALE"
-msgid "%1$s × %2$s"
-msgstr "%1$s x %2$s"
-
 #. I18N: image dimensions, width × height
 #: app/Http/RequestHandlers/ManageMediaData.php app/MediaFile.php
 #, php-format
@@ -122,11 +90,6 @@ msgstr ""
 #: app/Individual.php app/Module/StatisticsChartModule.php
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "%1$s’s %2$s"
 msgstr ""
 
 #. I18N: This is the format string for the time-of-day. See https://php.net/date for codes
@@ -214,13 +177,6 @@ msgstr[1] "%s rojan"
 msgid "%s does not exist."
 msgstr ""
 
-#: resources/views/calendar-list.phtml
-#, php-format
-msgid "%s family"
-msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
-
 #: app/Http/RequestHandlers/SearchReplaceAction.php
 #, php-format
 msgid "%s family has been updated."
@@ -245,7 +201,6 @@ msgstr[1] ""
 
 #: app/Module/LifespansChartModule.php
 #: resources/views/admin/trees-unconnected.phtml
-#: resources/views/calendar-list.phtml
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -286,18 +241,6 @@ msgstr[1] ""
 msgid "%s occurs too many times."
 msgstr ""
 
-#. I18N: %s=“fifth cousin”, etc.
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "%s once removed ascending"
-msgstr ""
-
-#. I18N: %s=“fifth cousin”, etc.
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "%s once removed descending"
-msgstr ""
-
 #: app/Http/RequestHandlers/SearchReplaceAction.php
 #, php-format
 msgid "%s repository has been updated."
@@ -326,30 +269,6 @@ msgid_plural "%s sources have been updated."
 msgstr[0] ""
 msgstr[1] ""
 
-#. I18N: %s=“fifth cousin”, etc.
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "%s three times removed ascending"
-msgstr ""
-
-#. I18N: %s=“fifth cousin”, etc.
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "%s three times removed descending"
-msgstr ""
-
-#. I18N: %s=“fifth cousin”, etc.
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "%s twice removed ascending"
-msgstr ""
-
-#. I18N: %s=“fifth cousin”, etc.
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "%s twice removed descending"
-msgstr ""
-
 #: app/Elements/AgeAtEvent.php
 #, php-format
 msgid "%s week"
@@ -367,29 +286,10 @@ msgid_plural "%s years"
 msgstr[0] "%s sal"
 msgstr[1] "%s salan"
 
-#: app/Http/RequestHandlers/CalendarEvents.php
 #: resources/views/modules/yahrzeit/list.phtml
 #, php-format
 msgid "%s year anniversary"
 msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "%s × cousin"
-msgstr "%s × pismam"
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "FEMALE"
-msgid "%s × cousin"
-msgstr "%s × pismam"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "MALE"
-msgid "%s × cousin"
-msgstr "%s x pismam"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php
@@ -436,18 +336,6 @@ msgstr ""
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr ""
-
-#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ʙᴄᴇ"
-msgstr "%s BZ"
-
-#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ᴄᴇ"
-msgstr "%s PZ"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
@@ -505,11 +393,6 @@ msgstr ""
 #: resources/views/fact-date.phtml
 msgid "(on the date of death)"
 msgstr "(on the date of death)"
-
-#. I18N: This punctuation is used to separate lists of items
-#: app/I18N.php
-msgid ", "
-msgstr ", "
 
 #: app/StatisticsData.php app/StatisticsFormat.php
 msgctxt "CENTURY"
@@ -1063,31 +946,6 @@ msgstr ""
 msgid "Aba, Nigeria"
 msgstr "Aba, Nigeria"
 
-#: app/Date/JalaliDate.php
-msgctxt "Abbreviation for Persian month: Aban"
-msgid "Aban"
-msgstr "Aban"
-
-#: app/Date/JalaliDate.php
-msgctxt "GENITIVE"
-msgid "Aban"
-msgstr "Aban"
-
-#: app/Date/JalaliDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Aban"
-msgstr "Aban"
-
-#: app/Date/JalaliDate.php
-msgctxt "LOCATIVE"
-msgid "Aban"
-msgstr "Aban"
-
-#: app/Date/JalaliDate.php
-msgctxt "NOMINATIVE"
-msgid "Aban"
-msgstr "Aban"
-
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "Abbreviate place names"
@@ -1124,66 +982,6 @@ msgstr "Account approval and email verification"
 #: app/Elements/TempleCode.php
 msgid "Accra, Ghana"
 msgstr "Accra, Ghana"
-
-#: app/Date/JewishDate.php
-msgctxt "GENITIVE"
-msgid "Adar"
-msgstr "Adar"
-
-#: app/Date/JewishDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Adar"
-msgstr "Adar"
-
-#: app/Date/JewishDate.php
-msgctxt "LOCATIVE"
-msgid "Adar"
-msgstr "Adar"
-
-#: app/Date/JewishDate.php
-msgctxt "NOMINATIVE"
-msgid "Adar"
-msgstr "Adar"
-
-#: app/Date/JewishDate.php
-msgctxt "GENITIVE"
-msgid "Adar I"
-msgstr "Adar I"
-
-#: app/Date/JewishDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Adar I"
-msgstr "Adar I"
-
-#: app/Date/JewishDate.php
-msgctxt "LOCATIVE"
-msgid "Adar I"
-msgstr "Adar I"
-
-#: app/Date/JewishDate.php
-msgctxt "NOMINATIVE"
-msgid "Adar I"
-msgstr "Adar I"
-
-#: app/Date/JewishDate.php
-msgctxt "GENITIVE"
-msgid "Adar II"
-msgstr "Adar II"
-
-#: app/Date/JewishDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Adar II"
-msgstr "Adar II"
-
-#: app/Date/JewishDate.php
-msgctxt "LOCATIVE"
-msgid "Adar II"
-msgstr "Adar II"
-
-#: app/Date/JewishDate.php
-msgctxt "NOMINATIVE"
-msgid "Adar II"
-msgstr "Adar II"
 
 #: app/Http/RequestHandlers/MapDataAdd.php
 msgid "Add"
@@ -1674,7 +1472,6 @@ msgstr ""
 
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
-#: resources/views/calendar-page.phtml
 #: resources/views/lists/datatables-attributes.phtml
 #: resources/views/modules/faq/config.phtml
 #: resources/views/modules/random_media/config.phtml
@@ -1696,10 +1493,6 @@ msgstr "All facts and events"
 #: app/Http/RequestHandlers/RegisterAction.php
 msgid "All fields must be completed."
 msgstr "All fields must be completed."
-
-#: resources/views/calendar-page.phtml
-msgid "All individuals"
-msgstr ""
 
 #: app/Http/RequestHandlers/ModulesAllPage.php
 #: resources/views/admin/components.phtml
@@ -1861,10 +1654,6 @@ msgstr "Anguilla"
 msgid "Anniversary"
 msgstr ""
 
-#: app/Http/RequestHandlers/CalendarPage.php
-msgid "Anniversary calendar"
-msgstr "Anniversary calendar"
-
 #: app/Gedcom.php
 msgid "Annulment"
 msgstr ""
@@ -1924,27 +1713,6 @@ msgstr "Approved"
 msgid "Approved by administrator"
 msgstr "Approved by administrator"
 
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "Abbreviation for April"
-msgid "Apr"
-msgstr "Avr"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "GENITIVE"
-msgid "April"
-msgstr "Avrêl"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "INSTRUMENTAL"
-msgid "April"
-msgstr "Nîsan"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "LOCATIVE"
-msgid "April"
-msgstr "Nîsan"
-
-#: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
@@ -2084,27 +1852,6 @@ msgstr "Attending"
 msgid "Audio"
 msgstr ""
 
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "Abbreviation for August"
-msgid "Aug"
-msgstr "Gel"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "GENITIVE"
-msgid "August"
-msgstr "Gelawêj"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "INSTRUMENTAL"
-msgid "August"
-msgstr "Gelawêj"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "LOCATIVE"
-msgid "August"
-msgstr "Gelawêj"
-
-#: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
@@ -2150,26 +1897,6 @@ msgstr "Automatically expand notes"
 msgid "Automatically expand sources"
 msgstr "Automatically expand sources"
 
-#: app/Date/JewishDate.php
-msgctxt "GENITIVE"
-msgid "Av"
-msgstr "Av"
-
-#: app/Date/JewishDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Av"
-msgstr "Av"
-
-#: app/Date/JewishDate.php
-msgctxt "LOCATIVE"
-msgid "Av"
-msgstr "Av"
-
-#: app/Date/JewishDate.php
-msgctxt "NOMINATIVE"
-msgid "Av"
-msgstr "Av"
-
 #: app/Statistics.php
 msgid "Average age"
 msgstr ""
@@ -2212,31 +1939,6 @@ msgstr ""
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
 msgstr "Avoid spaces and punctuation. A family name might be a good choice."
 
-#: app/Date/JalaliDate.php
-msgctxt "Abbreviation for Persian month: Azar"
-msgid "Azar"
-msgstr "Azar"
-
-#: app/Date/JalaliDate.php
-msgctxt "GENITIVE"
-msgid "Azar"
-msgstr "Azar"
-
-#: app/Date/JalaliDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Azar"
-msgstr "Azar"
-
-#: app/Date/JalaliDate.php
-msgctxt "LOCATIVE"
-msgid "Azar"
-msgstr "Azar"
-
-#: app/Date/JalaliDate.php
-msgctxt "NOMINATIVE"
-msgid "Azar"
-msgstr "Azar"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Azerbaijan"
@@ -2247,35 +1949,10 @@ msgstr "Azerbaijan"
 msgid "Azores"
 msgstr "Azores"
 
-#: app/Date/JalaliDate.php
-msgctxt "Abbreviation for Persian month: Bahman"
-msgid "Bah"
-msgstr "Bah"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Bahamas"
 msgstr "Bahamas"
-
-#: app/Date/JalaliDate.php
-msgctxt "GENITIVE"
-msgid "Bahman"
-msgstr "Bahman"
-
-#: app/Date/JalaliDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Bahman"
-msgstr "Bahman"
-
-#: app/Date/JalaliDate.php
-msgctxt "LOCATIVE"
-msgid "Bahman"
-msgstr "Bahman"
-
-#: app/Date/JalaliDate.php
-msgctxt "NOMINATIVE"
-msgid "Bahman"
-msgstr "Bahman"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -2287,8 +1964,7 @@ msgstr "Bahrain"
 msgid "Bangladesh"
 msgstr "Bangladesh"
 
-#: app/Gedcom.php resources/views/calendar-page.phtml
-#: resources/xml/reports/family_group_report.xml
+#: app/Gedcom.php resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/missing_facts_report.xml
 msgid "Baptism"
 msgstr "Baptism"
@@ -2458,7 +2134,6 @@ msgid "Birmingham, Alabama, United States"
 msgstr "Birmingham, Alabama, United States"
 
 #: app/Gedcom.php app/Http/RequestHandlers/IndividualPage.php
-#: resources/views/calendar-page.phtml
 #: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/ahnentafel_report.xml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/change_report.xml
@@ -2736,26 +2411,6 @@ msgstr "British Virgin Islands"
 msgid "Brother"
 msgstr "Brother"
 
-#: app/Date/FrenchDate.php
-msgctxt "GENITIVE"
-msgid "Brumaire"
-msgstr "Brumaire"
-
-#: app/Date/FrenchDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Brumaire"
-msgstr "Brumaire"
-
-#: app/Date/FrenchDate.php
-msgctxt "LOCATIVE"
-msgid "Brumaire"
-msgstr "Brumaire"
-
-#: app/Date/FrenchDate.php
-msgctxt "NOMINATIVE"
-msgid "Brumaire"
-msgstr "Brumaire"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Brunei Darussalam"
@@ -2771,8 +2426,7 @@ msgstr "Buenos Aires, Argentina"
 msgid "Bulgaria"
 msgstr "Bulgaria"
 
-#: app/Gedcom.php resources/views/calendar-page.phtml
-#: resources/xml/reports/family_group_report.xml
+#: app/Gedcom.php resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/missing_facts_report.xml
 msgid "Burial"
 msgstr "Burial"
@@ -2951,8 +2605,6 @@ msgstr "CSS and JS"
 msgid "Calculating…"
 msgstr ""
 
-#. I18N: Name of a module
-#: app/Module/CalendarMenuModule.php
 #: resources/views/modules/yahrzeit/config.phtml
 msgid "Calendar"
 msgstr ""
@@ -3961,10 +3613,6 @@ msgstr ""
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
 msgstr ""
 
-#: resources/views/calendar-page.phtml
-msgid "Custom event"
-msgstr ""
-
 #: resources/views/admin/custom-module-info.phtml
 msgid "Custom module"
 msgstr "Custom module"
@@ -4284,14 +3932,6 @@ msgstr "Daughter"
 msgid "Daughter of %s"
 msgstr ""
 
-#: app/Module/CalendarMenuModule.php resources/views/calendar-page.phtml
-msgid "Day"
-msgstr ""
-
-#: app/Http/RequestHandlers/CalendarEvents.php
-msgid "Day not set"
-msgstr "Day not set"
-
 #: resources/views/modules/timeline-chart/chart.phtml
 msgid "Day:"
 msgstr "Roj:"
@@ -4301,7 +3941,6 @@ msgid "Dead"
 msgstr ""
 
 #: app/Gedcom.php app/Http/RequestHandlers/IndividualPage.php
-#: resources/views/calendar-page.phtml
 #: resources/views/lists/individuals-table.phtml
 #: resources/views/modules/yahrzeit/table.phtml
 #: resources/xml/reports/ahnentafel_report.xml
@@ -4480,37 +4119,11 @@ msgstr "Deaths"
 msgid "Deaths by century"
 msgstr ""
 
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "Abbreviation for December"
-msgid "Dec"
-msgstr "Berf"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "GENITIVE"
-msgid "December"
-msgstr "Berfanbar"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "INSTRUMENTAL"
-msgid "December"
-msgstr "Berfanbar"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "LOCATIVE"
-msgid "December"
-msgstr "Berfanbar"
-
-#: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "December"
 msgstr "Berfanbar"
-
-#. I18N: The tenth day in the French republican calendar
-#: app/Date/FrenchDate.php
-msgid "Decidi"
-msgstr "Decidi"
 
 #: app/Module/UserWelcomeModule.php app/Module/WelcomeBlockModule.php
 msgid "Default chart"
@@ -4676,71 +4289,6 @@ msgstr "Details of the new user will be sent to the genealogy contact for the co
 msgid "Detroit, Michigan, United States"
 msgstr "Detroit, Michigan, United States"
 
-#: app/Date/JalaliDate.php
-msgctxt "Abbreviation for Persian month: Dey"
-msgid "Dey"
-msgstr "Dey"
-
-#: app/Date/JalaliDate.php
-msgctxt "GENITIVE"
-msgid "Dey"
-msgstr "Dey"
-
-#: app/Date/JalaliDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Dey"
-msgstr "Dey"
-
-#: app/Date/JalaliDate.php
-msgctxt "LOCATIVE"
-msgid "Dey"
-msgstr "Dey"
-
-#: app/Date/JalaliDate.php
-msgctxt "NOMINATIVE"
-msgid "Dey"
-msgstr "Dey"
-
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Dhū al-Qiʿdah"
-msgstr "Zîlqade"
-
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Dhū al-Qiʿdah"
-msgstr "Zîlqade"
-
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Dhū al-Qiʿdah"
-msgstr "Zîlqade"
-
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Dhū al-Qiʿdah"
-msgstr "Zîlqade"
-
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Dhū al-Ḥijjah"
-msgstr "Zîlhicce"
-
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Dhū al-Ḥijjah"
-msgstr "Zîlhicce"
-
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Dhū al-Ḥijjah"
-msgstr "Zîlhicce"
-
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Dhū al-Ḥijjah"
-msgstr "Zîlhicce"
-
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php
 #: app/Elements/LdsEndowmentDateStatus.php app/Elements/LdsOrdinanceStatus.php
@@ -4788,8 +4336,7 @@ msgstr "Display and manage a family tree’s favorite pages."
 msgid "Display and manage a user’s favorite pages."
 msgstr "Display and manage a user’s favorite pages."
 
-#: app/Gedcom.php resources/views/calendar-page.phtml
-#: resources/views/lists/families-table.phtml
+#: app/Gedcom.php resources/views/lists/families-table.phtml
 msgid "Divorce"
 msgstr ""
 
@@ -4864,11 +4411,6 @@ msgstr ""
 #: app/Elements/TempleCode.php
 msgid "Draper, Utah, United States"
 msgstr "Draper, Utah, United States"
-
-#. I18N: The second day in the French republican calendar
-#: app/Date/FrenchDate.php
-msgid "Duodi"
-msgstr "Duodi"
 
 #: app/Http/RequestHandlers/AccountUpdate.php
 #: app/Http/RequestHandlers/RegisterAction.php
@@ -5018,26 +4560,6 @@ msgstr "El Salvador"
 msgid "Electronic"
 msgstr ""
 
-#: app/Date/JewishDate.php
-msgctxt "GENITIVE"
-msgid "Elul"
-msgstr "Elul"
-
-#: app/Date/JewishDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Elul"
-msgstr "Elul"
-
-#: app/Date/JewishDate.php
-msgctxt "LOCATIVE"
-msgid "Elul"
-msgstr "Elul"
-
-#: app/Date/JewishDate.php
-msgctxt "NOMINATIVE"
-msgid "Elul"
-msgstr "Elul"
-
 #: app/CustomTags/Aldfaer.php app/CustomTags/Legacy.php
 #: resources/views/modals/submitter-fields.phtml
 #: resources/views/password-request-page.phtml
@@ -5061,7 +4583,7 @@ msgstr "Email address"
 msgid "Email verified"
 msgstr "Email verified"
 
-#: app/Gedcom.php resources/views/calendar-page.phtml
+#: app/Gedcom.php
 msgid "Emigration"
 msgstr ""
 
@@ -5160,31 +4682,6 @@ msgstr "Eritrea"
 msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
 msgstr "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
 
-#: app/Date/JalaliDate.php
-msgctxt "Abbreviation for Persian month: Esfand"
-msgid "Esf"
-msgstr "Esf"
-
-#: app/Date/JalaliDate.php
-msgctxt "GENITIVE"
-msgid "Esfand"
-msgstr "Esfand"
-
-#: app/Date/JalaliDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Esfand"
-msgstr "Esfand"
-
-#: app/Date/JalaliDate.php
-msgctxt "LOCATIVE"
-msgid "Esfand"
-msgstr "Esfand"
-
-#: app/Date/JalaliDate.php
-msgctxt "NOMINATIVE"
-msgid "Esfand"
-msgstr "Esfand"
-
 #. I18N: Name of a mapping organisation
 #: app/Module/EsriMaps.php
 msgid "Esri/ArcGIS"
@@ -5224,8 +4721,7 @@ msgstr "Event"
 msgid "Event did not occur"
 msgstr ""
 
-#: app/Gedcom.php resources/views/calendar-page.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: app/Gedcom.php resources/views/modules/gedcom_stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/individual-events.phtml
 #: resources/views/modules/todays_events/config.phtml
@@ -5635,35 +5131,10 @@ msgstr "Fan chart"
 msgid "Fan chart of %s"
 msgstr "Fan chart of %s"
 
-#: app/Date/JalaliDate.php
-msgctxt "Abbreviation for Persian month: Farvardin"
-msgid "Far"
-msgstr "Far"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Faroe Islands"
 msgstr "Faroe Islands"
-
-#: app/Date/JalaliDate.php
-msgctxt "GENITIVE"
-msgid "Farvardin"
-msgstr "Farvardin"
-
-#: app/Date/JalaliDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Farvardin"
-msgstr "Farvardin"
-
-#: app/Date/JalaliDate.php
-msgctxt "LOCATIVE"
-msgid "Farvardin"
-msgstr "Farvardin"
-
-#: app/Date/JalaliDate.php
-msgctxt "NOMINATIVE"
-msgid "Farvardin"
-msgstr "Farvardin"
 
 #: resources/views/search-advanced-page.phtml
 #: resources/xml/reports/bdm_report.xml
@@ -5704,27 +5175,6 @@ msgstr ""
 msgid "Fax"
 msgstr ""
 
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "Abbreviation for February"
-msgid "Feb"
-msgstr "Rêş"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "GENITIVE"
-msgid "February"
-msgstr "Reşemî"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "INSTRUMENTAL"
-msgid "February"
-msgstr "Reşemî"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "LOCATIVE"
-msgid "February"
-msgstr "Sibat"
-
-#: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
@@ -5735,8 +5185,7 @@ msgstr "Reşemî"
 msgid "Female"
 msgstr "Female"
 
-#: app/Statistics.php resources/views/calendar-page.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: app/Statistics.php resources/views/modules/gedcom_stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/greatest-age.phtml
 #: resources/views/modules/statistics-chart/lifespan.phtml
@@ -5807,7 +5256,6 @@ msgstr "Files have been found from a previous version of webtrees. Old files can
 msgid "Files marked with %s are required for proper operation and cannot be removed."
 msgstr "Files marked with %s are required for proper operation and cannot be removed."
 
-#: resources/views/calendar-page.phtml
 #: resources/views/lists/datatables-attributes.phtml
 msgid "Filter"
 msgstr ""
@@ -5883,26 +5331,6 @@ msgstr "Flag"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Flanders"
 msgstr "Flanders"
-
-#: app/Date/FrenchDate.php
-msgctxt "GENITIVE"
-msgid "Floreal"
-msgstr "Floréal"
-
-#: app/Date/FrenchDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Floreal"
-msgstr "Floréal"
-
-#: app/Date/FrenchDate.php
-msgctxt "LOCATIVE"
-msgid "Floreal"
-msgstr "Floréal"
-
-#: app/Date/FrenchDate.php
-msgctxt "NOMINATIVE"
-msgid "Floreal"
-msgstr "Floréal"
 
 #: resources/views/modals/media-file-fields.phtml
 #: resources/views/modules/media-list/page.phtml
@@ -6067,13 +5495,8 @@ msgid "Fresno, California, United States"
 msgstr "Fresno, California, United States"
 
 #. I18N: abbreviation for Friday
-#: app/Date/AbstractCalendarDate.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgid "Fri"
-msgstr "În"
-
-#: app/Date/AbstractCalendarDate.php
-msgid "Friday"
 msgstr "În"
 
 #: app/Elements/RelationIsDescriptor.php
@@ -6090,26 +5513,6 @@ msgctxt "MALE"
 msgid "Friend"
 msgstr ""
 
-#: app/Date/FrenchDate.php
-msgctxt "GENITIVE"
-msgid "Frimaire"
-msgstr "Frimaire"
-
-#: app/Date/FrenchDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Frimaire"
-msgstr "Frimaire"
-
-#: app/Date/FrenchDate.php
-msgctxt "LOCATIVE"
-msgid "Frimaire"
-msgstr "Frimaire"
-
-#: app/Date/FrenchDate.php
-msgctxt "NOMINATIVE"
-msgid "Frimaire"
-msgstr "Frimaire"
-
 #: resources/views/admin/broadcast.phtml resources/views/admin/email-page.phtml
 #: resources/views/message-page.phtml
 msgctxt "Email sender"
@@ -6121,26 +5524,6 @@ msgstr ""
 msgctxt "Start of date range"
 msgid "From"
 msgstr "From"
-
-#: app/Date/FrenchDate.php
-msgctxt "GENITIVE"
-msgid "Fructidor"
-msgstr "Fructidor"
-
-#: app/Date/FrenchDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Fructidor"
-msgstr "Fructidor"
-
-#: app/Date/FrenchDate.php
-msgctxt "LOCATIVE"
-msgid "Fructidor"
-msgstr "Fructidor"
-
-#: app/Date/FrenchDate.php
-msgctxt "NOMINATIVE"
-msgid "Fructidor"
-msgstr "Fructidor"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -6304,26 +5687,6 @@ msgstr "Georgia"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Germany"
 msgstr "Germany"
-
-#: app/Date/FrenchDate.php
-msgctxt "GENITIVE"
-msgid "Germinal"
-msgstr "Germinal"
-
-#: app/Date/FrenchDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Germinal"
-msgstr "Germinal"
-
-#: app/Date/FrenchDate.php
-msgctxt "LOCATIVE"
-msgid "Germinal"
-msgstr "Germinal"
-
-#: app/Date/FrenchDate.php
-msgctxt "NOMINATIVE"
-msgid "Germinal"
-msgstr "Germinal"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -6634,26 +5997,6 @@ msgstr ""
 #: app/Elements/TempleCode.php
 msgid "Hermosillo, Mexico"
 msgstr "Hermosillo, Mexico"
-
-#: app/Date/JewishDate.php
-msgctxt "GENITIVE"
-msgid "Heshvan"
-msgstr "Heshvan"
-
-#: app/Date/JewishDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Heshvan"
-msgstr "Heshvan"
-
-#: app/Date/JewishDate.php
-msgctxt "LOCATIVE"
-msgid "Heshvan"
-msgstr "Heshvan"
-
-#: app/Date/JewishDate.php
-msgctxt "NOMINATIVE"
-msgid "Heshvan"
-msgstr "Heshvan"
 
 #: resources/views/admin/tags.phtml
 msgid "Hide GEDCOM tags"
@@ -6971,14 +6314,6 @@ msgstr "In some calendars, days start at midnight. In other calendars, days star
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 msgstr "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 
-#: app/Http/RequestHandlers/CalendarPage.php
-msgid "In this month…"
-msgstr "In this month…"
-
-#: app/Http/RequestHandlers/CalendarPage.php
-msgid "In this year…"
-msgstr "In this year…"
-
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
 msgstr ""
@@ -7199,10 +6534,6 @@ msgstr ""
 msgid "Invalid GEDCOM value."
 msgstr ""
 
-#: app/Date.php
-msgid "Invalid date"
-msgstr "Dîrok şaş e"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Iran"
@@ -7241,26 +6572,6 @@ msgstr ""
 msgid "Italy"
 msgstr "Italy"
 
-#: app/Date/JewishDate.php
-msgctxt "GENITIVE"
-msgid "Iyar"
-msgstr "Iyar"
-
-#: app/Date/JewishDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Iyar"
-msgstr "Iyar"
-
-#: app/Date/JewishDate.php
-msgctxt "LOCATIVE"
-msgid "Iyar"
-msgstr "Iyar"
-
-#: app/Date/JewishDate.php
-msgctxt "NOMINATIVE"
-msgid "Iyar"
-msgstr "Iyar"
-
 #. I18N: The Persian/Jalali calendar
 #: app/Factories/CalendarDateFactory.php resources/views/help/date.phtml
 msgid "Jalali"
@@ -7271,27 +6582,6 @@ msgstr "Şemsî"
 msgid "Jamaica"
 msgstr "Jamaica"
 
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "Abbreviation for January"
-msgid "Jan"
-msgstr "Rêb"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "GENITIVE"
-msgid "January"
-msgstr "Rêbendan"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "INSTRUMENTAL"
-msgid "January"
-msgstr "Rêbendan"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "LOCATIVE"
-msgid "January"
-msgstr "Çile"
-
-#: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
@@ -7334,99 +6624,17 @@ msgstr "Jordan River, Utah, United States"
 msgid "Journal"
 msgstr "Journal"
 
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "Abbreviation for July"
-msgid "Jul"
-msgstr "Tîr"
-
 #. I18N: The julian calendar
 #: app/Factories/CalendarDateFactory.php resources/views/help/date.phtml
 msgid "Julian"
 msgstr "Rûmî/Jûlyan"
 
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "GENITIVE"
-msgid "July"
-msgstr "Tîrmeh"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "INSTRUMENTAL"
-msgid "July"
-msgstr "Tîrmeh"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "LOCATIVE"
-msgid "July"
-msgstr "Tîrmeh"
-
-#: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "Tîrmeh"
 
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Jumādá al-awwal"
-msgstr "Cemazîyel-ewwel"
-
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Jumādá al-awwal"
-msgstr "Cemazîyel-ewwel"
-
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Jumādá al-awwal"
-msgstr "Cemazîyel-ewwel"
-
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Jumādá al-awwal"
-msgstr "Cemazîyel-ewwel"
-
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Jumādá al-thānī"
-msgstr "Cemazîyel-axir"
-
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Jumādá al-thānī"
-msgstr "Cemazîyel-axir"
-
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Jumādá al-thānī"
-msgstr "Cemazîyel-axir"
-
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Jumādá al-thānī"
-msgstr "Cemazîyel-axir"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "Abbreviation for June"
-msgid "Jun"
-msgstr "Pûş"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "GENITIVE"
-msgid "June"
-msgstr "Pûşper"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "INSTRUMENTAL"
-msgid "June"
-msgstr "Pûşper"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "LOCATIVE"
-msgid "June"
-msgstr "Hezîran"
-
-#: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
@@ -7467,55 +6675,10 @@ msgstr "Kenya"
 msgid "Keyword examples"
 msgstr "Keyword examples"
 
-#: app/Date/JalaliDate.php
-msgctxt "Abbreviation for Persian month: Khordad"
-msgid "Khor"
-msgstr "Khor"
-
-#: app/Date/JalaliDate.php
-msgctxt "GENITIVE"
-msgid "Khordad"
-msgstr "Khordad"
-
-#: app/Date/JalaliDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Khordad"
-msgstr "Khordad"
-
-#: app/Date/JalaliDate.php
-msgctxt "LOCATIVE"
-msgid "Khordad"
-msgstr "Khordad"
-
-#: app/Date/JalaliDate.php
-msgctxt "NOMINATIVE"
-msgid "Khordad"
-msgstr "Khordad"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Kiribati"
 msgstr "Kiribati"
-
-#: app/Date/JewishDate.php
-msgctxt "GENITIVE"
-msgid "Kislev"
-msgstr "Kislev"
-
-#: app/Date/JewishDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Kislev"
-msgstr "Kislev"
-
-#: app/Date/JewishDate.php
-msgctxt "LOCATIVE"
-msgid "Kislev"
-msgstr "Kislev"
-
-#: app/Date/JewishDate.php
-msgctxt "NOMINATIVE"
-msgid "Kislev"
-msgstr "Kislev"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -7888,10 +7051,6 @@ msgstr "Lithuanian"
 msgid "Living"
 msgstr ""
 
-#: resources/views/calendar-page.phtml
-msgid "Living individuals"
-msgstr ""
-
 #: resources/views/lists/datatables-attributes.phtml
 msgid "Loading…"
 msgstr ""
@@ -8034,8 +7193,7 @@ msgstr "Maldives"
 msgid "Male"
 msgstr "Male"
 
-#: app/Statistics.php resources/views/calendar-page.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: app/Statistics.php resources/views/modules/gedcom_stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/greatest-age.phtml
 #: resources/views/modules/statistics-chart/lifespan.phtml
@@ -8148,27 +7306,6 @@ msgstr ""
 msgid "Mapbox"
 msgstr ""
 
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "Abbreviation for March"
-msgid "Mar"
-msgstr "Adar"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "GENITIVE"
-msgid "March"
-msgstr "Adar"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "INSTRUMENTAL"
-msgid "March"
-msgstr "Adar"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "LOCATIVE"
-msgid "March"
-msgstr "Adar"
-
-#: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
@@ -8181,7 +7318,6 @@ msgid "Markdown is a simple system of formatting, used on websites such as Wikip
 msgstr "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
 
 #: app/CustomTags/Aldfaer.php app/Gedcom.php app/Module/BranchesListModule.php
-#: resources/views/calendar-page.phtml
 #: resources/views/lists/families-table.phtml
 #: resources/views/modules/relatives/family.phtml
 #: resources/xml/reports/ahnentafel_report.xml
@@ -8403,27 +7539,6 @@ msgstr "Maximum number of surnames on individual list"
 msgid "Maximum upload size: "
 msgstr ""
 
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "Abbreviation for May"
-msgid "May"
-msgstr "Gul"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "GENITIVE"
-msgid "May"
-msgstr "Gulan"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "INSTRUMENTAL"
-msgid "May"
-msgstr "Gulan"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "LOCATIVE"
-msgid "May"
-msgstr "Gulan"
-
-#: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
@@ -8532,31 +7647,6 @@ msgstr "Mediterranio"
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
 msgstr "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
 
-#: app/Date/JalaliDate.php
-msgctxt "Abbreviation for Persian month: Mehr"
-msgid "Mehr"
-msgstr "Mehr"
-
-#: app/Date/JalaliDate.php
-msgctxt "GENITIVE"
-msgid "Mehr"
-msgstr "Mehr"
-
-#: app/Date/JalaliDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Mehr"
-msgstr "Mehr"
-
-#: app/Date/JalaliDate.php
-msgctxt "LOCATIVE"
-msgid "Mehr"
-msgstr "Mehr"
-
-#: app/Date/JalaliDate.php
-msgctxt "NOMINATIVE"
-msgid "Mehr"
-msgstr "Mehr"
-
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
 msgid "Melbourne, Australia"
@@ -8625,26 +7715,6 @@ msgstr ""
 #: app/Module/UserMessagesModule.php resources/views/admin/site-mail.phtml
 msgid "Messages"
 msgstr "Messages"
-
-#: app/Date/FrenchDate.php
-msgctxt "GENITIVE"
-msgid "Messidor"
-msgstr "Messidor"
-
-#: app/Date/FrenchDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Messidor"
-msgstr "Messidor"
-
-#: app/Date/FrenchDate.php
-msgctxt "LOCATIVE"
-msgid "Messidor"
-msgstr "Messidor"
-
-#: app/Date/FrenchDate.php
-msgctxt "NOMINATIVE"
-msgid "Messidor"
-msgstr "Messidor"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -8729,7 +7799,6 @@ msgid "Moldova"
 msgstr "Moldova"
 
 #. I18N: abbreviation for Monday
-#: app/Date/AbstractCalendarDate.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgid "Mon"
 msgstr "Dşm"
@@ -8738,10 +7807,6 @@ msgstr "Dşm"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Monaco"
 msgstr "Monaco"
-
-#: app/Date/AbstractCalendarDate.php
-msgid "Monday"
-msgstr "Duşem"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -8763,8 +7828,7 @@ msgstr "Monterrey, Mexico"
 msgid "Montevideo, Uruguay"
 msgstr "Montevideo, Uruguay"
 
-#: app/Module/CalendarMenuModule.php app/Module/StatisticsChartModule.php
-#: resources/views/calendar-page.phtml
+#: app/Module/StatisticsChartModule.php
 msgid "Month"
 msgstr ""
 
@@ -8811,31 +7875,6 @@ msgstr "Montreal, Quebec, Canada"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Montserrat"
 msgstr "Montserrat"
-
-#: app/Date/JalaliDate.php
-msgctxt "Abbreviation for Persian month: Mordad"
-msgid "Mor"
-msgstr "Mor"
-
-#: app/Date/JalaliDate.php
-msgctxt "GENITIVE"
-msgid "Mordad"
-msgstr "Mordad"
-
-#: app/Date/JalaliDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Mordad"
-msgstr "Mordad"
-
-#: app/Date/JalaliDate.php
-msgctxt "LOCATIVE"
-msgid "Mordad"
-msgstr "Mordad"
-
-#: app/Date/JalaliDate.php
-msgctxt "NOMINATIVE"
-msgid "Mordad"
-msgstr "Mordad"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -8950,26 +7989,6 @@ msgstr ""
 #: resources/views/lists/families-table.phtml
 msgid "Multiple marriages"
 msgstr ""
-
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Muḥarram"
-msgstr "Muherrem"
-
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Muḥarram"
-msgstr "Muherrem"
-
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Muḥarram"
-msgstr "Muherrem"
-
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Muḥarram"
-msgstr "Muherrem"
 
 #: app/Http/RequestHandlers/AccountEdit.php app/Module/ModuleThemeTrait.php
 #: app/Module/UserWelcomeModule.php
@@ -9194,50 +8213,10 @@ msgstr "Niger"
 msgid "Nigeria"
 msgstr "Nigeria"
 
-#: app/Date/JewishDate.php
-msgctxt "GENITIVE"
-msgid "Nissan"
-msgstr "Nissan"
-
-#: app/Date/JewishDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Nissan"
-msgstr "Nissan"
-
-#: app/Date/JewishDate.php
-msgctxt "LOCATIVE"
-msgid "Nissan"
-msgstr "Nissan"
-
-#: app/Date/JewishDate.php
-msgctxt "NOMINATIVE"
-msgid "Nissan"
-msgstr "Nissan"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Niue"
 msgstr "Niue"
-
-#: app/Date/FrenchDate.php
-msgctxt "GENITIVE"
-msgid "Nivose"
-msgstr "Nivôse"
-
-#: app/Date/FrenchDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Nivose"
-msgstr "Nivôse"
-
-#: app/Date/FrenchDate.php
-msgctxt "LOCATIVE"
-msgid "Nivose"
-msgstr "Nivôse"
-
-#: app/Date/FrenchDate.php
-msgctxt "NOMINATIVE"
-msgid "Nivose"
-msgstr "Nivôse"
 
 #: app/Statistics.php resources/views/admin/users-edit.phtml
 msgid "No"
@@ -9383,11 +8362,6 @@ msgstr ""
 msgid "None"
 msgstr "None"
 
-#. I18N: The ninth day in the French republican calendar
-#: app/Date/FrenchDate.php
-msgid "Nonidi"
-msgstr "Nonidi"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Norfolk Island"
@@ -9528,27 +8502,6 @@ msgstr "Nothing found."
 msgid "Nothing to show"
 msgstr ""
 
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "Abbreviation for November"
-msgid "Nov"
-msgstr "Ser"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "GENITIVE"
-msgid "November"
-msgstr "Sermawez"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "INSTRUMENTAL"
-msgid "November"
-msgstr "Sermawez"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "LOCATIVE"
-msgid "November"
-msgstr "Sermawez"
-
-#: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
@@ -9640,32 +8593,6 @@ msgstr "Occupations"
 msgid "Occupied Palestinian Territory"
 msgstr "Occupied Palestinian Territory"
 
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "Abbreviation for October"
-msgid "Oct"
-msgstr "Cot"
-
-#. I18N: The eighth day in the French republican calendar
-#: app/Date/FrenchDate.php
-msgid "Octidi"
-msgstr "Octidi"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "GENITIVE"
-msgid "October"
-msgstr "Kewçêr"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "INSTRUMENTAL"
-msgid "October"
-msgstr "Cotmeh"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "LOCATIVE"
-msgid "October"
-msgstr "Cotmeh"
-
-#: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
@@ -9725,10 +8652,6 @@ msgstr "Oman"
 msgid "On this day"
 msgstr ""
 
-#: app/Http/RequestHandlers/CalendarPage.php
-msgid "On this day…"
-msgstr "On this day…"
-
 #: resources/views/admin/map-import-form.phtml
 msgid "Only add new records"
 msgstr "Only add new records"
@@ -9764,31 +8687,6 @@ msgstr "OpenStreetMap™"
 #: app/Elements/TempleCode.php
 msgid "Oquirrh Mountain, Utah, United States"
 msgstr "Oquirrh Mountain, Utah, United States"
-
-#: app/Date/JalaliDate.php
-msgctxt "Abbreviation for Persian month: Ordibehesht"
-msgid "Ord"
-msgstr "Ord"
-
-#: app/Date/JalaliDate.php
-msgctxt "GENITIVE"
-msgid "Ordibehesht"
-msgstr "Ordibehesht"
-
-#: app/Date/JalaliDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Ordibehesht"
-msgstr "Ordibehesht"
-
-#: app/Date/JalaliDate.php
-msgctxt "LOCATIVE"
-msgid "Ordibehesht"
-msgstr "Ordibehesht"
-
-#: app/Date/JalaliDate.php
-msgctxt "NOMINATIVE"
-msgid "Ordibehesht"
-msgstr "Ordibehesht"
 
 #: app/Gedcom.php
 msgid "Ordinance"
@@ -10302,26 +9200,6 @@ msgstr ""
 msgid "Please try again."
 msgstr "Please try again."
 
-#: app/Date/FrenchDate.php
-msgctxt "GENITIVE"
-msgid "Pluviose"
-msgstr "Pluviôse"
-
-#: app/Date/FrenchDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Pluviose"
-msgstr "Pluviôse"
-
-#: app/Date/FrenchDate.php
-msgctxt "LOCATIVE"
-msgid "Pluviose"
-msgstr "Pluviôse"
-
-#: app/Date/FrenchDate.php
-msgctxt "NOMINATIVE"
-msgid "Pluviose"
-msgstr "Pluviôse"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Poland"
@@ -10377,26 +9255,6 @@ msgstr ""
 msgid "Powered by webtrees™"
 msgstr ""
 
-#: app/Date/FrenchDate.php
-msgctxt "GENITIVE"
-msgid "Prairial"
-msgstr "Prairial"
-
-#: app/Date/FrenchDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Prairial"
-msgstr "Prairial"
-
-#: app/Date/FrenchDate.php
-msgctxt "LOCATIVE"
-msgid "Prairial"
-msgstr "Prairial"
-
-#: app/Date/FrenchDate.php
-msgctxt "NOMINATIVE"
-msgid "Prairial"
-msgstr "Prairial"
-
 #: app/Http/RequestHandlers/SiteRegistrationPage.php
 msgid "Predefined text that states admin will decide on each request for a user account"
 msgstr "Predefined text that states admin will decide on each request for a user account"
@@ -10447,11 +9305,6 @@ msgstr "Preview"
 #: app/Elements/RelationIsDescriptor.php
 msgid "Priest"
 msgstr ""
-
-#. I18N: The first day in the French republican calendar
-#: app/Date/FrenchDate.php
-msgid "Primidi"
-msgstr "Primidi"
 
 #: resources/xml/reports/family_group_report.xml
 msgid "Print basic events when blank"
@@ -10532,11 +9385,6 @@ msgstr "Qatar"
 msgid "Quality of data"
 msgstr ""
 
-#. I18N: The fourth day in the French republican calendar
-#: app/Date/FrenchDate.php
-msgid "Quartidi"
-msgstr "Quartidi"
-
 #: resources/views/modules/faq/config.phtml
 #: resources/views/modules/faq/edit.phtml
 msgid "Question"
@@ -10555,11 +9403,6 @@ msgstr "Quick family facts"
 msgid "Quick individual facts"
 msgstr "Quick individual facts"
 
-#. I18N: The fifth day in the French republican calendar
-#: app/Date/FrenchDate.php
-msgid "Quintidi"
-msgstr "Quintidi"
-
 #. I18N: When replying to an email, the subject becomes “RE: subject”
 #: resources/views/modules/user-messages/user-messages.phtml
 msgid "RE: "
@@ -10568,46 +9411,6 @@ msgstr "RE: "
 #: app/Elements/RelationIsDescriptor.php
 msgid "Rabbi"
 msgstr ""
-
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Rabiʿ al-awwal"
-msgstr "Rebîûl-ewwel"
-
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Rabiʿ al-awwal"
-msgstr "Rebîûl-ewwel"
-
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Rabiʿ al-awwal"
-msgstr "Rebîûl-ewwel"
-
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Rabiʿ al-awwal"
-msgstr "Rebîûl-ewwel"
-
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Rabiʿ al-thani"
-msgstr "Rebîûl-axir"
-
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Rabiʿ al-thani"
-msgstr "Rebîûl-axir"
-
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Rabiʿ al-thani"
-msgstr "Rebîûl-axir"
-
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Rabiʿ al-thani"
-msgstr "Rebîûl-axir"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php
@@ -10627,50 +9430,10 @@ msgctxt "Pedigree"
 msgid "Rada"
 msgstr ""
 
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Rajab"
-msgstr "Receb"
-
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Rajab"
-msgstr "Receb"
-
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Rajab"
-msgstr "Receb"
-
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Rajab"
-msgstr "Receb"
-
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
 msgid "Raleigh, North Carolina, United States"
 msgstr "Raleigh, North Carolina, United States"
-
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Ramadan"
-msgstr "Ramazan"
-
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Ramadan"
-msgstr "Ramazan"
-
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Ramadan"
-msgstr "Ramazan"
-
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Ramadan"
-msgstr "Ramazan"
 
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php
@@ -10719,10 +9482,6 @@ msgstr "Real name"
 #: app/Module/RecentChangesModule.php resources/xml/reports/change_report.xml
 msgid "Recent changes"
 msgstr "Recent changes"
-
-#: resources/views/calendar-page.phtml
-msgid "Recent years (&lt; 100 yrs)"
-msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -11242,13 +10001,8 @@ msgid "Sao Tome and Principe"
 msgstr "Sao Tome and Principe"
 
 #. I18N: abbreviation for Saturday
-#: app/Date/AbstractCalendarDate.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgid "Sat"
-msgstr "Şemî"
-
-#: app/Date/AbstractCalendarDate.php
-msgid "Saturday"
 msgstr "Şemî"
 
 #. I18N: Name of a country or state
@@ -11505,11 +10259,6 @@ msgstr "Senegal"
 msgid "Seoul, Korea"
 msgstr "Seoul, Korea"
 
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "Abbreviation for September"
-msgid "Sep"
-msgstr "Îlon"
-
 #: app/CustomTags/BrothersKeeper.php
 msgid "Separated"
 msgstr ""
@@ -11518,32 +10267,11 @@ msgstr ""
 msgid "Separation"
 msgstr ""
 
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "GENITIVE"
-msgid "September"
-msgstr "Rezber"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "INSTRUMENTAL"
-msgid "September"
-msgstr "Îlon"
-
-#: app/Date/AbstractGregorianJulianDate.php
-msgctxt "LOCATIVE"
-msgid "September"
-msgstr "Îlon"
-
-#: app/Date/AbstractGregorianJulianDate.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgctxt "NOMINATIVE"
 msgid "September"
 msgstr "Rezber"
-
-#. I18N: The seventh day in the French republican calendar
-#: app/Date/FrenchDate.php
-msgid "Septidi"
-msgstr "Septidi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -11629,40 +10357,10 @@ msgstr "Setup wizard for webtrees"
 msgid "Sex"
 msgstr ""
 
-#. I18N: The sixth day in the French republican calendar
-#: app/Date/FrenchDate.php
-msgid "Sextidi"
-msgstr "Sextidi"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Seychelles"
 msgstr "Seychelles"
-
-#: app/Date/JalaliDate.php
-msgctxt "Abbreviation for Persian month: Shahrivar"
-msgid "Shah"
-msgstr "Shah"
-
-#: app/Date/JalaliDate.php
-msgctxt "GENITIVE"
-msgid "Shahrivar"
-msgstr "Shahrivar"
-
-#: app/Date/JalaliDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Shahrivar"
-msgstr "Shahrivar"
-
-#: app/Date/JalaliDate.php
-msgctxt "LOCATIVE"
-msgid "Shahrivar"
-msgstr "Shahrivar"
-
-#: app/Date/JalaliDate.php
-msgctxt "NOMINATIVE"
-msgid "Shahrivar"
-msgstr "Shahrivar"
 
 #: resources/views/individual-page-menu.phtml
 #: resources/views/individual-page.phtml
@@ -11697,46 +10395,6 @@ msgstr ""
 msgid "Shares"
 msgstr ""
 
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Shawwal"
-msgstr "Şewwal"
-
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Shawwal"
-msgstr "Şewwal"
-
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Shawwal"
-msgstr "Şewwal"
-
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Shawwal"
-msgstr "Şewwal"
-
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Shaʿbān"
-msgstr "Şeban"
-
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Shaʿbān"
-msgstr "Şeban"
-
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Shaʿbān"
-msgstr "Şeban"
-
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Shaʿbān"
-msgstr "Şeban"
-
 #: resources/xml/reports/descendancy_report.xml
 msgid "She "
 msgstr "She "
@@ -11770,26 +10428,6 @@ msgstr "She was christened"
 msgid "She was cremated"
 msgstr "She was cremated"
 
-#: app/Date/JewishDate.php
-msgctxt "GENITIVE"
-msgid "Shevat"
-msgstr "Shevat"
-
-#: app/Date/JewishDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Shevat"
-msgstr "Shevat"
-
-#: app/Date/JewishDate.php
-msgctxt "LOCATIVE"
-msgid "Shevat"
-msgstr "Shevat"
-
-#: app/Date/JewishDate.php
-msgctxt "NOMINATIVE"
-msgid "Shevat"
-msgstr "Shevat"
-
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php
 msgid "Shiny Tomato"
@@ -11801,10 +10439,6 @@ msgstr "Shortcut"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml
 msgid "Shortest marriage"
-msgstr ""
-
-#: resources/views/calendar-page.phtml
-msgid "Show"
 msgstr ""
 
 #. I18N: A configuration setting
@@ -12213,26 +10847,6 @@ msgstr "Sitemaps"
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 
-#: app/Date/JewishDate.php
-msgctxt "GENITIVE"
-msgid "Sivan"
-msgstr "Sivan"
-
-#: app/Date/JewishDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Sivan"
-msgstr "Sivan"
-
-#: app/Date/JewishDate.php
-msgctxt "LOCATIVE"
-msgid "Sivan"
-msgstr "Sivan"
-
-#: app/Date/JewishDate.php
-msgctxt "NOMINATIVE"
-msgid "Sivan"
-msgstr "Sivan"
-
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml
 #: resources/views/layouts/default.phtml
@@ -12630,14 +11244,9 @@ msgid "Sudan"
 msgstr "Sudan"
 
 #. I18N: abbreviation for Sunday
-#: app/Date/AbstractCalendarDate.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgid "Sun"
 msgstr "Yekş"
-
-#: app/Date/AbstractCalendarDate.php
-msgid "Sunday"
-msgstr "Yekşem"
 
 #. I18N: %s is a URL/link to the project website
 #: resources/views/admin/control-panel.phtml
@@ -12808,26 +11417,6 @@ msgstr "Tajikistan"
 msgid "Tampico, Mexico"
 msgstr "Tampico, Mexico"
 
-#: app/Date/JewishDate.php
-msgctxt "GENITIVE"
-msgid "Tamuz"
-msgstr "Tamuz"
-
-#: app/Date/JewishDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Tamuz"
-msgstr "Tamuz"
-
-#: app/Date/JewishDate.php
-msgctxt "LOCATIVE"
-msgid "Tamuz"
-msgstr "Tamuz"
-
-#: app/Date/JewishDate.php
-msgctxt "NOMINATIVE"
-msgid "Tamuz"
-msgstr "Tamuz"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Tanzania"
@@ -12861,26 +11450,6 @@ msgstr "Templates"
 #: resources/xml/reports/individual_report.xml
 msgid "Temple"
 msgstr "Temple"
-
-#: app/Date/JewishDate.php
-msgctxt "GENITIVE"
-msgid "Tevet"
-msgstr "Tevet"
-
-#: app/Date/JewishDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Tevet"
-msgstr "Tevet"
-
-#: app/Date/JewishDate.php
-msgctxt "LOCATIVE"
-msgid "Tevet"
-msgstr "Tevet"
-
-#: app/Date/JewishDate.php
-msgctxt "NOMINATIVE"
-msgid "Tevet"
-msgstr "Tevet"
 
 #: app/CustomTags/GedcomL.php app/CustomTags/RootsMagic.php app/Gedcom.php
 #: resources/views/admin/trees-preferences.phtml
@@ -12957,11 +11526,6 @@ msgstr "The administrator at the webtrees site %s has approved your application 
 #: resources/views/verify-success-page.phtml
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
 msgstr "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
-
-#. I18N: Description of the “Calendar” module
-#: app/Module/CalendarMenuModule.php
-msgid "The calendar menu."
-msgstr "The calendar menu."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php
@@ -13514,26 +12078,6 @@ msgstr ""
 msgid "There was an error uploading your file."
 msgstr "There was an error uploading your file."
 
-#: app/Date/FrenchDate.php
-msgctxt "GENITIVE"
-msgid "Thermidor"
-msgstr "Thermidor"
-
-#: app/Date/FrenchDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Thermidor"
-msgstr "Thermidor"
-
-#: app/Date/FrenchDate.php
-msgctxt "LOCATIVE"
-msgid "Thermidor"
-msgstr "Thermidor"
-
-#: app/Date/FrenchDate.php
-msgctxt "NOMINATIVE"
-msgid "Thermidor"
-msgstr "Thermidor"
-
 #: resources/views/modules/privacy-policy/page.phtml
 msgid "These cookies are “essential”, and do not require consent."
 msgstr "These cookies are “essential”, and do not require consent."
@@ -13950,7 +12494,6 @@ msgid "This will delete all the genealogy data from “%s” and replace it with
 msgstr "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 
 #. I18N: abbreviation for Thursday
-#: app/Date/AbstractCalendarDate.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgid "Thu"
 msgstr "Pncş"
@@ -13962,10 +12505,6 @@ msgstr "Thumbnail image"
 #: resources/views/admin/trees-preferences.phtml
 msgid "Thumbnail images"
 msgstr "Thumbnail images"
-
-#: app/Date/AbstractCalendarDate.php
-msgid "Thursday"
-msgstr "Pêncşem"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -14021,51 +12560,6 @@ msgstr "Timestamp"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Timor-Leste"
 msgstr "Timor-Leste"
-
-#: app/Date/JalaliDate.php
-msgctxt "Abbreviation for Persian month: Tir"
-msgid "Tir"
-msgstr "Tir"
-
-#: app/Date/JalaliDate.php
-msgctxt "GENITIVE"
-msgid "Tir"
-msgstr "Tir"
-
-#: app/Date/JalaliDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Tir"
-msgstr "Tir"
-
-#: app/Date/JalaliDate.php
-msgctxt "LOCATIVE"
-msgid "Tir"
-msgstr "Tir"
-
-#: app/Date/JalaliDate.php
-msgctxt "NOMINATIVE"
-msgid "Tir"
-msgstr "Tir"
-
-#: app/Date/JewishDate.php
-msgctxt "GENITIVE"
-msgid "Tishrei"
-msgstr "Tishrei"
-
-#: app/Date/JewishDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Tishrei"
-msgstr "Tishrei"
-
-#: app/Date/JewishDate.php
-msgctxt "LOCATIVE"
-msgid "Tishrei"
-msgstr "Tishrei"
-
-#: app/Date/JewishDate.php
-msgctxt "NOMINATIVE"
-msgid "Tishrei"
-msgstr "Tishrei"
 
 #: app/CustomTags/Geneatique.php app/Gedcom.php
 #: resources/views/admin/fix-level-0-media.phtml
@@ -14316,11 +12810,6 @@ msgstr ""
 msgid "Tree"
 msgstr ""
 
-#. I18N: The third day in the French republican calendar
-#: app/Date/FrenchDate.php
-msgid "Tridi"
-msgstr "Tridi"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Trinidad and Tobago"
@@ -14332,14 +12821,9 @@ msgid "Trujillo, Peru"
 msgstr "Trujillo, Peru"
 
 #. I18N: abbreviation for Tuesday
-#: app/Date/AbstractCalendarDate.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgid "Tue"
 msgstr "Sşm"
-
-#: app/Date/AbstractCalendarDate.php
-msgid "Tuesday"
-msgstr "Sêşem"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -14762,50 +13246,10 @@ msgstr ""
 msgid "Vatican City"
 msgstr "Vatican City"
 
-#: app/Date/FrenchDate.php
-msgctxt "GENITIVE"
-msgid "Vendemiaire"
-msgstr "Vendémiaire"
-
-#: app/Date/FrenchDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Vendemiaire"
-msgstr "Vendémiaire"
-
-#: app/Date/FrenchDate.php
-msgctxt "LOCATIVE"
-msgid "Vendemiaire"
-msgstr "Vendémiaire"
-
-#: app/Date/FrenchDate.php
-msgctxt "NOMINATIVE"
-msgid "Vendemiaire"
-msgstr "Vendémiaire"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Venezuela"
 msgstr "Venezuela"
-
-#: app/Date/FrenchDate.php
-msgctxt "GENITIVE"
-msgid "Ventose"
-msgstr "Ventôse"
-
-#: app/Date/FrenchDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Ventose"
-msgstr "Ventôse"
-
-#: app/Date/FrenchDate.php
-msgctxt "LOCATIVE"
-msgid "Ventose"
-msgstr "Ventôse"
-
-#: app/Date/FrenchDate.php
-msgctxt "NOMINATIVE"
-msgid "Ventose"
-msgstr "Ventôse"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -14840,10 +13284,6 @@ msgstr "Vietnam"
 msgid "View table of events occurring in %s"
 msgstr "View table of events occurring in %s"
 
-#: resources/views/calendar-page.phtml
-msgid "View this day"
-msgstr ""
-
 #: app/Statistics.php resources/views/fact.phtml
 #: resources/views/statistics/families/top10-list-age.phtml
 #: resources/views/statistics/families/top10-nolist-age.phtml
@@ -14853,14 +13293,6 @@ msgstr ""
 #: app/Module/ModuleMapLinkTrait.php
 #, php-format
 msgid "View this location using %s"
-msgstr ""
-
-#: resources/views/calendar-page.phtml
-msgid "View this month"
-msgstr ""
-
-#: resources/views/calendar-page.phtml
-msgid "View this year"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -14889,7 +13321,7 @@ msgstr ""
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php
-#: resources/views/calendar-page.phtml resources/xml/reports/bdm_report.xml
+#: resources/xml/reports/bdm_report.xml
 msgid "Vital records"
 msgstr "Vital records"
 
@@ -14952,14 +13384,9 @@ msgid "Website preferences"
 msgstr "Website preferences"
 
 #. I18N: abbreviation for Wednesday
-#: app/Date/AbstractCalendarDate.php
 #: resources/views/edit/initialize-calendar-popup.phtml
 msgid "Wed"
 msgstr "Çarşm"
-
-#: app/Date/AbstractCalendarDate.php
-msgid "Wednesday"
-msgstr "Çarşem"
 
 #: app/CustomTags/Aldfaer.php app/CustomTags/BrothersKeeper.php
 msgid "Weight"
@@ -15098,10 +13525,6 @@ msgstr ""
 #: app/Module/YahrzeitModule.php
 msgid "Yahrzeiten"
 msgstr "Yahrzeiten"
-
-#: app/Module/CalendarMenuModule.php resources/views/calendar-page.phtml
-msgid "Year"
-msgstr ""
 
 #: resources/views/modules/timeline-chart/chart.phtml
 msgid "Year:"
@@ -15348,12 +13771,6 @@ msgstr "Zoom out"
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
 
-#. I18N: Gedcom ABT dates
-#: app/Date.php
-#, php-format
-msgid "about %s"
-msgstr "Der dorê %s"
-
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml
 #: resources/views/individual-page-pending.phtml
@@ -15402,12 +13819,6 @@ msgstr "adopted name"
 msgid "after"
 msgstr ""
 
-#. I18N: Gedcom AFT dates
-#: app/Date.php
-#, php-format
-msgid "after %s"
-msgstr "paşê %s"
-
 #: app/Module/StatisticsChartModule.php
 msgid "age"
 msgstr ""
@@ -15425,51 +13836,6 @@ msgstr "also known as"
 msgid "and"
 msgstr "and"
 
-#: app/Services/RelationshipService.php
-msgctxt "father’s brother’s wife"
-msgid "aunt"
-msgstr "xatî"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s sister"
-msgid "aunt"
-msgstr "met"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s brother’s wife"
-msgid "aunt"
-msgstr "xatî"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s sister"
-msgid "aunt"
-msgstr "xatî"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s brother’s wife"
-msgid "aunt"
-msgstr "amojin/xalojin"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s sister"
-msgid "aunt"
-msgstr "xatî/met"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s sibling"
-msgid "aunt/uncle"
-msgstr "met/ap"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s sibling"
-msgid "aunt/uncle"
-msgstr "xatî/xal"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s sibling"
-msgid "aunt/uncle"
-msgstr "xatî/xalo ap/met"
-
 #: resources/views/admin/trees-import.phtml
 msgid "automatic"
 msgstr ""
@@ -15482,18 +13848,6 @@ msgstr "back to top"
 msgid "before"
 msgstr ""
 
-#. I18N: Gedcom BEF dates
-#: app/Date.php
-#, php-format
-msgid "before %s"
-msgstr "Berya/berê %s"
-
-#. I18N: Gedcom BET-AND dates
-#: app/Date.php
-#, php-format
-msgid "between %s and %s"
-msgstr "Navbera %s û %s"
-
 #. I18N: The name given to an individual at their birth
 #: app/Elements/NameType.php
 msgid "birth name"
@@ -15505,90 +13859,10 @@ msgstr "birth name"
 msgid "born in the last %1$s years or died in the last %2$s years"
 msgstr "born in the last %1$s years or died in the last %2$s years"
 
-#: app/Services/RelationshipService.php
-msgid "brother"
-msgstr "bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "brother’s wife’s brother"
-msgid "brother-in-law"
-msgstr "Birê jin-birê"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s brother"
-msgid "brother-in-law"
-msgstr "tî"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s sister’s husband"
-msgid "brother-in-law"
-msgstr "zava"
-
-#: app/Services/RelationshipService.php
-msgctxt "sister’s husband"
-msgid "brother-in-law"
-msgstr "zava"
-
-#: app/Services/RelationshipService.php
-msgctxt "sister’s husband’s brother"
-msgid "brother-in-law"
-msgstr "birangê zavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "spouse’s brother"
-msgid "brother-in-law"
-msgstr "zava"
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s brother"
-msgid "brother-in-law"
-msgstr "zava"
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s sister’s husband"
-msgid "brother-in-law"
-msgstr "Mêrê xuşka jinê"
-
-#: app/Services/RelationshipService.php
-msgctxt "brother’s wife’s sibling"
-msgid "brother/sister-in-law"
-msgstr "Xûşk birayên jin-birê"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s sibling"
-msgid "brother/sister-in-law"
-msgstr "xwîşk/brayê oge"
-
-#: app/Services/RelationshipService.php
-msgctxt "sibling’s spouse"
-msgid "brother/sister-in-law"
-msgstr "zava/bûk"
-
-#: app/Services/RelationshipService.php
-msgctxt "sister’s husband’s sibling"
-msgid "brother/sister-in-law"
-msgstr "zava/ jinbir"
-
-#: app/Services/RelationshipService.php
-msgctxt "spouse’s sibling"
-msgid "brother/sister-in-law"
-msgstr "bûk/zava"
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s sibling"
-msgid "brother/sister-in-law"
-msgstr "bûk/zava"
-
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php
 msgid "bullet list"
 msgstr ""
-
-#. I18N: Gedcom CAL dates
-#: app/Date.php
-#, php-format
-msgid "calculated %s"
-msgstr "Çortik %s"
 
 #. I18N: A button label.
 #: resources/js/webtrees/confirm.js resources/views/admin/analytics-edit.phtml
@@ -15650,7 +13924,6 @@ msgid "check now"
 msgstr ""
 
 #: app/Elements/AgeAtEvent.php app/Elements/RoleInEvent.php
-#: app/Services/RelationshipService.php
 msgid "child"
 msgstr "zar"
 
@@ -15725,38 +13998,9 @@ msgstr ""
 msgid "date periods"
 msgstr "date periods"
 
-#: app/Services/RelationshipService.php
-msgid "daughter"
-msgstr "qîz/keç"
-
 #: resources/xml/reports/descendancy_report.xml
 msgid "daughter of"
 msgstr "daughter of"
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s wife"
-msgid "daughter-in-law"
-msgstr "bûk"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s wife"
-msgid "daughter-in-law"
-msgstr "bûk"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s wife’s father"
-msgid "daughter-in-law’s father"
-msgstr "bavê jina kur"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s wife’s mother"
-msgid "daughter-in-law’s mother"
-msgstr "Dîya jina kur"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s wife’s parent"
-msgid "daughter-in-law’s parent"
-msgstr "Dêbavê jina kur"
 
 #: resources/views/admin/location-edit.phtml
 msgid "degrees"
@@ -15810,70 +14054,10 @@ msgstr "d’Aboville number"
 msgid "edit"
 msgstr "edit"
 
-#: app/Services/RelationshipService.php
-msgid "eighth cousin"
-msgstr "pismamê heştemîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "eighth cousin"
-msgstr "Pismama heştemîn"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "eighth cousin"
-msgstr "Pismamê heştemîn"
-
-#: app/Services/RelationshipService.php
-msgid "elder brother"
-msgstr "birayê mezin"
-
-#: app/Services/RelationshipService.php
-msgid "elder sibling"
-msgstr "Xwîşk/brayê herî mezin"
-
-#: app/Services/RelationshipService.php
-msgid "elder sister"
-msgstr "xwîşka mezin"
-
-#: app/Services/RelationshipService.php
-msgid "eleventh cousin"
-msgstr "pismamê yanzdemîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "eleventh cousin"
-msgstr "pismama yanzdemîn"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "eleventh cousin"
-msgstr "Pismamê yanzdemîn"
-
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/Elements/NameType.php
 msgid "estate name"
 msgstr "estate name"
-
-#. I18N: Gedcom EST dates
-#: app/Date.php
-#, php-format
-msgid "estimated %s"
-msgstr "Texmînî %s"
-
-#: app/Services/RelationshipService.php
-msgid "ex-husband"
-msgstr "Mêrê pêşîn"
-
-#: app/Services/RelationshipService.php
-msgid "ex-spouse"
-msgstr "jina berîn"
-
-#: app/Services/RelationshipService.php
-msgid "ex-wife"
-msgstr "Jîna berîn"
 
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml
@@ -15890,86 +14074,9 @@ msgstr ""
 msgid "facts"
 msgstr "facts"
 
-#: app/Elements/RoleInEvent.php app/Services/RelationshipService.php
+#: app/Elements/RoleInEvent.php
 msgid "father"
 msgstr "bav"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s father"
-msgid "father-in-law"
-msgstr "Xezûr"
-
-#: app/Services/RelationshipService.php
-msgctxt "spouse’s father"
-msgid "father-in-law"
-msgstr "xezûr"
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s father"
-msgid "father-in-law"
-msgstr "xezûr"
-
-#: app/Services/RelationshipService.php
-msgid "fiancé"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "fiancé(e)"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "fiancée"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "fifteenth cousin"
-msgstr "pismamê panzdemîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "fifteenth cousin"
-msgstr "pismama panzdemîn"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "fifteenth cousin"
-msgstr "Pismamê panzdemîn"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "fifth %s"
-msgstr "%s ê pêncemîn''"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "FEMALE"
-msgid "fifth %s"
-msgstr "%s a pêncemîn''"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "MALE"
-msgid "fifth %s"
-msgstr "%s ê pêncemîn''"
-
-#: app/Services/RelationshipService.php
-msgid "fifth cousin"
-msgstr "pismamê pêncemîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "fifth cousin"
-msgstr "Pismama pêncemîn"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "fifth cousin"
-msgstr "Pismamê pêncemîn"
 
 #. I18N: A button label, first page
 #: resources/views/admin/trees-preferences.phtml
@@ -15984,271 +14091,6 @@ msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
 msgstr "first"
 
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "first %s"
-msgstr "%s ê yekemîn''"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "FEMALE"
-msgid "first %s"
-msgstr "%s a yekemîn''"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "MALE"
-msgid "first %s"
-msgstr "%s ê yekemîn''"
-
-#: app/Services/RelationshipService.php
-msgid "first cousin"
-msgstr "pismamê yekemîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "first cousin"
-msgstr "Pismama yekemîn"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "first cousin"
-msgstr "Pismam"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s brother’s child"
-msgid "first cousin"
-msgstr "pismam/dotmam"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s brother’s daughter"
-msgid "first cousin"
-msgstr "pismam/dotmam"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s brother’s son"
-msgid "first cousin"
-msgstr "pismam"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s sister’s child"
-msgid "first cousin"
-msgstr "pismam"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s sister’s daughter"
-msgid "first cousin"
-msgstr "pismam/dotmam"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s sister’s son"
-msgid "first cousin"
-msgstr "pismam/dotmam"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s brother’s child"
-msgid "first cousin"
-msgstr "pismam/dotmam"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s brother’s daughter"
-msgid "first cousin"
-msgstr "pismam/dotmam"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s brother’s son"
-msgid "first cousin"
-msgstr "pismam/dotmam"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s sister’s child"
-msgid "first cousin"
-msgstr "pismam/kurmam"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s sister’s daughter"
-msgid "first cousin"
-msgstr "keçxal/kurxal"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s sister’s son"
-msgid "first cousin"
-msgstr "kurxatî/keçxatî"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father’s brother’s child"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father’s brother’s daughter"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father’s brother’s son"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father’s sister’s child"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father’s sister’s daughter"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father’s sister’s son"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother’s brother’s child"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother’s brother’s daughter"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother’s brother’s son"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother’s sister’s child"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother’s sister’s daughter"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother’s sister’s son"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father’s brother’s child"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father’s brother’s daughter"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father’s brother’s son"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father’s sister’s child"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father’s sister’s daughter"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father’s sister’s son"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother’s brother’s child"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother’s brother’s daughter"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother’s brother’s son"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother’s sister’s child"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother’s sister’s daughter"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother’s sister’s son"
-msgid "first cousin once removed ascending"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "fourteenth cousin"
-msgstr "pismamê çardemîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "fourteenth cousin"
-msgstr "pismama çardemîn"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "fourteenth cousin"
-msgstr "Pismamê çardemîn"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "fourth %s"
-msgstr "%s ê çaremîn''"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "FEMALE"
-msgid "fourth %s"
-msgstr "%s a çaremîn''"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "MALE"
-msgid "fourth %s"
-msgstr "%s ê yekemîn''"
-
-#: app/Services/RelationshipService.php
-msgid "fourth cousin"
-msgstr "pismamê çardemîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "fourth cousin"
-msgstr "Pismama çaremîn"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "fourth cousin"
-msgstr "Pismamê çaremîn"
-
 #. I18N: from 1700 interval 50 years
 #: resources/views/modules/statistics-chart/custom.phtml
 #, php-format
@@ -16256,18 +14098,6 @@ msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
 msgstr[0] ""
 msgstr[1] ""
-
-#. I18N: Gedcom FROM dates
-#: app/Date.php
-#, php-format
-msgid "from %s"
-msgstr "ji %s"
-
-#. I18N: Gedcom FROM-TO dates
-#: app/Date.php
-#, php-format
-msgid "from %s to %s"
-msgstr "Ji %s heya %s"
 
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php
@@ -16284,1512 +14114,10 @@ msgstr ""
 msgid "go to new individual"
 msgstr "go to new individual"
 
-#: app/Services/RelationshipService.php
-msgctxt "child’s child"
-msgid "grandchild"
-msgstr "neve/nevo"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s child"
-msgid "grandchild"
-msgstr "neve/nevo"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s child"
-msgid "grandchild"
-msgstr "neve-nevo"
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s daughter"
-msgid "granddaughter"
-msgstr "neve/nevo"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s daughter"
-msgid "granddaughter"
-msgstr "neve/nevo"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s daughter"
-msgid "granddaughter"
-msgstr "keçnevo/nevoya qîzîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s daughter’s husband"
-msgid "granddaughter’s husband"
-msgstr "mêrê nevoyê"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s daughter’s husband"
-msgid "granddaughter’s husband"
-msgstr "mêrê neveçirkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s daughter’s husband"
-msgid "granddaughter’s husband"
-msgstr "mêrê neveçirkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s father"
-msgid "grandfather"
-msgstr "kalik"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s mother"
-msgid "grandmother"
-msgstr "pîrik"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s parent"
-msgid "grandparent"
-msgstr "kalik-pîrik"
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s son"
-msgid "grandson"
-msgstr "nevo"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s son"
-msgid "grandson"
-msgstr "neve/nevo"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s son"
-msgid "grandson"
-msgstr "kurnevo/nevoyê kur"
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s son’s wife"
-msgid "grandson’s wife"
-msgstr "jina nevo/bûk"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s son’s wife"
-msgid "grandson’s wife"
-msgstr "jina nevo"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s son’s wife"
-msgid "grandson’s wife"
-msgstr "jina kurê kur"
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "great ×%s aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "great ×%s aunt/uncle"
-msgstr ""
-
-#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "great ×%s grandchild"
-msgstr ""
-
-#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "great ×%s granddaughter"
-msgstr ""
-
-#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "great ×%s grandfather"
-msgstr ""
-
-#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "great ×%s grandmother"
-msgstr ""
-
-#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "great ×%s grandparent"
-msgstr ""
-
-#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "great ×%s grandson"
-msgstr ""
-
-#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "great ×%s nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
-msgid "great ×%s nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
-msgid "great ×%s nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "(a woman’s) great ×%s nephew"
-msgid "great ×%s nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "great ×%s nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-msgid "great ×%s nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
-msgid "great ×%s nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "(a woman’s) great ×%s nephew/niece"
-msgid "great ×%s nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "great ×%s niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
-msgid "great ×%s niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
-msgid "great ×%s niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "(a woman’s) great ×%s niece"
-msgid "great ×%s niece"
-msgstr ""
-
-#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "great ×%s uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "great ×(%s-1) grandfather’s brother"
-msgid "great ×%s uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "great ×(%s-1) grandmother’s brother"
-msgid "great ×%s uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "great ×(%s-1) grandparent’s brother"
-msgid "great ×%s uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×4 aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×4 aunt/uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×4 grandchild"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×4 granddaughter"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×4 grandfather"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×4 grandmother"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×4 grandparent"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×4 grandson"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s great-great-great-grandson"
-msgid "great ×4 nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s great-great-great-grandson"
-msgid "great ×4 nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) great ×4 nephew"
-msgid "great ×4 nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s great-great-great-grandchild"
-msgid "great ×4 nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s great-great-great-grandchild"
-msgid "great ×4 nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) great ×4 nephew/niece"
-msgid "great ×4 nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s great-great-great-granddaughter"
-msgid "great ×4 niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s great-great-great-granddaughter"
-msgid "great ×4 niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) great ×4 niece"
-msgid "great ×4 niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great-great-great-grandfather’s brother"
-msgid "great ×4 uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great-great-great-grandmother’s brother"
-msgid "great ×4 uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great-great-great-grandparent’s brother"
-msgid "great ×4 uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×5 aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×5 aunt/uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×5 grandchild"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×5 granddaughter"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×5 grandfather"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×5 grandmother"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×5 grandparent"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×5 grandson"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s great ×4 grandson"
-msgid "great ×5 nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s great ×4 grandson"
-msgid "great ×5 nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) great ×5 nephew"
-msgid "great ×5 nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s great ×4 grandchild"
-msgid "great ×5 nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s great ×4 grandchild"
-msgid "great ×5 nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) great ×5 nephew/niece"
-msgid "great ×5 nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s great ×4 granddaughter"
-msgid "great ×5 niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s great ×4 granddaughter"
-msgid "great ×5 niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) great ×5 niece"
-msgid "great ×5 niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great ×4 grandfather’s brother"
-msgid "great ×5 uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great ×4 grandmother’s brother"
-msgid "great ×5 uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great ×4 grandparent’s brother"
-msgid "great ×5 uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×6 aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×6 aunt/uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×6 grandchild"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×6 granddaughter"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×6 grandfather"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×6 grandmother"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×6 grandparent"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×6 grandson"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great ×5 grandfather’s brother"
-msgid "great ×6 uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great ×5 grandmother’s brother"
-msgid "great ×6 uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great ×5 grandparent’s brother"
-msgid "great ×6 uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×7 aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×7 aunt/uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×7 grandchild"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×7 granddaughter"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×7 grandfather"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×7 grandmother"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×7 grandparent"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great ×7 grandson"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great ×6 grandfather’s brother"
-msgid "great ×7 uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great ×6 grandmother’s brother"
-msgid "great ×7 uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great ×6 grandparent’s brother"
-msgid "great ×7 uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father’s brother’s wife"
-msgid "great-aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father’s sister"
-msgid "great-aunt"
-msgstr "meta bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother’s brother’s wife"
-msgid "great-aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother’s sister"
-msgid "great-aunt"
-msgstr "xatiya bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s parent’s brother’s wife"
-msgid "great-aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s parent’s sister"
-msgid "great-aunt"
-msgstr "xatiya bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father’s brother’s wife"
-msgid "great-aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father’s sister"
-msgid "great-aunt"
-msgstr "xatiya dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother’s brother’s wife"
-msgid "great-aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother’s sister"
-msgid "great-aunt"
-msgstr "xatiya ji dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s parent’s brother’s wife"
-msgid "great-aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s parent’s sister"
-msgid "great-aunt"
-msgstr "xatî û metên ji dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s father’s brother’s wife"
-msgid "great-aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s father’s sister"
-msgid "great-aunt"
-msgstr "amojin û xalojinên dê û bavan"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s mother’s brother’s wife"
-msgid "great-aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s mother’s sister"
-msgid "great-aunt"
-msgstr "amojin û xalojinên dê û bavan"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s parent’s brother’s wife"
-msgid "great-aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s parent’s sister"
-msgid "great-aunt"
-msgstr "xwîşka kalik û pirikê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father’s sibling"
-msgid "great-aunt/uncle"
-msgstr "birê kalik"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father’s sibling’s spouse"
-msgid "great-aunt/uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother’s sibling"
-msgid "great-aunt/uncle"
-msgstr "xal û xatiyên bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother’s sibling’s spouse"
-msgid "great-aunt/uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s parent’s sibling"
-msgid "great-aunt/uncle"
-msgstr "ap û metên bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s parent’s sibling’s spouse"
-msgid "great-aunt/uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father’s sibling"
-msgid "great-aunt/uncle"
-msgstr "ap û metên ji dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father’s sibling’s spouse"
-msgid "great-aunt/uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother’s sibling"
-msgid "great-aunt/uncle"
-msgstr "xatî/xalên ji dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother’s sibling’s spouse"
-msgid "great-aunt/uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s parent’s sibling"
-msgid "great-aunt/uncle"
-msgstr "xal û xatiyên ji dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s parent’s sibling’s spouse"
-msgid "great-aunt/uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s father’s sibling"
-msgid "great-aunt/uncle"
-msgstr "ap û metên dê û bavan"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s father’s sibling’s spouse"
-msgid "great-aunt/uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s mother’s sibling"
-msgid "great-aunt/uncle"
-msgstr "ap û metên dê û bavan"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s mother’s sibling’s spouse"
-msgid "great-aunt/uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s parent’s sibling"
-msgid "great-aunt/uncle"
-msgstr "xwîşk /brayên kalik û pîrikan"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s parent’s sibling’s spouse"
-msgid "great-aunt/uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s child’s child"
-msgid "great-grandchild"
-msgstr "Neveçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s daughter’s child"
-msgid "great-grandchild"
-msgstr "kurê ji qîza kur"
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s son’s child"
-msgid "great-grandchild"
-msgstr "Nevoçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s child’s child"
-msgid "great-grandchild"
-msgstr "neveçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s daughter’s child"
-msgid "great-grandchild"
-msgstr "neveçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s son’s child"
-msgid "great-grandchild"
-msgstr "neveçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s child’s child"
-msgid "great-grandchild"
-msgstr "kur/nevoçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s daughter’s child"
-msgid "great-grandchild"
-msgstr "zara vevoçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s son’s child"
-msgid "great-grandchild"
-msgstr "Zara kurê kur"
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s child’s daughter"
-msgid "great-granddaughter"
-msgstr "Neveçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s daughter’s daughter"
-msgid "great-granddaughter"
-msgstr "qîza ji qîza kur"
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s son’s daughter"
-msgid "great-granddaughter"
-msgstr "neveçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s child’s daughter"
-msgid "great-granddaughter"
-msgstr "neveçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s daughter’s daughter"
-msgid "great-granddaughter"
-msgstr "neveçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s son’s daughter"
-msgid "great-granddaughter"
-msgstr "neveçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s child’s daughter"
-msgid "great-granddaughter"
-msgstr "keç/ nevoçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s daughter’s daughter"
-msgid "great-granddaughter"
-msgstr "keça neveçirkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s son’s daughter"
-msgid "great-granddaughter"
-msgstr "qîza kurê kur"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father’s father"
-msgid "great-grandfather"
-msgstr "kalikê bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother’s father"
-msgid "great-grandfather"
-msgstr "kalikê bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s parent’s father"
-msgid "great-grandfather"
-msgstr "kalikê bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father’s father"
-msgid "great-grandfather"
-msgstr "kalikê dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother’s father"
-msgid "great-grandfather"
-msgstr "kalikê ji dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s parent’s father"
-msgid "great-grandfather"
-msgstr "kalikê ji dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s father’s father"
-msgid "great-grandfather"
-msgstr "kalikê ji bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s mother’s father"
-msgid "great-grandfather"
-msgstr "kalikê ji dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s parent’s father"
-msgid "great-grandfather"
-msgstr "kalikê ji dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father’s mother"
-msgid "great-grandmother"
-msgstr "pîrika dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother’s mother"
-msgid "great-grandmother"
-msgstr "diya pîrikê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s parent’s mother"
-msgid "great-grandmother"
-msgstr "pîrika bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father’s mother"
-msgid "great-grandmother"
-msgstr "pîrka bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother’s mother"
-msgid "great-grandmother"
-msgstr "pîrika ji dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s parent’s mother"
-msgid "great-grandmother"
-msgstr "pîrika ji dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s father’s mother"
-msgid "great-grandmother"
-msgstr "pîrika ji bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s mother’s mother"
-msgid "great-grandmother"
-msgstr "pîrika ji bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s parent’s mother"
-msgid "great-grandmother"
-msgstr "pîrika ji dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father’s parent"
-msgid "great-grandparent"
-msgstr "kalikê dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother’s parent"
-msgid "great-grandparent"
-msgstr "kalik û pîrikên dê û bavan"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s parent’s parent"
-msgid "great-grandparent"
-msgstr "kalik û pîrikên dê û bavan"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father’s parent"
-msgid "great-grandparent"
-msgstr "kalik û pîrikên dê û bavan"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother’s parent"
-msgid "great-grandparent"
-msgstr "kalik û pîrikên ji dê û bavan"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s parent’s parent"
-msgid "great-grandparent"
-msgstr "kalik û pîrikên ji dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s father’s parent"
-msgid "great-grandparent"
-msgstr "kalik û pîrikên ji dê û bavan"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s mother’s parent"
-msgid "great-grandparent"
-msgstr "kalik û pîrikên dê û bavav"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s parent’s parent"
-msgid "great-grandparent"
-msgstr "Kalik û pîikên dê û bav"
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s child’s son"
-msgid "great-grandson"
-msgstr "Neveçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s daughter’s son"
-msgid "great-grandson"
-msgstr "kurê nevoyê"
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s son’s son"
-msgid "great-grandson"
-msgstr "nevoçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s child’s son"
-msgid "great-grandson"
-msgstr "nevoçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s daughter’s son"
-msgid "great-grandson"
-msgstr "nevoçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s son’s son"
-msgid "great-grandson"
-msgstr "nevoçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s child’s son"
-msgid "great-grandson"
-msgstr "kurê nevoçirk"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s daughter’s son"
-msgid "great-grandson"
-msgstr "Kurê qîza kur"
-
-#: app/Services/RelationshipService.php
-msgctxt "son’s son’s son"
-msgid "great-grandson"
-msgstr "kurê kurê kur"
-
-#: app/Services/RelationshipService.php
-msgid "great-great-aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great-great-aunt/uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great-great-grandchild"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great-great-granddaughter"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great-great-grandfather"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great-great-grandmother"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great-great-grandparent"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great-great-grandson"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great-great-great-aunt"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great-great-great-aunt/uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great-great-great-grandchild"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great-great-great-granddaughter"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great-great-great-grandfather"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great-great-great-grandmother"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great-great-great-grandparent"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgid "great-great-great-grandson"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s great-great-grandson"
-msgid "great-great-great-nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s great-great-grandson"
-msgid "great-great-great-nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) great-great-great-nephew"
-msgid "great-great-great-nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s great-great-grandchild"
-msgid "great-great-great-nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s great-great-grandchild"
-msgid "great-great-great-nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) great-great-great-nephew/niece"
-msgid "great-great-great-nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s great-great-granddaughter"
-msgid "great-great-great-niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s great-great-granddaughter"
-msgid "great-great-great-niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) great-great-great-niece"
-msgid "great-great-great-niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great-great-grandfather’s brother"
-msgid "great-great-great-uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great-great-grandmother’s brother"
-msgid "great-great-great-uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great-great-grandparent’s brother"
-msgid "great-great-great-uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s great-grandson"
-msgid "great-great-nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s great-grandson"
-msgid "great-great-nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) great-great-nephew"
-msgid "great-great-nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s great-grandchild"
-msgid "great-great-nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s great-grandchild"
-msgid "great-great-nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) great-great-nephew/niece"
-msgid "great-great-nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s great-granddaughter"
-msgid "great-great-niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s great-granddaughter"
-msgid "great-great-niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) great-great-niece"
-msgid "great-great-niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great-grandfather’s brother"
-msgid "great-great-uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great-grandmother’s brother"
-msgid "great-great-uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "great-grandparent’s brother"
-msgid "great-great-uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s child’s son"
-msgid "great-nephew"
-msgstr "nevoyê xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s daughter’s son"
-msgid "great-nephew"
-msgstr "Kurê qîza bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s son’s son"
-msgid "great-nephew"
-msgstr "nevoyê bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s child’s son"
-msgid "great-nephew"
-msgstr "nevoyê xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s daughter’s son"
-msgid "great-nephew"
-msgstr "nevoyê xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s son’s son"
-msgid "great-nephew"
-msgstr "nevoyê xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) brother’s child’s son"
-msgid "great-nephew"
-msgstr "nevoyê xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) brother’s daughter’s son"
-msgid "great-nephew"
-msgstr "Kurê qîza bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) brother’s son’s son"
-msgid "great-nephew"
-msgstr "keça kur-bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) sister’s child’s son"
-msgid "great-nephew"
-msgstr "nevoyê xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) sister’s daughter’s son"
-msgid "great-nephew"
-msgstr "nevoyê xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) sister’s son’s son"
-msgid "great-nephew"
-msgstr "nevoya xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "sibling’s child’s son"
-msgid "great-nephew"
-msgstr "nevoyê bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "sibling’s daughter’s son"
-msgid "great-nephew"
-msgstr "nevoyê xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "sibling’s son’s son"
-msgid "great-nephew"
-msgstr "nevoyên birayan"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s child’s child"
-msgid "great-nephew/niece"
-msgstr "nevoyên xwîşk/bra"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s daughter’s child"
-msgid "great-nephew/niece"
-msgstr "nevoyê bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s son’s child"
-msgid "great-nephew/niece"
-msgstr "nevyê bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s child’s child"
-msgid "great-nephew/niece"
-msgstr "nevoyên xwîşk/bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s daughter’s child"
-msgid "great-nephew/niece"
-msgstr "nevoyên xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s son’s child"
-msgid "great-nephew/niece"
-msgstr "nevoyên xwîşk/bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) brother’s child’s child"
-msgid "great-nephew/niece"
-msgstr "xwarziyê xwîşk/bra"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) brother’s daughter’s child"
-msgid "great-nephew/niece"
-msgstr "nevoyê bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) brother’s son’s child"
-msgid "great-nephew/niece"
-msgstr "nevoya bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) sister’s child’s child"
-msgid "great-nephew/niece"
-msgstr "nevoyên xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) sister’s daughter’s child"
-msgid "great-nephew/niece"
-msgstr "nevoyên xwîşkan"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) sister’s son’s child"
-msgid "great-nephew/niece"
-msgstr "nevoyên xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "sibling’s child’s child"
-msgid "great-nephew/niece"
-msgstr "nevoyên xwîşk/bra"
-
-#: app/Services/RelationshipService.php
-msgctxt "sibling’s daughter’s child"
-msgid "great-nephew/niece"
-msgstr "nevoyên xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "sibling’s son’s child"
-msgid "great-nephew/niece"
-msgstr "nevoyê biraya"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s child’s daughter"
-msgid "great-niece"
-msgstr "neva xwîşk/bra"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s daughter’s daughter"
-msgid "great-niece"
-msgstr "neva xwîşk/bra"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) brother’s son’s daughter"
-msgid "great-niece"
-msgstr "Qîza kur-bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s child’s daughter"
-msgid "great-niece"
-msgstr "nevoya xwîşk/birayan"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s daughter’s daughter"
-msgid "great-niece"
-msgstr "nevoya xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a man’s) sister’s son’s daughter"
-msgid "great-niece"
-msgstr "nevoya xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) brother’s child’s daughter"
-msgid "great-niece"
-msgstr "nevoya birê"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) brother’s daughter’s daughter"
-msgid "great-niece"
-msgstr "nevoya birê"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) brother’s son’s daughter"
-msgid "great-niece"
-msgstr "nevoya bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) sister’s child’s daughter"
-msgid "great-niece"
-msgstr "nevoya xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) sister’s daughter’s daughter"
-msgid "great-niece"
-msgstr "nevoya xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "(a woman’s) sister’s son’s daughter"
-msgid "great-niece"
-msgstr "nevoya bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "sibling’s child’s daughter"
-msgid "great-niece"
-msgstr "nevên xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "sibling’s daughter’s daughter"
-msgid "great-niece"
-msgstr "nevoya xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "sibling’s son’s daughter"
-msgid "great-niece"
-msgstr "nevoyên xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father’s brother"
-msgid "great-uncle"
-msgstr "apê bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father’s sister’s husband"
-msgid "great-uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother’s brother"
-msgid "great-uncle"
-msgstr "xalê bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother’s sister’s husband"
-msgid "great-uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s parent’s brother"
-msgid "great-uncle"
-msgstr "xal û apên bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s parent’s sister’s husband"
-msgid "great-uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father’s brother"
-msgid "great-uncle"
-msgstr "apê dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father’s sister’s husband"
-msgid "great-uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother’s brother"
-msgid "great-uncle"
-msgstr "xalê ji dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother’s sister’s husband"
-msgid "great-uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s parent’s brother"
-msgid "great-uncle"
-msgstr "ap û xalên ji dê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s parent’s sister’s husband"
-msgid "great-uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s father’s brother"
-msgid "great-uncle"
-msgstr "apê ji bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s father’s sister’s husband"
-msgid "great-uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s mother’s brother"
-msgid "great-uncle"
-msgstr "birayê pîrika ji bavê/xalê ji bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s mother’s sister’s husband"
-msgid "great-uncle"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s parent’s brother"
-msgid "great-uncle"
-msgstr "apê ji bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s parent’s sister’s husband"
-msgid "great-uncle"
-msgstr ""
-
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php
 msgid "half circle"
 msgstr "half circle"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s son"
-msgid "half-brother"
-msgstr "kurbav"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s son"
-msgid "half-brother"
-msgstr "brayê oge"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s son"
-msgid "half-brother"
-msgstr "brayê oge"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s child"
-msgid "half-sibling"
-msgstr "zara bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s child"
-msgid "half-sibling"
-msgstr "brayê/xwîşka oge"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s child"
-msgid "half-sibling"
-msgstr "brayê oge/ xwîşka oge"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s daughter"
-msgid "half-sister"
-msgstr "qîza bav"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s daughter"
-msgid "half-sister"
-msgstr "xwîşka oge"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s daughter"
-msgid "half-sister"
-msgstr "xwîşka oge"
 
 #. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
@@ -17812,7 +14140,7 @@ msgstr "ew bi xwe"
 msgid "household"
 msgstr ""
 
-#: app/Elements/RoleInEvent.php app/Services/RelationshipService.php
+#: app/Elements/RoleInEvent.php
 msgid "husband"
 msgstr "mêr"
 
@@ -17834,36 +14162,10 @@ msgstr "Infant"
 msgid "inline note"
 msgstr ""
 
-#. I18N: Gedcom INT dates
-#: app/Date.php
-#, php-format
-msgid "interpreted %s (%s)"
-msgstr "Şirovekirinî %s (%s)"
-
 #. I18N: reverse the selection (of a list of options)
 #: resources/views/search-trees.phtml
 msgid "invert selection"
 msgstr "invert selection"
-
-#: app/Date/FrenchDate.php
-msgctxt "GENITIVE"
-msgid "jours complementaires"
-msgstr "sertayê rojan"
-
-#: app/Date/FrenchDate.php
-msgctxt "INSTRUMENTAL"
-msgid "jours complementaires"
-msgstr "sertayê rojan"
-
-#: app/Date/FrenchDate.php
-msgctxt "LOCATIVE"
-msgid "jours complementaires"
-msgstr "sertayê rojan"
-
-#: app/Date/FrenchDate.php
-msgctxt "NOMINATIVE"
-msgid "jours complementaires"
-msgstr "sertayê rojan"
 
 #. I18N: A button label, last page
 #: resources/views/admin/trees-preferences.phtml
@@ -17930,21 +14232,6 @@ msgstr "married"
 msgid "married name"
 msgstr "married name"
 
-#: app/Services/RelationshipService.php
-msgctxt "mother’s father"
-msgid "maternal grandfather"
-msgstr "dapîr"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s mother"
-msgid "maternal grandmother"
-msgstr "dapîrik"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s parent"
-msgid "maternal grandparent"
-msgstr "kal/pîrên ji dê"
-
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition/MatrilinealSurnameTradition.php
 msgid "matrilineal"
@@ -17968,134 +14255,9 @@ msgstr "members"
 msgid "minimal"
 msgstr "minimal"
 
-#: app/Elements/RoleInEvent.php app/Services/RelationshipService.php
+#: app/Elements/RoleInEvent.php
 msgid "mother"
 msgstr "dayîk"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s mother"
-msgid "mother-in-law"
-msgstr "Xesî"
-
-#: app/Services/RelationshipService.php
-msgctxt "spouse’s mother"
-msgid "mother-in-law"
-msgstr "xesî/xesû"
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s mother"
-msgid "mother-in-law"
-msgstr "xesî"
-
-#: app/Services/RelationshipService.php
-msgctxt "spouse’s parent"
-msgid "mother/father-in-law"
-msgstr "xesî/xezûr"
-
-#: app/Services/RelationshipService.php
-msgctxt "brother’s son"
-msgid "nephew"
-msgstr "xwarzî/brazî"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s brother’s son"
-msgid "nephew"
-msgstr "brazî"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s sibling’s son"
-msgid "nephew"
-msgstr "brazî"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s sister’s son"
-msgid "nephew"
-msgstr "brazî"
-
-#: app/Services/RelationshipService.php
-msgctxt "sibling’s son"
-msgid "nephew"
-msgstr "brazî"
-
-#: app/Services/RelationshipService.php
-msgctxt "sister’s son"
-msgid "nephew"
-msgstr "xwarzî"
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s brother’s son"
-msgid "nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s sibling’s son"
-msgid "nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s sister’s son"
-msgid "nephew"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "brother’s daughter’s husband"
-msgid "nephew-in-law"
-msgstr "Mêrê qîza bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "sibling’s daughter’s husband"
-msgid "nephew-in-law"
-msgstr "zavayê bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "sisters’s daughter’s husband"
-msgid "nephew-in-law"
-msgstr "zavayê xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "brother’s child"
-msgid "nephew/niece"
-msgstr "xwarzî/brazî"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s brother’s child"
-msgid "nephew/niece"
-msgstr "xwarzî/brazî"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s sibling’s child"
-msgid "nephew/niece"
-msgstr "xwarzî/brazî"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s sister’s child"
-msgid "nephew/niece"
-msgstr "xwarzî/brazî"
-
-#: app/Services/RelationshipService.php
-msgctxt "sibling’s child"
-msgid "nephew/niece"
-msgstr "xwarzî/brazî"
-
-#: app/Services/RelationshipService.php
-msgctxt "sister’s child"
-msgid "nephew/niece"
-msgstr "xwarzî-brazî"
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s brother’s child"
-msgid "nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s sibling’s child"
-msgid "nephew/niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s sister’s child"
-msgid "nephew/niece"
-msgstr ""
 
 #: resources/views/setup/step-4-database-mysql.phtml
 msgid "network"
@@ -18116,81 +14278,6 @@ msgstr ""
 #: resources/views/setup/step-5-administrator.phtml
 msgid "next"
 msgstr "next"
-
-#: app/Services/RelationshipService.php
-msgctxt "brother’s daughter"
-msgid "niece"
-msgstr "xwarzî/brazî"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s brother’s daughter"
-msgid "niece"
-msgstr "xwarzî"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s sibling’s daughter"
-msgid "niece"
-msgstr "xwarzî"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s sister’s daughter"
-msgid "niece"
-msgstr "xwarzî"
-
-#: app/Services/RelationshipService.php
-msgctxt "sibling’s daughter"
-msgid "niece"
-msgstr "xwarzî"
-
-#: app/Services/RelationshipService.php
-msgctxt "sister’s daughter"
-msgid "niece"
-msgstr "xwarzî"
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s brother’s daughter"
-msgid "niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s sibling’s daughter"
-msgid "niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s sister’s daughter"
-msgid "niece"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "brother’s son’s wife"
-msgid "niece-in-law"
-msgstr "Jina kur-bira"
-
-#: app/Services/RelationshipService.php
-msgctxt "sibling’s son’s wife"
-msgid "niece-in-law"
-msgstr "bûka birag"
-
-#: app/Services/RelationshipService.php
-msgctxt "sisters’s son’s wife"
-msgid "niece-in-law"
-msgstr "bûka xwîşkê"
-
-#: app/Services/RelationshipService.php
-msgid "ninth cousin"
-msgstr "pismamê nehemîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "ninth cousin"
-msgstr "Pismama nehemîn"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "ninth cousin"
-msgstr "Pismamê nehemîn"
 
 #: app/Elements/OrdinanceProcessFlag.php
 #: app/Http/RequestHandlers/UserListData.php
@@ -18250,43 +14337,10 @@ msgstr "of"
 msgid "online"
 msgstr ""
 
-#: app/Services/RelationshipService.php
-msgid "parent"
-msgstr "dêbav"
-
-#: app/Services/RelationshipService.php
-msgid "partner"
-msgstr "heval"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "partner"
-msgstr "hevjin"
-
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "partner"
-msgstr "hevser"
-
 #: app/SurnameTradition/PaternalSurnameTradition.php
 msgctxt "Surname tradition"
 msgid "paternal"
 msgstr "paternal"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s father"
-msgid "paternal grandfather"
-msgstr "kalik"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s mother"
-msgid "paternal grandmother"
-msgstr "pîrik"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s parent"
-msgid "paternal grandparent"
-msgstr "kal û pîr"
 
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition/PatrilinealSurnameTradition.php
@@ -18459,176 +14513,6 @@ msgstr ""
 msgid "search"
 msgstr ""
 
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "second %s"
-msgstr "%s ê duyemîn''"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "FEMALE"
-msgid "second %s"
-msgstr "%s a duyemîn''"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "MALE"
-msgid "second %s"
-msgstr "%s ê duyemîn''"
-
-#: app/Services/RelationshipService.php
-msgid "second cousin"
-msgstr "pismamê duyemîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "second cousin"
-msgstr "Pismama duyemîn"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "second cousin"
-msgstr "Pismamê 2emin"
-
-#: app/Services/RelationshipService.php
-msgctxt "grandfather’s brother’s grandchild"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandfather’s brother’s granddaughter"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandfather’s brother’s grandson"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandfather’s sibling’s grandchild"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandfather’s sibling’s granddaughter"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandfather’s sibling’s grandson"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandfather’s sister’s grandchild"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandfather’s sister’s granddaughter"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandfather’s sister’s grandson"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandmother’s brother’s grandchild"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandmother’s brother’s granddaughter"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandmother’s brother’s grandson"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandmother’s sibling’s grandchild"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandmother’s sibling’s granddaughter"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandmother’s sibling’s grandson"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandmother’s sister’s grandchild"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandmother’s sister’s granddaughter"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandmother’s sister’s grandson"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandparent’s brother’s grandchild"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandparent’s brother’s granddaughter"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandparent’s brother’s grandson"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandparent’s sibling’s grandchild"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandparent’s sibling’s granddaughter"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandparent’s sibling’s grandson"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandparent’s sister’s grandchild"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandparent’s sister’s granddaughter"
-msgid "second cousin"
-msgstr ""
-
-#: app/Services/RelationshipService.php
-msgctxt "grandparent’s sister’s grandson"
-msgid "second cousin"
-msgstr ""
-
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/Elements/CertaintyAssessment.php
 msgid "secondary evidence"
@@ -18647,25 +14531,6 @@ msgstr "select all"
 #: resources/views/search-trees.phtml
 msgid "select none"
 msgstr "select none"
-
-#: app/Services/RelationshipService.php
-msgid "self"
-msgstr "xwe"
-
-#: app/Services/RelationshipService.php
-msgid "seventh cousin"
-msgstr "pismamê heftemîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "seventh cousin"
-msgstr "Pismama heftemîn"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "seventh cousin"
-msgstr "Pismamê heftemîn"
 
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "sex"
@@ -18706,10 +14571,6 @@ msgstr ""
 msgid "show the chart"
 msgstr "show the chart"
 
-#: app/Services/RelationshipService.php
-msgid "sibling"
-msgstr "xwîşk/ bira"
-
 #. I18N: A button label.
 #: resources/views/login-page.phtml
 #: resources/views/modules/login_block/sign-in.phtml
@@ -18721,102 +14582,9 @@ msgstr ""
 msgid "sign out"
 msgstr "sign out"
 
-#: app/Services/RelationshipService.php
-msgid "sister"
-msgstr "xwîşk"
-
-#: app/Services/RelationshipService.php
-msgctxt "brother’s wife"
-msgid "sister-in-law"
-msgstr "bûk"
-
-#: app/Services/RelationshipService.php
-msgctxt "brother’s wife’s sister"
-msgid "sister-in-law"
-msgstr "Xûşka jin-birê"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s brother’s wife"
-msgid "sister-in-law"
-msgstr "jin-bir"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s sister"
-msgid "sister-in-law"
-msgstr "jinbir/bûk/amojin/xalojin"
-
-#: app/Services/RelationshipService.php
-msgctxt "sister’s husband’s sister"
-msgid "sister-in-law"
-msgstr "xwîşka bûkê"
-
-#: app/Services/RelationshipService.php
-msgctxt "spouse’s sister"
-msgid "sister-in-law"
-msgstr "baltûz"
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s brother’s wife"
-msgid "sister-in-law"
-msgstr "jina birayê jin"
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s sister"
-msgid "sister-in-law"
-msgstr "baltûz"
-
-#: app/Services/RelationshipService.php
-msgid "sixth cousin"
-msgstr "pismamê şeşemîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "sixth cousin"
-msgstr "Pismama şeşemîn"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "sixth cousin"
-msgstr "Pismamê şeşemîn"
-
-#: app/Services/RelationshipService.php
-msgid "son"
-msgstr "kur"
-
 #: resources/xml/reports/descendancy_report.xml
 msgid "son of"
 msgstr "son of"
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s husband"
-msgid "son-in-law"
-msgstr "zava"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s husband"
-msgid "son-in-law"
-msgstr "zava"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s husband’s father"
-msgid "son-in-law’s father"
-msgstr "xinamî(bavê mêrê qîzê)"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s husband’s mother"
-msgid "son-in-law’s mother"
-msgstr "xinamî(dîya mêrê qîzê)"
-
-#: app/Services/RelationshipService.php
-msgctxt "daughter’s husband’s parent"
-msgid "son-in-law’s parent"
-msgstr "dê-bavên mêrê qîzê"
-
-#: app/Services/RelationshipService.php
-msgctxt "child’s spouse"
-msgid "son/daughter-in-law"
-msgstr "bûk"
 
 #. I18N: An option in a list-box
 #: app/Module/UpcomingAnniversariesModule.php
@@ -18873,114 +14641,9 @@ msgstr ""
 msgid "sort by name"
 msgstr "sort by name"
 
-#: app/Elements/RoleInEvent.php app/Services/RelationshipService.php
+#: app/Elements/RoleInEvent.php
 msgid "spouse"
 msgstr "jin"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s wife’s son"
-msgid "step-brother"
-msgstr "brayê ji jin-bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s husband’s son"
-msgid "step-brother"
-msgstr "birayê ne ji dê/bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s spouse’s son"
-msgid "step-brother"
-msgstr "pismamê ne ji dê/bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s child"
-msgid "step-child"
-msgstr "zara ne ji dê û bava"
-
-#: app/Services/RelationshipService.php
-msgctxt "spouse’s child"
-msgid "step-child"
-msgstr "zarên ne ji dê/bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s child"
-msgid "step-child"
-msgstr "zara ne ji dê/bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s daughter"
-msgid "step-daughter"
-msgstr "keça ne ji dê/bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "spouse’s daughter"
-msgid "step-daughter"
-msgstr "keça jinê"
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s daughter"
-msgid "step-daughter"
-msgstr "keça ne ji dê/bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s husband"
-msgid "step-father"
-msgstr "zirbav"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s wife"
-msgid "step-mother"
-msgstr "jinbav"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s spouse"
-msgid "step-parent"
-msgstr "zirbav/damarî"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s wife’s child"
-msgid "step-sibling"
-msgstr "xwîşk/brayên jinbavê xwîşk/brayên zirbêv"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s husband’s child"
-msgid "step-sibling"
-msgstr "xwîşk/brayên ne ji dê/bavan"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s spouse’s child"
-msgid "step-sibling"
-msgstr "pimamê ne ji malbatê"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s wife’s daughter"
-msgid "step-sister"
-msgstr "xwîşka ji jin-bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s husband’s daughter"
-msgid "step-sister"
-msgstr "xwîşka ji dê/bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s spouse’s daughter"
-msgid "step-sister"
-msgstr "dotmama ne ji malê"
-
-#: app/Services/RelationshipService.php
-msgctxt "husband’s son"
-msgid "step-son"
-msgstr "kurê ne ji dê/bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "spouse’s son"
-msgid "step-son"
-msgstr "kurê ne ji dê/bavê"
-
-#: app/Services/RelationshipService.php
-msgctxt "wife’s son"
-msgid "step-son"
-msgstr "kurê jinê"
 
 #: app/Elements/AgeAtEvent.php
 msgid "stillborn"
@@ -19002,21 +14665,6 @@ msgstr "table"
 msgid "tag cloud"
 msgstr ""
 
-#: app/Services/RelationshipService.php
-msgid "tenth cousin"
-msgstr "pismamê dehemîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "tenth cousin"
-msgstr "pismama dehemîn"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "tenth cousin"
-msgstr "Pismamê dehemîn"
-
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
@@ -19032,123 +14680,10 @@ msgstr "the folder “/data” and the file “/data/config.ini.php” have acce
 msgid "themself"
 msgstr "ew bi xwe"
 
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgid "third %s"
-msgstr "%s ê sêyemîn''"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "FEMALE"
-msgid "third %s"
-msgstr "%s a sêemîn''"
-
-#. I18N: A Spanish relationship name, such as third great-nephew
-#: app/Services/RelationshipService.php
-#, php-format
-msgctxt "MALE"
-msgid "third %s"
-msgstr "%s ê sêyemîn''"
-
-#: app/Services/RelationshipService.php
-msgid "third cousin"
-msgstr "pismamê sêemîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "third cousin"
-msgstr "Pismama sêemîn"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "third cousin"
-msgstr "Pismamê sêemîn"
-
-#: app/Services/RelationshipService.php
-msgid "thirteenth cousin"
-msgstr "pismamê sêzdemîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "thirteenth cousin"
-msgstr "pismama sêzdemîn"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "thirteenth cousin"
-msgstr "Pismamê sêzdemîn"
-
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php
 msgid "three-quarter circle"
 msgstr "three-quarter circle"
-
-#. I18N: Gedcom TO dates
-#: app/Date.php
-#, php-format
-msgid "to %s"
-msgstr "heya/ ta %s"
-
-#: app/Services/RelationshipService.php
-msgid "twelfth cousin"
-msgstr "pismamê danzdemîn"
-
-#: app/Services/RelationshipService.php
-msgctxt "FEMALE"
-msgid "twelfth cousin"
-msgstr "pismama danzdemîn"
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
-#: app/Services/RelationshipService.php
-msgctxt "MALE"
-msgid "twelfth cousin"
-msgstr "Pismamê danzdemîn"
-
-#: app/Services/RelationshipService.php
-msgid "twin brother"
-msgstr "birayê cêwî"
-
-#: app/Services/RelationshipService.php
-msgid "twin sibling"
-msgstr "cêwî"
-
-#: app/Services/RelationshipService.php
-msgid "twin sister"
-msgstr "xûşka cêwî"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s brother"
-msgid "uncle"
-msgstr "ap"
-
-#: app/Services/RelationshipService.php
-msgctxt "father’s sister’s husband"
-msgid "uncle"
-msgstr "ap"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s brother"
-msgid "uncle"
-msgstr "xal"
-
-#: app/Services/RelationshipService.php
-msgctxt "mother’s sister’s husband"
-msgid "uncle"
-msgstr "xal"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s brother"
-msgid "uncle"
-msgstr "Apo/xalo"
-
-#: app/Services/RelationshipService.php
-msgctxt "parent’s sister’s husband"
-msgid "uncle"
-msgstr "ap"
 
 #: app/Place.php
 msgid "unknown"
@@ -19244,7 +14779,7 @@ msgstr "webtrees needs to send emails, such as password reminders and website no
 msgid "webtrees sends emails with no storage"
 msgstr "webtrees sends emails with no storage"
 
-#: app/Elements/RoleInEvent.php app/Services/RelationshipService.php
+#: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "xanim"
 
@@ -19281,18 +14816,6 @@ msgstr "erê"
 msgid "you can connect to the database using other applications, such as phpmyadmin"
 msgstr "you can connect to the database using other applications, such as phpmyadmin"
 
-#: app/Services/RelationshipService.php
-msgid "younger brother"
-msgstr "Birayê piçûk"
-
-#: app/Services/RelationshipService.php
-msgid "younger sibling"
-msgstr "Xwîşk/brayê herî piçûk"
-
-#: app/Services/RelationshipService.php
-msgid "younger sister"
-msgstr "xwîşka piçûk"
-
 #: app/Http/RequestHandlers/SearchAdvancedPage.php
 #, php-format
 msgid "±%s year"
@@ -19304,26 +14827,6 @@ msgstr[1] ""
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Åland Islands"
 msgstr "Åland Islands"
-
-#: app/Date/HijriDate.php
-msgctxt "GENITIVE"
-msgid "Ṣafar"
-msgstr "Sefer"
-
-#: app/Date/HijriDate.php
-msgctxt "INSTRUMENTAL"
-msgid "Ṣafar"
-msgstr "Sefer"
-
-#: app/Date/HijriDate.php
-msgctxt "LOCATIVE"
-msgid "Ṣafar"
-msgstr "Sefer"
-
-#: app/Date/HijriDate.php
-msgctxt "NOMINATIVE"
-msgid "Ṣafar"
-msgstr "Sefer"
 
 #: app/Http/RequestHandlers/CheckTree.php
 #, php-format
@@ -19367,3 +14870,2597 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
+
+#, php-format
+#~ msgid "%1$s × %2$s"
+#~ msgstr "%1$s × %2$s"
+
+#, php-format
+#~ msgctxt "FEMALE"
+#~ msgid "%1$s × %2$s"
+#~ msgstr "%1$s x %2$s"
+
+#, php-format
+#~ msgctxt "MALE"
+#~ msgid "%1$s × %2$s"
+#~ msgstr "%1$s x %2$s"
+
+#, php-format
+#~ msgid "%s × cousin"
+#~ msgstr "%s × pismam"
+
+#, php-format
+#~ msgctxt "FEMALE"
+#~ msgid "%s × cousin"
+#~ msgstr "%s × pismam"
+
+#, php-format
+#~ msgctxt "MALE"
+#~ msgid "%s × cousin"
+#~ msgstr "%s x pismam"
+
+#, php-format
+#~ msgid "%s ʙᴄᴇ"
+#~ msgstr "%s BZ"
+
+#, php-format
+#~ msgid "%s ᴄᴇ"
+#~ msgstr "%s PZ"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgctxt "Abbreviation for Persian month: Aban"
+#~ msgid "Aban"
+#~ msgstr "Aban"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Aban"
+#~ msgstr "Aban"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Aban"
+#~ msgstr "Aban"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Aban"
+#~ msgstr "Aban"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Aban"
+#~ msgstr "Aban"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Adar"
+#~ msgstr "Adar"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Adar"
+#~ msgstr "Adar"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Adar"
+#~ msgstr "Adar"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Adar"
+#~ msgstr "Adar"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Adar I"
+#~ msgstr "Adar I"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Adar I"
+#~ msgstr "Adar I"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Adar I"
+#~ msgstr "Adar I"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Adar I"
+#~ msgstr "Adar I"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Adar II"
+#~ msgstr "Adar II"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Adar II"
+#~ msgstr "Adar II"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Adar II"
+#~ msgstr "Adar II"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Adar II"
+#~ msgstr "Adar II"
+
+#~ msgid "Anniversary calendar"
+#~ msgstr "Anniversary calendar"
+
+#~ msgctxt "Abbreviation for April"
+#~ msgid "Apr"
+#~ msgstr "Avr"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "April"
+#~ msgstr "Avrêl"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "April"
+#~ msgstr "Nîsan"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "April"
+#~ msgstr "Nîsan"
+
+#~ msgctxt "Abbreviation for August"
+#~ msgid "Aug"
+#~ msgstr "Gel"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "August"
+#~ msgstr "Gelawêj"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "August"
+#~ msgstr "Gelawêj"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "August"
+#~ msgstr "Gelawêj"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Av"
+#~ msgstr "Av"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Av"
+#~ msgstr "Av"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Av"
+#~ msgstr "Av"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Av"
+#~ msgstr "Av"
+
+#~ msgctxt "Abbreviation for Persian month: Azar"
+#~ msgid "Azar"
+#~ msgstr "Azar"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Azar"
+#~ msgstr "Azar"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Azar"
+#~ msgstr "Azar"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Azar"
+#~ msgstr "Azar"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Azar"
+#~ msgstr "Azar"
+
+#~ msgctxt "Abbreviation for Persian month: Bahman"
+#~ msgid "Bah"
+#~ msgstr "Bah"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Bahman"
+#~ msgstr "Bahman"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Bahman"
+#~ msgstr "Bahman"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Bahman"
+#~ msgstr "Bahman"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Bahman"
+#~ msgstr "Bahman"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Brumaire"
+#~ msgstr "Brumaire"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Brumaire"
+#~ msgstr "Brumaire"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Brumaire"
+#~ msgstr "Brumaire"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Brumaire"
+#~ msgstr "Brumaire"
+
+#~ msgid "Day not set"
+#~ msgstr "Day not set"
+
+#~ msgctxt "Abbreviation for December"
+#~ msgid "Dec"
+#~ msgstr "Berf"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "December"
+#~ msgstr "Berfanbar"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "December"
+#~ msgstr "Berfanbar"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "December"
+#~ msgstr "Berfanbar"
+
+#~ msgid "Decidi"
+#~ msgstr "Decidi"
+
+#~ msgctxt "Abbreviation for Persian month: Dey"
+#~ msgid "Dey"
+#~ msgstr "Dey"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dey"
+#~ msgstr "Dey"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dey"
+#~ msgstr "Dey"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dey"
+#~ msgstr "Dey"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dey"
+#~ msgstr "Dey"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "Zîlqade"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "Zîlqade"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "Zîlqade"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhū al-Qiʿdah"
+#~ msgstr "Zîlqade"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "Zîlhicce"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "Zîlhicce"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "Zîlhicce"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Dhū al-Ḥijjah"
+#~ msgstr "Zîlhicce"
+
+#~ msgid "Duodi"
+#~ msgstr "Duodi"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Elul"
+#~ msgstr "Elul"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Elul"
+#~ msgstr "Elul"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Elul"
+#~ msgstr "Elul"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Elul"
+#~ msgstr "Elul"
+
+#~ msgctxt "Abbreviation for Persian month: Esfand"
+#~ msgid "Esf"
+#~ msgstr "Esf"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Esfand"
+#~ msgstr "Esfand"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Esfand"
+#~ msgstr "Esfand"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Esfand"
+#~ msgstr "Esfand"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Esfand"
+#~ msgstr "Esfand"
+
+#~ msgctxt "Abbreviation for Persian month: Farvardin"
+#~ msgid "Far"
+#~ msgstr "Far"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Farvardin"
+#~ msgstr "Farvardin"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Farvardin"
+#~ msgstr "Farvardin"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Farvardin"
+#~ msgstr "Farvardin"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Farvardin"
+#~ msgstr "Farvardin"
+
+#~ msgctxt "Abbreviation for February"
+#~ msgid "Feb"
+#~ msgstr "Rêş"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "February"
+#~ msgstr "Reşemî"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "February"
+#~ msgstr "Reşemî"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "February"
+#~ msgstr "Sibat"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Floreal"
+#~ msgstr "Floréal"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Floreal"
+#~ msgstr "Floréal"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Floreal"
+#~ msgstr "Floréal"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Floreal"
+#~ msgstr "Floréal"
+
+#~ msgid "Friday"
+#~ msgstr "În"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Frimaire"
+#~ msgstr "Frimaire"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Frimaire"
+#~ msgstr "Frimaire"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Frimaire"
+#~ msgstr "Frimaire"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Frimaire"
+#~ msgstr "Frimaire"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Fructidor"
+#~ msgstr "Fructidor"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Fructidor"
+#~ msgstr "Fructidor"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Fructidor"
+#~ msgstr "Fructidor"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Fructidor"
+#~ msgstr "Fructidor"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Germinal"
+#~ msgstr "Germinal"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Germinal"
+#~ msgstr "Germinal"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Germinal"
+#~ msgstr "Germinal"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Germinal"
+#~ msgstr "Germinal"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Heshvan"
+#~ msgstr "Heshvan"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Heshvan"
+#~ msgstr "Heshvan"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Heshvan"
+#~ msgstr "Heshvan"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Heshvan"
+#~ msgstr "Heshvan"
+
+#~ msgid "In this month…"
+#~ msgstr "In this month…"
+
+#~ msgid "In this year…"
+#~ msgstr "In this year…"
+
+#~ msgid "Invalid date"
+#~ msgstr "Dîrok şaş e"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Iyar"
+#~ msgstr "Iyar"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Iyar"
+#~ msgstr "Iyar"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Iyar"
+#~ msgstr "Iyar"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Iyar"
+#~ msgstr "Iyar"
+
+#~ msgctxt "Abbreviation for January"
+#~ msgid "Jan"
+#~ msgstr "Rêb"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "January"
+#~ msgstr "Rêbendan"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "January"
+#~ msgstr "Rêbendan"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "January"
+#~ msgstr "Çile"
+
+#~ msgctxt "Abbreviation for July"
+#~ msgid "Jul"
+#~ msgstr "Tîr"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "July"
+#~ msgstr "Tîrmeh"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "July"
+#~ msgstr "Tîrmeh"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "July"
+#~ msgstr "Tîrmeh"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "Cemazîyel-ewwel"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "Cemazîyel-ewwel"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "Cemazîyel-ewwel"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Jumādá al-awwal"
+#~ msgstr "Cemazîyel-ewwel"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "Cemazîyel-axir"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "Cemazîyel-axir"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "Cemazîyel-axir"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Jumādá al-thānī"
+#~ msgstr "Cemazîyel-axir"
+
+#~ msgctxt "Abbreviation for June"
+#~ msgid "Jun"
+#~ msgstr "Pûş"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "June"
+#~ msgstr "Pûşper"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "June"
+#~ msgstr "Pûşper"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "June"
+#~ msgstr "Hezîran"
+
+#~ msgctxt "Abbreviation for Persian month: Khordad"
+#~ msgid "Khor"
+#~ msgstr "Khor"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Khordad"
+#~ msgstr "Khordad"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Khordad"
+#~ msgstr "Khordad"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Khordad"
+#~ msgstr "Khordad"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Khordad"
+#~ msgstr "Khordad"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Kislev"
+#~ msgstr "Kislev"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Kislev"
+#~ msgstr "Kislev"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Kislev"
+#~ msgstr "Kislev"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Kislev"
+#~ msgstr "Kislev"
+
+#~ msgctxt "Abbreviation for March"
+#~ msgid "Mar"
+#~ msgstr "Adar"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "March"
+#~ msgstr "Adar"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "March"
+#~ msgstr "Adar"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "March"
+#~ msgstr "Adar"
+
+#~ msgctxt "Abbreviation for May"
+#~ msgid "May"
+#~ msgstr "Gul"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "May"
+#~ msgstr "Gulan"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "May"
+#~ msgstr "Gulan"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "May"
+#~ msgstr "Gulan"
+
+#~ msgctxt "Abbreviation for Persian month: Mehr"
+#~ msgid "Mehr"
+#~ msgstr "Mehr"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Mehr"
+#~ msgstr "Mehr"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Mehr"
+#~ msgstr "Mehr"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Mehr"
+#~ msgstr "Mehr"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Mehr"
+#~ msgstr "Mehr"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Messidor"
+#~ msgstr "Messidor"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Messidor"
+#~ msgstr "Messidor"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Messidor"
+#~ msgstr "Messidor"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Messidor"
+#~ msgstr "Messidor"
+
+#~ msgid "Monday"
+#~ msgstr "Duşem"
+
+#~ msgctxt "Abbreviation for Persian month: Mordad"
+#~ msgid "Mor"
+#~ msgstr "Mor"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Mordad"
+#~ msgstr "Mordad"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Mordad"
+#~ msgstr "Mordad"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Mordad"
+#~ msgstr "Mordad"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Mordad"
+#~ msgstr "Mordad"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Muḥarram"
+#~ msgstr "Muherrem"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Muḥarram"
+#~ msgstr "Muherrem"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Muḥarram"
+#~ msgstr "Muherrem"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Muḥarram"
+#~ msgstr "Muherrem"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Nissan"
+#~ msgstr "Nissan"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Nissan"
+#~ msgstr "Nissan"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Nissan"
+#~ msgstr "Nissan"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Nissan"
+#~ msgstr "Nissan"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Nivose"
+#~ msgstr "Nivôse"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Nivose"
+#~ msgstr "Nivôse"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Nivose"
+#~ msgstr "Nivôse"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Nivose"
+#~ msgstr "Nivôse"
+
+#~ msgid "Nonidi"
+#~ msgstr "Nonidi"
+
+#~ msgctxt "Abbreviation for November"
+#~ msgid "Nov"
+#~ msgstr "Ser"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "November"
+#~ msgstr "Sermawez"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "November"
+#~ msgstr "Sermawez"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "November"
+#~ msgstr "Sermawez"
+
+#~ msgctxt "Abbreviation for October"
+#~ msgid "Oct"
+#~ msgstr "Cot"
+
+#~ msgid "Octidi"
+#~ msgstr "Octidi"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "October"
+#~ msgstr "Kewçêr"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "October"
+#~ msgstr "Cotmeh"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "October"
+#~ msgstr "Cotmeh"
+
+#~ msgid "On this day…"
+#~ msgstr "On this day…"
+
+#~ msgctxt "Abbreviation for Persian month: Ordibehesht"
+#~ msgid "Ord"
+#~ msgstr "Ord"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Ordibehesht"
+#~ msgstr "Ordibehesht"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Ordibehesht"
+#~ msgstr "Ordibehesht"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Ordibehesht"
+#~ msgstr "Ordibehesht"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Ordibehesht"
+#~ msgstr "Ordibehesht"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Pluviose"
+#~ msgstr "Pluviôse"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Pluviose"
+#~ msgstr "Pluviôse"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Pluviose"
+#~ msgstr "Pluviôse"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Pluviose"
+#~ msgstr "Pluviôse"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Prairial"
+#~ msgstr "Prairial"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Prairial"
+#~ msgstr "Prairial"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Prairial"
+#~ msgstr "Prairial"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Prairial"
+#~ msgstr "Prairial"
+
+#~ msgid "Primidi"
+#~ msgstr "Primidi"
+
+#~ msgid "Quartidi"
+#~ msgstr "Quartidi"
+
+#~ msgid "Quintidi"
+#~ msgstr "Quintidi"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "Rebîûl-ewwel"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "Rebîûl-ewwel"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "Rebîûl-ewwel"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabiʿ al-awwal"
+#~ msgstr "Rebîûl-ewwel"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "Rebîûl-axir"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "Rebîûl-axir"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "Rebîûl-axir"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rabiʿ al-thani"
+#~ msgstr "Rebîûl-axir"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Rajab"
+#~ msgstr "Receb"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Rajab"
+#~ msgstr "Receb"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Rajab"
+#~ msgstr "Receb"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Rajab"
+#~ msgstr "Receb"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Ramadan"
+#~ msgstr "Ramazan"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Ramadan"
+#~ msgstr "Ramazan"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Ramadan"
+#~ msgstr "Ramazan"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Ramadan"
+#~ msgstr "Ramazan"
+
+#~ msgid "Saturday"
+#~ msgstr "Şemî"
+
+#~ msgctxt "Abbreviation for September"
+#~ msgid "Sep"
+#~ msgstr "Îlon"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "September"
+#~ msgstr "Rezber"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "September"
+#~ msgstr "Îlon"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "September"
+#~ msgstr "Îlon"
+
+#~ msgid "Septidi"
+#~ msgstr "Septidi"
+
+#~ msgid "Sextidi"
+#~ msgstr "Sextidi"
+
+#~ msgctxt "Abbreviation for Persian month: Shahrivar"
+#~ msgid "Shah"
+#~ msgstr "Shah"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Shahrivar"
+#~ msgstr "Shahrivar"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Shahrivar"
+#~ msgstr "Shahrivar"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Shahrivar"
+#~ msgstr "Shahrivar"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Shahrivar"
+#~ msgstr "Shahrivar"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Shawwal"
+#~ msgstr "Şewwal"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Shawwal"
+#~ msgstr "Şewwal"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Shawwal"
+#~ msgstr "Şewwal"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Shawwal"
+#~ msgstr "Şewwal"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Shaʿbān"
+#~ msgstr "Şeban"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Shaʿbān"
+#~ msgstr "Şeban"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Shaʿbān"
+#~ msgstr "Şeban"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Shaʿbān"
+#~ msgstr "Şeban"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Shevat"
+#~ msgstr "Shevat"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Shevat"
+#~ msgstr "Shevat"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Shevat"
+#~ msgstr "Shevat"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Shevat"
+#~ msgstr "Shevat"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Sivan"
+#~ msgstr "Sivan"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Sivan"
+#~ msgstr "Sivan"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Sivan"
+#~ msgstr "Sivan"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Sivan"
+#~ msgstr "Sivan"
+
+#~ msgid "Sunday"
+#~ msgstr "Yekşem"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Tamuz"
+#~ msgstr "Tamuz"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Tamuz"
+#~ msgstr "Tamuz"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Tamuz"
+#~ msgstr "Tamuz"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Tamuz"
+#~ msgstr "Tamuz"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Tevet"
+#~ msgstr "Tevet"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Tevet"
+#~ msgstr "Tevet"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Tevet"
+#~ msgstr "Tevet"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Tevet"
+#~ msgstr "Tevet"
+
+#~ msgid "The calendar menu."
+#~ msgstr "The calendar menu."
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Thermidor"
+#~ msgstr "Thermidor"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Thermidor"
+#~ msgstr "Thermidor"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Thermidor"
+#~ msgstr "Thermidor"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Thermidor"
+#~ msgstr "Thermidor"
+
+#~ msgid "Thursday"
+#~ msgstr "Pêncşem"
+
+#~ msgctxt "Abbreviation for Persian month: Tir"
+#~ msgid "Tir"
+#~ msgstr "Tir"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Tir"
+#~ msgstr "Tir"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Tir"
+#~ msgstr "Tir"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Tir"
+#~ msgstr "Tir"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Tir"
+#~ msgstr "Tir"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Tishrei"
+#~ msgstr "Tishrei"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Tishrei"
+#~ msgstr "Tishrei"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Tishrei"
+#~ msgstr "Tishrei"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Tishrei"
+#~ msgstr "Tishrei"
+
+#~ msgid "Tridi"
+#~ msgstr "Tridi"
+
+#~ msgid "Tuesday"
+#~ msgstr "Sêşem"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Vendemiaire"
+#~ msgstr "Vendémiaire"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Vendemiaire"
+#~ msgstr "Vendémiaire"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Vendemiaire"
+#~ msgstr "Vendémiaire"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Vendemiaire"
+#~ msgstr "Vendémiaire"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Ventose"
+#~ msgstr "Ventôse"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Ventose"
+#~ msgstr "Ventôse"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Ventose"
+#~ msgstr "Ventôse"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Ventose"
+#~ msgstr "Ventôse"
+
+#~ msgid "Wednesday"
+#~ msgstr "Çarşem"
+
+#, php-format
+#~ msgid "about %s"
+#~ msgstr "Der dorê %s"
+
+#, php-format
+#~ msgid "after %s"
+#~ msgstr "paşê %s"
+
+#~ msgctxt "father’s brother’s wife"
+#~ msgid "aunt"
+#~ msgstr "xatî"
+
+#~ msgctxt "father’s sister"
+#~ msgid "aunt"
+#~ msgstr "met"
+
+#~ msgctxt "mother’s brother’s wife"
+#~ msgid "aunt"
+#~ msgstr "xatî"
+
+#~ msgctxt "mother’s sister"
+#~ msgid "aunt"
+#~ msgstr "xatî"
+
+#~ msgctxt "parent’s brother’s wife"
+#~ msgid "aunt"
+#~ msgstr "amojin/xalojin"
+
+#~ msgctxt "parent’s sister"
+#~ msgid "aunt"
+#~ msgstr "xatî/met"
+
+#~ msgctxt "father’s sibling"
+#~ msgid "aunt/uncle"
+#~ msgstr "met/ap"
+
+#~ msgctxt "mother’s sibling"
+#~ msgid "aunt/uncle"
+#~ msgstr "xatî/xal"
+
+#~ msgctxt "parent’s sibling"
+#~ msgid "aunt/uncle"
+#~ msgstr "xatî/xalo ap/met"
+
+#, php-format
+#~ msgid "before %s"
+#~ msgstr "Berya/berê %s"
+
+#, php-format
+#~ msgid "between %s and %s"
+#~ msgstr "Navbera %s û %s"
+
+#~ msgid "brother"
+#~ msgstr "bira"
+
+#~ msgctxt "brother’s wife’s brother"
+#~ msgid "brother-in-law"
+#~ msgstr "Birê jin-birê"
+
+#~ msgctxt "husband’s brother"
+#~ msgid "brother-in-law"
+#~ msgstr "tî"
+
+#~ msgctxt "husband’s sister’s husband"
+#~ msgid "brother-in-law"
+#~ msgstr "zava"
+
+#~ msgctxt "sister’s husband"
+#~ msgid "brother-in-law"
+#~ msgstr "zava"
+
+#~ msgctxt "sister’s husband’s brother"
+#~ msgid "brother-in-law"
+#~ msgstr "birangê zavê"
+
+#~ msgctxt "spouse’s brother"
+#~ msgid "brother-in-law"
+#~ msgstr "zava"
+
+#~ msgctxt "wife’s brother"
+#~ msgid "brother-in-law"
+#~ msgstr "zava"
+
+#~ msgctxt "wife’s sister’s husband"
+#~ msgid "brother-in-law"
+#~ msgstr "Mêrê xuşka jinê"
+
+#~ msgctxt "brother’s wife’s sibling"
+#~ msgid "brother/sister-in-law"
+#~ msgstr "Xûşk birayên jin-birê"
+
+#~ msgctxt "husband’s sibling"
+#~ msgid "brother/sister-in-law"
+#~ msgstr "xwîşk/brayê oge"
+
+#~ msgctxt "sibling’s spouse"
+#~ msgid "brother/sister-in-law"
+#~ msgstr "zava/bûk"
+
+#~ msgctxt "sister’s husband’s sibling"
+#~ msgid "brother/sister-in-law"
+#~ msgstr "zava/ jinbir"
+
+#~ msgctxt "spouse’s sibling"
+#~ msgid "brother/sister-in-law"
+#~ msgstr "bûk/zava"
+
+#~ msgctxt "wife’s sibling"
+#~ msgid "brother/sister-in-law"
+#~ msgstr "bûk/zava"
+
+#, php-format
+#~ msgid "calculated %s"
+#~ msgstr "Çortik %s"
+
+#~ msgid "daughter"
+#~ msgstr "qîz/keç"
+
+#~ msgctxt "child’s wife"
+#~ msgid "daughter-in-law"
+#~ msgstr "bûk"
+
+#~ msgctxt "son’s wife"
+#~ msgid "daughter-in-law"
+#~ msgstr "bûk"
+
+#~ msgctxt "son’s wife’s father"
+#~ msgid "daughter-in-law’s father"
+#~ msgstr "bavê jina kur"
+
+#~ msgctxt "son’s wife’s mother"
+#~ msgid "daughter-in-law’s mother"
+#~ msgstr "Dîya jina kur"
+
+#~ msgctxt "son’s wife’s parent"
+#~ msgid "daughter-in-law’s parent"
+#~ msgstr "Dêbavê jina kur"
+
+#~ msgid "eighth cousin"
+#~ msgstr "pismamê heştemîn"
+
+#~ msgctxt "FEMALE"
+#~ msgid "eighth cousin"
+#~ msgstr "Pismama heştemîn"
+
+#~ msgctxt "MALE"
+#~ msgid "eighth cousin"
+#~ msgstr "Pismamê heştemîn"
+
+#~ msgid "elder brother"
+#~ msgstr "birayê mezin"
+
+#~ msgid "elder sibling"
+#~ msgstr "Xwîşk/brayê herî mezin"
+
+#~ msgid "elder sister"
+#~ msgstr "xwîşka mezin"
+
+#~ msgid "eleventh cousin"
+#~ msgstr "pismamê yanzdemîn"
+
+#~ msgctxt "FEMALE"
+#~ msgid "eleventh cousin"
+#~ msgstr "pismama yanzdemîn"
+
+#~ msgctxt "MALE"
+#~ msgid "eleventh cousin"
+#~ msgstr "Pismamê yanzdemîn"
+
+#, php-format
+#~ msgid "estimated %s"
+#~ msgstr "Texmînî %s"
+
+#~ msgid "ex-husband"
+#~ msgstr "Mêrê pêşîn"
+
+#~ msgid "ex-spouse"
+#~ msgstr "jina berîn"
+
+#~ msgid "ex-wife"
+#~ msgstr "Jîna berîn"
+
+#~ msgctxt "husband’s father"
+#~ msgid "father-in-law"
+#~ msgstr "Xezûr"
+
+#~ msgctxt "spouse’s father"
+#~ msgid "father-in-law"
+#~ msgstr "xezûr"
+
+#~ msgctxt "wife’s father"
+#~ msgid "father-in-law"
+#~ msgstr "xezûr"
+
+#~ msgid "fifteenth cousin"
+#~ msgstr "pismamê panzdemîn"
+
+#~ msgctxt "FEMALE"
+#~ msgid "fifteenth cousin"
+#~ msgstr "pismama panzdemîn"
+
+#~ msgctxt "MALE"
+#~ msgid "fifteenth cousin"
+#~ msgstr "Pismamê panzdemîn"
+
+#, php-format
+#~ msgid "fifth %s"
+#~ msgstr "%s ê pêncemîn''"
+
+#, php-format
+#~ msgctxt "FEMALE"
+#~ msgid "fifth %s"
+#~ msgstr "%s a pêncemîn''"
+
+#, php-format
+#~ msgctxt "MALE"
+#~ msgid "fifth %s"
+#~ msgstr "%s ê pêncemîn''"
+
+#~ msgid "fifth cousin"
+#~ msgstr "pismamê pêncemîn"
+
+#~ msgctxt "FEMALE"
+#~ msgid "fifth cousin"
+#~ msgstr "Pismama pêncemîn"
+
+#~ msgctxt "MALE"
+#~ msgid "fifth cousin"
+#~ msgstr "Pismamê pêncemîn"
+
+#, php-format
+#~ msgid "first %s"
+#~ msgstr "%s ê yekemîn''"
+
+#, php-format
+#~ msgctxt "FEMALE"
+#~ msgid "first %s"
+#~ msgstr "%s a yekemîn''"
+
+#, php-format
+#~ msgctxt "MALE"
+#~ msgid "first %s"
+#~ msgstr "%s ê yekemîn''"
+
+#~ msgid "first cousin"
+#~ msgstr "pismamê yekemîn"
+
+#~ msgctxt "FEMALE"
+#~ msgid "first cousin"
+#~ msgstr "Pismama yekemîn"
+
+#~ msgctxt "MALE"
+#~ msgid "first cousin"
+#~ msgstr "Pismam"
+
+#~ msgctxt "father’s brother’s child"
+#~ msgid "first cousin"
+#~ msgstr "pismam/dotmam"
+
+#~ msgctxt "father’s brother’s daughter"
+#~ msgid "first cousin"
+#~ msgstr "pismam/dotmam"
+
+#~ msgctxt "father’s brother’s son"
+#~ msgid "first cousin"
+#~ msgstr "pismam"
+
+#~ msgctxt "father’s sister’s child"
+#~ msgid "first cousin"
+#~ msgstr "pismam"
+
+#~ msgctxt "father’s sister’s daughter"
+#~ msgid "first cousin"
+#~ msgstr "pismam/dotmam"
+
+#~ msgctxt "father’s sister’s son"
+#~ msgid "first cousin"
+#~ msgstr "pismam/dotmam"
+
+#~ msgctxt "mother’s brother’s child"
+#~ msgid "first cousin"
+#~ msgstr "pismam/dotmam"
+
+#~ msgctxt "mother’s brother’s daughter"
+#~ msgid "first cousin"
+#~ msgstr "pismam/dotmam"
+
+#~ msgctxt "mother’s brother’s son"
+#~ msgid "first cousin"
+#~ msgstr "pismam/dotmam"
+
+#~ msgctxt "mother’s sister’s child"
+#~ msgid "first cousin"
+#~ msgstr "pismam/kurmam"
+
+#~ msgctxt "mother’s sister’s daughter"
+#~ msgid "first cousin"
+#~ msgstr "keçxal/kurxal"
+
+#~ msgctxt "mother’s sister’s son"
+#~ msgid "first cousin"
+#~ msgstr "kurxatî/keçxatî"
+
+#~ msgid "fourteenth cousin"
+#~ msgstr "pismamê çardemîn"
+
+#~ msgctxt "FEMALE"
+#~ msgid "fourteenth cousin"
+#~ msgstr "pismama çardemîn"
+
+#~ msgctxt "MALE"
+#~ msgid "fourteenth cousin"
+#~ msgstr "Pismamê çardemîn"
+
+#, php-format
+#~ msgid "fourth %s"
+#~ msgstr "%s ê çaremîn''"
+
+#, php-format
+#~ msgctxt "FEMALE"
+#~ msgid "fourth %s"
+#~ msgstr "%s a çaremîn''"
+
+#, php-format
+#~ msgctxt "MALE"
+#~ msgid "fourth %s"
+#~ msgstr "%s ê yekemîn''"
+
+#~ msgid "fourth cousin"
+#~ msgstr "pismamê çardemîn"
+
+#~ msgctxt "FEMALE"
+#~ msgid "fourth cousin"
+#~ msgstr "Pismama çaremîn"
+
+#~ msgctxt "MALE"
+#~ msgid "fourth cousin"
+#~ msgstr "Pismamê çaremîn"
+
+#, php-format
+#~ msgid "from %s"
+#~ msgstr "ji %s"
+
+#, php-format
+#~ msgid "from %s to %s"
+#~ msgstr "Ji %s heya %s"
+
+#~ msgctxt "child’s child"
+#~ msgid "grandchild"
+#~ msgstr "neve/nevo"
+
+#~ msgctxt "daughter’s child"
+#~ msgid "grandchild"
+#~ msgstr "neve/nevo"
+
+#~ msgctxt "son’s child"
+#~ msgid "grandchild"
+#~ msgstr "neve-nevo"
+
+#~ msgctxt "child’s daughter"
+#~ msgid "granddaughter"
+#~ msgstr "neve/nevo"
+
+#~ msgctxt "daughter’s daughter"
+#~ msgid "granddaughter"
+#~ msgstr "neve/nevo"
+
+#~ msgctxt "son’s daughter"
+#~ msgid "granddaughter"
+#~ msgstr "keçnevo/nevoya qîzîn"
+
+#~ msgctxt "child’s daughter’s husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "mêrê nevoyê"
+
+#~ msgctxt "daughter’s daughter’s husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "mêrê neveçirkê"
+
+#~ msgctxt "son’s daughter’s husband"
+#~ msgid "granddaughter’s husband"
+#~ msgstr "mêrê neveçirkê"
+
+#~ msgctxt "parent’s father"
+#~ msgid "grandfather"
+#~ msgstr "kalik"
+
+#~ msgctxt "parent’s mother"
+#~ msgid "grandmother"
+#~ msgstr "pîrik"
+
+#~ msgctxt "parent’s parent"
+#~ msgid "grandparent"
+#~ msgstr "kalik-pîrik"
+
+#~ msgctxt "child’s son"
+#~ msgid "grandson"
+#~ msgstr "nevo"
+
+#~ msgctxt "daughter’s son"
+#~ msgid "grandson"
+#~ msgstr "neve/nevo"
+
+#~ msgctxt "son’s son"
+#~ msgid "grandson"
+#~ msgstr "kurnevo/nevoyê kur"
+
+#~ msgctxt "child’s son’s wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "jina nevo/bûk"
+
+#~ msgctxt "daughter’s son’s wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "jina nevo"
+
+#~ msgctxt "son’s son’s wife"
+#~ msgid "grandson’s wife"
+#~ msgstr "jina kurê kur"
+
+#~ msgctxt "father’s father’s sister"
+#~ msgid "great-aunt"
+#~ msgstr "meta bavê"
+
+#~ msgctxt "father’s mother’s sister"
+#~ msgid "great-aunt"
+#~ msgstr "xatiya bavê"
+
+#~ msgctxt "father’s parent’s sister"
+#~ msgid "great-aunt"
+#~ msgstr "xatiya bavê"
+
+#~ msgctxt "mother’s father’s sister"
+#~ msgid "great-aunt"
+#~ msgstr "xatiya dê"
+
+#~ msgctxt "mother’s mother’s sister"
+#~ msgid "great-aunt"
+#~ msgstr "xatiya ji dê"
+
+#~ msgctxt "mother’s parent’s sister"
+#~ msgid "great-aunt"
+#~ msgstr "xatî û metên ji dê"
+
+#~ msgctxt "parent’s father’s sister"
+#~ msgid "great-aunt"
+#~ msgstr "amojin û xalojinên dê û bavan"
+
+#~ msgctxt "parent’s mother’s sister"
+#~ msgid "great-aunt"
+#~ msgstr "amojin û xalojinên dê û bavan"
+
+#~ msgctxt "parent’s parent’s sister"
+#~ msgid "great-aunt"
+#~ msgstr "xwîşka kalik û pirikê"
+
+#~ msgctxt "father’s father’s sibling"
+#~ msgid "great-aunt/uncle"
+#~ msgstr "birê kalik"
+
+#~ msgctxt "father’s mother’s sibling"
+#~ msgid "great-aunt/uncle"
+#~ msgstr "xal û xatiyên bavê"
+
+#~ msgctxt "father’s parent’s sibling"
+#~ msgid "great-aunt/uncle"
+#~ msgstr "ap û metên bavê"
+
+#~ msgctxt "mother’s father’s sibling"
+#~ msgid "great-aunt/uncle"
+#~ msgstr "ap û metên ji dê"
+
+#~ msgctxt "mother’s mother’s sibling"
+#~ msgid "great-aunt/uncle"
+#~ msgstr "xatî/xalên ji dê"
+
+#~ msgctxt "mother’s parent’s sibling"
+#~ msgid "great-aunt/uncle"
+#~ msgstr "xal û xatiyên ji dê"
+
+#~ msgctxt "parent’s father’s sibling"
+#~ msgid "great-aunt/uncle"
+#~ msgstr "ap û metên dê û bavan"
+
+#~ msgctxt "parent’s mother’s sibling"
+#~ msgid "great-aunt/uncle"
+#~ msgstr "ap û metên dê û bavan"
+
+#~ msgctxt "parent’s parent’s sibling"
+#~ msgid "great-aunt/uncle"
+#~ msgstr "xwîşk /brayên kalik û pîrikan"
+
+#~ msgctxt "child’s child’s child"
+#~ msgid "great-grandchild"
+#~ msgstr "Neveçirk"
+
+#~ msgctxt "child’s daughter’s child"
+#~ msgid "great-grandchild"
+#~ msgstr "kurê ji qîza kur"
+
+#~ msgctxt "child’s son’s child"
+#~ msgid "great-grandchild"
+#~ msgstr "Nevoçirk"
+
+#~ msgctxt "daughter’s child’s child"
+#~ msgid "great-grandchild"
+#~ msgstr "neveçirk"
+
+#~ msgctxt "daughter’s daughter’s child"
+#~ msgid "great-grandchild"
+#~ msgstr "neveçirk"
+
+#~ msgctxt "daughter’s son’s child"
+#~ msgid "great-grandchild"
+#~ msgstr "neveçirk"
+
+#~ msgctxt "son’s child’s child"
+#~ msgid "great-grandchild"
+#~ msgstr "kur/nevoçirk"
+
+#~ msgctxt "son’s daughter’s child"
+#~ msgid "great-grandchild"
+#~ msgstr "zara vevoçirk"
+
+#~ msgctxt "son’s son’s child"
+#~ msgid "great-grandchild"
+#~ msgstr "Zara kurê kur"
+
+#~ msgctxt "child’s child’s daughter"
+#~ msgid "great-granddaughter"
+#~ msgstr "Neveçirk"
+
+#~ msgctxt "child’s daughter’s daughter"
+#~ msgid "great-granddaughter"
+#~ msgstr "qîza ji qîza kur"
+
+#~ msgctxt "child’s son’s daughter"
+#~ msgid "great-granddaughter"
+#~ msgstr "neveçirk"
+
+#~ msgctxt "daughter’s child’s daughter"
+#~ msgid "great-granddaughter"
+#~ msgstr "neveçirk"
+
+#~ msgctxt "daughter’s daughter’s daughter"
+#~ msgid "great-granddaughter"
+#~ msgstr "neveçirk"
+
+#~ msgctxt "daughter’s son’s daughter"
+#~ msgid "great-granddaughter"
+#~ msgstr "neveçirk"
+
+#~ msgctxt "son’s child’s daughter"
+#~ msgid "great-granddaughter"
+#~ msgstr "keç/ nevoçirk"
+
+#~ msgctxt "son’s daughter’s daughter"
+#~ msgid "great-granddaughter"
+#~ msgstr "keça neveçirkê"
+
+#~ msgctxt "son’s son’s daughter"
+#~ msgid "great-granddaughter"
+#~ msgstr "qîza kurê kur"
+
+#~ msgctxt "father’s father’s father"
+#~ msgid "great-grandfather"
+#~ msgstr "kalikê bavê"
+
+#~ msgctxt "father’s mother’s father"
+#~ msgid "great-grandfather"
+#~ msgstr "kalikê bavê"
+
+#~ msgctxt "father’s parent’s father"
+#~ msgid "great-grandfather"
+#~ msgstr "kalikê bavê"
+
+#~ msgctxt "mother’s father’s father"
+#~ msgid "great-grandfather"
+#~ msgstr "kalikê dê"
+
+#~ msgctxt "mother’s mother’s father"
+#~ msgid "great-grandfather"
+#~ msgstr "kalikê ji dê"
+
+#~ msgctxt "mother’s parent’s father"
+#~ msgid "great-grandfather"
+#~ msgstr "kalikê ji dê"
+
+#~ msgctxt "parent’s father’s father"
+#~ msgid "great-grandfather"
+#~ msgstr "kalikê ji bavê"
+
+#~ msgctxt "parent’s mother’s father"
+#~ msgid "great-grandfather"
+#~ msgstr "kalikê ji dê"
+
+#~ msgctxt "parent’s parent’s father"
+#~ msgid "great-grandfather"
+#~ msgstr "kalikê ji dê"
+
+#~ msgctxt "father’s father’s mother"
+#~ msgid "great-grandmother"
+#~ msgstr "pîrika dê"
+
+#~ msgctxt "father’s mother’s mother"
+#~ msgid "great-grandmother"
+#~ msgstr "diya pîrikê"
+
+#~ msgctxt "father’s parent’s mother"
+#~ msgid "great-grandmother"
+#~ msgstr "pîrika bavê"
+
+#~ msgctxt "mother’s father’s mother"
+#~ msgid "great-grandmother"
+#~ msgstr "pîrka bavê"
+
+#~ msgctxt "mother’s mother’s mother"
+#~ msgid "great-grandmother"
+#~ msgstr "pîrika ji dê"
+
+#~ msgctxt "mother’s parent’s mother"
+#~ msgid "great-grandmother"
+#~ msgstr "pîrika ji dê"
+
+#~ msgctxt "parent’s father’s mother"
+#~ msgid "great-grandmother"
+#~ msgstr "pîrika ji bavê"
+
+#~ msgctxt "parent’s mother’s mother"
+#~ msgid "great-grandmother"
+#~ msgstr "pîrika ji bavê"
+
+#~ msgctxt "parent’s parent’s mother"
+#~ msgid "great-grandmother"
+#~ msgstr "pîrika ji dê"
+
+#~ msgctxt "father’s father’s parent"
+#~ msgid "great-grandparent"
+#~ msgstr "kalikê dê"
+
+#~ msgctxt "father’s mother’s parent"
+#~ msgid "great-grandparent"
+#~ msgstr "kalik û pîrikên dê û bavan"
+
+#~ msgctxt "father’s parent’s parent"
+#~ msgid "great-grandparent"
+#~ msgstr "kalik û pîrikên dê û bavan"
+
+#~ msgctxt "mother’s father’s parent"
+#~ msgid "great-grandparent"
+#~ msgstr "kalik û pîrikên dê û bavan"
+
+#~ msgctxt "mother’s mother’s parent"
+#~ msgid "great-grandparent"
+#~ msgstr "kalik û pîrikên ji dê û bavan"
+
+#~ msgctxt "mother’s parent’s parent"
+#~ msgid "great-grandparent"
+#~ msgstr "kalik û pîrikên ji dê"
+
+#~ msgctxt "parent’s father’s parent"
+#~ msgid "great-grandparent"
+#~ msgstr "kalik û pîrikên ji dê û bavan"
+
+#~ msgctxt "parent’s mother’s parent"
+#~ msgid "great-grandparent"
+#~ msgstr "kalik û pîrikên dê û bavav"
+
+#~ msgctxt "parent’s parent’s parent"
+#~ msgid "great-grandparent"
+#~ msgstr "Kalik û pîikên dê û bav"
+
+#~ msgctxt "child’s child’s son"
+#~ msgid "great-grandson"
+#~ msgstr "Neveçirk"
+
+#~ msgctxt "child’s daughter’s son"
+#~ msgid "great-grandson"
+#~ msgstr "kurê nevoyê"
+
+#~ msgctxt "child’s son’s son"
+#~ msgid "great-grandson"
+#~ msgstr "nevoçirk"
+
+#~ msgctxt "daughter’s child’s son"
+#~ msgid "great-grandson"
+#~ msgstr "nevoçirk"
+
+#~ msgctxt "daughter’s daughter’s son"
+#~ msgid "great-grandson"
+#~ msgstr "nevoçirk"
+
+#~ msgctxt "daughter’s son’s son"
+#~ msgid "great-grandson"
+#~ msgstr "nevoçirk"
+
+#~ msgctxt "son’s child’s son"
+#~ msgid "great-grandson"
+#~ msgstr "kurê nevoçirk"
+
+#~ msgctxt "son’s daughter’s son"
+#~ msgid "great-grandson"
+#~ msgstr "Kurê qîza kur"
+
+#~ msgctxt "son’s son’s son"
+#~ msgid "great-grandson"
+#~ msgstr "kurê kurê kur"
+
+#~ msgctxt "(a man’s) brother’s child’s son"
+#~ msgid "great-nephew"
+#~ msgstr "nevoyê xwîşkê"
+
+#~ msgctxt "(a man’s) brother’s daughter’s son"
+#~ msgid "great-nephew"
+#~ msgstr "Kurê qîza bira"
+
+#~ msgctxt "(a man’s) brother’s son’s son"
+#~ msgid "great-nephew"
+#~ msgstr "nevoyê bira"
+
+#~ msgctxt "(a man’s) sister’s child’s son"
+#~ msgid "great-nephew"
+#~ msgstr "nevoyê xwîşkê"
+
+#~ msgctxt "(a man’s) sister’s daughter’s son"
+#~ msgid "great-nephew"
+#~ msgstr "nevoyê xwîşkê"
+
+#~ msgctxt "(a man’s) sister’s son’s son"
+#~ msgid "great-nephew"
+#~ msgstr "nevoyê xwîşkê"
+
+#~ msgctxt "(a woman’s) brother’s child’s son"
+#~ msgid "great-nephew"
+#~ msgstr "nevoyê xwîşkê"
+
+#~ msgctxt "(a woman’s) brother’s daughter’s son"
+#~ msgid "great-nephew"
+#~ msgstr "Kurê qîza bira"
+
+#~ msgctxt "(a woman’s) brother’s son’s son"
+#~ msgid "great-nephew"
+#~ msgstr "keça kur-bira"
+
+#~ msgctxt "(a woman’s) sister’s child’s son"
+#~ msgid "great-nephew"
+#~ msgstr "nevoyê xwîşkê"
+
+#~ msgctxt "(a woman’s) sister’s daughter’s son"
+#~ msgid "great-nephew"
+#~ msgstr "nevoyê xwîşkê"
+
+#~ msgctxt "(a woman’s) sister’s son’s son"
+#~ msgid "great-nephew"
+#~ msgstr "nevoya xwîşkê"
+
+#~ msgctxt "sibling’s child’s son"
+#~ msgid "great-nephew"
+#~ msgstr "nevoyê bira"
+
+#~ msgctxt "sibling’s daughter’s son"
+#~ msgid "great-nephew"
+#~ msgstr "nevoyê xwîşkê"
+
+#~ msgctxt "sibling’s son’s son"
+#~ msgid "great-nephew"
+#~ msgstr "nevoyên birayan"
+
+#~ msgctxt "(a man’s) brother’s child’s child"
+#~ msgid "great-nephew/niece"
+#~ msgstr "nevoyên xwîşk/bra"
+
+#~ msgctxt "(a man’s) brother’s daughter’s child"
+#~ msgid "great-nephew/niece"
+#~ msgstr "nevoyê bira"
+
+#~ msgctxt "(a man’s) brother’s son’s child"
+#~ msgid "great-nephew/niece"
+#~ msgstr "nevyê bira"
+
+#~ msgctxt "(a man’s) sister’s child’s child"
+#~ msgid "great-nephew/niece"
+#~ msgstr "nevoyên xwîşk/bira"
+
+#~ msgctxt "(a man’s) sister’s daughter’s child"
+#~ msgid "great-nephew/niece"
+#~ msgstr "nevoyên xwîşkê"
+
+#~ msgctxt "(a man’s) sister’s son’s child"
+#~ msgid "great-nephew/niece"
+#~ msgstr "nevoyên xwîşk/bira"
+
+#~ msgctxt "(a woman’s) brother’s child’s child"
+#~ msgid "great-nephew/niece"
+#~ msgstr "xwarziyê xwîşk/bra"
+
+#~ msgctxt "(a woman’s) brother’s daughter’s child"
+#~ msgid "great-nephew/niece"
+#~ msgstr "nevoyê bira"
+
+#~ msgctxt "(a woman’s) brother’s son’s child"
+#~ msgid "great-nephew/niece"
+#~ msgstr "nevoya bira"
+
+#~ msgctxt "(a woman’s) sister’s child’s child"
+#~ msgid "great-nephew/niece"
+#~ msgstr "nevoyên xwîşkê"
+
+#~ msgctxt "(a woman’s) sister’s daughter’s child"
+#~ msgid "great-nephew/niece"
+#~ msgstr "nevoyên xwîşkan"
+
+#~ msgctxt "(a woman’s) sister’s son’s child"
+#~ msgid "great-nephew/niece"
+#~ msgstr "nevoyên xwîşkê"
+
+#~ msgctxt "sibling’s child’s child"
+#~ msgid "great-nephew/niece"
+#~ msgstr "nevoyên xwîşk/bra"
+
+#~ msgctxt "sibling’s daughter’s child"
+#~ msgid "great-nephew/niece"
+#~ msgstr "nevoyên xwîşkê"
+
+#~ msgctxt "sibling’s son’s child"
+#~ msgid "great-nephew/niece"
+#~ msgstr "nevoyê biraya"
+
+#~ msgctxt "(a man’s) brother’s child’s daughter"
+#~ msgid "great-niece"
+#~ msgstr "neva xwîşk/bra"
+
+#~ msgctxt "(a man’s) brother’s daughter’s daughter"
+#~ msgid "great-niece"
+#~ msgstr "neva xwîşk/bra"
+
+#~ msgctxt "(a man’s) brother’s son’s daughter"
+#~ msgid "great-niece"
+#~ msgstr "Qîza kur-bira"
+
+#~ msgctxt "(a man’s) sister’s child’s daughter"
+#~ msgid "great-niece"
+#~ msgstr "nevoya xwîşk/birayan"
+
+#~ msgctxt "(a man’s) sister’s daughter’s daughter"
+#~ msgid "great-niece"
+#~ msgstr "nevoya xwîşkê"
+
+#~ msgctxt "(a man’s) sister’s son’s daughter"
+#~ msgid "great-niece"
+#~ msgstr "nevoya xwîşkê"
+
+#~ msgctxt "(a woman’s) brother’s child’s daughter"
+#~ msgid "great-niece"
+#~ msgstr "nevoya birê"
+
+#~ msgctxt "(a woman’s) brother’s daughter’s daughter"
+#~ msgid "great-niece"
+#~ msgstr "nevoya birê"
+
+#~ msgctxt "(a woman’s) brother’s son’s daughter"
+#~ msgid "great-niece"
+#~ msgstr "nevoya bira"
+
+#~ msgctxt "(a woman’s) sister’s child’s daughter"
+#~ msgid "great-niece"
+#~ msgstr "nevoya xwîşkê"
+
+#~ msgctxt "(a woman’s) sister’s daughter’s daughter"
+#~ msgid "great-niece"
+#~ msgstr "nevoya xwîşkê"
+
+#~ msgctxt "(a woman’s) sister’s son’s daughter"
+#~ msgid "great-niece"
+#~ msgstr "nevoya bira"
+
+#~ msgctxt "sibling’s child’s daughter"
+#~ msgid "great-niece"
+#~ msgstr "nevên xwîşkê"
+
+#~ msgctxt "sibling’s daughter’s daughter"
+#~ msgid "great-niece"
+#~ msgstr "nevoya xwîşkê"
+
+#~ msgctxt "sibling’s son’s daughter"
+#~ msgid "great-niece"
+#~ msgstr "nevoyên xwîşkê"
+
+#~ msgctxt "father’s father’s brother"
+#~ msgid "great-uncle"
+#~ msgstr "apê bavê"
+
+#~ msgctxt "father’s mother’s brother"
+#~ msgid "great-uncle"
+#~ msgstr "xalê bavê"
+
+#~ msgctxt "father’s parent’s brother"
+#~ msgid "great-uncle"
+#~ msgstr "xal û apên bavê"
+
+#~ msgctxt "mother’s father’s brother"
+#~ msgid "great-uncle"
+#~ msgstr "apê dê"
+
+#~ msgctxt "mother’s mother’s brother"
+#~ msgid "great-uncle"
+#~ msgstr "xalê ji dê"
+
+#~ msgctxt "mother’s parent’s brother"
+#~ msgid "great-uncle"
+#~ msgstr "ap û xalên ji dê"
+
+#~ msgctxt "parent’s father’s brother"
+#~ msgid "great-uncle"
+#~ msgstr "apê ji bavê"
+
+#~ msgctxt "parent’s mother’s brother"
+#~ msgid "great-uncle"
+#~ msgstr "birayê pîrika ji bavê/xalê ji bavê"
+
+#~ msgctxt "parent’s parent’s brother"
+#~ msgid "great-uncle"
+#~ msgstr "apê ji bavê"
+
+#~ msgctxt "father’s son"
+#~ msgid "half-brother"
+#~ msgstr "kurbav"
+
+#~ msgctxt "mother’s son"
+#~ msgid "half-brother"
+#~ msgstr "brayê oge"
+
+#~ msgctxt "parent’s son"
+#~ msgid "half-brother"
+#~ msgstr "brayê oge"
+
+#~ msgctxt "father’s child"
+#~ msgid "half-sibling"
+#~ msgstr "zara bavê"
+
+#~ msgctxt "mother’s child"
+#~ msgid "half-sibling"
+#~ msgstr "brayê/xwîşka oge"
+
+#~ msgctxt "parent’s child"
+#~ msgid "half-sibling"
+#~ msgstr "brayê oge/ xwîşka oge"
+
+#~ msgctxt "father’s daughter"
+#~ msgid "half-sister"
+#~ msgstr "qîza bav"
+
+#~ msgctxt "mother’s daughter"
+#~ msgid "half-sister"
+#~ msgstr "xwîşka oge"
+
+#~ msgctxt "parent’s daughter"
+#~ msgid "half-sister"
+#~ msgstr "xwîşka oge"
+
+#, php-format
+#~ msgid "interpreted %s (%s)"
+#~ msgstr "Şirovekirinî %s (%s)"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "jours complementaires"
+#~ msgstr "sertayê rojan"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "jours complementaires"
+#~ msgstr "sertayê rojan"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "jours complementaires"
+#~ msgstr "sertayê rojan"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "jours complementaires"
+#~ msgstr "sertayê rojan"
+
+#~ msgctxt "mother’s father"
+#~ msgid "maternal grandfather"
+#~ msgstr "dapîr"
+
+#~ msgctxt "mother’s mother"
+#~ msgid "maternal grandmother"
+#~ msgstr "dapîrik"
+
+#~ msgctxt "mother’s parent"
+#~ msgid "maternal grandparent"
+#~ msgstr "kal/pîrên ji dê"
+
+#~ msgctxt "husband’s mother"
+#~ msgid "mother-in-law"
+#~ msgstr "Xesî"
+
+#~ msgctxt "spouse’s mother"
+#~ msgid "mother-in-law"
+#~ msgstr "xesî/xesû"
+
+#~ msgctxt "wife’s mother"
+#~ msgid "mother-in-law"
+#~ msgstr "xesî"
+
+#~ msgctxt "spouse’s parent"
+#~ msgid "mother/father-in-law"
+#~ msgstr "xesî/xezûr"
+
+#~ msgctxt "brother’s son"
+#~ msgid "nephew"
+#~ msgstr "xwarzî/brazî"
+
+#~ msgctxt "husband’s brother’s son"
+#~ msgid "nephew"
+#~ msgstr "brazî"
+
+#~ msgctxt "husband’s sibling’s son"
+#~ msgid "nephew"
+#~ msgstr "brazî"
+
+#~ msgctxt "husband’s sister’s son"
+#~ msgid "nephew"
+#~ msgstr "brazî"
+
+#~ msgctxt "sibling’s son"
+#~ msgid "nephew"
+#~ msgstr "brazî"
+
+#~ msgctxt "sister’s son"
+#~ msgid "nephew"
+#~ msgstr "xwarzî"
+
+#~ msgctxt "brother’s daughter’s husband"
+#~ msgid "nephew-in-law"
+#~ msgstr "Mêrê qîza bira"
+
+#~ msgctxt "sibling’s daughter’s husband"
+#~ msgid "nephew-in-law"
+#~ msgstr "zavayê bira"
+
+#~ msgctxt "sisters’s daughter’s husband"
+#~ msgid "nephew-in-law"
+#~ msgstr "zavayê xwîşkê"
+
+#~ msgctxt "brother’s child"
+#~ msgid "nephew/niece"
+#~ msgstr "xwarzî/brazî"
+
+#~ msgctxt "husband’s brother’s child"
+#~ msgid "nephew/niece"
+#~ msgstr "xwarzî/brazî"
+
+#~ msgctxt "husband’s sibling’s child"
+#~ msgid "nephew/niece"
+#~ msgstr "xwarzî/brazî"
+
+#~ msgctxt "husband’s sister’s child"
+#~ msgid "nephew/niece"
+#~ msgstr "xwarzî/brazî"
+
+#~ msgctxt "sibling’s child"
+#~ msgid "nephew/niece"
+#~ msgstr "xwarzî/brazî"
+
+#~ msgctxt "sister’s child"
+#~ msgid "nephew/niece"
+#~ msgstr "xwarzî-brazî"
+
+#~ msgctxt "brother’s daughter"
+#~ msgid "niece"
+#~ msgstr "xwarzî/brazî"
+
+#~ msgctxt "husband’s brother’s daughter"
+#~ msgid "niece"
+#~ msgstr "xwarzî"
+
+#~ msgctxt "husband’s sibling’s daughter"
+#~ msgid "niece"
+#~ msgstr "xwarzî"
+
+#~ msgctxt "husband’s sister’s daughter"
+#~ msgid "niece"
+#~ msgstr "xwarzî"
+
+#~ msgctxt "sibling’s daughter"
+#~ msgid "niece"
+#~ msgstr "xwarzî"
+
+#~ msgctxt "sister’s daughter"
+#~ msgid "niece"
+#~ msgstr "xwarzî"
+
+#~ msgctxt "brother’s son’s wife"
+#~ msgid "niece-in-law"
+#~ msgstr "Jina kur-bira"
+
+#~ msgctxt "sibling’s son’s wife"
+#~ msgid "niece-in-law"
+#~ msgstr "bûka birag"
+
+#~ msgctxt "sisters’s son’s wife"
+#~ msgid "niece-in-law"
+#~ msgstr "bûka xwîşkê"
+
+#~ msgid "ninth cousin"
+#~ msgstr "pismamê nehemîn"
+
+#~ msgctxt "FEMALE"
+#~ msgid "ninth cousin"
+#~ msgstr "Pismama nehemîn"
+
+#~ msgctxt "MALE"
+#~ msgid "ninth cousin"
+#~ msgstr "Pismamê nehemîn"
+
+#~ msgid "parent"
+#~ msgstr "dêbav"
+
+#~ msgid "partner"
+#~ msgstr "heval"
+
+#~ msgctxt "FEMALE"
+#~ msgid "partner"
+#~ msgstr "hevjin"
+
+#~ msgctxt "MALE"
+#~ msgid "partner"
+#~ msgstr "hevser"
+
+#~ msgctxt "father’s father"
+#~ msgid "paternal grandfather"
+#~ msgstr "kalik"
+
+#~ msgctxt "father’s mother"
+#~ msgid "paternal grandmother"
+#~ msgstr "pîrik"
+
+#~ msgctxt "father’s parent"
+#~ msgid "paternal grandparent"
+#~ msgstr "kal û pîr"
+
+#, php-format
+#~ msgid "second %s"
+#~ msgstr "%s ê duyemîn''"
+
+#, php-format
+#~ msgctxt "FEMALE"
+#~ msgid "second %s"
+#~ msgstr "%s a duyemîn''"
+
+#, php-format
+#~ msgctxt "MALE"
+#~ msgid "second %s"
+#~ msgstr "%s ê duyemîn''"
+
+#~ msgid "second cousin"
+#~ msgstr "pismamê duyemîn"
+
+#~ msgctxt "FEMALE"
+#~ msgid "second cousin"
+#~ msgstr "Pismama duyemîn"
+
+#~ msgctxt "MALE"
+#~ msgid "second cousin"
+#~ msgstr "Pismamê 2emin"
+
+#~ msgid "self"
+#~ msgstr "xwe"
+
+#~ msgid "seventh cousin"
+#~ msgstr "pismamê heftemîn"
+
+#~ msgctxt "FEMALE"
+#~ msgid "seventh cousin"
+#~ msgstr "Pismama heftemîn"
+
+#~ msgctxt "MALE"
+#~ msgid "seventh cousin"
+#~ msgstr "Pismamê heftemîn"
+
+#~ msgid "sibling"
+#~ msgstr "xwîşk/ bira"
+
+#~ msgid "sister"
+#~ msgstr "xwîşk"
+
+#~ msgctxt "brother’s wife"
+#~ msgid "sister-in-law"
+#~ msgstr "bûk"
+
+#~ msgctxt "brother’s wife’s sister"
+#~ msgid "sister-in-law"
+#~ msgstr "Xûşka jin-birê"
+
+#~ msgctxt "husband’s brother’s wife"
+#~ msgid "sister-in-law"
+#~ msgstr "jin-bir"
+
+#~ msgctxt "husband’s sister"
+#~ msgid "sister-in-law"
+#~ msgstr "jinbir/bûk/amojin/xalojin"
+
+#~ msgctxt "sister’s husband’s sister"
+#~ msgid "sister-in-law"
+#~ msgstr "xwîşka bûkê"
+
+#~ msgctxt "spouse’s sister"
+#~ msgid "sister-in-law"
+#~ msgstr "baltûz"
+
+#~ msgctxt "wife’s brother’s wife"
+#~ msgid "sister-in-law"
+#~ msgstr "jina birayê jin"
+
+#~ msgctxt "wife’s sister"
+#~ msgid "sister-in-law"
+#~ msgstr "baltûz"
+
+#~ msgid "sixth cousin"
+#~ msgstr "pismamê şeşemîn"
+
+#~ msgctxt "FEMALE"
+#~ msgid "sixth cousin"
+#~ msgstr "Pismama şeşemîn"
+
+#~ msgctxt "MALE"
+#~ msgid "sixth cousin"
+#~ msgstr "Pismamê şeşemîn"
+
+#~ msgid "son"
+#~ msgstr "kur"
+
+#~ msgctxt "child’s husband"
+#~ msgid "son-in-law"
+#~ msgstr "zava"
+
+#~ msgctxt "daughter’s husband"
+#~ msgid "son-in-law"
+#~ msgstr "zava"
+
+#~ msgctxt "daughter’s husband’s father"
+#~ msgid "son-in-law’s father"
+#~ msgstr "xinamî(bavê mêrê qîzê)"
+
+#~ msgctxt "daughter’s husband’s mother"
+#~ msgid "son-in-law’s mother"
+#~ msgstr "xinamî(dîya mêrê qîzê)"
+
+#~ msgctxt "daughter’s husband’s parent"
+#~ msgid "son-in-law’s parent"
+#~ msgstr "dê-bavên mêrê qîzê"
+
+#~ msgctxt "child’s spouse"
+#~ msgid "son/daughter-in-law"
+#~ msgstr "bûk"
+
+#~ msgctxt "father’s wife’s son"
+#~ msgid "step-brother"
+#~ msgstr "brayê ji jin-bavê"
+
+#~ msgctxt "mother’s husband’s son"
+#~ msgid "step-brother"
+#~ msgstr "birayê ne ji dê/bavê"
+
+#~ msgctxt "parent’s spouse’s son"
+#~ msgid "step-brother"
+#~ msgstr "pismamê ne ji dê/bavê"
+
+#~ msgctxt "husband’s child"
+#~ msgid "step-child"
+#~ msgstr "zara ne ji dê û bava"
+
+#~ msgctxt "spouse’s child"
+#~ msgid "step-child"
+#~ msgstr "zarên ne ji dê/bavê"
+
+#~ msgctxt "wife’s child"
+#~ msgid "step-child"
+#~ msgstr "zara ne ji dê/bavê"
+
+#~ msgctxt "husband’s daughter"
+#~ msgid "step-daughter"
+#~ msgstr "keça ne ji dê/bavê"
+
+#~ msgctxt "spouse’s daughter"
+#~ msgid "step-daughter"
+#~ msgstr "keça jinê"
+
+#~ msgctxt "wife’s daughter"
+#~ msgid "step-daughter"
+#~ msgstr "keça ne ji dê/bavê"
+
+#~ msgctxt "mother’s husband"
+#~ msgid "step-father"
+#~ msgstr "zirbav"
+
+#~ msgctxt "father’s wife"
+#~ msgid "step-mother"
+#~ msgstr "jinbav"
+
+#~ msgctxt "parent’s spouse"
+#~ msgid "step-parent"
+#~ msgstr "zirbav/damarî"
+
+#~ msgctxt "father’s wife’s child"
+#~ msgid "step-sibling"
+#~ msgstr "xwîşk/brayên jinbavê xwîşk/brayên zirbêv"
+
+#~ msgctxt "mother’s husband’s child"
+#~ msgid "step-sibling"
+#~ msgstr "xwîşk/brayên ne ji dê/bavan"
+
+#~ msgctxt "parent’s spouse’s child"
+#~ msgid "step-sibling"
+#~ msgstr "pimamê ne ji malbatê"
+
+#~ msgctxt "father’s wife’s daughter"
+#~ msgid "step-sister"
+#~ msgstr "xwîşka ji jin-bavê"
+
+#~ msgctxt "mother’s husband’s daughter"
+#~ msgid "step-sister"
+#~ msgstr "xwîşka ji dê/bavê"
+
+#~ msgctxt "parent’s spouse’s daughter"
+#~ msgid "step-sister"
+#~ msgstr "dotmama ne ji malê"
+
+#~ msgctxt "husband’s son"
+#~ msgid "step-son"
+#~ msgstr "kurê ne ji dê/bavê"
+
+#~ msgctxt "spouse’s son"
+#~ msgid "step-son"
+#~ msgstr "kurê ne ji dê/bavê"
+
+#~ msgctxt "wife’s son"
+#~ msgid "step-son"
+#~ msgstr "kurê jinê"
+
+#~ msgid "tenth cousin"
+#~ msgstr "pismamê dehemîn"
+
+#~ msgctxt "FEMALE"
+#~ msgid "tenth cousin"
+#~ msgstr "pismama dehemîn"
+
+#~ msgctxt "MALE"
+#~ msgid "tenth cousin"
+#~ msgstr "Pismamê dehemîn"
+
+#, php-format
+#~ msgid "third %s"
+#~ msgstr "%s ê sêyemîn''"
+
+#, php-format
+#~ msgctxt "FEMALE"
+#~ msgid "third %s"
+#~ msgstr "%s a sêemîn''"
+
+#, php-format
+#~ msgctxt "MALE"
+#~ msgid "third %s"
+#~ msgstr "%s ê sêyemîn''"
+
+#~ msgid "third cousin"
+#~ msgstr "pismamê sêemîn"
+
+#~ msgctxt "FEMALE"
+#~ msgid "third cousin"
+#~ msgstr "Pismama sêemîn"
+
+#~ msgctxt "MALE"
+#~ msgid "third cousin"
+#~ msgstr "Pismamê sêemîn"
+
+#~ msgid "thirteenth cousin"
+#~ msgstr "pismamê sêzdemîn"
+
+#~ msgctxt "FEMALE"
+#~ msgid "thirteenth cousin"
+#~ msgstr "pismama sêzdemîn"
+
+#~ msgctxt "MALE"
+#~ msgid "thirteenth cousin"
+#~ msgstr "Pismamê sêzdemîn"
+
+#, php-format
+#~ msgid "to %s"
+#~ msgstr "heya/ ta %s"
+
+#~ msgid "twelfth cousin"
+#~ msgstr "pismamê danzdemîn"
+
+#~ msgctxt "FEMALE"
+#~ msgid "twelfth cousin"
+#~ msgstr "pismama danzdemîn"
+
+#~ msgctxt "MALE"
+#~ msgid "twelfth cousin"
+#~ msgstr "Pismamê danzdemîn"
+
+#~ msgid "twin brother"
+#~ msgstr "birayê cêwî"
+
+#~ msgid "twin sibling"
+#~ msgstr "cêwî"
+
+#~ msgid "twin sister"
+#~ msgstr "xûşka cêwî"
+
+#~ msgctxt "father’s brother"
+#~ msgid "uncle"
+#~ msgstr "ap"
+
+#~ msgctxt "father’s sister’s husband"
+#~ msgid "uncle"
+#~ msgstr "ap"
+
+#~ msgctxt "mother’s brother"
+#~ msgid "uncle"
+#~ msgstr "xal"
+
+#~ msgctxt "mother’s sister’s husband"
+#~ msgid "uncle"
+#~ msgstr "xal"
+
+#~ msgctxt "parent’s brother"
+#~ msgid "uncle"
+#~ msgstr "Apo/xalo"
+
+#~ msgctxt "parent’s sister’s husband"
+#~ msgid "uncle"
+#~ msgstr "ap"
+
+#~ msgid "younger brother"
+#~ msgstr "Birayê piçûk"
+
+#~ msgid "younger sibling"
+#~ msgstr "Xwîşk/brayê herî piçûk"
+
+#~ msgid "younger sister"
+#~ msgstr "xwîşka piçûk"
+
+#~ msgctxt "GENITIVE"
+#~ msgid "Ṣafar"
+#~ msgstr "Sefer"
+
+#~ msgctxt "INSTRUMENTAL"
+#~ msgid "Ṣafar"
+#~ msgstr "Sefer"
+
+#~ msgctxt "LOCATIVE"
+#~ msgid "Ṣafar"
+#~ msgstr "Sefer"
+
+#~ msgctxt "NOMINATIVE"
+#~ msgid "Ṣafar"
+#~ msgstr "Sefer"

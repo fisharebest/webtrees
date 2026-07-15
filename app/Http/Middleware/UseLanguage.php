@@ -19,15 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fisharebest\Localization\Locale;
-use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\Factories\LanguageFactory;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\LanguageEnglishUnitedStates;
-use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Session;
-use Fisharebest\Webtrees\Site;
-use Generator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -35,52 +29,26 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class UseLanguage implements MiddlewareInterface
 {
-    private ModuleService $module_service;
+    private LanguageFactory $language_factory;
 
-    public function __construct(ModuleService $module_service)
+    public function __construct(LanguageFactory $language_factory)
     {
-        $this->module_service = $module_service;
+        $this->language_factory = $language_factory;
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        foreach ($this->languages($request) as $language) {
-            if ($language instanceof ModuleLanguageInterface) {
-                I18N::init($language->locale()->languageTag());
-                Session::put('language', $language->locale()->languageTag());
-                break;
-            }
+        $language_tag = Session::get('language');
+
+        if (is_string($language_tag)) {
+            $language = $this->language_factory->fromLanguageTag($language_tag);
+        } else {
+            $language = $this->language_factory->fromRequest($request);
+            Session::put('language', $language->languageTag());
         }
 
+        I18N::init($language->languageTag());
+
         return $handler->handle($request);
-    }
-
-    /**
-     * The language can be chosen in various ways.
-     * Language module names have the form "language-<code>>".
-     *
-     *
-     * @return Generator<ModuleLanguageInterface|null>
-     */
-    private function languages(ServerRequestInterface $request): Generator
-    {
-        $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class, true);
-
-        // Last language used
-        yield $languages
-            ->first(static fn (ModuleLanguageInterface $module): bool => $module->locale()->languageTag() === Session::get('language'));
-
-        // Browser negotiation
-        $locales = $this->module_service->findByInterface(ModuleLanguageInterface::class, true)
-            ->map(static fn (ModuleLanguageInterface $module): LocaleInterface => $module->locale());
-
-        $default = Locale::create(Site::getPreference('LANGUAGE'));
-        $locale  = Locale::httpAcceptLanguage($request->getServerParams(), $locales->all(), $default);
-
-        yield $languages
-            ->first(static fn (ModuleLanguageInterface $module): bool => $module->locale()->languageTag() === $locale->languageTag());
-
-        // No languages enabled?  Use en-US
-        yield new LanguageEnglishUnitedStates();
     }
 }

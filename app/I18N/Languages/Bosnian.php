@@ -1,0 +1,424 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2026 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\I18N\Languages;
+
+use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\Relationship;
+use Fisharebest\Webtrees\Report\PaperSize;
+use Fisharebest\Webtrees\Enums\PluralRule;
+
+use function str_repeat;
+
+final readonly class Bosnian extends AbstractLanguage
+{
+    protected const PluralRule PLURAL_RULE = PluralRule::ThreeFormsSlavic;
+
+    protected const string    ENDONYM            = 'bosanski';
+    protected const PaperSize PAPER_SIZE         = PaperSize::A4;
+    protected const string    LANGUAGE_TAG       = 'bs';
+    protected const string    LOCALE_CODE        = 'bs_BA@collation=phonebook';
+    protected const string    DIGITS_SEPARATOR   = '.';
+    protected const string    DECIMAL_SYMBOL     = ',';
+    protected const string    DATE_ABOUT         = 'o %s';
+    protected const string    DATE_AFTER         = 'poslije %s';
+    protected const string    DATE_BEFORE        = 'prije %s';
+    protected const string    DATE_BETWEEN_AND   = 'između %s i %s';
+    protected const string    DATE_CALCULATED    = 'izračunato %s';
+    protected const string    DATE_ESTIMATED     = 'procjenjeno %s';
+    protected const string    DATE_FROM          = 'iz %s';
+    protected const string    DATE_FROM_TO       = 'od %s do %s';
+    protected const string    DATE_INTERPRETED   = 'interpretirano %s';
+    protected const string    DATE_TO            = 'u %s';
+    protected const string    ERA_BCE            = '%s' . UTF8::NO_BREAK_SPACE . 'p.n.e';
+    protected const string    ERA_CE             = '%s' . UTF8::NO_BREAK_SPACE . 'n.e';
+    protected const string    LIST_SEPARATOR_AND = ' i ';
+    protected const string    LIST_SEPARATOR_OR  = ' ili ';
+
+    protected const array GREGORIAN_MONTHS_NOMINATIVE = [
+        '',
+        'Januar',
+        'Februar',
+        'Mart',
+        'April',
+        'Maj',
+        'Jun',
+        'Jul',
+        'Avgust',
+        'Septembar',
+        'Oktobar',
+        'Novembar',
+        'Decembar',
+    ];
+    protected const string    PERCENT_FORMAT     = '%s' . UTF8::NO_BREAK_SPACE . '%%';
+
+    protected const array GREGORIAN_MONTHS_GENITIVE = [
+        '',
+        'januara',
+        'februara',
+        'marta',
+        'aprila',
+        'maja',
+        'juna',
+        'jula',
+        'avgusta',
+        'septembara',
+        'oktobara',
+        'novembara',
+        'decembra',
+    ];
+
+    protected const array GREGORIAN_MONTHS_LOCATIVE = [
+        '',
+        'januaru',
+        'februaru',
+        'martu',
+        'aprilu',
+        'maju',
+        'junu',
+        'julu',
+        'avgustu',
+        'septembru',
+        'oktobru',
+        'novembru',
+        'decembru',
+    ];
+
+    protected const array GREGORIAN_MONTHS_INSTRUMENTAL = [
+        '',
+        'januarom',
+        'februarom',
+        'martom',
+        'aprilom',
+        'majem',
+        'junom',
+        'julom',
+        'avgustom',
+        'septembrom',
+        'oktobrom',
+        'novembrom',
+        'decembrom',
+    ];
+
+    protected const array JEWISH_MONTHS_NOMINATIVE = [
+        '',
+        'Tishrei',
+        'Heshvan',
+        'Kislev',
+        'Tevet',
+        'Shevat',
+        'Adar I',
+        'Adar II',
+        'Adar',
+        'Nissan',
+        'Iyar',
+        'Sivan',
+        'Tamuz',
+        'Av',
+        'Elul',
+    ];
+
+    protected const array JEWISH_MONTHS_GENITIVE = self::JEWISH_MONTHS_NOMINATIVE;
+
+    protected const array JEWISH_MONTHS_LOCATIVE = self::JEWISH_MONTHS_NOMINATIVE;
+
+    protected const array JEWISH_MONTHS_INSTRUMENTAL = self::JEWISH_MONTHS_NOMINATIVE;
+
+    protected const array FRENCH_MONTHS_NOMINATIVE = [
+        '',
+        'Vendémiaire',
+        'Brumaire',
+        'Frimaire',
+        'Nivôse',
+        'Pluviôse',
+        'Ventôse',
+        'Germinal',
+        'Floréal',
+        'Prairial',
+        'Messidor',
+        'Thermidor',
+        'Fructidor',
+        'jours complémentaires',
+    ];
+
+    protected const array FRENCH_MONTHS_GENITIVE = self::FRENCH_MONTHS_NOMINATIVE;
+
+    protected const array FRENCH_MONTHS_LOCATIVE = self::FRENCH_MONTHS_NOMINATIVE;
+
+    protected const array FRENCH_MONTHS_INSTRUMENTAL = self::FRENCH_MONTHS_NOMINATIVE;
+
+    protected const array HIJRI_MONTHS_NOMINATIVE = [
+        '',
+        'Muharrem',
+        'Safer',
+        'Rebiul-evvel',
+        'Rebiul-ahir',
+        'Džumade-l-ula',
+        'Džumade-l-uhra',
+        'Redžeb',
+        'Ša’ban',
+        'Ramazan',
+        'Ševval',
+        'Zu-l-ka’de',
+        'Zu-l-hidždže',
+    ];
+
+    protected const array HIJRI_MONTHS_GENITIVE = [
+        '',
+        'Muharrem',
+        'Safera',
+        'Rebiul-evvela',
+        'Rebiul-ahira',
+        'Džumade-l-ula',
+        'Džumade-l-uhra',
+        'Redžeba',
+        'Ša’bana',
+        'Ramazana',
+        'Ševvala',
+        'Zu-l-ka’dea',
+        'Zu-l-hidždžea',
+    ];
+
+    protected const array HIJRI_MONTHS_LOCATIVE = [
+        '',
+        'Muharrem',
+        'Saferu',
+        'Rebiul-evvelu',
+        'Rebiul-ahiru',
+        'Džumade-l-ulau',
+        'Džumade-l-uhrau',
+        'Redžebu',
+        'Ša’banu',
+        'Ramazanu',
+        'Ševvalu',
+        'Zu-l-ka’deu',
+        'Zu-l-hidždžeu',
+    ];
+
+    protected const array HIJRI_MONTHS_INSTRUMENTAL = [
+        '',
+        'Muharrem',
+        'Saferom',
+        'Rebiul-evvelom',
+        'Rebiul-ahirom',
+        'Džumade-l-ulaom',
+        'Džumade-l-uhraom',
+        'Redžebom',
+        'Ša’banom',
+        'Ramazanom',
+        'Ševvalom',
+        'Zu-l-ka’deom',
+        'Zu-l-hidždžeom',
+    ];
+
+    protected const array JALALI_MONTHS_NOMINATIVE = [
+        '',
+        'Farvardin',
+        'Ordibehesht',
+        'Khordad',
+        'Tir',
+        'Mordad',
+        'Shahrivar',
+        'Mehr',
+        'Ābān',
+        'Azar',
+        'Dey',
+        'Bahman',
+        'Esfand',
+    ];
+
+    protected const array JALALI_MONTHS_GENITIVE = [
+        '',
+        'Farvardin',
+        'Ordibehesht',
+        'Khordad',
+        'Tir',
+        'Mordad',
+        'Shahrivar',
+        'Mehr',
+        'Aban',
+        'Azar',
+        'Dey',
+        'Bahman',
+        'Esfand',
+    ];
+
+    protected const array JALALI_MONTHS_LOCATIVE = [
+        '',
+        'Farvardin',
+        'Ordibehesht',
+        'Khordad',
+        'Tir',
+        'Mordad',
+        'Shahrivar',
+        'Mehr',
+        'Aban',
+        'Azar',
+        'Dey',
+        'Bahman',
+        'Esfand',
+    ];
+
+    protected const array JALALI_MONTHS_INSTRUMENTAL = [
+        '',
+        'Farvardin',
+        'Ordibehesht',
+        'Khordad',
+        'Tir',
+        'Mordad',
+        'Shahrivar',
+        'Mehr',
+        'Aban',
+        'Azar',
+        'Dey',
+        'Bahman',
+        'Esfand',
+    ];
+
+    protected function assembleDate(string $day, string $month, string $year): string
+    {
+        return $this->assembleDateDdotMY($day, $month, $year);
+    }
+
+    /**
+     * @return array<Relationship>
+     */
+    public function relationships(): array
+    {
+        // Bosnian genitive helper
+        $rel = static fn (string $nom, string $gen): array => [$nom, '%s ' . $gen];
+
+        // Dynamic "pra-" prefix for great-grandparents
+        $pra = static fn (int $n, string $nom, string $gen): array => [
+            str_repeat('pra', $n) . $nom,
+            '%s ' . str_repeat('pra', $n) . $gen,
+        ];
+
+        return [
+            // Adopted
+            Relationship::fixed(...$rel('posvojiteljica', 'posvojiteljice'))->adoptive()->mother(),
+            Relationship::fixed(...$rel('posvojitelj', 'posvojitelja'))->adoptive()->father(),
+            Relationship::fixed(...$rel('posvojitelj', 'posvojitelja'))->adoptive()->parent(),
+            Relationship::fixed(...$rel('posvojena kći', 'posvojene kćeri'))->adopted()->daughter(),
+            Relationship::fixed(...$rel('posvojeni sin', 'posvojenog sina'))->adopted()->son(),
+            Relationship::fixed(...$rel('posvojeno dijete', 'posvojenog djeteta'))->adopted()->child(),
+            // Parents
+            Relationship::fixed(...$rel('majka', 'majke'))->mother(),
+            Relationship::fixed(...$rel('otac', 'oca'))->father(),
+            Relationship::fixed(...$rel('roditelj', 'roditelja'))->parent(),
+            // Children
+            Relationship::fixed(...$rel('kći', 'kćeri'))->daughter(),
+            Relationship::fixed(...$rel('sin', 'sina'))->son(),
+            Relationship::fixed(...$rel('dijete', 'djeteta'))->child(),
+            // Siblings
+            Relationship::fixed(...$rel('sestra blizanka', 'sestre blizanke'))->twin()->sister(),
+            Relationship::fixed(...$rel('brat blizanac', 'brata blizanca'))->twin()->brother(),
+            Relationship::fixed(...$rel('blizanac', 'blizanca'))->twin()->sibling(),
+            Relationship::fixed(...$rel('starija sestra', 'starije sestre'))->older()->sister(),
+            Relationship::fixed(...$rel('stariji brat', 'starijeg brata'))->older()->brother(),
+            Relationship::fixed(...$rel('mlađa sestra', 'mlađe sestre'))->younger()->sister(),
+            Relationship::fixed(...$rel('mlađi brat', 'mlađeg brata'))->younger()->brother(),
+            Relationship::fixed(...$rel('sestra', 'sestre'))->sister(),
+            Relationship::fixed(...$rel('brat', 'brata'))->brother(),
+            Relationship::fixed(...$rel('brat/sestra', 'brata/sestre'))->sibling(),
+            // Half-siblings
+            Relationship::fixed(...$rel('polusestra', 'polusestre'))->parent()->daughter(),
+            Relationship::fixed(...$rel('polubrat', 'polubrata'))->parent()->son(),
+            Relationship::fixed(...$rel('polubrat/polusestra', 'polubrata/polusestre'))->parent()->child(),
+            // Stepfamily
+            Relationship::fixed(...$rel('maćeha', 'maćehe'))->parent()->wife(),
+            Relationship::fixed(...$rel('očuh', 'očuha'))->parent()->husband(),
+            Relationship::fixed(...$rel('poočim', 'poočima'))->parent()->married()->spouse(),
+            Relationship::fixed(...$rel('pastorka', 'pastorke'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$rel('pastorak', 'pastorka'))->married()->spouse()->son(),
+            Relationship::fixed(...$rel('pastorče', 'pastorčeta'))->married()->spouse()->child(),
+            // Partners
+            Relationship::fixed(...$rel('bivša supruga', 'bivše supruge'))->divorced()->partner()->female(),
+            Relationship::fixed(...$rel('bivši suprug', 'bivšeg supruga'))->divorced()->partner()->male(),
+            Relationship::fixed(...$rel('bivši partner', 'bivšeg partnera'))->divorced()->partner(),
+            Relationship::fixed(...$rel('vjerenica', 'vjerenice'))->engaged()->partner()->female(),
+            Relationship::fixed(...$rel('vjerenik', 'vjerenika'))->engaged()->partner()->male(),
+            Relationship::fixed(...$rel('supruga', 'supruge'))->wife(),
+            Relationship::fixed(...$rel('suprug', 'supruga'))->husband(),
+            Relationship::fixed(...$rel('supružnik', 'supružnika'))->spouse(),
+            Relationship::fixed(...$rel('partner', 'partnera'))->partner(),
+            // In-laws (wife's parents — punica/punac)
+            Relationship::fixed(...$rel('punica', 'punice'))->married()->spouse()->mother(),
+            Relationship::fixed(...$rel('punac', 'punca'))->married()->spouse()->father(),
+            // In-laws (husband's parents — svekrva/svekar)
+            Relationship::fixed(...$rel('svekrva', 'svekrve'))->spouse()->mother(),
+            Relationship::fixed(...$rel('svekar', 'svekra'))->spouse()->father(),
+            // Children-in-law
+            Relationship::fixed(...$rel('snaha', 'snahe'))->child()->wife(),
+            Relationship::fixed(...$rel('zet', 'zeta'))->child()->husband(),
+            Relationship::fixed(...$rel('zet/snaha', 'zeta/snahe'))->child()->married()->spouse(),
+            // Siblings-in-law
+            Relationship::fixed(...$rel('zaova', 'zaove'))->spouse()->sister(),
+            Relationship::fixed(...$rel('djever', 'djevera'))->spouse()->brother(),
+            Relationship::fixed(...$rel('šurjakinja', 'šurjakinje'))->sibling()->wife(),
+            Relationship::fixed(...$rel('šurak', 'šuraka'))->sibling()->husband(),
+            // Grandparents
+            Relationship::fixed(...$rel('nana', 'nane'))->parent()->mother(),
+            Relationship::fixed(...$rel('dedo', 'dede'))->parent()->father(),
+            Relationship::fixed(...$rel('dedo/nana', 'dede/nane'))->parent()->parent(),
+            // Grandchildren
+            Relationship::fixed(...$rel('unuka', 'unuke'))->child()->daughter(),
+            Relationship::fixed(...$rel('unuk', 'unuka'))->child()->son(),
+            Relationship::fixed(...$rel('unuk/unuka', 'unuka/unuke'))->child()->child(),
+            // Aunts and uncles
+            Relationship::fixed(...$rel('tetka', 'tetke'))->parent()->sister(),
+            Relationship::fixed(...$rel('daidža', 'daidže'))->mother()->brother(),
+            Relationship::fixed(...$rel('amidža', 'amidže'))->father()->brother(),
+            Relationship::fixed(...$rel('amidža', 'amidže'))->parent()->brother(),
+            // Nieces and nephews
+            Relationship::fixed(...$rel('nećakinja', 'nećakinje'))->sibling()->daughter(),
+            Relationship::fixed(...$rel('nećak', 'nećaka'))->sibling()->son(),
+            Relationship::fixed(...$rel('nećak/nećakinja', 'nećaka/nećakinje'))->sibling()->child(),
+            // Cousins
+            Relationship::fixed(...$rel('sestrična', 'sestrične'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$rel('bratić', 'bratića'))->parent()->sibling()->son(),
+            Relationship::fixed(...$rel('bratić/sestrična', 'bratića/sestrične'))->parent()->sibling()->child(),
+            // Dynamic relationships — great-grandparents and beyond
+            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'nana', 'nane'))->ancestor()->female(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'dedo', 'dede'))->ancestor()->male(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'dedo/nana', 'dede/nane'))->ancestor(),
+            // Dynamic — great-grandchildren
+            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'unuka', 'unuke'))->descendant()->female(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'unuk', 'unuka'))->descendant()->male(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'unuk/unuka', 'unuka/unuke'))->descendant(),
+            // Dynamic — great-aunts/uncles
+            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'tetka', 'tetke'))->ancestor()->sister(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'amidža', 'amidže'))->ancestor()->brother(),
+            // Dynamic — great-nieces/nephews
+            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'nećakinja', 'nećakinje'))->sibling()->descendant()->female(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'nećak', 'nećaka'))->sibling()->descendant()->male(),
+        ];
+    }
+
+    /**
+     * Gregorian/Julian month names — case-inflected.
+     *
+     * @return array<int,string>
+     */
+    /**
+     * Jalali/Persian month names — case-inflected.
+     *
+     * @return array<int,string>
+     */
+}

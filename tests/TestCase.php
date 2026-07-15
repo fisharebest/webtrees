@@ -151,12 +151,12 @@ class TestCase extends \PHPUnit\Framework\TestCase
         (new WebRoutes())->load($router_container->getMap());
         Registry::container()->set(RouterContainer::class, $router_container);
 
-        I18N::init('en-US', true);
+        I18N::init('en-US');
+
+        (new Gedcom())->registerTags(Registry::elementFactory(), false);
 
         if (static::$uses_database) {
             self::createTestDatabase();
-
-            I18N::init('en-US');
 
             // This is normally set in middleware.
             (new Gedcom())->registerTags(Registry::elementFactory(), true);

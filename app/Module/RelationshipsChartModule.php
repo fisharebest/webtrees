@@ -25,16 +25,17 @@ use Fisharebest\Algorithm\Dijkstra;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Enums\TextDirection;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\RelationshipService;
 use Fisharebest\Webtrees\Services\TreeService;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
@@ -54,12 +55,10 @@ use function min;
 use function next;
 use function ob_get_clean;
 use function ob_start;
-use function preg_match;
 use function redirect;
 use function response;
 use function route;
 use function sort;
-use function var_dump;
 use function view;
 
 class RelationshipsChartModule extends AbstractModule implements ModuleChartInterface, ModuleConfigInterface, RequestHandlerInterface
@@ -136,7 +135,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                     I18N::translate('Relationship to me'),
                     $this->chartUrl($my_record, ['xref2' => $individual->xref()]),
                     $this->chartMenuClass(),
-                    $this->chartUrlAttributes()
+                    $this->chartUrlAttributes(),
                 );
             }
         }
@@ -145,7 +144,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             $this->title(),
             $this->chartUrl($individual),
             $this->chartMenuClass(),
-            $this->chartUrlAttributes()
+            $this->chartUrlAttributes(),
         );
     }
 
@@ -178,9 +177,9 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         ];
 
         return route(static::class, [
-            'xref' => $individual->xref(),
-            'tree' => $tree->name(),
-        ] + $parameters + $default_parameters);
+                'xref' => $individual->xref(),
+                'tree' => $tree->name(),
+            ] + $parameters + $default_parameters);
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
@@ -267,7 +266,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         $paths = $this->calculateRelationships($individual1, $individual2, $recursion, (bool) $ancestors);
 
         ob_start();
-        if (I18N::direction() === 'ltr') {
+        if (I18N::textDirection() === TextDirection::LTR) {
             $diagonal1 = asset('css/images/dline.png');
             $diagonal2 = asset('css/images/dline2.png');
         } else {
@@ -277,20 +276,13 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
         $num_paths = 0;
         foreach ($paths as $path) {
-            // Extract the relationship names between pairs of individuals
-            $relationships = $this->oldStyleRelationshipPath($tree, $path);
-            if ($relationships === []) {
-                // Cannot see one of the families/individuals, due to privacy;
-                continue;
-            }
-
             $nodes = Collection::make($path)
                 ->map(static function (string $xref, int $key) use ($tree): GedcomRecord {
                     if ($key % 2 === 0) {
                         return Registry::individualFactory()->make($xref, $tree);
                     }
 
-                    return  Registry::familyFactory()->make($xref, $tree);
+                    return Registry::familyFactory()->make($xref, $tree);
                 });
 
             $relationship = $this->relationship_service->nameFromPath($nodes->all(), I18N::language());
@@ -309,47 +301,61 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             $max_y = 0;
             $max_x = 0;
             // For each node in the path.
-            foreach ($path as $n => $xref) {
-                if ($n % 2 === 1) {
-                    switch ($relationships[$n]) {
-                        case 'hus':
-                        case 'wif':
-                        case 'spo':
-                        case 'bro':
-                        case 'sis':
-                        case 'sib':
-                            $table[$x + 1][$y] = '<div style="background:url(' . e(asset('css/images/hline.png')) . ') repeat-x center;  width: 94px; text-align: center"><div style="height: 32px;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . view('icons/arrow-right') . '</div></div>';
-                            $x += 2;
-                            break;
-                        case 'son':
-                        case 'dau':
-                        case 'chi':
-                            if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
-                                $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: start;">' . view('icons/arrow-down') . '</div></div>';
-                                $x += 2;
-                            } else {
-                                $table[$x][$y - 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align: center;"><div style="display: inline-block; width:50%; line-height: 64px;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . view('icons/arrow-down') . '</div></div>';
-                            }
-                            $y -= 2;
-                            break;
-                        case 'fat':
-                        case 'mot':
-                        case 'par':
-                            if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
-                                $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: end;">' . view('icons/arrow-down') . '</div></div>';
-                                $x += 2;
-                            } else {
-                                $table[$x][$y + 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align:center; "><div style="display: inline-block; width: 50%; line-height: 64px;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . view('icons/arrow-up') . '</div></div>';
-                            }
-                            $y += 2;
-                            break;
+            foreach ($nodes as $n => $record) {
+                if ($record instanceof Family) {
+                    $prev = $nodes[$n - 1];
+                    $next = $nodes[$n + 1];
+                    // Need to draw a line between the two individuals, and label it with the relationship.
+                    if (
+                        $record->children()->contains($prev) && $record->children()->contains($next) ||
+                        $record->spouses()->contains($prev) && $record->spouses()->contains($next)
+                    ) {
+                        // Spouses or siblings.  We are moving right.
+                        $table[$x + 1][$y] =
+                            '<div style="background:url(' . e(asset('css/images/hline.png')) . ') repeat-x center;  width: 94px; text-align: center"><div style="height: 32px;">' .
+                            $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()) .
+                            '</div><div style="height: 32px;">' . view('icons/arrow-right') . '</div></div>';
+                        $x                 += 2;
+                    } elseif (
+                        $record->spouses()->contains($prev) && $record->children()->contains($next) ||
+                        $record->spouses()->contains($prev) && $record->children()->contains($next)
+                    ) {
+                        // Parent to child.  We are moving down.
+                        if ($n > 2) {
+                            $table[$x + 1][$y - 1] =
+                                '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' .
+                                $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()) .
+                                view('icons/arrow-down') . '</div></div>';
+                            $x                     += 2;
+                        } else {
+                            $table[$x][$y - 1] =
+                                '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align: center;"><div style="display: inline-block; width:50%; line-height: 64px;">' .
+                                $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()) .
+                                '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . view('icons/arrow-down') . '</div></div>';
+                        }
+                        $y -= 2;
+                    } else {
+                        // Child to parent.  We are moving up.
+                        if ($n > 2) {
+                            $table[$x + 1][$y + 1] =
+                                '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' .
+                                $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()) .
+                                '</div><div style="height: 32px; text-align: end;">' . view('icons/arrow-down') . '</div></div>';
+                            $x                     += 2;
+                        } else {
+                            $table[$x][$y + 1] =
+                                '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align:center; "><div style="display: inline-block; width: 50%; line-height: 64px;">' .
+                                $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()) .
+                                '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . view('icons/arrow-up') . '</div></div>';
+                        }
+                        $y += 2;
                     }
+
                     $max_x = max($max_x, $x);
                     $min_y = min($min_y, $y);
                     $max_y = max($max_y, $y);
                 } else {
-                    $individual    = Registry::individualFactory()->make($xref, $tree);
-                    $table[$x][$y] = view('chart-box', ['individual' => $individual]);
+                    $table[$x][$y] = view('chart-box', ['individual' => $record]);
                 }
             }
             echo '<div class="wt-chart wt-chart-relationships">';
@@ -409,7 +415,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
     /**
      * Possible options for the ancestors option
-     *
      * @return array<int,string>
      */
     private function ancestorsOptions(): array
@@ -422,7 +427,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
     /**
      * Possible options for the recursion option
-     *
      * @return array<int,string>
      */
     private function recursionConfigOptions(): array
@@ -439,8 +443,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     /**
      * Calculate the shortest paths - or all paths - between two individuals.
      *
-     * @param int        $recursion How many levels of recursion to use
-     * @param bool       $ancestor  Restrict to relationships via a common ancestor
+     * @param int  $recursion How many levels of recursion to use
+     * @param bool $ancestor  Restrict to relationships via a common ancestor
      *
      * @return array<array<string>>
      */
@@ -448,7 +452,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         Individual $individual1,
         Individual $individual2,
         int $recursion,
-        bool $ancestor = false
+        bool $ancestor = false,
     ): array {
         $tree = $individual1->tree();
 
@@ -533,18 +537,15 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
     /**
      * Convert numeric values to strings
-     *
      * @return Closure(int|string):string
      */
     private function stringMapper(): Closure
     {
-        return static fn ($xref) => (string) $xref;
+        return static fn($xref) => (string) $xref;
     }
 
     /**
      * Find all ancestors of a list of individuals
-     *
-     *
      * @return array<string>
      */
     private function allAncestors(string $xref1, string $xref2, int $tree_id): array
@@ -585,8 +586,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
     /**
      * Find all families of two individuals
-     *
-     *
      * @return array<string>
      */
     private function excludeFamilies(string $xref1, string $xref2, int $tree_id): array
@@ -607,69 +606,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     }
 
     /**
-     * Convert a path (list of XREFs) to an "old-style" string of relationships.
-     * Return an empty array, if privacy rules prevent us viewing any node.
-     *
-     * @param array<string> $path Alternately Individual / Family
-     *
-     * @return array<string>
-     */
-    private function oldStyleRelationshipPath(Tree $tree, array $path): array
-    {
-        $spouse_codes = [
-            'M' => 'hus',
-            'F' => 'wif',
-            'U' => 'spo',
-        ];
-        $parent_codes = [
-            'M' => 'fat',
-            'F' => 'mot',
-            'U' => 'par',
-        ];
-        $child_codes = [
-            'M' => 'son',
-            'F' => 'dau',
-            'U' => 'chi',
-        ];
-        $sibling_codes = [
-            'M' => 'bro',
-            'F' => 'sis',
-            'U' => 'sib',
-        ];
-        $relationships = [];
-
-        for ($i = 1, $count = count($path); $i < $count; $i += 2) {
-            $family = Registry::familyFactory()->make($path[$i], $tree);
-            $prev   = Registry::individualFactory()->make($path[$i - 1], $tree);
-            $next   = Registry::individualFactory()->make($path[$i + 1], $tree);
-            if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $prev->xref() . '@/', $family->gedcom(), $match)) {
-                $rel1 = $match[1];
-            } else {
-                return [];
-            }
-            if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $next->xref() . '@/', $family->gedcom(), $match)) {
-                $rel2 = $match[1];
-            } else {
-                return [];
-            }
-            if (($rel1 === 'HUSB' || $rel1 === 'WIFE') && ($rel2 === 'HUSB' || $rel2 === 'WIFE')) {
-                $relationships[$i] = $spouse_codes[$next->sex()] ?? $spouse_codes['U'];
-            } elseif (($rel1 === 'HUSB' || $rel1 === 'WIFE') && $rel2 === 'CHIL') {
-                $relationships[$i] = $child_codes[$next->sex()] ?? $child_codes['U'];
-            } elseif ($rel1 === 'CHIL' && ($rel2 === 'HUSB' || $rel2 === 'WIFE')) {
-                $relationships[$i] = $parent_codes[$next->sex()] ?? $parent_codes['U'];
-            } elseif ($rel1 === 'CHIL' && $rel2 === 'CHIL') {
-                $relationships[$i] = $sibling_codes[$next->sex()] ?? $sibling_codes['U'];
-            }
-        }
-
-        return $relationships;
-    }
-
-    /**
      * Possible options for the recursion option
-     *
-     *
      * @return array<string>
      */
     private function recursionOptions(int $max_recursion): array

@@ -559,29 +559,29 @@ class GedcomImportService
             $fact = $match[1];
             $date = new Date($match[2]);
             $rows[] = [
-                'd_day'        => $date->minimumDate()->day,
-                'd_month'      => $date->minimumDate()->format('%O'),
-                'd_mon'        => $date->minimumDate()->month,
-                'd_year'       => $date->minimumDate()->year,
+                'd_day'        => $date->minimumDate()->day(),
+                'd_month'      => $date->minimumDate()->gedcomMonth(),
+                'd_mon'        => $date->minimumDate()->month(),
+                'd_year'       => $date->minimumDate()->year(),
                 'd_julianday1' => $date->minimumDate()->minimumJulianDay(),
                 'd_julianday2' => $date->minimumDate()->maximumJulianDay(),
                 'd_fact'       => $fact,
                 'd_gid'        => $xref,
                 'd_file'       => $ged_id,
-                'd_type'       => $date->minimumDate()->format('%@'),
+                'd_type'       => $date->minimumDate()->calendarEscape()->value,
             ];
 
             $rows[] = [
-                'd_day'        => $date->maximumDate()->day,
-                'd_month'      => $date->maximumDate()->format('%O'),
-                'd_mon'        => $date->maximumDate()->month,
-                'd_year'       => $date->maximumDate()->year,
+                'd_day'        => $date->maximumDate()->day(),
+                'd_month'      => $date->maximumDate()->gedcomMonth(),
+                'd_mon'        => $date->maximumDate()->month(),
+                'd_year'       => $date->maximumDate()->year(),
                 'd_julianday1' => $date->maximumDate()->minimumJulianDay(),
                 'd_julianday2' => $date->maximumDate()->maximumJulianDay(),
                 'd_fact'       => $fact,
                 'd_gid'        => $xref,
                 'd_file'       => $ged_id,
-                'd_type'       => $date->minimumDate()->format('%@'),
+                'd_type'       => $date->maximumDate()->calendarEscape()->value,
             ];
         }
 

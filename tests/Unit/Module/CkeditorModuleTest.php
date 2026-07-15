@@ -30,4 +30,20 @@ class CkeditorModuleTest extends TestCase
     {
         self::assertTrue(class_exists(CkeditorModule::class));
     }
+
+    public function testCkeditorLanguageMapping(): void
+    {
+        $module = new CkeditorModule();
+
+        $method = (new \ReflectionClass($module))->getMethod('ckeditorLanguage');
+
+        self::assertSame('en', $method->invoke($module, 'en-US'));
+        self::assertSame('en-gb', $method->invoke($module, 'en-GB'));
+        self::assertSame('pt-br', $method->invoke($module, 'pt-BR'));
+        self::assertSame('sr-latn', $method->invoke($module, 'sr-Latn'));
+        self::assertSame('zh-cn', $method->invoke($module, 'zh-Hans'));
+        self::assertSame('zh', $method->invoke($module, 'zh-Hant'));
+        self::assertSame('no', $method->invoke($module, 'nn'));
+        self::assertSame('en', $method->invoke($module, 'jv'));
+    }
 }

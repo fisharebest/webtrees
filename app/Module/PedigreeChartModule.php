@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\TextDirection;
 use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -140,7 +141,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         $tree        = Validator::attributes($request)->tree();
         $user        = Validator::attributes($request)->user();
         $xref        = Validator::attributes($request)->isXref()->string('xref');
-        $style       = Validator::attributes($request)->isInArrayKeys($this->styles('ltr'))->string('style');
+        $style       = Validator::attributes($request)->isInArrayKeys($this->styles(TextDirection::LTR))->string('style');
         $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
         $ajax        = Validator::queryParams($request)->boolean('ajax', false);
 
@@ -149,7 +150,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             return redirect(route(self::class, [
                 'tree'        => $tree->name(),
                 'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
-                'style'       => Validator::parsedBody($request)->isInArrayKeys($this->styles('ltr'))->string('style'),
+                    'style'       => Validator::parsedBody($request)->isInArrayKeys($this->styles(TextDirection::LTR))->string('style'),
                 'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
             ]));
         }
@@ -208,7 +209,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             'max_generations'    => self::MAXIMUM_GENERATIONS,
             'min_generations'    => self::MINIMUM_GENERATIONS,
             'style'              => $style,
-            'styles'             => $this->styles(I18N::direction()),
+            'styles'             => $this->styles(I18N::textDirection()),
             'title'              => $this->chartTitle($individual),
             'tree'               => $tree,
         ]);
@@ -298,10 +299,10 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return array<string>
      */
-    protected function styles(string $direction): array
+    protected function styles(TextDirection $direction): array
     {
         // On right-to-left pages, the CSS will mirror the chart, so we need to mirror the label.
-        if ($direction === 'rtl') {
+        if ($direction === TextDirection::RTL) {
             return [
                 self::STYLE_RIGHT => view('icons/pedigree-left') . I18N::translate('left'),
                 self::STYLE_LEFT  => view('icons/pedigree-right') . I18N::translate('right'),

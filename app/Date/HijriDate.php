@@ -20,21 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Date;
 
 use Fisharebest\ExtCalendar\ArabicCalendar;
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Enums\CalendarEscape;
 
-/**
- * Definitions for Hijri dates.
- *
- * Note that these are "theoretical" dates.
- * "True" dates are based on local lunar observations, and can be a +/- one day.
- */
-class HijriDate extends AbstractCalendarDate
+final class HijriDate extends AbstractCalendarDate
 {
-    // GEDCOM calendar escape
-    public const string ESCAPE = '@#DHIJRI@';
-
     // Convert GEDCOM month names to month numbers
-    protected const array MONTH_TO_NUMBER = [
+    public const array MONTH_TO_NUMBER = [
         'MUHAR' => 1,
         'SAFAR' => 2,
         'RABIA' => 3,
@@ -49,7 +40,8 @@ class HijriDate extends AbstractCalendarDate
         'DHUAH' => 12,
     ];
 
-    protected const array NUMBER_TO_MONTH = [
+    public const array NUMBER_TO_MONTH = [
+        0  => '',
         1  => 'MUHAR',
         2  => 'SAFAR',
         3  => 'RABIA',
@@ -64,128 +56,8 @@ class HijriDate extends AbstractCalendarDate
         12 => 'DHUAH',
     ];
 
-    /**
-     * Create a date from either:
-     * a Julian day number
-     * day/month/year strings from a GEDCOM date
-     * another CalendarDate object
-     *
-     * @param array<string>|int|AbstractCalendarDate $date
-     */
     public function __construct($date)
     {
-        $this->calendar = new ArabicCalendar();
-        parent::__construct($date);
-    }
-
-    /**
-     * Full month name in nominative case.
-     *
-     * @param int<0,12> $month
-     * @param bool $leap_year Some calendars use leap months
-     */
-    protected function monthNameNominativeCase(int $month, bool $leap_year): string
-    {
-        return match ($month) {
-            0 => '',
-            1 => I18N::translateContext('NOMINATIVE', 'Muḥarram'),
-            2 => I18N::translateContext('NOMINATIVE', 'Ṣafar'),
-            3 => I18N::translateContext('NOMINATIVE', 'Rabiʿ al-awwal'),
-            4 => I18N::translateContext('NOMINATIVE', 'Rabiʿ al-thani'),
-            5 => I18N::translateContext('NOMINATIVE', 'Jumādá al-awwal'),
-            6 => I18N::translateContext('NOMINATIVE', 'Jumādá al-thānī'),
-            7 => I18N::translateContext('NOMINATIVE', 'Rajab'),
-            8 => I18N::translateContext('NOMINATIVE', 'Shaʿbān'),
-            9 => I18N::translateContext('NOMINATIVE', 'Ramadan'),
-            10 => I18N::translateContext('NOMINATIVE', 'Shawwal'),
-            11 => I18N::translateContext('NOMINATIVE', 'Dhū al-Qiʿdah'),
-            12 => I18N::translateContext('NOMINATIVE', 'Dhū al-Ḥijjah'),
-        };
-    }
-
-    /**
-     * Full month name in genitive case.
-     *
-     * @param int<0,12> $month
-     * @param bool $leap_year Some calendars use leap months
-     */
-    protected function monthNameGenitiveCase(int $month, bool $leap_year): string
-    {
-        return match ($month) {
-            0 => '',
-            1 => I18N::translateContext('GENITIVE', 'Muḥarram'),
-            2 => I18N::translateContext('GENITIVE', 'Ṣafar'),
-            3 => I18N::translateContext('GENITIVE', 'Rabiʿ al-awwal'),
-            4 => I18N::translateContext('GENITIVE', 'Rabiʿ al-thani'),
-            5 => I18N::translateContext('GENITIVE', 'Jumādá al-awwal'),
-            6 => I18N::translateContext('GENITIVE', 'Jumādá al-thānī'),
-            7 => I18N::translateContext('GENITIVE', 'Rajab'),
-            8 => I18N::translateContext('GENITIVE', 'Shaʿbān'),
-            9 => I18N::translateContext('GENITIVE', 'Ramadan'),
-            10 => I18N::translateContext('GENITIVE', 'Shawwal'),
-            11 => I18N::translateContext('GENITIVE', 'Dhū al-Qiʿdah'),
-            12 => I18N::translateContext('GENITIVE', 'Dhū al-Ḥijjah'),
-        };
-    }
-
-    /**
-     * Full month name in locative case.
-     *
-     * @param int<0,12> $month
-     * @param bool $leap_year Some calendars use leap months
-     */
-    protected function monthNameLocativeCase(int $month, bool $leap_year): string
-    {
-        return match ($month) {
-            0 => '',
-            1 => I18N::translateContext('LOCATIVE', 'Muḥarram'),
-            2 => I18N::translateContext('LOCATIVE', 'Ṣafar'),
-            3 => I18N::translateContext('LOCATIVE', 'Rabiʿ al-awwal'),
-            4 => I18N::translateContext('LOCATIVE', 'Rabiʿ al-thani'),
-            5 => I18N::translateContext('LOCATIVE', 'Jumādá al-awwal'),
-            6 => I18N::translateContext('LOCATIVE', 'Jumādá al-thānī'),
-            7 => I18N::translateContext('LOCATIVE', 'Rajab'),
-            8 => I18N::translateContext('LOCATIVE', 'Shaʿbān'),
-            9 => I18N::translateContext('LOCATIVE', 'Ramadan'),
-            10 => I18N::translateContext('LOCATIVE', 'Shawwal'),
-            11 => I18N::translateContext('LOCATIVE', 'Dhū al-Qiʿdah'),
-            12 => I18N::translateContext('LOCATIVE', 'Dhū al-Ḥijjah'),
-        };
-    }
-
-    /**
-     * Full month name in instrumental case.
-     *
-     * @param int<0,12> $month
-     * @param bool $leap_year Some calendars use leap months
-     */
-    protected function monthNameInstrumentalCase(int $month, bool $leap_year): string
-    {
-        return match ($month) {
-            0 => '',
-            1 => I18N::translateContext('INSTRUMENTAL', 'Muḥarram'),
-            2 => I18N::translateContext('INSTRUMENTAL', 'Ṣafar'),
-            3 => I18N::translateContext('INSTRUMENTAL', 'Rabiʿ al-awwal'),
-            4 => I18N::translateContext('INSTRUMENTAL', 'Rabiʿ al-thani'),
-            5 => I18N::translateContext('INSTRUMENTAL', 'Jumādá al-awwal'),
-            6 => I18N::translateContext('INSTRUMENTAL', 'Jumādá al-thānī'),
-            7 => I18N::translateContext('INSTRUMENTAL', 'Rajab'),
-            8 => I18N::translateContext('INSTRUMENTAL', 'Shaʿbān'),
-            9 => I18N::translateContext('INSTRUMENTAL', 'Ramadan'),
-            10 => I18N::translateContext('INSTRUMENTAL', 'Shawwal'),
-            11 => I18N::translateContext('INSTRUMENTAL', 'Dhū al-Qiʿdah'),
-            12 => I18N::translateContext('INSTRUMENTAL', 'Dhū al-Ḥijjah'),
-        };
-    }
-
-    /**
-     * Abbreviated month name
-     *
-     * @param int<0,12> $month
-     * @param bool $leap_year Some calendars use leap months
-     */
-    protected function monthNameAbbreviated(int $month, bool $leap_year): string
-    {
-        return $this->monthNameNominativeCase($month, $leap_year);
+        parent::__construct($date, new ArabicCalendar(), CalendarEscape::Hijri);
     }
 }

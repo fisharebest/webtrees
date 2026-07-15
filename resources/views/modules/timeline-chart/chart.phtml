@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Age;
+use Fisharebest\Webtrees\Enums\TextDirection;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
@@ -21,6 +22,8 @@ use Fisharebest\Webtrees\Individual;
  */
 
 $axis_offset = 25;
+$text_direction = I18N::textDirection();
+$is_ltr = $text_direction === TextDirection::LTR;
 $chart_height = (int) (($topyear - $baseyear) * $scale * 1.1);
 $timeline_bottom = ($topyear - $baseyear) * $scale - 5;
 $timeline_base_year_offset = $baseyear - 25 / $scale;
@@ -40,7 +43,7 @@ foreach ($individuals as $index => $individual) {
 <div
     id="timeline_chart"
     data-wt-timeline-chart
-    data-wt-timeline-direction="<?= e(I18N::direction()) ?>"
+    data-wt-timeline-direction="<?= e($text_direction->value) ?>"
     data-wt-timeline-axis-offset="<?= e((string) $axis_offset) ?>"
     data-wt-timeline-bottom-y="<?= e((string) $timeline_bottom) ?>"
     data-wt-timeline-base-year-offset="<?= e((string) $timeline_base_year_offset) ?>"
@@ -55,11 +58,11 @@ foreach ($individuals as $index => $individual) {
     style="height:<?= $chart_height ?>px"
 >
     <svg class="wt-timeline-overlay" data-wt-timeline-overlay aria-hidden="true"></svg>
-    <div class="wt-timeline-axis" style="<?= I18N::direction() === 'ltr' ? 'left:22px;' : 'right:22px;' ?>"></div>
+    <div class="wt-timeline-axis" style="<?= $is_ltr ? 'left:22px;' : 'right:22px;' ?>"></div>
 
     <!-- print divs for the grid -->
     <div id="scale<?= e($baseyear) ?>"
-         style="position:absolute; <?= I18N::direction() === 'ltr' ? 'left' : 'right' ?>:0; top:-5px; font-size: 7pt; text-align: <?= I18N::direction() === 'ltr' ? 'left' : 'right' ?>;">
+         style="position:absolute; <?= $is_ltr ? 'left' : 'right' ?>:0; top:-5px; font-size: 7pt; text-align: <?= $is_ltr ? 'left' : 'right' ?>;">
         <?= $baseyear ?>
     </div>
     <?php
@@ -70,7 +73,7 @@ foreach ($individuals as $index => $individual) {
     }
     for ($i = $baseyear + 1; $i < $topyear; $i++) {
         if ($i % $mod === 0) {
-            echo '<div id="scale' . $i . '" style="position:absolute; ' . (I18N::direction() === 'ltr' ? 'left:0;' : 'right:0;') . ' top:' . (($i - $baseyear) * $scale - $scale / 2) . 'px; font-size: 7pt; text-align:' . (I18N::direction() === 'ltr' ? 'left' : 'right') . ';">';
+            echo '<div id="scale' . $i . '" style="position:absolute; ' . ($is_ltr ? 'left:0;' : 'right:0;') . ' top:' . (($i - $baseyear) * $scale - $scale / 2) . 'px; font-size: 7pt; text-align:' . ($is_ltr ? 'left' : 'right') . ';">';
             echo $i;
             echo '</div>';
         }
@@ -78,7 +81,7 @@ foreach ($individuals as $index => $individual) {
     echo '';
     ?>
     <div id="scale<?= e($topyear) ?>"
-         style="position:absolute; <?= I18N::direction() === 'ltr' ? 'left' : 'right' ?>:0; top:<?= ($topyear - $baseyear) * $scale ?>px; font-size: 7pt; text-align:<?= I18N::direction() === 'ltr' ? 'left' : 'right' ?>;">
+         style="position:absolute; <?= $is_ltr ? 'left' : 'right' ?>:0; top:<?= ($topyear - $baseyear) * $scale ?>px; font-size: 7pt; text-align:<?= $is_ltr ? 'left' : 'right' ?>;">
         <?= e($topyear) ?>
     </div>
 
@@ -136,7 +139,7 @@ foreach ($individuals as $index => $individual) {
             data-wt-timeline-fact
             data-wt-timeline-fact-index="<?= e((string) $factcount) ?>"
             data-wt-timeline-mean-y="<?= e((string) ($yoffset - $tyoffset)) ?>"
-            style="<?= I18N::direction() === 'ltr' ? 'left: ' . $xoffset : 'right: ' . $xoffset ?>px; top:<?= $yoffset ?>px; height:<?= $bheight ?>px; position:absolute; font-size:8pt;"
+            style="<?= $is_ltr ? 'left: ' . $xoffset : 'right: ' . $xoffset ?>px; top:<?= $yoffset ?>px; height:<?= $bheight ?>px; position:absolute; font-size:8pt;"
         >
             <div class="wt-timeline-fact-handle">
                 <span class="wt-timeline-fact-line-marker"></span>
@@ -186,7 +189,7 @@ foreach ($individuals as $index => $individual) {
             id="agebox<?= e((string) $p) ?>"
             data-wt-timeline-agebox
             data-wt-timeline-person-index="<?= e((string) $p) ?>"
-            style="cursor:move; position:absolute; <?= I18N::direction() === 'ltr' ? 'left:20px;' : 'right:20px;' ?> top:<?= $ageyoffset ?>px; height:<?= $bheight ?>px; display:none;"
+            style="cursor:move; position:absolute; <?= $is_ltr ? 'left:20px;' : 'right:20px;' ?> top:<?= $ageyoffset ?>px; height:<?= $bheight ?>px; display:none;"
         >
             <div class="wt-timeline-age-handle">
                 <span class="wt-timeline-age-line-marker"></span>

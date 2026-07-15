@@ -26,7 +26,6 @@ use Illuminate\Support\Collection;
 
 use function array_map;
 use function explode;
-use function implode;
 use function strtoupper;
 use function trim;
 use function view;
@@ -151,6 +150,6 @@ class EventsRecorded extends AbstractElement
             return e($tag);
         }, $tags);
 
-        return implode(I18N::$list_separator, $events);
+        return I18N::listAnd($events);
     }
 }

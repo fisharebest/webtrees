@@ -228,9 +228,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             if ($bdate->isOK()) {
                 $date = new GregorianDate($bdate->minimumJulianDay());
 
-                $birthyears [$individual->xref()] = $date->year;
-                $birthmonths[$individual->xref()] = max(1, $date->month);
-                $birthdays  [$individual->xref()] = max(1, $date->day);
+                $birthyears [$individual->xref()] = $date->year();
+                $birthmonths[$individual->xref()] = max(1, $date->month());
+                $birthdays  [$individual->xref()] = max(1, $date->day());
             }
             // find all the fact information
             $facts = $individual->facts();
@@ -246,8 +246,8 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
                     $date = $event->date();
                     if ($date->isOK()) {
                         $date     = new GregorianDate($date->minimumJulianDay());
-                        $baseyear = min($baseyear, $date->year);
-                        $topyear  = max($topyear, $date->year);
+                        $baseyear = min($baseyear, $date->year());
+                        $topyear  = max($topyear, $date->year());
 
                         if (!$individual->isDead()) {
                             $topyear = max($topyear, (int) date('Y'));

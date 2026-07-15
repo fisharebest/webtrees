@@ -21,28 +21,23 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Date\AbstractCalendarDate;
+use Fisharebest\Webtrees\Enums\DateType;
 
 /**
  * A representation of GEDCOM dates and date ranges.
- *
  * Since different calendars start their days at different times, (civil
  * midnight, solar midnight, sunset, sunrise, etc.), we convert on the basis of
  * midday.
- *
  * We assume that years start on the first day of the first month. Where
  * this is not the case (e.g. England prior to 1752), we need to use modified
  * years or the OS/NS notation "4 FEB 1750/51".
  */
 class Date
 {
-    // Optional qualifier, such as BEF, FROM, ABT
-    public string $qual1 = '';
+    public DateType $type;
 
     // The first (or only) date
     private AbstractCalendarDate $date1;
-
-    // Optional qualifier, such as TO, AND
-    public string $qual2 = '';
 
     // Optional second date
     private AbstractCalendarDate|null $date2 = null;
@@ -65,14 +60,14 @@ class Date
             $this->text = $match[2];
         }
         if (preg_match('/^(FROM|BET) (.+) (AND|TO) (.+)/', $date, $match)) {
-            $this->qual1 = $match[1];
+            $this->type  = DateType::from($match[1] . $match[3]);
             $this->date1 = $calendar_date_factory->make($match[2]);
-            $this->qual2 = $match[3];
             $this->date2 = $calendar_date_factory->make($match[4]);
         } elseif (preg_match('/^(TO|FROM|BEF|AFT|CAL|EST|INT|ABT) (.+)/', $date, $match)) {
-            $this->qual1 = $match[1];
+            $this->type  = DateType::from($match[1]);
             $this->date1 = $calendar_date_factory->make($match[2]);
         } else {
+            $this->type  = DateType::Exact;
             $this->date1 = $calendar_date_factory->make($date);
         }
     }
@@ -89,6 +84,27 @@ class Date
         }
     }
 
+    public static function fromCalendarDate(AbstractCalendarDate $date): self
+    {
+        $tmp        = new self('');
+        $tmp->type  = DateType::Exact;
+        $tmp->date1 = $date;
+
+        return $tmp;
+    }
+
+    public function yearOnly(): self
+    {
+        $tmp               = clone $this;
+        $tmp->date1->month = 0;
+        $tmp->date1->day   = 0;
+        $tmp->date1->setJdFromYmd();
+        $tmp->date2 = null;
+        $tmp->type  = DateType::Exact;
+
+        return $tmp;
+    }
+
     /**
      * Convert a date to the preferred format and calendar(s) display.
      *
@@ -99,132 +115,70 @@ class Date
     public function display(Tree|null $tree = null, string|null $date_format = null, bool $convert_calendars = false): string
     {
         if ($tree instanceof Tree) {
-            $CALENDAR_FORMAT  = $tree->getPreference('CALENDAR_FORMAT');
+            $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
         } else {
-            $CALENDAR_FORMAT  = 'none';
+            $CALENDAR_FORMAT = 'none';
         }
-
-        $date_format ??= I18N::dateFormat();
 
         if ($convert_calendars) {
-            $calendar_format = explode('_and_', $CALENDAR_FORMAT);
+            $calendar_formats = explode('_and_', $CALENDAR_FORMAT);
         } else {
-            $calendar_format = [];
+            $calendar_formats = [];
         }
 
-        // Two dates with text before, between and after
-        $q1 = $this->qual1;
-        $d1 = $this->date1->format($date_format, $this->qual1);
-        $q2 = $this->qual2;
-        if ($this->date2 === null) {
-            $d2 = '';
-        } else {
-            $d2 = $this->date2->format($date_format, $this->qual2);
+        $date = I18N::language()->formatDate($this);
+
+        if ($this->text !== '') {
+            $date .= ' (' . e($this->text) . ')';
         }
-        // Convert to other calendars, if requested
-        $conv1 = '';
-        $conv2 = '';
-        foreach ($calendar_format as $cal_fmt) {
-            if ($cal_fmt !== 'none') {
-                $d1conv = $this->date1->convertToCalendar($cal_fmt);
-                if ($d1conv->inValidRange()) {
-                    $d1tmp = $d1conv->format($date_format, $this->qual1);
-                } else {
-                    $d1tmp = '';
-                }
-                if ($this->date2 === null) {
-                    $d2conv = null;
-                    $d2tmp  = '';
-                } else {
-                    $d2conv = $this->date2->convertToCalendar($cal_fmt);
-                    if ($d2conv->inValidRange()) {
-                        $d2tmp = $d2conv->format($date_format, $this->qual2);
-                    } else {
-                        $d2tmp = '';
+
+        // Convert to other calendars, if requested.
+        // Note that we convert, regardless of the calendar, and only display
+        // the conversion if different.  This avoids converting year-only dates
+        // between Julian and Gregorian.
+        foreach ($calendar_formats as $calendar_format) {
+            if ($calendar_format !== 'none') {
+                $different = false;
+                $conv      = clone($this);
+
+                $conv1 = $this->date1->convertToCalendar($calendar_format);
+                if ($conv1->inValidRange()) {
+                    $conv->date1 = $conv1;
+                    if (
+                        $this->date1->year() !== $conv1->year() ||
+                        $this->date1->month() !== $conv1->month() ||
+                        $this->date1->day() !== $conv1->day()
+                    ) {
+                        $different = true;
                     }
                 }
-                // If the date is different from the unconverted date, add it to the date string.
-                if ($d1 !== $d1tmp && $d1tmp !== '') {
-                    if ($tree instanceof Tree) {
-                        if ($CALENDAR_FORMAT !== 'none') {
-                            $conv1 .= ' <span dir="' . I18N::direction() . '">(' . $d1tmp . ')</span>';
-                        } else {
-                            $conv1 .= ' <span dir="' . I18N::direction() . '"><br>' . $d1tmp . '</span>';
+
+                if ($this->date2 !== null) {
+                    $conv2 = $this->date2->convertToCalendar($calendar_format);
+                    if ($conv2->inValidRange()) {
+                        $conv->date2 = $conv2;
+                        if (
+                            $this->date2->year() !== $conv2->year() ||
+                            $this->date2->month() !== $conv2->month() ||
+                            $this->date2->day() !== $conv2->day()
+                        ) {
+                            $different = true;
                         }
-                    } else {
-                        $conv1 .= ' <span dir="' . I18N::direction() . '">(' . $d1tmp . ')</span>';
                     }
-                }
-                if ($this->date2 !== null && $d2 !== $d2tmp && $d1tmp !== '') {
-                    if ($tree instanceof Tree) {
-                        $conv2 .= ' <span dir="' . I18N::direction() . '">(' . $d2tmp . ')</span>';
-                    } else {
-                        $conv2 .= ' <span dir="' . I18N::direction() . '">(' . $d2tmp . ')</span>';
+
+                    if ($different) {
+                        $date .= ' [' . I18N::language()->formatDate($conv) . ']';
                     }
                 }
             }
         }
 
-        // Localise the date
-        switch ($q1 . $q2) {
-            case '':
-                $tmp = $d1 . $conv1;
-                if ($this->text !== '') {
-                    $tmp .= '(' . e($this->text) . ')';
-                }
-                break;
-            case 'ABT':
-                /* I18N: Gedcom ABT dates */
-                $tmp = I18N::translate('about %s', $d1 . $conv1);
-                break;
-            case 'CAL':
-                /* I18N: Gedcom CAL dates */
-                $tmp = I18N::translate('calculated %s', $d1 . $conv1);
-                break;
-            case 'EST':
-                /* I18N: Gedcom EST dates */
-                $tmp = I18N::translate('estimated %s', $d1 . $conv1);
-                break;
-            case 'INT':
-                /* I18N: Gedcom INT dates */
-                $tmp = I18N::translate('interpreted %s (%s)', $d1 . $conv1, e($this->text));
-                break;
-            case 'BEF':
-                /* I18N: Gedcom BEF dates */
-                $tmp = I18N::translate('before %s', $d1 . $conv1);
-                break;
-            case 'AFT':
-                /* I18N: Gedcom AFT dates */
-                $tmp = I18N::translate('after %s', $d1 . $conv1);
-                break;
-            case 'FROM':
-                /* I18N: Gedcom FROM dates */
-                $tmp = I18N::translate('from %s', $d1 . $conv1);
-                break;
-            case 'TO':
-                /* I18N: Gedcom TO dates */
-                $tmp = I18N::translate('to %s', $d1 . $conv1);
-                break;
-            case 'BETAND':
-                /* I18N: Gedcom BET-AND dates */
-                $tmp = I18N::translate('between %s and %s', $d1 . $conv1, $d2 . $conv2);
-                break;
-            case 'FROMTO':
-                /* I18N: Gedcom FROM-TO dates */
-                $tmp = I18N::translate('from %s to %s', $d1 . $conv1, $d2 . $conv2);
-                break;
-            default:
-                $tmp = I18N::translate('Invalid date');
-                break;
-        }
-
-        return $tmp;
+        return $date;
     }
 
 
     /**
      * Get the earliest calendar date from this GEDCOM date.
-     *
      * In the date “FROM 1900 TO 1910”, this would be 1900.
      */
     public function minimumDate(): AbstractCalendarDate
@@ -234,7 +188,6 @@ class Date
 
     /**
      * Get the latest calendar date from this GEDCOM date.
-     *
      * In the date “FROM 1900 TO 1910”, this would be 1910.
      */
     public function maximumDate(): AbstractCalendarDate
@@ -260,7 +213,6 @@ class Date
 
     /**
      * Get the middle Julian day number from the GEDCOM date.
-     *
      * For a month-only date, this would be somewhere around the 16th day.
      * For a year-only date, this would be somewhere around 1st July.
      */
@@ -271,22 +223,17 @@ class Date
 
     /**
      * Offset this date by N years, and round to the whole year.
-     *
      * This is typically used to create an estimated death date,
      * which is before a certain number of years after the birth date.
-     *
-     * @param int    $years     a number of years, positive or negative
-     * @param string $qualifier typically “BEF” or “AFT”
      */
-    public function addYears(int $years, string $qualifier = ''): Date
+    public function addYears(int $years, DateType $type): Date
     {
         $tmp               = clone $this;
         $tmp->date1->year  += $years;
         $tmp->date1->month = 0;
         $tmp->date1->day   = 0;
         $tmp->date1->setJdFromYmd();
-        $tmp->qual1 = $qualifier;
-        $tmp->qual2 = '';
+        $tmp->type  = $type;
         $tmp->date2 = null;
 
         return $tmp;
@@ -294,7 +241,6 @@ class Date
 
     /**
      * Compare two dates, so they can be sorted.
-     *
      * return -1 if $a<$b
      * return +1 if $b>$a
      * return  0 if dates same/overlap
@@ -303,12 +249,12 @@ class Date
     public static function compare(Date $a, Date $b): int
     {
         // Get min/max JD for each date.
-        switch ($a->qual1) {
-            case 'BEF':
+        switch ($a->type) {
+            case DateType::Before:
                 $amin = $a->minimumJulianDay() - 1;
                 $amax = $amin;
                 break;
-            case 'AFT':
+            case DateType::After:
                 $amax = $a->maximumJulianDay() + 1;
                 $amin = $amax;
                 break;
@@ -317,12 +263,12 @@ class Date
                 $amax = $a->maximumJulianDay();
                 break;
         }
-        switch ($b->qual1) {
-            case 'BEF':
+        switch ($b->type) {
+            case DateType::Before:
                 $bmin = $b->minimumJulianDay() - 1;
                 $bmax = $bmin;
                 break;
-            case 'AFT':
+            case DateType::After:
                 $bmax = $b->maximumJulianDay() + 1;
                 $bmin = $bmax;
                 break;
@@ -352,7 +298,6 @@ class Date
 
     /**
      * Check whether a gedcom date contains usable calendar date(s).
-     *
      * An incomplete date such as "12 AUG" would be invalid, as
      * we cannot sort it.
      */

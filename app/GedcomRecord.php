@@ -345,16 +345,12 @@ class GedcomRecord
      */
     public function getPrimaryName(): int
     {
-        static $language_script;
-
-        $language_script ??= I18N::locale()->script()->code();
-
         if ($this->getPrimaryName === null) {
-            // Generally, the first name is the primary one....
+            // Generally, the first name is the primary one...
             $this->getPrimaryName = 0;
             // ...except when the language/name use different character sets
             foreach ($this->getAllNames() as $n => $name) {
-                if (I18N::textScript($name['sort']) === $language_script) {
+                if (I18N::textScript($name['sort']) === I18N::language()->script()) {
                     $this->getPrimaryName = $n;
                     break;
                 }

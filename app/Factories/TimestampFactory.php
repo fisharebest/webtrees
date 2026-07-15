@@ -41,9 +41,8 @@ class TimestampFactory implements TimestampFactoryInterface
     {
         $user     ??= Auth::user();
         $timezone = $user->getPreference(UserInterface::PREF_TIME_ZONE, Site::getPreference('TIMEZONE'));
-        $locale   = I18N::locale()->code();
 
-        return new Timestamp($timestamp, $timezone, $locale);
+        return new Timestamp($timestamp, $timezone, I18N::languageTag());
     }
 
     /**

@@ -218,10 +218,9 @@ trait ModuleThemeTrait
     {
         $menu = new Menu(I18N::translate('Language'), '#', 'menu-language');
 
-        foreach (I18N::activeLocales() as $active_locale) {
-            $language_tag = $active_locale->languageTag();
+        foreach (I18N::activeLanguages() as $language_tag => $endonym) {
             $class        = 'menu-language-' . $language_tag . (I18N::languageTag() === $language_tag ? ' active' : '');
-            $menu->addSubmenu(new Menu($active_locale->endonym(), '#', $class, [
+            $menu->addSubmenu(new Menu($endonym, '#', $class, [
                 'data-wt-post-url' => route(SelectLanguage::class, ['language' => $language_tag]),
             ]));
         }

@@ -13,7 +13,7 @@ use Fisharebest\Webtrees\Tree;
  */
 
 ?>
-<div dir="<?= I18N::locale()->direction() ?>" lang="<?= I18N::locale()->languageTag() ?>">
+<div dir="<?= I18N::textDirection()->value ?>" lang="<?= I18N::languageTag() ?>">
     <p>
         <?= I18N::translate('Hello %s…', '<bdi>' . e($user->realName()) . '</bdi>') ?>
     </p>

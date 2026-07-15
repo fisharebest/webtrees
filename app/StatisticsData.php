@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Charts\GeoChartData;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Elements\UnknownElement;
+use Fisharebest\Webtrees\Enums\TextDirection;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Module\ModuleInterface;
@@ -1180,8 +1181,8 @@ readonly class StatisticsData
 
         $current_language = I18N::languageTag();
 
-        foreach (I18N::activeLocales() as $locale) {
-            I18N::init($locale->languageTag());
+        foreach (I18N::allLanguages() as $language_tag => $endonym) {
+            I18N::init($language_tag);
 
             $countries = $this->getAllCountries();
 
@@ -1377,7 +1378,7 @@ readonly class StatisticsData
             case 'surname_distribution_chart':
                 $chart_title = I18N::translate('Surname distribution chart') . ': ' . $surname;
                 $surnames    = $this->commonSurnames(1, 0, 'count');
-                $surname     = implode(I18N::$list_separator, array_keys(array_shift($surnames) ?? []));
+                $surname     = I18N::listAnd(array_keys(array_shift($surnames) ?? []));
                 $data        = $this->createChartData($this->countSurnamesByCountry($this->tree, $surname));
                 break;
 
@@ -1853,7 +1854,7 @@ readonly class StatisticsData
             $top10 = implode('; ', $top10);
         }
 
-        if (I18N::direction() === 'rtl') {
+        if (I18N::textDirection() === TextDirection::RTL) {
             $top10 = str_replace([
                 '[',
                 ']',

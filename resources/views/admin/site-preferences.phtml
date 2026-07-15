@@ -2,15 +2,17 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Factories\LanguageFactory;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\SitePreferencesAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 
 /**
- * @var array<string> $all_themes
- * @var string        $data_folder
- * @var string        $title
+ * @var array<string>   $all_themes
+ * @var string          $data_folder
+ * @var LanguageFactory $language_factory
+ * @var string          $title
  */
 
 ?>
@@ -80,9 +82,9 @@ use Fisharebest\Webtrees\Site;
         </label>
         <div class="col-sm-9">
             <select id="LANGUAGE" name="LANGUAGE" class="form-select">
-                <?php foreach (I18N::activeLocales() as $active_locale) : ?>
-                    <option value="<?= $active_locale->languageTag() ?>" <?= Site::getPreference('LANGUAGE') === $active_locale->languageTag() ? 'selected' : '' ?>>
-                        <?= $active_locale->endonym() ?>
+                <?php foreach (I18N::allLanguages() as $language_tag => $endoynm) : ?>
+                    <option value="<?= $language_tag ?>" <?= Site::getPreference('LANGUAGE') === $language_tag ? 'selected' : '' ?>>
+                        <?= $endoynm ?>
                     </option>
                 <?php endforeach ?>
             </select>

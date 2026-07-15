@@ -69,6 +69,7 @@ class CensusColumnChildrenLivingTest extends TestCase
         $child4->method('getDeathDate')->willReturn(new Date(''));
 
         $family = self::createStub(Family::class);
+        $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('children')->willReturn(new Collection([
             $child1,
             $child2,

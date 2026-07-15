@@ -31,10 +31,12 @@ class Timestamp implements TimestampInterface
 {
     private CarbonImmutable $carbon;
 
-    public function __construct(int $timestamp, string $timezone, string $locale)
+    public function __construct(int $timestamp, string $timezone, string $language_code)
     {
         $this->carbon = CarbonImmutable::createFromTimestamp($timestamp, $timezone);
-        $this->carbon->locale($locale);
+
+        // Carbon uses BCP47 codes, but with underscores instead of hyphens.
+        $this->carbon->locale(str_replace('-', '_', $language_code));
     }
 
     public function __clone()

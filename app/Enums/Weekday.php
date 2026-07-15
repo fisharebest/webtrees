@@ -17,14 +17,18 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Census;
+namespace Fisharebest\Webtrees\Enums;
 
-use Fisharebest\Webtrees\Individual;
-
-final readonly class CensusColumnBirthDate extends AbstractCensusColumn implements CensusColumnInterface
+/**
+ * POSIX/JavaScript weekday numbers.
+ */
+enum Weekday: int
 {
-    public function generate(Individual $individual, Individual $head): string
-    {
-        return $individual->getEstimatedBirthDate()->minimumDate()->format('%j %n %Y');
-    }
+    case Sunday    = 0;
+    case Monday    = 1;
+    case Tuesday   = 2;
+    case Wednesday = 3;
+    case Thursday  = 4;
+    case Friday    = 5;
+    case Saturday  = 6;
 }

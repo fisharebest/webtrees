@@ -448,7 +448,7 @@ class Fact
 
             // Fact date
             if ($this->date()->isOK()) {
-                $items[] = $this->date()->minimumDate()->format('%Y');
+                $items[] = $this->date()->yearOnly()->display();
             }
 
             // Fact place

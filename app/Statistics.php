@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Charts\ChartDataInterface;
 use Fisharebest\Webtrees\Charts\ComboChartData;
 use Fisharebest\Webtrees\Charts\PieChartData;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -47,10 +48,8 @@ use function e;
 use function htmlspecialchars_decode;
 use function implode;
 use function in_array;
-use function ltrim;
 use function preg_replace;
 use function round;
-use function strtolower;
 use function strip_tags;
 use function strpos;
 use function substr;
@@ -519,20 +518,22 @@ class Statistics
 
     public function commonGiven(string $threshold = '1', string $limit = '10'): string
     {
-        return $this->data->commonGivenNames('ALL', (int) $threshold, (int) $limit)
-            ->mapWithKeys(static fn (int $value, int|string $key): array => [
-                $key => '<bdi>' . e($key) . '</bdi>',
-            ])
-            ->implode(I18N::$list_separator);
+        $items = $this->data->commonGivenNames('ALL', (int) $threshold, (int) $limit)
+            ->keys()
+            ->map(static fn (string $value): string => UTF8::FIRST_STRONG_ISOLATE . e($value) . UTF8::POP_DIRECTIONAL_ISOLATE)
+            ->all();
+
+        return I18N::listAnd($items);
     }
 
     public function commonGivenFemale(string $threshold = '1', string $limit = '10'): string
     {
-        return $this->data->commonGivenNames('F', (int) $threshold, (int) $limit)
-            ->mapWithKeys(static fn (int $value, int|string $key): array => [
-                $key => '<bdi>' . e($key) . '</bdi>',
-            ])
-            ->implode(I18N::$list_separator);
+        $items = $this->data->commonGivenNames('F', (int) $threshold, (int) $limit)
+            ->keys()
+            ->map(static fn (string $value): string => UTF8::FIRST_STRONG_ISOLATE . e($value) . UTF8::POP_DIRECTIONAL_ISOLATE)
+            ->all();
+
+        return I18N::listAnd($items);
     }
 
     public function commonGivenFemaleList(string $threshold = '1', string $limit = '10'): string
@@ -561,11 +562,13 @@ class Statistics
 
     public function commonGivenFemaleTotals(string $threshold = '1', string $limit = '10'): string
     {
-        return $this->data->commonGivenNames('F', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames('F', (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
-                $key => '<bdi>' . e($key) . '</bdi> (' . I18N::number($value) . ')',
+                $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . ' (' . I18N::number($value) . ')',
             ])
-            ->implode(I18N::$list_separator);
+            ->all();
+
+        return I18N::listAnd($items);
     }
 
     public function commonGivenList(string $threshold = '1', string $limit = '10'): string
@@ -586,11 +589,13 @@ class Statistics
 
     public function commonGivenMale(string $threshold = '1', string $limit = '10'): string
     {
-        return $this->data->commonGivenNames('M', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames('M', (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
-                $key => '<bdi>' . e($key) . '</bdi>',
+                $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . '',
             ])
-            ->implode(I18N::$list_separator);
+            ->all();
+
+        return I18N::listAnd($items);
     }
 
     public function commonGivenMaleList(string $threshold = '1', string $limit = '10'): string
@@ -619,20 +624,24 @@ class Statistics
 
     public function commonGivenMaleTotals(string $threshold = '1', string $limit = '10'): string
     {
-        return $this->data->commonGivenNames('M', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames('M', (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
-                $key => '<bdi>' . e($key) . '</bdi> (' . I18N::number($value) . ')',
+                $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . ' (' . I18N::number($value) . ')',
             ])
-            ->implode(I18N::$list_separator);
+            ->all();
+
+        return I18N::listAnd($items);
     }
 
     public function commonGivenOther(string $threshold = '1', string $limit = '10'): string
     {
-        return $this->data->commonGivenNames('X', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames('X', (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
-                $key => '<bdi>' . e($key) . '</bdi>',
+                $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . '',
             ])
-            ->implode(I18N::$list_separator);
+            ->all();
+
+        return I18N::listAnd($items);
     }
 
     public function commonGivenOtherList(string $threshold = '1', string $limit = '10'): string
@@ -661,11 +670,13 @@ class Statistics
 
     public function commonGivenOtherTotals(string $threshold = '1', string $limit = '10'): string
     {
-        return $this->data->commonGivenNames('X', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames('X', (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
-                $key => '<bdi>' . e($key) . '</bdi> (' . I18N::number($value) . ')',
+                $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . ' (' . I18N::number($value) . ')',
             ])
-            ->implode(I18N::$list_separator);
+            ->all();
+
+        return I18N::listAnd($items);
     }
 
     public function commonGivenTable(string $threshold = '1', string $limit = '10'): string
@@ -678,20 +689,24 @@ class Statistics
 
     public function commonGivenTotals(string $threshold = '1', string $limit = '10'): string
     {
-        return $this->data->commonGivenNames('ALL', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames('ALL', (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
-                $key => '<bdi>' . e($key) . '</bdi> (' . I18N::number($value) . ')',
+                $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . ' (' . I18N::number($value) . ')',
             ])
-            ->implode(I18N::$list_separator);
+            ->all();
+
+        return I18N::listAnd($items);
     }
 
     public function commonGivenUnknown(string $threshold = '1', string $limit = '10'): string
     {
-        return $this->data->commonGivenNames('U', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames('U', (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
-                $key => '<bdi>' . e($key) . '</bdi>',
+                $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . '',
             ])
-            ->implode(I18N::$list_separator);
+            ->all();
+
+        return I18N::listAnd($items);
     }
 
     public function commonGivenUnknownList(string $threshold = '1', string $limit = '10'): string
@@ -720,11 +735,13 @@ class Statistics
 
     public function commonGivenUnknownTotals(string $threshold = '1', string $limit = '10'): string
     {
-        return $this->data->commonGivenNames('U', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames('U', (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
-                $key => '<bdi>' . e($key) . '</bdi> (' . I18N::number($value) . ')',
+                $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . ' (' . I18N::number($value) . ')',
             ])
-            ->implode(I18N::$list_separator);
+            ->all();
+
+        return I18N::listAnd($items);
     }
 
     public function commonMarriagePlacesList(string $limit = '10'): string
@@ -1015,7 +1032,9 @@ class Statistics
     {
         $top_surname = $this->data->commonSurnames(1, 0, 'count');
 
-        return implode(I18N::$list_separator, array_keys(array_shift($top_surname) ?? []));
+        $items = array_keys(array_shift($top_surname) ?? []);
+
+        return I18N::listAnd($items);
     }
 
     /**
@@ -2471,7 +2490,7 @@ class Statistics
 
     public function userFullName(): string
     {
-        return Auth::check() ? '<bdi>' . e(Auth::user()->realName()) . '</bdi>' : '';
+        return Auth::check() ? UTF8::FIRST_STRONG_ISOLATE . e(Auth::user()->realName()) . UTF8::POP_DIRECTIONAL_ISOLATE . '' : '';
     }
 
     public function userId(): string

@@ -19,68 +19,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\ExtCalendar\ArabicCalendar;
-use Fisharebest\ExtCalendar\CalendarInterface;
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleUr;
+use Fisharebest\Webtrees\I18N\Languages\Urdu;
 
 class LanguageUrdu extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            'ا',
-            'ب',
-            'ت',
-            'ث',
-            'ج',
-            'ح',
-            'خ',
-            'د',
-            'ذ',
-            'ر',
-            'ز',
-            'س',
-            'ش',
-            'ص',
-            'ض',
-            'ط',
-            'ظ',
-            'ع',
-            'غ',
-            'ف',
-            'ق',
-            'ك',
-            'ل',
-            'م',
-            'ن',
-            'ه',
-            'و',
-            'ي',
-            'آ',
-            'ة',
-            'ى',
-            'ی',
-        ];
+        $this->language = new Urdu();
     }
-
-    public function calendar(): CalendarInterface
-    {
-        return new ArabicCalendar();
-    }
-
     public function isEnabledByDefault(): bool
     {
         return false;
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleUr();
     }
 }
