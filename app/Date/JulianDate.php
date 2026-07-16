@@ -85,15 +85,15 @@ class JulianDate extends AbstractGregorianJulianDate
     {
         if ($this->year < 0) {
             return /*  I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era */
-                I18N::translate('%s&nbsp;BCE', I18N::digits(-$this->year));
+                I18N::translate('%s ʙᴄᴇ', I18N::digits(-$this->year));
         }
 
         if ($this->new_old_style) {
-            return I18N::translate('%s&nbsp;CE', I18N::digits(sprintf('%d/%02d', $this->year - 1, $this->year % 100)));
+            return I18N::translate('%s ᴄᴇ', I18N::digits(sprintf('%d/%02d', $this->year - 1, $this->year % 100)));
         }
 
         /* I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era */
-        return I18N::translate('%s&nbsp;CE', I18N::digits($this->year));
+        return I18N::translate('%s ᴄᴇ', I18N::digits($this->year));
     }
 
     /**

@@ -138,6 +138,7 @@ use Fisharebest\Webtrees\Module\LanguageLatvian;
 use Fisharebest\Webtrees\Module\LanguageLingala;
 use Fisharebest\Webtrees\Module\LanguageLithuanian;
 use Fisharebest\Webtrees\Module\LanguageMalay;
+use Fisharebest\Webtrees\Module\LanguageMacedonian;
 use Fisharebest\Webtrees\Module\LanguageMaori;
 use Fisharebest\Webtrees\Module\LanguageMarathi;
 use Fisharebest\Webtrees\Module\LanguageNepalese;
@@ -430,6 +431,7 @@ class ModuleService
         'language-lt'             => LanguageLithuanian::class,
         'language-lv'             => LanguageLatvian::class,
         'language-mi'             => LanguageMaori::class,
+        'language-mk'             => LanguageMacedonian::class,
         'language-mr'             => LanguageMarathi::class,
         'language-ms'             => LanguageMalay::class,
         'language-nb'             => LanguageNorwegianBokmal::class,
@@ -818,7 +820,6 @@ class ModuleService
     {
         return $this->coreModules()
             ->whereInstanceOf(ModuleLanguageInterface::class)
-            ->filter(static fn (ModuleLanguageInterface $module): bool => $module->isEnabledByDefault())
             ->sort(static fn (ModuleLanguageInterface $x, ModuleLanguageInterface $y): int => $x->locale()->endonymSortable() <=> $y->locale()->endonymSortable());
     }
 

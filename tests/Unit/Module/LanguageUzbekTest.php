@@ -17,33 +17,17 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Date;
+namespace Fisharebest\Webtrees\Tests\Unit\Module;
 
-/**
- * Definitions for Roman dates.
- *
- * The 5.5.1 gedcom spec mentions this calendar, but gives no details of
- * how it is to be represented.... This class is just a place holder so that
- * webtrees won’t complain if it receives one.
- */
-class RomanDate extends JulianDate
+use Fisharebest\Webtrees\Module\LanguageUzbek;
+use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
+
+#[CoversClass(LanguageUzbek::class)]
+class LanguageUzbekTest extends AbstractLanguageTestCase
 {
-    // GEDCOM calendar escape
-    public const string ESCAPE = '@#DROMAN@';
-
-    /**
-     * Generate the %E format for a date.
-     */
-    protected function formatGedcomYear(): string
+    protected static function language(): ModuleLanguageInterface
     {
-        return sprintf('%04d AUC', $this->year);
-    }
-
-    /**
-     * Generate the %Y format for a date.
-     */
-    protected function formatLongYear(): string
-    {
-        return $this->year . ' ᴀᴜᴄ';
+        return new LanguageUzbek();
     }
 }

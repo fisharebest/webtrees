@@ -231,7 +231,7 @@ final class CalendarEvents implements RequestHandlerInterface
                     };
 
                     if (get_class($alt_date) !== get_class($cal_date) && $alt_date->inValidRange()) {
-                        echo '<span class="rtl_cal_day">' . $alt_date->format('%j %M') . '</span>';
+                        echo '<span class="rtl_cal_day">' . $alt_date->format('%j %F') . '</span>';
                         // Just show the first conversion
                         break;
                     }
