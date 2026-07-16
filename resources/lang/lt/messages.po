@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-15 18:05+0100\n"
+"POT-Creation-Date: 2026-07-16 21:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -413,18 +413,6 @@ msgctxt "MALE"
 msgid "%s × cousin"
 msgstr "%s × pusbrolis"
 
-#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ʙᴄᴇ"
-msgstr "%s m.&nbsp;Prieš&nbsp;Kristų"
-
-#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ᴄᴇ"
-msgstr "%s ᴄᴇ"
-
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php
 #, php-format
@@ -470,6 +458,18 @@ msgstr "%s, jo sutuoktines ir vaikus"
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, jo sutuoktines ir palikuonis"
+
+#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ʙᴄᴇ"
+msgstr "%s m.&nbsp;Prieš&nbsp;Kristų"
+
+#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ᴄᴇ"
+msgstr "%s ᴄᴇ"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
@@ -1090,25 +1090,21 @@ msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Aban"
@@ -1151,73 +1147,61 @@ msgstr "Pritarimas paskyrai ir el. pašto patvirtinimas"
 msgid "Accra, Ghana"
 msgstr "Akra, Gana"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
@@ -2188,25 +2172,21 @@ msgstr "Automatiškai išskleisti pastabas"
 msgid "Automatically expand sources"
 msgstr "Automatiškai skleisti šaltinius"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Av"
@@ -2259,25 +2239,21 @@ msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Azar"
@@ -2303,25 +2279,21 @@ msgstr "Bah"
 msgid "Bahamas"
 msgstr "Bahamos"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Bahman"
@@ -2786,25 +2758,21 @@ msgstr "Didžiosios Britanijos Mergelių salos"
 msgid "Brother"
 msgstr "Brolis"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
@@ -4736,73 +4704,61 @@ msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Dhu al-Hijjah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Ḥijjah"
 msgstr "Dhu al-Hijjah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Dhu al-Hijjah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Ḥijjah"
@@ -5085,25 +5041,21 @@ msgstr "Salvadoras"
 msgid "Electronic"
 msgstr "Elektroninis formatas"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Elul"
@@ -5236,25 +5188,21 @@ msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
 msgstr "Esf"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Esfand"
 msgstr "Esfand"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
 msgstr "Esfand"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Esfand"
 msgstr "Esfand"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Esfand"
@@ -5720,25 +5668,21 @@ msgstr "Far"
 msgid "Faroe Islands"
 msgstr "Farerų salos"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
@@ -5963,25 +5907,21 @@ msgstr "Vėliava"
 msgid "Flanders"
 msgstr "Flandrija"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Floreal"
@@ -6173,25 +6113,21 @@ msgctxt "MALE"
 msgid "Friend"
 msgstr "Draugas"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
@@ -6209,25 +6145,21 @@ msgctxt "Start of date range"
 msgid "From"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
@@ -6396,26 +6328,21 @@ msgstr "Gruzija"
 msgid "Germany"
 msgstr "Vokėtija"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Germinal"
@@ -6731,25 +6658,21 @@ msgstr ""
 msgid "Hermosillo, Mexico"
 msgstr "Hermosillo, Meksika"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Heshvan"
 msgstr "Heshvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
 msgstr "Heshvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Heshvan"
 msgstr "Heshvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
@@ -7341,25 +7264,21 @@ msgstr ""
 msgid "Italy"
 msgstr "Italija"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Iyar"
 msgstr "Iyar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
 msgstr "Iyar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Iyar"
 msgstr "Iyar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Iyar"
@@ -7470,49 +7389,41 @@ msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "liepa"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-thānī"
 msgstr "Jumada al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-thānī"
 msgstr "Jumada al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-thānī"
 msgstr "Jumada al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-thānī"
@@ -7584,25 +7495,21 @@ msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
 msgstr "Khor"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
 msgstr "Khordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Khordad"
@@ -7613,25 +7520,21 @@ msgstr "Khordad"
 msgid "Kiribati"
 msgstr "Kiribatis"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Kislev"
@@ -8657,25 +8560,21 @@ msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mehr"
@@ -8750,25 +8649,21 @@ msgstr "Žinutė"
 msgid "Messages"
 msgstr "Žinutės"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Messidor"
@@ -8945,25 +8840,21 @@ msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
 msgstr "Mor"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mordad"
@@ -9083,25 +8974,21 @@ msgstr ""
 msgid "Multiple marriages"
 msgstr "Kelios santuokos"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Muḥarram"
 msgstr "Muharram"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Muḥarram"
 msgstr "Muharram"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muḥarram"
 msgstr "Muharram"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Muḥarram"
@@ -9330,25 +9217,21 @@ msgstr "Nigeris"
 msgid "Nigeria"
 msgstr "Nigerija"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Nissan"
 msgstr "Nissan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
 msgstr "Nissan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Nissan"
 msgstr "Nissan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Nissan"
@@ -9359,25 +9242,21 @@ msgstr "Nissan"
 msgid "Niue"
 msgstr "Niue salos"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Nivose"
@@ -9916,25 +9795,21 @@ msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
 msgstr "Ord"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
@@ -10452,25 +10327,21 @@ msgstr "Įveskite egzistuojantį elektroninio pašto adresą."
 msgid "Please try again."
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
@@ -10531,25 +10402,21 @@ msgstr "Pašto indeksas"
 msgid "Powered by webtrees™"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Prairial"
@@ -10727,49 +10594,41 @@ msgstr "Ats: "
 msgid "Rabbi"
 msgstr "Rabinas"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Rabi’ al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-thani"
 msgstr "Rabi’ al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Rabi’ al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-thani"
@@ -10793,25 +10652,21 @@ msgctxt "Pedigree"
 msgid "Rada"
 msgstr ""
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rajab"
@@ -10822,25 +10677,21 @@ msgstr "Rajab"
 msgid "Raleigh, North Carolina, United States"
 msgstr "Raleigh, Šiaurės Karolina"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
@@ -11819,25 +11670,21 @@ msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
 msgstr "Shah"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
@@ -11876,49 +11723,41 @@ msgstr "Bendros pastabos"
 msgid "Shares"
 msgstr ""
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shaʿbān"
 msgstr "Sha’aban"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shaʿbān"
 msgstr "Sha’aban"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shaʿbān"
 msgstr "Sha’aban"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shaʿbān"
@@ -11957,25 +11796,21 @@ msgstr "Ji buvo pakrikštyta"
 msgid "She was cremated"
 msgstr "Ji buvo kremuota"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Shevat"
 msgstr "Shevat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
 msgstr "Shevat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Shevat"
 msgstr "Shevat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Shevat"
@@ -12404,25 +12239,21 @@ msgstr "Svetainės turinio žemėlapiai"
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr "Svetainės turinio žemėlapiai yra būdas pranešti paieškos tarnyboms (google) apie dėl svetainės puslapius, kurie yra prieinami nuskaitymui. Visos pagrindinės paieškos tarnybos palaiko svetainės turinio žemėlapius. Norėdami gauti daugiau informacijos, žiūrėkite <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Sivan"
@@ -13003,25 +12834,21 @@ msgstr "Tadžikistanas"
 msgid "Tampico, Mexico"
 msgstr "Tampico, Meksika"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
@@ -13061,25 +12888,21 @@ msgstr "Šablonai"
 msgid "Temple"
 msgstr "Šventykla"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tevet"
@@ -13719,25 +13542,21 @@ msgstr ""
 msgid "There was an error uploading your file."
 msgstr "Siunčiant failą užfiksuota klaida."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
@@ -14238,49 +14057,41 @@ msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tishrei"
 msgstr "Tishrei"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
 msgstr "Tishrei"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tishrei"
 msgstr "Tishrei"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
@@ -14984,25 +14795,21 @@ msgstr ""
 msgid "Vatican City"
 msgstr "Vatikanas"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
@@ -15013,25 +14820,21 @@ msgstr "Vendémiaire"
 msgid "Venezuela"
 msgstr "Venesuela"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Ventose"
@@ -18076,25 +17879,21 @@ msgstr "nutraukta %s (%s)"
 msgid "invert selection"
 msgstr "invertuoti pasirinkimą"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
 msgstr "jours complémentaires"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
 msgstr "jours complémentaires"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
 msgstr "jours complémentaires"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
@@ -19542,25 +19341,21 @@ msgstr[2] "±%s metų"
 msgid "Åland Islands"
 msgstr "Aland salos"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ṣafar"
 msgstr "Safar"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ṣafar"
 msgstr "Safar"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ṣafar"
 msgstr "Safar"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ṣafar"
@@ -19608,2320 +19403,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid " per sex"
-#~ msgstr " /vyrai-moterys"
-
-#~ msgid " per time period"
-#~ msgstr " per laiko tarpą"
-
-#, php-format
-#~ msgid "#%s"
-#~ msgstr "#%s"
-
-#, php-format
-#~ msgid "%1$s %2$s has a %3$s link to %4$s."
-#~ msgstr "%1$s %2$s turi %3$s nuorodą į %4$s."
-
-#, php-format
-#~ msgid "%1$s does not exist."
-#~ msgstr "%1$s neegzistuoja."
-
-#~ msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgstr[0] "Iš %2$s, iš %3$s kartos, %1$s asmuo rodomas."
-#~ msgstr[1] "Iš %2$s, iš %3$s kartos, %1$s asmuo rodomas."
-#~ msgstr[2] "Iš %2$s, iš %3$s kartos, %1$s asmuo rodomas."
-
-#~ msgid "%1$s individual is missing birthplace map coordinates: %2$s."
-#~ msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-#~ msgstr[0] "%1$s asmens gimimo vietovės koordinatės nežinomos: %2$s."
-#~ msgstr[1] "%1$s asmenų gimimo vietovės koordinatės nežinomos: %2$s."
-#~ msgstr[2] "%1$s asmens gimimo vietovės koordinatės nežinomos: %2$s."
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "prieš %s dieną"
-#~ msgstr[1] "prieš %s dienas"
-#~ msgstr[2] "prieš %s dienas"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "prieš %s valandą"
-#~ msgstr[1] "prieš %s valandas"
-#~ msgstr[2] "prieš %s valandų"
-
-#~ msgid "%s individual is private."
-#~ msgid_plural "%s individuals are private."
-#~ msgstr[0] "%s asmuo yra viešai nerodomas."
-#~ msgstr[1] "%s asmenys yra viešai nerodomi."
-#~ msgstr[2] "%s asmenų yra viešai nerodomi."
-
-#, php-format
-#~ msgid "%s individual with events between %s and %s"
-#~ msgid_plural "%s individuals with events between %s and %s"
-#~ msgstr[0] "%s asmuo su įvykiais tarp %s ir %s"
-#~ msgstr[1] "%s asmenys su įvykiais tarp %s ir %s"
-#~ msgstr[2] "%s asmenų su įvykiais tarp %s ir %s"
-
-#, php-format
-#~ msgid "%s individual with events in %s"
-#~ msgid_plural "%s individuals with events in %s"
-#~ msgstr[0] "%s asmuo su įvykiais %s"
-#~ msgstr[1] "%s asmenys su įvykiais %s"
-#~ msgstr[2] "%s asmenų su įvykiais %s"
-
-#, php-format
-#~ msgid "%s individual with events in %s between %s and %s"
-#~ msgid_plural "%s individuals with events in %s between %s and %s"
-#~ msgstr[0] "%s asmuo su įvykiais %s tarp %s ir %s"
-#~ msgstr[1] "%s asmenys su įvykiais %s tarp %s ir %s"
-#~ msgstr[2] "%s asmenų su įvykiais %s tarp %s ir %s"
-
-#~ msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "%s išjungta šiame serveryje. Jūs negalite įdiegti webtrees, kol tai nėra įjungta. Kreipkitės į jūsų serverio administratorių kad tai būtu įjungta."
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "prieš %s minutę"
-#~ msgstr[1] "prieš %s minutes"
-#~ msgstr[2] "prieš %s minutčių"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "prieš %s mėnesį"
-#~ msgstr[1] "prieš %s mėnesius"
-#~ msgstr[2] "prieš %s mėnesius"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "prieš %s sekundę"
-#~ msgstr[1] "prieš %s sekundes"
-#~ msgstr[2] "prieš %s sekundžių"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "prieš %s metus"
-#~ msgstr[1] "prieš %s metų"
-#~ msgstr[2] "prieš %s metus"
-
-#, php-format
-#~ msgid "(aged less than %s)"
-#~ msgstr "(amžius mažiau negu %s)"
-
-#, php-format
-#~ msgid "(aged more than %s)"
-#~ msgstr "(amžius daugiau negu %s)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(vaikystėje)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(kūdikystėje)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(gimė negyvas)"
-
-#~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-#~ msgstr "<b>GUID</b> šiame kontekste reiškia „Globaliai unikalus ID“.<br><br>GUID padeda atpažinti kiekvieną asmenį, kai centrinės organizacijos, tokios kaip „Family History Center“ ar kitos programos, galėtų nustatyti tą patį asmenį nepaisant GEDCOM bylų šaltinio. „Family History Center“ siekia būti centriniu geneologinės informacijos šaltiniu, kuris pasiekiamas per interneto paslaugas. Tokiu būdu bet kuri programa gali pasiekti ir atsinaujinti geneologinę informaciją.<br><br>Jei jūs neketinate dalintis GEDCOM bylomis, galite išjungti GUID sukurimą."
-
-#~ msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-#~ msgstr "<b>Svarbi pastaba:</b> Persiuntimo vediklis negali padėti perkelti medijos elementus. Jums reikės sukurti ir perkelti ar perkopijuoti savo medijos konfigūraciją ir elementus atskirai po persiuntimo vediklio pabaigos."
-
-#~ msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-#~ msgstr "<b>Atkreipkite dėmesį</b> Informacija apie gyvus asmenis bus pateikiama tik giminės nariams. Jūsų bus paprašyta patvirtinti savo giminystės ar kitus ryšius su tuo asmeniu prieš gaunant privačius duomenis. Kartais informacija apie mirusius asmenis gali būti privati. Jei taip yra, arba nėra pakankamai informacijos, ar jie gyvi ar ne, gali būti kad ir mes neturime daugiau informacijos apie šį asmenį.<br><br>Prieš užduodant klausimą , įsitikinkite, kad jūs teiraujatės apie teisingą asmenį patikrinę datas, vietas ir artimus giminaičius. Jei pranešate apie genealoginių duomenų pakeitimus, prašome nurodyti šaltinius, iš kur gavote duomenis."
-
-#~ msgid "<p>Notice: By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-#~ msgstr "<p>Įspėjimas: Užpildydami ir išsiųsdami šią formą, Jūs sutinkate:<ul><li>apsaugoti gyvų žmonių privatumą, kurie pateikti šiame tinklapyje;</li><li>ir teksto laukelyje, esančiame žemiau, paaiškinti kaip esate susiję su gimine, arba pateikti mums informacijos apie kurį nors asmenį, kuris turėtų būti šiame tinklapyje.</li></ul></div>"
-
-#, php-format
-#~ msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-#~ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-
-#~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-#~ msgstr "Duomenų bazių serveryje galima laikyti daugelį atskirų duomenų bazių. Jūs turite pasirinkti esamą duomenų bazę (sukurtą serverio administratorius) arba sukurti naują (jei jūsų duomenų bazės vartotojo sąskaita turi tokias teises)."
-
-#~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-#~ msgstr "Naujas slaptažodis buvo sukurtas ir išsiųstas į %s. Galite pakeisti šį slaptažodį, po to kai prisijungsite."
-
-#~ msgid "A new password has been requested for your username."
-#~ msgstr "Jūsų naudotojo vardui buvo naujo slaptažodžio užklausimas."
-
-#~ msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-#~ msgstr "Šoninė juosta rodanti abėcėline tvarka sąrašą šeimų šeimos medyje."
-
-#~ msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-#~ msgstr "Šoninė juosta parodo visų šeimos medyje esančių asmenų abėcėlinį sąrašą."
-
-#~ msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-#~ msgstr "Vandenženklis yra tekstas, kuris pridedamas prie atvaizdo, atgrasinti kitus nuo kopijavimo be leidimo."
-
-#~ msgid "A.M."
-#~ msgstr "iki pietų"
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=aąbcčdeęėfghiyįjklmnoprsštuųūvzž"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=AĄBCČDEĘĖFGHIYĮJKLMNOPRSŠTUŲŪVZŽ"
-
-#~ msgid "Acadia"
-#~ msgstr "Akadijos"
-
-#~ msgid "Action"
-#~ msgstr "Veiksmas"
-
-#~ msgid "Add a blank row"
-#~ msgstr "Pridėti tuščią eilutę"
-
-#~ msgid "Add a brother or sister"
-#~ msgstr "Pridėti naują brolį ar seserį"
-
-#~ msgid "Add a child to this family"
-#~ msgstr "Į šeimą pridėti vaiką"
-
-#~ msgid "Add a geographic location"
-#~ msgstr "Pridėti naują geografinę vietovę"
-
-#~ msgid "Add a husband to this family"
-#~ msgstr "Į šią šeimą pridėti vyrą"
-
-#~ msgid "Add a restriction"
-#~ msgstr "Pridėti naują apribojimą"
-
-#~ msgid "Add a scrollbar when block contents grow"
-#~ msgstr "Pridėti slinktis kai bloko turinys perauga bloko matmenis"
-
-#~ msgid "Add a shared note"
-#~ msgstr "Pridėti naują bendrai naudojamą pastabą"
-
-#~ msgid "Add a son or daughter"
-#~ msgstr "Pridėti naują sūnų ar dukterį"
-
-#~ msgid "Add a wife to this family"
-#~ msgstr "Į šią šeimą įrašyti žmoną"
-
-#~ msgid "Add an associate"
-#~ msgstr "Sukurti naują sąsają"
-
-#~ msgid "Add another individual to the chart"
-#~ msgstr "Į diagramą įtraukti kitą asmenį"
-
-#~ msgid "Add links"
-#~ msgstr "Įvesti nuorodas"
-
-#~ msgid "Add missing married names"
-#~ msgstr "Pridėti trūkstamą povedybinį vardą ar pavardę"
-
-#~ msgid "Add the GEDCOM media path to filenames"
-#~ msgstr "Pridėti GEDCOM medijos aplanka prie bylos vardo"
-
-#~ msgid "Add to favorites"
-#~ msgstr "Pridėti prie mėgstamiausių"
-
-#~ msgid "Add watermarks to thumbnails"
-#~ msgstr "Ar pažymėti nuotraukų miniatiūras vandens ženklu"
-
-#~ msgid "Add/edit a journal/news entry"
-#~ msgstr "Pridėti/redaguoti žurnalo/naujienos įrašą"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Įvaikinta abiejų tėvų"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Įvaikintas abiejų tėvų"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Įvaikinta tėvo"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Įvaikintas tėvo"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "Įvaikinta motinos"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "Įvaikintas motinos"
-
-#~ msgid "Advanced"
-#~ msgstr "Išsamiau"
-
-#~ msgid "Advanced fact preferences"
-#~ msgstr "Išplėstiniai faktų nuostatai"
-
-#~ msgid "Advanced name facts"
-#~ msgstr "Faktų išplėstinis pavadinimas"
-
-#~ msgid "Advanced place name facts"
-#~ msgstr "Išplėstinis vietovių pavadinimas"
-
-#~ msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-#~ msgstr "Prisijungus pasirinkite „Mano prisijungimo informacija“ nuorodą iš „Mano puslapiai“ meniu ir užpildykite laukelius slaptažodžio pakeitimui."
-
-#~ msgid "Age of item"
-#~ msgstr "Įrašo data"
-
-#~ msgid "Age related to birth year"
-#~ msgstr "Amžius susijęs su gimimo metais"
-
-#~ msgid "Age related to death year"
-#~ msgstr "Amžius susijęs su mirties metais"
-
-#~ msgid "All changes in PhpGedView must be accepted"
-#~ msgstr "Visi PhpGedView pakeitimai turi būti patvirtinti"
-
-#~ msgid "All existing PhpGedView users must have distinct email addresses"
-#~ msgstr "Visi esami PhpGedView vartotojai turi turėti skirtingus elektroninio pašto adresus"
-
-#~ msgid "All family facts"
-#~ msgstr "Visi šeimos faktai"
-
-#~ msgid "All files have read and write permission."
-#~ msgstr "Visos bylos turi skaitymo ir rašymo leidimą."
-
-#~ msgid "All individual facts"
-#~ msgstr "Visi asmens faktai"
-
-#~ msgid "All repository facts"
-#~ msgstr "Visi saugyklos faktai"
-
-#~ msgid "All source facts"
-#~ msgstr "Visi šaltinio faktai"
-
-#~ msgid "Allow users to select their own theme"
-#~ msgstr "Leisti nariams pasirinkti puslapiui savo temą"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Also known as"
-#~ msgstr "Dar žinoma kaip"
-
-#~ msgctxt "MALE"
-#~ msgid "Also known as"
-#~ msgstr "Dar žinomas kaip"
-
-#~ msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-#~ msgstr "Kompanionas yra kitas asmuo, kuris yra šio fakto ar įvykio dalyvis, pavyzdžiui, liudytojas arba kunigas."
-
-#~ msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-#~ msgstr "Kompanionas yra kitas asmuo, kuris bendradarbiavo su šiuo asmeniu, pavyzdžiui, draugas arba darbdavys."
-
-#~ msgid "An edit menu for individuals, families, sources, etc."
-#~ msgstr "Redagavimo meniu asmenų, šeimų, šaltinių ir t.t."
-
-#~ msgid "An error occurred when unzipping the file."
-#~ msgstr "Klaida išarchyvuojant bylą."
-
-#~ msgid "Apply automatic corrections to your genealogy data."
-#~ msgstr "Taikyti automatinį jūsų genealogijos duomenų koregavimą."
-
-#~ msgid "Approval of account at %s"
-#~ msgstr "Sąskaitos tvirtinimas %s bazėje"
-
-#~ msgid "Are you sure you want to remove links to this media object?"
-#~ msgstr "Ar jus tikrai norite ištrinti nuorodas į šį medijos elementą?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
-
-#~ msgid "Associates"
-#~ msgstr "Kompanionai"
-
-#, fuzzy
-#~ msgid "Automatically add unique identifiers"
-#~ msgstr "Automatiškai sukurti globaliai unikalius ID"
-
-#~ msgid "Automatically expand list of events of close relatives"
-#~ msgstr "Automatiškai skleisti artimų giminių įvykių sąrašą"
-
-#~ msgid "Available blocks"
-#~ msgstr "Galimi blokai"
-
-#~ msgid "Basic"
-#~ msgstr "Pagrindiniai"
-
-#~ msgid "Batch update"
-#~ msgstr "Grupinis atnaujinimas"
-
-#~ msgid "Bearing"
-#~ msgstr "Azimutas"
-
-#~ msgid "Body"
-#~ msgstr "Tekstas"
-
-#~ msgid "Booklet"
-#~ msgstr "Skrajutė"
-
-#~ msgid "Brit milah of a brother"
-#~ msgstr "Brolio apipjaustymas"
-
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Anūko apipjaustymas"
-
-#~ msgctxt "daughter’s son"
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Anūko apipjaustymas"
-
-#~ msgctxt "son’s son"
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Anūko apipjaustymas"
-
-#~ msgid "Brit milah of a half-brother"
-#~ msgstr "Įbrolio apipjaustymas"
-
-#~ msgid "Brit milah of a son"
-#~ msgstr "Sūnaus apipjaustymas"
-
-#~ msgid "British West Indies"
-#~ msgstr "Britų Vakarų Indija"
-
-#~ msgid "Burial of a maternal grandparent"
-#~ msgstr "Motinos senelių laidotuvės"
-
-#~ msgid "Burial of a paternal grandparent"
-#~ msgstr "Tėvo senelių laidotuvės"
-
-#~ msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
-#~ msgstr "Įprastai rodomos vietovės susietos su jūsų šeimos medžiu. Pasirinkus šią opciją bus rodomos visos vietovės, net ir tos kurios yra nesusietos su kitais įrašais."
-
-#~ msgid "By default, your server allows scripts to run for %s second."
-#~ msgid_plural "By default, your server allows scripts to run for %s seconds."
-#~ msgstr[0] "Pagal nutylėjimą jūsų serveris leidžia skriptus veikti %s sekunde."
-#~ msgstr[1] "Pagal nutylėjimą jūsų serveris leidžia skriptus veikti %s sekundes."
-#~ msgstr[2] "Pagal nutylėjimą jūsų serveris leidžia skriptus veikti %s sekundžių."
-
-#~ msgid "By default, your server allows scripts to use %s of memory."
-#~ msgstr "Pagal nutylėjimą jūsų serveris leidžia skriptams naudoti %s atminties."
-
-#, fuzzy
-#~ msgid "Calculate the age differences between siblings, children, spouses, etc."
-#~ msgstr "Kai šis pasirinkimas įjungtas, sistema apskaičiuoja amžių skirtumus tarp giminaičių, vaikių, sutuoktinių ir kt."
-
-#~ msgid "Cannot create"
-#~ msgstr "Negalima sukurti"
-
-#~ msgid "Cape Colony"
-#~ msgstr "Kolonijos Kyšulys"
-
-#~ msgid "Case insensitive"
-#~ msgstr "Nepaisyti raidžių dydžio"
-
-#~ msgid "Catalonia"
-#~ msgstr "Katalonija"
-
-#~ msgid "Caution!"
-#~ msgstr "Atsargiai!"
-
-#~ msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-#~ msgstr "Atsargiai: seni moduliai gali neveikti, arba jie gali sustabdyti webtrees veikla."
-
-#~ msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-#~ msgstr "Atsargiai: senos temos gali neveikti, arba jie gali sustabdyti webtrees veikla."
-
-#~ msgid "Cemeteries"
-#~ msgstr "Kapinės"
-
-#~ msgid "Center map here"
-#~ msgstr "Centruoti žemėlapį čia"
-
-#~ msgid "Change"
-#~ msgstr "Keisti"
-
-#~ msgid "Change flag"
-#~ msgstr "Pakeisti vėliavą"
-
-#~ msgid "Change language"
-#~ msgstr "Pakeisti kalbą"
-
-#~ msgid "Change the blocks on this user’s “My page”"
-#~ msgstr "Pakeisti šio vartotojo „Mano puslapis“ blokus"
-
-#~ msgid "Channel Islands"
-#~ msgstr "Normandijos salos"
-
-#~ msgid "Check file permissions…"
-#~ msgstr "Tikrinami bylos leidimai…"
-
-#~ msgid "Check for custom modules…"
-#~ msgstr "Ieškoma nestandartinių modulių…"
-
-#~ msgid "Check for custom themes…"
-#~ msgstr "Ieškoma nestandartinių temų…"
-
-#~ msgid "Check the access rights on this folder."
-#~ msgstr "Patikrinkite šio aplanko prieigos teises."
-
-#~ msgid "Check the settings and try again."
-#~ msgstr "Patikrinkite parametrus ir bandykite dar kartą."
-
-#~ msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-#~ msgstr "Pasirinkite miniatiūrą, kurią norite įkelti. Nors miniatiūros gali būti sukurtos automatiškai iš paveikslėlio, Jūs tikriausiai norėsite pats sukurti miniatiūras, ypač iš kitų medijos rūšių. Pavyzdžiui, Jūs galite pateikti paveikslėlį iš vaizdo medžiagos, arba žmogaus fotografiją , kuris padarė garso įrašą."
-
-#~ msgid "Choose: "
-#~ msgstr "Pasirinkite: "
-
-#~ msgid "Cleared but not yet completed"
-#~ msgstr "Priimtas, bet dar nebaigtas"
-
-#~ msgid "Click %s to choose individual as head of family."
-#~ msgstr "Paspauskite %s, kad pasirinkti asmenį kaip šeimos galvą."
-
-#~ msgid "Click a row, then drag-and-drop to re-order media"
-#~ msgstr "Paspauskite eilutę, tuomet nutempkite perrikiuotą mediją"
-
-#~ msgid "Click here for PhpGedView to webtrees transfer wizard"
-#~ msgstr "Spauskite čia kad patekti PhpGedView vertimo į webtrees vedlį"
-
-#~ msgid "Click here to add, edit, or delete"
-#~ msgstr "Spauskite čia įtraukti, redaguoti ar ištrinti"
-
-#~ msgid "Click here to open or close the sidebar"
-#~ msgstr "Paspauskite čia, kad atvertumėte ar užvertumėte šoninę juostą"
-
-#~ msgid "Click name to add individual to add links list."
-#~ msgstr "Spauskite VARDAS kad pridėti asmenį į Įtraukiamų Nuorodų sąrašą."
-
-#~ msgid "Click on a title to go straight to it, or scroll down to read them all."
-#~ msgstr "Paspaude ant pavadinimo pateksite tiesiai ten, arba slinkite žemyn perskaityti visus."
-
-#~ msgid "Click to choose individual as head of family."
-#~ msgstr "Paspauskite, kad pasirinkti asmenį kaip šeimos galvą."
-
-#~ msgid "Columns per page"
-#~ msgstr "Stulpeliai per puslapį"
-
-#~ msgid "Comparison"
-#~ msgstr "Palyginimas"
-
-#~ msgid "Compress the GEDCOM file"
-#~ msgstr "Suslėgti GEDCOM bylą"
-
-#~ msgid "Concatenation"
-#~ msgstr "Sąryšis"
-
-#~ msgid "Configure"
-#~ msgstr "Konfigūruoti bloką"
-
-#~ msgid "Confirm password"
-#~ msgstr "Patvirtinkite slaptažodį"
-
-#~ msgid "Continue adding"
-#~ msgstr "Tęsti įterpimus"
-
-#~ msgid "Continued"
-#~ msgstr "Pratęsta"
-
-#~ msgid "Convert from UTF-8 to ISO-8859-1"
-#~ msgstr "Konvertuoti iš UTF-8 į ISO-8859-1"
-
-#~ msgid "Copy these files to the folder %s, replacing any that have the same name."
-#~ msgstr "Nukopijuokite šias bylas į %s aplanką, pakeičiant visas kurios turi tą patį pavadinimą."
-
-#~ msgid "Count"
-#~ msgstr "Kiekis"
-
-#~ msgid "Countries"
-#~ msgstr "Šalys"
-
-#~ msgid "Counts "
-#~ msgstr "skaičiuoja "
-
-#~ msgid "County"
-#~ msgstr "Apskritis"
-
-#~ msgid "Create a family"
-#~ msgstr "Sukurti naują šeimą"
-
-#~ msgid "Create a family from existing individuals"
-#~ msgstr "Sukurti naują šeimą iš esamų asmenų"
-
-#~ msgid "Create a website access rule"
-#~ msgstr "Sukurti svetainės prieigos taisyklę"
-
-#~ msgid "Current"
-#~ msgstr "Esamas"
-
-#~ msgid "Custom fact"
-#~ msgstr "Pasirinktinis faktas"
-
-#~ msgid "Custom tags"
-#~ msgstr "Pasirinktinės žymės"
-
-#~ msgid "Custom theme"
-#~ msgstr "Pasirinktinė tema"
-
-#~ msgid "Czechoslovakia"
-#~ msgstr "Čekoslovakija"
-
-#~ msgid "Dashboard"
-#~ msgstr "Prietaisų skydas"
-
-#~ msgid "Database and table names"
-#~ msgstr "Duomenų bazės vardas ir lentelių prefiksas"
-
-#~ msgid "Decade of birth"
-#~ msgstr "Gimimo dešimtmetis"
-
-#~ msgid "Decade of death"
-#~ msgstr "Mirties dešimtmetis"
-
-#~ msgid "Decade of marriage"
-#~ msgstr "Vestuvių dešimtmetis"
-
-#~ msgid "Default"
-#~ msgstr "Numatytas"
-
-#~ msgid "Default map type"
-#~ msgstr "Įprastinis žemėlapio tipas"
-
-#~ msgid "Default pedigree chart layout"
-#~ msgstr "Numatytasis kilmės diagramos išdėstymas"
-
-#~ msgid "Default pedigree generations"
-#~ msgstr "Numatytasis kilmės kartų skaičius"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Delete all existing geographic data before importing the file."
-#~ msgstr "Prieš importuodami bylą ištrinkite visus esamus geografinius duomenis."
-
-#~ msgid "Delete temporary files…"
-#~ msgstr "Ištrinti laikinas bylas…"
-
-#~ msgid "Desired password"
-#~ msgstr "Pasirinktas slaptažodis"
-
-#~ msgid "Desired username"
-#~ msgstr "Pasirinktas nario vardas"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dhu al-Hijjah"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dhu al-Hijjah"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dhu al-Hijjah"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dhu al-Hijjah"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dhu al-Qi’dah"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dhu al-Qi’dah"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dhu al-Qi’dah"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dhu al-Qi’dah"
-
-#~ msgid "Died as an infant: exempt"
-#~ msgstr "Mirė kaip kūdikis: atleistas"
-
-#~ msgid "Disable these modules"
-#~ msgstr "Išjunkite šiuos modulius"
-
-#~ msgid "Disable these themes"
-#~ msgstr "Išjunkite šias temas"
-
-#~ msgid "Display all"
-#~ msgstr "Rodyti viską"
-
-#~ msgid "Display map coordinates"
-#~ msgstr "Rodyti žemėlapio koordinates"
-
-#~ msgid "Do not change to keep original filename."
-#~ msgstr "Jei norite išsaugoti orginalų vardą, tai nekeisti."
-
-#~ msgid "Do not create new locations, just import coordinates for existing locations."
-#~ msgstr "Nekurti naujų vietų, tik įkelti koordinatės esamom vietom."
-
-#~ msgid "Download geographic data"
-#~ msgstr "Parsisiųsti geografinius duomenis"
-
-#~ msgid "Earliest birth year"
-#~ msgstr "Seniausi gimimo metai"
-
-#~ msgid "Earliest death year"
-#~ msgstr "Seniausi mirties metai"
-
-#~ msgid "Edit a website access rule"
-#~ msgstr "Redaguoti svetainės prieigos taisyklę"
-
-#~ msgid "Edit media"
-#~ msgstr "Redaguoti laikmeną"
-
-#~ msgid "Edit the details"
-#~ msgstr "Redaguoti duomenis"
-
-#~ msgid "Edit the media object"
-#~ msgstr "Redaguoti medijos objektą"
-
-#~ msgid "Edit the note"
-#~ msgstr "Redaguoti pastabą"
-
-#~ msgid "Edit the repository"
-#~ msgstr "Redaguoti saugyklą"
-
-#~ msgid "Edit the source"
-#~ msgstr "Redaguoti šaltinį"
-
-#~ msgid "Editing restriction"
-#~ msgstr "Redagavimo apribojimas"
-
-#~ msgid "Eire"
-#~ msgstr "Airija"
-
-#~ msgid "Elevation"
-#~ msgstr "Aukštis"
-
-#~ msgid "Embedded variable"
-#~ msgstr "Įterptas kintamasis"
-
-#~ msgid "End IP address"
-#~ msgstr "Galutinis IP adresas"
-
-#~ msgid "Enter an individual, family, or source ID"
-#~ msgstr "Įveskite asmens, šeimos, nuorodos ar šaltinio ID"
-
-#~ msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-#~ msgstr "Įvesti ar ieškoti asmens ID, šeimos ar šaltinio, su kuriais šis medijos elementas turėtų būti susietas."
-
-#~ msgid "Enter report values"
-#~ msgstr "Įveskite raporto reikšmes"
-
-#~ msgid "Exact text"
-#~ msgstr "Tikslus tekstas"
-
-#~ msgid "FAQ position"
-#~ msgstr "DUK pozicija"
-
-#~ msgid "FAQ visibility"
-#~ msgstr "DUK matomumas"
-
-#~ msgid "Facts for repository records"
-#~ msgstr "Faktai saugyklos įrašams"
-
-#~ msgid "Facts for source records"
-#~ msgstr "Faktai šaltinių įrašams"
-
-#~ msgid "Family ID prefix"
-#~ msgstr "Šeimų ID priešdėlis"
-
-#~ msgid "Family group information"
-#~ msgstr "Šeimos grupės informacija"
-
-#~ msgid "Family list"
-#~ msgstr "Šeimų sąrašas"
-
-#~ msgid "File containing places (CSV)"
-#~ msgstr "Byla kurioje surašytos vietovės (CSV)"
-
-#~ msgid "Find a fact or event"
-#~ msgstr "Rasti faktą ar įvykį"
-
-#~ msgid "Find a family"
-#~ msgstr "Rasti šeimą"
-
-#~ msgid "Find a media object"
-#~ msgstr "Rasti medijos objektą"
-
-#~ msgid "Find a place"
-#~ msgstr "Rasti vietovę"
-
-#~ msgid "Find a repository"
-#~ msgstr "Rasti saugyklą"
-
-#~ msgid "Find a shared note"
-#~ msgstr "Rasti bendrą pastabą"
-
-#~ msgid "Find an individual"
-#~ msgstr "Rasti asmenį"
-
-#~ msgid "Font"
-#~ msgstr "Šriftas"
-
-#~ msgid "From"
-#~ msgstr "Nuo"
-
-#~ msgid "Gender"
-#~ msgstr "Lytis"
-
-#~ msgid "Gender icon on charts"
-#~ msgstr "Lyties piktograma diagramose"
-
-#~ msgid "Gives users the option of selecting their own theme."
-#~ msgstr "Suteikia vartotojams galimybę pasirinkti savo temą."
-
-#~ msgid "Google Street View™"
-#~ msgstr "Google Street View™"
-
-#~ msgid "Google™ maps preferences"
-#~ msgstr "Google™ maps nustatymai"
-
-#~ msgid "Grandparents"
-#~ msgstr "Seneliai"
-
-#~ msgid "Head of household"
-#~ msgstr "Namų ūkio galva"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
-
-#~ msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
-#~ msgstr "Čia gali būti pasirinkta ar panaikinta ikona. Naudojant šią nuorodą gali būti pasirinkta vėliava. Kai vietovė yra rodoma, tai ir ši vėliava bus rodoma."
-
-#~ msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
-#~ msgstr "Čia gali būti įvestas mastelis. Ši vertė bus naudojama kaip minimali vertė, kai rodote geografinę vietą žemėlapyje."
-
-#~ msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
-#~ msgstr "Čia galite įvesti tikslumą. Remiantis šiuo parametru nustatomas skaitmenų skaičius, kurie bus naudojami platumos ir ilgumos tikslumui."
-
-#~ msgid "Highest population"
-#~ msgstr "Didžiausia populiacija"
-
-#~ msgid "Historical facts"
-#~ msgstr "Istoriniai faktai"
-
-#~ msgid "House"
-#~ msgstr "Namas"
-
-#~ msgid "Hybrid"
-#~ msgstr "Mišrus"
-
-#~ msgid "Icon"
-#~ msgstr "Piktograma"
-
-#~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
-#~ msgstr "Jei lankytojai negali matyti šeimos medžio, jie negalės prisiregistruoti sąskaitos. Jūs turėsite sukurti paskyras rankiniu būdu."
-
-#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
-#~ msgstr "Jei Jūs turite daug nesusietų vietovių įrašų, tai gali stabdyti sąrašo sugeneravimą."
-
-#~ msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-#~ msgstr "Jei paslėpsite tuščia bloką, jūs negalėsite pakeisti jo konfigūracijos, kol jis nebus matomas kai taps netuščias."
-
-#~ msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one."
-#~ msgstr "Jeigu jūsų svetainė gali buti pasiekta per daugiau negu viena URL, pavyzdžiui kaip <b>http://www.example.com/webtrees/</b> ir <b>http://webtrees.example.com/</b>, tada jus galite pasirinkti pirmenybinę URL. Prašymai iš kitų URL bus nukreipti į pageidaujamają."
-
-#~ msgid "Import all places from a family tree"
-#~ msgstr "Idėti visas vietoves iš šeimos medžio"
-
-#~ msgid "Include fully matched places"
-#~ msgstr "Įtraukti pilnai atitinkančias vietoves"
-
-#~ msgid "Include media (automatically zips files)"
-#~ msgstr "Įtraukti mediją (automatiškai suspaus failus)"
-
-#~ msgid "Individual ID prefix"
-#~ msgstr "Asmenų ID priešdėlis"
-
-#~ msgid "Individual distribution"
-#~ msgstr "Asmenų išsibarstymas"
-
-#~ msgid "Individual list"
-#~ msgstr "Asmenų sąrašas"
-
-#, php-format
-#~ msgid "Individuals with surname %s"
-#~ msgstr "Asmenys su pavarde %s"
-
-#~ msgid "Information about the request is shown under the link below."
-#~ msgstr "Informacija apie užklausą yra žemiau esančioje nuorodoje."
-
-#~ msgid "Installation folder"
-#~ msgstr "Įdiegimo aplankas"
-
-#~ msgid "Interred"
-#~ msgstr "Palaidotas"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Interred"
-#~ msgstr "Palaidota"
-
-#~ msgctxt "MALE"
-#~ msgid "Interred"
-#~ msgstr "Palaidotas"
-
-#~ msgid "Invalid GEDCOM format"
-#~ msgstr "Blogas GEDCOM formatas"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumada al-awwal"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumada al-awwal"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumada al-awwal"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumada al-awwal"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumada al-thani"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumada al-thani"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumada al-thani"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumada al-thani"
-
-#~ msgid "Keep"
-#~ msgstr "Palikti"
-
-#~ msgid "Keep link in list"
-#~ msgstr "Palikti nuorodą sąraše"
-
-#~ msgid "LDS ordinance codes in chart boxes"
-#~ msgstr "Mormonų apeigų kodai diagramų dėžėms"
-
-#~ msgid "LDS temple"
-#~ msgstr "Mormonų šventykla"
-
-#~ msgid "Latest birth year"
-#~ msgstr "Vėliausi gimimo metai"
-
-#~ msgid "Latest death year"
-#~ msgstr "Vėliausi mirties metai"
-
-#~ msgid "Leave this blank to use the default value."
-#~ msgstr "Jei paliksite šį nustatymą tuščią, bus naudojama numatytoji reikšmė."
-
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgid "Level"
-#~ msgstr "Lygis"
-
-#~ msgid "Limit"
-#~ msgstr "Apribojimas"
-
-#~ msgid "Limit display by"
-#~ msgstr "Apriboti"
-
-#~ msgid "Link to an existing media object"
-#~ msgstr "Susieti su jau esamu medijos objektu"
-
-#~ msgid "Linked database ID"
-#~ msgstr "Susije su duomenų baze ID"
-
-#~ msgid "Location not removed: this location contains sub-locations"
-#~ msgstr "Vietovė nepanaikinta: jai priklauso žemesnio lygmens vietovės"
-
-#~ msgid "Login ID"
-#~ msgstr "Nario ID"
-
-#~ msgid "Lost password request"
-#~ msgstr "Pamesto slaptažodžio prašymas"
-
-#~ msgid "Lowest population"
-#~ msgstr "Mažiausia populiacija"
-
-#~ msgid "Mailing name"
-#~ msgstr "Elektroninio pašto adresas"
-
-#~ msgid "Main section blocks"
-#~ msgstr "Pagrindinis pasirinkimų blokas"
-
-#~ msgid "Manage the links"
-#~ msgstr "Tvarkyti nuorodas"
-
-#~ msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
-#~ msgstr "Daugelis pašto serverių reikalauja, kad siunčiantis serveris identifikuoja save teisingai, naudojant teisingą domeno vardą."
-
-#~ msgid "Marriage status"
-#~ msgstr "Vedybinis statusas"
-
-#~ msgid "Marriage type unknown"
-#~ msgstr "Santuokos tipas nežinomas"
-
-#~ msgid "Married surname"
-#~ msgstr "Pavardė po vedybų"
-
-#~ msgid "Match calendar"
-#~ msgstr "Sutaipyti kalendorius"
-
-#~ msgid "Max"
-#~ msgstr "Max"
-
-#~ msgid "Maximum descendancy generations"
-#~ msgstr "Maksimalus palikuonių kartų skaičius"
-
-#~ msgid "Maximum pedigree generations"
-#~ msgstr "Maksimalus kilmės kartų skaičius"
-
-#~ msgid "Media ID prefix"
-#~ msgstr "Medijos ID priešdėlis"
-
-#~ msgid "Media contains"
-#~ msgstr "Medija turi"
-
-#, php-format
-#~ msgid "Media filenames will be prefixed by %s."
-#~ msgstr "%s bus pridėtas prie medijos bylos vardo pradžios."
-
-#~ msgid "Medical condition"
-#~ msgstr "Sveikatos būsena"
-
-#~ msgid "Memory limit"
-#~ msgstr "Atminties limitas"
-
-#~ msgid "Midnight"
-#~ msgstr "Vidurnaktis"
-
-#~ msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
-#~ msgstr "Minimalus ir maksimalus priartinimo lygmuo Google žemėlapyje. 1 rodo visą žemėlapį, 15 rodo smulkiai net atskirus namus. Atkreipkite dėmesį, kad 15 nėra visur prieinama, prieš pasirinkdami šį nustatymą pasitikrinkite kad jis yra prieinamas jūsų konkrečioje vietovėje."
-
-#~ msgid "Minimum number of occurrences to be a “common surname”"
-#~ msgstr "Minimalus paplitimas, kad būtų „dažnai pasitaikanti pavardė“"
-
-#~ msgid "Moderate pending changes"
-#~ msgstr "Yra nauji pataisymai laukiantys sprendimų"
-
-#~ msgid "Most sites are configured to use the default value of 3306."
-#~ msgstr "Dauguma svetainių yra sukonfigūruotos naudoti numatytąją vertę 3306."
-
-#~ msgid "Move left"
-#~ msgstr "Į kairę"
-
-#~ msgid "Move right"
-#~ msgstr "Į dešinę"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharram"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharram"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharram"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharram"
-
-#~ msgid "MySQL gave the error: %s"
-#~ msgstr "MySQL nurodė klaidą: %s"
-
-#~ msgid "MySQL variables"
-#~ msgstr "MySQL kintamieji"
-
-#~ msgid "Name contains"
-#~ msgstr "Varde yra"
-
-#~ msgid "Names to add to common surnames (comma separated)"
-#~ msgstr "Vardai pridėjimui prie dažniausiai pasitaikančių pavardžių (atskirti kableliais)"
-
-#~ msgid "Names to remove from common surnames (comma separated)"
-#~ msgstr "Vardai ištrynimui iš dažniausiai pasitaikančių pavardžių (atskirti kableliais)"
-
-#~ msgid "Neighborhood"
-#~ msgstr "Kaimynystė"
-
-#~ msgid "Netherlands Antilles"
-#~ msgstr "Olandijos Antilai"
-
-#~ msgid "Neutral Zone"
-#~ msgstr "Neutrali Zona"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Never married"
-#~ msgstr "Niekada nebuvo ištekėjusi"
-
-#~ msgctxt "MALE"
-#~ msgid "Never married"
-#~ msgstr "Niekada nebuvo vedes"
-
-#~ msgid "No ancestors in the database."
-#~ msgstr "Duomenų bazėje įtrauktų protėvių nėra."
-
-#~ msgid "No custom modules are enabled."
-#~ msgstr "Nėra įjungtų nestandartinių modulių."
-
-#~ msgid "No custom themes are enabled."
-#~ msgstr "Nėra įjungtų nestandartinių temų."
-
-#~ msgid "No limit"
-#~ msgstr "Neapriboti"
-
-#~ msgid "No map data exists for this individual"
-#~ msgstr "Šiam asmeniui vietovės duomenų neturime"
-
-#~ msgid "No media file was provided."
-#~ msgstr "Medijos byla nebuvo suteikta."
-
-#~ msgid "No places found"
-#~ msgstr "Vietovė nerasta"
-
-#~ msgid "No places have been found."
-#~ msgstr "Jokių vietovių nerasta."
-
-#~ msgid "Nobody at all"
-#~ msgstr "Nieko nėrs"
-
-#~ msgid "Noon"
-#~ msgstr "Vidurdienis"
-
-#~ msgid "Not a valid individual, family, or source ID"
-#~ msgstr "Negaliojantis asmens, šeimos ar šaltinio ID"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Not married"
-#~ msgstr "Netekėjusi"
-
-#~ msgctxt "MALE"
-#~ msgid "Not married"
-#~ msgstr "Nevedęs"
-
-#~ msgid "Note ID prefix"
-#~ msgstr "Pastabų ID priešdėlis"
-
-#~ msgid "Number of generations"
-#~ msgstr "Kartų skaičius"
-
-#~ msgid "Number of items"
-#~ msgstr "Elementų skaičius"
-
-#~ msgid "Number of items to show"
-#~ msgstr "Kiek įrašų rodyti"
-
-#~ msgid "Number of months since the last sign-in for a user’s account to be considered inactive: "
-#~ msgstr "Mėnesių skaičius po paskutinio apsilankymo, kai nario sąskaitą turi būti laikoma neveikiančia: "
-
-#~ msgid "Oldest at bottom"
-#~ msgstr "Vyriausias apačioje"
-
-#~ msgid "Oldest at top"
-#~ msgstr "Vyriausias viršuje"
-
-#~ msgid "Optional prefixes and suffixes"
-#~ msgstr "Neprivalomi prišdėliai ir priesagos"
-
-#~ msgid "Order"
-#~ msgstr "Tvarka"
-
-#~ msgid "Other folder… please type in"
-#~ msgstr "Kitas aplankas… Prašome suvesti"
-
-#~ msgid "Others"
-#~ msgstr "Kiti"
-
-#~ msgid "Overwrite existing coordinates."
-#~ msgstr "Perrašyti esamas koordinates."
-
-#~ msgid "Own charts"
-#~ msgstr "Nuosavos diagramos"
-
-#~ msgid "P.M."
-#~ msgstr "po pietų"
-
-#~ msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP išplėtimas „%1$s“ yra išjungtas. Be to, neveiks šios funkcijos: %2$s. Prašome kreiptis į serverio administratorių, kad jis įjungtu PHP išplėtimą."
-
-#~ msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP išplėtimas „%s“ yra išjungtas. Jūs negalite įdiegti kilmės medžio kol ši funkcija išjungta. Prašome kreiptis į serverio administratorių, kad jis įjungtų PHP išplėtimą."
-
-#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP nustatymas „%1$s“ yra išjungtas. Be to, neveiks šios funkcijos: %2$s . Prašome kreiptis į serverio administratorių, kad jis pakeistų PHP nustatymus."
-
-#~ msgid "PHP time limit"
-#~ msgstr "PHP laiko limitas"
-
-#~ msgid "Passwords do not match."
-#~ msgstr "Slaptažodžiai nesutampa."
-
-#~ msgid "Passwords must contain at least 8 characters."
-#~ msgstr "Slaptažodis turi turėti bent 8 simbolius."
-
-#~ msgid "Pedigree chart"
-#~ msgstr "Kilmės diagrama"
-
-#~ msgid "Pedigree of %s"
-#~ msgstr "%s kilmės medis"
-
-#~ msgid "Phonetic"
-#~ msgstr "Fonetinis"
-
-#~ msgid "Phonetic title"
-#~ msgstr "Fonetinis pavadinimas"
-
-#~ msgid "PhpGedView might be installed in one of these folders:"
-#~ msgstr "PhpGedView galimai įkurtas vienoje iš šių aplankų:"
-
-#~ msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
-#~ msgstr "PhpGedView versija privalo būti 4.2.3, arba bet kuri SVN iki #%s"
-
-#~ msgid "PhpGedView must use the same database as webtrees."
-#~ msgstr "PhpGedView turi naudoti tą pačią duomenų bazę kaip ir webtrees."
-
-#~ msgid "PhpGedView to webtrees transfer wizard"
-#~ msgstr "PhpGedView transformavimo į webtrees vedlys"
-
-#~ msgid "Place check"
-#~ msgstr "Vietovių patikrinimas"
-
-#~ msgid "Place contains"
-#~ msgstr "Vietovėje yra"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Įdedame svetainę į neveiklia būklę sukurdami %s bylą…"
-
-#~ msgid "Place the website online, by deleting the file %s…"
-#~ msgstr "Išvedam svetainę iš neveiklios būklės ištrindami %s bylą…"
-
-#~ msgid "Places found"
-#~ msgstr "Rastos vietovės"
-
-#~ msgid "Places in %s"
-#~ msgstr "Vietovės %s"
-
-#~ msgid "Please enter a given name, surname, or place in addition to the year"
-#~ msgstr "Prašome įrašyti vardą, pavardę ar vietovę papildomai prie amžiaus"
-
-#~ msgid "Please enter a message subject."
-#~ msgstr "Prašome įvesti laiško antraštę."
-
-#~ msgid "Please enter more than one character."
-#~ msgstr "Prašome įvesti daugiau negu vieną simbolį."
-
-#~ msgid "Please enter some message text before sending."
-#~ msgstr "Prieš siunčiant laišką, prašome įvesti tekstinį pranešimą."
-
-#~ msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
-#~ msgstr "Prašome pateikti savo elektroninį paštą, kad galėtume susiekti su jumis. Jei nepateiksite savo elektroninio pašto, mes negalėsime su jumis susisiekti. Jūsų elektroninis paštas nebus naudojamas jokiems kitiems tikslams, išskyrus susisiekimui su jumis."
-
-#~ msgid "Precision"
-#~ msgstr "Tikslumas"
-
-#~ msgid "Precision of the latitude and longitude"
-#~ msgstr "Platumos ir ilgumos nustatymo tikslumas"
-
-#~ msgid "Prefixes"
-#~ msgstr "Priešdėliai"
-
-#~ msgid "Presentation style"
-#~ msgstr "Prezentacijos stilius"
-
-#~ msgid "Quick repository facts"
-#~ msgstr "Greiti saugyklos faktai"
-
-#~ msgid "Quick source facts"
-#~ msgstr "Greiti šaltinio faktai"
-
-#~ msgid "README documentation"
-#~ msgstr "README dokumentacija"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgid "Rada"
-#~ msgstr "Rada"
-
-#~ msgid "Records are not the same type. Cannot merge records that are not the same type."
-#~ msgstr "Įrašai nėra to paties tipo. Negalima sujungti įrašų, kurie nėra to paties tipo."
-
-#~ msgid "Redraw map"
-#~ msgstr "Perpiešti žemėlapį"
-
-#~ msgid "Religious name"
-#~ msgstr "Religinis vardas"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Religious name"
-#~ msgstr "Religinis vardas"
-
-#~ msgctxt "MALE"
-#~ msgid "Religious name"
-#~ msgstr "Religinis vardas"
-
-#~ msgid "Remove flag"
-#~ msgstr "Pašalinti vėliavą"
-
-#~ msgid "Remove link from list"
-#~ msgstr "Ištrinti nuorodą iš sąrašo"
-
-#~ msgid "Renumber"
-#~ msgstr "Pernumeruoti"
-
-#~ msgid "Renumber family tree"
-#~ msgstr "Pernumeruoti šeimos medį"
-
-#~ msgid "Repositories found"
-#~ msgstr "Rastos saugyklos"
-
-#~ msgid "Repository ID prefix"
-#~ msgstr "Informacijos šaltinio ID priešdėlis"
-
-#~ msgid "Repository contains"
-#~ msgstr "Saugykloje yra"
-
-#~ msgid "Restrict access to the website, using IP addresses and user-agent strings."
-#~ msgstr "Apriboti prieigą prie svetainės, naudojant IP adresus ir naudotojo agento eilutes."
-
-#~ msgid "Resulting value"
-#~ msgstr "Kylančios vertės"
-
-#~ msgid "Right section blocks"
-#~ msgstr "Dešinysis pasirinkimų blokas"
-
-#~ msgid "Romanized title"
-#~ msgstr "Titulas romėniškai"
-
-#~ msgid "Rule"
-#~ msgstr "Taisyklė"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Safar"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Ṣafar"
-#~ msgstr "Safar"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Safar"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Safar"
-
-#~ msgid "Satellite"
-#~ msgstr "Palydovas"
-
-#~ msgid "Search engine"
-#~ msgstr "Paieškos sistema"
-
-#~ msgid "Search for individuals to add to add Links list."
-#~ msgstr "Žmonių paiešką įtraukti į Įtraukiamų Nuorodų sąrašą."
-
-#~ msgid "Search globally"
-#~ msgstr "Paieška visame pasaulyje"
-
-#~ msgid "Search locally"
-#~ msgstr "Paieška lokaliai"
-
-#~ msgid "Select a block and use the arrows to move it."
-#~ msgstr "Pasirinkite bloką ir naudokite rodykles jį pajudinti."
-
-#~ msgid "Select chart type"
-#~ msgstr "Pasirinkite diagramos tipą"
-
-#~ msgid "Select events"
-#~ msgstr "Pasirinkite renginius"
-
-#~ msgid "Select flag"
-#~ msgstr "Pasirink vėliavą"
-
-#~ msgid "Select the desired count interval"
-#~ msgstr "Pasirinkite norimą potarpį"
-
-#~ msgid "Select the languages that will be shown in menus."
-#~ msgstr "Pasirinkti kalbas kurios bus rodomos meniu."
-
-#~ msgid "Select the stats to show in this block"
-#~ msgstr "Pasirinkti kokius duomenis rodyti šiame bloke"
-
-#~ msgid "Send broadcast messages"
-#~ msgstr "Siųsti žinutes"
-
-#~ msgid "Serbia and Montenegro"
-#~ msgstr "Serbija ir Juodkalnija"
-
-#~ msgid "Server file containing places (CSV)"
-#~ msgstr "Serverio byla kurioje surašytos vietovės (CSV)"
-
-#~ msgid "Session timeout"
-#~ msgstr "Sesijos darbo laiko pabaiga"
-
-#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
-#~ msgstr "Nustatyti numatytajį kartų rodymo skaičių palikuonių ir kilmės diagramose."
-
-#~ msgid "Set the maximum number of generations to display on descendancy charts."
-#~ msgstr "Nustatyti maksimalų kartų rodymo skaičių palikuonių diagramoje."
-
-#~ msgid "Set the maximum number of generations to display on pedigree charts."
-#~ msgstr "Nustatyti maksimalų kartų rodymo skaičių kilmės diagramoje."
-
-#~ msgid "Shared note contains"
-#~ msgstr "Bendrai naudojamoję pastaboję yra"
-
-#~ msgid "Shared notes found"
-#~ msgstr "Rastos bendrai naudojamos pastabos"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sha’aban"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sha’aban"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sha’aban"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sha’aban"
-
-#~ msgid "Short version"
-#~ msgstr "Trumpa versija"
-
-#~ msgid "Should this block be hidden when it is empty"
-#~ msgstr "Ar šis blokas turi būti paslėptas jei jis yra tuščias"
-
-#~ msgid "Show all notes and source references on notes and sources tabs"
-#~ msgstr "Rodyti visas pastabų ir šaltinių nuorodas pastabų ir šaltinių kortelėse"
-
-#~ msgid "Show all spouses and ancestors"
-#~ msgstr "Rodyti visus sutuoktinius ir protėvius"
-
-#~ msgid "Show all tags"
-#~ msgstr "Rodyti visas žymes"
-
-#~ msgid "Show chart details by default"
-#~ msgstr "Įprastai rodyti pilnas schemas"
-
-#~ msgid "Show common surnames"
-#~ msgstr "Ar rodyti dažniausiai pasitaikančias pavardes"
-
-#~ msgid "Show counts before or after name"
-#~ msgstr "Skaitliukas prieš ar po vardo"
-
-#~ msgid "Show cousins"
-#~ msgstr "Rodyti pusbrolius"
-
-#~ msgid "Show date differences"
-#~ msgstr "Rodyti datų skirtumus"
-
-#~ msgid "Show details"
-#~ msgstr "Rodyti išsamią informaciją"
-
-#~ msgid "Show hit counters on Portal and Individual pages."
-#~ msgstr "Rodyti skaitliukus ant portalo ir asmenų puslapių."
-
-#~ msgid "Show images"
-#~ msgstr "Rodyti vaizdus"
-
-#~ msgid "Show inactive places"
-#~ msgstr "Rodyti nepanaudotas vietoves"
-
-#~ msgid "Show lifespans"
-#~ msgstr "Rodyti gyvenimo trukmes"
-
-#~ msgid "Show only births, deaths, and marriages"
-#~ msgstr "Ar rodyti tik gimimus, mirtis ir santuokas"
-
-#~ msgid "Show only the selected tags"
-#~ msgstr "Rodyti tik pasirinktas žymes"
-
-#~ msgid "Show places in hierarchy"
-#~ msgstr "Rodyti vietoves herarchine tvarka"
-
-#~ msgid "Show related individuals/families"
-#~ msgstr "Rodyti susijusius asmenis/šeimas"
-
-#~ msgid "Show statistics charts"
-#~ msgstr "Rodyti statistikos diagramas"
-
-#~ msgid "Show the location of places and events using the Google™ maps mapping service."
-#~ msgstr "Rodo vietas ir įvykius naudojant Google™ maps servisą."
-
-#~ msgid "Sicily"
-#~ msgstr "Sicilija"
-
-#~ msgid "Sign-in URL"
-#~ msgstr "Prisijungimo URL"
-
-#~ msgid "Signed-in as "
-#~ msgstr "Prisijungęs kaip "
-
-#~ msgid "Simple search filter based on the characters entered, no wildcards are accepted."
-#~ msgstr "Paprastos paieškos filtras remiasi įvestomis raidėmis, jokie pakaitos simboliai nėra priimami."
-
-#~ msgid "Size of map (in pixels)"
-#~ msgstr "Žemėlapio dydis (pikseliais)"
-
-#~ msgid "Source ID prefix"
-#~ msgstr "Šaltinio ID priešdėlis"
-
-#~ msgid "Source contains"
-#~ msgstr "Šaltinyję yra"
-
-#~ msgid "Spouse census date"
-#~ msgstr "Santuokos surašymo data"
-
-#~ msgid "Spouse census place"
-#~ msgstr "Santuokos surašymo vieta"
-
-#~ msgid "Spouse note"
-#~ msgstr "Santuokos įrašas"
-
-#~ msgid "Standard"
-#~ msgstr "Standartinis"
-
-#~ msgid "Start IP address"
-#~ msgstr "Pradinis IP adresas"
-
-#~ msgid "Start at parents"
-#~ msgstr "Pradėti nuo tėvų"
-
-#~ msgid "Statistics chart"
-#~ msgstr "Statistikos diagramos"
-
-#~ msgid "Store watermarked full size images on server"
-#~ msgstr "Ar saugoti vandens ženklu pažymėtas nesumažintas nuotraukas serveryje"
-
-#~ msgid "Store watermarked thumbnails on server"
-#~ msgstr "Ar saugoti vandens ženklu pažymėtas nuotraukų miniatiūras serveryje"
-
-#~ msgid "Subdivision"
-#~ msgstr "Žemesnis lygmuo"
-
-#~ msgid "Suffixes"
-#~ msgstr "Priesagos"
-
-#~ msgid "System settings"
-#~ msgstr "Sistemos parametrai"
-
-#~ msgid "Tag"
-#~ msgstr "Žyma"
-
-#~ msgid "Terrain"
-#~ msgstr "Žemės paviršiaus sluoksnis"
-
-#~ msgid "The FAQ list is empty."
-#~ msgstr "DUK sąrašas yra tuščias."
-
-#~ msgid "The database reported the following error message:"
-#~ msgstr "Duomenų bazė raportuoja sekančius klaidų pranešimus:"
-
-#~ msgid "The details of this family are private."
-#~ msgstr "Duomenys apie šeimą yra privatūs."
-
-#~ msgid "The details of this individual are private."
-#~ msgstr "Šio asmens duomenys yra privatūs."
-
-#~ msgid "The file %s could not be updated."
-#~ msgstr "Byla %s negali bųti įkelta."
-
-#~ msgid "The file %s has been created."
-#~ msgstr "Byla %s sukurta."
-
-#, php-format
-#~ msgid "The folder %s does not exist, and it could not be created."
-#~ msgstr "Duomenų aplanka %s neegzistuoja ir negali būti sukurta."
-
-#~ msgid "The following places have been changed:"
-#~ msgstr "Sekančios vietovės buvo pakeistos:"
-
-#~ msgid "The following places would be changed:"
-#~ msgstr "Sekančios vietovės būtų pakeistos:"
-
-#~ msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
-#~ msgstr "Šios taisyklės yra naudojamos sprendžiant ar lankytojas yra asmuo (leidžiamas pilnas priėjimas), paieškų sistemos robotas (laidžiamas ribotas priėjimas) ar nenorimas vikšrinis (neleidžiamas priėjimas)."
-
-#~ msgid "The media file %s does not exist."
-#~ msgstr "Medijos byla %s neegzistuoja."
-
-#~ msgid "The media file was not found in this family tree."
-#~ msgstr "Medijos byla nebuvo rasta šiame šeimos medyje."
-
-#~ msgid "The most common source facts are listed separately, so that they can be added more easily."
-#~ msgstr "Dažniausiai naudojamų šaltinio faktų sąrašas, kurie bus rodomi šalia pilno sąrašo ir gali būti greitai pridėti vienu paspaudimu."
-
-#~ msgid "The new files are currently located in the folder %s."
-#~ msgstr "Naujos bylos dabar yra %s aplankoje."
-
-#~ msgid "The passwords do not match."
-#~ msgstr "Slaptažodžiai nesutampa."
-
-#~ msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-#~ msgstr "Priešdėlis nėra privalomas, tačiau rekomenduojamas. Suteikdami lentelės pavadinimui unikalų priešdėlį, galite leisti kelias skirtingas programas naudoti tą pačią duomenų bazę. „wt_“ siūloma, bet gali būti, kokia jums patinka."
-
-#~ msgid "The record %1$s has been renamed to %2$s."
-#~ msgstr "Įrašas %1$s buvo pervadintas į %2$s."
-
-#~ msgid "The record has been copied to the clipboard."
-#~ msgstr "Įrašas nukopijuotas į laikiną atmintį."
-
-#~ msgid "The regular expression appears to contain an error. It can’t be used."
-#~ msgstr "Atrodo, kad reguliarusis reiškinys turi klaidą. Jis negali būti naudojamas."
-
-#~ msgid "The thumbnail file %1$s could not be renamed to %2$s."
-#~ msgstr "Miniatiūros failas %1$s negali būti pervadintas į %2$s."
-
-#~ msgid "The thumbnail file %1$s has been renamed to %2$s."
-#~ msgstr "Miniatiūros failas %1$s sėkmingai pervadintas į %2$s."
-
-#~ msgid "The thumbnail file %s does not exist."
-#~ msgstr "Miniatiūros %s failas neegzistuoja."
-
-#~ msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
-#~ msgstr "Laikotarpis sekundėmis per kurį webtrees sesija pasilieka atidaryta be kito prisijungimo. Įprastai tai yra 7200, arba 2 valandos."
-
-#~ msgid "The version of %s is too new."
-#~ msgstr "%s versija yra per nauja."
-
-#~ msgid "The version of %s is too old."
-#~ msgstr "%s versija yra per sena."
-
-#~ msgid "The website access rule has been created."
-#~ msgstr "Svetainės prieigos taisyklė sukurta."
-
-#~ msgid "The website access rule has been deleted."
-#~ msgstr "Svetainės prieigos taisyklė ištrinta."
-
-#~ msgid "The website access rule has been updated."
-#~ msgstr "Svetainės prieigos taisyklė redeguota."
-
-#~ msgid "The “%” character is a wildcard, and will match zero or more other characters."
-#~ msgstr "„%“ simbolis atitinka vieną arba daugiau ženklų."
-
-#~ msgid "Theme menu"
-#~ msgstr "Temų menu"
-
-#~ msgid "There is no account with the username or email “%s”."
-#~ msgstr "Nepavyko rasti paskyros su vartotojo vardu arba el. paštu „%s“."
-
-#~ msgid "These pages provide access to all the preferences and management tools for this webtrees site."
-#~ msgstr "Šie puslapiai suteikia prieigą prie visų šio webtrees tinklapio konfigūracijos nuostatų bei visų valdymo įrankių."
-
-#~ msgid "This GEDCOM file is encoded using %1$s. Assume this to mean %2$s."
-#~ msgstr "Šis GEDCOM'as yra koduotas pasitelkiant %1$s. Tarkime, kad tai reiškia %2$s."
-
-#~ msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
-#~ msgstr "Šis duomenų bazės vardas ir lentelių priešdėlis yra naudojamas kitos programos. Jeigu jau turite PhpGedView sistema, jums reikia sukurti naują webtrees sistemą. Galėsite importuoti savo PhpGedView duomenis ir nustatymus vėliau."
-
-#~ msgid "This database is only running MySQL version %s. You cannot install webtrees here."
-#~ msgstr "Ši duomenų bazė veikia tik su %s MySQL versija. Jūs negalite įdiegti webtrees čia."
-
-#~ msgid "This entry is ignored if you have entered a URL into the filename field."
-#~ msgstr "Šis įrašas yra ignoruojamas, jeigu įvedėte internetinį adresą į failo pavadinimo lauką."
-
-#~ msgid "This family remained childless"
-#~ msgstr "Ši šeima liko bevaikė"
-
-#~ msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
-#~ msgstr "Šis failas yra susijęs su kita genealoginių duomenų baze šiame serveryje. Ji negali būti ištrinta, perkelta, arba pervadinta kol šie ryšiai nebus pašalinti."
-
-#~ msgid "This is case sensitive."
-#~ msgstr "Svarbus skirtumas ar tai didžiosios ar tai mažosios raidės."
-
-#~ msgid "This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails."
-#~ msgstr "Svarbus skirtumas ar tai didžiosios ar tai mažosios raidės. Jei su tokiu pavadinimu duomenų bazė neegzistuoja šiame serveryje, tai webtrees bandys sukurti duomenų bazę tokiu vardu. Sėkmė priklausys nuo leidimų nustatytų interneto serveryje, bet jums apie tai bus pranešta, jeigu tai nepavyks."
-
-#~ msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
-#~ msgstr "Tai yra kiek katrų pavardė turi būti naudota prieš jos įdėjimą į Dažniausiai Pasitaikančių Pavardžių sąrašą „Tituliniame puslapyje“."
-
-#~ msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
-#~ msgstr "Tai plotis (pikseliais) kurį programa naudos, kai automatiškai sukurs miniatiūras. Numatytasis parametras yra 100."
-
-#~ msgid "This may be a mistake in your data."
-#~ msgstr "Tai gali būti klaida jūsų duomenyse."
-
-#~ msgid "This may cause a problem for other applications."
-#~ msgstr "Tai gali sukelti problemų kitose programose."
-
-#~ msgid "This may cause a problem for webtrees."
-#~ msgstr "Tai gali sukelti problemų webtrees programai."
-
-#~ msgid "This media file does not exist."
-#~ msgstr "Ši medijos byla neegzistuoja."
-
-#~ msgid "This media file exists, but cannot be accessed."
-#~ msgstr "Ši medijos byla egzistuoja, bet negali būti atverta."
-
-#~ msgid "This media file is broken and cannot be watermarked."
-#~ msgstr "Ši medijos byla yra sugedusi ir negali būti pažymėta vandens ženklu."
-
-#~ msgid "This media object is not linked to any other record."
-#~ msgstr "Šis medijos objektas neturi nuorodų į bet kokį kitą įrašą."
-
-#~ msgid "This message will be sent to %s"
-#~ msgstr "Šis pranešimas bus išsiųstas %s"
-
-#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
-#~ msgstr "Ši opcija nustato pedigree diagramos atvaizdavimą - landscape arba portrait režimu."
-
-#~ msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
-#~ msgstr "Šis nustatymas nurodo ar platumos ir ilgumos bus rodomos ant iššokančių langų prijungtų prie žemėlapio žymeklių."
-
-#~ msgid "This place has no coordinates"
-#~ msgstr "Ši vietovė neturi koordinačių"
-
-#~ msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
-#~ msgstr "Ši saugykla buvo ištrinta. Ištrynimui reikės prižiūrėtojo patvirtinimo."
-
-#, php-format
-#~ msgid "This repository has been deleted. You should review the deletion and then %1$s or %2$s it."
-#~ msgstr "Ši saugykla buvo ištrinta. Jūs turėtumėte peržiūrėti šį trynimą ir tuomet %1$s arba %2$s jį."
-
-#~ msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-#~ msgstr "Ši saugykla buvo pakeista. Pakeitimams reikia prižiūrėtojo patvirtinimo."
-
-#, php-format
-#~ msgid "This repository has been edited. You should review the changes and then %1$s or %2$s them."
-#~ msgstr "Ši saugykla buvo pakeista. Jūs turėtumėte peržiūrėti pakeitimus ir tuomet %1$s arba %2$s juos."
-
-#~ msgid "This server does not support secure downloads using HTTPS."
-#~ msgstr "Šis serveris nepalaiko saugaus parsisiuntimo naudojant HTTPS."
-
-#~ msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
-#~ msgstr "Šis šaltinis buvo ištrintas. Ištrynimui reikės prižiūrėtojo patvirtinimo."
-
-#, php-format
-#~ msgid "This source has been deleted. You should review the deletion and then %1$s or %2$s it."
-#~ msgstr "Šis šaltinis buvo ištrintas. Jūs turėtumėte peržiūrėti šį trynimą ir tuomet %1$s arba %2$s jį."
-
-#~ msgid "This source has been edited. The changes need to be reviewed by a moderator."
-#~ msgstr "Šis šaltinis buvo pakeistas. Pakeitimams reikės prižiūrėtojo patvirtinimo."
-
-#, php-format
-#~ msgid "This source has been edited. You should review the changes and then %1$s or %2$s them."
-#~ msgstr "Šis šaltinis buvo pakeistas. Jūs turėtumėte peržiūrėti pakeitimus ir tuomet %1$s arba %2$s juos."
-
-#~ msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
-#~ msgstr "Nurodo skirtingų lygmenų tikslumą įvedant naujas geografines vietoves. Pavyzdžiui valstybei tikslumas gali tikti su nuliu (0 = 0 skaitmenų po kablelio), o miestas turi turėti 3 ar 4 skaitmenis."
-
-#~ msgid "This type of link is not allowed here."
-#~ msgstr "Šio tipo nuoroda čia nėra leidžiama naudoti."
-
-#~ msgid "This website is being upgraded. Try again in a few minutes."
-#~ msgstr "Ši svetainė yra tobulinama. Pabandykite dar kartą po kelių minučių."
-
-#~ msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-#~ msgstr "Ši funkcija atnaujins aukščiausia vietovardžio dalį ar dalis. Pavyzdžiuj, „Mexico“ suras „Quintana Roo, Mexico“, bet ne „Santa Fe, New Mexico“."
-
-#~ msgid "Thumbnail files must contain images."
-#~ msgstr "Miniatiūros turi būti paveikslėliai."
-
-#~ msgid "Thumbnail to upload"
-#~ msgstr "Miniatiūra įkėlimui"
-
-#~ msgid "Title in Hebrew"
-#~ msgstr "Titulas hebrajų kalba"
-
-#~ msgid "To"
-#~ msgstr "iki"
-
-#~ msgid "To complete the upgrade, you should install the files manually."
-#~ msgstr "Norėdami baigti atnaujinimą, jūs turite įdiegti bylas rankiniu būdu."
-
-#~ msgid "To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server. If it contains a message, it will be displayed to visitors."
-#~ msgstr "Sutrukdyti lankytojams prieigą prie svetainės, kai esate viduryje bylų kopijvimo, galite laikinai sukurti %s byla serveryje. Jeigu joje yra žinutę ji bus rodoma lankytojams."
-
-#~ msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
-#~ msgstr "Norint sumažinti atsisiuntimo dydį, jūs galite suslėgti duomenis į .ZIP bylą. Jūs turėsite išskleisti .ZIP bylą prieš jos naudojimą."
-
-#~ msgid "To tell search engines that sitemaps are available, you can use the following links."
-#~ msgstr "Kad parodyti paieškos tarnyboms apie savo svetainės turinio žemėlapius, turite naudoti sekančias nuorodas."
-
-#~ msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
-#~ msgstr "Kad pasakyti paieškos tarnyboms kad turite svetainės turinio žemėlapius, turite įrašyti sekančią teksto eilutę į jūsų robots.txt failą."
-
-#~ msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
-#~ msgstr "Norėdami naudotis Google (Gmail) elektroninio pašto abonementu, naudokite sekančius nustatymus: server=smtp.gmail.com, port=587, security=tls, username=[jūsų_gmail_abonemento_vardas]@gmail.com, password=[jūsų gmail slaptažodis]"
-
-#~ msgid "Top level"
-#~ msgstr "Aukščiausias lygmuo"
-
-#, php-format
-#~ msgid "Total families: %s"
-#~ msgstr "Iš viso šeimų: %s"
-
-#, php-format
-#~ msgid "Total individuals: %s"
-#~ msgstr "Iš viso asmenų: %s"
-
-#~ msgid "Total number of users"
-#~ msgstr "Visų narių skaičius"
-
-#~ msgid "Total places: %s"
-#~ msgstr "Iš viso %s vietovių"
-
-#~ msgid "Total sources: %s"
-#~ msgstr "Iš viso šaltinių: %s"
-
-#~ msgid "Tracking and analytics are not added to the control panel."
-#~ msgstr "Sėkimai ir analizės nėra pridėti prie valdymo skydo puslapių."
-
-#~ msgid "Transylvania"
-#~ msgstr "Transilvanija"
-
-#~ msgid "Type of place markers in the place hierarchy"
-#~ msgstr "Vietovių žymeklių tipas vietovių hierarchijoje"
-
-#~ msgid "Type the password again."
-#~ msgstr "Įrašykite slaptažodi dar vieną kartą."
-
-#~ msgid "Type your password again, to make sure you have typed it correctly."
-#~ msgstr "Įveskite slaptažodį dar kartą, kad įsitikinti ar įvedėte teisingai."
-
-#~ msgid "Types of error"
-#~ msgstr "Klaidos tipas"
-
-#~ msgid "USA"
-#~ msgstr "JAV"
-
-#~ msgid "USSR"
-#~ msgstr "TSSR"
-
-#~ msgid "UTC"
-#~ msgstr "UTC"
-
-#~ msgid "Unable to connect using this username and password. Your server gave the following error."
-#~ msgstr "Nepavyko prisijungti naudojant šiuos parametrus. Serveris pateikė sekančias klaidas."
-
-#~ msgid "Unable to find record with ID"
-#~ msgstr "Nerandu įrašo su ID"
-
-#~ msgid "Unique family facts"
-#~ msgstr "Unikalūs faktai apie šeimą"
-
-#~ msgid "Unique individual facts"
-#~ msgstr "Unikalūs faktai apie asmenį"
-
-#~ msgid "Unique repository facts"
-#~ msgstr "Unikalūs saugyklos faktai"
-
-#~ msgid "Unique source facts"
-#~ msgstr "Unikalūs šaltinio faktai"
-
-#~ msgid "Unlink the media object"
-#~ msgstr "Atsieti mediją"
-
-#~ msgid "Update all the place names in a family tree"
-#~ msgstr "Atnaujinkite visus vietovardžius šeimos medyje"
-
-#~ msgid "Upgrade anyway"
-#~ msgstr "Vistiek atnaujink"
-
-#~ msgid "Upload"
-#~ msgstr "Įkelti"
-
-#~ msgid "Upload geographic data"
-#~ msgstr "Įkelti geografinius duomenis"
-
-#~ msgid "Use Google™ maps for the place hierarchy"
-#~ msgstr "Naudokite „Google™ maps“ vietovių hierarchijoms"
-
-#~ msgid "Use PHP mail to send messages"
-#~ msgstr "Naudokite PHP mail siųsti laiškus"
-
-#~ msgid "Use RIN number instead of GEDCOM ID"
-#~ msgstr "Vietoje GEDCOM ID rodyti RIN numerius"
-
-#~ msgid "Use full source citations"
-#~ msgstr "Naudokite visą šaltinio citatą"
-
-#~ msgid "Use the GeoNames database for autocomplete on places"
-#~ msgstr "Naudoti GeoVardų duomenų bazę vietovardžių rašymo užbaigimui"
-
-#~ msgid "Use this image for charts and on the individual’s page."
-#~ msgstr "Naudoti šį paveikslą grafikams ir individo puslapyje."
-
-#~ msgid "Use this value"
-#~ msgstr "Naudoti šį dydį"
-
-#~ msgid "User preferences"
-#~ msgstr "Nario nuostatos"
-
-#~ msgid "User-agent string"
-#~ msgstr "Naudotojo agento eilutę"
-
-#~ msgid "Users who are signed in"
-#~ msgstr "Prisijungę naudotojai"
-
-#~ msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
-#~ msgstr "Naudojant išskleidžiamą meniu galima pasirinkti šalį, kurios vėliava bus pasirinkta. Jei vėliavos nerodomos, tada nėra šaliai priskirtos vėliavos."
-
-#~ msgid "Verification code"
-#~ msgstr "Patvirtinimo kodas"
-
-#~ msgid "View"
-#~ msgstr "Rodyti"
-
-#~ msgid "View all records found in this place"
-#~ msgstr "Rodyti visus įrašus rastus šioje vietovėje"
-
-#~ msgid "View the archive"
-#~ msgstr "Rodyti archyvą"
-
-#~ msgid "View the details"
-#~ msgstr "Rodyti daugiau detalių"
-
-#~ msgid "View the notes"
-#~ msgstr "Rodyti pastabas"
-
-#~ msgid "View the statistics as graphs"
-#~ msgstr "Statistiką rodyti grafikų pavidalu"
-
-#~ msgid "View this individual"
-#~ msgstr "Rodyti šį asmenį"
-
-#~ msgid "View this source"
-#~ msgstr "Rodyti šį šaltinį"
-
-#~ msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
-#~ msgstr "Vandenženkliai gali būti lėtai generuojami ant didelių vaizdų. Dažnai naudojamos svetainės gali buti labiau linkusios skurti juos vieną kartą ir išsaugoti vaizdus su vandenženkliais serveryje."
-
-#~ msgid "Website URL"
-#~ msgstr "Svetainės URL"
-
-#~ msgid "Website access rules"
-#~ msgstr "Svetainės prieigos taisyklės"
-
-#~ msgid "Website and META tag settings"
-#~ msgstr "Svetainės ir meta žymės nustatymai"
-
-#~ msgid "West Africa"
-#~ msgstr "Vakarų Afrika"
-
-#~ msgid "When adding a link, the ID field cannot be empty."
-#~ msgstr "Kai įvedinėjate nuorodą būtina užpildyti ID lauką."
-
-#~ msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
-#~ msgstr "Visi nauji įrašai gauna savo vidinį ID numerį. Jūs galite nurodyti prefiksą kiekvienam įrašo tipui."
-
-#~ msgid "When you send this message you will receive a copy sent via email to the address you provided."
-#~ msgstr "Kai išsiūsite šią žinutę, mes atsiūsime jums jos kopija į jūsų elektroninį paštą."
-
-#~ msgid "Where is your PhpGedView installation?"
-#~ msgstr "Kur yra jūsų PhpGedView instaliacija?"
-
-#~ msgid "Whole words only"
-#~ msgstr "Tik ištisi žodžiai"
-
-#~ msgid "Width"
-#~ msgstr "Plotis"
-
-#~ msgid "Width of generated thumbnails"
-#~ msgstr "Generuojamų video, foto ar audio miniatiūrų plotis"
-
-#~ msgid "Wife’s maiden surname becomes new given name"
-#~ msgstr "Žmonos mergautinė pavardė keičiama nauja pavarde"
-
-#~ msgid "Wife’s surname replaced by husband’s surname"
-#~ msgstr "Žmonos pavardė keičiama vyro pavarde"
-
-#~ msgid "Wildcards"
-#~ msgstr "Pakaitos simboliai"
-
-#~ msgid "XREF prefixes"
-#~ msgstr "ID priešdėliai"
-
-#~ msgid "Year input box"
-#~ msgstr "Metų įvesties laukelis"
-
-#~ msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-#~ msgstr "Jūs galite padaryti tai lengviau ieškoti ištekėjusios moters įrašant jos povedybinę pavardę. Tačiau ne visos moterys ima savo vyro pavardę, todėl saugokitės įvesti neteisingą informaciją į savo duomenų bazę."
-
-#~ msgid "You can re-enable these modules after the upgrade."
-#~ msgstr "Jūs galite iš naujo įgalinti šiuos modulius po atnaujinimo."
-
-#~ msgid "You can re-enable these themes after the upgrade."
-#~ msgstr "Jūs galite iš naujo įgalinti šias temas po atnaujinimo."
-
-#~ msgid "You can request a higher or lower limit, although the server may ignore this request."
-#~ msgstr "Jūs galite prašyti didesnę arba mažesnę ribą, nors serveris gali ignoruoti šį prašymą."
-
-#~ msgid "You cannot create a rule which would prevent yourself from accessing the website."
-#~ msgstr "Jūs negalite sukurti taisyklės kuri neleistu jums prisijungti prie svetainės."
-
-#~ msgid "You entered the same IDs. You cannot merge the same records."
-#~ msgstr "Jūs įvedėte tą patį identifikatorių. Jūs negalite sujungti tą patį įrašą."
-
-#~ msgid "You have not created any journal items."
-#~ msgstr "Jūs nesukūrėte jokių žurnalo įrašų."
-
-#~ msgid "You may enter a URL, beginning with “http://”."
-#~ msgstr "Jūs galite suvesti internetinį adresą, prasidedantį „http://“."
-
-#~ msgid "You must change this before you can continue."
-#~ msgstr "Jūs turite tai pakeisti kad galėtumėte tęsti."
-
-#~ msgid "You must enter a name"
-#~ msgstr "Turite įrašyti vardą"
-
-#~ msgid "You must enter a real name."
-#~ msgstr "Jūs turite įvesti realų vardą."
-
-#~ msgid "You must enter a username."
-#~ msgstr "Turite įvesti naudotojo vardą."
-
-#~ msgid "You must provide a repository name."
-#~ msgstr "Jūs turite pateikti saugyklos pavadinimą."
-
-#~ msgid "You must provide a source title"
-#~ msgstr "Turite nurodyti šaltinio pavadinimą"
-
-#~ msgid "You need to sign in again, using your PhpGedView username and password."
-#~ msgstr "Jums reikia prisijungti dar karta, naudojant jūsų PhpGedView vartotojo vardą ir slaptažodį."
-
-#~ msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
-#~ msgstr "Jums tereikia įvesti Prisijungimo URL, jei norite nukreipti į kitą svetainę arba vietą, kai vartotojai prisijungia. Tai labai naudinga, jei norite pereiti nuo HTTP į HTTPS kai jūsų vartotojai prisijungė. Įtraukti visą URL <i>login.php</i>. Pavyzdžiui, https://www.jususerveris.lt/webtrees/login.php ."
-
-#~ msgid "You sent the following message to a webtrees administrator:"
-#~ msgstr "Kilmės medžio administratoriui Jūs pasiuntėte tokią žinutę:"
-
-#~ msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-#~ msgstr "Jūs turėtumėte pasikonsultuoti su modulio autoriumi patvirtinti suderinamumą su šia webtrees versiją."
-
-#~ msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-#~ msgstr "Jūs turėtumėte pasikonsultuoti su temos autoriumi patvirtinti suderinamumą su šia webtrees versiją."
-
-#~ msgid "Your server’s administrator will provide you with the connection details."
-#~ msgstr "Jūsų serverio administratorius jums pateiks susijungimo detales."
-
-#~ msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-#~ msgstr "Jums nėra įjungta „automatiškai patvirtinti pakeitimus“ nuostata. Jums galima pakeisti tik vieną įrašą vienu metu."
-
-#~ msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
-#~ msgstr "Jūsų žiniatinklio serveris naudoja PHP versija %s, kuri nebėra palaikoma. Jūs turėtumėt atnaujinti ją į naujesnę versiją."
-
-#~ msgid "Yugoslavia"
-#~ msgstr "Jugoslavija"
-
-#~ msgid "Zaire"
-#~ msgstr "Zairas"
-
-#~ msgid "Zip file(s)"
-#~ msgstr "ZIP bylos"
-
-#~ msgid "Zoom in here"
-#~ msgstr "Priartinti čia"
-
-#~ msgid "Zoom in/out on this box."
-#~ msgstr "Padidinti/sumažinti šį bloką."
-
-#~ msgid "Zoom level"
-#~ msgstr "Priartinimo lygmuo"
-
-#~ msgid "Zoom level of map"
-#~ msgstr "Priartinimo lygmuo žemėlapyje"
-
-#~ msgid "Zoom out here"
-#~ msgstr "Atitolinti čia"
-
-#~ msgid "Zoom="
-#~ msgstr "Priartinimas="
-
-#~ msgid "a.m."
-#~ msgstr "iki pietų"
-
-#~ msgctxt "FEMALE"
-#~ msgid "adopted name"
-#~ msgstr "vardas po įvaikinimo"
-
-#~ msgctxt "MALE"
-#~ msgid "adopted name"
-#~ msgstr "vardas po įvaikinimo"
-
-#~ msgid "adoption"
-#~ msgstr "įvaikinimas"
-
-#~ msgid "allow"
-#~ msgstr "leisti"
-
-#~ msgctxt "FEMALE"
-#~ msgid "also known as"
-#~ msgstr "dar žinoma kaip"
-
-#~ msgctxt "MALE"
-#~ msgid "also known as"
-#~ msgstr "dar žinomas kaip"
-
-#~ msgid "always"
-#~ msgstr "visada"
-
-#~ msgid "birth"
-#~ msgstr "gimimas"
-
-#~ msgctxt "FEMALE"
-#~ msgid "birth name"
-#~ msgstr "gimimo vardas"
-
-#~ msgctxt "MALE"
-#~ msgid "birth name"
-#~ msgstr "gimimo vardas"
-
-#~ msgid "burial"
-#~ msgstr "laidojimas"
-
-#~ msgid "by"
-#~ msgstr "pakeitė"
-
-#~ msgid "census added"
-#~ msgstr "cenzas įvestas"
-
-#~ msgid "century"
-#~ msgstr "amžius"
-
-#~ msgctxt "FEMALE"
-#~ msgid "change of name"
-#~ msgstr "pasikeistas vardas"
-
-#~ msgctxt "MALE"
-#~ msgid "change of name"
-#~ msgstr "pasikeistas vardas"
-
-#~ msgid "children"
-#~ msgstr "vaikai"
-
-#~ msgid "creating thumbnails of images"
-#~ msgstr "kuria nuotraukų miniatiūras"
-
-#~ msgid "death"
-#~ msgstr "mirtis"
-
-#~ msgid "deny"
-#~ msgstr "drausti"
-
-#~ msgid "east"
-#~ msgstr "rytai"
-
-#~ msgctxt "FEMALE"
-#~ msgid "estate name"
-#~ msgstr "dvarininkės vardas"
-
-#~ msgctxt "MALE"
-#~ msgid "estate name"
-#~ msgstr "dvarininko vardas"
-
-#~ msgid "ex-partner"
-#~ msgstr "buves(usi) sugiventinis(ė)"
-
-#~ msgctxt "FEMALE"
-#~ msgid "ex-partner"
-#~ msgstr "buvusi sugyventinė"
-
-#~ msgctxt "MALE"
-#~ msgid "ex-partner"
-#~ msgstr "buves sugiventinis"
-
-#~ msgid "file upload capability"
-#~ msgstr "failo siuntimo geba"
-
-#~ msgid "half-year after marriage"
-#~ msgstr "pusmetis po vedybų"
-
-#~ msgid "hh:mm or hh:mm:ss"
-#~ msgstr "hh:mm arba hh:mm:ss"
-
-#~ msgctxt "FEMALE"
-#~ msgid "immigration name"
-#~ msgstr "vardas po imigracijos"
-
-#~ msgctxt "MALE"
-#~ msgid "immigration name"
-#~ msgstr "vardas po imigracijos"
-
-#~ msgid "import"
-#~ msgstr "importuoti"
-
-#~ msgid "interval %s year"
-#~ msgid_plural "interval %s years"
-#~ msgstr[0] "kas %s metas"
-#~ msgstr[1] "kas %s metai"
-#~ msgstr[2] "kas %s metų"
-
-#~ msgid "interval one child"
-#~ msgstr "vieno vaiko intervalas"
-
-#~ msgid "interval two children"
-#~ msgstr "dviejų vaikų intervalas"
-
-#~ msgid "less than"
-#~ msgstr "mažiau nei"
-
-#~ msgid "link"
-#~ msgstr "sujungti"
-
-#~ msgid "marriage"
-#~ msgstr "vedybos"
-
-#~ msgctxt "FEMALE"
-#~ msgid "married name"
-#~ msgstr "pavardė po santuokos"
-
-#~ msgctxt "MALE"
-#~ msgid "married name"
-#~ msgstr "pavardė po santuokos"
-
-#~ msgid "maximum"
-#~ msgstr "didžiausias"
-
-#~ msgid "midnight"
-#~ msgstr "vidurnaktis"
-
-#~ msgid "minimum"
-#~ msgstr "mažiausias"
-
-#~ msgid "month"
-#~ msgstr "mėnesis"
-
-#~ msgid "months after marriage"
-#~ msgstr "mėnesiai po vedybų"
-
-#~ msgid "months before and after marriage"
-#~ msgstr "mėnesiai prieš ir po vedybų"
-
-#~ msgid "never"
-#~ msgstr "niekada"
-
-#~ msgid "noon"
-#~ msgstr "vidurdienis"
-
-#~ msgid "north"
-#~ msgstr "šiaurė"
-
-#~ msgid "over"
-#~ msgstr "daugiau"
-
-#~ msgid "overall"
-#~ msgstr "bendra"
-
-#~ msgid "p.m."
-#~ msgstr "po pietų"
-
-#~ msgid "pixels"
-#~ msgstr "taškai"
-
-#~ msgid "preview"
-#~ msgstr "peržiūra"
-
-#~ msgid "quarters after marriage"
-#~ msgstr "ketvirčiai po vedybų"
-
-#~ msgctxt "FEMALE"
-#~ msgid "religious name"
-#~ msgstr "religinis vardas"
-
-#~ msgctxt "MALE"
-#~ msgid "religious name"
-#~ msgstr "religinis vardas"
-
-#~ msgid "reporting"
-#~ msgstr "raportuoja"
-
-#~ msgid "robot"
-#~ msgstr "robotas"
-
-#~ msgid "sort by filename"
-#~ msgstr "rikiuoti pagal failo pavadinimą"
-
-#~ msgid "sort by title"
-#~ msgstr "rikiuoti pagal pavadinimą"
-
-#~ msgid "south"
-#~ msgstr "pietūs"
-
-#~ msgid "ssl"
-#~ msgstr "ssl"
-
-#~ msgid "this record does not exist"
-#~ msgstr "šis įrašas neegzistuoja"
-
-#~ msgid "tls"
-#~ msgstr "tls"
-
-#~ msgid "webtrees cannot connect to the PhpGedView database: %s."
-#~ msgstr "webtrees negali prisijungti prie PhpGedView duomenų bazės: %s."
-
-#~ msgid "webtrees needs a MySQL database, version %s or later."
-#~ msgstr "webtrees reikalauja duomenų bazės MySQL, %s arba naujesnės versijos."
-
-#~ msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-#~ msgstr "Webtrees reikia siųsti laiškus, pavyzdžiui, slaptažodžio priminimus ir svetainių pranešimus. Norėdami tai padaryti, jis gali naudotis šio serverio PHP galimybėmis (o tai ne visada įmanoma), arba išorės SMTP (pašto relės) paslaugomis, kuriai Jūs turėsite pateikti susijungimo duomenis, kuriuos galite rasti internetinio pašto tiekėjo WEB puslapyje."
-
-#~ msgid "webtrees reply address"
-#~ msgstr "webtrees atsakymo adresas"
-
-#~ msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-#~ msgstr "webtrees naudoja UTF-8 koduotę laiškams, specialiems simboliams ir ne lotyniškiems raidynams. Jei Jūs naudojate programinę įrangą, kuri nepalaiko UTF-8 koduotės, tuomet pasirinkite ISO-8859-1 koduotę."
-
-#~ msgid "webtrees wiki"
-#~ msgstr "webtrees vikis"
-
-#~ msgid "webtrees’ database must be on the same server as PhpGedView’s"
-#~ msgstr "webtrees duomenų bazė turi būti tame pačiame serveryje, kaip ir PhpGedView's"
-
-#~ msgid "west"
-#~ msgstr "vakarai"
-
-#~ msgid "years"
-#~ msgstr "metai"
-
-#, php-format
-#~ msgid "“%s”"
-#~ msgstr "„%s“"
-
-#~ msgid "“%s” has been added to your favorites."
-#~ msgstr "„%s“ buvo pridėtas prie Jūsų mėgstamiausių."

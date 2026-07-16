@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-15 18:05+0100\n"
+"POT-Creation-Date: 2026-07-16 21:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -391,18 +391,6 @@ msgctxt "MALE"
 msgid "%s × cousin"
 msgstr "%s × erkek kuzeni"
 
-#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ʙᴄᴇ"
-msgstr "%s M.Ö"
-
-#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ᴄᴇ"
-msgstr "M.S. %s"
-
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php
 #, php-format
@@ -448,6 +436,18 @@ msgstr "%s, eşleri ve çocukları"
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, eşleri ve nesilleri"
+
+#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ʙᴄᴇ"
+msgstr "%s M.Ö"
+
+#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ᴄᴇ"
+msgstr "M.S. %s"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
@@ -1068,25 +1068,21 @@ msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Aban"
@@ -1129,73 +1125,61 @@ msgstr "Hesap onayı ve e-posta doğrulaması"
 msgid "Accra, Ghana"
 msgstr "Accra, Gana"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
@@ -2166,25 +2150,21 @@ msgstr "Notları otomatik olarak genişlet"
 msgid "Automatically expand sources"
 msgstr "Kaynakları otomatik olarak genişlet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Av"
@@ -2237,25 +2217,21 @@ msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Azar"
 msgstr "Azer"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
 msgstr "Azer"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Azar"
 msgstr "Azer"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Azar"
@@ -2281,26 +2257,22 @@ msgstr "Bah"
 msgid "Bahamas"
 msgstr "Bahamalar"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 #, fuzzy
 msgctxt "GENITIVE"
 msgid "Bahman"
 msgstr "Behmen"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
 msgstr "Behmen"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Bahman"
 msgstr "Behmen"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Bahman"
@@ -2765,25 +2737,21 @@ msgstr "Britanya Virjin Adaları"
 msgid "Brother"
 msgstr "Erkek kardeş"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
@@ -4714,73 +4682,61 @@ msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Zilkade"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Qiʿdah"
 msgstr "Zilkade"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Zilkade"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Zilkade"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Zilhicce"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Ḥijjah"
 msgstr "Zilhicce"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Zilhicce"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Ḥijjah"
@@ -5063,25 +5019,21 @@ msgstr "El Salvador"
 msgid "Electronic"
 msgstr "Elektronik"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Elul"
@@ -5214,25 +5166,21 @@ msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
 msgstr "Aralık"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Esfand"
 msgstr "Esfend"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
 msgstr "Esfend"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Esfand"
 msgstr "Esfend"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Esfand"
@@ -5698,25 +5646,21 @@ msgstr "Far"
 msgid "Faroe Islands"
 msgstr "Faroe Adaları"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Farvardin"
 msgstr "Ferverdin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
 msgstr "Ferverdin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Farvardin"
 msgstr "Ferverdin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
@@ -5941,25 +5885,21 @@ msgstr "Bayrak"
 msgid "Flanders"
 msgstr "Flandra"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Floreal"
@@ -6151,25 +6091,21 @@ msgctxt "MALE"
 msgid "Friend"
 msgstr "Arkadaş"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
@@ -6187,25 +6123,21 @@ msgctxt "Start of date range"
 msgid "From"
 msgstr "İtibaren"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
@@ -6374,26 +6306,21 @@ msgstr "Gürcistan"
 msgid "Germany"
 msgstr "Almanya"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Germinal"
@@ -6709,25 +6636,21 @@ msgstr "Here haritalar"
 msgid "Hermosillo, Mexico"
 msgstr "Hermosillo, Meksika"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Heshvan"
 msgstr "Heşvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
 msgstr "Heşvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Heshvan"
 msgstr "Heşvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
@@ -7319,25 +7242,21 @@ msgstr "Özel GEDCOM etiketleri kullanımı önerilmez. Başka uygulamalara akta
 msgid "Italy"
 msgstr "İtalya"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Iyar"
 msgstr "İyar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
 msgstr "İyar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Iyar"
 msgstr "İyar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Iyar"
@@ -7448,49 +7367,41 @@ msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "Temmuz"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-awwal"
 msgstr "Cemaziyelevvel"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-awwal"
 msgstr "Cemaziyelevvel"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Cemaziyelevvel"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Cemaziyelevvel"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-thānī"
 msgstr "Cemaziyelahir"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-thānī"
 msgstr "Cemaziyelahir"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-thānī"
 msgstr "Cemaziyelahir"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-thānī"
@@ -7562,25 +7473,21 @@ msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
 msgstr "Khor"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Khordad"
 msgstr "Hordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
 msgstr "Hordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Khordad"
 msgstr "Hordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Khordad"
@@ -7591,25 +7498,21 @@ msgstr "Hordad"
 msgid "Kiribati"
 msgstr "Kiribati"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Kislev"
@@ -8635,25 +8538,21 @@ msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
 msgstr "Temmuz"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mehr"
@@ -8728,25 +8627,21 @@ msgstr "Mesaj"
 msgid "Messages"
 msgstr "Mesajlar"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Messidor"
@@ -8923,25 +8818,21 @@ msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
 msgstr "Mor"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mordad"
@@ -9061,25 +8952,21 @@ msgstr "Çoklu doğum"
 msgid "Multiple marriages"
 msgstr "Çoklu evlilikler"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Muḥarram"
 msgstr "Muharrem"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Muḥarram"
 msgstr "Muharrem"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muḥarram"
 msgstr "Muharrem"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Muḥarram"
@@ -9308,25 +9195,21 @@ msgstr "Nijer"
 msgid "Nigeria"
 msgstr "Nijerya"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Nissan"
 msgstr "Nisan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
 msgstr "Nisan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Nissan"
 msgstr "Nisan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Nissan"
@@ -9337,25 +9220,21 @@ msgstr "Nisan"
 msgid "Niue"
 msgstr "Niue"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Nivose"
@@ -9892,25 +9771,21 @@ msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
 msgstr "Ord"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehişt"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
 msgstr "Ordibehişt"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehişt"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
@@ -10428,25 +10303,21 @@ msgstr "Lütfen geçerli bir e-posta adresi girin."
 msgid "Please try again."
 msgstr "Lütfen tekrar deneyin."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
@@ -10507,25 +10378,21 @@ msgstr "Posta kodu"
 msgid "Powered by webtrees™"
 msgstr "Webtrees™ tarafından desteklenmektedir"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Prairial"
@@ -10703,49 +10570,41 @@ msgstr "Cevap: "
 msgid "Rabbi"
 msgstr "Haham"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rebiülevvel"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-awwal"
 msgstr "Rebiülevvel"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rebiülevvel"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rebiülevvel"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Rebiülahir"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-thani"
 msgstr "Rebiülahir"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Rebiülahir"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-thani"
@@ -10769,25 +10628,21 @@ msgctxt "Pedigree"
 msgid "Rada"
 msgstr "Süt anne"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "Receb"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "Receb"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "Receb"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rajab"
@@ -10798,25 +10653,21 @@ msgstr "Receb"
 msgid "Raleigh, North Carolina, United States"
 msgstr "Raleigh, Kuzey Karolina, ABD"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "Ramazan"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "Ramazan"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "Ramazan"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
@@ -11794,25 +11645,21 @@ msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
 msgstr "Shah"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Shahrivar"
 msgstr "Şehriver"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
 msgstr "Şehriver"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
 msgstr "Şehriver"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
@@ -11851,49 +11698,41 @@ msgstr "Paylaşılan notlar"
 msgid "Shares"
 msgstr "Paylaşımlar"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "Şevval"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "Şevval"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "Şevval"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Şevval"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shaʿbān"
 msgstr "Şaban"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shaʿbān"
 msgstr "Şaban"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shaʿbān"
 msgstr "Şaban"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shaʿbān"
@@ -11932,25 +11771,21 @@ msgstr "O vaftiz edildi"
 msgid "She was cremated"
 msgstr "O yakıldı"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Shevat"
 msgstr "Şevat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
 msgstr "Şevat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Shevat"
 msgstr "Şevat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Shevat"
@@ -12379,25 +12214,21 @@ msgstr "Site haritaları"
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr "Site haritaları, web yöneticilerinin arama motorlarına tarama için mevcut olan bir web sitesindeki sayfalar hakkında bilgi vermesinin bir yoludur. Tüm büyük arama motorları site haritalarını destekler. Daha fazla bilgi için <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a> adresine bakın."
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Sivan"
@@ -12978,25 +12809,21 @@ msgstr "Tacikistan"
 msgid "Tampico, Mexico"
 msgstr "Tampico, Meksika"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
@@ -13036,25 +12863,21 @@ msgstr "Şablonlar"
 msgid "Temple"
 msgstr "Tapınak"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tevet"
@@ -13692,25 +13515,21 @@ msgstr "Yeni versiyon kontrolü sırasında hata oluştu."
 msgid "There was an error uploading your file."
 msgstr "Dosyanızı yüklerken bir hata oluştu."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
@@ -14209,49 +14028,41 @@ msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tishrei"
 msgstr "Tişri"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
 msgstr "Tişri"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tishrei"
 msgstr "Tişri"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
@@ -14952,25 +14763,21 @@ msgstr "Çeşitli istatistik grafikleri."
 msgid "Vatican City"
 msgstr "Vatikan Şehri"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
@@ -14981,25 +14788,21 @@ msgstr "Vendémiaire"
 msgid "Venezuela"
 msgstr "Venezuela"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Ventose"
@@ -18043,25 +17846,21 @@ msgstr "çevrilmiş %s (%s)"
 msgid "invert selection"
 msgstr "seçimi tersine çevir"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
 msgstr "ek günler"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
 msgstr "ek günler"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
 msgstr "ek günler"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
@@ -19507,25 +19306,21 @@ msgstr[1] "±%s yıllar"
 msgid "Åland Islands"
 msgstr "Aland Adaları"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ṣafar"
 msgstr "Safer"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ṣafar"
 msgstr "Safer"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ṣafar"
 msgstr "Safer"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ṣafar"
@@ -19573,2642 +19368,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid " per sex"
-#~ msgstr " her cinsiyet"
-
-#~ msgid " per time period"
-#~ msgstr " her zaman dönemi"
-
-#, php-format
-#~ msgid "#%s"
-#~ msgstr "#%s"
-
-#, php-format
-#~ msgid "%1$s %2$s has a %3$s link to %4$s."
-#~ msgstr "%1$s %2$s, %4$s ile %3$s bağlantısına sahip."
-
-#, php-format
-#~ msgid "%1$s does not exist."
-#~ msgstr "%1$s mevcut değil."
-
-#~ msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgstr[0] "Burada %3$s nesilden toplam %2$s normalin dışında %1$s birey gösterildi."
-#~ msgstr[1] "Burada %3$s nesilden toplam %2$s normalin dışında %1$s birey gösterildi."
-
-#~ msgid "%1$s individual is missing birthplace map coordinates: %2$s."
-#~ msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-#~ msgstr[0] "%1$s kişinin doğum yerinin harita koordinatları eksik: %2$s."
-#~ msgstr[1] "%1$s kişinin doğum yerinin harita koordinatları eksik: %2$s."
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "%s gün önce"
-#~ msgstr[1] "%s gün önce"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "%s saat önce"
-#~ msgstr[1] "%s saat önce"
-
-#~ msgid "%s individual is private."
-#~ msgid_plural "%s individuals are private."
-#~ msgstr[0] "%s bireyin hususi alanıdır."
-#~ msgstr[1] "%s bireyin hususi alanıdır."
-
-#, php-format
-#~ msgid "%s individual with events between %s and %s"
-#~ msgid_plural "%s individuals with events between %s and %s"
-#~ msgstr[0] "%s ve %s tarihleri arasındaki olaylarla %s birey"
-#~ msgstr[1] "%s ve %s tarihleri arasındaki olaylarla %s birey"
-
-#, php-format
-#~ msgid "%s individual with events in %s"
-#~ msgid_plural "%s individuals with events in %s"
-#~ msgstr[0] "%s ile alakalı %s adet birey"
-#~ msgstr[1] "%s ile alakalı %s adet birey"
-
-#, php-format
-#~ msgid "%s individual with events in %s between %s and %s"
-#~ msgid_plural "%s individuals with events in %s between %s and %s"
-#~ msgstr[0] "%s ve %s tarihleri arasındaki olaylarla %s içerisinde %s birey"
-#~ msgstr[1] "%s ve %s tarihleri arasındaki olaylarla %s içerisinde %s birey"
-
-#~ msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "%s sunucuda devre dışı bırakıldı. Tekrar etkinleştirmeden webtrees 'i kuramazsınız. Lütfen sunucu yöneticisinden etkinleştirmesini isteyin."
-
-#, php-format
-#~ msgid "%s location has been imported."
-#~ msgid_plural "%s locations have been imported."
-#~ msgstr[0] "%s konum içe aktarıldı."
-#~ msgstr[1] "%s konum içe aktarıldı."
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "%s dakika önce"
-#~ msgstr[1] "%s dakika önce"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "%s ay önce"
-#~ msgstr[1] "%s ay önce"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "%s saniye önce"
-#~ msgstr[1] "%s saniye önce"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "%s yıl önce"
-#~ msgstr[1] "%s yıl önce"
-
-#, php-format
-#~ msgid "(aged less than %s)"
-#~ msgstr "(%s daha az yaşlı)"
-
-#, php-format
-#~ msgid "(aged more than %s)"
-#~ msgstr "(%s daha çok yaşlı)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(çocuklukta)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(doğarken)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(ölü doğdu)"
-
-#~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-#~ msgstr "<b> GUID </ b> Bu bağlamda \"genel benzersiz ID\" için kullanılan bir kısaltmadır. <br> GUID, tekrarlanabilir bir şekilde her bireyin belirlemenize yardımcı olmak için tasarlanmıştır, böylece örneğin Salt Lake şehrindeki LDS kilisesi Aile Tarihi Merkezi yada kendi sunucularınızda çalışan uygun uygulamalarla, GEDCOM dosyası kaynaklandığının neresi olduğunun bir önemi olmadan bilginin aynı kişi ile ilgili olup olmadığı belirlenir. Aile Tarihi Merkezi'nin amacı soy verilerinin merkezi bir depoda toplayıp, web servisleri aracılığıyla ortaya koymaktır . Böylece herhangibir uygulamanın bu veriye erişip güncellenmesine olanak sağlanmış olur. <br>Eğer GEDCOM dosyasını herhangi birisi ile paylaşmak niyetinde değilseniz, webtrees'in bu GUID 'leri oluşturması gerekmez; Ancak, bunu yapmak GEDCOM dosyasının boyutunu artırmak dışında hiçbir zararı yoktur."
-
-#~ msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-#~ msgstr "<b>Önemli Uyarı:</b> Aktarma sihirbazı medya öğelerinin taşınmasında yardımcı olamaz. Aktarma sihirbazının işlemi bittikten sonra medya ayarlarını yapmanız ve madya ögelerini taşımanız yada kopyalamanız gerekmektedir."
-
-#~ msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-#~ msgstr "<b>Lütfen Dikkat:</b> Yaşayan bilgilere ait kişisel bilgiler yalnızca aile, akraba ve yakın arkadaşlarına verilebilir. Herhangi bir özel veri almadan önce bu kişi ile olan ilişki durumunun doğrulanması istenir. Bazı durumlarda ölü kişilere ait veriler de gizli olabilir. Böyle bir durum söz konusu ise bunun nedeni, bu kişinin yaşayıp yaşamadığını belirlemek için yeterli bilgi olmadığı ve/veya bu kişi hakkında daha fazla bilgi olmaması olabilir.<br><br>Soru sormadan önce lütfen tarihleri, yakın akrabalarını kontrol ederek doğru kişiyi sorguladığınızdan emin olun. Eğer soya ait verilerde değişiklik yapılmasını istiyorsanız, lütfen değiştirmek istediğiniz veri ile birlikte bu bilginin kaynağını da belirtiniz."
-
-#~ msgid "<p>Notice: By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-#~ msgstr "<p>Uyarı: Bu formu doldurup göndererek şunları kabul etmiş olursunuz:<ul><li>sitemizde listelenen yaşayan bireylerin mahremiyetini korumak için;</li><li>ve aşağıdaki metin kutusuna, kiminle akraba olduğunuzu açıklamak veya web sitemizde listelenmesi gereken biri hakkında bize bilgi vermek için.</li></ul></div>"
-
-#, php-format
-#~ msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-#~ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-
-#~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-#~ msgstr "Bir veritabanı sunucusu birden fazla veritabanı depolayabilir. (Sunucunuzun yöneticisi tarafından oluşturulan) mevcut bir veritabanı seçin veya yeni bir tane oluşturun (eğer veritabanı kullanıcı hesabınız gerekli yetkilere sahip ise)."
-
-#~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-#~ msgstr "Yeni şifreniz oluşturulmuş ve '%s' email adresine gönderilmiştir. Bu şifre ile giriş yaptıktan sonra şifrenizi değiştirebilirsiniz."
-
-#~ msgid "A new password has been requested for your username."
-#~ msgstr "Kullanıcı adınız için yeni bir şifre talep ettiniz."
-
-#~ msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-#~ msgstr "Aile ağacındaki tüm aileleri alfabetik olarak listeleyen kenar çubuğu."
-
-#~ msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-#~ msgstr "Aile ağacında tüm bireylerin alfabetik bir listesini gösteren bir kenar çubuğu."
-
-#~ msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-#~ msgstr "Filigran, diğer kişileri izinsiz kopyalardan vazgeçirmek için resimler üzerine konan yazılardır."
-
-#~ msgid "A.M."
-#~ msgstr "öğleden önce"
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=abcçdefgğhıijklmnoöpqrsştuüvwxyz"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=ABCÇDEFGĞHIİJKLMNOÖPQRSŞTUÜVWXYZ"
-
-#~ msgid "Acadia"
-#~ msgstr "Acadia"
-
-#~ msgid "Action"
-#~ msgstr "Aksiyon"
-
-#~ msgid "Add a blank row"
-#~ msgstr "Boş Satır Ekle"
-
-#~ msgid "Add a brother or sister"
-#~ msgstr "Yeni bir erkek veya kız kardeş ekle"
-
-#~ msgid "Add a child to this family"
-#~ msgstr "Bu aileye bir çocuk ekle"
-
-#~ msgid "Add a geographic location"
-#~ msgstr "Yeni bir coğrafi konumu ekle"
-
-#~ msgid "Add a husband to this family"
-#~ msgstr "Bu aile için bir koca ekle"
-
-#~ msgid "Add a restriction"
-#~ msgstr "Bir kısıtlama ekle"
-
-#~ msgid "Add a scrollbar when block contents grow"
-#~ msgstr "Gerektiğinde kaydırma çubuğu ekle"
-
-#~ msgid "Add a shared note"
-#~ msgstr "Paylaşılan bir not ekle"
-
-#~ msgid "Add a son or daughter"
-#~ msgstr "Yeni bir oğul veya kız ekle"
-
-#~ msgid "Add a wife to this family"
-#~ msgstr "Bu aileye bir hanım ekle"
-
-#~ msgid "Add an associate"
-#~ msgstr "Yeni bir iştirak ekle"
-
-#~ msgid "Add an event"
-#~ msgstr "Etkinlik ekle"
-
-#~ msgid "Add another individual to the chart"
-#~ msgstr "Çizelgeye başka kişi ekle"
-
-#~ msgid "Add historic events to an individual‘s page."
-#~ msgstr "Bir kişinin sayfasına geçmiş etkinlikleri ekleyin."
-
-#~ msgid "Add links"
-#~ msgstr "Linkler ekle"
-
-#~ msgid "Add married names"
-#~ msgstr "Evli isimler ekle"
-
-#~ msgid "Add missing married names"
-#~ msgstr "Eksik evlilik adları ekle"
-
-#~ msgid "Add the GEDCOM media path to filenames"
-#~ msgstr "GEDCOM medya yolunu dosya adlarına ekle"
-
-#~ msgid "Add to favorites"
-#~ msgstr "Favorilere ekle"
-
-#~ msgid "Add watermarks to thumbnails"
-#~ msgstr "Resim ön izlemelerine filigran ekle"
-
-#~ msgid "Add/edit a journal/news entry"
-#~ msgstr "Bir dergi/haber girişi ekle/düzenle"
-
-#~ msgid "Additional information"
-#~ msgstr "Ek Bilgiler"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Her iki ebeveyn tarafından evlât edinildi"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Her iki ebeveyn tarafından evlât edinildi"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Baba tarafından evlât edinildi"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Baba tarafından evlât edinildi"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "Anne tarafından evlât edinildi"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "Anne tarafından evlât edinildi"
-
-#~ msgid "Advanced"
-#~ msgstr "Gelişmiş"
-
-#~ msgid "Advanced fact preferences"
-#~ msgstr "Gelişmiş gerçek tercihleri"
-
-#~ msgid "Advanced name facts"
-#~ msgstr "Gelişmiş ad gerçekleri"
-
-#~ msgid "Advanced place name facts"
-#~ msgstr "Gelişmiş yer adı gerçekleri"
-
-#~ msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-#~ msgstr "Giriş yaptıktan sonra \"Benim sayfam\" menüsü altında \"Hesabım\" bağlantısını tıklayın ve şifrenizi değiştirmek için yeni şifrenizi girin."
-
-#~ msgid "Age of item"
-#~ msgstr "Öğenin yaşı"
-
-#~ msgid "Age related to birth year"
-#~ msgstr "Doğum yılına ilişkin yaşı"
-
-#~ msgid "Age related to death year"
-#~ msgstr "Ölüm yılına ilişkin yaş"
-
-#~ msgid "All changes in PhpGedView must be accepted"
-#~ msgstr "PhpGedView deki bütün değişiklikler onaylanmalı"
-
-#~ msgid "All existing PhpGedView users must have distinct email addresses"
-#~ msgstr "Tüm mevcut PhpGedView kullanıcıları farklı email adresine sahip ollmalı"
-
-#~ msgid "All family facts"
-#~ msgstr "Tüm aile gerçekleri"
-
-#~ msgid "All files have read and write permission."
-#~ msgstr "Tüm alanların okuma ve yazma izni var."
-
-#~ msgid "All individual facts"
-#~ msgstr "Tüm bireysel gerçekler"
-
-#~ msgid "All repository facts"
-#~ msgstr "Tüm bilgi havuzu gerçekleri"
-
-#~ msgid "All source facts"
-#~ msgstr "Tüm kaynak gerçekler"
-
-#~ msgid "Allow users to select their own theme"
-#~ msgstr "Kullanıcı kendi temasını seçebilir"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Also known as"
-#~ msgstr "Olarak da bilinir"
-
-#~ msgctxt "MALE"
-#~ msgid "Also known as"
-#~ msgstr "Olarak da bilinir"
-
-#~ msgid "Alternative place name"
-#~ msgstr "Alternatif yer adı"
-
-#~ msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-#~ msgstr "Bir ortak, tanık veya rahip gibi bu gerçek veya olayla ilgili olan başka bir kişidir."
-
-#~ msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-#~ msgstr "Bir ortak, bir arkadaş veya işveren gibi bu kişiyle ilişkisi olan başka bir kişidir."
-
-#~ msgid "An edit menu for individuals, families, sources, etc."
-#~ msgstr "Bireyler, aileler, kaynaklar vb için bir Düzeltme menüsü gösterir."
-
-#~ msgid "An error occurred when unzipping the file."
-#~ msgstr "Sıkıştırılmış dosyayı açarken hata oluştu."
-
-#~ msgid "An unknown error occurred"
-#~ msgstr "Bilinmeyen bir hata oluştu"
-
-#~ msgid "Apply automatic corrections to your genealogy data."
-#~ msgstr "Soyağacı verilerinize otomatik düzeltmeleri uygulayın."
-
-#~ msgid "Approval of account at %s"
-#~ msgstr "%s sitedeki hesabınız onaylandı"
-
-#~ msgid "Are you sure you want to remove links to this media object?"
-#~ msgstr "Bu medya öğesine olan bağlantıyı silmek istediğinizden emin misiniz?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
-
-#~ msgid "Associates"
-#~ msgstr "İştirakler"
-
-#, fuzzy
-#~ msgid "Automatically add unique identifiers"
-#~ msgstr "Genel benzersiz IDleri otomatikman oluştur"
-
-#~ msgid "Automatically expand list of events of close relatives"
-#~ msgstr "Otomatikman yakın akrabaların listesini genişlet"
-
-#~ msgid "Available blocks"
-#~ msgstr "Kullanılabilir Bloklar"
-
-#~ msgid "Basic"
-#~ msgstr "Temel"
-
-#~ msgid "Batch update"
-#~ msgstr "Toplu güncelleme"
-
-#~ msgid "Bearing"
-#~ msgstr "kerteriz"
-
-#~ msgid "Body"
-#~ msgstr "Mesaj"
-
-#~ msgid "Booklet"
-#~ msgstr "Broşür"
-
-#~ msgid "Brit milah of a brother"
-#~ msgstr "Kardeşin brit milah'ı (sünnet)"
-
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Torunun brit milah'ı (sünnet)"
-
-#~ msgctxt "daughter’s son"
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Torunun brit milah'ı (sünnet)"
-
-#~ msgctxt "son’s son"
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Torunun brit milah'ı (sünnet)"
-
-#~ msgid "Brit milah of a half-brother"
-#~ msgstr "Üvey kardeşin brit milah'ı (sünnet)"
-
-#~ msgid "Brit milah of a son"
-#~ msgstr "Oğlunun brit milah'ı (sünnet)"
-
-#~ msgid "British West Indies"
-#~ msgstr "İngiliz Bati Hint Adaları"
-
-#~ msgid "Burial of a maternal grandparent"
-#~ msgstr "Anne tarafı büyük ebeveynin mezarı"
-
-#~ msgid "Burial of a paternal grandparent"
-#~ msgstr "Baba tarafı büyük ebeveynin mezarı"
-
-#~ msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
-#~ msgstr "Varsayılan olarak bu listede sadece aile ağacında bulunan yerler listelenir. Dışardan yüklediğiniz dosyada bulunan diğer yerler ve detayları da bulunuyor olabilir. Bu seçeneği seçtiğinizde kullanılmayanlar da dahil tüm yerler listelenecektir."
-
-#~ msgid "By default, your server allows scripts to run for %s second."
-#~ msgid_plural "By default, your server allows scripts to run for %s seconds."
-#~ msgstr[0] "Varsayılan olarak sunucunuz script 'lerin %s saniye çalışmasına izin veriyor."
-#~ msgstr[1] "Varsayılan olarak sunucunuz script 'lerin %s saniye çalışmasına izin veriyor."
-
-#~ msgid "By default, your server allows scripts to use %s of memory."
-#~ msgstr "Varsayılan olarak sunucunuz script 'lerin %s hafıza kullanmasına izin veriyor."
-
-#~ msgid "Calculate the age differences between siblings, children, spouses, etc."
-#~ msgstr "Kardeşler, çocuklar, eşler, vb. arasındaki yaş farklarını hesapla."
-
-#~ msgid "Cannot create"
-#~ msgstr "Oluşturulamıyor"
-
-#~ msgid "Cape Colony"
-#~ msgstr "Pelerin Sömürgesi"
-
-#~ msgid "Case insensitive"
-#~ msgstr "Büyük/küçük harfe duyarlı"
-
-#~ msgid "Catalonia"
-#~ msgstr "Katalonya"
-
-#~ msgid "Caution!"
-#~ msgstr "Dikkat!"
-
-#~ msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-#~ msgstr "Dikkat: eski modüller çalışmayabilir yada webtrees 'in çalışmamasına neden olabilir."
-
-#~ msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-#~ msgstr "Dikkat: eski temalar çalışmayabilir yada webtrees 'in çalışmamasına neden olabilir."
-
-#~ msgid "Cemeteries"
-#~ msgstr "Mezarlıklar"
-
-#~ msgid "Center map here"
-#~ msgstr "Burada haritayı ortala"
-
-#~ msgid "Certificate number"
-#~ msgstr "Sertifika numarası"
-
-#~ msgid "Change"
-#~ msgstr "Değiştir"
-
-#~ msgid "Change flag"
-#~ msgstr "Bayrağı değiştir"
-
-#~ msgid "Change language"
-#~ msgstr "Lisan Değiştir"
-
-#~ msgid "Change the blocks on this user’s “My page”"
-#~ msgstr "Bu kullanıcının \"Benim sayfam\" bloklarını değiştir"
-
-#~ msgid "Channel Islands"
-#~ msgstr "Kanal Adaları"
-
-#~ msgid "Check file permissions…"
-#~ msgstr "Dosya izinlerini kontrol edin…"
-
-#~ msgid "Check for custom modules…"
-#~ msgstr "Özel modülleri kontrol edin…"
-
-#~ msgid "Check for custom themes…"
-#~ msgstr "Özel temaları kontrol edin…"
-
-#~ msgid "Check the access rights on this folder."
-#~ msgstr "Bu dizine erişim haklarını kontrol edin."
-
-#~ msgid "Check the settings and try again."
-#~ msgstr "Ayarları kontrol ederek tekrar deneyin."
-
-#~ msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-#~ msgstr "Yüklemek istediğiniz önizleme resmini seçiniz. Resimler için önizleme dosyalarının sistem tarafından otomatik olarak oluşturulabilmesine karşin kişisel önizleme dosyaları yüklemek isteyebilirsini. Örneğin bir video dosyası için bir resim önizleme dosyası yada bir ses dosyası için o ses kaydının sahibinın resmini önizleme dosyası olarak yükleyebilirsiniz."
-
-#~ msgid "Choose: "
-#~ msgstr "Seçin: "
-
-#~ msgid "Cleared but not yet completed"
-#~ msgstr "Temizlendi, ancak henüz tamamlanmadı"
-
-#~ msgid "Click %s to choose individual as head of family."
-#~ msgstr "Ailenin Reisi olarak seçilecek %s kişiyi tıklayın."
-
-#~ msgid "Click a row, then drag-and-drop to re-order media"
-#~ msgstr "Medyayı tekrar sıralamak için bir satır tıklayın sonra sürükle-ve-bırak"
-
-#~ msgid "Click here for PhpGedView to webtrees transfer wizard"
-#~ msgstr "webtrees transfer sihirbazına PhpGedView için burayı tıkla"
-
-#~ msgid "Click here to add, edit, or delete"
-#~ msgstr "Ekleme, Düzenleme, veya Silmek için burayı tıklayın"
-
-#~ msgid "Click here to open or close the sidebar"
-#~ msgstr "Kenar çubuğu açmak veya kapatmak için burada tıkla"
-
-#~ msgid "Click name to add individual to add links list."
-#~ msgstr "Link Listesine Eklemek için eklenecek kişi Adını tıkla."
-
-#~ msgid "Click on a title to go straight to it, or scroll down to read them all."
-#~ msgstr "Doğrudan bir başlığa gitmek için başlığı tıklayın, veya hepsini okumak için aşağıya doğru ilerleyin."
-
-#~ msgid "Click to choose individual as head of family."
-#~ msgstr "Ailenin Reisi olarak seçilecek kişiyi tıklayın."
-
-#~ msgid "Cohabitation"
-#~ msgstr "Birlikte yaşama"
-
-#~ msgid "Columns per page"
-#~ msgstr "Sayfa başına sütun"
-
-#~ msgid "Comparison"
-#~ msgstr "Karşılaştırma"
-
-#~ msgid "Compress the GEDCOM file"
-#~ msgstr "GEDCOM dosyasını sıkıştır"
-
-#~ msgid "Concatenation"
-#~ msgstr "Birbirine bağlama"
-
-#~ msgid "Configure"
-#~ msgstr "Yapılandırma"
-
-#~ msgid "Confirm password"
-#~ msgstr "Şifre tekrarı"
-
-#~ msgid "Continue adding"
-#~ msgstr "Eklemeye Devam"
-
-#~ msgid "Continued"
-#~ msgstr "Devamlı"
-
-#~ msgid "Convert CEME tags to GEDCOM 5.5.1"
-#~ msgstr "CEME etiketlerini GEDCOM 5.5.1'e dönüştür"
-
-#~ msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-#~ msgstr "NAME:_XXX etiketini GEDCOM 5.5.1 formatına dönüştür"
-
-#~ msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-#~ msgstr "_PRIM etiketlerini GEDCOM 5.5.1'e dönüştür"
-
-#~ msgid "Convert from UTF-8 to ISO-8859-1"
-#~ msgstr "UTF-8'den ISO-8859-1'e dönüştür"
-
-#~ msgid "Cookie warning"
-#~ msgstr "Çerez uyarısı"
-
-#~ msgid "Copy these files to the folder %s, replacing any that have the same name."
-#~ msgstr "Bu dosyaları %s klasörüne kopyala. Aynı isimli dosyalar değiştirilecek."
-
-#~ msgid "Count"
-#~ msgstr "Sayı"
-
-#~ msgid "Countries"
-#~ msgstr "Ülkeler"
-
-#~ msgid "Counts "
-#~ msgstr "Sayı "
-
-#~ msgid "County"
-#~ msgstr "ilçe"
-
-#~ msgid "Create a family"
-#~ msgstr "Bir aile oluştur"
-
-#~ msgid "Create a family from existing individuals"
-#~ msgstr "Mevcut bireylerden bir aile oluştur"
-
-#~ msgid "Create a website access rule"
-#~ msgstr "Web sitesi erişim kuralı oluştur"
-
-#~ msgid "Current"
-#~ msgstr "Geçerli"
-
-#~ msgid "Custom GEDCOM sub-tags"
-#~ msgstr "Özel GEDCOM alt etiketleri"
-
-#~ msgid "Custom GEDCOM tag"
-#~ msgstr "Özel GEDCOM etiketi"
-
-#~ msgid "Custom fact"
-#~ msgstr "Özel gerçek"
-
-#~ msgid "Custom tags"
-#~ msgstr "Özel etiketler"
-
-#~ msgid "Custom theme"
-#~ msgstr "Özel tema"
-
-#~ msgid "Czechoslovakia"
-#~ msgstr "Çekoslovakya"
-
-#~ msgid "Dashboard"
-#~ msgstr "Gösterge paneli"
-
-#~ msgid "Database and table names"
-#~ msgstr "Veritabanı ve tablo adı"
-
-#~ msgid "Decade of birth"
-#~ msgstr "Doğumun on yılı"
-
-#~ msgid "Decade of death"
-#~ msgstr "Ölümün on yılı"
-
-#~ msgid "Decade of marriage"
-#~ msgstr "Evliliğin on yılı"
-
-#~ msgid "Default"
-#~ msgstr "Varsayılan"
-
-#~ msgid "Default map type"
-#~ msgstr "Varsayılan harita tipi"
-
-#~ msgid "Default pedigree chart layout"
-#~ msgstr "Varsayılan Soyağacı çizelge yerleşimi"
-
-#~ msgid "Default pedigree generations"
-#~ msgstr "varsayılan soyağacı nesilleri"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Delete all existing geographic data before importing the file."
-#~ msgstr "Dosyayı içe aktarmadan önce mevcut tüm coğrafi verileri silin."
-
-#~ msgid "Delete old files…"
-#~ msgstr "Eski dosyaları sil…"
-
-#~ msgid "Delete temporary files…"
-#~ msgstr "Geçici dosyaları sil…"
-
-#~ msgid "Description unavailable"
-#~ msgstr "Açıklama bulunmuyor"
-
-#~ msgid "Desired password"
-#~ msgstr "Şifre"
-
-#~ msgid "Desired username"
-#~ msgstr "Kullanıcı adı"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Zilhicce"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Zilhicce"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Zilhicce"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Zilhicce"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Zilkade"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Zilkade"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Zilkade"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Zilkade"
-
-#~ msgid "Died as an infant: exempt"
-#~ msgstr "Bebekken öldü: muaf"
-
-#~ msgid "Died before less than 1 year old, sealing not required."
-#~ msgstr "1 yaşından önce öldü, mühür gerekmiyor."
-
-#~ msgid "Disable these modules"
-#~ msgstr "Bu modülleri devre dışı bırak"
-
-#~ msgid "Disable these themes"
-#~ msgstr "Bu temaları devre dışı bırak"
-
-#~ msgid "Display all"
-#~ msgstr "Tümü göster"
-
-#~ msgid "Display custom GEDCOM tags"
-#~ msgstr "Özel GEDCOM etiketlerini görüntüle"
-
-#~ msgid "Display map coordinates"
-#~ msgstr "Harita Koordinatlar göster"
-
-#~ msgid "Do not change to keep original filename."
-#~ msgstr "Orijinal dosya adını korumak için değişiklik yapmayınız."
-
-#~ msgid "Do not create new locations, just import coordinates for existing locations."
-#~ msgstr "Yeni yerleri oluşturma, sadece mevcut yerler için koordinatları içeri aktar."
-
-#~ msgid "Do not use maps"
-#~ msgstr "Haritaları kullanmayın"
-
-#~ msgid "Down"
-#~ msgstr "Aşağı"
-
-#~ msgid "Download geographic data"
-#~ msgstr "Coğrafi verileri indir"
-
-#~ msgid "Earliest birth year"
-#~ msgstr "İlk doğum yılı"
-
-#~ msgid "Earliest death year"
-#~ msgstr "İlk vefat yılı"
-
-#~ msgid "Edit a website access rule"
-#~ msgstr "Web sitesi erişim kuralını düzenle"
-
-#~ msgid "Edit media"
-#~ msgstr "Medya düzenle"
-
-#~ msgid "Edit the details"
-#~ msgstr "Detayları Düzenle"
-
-#~ msgid "Edit the media object"
-#~ msgstr "Medya öğesi düzenle"
-
-#~ msgid "Edit the note"
-#~ msgstr "Not düzenle"
-
-#~ msgid "Edit the repository"
-#~ msgstr "Havuzu düzenle"
-
-#~ msgid "Edit the source"
-#~ msgstr "Kaynağı düzenle"
-
-#~ msgid "Editing restriction"
-#~ msgstr "Kısıtlamayı düzenleme"
-
-#~ msgid "Eire"
-#~ msgstr "Eire"
-
-#~ msgid "Elevation"
-#~ msgstr "Yükselti"
-
-#~ msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-#~ msgstr "E-mail deki “From:” alanında kullanılacak olan e-mail adresi webtrees tarafından oluşturulur.<br><br>Gözden geçirilmeyi bekleyen değişiklikler webtrees tarafından otomatik e-mail yoluyla yöneticiye hatırlatılır. webtrees ayrıca kullanıcı hesabı açmak isteyen ziyaretçilere bilgilendirme mailleri yollar.<br><br>Genellikle otomatik oluşturuşan maillerdeki “From:” alanı <i>From: webtrees-noreply@yoursite</i> şeklinde bu maile cevap vermenin gerekmediğini gösterir. Bazı mail uygulamaları spam maillerden korunmak amacı ile mailin “From:” alanında geçerli bir mail adresi olmasını ister ve from alanında <i>webtrees-noreply</i> şeklinde olan maili kabul etmez."
-
-#~ msgid "Embedded variable"
-#~ msgstr "Gömülü değişken"
-
-#~ msgid "End IP address"
-#~ msgstr "IP adresinde bitir"
-
-#~ msgid "Enter an individual, family, or source ID"
-#~ msgstr "Bir Kişi, Aile, yada Kaynak ID girin"
-
-#~ msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-#~ msgstr "Bu medya öğesi bağlamak istediğiniz kişi, aile veya kaynak için ID girin veya arayın."
-
-#~ msgid "Enter report values"
-#~ msgstr "Rapor değerleri girin"
-
-#~ msgid "Exact text"
-#~ msgstr "Tam metin"
-
-#~ msgid "FAQ position"
-#~ msgstr "SSS konumu"
-
-#~ msgid "FAQ visibility"
-#~ msgstr "S.S.S görülebilirliği"
-
-#~ msgid "FOKO country"
-#~ msgstr "FOKO ülkesi"
-
-#~ msgid "Facts for repository records"
-#~ msgstr "Bilgi havuzu kayıtları için gerçekler"
-
-#~ msgid "Facts for source records"
-#~ msgstr "Kaynak kayıtları için gerçekler"
-
-#~ msgid "Family ID prefix"
-#~ msgstr "Aile ID öneki"
-
-#~ msgid "Family group information"
-#~ msgstr "Aile Grup Bilgisi"
-
-#~ msgid "Family list"
-#~ msgstr "Aile listesi"
-
-#~ msgid "File containing places (CSV)"
-#~ msgstr "Yer bilgileri içeren dosya (CSV)"
-
-#~ msgid "Find a fact or event"
-#~ msgstr "Bir olgu vea hadise bul"
-
-#~ msgid "Find a family"
-#~ msgstr "Bir aile bul"
-
-#~ msgid "Find a media object"
-#~ msgstr "Bir medya öğesi bul"
-
-#~ msgid "Find a place"
-#~ msgstr "Bir yer bul"
-
-#~ msgid "Find a repository"
-#~ msgstr "Bir havuz bul"
-
-#~ msgid "Find a shared note"
-#~ msgstr "Bir not bul"
-
-#~ msgid "Find an individual"
-#~ msgstr "Bir birey bul"
-
-#, php-format
-#~ msgid "Flag of %s"
-#~ msgstr "%s bayrağı"
-
-#~ msgid "Font"
-#~ msgstr "Yazı tipi"
-
-#~ msgid "From"
-#~ msgstr "Başlangıç tarihi"
-
-#~ msgid "GEDCOM sub-tag"
-#~ msgstr "GEDCOM alt etiketi"
-
-#~ msgid "Gender"
-#~ msgstr "Cinsiyet"
-
-#~ msgid "Gender icon on charts"
-#~ msgstr "Çizelgelerde cinsiyet ikonu"
-
-#~ msgid "Get an API key from Google."
-#~ msgstr "Google API anahtarı alın."
-
-#~ msgid "Gives users the option of selecting their own theme."
-#~ msgstr "Kullanıcıya kendi temasını seçme seçeneği sunar."
-
-#~ msgid "Google Street View™"
-#~ msgstr "Google Sokak Görüntüle™"
-
-#~ msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
-#~ msgstr "Google günlük olarak sınırlı miktarda anonim harita isteklerine izin verir. Bundan daha fazlasına ihtiyacınız varsa, bir Google hesabı ve bir API anahtarı gerekir."
-
-#~ msgid "Google™ maps preferences"
-#~ msgstr "Google Harıtalar™ tercihleri"
-
-#~ msgid "Google™ webmaster tools"
-#~ msgstr "Google™ web yöneticisi araçları"
-
-#~ msgid "Grandparents"
-#~ msgstr "Büyükebeveynler"
-
-#~ msgid "Head of household"
-#~ msgstr "Ev Halkın Başkanı"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
-
-#~ msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
-#~ msgstr "Bu bağlantıyı kullanılarak bir bayrak yada ikon seçilebilirsiniz. Coğrafi lokasyon ile birlikte bu ikon da gösterilir."
-
-#~ msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
-#~ msgstr "Buraya yakınlık seviyesi girilebilir. Bu coğrafi lokasyon haritada gösterildiğinde bu değer en küçük yakınlık seviyesi olarak kullanılır."
-
-#~ msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
-#~ msgstr "Buradan hassaslığı belirtebilirsiniz. Bu ayar kullanılarak latitude ve longitude koordinatlarındaki virgülden sonraki basamak sayısı belirlenir."
-
-#~ msgid "Hide/show GEDCOM tags in the edit forms"
-#~ msgstr "Düzenleme formlarında GEDCOM etiketlerini gizle/göster"
-
-#~ msgid "Highest population"
-#~ msgstr "En yüksek nüfus"
-
-#~ msgid "Historical facts"
-#~ msgstr "Tarihi olgular"
-
-#~ msgid "House"
-#~ msgstr "Ev"
-
-#~ msgid "House number"
-#~ msgstr "Ev numarası"
-
-#~ msgid "Hybrid"
-#~ msgstr "Karısık"
-
-#~ msgid "Icon"
-#~ msgstr "İkon"
-
-#~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
-#~ msgstr "Belirli bir soyadı belirlenen eşik değerinden daha az tekrarlıyor ise, bu listede görünmez. Eğer bu soyadının listede görünmesini istenirse buradan el ile eklenebilir. Birden fazla soyadı girmek için virgül ile ayrılmalıdır. <b>Soyadlar büyük/küçük harf duyarlıdır.</b>"
-
-#~ msgid "If the thumbnail image is a custom image, you should add it to the media object."
-#~ msgstr "Küçük resim özel bir resimse, bunu medya nesnesine eklemelisiniz."
-
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-#~ msgstr "Küçük resim orijinal resim ile aynıysa, artık gerekli değildir ve onu silmeniz gerekir."
-
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
-#~ msgstr "Küçük resim orijinal resimle aynı ise, artık gerekli değildir ve silmelisiniz. Özel bir resimse, onu medya objesine eklemeniz gerekir."
-
-#~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
-#~ msgstr "Eğer ziyaretçiler soy ağacını göremiyorlar ise hesap isteğinde bulunamayacaklardır. Bu durumda kullanıcı hesaplarını sizin el ile açmanız gerekecektir."
-
-#~ msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
-#~ msgstr "Veritabanına bir UNIX soketi kullanarak bağlanırsanız, yolu buraya girin ve bağlantı noktası numarasını boş bırakın."
-
-#~ msgid "If you do not use two-factor authentication, enable <a href=\"https://www.google.com/settings/security/lesssecureapps\">less secure applications</a> and use your Google password."
-#~ msgstr "İki faktörlü kimlik doğrulama kullanmıyorsanız, <a href=\"https://www.google.com/settings/security/lesssecureapps\"> daha az güvenli uygulamalar </a> seçeneğini etkinleştirin ve Google şifrenizi kullanın."
-
-#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
-#~ msgstr "Eğer çok miktarda pasif yeriniz var ise, listenin oluşturulmasını yavaşlatabilir."
-
-#~ msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-#~ msgstr "Eğer boş bir blok gizlenirse blok dolu olana kadar yapılandırmasını değiştirmek mümkün olmayacaktır."
-
-#~ msgid "If you use two-factor authentication, create an <a href=\"https://myaccount.google.com/apppasswords\">app password</a>."
-#~ msgstr "İki faktörlü kimlik doğrulaması kullanıyorsanız, bir <a href=\"https://myaccount.google.com/apppasswords\"> uygulama şifresi </a> oluşturun."
-
-#~ msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>. Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
-#~ msgstr "Eğer eşik değerini artırmadan Ortak Soyadı listesinden bir soyadı kaldırmak isterseniz, soyadını buraya girerek yapabilirsiniz. Birden fazla soyadı girilirse, bir virgül ile ayrılmalıdır. <b>Soyadları büyük/küçük harfe duyarlıdır</b>. Burada girilen soyadları \"Ana sayfa\" da bulunan \"En yaygın soyadları\" listesinden de silinecektir."
-
-#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
-#~ msgstr "Eğer sunucu güvenlik ilkesi izin veriyorsa webtrees yönetim sayfasını kullanarak sunucu belleği ve CPU zamanı artırmak mümkün olacaktır. Aksi taktirde sunucu yöneticisine başvurmanız gerekir."
-
-#~ msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one."
-#~ msgstr "Web siteniz <b>http://www.example.com/webtrees/</b> ve <b>http://webtrees.example.com/</b> gibi birden fazla URL kullanarak ulaşılabilir ise, tercih edilen URL'yi belirtebilirsiniz. Diğer URL'ler için gelen istekler tercih edilen URL e yönlendirilecektir."
-
-#~ msgid "Import Options."
-#~ msgstr "İçe aktarma seçenekleri."
-
-#~ msgid "Import all places from a family tree"
-#~ msgstr "Bir aile ağacından tüm yerleri içeri aktar"
-
-#~ msgid "Import custom thumbnails from webtrees version 1"
-#~ msgstr "Webtrees sürüm 1'den özel küçük resimleri içe aktar"
-
-#~ msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-#~ msgstr "Webtrees Sürüm 1'de, “thumbs” klasörlerinde dosyalar oluşturarak medya nesnelerine özel küçük resimler ekleyebilirsiniz."
-
-#~ msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-#~ msgstr "Webtrees sürüm 2'de, özel küçük resimler aynı medya nesnesinde ikinci bir medya dosyası olarak saklanır."
-
-#~ msgid "Include fully matched places"
-#~ msgstr "Tam konumlanmış yerleri içer"
-
-#~ msgid "Include media (automatically zips files)"
-#~ msgstr "Medyayı dahil et (dosyaları otomatik olarak sıkıştırır)"
-
-#~ msgid "Individual ID prefix"
-#~ msgstr "Birey ID öneki"
-
-#~ msgid "Individual distribution"
-#~ msgstr "Birey dağılım"
-
-#~ msgid "Individual list"
-#~ msgstr "Birey listesi"
-
-#, php-format
-#~ msgid "Individuals with surname %s"
-#~ msgstr "Soyadı %s olan bireyler"
-
-#~ msgid "Information about the request is shown under the link below."
-#~ msgstr "Üyelik hakkında bilgiler aşağıdaki linkin altında gösterilmiştir."
-
-#~ msgid "Installation folder"
-#~ msgstr "Kurulum dizini"
-
-#~ msgid "Instructions for Google mail"
-#~ msgstr "Google gmail için talimatlar"
-
-#~ msgid "Interred"
-#~ msgstr "Alelacele Gömülmüş"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Interred"
-#~ msgstr "Alelacele Gömülmüş"
-
-#~ msgctxt "MALE"
-#~ msgid "Interred"
-#~ msgstr "Alelacele Gömülmüş"
-
-#~ msgid "Invalid GEDCOM format"
-#~ msgstr "Geçersiz GEDCOM biçimi"
-
-#~ msgid "Joint family name"
-#~ msgstr "Ortak aile adı"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Cemaziyelevvel"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Cemaziyelevvel"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Cemaziyelevvel"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Cemaziyelevvel"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Cemaziyelahir"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Cemaziyelahir"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Cemaziyelahir"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Cemaziyelahir"
-
-#~ msgid "Keep"
-#~ msgstr "Koru"
-
-#~ msgid "Keep link in list"
-#~ msgstr "Listede Linki koru"
-
-#~ msgid "LDS ordinance codes in chart boxes"
-#~ msgstr "Çizelge kutularında LDS buyruğunun kodunu"
-
-#~ msgid "LDS temple"
-#~ msgstr "LDS tapınağı"
-
-#~ msgid "Latest birth year"
-#~ msgstr "Son doğum yılı"
-
-#~ msgid "Latest death year"
-#~ msgstr "Son vefat yılı"
-
-#~ msgid "Leave this blank to use the default value."
-#~ msgstr "Bu ayarı boş bırakırsanız, varsayılan değer kullanılacak."
-
-#~ msgid "Left"
-#~ msgstr "Sol"
-
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgid "Level"
-#~ msgstr "Seviye"
-
-#~ msgid "Limit"
-#~ msgstr "Kota"
-
-#~ msgid "Limit display by"
-#~ msgstr "Olarak göstermeyi kısıtla"
-
-#~ msgid "Link to an existing media object"
-#~ msgstr "Mevcut medya öğesini bağla"
-
-#~ msgid "Linked database ID"
-#~ msgstr "Bağlantılı veritabanı kimliği (ID)"
-
-#~ msgid "Location not removed: this location contains sub-locations"
-#~ msgstr "Konum kaldırılmadı: bu konum alt-konumlar içeriyor"
-
-#~ msgid "Login ID"
-#~ msgstr "Giriş kullanıcı adı"
-
-#~ msgid "Longevity versus time"
-#~ msgstr "Zamana göre ömür grafiği"
-
-#~ msgid "Lost password request"
-#~ msgstr "Yeni şifre gönder"
-
-#~ msgid "Lowest population"
-#~ msgstr "En düşük nüfus"
-
-#~ msgid "Mailing name"
-#~ msgstr "Posta adı"
-
-#~ msgid "Main section blocks"
-#~ msgstr "Ana Bölüm Blokları"
-
-#~ msgid "Manage family trees "
-#~ msgstr "Aile ağaçlarını yönet "
-
-#~ msgid "Manage the links"
-#~ msgstr "Link yönetimi"
-
-#~ msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
-#~ msgstr "Bir çok mail sunucu gönderen sunucunun kendisini geçerli bir domain ismi ile tanımlamasını ister."
-
-#~ msgid "Map provider"
-#~ msgstr "Harita sağlayıcı"
-
-#~ msgid "Marriage status"
-#~ msgstr "Evlilik durumu"
-
-#~ msgid "Marriage type unknown"
-#~ msgstr "Evlilik türü bilinmiyor"
-
-#~ msgid "Married surname"
-#~ msgstr "Evlilik soyadı"
-
-#~ msgid "Match calendar"
-#~ msgstr "Eşleşme takvimi"
-
-#~ msgid "Max"
-#~ msgstr "Enfazla"
-
-#~ msgid "Maximum descendancy generations"
-#~ msgstr "En fazla Şahsi izleyen nesiller"
-
-#~ msgid "Maximum pedigree generations"
-#~ msgstr "En fazla Soyağacı nesilleri"
-
-#~ msgid "Media ID prefix"
-#~ msgstr "Medya ID öneki"
-
-#~ msgid "Media contains"
-#~ msgstr "Medya içerikleri"
-
-#, php-format
-#~ msgid "Media filenames will be prefixed by %s."
-#~ msgstr "Medya dosya adlarına %s öneki eklenecektir."
-
-#~ msgid "Medical condition"
-#~ msgstr "Sağlık durumu"
-
-#~ msgid "Memory limit"
-#~ msgstr "Hafiza sınırı"
-
-#~ msgid "Midnight"
-#~ msgstr "Geceyarısı"
-
-#~ msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
-#~ msgstr "Google haritası için minimum ve maksimum zoom seviyesi. 1 haritanın tamamını gösterir, 15 ise bir evi gösterir. 15 sadece belirli bölgeler için kullanılabilir."
-
-#~ msgid "Minimum number of occurrences to be a “common surname”"
-#~ msgstr "En çok kullanılan “Ortak Soyadı” için minimum değer"
-
-#~ msgid "Moderate pending changes"
-#~ msgstr "Ilımlıda bekleyen değişiklikler"
-
-#~ msgid "More news articles"
-#~ msgstr "Daha fazla haber makaleleri"
-
-#~ msgid "Most sites are configured to use the default value of 3306."
-#~ msgstr "Çoğu site varsayılan değeri 3306 kullanacak şekilde yapılandırılmıştır."
-
-#~ msgid "Move left"
-#~ msgstr "Sola Taşı"
-
-#~ msgid "Move right"
-#~ msgstr "Sağa taşı"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharrem"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharrem"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharrem"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharrem"
-
-#~ msgid "MySQL gave the error: %s"
-#~ msgstr "MySQL hata verdi: %s"
-
-#~ msgid "MySQL variables"
-#~ msgstr "MySQL değişkenleri"
-
-#~ msgid "Name contains"
-#~ msgstr "Adı"
-
-#~ msgid "Names to add to common surnames (comma separated)"
-#~ msgstr "Ortak Soyadılara eklenecek soyadılar (virgülle ayrılmış)"
-
-#~ msgid "Names to remove from common surnames (comma separated)"
-#~ msgstr "Ortak Soyadılarda gösterilmeyecek soyadılar (virgülle ayrılmış)"
-
-#~ msgid "Neighborhood"
-#~ msgstr "Kasaba/Semt"
-
-#~ msgid "Netherlands Antilles"
-#~ msgstr "Hollanda Antilleri"
-
-#~ msgid "Neutral Zone"
-#~ msgstr "Tarafsız Bölge"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Never married"
-#~ msgstr "Hiç evlenmemiş"
-
-#~ msgctxt "MALE"
-#~ msgid "Never married"
-#~ msgstr "Hiç evlenmemiş"
-
-#~ msgid "No ancestors in the database."
-#~ msgstr "Veritabanında atalar yok."
-
-#~ msgid "No custom modules are enabled."
-#~ msgstr "Etkinleştirilmiş özel modül yok."
-
-#~ msgid "No custom themes are enabled."
-#~ msgstr "Etkinleştirilmiş özel tema yok."
-
-#~ msgid "No limit"
-#~ msgstr "Kota yok"
-
-#~ msgid "No map data exists for this individual"
-#~ msgstr "Bu birey için harita verisi yok"
-
-#~ msgid "No mappable items"
-#~ msgstr "Haritalanabilir kayıt bulunmuyor"
-
-#~ msgid "No media file was provided."
-#~ msgstr "Hiçbir medya dosyası sağlanmadı."
-
-#~ msgid "No places found"
-#~ msgstr "Yerler bulunamadı"
-
-#~ msgid "No places have been found."
-#~ msgstr "Yer bulunamadı."
-
-#~ msgid "Nobody at all"
-#~ msgstr "Hiç kimse"
-
-#~ msgid "Noon"
-#~ msgstr "Öğlen"
-
-#~ msgid "Not a valid individual, family, or source ID"
-#~ msgstr "Birey, Aile yada Kaynak ID geçerli değil"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Not married"
-#~ msgstr "Evli değil"
-
-#~ msgctxt "MALE"
-#~ msgid "Not married"
-#~ msgstr "Evli değil"
-
-#~ msgid "Note ID prefix"
-#~ msgstr "Not ID öneki"
-
-#~ msgid "Number of generations"
-#~ msgstr "Nesillerin sayısı"
-
-#~ msgid "Number of items"
-#~ msgstr "Öğe sayısı"
-
-#~ msgid "Number of items to show"
-#~ msgstr "Gösterilecek öğe sayısı"
-
-#~ msgid "Number of months since the last sign-in for a user’s account to be considered inactive: "
-#~ msgstr "Kullanıcıları temizlemek için son x aydan beri giriş yapmayan kullanıcıları göster: "
-
-#~ msgid "Oldest at bottom"
-#~ msgstr "Eneski altta"
-
-#~ msgid "Oldest at top"
-#~ msgstr "Eneski üste"
-
-#~ msgid "Optional prefixes and suffixes"
-#~ msgstr "İsteğe bağlı önek ve sonek"
-
-#~ msgid "Order"
-#~ msgstr "Sıra"
-
-#~ msgid "Ordnance Survey historic maps"
-#~ msgstr "Mühimmat Araştırması tarihi haritaları"
-
-#~ msgid "Other folder… please type in"
-#~ msgstr "Diğer dizin… lütfen yazın"
-
-#~ msgid "Other genealogy applications might not recognize this data."
-#~ msgstr "Diğer şecere uygulamaları bu verileri tanımayabilir."
-
-#~ msgid "Others"
-#~ msgstr "Diğerleri"
-
-#~ msgid "Overwrite existing coordinates."
-#~ msgstr "Mevcut koordinatların üzerine yaz."
-
-#~ msgid "Own charts"
-#~ msgstr "Kendi çizelgeleriniz"
-
-#~ msgid "P.M."
-#~ msgstr "öğleden sonra"
-
-#~ msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP uzantısı “%1$s” devredişidir. Bunsuz aşağıdaki özellikler çalışmaz: %2$s. Etkinleştirmek için sunucunuzun yöneticisine başvurun."
-
-#~ msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP uzantısı “%s” devredişidir. Bu etkinleştirilene kadar webtrees yükleyemezsiniz. Etkinleştirmek için sunucunuzun yöneticisine başvurun."
-
-#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP ayarı “%1$s” devredişidir. Bunsuz aşağıdaki özellikler çalışmaz: %2$s. Etkinleştirmek için sunucunuzun yöneticisine başvurun."
-
-#~ msgid "PHP time limit"
-#~ msgstr "PHP zaman sınırı"
-
-#~ msgid "Parent"
-#~ msgstr "Ebeveyn"
-
-#~ msgid "Passwords do not match."
-#~ msgstr "Şifreler birbiriyle uymuyor."
-
-#~ msgid "Passwords must contain at least 8 characters."
-#~ msgstr "Şifreler en az 8 karakter içermelidir."
-
-#~ msgid "Pedigree chart"
-#~ msgstr "Soy şeması"
-
-#~ msgid "Pedigree of %s"
-#~ msgstr "%s için Soyağacı"
-
-#~ msgid "Phonetic"
-#~ msgstr "Fonetik"
-
-#~ msgid "Phonetic title"
-#~ msgstr "Fonetik başlık"
-
-#~ msgid "PhpGedView might be installed in one of these folders:"
-#~ msgstr "PhpGedView bu klasörlerden birine kurulmalı:"
-
-#~ msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
-#~ msgstr "PhpGedView versiyonu 4.2.3 yada #%s kadar herhangi bir SVN olmalı"
-
-#~ msgid "PhpGedView must use the same database as webtrees."
-#~ msgstr "PhpGedView ile webtrees aynı veritabanı kullanması gerekir."
-
-#~ msgid "PhpGedView to webtrees transfer wizard"
-#~ msgstr "PhpGedView'den webtrees transfer sihirbazı"
-
-#~ msgid "Place check"
-#~ msgstr "Yerleri Kontrol Et"
-
-#~ msgid "Place contains"
-#~ msgstr "Aranacak Yer"
-
-#~ msgid "Place of citizenship"
-#~ msgstr "Vatandaşlık yeri"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "%s dosyası oluşturarak siteyi çevrimdışı hale getirin…"
-
-#~ msgid "Place the website online, by deleting the file %s…"
-#~ msgstr "%s dosyasını silerek siteyi çevrimiçi hale getirin…"
-
-#~ msgid "Places found"
-#~ msgstr "Bulunan yerler"
-
-#~ msgid "Places in %s"
-#~ msgstr "%s Yerleri"
-
-#~ msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-#~ msgstr "Lokasyonlar soy ağacı için standartlara uygun girilmelidir. Soy ağacında, yer isimleri en özelden en genele doğru sıralanarak belirtilmelidir. Farklı seviyeler virgül şle birbirinden ayrılmalıdır. Kayıt edilen lokasyon bilgisi, yaşamsal kayıtların tutulduğu idari düzeyi hiyerarşik olarak temsil etmelidir.<br><br>Örneğin, Çankaya gibi bir yer \"Küçükesat, Çankaya, Ankara, Türkiye\" olarak girilmiş olacaktır.<br><br>Şimdi bu lokasyon bilgisinin her kısmını inceleyelim. İlk bölüm, \"Küçükesat,\" olayın meydana geldiği bir semt ya da mahalledir. Bazı ülkelerde şehir içinde semt, mahalle veya ilçe olabilir. Bu durumda, bu kısım şehirden önce gelmelidir. Bir sonraki bölüm, \"Çankaya,\" ilçesidir. \"Ankara\" Şehir (İl) ve \"Türkiye\" ülkedir.<br><br>Yer bilgisi bu düzeyde bilinmiyor ise, virgül arasında bir boşluk bırakılmalıdır. Örneğin yukarıdaki örnekte, Küçükesat mahallesinin hangi ilçe sınırları içinde olduğu bilinmiyor ise şu şekilde kayıt edilmelidir: \"Küçükesat, , Ankara, Türkiye\". Örneğin kişinin sadece Ankara'da doğduğunu biliyorsunuz, bu durumda şu şekilde girebilirsiniz: \", , Ankara, Türkiye\".<br><br> Veritabanında var olan bir yerleşim yerini bulmak için <b>Yer Bul</b> bağlantısını kullanabilirsiniz."
-
-#~ msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-#~ msgstr "Geçerli koordinatlara sahip olmayan yerler haritada gösterilmez ve kenar çubuğu girişi çevresinde kırmızı kenarlık olur"
-
-#~ msgid "Please enter a given name, surname, or place in addition to the year"
-#~ msgstr "Lütfen Yıl için ek olarak bir Verilen adı, Soyadı yada Yer giriniz"
-
-#~ msgid "Please enter a message subject."
-#~ msgstr "Lütfen bir mesaj konusu girin."
-
-#~ msgid "Please enter more than one character."
-#~ msgstr "Lütfen birden fazla karakter giriniz."
-
-#~ msgid "Please enter some message text before sending."
-#~ msgstr "Lütfen göndermeden önce mesaj metni girin."
-
-#~ msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
-#~ msgstr "Lütfen bu mesajınıza cevap verebilmemiz için email adresinizi girin. Eğer email adresinizi vermez iseniz sorunuza cevap vermemiz mümkün olmayacaktır. Email adresiniz bu sorunuza cevap dışında başka bir yerde kullanılmayacaktır."
-
-#~ msgid "Precision"
-#~ msgstr "Hassasiyet"
-
-#~ msgid "Precision of the latitude and longitude"
-#~ msgstr "Enlem ve boylam hassasiyeti"
-
-#~ msgid "Prefixes"
-#~ msgstr "Önekler"
-
-#~ msgid "Presentation style"
-#~ msgstr "Sunum stili"
-
-#~ msgid "Privacy restriction"
-#~ msgstr "Gizlilik kısıtlaması"
-
-#~ msgid "Quick repository facts"
-#~ msgstr "Hızlı bilgi havuzu gerçekleri"
-
-#~ msgid "Quick source facts"
-#~ msgstr "Hızlı kaynak gerçekler"
-
-#~ msgid "README documentation"
-#~ msgstr "BENİOKU belgeleri"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rebiülevvel"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rebiülevvel"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rebiülevvel"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rebiülevvel"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rebiülahir"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rebiülahir"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rebiülahir"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rebiülahir"
-
-#~ msgid "Rada"
-#~ msgstr "Süt anne"
-
-#~ msgid "Really delete all geographic data?"
-#~ msgstr "Tüm coğrafi veriler gerçekten silinsin mi?"
-
-#~ msgid "Records are not the same type. Cannot merge records that are not the same type."
-#~ msgstr "Kayıtlar aynı tip değiller. Aynı tip olmayan kayıtları birleştirilmez."
-
-#~ msgid "Redraw map"
-#~ msgstr "Haritayı Tekrarçiz"
-
-#~ msgid "Reliability of the information"
-#~ msgstr "Bilginin güvenilirliği"
-
-#~ msgid "Religious name"
-#~ msgstr "Dinî adı"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Religious name"
-#~ msgstr "Dini ismi"
-
-#~ msgctxt "MALE"
-#~ msgid "Religious name"
-#~ msgstr "Dini ismi"
-
-#~ msgid "Remove flag"
-#~ msgstr "Bayrağı kaldır"
-
-#~ msgid "Remove link from list"
-#~ msgstr "Listeden Linki kaldır"
-
-#~ msgid "Renumber"
-#~ msgstr "Yeniden numaralandır"
-
-#~ msgid "Renumber family tree"
-#~ msgstr "Aile ağacını yeniden numaralandır"
-
-#~ msgid "Repositories found"
-#~ msgstr "Bulunan Havuzlar"
-
-#~ msgid "Repository ID prefix"
-#~ msgstr "Havuz ID öneki"
-
-#~ msgid "Repository contains"
-#~ msgstr "Havuz içerikleri"
-
-#~ msgid "Reset to initial map state"
-#~ msgstr "İlk harita durumuna sıfırla"
-
-#~ msgid "Restrict access to the website, using IP addresses and user-agent strings."
-#~ msgstr "IP adresleri ve kullanıcı aracısı dizeleri kullanılarak siteye erişimi kısıtlayın."
-
-#~ msgid "Resulting value"
-#~ msgstr "Sonuçlanan değer"
-
-#~ msgid "Right"
-#~ msgstr "Sağ"
-
-#~ msgid "Right section blocks"
-#~ msgstr "Sağ Bölüm Blokları"
-
-#~ msgid "Romanized title"
-#~ msgstr "Romanize başlık"
-
-#~ msgid "Rule"
-#~ msgstr "Kural"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Safer"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Ṣafar"
-#~ msgstr "Safer"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Safer"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Safer"
-
-#~ msgid "Satellite"
-#~ msgstr "Uydu"
-
-#~ msgid "Search engine"
-#~ msgstr "Arama motoru"
-
-#~ msgid "Search for individuals to add to add Links list."
-#~ msgstr "Linkler listesine Eklemek için eklenecek Kişi için ara."
-
-#~ msgid "Search globally"
-#~ msgstr "küresel Arama"
-
-#~ msgid "Search locally"
-#~ msgstr "Yerel Arama"
-
-#~ msgid "Select a block and use the arrows to move it."
-#~ msgstr "Bir bloğu seçin ve okları kullanarak taşıyın."
-
-#~ msgid "Select chart type"
-#~ msgstr "Çizelge tipi seç"
-
-#~ msgid "Select events"
-#~ msgstr "Hadiseleri Seç"
-
-#~ msgid "Select flag"
-#~ msgstr "Bayrak seç"
-
-#~ msgid "Select the desired count interval"
-#~ msgstr "İstenen sayı aralığı seçin"
-
-#~ msgid "Select the languages that will be shown in menus."
-#~ msgstr "Menüde gösterilmesini istediğiniz dilleri seçiniz."
-
-#~ msgid "Select the stats to show in this block"
-#~ msgstr "Bu blok içinde göstermek için istatistikleri seçin"
-
-#~ msgid "Send broadcast messages"
-#~ msgstr "Kullanıcılara mesaj gönder"
-
-#~ msgid "Serbia and Montenegro"
-#~ msgstr "Sırbistan ve Karadağ"
-
-#~ msgid "Server file containing places (CSV)"
-#~ msgstr "Yerlerin içerdiği sunucudaki dosya (CSV)"
-
-#~ msgid "Session timeout"
-#~ msgstr "Oturum zaman aşımı"
-
-#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
-#~ msgstr "Nesil ve soy çizelgesinde gösterilecek nesil sayısının varsayılan değerini girin."
-
-#~ msgid "Set the maximum number of generations to display on descendancy charts."
-#~ msgstr "Nesiller çizelgesinde gösterilecek nesil sayısı için maksimum değeri girin."
-
-#~ msgid "Set the maximum number of generations to display on pedigree charts."
-#~ msgstr "Soy ağacı çizelgesinde gösterilecek nesil sayısı için maksimum değeri girin."
-
-#~ msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts. This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-#~ msgstr "Yapılandırma dosyaları, kullanıcı ayarları ve grafiklerde, bireylerin (ID)kimlik numarası sorulduğunda GEDCOM ID yerine RIN numarasını kullanmak için <b>Evet</b> seçiniz. Bu ayarlama export işlemi sırasında her seferinde aynı GEDCOM ID si kullanmayıp her seferinde aynı RIN kullanana soy ağacı programları için yararlı olacaktır."
-
-#~ msgid "Shared note contains"
-#~ msgstr "Paylaşılan Not içerikleri"
-
-#~ msgid "Shared notes found"
-#~ msgstr "Bulunan Paylaşılan Notlar"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Şaban"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Shaʿbān"
-#~ msgstr "Şaban"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Şaban"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Şaban"
-
-#~ msgid "Short version"
-#~ msgstr "Kısa versiyon"
-
-#~ msgid "Should this block be hidden when it is empty"
-#~ msgstr "Bu blok boş olduğu zaman gizlensin mi"
-
-#~ msgid "Show all notes and source references on notes and sources tabs"
-#~ msgstr "Tüm notların ve kaynakların referanslarını notlar ve kaynaklar sekmesinden göster"
-
-#~ msgid "Show all spouses and ancestors"
-#~ msgstr "Tüm eşleri ve ataları göster"
-
-#~ msgid "Show all tags"
-#~ msgstr "Tüm etiketleri göster"
-
-#~ msgid "Show chart details by default"
-#~ msgstr "Varsayılan olarak grafik detayını göster"
-
-#~ msgid "Show common surnames"
-#~ msgstr "Ortak soyadları göster"
-
-#~ msgid "Show counts before or after name"
-#~ msgstr "Toplamları adın öncesinde yada sonrasında göster"
-
-#~ msgid "Show cousins"
-#~ msgstr "Kuzenleri göster"
-
-#~ msgid "Show date differences"
-#~ msgstr "Yaş Farklarını Göster"
-
-#~ msgid "Show details"
-#~ msgstr "Detayları Göster"
-
-#~ msgid "Show hit counters on Portal and Individual pages."
-#~ msgstr "Ana sayfa ve Bireysel sayfalarda sayaçları göster."
-
-#~ msgid "Show images"
-#~ msgstr "Resimleri göster"
-
-#~ msgid "Show inactive places"
-#~ msgstr "Aktif olmayan yerleri göster"
-
-#~ msgid "Show lifespans"
-#~ msgstr "Ömür çizelgesi göster"
-
-#~ msgid "Show only births, deaths, and marriages"
-#~ msgstr "Sadece doğumları, ölümleri, ve evlilikleri göster"
-
-#~ msgid "Show only the selected tags"
-#~ msgstr "Sadece seçilen etiketleri göster"
-
-#~ msgid "Show places in hierarchy"
-#~ msgstr "Hiyerarşide Yerleri Göster"
-
-#~ msgid "Show related individuals/families"
-#~ msgstr "İlişkili kişileri/aileleri göster"
-
-#~ msgid "Show statistics charts"
-#~ msgstr "İstatistik grafiklerini göster"
-
-#~ msgid "Show the location of places and events using the Google™ maps mapping service."
-#~ msgstr "Google™ maps harita hizmeti kullanılarak yer ve olaylar yerini göster."
-
-#~ msgid "Sicily"
-#~ msgstr "Sicilya"
-
-#~ msgid "Sign-in URL"
-#~ msgstr "Giriş URL"
-
-#~ msgid "Signed-in as "
-#~ msgstr "Giriş yapılan "
-
-#~ msgid "Simple search filter based on the characters entered, no wildcards are accepted."
-#~ msgstr "Girilen karakterler ile yapılan basit arama filtresi. Joker karakterler kabul edilmez."
-
-#~ msgid "Size of map (in pixels)"
-#~ msgstr "Haritanın boyutu (piksel)"
-
-#~ msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-#~ msgstr "Bazı yer adları isteğe bağlı önek ve sonek ile yazılmış olabilir. Örneğin, \"Orange\" yerine \"Orange County\". Eğer aile ağacı tam yer adını içeriyor fakat coğrafi veri tabanı kısa adı içeriyor ise, göz ardı edilecek önek ve son ekleri listesini belirtmelisiniz. Çoklu seçenekler noktalı virgül ile ayrılmalıdır. Örneğin, \"İlçe, İlçesi\", \"County;County of\" yada \"Township;Twp;Twp.\"."
-
-#~ msgid "Source ID prefix"
-#~ msgstr "Kaynak ID öneki"
-
-#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-#~ msgstr "Kaynak alıntılar, verilerin kalitesini (birincil, ikincil vb.) ve olayın kaynağa kaydedildiği tarihi kaydetmek için alanlar içerebilir. Bu alanları kullanmazsanız, yeni kaynak alıntıları oluştururken bunları devre dışı bırakabilirsiniz."
-
-#~ msgid "Source contains"
-#~ msgstr "Kaynak içerkleri"
-
-#~ msgid "Spouse census date"
-#~ msgstr "Eşin nüfus sayım tarihi"
-
-#~ msgid "Spouse census place"
-#~ msgstr "Eşin nüfus sayım yeri"
-
-#~ msgid "Spouse note"
-#~ msgstr "Eş notu"
-
-#~ msgid "Standard"
-#~ msgstr "Standart"
-
-#~ msgid "Start IP address"
-#~ msgstr "IP adresinden başla"
-
-#~ msgid "Start at parents"
-#~ msgstr "Ebeveynlerle başla"
-
-#~ msgid "Statistics chart"
-#~ msgstr "Çizelge İstatistikleri"
-
-#~ msgid "Store watermarked full size images on server"
-#~ msgstr "Filigranlı tam boyutlu resimleri ayrıca sunucuya kaydet"
-
-#~ msgid "Store watermarked thumbnails on server"
-#~ msgstr "Filigranlı resim önizlemelerini sunucuya kaydet"
-
-#~ msgid "Street name"
-#~ msgstr "Sokak adı"
-
-#~ msgid "Subdivision"
-#~ msgstr "Alt bölüm"
-
-#~ msgid "Suffixes"
-#~ msgstr "Sonekler"
-
-#~ msgid "Support for non-standard GEDCOM tags."
-#~ msgstr "Standart olmayan GEDCOM etiketleri için destek."
-
-#~ msgid "System settings"
-#~ msgstr "Sistem ayarları"
-
-#~ msgid "Tag"
-#~ msgstr "Etiket"
-
-#~ msgid "Tell visitors why this site uses cookies."
-#~ msgstr "Ziyaretçilere neden bu sitenin çerezleri kullandığını anlatın."
-
-#~ msgid "Terrain"
-#~ msgstr "Topografik"
-
-#~ msgid "The FAQ list is empty."
-#~ msgstr "SSS listesi boş."
-
-#~ msgid "The GEDCOM standard does not allow URLs in media objects."
-#~ msgstr "GEDCOM standardı medya nesnelerinde URL kullanımına izin vermiyor."
-
-#~ msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-#~ msgstr "\"PhpGedView to webtrees\" sihirbazı, yöneticilerin PhpGedView kurulumlarını yeni webtrees a değiştirmek için yardımcı otomatik proses dir. Sihirbaz tüm PhpGedView GEDCOM ve diğer veritabanı bilgilerini doğrudan webtrees veritabanına aktaracaktır. Aşağıdaki şartlar gereklidir:"
-
-#~ msgid "The data in this website has been collected for the purposes of genealogical research."
-#~ msgstr "Bu web sitesindeki veriler soy araştırma amacıyla toplanmıştır."
-
-#~ msgid "The database reported the following error message:"
-#~ msgstr "Veritabanı aşağıdaki hata iletisini bildirdi:"
-
-#~ msgid "The details of this family are private."
-#~ msgstr "Bu ailenin detayları hususidir."
-
-#~ msgid "The details of this individual are private."
-#~ msgstr "Bu bireyin ayrıntıları hususidir."
-
-#~ msgid "The file %s could not be updated."
-#~ msgstr "%s dosyası güncellenemedi."
-
-#~ msgid "The file %s has been created."
-#~ msgstr "%s dosyası oluşturuldu."
-
-#, php-format
-#~ msgid "The folder %s does not exist, and it could not be created."
-#~ msgstr "%s klasör mevcut değil, ve oluşturulamadı."
-
-#~ msgid "The following places have been changed:"
-#~ msgstr "Aşağıdaki konumlar değiştirildi:"
-
-#~ msgid "The following places would be changed:"
-#~ msgstr "Aşağıdaki konumlar değiştirilecek:"
-
-#~ msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
-#~ msgstr "Aşağıdaki kurallar, bir ziyaretçinin bir insan (tam erişim izni), bir arama motoru robotu (kısıtlı erişim izni) veya istenmeyen bir tarayıcı (tüm erişim kısıtlamak) olup olmadığına karar vermek için kullanılır."
-
-#~ msgid "The media file %s does not exist."
-#~ msgstr "Medya %s dosyası mevcut değil."
-
-#~ msgid "The media file was not found in this family tree."
-#~ msgstr "Bu aile ağacında medya dosyası bulunamadı."
-
-#~ msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-#~ msgstr "Yüklediğiniz medya dosyası, sunucuda bilgisayarınızdaki isminden farklı olerak isimlendirilebilir. Lokal bilgisayarınızda verdiğiniz isim sizin için anlamlı olmasına rağmen diğerleri için anlamlı olmayabileceğinden dolayı bunu kullanmanız uygun olabilir. Sizin gibi başkalarının da \"Dedem.jpg\" adında bir dosyayı yüklemeye çalışabileceğini de göz önünde bulundurmalısınız.<br><br>Bu alan yüklediğiniz dosyanın yeni adını belirtiniz. Buraya yazdığınız yeni dosya adı, ayrıca yükleyeceğiniz yada otomatik olarak oluşturulan önizleme resminin de adı için kullanılacaktır. Dosya uzantısını girmeniz gerekli değildir. (jpg, gif, pdf, doc, etc.).<br><br>Bilgisayarınızda bulunan dosyanın orjinal adını korumak için bu alanı boş bırakınız."
-
-#~ msgid "The most common repository facts are listed separately, so that they can be added more easily."
-#~ msgstr "En yaygın bilgi havuzu gerçekleri, daha kolay eklenebilmeleri için ayrı olarak listelenmiştir."
-
-#~ msgid "The most common source facts are listed separately, so that they can be added more easily."
-#~ msgstr "En yaygın kaynak gerçekler, daha kolay eklenebilmeleri için ayrı ayrı listelenmiştir."
-
-#~ msgid "The new files are currently located in the folder %s."
-#~ msgstr "Yeni dosyalar %s klasöründe."
-
-#~ msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
-#~ msgstr "Belirtilen adın tekrarlama sayısı haritada gösterilir. Bu alanı boş bırakırsanız, en yaygın soyadı kullanılır."
-
-#, php-format
-#~ msgid "The parameter “%s” is missing."
-#~ msgstr "“%s” parametresi eksik."
-
-#~ msgid "The passwords do not match."
-#~ msgstr "Şifreler eşleşmiyor."
-
-#~ msgid "The preferences for the chart “%s” have been updated."
-#~ msgstr "“%s” çizelgesi için tercihler güncellendi."
-
-#~ msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-#~ msgstr "Önek isteğe bağlıdır. ancak önerilir. Benzersiz tablolar vererek birkaç farklı uygulamalar aynı veritabanında paylaşmayı sağlayabilirsiniz. Önerilen \"wt_\" ancak istediğiniz herhangi bir sey olabilir."
-
-#~ msgid "The problem"
-#~ msgstr "Problem"
-
-#~ msgid "The record %1$s has been renamed to %2$s."
-#~ msgstr "%1$s kaydı %2$s olarak değiştirildi."
-
-#~ msgid "The record has been copied to the clipboard."
-#~ msgstr "Kayıt panoya kopyalandı."
-
-#~ msgid "The regular expression appears to contain an error. It can’t be used."
-#~ msgstr "Düzenli ifadede bir hata görünüyor. Kullanılamaz."
-
-#~ msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-#~ msgstr "Tema menüsü sadece web sitesi seçeneklerinde kullanıcıların kendi temalarını seçmelerine izin verildiğinde gösterilecektir."
-
-#~ msgid "The thumbnail file %1$s could not be renamed to %2$s."
-#~ msgstr "Önizleme %1$s dosyası %2$s olarak yeniden adlandırılanamadı."
-
-#~ msgid "The thumbnail file %1$s has been renamed to %2$s."
-#~ msgstr "Önizleme %1$s dosyası %2$s olarak başarıyla adlandırıldı."
-
-#~ msgid "The thumbnail file %s does not exist."
-#~ msgstr "Önizleme dosyası %s mevcut değil."
-
-#~ msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
-#~ msgstr "Saniye olarak webtrees in tekrar oturum açmak gerekmeden oturumu açık tutması için gerekli süre. Varsayılan değer 7200 saniye (2 saat)."
-
-#~ msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
-#~ msgstr "HTML sayfası başlığındaki \"meta description\" etiketi içerisine yerleştirilecek metin. Aile ağacının adını kullanmak için bu alanı boş bırakın."
-
-#~ msgid "The version of %s is too new."
-#~ msgstr "%s sürümü çok yeni."
-
-#~ msgid "The version of %s is too old."
-#~ msgstr "%s sürümü çok eski."
-
-#~ msgid "The website access rule has been created."
-#~ msgstr "Site erişim kuralı oluşturuldu."
-
-#~ msgid "The website access rule has been deleted."
-#~ msgstr "Site erişim kuralı silindi."
-
-#~ msgid "The website access rule has been updated."
-#~ msgstr "Site erişim kuralları güncellendi."
-
-#~ msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
-#~ msgstr "www.geonames.org web sitesi geniş bir yer adları veritabanı sağlar. Bu, yeni yerlere girerken aranabilir. Bu özelliği kullanmak için, www.geonames.org adresinde ücretsiz bir hesap açmalı ve kullanıcı adını sağlamalısınız."
-
-#~ msgid "The “%” character is a wildcard, and will match zero or more other characters."
-#~ msgstr "\"%\" Karakteri bir jokerdir ve sıfır veya daha fazla karakter ile işlenecektir."
-
-#~ msgid "Theme menu"
-#~ msgstr "Tema menüsü"
-
-#~ msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
-#~ msgstr "Temalar üç düzeyde seçilebilir: Kullanıcı, aile ağacı ve web sitesi. Kullanıcı ayarları soyağacı ayarlarından, soyağacı ayarları da web sitesi ayarından önceliklidir. Bir düzeyde \"varsayılan tema\" seçilmesi sonraki düzeyde de kullanılır."
-
-#~ msgid "There is no account with the username or email “%s”."
-#~ msgstr "Kullanıcı adı yada mail adresi “%s” olan bir kullanıcı hesabı bulunamadı."
-
-#, php-format
-#~ msgid "There is no user account with the email “%s”."
-#~ msgstr "“%s” e-postasına sahip kullanıcı hesabı yok."
-
-#~ msgid "These pages provide access to all the preferences and management tools for this webtrees site."
-#~ msgstr "Bu sayfa bu webtrees sitesi için tüm yapılandırma ayarlarını ve yönetim araçlarına erişim sağlar."
-
-#~ msgid "This GEDCOM file is encoded using %1$s. Assume this to mean %2$s."
-#~ msgstr "Bu GEDCOM %1$s kullanılarak kodlandı. Bunun %2$s olduğunu varsay."
-
-#, php-format
-#~ msgid "This could be caused by an error at %s"
-#~ msgstr "Bu %s ile ilgili bir hatadan kaynaklanıyor olabilir"
-
-#~ msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
-#~ msgstr "Bu veritabanı ve tablo-öneki başka bir uygulama tarafından kullanılıyor gibi görünüyor. Varolan bir PhpGedView sisteminiz varsa yeni bir webtrees sistemi oluşturmanız gerekir. Daha sonra PhpGedView verileri ve ayarları içeri aktarabilirsiniz."
-
-#~ msgid "This database is only running MySQL version %s. You cannot install webtrees here."
-#~ msgstr "Bu veritabanı MySQL sürümü %s kullanıyor. Burada webtrees kuramazsınız."
-
-#~ msgid "This entry is ignored if you have entered a URL into the filename field."
-#~ msgstr "Bu girişe eğer dosya adı alanına bir URL girerseniz yoksayılacaktır."
-
-#~ msgid "This family remained childless"
-#~ msgstr "Bu aile çocuksuz kaldı"
-
-#~ msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
-#~ msgstr "Bu dosya bu sunucu üzerindeki başka bir soyağacı veritabanına bağlıdır. Bu bağlantı kaldırılana kadar silinemez, taşınamaz, veya yeniden adlandırılanmaz."
-
-#~ msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-#~ msgstr "Bu giriş kutusu takvimin yılını değiştirmenizi sağlar. Takvimin yılını değiştirmek için, kutuya bir yıl yazın ve <b>Enter</b> e basın.<br><br><b>Gelişmiş özellikler</b><b>Yıl görünümü</b><dl><dt><b>Bir yıldan fazla</b></dt><dd>Yıl aralığını kullanarak tarih arayabilirsiniz.<br><br>Yıl aralıkları aramaya <u>dahildir </u>. Bunun durumda, tarih aralığı belirtilen ilk yılın 1 Ocak tarihinden, girilen ikinci yılın 31 Aralık tarihine kadar olan aralığı kapsar. Tarih aralığına birkaç örnek şu şekildedir:<br><br><b>1992-5</b> 1992 den 1995 e kadar olan tüm olaylar.<br><b>1972-89</b> 1972 den 1989 a kadar olan tüm olaylar.<br><b>1610-759</b> 1610 dan 1759 a kadar tüm olaylar.<br><b>1880-1905</b> 1880 den 1905 e kadar tüm olaylar.<br><b>880-1105</b> 880 den 1105 e kadar tüm olaylar.<br><br> Belirtilen onyıl yada yüzyıl daki tüm olayları görmek için son rakam yerine <b>?</b> kullanabilirsiniz. Örneğin, <b>197?</b> 1970-1979 arası tüm olaylar yada <b>16??</b> 1600-1699 arası tüm olaylaı bulmak için kullanılabilir.<br><br>Bir yıl aralığı seçtiğinizde takvim yıl görünümüne geçecektir.</dd></dl>"
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-#~ msgstr "Bu, ad ekle/düzenle formunda gösterilecek olan GEDCOM gerçek etiketlerinin virgülle ayrılmış bir listesidir. İbranice, Yunanca, Kiril veya Arapça gibi Latin olmayan alfabeler kullanıyorsanız, birkaç farklı alfabede adları saklamanıza izin vermek için _HEB, ROMN, FONE, vb. gibi etiketler eklemek isteyebilirsiniz."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-#~ msgstr "Bu, yeni bir aile eklerken gösterilecek GEDCOM gerçek etiketlerinin virgülle ayrılmış bir listesidir. Örneğin, MARR listede yer alıyorsa form üzerinde evlilik tarihi ve evlilik yeri alanları gösterilecektir."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-#~ msgstr "Bu, yeni bir kişi eklerken gösterilecek olan GEDCOM gerçek etiketlerinin virgülle ayrılmış bir listesidir. Örneğin listede BIRT varsa, formda doğum tarihi ve doğum yeri alanları gösterilecektir."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-#~ msgstr "Bu, yer adları eklediğinizde veya düzenlediğinizde gösterilecek olan, virgülle ayrılmış bir GEDCOM gerçek etiketleri listesidir. İbranice, Yunanca, Kiril veya Arapça gibi Latin olmayan alfabeler kullanıyorsanız, yer adlarını birkaç farklı alfabede saklamanıza izin vermek için _HEB, ROMN, FONE, vb. gibi etiketler eklemek isteyebilirsiniz."
-
-#~ msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
-#~ msgstr "Bu <abbr title=\"Son Zaman Azizleri İsa Mesih Kilisesi\">LDS</abbr> yönetmeliklerinin birey için özetidir. \"B\" Bir LDS vaftiz gösterir. \"E\" Bir LDS bağışlanmayı gösterir. \"S\" Bir LDS eş mühülenmesini gösterir. \"P\", bir LDS çocuk için ebeveyn-mühürlenmesini gösterir."
-
-#~ msgid "This is case sensitive."
-#~ msgstr "Bu büyük/küçük harfe duyarlıdır."
-
-#~ msgid "This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails."
-#~ msgstr "Bu büyük küçük harfe duyarlıdır. Eğer bu adı taşıyan bir veritabanı mevcut değil ise webtrees sizin için oluşturmaya çalışacaktır. Başarılı olması için sunucunun ayarlarına bağlıdır, ancak başarısız olursa size haber verilecektir."
-
-#~ msgid "This is the initial value for the “show details” option on the charts."
-#~ msgstr "Grafiklerdeki \"Detay göster\" seçeneği için başlangıç ayarı."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-#~ msgstr "Bu, kullanıcılarınızın ailelere ekleyebileceği GEDCOM bilgilerinin listesidir. Gerektiğinde gerçek adlarını, hatta özel adları bile kaldırarak veya ekleyerek bu listeyi değiştirebilirsiniz. Bu listede görünen gerçek isimleri, \"Benzersiz aile gerçekleri\" listesinde de görünmemelidir."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-#~ msgstr "Bu, kullanıcılarınızın bireylere ekleyebileceği GEDCOM bilgilerinin listesidir. Gerektiğinde gerçek adlarını, hatta özel adları bile kaldırarak veya ekleyerek bu listeyi değiştirebilirsiniz. Bu listede görünen gerçek isimleri, \"Benzersiz bireysel gerçekler\" listesinde de görünmemelidir."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-#~ msgstr "Bu, kullanıcılarınızın bilgi havuzlarına ekleyebileceği GEDCOM bilgilerinin listesidir. Gerektiğinde gerçek adlarını, hatta özel adları bile kaldırarak veya ekleyerek bu listeyi değiştirebilirsiniz. Bu listede görünen gerçek isimleri, \"Benzersiz bilgi havuzu gerçekleri\" listesinde de görünmemelidir."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-#~ msgstr "Bu, kullanıcılarınızın kaynaklara ekleyebileceği GEDCOM bilgilerinin listesidir. Gerektiğinde gerçek adlarını, hatta özel adları bile kaldırarak veya ekleyerek bu listeyi değiştirebilirsiniz. Bu listede görünen gerçek isimleri, \"Benzersiz kaynak gerçekler\" listesinde de görünmemelidir."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-#~ msgstr "Bu, kullanıcılarınızın ailelere yalnızca bir kez ekleyebileceği GEDCOM bilgilerinin listesidir. Örneğin, MARR bu listede varsa, kullanıcılar bir aileye birden fazla MARR kaydı ekleyemezler. Bu listede görünen gerçek isimleri, “Tüm aile gerçekleri” listesinde de görünmemelidir."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-#~ msgstr "Bu, kullanıcılarınızın bireylere yalnızca bir kez ekleyebileceği GEDCOM bilgilerinin listesidir. Örneğin, BIRT bu listede varsa, kullanıcılar bir kişiye birden fazla BIRT kaydı ekleyemezler. Bu listede görünen gerçek isimleri, \"Tüm bireysel gerçekler\" listesinde de görünmemelidir."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-#~ msgstr "Bu, kullanıcılarınızın bilgi havuzlarına yalnızca bir kez ekleyebileceği GEDCOM bilgilerinin listesidir. Örneğin, NAME bu listedeyse, kullanıcılar bir arşive birden fazla NAME kaydı ekleyemezler. Bu listede görünen gerçek isimleri, “Tüm bilgi havuzu gerçekleri” listesinde de görünmemelidir."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-#~ msgstr "Bu, kullanıcılarınızın kaynaklara yalnızca bir kez ekleyebileceği GEDCOM bilgilerinin listesidir. Örneğin, bu listede TITL varsa, kullanıcılar bir kaynağa birden fazla TITL kaydı ekleyemezler. Bu listede görünen gerçek isimleri, \"Tüm kaynak gerçekler\" listesinde de görünmemelidir."
-
-#~ msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
-#~ msgstr "Bir soyadının \"Ana Sayfa\" da bulunan \"En çok ortak soy adları\" listesinde görüntülenebilmesi için gerekli olan tekrar sayısı."
-
-#~ msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
-#~ msgstr "Otomatik resim önizleme dosyaları oluşturulurken kullanılacak resim genişliği (pixel). Varsayılan değer 100 dür."
-
-#~ msgid "This may be a mistake in your data."
-#~ msgstr "Bu verinizde bir yanlışlık olabilir."
-
-#~ msgid "This may cause a problem for other applications."
-#~ msgstr "Bu diğer uygulamalar için bir soruna neden olabilir."
-
-#~ msgid "This may cause a problem for webtrees."
-#~ msgstr "Bu webtrees için bir soruna neden olabilir."
-
-#~ msgid "This media file does not exist."
-#~ msgstr "Bu medya dosyası mevcut değil."
-
-#~ msgid "This media file exists, but cannot be accessed."
-#~ msgstr "Bu medya dosyası mevcut, ancak erişilemez."
-
-#~ msgid "This media file is broken and cannot be watermarked."
-#~ msgstr "Bu medya dosyası bozuk ve filigranlaşmaz."
-
-#~ msgid "This media object is not linked to any other record."
-#~ msgstr "Bu medya öğesi herhangi bir diğer kayıtla ilişkili değil."
-
-#~ msgid "This message will be sent to %s"
-#~ msgstr "Bu mesaj %s kullanıcıya gönderilecek"
-
-#~ msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-#~ msgstr "Bu seçenek, olgu ve hadiselere eklenen not ve alıntı kaynak referanslarının, birey sayfasındaki \"Notlar\" ve \"Kaynaklar\" sekmelerinde görüntülenmesine olanak verir.<br><br> Normalde, Notlar ve Kaynaklar sekmeleri sadece bireyin veritabanı kaydına doğrudan bağlı Not ve Kaynak referanslarını gösterir. Bunlar <i>seviye 1</i> Notlar ve Kaynak referanslarıdır.<br><br> Bu seçenek <b>Evet</b> olarak değiştirildiğinde, bu sekmeleri aynı zamanda çeşitli olgu ve hadiselerin parçası olan Notlar ve Kaynak referanslarını da gösterecektir. Bunlar <i>seviye 2</i> Notlar ve Kaynak referanslarıdır."
-
-#~ msgid "This option controls whether or not to automatically expand the <i>Events of close relatives</i> list."
-#~ msgstr "Bu seçenek <i>Yakın akrabaların olayları</i> listesinin otomatik olarak açılıp açılmayacağını kontrol eder."
-
-#~ msgid "This option controls whether or not to show the individual’s sex icon on charts.<br><br>Since the sex is also indicated by the color of the box, this option doesn’t conceal the sex. The option simply removes some duplicate information from the box."
-#~ msgstr "Bu seçenek bireyin cinsiyet simgesini grafik ve tablolarda gösterilip gösterilmeyeceğini kontrol eder.<br><br>Cinsiyet bilgisi kutuların rengi ile de belirtildiğinden, bu seçenek cinsiyet bilgisini gizlemeyecektir. Seçenek sadece kutudan bazı yinelenen bilgileri kaldırır."
-
-#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
-#~ msgstr "Bu seçenek soyağacı grafiğinin dikey yada yatay modda oluşturulması gerektiğini belirler."
-
-#~ msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
-#~ msgstr "Bu seçenek haritaya bağlı pop-up penceresinde enlem ve boylam değerlerinin görüntülenir olup olmadığını belirler."
-
-#~ msgid "This place has no coordinates"
-#~ msgstr "Bu yer için hiçbir koordinatlar yok"
-
-#~ msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
-#~ msgstr "Bu bilgi havuzu silindi. Silme işleminin bir moderatör tarafından gözden geçirilmesi gerekecektir."
-
-#, php-format
-#~ msgid "This repository has been deleted. You should review the deletion and then %1$s or %2$s it."
-#~ msgstr "Bu bilgi havuzu silindi. Silme işlemini ve ardından %1$s veya %2$s'i gözden geçirmelisiniz."
-
-#~ msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-#~ msgstr "Bu bilgi havuzu düzenlenmiştir. Değişikliklerin bir moderatör tarafından gözden geçirilmesi gerekir."
-
-#, php-format
-#~ msgid "This repository has been edited. You should review the changes and then %1$s or %2$s them."
-#~ msgstr "Bu bilgi havuzu düzenlenmiştir. Değişiklikleri ve ardından %1$s veya %2$s'i gözden geçirmelisiniz."
-
-#~ msgid "This server does not support secure downloads using HTTPS."
-#~ msgstr "Bu sunucu HTTPS üzerinden güvenli indirmeyi desteklemiyor."
-
-#~ msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-#~ msgstr "Bu, soy grafiği gibi grafik kutularında görünmesini istediğiniz doğum ve ölüme ek olarak, virgülle veya boşlukla ayrılmış bir gerçek listesi olmalıdır. Bu liste, GEDCOM 5.5.1 standardında tanımlandığı gibi gerçek etiketlerini kullanmanızı gerektirir. Örneğin, mesleğin kutuda görünmesini istiyorsanız, bu alana “OCCU” eklersiniz."
-
-#~ msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
-#~ msgstr "Bu kaynak silindi. Silme işleminin bir moderatör tarafından gözden geçirilmesi gerekecektir."
-
-#, php-format
-#~ msgid "This source has been deleted. You should review the deletion and then %1$s or %2$s it."
-#~ msgstr "Bu kaynak silindi. Silme işlemini ve ardından %1$s veya %2$s'İ gözden geçirmelisiniz."
-
-#~ msgid "This source has been edited. The changes need to be reviewed by a moderator."
-#~ msgstr "Bu kaynak düzenlenmiştir. Değişikliklerin bir moderatör tarafından gözden geçirilmesi gerekir."
-
-#, php-format
-#~ msgid "This source has been edited. You should review the changes and then %1$s or %2$s them."
-#~ msgstr "Bu kaynak düzenlenmiştir. Değişiklikleri ve ardından %1$s veya %2$s'i gözden geçirmelisiniz."
-
-#~ msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
-#~ msgstr "Bu değer, yeni coğrafi konumlar girilirken farklı düzeylerde konum hassasiyetini belirtir. Örneğin bir ülke lokasyonu için 0 basamak hassasiyet (virgülden sonraki basamak sayısı) yeterli olurken, bir kasaba için 3 veya 4 basamak gerekebilir."
-
-#~ msgid "This type of link is not allowed here."
-#~ msgstr "Bu tür bir bağlantıya burada izin verilmez."
-
-#~ msgid "This website is being upgraded. Try again in a few minutes."
-#~ msgstr "Bu web sitesi yükseltiliyor. Birkaç dakika içinde tekrar deneyin."
-
-#~ msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-#~ msgstr "Bu, yerleşim yeri isminin en üst seviye parçasını güncelleyecek. Örneğin, “Mexico”, “Quintana Roo, Mexico” ile eşleşecek fakat “Santa Fe, New Mexico” ile eşleşmeyecektir."
-
-#~ msgid "Thumbnail files must contain images."
-#~ msgstr "Önizleme dosyası resim olmalıdır."
-
-#~ msgid "Thumbnail to upload"
-#~ msgstr "Önizleme resim dosyası yükle"
-
-#~ msgid "Title in Hebrew"
-#~ msgstr "İbranice başlık"
-
-#~ msgid "To"
-#~ msgstr "Bitiş tarihi"
-
-#~ msgid "To complete the upgrade, you should install the files manually."
-#~ msgstr "Güncellemeyi tamamlamak için dosyaları eli ile kurmanız gerekmektedir."
-
-#~ msgid "To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server. If it contains a message, it will be displayed to visitors."
-#~ msgstr "Eğer dosyaların kopyalama sırasında siteye ziyaretçilerin erişimini önlemek istiyorsanız, geçici olarak sunucu üzerinde bir dosya ( %s ) oluşturabilirsiniz. Bu dosya bir mesaj içeriyorsa, bu mesaj ziyaretçilere gösterilecektir."
-
-#~ msgid "To reduce the height of the News block, the administrator has hidden some articles. You can reveal these hidden articles by clicking the <b>View the archive</b> link."
-#~ msgstr "Haber bloğunun yüksekliğini azaltmak için yönetici bazı makaleleri gizledi. <b>Arşivi göster</b> linkine tıklayarak gizlenmiş makaleleri açabilirsiniz."
-
-#~ msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
-#~ msgstr "İndirmenin boyutunu küçültmek için, verileri bir .ZIP dosyasına sıkıştırabilirsiniz. .ZIP dosyasını kullanmadan önce sıkıştırmasını açmanız gerekir."
-
-#~ msgid "To tell search engines that sitemaps are available, you can use the following links."
-#~ msgstr "Arama motorlarına site haritalarının mevcut olduğunu söylemek için aşağıdaki bağlantıları kullanabilirsiniz."
-
-#~ msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
-#~ msgstr "Site haritaları kullanılabilir olduğunu arama motorların görmeleri için robots.txt dosyanıza aşağıdaki satırı eklemeniz gerekir."
-
-#~ msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
-#~ msgstr "Google email hesabı kullanmak için aşağıdaki ayarları kullanın: sunucu = smtp.gmail.com, port = 587, güvenlik = tls, kullanıcı adı = xxxxx@gmail.com, şifreniz = [Gmail şifreniz]"
-
-#~ msgid "Top level"
-#~ msgstr "Üst Seviye"
-
-#, php-format
-#~ msgid "Total families: %s"
-#~ msgstr "Toplam aileler: %s"
-
-#, php-format
-#~ msgid "Total individuals: %s"
-#~ msgstr "Toplam bireyler: %s"
-
-#~ msgid "Total number of users"
-#~ msgstr "Toplam kullanıcı sayısı"
-
-#~ msgid "Total places: %s"
-#~ msgstr "Toplam yerler: %s"
-
-#~ msgid "Total sources: %s"
-#~ msgstr "Toplam kaynaklar: %s"
-
-#~ msgid "Tracking and analytics are not added to the control panel."
-#~ msgstr "İzleme ve analitik kontrol paneline eklenmemiştir."
-
-#~ msgid "Transylvania"
-#~ msgstr "Transilvanya"
-
-#~ msgid "Type of place markers in the place hierarchy"
-#~ msgstr "Hiyerarşi Yerlerde yer işaretlemeleri tipi"
-
-#~ msgid "Type the password again."
-#~ msgstr "Parolayı tekrar yazın."
-
-#~ msgid "Type your password again, to make sure you have typed it correctly."
-#~ msgstr "Doğru yazdığınızdan emin olmak için şifrenizi tekrar yazın."
-
-#~ msgid "Types of error"
-#~ msgstr "Hata türleri"
-
-#~ msgid "USA"
-#~ msgstr "ABD"
-
-#~ msgid "USSR"
-#~ msgstr "SSCB"
-
-#~ msgid "UTC"
-#~ msgstr "UTC"
-
-#~ msgid "Unable to connect using this username and password. Your server gave the following error."
-#~ msgstr "Bu ayarları kullanarak bağlantı kurulamıyor. Sunucu aşağıdaki hatayı verdi."
-
-#~ msgid "Unable to find record with ID"
-#~ msgstr "ID ile kayıt bulunamıyor"
-
-#~ msgid "Unique family facts"
-#~ msgstr "Benzersiz aile gerçekleri"
-
-#~ msgid "Unique individual facts"
-#~ msgstr "Benzersiz bireysel gerçekler"
-
-#~ msgid "Unique repository facts"
-#~ msgstr "Benzersiz bilgi havuzu gerçekleri"
-
-#~ msgid "Unique source facts"
-#~ msgstr "Benzersiz kaynak gerçekler"
-
-#~ msgid "Unlink the media object"
-#~ msgstr "Bağlantısız Medya"
-
-#~ msgid "Up"
-#~ msgstr "Yukarı"
-
-#~ msgid "Update all the place names in a family tree"
-#~ msgstr "Aile ağacındaki tüm yer isimlerini güncelle"
-
-#~ msgid "Upgrade anyway"
-#~ msgstr "Her halükarda güncelle"
-
-#~ msgid "Upload"
-#~ msgstr "Yükle"
-
-#~ msgid "Upload geographic data"
-#~ msgstr "Coğrafi verileri yükle"
-
-#~ msgid "Use Google™ maps for the place hierarchy"
-#~ msgstr "Hiyerarşi yer için Google Hatıraları™ kullan"
-
-#~ msgid "Use PHP mail to send messages"
-#~ msgstr "Mesajları göndermek için PHP mail kullan"
-
-#~ msgid "Use RIN number instead of GEDCOM ID"
-#~ msgstr "GEDCOM ID yerine RIN numara kullan"
-
-#~ msgid "Use full source citations"
-#~ msgstr "Tam kaynak alıntıları kullanın"
-
-#~ msgid "Use the GeoNames database for autocomplete on places"
-#~ msgstr "Yerlerde otomatik tamamlama için GeoNames veritabanını kullanın"
-
-#~ msgid "Use this image for charts and on the individual’s page."
-#~ msgstr "Bu resmi grafikler için ve bireyin sayfasında kullanın."
-
-#~ msgid "Use this value"
-#~ msgstr "Bu değeri kullan"
-
-#~ msgid "User preferences"
-#~ msgstr "Kullanıcı tercihleri"
-
-#~ msgid "User-agent string"
-#~ msgstr "Kullanıcı aracısı dizesi"
-
-#~ msgid "Users who are signed in"
-#~ msgstr "Çevrimiçi Kullanıcılar"
-
-#~ msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
-#~ msgstr "Açılır menü kullanılarak seçilen bayrak ile birlikte ülke seçilebilir. Eğer bayrak görünmüyor ise bu ülke için bayrak belirtilmemiş demektir."
-
-#~ msgid "Verification code"
-#~ msgstr "Doğrulama kodu"
-
-#~ msgid "View"
-#~ msgstr "Görünüm"
-
-#~ msgid "View all records found in this place"
-#~ msgstr "Bu yerin bulunan tüm kayıtları göster"
-
-#~ msgid "View the archive"
-#~ msgstr "Arşivi görüntüle"
-
-#~ msgid "View the details"
-#~ msgstr "Detayları Görüntüle"
-
-#~ msgid "View the notes"
-#~ msgstr "Notları Görüntüle"
-
-#~ msgid "View the statistics as graphs"
-#~ msgstr "İstatistikleri grafik olarak görüntüle"
-
-#~ msgid "View this individual"
-#~ msgstr "Kişiyi Görüntüle"
-
-#~ msgid "View this source"
-#~ msgstr "Kaynağı görüntüle"
-
-#~ msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
-#~ msgstr "Filigranlar büyük resim dosyalarının oluşturulmasını yavaşlatabilir. Yoğun kullanımda olan sitelerde filigranların oluşturularak, resim dosyalarının filigranlı olarak sunucuda tutulması önerilir."
-
-#~ msgid "Website URL"
-#~ msgstr "Web sitesi URL'si"
-
-#~ msgid "Website access rules"
-#~ msgstr "Site erişim kuralları"
-
-#~ msgid "Website and META tag settings"
-#~ msgstr "Web Site ve META Etiket Ayarları"
-
-#~ msgid "West Africa"
-#~ msgstr "Batı Afrika"
-
-#~ msgid "When adding a link, the ID field cannot be empty."
-#~ msgstr "Bir bağlantı eklenirken ID alanı boş bırakılamaz."
-
-#~ msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-#~ msgstr "Yeni yakın akrabalar eklerken, kayıtlara (birey ve aile) veya gerçeklere ve olaylara (doğum, evlilik ve ölüm) kaynak alıntılar ekleyebilirsiniz. Bu seçenek, varsayılan olarak kayıtların mı yoksa gerçeklerin mi seçileceğini kontrol eder."
-
-#~ msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
-#~ msgstr "Yeni kayıt oluşturulurken, bunlara dahili bir kimlik numarası verilir. Her tür kayıt için kullanılacak ön eki belirtebilirsiniz."
-
-#~ msgid "When you send this message you will receive a copy sent via email to the address you provided."
-#~ msgstr "Bu iletiyi gönderdiğinizde, mesajın bir kopyası daha önce belirttiğiniz adresinize e-posta yoluyla gönderilecektir."
-
-#~ msgid "Where is your PhpGedView installation?"
-#~ msgstr "PhpGedVıew kurulumunuzun yeri neresi?"
-
-#~ msgid "Whole words only"
-#~ msgstr "Sadece tüm kelimeler"
-
-#~ msgid "Width"
-#~ msgstr "Genişlik"
-
-#~ msgid "Width of generated thumbnails"
-#~ msgstr "Oluşturulan küçük resimlerin genişliği"
-
-#~ msgid "Wife’s maiden surname becomes new given name"
-#~ msgstr "Karısının kızlık soyadı yeni verilen ad olur"
-
-#~ msgid "Wife’s surname replaced by husband’s surname"
-#~ msgstr "Karısının soyadı kocasının soyadı ile değiştirildi"
-
-#~ msgid "Wildcards"
-#~ msgstr "Joker karakterler"
-
-#~ msgid "XREF prefixes"
-#~ msgstr "XREF önekleri"
-
-#~ msgid "Year input box"
-#~ msgstr "Yıl giriş kutusu"
-
-#~ msgid "You can choose the prefix that will be used whenever new XREFs are created."
-#~ msgstr "Yeni bir XRef oluşturulurken kullanılacak ön eki seçebilirsiniz."
-
-#~ msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-#~ msgstr "Evli kadınları, evli adlarını kaydederek aramayı kolaylaştırabilirsiniz. Ancak tüm kadınlar kocalarının soyadını almıyor, bu nedenle veri tabanınıza yanlış bilgi girmekten sakının."
-
-#~ msgid "You can re-enable these modules after the upgrade."
-#~ msgstr "Güncellemeden sonra bu modülleri tekrar aktif hale getirebilirsiniz."
-
-#~ msgid "You can re-enable these themes after the upgrade."
-#~ msgstr "Güncellemeden sonra bu temaları tekrar aktif hale getirebilirsiniz."
-
-#~ msgid "You can request a higher or lower limit, although the server may ignore this request."
-#~ msgstr "Sunucu bu isteği göz ardı edebilecek olsa da, daha yüksek veya daha düşük bir limiti talep edebilirsiniz."
-
-#~ msgid "You cannot create a rule which would prevent yourself from accessing the website."
-#~ msgstr "Kendinize site erişimini engelleyecek bir kural oluşturamazsınız."
-
-#~ msgid "You entered the same IDs. You cannot merge the same records."
-#~ msgstr "Aynı ID 'leri girdiniz. Aynı kayıtlar birleştirilmez."
-
-#~ msgid "You have not created any journal items."
-#~ msgstr "Herhangi bir günlük maddesi oluşturmadınız."
-
-#~ msgid "You may enter a URL, beginning with “http://”."
-#~ msgstr "“http://” ile başlayan bir URL girişi yapabilirsiniz."
-
-#~ msgid "You must also enable “less secure applications” in your Google account."
-#~ msgstr "Ayrıca Google hesabınızdaki \"daha az güvenli uygulamalar\" seçeneğini etkinleştirmeniz gerekir."
-
-#~ msgid "You must change this before you can continue."
-#~ msgstr "Devam etmek için bunu değiştirmelisiniz."
-
-#~ msgid "You must enter a name"
-#~ msgstr "Bir isim girmelisiniz"
-
-#~ msgid "You must enter a real name."
-#~ msgstr "Bir gerçek isim girmelisiniz."
-
-#~ msgid "You must enter a username."
-#~ msgstr "Bir kullanıcı adı girmelisiniz."
-
-#~ msgid "You must provide a repository name."
-#~ msgstr "Bir depo adı belirtmelisiniz."
-
-#~ msgid "You must provide a source title"
-#~ msgstr "Bir kaynak başlığı belirtmelisiniz"
-
-#~ msgid "You need to sign in again, using your PhpGedView username and password."
-#~ msgstr "PhpGedView kullanıcı adınızı ve şifrenizi kullanarak tekrar giriş yapmanız gerekmektedir."
-
-#~ msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
-#~ msgstr "Giriş URL sadece kullanıcılarınızı giriş için farklı bir site yada yere yönlendirmek istediğinizde kullanılmalıdır. Giriş sırasında http den https 'e geçmek istediğinizde bu yardımcı olabilir. <i>login.php</i> içeren tam URL giriniz. Örneğin, https://www.yourserver.com/webtrees/login.php ."
-
-#~ msgid "You sent the following message to a webtrees administrator:"
-#~ msgstr "Bir webtrees yöneticisine aşağıdaki mesajı gönderdiniz:"
-
-#~ msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-#~ msgstr "Bu versiyon webtrees ile uyumlu olup olmadığını modülün yapımcısına danışmalısınız."
-
-#~ msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-#~ msgstr "Bu versiyon webtrees ile uyumlu olup olmadığını temanın yapımcısına danışmalısınız."
-
-#~ msgid "Your server’s administrator will provide you with the connection details."
-#~ msgstr "Sunucunuzun yöneticisi bağlantı detayları size verecektir."
-
-#~ msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-#~ msgstr "Kullanıcı hesabınızda” değişiklikleri otomatik olarak kabul et \" özelliği etkinleştirilmemiştir. Sadece bir seferde bir kayıt değiştirmek mümkün olacak."
-
-#~ msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
-#~ msgstr "İnternet sunucunuz artık bakımı yapılmayan bir PHP sürümü %s kullanıyor. Daha yeni bir sürüme güncellemelisiniz."
-
-#~ msgid "Yugoslavia"
-#~ msgstr "Yugoslavya"
-
-#~ msgid "Zaire"
-#~ msgstr "Zaire"
-
-#~ msgid "Zip file(s)"
-#~ msgstr "Sıkıştırılmış dosya(lar)"
-
-#~ msgid "Zoom in here"
-#~ msgstr "Buraya yakınlaştır"
-
-#~ msgid "Zoom in/out on this box."
-#~ msgstr "Bu kutu üzerine yakınlaştır/uzaklaştır."
-
-#~ msgid "Zoom level"
-#~ msgstr "Yaklaşma seviyesi"
-
-#~ msgid "Zoom level of map"
-#~ msgstr "Haritanın yakınlık seviyesi"
-
-#~ msgid "Zoom out here"
-#~ msgstr "Buraya Uzaklaştır"
-
-#~ msgid "Zoom="
-#~ msgstr "Yakınlık="
-
-#~ msgid "a URL"
-#~ msgstr "bir URL"
-
-#~ msgid "a file on the server"
-#~ msgstr "Sunucu üzerinde bir dosya"
-
-#~ msgid "a file on your computer"
-#~ msgstr "Bilgisayarınızda bir dosya"
-
-#~ msgid "a.m."
-#~ msgstr "a.m."
-
-#~ msgctxt "FEMALE"
-#~ msgid "adopted name"
-#~ msgstr "evlâtlık adı"
-
-#~ msgctxt "MALE"
-#~ msgid "adopted name"
-#~ msgstr "evlâtlık adı"
-
-#~ msgid "adoption"
-#~ msgstr "evlât edinme"
-
-#~ msgid "allow"
-#~ msgstr "izin ver"
-
-#~ msgctxt "FEMALE"
-#~ msgid "also known as"
-#~ msgstr "olarak da bilinir"
-
-#~ msgctxt "MALE"
-#~ msgid "also known as"
-#~ msgstr "olarak da bilinir"
-
-#~ msgid "always"
-#~ msgstr "her zaman"
-
-#~ msgid "birth"
-#~ msgstr "doğum"
-
-#~ msgctxt "FEMALE"
-#~ msgid "birth name"
-#~ msgstr "doğum adı"
-
-#~ msgctxt "MALE"
-#~ msgid "birth name"
-#~ msgstr "doğum adı"
-
-#~ msgid "burial"
-#~ msgstr "defin"
-
-#~ msgid "by"
-#~ msgstr "tarafından"
-
-#~ msgid "census added"
-#~ msgstr "nüfus sayımı eklendi"
-
-#~ msgid "century"
-#~ msgstr "yüzyıl"
-
-#~ msgctxt "FEMALE"
-#~ msgid "change of name"
-#~ msgstr "ad değişikliği"
-
-#~ msgctxt "MALE"
-#~ msgid "change of name"
-#~ msgstr "ad değişikliği"
-
-#~ msgid "children"
-#~ msgstr "çocuklar"
-
-#~ msgid "creating thumbnails of images"
-#~ msgstr "resimlerin küçültülmüş önizlemeleri oluşturuluyor"
-
-#~ msgid "death"
-#~ msgstr "vefat"
-
-#~ msgid "deny"
-#~ msgstr "reddet"
-
-#~ msgid "east"
-#~ msgstr "doğu"
-
-#~ msgctxt "FEMALE"
-#~ msgid "estate name"
-#~ msgstr "mülk adı"
-
-#~ msgctxt "MALE"
-#~ msgid "estate name"
-#~ msgstr "mülk adı"
-
-#~ msgid "ex-partner"
-#~ msgstr "eski-eş"
-
-#~ msgctxt "FEMALE"
-#~ msgid "ex-partner"
-#~ msgstr "eski-eş"
-
-#~ msgctxt "MALE"
-#~ msgid "ex-partner"
-#~ msgstr "eski-eş"
-
-#~ msgid "file upload capability"
-#~ msgstr "dosya yükleme özelliği"
-
-#~ msgid "half-year after marriage"
-#~ msgstr "evlilikten sonra yarım yıl"
-
-#~ msgid "hh:mm or hh:mm:ss"
-#~ msgstr "ss:dd veya ss:dd:ss"
-
-#~ msgctxt "FEMALE"
-#~ msgid "immigration name"
-#~ msgstr "göç adı"
-
-#~ msgctxt "MALE"
-#~ msgid "immigration name"
-#~ msgstr "göç adı"
-
-#~ msgid "import"
-#~ msgstr "içeri aktar"
-
-#~ msgid "interval %s year"
-#~ msgid_plural "interval %s years"
-#~ msgstr[0] "%s yıl aralıklarla"
-#~ msgstr[1] "%s yıl aralıklarla"
-
-#~ msgid "interval one child"
-#~ msgstr "bir çocuk arası"
-
-#~ msgid "interval two children"
-#~ msgstr "iki çocuk arası"
-
-#~ msgid "less than"
-#~ msgstr "den az"
-
-#~ msgid "link"
-#~ msgstr "bağla"
-
-#~ msgid "marriage"
-#~ msgstr "evlilik"
-
-#~ msgctxt "FEMALE"
-#~ msgid "married name"
-#~ msgstr "evlilik soyadı"
-
-#~ msgctxt "MALE"
-#~ msgid "married name"
-#~ msgstr "evlilik soyadı"
-
-#~ msgid "maximum"
-#~ msgstr "en az"
-
-#~ msgid "midnight"
-#~ msgstr "geceyarısı"
-
-#~ msgid "minimum"
-#~ msgstr "enaz"
-
-#~ msgid "month"
-#~ msgstr "ay"
-
-#~ msgid "months after marriage"
-#~ msgstr "evlilikten sonraki aylar"
-
-#~ msgid "months before and after marriage"
-#~ msgstr "evlilikten önceki ve sonraki aylar"
-
-#~ msgid "never"
-#~ msgstr "asla"
-
-#~ msgid "noon"
-#~ msgstr "öğlen"
-
-#~ msgid "north"
-#~ msgstr "kuzey"
-
-#~ msgid "over"
-#~ msgstr "üzerinde"
-
-#~ msgid "overall"
-#~ msgstr "kapsamlı"
-
-#~ msgid "p.m."
-#~ msgstr "p.m."
-
-#~ msgid "pixels"
-#~ msgstr "piksel"
-
-#~ msgid "preview"
-#~ msgstr "önizleme"
-
-#~ msgid "quarters after marriage"
-#~ msgstr "evlilikten sonraki çeyrekler"
-
-#~ msgctxt "FEMALE"
-#~ msgid "religious name"
-#~ msgstr "dinî adı"
-
-#~ msgctxt "MALE"
-#~ msgid "religious name"
-#~ msgstr "dinî adı"
-
-#~ msgid "reporting"
-#~ msgstr "raporlama"
-
-#~ msgid "robot"
-#~ msgstr "robot"
-
-#~ msgid "sort by filename"
-#~ msgstr "dosya adına göre sırala"
-
-#~ msgid "sort by title"
-#~ msgstr "başlığa göre sırala"
-
-#~ msgid "south"
-#~ msgstr "güney"
-
-#~ msgid "ssl"
-#~ msgstr "ssl"
-
-#~ msgid "this record does not exist"
-#~ msgstr "bu kayıt mevcut değil"
-
-#~ msgid "tls"
-#~ msgstr "tls"
-
-#~ msgid "webtrees cannot connect to the PhpGedView database: %s."
-#~ msgstr "webtrees PhpGedView veritabanına bağlanamıyor: %s."
-
-#~ msgid "webtrees needs a MySQL database, version %s or later."
-#~ msgstr "webtrees bir MySQL versiyon %s veya daha üst bir versiyona gerek duyar."
-
-#~ msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-#~ msgstr "Webtrees şifre hatırlatma ve site bildirimlerini iletebilmek için mail göndermesi gerekmektedir. Bunu yapabilmek için mevcut sunucunun PHP mail özelliğini kullanabilir (ancak bu her zaman mevcut olmayabilir) veya bağlantı detaylarını belirterek harici SMTP (mail-aktarma) servisini kullanabilirsiniz."
-
-#~ msgid "webtrees reply address"
-#~ msgstr "webtrees cevaplama adresi"
-
-#~ msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-#~ msgstr "webtrees, aksanlı harfler, özel karakterler ve Latin olmayan komut dosyaları için UTF-8 kodlamasını kullanır. Bu GEDCOM dosyasını UTF-8'i desteklemeyen şecere yazılımı ile kullanmak istiyorsanız, ISO-8859-1 kodlamasını kullanarak oluşturabilirsiniz."
-
-#~ msgid "webtrees wiki"
-#~ msgstr "webtrees wiki"
-
-#~ msgid "webtrees’ database must be on the same server as PhpGedView’s"
-#~ msgstr "webrees veritabanı PGV veritabanı ile aynı sunucuda olmalıdır"
-
-#~ msgid "west"
-#~ msgstr "batı"
-
-#~ msgid "years"
-#~ msgstr "yıl"
-
-#, php-format
-#~ msgid "“%s”"
-#~ msgstr "“%s”"
-
-#~ msgid "“%s” has been added to your favorites."
-#~ msgstr "“%s” favorilerinize eklendi."

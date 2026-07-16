@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-15 18:05+0100\n"
+"POT-Creation-Date: 2026-07-16 21:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -395,18 +395,6 @@ msgctxt "MALE"
 msgid "%s × cousin"
 msgstr "דודן מדרגה %s"
 
-#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ʙᴄᴇ"
-msgstr "%s לפנה״ס"
-
-#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ᴄᴇ"
-msgstr "%s אחה”ס"
-
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php
 #, php-format
@@ -452,6 +440,18 @@ msgstr "%s, בנות זוגו וילדיו"
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, בנות זוגו וצאצאיו"
+
+#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ʙᴄᴇ"
+msgstr "%s לפנה״ס"
+
+#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ᴄᴇ"
+msgstr "%s אחה”ס"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
@@ -1072,25 +1072,21 @@ msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
 msgstr "אבאן"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Aban"
 msgstr "אבאן"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
 msgstr "אבאן"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Aban"
 msgstr "אבאן"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Aban"
@@ -1133,73 +1129,61 @@ msgstr "אישור החשבון ואימות דוא״ל"
 msgid "Accra, Ghana"
 msgstr "אקרה, גאנה"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar"
 msgstr "באדר"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
 msgstr "אדר"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar"
 msgstr "אדר"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar"
 msgstr "אדר"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar I"
 msgstr "באדר א׳"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
 msgstr "אדר א׳"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar I"
 msgstr "אדר א׳"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
 msgstr "אדר א׳"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar II"
 msgstr "באדר ב׳"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
 msgstr "אדר ב׳"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar II"
 msgstr "אדר ב׳"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
@@ -2170,25 +2154,21 @@ msgstr "הרחב אוטומטית את ההערות"
 msgid "Automatically expand sources"
 msgstr "הרחב אוטומטית את המקורות"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Av"
 msgstr "באב"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Av"
 msgstr "אב"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Av"
 msgstr "אב"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Av"
@@ -2241,25 +2221,21 @@ msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
 msgstr "אזר"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Azar"
 msgstr "אזר"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
 msgstr "אזר"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Azar"
 msgstr "אזר"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Azar"
@@ -2285,25 +2261,21 @@ msgstr "בהמן"
 msgid "Bahamas"
 msgstr "בהאמה"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Bahman"
 msgstr "בהמן"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
 msgstr "בהמן"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Bahman"
 msgstr "בהמן"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Bahman"
@@ -2768,25 +2740,21 @@ msgstr "איי הבתולה הבריטיים"
 msgid "Brother"
 msgstr "אח"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Brumaire"
 msgstr "ברימר"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
 msgstr "ברימר"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Brumaire"
 msgstr "ברימר"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
@@ -4717,73 +4685,61 @@ msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
 msgstr "דיי"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Dey"
 msgstr "דיי"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
 msgstr "דיי"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Dey"
 msgstr "דיי"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "דיי"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "ז׳ו אל-קעדה"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Qiʿdah"
 msgstr "ז׳ו אל-קעדה"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "ז׳ו אל-קעדה"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "ז׳ו אל-קעדה"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "זו אל-חיג׳ה"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Ḥijjah"
 msgstr "זו אל-חיג׳ה"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "זו אל-חיג׳ה"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Ḥijjah"
@@ -5066,25 +5022,21 @@ msgstr "אל סלבדור"
 msgid "Electronic"
 msgstr "אלקטרוני"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Elul"
 msgstr "באלול"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
 msgstr "אלול"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Elul"
 msgstr "אלול"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Elul"
@@ -5217,25 +5169,21 @@ msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
 msgstr "אספ׳"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Esfand"
 msgstr "אספנד"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
 msgstr "אספנד"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Esfand"
 msgstr "אספנד"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Esfand"
@@ -5701,25 +5649,21 @@ msgstr "פרב׳"
 msgid "Faroe Islands"
 msgstr "איי פארו"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Farvardin"
 msgstr "פרברדין"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
 msgstr "פרברדין"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Farvardin"
 msgstr "פרברדין"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
@@ -5944,25 +5888,21 @@ msgstr "דגל"
 msgid "Flanders"
 msgstr "פלנדריה"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
 msgstr "פלוראל"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
 msgstr "פלוראל"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Floreal"
 msgstr "פלוראל"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Floreal"
@@ -6154,25 +6094,21 @@ msgctxt "MALE"
 msgid "Friend"
 msgstr "חבר"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Frimaire"
 msgstr "פרימר"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
 msgstr "פרימר"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Frimaire"
 msgstr "פרימר"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
@@ -6190,25 +6126,21 @@ msgctxt "Start of date range"
 msgid "From"
 msgstr "מתאריך"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Fructidor"
 msgstr "פרוקטידור"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
 msgstr "פרוקטידור"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Fructidor"
 msgstr "פרוקטידור"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
@@ -6377,26 +6309,21 @@ msgstr "גאורגיה"
 msgid "Germany"
 msgstr "גרמניה"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Germinal"
 msgstr "ז׳רמינאל"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
 msgstr "ז׳רמינאל"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Germinal"
 msgstr "ז׳רמינאל"
 
-#. I18N: a month in the French republican calendar
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Germinal"
@@ -6712,25 +6639,21 @@ msgstr "כאן (Here) מפות"
 msgid "Hermosillo, Mexico"
 msgstr "ארמוסיו, מקסיקו"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Heshvan"
 msgstr "בחשוון"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
 msgstr "חשוון"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Heshvan"
 msgstr "חשוון"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
@@ -7322,25 +7245,21 @@ msgstr "לא מומלץ להשתמש בתגיות GEDCOM מותאמות אישי
 msgid "Italy"
 msgstr "איטליה"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Iyar"
 msgstr "באייר"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
 msgstr "אייר"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Iyar"
 msgstr "אייר"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Iyar"
@@ -7451,49 +7370,41 @@ msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "יולי"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-awwal"
 msgstr "ג׳ומאדא אל-אוואל"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-awwal"
 msgstr "ג׳ומאדא אל-אוואל"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-awwal"
 msgstr "ג׳ומאדא אל-אוואל"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-awwal"
 msgstr "ג׳ומאדא אל-אוואל"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-thānī"
 msgstr "ג׳ומאדא אל-ת׳אניה"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-thānī"
 msgstr "ג׳ומאדא אל-ת׳אניה"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-thānī"
 msgstr "ג׳ומאדא אל-ת׳אניה"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-thānī"
@@ -7565,25 +7476,21 @@ msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
 msgstr "חור׳"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Khordad"
 msgstr "חורדאד"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
 msgstr "חורדאד"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Khordad"
 msgstr "חורדאד"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Khordad"
@@ -7594,25 +7501,21 @@ msgstr "חורדאד"
 msgid "Kiribati"
 msgstr "קיריבאטי"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Kislev"
 msgstr "בכסלו"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
 msgstr "כסלו"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Kislev"
 msgstr "כסלו"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Kislev"
@@ -8638,25 +8541,21 @@ msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
 msgstr "מהר"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mehr"
 msgstr "מהר"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
 msgstr "מהר"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mehr"
 msgstr "מהר"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mehr"
@@ -8731,25 +8630,21 @@ msgstr "הודעה"
 msgid "Messages"
 msgstr "הודעות"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Messidor"
 msgstr "מסידור"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
 msgstr "מסידור"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Messidor"
 msgstr "מסידור"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Messidor"
@@ -8926,25 +8821,21 @@ msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
 msgstr "מור׳"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mordad"
 msgstr "מורדאד"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
 msgstr "מורדאד"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mordad"
 msgstr "מורדאד"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mordad"
@@ -9064,25 +8955,21 @@ msgstr "לידה מרובה"
 msgid "Multiple marriages"
 msgstr "נישואין מרובים"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Muḥarram"
 msgstr "מוחרם"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Muḥarram"
 msgstr "מוחרם"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muḥarram"
 msgstr "מוחרם"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Muḥarram"
@@ -9311,25 +9198,21 @@ msgstr "ניז׳ר"
 msgid "Nigeria"
 msgstr "ניגריה"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Nissan"
 msgstr "בניסן"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
 msgstr "ניסן"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Nissan"
 msgstr "ניסן"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Nissan"
@@ -9340,25 +9223,21 @@ msgstr "ניסן"
 msgid "Niue"
 msgstr "ניווה"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Nivose"
 msgstr "ניבוז"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
 msgstr "ניבוז"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Nivose"
 msgstr "ניבוז"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Nivose"
@@ -9895,25 +9774,21 @@ msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
 msgstr "אור׳"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
 msgstr "אורדיבהשת"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
 msgstr "אורדיבהשת"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
 msgstr "אורדיבהשת"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
@@ -10431,25 +10306,21 @@ msgstr "אנא הקלד כתובת דוא״ל חוקית."
 msgid "Please try again."
 msgstr "בבקשה נסה שוב."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Pluviose"
 msgstr "פליביוז"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
 msgstr "פליביוז"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Pluviose"
 msgstr "פליביוז"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
@@ -10510,25 +10381,21 @@ msgstr "מיקוד"
 msgid "Powered by webtrees™"
 msgstr "מופעל על ידי ™‎webtrees"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Prairial"
 msgstr "פריריאל"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
 msgstr "פריריאל"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Prairial"
 msgstr "פריריאל"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Prairial"
@@ -10706,49 +10573,41 @@ msgstr "תגובה: "
 msgid "Rabbi"
 msgstr "רב"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "רביע אל-אוול"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-awwal"
 msgstr "רביע אל-אוול"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "רביע אל-אוול"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "רביע אל-אוול"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-thani"
 msgstr "רביע את-ת׳אני"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-thani"
 msgstr "רביע את-ת׳אני"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-thani"
 msgstr "רביע את-ת׳אני"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-thani"
@@ -10772,25 +10631,21 @@ msgctxt "Pedigree"
 msgid "Rada"
 msgstr "ראדה - קרבת מינקת משותפת"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "רג׳ב"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "רג׳ב"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "רג׳ב"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rajab"
@@ -10801,25 +10656,21 @@ msgstr "רג׳ב"
 msgid "Raleigh, North Carolina, United States"
 msgstr "ראלי, קרוליינה הצפונית, ארצות הברית"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "רמדאן"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "רמדאן"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "רמדאן"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
@@ -11797,25 +11648,21 @@ msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
 msgstr "שהר׳"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Shahrivar"
 msgstr "שהריבר"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
 msgstr "שהריבר"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
 msgstr "שהריבר"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
@@ -11854,49 +11701,41 @@ msgstr "הערות משותפות"
 msgid "Shares"
 msgstr "שיתופים"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "שוואל"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "שוואל"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "שוואל"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "שוואל"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shaʿbān"
 msgstr "שעבאן"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shaʿbān"
 msgstr "שעבאן"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shaʿbān"
 msgstr "שעבאן"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shaʿbān"
@@ -11935,25 +11774,21 @@ msgstr "היא הוטבלה"
 msgid "She was cremated"
 msgstr "גופתה נשרפה"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Shevat"
 msgstr "בשבט"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
 msgstr "שבט"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Shevat"
 msgstr "שבט"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Shevat"
@@ -12382,25 +12217,21 @@ msgstr "מפויי האתר"
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr "מפות אתר מהוות דרך של מנהלי אתרים לספר למנועי חיפוש על הדפים באתר שזמינים לזחילה. כל מנועי החיפוש הגדולים תומכים במפות אתר. לקבלת מידע נוסף, ראה <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Sivan"
 msgstr "בסיוון"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
 msgstr "סיוון"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Sivan"
 msgstr "סיוון"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Sivan"
@@ -12981,25 +12812,21 @@ msgstr "טג׳יקיסטן"
 msgid "Tampico, Mexico"
 msgstr "טאמפיקו, מקסיקו"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tamuz"
 msgstr "בתמוז"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
 msgstr "תמוז"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tamuz"
 msgstr "תמוז"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
@@ -13039,25 +12866,21 @@ msgstr "תבניות"
 msgid "Temple"
 msgstr "מקדש"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tevet"
 msgstr "בטבת"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
 msgstr "טבת"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tevet"
 msgstr "טבת"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tevet"
@@ -13695,25 +13518,21 @@ msgstr "אירעה שגיאה בבדיקת גרסה חדשה."
 msgid "There was an error uploading your file."
 msgstr "התגלתה שגיאה בהעלאת הקובץ שלך."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Thermidor"
 msgstr "תרמידור"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
 msgstr "תרמידור"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Thermidor"
 msgstr "תרמידור"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
@@ -14212,49 +14031,41 @@ msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
 msgstr "טיר"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Tir"
 msgstr "טיר"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
 msgstr "טיר"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Tir"
 msgstr "טיר"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Tir"
 msgstr "טיר"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tishrei"
 msgstr "בתשרי"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
 msgstr "תשרי"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tishrei"
 msgstr "תשרי"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
@@ -14955,25 +14766,21 @@ msgstr "תרשימים סטטיסטיים שונים."
 msgid "Vatican City"
 msgstr "קריית הוותיקן"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
 msgstr "ונדמיר"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
 msgstr "ונדמיר"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
 msgstr "ונדמיר"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
@@ -14984,25 +14791,21 @@ msgstr "ונדמיר"
 msgid "Venezuela"
 msgstr "ונצואלה"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Ventose"
 msgstr "ונטוז"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
 msgstr "ונטוז"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Ventose"
 msgstr "ונטוז"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Ventose"
@@ -18046,25 +17849,21 @@ msgstr "פרשנות %s (%s)"
 msgid "invert selection"
 msgstr "הפוך בחירה"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
 msgstr "ימים משלימים"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
 msgstr "ימים משלימים"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
 msgstr "ימים משלימים"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
@@ -19510,25 +19309,21 @@ msgstr[1] "± %s שנים"
 msgid "Åland Islands"
 msgstr "איי אולנד"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ṣafar"
 msgstr "צפר"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ṣafar"
 msgstr "צפר"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ṣafar"
 msgstr "צפר"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ṣafar"
@@ -19576,2679 +19371,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid " per gender"
-#~ msgstr " למגדר"
-
-#~ msgid " per time period"
-#~ msgstr " בתקופת זמן"
-
-#, php-format
-#~ msgid "#%s"
-#~ msgstr "#%s"
-
-#, php-format
-#~ msgid "%1$s %2$s has a %3$s link to %4$s."
-#~ msgstr "ל-%1$s %2$s יש קישור %3$s אל %4$s."
-
-#, php-format
-#~ msgid "%1$s does not exist."
-#~ msgstr "%1$s אינו קיים."
-
-#~ msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgstr[0] "אדם אחד מוצג מתוך מקסימום אפשרי של %2$s עבור %3$s דורות."
-#~ msgstr[1] "%1$s אנשים מוצגים מתוך מקסימום אפשרי של %2$s עבור %3$s דורות."
-
-#~ msgid "%1$s individual is missing birthplace map coordinates: %2$s."
-#~ msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-#~ msgstr[0] "לאדם אחד חסרות קואורדינטות של מקום הלידה: %2$s."
-#~ msgstr[1] "ל-%1$s אנשים חסרות קואורדינטות של מקום הלידה: %2$s."
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "לפני יום"
-#~ msgstr[1] "לפני %s ימים"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "לפני שעה"
-#~ msgstr[1] "לפני %s שעות"
-
-#~ msgid "%s individual is private."
-#~ msgid_plural "%s individuals are private."
-#~ msgstr[0] "אדם אחד פרטי."
-#~ msgstr[1] "%s אנשים פרטיים."
-
-#, php-format
-#~ msgid "%s individual with events between %s and %s"
-#~ msgid_plural "%s individuals with events between %s and %s"
-#~ msgstr[0] "אדם %s עם אירועים בין %s ל-%s"
-#~ msgstr[1] "%s אנשים עם אירועים בין %s ל-%s"
-
-#, php-format
-#~ msgid "%s individual with events in %s"
-#~ msgid_plural "%s individuals with events in %s"
-#~ msgstr[0] "אדם %s עם אירועים ב-%s"
-#~ msgstr[1] "%s אנשים עם עירועים ב-%s"
-
-#, php-format
-#~ msgid "%s individual with events in %s between %s and %s"
-#~ msgid_plural "%s individuals with events in %s between %s and %s"
-#~ msgstr[0] "אדם %s עם אירועים ב-%s בין %s ל-%s"
-#~ msgstr[1] "%s אנשים עם אירועים ב-%s בין %s ל-%s"
-
-#~ msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "%s אינו זמין בשרת זה. אינך יכול להתקין את webtrees עד שהוא יופעל. אנא בקש ממנהל השרת שלך שיהפוך אותו לזמין."
-
-#, php-format
-#~ msgid "%s location has been imported."
-#~ msgid_plural "%s locations have been imported."
-#~ msgstr[0] "מיקום %s יובא."
-#~ msgstr[1] "%s מיקומים יובאו."
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "לפני דקה"
-#~ msgstr[1] "לפני %s דקות"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "לפני חודש"
-#~ msgstr[1] "לפני %s חודשים"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "לפני שניה"
-#~ msgstr[1] "לפני %s שניות"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "לפני שנה"
-#~ msgstr[1] "לפני %s שנים"
-
-#, php-format
-#~ msgid "(aged less than %s)"
-#~ msgstr "(בגיל פחות מ-%s)"
-
-#, php-format
-#~ msgid "(aged more than %s)"
-#~ msgstr "(בגיל מעל %s)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(בילדות)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(בינקות)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(לידה שקטה)"
-
-#~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-#~ msgstr "<b>GUID</b> בהקשר זה הוא ראשי תיבות של ”קוד זיהוי גלובלי ייחודי - Globally Unique ID”.<br><br>GUID-ים נועדים לעזור לזהות כל אדם באופן הדיר, כך שארגונים מרכזיים כמו מרכז ההיסטוריה המשפחתית של כנסיית המורמונים בסולט לייק סיטי, או אפילו תוכניות תואמות הפועלות על השרת שלך, תוכלנה לקבוע האם הן מטפלות באותו האדם, לא משנה מהיכן מקור ה-GEDCOM. מטרת מרכז ההיסטוריה המשפחתית הוא להוות מאגר מרכזי של נתוני חקר שושלת יוחסין ולחשוף אותו באמצעות שירותי אינטרנט. זה יאפשר לכל תכנית לגשת לנתונים ולעדכן את הנתונים שלהם בתוכו.<br><br>אם אינך מתכוון לשתף GEDCOM זה עם מישהו אחר, אתה לא צריך לתת, ל-webtrees ליצור GUID-ים אבל, אם תיצור אותם לא תגרום כל נזק פרט להגדלת גודל ה-GEDCOM שלך."
-
-#~ msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-#~ msgstr "<b>הודעה חשובה:</b> אשף העברה אינו מסוגל לסייע בהעברת פרטי מדיה. עלך להקים ולהעביר או להעתיק בנפרד את הגדרות ואת ישויות המדיה שלך לאחר שאשף ההעברה סיים."
-
-#~ msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-#~ msgstr "<b>שים לב:</b> מידע פרטי על אנשים חיים יינתן רק לקרובי משפחה וחברים קרובים. אתה תתבקש לאמת את הקירבה שלך לפני שתקבל את כל הנתונים הפרטיים. לפעמים גם המידע של אנשים מתים עשוי להיות פרטי. במקרה הזה, הדבר קורה משום שאין מספיק מידע ידוע על האדם כדי לקבוע אם הוא בחיים או לא, ואין לנו כנראה מידע נוסף על אדם זה.<br><br>לפני שתשאל שאלה , ודא שאתה חוקר את האדם הנכון ע״י בדיקת תאריכים, מקומות, וקרובי משפחה. אם אתה שולח שינויים לנתוני חקר שושלת היוחסין, בבקשה כלול את המקורות שמהם השגת את הנתונים."
-
-#~ msgid "<p>Notice: By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-#~ msgstr "<p>שים לב: על ידי השלמת ושליחת טופס זה, אתה מסכים:<ul><li>להגן על פרטיותם של אנשים חיים שמופיעים באתר שלנו;</li><li>ובתיבת הטקסט שלהלן, להסביר מי אקרוב שלך, או לספק לנו מידע על מי צריך להיות רשום באתר שלנו.</li></ul></div>"
-
-#, php-format
-#~ msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-#~ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-
-#~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-#~ msgstr "שרת מאגר מידע יכול לאחסן הרבה מאגרי מידע. אתה צריך לבחור מאגר מידע קיים (נוצר על ידי מנהל השרת שלך) או ליצור חדש (אם משתמש שרת מאגר המידע שלך בעל הרשאות מספיקות)."
-
-#~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-#~ msgstr "סיסמא חדשה נוצרה ונשלחה ל-%s. תוכל לשנות סיסמא זו אחרי שתכנס למערכת."
-
-#~ msgid "A new password has been requested for your username."
-#~ msgstr "קיבלנו בקשה לסיסמה חדשה עבור קוד המשתמש שלך."
-
-#~ msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-#~ msgstr "סרגל צדדי המציג רשימה של כל המשפחות בעץ המשפחה."
-
-#~ msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-#~ msgstr "סרגל צדדי המציג רשימה אלפביתית של כל האנשים בעץ המשפחה."
-
-#~ msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-#~ msgstr "סימן מים הוא טקסט שמתווסף לתמונה, כדי להרתיע אחרים מהעתקתו ללא רשות."
-
-#~ msgid "A.M."
-#~ msgstr "לפנה״צ"
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=אבגדהוזחטיכךלמםנןסעפףצץקרשת"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=אבגדהוזחטיכךלמםנןסעפףצץקרשת"
-
-#~ msgid "Acadia"
-#~ msgstr "אקדיה"
-
-#~ msgid "Action"
-#~ msgstr "פעולה"
-
-#~ msgid "Add a blank row"
-#~ msgstr "הוסף שורה ריקה"
-
-#~ msgid "Add a brother or sister"
-#~ msgstr "הוסף אח או אחות"
-
-#~ msgid "Add a child to this family"
-#~ msgstr "הוסף ילד/ה למשפחה"
-
-#~ msgid "Add a geographic location"
-#~ msgstr "הוספת מיקום גיאוגרפי"
-
-#~ msgid "Add a husband to this family"
-#~ msgstr "הוסף בעל למשפחה"
-
-#~ msgid "Add a restriction"
-#~ msgstr "הוסף הגבלה"
-
-#~ msgid "Add a scrollbar when block contents grow"
-#~ msgstr "הוסף פס גלילה כאשר תוכן הבלוק גדל"
-
-#~ msgid "Add a shared note"
-#~ msgstr "הוסף הערה משותפת"
-
-#~ msgid "Add a son or daughter"
-#~ msgstr "הוסף בן או בת"
-
-#~ msgid "Add a wife to this family"
-#~ msgstr "הוסף אישה למשפחה"
-
-#~ msgid "Add an associate"
-#~ msgstr "הוסף מקורב"
-
-#~ msgid "Add an event"
-#~ msgstr "הוסף אירוע"
-
-#~ msgid "Add another individual to the chart"
-#~ msgstr "הוסף אדם לתרשים"
-
-#~ msgid "Add historic events to an individual‘s page."
-#~ msgstr "הוסף אירועים היסטוריים לדף של אדם."
-
-#~ msgid "Add links"
-#~ msgstr "הוסף קישורים"
-
-#~ msgid "Add married names"
-#~ msgstr "הוסף שמות נשואין"
-
-#~ msgid "Add missing married names"
-#~ msgstr "הוסף שמות נישואין חסרים"
-
-#~ msgid "Add the GEDCOM media path to filenames"
-#~ msgstr "הוסף את נתיב המדיה של ה-GEDCOM לשמות הקבצים"
-
-#~ msgid "Add to favorites"
-#~ msgstr "הוסף למועדפים"
-
-#~ msgid "Add watermarks to thumbnails"
-#~ msgstr "הוסף סימני מים לתמונות ממוזערות"
-
-#~ msgid "Add/edit a journal/news entry"
-#~ msgstr "הוסף/ערוך כניסת יומן/חדשות"
-
-#~ msgid "Additional information"
-#~ msgstr "מידע נוסף"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "אומצה ע״י שני ההורים"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "אומץ ע״י שני ההורים"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by father"
-#~ msgstr "אומצה ע״י האב"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by father"
-#~ msgstr "אומץ ע״י האב"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "אומצה ע״י האם"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "אומץ ע״י האם"
-
-#~ msgid "Advanced"
-#~ msgstr "מתקדם"
-
-#~ msgid "Advanced fact preferences"
-#~ msgstr "עובדות מועדפות מתקדמות"
-
-#~ msgid "Advanced name facts"
-#~ msgstr "עובדות מתקדמות של שם"
-
-#~ msgid "Advanced place name facts"
-#~ msgstr "עובדות מתקדמות של שם מקום"
-
-#~ msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-#~ msgstr "אחרי שהתחברת, בחר בקישור \"המשתמש שלי\" מתחת לתפריט \"הדף שלי\" ומלא את שדות הסיסמה כדי לשנות את הסיסמה שלך."
-
-#~ msgid "Age of item"
-#~ msgstr "גיל הכניסה"
-
-#~ msgid "Age related to birth year"
-#~ msgstr "גיל ביחס לשנת לידה"
-
-#~ msgid "Age related to death year"
-#~ msgstr "גיל ביחס לשנת פטירה"
-
-#~ msgid "All changes in PhpGedView must be accepted"
-#~ msgstr "חייבים לקבל את כל השינויים ב-PhpGedView"
-
-#~ msgid "All existing PhpGedView users must have distinct email addresses"
-#~ msgstr "לכל המשתמשים הקיימים של PhpGedView חייבת להיות כתובות דוא״ל שונה"
-
-#~ msgid "All family facts"
-#~ msgstr "כל העובדות המשפחתיות"
-
-#~ msgid "All files have read and write permission."
-#~ msgstr "לכל הקבצים יש הרשאות קריאה וכתיבה."
-
-#~ msgid "All individual facts"
-#~ msgstr "כל העובדות האישיות"
-
-#~ msgid "All repository facts"
-#~ msgstr "כל העובדות של מאגרים"
-
-#~ msgid "All source facts"
-#~ msgstr "כל עובדות המקור"
-
-#~ msgid "Allow users to select their own theme"
-#~ msgstr "אפשר למשתמשים לבחור עיצוב"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Also known as"
-#~ msgstr "מכונה"
-
-#~ msgctxt "MALE"
-#~ msgid "Also known as"
-#~ msgstr "מכונה"
-
-#~ msgid "Alternative place name"
-#~ msgstr "שם מקום חלופי"
-
-#~ msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-#~ msgstr "מקורב הוא אדם אחר שהיה מעורב עם העובדה או האירוע, כגון עד או רב."
-
-#~ msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-#~ msgstr "מקורב הוא אדם אחר שהיה מעורב עם אדם זה, כגון חבר או מעסיק."
-
-#~ msgid "An edit menu for individuals, families, sources, etc."
-#~ msgstr "תפריט עריכה של אנשים, משפחות, מקורות, וכו׳."
-
-#~ msgid "An error occurred when unzipping the file."
-#~ msgstr "אירעה שגיאה בעת שחרור דחיסת הקובץ."
-
-#~ msgid "An unknown error occurred"
-#~ msgstr "ארעה שגיאה לא ידועה"
-
-#~ msgid "Apply automatic corrections to your genealogy data."
-#~ msgstr "הפעל תיקונים אוטומטיים לנתוני חקר שושלת היוחסין שלך."
-
-#~ msgid "Approval of account at %s"
-#~ msgstr "אישור משתמש על %s"
-
-#~ msgid "Are you sure you want to remove links to this media object?"
-#~ msgstr "האם באמת למחוק קישור זה לישות מדיה?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "אריאל"
-
-#~ msgid "Associates"
-#~ msgstr "מקורבים"
-
-#, fuzzy
-#~ msgid "Automatically add unique identifiers"
-#~ msgstr "צור בצורה אוטומטית קודי זיהוי גלובליים ייחודיים"
-
-#~ msgid "Automatically expand list of events of close relatives"
-#~ msgstr "הרחב אוטומטית את רשימת האירועים של קרובים"
-
-#~ msgid "Available blocks"
-#~ msgstr "הבלוקים הזמינים"
-
-#~ msgid "Basic"
-#~ msgstr "בסיסי"
-
-#~ msgid "Batch update"
-#~ msgstr "עדכון אצווה"
-
-#~ msgid "Bearing"
-#~ msgstr "כוון"
-
-#~ msgid "Body"
-#~ msgstr "גוף"
-
-#~ msgid "Booklet"
-#~ msgstr "ספרון"
-
-#~ msgid "Brit milah of a brother"
-#~ msgstr "ברית מילה של אח"
-
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "ברית מילה של נכד"
-
-#~ msgctxt "daughter’s son"
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "ברית מילה של נכד"
-
-#~ msgctxt "son’s son"
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "ברית מילה של נכד"
-
-#~ msgid "Brit milah of a half-brother"
-#~ msgstr "ברית מילה של אח-למחצה"
-
-#~ msgid "Brit milah of a son"
-#~ msgstr "ברית מילה של בן"
-
-#~ msgid "British West Indies"
-#~ msgstr "הודו המערבית הבריטית"
-
-#~ msgid "Burial of a maternal grandparent"
-#~ msgstr "קבורה של סבא/סבתא אימהי/ת"
-
-#~ msgid "Burial of a paternal grandparent"
-#~ msgstr "קבורה של סבא/סבתא אבהי/ת"
-
-#~ msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
-#~ msgstr "כברירת מחדל, הרשימה מראה רק את המקומות שנמצאים בעצי המשפחה שלך. יתכן שלך יש פירוט של מקומות אחרים, כגון אלה שייובאו בצורה כוללת מקובץ חיצוני. בחירת אפשרות זו תציג את כל המקומות, ביניהם מקומות שכעת אינם בשימוש."
-
-#~ msgid "By default, your server allows scripts to run for %s second."
-#~ msgid_plural "By default, your server allows scripts to run for %s seconds."
-#~ msgstr[0] "כברירת מחדל, השרת מאפשר לסקריפטים לרוץ במשך שניה %s."
-#~ msgstr[1] "כברירת מחדל, השרת מאפשר לסקריפטים לרוץ במשך %s שניות."
-
-#~ msgid "By default, your server allows scripts to use %s of memory."
-#~ msgstr "כברירת מחדל, השרת מאפשר לסקריפטים להשתמש ב-%s זיכרון."
-
-#~ msgid "Calculate the age differences between siblings, children, spouses, etc."
-#~ msgstr "חשב את הבדלי הגיל בין אחים, ילדים, בני זוג וכו׳."
-
-#~ msgid "Cannot create"
-#~ msgstr "לא ניתן ליצר"
-
-#~ msgid "Cape Colony"
-#~ msgstr "מושבת הכף"
-
-#~ msgid "Case insensitive"
-#~ msgstr "אין רגישות לאותיות הלועזיות הקטנות והגדולות"
-
-#~ msgid "Catalonia"
-#~ msgstr "קטלוניה"
-
-#~ msgid "Caution!"
-#~ msgstr "זהירות!"
-
-#~ msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-#~ msgstr "התראה: מודולים ישנים עשויים שלא לפעול, או שהם עשויים למנוע את עבודת ה-webtrees."
-
-#~ msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-#~ msgstr "התראה: עיצובים ישנים עשויים שלא לפעול, או שהם עשויים למנוע את עבודת ה-webtrees."
-
-#~ msgid "Cemeteries"
-#~ msgstr "בתי קברות"
-
-#~ msgid "Center map here"
-#~ msgstr "מרכז מפה כאן"
-
-#~ msgid "Certificate number"
-#~ msgstr "מספר תעודה"
-
-#~ msgid "Change"
-#~ msgstr "שנה"
-
-#~ msgid "Change flag"
-#~ msgstr "החלף דגל"
-
-#~ msgid "Change language"
-#~ msgstr "החלף שפה"
-
-#~ msgid "Change the blocks on this user’s “My page”"
-#~ msgstr "שנה הבלוקים של משתמש זה ב\"דף שלי\""
-
-#~ msgid "Channel Islands"
-#~ msgstr "איי התעלה"
-
-#~ msgid "Check file permissions…"
-#~ msgstr "בדוק ההרשאות של קבצים…"
-
-#~ msgid "Check for custom modules…"
-#~ msgstr "בדוק קיום מודולים מותאמים אישית…"
-
-#~ msgid "Check for custom themes…"
-#~ msgstr "בדוק קיום עיצובים מותאמים אישית…"
-
-#~ msgid "Check the access rights on this folder."
-#~ msgstr "בדוק הרשאות גישה לתיקיה הזו."
-
-#~ msgid "Check the settings and try again."
-#~ msgstr "בדוק את ההגדרות ונסה שוב."
-
-#~ msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-#~ msgstr "בחר את התמונה הממוזערת שברצונך להעלות. למרות שניתן באופן אוטומטי ליצור תמונות ממוזערות עבור תמונות, יתכן שתרצה ליצור תמונה ממוזערת משלך, במיוחד עבור סוגי מדיה אחרים. לדוגמה, אתה יכול לספק תמונת סטילס מוידאו או תמונה של האדם שביצע הקלטת שמע."
-
-#~ msgid "Choose: "
-#~ msgstr "בחר "
-
-#~ msgid "Cleared but not yet completed"
-#~ msgstr "אושר אבל טרם הושלם"
-
-#~ msgid "Click %s to choose individual as head of family."
-#~ msgstr "הקש על %s כדי לבחור אדם כראש משפחה."
-
-#~ msgid "Click a row, then drag-and-drop to re-order media"
-#~ msgstr "הקלק על שורה, אח״כ ”גרור ושחרר” כדי לשנות את סדר המדיה"
-
-#~ msgid "Click here for PhpGedView to webtrees transfer wizard"
-#~ msgstr "לחץ כאן עבור אשף העברת PhpGedView ל- webtrees"
-
-#~ msgid "Click here to add, edit, or delete"
-#~ msgstr "לחץ כאן כדי להוסיף, לערוך או למחוק"
-
-#~ msgid "Click here to open or close the sidebar"
-#~ msgstr "לחץ כאן כדי לסגור או לפתוח את הסרגל הצדדי"
-
-#~ msgid "Click name to add individual to add links list."
-#~ msgstr "הקש על שם כדי להוסיף אדם לרשימת הוסף קישורים."
-
-#~ msgid "Click on a title to go straight to it, or scroll down to read them all."
-#~ msgstr "לחץ על כותרת כדי ללכת ישר אליה, או גלול מטה כדי לקרוא את כולן."
-
-#~ msgid "Click to choose individual as head of family."
-#~ msgstr "הקש כדי לבחור אדם כראש משפחה."
-
-#~ msgid "Cohabitation"
-#~ msgstr "חיים ביחד"
-
-#~ msgid "Columns per page"
-#~ msgstr "עמודות לדף"
-
-#~ msgid "Comparison"
-#~ msgstr "השוואה"
-
-#~ msgid "Compress the GEDCOM file"
-#~ msgstr "דחס את קובץ ה-GEDCOM"
-
-#~ msgid "Concatenation"
-#~ msgstr "שרשור"
-
-#~ msgid "Configure"
-#~ msgstr "עצב"
-
-#~ msgid "Confirm password"
-#~ msgstr "אישור סיסמה"
-
-#~ msgid "Continue adding"
-#~ msgstr "המשך להוסיף"
-
-#~ msgid "Continued"
-#~ msgstr "נמשך"
-
-#~ msgid "Convert CEME tags to GEDCOM 5.5.1"
-#~ msgstr "המר תגי CEME ל- GEDCOM 5.5.1"
-
-#~ msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-#~ msgstr "המר תגי NAME: _XXX ל- GEDCOM 5.5.1"
-
-#~ msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-#~ msgstr "המר תגי _PRIM ל- GEDCOM 5.5.1"
-
-#~ msgid "Convert from UTF-8 to ISO-8859-1"
-#~ msgstr "הסב מ-UTF-8 ל-ISO-8859-1"
-
-#~ msgid "Cookie warning"
-#~ msgstr "אזהרת קובץ עוגיה"
-
-#~ msgid "Copy these files to the folder %s, replacing any that have the same name."
-#~ msgstr "העתק קבצים אלה אל התיקייה %s, ע״י החלפת קבצים ביעלי אותו שם."
-
-#~ msgid "Count"
-#~ msgstr "ספירה"
-
-#~ msgid "Countries"
-#~ msgstr "ארצות"
-
-#~ msgid "Counts "
-#~ msgstr "מונים "
-
-#~ msgid "County"
-#~ msgstr "מחוז"
-
-#~ msgid "Create a family"
-#~ msgstr "צור משפחה"
-
-#~ msgid "Create a family from existing individuals"
-#~ msgstr "צור משפחה מאנשים קיימים"
-
-#~ msgid "Create a website access rule"
-#~ msgstr "צור חוק גישה לאתר"
-
-#~ msgid "Current"
-#~ msgstr "נוכחי"
-
-#~ msgid "Custom GEDCOM sub-tags"
-#~ msgstr "תגי משנה מותאמים אישית של GEDCOM"
-
-#~ msgid "Custom GEDCOM tag"
-#~ msgstr "תג GEDCOM מותאם אישית"
-
-#~ msgid "Custom fact"
-#~ msgstr "עובדה מותאמת"
-
-#~ msgid "Custom tags"
-#~ msgstr "תגים מותאמים"
-
-#~ msgid "Custom theme"
-#~ msgstr "עיצוב מותאם אישית"
-
-#~ msgid "Czechoslovakia"
-#~ msgstr "צ׳כוסלובקיה"
-
-#~ msgid "Dashboard"
-#~ msgstr "לוח מחוונים"
-
-#~ msgid "Data Fixes"
-#~ msgstr "תיקוני נתונים"
-
-#~ msgid "Database and table names"
-#~ msgstr "מאגר מידע וטבלאות"
-
-#~ msgid "Decade of birth"
-#~ msgstr "עשור של הלידה"
-
-#~ msgid "Decade of death"
-#~ msgstr "עשור של הפטירה"
-
-#~ msgid "Decade of marriage"
-#~ msgstr "עשור של הנשואים"
-
-#~ msgid "Default"
-#~ msgstr "ברירת מחדל"
-
-#~ msgid "Default map type"
-#~ msgstr "ברירת מחדל של סוג המפה"
-
-#~ msgid "Default pedigree chart layout"
-#~ msgstr "מבנה ברירת המחדל של תרשים אילן יוחסין"
-
-#~ msgid "Default pedigree generations"
-#~ msgstr "מספר דורות של אילן יוחסין"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "דז'ה וו"
-
-#~ msgid "Delete all existing geographic data before importing the file."
-#~ msgstr "מחק את כל הנתונים הגיאוגרפיים הקיימים לפני ייבוא הקובץ."
-
-#~ msgid "Delete old files…"
-#~ msgstr "מחק קבצים ישנים…"
-
-#~ msgid "Delete temporary files…"
-#~ msgstr "מחק קבצים זמניים…"
-
-#~ msgid "Description unavailable"
-#~ msgstr "תיאור אינו זמין"
-
-#~ msgid "Desired password"
-#~ msgstr "סיסמה רצויה"
-
-#~ msgid "Desired username"
-#~ msgstr "שם משתמש רצוי"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "זו אל-חיג׳ה"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "זו אל-חיג׳ה"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "זו אל-חיג׳ה"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "זו אל-חיג׳ה"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "ז׳ו אל-קעדה"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "ז׳ו אל-קעדה"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "ז׳ו אל-קעדה"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "ז׳ו אל-קעדה"
-
-#~ msgid "Died as an infant: exempt"
-#~ msgstr "מת בהיותו תינוק: פטור"
-
-#~ msgid "Disable these modules"
-#~ msgstr "נטרל את המודולים הללו"
-
-#~ msgid "Disable these themes"
-#~ msgstr "נטרל את העצובים הללו"
-
-#~ msgid "Display all"
-#~ msgstr "הצג הכל"
-
-#~ msgid "Display custom GEDCOM tags"
-#~ msgstr "הצג תגי GEDCOM מותאמים אישית"
-
-#~ msgid "Display map coordinates"
-#~ msgstr "הצג קואורדינטות של המפה"
-
-#~ msgid "Do not change to keep original filename."
-#~ msgstr "אין לשנות אם ברצונך לשמור על שם הקובץ המקורי."
-
-#~ msgid "Do not create new locations, just import coordinates for existing locations."
-#~ msgstr "אל תיצור מקומות חדשים, רק ייבא קואורדינטות למקומות קיימים."
-
-#~ msgid "Do not use maps"
-#~ msgstr "אל תשתמש במפות"
-
-#~ msgid "Down"
-#~ msgstr "למטה"
-
-#~ msgid "Download geographic data"
-#~ msgstr "הורד נתונים גיאוגרפיים"
-
-#~ msgid "Earliest birth year"
-#~ msgstr "שנת הלידה המוקדמת ביותר"
-
-#~ msgid "Earliest death year"
-#~ msgstr "שנת הפטירה המוקדמת ביותר"
-
-#~ msgid "Edit a website access rule"
-#~ msgstr "ערוך חוק גישה לאתר"
-
-#~ msgid "Edit media"
-#~ msgstr "ערוך מדיה"
-
-#~ msgid "Edit the details"
-#~ msgstr "ערוך פרטים"
-
-#~ msgid "Edit the gender"
-#~ msgstr "ערוך מגדר"
-
-#~ msgid "Edit the media object"
-#~ msgstr "ערוך ישות מדיה"
-
-#~ msgid "Edit the note"
-#~ msgstr "ערוך הערה"
-
-#~ msgid "Edit the repository"
-#~ msgstr "ערוך מאגר"
-
-#~ msgid "Edit the source"
-#~ msgstr "ערוך מקור"
-
-#~ msgid "Editing restriction"
-#~ msgstr "הגבלת עריכה"
-
-#~ msgid "Eire"
-#~ msgstr "אירלנד (רפובליקה)"
-
-#~ msgid "Elevation"
-#~ msgstr "גובה"
-
-#~ msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-#~ msgstr "כתובת הדואר האלקטרוני בשדה \"מאת:\" של הדואר האלקטרוני ש-webtrees יוצרת באופן אוטומטי.<br><br>webtrees יכולה באופן אוטומטי ליצור הודעות דואר אלקטרוני כדי ליידע את המנהלים על שינויים שיש לבדוק. webtrees שולחת גם הודעה בדואר אלקטרוני למשתמשים שבקשו חשבון.<br><br>בדרך כלל, שדה \"מאת:\" של הדואר האלקטרוני שנוצר באופן אוטומטי הוא משהו כמו <i>From: webtrees-noreply@yoursite</i> כדי להראות שלא נדרשת תגובה לדואר האלקטרוני. כדי להתגונן מפני דואר זבל או פגיעות דואר אלקטרוני אחרות, דורשות חלק ממערכות הדואר האלקטרוני ששדה \"מאת:\" של כל הודעה, ישקף חשבון דואר תקף ולא תקבלנה הודעות שהן כנראה מחשבון <i>webtrees-noreply</i>."
-
-#~ msgid "Embedded variable"
-#~ msgstr "משתנה מוטמע"
-
-#~ msgid "End IP address"
-#~ msgstr "כתובת IP סופית"
-
-#~ msgid "Enter an individual, family, or source ID"
-#~ msgstr "הכנס קוד של אדם, משפחה או מקור"
-
-#~ msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-#~ msgstr "הכנס או חפש את קוד הזיהוי של האדם, המשפחה או המקור שאליו יש לקשר את המדיה הזו."
-
-#~ msgid "Enter report values"
-#~ msgstr "הכנס ערכי הדו״ח"
-
-#~ msgid "Exact text"
-#~ msgstr "מחרוזת מדויקת"
-
-#~ msgid "FAQ position"
-#~ msgstr "מיקום שאלה נפוצה"
-
-#~ msgid "FAQ visibility"
-#~ msgstr "היכן רואים את השאלה הנפוצה"
-
-#~ msgid "FOKO country"
-#~ msgstr "מדינת פוקו"
-
-#~ msgid "Facts for repository records"
-#~ msgstr "עובדות על רשומות המאגר"
-
-#~ msgid "Facts for source records"
-#~ msgstr "עובדות על רשומות המקור"
-
-#~ msgid "Family ID prefix"
-#~ msgstr "קידומת קוד זיהוי של משפחה"
-
-#~ msgid "Family group information"
-#~ msgstr "נתוני קבוצת משפחה"
-
-#~ msgid "Family list"
-#~ msgstr "רשימת משפחה"
-
-#~ msgid "File containing places (CSV)"
-#~ msgstr "הקובץ כולל מיקומים (CSV)"
-
-#~ msgid "Find a fact or event"
-#~ msgstr "מצא עובדה או אירוע"
-
-#~ msgid "Find a family"
-#~ msgstr "מצא משפחה"
-
-#~ msgid "Find a media object"
-#~ msgstr "מצא ישות מדיה"
-
-#~ msgid "Find a place"
-#~ msgstr "מצא מקום"
-
-#~ msgid "Find a repository"
-#~ msgstr "מצא מאגר"
-
-#~ msgid "Find a shared note"
-#~ msgstr "מצא הערה"
-
-#~ msgid "Find an individual"
-#~ msgstr "מצא אדם"
-
-#, php-format
-#~ msgid "Flag of %s"
-#~ msgstr "דגל %s"
-
-#~ msgid "Font"
-#~ msgstr "גופן"
-
-#~ msgid "From"
-#~ msgstr "מ-"
-
-#~ msgid "GEDCOM sub-tag"
-#~ msgstr "תת תג של GEDCOM"
-
-#~ msgid "Gender"
-#~ msgstr "מגדר"
-
-#~ msgid "Gender icon on charts"
-#~ msgstr "הראה צלמית מגדר בתרשימים"
-
-#~ msgid "Get an API key from Google."
-#~ msgstr "קבל מפתח API מ-Google."
-
-#~ msgid "Gives users the option of selecting their own theme."
-#~ msgstr "מאפשר למשתמשים לבחור עיצוב משלהם."
-
-#~ msgid "Google Street View™"
-#~ msgstr "גוגל תצוגת רחוב™"
-
-#~ msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
-#~ msgstr "גוגל מאפשרת מספר קטן של בקשות מפה אנונימיות ליום. אם אתה צריך יותר מזה, תצטרך חשבון Google ומפתח API."
-
-#~ msgid "Google™ maps preferences"
-#~ msgstr "העדפות של מפות ™Google"
-
-#~ msgid "Google™ webmaster tools"
-#~ msgstr "כלים של גוגל™ למנהלי אתרים"
-
-#~ msgid "Grandparents"
-#~ msgstr "סבא וסבתא"
-
-#~ msgid "Head of household"
-#~ msgstr "ראש"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "הלווטיקה"
-
-#~ msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
-#~ msgstr "כאן ניתן להגדיר או להסיר צלמית. באמצעות קישור זה ניתן לבחור דגל. כאשר המיקום הגיאוגרפי הזה מוצג, הדגל הזה יוצג."
-
-#~ msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
-#~ msgstr "כאן ניתן להזין את רמת ההגדלה. ערך זה ישמש כערך מינימלי בעת הצגת מיקום גיאוגרפי זה על המפה."
-
-#~ msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
-#~ msgstr "כאן תוכל להזין את רמת הדיוק. בהתבסס על הגדרה זו קובעים את מספר הספרות של קווי האורך והרוחב."
-
-#~ msgid "Hide/show GEDCOM tags in the edit forms"
-#~ msgstr "הסתר/הצג תגי GEDCOM בטפסי העריכה"
-
-#~ msgid "Highest population"
-#~ msgstr "האוכלוסייה הגדולה ביותר"
-
-#~ msgid "Historical facts"
-#~ msgstr "עובדות היסטוריות"
-
-#~ msgid "House"
-#~ msgstr "בית"
-
-#~ msgid "House number"
-#~ msgstr "מספר הבית"
-
-#~ msgid "Hybrid"
-#~ msgstr "משולבת"
-
-#~ msgid "Icon"
-#~ msgstr "צלמית"
-
-#~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
-#~ msgstr "אם מספר הפעמים ששם משפחה קיים קטן מסף, הוא לא יופיע ברשימה. ניתן להוסיף אותו כאן ידנית. אם מוסיפים יותר משם משפחה אחד, יש להפריד ביניהם ע״י פסיק. <b>אותיות לועזיות גדולות וקטנות בשמות המשפחה הן משמעותיות.</b>"
-
-#~ msgid "If the thumbnail image is a custom image, you should add it to the media object."
-#~ msgstr "אם התמונה הממוזערת היא תמונה מותאמת אישית, עליך להוסיף אותה לישות המדיה."
-
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-#~ msgstr "אם התמונה הממוזערת זהה לתמונה המקורית, היא כבר לא נחוצה ועליך למחוק אותה."
-
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
-#~ msgstr "אם התמונה הממוזערת זהה לתמונה המקורית, היא כבר לא נחוצה ועליך למחוק אותה. אם זוהי תמונה מותאמת אישית, עליך להוסיף אותה לאובייקט המדיה."
-
-#~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
-#~ msgstr "אם מבקרים לא יכולים לראות את עץ המשפחה, הם לא יוכלו לבקש חשבון. יהיה עליך להוסיף את החשבון שלהם באופן ידני."
-
-#~ msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
-#~ msgstr "אם אתה מתחבר למסד הנתונים באמצעות שקע UNIX, הזן את הנתיב כאן והשאר את מספר היציאה ריק."
-
-#~ msgid "If you do not use two-factor authentication, enable <a href=\"https://www.google.com/settings/security/lesssecureapps\">less secure applications</a> and use your Google password."
-#~ msgstr "אם אינך משתמש באימות דו-שלבי, הפעל <a href=\"https://www.google.com/settings/security/lesssecureapps\">יישומים פחות מאובטחים</a> והשתמש בסיסמת ה-Google שלך."
-
-#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
-#~ msgstr "אם יש כמות גדולה של מקומות לא פעילים, זה יכול להאט את יצירת הרשימה."
-
-#~ msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-#~ msgstr "אם תסתיר בלוק ריק, לא תוכל לשנות את ההגדרות שלו כל עוד הוא ריק ומוסתר."
-
-#~ msgid "If you use two-factor authentication, create an <a href=\"https://myaccount.google.com/apppasswords\">app password</a>."
-#~ msgstr "אם אתה משתמש באימות דו-שלבי, צור <a href=\"https://myaccount.google.com/apppasswords\">סיסמת אפליקציה</a>."
-
-#~ msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>. Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
-#~ msgstr "אם ברצונך להסיר שם משפחה מרשימת שמות המשפחה השכיחים, מבלי להגדיל את ערך הסף, אתה יכול לעשות זאת על ידי הזנת שם המשפחה כאן. אם מזינים יותר משם משפחה אחד, הם חייבים להיות מופרדים באמצעות פסיק. <b>אותיות לועזיות גדולות וקטנות בשמות המשפחה הן משמעותיות.</b> שמות משפחה שהוכנסו לכאן יוסרו גם מרשימת 10 שמות המשפחה הנפוצים על דף הבית."
-
-#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
-#~ msgstr "אם מדיניות האבטחה של השרת שלך מאפשרת, תוכל לבקש זיכרון או זמן מעבד נוסף באמצעות דף הניהול webtrees. אחרת, יהיה עליך ליצור קשר עם מנהל השרת שלך."
-
-#~ msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one."
-#~ msgstr "אם לאתר שלך ניתן להגיע באמצעות יותר מקישור URL אחד, כגון <b><span dir=\"ltr\">http://www.example.com/webtrees/</span></b> ו-<b><span dir=\"ltr\">http://webtrees.example.com/</span></b>, תוכל לציין את כתובת האתר המועדפת. בקשות לכתובות האחרות תהיינה מנותבות לכתובת המועדפת."
-
-#~ msgid "Import Options."
-#~ msgstr "אפשרויות ייבוא."
-
-#~ msgid "Import all places from a family tree"
-#~ msgstr "ייבא את כל המקומות מעץ משפחה"
-
-#~ msgid "Import custom thumbnails from webtrees version 1"
-#~ msgstr "ייבא תמונות ממוזערות מותאמות אישית מגרסה 1 של webtrees"
-
-#~ msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-#~ msgstr "בגרסה 1 של webtrees, תוכל להוסיף תמונות ממוזערות מותאמות אישית לאובייקטים של מדיה על-ידי יצירת קבצים בתיקיות \"thumbs\"."
-
-#~ msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-#~ msgstr "בגרסה 2 של webtrees, תמונות ממוזערות מותאמות מאוחסנות כקובץ מדיה שני באותו אובייקט מדיה."
-
-#~ msgid "Include fully matched places"
-#~ msgstr "כלול מקומות עם התאמה מלאה"
-
-#~ msgid "Include media (automatically zips files)"
-#~ msgstr "כלול מדיה (יוצר קבצי זיפ אוטומטית)"
-
-#~ msgid "Individual ID prefix"
-#~ msgstr "קידומת קוד זיהוי אישי"
-
-#~ msgid "Individual distribution"
-#~ msgstr "התפלגות אישית"
-
-#~ msgid "Individual list"
-#~ msgstr "רשימת אנשים"
-
-#, php-format
-#~ msgid "Individuals with surname %s"
-#~ msgstr "אנשים עם שם משפחה %s"
-
-#~ msgid "Information about the request is shown under the link below."
-#~ msgstr "הנתונים על הבקשה מוצגים מתחת לקישור למטה."
-
-#~ msgid "Initiatory"
-#~ msgstr "יוזם"
-
-#~ msgid "Installation folder"
-#~ msgstr "תיקיית התקנה"
-
-#~ msgid "Instructions for Google mail"
-#~ msgstr "הוראות לדוא\"ל של Google"
-
-#~ msgid "Interred"
-#~ msgstr "קבור"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Interred"
-#~ msgstr "קבורה"
-
-#~ msgctxt "MALE"
-#~ msgid "Interred"
-#~ msgstr "קבור"
-
-#~ msgid "Invalid GEDCOM format"
-#~ msgstr "מבנה GEDCOM שגוי"
-
-#~ msgid "Joint family name"
-#~ msgstr "שם משפחה משותף"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "ג׳ומאדא אל-אוואל"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "ג׳ומאדא אל-אוואל"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "ג׳ומאדא אל-אוואל"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "ג׳ומאדא אל-אוואל"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "ג׳ומאדא אל-ת׳אניה"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "ג׳ומאדא אל-ת׳אניה"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "ג׳ומאדא אל-ת׳אניה"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "ג׳ומאדא אל-ת׳אניה"
-
-#~ msgid "Keep"
-#~ msgstr "שמור"
-
-#~ msgid "Keep link in list"
-#~ msgstr "שמור קישור ברשימה"
-
-#~ msgid "LDS ordinance codes in chart boxes"
-#~ msgstr "קודי הסמכת מורמונים בתיבות תרשימים"
-
-#~ msgid "LDS temple"
-#~ msgstr "מקדש מורמונים"
-
-#~ msgid "Latest birth year"
-#~ msgstr "שנת הלידה המאוחרת ביותר"
-
-#~ msgid "Latest death year"
-#~ msgstr "שנת הפטירה המאוחרת ביותר"
-
-#~ msgid "Leave this blank to use the default value."
-#~ msgstr "אם תשאיר הגדרה זו ריקה, ערך ברירת המחדל יהיה בשימוש."
-
-#~ msgid "Left"
-#~ msgstr "שמאל"
-
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgid "Level"
-#~ msgstr "רמה"
-
-#~ msgid "Limit"
-#~ msgstr "גבול"
-
-#~ msgid "Limit display by"
-#~ msgstr "הגבל את התצוגה לפי"
-
-#~ msgid "Link to an existing media object"
-#~ msgstr "קשר לישות מדיה קיימת"
-
-#~ msgid "Linked database ID"
-#~ msgstr "קוד זיהוי של מאגר נתונים מקושר"
-
-#~ msgid "Location not removed: this location contains sub-locations"
-#~ msgstr "המיקום לא הורד: המיקום כולל תתי מיקומים"
-
-#~ msgid "Login ID"
-#~ msgstr "קוד זיהוי לכניסה"
-
-#~ msgid "Longevity versus time"
-#~ msgstr "אריכות ימים לעומת זמן"
-
-#~ msgid "Lost password request"
-#~ msgstr "בקשת סיסמה אבודה"
-
-#~ msgid "Lowest population"
-#~ msgstr "האוכלוסייה הקטנה ביותר"
-
-#~ msgid "Mailing name"
-#~ msgstr "שם למשלוח דואר"
-
-#~ msgid "Main section blocks"
-#~ msgstr "הבלוקים הראשיים"
-
-#~ msgid "Manage family trees "
-#~ msgstr "נהל עצי משפחה "
-
-#~ msgid "Manage the links"
-#~ msgstr "נהל קישורים"
-
-#~ msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
-#~ msgstr "שרתי דואר רבים דורשים שהשרת השולח יזהה את עצמו בצורה נכונה, תוך שימוש בשם תחום תקף."
-
-#~ msgid "Map provider"
-#~ msgstr "ספק מפה"
-
-#~ msgid "Marriage status"
-#~ msgstr "מעמד נישואין"
-
-#~ msgid "Marriage type unknown"
-#~ msgstr "סוג הנישואין אינו ידוע"
-
-#~ msgid "Married surname"
-#~ msgstr "שם משפחה לאחר הנישואין"
-
-#~ msgid "Match calendar"
-#~ msgstr "התאם לוח שנה"
-
-#~ msgid "Max"
-#~ msgstr "מקסימלי"
-
-#~ msgid "Maximum descendancy generations"
-#~ msgstr "מקסימום דורות של צאצאים"
-
-#~ msgid "Maximum pedigree generations"
-#~ msgstr "מספר דורות מקסימלי באילן יוחסין"
-
-#~ msgid "Media ID prefix"
-#~ msgstr "קידומת קוד זיהוי של מדיה"
-
-#~ msgid "Media contains"
-#~ msgstr "מדיה מכילה"
-
-#, php-format
-#~ msgid "Media filenames will be prefixed by %s."
-#~ msgstr "שמות של קבצי מדיה יקבלו קידומת %s."
-
-#~ msgid "Medical condition"
-#~ msgstr "מצב רפואי"
-
-#~ msgid "Memory limit"
-#~ msgstr "גודל הזיכרון המוקצה ל-PHP"
-
-#~ msgid "Midnight"
-#~ msgstr "חצות"
-
-#~ msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
-#~ msgstr "מינימום ומקסימום ההגדלה במפה של גוגל. 1 הוא מפה מלאה, 15 הוא בית יחיד. שים לב כי 15 זמין רק באזורים מסוימים."
-
-#~ msgid "Minimum number of occurrences to be a “common surname”"
-#~ msgstr "הכמות המינימאלית של מקרים כדי להיכלל ב-”שמות המשפחה השכיחים”"
-
-#~ msgid "Moderate pending changes"
-#~ msgstr "אשר שינויים ממתינים"
-
-#~ msgid "More news articles"
-#~ msgstr "כתבות נוספות"
-
-#~ msgid "Most sites are configured to use the default value of 3306."
-#~ msgstr "רוב האתרים מוגדרים להשתמש בערך ברירת המחדל של 3306."
-
-#~ msgid "Move left"
-#~ msgstr "העבר ימינה"
-
-#~ msgid "Move right"
-#~ msgstr "העבר שמאלה"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "מוחרם"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Muḥarram"
-#~ msgstr "מוחרם"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "מוחרם"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "מוחרם"
-
-#~ msgid "MySQL gave the error: %s"
-#~ msgstr "MySQL נתן שגיאה של %s"
-
-#~ msgid "MySQL variables"
-#~ msgstr "משתני MySQL"
-
-#~ msgid "Name contains"
-#~ msgstr "השם מכיל"
-
-#~ msgid "Names to add to common surnames (comma separated)"
-#~ msgstr "שמות שיש להוסיף לרשימת שמות המשפחה השכיחים (הפרד ע״י פסיק)"
-
-#~ msgid "Names to remove from common surnames (comma separated)"
-#~ msgstr "שמות שיש להסיר מרשימת שמות המשפחה השכיחים (הפרד ע״י פסיק)"
-
-#~ msgid "Neighborhood"
-#~ msgstr "שכונה"
-
-#~ msgid "Netherlands Antilles"
-#~ msgstr "האנטילים של ארצות השפלה"
-
-#~ msgid "Neutral Zone"
-#~ msgstr "אזור נטרלי"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Never married"
-#~ msgstr "רווקה"
-
-#~ msgctxt "MALE"
-#~ msgid "Never married"
-#~ msgstr "רווק"
-
-#~ msgid "No ancestors in the database."
-#~ msgstr "אין אב-אבות במאגר הנתונים."
-
-#~ msgid "No custom modules are enabled."
-#~ msgstr "שום מודול מותאם אישית אינו אופשר."
-
-#~ msgid "No custom themes are enabled."
-#~ msgstr "שום עיצוב אישי אינו אופשר."
-
-#~ msgid "No limit"
-#~ msgstr "אין הגבלה"
-
-#~ msgid "No map data exists for this individual"
-#~ msgstr "אין נתוני מפה עבור אדם זה"
-
-#~ msgid "No mappable items"
-#~ msgstr "אין פריטים הניתנים למימוש במפה"
-
-#~ msgid "No media file was provided."
-#~ msgstr "אף קובץ מדיה לא סופק."
-
-#~ msgid "No places found"
-#~ msgstr "לא נמצאו מקומות"
-
-#~ msgid "No places have been found."
-#~ msgstr "לא נמצאו מקומות."
-
-#~ msgid "Nobody at all"
-#~ msgstr "אף אחד"
-
-#~ msgid "Noon"
-#~ msgstr "צהריים"
-
-#~ msgid "Not a valid individual, family, or source ID"
-#~ msgstr "קוד הזיהוי של האדם, המשפחה או המקור אינו תקין"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Not married"
-#~ msgstr "לא נשואה"
-
-#~ msgctxt "MALE"
-#~ msgid "Not married"
-#~ msgstr "לא נשוי"
-
-#~ msgid "Note ID prefix"
-#~ msgstr "קידומת קוד זיהוי של הערות"
-
-#~ msgid "Number of generations"
-#~ msgstr "מספר דורות"
-
-#~ msgid "Number of items"
-#~ msgstr "מספר כניסות"
-
-#~ msgid "Number of items to show"
-#~ msgstr "מספר פריטים להצגה"
-
-#~ msgid "Number of months since the last sign-in for a user’s account to be considered inactive: "
-#~ msgstr "מספר החודשים מאז הכניסה האחרונה לחשבון המשתמש כדי שיחשב לא פעיל: "
-
-#~ msgid "Oldest at bottom"
-#~ msgstr "המבוגרים ביותר למטה"
-
-#~ msgid "Oldest at top"
-#~ msgstr "המבוגרים ביותר למעלה"
-
-#~ msgid "Optional prefixes and suffixes"
-#~ msgstr "קידומות וסיומות אופציונליים"
-
-#~ msgid "Order"
-#~ msgstr "סדר"
-
-#~ msgid "Ordnance Survey historic maps"
-#~ msgstr "מפות היסטוריות של Ordnance Survey"
-
-#~ msgid "Other folder… please type in"
-#~ msgstr "תיקייה אחרת… נא הקלד"
-
-#~ msgid "Other genealogy applications might not recognize this data."
-#~ msgstr "יישומי חקר שושלת יוחסין אחרים עשויים לא לזהות נתונים אלה."
-
-#~ msgid "Others"
-#~ msgstr "אחרים"
-
-#~ msgid "Overwrite existing coordinates."
-#~ msgstr "החלף קואורדינטות קיימות."
-
-#~ msgid "Own charts"
-#~ msgstr "תרשימים אישיים"
-
-#~ msgid "P.M."
-#~ msgstr "אחה״צ"
-
-#~ msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP extension ”%1$s” אינה פעילה. בלעדיה, התכונות הבאות לא תפעלנה: %2$s. אנא בקש ממנהל השרת לאפשר הפעילות."
-
-#~ msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "סיומת PHP ”%s” אינה פעילה. אינך יכול להתקין את webtrees עד שהסיומת תהיה פעילה. אנא בקש ממנהל השרת שלך להפעיל אותה."
-
-#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "הגדרת ”%1$s” אינה פעילה ב-PHP. בלעדיה, התכונות הבאות לא תפעלנה: %2$s. אנא בקש ממנהל השרת לאפשר הפעילות."
-
-#~ msgid "PHP time limit"
-#~ msgstr "הגבלת זמן של PHP"
-
-#~ msgid "Parent"
-#~ msgstr "הוֹרֶה"
-
-#~ msgid "Passwords do not match."
-#~ msgstr "הסיסמאות אינן תואמות."
-
-#~ msgid "Passwords must contain at least 8 characters."
-#~ msgstr "אורך הסיסמה לפחות 8 תווים."
-
-#~ msgid "Pedigree chart"
-#~ msgstr "תרשים אילן יוחסין"
-
-#~ msgid "Pedigree of %s"
-#~ msgstr "אילן יוחסין של %s"
-
-#~ msgid "Phonetic"
-#~ msgstr "פונטי"
-
-#~ msgid "Phonetic title"
-#~ msgstr "כותרת פונטית"
-
-#~ msgid "PhpGedView might be installed in one of these folders:"
-#~ msgstr "יתכן ש-PhpGedView הותקן באחת התיקיות הבאות:"
-
-#~ msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
-#~ msgstr "PhpGedView חייבת להיות גרסה 4.2.3, או SVN עד ל-#%s"
-
-#~ msgid "PhpGedView must use the same database as webtrees."
-#~ msgstr "PhpGedView חייבת להשתמש בשרת מאגר מידע הזהה לזה של webtrees."
-
-#~ msgid "PhpGedView to webtrees transfer wizard"
-#~ msgstr "אשף העברת PhpGedView ל-webtrees"
-
-#~ msgid "Place check"
-#~ msgstr "בדיקת מקום"
-
-#~ msgid "Place contains"
-#~ msgstr "מקום מכיל"
-
-#~ msgid "Place of citizenship"
-#~ msgstr "מקום האזרחות"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "העבר את האתר למצב לא מקוון, על-ידי יצירת הקובץ %s…"
-
-#~ msgid "Place the website online, by deleting the file %s…"
-#~ msgstr "העבר את האתר למצב מקוון, על-ידי מחיקת הקובץ %s…"
-
-#~ msgid "Places found"
-#~ msgstr "נמצאו מקומות"
-
-#~ msgid "Places in %s"
-#~ msgstr "מקומות ב-%s"
-
-#~ msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-#~ msgstr "שמות מקומות יש להכניס לפי התקנים של חקר שושלת יוחסין. בחקר שושלת יוחסין רושמים מהמפורט לכללי כאשר פסיקים משמשים לסמני הפרדה בין הרמות,. הרמה בה אתה רושם את נתוני המקום צריכה לייצג את הרמה של הממשל או הכנסייה בה נתונים חיוניים נשמרים עבור המקום.<br><br>\"כך למשל מקום כמו סולט לייק סיטי ירשם כ\"סולט לייק סיטי, סולט לייק, יוטה, ארה״ב.<br><br>הבא נבחן כל חלק של מקום זה. חלק הראשון, \"סולט לייק סיטי,\" הוא העיר או העיירה שבו האירוע התרחש. בחלק מהמדינות, יתכן שקיימות רשויות מקומיות או רבעים בתוך העיר שחשוב לציין אותם. במקרה זה הם יופיעו לפני העיר. החלק הבא, \"סולט לייק,\" הוא המחוז. \"יוטה\" היא המדינה, ו\"ארה״ב\" הארץ. חשוב לציין כל מקום משום שרשימות חקר שושלת יוחסין נשמרות ע״י הממשלות עבור כל רמה.<br><br>\"אם רמה מסוימת של המקום לא ידועה, יש להשאירה ריקה בין שני פסיקים. כך אם אין יודעים את המחוז נרשום: \"סולט לייק סיטי, ,יוטה, ארה״ב\". נניח שיודעים רק שאדם נולד ביוטה. את העובדה יש להכניס בצורה הבאה: \", , יוטה, ארה״ב.<br><br>ניתן להשתמש בקשר <b>מצא מקום</b> כדי לעזור במציאת מקומות שכבר קיימים במאגר הנתונים."
-
-#~ msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-#~ msgstr "מקומות ללא קואורדינטות חוקיות אינם מוצגים במפה ויש להם גבול אדום סביב הערך הצדדי"
-
-#~ msgid "Please enter a given name, surname, or place in addition to the year"
-#~ msgstr "הכנס בבקשה שם פרטי, שם משפחה או מקום בנוסף לשנה"
-
-#~ msgid "Please enter a message subject."
-#~ msgstr "אנא הכנס נושא להודעתך."
-
-#~ msgid "Please enter more than one character."
-#~ msgstr "נא הכנס יותר מתו אחד."
-
-#~ msgid "Please enter some message text before sending."
-#~ msgstr "הזן מלל הודעה לפני שליחה."
-
-#~ msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
-#~ msgstr "ספק בבקשה את כתובת הדואר האלקטרוני שלך, כדאי שנוכל ליצור אתך קשר בנוגע להודעה זו. אם לא תספק את הכתובת לא נוכל להגיב לפנייתך. כתובת הדואר תשמש אך ורק לתגובה לפניה זו."
-
-#~ msgid "Precision"
-#~ msgstr "דיוק"
-
-#~ msgid "Precision of the latitude and longitude"
-#~ msgstr "דיוק בקו אורך וקו רוחב"
-
-#~ msgid "Prefixes"
-#~ msgstr "קידומות"
-
-#~ msgid "Presentation style"
-#~ msgstr "סגנון תצוגה"
-
-#~ msgid "Privacy restriction"
-#~ msgstr "הגבלת פרטיות"
-
-#~ msgid "Quick repository facts"
-#~ msgstr "עובדות מהירות של מאגר"
-
-#~ msgid "Quick source facts"
-#~ msgstr "עובדות מהירות של מקורות"
-
-#~ msgid "README documentation"
-#~ msgstr "תיעוד (Readme)"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "רביע אל-אוול"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "רביע אל-אוול"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "רביע אל-אוול"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "רביע אל-אוול"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "רביע את-ת׳אני"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "רביע את-ת׳אני"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "רביע את-ת׳אני"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "רביע את-ת׳אני"
-
-#~ msgid "Rada"
-#~ msgstr "ראדה - קרבת מינקת משותפת"
-
-#~ msgid "Really delete all geographic data?"
-#~ msgstr "האם באמת למחוק את כל הנתונים הגיאוגרפיים?"
-
-#~ msgid "Records are not the same type. Cannot merge records that are not the same type."
-#~ msgstr "הרשומות אינן מסוג זהה. לא ניתן למזג רשומות מסוגים שונים."
-
-#~ msgid "Redraw map"
-#~ msgstr "צייר מפה מחדש"
-
-#~ msgid "Reliability of the information"
-#~ msgstr "אמינות המידע"
-
-#~ msgid "Religious name"
-#~ msgstr "שם דתי"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Religious name"
-#~ msgstr "שם דתי"
-
-#~ msgctxt "MALE"
-#~ msgid "Religious name"
-#~ msgstr "שם דתי"
-
-#~ msgid "Remove flag"
-#~ msgstr "הסר דגל"
-
-#~ msgid "Remove link from list"
-#~ msgstr "הסר קישור מרשימה"
-
-#~ msgid "Renumber"
-#~ msgstr "ספרר מחדש"
-
-#~ msgid "Renumber family tree"
-#~ msgstr "מספר מחדש עץ משפחה"
-
-#~ msgid "Repositories found"
-#~ msgstr "נמצאו מאגרים"
-
-#~ msgid "Repository ID prefix"
-#~ msgstr "קידומת קוד זיהוי של מאגר"
-
-#~ msgid "Repository contains"
-#~ msgstr "המאגר מכיל"
-
-#~ msgid "Reset to initial map state"
-#~ msgstr "איפוס למצב המפה הראשוני"
-
-#~ msgid "Restrict access to the website, using IP addresses and user-agent strings."
-#~ msgstr "הגבל את הגישה לאתר באמצעות כתובות IP ומחרוזות סוכן משתמש."
-
-#~ msgid "Resulting value"
-#~ msgstr "תוצאה"
-
-#~ msgid "Right"
-#~ msgstr "ימין"
-
-#~ msgid "Right section blocks"
-#~ msgstr "הבלוקים השמאליים"
-
-#~ msgid "Romanized title"
-#~ msgstr "כותרת בתעתיק לטיני"
-
-#~ msgid "Rule"
-#~ msgstr "כלל"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "צפר"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Ṣafar"
-#~ msgstr "צפר"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "צפר"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "צפר"
-
-#~ msgid "Satellite"
-#~ msgstr "לוויין"
-
-#~ msgid "Search engine"
-#~ msgstr "מכונת חיפוש"
-
-#~ msgid "Search for individuals to add to add Links list."
-#~ msgstr "חפש אנשים כדי להוסיפם לרשימת הוסף קישורים."
-
-#~ msgid "Search globally"
-#~ msgstr "חיפוש גלובלי"
-
-#~ msgid "Search locally"
-#~ msgstr "חיפוש מקומי"
-
-#~ msgid "Select a block and use the arrows to move it."
-#~ msgstr "בחר בלוק והשתמש בחצים כדי להזיז אותו."
-
-#~ msgid "Select chart type"
-#~ msgstr "בחר סוג תרשים"
-
-#~ msgid "Select events"
-#~ msgstr "בחר אירועים"
-
-#~ msgid "Select flag"
-#~ msgstr "בחר דגל"
-
-#~ msgid "Select the desired count interval"
-#~ msgstr "בחר את מרווח המנייה הרצוי"
-
-#~ msgid "Select the languages that will be shown in menus."
-#~ msgstr "בחר את השפות שתוצגנה בתפריטים."
-
-#~ msgid "Select the stats to show in this block"
-#~ msgstr "בחר את הנתונים הסטטיסטיים שיוצגו בבלוק זה"
-
-#~ msgid "Send broadcast messages"
-#~ msgstr "שלח הודעות שידור"
-
-#~ msgid "Serbia and Montenegro"
-#~ msgstr "סרביה ומונטנגרו"
-
-#~ msgid "Server file containing places (CSV)"
-#~ msgstr "הקובץ על השרת שכולל מיקומים (CSV)"
-
-#~ msgid "Session timeout"
-#~ msgstr "פסק-זמן מהתחברות עד לניתוק אוטומטי"
-
-#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
-#~ msgstr "הגדר את ברירת המחדל של מספר הדורות שיוצגו בתרשימי צאצאים ואילן יוחסין."
-
-#~ msgid "Set the maximum number of generations to display on descendancy charts."
-#~ msgstr "הגדר את המספר המרבי של דורות שניתן להציג על תרשימי צאצאים."
-
-#~ msgid "Set the maximum number of generations to display on pedigree charts."
-#~ msgstr "קבע את המספר המרבי של דורות שיוצגו בתרשימי אילן יוחסין."
-
-#~ msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts. This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-#~ msgstr "הגדר כ<b>כן</b> כדי להשתמש במספר RIN במקום מספר מזהה של GEDCOM כשמבקשים מספר מזהה של אדם עבור קבצי תצורה, הגדרות משתמש ותרשימים. זה שימושי עבור תוכניות חקר שושלת יוחסין שלא מיוצאות באופן עקבי עם אותו מספר מזהה של GEDCOM לכל אדם, אבל תמיד משתמשות באותו RIN."
-
-#~ msgid "Shared note contains"
-#~ msgstr "ההערה המשותפת מכילה"
-
-#~ msgid "Shared notes found"
-#~ msgstr "נמצאו הערות משותפות"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "שעבאן"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Shaʿbān"
-#~ msgstr "שעבאן"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "שעבאן"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "שעבאן"
-
-#~ msgid "Short version"
-#~ msgstr "גרסה קצרה"
-
-#~ msgid "Should this block be hidden when it is empty"
-#~ msgstr "האם להחביא את הבלוק כאשר הוא ריק"
-
-#~ msgid "Show all notes and source references on notes and sources tabs"
-#~ msgstr "הראה את כל ההתייחסויות להערות ומקורות בלשונית של הערות ומקורות"
-
-#~ msgid "Show all spouses and ancestors"
-#~ msgstr "הצג את כל בני הזוג ואב-אבות"
-
-#~ msgid "Show all tags"
-#~ msgstr "הראה את כל התגים"
-
-#~ msgid "Show chart details by default"
-#~ msgstr "הצג פרטי תרשים כברירת מחדל"
-
-#~ msgid "Show common surnames"
-#~ msgstr "הראה שמות משפחה שכיחים"
-
-#~ msgid "Show counts before or after name"
-#~ msgstr "שים מונים לפני או אחרי השם"
-
-#~ msgid "Show cousins"
-#~ msgstr "הראה בני דוד"
-
-#~ msgid "Show date differences"
-#~ msgstr "הראה הפרשי תאריכים"
-
-#~ msgid "Show details"
-#~ msgstr "הצג פרטים"
-
-#~ msgid "Show hit counters on Portal and Individual pages."
-#~ msgstr "הצג מוני פגיעה בדפי פורטל ובדפים האישיים."
-
-#~ msgid "Show images"
-#~ msgstr "הראה תמונות"
-
-#~ msgid "Show inactive places"
-#~ msgstr "הראה מקומות לא פעילים"
-
-#~ msgid "Show lifespans"
-#~ msgstr "הצג תוחלות חיים"
-
-#~ msgid "Show only births, deaths, and marriages"
-#~ msgstr "הראה רק לידות, פטירות וחתונות"
-
-#~ msgid "Show only individuals for whom the gender is not known."
-#~ msgstr "הראה רק אנשים שמינם בלתי ידוע."
-
-#~ msgid "Show only the selected tags"
-#~ msgstr "הצג רק תגים נבחרים"
-
-#~ msgid "Show places in hierarchy"
-#~ msgstr "הראה מקומות בצורה היררכית"
-
-#~ msgid "Show related individuals/families"
-#~ msgstr "הראה אנשים קרובים/משפחות קרובות"
-
-#~ msgid "Show statistics charts"
-#~ msgstr "הראה תרשימי סטטיסטיקות"
-
-#~ msgid "Show the location of places and events using the Google™ maps mapping service."
-#~ msgstr "מיקום האירועים והמקומות בעזרת מיפוי מפות ™Google."
-
-#~ msgid "Sicily"
-#~ msgstr "סיציליה"
-
-#~ msgid "Sign-in URL"
-#~ msgstr "URL של התחברות"
-
-#~ msgid "Signed-in as "
-#~ msgstr "מחובר כ- "
-
-#~ msgid "Simple search filter based on the characters entered, no wildcards are accepted."
-#~ msgstr "מסנן חיפוש פשוט המבוסס על הנתונים שהוקשו, ג׳וקרים אינם מתקבלים."
-
-#~ msgid "Site preferences"
-#~ msgstr "העדפות אתר"
-
-#~ msgid "Size of map (in pixels)"
-#~ msgstr "גודל המפה (בפיקסלים)"
-
-#~ msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-#~ msgstr "שמות מקום ניתן לכתוב עם קידומות וסיומות אופציונליים. לדוגמה ”אורנג׳” לעומת ”אורנג׳ קאונטי”. אם עץ המשפחה מכיל שמות מקומות מלאים, אבל מסד הנתונים הגיאוגרפי מכיל שמות מקומות קצרים, אז אתה צריך לציין רשימה של קידומות וסיומות שאותם יש לבטל. יש להפריד ע״י נקודה-פסיק בין אפשרויות שונות. לדוגמה ”מחוז; מחוז של” או ”Township; Twp; Twp.”."
-
-#~ msgid "Source ID prefix"
-#~ msgstr "קידומת קוד זיהוי של מקור"
-
-#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-#~ msgstr "ציטוטים של מקור יכולים לכלול שדות אשר מגדירים את איכות הנתונים (ראשוני, משני, וכו׳) ואת התאריך שבו האירוע נרשם במקור. אם אתה לא משתמש בשדות האלה, ניתן לבטל אותם בעת יצירת מקורות של ציטוטים חדשים."
-
-#~ msgid "Source contains"
-#~ msgstr "מקור מכיל"
-
-#~ msgid "Spouse census date"
-#~ msgstr "תאריך המפקד עם בן/בת זוג"
-
-#~ msgid "Spouse census place"
-#~ msgstr "מקום המפקד עם בן/בת זוג"
-
-#~ msgid "Spouse note"
-#~ msgstr "הערה על בן/בת זוג"
-
-#~ msgid "Standard"
-#~ msgstr "רגיל"
-
-#~ msgid "Start IP address"
-#~ msgstr "כתובת IP התחלתית"
-
-#~ msgid "Start at parents"
-#~ msgstr "התחל מההורים"
-
-#~ msgid "Statistics chart"
-#~ msgstr "תרשים סטטיסטי"
-
-#~ msgid "Store watermarked full size images on server"
-#~ msgstr "שמור תמונות בעלות סימני מים בגודל מלא על השרת"
-
-#~ msgid "Store watermarked thumbnails on server"
-#~ msgstr "שמור תמונות ממוזערות בעלות סימני מים על השרת"
-
-#~ msgid "Street name"
-#~ msgstr "שם רחוב"
-
-#~ msgid "Subdivision"
-#~ msgstr "תת חלוקה"
-
-#~ msgid "Suffixes"
-#~ msgstr "סיומות"
-
-#~ msgid "Support for non-standard GEDCOM tags."
-#~ msgstr "תמיכה בתגי GEDCOM לא סטנדרטיים."
-
-#~ msgid "Surnames are inflected to indicate an individual’s gender and marital status."
-#~ msgstr "שמות משפחה מוטים כדי לציין את המגדר ומצבו המשפחתי של האדם."
-
-#~ msgid "Surnames are inflected to indicate an individual’s gender."
-#~ msgstr "שמות משפחה מוטים כדי לציין את המגדר של האדם."
-
-#~ msgid "System settings"
-#~ msgstr "הגדרות מערכת"
-
-#~ msgid "Tag"
-#~ msgstr "תג"
-
-#~ msgid "Tell visitors why this site uses cookies."
-#~ msgstr "ספר לאורחים מדוע האתר הזה משתמש בקובצי עוגיה."
-
-#~ msgid "Terrain"
-#~ msgstr "פיסית"
-
-#~ msgid "The FAQ list is empty."
-#~ msgstr "רשימת השאלות הנפוצות ריקה."
-
-#~ msgid "The GEDCOM standard does not allow URLs in media objects."
-#~ msgstr "תקן ה-GEDCOM אינו מאפשר URL-ים באובייקטים של מדיה."
-
-#~ msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-#~ msgstr "אשף PhpGedView ל-webtrees הוא תהליך אוטומטי שמסייע למנהלי מערכת לבצע את המעבר מהתקנת PhpGedView אל התקנת webtrees חדשה. הוא יעביר את כל המידע של GEDCOM PhpGedView ומסדי נתונים אחרים ישירות למסד הנתונים החדש שלך של webtrees. הדרישות הבאות נחוצות:"
-
-#~ msgid "The data in this website has been collected for the purposes of genealogical research."
-#~ msgstr "הנתונים באתר זה נאספו למטרות מחקר גניאלוגי."
-
-#~ msgid "The database reported the following error message:"
-#~ msgstr "מאגר הנתונים דיווח הודעות שגיאה הבאות:"
-
-#~ msgid "The details of this family are private."
-#~ msgstr "הפרטים של המשפחה הזו הם אישיים."
-
-#~ msgid "The details of this individual are private."
-#~ msgstr "הפרטים של האדם הזה הם אישיים."
-
-#~ msgid "The file %s could not be updated."
-#~ msgstr "לא היתה אפשרות לעדכן את הקובץ %s."
-
-#~ msgid "The file %s has been created."
-#~ msgstr "קובץ %s נוצר."
-
-#, php-format
-#~ msgid "The folder %s does not exist, and it could not be created."
-#~ msgstr "תיקייה %s אינה קיימת, ולא ניתן ליצור אותה."
-
-#~ msgid "The following places have been changed:"
-#~ msgstr "המקומות הבאים שונו:"
-
-#~ msgid "The following places would be changed:"
-#~ msgstr "המקומות הבאים ישונו:"
-
-#~ msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
-#~ msgstr "הכללים הבאים משמשים בהחלטה אם המבקר הוא בן אדם (אפשר גישה מלאה), רובוט של מנוע חיפוש (אפשר גישה מוגבלת) או סורק לא רצוי (מנע כל גישה)."
-
-#~ msgid "The media file %s does not exist."
-#~ msgstr "קובץ המדיה <span dir=\"ltr\">%s</span> אינו קיים."
-
-#~ msgid "The media file was not found in this family tree."
-#~ msgstr "קובץ המדיה לא נימצא בעץ המשפחה הזה."
-
-#~ msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-#~ msgstr "ניתן, וכנראה רצוי, ששם הקובץ שאותו אתה מעלה יהיה בעל שם שונה על השרת מאשר על המחשב המקומי שלך. הסיבה היא שלשם המקומי יש משמעות לך אבל הוא הרבה פחות משמעותי לאחרים שמבקרים באתר. יש גם לקחת בחשבון את האפשרות שאתה ומישהו אחר מנסים להעלות קבצים שונים הנקראים ”granny.jpg”.<br><br>בשדה זה תציין את השם החדש של הקובץ שאתה מעלה. השם שאתה מכניס כאן ישמש גם כשם של הקובץ המזערי, שאותו ניתן להעלות בנפרד או ליצור בצורה אוטומטית. אין צורך למלא את סיומת שם הקובץ (jpg, gif, pdf, doc, וכו׳.)<br><br>השאר שדה זה ריק כדי לשמור על השם המקורי של הקובץ שלך שאותו אתה מעלה מהמחשב המקומי שלך."
-
-#~ msgid "The most common repository facts are listed separately, so that they can be added more easily."
-#~ msgstr "העובדות של המאגרים הנפוצות ביותר מפורטות בנפרד, כך שניתן יהיה להוסיפם בקלות רבה יותר."
-
-#~ msgid "The most common source facts are listed separately, so that they can be added more easily."
-#~ msgstr "העובדות של המקורות הנפוצות ביותר מפורטות בנפרד, כך שניתן יהיה להוסיפן בקלות רבה יותר."
-
-#~ msgid "The new files are currently located in the folder %s."
-#~ msgstr "הקבצים החדשים ממוקמים כיום התיקייה %s."
-
-#~ msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
-#~ msgstr "על המפה מציגים מספר מופעים של השם המצויין. אם תשאיר שדה זה ריק, משתמשים באנשים עם השמות השכיחים ביותר."
-
-#, php-format
-#~ msgid "The parameter “%s” is missing."
-#~ msgstr "הפרמטר \"%s\" חסר."
-
-#~ msgid "The passwords do not match."
-#~ msgstr "הסיסמאות אינן מתאימות."
-
-#~ msgid "The preferences for the chart “%s” have been updated."
-#~ msgstr "ההעדפות של התרשים ”%s” עודכנו."
-
-#~ msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-#~ msgstr "הקידומת היא אופציונלית, אך מומלצת. על ידי מתן קידומת ייחודית לשמות הטבלאות תוכל לאפשר ליישומים שונים לחלוק את אותו מאגר המידע. מומלץ להשתמש ב-”_wt”, אך ניתן להשתמש בכל קידומת שהיא."
-
-#~ msgid "The problem"
-#~ msgstr "הבעיה"
-
-#~ msgid "The record %1$s has been renamed to %2$s."
-#~ msgstr "הרשומה%1$s שונתה ל-%2$s."
-
-#~ msgid "The record has been copied to the clipboard."
-#~ msgstr "הרשומה הועתקה ללוח הגזירים."
-
-#~ msgid "The regular expression appears to contain an error. It can’t be used."
-#~ msgstr "נראה שבביטוי הרגיל יש שגיאה. לא ניתן להשתמש בו."
-
-#~ msgid "The specified folder does not contain an installation of PhpGedView."
-#~ msgstr "התיקיה שצוינה אינה מכילה התקנה של PhpGedView."
-
-#~ msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-#~ msgstr "תפריט עיצוב יוצג רק אם העדפות האתר מאפשרות למשתמשים לבחור עיצוב משלהם."
-
-#~ msgid "The thumbnail file %1$s could not be renamed to %2$s."
-#~ msgstr "לא ניתן לשנות השם של קובץ המזערי %1$s ל-%2$s."
-
-#~ msgid "The thumbnail file %1$s has been renamed to %2$s."
-#~ msgstr "השם של קובץ המזערי %1$s שונה בהצלחה ל-%2$s."
-
-#~ msgid "The thumbnail file %s does not exist."
-#~ msgstr "תמונה ממוזערת <span dir=\"ltr\">%s</span> אינה קיימת."
-
-#~ msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
-#~ msgstr "הזמן בשניות שמושב webtrees נשאר פעיל לפני שנדרש להתחבר שנית. ברירת המחדל היא 7200, שהם 2 שעות."
-
-#~ msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
-#~ msgstr "הערך בתג \"מטה (META) של התיאור\" בכותרת הדף ה-HTML. השאר שדה זה ריק כדי להשתמש בכותרת של עץ המשפחה."
-
-#~ msgid "The version of %s is too new."
-#~ msgstr "הגירסה של %s חדשה מידי."
-
-#~ msgid "The version of %s is too old."
-#~ msgstr "הגירסה של %s ישנה מידי."
-
-#~ msgid "The website access rule has been created."
-#~ msgstr "חוק גישה לאתר נוצר."
-
-#~ msgid "The website access rule has been deleted."
-#~ msgstr "חוק גישה לאתר נמחק."
-
-#~ msgid "The website access rule has been updated."
-#~ msgstr "חוק גישה לאתר עודכן."
-
-#~ msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
-#~ msgstr "האתר www.geonames.org מספק מאגר גדול של שמות מקומות. ניתן לחפש אותו כאשר מכניסים מקומות חדשים. כדי להשתמש בתכונה זו, עליך להירשם בחינם לקבלת חשבון ב-www.geonames.org ולספק את שם המשתמש."
-
-#~ msgid "The “%” character is a wildcard, and will match zero or more other characters."
-#~ msgstr "התו ”%” הוא ג׳וקר ויתאים לאפס או יותר תווים אחרים."
-
-#~ msgid "Theme menu"
-#~ msgstr "תפריט עיצוב"
-
-#~ msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
-#~ msgstr "ניתן לבחור עיצובים בשלוש רמות: משתמש, עץ משפחה ואתר אינטרנט. העדפות משתמש מקבלות עדיפות על פני העדפות עץ משפחה, אשר מקבלות עדיפות על פני העדפות האתר. בחירת \"עיצוב ברירת מחדל\" ברמה אחת תשתמש כעיצוב ברמה הבאה."
-
-#~ msgid "There is no account with the username or email “%s”."
-#~ msgstr "אין חשבון עם שם המשתמש או דוא״ל \"%s\"."
-
-#, php-format
-#~ msgid "There is no user account with the email “%s”."
-#~ msgstr "אין חשבון משתמש עם הדוא\"ל“%s“."
-
-#~ msgid "These pages provide access to all the preferences and management tools for this webtrees site."
-#~ msgstr "דפים אלו מספקים גישה לכל העדפות התצורה וכלי הניהול עבור אתר webtrees זה."
-
-#~ msgid "This GEDCOM file is encoded using %1$s. Assume this to mean %2$s."
-#~ msgstr "ה-GEDCOM הזה מוצפן ע״י %1$s. מניח שהכוונה %2$s."
-
-#, php-format
-#~ msgid "This could be caused by an error at %s"
-#~ msgstr "זה יכול היה להיגרם על ידי שגיאה ב-%s"
-
-#~ msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
-#~ msgstr "מאגר מידע זה וקידומת קידומת שמות קבצי מאגר המידע נמצאים בשימוש של יישום אחר. אם יש לך מערכת קיימת PhpGedView, אתה צריך ליצור מערכת webtrees חדשה. באפשרותך לייבא את נתוני PhpGedView ואת ההגדרות לאחר מכן."
-
-#~ msgid "This database is only running MySQL version %s. You cannot install webtrees here."
-#~ msgstr "באתר זה פועלת רק גירסה %s של MySQL. אינך יכול להתקין כאן webtrees."
-
-#~ msgid "This entry is ignored if you have entered a URL into the filename field."
-#~ msgstr "מתעלמים מכניסה זו אם הוכנס URL בשדה שם הקובץ."
-
-#~ msgid "This family remained childless"
-#~ msgstr "המשפחה רשומה ללא ילדים"
-
-#~ msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
-#~ msgstr "הקובץ מקושר לעץ משפחה אחר על השרת. לא ניתן למחוק, להעביר או לשנות את שמו עד שהקשרים יוסרו."
-
-#~ msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-#~ msgstr "תיבת הכניסה הזו מאפשרת לשנות את השנה של לוח השנה. הקלד שנה בתיבה ולחץ <b>הכנס</b> כדי לשנות את לוח השנה לשנה הזו.<br><br><b>מאפיינים מתקדמים</b> עבור <b>הצג שנה</b><dl><dt><b>יותר משנה אחת</b></dt><dd>תוכל לחפש תאריכים בתחום של שנים.<br><br>תחומי השנה הם <u>כוללים</u>. משמעות הדבר שתחום התאריך הוא מ-1 בינואר של השנה הראשונה עד ל-31 בדצמבר בשנה האחרונה המוזכרת. מובאות כאן מספר דוגמאות לתחום השנים:<br><br><b>1992-5</b> עבור כל האירועים מ-1992 עד 1995.<br><b>1972-89</b> עבור כל האירועים מ-1972 עד 1989.<br><b>1610-759</b> עבור כל האירועים מ-1610 עד 1759.<br><b>1880-1905</b> עבור כל האירועים מ-1880 עד 1905.<br><b>880-1105</b> עבור כל האירועים מ-880 עד 1105.<br><br>כדי לראות את כל האירועים של העשור או מאה, ניתן להשתמש ב-<b>?</b> במקום הספרות האחרונות. לדוגמא,<b><span dir=\"ltr\">197?</span></b> לכל האירועים מ-1970 עד 1979 או <b><span dir=\"ltr\">16??</span></b> לכל האירועים מ-1600 עד 1699.<br><br>בחירת תחום שנים ישנה את לוח השנה למצגת של שנה.</dd></dl>"
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-#~ msgstr "זוהי רשימה מופרדת בפסיקים של תגי עובדת GEDCOM שיוצגו על טופס הוספה/עריכה של שם. אם אתה משתמש באותיות שאינן לטיניות, כגון עברית, יוונית, קירילית או ערבית, ייתכן שתרצה להוסיף תגים כגון FONE, _HEB, ROMN, וכו׳, כדי לאפשר אחסון שמות בכמה סוגי אותיות שונות."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-#~ msgstr "זוהי רשימה מופרדת בפסיקים של תגי עובדה של קובץ GEDCOM שיוצגו בעת הוספת משפחה חדשה. לדוגמה, אם MARR הוא ברשימה, שדות לתאריך ומקום נשואין יוצגו בטופס."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-#~ msgstr "זוהי רשימה מופרדת בפסיקים של תגי עובדה של קובץ GEDCOM שיוצגו בעת הוספת אדם חדש. לדוגמה, אם BIRT הוא ברשימה, שדות לתאריך לידה ומקום לידה יוצגו בטופס."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-#~ msgstr "זוהי רשימה מופרדת בפסיקים של תגי עובדת GEDCOM שיוצגו על טופס הוספה/עריכה של שמות מקומות. אם אתה משתמש באותיות שאינן לטיניות, כגון עברית, יוונית, קירילית או ערבית, ייתכן שתרצה להוסיף תגים כגון HEB, ROMN, FONE_, וכו׳, כדי לאפשר אחסון שמות של מקומות בכמה סוגי אותיות שונות."
-
-#~ msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
-#~ msgstr "זהו סיכום של חוק המורמונים <abbr title=\"כנסיית ישו המשיח של קדושי אחרית ימים\">LDS</abbr> של אדם.”B” מצביע על טבילת מורמונים.”E” מצביע על סמיכה של מיקדש המורמונים.”S” מצביע על חותמת מורמונים של בן/בת זוג.”P” מצביע על חותמת מורמונים של ילד אל הורה."
-
-#~ msgid "This is case sensitive."
-#~ msgstr "יש להקפיד על אותיות גדולות וקטנות."
-
-#~ msgid "This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails."
-#~ msgstr "זה מקרה רגיש. אם מאגר מידע בעל שם זה לא קיים webtrees תנסה ליצור אחד בשבילך. ההצלחה תהיה תלויה בהרשאות אשר נקבעו על שרת האינטרנט שלך, אבל תקבל הודעה אם זה נכשל."
-
-#~ msgid "This is the initial value for the “show details” option on the charts."
-#~ msgstr "זוהי ההגדרה הראשונית לאפשרות ”הצג פרטים” בתרשימים."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-#~ msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים יכולים להוסיף למשפחות. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת \"עובדות משפחתיות ייחודיות\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-#~ msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים יכולים להוסיף לאנשים. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת \"עובדות אישיות ייחודיות\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-#~ msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים שלך יכולים להוסיף למאגרים. אתה יכול לשנות רשימה זו על ידי הסרה או הוספת שמות של עובדות, אפילו תגים מותאמים , לפי הצורך. עובדה ששמה מופיעה ברשימה זו לא יכולה להופיע גם ברשימת \"עובדות מאגר יחודיות\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-#~ msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים יכולים להוסיף למקורות. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות, אפילו עובדות מותאמות, לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת \"עובדות ייחודיות של מקורות\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-#~ msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למשפחות. לדוגמה, אם MARR הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת MARR אחת למשפחה. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה \"כל העובדות המשפחתיות\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-#~ msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים יכולים להוסיף פעם אחת לאדם. לדוגמה, אם BIRT הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת BIRT אחת לאדם. שמות עובדות שמופיעים ברשימה זו לא יכולים להופיע גם ברשימת \"כל עובדות האישיות\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-#~ msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למאגר. לדוגמה, אם NAME הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת NAME אחת למאגר. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה \"כל העובדות של מאגרים\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-#~ msgstr "זוהי הרשימה של עובדות GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למקורות. לדוגמה, אם TITL הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת TITL אחת למקור. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימת \"כל עובדות המקור\"."
-
-#~ msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
-#~ msgstr "זהו מספר הפעמים המינימלי ששם משפחה חייב להופיע כדי שהוא יופיע ברשימת שמות המשפחה השכיחים על ”דף הבית”."
-
-#~ msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
-#~ msgstr "זה הרוחב (בפיקסלים) שהתכנית תשתמש באופן אוטומטי בעת יצירת תמונה ממוזערת. הגדרת ברירת המחדל היא 100."
-
-#~ msgid "This may be a mistake in your data."
-#~ msgstr "יתכן שזו טעות בנתוניך."
-
-#~ msgid "This may cause a problem for other applications."
-#~ msgstr "יתכן שזה יגרום לבעיה לישומים אחרים."
-
-#~ msgid "This may cause a problem for webtrees."
-#~ msgstr "יתכן שזה יגרום לבעיה ל- webtrees."
-
-#~ msgid "This media file does not exist."
-#~ msgstr "קובץ מדיה זה אינו קיים."
-
-#~ msgid "This media file exists, but cannot be accessed."
-#~ msgstr "קובץ מדיה זה קיים, אבל לא ניתן לגשת אליו."
-
-#~ msgid "This media file is broken and cannot be watermarked."
-#~ msgstr "קובץ המדיה הזה פגום ואינו ניתן לסמן אותו בסימן מים."
-
-#~ msgid "This media object is not linked to any other record."
-#~ msgstr "ישות מדיה זו אינה מקושרת לשום רשומה אחרת."
-
-#~ msgid "This message will be sent to %s"
-#~ msgstr "ההודעה תשלח ל-%s"
-
-#~ msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-#~ msgstr "אפשרות זו קובעת אם הפניות להערות ולמקור המצורפות לעובדות צריכות להיות מוצגות על לשוניות ההערות והמקורות של הדף האישי.<br><br>בדרך כלל, הלשוניות של ההערות והמקורות מציגות רק הערות ומקורות המצורפים ישירות לרשומת מסד הנתונים של האדם. אלה הם <i>רמה 1</i> הפניות של הערות ומקורות.<br><br>אופצית ה<b>כן</b> גורמת ללשוניות האלו להראות גם הערות ומקורות שהם חלק ממגוון העובדות ברשומת מסד הנתונים של הפרט. אלה הם <i>רמה 2</i> של הפניות של הערות ומקורות, משום שהעובדות השונות הן ברמה 1."
-
-#~ msgid "This option controls whether or not to automatically expand the <i>Events of close relatives</i> list."
-#~ msgstr "אפשרות זו קובעת אם להרחיב או לא להרחיב באופן אוטומטי את רשימת ה<i>אירועים של קרובי משפחה</i>."
-
-#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
-#~ msgstr "אפשרות זו קובעת אם להציג את צלמית המגדר בתרשימים.<br><br>מכיוון שהמגדר מצויין גם לפי הצבע של התיבה, אפשרות זו אינה מסתירה את המגדר. האפשרות פשוט מסירה מידע משוכפל מהתיבה."
-
-#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
-#~ msgstr "אפשרות זו מציינת אם יש ליצור את תרשים אילן היוחסין לאורך או לרוחב."
-
-#~ msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
-#~ msgstr "אפשרות זו קובעת אם קוי רוחב ואורך מוצגים בחלון המוקפץ המצורף למראי ממפות."
-
-#~ msgid "This place has no coordinates"
-#~ msgstr "למקום הזה אין קואורדינטות"
-
-#~ msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
-#~ msgstr "המאגר נמחק. מנהל צריך לסקור את המחיקה."
-
-#, php-format
-#~ msgid "This repository has been deleted. You should review the deletion and then %1$s or %2$s it."
-#~ msgstr "המאגר הזה נמחק. %1$s או %2$s את המחיקה אחרי בדיקה."
-
-#~ msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-#~ msgstr "המאגר עבר עריכה. מנהל צריך לסקור את השינויים."
-
-#, php-format
-#~ msgid "This repository has been edited. You should review the changes and then %1$s or %2$s them."
-#~ msgstr "המאגר הזה עודכן. סקור את השינויים ואח״כ %1$s או %2$s אותם."
-
-#~ msgid "This server does not support secure downloads using HTTPS."
-#~ msgstr "שרת זה אינו תומך בהורדה מאובטחת באמצעות HTTPS."
-
-#~ msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-#~ msgstr "זו צריכה להיות רשימה של עובדות המופרדת ברווח או בפסיק, בנוסף ללידה ולמוות, שאתה רוצה שתופיע בתיבות תרשים כגון תרשים אילן היוחסין. רשימה זו מחייבת אותך להשתמש בתגי עובדה כהגדרתו בתקן GEDCOM 5.5.1. לדוגמה, אם אתה רוצה שהמקצוע יופיע בתיבה, עליך להוסיף \"OCCU\" בשדה זה."
-
-#~ msgid "This site does not use any third-party tracking or analytics services."
-#~ msgstr "אתר זה אינו משתמש בשירותי מעקב או ניתוח של צד שלישי."
-
-#~ msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-#~ msgstr "אתר זה משתמש בעוגיות כדי לאחסן את ההעדפות שלך באתר זה, כגון השפה שבחרת."
-
-#~ msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
-#~ msgstr "המקור נמחק. מנהל צריך לסקור את המחיקה."
-
-#, php-format
-#~ msgid "This source has been deleted. You should review the deletion and then %1$s or %2$s it."
-#~ msgstr "המקור הזה נמחק. %1$s או %2$s את המחיקה אחרי בדיקה."
-
-#~ msgid "This source has been edited. The changes need to be reviewed by a moderator."
-#~ msgstr "המקור עבר עריכה. מנהל צריך לסקור את השינויים."
-
-#, php-format
-#~ msgid "This source has been edited. You should review the changes and then %1$s or %2$s them."
-#~ msgstr "המקור הזה עודכן. סקור את השינויים ואח״כ %1$s או %2$s אותם."
-
-#~ msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
-#~ msgstr "ערך זה מציין את רמת הדיוק של הרמות השונות בעת הזנת אזורים גיאוגרפיים חדשים. לדוגמה לארץ הערך יהיה עם דיוק 0 (= 0 ספרות אחרי הנקודה העשרונית), ואילו עבור עיר צריך 3 או 4 ספרות."
-
-#~ msgid "This type of link is not allowed here."
-#~ msgstr "סוג קשר כזה אסור כאן."
-
-#~ msgid "This website is being upgraded. Try again in a few minutes."
-#~ msgstr "אתר זה בתהליך שדרוג. נסה שוב בעוד כמה דקות."
-
-#~ msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-#~ msgstr "זה יעדכן את החלק או החלקים הגבוהים ביותר של שם המקום. לדוגמא, \"Mexico\" יתאים ל-\"Quintana Roo, Mexico\", אבל לא ל-\"Santa Fe, New Mexico\"."
-
-#~ msgid "Thumbnail files must contain images."
-#~ msgstr "תמונות ממוזערות חייבות להיות תמונות."
-
-#~ msgid "Thumbnail to upload"
-#~ msgstr "תמונה ממוזערת שאותה יש להעלות"
-
-#~ msgid "Title in Hebrew"
-#~ msgstr "כותרת בעברית"
-
-#~ msgid "To"
-#~ msgstr "עד"
-
-#~ msgid "To complete the upgrade, you should install the files manually."
-#~ msgstr "כדי להשלים את השדרוג, עליך להתקין באופן ידני את הקבצים."
-
-#~ msgid "To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server. If it contains a message, it will be displayed to visitors."
-#~ msgstr "כדי למנוע ממבקרים כניסה לאתר בזמן שאתה באמצע העתקת קבצים, באפשרותך ליצור קובץ %s באופן זמני בשרת. אם הוא מכיל מסר, הוא יוצג למבקרים."
-
-#~ msgid "To reduce the height of the News block, the administrator has hidden some articles. You can reveal these hidden articles by clicking the <b>View the archive</b> link."
-#~ msgstr "מנהל המערכת החביא כתבות אחדות, כדי להקטין את גובה בלוק החדשות. תוכל לגלות את הכתבות החבויות הללו ע״י לחיצה על קישור <b>הצג ארכיון</b>."
-
-#~ msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
-#~ msgstr "כדי להקטין את נפח ההורדה, אתה יכול לדחוס את הנתונים לקובץ זיפ. עליך לבטל את הדחיסה של קובץ הזיפ לפני שתוכל להשתמש בו."
-
-#~ msgid "To tell search engines that sitemaps are available, you can use the following links."
-#~ msgstr "כדי להודיע למנועי חיפוש שמפות האתר זמינות, ניתן להשתמש בקישורים הבאים."
-
-#~ msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
-#~ msgstr "כדי להודיע למנועי חיפוש שמפות האתר זמינות, עליך להוסיף את השורה הבאה לקובץ robots.txt."
-
-#~ msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
-#~ msgstr "כדי להשתמש בחשבון הדוא״ל של Google, השתמש בהגדרות הבאות: שרת = smtp.gmail.com, פורט=587, אבטחה=tls, שם משתמש=xxxxx@gmail.com, סיסמה=[סיסמת Gmail שלך]"
-
-#~ msgid "Top level"
-#~ msgstr "רמה עליונה"
-
-#, php-format
-#~ msgid "Total families: %s"
-#~ msgstr "סה״כ משפחות: %s"
-
-#, php-format
-#~ msgid "Total individuals: %s"
-#~ msgstr "סה״כ אנשים: %s"
-
-#~ msgid "Total number of users"
-#~ msgstr "סה״כ משתמשים"
-
-#~ msgid "Total places: %s"
-#~ msgstr "סה״כ מקומות: %s"
-
-#~ msgid "Total sources: %s"
-#~ msgstr "סה״כ מקורות: %s"
-
-#~ msgid "Tracking and analytics are not added to the control panel."
-#~ msgstr "מעקב וניתוח אינם מתווספים ללוח הבקרה."
-
-#~ msgid "Transylvania"
-#~ msgstr "טרנסילבניה"
-
-#~ msgid "Type of place markers in the place hierarchy"
-#~ msgstr "סוג מראי מקומות בהיררכית המקומות"
-
-#~ msgid "Type the password again."
-#~ msgstr "הקלד שנית את הסיסמה."
-
-#~ msgid "Type your password again, to make sure you have typed it correctly."
-#~ msgstr "הקלד את הסיסמה שנית, כדי לוודא שהקלדת אותה כראוי."
-
-#~ msgid "Types of error"
-#~ msgstr "סוגי שגיאות"
-
-#~ msgid "USA"
-#~ msgstr "ארצות הברית"
-
-#~ msgid "USSR"
-#~ msgstr "ברית המועצות"
-
-#~ msgid "UTC"
-#~ msgstr "זמן יקום מתואם"
-
-#~ msgid "Unable to connect using this username and password. Your server gave the following error."
-#~ msgstr "אין אפשרות להתחבר באמצעות הגדרות אלה. השרת שלך נתן את השגיאה הבאה."
-
-#~ msgid "Unable to find record with ID"
-#~ msgstr "לא נמצאת רשומה עם קוד זיהוי"
-
-#~ msgid "Unique family facts"
-#~ msgstr "עובדות משפחתיות יחודיות"
-
-#~ msgid "Unique individual facts"
-#~ msgstr "עובדות אישיות יחודיות"
-
-#~ msgid "Unique repository facts"
-#~ msgstr "עובדות מאגר יחודיות"
-
-#~ msgid "Unique source facts"
-#~ msgstr "עובדות יחודיות של מקורות"
-
-#~ msgctxt "unknown gender"
-#~ msgid "Unknown"
-#~ msgstr "בלתי ידוע"
-
-#~ msgid "Unlink the media object"
-#~ msgstr "התר קישור מדיה"
-
-#~ msgid "Up"
-#~ msgstr "למעלה"
-
-#~ msgid "Update all the place names in a family tree"
-#~ msgstr "עדכן את כל שמות המקומות בעץ משפחה"
-
-#~ msgid "Upgrade anyway"
-#~ msgstr "שדרג בכל מקרה"
-
-#~ msgid "Upload"
-#~ msgstr "העלה"
-
-#~ msgid "Upload geographic data"
-#~ msgstr "העלאת נתונים גיאוגרפיים"
-
-#~ msgid "Use Google™ maps for the place hierarchy"
-#~ msgstr "השתמש במפות ™Google עבור היררכית המקומות"
-
-#~ msgid "Use PHP mail to send messages"
-#~ msgstr "השתמש בדואר PHP לשלוח הודעות"
-
-#~ msgid "Use RIN number instead of GEDCOM ID"
-#~ msgstr "השתמש במספר RIN במקום בקוד זיהוי של GEDCOM"
-
-#~ msgid "Use full source citations"
-#~ msgstr "השתמש בציטוטים של מקורות מלאים"
-
-#~ msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
-#~ msgstr "השתמש בתמונות צללית כאשר אין תמונה מודגשת עבור האדם. התמונות שמשתמשים בהן, הן אופיניות למגדר של האדם המדובר."
-
-#~ msgid "Use the GeoNames database for autocomplete on places"
-#~ msgstr "השתמש במאגר מידע GeoNames עבור השלמה אוטומטית של מקומות"
-
-#~ msgid "Use this image for charts and on the individual’s page."
-#~ msgstr "השתמש בצלמית זו לתרשימים ובעמוד האישי."
-
-#~ msgid "Use this value"
-#~ msgstr "השתמש בערך הזה"
-
-#~ msgid "User preferences"
-#~ msgstr "העדפות משתמש"
-
-#~ msgid "User-agent string"
-#~ msgstr "מחרוזת סוכן משתמש"
-
-#~ msgid "Users who are signed in"
-#~ msgstr "משתמשים מחוברים"
-
-#~ msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
-#~ msgstr "ע״י שימוש בתפריט הנפתח ניתן לבחור מדינה, שעבורה ניתן לבחור דגל. אם דגלים לא מוצגים, אז אין הגדרת דגלים למדינה הזאת."
-
-#~ msgid "Verification code"
-#~ msgstr "קוד האמות"
-
-#~ msgid "View"
-#~ msgstr "צפה"
-
-#~ msgid "View all records found in this place"
-#~ msgstr "התבונן בכל הרשומות הנמצאות במקום הזה"
-
-#~ msgid "View the archive"
-#~ msgstr "הצג ארכיון"
-
-#~ msgid "View the details"
-#~ msgstr "הצג פרטים"
-
-#~ msgid "View the notes"
-#~ msgstr "הצג הערות"
-
-#~ msgid "View the statistics as graphs"
-#~ msgstr "הצג תרשימים סטטיסטיים"
-
-#~ msgid "View this individual"
-#~ msgstr "הצג אדם זה"
-
-#~ msgid "View this source"
-#~ msgstr "הצג מקור זה"
-
-#~ msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
-#~ msgstr "יצירת סימני מים יכולה להיות איטית לתמונות גדולות. אתרים עסוקים יכולים להעדיף לייצר אותם פעם אחת ולאחסן את התמונה עם סימני המים בשרת."
-
-#~ msgid "Website URL"
-#~ msgstr "כתובת אתר"
-
-#~ msgid "Website access rules"
-#~ msgstr "חוקי הגישה לאתר"
-
-#~ msgid "Website and META tag settings"
-#~ msgstr "מאפייני תצורה של האתר ותגי מטה"
-
-#~ msgid "West Africa"
-#~ msgstr "אפריקה המערבית"
-
-#~ msgid "When adding a link, the ID field cannot be empty."
-#~ msgstr "כאשר מוסיפים קישור, שדה קוד הזיהוי לא יכול להיות ריק."
-
-#~ msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-#~ msgstr "בעת הוספה קרובי משפחה חדשים, אתה יכול להוסיף ציטוטי מקור לרשומה (אדם ומשפחה) או לעובדות ואירועים (לידה, נישואים ומוות). אפשרות זו תקבע אם רשומות או עובדות תבחרנה כברירת מחדל."
-
-#~ msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
-#~ msgstr "בעת יצירת רשומות חדשות, הן מקבלות מספר מזהה פנימי. באפשרותך לציין את הקידומת עבור כל סוג רשומה."
-
-#~ msgid "When you send this message you will receive a copy sent via email to the address you provided."
-#~ msgstr "לאחר שליחת הודעה זו, תקבל עותק בדואר האלקטרוני לכתובת שמסרת לנו."
-
-#~ msgid "Where is your PhpGedView installation?"
-#~ msgstr "היכן התקנת ה-PhpGedView שלך?"
-
-#~ msgid "Whole words only"
-#~ msgstr "מילים שלמות בלבד"
-
-#~ msgid "Width"
-#~ msgstr "רוחב"
-
-#~ msgid "Width of generated thumbnails"
-#~ msgstr "רוחב התמונות המזעריות שייווצרו"
-
-#~ msgid "Wife’s maiden surname becomes new given name"
-#~ msgstr "שם הנעורים של האשה הופך לשם פרטי חדש"
-
-#~ msgid "Wife’s surname replaced by husband’s surname"
-#~ msgstr "שם המשפחה של האשה מוחלף בשם המשפחה של הבעל"
-
-#~ msgid "Wildcards"
-#~ msgstr "ג׳וקרים"
-
-#~ msgid "XREF prefixes"
-#~ msgstr "קידומות של מספרי התיחסות"
-
-#~ msgid "Year input box"
-#~ msgstr "תיבה להכנסת שנה"
-
-#~ msgid "You can choose the prefix that will be used whenever new XREFs are created."
-#~ msgstr "אתה יכול לבחור את הקידומת בה ישתמשו בכל פעם שנוצר מספר התיחסות חדש."
-
-#~ msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-#~ msgstr "תוכל להקל על חיפוש של נשים נשואות ע״י רישום שם הנישואין שלהן. אך לא כל הנשים משתמשות בשם המשפחה של בעליהן, כך שיש להיזהר לא להוסיף נתונים שגויים לקובץ ה-GEDCOM שלך."
-
-#~ msgid "You can re-enable these modules after the upgrade."
-#~ msgstr "תוכל להפעיל מודולים אלה מחדש לאחר השדרוג."
-
-#~ msgid "You can re-enable these themes after the upgrade."
-#~ msgstr "תוכל להפעיל עיצובים אלה מחדש לאחר השדרוג."
-
-#~ msgid "You can request a higher or lower limit, although the server may ignore this request."
-#~ msgstr "אתה יכול לבקש הגבלה גבוהה יותר או נמוכה יותר, אם כי יתכן והשרת יתעלם מבקשה זו."
-
-#~ msgid "You cannot create a rule which would prevent yourself from accessing the website."
-#~ msgstr "אינך יכול ליצור כלל אשר ימנע ממך להכנס לאתר."
-
-#~ msgid "You entered the same IDs. You cannot merge the same records."
-#~ msgstr "הכנסת קוד זיהוי זהה. לא ניתן למזג רשומה זהה."
-
-#~ msgid "You have not created any journal items."
-#~ msgstr "לא יצרת שום פריט יומן."
-
-#~ msgid "You may enter a URL, beginning with “http://”."
-#~ msgstr "ניתן להכניס URL שמתחיל ב-<span dir=\"ltr\">”http://”</span>."
-
-#~ msgid "You must also enable “less secure applications” in your Google account."
-#~ msgstr "עליך לאפשר גם \"ישומים פחות מאובטחים\" בחשבון הגוגל שלך."
-
-#~ msgid "You must change this before you can continue."
-#~ msgstr "עליך לשנות את זה לפני שאתה יכול להמשיך."
-
-#~ msgid "You must enter a name"
-#~ msgstr "הכנס שם"
-
-#~ msgid "You must enter a real name."
-#~ msgstr "עליך להזין שם אמתי."
-
-#~ msgid "You must enter a username."
-#~ msgstr "יש למלא שם משתמש."
-
-#~ msgid "You must provide a repository name."
-#~ msgstr "עליך לספק שם מאגר."
-
-#~ msgid "You must provide a source title"
-#~ msgstr "עליך לספק כותרת מקור"
-
-#~ msgid "You need to sign in again, using your PhpGedView username and password."
-#~ msgstr "עליך להתחבר שנית, כאשר אתה משתמש בשם המשתמש והסיסמה שלך מ-PhpGedView."
-
-#~ msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
-#~ msgstr "עלך להזין כתובת התחברות לאתר URL אם אתה רוצה להפנות לאתר או למיקום אחר, כאשר המשתמשים שלך מתחברים. זה מאוד שימושי אם אתה צריך לעבור מ-http ל-https כאשר המשתמשים שלך מתחברים. כלול את כתובת האתר המלאה ל-<i>login.php</i>. לדוגמה, https://www.yourserver.com/webtrees/login.php."
-
-#~ msgid "You sent the following message to a webtrees administrator:"
-#~ msgstr "שלחת את ההודעה הבאה למנהל מערכת webtrees:"
-
-#~ msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-#~ msgstr "עליך להתיעץ עם מחבר המודול כדי לוודא את תאימותו עם גרסה זו של webtrees."
-
-#~ msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-#~ msgstr "עליך להתייעץ עם מחבר ערכת הנושא כדי לאשר את תאימותה עם גרסה זו של webtrees."
-
-#~ msgid "Your server’s administrator will provide you with the connection details."
-#~ msgstr "מנהל השרת שלך יספק לך את פרטי הקשר."
-
-#~ msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-#~ msgstr "למשתמש שלך לא מופעל \"אישור אוטומטי של שינויים\". אתה יכול רק לשנות רשומה אחת בכל פעם."
-
-#~ msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
-#~ msgstr "שרת האינטרנט שלך משתמש בגרסת PHP %s, אשר לא נתמכת יותר. עליך לשדרג לגרסה מתקדמת יותר."
-
-#~ msgid "Yugoslavia"
-#~ msgstr "יוגוסלביה"
-
-#~ msgid "Zaire"
-#~ msgstr "זאיר"
-
-#~ msgid "Zip file(s)"
-#~ msgstr "קובץ/קבצי זיפ"
-
-#~ msgid "Zoom in here"
-#~ msgstr "הגדל כאן"
-
-#~ msgid "Zoom in/out on this box."
-#~ msgstr "קרב/הרחק בתיבה זו."
-
-#~ msgid "Zoom level"
-#~ msgstr "מקדם זום"
-
-#~ msgid "Zoom level of map"
-#~ msgstr "מקדם זום של המפה"
-
-#~ msgid "Zoom out here"
-#~ msgstr "הקטן כאן"
-
-#~ msgid "Zoom="
-#~ msgstr "זום="
-
-#~ msgid "a URL"
-#~ msgstr "כתובת אתר URL"
-
-#~ msgid "a file on the server"
-#~ msgstr "קובץ בשרת"
-
-#~ msgid "a file on your computer"
-#~ msgstr "קובץ במחשב שלך"
-
-#~ msgid "a.m."
-#~ msgstr "לפנה״צ"
-
-#~ msgctxt "FEMALE"
-#~ msgid "adopted name"
-#~ msgstr "שם באימוץ"
-
-#~ msgctxt "MALE"
-#~ msgid "adopted name"
-#~ msgstr "שם באימוץ"
-
-#~ msgid "adoption"
-#~ msgstr "אימוץ"
-
-#~ msgid "allow"
-#~ msgstr "הרשה"
-
-#~ msgctxt "FEMALE"
-#~ msgid "also known as"
-#~ msgstr "מכונה בשם"
-
-#~ msgctxt "MALE"
-#~ msgid "also known as"
-#~ msgstr "מכונה בשם"
-
-#~ msgid "always"
-#~ msgstr "תמיד"
-
-#~ msgid "birth"
-#~ msgstr "לידה"
-
-#~ msgctxt "FEMALE"
-#~ msgid "birth name"
-#~ msgstr "שם בלידה"
-
-#~ msgctxt "MALE"
-#~ msgid "birth name"
-#~ msgstr "שם בלידה"
-
-#~ msgid "burial"
-#~ msgstr "קבורה"
-
-#~ msgid "by"
-#~ msgstr "ע״י"
-
-#~ msgid "census added"
-#~ msgstr "הוסף מרשם אוכלוסין"
-
-#~ msgid "century"
-#~ msgstr "מאה"
-
-#~ msgctxt "FEMALE"
-#~ msgid "change of name"
-#~ msgstr "שם ששונה"
-
-#~ msgctxt "MALE"
-#~ msgid "change of name"
-#~ msgstr "שם ששונה"
-
-#~ msgid "children"
-#~ msgstr "ילדים"
-
-#~ msgid "creating thumbnails of images"
-#~ msgstr "יצירת תמונות ממוזערות של תמונות"
-
-#~ msgid "death"
-#~ msgstr "מות"
-
-#~ msgid "deny"
-#~ msgstr "סרב"
-
-#~ msgid "east"
-#~ msgstr "מזרח"
-
-#~ msgctxt "FEMALE"
-#~ msgid "estate name"
-#~ msgstr "שם חווה"
-
-#~ msgctxt "MALE"
-#~ msgid "estate name"
-#~ msgstr "שם חווה"
-
-#~ msgid "ex-partner"
-#~ msgstr "בן/בת זוג לשעבר"
-
-#~ msgctxt "FEMALE"
-#~ msgid "ex-partner"
-#~ msgstr "בת זוג לשעבר"
-
-#~ msgctxt "MALE"
-#~ msgid "ex-partner"
-#~ msgstr "בן זוג לשעבר"
-
-#~ msgid "file upload capability"
-#~ msgstr "יכולת להעלות קבצים"
-
-#~ msgid "gender"
-#~ msgstr "מגדר"
-
-#~ msgid "half-year after marriage"
-#~ msgstr "חצי שנה אחרי הנישואין"
-
-#~ msgid "hh:mm or hh:mm:ss"
-#~ msgstr "שש:דד או שש:דד:שש"
-
-#~ msgctxt "FEMALE"
-#~ msgid "immigration name"
-#~ msgstr "שם הגירה"
-
-#~ msgctxt "MALE"
-#~ msgid "immigration name"
-#~ msgstr "שם הגירה"
-
-#~ msgid "import"
-#~ msgstr "ייבא"
-
-#~ msgid "interval %s year"
-#~ msgid_plural "interval %s years"
-#~ msgstr[0] "מרווח שנה אחת"
-#~ msgstr[1] "מרווח %s שנים"
-
-#~ msgid "interval one child"
-#~ msgstr "מרווח ילד אחד"
-
-#~ msgid "interval two children"
-#~ msgstr "מרווח שני ילדים"
-
-#~ msgid "less than"
-#~ msgstr "פחות מ-"
-
-#~ msgid "link"
-#~ msgstr "קשר"
-
-#~ msgid "marriage"
-#~ msgstr "נישואין"
-
-#~ msgctxt "FEMALE"
-#~ msgid "married name"
-#~ msgstr "שם נישואין"
-
-#~ msgctxt "MALE"
-#~ msgid "married name"
-#~ msgstr "שם נישואין"
-
-#~ msgid "maximum"
-#~ msgstr "מקסימום"
-
-#~ msgid "midnight"
-#~ msgstr "חצות"
-
-#~ msgid "minimum"
-#~ msgstr "מינימום"
-
-#~ msgid "month"
-#~ msgstr "חודש"
-
-#~ msgid "months after marriage"
-#~ msgstr "חודשים אחרי הנישואין"
-
-#~ msgid "months before and after marriage"
-#~ msgstr "חודשים לפני ואחרי הנישואין"
-
-#~ msgid "never"
-#~ msgstr "אף פעם"
-
-#~ msgid "noon"
-#~ msgstr "צהריים"
-
-#~ msgid "north"
-#~ msgstr "צפון"
-
-#~ msgid "over"
-#~ msgstr "מעל"
-
-#~ msgid "overall"
-#~ msgstr "כללית"
-
-#~ msgid "p.m."
-#~ msgstr "אחה״צ"
-
-#~ msgid "pixels"
-#~ msgstr "פיקסלים"
-
-#~ msgid "preview"
-#~ msgstr "תצוגה מוקדמת"
-
-#~ msgid "quarters after marriage"
-#~ msgstr "רבעונים אחרי הנישואין"
-
-#~ msgctxt "FEMALE"
-#~ msgid "religious name"
-#~ msgstr "שם דתי"
-
-#~ msgctxt "MALE"
-#~ msgid "religious name"
-#~ msgstr "שם דתי"
-
-#~ msgid "reporting"
-#~ msgstr "דוחות"
-
-#~ msgid "robot"
-#~ msgstr "רובוט"
-
-#~ msgid "sort by filename"
-#~ msgstr "מיין לפי שם הקובץ"
-
-#~ msgid "sort by title"
-#~ msgstr "מיין לפי כותרת"
-
-#~ msgid "south"
-#~ msgstr "דרום"
-
-#~ msgid "ssl"
-#~ msgstr "SSL"
-
-#~ msgid "this record does not exist"
-#~ msgstr "הרשומה הזאת אינה קיימת"
-
-#~ msgid "tls"
-#~ msgstr "TLS"
-
-#~ msgid "webtrees cannot connect to the PhpGedView database: %s."
-#~ msgstr "webtrees לא יכולה להתחבר למאגר המידע %s של PhpGedView."
-
-#~ msgid "webtrees needs a MySQL database, version %s or later."
-#~ msgstr "webtrees צריכה מאגר מידע MySQL, גרסה %s ומעלה."
-
-#~ msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-#~ msgstr "webtrees שולחת דואר אלקטרוני, כגון תזכורות לסיסמה והודעות אתר. כדי לעשות זאת, היא יכולה להשתמש בפונקצית דואר PHP אשר בנויה בשרת (אינה זמינה תמיד) או בשרות חיצוני SMTP (ממסר דואר), עבורו יש לספק פרטי קשר."
-
-#~ msgid "webtrees reply address"
-#~ msgstr "כתובת מענה עבור webtrees"
-
-#~ msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-#~ msgstr "webtrees משתמשת בקידוד UTF-8 לאותיות מודגשות לטיניות, לתווים מיוחדים ולסימנים שאינם לטיניים. אם אתה רוצה להשתמש בקובץ ה-GEDCOM הזה עם תוכנת חקר שושלת יוחסין שאינה תומכת UTF-8, עלך ליצור אותו באמצעות קידוד ISO-8859-1."
-
-#~ msgid "webtrees wiki"
-#~ msgstr "ויקיפדיה של webtrees"
-
-#~ msgid "webtrees’ database must be on the same server as PhpGedView’s"
-#~ msgstr "webtrees חייבת להיות על אותו השרת כמו PhpGedView"
-
-#~ msgid "west"
-#~ msgstr "מערב"
-
-#~ msgid "years"
-#~ msgstr "שנים"
-
-#, php-format
-#~ msgid "“%s”"
-#~ msgstr "\"%s\""
-
-#~ msgid "“%s” has been added to your favorites."
-#~ msgstr "”%s” התווסף למועדפים שלך."

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-15 18:05+0100\n"
+"POT-Creation-Date: 2026-07-16 21:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -395,18 +395,6 @@ msgctxt "MALE"
 msgid "%s × cousin"
 msgstr "%s × ξάδερφος"
 
-#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ʙᴄᴇ"
-msgstr "%s ΠΚΧ"
-
-#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ᴄᴇ"
-msgstr "%s ΜΚΧ"
-
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php
 #, php-format
@@ -452,6 +440,18 @@ msgstr "%s, σύζηγοι και τέκνα του"
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, σύζηγοι και απογόνοι του"
+
+#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ʙᴄᴇ"
+msgstr "%s ΠΚΧ"
+
+#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ᴄᴇ"
+msgstr "%s ΜΚΧ"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
@@ -1072,25 +1072,21 @@ msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
 msgstr "Αμπάν"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Aban"
 msgstr "Αμπάν"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
 msgstr "Αμπάν"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Aban"
 msgstr "Αμπάν"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Aban"
@@ -1133,73 +1129,61 @@ msgstr "Έγκριση λογαριασμού και επαλήθευση email"
 msgid "Accra, Ghana"
 msgstr "Άκρα, Γκάνα"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar"
 msgstr "Αδάρ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
 msgstr "Αδάρ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar"
 msgstr "Αδάρ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar"
 msgstr "Αδάρ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar I"
 msgstr "Αδάρ Αʹ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
 msgstr "Αδάρ Αʹ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar I"
 msgstr "Αδάρ Αʹ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
 msgstr "Αδάρ Αʹ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar II"
 msgstr "Αδάρ Βʹ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
 msgstr "Αδάρ Βʹ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar II"
 msgstr "Αδάρ Βʹ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
@@ -2170,25 +2154,21 @@ msgstr "Αυτόματη ξεδίπλωμα σημειώσεων"
 msgid "Automatically expand sources"
 msgstr "Αυτόματο ξεδίπλωμα πηγών"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Av"
 msgstr "Αβ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Av"
 msgstr "Αβ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Av"
 msgstr "Αβ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Av"
@@ -2241,25 +2221,21 @@ msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
 msgstr "Αζάρ"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Azar"
 msgstr "Αζάρ"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
 msgstr "Αζάρ"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Azar"
 msgstr "Αζάρ"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Azar"
@@ -2285,25 +2261,21 @@ msgstr "Μπαχ"
 msgid "Bahamas"
 msgstr "Μπαχάμες"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Bahman"
 msgstr "Μπάχμαν"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
 msgstr "Μπάχμαν"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Bahman"
 msgstr "Μπάχμαν"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Bahman"
@@ -2768,25 +2740,21 @@ msgstr "Βρετανικοί Παρθένοι νήσοι"
 msgid "Brother"
 msgstr "Αδελφός"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Brumaire"
 msgstr "Μπρυμαίρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
 msgstr "Μπρυμαίρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Brumaire"
 msgstr "Μπρυμαίρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
@@ -4717,73 +4685,61 @@ msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
 msgstr "Ντέι"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Dey"
 msgstr "Ντέι"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
 msgstr "Ντέι"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Dey"
 msgstr "Ντέι"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "Ντέι"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Ντου αλ-Καντά"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Qiʿdah"
 msgstr "Ντου αλ-Καντά"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Ντου αλ-Καντά"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Ντου αλ-Καντά"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Ντου αλ-Χιτζά"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Ḥijjah"
 msgstr "Ντου αλ-Χιτζά"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Ντου αλ-Χιτζά"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Ḥijjah"
@@ -5066,25 +5022,21 @@ msgstr "Ελ Σαλβαδόρ"
 msgid "Electronic"
 msgstr "Ηλεκτρονικά"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Elul"
 msgstr "Ελούλ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
 msgstr "Ελούλ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Elul"
 msgstr "Ελούλ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Elul"
@@ -5217,25 +5169,21 @@ msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
 msgstr "Εσφ"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Esfand"
 msgstr "Εσφάντ"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
 msgstr "Εσφάντ"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Esfand"
 msgstr "Εσφάντ"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Esfand"
@@ -5701,25 +5649,21 @@ msgstr "Μακριά"
 msgid "Faroe Islands"
 msgstr "νήσοι Φερόες"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Farvardin"
 msgstr "Φαρβαρντίν"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
 msgstr "Φαρβαρντίν"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Farvardin"
 msgstr "Φαρβαρντίν"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
@@ -5944,25 +5888,21 @@ msgstr "Επισήμανση"
 msgid "Flanders"
 msgstr "Φλάνδρα"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
 msgstr "Φλοραίαλ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
 msgstr "Φλοραίαλ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Floreal"
 msgstr "Φλοραίαλ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Floreal"
@@ -6154,25 +6094,21 @@ msgctxt "MALE"
 msgid "Friend"
 msgstr "φίλος"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Frimaire"
 msgstr "Φριμαίρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
 msgstr "Φριμαίρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Frimaire"
 msgstr "Φριμαίρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
@@ -6190,25 +6126,21 @@ msgctxt "Start of date range"
 msgid "From"
 msgstr "Από"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Fructidor"
 msgstr "Φρυκτιδόρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
 msgstr "Φρυκτιδόρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Fructidor"
 msgstr "Φρυκτιδόρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
@@ -6377,26 +6309,21 @@ msgstr "Γεωργία"
 msgid "Germany"
 msgstr "Γερμανία"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Germinal"
 msgstr "Ζερμινάλ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
 msgstr "Ζερμινάλ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Germinal"
 msgstr "Ζερμινάλ"
 
-#. I18N: a month in the French republican calendar
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Germinal"
@@ -6712,25 +6639,21 @@ msgstr ""
 msgid "Hermosillo, Mexico"
 msgstr "Χερμοσίγιο, Μεξικό"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Heshvan"
 msgstr "Χεσβάν"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
 msgstr "Χεσβάν"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Heshvan"
 msgstr "Χεσβάν"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
@@ -7322,25 +7245,21 @@ msgstr ""
 msgid "Italy"
 msgstr "Ιταλία"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Iyar"
 msgstr "Ιγιάρ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
 msgstr "Ιγιάρ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Iyar"
 msgstr "Ιγιάρ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Iyar"
@@ -7451,49 +7370,41 @@ msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "Ιούλιος"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-awwal"
 msgstr "Τζουμάντα αλ-Αουάλ"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-awwal"
 msgstr "Τζουμάντα αλ-Αουάλ"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Τζουμάντα αλ-Αουάλ"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Τζουμάντα αλ-Αουάλ"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-thānī"
 msgstr "Τζουμάντα αλ-Θάνι"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-thānī"
 msgstr "Τζουμάντα αλ-Θάνι"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-thānī"
 msgstr "Τζουμάντα αλ-Θάνι"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-thānī"
@@ -7565,25 +7476,21 @@ msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
 msgstr ""
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Khordad"
 msgstr "Χορντάντ"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
 msgstr "Χορντάντ"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Khordad"
 msgstr "Χορντάντ"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Khordad"
@@ -7594,25 +7501,21 @@ msgstr "Χορντάντ"
 msgid "Kiribati"
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Kislev"
 msgstr "Κισλέβ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
 msgstr "Κισλέβ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Kislev"
 msgstr "Κισλέβ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Kislev"
@@ -8638,25 +8541,21 @@ msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
 msgstr ""
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mehr"
 msgstr "Μεχρ"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
 msgstr "Μεχρ"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mehr"
 msgstr "Μεχρ"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mehr"
@@ -8731,25 +8630,21 @@ msgstr "Μήνυμα"
 msgid "Messages"
 msgstr "Μηνύματα"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Messidor"
 msgstr "Μεσιδόρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
 msgstr "Μεσιδόρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Messidor"
 msgstr "Μεσιδόρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Messidor"
@@ -8926,25 +8821,21 @@ msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
 msgstr ""
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mordad"
 msgstr "Μορντάντ"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
 msgstr "Μορντάντ"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mordad"
 msgstr "Μορντάντ"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mordad"
@@ -9064,25 +8955,21 @@ msgstr ""
 msgid "Multiple marriages"
 msgstr "Πολλαπλοί γάμοι"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Muḥarram"
 msgstr "Μουχάραμ"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Muḥarram"
 msgstr "Μουχάραμ"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muḥarram"
 msgstr "Μουχάραμ"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Muḥarram"
@@ -9311,25 +9198,21 @@ msgstr "Νίγηρας"
 msgid "Nigeria"
 msgstr "Νιγηρία"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Nissan"
 msgstr "Νισάν"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
 msgstr "Νισάν"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Nissan"
 msgstr "Νισάν"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Nissan"
@@ -9340,25 +9223,21 @@ msgstr "Νισάν"
 msgid "Niue"
 msgstr "Νιούε"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Nivose"
 msgstr "Νιβόζ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
 msgstr "Νιβόζ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Nivose"
 msgstr "Νιβόζ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Nivose"
@@ -9895,25 +9774,21 @@ msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
 msgstr ""
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
 msgstr "Ορντιμπεχέστ"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
 msgstr "Ορντιμπεχέστ"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
 msgstr "Ορντιμπεχέστ"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
@@ -10431,25 +10306,21 @@ msgstr "Παρακαλώ εισάγετε μια έγκυρη διεύθυνση
 msgid "Please try again."
 msgstr "Παρακαλώ προσπαθήστε ξανά."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Pluviose"
 msgstr "Πλυβιόζ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
 msgstr "Πλυβιόζ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Pluviose"
 msgstr "Πλυβιόζ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
@@ -10510,25 +10381,21 @@ msgstr "Ταχυδρομικός κώδικας"
 msgid "Powered by webtrees™"
 msgstr "Με την υποστήριξη του webtrees ™"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Prairial"
 msgstr "Πραιριάλ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
 msgstr "Πραιριάλ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Prairial"
 msgstr "Πραιριάλ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Prairial"
@@ -10706,49 +10573,41 @@ msgstr "ΑΠ: "
 msgid "Rabbi"
 msgstr "Ραββίνος"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Ραμπί αλ-Αουάλ"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-awwal"
 msgstr "Ραμπί αλ-Αουάλ"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Ραμπί αλ-Αουάλ"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Ραμπί αλ-Αουάλ"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Ραμπί αλ-Θάνι"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-thani"
 msgstr "Ραμπί αλ-Θάνι"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Ραμπί αλ-Θάνι"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-thani"
@@ -10772,25 +10631,21 @@ msgctxt "Pedigree"
 msgid "Rada"
 msgstr ""
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "Ρατζάμπ"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "Ρατζάμπ"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "Ρατζάμπ"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rajab"
@@ -10801,25 +10656,21 @@ msgstr "Ρατζάμπ"
 msgid "Raleigh, North Carolina, United States"
 msgstr "Raleigh, Βόρεια Καρολίνα, Ηνωμένες Πολιτείες"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "Ραμαζάνι"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "Ραμαζάνι"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "Ραμαζάνι"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
@@ -11797,25 +11648,21 @@ msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
 msgstr ""
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Shahrivar"
 msgstr "Σαχριβάρ"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
 msgstr "Σαχριβάρ"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
 msgstr "Σαχριβάρ"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
@@ -11854,49 +11701,41 @@ msgstr "Κοινόχρηστες σημειώσεις"
 msgid "Shares"
 msgstr ""
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "Σαουάλ"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "Σαουάλ"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "Σαουάλ"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Σαουάλ"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shaʿbān"
 msgstr "Σααμπάν"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shaʿbān"
 msgstr "Σααμπάν"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shaʿbān"
 msgstr "Σααμπάν"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shaʿbān"
@@ -11935,25 +11774,21 @@ msgstr "βαπτίστηκε"
 msgid "She was cremated"
 msgstr "αποτεφρώθηκε"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Shevat"
 msgstr "Σεβάτ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
 msgstr "Σεβάτ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Shevat"
 msgstr "Σεβάτ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Shevat"
@@ -12382,25 +12217,21 @@ msgstr "Χάρτες Ιστοσελίδων"
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr "Οι χάρτες ιστοσελίδας είναι ένας τρόπος, για τους διαχειριστές, να πουν στις μηχανές αναζήτησης για τις σελίδες που θα είναι διαθέσιμες για καταλογοποίηση. Όλες οι μεγάλες μηχανές αναζήτησης υποστηρίζουν χάρτες ιστοσελίδων. Για περισσότερες πληροφορίες, δείτε το <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Sivan"
 msgstr "Σιβάν"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
 msgstr "Σιβάν"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Sivan"
 msgstr "Σιβάν"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Sivan"
@@ -12981,25 +12812,21 @@ msgstr "Τατζικιστάν"
 msgid "Tampico, Mexico"
 msgstr "Τάμπικο, Μεξικό"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tamuz"
 msgstr "Ταμούζ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
 msgstr "Ταμούζ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tamuz"
 msgstr "Ταμούζ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
@@ -13039,25 +12866,21 @@ msgstr "Πρότυπα"
 msgid "Temple"
 msgstr "Ναός"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tevet"
 msgstr "Τεβέτ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
 msgstr "Τεβέτ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tevet"
 msgstr "Τεβέτ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tevet"
@@ -13695,25 +13518,21 @@ msgstr ""
 msgid "There was an error uploading your file."
 msgstr "Υπήρχε σφάλμα κατά την αποστολή του αρχείου."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Thermidor"
 msgstr "Θερμιδόρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
 msgstr "Θερμιδόρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Thermidor"
 msgstr "Θερμιδόρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
@@ -14212,49 +14031,41 @@ msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
 msgstr ""
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Tir"
 msgstr "Τιρ"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
 msgstr "Τιρ"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Tir"
 msgstr "Τιρ"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Tir"
 msgstr "Τιρ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tishrei"
 msgstr "Τισρί"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
 msgstr "Τισρί"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tishrei"
 msgstr "Τισρί"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
@@ -14955,25 +14766,21 @@ msgstr "Διάφορα γραφήματα στατιστικών."
 msgid "Vatican City"
 msgstr "Βατικανό"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
 msgstr "Βαντεμιαίρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
 msgstr "Βαντεμιαίρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
 msgstr "Βαντεμιαίρ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
@@ -14984,25 +14791,21 @@ msgstr "Βαντεμιαίρ"
 msgid "Venezuela"
 msgstr "Βενεζουέλα"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Ventose"
 msgstr "Βαντόζ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
 msgstr "Βαντόζ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Ventose"
 msgstr "Βαντόζ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Ventose"
@@ -18047,25 +17850,21 @@ msgstr "ερμηνεύεται %s (%s)"
 msgid "invert selection"
 msgstr "αντιστροφή επιλογής"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
 msgstr "συμπληρωματικές ημέρες"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
 msgstr "συμπληρωματικές ημέρες"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
 msgstr "συμπληρωματικές ημέρες"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
@@ -19511,25 +19310,21 @@ msgstr[1] "±%s χρόνια"
 msgid "Åland Islands"
 msgstr "νήσοι Ώλαντ"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ṣafar"
 msgstr "Σαφάρ"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ṣafar"
 msgstr "Σαφάρ"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ṣafar"
 msgstr "Σαφάρ"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ṣafar"
@@ -19577,1946 +19372,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid " per sex"
-#~ msgstr " ανά φύλο"
-
-#~ msgid " per time period"
-#~ msgstr " ανά χρονική περίοδο"
-
-#, php-format
-#~ msgid "#%s"
-#~ msgstr "#%s"
-
-#, php-format
-#~ msgid "%1$s %2$s has a %3$s link to %4$s."
-#~ msgstr "%1$s %2$s έχει ένα(ν) %3$s σύνδεσμο με το %4$s."
-
-#, php-format
-#~ msgid "%1$s does not exist."
-#~ msgstr "Το %1$s δεν υπάρχει."
-
-#~ msgid "%1$s individual is missing birthplace map coordinates: %2$s."
-#~ msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-#~ msgstr[0] "Ο/Η %1$s δεν έχει γεωγραφικές συντεταγμένες του τόπου γέννησης του/της: %2$s."
-#~ msgstr[1] "%1$s των ατόμων δεν έχουν γεωγραφικές συντεταγμένες τόπου γέννησης: %2$s.: %2$s."
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "Πρίν %s ημέρα"
-#~ msgstr[1] "Πρίν %s ημέρες"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "Πρίν %s ώρα"
-#~ msgstr[1] "Πρίν %s ώρες"
-
-#~ msgid "%s individual is private."
-#~ msgid_plural "%s individuals are private."
-#~ msgstr[0] "ο/η %s είναι μυστικός λογαριασμός."
-#~ msgstr[1] "οι %s είναι μυστικοί λογαριασμοί."
-
-#, php-format
-#~ msgid "%s individual with events between %s and %s"
-#~ msgid_plural "%s individuals with events between %s and %s"
-#~ msgstr[0] "%s άτομο με γεγονότα μεταξύ %s και %s"
-#~ msgstr[1] "%s άτομα με γεγονότα μεταξύ %s και %s"
-
-#, php-format
-#~ msgid "%s individual with events in %s"
-#~ msgid_plural "%s individuals with events in %s"
-#~ msgstr[0] "%s άτομο με γεγονότα σε %s"
-#~ msgstr[1] "%s άτομα με γεγονότα σε %s"
-
-#, php-format
-#~ msgid "%s individual with events in %s between %s and %s"
-#~ msgid_plural "%s individuals with events in %s between %s and %s"
-#~ msgstr[0] "%s άτομο με γεγονότα σε %s μεταξύ %s και %s"
-#~ msgstr[1] "%s άτομα με γεγονότα σε %s μεταξύ %s και %s"
-
-#~ msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "%s είναι απενεργοποιημένο σ' αυτόν τον διακομιστή. Δεν μπορείτε να εγκαταστήσετε το webtrees μέχρι να ενεργοποιηθεί. Παρακαλώ ζητήστε από τον διαχειριστή του διακομιστή σας να το ενεργοποιήσει."
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "%s λεπτό πριν"
-#~ msgstr[1] "%s λεπτά πρίν"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "Πρίν %s μήνα"
-#~ msgstr[1] "Πριν %s μήνες"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "Πρίν %s δευτερόλεπτο"
-#~ msgstr[1] "Πρίν %s δευτερόλεπτα"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "Πρίν %s χρόνο"
-#~ msgstr[1] "Πρίν %s χρόνια"
-
-#, php-format
-#~ msgid "(aged less than %s)"
-#~ msgstr "(λιγότερο από %s ετών)"
-
-#, php-format
-#~ msgid "(aged more than %s)"
-#~ msgstr "(περισσότερο από %s ετών)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(στην παιδική ηλικία)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(στην βρεφική ηλικιά)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(θνησιγενές)"
-
-#, fuzzy, php-format
-#~ msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-#~ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-
-#~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-#~ msgstr "Ένας διακομιστής βάσης δεδομένων μπορεί να αποθηκεύσει πολλές ξεχωριστές βάσεις δεδομένων. Πρέπει να επιλέξετε μια υπάρχουσα βάση δεδομένων (που δημιουργήθηκε από το διαχειριστή του διακομιστή σας) ή να δημιουργήσετε μια νέα (εάν ο λογαριασμός χρήστη σας στην βάση δεδομένων σας έχει επαρκή δικαιώματα)."
-
-#~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-#~ msgstr "Δημιουργήθηκε ένα νέο συνθηματικό και αποστάλθηκε με email στο %s. Μπορείτε να το αλλάξετε αφού συνδεθείτε."
-
-#~ msgid "A new password has been requested for your username."
-#~ msgstr "Έχει γίνει αίτημα νέου συνθηματικού για το όνομα χρήστη σας."
-
-#~ msgid "A.M."
-#~ msgstr "Π.Μ."
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=άαβγδέεζήηθίϊΐικλμνξόοπρσςτύϋΰυφχψώω"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=ΆΑΒΓΔΈΕΖΉΗΘΊΪΪΙΚΛΜΝΞΌΟΠΡΣΣΤΎΫΫΥΦΧΨΏΩ"
-
-#~ msgid "Acadia"
-#~ msgstr "Akadien"
-
-#~ msgid "Action"
-#~ msgstr "Ενέργεια"
-
-#~ msgid "Add a blank row"
-#~ msgstr "Προσθήκη κενής γραμμής"
-
-#~ msgid "Add a brother or sister"
-#~ msgstr "Προσθήκη αδερφού ή αδερφής"
-
-#~ msgid "Add a child to this family"
-#~ msgstr "Προσθήκη τέκνου σ'αυτήν την οικογένεια"
-
-#~ msgid "Add a geographic location"
-#~ msgstr "Προσθήκη γεωγραφικής τοποθεσίας"
-
-#~ msgid "Add a husband to this family"
-#~ msgstr "Προσθήκη συζύγου (άνδρα) σ' αυτή την οικογένεια"
-
-#~ msgid "Add a restriction"
-#~ msgstr "Προσθήκη περιορισμού"
-
-#~ msgid "Add a shared note"
-#~ msgstr "Προσθήκη κοινόχρηστης σημείωσης"
-
-#~ msgid "Add a son or daughter"
-#~ msgstr "Προσθήκη γιού ή κόρης"
-
-#~ msgid "Add a wife to this family"
-#~ msgstr "Προσθήκη συζύγου (γυναίκας) σε αυτή την οικογένεια"
-
-#~ msgid "Add an associate"
-#~ msgstr "Προσθήκη συνεργάτη"
-
-#~ msgid "Add an event"
-#~ msgstr "Προσθέστε ένα συμβάν"
-
-#~ msgid "Add another individual to the chart"
-#~ msgstr "Προσθήκη ενός ακόμα ατόμου στο γράφημα"
-
-#~ msgid "Add links"
-#~ msgstr "Προσθήκη συνδέσμων"
-
-#~ msgid "Add married names"
-#~ msgstr "Προσθέστε επίθετο μετά γάμου"
-
-#~ msgid "Add missing married names"
-#~ msgstr "Συμπλήρωση ελειπών ονομάτων (γάμου)"
-
-#~ msgid "Add the GEDCOM media path to filenames"
-#~ msgstr "Προσθέστε τη διαδρομή πολυμέσων GEDCOM στα ονόματα αρχείων"
-
-#~ msgid "Add to favorites"
-#~ msgstr "Προσθήκη στα αγαπημένα"
-
-#~ msgid "Add watermarks to thumbnails"
-#~ msgstr "Προσθήκη υδατογραφήματος στις μικρογραφίες"
-
-#~ msgid "Add/edit a journal/news entry"
-#~ msgstr "Προσθήκη/Επεξεργασία καταχώρησης Ημερολογίου/Νέων"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Υιοθετημένη και από τους δύο γονείς"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Υιοθετημένος και από τους δύο γονείς"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Υιοθετημένη από τον πατέρα"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Υιοθετημένος απο τον πατέρα"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "υιοθετημένη απο την μητέρα"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "υιοθετημένος απο την μητέρα"
-
-#~ msgid "Advanced"
-#~ msgstr "Για προχωρημένους"
-
-#~ msgid "Advanced fact preferences"
-#~ msgstr "Προτιμήσεις γεγονότων για προχωρημένους"
-
-#~ msgid "Advanced name facts"
-#~ msgstr "Προτιμήσεις γεγονότων σχετικά με ονόματα για προχωρημένους"
-
-#~ msgid "Advanced place name facts"
-#~ msgstr "Προτιμήσεις γεγονότων σχετικά με τοποθεσίες για προχωρημένους"
-
-#, fuzzy
-#~ msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-#~ msgstr "Αφού συνδεθείτε, επιλέξτε το σύνδεσμο «Το προφίλ μου» κάτω από το μενού «Ατομική πύλη» και συμπληρώστε τα πεδία κωδικών για να αλλάξετε τον κωδικό σας."
-
-#~ msgid "Age of item"
-#~ msgstr "Ηλικία αντικειμένου"
-
-#~ msgid "Age related to birth year"
-#~ msgstr "Ηλικία σε σχέση με το έτος γέννησης"
-
-#~ msgid "Age related to death year"
-#~ msgstr "Ηλικία σε σχέση με το έτος θανάτου"
-
-#~ msgid "All family facts"
-#~ msgstr "Όλα τα οικογενειακά γεγονότα"
-
-#~ msgid "All individual facts"
-#~ msgstr "Όλα τα ατομικά γεγονότα"
-
-#~ msgid "All repository facts"
-#~ msgstr "Όλα τα συμβάντα των αποθετηρίων"
-
-#~ msgid "All source facts"
-#~ msgstr "Όλα τα συμβάντα των πηγών"
-
-#~ msgid "Allow users to select their own theme"
-#~ msgstr "Εμφάνιση επιλογέα θέματος στους χρήστες"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Also known as"
-#~ msgstr "Επίσης γνωστή ως"
-
-#~ msgctxt "MALE"
-#~ msgid "Also known as"
-#~ msgstr "Επίσης γνωστός ως"
-
-#~ msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-#~ msgstr "Σχετιζόμενος είναι ένα άλλο άτομο που ασχολήθηκε με αυτό το γεγονός ή γεγονός, όπως μάρτυρας ή ιερέας."
-
-#~ msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-#~ msgstr "Ένας σχετιζόμενος είναι ένα άλλο άτομο που ασχολήθηκε με αυτό το άτομο, όπως ένας φίλος ή ένας εργοδότης."
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
-
-#~ msgid "Associates"
-#~ msgstr "Σχετιζόμενοι"
-
-#, fuzzy
-#~ msgid "Automatically add unique identifiers"
-#~ msgstr "Αυτόματη δημιουργία και GUIDs"
-
-#~ msgid "Automatically expand list of events of close relatives"
-#~ msgstr "Αυτόματη ξεδίπλωση λίστας γεγονότων στενών συγγενών"
-
-#~ msgid "Available blocks"
-#~ msgstr "Διαθέσιμα πλαίσια"
-
-#~ msgid "Basic"
-#~ msgstr "Βασικό"
-
-#~ msgid "Batch update"
-#~ msgstr "Μαζική ενημέρωση"
-
-#~ msgid "Bearing"
-#~ msgstr "Αζιμούθιο"
-
-#~ msgid "Body"
-#~ msgstr "Σώμα"
-
-#~ msgid "Booklet"
-#~ msgstr "Φυλλάδιο"
-
-#~ msgid "British West Indies"
-#~ msgstr "Britisches West Indien"
-
-#~ msgid "Cannot create"
-#~ msgstr "Δεν μπορεί να δημιουργηθεί"
-
-#~ msgid "Cape Colony"
-#~ msgstr "Kap Kolonie"
-
-#~ msgid "Case insensitive"
-#~ msgstr "Μη διάκριση πεζών/κεφαλαίων"
-
-#~ msgid "Catalonia"
-#~ msgstr "Katalonien"
-
-#~ msgid "Cemeteries"
-#~ msgstr "Κοιμητήρια"
-
-#~ msgid "Center map here"
-#~ msgstr "Κέντρο χάρτη εδώ"
-
-#~ msgid "Change"
-#~ msgstr "Αλλαγή"
-
-#~ msgid "Change flag"
-#~ msgstr "Αλλαγή σημαίας"
-
-#~ msgid "Change language"
-#~ msgstr "Αλλαγή γλώσσας"
-
-#~ msgid "Channel Islands"
-#~ msgstr "Kanalinseln"
-
-#~ msgid "Check the settings and try again."
-#~ msgstr "Ελένξτε τις ρυθμίσεις και προσπαθήστε ξανά."
-
-#~ msgid "Choose: "
-#~ msgstr "Επιλογή: "
-
-#~ msgid "Cleared but not yet completed"
-#~ msgstr "Εκκαθαρίστηκε αλλά δεν ολοκληρώθηκε ακόμη"
-
-#~ msgid "Click here to add, edit, or delete"
-#~ msgstr "Κάντε κλικ εδώ για να Προσθέσετε, να Επεξεργαστείτε ή να Διαγράψετε"
-
-#~ msgid "Click on a title to go straight to it, or scroll down to read them all."
-#~ msgstr "Κάντε κλικ σε ένα τίτλο για να μεταφερθείτε κατευθείαν σε αυτόν, ή μετακινηθείτε προς τα κάτω για να τους διαβάσετε όλους."
-
-#~ msgid "Columns per page"
-#~ msgstr "Στήλες ανα σελίδα"
-
-#~ msgid "Comparison"
-#~ msgstr "Σύγκριση"
-
-#~ msgid "Compress the GEDCOM file"
-#~ msgstr "Συμπίεση του αρχείου GEDCOM"
-
-#~ msgid "Concatenation"
-#~ msgstr "Αλληλουχία"
-
-#~ msgid "Configure"
-#~ msgstr "Ρύθμιση"
-
-#~ msgid "Confirm password"
-#~ msgstr "Επιβεβαίωση κωδικού πρόσβασης"
-
-#~ msgid "Continue adding"
-#~ msgstr "Συνέχιση πρόσθεσης"
-
-#~ msgid "Continued"
-#~ msgstr "Συνεχίζεται"
-
-#~ msgid "Convert CEME tags to GEDCOM 5.5.1"
-#~ msgstr "Μετατροπή ετικετών CEME σε GEDCOM 5.5.1"
-
-#~ msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-#~ msgstr "Μετατροπή ετικετών NAME: _XXX σε GEDCOM 5.5.1"
-
-#~ msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-#~ msgstr "Μετατροπή ετικετών _PRIM σε GEDCOM 5.5.1"
-
-#~ msgid "Convert from UTF-8 to ISO-8859-1"
-#~ msgstr "Θέλετε να μετατρέψετε αυτό το GEDCOM από UTF-8 σε ISO-8859-1"
-
-#~ msgid "Count"
-#~ msgstr "Μέτρηση"
-
-#~ msgid "Countries"
-#~ msgstr "Χώρες"
-
-#~ msgid "Counts "
-#~ msgstr "Μετρήσεις "
-
-#~ msgid "County"
-#~ msgstr "Περιφέρεια"
-
-#~ msgid "Create a family"
-#~ msgstr "Δημιουργία οικογένειας"
-
-#~ msgid "Create a family from existing individuals"
-#~ msgstr "Δημιουργια οικογένειας απο υπάρχοντα άτομα"
-
-#~ msgid "Current"
-#~ msgstr "Τρέχον"
-
-#~ msgid "Custom fact"
-#~ msgstr "Προσαρμοσμένο γεγονός"
-
-#~ msgid "Custom tags"
-#~ msgstr "Προσαρμοσμένες Ετικέτες"
-
-#~ msgid "Custom theme"
-#~ msgstr "Εξατομικευμένο θέμα"
-
-#~ msgid "Czechoslovakia"
-#~ msgstr "Tschechoslowakei"
-
-#~ msgid "Database and table names"
-#~ msgstr "Ονόματα Βάσης δεδομένων και πινάκων"
-
-#~ msgid "Decade of birth"
-#~ msgstr "Δεκαετία γέννησης"
-
-#~ msgid "Decade of death"
-#~ msgstr "Δεκαετία θανάτου"
-
-#~ msgid "Decade of marriage"
-#~ msgstr "Δεκαετία γάμου"
-
-#~ msgid "Default"
-#~ msgstr "Προεπιλογή"
-
-#~ msgid "Default map type"
-#~ msgstr "Προεπιλεγμένος τύπος χάρτη"
-
-#~ msgid "Default pedigree chart layout"
-#~ msgstr "Προεπιλεγμένη μορφή οριζοντίου γενεαλογικού διαγράμματος"
-
-#~ msgid "Default pedigree generations"
-#~ msgstr "Προεπιλεγμένος αριθμός γενεών οριζοντίου δένδρου"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "Deja Vu"
-
-#~ msgid "Delete all existing geographic data before importing the file."
-#~ msgstr "Διαγραφή όλων των υπαρχόντων γεωγρ. δεδομένων πριν την εισαγωγή του αρχείου."
-
-#~ msgid "Description unavailable"
-#~ msgstr "Μη διαθέσιμη περιγραφή"
-
-#~ msgid "Desired password"
-#~ msgstr "Επιθυμητός κωδικός πρόσβασης"
-
-#~ msgid "Desired username"
-#~ msgstr "Επιθυμητό όνομα χρήστη"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Ντου αλ-Χιτζά"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Ντου αλ-Χιτζά"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Ντου αλ-Χιτζά"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Ντου αλ-Χιτζά"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Ντου αλ-Καντά"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Ντου αλ-Καντά"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Ντου αλ-Καντά"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Ντου αλ-Καντά"
-
-#~ msgid "Died as an infant: exempt"
-#~ msgstr "Πέθανε ως βρέφος: εξαιρείται"
-
-#~ msgid "Disable these modules"
-#~ msgstr "Απενεργοποίηση αυτών των δομοστοιχείων"
-
-#~ msgid "Disable these themes"
-#~ msgstr "Απενεργοποίηση αυτών των θεμάτων"
-
-#~ msgid "Display all"
-#~ msgstr "Εμφάνιση όλων"
-
-#~ msgid "Display map coordinates"
-#~ msgstr "Εμφάνιση συντεταγμένων χάρτη"
-
-#~ msgid "Do not change to keep original filename."
-#~ msgstr "Αφήστε κενό για να χρησιμοποιήσετε το αυθεντικό όνομα."
-
-#~ msgid "Do not use maps"
-#~ msgstr "Μην χρησιμοποιείτε χάρτες"
-
-#~ msgid "Download geographic data"
-#~ msgstr "Λήψη γεωγραφικών δεδομένων"
-
-#~ msgid "Earliest birth year"
-#~ msgstr "Παλαιότερο έτος γέννησης"
-
-#~ msgid "Earliest death year"
-#~ msgstr "Παλαιότερο έτος θανάτου"
-
-#~ msgid "Edit media"
-#~ msgstr "Επεξ. πολυμέσου"
-
-#~ msgid "Edit the media object"
-#~ msgstr "Επεξ. πολυμέσου"
-
-#~ msgid "Editing restriction"
-#~ msgstr "Περιορισμός επεξεργασίας"
-
-#~ msgid "Elevation"
-#~ msgstr "Υψόμετρο"
-
-#~ msgid "End IP address"
-#~ msgstr "Τελευταία IP διεύθυνση"
-
-#~ msgid "Enter an individual, family, or source ID"
-#~ msgstr "Εισαγωγή ατόμου, οικογένειας ή ID πηγής"
-
-#~ msgid "Enter report values"
-#~ msgstr "Εισαγωγή τιμών αναφοράς"
-
-#~ msgid "Exact text"
-#~ msgstr "Ακριβές κείμενο"
-
-#~ msgid "FAQ position"
-#~ msgstr "Θέση συχνής ερώτησης"
-
-#~ msgid "FAQ visibility"
-#~ msgstr "Ορατότητα συχνής ερώτησης"
-
-#~ msgid "Facts for repository records"
-#~ msgstr "Γεγονότα για εγγραφές αποθετηρίων"
-
-#~ msgid "Facts for source records"
-#~ msgstr "Γεγονότα για εγγραφές πηγών"
-
-#~ msgid "Family ID prefix"
-#~ msgstr "Πρόθεμα ID οικογένειων"
-
-#~ msgid "Family group information"
-#~ msgstr "Πληροφορίες οικογενειακής ομάδας"
-
-#~ msgid "Family list"
-#~ msgstr "Οικογενειακή λίστα"
-
-#~ msgid "File containing places (CSV)"
-#~ msgstr "Αρχείο που περιέχει τοποθεσίες (CSV)"
-
-#~ msgid "Find a fact or event"
-#~ msgstr "Εύρεση γεγονότος ή συμβάντος"
-
-#~ msgid "Find a family"
-#~ msgstr "Εύρεση οικογένειας"
-
-#~ msgid "Find a media object"
-#~ msgstr "Εύρεση πολυμέσου"
-
-#~ msgid "Find a place"
-#~ msgstr "Εύρεση τοποθεσίας"
-
-#~ msgid "Find a repository"
-#~ msgstr "Εύρεση αποθετηρίου"
-
-#~ msgid "Find a shared note"
-#~ msgstr "Εύρεση σημείωσης"
-
-#~ msgid "Find an individual"
-#~ msgstr "Εύρεση ατόμου"
-
-#~ msgid "Font"
-#~ msgstr "Γραμματοσειρά"
-
-#~ msgid "From"
-#~ msgstr "Από"
-
-#~ msgid "Gender"
-#~ msgstr "Φύλο"
-
-#~ msgid "Gender icon on charts"
-#~ msgstr "Εικονίδιο φύλου στα διαγράμματα"
-
-#~ msgid "Google Street View™"
-#~ msgstr "Google Street View™"
-
-#~ msgid "Google™ maps preferences"
-#~ msgstr "Προτιμήσεις Google™ maps"
-
-#~ msgid "Google™ webmaster tools"
-#~ msgstr "Εργαλεία για webmasters Google ™"
-
-#~ msgid "Grandparents"
-#~ msgstr "Παππούδες"
-
-#~ msgid "Head of household"
-#~ msgstr "Επικεφαλής του νοικοκυριού"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
-
-#~ msgid "Highest population"
-#~ msgstr "Μεγαλύτερος πληθυσμός"
-
-#~ msgid "Historical facts"
-#~ msgstr "Ιστορικά γεγονότα"
-
-#~ msgid "House"
-#~ msgstr "Σπίτι"
-
-#~ msgid "Hybrid"
-#~ msgstr "Υβριδικός"
-
-#~ msgid "Icon"
-#~ msgstr "Εικονίδιο"
-
-#~ msgid "If the thumbnail image is a custom image, you should add it to the media object."
-#~ msgstr "Εάν η μικρογραφία είναι προσαρμοσμένη εικόνα, θα πρέπει να την προσθέσετε στο αντικείμενο πολυμέσων."
-
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-#~ msgstr "Εάν η εικόνα μικρογραφίας είναι ίδια με την αρχική εικόνα, δεν χρειάζεται πλέον και θα πρέπει να τη διαγράψετε."
-
-#~ msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
-#~ msgstr "Εάν συνδεθείτε στη βάση δεδομένων χρησιμοποιώντας μια υποδοχή UNIX, εισαγάγετε τη διαδρομή εδώ και αφήστε κενό τον αριθμό θύρας."
-
-#~ msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-#~ msgstr "Εάν αποκρύψετε ένα άδειο πλαίσιο, δεν θα μπορείτε να αλλάξετε τις ρυθμίσεις του μέχρι να μην είναι πλέον άδειο ώστε να γίνει ορατό."
-
-#~ msgid "Import all places from a family tree"
-#~ msgstr "Εισαγωγή όλων των τοποθεσιών απο ενα οικ. δέντρο"
-
-#~ msgid "Import custom thumbnails from webtrees version 1"
-#~ msgstr "Εισαγωγή προσαρμοσμένων μικρογραφιών από το webtrees έκδοση 1"
-
-#~ msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-#~ msgstr "Στο webtrees έκδοση 1, θα μπορούσατε να προσθέσετε προσαρμοσμένες μικρογραφίες σε αντικείμενα πολυμέσων δημιουργώντας αρχεία στους φακέλους \"μικρογραφίες\"."
-
-#~ msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-#~ msgstr "Στο webtrees έκδοση 2, οι προσαρμοσμένες μικρογραφίες αποθηκεύονται ως δεύτερο αρχείο πολυμέσων στο ίδιο αντικείμενο πολυμέσων."
-
-#~ msgid "Include media (automatically zips files)"
-#~ msgstr "Συμπερίληψη μέσων (αυτόματα αρχεία zip)"
-
-#~ msgid "Individual ID prefix"
-#~ msgstr "Πρόθεμα GEDCOM ID"
-
-#~ msgid "Individual distribution"
-#~ msgstr "Κατανομή ατόμων"
-
-#~ msgid "Individual list"
-#~ msgstr "Λίστα ατόμων"
-
-#, php-format
-#~ msgid "Individuals with surname %s"
-#~ msgstr "Άτομα με επώνυμο %s"
-
-#~ msgid "Information about the request is shown under the link below."
-#~ msgstr "Πληροφορίες σχετικά με την αίτηση εμφανίζονται κάτω από τον σύνδεσμο παρακάτω."
-
-#~ msgid "Installation folder"
-#~ msgstr "Φάκελος εγκατάστασης"
-
-#~ msgid "Interred"
-#~ msgstr "ενταφιάστηκε"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Interred"
-#~ msgstr "ενταφιάστηκε"
-
-#~ msgctxt "MALE"
-#~ msgid "Interred"
-#~ msgstr "ενταφιάστηκε"
-
-#~ msgid "Invalid GEDCOM format"
-#~ msgstr "Άκυρη μορφή GEDCOM 5.5"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Τζουμάντα αλ-Αουάλ"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Τζουμάντα αλ-Αουάλ"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Τζουμάντα αλ-Αουάλ"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Τζουμάντα αλ-Αουάλ"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Τζουμάντα αλ-Θάνι"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Τζουμάντα αλ-Θάνι"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Τζουμάντα αλ-Θάνι"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Τζουμάντα αλ-Θάνι"
-
-#~ msgid "Keep"
-#~ msgstr "Διατήρηση"
-
-#~ msgid "Keep link in list"
-#~ msgstr "Διατήρηση συνδέσμου στην λίστα"
-
-#~ msgid "LDS ordinance codes in chart boxes"
-#~ msgstr "Εμφάνιση κωδικών διάταξης LDS σε θηκόγραμμα"
-
-#~ msgid "LDS temple"
-#~ msgstr "Ναός LDS"
-
-#~ msgid "Latest birth year"
-#~ msgstr "Νεότερο έτος γέννησης"
-
-#~ msgid "Latest death year"
-#~ msgstr "Νεότερο έτος θανάτου"
-
-#~ msgid "Level"
-#~ msgstr "Επίπεδο"
-
-#~ msgid "Limit"
-#~ msgstr "Όριο"
-
-#~ msgid "Limit display by"
-#~ msgstr "Περιορισμός εμφάνισης με"
-
-#~ msgid "Link to an existing media object"
-#~ msgstr "Σύνδεση με υπάρχον αντικείμενο πολυμέσου"
-
-#~ msgid "Linked database ID"
-#~ msgstr "ID διασυνδεμένης βάσης δεδομένων"
-
-#~ msgid "Login ID"
-#~ msgstr "Όνομα χρήστη"
-
-#~ msgid "Lost password request"
-#~ msgstr "Αίτημα υπενθύμισης συνθηματικού"
-
-#~ msgid "Lowest population"
-#~ msgstr "Μικρότερος πληθυσμός"
-
-#~ msgid "Mailing name"
-#~ msgstr "Ονοματεπώνυμο για ταχυδρομείο"
-
-#~ msgid "Main section blocks"
-#~ msgstr "Πλαίσια κύριου τμήματος"
-
-#~ msgid "Manage family trees "
-#~ msgstr "Διαχείριση οικογενειακών δέντρων "
-
-#~ msgid "Manage the links"
-#~ msgstr "Διαχείριση σύνδεσμων"
-
-#~ msgid "Map provider"
-#~ msgstr "Πάροχος χαρτών"
-
-#~ msgid "Marriage status"
-#~ msgstr "Κατάσταση γάμου"
-
-#~ msgid "Marriage type unknown"
-#~ msgstr "Άγνωστος τύπος γάμου"
-
-#~ msgid "Married surname"
-#~ msgstr "Επώνυμο γάμου"
-
-#~ msgid "Max"
-#~ msgstr "Μέγιστο"
-
-#~ msgid "Maximum descendancy generations"
-#~ msgstr "Μέγιστος αριθμός γενεών απογόνων"
-
-#~ msgid "Maximum pedigree generations"
-#~ msgstr "Μέγιστος αριθμός γενεών οριζοντίου δένδρου"
-
-#~ msgid "Media ID prefix"
-#~ msgstr "Πρόθεμα ID πολυμέσων"
-
-#~ msgid "Media contains"
-#~ msgstr "Το μέσο περιέχει"
-
-#, php-format
-#~ msgid "Media filenames will be prefixed by %s."
-#~ msgstr "Στα αρχεία πολυμέσων θα δωθεί το πρόθημα %s."
-
-#~ msgid "Medical condition"
-#~ msgstr "Ιατρική κατάσταση"
-
-#~ msgid "Memory limit"
-#~ msgstr "Μέγιστη μνήμη διακομιστή"
-
-#~ msgid "Midnight"
-#~ msgstr "Μεσάνυχτα"
-
-#~ msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
-#~ msgstr "Ελάχιστος και μέγιστος συντελεστής μεγέθυνσης για το χάρτη Google. 1 είναι ο πλήρης χάρτης, 15 είναι ένα σπίτι. Σημειώστε ότι το 15 είναι διαθέσιμο μόνο σε ορισμένες περιοχές."
-
-#~ msgid "Minimum number of occurrences to be a “common surname”"
-#~ msgstr "Ελάχ. αρ. καταχωρήσεων για να θεωρείται \"κοινό επίθετο\""
-
-#~ msgid "Most sites are configured to use the default value of 3306."
-#~ msgstr "Οι περισσότεροι ιστότοποι έχουν ρυθμιστεί ώστε να χρησιμοποιούν την προεπιλεγμένη τιμή 3306."
-
-#~ msgid "Move left"
-#~ msgstr "Μετακίνηση αριστερά"
-
-#~ msgid "Move right"
-#~ msgstr "Μετακίνηση δεξιά"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Μουχάραμ"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Muḥarram"
-#~ msgstr "Μουχάραμ"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Μουχάραμ"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Μουχάραμ"
-
-#~ msgid "MySQL gave the error: %s"
-#~ msgstr "Η MySQL έδωσε το σφάλμα: %s"
-
-#~ msgid "Name contains"
-#~ msgstr "Το όνομα περιέχει"
-
-#~ msgid "Names to add to common surnames (comma separated)"
-#~ msgstr "Επιπλεον ονόματα για την λίστα κοινών επωνύμων (χωρισμένες με κόμμα)"
-
-#~ msgid "Names to remove from common surnames (comma separated)"
-#~ msgstr "Αφαίρ. ονομάτων απο την λίστα κοινών ονομάτων (χωρισμένα με κόμμα)"
-
-#~ msgid "Neighborhood"
-#~ msgstr "Γειτονιά"
-
-#~ msgid "Netherlands Antilles"
-#~ msgstr "Niederländische Antillen"
-
-#~ msgid "Neutral Zone"
-#~ msgstr "Neutrale Zone"
-
-#~ msgid "No ancestors in the database."
-#~ msgstr "Δεν βρέθηκαν πρόγονοι στην βάση δεδομένων."
-
-#~ msgid "No custom modules are enabled."
-#~ msgstr "Δεν έχουν ενεργοποιηθεί προσαρμοσμένα δομοστοιχεία."
-
-#~ msgid "No custom themes are enabled."
-#~ msgstr "Δεν έχουν ενεργοποιηθεί προσαρμοσμένα θέματα."
-
-#~ msgid "No limit"
-#~ msgstr "Χωρίς όριο"
-
-#~ msgid "No map data exists for this individual"
-#~ msgstr "Δεν υπάρχουν δεδομένα χάρτη γι' αυτό το άτομο"
-
-#~ msgid "No media file was provided."
-#~ msgstr "Δεν έχουν δωθεί αρχεία πολυμέσων."
-
-#~ msgid "No places found"
-#~ msgstr "Δεν βρέθηκαν τόποθεσίες"
-
-#~ msgid "No places have been found."
-#~ msgstr "Δεν βρέθηκαν τοποθεσίες."
-
-#~ msgid "Nobody at all"
-#~ msgstr "Απολύτως κανένας"
-
-#~ msgid "Noon"
-#~ msgstr "Μεσημέρι"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Not married"
-#~ msgstr "Άγαμη"
-
-#~ msgctxt "MALE"
-#~ msgid "Not married"
-#~ msgstr "Άγαμος"
-
-#~ msgid "Note ID prefix"
-#~ msgstr "Πρόθεμα ID σημειώσεων"
-
-#~ msgid "Number of generations"
-#~ msgstr "Αριθμός γενεών"
-
-#~ msgid "Number of items"
-#~ msgstr "Αριθμός αντικειμένων"
-
-#~ msgid "Number of items to show"
-#~ msgstr "Αριθμός αντικειμένων για εμφάνιση"
-
-#~ msgid "Number of months since the last sign-in for a user’s account to be considered inactive: "
-#~ msgstr "Αριθμός μηνών μετά τους οποίους ενας χρήστης θεωρείται ανενεργός: "
-
-#~ msgid "Oldest at bottom"
-#~ msgstr "Το παλαιότερο κάτω"
-
-#~ msgid "Oldest at top"
-#~ msgstr "Το παλαιότερο πάνω"
-
-#~ msgid "Optional prefixes and suffixes"
-#~ msgstr "Προεραιτικά προθέματα και καταλήξεις"
-
-#~ msgid "Order"
-#~ msgstr "Σειρά"
-
-#~ msgid "Other folder… please type in"
-#~ msgstr "Άλλος κατάλογος.. παρακαλώ εισάγετε"
-
-#~ msgid "Others"
-#~ msgstr "Άλλοι"
-
-#~ msgid "Overwrite existing coordinates."
-#~ msgstr "Αντικατάσταση υπαρχόντων συντεταγμένων."
-
-#~ msgid "Own charts"
-#~ msgstr "Ιδία διαγράμματα"
-
-#~ msgid "P.M."
-#~ msgstr "Μ.Μ."
-
-#~ msgid "PHP time limit"
-#~ msgstr "Μέγιστος χρόνος PHP"
-
-#~ msgid "Parent"
-#~ msgstr "Γονιός"
-
-#~ msgid "Passwords do not match."
-#~ msgstr "Οι κωδικοί δεν ταυτίζονται."
-
-#~ msgid "Passwords must contain at least 8 characters."
-#~ msgstr "Τα συνθηματικά πρέπει να περιέχουν τουλάχιστον 8 χαρακτήρες."
-
-#~ msgid "Pedigree chart"
-#~ msgstr "Οριζόντιο γενεαλογικό διάγραμμα"
-
-#~ msgid "Pedigree of %s"
-#~ msgstr "Οριζόντιο γενεαλογικό διάγραμμα: %s"
-
-#~ msgid "Phonetic"
-#~ msgstr "Φωνητικά"
-
-#~ msgid "Phonetic title"
-#~ msgstr "Φωνητικός τίτλος"
-
-#~ msgid "Place check"
-#~ msgstr "Έλεγχος Τοποθεσιών"
-
-#~ msgid "Place contains"
-#~ msgstr "Ο τόπος περιέχει"
-
-#~ msgid "Places found"
-#~ msgstr "Ευρεθείσες τοποθεσίες"
-
-#~ msgid "Places in %s"
-#~ msgstr "Τοποθεσίες στην %s"
-
-#~ msgid "Please enter a given name, surname, or place in addition to the year"
-#~ msgstr "Παρακαλώ δώστε Όνομα, Επώνυμο ή Τοποθεσία καθώς και Έτος"
-
-#~ msgid "Please enter a message subject."
-#~ msgstr "Παρακαλώ εισάγετε ένα θέμα για το μήνυμα."
-
-#~ msgid "Please enter more than one character."
-#~ msgstr "Παρακαλώ εισάγετε περισσότερους από έναν χαρακτήρες."
-
-#~ msgid "Please enter some message text before sending."
-#~ msgstr "Παρακαλώ εισάγετε κάποιο κείμενο μηνύματος πριν την αποστολή."
-
-#~ msgid "Precision"
-#~ msgstr "Ακρίβεια"
-
-#~ msgid "Precision of the latitude and longitude"
-#~ msgstr "Ακρίβεια του γεωγραφικού πλάτους και μήκους"
-
-#~ msgid "Prefixes"
-#~ msgstr "Προθέματα"
-
-#~ msgid "Presentation style"
-#~ msgstr "Στυλ παρουσίασης"
-
-#~ msgid "Privacy restriction"
-#~ msgstr "Περιορισμός απορρήτου"
-
-#~ msgid "Quick repository facts"
-#~ msgstr "Γρήγορα γεγονότα αποθετηρίου"
-
-#~ msgid "Quick source facts"
-#~ msgstr "Γρήγορα γεγονότα πηγής"
-
-#~ msgid "README documentation"
-#~ msgstr "README Κείμενο Τεκμηρίωσης"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Ραμπί αλ-Αουάλ"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Ραμπί αλ-Αουάλ"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Ραμπί αλ-Αουάλ"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Ραμπί αλ-Αουάλ"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Ραμπί αλ-Θάνι"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Ραμπί αλ-Θάνι"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Ραμπί αλ-Θάνι"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Ραμπί αλ-Θάνι"
-
-#~ msgid "Really delete all geographic data?"
-#~ msgstr "Να διαγραφούν πραγματικά όλα τα γεωγραφικά δεδομένα;"
-
-#~ msgid "Records are not the same type. Cannot merge records that are not the same type."
-#~ msgstr "Οι καταχωρήσεις δεν είναι του ίδιου τύπου. Δεν μπορούν να συγχωνευτούν καταχωρήσεις διαφορετικού τύπου."
-
-#~ msgid "Redraw map"
-#~ msgstr "Ανανέωση χάρτη"
-
-#~ msgid "Religious name"
-#~ msgstr "Θρησκευτικό όνομα"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Religious name"
-#~ msgstr "Θρησκευτικό όνομα"
-
-#~ msgctxt "MALE"
-#~ msgid "Religious name"
-#~ msgstr "Θρησκευτικό όνομα"
-
-#~ msgid "Remove flag"
-#~ msgstr "Αφαίρεση σημαίας"
-
-#~ msgid "Remove link from list"
-#~ msgstr "Αφαίρεση Συνδέσμου απο την λίστα"
-
-#~ msgid "Renumber"
-#~ msgstr "Επαναρίθμηση"
-
-#~ msgid "Renumber family tree"
-#~ msgstr "Επαναριθμήστε το οικογενειακό δέντρο"
-
-#~ msgid "Repositories found"
-#~ msgstr "Χώροι φύλαξης που βρέθηκαν"
-
-#~ msgid "Repository ID prefix"
-#~ msgstr "Πρόθεμα Repository ID"
-
-#~ msgid "Repository contains"
-#~ msgstr "Ο χώρος φύλαξης περιέχει"
-
-#~ msgid "Reset to initial map state"
-#~ msgstr "Επαναφορά στην αρχική κατάσταση του χάρτη"
-
-#~ msgid "Restrict access to the website, using IP addresses and user-agent strings."
-#~ msgstr "Περιορισμός πρόσβασης με χρήση IP διευθύνσεις και user-agent strings."
-
-#~ msgid "Right section blocks"
-#~ msgstr "Πλαίσια δεξιού τμήματος"
-
-#~ msgid "Romanized title"
-#~ msgstr "Εκλατινισμένος τίτλος"
-
-#~ msgid "Rule"
-#~ msgstr "Κανόνας"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Σαφάρ"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Ṣafar"
-#~ msgstr "Σαφάρ"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Σαφάρ"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Σαφάρ"
-
-#~ msgid "Satellite"
-#~ msgstr "Δορυφορικό"
-
-#~ msgid "Search globally"
-#~ msgstr "Αναζήτηση παντού"
-
-#~ msgid "Search locally"
-#~ msgstr "Τοπική αναζήτηση"
-
-#, fuzzy
-#~ msgid "Select a block and use the arrows to move it."
-#~ msgstr "Επιλέξτε ένα πλαίσιο ονόματος και μετά κάντε κλικ σε ένα από τα εικονίδια με τα βέλη για να μετακινήσετε το επιλεγμένο πλαίσιο στην ενδεικνυόμενη κατεύθυνση."
-
-#~ msgid "Select chart type"
-#~ msgstr "Επιλογή τύπου διαγράμματος"
-
-#~ msgid "Select events"
-#~ msgstr "Επιλογή γεγονότων"
-
-#~ msgid "Select flag"
-#~ msgstr "Επιλογή σημαίας"
-
-#~ msgid "Select the stats to show in this block"
-#~ msgstr "Επιλογή στατιστικών για εμφάνιση σε αυτό το πλαίσιο"
-
-#~ msgid "Send broadcast messages"
-#~ msgstr "Αποστολή μαζικών μηνυμάτων"
-
-#~ msgid "Serbia and Montenegro"
-#~ msgstr "Serbien und Montenegro"
-
-#~ msgid "Server file containing places (CSV)"
-#~ msgstr "Αρχείο στο server που περιέχει τοποθεσίες (CSV)"
-
-#~ msgid "Session timeout"
-#~ msgstr "Χρονικό όριο σύνδεσης"
-
-#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
-#~ msgstr "Set the default number of generations to display on the pedigree charts."
-
-#~ msgid "Set the maximum number of generations to display on descendancy charts."
-#~ msgstr "Set the maximum number of generations to display on the descendancy charts."
-
-#~ msgid "Set the maximum number of generations to display on pedigree charts."
-#~ msgstr "Set the maximum number of generations to display on the pedigree charts."
-
-#~ msgid "Shared note contains"
-#~ msgstr "Η κοινόχρηστη σημείωση περιέχει"
-
-#~ msgid "Shared notes found"
-#~ msgstr "Κοινόχρηστες σημειώσεις βρέθηκαν"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Σααμπάν"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Shaʿbān"
-#~ msgstr "Σααμπάν"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Σααμπάν"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Σααμπάν"
-
-#~ msgid "Short version"
-#~ msgstr "Σύντομη έκδοση"
-
-#~ msgid "Should this block be hidden when it is empty"
-#~ msgstr "Πρέπει αυτό το πλαίσιο να αποκρύπτεται όταν είναι άδειο;"
-
-#~ msgid "Show all notes and source references on notes and sources tabs"
-#~ msgstr "Εμφ. όλων των σημειώσεων και αναφορών πηγών στις καρτέλες σημειώσεων και πηγών"
-
-#~ msgid "Show all tags"
-#~ msgstr "Προβολή όλων των ετικετών"
-
-#~ msgid "Show common surnames"
-#~ msgstr "Εμφάνιση συνηθισμένων επωνύμων;"
-
-#~ msgid "Show counts before or after name"
-#~ msgstr "Τοποθέτηση μετρήσεων πριν ή μετά το όνομα"
-
-#~ msgid "Show cousins"
-#~ msgstr "Εμφάνιση ξαδερφιών"
-
-#~ msgid "Show date differences"
-#~ msgstr "Εμφ. Ημ/νιακών διαφορών"
-
-#~ msgid "Show details"
-#~ msgstr "Προβολή λεπτομερειών"
-
-#~ msgid "Show hit counters on Portal and Individual pages."
-#~ msgstr "Εμφ. μετρητή επισκεπτών στην αρχική και τις σελίδες των ατόμων."
-
-#~ msgid "Show inactive places"
-#~ msgstr "Εμφάνιση ανενεργών τοποθεσιών"
-
-#~ msgid "Show lifespans"
-#~ msgstr "Εμφ. χρονοδ. ζωής"
-
-#~ msgid "Show only births, deaths, and marriages"
-#~ msgstr "Εμφάνιση μόνο γεννήσεων, θανάτων, και γάμων;"
-
-#~ msgid "Show only the selected tags"
-#~ msgstr "Προβολή μόνο των επιλεγμένων ετικετών"
-
-#~ msgid "Show places in hierarchy"
-#~ msgstr "Εμφάνιση καταλόγου τοποθεσιών"
-
-#~ msgid "Show related individuals/families"
-#~ msgstr "Εμφάνιση συγγενικών ατόμων/οικογενειών"
-
-#~ msgid "Show statistics charts"
-#~ msgstr "Εμφάνιση διαγραμμάτων στατιστικών"
-
-#~ msgid "Sicily"
-#~ msgstr "Sizilien"
-
-#~ msgid "Sign-in URL"
-#~ msgstr "URL Σύνδεσης Χρήστη"
-
-#~ msgid "Signed-in as "
-#~ msgstr "Συνδεδεμένος ως "
-
-#~ msgid "Size of map (in pixels)"
-#~ msgstr "Μέγεθος χάρτη (σε pixels)"
-
-#~ msgid "Source ID prefix"
-#~ msgstr "Πρόθεμα ID πηγών"
-
-#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-#~ msgstr "Οι παραπομπές πηγής μπορούν να περιλαμβάνουν πεδία για την καταγραφή της ποιότητας των δεδομένων (πρωτεύουσα, δευτερεύουσα, κ.λπ.) και την ημερομηνία καταγραφής του συμβάντος στην πηγή. Εάν δεν χρησιμοποιείτε αυτά τα πεδία, μπορείτε να τα απενεργοποιήσετε κατά τη δημιουργία νέων παραπομπών πηγής."
-
-#~ msgid "Source contains"
-#~ msgstr "Η πηγή περιέχει"
-
-#~ msgid "Spouse census date"
-#~ msgstr "Ημερομηνία απογραφής συζύγου"
-
-#~ msgid "Spouse census place"
-#~ msgstr "Τόπος απογραφής συζύγου"
-
-#~ msgid "Spouse note"
-#~ msgstr "Σημείωση συζύγου"
-
-#~ msgid "Standard"
-#~ msgstr "Τυπικό"
-
-#~ msgid "Start IP address"
-#~ msgstr "Πρώτη IP διεύθυνση"
-
-#~ msgid "Start at parents"
-#~ msgstr "Εκκίνηση από γονείς"
-
-#~ msgid "Statistics chart"
-#~ msgstr "Σχεδίαση στατιστικών"
-
-#~ msgid "Store watermarked full size images on server"
-#~ msgstr "Αποθήκευση υδατογραφημένων πλήρων εικόνων στον διακομιστή;"
-
-#~ msgid "Store watermarked thumbnails on server"
-#~ msgstr "Αποθηκευση υδατογραφημένων μικρογραφιών στον διακομιστή;"
-
-#~ msgid "Subdivision"
-#~ msgstr "Υποδιαίρεση"
-
-#~ msgid "Suffixes"
-#~ msgstr "Καταλήξεις"
-
-#~ msgid "System settings"
-#~ msgstr "Ρυθμίσεις συστήματος"
-
-#~ msgid "Tag"
-#~ msgstr "Ετικέτα"
-
-#~ msgid "Terrain"
-#~ msgstr "Έδαφος"
-
-#~ msgid "The FAQ list is empty."
-#~ msgstr "Η λίστα συχνών ερωτήσεων είναι άδεια."
-
-#~ msgid "The details of this family are private."
-#~ msgstr "Οι λεπτομέρειες αυτής της οικογένειας είναι μυστικές."
-
-#~ msgid "The details of this individual are private."
-#~ msgstr "Οι λεπτομέρειες αυτού του ατόμου είναι μυστικές."
-
-#~ msgid "The file %s could not be updated."
-#~ msgstr "Το αρχείο %s δεν ήταν δυνατόν να ανανεωθεί."
-
-#~ msgid "The file %s has been created."
-#~ msgstr "Το αρχείο %s δημιουργήθηκε."
-
-#, php-format
-#~ msgid "The folder %s does not exist, and it could not be created."
-#~ msgstr "Ο φάκελος %s δεν υπάρχει, και δεν μπορεί να δημιουργηθεί."
-
-#~ msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
-#~ msgstr "Οι παρακάτω κανόνες χρησιμοποιούνται για να διαπιστωθεί αν ένας επισκέπτης είναι κανονικός χρήστης (πλήρης πρόσβαση), μια μηχανή αναζήτησης (περιορισμένη πρόσβαση) ή μια ανεπιθύμητη μηχανή (απαγόρευση πρόσβασης)."
-
-#~ msgid "The media file was not found in this family tree."
-#~ msgstr "Το αρχείο πολυμέσων δεν βρέθηκε σε αυτό το οικογενειακό δέντρο."
-
-#~ msgid "The most common repository facts are listed separately, so that they can be added more easily."
-#~ msgstr "Τα πιο συνηθισμένα γεγονότα αποθετηρίου παρατίθενται ξεχωριστά, έτσι ώστε να μπορούν να προστεθούν πιο εύκολα."
-
-#~ msgid "The most common source facts are listed separately, so that they can be added more easily."
-#~ msgstr "Τα πιο συνηθισμένα γεγονότα πηγής παρατίθενται ξεχωριστά, έτσι ώστε να μπορούν να προστεθούν πιο εύκολα."
-
-#, php-format
-#~ msgid "The parameter “%s” is missing."
-#~ msgstr "Λείπει η παράμετρος \"%s\"."
-
-#~ msgid "The passwords do not match."
-#~ msgstr "Οι κωδικοί πρόσβασης δεν ταιριάζουν."
-
-#~ msgid "The problem"
-#~ msgstr "Το πρόβλημα"
-
-#~ msgid "The record has been copied to the clipboard."
-#~ msgstr "Η εγγραφή αντιγράφηκε στη μνήμη."
-
-#, fuzzy
-#~ msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-#~ msgstr "Gives users the option of selecting their own theme.<br>from a drop down menu (if implemented in the theme)<br>Requires ALLOW_USER_THEMES to be true as well."
-
-#~ msgid "The thumbnail file %1$s could not be renamed to %2$s."
-#~ msgstr "Το αρχείο μικρογραφίας %1$s δεν μπορεί να μετονομαστεί σε %2$s."
-
-#~ msgid "The thumbnail file %1$s has been renamed to %2$s."
-#~ msgstr "Το αρχείο μικρογραφίας %1$s μετονομάστηκε σε %2$s."
-
-#~ msgid "The thumbnail file %s does not exist."
-#~ msgstr "Το αρχείο μικρογραφίας %s δεν υπάρχει."
-
-#~ msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
-#~ msgstr "The value to place in the «meta description» tag in the HTML page header. Leave this field empty to use the currently active GEDCOM's title for this value."
-
-#~ msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
-#~ msgstr "Ο ιστότοπος www.geonames.org παρέχει μια μεγάλη βάση δεδομένων με ονόματα τόπων. Αυτό μπορεί να αναζητηθεί κατά την είσοδο σε νέα μέρη. Για να χρησιμοποιήσετε αυτήν τη δυνατότητα, πρέπει να εγγραφείτε για δωρεάν λογαριασμό στη διεύθυνση www.geonames.org και να δώσετε το όνομα χρήστη."
-
-#, fuzzy
-#~ msgid "Theme menu"
-#~ msgstr "Επιλογέας θέματος με μορφή \"dropdown\""
-
-#, php-format
-#~ msgid "There is no user account with the email “%s”."
-#~ msgstr "Δεν υπάρχει λογαριασμός χρήστη με το email \"%s\"."
-
-#~ msgid "These pages provide access to all the preferences and management tools for this webtrees site."
-#~ msgstr "Αυτές οι σελίδες παρέχουν πρόσβαση σε όλες τις ρυθμίσεις και τα εργαλεία διαχείρισης γι αυτή την ιστοσελίδα webtrees."
-
-#, php-format
-#~ msgid "This could be caused by an error at %s"
-#~ msgstr "Αυτό μπορεί να προκληθεί από σφάλμα στο %s"
-
-#~ msgid "This family remained childless"
-#~ msgstr "Αυτή η οικογένεια παρέμεινε άτεκνη"
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-#~ msgstr "Αυτή είναι μια λίστα με ετικέτες γεγονότων GEDCOM που διαχωρίζονται με κόμμα και θα εμφανίζονται στη φόρμα προσθήκης / επεξεργασίας ονόματος. Εάν χρησιμοποιείτε μη λατινικά αλφάβητα όπως εβραϊκά, ελληνικά, κυριλλικά ή αραβικά, ίσως θελήσετε να προσθέσετε ετικέτες όπως _HEB, ROMN, FONE κ.λπ. για να σας επιτρέψει να αποθηκεύσετε ονόματα σε πολλά διαφορετικά αλφάβητα."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-#~ msgstr "Αυτή είναι μια λίστα με ετικέτες γεγονότων GEDCOM που διαχωρίζονται με κόμμα και θα εμφανίζονται κατά την προσθήκη μιας νέας οικογένειας. Για παράδειγμα, εάν το MARR βρίσκεται στη λίστα, τότε τα πεδία για την ημερομηνία γάμου και τον τόπο γάμου θα εμφανίζονται στη φόρμα."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-#~ msgstr "Αυτή είναι μια λίστα με ετικέτες γεγονότων GEDCOM που διαχωρίζονται με κόμμα και θα εμφανίζονται κατά την προσθήκη ενός νέου ατόμου. Για παράδειγμα, εάν το BIRT βρίσκεται στη λίστα, τα πεδία για την ημερομηνία γέννησης και τον τόπο γέννησης θα εμφανίζονται στη φόρμα."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-#~ msgstr "Αυτή είναι μια λίστα με ετικέτες γεγονότων GEDCOM που διαχωρίζονται με κόμμα και θα εμφανίζονται όταν προσθέτετε ή επεξεργάζεστε ονόματα μερών. Εάν χρησιμοποιείτε μη λατινικά αλφάβητα όπως εβραϊκά, ελληνικά, κυριλλικά ή αραβικά, ίσως θελήσετε να προσθέσετε ετικέτες όπως _HEB, ROMN, FONE κ.λπ. για να σας επιτρέψει να αποθηκεύσετε ονόματα θέσεων σε πολλά διαφορετικά αλφάβητα."
-
-#~ msgid "This is case sensitive."
-#~ msgstr "Διακριτοί κεφαλαίοι-μικροί χαρακτήρες."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-#~ msgstr "Αυτή είναι η λίστα των γεγονότων του GEDCOM που οι χρήστες σας μπορούν να προσθέσουν σε οικογένειες. Μπορείτε να τροποποιήσετε αυτήν τη λίστα καταργώντας ή προσθέτοντας ονόματα γεγονότων, ακόμη και προσαρμοσμένα, ανάλογα με τις ανάγκες. Τα ονόματα γεγονότων που εμφανίζονται σε αυτήν τη λίστα δεν πρέπει επίσης να εμφανίζονται στη λίστα \"Μοναδικά οικογενειακά γεγονότα\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-#~ msgstr "Αυτή είναι η λίστα των γεγονότων του GEDCOM που οι χρήστες σας μπορούν να προσθέσουν σε άτομα. Μπορείτε να τροποποιήσετε αυτήν τη λίστα καταργώντας ή προσθέτοντας ονόματα γεγονότων, ακόμη και προσαρμοσμένα, ανάλογα με τις ανάγκες. Τα ονόματα γεγονότων που εμφανίζονται σε αυτήν τη λίστα δεν πρέπει επίσης να εμφανίζονται στη λίστα \"Μοναδικά μεμονωμένα γεγονότα\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-#~ msgstr "Αυτή είναι η λίστα των γεγονότων του GEDCOM που οι χρήστες σας μπορούν να προσθέσουν σε αποθετήρια. Μπορείτε να τροποποιήσετε αυτήν τη λίστα καταργώντας ή προσθέτοντας ονόματα γεγονότων, ακόμη και προσαρμοσμένα, ανάλογα με τις ανάγκες. Τα ονόματα γεγονότων που εμφανίζονται σε αυτήν τη λίστα δεν πρέπει επίσης να εμφανίζονται στη λίστα \"Μοναδικά γεγονότα αποθετηρίου\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-#~ msgstr "Αυτή είναι η λίστα των γεγονότων του GEDCOM που οι χρήστες σας μπορούν να προσθέσουν σε πηγές. Μπορείτε να τροποποιήσετε αυτήν τη λίστα καταργώντας ή προσθέτοντας ονόματα γεγονότων, ακόμη και προσαρμοσμένα, ανάλογα με τις ανάγκες. Τα ονόματα γεγονότων που εμφανίζονται σε αυτήν τη λίστα δεν πρέπει επίσης να εμφανίζονται στη λίστα \"Μοναδικά γεγονότα πηγής\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-#~ msgstr "Αυτή είναι η λίστα των γεγονότων του GEDCOM που οι χρήστες σας μπορούν να προσθέσουν μόνο μία φορά στις οικογένειες. Για παράδειγμα, εάν το MARR βρίσκεται σε αυτήν τη λίστα, οι χρήστες δεν θα μπορούν να προσθέσουν περισσότερες από μία εγγραφές MARR σε μια οικογένεια. Τα ονόματα των γεγονότων που εμφανίζονται σε αυτήν τη λίστα δεν πρέπει επίσης να εμφανίζονται στη λίστα \"Όλα τα οικογενειακά γεγονότα\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-#~ msgstr "Αυτή είναι η λίστα των γεγονότων του GEDCOM που οι χρήστες σας μπορούν να προσθέσουν μόνο μία φορά σε άτομα. Για παράδειγμα, εάν το BIRT βρίσκεται σε αυτήν τη λίστα, οι χρήστες δεν θα μπορούν να προσθέσουν περισσότερες από μία εγγραφές BIRT σε ένα άτομο. Τα ονόματα γεγονότων που εμφανίζονται σε αυτήν τη λίστα δεν πρέπει επίσης να εμφανίζονται στη λίστα \"Όλα τα μεμονωμένα γεγονότα\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-#~ msgstr "Αυτή είναι η λίστα των γεγονότων του GEDCOM που οι χρήστες σας μπορούν να προσθέσουν μόνο μία φορά σε αποθετήρια. Για παράδειγμα, εάν το NAME βρίσκεται σε αυτήν τη λίστα, οι χρήστες δεν θα μπορούν να προσθέσουν περισσότερες από μία εγγραφές NAME σε ένα αποθετήριο. Τα ονόματα των πραγματικών στοιχείων που εμφανίζονται σε αυτήν τη λίστα δεν πρέπει επίσης να εμφανίζονται στη λίστα \"Όλα τα γεγονότα αποθετηρίου\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-#~ msgstr "Αυτή είναι η λίστα των γεγονότων του GEDCOM που οι χρήστες σας μπορούν να προσθέσουν μόνο μία φορά σε πηγές. Για παράδειγμα, εάν το TITL βρίσκεται σε αυτήν τη λίστα, οι χρήστες δεν θα μπορούν να προσθέσουν περισσότερες από μία εγγραφές TITL σε μια πηγή. Τα ονόματα γεγονότων που εμφανίζονται σε αυτήν τη λίστα δεν πρέπει επίσης να εμφανίζονται στη λίστα \"Όλα τα γεγονότα πηγής\"."
-
-#~ msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
-#~ msgstr "This is the number of times that a surname must occur, before it shows up in the Common Surname list on the Welcome Page."
-
-#~ msgid "This may be a mistake in your data."
-#~ msgstr "Αυτό μπορεί να είναι σφάλμα στα δεδομένα σας."
-
-#~ msgid "This may cause a problem for other applications."
-#~ msgstr "Αυτό μπορεί να προκαλέσει πρόβλημα σε άλλες εφαρμογές."
-
-#~ msgid "This may cause a problem for webtrees."
-#~ msgstr "Αυτό μπορεί να προκαλέσει πρόβλημα στο webtrees."
-
-#~ msgid "This media file is broken and cannot be watermarked."
-#~ msgstr "Αυτό το αρχείο πολυμέσου είναι κατεστραμμένο και δεν μπορεί να υδατογραφηθεί."
-
-#~ msgid "This media object is not linked to any other record."
-#~ msgstr "Αυτό το αρχείο πολυμέσων δεν συνδέεται με καμία εγγραφή."
-
-#~ msgid "This message will be sent to %s"
-#~ msgstr "Το μήνυμα αυτό θα σταλεί σε %s"
-
-#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
-#~ msgstr "This tells whether the pedigree chart should be generated in landscape or portrait mode."
-
-#~ msgid "This place has no coordinates"
-#~ msgstr "Η τοποθεσία δεν έχει συντεταγμένες"
-
-#~ msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
-#~ msgstr "Αυτό το αποθετήριο έχει διαγραφεί. Η διαγραφή θα πρέπει να ελεγχθεί από έναν επόπτη."
-
-#, php-format
-#~ msgid "This repository has been deleted. You should review the deletion and then %1$s or %2$s it."
-#~ msgstr "Αυτό το αποθετήριο έχει διαγραφεί. Θα πρέπει να ελέγξετε τη διαγραφή και, στη συνέχεια, %1$s ή %2$s."
-
-#~ msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-#~ msgstr "Αυτό το αποθετήριο έχει επεξεργαστεί. Οι αλλαγές πρέπει να ελεγχθούν από έναν επόπτη."
-
-#, php-format
-#~ msgid "This repository has been edited. You should review the changes and then %1$s or %2$s them."
-#~ msgstr "Αυτό το αποθετήριο έχει επεξεργαστεί. Πρέπει να ελέγξετε τις αλλαγές και μετά να τις %1$s ή %2$s."
-
-#~ msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-#~ msgstr "Αυτή θα πρέπει να είναι μια λίστα γεγονότων διαχωρισμένων με κόμμα ή διαστήματος, εκτός από τη γέννηση και το θάνατο, που θέλετε να εμφανίζονται σε πλαίσια γραφήματος όπως το γενεαλογικό διάγραμμα. Αυτή η λίστα απαιτεί από εσάς να χρησιμοποιήσετε ετικέτες γεγονότων όπως ορίζονται στο πρότυπο GEDCOM 5.5.1. Για παράδειγμα, εάν θέλετε το επάγγελμα να εμφανίζεται στο πλαίσιο, θα προσθέσετε το \"OCCU\" σε αυτό το πεδίο."
-
-#~ msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
-#~ msgstr "Αυτή η πηγή έχει διαγραφεί. Η διαγραφή πρέπει να επιθεωρηθεί απο εναν διαχειριστή."
-
-#, php-format
-#~ msgid "This source has been deleted. You should review the deletion and then %1$s or %2$s it."
-#~ msgstr "Αυτή η πηγή έχει διαγραφεί. Πρέπει να επιθεωρήσετε την διαγραφή και στην συνέχεια να %1$s ή %2$s."
-
-#~ msgid "This source has been edited. The changes need to be reviewed by a moderator."
-#~ msgstr "Αυτή η πηγή έχει τροποποιηθεί. Η αλλαγή πρέπει να επιθεωρηθεί απο εναν διαχειριστή."
-
-#, php-format
-#~ msgid "This source has been edited. You should review the changes and then %1$s or %2$s them."
-#~ msgstr "Αυτή η πηγή έχει τροποποιηθεί. Πρέπει να επιθεωρήσετε την αλλαγή και στην συνέχεια να %1$s ή %2$s."
-
-#~ msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
-#~ msgstr "Αυτό καθορίζει την ακρίβεια των διαφόρων επιπέδων κατά την εισαγωγή νέων γεωγραφικών τοποθεσιών. Για παράδειγμα, μια χώρα θα πρέπει να προσδιορίζεται με ακρίβεια 0 (= 0 ψηφίο μετά το δεκαδικό σημείο), ενώ μία πόλη χρειάζεται 3 ή 4 ψηφία."
-
-#~ msgid "This type of link is not allowed here."
-#~ msgstr "Αυτό το είδος του συνδέσμου δεν επιτρέπεται εδώ."
-
-#~ msgid "This website is being upgraded. Try again in a few minutes."
-#~ msgstr "Αυτός ο ιστότοπος αναβαθμίζεται. Δοκιμάστε ξανά σε λίγα λεπτά."
-
-#~ msgid "Thumbnail files must contain images."
-#~ msgstr "Οι μικρογραφίες πρέπει να είναι αρχεία εικόνας."
-
-#~ msgid "Thumbnail to upload"
-#~ msgstr "Μικρογραφία προς ανέβασμα"
-
-#~ msgid "Title in Hebrew"
-#~ msgstr "Τίτλος στα εβραϊκά"
-
-#~ msgid "To"
-#~ msgstr "Έως"
-
-#~ msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
-#~ msgstr "Για να μειώσετε το μέγεθος της λήψης, μπορείτε να συμπιέσετε τα δεδομένα σε ένα αρχείο .ZIP. Θα πρέπει να αποσυμπιέσετε το αρχείο .ZIP για να μπορέσετε να το χρησιμοποιήσετε."
-
-#~ msgid "To tell search engines that sitemaps are available, you can use the following links."
-#~ msgstr "Για να πείτε στις μηχανές αναζήτησης οτι υπάρχουν χάρτες ιστοσελίδων διαθέσιμοι, μπορείτε να χρησιμοποιήσετε τους παρακάτω συνδέσμους."
-
-#~ msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
-#~ msgstr "Για να πείτε στις μηχανές αναζήτησης οτι υπάρχουν χάρτες ιστοσελίδων διαθέσιμοι, θα πρέπει να προσθέσετε την παρακάτω γραμμή στο αρχείο robots.txt."
-
-#~ msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
-#~ msgstr "Για να χρησιμοποιήσετε Google mail, χρησιμοποιήστε τις ακόλουθες ρυθμίσεις: Διακομιστής=smtp.gmail.com, Θύρα=587, Ασφάλεια=tls, Όνομα Χρήστη=xxxxx@gmail.com, Κωδικός Πρόσβασης=[ο κωδικός πρόσβασης του email σας]"
-
-#~ msgid "Top level"
-#~ msgstr "Ανώτατο επίπεδο"
-
-#, php-format
-#~ msgid "Total families: %s"
-#~ msgstr "Σύνολο οικογενειών: %s"
-
-#, php-format
-#~ msgid "Total individuals: %s"
-#~ msgstr "Σύνολο ατόμων: %s"
-
-#~ msgid "Total number of users"
-#~ msgstr "Συνολικός αριθμός χρηστών"
-
-#~ msgid "Total places: %s"
-#~ msgstr "Σύνολο τοποθεσιών: %s"
-
-#~ msgid "Total sources: %s"
-#~ msgstr "Σύνολο πηγών: %s"
-
-#~ msgid "Transylvania"
-#~ msgstr "Transylvanien"
-
-#~ msgid "Type of place markers in the place hierarchy"
-#~ msgstr "Τύπος σημάνσεων στην ιεραρχία τοποθεσιών"
-
-#~ msgid "Type the password again."
-#~ msgstr "Εισάγετε τον κωδικό χρήστη ξανά."
-
-#~ msgid "Types of error"
-#~ msgstr "Τύποι λαθών"
-
-#~ msgid "USSR"
-#~ msgstr "UdSSR"
-
-#~ msgid "UTC"
-#~ msgstr "UTC"
-
-#, fuzzy
-#~ msgid "Unable to find record with ID"
-#~ msgstr "Δεν βρέθηκε εγγραφή με ID"
-
-#~ msgid "Unique family facts"
-#~ msgstr "Μοναδικά οικογενειακά γεγονότα"
-
-#~ msgid "Unique individual facts"
-#~ msgstr "Μοναδικά ατομικά γεγονότα"
-
-#~ msgid "Unique repository facts"
-#~ msgstr "Μοναδικά γεγονότα αποθετηρίου"
-
-#~ msgid "Unique source facts"
-#~ msgstr "Μοναδικά γεγονότα πηγής"
-
-#~ msgid "Unlink the media object"
-#~ msgstr "Αποσύνδεση πολυμέσου"
-
-#~ msgid "Upload"
-#~ msgstr "Ανέβασμα"
-
-#~ msgid "Upload geographic data"
-#~ msgstr "Ανέβασμα γεωγραφικών δεδομένων"
-
-#~ msgid "Use Google™ maps for the place hierarchy"
-#~ msgstr "Χρήση Google™ maps για ιεραρχία τοποθεσιών"
-
-#~ msgid "Use PHP mail to send messages"
-#~ msgstr "Χρήση PHP mail για αποστολή μηνυμάτων"
-
-#~ msgid "Use RIN number instead of GEDCOM ID"
-#~ msgstr "Χρήση RIN# αντί GEDCOM ID"
-
-#~ msgid "Use full source citations"
-#~ msgstr "Χρήση των πλήρων παραπομπών των πηγών"
-
-#~ msgid "Use the GeoNames database for autocomplete on places"
-#~ msgstr "Χρήση βάσης δεδομένων GeoNames για την αυτόματη συμπλήρωση τοποθεσιών"
-
-#~ msgid "Use this image for charts and on the individual’s page."
-#~ msgstr "Χρησιμοποιήστε αυτήν την εικόνα για γραφήματα και στη σελίδα του ατόμου."
-
-#~ msgid "Use this value"
-#~ msgstr "Χρήση αυτής της τιμής"
-
-#~ msgid "User preferences"
-#~ msgstr "Προτιμήσεις χρήστη"
-
-#~ msgid "User-agent string"
-#~ msgstr "User-agent string"
-
-#~ msgid "Users who are signed in"
-#~ msgstr "Συνδεδεμένοι χρήστες"
-
-#~ msgid "Verification code"
-#~ msgstr "Κώδικας επαλήθευσης"
-
-#~ msgid "View"
-#~ msgstr "Προβολή"
-
-#~ msgid "View all records found in this place"
-#~ msgstr "Εμφάνιση όλων των εγγραφών που βρέθηκαν στον τόπο αυτό"
-
-#~ msgid "View the archive"
-#~ msgstr "Προβολή αρχείου"
-
-#~ msgid "View the details"
-#~ msgstr "Προβόλή Λεπτομερειών"
-
-#~ msgid "View the notes"
-#~ msgstr "Προβολή Σημειώσεων"
-
-#~ msgid "View the statistics as graphs"
-#~ msgstr "Προβολή στατιστικών ως γράφημα"
-
-#~ msgid "View this individual"
-#~ msgstr "Προβολή αυτού του ατόμου"
-
-#~ msgid "View this source"
-#~ msgstr "Προβολή αυτής της πηγής"
-
-#~ msgid "Website URL"
-#~ msgstr "URL Ιστοσελίδας"
-
-#~ msgid "Website access rules"
-#~ msgstr "Κανόνες Πρόσβασης Ιστοσελίδας"
-
-#~ msgid "Website and META tag settings"
-#~ msgstr "Επιλογές Διαμόρφωσης META Tag"
-
-#~ msgid "West Africa"
-#~ msgstr "West Afrika"
-
-#~ msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-#~ msgstr "Κατά την προσθήκη νέων στενών συγγενών, μπορείτε να προσθέσετε παραπομπές πηγής στα αρχεία (άτομο και οικογένεια) ή στα γεγονότα και γεγονότα (γέννηση, γάμος και θάνατος) Αυτή η επιλογή ελέγχει εάν τα αρχεία ή τα γεγονότα θα επιλεγούν από προεπιλογή."
-
-#~ msgid "When you send this message you will receive a copy sent via email to the address you provided."
-#~ msgstr "Όταν στείλετε αυτό το μήνυμα θα λάβετε ένα αντίγραφο μέσω email στην διεύθυνση που είχατε παρέχει."
-
-#~ msgid "Whole words only"
-#~ msgstr "Μόνο ολόκληρες λέξεις"
-
-#~ msgid "Width"
-#~ msgstr "Πλάτος"
-
-#~ msgid "Width of generated thumbnails"
-#~ msgstr "Πλάτος των παραγόμενων μικρογραφιών"
-
-#~ msgid "Wife’s maiden surname becomes new given name"
-#~ msgstr "Το πατρικό επώνυμο της γυναίκας γίνεται νέο όνομα"
-
-#~ msgid "Wife’s surname replaced by husband’s surname"
-#~ msgstr "Το επώνυμο της γυναίκας αντικαθίσταται από το επώνυμο του συζύγου"
-
-#~ msgid "XREF prefixes"
-#~ msgstr "XREF προθήματα"
-
-#~ msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-#~ msgstr "Μπορείτε να διευκολύνετε την αναζήτηση παντρεμένων γυναικών καταγράφοντας το όνομά τους. Ωστόσο, δεν έχουν όλες οι γυναίκες το επώνυμο του συζύγου τους, επομένως προσέξτε να εισαγάγετε εσφαλμένες πληροφορίες στη βάση δεδομένων σας."
-
-#~ msgid "You entered the same IDs. You cannot merge the same records."
-#~ msgstr "Εισάγατε τα ίδια ID. Δεν μπορείτε να συγχωνεύσετε τις ίδιες εγγραφές."
-
-#~ msgid "You have not created any journal items."
-#~ msgstr "Δεν έχετε δημιουργήσει κάποια αντικείμενα ημερολογίου."
-
-#~ msgid "You must enter a name"
-#~ msgstr "Πρέπει να εισάγετε ένα όνομα"
-
-#~ msgid "You must enter a real name."
-#~ msgstr "Πρέπει να εισάγετε ένα πραγματικό όνομα."
-
-#~ msgid "You must enter a username."
-#~ msgstr "Πρέπει να εισάγετε όνομα χρήστη."
-
-#~ msgid "You must provide a repository name."
-#~ msgstr "Πρέπει να δώσετε ένα όνομα αποθετηρίου."
-
-#~ msgid "You must provide a source title"
-#~ msgstr "Πρέπει να εισάγετε έναν τίτλο πηγής"
-
-#~ msgid "You sent the following message to a webtrees administrator:"
-#~ msgstr "Στείλατε το ακόλουθο μήνυμα σε διαχειριστή του webtrees:"
-
-#~ msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-#~ msgstr "Ο λογαριασμός χρήστη σας δεν έχει ενεργοποιημένη την \"αυτόματη έγκριση αλλαγών\". Μπορείτε να αλλάξετε μόνο μια εγγραφή την φορά."
-
-#~ msgid "Yugoslavia"
-#~ msgstr "Jugoslawien"
-
-#~ msgid "Zip file(s)"
-#~ msgstr "Αρχείο(α) zip"
-
-#~ msgid "Zoom in here"
-#~ msgstr "Μεγέθυνση εδώ"
-
-#~ msgid "Zoom in/out on this box."
-#~ msgstr "Μεγένθυση/Σμίκρυνση στο κουτί αυτό."
-
-#~ msgid "Zoom level"
-#~ msgstr "Βαθμός μεγέθυνσης"
-
-#~ msgid "Zoom level of map"
-#~ msgstr "Ρυθμίσεις zoom"
-
-#~ msgid "Zoom out here"
-#~ msgstr "Σμύκρινση εδώ"
-
-#~ msgid "Zoom="
-#~ msgstr "Zoom="
-
-#~ msgid "a.m."
-#~ msgstr "π.μ."
-
-#~ msgctxt "FEMALE"
-#~ msgid "adopted name"
-#~ msgstr "όνομα υιοθεσίας"
-
-#~ msgctxt "MALE"
-#~ msgid "adopted name"
-#~ msgstr "όνομα υιοθεσίας"
-
-#~ msgid "adoption"
-#~ msgstr "υιοθεσία"
-
-#~ msgid "after death"
-#~ msgstr "μετά τον θάνατο"
-
-#~ msgid "allow"
-#~ msgstr "επιτρέπεται"
-
-#~ msgctxt "FEMALE"
-#~ msgid "also known as"
-#~ msgstr "επίσης γνωστή ως"
-
-#~ msgctxt "MALE"
-#~ msgid "also known as"
-#~ msgstr "επίσης γνωστός ως"
-
-#~ msgid "always"
-#~ msgstr "πάντα"
-
-#~ msgid "birth"
-#~ msgstr "γέννηση"
-
-#~ msgctxt "FEMALE"
-#~ msgid "birth name"
-#~ msgstr "όνομα κατά την γέννηση"
-
-#~ msgctxt "MALE"
-#~ msgid "birth name"
-#~ msgstr "όνομα κατά την γέννηση"
-
-#~ msgid "burial"
-#~ msgstr "ταφή"
-
-#~ msgid "by"
-#~ msgstr "από"
-
-#~ msgid "census added"
-#~ msgstr "απογραφή προστέθηκε"
-
-#~ msgid "century"
-#~ msgstr "αιώνας"
-
-#~ msgctxt "FEMALE"
-#~ msgid "change of name"
-#~ msgstr "αλλαγή ονόματος"
-
-#~ msgctxt "MALE"
-#~ msgid "change of name"
-#~ msgstr "αλλαγή ονόματος"
-
-#~ msgid "children"
-#~ msgstr "τέκνα"
-
-#~ msgid "creating thumbnails of images"
-#~ msgstr "δημιουργία μικρογραφιών των εικόνων"
-
-#~ msgid "death"
-#~ msgstr "θάνατος"
-
-#~ msgid "deny"
-#~ msgstr "απαγορεύεται"
-
-#~ msgid "east"
-#~ msgstr "ανατολικά"
-
-#~ msgctxt "FEMALE"
-#~ msgid "estate name"
-#~ msgstr "όνομα κτήματος"
-
-#~ msgctxt "MALE"
-#~ msgid "estate name"
-#~ msgstr "όνομα κτήματος"
-
-#~ msgid "file upload capability"
-#~ msgstr "δυνατότητα ανεβάσματος αρχείων"
-
-#~ msgid "half-year after marriage"
-#~ msgstr "εξάμηνο μετά το γάμο"
-
-#~ msgid "hh:mm or hh:mm:ss"
-#~ msgstr "ωω:λλ ή ωω:λλ:δδ"
-
-#~ msgctxt "FEMALE"
-#~ msgid "immigration name"
-#~ msgstr "όνομα μετανάστευσης"
-
-#~ msgctxt "MALE"
-#~ msgid "immigration name"
-#~ msgstr "όνομα μετανάστευσης"
-
-#~ msgid "import"
-#~ msgstr "εισαγωγή"
-
-#~ msgid "interval one child"
-#~ msgstr "μεσοδιάστημα ένα παιδί"
-
-#~ msgid "interval two children"
-#~ msgstr "μεσοδιάστημα δύο τέκνα"
-
-#~ msgid "less than"
-#~ msgstr "λιγότερο από"
-
-#~ msgid "link"
-#~ msgstr "σύνδεσμος"
-
-#~ msgid "marriage"
-#~ msgstr "γάμος"
-
-#~ msgctxt "FEMALE"
-#~ msgid "married name"
-#~ msgstr "όνομα γάμου"
-
-#~ msgctxt "MALE"
-#~ msgid "married name"
-#~ msgstr "όνομα γάμου"
-
-#~ msgid "maximum"
-#~ msgstr "μέγιστο"
-
-#~ msgid "minimum"
-#~ msgstr "ελάχιστο"
-
-#~ msgid "month"
-#~ msgstr "Μήνας"
-
-#~ msgid "months after marriage"
-#~ msgstr "μήνες μετά το γάμο"
-
-#~ msgid "months before and after marriage"
-#~ msgstr "μήνες πριν και μετά το γάμο"
-
-#~ msgid "never"
-#~ msgstr "ποτέ"
-
-#~ msgid "north"
-#~ msgstr "βόρεια"
-
-#~ msgid "over"
-#~ msgstr "πάνω από"
-
-#~ msgid "p.m."
-#~ msgstr "μ.μ."
-
-#~ msgid "pixels"
-#~ msgstr "pixels"
-
-#~ msgid "preview"
-#~ msgstr "Προεπισκόπηση"
-
-#~ msgid "quarters after marriage"
-#~ msgstr "τρίμηνα μετά το γάμο"
-
-#~ msgctxt "FEMALE"
-#~ msgid "religious name"
-#~ msgstr "θρησκευτικό όνομα"
-
-#~ msgctxt "MALE"
-#~ msgid "religious name"
-#~ msgstr "θρησκευτικό όνομα"
-
-#~ msgid "reporting"
-#~ msgstr "εξαγωγή εκθέσεων"
-
-#~ msgid "robot"
-#~ msgstr "Μηχανή Αναζήτησης"
-
-#~ msgid "sort by filename"
-#~ msgstr "Ταξινόμηση ανά όνομα αρχείου"
-
-#~ msgid "sort by title"
-#~ msgstr "Ταξινόμηση ανά τίτλο"
-
-#~ msgid "south"
-#~ msgstr "νότια"
-
-#~ msgid "ssl"
-#~ msgstr "ssl"
-
-#~ msgid "tls"
-#~ msgstr "tls"
-
-#~ msgid "webtrees cannot connect to the PhpGedView database: %s."
-#~ msgstr "To webtrees δεν μπορεί να συνδεθεί με την βάση δεδομένων του PhpGedView : %s."
-
-#~ msgid "webtrees needs a MySQL database, version %s or later."
-#~ msgstr "Το webtrees χρειάζεται μια MySQL βάση δεδομένων, με έκδοση %s ή νεώτερη."
-
-#~ msgid "webtrees reply address"
-#~ msgstr "Διεύθυνση απαντητικών μηνυμάτων"
-
-#~ msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-#~ msgstr "Το webtrees χρησιμοποιεί κωδικοποίηση UTF-8 για τονισμένα γράμματα, ειδικούς χαρακτήρες και μη λατινικά σενάρια. Εάν θέλετε να χρησιμοποιήσετε αυτό το αρχείο GEDCOM με λογισμικό γενεαλογίας που δεν υποστηρίζει UTF-8, τότε μπορείτε να το δημιουργήσετε χρησιμοποιώντας κωδικοποίηση ISO-8859-1."
-
-#~ msgid "webtrees’ database must be on the same server as PhpGedView’s"
-#~ msgstr "Η βάση δεδομένων του webtrees πρέπει να είναι στον ίδιο server με την βάση δεδομένων του PhpGedView"
-
-#~ msgid "west"
-#~ msgstr "δυτικά"
-
-#~ msgid "years"
-#~ msgstr "ετών"
-
-#, php-format
-#~ msgid "“%s”"
-#~ msgstr "“%s”"
-
-#~ msgid "“%s” has been added to your favorites."
-#~ msgstr "“%s” προστέθηκε στα αγαπημένα σας."

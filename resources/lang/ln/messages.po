@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-15 18:05+0100\n"
+"POT-Creation-Date: 2026-07-16 21:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -391,18 +391,6 @@ msgctxt "MALE"
 msgid "%s × cousin"
 msgstr "mwǎna-nɔ́kɔ́ x %s"
 
-#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ʙᴄᴇ"
-msgstr "%s ʙᴄᴇ"
-
-#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ᴄᴇ"
-msgstr "%s ᴄᴇ"
-
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php
 #, php-format
@@ -448,6 +436,18 @@ msgstr "%s, balóngani na bǎna ba yě"
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, balóngani na bakitani ba yě"
+
+#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ʙᴄᴇ"
+msgstr "%s ʙᴄᴇ"
+
+#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ᴄᴇ"
+msgstr "%s ᴄᴇ"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
@@ -1068,25 +1068,21 @@ msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Aban"
@@ -1129,73 +1125,61 @@ msgstr "Kɔ́nti endimámí mpé nkandá etálámí"
 msgid "Accra, Ghana"
 msgstr "Accra, Ghana"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
@@ -2177,25 +2161,21 @@ msgstr "Kofungola nkomá"
 msgid "Automatically expand sources"
 msgstr "Kofungla bibandela"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Av"
@@ -2248,25 +2228,21 @@ msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Azar"
@@ -2292,25 +2268,21 @@ msgstr "Bah"
 msgid "Bahamas"
 msgstr "Bahamas"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Bahman"
@@ -2786,25 +2758,21 @@ msgstr "Bisanga bya British Virgin"
 msgid "Brother"
 msgstr "Ndeko mobáli"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
@@ -4747,73 +4715,61 @@ msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
 msgstr ""
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Dhu al-Hijjah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Ḥijjah"
 msgstr "Dhu al-Hijjah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Dhu al-Hijjah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Ḥijjah"
@@ -5098,25 +5054,21 @@ msgstr ""
 msgid "Electronic"
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Elul"
@@ -5249,25 +5201,21 @@ msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
 msgstr "Esf"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Esfand"
 msgstr "Esfand"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
 msgstr "Esfand"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Esfand"
 msgstr "Esfand"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Esfand"
@@ -5733,25 +5681,21 @@ msgstr "Far"
 msgid "Faroe Islands"
 msgstr ""
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
@@ -5976,25 +5920,21 @@ msgstr ""
 msgid "Flanders"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Floreal"
@@ -6188,25 +6128,21 @@ msgctxt "MALE"
 msgid "Friend"
 msgstr "Moníngá"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
@@ -6224,25 +6160,21 @@ msgctxt "Start of date range"
 msgid "From"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
@@ -6411,26 +6343,21 @@ msgstr ""
 msgid "Germany"
 msgstr "Alémani"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Germinal"
@@ -6750,25 +6677,21 @@ msgstr ""
 msgid "Hermosillo, Mexico"
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Heshvan"
 msgstr "Heshvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
 msgstr "Heshvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Heshvan"
 msgstr "Heshvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
@@ -7362,25 +7285,21 @@ msgstr ""
 msgid "Italy"
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Iyar"
 msgstr "Iyar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
 msgstr "Iyar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Iyar"
 msgstr "Iyar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Iyar"
@@ -7492,49 +7411,41 @@ msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "Yúli"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-thānī"
 msgstr "Jumada al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-thānī"
 msgstr "Jumada al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-thānī"
 msgstr "Jumada al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-thānī"
@@ -7607,25 +7518,21 @@ msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
 msgstr "Khor"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
 msgstr "Khordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Khordad"
@@ -7636,25 +7543,21 @@ msgstr "Khordad"
 msgid "Kiribati"
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Kislev"
@@ -8689,25 +8592,21 @@ msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mehr"
@@ -8785,25 +8684,21 @@ msgstr "Nkomá"
 msgid "Messages"
 msgstr "Nkomá"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Messidor"
@@ -8982,25 +8877,21 @@ msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
 msgstr "Mor"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mordad"
@@ -9121,25 +9012,21 @@ msgstr ""
 msgid "Multiple marriages"
 msgstr "Mabála ebelé"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Muḥarram"
 msgstr "Muharram"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Muḥarram"
 msgstr "Muharram"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muḥarram"
 msgstr "Muharram"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Muḥarram"
@@ -9373,25 +9260,21 @@ msgstr "Nizer"
 msgid "Nigeria"
 msgstr "Nizeria"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Nissan"
 msgstr "Nissan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
 msgstr "Nissan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Nissan"
 msgstr "Nissan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Nissan"
@@ -9402,25 +9285,21 @@ msgstr "Nissan"
 msgid "Niue"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Nivose"
@@ -9961,25 +9840,21 @@ msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
 msgstr ""
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
@@ -10502,25 +10377,21 @@ msgstr ""
 msgid "Please try again."
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
@@ -10582,25 +10453,21 @@ msgstr ""
 msgid "Powered by webtrees™"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Prairial"
@@ -10780,49 +10647,41 @@ msgstr ""
 msgid "Rabbi"
 msgstr ""
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Rabi al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-thani"
 msgstr "Rabi al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Rabi al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-thani"
@@ -10846,25 +10705,21 @@ msgctxt "Pedigree"
 msgid "Rada"
 msgstr ""
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rajab"
@@ -10876,25 +10731,21 @@ msgstr "Rajab"
 msgid "Raleigh, North Carolina, United States"
 msgstr "Raleigh, North Carolina, Lisangá lya Amerika"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
@@ -11879,25 +11730,21 @@ msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
 msgstr ""
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
@@ -11936,49 +11783,41 @@ msgstr "Nkomá ya kokabolama"
 msgid "Shares"
 msgstr ""
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shaʿbān"
 msgstr "Sha’aban"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shaʿbān"
 msgstr "Sha’aban"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shaʿbān"
 msgstr "Sha’aban"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shaʿbān"
@@ -12017,25 +11856,21 @@ msgstr ""
 msgid "She was cremated"
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Shevat"
 msgstr "Shevat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
 msgstr "Shevat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Shevat"
 msgstr "Shevat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Shevat"
@@ -12464,25 +12299,21 @@ msgstr ""
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Sivan"
@@ -13069,25 +12900,21 @@ msgstr ""
 msgid "Tampico, Mexico"
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
@@ -13127,25 +12954,21 @@ msgstr ""
 msgid "Temple"
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tevet"
@@ -13783,25 +13606,21 @@ msgstr ""
 msgid "There was an error uploading your file."
 msgstr "Mbeba ezalákí na botómbisi bwa kásá-kásá na yɔ̌."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
@@ -14300,49 +14119,41 @@ msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tishrei"
 msgstr "Tishrei"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
 msgstr "Tishrei"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tishrei"
 msgstr "Tishrei"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
@@ -15046,25 +14857,21 @@ msgstr ""
 msgid "Vatican City"
 msgstr "Vaticani"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
@@ -15075,25 +14882,21 @@ msgstr "Vendémiaire"
 msgid "Venezuela"
 msgstr "Venezwela"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Ventose"
@@ -18140,25 +17943,21 @@ msgstr ""
 msgid "invert selection"
 msgstr "bóngolá bopɔni"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
 msgstr "mikɔlɔ mya kobakisa"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
 msgstr "mikɔlɔ mya kobakisa"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
 msgstr "mikɔlɔ mya kobakisa"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
@@ -19605,25 +19404,21 @@ msgstr[1] "mibú ±%s"
 msgid "Åland Islands"
 msgstr "Bisanga bya Aland"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ṣafar"
 msgstr "Safar"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ṣafar"
 msgstr "Safar"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ṣafar"
 msgstr "Safar"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ṣafar"
@@ -19671,1203 +19466,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid " per sex"
-#~ msgstr " na emoto"
-
-#~ msgid " per time period"
-#~ msgstr " na eténi ya ngonga"
-
-#, php-format
-#~ msgid "#%s"
-#~ msgstr "n°%s"
-
-#, php-format
-#~ msgid "%1$s %2$s has a %3$s link to %4$s."
-#~ msgstr "%1$s %2$s ezalí na ekangeli %3$s na %4$s."
-
-#, php-format
-#~ msgid "%1$s does not exist."
-#~ msgstr "%1$s ezalí tɛ́."
-
-#~ msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgstr[0] "moto %1$s atálisámí, káti ya motángo %2$s, útá milɔngɔ́ mya mabótá %3$s."
-#~ msgstr[1] "bato %1$s batálisámí, káti ya mitángo %2$s, útá milɔngɔ́ mya mabótá %3$s."
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "mokɔlɔ %s elekí"
-#~ msgstr[1] "mikɔlɔ %s milekí"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "ngonga %s elekí"
-#~ msgstr[1] "ngonga %s elekí"
-
-#~ msgid "%s individual is private."
-#~ msgid_plural "%s individuals are private."
-#~ msgstr[0] "moto %s azali komisálela mpɔ̂ na yě mɔ̌kɔ́."
-#~ msgstr[1] "bato %s bazali komisálela mpɔ̂ na bangó mɔ̌kɔ́."
-
-#, php-format
-#~ msgid "%s individual with events between %s and %s"
-#~ msgid_plural "%s individuals with events between %s and %s"
-#~ msgstr[0] "moto %s na milúlú katikáti ya %s na %s"
-#~ msgstr[1] "bato %s na milúlú katikáti ya %s na %s"
-
-#, php-format
-#~ msgid "%s individual with events in %s"
-#~ msgid_plural "%s individuals with events in %s"
-#~ msgstr[0] "moto %s na milúlú o káti ya %s"
-#~ msgstr[1] "bato %s na milúlú o káti ya %s"
-
-#, php-format
-#~ msgid "%s individual with events in %s between %s and %s"
-#~ msgid_plural "%s individuals with events in %s between %s and %s"
-#~ msgstr[0] "moto %s na milúlú katikáti ya %s na %s mpé %s"
-#~ msgstr[1] "bato %s na milúlú katikáti ya %s na %s mpé %s"
-
-#~ msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "%s ekangámí na káti ya esálela mokaboli eye. Okoki kofándisa webtrees tɛ́ kín'ó ekolamuka. Sɛ́ngá na mokambi wa esálela mokaboli na yɔ̌ alamusa yangó."
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "monúti %s elekí"
-#~ msgstr[1] "Minúti %s milekí"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "sánzá %s elekí"
-#~ msgstr[1] "basánzá %s elekí"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "segonde %s elekí"
-#~ msgstr[1] "basegonde %s elekí"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "mbúla %s eleki"
-#~ msgstr[1] "mbúla %s mileki"
-
-#, php-format
-#~ msgid "(aged less than %s)"
-#~ msgstr "(mbúla mokɛ́ kolúta %s)"
-
-#, php-format
-#~ msgid "(aged more than %s)"
-#~ msgstr "(mbúla mingi kolúta %s)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(na bomwǎna)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(na bomwǎna)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(akufí na kobótama)"
-
-#~ msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-#~ msgstr "<b>Nkomá ya motúya:</b> Mosálisi mwa bolekisi ekokí kosálisa yɔ̌ tɛ́ na bolongoli biténi bya bilɔ́kɔ bya bopanzi nsango. Osengélí kotíya mpé kolekisa tǒ koákisa na bokabwani bobɔngisi bwa elɔ́kɔ ya bopanzi nsango mpé bilɔ́kɔ bya yɔ̌ na nsima esúkeli ya bolekisi."
-
-#~ msgid "<p>Notice: By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-#~ msgstr "<p>Nkomá: Na bokokisi mpé botíndi etúno eye, ondímí:<ul><li>kobátela maye matáli bato na bomɔi o molɔngɔ́ na site na biso;</li><li>mpé na ntáká ya nkomá ya nsé, mpɔ̂ na kolimbola náni azalí na mokangano na yɔ̌, tǒ mpɔ̂ na kopɛ́sɛ bísó nsango ya moto esengéli kozala o molɔngɔ́ na website na bísó.</li></ul></div>"
-
-#, php-format
-#~ msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-#~ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-
-#~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-#~ msgstr "Esálela mokaboli ya sandúku ya bipɛ́sɛli ekokí kobátela ba sandúku ya bipɛ́sɛli ebelé ya kokabwana. Osengélí kopɔnɔ sandúku ya bipɛ́sɛli ezalí (eye ekelamí na mokambi mwa esálela mokaboli wa yɔ̌) tǒ kelá mɔ̌kɔ́ ya sika (sɔ́ki kɔ́nti na yɔ̌ ya mosáleli ya sandúku ya bipɛ́sɛli ezalí na ndingisa ya kokoka)."
-
-#, php-format
-#~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-#~ msgstr "Loloba lwa bolekisi lokelamí mpé nkandá etíndámí epái ya %s. Okokí kobóngola loloba lwa bolekisi loye na nsima boyíngeli bwa yɔ̌."
-
-#~ msgid "A new password has been requested for your username."
-#~ msgstr "Loloba lwa bolekisi la sika losɛ́ngámí mpɔ̂ na nkómbó ya yɔ̌ ya mosáleli."
-
-#~ msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-#~ msgstr "Yenda ya mopanzí ekolakisa molɔngɔ́ o afabɛ́ ya mabótá mánsɔ na nzeté ya libótá."
-
-#~ msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-#~ msgstr "Yenda ya mopanzí ekolakisa molɔngɔ́ o afabɛ́ ya bato bánsɔ na nzeté ya libótá."
-
-#~ msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-#~ msgstr "Watermark ezalí mankomá maye mabakisámí káti na elílí, mpɔ̂ na kolɛmbisa basúsu na boákisi bwango na bozangi ndingisa."
-
-#~ msgid "A.M."
-#~ msgstr "Ntɔ́ngɔ́"
-
-#~ msgid "Add a brother or sister"
-#~ msgstr "Kobakisa ndeko mobáli tǒ ndeko mwǎsí"
-
-#~ msgid "Add a child to this family"
-#~ msgstr "Kobakisa mwǎna na libótá liye"
-
-#~ msgid "Add a husband to this family"
-#~ msgstr "Kobakisa molóngani mobáli o káti ya libótá liye"
-
-#~ msgid "Add a restriction"
-#~ msgstr "Bakísá bopekisi"
-
-#~ msgid "Add a shared note"
-#~ msgstr "Kobakisa nkomá ya kokabolama"
-
-#~ msgid "Add a son or daughter"
-#~ msgstr "Kobakisa mwǎna mobáli tǒ mwǎna mwǎsí"
-
-#~ msgid "Add a wife to this family"
-#~ msgstr "Kobakisa mwǎsí na libótá liye"
-
-#~ msgid "Add an associate"
-#~ msgstr "Kobakisa mosangani"
-
-#~ msgid "Add another individual to the chart"
-#~ msgstr "Bakísá moto mosúsu káti ya liyémi"
-
-#~ msgid "Add links"
-#~ msgstr "Bakísá bikangeli"
-
-#~ msgid "Add missing married names"
-#~ msgstr "Bakísá nkómbó ya libála lizángí"
-
-#~ msgid "Add the GEDCOM media path to filenames"
-#~ msgstr "Bakisá nzelá ya elɔ́kɔ ya bopanzi nsango GEDCOM na nkómbó ya kásá-kásá"
-
-#~ msgid "Add to favorites"
-#~ msgstr "Bakísá káti ya bopɔni"
-
-#~ msgid "Add watermarks to thumbnails"
-#~ msgstr "Kobakisa bilembo na bilili"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Abɔ́kɔlɔmí na babóti bábalé"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Abɔ́kɔlɔmí na babóti bábalé"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Abɔ́kɔlɔmí na tatá"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Abɔ́kɔlɔmí na tatá"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "Abɔ́kɔlɔmí na mamá"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "Abɔ́kɔlɔmí na mamá"
-
-#~ msgid "Advanced fact preferences"
-#~ msgstr "Malúli ma bikelá ya míngi koleka"
-
-#~ msgid "Advanced name facts"
-#~ msgstr "Bikelá bya nkómbó ya míngi koleka"
-
-#~ msgid "Advanced place name facts"
-#~ msgstr "Bikelá bya nkómbó ya bisiká ya míngi koleka"
-
-#~ msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-#~ msgstr "Na nsima ya bokɔ́ti bwa yɔ̌, pɔná ekangeli \"kɔ́nti ya ngáí\" na nsé ya mobímbí \"Nkásá ya ngáí\" mpé kokísá mikala mya ndoba ya bolekisi mpɔ̂ na kobóngola loloba lwa bolekisi lwa yɔ̌."
-
-#~ msgid "Age related to death year"
-#~ msgstr "Mbúla na ntángo ya mobú mwa liwâ"
-
-#~ msgid "All changes in PhpGedView must be accepted"
-#~ msgstr "Mabóngoli mánsɔ na káti ya PhpGedView esengélí endimama"
-
-#~ msgid "All family facts"
-#~ msgstr "BIkelá bínsɔ bya libótá"
-
-#~ msgid "All files have read and write permission."
-#~ msgstr "bakása-kásá ínsɔ ezalí na ndingisa mpɔ̂ na kotánga mpé kokoma."
-
-#~ msgid "All individual facts"
-#~ msgstr "BIkelá bínsɔ bya moto"
-
-#~ msgid "All repository facts"
-#~ msgstr "Bikelá bínsɔ bya ebómbelo"
-
-#~ msgid "All source facts"
-#~ msgstr "Bikelá bínsɔ bya ebandela"
-
-#~ msgid "Allow users to select their own theme"
-#~ msgstr "Kopesa basáleli ndingisa ya kopɔnɔ mobímbí mwa bangó mɔ̌kɔ́"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Also known as"
-#~ msgstr "Ayébaní mpé lokóla"
-
-#~ msgctxt "MALE"
-#~ msgid "Also known as"
-#~ msgstr "Ayébaní mpé lokóla"
-
-#~ msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-#~ msgstr "Mosangani ezalí moto mosúsu óyo azalakí na ekelá tǒ molúlú moye, lokóla motátoli tǒ sángó."
-
-#~ msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-#~ msgstr "Mosangani ezalí moto mosúsu óyo azalí na mokangano na moto óyo, lokóla moninga tǒ mosáli."
-
-#~ msgid "An edit menu for individuals, families, sources, etc."
-#~ msgstr "Mobímbí mwa bobóngoli bato, mabótá, bibandela, etc."
-
-#~ msgid "An error occurred when unzipping the file."
-#~ msgstr "Mbéba ekomí na ntángo ya bofungoli kásá-kásá."
-
-#, fuzzy
-#~ msgid "Apply automatic corrections to your genealogy data."
-#~ msgstr "Kotíya mabóngoli na bipɛ́sɛli bya libótá na yɔ̌."
-
-#~ msgid "Approval of account at %s"
-#~ msgstr "Bondimami bwa kɔ́nti na %s"
-
-#~ msgid "Are you sure you want to remove links to this media object?"
-#~ msgstr "Ya sɔ̂lɔ́ olingí kolongola ekangeli na elɔ́kɔ ya bopanzi nsango eye?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
-
-#~ msgid "Associates"
-#~ msgstr "Basangani"
-
-#~ msgid "Body"
-#~ msgstr "Nzóto"
-
-#~ msgid "Booklet"
-#~ msgstr "Búku ikɛ́"
-
-#~ msgid "Brit milah of a brother"
-#~ msgstr "Brit milah ya ndeko mobáli"
-
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Brit milah ya nkɔ́kɔ mwǎna mobáli"
-
-#~ msgctxt "daughter’s son"
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Brit milah ya nkɔ́kɔ mwǎna mobáli"
-
-#~ msgctxt "son’s son"
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Brit milah ya nkɔ́kɔ mwǎna mobáli"
-
-#~ msgid "Brit milah of a half-brother"
-#~ msgstr "Brit milah ya ndeko-ikɛ́ mobáli"
-
-#~ msgid "Brit milah of a son"
-#~ msgstr "Brit milah ya mwǎna mobáli"
-
-#~ msgid "Burial of a maternal grandparent"
-#~ msgstr "Likundí lya nkɔ́kɔ na bomamá"
-
-#~ msgid "Burial of a paternal grandparent"
-#~ msgstr "Likundí lya nkɔ́kɔ na botatá"
-
-#~ msgid "Cemeteries"
-#~ msgstr "Nkunda"
-
-#~ msgid "Change flag"
-#~ msgstr "Kobóngola bɛndɛ́lɛ"
-
-#~ msgid "Check file permissions…"
-#~ msgstr "Kotála ndingisa ya kásá-kásá…"
-
-#~ msgid "Choose: "
-#~ msgstr "Kopɔnɔ: "
-
-#~ msgid "Cleared but not yet completed"
-#~ msgstr "Ekɔ́mbwamí kasi esilí naíno tɛ́"
-
-#~ msgid "Compress the GEDCOM file"
-#~ msgstr "Kominiola kásá-kásá ya GEDCOM"
-
-#~ msgid "Concatenation"
-#~ msgstr "Bokangisi"
-
-#~ msgid "Confirm password"
-#~ msgstr "Kondima loloba lwa bolekisi"
-
-#~ msgid "Convert from UTF-8 to ISO-8859-1"
-#~ msgstr "Kobóngola útá UTF-8 kín'o ISO-8859-1"
-
-#~ msgid "Copy these files to the folder %s, replacing any that have the same name."
-#~ msgstr "Koákisa bakásá-kásá iye na etúka %s, kokitanisa na eye ezalí na nkómbó mɔ̌kɔ́."
-
-#~ msgid "Count"
-#~ msgstr "Motángo"
-
-#~ msgid "Counts "
-#~ msgstr "Mitángo "
-
-#~ msgid "Database and table names"
-#~ msgstr "Sandúku ya bipɛ́sɛli mpé nkómbó ya bitánda"
-
-#~ msgid "Decade of birth"
-#~ msgstr "Mbótama o káti ya mibú zómi"
-
-#~ msgid "Decade of death"
-#~ msgstr "Liwâ o káti ya mibú zómi"
-
-#~ msgid "Decade of marriage"
-#~ msgstr "Libála o káti ya mibú zómi"
-
-#~ msgid "Delete all existing geographic data before importing the file."
-#~ msgstr "Kozíma epɛ́sɛli ya mambí ma mabelé nyɔ́nsɔ ezalí libosó ya boyíngisi kásá-kásá."
-
-#~ msgid "Delete temporary files…"
-#~ msgstr "Kozíma kásá-kásá ya sékô tɛ̂…"
-
-#, fuzzy
-#~ msgid "Description unavailable"
-#~ msgstr "Bokomoli ezalí tɛ́"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dhu al-Hijjah"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dhu al-Hijjah"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dhu al-Hijjah"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dhu al-Hijjah"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dhu al-Qi’dah"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dhu al-Qi’dah"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dhu al-Qi’dah"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dhu al-Qi’dah"
-
-#~ msgid "Do not change to keep original filename."
-#~ msgstr "Kobóngola tɛ́ mpɔ̂ na kobátela nkómbó ya kásá-kásá ya kala."
-
-#~ msgid "Earliest birth year"
-#~ msgstr "Mobú mwa mbótama ya libósó"
-
-#~ msgid "Earliest death year"
-#~ msgstr "Mobú mwa liwâ lya yambo"
-
-#~ msgid "Edit the details"
-#~ msgstr "Kobɔngisa bikákoli"
-
-#~ msgid "Edit the media object"
-#~ msgstr "Kobɔngisa elɔ́kɔ ya bopanzi nsango"
-
-#~ msgid "Edit the note"
-#~ msgstr "Kobɔngisa nkomá"
-
-#~ msgid "Edit the repository"
-#~ msgstr "Kobɔngisa ebómbelo"
-
-#~ msgid "Edit the source"
-#~ msgstr "Kobɔngisa ebandela"
-
-#~ msgid "Enter an individual, family, or source ID"
-#~ msgstr "Kotíya moto, libótá, tǒ ID ya ebandela"
-
-#~ msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-#~ msgstr "Kokɔ́tisa tǒ koluka ID ya moto, libótá tǒ ebandela óyo ekokangisama na elɔ́kɔ ya bopanzi nsango eye."
-
-#~ msgid "Facts for repository records"
-#~ msgstr "Bikelá mpɔ̂ na bokɔ́tisi bwa ebómbelo"
-
-#~ msgid "Facts for source records"
-#~ msgstr "Bikelá mpɔ̂ na bokɔ́tisi bwa ebandela"
-
-#~ msgid "Family group information"
-#~ msgstr "Nsango ya lingómbá lya libótá"
-
-#~ msgid "Family list"
-#~ msgstr "Molɔ́ngɔ́ mwa Libótá"
-
-#~ msgid "Find a fact or event"
-#~ msgstr "Koluka ekelá tǒ molúlú"
-
-#~ msgid "Find an individual"
-#~ msgstr "Koluka moto"
-
-#~ msgid "From"
-#~ msgstr "útá"
-
-#~ msgid "Gender"
-#~ msgstr "Emoto"
-
-#~ msgid "Get an API key from Google."
-#~ msgstr "Kozwa fungóla ya API epái na Google."
-
-#~ msgid "Grandparents"
-#~ msgstr "Bankɔ́kɔ"
-
-#~ msgid "Historical facts"
-#~ msgstr "Bikelá bya kala"
-
-#~ msgid "Import all places from a family tree"
-#~ msgstr "Koyéisa bisíká bínsɔ útá nzeté ya libótá"
-
-#~ msgid "Individual distribution"
-#~ msgstr "Bokaboli bwa bato"
-
-#~ msgid "Individual list"
-#~ msgstr "Molɔ́ngɔ́ mwa moto"
-
-#, php-format
-#~ msgid "Individuals with surname %s"
-#~ msgstr "Bato na nkómbó ya libótá ya %s"
-
-#~ msgid "Installation folder"
-#~ msgstr "Etúka ya bofándisi"
-
-#~ msgid "Invalid GEDCOM format"
-#~ msgstr "Bomɔ́nɔni bwa GEDCOM mabé"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumada al-awwal"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumada al-awwal"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumada al-awwal"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumada al-awwal"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumada al-thani"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumada al-thani"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumada al-thani"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumada al-thani"
-
-#~ msgid "Keep"
-#~ msgstr "Kobátela"
-
-#~ msgid "Keep link in list"
-#~ msgstr "Kotíka ekangeli o káti ya molɔ́ngɔ́"
-
-#~ msgid "Latest birth year"
-#~ msgstr "Mobú mwa mbótama ya nsúka"
-
-#~ msgid "Latest death year"
-#~ msgstr "Mobú mwa liwâ lya nsúka"
-
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Ya mobéko"
-
-#~ msgid "Link to an existing media object"
-#~ msgstr "Kokangisa na elɔ́kɔ ya bopanzi nsango eyébání"
-
-#~ msgid "Linked database ID"
-#~ msgstr "ID ya sandúku ya bipɛ́sɛli ekangisámí"
-
-#~ msgid "Location not removed: this location contains sub-locations"
-#~ msgstr "Esíká elongwé tɛ́: Esíká eye ezalí na bisíká bikɛ́ na káti"
-
-#~ msgid "Lost password request"
-#~ msgstr "Bosɛ́ngi bwa loloba lwa bolekisi ebúngí"
-
-#~ msgid "Manage the links"
-#~ msgstr "Koyángela bikangeli"
-
-#~ msgid "Marriage status"
-#~ msgstr "Ezalela ya libála"
-
-#~ msgid "Marriage type unknown"
-#~ msgstr "Ndakisa ya libála eyébání tɛ́"
-
-#~ msgid "Married surname"
-#~ msgstr "Nkómbó ya libála"
-
-#~ msgid "Maximum descendancy generations"
-#~ msgstr "Molɔngɔ́ mwa mabótá ebelé"
-
-#, php-format
-#~ msgid "Media filenames will be prefixed by %s."
-#~ msgstr "Nkómbó ya bakásá-kásá ya bopanzi nsango ekobakisama na libandi %s."
-
-#~ msgid "Medical condition"
-#~ msgstr "Mobéko mwa bosálisi bokɔnɔ"
-
-#~ msgid "Memory limit"
-#~ msgstr "Ndelo ya etando"
-
-#~ msgid "Midnight"
-#~ msgstr "Bozékétáné"
-
-#~ msgid "More news articles"
-#~ msgstr "Bikákoli bya nsango misúsu"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharram"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharram"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharram"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharram"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Never married"
-#~ msgstr "Abálá tɛ́"
-
-#~ msgctxt "MALE"
-#~ msgid "Never married"
-#~ msgstr "Abálá tɛ́"
-
-#~ msgid "No ancestors in the database."
-#~ msgstr "Bankɔ́kɔ bazalí káti na sandúku ya bipɛ́sɛli tɛ́."
-
-#~ msgid "No places found"
-#~ msgstr "Bisíká bizwaní tɛ́"
-
-#~ msgid "No places have been found."
-#~ msgstr "Bisíká bizwaní tɛ́."
-
-#~ msgid "Noon"
-#~ msgstr "Nzánga"
-
-#~ msgid "Oldest at bottom"
-#~ msgstr "Ya kala na nsúka"
-
-#~ msgid "Oldest at top"
-#~ msgstr "Ya kala na likoló"
-
-#~ msgid "Others"
-#~ msgstr "Misúsu"
-
-#~ msgid "Own charts"
-#~ msgstr "Mayémi ma moto"
-
-#~ msgid "P.M."
-#~ msgstr "Nsima nzánga"
-
-#~ msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "Ebéndisi PHP “%1$s” ekúfí. Na bozángi bwangó, bisála bilandí bikosála tɛ́: %2$s. Bolímbisi sɛ́nga na mokambi mwa esálela mokaboli alamusa yangó."
-
-#~ msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "Ebéndisi PHP “%s” ekúfí. Okokí kofándisa webtrees tɛ́ kín'o yangó ekolamusama. Bolímbisi sɛ́nga na mokambi mwa esálela mokaboli alamusa yangó."
-
-#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "Bizalela bya PHP “%1$s” ekúfí. Na bozángi byangó, bisála bilandí bikosála tɛ́: %2$s. Bolímbisi sɛ́nga na mokambi mwa esálela mokaboli alamusa yangó."
-
-#~ msgid "PHP time limit"
-#~ msgstr "Ndelo ya ntángo ya PHP"
-
-#~ msgid "Passwords must contain at least 8 characters."
-#~ msgstr "Ndoba ya bolekisi isengelí kozala na minkomá mokɛ́ kolela 8."
-
-#~ msgid "Pedigree chart"
-#~ msgstr "Liyémi lya bankóló"
-
-#~ msgid "Pedigree of %s"
-#~ msgstr "Bankóló ba %s"
-
-#~ msgid "PhpGedView might be installed in one of these folders:"
-#~ msgstr "PhpGedView ekokoka kofandisama o káti ya mɔ̌kɔ́ ya bitúka biye:"
-
-#~ msgid "PhpGedView must use the same database as webtrees."
-#~ msgstr "Esengélí PhpGedView esálela sandúku ya bipɛ́sɛli mɔ̌kɔ́ na webtrees."
-
-#~ msgid "Places in %s"
-#~ msgstr "Bisíká o káti ya %s"
-
-#~ msgid "Please enter a given name, surname, or place in addition to the year"
-#~ msgstr "Bolímbisi tíyá nkómbó-ikɛ́, nkómbó ya libótá tǒ esíká na bobakisi na mobú"
-
-#~ msgid "Quick repository facts"
-#~ msgstr "Bikelá bya ebombelo ya mbángo"
-
-#~ msgid "Quick source facts"
-#~ msgstr "Bikelá bya ebandela ya mbángo"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi al-awwal"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi al-awwal"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi al-awwal"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi al-awwal"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi al-thani"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi al-thani"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi al-thani"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi al-thani"
-
-#~ msgid "Records are not the same type. Cannot merge records that are not the same type."
-#~ msgstr "bokɔ́tisi bozalí loléngé lyɔ̌kɔ́ tɛ́. Okokí kosangisa bokɔ́tisi bozalí loléngé lyɔ̌kɔ́ tɛ́."
-
-#~ msgid "Remove link from list"
-#~ msgstr "Kolongola ekangeli na molɔ́ngɔ́"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Safar"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Ṣafar"
-#~ msgstr "Safar"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Safar"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Safar"
-
-#~ msgid "Search globally"
-#~ msgstr "Boluki bwa mobimba"
-
-#~ msgid "Search locally"
-#~ msgstr "Boluki bwa káti"
-
-#~ msgid "Select events"
-#~ msgstr "Kopɔnɔ milúlú"
-
-#~ msgid "Select the desired count interval"
-#~ msgstr "Kopɔnɔ káti ya mitángo míbalé"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sha’aban"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sha’aban"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sha’aban"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sha’aban"
-
-#~ msgid "Show all spouses and ancestors"
-#~ msgstr "Kolakisa balóngani bánsɔ na bankɔ́kɔ"
-
-#~ msgid "Show counts before or after name"
-#~ msgstr "Kolakisa mitángo na nsima tǒ libosó ya nkómbó"
-
-#~ msgid "Show cousins"
-#~ msgstr "Kolakisa bǎna nɔ́kɔ́"
-
-#~ msgid "Show lifespans"
-#~ msgstr "Kolakisa ewúmeli ya bomɔi"
-
-#~ msgid "Show only births, deaths, and marriages"
-#~ msgstr "Kolakisa sé mbótama, bowéí mpé mabála"
-
-#~ msgid "Show places in hierarchy"
-#~ msgstr "Kolakisa bisíká na molɔ́ngɔ́"
-
-#~ msgid "Show related individuals/families"
-#~ msgstr "Kolakisa bato/mabótá na mikangano"
-
-#~ msgid "Show the location of places and events using the Google™ maps mapping service."
-#~ msgstr "Kolakisa bisíká mpé milúlú na bosáleli Google™ maps mapping service."
-
-#~ msgid "Sign-in URL"
-#~ msgstr "URL ya koyíngela"
-
-#~ msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-#~ msgstr "Nkómbó ya bisiká mɔ̌kɔ́ ikokí kokomama na mabandi mpé bisúkya. Na ndakisa “Orange” mpɔ̂ na “Orange County”. Sɔ́kí nzeté ya libótá ezalí na nkómbó ya bisiká ya mibimba, kasi sandúku ya bipɛ́sɛli bya mambí ma mabelé ezalí na nkómbó ya bisiká ya mikúsé, osengélí bôngó kopɔnɔ molɔngɔ́ mwa mabandi mpé bisúkya ekolongolama. Esengélí mitúya ebelé ekabwama na mpútu-nkoma. Na ndakisa “County;County of” tǒ “Township;Twp;Twp.”."
-
-#~ msgid "Spouse census date"
-#~ msgstr "Dáti ya etángo ya molóngani"
-
-#~ msgid "Spouse census place"
-#~ msgstr "Esíká ya etángo ya molóngani"
-
-#~ msgid "Spouse note"
-#~ msgstr "Nkomá ya molóngani"
-
-#~ msgid "Start at parents"
-#~ msgstr "Kobanda na babóti"
-
-#~ msgid "The database reported the following error message:"
-#~ msgstr "Sandúku ya bipɛ́sɛli ezongisí nkomá ya mbéba elandí:"
-
-#~ msgid "The file %s could not be updated."
-#~ msgstr "Kásá-kásá ya sika %s ekokí kotíyama tɛ́."
-
-#~ msgid "The file %s has been created."
-#~ msgstr "Kásá-kásá %s ekelemákí."
-
-#, php-format
-#~ msgid "The folder %s does not exist, and it could not be created."
-#~ msgstr "Etúka %s ezalí tɛ́, mpé ekoki kokelama tɛ́."
-
-#~ msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-#~ msgstr "Kásá-kásá ya bopanzi nsango ozalí kotómbisa ekokí, mpé ekosengéla kobêngama na nkómbó na esálela mokaboli ya kokɛsɛ́nɛ na óyo ya esálela ya ndáko ya yɔ̌. Óyo ezalí mpɔ̂ mbala míngi nkómbó ya kásá-kásá na esálela ya ndáko ezalí na ntína mpɔ̂ na yɔ̌ kasi na ntína mokɛ́ koleka mpɔ̂ na batáli ya website eye. Okanisa mpé likokí mpɔ̂ na yɔ̌ tǒ moto mosúsu ya komeka kotómbisa kásá-kásá ikɛsɛ́ní ibêngamí na nkómbó “granny.jpg“.<br><br>Na mokala moye, okotíya nkómbó ya sika ya kásá-kásá ozalí kotómbisa. Nkómbó otíyé ekosálelama mpé mpɔ̂ na nkómbó ya elílí, eye ekokí kotómbisama na bokabwani tǒ komikelama yangó mɔ̌kɔ́. Ozali na ntína ya kotíya ebéndisi (jpg, gif, pdf, doc, etc.) ya kásá-kásá tɛ́. <br><br>Tíká mpámba mokala moye mpɔ̂ na kobómba nkómbó ya yambo ya kásá-kásá eye otómbisákí útá esálela ya ndáko ya yɔ̌."
-
-#~ msgid "The new files are currently located in the folder %s."
-#~ msgstr "Bakásá-kásá ya sika ezalí sik'áwa na etúka %s."
-
-#~ msgid "The passwords do not match."
-#~ msgstr "Ndoba ya bolekisi ikokání tɛ́."
-
-#~ msgid "The record %1$s has been renamed to %2$s."
-#~ msgstr "Nkómbó ya bokɔ́tisi %1$s ebóngólámí na %2$s."
-
-#~ msgid "The record has been copied to the clipboard."
-#~ msgstr "Bokɔ́tisi bobómbami káti na clipboard."
-
-#~ msgid "This database is only running MySQL version %s. You cannot install webtrees here."
-#~ msgstr "Sandúku ya bipɛ́sɛli eye ekotámbola sé na MySQL loléngé %s. Okokí kofándisa webtrees áwa tɛ́."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-#~ msgstr "Óyo ezalí molɔngɔ́ mwa bwéta ya bikelá ya GEDCOM ekabolamí na bakóma moye mokolakisama na nkómbó kobakisa/kobɔngisa ya etúno . Sɔ́kí ozalí kosálela afabɛ́ non-Latin lokóla Hebrew, Greek, Cyrillic tǒ Arabic, osengélí kobakisa bwéta lokóla _HEB, ROMN, FONE, etc. mpɔ̂ na kopésa yɔ̌ ndingisa ya kobómba nkómbó na afabɛ́ ikɛsɛ́ní."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-#~ msgstr "Óyo ezalí molɔngɔ́ mwa bwéta ya bikelá ya GEDCOM ekabolamí na bakóma moye mokolakisama na bobakisi bwa libótá lya sika. Na ndakisa sɔ́kí LIBA ezalí na molɔngɔ́, kasi mikala mya dáti mpé esiká ya libála mikolakisama na etúno."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-#~ msgstr "Óyo ezalí molɔngɔ́ mwa bwéta ya bikelá ya GEDCOM ekabolamí na bakóma moye mokolakisama na bobakisi bwa libótá lya sika. Na ndakisa sɔ́kí MBOT ezalí na molɔngɔ́, kasi mikala mya dáti mpé esiká ya mbótama mikolakisama na etúno."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-#~ msgstr "Óyo ezalí molɔngɔ́ mwa bwéta ya bikelá ya GEDCOM ekabolamí na bakóma moye mokolakisama na bobakisi tǒ bobɔngisi nkómbó ya bisiká . Sɔ́kí ozalí kosálela afabɛ́ non-Latin lokóla Hebrew, Greek, Cyrillic tǒ Arabic, osengélí kobakisa bwéta lokóla _HEB, ROMN, FONE, etc. mpɔ̂ na kopésa yɔ̌ ndingisa ya kobómba nkómbó ya bisiká na afabɛ́ ikɛsɛ́ní."
-
-#~ msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
-#~ msgstr "Óyo ezalí ekákoli ya bokúli bwa bato <abbr title=\"Eklézya ya Yésu Kristu ya baSántu ya Mikɔlɔ mya Nsúka\">SMN</abbr>. “&nbsp;B&nbsp;” batisimo. “&nbsp;L&nbsp;” likabo. “&nbsp;B&nbsp;” bolóngani. “&nbsp;B&nbsp;” bondimi mwǎna na babóti."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-#~ msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa na mabótá. Okokí kobóngola molɔngɔ́ moye na bolongoli tǒ bobakisi nkómbó ya bikelá, atâ ya moto-méi, sɔ́kí esengélí. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá mɔ̌kɔ́káka bya libótá\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-#~ msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa na bato. Okokí kobóngola molɔngɔ́ moye na bolongoli tǒ bobakisi nkómbó ya bikelá, atâ ya moto-méi, sɔ́kí esengélí. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá mɔ̌kɔ́káka bya moto\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-#~ msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa na bibómbelo. Okokí kobóngola molɔngɔ́ moye na bolongoli tǒ bobakisi nkómbó ya bikelá, atâ ya moto-méi, sɔ́kí esengélí. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá mɔ̌kɔ́káka bya ebómbelo\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-#~ msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa na bibandela. Okokí kobóngola molɔngɔ́ moye na bolongoli tǒ bobakisi nkómbó ya bikelá, atâ ya moto-méi, sɔ́kí esengélí. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá mɔ̌kɔ́káka bya ebandela\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-#~ msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa sé mɔ̌kɔ́ na mabótá. Na ndakisa sɔ́kí LIBA ezalí na molɔngɔ́, basáleli bakokoka kobakisa bokɔ́tisi LIBA koleka mɔ̌kɔ́ tɛ́ na libótá. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá bínsɔ bya libótá\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-#~ msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa sé mɔ̌kɔ́ na bato. Na ndakisa sɔ́kí MBOT ezalí na molɔngɔ́, basáleli bakokoka kobakisa bokɔ́tisi MBOT koleka mɔ̌kɔ́ tɛ́ na moto. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá bínsɔ bya moto\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-#~ msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa sé mɔ̌kɔ́ na bibómbelo. Na ndakisa sɔ́kí NKOM ezalí na molɔngɔ́, basáleli bakokoka kobakisa bokɔ́tisi NKOM koleka mɔ̌kɔ́ tɛ́ na ebómbelo. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá bínsɔ bya ebómbelo\"."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-#~ msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa sé mɔ̌kɔ́ na bibandela. Na ndakisa sɔ́kí TITL ezalí na molɔngɔ́, basáleli bakokoka kobakisa bokɔ́tisi TITL koleka mɔ̌kɔ́ tɛ́ na ebandela. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá bínsɔ bya edandela\"."
-
-#~ msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
-#~ msgstr "Óyo ezalí bonɛ́nɛ (na pixels) boye esálisela ekosálela ntángo ya bokeli bilílí. Motúya mwa yambo ezalí 100."
-
-#~ msgid "This may be a mistake in your data."
-#~ msgstr "Oyo ekokí kozala libúngá na káti ya epɛ́sɛli na yɔ̌."
-
-#~ msgid "This may cause a problem for webtrees."
-#~ msgstr "Oyo ekokí kosála likambo na webtrees."
-
-#~ msgid "This media file does not exist."
-#~ msgstr "Kásakása ya bopanzi nsango eye ezalí tɛ́."
-
-#~ msgid "This media file exists, but cannot be accessed."
-#~ msgstr "Kásakása ya bopanzi nsango eye ezalí, kasi ekokí kozwama tɛ́."
-
-#~ msgid "This media object is not linked to any other record."
-#~ msgstr "Elɔ́kɔ ya bopanzi nsango eye ekangisámí na bokɔ́tisi mosúsu tɛ́."
-
-#~ msgid "This type of link is not allowed here."
-#~ msgstr "Loléngé la ekangeli eye endimámí áwa tɛ́."
-
-#~ msgid "To"
-#~ msgstr "Kín'ó"
-
-#, php-format
-#~ msgid "Total families: %s"
-#~ msgstr "Mabótá mánsɔ: %s"
-
-#, php-format
-#~ msgid "Total individuals: %s"
-#~ msgstr "Bato bánsɔ: %s"
-
-#~ msgid "Total number of users"
-#~ msgstr "Mitángo mínsɔ mya basáleli"
-
-#~ msgid "Type of place markers in the place hierarchy"
-#~ msgstr "Loléngé la bilakisa bya esiká na káti ya molɔngɔ́ mwa bisiká"
-
-#~ msgid "Types of error"
-#~ msgstr "Loléngé la mbéba"
-
-#~ msgid "UTC"
-#~ msgstr "UTC"
-
-#~ msgid "Unique family facts"
-#~ msgstr "Bikelá sé mɔ̌kɔ́ bya libótá"
-
-#~ msgid "Unique individual facts"
-#~ msgstr "Bikelá sé mɔ̌kɔ́ bya moto"
-
-#~ msgid "Unique repository facts"
-#~ msgstr "Bikelá sé mɔ̌kɔ́ bya ebombelo"
-
-#~ msgid "Unique source facts"
-#~ msgstr "Ebandela sé mɔ̌kɔ́ ya bikelá"
-
-#~ msgid "Unlink the media object"
-#~ msgstr "Kolongola ekangeli ya elɔ́kɔ ya bopanzi nsango"
-
-#~ msgid "Update all the place names in a family tree"
-#~ msgstr "Kotíya bisíká bínsɔ bya sika na káti ya nzeté ya libótá"
-
-#~ msgid "Upload geographic data"
-#~ msgstr "Kotómba epɛ́sɛli ya mambí ma mabelé"
-
-#~ msgid "Use Google™ maps for the place hierarchy"
-#~ msgstr "Kosálela Google™ maps mpɔ̂ na molɔngɔ́ nwa bisíká"
-
-#~ msgid "Use PHP mail to send messages"
-#~ msgstr "kosálela PHP mail mpɔ̂ na kotínda mikandá"
-
-#~ msgid "Use full source citations"
-#~ msgstr "Kosálela ebandela ya masapo mobimba"
-
-#~ msgid "Use this image for charts and on the individual’s page."
-#~ msgstr "Salelá elílí eye mpɔ̂ na mayemi mpé na lonkása lwa moto."
-
-#~ msgid "Users who are signed in"
-#~ msgstr "Basáleli bamiyíngelí"
-
-#~ msgid "View"
-#~ msgstr "Komɔ́nɔ"
-
-#~ msgid "View all records found in this place"
-#~ msgstr "Komɔ́nɔ bokɔ́tisi bɔ́nsɔ ekútámí na esíká eye"
-
-#~ msgid "View the details"
-#~ msgstr "Komɔ́nɔ makákoli"
-
-#~ msgid "View the notes"
-#~ msgstr "Komɔ́nɔ nkomá"
-
-#~ msgid "View this individual"
-#~ msgstr "Komɔ́nɔ moto óyo"
-
-#~ msgid "View this source"
-#~ msgstr "Komɔ́nɔ ebandela eye"
-
-#~ msgid "Where is your PhpGedView installation?"
-#~ msgstr "Bofándisi bwa PhpGedView ya yɔ̌ ezlí wápi?"
-
-#~ msgid "Whole words only"
-#~ msgstr "Ndoba mibimba káka"
-
-#~ msgid "Wife’s maiden surname becomes new given name"
-#~ msgstr "Nkómbó ya bonzéngá ya mwǎsí ekomí nkómbó-ikɛ́ ya sika"
-
-#~ msgid "Wife’s surname replaced by husband’s surname"
-#~ msgstr "Nkómbó ya mwǎsí ekitinyámí na nkómbó ya mobáli"
-
-#~ msgid "XREF prefixes"
-#~ msgstr "mabandi XREF"
-
-#~ msgid "You can choose the prefix that will be used whenever new XREFs are created."
-#~ msgstr "Okokí kopɔnɔ libandi liye likosálelama na ntángo XREF ya sika ekelamí."
-
-#~ msgid "You entered the same IDs. You cannot merge the same records."
-#~ msgstr "Okɔ́tisí ba ID ya ndenge yɔ̌kɔ́. Okokí kosangisa bokɔ́tisi ya loléngé lyɔ̌kɔ́ tɛ́."
-
-#~ msgid "You may enter a URL, beginning with “http://”."
-#~ msgstr "Okokí kotíya URL ebandí na “http://”."
-
-#~ msgid "You must change this before you can continue."
-#~ msgstr "Esengelí obóngola óyo libosó ya kolandela."
-
-#~ msgid "You must enter a name"
-#~ msgstr "Esengeli otíya nkómbó"
-
-#~ msgid "You need to sign in again, using your PhpGedView username and password."
-#~ msgstr "Osengéli koyíngela lisúsu, na bosáleli nkómbó ya mosáleli mpé loloba lwa bolekisi ya PhpGedView."
-
-#~ msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
-#~ msgstr "Osengélí kokɔ́tisa sé URL ya bokangisi sɔ́kí olingí kokɛndɛ na website tǒ na esíká ekɛsɛ́ní ntángo basáleli ba yɔ̌ bazalí koyíngela. Óyo ezalí na ntína míngi sɔ́kí osengélí koleka útá http kín’o https ntángo basáleli ba yɔ̌ bazalí koyíngela. Tiyá URL mobimba tíí <i>login.php</i>. Na ndakisa, https://www.yourserver.com/webtrees/login.php."
-
-#~ msgid "Zip file(s)"
-#~ msgstr "Bakásá-kásá ya Zip"
-
-#~ msgid "a.m."
-#~ msgstr "a.m."
-
-#~ msgctxt "FEMALE"
-#~ msgid "adopted name"
-#~ msgstr "nkómbó ya bobɔ́kɔli"
-
-#~ msgctxt "MALE"
-#~ msgid "adopted name"
-#~ msgstr "nkómbó ya bobɔ́kɔli"
-
-#~ msgid "adoption"
-#~ msgstr "bobɔ́kɔlɛli"
-
-#~ msgctxt "FEMALE"
-#~ msgid "also known as"
-#~ msgstr "ayébání mpé lokóla"
-
-#~ msgctxt "MALE"
-#~ msgid "also known as"
-#~ msgstr "ayébání mpé lokóla"
-
-#~ msgid "always"
-#~ msgstr "ntángo ínsɔ"
-
-#~ msgid "birth"
-#~ msgstr "Mbótama"
-
-#~ msgctxt "FEMALE"
-#~ msgid "birth name"
-#~ msgstr "nkómbó ya mbótama"
-
-#~ msgctxt "MALE"
-#~ msgid "birth name"
-#~ msgstr "nkómbó ya mbótama"
-
-#~ msgid "burial"
-#~ msgstr "likundí"
-
-#~ msgid "by"
-#~ msgstr "na"
-
-#~ msgid "census added"
-#~ msgstr "etángo ebakísámí"
-
-#~ msgid "century"
-#~ msgstr "bonkámá"
-
-#~ msgctxt "FEMALE"
-#~ msgid "change of name"
-#~ msgstr "bobóngoli bwa nkómbó"
-
-#~ msgctxt "MALE"
-#~ msgid "change of name"
-#~ msgstr "bobóngoli bwa nkómbó"
-
-#~ msgid "children"
-#~ msgstr "bǎna"
-
-#~ msgid "death"
-#~ msgstr "liwâ"
-
-#~ msgid "east"
-#~ msgstr "monyɛlɛ"
-
-#~ msgctxt "FEMALE"
-#~ msgid "estate name"
-#~ msgstr "esíká ya bofándi bwa moto"
-
-#~ msgctxt "MALE"
-#~ msgid "estate name"
-#~ msgstr "esíká ya bofándi bwa moto"
-
-#~ msgid "file upload capability"
-#~ msgstr "Bokoki bwa botómbisi"
-
-#~ msgid "half-year after marriage"
-#~ msgstr "mobú ndámbo na nsima ya libála"
-
-#~ msgid "hh:mm or hh:mm:ss"
-#~ msgstr "hh:mm tǒ hh:mm:ss"
-
-#~ msgctxt "FEMALE"
-#~ msgid "immigration name"
-#~ msgstr "nkómbó ya bokɔ́ti mbóka"
-
-#~ msgctxt "MALE"
-#~ msgid "immigration name"
-#~ msgstr "nkómbó ya bokɔ́ti mbóka"
-
-#~ msgid "import"
-#~ msgstr "yéisá"
-
-#~ msgid "interval %s year"
-#~ msgid_plural "interval %s years"
-#~ msgstr[0] "ntáká mobú %s"
-#~ msgstr[1] "ntáká mibú %s"
-
-#~ msgid "interval one child"
-#~ msgstr "ntáká mwǎna mɔ̌kɔ́"
-
-#~ msgid "interval two children"
-#~ msgstr "ntáká bǎna bábalé"
-
-#~ msgid "less than"
-#~ msgstr "mokɛ́ koleka"
-
-#~ msgid "link"
-#~ msgstr "kangisá"
-
-#~ msgid "marriage"
-#~ msgstr "libála"
-
-#~ msgctxt "FEMALE"
-#~ msgid "married name"
-#~ msgstr "nkómbó ya libála"
-
-#~ msgctxt "MALE"
-#~ msgid "married name"
-#~ msgstr "nkómbó ya libála"
-
-#~ msgid "maximum"
-#~ msgstr "míngi"
-
-#~ msgid "midnight"
-#~ msgstr "bozékétáné"
-
-#~ msgid "minimum"
-#~ msgstr "mokɛ́"
-
-#~ msgid "month"
-#~ msgstr "sánzá"
-
-#~ msgid "months after marriage"
-#~ msgstr "basánzá na nsíma ya libála"
-
-#~ msgid "months before and after marriage"
-#~ msgstr "basánzá ya libosó mpé nsima ya libála"
-
-#~ msgid "never"
-#~ msgstr "mokɔlɔ mɔ̌kɔ́ tɛ́"
-
-#~ msgid "noon"
-#~ msgstr "nzánga"
-
-#~ msgid "north"
-#~ msgstr "nɔrdi"
-
-#~ msgid "over"
-#~ msgstr "míngi koleka"
-
-#~ msgid "overall"
-#~ msgstr "mobimba"
-
-#~ msgid "p.m."
-#~ msgstr "nsima nzánga"
-
-#~ msgid "pixels"
-#~ msgstr "pixels"
-
-#~ msgid "preview"
-#~ msgstr "bomɔ́ni yambo"
-
-#~ msgid "quarters after marriage"
-#~ msgstr "yɔ́kɔ́ ya ínei ya mobú na nsima ya libála"
-
-#~ msgctxt "FEMALE"
-#~ msgid "religious name"
-#~ msgstr "nkómbó ya bonzámbe"
-
-#~ msgctxt "MALE"
-#~ msgid "religious name"
-#~ msgstr "nkómbó ya bonzámbe"
-
-#~ msgid "sort by filename"
-#~ msgstr "kopɔnɔ na nkómbó ya kásá-kásá"
-
-#~ msgid "south"
-#~ msgstr "ngɛlɛ"
-
-#~ msgid "ssl"
-#~ msgstr "ssl"
-
-#~ msgid "this record does not exist"
-#~ msgstr "bokɔ́tisi boye bozálí tɛ́"
-
-#~ msgid "tls"
-#~ msgstr "tls"
-
-#~ msgid "webtrees cannot connect to the PhpGedView database: %s."
-#~ msgstr "webtrees ekokí kokangisama tɛ́ na sandúku ya bipɛ́sɛli ya PhpGedView: %s."
-
-#~ msgid "webtrees needs a MySQL database, version %s or later."
-#~ msgstr "webtrees esɛ́ngi sandúku ya bipɛ́sɛli MySQL, loléngé %s tǒ ya sika."
-
-#~ msgid "webtrees reply address"
-#~ msgstr "adrɛsi ya eyano ya webtrees"
-
-#~ msgid "webtrees wiki"
-#~ msgstr "wiki ya webtrees"
-
-#~ msgid "webtrees’ database must be on the same server as PhpGedView’s"
-#~ msgstr "Esengélí sandúku ya bipɛ́sɛli ya webtrees ezala na káti ya esálela mokaboli mɔ̌kɔ́ na PhpGedView"
-
-#~ msgid "west"
-#~ msgstr "Eloli"
-
-#~ msgid "years"
-#~ msgstr "mibú"
-
-#, php-format
-#~ msgid "“%s”"
-#~ msgstr "“%s”"
-
-#~ msgid "“%s” has been added to your favorites."
-#~ msgstr "“%s” abakisámí o káti ya bopɔni bwa ngáí."

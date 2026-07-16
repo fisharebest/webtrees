@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-15 18:05+0100\n"
+"POT-Creation-Date: 2026-07-16 21:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -416,18 +416,6 @@ msgctxt "MALE"
 msgid "%s × cousin"
 msgstr "bratranec (z %s. kolena)"
 
-#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ʙᴄᴇ"
-msgstr "%s př. n. l."
-
-#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ᴄᴇ"
-msgstr "%s n. l."
-
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php
 #, php-format
@@ -473,6 +461,18 @@ msgstr "%s, jeho manželky a děti"
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, jeho manželky a potomci"
+
+#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ʙᴄᴇ"
+msgstr "%s př. n. l."
+
+#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ᴄᴇ"
+msgstr "%s n. l."
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
@@ -1093,25 +1093,21 @@ msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Aban"
@@ -1154,73 +1150,61 @@ msgstr "Schválení účtu a ověření emailem"
 msgid "Accra, Ghana"
 msgstr "Akkra, Ghana"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
@@ -2191,25 +2175,21 @@ msgstr "Automaticky rozbalit poznámky"
 msgid "Automatically expand sources"
 msgstr "Automaticky rozbalit prameny"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Av"
@@ -2262,25 +2242,21 @@ msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Azar"
@@ -2306,25 +2282,21 @@ msgstr "Bah"
 msgid "Bahamas"
 msgstr "Bahamy"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Bahman"
@@ -2789,25 +2761,21 @@ msgstr "Britské Panenské ostrovy"
 msgid "Brother"
 msgstr "Bratr"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
@@ -4739,73 +4707,61 @@ msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "dhú l-ka’da"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Qiʿdah"
 msgstr "dhú l-ka’da"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "dhú l-ka’da"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "dhú l-ka’da"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "dhú’l-hidždža"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Ḥijjah"
 msgstr "dhú’l-hidždža"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "dhú’l-hidždža"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Ḥijjah"
@@ -5088,25 +5044,21 @@ msgstr "Salvador"
 msgid "Electronic"
 msgstr "Elektronický"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Elul"
@@ -5239,25 +5191,21 @@ msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
 msgstr "Esf"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Esfand"
 msgstr "Esfand"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
 msgstr "Esfand"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Esfand"
 msgstr "Esfand"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Esfand"
@@ -5723,25 +5671,21 @@ msgstr "Far"
 msgid "Faroe Islands"
 msgstr "Faerské ostrovy"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
@@ -5966,25 +5910,21 @@ msgstr "Příznak"
 msgid "Flanders"
 msgstr "Flandry"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Floreal"
@@ -6176,25 +6116,21 @@ msgctxt "MALE"
 msgid "Friend"
 msgstr "Přítel"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
@@ -6212,25 +6148,21 @@ msgctxt "Start of date range"
 msgid "From"
 msgstr "Od"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
@@ -6399,26 +6331,21 @@ msgstr "Gruzie"
 msgid "Germany"
 msgstr "Německo"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Germinal"
@@ -6734,25 +6661,21 @@ msgstr "Mapy Here"
 msgid "Hermosillo, Mexico"
 msgstr "Hermosillo, Mexiko"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Heshvan"
 msgstr "Chešvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
 msgstr "Chešvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Heshvan"
 msgstr "Chešvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
@@ -7344,25 +7267,21 @@ msgstr "Nedoporučuje se používat uživatelsky definované GEDCOM tagy. Při p
 msgid "Italy"
 msgstr "Itálie"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Iyar"
 msgstr "Ijar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
 msgstr "Ijar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Iyar"
 msgstr "Ijar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Iyar"
@@ -7473,49 +7392,41 @@ msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "červenec"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-awwal"
 msgstr "džumádá l-úlá"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-awwal"
 msgstr "džumádá l-úlá"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-awwal"
 msgstr "džumádá l-úlá"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-awwal"
 msgstr "džumádá l-úlá"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-thānī"
 msgstr "džumádá l-áchira"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-thānī"
 msgstr "džumádá l-áchira"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-thānī"
 msgstr "džumádá l-áchira"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-thānī"
@@ -7587,25 +7498,21 @@ msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
 msgstr "Khor"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
 msgstr "Khordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Khordad"
@@ -7616,25 +7523,21 @@ msgstr "Khordad"
 msgid "Kiribati"
 msgstr "Kiribati"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Kislev"
@@ -8660,25 +8563,21 @@ msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mehr"
@@ -8753,25 +8652,21 @@ msgstr "Zpráva"
 msgid "Messages"
 msgstr "Zprávy"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Messidor"
@@ -8948,25 +8843,21 @@ msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
 msgstr "Mor"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mordad"
@@ -9086,25 +8977,21 @@ msgstr "Mnohočetný porod"
 msgid "Multiple marriages"
 msgstr "Vícečetná manželství"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Muḥarram"
 msgstr "al-muharram"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Muḥarram"
 msgstr "al-muharram"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muḥarram"
 msgstr "al-muharram"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Muḥarram"
@@ -9333,25 +9220,21 @@ msgstr "Niger"
 msgid "Nigeria"
 msgstr "Nigérie"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Nissan"
 msgstr "Nisan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
 msgstr "Nisan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Nissan"
 msgstr "Nisan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Nissan"
@@ -9362,25 +9245,21 @@ msgstr "Nisan"
 msgid "Niue"
 msgstr "Niue"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Nivose"
@@ -9919,25 +9798,21 @@ msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
 msgstr "Ord"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
@@ -10455,25 +10330,21 @@ msgstr "Prosím zadejte platnou e-mailovou adresu."
 msgid "Please try again."
 msgstr "Zkuste znova, prosím."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
@@ -10534,25 +10405,21 @@ msgstr "PSČ"
 msgid "Powered by webtrees™"
 msgstr "Běží ve webtrees™"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Prairial"
@@ -10730,49 +10597,41 @@ msgstr "Odpověď: "
 msgid "Rabbi"
 msgstr "Rabín"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Rabi’ al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-thani"
 msgstr "Rabi’ al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Rabi’ al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-thani"
@@ -10796,25 +10655,21 @@ msgctxt "Pedigree"
 msgid "Rada"
 msgstr "Rada"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "radžab"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "radžab"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "radžab"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rajab"
@@ -10825,25 +10680,21 @@ msgstr "radžab"
 msgid "Raleigh, North Carolina, United States"
 msgstr "Raleigh, North Carolina, USA"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "ramadán"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "ramadán"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "ramadán"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
@@ -11821,25 +11672,21 @@ msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
 msgstr "Shah"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
@@ -11878,49 +11725,41 @@ msgstr "Sdílené poznámky"
 msgid "Shares"
 msgstr "Sdílení"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "šauvál"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "šauvál"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "šauvál"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "šauvál"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shaʿbān"
 msgstr "ša’bán"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shaʿbān"
 msgstr "ša’bán"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shaʿbān"
 msgstr "ša’bán"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shaʿbān"
@@ -11959,25 +11798,21 @@ msgstr "Byla pokřtěna"
 msgid "She was cremated"
 msgstr "Byla zpopelněna"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Shevat"
 msgstr "Ševat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
 msgstr "Ševat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Shevat"
 msgstr "Ševat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Shevat"
@@ -12406,25 +12241,21 @@ msgstr "Mapa webu"
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr "Mapa webu je způsob, jak správci stránek mohou říct vyhledávacím enginům o webu, který mohou procházet. Většina vyhledávacích enginů podporuje Mapy webu. Více informací naleznete na <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Sivan"
@@ -13005,25 +12836,21 @@ msgstr "Tádžikistán"
 msgid "Tampico, Mexico"
 msgstr "Tampico, Mexiko"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
@@ -13063,25 +12890,21 @@ msgstr "Šablony"
 msgid "Temple"
 msgstr "Chrám (Temple)"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tevet"
@@ -13721,25 +13544,21 @@ msgstr "Při zjišťování nové verze nastala chyba."
 msgid "There was an error uploading your file."
 msgstr "Během nahrávání vašeho souboru se objevila chyba."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
@@ -14240,49 +14059,41 @@ msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tishrei"
 msgstr "Tišri"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
 msgstr "Tišri"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tishrei"
 msgstr "Tišri"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
@@ -14986,25 +14797,21 @@ msgstr "Různé statistické diagramy."
 msgid "Vatican City"
 msgstr "Vatikán"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
@@ -15015,25 +14822,21 @@ msgstr "Vendémiaire"
 msgid "Venezuela"
 msgstr "Venezuela"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Ventose"
@@ -18078,25 +17881,21 @@ msgstr "interpretován %s (%s)"
 msgid "invert selection"
 msgstr "převrátit výběr"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
 msgstr "jours complémentaires (svátky)"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
 msgstr "jours complémentaires (svátky)"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
 msgstr "jours complémentaires (svátky)"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
@@ -19544,25 +19343,21 @@ msgstr[2] "±%s let"
 msgid "Åland Islands"
 msgstr "Alandy"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ṣafar"
 msgstr "safar"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ṣafar"
 msgstr "safar"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ṣafar"
 msgstr "safar"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ṣafar"
@@ -19610,2684 +19405,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid " per sex"
-#~ msgstr " na pohlaví"
-
-#~ msgid " per time period"
-#~ msgstr " za časové období"
-
-#, php-format
-#~ msgid "#%s"
-#~ msgstr "%s."
-
-#, php-format
-#~ msgid "%1$s %2$s has a %3$s link to %4$s."
-#~ msgstr "%1$s %2$s odkazuje %3$s na %4$s."
-
-#, php-format
-#~ msgid "%1$s does not exist."
-#~ msgstr "%1$s neexistuje."
-
-#~ msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgstr[0] "%1$s zobrazená osoba, mezi všemi z %2$s z %3$s generací."
-#~ msgstr[1] "%1$s zobrazené osoby, mezi všemi z %2$s z %3$s generací."
-#~ msgstr[2] "%1$s zobrazených osob, mezi všemi z %2$s z %3$s generací."
-
-#~ msgid "%1$s individual is missing birthplace map coordinates: %2$s."
-#~ msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-#~ msgstr[0] "%1$s osobě chybí místo narození, souřadnice: %2$s."
-#~ msgstr[1] "%1$s osobám chybí místo narození, souřadnice: %2$s."
-#~ msgstr[2] "%1$s osobám chybí místo narození, souřadnice: %2$s."
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "včera"
-#~ msgstr[1] "před %s dny"
-#~ msgstr[2] "před %s dny"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "před hodinou"
-#~ msgstr[1] "před %s hodinami"
-#~ msgstr[2] "před %s hodinami"
-
-#~ msgid "%s individual is private."
-#~ msgid_plural "%s individuals are private."
-#~ msgstr[0] "%s osoba je soukromá."
-#~ msgstr[1] "%s osoby jsou soukromé."
-#~ msgstr[2] "%s osob je soukromých."
-
-#, php-format
-#~ msgid "%s individual with events between %s and %s"
-#~ msgid_plural "%s individuals with events between %s and %s"
-#~ msgstr[0] "%s osoba s událostmi mezi roky %s a %s"
-#~ msgstr[1] "%s osoby s událostmi mezi roky %s a %s"
-#~ msgstr[2] "%s osob s událostmi mezi roky %s a %s"
-
-#, php-format
-#~ msgid "%s individual with events in %s"
-#~ msgid_plural "%s individuals with events in %s"
-#~ msgstr[0] "%s osoba s událostmi v roce %s"
-#~ msgstr[1] "%s osoby s událostmi v roce %s"
-#~ msgstr[2] "%s osob s událostmi v roce %s"
-
-#, php-format
-#~ msgid "%s individual with events in %s between %s and %s"
-#~ msgid_plural "%s individuals with events in %s between %s and %s"
-#~ msgstr[0] "%s osoba s událostmi v %s mezi roky %s a %s"
-#~ msgstr[1] "%s osoby s událostmi v %s mezi roky %s a %s"
-#~ msgstr[2] "%s osob s událostmi v %s mezi roky %s a %s"
-
-#~ msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "%s není aktivován na tomto serveru. Dokud nebude aktivován, nebude možné webtrees nainstalovat. Prosím požádejte správce serveru, aby to aktivoval."
-
-#, php-format
-#~ msgid "%s location has been imported."
-#~ msgid_plural "%s locations have been imported."
-#~ msgstr[0] "Je importováno %s místo."
-#~ msgstr[1] "Jsou importována %s místa."
-#~ msgstr[2] "Je importováno %s míst."
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "před minutou"
-#~ msgstr[1] "před %s minutami"
-#~ msgstr[2] "před %s minutami"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "před měsícem"
-#~ msgstr[1] "před %s měsíci"
-#~ msgstr[2] "před %s měsíci"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "před sekundou"
-#~ msgstr[1] "před %s sekundami"
-#~ msgstr[2] "před %s sekundami"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "před rokem"
-#~ msgstr[1] "před %s lety"
-#~ msgstr[2] "před %s lety"
-
-#, php-format
-#~ msgid "(aged less than %s)"
-#~ msgstr "(méně než %s let)"
-
-#, php-format
-#~ msgid "(aged more than %s)"
-#~ msgstr "(více než %s let)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(jako dítě)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(jako kojenec)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(mrtvý při narození)"
-
-#~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-#~ msgstr "V tomto kontextu je <b>GUID</b> zkratka pro «Globally Unique ID» (globální jedinečný identifikátor).<br><br>GUID pomáhají určit každou osobu, takže centrální organizace jako Rodinné historické centrum církve LDS v Salt Lake City nebo kompatibilní programy běžící na vašem serveru můžou určit, zda manipulují se stejnou osobou nezávisle na tom, kde se ten určitý GEDCOM vzal. Cíl Rodinného historického centra je mít centrální úložiště rodokmenových dat a mít je vystavené skrz webové služby. Ty umožní jakémukoliv programu přistupovat k datům a jejich aktualizaci.<br><br>Pokud nezamýšlíte sdílet váš GEDCOM komukoliv jinému, není nutné vytvářet tyto GUID, nicméně pokud tak budete dělat, nebude v tom žádný problém kromě zvýšení velikosti vašeho GEDCOMu."
-
-#~ msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-#~ msgstr "<b>Důležitá poznámka:</b> Průvodce pro přechod neumí pomoct s přesunem mediálních položek. Musíte nastavit a přesunout nebo zkopírovat vaši mediální konfiguraci a objekty zvlášť potom, co doběhne tento průvodce."
-
-#~ msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-#~ msgstr "<b>Poznámka:</b> Soukromá data žijících osob budou poskytnuta pouze příbuzným a blízkým přátelům. Než obdržíte soukromá data, požádáme vás o potvrzení vašeho vztahu. Někdy jsou soukromá i data o nežijících osobách. Tak je tomu v případech, kdy není dostatek údajů o tom, zda daná osoba žije nebo ne, nebo máme o dané osobě málo informací.<br><br>Než se začnete ptát, ověřte si zkontrolováním dat, míst a blízkých příbuzných, že se ptáte na správnou osobu. Pokud navrhujete změny genealogických údajů, poskytněte prameny, ze kterých vycházíte."
-
-#~ msgid "<p>Notice: By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-#~ msgstr "<p>Upozornění: Dokončením a odesláním tohoto formuláře souhlasíte:<ul><li>s ochranou soukromí žijících osob zobrazených na našich webových stránkách</li><li>a níže v rámečku vysvětlujete, s kým jste příbuzný/á nebo nám poskytujete informaci na někoho, kdo by měl byt zobrazen na našich stránkách.</li></ul></div>"
-
-#, php-format
-#~ msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-#~ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-
-#~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-#~ msgstr "Databázový server umožňuje uložit více oddělených databází. Vyberte existující databázi (vytvořenou správcem vašeho serveru) nebo vytvořte novou (pokud váš databázový účet má dostatečná práva)."
-
-#~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-#~ msgstr "Bylo vytvořeno a posláno nové heslo uživateli %s. Můžete si ho změnit po přihlášení."
-
-#~ msgid "A new password has been requested for your username."
-#~ msgstr "Bylo zažádáno o nové heslo pro vaše uživatelské jméno."
-
-#~ msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-#~ msgstr "Postraní panel ukazuje abecední seznam všech rodin v rodokmenu."
-
-#~ msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-#~ msgstr "Postranní panel zobrazující abecední seznam všech osob v daném rodokmenu."
-
-#~ msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-#~ msgstr "Vodoznak je text, který se přidá do obrázku, aby odradil ostatní od kopírování bez souhlasu vlastníka."
-
-#~ msgid "A.M."
-#~ msgstr "Dopoledne"
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=aábcčdďeěéfghiíjklmnňoópqrřsštťuúůvwxyýzž"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=AÁBCČDĎEĚÉFGHIÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽ"
-
-#~ msgid "Acadia"
-#~ msgstr "Acadia"
-
-#~ msgid "Action"
-#~ msgstr "Akce"
-
-#~ msgid "Add a blank row"
-#~ msgstr "Přidat prázdný řádek"
-
-#~ msgid "Add a brother or sister"
-#~ msgstr "Přidat bratra nebo sestru"
-
-#~ msgid "Add a child to this family"
-#~ msgstr "Přidat dítě k této rodině"
-
-#~ msgid "Add a geographic location"
-#~ msgstr "Přidat zeměpisné místo"
-
-#~ msgid "Add a husband to this family"
-#~ msgstr "Přidat manžela k této rodině"
-
-#~ msgid "Add a restriction"
-#~ msgstr "Přidat omezení"
-
-#~ msgid "Add a scrollbar when block contents grow"
-#~ msgstr "Přidat rolovací lištu, když se blok zvětšuje"
-
-#~ msgid "Add a shared note"
-#~ msgstr "Přidat sdílenou poznámku"
-
-#~ msgid "Add a son or daughter"
-#~ msgstr "Přidat syna nebo dceru"
-
-#~ msgid "Add a wife to this family"
-#~ msgstr "Přidat manželku k této rodině"
-
-#~ msgid "Add an associate"
-#~ msgstr "Přidat společníka"
-
-#~ msgid "Add an event"
-#~ msgstr "Přidat událost"
-
-#~ msgid "Add another individual to the chart"
-#~ msgstr "Přidat do diagramu další osobu"
-
-#~ msgid "Add historic events to an individual‘s page."
-#~ msgstr "Ke stránce jednotlivce přidat historické události."
-
-#~ msgid "Add links"
-#~ msgstr "Přidat odkazy"
-
-#~ msgid "Add married names"
-#~ msgstr "Přidat manželská jména"
-
-#~ msgid "Add missing married names"
-#~ msgstr "Přidat chybějící manželská jména"
-
-#~ msgid "Add the GEDCOM media path to filenames"
-#~ msgstr "Přidat GEDCOM media cestu ke jménům souborů"
-
-#~ msgid "Add to favorites"
-#~ msgstr "Přidat do oblíbených"
-
-#~ msgid "Add watermarks to thumbnails"
-#~ msgstr "Přidávat vodoznak do náhledů?"
-
-#~ msgid "Add/edit a journal/news entry"
-#~ msgstr "Přidat/upravit deník/novinky"
-
-#~ msgid "Additional information"
-#~ msgstr "Dodatečné infiormace"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Adoptována oběma rodiči"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Adoptován oběma rodiči"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Adoptována otcem"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Adoptován otcem"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "Adoptována matkou"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "Adoptován matkou"
-
-#~ msgid "Advanced"
-#~ msgstr "Pokročilé"
-
-#~ msgid "Advanced fact preferences"
-#~ msgstr "Pokročilé nastavení faktů"
-
-#~ msgid "Advanced name facts"
-#~ msgstr "Pokročilé fakty o jménech"
-
-#~ msgid "Advanced place name facts"
-#~ msgstr "Pokročilé fakty o místech"
-
-#~ msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-#~ msgstr "Poté, co se přihlásíte, vyberte odkaz «Můj účet» v menu «Moje stránka» a změňte si heslo."
-
-#~ msgid "Age of item"
-#~ msgstr "Stáří položky"
-
-#~ msgid "Age related to birth year"
-#~ msgstr "Věk v roce narození"
-
-#~ msgid "Age related to death year"
-#~ msgstr "Věk v době úmrtí"
-
-#~ msgid "All changes in PhpGedView must be accepted"
-#~ msgstr "Všechny změny v PhpGedView musí být přijaty"
-
-#~ msgid "All existing PhpGedView users must have distinct email addresses"
-#~ msgstr "Všichni uživatelé PhpGedView musí být vlastní emailovou adresu"
-
-#~ msgid "All family facts"
-#~ msgstr "Všechna fakta o rodině"
-
-#~ msgid "All files have read and write permission."
-#~ msgstr "Všechny soubory jsou přístupné pro čtení a zápis."
-
-#~ msgid "All individual facts"
-#~ msgstr "Všechna osobní fakta"
-
-#~ msgid "All repository facts"
-#~ msgstr "Všechna fakta o repozitářích"
-
-#~ msgid "All source facts"
-#~ msgstr "Všechna fakta o pramenech"
-
-#~ msgid "Allow users to select their own theme"
-#~ msgstr "Umožnit uživatelům vybrat si vlastní motiv"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Also known as"
-#~ msgstr "Také známa jako"
-
-#~ msgctxt "MALE"
-#~ msgid "Also known as"
-#~ msgstr "Také znám jako"
-
-#~ msgid "Alternative place name"
-#~ msgstr "Alternativní název místa"
-
-#~ msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-#~ msgstr "Společník je jakákoliv osoba, která má něco společného s daným faktem nebo událostí, např. svědek nebo kněz."
-
-#~ msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-#~ msgstr "Společník je jakákoliv osoba, která má něco společného s danou osobou, např. přítel nebo zaměstnavatel."
-
-#~ msgid "An edit menu for individuals, families, sources, etc."
-#~ msgstr "Menu pro upravování dat o osobách, rodinách, pramenech atd."
-
-#~ msgid "An error occurred when unzipping the file."
-#~ msgstr "Nastala chyba při rozbalování souboru."
-
-#~ msgid "An unknown error occurred"
-#~ msgstr "Vyskytla se neznámá chyba"
-
-#~ msgid "Apply automatic corrections to your genealogy data."
-#~ msgstr "Použít automatické opravy na vaše rodokmenová data."
-
-#~ msgid "Approval of account at %s"
-#~ msgstr "Schválení účtu v %s"
-
-#~ msgid "Are you sure you want to remove links to this media object?"
-#~ msgstr "Opravdu chcete odstranit odkazy na tento mediální objekt?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
-
-#~ msgid "Associates"
-#~ msgstr "Společníci"
-
-#, fuzzy
-#~ msgid "Automatically add unique identifiers"
-#~ msgstr "Automaticky vytvářet globálně unikátní ID"
-
-#~ msgid "Automatically expand list of events of close relatives"
-#~ msgstr "Automaticky rozbalit seznam událostí blízkých příbuzných"
-
-#~ msgid "Available blocks"
-#~ msgstr "Dostupné bloky"
-
-#~ msgid "Basic"
-#~ msgstr "Základní"
-
-#~ msgid "Batch update"
-#~ msgstr "Aktualizace dávkou"
-
-#~ msgid "Bearing"
-#~ msgstr "Azimut"
-
-#~ msgid "Body"
-#~ msgstr "Text:"
-
-#~ msgid "Booklet"
-#~ msgstr "Kniha"
-
-#~ msgid "Brit milah of a brother"
-#~ msgstr "Obřízka bratra (brit milah)"
-
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Obřízka vnuka (brit milah)"
-
-#~ msgctxt "daughter’s son"
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Obřízka vnuka (brit milah)"
-
-#~ msgctxt "son’s son"
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Obřízka vnuka (brit milah)"
-
-#~ msgid "Brit milah of a half-brother"
-#~ msgstr "Obřízka polorodého bratra (brit milah)"
-
-#~ msgid "Brit milah of a son"
-#~ msgstr "Obřízka syna (brit milah)"
-
-#~ msgid "British West Indies"
-#~ msgstr "British West Indies"
-
-#~ msgid "Burial of a maternal grandparent"
-#~ msgstr "Pohřbení prarodiče (z matčiny strany)"
-
-#~ msgid "Burial of a paternal grandparent"
-#~ msgstr "Pohřbení prarodiče (z otcovy strany)"
-
-#~ msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
-#~ msgstr "Výchozí je, že v seznamu se zobrazí jen ta místa, která se nachází v rodokmenu. Možná máte podrobnosti k dalším místům, která jste hromadně importovali z externího souboru. Vybráním této volby zobrazíte všechna místa včetně těch, která se nepoužívají."
-
-#~ msgid "By default, your server allows scripts to run for %s second."
-#~ msgid_plural "By default, your server allows scripts to run for %s seconds."
-#~ msgstr[0] "Standardně váš server povoluje skriptům běžet %s sekundu."
-#~ msgstr[1] "Standardně váš server povoluje skriptům běžet %s sekundy."
-#~ msgstr[2] "Standardně váš server povoluje skriptům běžet %s sekund."
-
-#~ msgid "By default, your server allows scripts to use %s of memory."
-#~ msgstr "Standardně váš server umožňuje skriptům použít %s paměti."
-
-#~ msgid "Calculate the age differences between siblings, children, spouses, etc."
-#~ msgstr "Počítat věkové rozdíly mezi sourozenci, dětmi, partnery, atd."
-
-#~ msgid "Cannot create"
-#~ msgstr "Není možné zkopírovat"
-
-#~ msgid "Cape Colony"
-#~ msgstr "Cape Colony"
-
-#~ msgid "Case insensitive"
-#~ msgstr "Bez ohledu na velikost písmen"
-
-#~ msgid "Catalonia"
-#~ msgstr "Katalánsko"
-
-#~ msgid "Caution!"
-#~ msgstr "Výstraha!"
-
-#~ msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-#~ msgstr "Varování: staré moduly nemusí fungovat nebo mohou způsobit nefunkčnost webtrees."
-
-#~ msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-#~ msgstr "Varování: stará témata nemusí fungovat nebo mohou způsobit nefunkčnost webtrees."
-
-#~ msgid "Cemeteries"
-#~ msgstr "Hřbitovy"
-
-#~ msgid "Center map here"
-#~ msgstr "Zde vycentrovat"
-
-#~ msgid "Certificate number"
-#~ msgstr "Číslo dokladu"
-
-#~ msgid "Change"
-#~ msgstr "Změnit"
-
-#~ msgid "Change flag"
-#~ msgstr "Příznak Změnit"
-
-#~ msgid "Change language"
-#~ msgstr "Změnit jazyk"
-
-#~ msgid "Change the blocks on this user’s “My page”"
-#~ msgstr "Změnit bloky na uživatelově stránce „Moje stránka“"
-
-#~ msgid "Channel Islands"
-#~ msgstr "Channel Islands"
-
-#~ msgid "Check file permissions…"
-#~ msgstr "Kontroluji přístupová práva…"
-
-#~ msgid "Check for custom modules…"
-#~ msgstr "Kontroluji vlastní moduly…"
-
-#~ msgid "Check for custom themes…"
-#~ msgstr "Kontroluji vlastní témata…"
-
-#~ msgid "Check the access rights on this folder."
-#~ msgstr "Zkontrolujte přístupová práva k této složce."
-
-#~ msgid "Check the settings and try again."
-#~ msgstr "Zkontrolujte nastavení a zkuste to znovu."
-
-#~ msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-#~ msgstr "Vyberte obrázek náhledu, který chcete nahrát. Ačkoliv náhledy pro obrázky jsou generovány automaticky, pro jiné typy souborů si možná budete přát vygenerovat vlastní. Například snímek z videa nebo fotku osoby, která nahrála audio záznam."
-
-#~ msgid "Choose: "
-#~ msgstr "Vyberte: "
-
-#~ msgid "Cleared but not yet completed"
-#~ msgstr "Vyjasněno, ale ještě nedokončeno"
-
-#~ msgid "Click %s to choose individual as head of family."
-#~ msgstr "Kliknutím na %s zvolit osobu jako hlavu rodiny."
-
-#~ msgid "Click a row, then drag-and-drop to re-order media"
-#~ msgstr "Klikni na řádek, poté přetáhni. Média se přeřadí."
-
-#~ msgid "Click here for PhpGedView to webtrees transfer wizard"
-#~ msgstr "Klikněte zde, pokud chcete použít Průvodce přechodu z PhpGedView na webtrees"
-
-#~ msgid "Click here to add, edit, or delete"
-#~ msgstr "Klikněte zde pro přidání, úpravu nebo smazání"
-
-#~ msgid "Click here to open or close the sidebar"
-#~ msgstr "Kliknutím otevřete nebo zavřete boční lištu"
-
-#~ msgid "Click name to add individual to add links list."
-#~ msgstr "Kliknutím na jméno přidáte osobu do seznamu pro přidávání odkazů ."
-
-#~ msgid "Click on a title to go straight to it, or scroll down to read them all."
-#~ msgstr "Klikněte na název nebo rolujte myší dolů."
-
-#~ msgid "Click to choose individual as head of family."
-#~ msgstr "Kliknutím zvolte osobu jako hlavu rodiny."
-
-#~ msgid "Cohabitation"
-#~ msgstr "Soužití"
-
-#~ msgid "Columns per page"
-#~ msgstr "Sloupců na stránku"
-
-#~ msgid "Comparison"
-#~ msgstr "Porovnání"
-
-#~ msgid "Compress the GEDCOM file"
-#~ msgstr "Komprimovat soubor GEDCOM"
-
-#~ msgid "Concatenation"
-#~ msgstr "Zřetězení"
-
-#~ msgid "Configure"
-#~ msgstr "Nastavení"
-
-#~ msgid "Confirm password"
-#~ msgstr "Potvrďte heslo"
-
-#~ msgid "Continue adding"
-#~ msgstr "Pokračovat v přidávání"
-
-#~ msgid "Continued"
-#~ msgstr "Pokračování"
-
-#~ msgid "Convert CEME tags to GEDCOM 5.5.1"
-#~ msgstr "Převést tagy CEME do standardu GEDCOM 5.5.1"
-
-#~ msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-#~ msgstr "Převést tagy NAME:_XXX na GEDCOM 5.5.1"
-
-#~ msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-#~ msgstr "Převést tagy _PRIM do standardu GEDCOM 5.5.1"
-
-#~ msgid "Convert from UTF-8 to ISO-8859-1"
-#~ msgstr "Překódovat z UTF-8 na ISO-8859-1"
-
-#~ msgid "Cookie warning"
-#~ msgstr "Výstraha ke cookies"
-
-#~ msgid "Copy these files to the folder %s, replacing any that have the same name."
-#~ msgstr "Zkopírujte tyto soubory do složky %s, nahraďte všechny se stejným jménem."
-
-#~ msgid "Count"
-#~ msgstr "Počet"
-
-#~ msgid "Countries"
-#~ msgstr "Země"
-
-#~ msgid "Counts "
-#~ msgstr "Počty "
-
-#~ msgid "County"
-#~ msgstr "Kraj"
-
-#~ msgid "Create a family"
-#~ msgstr "Vytvořit rodinu"
-
-#~ msgid "Create a family from existing individuals"
-#~ msgstr "Vytvořit rodinu z existujících osob"
-
-#~ msgid "Create a website access rule"
-#~ msgstr "Vytvořit pravidla přístupu k webové stránce"
-
-#~ msgid "Current"
-#~ msgstr "Současný"
-
-#~ msgid "Custom GEDCOM sub-tags"
-#~ msgstr "Nestandardní podrřízené tagy GEDCOM"
-
-#~ msgid "Custom GEDCOM tag"
-#~ msgstr "Nestandardní tag GEDCOM"
-
-#~ msgid "Custom fact"
-#~ msgstr "Vlastní fakt"
-
-#~ msgid "Custom tags"
-#~ msgstr "Vlastní tagy"
-
-#~ msgid "Custom theme"
-#~ msgstr "Vlastní téma"
-
-#~ msgid "Czechoslovakia"
-#~ msgstr "Československo"
-
-#~ msgid "Dashboard"
-#~ msgstr "Ovládací panel"
-
-#~ msgid "Data Fixes"
-#~ msgstr "Opravy údajů"
-
-#~ msgid "Database and table names"
-#~ msgstr "Jména databáze a tabulek"
-
-#~ msgid "Decade of birth"
-#~ msgstr "Desetiletí narození"
-
-#~ msgid "Decade of death"
-#~ msgstr "Desetiletí úmrtí"
-
-#~ msgid "Decade of marriage"
-#~ msgstr "Desetiletí manželství"
-
-#~ msgid "Default"
-#~ msgstr "Výchozí"
-
-#~ msgid "Default map type"
-#~ msgstr "Výchozí typ mapy"
-
-#~ msgid "Default pedigree chart layout"
-#~ msgstr "Výchozí rozložení diagramu Vývod"
-
-#~ msgid "Default pedigree generations"
-#~ msgstr "Výchozí počet generací pro Vývod"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Delete all existing geographic data before importing the file."
-#~ msgstr "Smazat všechna existující geografická data před importem souboru."
-
-#~ msgid "Delete old files…"
-#~ msgstr "Odstranit staré soubory…"
-
-#~ msgid "Delete temporary files…"
-#~ msgstr "Mažu dočasné soubory…"
-
-#~ msgid "Description unavailable"
-#~ msgstr "Popis není k dispozici"
-
-#~ msgid "Desired password"
-#~ msgstr "Požadované heslo"
-
-#~ msgid "Desired username"
-#~ msgstr "Uživatelské jméno"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "dhú’l-hidždža"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "dhú’l-hidždža"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "dhú’l-hidždža"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "dhú’l-hidždža"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "dhú l-ka’da"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "dhú l-ka’da"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "dhú l-ka’da"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "dhú l-ka’da"
-
-#~ msgid "Died as an infant: exempt"
-#~ msgstr "Zemřelo jako dítě: vyloučeno (exempt)"
-
-#~ msgid "Died before less than 1 year old, sealing not required."
-#~ msgstr "Zemřel/a před dožitím 1 roku věku."
-
-#~ msgid "Disable these modules"
-#~ msgstr "Zakázat tyto moduly"
-
-#~ msgid "Disable these themes"
-#~ msgstr "Zakázat tato témata"
-
-#~ msgid "Display all"
-#~ msgstr "Zobrazit vše"
-
-#~ msgid "Display custom GEDCOM tags"
-#~ msgstr "Zobrazit nestandardní tagy GEDCOM"
-
-#~ msgid "Display map coordinates"
-#~ msgstr "Zobrazovat mapové souřadnice"
-
-#~ msgid "Do not change to keep original filename."
-#~ msgstr "Pro zachování původního jména souboru neměnit."
-
-#~ msgid "Do not create new locations, just import coordinates for existing locations."
-#~ msgstr "Nevytvářet nová místa, pouze importovat souřadnice existujících míst."
-
-#~ msgid "Do not use maps"
-#~ msgstr "Nepoužívat mapy"
-
-#~ msgid "Down"
-#~ msgstr "Dolů"
-
-#~ msgid "Download geographic data"
-#~ msgstr "Stáhnout geografická data"
-
-#~ msgid "Earliest birth year"
-#~ msgstr "Rok nejdřívějšího narození"
-
-#~ msgid "Earliest death year"
-#~ msgstr "Rok nejdřívějšího úmrtí"
-
-#~ msgid "Edit a website access rule"
-#~ msgstr "Upravit přístupová pravidla webové stránky"
-
-#~ msgid "Edit media"
-#~ msgstr "Upravit média"
-
-#~ msgid "Edit the details"
-#~ msgstr "Upravit podrobnosti"
-
-#~ msgid "Edit the media object"
-#~ msgstr "Upravit objekt médií"
-
-#~ msgid "Edit the note"
-#~ msgstr "Upravit poznámku"
-
-#~ msgid "Edit the repository"
-#~ msgstr "Upravit repozitář"
-
-#~ msgid "Edit the source"
-#~ msgstr "Upravit pramen"
-
-#~ msgid "Editing restriction"
-#~ msgstr "Omezení úpravy"
-
-#~ msgid "Eire"
-#~ msgstr "Irsko"
-
-#~ msgid "Elevation"
-#~ msgstr "Nadmořská výška"
-
-#~ msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-#~ msgstr "Emailová adresa, která se použije v poli &laquo;From:&raquo; (Od) pro emaily, které webtrees automaticky vytváří.<br><br>webtrees automaticky vytváří emaily, aby upozornil správce o změnách, které potřebujou zrevidovat. Dalé posílá upozornění uživatelům, kteří zažádali o účet.<br><br>Obvykle pole &laquo;From:&raquo; (Od) vypadá podobně jako <i>From: webtrees-noreply@yoursite</i>, abyste zdůraznili, že není vyžadována žádná odpověď. Abyste se uchránili proti spamu nebo jinému zneužití emailu, některé emailové systémy vyžadují, aby pole &laquo;From:&raquo; odpovídalo platnému emailovému účtu a nepřijmou zprávy, které jsou zjevně z účtu <i>webtrees-noreply</i>."
-
-#~ msgid "Embedded variable"
-#~ msgstr "Zabudovaná proměnná"
-
-#~ msgid "End IP address"
-#~ msgstr "Konečná IP adresa"
-
-#~ msgid "Enter an individual, family, or source ID"
-#~ msgstr "Zadejte ID osoby, rodiny nebo pramene"
-
-#~ msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-#~ msgstr "Zadat nebo vyhledat ID osoby, rodiny nebo pramene, ke kterým by tato položka médií měla odkazovat."
-
-#~ msgid "Enter report values"
-#~ msgstr "Zadat kritéria pro zprávu"
-
-#~ msgid "Exact text"
-#~ msgstr "Přesný text"
-
-#~ msgid "FAQ position"
-#~ msgstr "Umístění FAQ"
-
-#~ msgid "FAQ visibility"
-#~ msgstr "Viditelnost FAQ"
-
-#~ msgid "FOKO country"
-#~ msgstr "Země FOKO"
-
-#~ msgid "Facts for repository records"
-#~ msgstr "Fakta pro repozitáře"
-
-#~ msgid "Facts for source records"
-#~ msgstr "Fakta pro záznamy pramenů"
-
-#~ msgid "Family ID prefix"
-#~ msgstr "Rodinný IP prefix"
-
-#~ msgid "Family group information"
-#~ msgstr "Informace o rodině (manželství)"
-
-#~ msgid "Family list"
-#~ msgstr "Seznam rodin"
-
-#~ msgid "File containing places (CSV)"
-#~ msgstr "Soubor obsahující místa (CSV)"
-
-#~ msgid "Find a fact or event"
-#~ msgstr "Hledat údaj nebo událost"
-
-#~ msgid "Find a family"
-#~ msgstr "Hledat rodinu"
-
-#~ msgid "Find a media object"
-#~ msgstr "Hledat soubor médií"
-
-#~ msgid "Find a place"
-#~ msgstr "Hledat místo"
-
-#~ msgid "Find a repository"
-#~ msgstr "Najít repozitář"
-
-#~ msgid "Find a shared note"
-#~ msgstr "Hledat poznámku"
-
-#~ msgid "Find an individual"
-#~ msgstr "Hledat osobu"
-
-#, php-format
-#~ msgid "Flag of %s"
-#~ msgstr "Vlajka %s"
-
-#~ msgid "Font"
-#~ msgstr "Písmo"
-
-#~ msgid "From"
-#~ msgstr "Od"
-
-#~ msgid "GEDCOM sub-tag"
-#~ msgstr "Podřízený tag GEDCOM"
-
-#~ msgid "Gender"
-#~ msgstr "Pohlaví"
-
-#~ msgid "Gender icon on charts"
-#~ msgstr "Ikony pohlaví v diagramech"
-
-#~ msgid "Get an API key from Google."
-#~ msgstr "Získejte od Googlu klíč API."
-
-#~ msgid "Gives users the option of selecting their own theme."
-#~ msgstr "Umožnit uživatelům vybrat si vlastní motiv."
-
-#~ msgid "Google Street View™"
-#~ msgstr "Google Street View™"
-
-#~ msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
-#~ msgstr "Google připouští něco málo požadavků na anonymní mapu denně. Potřebujete-li jich více, musíte mít u Googlu účet a klíč API."
-
-#~ msgid "Google™ maps preferences"
-#~ msgstr "Nastavení Google™ maps"
-
-#~ msgid "Google™ webmaster tools"
-#~ msgstr "Správcovské nástroje Google™"
-
-#~ msgid "Grandparents"
-#~ msgstr "Prarodiče"
-
-#~ msgid "Head of household"
-#~ msgstr "Hlava domácnosti"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
-
-#~ msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
-#~ msgstr "Zde může být nastavena nebo odstraněna ikona. Použitím tohoto odkazu si můžete zvolit vlajku. S tímto místem se zobrazí zároveň tato vlajka."
-
-#~ msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
-#~ msgstr "Zde můžete vložit úroveň přiblížení. Tato hodnota bude použita jako minimální při zobrazování geografických míst na mapě."
-
-#~ msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
-#~ msgstr "Zde můžete vložit přesnost. Na základě nastavení je určen počet číslic, který se použije v zeměpisné šířce a délce."
-
-#~ msgid "Hide/show GEDCOM tags in the edit forms"
-#~ msgstr "Skrýt/odkrýt tagy GEDCOM v editovacích formulářích"
-
-#~ msgid "Highest population"
-#~ msgstr "Nejvyšší populace"
-
-#~ msgid "Historical facts"
-#~ msgstr "Historické údaje"
-
-#~ msgid "House"
-#~ msgstr "Dům"
-
-#~ msgid "House number"
-#~ msgstr "Číslo domu"
-
-#~ msgid "Hybrid"
-#~ msgstr "Hybridní"
-
-#~ msgid "Icon"
-#~ msgstr "Ikona"
-
-#~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
-#~ msgstr "Je-li četnost výskytu příjmení nižší než nastavený limit, neobjeví se mezi příjmeními s nejčastějším výskytem. Pak tady můžete takové příjmení přidat ručně. Zadáte-li více než jedno, musí být oddělena čárkou. <b>V příjmeních se rozlišují malá a velká písmena.</b>"
-
-#~ msgid "If the thumbnail image is a custom image, you should add it to the media object."
-#~ msgstr "Jestliže náhledový obrázek je účelově vytvořený, přidejte jej k mediálnímu objektu."
-
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-#~ msgstr "Jestliže náhledový obrázek je stejný jako původní obrázek, pak není potřebný a nutno jej odstranit."
-
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
-#~ msgstr "Je-li náhledový obrázek stejný jako původní obrázek, není potřebný a má být odstraněn. Je-li to upravený obrázek, přidejte jej k mediálnímu objektu."
-
-#~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
-#~ msgstr "Pokud návštěvník rodokmen nemůže prohlížet, pak ani nemůže požádat o účet. Budete muset jeho účet zřídit ručně."
-
-#~ msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
-#~ msgstr "Jestliže připojujete databázi pomocí socketu UNIX, uveďte zde cestu a číslo portu nechte prázdné."
-
-#~ msgid "If you do not use two-factor authentication, enable <a href=\"https://www.google.com/settings/security/lesssecureapps\">less secure applications</a> and use your Google password."
-#~ msgstr "Jestliže nepoužíváte dvojnásobnou autentizaci, povolte <a href=\"https://www.google.com/settings/security/lesssecureapps\">méně zabezpečené aplikace</a> s použitím hesla pro Google."
-
-#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
-#~ msgstr "Pokud máte větší počet neaktivních míst, generování seznamu může být pomalé."
-
-#~ msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-#~ msgstr "Pokud skryjete prázdný blok, nebudete moct změnit jeho konfiguraci, dokud se opět nestane viditelným tím, že nebude prázdný."
-
-#~ msgid "If you use two-factor authentication, create an <a href=\"https://myaccount.google.com/apppasswords\">app password</a>."
-#~ msgstr "Jestliže používáte dvojnásobnou autentizaci, vytvořte <a href=\"https://myaccount.google.com/apppasswords\">heslo aplikace</a>."
-
-#~ msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>. Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
-#~ msgstr "Chcete-li nějaké příjmení odstranit ze seznamu nejčastějších příjmení, aniž byste měnili limit, můžete tak učinit tady. Zadáte-li více než jedno, musíte je oddělit čárkou. <b>V příjmeních se rozlišují malá a velká písmena.</b> Příjmení budou také odstraněna ze seznamu 10 nejčastějších na domovské stránce."
-
-#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
-#~ msgstr "Pokud to bezpečnostní politika vašeho serveru povolí, budete schopní zaslat požadavek na zvýšení paměti nebo procesorového času použitím správcovských stránek webtrees. Jinak budete muset kontaktovat správce serveru."
-
-#~ msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one."
-#~ msgstr "Pokud váš web může být dosažen pomocí více URL jako <b>http://www.priklad.cz/webtrees/</b> a <b>http://webtrees.priklad.cz/</b>, můžete specifikovat preferovanou URL. Požadavky na jiné URL budou přesměrovány na tuto."
-
-#~ msgid "Import Options."
-#~ msgstr "Možnosti importu."
-
-#~ msgid "Import all places from a family tree"
-#~ msgstr "Importovat všechna místa z rodokmenu"
-
-#~ msgid "Import custom thumbnails from webtrees version 1"
-#~ msgstr "Importovat upravené náhledové obrázky z webtrees verse 1"
-
-#~ msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-#~ msgstr "Ve webtrees verse 1 jste mohli k mediálním objektům přidat upravené náhledové obrázky vytvořením souborů ve složkách \"thumbs\"."
-
-#~ msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-#~ msgstr "Ve webtrees verse 2 se náhledové obrázky ukládají jako druhý mediálbí soubor k témuž mediálnímu objektu."
-
-#~ msgid "Include fully matched places"
-#~ msgstr "Zahrnout místa, která plně vyhovují požadavkům"
-
-#~ msgid "Include media (automatically zips files)"
-#~ msgstr "Zahrnout média (automaticky se soubory zkomprimují do .zip)"
-
-#~ msgid "Individual ID prefix"
-#~ msgstr "Osobní ID prefix"
-
-#~ msgid "Individual distribution"
-#~ msgstr "Rozmístění osob"
-
-#~ msgid "Individual list"
-#~ msgstr "Seznam osob"
-
-#, php-format
-#~ msgid "Individuals with surname %s"
-#~ msgstr "Osoby s příjmením %s"
-
-#~ msgid "Information about the request is shown under the link below."
-#~ msgstr "Byla použita následující data."
-
-#~ msgid "Initiatory"
-#~ msgstr "Iniciace (LDS)"
-
-#~ msgid "Installation folder"
-#~ msgstr "Instalační složka"
-
-#~ msgid "Instructions for Google mail"
-#~ msgstr "Instrukce pro poštu Google"
-
-#~ msgid "Interred"
-#~ msgstr "Pohřben"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Interred"
-#~ msgstr "Pohřbena"
-
-#~ msgctxt "MALE"
-#~ msgid "Interred"
-#~ msgstr "Pohřben"
-
-#~ msgid "Invalid GEDCOM format"
-#~ msgstr "Neplatný formát GEDCOM"
-
-#~ msgid "Joint family name"
-#~ msgstr "Společné rodinné jméno"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "džumádá l-úlá"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "džumádá l-úlá"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "džumádá l-úlá"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "džumádá l-úlá"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "džumádá l-áchira"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "džumádá l-áchira"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "džumádá l-áchira"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "džumádá l-áchira"
-
-#~ msgid "Keep"
-#~ msgstr "Zachovat"
-
-#~ msgid "Keep link in list"
-#~ msgstr "Zachovat odkaz v seznamu"
-
-#~ msgid "LDS ordinance codes in chart boxes"
-#~ msgstr "Kódy mormonských obřadů v políčkách diagramů"
-
-#~ msgid "LDS temple"
-#~ msgstr "Chrám LDS (Temple)"
-
-#~ msgid "Latest birth year"
-#~ msgstr "Rok posledního narození"
-
-#~ msgid "Latest death year"
-#~ msgstr "Rok posledního úmrtí"
-
-#~ msgid "Leave this blank to use the default value."
-#~ msgstr "Pokud zanecháte toto nastavení prázdné, použije se výchozí hodnota."
-
-#~ msgid "Left"
-#~ msgstr "Levý"
-
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Legal (216 × 356 mm)"
-
-#~ msgid "Level"
-#~ msgstr "Úroveň"
-
-#~ msgid "Limit"
-#~ msgstr "Omezení"
-
-#~ msgid "Limit display by"
-#~ msgstr "Omezit zobrazení podle"
-
-#~ msgid "Link to an existing media object"
-#~ msgstr "Odkázat na již existující objekt médií"
-
-#~ msgid "Linked database ID"
-#~ msgstr "ID napojené databáze"
-
-#~ msgid "Location not removed: this location contains sub-locations"
-#~ msgstr "Umístění nebylo odstraněno: toto umístění obsahuje vnořené umístění"
-
-#~ msgid "Login ID"
-#~ msgstr "Login ID"
-
-#~ msgid "Longevity versus time"
-#~ msgstr "Dlouhověkost proti času"
-
-#~ msgid "Lost password request"
-#~ msgstr "Zapomenuté heslo"
-
-#~ msgid "Lowest population"
-#~ msgstr "Nejnižší populace"
-
-#~ msgid "Mailing name"
-#~ msgstr "Korespondenční jméno"
-
-#~ msgid "Main section blocks"
-#~ msgstr "Bloky hlavního oddílu"
-
-#~ msgid "Manage family trees "
-#~ msgstr "Správa rodokmenů "
-
-#~ msgid "Manage the links"
-#~ msgstr "Spravovat odkazy"
-
-#~ msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
-#~ msgstr "Mnoho mail serverů požaduje, aby se odesílací server správně identifikoval použitím platného doménového jména."
-
-#~ msgid "Map provider"
-#~ msgstr "Poskytovatel mapy"
-
-#~ msgid "Marriage status"
-#~ msgstr "Status manželství"
-
-#~ msgid "Marriage type unknown"
-#~ msgstr "Sňatek neznámého typu"
-
-#~ msgid "Married surname"
-#~ msgstr "Příjmení manželů"
-
-#~ msgid "Match calendar"
-#~ msgstr "Musí se shodovat s kalendářem"
-
-#~ msgid "Max"
-#~ msgstr "Max"
-
-#~ msgid "Maximum descendancy generations"
-#~ msgstr "Maximum generací pro Rozrod"
-
-#~ msgid "Maximum pedigree generations"
-#~ msgstr "Maximum generací pro Vývod"
-
-#~ msgid "Media ID prefix"
-#~ msgstr "ID prefix pro média"
-
-#~ msgid "Media contains"
-#~ msgstr "Média obsahují"
-
-#, php-format
-#~ msgid "Media filenames will be prefixed by %s."
-#~ msgstr "Jména souborů médií dostanou předponu %s."
-
-#~ msgid "Medical condition"
-#~ msgstr "Zdravotní stav"
-
-#~ msgid "Memory limit"
-#~ msgstr "Maximální velikost paměti"
-
-#~ msgid "Midnight"
-#~ msgstr "Půlnoc"
-
-#~ msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
-#~ msgstr "Minimální a maximální násobek přiblížení pro Google mapy. 1 je celá mapa, 15 jsou jednotlivé domy. Pozor, 15 je dostupná jen v určitých oblastech."
-
-#~ msgid "Minimum number of occurrences to be a “common surname”"
-#~ msgstr "Min. počet výskytů pro „nejčastější příjmení“"
-
-#~ msgid "Moderate pending changes"
-#~ msgstr "Upravit dosud neschválené změny"
-
-#~ msgid "More news articles"
-#~ msgstr "Další články novinek"
-
-#~ msgid "Most sites are configured to use the default value of 3306."
-#~ msgstr "Většina stránek používá výchozí nastavení 3306."
-
-#~ msgid "Move left"
-#~ msgstr "Přesunout doleva"
-
-#~ msgid "Move right"
-#~ msgstr "Přesunout doprava"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "al-muharram"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Muḥarram"
-#~ msgstr "al-muharram"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "al-muharram"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "al-muharram"
-
-#~ msgid "MySQL gave the error: %s"
-#~ msgstr "MySQL vyhodila chybu: %s"
-
-#~ msgid "MySQL variables"
-#~ msgstr "Proměnné MySQL"
-
-#~ msgid "Name contains"
-#~ msgstr "Jméno obsahuje"
-
-#~ msgid "Names to add to common surnames (comma separated)"
-#~ msgstr "Jména, která přidat k nejčastějším příjmením (oddělená čárkami)"
-
-#~ msgid "Names to remove from common surnames (comma separated)"
-#~ msgstr "Jména, která odebrat z nejčastějších příjmení (oddělená čárkami)"
-
-#~ msgid "Neighborhood"
-#~ msgstr "Blízké okolí"
-
-#~ msgid "Netherlands Antilles"
-#~ msgstr "Nizozemské Antily"
-
-#~ msgid "Neutral Zone"
-#~ msgstr "Neutrální území"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Never married"
-#~ msgstr "Celý život svobodná"
-
-#~ msgctxt "MALE"
-#~ msgid "Never married"
-#~ msgstr "Celý život svobodný"
-
-#~ msgid "No ancestors in the database."
-#~ msgstr "Žádní předci v databázi."
-
-#~ msgid "No custom modules are enabled."
-#~ msgstr "Nejsou povoleny žádné vlastní moduly."
-
-#~ msgid "No custom themes are enabled."
-#~ msgstr "Nejsou povolena žádná vlastní témata."
-
-#~ msgid "No limit"
-#~ msgstr "Bez omezení"
-
-#~ msgid "No map data exists for this individual"
-#~ msgstr "Žádné mapy pro tuto osobu"
-
-#~ msgid "No mappable items"
-#~ msgstr "Žádné mapovatelné položky"
-
-#~ msgid "No media file was provided."
-#~ msgstr "Nebyl dodán žádný mediální soubor."
-
-#~ msgid "No places found"
-#~ msgstr "Nebyla nalezena žádná místa"
-
-#~ msgid "No places have been found."
-#~ msgstr "Nebyla nalezena žádná místa."
-
-#~ msgid "Nobody at all"
-#~ msgstr "Nikdo"
-
-#~ msgid "Noon"
-#~ msgstr "Poledne"
-
-#~ msgid "Not a valid individual, family, or source ID"
-#~ msgstr "Neplatný ID pro osobu, rodinu nebo pramen"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Not married"
-#~ msgstr "Nesezdaná"
-
-#~ msgctxt "MALE"
-#~ msgid "Not married"
-#~ msgstr "Nesezdaný"
-
-#~ msgid "Note ID prefix"
-#~ msgstr "ID prefix pro poznámky"
-
-#~ msgid "Number of generations"
-#~ msgstr "Počet generací"
-
-#~ msgid "Number of items"
-#~ msgstr "Počet položek"
-
-#~ msgid "Number of items to show"
-#~ msgstr "Počet položek k zobrazení"
-
-#~ msgid "Number of months since the last sign-in for a user’s account to be considered inactive: "
-#~ msgstr "Počet měsíců od posledního přihlášení, kdy se prohlásí účet neaktivním: "
-
-#~ msgid "Oldest at bottom"
-#~ msgstr "Nejstarší dole"
-
-#~ msgid "Oldest at top"
-#~ msgstr "Nejstarší nahoře"
-
-#~ msgid "Optional prefixes and suffixes"
-#~ msgstr "Volitelné předpony a přípony"
-
-#~ msgid "Order"
-#~ msgstr "Řazení"
-
-#~ msgid "Ordnance Survey historic maps"
-#~ msgstr "Historické mapy Ordnance Survey"
-
-#~ msgid "Other folder… please type in"
-#~ msgstr "Jiná složka … prosím napište"
-
-#~ msgid "Other genealogy applications might not recognize this data."
-#~ msgstr "Jiné genealogické aplikace nemusejí tyto údaje uznávat."
-
-#~ msgid "Others"
-#~ msgstr "Ostatní"
-
-#~ msgid "Overwrite existing coordinates."
-#~ msgstr "Přepsat existující souřadnice."
-
-#~ msgid "Own charts"
-#~ msgstr "Vlastní diagramy"
-
-#~ msgid "P.M."
-#~ msgstr "Odpoledne"
-
-#~ msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "Rozšíření PHP „%1$s“ je deaktivováno. Dokud nebude aktivní, následující funkce vám nebudou fungovat: %2$s. Prosím požádejte svého správce serveru o aktivaci tohoto rozšíření."
-
-#~ msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "Rozšíření PHP „%s“ je deaktivováno. Dokud nebude aktivní, nebude vám povoleno instalovat webtrees. Prosím požádejte svého správce serveru o aktivaci tohoto rozšíření."
-
-#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "Nastavení PHP „%1$s“ není aktivní. Dokud nebude povoleno, následující funkce vám nebudou fungovat: %2$s. Prosím požádejte svého správce serveru o aktivaci tohoto rozšíření."
-
-#~ msgid "PHP time limit"
-#~ msgstr "Časový limit PHP"
-
-#~ msgid "Parent"
-#~ msgstr "Rodič"
-
-#~ msgid "Passwords do not match."
-#~ msgstr "Hesla se neshodují."
-
-#~ msgid "Passwords must contain at least 8 characters."
-#~ msgstr "Heslo musí obsahovat alespoň 8 znaků."
-
-#~ msgid "Pedigree chart"
-#~ msgstr "Vývod"
-
-#~ msgid "Pedigree of %s"
-#~ msgstr "Vývod: %s"
-
-#~ msgid "Phonetic"
-#~ msgstr "Fonetický přepis"
-
-#~ msgid "Phonetic title"
-#~ msgstr "Název foneticky"
-
-#~ msgid "PhpGedView might be installed in one of these folders:"
-#~ msgstr "PhpGedView by mohl být instalován v některé z těchto složek:"
-
-#~ msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
-#~ msgstr "PhpGedView musí být ve verzi 4.2.3 nebo z SVN až po #%s"
-
-#~ msgid "PhpGedView must use the same database as webtrees."
-#~ msgstr "PhpGedView musí používat stejnou databázi jako webtrees."
-
-#~ msgid "PhpGedView to webtrees transfer wizard"
-#~ msgstr "Průvodce pro přechod z PhpGedView na webtrees"
-
-#~ msgid "Place check"
-#~ msgstr "Kontrola místa"
-
-#~ msgid "Place contains"
-#~ msgstr "Místo obsahuje"
-
-#~ msgid "Place of citizenship"
-#~ msgstr "Místo občanství"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Shazuji web vytvořením souboru %s…"
-
-#~ msgid "Place the website online, by deleting the file %s…"
-#~ msgstr "Nahazuji web smazáním souboru %s…"
-
-#~ msgid "Places found"
-#~ msgstr "Nalezená místa"
-
-#~ msgid "Places in %s"
-#~ msgstr "Místa v %s"
-
-#~ msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-#~ msgstr "Místa by měla být vkládána podle standardů pro rodokmeny. Nejurčitější místo je první, a dále následují čárkami oddělená další obecnější úrovně míst.<br><br>Například Salt Lake City by se zadalo jako „Salt Lake City, Salt Lake, Utah, USA“.<br><br>Rozebereme každou část. První část „Salt Lake City“, je město, kde se daná událost stala. V některých zemích existují městské obvody nebo obce uvnitř města. V tomto případě by měly být uvedeny ještě před městem. Další část „Salt Lake City“, je kraj. „Utah“ je stát a „USA“ je země (federace).<br><br>Pokud některá úroveň místa není známá, mělo se nechat prázdné místo mezi čárkami. Kdybychom neznali kraj, ve kterém Salt Lake City leží, měli bychom napsat „Salt Lake City, , Utah, USA“. Kdybychom znali jen, že daná osoba žije v Utahu, tak to zapíšeme: „, , Utah, USA“.<br><br>Můžete použít odkaz <b>Najít místo</b>, který vám pomůže najít již v databázi existující místo."
-
-#~ msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-#~ msgstr "Místa s neplatnými souřadnicemi se na mapě neukáží a na postranním panelu jsou červeně orámována"
-
-#~ msgid "Please enter a given name, surname, or place in addition to the year"
-#~ msgstr "Zadejte k roku ještě křestní jméno, příjmení nebo místo"
-
-#~ msgid "Please enter a message subject."
-#~ msgstr "Prosím zadejte předmět zprávy."
-
-#~ msgid "Please enter more than one character."
-#~ msgstr "Prosím vložte více než jeden znak."
-
-#~ msgid "Please enter some message text before sending."
-#~ msgstr "Prosím zadejte text zprávy před jejím odesláním."
-
-#~ msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
-#~ msgstr "Poskytněte svoji emailovou adresu, abychom vám mohli na tuto zprávu odpovědět. Bez znalosti vaší adresy toho nebudeme schopni. Vaše adresa nebude použita na nic jiného, než k odpovědi na tuto zprávu."
-
-#~ msgid "Precision"
-#~ msgstr "Přesnost"
-
-#~ msgid "Precision of the latitude and longitude"
-#~ msgstr "Přesnost zeměpisné šířky a délky"
-
-#~ msgid "Prefixes"
-#~ msgstr "Předpony"
-
-#~ msgid "Presentation style"
-#~ msgstr "Styl prezentace"
-
-#~ msgid "Privacy restriction"
-#~ msgstr "Utajovací omezení"
-
-#~ msgid "Quick repository facts"
-#~ msgstr "Pohotová fakta k repozitářům"
-
-#~ msgid "Quick source facts"
-#~ msgstr "Pohotová fakta k pramenům"
-
-#~ msgid "README documentation"
-#~ msgstr "README dokumentace"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgid "Rada"
-#~ msgstr "Rada"
-
-#~ msgid "Really delete all geographic data?"
-#~ msgstr "Připraveni vymazat všechny zeměpisné údaje?"
-
-#~ msgid "Records are not the same type. Cannot merge records that are not the same type."
-#~ msgstr "Záznamy nejsou stejného typu. Není možné sloučit záznamu rozdílných typů."
-
-#~ msgid "Redraw map"
-#~ msgstr "Překreslit mapu"
-
-#~ msgid "Reliability of the information"
-#~ msgstr "Spolehlivost informace"
-
-#~ msgid "Religious name"
-#~ msgstr "Náboženské jméno"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Religious name"
-#~ msgstr "Náboženské jméno"
-
-#~ msgctxt "MALE"
-#~ msgid "Religious name"
-#~ msgstr "Náboženské jméno"
-
-#~ msgid "Remove flag"
-#~ msgstr "Příznak Odstranit"
-
-#~ msgid "Remove link from list"
-#~ msgstr "Odstranit odkaz ze seznamu"
-
-#~ msgid "Renumber"
-#~ msgstr "Přečíslovat"
-
-#~ msgid "Renumber family tree"
-#~ msgstr "Přečíslovat rodokmen"
-
-#~ msgid "Repositories found"
-#~ msgstr "Nalezené repozitáře"
-
-#~ msgid "Repository ID prefix"
-#~ msgstr "ID prefix pro repozitář"
-
-#~ msgid "Repository contains"
-#~ msgstr "Repozitář obsahuje"
-
-#~ msgid "Reset to initial map state"
-#~ msgstr "Obnovení počátečního stavu mapy"
-
-#~ msgid "Restrict access to the website, using IP addresses and user-agent strings."
-#~ msgstr "Omezit přístup na web podle IP adresy a řetězce „User agent“."
-
-#~ msgid "Resulting value"
-#~ msgstr "Výsledná hodnota"
-
-#~ msgid "Right"
-#~ msgstr "Pravý"
-
-#~ msgid "Right section blocks"
-#~ msgstr "Bloky pravého oddílu"
-
-#~ msgid "Romanized title"
-#~ msgstr "Název v latince"
-
-#~ msgid "Rule"
-#~ msgstr "Pravidlo"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "safar"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Ṣafar"
-#~ msgstr "safar"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "safar"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "safar"
-
-#~ msgid "Satellite"
-#~ msgstr "Družice"
-
-#~ msgid "Search engine"
-#~ msgstr "Vyhledávač"
-
-#~ msgid "Search for individuals to add to add Links list."
-#~ msgstr "Hledat osoby pro přidání do seznamu Přidat odkazy."
-
-#~ msgid "Search globally"
-#~ msgstr "Hledat globálně"
-
-#~ msgid "Search locally"
-#~ msgstr "Hledat lokálně"
-
-#~ msgid "Select a block and use the arrows to move it."
-#~ msgstr "Označte jméno bloku a klikněte na šipku. Tímto přesunete blok ve směru daném šipkou."
-
-#~ msgid "Select chart type"
-#~ msgstr "Vybrat typ diagramu"
-
-#~ msgid "Select events"
-#~ msgstr "Vybrat události"
-
-#~ msgid "Select flag"
-#~ msgstr "Příznak Označit"
-
-#~ msgid "Select the desired count interval"
-#~ msgstr "Vyberte interval požadovaného počtu"
-
-#~ msgid "Select the languages that will be shown in menus."
-#~ msgstr "Vybrat jazyky, které se mají zobrazit v nabídkách."
-
-#~ msgid "Select the stats to show in this block"
-#~ msgstr "Vybrat statistiky, které se zobrazí v tomto bloku"
-
-#~ msgid "Send broadcast messages"
-#~ msgstr "Poslat zprávy všem uživatelům"
-
-#~ msgid "Serbia and Montenegro"
-#~ msgstr "Srbsko a Černá Hora"
-
-#~ msgid "Server file containing places (CSV)"
-#~ msgstr "Soubor na serveru obsahující místa (CSV)"
-
-#~ msgid "Session timeout"
-#~ msgstr "Vypršení platnosti session"
-
-#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
-#~ msgstr "Nastavte implicitní počet generací, jež se mají zobrazit ve vývodech."
-
-#~ msgid "Set the maximum number of generations to display on descendancy charts."
-#~ msgstr "Nastavte maximální počet generací, který se může zobrazit v diagramech potomků."
-
-#~ msgid "Set the maximum number of generations to display on pedigree charts."
-#~ msgstr "Nastavte maximální počet generací, který se může zobrazit ve vývodech."
-
-#~ msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts. This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-#~ msgstr "Nastavit na <b>Ano</b>, aby se v konfiguračních souborech, v nastavení uživatelů a v diagramech pro identifikátor (ID) osoby používalo číslo RIN namísto identifikátoru GEDCOM ID. To je užitečné pro ty genealogické programy, které při exportu souborů GEDCOM nepřiřazují těm samým osobám důsledně stejné identifikátory, ale vždy používají stejné číslo RIN."
-
-#~ msgid "Shared note contains"
-#~ msgstr "Sdílená poznámka obsahuje"
-
-#~ msgid "Shared notes found"
-#~ msgstr "Nalezené sdílené poznámky"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "ša’bán"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Shaʿbān"
-#~ msgstr "ša’bán"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "ša’bán"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "ša’bán"
-
-#~ msgid "Short version"
-#~ msgstr "Zkráceně"
-
-#~ msgid "Should this block be hidden when it is empty"
-#~ msgstr "Měl by být tento blok skrytý, pokud je prázdný?"
-
-#~ msgid "Show all notes and source references on notes and sources tabs"
-#~ msgstr "Zobrazit všechny poznámky a odkazy na prameny v panelech Poznámky a Prameny"
-
-#~ msgid "Show all spouses and ancestors"
-#~ msgstr "Zobrazit všechny partnery a předky"
-
-#~ msgid "Show all tags"
-#~ msgstr "Zobrazit všechny tagy"
-
-#~ msgid "Show chart details by default"
-#~ msgstr "Podrobnosti diagramu normálně zobrazit"
-
-#~ msgid "Show common surnames"
-#~ msgstr "Zobrazit nejčastější příjmení"
-
-#~ msgid "Show counts before or after name"
-#~ msgstr "Počty zobrazit před nebo za jménem"
-
-#~ msgid "Show cousins"
-#~ msgstr "Zobraz bratrance"
-
-#~ msgid "Show date differences"
-#~ msgstr "Zobrazit časové rozdíly"
-
-#~ msgid "Show details"
-#~ msgstr "Zobrazit podrobnosti"
-
-#~ msgid "Show hit counters on Portal and Individual pages."
-#~ msgstr "Zobrazovat počítadlo přístupů na portále a na osobních stránkách."
-
-#~ msgid "Show images"
-#~ msgstr "Zobrazit obrázky"
-
-#~ msgid "Show inactive places"
-#~ msgstr "Zobrazit neaktivní místa"
-
-#~ msgid "Show lifespans"
-#~ msgstr "Zobrazit délku života"
-
-#~ msgid "Show only births, deaths, and marriages"
-#~ msgstr "Zobrazit jen narození, úmrtí a sňatky"
-
-#~ msgid "Show only the selected tags"
-#~ msgstr "Zobrazit jen vybrané tagy"
-
-#~ msgid "Show places in hierarchy"
-#~ msgstr "Zobrazit místa hierarchicky"
-
-#~ msgid "Show related individuals/families"
-#~ msgstr "Ukázat spřízněné osoby/rodiny"
-
-#~ msgid "Show statistics charts"
-#~ msgstr "Ukázat statistické diagramy"
-
-#~ msgid "Show the location of places and events using the Google™ maps mapping service."
-#~ msgstr "Zobrazí polohu míst a událostí s použitím Google Maps ™ mapové služby."
-
-#~ msgid "Sicily"
-#~ msgstr "Sicílie"
-
-#~ msgid "Sign-in URL"
-#~ msgstr "Přihlašovací URL"
-
-#~ msgid "Signed-in as "
-#~ msgstr "Přihlášen jako "
-
-#~ msgid "Simple search filter based on the characters entered, no wildcards are accepted."
-#~ msgstr "Jednoduchý vyhledávací filtr založený na zadaných znacích, nepoužijí se žádné zástupné znaky (wildcards)."
-
-#~ msgid "Site preferences"
-#~ msgstr "Předvolby webové stránky"
-
-#~ msgid "Size of map (in pixels)"
-#~ msgstr "Velikost mapy (v pixelech)"
-
-#~ msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-#~ msgstr "Některá jména míst mohou být zapsána volitelně s předponamí nebo příponami. Například „Polanka“ versus „Polanka nad Odrou“. Pokud rodokmen obsahuje dlouhá jména míst, ale geografická databáze obsahuje jen krátká, pak můžete určit seznam předpon a přípon, které se budou ignorovat. Násobné položky oddělíte středníky. Například „nad Odrou;n. Odrou“ nebo „Město;m.“."
-
-#~ msgid "Source ID prefix"
-#~ msgstr "ID prefix pro pramen"
-
-#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-#~ msgstr "Citace pramenů mohou obsahovat pole, která označují kvalitu získaných dat (primární, sekundární atd.) a datum záznamu události v prameni. Pokud nepoužíváte tato pole, můžete je při vytváření nových citací pramenů deaktivovat."
-
-#~ msgid "Source contains"
-#~ msgstr "Pramen obsahuje"
-
-#~ msgid "Spouse census date"
-#~ msgstr "Datum uzavření partnerství"
-
-#~ msgid "Spouse census place"
-#~ msgstr "Místo uzavření partnerství"
-
-#~ msgid "Spouse note"
-#~ msgstr "Poznámka k partnerství"
-
-#~ msgid "Standard"
-#~ msgstr "Standardní"
-
-#~ msgid "Start IP address"
-#~ msgstr "Počáteční IP adresa"
-
-#~ msgid "Start at parents"
-#~ msgstr "Začít u rodičů"
-
-#~ msgid "Statistics chart"
-#~ msgstr "Graf četnosti"
-
-#~ msgid "Store watermarked full size images on server"
-#~ msgstr "Ukládat na server obrázky v plné velikosti chráněné vodoznakem"
-
-#~ msgid "Store watermarked thumbnails on server"
-#~ msgstr "Ukládat na server vodoznakem chráněné náhledy"
-
-#~ msgid "Street name"
-#~ msgstr "Jméno ulice"
-
-#~ msgid "Subdivision"
-#~ msgstr "Další členění"
-
-#~ msgid "Suffixes"
-#~ msgstr "Přípony"
-
-#~ msgid "Support for non-standard GEDCOM tags."
-#~ msgstr "Podpora pro nestandardní tagy GEDCOM."
-
-#~ msgid "System settings"
-#~ msgstr "Nastavení systému"
-
-#~ msgid "Tag"
-#~ msgstr "Popisek"
-
-#~ msgid "Tell visitors why this site uses cookies."
-#~ msgstr "Sdělte návštěvníkům, proč tento web používá cookies."
-
-#~ msgid "Terrain"
-#~ msgstr "Krajina"
-
-#~ msgid "The FAQ list is empty."
-#~ msgstr "Seznam častých dotazů je prázdný."
-
-#~ msgid "The GEDCOM standard does not allow URLs in media objects."
-#~ msgstr "Standard GEDCOM nepřipouští URL u mediálních objektů."
-
-#~ msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-#~ msgstr "Průvodce přechodu Z PhpGedView na webtrees je automatizovaný proces, který pomáhá správcům se přesunout z instalace PhpGedView na webtrees. Přesune všechny PhpGedView GEDCOMy a další informace z databáze do nové webtrees databáze. Následující požadavky jsou nutné:"
-
-#~ msgid "The data in this website has been collected for the purposes of genealogical research."
-#~ msgstr "Údaje na této webové stránce byly shromážděny za účelem genealogického bádání."
-
-#~ msgid "The database reported the following error message:"
-#~ msgstr "Databáze vypsala následující chybovou zprávu:"
-
-#~ msgid "The details of this family are private."
-#~ msgstr "Podrobnosti o této rodině jsou soukromé."
-
-#~ msgid "The details of this individual are private."
-#~ msgstr "Podrobnosti o dané osobě jsou soukromé."
-
-#~ msgid "The file %s could not be updated."
-#~ msgstr "Soubor %s nebyl aktualizován."
-
-#~ msgid "The file %s has been created."
-#~ msgstr "Soubor %s byl vytvořen."
-
-#, php-format
-#~ msgid "The folder %s does not exist, and it could not be created."
-#~ msgstr "Složka %s neexistuje, a ani nemohla být vytvořena."
-
-#~ msgid "The following places have been changed:"
-#~ msgstr "Následující místa byla změněna:"
-
-#~ msgid "The following places would be changed:"
-#~ msgstr "Následující místa by byla změněna:"
-
-#~ msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
-#~ msgstr "Následující pravidla pomáhají určit, zda-li návštěvník je člověk (plný přístup), robot vyhledávacích serverů (omezený přístup) nebo nechtěný uživatel (zamítnutý přístup)."
-
-#~ msgid "The media file %s does not exist."
-#~ msgstr "Soubor médií %s neexistuje."
-
-#~ msgid "The media file was not found in this family tree."
-#~ msgstr "Soubor médií nebyl v tomto rodokmenu nalezen."
-
-#~ msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-#~ msgstr "Soubor médií, který nahráváte, může být nebo pravděpodobně bude pojmenován jinak na serveru než na lokálním počítači. Lokální jméno souboru má pro vás často význam, ale není tak významný pro další návštěvníky tohoto webu. Zvažte také možnost, kdy vy a někdo jiný se snaží nahrát soubory nazvané „babicka.jpg“.<br><br>V tomto poli napište nové jméno nahrávaného souboru. Jméno bude také použito pro náhled, který můžete nahrát odděleně nebo generovat automaticky. Nezadávejte přípony (jpg, gif, pdf, doc atd.)<br><br>Nechejte toto pole prázdné, pokud chcete nechat původní název souboru."
-
-#~ msgid "The most common repository facts are listed separately, so that they can be added more easily."
-#~ msgstr "Nejužívanější fakta a události k repozitáři se zobrazí odděleně, takže je lze snadněji přidávat."
-
-#~ msgid "The most common source facts are listed separately, so that they can be added more easily."
-#~ msgstr "Nejužívanější fakta a události k pramenům se zobrazí odděleně, takže je lze snadněji přidávat."
-
-#~ msgid "The new files are currently located in the folder %s."
-#~ msgstr "Nové soubory jsou umístěny ve složce %s."
-
-#~ msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
-#~ msgstr "Na mapě se zobrazí počet výskytů daného jména. Pokud necháte toto pole prázdné, použije se nejčastější příjmení."
-
-#, php-format
-#~ msgid "The parameter “%s” is missing."
-#~ msgstr "Chybí parametr „%s“."
-
-#~ msgid "The passwords do not match."
-#~ msgstr "Hesla nesouhlasí."
-
-#~ msgid "The preferences for the chart “%s” have been updated."
-#~ msgstr "Předvolby pro diagram “%s 1” jsou aktualizovány."
-
-#~ msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-#~ msgstr "Předpona je volitelná, ale doporučená. Nastavením unikátní předpony můžete nechat různé aplikace sdílet stejnou databázi. Navrhujeme „wt_“, ale může to být cokoliv si přejete."
-
-#~ msgid "The problem"
-#~ msgstr "Problém"
-
-#~ msgid "The record %1$s has been renamed to %2$s."
-#~ msgstr "Záznam %1$s je přejmenován na %2$s."
-
-#~ msgid "The record has been copied to the clipboard."
-#~ msgstr "Záznam je zkopírován do schránky."
-
-#~ msgid "The regular expression appears to contain an error. It can’t be used."
-#~ msgstr "Regulární výraz obsahuje chybu. Nemůže se použít."
-
-#~ msgid "The specified folder does not contain an installation of PhpGedView."
-#~ msgstr "Zmíněná složka neobsahuje instalaci PhpGedView."
-
-#~ msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-#~ msgstr "Menu motivů ze zobrazí jen tehdy, když nastavení webové stránky povolí uživatelům vybrat si motiv."
-
-#~ msgid "The thumbnail file %1$s could not be renamed to %2$s."
-#~ msgstr "Náhled %1$s nemohl být přejmenován na %2$s."
-
-#~ msgid "The thumbnail file %1$s has been renamed to %2$s."
-#~ msgstr "Náhled %1$s byl úspěšně přejmenován na %2$s."
-
-#~ msgid "The thumbnail file %s does not exist."
-#~ msgstr "Náhled %s neexistuje."
-
-#~ msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
-#~ msgstr "Čas v sekundách, po jak dlouhý zůstávají sezení uživatelů aktivní. Výchozí je 7200, tedy 2 hodiny."
-
-#~ msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
-#~ msgstr "Hodnota, která se má v hlavičce HTML stránky zapsat do meta tagu s popisem. Ponechte políčko prázdné, chcete-li, aby byl použit název rodokmenu."
-
-#~ msgid "The version of %s is too new."
-#~ msgstr "Verze %s je příliš nová."
-
-#~ msgid "The version of %s is too old."
-#~ msgstr "Verze %s je příliš stará."
-
-#~ msgid "The website access rule has been created."
-#~ msgstr "Přístupová pravidla webu jsou vytvořena."
-
-#~ msgid "The website access rule has been deleted."
-#~ msgstr "Přístupová pravidla webu jsou vymazána."
-
-#~ msgid "The website access rule has been updated."
-#~ msgstr "Přístupová pravidla webu jsou aktualizována."
-
-#~ msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
-#~ msgstr "Web www.geonames.org poskytuje velkou databázi jmen míst. Při vytváření nových míst se tato databáze může prohledat. Abyste mohli tuto funkcionalitu použít, je třeba se zdarma registrovat na www.geonames.org a poskytnout uživatelské jméno."
-
-#~ msgid "The “%” character is a wildcard, and will match zero or more other characters."
-#~ msgstr "Znak “%s” je zástupný (wildcard) a zastupuje prázdný nebo víceznakový řetězec jiných znaků."
-
-#~ msgid "Theme menu"
-#~ msgstr "Menu motivů"
-
-#~ msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
-#~ msgstr "Motivy je možné volit na třech úrovních: uživatel, rodokmen a webová stránka. Uživatelem zvolený má přednost před předvolbou rodokmenu a ta má přednost před předvolbou webu. Volba „výchozí motiv“ na jedné úrovni použije motiv z vyšší úrovně."
-
-#~ msgid "There is no account with the username or email “%s”."
-#~ msgstr "Žádný účet se jménem uživatele nebo emailem “%s” neexistuje."
-
-#, php-format
-#~ msgid "There is no user account with the email “%s”."
-#~ msgstr "K emailu “%s” neexistuje uživatelský účet."
-
-#~ msgid "These pages provide access to all the preferences and management tools for this webtrees site."
-#~ msgstr "Tyto stránky umožňují přístup ke všem konfiguračním volbám a nástroj pro správu tohoto webu webtrees."
-
-#~ msgid "This GEDCOM file is encoded using %1$s. Assume this to mean %2$s."
-#~ msgstr "Tento soubor GEDCOM je kódován v %1$s. Bereme to jako %2$s."
-
-#, php-format
-#~ msgid "This could be caused by an error at %s"
-#~ msgstr "To mohla způsobit chyba v %s"
-
-#~ msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
-#~ msgstr "Tato databáze a předpona pro tabulky je nejspíš používána jinou aplikací. Pokud už provozujete PhpGedView, měli byste vytvořit nové prostředí webtrees. Nastavení a data z PhpGedView můžete importovat později."
-
-#~ msgid "This database is only running MySQL version %s. You cannot install webtrees here."
-#~ msgstr "Tato databáze vyžaduje MySQL ve verzi %s. webtrees tady nemůžete nainstalovat."
-
-#~ msgid "This entry is ignored if you have entered a URL into the filename field."
-#~ msgstr "Toto políčko je ignorováno, pokud jste zadali URL do políčka jméno souboru."
-
-#~ msgid "This family remained childless"
-#~ msgstr "Tato rodina je bezdětná"
-
-#~ msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
-#~ msgstr "Tento soubor je napojen k jiné rodokmenové databázi na tomto serveru. Nemůže být proto vymazán, přesunut nebo přejmenován, dokud toto napojení nebude odstraněno."
-
-#~ msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-#~ msgstr "Toto políčko slouží pro přepínání roku v kalendáři v „režimu měsíců“ nebo v seznamu v „režimu roků“.<br>V „režimu den“ se změna roku nijak neprojeví, protože jsou zobrazeny události za celý rok.<dl><dt><b>Rozšířené možnosti</b> pro <b>Zobrazit rok:<br>Více roků najednou</b></dt><dd>Můžete hledat více než jeden rok zapsáním do políčka roku::<br>- Př. 1: <b>1992-5</b> pro všechny události od 1992 do 1995.<br>- Př. 2: <b>1972-89</b> pro všechny události od 1972 do 1989.<br>- Př. 3: <b>1610-759</b> pro všechny události od 1610 do 1759.<br>- Př. 4: <b>1880-1905</b> pro všechny události od 1880 do 1905.<br>- Př. 5: <b>880-1105</b> pro všechny události od 880 do 1105.<br><br>Také můžete vynechat poslední číslici roku pro zobrazení všech událostí za určité desetiletí.<br>- Př.: <b>197</b> pro všechny události od 1970 do 1979.</dd><dt><br><b>Zkratky</b></dt><dd>Někdy není úplně jasné, kdy přesně se daná událost stala. V těchto případech mohou být k datu přidána slova jako „po“, „před“ a „kolem“. Data jsou v GEDCOMu uložena společně se zkratkou daného termínu. V režimu roku můžete zadávat i hledání těchto termínů s nebo bez přidruženého data. Zde je několik příkladů takových dotazů:<br><b>abt</b> 1800 (abt = about = KOLEM)<br><b>bet</b> 1950-1959 (bet = between = MEZI) zadejte: bet 1950 nepo jen: 1950-59<br><b>bef</b> 1950 (bef = before = PŘED)<br><b>aft</b> 1900 (aft = after = PO)<br><br><b>Poznámka:</b> PhpGedView bude hledat výraz přesně tak, jak jej zadáte. Hledáte-li „abt 1850“, datum z GEDCOMu jako např. „abt oct 1850“ <b>nebude</b> zahrnuto ve výsledcích vyhledávání. - Můžete zadat jen zkratku bez roku a získáte seznam všech dat, která tuto zkratku obsahují.</dd></dl>Samotným vepsáním roku nespustíte vyhledávání.<br>Jelikož toto políčko není odkazem, budete po zapsání roku muset kliknout na tlačítko <b>Zobrazit měsíc</b> nebo tlačítko <b>Zobrazit rok</b>"
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-#~ msgstr "Toto je seznam čárkami oddělených popisků GEDCOMu, které se zobrazí na formuláři pro přidání/úpravu jména. Pokud používáte jinou než latinskou abecedu (hebrejština, alfabeta …), přidejte příslušný tag, např. _HEB, ROMN, FONE atd., abyste byli schopní tato data uložit v různých abecedách."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-#~ msgstr "Toto je čárkami oddělený seznam údajů o faktech v GEDCOMu, které se zobrazí při přidávání nové rodiny. Například pokud MARR je v tomto seznamu, pak se ve formuláři zobrazí pole pro datum sňatku a místo sňatku."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-#~ msgstr "Toto je čárkami oddělený seznam faktů GEDCOMu, který se zobrazí při přidávání nové osoby. Například pokud BIRT je v tomto seznamu, ve formuláři se zobrazí pole pro datum narození a místo narození."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-#~ msgstr "Toto je seznam čárkami oddělených popisků faktů GEDCOMu, které se zobrazí na formuláři pro přidání/úpravu míst. Pokud používáte jinou než latinskou abecedu (hebrejština, alfabeta …), přidejte příslušný tag, např. _HEB, ROMN, FONE atd., abyste byli schopní tato data uložit v různých abecedách."
-
-#~ msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
-#~ msgstr "Toto je souhrn <abbr title=\"Církev Ježíše Krista Svatých posledních dnů\">mormonských</abbr> ceremonií (obřadů) pro danou osobu. „B“ označuje mormonský křest, „E“ označuje mormonské pomazání, „S“ označuje mormonské zpečetění manželství, „P“ označuje mormonské zpečetění dítěte k rodičům."
-
-#~ msgid "This is case sensitive."
-#~ msgstr "Rozlišujte velká a malá písmena."
-
-#~ msgid "This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails."
-#~ msgstr "Rozlišujte malá a velká písmena. Pokud databáze s tímto jménem ještě neexistuje, webtrees se pokusí vytvořit novou. Úspěch bude záviset na dostatečných právech vašeho webového serveru. Budete informováni, pokud to selže."
-
-#~ msgid "This is the initial setting for the “show details” option on the charts."
-#~ msgstr "Toto je výchozí nastavení pro volbu „zobrazit podrobnosti“ v diagramech."
-
-#~ msgid "This is the initial value for the “show details” option on the charts."
-#~ msgstr "Toto je počáteční hodnota volby \"zobrazit podrobnosti\" u diagramů."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-#~ msgstr "Toto je seznam faktů v GEDCOMu, které uživatelé mohou přidávat k rodinám. Můžete ho upravit přidáním nebo odstraněním názvů faktů, případně dokonce vytvořením vlastních. Názvy faktů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Jedinečných faktů o rodině</i>."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-#~ msgstr "Toto je seznam faktů v GEDCOMu, které uživatelé mohou přidávat k osobám. Můžete ho upravit přidáním nebo odstraněním názvů faktů, případně dokonce vytvořením vlastních. Názvy faktů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Jedinečných faktů k osobě</i>."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-#~ msgstr "Toto je seznam faktů v GEDCOMu, které uživatelé mohou přidávat k repozitářům. Můžete ho upravit přidáním nebo odstraněním názvů faktů, případně dokonce vytvořením vlastních. Názvy faktů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Jedinečná fakta k repozitářům</i>."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-#~ msgstr "Toto je seznam faktů v GEDCOMu, které vaši uživatelé mohou přidávat k pramenům. Můžete ho upravit přidáním nebo odstraněním názvů faktů, případně dokonce vytvořením vlastních. Názvy faktů, které se objeví v seznamu, se nesmí objevit v seznamu <i>Jedinečná fakta k pramenům</i>."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-#~ msgstr "Toto je seznam faktů v GEDCOMu, které uživatelé mohou přidat k rodinám <u>právě jednou</u>. Například pokud MARR je v tomto seznamu, uživatelé nebudou moct přidat tento záznam k rodině vícekrát než jednou. Názvy faktů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Všechna fakta k rodinám</i>."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-#~ msgstr "Toto je seznam faktů v GEDCOMu, které uživatelé mohou přidat k osobám <u>právě jednou</u>. Například pokud BIRT je v tomto seznamu, uživatelé nebudou moct přidat tento záznam k osobě vícekrát než jednou. Názvy faktů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Všechna fakta k osobám</i>."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-#~ msgstr "Toto je seznam faktů v GEDCOMu, které vaši uživatelé mohou přidat k repozitářům <u>právě jednou</u>. Například pokud TITL je v tomto seznamu, uživatelé nebudou moci přidat záznam TITL k repozitáři vícekrát než jednou. Názvy údajů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Všechna fakta k repozitářům</i>."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-#~ msgstr "Toto je seznam faktů v GEDCOMu, které vaši uživatelé mohou přidat k pramenům <u>právě jednou</u>. Například pokud TITL je v tomto seznamu, uživatelé nebudou moci přidat záznam TITL k prameni vícekrát než jednou. Názvy faktů, které se objeví v tomto seznamu, se nesmí objevit v seznamu <i>Všechna fakta k pramenům</i>."
-
-#~ msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
-#~ msgstr "Toto číslo udává, kolikrát se musí nějaké příjmení v GEDCOMu vyskytovat, aby bylo zobrazeno na úvodní stránce mezi nejčastějšími příjmeními."
-
-#~ msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
-#~ msgstr "Šířka (v pixelech), která se použije při automatickém generování náhledů. Výchozí hodnota je 100."
-
-#~ msgid "This may be a mistake in your data."
-#~ msgstr "Toto může být chyba ve vašich datech."
-
-#~ msgid "This may cause a problem for other applications."
-#~ msgstr "Toto může způsobit problém v jiných aplikacích."
-
-#~ msgid "This may cause a problem for webtrees."
-#~ msgstr "Toto může způsobit problém ve webtrees."
-
-#~ msgid "This media file does not exist."
-#~ msgstr "Tento mediální soubor neexistuje."
-
-#~ msgid "This media file exists, but cannot be accessed."
-#~ msgstr "Tento mediální soubor existuje, ale nelze jej číst."
-
-#~ msgid "This media file is broken and cannot be watermarked."
-#~ msgstr "Tento soubor médií není v pořádku a nemůže být označen vodoznakem."
-
-#~ msgid "This media object is not linked to any other record."
-#~ msgstr "Na tento mediální soubor neodkazuje žádný záznam."
-
-#~ msgid "This message will be sent to %s"
-#~ msgstr "Tato zpráva bude odeslána na %s"
-
-#~ msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-#~ msgstr "Tato volba kontroluje, zda odkazy na Poznámky a Prameny, které jsou připojené k Údajům, by se měly zobrazovat na panelech Poznámky a Prameny na osobní stránce.<br><br>Běžně panely Poznámky a Prameny zobrazují jen odkazy na Poznámky a Prameny, které jsou připojeny přímo k osobnímu záznamu v databázi. Toto jsou odkazy na Poznámky a Prameny <i>úrovně 1</i>.<br><br>Volba <b>Ano</b> způsobuje, že tyto panely také zobrazují odkazy na Poznámky a Prameny, které jsou částí různých Údajů v osobních záznamech v databázi. Toto jsou odkazy na Poznámky a Prameny <i>úrovně 2</i>, protože různé Údaje jsou na úrovni 1."
-
-#~ msgid "This option controls whether or not to automatically expand the <i>Events of close relatives</i> list."
-#~ msgstr "Tato volba kontroluje, zda se má automaticky roztahovat seznam <i>Událostí nejbližších příbuzných</i>."
-
-#~ msgid "This option controls whether or not to show the individual’s sex icon on charts.<br><br>Since the sex is also indicated by the color of the box, this option doesn’t conceal the sex. The option simply removes some duplicate information from the box."
-#~ msgstr "Tato volba vám umožní, zda zobrazovat ikonu pohlaví osob v diagramech.<br><br>Tato volba úplně neschová informaci o pohlaví, protože jsou také rozlišeny barvou rámečků. Volba jen odstraňuje duplicitní informaci v rámečku."
-
-#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
-#~ msgstr "Toto nastavení určuje, jestli bude Vývod orientován na šířku nebo na výšku."
-
-#~ msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
-#~ msgstr "Tato volba nastavuje, zda se zeměpisná šířka a výška zobrazí na vyskakujících oknech připevněných k mapě."
-
-#~ msgid "This place has no coordinates"
-#~ msgstr "Toto místo nemá souřadnice"
-
-#~ msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
-#~ msgstr "Tento repozitář byl smazán. Smazání musí posoudit moderátor."
-
-#, php-format
-#~ msgid "This repository has been deleted. You should review the deletion and then %1$s or %2$s it."
-#~ msgstr "Tento repozitář byl smazán. Měli byste výmaz posoudit a pak jej %1$s nebo %2$s."
-
-#~ msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-#~ msgstr "Tento repozitář byl upraven. Úpravy musí posoudit moderátor."
-
-#, php-format
-#~ msgid "This repository has been edited. You should review the changes and then %1$s or %2$s them."
-#~ msgstr "Tento repozitář byl upraven. Měli byste úpravu posoudit a pak ji %1$s nebo %2$s."
-
-#~ msgid "This server does not support secure downloads using HTTPS."
-#~ msgstr "Tento server nepodporuje bezpečné stahování použitím HTTPS protokolu."
-
-#~ msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-#~ msgstr "Toto by měl být seznam čárkami nebo mezerami oddělených faktů, navíc k narození nebo úmrtí, které chcete, aby se objevily v diagramech jako je Vývod. Tento seznam vyžaduje použití tagů faktů definovaných ve standardu GEDCOM 5.5.1. Například pokud chcete, aby se ukázalo v rámečku povolání, přidejte do tohoto pole \"OCCU\"."
-
-#~ msgid "This site does not use any third-party tracking or analytics services."
-#~ msgstr "Tato webová stránka nepoužívá žádné trasovací ani analytické služby třetích stran."
-
-#~ msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-#~ msgstr "Tato webová stránka používá cookies k uložení přednostních hodnot, např. zvoleného jazyka."
-
-#~ msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
-#~ msgstr "Tento pramen byl smazán. Smazání musí posoudit moderátor."
-
-#, php-format
-#~ msgid "This source has been deleted. You should review the deletion and then %1$s or %2$s it."
-#~ msgstr "Tento pramen byl smazán. Měli byste výmaz posoudit a pak jej %1$s nebo %2$s."
-
-#~ msgid "This source has been edited. The changes need to be reviewed by a moderator."
-#~ msgstr "Tento pramen byl upraven. Úpravu musí posoudit moderátor."
-
-#, php-format
-#~ msgid "This source has been edited. You should review the changes and then %1$s or %2$s them."
-#~ msgstr "Tento pramen byl upraven. Úpravu byste měli posoudit a pak ji %1$s nebo %2$s."
-
-#~ msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
-#~ msgstr "Toto určuje přesnost různých úrovní, pokud vstupujete do nových geografických míst. Například stát bude určen s přesností 0 (=0 číslic po desetinné čárce), zatímco město potřebuje 3 nebo 4 číslice."
-
-#~ msgid "This type of link is not allowed here."
-#~ msgstr "Tento druh odkazu tady není povolený."
-
-#~ msgid "This website is being upgraded. Try again in a few minutes."
-#~ msgstr "Tento web se právě aktualizuje. Prosím zkuste to za pár minut znova."
-
-#~ msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-#~ msgstr "Toto aktualizuje nejvyšší úroveň části jména místa. Například „Mexico“ bude odpovídat „Quintana Roo, Mexico“, ale ne „Santa Fe, New Mexico“."
-
-#~ msgid "Thumbnail files must contain images."
-#~ msgstr "Náhledy musí být obrázky."
-
-#~ msgid "Thumbnail to upload"
-#~ msgstr "Náhled pro nahrání"
-
-#~ msgid "Title in Hebrew"
-#~ msgstr "Název v hebrejštině"
-
-#~ msgid "To"
-#~ msgstr "Na"
-
-#~ msgid "To complete the upgrade, you should install the files manually."
-#~ msgstr "K dokončení aktualizace je třeba nainstalovat soubory ručně."
-
-#~ msgid "To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server. If it contains a message, it will be displayed to visitors."
-#~ msgstr "Abyste zakázali návštěvníkům webu přístup uprostřed kopírování souborů, můžete na serveru vytvořit dočasný soubor %s. Jeho obsah bude zobrazen návštěvníkům."
-
-#~ msgid "To reduce the height of the News block, the administrator has hidden some articles. You can reveal these hidden articles by clicking the <b>View the archive</b> link."
-#~ msgstr "Pro snížení výšky bloku Novinky (News) správce schoval některé články. Znovu zobrazit schované článku můžete kliknutím na odkaz <b>Zobrazit archív</b>."
-
-#~ msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
-#~ msgstr "Pro snížení velikosti stahování můžete data komprimovat do souboru .ZIP. Před použitím pak musíte soubor .ZIP dekomprimovat."
-
-#~ msgid "To tell search engines that sitemaps are available, you can use the following links."
-#~ msgstr "Abyste sdělili vyhledávacím enginům, že vaše Mapa webu existuje, můžete použít následující odkazy."
-
-#~ msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
-#~ msgstr "Abyste sdělili vyhledávacím enginům, že vaše Mapa webu existuje, přidejte následující řádek do souboru robots.txt."
-
-#~ msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
-#~ msgstr "Pro použití účtu na Google mail nastavte následující: Jméno serveru=smtp.gmail.com, Číslo portu=587, Zabezpečené připojení=TLS, Uživatelské jméno=xxxxx@gmail.com, Heslo=[vaše heslo na gmail]"
-
-#~ msgid "Top level"
-#~ msgstr "Horní úroveň"
-
-#, php-format
-#~ msgid "Total families: %s"
-#~ msgstr "Celkem rodin: %s"
-
-#, php-format
-#~ msgid "Total individuals: %s"
-#~ msgstr "Celkem osob: %s"
-
-#~ msgid "Total number of users"
-#~ msgstr "Celkem uživatelů"
-
-#~ msgid "Total places: %s"
-#~ msgstr "Celkem míst: %s"
-
-#~ msgid "Total sources: %s"
-#~ msgstr "Celkem pramenů: %s"
-
-#~ msgid "Tracking and analytics are not added to the control panel."
-#~ msgstr "Sledování a analytika nejsou v panelu správy definovány."
-
-#~ msgid "Transylvania"
-#~ msgstr "Transylvánie"
-
-#~ msgid "Type of place markers in the place hierarchy"
-#~ msgstr "Typ označní míst v Hierarchii míst"
-
-#~ msgid "Type the password again."
-#~ msgstr "Napište heslo znovu."
-
-#~ msgid "Type your password again, to make sure you have typed it correctly."
-#~ msgstr "Zadejte heslo ještě jednou. Zamezíte tím překlepům."
-
-#~ msgid "Types of error"
-#~ msgstr "Druhy chyb"
-
-#~ msgid "USA"
-#~ msgstr "USA"
-
-#~ msgid "USSR"
-#~ msgstr "SSSR"
-
-#~ msgid "UTC"
-#~ msgstr "UTC"
-
-#~ msgid "Unable to connect using this username and password. Your server gave the following error."
-#~ msgstr "Není možné se připojit s tímto nastavením. Váš server vyhodil následující chybu."
-
-#~ msgid "Unable to find record with ID"
-#~ msgstr "Nelze nalézt záznam s ID"
-
-#~ msgid "Unique family facts"
-#~ msgstr "Jedinečná fakta k rodině"
-
-#~ msgid "Unique individual facts"
-#~ msgstr "Jedinečná fakta k osobě"
-
-#~ msgid "Unique repository facts"
-#~ msgstr "Jedinečná fakta k repozitářům"
-
-#~ msgid "Unique source facts"
-#~ msgstr "Jedinečná fakta k pramenům"
-
-#~ msgid "Unlink the media object"
-#~ msgstr "Odstranit odkaz na média"
-
-#~ msgid "Up"
-#~ msgstr "Nahoru"
-
-#~ msgid "Update all the place names in a family tree"
-#~ msgstr "Aktualizovat všechna místa v rodokmenu"
-
-#~ msgid "Upgrade anyway"
-#~ msgstr "Přesto aktualizovat"
-
-#~ msgid "Upload"
-#~ msgstr "Nahrát"
-
-#~ msgid "Upload geographic data"
-#~ msgstr "Nahrát (poslat) geografická data"
-
-#~ msgid "Use Google™ maps for the place hierarchy"
-#~ msgstr "Používat Google™ maps na hierarchii míst"
-
-#~ msgid "Use PHP mail to send messages"
-#~ msgstr "Používat PHP na odesílání zpráv"
-
-#~ msgid "Use RIN number instead of GEDCOM ID"
-#~ msgstr "Použít RIN# místo GEDCOM ID"
-
-#~ msgid "Use full source citations"
-#~ msgstr "Použít úplné citace pramenů"
-
-#~ msgid "Use the GeoNames database for autocomplete on places"
-#~ msgstr "Používat databázi GeoNames na automatické doplňování míst"
-
-#~ msgid "Use this image for charts and on the individual’s page."
-#~ msgstr "Použít tento obrázek pro diagramy a na osobní stránce."
-
-#~ msgid "Use this value"
-#~ msgstr "Použít tuto hodnotu"
-
-#~ msgid "User preferences"
-#~ msgstr "Uživatelská nastavení"
-
-#~ msgid "User-agent string"
-#~ msgstr "Řetězec „User agent“"
-
-#~ msgid "Users who are signed in"
-#~ msgstr "Přihlášení uživatelé"
-
-#~ msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
-#~ msgstr "Použitím rolovacího menu je možné si zvolit zemi, ze které můžete vybrat vlajku. Pokud se nezobrazí žádná vlajka, nejspíš není pro nadefinována žádná vlajka."
-
-#~ msgid "Verification code"
-#~ msgstr "Ověřovací kód"
-
-#~ msgid "View"
-#~ msgstr "Zobrazit"
-
-#~ msgid "View all records found in this place"
-#~ msgstr "Zobrazit všechny záznamy spojené s tímto místem"
-
-#~ msgid "View the archive"
-#~ msgstr "Zobrazit archív"
-
-#~ msgid "View the details"
-#~ msgstr "Zobrazit podrobnosti"
-
-#~ msgid "View the notes"
-#~ msgstr "Zobrazit poznámky"
-
-#~ msgid "View the statistics as graphs"
-#~ msgstr "Prohlédnout statistiky v grafech"
-
-#~ msgid "View this individual"
-#~ msgstr "Zobrazit tuto osobu"
-
-#~ msgid "View this source"
-#~ msgstr "Zobrazit tento pramen"
-
-#~ msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
-#~ msgstr "Vodoznaky můžou zpomalit generování větších obrázků. Vytížené weby můžou upřednostnit vygenerování jednou a uložení obrázku s vodoznakem na server."
-
-#~ msgid "Website URL"
-#~ msgstr "URL webových stránek"
-
-#~ msgid "Website access rules"
-#~ msgstr "Pravidla přístupu na web"
-
-#~ msgid "Website and META tag settings"
-#~ msgstr "Konfigurační možnosti META tagů"
-
-#~ msgid "West Africa"
-#~ msgstr "Západní Afrika"
-
-#~ msgid "When adding a link, the ID field cannot be empty."
-#~ msgstr "Pokud přidáváte odkaz, nenechávejte políčko ID prázdné."
-
-#~ msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-#~ msgstr "Když přidáváte nové blízké příbuzné, můžete přidávat citace pramenů buď k záznamům (osob nebo rodin), nebo k faktům a událostem (narození, sňatek a úmrtí). Tato volba rozhoduje, zda se za výchozí vezmou záznamy nebo fakta."
-
-#~ msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
-#~ msgstr "Nově vytvářené záznamy dostávají interní identifikační číslo ID. Zde můžete určit jeho předponu pro každý typ záznamu."
-
-#~ msgid "When you send this message you will receive a copy sent via email to the address you provided."
-#~ msgstr "Jestliže jste odeslali tuto zprávu, obdržíte její kopii na svou e-mailovou adresu, kterou jste uvedli při registraci."
-
-#~ msgid "Where is your PhpGedView installation?"
-#~ msgstr "Kde je vaše instalace PhpGedView ?"
-
-#~ msgid "Whole words only"
-#~ msgstr "Pouze celá slova"
-
-#~ msgid "Width"
-#~ msgstr "Šířka vějíře"
-
-#~ msgid "Width of generated thumbnails"
-#~ msgstr "Šířka generovaných náhledů"
-
-#~ msgid "Wife’s maiden surname becomes new given name"
-#~ msgstr "Manželčino rodné příjmení se stává novým křestním jménem"
-
-#~ msgid "Wife’s surname replaced by husband’s surname"
-#~ msgstr "Manželčino příjmení nahrazeno manželovým"
-
-#~ msgid "Wildcards"
-#~ msgstr "Výraz"
-
-#~ msgid "XREF prefixes"
-#~ msgstr "Předpony XREF"
-
-#~ msgid "Year input box"
-#~ msgstr "Políčko pro rok"
-
-#~ msgid "You can choose the prefix that will be used whenever new XREFs are created."
-#~ msgstr "Můžete vybrat předponu, která se použije pokaždé při vytváření nových XREF."
-
-#~ msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-#~ msgstr "Zaznačením manželských jmen můžete ulehčit vyhledávání vdaných žen. Nicméně ne všechny ženy přijmou manželovo příjmení, takže dejte pozor na zadávání nesprávných informací do databáze."
-
-#~ msgid "You can re-enable these modules after the upgrade."
-#~ msgstr "Tyto moduly můžete znovu povolit po aktualizaci."
-
-#~ msgid "You can re-enable these themes after the upgrade."
-#~ msgstr "Tato témata můžete znovu povolit po aktualizaci."
-
-#~ msgid "You can request a higher or lower limit, although the server may ignore this request."
-#~ msgstr "Můžete požadovat vyšší či nižší limit, ale server to může ignorovat."
-
-#~ msgid "You cannot create a rule which would prevent yourself from accessing the website."
-#~ msgstr "Nemůžete definovat pravidlo, které by vám samotným zabránilo v přístupu k tomuto webu."
-
-#~ msgid "You entered the same IDs. You cannot merge the same records."
-#~ msgstr "Zadali jste stejná ID čísla. Nemůžete sloučit údaje se sebou samými."
-
-#~ msgid "You have not created any journal items."
-#~ msgstr "Nevytvořili jste v deníku žádné položky."
-
-#~ msgid "You may enter a URL, beginning with “http://”."
-#~ msgstr "Můžete zadat URL začínající „http://“."
-
-#~ msgid "You must also enable “less secure applications” in your Google account."
-#~ msgstr "Ve svém účtu Google musíte umožnit také \"méně bezpečné aplikace\"."
-
-#~ msgid "You must change this before you can continue."
-#~ msgstr "Je třeba to změnit před tím, než budete pokračovat dále."
-
-#~ msgid "You must enter a name"
-#~ msgstr "Musíte vložit jméno"
-
-#~ msgid "You must enter a real name."
-#~ msgstr "Musíte vložit skutečné jméno."
-
-#~ msgid "You must enter a username."
-#~ msgstr "Musíte vložit uživatelské jméno."
-
-#~ msgid "You must provide a repository name."
-#~ msgstr "Musíte zadat jméno repozitáře."
-
-#~ msgid "You must provide a source title"
-#~ msgstr "Musíte zadat název pramene"
-
-#~ msgid "You need to sign in again, using your PhpGedView username and password."
-#~ msgstr "Musíte se znovu přihlásit použitím jména a hesla z PhpGedView."
-
-#~ msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
-#~ msgstr "Pokud chcete přesměrovat přihlašujícího se uživatele na jinou stránku, zadejte přihlašovací URL. Toto je užitečné, pokud potřebujete změnit protokol z http na šifrované https. Použijte celou URL adresu s <i>login.php</i>, například: https://www.yourserver.com/webtrees/login.php ."
-
-#~ msgid "You sent the following message to a webtrees administrator:"
-#~ msgstr "Tuto zprávu jste poslali administrátorovi webtrees:"
-
-#~ msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-#~ msgstr "Měli byste zkonzultovat s autorem modulu, zda je kompatibilní z touto verzí webtrees."
-
-#~ msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-#~ msgstr "Měli byste zkonzultovat s autorem tématu, zda je kompatibilní z touto verzí webtrees."
-
-#~ msgid "Your server’s administrator will provide you with the connection details."
-#~ msgstr "Správce vašeho serveru vám sdělí podrobnosti připojení."
-
-#~ msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-#~ msgstr "Váš uživatelský účet nemá povoleno „automaticky schvalovat změny“. Budete schopen měnit pouze jeden záznam najednou."
-
-#~ msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
-#~ msgstr "Váš webový server používá PHP verse %s, která už není udržovaná. Doporučeje se upgrade na vyšší versi."
-
-#~ msgid "Yugoslavia"
-#~ msgstr "Jugoslávie"
-
-#~ msgid "ZIP (includes media files)"
-#~ msgstr "ZIP (včetně souborů médií)"
-
-#~ msgid "Zaire"
-#~ msgstr "Zair"
-
-#~ msgid "Zip file(s)"
-#~ msgstr "Soubor(y) ZIP"
-
-#~ msgid "Zoom in here"
-#~ msgstr "Zde přiblížit"
-
-#~ msgid "Zoom in/out on this box."
-#~ msgstr "Zvětšení/zmenšení tohoto rámečku."
-
-#~ msgid "Zoom level"
-#~ msgstr "Násobek přiblížení"
-
-#~ msgid "Zoom level of map"
-#~ msgstr "Násobek přiblížení mapy"
-
-#~ msgid "Zoom out here"
-#~ msgstr "Zde oddálit"
-
-#~ msgid "Zoom="
-#~ msgstr "Zoom="
-
-#~ msgid "a URL"
-#~ msgstr "URL"
-
-#~ msgid "a file on the server"
-#~ msgstr "soubor na serveru"
-
-#~ msgid "a file on your computer"
-#~ msgstr "soubor na vašem počítači"
-
-#~ msgid "a.m."
-#~ msgstr "dopoledne"
-
-#~ msgctxt "FEMALE"
-#~ msgid "adopted name"
-#~ msgstr "adoptované jméno"
-
-#~ msgctxt "MALE"
-#~ msgid "adopted name"
-#~ msgstr "adoptované jméno"
-
-#~ msgid "adoption"
-#~ msgstr "adopce"
-
-#~ msgid "after death"
-#~ msgstr "po smrti"
-
-#~ msgid "allow"
-#~ msgstr "povolit"
-
-#~ msgctxt "FEMALE"
-#~ msgid "also known as"
-#~ msgstr "také známá jako"
-
-#~ msgctxt "MALE"
-#~ msgid "also known as"
-#~ msgstr "také známý jako"
-
-#~ msgid "always"
-#~ msgstr "vždy"
-
-#~ msgid "birth"
-#~ msgstr "narození"
-
-#~ msgctxt "FEMALE"
-#~ msgid "birth name"
-#~ msgstr "rodné jméno"
-
-#~ msgctxt "MALE"
-#~ msgid "birth name"
-#~ msgstr "rodné jméno"
-
-#~ msgid "burial"
-#~ msgstr "pohřbení"
-
-#~ msgid "by"
-#~ msgstr "Naposledy změnil(a)"
-
-#~ msgid "census added"
-#~ msgstr "sčítání přidáno"
-
-#~ msgid "century"
-#~ msgstr "století"
-
-#~ msgctxt "FEMALE"
-#~ msgid "change of name"
-#~ msgstr "změněné jméno"
-
-#~ msgctxt "MALE"
-#~ msgid "change of name"
-#~ msgstr "změněné jméno"
-
-#~ msgid "children"
-#~ msgstr "děti"
-
-#~ msgid "creating thumbnails of images"
-#~ msgstr "vytváření náhledů obrázků"
-
-#~ msgid "death"
-#~ msgstr "úmrtí"
-
-#~ msgid "deny"
-#~ msgstr "zakázat"
-
-#~ msgid "east"
-#~ msgstr "východ"
-
-#~ msgctxt "FEMALE"
-#~ msgid "estate name"
-#~ msgstr "jméno podle místa"
-
-#~ msgctxt "MALE"
-#~ msgid "estate name"
-#~ msgstr "jméno podle místa"
-
-#~ msgid "ex-partner"
-#~ msgstr "bývalý/á partner/ka"
-
-#~ msgctxt "FEMALE"
-#~ msgid "ex-partner"
-#~ msgstr "bývalá partnerka"
-
-#~ msgctxt "MALE"
-#~ msgid "ex-partner"
-#~ msgstr "bývalý partner"
-
-#~ msgid "file upload capability"
-#~ msgstr "možnost nahrávat soubory"
-
-#~ msgid "half-year after marriage"
-#~ msgstr "půlrok po sňatku"
-
-#~ msgid "hh:mm or hh:mm:ss"
-#~ msgstr "hh:mm nebo hh:mm:ss"
-
-#~ msgctxt "FEMALE"
-#~ msgid "immigration name"
-#~ msgstr "imigrační jméno"
-
-#~ msgctxt "MALE"
-#~ msgid "immigration name"
-#~ msgstr "imigrační jméno"
-
-#~ msgid "import"
-#~ msgstr "importovat"
-
-#~ msgid "interval %s year"
-#~ msgid_plural "interval %s years"
-#~ msgstr[0] "doba jednoho roku"
-#~ msgstr[1] "doba %s let"
-#~ msgstr[2] "doba %s let"
-
-#~ msgid "interval one child"
-#~ msgstr "interval jedno dítě"
-
-#~ msgid "interval two children"
-#~ msgstr "interval dvě děti"
-
-#~ msgid "less than"
-#~ msgstr "méně než"
-
-#~ msgid "link"
-#~ msgstr "odkaz"
-
-#~ msgid "marriage"
-#~ msgstr "sňatek"
-
-#~ msgctxt "FEMALE"
-#~ msgid "married name"
-#~ msgstr "manželské jméno"
-
-#~ msgctxt "MALE"
-#~ msgid "married name"
-#~ msgstr "manželské jméno"
-
-#~ msgid "maximum"
-#~ msgstr "maximum"
-
-#~ msgid "midnight"
-#~ msgstr "Půlnoc"
-
-#~ msgid "minimum"
-#~ msgstr "minimum"
-
-#~ msgid "month"
-#~ msgstr "měsíc"
-
-#~ msgid "months after marriage"
-#~ msgstr "měsíce po sňatku"
-
-#~ msgid "months before and after marriage"
-#~ msgstr "měsíce před a po sňatku"
-
-#~ msgid "never"
-#~ msgstr "nikdy"
-
-#~ msgid "noon"
-#~ msgstr "poledne"
-
-#~ msgid "north"
-#~ msgstr "sever"
-
-#~ msgid "over"
-#~ msgstr "více než"
-
-#~ msgid "overall"
-#~ msgstr "celkem"
-
-#~ msgid "p.m."
-#~ msgstr "odpoledne"
-
-#~ msgid "pixels"
-#~ msgstr "pixely"
-
-#~ msgid "preview"
-#~ msgstr "Náhled"
-
-#~ msgid "quarters after marriage"
-#~ msgstr "čtvrtletí po sňatku"
-
-#~ msgctxt "FEMALE"
-#~ msgid "religious name"
-#~ msgstr "náboženské jméno"
-
-#~ msgctxt "MALE"
-#~ msgid "religious name"
-#~ msgstr "náboženské jméno"
-
-#~ msgid "reporting"
-#~ msgstr "datové výstupy"
-
-#~ msgid "robot"
-#~ msgstr "robot"
-
-#~ msgid "sort by filename"
-#~ msgstr "seřadit podle jména souboru"
-
-#~ msgid "sort by title"
-#~ msgstr "seřadit podle názvu"
-
-#~ msgid "south"
-#~ msgstr "jih"
-
-#~ msgid "ssl"
-#~ msgstr "SSL"
-
-#~ msgid "this record does not exist"
-#~ msgstr "tento záznam neexistuje"
-
-#~ msgid "tls"
-#~ msgstr "TLS"
-
-#~ msgid "webtrees cannot connect to the PhpGedView database: %s."
-#~ msgstr "webtrees se nemůže spojit s databází PhpGedView: %s."
-
-#~ msgid "webtrees needs a MySQL database, version %s or later."
-#~ msgstr "webtrees vyžaduje MySQL databázi ve verzi %s nebo vyšší."
-
-#~ msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-#~ msgstr "webtrees potřebuje zasílat emaily, jako obnovení hesel a různá oznámení. Aby to bylo možné, použije se zabudovaný PHP modul nebo externí SMTP služba, kterou budete muset nastavit."
-
-#~ msgid "webtrees reply address"
-#~ msgstr "Adresa pro odpovědi"
-
-#~ msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-#~ msgstr "webtrees používá kódování UTF-8 pro písmena s diakritikou, speciální znaky a ne-latinská písma. Chcete-li použít tento soubor GEDCOM v genealogickém softwaru, který nepodporuje UTF-8, pak jej můžete vytvořit v kódování ISO-8859-1."
-
-#~ msgid "webtrees wiki"
-#~ msgstr "webtrees wiki"
-
-#~ msgid "webtrees’ database must be on the same server as PhpGedView’s"
-#~ msgstr "Databáze webtrees musí být na stejném serveru jako od PhpGedView"
-
-#~ msgid "west"
-#~ msgstr "západ"
-
-#~ msgid "years"
-#~ msgstr "roky"
-
-#, php-format
-#~ msgid "“%s”"
-#~ msgstr "„%s“"
-
-#~ msgid "“%s” has been added to your favorites."
-#~ msgstr "„%s“ přidán(a) do vašich oblíbených."

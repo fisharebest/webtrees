@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-15 18:05+0100\n"
+"POT-Creation-Date: 2026-07-16 21:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -391,18 +391,6 @@ msgctxt "MALE"
 msgid "%s × cousin"
 msgstr "%s × भान्जा"
 
-#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ʙᴄᴇ"
-msgstr "%s ʙᴄᴇ"
-
-#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ᴄᴇ"
-msgstr "%s ᴄᴇ"
-
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php
 #, php-format
@@ -448,6 +436,18 @@ msgstr "%s, उहाँकी श्रीमती र छोराछोर�
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, उहाँकी श्रीमती र सन्ततिहरू"
+
+#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ʙᴄᴇ"
+msgstr "%s ʙᴄᴇ"
+
+#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ᴄᴇ"
+msgstr "%s ᴄᴇ"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
@@ -1068,25 +1068,21 @@ msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
 msgstr "अबान"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Aban"
 msgstr "अबान"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
 msgstr "अबान"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Aban"
 msgstr "अबान"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Aban"
@@ -1129,73 +1125,61 @@ msgstr "खाता स्वीकृति र इमेल प्रमा�
 msgid "Accra, Ghana"
 msgstr "अक्रा, घाना"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar"
 msgstr "अडार"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
 msgstr "अडार"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar"
 msgstr "अडार"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar"
 msgstr "अडार"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar I"
 msgstr "अडार १"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
 msgstr "अडार १"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar I"
 msgstr "अडार १"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
 msgstr "अडार १"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar II"
 msgstr "अडार २"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
 msgstr "अडार २"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar II"
 msgstr "अडार २"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
@@ -2166,25 +2150,21 @@ msgstr "स्वचालित रूपमा नोटहरू विस्
 msgid "Automatically expand sources"
 msgstr "स्वचालित रूपमा स्रोतहरू विस्तार गर्नुहोस्"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Av"
 msgstr "एभ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Av"
 msgstr "एभ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Av"
 msgstr "एभ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Av"
@@ -2237,25 +2217,21 @@ msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
 msgstr "अजार"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Azar"
 msgstr "अजार"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
 msgstr "अजार"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Azar"
 msgstr "अजार"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Azar"
@@ -2281,25 +2257,21 @@ msgstr "बाह"
 msgid "Bahamas"
 msgstr "बहामस"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Bahman"
 msgstr "बाहमन"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
 msgstr "बाहमन"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Bahman"
 msgstr "बाहमन"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Bahman"
@@ -2764,25 +2736,21 @@ msgstr "ब्रिटिश भर्जिन आइस्ल्यान्�
 msgid "Brother"
 msgstr "भाइ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Brumaire"
 msgstr "ब्रुमेयर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
 msgstr "ब्रुमेयर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Brumaire"
 msgstr "ब्रुमेयर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
@@ -4713,73 +4681,61 @@ msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
 msgstr "डेइ"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Dey"
 msgstr "डेइ"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
 msgstr "डेइ"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Dey"
 msgstr "डेइ"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "डेइ"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "धु अल-किदाह"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Qiʿdah"
 msgstr "धु अल-किदाह"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "धु अल-किदाह"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "धु अल-किदाह"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "धु अल हिज्जा"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Ḥijjah"
 msgstr "धु अल हिज्जा"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "धु अल हिज्जा"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Ḥijjah"
@@ -5062,25 +5018,21 @@ msgstr "एल साल्भाडोर"
 msgid "Electronic"
 msgstr "विद्युतीय"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Elul"
 msgstr "एलउल"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
 msgstr "एलउल"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Elul"
 msgstr "एलउल"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Elul"
@@ -5213,25 +5165,21 @@ msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
 msgstr "इएसफ"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Esfand"
 msgstr "इस्फान्ड"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
 msgstr "इस्फान्ड"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Esfand"
 msgstr "इस्फान्ड"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Esfand"
@@ -5697,25 +5645,21 @@ msgstr "टाढा"
 msgid "Faroe Islands"
 msgstr "फेइरो द्वीप"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Farvardin"
 msgstr "फार्भार्डिन"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
 msgstr "फार्भार्डिन"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Farvardin"
 msgstr "फार्भार्डिन"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
@@ -5940,25 +5884,21 @@ msgstr "झण्डा"
 msgid "Flanders"
 msgstr "फ्ल्यान्डर्स"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
 msgstr "फ्लोरियल"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
 msgstr "फ्लोरियल"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Floreal"
 msgstr "फ्लोरियल"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Floreal"
@@ -6150,25 +6090,21 @@ msgctxt "MALE"
 msgid "Friend"
 msgstr "साथी"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Frimaire"
 msgstr "फ्रिमेयर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
 msgstr "फ्रिमेयर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Frimaire"
 msgstr "फ्रिमेयर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
@@ -6186,25 +6122,21 @@ msgctxt "Start of date range"
 msgid "From"
 msgstr "बाट"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Fructidor"
 msgstr "फ्रुक्टिडोर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
 msgstr "फ्रुक्टिडोर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Fructidor"
 msgstr "फ्रुक्टिडोर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
@@ -6373,26 +6305,21 @@ msgstr "जर्जिया"
 msgid "Germany"
 msgstr "जर्मनी"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Germinal"
 msgstr "कीटाणुजन्य"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
 msgstr "कीटाणुजन्य"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Germinal"
 msgstr "कीटाणुजन्य"
 
-#. I18N: a month in the French republican calendar
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Germinal"
@@ -6708,25 +6635,21 @@ msgstr "Here नक्साहरू"
 msgid "Hermosillo, Mexico"
 msgstr "हर्मोसिलो, मेक्सिको"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Heshvan"
 msgstr "हेस्भान"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
 msgstr "हेस्भान"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Heshvan"
 msgstr "हेस्भान"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
@@ -7318,25 +7241,21 @@ msgstr "यसलाई अनुकूलन GEDCOM ट्यागहरू �
 msgid "Italy"
 msgstr "इटली"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Iyar"
 msgstr "इयार"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
 msgstr "इयार"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Iyar"
 msgstr "इयार"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Iyar"
@@ -7447,49 +7366,41 @@ msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "जुलाई"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-awwal"
 msgstr "जुमाद अल अव्वल"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-awwal"
 msgstr "जुमाद अल अव्वल"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-awwal"
 msgstr "जुमाद अल अव्वल"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-awwal"
 msgstr "जुमाद अल अव्वल"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-thānī"
 msgstr "जुमादा अल थानी"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-thānī"
 msgstr "जुमादा अल थानी"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-thānī"
 msgstr "जुमादा अल थानी"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-thānī"
@@ -7561,25 +7472,21 @@ msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
 msgstr "खोर"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Khordad"
 msgstr "खोर्डाद"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
 msgstr "खोर्डाद"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Khordad"
 msgstr "खोर्डाद"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Khordad"
@@ -7590,25 +7497,21 @@ msgstr "खोर्डाद"
 msgid "Kiribati"
 msgstr "किरिबाती"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Kislev"
 msgstr "किस्लेभ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
 msgstr "किस्लेभ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Kislev"
 msgstr "किस्लेभ"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Kislev"
@@ -8634,25 +8537,21 @@ msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
 msgstr "मेहर"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mehr"
 msgstr "मेहर"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
 msgstr "मेहर"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mehr"
 msgstr "मेहर"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mehr"
@@ -8727,25 +8626,21 @@ msgstr "सन्देश"
 msgid "Messages"
 msgstr "सन्देशहरू"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Messidor"
 msgstr "मेसीडोर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
 msgstr "मेसीडोर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Messidor"
 msgstr "मेसीडोर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Messidor"
@@ -8922,25 +8817,21 @@ msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
 msgstr "मोर"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mordad"
 msgstr "मोर्डाद"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
 msgstr "मोर्डाद"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mordad"
 msgstr "मोर्डाद"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mordad"
@@ -9060,25 +8951,21 @@ msgstr "बहु जन्म"
 msgid "Multiple marriages"
 msgstr "बहुविवाह"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Muḥarram"
 msgstr "मुहाराम"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Muḥarram"
 msgstr "मुहाराम"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muḥarram"
 msgstr "मुहाराम"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Muḥarram"
@@ -9307,25 +9194,21 @@ msgstr "नाइजर"
 msgid "Nigeria"
 msgstr "नाइजेरिया"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Nissan"
 msgstr "निसान"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
 msgstr "निसान"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Nissan"
 msgstr "निसान"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Nissan"
@@ -9336,25 +9219,21 @@ msgstr "निसान"
 msgid "Niue"
 msgstr "निउ"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Nivose"
 msgstr "निभोस"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
 msgstr "निभोस"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Nivose"
 msgstr "निभोस"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Nivose"
@@ -9891,25 +9770,21 @@ msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
 msgstr "ओआरडी"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
 msgstr "ओर्डिबेहेश"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
 msgstr "ओर्डिबेहेश"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
 msgstr "ओर्डिबेहेश"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
@@ -10427,25 +10302,21 @@ msgstr "कृपया वैद्य ई-मेल भर्नुहोस�
 msgid "Please try again."
 msgstr "पुन: प्रयास गर्नुहोस्।"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Pluviose"
 msgstr "प्लुभिओस्"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
 msgstr "प्लुभिओस्"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Pluviose"
 msgstr "प्लुभिओस्"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
@@ -10506,25 +10377,21 @@ msgstr "पोस्टल कोड"
 msgid "Powered by webtrees™"
 msgstr "Webtrees™ द्वारा संचालित"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Prairial"
 msgstr "प्रेयरियल"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
 msgstr "प्रेयरियल"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Prairial"
 msgstr "प्रेयरियल"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Prairial"
@@ -10702,49 +10569,41 @@ msgstr "पुन: "
 msgid "Rabbi"
 msgstr "रब्बी"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "रबी अल-अव्वल"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-awwal"
 msgstr "रबी अल-अव्वल"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "रबी अल-अव्वल"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "रबी अल-अव्वल"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-thani"
 msgstr "रबी अस-सानी"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-thani"
 msgstr "रबी अस-सानी"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-thani"
 msgstr "रबी अस-सानी"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-thani"
@@ -10768,25 +10627,21 @@ msgctxt "Pedigree"
 msgid "Rada"
 msgstr "रादा"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "राजब"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "राजब"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "राजब"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rajab"
@@ -10797,25 +10652,21 @@ msgstr "राजब"
 msgid "Raleigh, North Carolina, United States"
 msgstr "Raleigh, उत्तरी क्यारोलाइना, संयुक्त राज्य अमेरिका"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "रमादान"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "रमादान"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "रमादान"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
@@ -11793,25 +11644,21 @@ msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
 msgstr "शाह"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Shahrivar"
 msgstr "शाह्रिभर"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
 msgstr "शाह्रिभर"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
 msgstr "शाह्रिभर"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
@@ -11850,49 +11697,41 @@ msgstr "साझा टिप्पणीहरू"
 msgid "Shares"
 msgstr "शेयरहरू"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "साववाल"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "साववाल"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "साववाल"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "साववाल"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shaʿbān"
 msgstr "शाबान"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shaʿbān"
 msgstr "शाबान"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shaʿbān"
 msgstr "शाबान"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shaʿbān"
@@ -11931,25 +11770,21 @@ msgstr "उनको नामकरण गरिएको थियो"
 msgid "She was cremated"
 msgstr "उनको दाहसंस्कार गरियो"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Shevat"
 msgstr "शेवत"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
 msgstr "शेवत"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Shevat"
 msgstr "शेवत"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Shevat"
@@ -12378,25 +12213,21 @@ msgstr "साइटम्यापहरू"
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr "साइटम्यापहरू वेबमास्टरहरूका लागि खोज इन्जिनहरूलाई वेबसाइटमा रहेका पृष्ठहरूको बारेमा बताउन सक्ने तरिका हो जुन क्रलिङको लागि उपलब्ध छ। सबै प्रमुख खोज इन्जिनहरूले साइटम्यापहरू समर्थन गर्छन्। थप जानकारीको लागि, <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a> हेर्नुहोस्।"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Sivan"
 msgstr "सिभान"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
 msgstr "सिभान"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Sivan"
 msgstr "सिभान"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Sivan"
@@ -12977,25 +12808,21 @@ msgstr "ताजकिस्तान"
 msgid "Tampico, Mexico"
 msgstr "Tampico, मेक्सिको"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tamuz"
 msgstr "टामुज"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
 msgstr "टामुज"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tamuz"
 msgstr "टामुज"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
@@ -13035,25 +12862,21 @@ msgstr "टेम्प्लेटहरू"
 msgid "Temple"
 msgstr "मन्दीर"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tevet"
 msgstr "टेभेट"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
 msgstr "टेभेट"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tevet"
 msgstr "टेभेट"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tevet"
@@ -13691,25 +13514,21 @@ msgstr "नयाँ संस्करणको लागि जाँच ग�
 msgid "There was an error uploading your file."
 msgstr "तपाईंको फाइल अपलोड गर्दा त्रुटि भयो।"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Thermidor"
 msgstr "थर्मिडर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
 msgstr "थर्मिडर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Thermidor"
 msgstr "थर्मिडर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
@@ -14208,49 +14027,41 @@ msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
 msgstr "टिर"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Tir"
 msgstr "टिर"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
 msgstr "टिर"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Tir"
 msgstr "टिर"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Tir"
 msgstr "टिर"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tishrei"
 msgstr "तिश्री"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
 msgstr "तिश्री"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tishrei"
 msgstr "तिश्री"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
@@ -14951,25 +14762,21 @@ msgstr "विभिन्न तथ्याङ्क चार्टहरू�
 msgid "Vatican City"
 msgstr "भ्याटिकन सीटी"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
 msgstr "भेन्डेमाइर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
 msgstr "भेन्डेमाइर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
 msgstr "भेन्डेमाइर"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
@@ -14980,25 +14787,21 @@ msgstr "भेन्डेमाइर"
 msgid "Venezuela"
 msgstr "भेनेजुएला"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Ventose"
 msgstr "भेन्टोज"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
 msgstr "भेन्टोज"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Ventose"
 msgstr "भेन्टोज"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Ventose"
@@ -18042,25 +17845,21 @@ msgstr ""
 msgid "invert selection"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
 msgstr "पूरक दिनहरू"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
 msgstr "पूरक दिनहरू"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
 msgstr "पूरक दिनहरू"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
@@ -19506,25 +19305,21 @@ msgstr[1] "±%s वर्षहरू"
 msgid "Åland Islands"
 msgstr "आल्याण्ड टापुहरू"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ṣafar"
 msgstr "सफार"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ṣafar"
 msgstr "सफार"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ṣafar"
 msgstr "सफार"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ṣafar"
@@ -19572,577 +19367,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid "Action"
-#~ msgstr "एक्सन"
-
-#~ msgid "Add a brother or sister"
-#~ msgstr "नयाँ भाई अथवा बहिनी थप"
-
-#~ msgid "Add a geographic location"
-#~ msgstr "नयाँ भौगोलिक स्थल थप"
-
-#~ msgid "Add a husband to this family"
-#~ msgstr "यो परिवारमा श्रीमान थप"
-
-#~ msgid "Add a son or daughter"
-#~ msgstr "नयाँ छोरा अथवा छोरी थप"
-
-#~ msgid "Add a wife to this family"
-#~ msgstr "यो परिवारमा श्रमती थप"
-
-#~ msgid "Add links"
-#~ msgstr "लिङ्कहरु थप"
-
-#~ msgid "Add missing married names"
-#~ msgstr "छुटेको विवाहित नामहरु"
-
-#~ msgid "Add/edit a journal/news entry"
-#~ msgstr "जर्नल/समाचार प्रविष्टि थप्नुहोस्/सम्पादन गर्नुहोस्"
-
-#~ msgid "Advanced"
-#~ msgstr "विस्तृत"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "एरियल"
-
-#~ msgid "Basic"
-#~ msgstr "आधारभूत"
-
-#~ msgid "Catalonia"
-#~ msgstr "कातालोनिया"
-
-#~ msgid "Center map here"
-#~ msgstr "यहाँ केन्द्रिय नक्सा"
-
-#~ msgid "Change"
-#~ msgstr "परिवर्तन गर्नुहोस्"
-
-#~ msgid "Change flag"
-#~ msgstr "झण्डा बदल"
-
-#~ msgid "Change language"
-#~ msgstr "भाषा बदल"
-
-#~ msgid "Comparison"
-#~ msgstr "तुलना"
-
-#~ msgid "Configure"
-#~ msgstr "कन्फिगर गर्नुहोस्"
-
-#~ msgid "Confirm password"
-#~ msgstr "पासवर्ड पक्का गर्नुहोस्"
-
-#~ msgid "Continue adding"
-#~ msgstr "थप जारी राख"
-
-#~ msgid "Count"
-#~ msgstr "गणना गर्नुहोस्"
-
-#~ msgid "Countries"
-#~ msgstr "देशहरू"
-
-#~ msgid "County"
-#~ msgstr "देश"
-
-#~ msgid "Current"
-#~ msgstr "हाल"
-
-#~ msgid "Default"
-#~ msgstr "पूर्वनिर्धारित"
-
-#~ msgid "Default map type"
-#~ msgstr "डिफल्ट नक्साको प्रकार"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "देजाभु"
-
-#~ msgid "Delete all existing geographic data before importing the file."
-#~ msgstr "फाईल भित्र्याउन पहिले रहेको सबै भोगोलिक आँकडाहरु मेटाऊ।"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "धु अल हिज्जा"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "धु अल हिज्जा"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "धु अल हिज्जा"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "धु अल हिज्जा"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "धु अल-किदाह"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "धु अल-किदाह"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "धु अल-किदाह"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "धु अल-किदाह"
-
-#~ msgid "Display all"
-#~ msgstr "सबै देखाऊ"
-
-#~ msgid "Download geographic data"
-#~ msgstr "भौगोलिक आँकडा डाऊनलोड गर्नुहोस"
-
-#~ msgid "Elevation"
-#~ msgstr "उन्नती"
-
-#~ msgid "Enter an individual, family, or source ID"
-#~ msgstr "व्यात्ति,परिवार अथवा श्रोतको आइडी राख"
-
-#~ msgid "Family list"
-#~ msgstr "परिवार सूची"
-
-#~ msgid "Find a fact or event"
-#~ msgstr "तथ्य अथवा कार्यक्रम खोज"
-
-#~ msgid "Find a family"
-#~ msgstr "परिवारलाई खोज"
-
-#~ msgid "Find a place"
-#~ msgstr "स्थल खोज"
-
-#~ msgid "Find a shared note"
-#~ msgstr "टिपोट खोज"
-
-#~ msgid "Find an individual"
-#~ msgstr "व्याक्तिलाई खोज"
-
-#~ msgid "Font"
-#~ msgstr "फन्ट"
-
-#~ msgid "Gender"
-#~ msgstr "लिङ्ग"
-
-#~ msgid "Google Street View™"
-#~ msgstr "गुगल सडक अवलोकन"
-
-#~ msgid "Google™ webmaster tools"
-#~ msgstr "गुगल वेब टुल्स"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica फन्ट"
-
-#~ msgid "Historical facts"
-#~ msgstr "एतिहासिक तथ्यहरु"
-
-#~ msgid "House"
-#~ msgstr "घर"
-
-#~ msgid "Hybrid"
-#~ msgstr "मिश्रित"
-
-#~ msgid "Icon"
-#~ msgstr "छविचित्र"
-
-#~ msgid "If the thumbnail image is a custom image, you should add it to the media object."
-#~ msgstr "यदि थम्बनेल छवि अनुकूलन छवि हो भने, तपाईंले यसलाई मिडिया वस्तुमा थप्नुपर्छ।"
-
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-#~ msgstr "यदि थम्बनेल छवि मूल छवि जस्तै छ भने, यो अब आवश्यक छैन र तपाईंले यसलाई मेटाउन पर्छ।"
-
-#~ msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
-#~ msgstr "यदि तपाइँ UNIX सकेट प्रयोग गरेर डाटाबेसमा जडान गर्नुहुन्छ भने, यहाँ मार्ग प्रविष्ट गर्नुहोस् र पोर्ट नम्बर खाली छोड्नुहोस्।"
-
-#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
-#~ msgstr "यदि तपाई सँग ठूलो मात्रामा निष्क्रिय स्थानहरु छन भने सुची बनाउन ढिलाइ हुनसक्छ।"
-
-#~ msgid "Import all places from a family tree"
-#~ msgstr "परिवार वृक्ष बाट सम्पूर्ण स्थानहरु आयात गर्नुहोस्"
-
-#~ msgid "Import custom thumbnails from webtrees version 1"
-#~ msgstr "वेबट्री संस्करण १ बाट अनुकूलन थम्बनेलहरू ल्याउनुहोस्"
-
-#~ msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-#~ msgstr "Webtrees संस्करण 1 मा, तपाईंले \"थम्ब्स\" फोल्डरहरूमा फाइलहरू सिर्जना गरेर मिडिया वस्तुहरूमा अनुकूलन थम्बनेलहरू थप्न सक्नुहुन्छ।"
-
-#~ msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-#~ msgstr "Webtrees संस्करण 2 मा, अनुकूलन थम्बनेलहरू एउटै मिडिया वस्तुमा दोस्रो मिडिया फाइलको रूपमा भण्डारण गरिन्छ।"
-
-#~ msgid "Include fully matched places"
-#~ msgstr "पुरै मिल्ने स्थानहरु समावेश गर"
-
-#~ msgid "Individual list"
-#~ msgstr "व्याक्ति सुची"
-
-#, php-format
-#~ msgid "Individuals with surname %s"
-#~ msgstr "%s थर भएका व्यक्तिहरू"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "जुमाद अल अव्वल"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "जुमाद अल अव्वल"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "जुमाद अल अव्वल"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "जुमाद अल अव्वल"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "जुमादा अल थानी"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "जुमादा अल थानी"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "जुमादा अल थानी"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "जुमादा अल थानी"
-
-#~ msgid "Keep"
-#~ msgstr "राख्नुहोस्"
-
-#~ msgid "Keep link in list"
-#~ msgstr "लिङ्क सुचीमा राख"
-
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "कानुनी"
-
-#~ msgid "Level"
-#~ msgstr "स्तर"
-
-#~ msgid "Limit"
-#~ msgstr "सीमा"
-
-#~ msgid "Location not removed: this location contains sub-locations"
-#~ msgstr "स्थल मेटिएन यस स्थानको उप–स्थलहरु छ"
-
-#~ msgid "Lost password request"
-#~ msgstr "हराएको पास्वर्डको लागि अनुरोध"
-
-#~ msgid "Max"
-#~ msgstr "अधिक"
-
-#~ msgid "Midnight"
-#~ msgstr "मध्यरात"
-
-#~ msgid "Most sites are configured to use the default value of 3306."
-#~ msgstr "धेरै साइटहरू 3306 को पूर्वनिर्धारित मान प्रयोग गर्न कन्फिगर गरिएको छ।"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "मुहाराम"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Muḥarram"
-#~ msgstr "मुहाराम"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "मुहाराम"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "मुहाराम"
-
-#~ msgid "Neighborhood"
-#~ msgstr "छिमेकी"
-
-#~ msgid "Netherlands Antilles"
-#~ msgstr "नेदरल्याण्ड एन्टाइल्स"
-
-#~ msgid "Neutral Zone"
-#~ msgstr "तटस्थ क्षेत्र"
-
-#~ msgid "No map data exists for this individual"
-#~ msgstr "यो व्याक्तिको नक्साकोआँकडा छैन"
-
-#~ msgid "No places found"
-#~ msgstr "स्थानहरु भेटिएन"
-
-#~ msgid "Number of items to show"
-#~ msgstr "देखाइन राखिने विषयहरुको संख्या"
-
-#~ msgid "Optional prefixes and suffixes"
-#~ msgstr "वैकल्पिक उपसर्ग र पत्य्य"
-
-#~ msgid "Order"
-#~ msgstr "क्रम"
-
-#~ msgid "Others"
-#~ msgstr "अन्य"
-
-#~ msgid "Passwords do not match."
-#~ msgstr "पासवर्ड मिलेन।"
-
-#~ msgid "Pedigree chart"
-#~ msgstr "वंशावली चार्ट"
-
-#~ msgid "Place check"
-#~ msgstr "जाँच्ने ठाऊ"
-
-#~ msgid "Places found"
-#~ msgstr "स्थानहरु भेटियो"
-
-#~ msgid "Precision"
-#~ msgstr "यथार्थता"
-
-#~ msgid "Prefixes"
-#~ msgstr "उपसर्गहरु"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "रबी अल-अव्वल"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "रबी अल-अव्वल"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "रबी अल-अव्वल"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "रबी अल-अव्वल"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "रबी अस-सानी"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "रबी अस-सानी"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "रबी अस-सानी"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "रबी अस-सानी"
-
-#~ msgid "Redraw map"
-#~ msgstr "नस्सा पुनः बनाऊ"
-
-#~ msgid "Remove flag"
-#~ msgstr "झण्डा हटाऊ"
-
-#~ msgid "Remove link from list"
-#~ msgstr "सुचीबाट लिङ्क हटाऊ"
-
-#~ msgid "Rule"
-#~ msgstr "नियम"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "सफार"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Ṣafar"
-#~ msgstr "सफार"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "सफार"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "सफार"
-
-#~ msgid "Satellite"
-#~ msgstr "उपग्रह"
-
-#~ msgid "Search globally"
-#~ msgstr "व्यापक खोज"
-
-#~ msgid "Select flag"
-#~ msgstr "झण्डा छान"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "शाबान"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Shaʿbān"
-#~ msgstr "शाबान"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "शाबान"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "शाबान"
-
-#~ msgid "Show all spouses and ancestors"
-#~ msgstr "सबै श्रीमतीहरु र पूर्वजहरु देखाऊ"
-
-#~ msgid "Show counts before or after name"
-#~ msgstr "नामको अगाडी वा पछाडी गन्ती राख्ने"
-
-#~ msgid "Show date differences"
-#~ msgstr "मिती अन्तरहरु देखाऊ"
-
-#~ msgid "Show details"
-#~ msgstr "विस्तारमा देखाउनुहोस्"
-
-#~ msgid "Show inactive places"
-#~ msgstr "निष्क्रिय स्थानहरु देखाऊ"
-
-#~ msgid "Show only births, deaths, and marriages"
-#~ msgstr "जन्महरु,मृत्युहरु र विवाहहरु मात्र देखाऊ"
-
-#~ msgid "Sicily"
-#~ msgstr "सिसिले"
-
-#~ msgid "Size of map (in pixels)"
-#~ msgstr "नक्साको आकार(पिक्सेलमा)"
-
-#~ msgid "Standard"
-#~ msgstr "उच्चस्तरिय"
-
-#~ msgid "Suffixes"
-#~ msgstr "पत्य्यहरु"
-
-#~ msgid "System settings"
-#~ msgstr "प्रणाली सेटिङ"
-
-#~ msgid "Tag"
-#~ msgstr "मार्का/छाप"
-
-#~ msgid "Terrain"
-#~ msgstr "भूभाग"
-
-#, php-format
-#~ msgid "The parameter “%s” is missing."
-#~ msgstr "प्यारामिटर \"%s\" हराइरहेको छ।"
-
-#~ msgid "This is case sensitive."
-#~ msgstr "यो केस संवेदनशील छ।"
-
-#~ msgid "This website is being upgraded. Try again in a few minutes."
-#~ msgstr "यो वेबसाइट अपग्रेड हुँदैछ। केही मिनेटमा फेरि प्रयास गर्नुहोस्।"
-
-#~ msgid "To tell search engines that sitemaps are available, you can use the following links."
-#~ msgstr "खोज इन्जिनहरूलाई बताउन कि साइटम्यापहरू उपलब्ध छन्, तपाईंले निम्न लिङ्कहरू प्रयोग गर्न सक्नुहुन्छ।"
-
-#~ msgid "Top level"
-#~ msgstr "उच्च तह"
-
-#~ msgid "Total places: %s"
-#~ msgstr "सम्पूर्ण स्थानहरुः%s"
-
-#~ msgid "USA"
-#~ msgstr "संयुक्त राज्य अमेरिका"
-
-#~ msgid "Upload"
-#~ msgstr "अपलोड"
-
-#~ msgid "Upload geographic data"
-#~ msgstr "भौगोलिक आँकडा अप्लोड गर्नुहोस"
-
-#~ msgid "Use this value"
-#~ msgstr "यो मान प्रयोग गर"
-
-#~ msgid "View"
-#~ msgstr "हेर्नुहोस्"
-
-#, fuzzy
-#~ msgid "View this individual"
-#~ msgstr "व्याक्ति हेर्नुहोस"
-
-#, fuzzy
-#~ msgid "View this source"
-#~ msgstr "दृश्य स्रोत"
-
-#~ msgid "Website URL"
-#~ msgstr "वेबसाइट URL"
-
-#~ msgid "Width"
-#~ msgstr "चौडाई"
-
-#~ msgid "Wife’s surname replaced by husband’s surname"
-#~ msgstr "श्रीमतीको थर श्रीमानको थरले स्थान लियो"
-
-#~ msgid "You must enter a name"
-#~ msgstr "तपाईले नाम अवश्य हाल्नु पर्छ"
-
-#~ msgid "Yugoslavia"
-#~ msgstr "युगोस्लाभिया"
-
-#~ msgid "Zaire"
-#~ msgstr "जइर"
-
-#~ msgid "Zoom in here"
-#~ msgstr "यहाँ जुम गर्नुहोस"
-
-#~ msgid "Zoom level"
-#~ msgstr "जूम तत्व"
-
-#~ msgid "Zoom out here"
-#~ msgstr "यहाँ जुम घटाउनुहोस"
-
-#~ msgid "by"
-#~ msgstr "द्वरा"
-
-#~ msgid "death"
-#~ msgstr "मृत्यु"
-
-#~ msgid "east"
-#~ msgstr "पूर्व"
-
-#, fuzzy
-#~ msgid "import"
-#~ msgstr "आयात गर्नुहोस्"
-
-#~ msgid "less than"
-#~ msgstr "भन्दा सानो"
-
-#, fuzzy
-#~ msgid "link"
-#~ msgstr "लिकं बनाऊ"
-
-#~ msgid "maximum"
-#~ msgstr "अधिकतम"
-
-#~ msgid "minimum"
-#~ msgstr "न्यूनतम"
-
-#~ msgid "month"
-#~ msgstr "महिना"
-
-#~ msgid "north"
-#~ msgstr "उत्तर"
-
-#~ msgid "preview"
-#~ msgstr "पूर्वावलोकन गर्नुहोस्"
-
-#~ msgid "south"
-#~ msgstr "दक्षिण"
-
-#~ msgid "west"
-#~ msgstr "पश्चिम"
-
-#~ msgid "years"
-#~ msgstr "वर्षहरू"

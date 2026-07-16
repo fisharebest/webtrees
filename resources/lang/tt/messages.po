@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-15 18:05+0100\n"
+"POT-Creation-Date: 2026-07-16 21:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -373,18 +373,6 @@ msgctxt "MALE"
 msgid "%s × cousin"
 msgstr ""
 
-#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ʙᴄᴇ"
-msgstr ""
-
-#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ᴄᴇ"
-msgstr ""
-
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php
 #, php-format
@@ -429,6 +417,18 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php
 #, php-format
 msgid "%s, his spouses and descendants"
+msgstr ""
+
+#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ʙᴄᴇ"
+msgstr ""
+
+#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ᴄᴇ"
 msgstr ""
 
 #: resources/views/admin/data-fix-select.phtml
@@ -1051,25 +1051,21 @@ msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
 msgstr ""
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Aban"
 msgstr "Абан"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
 msgstr "Абан"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Aban"
 msgstr "Абан"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Aban"
@@ -1112,73 +1108,61 @@ msgstr ""
 msgid "Accra, Ghana"
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar"
 msgstr "Адар"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
 msgstr "Адар"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar"
 msgstr "Адар"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar"
 msgstr "Адар"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar I"
 msgstr "Адар I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
 msgstr "Адар I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar I"
 msgstr "Адар I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
 msgstr "Адар I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar II"
 msgstr "Адар II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
 msgstr "Адар II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar II"
 msgstr "Адар II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
@@ -2150,25 +2134,21 @@ msgstr ""
 msgid "Automatically expand sources"
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Av"
 msgstr "Ав"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Av"
 msgstr "Ав"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Av"
 msgstr "Ав"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Av"
@@ -2221,25 +2201,21 @@ msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
 msgstr ""
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Azar"
 msgstr "Азар"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
 msgstr "Азар"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Azar"
 msgstr "Азар"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Azar"
@@ -2265,25 +2241,21 @@ msgstr ""
 msgid "Bahamas"
 msgstr ""
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Bahman"
 msgstr "Бахман"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
 msgstr "Бахман"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Bahman"
 msgstr "Бахман"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Bahman"
@@ -2748,25 +2720,21 @@ msgstr ""
 msgid "Brother"
 msgstr "Абый/эне"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Brumaire"
 msgstr "Брюмер"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
 msgstr "Брюмер"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Brumaire"
 msgstr "Брюмер"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
@@ -4696,73 +4664,61 @@ msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
 msgstr ""
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Dey"
 msgstr "Дей"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
 msgstr "Дей"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Dey"
 msgstr "Дей"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "Дей"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Зөлкагъдә"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Qiʿdah"
 msgstr "Зөлкагъдә"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Зөлкагъдә"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Зөлкагъдә"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Зөлхиҗҗә"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Ḥijjah"
 msgstr "Зөлхиҗҗә"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Зөлхиҗҗә"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Ḥijjah"
@@ -5045,25 +5001,21 @@ msgstr ""
 msgid "Electronic"
 msgstr "Электрон"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Elul"
 msgstr "Элул"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
 msgstr "Элул"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Elul"
 msgstr "Элул"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Elul"
@@ -5196,25 +5148,21 @@ msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
 msgstr ""
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Esfand"
 msgstr "Эсфанд"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
 msgstr "Эсфанд"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Esfand"
 msgstr "Эсфанд"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Esfand"
@@ -5680,25 +5628,21 @@ msgstr ""
 msgid "Faroe Islands"
 msgstr ""
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Farvardin"
 msgstr "Фарвардин"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
 msgstr "Фарвардин"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Farvardin"
 msgstr "Фарвардин"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
@@ -5923,25 +5867,21 @@ msgstr "Тамга"
 msgid "Flanders"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
 msgstr "Флореаль"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
 msgstr "Флореаль"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Floreal"
 msgstr "Флореаль"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Floreal"
@@ -6134,25 +6074,21 @@ msgctxt "MALE"
 msgid "Friend"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Frimaire"
 msgstr "Фример"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
 msgstr "Фример"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Frimaire"
 msgstr "Фример"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
@@ -6170,25 +6106,21 @@ msgctxt "Start of date range"
 msgid "From"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Fructidor"
 msgstr "Фрюктидор"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
 msgstr "Фрюктидор"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Fructidor"
 msgstr "Фрюктидор"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
@@ -6357,26 +6289,21 @@ msgstr ""
 msgid "Germany"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Germinal"
 msgstr "Жерминаль"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
 msgstr "Жерминаль"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Germinal"
 msgstr "Жерминаль"
 
-#. I18N: a month in the French republican calendar
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Germinal"
@@ -6692,25 +6619,21 @@ msgstr ""
 msgid "Hermosillo, Mexico"
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Heshvan"
 msgstr "Хешван"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
 msgstr "Хешван"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Heshvan"
 msgstr "Хешван"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
@@ -7302,25 +7225,21 @@ msgstr ""
 msgid "Italy"
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Iyar"
 msgstr "Ияр"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
 msgstr "Ияр"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Iyar"
 msgstr "Ияр"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Iyar"
@@ -7431,49 +7350,41 @@ msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "Июль"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-awwal"
 msgstr "Жәмадил-әүвәл"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-awwal"
 msgstr "Жәмадил-әүвәл"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Жәмадил-әүвәл"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Жәмадил-әүвәл"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-thānī"
 msgstr "Жәмадил-ахир"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-thānī"
 msgstr "Жәмадил-ахир"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-thānī"
 msgstr "Жәмадил-ахир"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-thānī"
@@ -7545,25 +7456,21 @@ msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
 msgstr ""
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Khordad"
 msgstr "Хордад"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
 msgstr "Хордад"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Khordad"
 msgstr "Хордад"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Khordad"
@@ -7574,25 +7481,21 @@ msgstr "Хордад"
 msgid "Kiribati"
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Kislev"
 msgstr "Кислев"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
 msgstr "Кислев"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Kislev"
 msgstr "Кислев"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Kislev"
@@ -8619,25 +8522,21 @@ msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
 msgstr ""
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mehr"
 msgstr "Мехр"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
 msgstr "Мехр"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mehr"
 msgstr "Мехр"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mehr"
@@ -8712,25 +8611,21 @@ msgstr ""
 msgid "Messages"
 msgstr "Хәбәрләр"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Messidor"
 msgstr "Мессидор"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
 msgstr "Мессидор"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Messidor"
 msgstr "Мессидор"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Messidor"
@@ -8907,25 +8802,21 @@ msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
 msgstr ""
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mordad"
 msgstr "Мордад"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
 msgstr "Мордад"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mordad"
 msgstr "Мордад"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mordad"
@@ -9045,25 +8936,21 @@ msgstr ""
 msgid "Multiple marriages"
 msgstr ""
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Muḥarram"
 msgstr "Мөхәррәм"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Muḥarram"
 msgstr "Мөхәррәм"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muḥarram"
 msgstr "Мөхәррәм"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Muḥarram"
@@ -9292,25 +9179,21 @@ msgstr ""
 msgid "Nigeria"
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Nissan"
 msgstr "Нисан"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
 msgstr "Нисан"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Nissan"
 msgstr "Нисан"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Nissan"
@@ -9321,25 +9204,21 @@ msgstr "Нисан"
 msgid "Niue"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Nivose"
 msgstr "Нивоз"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
 msgstr "Нивоз"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Nivose"
 msgstr "Нивоз"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Nivose"
@@ -9874,25 +9753,21 @@ msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
 msgstr ""
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
 msgstr "Ордибехешт"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
 msgstr "Ордибехешт"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
 msgstr "Ордибехешт"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
@@ -10410,25 +10285,21 @@ msgstr "Электрон адрес дөрес түгел, төзәтеп кер
 msgid "Please try again."
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Pluviose"
 msgstr "Плювиоз"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
 msgstr "Плювиоз"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Pluviose"
 msgstr "Плювиоз"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
@@ -10489,25 +10360,21 @@ msgstr "Индекс"
 msgid "Powered by webtrees™"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Prairial"
 msgstr "Прериаль"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
 msgstr "Прериаль"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Prairial"
 msgstr "Прериаль"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Prairial"
@@ -10685,49 +10552,41 @@ msgstr ""
 msgid "Rabbi"
 msgstr "Раввин"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Рабигыл-әүвәл"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-awwal"
 msgstr "Рабигыл-әүвәл"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Рабигыл-әүвәл"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Рабигыл-әүвәл"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Рабигыл-ахир"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-thani"
 msgstr "Рабигыл-ахир"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Рабигыл-ахир"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-thani"
@@ -10751,25 +10610,21 @@ msgctxt "Pedigree"
 msgid "Rada"
 msgstr ""
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "Рәҗәп"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "Рәҗәп"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "Рәҗәп"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rajab"
@@ -10780,25 +10635,21 @@ msgstr "Рәҗәп"
 msgid "Raleigh, North Carolina, United States"
 msgstr ""
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "Рамазан"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "Рамазан"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "Рамазан"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
@@ -11777,25 +11628,21 @@ msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
 msgstr ""
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Shahrivar"
 msgstr "Шахривар"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
 msgstr "Шахривар"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
 msgstr "Шахривар"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
@@ -11834,49 +11681,41 @@ msgstr "Ачык искәрмәләр"
 msgid "Shares"
 msgstr ""
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "Шәүвәл"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "Шәүвәл"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "Шәүвәл"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Шәүвәл"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shaʿbān"
 msgstr "Шәгъбан"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shaʿbān"
 msgstr "Шәгъбан"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shaʿbān"
 msgstr "Шәгъбан"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shaʿbān"
@@ -11915,25 +11754,21 @@ msgstr "чукындырылган"
 msgid "She was cremated"
 msgstr "Крематорийда яндырылган"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Shevat"
 msgstr "Шват"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
 msgstr "Шват"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Shevat"
 msgstr "Шват"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Shevat"
@@ -12364,25 +12199,21 @@ msgstr "Сайт картасы"
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Sivan"
 msgstr "Сиван"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
 msgstr "Сиван"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Sivan"
 msgstr "Сиван"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Sivan"
@@ -12963,25 +12794,21 @@ msgstr ""
 msgid "Tampico, Mexico"
 msgstr ""
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tamuz"
 msgstr "Тамуз"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
 msgstr "Тамуз"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tamuz"
 msgstr "Тамуз"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
@@ -13021,25 +12848,21 @@ msgstr "Өлгеләр"
 msgid "Temple"
 msgstr "Храм мормонов"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tevet"
 msgstr "Тевет"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
 msgstr "Тевет"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tevet"
 msgstr "Тевет"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tevet"
@@ -13676,25 +13499,21 @@ msgstr ""
 msgid "There was an error uploading your file."
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Thermidor"
 msgstr "Термидор"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
 msgstr "Термидор"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Thermidor"
 msgstr "Термидор"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
@@ -14192,49 +14011,41 @@ msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
 msgstr ""
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Tir"
 msgstr "Тир"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
 msgstr "Тир"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Tir"
 msgstr "Тир"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Tir"
 msgstr "Тир"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tishrei"
 msgstr "Тишрей"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
 msgstr "Тишрей"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tishrei"
 msgstr "Тишрей"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
@@ -14933,25 +14744,21 @@ msgstr ""
 msgid "Vatican City"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
 msgstr "Вандемьер"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
 msgstr "Вандемьер"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
 msgstr "Вандемьер"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
@@ -14962,25 +14769,21 @@ msgstr "Вандемьер"
 msgid "Venezuela"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Ventose"
 msgstr "Вантоз"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
 msgstr "Вантоз"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Ventose"
 msgstr "Вантоз"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Ventose"
@@ -18029,25 +17832,21 @@ msgstr ""
 msgid "invert selection"
 msgstr ""
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
 msgstr "өстәмә көннәр"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
 msgstr "өстәмә көннәр"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
 msgstr "өстәмә көннәр"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
@@ -19494,25 +19293,21 @@ msgstr[0] "±%s ел"
 msgid "Åland Islands"
 msgstr ""
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ṣafar"
 msgstr "Сәфәр"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ṣafar"
 msgstr "Сәфәр"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ṣafar"
 msgstr "Сәфәр"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ṣafar"
@@ -19560,1028 +19355,3 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
-
-#~ msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgstr[0] "%1$s шәхес күрсәтелгән, барысы %2$s, %3$s буыннан."
-
-#~ msgid "%1$s individual is missing birthplace map coordinates: %2$s."
-#~ msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-#~ msgstr[0] "Барысы %1$s шәхеснең туган урыны координаталары күрсәтелмәгән: %2$s."
-
-#~ msgid "%s individual is private."
-#~ msgid_plural "%s individuals are private."
-#~ msgstr[0] "%s шәхес хосусый (яшерен)."
-
-#~ msgid "<p>Notice: By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-#~ msgstr "<p>Искәрмә: Бу форманы тутырып җибәрүегез белән Сез түбәндәгеләр белән ризалыгызны раслыйсыз:<ul><li>Бу сайтта китерелгән хәзерге вакытта исән-сау булган шәхесләр турындагы мәгълүматларны башкаларга бирмисез, сер итеп саклыйсыз (мисал өчен, аларны таратмыйсыз, шәхескә зыян китерерлек максатларда кулланмыйсыз);</li><li>Түбәндәге булектә теркәлү сәбәбен күрсәтәсез (кемнәр туганы икәнлегегезне, яки безнең системадагы кем дә булса турында мәгълүмат өстәргә теләвегезне.</li></ul></div>"
-
-#~ msgid "A new password has been requested for your username."
-#~ msgstr "Сезнең кулланучы исеме өчен серсүзне үзгәртүне сорап мөрәҗәгать алынды."
-
-#~ msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-#~ msgstr "Шәҗәрәдәге гаиләләрне алфавит тәртибендә күрсәтүче ян-такта."
-
-#~ msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-#~ msgstr "Шәҗәрәдәге барлык шәхеслзрне алфавит тәртибендә күрсәтүче ян-такта."
-
-#~ msgid "Add a blank row"
-#~ msgstr "Буш Юл Өстәргә"
-
-#~ msgid "Add a brother or sister"
-#~ msgstr "Абый/эне/апа/сеңел өстәргә"
-
-#~ msgid "Add a child to this family"
-#~ msgstr "Бу гаиләгә бала өстәргә"
-
-#~ msgid "Add a husband to this family"
-#~ msgstr "Гаиләгә ир өстәргә"
-
-#~ msgid "Add a scrollbar when block contents grow"
-#~ msgstr "Блокның эчтәлеге зурайгач янга карау шудыргычы (scrollbar) өстәргә"
-
-#~ msgid "Add a shared note"
-#~ msgstr "Яңа ачык искәрмә өстәргә"
-
-#~ msgid "Add a wife to this family"
-#~ msgstr "Бу гаиләгә хатын өстәргә"
-
-#~ msgid "Add another individual to the chart"
-#~ msgstr "Сызымга тагын бер шәхесне өстәргә"
-
-#~ msgid "Add links"
-#~ msgstr "Бәйләнешләр өстәргә"
-
-#~ msgid "Add missing married names"
-#~ msgstr "Төшеп калган өйләнешкәннән соңгы фамилияләрен өстәргә"
-
-#~ msgid "Add to favorites"
-#~ msgstr "Фаворитларга өстәргә"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Әти-әниләренең икесе белән дә кызлыкка алынган"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Әти-әниләренең икесе белән дә уллыкка алынган"
-
-#~ msgid "Advanced"
-#~ msgstr "Алга киткән (катлаулы, җентекле)"
-
-#, fuzzy
-#~ msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-#~ msgstr "Серсүзне үзгәртү өчен, системага кергәннән соң “Минем бит” менюсыннан “Минем хисап язмасы” пунктын сайлагыз."
-
-#~ msgid "Age of item"
-#~ msgstr "Белдерү чыкканнан соң үткән вакыт"
-
-#~ msgid "Age related to birth year"
-#~ msgstr "Туу елындагы яше"
-
-#~ msgid "Age related to death year"
-#~ msgstr "Вафат булу елындагы яше"
-
-#~ msgid "An edit menu for individuals, families, sources, etc."
-#~ msgstr "Шәхесләр, гаиләләр, чыганаклар һ.б. үзгәртү менюсы."
-
-#~ msgid "Apply automatic corrections to your genealogy data."
-#~ msgstr "Генеалогик мәгълүматларга автомат төзәтүләрне кулланырга."
-
-#~ msgid "Associates"
-#~ msgstr "Бәйләнешләр"
-
-#~ msgid "Available blocks"
-#~ msgstr "Булган блоклар"
-
-#~ msgid "Basic"
-#~ msgstr "Гади"
-
-#~ msgid "Batch update"
-#~ msgstr "Күпләп үзгәртү"
-
-#~ msgid "Bearing"
-#~ msgstr "Юнәлеш"
-
-#~ msgid "Body"
-#~ msgstr "Эчтәлек"
-
-#~ msgid "Booklet"
-#~ msgstr "Брошюра"
-
-#~ msgid "Case insensitive"
-#~ msgstr "Басма һәм кече хәрефләр бер үк дип санала"
-
-#~ msgid "Cemeteries"
-#~ msgstr "Зиратлар"
-
-#~ msgid "Center map here"
-#~ msgstr "Картаның уртасы итәргә"
-
-#~ msgid "Change flag"
-#~ msgstr "Тамганы үзгәртергә"
-
-#~ msgid "Change language"
-#~ msgstr "Телне үзгәртергә"
-
-#~ msgid "Click %s to choose individual as head of family."
-#~ msgstr "Шәхесне Гаилә башлыгы буларак күрсәтү өчен, монда чиертегез: %s."
-
-#~ msgid "Click name to add individual to add links list."
-#~ msgstr "Берәр шәхесне Бәйләнеш Өстәү Исемлегенә кертер өчен, Исем төймәсенә чиертегез."
-
-#~ msgid "Click to choose individual as head of family."
-#~ msgstr "Гаилә башлыгы буларак сайланган шәхес язмасына чиертегез."
-
-#~ msgid "Configure"
-#~ msgstr "Көйләргә"
-
-#~ msgid "Confirm password"
-#~ msgstr "Серсүзне раслагыз"
-
-#~ msgid "Continue adding"
-#~ msgstr "Өстәүне дәвам итәргә"
-
-#~ msgid "Convert from UTF-8 to ISO-8859-1"
-#~ msgstr "UTF-8 форматыннан ISO-8859-1 форматына күчерергә"
-
-#~ msgid "Count"
-#~ msgstr "Сан"
-
-#~ msgid "Countries"
-#~ msgstr "Илләр"
-
-#~ msgid "County"
-#~ msgstr "Район"
-
-#~ msgid "Current"
-#~ msgstr "Агымдагы"
-
-#~ msgid "Decade of birth"
-#~ msgstr "Туу унъеллыгы"
-
-#~ msgid "Decade of death"
-#~ msgstr "Вафат булу унъеллыгы"
-
-#~ msgid "Decade of marriage"
-#~ msgstr "Өйләнешү унъеллыгы"
-
-#~ msgid "Default"
-#~ msgstr "Башлангыч версия"
-
-#~ msgid "Default map type"
-#~ msgstr "Картаның килешенгән төре"
-
-#~ msgid "Desired password"
-#~ msgstr "Серсүз сайлагыз"
-
-#~ msgid "Desired username"
-#~ msgstr "Кулланучы исемен сайлагыз"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Зөлхиҗҗә"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Зөлхиҗҗә"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Зөлхиҗҗә"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Зөлхиҗҗә"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Зөлкагъдә"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Зөлкагъдә"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Зөлкагъдә"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Зөлкагъдә"
-
-#~ msgid "Display all"
-#~ msgstr "Барысын да күрсәтергә"
-
-#~ msgid "Display map coordinates"
-#~ msgstr "Карта Координаталарын Күрсәтергә"
-
-#~ msgid "Earliest birth year"
-#~ msgstr "Иң баштагы туган ел"
-
-#~ msgid "Earliest death year"
-#~ msgstr "Иң баштагы вафат булу елы"
-
-#~ msgid "Edit the media object"
-#~ msgstr "Медиа объектка үзгәрешләр кертергә"
-
-#~ msgid "Elevation"
-#~ msgstr "Күтәренкелек"
-
-#~ msgid "Enter an individual, family, or source ID"
-#~ msgstr "Шәхес, Гаилә, яки Чыганакның ID номерын кертегез"
-
-#~ msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-#~ msgstr "Бу медианы кайсы шәхес, гаилә яки чыганакка бәйләнешле итәргә кирәк, шуның ID номерын кертергә яки эзләргә."
-
-#~ msgid "Enter report values"
-#~ msgstr "Отчета параметрларын кертегез"
-
-#~ msgid "Exact text"
-#~ msgstr "Тәңгәл"
-
-#~ msgid "Family group information"
-#~ msgstr "Гаилә группасы турында мәглүматлар"
-
-#~ msgid "Family list"
-#~ msgstr "Гаиләләр исемлеге"
-
-#~ msgid "File containing places (CSV)"
-#~ msgstr "Урыннар яздырылган файл (CSV)"
-
-#~ msgid "Font"
-#~ msgstr "Шрифт"
-
-#~ msgid "Gender"
-#~ msgstr "Җенес"
-
-#~ msgid "Grandparents"
-#~ msgstr "Дәү әти-әниләре"
-
-#~ msgid "Head of household"
-#~ msgstr "Йорт хуҗасы"
-
-#~ msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
-#~ msgstr "Монда күрсәтелүче тамганы билгеләргә яки бетерергә мөмкин. Бу сылтама буенча тамганы сайлап алып була. Картада бу урын шушы тамга белән билгеләнеп күрсәтелә."
-
-#~ msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
-#~ msgstr "Монда зурайту дәрәҗәсен кертегез. Бу сан геграфик урынны картадан күрсәткәндә иң кечкенә (минимум) мәгънәсендә кулланыла."
-
-#~ msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
-#~ msgstr "Монда кертелгән төгәллекә карап, киңлек/озынлык ничә цифр белән бирелүе билгеләнә."
-
-#~ msgid "Historical facts"
-#~ msgstr "Тарихи фактлар"
-
-#~ msgid "House"
-#~ msgstr "Өй"
-
-#~ msgid "Hybrid"
-#~ msgstr "Катнаш"
-
-#~ msgid "Icon"
-#~ msgstr "Тамга"
-
-#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
-#~ msgstr "Әгәр актив булмаган урыннар бик күп булса, бу исемлекне күрсәтүне акрынайтырга мөмкин."
-
-#~ msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-#~ msgstr "Әгәр буш блок күрсәтелми торган итеп көйләсәгез, ул блок көйләнешләрен блок күрсәтелә торган булса гын, ягъни буш булмаганда гына үзгәртә алачаксыз."
-
-#~ msgid "Individual distribution"
-#~ msgstr "Шәхесләрнең таралуы"
-
-#~ msgid "Individual list"
-#~ msgstr "Шәхесләр исемлеге"
-
-#~ msgid "Information about the request is shown under the link below."
-#~ msgstr "Гаризага кагылышлы мәгълүматлар түбәндәге сылтамада күрсәтелгән."
-
-#~ msgid "Interred"
-#~ msgstr "Погребение в фамильном склепе"
-
-#~ msgid "Invalid GEDCOM format"
-#~ msgstr "Дөрес булмаган GEDCOM форматы"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Жәмадил-әүвәл"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Жәмадил-әүвәл"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Жәмадил-әүвәл"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Жәмадил-әүвәл"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Жәмадил-ахир"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Жәмадил-ахир"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Жәмадил-ахир"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Жәмадил-ахир"
-
-#~ msgid "Keep"
-#~ msgstr "Калдырырга"
-
-#~ msgid "Keep link in list"
-#~ msgstr "Бәеләнешне исемлектә калдырырга"
-
-#~ msgid "LDS temple"
-#~ msgstr "Мормоннар храмы"
-
-#~ msgid "Latest birth year"
-#~ msgstr "Иң соңгы туган ел"
-
-#~ msgid "Latest death year"
-#~ msgstr "Иң соңгы вафат булу елы"
-
-#~ msgid "Level"
-#~ msgstr "Дәрәҗә"
-
-#~ msgid "Limit"
-#~ msgstr "Чик"
-
-#~ msgid "Limit display by"
-#~ msgstr "Күрсәтелгән белдерүләр саны чиге"
-
-#~ msgid "Link to an existing media object"
-#~ msgstr "Булган медиа объектка бәйләнеш өстәргә"
-
-#~ msgid "Location not removed: this location contains sub-locations"
-#~ msgstr "Урын бетерелмәде - аның түбәнрәк дәрәҗәле урыннары бар"
-
-#~ msgid "Lost password request"
-#~ msgstr "Яңа серсүз сорарга"
-
-#~ msgid "Mailing name"
-#~ msgstr "_NAME- исеме"
-
-#~ msgid "Main section blocks"
-#~ msgstr "Төп Секция блоклары"
-
-#~ msgid "Marriage status"
-#~ msgstr "Гаилә хәле"
-
-#~ msgid "Married surname"
-#~ msgstr "Никахтагы фамилиясе"
-
-#~ msgid "Max"
-#~ msgstr "Максимум"
-
-#~ msgid "Media contains"
-#~ msgstr "Медиа исеменә бу кергән"
-
-#~ msgid "Medical condition"
-#~ msgstr "Сәламәтлек"
-
-#~ msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
-#~ msgstr "Google Map картасын кимендә (минимум) һәм күбендә (максимум) зурайту коэффициенты. 1 тулы карта, 15 бер өй дәрәҗәсендә дигәнне аңлата. 15-ле зурайту барлык җирләрдә дә булмаска да мөмкин."
-
-#~ msgid "Move left"
-#~ msgstr "Сулгарак күчерергә"
-
-#~ msgid "Move right"
-#~ msgstr "Уңгарак күчерергә"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Мөхәррәм"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Muḥarram"
-#~ msgstr "Мөхәррәм"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Мөхәррәм"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Мөхәррәм"
-
-#~ msgid "Name contains"
-#~ msgstr "Исемгә болар кергән"
-
-#~ msgid "Neighborhood"
-#~ msgstr "Район"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Never married"
-#~ msgstr "Бер дә Кияүдә булмаган"
-
-#~ msgctxt "MALE"
-#~ msgid "Never married"
-#~ msgstr "Бер да Өйләнмәгән"
-
-#~ msgid "No ancestors in the database."
-#~ msgstr "Мәгълүматлар базасында ата-бабалары табылмады."
-
-#~ msgid "No limit"
-#~ msgstr "Чикләнмәгән"
-
-#~ msgid "No map data exists for this individual"
-#~ msgstr "Бу шәхес өчен карта мәгълүматлары юк"
-
-#~ msgid "No places found"
-#~ msgstr "Урыннар табылмады"
-
-#~ msgid "Not a valid individual, family, or source ID"
-#~ msgstr "Мондый Шәхес/Гаилә/Чыганак ID номеры юк"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Not married"
-#~ msgstr "Кияүдә тугел"
-
-#~ msgctxt "MALE"
-#~ msgid "Not married"
-#~ msgstr "Өйләнмәгән"
-
-#~ msgid "Number of generations"
-#~ msgstr "Буыннар саны"
-
-#~ msgid "Number of items"
-#~ msgstr "Белдерүләр саны"
-
-#~ msgid "Number of items to show"
-#~ msgstr "Ничә язма күрсәтергә"
-
-#~ msgid "Oldest at bottom"
-#~ msgstr "Иң өлкән аста"
-
-#~ msgid "Oldest at top"
-#~ msgstr "Иң өлкән өстә"
-
-#~ msgid "Others"
-#~ msgstr "Башкалар"
-
-#~ msgid "Own charts"
-#~ msgstr "Үзегезнең сызымнар"
-
-#~ msgid "Passwords do not match."
-#~ msgstr "Серсүзләр аерыла."
-
-#~ msgid "Passwords must contain at least 8 characters."
-#~ msgstr "Серсүз ким дигәндә 8 хәрефтән торырга тиеш."
-
-#~ msgid "Pedigree chart"
-#~ msgstr "Нәсел Агачы"
-
-#~ msgid "Pedigree of %s"
-#~ msgstr "%s ата-бабалары"
-
-#~ msgid "Place check"
-#~ msgstr "Урыннарны Тикшерү"
-
-#~ msgid "Place contains"
-#~ msgstr "Урын исеменә түбәндәгеләр кергән"
-
-#~ msgid "Places found"
-#~ msgstr "Табылган урыннар"
-
-#~ msgid "Places in %s"
-#~ msgstr "%s-да урнашкан урыннар"
-
-#~ msgid "Please enter a given name, surname, or place in addition to the year"
-#~ msgstr "Елдан тыш, исемен, фамилиясен яки урынны да күрсәтегез"
-
-#~ msgid "Please enter a message subject."
-#~ msgstr "Хәбәрнең темасын кртегез."
-
-#~ msgid "Please enter more than one character."
-#~ msgstr "Бердән күбрәк хәреф кертегез."
-
-#~ msgid "Please enter some message text before sending."
-#~ msgstr "Хәбәрнең эчтәлеген кертегез."
-
-#~ msgid "Precision"
-#~ msgstr "Төгәллек"
-
-#~ msgid "Precision of the latitude and longitude"
-#~ msgstr "Киңлек/озынлыкны күрсәтү төгәллеге"
-
-#~ msgid "Presentation style"
-#~ msgstr "Күрсәтү стиле"
-
-#~ msgid "README documentation"
-#~ msgstr "README документлары"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Рабигыл-әүвәл"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Рабигыл-әүвәл"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Рабигыл-әүвәл"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Рабигыл-әүвәл"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Рабигыл-ахир"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Рабигыл-ахир"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Рабигыл-ахир"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Рабигыл-ахир"
-
-#~ msgid "Records are not the same type. Cannot merge records that are not the same type."
-#~ msgstr "Язмаларның төрләре бер үк түгел, шуңа аларны берләштереп булмый."
-
-#~ msgid "Redraw map"
-#~ msgstr "Картаны яңартырга"
-
-#~ msgid "Religious name"
-#~ msgstr "Дини исеме"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Religious name"
-#~ msgstr "Дини исеме"
-
-#~ msgctxt "MALE"
-#~ msgid "Religious name"
-#~ msgstr "Дини исеме"
-
-#~ msgid "Remove flag"
-#~ msgstr "Тамганы бетерергә"
-
-#~ msgid "Remove link from list"
-#~ msgstr "Бәйләнешне исемлектән бетерергә"
-
-#~ msgid "Repositories found"
-#~ msgstr "Табылган репозиторийлар"
-
-#~ msgid "Repository contains"
-#~ msgstr "Репозиторий исеменә түбәндәгеләр кергән"
-
-#~ msgid "Right section blocks"
-#~ msgstr "Уң Як Секция блоклары"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Сәфәр"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Ṣafar"
-#~ msgstr "Сәфәр"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Сәфәр"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Сәфәр"
-
-#~ msgid "Satellite"
-#~ msgstr "Иярчен"
-
-#~ msgid "Search for individuals to add to add Links list."
-#~ msgstr "Өстәләсе Бәйләнешләр Исемлегенә өстәр өчен, Кешеләрне Эзләргә."
-
-#~ msgid "Search globally"
-#~ msgstr "Глобаль эзләү"
-
-#~ msgid "Search locally"
-#~ msgstr "Чикләнгән эзләү"
-
-#, fuzzy
-#~ msgid "Select a block and use the arrows to move it."
-#~ msgstr "Төркемне күчерер өчен ул төркем исемен аерып күрсәтегез һәм ук рәвешендәге тамгаларның кирәкле юнәлештәгесенә чиертегез."
-
-#~ msgid "Select chart type"
-#~ msgstr "Сызым төрен сайлагыз"
-
-#~ msgid "Select flag"
-#~ msgstr "Тамга сайларга"
-
-#~ msgid "Select the stats to show in this block"
-#~ msgstr "Бу төркемдә күрсәтеләсе статистикаларны сайлагыз"
-
-#~ msgid "Send broadcast messages"
-#~ msgstr "Барлык кулланучыларга да хәбәр җибәрергә"
-
-#~ msgid "Server file containing places (CSV)"
-#~ msgstr "Урыннар яздырылган сервердагы файл (CSV)"
-
-#~ msgid "Shared note contains"
-#~ msgstr "Искәрмәгә түбәндәгеләр кергән"
-
-#~ msgid "Shared notes found"
-#~ msgstr "Табылган ачык Искәрмәләр"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Шәгъбан"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Shaʿbān"
-#~ msgstr "Шәгъбан"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Шәгъбан"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Шәгъбан"
-
-#~ msgid "Short version"
-#~ msgstr "Кыска версиясе"
-
-#~ msgid "Should this block be hidden when it is empty"
-#~ msgstr "Бу блок буш булса, аны күрсәтмәскәме"
-
-#~ msgid "Show all spouses and ancestors"
-#~ msgstr "Барлык хәләл җефетләрне һәм ата-бабаларны күрсәтергә"
-
-#~ msgid "Show all tags"
-#~ msgstr "Барлык ярлыкларны да (тег) күрсәтергә"
-
-#~ msgid "Show common surnames"
-#~ msgstr "Еш очраган фамилияләрне күрсәтергәме"
-
-#~ msgid "Show counts before or after name"
-#~ msgstr "Урын исемгә кадәрме яки исемнән соңмы"
-
-#~ msgid "Show cousins"
-#~ msgstr "Туганнан туганнарны күрсәтергә"
-
-#~ msgid "Show date differences"
-#~ msgstr "Даталардагы аермаларны күрсәтергә"
-
-#~ msgid "Show details"
-#~ msgstr "Тәфсилләп күрсәтергә"
-
-#~ msgid "Show inactive places"
-#~ msgstr "Актив булмаган урыннарны да күрсәтергә"
-
-#~ msgid "Show lifespans"
-#~ msgstr "Тормыш дәвамын күрсәтергә"
-
-#~ msgid "Show only births, deaths, and marriages"
-#~ msgstr "Туу, вафат булу һәм никахлашуларны гына күрсәтергәме"
-
-#~ msgid "Show only the selected tags"
-#~ msgstr "Сайлап алынган ярлыкларны гына күрсәтергә"
-
-#~ msgid "Show places in hierarchy"
-#~ msgstr "Географик урыннарны иерархия рәвешендә күрсәтергә"
-
-#~ msgid "Show related individuals/families"
-#~ msgstr "Бәйләнешле шәхесләрне / гаиләләрне күрсәтергә"
-
-#~ msgid "Show statistics charts"
-#~ msgstr "Статистика сызымнарын күрсәтергә"
-
-#~ msgid "Show the location of places and events using the Google™ maps mapping service."
-#~ msgstr "Географик урыннарны һәм вакыйгалар булган урыннырны Google™ maps картасында күрсәтү."
-
-#~ msgid "Signed-in as "
-#~ msgstr "Сезнең Системадагы кулланучы исемегез "
-
-#~ msgid "Size of map (in pixels)"
-#~ msgstr "Картаның үлчәмнәре (пикселларда)"
-
-#~ msgid "Source contains"
-#~ msgstr "Чыганакка түбәндәгеләр кергән"
-
-#~ msgid "Standard"
-#~ msgstr "Стандарт"
-
-#~ msgid "Start at parents"
-#~ msgstr "Әти-әниләрдән башларга"
-
-#~ msgid "Subdivision"
-#~ msgstr "Республика/Өлкә"
-
-#~ msgid "System settings"
-#~ msgstr "Система көйләнешләре"
-
-#~ msgid "Tag"
-#~ msgstr "Ярлык"
-
-#~ msgid "Terrain"
-#~ msgstr "Физик"
-
-#~ msgid "The media file was not found in this family tree."
-#~ msgstr "Бу нәсел агачында медиа файл табылмады."
-
-#~ msgid "The passwords do not match."
-#~ msgstr "Серсүзләр тәңгәл түгел."
-
-#~ msgid "The regular expression appears to contain an error. It can’t be used."
-#~ msgstr "Эзләү аңлатмасы дөрес булмаганга охшаган. Аны кулланып булмый."
-
-#~ msgid "This family remained childless"
-#~ msgstr "Бу гаиләнең балалары булмаган"
-
-#~ msgid "This media file is broken and cannot be watermarked."
-#~ msgstr "Бу медиа файл җимерек, мөһер куеп булмый."
-
-#~ msgid "This message will be sent to %s"
-#~ msgstr "Хәбәр %s адресына җибәреләчәк"
-
-#~ msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
-#~ msgstr "Бу көйләү картадагы тамгаларга бәйләнешле тәрәзә ачылганда Киңлек/Озынлыкны күрсәтергәме икәнен билгели."
-
-#~ msgid "This place has no coordinates"
-#~ msgstr "Бу урынның координаталары юк"
-
-#~ msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
-#~ msgstr "Төрле дәрәҗәдәге яңа геграфик урыннарны керткәндәге координаталарны күрсәтү төгәллеген билгели. Мәсәлән, илләр координаталары 0 төгәллеге белән (ягъни өтердән соң ноль цифр) күрсәтелә, ә кечерәк шәһәрләр өчен 3 яки 4 цифр кирәк."
-
-#~ msgid "Top level"
-#~ msgstr "Өске дәрәҗә"
-
-#, php-format
-#~ msgid "Total families: %s"
-#~ msgstr "Барысы %s гаилә"
-
-#, php-format
-#~ msgid "Total individuals: %s"
-#~ msgstr "Барысы %s шәхес"
-
-#~ msgid "Total places: %s"
-#~ msgstr "Барысы %s урын"
-
-#~ msgid "Total sources: %s"
-#~ msgstr "Барлыгы %s чыганак"
-
-#~ msgid "Type of place markers in the place hierarchy"
-#~ msgstr "Урыннар Иерархиясендәге тамгалар төре"
-
-#, fuzzy
-#~ msgid "Unable to find record with ID"
-#~ msgstr "Язманы табып булмый, ID номеры"
-
-#~ msgid "Upload"
-#~ msgstr "Йөкләү"
-
-#~ msgid "Use full source citations"
-#~ msgstr "Тулы чыганак цитаталарын кулланырга"
-
-#~ msgid "Use this value"
-#~ msgstr "Бу мәгънәне кулланырга"
-
-#~ msgid "Users who are signed in"
-#~ msgstr "Хәзерге вакытта системага кергән кулланучылар"
-
-#~ msgid "Verification code"
-#~ msgstr "Раслау коды"
-
-#~ msgid "View"
-#~ msgstr "Күрсәтергә"
-
-#~ msgid "View all records found in this place"
-#~ msgstr "Бу урынга бәйләнешле барлык язмаларны күрсәтергә"
-
-#~ msgid "View the archive"
-#~ msgstr "Архивны күрсәтергә"
-
-#~ msgid "View the notes"
-#~ msgstr "Искәрмәләрне күрсәтергә"
-
-#~ msgid "View the statistics as graphs"
-#~ msgstr "Статистикаларны графиклар формасында күрсәтергә"
-
-#, fuzzy
-#~ msgid "View this individual"
-#~ msgstr "Шәхес турындагы мәгълүматларны күрсәтергә"
-
-#, fuzzy
-#~ msgid "View this source"
-#~ msgstr "Мәгълүмат чыганагын күрсәтергә"
-
-#~ msgid "When adding a link, the ID field cannot be empty."
-#~ msgstr "Бәйләнеш өстәгәндә ID номеры буш була алмый."
-
-#~ msgid "When you send this message you will receive a copy sent via email to the address you provided."
-#~ msgstr "Хәбәр җибәрелгәч, аның күчермәсе Сез күрсәткән электрон адреска да җибәрелер."
-
-#~ msgid "Whole words only"
-#~ msgstr "Сүзләр тулысынча кергәннәрен эзләргә"
-
-#~ msgid "Width"
-#~ msgstr "Җилпәзәнең киңлеге"
-
-#~ msgid "Wife’s maiden surname becomes new given name"
-#~ msgstr "Хатынының кыз фамилиясе яңа исем була"
-
-#~ msgid "Wife’s surname replaced by husband’s surname"
-#~ msgstr "Хатынының фамилиясе иренекенә алмаштырыла"
-
-#~ msgid "Wildcards"
-#~ msgstr "Эзләү өлгесе"
-
-#~ msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-#~ msgstr "Кияүдәге хатын-кызларны эзләү ансатрак булсын өчен, кияүдәге фамилияләрен дә кертү отышлы. Ләкин барлык очракларда да хатыны ире фамилиясен ала торган булмаганга, игътибарлы булыгыз."
-
-#~ msgid "You entered the same IDs. You cannot merge the same records."
-#~ msgstr "Нәкъ шундый ук ID номеры керттегез. Бер үк төрле язмаларны берләштереп булмый."
-
-#~ msgid "You have not created any journal items."
-#~ msgstr "Сезнең көндәлектә бер язма да юк."
-
-#~ msgid "You must enter a name"
-#~ msgstr "Исемне кертүегез сорала"
-
-#~ msgid "You must enter a real name."
-#~ msgstr "Чын исемегезне кертегез."
-
-#~ msgid "You must enter a username."
-#~ msgstr "Кулланучы исемен кертегез."
-
-#, fuzzy
-#~ msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-#~ msgstr "Сезнең хисап язмасында \"үзгәрешләрне автомат рәвештә расларга\" үзенчәлеге авктив түгел. Шуңа сез берьюлы бер генә язмага үзгәреш кертә аласыз."
-
-#~ msgid "Zip file(s)"
-#~ msgstr "Zip файлы"
-
-#~ msgid "Zoom in here"
-#~ msgstr "Зурайтырга"
-
-#~ msgid "Zoom in/out on this box."
-#~ msgstr "Тулырак/азрак мәгълүмат."
-
-#~ msgid "Zoom level"
-#~ msgstr "Зурайту дәрәҗәсе"
-
-#~ msgid "Zoom level of map"
-#~ msgstr "Ничә тапкыр зурайтырга"
-
-#~ msgid "Zoom out here"
-#~ msgstr "Кечерәйтергә"
-
-#~ msgid "Zoom="
-#~ msgstr "Зурайту="
-
-#~ msgctxt "FEMALE"
-#~ msgid "adopted name"
-#~ msgstr "кызлыкка алынганнан соңгы исеме"
-
-#~ msgctxt "MALE"
-#~ msgid "adopted name"
-#~ msgstr "уллыкка алынганнан соңгы исеме"
-
-#~ msgid "adoption"
-#~ msgstr "уллыкка (кызлыкка) алу"
-
-#~ msgctxt "FEMALE"
-#~ msgid "also known as"
-#~ msgstr "икенче исеме"
-
-#~ msgctxt "MALE"
-#~ msgid "also known as"
-#~ msgstr "икенче исеме"
-
-#~ msgid "birth"
-#~ msgstr "туу"
-
-#~ msgctxt "FEMALE"
-#~ msgid "birth name"
-#~ msgstr "тугач кушылган исеме"
-
-#~ msgctxt "MALE"
-#~ msgid "birth name"
-#~ msgstr "тугач кушылган исеме"
-
-#~ msgid "burial"
-#~ msgstr "гүргә иңдерү (күмү)"
-
-#~ msgid "census added"
-#~ msgstr "исәпкә алу өстәлгән"
-
-#~ msgctxt "FEMALE"
-#~ msgid "change of name"
-#~ msgstr "исемен алмаштыру"
-
-#~ msgctxt "MALE"
-#~ msgid "change of name"
-#~ msgstr "исемен алмаштыру"
-
-#~ msgid "death"
-#~ msgstr "вафат"
-
-#~ msgid "east"
-#~ msgstr "көнчыгыш"
-
-#~ msgid "half-year after marriage"
-#~ msgstr "өйләнешкәннән соң үткән ярым-еллар"
-
-#~ msgctxt "FEMALE"
-#~ msgid "immigration name"
-#~ msgstr "иммиграциядәге исеме"
-
-#~ msgctxt "MALE"
-#~ msgid "immigration name"
-#~ msgstr "иммиграциядәге исеме"
-
-#, fuzzy
-#~ msgid "import"
-#~ msgstr "импорт"
-
-#~ msgid "interval one child"
-#~ msgstr "бер бала интервалы"
-
-#~ msgid "interval two children"
-#~ msgstr "ике бала интервалы"
-
-#~ msgid "less than"
-#~ msgstr "моңа караганда әзрәк"
-
-#, fuzzy
-#~ msgid "link"
-#~ msgstr "Бәйләнеш өстәргә"
-
-#~ msgid "marriage"
-#~ msgstr "никахлашу"
-
-#~ msgctxt "FEMALE"
-#~ msgid "married name"
-#~ msgstr "кияүдәге фамилиясе"
-
-#~ msgctxt "MALE"
-#~ msgid "married name"
-#~ msgstr "өйләнгәнче фамилиясе"
-
-#~ msgid "maximum"
-#~ msgstr "максимум"
-
-#~ msgid "minimum"
-#~ msgstr "минимум"
-
-#~ msgid "month"
-#~ msgstr "ай"
-
-#~ msgid "months after marriage"
-#~ msgstr "өйләнешкәннән соң үткән айлар"
-
-#~ msgid "months before and after marriage"
-#~ msgstr "өйләнешкәнгә кадәрге һәм соңгы айлар"
-
-#~ msgid "north"
-#~ msgstr "төньяк"
-
-#~ msgid "over"
-#~ msgstr "артык"
-
-#~ msgid "preview"
-#~ msgstr "Карап алу"
-
-#~ msgid "quarters after marriage"
-#~ msgstr "өйләнешкәннән соң үткән кварталлар"
-
-#~ msgctxt "FEMALE"
-#~ msgid "religious name"
-#~ msgstr "дини исеме"
-
-#~ msgctxt "MALE"
-#~ msgid "religious name"
-#~ msgstr "дини исеме"
-
-#~ msgid "sort by filename"
-#~ msgstr "файл исеме буенча"
-
-#~ msgid "sort by title"
-#~ msgstr "Баш исеме буенча"
-
-#~ msgid "south"
-#~ msgstr "көньяк"
-
-#~ msgid "west"
-#~ msgstr "көнбатыш"
-
-#~ msgid "years"
-#~ msgstr "ел"
-
-#~ msgid "“%s” has been added to your favorites."
-#~ msgstr "“%s” сезнең фаворитларга өстәлде."

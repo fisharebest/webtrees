@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-15 18:05+0100\n"
+"POT-Creation-Date: 2026-07-16 21:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -414,18 +414,6 @@ msgctxt "MALE"
 msgid "%s × cousin"
 msgstr "%s × rođak"
 
-#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ʙᴄᴇ"
-msgstr "%s p.n.e"
-
-#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ᴄᴇ"
-msgstr "%s n.e"
-
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php
 #, php-format
@@ -471,6 +459,18 @@ msgstr "%s, njegove supruge i deca"
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, njegove supruge i potomci"
+
+#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ʙᴄᴇ"
+msgstr "%s p.n.e"
+
+#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ᴄᴇ"
+msgstr "%s n.e"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
@@ -1091,25 +1091,21 @@ msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Aban"
@@ -1152,73 +1148,61 @@ msgstr "Odobrenje korisničkog naloga i potvrda e-maila"
 msgid "Accra, Ghana"
 msgstr "Accra, Gana"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
@@ -2189,25 +2173,21 @@ msgstr "Automatski proširi beleške"
 msgid "Automatically expand sources"
 msgstr "Automatski proširi izvore"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Av"
@@ -2260,25 +2240,21 @@ msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Azar"
@@ -2304,25 +2280,21 @@ msgstr "Bah"
 msgid "Bahamas"
 msgstr "Bahamy"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Bahman"
@@ -2787,25 +2759,21 @@ msgstr "Britské Panenské ostrovy"
 msgid "Brother"
 msgstr "Brat"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
@@ -4737,73 +4705,61 @@ msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Zu-l-ka’dea"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Qiʿdah"
 msgstr "Zu-l-ka’deom"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Zu-l-ka’deu"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Zu-l-ka’de"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Zu-l-hidždžea"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Ḥijjah"
 msgstr "Zu-l-hidždžeom"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Zu-l-hidždžeu"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Ḥijjah"
@@ -5086,25 +5042,21 @@ msgstr "Salvador"
 msgid "Electronic"
 msgstr "Elektronski"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Elul"
@@ -5237,25 +5189,21 @@ msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
 msgstr "Esf"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Esfand"
 msgstr "Esfand"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
 msgstr "Esfand"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Esfand"
 msgstr "Esfand"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Esfand"
@@ -5721,25 +5669,21 @@ msgstr "Far"
 msgid "Faroe Islands"
 msgstr "Farska ostrva"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
@@ -5964,25 +5908,21 @@ msgstr "Zastavica"
 msgid "Flanders"
 msgstr "Flandrija"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Floreal"
@@ -6174,25 +6114,21 @@ msgctxt "MALE"
 msgid "Friend"
 msgstr "Prijatelj"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
@@ -6210,25 +6146,21 @@ msgctxt "Start of date range"
 msgid "From"
 msgstr "Od"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
@@ -6397,26 +6329,21 @@ msgstr "Gruzija"
 msgid "Germany"
 msgstr "Nemačka"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Germinal"
@@ -6732,25 +6659,21 @@ msgstr "HERE mape"
 msgid "Hermosillo, Mexico"
 msgstr "Hermosillo, Meksiko"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Heshvan"
 msgstr "Heshvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
 msgstr "Heshvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Heshvan"
 msgstr "Heshvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
@@ -7342,25 +7265,21 @@ msgstr "Ne preporučuje se korišćenje prilagođenih GEDCOM oznaka. Ovi podaci
 msgid "Italy"
 msgstr "Italija"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Iyar"
 msgstr "Iyar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
 msgstr "Iyar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Iyar"
 msgstr "Iyar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Iyar"
@@ -7471,49 +7390,41 @@ msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "Jul"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-awwal"
 msgstr "Džumade-l-ula"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-awwal"
 msgstr "Džumade-l-ulaom"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Džumade-l-ulau"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Džumade-l-ula"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-thānī"
 msgstr "Džumade-l-uhra"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-thānī"
 msgstr "Džumade-l-uhraom"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-thānī"
 msgstr "Džumade-l-uhrau"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-thānī"
@@ -7585,25 +7496,21 @@ msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
 msgstr "Khor"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
 msgstr "Khordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Khordad"
@@ -7614,25 +7521,21 @@ msgstr "Khordad"
 msgid "Kiribati"
 msgstr "Kiribati"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Kislev"
@@ -8658,25 +8561,21 @@ msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mehr"
@@ -8751,25 +8650,21 @@ msgstr "Poruka"
 msgid "Messages"
 msgstr "Poruke"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Messidor"
@@ -8946,25 +8841,21 @@ msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
 msgstr "Mor"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mordad"
@@ -9084,25 +8975,21 @@ msgstr "Višestruko rođenje"
 msgid "Multiple marriages"
 msgstr "Višestruki brakovi"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Muḥarram"
 msgstr "Muharrem"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Muḥarram"
 msgstr "Muharrem"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muḥarram"
 msgstr "Muharrem"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Muḥarram"
@@ -9331,25 +9218,21 @@ msgstr "Niger"
 msgid "Nigeria"
 msgstr "Nigerija"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Nissan"
 msgstr "Nissan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
 msgstr "Nissan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Nissan"
 msgstr "Nissan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Nissan"
@@ -9360,25 +9243,21 @@ msgstr "Nissan"
 msgid "Niue"
 msgstr "Nijue"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Nivose"
@@ -9917,25 +9796,21 @@ msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
 msgstr "Ord"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
@@ -10453,25 +10328,21 @@ msgstr "Molimo vas da upišete ispravnu e-mail adresu."
 msgid "Please try again."
 msgstr "Molimo pokušajte ponovo."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
@@ -10532,25 +10403,21 @@ msgstr "Poštanski broj"
 msgid "Powered by webtrees™"
 msgstr "Pokreće webtrees™"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Prairial"
@@ -10728,49 +10595,41 @@ msgstr "ODG: "
 msgid "Rabbi"
 msgstr "Rabin"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Rabi’ al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-thani"
 msgstr "Rabi’ al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Rabi’ al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-thani"
@@ -10794,25 +10653,21 @@ msgctxt "Pedigree"
 msgid "Rada"
 msgstr "Rada"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "Redžeba"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "Redžebom"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "Redžebu"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rajab"
@@ -10823,25 +10678,21 @@ msgstr "Redžeb"
 msgid "Raleigh, North Carolina, United States"
 msgstr "Raleigh, North Carolina, USA"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "Ramazana"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "Ramazanom"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "Ramazanu"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
@@ -11819,25 +11670,21 @@ msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
 msgstr "Shah"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
@@ -11876,49 +11723,41 @@ msgstr "Deljene beleške"
 msgid "Shares"
 msgstr "Podeli"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "Ševvala"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "Ševvalom"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "Ševvalu"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Ševval"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shaʿbān"
 msgstr "Ša’bana"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shaʿbān"
 msgstr "Ša’banom"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shaʿbān"
 msgstr "Ša’banu"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shaʿbān"
@@ -11957,25 +11796,21 @@ msgstr "Krštena je"
 msgid "She was cremated"
 msgstr "Kremirana je"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Shevat"
 msgstr "Shevat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
 msgstr "Shevat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Shevat"
 msgstr "Shevat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Shevat"
@@ -12404,25 +12239,21 @@ msgstr "Mape sajtova"
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr "Mape sajtova su način da webmasteri pokažu pretraživačkim robotima stranice na website-u koje su dostupne za indeksiranje. Svi veći pretraživački servisi podržavaju Mape sajtova (sitemaps). Za više informacija pogledajte <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Sivan"
@@ -13003,25 +12834,21 @@ msgstr "Tadžikistan"
 msgid "Tampico, Mexico"
 msgstr "Tampico, Meksiko"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
@@ -13061,25 +12888,21 @@ msgstr "Šabloni"
 msgid "Temple"
 msgstr "Hram"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tevet"
@@ -13719,25 +13542,21 @@ msgstr "Došlo je do greške pri proveri nove verzije."
 msgid "There was an error uploading your file."
 msgstr "Dogodila se greška pri učitavanju vaše datoteke."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
@@ -14238,49 +14057,41 @@ msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tishrei"
 msgstr "Tishrei"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
 msgstr "Tishrei"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tishrei"
 msgstr "Tishrei"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
@@ -14984,25 +14795,21 @@ msgstr "Različiti statistički grafikoni."
 msgid "Vatican City"
 msgstr "Vatikan"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
@@ -15013,25 +14820,21 @@ msgstr "Vendémiaire"
 msgid "Venezuela"
 msgstr "Venecuela"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Ventose"
@@ -18076,25 +17879,21 @@ msgstr "protumačeno %s (%s)"
 msgid "invert selection"
 msgstr "obrni selekciju"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
 msgstr "jours complémentaires"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
 msgstr "jours complémentaires"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
 msgstr "jours complémentaires"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
@@ -19542,25 +19341,21 @@ msgstr[2] "±%s godina"
 msgid "Åland Islands"
 msgstr "Alandska ostrva"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ṣafar"
 msgstr "Safera"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ṣafar"
 msgstr "Saferom"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ṣafar"
 msgstr "Saferu"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ṣafar"
@@ -19608,1436 +19403,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#, php-format
-#~ msgid "#%s"
-#~ msgstr "#%s"
-
-#, php-format
-#~ msgid "%1$s %2$s has a %3$s link to %4$s."
-#~ msgstr "%1$s %2$s ima %3$s link na %4$s."
-
-#, php-format
-#~ msgid "%1$s does not exist."
-#~ msgstr "%1$s ne postoji."
-
-#~ msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgstr[0] "%1$s osoba prikazano, od ukupno %2$s, koje obuhvata %3$s generacije."
-#~ msgstr[1] "%1$s osoba prikazano, od ukupno %2$s, koje obuhvata %3$s generacije."
-#~ msgstr[2] "%1$s osoba prikazano, od ukupno %2$s, koje obuhvata %3$s generacije."
-
-#~ msgid "%1$s individual is missing birthplace map coordinates: %2$s."
-#~ msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-#~ msgstr[0] "%1$s osoba nema kordinate mesta rođenja na mapi: %2$s."
-#~ msgstr[1] "%1$s osoba nema kordinate mesta rođenja na mapi: %2$s."
-#~ msgstr[2] "%1$s osoba nema kordinate mesta rođenja na mapi: %2$s."
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "Pre %s dan"
-#~ msgstr[1] "Pre %s dana"
-#~ msgstr[2] "Pre %s dana"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "Pre %s sat"
-#~ msgstr[1] "Pre %s sata"
-#~ msgstr[2] "Pre %s sati"
-
-#~ msgid "%s individual is private."
-#~ msgid_plural "%s individuals are private."
-#~ msgstr[0] "%s pojedinac je privatan."
-#~ msgstr[1] "%s pojedinca su privatni."
-#~ msgstr[2] "%s pojedinaca je privatno."
-
-#, php-format
-#~ msgid "%s individual with events between %s and %s"
-#~ msgid_plural "%s individuals with events between %s and %s"
-#~ msgstr[0] "%s osoba sa događajima između %s i %s"
-#~ msgstr[1] "%s osobe sa događajima između %s i %s"
-#~ msgstr[2] "%s osoba sa događajima između %s i %s"
-
-#, php-format
-#~ msgid "%s individual with events in %s"
-#~ msgid_plural "%s individuals with events in %s"
-#~ msgstr[0] "%s osoba sa događajima u %s"
-#~ msgstr[1] "%s osobe sa događajima u %s"
-#~ msgstr[2] "%s osoba sa događajima u %s"
-
-#, php-format
-#~ msgid "%s individual with events in %s between %s and %s"
-#~ msgid_plural "%s individuals with events in %s between %s and %s"
-#~ msgstr[0] "%s osoba sa događajima u %s između %s i %s"
-#~ msgstr[1] "%s osobe sa događajima u %s između %s i %s"
-#~ msgstr[2] "%s osoba sa događajima u %s između %s i %s"
-
-#~ msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "%s je isključen na ovom serveru. Ne možete instalirati webtrees dok je isključen. Zamolite vašeg server administratora da ga uključi."
-
-#, php-format
-#~ msgid "%s location has been imported."
-#~ msgid_plural "%s locations have been imported."
-#~ msgstr[0] "%s lokacija je uvezena."
-#~ msgstr[1] "%s lokacije su uvezene."
-#~ msgstr[2] "%s lokacija je uvezeno."
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "Pre %s minut"
-#~ msgstr[1] "Pre %s minuta"
-#~ msgstr[2] "Pre %s minuta"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "Pre %s mesec"
-#~ msgstr[1] "Pre %s meseca"
-#~ msgstr[2] "Pre %s meseci"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "Pre %s sekundu"
-#~ msgstr[1] "Pre %s sekunde"
-#~ msgstr[2] "Pre %s sekundi"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "Pre %s godine"
-#~ msgstr[1] "Pre %s godine"
-#~ msgstr[2] "Pre %s godina"
-
-#, php-format
-#~ msgid "(aged less than %s)"
-#~ msgstr "(star(a) manje od %s)"
-
-#, php-format
-#~ msgid "(aged more than %s)"
-#~ msgstr "(star(a) više od %s)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(u detinjstvu)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(kao dojenče)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(mrtvorođeno)"
-
-#~ msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-#~ msgstr "<b>Važna napomena:</b> Čarobnjak za prenos nije u mogućnosti da premešta medijske stavke. Vi morate postaviti i premestiti ili kopirati vašu medija konfiguraciju i objekte nakon što čarobnjak za prenos završi."
-
-#~ msgid "<p>Notice: By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-#~ msgstr "<p>Obaveštenje: Ispunjavanjem i slanjem ovog obrasca, slažete se:<ul><li>da ćete zaštititi privatnost živih osoba prikazanih na ovim stranicama;</li><li>i u tekst polje ispod, opisati sa kime ste u rodu ili nam dati informacije o nekome ko bi trebao biti prikazan na ovim stranicama.</li></ul></div>"
-
-#, php-format
-#~ msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-#~ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-
-#~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-#~ msgstr "Server baze podataka može imati više odvojenih baza podataka. Potrebno je odabrati postojeću bazu (kreiranu od vašeg server administratora) ili kreirati novu (ako vaš korisnički nalog to dozvoljava)."
-
-#, php-format
-#~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-#~ msgstr "Nova lozinka je kreirana i poslata e-malom %s. Svoju lozinku možete promeniti nakon prijave."
-
-#~ msgid "A new password has been requested for your username."
-#~ msgstr "Zatražena je nova lozinka za vaše korisničko ime."
-
-#~ msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-#~ msgstr "Bočna traka sa prikazom abecedne liste svih podrodica u porodičnom stablu."
-
-#~ msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-#~ msgstr "Bočni prikaz abecedne liste svih osoba u porodičnom stablu."
-
-#~ msgid "A.M."
-#~ msgstr "Pre podne"
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=abcčćdđefghijklmnoprsštuvzž"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=ABCČĆDĐEFGHIJKLMNOPRSŠTUVZŽ"
-
-#~ msgid "Action"
-#~ msgstr "Akcija"
-
-#~ msgid "Add a brother or sister"
-#~ msgstr "Dodaj brata ili sestru"
-
-#~ msgid "Add a child to this family"
-#~ msgstr "Dodaj dete ovoj porodici"
-
-#~ msgid "Add a husband to this family"
-#~ msgstr "Dodaj muža ovoj porodici"
-
-#~ msgid "Add a restriction"
-#~ msgstr "Dodaj ograničenje"
-
-#~ msgid "Add a scrollbar when block contents grow"
-#~ msgstr "Dodati traku za pomeranje kada sadržaj bloka poraste"
-
-#~ msgid "Add a shared note"
-#~ msgstr "Dodaj zajedničku belešku"
-
-#~ msgid "Add a son or daughter"
-#~ msgstr "Dodaj sina ili kćer"
-
-#~ msgid "Add a wife to this family"
-#~ msgstr "Dodaj ženu ovoj porodici"
-
-#~ msgid "Add an associate"
-#~ msgstr "Dodaj saradnika"
-
-#~ msgid "Add an event"
-#~ msgstr "Dodaj događaj"
-
-#~ msgid "Add historic events to an individual‘s page."
-#~ msgstr "Dodajte istorijske događaje na stranicu pojedinca."
-
-#~ msgid "Add links"
-#~ msgstr "Dodaj linkove"
-
-#~ msgid "Add missing married names"
-#~ msgstr "Dodaj venčana imena koja nedostaju"
-
-#~ msgid "Add the GEDCOM media path to filenames"
-#~ msgstr "Dodaj GEDCOM medijsku putanju do imena datoteka"
-
-#~ msgid "Add to favorites"
-#~ msgstr "Dodaj u favorite"
-
-#~ msgid "Add/edit a journal/news entry"
-#~ msgstr "Dodaj/uredi unos za dnevnik/novosti"
-
-#~ msgid "Additional information"
-#~ msgstr "Dodatne Informacije"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Usvojena od oba roditelja"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Usvojen od oba roditelja"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Usvojena od oca"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Usvojen od oca"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "Usvojena od majke"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "Usvojen od majke"
-
-#~ msgid "Advanced fact preferences"
-#~ msgstr "Napredna podešavanja za činjenice"
-
-#~ msgid "Advanced name facts"
-#~ msgstr "Napredne činjenice imena"
-
-#~ msgid "Advanced place name facts"
-#~ msgstr "Napredne činjenice imena mesta"
-
-#~ msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-#~ msgstr "Kada se prijavite, izaberite \"Moj račun\" u meniju \"Moje stranice\" i popunite polja za lozinku ako želite da promenite trenutnu lozinku."
-
-#~ msgid "Age related to death year"
-#~ msgstr "Starost u odnosu na smrt"
-
-#~ msgid "All changes in PhpGedView must be accepted"
-#~ msgstr "Sve promene u PhpGedView-u moraju biti prihvaćene"
-
-#~ msgid "All existing PhpGedView users must have distinct email addresses"
-#~ msgstr "Svi postojeći PhpGedView korisnici moraju imati jedinstvene adrese e-pošte"
-
-#~ msgid "All family facts"
-#~ msgstr "Sve činjenice porodice"
-
-#~ msgid "All individual facts"
-#~ msgstr "Sve činjenice osobe"
-
-#~ msgid "All repository facts"
-#~ msgstr "Sve činjenice mesta čuvanja"
-
-#~ msgid "All source facts"
-#~ msgstr "Sve činjenice izvora"
-
-#~ msgid "Allow users to select their own theme"
-#~ msgstr "Omogući korisniku da odabere svoju temu"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Also known as"
-#~ msgstr "Poznata i kao"
-
-#~ msgctxt "MALE"
-#~ msgid "Also known as"
-#~ msgstr "Poznat kao"
-
-#~ msgid "Alternative place name"
-#~ msgstr "Alternativni naziv mesta"
-
-#~ msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-#~ msgstr "Učesnik je druga osoba koja je umešana u ovu činjenicu ili događaj, kao svedok ili sveštenik."
-
-#~ msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-#~ msgstr "Učesnik je druga osoba koja je umešana sa ovom osobom, kao prijatelj ili poslodavac."
-
-#~ msgid "An edit menu for individuals, families, sources, etc."
-#~ msgstr "Meni za uređivanje pojedinaca, porodica, izvora, itd."
-
-#~ msgid "An error occurred when unzipping the file."
-#~ msgstr "Dogodila se greška kod raspakivanja datoteke."
-
-#~ msgid "Apply automatic corrections to your genealogy data."
-#~ msgstr "Primeni automatske ispravke u vašim genealoškim podacima."
-
-#~ msgid "Approval of account at %s"
-#~ msgstr "Odobrenje naloga na %s"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
-
-#~ msgid "Associates"
-#~ msgstr "Saradnici"
-
-#~ msgid "Available blocks"
-#~ msgstr "Dostupni blokovi"
-
-#~ msgid "Batch update"
-#~ msgstr "Paketno osvežavanje"
-
-#~ msgid "Body"
-#~ msgstr "Tekst"
-
-#~ msgid "Booklet"
-#~ msgstr "Knjižica"
-
-#~ msgid "British West Indies"
-#~ msgstr "Britská Západná India"
-
-#~ msgid "Burial of a maternal grandparent"
-#~ msgstr "Pokop dede/bake po majci"
-
-#~ msgid "Burial of a paternal grandparent"
-#~ msgstr "Pokop dede/bake po ocu"
-
-#~ msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
-#~ msgstr "Normalno lista prikazuje samo ona mesta koja se koriste u vašem porodičnom stablu. Možda ćete hteti detalje drugih mesta, kao što su ona koja su učitana iz spoljnje datoteke. Označite ovu opciju da bi videli sva mesta, uključujući i ona koja nisu trenutno korišćena."
-
-#~ msgid "By default, your server allows scripts to run for %s second."
-#~ msgid_plural "By default, your server allows scripts to run for %s seconds."
-#~ msgstr[0] "Podrazumevano, vaš server dozvoljava izvršavanje skripte %s sekundu."
-#~ msgstr[1] "Podrazumevano, vaš server dozvoljava izvršavanje skripte %s sekunde."
-#~ msgstr[2] "Podrazumevano, vaš server dozvoljava izvršavanje skripte %s sekundi."
-
-#~ msgid "By default, your server allows scripts to use %s of memory."
-#~ msgstr "Podrazumevano, vaš server dozvoljava skriptama korišćenje %s memorije."
-
-#~ msgid "Case insensitive"
-#~ msgstr "Nebitna velika i mala slova"
-
-#~ msgid "Catalonia"
-#~ msgstr "Katalonia"
-
-#~ msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-#~ msgstr "Oprez: stari moduli ne moraju raditi, ili mogu uticati na ispravan rad webtrees."
-
-#~ msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-#~ msgstr "Oprez: stare teme ne moraju raditi, ili mogu uticati na ispravan rad webtrees."
-
-#~ msgid "Cemeteries"
-#~ msgstr "Groblja"
-
-#~ msgid "Certificate number"
-#~ msgstr "Broj certifikata"
-
-#~ msgid "Change"
-#~ msgstr "Promeni"
-
-#~ msgid "Change flag"
-#~ msgstr "Promeni zastavicu"
-
-#~ msgid "Change language"
-#~ msgstr "Promeni jezik"
-
-#~ msgid "Change the blocks on this user’s “My page”"
-#~ msgstr "Promeni blokove na \"Moja stranica\" ovim korisnicima"
-
-#~ msgid "Channel Islands"
-#~ msgstr "Normanské ostrovy"
-
-#~ msgid "Check for custom modules…"
-#~ msgstr "Provera za prilagođene module…"
-
-#~ msgid "Check for custom themes…"
-#~ msgstr "Provera za prilagođene teme…"
-
-#~ msgid "Check the settings and try again."
-#~ msgstr "Proverite podešavanja i pokušajte ponovno."
-
-#~ msgid "Cleared but not yet completed"
-#~ msgstr "Rešen ali još nije završen"
-
-#~ msgid "Cohabitation"
-#~ msgstr "Zajednički život"
-
-#~ msgid "Comparison"
-#~ msgstr "Poređenje"
-
-#~ msgid "Compress the GEDCOM file"
-#~ msgstr "Kompresuj GEDCOM datoteku"
-
-#~ msgid "Concatenation"
-#~ msgstr "Ulančavanje"
-
-#~ msgid "Configure"
-#~ msgstr "Podešavanja"
-
-#~ msgid "Confirm password"
-#~ msgstr "Potvrdite lozinku"
-
-#~ msgid "Continued"
-#~ msgstr "Nastavljeno"
-
-#~ msgid "Convert CEME tags to GEDCOM 5.5.1"
-#~ msgstr "Pretvori CEME oznake u GEDCOM 5.5.1"
-
-#~ msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-#~ msgstr "Pretvori NAME: _XXX oznake u GEDCOM 5.5.1"
-
-#~ msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-#~ msgstr "Pretvori _PRIM oznake u GEDCOM 5.5.1"
-
-#~ msgid "Convert from UTF-8 to ISO-8859-1"
-#~ msgstr "Prevedi iz UTF-8 u ISO-8859-1"
-
-#~ msgid "Copy these files to the folder %s, replacing any that have the same name."
-#~ msgstr "Kopiraj ove datoteke u folder %s, prepiši one koji imaju isto ime."
-
-#~ msgid "Count"
-#~ msgstr "Broj"
-
-#~ msgid "County"
-#~ msgstr "Okrug"
-
-#~ msgid "Current"
-#~ msgstr "Trenutni"
-
-#~ msgid "Custom fact"
-#~ msgstr "Prilagođena činjenica"
-
-#~ msgid "Custom theme"
-#~ msgstr "Prilagođena tema"
-
-#~ msgid "Czechoslovakia"
-#~ msgstr "Češkoslovaška"
-
-#~ msgid "Database and table names"
-#~ msgstr "Imena baza podataka i tabela"
-
-#~ msgid "Decade of birth"
-#~ msgstr "Dekada rođenja"
-
-#~ msgid "Decade of death"
-#~ msgstr "Dekada smrti"
-
-#~ msgid "Decade of marriage"
-#~ msgstr "Dekada venčanja"
-
-#~ msgid "Default"
-#~ msgstr "Standardno"
-
-#~ msgid "Default pedigree chart layout"
-#~ msgstr "Podrazumevani izgled grafikona porekla"
-
-#~ msgid "Default pedigree generations"
-#~ msgstr "Podrazumevane generacije porekla"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Delete all existing geographic data before importing the file."
-#~ msgstr "Izbriši sve postojeće geografske podatke pre učitavanja datoteke."
-
-#~ msgid "Delete temporary files…"
-#~ msgstr "Obriši privremene datoteke…"
-
-#~ msgid "Desired password"
-#~ msgstr "Lozinka po izboru"
-
-#~ msgid "Desired username"
-#~ msgstr "Korisničko ime po želji"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Zu-l-hidždžea"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Zu-l-hidždžeom"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Zu-l-hidždžeu"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Zu-l-hidždže"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Zu-l-ka’dea"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Zu-l-ka’deom"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Zu-l-ka’deu"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Zu-l-ka’de"
-
-#~ msgid "Died as an infant: exempt"
-#~ msgstr "Smrt nakon porođaja: izuzeto"
-
-#~ msgid "Died before less than 1 year old, sealing not required."
-#~ msgstr "Umro pre manje od 1 godine, pečaćenje nije potrebno."
-
-#~ msgid "Disable these modules"
-#~ msgstr "Onemogući ove module"
-
-#~ msgid "Disable these themes"
-#~ msgstr "Onemogući ove teme"
-
-#~ msgid "Do not change to keep original filename."
-#~ msgstr "Ne menjaj da bi zadržao originalno ime datoteke."
-
-#~ msgid "Do not create new locations, just import coordinates for existing locations."
-#~ msgstr "Ne kreiraj nove lokacije, samo unesi koordinate za postojeće lokacije."
-
-#~ msgid "Earliest birth year"
-#~ msgstr "Godina prvog zabeleženog rođenja"
-
-#~ msgid "Earliest death year"
-#~ msgstr "Godina prve zabeležene smrti"
-
-#~ msgid "Edit the note"
-#~ msgstr "Izmeni belešku"
-
-#~ msgid "Edit the repository"
-#~ msgstr "Izmenite mesto čuvanja"
-
-#~ msgid "Edit the source"
-#~ msgstr "Izmeni izvor"
-
-#~ msgid "Editing restriction"
-#~ msgstr "Ograničenje uređivanja"
-
-#~ msgid "Eire"
-#~ msgstr "Írsko"
-
-#~ msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-#~ msgstr "Adresa e-maila koja će biti u polju „From:” kada webtrees šalje e-mail automatski.<br><br>webtrees može automatski kreirati e-mail da obavesti administratore o promenama koje trebaju biti pregledane. webtrees takođe šalje obaveštenja korisnicima koji su zatražili otvaranje naloga.<br><br>Obično je polje „From:” za automatsko slanje e-maila <i>From: webtrees-noreply@yoursite</i> da bi pokazali da nije potrebno odgovoriti na dobijeni e-mail. Da bi se odbranili od spam-a i ostalih uznemiravanja e-mailom, neki sistemi zahtevaju da polje „From:” ima validnu e-mail adresu i neće prihvatiti poruke koje se šalju sa <i>webtrees-noreply</i>."
-
-#~ msgid "Embedded variable"
-#~ msgstr "Ugrađena varijabla"
-
-#~ msgid "Enter an individual, family, or source ID"
-#~ msgstr "Unesite ID osobe, porodice ili izvora"
-
-#~ msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-#~ msgstr "Unesite ili pronađite ID osobe, porodice ili izvora sa kojim bi ovaj medijski objekat trebao biti povezan."
-
-#~ msgid "Exact text"
-#~ msgstr "Tačan tekst"
-
-#~ msgid "FOKO country"
-#~ msgstr "FOKO zemlja"
-
-#~ msgid "Facts for repository records"
-#~ msgstr "Činjenice za zapise mesta čuvanja"
-
-#~ msgid "Facts for source records"
-#~ msgstr "Činjenice za zapise izvora"
-
-#~ msgid "Family group information"
-#~ msgstr "Grupisani podaci o porodici"
-
-#~ msgid "Family list"
-#~ msgstr "Lista porodica"
-
-#~ msgid "Find a fact or event"
-#~ msgstr "Pronađi činjenicu ili događaj"
-
-#~ msgid "Find an individual"
-#~ msgstr "Pronađi osobu"
-
-#~ msgid "Font"
-#~ msgstr "Font"
-
-#~ msgid "From"
-#~ msgstr "Od"
-
-#~ msgid "Gender"
-#~ msgstr "Pol"
-
-#~ msgid "Gender icon on charts"
-#~ msgstr "Ikonica pola na grafikonima"
-
-#~ msgid "Get an API key from Google."
-#~ msgstr "Uzmite API ključ od Google-a."
-
-#~ msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
-#~ msgstr "Google dnevno dozvoljava mali broj anonimnih zahteva za mapama. Ako vam je potrebno više od toga, biće vam potreban Google nalog i API ključ."
-
-#~ msgid "Google™ maps preferences"
-#~ msgstr "Podešavanja za Google™ maps"
-
-#~ msgid "Google™ webmaster tools"
-#~ msgstr "Google™ webmaster alati"
-
-#~ msgid "Grandparents"
-#~ msgstr "Dede/Bake"
-
-#~ msgid "Head of household"
-#~ msgstr "Glava domaćinstva"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
-
-#~ msgid "Highest population"
-#~ msgstr "Najveća populacija"
-
-#~ msgid "Historical facts"
-#~ msgstr "Istorijske činjenice"
-
-#~ msgid "House number"
-#~ msgstr "Kućni broj"
-
-#~ msgid "Icon"
-#~ msgstr "Ikonica"
-
-#~ msgid "If the thumbnail image is a custom image, you should add it to the media object."
-#~ msgstr "Ako je umanjena sličica prilagođena slika, trebate je dodati u medijski objekt."
-
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-#~ msgstr "Ako je umanjena sličica ista kao originalna slika, više nije potrebna i trebate je izbrisati."
-
-#~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
-#~ msgstr "Ako posetioc ne vidi porodično stablo, on neće biti u mogućnosti da zatraži novi korisnički nalog. Vi ćete morati ručno kreirati njegov nalog."
-
-#~ msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
-#~ msgstr "Ako se na bazu podataka povezujete pomoću UNIX socketa, ovde unesite putanju i ostavite broj porta prazan."
-
-#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
-#~ msgstr "Ako imate veliki broj neaktivnih mesta, generisanje liste može biti sporo."
-
-#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
-#~ msgstr "Ako sigurnosna polisa vašeg servera dozvoljava, moći ćete da zahtevate povećanu memoriju ili vreme na CPU koristeći webtrees administrativnu stranicu. U suprotnom, morate se obratiti administratoru vašeg servera."
-
-#~ msgid "Import all places from a family tree"
-#~ msgstr "Uvezi sva mesta iz porodičnog stabla"
-
-#~ msgid "Import custom thumbnails from webtrees version 1"
-#~ msgstr "Uvoz prilagođenih sličica iz webtrees verzije 1"
-
-#~ msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-#~ msgstr "U webtrees verziji 1, možete dodati prilagođene sličice medijskim objektima kreiranjem datoteka u fascikli „thumbs“."
-
-#~ msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-#~ msgstr "U webtrees verziji 2, prilagođene sličice su sačuvane kao druga medijska datoteka u istom medijskom objektu."
-
-#~ msgid "Include media (automatically zips files)"
-#~ msgstr "Uključi medije (automatski zapakuj datoteke)"
-
-#~ msgid "Individual distribution"
-#~ msgstr "Pojedinačna distribucija"
-
-#~ msgid "Individual list"
-#~ msgstr "Lista osoba"
-
-#, php-format
-#~ msgid "Individuals with surname %s"
-#~ msgstr "Osobe sa prezimenom %s"
-
-#~ msgid "Installation folder"
-#~ msgstr "Instalacioni direktorijum"
-
-#~ msgid "Interred"
-#~ msgstr "Pokop"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Interred"
-#~ msgstr "Ukopana"
-
-#~ msgctxt "MALE"
-#~ msgid "Interred"
-#~ msgstr "Ukopan"
-
-#~ msgid "Invalid GEDCOM format"
-#~ msgstr "Neispravan GEDCOM format"
-
-#~ msgid "Joint family name"
-#~ msgstr "Zajedničko prezime"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Džumade-l-ula"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Džumade-l-ulaom"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Džumade-l-ulau"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Džumade-l-ula"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Džumade-l-uhra"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Džumade-l-uhraom"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Džumade-l-uhrau"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Džumade-l-uhra"
-
-#~ msgid "Keep"
-#~ msgstr "Zadrži"
-
-#~ msgid "Keep link in list"
-#~ msgstr "Zadrži vezu u listi"
-
-#~ msgid "Latest birth year"
-#~ msgstr "Godina poslednjeg zabeleženog rođenja"
-
-#~ msgid "Latest death year"
-#~ msgstr "Godina zadnje zabeležene smrti"
-
-#~ msgid "Leave this blank to use the default value."
-#~ msgstr "Ostavite ovo prazno ako želite da koristite zadatu vrednost."
-
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgid "Level"
-#~ msgstr "Nivo"
-
-#~ msgid "Link to an existing media object"
-#~ msgstr "Poveži sa postojećim medijskim objektom"
-
-#~ msgid "Linked database ID"
-#~ msgstr "ID povezane baze podataka"
-
-#~ msgid "Location not removed: this location contains sub-locations"
-#~ msgstr "Lokacija nije uklonjena: ova lokacija sadrži podlokacije"
-
-#~ msgid "Lost password request"
-#~ msgstr "Zahtev za novu lozinku"
-
-#~ msgid "Lowest population"
-#~ msgstr "Najniža populacija"
-
-#~ msgid "Mailing name"
-#~ msgstr "Ime za poštu"
-
-#~ msgid "Main section blocks"
-#~ msgstr "Blokovi glavne sekcije"
-
-#~ msgid "Manage the links"
-#~ msgstr "Uređivanje veza"
-
-#~ msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
-#~ msgstr "Mnogi mail serveri zahtevaju da se server koji šalje poštu ispravno predstavi, koristeći validno ime domena."
-
-#~ msgid "Marriage status"
-#~ msgstr "Bračno stanje"
-
-#~ msgid "Marriage type unknown"
-#~ msgstr "Nepoznata vrsta braka"
-
-#~ msgid "Married surname"
-#~ msgstr "Prezime posle udaje"
-
-#~ msgid "Match calendar"
-#~ msgstr "Uporedni kalendar"
-
-#~ msgid "Maximum descendancy generations"
-#~ msgstr "Maksimalno generacija potomaka"
-
-#~ msgid "Maximum pedigree generations"
-#~ msgstr "Maksimalno generacija predaka"
-
-#, php-format
-#~ msgid "Media filenames will be prefixed by %s."
-#~ msgstr "Ime medijske datoteke će imati predznak %s."
-
-#~ msgid "Medical condition"
-#~ msgstr "Zdravstveno stanje"
-
-#~ msgid "Memory limit"
-#~ msgstr "Limit memorije"
-
-#~ msgid "Midnight"
-#~ msgstr "Ponoć"
-
-#~ msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
-#~ msgstr "Minimalni i maksimalni zum nivo za Google mapu. 1 je cela mapa, 15 je pojedinačna kuća. Imajte na umu da je 15 dostupno samo u nekim područjima."
-
-#~ msgid "More news articles"
-#~ msgstr "Još članaka o obaveštenjima"
-
-#~ msgid "Most sites are configured to use the default value of 3306."
-#~ msgstr "Većina web stranica je podešena da koristi podrazumevanu vrednost 3306."
-
-#~ msgid "Move left"
-#~ msgstr "Pomeri levo"
-
-#~ msgid "Move right"
-#~ msgstr "Pomeri desno"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharrem"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharrem"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharrem"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharrem"
-
-#~ msgid "MySQL gave the error: %s"
-#~ msgstr "MySQL daje grešku: %s"
-
-#~ msgid "MySQL variables"
-#~ msgstr "MySQL varijable"
-
-#~ msgid "Netherlands Antilles"
-#~ msgstr "Holandské Antily"
-
-#~ msgid "Neutral Zone"
-#~ msgstr "Neutrálna zóna"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Never married"
-#~ msgstr "Nije se udavala"
-
-#~ msgctxt "MALE"
-#~ msgid "Never married"
-#~ msgstr "Nije se ženio"
-
-#~ msgid "No ancestors in the database."
-#~ msgstr "Nema predaka u bazi podataka."
-
-#~ msgid "No custom modules are enabled."
-#~ msgstr "Nisu omogućeni prilagođeni moduli."
-
-#~ msgid "No custom themes are enabled."
-#~ msgstr "Nisu omogućene prilagođene teme."
-
-#~ msgid "No map data exists for this individual"
-#~ msgstr "Nema podataka na mapi za ovu osobu"
-
-#~ msgid "No media file was provided."
-#~ msgstr "Medijska datoteka nije ponuđena."
-
-#~ msgid "No places found"
-#~ msgstr "Nema pronađenih mesta"
-
-#~ msgid "No places have been found."
-#~ msgstr "Mesta nisu pronađena."
-
-#~ msgid "Nobody at all"
-#~ msgstr "Baš niko"
-
-#~ msgid "Noon"
-#~ msgstr "Podne"
-
-#~ msgid "Not a valid individual, family, or source ID"
-#~ msgstr "ID osobe, porodice ili izvora nije validan"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Not married"
-#~ msgstr "Nevenčana"
-
-#~ msgctxt "MALE"
-#~ msgid "Not married"
-#~ msgstr "Nevenčan"
-
-#~ msgid "Number of generations"
-#~ msgstr "Broj generacija"
-
-#~ msgid "Number of items to show"
-#~ msgstr "Broj prikazanih stavki"
-
-#~ msgid "Number of months since the last sign-in for a user’s account to be considered inactive: "
-#~ msgstr "Broj meseci od poslednje prijave za korisničke naloge koji se smatraju neaktivnima: "
-
-#~ msgid "Oldest at bottom"
-#~ msgstr "Najstarije na dnu"
-
-#~ msgid "Oldest at top"
-#~ msgstr "Najstarije na vrhu"
-
-#~ msgid "Optional prefixes and suffixes"
-#~ msgstr "Opcionalni prefiksi i sufiksi"
-
-#~ msgid "Ordnance Survey historic maps"
-#~ msgstr "Ordnance Survey istorijske karte"
-
-#~ msgid "Other folder… please type in"
-#~ msgstr "Drugi direktorijum… molimo unesite"
-
-#~ msgid "Others"
-#~ msgstr "Ostali"
-
-#~ msgid "Overwrite existing coordinates."
-#~ msgstr "Prepiši postojeće koordinate."
-
-#~ msgid "Own charts"
-#~ msgstr "Sopstveni grafikoni"
-
-#~ msgid "P.M."
-#~ msgstr "posle podne"
-
-#~ msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP ekstenzija „%1$s” je isključena. Bez nje, sledeće mogućnosti neće raditi: %2$s. Molimo pitajte vašeg administratora servera da uključi ekstenziju."
-
-#~ msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP ekstenzija „%s” je isključena. Ne možete instalirati webtrees dok se ona ne uključi. Molimo pitajte vašeg administratora servera da uključi ovu ekstenziju."
-
-#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP opcija „%1$s” je isključena. Bez nje, sledeće mogućnosti neće raditi: %2$s. Molimo pitajte vašeg administratora servera da uključi ovu opciju."
-
-#~ msgid "PHP time limit"
-#~ msgstr "PHP vremensko ograničenje"
-
-#~ msgid "Parent"
-#~ msgstr "Roditelj"
-
-#~ msgid "Passwords do not match."
-#~ msgstr "Lozinke nisu identične."
-
-#~ msgid "Passwords must contain at least 8 characters."
-#~ msgstr "Lozinka mora imati najmanje 8 znakova."
-
-#~ msgid "Pedigree chart"
-#~ msgstr "Grafikon porekla"
-
-#~ msgid "Pedigree of %s"
-#~ msgstr "Poreklo osobe %s"
-
-#~ msgid "Phonetic"
-#~ msgstr "Fonetski"
-
-#~ msgid "Phonetic title"
-#~ msgstr "Naslov fonetski"
-
-#~ msgid "PhpGedView might be installed in one of these folders:"
-#~ msgstr "PhpGedView može biti instaliran u jedan od ovih direktorijuma:"
-
-#~ msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
-#~ msgstr "PhpGedView mora biti verzija 4.2.3 ili bilo koji SVN do #%s"
-
-#~ msgid "PhpGedView must use the same database as webtrees."
-#~ msgstr "PhpGedView mora koristiti istu bazu podataka kao webtrees."
-
-#~ msgid "PhpGedView to webtrees transfer wizard"
-#~ msgstr "Čarobnjak za prebacivanje iz PhpGedView u webtrees"
-
-#~ msgid "Place of citizenship"
-#~ msgstr "Mesto državljanstva"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Postavi web stranicu offline, kreiranjem datoteke %s…"
-
-#~ msgid "Place the website online, by deleting the file %s…"
-#~ msgstr "Postavi web stranicu online, brisanjem datoteke %s…"
-
-#~ msgid "Places in %s"
-#~ msgstr "Mesta u %s"
-
-#~ msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-#~ msgstr "Mesta treba uneti prema standardima za rodoslovlje. U rodoslovnoj prezentaciji, mesta se beleže od najmanjeg područja prema većim, koristeći zareze za razdvajanje različitih nivoa mesta. Područje koje beležite treba da predstavlja nivoe vlasti ili hrama u kojima se čuvaju bitni zapisi za to mesto. <br> Na primer, mesto kao što je Novi Beograd biće upisano kao \"Novi Beograd, Beograd, Srbija\". <br> <br> Pregledajte svaki deo ovog mesta. Prvi deo, \"Novi Beograd\", je opština unutar grada Beograda. U tim slučajevima, kada su naselja, opštine ili okruzi unutar grada važni za napomenu, oni se pišu ispred naziva grada/mesta. Sledeći deo \"Beograd\" je naziv grada/mesta i na kraju \"Srbija\" je naziv zemlje. Važno je zabeležiti svaki deo naziva mesta, jer na primer \"Rakovica\" može da bude selo kod Čajetine ili opština grada Beograda. <br> <br> Ako je nivo mesta nepoznat, treba ostaviti razmak između zareza. Pretpostavimo, u prethodnom primeru, ne znate o kojoj Rakovici je reč. Tada bi naziv mesta trebali sačuvati kao: \"Rakovica, , Srbija\". Ako znate samo da je neka osoba rođena u Srbiji, tada bi trebali uneti: \", Srbija\". <br> <br> Možete koristiti link <b> Pronađi mesto </ b> da biste pronašli mesta koja već postoje u bazi podataka."
-
-#~ msgid "Please enter a given name, surname, or place in addition to the year"
-#~ msgstr "Molimo unesite ime, prezime ili mesto uz godinu"
-
-#~ msgid "Please enter more than one character."
-#~ msgstr "Molimo unesite više od jednog karaktera."
-
-#~ msgid "Prefixes"
-#~ msgstr "Prefiksi"
-
-#~ msgid "Presentation style"
-#~ msgstr "Stil prezentacije"
-
-#~ msgid "Privacy restriction"
-#~ msgstr "Ograničenje privatnosti"
-
-#~ msgid "Quick repository facts"
-#~ msgstr "Brze činjenice mesta čuvanja"
-
-#~ msgid "Quick source facts"
-#~ msgstr "Brze činjenice izvora"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgid "Really delete all geographic data?"
-#~ msgstr "Stvarno želite obrisati sve geografske podatke?"
-
-#~ msgid "Reliability of the information"
-#~ msgstr "Pouzdanost informacija"
-
-#~ msgid "Religious name"
-#~ msgstr "Versko ime"
-
-#~ msgid "Renumber"
-#~ msgstr "Renumeracija"
-
-#~ msgid "Renumber family tree"
-#~ msgstr "Renumeriši porodično stablo"
-
-#~ msgid "Right section blocks"
-#~ msgstr "Blokovi desne sekcije"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Safera"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Ṣafar"
-#~ msgstr "Saferom"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Saferu"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Safer"
-
-#~ msgid "Search globally"
-#~ msgstr "Traži globalno"
-
-#~ msgid "Search locally"
-#~ msgstr "Traži lokalno"
-
-#~ msgid "Select a block and use the arrows to move it."
-#~ msgstr "Izaberi blok i koristi strelice da bi ga pomerili."
-
-#~ msgid "Select the languages that will be shown in menus."
-#~ msgstr "Odaberite jezike koji će biti vidljivi u meniju."
-
-#~ msgid "Serbia and Montenegro"
-#~ msgstr "Srbija in Črna gorao"
-
-#~ msgid "Session timeout"
-#~ msgstr "Vremensko ograničenje sesije"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Ša’bana"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Shaʿbān"
-#~ msgstr "Ša’banom"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Ša’banu"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Ša’ban"
-
-#~ msgid "Show counts before or after name"
-#~ msgstr "Postaviti brojeve ispred ili iza imena"
-
-#~ msgid "Show cousins"
-#~ msgstr "Prikaži rođake"
-
-#~ msgid "Show inactive places"
-#~ msgstr "Prikaži neaktivna mesta"
-
-#~ msgid "Show only births, deaths, and marriages"
-#~ msgstr "Prikaži samo rođenja, smrti i brakove"
-
-#~ msgid "Show places in hierarchy"
-#~ msgstr "Prikaži mesta hijerarhijski"
-
-#~ msgid "Show related individuals/families"
-#~ msgstr "Prikaži povezane osobe/porodice"
-
-#~ msgid "Show statistics charts"
-#~ msgstr "Prikaži grafikon statistike"
-
-#~ msgid "Show the location of places and events using the Google™ maps mapping service."
-#~ msgstr "Prikazuje lokaciju mesta i događaja koristeći Google™ maps servis."
-
-#~ msgid "Sicily"
-#~ msgstr "Sicília"
-
-#~ msgid "Signed-in as "
-#~ msgstr "Prijavljen kao "
-
-#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-#~ msgstr "Citati izvora mogu uključivati polja za upis kvaliteta podataka (primarni, sekundarni, itd.) i datum kada je događaj evidentiran u izvoru. Ako ne želite koristiti ta polja, možete ih isključiti kada kreirate novi citat izvora."
-
-#~ msgid "Spouse note"
-#~ msgstr "Beleška supružnika"
-
-#~ msgid "Start at parents"
-#~ msgstr "Počni od roditelja"
-
-#~ msgid "Street name"
-#~ msgstr "Ime ulice"
-
-#~ msgid "The details of this individual are private."
-#~ msgstr "Detalji ove osobe su privatni."
-
-#, php-format
-#~ msgid "The folder %s does not exist, and it could not be created."
-#~ msgstr "Folder %s ne postoji, i ne može biti kreiran."
-
-#~ msgid "The following places have been changed:"
-#~ msgstr "Sledeća mesta su promenjena:"
-
-#~ msgid "The following places would be changed:"
-#~ msgstr "Sledeća mesta će biti promenjena:"
-
-#~ msgid "The media file was not found in this family tree."
-#~ msgstr "Multimedijalna datoteka nije nađena u ovom porodičnom stablu."
-
-#, php-format
-#~ msgid "The parameter “%s” is missing."
-#~ msgstr "Nedostaje parametar “%s”."
-
-#~ msgid "The passwords do not match."
-#~ msgstr "Lozinke se ne poklapaju."
-
-#~ msgid "The problem"
-#~ msgstr "Problem"
-
-#~ msgid "The version of %s is too new."
-#~ msgstr "Verzija %s je previše nova."
-
-#~ msgid "The version of %s is too old."
-#~ msgstr "Verzija %s je previše stara."
-
-#, php-format
-#~ msgid "There is no account with the username or email “%s”."
-#~ msgstr "Ne postoji korisnički nalog sa korisničkim imenom ili email-om “%s”."
-
-#, php-format
-#~ msgid "This could be caused by an error at %s"
-#~ msgstr "Ovo može biti uzrokovano greškom sa linka %s"
-
-#~ msgid "This is case sensitive."
-#~ msgstr "Ovo je osetljivo na velika/mala slova."
-
-#~ msgid "This media file is broken and cannot be watermarked."
-#~ msgstr "Multimedijalna datoteka je oštećena i ne može se staviti vodeni žig na nju."
-
-#~ msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-#~ msgstr "Ovo treba biti lista činjenica, odvojenih zarezom ili razmakom, uz rođenja i smrti, koje želite da se prikažu u okviru grafikona poput grafikona rodoslovlja. Ova lista zahteva da koristite tagove činjenica definisane GEDCOM 5.5.1 standardom. Na primer, ako želite da se prikaže zanimanje u okviru grafikona, trebate u to polje dodati „OCCU”."
-
-#~ msgid "This type of link is not allowed here."
-#~ msgstr "Ovaj tip linka ovde nije dozvoljen."
-
-#~ msgid "This website is being upgraded. Try again in a few minutes."
-#~ msgstr "Ova veb stranica se nadograđuje. Pokušajte ponovo za nekoliko minuta."
-
-#~ msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-#~ msgstr "Ovo će ažurirati najviši nivo imena mesta. Na primer, „Mexico” će ažurirati „Quintana Roo, Mexico”, ali ne i „Santa Fe, New Mexico”."
-
-#~ msgid "To"
-#~ msgstr "Do"
-
-#~ msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
-#~ msgstr "Da bi smanjili veličinu fajla za preuzimanje, možete zapakovati podatke u .ZIP datoteku. Morate otpakovati datoteku pre nego što možete da je upotrebite."
-
-#~ msgid "To tell search engines that sitemaps are available, you can use the following links."
-#~ msgstr "Da biste pokazali pretraživačima da su mape sajta dostupne, možete koristiti sledeće linkove."
-
-#, php-format
-#~ msgid "Total families: %s"
-#~ msgstr "Ukupno porodica: %s"
-
-#, php-format
-#~ msgid "Total individuals: %s"
-#~ msgstr "Ukupno osoba: %s"
-
-#~ msgid "Transylvania"
-#~ msgstr "Transylvánia"
-
-#~ msgid "Type the password again."
-#~ msgstr "Ponovo upiši lozinku."
-
-#~ msgid "Type your password again, to make sure you have typed it correctly."
-#~ msgstr "Upišite lozinku još jednom, da budemo sigurni da ste je napisali ispravno."
-
-#~ msgid "USA"
-#~ msgstr "ZDA"
-
-#~ msgid "USSR"
-#~ msgstr "ZSSR"
-
-#~ msgid "UTC"
-#~ msgstr "UTC"
-
-#~ msgid "Unable to connect using this username and password. Your server gave the following error."
-#~ msgstr "Ne mogu se konektovati koristeči ovo korisničko ime i lozinku. Vaš server je dao sleceću grešku."
-
-#~ msgid "Unique family facts"
-#~ msgstr "Jedinstvene porodične činjenice"
-
-#~ msgid "Unique individual facts"
-#~ msgstr "Jedinstvene individualne činjenice"
-
-#~ msgid "Unique repository facts"
-#~ msgstr "Jedinstvene činjenice o mestu čuvanja"
-
-#~ msgid "Unique source facts"
-#~ msgstr "Jedinstvene činjenice izvora"
-
-#~ msgid "Use Google™ maps for the place hierarchy"
-#~ msgstr "Koristi Google™ maps za hijerarhiju mesta"
-
-#~ msgid "Use PHP mail to send messages"
-#~ msgstr "Koristi PHP mail za slanje e-pošte"
-
-#~ msgid "Use full source citations"
-#~ msgstr "Koristite pune citate izvora"
-
-#~ msgid "Use the GeoNames database for autocomplete on places"
-#~ msgstr "Koristi GeoNames bazu podataka za automatsko popunjavanje mesta"
-
-#~ msgid "Use this image for charts and on the individual’s page."
-#~ msgstr "Koristi ovu sliku za grafikone i na stranicama osobe."
-
-#~ msgid "Users who are signed in"
-#~ msgstr "Prijavljeni korisnici"
-
-#~ msgid "View"
-#~ msgstr "Prikaži"
-
-#~ msgid "View all records found in this place"
-#~ msgstr "Prikaži sve zapise pronađene na ovom mestu"
-
-#, fuzzy
-#~ msgid "View this individual"
-#~ msgstr "Pogledaj upis osobe"
-
-#~ msgid "View this source"
-#~ msgstr "Pogledaj ovaj izvor"
-
-#~ msgid "West Africa"
-#~ msgstr "Západná Afrika"
-
-#~ msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-#~ msgstr ""
-#~ "Kada dodajete nove bliže rođake, možete dodati izvore citata u zapis (za osobu i porodicu) ili činjenicu i događaj (rođenje, venčanje, smrt).\n"
-#~ "Ova opcija kontroliše da li će zapis ili činjenica biti odabrani kao podrazumevano."
-
-#~ msgid "Where is your PhpGedView installation?"
-#~ msgstr "Gde je vaša PhpGedView instalacija?"
-
-#~ msgid "Whole words only"
-#~ msgstr "Samo cele reči"
-
-#~ msgid "Wife’s maiden surname becomes new given name"
-#~ msgstr "Ženino devojačko prezime postaje novo ime"
-
-#~ msgid "Wife’s surname replaced by husband’s surname"
-#~ msgstr "Ženino prezime zamenjeno muževim prezimenom"
-
-#~ msgid "Year input box"
-#~ msgstr "Polje za unos godine"
-
-#~ msgid "You can re-enable these themes after the upgrade."
-#~ msgstr "Možete ponovo uključiti ove teme nakon nadogradnje."
-
-#~ msgid "You can request a higher or lower limit, although the server may ignore this request."
-#~ msgstr "Možete zatražiti više ili niže ograničenje, iako server može ignorisati te zahteve."
-
-#~ msgid "You must change this before you can continue."
-#~ msgstr "Morate ovo promeniti pre nego što nastavite."
-
-#~ msgid "You need to sign in again, using your PhpGedView username and password."
-#~ msgstr "Morate se ponovo prijaviti koristeći vaše PhpGedView korisničko ime i lozinku."
-
-#~ msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-#~ msgstr "Vaš korisnički nalog nema odobreno „automatsko odobrenje promena”. Možete menjati zapise samo jedan po jedan."
-
-#~ msgid "Yugoslavia"
-#~ msgstr "Jugoslavija"
-
-#~ msgid "Zaire"
-#~ msgstr "Zair"
-
-#~ msgid "adoption"
-#~ msgstr "usvojenje"
-
-#~ msgid "always"
-#~ msgstr "uvek"
-
-#~ msgid "birth"
-#~ msgstr "rođenje"
-
-#~ msgctxt "FEMALE"
-#~ msgid "birth name"
-#~ msgstr "rođeno ime"
-
-#~ msgctxt "MALE"
-#~ msgid "birth name"
-#~ msgstr "rođeno ime"
-
-#~ msgid "burial"
-#~ msgstr "sahrana"
-
-#~ msgid "by"
-#~ msgstr "od"
-
-#~ msgctxt "FEMALE"
-#~ msgid "change of name"
-#~ msgstr "promenila ime"
-
-#~ msgctxt "MALE"
-#~ msgid "change of name"
-#~ msgstr "promenio ime"
-
-#~ msgid "death"
-#~ msgstr "smrt"
-
-#~ msgid "half-year after marriage"
-#~ msgstr "Pola godine nakon venčanja"
-
-#~ msgid "marriage"
-#~ msgstr "sklapanje braka"
-
-#~ msgctxt "FEMALE"
-#~ msgid "married name"
-#~ msgstr "venčano prezime"
-
-#~ msgctxt "MALE"
-#~ msgid "married name"
-#~ msgstr "venčano prezime"
-
-#~ msgid "months after marriage"
-#~ msgstr "meseci nakon stupanja u brak"
-
-#~ msgid "months before and after marriage"
-#~ msgstr "meseci pre i posle braka"
-
-#~ msgid "never"
-#~ msgstr "nikada"
-
-#~ msgid "preview"
-#~ msgstr "pregled"
-
-#~ msgid "quarters after marriage"
-#~ msgstr "kvartali posle braka"
-
-#~ msgctxt "FEMALE"
-#~ msgid "religious name"
-#~ msgstr "versko ime"
-
-#~ msgctxt "MALE"
-#~ msgid "religious name"
-#~ msgstr "versko ime"
-
-#~ msgid "south"
-#~ msgstr "jug"
-
-#~ msgid "this record does not exist"
-#~ msgstr "ovaj zapis ne postoji"
-
-#~ msgid "webtrees cannot connect to the PhpGedView database: %s."
-#~ msgstr "webtrees se ne može spojiti na PhpGedView bazu podataka: %s."
-
-#~ msgid "webtrees needs a MySQL database, version %s or later."
-#~ msgstr "webtrees zahteva MySQL bazu podataka, verziju %s ili veću."
-
-#~ msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-#~ msgstr "webtrees treba da šalje e-poštu, kao što su podsetnici za lozinku i obaveštenja. Da bi to radio, može koristiti ugrađene PHP funkcije za slanje e-pošte (koje nisu uvek omogućene) ili spoljni SMTP (mail-relay) servis, za koji trebate upisati pristupne podatke."
-
-#~ msgid "webtrees reply address"
-#~ msgstr "webtrees adresa za odgovor"
-
-#~ msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-#~ msgstr ""
-#~ "webtrees koristi UTF-8 kodiranje za akcentirana slova, specijalne znakove i skripte.\n"
-#~ "Ako želite koristiti ovu GEDCOM datoteku sa genealoškim programom koji ne podržava UTF-8, tada je možete kreirati koristeći ISO-8859-1 kodiranje."
-
-#~ msgid "webtrees’ database must be on the same server as PhpGedView’s"
-#~ msgstr "webtrees baza podatka mora biti na istom serveru kao PhpGedView"
-
-#~ msgid "west"
-#~ msgstr "zapad"
-
-#~ msgid "years"
-#~ msgstr "godine"
-
-#~ msgid "“%s” has been added to your favorites."
-#~ msgstr "“%s” dodan/a u omiljene."

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-15 18:05+0100\n"
+"POT-Creation-Date: 2026-07-16 21:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -395,18 +395,6 @@ msgctxt "MALE"
 msgid "%s × cousin"
 msgstr "%s menning"
 
-#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ʙᴄᴇ"
-msgstr "%s fvt. Juliansk kalender"
-
-#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ᴄᴇ"
-msgstr "%s evt. Juliansk kalender"
-
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php
 #, php-format
@@ -452,6 +440,18 @@ msgstr "%s, hans ektefellar og born"
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, hans ektefellar og etterkomarar"
+
+#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ʙᴄᴇ"
+msgstr "%s fvt. Juliansk kalender"
+
+#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ᴄᴇ"
+msgstr "%s evt. Juliansk kalender"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
@@ -1072,25 +1072,21 @@ msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Aban"
 msgstr "Aban"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Aban"
@@ -1133,73 +1129,61 @@ msgstr "Kontogodkjenning og stadfesting med e-post"
 msgid "Accra, Ghana"
 msgstr "Accra, Ghana"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar"
 msgstr "Adar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
 msgstr "Adar I"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
@@ -2170,25 +2154,21 @@ msgstr "Utvid notatar automatisk"
 msgid "Automatically expand sources"
 msgstr "Utvid kjelder automatisk"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Av"
@@ -2241,25 +2221,21 @@ msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Azar"
 msgstr "Azar"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Azar"
@@ -2285,25 +2261,21 @@ msgstr "Bah"
 msgid "Bahamas"
 msgstr "Bahamas"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Bahman"
@@ -2768,25 +2740,21 @@ msgstr "Dei britiske Jomfruøyane"
 msgid "Brother"
 msgstr "Bror"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
@@ -4717,73 +4685,61 @@ msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Dhu al-Hijjah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Ḥijjah"
 msgstr "Dhu al-Hijjah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Dhu al-Hijjah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Ḥijjah"
@@ -5066,25 +5022,21 @@ msgstr "El Salvador"
 msgid "Electronic"
 msgstr "Elektronisk"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Elul"
 msgstr "Elul"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Elul"
@@ -5217,25 +5169,21 @@ msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
 msgstr "Esf"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Esfand"
 msgstr "Esfand"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
 msgstr "Esfand"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Esfand"
 msgstr "Esfand"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Esfand"
@@ -5701,25 +5649,21 @@ msgstr "Far"
 msgid "Faroe Islands"
 msgstr "Færøyane"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
@@ -5944,25 +5888,21 @@ msgstr "Flagg"
 msgid "Flanders"
 msgstr "Flandern"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Floreal"
@@ -6154,25 +6094,21 @@ msgctxt "MALE"
 msgid "Friend"
 msgstr "Ven"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
@@ -6190,25 +6126,21 @@ msgctxt "Start of date range"
 msgid "From"
 msgstr "Frå"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
@@ -6377,26 +6309,21 @@ msgstr "Georgia"
 msgid "Germany"
 msgstr "Tyskland"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Germinal"
@@ -6712,25 +6639,21 @@ msgstr "Here maps"
 msgid "Hermosillo, Mexico"
 msgstr "Hermosillo, Mexico"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Heshvan"
 msgstr "Heshvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
 msgstr "Heshvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Heshvan"
 msgstr "Heshvan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
@@ -7322,25 +7245,21 @@ msgstr "Det er ikkje anbefalt å bruke eigendefinerte GEDCOM-kodar. Slike data k
 msgid "Italy"
 msgstr "Italia"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Iyar"
 msgstr "Iyar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
 msgstr "Iyar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Iyar"
 msgstr "Iyar"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Iyar"
@@ -7451,49 +7370,41 @@ msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "juli"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-thānī"
 msgstr "Jumada al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-thānī"
 msgstr "Jumada al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-thānī"
 msgstr "Jumada al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-thānī"
@@ -7565,25 +7476,21 @@ msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
 msgstr "Khor"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
 msgstr "Khordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Khordad"
@@ -7594,25 +7501,21 @@ msgstr "Khordad"
 msgid "Kiribati"
 msgstr "Kiribati"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Kislev"
 msgstr "Kislev"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Kislev"
@@ -8638,25 +8541,21 @@ msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mehr"
@@ -8731,25 +8630,21 @@ msgstr "Melding"
 msgid "Messages"
 msgstr "Meldingar"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Messidor"
@@ -8926,25 +8821,21 @@ msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
 msgstr "Mor"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mordad"
@@ -9064,25 +8955,21 @@ msgstr "Fleirling"
 msgid "Multiple marriages"
 msgstr "Fleire ekteskap"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Muḥarram"
 msgstr "Muharram"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Muḥarram"
 msgstr "Muharram"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muḥarram"
 msgstr "Muharram"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Muḥarram"
@@ -9311,25 +9198,21 @@ msgstr "Niger"
 msgid "Nigeria"
 msgstr "Nigeria"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Nissan"
 msgstr "Nisan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
 msgstr "Nisan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Nissan"
 msgstr "Nisan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Nissan"
@@ -9340,25 +9223,21 @@ msgstr "Nisan"
 msgid "Niue"
 msgstr "Niue"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Nivose"
@@ -9895,25 +9774,21 @@ msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
 msgstr "Ord"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
@@ -10431,25 +10306,21 @@ msgstr "Skriv inn ei gyldig e-postadresse."
 msgid "Please try again."
 msgstr "Vær venleg prøv på ny."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
@@ -10510,25 +10381,21 @@ msgstr "Postnummer"
 msgid "Powered by webtrees™"
 msgstr "Driven av webtrees™"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Prairial"
@@ -10706,49 +10573,41 @@ msgstr "RE: "
 msgid "Rabbi"
 msgstr "Rabbi"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Rabi’ al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-thani"
 msgstr "Rabi’ al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Rabi’ al-thani"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-thani"
@@ -10772,25 +10631,21 @@ msgctxt "Pedigree"
 msgid "Rada"
 msgstr "Rada"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rajab"
@@ -10801,25 +10656,21 @@ msgstr "Rajab"
 msgid "Raleigh, North Carolina, United States"
 msgstr "Raleigh, North Carolina, USA"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
@@ -11797,25 +11648,21 @@ msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
 msgstr "Shah"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
@@ -11854,49 +11701,41 @@ msgstr "Delte notat"
 msgid "Shares"
 msgstr "Delingar"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shaʿbān"
 msgstr "Sha’aban"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shaʿbān"
 msgstr "Sha’aban"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shaʿbān"
 msgstr "Sha’aban"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shaʿbān"
@@ -11935,25 +11774,21 @@ msgstr "Ho blei døypt"
 msgid "She was cremated"
 msgstr "Ho vart kremert"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Shevat"
 msgstr "Shevat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
 msgstr "Shevat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Shevat"
 msgstr "Shevat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Shevat"
@@ -12382,25 +12217,21 @@ msgstr "Nettstadkart"
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr "Med eit nettstadkart kan du som administrator fortelje søkjemotorar kva sider på nettstaden som er tilgjengelege for gjennomgang. Alle dei viktigaste søkjemotorane kan gjere seg nytte av nettstadkart. For nærare informasjon, sjå <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Sivan"
 msgstr "Sivan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Sivan"
@@ -12981,25 +12812,21 @@ msgstr "Tadsjikistan"
 msgid "Tampico, Mexico"
 msgstr "Tampico, Mexico"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
@@ -13039,25 +12866,21 @@ msgstr "Malar"
 msgid "Temple"
 msgstr "Tempel"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tevet"
 msgstr "Tevet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tevet"
@@ -13695,25 +13518,21 @@ msgstr "Det oppstod eit problem ved sjekking av ny versjon."
 msgid "There was an error uploading your file."
 msgstr "Det oppsto ein FEIL under opplasting av fila di."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
@@ -14212,49 +14031,41 @@ msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Tir"
 msgstr "Tir"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tishrei"
 msgstr "Tishrei"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
 msgstr "Tishrei"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tishrei"
 msgstr "Tishrei"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
@@ -14955,25 +14766,21 @@ msgstr "Ulike statistikkdiagram."
 msgid "Vatican City"
 msgstr "Vatikanstaten"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
@@ -14984,25 +14791,21 @@ msgstr "Vendémiaire"
 msgid "Venezuela"
 msgstr "Venezuela"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Ventose"
@@ -18046,25 +17849,21 @@ msgstr "tolka %s (%s)"
 msgid "invert selection"
 msgstr "Invertér"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
 msgstr "jours complémentaires"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
 msgstr "jours complémentaires"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
 msgstr "jours complémentaires"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
@@ -19510,25 +19309,21 @@ msgstr[1] "±%s år"
 msgid "Åland Islands"
 msgstr "Åland"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ṣafar"
 msgstr "Safar"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ṣafar"
 msgstr "Safar"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ṣafar"
 msgstr "Safar"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ṣafar"
@@ -19576,2660 +19371,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid " per sex"
-#~ msgstr " etter kjønn"
-
-#~ msgid " per time period"
-#~ msgstr " etter tidbolk"
-
-#, php-format
-#~ msgid "#%s"
-#~ msgstr "#%s"
-
-#, php-format
-#~ msgid "%1$s %2$s has a %3$s link to %4$s."
-#~ msgstr "%1$s %2$s har ein %3$s kopling til %4$s."
-
-#, php-format
-#~ msgid "%1$s does not exist."
-#~ msgstr "%1$s eksisterar ikkje."
-
-#~ msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgstr[0] "%1$s person synt, av totalt %2$s mogelege, frå %3$s generasjonar."
-#~ msgstr[1] "%1$s personar synt, av totalt %2$s mogelege, frå %3$s generasjonar."
-
-#~ msgid "%1$s individual is missing birthplace map coordinates: %2$s."
-#~ msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-#~ msgstr[0] "%1$s person manglar koordinatar for fødestad: %2$s."
-#~ msgstr[1] "%1$s personar manglar koordinatar for fødestad: %2$s."
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "%s dag sidan"
-#~ msgstr[1] "%s dagar sidan"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "%s time sidan"
-#~ msgstr[1] "%s timar sidan"
-
-#~ msgid "%s individual is private."
-#~ msgid_plural "%s individuals are private."
-#~ msgstr[0] "%s person er privat."
-#~ msgstr[1] "%s personar er private."
-
-#, php-format
-#~ msgid "%s individual with events between %s and %s"
-#~ msgid_plural "%s individuals with events between %s and %s"
-#~ msgstr[0] "%s person med hendingar mellom %s og %s"
-#~ msgstr[1] "%s personar med hendingar mellom %s og %s"
-
-#, php-format
-#~ msgid "%s individual with events in %s"
-#~ msgid_plural "%s individuals with events in %s"
-#~ msgstr[0] "%s person med hendingar i %s"
-#~ msgstr[1] "%s personar med hendingar i %s"
-
-#, php-format
-#~ msgid "%s individual with events in %s between %s and %s"
-#~ msgid_plural "%s individuals with events in %s between %s and %s"
-#~ msgstr[0] "%s person med hendingar i %s mellom %s og %s"
-#~ msgstr[1] "%s personar med hendingar i %s mellom %s og %s"
-
-#~ msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "%s er ikkje aktivert på denne serveren, og webtrees kan ikkje installerast. Kontakt serveradministratoren og be om å få det aktivert."
-
-#, php-format
-#~ msgid "%s location has been imported."
-#~ msgid_plural "%s locations have been imported."
-#~ msgstr[0] "%s stad er importert."
-#~ msgstr[1] "%s stadar er importerte."
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "%s minutt sidan"
-#~ msgstr[1] "%s minutt sidan"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "%s månad sidan"
-#~ msgstr[1] "%s månader sidan"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "%s sekund sidan"
-#~ msgstr[1] "%s sekund sidan"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "%s år sidan"
-#~ msgstr[1] "%s år sidan"
-
-#, php-format
-#~ msgid "(aged less than %s)"
-#~ msgstr "(yngre enn %s)"
-
-#, php-format
-#~ msgid "(aged more than %s)"
-#~ msgstr "(eldre enn %s)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(i barndomen)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(som spedbarn)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(dødfødd)"
-
-#~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-#~ msgstr "<b>GUID</b> er i denne samanheng ei korting for «Globalt Unik ID» («Globally Unique ID»).<br><br>Tanken bak GUID er at alle verdas individ skal kunne identifiserast på ein repeterbar måte, slik at sentrale organisasjonar som til dømes LDS-kirka sitt Familiehistoriesenter i Salt Lake City, eller for den saks skyld andre kompatible slektsprogram på din eigen PC, kan avgjere om det dreiar seg om same person, uansett kvar GEDCOM-fila kjem frå. Familiehistoriesenteret sitt mål er å føre eit sentralt register over genealogiske data som dernest kan gjerast tilgjengeleg gjennom nett-tenester, so eit kvart program kan få tilgang til registeret sine data og samkøyre eigne data mot desse.<br><br>Om du ikkje har planar om å dele di GEDCOM-fil med andre på denne måten, treng du ikkje late webtrees opprette slike GUID-ar; på ei annan sie, gjer det heller ikkje skade, utover å auke storleiken på GEDCOM-fila."
-
-#~ msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-#~ msgstr "<b>Viktig:</b> Konverteringa kan ikkje handtere medieobjekt. Du er nøydd til å stille inn din mediekonfigurasjon og flytte eller kopiere dine mediefiler manuelt etter at konverteringa er ferdig."
-
-#~ msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-#~ msgstr "<b>Merk:</b> Privat informasjon om nolevande personar vil kun bli gitt til familie og nære vener. Du må kunne verifisere ditt slektskap for å kunne motta private data. I enkelte høve kan informasjon om avlidne personar også vere skjult. Dette kan skyldast manglande informasjon om gjeldande personar.<br><br>Søkjer du informasjon om personar i vår database, ver venleg å kontrollere at du søkjer riktig person ved å sjekke aktuelle årstal, stadnamn og nære familiemedlem. Ønskjer du å sende inn framlegg til endringar eller oppdateringar på eksisterande data, vær då venleg å oppgi kjelde."
-
-#~ msgid "<p>Notice: By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-#~ msgstr "<p>NB: Ved å fylle ut og sende inn dette skjemaet, erklærer du at du vil:<ul><li>respektere personvern av nolevande personar;</li><li>og forklare i kommentarfeltet nedanfor kven du er i slekt med, eller skaffe oss opplysningar om personar som vi bør ha denne slektsdatabasen.</li></ul></div>"
-
-#, php-format
-#~ msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-#~ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-
-#~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-#~ msgstr "Ein databaseserver kan romme mange separate databaser. Du kan velje ein eksisterende database (oppretta av serveradministrator) eller opprette ein ny (om din brukerkonto har rettar til dette)."
-
-#, php-format
-#~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-#~ msgstr "Eit nytt passord er oppretta og sendt via E-post til %s. Du kan endre dette passordet etter å ha logga inn."
-
-#~ msgid "A new password has been requested for your username."
-#~ msgstr "Det blei tinga eit nytt passord til ditt brukarnamn."
-
-#~ msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-#~ msgstr "Sidepanel med alfabetisk liste over alle familiane i slektstreet."
-
-#~ msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-#~ msgstr "Sidepanel med alfabetisk liste over alle personane i slektstreet."
-
-#~ msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-#~ msgstr "Eit vassmerke er tekst som vert lagt til eit bilete, for å ikkje oppmuntre andre til å kopiere biletet utan løyve."
-
-#~ msgid "A.M."
-#~ msgstr "A.M."
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyzæøå"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ"
-
-#~ msgid "Acadia"
-#~ msgstr "Akadia"
-
-#~ msgid "Action"
-#~ msgstr "Handling"
-
-#~ msgid "Add a blank row"
-#~ msgstr "Legg til inn ekstra linje"
-
-#~ msgid "Add a brother or sister"
-#~ msgstr "Legg til ny bror eller syster"
-
-#~ msgid "Add a child to this family"
-#~ msgstr "Legg til et barn til denne familien"
-
-#~ msgid "Add a geographic location"
-#~ msgstr "Legg til eit nytt stadnamn"
-
-#~ msgid "Add a husband to this family"
-#~ msgstr "Legg til ein ektemann/far til denne familien"
-
-#~ msgid "Add a restriction"
-#~ msgstr "Legg til ny personvernrestriksjon"
-
-#~ msgid "Add a scrollbar when block contents grow"
-#~ msgstr "Legg til rulleliste når innhaldet i blokka veks"
-
-#~ msgid "Add a shared note"
-#~ msgstr "Legg til eit nytt delt notat"
-
-#~ msgid "Add a son or daughter"
-#~ msgstr "Legg til ny son eller dotter"
-
-#~ msgid "Add a wife to this family"
-#~ msgstr "Legg til ei hustru/mor til denne familien"
-
-#~ msgid "Add an associate"
-#~ msgstr "Legg til ein ny tilslutta person"
-
-#~ msgid "Add an event"
-#~ msgstr "Legg til hending"
-
-#~ msgid "Add another individual to the chart"
-#~ msgstr "Legg til ein ny person i diagrammet"
-
-#~ msgid "Add links"
-#~ msgstr "Legg til lenke"
-
-#~ msgid "Add married names"
-#~ msgstr "Legg til namn som gifte"
-
-#~ msgid "Add missing married names"
-#~ msgstr "Legg til namn som gift"
-
-#~ msgid "Add the GEDCOM media path to filenames"
-#~ msgstr "Legg til GEDCOM mediebane til filnamn"
-
-#~ msgid "Add to favorites"
-#~ msgstr "Legg til i favorittar"
-
-#~ msgid "Add watermarks to thumbnails"
-#~ msgstr "Legg til vassmerke på miniatyrbilete"
-
-#~ msgid "Add/edit a journal/news entry"
-#~ msgstr "Legg til/endre journal/nyhende"
-
-#~ msgid "Additional information"
-#~ msgstr "Ytterlegare informasjon"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Adoptert av begge foreldre"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Adoptert av begge foreldre"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Adoptert av far"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Adoptert av far"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "Adoptert av mor"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "Adoptert av mor"
-
-#~ msgid "Advanced"
-#~ msgstr "Avansert"
-
-#~ msgid "Advanced fact preferences"
-#~ msgstr "Avanserte faktainnstillingar"
-
-#~ msgid "Advanced name facts"
-#~ msgstr "Avanserte namnefakta"
-
-#~ msgid "Advanced place name facts"
-#~ msgstr "Avanserte stadnamnfakta"
-
-#~ msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-#~ msgstr "Etter at du har logga deg inn, vel 'Min konto' i menyen under 'Mi side' og angje eit nytt passord i feltet for å endre passordet ditt."
-
-#~ msgid "Age of item"
-#~ msgstr "Alder på notis"
-
-#~ msgid "Age related to birth year"
-#~ msgstr "Alder jamført med fødselsår"
-
-#~ msgid "Age related to death year"
-#~ msgstr "Alder jamført med dødsår"
-
-#~ msgid "All changes in PhpGedView must be accepted"
-#~ msgstr "Alle endringar i PhpGedView må på førehand vere godkjede"
-
-#~ msgid "All existing PhpGedView users must have distinct email addresses"
-#~ msgstr "Alle eksisterande PhpGedView-brukarar må ha ulike e-postadresser"
-
-#~ msgid "All family facts"
-#~ msgstr "Alle familiefakta"
-
-#~ msgid "All files have read and write permission."
-#~ msgstr "Alle filer har lese og skriverettar."
-
-#~ msgid "All individual facts"
-#~ msgstr "Alle personfakta"
-
-#~ msgid "All repository facts"
-#~ msgstr "Alle arkivfakta"
-
-#~ msgid "All source facts"
-#~ msgstr "Alle kjeldefakta"
-
-#~ msgid "Allow users to select their own theme"
-#~ msgstr "Tillat brukarar å velje utsjånad"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Also known as"
-#~ msgstr "Også kjend som"
-
-#~ msgctxt "MALE"
-#~ msgid "Also known as"
-#~ msgstr "Også kjend som"
-
-#~ msgid "Alternative place name"
-#~ msgstr "Alternativt stadnamn"
-
-#~ msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-#~ msgstr "Ein tilslutta person er ein annan person som var involvert i denne hendinga, til dømes ein fadder eller ein prest."
-
-#~ msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-#~ msgstr "Ein tilslutta person er ein annan person som var involvert med denne personen, til dømes ein ven eller arbeidsgivar."
-
-#~ msgid "An edit menu for individuals, families, sources, etc."
-#~ msgstr "Redigeringsmeny for personar, familiar, kjelder, osb."
-
-#~ msgid "An error occurred when unzipping the file."
-#~ msgstr "Ein feil oppstod under utpakking av fila."
-
-#~ msgid "An unknown error occurred"
-#~ msgstr "Ein ukjend feil har oppstått"
-
-#~ msgid "Apply automatic corrections to your genealogy data."
-#~ msgstr "Utfør automatiske endringar i heile databasen."
-
-#~ msgid "Approval of account at %s"
-#~ msgstr "Godkjenning av konto hjå %s"
-
-#~ msgid "Are you sure you want to remove links to this media object?"
-#~ msgstr "Er du sikker på at du vil ta bort lenker til dette medieobjektet?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
-
-#~ msgid "Associates"
-#~ msgstr "Tilslutta personar"
-
-#, fuzzy
-#~ msgid "Automatically add unique identifiers"
-#~ msgstr "Opprett automatisk globalt unike ID'ar"
-
-#~ msgid "Automatically expand list of events of close relatives"
-#~ msgstr "Utvid automatisk lista av hendingar for nære slektningar"
-
-#~ msgid "Available blocks"
-#~ msgstr "Tilgjengelege blokker"
-
-#~ msgid "Basic"
-#~ msgstr "Grunnleggande"
-
-#~ msgid "Batch update"
-#~ msgstr "Masseoppdatering"
-
-#~ msgid "Bearing"
-#~ msgstr "Kurs"
-
-#~ msgid "Body"
-#~ msgstr "Innhald"
-
-#~ msgid "Booklet"
-#~ msgstr "Hefte"
-
-#~ msgid "Brit milah of a brother"
-#~ msgstr "Brors Brit Milah"
-
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Barnebarns Brit Milah"
-
-#~ msgctxt "daughter’s son"
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Dottersons Brit Milah"
-
-#~ msgctxt "son’s son"
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Sonesons Brit Milah"
-
-#~ msgid "Brit milah of a half-brother"
-#~ msgstr "Halvbrors Brit Milah"
-
-#~ msgid "Brit milah of a son"
-#~ msgstr "Sons Brit Milah"
-
-#~ msgid "British West Indies"
-#~ msgstr "Britisk Vestindia"
-
-#~ msgid "Burial of a maternal grandparent"
-#~ msgstr "Gravlegging av mor sin forelder"
-
-#~ msgid "Burial of a paternal grandparent"
-#~ msgstr "Gravlegging av far sin forelder"
-
-#~ msgid "By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used."
-#~ msgstr "Som standard synes kun namn som førekjem i dine slektsted. Googlemaps-tabellen kan dessutan inneholde detaljar for andre stadar, for eksempel om du har importert stadar frå ei ekstern fil. Om du krysser av i denne ruta, vil alle stadnamn synast, også dei som ikkje er i bruk i augneblinken."
-
-#~ msgid "By default, your server allows scripts to run for %s second."
-#~ msgid_plural "By default, your server allows scripts to run for %s seconds."
-#~ msgstr[0] "Som standard, tillèt serveren din å køyre skript i %s sekund."
-#~ msgstr[1] "Som standard, tillèt serveren din å køyre skript i %s sekund."
-
-#~ msgid "By default, your server allows scripts to use %s of memory."
-#~ msgstr "Serveren din tillèt skript å nytte %s av minne."
-
-#, fuzzy
-#~ msgid "Calculate the age differences between siblings, children, spouses, etc."
-#~ msgstr "Om dette vert valt, vil webtrees kalkulere aldersskilnad mellom sysken, born, ektefellar, osb."
-
-#~ msgid "Cannot create"
-#~ msgstr "Klarte ikkje å opprette fil"
-
-#~ msgid "Cape Colony"
-#~ msgstr "Kappkolonien"
-
-#~ msgid "Case insensitive"
-#~ msgstr "Ikkje skil mellom store og små bokstavar"
-
-#~ msgid "Catalonia"
-#~ msgstr "Catalonia"
-
-#~ msgid "Caution!"
-#~ msgstr "Obs!"
-
-#~ msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-#~ msgstr "Åtvaring: det er mogeleg at gamle modular ikkje fungerer, eller dei kan hindre webtrees frå å fungere."
-
-#~ msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-#~ msgstr "Åtvaring: det er mogeleg at gamle tema ikkje fungerer, eller dei kan hindre webtrees frå å fungere."
-
-#~ msgid "Cemeteries"
-#~ msgstr "Gravstadar"
-
-#~ msgid "Center map here"
-#~ msgstr "Sentrer kart her"
-
-#~ msgid "Certificate number"
-#~ msgstr "Sertifikatnummer"
-
-#~ msgid "Change"
-#~ msgstr "Endre"
-
-#~ msgid "Change flag"
-#~ msgstr "Endre flagg"
-
-#~ msgid "Change language"
-#~ msgstr "Endre språk"
-
-#~ msgid "Change the blocks on this user’s “My page”"
-#~ msgstr "Endre blokkene på «Mi side» for denne brukaren"
-
-#~ msgid "Channel Islands"
-#~ msgstr "Kanaløyane"
-
-#~ msgid "Check file permissions…"
-#~ msgstr "Kontrollerer filrettar…"
-
-#~ msgid "Check for custom modules…"
-#~ msgstr "Ser etter eigentilpassa modular…"
-
-#~ msgid "Check for custom themes…"
-#~ msgstr "Ser etter eigentilpassa tema…"
-
-#~ msgid "Check the access rights on this folder."
-#~ msgstr "Kontroller rettar for å opprette filer i denne katalogen."
-
-#~ msgid "Check the settings and try again."
-#~ msgstr "Kontroller innstillingar og prøv på ny."
-
-#~ msgid "Choose the thumbnail image that you want to upload. Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types. For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-#~ msgstr "Vel kva miniatyrbilete du vil laste opp. Sjølv om miniatyrbileter kan genererast automatisk når du lastar opp bileter, vil du nokon gonger kanskje ønskje å lage dine eigne, ikke minst for andre medietypar. Du kan til dømes nytte eit stillbilete frå ein video, eller eit fotografi av ein person du har gjort eit lydopptak av."
-
-#~ msgid "Choose: "
-#~ msgstr "Vel: "
-
-#~ msgid "Cleared but not yet completed"
-#~ msgstr "Klarert men ikkje fullført besegling (mormon)"
-
-#~ msgid "Click %s to choose individual as head of family."
-#~ msgstr "Klikk %s for å velje person som familieoverhovud."
-
-#~ msgid "Click a row, then drag-and-drop to re-order media"
-#~ msgstr "Klikk på eit objekt, dra til ønska stad, og slepp for å endre rekkefølgja på medieobjekta"
-
-#~ msgid "Click here for PhpGedView to webtrees transfer wizard"
-#~ msgstr "Klikk her for «PhpGedView til webtrees» konvertering"
-
-#~ msgid "Click here to add, edit, or delete"
-#~ msgstr "Klikk her for å leggje til, endre eller slette"
-
-#~ msgid "Click here to open or close the sidebar"
-#~ msgstr "Klikk her for å opne og lukke sidepanelet"
-
-#~ msgid "Click name to add individual to add links list."
-#~ msgstr "Klikk på namn for å tilføye person til <b>Tilføy lenke</b>-lista."
-
-#~ msgid "Click on a title to go straight to it, or scroll down to read them all."
-#~ msgstr "Klikk på ei overskrift for å gå direkte til avsnittet, eller rull ned for å lese alt."
-
-#~ msgid "Click to choose individual as head of family."
-#~ msgstr "Klikk for å velje person som familieoverhovud."
-
-#~ msgid "Cohabitation"
-#~ msgstr "Sambuarskap"
-
-#~ msgid "Columns per page"
-#~ msgstr "Kolonner pr. side"
-
-#~ msgid "Comparison"
-#~ msgstr "Samanlikning"
-
-#~ msgid "Compress the GEDCOM file"
-#~ msgstr "Komprimer GEDCOM-fila"
-
-#~ msgid "Concatenation"
-#~ msgstr "Samansetjing av data"
-
-#~ msgid "Configure"
-#~ msgstr "Konfigurer"
-
-#~ msgid "Confirm password"
-#~ msgstr "Stadfest passord"
-
-#~ msgid "Continue adding"
-#~ msgstr "Fortsett å leggje til"
-
-#~ msgid "Continued"
-#~ msgstr "Fortsetter"
-
-#~ msgid "Convert CEME tags to GEDCOM 5.5.1"
-#~ msgstr "Endre CEME postar til GEDCOM 5.5.1"
-
-#~ msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-#~ msgstr "Endre NAME:_XXX kodar til GEDCOM 5.5.1"
-
-#~ msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-#~ msgstr "Endre _PRIM postar til GEDCOM 5.5.1"
-
-#~ msgid "Convert from UTF-8 to ISO-8859-1"
-#~ msgstr "Konvertere frå UTF-8 til ISO-8859-1"
-
-#~ msgid "Copy these files to the folder %s, replacing any that have the same name."
-#~ msgstr "Kopier desse filene til mappa %s, ved å erstatte filer med same namn."
-
-#~ msgid "Count"
-#~ msgstr "Tal"
-
-#~ msgid "Countries"
-#~ msgstr "Land"
-
-#~ msgid "Counts "
-#~ msgstr "Tal "
-
-#~ msgid "County"
-#~ msgstr "Fylke"
-
-#~ msgid "Create a family"
-#~ msgstr "Opprett ein familie"
-
-#~ msgid "Create a family from existing individuals"
-#~ msgstr "Opprett ein familie frå eksisterande personar"
-
-#~ msgid "Create a website access rule"
-#~ msgstr "Opprett ein regel for tilgjenge på nettstaden"
-
-#~ msgid "Current"
-#~ msgstr "Gjeldande"
-
-#~ msgid "Custom GEDCOM sub-tags"
-#~ msgstr "Eigentilpassa GEDCOM under-kodar"
-
-#~ msgid "Custom GEDCOM tag"
-#~ msgstr "Eigentilpassa GEDCOM-kode"
-
-#~ msgid "Custom fact"
-#~ msgstr "Eigedefinert faktum"
-
-#~ msgid "Custom tags"
-#~ msgstr "Eigendefinerte koder"
-
-#~ msgid "Custom theme"
-#~ msgstr "Eigetilpassa tema"
-
-#~ msgid "Czechoslovakia"
-#~ msgstr "Tsjekkoslovakia"
-
-#~ msgid "Dashboard"
-#~ msgstr "Hovudtavle"
-
-#~ msgid "Database and table names"
-#~ msgstr "Database og tabellnamn"
-
-#~ msgid "Decade of birth"
-#~ msgstr "Tiår for fødsel"
-
-#~ msgid "Decade of death"
-#~ msgstr "Tiår for død"
-
-#~ msgid "Decade of marriage"
-#~ msgstr "Tiår for vigsel"
-
-#~ msgid "Default"
-#~ msgstr "Standardval"
-
-#~ msgid "Default map type"
-#~ msgstr "Standard karttype"
-
-#~ msgid "Default pedigree chart layout"
-#~ msgstr "Standard utsjånad på anetre"
-
-#~ msgid "Default pedigree generations"
-#~ msgstr "Standard tal på generasjonar på anetre"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Delete all existing geographic data before importing the file."
-#~ msgstr "Slett alle eksisterande geografiske data før fila vert importert."
-
-#~ msgid "Delete old files…"
-#~ msgstr "Slette gamle filer…"
-
-#~ msgid "Delete temporary files…"
-#~ msgstr "Slettar mellombelse filer…"
-
-#~ msgid "Description unavailable"
-#~ msgstr "Forklaring ikkje tilgjengeleg"
-
-#~ msgid "Desired password"
-#~ msgstr "Ønska passord"
-
-#~ msgid "Desired username"
-#~ msgstr "Ønska brukarnamn"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dhu al-Hijjah"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dhu al-Hijjah"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dhu al-Hijjah"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dhu al-Hijjah"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dhu al-Qi’dah"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dhu al-Qi’dah"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dhu al-Qi’dah"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dhu al-Qi’dah"
-
-#~ msgid "Died as an infant: exempt"
-#~ msgstr "Døydde som spebarn: unntak"
-
-#~ msgid "Died before less than 1 year old, sealing not required."
-#~ msgstr "Døde mindre enn 1 år gamal, forsegling ikkje påkrevd."
-
-#~ msgid "Disable these modules"
-#~ msgstr "Inaktiver desse modulane"
-
-#~ msgid "Disable these themes"
-#~ msgstr "Inaktiver desse temaa"
-
-#~ msgid "Display all"
-#~ msgstr "Syn alle"
-
-#~ msgid "Display custom GEDCOM tags"
-#~ msgstr "Syn eigentilpassa GEDCOM-kodar"
-
-#~ msgid "Display map coordinates"
-#~ msgstr "Syn kartkoordinatar"
-
-#~ msgid "Do not change to keep original filename."
-#~ msgstr "Ikkje endre for å behalde opprinneleg filnamn."
-
-#~ msgid "Do not create new locations, just import coordinates for existing locations."
-#~ msgstr "Ikkje opprett nye stadar, importer kun koordinatane for eksisterande stadar."
-
-#~ msgid "Do not use maps"
-#~ msgstr "Ikkje bruk kart"
-
-#~ msgid "Down"
-#~ msgstr "Ned"
-
-#~ msgid "Download geographic data"
-#~ msgstr "Last ned geografiske data"
-
-#~ msgid "Earliest birth year"
-#~ msgstr "Tidlegaste fødselsår"
-
-#~ msgid "Earliest death year"
-#~ msgstr "Tidlegaste dødsår"
-
-#~ msgid "Edit a website access rule"
-#~ msgstr "Endre nettstaden sine reglar for tilgjenge"
-
-#~ msgid "Edit media"
-#~ msgstr "Rediger media"
-
-#~ msgid "Edit the details"
-#~ msgstr "Rediger detaljar"
-
-#~ msgid "Edit the media object"
-#~ msgstr "Endre medieobjekt"
-
-#~ msgid "Edit the note"
-#~ msgstr "Endre notat"
-
-#~ msgid "Edit the repository"
-#~ msgstr "Endre arkiv"
-
-#~ msgid "Edit the source"
-#~ msgstr "Endre kjelde"
-
-#~ msgid "Editing restriction"
-#~ msgstr "Endringsrestriksjon"
-
-#~ msgid "Eire"
-#~ msgstr "Irland"
-
-#~ msgid "Elevation"
-#~ msgstr "Høgde"
-
-#~ msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-#~ msgstr "E-postadressa som skal nyttast i &laquo;From:&raquo;-feltet i e-post som webtrees opprettar automatisk.<br><br>webtrees kan sende e-post automatisk for å gjere administratorar oppmerksame på endringar som må handsamast. webtrees sender òg meldingar til brukarar som har bedt om ein konto.<br><br>Vanlegvis inneheld &laquo;From:&raquo;-feltet i deesse automatisk oppretta meldingane noko i retning av <i>From: webtrees-noreply@dinnettstad</i> for å syne at ein ikkje treng svara på e-posten. For å verje seg mot spam og anna e-postmisbruk krev enkelte e-postsystem at &laquo;From:&raquo;-feltet er ei gyldig e-postadresse og vil ikkje akseptere e-post som synes å kome frå <i>webtrees-noreply</i>."
-
-#~ msgid "Embedded variable"
-#~ msgstr "Innlagd variabel"
-
-#~ msgid "End IP address"
-#~ msgstr "IP-adresse, slutt"
-
-#~ msgid "Enter an individual, family, or source ID"
-#~ msgstr "Angi ID til ein person, familie eller kjelde"
-
-#~ msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-#~ msgstr "Angi eller søk etter ID for person, familie eller kjelde som dette medieobjektet skal knytast til."
-
-#~ msgid "Enter report values"
-#~ msgstr "Oppsett av rapport"
-
-#~ msgid "Exact text"
-#~ msgstr "Eksakt tekst"
-
-#~ msgid "FAQ position"
-#~ msgstr "FAQ-plassering"
-
-#~ msgid "FAQ visibility"
-#~ msgstr "FAQ syning"
-
-#~ msgid "FOKO country"
-#~ msgstr "FOKO land"
-
-#~ msgid "Facts for repository records"
-#~ msgstr "Fakta for arkivregistreringar"
-
-#~ msgid "Facts for source records"
-#~ msgstr "Fakta for kjelderegistreringar"
-
-#~ msgid "Family ID prefix"
-#~ msgstr "Familie ID prefiks"
-
-#~ msgid "Family group information"
-#~ msgstr "Familieopplysningar"
-
-#~ msgid "Family list"
-#~ msgstr "Familieliste"
-
-#~ msgid "File containing places (CSV)"
-#~ msgstr "Fil som inneheld stadar (CSV)"
-
-#~ msgid "Find a fact or event"
-#~ msgstr "Finn fakta eller hending"
-
-#~ msgid "Find a family"
-#~ msgstr "Finn familie"
-
-#~ msgid "Find a media object"
-#~ msgstr "Finn medieobjekt"
-
-#~ msgid "Find a place"
-#~ msgstr "Finn stad"
-
-#~ msgid "Find a repository"
-#~ msgstr "Finn arkiv"
-
-#~ msgid "Find a shared note"
-#~ msgstr "Finn notat"
-
-#~ msgid "Find an individual"
-#~ msgstr "Finn person"
-
-#, php-format
-#~ msgid "Flag of %s"
-#~ msgstr "%s sitt flagg"
-
-#~ msgid "Font"
-#~ msgstr "Skrifttype"
-
-#~ msgid "From"
-#~ msgstr "Frå"
-
-#~ msgid "GEDCOM sub-tag"
-#~ msgstr "GEDCOM under-kode"
-
-#~ msgid "Gender"
-#~ msgstr "Kjønn"
-
-#~ msgid "Gender icon on charts"
-#~ msgstr "Ikon for kjønn i diagram"
-
-#~ msgid "Get an API key from Google."
-#~ msgstr "Få API kode frå Google."
-
-#~ msgid "Gives users the option of selecting their own theme."
-#~ msgstr "Gjev brukarar høve til å velje utsjånad (tema)."
-
-#~ msgid "Google Street View™"
-#~ msgstr "Google Street View™"
-
-#~ msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
-#~ msgstr "Google tillet berre eit fåtal anonyme kartspørringar per dag. Om du treng meir enn dette, må du ha ein Google-konto og ein API-kode."
-
-#~ msgid "Google™ maps preferences"
-#~ msgstr "Innstillingar for Google™ maps"
-
-#~ msgid "Google™ webmaster tools"
-#~ msgstr "Google™ webmaster tools"
-
-#~ msgid "Grandparents"
-#~ msgstr "Besteforeldre"
-
-#~ msgid "Head of household"
-#~ msgstr "Overhovud i familien"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
-
-#~ msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
-#~ msgstr "Her kan du angi eller fjerne ikon. Med denne linken kan ein velge eit flagg som vil bli nytta som stadmarkør.."
-
-#~ msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
-#~ msgstr "Her angir du ønska nivå for zoom av kartutsnitt. Denne verdien vil bli brukt som minimumsverdi når staden vert vist på eit kart."
-
-#~ msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
-#~ msgstr "Her kan du angi nøyaktigheit. Basert på denne innstillinga, vil tal på desimalar som skal nyttast i lengde- og breiddegrader fastsettast."
-
-#~ msgid "Hide"
-#~ msgstr "Skjul"
-
-#~ msgid "Hide/show GEDCOM tags in the edit forms"
-#~ msgstr "Skjul/Syn GEDCOM-kodar i endringsskjema"
-
-#~ msgid "Highest population"
-#~ msgstr "Høgaste folketettleik"
-
-#~ msgid "Historical facts"
-#~ msgstr "Historiske fakta"
-
-#~ msgid "House"
-#~ msgstr "Hus"
-
-#~ msgid "House number"
-#~ msgstr "Husnummer"
-
-#~ msgid "Hybrid"
-#~ msgstr "Hybrid"
-
-#~ msgid "Icon"
-#~ msgstr "Ikon"
-
-#~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
-#~ msgstr "Dersom eit særskilt etternamn ikkje førekjem nok gonger til å verte synt i lista over dei mest nytta etternamna, kan det her leggjast til manuelt. Om det vert lagt inn fleire namn, må desse skiljast med komma. <b>Det skiljast mellom store og små bokstavar.</b>"
-
-#~ msgid "If the thumbnail image is a custom image, you should add it to the media object."
-#~ msgstr "Om miniatyrbiletet er eigentilpassa, skal du legge dette til medieobjektet."
-
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-#~ msgstr "Om miniatyrbiletet er det same som det originale biletet, er det ikkje lenger naudsynt, og bør slettast."
-
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
-#~ msgstr "Om miniatyrbiletet er det same som det originale biletet, er det ikkje lenger behov for å behalde dette, og du bør slette det. Om det er eit tilpassa miniatyrbilete, må du legge det til i medieobjektet."
-
-#~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
-#~ msgstr "Om besøkande ikkje kan sjå slektstreet, kan dei heller ikkje søke om brukarkonto. Du må då opprette brukarkontoar manuelt."
-
-#~ msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
-#~ msgstr "Om du knyter til databasen via UNIX socket, skriv du inn sti her, og lar port nummer stå tomt."
-
-#~ msgid "If you do not use two-factor authentication, enable <a href=\"https://www.google.com/settings/security/lesssecureapps\">less secure applications</a> and use your Google password."
-#~ msgstr "Om du ikkje nyttar tostegs identifisering, åpne <a href=\"https://www.google.com/settings/security/lesssecureapps\">Tilgang til mindre sikre apper</a> og bruk ditt Google passord."
-
-#~ msgid "If you have a large number of inactive places, it can be slow to generate the list."
-#~ msgstr "Om du har mange stadnamn som ikkje vert nytta, kan det ta noko lengre tid å generere lista."
-
-#~ msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-#~ msgstr "Om du skjuler ei blokk utan innhald, vil du ikkje kunne endre oppsettet for denne blokka før den igjen har innhald, og kan synast."
-
-#~ msgid "If you use two-factor authentication, create an <a href=\"https://myaccount.google.com/apppasswords\">app password</a>."
-#~ msgstr "Om du nyttar tostegs identifisering, opprett eit <a href=\"https://myaccount.google.com/apppasswords\">app passord</a>."
-
-#~ msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>. Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
-#~ msgstr "Ønskjer du å ta bort eit særskilt etternamn fra lista over «Mest nytta etternamn», kan du oppgi etternamnet her. Om det vert lagt inn fleire namn, må desse skiljast med komma. <b>For etternamn skiljast det mellom store og små bokstavar</b>. Etternamn lagt til her, vil også fjernast frå lista “Mest nytta etternamn” på “Heimeside”."
-
-#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
-#~ msgstr "Om serveren sin sikkerheitspolicy tillet det, kan du be om auka minne og CPU tidsinnstillingar på webtrees si administrasjonsside. Om dette ikkje går, må administrator for server kontaktast."
-
-#~ msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one."
-#~ msgstr "Om nettstaden kan nåast med fleire ulike URL-adresser, som til dømes <b>http://www.example.com/webtrees/</b> og <b>http://webtrees.example.com/</b>, kan du angi den føretrekte URL her. Spurnad om andre URL-adresser vil verte omdirigert til den føretrekte."
-
-#~ msgid "Import Options."
-#~ msgstr "Importval."
-
-#~ msgid "Import all places from a family tree"
-#~ msgstr "Importer alle stadnamn frå eit slektstre"
-
-#~ msgid "Import custom thumbnails from webtrees version 1"
-#~ msgstr "Importer tilpassa miniatyrbileter frå webtrees versjon 1"
-
-#~ msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-#~ msgstr "I webtrees versjon 1 kunne du legge til eigendefinerte miniatyrbileter til medieobjekt ved å opprette eigne filer i mappa “thumbs”."
-
-#~ msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-#~ msgstr "I webtrees versjon 2 er miniatyrbileter lagra som ei ekstra mediefil i det same medieobjekt."
-
-#~ msgid "Include fully matched places"
-#~ msgstr "Inkluder identiske stadar"
-
-#~ msgid "Include media (automatically zips files)"
-#~ msgstr "Inkluder mediefiler (lagar automatisk ei zip-fil)"
-
-#~ msgid "Individual ID prefix"
-#~ msgstr "Peron ID prefiks"
-
-#~ msgid "Individual distribution"
-#~ msgstr "Utbreiing av personar"
-
-#~ msgid "Individual list"
-#~ msgstr "Personliste"
-
-#, php-format
-#~ msgid "Individuals with surname %s"
-#~ msgstr "Personar med etternamn %s"
-
-#~ msgid "Information about the request is shown under the link below."
-#~ msgstr "Informasjon om søknaden vert synt under lenka nedanfor."
-
-#~ msgid "Initiatory"
-#~ msgstr "Initiatory (LDS)"
-
-#~ msgid "Installation folder"
-#~ msgstr "Installasjonsmappe"
-
-#~ msgid "Instructions for Google mail"
-#~ msgstr "Instruksjonar for Google mail"
-
-#~ msgid "Interred"
-#~ msgstr "Urnenedsettelse"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Interred"
-#~ msgstr "Jordfesta"
-
-#~ msgctxt "MALE"
-#~ msgid "Interred"
-#~ msgstr "Jordfesta"
-
-#~ msgid "Invalid GEDCOM format"
-#~ msgstr "Ugyldig GEDCOM 5.5 format"
-
-#~ msgid "Joint family name"
-#~ msgstr "Felles familienamn"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumada al-awwal"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumada al-awwal"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumada al-awwal"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumada al-awwal"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumada al-thani"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumada al-thani"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumada al-thani"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumada al-thani"
-
-#~ msgid "Keep"
-#~ msgstr "Ta vare på"
-
-#~ msgid "Keep link in list"
-#~ msgstr "Behald lenke i liste"
-
-#~ msgid "LDS ordinance codes in chart boxes"
-#~ msgstr "LDS ordinasjonskodar i diagram"
-
-#~ msgid "LDS temple"
-#~ msgstr "Mormon tempel"
-
-#~ msgid "Latest birth year"
-#~ msgstr "Seinaste fødselsår"
-
-#~ msgid "Latest death year"
-#~ msgstr "Seinaste dødsår"
-
-#~ msgid "Leave this blank to use the default value."
-#~ msgstr "Hvis du let denne innstillinga stå tom, vil standardverdien nyttast."
-
-#~ msgid "Left"
-#~ msgstr "Venstre"
-
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgid "Level"
-#~ msgstr "Nivå"
-
-#~ msgid "Limit"
-#~ msgstr "Grense"
-
-#~ msgid "Limit display by"
-#~ msgstr "Avgrens syning til"
-
-#~ msgid "Link to an existing media object"
-#~ msgstr "Knyt til eit eksisterande medieobjekt"
-
-#~ msgid "Linked database ID"
-#~ msgstr "Lenka database-ID"
-
-#~ msgid "Location not removed: this location contains sub-locations"
-#~ msgstr "Staden er ikkje sletta: denne staden har andre stadar knytt opp til seg"
-
-#~ msgid "Login ID"
-#~ msgstr "Brukarnamn"
-
-#~ msgid "Longevity versus time"
-#~ msgstr "Levealder i tidsperiode"
-
-#~ msgid "Lost password request"
-#~ msgstr "Nytt passord"
-
-#~ msgid "Lowest population"
-#~ msgstr "Lågaste folketettleik"
-
-#~ msgid "Mailing name"
-#~ msgstr "Personnamn i postadresse"
-
-#~ msgid "Main section blocks"
-#~ msgstr "Blokker i hovudseksjonen"
-
-#~ msgid "Manage family trees "
-#~ msgstr "Handsam familietre "
-
-#~ msgid "Manage the links"
-#~ msgstr "Behandle lenker"
-
-#~ msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
-#~ msgstr "Mange e-postserverar krev at avsendarserveren identifiserer seg sjølv korrekt, med eit gyldig domenenamn."
-
-#~ msgid "Map provider"
-#~ msgstr "Karttilbydar"
-
-#~ msgid "Marriage status"
-#~ msgstr "Ekteskapsstatus"
-
-#~ msgid "Marriage type unknown"
-#~ msgstr "Vigseltype ukjent"
-
-#~ msgid "Married surname"
-#~ msgstr "Etternamn som gift"
-
-#~ msgid "Match calendar"
-#~ msgstr "Match kalendar"
-
-#~ msgid "Max"
-#~ msgstr "Maks"
-
-#~ msgid "Maximum descendancy generations"
-#~ msgstr "Høgste tal på generasjonar av etterkomarar"
-
-#~ msgid "Maximum pedigree generations"
-#~ msgstr "Høgste tal på generasjonar på anetre"
-
-#~ msgid "Media ID prefix"
-#~ msgstr "Medie ID prefiks"
-
-#~ msgid "Media contains"
-#~ msgstr "Medie inneheld"
-
-#, php-format
-#~ msgid "Media filenames will be prefixed by %s."
-#~ msgstr "Mediefiler vil få lagt til %s i byrjinga av filnamnet."
-
-#~ msgid "Medical condition"
-#~ msgstr "Medisinsk tilstand"
-
-#~ msgid "Memory limit"
-#~ msgstr "Grense for minne"
-
-#~ msgid "Midnight"
-#~ msgstr "midnatt"
-
-#~ msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
-#~ msgstr "Minimum og maksimum zoomfaktor for kartet i Google. 1 er heile kartet, 15 er på husnivå. Merk at 15 er kun tilgjengeleg i einskilde område."
-
-#~ msgid "Minimum number of occurrences to be a “common surname”"
-#~ msgstr "Min. førekomst for «mest nytta etternavn»"
-
-#~ msgid "Moderate pending changes"
-#~ msgstr "Handsame ventande endringar"
-
-#~ msgid "More news articles"
-#~ msgstr "Fleire nyhende"
-
-#~ msgid "Most sites are configured to use the default value of 3306."
-#~ msgstr "Dei fleste nettstadar er konfigurerte til å bruke standardporten 3306."
-
-#~ msgid "Move left"
-#~ msgstr "Flytt til venstre"
-
-#~ msgid "Move right"
-#~ msgstr "Flytt til høgre"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharram"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharram"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharram"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharram"
-
-#~ msgid "MySQL gave the error: %s"
-#~ msgstr "MySQL rapporterte feilen: %s"
-
-#~ msgid "MySQL variables"
-#~ msgstr "MySQL variablar"
-
-#~ msgid "Name contains"
-#~ msgstr "Namn inneheld"
-
-#~ msgid "Names to add to common surnames (comma separated)"
-#~ msgstr "Namvn som skal leggjast til liste for mest nytta etternamn (separert med komma)"
-
-#~ msgid "Names to remove from common surnames (comma separated)"
-#~ msgstr "Namn som skal takast bort frå «mest nytta etternamn» (separert med komma)"
-
-#~ msgid "Neighborhood"
-#~ msgstr "Grannelag"
-
-#~ msgid "Netherlands Antilles"
-#~ msgstr "Dei nederlandske antillane"
-
-#~ msgid "Neutral Zone"
-#~ msgstr "Nøytral sone"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Never married"
-#~ msgstr "Aldri gift"
-
-#~ msgctxt "MALE"
-#~ msgid "Never married"
-#~ msgstr "Aldri gift"
-
-#~ msgid "No ancestors in the database."
-#~ msgstr "Ingen anar i slektsbasen."
-
-#~ msgid "No custom modules are enabled."
-#~ msgstr "Ingen eigentilpassa modular er aktiverte."
-
-#~ msgid "No custom themes are enabled."
-#~ msgstr "Ingen eigentilpassa tema er aktiverte."
-
-#~ msgid "No limit"
-#~ msgstr "Inga grense"
-
-#~ msgid "No map data exists for this individual"
-#~ msgstr "Ingen kartdata for denne personen"
-
-#~ msgid "No mappable items"
-#~ msgstr "Ingen stadar å kartfeste"
-
-#~ msgid "No media file was provided."
-#~ msgstr "Ingen mediefil blei gitt."
-
-#~ msgid "No places found"
-#~ msgstr "Ingen stadar funne"
-
-#~ msgid "No places have been found."
-#~ msgstr "Ingen stadar vart funne."
-
-#~ msgid "Nobody at all"
-#~ msgstr "Ingen"
-
-#~ msgid "Noon"
-#~ msgstr "Middag"
-
-#~ msgid "Not a valid individual, family, or source ID"
-#~ msgstr "Ikkje gyldig ID for person, familie eller kjelde"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Not married"
-#~ msgstr "Ikkje gift"
-
-#~ msgctxt "MALE"
-#~ msgid "Not married"
-#~ msgstr "Ikkje gift"
-
-#~ msgid "Note ID prefix"
-#~ msgstr "Notat ID prefiks"
-
-#~ msgid "Number of generations"
-#~ msgstr "Tal på generasjonar"
-
-#~ msgid "Number of items"
-#~ msgstr "Tal på notisar"
-
-#~ msgid "Number of items to show"
-#~ msgstr "Mengd som skal synast"
-
-#~ msgid "Number of months since the last sign-in for a user’s account to be considered inactive: "
-#~ msgstr "Tal på månader sidan siste innlogging, før ein brukarkonto vert rekna for inaktiv: "
-
-#~ msgid "Oldest at bottom"
-#~ msgstr "Eldste nederst"
-
-#~ msgid "Oldest at top"
-#~ msgstr "Eldste øverst"
-
-#~ msgid "Optional prefixes and suffixes"
-#~ msgstr "Valfrie føre- og etterstavingar"
-
-#~ msgid "Order"
-#~ msgstr "Rekkefølgje"
-
-#~ msgid "Ordnance Survey historic maps"
-#~ msgstr "Ordnance Survey historiske kart"
-
-#~ msgid "Other folder… please type in"
-#~ msgstr "Anna mappe… skriv inn"
-
-#~ msgid "Other genealogy applications might not recognize this data."
-#~ msgstr "Det er ikkje sikkert at andre slektsprogram gjenkjenner desse data."
-
-#~ msgid "Others"
-#~ msgstr "Andre"
-
-#~ msgid "Overwrite existing coordinates."
-#~ msgstr "Skriv over eksisterande koordinatar."
-
-#~ msgid "Own charts"
-#~ msgstr "Eigne diagram"
-
-#~ msgid "P.M."
-#~ msgstr "P.M."
-
-#~ msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP-utvidinga «%1$s» er slått av. Utan denne vil følgjande eigenskapar ikkje fungere: %2$s. Spør din serveradministrator om å få den slått på."
-
-#~ msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP-utvididinga «%s» er slått av, og du kan difor ikkje installere webtrees. Kontakt administrator for serveren for å få slått på denne funksjonen."
-
-#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "PHP-innstillinga «%1$s» er slått av. Utan denne vil følgjande eigenskapar ikkje fungere: %2$s. Kontakt din serveradministrator for å få den slått på."
-
-#~ msgid "PHP time limit"
-#~ msgstr "PHP tidsavgrensing"
-
-#~ msgid "Parent"
-#~ msgstr "Forelder"
-
-#~ msgid "Passwords do not match."
-#~ msgstr "Passorda samsvarar ikkje."
-
-#~ msgid "Passwords must contain at least 8 characters."
-#~ msgstr "Passord må innehalde minst 8 teikn."
-
-#~ msgid "Pedigree chart"
-#~ msgstr "Anediagram"
-
-#~ msgid "Pedigree of %s"
-#~ msgstr "Anetre til %s"
-
-#~ msgid "Phonetic"
-#~ msgstr "Fonetisk"
-
-#~ msgid "Phonetic title"
-#~ msgstr "Tittel (fonetisk)"
-
-#~ msgid "PhpGedView might be installed in one of these folders:"
-#~ msgstr "PhpGedView kan vere installert i ei av følgjande mapper:"
-
-#~ msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
-#~ msgstr "PhpGedView må vere versjon 4.2.3 eller ein av SVN-versjonane opp til #%s"
-
-#~ msgid "PhpGedView must use the same database as webtrees."
-#~ msgstr "PhpGedView må nytte same database som webtrees."
-
-#~ msgid "PhpGedView to webtrees transfer wizard"
-#~ msgstr "PhpGedView til webtrees konvertering"
-
-#~ msgid "Place check"
-#~ msgstr "Stadsjekk"
-
-#~ msgid "Place contains"
-#~ msgstr "Stadnamn inneheld"
-
-#~ msgid "Place of citizenship"
-#~ msgstr "Heimstad"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Gjer nettstaden offline, ved å opprette fila %s…"
-
-#~ msgid "Place the website online, by deleting the file %s…"
-#~ msgstr "Gjer nettstaden online, ved å slette fila %s…"
-
-#~ msgid "Places found"
-#~ msgstr "Stadar funne"
-
-#~ msgid "Places in %s"
-#~ msgstr "Stadar i %s"
-
-#~ msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-#~ msgstr "Stadnamn bør registrerast i tråd med genealogiske standarder: den mest spesifikke informasjonen om staden vert skrive fyrst, deretter arbeider ein seg opp gjennom hierarkiet til det minst spesifikke nivået, med komma som skiljeteikn mellom nivåa. Namna du nyttar for å oppgje stadane bør representere dei ulike nivåa i stats- eller kyrkjeadministrasjonen der sentrale register vert førte og oppbevarte.<br><br>Til dømes kan ein stad som Bjørkedal i Møre og Romsdal registrerast som «Bjørkedal, Volda, Møre og Romsdal, NOR». Første del av stadregistreringa, «Bjørkedal», er staden der hendinga fann stad. Neste del, «Volda», er kommunen. «Møre og Romsdal» er fylket, og «NOR» er landet. Det er viktig å angi alle nivåa, sidan administrasjonen på kvart nivå kan føre relevante register.<br><br>Om eit nivå i stadnamnet er ukjent, bør dette registrerast med ein tom plass mellom to komma. Hvis du til dømes ikkje veit kva kommune Bjørkedal ligg i, bør det registrerast som «Bjørkedal, , Møre og Romsdal, NOR». Om du ikkje veit meir enn at ein person er fødd i Møre og Romsdal, vil stadnamnet kunne skrivast som «, , Møre og Romsdal, NOR».<br><br>Du kan bruke <b>Finn stad</b> for å finne stadar som allereie finnast i databasen."
-
-#~ msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-#~ msgstr "Stadar utan gyldige koordinatar vil ikkje synast på kartet, og har raud bord i sidemenyen"
-
-#~ msgid "Please enter a given name, surname, or place in addition to the year"
-#~ msgstr "Ver venleg oppgje eit fornamn, etternamn og ein stad i tillegg til årstal"
-
-#~ msgid "Please enter a message subject."
-#~ msgstr "Skriv inn tekst i emnefeltet."
-
-#~ msgid "Please enter more than one character."
-#~ msgstr "Ver venleg å skrive inn meir enn ein bokstav."
-
-#~ msgid "Please enter some message text before sending."
-#~ msgstr "Skriv inn ein tekst før du sender."
-
-#~ msgid "Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry."
-#~ msgstr "Ver venleg å oppgi e-postadresse, slik at vi kan svare på denne meldinga. E-postadressa vert ikkje nytta til anna enn å svare på din førespurnad."
-
-#~ msgid "Precision"
-#~ msgstr "Presisjon"
-
-#~ msgid "Precision of the latitude and longitude"
-#~ msgstr "Nøyaktigheit for lengde- og breddegrad"
-
-#~ msgid "Prefixes"
-#~ msgstr "Førestavingar"
-
-#~ msgid "Presentation style"
-#~ msgstr "Presentering"
-
-#~ msgid "Privacy restriction"
-#~ msgstr "Personvern"
-
-#~ msgid "Publisher"
-#~ msgstr "Utgjevar"
-
-#~ msgid "Quick repository facts"
-#~ msgstr "Snøggfakta for arkiv"
-
-#~ msgid "Quick source facts"
-#~ msgstr "Snøggfakta for kjelder"
-
-#~ msgid "README documentation"
-#~ msgstr "README dokumentasjon (Engelsk)"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabi’ al-awwal"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabi’ al-thani"
-
-#~ msgid "Rada"
-#~ msgstr "Rada"
-
-#~ msgid "Really delete all geographic data?"
-#~ msgstr "Verkeleg slette alle geografiske data?"
-
-#~ msgid "Records are not the same type. Cannot merge records that are not the same type."
-#~ msgstr "Postane er ikkje av same type. Kan ikkje flette data som er av ulik type."
-
-#~ msgid "Redraw map"
-#~ msgstr "Teikn kart på ny"
-
-#~ msgid "Reliability of the information"
-#~ msgstr "Informasjonens pålitelegheit"
-
-#~ msgid "Religious name"
-#~ msgstr "Religiøst namn"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Religious name"
-#~ msgstr "Religiøst namn"
-
-#~ msgctxt "MALE"
-#~ msgid "Religious name"
-#~ msgstr "Religiøst namn"
-
-#~ msgid "Remove flag"
-#~ msgstr "Slett flagg"
-
-#~ msgid "Remove link from list"
-#~ msgstr "Slett lenke fra liste"
-
-#~ msgid "Renumber"
-#~ msgstr "Endre nummerering"
-
-#~ msgid "Renumber family tree"
-#~ msgstr "Gi postane i slektstreet nye referansenummer"
-
-#~ msgid "Repositories found"
-#~ msgstr "Arkiv funne"
-
-#~ msgid "Repository ID prefix"
-#~ msgstr "Arkiv ID prefix"
-
-#~ msgid "Repository contains"
-#~ msgstr "Arkiv inneheld"
-
-#~ msgid "Reset to initial map state"
-#~ msgstr "Attendestill til opphaveleg kart"
-
-#~ msgid "Restrict access to the website, using IP addresses and user-agent strings."
-#~ msgstr "Avgrens tilgangen til nettstaden ut frå IP-adresse eller brukaragent."
-
-#~ msgid "Resulting value"
-#~ msgstr "Sluttverdi"
-
-#~ msgid "Right"
-#~ msgstr "Høgre"
-
-#~ msgid "Right section blocks"
-#~ msgstr "Blokker i høgre kolonne"
-
-#~ msgid "Romanized title"
-#~ msgstr "Tittel (latinsk form)"
-
-#~ msgid "Rule"
-#~ msgstr "Regel"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Safar"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Ṣafar"
-#~ msgstr "Safar"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Safar"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Safar"
-
-#~ msgid "Satellite"
-#~ msgstr "Satellitt"
-
-#~ msgid "Search engine"
-#~ msgstr "Søkjemotor"
-
-#~ msgid "Search for individuals to add to add Links list."
-#~ msgstr "Søk etter personar som skal leggjast til lenkelista."
-
-#~ msgid "Search globally"
-#~ msgstr "Søk globalt"
-
-#~ msgid "Search locally"
-#~ msgstr "Søk lokalt"
-
-#~ msgid "Select a block and use the arrows to move it."
-#~ msgstr "Merk namnet til ei blokk og klikk på pilteiknet for å flytte blokka i ønka retning."
-
-#~ msgid "Select chart type"
-#~ msgstr "Vel diagramtype"
-
-#~ msgid "Select events"
-#~ msgstr "Vel hendingar"
-
-#~ msgid "Select flag"
-#~ msgstr "Vel flagg"
-
-#~ msgid "Select the desired count interval"
-#~ msgstr "Vel ønska mengdeintervall"
-
-#~ msgid "Select the languages that will be shown in menus."
-#~ msgstr "Vel dei språka som skal synast i menyar."
-
-#~ msgid "Select the stats to show in this block"
-#~ msgstr "Vel statistikk som skal synast i denne blokka"
-
-#~ msgid "Send broadcast messages"
-#~ msgstr "Send melding til alle"
-
-#~ msgid "Serbia and Montenegro"
-#~ msgstr "Serbia og Montenegro"
-
-#~ msgid "Server file containing places (CSV)"
-#~ msgstr "Fil på server som inneheld stadar (CSV)"
-
-#~ msgid "Session timeout"
-#~ msgstr "Session timeout"
-
-#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
-#~ msgstr "Angi tal på generasjonar som skal synast i etterkomar- og anediagram."
-
-#~ msgid "Set the maximum number of generations to display on descendancy charts."
-#~ msgstr "Angi høgste tal på generasjonar som skal synast i diagram for etterkomarar."
-
-#~ msgid "Set the maximum number of generations to display on pedigree charts."
-#~ msgstr "Angi høgaste tal på generasjonar som skal synast på anediagram."
-
-#~ msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts. This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-#~ msgstr "Set til <b>Ja</b> for å nytte RIN nummer istaden for GEDCOM ID når det vert spurt om person-ID i konfigurasjonsfiler, brukarinnstillingar, og i diagram. Dette kan vere nyttig for slektsprogram som ikkje konsistent eksporterer GEDCOM med same ID tileigna kvar person, men som alltid nyttar same RIN."
-
-#~ msgid "Shared note contains"
-#~ msgstr "Delt notat inneheld"
-
-#~ msgid "Shared notes found"
-#~ msgstr "Delte notat funne"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sha’aban"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sha’aban"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sha’aban"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sha’aban"
-
-#~ msgid "Short version"
-#~ msgstr "Kort versjon"
-
-#~ msgid "Should this block be hidden when it is empty"
-#~ msgstr "Skjule denne blokka dersom den er tom"
-
-#~ msgid "Show all notes and source references on notes and sources tabs"
-#~ msgstr "Syn alle notat og kjeldereferansar på notat og kjeldefaner"
-
-#~ msgid "Show all spouses and ancestors"
-#~ msgstr "Syn alle ektefeller og anar"
-
-#~ msgid "Show all tags"
-#~ msgstr "Syn alle koder"
-
-#~ msgid "Show chart details by default"
-#~ msgstr "Syn diagramdetaljar som standard"
-
-#~ msgid "Show common surnames"
-#~ msgstr "Syne mest nytta etternamn"
-
-#~ msgid "Show counts before or after name"
-#~ msgstr "Plasser mengd før eller etter namn"
-
-#~ msgid "Show cousins"
-#~ msgstr "Syn syskenborn"
-
-#~ msgid "Show date differences"
-#~ msgstr "Syn datoskilnader"
-
-#~ msgid "Show details"
-#~ msgstr "Syn detaljar"
-
-#~ msgid "Show hit counters on Portal and Individual pages."
-#~ msgstr "Syn teljar for treff på hovud- og personsider."
-
-#~ msgid "Show images"
-#~ msgstr "Syn bilete"
-
-#~ msgid "Show inactive places"
-#~ msgstr "Syn stadnamn som ikkje er i bruk"
-
-#~ msgid "Show lifespans"
-#~ msgstr "Syn livsløp"
-
-#~ msgid "Show only births, deaths, and marriages"
-#~ msgstr "Syn kun fødslar, dødsfall og vigslar"
-
-#~ msgid "Show only the selected tags"
-#~ msgstr "Syn berre valde koder"
-
-#~ msgid "Show places in hierarchy"
-#~ msgstr "Syn stadnamn etter nivå"
-
-#~ msgid "Show related individuals/families"
-#~ msgstr "Syn slekta personar/familier"
-
-#~ msgid "Show statistics charts"
-#~ msgstr "Syn statistikkdiagram"
-
-#~ msgid "Show the location of places and events using the Google™ maps mapping service."
-#~ msgstr "Syn kart over stader og hendingar med Google™ maps-tenesten."
-
-#~ msgid "Sicily"
-#~ msgstr "Sicilia"
-
-#~ msgid "Sign-in URL"
-#~ msgstr "URL for innlogging"
-
-#~ msgid "Signed-in as "
-#~ msgstr "Logga inn som "
-
-#~ msgid "Simple search filter based on the characters entered, no wildcards are accepted."
-#~ msgstr "Enkelt søkjefilter basert på bokstavane/teikna som er skrive inn. Ingen jokerar (?*) er tillete."
-
-#~ msgid "Site preferences"
-#~ msgstr "Innstillingar for nettstad"
-
-#~ msgid "Size of map (in pixels)"
-#~ msgstr "Storleik på kart (i punkt)"
-
-#~ msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-#~ msgstr "Enkelte stadnamn kan skrivast med valfrie førestavingar og etterstavingar, f.eks. «Buskerud» eller «Buskerud fylke». Dersom slektstreet inneheld det fulle stadnamnet men den geografiske databasen berre den korte formen, bør du angi ei liste over føre-/etterstavingar som skal ignorerast. Fleire alternative former kan skiljast med semikolon. Døme: «Kommune;Komm.;Km.»."
-
-#~ msgid "Source ID prefix"
-#~ msgstr "Kjelde ID prefiks"
-
-#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-#~ msgstr "Kjeldetilvisingar kan inkludere felt for å lagre informasjon om kvaliteten på data (primærkjelde, sekundærkjelde, osb.) og datoen hendinga vart registrert i kjelda. Om du ikkje nyttar desse felta kan du deaktivere dei når du opprettar nye kjeldertilvisingar."
-
-#~ msgid "Source contains"
-#~ msgstr "Kjelde inneheld"
-
-#~ msgid "Spouse census date"
-#~ msgstr "Ektefelle sin dato for folketeljing"
-
-#~ msgid "Spouse census place"
-#~ msgstr "Stad for ektefelle si folketeljing"
-
-#~ msgid "Spouse note"
-#~ msgstr "Notat for ektefelle"
-
-#~ msgid "Standard"
-#~ msgstr "Standard"
-
-#~ msgid "Start IP address"
-#~ msgstr "IP-adresse, start"
-
-#~ msgid "Start at parents"
-#~ msgstr "Start med foreldre"
-
-#~ msgid "Statistics chart"
-#~ msgstr "Punktplott"
-
-#~ msgid "Store watermarked full size images on server"
-#~ msgstr "Lagre vassmerka bileter på serveren"
-
-#~ msgid "Store watermarked thumbnails on server"
-#~ msgstr "Lagre vassmerka miniatyrbileter på serveren"
-
-#~ msgid "Street name"
-#~ msgstr "Gatenamn"
-
-#~ msgid "Subdivision"
-#~ msgstr "Område"
-
-#~ msgid "Suffixes"
-#~ msgstr "Endestavingar"
-
-#~ msgid "Support for non-standard GEDCOM tags."
-#~ msgstr "Støtte for ikkjestandardiserte GEDCOM-kodar."
-
-#~ msgid "System settings"
-#~ msgstr "Systeminnstillingar"
-
-#~ msgid "Tag"
-#~ msgstr "Kode"
-
-#~ msgid "Terrain"
-#~ msgstr "Terreng"
-
-#~ msgid "The FAQ list is empty."
-#~ msgstr "Lista med spørsmål & svar er tom."
-
-#~ msgid "The GEDCOM standard does not allow URLs in media objects."
-#~ msgstr "GEDCOM-standarden godtek ikkje URL i medieobjekt."
-
-#~ msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-#~ msgstr "PhpGedView til webtrees-hjelparen er ein automatisert prosess for å bistå administrator i å flytte frå ein PhpGedView-installasjon til ein ny webtrees-installasjon. Alle PhpGedView GEDCOM-data og anna databaseinformasjon vil overførast direkte til din nye webtrees-database. Følgjande vilkår må vere oppfylt:"
-
-#~ msgid "The data in this website has been collected for the purposes of genealogical research."
-#~ msgstr "Data på denne nettstaden er samla for bruk i genealogisk gransking."
-
-#~ msgid "The database reported the following error message:"
-#~ msgstr "Databasen rapporterte følgjande feilmelding:"
-
-#~ msgid "The details of this family are private."
-#~ msgstr "Detaljane om denne familien er private."
-
-#~ msgid "The details of this individual are private."
-#~ msgstr "Detaljane om denne personen er private."
-
-#~ msgid "The file %s could not be updated."
-#~ msgstr "Fila %s kunne ikkje oppdaterast."
-
-#~ msgid "The file %s has been created."
-#~ msgstr "Fila %s blei oppretta."
-
-#, php-format
-#~ msgid "The folder %s does not exist, and it could not be created."
-#~ msgstr "Mappa %s eksisterar ikkje, og kunne ikkje opprettast."
-
-#~ msgid "The following places have been changed:"
-#~ msgstr "Følgjande stadar blei endra:"
-
-#~ msgid "The following places would be changed:"
-#~ msgstr "Følgjande stadar vil bli endra:"
-
-#~ msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
-#~ msgstr "Dei følgjande reglane vert nytta for å avgjere om ein besøkjande er eit menneske (som får full adgang), ein søkjerobot (som får avgrensa tilgang), eller ein uønska søkjerobot (som vert nekta tilgang)."
-
-#~ msgid "The media file %s does not exist."
-#~ msgstr "Mediafila %s eksisterar ikkje."
-
-#~ msgid "The media file was not found in this family tree."
-#~ msgstr "Mediefila blei ikkje funne i dette slektstreet."
-
-#~ msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer. This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website. Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-#~ msgstr "Mediefilene du lastar opp kan - og bør kanskje - kallast noko anna på serveren enn på di lokale datamaskin. Ofte vil det lokale filnamnet ha meining for deg, men vere langt mindre meiningsfullt for andre besøkjande på nettstaden. Det er dessutan ei mogelegheit for at båe du og ein annan brukar vil laste opp ei fil som heiter «bestemor.jpg».<br><br>I dette feltet angjev du det nye namnet på fila du lastar opp. Det namnet du skriv her, vil også verte nytta til å namngi miniatyrbilete som høyrer til biletet, og som anten lastast opp separat eller genererast automatisk. Du treng ikkje å føre inn filtillegget (jpg, gif, pdf, doc, osb.)<br><br>. Lat feltet stå tomt for å behalde det opprinnelege namnet på fila."
-
-#~ msgid "The most common repository facts are listed separately, so that they can be added more easily."
-#~ msgstr "Dei vanlegaste fakta er lista separat, slik at dei enklare kan nyttast."
-
-#~ msgid "The most common source facts are listed separately, so that they can be added more easily."
-#~ msgstr "Dei vanlegaste kjeldefakta er lista separat, slik at dei enklare kan nyttast."
-
-#~ msgid "The new files are currently located in the folder %s."
-#~ msgstr "Dei nye filene er no plasserte i mappa %s."
-
-#~ msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
-#~ msgstr "Førekomst av det valde namnet vil synast på kartet. Let du feltet stå tomt, vil det mest nytta etternamnet verte nytta."
-
-#, php-format
-#~ msgid "The parameter “%s” is missing."
-#~ msgstr "Parameteren “%s” manglar."
-
-#~ msgid "The passwords do not match."
-#~ msgstr "Passorda stemmer ikkje overeins."
-
-#~ msgid "The preferences for the chart “%s” have been updated."
-#~ msgstr "Førehandsvalet for diagrammet “%s 1” har blitt oppdatert."
-
-#~ msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-#~ msgstr "Det er valfritt å nytte prefiks, men vert tilrådd. Ved å gje tabellen eit unikt prefiks, kan fleire applikasjonar dele same database. «wt_» er føreslått, men du står fritt til å velje."
-
-#~ msgid "The problem"
-#~ msgstr "Problemet"
-
-#~ msgid "The record %1$s has been renamed to %2$s."
-#~ msgstr "Posten %1$s blei endra til %2$s."
-
-#~ msgid "The record has been copied to the clipboard."
-#~ msgstr "Data er kopiert til utklippstavla."
-
-#~ msgid "The regular expression appears to contain an error. It can’t be used."
-#~ msgstr "Din regulære uttrykk ser ut til å innehalde feil og kan ikkje brukast."
-
-#~ msgid "The specified folder does not contain an installation of PhpGedView."
-#~ msgstr "Den gitte mappa inneheld ingen installasjon av PhpGedView."
-
-#~ msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-#~ msgstr "Temamenyen synast berre dersom brukarar sjølv kan endre tema."
-
-#~ msgid "The thumbnail file %1$s could not be renamed to %2$s."
-#~ msgstr "Fila for miniatyrbiletet %1$s kunne ikkje gjevast det nye namnet %2$s."
-
-#~ msgid "The thumbnail file %1$s has been renamed to %2$s."
-#~ msgstr "Fila for miniatyrbiletet %1$s har skifta namn til %2$s."
-
-#~ msgid "The thumbnail file %s does not exist."
-#~ msgstr "Fila for miniatyrbiletet %s eksisterar ikkje."
-
-#~ msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
-#~ msgstr "Tid i sekund som ei webtrees økt er aktiv før det vert krevd ny innlogging. Standard er 7200, som er 2 timar."
-
-#~ msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
-#~ msgstr "Her kan du angi kva som skal stå i meta-feltet «Description» som undertittel på nettsida. Om tekstfeltet står tomt, vil tittelen til den aktive slektsbasen berte nytta."
-
-#~ msgid "The version of %s is too new."
-#~ msgstr "Versjonen av %s er for ny."
-
-#~ msgid "The version of %s is too old."
-#~ msgstr "Versjonen av %s er for gamal."
-
-#~ msgid "The website access rule has been created."
-#~ msgstr "Regelen for tilgjenge er oppretta."
-
-#~ msgid "The website access rule has been deleted."
-#~ msgstr "Regelen for tilgjenge er sletta."
-
-#~ msgid "The website access rule has been updated."
-#~ msgstr "Regelen for tilgjenge er oppdatert."
-
-#~ msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
-#~ msgstr "Nettstaden www.geonames.org har ein stor database over stadnamn, som kan søkast gjennom når ein skriv inn nye stadar. For å nytte denne tenesten treng du ein gratis konto på www.geonames.org, og oppgje brukarnamnet ditt her."
-
-#~ msgid "The “%” character is a wildcard, and will match zero or more other characters."
-#~ msgstr "«%» er eit jokerteikn, og vil matche null og fleire andre teikn."
-
-#~ msgid "Theme menu"
-#~ msgstr "Meny for val av tema"
-
-#~ msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
-#~ msgstr "Tema kan bestemmast på tre nivå: brukar, slektstre, og nettstad. Innstilling for brukar tek prioritet over innstilling for slektstre, som igjen tek prioritet over innstilling for nettstad. Ved val av “standard tema” på eit nivå, vil temaet nyttast på neste nivå."
-
-#, php-format
-#~ msgid "There is no account with the username or email “%s”."
-#~ msgstr "Det finnast ingen konto med brukarnamn eller e-postadresse “%s”."
-
-#, php-format
-#~ msgid "There is no user account with the email “%s”."
-#~ msgstr "Det finnast ikkje nokon brukarkonto med e-postadresse “%s”."
-
-#~ msgid "These pages provide access to all the preferences and management tools for this webtrees site."
-#~ msgstr "På desse sidene finn du all administrasjon og innstillingar for denne webtrees nettstaden."
-
-#~ msgid "This GEDCOM file is encoded using %1$s. Assume this to mean %2$s."
-#~ msgstr "Denne GEDCOM-fila er koda med %1$s. Antek at det var tenkt å nytte %2$s."
-
-#, php-format
-#~ msgid "This could be caused by an error at %s"
-#~ msgstr "Dette kan skyldast ein feil i %s"
-
-#~ msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
-#~ msgstr "Denne databasen og dette tabellprefiks er frå før nytta av ein annan applikasjon. Om du har eit eksisterande PhpGedView-system, bør du opprette eit nytt webtrees-system. Du kan importere dine PhpGedView-data og innstillingar seinare."
-
-#~ msgid "This database is only running MySQL version %s. You cannot install webtrees here."
-#~ msgstr "Databasen nyttar kun MySQL versjon %s. Du kan ikke installere webtrees her."
-
-#~ msgid "This entry is ignored if you have entered a URL into the filename field."
-#~ msgstr "Denne inntastinga vert ignorert dersom du har angjeve ein URL i feltet for filnamn."
-
-#~ msgid "This family remained childless"
-#~ msgstr "Det er ikkje registrert nokon born på denne familien"
-
-#~ msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
-#~ msgstr "Denne fila er kopla til ein annan slektsbase på denne nettstaden. Fila kan difor ikkje slettast, flyttast eller gjevast nytt namn før desse koplingane er fjerna."
-
-#~ msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-#~ msgstr "Her kan du endre kalenderåret. Skriv inn eit år i feltet og trykk <b>Enter</b> på tastaturet for å syne ønska kalenderår.<br><br><b>Avanserte funksjonar</b> for <b>Syn år</b><dl><dt><b>Meir enn eitt år</b></dt><dd>Søkje på datoar innanfor ein periode på fleire år.<br><br>Tidbolkar er <u>inklusive</u>: Det vil seie, dei strekkjer seg fra 1. januar i det fyrste året i perioden til 31. desember i det siste året. Her er nokre døme på bolkar<br><br><b>1992-5</b> for alle hendingar frå 1992 til 1995.<br><b>1972-89</b> for alle hendingar frå 1972 til 1989.<br><b>1610-759</b> for alle hendingar frå 1610 til 1759.<br><b>1880-1905</b> for alle hendingar frå 1880 til 1905.<br><b>880-1105</b> for alle hendingar frå 880 to 1105.<br><br>For å sjå alle hendingar i eit bestemt tiår eller århundre, kan du erstatte det siste sifferet i årstalet med <b>?</b>. Tiø dømes <b>197?</b> for alle hendingar frå 1970 til 1979 eller <b>16??</b> for alle hendingar på 1600-talet.<br><br>Om ein vel ein tidbolk over år, skifter kalenderen til årssyning.</dd></dl>"
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-#~ msgstr "Dette er ei kommaseparert liste med GEDCOM-fakta som vert synt på skjermbiletet der du legg til eller endrar namn. Om du nyttar ikkjelatinsk alfabet slik som hebraisk, gresk, kyrillisk eller arabisk, vi du kanskje leggje til fakta slik som _HEB, ROMN, FONE, osb. for å tillate lagring av namn i ulike alfabet."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-#~ msgstr "Dette er ei kommaseparert liste med GEDCOM-kodar for dei fakta som skal synast når ei ny familie vert lagt til. Til dømes, om MARR er med på lista, vil felt for bryllaupsdag og -stad verte synt på skjemaet."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-#~ msgstr "Dette er ei kommaseparert liste med GEDCOM-kodar for dei fakta som skal synast når ein ny person vert lagt til. Til dømes, om BIRT er med på lista, vil felt for fødselsdato og fødestad verte synt på skjemaet."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-#~ msgstr "Dette er ei kommaseparert liste med GEDCOM-fakta som vert synt på skjermbiletet der du legg til eller endrar stadnamn. Om du nyttar ikkjelatinsk alfabet slik som hebraisk, gresk, kyrillisk eller arabisk, vi du kanskje leggje til fakta slik som _HEB, ROMN, FONE, osb. for å tillate lagring av namn i ulike alfabet."
-
-#~ msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
-#~ msgstr "Dette er samandrag av ein persons <abbr title=\"Jesu Kristi Kirke av Siste Dagers Hellige\">LDS</abbr> ordinasjonar. “B” indikerer ein LDS dåp. “E” indikerer ein LDS endowment. “S” indikerer ein LDS partnarbesegling. “P” indikerer ein LDS barn-til-forelder besegling."
-
-#~ msgid "This is case sensitive."
-#~ msgstr "Versalkjensleg (skil mellom store og små bokstavar)."
-
-#~ msgid "This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails."
-#~ msgstr "Versalkjensleg. Om ein database med dette namn frå før ikkje eksisterar, vil webtrees freiste å opprette ein for deg. Dette er avhengig av rettar satt for din webserver, men du vil bli varsla om oppretting av database ikkje lykkast."
-
-#~ msgid "This is the initial value for the “show details” option on the charts."
-#~ msgstr "Dette er førehandsettinga for valet «syn detaljar» i diagram."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-#~ msgstr "Dette er lista over GEDCOM-fakta som brukarar kan leggje til familier. Du kan endre denne lista ved å ta bort eller leggje til faktakodar, òg eigendefinerte om naudsynt. Faktanamn som er på denne lista kan ikkje samstundes vere på lista <i>Unike familiefakta</i>."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-#~ msgstr "Dette er dei GEDCOM-fakta som brukarar kan knyte til personar. Du kan endre denne lista ved å ta bort eller leggje til faktanamn, òg eigendefinerte om naudsynt. Faktanamn i denne lista kan ikkje samstundes vere i lista over <i>Unike personfakta</i>."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-#~ msgstr "Dette er lista med GEDCOM-fakta som brukarar kan leggje til i arkiv. Du kan endre denne lista ved å ta bort eller leggje til faktanamn, òg eigendefinerte om naudsynt. Faktanamn på denne lista kan ikkje samstundes vere på <i>Unike fakta for arkiv</i> lista."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-#~ msgstr "Dette er lista over GEDCOM-fakta som brukarar kan leggje til kjelder. Du kan endre denne listen ved å ta bort eller leggje til faktanavn, òg eigendefinerte om naudsynt. Faktanavn som er på denne lista kan ikkje samstundes vere på <i>Unike kjeldefakta</i>-listen."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-#~ msgstr "Dette er lista over GEDCOM fakta som brukarar kan leggje til <u>ein gong</u> for ein familie. Til dømes, om MARR er på denne lista, vil brukaren ikkje kunne leggje til meir enn ein MARR-post til ei familie. Faktanamn som er på denne lista kan ikkje samstundes vere på <i>Legg til familiefakta</i>-lista."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-#~ msgstr "Dette er lista ver GEDCOM fakta som brukarar kan leggje til <u>ein gong</u> for ein person. Til dømes, om BIRT er på denne lista, vil brukarane ikkje kunne leggje til meir enn ein BIRT-post til ein person. Faktanamn som er på denne lista kan ikkje vere på lista <i>Personfakta</i>."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-#~ msgstr "Dette er lista over GEDCOM-fakta som brukarar kan leggje til i arkiv. Du kan endre denne lista ved å ta bort eller leggje til faktanamn, òg eigendefinerte om naudsynt. Faktanamn som er på denne lista kan ikkje samstundes vere på <i>Fakta å legge til for arkiv</i>-listen."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-#~ msgstr "Dette er lista over GEDCOM fakta som brukarar kan leggje til <u>ein gong</u> for ei kjelde. Til dømes, om TITL er på denne lista, vil brukarane ikkje kunne leggje til meir enn ein TITL-fakta til ei kjelde. Faktanavn på denne lista kan ikkje samstundes vere på <i>Kjeldefakta</i>-listen."
-
-#~ msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
-#~ msgstr "Dette er kor mange gonger eit etternamn må finnast før det vert synt på lista «Mest nytta etternamn på «hovudsida»."
-
-#~ msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails. The default value is 100."
-#~ msgstr "Dette er breidden (i pixlar) som programmet vil nytte ved automatisk generering av miniatyrbileter.<br>Standardverdi er 100."
-
-#~ msgid "This may be a mistake in your data."
-#~ msgstr "Dette kan vere ein feil i dine data."
-
-#~ msgid "This may cause a problem for other applications."
-#~ msgstr "Dette kan føre til problem for andre applikasjonar."
-
-#~ msgid "This may cause a problem for webtrees."
-#~ msgstr "Dette kan føre til problem for webtrees."
-
-#~ msgid "This media file does not exist."
-#~ msgstr "Denne mediefila fins ikkje."
-
-#~ msgid "This media file exists, but cannot be accessed."
-#~ msgstr "Denne mediefila fins, men er ikkje tilgjengeleg."
-
-#~ msgid "This media file is broken and cannot be watermarked."
-#~ msgstr "Denne mediafila er skadd og kan ikkje vassmerkast."
-
-#~ msgid "This media object is not linked to any other record."
-#~ msgstr "Dette medieobjektet er ikkje knytt til nokon annan post."
-
-#~ msgid "This message will be sent to %s"
-#~ msgstr "Meldinga vert sendt til %s"
-
-#~ msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record. These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-#~ msgstr "Dette valet avgjer om notat- og kjeldereferansar som er knytte til fakta skal synast på fanene for notatar og kjelder på personsider.<br><br>Normalt syner notatar- og kjeldefanene berre notat- og kjelderreferansar som er knytte direkte til personen sin post. Desse kallast <i>nivå 1</i> noter- og kildereferanser.<br><br>Valet <b>Ja</b> vil resultere i at desse fanene òg vil syne notat- og kjeldereferansar tilhøyrande ulike fakta i personposten. Desse er <i>nivå 2</i>-notat og kjelde referansar avdi dei ulike faktapostane er nivå 1."
-
-#~ msgid "This option controls whether or not to automatically expand the <i>Events of close relatives</i> list."
-#~ msgstr "Dette valet fastset om du ønskjer å automatisk utvide <i>Hendingar til nære slektningar</i>."
-
-#~ msgid "This option controls whether or not to show the individual’s sex icon on charts.<br><br>Since the sex is also indicated by the color of the box, this option doesn’t conceal the sex. The option simply removes some duplicate information from the box."
-#~ msgstr "Dette valet fastset om ein person sitt kjønn skal synast med ikon på diagram eller ikkje.<br><br>Sidan kjønn òg er indikert med farge på boksene, vil ikke dette valet altså ikkje skjule ein person sitt kjønn. Valet vil kun ta bort duplisert informasjon frå boksene."
-
-#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
-#~ msgstr "Dette valet fastset om sletstreet skal synast liggjande eller ståaende."
-
-#~ msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
-#~ msgstr "Bestemmer om lengde- og breddegrad skal synast i pop-up-vindauget som er knytta til kartmarkørar."
-
-#~ msgid "This place has no coordinates"
-#~ msgstr "Denne staden har ingen koordinatar"
-
-#~ msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
-#~ msgstr "Arkivet har blitt sletta. Slettinga må godkjennast av ein moderator."
-
-#, php-format
-#~ msgid "This repository has been deleted. You should review the deletion and then %1$s or %2$s it."
-#~ msgstr "Arkivet har blitt sletta. Sjå over slettinga og %1$s eller %2$s den."
-
-#~ msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-#~ msgstr "Arkivet har blitt endra. Endringane må godkjennast av ein moderator."
-
-#, php-format
-#~ msgid "This repository has been edited. You should review the changes and then %1$s or %2$s them."
-#~ msgstr "Arkivet har blitt endra. Sjå over endringane og %1$s eller %2$s dei."
-
-#~ msgid "This server does not support secure downloads using HTTPS."
-#~ msgstr "Denne serveren støttar ikkje sikker nedlasting via HTTPS."
-
-#~ msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-#~ msgstr "Dette skal vere ei liste med faktatypar, skilt med komma eller mellomrom, som du vil skal synast i tillegg til fødsel- og dødsår i diagramboksar. Lista må innehalde faktatypar som definert i GEDCOM 5.5.1-standarden. Til dømes om du vil at yrket skal stå i boksa, legg du til «OCCU» i dette feltet."
-
-#~ msgid "This site does not use any third-party tracking or analytics services."
-#~ msgstr "Denne nettstaden nyttar ingen tredjeparts sporing- eller analyseservice."
-
-#~ msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-#~ msgstr "Denne nettstaden nyttar cookies for å lagre dine innstillingar, som til dømes val av språk."
-
-#~ msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
-#~ msgstr "Kjelda er blitt sletta. Slettinga må godkjennast av ein moderator."
-
-#, php-format
-#~ msgid "This source has been deleted. You should review the deletion and then %1$s or %2$s it."
-#~ msgstr "Kjelda er blitt sletta. Sjå over slettinga og %1$s eller %2$s den."
-
-#~ msgid "This source has been edited. The changes need to be reviewed by a moderator."
-#~ msgstr "Kjelda er blitt endra. Endringane må godkjennast av ein moderator."
-
-#, php-format
-#~ msgid "This source has been edited. You should review the changes and then %1$s or %2$s them."
-#~ msgstr "Kjelda er blitt endra. Sjå over endringane og %1$s eller %2$s dei."
-
-#~ msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
-#~ msgstr "Dette angir kor nøyaktig dei ulike nivåa skal vere når en registerar nye stadar. For eksempel vil eit land bli angitt med nøyaktigheit 0 (dvs. 0 siffer etter desimalteiknet), medan ein by treng 3 eller 4 siffer."
-
-#~ msgid "This type of link is not allowed here."
-#~ msgstr "Denne type lenke er ikkje tillatt her."
-
-#~ msgid "This website is being upgraded. Try again in a few minutes."
-#~ msgstr "Denne nettstaden er under oppgradering. Prøv att om få minutt."
-
-#~ msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-#~ msgstr "Dette vil oppdatere ein del eller delar av stadnamnet på det høgaste nivået. Til dømes, «Mexico» vil matche «Quintana Roo, Mexico», men ikkje «Santa Fe, New Mexico»."
-
-#~ msgid "Thumbnail files must contain images."
-#~ msgstr "Miniatyrar må vere bileter."
-
-#~ msgid "Thumbnail to upload"
-#~ msgstr "Miniatyrbilete som skal lastast opp"
-
-#~ msgid "Title in Hebrew"
-#~ msgstr "Tittel (hebraisk)"
-
-#~ msgid "To"
-#~ msgstr "Til"
-
-#~ msgid "To complete the upgrade, you should install the files manually."
-#~ msgstr "For å fullføre oppgraderinga, må du installere filene manuelt."
-
-#~ msgid "To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server. If it contains a message, it will be displayed to visitors."
-#~ msgstr "For å hindre besøkande å få tilgang til nettstaden under kopiering av filer, kan du opprette ei mellombels fil %s på serveren. Om fila inneheld ei melding, vil den synast til besøkande."
-
-#~ msgid "To reduce the height of the News block, the administrator has hidden some articles. You can reveal these hidden articles by clicking the <b>View the archive</b> link."
-#~ msgstr "For å redusere høgda på blokka for Nyhende, har administratoren skjult nokon artiklar. Du kan syne desse ved å klikke på <b>Syn Arkiv</b>."
-
-#~ msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
-#~ msgstr "For å redusere storleiken på nedlastinga, kan du komprimere data til ei .ZIP-fil. Du må då pakke ut .ZIP-fila før den kan nyttast."
-
-#~ msgid "To tell search engines that sitemaps are available, you can use the following links."
-#~ msgstr "Følgjande lenker kan nyttast for å meddele søkjemotorane at nettstadkartet er tilgjengeleg."
-
-#~ msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
-#~ msgstr "For at søkjemotorane skal vite at nettstadkartet er tilgjengeleg, må følgjande linje føyast til i fila robots.txt."
-
-#~ msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
-#~ msgstr "For å nytte ein Google Mail-konto, bruk følgjande innstillingar: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[ditt gmail passord]"
-
-#~ msgid "Top level"
-#~ msgstr "Toppnivå"
-
-#, php-format
-#~ msgid "Total families: %s"
-#~ msgstr "Tal på familier: %s"
-
-#, php-format
-#~ msgid "Total individuals: %s"
-#~ msgstr "Tal på personer: %s"
-
-#~ msgid "Total number of users"
-#~ msgstr "Tal på brukarar"
-
-#~ msgid "Total places: %s"
-#~ msgstr "Tal på stadar: %s"
-
-#~ msgid "Total sources: %s"
-#~ msgstr "Tal på kjelder: %s"
-
-#~ msgid "Tracking and analytics are not added to the control panel."
-#~ msgstr "Sporing og analyse er ikkje lagt til kontrollpanelet."
-
-#~ msgid "Transylvania"
-#~ msgstr "Transilvania"
-
-#~ msgid "Type of place markers in the place hierarchy"
-#~ msgstr "Type stadmarkør i stadhierarkiet"
-
-#~ msgid "Type the password again."
-#~ msgstr "Skriv passordet ein gong til."
-
-#~ msgid "Type your password again, to make sure you have typed it correctly."
-#~ msgstr "Skriv passordet på ny for å sikre deg at du har stava det korrekt."
-
-#~ msgid "Types of error"
-#~ msgstr "Typar feil"
-
-#~ msgid "USA"
-#~ msgstr "USA"
-
-#~ msgid "USSR"
-#~ msgstr "Sovjetunionen"
-
-#~ msgid "UTC"
-#~ msgstr "UTC"
-
-#~ msgid "Unable to connect using this username and password. Your server gave the following error."
-#~ msgstr "Kunne ikkje kople til med gjevne innstillingar. Serveren returnerte følgjande feil."
-
-#~ msgid "Unable to find record with ID"
-#~ msgstr "Kan ikkje finne posten med ID"
-
-#~ msgid "Unique family facts"
-#~ msgstr "Unike familiefakta"
-
-#~ msgid "Unique individual facts"
-#~ msgstr "Unike personfakta"
-
-#~ msgid "Unique repository facts"
-#~ msgstr "Unike arkivfakta"
-
-#~ msgid "Unique source facts"
-#~ msgstr "Unike kjeldefakta"
-
-#~ msgid "Unlink the media object"
-#~ msgstr "Fjern lenke til media"
-
-#~ msgid "Up"
-#~ msgstr "Opp"
-
-#~ msgid "Update all the place names in a family tree"
-#~ msgstr "Oppdater alle stadnamn i eit slektstre"
-
-#~ msgid "Upgrade anyway"
-#~ msgstr "Oppgrader likevel"
-
-#~ msgid "Upload"
-#~ msgstr "Last opp"
-
-#~ msgid "Upload geographic data"
-#~ msgstr "Last opp geografiske data"
-
-#~ msgid "Use Google™ maps for the place hierarchy"
-#~ msgstr "Nytte Google™ maps for stadhierarkiet"
-
-#~ msgid "Use PHP mail to send messages"
-#~ msgstr "Bruk PHP mail til å sende meldingar"
-
-#~ msgid "Use RIN number instead of GEDCOM ID"
-#~ msgstr "Bruk RIN istadenfor GEDCOM-ID"
-
-#~ msgid "Use full source citations"
-#~ msgstr "Bruk full kjeldetilvising"
-
-#~ msgid "Use the GeoNames database for autocomplete on places"
-#~ msgstr "Bruk GeoNames-databasen til «autocomplete» for stadnamn"
-
-#~ msgid "Use this image for charts and on the individual’s page."
-#~ msgstr "Bruk dette biletet i diagram og på personsider."
-
-#~ msgid "Use this value"
-#~ msgstr "Bruk denne verdien"
-
-#~ msgid "User preferences"
-#~ msgstr "Brukarinnstillingar"
-
-#~ msgid "User-agent string"
-#~ msgstr "Brukaragent-streng"
-
-#~ msgid "Users who are signed in"
-#~ msgstr "Brukarar innlogga"
-
-#~ msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
-#~ msgstr "Her kan du velge eit land der flagget skal nyttast. Dersom ingen flagg synest, er det ikkje definert noko flagg for dette landet."
-
-#~ msgid "Verification code"
-#~ msgstr "Kontrollkode"
-
-#~ msgid "View"
-#~ msgstr "Syn"
-
-#~ msgid "View all records found in this place"
-#~ msgstr "Syn alle postar knytte til denne staden"
-
-#~ msgid "View the archive"
-#~ msgstr "Syn arkiv"
-
-#~ msgid "View the details"
-#~ msgstr "Sjå detaljar"
-
-#~ msgid "View the notes"
-#~ msgstr "Sjå notatar"
-
-#~ msgid "View the statistics as graphs"
-#~ msgstr "Syn statistikk i grafisk format"
-
-#~ msgid "View this individual"
-#~ msgstr "Syn person"
-
-#~ msgid "View this source"
-#~ msgstr "Syn denne kjelde"
-
-#~ msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
-#~ msgstr "Vassmerker kan vere tidkrevjande å generere for store filer. For nettstadar med stor trafikk, kan det vere ønskeleg å generere desse ein gong, og lagre vassmerka bilete på serveren."
-
-#~ msgid "Website URL"
-#~ msgstr "URL til nettstaden"
-
-#~ msgid "Website access rules"
-#~ msgstr "Reglar for tilgjenge"
-
-#~ msgid "Website and META tag settings"
-#~ msgstr "Nettside og META settingar"
-
-#~ msgid "West Africa"
-#~ msgstr "Vest-Afrika"
-
-#~ msgid "When adding a link, the ID field cannot be empty."
-#~ msgstr "ID-feltet kan ikkje stå tomt når det vert lagt til lenke."
-
-#~ msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-#~ msgstr "Når det leggast til nye nære slektningar, kan kjeldetilvisingar leggast til postar (personar og familier) eller til fakta og hendingar (fødsel, vigsle og død). Dette alternativet avgjer om postar eller fakta er førehandsvalt."
-
-#~ msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
-#~ msgstr "Når nye postar vert oppretta, vert dei gjevne eit internt ID-nummer. Du kan angi prefiks for dei ulike typar av postar."
-
-#~ msgid "When you send this message you will receive a copy sent via email to the address you provided."
-#~ msgstr "Når du sender denne meldinga, vil du også motta ein kopi til e-postadressa du har oppgjeve."
-
-#~ msgid "Where is your PhpGedView installation?"
-#~ msgstr "Kvar er din PhpGedView installasjon?"
-
-#~ msgid "Whole words only"
-#~ msgstr "Berre heile ord"
-
-#~ msgid "Width"
-#~ msgstr "Breidde"
-
-#~ msgid "Width of generated thumbnails"
-#~ msgstr "Breidde på genererte miniatyrbileter"
-
-#~ msgid "Wife’s maiden surname becomes new given name"
-#~ msgstr "Hustru sitt jentenamn skal nyttast som mellomnamn"
-
-#~ msgid "Wife’s surname replaced by husband’s surname"
-#~ msgstr "Hustru sitt etternamn erstatta med ektemannen sitt etternamn"
-
-#~ msgid "Wildcards"
-#~ msgstr "Jokertegn"
-
-#~ msgid "XREF prefixes"
-#~ msgstr "ID innstillingar"
-
-#~ msgid "Year input box"
-#~ msgstr "Kalenderår"
-
-#~ msgid "You can choose the prefix that will be used whenever new XREFs are created."
-#~ msgstr "Du kan velge kva prefix som skal nyttast når nye XREF vert oppretta."
-
-#~ msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-#~ msgstr "Du kan gjere det enklare å søke etter gifte kvinner ved å leggje til etternamnet dei fekk då dei gifta seg. Men, ikkje alle tek ektemannen sitt etternamn, so ver varsam slik at feilaktig informasjon ikkje vert introdusert i databasen."
-
-#~ msgid "You can re-enable these modules after the upgrade."
-#~ msgstr "Du kan reaktivere desse modulane etter oppgraderinga."
-
-#~ msgid "You can re-enable these themes after the upgrade."
-#~ msgstr "Du kan reaktivere desse temaa etter oppgraderinga."
-
-#~ msgid "You can request a higher or lower limit, although the server may ignore this request."
-#~ msgstr "Du kan be om ei høgre eller lågare grense, sjølv om serveren kan ignorere denne førespurnaden."
-
-#~ msgid "You cannot create a rule which would prevent yourself from accessing the website."
-#~ msgstr "Du kan ikkje opprette ein regel som vil hindre deg i å få tilgang til nettstaden."
-
-#~ msgid "You entered the same IDs. You cannot merge the same records."
-#~ msgstr "Du oppgav to like ID-ar. Du kan ikkje flette ein post med seg sjølv."
-
-#~ msgid "You have not created any journal items."
-#~ msgstr "Du har ikkje oppretta noko notat enno."
-
-#~ msgid "You may enter a URL, beginning with “http://”."
-#~ msgstr "Du kan angje ein URL som starter med «http://»."
-
-#~ msgid "You must also enable “less secure applications” in your Google account."
-#~ msgstr "Du må også velge “less secure applications” i din Googlekonto."
-
-#~ msgid "You must change this before you can continue."
-#~ msgstr "Du må endre dette før du kan fortsette."
-
-#~ msgid "You must enter a name"
-#~ msgstr "Du må skrive inn eit namn"
-
-#~ msgid "You must enter a real name."
-#~ msgstr "Skriv inn ditt eigentlege namn."
-
-#~ msgid "You must enter a username."
-#~ msgstr "Du må oppgje eit brukarnamn."
-
-#~ msgid "You must provide a repository name."
-#~ msgstr "Du må gje arkivet eit namn."
-
-#~ msgid "You must provide a source title"
-#~ msgstr "Du må gje kjelda ein tittel"
-
-#~ msgid "You need to sign in again, using your PhpGedView username and password."
-#~ msgstr "Du må logge inn på ny, med brukarnamn og passord frå PhpGedView."
-
-#~ msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
-#~ msgstr "Ein URL for innlogging er berre naudsynt om du vil omdirigere brukarane til ein annan nettstad eller plassering når dei loggar inn. Dette er særs nyttig om du må byte frå http til https når brukarane loggar inn. Angi full URL til <i>login.php</i>. Til dømes https://www.dinserver.com/webtrees/login.php."
-
-#~ msgid "You sent the following message to a webtrees administrator:"
-#~ msgstr "Du sendte følgjande melding til administrator av webtrees:"
-
-#~ msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-#~ msgstr "Du bør konsultere utgjevaren av denne modulen for å stadfeste at den er kompatibel med denne versjonen av webtrees."
-
-#~ msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-#~ msgstr "Du bør konsultere utgjevaren av dette temaet for å stadfeste at det er kompatibelt med denne versjonen av webtrees."
-
-#~ msgid "Your server’s administrator will provide you with the connection details."
-#~ msgstr "Din serveradministrator kan gje deg detaljane for tilknytning."
-
-#~ msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-#~ msgstr "Din brukarkonto har ikkje «Godkjenn endringar automatisk» aktivert. Du vil derfor berre kunne endre ein post om gongen."
-
-#~ msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
-#~ msgstr "Din webserver nyttar PHP versjon %s, som ikkje lenger vert halden ved like. Du bør oppgradere til nyare versjon."
-
-#~ msgid "Yugoslavia"
-#~ msgstr "Jugoslavia"
-
-#~ msgid "ZIP (includes media files)"
-#~ msgstr "ZIP (inkluderer mediefiler)"
-
-#~ msgid "Zaire"
-#~ msgstr "Zaire"
-
-#~ msgid "Zip file(s)"
-#~ msgstr "Zip-fil(er)"
-
-#~ msgid "Zoom in here"
-#~ msgstr "Zoom inn her"
-
-#~ msgid "Zoom in/out on this box."
-#~ msgstr "Zoom denne boksa inn/ut."
-
-#~ msgid "Zoom level"
-#~ msgstr "Zoomfaktor"
-
-#~ msgid "Zoom level of map"
-#~ msgstr "Zoomfaktor på kart"
-
-#~ msgid "Zoom out here"
-#~ msgstr "Zoom ut her"
-
-#~ msgid "Zoom="
-#~ msgstr "Zoom="
-
-#~ msgid "a URL"
-#~ msgstr "ein URL"
-
-#~ msgid "a file on the server"
-#~ msgstr "ei fil på serveren"
-
-#~ msgid "a file on your computer"
-#~ msgstr "ei fil på din datamaskin"
-
-#~ msgid "a.m."
-#~ msgstr "a.m."
-
-#~ msgctxt "FEMALE"
-#~ msgid "adopted name"
-#~ msgstr "namn som adoptert"
-
-#~ msgctxt "MALE"
-#~ msgid "adopted name"
-#~ msgstr "namn som adoptert"
-
-#~ msgid "adoption"
-#~ msgstr "adopsjon"
-
-#~ msgid "allow"
-#~ msgstr "tillat"
-
-#~ msgctxt "FEMALE"
-#~ msgid "also known as"
-#~ msgstr "også kjend som"
-
-#~ msgctxt "MALE"
-#~ msgid "also known as"
-#~ msgstr "også kjend som"
-
-#~ msgid "always"
-#~ msgstr "alltid"
-
-#~ msgid "birth"
-#~ msgstr "fødsel"
-
-#~ msgctxt "FEMALE"
-#~ msgid "birth name"
-#~ msgstr "fødenamn"
-
-#~ msgctxt "MALE"
-#~ msgid "birth name"
-#~ msgstr "fødenamn"
-
-#~ msgid "burial"
-#~ msgstr "gravlegging"
-
-#~ msgid "by"
-#~ msgstr "av"
-
-#~ msgid "census added"
-#~ msgstr "folketeljing lagt til"
-
-#~ msgid "century"
-#~ msgstr "hundreår"
-
-#~ msgctxt "FEMALE"
-#~ msgid "change of name"
-#~ msgstr "namneskifte"
-
-#~ msgctxt "MALE"
-#~ msgid "change of name"
-#~ msgstr "namneskifte"
-
-#~ msgid "children"
-#~ msgstr "born"
-
-#~ msgid "creating thumbnails of images"
-#~ msgstr "lagar miniatyrar av bilete"
-
-#~ msgid "death"
-#~ msgstr "død"
-
-#~ msgid "deny"
-#~ msgstr "nekt"
-
-#~ msgid "east"
-#~ msgstr "aust"
-
-#~ msgctxt "FEMALE"
-#~ msgid "estate name"
-#~ msgstr "gardsnamn"
-
-#~ msgctxt "MALE"
-#~ msgid "estate name"
-#~ msgstr "gardsnamn"
-
-#~ msgid "ex-partner"
-#~ msgstr "eks-partnar"
-
-#~ msgctxt "FEMALE"
-#~ msgid "ex-partner"
-#~ msgstr "eks-partnar"
-
-#~ msgctxt "MALE"
-#~ msgid "ex-partner"
-#~ msgstr "eks-partnar"
-
-#~ msgid "file upload capability"
-#~ msgstr "evne til opplasting av filer"
-
-#~ msgid "half-year after marriage"
-#~ msgstr "halvår etter vigsel"
-
-#~ msgid "hh:mm or hh:mm:ss"
-#~ msgstr "tt:mm eller tt:mm:ss"
-
-#~ msgctxt "FEMALE"
-#~ msgid "immigration name"
-#~ msgstr "namn ved immigrasjon"
-
-#~ msgctxt "MALE"
-#~ msgid "immigration name"
-#~ msgstr "namn ved immigrasjon"
-
-#~ msgid "import"
-#~ msgstr "importer"
-
-#~ msgid "interval %s year"
-#~ msgid_plural "interval %s years"
-#~ msgstr[0] "eitt års intervall"
-#~ msgstr[1] "%s års intervall"
-
-#~ msgid "interval one child"
-#~ msgstr "intervall med eitt barn"
-
-#~ msgid "interval two children"
-#~ msgstr "intervall med to born"
-
-#~ msgid "less than"
-#~ msgstr "mindre enn"
-
-#~ msgid "link"
-#~ msgstr "lag lenke"
-
-#~ msgid "marriage"
-#~ msgstr "Vigsel"
-
-#~ msgctxt "FEMALE"
-#~ msgid "married name"
-#~ msgstr "namn som gift"
-
-#~ msgctxt "MALE"
-#~ msgid "married name"
-#~ msgstr "namn som gift"
-
-#~ msgid "maximum"
-#~ msgstr "maksimum"
-
-#~ msgid "midnight"
-#~ msgstr "midnatt"
-
-#~ msgid "minimum"
-#~ msgstr "minimum"
-
-#~ msgid "month"
-#~ msgstr "månad"
-
-#~ msgid "months after marriage"
-#~ msgstr "månader etter vigsel"
-
-#~ msgid "months before and after marriage"
-#~ msgstr "månader før og etter vigsel"
-
-#~ msgid "never"
-#~ msgstr "aldri"
-
-#~ msgid "noon"
-#~ msgstr "middag"
-
-#~ msgid "north"
-#~ msgstr "nord"
-
-#~ msgid "over"
-#~ msgstr "over"
-
-#~ msgid "overall"
-#~ msgstr "total"
-
-#~ msgid "p.m."
-#~ msgstr "p.m."
-
-#~ msgid "pixels"
-#~ msgstr "pixlar"
-
-#~ msgid "preview"
-#~ msgstr "Førehandsyning"
-
-#~ msgid "quarters after marriage"
-#~ msgstr "kvartal etter vigsel"
-
-#~ msgctxt "FEMALE"
-#~ msgid "religious name"
-#~ msgstr "religiøst namn"
-
-#~ msgctxt "MALE"
-#~ msgid "religious name"
-#~ msgstr "religiøst namn"
-
-#~ msgid "reporting"
-#~ msgstr "rapporterar"
-
-#~ msgid "robot"
-#~ msgstr "søkjerobot"
-
-#~ msgid "sort by filename"
-#~ msgstr "sorter etter filnamn"
-
-#~ msgid "sort by title"
-#~ msgstr "sorter etter tittel"
-
-#~ msgid "south"
-#~ msgstr "sør"
-
-#~ msgid "ssl"
-#~ msgstr "ssl"
-
-#~ msgid "this record does not exist"
-#~ msgstr "denne posten eksisterar ikkje"
-
-#~ msgid "tls"
-#~ msgstr "tls"
-
-#~ msgid "webtrees cannot connect to the PhpGedView database: %s."
-#~ msgstr "webtrees kan ikkje kople til PhpGedView sin databasen: %s."
-
-#~ msgid "webtrees needs a MySQL database, version %s or later."
-#~ msgstr "webtrees krev MySQL database versjon %s eller nyare."
-
-#~ msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-#~ msgstr "webtrees skal kunne sende e-post, som til dømes gløymde passord og meldingar. Du kan nytte servaren sin PHP-mail-teneste (ikkje alltid tilgjengeleg) eller ein ekstern SMTP (mail-relay) teneste, der du må oppgi detaljar for tilslutning."
-
-#~ msgid "webtrees reply address"
-#~ msgstr "webtrees svaradresse"
-
-#~ msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-#~ msgstr "webtrees nyttar UTF-8 koding for aksentteikn, spesielle bokstavar og ikkje-latinske alfabet. Om du ynskjer å bruke denne GEDCOM-fila i slektsprogram som ikkje støttar UTF-8, kan du opprette fila ved å bruke ISO-8859-1 koding."
-
-#~ msgid "webtrees wiki"
-#~ msgstr "webtrees wiki"
-
-#~ msgid "webtrees’ database must be on the same server as PhpGedView’s"
-#~ msgstr "webtrees sin database må vere på same server som PhpGedView-databasen"
-
-#~ msgid "west"
-#~ msgstr "vest"
-
-#~ msgid "years"
-#~ msgstr "år"
-
-#, php-format
-#~ msgid "“%s”"
-#~ msgstr "«%s»"
-
-#~ msgid "“%s” has been added to your favorites."
-#~ msgstr "“%s” er lagt til blant dine Favorittar."

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-15 18:05+0100\n"
+"POT-Creation-Date: 2026-07-16 21:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -378,18 +378,6 @@ msgctxt "MALE"
 msgid "%s × cousin"
 msgstr "%s x sepupu"
 
-#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ʙᴄᴇ"
-msgstr "%s SM"
-
-#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
-#: app/Date/JulianDate.php
-#, php-format
-msgid "%s ᴄᴇ"
-msgstr "%s M"
-
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php
 #, php-format
@@ -435,6 +423,18 @@ msgstr "%s, pasangan dan anak"
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, pasangan dan keturunan"
+
+#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ʙᴄᴇ"
+msgstr "%s SM"
+
+#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
+#: app/Date/JulianDate.php
+#, php-format
+msgid "%s ᴄᴇ"
+msgstr "%s M"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
@@ -1055,25 +1055,21 @@ msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
 msgstr "Abana"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Aban"
 msgstr "Abana"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
 msgstr "Abana"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Aban"
 msgstr "Abana"
 
-#. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Aban"
@@ -1116,73 +1112,61 @@ msgstr "Persetujuan akun dan pemeriksaan surel"
 msgid "Accra, Ghana"
 msgstr "Accra, Ghanas"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar"
 msgstr "Adars"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
 msgstr "Adars"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar"
 msgstr "Adars"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar"
 msgstr "Adars"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar I"
 msgstr "Adar 1"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
 msgstr "Adar 1"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar I"
 msgstr "Adar 1"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar I"
 msgstr "Adar 1"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Adar II"
 msgstr "Adar 2"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
 msgstr "Adar 2"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Adar II"
 msgstr "Adar 2"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Adar II"
@@ -2153,25 +2137,21 @@ msgstr "Secara otomatis memperluas catatan"
 msgid "Automatically expand sources"
 msgstr "Secara otomatis memperluas sumber"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Av"
 msgstr "Av"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Av"
@@ -2224,25 +2204,21 @@ msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
 msgstr "Azars"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Azar"
 msgstr "Azars"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
 msgstr "Azars"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Azar"
 msgstr "Azars"
 
-#. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Azar"
@@ -2268,25 +2244,21 @@ msgstr "Baha"
 msgid "Bahamas"
 msgstr "Bahamasa"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Bahman"
 msgstr "Bahmana"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
 msgstr "Bahmana"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Bahman"
 msgstr "Bahmana"
 
-#. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Bahman"
@@ -2751,25 +2723,21 @@ msgstr "Kepulauan Virgin Inggris"
 msgid "Brother"
 msgstr "Saudara"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Brumaire"
 msgstr "Brumaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
@@ -4699,73 +4667,61 @@ msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
 msgstr "Hari"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Dey"
 msgstr "Hari"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
 msgstr "Hari"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Dey"
 msgstr "Hari"
 
-#. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "Hari"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dzulqa’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dzulqa’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dzulqa’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Qiʿdah"
 msgstr "Dzulqa’dah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Dzulhijjah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Dhū al-Ḥijjah"
 msgstr "Dzulhijjah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Dhū al-Ḥijjah"
 msgstr "Dzulhijjah"
 
-#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Dhū al-Ḥijjah"
@@ -5048,25 +5004,21 @@ msgstr "Elsalpador"
 msgid "Electronic"
 msgstr "Elektronik"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Elul"
 msgstr "Eluls"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
 msgstr "Eluls"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Elul"
 msgstr "Eluls"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Elul"
@@ -5199,25 +5151,21 @@ msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
 msgstr "Esp"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Esfand"
 msgstr "Espan"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
 msgstr "Espan"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Esfand"
 msgstr "Espan"
 
-#. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Esfand"
@@ -5683,25 +5631,21 @@ msgstr "Jauh"
 msgid "Faroe Islands"
 msgstr "Kepulauan Faeroe"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Farvardin"
 msgstr "Parpardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
 msgstr "Parpardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Farvardin"
 msgstr "Parpardin"
 
-#. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
@@ -5926,25 +5870,21 @@ msgstr "Bendera"
 msgid "Flanders"
 msgstr "Flandera"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Floreal"
 msgstr "Floréal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Floreal"
@@ -6136,25 +6076,21 @@ msgctxt "MALE"
 msgid "Friend"
 msgstr "Teman"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Frimaire"
 msgstr "Frimaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
@@ -6172,25 +6108,21 @@ msgctxt "Start of date range"
 msgid "From"
 msgstr "Dari"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Fructidor"
 msgstr "Fructidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
@@ -6359,26 +6291,21 @@ msgstr "Jeorgia"
 msgid "Germany"
 msgstr "Jerman"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Germinal"
 msgstr "Germinal"
 
-#. I18N: a month in the French republican calendar
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Germinal"
@@ -6694,25 +6621,21 @@ msgstr "Peta HERE"
 msgid "Hermosillo, Mexico"
 msgstr "Hermosillo, Meksiko"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Heshvan"
 msgstr "Heshvana"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
 msgstr "Heshvana"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Heshvan"
 msgstr "Heshvana"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
@@ -7304,25 +7227,21 @@ msgstr "Tidak disarankan menggunakan penanda GEDCOM khusus. Data ini bisa hilang
 msgid "Italy"
 msgstr "Itali"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Iyar"
 msgstr "Yare"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
 msgstr "Yare"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Iyar"
 msgstr "Yare"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Iyar"
@@ -7433,49 +7352,41 @@ msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "Juli"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-awwal"
 msgstr "Jumadil Awal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-awwal"
 msgstr "Jumadil Awal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Jumadil Awal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-awwal"
 msgstr "Jumadil Awal"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Jumādá al-thānī"
 msgstr "Jumadil Tsani"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Jumādá al-thānī"
 msgstr "Jumadil Tsani"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Jumādá al-thānī"
 msgstr "Jumadil Tsani"
 
-#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Jumādá al-thānī"
@@ -7547,25 +7458,21 @@ msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
 msgstr "Kora"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Khordad"
 msgstr "Korad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
 msgstr "Korad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Khordad"
 msgstr "Korad"
 
-#. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Khordad"
@@ -7576,25 +7483,21 @@ msgstr "Korad"
 msgid "Kiribati"
 msgstr "Kiribatis"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Kislev"
 msgstr "Kislep"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
 msgstr "Kislep"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Kislev"
 msgstr "Kislep"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Kislev"
@@ -8620,25 +8523,21 @@ msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
 msgstr "Meher"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mehr"
 msgstr "Meher"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
 msgstr "Meher"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mehr"
 msgstr "Meher"
 
-#. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mehr"
@@ -8713,25 +8612,21 @@ msgstr "Pesan"
 msgid "Messages"
 msgstr "Pesan"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Messidor"
 msgstr "Messidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Messidor"
@@ -8908,25 +8803,21 @@ msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
 msgstr "Mur"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Mordad"
 msgstr "Murdad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
 msgstr "Murdad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Mordad"
 msgstr "Murdad"
 
-#. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Mordad"
@@ -9046,25 +8937,21 @@ msgstr "Kelahiran kembar"
 msgid "Multiple marriages"
 msgstr "Poligami"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Muḥarram"
 msgstr "Muharam"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Muḥarram"
 msgstr "Muharam"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Muḥarram"
 msgstr "Muharam"
 
-#. I18N: https://en.wikipedia.org/wiki/Muḥarram
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Muḥarram"
@@ -9293,25 +9180,21 @@ msgstr "Nigeria"
 msgid "Nigeria"
 msgstr "Nigerias"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Nissan"
 msgstr "Nisan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
 msgstr "Nisan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Nissan"
 msgstr "Nisan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Nissan"
@@ -9322,25 +9205,21 @@ msgstr "Nisan"
 msgid "Niue"
 msgstr "Niwe"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Nivose"
 msgstr "Nivôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Nivose"
@@ -9875,25 +9754,21 @@ msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
 msgstr "Ordi"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
 msgstr "Ordi"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
 msgstr "Ordi"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
 msgstr "Ordi"
 
-#. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
@@ -10411,25 +10286,21 @@ msgstr "Silahkan masukkan alamat surel yang benar."
 msgid "Please try again."
 msgstr "Silahkan coba lagi."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Pluviose"
 msgstr "Pluviôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
@@ -10490,25 +10361,21 @@ msgstr "Kode Pos"
 msgid "Powered by webtrees™"
 msgstr "Didukung oleh webtrees™"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Prairial"
 msgstr "Prairial"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Prairial"
@@ -10686,49 +10553,41 @@ msgstr "Balas: "
 msgid "Rabbi"
 msgstr "Robiul Awal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabiul Awal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabiul Awal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabiul Awal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-awwal"
 msgstr "Rabiul Awal"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Rabiul Akhir"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rabiʿ al-thani"
 msgstr "Rabiul Akhir"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rabiʿ al-thani"
 msgstr "Rabiul Akhir"
 
-#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rabiʿ al-thani"
@@ -10752,25 +10611,21 @@ msgctxt "Pedigree"
 msgid "Rada"
 msgstr "Sepersusuan"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "Rojab"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "Rojab"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "Rojab"
 
-#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Rajab"
@@ -10781,25 +10636,21 @@ msgstr "Rojab"
 msgid "Raleigh, North Carolina, United States"
 msgstr "Raleigh, Karolina Utara, Amerika"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "Romadhon"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "Romadhon"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "Romadhon"
 
-#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
@@ -11777,25 +11628,21 @@ msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
 msgstr "Sahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Shahrivar"
 msgstr "Sahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
 msgstr "Sahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
 msgstr "Sahrivar"
 
-#. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
@@ -11834,49 +11681,41 @@ msgstr "Catatan umum"
 msgid "Shares"
 msgstr "Berbagi"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "Syawal"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "Syawal"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "Syawal"
 
-#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Syawal"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Shaʿbān"
 msgstr "Sya’ban"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shaʿbān"
 msgstr "Sya’ban"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Shaʿbān"
 msgstr "Sya’ban"
 
-#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Shaʿbān"
@@ -11915,25 +11754,21 @@ msgstr "Dia dibaptis"
 msgid "She was cremated"
 msgstr "Dia dikremasi"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Shevat"
 msgstr "Sifat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
 msgstr "Sifat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Shevat"
 msgstr "Sifat"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Shevat"
@@ -12362,25 +12197,21 @@ msgstr "Peta situs"
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr "Peta Situs adalah cara bagi pengurus situs untuk memberi tahu mesin telusur tentang laman di situs yang tersedia untuk perayapan. Semua mesin pencari utama mendukung peta situs. Untuk informasi lebih lanjut, lihat <a href=\"https://www.sitemaps.org/\">sitemaps.org</a>."
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Sivan"
 msgstr "Sipan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
 msgstr "Sipan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Sivan"
 msgstr "Sipan"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Sivan"
@@ -12961,25 +12792,21 @@ msgstr "Tajikistania"
 msgid "Tampico, Mexico"
 msgstr "Tempe, Meksiko"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tamuz"
 msgstr "Tamud"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
 msgstr "Tamud"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tamuz"
 msgstr "Tamud"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
@@ -13019,25 +12846,21 @@ msgstr "Templat"
 msgid "Temple"
 msgstr "Kuil"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tevet"
 msgstr "Tepet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
 msgstr "Tepet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tevet"
 msgstr "Tepet"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tevet"
@@ -13673,25 +13496,21 @@ msgstr "Ada kendala mengecek versi baru."
 msgid "There was an error uploading your file."
 msgstr "Ada kesalahan pengunggahan berkas anda."
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Thermidor"
 msgstr "Thermidor"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
@@ -14188,49 +14007,41 @@ msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
 msgstr "Tear"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "GENITIVE"
 msgid "Tir"
 msgstr "Tear"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
 msgstr "Tear"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "LOCATIVE"
 msgid "Tir"
 msgstr "Tear"
 
-#. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php
 msgctxt "NOMINATIVE"
 msgid "Tir"
 msgstr "Tear"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "GENITIVE"
 msgid "Tishrei"
 msgstr "Tisre"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
 msgstr "Tisre"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "LOCATIVE"
 msgid "Tishrei"
 msgstr "Tisre"
 
-#. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
@@ -14928,25 +14739,21 @@ msgstr "Berbagai grafik statistik."
 msgid "Vatican City"
 msgstr "Kota Vatikan"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
 msgstr "Vendémiaire"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
@@ -14957,25 +14764,21 @@ msgstr "Vendémiaire"
 msgid "Venezuela"
 msgstr "Penejuela"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "Ventose"
 msgstr "Ventôse"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "Ventose"
@@ -18018,25 +17821,21 @@ msgstr "penafsiran %s (%s)"
 msgid "invert selection"
 msgstr "pilihan sebaliknya"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "GENITIVE"
 msgid "jours complementaires"
 msgstr "hari pelengkap"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
 msgstr "hari pelengkap"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
 msgstr "hari pelengkap"
 
-#. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
@@ -19480,25 +19279,21 @@ msgstr[0] "±%s tahun"
 msgid "Åland Islands"
 msgstr "Pulau Aland"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "GENITIVE"
 msgid "Ṣafar"
 msgstr "Sapar"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "INSTRUMENTAL"
 msgid "Ṣafar"
 msgstr "Sapar"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "LOCATIVE"
 msgid "Ṣafar"
 msgstr "Sapar"
 
-#. I18N: https://en.wikipedia.org/wiki/Ṣafar
 #: app/Date/HijriDate.php
 msgctxt "NOMINATIVE"
 msgid "Ṣafar"
@@ -19546,1689 +19341,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid " per sex"
-#~ msgstr " / lelaki-perempuan"
-
-#~ msgid " per time period"
-#~ msgstr " / tiap periodewaktu"
-
-#, php-format
-#~ msgid "#%s"
-#~ msgstr "#%s"
-
-#, php-format
-#~ msgid "%1$s %2$s has a %3$s link to %4$s."
-#~ msgstr "%1$s %2$s mempunyai %3$s tautan ke %4$s."
-
-#, php-format
-#~ msgid "%1$s does not exist."
-#~ msgstr "%1$s data tidak ada."
-
-#~ msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgstr[0] "%1$s individu yang ditampilkan, dari jumlah normal keseluruhan %2$s, dari %3$s generasi."
-
-#~ msgid "%1$s individual is missing birthplace map coordinates: %2$s."
-#~ msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-#~ msgstr[0] "%1$s individu tidak mempunyai catatan koordinat peta tempat kelahiran: %2$s."
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "%s hari yang lalu"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "%s jam yang lalu"
-
-#~ msgid "%s individual is private."
-#~ msgid_plural "%s individuals are private."
-#~ msgstr[0] "%s individu bersifat pribadi."
-
-#, php-format
-#~ msgid "%s individual with events between %s and %s"
-#~ msgid_plural "%s individuals with events between %s and %s"
-#~ msgstr[0] "%s orang dengan peristiwa antara %s dan %s"
-
-#, php-format
-#~ msgid "%s individual with events in %s"
-#~ msgid_plural "%s individuals with events in %s"
-#~ msgstr[0] "%s orang dengan peristiwa pada %s"
-
-#, php-format
-#~ msgid "%s individual with events in %s between %s and %s"
-#~ msgid_plural "%s individuals with events in %s between %s and %s"
-#~ msgstr[0] "%s orang dengan peristiwa pada %s antara %s dan %s"
-
-#~ msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "%s dinonaktifkan pada server ini. anda tidak dapat menginstal situs jika belum diaktifkan. harap hubungi pengurus situs atau server untuk mengaktifkannya."
-
-#, php-format
-#~ msgid "%s location has been imported."
-#~ msgid_plural "%s locations have been imported."
-#~ msgstr[0] "Lokasi %s telah diimpor."
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "%s menit yang lalu"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "%s bulan yang lalu"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "%s detik yang lalu"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "%s tahun yang lalu"
-
-#, php-format
-#~ msgid "(aged less than %s)"
-#~ msgstr "(umur kurang dari %s)"
-
-#, php-format
-#~ msgid "(aged more than %s)"
-#~ msgstr "(umur lebih dari %s)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(sewaktu kecil)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(semasa bayi)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(gugur)"
-
-#~ msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-#~ msgstr "<b> Catatan penting: </b> Pemandu transfer tidak dapat membantu dengan memindahkan item media. Anda harus mengatur dan memindahkan atau menyalin konfigurasi media dan objek secara terpisah setelah panduan transfer selesai."
-
-#~ msgid "<p>Notice: By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-#~ msgstr "<p>Pemberitahuan :</div> <div class=\"error\">Dengan mengisi dan mengirimkan formulir ini, berarti anda menyetujui: <ul><li>Untuk melindungi privasi orang yang masih hidup yang terdaftar di situs silsilah keluarga ini;</li><li> Dan dalam kolom Komentar di bawah ini, mohon jelaskan kepada siapa anda terkait hubungan keluarga, atau menjelaskan kepada pengurus tentang informasi seseorang yang seharusnya terdaftar di situs silsilah keluarga ini.</li></ul></div>"
-
-#, php-format
-#~ msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-#~ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s </span>"
-
-#~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-#~ msgstr "Server database dapat menyimpan banyak basis data terpisah. Anda harus memilih basis data yang ada (dibuat oleh administrator server Anda) atau membuat yang baru (jika akun pengguna basis data Anda memiliki hak yang cukup)."
-
-#, php-format
-#~ msgid "A new password has been created and emailed to %s. You can change this password after you sign in."
-#~ msgstr "Kata sandi baru telah dibuat dan dikirim ke email %s. anda dapat mengubah kata sandi ini setelah anda masuk."
-
-#~ msgid "A new password has been requested for your username."
-#~ msgstr "Kata sandi baru telah diminta untuk nama pengguna anda."
-
-#~ msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-#~ msgstr "Bilah sisi yang menampilkan daftar abjad semua keluarga dalam silsilah keluarga."
-
-#~ msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-#~ msgstr "Bilah sisi yang menampilkan daftar abjad semua individu dalam silsilah keluarga."
-
-#~ msgid "A.M."
-#~ msgstr "am"
-
-#~ msgid "Acadia"
-#~ msgstr "Akadia"
-
-#~ msgid "Action"
-#~ msgstr "Tindakan"
-
-#~ msgid "Add a brother or sister"
-#~ msgstr "Tambahkan saudara atau saudari"
-
-#~ msgid "Add a child to this family"
-#~ msgstr "Tambahkan anak ke keluarga ini"
-
-#~ msgid "Add a husband to this family"
-#~ msgstr "Tambahkan suami ke keluarga ini"
-
-#~ msgid "Add a restriction"
-#~ msgstr "Tambahkan batasan"
-
-#~ msgid "Add a scrollbar when block contents grow"
-#~ msgstr "Tambahkan scrollbar ketika isi blok penuh"
-
-#~ msgid "Add a shared note"
-#~ msgstr "Tambahkan catatan umum"
-
-#~ msgid "Add a son or daughter"
-#~ msgstr "Tambahkan putra atau putri"
-
-#~ msgid "Add a wife to this family"
-#~ msgstr "Tambahkan istri ke keluarga ini"
-
-#~ msgid "Add an associate"
-#~ msgstr "Tambahkan Asosiasi baru"
-
-#~ msgid "Add missing married names"
-#~ msgstr "Tambah nama pernikahan yang hilang"
-
-#~ msgid "Add the GEDCOM media path to filenames"
-#~ msgstr "Tambahkan jalur media GEDCOM ke nama file"
-
-#~ msgid "Add to favorites"
-#~ msgstr "Tambahkan ke Favorit"
-
-#~ msgid "Add/edit a journal/news entry"
-#~ msgstr "Tambah/Sunting masukan Jurnal/Berita"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Diadopsi oleh kedua orangtua"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by both parents"
-#~ msgstr "Diadopsi oleh kedua orangtua"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Diadopsi oleh Ayah"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by father"
-#~ msgstr "Diadopsi oleh Ayah"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "diadopsi ibu"
-
-#~ msgctxt "MALE"
-#~ msgid "Adopted by mother"
-#~ msgstr "diadopsi ibu"
-
-#~ msgid "Advanced fact preferences"
-#~ msgstr "Preferensi fakta lanjutan"
-
-#~ msgid "Advanced name facts"
-#~ msgstr "Fakta nama tingkat lanjut"
-
-#~ msgid "Advanced place name facts"
-#~ msgstr "Fakta nama tempat lebih lanjut"
-
-#~ msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
-#~ msgstr "Setelah anda masuk, pilih tautan \"Akun Saya\" di bawah menu \"Halaman Saya\" dan isi kolom kata sandi untuk mengubah kata sandi anda."
-
-#~ msgid "Age of item"
-#~ msgstr "Usia item"
-
-#~ msgid "Age related to birth year"
-#~ msgstr "umur sehubungan dengan tahun lahir"
-
-#~ msgid "Age related to death year"
-#~ msgstr "Usia terkait dengan tahun wafat"
-
-#~ msgid "All changes in PhpGedView must be accepted"
-#~ msgstr "Semua perubahan dalam PhpGedView harus diterima"
-
-#~ msgid "All existing PhpGedView users must have distinct email addresses"
-#~ msgstr "Semua pengguna PhpGedView yang ada harus memiliki alamat email yang berbeda"
-
-#~ msgid "All family facts"
-#~ msgstr "Semua fakta keluarga"
-
-#~ msgid "All individual facts"
-#~ msgstr "Semua fakta seseorang"
-
-#~ msgid "All repository facts"
-#~ msgstr "Semua fakta repositori"
-
-#~ msgid "All source facts"
-#~ msgstr "Semua fakta sumber"
-
-#~ msgid "Allow users to select their own theme"
-#~ msgstr "Izinkan pengguna untuk memilih tema mereka sendiri"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Also known as"
-#~ msgstr "Juga dikenal sebagai"
-
-#~ msgctxt "MALE"
-#~ msgid "Also known as"
-#~ msgstr "Juga dikenal sebagai"
-
-#~ msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-#~ msgstr "Rekan adalah orang lain yang terlibat dengan fakta atau peristiwa ini, seperti saksi atau penghulu."
-
-#~ msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-#~ msgstr "Rekan adalah orang lain yang terlibat dengan seseorang ini, seperti teman atau majikan."
-
-#~ msgid "An unknown error occurred"
-#~ msgstr "Terjadi kesalahan yang tidak diketahui"
-
-#~ msgid "Apply automatic corrections to your genealogy data."
-#~ msgstr "Terapkan koreksi otomatis ke data silsilah anda."
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arials"
-
-#~ msgid "Associates"
-#~ msgstr "Kerabat"
-
-#~ msgid "Available blocks"
-#~ msgstr "Blok yang tersedia"
-
-#~ msgid "Basic"
-#~ msgstr "Dasar"
-
-#~ msgid "Batch update"
-#~ msgstr "Pembaruan kumpulan"
-
-#~ msgid "Body"
-#~ msgstr "Isi Surat"
-
-#~ msgid "Booklet"
-#~ msgstr "Buku kecil"
-
-#~ msgid "Brit milah of a brother"
-#~ msgstr "Brit milah saudara"
-
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Brit milah cucu"
-
-#~ msgctxt "daughter’s son"
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Brit milah dari cucu"
-
-#~ msgctxt "son’s son"
-#~ msgid "Brit milah of a grandson"
-#~ msgstr "Brit milah dari cucu"
-
-#~ msgid "Brit milah of a half-brother"
-#~ msgstr "Brit milah dari saudara tiri"
-
-#~ msgid "Brit milah of a son"
-#~ msgstr "Brit milah dari anak"
-
-#~ msgid "Burial of a maternal grandparent"
-#~ msgstr "Pemakaman kakek-nenek dari pihak ibu"
-
-#~ msgid "Burial of a paternal grandparent"
-#~ msgstr "Pemakaman kakek dari pihak ayah"
-
-#~ msgid "By default, your server allows scripts to run for %s second."
-#~ msgid_plural "By default, your server allows scripts to run for %s seconds."
-#~ msgstr[0] "Secara otomatis, server anda memungkinkan skrip berjalan selama %s detik."
-
-#~ msgid "By default, your server allows scripts to use %s of memory."
-#~ msgstr "Secara default, server Anda memungkinkan skrip untuk menggunakan %s memori."
-
-#~ msgid "Cape Colony"
-#~ msgstr "Koloni Cape"
-
-#~ msgid "Case insensitive"
-#~ msgstr "Kasus tidak peka"
-
-#~ msgid "Catalonia"
-#~ msgstr "Katalonia"
-
-#~ msgid "Caution!"
-#~ msgstr "Peringatan!"
-
-#~ msgid "Cemeteries"
-#~ msgstr "Pemakaman"
-
-#~ msgid "Change"
-#~ msgstr "Perubahan"
-
-#~ msgid "Change language"
-#~ msgstr "Ganti Bahasa"
-
-#~ msgid "Change the blocks on this user’s “My page”"
-#~ msgstr "Ubah setelan blok di “Halaman Saya”"
-
-#~ msgid "Channel Islands"
-#~ msgstr "Kepulauan Channel"
-
-#~ msgid "Check the settings and try again."
-#~ msgstr "Periksa pengaturan dan coba lagi."
-
-#~ msgid "Choose: "
-#~ msgstr "Pilih: "
-
-#~ msgid "Cleared but not yet completed"
-#~ msgstr "Sudah dihapus tetapi belum selesai"
-
-#~ msgid "Click a row, then drag-and-drop to re-order media"
-#~ msgstr "Klik sebuah baris, kemudian seret dan lepas untuk menyusunkembali media"
-
-#~ msgid "Comparison"
-#~ msgstr "Perbandingan"
-
-#~ msgid "Compress the GEDCOM file"
-#~ msgstr "Kompres file GEDCOM"
-
-#~ msgid "Concatenation"
-#~ msgstr "Rangkaian"
-
-#~ msgid "Configure"
-#~ msgstr "Konfigurasi"
-
-#~ msgid "Confirm password"
-#~ msgstr "Konfirmasi Sandi"
-
-#~ msgid "Continue adding"
-#~ msgstr "Lanjutkan Penambahan"
-
-#~ msgid "Continued"
-#~ msgstr "Berlanjut"
-
-#~ msgid "Convert from UTF-8 to ISO-8859-1"
-#~ msgstr "Konversi dari UTF-8 ke ISO-8859-1"
-
-#~ msgid "Count"
-#~ msgstr "Jumlah"
-
-#~ msgid "Counts "
-#~ msgstr "Jumlah "
-
-#~ msgid "Create a family"
-#~ msgstr "Buat keluarga"
-
-#~ msgid "Create a family from existing individuals"
-#~ msgstr "Buat keluarga dari orang-orang yang ada"
-
-#~ msgid "Current"
-#~ msgstr "Berlaku"
-
-#~ msgid "Custom fact"
-#~ msgstr "Fakta Khusus"
-
-#~ msgid "Database and table names"
-#~ msgstr "Basis data dan nama tabel"
-
-#~ msgid "Decade of birth"
-#~ msgstr "Dekade kelahiran"
-
-#~ msgid "Decade of death"
-#~ msgstr "Dekade kematian"
-
-#~ msgid "Decade of marriage"
-#~ msgstr "Dekade pernikahan"
-
-#~ msgid "Default pedigree chart layout"
-#~ msgstr "Grafik diagram silsilah sederhana"
-
-#~ msgid "Default pedigree generations"
-#~ msgstr "Generasi silsilah sederhana"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "Bayangan Kejadian"
-
-#~ msgid "Delete all existing geographic data before importing the file."
-#~ msgstr "Hapus semua data geografis yang ada sebelum mengimpor file."
-
-#~ msgid "Delete temporary files…"
-#~ msgstr "Hapus file sementara …"
-
-#~ msgid "Desired password"
-#~ msgstr "Sandi yang diinginkan"
-
-#~ msgid "Desired username"
-#~ msgstr "Nama pengguna yang diinginkan"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dzulhijjah"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dzulhijjah"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dzulhijjah"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Ḥijjah"
-#~ msgstr "Dzulhijjah"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dzulqa’dah"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dzulqa’dah"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dzulqa’dah"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Dhū al-Qiʿdah"
-#~ msgstr "Dzulqa’dah"
-
-#~ msgid "Died as an infant: exempt"
-#~ msgstr "Meninggal sebagai bayi: dibebaskan"
-
-#~ msgid "Display all"
-#~ msgstr "Tampilkan semua"
-
-#~ msgid "Do not change to keep original filename."
-#~ msgstr "Jangan ganti nama berkas awal."
-
-#~ msgid "Earliest birth year"
-#~ msgstr "Tahun Lahir Terawal"
-
-#~ msgid "Earliest death year"
-#~ msgstr "Tahun Wafat Terawal"
-
-#~ msgid "Editing restriction"
-#~ msgstr "Mengubah batasan"
-
-#~ msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-#~ msgstr "Alamat email yang akan digunakan dalam bidang \"Dari:\" dari email yang dibuat situs secara otomatis. <br><br>situs dapat secara otomatis membuat email untuk memberi tahu pengurus tentang perubahan yang perlu ditinjau. situs juga mengirim email pemberitahuan kepada pengguna yang telah meminta akun. <br><br> biasanya, bidang \"Dari:\" dari email yang dibuat secara otomatis ini seperti <i>Dari: noreply@yoursite.com</i> ini menunjukkan bahwa tidak ada tanggapan terhadap email yang diperlukan. untuk melindungi dari spam atau penyalahgunaan email lainnya, beberapa sistem email mengharuskan setiap bidang “Dari:” untuk mencerminkan akun email yang valid dan tidak akan menerima pesan yang tampaknya berasal dari akun <i>noreply</i>."
-
-#~ msgid "Embedded variable"
-#~ msgstr "Variabel tertanam"
-
-#~ msgid "Enter an individual, family, or source ID"
-#~ msgstr "Masukkan Orang, Keluarga, atau ID Sumber"
-
-#~ msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-#~ msgstr "Masukkan atau cari ID orang, keluarga, atau sumber yang akan dikaitkan dengan item media ini."
-
-#~ msgid "Enter report values"
-#~ msgstr "Masukkan nilai laporan"
-
-#~ msgid "Exact text"
-#~ msgstr "Teks yang tepat"
-
-#~ msgid "FAQ position"
-#~ msgstr "Posisi FAQ"
-
-#~ msgid "FAQ visibility"
-#~ msgstr "Penampakan FAQ"
-
-#~ msgid "Facts for repository records"
-#~ msgstr "Fakta untuk catatan repositori"
-
-#~ msgid "Facts for source records"
-#~ msgstr "Fakta untuk catatan sumber"
-
-#~ msgid "Family group information"
-#~ msgstr "Informasi Kelompok Keluarga"
-
-#~ msgid "Family list"
-#~ msgstr "Data per Keluarga"
-
-#, php-format
-#~ msgid "Flag of %s"
-#~ msgstr "Bendera %s"
-
-#~ msgid "Font"
-#~ msgstr "Gaya"
-
-#~ msgid "From"
-#~ msgstr "Dari"
-
-#~ msgid "Gender"
-#~ msgstr "Kelamin"
-
-#~ msgid "Gender icon on charts"
-#~ msgstr "Ikon kelamin pada grafik"
-
-#~ msgid "Google™ webmaster tools"
-#~ msgstr "Alat pengembang web Google™"
-
-#~ msgid "Grandparents"
-#~ msgstr "Kakek-nenek"
-
-#~ msgid "Head of household"
-#~ msgstr "Kepala rumah tangga"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helveticas"
-
-#~ msgid "Highest population"
-#~ msgstr "Populasi tertinggi"
-
-#~ msgid "Historical facts"
-#~ msgstr "Fakta sejarah"
-
-#~ msgid "If the thumbnail image is a custom image, you should add it to the media object."
-#~ msgstr "Jika gambar mini adalah gambar khusus, anda harus menambahkannya ke obyek media."
-
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-#~ msgstr "Jika gambar mini sama dengan gambar aslinya, tidak diperlukan lagi dan sebaiknya dihapus."
-
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
-#~ msgstr "Jika gambar thumbnail sama dengan gambar asli, itu tidak lagi diperlukan dan Anda harus menghapusnya. Jika itu adalah gambar kustom, Anda harus menambahkannya ke objek media."
-
-#~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
-#~ msgstr "Jika pengunjung tidak dapat melihat silsilah keluarga, mereka tidak akan dapat mendaftar untuk sebuah akun. anda perlu menambahkan akun mereka secara manual."
-
-#~ msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
-#~ msgstr "Jika terhubung ke basisdata menggunakan soket UNIX, masukkan jalur di sini dan kosongkan nomor port."
-
-#~ msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-#~ msgstr "Jika Anda menyembunyikan blok kosong, Anda tidak akan dapat mengubah pengaturannya hingga tampak karena tidak kosong lagi."
-
-#~ msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
-#~ msgstr "Jika kebijakan keamanan server anda mengizinkannya, anda akan dapat meminta peningkatan memori atau waktu CPU menggunakan halaman pengaturan situs. jika tidak, anda harus menghubungi pengurus server anda."
-
-#~ msgid "Import Options."
-#~ msgstr "Opsi Impor."
-
-#~ msgid "Import all places from a family tree"
-#~ msgstr "Impor semua tempat dari silsilah keluarga"
-
-#~ msgid "Import custom thumbnails from webtrees version 1"
-#~ msgstr "Impor thumbnail khusus dari webtrees versi 1"
-
-#~ msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-#~ msgstr "Dalam webtrees versi 1, Anda bisa menambahkan thumbnail kustom ke objek media dengan membuat file di folder \"thumbs\"."
-
-#~ msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-#~ msgstr "Dalam webtrees versi 2, thumbnail khusus disimpan sebagai file media kedua di objek media yang sama."
-
-#~ msgid "Include media (automatically zips files)"
-#~ msgstr "Termasuk media (otomatis men-zip berkas)"
-
-#~ msgid "Individual distribution"
-#~ msgstr "Distribusi seseorang"
-
-#~ msgid "Individual list"
-#~ msgstr "Data per Individu"
-
-#, php-format
-#~ msgid "Individuals with surname %s"
-#~ msgstr "Orang dengan marga ayah %s"
-
-#~ msgid "Information about the request is shown under the link below."
-#~ msgstr "Informasi tentang permintaan diperlihatkan dibawah pranala di bawah."
-
-#~ msgid "Installation folder"
-#~ msgstr "Berkas instalasi"
-
-#~ msgid "Interred"
-#~ msgstr "Dimakamkan"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Interred"
-#~ msgstr "Dimakamkan"
-
-#~ msgctxt "MALE"
-#~ msgid "Interred"
-#~ msgstr "Dimakamkan"
-
-#~ msgid "Invalid GEDCOM format"
-#~ msgstr "Format GEDCOM keliru"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumadil Awal"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumadil Awal"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumadil Awal"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-awwal"
-#~ msgstr "Jumadil Awal"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumadil Tsani"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumadil Tsani"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumadil Tsani"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Jumādá al-thānī"
-#~ msgstr "Jumadil Tsani"
-
-#~ msgid "LDS ordinance codes in chart boxes"
-#~ msgstr "Kode adat istiadat LDS dalam kotak grafik"
-
-#~ msgid "LDS temple"
-#~ msgstr "Kuil LDS"
-
-#~ msgid "Latest birth year"
-#~ msgstr "Tahun Lahir Terakhir"
-
-#~ msgid "Latest death year"
-#~ msgstr "Tahun Wafat Terakhir"
-
-#~ msgid "Leave this blank to use the default value."
-#~ msgstr "Kosongkan ini untuk menggunakan nilai default."
-
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "F4"
-
-#~ msgid "Level"
-#~ msgstr "Tingkat"
-
-#~ msgid "Limit"
-#~ msgstr "Batasan"
-
-#~ msgid "Limit display by"
-#~ msgstr "Batasi tampilan dengan"
-
-#~ msgid "Link to an existing media object"
-#~ msgstr "Mengaitkan ke objek media yang sudah ada"
-
-#~ msgid "Linked database ID"
-#~ msgstr "ID Database Terangkai"
-
-#~ msgid "Location not removed: this location contains sub-locations"
-#~ msgstr "Lokasi tidak dihapus: lokasi ini berisi sub-lokasi"
-
-#~ msgid "Lost password request"
-#~ msgstr "Permintaan kehilangan sandi"
-
-#~ msgid "Lowest population"
-#~ msgstr "Populasi terendah"
-
-#~ msgid "Mailing name"
-#~ msgstr "Nama Mailing List"
-
-#~ msgid "Main section blocks"
-#~ msgstr "Blok Bagian Utama"
-
-#~ msgid "Manage family trees "
-#~ msgstr "Kelola silsilah keluarga "
-
-#~ msgid "Manage the links"
-#~ msgstr "Kelola tautan"
-
-#~ msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
-#~ msgstr "Banyak server email mengharuskan server pengirim mengidentifikasi dirinya sendiri dengan benar, menggunakan nama domain yang valid."
-
-#~ msgid "Map provider"
-#~ msgstr "Penyedia peta"
-
-#~ msgid "Marriage status"
-#~ msgstr "Status Nikah"
-
-#~ msgid "Marriage type unknown"
-#~ msgstr "Jenis Nikah Tidak Diketahui"
-
-#~ msgid "Married surname"
-#~ msgstr "Marga Pernikahan"
-
-#~ msgid "Maximum descendancy generations"
-#~ msgstr "Maksimal generasi keturunan"
-
-#~ msgid "Maximum pedigree generations"
-#~ msgstr "Maksimal generasi keturunan"
-
-#~ msgid "Media contains"
-#~ msgstr "Media mengandung"
-
-#, php-format
-#~ msgid "Media filenames will be prefixed by %s."
-#~ msgstr "Nama file media akan diawali dengan %s."
-
-#~ msgid "Medical condition"
-#~ msgstr "Kondisi medis"
-
-#~ msgid "Memory limit"
-#~ msgstr "Batasan memori"
-
-#~ msgid "Midnight"
-#~ msgstr "Tengah malam"
-
-#~ msgid "More news articles"
-#~ msgstr "Lihat Berita Lainnya"
-
-#~ msgid "Most sites are configured to use the default value of 3306."
-#~ msgstr "Sebagian besar situs dikonfigurasikan untuk menggunakan nilai default 3306."
-
-#~ msgid "Move left"
-#~ msgstr "Pindah ke kiri"
-
-#~ msgid "Move right"
-#~ msgstr "Pindah ke kanan"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharam"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharam"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharam"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Muḥarram"
-#~ msgstr "Muharam"
-
-#~ msgid "MySQL gave the error: %s"
-#~ msgstr "MySQL memberikan kesalahan: %s"
-
-#~ msgid "MySQL variables"
-#~ msgstr "MySQL variabel"
-
-#~ msgid "Name contains"
-#~ msgstr "Nama mengandung"
-
-#~ msgid "Neutral Zone"
-#~ msgstr "Zona Netral"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Never married"
-#~ msgstr "Belum menikah"
-
-#~ msgctxt "MALE"
-#~ msgid "Never married"
-#~ msgstr "Belum menikah"
-
-#~ msgid "No limit"
-#~ msgstr "Tidak dibatasi"
-
-#~ msgid "No mappable items"
-#~ msgstr "Tidak ada item yang dapat dipetakan"
-
-#~ msgid "No places have been found."
-#~ msgstr "Tidak ada tempat yang ditemukan."
-
-#~ msgid "Nobody at all"
-#~ msgstr "Tidak ada sama sekali"
-
-#~ msgid "Noon"
-#~ msgstr "Tengah hari"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Not married"
-#~ msgstr "Tidak Menikah"
-
-#~ msgctxt "MALE"
-#~ msgid "Not married"
-#~ msgstr "Tidak Menikah"
-
-#~ msgid "Number of generations"
-#~ msgstr "Jumlah generasi"
-
-#~ msgid "Number of items"
-#~ msgstr "Jumlah item"
-
-#~ msgid "Number of items to show"
-#~ msgstr "Jumlah item yang tampil"
-
-#~ msgid "Number of months since the last sign-in for a user’s account to be considered inactive: "
-#~ msgstr "Jumlah bulan sejak proses masuk terakhir untuk akun pengguna dianggap tidak aktif: "
-
-#~ msgid "Oldest at bottom"
-#~ msgstr "Tertua di bagian bawah"
-
-#~ msgid "Oldest at top"
-#~ msgstr "Tertua di bagian atas"
-
-#~ msgid "Ordnance Survey historic maps"
-#~ msgstr "Peta bersejarah Surve Ordnance"
-
-#~ msgid "Other folder… please type in"
-#~ msgstr "Folder lain… silakan ketik"
-
-#~ msgid "Other genealogy applications might not recognize this data."
-#~ msgstr "Aplikasi silsilah lainnya mungkin tidak mengenali data ini."
-
-#~ msgid "Others"
-#~ msgstr "Lainnya"
-
-#~ msgid "Own charts"
-#~ msgstr "Grafik Sendiri"
-
-#~ msgid "P.M."
-#~ msgstr "p.m."
-
-#~ msgid "PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "Ekstensi PHP “%1$s” dinonaktifkan. tanpa itu, fitur berikut tidak akan berfungsi: %2$s. harap minta pengurus server anda untuk mengaktifkannya."
-
-#~ msgid "PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it."
-#~ msgstr "Ekstensi PHP \"%s\" dinonaktifkan. anda tidak dapat menginstal situs hingga ini diaktifkan. harap minta pengurus server anda untuk mengaktifkannya."
-
-#~ msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it."
-#~ msgstr "Pengaturan PHP “%1$s” dinonaktifkan. tanpa itu, fitur berikut tidak akan berfungsi: %2$s. harap minta pengurus server anda untuk mengaktifkannya."
-
-#~ msgid "PHP time limit"
-#~ msgstr "Batas waktu PHP habis"
-
-#~ msgid "Passwords do not match."
-#~ msgstr "Sandi tidak cocok."
-
-#~ msgid "Passwords must contain at least 8 characters."
-#~ msgstr "Sandi harus mengandung setidaknya 8 karakter."
-
-#~ msgid "Pedigree chart"
-#~ msgstr "Bagan kerabat"
-
-#~ msgid "Pedigree of %s"
-#~ msgstr "Silsilah dari %s"
-
-#~ msgid "Phonetic"
-#~ msgstr "Fonetik"
-
-#~ msgid "Phonetic title"
-#~ msgstr "Titel fonetik"
-
-#~ msgid "PhpGedView might be installed in one of these folders:"
-#~ msgstr "PhpGedView mungkin dipasang di salah satu folder ini:"
-
-#~ msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
-#~ msgstr "PhpGedView harus versi 4.2.3, atau SVN hingga #%s"
-
-#~ msgid "PhpGedView must use the same database as webtrees."
-#~ msgstr "Situs PhpGedView harus menggunakan Database yang sama dengan Situs Webtrees."
-
-#~ msgid "PhpGedView to webtrees transfer wizard"
-#~ msgstr "PhpGedView ke wizard transfer Webtrees"
-
-#~ msgid "Place contains"
-#~ msgstr "Tempat mengandung"
-
-#~ msgid "Places found"
-#~ msgstr "Tempat yang ditemukan"
-
-#~ msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-#~ msgstr "Tempat-tempat harus dimasukkan sesuai dengan standar untuk silsilah keluarga. dalam silsilah, tempat-tempat dicatat dengan informasi paling spesifik tentang tempat pertama dan kemudian bekerja hingga tempat terakhir yang paling terakhir, menggunakan koma untuk memisahkan tingkat tempat yang berbeda. tingkat di mana anda mencatat informasi tempat harus mewakili tingkat pemerintah atau gereja di mana catatan vital untuk tempat itu disimpan. <br><br>sebagai contoh, tempat seperti Salt Lake City akan dimasukkan sebagai \"Salt Lake City, Salt Lake, Utah, USA ”. <br><br>mari kita periksa setiap bagian dari tempat ini. bagian pertama, \"Salt Lake City,\" adalah kota atau kota tempat peristiwa itu terjadi. di beberapa negara, mungkin ada kota atau kabupaten di dalam kota yang penting untuk dicatat. dalam hal ini, mereka harus datang sebelum kota. bagian selanjutnya, \"Salt Lake,\" adalah county. \"Utah\" adalah negara bagian, dan \"USA\" adalah negara. penting untuk mencatat setiap tempat karena catatan silsilah disimpan oleh pemerintah di setiap tingkat. <br><br>jika tingkat tempat tidak diketahui, anda harus meninggalkan ruang di antara koma. misalkan, dalam contoh di atas, anda tidak tahu county untuk Salt Lake City. anda kemudian harus mencatatnya seperti ini: “Salt Lake City,, Utah, USA”. seandainya anda hanya tahu bahwa seseorang dilahirkan di Utah. anda akan memasukkan informasi seperti ini: \",, Utah, USA\". <br><br> anda dapat menggunakan tautan <b>Temukan Tempat</b> untuk membantu anda menemukan tempat-tempat yang sudah ada dalam basis data."
-
-#~ msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-#~ msgstr "Tempat tanpa koordinat yang valid tidak ditampilkan di peta dan memiliki batas merah di sekitar entri bilah sisi"
-
-#~ msgid "Please enter a given name, surname, or place in addition to the year"
-#~ msgstr "Silakan masukkan Nama depan, Nama belakang, atau Tempat sebagai tambahan Tahun"
-
-#~ msgid "Please enter a message subject."
-#~ msgstr "Silakan masukkan perihal pesan."
-
-#~ msgid "Please enter more than one character."
-#~ msgstr "Silakan masukkan lebih dari satu karakter."
-
-#~ msgid "Please enter some message text before sending."
-#~ msgstr "Silakan masukkan beberapa teks pesan sebelum mengirim."
-
-#~ msgid "Presentation style"
-#~ msgstr "Gaya Presentasi"
-
-#~ msgid "Privacy restriction"
-#~ msgstr "Pembatasan privasi"
-
-#~ msgid "Quick repository facts"
-#~ msgstr "Fakta repositori cepat"
-
-#~ msgid "Quick source facts"
-#~ msgstr "Fakta sumber singkat"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabiul Awal"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabiul Awal"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabiul Awal"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-awwal"
-#~ msgstr "Rabiul Awal"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabiul Akhir"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabiul Akhir"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabiul Akhir"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Rabiʿ al-thani"
-#~ msgstr "Rabiul Akhir"
-
-#~ msgid "Rada"
-#~ msgstr "Radah"
-
-#~ msgid "Really delete all geographic data?"
-#~ msgstr "Benarkah menghapus semua data geografis?"
-
-#~ msgid "Records are not the same type. Cannot merge records that are not the same type."
-#~ msgstr "Jenis rekaman tidak sama. Tidak dapat menggabungkan rekaman yang jenisnya tidak sama."
-
-#~ msgid "Religious name"
-#~ msgstr "Nama relijius"
-
-#~ msgctxt "FEMALE"
-#~ msgid "Religious name"
-#~ msgstr "Nama relijius"
-
-#~ msgctxt "MALE"
-#~ msgid "Religious name"
-#~ msgstr "Nama relijius"
-
-#~ msgid "Renumber"
-#~ msgstr "Penomoran ulang"
-
-#~ msgid "Renumber family tree"
-#~ msgstr "Penomoran ulang silsilah keluarga"
-
-#~ msgid "Repositories found"
-#~ msgstr "Repositori yang ditemukan"
-
-#~ msgid "Repository contains"
-#~ msgstr "Repositori mengandung"
-
-#~ msgid "Reset to initial map state"
-#~ msgstr "Setel ulang ke status peta awal"
-
-#~ msgid "Resulting value"
-#~ msgstr "Menghasilkan nilai"
-
-#~ msgid "Right section blocks"
-#~ msgstr "Blok Bagian Kanan"
-
-#~ msgid "Romanized title"
-#~ msgstr "Titel Romawi"
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Sapar"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Ṣafar"
-#~ msgstr "Sapar"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Sapar"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Ṣafar"
-#~ msgstr "Sapar"
-
-#~ msgid "Select a block and use the arrows to move it."
-#~ msgstr "Tandai nama blok kemudian klik pada salah satu tanda panah untuk memindah blok yang ditandai tersebut ke arah yang dipilih."
-
-#~ msgid "Select events"
-#~ msgstr "Pilih Peristiwa"
-
-#~ msgid "Select the desired count interval"
-#~ msgstr "Pilih interval hitungan yang diinginkan"
-
-#~ msgid "Select the languages that will be shown in menus."
-#~ msgstr "Pilih bahasa yang akan ditampilkan dalam menu."
-
-#~ msgid "Select the stats to show in this block"
-#~ msgstr "Pilih status yang akan diperlihatkan pada blok ini"
-
-#~ msgid "Serbia and Montenegro"
-#~ msgstr "Serbia dan Montenegro"
-
-#~ msgid "Session timeout"
-#~ msgstr "Waktu tunggu sesi"
-
-#~ msgid "Set the default number of generations to display on descendancy and pedigree charts."
-#~ msgstr "Setel jumlah generasi default untuk ditampilkan pada diagram turunan dan silsilah."
-
-#~ msgid "Set the maximum number of generations to display on descendancy charts."
-#~ msgstr "Tetapkan jumlah generasi maksimum untuk ditampilkan pada bagan keturunan."
-
-#~ msgid "Set the maximum number of generations to display on pedigree charts."
-#~ msgstr "Tetapkan jumlah generasi maksimum untuk ditampilkan pada grafik silsilah."
-
-#~ msgctxt "GENITIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sya’ban"
-
-#~ msgctxt "INSTRUMENTAL"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sya’ban"
-
-#~ msgctxt "LOCATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sya’ban"
-
-#~ msgctxt "NOMINATIVE"
-#~ msgid "Shaʿbān"
-#~ msgstr "Sya’ban"
-
-#~ msgid "Short version"
-#~ msgstr "Versi Pendek"
-
-#~ msgid "Should this block be hidden when it is empty"
-#~ msgstr "Apakah sebaiknya blok ini tersembunyi ketika kosong"
-
-#~ msgid "Show common surnames"
-#~ msgstr "Perlihatkan marga umum"
-
-#~ msgid "Show counts before or after name"
-#~ msgstr "Tempatkan jumlah sebelum atau setelah nama"
-
-#~ msgid "Show cousins"
-#~ msgstr "Perlihatkan sepupu"
-
-#~ msgid "Show details"
-#~ msgstr "Perlihatkan Rincian"
-
-#~ msgid "Show images"
-#~ msgstr "Tampilkan gambar"
-
-#~ msgid "Show only births, deaths, and marriages"
-#~ msgstr "Hanya perlihatkan Kelahiran, Kematian, dan Pernikahan"
-
-#~ msgid "Show places in hierarchy"
-#~ msgstr "Perlihatkan Tempat dalam Hirarki"
-
-#~ msgid "Show related individuals/families"
-#~ msgstr "Perlihatkan keluarga/orang yang berkerabat"
-
-#~ msgid "Show statistics charts"
-#~ msgstr "Tampilkan grafik statistik"
-
-#~ msgid "Sicily"
-#~ msgstr "Sisilia"
-
-#~ msgid "Signed-in as "
-#~ msgstr "Masuk sebagai "
-
-#~ msgid "Site preferences"
-#~ msgstr "Preferensi situs"
-
-#~ msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-#~ msgstr "Kutipan sumber dapat mencakup bidang untuk mencatat kualitas data (primer, sekunder, dll.) dan tanggal peristiwa yang direkam dalam sumber. jika anda tidak menggunakan bidang ini, anda dapat menonaktifkannya saat membuat kutipan sumber baru."
-
-#~ msgid "Source contains"
-#~ msgstr "Sumber mengandung"
-
-#~ msgid "Spouse census date"
-#~ msgstr "Tanggal sensus pasangan"
-
-#~ msgid "Spouse census place"
-#~ msgstr "Tempat sensus pasangan"
-
-#~ msgid "Spouse note"
-#~ msgstr "Catatan pasangan"
-
-#~ msgid "Start at parents"
-#~ msgstr "Mulai dari orangtua"
-
-#~ msgid "Statistics chart"
-#~ msgstr "Plot Statistik"
-
-#~ msgid "The FAQ list is empty."
-#~ msgstr "Daftar FAQ kosong."
-
-#~ msgid "The GEDCOM standard does not allow URLs in media objects."
-#~ msgstr "Standar GEDCOM tidak mengizinkan URL di objek media."
-
-#~ msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-#~ msgstr "PhpGedView ke wizard Webtrees adalah proses otomatis untuk membantu pengurus situs melakukan perpindahan dari instalasi PhpGedView ke Webtrees baru. ini akan mentransfer semua data PhpGedView GEDCOM dan informasi database lainnya langsung ke database Webtrees anda yang baru. persyaratan berikut diperlukan:"
-
-#~ msgid "The data in this website has been collected for the purposes of genealogical research."
-#~ msgstr "Data dalam situs web ini telah dikumpulkan untuk tujuan penelitian silsilah."
-
-#, php-format
-#~ msgid "The folder %s does not exist, and it could not be created."
-#~ msgstr "Folder %s tidak ada, dan itu tidak dapat dibuat."
-
-#~ msgid "The following places have been changed:"
-#~ msgstr "Tempat-tempat berikut telah diubah:"
-
-#~ msgid "The following places would be changed:"
-#~ msgstr "Tempat-tempat berikut akan diubah:"
-
-#~ msgid "The media file was not found in this family tree."
-#~ msgstr "Berkas media tidak di temukan di silsilah keluarga ini."
-
-#~ msgid "The most common repository facts are listed separately, so that they can be added more easily."
-#~ msgstr "Fakta-fakta repositori yang paling umum tercantum secara terpisah, sehingga mereka dapat ditambahkan lebih mudah."
-
-#~ msgid "The most common source facts are listed separately, so that they can be added more easily."
-#~ msgstr "Fakta-fakta sumber yang paling umum tercantum secara terpisah, sehingga mereka dapat ditambahkan lebih mudah."
-
-#, php-format
-#~ msgid "The parameter “%s” is missing."
-#~ msgstr "Parameter “%s” hilang."
-
-#~ msgid "The passwords do not match."
-#~ msgstr "Kata sandi tidak cocok."
-
-#~ msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-#~ msgstr "Awalannya opsional, tetapi disarankan. Dengan memberi nama tabel, awalan yang unik Anda dapat membiarkan beberapa aplikasi berbeda berbagi database yang sama. \"Wt_\" disarankan, tetapi bisa menjadi apa pun yang Anda inginkan."
-
-#~ msgid "The record has been copied to the clipboard."
-#~ msgstr "Rekaman tersalin ke papan klip."
-
-#~ msgid "The regular expression appears to contain an error. It can’t be used."
-#~ msgstr "Ekspresi reguler tampaknya mengandung kesalahan. Itu tidak bisa digunakan."
-
-#~ msgid "The specified folder does not contain an installation of PhpGedView."
-#~ msgstr "Folder yang ditentukan tidak berisi instalasi PhpGedView."
-
-#~ msgid "The theme menu will only be shown if the website preferences allow users to select their own theme."
-#~ msgstr "Menu tema hanya akan ditampilkan jika preferensi situs memungkinkan pengguna untuk memilih tema mereka sendiri."
-
-#~ msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
-#~ msgstr "Waktu dalam detik sesi situs tetap aktif sebelum memerlukan proses masuk baru. standarnya adalah 7200, yaitu 2 jam."
-
-#~ msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
-#~ msgstr "Nilai untuk ditempatkan di tag “meta description” di header halaman HTML. Biarkan bidang ini kosong untuk menggunakan nama silsilah keluarga."
-
-#~ msgid "The version of %s is too new."
-#~ msgstr "Versi %s terlalu baru."
-
-#~ msgid "The version of %s is too old."
-#~ msgstr "Versi %s terlalu lama."
-
-#~ msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
-#~ msgstr "Situs geonames.org menyediakan basis data besar untuk nama tempat. ini dapat dicari ketika memasuki tempat baru. untuk menggunakan fitur ini, anda harus mendaftar untuk akun gratis di geonames.org dan memberikan nama pengguna."
-
-#~ msgid "Theme menu"
-#~ msgstr "Pilihan tema"
-
-#~ msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
-#~ msgstr "Tema dapat dipilih pada tiga tingkatan: pengguna, silsilah keluarga, dan situs. preferensi pengguna lebih diprioritaskan daripada preferensi hierarki keluarga, yang pada gilirannya lebih diprioritaskan daripada preferensi situs. memilih \"Tema Sederhana\" pada satu tingkat akan menggunakan tema di tingkat berikutnya."
-
-#, php-format
-#~ msgid "There is no account with the username or email “%s”."
-#~ msgstr "Tidak ada akun dengan Nama Pengguna atau Email \"%s\"."
-
-#~ msgid "This entry is ignored if you have entered a URL into the filename field."
-#~ msgstr "Isian ini diabaikan jika Anda memasukkan URL ke isian nama berkas."
-
-#~ msgid "This family remained childless"
-#~ msgstr "Keluarga ini tidak memiliki anak"
-
-#~ msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
-#~ msgstr "Berkas ini terkait ke basisdata genealogis lain di server ini. Ia tidak dapat dihapus, dipindah, atau digantinama hingga kaitan ini dibuang."
-
-#~ msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-#~ msgstr "Kotak input ini memungkinkan anda mengubah tahun kalender itu. Ketikkan setahun ke dalam kotak dan tekan <b>Enter</b> untuk mengubah kalender ke tahun itu. <br><br><b>Fitur lanjutan</b> untuk <b>Lihat tahun ini</b><dl><dt><b>Lebih dari satu tahun</b></dt><dd> Anda dapat mencari tanggal dalam rentang tahun. <br><br> Rentang tahun <u>inklusif</u>. Ini berarti rentang tanggal mulai dari 1 Januari tahun pertama rentang hingga 31 Desember tahun lalu. Berikut adalah beberapa contoh rentang tahun: <br> <br><b>1992-5</b> untuk semua acara dari tahun 1992 hingga 1995. <br><b>1972-89</b> untuk semua acara dari 1972 hingga 1989.<br> <b>1610-759</b> untuk semua acara dari 1610 hingga 1759. <br><b>1880-1905</b> untuk semua acara dari 1880 hingga 1905. <br><b>880-1105</b> untuk semua acara dari 880 hingga 1105. <br><br> Untuk melihat semua peristiwa dalam dekade atau abad tertentu, Anda dapat menggunakan <b>?</b> di tempat digit terakhir. Misalnya, <b>197?</b> untuk semua acara dari 1970 hingga 1979 atau <b>16??</b> untuk semua acara dari 1600 hingga 1699.<br><br> Memilih rentang tahun akan ubah kalender ke tampilan tahun.</dd></dl>"
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-#~ msgstr "Ini adalah daftar tag fakta GEDCOM yang dipisahkan koma yang akan ditampilkan pada formulir nama tambah / sunting. Jika Anda menggunakan huruf non-Latin seperti Ibrani, Yunani, Sirilik, atau Arab, Anda mungkin ingin menambahkan tag seperti _HEB, ROMN, FONE, dll. Untuk memungkinkan Anda menyimpan nama dalam beberapa abjad yang berbeda."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-#~ msgstr "Ini adalah daftar tag fakta GEDCOM yang dipisahkan koma yang akan ditampilkan saat menambahkan keluarga baru. Misalnya, jika MARR ada dalam daftar, maka bidang untuk tanggal pernikahan dan tempat pernikahan akan ditampilkan di formulir."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-#~ msgstr "Ini adalah daftar tag fakta GEDCOM yang dipisahkan koma yang akan ditampilkan saat menambahkan orang baru. misalnya, jika BIRT ada dalam daftar, bidang untuk tanggal lahir dan tempat kelahiran akan ditampilkan di formulir."
-
-#~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-#~ msgstr "Ini adalah daftar tag fakta GEDCOM yang dipisahkan koma yang akan ditampilkan saat Anda menambahkan atau mengedit nama tempat. Jika Anda menggunakan huruf non-Latin seperti Ibrani, Yunani, Sirilik, atau Arab, Anda mungkin ingin menambahkan tag seperti _HEB, ROMN, FONE, dll. Untuk memungkinkan Anda menyimpan nama tempat dalam beberapa abjad yang berbeda."
-
-#~ msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
-#~ msgstr "Ini adalah ringkasan dari <abbr title=\"Gereja Yesus Kristus dari Orang Suci Zaman Akhir\">tata cara LDS</abbr> untuk seseorang. \"B\" menunjukkan pembaptisan LDS. \"E\" menunjukkan endapan LDS. \"S\" menunjukkan penyegelan pasangan OSZA. \"P\" menunjukkan penyegelan (aqiqah) anak-ke-orangtua OSZA."
-
-#~ msgid "This is case sensitive."
-#~ msgstr "Ini sensitif huruf."
-
-#~ msgid "This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails."
-#~ msgstr "Ini huruf sangat sensitif. jika database dengan nama ini belum ada, situs akan berusaha membuatnya untuk anda. keberhasilan akan bergantung pada izin yang ditetapkan untuk server situs milik anda, tetapi anda akan diberitahu jika proses ini gagal."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-#~ msgstr "Ini adalah daftar fakta GEDCOM yang dapat ditambahkan pengguna situs ke keluarga. anda dapat memodifikasi daftar ini dengan menghapus atau menambahkan nama fakta, bahkan yang khusus, jika diperlukan. nama fakta yang muncul dalam daftar ini juga tidak boleh muncul dalam daftar “Fakta unik keluarga”."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-#~ msgstr "Ini adalah daftar fakta GEDCOM yang dapat ditambahkan pengguna situs ke seseorang. anda dapat memodifikasi daftar ini dengan menghapus atau menambahkan nama fakta, bahkan yang khusus, jika diperlukan. nama fakta yang muncul dalam daftar ini juga tidak boleh muncul dalam daftar “Fakta unik seseorang”."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-#~ msgstr "Ini adalah daftar fakta GEDCOM yang dapat ditambahkan pengguna situs ke repositori. anda dapat memodifikasi daftar ini dengan menghapus atau menambahkan nama fakta, bahkan yang khusus, jika diperlukan. nama fakta yang muncul dalam daftar ini juga tidak boleh muncul dalam daftar “Fakta unik repositori”."
-
-#~ msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-#~ msgstr "Ini adalah daftar fakta GEDCOM yang dapat ditambahkan pengguna situs ke sumber. anda dapat memodifikasi daftar ini dengan menghapus atau menambahkan nama fakta, bahkan yang khusus, jika diperlukan. nama fakta yang muncul dalam daftar ini juga tidak boleh muncul dalam daftar “Fakta unik sumber”."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-#~ msgstr "Ini adalah daftar fakta GEDCOM bahwa pengguna Anda hanya dapat menambahkan satu kali ke keluarga. Misalnya, jika MARR ada dalam daftar ini, pengguna tidak akan dapat menambahkan lebih dari satu catatan MARR ke keluarga. Nama-nama fakta yang muncul dalam daftar ini juga tidak boleh muncul dalam daftar “Semua fakta keluarga”."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-#~ msgstr "Ini adalah daftar fakta GEDCOM bahwa pengguna situs hanya dapat menambahkan satu kali ke seseorang. misalnya, jika BIRT ada dalam daftar ini, pengguna tidak akan dapat menambahkan lebih dari satu catatan BIRT kepada seseorang. nama fakta yang muncul dalam daftar ini tidak boleh juga muncul dalam daftar “Semua fakta seseorang”."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-#~ msgstr "Ini adalah daftar fakta GEDCOM bahwa pengguna Anda hanya dapat menambahkan satu kali ke repositori. Misalnya, jika NAME ada dalam daftar ini, pengguna tidak akan dapat menambahkan lebih dari satu catatan NAME ke repositori. Nama-nama fakta yang muncul dalam daftar ini juga tidak boleh muncul di daftar “Semua fakta repositori”."
-
-#~ msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-#~ msgstr "Ini adalah daftar fakta GEDCOM bahwa pengguna situs hanya dapat menambahkan satu kali ke sumber. misalnya, jika TITL ada dalam daftar ini, pengguna tidak akan dapat menambahkan lebih dari satu catatan TITL ke sumber. nama-nama fakta yang muncul dalam daftar ini juga tidak boleh muncul di daftar “Semua fakta sumber”."
-
-#~ msgid "This media file is broken and cannot be watermarked."
-#~ msgstr "Berkas media ini rusak dan tidak dapat di-watermark-kan."
-
-#~ msgid "This message will be sent to %s"
-#~ msgstr "Pesan ini akan dikirim ke %s"
-
-#~ msgid "This option controls whether or not to show the individual’s sex icon on charts.<br><br>Since the sex is also indicated by the color of the box, this option doesn’t conceal the sex. The option simply removes some duplicate information from the box."
-#~ msgstr "Opsi ini mengontrol apakah iya atau tidak untuk menampilkan ikon kelamin seseorang pada grafik.<br><br>Karena jenis kelamin juga ditunjukkan oleh warna kotak, opsi ini tidak menyembunyikan jenis kelamin. Opsi hanya menghapus beberapa duplikat informasi dari kotak."
-
-#~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
-#~ msgstr "Opsi ini menunjukkan apakah diagram silsilah harus dibuat dalam mode lansekap atau potret."
-
-#~ msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
-#~ msgstr "Repositori ini telah dihapus. Penghapusan perlu ditinjau oleh moderator."
-
-#, php-format
-#~ msgid "This repository has been deleted. You should review the deletion and then %1$s or %2$s it."
-#~ msgstr "Repositori ini telah dihapus. Anda harus meninjau penghapusan dan kemudian %1$s atau %2$s itu."
-
-#~ msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-#~ msgstr "Repositori ini telah diubah. Perubahan perlu ditinjau oleh moderator."
-
-#, php-format
-#~ msgid "This repository has been edited. You should review the changes and then %1$s or %2$s them."
-#~ msgstr "Repositori ini telah diubah. Anda harus meninjau perubahan dan kemudian %1$s atau %2$s nya."
-
-#~ msgid "This server does not support secure downloads using HTTPS."
-#~ msgstr "Server ini tidak mendukung unduhan aman menggunakan HTTPS."
-
-#~ msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-#~ msgstr "Ini harus berupa daftar fakta yang dipisahkan koma atau ruang, selain kelahiran dan kematian, yang ingin anda tampilkan dalam kotak grafik seperti grafik silsilah. daftar ini mengharuskan anda untuk menggunakan tag fakta sebagaimana di definisikan dalam standar GEDCOM 5.5.1. misalnya, jika anda ingin pemukiman muncul di kotak grafik, anda hanya perlu menambahkan \"OCCU\" ke bidang ini."
-
-#~ msgid "This site does not use any third-party tracking or analytics services."
-#~ msgstr "Situs ini tidak menggunakan layanan pelacakan atau analitik pihak ketiga."
-
-#~ msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-#~ msgstr "Situs ini menggunakan cookie untuk menyimpan preferensi Anda di situs ini, seperti bahasa yang Anda pilih."
-
-#~ msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
-#~ msgstr "Sumber ini telah dihapus. penghapusan perlu ditinjau oleh moderator."
-
-#, php-format
-#~ msgid "This source has been deleted. You should review the deletion and then %1$s or %2$s it."
-#~ msgstr "Sumber ini telah dihapus. anda harus meninjau penghapusan dan kemudian %1$s atau %2$s itu."
-
-#~ msgid "This source has been edited. The changes need to be reviewed by a moderator."
-#~ msgstr "Sumber ini telah diubah. perubahan perlu ditinjau oleh moderator."
-
-#, php-format
-#~ msgid "This source has been edited. You should review the changes and then %1$s or %2$s them."
-#~ msgstr "Sumber ini telah diubah. anda harus meninjau perubahan dan kemudian %1$s atau %2$s nya."
-
-#~ msgid "This type of link is not allowed here."
-#~ msgstr "Jenis tautan ini tidak diizinkan di sini."
-
-#~ msgid "This website is being upgraded. Try again in a few minutes."
-#~ msgstr "Situs ini sedang ditingkatkan. coba lagi dalam beberapa menit."
-
-#~ msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-#~ msgstr "Ini akan memperbarui bagian tingkat tertinggi atau bagian dari nama tempat. Misalnya, \"Meksiko\" akan cocok dengan \"Quintana Roo, Meksiko\", tetapi tidak \"Santa Fe, New Mexico\"."
-
-#~ msgid "Thumbnail to upload"
-#~ msgstr "Thumbnail untuk diunggah"
-
-#~ msgid "Title in Hebrew"
-#~ msgstr "Titel yahudi"
-
-#~ msgid "To"
-#~ msgstr "Hingga"
-
-#~ msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
-#~ msgstr "Untuk mengurangi ukuran unduhan, Anda dapat memampatkan data menjadi file .ZIP. Anda harus membuka kompresi file .ZIP sebelum dapat menggunakannya."
-
-#~ msgid "To tell search engines that sitemaps are available, you can use the following links."
-#~ msgstr "Untuk memberi tahu mesin telusur bahwa peta situs tersedia, Anda dapat menggunakan tautan berikut."
-
-#~ msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
-#~ msgstr "Untuk memberi tahu mesin telusur bahwa peta situs tersedia, Anda harus menambahkan baris berikut ke file robots.txt Anda."
-
-#~ msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
-#~ msgstr "Untuk menggunakan akun email Google, gunakan pengaturan berikut: server=smtp.gmail.com, port=587, keamanan=tls, nama email=nama@gmail.com, kata sandi=[kata sandi gmail Anda]"
-
-#~ msgid "Top level"
-#~ msgstr "Level Teratas"
-
-#, php-format
-#~ msgid "Total families: %s"
-#~ msgstr "Keluarga: %s"
-
-#, php-format
-#~ msgid "Total individuals: %s"
-#~ msgstr "Orang: %s"
-
-#~ msgid "Tracking and analytics are not added to the control panel."
-#~ msgstr "Pelacak dan analisa tidak ditambahkan ke panel kontrol."
-
-#~ msgid "Transylvania"
-#~ msgstr "Transilvania"
-
-#~ msgid "Type the password again."
-#~ msgstr "Ketik ulang kata sandi."
-
-#~ msgid "Type your password again, to make sure you have typed it correctly."
-#~ msgstr "Ketik ulang kata sandi anda, untuk memastikan anda telah mengetiknya dengan benar."
-
-#~ msgid "USA"
-#~ msgstr "AS"
-
-#~ msgid "UTC"
-#~ msgstr "Waktu UTC"
-
-#~ msgid "Unable to connect using this username and password. Your server gave the following error."
-#~ msgstr "Tidak dapat terhubung menggunakan nama pengguna dan kata sandi ini. server anda memberikan kesalahan berikut."
-
-#~ msgid "Unable to find record with ID"
-#~ msgstr "Tidak dapat menemukan rekaman dengan ID"
-
-#~ msgid "Unique family facts"
-#~ msgstr "Fakta keluarga unik"
-
-#~ msgid "Unique individual facts"
-#~ msgstr "Fakta unik seseorang"
-
-#~ msgid "Unique repository facts"
-#~ msgstr "Fakta repositori unik"
-
-#~ msgid "Unique source facts"
-#~ msgstr "Fakta sumber unik"
-
-#~ msgid "Upload"
-#~ msgstr "Unggah"
-
-#~ msgid "Use PHP mail to send messages"
-#~ msgstr "Gunakan email PHP untuk mengirim pesan"
-
-#~ msgid "Use full source citations"
-#~ msgstr "Gunakan seluruh kutipan sumber"
-
-#~ msgid "Use the GeoNames database for autocomplete on places"
-#~ msgstr "Gunakan database GeoNames untuk pelengkapan otomatis di beberapa tempat"
-
-#~ msgid "Use this image for charts and on the individual’s page."
-#~ msgstr "Gunakan gambar ini untuk grafik dan pada halaman seseorang."
-
-#~ msgid "User preferences"
-#~ msgstr "Preferensi pengguna"
-
-#~ msgid "Users who are signed in"
-#~ msgstr "Pengguna yang Tercatatmasuk"
-
-#~ msgid "Verification code"
-#~ msgstr "Kode verifikasi"
-
-#~ msgid "View"
-#~ msgstr "Tampilkan"
-
-#~ msgid "View all records found in this place"
-#~ msgstr "Tampilkan semua rekaman yang ditemukan di tempat ini"
-
-#~ msgid "View the archive"
-#~ msgstr "Tampilkan arsip"
-
-#~ msgid "View this individual"
-#~ msgstr "Tampilkan Orang"
-
-#~ msgid "View this source"
-#~ msgstr "Tampilkan sumber"
-
-#~ msgid "West Africa"
-#~ msgstr "Afrika Barat"
-
-#~ msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-#~ msgstr "Ketika menambahkan kerabat dekat baru, anda dapat menambahkan kutipan sumber ke catatan (seseorang dan keluarga) atau fakta dan peristiwa (kelahiran, pernikahan, dan kematian). pilihan ini mengontrol apakah rekaman atau fakta akan dipilih secara otomatis."
-
-#~ msgid "When you send this message you will receive a copy sent via email to the address you provided."
-#~ msgstr "Saat Anda mengirim pesan ini, Anda akan menerima salinan yang dikirim lewat email ke alamat yang Anda sediakan."
-
-#~ msgid "Where is your PhpGedView installation?"
-#~ msgstr "Di mana instalasi PhpGedView Anda?"
-
-#~ msgid "Whole words only"
-#~ msgstr "Hanya seluruh kata"
-
-#~ msgid "Width"
-#~ msgstr "Lebar"
-
-#~ msgid "Wife’s maiden surname becomes new given name"
-#~ msgstr "Nama magra gadis istri menjadi nama baru yang diberikan"
-
-#~ msgid "Wife’s surname replaced by husband’s surname"
-#~ msgstr "Nama marga istri diganti dengan nama marga suami"
-
-#~ msgid "Wildcards"
-#~ msgstr "Kartuliars"
-
-#~ msgid "Year input box"
-#~ msgstr "Kotak masukan tahun"
-
-#~ msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-#~ msgstr "Anda dapat membuatnya lebih mudah untuk mencari wanita yang sudah menikah dengan merekam nama pernikahan mereka. Namun tidak semua wanita menggunakan nama keluarga suaminya, jadi berhati-hatilah untuk memasukkan informasi yang salah ke dalam basis data Anda."
-
-#~ msgid "You can request a higher or lower limit, although the server may ignore this request."
-#~ msgstr "Anda dapat meminta batas yang lebih tinggi atau lebih rendah, meskipun server mungkin mengabaikan permintaan ini."
-
-#~ msgid "You entered the same IDs. You cannot merge the same records."
-#~ msgstr "Anda memasukkan ID yang sama. Anda tidak dapat menggabungkan rekaman yang sama."
-
-#~ msgid "You have not created any journal items."
-#~ msgstr "Anda tidak membuat item Jurnal apapun."
-
-#~ msgid "You may enter a URL, beginning with “http://”."
-#~ msgstr "Anda dapat memasukkan URL, dimulai dengan “http://”."
-
-#~ msgid "You must also enable “less secure applications” in your Google account."
-#~ msgstr "Anda juga harus mengaktifkan \"aplikasi yang kurang aman\" di akun Google Anda."
-
-#~ msgid "You must change this before you can continue."
-#~ msgstr "Anda harus mengubahnya sebelum dapat melanjutkan."
-
-#~ msgid "You must enter a username."
-#~ msgstr "Anda harus memasukkan nama pengguna."
-
-#~ msgid "You must provide a source title"
-#~ msgstr "Anda harus memberikan judul sumber"
-
-#~ msgid "You need to sign in again, using your PhpGedView username and password."
-#~ msgstr "Anda perlu masuk lagi, menggunakan nama pengguna dan kata sandi PhpGedView anda."
-
-#~ msgid "Your server’s administrator will provide you with the connection details."
-#~ msgstr "Administrator server Anda akan memberi Anda detail koneksi."
-
-#~ msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-#~ msgstr "Akun pengguna Anda tidak memiliki \"secara otomatis menerima perubahan\" diaktifkan. Anda hanya dapat mengubah satu catatan dalam satu waktu."
-
-#~ msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
-#~ msgstr "Server web anda menggunakan PHP versi %s, yang tidak lagi dipertahankan. anda harus meningkatkan ke versi yang lebih baru."
-
-#~ msgid "Zip file(s)"
-#~ msgstr "Berkas Zip"
-
-#~ msgid "Zoom in/out on this box."
-#~ msgstr "Perbesar/perkecil kotak ini."
-
-#~ msgid "Zoom level"
-#~ msgstr "Tingkat pembesaran"
-
-#~ msgid "a.m."
-#~ msgstr "a.m."
-
-#~ msgctxt "FEMALE"
-#~ msgid "adopted name"
-#~ msgstr "nama adopsi"
-
-#~ msgctxt "MALE"
-#~ msgid "adopted name"
-#~ msgstr "nama adopsi"
-
-#~ msgid "adoption"
-#~ msgstr "adopsi"
-
-#~ msgctxt "FEMALE"
-#~ msgid "also known as"
-#~ msgstr "nama terkenal"
-
-#~ msgctxt "MALE"
-#~ msgid "also known as"
-#~ msgstr "nama terkenal"
-
-#~ msgid "always"
-#~ msgstr "selamanya"
-
-#~ msgid "birth"
-#~ msgstr "lahir"
-
-#~ msgctxt "FEMALE"
-#~ msgid "birth name"
-#~ msgstr "nama lahir"
-
-#~ msgctxt "MALE"
-#~ msgid "birth name"
-#~ msgstr "nama lahir"
-
-#~ msgid "burial"
-#~ msgstr "pemakaman"
-
-#~ msgid "by"
-#~ msgstr "oleh"
-
-#~ msgid "census added"
-#~ msgstr "sensus ditambahkan"
-
-#~ msgid "century"
-#~ msgstr "kurun"
-
-#~ msgctxt "FEMALE"
-#~ msgid "change of name"
-#~ msgstr "nama julukan"
-
-#~ msgctxt "MALE"
-#~ msgid "change of name"
-#~ msgstr "nama julukan"
-
-#~ msgid "children"
-#~ msgstr "Anak"
-
-#~ msgid "creating thumbnails of images"
-#~ msgstr "buat gambar kecil"
-
-#~ msgid "death"
-#~ msgstr "wafat"
-
-#~ msgctxt "FEMALE"
-#~ msgid "estate name"
-#~ msgstr "nama daerah"
-
-#~ msgctxt "MALE"
-#~ msgid "estate name"
-#~ msgstr "nama daerah"
-
-#~ msgid "ex-partner"
-#~ msgstr "mantan mitra"
-
-#~ msgctxt "FEMALE"
-#~ msgid "ex-partner"
-#~ msgstr "mantan mitra"
-
-#~ msgctxt "MALE"
-#~ msgid "ex-partner"
-#~ msgstr "mantan mitra"
-
-#~ msgid "file upload capability"
-#~ msgstr "kemampuan mengunggah file"
-
-#~ msgid "hh:mm or hh:mm:ss"
-#~ msgstr "jj:mm atau jj:mm:dd"
-
-#~ msgctxt "FEMALE"
-#~ msgid "immigration name"
-#~ msgstr "nama imigrasi"
-
-#~ msgctxt "MALE"
-#~ msgid "immigration name"
-#~ msgstr "nama imigrasi"
-
-#~ msgid "import"
-#~ msgstr "impor"
-
-#~ msgid "interval one child"
-#~ msgstr "selang satu anak"
-
-#~ msgid "interval two children"
-#~ msgstr "selang dua anak"
-
-#~ msgid "link"
-#~ msgstr "Tetapkan kaitan"
-
-#~ msgid "marriage"
-#~ msgstr "pernikahan"
-
-#~ msgctxt "FEMALE"
-#~ msgid "married name"
-#~ msgstr "nama setelah menikah"
-
-#~ msgctxt "MALE"
-#~ msgid "married name"
-#~ msgstr "nama setelah menikah"
-
-#~ msgid "midnight"
-#~ msgstr "tengah malam"
-
-#~ msgid "month"
-#~ msgstr "bulan"
-
-#~ msgid "never"
-#~ msgstr "tidak pernah"
-
-#~ msgid "noon"
-#~ msgstr "tengah hari"
-
-#~ msgid "p.m."
-#~ msgstr "p.m."
-
-#~ msgid "preview"
-#~ msgstr "pratinjau"
-
-#~ msgctxt "FEMALE"
-#~ msgid "religious name"
-#~ msgstr "nama relijius"
-
-#~ msgctxt "MALE"
-#~ msgid "religious name"
-#~ msgstr "nama relijius"
-
-#~ msgid "reporting"
-#~ msgstr "pelaporan"
-
-#~ msgid "ssl"
-#~ msgstr "Lapisan Soket Aman"
-
-#~ msgid "tls"
-#~ msgstr "Keamanan Lapisan Transportasi"
-
-#~ msgid "webtrees cannot connect to the PhpGedView database: %s."
-#~ msgstr "Situs Webtrees tidak dapat terhubung ke database PhpGedView: %s."
-
-#~ msgid "webtrees needs a MySQL database, version %s or later."
-#~ msgstr "situs memerlukan database MySQL, versi %s atau lebih baru."
-
-#~ msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-#~ msgstr "Situs perlu mengirim pesan, seperti pengingat kata sandi dan pengumuman situs. untuk melakukan ini, dapat menggunakan server ini dibangun di fasilitas surat PHP (yang tidak selalu tersedia) atau layanan SMTP (email-relay) eksternal, yang mana anda perlu memberikan rincian koneksi."
-
-#~ msgid "webtrees reply address"
-#~ msgstr "Alamat balasan situs"
-
-#~ msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-#~ msgstr "situs menggunakan enkode UTF-8 untuk huruf beraksen, karakter khusus dan skrip non-latin. jika anda ingin menggunakan file GEDCOM ini dengan perangkat lunak genealogi yang tidak mendukung UTF-8, maka anda dapat membuatnya menggunakan pengkodean ISO-8859-1."
-
-#~ msgid "webtrees’ database must be on the same server as PhpGedView’s"
-#~ msgstr "Database situs ini harus berada di server yang sama dengan PhpGedView"
-
-#~ msgid "years"
-#~ msgstr "tahun"
-
-#, php-format
-#~ msgid "“%s”"
-#~ msgstr "“%s”"
