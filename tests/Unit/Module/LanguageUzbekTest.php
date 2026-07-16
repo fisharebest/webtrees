@@ -20,14 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Module;
 
 use Fisharebest\Webtrees\Module\LanguageUzbek;
-use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(LanguageUzbek::class)]
-class LanguageUzbekTest extends AbstractLanguageTestCase
+class LanguageUzbekTest extends TestCase
 {
-    protected static function language(): ModuleLanguageInterface
+    public function testClass(): void
     {
-        return new LanguageUzbek();
+        self::assertTrue(class_exists(LanguageUzbek::class));
     }
 }

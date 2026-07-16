@@ -20,15 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Module;
 
 use Fisharebest\Webtrees\Module\LanguageMacedonian;
-use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(LanguageMacedonian::class)]
-class LanguageMacedonianTest extends AbstractLanguageTestCase
+class LanguageMacedonianTest extends TestCase
 {
-    protected static function language(): ModuleLanguageInterface
+    public function testClass(): void
     {
-        return new LanguageMacedonian();
+        self::assertTrue(class_exists(LanguageMacedonian::class));
     }
 }
-

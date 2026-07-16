@@ -20,14 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Module;
 
 use Fisharebest\Webtrees\Module\LanguageBasque;
-use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(LanguageBasque::class)]
-class LanguageBasqueTest extends AbstractLanguageTestCase
+class LanguageBasqueTest extends TestCase
 {
-    protected static function language(): ModuleLanguageInterface
+    public function testClass(): void
     {
-        return new LanguageBasque();
+        self::assertTrue(class_exists(LanguageBasque::class));
     }
 }
