@@ -311,21 +311,6 @@ table {
     content: url(webtrees/menu/list-indi.png);
 }
 
-.menu-calendar .nav-link::before {
-    content: url(webtrees/menu/calendar.png);
-}
-
-.menu-calendar-day::before {
-    content: url(webtrees/menu/calendar-calendar.png);
-}
-
-.menu-calendar-month::before {
-    content: url(webtrees/menu/calendar-calendar.png);
-}
-
-.menu-calendar-year::before {
-    content: url(webtrees/menu/calendar-calendar.png);
-}
 
 .menu-report .nav-link::before {
     content: url(webtrees/menu/report.png);
@@ -677,10 +662,6 @@ div.fact_SHARED_NOTE {
 
 .details_label {
     font-weight: bold;
-}
-
-.date {
-    color: #337;
 }
 
 .label {

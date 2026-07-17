@@ -77,4 +77,3 @@ class LanguageMacedonian extends AbstractModule implements ModuleLanguageInterfa
         return new LocaleMk();
     }
 }
-

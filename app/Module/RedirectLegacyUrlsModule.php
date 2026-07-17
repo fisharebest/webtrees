@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Module;
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectAncestryPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectBranchesPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectCalendarPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectCompactPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectDescendencyPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectFamilyBookPhp;
@@ -68,7 +67,6 @@ class RedirectLegacyUrlsModule extends AbstractModule
         // Legacy URLs from older software.
         $router->get(RedirectAncestryPhp::class, '/ancestry.php', RedirectAncestryPhp::class);
         $router->get(RedirectBranchesPhp::class, '/branches.php', RedirectBranchesPhp::class);
-        $router->get(RedirectCalendarPhp::class, '/calendar.php', RedirectCalendarPhp::class);
         $router->get(RedirectCompactPhp::class, '/compact.php', RedirectCompactPhp::class);
         $router->get(RedirectDescendencyPhp::class, '/compact.php', RedirectDescendencyPhp::class);
         $router->get(RedirectFamilyPhp::class, '/family.php', RedirectFamilyPhp::class);

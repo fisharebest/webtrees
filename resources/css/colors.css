@@ -283,21 +283,6 @@
     content: url(colors/menu/list-indi.png);
 }
 
-.menu-calendar .nav-link::before {
-    content: url(colors/menu/calendar.png);
-}
-
-.menu-calendar-day::before {
-    content: url(colors/menu/calendar-calendar.png);
-}
-
-.menu-calendar-month::before {
-    content: url(colors/menu/calendar-calendar.png);
-}
-
-.menu-calendar-year::before {
-    content: url(colors/menu/calendar-calendar.png);
-}
 
 .menu-report .nav-link::before {
     content: url(colors/menu/report.png);
@@ -426,10 +411,6 @@ table.center {
 
 .wt-facts-table th {
     border: 1px solid #ccc;
-}
-
-.date {
-    color: #333;
 }
 
 .rtl_cal_day {

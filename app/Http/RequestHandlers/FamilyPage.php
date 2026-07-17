@@ -112,7 +112,7 @@ final class FamilyPage implements RequestHandlerInterface
 
         foreach ($family->facts(['MARR', 'DIV'], true) as $fact) {
             if ($fact->date()->isOK()) {
-                $value = strip_tags($fact->date()->display());
+                $value = $fact->date()->display();
             } else {
                 $value = I18N::translate('yes');
             }

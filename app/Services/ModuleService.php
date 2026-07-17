@@ -37,7 +37,6 @@ use Fisharebest\Webtrees\Module\BranchesListModule;
 use Fisharebest\Webtrees\Module\BritishMonarchs;
 use Fisharebest\Webtrees\Module\BritishPrimeMinisters;
 use Fisharebest\Webtrees\Module\BritishSocialHistory;
-use Fisharebest\Webtrees\Module\CalendarMenuModule;
 use Fisharebest\Webtrees\Module\CemeteryReportModule;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Module\ChangeReportModule;
@@ -334,7 +333,6 @@ class ModuleService
         'british-monarchs'        => BritishMonarchs::class,
         'british-prime-ministers' => BritishPrimeMinisters::class,
         'british-social-history'  => BritishSocialHistory::class,
-        'calendar-menu'           => CalendarMenuModule::class,
         'cemetery_report'         => CemeteryReportModule::class,
         'change_report'           => ChangeReportModule::class,
         'charts'                  => ChartsBlockModule::class,

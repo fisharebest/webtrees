@@ -898,9 +898,7 @@ final class ParserGenerate extends AbstractParser
             $value = GedcomTextReader::getGedcomValue($tag, $level, $this->gedrec, $this->tree);
 
             if ($tag === 'DATE' || str_ends_with($tag, ':DATE')) {
-                $value = strip_tags((new Date($value))->display());
-                // Some translations have NBSP between the epoch and the year.
-                $value = strtr($value, ['&nbsp;' => "\u{a0}"]);
+                $value = (new Date($value))->display();
             }
 
             if ($tag === 'PLAC' || str_ends_with($tag, ':PLAC')) {
@@ -1060,7 +1058,7 @@ final class ParserGenerate extends AbstractParser
             $roman_numerals_service = new RomanNumeralsService();
 
             $variable_value = match ($attrs['format']) {
-                'date'   => strip_tags((new Date($variable_value))->display()),
+                'date'   => (new Date($variable_value))->display(),
                 'number' => I18N::number((int) $variable_value),
                 'roman'  => strtolower($roman_numerals_service->numberToRomanNumerals((int) $variable_value)),
                 default  => throw new LogicException(sprintf('Unknown format "%s" for <var>.', $attrs['format'])),

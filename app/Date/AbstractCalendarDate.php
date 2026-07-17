@@ -21,10 +21,8 @@ namespace Fisharebest\Webtrees\Date;
 
 use Fisharebest\ExtCalendar\CalendarInterface;
 use Fisharebest\ExtCalendar\JewishCalendar;
-use Fisharebest\Webtrees\Http\RequestHandlers\CalendarPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
 use InvalidArgumentException;
 
 use function get_class;
@@ -32,10 +30,8 @@ use function intdiv;
 use function is_array;
 use function is_int;
 use function preg_match;
-use function route;
 use function sprintf;
 use function str_contains;
-use function strpbrk;
 use function strtr;
 use function trim;
 
@@ -754,31 +750,5 @@ abstract class AbstractCalendarDate
         $tmp->setJdFromYmd();
 
         return $tmp;
-    }
-
-    /**
-     * Create a URL that links this date to the WT calendar
-     */
-    public function calendarUrl(string $date_format, Tree $tree): string
-    {
-        if ($this->day !== 0 && strpbrk($date_format, 'dDj')) {
-            // If the format includes a day, and the date also includes a day, then use the day view
-            $view = 'day';
-        } elseif ($this->month !== 0 && strpbrk($date_format, 'FMmn')) {
-            // If the format includes a month, and the date also includes a month, then use the month view
-            $view = 'month';
-        } else {
-            // Use the year view
-            $view = 'year';
-        }
-
-        return route(CalendarPage::class, [
-            'cal'   => $this->calendar->gedcomCalendarEscape(),
-            'year'  => $this->formatGedcomYear(),
-            'month' => $this->formatGedcomMonth(),
-            'day'   => $this->formatGedcomDay(),
-            'view'  => $view,
-            'tree'  => $tree->name(),
-        ]);
     }
 }

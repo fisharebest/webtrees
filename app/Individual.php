@@ -24,6 +24,7 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Comparators\IndividualComparator;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
 use Illuminate\Support\Collection;
 
@@ -415,10 +416,8 @@ class Individual extends GedcomRecord
         $birth_place = strip_tags($this->getBirthPlace()->shortName());
         $death_place = strip_tags($this->getDeathPlace()->shortName());
 
-        // Remove markup from dates.  Use UTF_FSI / UTF_PDI instead of <bdi></bdi>, as
-        // we cannot use HTML markup in title attributes.
-        $birth_date = "\u{2068}" . strip_tags($this->getBirthDate()->display()) . "\u{2069}";
-        $death_date = "\u{2068}" . strip_tags($this->getDeathDate()->display()) . "\u{2069}";
+        $birth_date = UTF8::FIRST_STRONG_ISOLATE . $this->getBirthDate()->display() . UTF8::POP_DIRECTIONAL_ISOLATE;
+        $death_date = UTF8::FIRST_STRONG_ISOLATE . $this->getDeathDate()->display() . UTF8::POP_DIRECTIONAL_ISOLATE;
 
         // Use minimum and maximum dates - to agree with the age calculations.
         $birth_year = $this->getBirthDate()->minimumDate()->format('%Y');
@@ -441,7 +440,7 @@ class Individual extends GedcomRecord
     }
 
     /**
-     * Get all the birth dates - for the individual lists.
+     * Get all the birthdates - for the individual lists.
      *
      * @return array<Date>
      */
@@ -459,7 +458,7 @@ class Individual extends GedcomRecord
     }
 
     /**
-     * Gat all the birth places - for the individual lists.
+     * Get all the birthplaces - for the individual lists.
      *
      * @return array<Place>
      */
