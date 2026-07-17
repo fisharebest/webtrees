@@ -240,17 +240,9 @@ table {
  * wt-route-individual
  * +---wt-header-wrapper
  */
-.wt-individual-silhouette-f {
-    content: url(images/individual-silhouette-female.png);
-}
 
-.wt-individual-silhouette-m {
-    content: url(images/individual-silhouette-male.png);
-}
-
-.wt-individual-silhouette-u,
-.wt-individual-silhouette-x {
-    content: url(images/individual-silhouette-unknown.png);
+.wt-individual-silhouette {
+    color: var(--bs-secondary-color);
 }
 
 /*
