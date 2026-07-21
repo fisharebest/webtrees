@@ -1,2 +1,0 @@
-coverage_clover: tests/clover.xml
-json_path: coverage-upload.json
