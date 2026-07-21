@@ -18,7 +18,7 @@ use Illuminate\Support\Collection;
 
 <div class="table-responsive">
     <table
-        class="table table-sm wt-datatables wt-table-events"
+        class="table table-sm wt-datatables wt-table-events d-none"
         <?= view('lists/datatables-attributes') ?>
         data-paging="<?= $facts->count() >= $limit_high ? 'true' : 'false' ?>"
         data-filter="false"
