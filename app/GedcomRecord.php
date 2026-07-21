@@ -949,11 +949,6 @@ class GedcomRecord
      */
     private function canShowRecord(int $access_level): bool
     {
-        // This setting would better be called "$ENABLE_PRIVACY"
-        if (!$this->tree->getPreference('HIDE_LIVE_PEOPLE')) {
-            return true;
-        }
-
         // We should always be able to see our own record (unless an admin is applying download restrictions)
         if ($this->xref() === $this->tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF) && $access_level === Auth::accessLevel($this->tree)) {
             return true;
@@ -984,6 +979,13 @@ class GedcomRecord
 
         // Privacy rules do not apply to admins
         if (Auth::PRIV_NONE >= $access_level) {
+            return true;
+        }
+
+        // This setting would better be called "$ENABLE_PRIVACY".
+        // It only controls the *default* rules for living people (see canShowByType()) -
+        // explicit restrictions (RESN tags, individual privacy overrides, above) always apply.
+        if (!$this->tree->getPreference('HIDE_LIVE_PEOPLE')) {
             return true;
         }
 
