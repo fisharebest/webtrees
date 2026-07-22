@@ -24,7 +24,8 @@ use Fisharebest\Webtrees\Comparators\FactComparator;
 use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Elements\RestrictionNotice;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Enums\Restriction;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Illuminate\Support\Collection;
@@ -51,9 +52,7 @@ use function preg_split;
 use function range;
 use function route;
 use function str_contains;
-use function str_ends_with;
 use function str_pad;
-use function str_starts_with;
 use function strtoupper;
 use function strtr;
 use function trigger_error;
@@ -217,17 +216,17 @@ class GedcomRecord
     /**
      * Can the details of this record be shown?
      */
-    public function canShow(int|null $access_level = null): bool
+    public function canShow(AccessLevel|null $access_level = null): bool
     {
         $access_level ??= Auth::accessLevel($this->tree);
 
         // We use this value to bypass privacy checks. For example,
         // when downloading data or when calculating privacy itself.
-        if ($access_level === Auth::PRIV_HIDE) {
+        if ($access_level === AccessLevel::Hidden) {
             return true;
         }
 
-        $cache_key = 'show-' . $this->xref . '-' . $this->tree->id() . '-' . $access_level;
+        $cache_key = 'show-' . $this->xref . '-' . $this->tree->id() . '-' . $access_level->value;
 
         return Registry::cache()->array()->remember($cache_key, fn () => $this->canShowRecord($access_level));
     }
@@ -235,7 +234,7 @@ class GedcomRecord
     /**
      * Can the name of this record be shown?
      */
-    public function canShowName(int|null $access_level = null): bool
+    public function canShowName(AccessLevel|null $access_level = null): bool
     {
         return $this->canShow($access_level);
     }
@@ -254,7 +253,7 @@ class GedcomRecord
         }
 
         $fact   = $this->facts(['RESN'])->first();
-        $locked = $fact instanceof Fact && str_ends_with($fact->value(), RestrictionNotice::VALUE_LOCKED);
+        $locked = $fact instanceof Fact && Restriction::fromString($fact->value())->isLocked();
 
         return Auth::isEditor($this->tree) && !$locked;
     }
@@ -262,9 +261,9 @@ class GedcomRecord
     /**
      * Remove private data from the raw gedcom record.
      */
-    public function privatizeGedcom(int $access_level): string
+    public function privatizeGedcom(AccessLevel $access_level): string
     {
-        if ($access_level === Auth::PRIV_HIDE) {
+        if ($access_level === AccessLevel::Hidden) {
             return $this->gedcom;
         }
 
@@ -548,7 +547,7 @@ class GedcomRecord
     public function facts(
         array $filter = [],
         bool $sort = false,
-        int|null $access_level = null,
+        AccessLevel|null $access_level = null,
         bool $ignore_deleted = false
     ): Collection {
         $access_level ??= Auth::accessLevel($this->tree);
@@ -693,7 +692,7 @@ class GedcomRecord
 
         $inserted = false;
 
-        foreach ($this->facts([], false, Auth::PRIV_HIDE, true) as $fact) {
+        foreach ($this->facts([], false, AccessLevel::Hidden, true) as $fact) {
             if (!$inserted && $fact->id() === $before?->id()) {
                 $new_gedcom .= "\n" . $gedcom;
                 $inserted = true;
@@ -716,7 +715,7 @@ class GedcomRecord
 
         $deleted = false;
 
-        foreach ($this->facts([], false, Auth::PRIV_HIDE, true) as $fact) {
+        foreach ($this->facts([], false, AccessLevel::Hidden, true) as $fact) {
             if (!$deleted && $fact->id() === $fact_id) {
                 $deleted = true;
             } else {
@@ -752,7 +751,7 @@ class GedcomRecord
 
         $updated = false;
 
-        foreach ($this->facts([], false, Auth::PRIV_HIDE, true) as $fact) {
+        foreach ($this->facts([], false, AccessLevel::Hidden, true) as $fact) {
             if (!$updated && $fact->id() === $fact_id) {
                 $new_gedcom .= "\n" . $gedcom;
                 $updated    = true;
@@ -836,13 +835,13 @@ class GedcomRecord
     /**
      * Each object type may have its own special rules, and re-implement this function.
      */
-    protected function canShowByType(int $access_level): bool
+    protected function canShowByType(AccessLevel $access_level): bool
     {
         $fact_privacy = $this->tree->getFactPrivacy();
 
         if (isset($fact_privacy[static::RECORD_TYPE])) {
             // Restriction found
-            return $fact_privacy[static::RECORD_TYPE] >= $access_level;
+            return $fact_privacy[static::RECORD_TYPE]->allows($access_level);
         }
 
         // No restriction found - must be public:
@@ -945,7 +944,7 @@ class GedcomRecord
     /**
      * Work out whether this record can be shown to a user with a given access level
      */
-    private function canShowRecord(int $access_level): bool
+    private function canShowRecord(AccessLevel $access_level): bool
     {
         // This setting would better be called "$ENABLE_PRIVACY"
         if ($this->tree->getPreference('HIDE_LIVE_PEOPLE') !== '1') {
@@ -958,30 +957,22 @@ class GedcomRecord
         }
 
         // Does this record have a restriction notice?
-        // Cannot use $this->>fact(), as that function calls this one.
+        // Cannot use $this->fact(), as that function calls this one.
         if (preg_match('/\n1 RESN (.+)/', $this->gedcom(), $match)) {
-            $element     = new RestrictionNotice('');
-            $restriction = $element->canonical($match[1]);
-
-            if (str_starts_with($restriction, RestrictionNotice::VALUE_CONFIDENTIAL)) {
-                return Auth::PRIV_NONE >= $access_level;
-            }
-            if (str_starts_with($restriction, RestrictionNotice::VALUE_PRIVACY)) {
-                return Auth::PRIV_USER >= $access_level;
-            }
-            if (str_starts_with($restriction, RestrictionNotice::VALUE_NONE)) {
-                return true;
+            $restriction_level = Restriction::fromString($match[1])->accessLevel();
+            if ($restriction_level !== null) {
+                return $restriction_level->allows($access_level);
             }
         }
 
         // Does this record have a default RESN?
         $individual_privacy = $this->tree->getIndividualPrivacy();
         if (isset($individual_privacy[$this->xref()])) {
-            return $individual_privacy[$this->xref()] >= $access_level;
+            return $individual_privacy[$this->xref()]->allows($access_level);
         }
 
         // Privacy rules do not apply to admins
-        if (Auth::PRIV_NONE >= $access_level) {
+        if (AccessLevel::Manager->allows($access_level)) {
             return true;
         }
 

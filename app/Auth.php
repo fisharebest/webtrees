@@ -20,6 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\ModuleInterface;
@@ -32,12 +34,6 @@ use function is_int;
  */
 class Auth
 {
-    // Privacy constants
-    public const int PRIV_PRIVATE = 2; // Allows visitors to view the item
-    public const int PRIV_USER    = 1; // Allows members to access the item
-    public const int PRIV_NONE    = 0; // Allows managers to access the item
-    public const int PRIV_HIDE    = -1; // Hide the item to all users
-
     /**
      * Are we currently logged in?
      */
@@ -63,7 +59,7 @@ class Auth
     {
         $user ??= self::user();
 
-        return self::isAdmin($user) || $tree->getUserPreference($user, UserInterface::PREF_TREE_ROLE) === UserInterface::ROLE_MANAGER;
+        return self::isAdmin($user) || $tree->getUserPreference($user, UserInterface::PREF_TREE_ROLE) === Role::Manager->value;
     }
 
     /**
@@ -75,7 +71,7 @@ class Auth
 
         return
             self::isManager($tree, $user) ||
-            $tree->getUserPreference($user, UserInterface::PREF_TREE_ROLE) === UserInterface::ROLE_MODERATOR;
+            $tree->getUserPreference($user, UserInterface::PREF_TREE_ROLE) === Role::Moderator->value;
     }
 
     /**
@@ -87,7 +83,7 @@ class Auth
 
         return
             self::isModerator($tree, $user) ||
-            $tree->getUserPreference($user, UserInterface::PREF_TREE_ROLE) === UserInterface::ROLE_EDITOR;
+            $tree->getUserPreference($user, UserInterface::PREF_TREE_ROLE) === Role::Editor->value;
     }
 
     /**
@@ -99,33 +95,36 @@ class Auth
 
         return
             self::isEditor($tree, $user) ||
-            $tree->getUserPreference($user, UserInterface::PREF_TREE_ROLE) === UserInterface::ROLE_MEMBER;
+            $tree->getUserPreference($user, UserInterface::PREF_TREE_ROLE) === Role::Member->value;
     }
 
     /**
      * What is the specified/current user's access level within a tree?
      */
-    public static function accessLevel(Tree $tree, UserInterface|null $user = null): int
+    public static function accessLevel(Tree $tree, UserInterface|null $user = null): AccessLevel
     {
         $user ??= self::user();
 
         if (self::isManager($tree, $user)) {
-            return self::PRIV_NONE;
+            return AccessLevel::Manager;
         }
 
         if (self::isMember($tree, $user)) {
-            return self::PRIV_USER;
+            return AccessLevel::Member;
         }
 
-        return self::PRIV_PRIVATE;
+        return AccessLevel::Public;
     }
 
     /**
      * Should media be watermarked for the specified/current user in a tree?
+     * The tree preference stores the most public access level that can view without a watermark.
      */
     public static function needsWatermark(Tree $tree, UserInterface|null $user = null): bool
     {
-        return self::accessLevel($tree, $user) > (int) $tree->getPreference('SHOW_NO_WATERMARK');
+        $watermark_level = AccessLevel::fromTreePreference($tree, 'SHOW_NO_WATERMARK');
+
+        return $watermark_level->disallows(self::accessLevel($tree, $user));
     }
 
     /**
@@ -172,7 +171,7 @@ class Auth
      */
     public static function checkComponentAccess(ModuleInterface $module, string $interface, Tree $tree, UserInterface $user): void
     {
-        if ($module->accessLevel($tree, $interface) < self::accessLevel($tree, $user)) {
+        if ($module->accessLevel($tree, $interface)->disallows(self::accessLevel($tree, $user))) {
             throw new HttpAccessDeniedException();
         }
     }
@@ -438,9 +437,11 @@ class Auth
 
     public static function canUploadMedia(Tree $tree, UserInterface $user): bool
     {
+        $upload_level = AccessLevel::fromTreePreference($tree, 'MEDIA_UPLOAD');
+
         return
             self::isEditor($tree, $user) &&
-            self::accessLevel($tree, $user) <= (int) $tree->getPreference('MEDIA_UPLOAD');
+            $upload_level->allows(self::accessLevel($tree, $user));
     }
 
     /**
@@ -448,12 +449,13 @@ class Auth
      */
     public static function accessLevelNames(): array
     {
-        return [
-            self::PRIV_PRIVATE => I18N::translate('Show to visitors'),
-            self::PRIV_USER    => I18N::translate('Show to members'),
-            self::PRIV_NONE    => I18N::translate('Show to managers'),
-            self::PRIV_HIDE    => I18N::translate('Hide from everyone'),
-        ];
+        $names = [];
+
+        foreach (AccessLevel::cases() as $level) {
+            $names[$level->value] = $level->label();
+        }
+
+        return $names;
     }
 
     /**

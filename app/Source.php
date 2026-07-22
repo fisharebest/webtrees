@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
 
 /**
@@ -33,7 +34,7 @@ class Source extends GedcomRecord
     /**
      * Each object type may have its own special rules, and re-implement this function.
      */
-    protected function canShowByType(int $access_level): bool
+    protected function canShowByType(AccessLevel $access_level): bool
     {
         // Hide sources if they are attached to private repositories ...
         preg_match_all('/\n1 REPO @(.+)@/', $this->gedcom, $matches);

@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\Factories\LanguageFactory;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -33,6 +33,9 @@ use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+
+use function array_column;
+use function array_map;
 
 final class UserEditPage implements RequestHandlerInterface
 {
@@ -57,18 +60,8 @@ final class UserEditPage implements RequestHandlerInterface
             throw new HttpNotFoundException(I18N::translate('%s does not exist.', 'user_id:' . $user_id));
         }
 
-        $roles = [
-            /* I18N: Listbox entry; name of a role */
-            UserInterface::ROLE_VISITOR   => I18N::translate('Visitor'),
-            /* I18N: Listbox entry; name of a role */
-            UserInterface::ROLE_MEMBER    => I18N::translate('Member'),
-            /* I18N: Listbox entry; name of a role */
-            UserInterface::ROLE_EDITOR    => I18N::translate('Editor'),
-            /* I18N: Listbox entry; name of a role */
-            UserInterface::ROLE_MODERATOR => I18N::translate('Moderator'),
-            /* I18N: Listbox entry; name of a role */
-            UserInterface::ROLE_MANAGER   => I18N::translate('Manager'),
-        ];
+        $roles = array_column(Role::cases(), null, 'value');
+        $roles = array_map(static fn (Role $role): string => $role->label(), $roles);
 
         $theme_options = $this->module_service
             ->findByInterface(ModuleThemeInterface::class)

@@ -17,28 +17,21 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Module;
+namespace Fisharebest\Webtrees\Tests\Unit\Enums;
 
-use Fisharebest\Webtrees\Enums\AccessLevel;
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Enums\Role;
+use Fisharebest\Webtrees\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-class FactSourcesReportModule extends AbstractModule implements ModuleReportInterface
+#[CoversClass(Role::class)]
+class RoleTest extends TestCase
 {
-    use ModuleReportTrait;
-
-    protected AccessLevel $access_level = AccessLevel::Member;
-
-    public function title(): string
+    public function testLabel(): void
     {
-        // This text also appears in the .XML file - update both together
-        /* I18N: Name of a module/report */
-        return I18N::translate('Source');
-    }
-
-    public function description(): string
-    {
-        // This text also appears in the .XML file - update both together
-        /* I18N: Description of the “Source” module */
-        return I18N::translate('A report of the information provided by a source.');
+        self::assertNotSame('', Role::Visitor->label());
+        self::assertNotSame('', Role::Member->label());
+        self::assertNotSame('', Role::Editor->label());
+        self::assertNotSame('', Role::Moderator->label());
+        self::assertNotSame('', Role::Manager->label());
     }
 }

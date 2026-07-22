@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\Encodings\ANSEL;
 use Fisharebest\Webtrees\Encodings\ASCII;
@@ -103,8 +104,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         'Submitter'  => SubmitterPage::class,
     ];
 
-    /** @var int The default access level for this module.  It can be changed in the control panel. */
-    protected int $access_level = Auth::PRIV_USER;
+    protected AccessLevel $access_level = AccessLevel::Member;
 
     public function __construct(
         private GedcomExportService $gedcom_export_service,
@@ -238,17 +238,17 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         switch ($privacy) {
             case 'gedadmin':
-                $access_level = Auth::PRIV_NONE;
+                $access_level = AccessLevel::Manager;
                 break;
             case 'user':
-                $access_level = Auth::PRIV_USER;
+                $access_level = AccessLevel::Member;
                 break;
             case 'visitor':
-                $access_level = Auth::PRIV_PRIVATE;
+                $access_level = AccessLevel::Public;
                 break;
             case 'none':
             default:
-                $access_level = Auth::PRIV_HIDE;
+                $access_level = AccessLevel::Hidden;
                 break;
         }
 

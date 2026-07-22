@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleInterface;
@@ -84,7 +85,7 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
         foreach ($modules as $module) {
             foreach ($trees as $tree) {
                 $key          = 'access-' . $module->name() . '-' . $tree->id();
-                $access_level = Validator::parsedBody($request)->integer($key);
+                $access_level = AccessLevel::from(Validator::parsedBody($request)->integer($key));
 
                 if ($access_level !== $module->accessLevel($tree, $interface)) {
                     DB::table('module_privacy')->updateOrInsert([

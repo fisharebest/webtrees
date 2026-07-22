@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -49,7 +50,7 @@ class GedcomRecordTest extends TestCase
 
         $tree_service = new TreeService(new GedcomImportService());
         $this->tree   = $tree_service->create('test', 'test');
-        $this->tree->setUserPreference($this->user, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MANAGER);
+        $this->tree->setUserPreference($this->user, UserInterface::PREF_TREE_ROLE, Role::Manager->value);
     }
 
     public function tearDown(): void

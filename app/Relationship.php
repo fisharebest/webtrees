@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 
 use function abs;
 use function array_slice;
@@ -113,7 +114,7 @@ class Relationship
     public function adopted(): Relationship
     {
         $this->matchers[] = static fn (array $nodes): bool => count($nodes) > 2 && $nodes[2]
-                ->facts(['FAMC'], false, Auth::PRIV_HIDE)
+                ->facts(['FAMC'], false, AccessLevel::Hidden)
                 ->contains(fn (Fact $fact): bool => $fact->value() === '@' . $nodes[1]->xref() . '@' && $fact->attribute('PEDI') === PedigreeLinkageType::VALUE_ADOPTED);
 
         return $this;
@@ -122,7 +123,7 @@ class Relationship
     public function adoptive(): Relationship
     {
         $this->matchers[] = static fn (array $nodes): bool => $nodes[0]
-            ->facts(['FAMC'], false, Auth::PRIV_HIDE)
+            ->facts(['FAMC'], false, AccessLevel::Hidden)
             ->contains(fn (Fact $fact): bool => $fact->value() === '@' . $nodes[1]->xref() . '@' && $fact->attribute('PEDI') === PedigreeLinkageType::VALUE_ADOPTED);
 
         return $this;
@@ -231,7 +232,7 @@ class Relationship
             $family = $nodes[1] ?? null;
 
             if ($family instanceof Family) {
-                $fact = $family->facts(['ENGA', 'MARR', 'DIV', 'ANUL'], true, Auth::PRIV_HIDE)->last();
+                $fact = $family->facts(['ENGA', 'MARR', 'DIV', 'ANUL'], true, AccessLevel::Hidden)->last();
 
                 if ($fact instanceof Fact) {
                     switch ($status) {
@@ -281,7 +282,7 @@ class Relationship
     public function fostered(): Relationship
     {
         $this->matchers[] = static fn (array $nodes): bool => count($nodes) > 2 && $nodes[2]
-                ->facts(['FAMC'], false, Auth::PRIV_HIDE)
+                ->facts(['FAMC'], false, AccessLevel::Hidden)
                 ->contains(fn (Fact $fact): bool => $fact->value() === '@' . $nodes[1]->xref() . '@' && $fact->attribute('PEDI') === PedigreeLinkageType::VALUE_FOSTER);
 
         return $this;
@@ -290,7 +291,7 @@ class Relationship
     public function fostering(): Relationship
     {
         $this->matchers[] = static fn (array $nodes): bool => $nodes[0]
-            ->facts(['FAMC'], false, Auth::PRIV_HIDE)
+            ->facts(['FAMC'], false, AccessLevel::Hidden)
             ->contains(fn (Fact $fact): bool => $fact->value() === '@' . $nodes[1]->xref() . '@' && $fact->attribute('PEDI') === PedigreeLinkageType::VALUE_FOSTER);
 
         return $this;
@@ -330,8 +331,8 @@ class Relationship
     public function older(): Relationship
     {
         $this->matchers[] = static function (array $nodes): bool {
-            $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
-            $date2 = $nodes[count($nodes) - 1]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date1 = $nodes[0]->facts(['BIRT'], false, AccessLevel::Hidden)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date2 = $nodes[count($nodes) - 1]->facts(['BIRT'], false, AccessLevel::Hidden)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
 
             return Date::compare($date1, $date2) > 0;
         };
@@ -409,8 +410,8 @@ class Relationship
     public function twin(): Relationship
     {
         $this->matchers[] = static function (array $nodes): bool {
-            $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
-            $date2 = $nodes[count($nodes) - 1]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date1 = $nodes[0]->facts(['BIRT'], false, AccessLevel::Hidden)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date2 = $nodes[count($nodes) - 1]->facts(['BIRT'], false, AccessLevel::Hidden)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
 
             return
                 $date1->isOK() &&
@@ -431,8 +432,8 @@ class Relationship
     public function younger(): Relationship
     {
         $this->matchers[] = static function (array $nodes): bool {
-            $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
-            $date2 = $nodes[count($nodes) - 1]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date1 = $nodes[0]->facts(['BIRT'], false, AccessLevel::Hidden)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date2 = $nodes[count($nodes) - 1]->facts(['BIRT'], false, AccessLevel::Hidden)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
 
             return Date::compare($date1, $date2) < 0;
         };

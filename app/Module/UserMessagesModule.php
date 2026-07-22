@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
@@ -101,7 +102,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             });
 
         $users = $this->user_service->all()->filter(static function (UserInterface $user) use ($tree): bool {
-            $can_see_tree = !$tree->private() || Auth::accessLevel($tree, $user) <= Auth::PRIV_USER;
+            $can_see_tree = !$tree->private() || AccessLevel::Member->allows(Auth::accessLevel($tree, $user));
 
             return
                 $user->id() !== Auth::id() &&

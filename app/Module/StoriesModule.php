@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
@@ -53,8 +54,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $this->tree_service = $tree_service;
     }
 
-    /** @var int The default access level for this module.  It can be changed in the control panel. */
-    protected int $access_level = Auth::PRIV_HIDE;
+    protected AccessLevel $access_level = AccessLevel::Hidden;
 
     public function description(): string
     {

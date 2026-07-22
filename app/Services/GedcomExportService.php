@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Encodings\UTF16BE;
 use Fisharebest\Webtrees\Encodings\UTF16LE;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Encodings\Windows1252;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Factories\AbstractGedcomRecordFactory;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
@@ -72,10 +73,10 @@ use const STREAM_FILTER_WRITE;
 class GedcomExportService
 {
     private const array ACCESS_LEVELS = [
-        'gedadmin' => Auth::PRIV_NONE,
-        'user'     => Auth::PRIV_USER,
-        'visitor'  => Auth::PRIV_PRIVATE,
-        'none'     => Auth::PRIV_HIDE,
+        'gedadmin' => AccessLevel::Manager,
+        'user'     => AccessLevel::Member,
+        'visitor'  => AccessLevel::Public,
+        'none'     => AccessLevel::Hidden,
     ];
 
     public function __construct(
@@ -158,7 +159,7 @@ class GedcomExportService
      * @param Tree                                            $tree           Export data from this tree
      * @param bool                                            $sort_by_xref   Write GEDCOM records in XREF order
      * @param string                                          $encoding       Convert from UTF-8 to other encoding
-     * @param int                                             $access_level   Apply privacy filtering
+     * @param AccessLevel                                     $access_level   Apply privacy filtering
      * @param string                                          $line_endings   CRLF or LF
      * @param Collection<int,string|object|GedcomRecord>|null $records        Just export these records
      * @param ZipArchive|FilesystemOperator|null              $zip_filesystem Write media files to this filesystem
@@ -170,7 +171,7 @@ class GedcomExportService
         Tree $tree,
         bool $sort_by_xref = false,
         string $encoding = UTF8::NAME,
-        int $access_level = Auth::PRIV_HIDE,
+        AccessLevel $access_level = AccessLevel::Hidden,
         string $line_endings = 'CRLF',
         Collection|null $records = null,
         ZipArchive|FilesystemOperator|null $zip_filesystem = null,
@@ -191,7 +192,7 @@ class GedcomExportService
                 $records,
                 new Collection(['0 TRLR']),
             ];
-        } elseif ($access_level === Auth::PRIV_HIDE) {
+        } elseif ($access_level === AccessLevel::Hidden) {
             // If we will be applying privacy filters, then we will need the GEDCOM record objects.
             $data = [
                 new Collection([$this->createHeader($tree, $encoding, true, $access_level)]),
@@ -287,7 +288,7 @@ class GedcomExportService
         return $stream;
     }
 
-    public function createHeader(Tree $tree, string $encoding, bool $include_sub, int $access_level): string
+    public function createHeader(Tree $tree, string $encoding, bool $include_sub, AccessLevel $access_level): string
     {
         // Force a ".ged" suffix
         $filename = $tree->name();

@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
@@ -83,7 +84,7 @@ final class AddSpouseToIndividualAction implements RequestHandlerInterface
                 Date::compare($family->getMarriageDate(), $fact->target()->getMarriageDate()) < 0;
         };
         return $partner
-            ->facts(['FAMS'], false, Auth::PRIV_HIDE, true)
+            ->facts(['FAMS'], false, AccessLevel::Hidden, true)
             ->first($filter);
     }
 }

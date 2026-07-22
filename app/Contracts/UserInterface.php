@@ -45,12 +45,6 @@ interface UserInterface
     public const string PREF_TREE_PATH_LENGTH  = 'RELATIONSHIP_PATH_LENGTH';
     public const string PREF_TREE_ROLE         = 'canedit';
 
-    // For historic reasons, roles have inconsistent and confusing names.
-    public const string ROLE_VISITOR   = 'none';
-    public const string ROLE_MEMBER    = 'access';
-    public const string ROLE_EDITOR    = 'edit';
-    public const string ROLE_MODERATOR = 'accept';
-    public const string ROLE_MANAGER   = 'admin';
 
     /**
      * The user‘s internal identifier

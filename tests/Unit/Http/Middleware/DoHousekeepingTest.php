@@ -31,15 +31,15 @@ use function response;
 #[CoversClass(DoHousekeeping::class)]
 class DoHousekeepingTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     public function testMiddleware(): void
     {
         $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response());
 
+        $housekeeping_service = self::createStub(HousekeepingService::class);
+
         $request    = self::createRequest();
-        $middleware = new DoHousekeeping(new HousekeepingService(new \Fisharebest\Webtrees\Clock\SystemClock()));
+        $middleware = new DoHousekeeping($housekeeping_service);
         $response   = $middleware->process($request, $handler);
 
         self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());

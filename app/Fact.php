@@ -20,7 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Comparators\TagComparator;
-use Fisharebest\Webtrees\Elements\RestrictionNotice;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Enums\Restriction;
 use Fisharebest\Webtrees\Services\FactSortService;
 use Fisharebest\Webtrees\Services\GedcomService;
 use Illuminate\Support\Collection;
@@ -33,7 +34,6 @@ use function preg_match;
 use function preg_replace;
 use function str_contains;
 use function str_ends_with;
-use function str_starts_with;
 use function trigger_error;
 
 use const E_USER_DEPRECATED;
@@ -195,23 +195,14 @@ class Fact
     /**
      * Do the privacy rules allow us to display this fact to the current user
      */
-    public function canShow(int|null $access_level = null): bool
+    public function canShow(AccessLevel|null $access_level = null): bool
     {
         $access_level ??= Auth::accessLevel($this->record->tree());
 
         // Does this record have an explicit restriction notice?
-        $element     = new RestrictionNotice('');
-        $restriction = $element->canonical($this->attribute('RESN'));
-
-        if (str_starts_with($restriction, RestrictionNotice::VALUE_CONFIDENTIAL)) {
-            return Auth::PRIV_NONE >= $access_level;
-        }
-
-        if (str_starts_with($restriction, RestrictionNotice::VALUE_PRIVACY)) {
-            return Auth::PRIV_USER >= $access_level;
-        }
-        if (str_starts_with($restriction, RestrictionNotice::VALUE_NONE)) {
-            return true;
+        $restriction_level = Restriction::fromString($this->attribute('RESN'))->accessLevel();
+        if ($restriction_level !== null) {
+            return $restriction_level->allows($access_level);
         }
 
         // A link to a record of the same type: NOTE=>NOTE, OBJE=>OBJE, SOUR=>SOUR, etc.
@@ -227,10 +218,10 @@ class Fact
         $fact_privacy            = $this->record->tree()->getFactPrivacy();
         $individual_fact_privacy = $this->record->tree()->getIndividualFactPrivacy();
         if (isset($individual_fact_privacy[$xref][$this->tag])) {
-            return $individual_fact_privacy[$xref][$this->tag] >= $access_level;
+            return $individual_fact_privacy[$xref][$this->tag]->allows($access_level);
         }
         if (isset($fact_privacy[$this->tag])) {
-            return $fact_privacy[$this->tag] >= $access_level;
+            return $fact_privacy[$this->tag]->allows($access_level);
         }
 
         // No restrictions - it must be public
@@ -251,7 +242,7 @@ class Fact
         }
 
         // Members cannot edit RESN, CHAN and locked records
-        return Auth::isEditor($this->record->tree()) && !str_ends_with($this->attribute('RESN'), RestrictionNotice::VALUE_LOCKED) && $this->tag !== 'RESN' && $this->tag !== 'CHAN';
+        return Auth::isEditor($this->record->tree()) && Restriction::fromString($this->attribute('RESN'))->isUnlocked() && $this->tag !== 'RESN' && $this->tag !== 'CHAN';
     }
 
     /**

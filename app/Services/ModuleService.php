@@ -557,7 +557,7 @@ class ModuleService
     public function findByComponent(string $interface, Tree $tree, UserInterface $user): Collection
     {
         return $this->findByInterface($interface, false, true)
-            ->filter(static fn (ModuleInterface $module): bool => $module->accessLevel($tree, $interface) >= Auth::accessLevel($tree, $user));
+            ->filter(static fn (ModuleInterface $module): bool => $module->accessLevel($tree, $interface)->allows(Auth::accessLevel($tree, $user)));
     }
 
     /**

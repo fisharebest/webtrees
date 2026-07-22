@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
@@ -295,7 +296,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         }
 
         // Skip private records.
-        $records = $records->filter(static fn (GedcomRecord $record): bool => $record->canShow(Auth::PRIV_PRIVATE));
+        $records = $records->filter(static fn (GedcomRecord $record): bool => $record->canShow(AccessLevel::Public));
 
         return $records;
     }

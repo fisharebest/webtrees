@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\LanguageInterface;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -104,9 +105,9 @@ class RelationshipService
                 $indi = $path[count($path) - 1];
 
                 // Parents and siblings
-                foreach ($indi->childFamilies(Auth::PRIV_HIDE) as $family) {
+                foreach ($indi->childFamilies(AccessLevel::Hidden) as $family) {
                     $visited[$family->xref()] = true;
-                    foreach ($family->spouses(Auth::PRIV_HIDE) as $spouse) {
+                    foreach ($family->spouses(AccessLevel::Hidden) as $spouse) {
                         if (!isset($visited[$spouse->xref()])) {
                             $new_path   = $path;
                             $new_path[] = $family;
@@ -119,7 +120,7 @@ class RelationshipService
                             $visited[$spouse->xref()] = true;
                         }
                     }
-                    foreach ($family->children(Auth::PRIV_HIDE) as $child) {
+                    foreach ($family->children(AccessLevel::Hidden) as $child) {
                         if (!isset($visited[$child->xref()])) {
                             $new_path   = $path;
                             $new_path[] = $family;
@@ -135,9 +136,9 @@ class RelationshipService
                 }
 
                 // Spouses and children
-                foreach ($indi->spouseFamilies(Auth::PRIV_HIDE) as $family) {
+                foreach ($indi->spouseFamilies(AccessLevel::Hidden) as $family) {
                     $visited[$family->xref()] = true;
-                    foreach ($family->spouses(Auth::PRIV_HIDE) as $spouse) {
+                    foreach ($family->spouses(AccessLevel::Hidden) as $spouse) {
                         if (!isset($visited[$spouse->xref()])) {
                             $new_path   = $path;
                             $new_path[] = $family;
@@ -150,7 +151,7 @@ class RelationshipService
                             $visited[$spouse->xref()] = true;
                         }
                     }
-                    foreach ($family->children(Auth::PRIV_HIDE) as $child) {
+                    foreach ($family->children(AccessLevel::Hidden) as $child) {
                         if (!isset($visited[$child->xref()])) {
                             $new_path   = $path;
                             $new_path[] = $family;

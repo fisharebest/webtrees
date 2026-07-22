@@ -17,28 +17,30 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Module;
+namespace Fisharebest\Webtrees\Enums;
 
-use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\I18N;
 
-class IndividualFamiliesReportModule extends AbstractModule implements ModuleReportInterface
+/**
+ * A user's role within a particular tree.
+ * The backing values are historic database values.
+ */
+enum Role: string
 {
-    use ModuleReportTrait;
+    case Visitor   = 'none';
+    case Member    = 'access';
+    case Editor    = 'edit';
+    case Moderator = 'accept';
+    case Manager   = 'admin';
 
-    protected AccessLevel $access_level = AccessLevel::Member;
-
-    public function title(): string
+    public function label(): string
     {
-        // This text also appears in the .XML file - update both together
-        /* I18N: Name of a module/report */
-        return I18N::translate('Related families');
-    }
-
-    public function description(): string
-    {
-        // This text also appears in the .XML file - update both together
-        /* I18N: Description of the “Related families” */
-        return I18N::translate('A report of the families that are closely related to an individual.');
+        return match ($this) {
+            self::Visitor   => I18N::translate('Visitor'),
+            self::Member    => I18N::translate('Member'),
+            self::Editor    => I18N::translate('Editor'),
+            self::Moderator => I18N::translate('Moderator'),
+            self::Manager   => I18N::translate('Manager'),
+        };
     }
 }

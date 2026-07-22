@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
@@ -71,7 +72,7 @@ final class AddChildToFamilyAction implements RequestHandlerInterface
                 Date::compare($child->getBirthDate(), $fact->target()->getBirthDate()) < 0;
         };
         return $family
-            ->facts(['CHIL'], false, Auth::PRIV_HIDE, true)
+            ->facts(['CHIL'], false, AccessLevel::Hidden, true)
             ->first($filter);
     }
 }

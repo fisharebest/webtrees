@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Tests\Unit;
 
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\Services\UserService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
@@ -164,10 +165,10 @@ class UserServiceTest extends TestCase
         $user4        = $user_service->create('user4', 'User4', 'user4@example.com', 'secret');
 
         $tree = $this->importTree('demo.ged');
-        $tree->setUserPreference($user1, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MANAGER);
-        $tree->setUserPreference($user2, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MODERATOR);
-        $tree->setUserPreference($user3, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_EDITOR);
-        $tree->setUserPreference($user4, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MEMBER);
+        $tree->setUserPreference($user1, UserInterface::PREF_TREE_ROLE, Role::Manager->value);
+        $tree->setUserPreference($user2, UserInterface::PREF_TREE_ROLE, Role::Moderator->value);
+        $tree->setUserPreference($user3, UserInterface::PREF_TREE_ROLE, Role::Editor->value);
+        $tree->setUserPreference($user4, UserInterface::PREF_TREE_ROLE, Role::Member->value);
 
         $users = $user_service->managers();
 
@@ -184,10 +185,10 @@ class UserServiceTest extends TestCase
         $user4        = $user_service->create('user4', 'User4', 'user4@example.com', 'secret');
 
         $tree = $this->importTree('demo.ged');
-        $tree->setUserPreference($user1, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MANAGER);
-        $tree->setUserPreference($user2, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MODERATOR);
-        $tree->setUserPreference($user3, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_EDITOR);
-        $tree->setUserPreference($user4, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MEMBER);
+        $tree->setUserPreference($user1, UserInterface::PREF_TREE_ROLE, Role::Manager->value);
+        $tree->setUserPreference($user2, UserInterface::PREF_TREE_ROLE, Role::Moderator->value);
+        $tree->setUserPreference($user3, UserInterface::PREF_TREE_ROLE, Role::Editor->value);
+        $tree->setUserPreference($user4, UserInterface::PREF_TREE_ROLE, Role::Member->value);
 
         $users = $user_service->moderators();
 

@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Report;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\ImageFactoryInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\AbstractParser;
@@ -266,7 +267,7 @@ class ReportRegressionTest extends TestCase
         Registry::imageFactory($image_factory);
 
         $tree = $this->importTree('demo.ged');
-        $tree->setPreference('SHOW_NO_WATERMARK', (string) Auth::PRIV_NONE);
+        $tree->setPreference('SHOW_NO_WATERMARK', (string) AccessLevel::Manager->value);
 
         return $tree;
     }

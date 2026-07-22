@@ -23,6 +23,7 @@ use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\Http\RequestHandlers\ContactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Individual;
@@ -182,7 +183,7 @@ class UserService
         return DB::table('user')
             ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
             ->where('user_gedcom_setting.setting_name', '=', UserInterface::PREF_TREE_ROLE)
-            ->where('user_gedcom_setting.setting_value', '=', UserInterface::ROLE_MANAGER)
+            ->where('user_gedcom_setting.setting_value', '=', Role::Manager->value)
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
             ->distinct()
@@ -199,7 +200,7 @@ class UserService
         return DB::table('user')
             ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
             ->where('user_gedcom_setting.setting_name', '=', UserInterface::PREF_TREE_ROLE)
-            ->where('user_gedcom_setting.setting_value', '=', UserInterface::ROLE_MODERATOR)
+            ->where('user_gedcom_setting.setting_value', '=', Role::Moderator->value)
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
             ->distinct()

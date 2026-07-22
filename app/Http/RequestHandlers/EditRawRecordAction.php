@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Registry;
@@ -64,7 +65,7 @@ final class EditRawRecordAction implements RequestHandlerInterface
         }
 
         // Retain any private facts
-        foreach ($record->facts([], false, Auth::PRIV_HIDE, true) as $fact) {
+        foreach ($record->facts([], false, AccessLevel::Hidden, true) as $fact) {
             if (!in_array($fact->id(), $fact_ids, true)) {
                 $gedcom .= "\n" . $fact->gedcom();
             }

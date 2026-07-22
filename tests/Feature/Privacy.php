@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Tests\Feature;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
@@ -59,19 +60,19 @@ class Privacy extends TestCase
         $admin->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
 
         $manager = $user_service->create('manager', 'manager', 'manager', '*');
-        $tree->setUserPreference($manager, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MANAGER);
+        $tree->setUserPreference($manager, UserInterface::PREF_TREE_ROLE, Role::Manager->value);
 
         $moderator = $user_service->create('moderator', 'moderator', 'moderator', '*');
-        $tree->setUserPreference($moderator, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MODERATOR);
+        $tree->setUserPreference($moderator, UserInterface::PREF_TREE_ROLE, Role::Moderator->value);
 
         $editor = $user_service->create('editor', 'editor', 'editor', '*');
-        $tree->setUserPreference($editor, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_EDITOR);
+        $tree->setUserPreference($editor, UserInterface::PREF_TREE_ROLE, Role::Editor->value);
 
         $member = $user_service->create('member', 'member', 'member', '*');
-        $tree->setUserPreference($member, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MEMBER);
+        $tree->setUserPreference($member, UserInterface::PREF_TREE_ROLE, Role::Member->value);
 
         $visitor = $user_service->create('visitor', 'visitor', 'visitor', '*');
-        $tree->setUserPreference($visitor, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_VISITOR);
+        $tree->setUserPreference($visitor, UserInterface::PREF_TREE_ROLE, Role::Visitor->value);
 
         // Enable privacy functions
         $tree->setPreference('HIDE_LIVE_PEOPLE', '1');

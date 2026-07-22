@@ -17,8 +17,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(Relationship::class)]
 class RelationshipArchitectureTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     public function testFixedWithGenitiveFemale(): void
     {
         $tree = self::createStub(Tree::class);

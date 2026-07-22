@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -57,7 +58,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
     {
         $tree = $individual->tree();
         if ($tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
-            $fam_access_level = Auth::PRIV_HIDE;
+            $fam_access_level = AccessLevel::Hidden;
         } else {
             $fam_access_level = Auth::accessLevel($tree);
         }

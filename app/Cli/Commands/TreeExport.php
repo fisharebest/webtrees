@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\Console\Completion\CompletionInput;
@@ -38,10 +39,10 @@ use function stream_get_contents;
 final class TreeExport extends AbstractCommand
 {
     private const array ACCESS_LEVELS = [
-        'none'    => Auth::PRIV_HIDE,
-        'manager' => Auth::PRIV_NONE,
-        'member'  => Auth::PRIV_USER,
-        'visitor' => Auth::PRIV_PRIVATE,
+        'none'    => AccessLevel::Hidden,
+        'manager' => AccessLevel::Manager,
+        'member'  => AccessLevel::Member,
+        'visitor' => AccessLevel::Public,
     ];
 
     public function __construct(

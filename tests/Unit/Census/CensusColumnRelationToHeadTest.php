@@ -31,8 +31,6 @@ use Fisharebest\Webtrees\Census\CensusInterface;
 #[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnRelationToHeadTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     public function testNull(): void
     {
         $individual1 = self::createStub(Individual::class);
