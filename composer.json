@@ -77,6 +77,7 @@
     "require-dev": {
         "ext-dom": "*",
         "ext-libxml": "*",
+        "ext-pcov": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
         "league/flysystem-memory": "3.31.0",
@@ -84,7 +85,9 @@
         "phpstan/phpstan": "2.2.5",
         "phpstan/phpstan-deprecation-rules": "2.0.4",
         "phpstan/phpstan-phpunit": "2.0.18",
+        "phpstan/phpstan-strict-rules": "2.0.11",
         "phpunit/phpunit": "12.5.31",
+        "spaze/phpstan-disallowed-calls": "4.12.0",
         "squizlabs/php_codesniffer": "4.0.1"
     },
     "suggest": {
@@ -97,7 +100,12 @@
         "ext-zlib": "Required to compress HTTP responses"
     },
     "scripts": {
-        "webtrees:build": [
+        "ci": [
+            "phpcs || phpcbf",
+            "phpunit",
+            "phpstan"
+        ],
+        "build": [
             "rm -Rf webtrees/",
             "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
             "@composer install --no-dev --quiet",
@@ -109,38 +117,10 @@
             "for FILE in public/js/i18n/*.js; do cp $FILE webtrees/$FILE; done",
             "zip --quiet --recurse-paths --move -9 webtrees-`git describe`.zip webtrees"
         ],
-        "webtrees:phpcs": [
-            "phpcs --colors --exclude=Generic.Files.LineLength index.php app tests"
-        ],
-        "webtrees:phpstan": [
-            "phpstan analyze -v --memory-limit=-1"
-        ],
-        "webtrees:phpunit": [
-            "phpunit"
-        ],
-        "webtrees:coverage": [
-            "XDEBUG_MODE=coverage phpunit --coverage-html=tests/coverage"
-        ],
-        "webtrees:png": [
+        "png": [
             "find resources/css -name *.png -exec pngquant --ext .png --force --skip-if-larger --speed 1 {} \\;",
             "find resources/css -name *.png -exec pngcrush -rem allb -brute -reduce {} {} \\;",
             "find resources/css -name *.png -exec optipng -o7 -zm1-9 {} \\;"
-        ],
-        "ci" : [
-            "@composer validate",
-            "@composer install --quiet",
-            "@composer webtrees:phpunit",
-            "@composer webtrees:phpcs",
-            "@composer webtrees:phpstan"
         ]
-    },
-    "scripts-descriptions": {
-        "ci": "Run validate, install, tests, code style, and static analysis",
-        "webtrees:build": "Create a distribution file (webtrees.zip)",
-        "webtrees:coverage": "Generate test coverage report",
-        "webtrees:phpcs": "Run PHP_CodeSniffer checks",
-        "webtrees:phpstan": "Run static analysis with PHPStan",
-        "webtrees:phpunit": "Run PHPUnit test suite",
-        "webtrees:png": "Optimize PNG assets"
     }
 }

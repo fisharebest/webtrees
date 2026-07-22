@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\I18N;
 
 use Fisharebest\Webtrees\Enums\PluralRule;
 
-final class Translator
+final readonly class Translator
 {
     /**
      * @param array<string,string> $translations

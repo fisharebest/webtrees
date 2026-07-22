@@ -157,7 +157,10 @@ class I18N
             // Development versions of webtrees must create them on first use.
             $po_file = Webtrees::ROOT_DIR . 'resources/lang/' . self::$language->languageTag() . '/messages.po';
 
-            $translation = Translation::fromPoFile($po_file);
+            $stream      = fopen($po_file, 'rb');
+            $translation = Translation::fromPoStream($stream);
+            fclose($stream);
+
             file_put_contents(
                 $translation_file,
                 "<?php\n\nreturn " . var_export($translation->toArray(), true) . ";\n",
@@ -171,10 +174,10 @@ class I18N
                 ->findByInterface(ModuleCustomInterface::class);
 
             foreach ($custom_modules as $custom_module) {
-                $custom_translations = $custom_module->customTranslations(self::$language->languageTag());
+                $custom_translation = $custom_module->customTranslations(self::$language->languageTag());
 
-                if ($custom_translations !== []) {
-                    $translation = $translation->withMessages($custom_translations);
+                if ($custom_translation !== []) {
+                    $translation = $translation->withMessages($custom_translation);
                 }
             }
         } catch (Throwable) {

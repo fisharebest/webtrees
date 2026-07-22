@@ -1,0 +1,38 @@
+# Test translations
+# This is a comment line
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+# Simple translation
+msgid "Hello"
+msgstr "Bonjour"
+
+# Translation with escape characters
+msgid "Line one\nLine two"
+msgstr "Ligne un\nLigne deux"
+
+# Translation with context
+msgctxt "greeting"
+msgid "Hello"
+msgstr "Salut"
+
+# Plural translation (French: singular for 0 and 1, plural for >1)
+msgid "%s record"
+msgid_plural "%s records"
+msgstr[0] "%s enregistrement"
+msgstr[1] "%s enregistrements"
+
+# Multi-line translation
+msgid "This is a "
+"long message"
+msgstr "Ceci est un "
+"long message"
+
+# Translation with quotes
+msgid "She said \"hello\""
+msgstr "Elle a dit \"bonjour\""
+
+# Empty msgstr should be skipped
+msgid "Untranslated"
+msgstr ""

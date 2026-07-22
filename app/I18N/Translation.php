@@ -26,18 +26,15 @@ use function array_filter;
 use function array_map;
 use function dechex;
 use function explode;
-use function fclose;
 use function fgetcsv;
-use function file;
-use function fopen;
 use function fread;
 use function fseek;
 use function implode;
-use function is_array;
 use function ksort;
 use function preg_match;
 use function preg_split;
 use function str_starts_with;
+use function stream_get_contents;
 use function strtr;
 use function substr;
 use function trim;
@@ -76,68 +73,53 @@ final readonly class Translation
     }
 
     /**
-     * Create a Translation from a .csv file (semicolon-delimited).
+     * Create a Translation by parsing a semicolon-delimited CSV stream.
+     *
+     * @param resource $stream
      */
-    public static function fromCsvFile(string $filename): self
+    public static function fromCsvStream($stream): self
     {
         $translations = [];
 
-        $fp = fopen($filename, 'rb');
-
-        if ($fp === false) {
-            throw new RuntimeException('Cannot open file: ' . $filename);
-        }
-
-        while (($data = fgetcsv($fp, 0, ';')) !== false) {
+        while (($data = fgetcsv($stream, 0, ';', '"', '')) !== false) {
             if (isset($data[0], $data[1])) {
                 $translations[$data[0]] = $data[1];
             }
         }
 
-        fclose($fp);
-
         return new self($translations);
     }
 
     /**
-     * Create a Translation from a compiled .mo (gettext) file.
-     * We don't use this - but third-party modules might.
+     * Create a Translation by parsing a compiled .mo (gettext) stream.
      *
      * @link https://www.gnu.org/software/gettext/manual/html_node/MO-Files.html
+     *
+     * @param resource $stream
      */
-    public static function fromMoFile(string $filename): self
+    public static function fromMoStream($stream): self
     {
-        $fp = fopen($filename, 'rb');
-
-        if ($fp === false) {
-            throw new RuntimeException('Cannot open file: ' . $filename);
-        }
-
-        $translations = self::parseMoFile($fp);
-
-        fclose($fp);
-
-        return new self($translations);
+        return new self(self::parseMoStream($stream));
     }
 
     /**
-     * Create a Translation from a .po (gettext source) file.
+     * Create a Translation by parsing a .po (gettext source) stream.
      *
      * @link https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html
+     *
+     * @param resource $stream
      */
-    public static function fromPoFile(string $filename): self
+    public static function fromPoStream($stream): self
     {
-        $lines = file($filename);
+        $content = stream_get_contents($stream);
+        $lines   = explode("\n", $content);
 
-        if ($lines === false) {
-            throw new RuntimeException('Cannot read file: ' . $filename);
-        }
-
-        return new self(self::parsePoFile($lines));
+        return new self(self::parsePoData($lines));
     }
 
     /**
-     * Create a Translation from a .php file that returns an array.
+     * Create a Translation from a PHP file that returns an array.
+     * This is inherently file-based because it uses PHP's include.
      */
     public static function fromPhpFile(string $filename): self
     {
@@ -161,41 +143,41 @@ final readonly class Translation
     }
 
     /**
-     * @param resource $fp
+     * @param resource $stream
      *
      * @return int[]
      */
-    private static function readMoData($fp, int $offset, int $count, ByteOrder $byte_order): array
+    private static function readMoData($stream, int $offset, int $count, ByteOrder $byte_order): array
     {
-        fseek($fp, $offset);
+        fseek($stream, $offset);
 
-        return unpack($byte_order->value . $count, fread($fp, $count * 4));
+        return unpack($byte_order->value . $count, fread($stream, $count * 4));
     }
 
     /**
-     * @param resource $fp
+     * @param resource $stream
      *
      * @return array<string,string>
      */
-    private static function parseMoFile($fp): array
+    private static function parseMoStream($stream): array
     {
         $translations = [];
 
-        $magic = self::readMoData($fp, 0, 1, ByteOrder::LittleEndian);
+        $magic = self::readMoData($stream, 0, 1, ByteOrder::LittleEndian);
 
         $byte_order = ByteOrder::fromMoMagicString(dechex($magic[1]));
 
         // Read the lookup tables
-        [, $number_of_strings, $offset_original, $offset_translated] = self::readMoData($fp, 8, 3, $byte_order);
-        $lookup_original   = self::readMoData($fp, $offset_original, $number_of_strings * 2, $byte_order);
-        $lookup_translated = self::readMoData($fp, $offset_translated, $number_of_strings * 2, $byte_order);
+        [, $number_of_strings, $offset_original, $offset_translated] = self::readMoData($stream, 8, 3, $byte_order);
+        $lookup_original   = self::readMoData($stream, $offset_original, $number_of_strings * 2, $byte_order);
+        $lookup_translated = self::readMoData($stream, $offset_translated, $number_of_strings * 2, $byte_order);
 
         // Read the strings
         for ($n = 1; $n < $number_of_strings; ++$n) {
-            fseek($fp, $lookup_original[$n * 2 + 2]);
-            $original = fread($fp, $lookup_original[$n * 2 + 1]);
-            fseek($fp, $lookup_translated[$n * 2 + 2]);
-            $translated              = fread($fp, $lookup_translated[$n * 2 + 1]);
+            fseek($stream, $lookup_original[$n * 2 + 2]);
+            $original = fread($stream, $lookup_original[$n * 2 + 1]);
+            fseek($stream, $lookup_translated[$n * 2 + 2]);
+            $translated              = fread($stream, $lookup_translated[$n * 2 + 1]);
             $translations[$original] = $translated;
         }
 
@@ -207,12 +189,12 @@ final readonly class Translation
      *
      * @return array<string,string>
      */
-    private static function parsePoFile(array $lines): array
+    private static function parsePoData(array $lines): array
     {
         $translations = [];
 
         // Strip comments
-        $lines = array_filter($lines, fn(string $line): bool => !str_starts_with((string) $line, '#'));
+        $lines = array_filter($lines, fn(string $line): bool => !str_starts_with($line, '#'));
 
         // Trim carriage-returns, newlines, spaces
         $lines = array_map(trim(...), $lines);

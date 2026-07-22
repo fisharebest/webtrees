@@ -771,7 +771,9 @@ final class Xgettext extends AbstractCommand
      */
     private function compilePoFile(string $po_file, string $php_file): array|null
     {
-        $translation  = Translation::fromPoFile($po_file);
+        $stream       = fopen($po_file, 'rb');
+        $translation  = Translation::fromPoStream($stream);
+        fclose($stream);
         $translations = $translation->toArray();
 
 

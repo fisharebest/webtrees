@@ -82,7 +82,9 @@ final class CompilePoFiles extends AbstractCommand
         $error = false;
 
         foreach ($po_files as $po_file) {
-            $translation  = Translation::fromPoFile($po_file);
+            $stream       = fopen($po_file, 'rb');
+            $translation  = Translation::fromPoStream($stream);
+            fclose($stream);
             $translations = $translation->toArray();
             $language     = basename(path: dirname(path: $po_file));
             $php_file     = $destination . DIRECTORY_SEPARATOR . $language . DIRECTORY_SEPARATOR . 'messages.php';
