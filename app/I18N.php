@@ -21,19 +21,17 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Collator;
-use Fisharebest\Webtrees\I18N\Translation;
-use Fisharebest\Webtrees\I18N\Translator;
 use Fisharebest\Webtrees\Contracts\LanguageInterface;
 use Fisharebest\Webtrees\Enums\Script;
 use Fisharebest\Webtrees\Enums\TextDirection;
 use Fisharebest\Webtrees\Factories\LanguageFactory;
+use Fisharebest\Webtrees\I18N\Translation;
+use Fisharebest\Webtrees\I18N\Translator;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Throwable;
 
-use function array_map;
-use function array_merge;
 use function file_put_contents;
 use function html_entity_decode;
 use function is_file;
@@ -51,10 +49,6 @@ use function var_export;
  */
 class I18N
 {
-    // MO files use special characters for plurals and context.
-    public const string PLURAL  = "\x00";
-    public const string CONTEXT = "\x04";
-
     // Digits are always rendered LTR, even in RTL text.
     private const string DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
 
@@ -123,7 +117,7 @@ class I18N
     }
 
     /**
-     * What format is used to display dates in the current locale?
+     * What format is used to display timestamps in the current locale?
      */
     public static function dateFormat(): string
     {
@@ -158,33 +152,37 @@ class I18N
 
         if (is_file($translation_file)) {
             // Official releases of webtrees will have these generated PHP files.
-            $translation  = new Translation($translation_file);
-            $translations = $translation->toArray();
+            $translation = Translation::fromPhpFile($translation_file);
         } else {
             // Development versions of webtrees must create them on first use.
             $po_file = Webtrees::ROOT_DIR . 'resources/lang/' . self::$language->languageTag() . '/messages.po';
 
-            if (is_file($po_file)) {
-                $translation  = new Translation($po_file);
-                $translations = $translation->toArray();
-                file_put_contents($translation_file, "<?php\n\nreturn " . var_export($translations, true) . ";\n");
-            } else {
-                $translations = [];
-            }
+            $translation = Translation::fromPoFile($po_file);
+            file_put_contents(
+                $translation_file,
+                "<?php\n\nreturn " . var_export($translation->toArray(), true) . ";\n",
+            );
         }
 
         // Add translations from custom modules.
         try {
-            $translations = Registry::container()
+            $custom_modules = Registry::container()
                 ->get(ModuleService::class)
-                ->findByInterface(ModuleCustomInterface::class)
-                ->reduce(static fn (array $carry, ModuleCustomInterface $item): array => array_merge($carry, $item->customTranslations(self::$language->languageTag())), $translations);
+                ->findByInterface(ModuleCustomInterface::class);
+
+            foreach ($custom_modules as $custom_module) {
+                $custom_translations = $custom_module->customTranslations(self::$language->languageTag());
+
+                if ($custom_translations !== []) {
+                    $translation = $translation->withMessages($custom_translations);
+                }
+            }
         } catch (Throwable) {
             // During setup, there won't be a database, so won't be any modules.
         }
 
         // Create a translator
-        self::$translator = new Translator($translations, self::$language->pluralRule());
+        self::$translator = new Translator($translation->toArray(), self::$language->pluralRule());
 
         // Create a collator.
         if (extension_loaded('intl')) {

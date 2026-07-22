@@ -20,11 +20,33 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\I18N;
 
 use Fisharebest\Webtrees\Enums\ByteOrder;
+use RuntimeException;
 
-final class Translation
+use function array_filter;
+use function array_map;
+use function dechex;
+use function explode;
+use function fclose;
+use function fgetcsv;
+use function file;
+use function fopen;
+use function fread;
+use function fseek;
+use function implode;
+use function is_array;
+use function ksort;
+use function preg_match;
+use function preg_split;
+use function str_starts_with;
+use function strtr;
+use function substr;
+use function trim;
+use function unpack;
+
+final readonly class Translation
 {
-    public const string PLURAL_SEPARATOR       = "\x00";
-    public const string CONTEXT_SEPARATOR      = "\x04";
+    public const string PLURAL_SEPARATOR  = "\x00";
+    public const string CONTEXT_SEPARATOR = "\x04";
 
     private const array PO_ESCAPE_CHARACTERS = [
         '\\\\' => '\\',
@@ -38,47 +60,98 @@ final class Translation
         '\\"'  => '"',
     ];
 
-    /** @var array<string,string> An association of English -> translated messages */
-    private array $translations;
-
-    public function __construct(string $filename)
+    /**
+     * @param array<string,string> $translations An association of English -> translated messages
+     */
+    private function __construct(private array $translations)
     {
-        $this->translations = [];
-
-        switch (strtolower(pathinfo($filename, PATHINFO_EXTENSION))) {
-            case 'csv':
-                $fp = fopen($filename, 'rb');
-                if ($fp !== false) {
-                    while (($data = fgetcsv($fp, 0, ';')) !== false) {
-                        $this->translations[$data[0]] = $data[1];
-                    }
-                    fclose($fp);
-                }
-                break;
-
-            case 'mo':
-                $fp = fopen($filename, 'rb');
-                if ($fp !== false) {
-                    $this->readMoFile($fp);
-                    fclose($fp);
-                }
-                break;
-
-            case 'po':
-                $this->readPoFile(file($filename));
-                break;
-
-            case 'php':
-                $translations = include $filename;
-                if (is_array($translations)) {
-                    $this->translations = $translations;
-                }
-                break;
-        }
     }
 
     /**
-     * The translation strings
+     * @param array<string,string> $extra
+     */
+    public function withMessages(array $extra): self
+    {
+        return new self($extra + $this->translations);
+    }
+
+    /**
+     * Create a Translation from a .csv file (semicolon-delimited).
+     */
+    public static function fromCsvFile(string $filename): self
+    {
+        $translations = [];
+
+        $fp = fopen($filename, 'rb');
+
+        if ($fp === false) {
+            throw new RuntimeException('Cannot open file: ' . $filename);
+        }
+
+        while (($data = fgetcsv($fp, 0, ';')) !== false) {
+            if (isset($data[0], $data[1])) {
+                $translations[$data[0]] = $data[1];
+            }
+        }
+
+        fclose($fp);
+
+        return new self($translations);
+    }
+
+    /**
+     * Create a Translation from a compiled .mo (gettext) file.
+     * We don't use this - but third-party modules might.
+     *
+     * @link https://www.gnu.org/software/gettext/manual/html_node/MO-Files.html
+     */
+    public static function fromMoFile(string $filename): self
+    {
+        $fp = fopen($filename, 'rb');
+
+        if ($fp === false) {
+            throw new RuntimeException('Cannot open file: ' . $filename);
+        }
+
+        $translations = self::parseMoFile($fp);
+
+        fclose($fp);
+
+        return new self($translations);
+    }
+
+    /**
+     * Create a Translation from a .po (gettext source) file.
+     *
+     * @link https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html
+     */
+    public static function fromPoFile(string $filename): self
+    {
+        $lines = file($filename);
+
+        if ($lines === false) {
+            throw new RuntimeException('Cannot read file: ' . $filename);
+        }
+
+        return new self(self::parsePoFile($lines));
+    }
+
+    /**
+     * Create a Translation from a .php file that returns an array.
+     */
+    public static function fromPhpFile(string $filename): self
+    {
+        $translations = include $filename;
+
+        if (!is_array($translations)) {
+            throw new RuntimeException('File does not return an array: ' . $filename);
+        }
+
+        return new self($translations);
+    }
+
+    /**
+     * The translation strings.
      *
      * @return array<string,string>
      */
@@ -88,11 +161,11 @@ final class Translation
     }
 
     /**
-     * @param resource  $fp
+     * @param resource $fp
      *
      * @return int[]
      */
-    private function readMoData($fp, int $offset, int $count, ByteOrder $byte_order): array
+    private static function readMoData($fp, int $offset, int $count, ByteOrder $byte_order): array
     {
         fseek($fp, $offset);
 
@@ -100,40 +173,44 @@ final class Translation
     }
 
     /**
-     * Read and parse a .MO (gettext) file
-     *
-     * @link https://www.gnu.org/software/gettext/manual/html_node/MO-Files.html
-     *
      * @param resource $fp
+     *
+     * @return array<string,string>
      */
-    private function readMoFile($fp): void
+    private static function parseMoFile($fp): array
     {
-        $magic = $this->readMoData($fp, 0, 1, ByteOrder::LittleEndian);
+        $translations = [];
+
+        $magic = self::readMoData($fp, 0, 1, ByteOrder::LittleEndian);
 
         $byte_order = ByteOrder::fromMoMagicString(dechex($magic[1]));
 
         // Read the lookup tables
-        [, $number_of_strings, $offset_original, $offset_translated] = $this->readMoData($fp, 8, 3, $byte_order);
-        $lookup_original   = $this->readMoData($fp, $offset_original, $number_of_strings * 2, $byte_order);
-        $lookup_translated = $this->readMoData($fp, $offset_translated, $number_of_strings * 2, $byte_order);
+        [, $number_of_strings, $offset_original, $offset_translated] = self::readMoData($fp, 8, 3, $byte_order);
+        $lookup_original   = self::readMoData($fp, $offset_original, $number_of_strings * 2, $byte_order);
+        $lookup_translated = self::readMoData($fp, $offset_translated, $number_of_strings * 2, $byte_order);
 
         // Read the strings
         for ($n = 1; $n < $number_of_strings; ++$n) {
             fseek($fp, $lookup_original[$n * 2 + 2]);
             $original = fread($fp, $lookup_original[$n * 2 + 1]);
             fseek($fp, $lookup_translated[$n * 2 + 2]);
-            $translated                    = fread($fp, $lookup_translated[$n * 2 + 1]);
-            $this->translations[$original] = $translated;
+            $translated              = fread($fp, $lookup_translated[$n * 2 + 1]);
+            $translations[$original] = $translated;
         }
+
+        return $translations;
     }
 
     /**
-     * @link https://www.gnu.org/software/gettext/manual/html_node/MO-Files.html
-     *
      * @param array<string> $lines
+     *
+     * @return array<string,string>
      */
-    private function readPoFile(array $lines): void
+    private static function parsePoFile(array $lines): array
     {
+        $translations = [];
+
         // Strip comments
         $lines = array_filter($lines, fn(string $line): bool => !str_starts_with((string) $line, '#'));
 
@@ -145,10 +222,10 @@ final class Translation
         $tmp = str_replace("\"\n\"", '', $tmp);
 
         // Split into separate translations
-        $translations = preg_split("/\n{2,}/", $tmp);
+        $entries = preg_split("/\n{2,}/", $tmp);
 
-        foreach ($translations as $translation) {
-            $parts = explode("\n", $translation);
+        foreach ($entries as $entry) {
+            $parts = explode("\n", $entry);
 
             $msgctxt      = '';
             $msgid        = '';
@@ -192,8 +269,10 @@ final class Translation
             }
 
             if ($msgid !== '' && trim($msgstr, self::PLURAL_SEPARATOR) !== '') {
-                $this->translations[$msgid] = $msgstr;
+                $translations[$msgid] = $msgstr;
             }
         }
+
+        return $translations;
     }
 }

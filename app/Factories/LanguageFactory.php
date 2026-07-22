@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Factories;
 
-use Fisharebest\Localization\Locale;
 use Fisharebest\Webtrees\Contracts\LanguageInterface;
 use Fisharebest\Webtrees\I18N\Languages\Afrikaans;
 use Fisharebest\Webtrees\I18N\Languages\Albanian;
@@ -96,6 +95,17 @@ use Fisharebest\Webtrees\I18N\Languages\Vietnamese;
 use Fisharebest\Webtrees\I18N\Languages\Welsh;
 use Fisharebest\Webtrees\I18N\Languages\Yiddish;
 use Psr\Http\Message\ServerRequestInterface;
+
+use function array_keys;
+use function array_map;
+use function arsort;
+use function explode;
+use function in_array;
+use function preg_match;
+use function preg_replace_callback;
+use function str_contains;
+use function strtolower;
+use function trim;
 
 final readonly class LanguageFactory
 {
@@ -182,94 +192,189 @@ final readonly class LanguageFactory
         'ko', // 한국어 (Korean)
     ];
 
+    /** Map of common browser-sent aliases to our canonical BCP-47 tags */
+    private const array LANGUAGE_TAG_ALIASES = [
+        'zh-TW'   => 'zh-Hant',
+        'zh-HK'   => 'zh-Hant',
+        'zh-MO'   => 'zh-Hant',
+        'zh-Hant' => 'zh-Hant',
+        'zh-CN'   => 'zh-Hans',
+        'zh-SG'   => 'zh-Hans',
+    ];
+
     public function fromLanguageTag(string $language_tag): LanguageInterface
     {
         return match ($language_tag) {
-            'af' => new Afrikaans(),
-            'sq' => new Albanian(),
-            'ar' => new Arabic(),
-            'hy' => new Armenian(),
-            'eu' => new Basque(),
-            'bs' => new Bosnian(),
-            'bg' => new Bulgarian(),
-            'ca' => new Catalan(),
+            'af'      => new Afrikaans(),
+            'sq'      => new Albanian(),
+            'ar'      => new Arabic(),
+            'hy'      => new Armenian(),
+            'eu'      => new Basque(),
+            'bs'      => new Bosnian(),
+            'bg'      => new Bulgarian(),
+            'ca'      => new Catalan(),
             'zh-Hans' => new ChineseSimplified(),
             'zh-Hant' => new ChineseTraditional(),
-            'hr' => new Croatian(),
-            'cs' => new Czech(),
-            'da' => new Danish(),
-            'dv' => new Divehi(),
-            'nl' => new Dutch(),
-            'en-AU' => new EnglishAustralia(),
-            'en-GB' => new EnglishGreatBritain(),
-            'en-US' => new EnglishUnitedStates(),
-            'et' => new Estonian(),
-            'fo' => new Faroese(),
-            'fa' => new Farsi(),
-            'fi' => new Finnish(),
-            'fr' => new French(),
-            'fr-CA' => new FrenchCanada(),
-            'gl' => new Galician(),
-            'ka' => new Georgian(),
-            'de' => new German(),
-            'el' => new Greek(),
-            'he' => new Hebrew(),
-            'hi' => new Hindi(),
-            'hu' => new Hungarian(),
-            'is' => new Icelandic(),
-            'id' => new Indonesian(),
-            'it' => new Italian(),
-            'ja' => new Japanese(),
-            'jv' => new Javanese(),
-            'kk' => new Kazhak(),
-            'ko' => new Korean(),
-            'ku' => new Kurdish(),
-            'lv' => new Latvian(),
-            'ln' => new Lingala(),
-            'lt' => new Lithuanian(),
-            'mk' => new Macedonian(),
-            'ms' => new Malay(),
-            'mi' => new Maori(),
-            'mr' => new Marathi(),
-            'ne' => new Nepalese(),
-            'nb' => new NorwegianBokmal(),
-            'nn' => new NorwegianNynorsk(),
-            'oc' => new Occitan(),
-            'pl' => new Polish(),
-            'pt' => new Portuguese(),
-            'pt-BR' => new PortugueseBrazil(),
-            'ro' => new Romanian(),
-            'ru' => new Russian(),
-            'sr' => new Serbian(),
+            'hr'      => new Croatian(),
+            'cs'      => new Czech(),
+            'da'      => new Danish(),
+            'dv'      => new Divehi(),
+            'nl'      => new Dutch(),
+            'en-AU'   => new EnglishAustralia(),
+            'en-GB'   => new EnglishGreatBritain(),
+            'en-US'   => new EnglishUnitedStates(),
+            'et'      => new Estonian(),
+            'fo'      => new Faroese(),
+            'fa'      => new Farsi(),
+            'fi'      => new Finnish(),
+            'fr'      => new French(),
+            'fr-CA'   => new FrenchCanada(),
+            'gl'      => new Galician(),
+            'ka'      => new Georgian(),
+            'de'      => new German(),
+            'el'      => new Greek(),
+            'he'      => new Hebrew(),
+            'hi'      => new Hindi(),
+            'hu'      => new Hungarian(),
+            'is'      => new Icelandic(),
+            'id'      => new Indonesian(),
+            'it'      => new Italian(),
+            'ja'      => new Japanese(),
+            'jv'      => new Javanese(),
+            'kk'      => new Kazhak(),
+            'ko'      => new Korean(),
+            'ku'      => new Kurdish(),
+            'lv'      => new Latvian(),
+            'ln'      => new Lingala(),
+            'lt'      => new Lithuanian(),
+            'mk'      => new Macedonian(),
+            'ms'      => new Malay(),
+            'mi'      => new Maori(),
+            'mr'      => new Marathi(),
+            'ne'      => new Nepalese(),
+            'nb'      => new NorwegianBokmal(),
+            'nn'      => new NorwegianNynorsk(),
+            'oc'      => new Occitan(),
+            'pl'      => new Polish(),
+            'pt'      => new Portuguese(),
+            'pt-BR'   => new PortugueseBrazil(),
+            'ro'      => new Romanian(),
+            'ru'      => new Russian(),
+            'sr'      => new Serbian(),
             'sr-Latn' => new SerbianLatin(),
-            'sk' => new Slovakian(),
-            'sl' => new Slovenian(),
-            'es' => new Spanish(),
-            'su' => new Sundanese(),
-            'sw' => new Swahili(),
-            'sv' => new Swedish(),
-            'tl' => new Tagalog(),
-            'ta' => new Tamil(),
-            'tt' => new Tatar(),
-            'th' => new Thai(),
-            'tr' => new Turkish(),
-            'uk' => new Ukranian(),
-            'ur' => new Urdu(),
-            'uz' => new Uzbek(),
-            'vi' => new Vietnamese(),
-            'cy' => new Welsh(),
-            'yi' => new Yiddish(),
-            default => new EnglishUnitedStates(),
+            'sk'      => new Slovakian(),
+            'sl'      => new Slovenian(),
+            'es'      => new Spanish(),
+            'su'      => new Sundanese(),
+            'sw'      => new Swahili(),
+            'sv'      => new Swedish(),
+            'tl'      => new Tagalog(),
+            'ta'      => new Tamil(),
+            'tt'      => new Tatar(),
+            'th'      => new Thai(),
+            'tr'      => new Turkish(),
+            'uk'      => new Ukranian(),
+            'ur'      => new Urdu(),
+            'uz'      => new Uzbek(),
+            'vi'      => new Vietnamese(),
+            'cy'      => new Welsh(),
+            'yi'      => new Yiddish(),
+            default   => new EnglishUnitedStates(),
         };
     }
 
+    /**
+     * Determine the best language from the HTTP Accept-Language header.
+     * Handles real-world aliases (e.g. zh-TW -> zh-Hant, zh-CN -> zh-Hans).
+     */
     public function fromRequest(ServerRequestInterface $request): LanguageInterface
     {
-        $locales = array_map(Locale::create(...), $this->allLanguageTags());
-        $default = (new EnglishUnitedStates())->locale();
-        $locale  = Locale::httpAcceptLanguage($request->getServerParams(), $locales, $default);
+        $header = $request->getHeaderLine('Accept-Language');
 
-        return $this->fromLanguageTag($locale->languageTag());
+        $accept_language_tags = $this->parseAcceptLanguage($header);
+
+        // Exact match.
+        foreach ($accept_language_tags as $accept_language_tag) {
+            if (in_array($accept_language_tag, self::LANGUAGE_TAGS, true)) {
+                return $this->fromLanguageTag($accept_language_tag);
+            }
+        }
+
+        // Match on language.  e.g. 'de' for 'de-DE' or 'en-US' for 'en'
+        foreach ($accept_language_tags as $accept_language_tag) {
+            foreach (self::LANGUAGE_TAGS as $language_tag) {
+                if (explode('-', $accept_language_tag)[0] === explode('-', $language_tag)[0]) {
+                    return $this->fromLanguageTag($language_tag);
+                }
+            }
+        }
+
+        // No match.
+        return new EnglishUnitedStates();
+    }
+
+    /**
+     * Parse an Accept-Language header into a list of tags sorted by quality descending.
+     *
+     * @return list<string>
+     */
+    private function parseAcceptLanguage(string $header): array
+    {
+        $preferences = [];
+
+        foreach (explode(',', $header) as $item) {
+            $item = trim($item);
+
+            if ($item === '' || $item === '*') {
+                continue;
+            }
+
+            if (preg_match('/^([a-zA-Z]{2,3}(?:-[a-zA-Z0-9]{2,4})*)(?:;q=([0-9](?:\.[0-9]{1,3})?))?$/', $item, $matches) === 1) {
+                $tag     = $this->normalizeLanguageTag($matches[1]);
+                $quality = isset($matches[2]) ? (float) $matches[2] : 1.0;
+
+                if ($quality > 0.0) {
+                    $preferences[$tag] = $quality;
+                }
+            }
+        }
+
+        arsort($preferences);
+
+        return array_keys($preferences);
+    }
+
+    /**
+     * @param list<string> $match
+     */
+    private function normalizeLanguageCode(array $match): string
+    {
+        return strtolower($match[0]);
+    }
+
+    /**
+     * @param list<string> $match
+     */
+    private function normalizeRegionCode(array $match): string
+    {
+        return '-' . strtoupper($match[1]);
+    }
+
+    /**
+     * @param list<string> $match
+     */
+    private function normalizeScriptCode(array $match): string
+    {
+        return '-' . ucfirst(strtolower($match[1]));
+    }
+
+    private function normalizeLanguageTag(string $tag): string
+    {
+        $tag = preg_replace_callback('/^([a-z]{2,3})/i', $this->normalizeLanguageCode(...), $tag);
+        $tag = preg_replace_callback('/-([a-z]{2})\b$/i', $this->normalizeRegionCode(...), $tag);
+        $tag = preg_replace_callback('/-([a-z]{4})\b/i', $this->normalizeScriptCode(...), $tag);
+
+        return self::LANGUAGE_TAG_ALIASES[$tag] ?? $tag;
     }
 
     /**
@@ -286,7 +391,7 @@ final readonly class LanguageFactory
     public function allLanguages(): array
     {
         return array_map(
-            fn(string $language_tag): LanguageInterface => $this->fromLanguageTag($language_tag),
+            fn (string $language_tag): LanguageInterface => $this->fromLanguageTag($language_tag),
             self::LANGUAGE_TAGS
         );
     }

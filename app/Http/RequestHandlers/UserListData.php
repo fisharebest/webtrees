@@ -38,7 +38,6 @@ final class UserListData implements RequestHandlerInterface
 {
     public function __construct(
         private readonly DatatablesService $datatables_service,
-        private readonly LanguageFactory $language_factory,
         private readonly UserService $user_service
     ) {
     }

@@ -40,7 +40,6 @@ final class AccountEdit implements RequestHandlerInterface
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly LanguageFactory $language_factory,
         private readonly MessageService $message_service,
     ) {
     }

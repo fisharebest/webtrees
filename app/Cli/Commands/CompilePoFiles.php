@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli\Commands;
 
-use Fisharebest\Localization\Translation;
+use Fisharebest\Webtrees\I18N\Translation;
 use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -82,8 +82,8 @@ final class CompilePoFiles extends AbstractCommand
         $error = false;
 
         foreach ($po_files as $po_file) {
-            $translation  = new Translation(filename: $po_file);
-            $translations = $translation->asArray();
+            $translation  = Translation::fromPoFile($po_file);
+            $translations = $translation->toArray();
             $language     = basename(path: dirname(path: $po_file));
             $php_file     = $destination . DIRECTORY_SEPARATOR . $language . DIRECTORY_SEPARATOR . 'messages.php';
             $php_code     = "<?php\n\nreturn " . var_export(value: $translations, return: true) . ";\n";

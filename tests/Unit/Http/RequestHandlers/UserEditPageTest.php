@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\RequestHandlers;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Factories\LanguageFactory;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\MessageService;
@@ -45,7 +44,7 @@ class UserEditPageTest extends TestCase
         $user_service    = new UserService();
         $message_service = new MessageService($mail_service, $user_service);
         $user            = $user_service->create('user', 'real', 'email', 'pass');
-        $handler         = new UserEditPage(new LanguageFactory(), $message_service, $module_service, $tree_service, $user_service);
+        $handler         = new UserEditPage($message_service, $module_service, $tree_service, $user_service);
         $request         = self::createRequest(RequestMethodInterface::METHOD_GET, ['user_id' => (string) $user->id()]);
         $response        = $handler->handle($request);
 

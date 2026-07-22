@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli\Commands;
 
-use Fisharebest\Localization\Translation;
+use Fisharebest\Webtrees\I18N\Translation;
 use Fisharebest\Webtrees\Webtrees;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -771,8 +771,8 @@ final class Xgettext extends AbstractCommand
      */
     private function compilePoFile(string $po_file, string $php_file): array|null
     {
-        $translation  = new Translation($po_file);
-        $translations = $translation->asArray();
+        $translation  = Translation::fromPoFile($po_file);
+        $translations = $translation->toArray();
 
 
         $php_code = "<?php\n\nreturn " . var_export($translations, true) . ";\n";

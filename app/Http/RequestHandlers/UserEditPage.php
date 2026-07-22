@@ -39,7 +39,6 @@ final class UserEditPage implements RequestHandlerInterface
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly LanguageFactory $language_factory,
         private readonly MessageService $message_service,
         private readonly ModuleService $module_service,
         private readonly TreeService $tree_service,
