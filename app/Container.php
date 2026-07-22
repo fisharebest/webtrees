@@ -38,12 +38,15 @@ class Container implements ContainerInterface
     /** @var array<class-string<T>,T> */
     private array $container = [];
 
+    /** @var array<class-string,class-string> */
+    private array $bindings = [];
+
     /**
      * @param class-string<T> $id
      */
     public function has(string $id): bool
     {
-        return array_key_exists($id, $this->container);
+        return array_key_exists($id, $this->container) || array_key_exists($id, $this->bindings);
     }
 
     /**
@@ -53,7 +56,22 @@ class Container implements ContainerInterface
      */
     public function get(string $id): object
     {
-        return $this->container[$id] ??= $this->make($id);
+        return $this->container[$id] ??= $this->make($this->bindings[$id] ?? $id);
+    }
+
+    /**
+     * Register a class name for lazy instantiation.
+     *
+     * @param class-string<T> $id
+     * @param class-string<T> $class
+     *
+     * @return $this
+     */
+    public function bind(string $id, string $class): static
+    {
+        $this->bindings[$id] = $class;
+
+        return $this;
     }
 
     /**

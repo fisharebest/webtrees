@@ -26,5 +26,13 @@ use Psr\Container\ContainerInterface as Psr11ContainerInterface;
  */
 interface ContainerInterface extends Psr11ContainerInterface
 {
+    /**
+     * Register a class name for lazy instantiation.
+     *
+     * @param class-string $id
+     * @param class-string $class
+     */
+    public function bind(string $id, string $class): static;
+
     public function set(string $id, object $object): static;
 }
