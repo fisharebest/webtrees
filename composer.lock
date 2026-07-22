@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "321be576fafc6729d84d2aeba9e5570c",
+    "content-hash": "b765d6a9989c45916f1b289ae052d56f",
     "packages": [
         {
             "name": "aura/router",
@@ -734,65 +734,6 @@
                 "source": "https://github.com/fisharebest/ext-calendar/tree/2.6.0"
             },
             "time": "2022-05-31T16:01:21+00:00"
-        },
-        {
-            "name": "fisharebest/localization",
-            "version": "1.17.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fisharebest/localization.git",
-                "reference": "ed04431fd1329191da0addb028404aa769d6b388"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/localization/zipball/ed04431fd1329191da0addb028404aa769d6b388",
-                "reference": "ed04431fd1329191da0addb028404aa769d6b388",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "ext-simplexml": "*",
-                "php-coveralls/php-coveralls": "*",
-                "phpunit/phpunit": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Fisharebest\\Localization\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Greg Roach",
-                    "email": "greg@subaqua.co.uk",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A lightweight localization database and translation tools, with data from the CLDR, IANA, ISO, etc.",
-            "homepage": "https://github.com/fisharebest/localization",
-            "keywords": [
-                "cldr",
-                "gettext",
-                "i18n",
-                "l10n",
-                "language",
-                "locale",
-                "localization",
-                "script",
-                "translate",
-                "translation"
-            ],
-            "support": {
-                "issues": "https://github.com/fisharebest/localization/issues",
-                "source": "https://github.com/fisharebest/localization/tree/1.17.0"
-            },
-            "time": "2022-10-24T15:23:32+00:00"
         },
         {
             "name": "illuminate/collections",
@@ -5808,16 +5749,16 @@
         },
         {
             "name": "tecnickcom/tc-lib-pdf",
-            "version": "8.67.0",
+            "version": "8.67.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tecnickcom/tc-lib-pdf.git",
-                "reference": "2c8df69476e6140d4ec7a3555fbcac4a6f1a329b"
+                "reference": "081cb454f5efa308faaf578cbfe7940a91d065d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tecnickcom/tc-lib-pdf/zipball/2c8df69476e6140d4ec7a3555fbcac4a6f1a329b",
-                "reference": "2c8df69476e6140d4ec7a3555fbcac4a6f1a329b",
+                "url": "https://api.github.com/repos/tecnickcom/tc-lib-pdf/zipball/081cb454f5efa308faaf578cbfe7940a91d065d9",
+                "reference": "081cb454f5efa308faaf578cbfe7940a91d065d9",
                 "shasum": ""
             },
             "require": {
@@ -5875,7 +5816,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-07-17T21:39:15+00:00"
+            "time": "2026-07-22T08:02:10+00:00"
         },
         {
             "name": "tecnickcom/tc-lib-pdf-encrypt",

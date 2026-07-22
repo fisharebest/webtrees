@@ -302,6 +302,13 @@ class ReportRegressionTest extends TestCase
             $pdf
         );
 
+        // TCPDF version string embedded in Producer metadata
+        $pdf = (string) preg_replace(
+            '/TCPDF \d+\.\d+\.\d+/',
+            'TCPDF 0.0.0',
+            $pdf
+        );
+
         // XMP UUID references: uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
         $pdf = (string) preg_replace(
             '/uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/',
