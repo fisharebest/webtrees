@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Validator;
-use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -44,6 +44,11 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
 {
     use ModuleConfigTrait;
     use ModuleMapAutocompleteTrait;
+
+    public function __construct(
+        private readonly RequestFactoryInterface $request_factory,
+    ) {
+    }
 
     /**
      * Name of the map provider.
@@ -101,7 +106,7 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
             'layers'  => 'coarse',
         ]);
 
-        return new Request('GET', $uri);
+        return $this->request_factory->createRequest('GET', $uri);
     }
 
     /**

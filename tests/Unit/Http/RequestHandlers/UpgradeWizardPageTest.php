@@ -27,6 +27,8 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\UpgradeWizardPage;
 
 #[CoversClass(UpgradeWizardPage::class)]
@@ -39,7 +41,11 @@ class UpgradeWizardPageTest extends TestCase
         $timeout_service       = new TimeoutService(php_service: new PhpService());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
-        $upgrade_service       = new UpgradeService($timeout_service);
+        $upgrade_service       = new UpgradeService(
+            $this->createStub(ClientInterface::class),
+            $this->createStub(RequestFactoryInterface::class),
+            $timeout_service,
+        );
         $handler               = new UpgradeWizardPage($tree_service, $upgrade_service);
         $request               = self::createRequest();
         $response              = $handler->handle($request);

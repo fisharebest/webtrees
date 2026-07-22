@@ -60,8 +60,6 @@ class Container implements ContainerInterface
     }
 
     /**
-     * Register a class name for lazy instantiation.
-     *
      * @param class-string<T> $id
      * @param class-string<T> $class
      *
@@ -77,8 +75,6 @@ class Container implements ContainerInterface
     /**
      * @param class-string<T> $id
      * @param T               $object
-     *
-     * @return $this
      */
     public function set(string $id, object $object): static
     {

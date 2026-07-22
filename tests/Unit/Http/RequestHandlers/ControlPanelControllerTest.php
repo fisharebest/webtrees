@@ -34,6 +34,8 @@ use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 
 #[CoversClass(ControlPanel::class)]
@@ -51,7 +53,11 @@ class ControlPanelControllerTest extends TestCase
         $timeout_service       = new TimeoutService(php_service: new PhpService());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
-        $upgrade_service       = new UpgradeService($timeout_service);
+        $upgrade_service       = new UpgradeService(
+            $this->createStub(ClientInterface::class),
+            $this->createStub(RequestFactoryInterface::class),
+            $timeout_service,
+        );
         $user_service          = new UserService();
         $handler               = new ControlPanel(
             $admin_service,

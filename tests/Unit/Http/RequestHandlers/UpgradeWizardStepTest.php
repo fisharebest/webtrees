@@ -37,12 +37,23 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use Illuminate\Support\Collection;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use PHPUnit\Framework\Attributes\CoversClass;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\UpgradeWizardStep;
 
 #[CoversClass(UpgradeWizardStep::class)]
 class UpgradeWizardStepTest extends TestCase
 {
     protected static bool $uses_database = true;
+
+    private function upgradeService(): UpgradeService
+    {
+        return new UpgradeService(
+            $this->createStub(ClientInterface::class),
+            $this->createStub(RequestFactoryInterface::class),
+            new TimeoutService(php_service: new PhpService()),
+        );
+    }
 
     public function testIgnoreStepInvalid(): void
     {
@@ -51,7 +62,7 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
-            new UpgradeService(new TimeoutService(php_service: new PhpService())),
+            $this->upgradeService(),
         );
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Invalid']);
@@ -122,7 +133,7 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
-            new UpgradeService(new TimeoutService(php_service: new PhpService()))
+            $this->upgradeService(),
         );
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Prepare']);
@@ -138,7 +149,7 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
-            new UpgradeService(new TimeoutService(php_service: new PhpService()))
+            $this->upgradeService(),
         );
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Pending']);
@@ -161,7 +172,7 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
-            new UpgradeService(new TimeoutService(php_service: new PhpService()))
+            $this->upgradeService(),
         );
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Pending']);
@@ -182,7 +193,7 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             $tree_service,
-            new UpgradeService(new TimeoutService(php_service: new PhpService()))
+            $this->upgradeService(),
         );
 
         $request  = self::createRequest()->withQueryParams(['step' => 'Export', 'tree' => $tree->name()]);

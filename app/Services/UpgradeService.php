@@ -23,12 +23,11 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Webtrees;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
@@ -38,6 +37,9 @@ use League\Flysystem\StorageAttributes;
 use League\Flysystem\UnableToDeleteFile;
 use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use RuntimeException;
 use ZipArchive;
 
@@ -59,13 +61,6 @@ use const PHP_VERSION;
  */
 class UpgradeService
 {
-    // Options for fetching files using GuzzleHTTP
-    private const array GUZZLE_OPTIONS = [
-        'connect_timeout' => 25,
-        'read_timeout'    => 25,
-        'timeout'         => 55,
-    ];
-
     // Transfer stream data in blocks of this number of bytes.
     private const int READ_BLOCK_SIZE = 65535;
 
@@ -76,10 +71,10 @@ class UpgradeService
     // Note: earlier versions of webtrees used svn.webtrees.net, so we must maintain both URLs.
     private const string UPDATE_URL = 'https://dev.webtrees.net/build/latest-version.txt';
 
-    // If the update server doesn't respond after this time, give up.
-    private const float HTTP_TIMEOUT = 3.0;
 
     public function __construct(
+        private readonly ClientInterface $http_client,
+        private readonly RequestFactoryInterface $request_factory,
         private readonly TimeoutService $timeout_service,
     ) {
     }
@@ -126,7 +121,7 @@ class UpgradeService
      *
      *
      * @return int The number of bytes downloaded
-     * @throws GuzzleException
+     * @throws ClientExceptionInterface
      * @throws FilesystemException
      */
     public function downloadFile(string $url, FilesystemOperator $filesystem, string $path): int
@@ -135,8 +130,8 @@ class UpgradeService
         $tmp = fopen('php://memory', 'wb+');
 
         // Read from the URL
-        $client   = new Client();
-        $response = $client->get($url, self::GUZZLE_OPTIONS);
+        $request  = $this->request_factory->createRequest('GET', $url);
+        $response = $this->http_client->sendRequest($request);
         $stream   = $response->getBody();
 
         // Download the file to temporary storage.
@@ -294,13 +289,9 @@ class UpgradeService
             Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', (string) $current_timestamp);
 
             try {
-                $client = new Client([
-                    'timeout' => self::HTTP_TIMEOUT,
-                ]);
-
-                $response = $client->get(self::UPDATE_URL, [
-                    'query' => $this->serverParameters(),
-                ]);
+                $url = Html::url(self::UPDATE_URL, $this->serverParameters());
+                $request  = $this->request_factory->createRequest('GET', $url);
+                $response = $this->http_client->sendRequest($request);
 
                 if ($response->getStatusCode() === StatusCodeInterface::STATUS_OK) {
                     Site::setPreference('LATEST_WT_VERSION', $response->getBody()->getContents());
@@ -308,10 +299,10 @@ class UpgradeService
                 } else {
                     Site::setPreference('LATEST_WT_VERSION_ERROR', 'HTTP' . $response->getStatusCode());
                 }
-            } catch (GuzzleException $ex) {
+            } catch (ClientExceptionInterface $exception) {
                 // Can't connect to the server?
                 // Use the existing information about latest versions.
-                Site::setPreference('LATEST_WT_VERSION_ERROR', $ex->getMessage());
+                Site::setPreference('LATEST_WT_VERSION_ERROR', $exception->getMessage());
             }
         }
 

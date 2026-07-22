@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Validator;
-use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -45,6 +45,11 @@ class GeonamesAutocomplete extends AbstractModule implements ModuleConfigInterfa
 {
     use ModuleConfigTrait;
     use ModuleMapAutocompleteTrait;
+
+    public function __construct(
+        private readonly RequestFactoryInterface $request_factory,
+    ) {
+    }
 
     /**
      * Name of the map provider.
@@ -108,7 +113,7 @@ class GeonamesAutocomplete extends AbstractModule implements ModuleConfigInterfa
             'username'        => $username,
         ]);
 
-        return new Request('GET', $uri);
+        return $this->request_factory->createRequest('GET', $uri);
     }
 
     /**

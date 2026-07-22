@@ -25,8 +25,9 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -86,11 +87,10 @@ trait ModuleCustomTrait
 
         return Registry::cache()->file()->remember($this->name() . '-latest-version', function (): string {
             try {
-                $client = new Client([
-                    'timeout' => 3,
-                ]);
-
-                $response = $client->get($this->customModuleLatestVersionUrl());
+                $http_client     = Registry::container()->get(ClientInterface::class);
+                $request_factory = Registry::container()->get(RequestFactoryInterface::class);
+                $request         = $request_factory->createRequest('GET', $this->customModuleLatestVersionUrl());
+                $response        = $http_client->sendRequest($request);
 
                 if ($response->getStatusCode() === StatusCodeInterface::STATUS_OK) {
                     $version = $response->getBody()->getContents();
@@ -100,7 +100,7 @@ trait ModuleCustomTrait
                         return $version;
                     }
                 }
-            } catch (GuzzleException) {
+            } catch (ClientExceptionInterface) {
                 // Can't connect to the server?
             }
 

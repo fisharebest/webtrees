@@ -26,6 +26,8 @@ use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\Local\LocalFilesystemAdapter;
 use PHPUnit\Framework\Attributes\CoversClass;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 
 use function array_diff;
 use function is_dir;
@@ -54,7 +56,11 @@ class UpgradeServiceTest extends TestCase
         $source_filesystem->write('root.txt', 'root');
         $source_filesystem->write('alpha/beta/nested.txt', 'nested');
 
-        $upgrade_service = new UpgradeService($this->timeoutServiceNeverTimesOut());
+        $upgrade_service = new UpgradeService(
+            $this->createStub(ClientInterface::class),
+            $this->createStub(RequestFactoryInterface::class),
+            $this->timeoutServiceNeverTimesOut(),
+        );
 
         try {
             $upgrade_service->moveFiles($source_filesystem, $this->filesystem($destination_root));

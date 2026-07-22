@@ -77,12 +77,15 @@ use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\Services\PhpService;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
+use Symfony\Component\HttpClient\Psr18Client;
 
 use function date_default_timezone_set;
 use function error_reporting;
@@ -224,13 +227,16 @@ class Webtrees
         Registry::timestampFactory(new TimestampFactory());
         Registry::xrefFactory(new XrefFactory());
 
-        // PSR7 messages and PSR17 message-factories
+        // PSR-7 messages, PSR-17 message-factories, and PSR-18 HTTP client
+
         Registry::container()
-            ->set(ResponseFactoryInterface::class, new Psr17Factory())
-            ->set(ServerRequestFactoryInterface::class, new Psr17Factory())
-            ->set(StreamFactoryInterface::class, new Psr17Factory())
-            ->set(UploadedFileFactoryInterface::class, new Psr17Factory())
-            ->set(UriFactoryInterface::class, new Psr17Factory());
+            ->bind(ClientInterface::class, Psr18Client::class)
+            ->bind(RequestFactoryInterface::class, Psr17Factory::class)
+            ->bind(ResponseFactoryInterface::class, Psr17Factory::class)
+            ->bind(ServerRequestFactoryInterface::class, Psr17Factory::class)
+            ->bind(StreamFactoryInterface::class, Psr17Factory::class)
+            ->bind(UploadedFileFactoryInterface::class, Psr17Factory::class)
+            ->bind(UriFactoryInterface::class, Psr17Factory::class);
 
         stream_filter_register(GedcomEncodingFilter::class, GedcomEncodingFilter::class);
 

@@ -36,6 +36,7 @@ class MapGeoLocationGeonames extends AbstractModule implements ModuleConfigInter
     use ModuleConfigTrait;
     use ModuleMapGeoLocationTrait;
 
+
     /**
      * Name of the map provider.
      */
