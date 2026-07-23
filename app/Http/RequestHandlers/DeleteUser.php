@@ -44,11 +44,11 @@ final class DeleteUser implements RequestHandlerInterface
         $user = $this->user_service->find($user_id);
 
         if ($user === null) {
-            throw new HttpNotFoundException('User ID ' . $user_id . ' not found');
+            throw new HttpNotFoundException();
         }
 
         if (Auth::isAdmin($user)) {
-            throw new HttpAccessDeniedException('Cannot delete an administrator');
+            throw new HttpAccessDeniedException();
         }
 
         Log::addAuthenticationLog('Deleted user: ' . $user->userName());

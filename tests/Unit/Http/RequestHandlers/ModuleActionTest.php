@@ -60,7 +60,7 @@ class ModuleActionTest extends TestCase
     public function testNonExistingAction(): void
     {
         $this->expectException(HttpNotFoundException::class);
-        $this->expectExceptionMessage('Method getTestingAction() not found in test');
+        $this->expectExceptionMessage('You do not have permission to view this page.');
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
@@ -102,7 +102,7 @@ class ModuleActionTest extends TestCase
     public function testAdminAction(): void
     {
         $this->expectException(HttpAccessDeniedException::class);
-        $this->expectExceptionMessage('Admin only action');
+        $this->expectExceptionMessage('You do not have permission to view this page.');
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service

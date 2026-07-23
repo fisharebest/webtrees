@@ -73,11 +73,11 @@ final class ModuleAction implements RequestHandlerInterface
 
         // Actions with "Admin" in the name are for administrators only.
         if (str_contains(strtolower($action), 'admin') && !Auth::isAdmin($user)) {
-            throw new HttpAccessDeniedException('Admin only action');
+            throw new HttpAccessDeniedException();
         }
 
         if (!method_exists($module, $method)) {
-            throw new HttpNotFoundException('Method ' . e($method) . '() not found in ' . e($module_name));
+            throw new HttpNotFoundException();
         }
 
         return $module->$method($request);

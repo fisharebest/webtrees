@@ -52,7 +52,7 @@ final class MessagePage implements RequestHandlerInterface
         $to_user = $this->user_service->findByUserName($to);
 
         if ($to_user === null || $to_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === MessageService::CONTACT_METHOD_NONE) {
-            throw new HttpAccessDeniedException('Invalid contact user id');
+            throw new HttpAccessDeniedException();
         }
 
         $title = I18N::translate('Send a message');

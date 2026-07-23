@@ -88,7 +88,7 @@ final class ContactAction implements RequestHandlerInterface
         }
 
         if (!in_array($to_user, $this->message_service->validContacts($tree), false)) {
-            throw new HttpAccessDeniedException('Invalid contact user id');
+            throw new HttpAccessDeniedException();
         }
 
         $errors = $body === '' || $subject === '' || $from_email === '' || $from_name === '';
