@@ -2317,6 +2317,11 @@ class Statistics
         return I18N::number($this->data->countMedia('newspaper'));
     }
 
+    public function totalMediaObjects(): string
+    {
+        return I18N::number($this->data->countMediaObjects());
+    }
+
     public function totalMediaOther(): string
     {
         return I18N::number($this->data->countMedia('other'));

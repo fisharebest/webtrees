@@ -618,6 +618,13 @@ readonly class StatisticsData
             ->all();
     }
 
+    public function countMediaObjects(): int
+    {
+        return DB::table('media')
+            ->where('m_file', '=', $this->tree->id())
+            ->count();
+    }
+
     public function countNotes(): int
     {
         return DB::table('other')
