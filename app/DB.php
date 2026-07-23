@@ -66,13 +66,33 @@ final class DB extends Manager
         self::FIREBIRD   => 'LIST(%s)',
     ];
 
+    // @TODO - fix queries, and set ONLY_FULL_GROUP_BY for mysql/mariadb
     private const array DRIVER_INITIALIZATION = [
-        self::MARIADB    => "SET NAMES utf8mb4, sql_mode := 'ANSI,STRICT_ALL_TABLES', TIME_ZONE := '+00:00', SQL_BIG_SELECTS := 1, GROUP_CONCAT_MAX_LEN := 1048576",
-        self::MYSQL      => "SET NAMES utf8mb4, sql_mode := 'ANSI,STRICT_ALL_TABLES', TIME_ZONE := '+00:00', SQL_BIG_SELECTS := 1, GROUP_CONCAT_MAX_LEN := 1048576",
-        self::POSTGRESQL => '',
-        self::SQLITE     => 'PRAGMA foreign_keys = ON',
-        self::SQL_SERVER => 'SET language us_english', // For timestamp columns
-        self::FIREBIRD   => '',
+        self::MARIADB    =>
+            'SET NAMES utf8mb4;' .
+            "SET sql_mode             := 'ANSI,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ONLY_FULL_GROUP_BY';" .
+            "SET TIME_ZONE            := '+00:00';" .
+            'SET SQL_BIG_SELECTS      := 1;' .
+            'SET GROUP_CONCAT_MAX_LEN := 1048576;',
+        self::MYSQL      =>
+            'SET NAMES utf8mb4;' .
+            "SET sql_mode             := 'ANSI,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ONLY_FULL_GROUP_BY';" .
+            "SET TIME_ZONE            := '+00:00';" .
+            'SET SQL_BIG_SELECTS      := 1;' .
+            'SET GROUP_CONCAT_MAX_LEN := 1048576;',
+        self::POSTGRESQL =>
+            "SET timezone  = 'UTC';" .
+            "SET datestyle = 'ISO, YMD';",
+        self::SQLITE     =>
+            'PRAGMA journal_mode = WAL;' .
+            'PRAGMA foreign_keys = ON;' .
+            'PRAGMA synchronous  = NORMAL;' .
+            'PRAGMA busy_timeout = 5000;' .
+            'PRAGMA cache_size   = -16000;',
+        self::SQL_SERVER =>
+            'SET language us_english;', // For timestamp columns
+        self::FIREBIRD   =>
+            'SET NAMES UTF8;',
     ];
 
     public static function connect(
