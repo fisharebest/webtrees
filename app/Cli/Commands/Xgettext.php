@@ -1120,8 +1120,8 @@ final class Xgettext extends AbstractCommand
             '--add-location=file',
             '--language=JavaScript',
             '--from-code=utf-8',
-            '--keyword=i18n.get:1',
-            '--keyword=webtrees.i18n.get:1',
+            '--keyword=i18n.gettext:1',
+            '--keyword=webtrees.i18n.gettext:1',
         ], $files);
     }
 
