@@ -87,7 +87,7 @@ foreach ($keys as $key) {
 <?php else : ?>
     <?php foreach ($keys as $key) : ?>
         <?php if ($values[$key] !== '') : ?>
-            <?php if ($elements[$key] instanceof UnknownElement && $tree->getPreference('HIDE_GEDCOM_ERRORS') !== '1') : ?>
+            <?php if (!$elements[$key] instanceof UnknownElement || $tree->getPreference('HIDE_GEDCOM_ERRORS') !== '1') : ?>
                 <?= $elements[$key]->labelValue(strtr($values[$key], ["\r" => "\n"]), $tree) ?>
             <?php endif ?>
         <?php endif ?>

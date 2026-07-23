@@ -166,6 +166,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
             'folders'               => $folders,
             'format'                => $format,
             'formats'               => $formats,
+            'go'                    => $go,
             'linked_record_service' => $this->linked_record_service,
             'max'                   => $max,
             'media_objects'         => $media_objects,

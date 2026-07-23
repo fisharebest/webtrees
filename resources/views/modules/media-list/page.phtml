@@ -19,6 +19,7 @@ use Illuminate\Support\Collection;
  * @var array<string>         $folders
  * @var string                $format
  * @var array<string>         $formats
+ * @var bool                  $go
  * @var LinkedRecordService   $linked_record_service
  * @var int                   $max
  * @var Collection<int,Media> $media_objects
@@ -93,7 +94,9 @@ use Illuminate\Support\Collection;
 </form>
 
 <div class="wt-page-content">
-    <p class="text-center mt-4"><?= I18N::translate('Media objects found') ?> <?= I18N::number($count) ?></p>
+    <?php if ($go) : ?>
+        <p class="text-center mt-4"><?= I18N::translate('Media objects found') ?> <?= I18N::number($count) ?></p>
+    <?php endif ?>
     <?php if ($media_objects->isNotEmpty()) : ?>
         <?= view('modules/media-list/pagination', ['module' => $module, 'page' => $page, 'pages' => $pages, 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'tree' => $tree]) ?>
 
@@ -109,26 +112,11 @@ use Illuminate\Support\Collection;
                         <div class="card-body">
                             <?php foreach ($media_object->mediaFiles() as $media_file) : ?>
                                 <?= $media_file->displayImage(300, 200, 'contain', ['class' => 'img-fluid']) ?>
-                            <?php endforeach ?>
-
-                            <?php $media_file = $media_object->mediaFiles()->first() ?>
-                            <?php if ($media_file instanceof MediaFile) : ?>
-                                <div class="card-text mt-2">
+                                <div class="my-2">
                                     <?php
-                                    // Show file details
                                     if ($media_file->type() !== '') {
-                                        $element = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE');
-                                        echo $element->labelValue($media_file->type(), $media_object->tree());
+                                        echo Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->labelValue($media_file->type(), $media_object->tree());
                                     }
-
-                                    foreach ($media_object->facts(['SOUR']) as $fact) {
-                                        echo view('fact-gedcom-fields', ['gedcom' => $fact->gedcom(), 'parent' => $media_object->tag(), 'tree' => $tree]);
-                                    }
-
-                                    foreach ($media_object->facts(['NOTE']) as $fact) {
-                                        echo view('fact-gedcom-fields', ['gedcom' => $fact->gedcom(), 'parent' => $media_object->tag(), 'tree' => $tree]);
-                                    }
-
                                     if ($media_file->isExternal()) {
                                         echo Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $media_object->tree());
                                     } elseif ($media_file->fileExists()) {
@@ -147,7 +135,21 @@ use Illuminate\Support\Collection;
                                     }
                                     ?>
                                 </div>
-                            <?php endif ?>
+                            <?php endforeach ?>
+
+                            <div class="card-text mt-2">
+                                <?php
+                                foreach ($media_object->facts(['SOUR']) as $fact) {
+                                    echo '<hr>';
+                                    echo view('fact-gedcom-fields', ['gedcom' => $fact->gedcom(), 'parent' => $media_object->tag(), 'tree' => $tree]);
+                                }
+
+                                foreach ($media_object->facts(['NOTE']) as $fact) {
+                                    echo '<hr>';
+                                    echo view('fact-gedcom-fields', ['gedcom' => $fact->gedcom(), 'parent' => $media_object->tag(), 'tree' => $tree]);
+                                }
+                                ?>
+                            </div>
                         </div>
                         <div class="card-footer">
                             <?php foreach ($linked_record_service->linkedIndividuals($media_object) as $record) : ?>
@@ -167,7 +169,7 @@ use Illuminate\Support\Collection;
                                 <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
                                 <br>
                             <?php endforeach ?>
-                                
+
                             <?php foreach ($linked_record_service->linkedLocations($media_object) as $record) : ?>
                                 <?= view('icons/location') ?>
                                 <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
