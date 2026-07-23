@@ -59,10 +59,14 @@ class Date
             $date       = $match[1];
             $this->text = $match[2];
         }
-        if (preg_match('/^(FROM|BET) (.+) (AND|TO) (.+)/', $date, $match)) {
-            $this->type  = DateType::from($match[1] . $match[3]);
-            $this->date1 = $calendar_date_factory->make($match[2]);
-            $this->date2 = $calendar_date_factory->make($match[4]);
+        if (preg_match('/^FROM (.+) TO (.+)/', $date, $match)) {
+            $this->type  = DateType::from('FROMTO');
+            $this->date1 = $calendar_date_factory->make($match[1]);
+            $this->date2 = $calendar_date_factory->make($match[2]);
+        } elseif (preg_match('/^BET (.+) AND (.+)/', $date, $match)) {
+            $this->type  = DateType::from('BETAND');
+            $this->date1 = $calendar_date_factory->make($match[1]);
+            $this->date2 = $calendar_date_factory->make($match[2]);
         } elseif (preg_match('/^(TO|FROM|BEF|AFT|CAL|EST|INT|ABT) (.+)/', $date, $match)) {
             $this->type  = DateType::from($match[1]);
             $this->date1 = $calendar_date_factory->make($match[2]);
