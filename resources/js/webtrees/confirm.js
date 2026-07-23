@@ -40,10 +40,10 @@ function getConfirmModal() {
       '  <p class="wt-confirm-message"></p>',
       '  <div class="wt-confirm-actions">',
       '    <button type="button" class="btn btn-secondary" data-wt-confirm-action="cancel">' +
-      '      <i class="fa-solid fa-times"></i> ' + i18n.get('cancel') +
+      '      <i class="fa-solid fa-times"></i> ' + i18n.gettext('cancel') +
       '    </button>',
       '    <button type="button" class="btn btn-primary" data-wt-confirm-action="confirm">' +
-      '      <i class="fa-solid fa-check"></i> ' + i18n.get('OK') +
+      '      <i class="fa-solid fa-check"></i> ' + i18n.gettext('OK') +
       '    </button>',
       '  </div>',
       '</div>',

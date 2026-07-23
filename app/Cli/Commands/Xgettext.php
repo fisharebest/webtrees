@@ -467,6 +467,17 @@ final class Xgettext extends AbstractCommand
             return false;
         }
 
+        // Remove obsolete #~ entries left over from deleted source strings
+        $cleaned = $this->runCommand(sprintf(
+            'msgattrib --no-wrap --no-obsolete --output=%s %s',
+            escapeshellarg($po_file),
+            escapeshellarg($po_file),
+        ), self::ROOT_DIRECTORY);
+
+        if (!$cleaned) {
+            return false;
+        }
+
         $sorted = $this->runCommand(sprintf(
             'msgcat --no-wrap --sort-output --output=%s %s',
             escapeshellarg($po_file),

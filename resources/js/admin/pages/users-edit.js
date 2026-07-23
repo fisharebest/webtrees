@@ -13,7 +13,7 @@ export function initializeUsersEditPage () {
     return;
   }
 
-  const immediateFamilyMessage = i18n.get('You must specify an individual record before you can restrict the user to their immediate family.');
+  const immediateFamilyMessage = i18n.gettext('You must specify an individual record before you can restrict the user to their immediate family.');
 
   page.addEventListener('change', (event) => {
     const target = event.target;

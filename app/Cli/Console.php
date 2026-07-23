@@ -47,6 +47,7 @@ final class Console extends Application
         Commands\UserList::class,
         Commands\UserSetting::class,
         Commands\UserTreeSetting::class,
+        Commands\WriteTranslation::class,
     ];
 
     public function __construct()

@@ -34,7 +34,7 @@ export function initializeTomSelect(element) {
       render: {
         item: (data, escape) => '<div>' + data.text + '</div>',
         option: (data, escape) => '<div>' + data.text + '</div>',
-        no_results: (data, escape) => '<div class="no-results">' + i18n.get('No results found') + '</div>',
+        no_results: (data, escape) => '<div class="no-results">' + i18n.gettext('No results found') + '</div>',
       },
       firstUrl: query => element.dataset.wtUrl + '&query=' + encodeURIComponent(query),
       load: function (query, callback) {

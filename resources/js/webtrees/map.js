@@ -37,8 +37,8 @@ export function buildLeafletJsMap(id, config, resetCallback) {
   });
 
   const zoomControl = new L.control.zoom({
-    zoomInTitle: i18n.get('Zoom in'),
-    zoomOutTitle: i18n.get('Zoom out'),
+    zoomInTitle: i18n.gettext('Zoom in'),
+    zoomOutTitle: i18n.gettext('Zoom out'),
   });
 
   const resetControl = L.Control.extend({
@@ -50,8 +50,8 @@ export function buildLeafletJsMap(id, config, resetCallback) {
       const anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
 
       anchor.href = '#';
-      anchor.setAttribute('aria-label', i18n.get('Reload map')); // Firefox does not yet support element.ariaLabel
-      anchor.title = i18n.get('Reload map');
+      anchor.setAttribute('aria-label', i18n.gettext('Reload map')); // Firefox does not yet support element.ariaLabel
+      anchor.title = i18n.gettext('Reload map');
       anchor.setAttribute('role', 'button');
       anchor.innerHTML = config.icons.reset;
       anchor.addEventListener('click', (event) => {

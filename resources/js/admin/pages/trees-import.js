@@ -20,7 +20,7 @@ export function initializeTreesImportPage () {
   const importClientFile = requireElement(form, '#import-client-file', HTMLInputElement, 'client file input in #admin-trees-import-page');
   const importServer = requireElement(form, '#import-server', HTMLInputElement, 'server source radio in #admin-trees-import-page');
   const importServerFile = requireElement(form, '#import-server-file', HTMLSelectElement, 'server file select in #admin-trees-import-page');
-  const message = i18n.get('You have selected a GEDCOM file with a different name. Is this correct?');
+  const message = i18n.gettext('You have selected a GEDCOM file with a different name. Is this correct?');
 
   form.addEventListener('submit', async (event) => {
     if (form.dataset.wtConfirmBypass === '1') {
