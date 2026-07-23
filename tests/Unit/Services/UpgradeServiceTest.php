@@ -57,8 +57,8 @@ class UpgradeServiceTest extends TestCase
         $source_filesystem->write('alpha/beta/nested.txt', 'nested');
 
         $upgrade_service = new UpgradeService(
-            $this->createStub(ClientInterface::class),
-            $this->createStub(RequestFactoryInterface::class),
+            self::createStub(ClientInterface::class),
+            self::createStub(RequestFactoryInterface::class),
             $this->timeoutServiceNeverTimesOut(),
         );
 
@@ -80,7 +80,7 @@ class UpgradeServiceTest extends TestCase
 
     private function timeoutServiceNeverTimesOut(): TimeoutService
     {
-        $timeout_service = $this->createStub(TimeoutService::class);
+        $timeout_service = self::createStub(TimeoutService::class);
         $timeout_service
             ->method('isTimeNearlyUp')
             ->willReturn(false);

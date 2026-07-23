@@ -49,8 +49,8 @@ class UpgradeWizardStepTest extends TestCase
     private function upgradeService(): UpgradeService
     {
         return new UpgradeService(
-            $this->createStub(ClientInterface::class),
-            $this->createStub(RequestFactoryInterface::class),
+            self::createStub(ClientInterface::class),
+            self::createStub(RequestFactoryInterface::class),
             new TimeoutService(php_service: new PhpService()),
         );
     }

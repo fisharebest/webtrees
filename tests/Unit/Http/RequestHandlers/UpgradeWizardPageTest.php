@@ -42,8 +42,8 @@ class UpgradeWizardPageTest extends TestCase
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $upgrade_service       = new UpgradeService(
-            $this->createStub(ClientInterface::class),
-            $this->createStub(RequestFactoryInterface::class),
+            self::createStub(ClientInterface::class),
+            self::createStub(RequestFactoryInterface::class),
             $timeout_service,
         );
         $handler               = new UpgradeWizardPage($tree_service, $upgrade_service);

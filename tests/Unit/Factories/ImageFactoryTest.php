@@ -41,7 +41,7 @@ class ImageFactoryTest extends TestCase
 
     public function testHappyPathFileContentsReturnsSafeSvgContent(): void
     {
-        $php_service   = $this->createStub(PhpService::class);
+        $php_service   = self::createStub(PhpService::class);
         $image_factory = new ImageFactory($php_service);
         $filesystem    = $this->mediaFilesystem();
 
@@ -106,7 +106,7 @@ class ImageFactoryTest extends TestCase
     public function testHappyPathMediaFileContentsReturnsOriginalContentsForNonImageFile(): void
     {
         $image_factory = new ImageFactory(new PhpService());
-        $filesystem    = $this->createStub(FilesystemOperator::class);
+        $filesystem    = self::createStub(FilesystemOperator::class);
 
         $filesystem
             ->method('mimeType')
@@ -176,7 +176,7 @@ class ImageFactoryTest extends TestCase
 
     public function testGuardrailFileContentsBlocksSvgWithActiveContent(): void
     {
-        $php_service   = $this->createStub(PhpService::class);
+        $php_service   = self::createStub(PhpService::class);
         $image_factory = new ImageFactory($php_service);
         $filesystem    = $this->mediaFilesystem();
 
@@ -198,7 +198,7 @@ class ImageFactoryTest extends TestCase
 
     public function testGuardrailFileContentsBlocksSvgWithoutDomExtension(): void
     {
-        $php_service   = $this->createStub(PhpService::class);
+        $php_service   = self::createStub(PhpService::class);
         $image_factory = new ImageFactory($php_service);
         $filesystem    = $this->mediaFilesystem();
 
@@ -220,8 +220,8 @@ class ImageFactoryTest extends TestCase
 
     public function testGuardrailFileContentsBlocksMalformedSvgAsActiveContent(): void
     {
-        $php_service = $this->createStub(PhpService::class);
-        $filesystem  = $this->createStub(FilesystemOperator::class);
+        $php_service = self::createStub(PhpService::class);
+        $filesystem  = self::createStub(FilesystemOperator::class);
 
         $php_service
             ->method('extensionLoaded')
@@ -274,8 +274,8 @@ class ImageFactoryTest extends TestCase
 
     public function testGuardrailThumbnailContentsThrowsWhenGdExtensionMissing(): void
     {
-        $php_service      = $this->createStub(PhpService::class);
-        $filesystem       = $this->createStub(FilesystemOperator::class);
+        $php_service      = self::createStub(PhpService::class);
+        $filesystem       = self::createStub(FilesystemOperator::class);
         $fixture_contents = $this->mediaFilesystem()->read('Elizabeth_II.jpg');
 
         $php_service
@@ -303,17 +303,17 @@ class ImageFactoryTest extends TestCase
 
     private function createMediaFileStub(FilesystemOperator $filesystem, string $filename, string $mime_type, bool $is_image): MediaFile
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = self::createStub(Tree::class);
         $tree
             ->method('mediaFilesystem')
             ->willReturn($filesystem);
 
-        $media = $this->createStub(Media::class);
+        $media = self::createStub(Media::class);
         $media
             ->method('tree')
             ->willReturn($tree);
 
-        $media_file = $this->createStub(MediaFile::class);
+        $media_file = self::createStub(MediaFile::class);
         $media_file
             ->method('media')
             ->willReturn($media);

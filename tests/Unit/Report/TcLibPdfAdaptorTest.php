@@ -54,7 +54,7 @@ class TcLibPdfAdaptorTest extends TestCase
             align_rtl: $rtl ? 'right' : 'left',
             entity_rtl: $rtl ? '&rlm;' : '&lrm;',
             font: 'dejavusans',
-            timestamp: $this->createStub(TimestampInterface::class),
+            timestamp: self::createStub(TimestampInterface::class),
         );
     }
 
@@ -63,7 +63,7 @@ class TcLibPdfAdaptorTest extends TestCase
         $header_calls = [];
         $footer_calls = [];
 
-        $renderer = $this->createStub(PdfRenderTargetInterface::class);
+        $renderer = self::createStub(PdfRenderTargetInterface::class);
         $renderer->method('header')
             ->willReturnCallback(static function (float $origin_x, float $origin_y) use (&$header_calls): void {
                 $header_calls[] = [$origin_x, $origin_y];
@@ -93,7 +93,7 @@ class TcLibPdfAdaptorTest extends TestCase
         $header_calls = [];
         $footer_calls = [];
 
-        $renderer = $this->createStub(PdfRenderTargetInterface::class);
+        $renderer = self::createStub(PdfRenderTargetInterface::class);
         $renderer->method('header')
             ->willReturnCallback(static function (float $origin_x, float $origin_y) use (&$header_calls): void {
                 $header_calls[] = [$origin_x, $origin_y];
@@ -122,7 +122,7 @@ class TcLibPdfAdaptorTest extends TestCase
     {
         $header_calls = 0;
 
-        $renderer = $this->createStub(PdfRenderTargetInterface::class);
+        $renderer = self::createStub(PdfRenderTargetInterface::class);
         $renderer->method('header')
             ->willReturnCallback(static function (float $origin_x, float $origin_y) use (&$header_calls): void {
                 $header_calls++;

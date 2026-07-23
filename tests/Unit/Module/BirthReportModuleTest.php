@@ -166,9 +166,9 @@ class BirthReportModuleTest extends TestCase
 
         $parser = new ParserSetup($xml);
         $parser->process();
-        $this->assertNotEmpty($parser->reportDescription());
-        $this->assertNotEmpty($parser->reportTitle());
-        $this->assertNotEmpty($parser->reportInputs());
+        self::assertNotEmpty($parser->reportDescription());
+        self::assertNotEmpty($parser->reportTitle());
+        self::assertNotEmpty($parser->reportInputs());
 
         Site::setPreference('INDEX_DIRECTORY', 'tests/data/');
 

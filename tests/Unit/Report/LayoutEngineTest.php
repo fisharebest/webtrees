@@ -91,7 +91,7 @@ class LayoutEngineTest extends TestCase
             align_rtl: $rtl ? 'right' : 'left',
             entity_rtl: $rtl ? '&rlm;' : '&lrm;',
             font: 'dejavusans',
-            timestamp: $this->createStub(TimestampInterface::class),
+            timestamp: self::createStub(TimestampInterface::class),
         );
     }
 
