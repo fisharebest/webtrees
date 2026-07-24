@@ -176,6 +176,12 @@ abstract class AbstractElement implements ElementInterface
      */
     public function editTextArea(string $id, string $name, string $value): string
     {
+        // The HTML specification ignores a leading newline in <pre> and <textarea> elements.
+        // Preserve leading newlines in our data.
+        if (str_starts_with($value, "\n")) {
+            $value = "\n" . $value;
+    }
+
         return '<textarea class="form-control" id="' . e($id) . '" name="' . e($name) . '" rows="3" dir="auto">' . e($value) . '</textarea>';
     }
 
