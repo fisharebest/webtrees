@@ -66,7 +66,6 @@ final class DB extends Manager
         self::FIREBIRD   => 'LIST(%s)',
     ];
 
-    // @TODO - fix queries, and set ONLY_FULL_GROUP_BY for mysql/mariadb
     private const array DRIVER_INITIALIZATION = [
         self::MARIADB    =>
             'SET NAMES utf8mb4;' .

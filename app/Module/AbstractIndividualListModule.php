@@ -529,19 +529,21 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
             $initials[$initial] = 0;
         }
 
-        $query = DB::table('name')
-            ->where('n_file', '=', $tree->id());
+        $subquery = DB::table('name')
+            ->where('n_file', '=', $tree->id())
+            ->select([DB::binaryColumn('n_givn', 'n_givn')]);
 
-        $this->whereFamily($fams, $query);
-        $this->whereMarriedName($marnm, $query);
+        $this->whereFamily($fams, $subquery);
+        $this->whereMarriedName($marnm, $subquery);
 
         if ($surns !== []) {
-            $query->whereIn('n_surn', $surns);
+            $subquery->whereIn('n_surn', $surns);
         }
 
-        $query
-            ->select([DB::binaryColumn('n_givn', 'n_givn'), new Expression('COUNT(*) AS count')])
-            ->groupBy([DB::binaryColumn('n_givn')]);
+        $query = DB::query()
+            ->fromSub($subquery, 'names')
+            ->select(['n_givn', new Expression('COUNT(*) AS count')])
+            ->groupBy(['n_givn']);
 
         foreach ($query->get() as $row) {
             $initial = I18N::language()->initialLetter(I18N::language()->normalize(I18N::strtoupper($row->n_givn)));
@@ -565,25 +567,22 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
      */
     private function surnameData(Tree $tree, bool $marnm, bool $fams): array
     {
-        $query = DB::table('name')
+        $subquery = DB::table('name')
             ->where('n_file', '=', $tree->id())
             ->whereNotNull('n_surn') // Filters old records for sources, repositories, etc.
             ->whereNotNull('n_surname')
             ->select([
                 DB::binaryColumn('n_surn', 'n_surn'),
                 DB::binaryColumn('n_surname', 'n_surname'),
-                new Expression('COUNT(*) AS total'),
             ]);
 
-        $this->whereFamily($fams, $query);
-        $this->whereMarriedName($marnm, $query);
+        $this->whereFamily($fams, $subquery);
+        $this->whereMarriedName($marnm, $subquery);
 
-        $query->groupBy([
-            DB::binaryColumn('n_surn'),
-            DB::binaryColumn('n_surname'),
-        ]);
-
-        return $query
+        return DB::query()
+            ->fromSub($subquery, 'names')
+            ->select(['n_surn', 'n_surname', new Expression('COUNT(*) AS total')])
+            ->groupBy(['n_surn', 'n_surname'])
             ->get()
             ->map(static fn (object $x): object => (object) ['n_surn' => $x->n_surn, 'n_surname' => $x->n_surname, 'total' => (int) $x->total])
             ->all();

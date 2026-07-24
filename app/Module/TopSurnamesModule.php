@@ -79,7 +79,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
         extract($config, EXTR_OVERWRITE);
 
-        $query = DB::table('name')
+        $subquery = DB::table('name')
             ->where('n_file', '=', $tree->id())
             ->where('n_type', '<>', '_MARNM')
             ->where('n_surn', '<>', '')
@@ -87,12 +87,12 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             ->select([
                 DB::binaryColumn('n_surn', 'n_surn'),
                 DB::binaryColumn('n_surname', 'n_surname'),
-                new Expression('COUNT(*) AS total'),
-            ])
-            ->groupBy([
-                DB::binaryColumn('n_surn'),
-                DB::binaryColumn('n_surname'),
             ]);
+
+        $query = DB::query()
+            ->fromSub($subquery, 'names')
+            ->select(['n_surn', 'n_surname', new Expression('COUNT(*) AS total')])
+            ->groupBy(['n_surn', 'n_surname']);
 
         /** @var array<non-empty-array<int>> $top_surnames */
         $top_surnames = [];
