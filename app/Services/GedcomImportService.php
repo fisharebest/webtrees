@@ -189,13 +189,13 @@ class GedcomImportService
                     while (str_contains($data, '  ')) {
                         $data = strtr($data, ['  ' => ' ']);
                     }
-                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag !== 'NOTE' ? '' : ' ' . $data);
+                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' ? '' : ' ' . $data);
                     break;
                 case 'NOTE':
                 case 'TEXT':
                 case 'DATA':
                 case 'CONT':
-                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag !== 'NOTE' ? '' : ' ' . $data);
+                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' ? '' : ' ' . $data);
                     break;
                 case 'FILE':
                     // Strip off the user-defined path prefix
@@ -206,11 +206,17 @@ class GedcomImportService
                     // convert backslashes in filenames to forward slashes
                     $data = preg_replace("/\\\\/", '/', $data);
 
-                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag !== 'NOTE' ? '' : ' ' . $data);
+                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' ? '' : ' ' . $data);
                     break;
                 case 'CONC':
-                    // Merge CONC lines, to simplify access later on.
-                    $newrec .= ($tree->getPreference('WORD_WRAPPED_NOTES') ? ' ' : '') . $data;
+                    // Special case - Note records uniquely have data in the level 0 line.
+                    // We move this data to a CONC line, so our normal edit tools work.
+                    // So we need to add a space for '0 @X@ NOTE\n1 CONC'.
+                    if ($n === 1 || $tree->getPreference('WORD_WRAPPED_NOTES') === '1') {
+                        $newrec .= ' ' .$data;
+                    } else {
+                        $newrec .= $data;
+                    }
                     break;
             }
         }
