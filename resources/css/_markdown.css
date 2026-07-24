@@ -15,41 +15,41 @@
 
 /* markdown formatting */
 
-.markdown {
+.wt-markdown {
     /* Pre-formatted text can break the layout. */
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
 }
 
-.markdown p code {
+.wt-markdown p code {
     /* Bootstrap makes code text red */
     color: inherit;
 }
 
-.markdown p {
+.wt-markdown p {
     margin: 0 0 0.5rem;
 }
 
-.markdown blockquote p {
+.wt-markdown blockquote p {
     border-left: solid thick lightgray;
     padding-left: 0.5rem;
 }
 
-.markdown table {
+.wt-markdown table {
     border-collapse: collapse;
     margin-bottom: 5px;
 }
 
-.markdown th {
+.wt-markdown th {
     font-weight: bold;
 }
 
-.markdown td,
-.markdown th {
+.wt-markdown td,
+.wt-markdown th {
     border: solid thin #000;
     padding: 3px;
 }
 
-.markdown img {
+.wt-markdown img {
     max-width: 100%;
     height: auto;
 }
