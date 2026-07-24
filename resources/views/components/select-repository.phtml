@@ -29,8 +29,12 @@ $at = $at ?? '';
     <?= ($required ?? false) ? 'required="required"' : '' ?>
 >
     <?php if (($repository ?? null) instanceof Repository) : ?>
-        <option value="<?= e($at . $repository->xref() . $at) ?>">
-            <?= view('selects/repository', ['repository' => $repository]) ?>
+        <?php $option_html = view('selects/repository', ['repository' => $repository]); ?>
+        <option
+            value="<?= e($at . $repository->xref() . $at) ?>"
+            data-ts-option="<?= e(json_encode(['text' => $option_html])) ?>"
+        >
+            <?= strip_tags($option_html) ?>
         </option>
     <?php else : ?>
         <option value="">&nbsp;</option>

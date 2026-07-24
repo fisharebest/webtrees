@@ -29,8 +29,12 @@ $at = $at ?? '';
     <?= ($required ?? false) ? 'required="required"' : '' ?>
 >
     <?php if (($individual ?? null) instanceof Individual) : ?>
-        <option value="<?= e($at . $individual->xref() . $at) ?>">
-            <?= view('selects/individual', ['individual' => $individual]) ?>
+        <?php $option_html = view('selects/individual', ['individual' => $individual]); ?>
+        <option
+            value="<?= e($at . $individual->xref() . $at) ?>"
+            data-ts-option="<?= e(json_encode(['text' => $option_html])) ?>"
+        >
+            <?= strip_tags($option_html) ?>
         </option>
     <?php else : ?>
         <option value="">&nbsp;</option>

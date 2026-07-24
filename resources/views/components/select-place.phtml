@@ -26,8 +26,12 @@ use Fisharebest\Webtrees\Tree;
     <?= ($required ?? false) ? 'required="required"' : '' ?>
 >
     <?php if (($place ?? null) instanceof Place && $place->id() !== 0) : ?>
-        <option value="<?= $place->id() ?>">
-            <?= view('selects/place', ['place' => $place]) ?>
+        <?php $option_html = view('selects/place', ['place' => $place]); ?>
+        <option
+            value="<?= $place->id() ?>" 
+            data-ts-option="<?= e(json_encode(['text' => $option_html])) ?>"
+        >
+            <?= strip_tags($option_html) ?>
         </option>
     <?php else : ?>
         <option value="">&nbsp;</option>

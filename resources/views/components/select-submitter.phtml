@@ -29,8 +29,12 @@ $at = $at ?? '';
     <?= ($required ?? false) ? 'required="required"' : '' ?>
 >
     <?php if (($submitter ?? null) instanceof Submitter) : ?>
-        <option value="<?= e($at . $submitter->xref() . $at) ?>">
-            <?= view('selects/submitter', ['submitter' => $submitter]) ?>
+        <?php $option_html = view('selects/submitter', ['submitter' => $submitter]); ?>
+        <option
+            value="<?= e($at . $submitter->xref() . $at) ?>"
+            data-ts-option="<?= e(json_encode(['text' => $option_html])) ?>"
+        >
+            <?= strip_tags($option_html) ?>
         </option>
     <?php else : ?>
         <option value="">&nbsp;</option>
