@@ -60,6 +60,7 @@ final class WriteTranslation extends AbstractCommand
             ->addArgument('po-file', InputArgument::REQUIRED, 'The path to the PO file (e.g. "resources/lang/de/messages.po")')
             ->addArgument('msgid', InputArgument::REQUIRED, 'The English source string (msgid)')
             ->addArgument('translations', InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'One translation for simple entries, or multiple plural forms (msgstr[0], msgstr[1], ...)')
+            ->addOption('context', 'c', InputOption::VALUE_REQUIRED, 'Match an entry with this msgctxt value')
             ->addOption('force', 'f', InputOption::VALUE_NONE, 'Overwrite an existing non-empty translation');
     }
 
@@ -74,6 +75,9 @@ final class WriteTranslation extends AbstractCommand
             (array) $input->getArgument('translations'),
         ));
         $force = $this->boolOption($input, 'force');
+
+        $context = $input->getOption('context');
+        $context = is_string($context) ? $context : null;
 
         if (!is_file($po_file)) {
             $io->error('PO file does not exist: ' . $po_file);
@@ -90,7 +94,7 @@ final class WriteTranslation extends AbstractCommand
         }
 
         // Find the entry in the PO file
-        $entry = $this->findEntry($content, $msgid);
+        $entry = $this->findEntry($content, $msgid, $context);
 
         if ($entry === null) {
             $io->error('The msgid was not found in the PO file: ' . $msgid);
@@ -203,17 +207,22 @@ final class WriteTranslation extends AbstractCommand
     }
 
     /**
-     * Find a PO entry by its msgid and return its raw text and parsed structure.
+     * Find a PO entry by its msgid (and optional msgctxt) and return its raw text and parsed structure.
+     *
+     * When $context is null, only entries WITHOUT a msgctxt are matched.
+     * When $context is provided, only entries with that exact msgctxt are matched.
      *
      * @return array{raw:string,msgid_plural:string|null,flags:list<string>,has_fuzzy:bool,msgstr:array<int,string>}|null
      */
-    private function findEntry(string $content, string $msgid): array|null
+    private function findEntry(string $content, string $msgid, string|null $context = null): array|null
     {
         $escaped_msgid = addcslashes($msgid, "\\\"\n\r\t");
         $lines         = explode("\n", str_replace("\r\n", "\n", $content));
         $entry_lines   = [];
         $in_entry      = false;
         $found_msgid   = false;
+        $has_msgctxt   = false;
+        $entry_context = null;
         $msgid_plural  = null;
         $flags         = [];
         $msgstr        = [];
@@ -221,7 +230,7 @@ final class WriteTranslation extends AbstractCommand
 
         foreach ($lines as $line) {
             if ($line === '') {
-                if ($in_entry && $found_msgid) {
+                if ($in_entry && $found_msgid && $this->contextMatches($context, $has_msgctxt, $entry_context)) {
                     return [
                         'raw'          => implode("\n", $entry_lines),
                         'msgid_plural' => $msgid_plural,
@@ -231,13 +240,15 @@ final class WriteTranslation extends AbstractCommand
                     ];
                 }
 
-                $entry_lines  = [];
-                $in_entry     = false;
-                $found_msgid  = false;
-                $msgid_plural = null;
-                $flags        = [];
-                $msgstr       = [];
-                $active_field = null;
+                $entry_lines   = [];
+                $in_entry      = false;
+                $found_msgid   = false;
+                $has_msgctxt   = false;
+                $entry_context = null;
+                $msgid_plural  = null;
+                $flags         = [];
+                $msgstr        = [];
+                $active_field  = null;
 
                 continue;
             }
@@ -250,6 +261,14 @@ final class WriteTranslation extends AbstractCommand
 
             if ($line === 'msgid "' . $escaped_msgid . '"') {
                 $found_msgid = true;
+            }
+
+            if (str_starts_with($line, 'msgctxt ')) {
+                $has_msgctxt = true;
+
+                if (preg_match('/^msgctxt "(.*)"\s*$/', $line, $matches) === 1) {
+                    $entry_context = stripcslashes($matches[1]);
+                }
             }
 
             if (preg_match('/^#, (.+)$/', $line, $matches) === 1) {
@@ -276,7 +295,7 @@ final class WriteTranslation extends AbstractCommand
         }
 
         // Handle entry at end of file without trailing blank line
-        if ($in_entry && $found_msgid) {
+        if ($in_entry && $found_msgid && $this->contextMatches($context, $has_msgctxt, $entry_context)) {
             return [
                 'raw'          => implode("\n", $entry_lines),
                 'msgid_plural' => $msgid_plural,
@@ -287,6 +306,21 @@ final class WriteTranslation extends AbstractCommand
         }
 
         return null;
+    }
+
+    /**
+     * Check whether an entry's context matches what we are looking for.
+     *
+     * When $desired_context is null, we only match entries WITHOUT a msgctxt.
+     * When $desired_context is provided, we only match entries with that exact msgctxt.
+     */
+    private function contextMatches(string|null $desired_context, bool $has_msgctxt, string|null $entry_context): bool
+    {
+        if ($desired_context === null) {
+            return !$has_msgctxt;
+        }
+
+        return $has_msgctxt && $entry_context === $desired_context;
     }
 
     /**

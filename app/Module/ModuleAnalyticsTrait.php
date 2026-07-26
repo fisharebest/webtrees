@@ -61,6 +61,14 @@ trait ModuleAnalyticsTrait
             return false;
         }
 
+        // Do not activate tracker until we have explicit consent.
+        $cookies = $request->getCookieParams();
+        $consent_cookie = $cookies['analytics_consent_' . $this->name()] ?? null;
+
+        if ($consent_cookie !== '1') {
+            return false;
+        }
+
         foreach ($this->analyticsParameters() as $parameter) {
             if ($parameter === '') {
                 return false;
@@ -121,6 +129,32 @@ trait ModuleAnalyticsTrait
     public function isTracker(): bool
     {
         return true;
+    }
+
+    /**
+     * Do we need to ask the user for consent?
+     */
+    public function analyticsNeedsConsent(): bool
+    {
+        $request = Registry::container()->get(ServerRequestInterface::class);
+
+        // DNT header set?  We disable analytics, so don't need to ask.
+        if (Validator::serverParams($request)->boolean('HTTP_DNT', false)) {
+            return false;
+        }
+
+        // Module not configured yet, so don't need to ask.
+        foreach ($this->analyticsParameters() as $parameter) {
+            if ($parameter === '') {
+                return false;
+            }
+        }
+
+        // Consent cookie already exists (accepted or declined), so don't need to ask.
+        $cookies = $request->getCookieParams();
+        $consent_cookie = $cookies['analytics_consent_' . $this->name()] ?? null;
+
+        return $consent_cookie === null;
     }
 
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface

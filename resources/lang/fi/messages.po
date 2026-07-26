@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-23 18:03+0100\n"
+"POT-Creation-Date: 2026-07-26 21:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -339,6 +339,7 @@ msgstr "%s, hänen puolisonsa ja jälkeläisensä"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/user-messages/user-messages.phtml
 msgid "&lt;select&gt;"
 msgstr "&lt;valitse&gt;"
@@ -1767,6 +1768,10 @@ msgstr "Haluatko varmasti poistaa tämän tietueen suosikeistasi?"
 msgid "Argentina"
 msgstr "Argentiina"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Argentina, Colombia, Mexico, Chile, Uruguay, Peru, Israel"
+msgstr ""
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Armenia"
@@ -1862,6 +1867,10 @@ msgstr "elokuu"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Australia"
 msgstr "Australia"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Australia / New Zealand"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -2302,6 +2311,10 @@ msgstr "sininen laguuni"
 msgid "Blue Marine"
 msgstr "meren sininen"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Body"
+msgstr ""
+
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
 msgid "Bogotá, Colombia"
@@ -2374,9 +2387,15 @@ msgid "Branches of the %s family"
 msgstr "%s perheen sukuhaarat"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Brazil"
 msgstr "Brasilia"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Breach notification"
+msgstr "Tietoturvaloukkausilmoitus"
 
 #: app/Elements/RelationIsDescriptor.php
 msgid "Bridesmaid"
@@ -2639,7 +2658,8 @@ msgid "Campinas, Brazil"
 msgstr "Campinas, Brasilia"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Canada"
 msgstr "Kanada"
 
@@ -2925,13 +2945,19 @@ msgstr "Lapset ottavat isänsä sukunimen."
 msgid "Children take their mother’s surname."
 msgstr "Lapset ottavat äitinsä sukunimen."
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Children's data"
+msgstr "Lasten tiedot"
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Chile"
 msgstr "Chile"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "China"
 msgstr "Kiina"
 
@@ -3277,6 +3303,7 @@ msgstr "Jatko"
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/relationships-chart/config.phtml
 #: resources/views/modules/sitemap/config.phtml
 #: resources/views/modules/stories/config.phtml
@@ -3301,7 +3328,7 @@ msgstr "Muunna"
 msgid "Cook Islands"
 msgstr "Cookinsaaret"
 
-#: resources/views/modules/privacy-policy/page.phtml
+#: app/Module/PrivacyPolicy.php
 msgid "Cookies"
 msgstr "Evästeet"
 
@@ -3617,6 +3644,11 @@ msgstr "Mukautettuja GEDCOM-tunnisteita ei suositella. Yritä käyttää vain ta
 msgid "Custom module"
 msgstr "Oma moduuli"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Custom statement"
+msgstr "Mukautettu lausunto"
+
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
 msgid "Custom welcome text"
@@ -3671,9 +3703,15 @@ msgstr "Dallas, Texas, Yhdysvallat"
 msgid "Data"
 msgstr "Tiedot"
 
-#: resources/views/modules/privacy-policy/page.phtml
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data collected"
+msgstr "Kerätyt tiedot"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Data controller"
-msgstr "Tieto-ohjain"
+msgstr "Rekisterinpitäjä"
 
 #: resources/views/admin/data-fix-page.phtml
 #: resources/views/admin/data-fix-select.phtml
@@ -3699,6 +3737,21 @@ msgstr "Tietokorjaukset voivat vaatia paljon hitaita laskelmia, joten ei ole mah
 #: resources/views/admin/site-preferences.phtml
 msgid "Data folder"
 msgstr "Tietokansio"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data protection officer"
+msgstr "Tietosuojavastaava"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data retention"
+msgstr "Tietojen säilytys"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data storage location"
+msgstr "Tietojen tallennuspaikka"
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -4366,6 +4419,11 @@ msgstr "(mormoni) Älä sinetöi: aiempi sinetöinti peruutettu"
 msgid "Do not seal: unauthorized"
 msgstr "(mormoni) Älä sinetöi: luvaton toiminto"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Do not sell or share"
+msgstr "Ei myydä eikä jaeta"
+
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
 msgid "Document"
@@ -4573,6 +4631,7 @@ msgstr "Sähköposti"
 #: resources/views/contact-page.phtml resources/views/edit-account-page.phtml
 #: resources/views/emails/register-notify-html.phtml
 #: resources/views/emails/register-notify-text.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/user-messages/user-messages.phtml
 #: resources/views/register-page.phtml
 #: resources/views/setup/step-5-administrator.phtml
@@ -4709,6 +4768,10 @@ msgstr "Etiopia"
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "Europe"
 msgstr "Eurooppa"
+
+#: app/Module/PrivacyPolicy.php
+msgid "European Union / EEA / United Kingdom"
+msgstr ""
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php
 #: resources/views/lists/anniversaries-table.phtml
@@ -5453,7 +5516,8 @@ msgid "Foster mother"
 msgstr "Kasvatti äiti"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "France"
 msgstr "Ranska"
 
@@ -5594,6 +5658,14 @@ msgstr "Gabon"
 msgid "Gambia"
 msgstr "Gambia"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Genealogical data is retained indefinitely, as the purpose of this website is to preserve historical and family-history research. User account data is retained for as long as the account is active."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Genealogical data on this website is typically obtained from publicly accessible sources, including civil registration records, church records, census returns, published directories, gravestones, and contributions from family members. The data subjects may not have provided this data themselves."
+msgstr ""
+
 #: resources/views/admin/control-panel.phtml
 msgid "Genealogy"
 msgstr "Sukututkimus"
@@ -5664,6 +5736,11 @@ msgstr "Jälkeläisten sukupolvet"
 msgid "GeoNames"
 msgstr "GeoNames"
 
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "Geocoding"
+msgstr "Geokoodaus"
+
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "Geographic area"
 msgstr "Maantieteellinen alue"
@@ -5691,6 +5768,10 @@ msgstr "Georgia"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Germany"
 msgstr "Saksa"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Germany / Austria"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -6080,6 +6161,16 @@ msgstr "Honduras"
 msgid "Hong Kong"
 msgstr "Hongkong"
 
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "Hosted by:"
+msgstr "Ylläpitäjä:"
+
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Hosting provider"
+msgstr "Palveluntarjoaja"
+
 #. I18N: Name of a module/chart
 #: app/Module/ChartsBlockModule.php app/Module/HourglassChartModule.php
 msgid "Hourglass chart"
@@ -6318,6 +6409,10 @@ msgstr "Joissakin kalentereissa päivät alkavat keskiyöllä. Muissa kalenterei
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 msgstr "Joissakin maissa yksityisyyssuojaa sovelletaan myös äskettäin kuolleiden henkilöiden tietoihin. Tällä valinnalla voit laajentaa yksityisyyssääntöjä koskemaan niitä, joiden syntymästä tai kuolemasta on kulunut tietty määrä vuosia. Tämä omaisuus ei ole käytössä kun jätät tämän kentän tyhjäksi."
 
+#: app/Module/PrivacyPolicy.php
+msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
+msgstr ""
+
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
 msgstr "Sisällytä aliakset"
@@ -6351,7 +6446,8 @@ msgid "Include the individual’s immediate family"
 msgstr "Lisää henkilön lähisukulaiset"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "India"
 msgstr "Intia"
 
@@ -6510,6 +6606,11 @@ msgstr "Sisäinen viesti"
 msgid "Internal messaging with emails"
 msgstr "Sisäiset viestit ja sähköposti"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "International transfers"
+msgstr "Kansainväliset siirrot"
+
 #: app/Http/RequestHandlers/GedcomLoad.php
 msgid "Invalid GEDCOM file - no header record found."
 msgstr "Rakennevirhe GEDCOM tiedostossa - otsikkotietuetta (header) ei löytynyt."
@@ -6593,7 +6694,8 @@ msgid "January"
 msgstr "tammikuu"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Japan"
 msgstr "Japani"
 
@@ -6644,6 +6746,11 @@ msgstr "heinäkuu"
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "kesäkuu"
+
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Jurisdiction"
+msgstr "Lainkäyttöalue"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -6880,6 +6987,11 @@ msgstr "Leveysaste"
 msgid "Latvia"
 msgstr "Latvia"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Lawful basis"
+msgstr "Oikeusperuste"
+
 #: resources/views/modules/ancestors-chart/page.phtml
 #: resources/views/modules/descendancy_chart/page.phtml
 #: resources/views/modules/fanchart/page.phtml
@@ -6916,6 +7028,14 @@ msgstr "Libanon"
 #: app/Module/RedirectLegacyUrlsModule.php
 msgid "Legacy URLs"
 msgstr "Vanhat URL-osoitteet"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Legal notice (Impressum)"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Legal notice (Mentions légales)"
+msgstr ""
 
 #: app/CustomTags/Reunion.php
 msgid "Legatee"
@@ -7304,6 +7424,11 @@ msgstr "Kartan linkit"
 #: app/Services/LeafletJsService.php resources/views/admin/control-panel.phtml
 msgid "Map providers"
 msgstr "Kartan tarjoajat"
+
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "Map tiles"
+msgstr "Karttaruudut"
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php
@@ -7757,6 +7882,11 @@ msgstr "Asepalvelus"
 msgid "Military service"
 msgstr "Asepalvelus"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Minimum age for consent"
+msgstr "Suostumuksen vähimmäisikä"
+
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php
 #: resources/xml/reports/missing_facts_report.xml
@@ -8031,6 +8161,7 @@ msgstr "Myanmar (ent. Burma)"
 #: resources/views/lists/anniversaries-table.phtml
 #: resources/views/modals/location-fields.phtml
 #: resources/views/modals/submitter-fields.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/yahrzeit/table.phtml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
 #: resources/xml/reports/cemetery_report.xml
@@ -8313,6 +8444,11 @@ msgstr "Uutisartikkeleita ei ole luotu."
 #: app/Http/RequestHandlers/SiteRegistrationPage.php
 msgid "No predefined text"
 msgstr "Ei esivalmistettua tekstiä"
+
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "No privacy policy has been configured for this website."
+msgstr "Tälle verkkosivustolle ei ole määritetty tietosuojakäytäntöä."
 
 #: resources/views/lists/datatables-attributes.phtml
 msgid "No records to display"
@@ -8733,6 +8869,10 @@ msgstr "Muut faktat kaavioissa"
 msgid "Other preferences"
 msgstr "Muut asetukset"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Our data protection officer can be contacted at:"
+msgstr ""
+
 #: app/Elements/RelationIsDescriptor.php
 msgid "Owner"
 msgstr "Omistaja"
@@ -8948,9 +9088,9 @@ msgstr "Pysyvä numero"
 msgid "Permanently delete these records?"
 msgstr "Poista pysyvästi nämä tiedot?"
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "Personal data"
-msgstr "Henkilökohtaiset tiedot"
+#: app/Module/PrivacyPolicy.php
+msgid "Personal data is stored on servers located in:"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -8966,6 +9106,10 @@ msgstr "Peru"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Philippines"
 msgstr "Filippiinit"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Philippines, Kenya, Nigeria, Ghana, Egypt"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9248,6 +9392,10 @@ msgctxt "Surname tradition"
 msgid "Portuguese"
 msgstr "Portugalin sukunimen esitystapa"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Postal address"
+msgstr ""
+
 #: app/CustomTags/GedcomL.php app/CustomTags/PersonalAncestralFile.php
 #: app/Gedcom.php
 msgid "Postal code"
@@ -9337,6 +9485,11 @@ msgstr "Yksityisyysrajoitukset"
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr "Yksityisyysrajoitukset - nämä sovelletaan GEDCOM tietueisiin ja faktoihin, joilla ei ole RESN tietotunnistetta"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Privacy statements"
+msgstr "Tietosuojailmoitukset"
+
 #: app/CustomTags/Legacy.php app/CustomTags/TheNextGeneration.php
 #: app/GedcomRecord.php app/Report/ParserGenerate.php app/StatisticsData.php
 msgid "Private"
@@ -9349,6 +9502,10 @@ msgstr "Yksityinen avain"
 #: app/Gedcom.php
 msgid "Probate"
 msgstr "Testamentin vahvistus"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgstr ""
 
 #: app/Gedcom.php
 msgid "Property"
@@ -9378,6 +9535,11 @@ msgstr "Julkaisu"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Puerto Rico"
 msgstr "Puerto Rico"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Purpose of processing"
+msgstr "Käsittelyn tarkoitus"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -9831,6 +9993,26 @@ msgstr "Eläkkeelle jääminen"
 msgid "Rexburg, Idaho, United States"
 msgstr "Rexburg, Idaho, Yhdysvallat"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right of access and data portability"
+msgstr "Pääsyoikeus ja tietojen siirrettävyys"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right to complain"
+msgstr "Valitusoikeus"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right to correction"
+msgstr "Oikeus oikaisuun"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right to erasure, objection, and restriction"
+msgstr "Oikeus poistamiseen, vastustamiseen ja rajoittamiseen"
+
 #: app/CustomTags/Gedcom7.php app/CustomTags/GedcomL.php app/Gedcom.php
 #: resources/views/admin/users-edit.phtml
 msgid "Role"
@@ -9873,7 +10055,8 @@ msgid "Russell"
 msgstr "Russell"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Russia"
 msgstr "Venäjä"
 
@@ -10005,7 +10188,8 @@ msgid "Sat"
 msgstr "La"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Saudi Arabia"
 msgstr "Saudi-Arabia"
 
@@ -10172,6 +10356,19 @@ msgstr "Valitse faktat ja tapahtumat jotka säilytetään molemmista tietueista.
 msgid "Select two records to merge."
 msgstr "Valitse kaksi tietuetta yhdistettäviksi."
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Select which statements to display on the public privacy policy page."
+msgstr ""
+
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Select your country or region"
+msgstr "Valitse maasi tai alueesi"
+
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Select your jurisdiction to automatically enable the required privacy statements. You can also enable or disable individual statements."
+msgstr ""
+
 #: resources/views/admin/site-mail.phtml
 msgid "Selector"
 msgstr "Valitsin"
@@ -10296,6 +10493,11 @@ msgstr "Palvelija"
 msgid "Server information"
 msgstr "Palvelimen tiedot"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Server location"
+msgstr "Palvelimen sijainti"
+
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
@@ -10303,6 +10505,10 @@ msgstr "Palvelimen tiedot"
 #: resources/views/setup/step-4-database-sqlsrv.phtml
 msgid "Server name"
 msgstr "Palvelimen nimi"
+
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "Service"
+msgstr ""
 
 #: app/Http/RequestHandlers/PasswordResetPage.php
 msgid "Set a new password"
@@ -10445,10 +10651,11 @@ msgstr "Lyhyin avioliiton kesto"
 msgid "Show a download link in the media viewer"
 msgstr "Näytä latauslinkki media katsojassa"
 
-#. I18N: Description of the “Cookie warning” module
+#. I18N: Description of the "Privacy policy" module
 #: app/Module/PrivacyPolicy.php
-msgid "Show a privacy policy."
-msgstr "Näytä tietosuojakäytäntö."
+#, fuzzy
+msgid "Show a privacy/data-protection policy based on your jurisdiction."
+msgstr "Näyttää tietosuojakäytännön lainkäyttöalueesi perusteella."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
@@ -10802,7 +11009,8 @@ msgid "Simple dates are assumed to be in the gregorian calendar. To specify a da
 msgstr "Yksinkertaisten päivämäärien oletetaan noudattavan gregoriaanista kalenteria. Voit määrittää ajan muun kalenterin avulla lisäämällä avainsanan päivämäärän eteen. Tämä avainsana on valinnainen, jos kuukauden tai vuoden muoto tekee päivämäärästä yksiselitteisen."
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Singapore"
 msgstr "Singapore"
 
@@ -11041,12 +11249,18 @@ msgstr "Tietolähde"
 msgid "Sources"
 msgstr "Lähteet"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Sources of data"
+msgstr "Tietojen lähteet"
+
 #: resources/xml/reports/missing_facts_report.xml
 msgid "Sources to the events"
 msgstr "Tapahtumien lähdetiedot"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "South Africa"
 msgstr "Etelä-Afrikka"
 
@@ -11058,6 +11272,10 @@ msgstr "Etelä-Amerikka"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Etelä-Georgia ja Eteläiset Sandwichsaaret"
+
+#: app/Module/PrivacyPolicy.php
+msgid "South Korea"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -11247,6 +11465,11 @@ msgstr "Sudan"
 msgid "Sun"
 msgstr "Su"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Supervisory authority"
+msgstr "Valvontaviranomainen"
+
 #. I18N: %s is a URL/link to the project website
 #: resources/views/admin/control-panel.phtml
 #, php-format
@@ -11337,7 +11560,8 @@ msgid "Sweden"
 msgstr "Ruotsi"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Switzerland"
 msgstr "Sveitsi"
 
@@ -11436,6 +11660,10 @@ msgstr "Teknisen avun yhteyshenkilö"
 msgid "Tegucigalpa, Honduras"
 msgstr "Tegucigalpa, Honduras"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Telephone"
+msgstr ""
+
 #: app/CustomTags/RootsMagic.php
 msgid "Template"
 msgstr "Mallipohja"
@@ -11461,7 +11689,8 @@ msgid "Text direction"
 msgstr "Tekstin suunta"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Thailand"
 msgstr "Thaimaa"
 
@@ -11817,6 +12046,10 @@ msgstr "Salasanasi SMTP palveluun, jos se vaaditaan."
 msgid "The password reset link has expired."
 msgstr "Salasanan palautuslinkki on vanhentunut."
 
+#: app/Module/PrivacyPolicy.php
+msgid "The person responsible for this website and for the processing of your personal data is:"
+msgstr ""
+
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php
 msgid "The place hierarchy."
@@ -11837,6 +12070,11 @@ msgstr "Uusien sukupuiden asetukset on päivitetty."
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "Sukupuun ”%s” asetukset on päivitetty."
+
+#: app/Module/PrivacyPolicy.php
+#, php-format
+msgid "The preferences for the module \"%s\" have been updated."
+msgstr ""
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
@@ -12077,18 +12315,15 @@ msgstr "Uuden version tarkistamisessa tapahtui virhe."
 msgid "There was an error uploading your file."
 msgstr "Tiedoston lataamisessa tapahtui virhe."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "These cookies are “essential”, and do not require consent."
-msgstr "Nämä evästeet ovat ”välttämättömiä”, eivätkä vaadi suostumusta."
-
 #: resources/views/admin/trees-unconnected.phtml
 #, php-format
 msgid "These groups of individuals are not related to %s."
 msgstr "Nämä henkilöryhmät eivät ole sukua henkilöön %s."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "These services may use cookies or other tracking technology."
-msgstr "Nämä palvelut voivat käyttää evästeitä tai muuta seurantatekniikkaa."
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Third-party services"
+msgstr "Kolmannen osapuolen palvelut"
 
 #: app/Http/RequestHandlers/LoginAction.php
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -12408,10 +12643,6 @@ msgstr "Tämä tietue on muokattu. Tarkista muutokset ja %1$s tai %2$s ne."
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Tämä tietovarasto ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr "Tämä tutkimus on EU:n yleisten tietosuoja-asetusten 6(f) artiklan mukainen \"oikeutettu etu\"."
-
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Tällä roolilla on samat käyttöoikeudet kuin muokkaajalla, sekä lisäksi oikeus hyväksyä/hylätä muiden sivuston käyttäjien tekemiä muutoksia."
@@ -12462,29 +12693,38 @@ msgstr "Tämä tarkoittaa yleensä, että sinun täytyy muuttaa kansion oikeudek
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
 msgstr "Sivusto on suljettu huollon ajaksi. Sinun pitäisi <a href=\"index.php\">yrittää uudelleen</a> muutaman minuutin kuluttua."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This website is operated by the following individuals."
-msgstr "Tätä verkkosivustoa ylläpitävät seuraavat henkilöt."
+#: app/Module/PrivacyPolicy.php
+msgid "This website is operated by the following person, who is also responsible for its content:"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "This website is published by:"
+msgstr ""
 
 #: resources/views/layouts/error.phtml resources/views/layouts/offline.phtml
 msgid "This website is temporarily unavailable"
 msgstr "Tämä sivusto on tilapäisesti poissa käytöstä"
 
-#: resources/views/modules/privacy-policy/page.phtml
+#: app/Module/PrivacyPolicy.php
+msgid "This website may contain data about minors, derived from public records such as birth registers, for the purpose of historical and genealogical research. We do not collect personal data directly from children."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
 msgid "This website processes personal data for the purpose of historical and genealogical research."
 msgstr "Tämä verkkosivusto käsittelee henkilötietoja historiallista- ja sukututkimusta varten."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
-msgstr "Tämä verkkosivusto käyttää evästeitä kirjautumistilojen käyttöön ottamiseksi ja asetusten, kuten valitsemasi kielen, muistamiseksi."
+#: app/Module/PrivacyPolicy.php
+msgid "This website uses essential cookies for login sessions and to remember your preferences. These cookies are strictly necessary and do not require consent."
+msgstr ""
 
+#: app/Module/PrivacyPolicy.php
+msgid "This website uses external services to provide mapping and location features. When you view a map, your browser connects directly to these services, which may receive your IP address and other request data."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
 #: resources/views/modules/privacy-policy/footer.phtml
-msgid "This website uses cookies to learn about visitor behavior."
-msgstr "Tämä sivusto käyttää evästeitä oppiakseen kuinka vierailijat käyttäytyvät."
-
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This website uses third-party services to learn about visitor behavior."
-msgstr "Tämä verkkosivusto käyttää kolmansien osapuolten palveluita oppiakseen vierailijoiden käyttäytymisestä."
+msgid "This website uses third-party services to understand visitor behavior. These services may use cookies or similar tracking technology."
+msgstr ""
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml
@@ -12572,6 +12812,7 @@ msgstr "Itä-Timor"
 #: resources/views/modules/favorites/favorites.phtml
 #: resources/views/modules/gedcom_news/edit.phtml
 #: resources/views/modules/html/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/user_blog/edit.phtml
 msgid "Title"
 msgstr "Otsikko"
@@ -12791,11 +13032,10 @@ msgid "Total users"
 msgstr "Käyttäjiä kaikkiaan"
 
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
-#: app/Module/ModuleAnalyticsTrait.php
+#: app/Module/ModuleAnalyticsTrait.php app/Module/PrivacyPolicy.php
 #: resources/views/admin/analytics-edit.phtml
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
-#: resources/views/modules/privacy-policy/page.phtml
 msgid "Tracking and analytics"
 msgstr "Seuranta ja analytiikka"
 
@@ -12833,6 +13073,10 @@ msgstr "Tunisia"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Turkey"
 msgstr "Turkki"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Turkey, UAE, Indonesia, Malaysia, Vietnam"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -12980,9 +13224,18 @@ msgid "United Kingdom"
 msgstr "Iso-Britannia"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "United States"
 msgstr "Yhdysvallat"
+
+#: app/Module/PrivacyPolicy.php
+msgid "United States — CA"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "United States — CO, CT, DE, IN, IA, KY, MD, MN, MT, NE, NH, NJ, OR, RI, TN, TX, UT, VA"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
@@ -13362,6 +13615,15 @@ msgstr "Vesileimat"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "Vesileimat ovat valinnaisia ja ne näytetään yleensä vain kävijöille."
 
+#: app/Module/PrivacyPolicy.php
+msgid "We collect names, dates, places, family relationships, and other genealogical information. Much of this data is derived from public records such as registers of births, marriages, and deaths. For registered users, we also store email addresses and login credentials."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "We do not sell or share your personal information."
+msgstr "Emme myy emmekä jaa henkilötietojasi."
+
 #: resources/views/register-success-page.phtml
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
@@ -13369,6 +13631,7 @@ msgstr "Tulet saamaan koodin sähköpostissa osoitteeseen (%s). Käytä viesti t
 
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/trees-preferences.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 msgid "Website"
 msgstr "Sivusto"
 
@@ -13436,6 +13699,11 @@ msgstr "Kun lisäät, muokkaat tai poistat tietoja, muutoksia ei tallenneta väl
 #: resources/views/help/relationship-privacy.phtml
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
 msgstr "Kun käyttäjätunnus on liitetty tiettyyn sukupuussa olevaan henkilöön ja tunnukselle on määritelty jäsenen, muokkaajan tai valvojan rooli, voit rajoittaa pääsyn kaukaisten, elossa olevien henkilöiden tietoihin. Määrittelet sukulaisuushyppyjen maksimimäärän, jonka käyttäjä voi nähdä. Kaksi hyppyä on sinä-isä-setä (isän veli)."
+
+#: resources/views/modules/privacy-policy/page.phtml
+#, php-format
+msgid "Where we operate online services that children may access directly, the minimum age for consent in our jurisdiction is %s years."
+msgstr ""
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml
@@ -13576,10 +13844,6 @@ msgstr "Voit valita haluatko esiintyä luettelossa käyttäjistä, jotka ovat t�
 msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "Voit ladata itsellesi kopion GEDCOM erittelystä sivulla %s."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr "Voit poistaa käytön seuraamisesta asettamalla \"Älä seuraa\"-otsikon selaimen asetuksissa."
-
 #: resources/views/admin/trees-renumber.phtml
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr "Voit numeroida sukupuun tietueet uudelleen, niin että nämä sisäiset tunnistenumerot eivät esiinny missään muussa sukupuussa."
@@ -13622,6 +13886,22 @@ msgstr "Olet valinnut erinimisen GEDCOMin. Onko tämä oikea?"
 #: app/Http/RequestHandlers/Logout.php
 msgid "You have signed out."
 msgstr "Olet kirjautunut ulos."
+
+#: app/Module/PrivacyPolicy.php
+msgid "You have the right to lodge a complaint with a supervisory authority if you believe your data has been processed unlawfully."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "You have the right to request a copy of the personal data we hold about you. This data can be provided in a machine-readable format (GEDCOM)."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "You may request that we delete, restrict, or cease processing your personal data. However, where data is processed for historical research purposes or was obtained from publicly accessible sources, these rights may be limited where compliance would render the research impossible or seriously impair it."
+msgstr ""
 
 #: resources/views/modules/faq/config.phtml
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -13726,6 +14006,10 @@ msgstr "Nimesi"
 msgid "Your password has been updated."
 msgstr "Salasanasi on päivitetty."
 
+#: app/Module/PrivacyPolicy.php
+msgid "Your personal data may be transferred to, and processed in, countries other than the country in which you reside. We take appropriate safeguards to protect your data during such transfers."
+msgstr ""
+
 #: app/Http/RequestHandlers/RegisterAction.php
 #, php-format
 msgid "Your registration at %s"
@@ -13770,6 +14054,12 @@ msgstr "Loitonna"
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr "webtrees-puiden vanhat versiot käyttivät _WT_OBJE_SORT-tunnisteita yksilöimään henkilön ensisijaisen kuvan. Vaihtoehto on järjestää kuvat uudelleen niin, että ensisijainen kuva on ensimmäinen."
 
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "accept"
+msgstr "hyväksy"
+
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml
 #: resources/views/individual-page-pending.phtml
@@ -13789,6 +14079,12 @@ msgstr "hyväksy"
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
 msgstr "hyväksy"
+
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "accept all"
+msgstr "hyväksy kaikki"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php
@@ -13902,6 +14198,7 @@ msgstr "luetelmamerkkilista"
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/stories/edit.phtml
 #: resources/views/modules/user_blog/edit.phtml
 msgid "cancel"
@@ -13939,7 +14236,6 @@ msgstr "kansalainen"
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
 #: resources/views/modules/favorites/favorites.phtml
-#: resources/views/modules/privacy-policy/footer.phtml
 msgid "close"
 msgstr "sulje"
 
@@ -14000,6 +14296,18 @@ msgstr "aikajaksot"
 #: resources/xml/reports/descendancy_report.xml
 msgid "daughter of"
 msgstr "vanhemmat"
+
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "decline"
+msgstr "hylkää"
+
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "decline all"
+msgstr "hylkää kaikki"
 
 #: resources/views/admin/location-edit.phtml
 msgid "degrees"
@@ -14495,6 +14803,7 @@ msgstr "oikealle"
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/relationships-chart/config.phtml
 #: resources/views/modules/sitemap/config.phtml
 #: resources/views/modules/stories/edit.phtml

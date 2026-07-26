@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-23 18:03+0100\n"
+"POT-Creation-Date: 2026-07-26 21:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -322,6 +322,7 @@ msgstr "%s, 그의 배우자와 후손"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/user-messages/user-messages.phtml
 msgid "&lt;select&gt;"
 msgstr "&lt;선택&gt;"
@@ -1750,6 +1751,10 @@ msgstr "즐겨 찾기 목록에서 이 항목을 제거 하시겠습니까?"
 msgid "Argentina"
 msgstr "Argentina"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Argentina, Colombia, Mexico, Chile, Uruguay, Peru, Israel"
+msgstr ""
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Armenia"
@@ -1845,6 +1850,10 @@ msgstr "8월"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Australia"
 msgstr "Australia"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Australia / New Zealand"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -2285,6 +2294,10 @@ msgstr "Blue Lagoon"
 msgid "Blue Marine"
 msgstr "Blue Marine"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Body"
+msgstr ""
+
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
 msgid "Bogotá, Colombia"
@@ -2357,9 +2370,15 @@ msgid "Branches of the %s family"
 msgstr "%s 가문의 분기점"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Brazil"
 msgstr "Brazil"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Breach notification"
+msgstr "위반 통지"
 
 #: app/Elements/RelationIsDescriptor.php
 msgid "Bridesmaid"
@@ -2622,7 +2641,8 @@ msgid "Campinas, Brazil"
 msgstr "Campinas, Brazil"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Canada"
 msgstr "Canada"
 
@@ -2907,13 +2927,19 @@ msgstr "자녀들은 아버지의 성을 가집니다."
 msgid "Children take their mother’s surname."
 msgstr "자녀들은 어머니의 성을 가집니다."
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Children's data"
+msgstr "아동 데이터"
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Chile"
 msgstr "Chile"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "China"
 msgstr "China"
 
@@ -3259,6 +3285,7 @@ msgstr ""
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/relationships-chart/config.phtml
 #: resources/views/modules/sitemap/config.phtml
 #: resources/views/modules/stories/config.phtml
@@ -3283,7 +3310,7 @@ msgstr "로 변환하다"
 msgid "Cook Islands"
 msgstr "Cook Islands"
 
-#: resources/views/modules/privacy-policy/page.phtml
+#: app/Module/PrivacyPolicy.php
 msgid "Cookies"
 msgstr "쿠키"
 
@@ -3599,6 +3626,11 @@ msgstr ""
 msgid "Custom module"
 msgstr "사용자정의 모듈"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Custom statement"
+msgstr "사용자 정의 성명"
+
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
 msgid "Custom welcome text"
@@ -3653,9 +3685,15 @@ msgstr "Dallas, Texas, United States"
 msgid "Data"
 msgstr "데이터"
 
-#: resources/views/modules/privacy-policy/page.phtml
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data collected"
+msgstr "수집 데이터"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Data controller"
-msgstr "데이터 컨트롤러"
+msgstr "데이터 관리자"
 
 #: resources/views/admin/data-fix-page.phtml
 #: resources/views/admin/data-fix-select.phtml
@@ -3681,6 +3719,21 @@ msgstr "데이터 수정에는 느린 계산이 많이 필요할 수 있으므�
 #: resources/views/admin/site-preferences.phtml
 msgid "Data folder"
 msgstr "데이터 폴더"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data protection officer"
+msgstr "데이터 보호 책임자"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data retention"
+msgstr "데이터 보유"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data storage location"
+msgstr "데이터 저장 위치"
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -4348,6 +4401,11 @@ msgstr "Do not seal, previous sealing canceled"
 msgid "Do not seal: unauthorized"
 msgstr "Do not seal: unauthorized"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Do not sell or share"
+msgstr "판매 또는 공유 금지"
+
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
 msgid "Document"
@@ -4555,6 +4613,7 @@ msgstr "이메일"
 #: resources/views/contact-page.phtml resources/views/edit-account-page.phtml
 #: resources/views/emails/register-notify-html.phtml
 #: resources/views/emails/register-notify-text.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/user-messages/user-messages.phtml
 #: resources/views/register-page.phtml
 #: resources/views/setup/step-5-administrator.phtml
@@ -4691,6 +4750,10 @@ msgstr "Ethiopia"
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "Europe"
 msgstr "Europe"
+
+#: app/Module/PrivacyPolicy.php
+msgid "European Union / EEA / United Kingdom"
+msgstr ""
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php
 #: resources/views/lists/anniversaries-table.phtml
@@ -5435,7 +5498,8 @@ msgid "Foster mother"
 msgstr "위탁입양 어머니"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "France"
 msgstr "France"
 
@@ -5576,6 +5640,14 @@ msgstr "Gabon"
 msgid "Gambia"
 msgstr "Gambia"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Genealogical data is retained indefinitely, as the purpose of this website is to preserve historical and family-history research. User account data is retained for as long as the account is active."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Genealogical data on this website is typically obtained from publicly accessible sources, including civil registration records, church records, census returns, published directories, gravestones, and contributions from family members. The data subjects may not have provided this data themselves."
+msgstr ""
+
 #: resources/views/admin/control-panel.phtml
 msgid "Genealogy"
 msgstr "계보"
@@ -5646,6 +5718,11 @@ msgstr "후손의 세대"
 msgid "GeoNames"
 msgstr "GeoNames"
 
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "Geocoding"
+msgstr "지오코딩"
+
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "Geographic area"
 msgstr "지리적 영역"
@@ -5673,6 +5750,10 @@ msgstr "Georgia"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Germany"
 msgstr "Germany"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Germany / Austria"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -6062,6 +6143,16 @@ msgstr "Honduras"
 msgid "Hong Kong"
 msgstr "Hong Kong"
 
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "Hosted by:"
+msgstr "호스팅:"
+
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Hosting provider"
+msgstr "호스팅 제공업체"
+
 #. I18N: Name of a module/chart
 #: app/Module/ChartsBlockModule.php app/Module/HourglassChartModule.php
 msgid "Hourglass chart"
@@ -6300,6 +6391,10 @@ msgstr "일부 달력에서는 요일이 자정에 시작됩니다. 다른 달�
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 msgstr "일부 국가에서는 개인정보 보호법이 살아있는 개인뿐만 아니라 최근에 사망한 개인에게도 적용됩니다. 이 옵션을 사용하면 살아있는 개인에 대한 개인 정보 보호 규칙을 지정된 년 내에 태어나거나 사망한 사람들까지 확장할 수 있습니다. 이 기능을 비활성화하려면 이 값을 비워 둡니다."
 
+#: app/Module/PrivacyPolicy.php
+msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
+msgstr ""
+
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
 msgstr "별칭 포함"
@@ -6333,7 +6428,8 @@ msgid "Include the individual’s immediate family"
 msgstr "인물의 직계 가족 포함"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "India"
 msgstr "India"
 
@@ -6492,6 +6588,11 @@ msgstr "내부 메시지"
 msgid "Internal messaging with emails"
 msgstr "이메일을 통한 내부 메시지"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "International transfers"
+msgstr "국제 이전"
+
 #: app/Http/RequestHandlers/GedcomLoad.php
 msgid "Invalid GEDCOM file - no header record found."
 msgstr "잘못된 GEDCOM 파일 - 헤더 레코드를 찾을 수 없습니다."
@@ -6575,7 +6676,8 @@ msgid "January"
 msgstr "1월"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Japan"
 msgstr "Japan"
 
@@ -6626,6 +6728,11 @@ msgstr "7월"
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "6월"
+
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Jurisdiction"
+msgstr "관할 지역"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -6862,6 +6969,11 @@ msgstr "위도"
 msgid "Latvia"
 msgstr "Latvia"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Lawful basis"
+msgstr "법적 근거"
+
 #: resources/views/modules/ancestors-chart/page.phtml
 #: resources/views/modules/descendancy_chart/page.phtml
 #: resources/views/modules/fanchart/page.phtml
@@ -6898,6 +7010,14 @@ msgstr "Lebanon"
 #: app/Module/RedirectLegacyUrlsModule.php
 msgid "Legacy URLs"
 msgstr "기존 URL"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Legal notice (Impressum)"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Legal notice (Mentions légales)"
+msgstr ""
 
 #: app/CustomTags/Reunion.php
 msgid "Legatee"
@@ -7286,6 +7406,11 @@ msgstr "지도 링크"
 #: app/Services/LeafletJsService.php resources/views/admin/control-panel.phtml
 msgid "Map providers"
 msgstr "지도 제공자"
+
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "Map tiles"
+msgstr "지도 타일"
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php
@@ -7739,6 +7864,11 @@ msgstr "군"
 msgid "Military service"
 msgstr "입대(군 복무)"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Minimum age for consent"
+msgstr "동의 최소 연령"
+
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php
 #: resources/xml/reports/missing_facts_report.xml
@@ -8013,6 +8143,7 @@ msgstr "Myanmar"
 #: resources/views/lists/anniversaries-table.phtml
 #: resources/views/modals/location-fields.phtml
 #: resources/views/modals/submitter-fields.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/yahrzeit/table.phtml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
 #: resources/xml/reports/cemetery_report.xml
@@ -8293,6 +8424,11 @@ msgstr "제출된 뉴스 기사가 없습니다."
 #: app/Http/RequestHandlers/SiteRegistrationPage.php
 msgid "No predefined text"
 msgstr "사전 정의된 텍스트 없음"
+
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "No privacy policy has been configured for this website."
+msgstr "이 웹사이트에 대한 개인정보 보호정책이 구성되지 않았습니다."
 
 #: resources/views/lists/datatables-attributes.phtml
 msgid "No records to display"
@@ -8713,6 +8849,10 @@ msgstr "차트에 표시할 기타 정보"
 msgid "Other preferences"
 msgstr "기타 환경설정"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Our data protection officer can be contacted at:"
+msgstr ""
+
 #: app/Elements/RelationIsDescriptor.php
 msgid "Owner"
 msgstr "오너"
@@ -8928,9 +9068,9 @@ msgstr "영구적인 번호"
 msgid "Permanently delete these records?"
 msgstr "이 레코드를 영구적으로 삭제하시겠습니까?"
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "Personal data"
-msgstr "개인 정보"
+#: app/Module/PrivacyPolicy.php
+msgid "Personal data is stored on servers located in:"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -8946,6 +9086,10 @@ msgstr "Peru"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Philippines"
 msgstr "Philippines"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Philippines, Kenya, Nigeria, Ghana, Egypt"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9228,6 +9372,10 @@ msgctxt "Surname tradition"
 msgid "Portuguese"
 msgstr "Portuguese"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Postal address"
+msgstr ""
+
 #: app/CustomTags/GedcomL.php app/CustomTags/PersonalAncestralFile.php
 #: app/Gedcom.php
 msgid "Postal code"
@@ -9317,6 +9465,11 @@ msgstr "개인 정보 보호 제한 사항"
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr "개인정보 보호정책 - GEDCOM RESN 태그가 포함되지 않은 기록 및 사실에 적용됩니다"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Privacy statements"
+msgstr "개인정보 보호 성명"
+
 #: app/CustomTags/Legacy.php app/CustomTags/TheNextGeneration.php
 #: app/GedcomRecord.php app/Report/ParserGenerate.php app/StatisticsData.php
 msgid "Private"
@@ -9329,6 +9482,10 @@ msgstr "개인 키"
 #: app/Gedcom.php
 msgid "Probate"
 msgstr "유언 공증"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgstr ""
 
 #: app/Gedcom.php
 msgid "Property"
@@ -9358,6 +9515,11 @@ msgstr "Publication"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Puerto Rico"
 msgstr "Puerto Rico"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Purpose of processing"
+msgstr "처리 목적"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -9811,6 +9973,26 @@ msgstr "퇴직"
 msgid "Rexburg, Idaho, United States"
 msgstr "Rexburg, Idaho, United States"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right of access and data portability"
+msgstr "접근권 및 데이터 이동권"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right to complain"
+msgstr "불만 제기 권리"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right to correction"
+msgstr "정정권"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right to erasure, objection, and restriction"
+msgstr "삭제권, 이의제기권 및 제한권"
+
 #: app/CustomTags/Gedcom7.php app/CustomTags/GedcomL.php app/Gedcom.php
 #: resources/views/admin/users-edit.phtml
 msgid "Role"
@@ -9853,7 +10035,8 @@ msgid "Russell"
 msgstr "Russell"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Russia"
 msgstr "Russia"
 
@@ -9985,7 +10168,8 @@ msgid "Sat"
 msgstr "Sat"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Saudi Arabia"
 msgstr "Saudi Arabia"
 
@@ -10152,6 +10336,19 @@ msgstr "두 레코드에서 보관할 정보 및 이벤트를 선택하십시오
 msgid "Select two records to merge."
 msgstr "병합 할 두 개의 레코드를 선택하십시오."
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Select which statements to display on the public privacy policy page."
+msgstr ""
+
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Select your country or region"
+msgstr "국가 또는 지역을 선택하세요"
+
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Select your jurisdiction to automatically enable the required privacy statements. You can also enable or disable individual statements."
+msgstr ""
+
 #: resources/views/admin/site-mail.phtml
 msgid "Selector"
 msgstr "선택요소"
@@ -10276,6 +10473,11 @@ msgstr "하인"
 msgid "Server information"
 msgstr "서버 정보"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Server location"
+msgstr "서버 위치"
+
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
@@ -10283,6 +10485,10 @@ msgstr "서버 정보"
 #: resources/views/setup/step-4-database-sqlsrv.phtml
 msgid "Server name"
 msgstr "서버 이름"
+
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "Service"
+msgstr ""
 
 #: app/Http/RequestHandlers/PasswordResetPage.php
 msgid "Set a new password"
@@ -10425,10 +10631,11 @@ msgstr "가장 짧은 결혼 기간"
 msgid "Show a download link in the media viewer"
 msgstr "미디어 뷰어에 다운로드 링크를 표시합니다"
 
-#. I18N: Description of the “Cookie warning” module
+#. I18N: Description of the "Privacy policy" module
 #: app/Module/PrivacyPolicy.php
-msgid "Show a privacy policy."
-msgstr "개인 정보 보호 정책을 표시합니다."
+#, fuzzy
+msgid "Show a privacy/data-protection policy based on your jurisdiction."
+msgstr "관할 지역에 따른 개인정보/데이터 보호 정책을 표시합니다."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
@@ -10782,7 +10989,8 @@ msgid "Simple dates are assumed to be in the gregorian calendar. To specify a da
 msgstr "간단한 날짜는 그레고리력으로되어 있다고 가정합니다. 다른 캘린더에서 날짜를 지정하려면 날짜 앞에 키워드를 추가하십시오. 월 또는 연도 형식으로 날짜를 모호하지 않게하려면이 키워드는 선택 사항입니다."
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Singapore"
 msgstr "Singapore"
 
@@ -11021,12 +11229,18 @@ msgstr "출처 유형"
 msgid "Sources"
 msgstr "출처"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Sources of data"
+msgstr "데이터 출처"
+
 #: resources/xml/reports/missing_facts_report.xml
 msgid "Sources to the events"
 msgstr "이벤트 출처"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "South Africa"
 msgstr "South Africa"
 
@@ -11038,6 +11252,10 @@ msgstr "South America"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "South Georgia and the South Sandwich Islands"
+
+#: app/Module/PrivacyPolicy.php
+msgid "South Korea"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -11227,6 +11445,11 @@ msgstr "Sudan"
 msgid "Sun"
 msgstr "Sun"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Supervisory authority"
+msgstr "감독 기관"
+
 #. I18N: %s is a URL/link to the project website
 #: resources/views/admin/control-panel.phtml
 #, php-format
@@ -11317,7 +11540,8 @@ msgid "Sweden"
 msgstr "Sweden"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Switzerland"
 msgstr "Switzerland"
 
@@ -11416,6 +11640,10 @@ msgstr "기술 지원 문의"
 msgid "Tegucigalpa, Honduras"
 msgstr "Tegucigalpa, Honduras"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Telephone"
+msgstr ""
+
 #: app/CustomTags/RootsMagic.php
 msgid "Template"
 msgstr ""
@@ -11441,7 +11669,8 @@ msgid "Text direction"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Thailand"
 msgstr "Thailand"
 
@@ -11797,6 +12026,10 @@ msgstr "SMTP 서버 인증에 필요한 비밀번호입니다."
 msgid "The password reset link has expired."
 msgstr "비밀번호 재설정 링크가 만료되었습니다."
 
+#: app/Module/PrivacyPolicy.php
+msgid "The person responsible for this website and for the processing of your personal data is:"
+msgstr ""
+
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php
 msgid "The place hierarchy."
@@ -11817,6 +12050,11 @@ msgstr "새로운 가계도에 대한 환경 설정이 업데이트되었습니�
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "가계도 “%s”의 환경 설정이 업데이트되었습니다."
+
+#: app/Module/PrivacyPolicy.php
+#, php-format
+msgid "The preferences for the module \"%s\" have been updated."
+msgstr ""
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
@@ -12055,18 +12293,15 @@ msgstr ""
 msgid "There was an error uploading your file."
 msgstr "파일을 업로드하는 중에 오류가 발생했습니다."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "These cookies are “essential”, and do not require consent."
-msgstr "이 쿠키는 “필수”이며 동의 할 필요가 없습니다."
-
 #: resources/views/admin/trees-unconnected.phtml
 #, php-format
 msgid "These groups of individuals are not related to %s."
 msgstr "이 인물 그룹은 %s와 관련이 없습니다."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "These services may use cookies or other tracking technology."
-msgstr "이러한 서비스는 쿠키 또는 기타 추적 기술을 사용할 수 있습니다."
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Third-party services"
+msgstr "제3자 서비스"
 
 #: app/Http/RequestHandlers/LoginAction.php
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -12384,10 +12619,6 @@ msgstr "이 레코드는 편집되었습니다. 변경 사항을 검토 한 다�
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "이 저장소가 존재하지 않거나 볼 수있는 권한이 없습니다."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr "이 연구는 EU 일반 데이터 보호 규정 6 (f) 조에 따른“합법적 인 관심사”입니다."
-
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "이 역할에는 편집자 역할의 모든 권한과 다른 사용자의 변경 사항을 수락/거부 할 수 있는 권한이 있습니다."
@@ -12438,29 +12669,38 @@ msgstr "이것은 일반적으로 퍼미션을 777로 변경해야 함을 의미
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
 msgstr "이 웹 사이트는 유지 관리를 위해 다운되었습니다. 몇 분 안에 <a href=\"index.php\">다시 시도</a> 해야합니다."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This website is operated by the following individuals."
-msgstr "이 웹 사이트는 다음 개인이 운영합니다."
+#: app/Module/PrivacyPolicy.php
+msgid "This website is operated by the following person, who is also responsible for its content:"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "This website is published by:"
+msgstr ""
 
 #: resources/views/layouts/error.phtml resources/views/layouts/offline.phtml
 msgid "This website is temporarily unavailable"
 msgstr "이 웹 사이트는 일시적으로 이용할 수 없습니다"
 
-#: resources/views/modules/privacy-policy/page.phtml
+#: app/Module/PrivacyPolicy.php
+msgid "This website may contain data about minors, derived from public records such as birth registers, for the purpose of historical and genealogical research. We do not collect personal data directly from children."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
 msgid "This website processes personal data for the purpose of historical and genealogical research."
 msgstr "이 웹 사이트는 역사 및 계보 연구 목적으로 개인 데이터를 처리합니다."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
-msgstr "이 웹 사이트는 쿠키를 사용하여 로그인 세션을 활성화하고 선택한 언어와 같은 기본 설정을 기억합니다."
+#: app/Module/PrivacyPolicy.php
+msgid "This website uses essential cookies for login sessions and to remember your preferences. These cookies are strictly necessary and do not require consent."
+msgstr ""
 
+#: app/Module/PrivacyPolicy.php
+msgid "This website uses external services to provide mapping and location features. When you view a map, your browser connects directly to these services, which may receive your IP address and other request data."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
 #: resources/views/modules/privacy-policy/footer.phtml
-msgid "This website uses cookies to learn about visitor behavior."
-msgstr "이 웹 사이트는 쿠키를 사용하여 방문자 행동에 대해 학습합니다."
-
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This website uses third-party services to learn about visitor behavior."
-msgstr "이 웹 사이트는 타사 서비스를 사용하여 방문자 행동에 대해 학습합니다."
+msgid "This website uses third-party services to understand visitor behavior. These services may use cookies or similar tracking technology."
+msgstr ""
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml
@@ -12548,6 +12788,7 @@ msgstr "Timor-Leste"
 #: resources/views/modules/favorites/favorites.phtml
 #: resources/views/modules/gedcom_news/edit.phtml
 #: resources/views/modules/html/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/user_blog/edit.phtml
 msgid "Title"
 msgstr "제목"
@@ -12765,11 +13006,10 @@ msgid "Total users"
 msgstr "전체 사용자"
 
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
-#: app/Module/ModuleAnalyticsTrait.php
+#: app/Module/ModuleAnalyticsTrait.php app/Module/PrivacyPolicy.php
 #: resources/views/admin/analytics-edit.phtml
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
-#: resources/views/modules/privacy-policy/page.phtml
 msgid "Tracking and analytics"
 msgstr "추적 및 분석"
 
@@ -12807,6 +13047,10 @@ msgstr "Tunisia"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Turkey"
 msgstr "Turkey"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Turkey, UAE, Indonesia, Malaysia, Vietnam"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -12954,9 +13198,18 @@ msgid "United Kingdom"
 msgstr "United Kingdom"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "United States"
 msgstr "United States"
+
+#: app/Module/PrivacyPolicy.php
+msgid "United States — CA"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "United States — CO, CT, DE, IN, IA, KY, MD, MN, MT, NE, NH, NJ, OR, RI, TN, TX, UT, VA"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
@@ -13335,6 +13588,15 @@ msgstr "워터마크"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "워터 마크는 선택사항이며 일반적으로 방문자에게만 표시됩니다."
 
+#: app/Module/PrivacyPolicy.php
+msgid "We collect names, dates, places, family relationships, and other genealogical information. Much of this data is derived from public records such as registers of births, marriages, and deaths. For registered users, we also store email addresses and login credentials."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "We do not sell or share your personal information."
+msgstr "당사는 귀하의 개인정보를 판매하거나 공유하지 않습니다."
+
 #: resources/views/register-success-page.phtml
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
@@ -13342,6 +13604,7 @@ msgstr "이제 <b>%s</b> 주소로 확인 이메일을 보내드립니다. 확�
 
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/trees-preferences.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 msgid "Website"
 msgstr "웹사이트"
 
@@ -13409,6 +13672,11 @@ msgstr "정보를 추가, 편집 또는 삭제할 때 변경 사항이 즉시 �
 #: resources/views/help/relationship-privacy.phtml
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
 msgstr "사용자가 가계도의 개별 레코드에 연결되어 있고 구성원, 편집자 또는 중재자 역할을하는 경우, 먼 관계에있는 세부 정보에 액세스하지 못하게 할 수 있습니다. 사용자가 볼 수있는 관계 단계 수를 지정합니다."
+
+#: resources/views/modules/privacy-policy/page.phtml
+#, php-format
+msgid "Where we operate online services that children may access directly, the minimum age for consent in our jurisdiction is %s years."
+msgstr ""
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml
@@ -13549,10 +13817,6 @@ msgstr "현재 로그인 한 사용자 목록에 표시할지 여부를 선택�
 msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "%s에서 GEDCOM 사양 사본을 다운로드 할 수 있습니다."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr "브라우저 환경설정에서 \"추적하지 않음\" 헤더를 설정하여 추적을 해제할 수 있습니다."
-
 #: resources/views/admin/trees-renumber.phtml
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr "가계도에서 레코드의 번호를 다시 매길 수 있으므로 이러한 내부 참조 번호가 다른 가계도에서 중복되지 않습니다."
@@ -13595,6 +13859,22 @@ msgstr "다른 이름의 GEDCOM 파일을 선택했습니다. 맞습니까?"
 #: app/Http/RequestHandlers/Logout.php
 msgid "You have signed out."
 msgstr "로그아웃 했습니다."
+
+#: app/Module/PrivacyPolicy.php
+msgid "You have the right to lodge a complaint with a supervisory authority if you believe your data has been processed unlawfully."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "You have the right to request a copy of the personal data we hold about you. This data can be provided in a machine-readable format (GEDCOM)."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "You may request that we delete, restrict, or cease processing your personal data. However, where data is processed for historical research purposes or was obtained from publicly accessible sources, these rights may be limited where compliance would render the research impossible or seriously impair it."
+msgstr ""
 
 #: resources/views/modules/faq/config.phtml
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -13699,6 +13979,10 @@ msgstr "당신의 이름"
 msgid "Your password has been updated."
 msgstr "비밀번호가 업데이트되었습니다."
 
+#: app/Module/PrivacyPolicy.php
+msgid "Your personal data may be transferred to, and processed in, countries other than the country in which you reside. We take appropriate safeguards to protect your data during such transfers."
+msgstr ""
+
 #: app/Http/RequestHandlers/RegisterAction.php
 #, php-format
 msgid "Your registration at %s"
@@ -13743,6 +14027,12 @@ msgstr "축소"
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
 
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "accept"
+msgstr "수락"
+
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml
 #: resources/views/individual-page-pending.phtml
@@ -13762,6 +14052,12 @@ msgstr "동의"
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
 msgstr "동의"
+
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "accept all"
+msgstr "모두 수락"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php
@@ -13875,6 +14171,7 @@ msgstr "글 머리 기호 목록"
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/stories/edit.phtml
 #: resources/views/modules/user_blog/edit.phtml
 msgid "cancel"
@@ -13912,7 +14209,6 @@ msgstr "시민"
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
 #: resources/views/modules/favorites/favorites.phtml
-#: resources/views/modules/privacy-policy/footer.phtml
 msgid "close"
 msgstr "닫기"
 
@@ -13973,6 +14269,18 @@ msgstr "날짜 기간"
 #: resources/xml/reports/descendancy_report.xml
 msgid "daughter of"
 msgstr "의 딸"
+
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "decline"
+msgstr "거부"
+
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "decline all"
+msgstr "모두 거부"
 
 #: resources/views/admin/location-edit.phtml
 msgid "degrees"
@@ -14466,6 +14774,7 @@ msgstr "오른쪽"
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/relationships-chart/config.phtml
 #: resources/views/modules/sitemap/config.phtml
 #: resources/views/modules/stories/edit.phtml
