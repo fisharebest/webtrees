@@ -15,6 +15,10 @@ use Illuminate\Support\Collection;
 
 <?php if ($all_trees->count() > 1) : ?>
     <fieldset class="row">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
+            <?= I18N::translate('Family trees') ?>
+        </legend>
         <div class="col-sm-3 col-form-label wt-page-options-label">
             <?= I18N::translate('Family trees') ?>
         </div>

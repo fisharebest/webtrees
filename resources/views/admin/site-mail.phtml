@@ -116,10 +116,15 @@ use Fisharebest\Webtrees\Webtrees;
     </div>
 
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */
             I18N::translate('Use password') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */
+            I18N::translate('Use password') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'SMTP_AUTH', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $SMTP_AUTH]) ?>
             <div class="form-text">

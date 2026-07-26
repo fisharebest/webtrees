@@ -16,9 +16,13 @@ use Fisharebest\Webtrees\I18N;
 </p>
 
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3">
+    <!-- For Safari -->
+    <legend class="visually-hidden">
         <?= /* I18N: Label for a configuration option */ I18N::translate('Send out reminder emails') ?>
     </legend>
+    <div class="col-form-label col-sm-3" aria-hidden="true">
+        <?= /* I18N: Label for a configuration option */ I18N::translate('Send out reminder emails') ?>
+    </div>
     <div class="col-sm-9">
         <?= view('components/radios-inline', ['name' => 'sendmail', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $sendmail]) ?>
     </div>
