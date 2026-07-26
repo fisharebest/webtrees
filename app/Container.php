@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Contracts\ContainerInterface;
 use Fisharebest\Webtrees\Exceptions\NotFoundInContainerException;
 use ReflectionClass;
+use ReflectionException;
 use ReflectionNamedType;
 use ReflectionParameter;
 
@@ -90,7 +91,12 @@ class Container implements ContainerInterface
      */
     private function make(string $id): object
     {
-        $reflector   = new ReflectionClass($id);
+        try {
+            $reflector = new ReflectionClass($id);
+        } catch (ReflectionException $exception) {
+            throw new NotFoundInContainerException('Cannot make ' . $id, 0, $exception);
+        }
+
         $constructor = $reflector->getConstructor();
 
         if ($constructor === null) {
