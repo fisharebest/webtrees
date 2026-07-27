@@ -240,11 +240,12 @@ final readonly class Arabic extends AbstractLanguage
      */
     public function relationships(): array
     {
-        // Arabic iḍāfa (construct state): genitive = "term %s"
-        $ar = static fn (string $s): array => [$s, $s . ' %s'];
+        // Arabic iḍāfa (construct state): genitive puts the next term before this one
+        // e.g. "mother's brother" = "أخ أم" (brother of mother) → genitive = "%s أم"
+        $ar = static fn (string $s): array => [$s, '%s ' . $s];
 
         // When nominative uses ال (definite article) but genitive drops it in iḍāfa chain
-        $ar2 = static fn (string $nom, string $gen): array => [$nom, $gen . ' %s'];
+        $ar2 = static fn (string $nom, string $gen): array => [$nom, '%s ' . $gen];
 
         return [
             // Adopted

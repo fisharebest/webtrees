@@ -780,7 +780,7 @@ class ArabicTest extends AbstractLanguageTestCase
         // Co-wives (married) — ضرّة via husband()->wife()
         self::assertRelationshipNames('ضرّة', 'ضرّة', [$wife, $fm, $husband, $fcw, $coWife]);
         // Co-partners (unmarried) — falls back to genitive composition
-        self::assertRelationshipNames('شريك شريكة', 'شريك شريكة', [$unmarriedWife1, $fuw1, $unmarriedHub, $fuw2, $unmarriedWife2]);
+        self::assertRelationshipNames('شريكة شريك', 'شريكة شريك', [$unmarriedWife1, $fuw1, $unmarriedHub, $fuw2, $unmarriedWife2]);
 
         // In-laws (spouse's parents)
         self::assertRelationshipNames('حماة', 'صهر', [$husband, $fm, $wife, $fw, $motherOfW]);
