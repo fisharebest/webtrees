@@ -35,7 +35,7 @@ final readonly class Estonian extends AbstractLanguage
     protected const string    LANGUAGE_TAG       = 'et';
     protected const string    LOCALE_CODE        = 'et_EE@collation=phonebook';
     protected const int       MINIMUM_GROUPING_DIGITS = 3;
-    protected const string    DIGITS_SEPARATOR   = UTF8::NO_BREAK_SPACE;
+    protected const string    DIGITS_SEPARATOR   = UTF8::NARROW_NO_BREAK_SPACE;
     protected const string    NEGATIVE_SYMBOL    = UTF8::MINUS_SIGN;
     protected const string    DECIMAL_SYMBOL     = ',';
     protected const string    DATE_ABOUT         = 'umbes %s';

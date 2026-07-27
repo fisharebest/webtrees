@@ -33,7 +33,7 @@ final readonly class Latvian extends AbstractLanguage
     protected const string    LANGUAGE_TAG       = 'lv';
     protected const string    LOCALE_CODE        = 'lv_LV@collation=phonebook';
     protected const int       MINIMUM_GROUPING_DIGITS = 3;
-    protected const string    DIGITS_SEPARATOR   = UTF8::NO_BREAK_SPACE;
+    protected const string    DIGITS_SEPARATOR   = UTF8::NARROW_NO_BREAK_SPACE;
     protected const string    DECIMAL_SYMBOL     = ',';
     protected const string    LIST_SEPARATOR_AND = ' un ';
     protected const string    LIST_SEPARATOR_OR  = ' vai ';

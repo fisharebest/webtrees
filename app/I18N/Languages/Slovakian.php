@@ -36,7 +36,7 @@ final readonly class Slovakian extends AbstractLanguage
     protected const PaperSize PAPER_SIZE         = PaperSize::A4;
     protected const string    LANGUAGE_TAG       = 'sk';
     protected const string    LOCALE_CODE        = 'sk_SK@collation=phonebook';
-    protected const string    DIGITS_SEPARATOR   = UTF8::NO_BREAK_SPACE;
+    protected const string    DIGITS_SEPARATOR   = UTF8::NARROW_NO_BREAK_SPACE;
     protected const string    DECIMAL_SYMBOL     = ',';
     protected const string    DATE_ABOUT         = 'okolo %s';
     protected const string    DATE_AFTER         = 'po %s';

@@ -31,7 +31,7 @@ final readonly class Georgian extends AbstractLanguage
     protected const string    LANGUAGE_TAG       = 'ka';
     protected const string    LOCALE_CODE        = 'ka_GE@collation=phonebook';
     protected const int       MINIMUM_GROUPING_DIGITS = 2;
-    protected const string    DIGITS_SEPARATOR   = UTF8::NO_BREAK_SPACE;
+    protected const string    DIGITS_SEPARATOR   = UTF8::NARROW_NO_BREAK_SPACE;
     protected const string    DECIMAL_SYMBOL     = ',';
     protected const Script    SCRIPT             = Script::Geor;
     protected const string    DATE_ABOUT         = 'მიახლოებით %s';

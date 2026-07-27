@@ -32,7 +32,7 @@ final readonly class Lithuanian extends AbstractLanguage
     protected const PaperSize PAPER_SIZE         = PaperSize::A4;
     protected const string    LANGUAGE_TAG       = 'lt';
     protected const string    LOCALE_CODE        = 'lt_LT@collation=phonebook';
-    protected const string    DIGITS_SEPARATOR   = UTF8::NO_BREAK_SPACE;
+    protected const string    DIGITS_SEPARATOR   = UTF8::NARROW_NO_BREAK_SPACE;
     protected const string    NEGATIVE_SYMBOL    = UTF8::MINUS_SIGN;
     protected const string    DECIMAL_SYMBOL     = ',';
     protected const string    DATE_ABOUT         = 'apie %s';
