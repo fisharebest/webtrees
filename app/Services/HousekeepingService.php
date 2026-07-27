@@ -35,7 +35,7 @@ use function time;
 class HousekeepingService
 {
     // This is a list of old files and directories, from earlier versions of webtrees.
-    // git diff 1.7.9..master --name-status | grep ^D
+    // Exclude the folders; app, resources and vendor.  These are cleaned by synchronizing with new releases.
     private const array OLD_PATHS = [
         // Removed in 1.0.3
         'themechange.php',
@@ -142,16 +142,6 @@ class HousekeepingService
         'admin_users.php',
         'admin_users_bulk.php',
         'ancestry.php',
-        'app/Controller',
-        'app/HitCounter.php',
-        'app/Module/ClippingsCart/ClippingsCartController.php',
-        'app/Module/FamiliesSidebarModule.php',
-        'app/Module/FamilyTreeFavorites',
-        'app/Module/GoogleMaps',
-        'app/Module/IndividualSidebarModule.php',
-        'app/Module/PageMenuModule.php',
-        'app/Query',
-        'app/SpecialChars',
         'assets/js-1.7.7',
         'assets/js-1.7.9',
         'autocomplete.php',
