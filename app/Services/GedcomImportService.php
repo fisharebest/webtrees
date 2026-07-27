@@ -213,7 +213,7 @@ class GedcomImportService
                     // We move this data to a CONC line, so our normal edit tools work.
                     // So we need to add a space for '0 @X@ NOTE\n1 CONC'.
                     if ($n === 1 || $tree->getPreference('WORD_WRAPPED_NOTES') === '1') {
-                        $newrec .= ' ' .$data;
+                        $newrec .= ' ' . $data;
                     } else {
                         $newrec .= $data;
                     }

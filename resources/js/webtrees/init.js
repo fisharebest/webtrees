@@ -22,7 +22,6 @@ import {
   initializeCaptchaFields,
   initializeCensusSelectors,
   initializeCheckboxActionButtons,
-  initializeCkeditorHtmlEdit,
   initializeCopyButtons,
   initializeDateReformatInputs,
   initializeEditNameAddons,
@@ -44,6 +43,7 @@ import {
   initializeSubmitOnChangeControls,
   initializeSubmitSelectedUrlButtons,
   initializeSwapIndividualsButtons,
+  initializeTinymceHtmlEdit,
   initializeTextareaPatternForms,
   initializeToggleTargetControls,
 } from './forms';
@@ -110,7 +110,6 @@ export function initializeWebtreesPage() {
     initializeCensusAssistantPage(root);
     initializeCensusSelectors(root);
     initializeCheckboxActionButtons(root);
-    initializeCkeditorHtmlEdit(root);
     initializeClippingsDownloadPage(root);
     initializeCookieWarnings(root);
     initializeCopyButtons(root);
@@ -149,6 +148,7 @@ export function initializeWebtreesPage() {
     initializeSubmitOnChangeControls(root);
     initializeSubmitSelectedUrlButtons(root);
     initializeSwapIndividualsButtons(root);
+    initializeTinymceHtmlEdit(root);
     initializeTextareaPatternForms(root);
     initializeTimelineChartPage(root);
     initializeToggleTargetControls(root);

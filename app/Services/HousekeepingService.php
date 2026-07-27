@@ -224,6 +224,8 @@ class HousekeepingService
         'modules_v4/example.disable',
         'public/favicon-196.png',
         'public/site.webmanifest',
+        // Removed in 2.3.0
+        'public/ckeditor-4.15.1-custom',
     ];
 
     /**
