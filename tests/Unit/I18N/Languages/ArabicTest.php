@@ -646,7 +646,7 @@ class ArabicTest extends AbstractLanguageTestCase
         self::initFactories();
 
         // Core family
-        $husband = self::male('h', "1 FAMS @fm@\n1 FAMC @fp@");
+        $husband = self::male('h', "1 FAMS @fm@\n1 FAMS @fcw@\n1 FAMC @fp@");
         $wife = self::female('w', "1 FAMS @fm@\n1 FAMS @fd@\n1 FAMC @fw@");
         $son = self::male('s', "1 FAMC @fm@\n1 BIRT\n2 DATE 2000");
         $daughter = self::female('d', "1 FAMC @fm@\n1 BIRT\n2 DATE 2001");
@@ -710,6 +710,13 @@ class ArabicTest extends AbstractLanguageTestCase
         $halfBroPaternal = self::male('hbp', "1 FAMC @fhalf@");
         $fatherOfHFamily2 = self::male('fh', "1 FAMS @fp@\n1 FAMS @fhalf@");
 
+        // Co-wives — married (husband has a second wife with MARR)
+        $coWife = self::female('cw', "1 FAMS @fcw@");
+        // Co-wives — unmarried (a man with two wives but no MARR events)
+        $unmarriedHub = self::male('uh', "1 FAMS @fuw1@\n1 FAMS @fuw2@");
+        $unmarriedWife1 = self::female('uw1', "1 FAMS @fuw1@");
+        $unmarriedWife2 = self::female('uw2', "1 FAMS @fuw2@");
+
         // Families
         $fm = self::family('fm', "0 @fm@ FAM\n1 MARR Y\n1 HUSB @h@\n1 WIFE @w@\n1 CHIL @s@\n1 CHIL @d@\n1 CHIL @c@");
         $fd = self::family('fd', "0 @fd@ FAM\n1 DIV Y\n1 HUSB @ex@\n1 WIFE @w@\n1 CHIL @as@\n1 CHIL @sd@\n1 CHIL @fsd@");
@@ -723,6 +730,9 @@ class ArabicTest extends AbstractLanguageTestCase
         $fmsis = self::family('fmsis', "0 @fmsis@ FAM\n1 WIFE @ma@\n1 CHIL @cmma@\n1 CHIL @cfma@");
         $fgp = self::family('fgp', "0 @fgp@ FAM\n1 HUSB @pgf@\n1 WIFE @pgm@\n1 CHIL @mh@\n1 CHIL @ga@\n1 CHIL @gu@");
         $fe = self::family('fe', "0 @fe@ FAM\n1 ENGA Y\n1 HUSB @fan@\n1 WIFE @eng@");
+        $fcw = self::family('fcw', "0 @fcw@ FAM\n1 MARR Y\n1 HUSB @h@\n1 WIFE @cw@");
+        $fuw1 = self::family('fuw1', "0 @fuw1@ FAM\n1 HUSB @uh@\n1 WIFE @uw1@");
+        $fuw2 = self::family('fuw2', "0 @fuw2@ FAM\n1 HUSB @uh@\n1 WIFE @uw2@");
 
         self::registerStubs(
             [$husband, $wife, $son, $daughter, $child, $exHusband, $adoptedSon, $fosterDaughter, $stepDaughter,
@@ -734,14 +744,18 @@ class ArabicTest extends AbstractLanguageTestCase
              $cousinMMU, $cousinFMU, $cousinMMA, $cousinFMA,
              $maternalUncle, $maternalAunt,
              $paternalGF, $paternalGM, $greatAunt, $greatUncle,
-             $engaged, $fiance],
-            [$fm, $fd, $fp, $fw, $fson, $fdau, $fbro, $fsis, $fmbro, $fmsis, $fgp, $fe]
+             $engaged, $fiance,
+             $coWife, $unmarriedHub, $unmarriedWife1, $unmarriedWife2],
+            [$fm, $fd, $fp, $fw, $fson, $fdau, $fbro, $fsis, $fmbro, $fmsis, $fgp, $fe,
+             $fcw, $fuw1, $fuw2]
         );
 
         // Partners
         self::assertRelationshipNames('زوجة', 'زوج', [$husband, $fm, $wife]);
         self::assertRelationshipNames('مطلّق', 'مطلّقة', [$wife, $fd, $exHusband]);
         self::assertRelationshipNames('خطيبة', 'خطيب', [$fiance, $fe, $engaged]);
+        // Gender-specific partners (unmarried — no MARR event)
+        self::assertRelationshipNames('شريكة', 'شريك', [$unmarriedHub, $fuw1, $unmarriedWife1]);
 
         // Parents
         self::assertRelationshipNames('أم', 'ابن', [$son, $fm, $wife]);
@@ -762,6 +776,11 @@ class ArabicTest extends AbstractLanguageTestCase
         // Stepfamily
         self::assertRelationshipName('زوج الأم', [$stepDaughter, $fd, $wife, $fm, $husband]);
         self::assertRelationshipName('ربيبة', [$husband, $fm, $wife, $fd, $stepDaughter]);
+
+        // Co-wives (married) — ضرّة via husband()->wife()
+        self::assertRelationshipNames('ضرّة', 'ضرّة', [$wife, $fm, $husband, $fcw, $coWife]);
+        // Co-partners (unmarried) — falls back to genitive composition
+        self::assertRelationshipNames('شريك شريكة', 'شريك شريكة', [$unmarriedWife1, $fuw1, $unmarriedHub, $fuw2, $unmarriedWife2]);
 
         // In-laws (spouse's parents)
         self::assertRelationshipNames('حماة', 'صهر', [$husband, $fm, $wife, $fw, $motherOfW]);

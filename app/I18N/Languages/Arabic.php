@@ -299,6 +299,8 @@ final readonly class Arabic extends AbstractLanguage
             Relationship::fixed(...$ar('ربيبة'))->parent()->spouse()->daughter(),
             Relationship::fixed(...$ar('ربيب'))->parent()->spouse()->son(),
             Relationship::fixed(...$ar('ربيب/ربيبة'))->parent()->spouse()->child(),
+            // Co-wives (ضرائر) — two wives married to the same husband
+            Relationship::fixed(...$ar('ضرّة'))->husband()->wife(),
             // Partners
             Relationship::fixed(...$ar('مطلّقة'))->divorced()->partner()->female(),
             Relationship::fixed(...$ar('مطلّق'))->divorced()->partner()->male(),
@@ -308,7 +310,9 @@ final readonly class Arabic extends AbstractLanguage
             Relationship::fixed(...$ar('زوجة'))->wife(),
             Relationship::fixed(...$ar('زوج'))->husband(),
             Relationship::fixed(...$ar('زوج/زوجة'))->spouse(),
-            Relationship::fixed(...$ar('شريك'))->partner(),
+            Relationship::fixed(...$ar('شريكة'))->partner()->female(),
+            Relationship::fixed(...$ar('شريك'))->partner()->male(),
+            Relationship::fixed(...$ar('شريك/شريكة'))->partner(),
             // In-laws (spouse's parents)
             Relationship::fixed(...$ar('حماة'))->married()->spouse()->mother(),
             Relationship::fixed(...$ar('حمو'))->married()->spouse()->father(),
