@@ -201,19 +201,27 @@ use Illuminate\Support\Collection;
                         });
                     });
 
-                    // Accept all / Decline all buttons
-                    document.getElementById('accept_all').addEventListener('click', function () {
-                        document.querySelectorAll('[data-consent-module][value="1"]').forEach(function (r) {
-                            r.checked = true;
-                            setConsentFor(r.dataset.consentModule, '1');
+                    // Accept all / Decline all buttons (only rendered when multiple analytics modules exist)
+                    var acceptAll = document.getElementById('accept_all');
+                    var declineAll = document.getElementById('decline_all');
+
+                    if (acceptAll) {
+                        acceptAll.addEventListener('click', function () {
+                            document.querySelectorAll('[data-consent-module][value="1"]').forEach(function (r) {
+                                r.checked = true;
+                                setConsentFor(r.dataset.consentModule, '1');
+                            });
                         });
-                    });
-                    document.getElementById('decline_all').addEventListener('click', function () {
-                        document.querySelectorAll('[data-consent-module][value="0"]').forEach(function (r) {
-                            r.checked = true;
-                            setConsentFor(r.dataset.consentModule, '0');
+                    }
+
+                    if (declineAll) {
+                        declineAll.addEventListener('click', function () {
+                            document.querySelectorAll('[data-consent-module][value="0"]').forEach(function (r) {
+                                r.checked = true;
+                                setConsentFor(r.dataset.consentModule, '0');
+                            });
                         });
-                    });
+                    }
                 })();
             </script>
         <?php endif ?>
