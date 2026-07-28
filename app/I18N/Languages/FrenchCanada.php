@@ -69,5 +69,4 @@ final readonly class FrenchCanada extends AbstractFrench
 
         return 'à partir de ' . $date;
     }
-
 }

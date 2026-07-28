@@ -24,48 +24,60 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * Lithuanian — Children take their father’s surname. Wives take their husband’s surname. Surnames are inflected to indicate an individual’s sex and marital status.
+ * Greek — Children take their father's surname. Wives take their husband's surname. Surnames are inflected to indicate an individual's sex.
  */
-class LithuanianSurnameTradition extends PaternalSurnameTradition
+class GreekSurnameTradition extends PaternalSurnameTradition
 {
-    // Inflect a surname for wives
-    private const array INFLECT_WIFE = [
-        'as\b' => 'ienė',
-        'is\b' => 'ienė',
-        'ys\b' => 'ienė',
-        'us\b' => 'ienė',
+    // Inflect a surname for females (masculine to feminine)
+    private const array INFLECT_FEMALE = [
+        // Greek script — specific suffixes first to avoid premature general matches
+        'όπουλος\b' => 'οπούλου',
+        'ίδης\b'    => 'ίδου',
+        'άδης\b'    => 'άδου',
+        'ός\b'      => 'ού',
+        'ος\b'      => 'ου',
+        'ής\b'      => 'ή',
+        'ης\b'      => 'η',
+        'άς\b'      => 'ά',
+        'ας\b'      => 'α',
+        // Latin transliterations — distinctive Greek patterns
+        'opoulos\b' => 'opoulou',
+        'akis\b'    => 'aki',
+        'idis\b'    => 'idou',
+        'adis\b'    => 'adou',
     ];
 
-    // Inflect a surname for daughters
-    private const array INFLECT_DAUGHTER = [
-        'a\b'   => 'aitė',
-        'as\b'  => 'aitė',
-        'is\b'  => 'ytė',
-        'ys\b'  => 'ytė',
-        'ius\b' => 'iūtė',
-        'us\b'  => 'utė',
-    ];
-
-    // Inflect a surname for males
+    // Inflect a surname for males (feminine to masculine)
     private const array INFLECT_MALE = [
-        'aitė\b' => 'as',
-        'ytė\b'  => 'is',
-        'iūtė\b' => 'ius',
-        'utė\b'  => 'us',
+        // Greek script — specific suffixes first
+        'οπούλου\b' => 'όπουλος',
+        'ίδου\b'    => 'ίδης',
+        'άδου\b'    => 'άδης',
+        'ού\b'      => 'ός',
+        'ου\b'      => 'ος',
+        'ή\b'       => 'ής',
+        'η\b'       => 'ης',
+        'ά\b'       => 'άς',
+        'α\b'       => 'ας',
+        // Latin transliterations
+        'opoulou\b' => 'opoulos',
+        'aki\b'     => 'akis',
+        'idou\b'    => 'idis',
+        'adou\b'    => 'adis',
     ];
 
     public function name(): string
     {
-        return I18N::translateContext('Surname tradition', 'Lithuanian');
+        return I18N::translateContext('Surname tradition', 'Greek');
     }
 
     public function description(): string
     {
-        /* I18N: In the Lithuanian surname tradition, ... */
+        /* I18N: In the Greek surname tradition, ... */
         return
             I18N::translate('Children take their father’s surname.') . ' ' .
             I18N::translate('Wives take their husband’s surname.') . ' ' .
-            I18N::translate('Surnames are inflected to indicate an individual’s sex and marital status.');
+            I18N::translate('Surnames are inflected to indicate an individual’s sex.');
     }
 
     /**
@@ -75,21 +87,17 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
     {
         if (preg_match(self::REGEX_SURN, $this->extractName($father), $match) === 1) {
             if ($sex === 'F') {
-                $name = $this->inflect($match['NAME'], self::INFLECT_DAUGHTER);
-                $surn = $this->inflect($match['SURN'], self::INFLECT_MALE);
+                $name = $this->inflect($match['NAME'], self::INFLECT_FEMALE);
             } else {
-                $name = $match['NAME'];
-                $surn = $match['SURN'];
+                $name = $this->inflect($match['NAME'], self::INFLECT_MALE);
             }
 
-            return [
-                $this->buildName($name, ['TYPE' => NameType::VALUE_BIRTH, 'SURN' => $surn]),
-            ];
+            $surn = $this->inflect($match['SURN'], self::INFLECT_MALE);
+
+            return [$this->buildName($name, ['TYPE' => NameType::VALUE_BIRTH, 'SURN' => $surn])];
         }
 
-        return [
-            $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
-        ];
+        return [$this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH])];
     }
 
     /**
@@ -106,9 +114,7 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
             ];
         }
 
-        return [
-            $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
-        ];
+        return [$this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH])];
     }
 
     /**
@@ -117,7 +123,7 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
     public function newSpouseNames(Individual $spouse, string $sex): array
     {
         if ($sex === 'F' && preg_match(self::REGEX_SURN, $this->extractName($spouse), $match) === 1) {
-            $name = $this->inflect($match['NAME'], self::INFLECT_WIFE);
+            $name = $this->inflect($match['NAME'], self::INFLECT_FEMALE);
             $surn = $this->inflect($match['SURN'], self::INFLECT_MALE);
 
             return [
@@ -126,8 +132,6 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
             ];
         }
 
-        return [
-            $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
-        ];
+        return [$this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH])];
     }
 }

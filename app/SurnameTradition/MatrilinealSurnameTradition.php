@@ -28,18 +28,12 @@ use Fisharebest\Webtrees\Individual;
  */
 class MatrilinealSurnameTradition extends DefaultSurnameTradition
 {
-    /**
-     * The name of this surname tradition
-     */
     public function name(): string
     {
         /* I18N: A system where children take their mother’s surname */
         return I18N::translate('matrilineal');
     }
 
-    /**
-     * A short description of this surname tradition
-     */
     public function description(): string
     {
         /* I18N: In the matrilineal surname tradition, ... */
@@ -47,10 +41,7 @@ class MatrilinealSurnameTradition extends DefaultSurnameTradition
     }
 
     /**
-     * What name is given to a new child
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array
     {
@@ -68,10 +59,7 @@ class MatrilinealSurnameTradition extends DefaultSurnameTradition
     }
 
     /**
-     * What name is given to a new parent
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newParentNames(Individual $child, string $sex): array
     {

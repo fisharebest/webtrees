@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-26 21:21+0100\n"
+"POT-Creation-Date: 2026-07-28 22:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1522,8 +1522,8 @@ msgstr ""
 msgid "All records"
 msgstr ""
 
-#. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
-#: app/Module/CkeditorModule.php
+#. I18N: Description of the “TinyMCE” module. WYSIWYG = “what you see is what you get”
+#: app/Module/TinymceModule.php
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
 msgstr ""
 
@@ -2625,11 +2625,6 @@ msgstr ""
 msgid "By default, SMTP works on port 25."
 msgstr ""
 
-#. I18N: Name of a module. CKEditor is a trademark. Do not translate it? https://ckeditor.com
-#: app/Module/CkeditorModule.php
-msgid "CKEditor™"
-msgstr "CKEditor™"
-
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php
 msgid "CSS and JS"
@@ -2950,6 +2945,7 @@ msgid "Children take one surname from the mother and one surname from the father
 msgstr ""
 
 #. I18N: In the patrilineal surname tradition, ...
+#: app/SurnameTradition/GreekSurnameTradition.php
 #: app/SurnameTradition/LithuanianSurnameTradition.php
 #: app/SurnameTradition/PaternalSurnameTradition.php
 #: app/SurnameTradition/PatrilinealSurnameTradition.php
@@ -5872,6 +5868,12 @@ msgstr ""
 msgid "Greece"
 msgstr ""
 
+#: app/SurnameTradition/GreekSurnameTradition.php
+#, fuzzy
+msgctxt "Surname tradition"
+msgid "Greek"
+msgstr "Grieķu"
+
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php
 msgid "Green Beam"
@@ -6233,9 +6235,10 @@ msgid "Iceland"
 msgstr ""
 
 #: app/SurnameTradition/IcelandicSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "Icelandic"
-msgstr ""
+msgstr "Islandes"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -7171,9 +7174,10 @@ msgid "Lithuania"
 msgstr ""
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "Lithuanian"
-msgstr ""
+msgstr "Lietuviešu"
 
 #: app/CustomTags/TheNextGeneration.php app/Statistics.php
 msgid "Living"
@@ -9356,9 +9360,10 @@ msgid "Poland"
 msgstr ""
 
 #: app/SurnameTradition/PolishSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "Polish"
-msgstr ""
+msgstr "Poļu"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml
@@ -9391,9 +9396,10 @@ msgid "Portugal"
 msgstr ""
 
 #: app/SurnameTradition/PortugueseSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugāļu"
 
 #: resources/views/modules/privacy-policy/admin.phtml
 msgid "Postal address"
@@ -11281,9 +11287,10 @@ msgid "Spain"
 msgstr ""
 
 #: app/SurnameTradition/SpanishSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "Spanish"
-msgstr ""
+msgstr "Spāņu"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -11522,6 +11529,7 @@ msgstr "Uzvārdi"
 msgid "Surnames are inflected to indicate an individual’s sex and marital status."
 msgstr ""
 
+#: app/SurnameTradition/GreekSurnameTradition.php
 #: app/SurnameTradition/PolishSurnameTradition.php
 msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr ""
@@ -12795,6 +12803,11 @@ msgstr ""
 msgid "Timor-Leste"
 msgstr ""
 
+#. I18N: Name of a module. TinyMCE is a trademark. Do not translate it? https://www.tiny.cloud
+#: app/Module/TinymceModule.php
+msgid "TinyMCE™"
+msgstr ""
+
 #: app/CustomTags/Geneatique.php app/Gedcom.php
 #: resources/views/admin/fix-level-0-media.phtml
 #: resources/views/lists/media-table.phtml
@@ -13768,6 +13781,7 @@ msgstr ""
 msgid "Witnesses"
 msgstr ""
 
+#: app/SurnameTradition/GreekSurnameTradition.php
 #: app/SurnameTradition/LithuanianSurnameTradition.php
 #: app/SurnameTradition/PaternalSurnameTradition.php
 #: app/SurnameTradition/PolishSurnameTradition.php
@@ -14610,9 +14624,10 @@ msgid "none"
 msgstr "nekāda"
 
 #: app/SurnameTradition/DefaultSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "none"
-msgstr ""
+msgstr "nav"
 
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "numbers"
@@ -14640,9 +14655,10 @@ msgid "online"
 msgstr ""
 
 #: app/SurnameTradition/PaternalSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr ""
+msgstr "pēc tēva"
 
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition/PatrilinealSurnameTradition.php

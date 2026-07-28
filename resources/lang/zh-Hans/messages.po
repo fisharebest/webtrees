@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-26 21:21+0100\n"
+"POT-Creation-Date: 2026-07-28 22:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1599,8 +1599,8 @@ msgid "All records"
 msgstr "所有记录"
 
 # I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
-#. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
-#: app/Module/CkeditorModule.php
+#. I18N: Description of the “TinyMCE” module. WYSIWYG = “what you see is what you get”
+#: app/Module/TinymceModule.php
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
 msgstr "允许其他模块使用“所见即所得”的修改器修改文本，而不是使用HTML代码。"
 
@@ -2802,12 +2802,6 @@ msgstr "男买主"
 msgid "By default, SMTP works on port 25."
 msgstr "默认情况下，SMTP在端口25上工作。"
 
-# I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
-#. I18N: Name of a module. CKEditor is a trademark. Do not translate it? https://ckeditor.com
-#: app/Module/CkeditorModule.php
-msgid "CKEditor™"
-msgstr "CKEditor™"
-
 # I18N: Name of a module.
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php
@@ -3165,6 +3159,7 @@ msgstr "孩子们用一个姓从母亲和一个父亲的姓。"
 # I18N: In the Polish surname tradition, ...
 # I18N: In the Lithuanian surname tradition, ...
 #. I18N: In the patrilineal surname tradition, ...
+#: app/SurnameTradition/GreekSurnameTradition.php
 #: app/SurnameTradition/LithuanianSurnameTradition.php
 #: app/SurnameTradition/PaternalSurnameTradition.php
 #: app/SurnameTradition/PatrilinealSurnameTradition.php
@@ -6287,6 +6282,12 @@ msgstr "兄弟姐妹之间最大的年龄差"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Greece"
+msgstr "希腊"
+
+#: app/SurnameTradition/GreekSurnameTradition.php
+#, fuzzy
+msgctxt "Surname tradition"
+msgid "Greek"
 msgstr "希腊"
 
 # I18N: The name of a colour-scheme
@@ -12448,6 +12449,7 @@ msgid "Surnames are inflected to indicate an individual’s sex and marital stat
 msgstr "姓氏是变化的，以表明个人的性别和婚姻状况。"
 
 # I18N: In the Polish surname tradition, ...
+#: app/SurnameTradition/GreekSurnameTradition.php
 #: app/SurnameTradition/PolishSurnameTradition.php
 msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr "姓氏是变化的,取决一个人的性别。"
@@ -13793,6 +13795,11 @@ msgstr "时间戳"
 msgid "Timor-Leste"
 msgstr "东帝汶"
 
+#. I18N: Name of a module. TinyMCE is a trademark. Do not translate it? https://www.tiny.cloud
+#: app/Module/TinymceModule.php
+msgid "TinyMCE™"
+msgstr ""
+
 # I18N: gedcom tag TITL
 #: app/CustomTags/Geneatique.php app/Gedcom.php
 #: resources/views/admin/fix-level-0-media.phtml
@@ -14850,6 +14857,7 @@ msgstr "证人"
 # I18N: In the paternal surname tradition, ...
 # I18N: In the Polish surname tradition, ...
 # I18N: In the Lithuanian surname tradition, ...
+#: app/SurnameTradition/GreekSurnameTradition.php
 #: app/SurnameTradition/LithuanianSurnameTradition.php
 #: app/SurnameTradition/PaternalSurnameTradition.php
 #: app/SurnameTradition/PolishSurnameTradition.php

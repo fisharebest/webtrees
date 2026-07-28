@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-26 21:21+0100\n"
+"POT-Creation-Date: 2026-07-28 22:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1526,8 +1526,8 @@ msgstr ""
 msgid "All records"
 msgstr "Svi zapisi"
 
-#. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
-#: app/Module/CkeditorModule.php
+#. I18N: Description of the “TinyMCE” module. WYSIWYG = “what you see is what you get”
+#: app/Module/TinymceModule.php
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
 msgstr "Omogući drugim modulima da uređuju tekst koristeći „WYSIWYG” uređivaća, umjesto korištenja HTML kodova."
 
@@ -2630,11 +2630,6 @@ msgstr "Kupac"
 msgid "By default, SMTP works on port 25."
 msgstr "Normalno SMTP radi na portu 25."
 
-#. I18N: Name of a module. CKEditor is a trademark. Do not translate it? https://ckeditor.com
-#: app/Module/CkeditorModule.php
-msgid "CKEditor™"
-msgstr ""
-
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php
 msgid "CSS and JS"
@@ -2955,6 +2950,7 @@ msgid "Children take one surname from the mother and one surname from the father
 msgstr "Dijete je pruzelo prezime od majke i prezime od oca."
 
 #. I18N: In the patrilineal surname tradition, ...
+#: app/SurnameTradition/GreekSurnameTradition.php
 #: app/SurnameTradition/LithuanianSurnameTradition.php
 #: app/SurnameTradition/PaternalSurnameTradition.php
 #: app/SurnameTradition/PatrilinealSurnameTradition.php
@@ -5885,6 +5881,12 @@ msgstr "Najveća razlika u godinama braće/sestara"
 msgid "Greece"
 msgstr "Grčka"
 
+#: app/SurnameTradition/GreekSurnameTradition.php
+#, fuzzy
+msgctxt "Surname tradition"
+msgid "Greek"
+msgstr "Grčki"
+
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php
 msgid "Green Beam"
@@ -6248,9 +6250,10 @@ msgid "Iceland"
 msgstr ""
 
 #: app/SurnameTradition/IcelandicSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "Icelandic"
-msgstr ""
+msgstr "Islandski"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -7189,9 +7192,10 @@ msgid "Lithuania"
 msgstr ""
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "Lithuanian"
-msgstr ""
+msgstr "Litavski"
 
 #: app/CustomTags/TheNextGeneration.php app/Statistics.php
 msgid "Living"
@@ -9377,9 +9381,10 @@ msgid "Poland"
 msgstr "Poljska"
 
 #: app/SurnameTradition/PolishSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "Polish"
-msgstr ""
+msgstr "Poljski"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml
@@ -9412,9 +9417,10 @@ msgid "Portugal"
 msgstr ""
 
 #: app/SurnameTradition/PortugueseSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugalski"
 
 #: resources/views/modules/privacy-policy/admin.phtml
 msgid "Postal address"
@@ -11554,6 +11560,7 @@ msgstr "Prezimena"
 msgid "Surnames are inflected to indicate an individual’s sex and marital status."
 msgstr "Prezimena ukazuju na spol i bračno stanje pojedinca."
 
+#: app/SurnameTradition/GreekSurnameTradition.php
 #: app/SurnameTradition/PolishSurnameTradition.php
 msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr "Prezimena ukazuju na spol pojedinca."
@@ -12830,6 +12837,11 @@ msgstr "Vremenska oznaka"
 msgid "Timor-Leste"
 msgstr ""
 
+#. I18N: Name of a module. TinyMCE is a trademark. Do not translate it? https://www.tiny.cloud
+#: app/Module/TinymceModule.php
+msgid "TinyMCE™"
+msgstr ""
+
 #: app/CustomTags/Geneatique.php app/Gedcom.php
 #: resources/views/admin/fix-level-0-media.phtml
 #: resources/views/lists/media-table.phtml
@@ -13804,6 +13816,7 @@ msgstr "Svjedok"
 msgid "Witnesses"
 msgstr ""
 
+#: app/SurnameTradition/GreekSurnameTradition.php
 #: app/SurnameTradition/LithuanianSurnameTradition.php
 #: app/SurnameTradition/PaternalSurnameTradition.php
 #: app/SurnameTradition/PolishSurnameTradition.php

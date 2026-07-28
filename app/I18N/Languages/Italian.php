@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Relationship;
 use Fisharebest\Webtrees\Report\PaperSize;
 use Fisharebest\Webtrees\Enums\PluralRule;
 
-
 final readonly class Italian extends AbstractLanguage
 {
     protected const PluralRule PLURAL_RULE = PluralRule::TwoFormsSingularForOne;

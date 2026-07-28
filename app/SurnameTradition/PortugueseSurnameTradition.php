@@ -32,17 +32,11 @@ use Fisharebest\Webtrees\Individual;
  */
 class PortugueseSurnameTradition extends DefaultSurnameTradition
 {
-    /**
-     * The name of this surname tradition
-     */
     public function name(): string
     {
         return I18N::translateContext('Surname tradition', 'Portuguese');
     }
 
-    /**
-     * A short description of this surname tradition
-     */
     public function description(): string
     {
         /* I18N: In the Portuguese surname tradition, ... */
@@ -58,10 +52,7 @@ class PortugueseSurnameTradition extends DefaultSurnameTradition
     }
 
     /**
-     * What name is given to a new child
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array
     {
@@ -86,10 +77,7 @@ class PortugueseSurnameTradition extends DefaultSurnameTradition
     }
 
     /**
-     * What name is given to a new parent
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newParentNames(Individual $child, string $sex): array
     {
@@ -119,10 +107,7 @@ class PortugueseSurnameTradition extends DefaultSurnameTradition
     }
 
     /**
-     * What names are given to a new spouse
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newSpouseNames(Individual $spouse, string $sex): array
     {

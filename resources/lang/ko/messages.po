@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-26 21:21+0100\n"
+"POT-Creation-Date: 2026-07-28 22:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1488,8 +1488,8 @@ msgstr "모든 모듈"
 msgid "All records"
 msgstr "모든 레코드"
 
-#. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
-#: app/Module/CkeditorModule.php
+#. I18N: Description of the “TinyMCE” module. WYSIWYG = “what you see is what you get”
+#: app/Module/TinymceModule.php
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
 msgstr "다른 모듈이 HTML 코드를 사용하는 대신 \"WYSIWYG\" 편집기를 사용하여 텍스트를 편집할 수 있도록 합니다."
 
@@ -2592,11 +2592,6 @@ msgstr "구매자"
 msgid "By default, SMTP works on port 25."
 msgstr "기본적으로 SMTP는 포트 25에서 작동합니다."
 
-#. I18N: Name of a module. CKEditor is a trademark. Do not translate it? https://ckeditor.com
-#: app/Module/CkeditorModule.php
-msgid "CKEditor™"
-msgstr "CKEditor™"
-
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php
 msgid "CSS and JS"
@@ -2915,6 +2910,7 @@ msgid "Children take one surname from the mother and one surname from the father
 msgstr "자녀들은 어머니로부터 하나의 성을, 아버지로부터 하나의 성을 얻습니다."
 
 #. I18N: In the patrilineal surname tradition, ...
+#: app/SurnameTradition/GreekSurnameTradition.php
 #: app/SurnameTradition/LithuanianSurnameTradition.php
 #: app/SurnameTradition/PaternalSurnameTradition.php
 #: app/SurnameTradition/PatrilinealSurnameTradition.php
@@ -5845,6 +5841,12 @@ msgstr "형제자매 중 최고연령"
 msgid "Greece"
 msgstr "Greece"
 
+#: app/SurnameTradition/GreekSurnameTradition.php
+#, fuzzy
+msgctxt "Surname tradition"
+msgid "Greek"
+msgstr "그리스"
+
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php
 msgid "Green Beam"
@@ -6208,9 +6210,10 @@ msgid "Iceland"
 msgstr "Iceland"
 
 #: app/SurnameTradition/IcelandicSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "Icelandic"
-msgstr "Icelandic"
+msgstr "아이슬란드"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -7149,9 +7152,10 @@ msgid "Lithuania"
 msgstr "Lithuania"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "Lithuanian"
-msgstr "Lithuanian"
+msgstr "리투아니아"
 
 #: app/CustomTags/TheNextGeneration.php app/Statistics.php
 msgid "Living"
@@ -9333,9 +9337,10 @@ msgid "Poland"
 msgstr "Poland"
 
 #: app/SurnameTradition/PolishSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "Polish"
-msgstr "Polish"
+msgstr "폴란드"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml
@@ -9368,9 +9373,10 @@ msgid "Portugal"
 msgstr "Portugal"
 
 #: app/SurnameTradition/PortugueseSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "Portuguese"
-msgstr "Portuguese"
+msgstr "포르투갈"
 
 #: resources/views/modules/privacy-policy/admin.phtml
 msgid "Postal address"
@@ -11268,9 +11274,10 @@ msgid "Spain"
 msgstr "Spain"
 
 #: app/SurnameTradition/SpanishSurnameTradition.php
+#, fuzzy
 msgctxt "Surname tradition"
 msgid "Spanish"
-msgstr "Spanish"
+msgstr "스페인"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -11510,6 +11517,7 @@ msgstr "가문이름"
 msgid "Surnames are inflected to indicate an individual’s sex and marital status."
 msgstr "가문이름은 개인의 성별과 결혼 상태를 나타내기 위해 활용됩니다."
 
+#: app/SurnameTradition/GreekSurnameTradition.php
 #: app/SurnameTradition/PolishSurnameTradition.php
 msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr "가문이름은 개인의 성별을 나타내기 위해 활용됩니다."
@@ -12776,6 +12784,11 @@ msgstr "타임스탬프"
 msgid "Timor-Leste"
 msgstr "Timor-Leste"
 
+#. I18N: Name of a module. TinyMCE is a trademark. Do not translate it? https://www.tiny.cloud
+#: app/Module/TinymceModule.php
+msgid "TinyMCE™"
+msgstr ""
+
 #: app/CustomTags/Geneatique.php app/Gedcom.php
 #: resources/views/admin/fix-level-0-media.phtml
 #: resources/views/lists/media-table.phtml
@@ -13744,6 +13757,7 @@ msgstr "증인"
 msgid "Witnesses"
 msgstr ""
 
+#: app/SurnameTradition/GreekSurnameTradition.php
 #: app/SurnameTradition/LithuanianSurnameTradition.php
 #: app/SurnameTradition/PaternalSurnameTradition.php
 #: app/SurnameTradition/PolishSurnameTradition.php

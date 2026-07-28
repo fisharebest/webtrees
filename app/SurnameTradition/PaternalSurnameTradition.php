@@ -28,17 +28,11 @@ use Fisharebest\Webtrees\Individual;
  */
 class PaternalSurnameTradition extends PatrilinealSurnameTradition
 {
-    /**
-     * The name of this surname tradition
-     */
     public function name(): string
     {
         return I18N::translateContext('Surname tradition', 'paternal');
     }
 
-    /**
-     * A short description of this surname tradition
-     */
     public function description(): string
     {
         /* I18N: In the paternal surname tradition, ... */
@@ -48,10 +42,7 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition
     }
 
     /**
-     * What name is given to a new parent
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newParentNames(Individual $child, string $sex): array
     {
@@ -70,10 +61,7 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition
     }
 
     /**
-     * What names are given to a new spouse
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newSpouseNames(Individual $spouse, string $sex): array
     {

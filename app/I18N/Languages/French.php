@@ -66,5 +66,4 @@ final readonly class French extends AbstractFrench
 
         return 'de ' . $date;
     }
-
 }

@@ -47,17 +47,11 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     /** Extract two Spanish/Portuguese SURNs from a NAME */
     protected const string REGEX_SURNS = '~/(?<SURN1>[^ /]+)(?: | y |/ /|/ y /)(?<SURN2>[^ /]+)/~';
 
-    /**
-     * The name of this surname tradition
-     */
     public function name(): string
     {
         return I18N::translateContext('Surname tradition', 'none');
     }
 
-    /**
-     * A short description of this surname tradition
-     */
     public function description(): string
     {
         return '';
@@ -72,10 +66,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     }
 
     /**
-     * What name is given to a new child
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array
     {
@@ -85,10 +76,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     }
 
     /**
-     * What name is given to a new parent
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newParentNames(Individual $child, string $sex): array
     {
@@ -98,10 +86,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     }
 
     /**
-     * What names are given to a new spouse
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newSpouseNames(Individual $spouse, string $sex): array
     {

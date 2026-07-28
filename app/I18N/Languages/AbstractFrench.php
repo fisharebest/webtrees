@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\I18N\Languages;
 use Fisharebest\Webtrees\Enums\PluralRule;
 use Fisharebest\Webtrees\Relationship;
 
-
 abstract readonly class AbstractFrench extends AbstractLanguage
 {
     protected const PluralRule PLURAL_RULE = PluralRule::TwoFormsPluralForMoreThanOne;
