@@ -28,7 +28,9 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use function addcslashes;
 use function array_map;
 use function array_values;
+use function basename;
 use function count;
+use function dirname;
 use function explode;
 use function file_get_contents;
 use function file_put_contents;
@@ -81,6 +83,12 @@ final class WriteTranslation extends AbstractCommand
 
         if (!is_file($po_file)) {
             $io->error('PO file does not exist: ' . $po_file);
+
+            return self::FAILURE;
+        }
+
+        if (basename(dirname($po_file)) === 'en-US') {
+            $io->error('The source text is already en-US, and should not be translated.');
 
             return self::FAILURE;
         }
