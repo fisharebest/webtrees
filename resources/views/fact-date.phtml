@@ -59,7 +59,7 @@ if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
             $record === $fact->record() &&
             $record->tree()->getPreference('SHOW_PARENTS_AGE') === '1'
         ) {
-            // age of parents at child birth
+            // age of parents at child's birth
             $html .= view('fact-parents-age', ['individual' => $record, 'birth_date' => $date]);
         }
 
@@ -138,11 +138,30 @@ if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
         }
     }
 }
-// print gedcom ages
+// Determine appropriate labels for spouse ages based on actual sex
+$record = $fact->record();
+
+if ($record instanceof Family) {
+    $husb_label = match($record->husband()?->sex()) {
+        'M' => I18N::translate('Husband'),
+        'F' => I18N::translate('Wife'),
+        default => I18N::translate('Spouse'),
+    };
+
+    $wife_label = match($record->wife()?->sex()) {
+        'M' => I18N::translate('Husband'),
+        'F' => I18N::translate('Wife'),
+        default => I18N::translate('Spouse'),
+    };
+} else {
+    $husb_label = I18N::translate('Husband');
+    $wife_label = I18N::translate('Wife');
+}
+
 $age_labels = [
-    I18N::translate('Age')     => $fact_age,
-    I18N::translate('Husband') => $husb_age,
-    I18N::translate('Wife')    => $wife_age,
+    I18N::translate('Age') => $fact_age,
+    $husb_label            => $husb_age,
+    $wife_label            => $wife_age,
 ];
 
 foreach (array_filter($age_labels) as $label => $age) {
