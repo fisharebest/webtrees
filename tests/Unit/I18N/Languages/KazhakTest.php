@@ -87,12 +87,12 @@ class KazhakTest extends AbstractLanguageTestCase
     }
     public function testNumber(): void
     {
-        self::assertSame('-123 456,0789', self::language()->number(-123456.0789));
+        self::assertSame('-123 456,0789', self::language()->number(-123456.0789));
     }
 
     public function testPercentage(): void
     {
-        self::assertSame('-123 456,0789%', self::language()->percentage(-1234.560789));
+        self::assertSame('-123 456,0789%', self::language()->percentage(-1234.560789));
     }
 
     protected static function expectedDateOrder(): string
