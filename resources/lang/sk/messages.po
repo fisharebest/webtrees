@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-23 18:03+0100\n"
+"POT-Creation-Date: 2026-07-26 21:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -366,6 +366,7 @@ msgstr "%s, jeho manželky a potomkovia"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/user-messages/user-messages.phtml
 msgid "&lt;select&gt;"
 msgstr "&lt;vyberte&gt;"
@@ -1794,6 +1795,10 @@ msgstr "Ste si istý, že chcete odstrániť túto položku z vašich obľúben�
 msgid "Argentina"
 msgstr "Argentína"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Argentina, Colombia, Mexico, Chile, Uruguay, Peru, Israel"
+msgstr ""
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Armenia"
@@ -1889,6 +1894,10 @@ msgstr "august"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Australia"
 msgstr "Austrália"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Australia / New Zealand"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -2329,6 +2338,10 @@ msgstr "Modrá lagúna"
 msgid "Blue Marine"
 msgstr "Námornícka modrá"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Body"
+msgstr ""
+
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
 msgid "Bogotá, Colombia"
@@ -2401,9 +2414,15 @@ msgid "Branches of the %s family"
 msgstr "Vetvy rodiny %s"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Brazil"
 msgstr "Brazília"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Breach notification"
+msgstr "Oznámenie o porušení"
 
 #: app/Elements/RelationIsDescriptor.php
 msgid "Bridesmaid"
@@ -2666,7 +2685,8 @@ msgid "Campinas, Brazil"
 msgstr "Campinas, Brazília"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Canada"
 msgstr "Kanada"
 
@@ -2953,13 +2973,19 @@ msgstr "Deti dostanú priezvisko po otcovi."
 msgid "Children take their mother’s surname."
 msgstr "Deti dostanú priezvisko po matke."
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Children's data"
+msgstr "Údaje detí"
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Chile"
 msgstr "Čile"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "China"
 msgstr "Čína"
 
@@ -3305,6 +3331,7 @@ msgstr "Pokračovanie"
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/relationships-chart/config.phtml
 #: resources/views/modules/sitemap/config.phtml
 #: resources/views/modules/stories/config.phtml
@@ -3329,9 +3356,10 @@ msgstr "Konvertovať na"
 msgid "Cook Islands"
 msgstr "Cookove ostrovy"
 
-#: resources/views/modules/privacy-policy/page.phtml
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Cookies"
-msgstr "Koláčiky (cookies)"
+msgstr "Súbory cookie"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php
 msgid "Coordinates"
@@ -3645,6 +3673,11 @@ msgstr "Neodporúča sa používať užívateľsky definované GEDCOM tagy. Pok�
 msgid "Custom module"
 msgstr "Užívateľský modul"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Custom statement"
+msgstr "Vlastné vyhlásenie"
+
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
 msgid "Custom welcome text"
@@ -3699,9 +3732,15 @@ msgstr "Dallas, Texas, USA"
 msgid "Data"
 msgstr "Údaje"
 
-#: resources/views/modules/privacy-policy/page.phtml
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data collected"
+msgstr "Zhromažďované údaje"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Data controller"
-msgstr "Zodpovedná osoba"
+msgstr "Prevádzkovateľ"
 
 #: resources/views/admin/data-fix-page.phtml
 #: resources/views/admin/data-fix-select.phtml
@@ -3727,6 +3766,21 @@ msgstr "Opravy údajov vyžadujú veľké množstvo zdĺhavých výpočtov, tak�
 #: resources/views/admin/site-preferences.phtml
 msgid "Data folder"
 msgstr "Priečinok údajov"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data protection officer"
+msgstr "Zodpovedná osoba"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data retention"
+msgstr "Uchovávanie údajov"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data storage location"
+msgstr "Miesto uloženia údajov"
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -4394,6 +4448,11 @@ msgstr "Nepečatiť, predchádzajúce pečatenie bolo zrušené (LDS)"
 msgid "Do not seal: unauthorized"
 msgstr "Nepečatiť: neautorizované (LDS)"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Do not sell or share"
+msgstr "Nepredávať ani nezdieľať"
+
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
 msgid "Document"
@@ -4601,6 +4660,7 @@ msgstr "E-mail"
 #: resources/views/contact-page.phtml resources/views/edit-account-page.phtml
 #: resources/views/emails/register-notify-html.phtml
 #: resources/views/emails/register-notify-text.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/user-messages/user-messages.phtml
 #: resources/views/register-page.phtml
 #: resources/views/setup/step-5-administrator.phtml
@@ -4737,6 +4797,10 @@ msgstr "Etiópia"
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "Europe"
 msgstr "Európa"
+
+#: app/Module/PrivacyPolicy.php
+msgid "European Union / EEA / United Kingdom"
+msgstr ""
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php
 #: resources/views/lists/anniversaries-table.phtml
@@ -5481,7 +5545,8 @@ msgid "Foster mother"
 msgstr "Pestúnska matka"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "France"
 msgstr "Francúzsko"
 
@@ -5622,6 +5687,14 @@ msgstr "Gabun"
 msgid "Gambia"
 msgstr "Gambia"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Genealogical data is retained indefinitely, as the purpose of this website is to preserve historical and family-history research. User account data is retained for as long as the account is active."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Genealogical data on this website is typically obtained from publicly accessible sources, including civil registration records, church records, census returns, published directories, gravestones, and contributions from family members. The data subjects may not have provided this data themselves."
+msgstr ""
+
 #: resources/views/admin/control-panel.phtml
 msgid "Genealogy"
 msgstr "Genealógia"
@@ -5692,6 +5765,11 @@ msgstr "Generácie potomkov"
 msgid "GeoNames"
 msgstr "GeoNames"
 
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "Geocoding"
+msgstr "Geokódovanie"
+
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "Geographic area"
 msgstr "Geografická oblasť"
@@ -5719,6 +5797,10 @@ msgstr "Gruzínsko"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Germany"
 msgstr "Nemecko"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Germany / Austria"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -6108,6 +6190,16 @@ msgstr "Honduras"
 msgid "Hong Kong"
 msgstr "Hong Kong"
 
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "Hosted by:"
+msgstr "Hostované:"
+
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Hosting provider"
+msgstr "Poskytovateľ hostingu"
+
 #. I18N: Name of a module/chart
 #: app/Module/ChartsBlockModule.php app/Module/HourglassChartModule.php
 msgid "Hourglass chart"
@@ -6346,6 +6438,10 @@ msgstr "V niektorých kalendároch dni začínajú polnocou. V iných začínaj�
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 msgstr "V niektorých krajinách sa zákony o ochrane osobných údajov vzťahujú nielen na žijúce, ale aj na nedávno zosnulé osoby. Táto voľba vám umožní rozšíriť obmedzenie prístupu aj na tých, ktorí sa narodili alebo zomreli v priebehu určitých rokov. Nechajte tieto hodnoty prázdne, ak nechcete používať túto funkcionalitu."
 
+#: app/Module/PrivacyPolicy.php
+msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
+msgstr ""
+
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
 msgstr "Zahrnúť aliasy"
@@ -6379,7 +6475,8 @@ msgid "Include the individual’s immediate family"
 msgstr "Zahrnúť najbližšiu rodinu osoby"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "India"
 msgstr "India"
 
@@ -6538,6 +6635,11 @@ msgstr "Interné zasielanie odkazov"
 msgid "Internal messaging with emails"
 msgstr "Interné odkazy s e-mailmi"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "International transfers"
+msgstr "Medzinárodné prenosy"
+
 #: app/Http/RequestHandlers/GedcomLoad.php
 msgid "Invalid GEDCOM file - no header record found."
 msgstr "Neplatný GEDCOM súbor - nebola nájdená hlavička."
@@ -6621,7 +6723,8 @@ msgid "January"
 msgstr "január"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Japan"
 msgstr "Japonsko"
 
@@ -6672,6 +6775,11 @@ msgstr "júl"
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "jún"
+
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Jurisdiction"
+msgstr "Jurisdikcia"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -6908,6 +7016,11 @@ msgstr "Zemepisná šírka"
 msgid "Latvia"
 msgstr "Lotyšsko"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Lawful basis"
+msgstr "Právny základ"
+
 #: resources/views/modules/ancestors-chart/page.phtml
 #: resources/views/modules/descendancy_chart/page.phtml
 #: resources/views/modules/fanchart/page.phtml
@@ -6944,6 +7057,14 @@ msgstr "Libanon"
 #: app/Module/RedirectLegacyUrlsModule.php
 msgid "Legacy URLs"
 msgstr "URL z predchádzajúcej verzie"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Legal notice (Impressum)"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Legal notice (Mentions légales)"
+msgstr ""
 
 #: app/CustomTags/Reunion.php
 msgid "Legatee"
@@ -7332,6 +7453,11 @@ msgstr "Odkazy na mapy"
 #: app/Services/LeafletJsService.php resources/views/admin/control-panel.phtml
 msgid "Map providers"
 msgstr "Poskytovatelia máp"
+
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "Map tiles"
+msgstr "Mapové dlaždice"
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php
@@ -7785,6 +7911,11 @@ msgstr "Vojenská služba"
 msgid "Military service"
 msgstr "Vojenská služba"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Minimum age for consent"
+msgstr "Minimálny vek na udelenie súhlasu"
+
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php
 #: resources/xml/reports/missing_facts_report.xml
@@ -8059,6 +8190,7 @@ msgstr "Mjanmarsko"
 #: resources/views/lists/anniversaries-table.phtml
 #: resources/views/modals/location-fields.phtml
 #: resources/views/modals/submitter-fields.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/yahrzeit/table.phtml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
 #: resources/xml/reports/cemetery_report.xml
@@ -8343,6 +8475,11 @@ msgstr "Neboli pridané žiadne novinky."
 #: app/Http/RequestHandlers/SiteRegistrationPage.php
 msgid "No predefined text"
 msgstr "Žiaden prednastavený text"
+
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "No privacy policy has been configured for this website."
+msgstr "Pre túto webovú stránku nebola nakonfigurovaná žiadna politika ochrany súkromia."
 
 #: resources/views/lists/datatables-attributes.phtml
 msgid "No records to display"
@@ -8763,6 +8900,10 @@ msgstr "Ďalšie fakty, ktoré sa majú zobraziť v schémach"
 msgid "Other preferences"
 msgstr "Iné nastavenia"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Our data protection officer can be contacted at:"
+msgstr ""
+
 #: app/Elements/RelationIsDescriptor.php
 msgid "Owner"
 msgstr "Vlastník"
@@ -8978,9 +9119,9 @@ msgstr "Trvalé číslo"
 msgid "Permanently delete these records?"
 msgstr "Úplne zmazať tento záznam?"
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "Personal data"
-msgstr "Osobné údaje"
+#: app/Module/PrivacyPolicy.php
+msgid "Personal data is stored on servers located in:"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -8996,6 +9137,10 @@ msgstr "Peru"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Philippines"
 msgstr "Filipíny"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Philippines, Kenya, Nigeria, Ghana, Egypt"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9278,6 +9423,10 @@ msgctxt "Surname tradition"
 msgid "Portuguese"
 msgstr "Portugalská"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Postal address"
+msgstr ""
+
 #: app/CustomTags/GedcomL.php app/CustomTags/PersonalAncestralFile.php
 #: app/Gedcom.php
 msgid "Postal code"
@@ -9367,6 +9516,11 @@ msgstr "Obmedzenia prístupu"
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr "Obmedzenia prístupu - uplatnia sa v záznamoch a faktoch, ktoré neobsahujú GEDCOM tag RESN"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Privacy statements"
+msgstr "Vyhlásenia o ochrane súkromia"
+
 #: app/CustomTags/Legacy.php app/CustomTags/TheNextGeneration.php
 #: app/GedcomRecord.php app/Report/ParserGenerate.php app/StatisticsData.php
 msgid "Private"
@@ -9379,6 +9533,10 @@ msgstr "Privátny kľúč"
 #: app/Gedcom.php
 msgid "Probate"
 msgstr "Súdne overenie poslednej vôle"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgstr ""
 
 #: app/Gedcom.php
 msgid "Property"
@@ -9408,6 +9566,11 @@ msgstr "Vydal"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Puerto Rico"
 msgstr "Portoriko"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Purpose of processing"
+msgstr "Účel spracovania"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -9861,6 +10024,26 @@ msgstr "Odchod do dôchodku"
 msgid "Rexburg, Idaho, United States"
 msgstr "Rexburg, Idaho, USA"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right of access and data portability"
+msgstr "Právo na prístup a prenosnosť údajov"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right to complain"
+msgstr "Právo na sťažnosť"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right to correction"
+msgstr "Právo na opravu"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right to erasure, objection, and restriction"
+msgstr "Právo na vymazanie, námietku a obmedzenie"
+
 #: app/CustomTags/Gedcom7.php app/CustomTags/GedcomL.php app/Gedcom.php
 #: resources/views/admin/users-edit.phtml
 msgid "Role"
@@ -9903,7 +10086,8 @@ msgid "Russell"
 msgstr "Russell"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Russia"
 msgstr "Rusko"
 
@@ -10035,7 +10219,8 @@ msgid "Sat"
 msgstr "Sob"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Saudi Arabia"
 msgstr "Saudská Arábia"
 
@@ -10202,6 +10387,19 @@ msgstr "Vyberte fakty a udalosti, ktoré chcete zachovať z oboch záznamov."
 msgid "Select two records to merge."
 msgstr "Vybrať dva záznamy pre zlúčenie."
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Select which statements to display on the public privacy policy page."
+msgstr ""
+
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Select your country or region"
+msgstr "Vyberte svoju krajinu alebo región"
+
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Select your jurisdiction to automatically enable the required privacy statements. You can also enable or disable individual statements."
+msgstr ""
+
 #: resources/views/admin/site-mail.phtml
 msgid "Selector"
 msgstr "Selektor"
@@ -10326,6 +10524,11 @@ msgstr "Úradník"
 msgid "Server information"
 msgstr "Informácie o serveri"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Server location"
+msgstr "Umiestnenie servera"
+
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
@@ -10333,6 +10536,10 @@ msgstr "Informácie o serveri"
 #: resources/views/setup/step-4-database-sqlsrv.phtml
 msgid "Server name"
 msgstr "Meno servera"
+
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "Service"
+msgstr ""
 
 #: app/Http/RequestHandlers/PasswordResetPage.php
 msgid "Set a new password"
@@ -10475,10 +10682,10 @@ msgstr "Najkratšie manželstvo"
 msgid "Show a download link in the media viewer"
 msgstr "Zobraziť odkaz na stiahnutie v prehliadači médií"
 
-#. I18N: Description of the “Cookie warning” module
+#. I18N: Description of the "Privacy policy" module
 #: app/Module/PrivacyPolicy.php
-msgid "Show a privacy policy."
-msgstr "Zobraziť pravidlá ochrany súkromia."
+msgid "Show a privacy/data-protection policy based on your jurisdiction."
+msgstr ""
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
@@ -10832,7 +11039,8 @@ msgid "Simple dates are assumed to be in the gregorian calendar. To specify a da
 msgstr "Predpokladá sa, že dátumy sú v gregoriánskom kalendári. Ak chcete určiť dátum z iného kalendára, pridajte pred dátum kľúčové slovo. Kľúčové slovo je voliteľné, ak formát mesiaca alebo roku je jednoznačný."
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Singapore"
 msgstr "Singapur"
 
@@ -11071,12 +11279,18 @@ msgstr "Typ zdroja"
 msgid "Sources"
 msgstr "Zdroje"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Sources of data"
+msgstr "Zdroje údajov"
+
 #: resources/xml/reports/missing_facts_report.xml
 msgid "Sources to the events"
 msgstr "Zdroje pre udalosti"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "South Africa"
 msgstr "Južná Afrika"
 
@@ -11088,6 +11302,10 @@ msgstr "Južná Amerika"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Južná Georgia a Južné Sandwichove ostrovy"
+
+#: app/Module/PrivacyPolicy.php
+msgid "South Korea"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -11277,6 +11495,11 @@ msgstr "Sudán"
 msgid "Sun"
 msgstr "Ned"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Supervisory authority"
+msgstr "Dozorný orgán"
+
 #. I18N: %s is a URL/link to the project website
 #: resources/views/admin/control-panel.phtml
 #, php-format
@@ -11367,7 +11590,8 @@ msgid "Sweden"
 msgstr "Švédsko"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Switzerland"
 msgstr "Švajčiarsko"
 
@@ -11466,6 +11690,10 @@ msgstr "Kontakt pre technickú pomoc"
 msgid "Tegucigalpa, Honduras"
 msgstr "Tegucigalpa, Honduras"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Telephone"
+msgstr ""
+
 #: app/CustomTags/RootsMagic.php
 msgid "Template"
 msgstr "Šablóna"
@@ -11491,7 +11719,8 @@ msgid "Text direction"
 msgstr "Smer textu"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Thailand"
 msgstr "Thajsko"
 
@@ -11847,6 +12076,10 @@ msgstr "Heslo vyžadované pre prihlásenie k SMTP serveru."
 msgid "The password reset link has expired."
 msgstr "Vypršala platnosť odkazu na obnovu hesla."
 
+#: app/Module/PrivacyPolicy.php
+msgid "The person responsible for this website and for the processing of your personal data is:"
+msgstr ""
+
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php
 msgid "The place hierarchy."
@@ -11867,6 +12100,11 @@ msgstr "Nastavenia pre nové rodokmene boli aktualizované."
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "Nastavenia pre rodokmeň „%s“ boli aktualizované."
+
+#: app/Module/PrivacyPolicy.php
+#, php-format
+msgid "The preferences for the module \"%s\" have been updated."
+msgstr ""
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
@@ -12109,18 +12347,15 @@ msgstr "Pri kontrole novej verzia nastala chyba."
 msgid "There was an error uploading your file."
 msgstr "V priebehu nahrávania vášho súboru nastala chyba."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "These cookies are “essential”, and do not require consent."
-msgstr "Tieto koláčiky sú „nevyhnutné“ a nevyžadujú súhlas užívateľa."
-
 #: resources/views/admin/trees-unconnected.phtml
 #, php-format
 msgid "These groups of individuals are not related to %s."
 msgstr "Tieto skupiny osôb nie sú prepojené s %s."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "These services may use cookies or other tracking technology."
-msgstr "Tieto služby môžu používať koláčiky alebo iné technológie sledovania."
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Third-party services"
+msgstr "Služby tretích strán"
 
 #: app/Http/RequestHandlers/LoginAction.php
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -12442,10 +12677,6 @@ msgstr "Tento záznam bol upravený. Musíte skontrolovať zmeny a následne ich
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Tento archív neexistuje, alebo nemáte oprávnenie na jeho zobrazenie."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr "Tento výskum je „oprávnený záujem“ v zmysle článku 6, písm. f Nariadenia Európskeho parlamentu a Rady (EÚ) 2016/679 z 27. apríla 2016 o ochrane fyzických osôb pri spracúvaní osobných údajov a o voľnom pohybe takýchto údajov (GDPR)."
-
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Táto rola má všetky práva role „editor“, plus právo schvaľovať/zamietať zmeny vykonané inými užívateľmi."
@@ -12496,29 +12727,38 @@ msgstr "Toto obvykle znamená, že musíte zmeniť atribúty priečinku na 777."
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
 msgstr "Stránka je v údržbe. Môžete <a href=\"index.php\">skúsiť znovu</a> za pár minút."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This website is operated by the following individuals."
-msgstr "Túto webovú stránku prevádzkujú nasledovné osoby."
+#: app/Module/PrivacyPolicy.php
+msgid "This website is operated by the following person, who is also responsible for its content:"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "This website is published by:"
+msgstr ""
 
 #: resources/views/layouts/error.phtml resources/views/layouts/offline.phtml
 msgid "This website is temporarily unavailable"
 msgstr "Táto stránka je dočasne nedostupná"
 
-#: resources/views/modules/privacy-policy/page.phtml
+#: app/Module/PrivacyPolicy.php
+msgid "This website may contain data about minors, derived from public records such as birth registers, for the purpose of historical and genealogical research. We do not collect personal data directly from children."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
 msgid "This website processes personal data for the purpose of historical and genealogical research."
 msgstr "Táto webová stránka spracúva osobné údaje na účely historického a genealogického výskumu."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
-msgstr "Táto webová stránka používa koláčiky, ktoré umožňujú prihlásenie (login session) a ukladajú nastavenia ako napr. zvolený jazyk."
+#: app/Module/PrivacyPolicy.php
+msgid "This website uses essential cookies for login sessions and to remember your preferences. These cookies are strictly necessary and do not require consent."
+msgstr ""
 
+#: app/Module/PrivacyPolicy.php
+msgid "This website uses external services to provide mapping and location features. When you view a map, your browser connects directly to these services, which may receive your IP address and other request data."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
 #: resources/views/modules/privacy-policy/footer.phtml
-msgid "This website uses cookies to learn about visitor behavior."
-msgstr "Táto webová stránka používa koláčiky (cookies), aby sa poučila o chovaní návštevníkov."
-
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This website uses third-party services to learn about visitor behavior."
-msgstr "Táto webová stránka používa služby tretích strán, aby sa poučila o chovaní návštevníkov."
+msgid "This website uses third-party services to understand visitor behavior. These services may use cookies or similar tracking technology."
+msgstr ""
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml
@@ -12606,6 +12846,7 @@ msgstr "Východný Timor"
 #: resources/views/modules/favorites/favorites.phtml
 #: resources/views/modules/gedcom_news/edit.phtml
 #: resources/views/modules/html/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/user_blog/edit.phtml
 msgid "Title"
 msgstr "Titul"
@@ -12827,13 +13068,13 @@ msgid "Total users"
 msgstr "Počet užívateľov"
 
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
-#: app/Module/ModuleAnalyticsTrait.php
+#: app/Module/ModuleAnalyticsTrait.php app/Module/PrivacyPolicy.php
 #: resources/views/admin/analytics-edit.phtml
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
-#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "Tracking and analytics"
-msgstr "Sledovanie a analýza"
+msgstr "Sledovanie a analytika"
 
 #: app/Gedcom.php
 msgid "Trailer"
@@ -12869,6 +13110,10 @@ msgstr "Tunis"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Turkey"
 msgstr "Turecko"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Turkey, UAE, Indonesia, Malaysia, Vietnam"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -13016,9 +13261,18 @@ msgid "United Kingdom"
 msgstr "Spojené kráľovstvo"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "United States"
 msgstr "USA"
+
+#: app/Module/PrivacyPolicy.php
+msgid "United States — CA"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "United States — CO, CT, DE, IN, IA, KY, MD, MN, MT, NE, NH, NJ, OR, RI, TN, TX, UT, VA"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
@@ -13399,6 +13653,15 @@ msgstr "Vodoznak"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "Vodoznak je voliteľný a bežne sa zobrazuje len návštevníkom."
 
+#: app/Module/PrivacyPolicy.php
+msgid "We collect names, dates, places, family relationships, and other genealogical information. Much of this data is derived from public records such as registers of births, marriages, and deaths. For registered users, we also store email addresses and login credentials."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "We do not sell or share your personal information."
+msgstr "Vaše osobné údaje nepredávame ani nezdieľame."
+
 #: resources/views/register-success-page.phtml
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
@@ -13406,6 +13669,7 @@ msgstr "Teraz vám zašleme na adresu <b>%s</b> e-mail na potvrdenie. Musíte po
 
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/trees-preferences.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 msgid "Website"
 msgstr "Webová stránka"
 
@@ -13473,6 +13737,11 @@ msgstr "Keď pridáte, upravíte alebo zmažete nejaké informácie, zmeny sa ne
 #: resources/views/help/relationship-privacy.phtml
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
 msgstr "Ak je užívateľ priradený k osobe v rodokmeni a má rolu člena, editora alebo moderátora, môžete mu zabrániť v prístupe ku vzdialeným žijúcim príbuzným. Zadajte počet krokov medzi vzťahmi, ktoré môže užívateľ vidieť."
+
+#: resources/views/modules/privacy-policy/page.phtml
+#, php-format
+msgid "Where we operate online services that children may access directly, the minimum age for consent in our jurisdiction is %s years."
+msgstr ""
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml
@@ -13613,10 +13882,6 @@ msgstr "Môžete zvoliť, či sa má prihlasovacie meno zobraziť na zozname akt
 msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "Špecifikáciu formátu GEDCOM môžete stiahnúť z %s."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr "Sledovanie môžete vypnúť v nastaveniach prehliadača aktivovaním voľby „Nesledovať“ (Do Not Track)."
-
 #: resources/views/admin/trees-renumber.phtml
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr "Môžete prečíslovať záznamy v rodokmeni tak, aby sa tieto interné referenčné čísla neopakovali v žiadnom inom rodokmeni."
@@ -13659,6 +13924,22 @@ msgstr "Vybrali ste GEDCOM s odlišným názvom. Je to správne?"
 #: app/Http/RequestHandlers/Logout.php
 msgid "You have signed out."
 msgstr "Odhlásili ste sa."
+
+#: app/Module/PrivacyPolicy.php
+msgid "You have the right to lodge a complaint with a supervisory authority if you believe your data has been processed unlawfully."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "You have the right to request a copy of the personal data we hold about you. This data can be provided in a machine-readable format (GEDCOM)."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "You may request that we delete, restrict, or cease processing your personal data. However, where data is processed for historical research purposes or was obtained from publicly accessible sources, these rights may be limited where compliance would render the research impossible or seriously impair it."
+msgstr ""
 
 #: resources/views/modules/faq/config.phtml
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -13763,6 +14044,10 @@ msgstr "Vaše meno"
 msgid "Your password has been updated."
 msgstr "Vaše heslo bolo aktualizované."
 
+#: app/Module/PrivacyPolicy.php
+msgid "Your personal data may be transferred to, and processed in, countries other than the country in which you reside. We take appropriate safeguards to protect your data during such transfers."
+msgstr ""
+
 #: app/Http/RequestHandlers/RegisterAction.php
 #, php-format
 msgid "Your registration at %s"
@@ -13807,6 +14092,12 @@ msgstr "Zmenšiť"
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr "_WT_OBJE_SORT bol používaný v starších verziách webtrees na určenie preferovaného obrázku osoby. Alternatívou je preusporiadanie obrázkov tak, aby preferovaný obrázok bol prvý v poradí."
 
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "accept"
+msgstr "prijať"
+
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml
 #: resources/views/individual-page-pending.phtml
@@ -13826,6 +14117,12 @@ msgstr "prijať"
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
 msgstr "prijať"
+
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "accept all"
+msgstr "prijať všetko"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php
@@ -13939,6 +14236,7 @@ msgstr "odrážky"
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/stories/edit.phtml
 #: resources/views/modules/user_blog/edit.phtml
 msgid "cancel"
@@ -13976,7 +14274,6 @@ msgstr "občan"
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
 #: resources/views/modules/favorites/favorites.phtml
-#: resources/views/modules/privacy-policy/footer.phtml
 msgid "close"
 msgstr "zatvoriť"
 
@@ -14037,6 +14334,18 @@ msgstr "Obdobie"
 #: resources/xml/reports/descendancy_report.xml
 msgid "daughter of"
 msgstr "dcéra"
+
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "decline"
+msgstr "odmietnuť"
+
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "decline all"
+msgstr "odmietnuť všetko"
 
 #: resources/views/admin/location-edit.phtml
 msgid "degrees"
@@ -14534,6 +14843,7 @@ msgstr "vpravo"
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/relationships-chart/config.phtml
 #: resources/views/modules/sitemap/config.phtml
 #: resources/views/modules/stories/edit.phtml

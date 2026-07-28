@@ -30,6 +30,7 @@ export function initializeTomSelect(element) {
     let options = {
       plugins: ['dropdown_input', 'virtual_scroll'],
       maxOptions: false,
+      dataAttr: 'ts-option', // Read rich HTML from data-data attribute on pre-populated options.
       searchField: [], // We filter on the server, so don't filter on the client.
       render: {
         item: (data, escape) => '<div>' + data.text + '</div>',
@@ -82,4 +83,3 @@ export function resetTomSelect(tomSelect, value, text) {
   tomSelect.addItem(value, true);
   tomSelect.refreshItems();
 }
-

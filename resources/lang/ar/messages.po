@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-23 18:03+0100\n"
+"POT-Creation-Date: 2026-07-26 21:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -412,6 +412,7 @@ msgstr "%s وأزواجه وأحفادهم"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/user-messages/user-messages.phtml
 msgid "&lt;select&gt;"
 msgstr "&lt;إختيار&gt;"
@@ -1840,6 +1841,10 @@ msgstr "هل أنت متأكد من رغبتك في إزالة هذا العنص
 msgid "Argentina"
 msgstr "الأرجنتين"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Argentina, Colombia, Mexico, Chile, Uruguay, Peru, Israel"
+msgstr ""
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Armenia"
@@ -1935,6 +1940,10 @@ msgstr "أغسطس"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Australia"
 msgstr "أستراليا"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Australia / New Zealand"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -2375,6 +2384,10 @@ msgstr "أزرق ضحل"
 msgid "Blue Marine"
 msgstr "أزرق بحري"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Body"
+msgstr ""
+
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
 msgid "Bogotá, Colombia"
@@ -2447,9 +2460,15 @@ msgid "Branches of the %s family"
 msgstr "فروع أسرة %s"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Brazil"
 msgstr "البرازيل"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Breach notification"
+msgstr "إشعار الخرق"
 
 #: app/Elements/RelationIsDescriptor.php
 msgid "Bridesmaid"
@@ -2712,7 +2731,8 @@ msgid "Campinas, Brazil"
 msgstr "كامبيناس، البرازيل"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Canada"
 msgstr "كندا"
 
@@ -3002,13 +3022,19 @@ msgstr "يكتسب الأولاد إسم عائلة آبائهم."
 msgid "Children take their mother’s surname."
 msgstr "يكتسب الأولاد إسم عائلة أمهاتهم."
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Children's data"
+msgstr "بيانات الأطفال"
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Chile"
 msgstr "تشيلي"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "China"
 msgstr "الصين"
 
@@ -3354,6 +3380,7 @@ msgstr "استمرار"
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/relationships-chart/config.phtml
 #: resources/views/modules/sitemap/config.phtml
 #: resources/views/modules/stories/config.phtml
@@ -3378,7 +3405,7 @@ msgstr "حول إلى"
 msgid "Cook Islands"
 msgstr "جزر كوك"
 
-#: resources/views/modules/privacy-policy/page.phtml
+#: app/Module/PrivacyPolicy.php
 msgid "Cookies"
 msgstr "ملفات تعريف الارتباط أو سجل الكوكيز"
 
@@ -3694,6 +3721,11 @@ msgstr "لا يُنصح باستخدام علامات GEDCOM المخصصة. ح�
 msgid "Custom module"
 msgstr "وحدة مخصصة"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Custom statement"
+msgstr "بيان مخصص"
+
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
 msgid "Custom welcome text"
@@ -3748,7 +3780,12 @@ msgstr "دالاس، تكساس"
 msgid "Data"
 msgstr "بيانات"
 
-#: resources/views/modules/privacy-policy/page.phtml
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data collected"
+msgstr "البيانات المجمعة"
+
+#: app/Module/PrivacyPolicy.php
 msgid "Data controller"
 msgstr "مراقب البيانات"
 
@@ -3776,6 +3813,21 @@ msgstr ""
 #: resources/views/admin/site-preferences.phtml
 msgid "Data folder"
 msgstr "مجلد البيانات"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data protection officer"
+msgstr "مسؤول حماية البيانات"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data retention"
+msgstr "الاحتفاظ بالبيانات"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Data storage location"
+msgstr "موقع تخزين البيانات"
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -4443,6 +4495,11 @@ msgstr "لا تحكم، إحكام سابق ملغى"
 msgid "Do not seal: unauthorized"
 msgstr "لا تحكم: غير مصرح"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Do not sell or share"
+msgstr "عدم البيع أو المشاركة"
+
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
 msgid "Document"
@@ -4650,6 +4707,7 @@ msgstr "بريد إلكتروني"
 #: resources/views/contact-page.phtml resources/views/edit-account-page.phtml
 #: resources/views/emails/register-notify-html.phtml
 #: resources/views/emails/register-notify-text.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/user-messages/user-messages.phtml
 #: resources/views/register-page.phtml
 #: resources/views/setup/step-5-administrator.phtml
@@ -4786,6 +4844,10 @@ msgstr "إثيوبيا"
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "Europe"
 msgstr "أوروبا"
+
+#: app/Module/PrivacyPolicy.php
+msgid "European Union / EEA / United Kingdom"
+msgstr ""
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php
 #: resources/views/lists/anniversaries-table.phtml
@@ -5530,7 +5592,8 @@ msgid "Foster mother"
 msgstr "أم كافلة"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "France"
 msgstr "فرنسا"
 
@@ -5671,6 +5734,14 @@ msgstr "الغابون"
 msgid "Gambia"
 msgstr "غامبيا"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Genealogical data is retained indefinitely, as the purpose of this website is to preserve historical and family-history research. User account data is retained for as long as the account is active."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Genealogical data on this website is typically obtained from publicly accessible sources, including civil registration records, church records, census returns, published directories, gravestones, and contributions from family members. The data subjects may not have provided this data themselves."
+msgstr ""
+
 #: resources/views/admin/control-panel.phtml
 msgid "Genealogy"
 msgstr "أنساب"
@@ -5741,6 +5812,11 @@ msgstr ""
 msgid "GeoNames"
 msgstr ""
 
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "Geocoding"
+msgstr "الترميز الجغرافي"
+
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "Geographic area"
 msgstr "المنطقة الجغرافية"
@@ -5768,6 +5844,10 @@ msgstr "جورجيا"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Germany"
 msgstr "المانيا"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Germany / Austria"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -6157,6 +6237,15 @@ msgstr "هندوراس"
 msgid "Hong Kong"
 msgstr "هونغ كونغ"
 
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "Hosted by:"
+msgstr ""
+
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Hosting provider"
+msgstr "مزود الاستضافة"
+
 #. I18N: Name of a module/chart
 #: app/Module/ChartsBlockModule.php app/Module/HourglassChartModule.php
 msgid "Hourglass chart"
@@ -6395,6 +6484,10 @@ msgstr "في بعض التقاويم يعتبر وقت دخول اليوم عن�
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 msgstr "في بعض البلدان قوانين خصوصية المعلومات لاتنطبق على من هم عل قيد الحياة فقط بل تطبق على من توفي حديثاً. هذا الخيار يتيح تحديد الفترة الزمنية لتطبيق الخصوصية على من ولد أو توفي خلالها. إذا تركت فارغة فلن تستخدم."
 
+#: app/Module/PrivacyPolicy.php
+msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
+msgstr ""
+
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
 msgstr ""
@@ -6428,7 +6521,8 @@ msgid "Include the individual’s immediate family"
 msgstr "تضمين الأسرة المباشرة للشخص"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "India"
 msgstr "الهند"
 
@@ -6587,6 +6681,11 @@ msgstr "تراسل داخلي"
 msgid "Internal messaging with emails"
 msgstr "تراسل داخلي مع رسالة إلكترونية"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "International transfers"
+msgstr "النقل الدولي"
+
 #: app/Http/RequestHandlers/GedcomLoad.php
 msgid "Invalid GEDCOM file - no header record found."
 msgstr "ملف GEDCOM غير صحيح، لم يتم العثور على سجل ترويسة."
@@ -6670,7 +6769,8 @@ msgid "January"
 msgstr "يناير"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Japan"
 msgstr "اليابان"
 
@@ -6721,6 +6821,11 @@ msgstr "يوليو"
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "يونيو"
+
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Jurisdiction"
+msgstr "الولاية القضائية"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -6957,6 +7062,11 @@ msgstr "خط عرض"
 msgid "Latvia"
 msgstr "لاتفيا"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Lawful basis"
+msgstr "الأساس القانوني"
+
 #: resources/views/modules/ancestors-chart/page.phtml
 #: resources/views/modules/descendancy_chart/page.phtml
 #: resources/views/modules/fanchart/page.phtml
@@ -6992,6 +7102,14 @@ msgstr "لبنان"
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php
 msgid "Legacy URLs"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Legal notice (Impressum)"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Legal notice (Mentions légales)"
 msgstr ""
 
 #: app/CustomTags/Reunion.php
@@ -7381,6 +7499,11 @@ msgstr ""
 #: app/Services/LeafletJsService.php resources/views/admin/control-panel.phtml
 msgid "Map providers"
 msgstr ""
+
+#: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
+msgid "Map tiles"
+msgstr "مربعات الخريطة"
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php
@@ -7834,6 +7957,10 @@ msgstr "عسكري"
 msgid "Military service"
 msgstr "خدمة عسكرية"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Minimum age for consent"
+msgstr ""
+
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php
 #: resources/xml/reports/missing_facts_report.xml
@@ -8108,6 +8235,7 @@ msgstr "ميانمار"
 #: resources/views/lists/anniversaries-table.phtml
 #: resources/views/modals/location-fields.phtml
 #: resources/views/modals/submitter-fields.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/yahrzeit/table.phtml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
 #: resources/xml/reports/cemetery_report.xml
@@ -8398,6 +8526,10 @@ msgstr "لم يتم إستلام موضوعات إخبارية."
 #: app/Http/RequestHandlers/SiteRegistrationPage.php
 msgid "No predefined text"
 msgstr "لا يوجد نص محدد مسبقاً"
+
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "No privacy policy has been configured for this website."
+msgstr ""
 
 #: resources/views/lists/datatables-attributes.phtml
 msgid "No records to display"
@@ -8818,6 +8950,10 @@ msgstr "معلومات أخرى لإظهارها في المخطط"
 msgid "Other preferences"
 msgstr "إعدادات أخرى"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Our data protection officer can be contacted at:"
+msgstr ""
+
 #: app/Elements/RelationIsDescriptor.php
 msgid "Owner"
 msgstr "مالك"
@@ -9033,8 +9169,8 @@ msgstr "رقم دائم"
 msgid "Permanently delete these records?"
 msgstr "حذف هذه السجلات نهائياً؟"
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "Personal data"
+#: app/Module/PrivacyPolicy.php
+msgid "Personal data is stored on servers located in:"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -9051,6 +9187,10 @@ msgstr "بيرو"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Philippines"
 msgstr "الفلبين"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Philippines, Kenya, Nigeria, Ghana, Egypt"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9333,6 +9473,10 @@ msgctxt "Surname tradition"
 msgid "Portuguese"
 msgstr "برتغالي"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Postal address"
+msgstr ""
+
 #: app/CustomTags/GedcomL.php app/CustomTags/PersonalAncestralFile.php
 #: app/Gedcom.php
 msgid "Postal code"
@@ -9422,6 +9566,11 @@ msgstr "تطبيقات الخصوصية"
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr "تطبيقات الخصوصية للسجلات التي لا تحتوي على علامة خصوصية GEDCOM"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Privacy statements"
+msgstr "بيانات الخصوصية"
+
 #: app/CustomTags/Legacy.php app/CustomTags/TheNextGeneration.php
 #: app/GedcomRecord.php app/Report/ParserGenerate.php app/StatisticsData.php
 msgid "Private"
@@ -9434,6 +9583,10 @@ msgstr ""
 #: app/Gedcom.php
 msgid "Probate"
 msgstr "مصادقة وصية"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgstr ""
 
 #: app/Gedcom.php
 msgid "Property"
@@ -9463,6 +9616,11 @@ msgstr "منشور"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Puerto Rico"
 msgstr "بورتوريكو"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Purpose of processing"
+msgstr "الغرض من المعالجة"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -9916,6 +10074,26 @@ msgstr "تقاعد"
 msgid "Rexburg, Idaho, United States"
 msgstr "ريكسبورغ ، ايداهو ، الولايات المتحدة الأمريكية"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right of access and data portability"
+msgstr "حق الوصول ونقل البيانات"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right to complain"
+msgstr "حق الشكوى"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right to correction"
+msgstr "حق التصحيح"
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Right to erasure, objection, and restriction"
+msgstr "حق المحو والاعتراض والتقييد"
+
 #: app/CustomTags/Gedcom7.php app/CustomTags/GedcomL.php app/Gedcom.php
 #: resources/views/admin/users-edit.phtml
 msgid "Role"
@@ -9958,7 +10136,8 @@ msgid "Russell"
 msgstr "راسيل Russell"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Russia"
 msgstr "روسيا"
 
@@ -10090,7 +10269,8 @@ msgid "Sat"
 msgstr "السبت"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Saudi Arabia"
 msgstr "المملكة العربية السعودية"
 
@@ -10257,6 +10437,18 @@ msgstr "قم بتحديد الوقائع والأحداث في السجلين ا
 msgid "Select two records to merge."
 msgstr "قم باختيار لسجلين للدمج ."
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Select which statements to display on the public privacy policy page."
+msgstr ""
+
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Select your country or region"
+msgstr ""
+
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Select your jurisdiction to automatically enable the required privacy statements. You can also enable or disable individual statements."
+msgstr ""
+
 #: resources/views/admin/site-mail.phtml
 msgid "Selector"
 msgstr ""
@@ -10381,6 +10573,11 @@ msgstr "خادم"
 msgid "Server information"
 msgstr "معلومات الخادم"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Server location"
+msgstr "موقع الخادم"
+
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
@@ -10388,6 +10585,10 @@ msgstr "معلومات الخادم"
 #: resources/views/setup/step-4-database-sqlsrv.phtml
 msgid "Server name"
 msgstr "إسم الخادم"
+
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "Service"
+msgstr ""
 
 #: app/Http/RequestHandlers/PasswordResetPage.php
 msgid "Set a new password"
@@ -10530,9 +10731,9 @@ msgstr "الزواج الأقصر مدة"
 msgid "Show a download link in the media viewer"
 msgstr "إظهار رابط للتنزيل في متصفح الوسائط"
 
-#. I18N: Description of the “Cookie warning” module
+#. I18N: Description of the "Privacy policy" module
 #: app/Module/PrivacyPolicy.php
-msgid "Show a privacy policy."
+msgid "Show a privacy/data-protection policy based on your jurisdiction."
 msgstr ""
 
 #. I18N: A configuration setting
@@ -10887,7 +11088,8 @@ msgid "Simple dates are assumed to be in the gregorian calendar. To specify a da
 msgstr "التواريخ المفردة يتم إعتمادها حسب التقويم الميلادي الجريجوري، يمكن إدخال تأريخ من تقويم آخر بإدخال رمز التقويم المرغوب إعتماده قبل التأريخ حسب الصيغة الموضحة."
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Singapore"
 msgstr "سنغافورة"
 
@@ -11126,12 +11328,18 @@ msgstr "نوع المصدر"
 msgid "Sources"
 msgstr "مصادر"
 
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Sources of data"
+msgstr "مصادر البيانات"
+
 #: resources/xml/reports/missing_facts_report.xml
 msgid "Sources to the events"
 msgstr "مصادر للأحداث"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "South Africa"
 msgstr "جنوب افريقيا"
 
@@ -11143,6 +11351,10 @@ msgstr "جنوب أمريكا"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "جورجيا الجنوبية وجزر ساندويتش الجنوبية"
+
+#: app/Module/PrivacyPolicy.php
+msgid "South Korea"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -11332,6 +11544,11 @@ msgstr "السُودان"
 msgid "Sun"
 msgstr "الأحد"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
+msgid "Supervisory authority"
+msgstr "السلطة الإشرافية"
+
 #. I18N: %s is a URL/link to the project website
 #: resources/views/admin/control-panel.phtml
 #, php-format
@@ -11422,7 +11639,8 @@ msgid "Sweden"
 msgstr "السويد"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Switzerland"
 msgstr "سويسرا"
 
@@ -11521,6 +11739,10 @@ msgstr "إتصال للمساعدة التقنية"
 msgid "Tegucigalpa, Honduras"
 msgstr "تيغوسيغالبا ، هندوراس"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Telephone"
+msgstr ""
+
 #: app/CustomTags/RootsMagic.php
 msgid "Template"
 msgstr ""
@@ -11546,7 +11768,8 @@ msgid "Text direction"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Thailand"
 msgstr "تايلند"
 
@@ -11902,6 +12125,10 @@ msgstr "كلمة المرور المطلوبة للمصادقة مع خادم SM
 msgid "The password reset link has expired."
 msgstr "إنتهت صلاحية رابط إعادة تعيين كلمة المرور."
 
+#: app/Module/PrivacyPolicy.php
+msgid "The person responsible for this website and for the processing of your personal data is:"
+msgstr ""
+
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php
 msgid "The place hierarchy."
@@ -11922,6 +12149,11 @@ msgstr "تم تحديث التفضيلات الخاصة بمشجرات العو�
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "تم تحديث التفضيلات الخاصة بمشجر العائلة %s."
+
+#: app/Module/PrivacyPolicy.php
+#, php-format
+msgid "The preferences for the module \"%s\" have been updated."
+msgstr ""
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
@@ -12170,18 +12402,15 @@ msgstr ""
 msgid "There was an error uploading your file."
 msgstr "نتج خطأ عند تحميل ملفك."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
-
 #: resources/views/admin/trees-unconnected.phtml
 #, php-format
 msgid "These groups of individuals are not related to %s."
 msgstr "محموعة الأفراد هذه ليس لها علاقة بـ%s."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "These services may use cookies or other tracking technology."
-msgstr ""
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "Third-party services"
+msgstr "خدمات الطرف الثالث"
 
 #: app/Http/RequestHandlers/LoginAction.php
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -12509,10 +12738,6 @@ msgstr "لقد تم تحرير هذا السجل. يلزم مراجعة التع
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "هذا المستودع غير موجود، أو لاتوجد لديك صلاحية الإطلاع عليه."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr ""
-
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "يتمتع هذا الدور بجميع الصلاحيات المتاحة لدور المحرر بالإضافة إلى القدرة على قبول أو رفض التعديلات من الآخرين."
@@ -12563,28 +12788,37 @@ msgstr "في الغالب عليك تغيير صلاحيات الملف إلى 7
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
 msgstr "هذا الموقع تجرى عليه صيانة حالياً. عليك <a href=\"index.php\">المحاولة</a> بعد قليل."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This website is operated by the following individuals."
+#: app/Module/PrivacyPolicy.php
+msgid "This website is operated by the following person, who is also responsible for its content:"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "This website is published by:"
 msgstr ""
 
 #: resources/views/layouts/error.phtml resources/views/layouts/offline.phtml
 msgid "This website is temporarily unavailable"
 msgstr "تصفح الموقع متوقف مؤقتاً"
 
-#: resources/views/modules/privacy-policy/page.phtml
+#: app/Module/PrivacyPolicy.php
+msgid "This website may contain data about minors, derived from public records such as birth registers, for the purpose of historical and genealogical research. We do not collect personal data directly from children."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
 msgid "This website processes personal data for the purpose of historical and genealogical research."
 msgstr ""
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
+#: app/Module/PrivacyPolicy.php
+msgid "This website uses essential cookies for login sessions and to remember your preferences. These cookies are strictly necessary and do not require consent."
 msgstr ""
 
-#: resources/views/modules/privacy-policy/footer.phtml
-msgid "This website uses cookies to learn about visitor behavior."
-msgstr "يستخدم هذا الموقع الكوكيز لمعرفة المزيد عن سلوك الزائر ."
+#: app/Module/PrivacyPolicy.php
+msgid "This website uses external services to provide mapping and location features. When you view a map, your browser connects directly to these services, which may receive your IP address and other request data."
+msgstr ""
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This website uses third-party services to learn about visitor behavior."
+#: app/Module/PrivacyPolicy.php
+#: resources/views/modules/privacy-policy/footer.phtml
+msgid "This website uses third-party services to understand visitor behavior. These services may use cookies or similar tracking technology."
 msgstr ""
 
 #. I18N: %s is the name of a family tree
@@ -12673,6 +12907,7 @@ msgstr "تيمور الشرقية"
 #: resources/views/modules/favorites/favorites.phtml
 #: resources/views/modules/gedcom_news/edit.phtml
 #: resources/views/modules/html/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/user_blog/edit.phtml
 msgid "Title"
 msgstr "مسمى"
@@ -12900,11 +13135,10 @@ msgid "Total users"
 msgstr "مجموع المستخدمين"
 
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
-#: app/Module/ModuleAnalyticsTrait.php
+#: app/Module/ModuleAnalyticsTrait.php app/Module/PrivacyPolicy.php
 #: resources/views/admin/analytics-edit.phtml
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
-#: resources/views/modules/privacy-policy/page.phtml
 msgid "Tracking and analytics"
 msgstr "التتبع والتحليلات"
 
@@ -12942,6 +13176,10 @@ msgstr "تونس"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Turkey"
 msgstr "تركيا"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Turkey, UAE, Indonesia, Malaysia, Vietnam"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -13089,9 +13327,18 @@ msgid "United Kingdom"
 msgstr "المملكة المتحدة"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "United States"
 msgstr "الولايات المتحدة"
+
+#: app/Module/PrivacyPolicy.php
+msgid "United States — CA"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "United States — CO, CT, DE, IN, IA, KY, MD, MN, MT, NE, NH, NJ, OR, RI, TN, TX, UT, VA"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
@@ -13475,6 +13722,15 @@ msgstr "علامات مائية"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "العلامات المائية اختيارية ويظهر عادة للزوار فقط."
 
+#: app/Module/PrivacyPolicy.php
+msgid "We collect names, dates, places, family relationships, and other genealogical information. Much of this data is derived from public records such as registers of births, marriages, and deaths. For registered users, we also store email addresses and login credentials."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+#, fuzzy
+msgid "We do not sell or share your personal information."
+msgstr "نحن لا نبيع أو نشارك معلوماتك الشخصية."
+
 #: resources/views/register-success-page.phtml
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
@@ -13482,6 +13738,7 @@ msgstr "سيتم إرسال رسالة تأكيد إلى <b>%s</b>. يجب ال�
 
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/trees-preferences.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 msgid "Website"
 msgstr "الموقع"
 
@@ -13549,6 +13806,11 @@ msgstr "عند إضافة أو حذف أو تعديل أي معلومات، فإ
 #: resources/views/help/relationship-privacy.phtml
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
 msgstr "عندما يتم ربط مستخدم بسجل خاص في مشجر وله صلاحيات مستخدم أو محرر أو مراقب، يمكن حصر إطلاعه على المعلومات بناءاً على درجة قرابته ممن يرد الإطلاع على معلوماتهم. وذلك بتحديد عدد درجات القرابة المسموح الإطلاع عليها."
+
+#: resources/views/modules/privacy-policy/page.phtml
+#, php-format
+msgid "Where we operate online services that children may access directly, the minimum age for consent in our jurisdiction is %s years."
+msgstr ""
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml
@@ -13689,10 +13951,6 @@ msgstr "يمكنك هذا الخيار من تحديد إمكانية معرفة
 msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "بإمكانك تنزيل نسخة من مواصفات GEDCOM من %s."
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr ""
-
 #: resources/views/admin/trees-renumber.phtml
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr "بإمكانك إعادة ترقيم السجلات في مشجر العائلة ، بحيث لا يتم تكرارالأرقام المرجعية الداخلية هذه في أي مشجر عائلة أخرى."
@@ -13735,6 +13993,22 @@ msgstr "لقد قمت بإختيار ملف GEDCOM بإسم آخر، هل هذا
 #: app/Http/RequestHandlers/Logout.php
 msgid "You have signed out."
 msgstr "تم تسجيل خروجك بنجاح."
+
+#: app/Module/PrivacyPolicy.php
+msgid "You have the right to lodge a complaint with a supervisory authority if you believe your data has been processed unlawfully."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "You have the right to request a copy of the personal data we hold about you. This data can be provided in a machine-readable format (GEDCOM)."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "You may request that we delete, restrict, or cease processing your personal data. However, where data is processed for historical research purposes or was obtained from publicly accessible sources, these rights may be limited where compliance would render the research impossible or seriously impair it."
+msgstr ""
 
 #: resources/views/modules/faq/config.phtml
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -13839,6 +14113,10 @@ msgstr "الإسم"
 msgid "Your password has been updated."
 msgstr "لقد تم تحديث كلمة السر الخاصة بك."
 
+#: app/Module/PrivacyPolicy.php
+msgid "Your personal data may be transferred to, and processed in, countries other than the country in which you reside. We take appropriate safeguards to protect your data during such transfers."
+msgstr ""
+
 #: app/Http/RequestHandlers/RegisterAction.php
 #, php-format
 msgid "Your registration at %s"
@@ -13883,6 +14161,11 @@ msgstr "تصغير"
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
 
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "accept"
+msgstr ""
+
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml
 #: resources/views/individual-page-pending.phtml
@@ -13902,6 +14185,11 @@ msgstr "قبول"
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
 msgstr "قبول"
+
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "accept all"
+msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php
@@ -14015,6 +14303,7 @@ msgstr "قائمة مرصوصة"
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/stories/edit.phtml
 #: resources/views/modules/user_blog/edit.phtml
 msgid "cancel"
@@ -14052,7 +14341,6 @@ msgstr ""
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
 #: resources/views/modules/favorites/favorites.phtml
-#: resources/views/modules/privacy-policy/footer.phtml
 msgid "close"
 msgstr "إغلاق"
 
@@ -14113,6 +14401,16 @@ msgstr "فترات التاريخ"
 #: resources/xml/reports/descendancy_report.xml
 msgid "daughter of"
 msgstr "بنت"
+
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "decline"
+msgstr ""
+
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "decline all"
+msgstr ""
 
 #: resources/views/admin/location-edit.phtml
 msgid "degrees"
@@ -14616,6 +14914,7 @@ msgstr "يمين"
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/relationships-chart/config.phtml
 #: resources/views/modules/sitemap/config.phtml
 #: resources/views/modules/stories/edit.phtml

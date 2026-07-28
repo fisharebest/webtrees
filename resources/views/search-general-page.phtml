@@ -57,9 +57,13 @@ use Illuminate\Support\Collection;
     </div>
 
     <fieldset class="row">
-        <label class="col-sm-3 col-form-label wt-page-options-label">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= I18N::translate('Records') ?>
-        </label>
+        </legend>
+        <div class="col-sm-3 col-form-label wt-page-options-label" aria-hidden="true">
+            <?= I18N::translate('Records') ?>
+        </div>
         <div class="col-sm-9 wt-page-options-value">
             <div class="form-check form-check-inline">
                 <label class="form-check-label">

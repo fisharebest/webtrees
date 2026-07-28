@@ -37,18 +37,18 @@ final readonly class French extends AbstractFrench
 
     protected const array JALALI_MONTHS_NOMINATIVE = [
         '',
-        'Farvardin',
-        'Ordibehesht',
-        'Khordad',
-        'Tir',
-        'Mordad',
-        'Shahrivar',
-        'Mehr',
-        'Âbân',
-        'Âzar',
-        'Dey',
-        'Bahman',
-        'Esfand',
+        'farvardin',
+        'ordibehesht',
+        'khordad',
+        'tir',
+        'mordad',
+        'shahrivar',
+        'mehr',
+        'âbân',
+        'âzar',
+        'dey',
+        'bahman',
+        'esfand',
     ];
     protected const string    PERCENT_FORMAT     = '%s' . UTF8::NO_BREAK_SPACE . '%%';
 
@@ -57,4 +57,14 @@ final readonly class French extends AbstractFrench
     protected const array JALALI_MONTHS_LOCATIVE = self::JALALI_MONTHS_NOMINATIVE;
 
     protected const array JALALI_MONTHS_INSTRUMENTAL = self::JALALI_MONTHS_NOMINATIVE;
+
+    protected function formatFromDate(string $date): string
+    {
+        if ($this->startsWithVowel($date)) {
+            return 'd’' . $date;
+        }
+
+        return 'de ' . $date;
+    }
+
 }

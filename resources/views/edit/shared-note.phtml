@@ -24,7 +24,9 @@ use Fisharebest\Webtrees\Tree;
         </label>
 
         <div class="col-sm-9 wt-page-options-value">
-            <textarea class="form-control" name="NOTE" id="NOTE" rows="10" dir="auto"><?= e($note->getNote()) ?></textarea>
+            <!-- HTML ignores the first newline in pre and textarea, so must add an exta one -->
+            <?= str_starts_with($note->getNote(), "\n") ? "\n" : '' ?>
+            <textarea class="form-control" name="NOTE" id="NOTE" rows="10" dir="auto"><?= str_starts_with($note->getNote(), "\n") ? "\n" : '' ?><?= e($note->getNote()) ?></textarea>
 
             <a class="wt-osk-trigger" data-wt-id="NOTE" href="#" title="<?= I18N::translate('Find a special character') ?>">
                 <?= view('icons/keyboard') ?>

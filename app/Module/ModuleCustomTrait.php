@@ -157,7 +157,7 @@ trait ModuleCustomTrait
 
         // Do not allow requests that try to access parent folders.
         if (str_contains($asset, '..')) {
-            throw new HttpAccessDeniedException($asset);
+            throw new HttpAccessDeniedException();
         }
 
         // Find the file for this asset.
@@ -166,7 +166,7 @@ trait ModuleCustomTrait
         $file = $this->resourcesFolder() . $asset;
 
         if (!file_exists($file)) {
-            throw new HttpNotFoundException(e($file));
+            throw new HttpNotFoundException();
         }
 
         $content   = file_get_contents($file);

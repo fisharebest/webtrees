@@ -53,7 +53,7 @@ class DeleteUserTest extends TestCase
     public function testDeleteNonExistingUser(): void
     {
         $this->expectException(HttpNotFoundException::class);
-        $this->expectExceptionMessage('User ID 98765 not found');
+        $this->expectExceptionMessage('You do not have permission to view this page.');
 
         $user_service = $this->createMock(UserService::class);
         $user_service->expects($this->once())->method('find')->willReturn(null);
@@ -67,7 +67,7 @@ class DeleteUserTest extends TestCase
     public function testCannotDeleteAdministrator(): void
     {
         $this->expectException(HttpAccessDeniedException::class);
-        $this->expectExceptionMessage('Cannot delete an administrator');
+        $this->expectExceptionMessage('You do not have permission to view this page.');
 
         $user = $this->createMock(User::class);
         $user->method('id')->willReturn(1);

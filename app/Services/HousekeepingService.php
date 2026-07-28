@@ -35,7 +35,7 @@ use function time;
 class HousekeepingService
 {
     // This is a list of old files and directories, from earlier versions of webtrees.
-    // git diff 1.7.9..master --name-status | grep ^D
+    // Exclude the folders; app, resources and vendor.  These are cleaned by synchronizing with new releases.
     private const array OLD_PATHS = [
         // Removed in 1.0.3
         'themechange.php',
@@ -85,7 +85,7 @@ class HousekeepingService
         'images',
         // Removed in 1.3.1
         'imageflush.php',
-        '/lightbox/js/tip_balloon_RTL.js',
+        'modules_v3/lightbox/js/tip_balloon_RTL.js',
         // Removed in 1.4.0
         'imageview.php',
         'media/MediaInfo.txt',
@@ -108,6 +108,7 @@ class HousekeepingService
         'assets/js-1.7.4',
         // Removed in 2.0.0
         'action.php',
+        'admin.php',
         'addmedia.php',
         'addmin.php',
         'admin_media.php',
@@ -142,16 +143,6 @@ class HousekeepingService
         'admin_users.php',
         'admin_users_bulk.php',
         'ancestry.php',
-        'app/Controller',
-        'app/HitCounter.php',
-        'app/Module/ClippingsCart/ClippingsCartController.php',
-        'app/Module/FamiliesSidebarModule.php',
-        'app/Module/FamilyTreeFavorites',
-        'app/Module/GoogleMaps',
-        'app/Module/IndividualSidebarModule.php',
-        'app/Module/PageMenuModule.php',
-        'app/Query',
-        'app/SpecialChars',
         'assets/js-1.7.7',
         'assets/js-1.7.9',
         'autocomplete.php',
@@ -166,16 +157,19 @@ class HousekeepingService
         'edit_changes.php',
         'edit_interface.php',
         'expand_view.php',
+        'family.php',
         'familybook.php',
         'famlist.php',
         'fanchart.php',
         'find.php',
+        'gedrecord.php',
         'help_text.php',
         'hourglass.php',
         'hourglass_ajax.php',
         'import.php',
         'includes',
         'index_edit.php',
+        'individual.php',
         'indilist.php',
         'inverselink.php',
         'language',
@@ -183,20 +177,26 @@ class HousekeepingService
         'login.php',
         'logout.php',
         'mediafirewall.php',
+        'mediaviewer.php',
         'medialist.php',
         'message.php',
         'module.php',
         'modules_v3',
+        'note.php',
         'notelist.php',
         'packages',
         'pedigree.php',
+        'placelist.php',
         'relationship.php',
+        'repo.php',
         'repolist.php',
         'reportengine.php',
         'search.php',
         'search_advanced.php',
+        'setup.php',
         'site-offline.php',
         'site-unavailable.php',
+        'source.php',
         'sourcelist.php',
         'statistics.php',
         'statisticsplot.php',
@@ -218,12 +218,14 @@ class HousekeepingService
         'modules_v4/example-footer.disable',
         'modules_v4/example-middleware.disable',
         'modules_v4/example-report.disable',
-        'modules_v4/example-report.disable',
         'modules_v4/example-server-configuration.disable',
         'modules_v4/example-theme.disable',
         'modules_v4/example.disable',
+        'public/browserconfig.xml',
         'public/favicon-196.png',
         'public/site.webmanifest',
+        // Removed in 2.3.0
+        'public/ckeditor-4.15.1-custom',
     ];
 
     /**

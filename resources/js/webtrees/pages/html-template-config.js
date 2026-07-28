@@ -38,11 +38,11 @@ export function initializeHtmlTemplateConfig(root) {
 
       html.value = selected.value;
 
-      if (typeof CKEDITOR === 'undefined' || CKEDITOR.instances.html === undefined) {
-        throw new Error('CKEditor instance "html" not found.');
-      }
+      const tiny_mce_editor = window.tinymce?.get('html') ?? null;
 
-      CKEDITOR.instances.html.setData(html.value);
+      if (tiny_mce_editor !== null) {
+        tiny_mce_editor.setContent(html.value);
+      }
     });
   });
 }

@@ -43,7 +43,6 @@ use Fisharebest\Webtrees\Module\ChangeReportModule;
 use Fisharebest\Webtrees\Module\ChartsBlockModule;
 use Fisharebest\Webtrees\Module\ChartsMenuModule;
 use Fisharebest\Webtrees\Module\CheckForNewVersion;
-use Fisharebest\Webtrees\Module\CkeditorModule;
 use Fisharebest\Webtrees\Module\ClippingsCartModule;
 use Fisharebest\Webtrees\Module\CloudsTheme;
 use Fisharebest\Webtrees\Module\ColorsTheme;
@@ -243,6 +242,7 @@ use Fisharebest\Webtrees\Module\StoriesModule;
 use Fisharebest\Webtrees\Module\SubmitterListModule;
 use Fisharebest\Webtrees\Module\ThemeSelectModule;
 use Fisharebest\Webtrees\Module\TimelineChartModule;
+use Fisharebest\Webtrees\Module\TinymceModule;
 use Fisharebest\Webtrees\Module\TopGivenNamesModule;
 use Fisharebest\Webtrees\Module\TopPageViewsModule;
 use Fisharebest\Webtrees\Module\TopSurnamesModule;
@@ -338,7 +338,7 @@ class ModuleService
         'charts'                  => ChartsBlockModule::class,
         'charts-menu'             => ChartsMenuModule::class,
         'check-for-new-version'   => CheckForNewVersion::class,
-        'ckeditor'                => CkeditorModule::class,
+        'ckeditor'                => TinymceModule::class,
         'clippings'               => ClippingsCartModule::class,
         'clouds'                  => CloudsTheme::class,
         'colors'                  => ColorsTheme::class,

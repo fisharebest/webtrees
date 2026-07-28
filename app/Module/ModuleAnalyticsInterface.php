@@ -56,6 +56,11 @@ interface ModuleAnalyticsInterface extends ModuleInterface
      */
     public function isTracker(): bool;
 
+    /**
+     * Have we asked for consent from the user?
+     */
+    public function analyticsNeedsConsent(): bool;
+
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface;
 
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface;

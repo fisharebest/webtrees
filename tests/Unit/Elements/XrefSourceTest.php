@@ -136,7 +136,7 @@ class XrefSourceTest extends TestCase
 
         $tree = self::createStub(Tree::class);
 
-        self::assertSame('<p>invalid</p>', $element->value('invalid', $tree));
+        self::assertSame('<div class="wt-markdown"><p>invalid</p></div>', $element->value('invalid', $tree));
     }
 
     public function testValueXrefLinkWithMissingRecord(): void

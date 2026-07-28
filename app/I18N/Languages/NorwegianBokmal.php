@@ -48,6 +48,8 @@ final readonly class NorwegianBokmal extends AbstractLanguage
     protected const string    DATE_TO            = 'til %s';
     protected const string    ERA_BCE            = '%s' . UTF8::NO_BREAK_SPACE . 'fvt. Juliansk kalender';
     protected const string    ERA_CE             = '%s' . UTF8::NO_BREAK_SPACE . 'evt. Juliansk kalender';
+    protected const string    DIGITS_SEPARATOR   = UTF8::NARROW_NO_BREAK_SPACE;
+    protected const string    DECIMAL_SYMBOL     = ',';
     protected const string    LIST_SEPARATOR_AND = ' og ';
     protected const string    LIST_SEPARATOR_OR  = ' eller ';
 

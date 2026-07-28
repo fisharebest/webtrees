@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit;
 
 use Fisharebest\Webtrees\Container;
+use Fisharebest\Webtrees\Exceptions\NotFoundInContainerException;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -105,5 +106,14 @@ class ContainerTest extends TestCase
         $result = $container->get(stdClass::class);
 
         self::assertInstanceOf(stdClass::class, $result);
+    }
+
+    public function testGetThrowsNotFoundExceptionForMissingClass(): void
+    {
+        $container = new Container();
+
+        $this->expectException(NotFoundInContainerException::class);
+
+        $container->get('NoSuchClass');
     }
 }

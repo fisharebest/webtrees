@@ -291,7 +291,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
                 break;
 
             default:
-                throw new HttpNotFoundException('Invalid record type: ' . e($type));
+                throw new HttpNotFoundException();
         }
 
         // Skip private records.

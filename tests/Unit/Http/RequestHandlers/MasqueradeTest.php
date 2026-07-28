@@ -79,7 +79,7 @@ class MasqueradeTest extends TestCase
     public function testMasqueradeAsNonExistingUser(): void
     {
         $this->expectException(HttpNotFoundException::class);
-        $this->expectExceptionMessage('User ID 2 not found');
+        $this->expectExceptionMessage('You do not have permission to view this page.');
 
         $user = self::createStub(User::class);
         $user->method('id')->willReturn(1);

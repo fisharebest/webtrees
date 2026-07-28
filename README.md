@@ -1,290 +1,253 @@
 ![Latest version](https://img.shields.io/github/v/release/fisharebest/webtrees?sort=semver)
 ![Licence](https://img.shields.io/github/license/fisharebest/webtrees)
-[![Unit tests](https://github.com/fisharebest/webtrees/actions/workflows/phpunit.yaml/badge.svg)](https://github.com/fisharebest/webtrees/actions/workflows/phpunit.yaml)
-[![codecov](https://codecov.io/gh/fisharebest/webtrees/branch/main/graph/badge.svg?token=zREQBP4GBs)](https://codecov.io/gh/fisharebest/webtrees)
-[![Translation status](https://translate.webtrees.net/widgets/webtrees/-/webtrees-22/svg-badge.svg)](https://weblate.iet.open.ac.uk/projects/webtrees/webtrees-22)
-# webtrees - online collaborative genealogy
-
-## Contents
-
-* [License](#license)
-* [Coding styles and standards](#coding-styles-and-standards)
-* [Introduction](#introduction)
-* [System requirements](#system-requirements)
-* [Internet browser compatibility](#browser-compatibility)
-* [Installation](#installation)
-* [Upgrading](#upgrading)
-* [Building and developing](#building-and-developing)
-* [Gedcom (family tree) files](#gedcom-family-tree-files)
-* [Security](#security)
-* [Backup](#backup)
-* [Restore from Backup](#restore-from-backup)
-
-## License
-
-* **webtrees: online genealogy**
-* Copyright 2022 webtrees development team
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-## Coding styles and standards
-
-webtrees follows the [PHP Standards Recommendations](https://www.php-fig.org/psr).
-
-* [PSR-1](https://www.php-fig.org/psr/psr-1) - Basic Coding Standard
-* [PSR-2](https://www.php-fig.org/psr/psr-2) - Coding Style Guide
-* [PSR-4](https://www.php-fig.org/psr/psr-4) - Autoloading Standard
-* [PSR-6](https://www.php-fig.org/psr/psr-6) - Cache
-* [PSR-7](https://www.php-fig.org/psr/psr-7) - HTTP Message Interface
-* [PSR-11](https://www.php-fig.org/psr/psr-11) - Container Interface
-* [PSR-12](https://www.php-fig.org/psr/psr-12) - Extended Coding Style Guide
-* [PSR-15](https://www.php-fig.org/psr/psr-15) - HTTP Handlers
-* [PSR-17](https://www.php-fig.org/psr/psr-17) - HTTP Factories
-
-We do not currently use [PSR-3 (logging)](https://www.php-fig.org/psr/psr-3) - but we plan to do so in the future.
-
-For JavaScript, we use [semistandard](https://github.com/standard/semistandard).
-
-## Introduction
-
-**webtrees** is the web's leading online collaborative genealogy application.
-
-* It works from standard GEDCOM files, and is therefore compatible with every
-major desktop application.
-* It aims to to be efficient and effective by using the right combination of
-third-party tools, design techniques and open standards.
-
-**webtrees** allows you to view and edit your genealogy on your website. It has
-full editing capabilities, full privacy functions, and supports imedia such as
-photos and document images. As an online program, it fosters extended family
-participation and good ancestral recording habits, as it simplifies the process
-of collaborating with others working on your family lines. Your latest information
-is always on your web site and available for others to see, defined by viewing
-rules you set. For more information and to see working demos, visit
-[webtrees.net](https://webtrees.net/).
-
-**webtrees** is Open Source software that has been produced by people from many
-countries freely donating their time and talents to the project. All service,
-support, and future development is dependent on the time developers are willing
-to donate to the project, often at the expense of work, recreation, and family.
-Beyond the few donations received from users, developers receive no compensation
-for the time they spend working on the project. There is also no outside source
-of revenue to support the project. Please consider these circumstances when
-making support requests and consider volunteering your own time and skills to make
-the project even stronger and better.
-
-## System requirements
-
-To install **webtrees**, you need:
-
-* A webserver. Apache, NGINX and IIS are the most common types. To use “Pretty URLs”, you will need to configure URL rewriting"
-* A database. MySQL is recommended, although PostgreSQL, SQL-Server and SQLite can be used. Some features rely on MySQL for collation.  Other database might not sort names according to local rules.  **webtrees** uses a prefix for its table names, so you can install several instances of webtrees in the same database.
-* Approximately 100MB of disk space for the application files, plus whatever is
-  needed for your media files, GEDCOM files and database.
-* PHP 7.1 - 7.4. Servers with PHP 5.3 - 7.0 can use **webtrees** 1.7.
-   * PHP should be configured to allow sufficient server resources (memory and
-     execution time) for the size of your system. Typical requirements are:
-      * Small systems (500 individuals): 16–32 MB, 10–20 seconds
-      * Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds
-      * Large systems (50,000 individuals): 64–128 MB, 40–80 seconds
-
-## Browser compatibility
-  
-  **webtrees** is tested on recent versions of popular browsers such as Edge, Firefox,
-  Chrome, and Safari.  Support for other browsers and older versions is on a case-by-case basis.
-
-## Installation
-
-1. Download the .ZIP file for latest stable version from [github.com](https://github.com/fisharebest/webtrees/releases/latest).
-2. Unzip the files and then upload them to an empty folder on your web server.
-3. Open your web browser and type the URL for your **webtrees** site (for example,
-   ``https://www.yourserver.com/webtrees`` into the address bar.
-4. The **webtrees** setup wizard will start automatically.
-
-Your first task will be to create a family tree.
-
-If you have a GEDCOM file, you can import it into the tree. If not, just start
-entering your family tree. 
-
-There are lots of configuration options. You'll probably want to review the
-privacy settings first. Don't worry too much about all the other options - the
-defaults are good for most people. If you get stuck, you can get friendly help
-and advice from the [help](https://www.webtrees.net/index.php/forum) forum.
-
-## Upgrading
+[![Translation status](translate.webtrees.net/widget/webtrees/svg-badge.svg)](https://translate.webtrees.net/projects/webtrees/)
 
-Upgrading **webtrees** is quick and easy. It is strongly recommended that you
-upgrade your installation whenever a new version is made available. Even minor
-**webtrees** version updates usually contain a significant number of bug fixes
-as well as interface improvements and program enhancements.
+# webtrees — online collaborative genealogy
 
-* **Automatic upgrade**
+**webtrees** is a web application for recording, viewing and sharing your family history.
+It imports and exports standard GEDCOM files, making it compatible with every major
+desktop genealogy application.
 
-  **webtrees** has an automatic upgrade facility. An administrator upon logging in
-will receive notification when a new version is available and an option to start
-the automatic upgrade. If for some reason the automatic upgrade should fail
-then a manual upgrade should be performed.
+You host it on your own web server, so you stay in control of your data. Multiple
+family members can collaborate on the same tree at the same time, and you decide
+who can see what through fine-grained privacy rules.
 
-* **Manual upgrade**
+Key features:
 
-  1. Now would be a good time to make a [backup](#backup).
-  2. Download the latest version of **webtrees** available from
-   [webtrees.net](https://webtrees.net/)
-  3. While you are in the middle of uploading the new files,
-   a visitor to your site would encounter a mixture of new and old files. This
-   could cause unpredictable behavior or errors. To prevent this, create the
-   file **data/offline.txt**. While this file exists, visitors will see a
-   “site unavailable - come back later” message.
-  4. Unzip the .ZIP file, and upload the files to your web server, overwriting the existing files.
-  5. Delete the file **data/offline.txt**.
+* Full editing of individuals, families, sources, media and other GEDCOM records
+* Interactive charts — pedigree, fan, descendants, relationships
+* Privacy controls per record, per user, per tree
+* Multi-language interface (70+ translations)
+* Theming support with several built-in themes
+* Module system for extending functionality
+* Multiple family trees in one installation
 
-### Note for Macintosh users
+For user documentation, screenshots and demos visit **<https://webtrees.net/>**.
 
-Step 4 assumes you are using a copy tool that **merges** directories rather than
-replaces them. (**Merge** is standard behavior on Windows and Linux.) If you use
-the Macintosh Finder or other similar tool to perform step 3, it will **replace**
-your configuration, media and other directories with the empty/default ones from
-the installation. This would be very bad (but you did take a backup in step 1,
-didn't you!). Further details and recommendations for suitable tools can be found
-by searching [google.com](https://google.com).
+This software is licensed under the GNU General Public License v3 or later.
+See [LICENSE.md](LICENSE.md) for the full text.
 
-## Building and developing
+---
 
-If you want to build webtrees from source, or modify the code, you'll need to install
-a couple of tools first.
+## Getting started
 
-You will need [composer](https://getcomposer.org/) to install the PHP dependencies.
-Then run this command::
+### Download
 
-* php composer.phar install
+Download the latest stable release from
+[github.com/fisharebest/webtrees/releases/latest](https://github.com/fisharebest/webtrees/releases/latest).
 
-You will need [npm](https://www.npmjs.com/get-npm) to install the Javascript dependencies.
-Then run the commands:
+### Server requirements
 
-* npm install
-* npm run build
+| Component | Requirement |
+|-----------|-------------|
+| PHP | 8.3 – 8.6 |
+| Database | MySQL (recommended), PostgreSQL, SQLite, or SQL Server |
+| Web server | Apache, NGINX, IIS or similar (URL rewriting needed for pretty URLs) |
+| Disk space | ~100 MB for application files, plus space for media and database |
 
-You will need to re-run the second of these any time you modify files in `resources/js` or `resources/css`.
+Required PHP extensions: `ctype`, `curl`, `gd`, `iconv`, `intl`, `json`, `mbstring`,
+`pcre`, `pdo`, `session`, `xml`.
 
-During the JavaScript module migration, runtime compatibility globals (such as `window.webtrees` and `window.TreeViewHandler`) are preserved by adapter entrypoints. The statistics module is fully self-initializing and requires no globals.
+Recommended PHP extensions: `exif` (auto-rotate images), `zip` (compress downloads
+and use the upgrade wizard), `zlib` (compress HTTP responses).
 
-## Gedcom (family tree) files
+PHP memory and execution time should be scaled to your tree size:
 
-When you import a family tree (GEDCOM) file in **webtrees** the
-data from the file is transferred to the database tables. The file itself 
-remains in the **webtrees/data** folder and is no longer used or required
-by **webtrees**. Any subsequent editing of the **webtrees** data
-will not change this file
+| Tree size | Memory | Max execution time |
+|-----------|--------|--------------------|
+| Small (500 individuals) | 16–32 MB | 10–20 s |
+| Medium (5 000 individuals) | 32–64 MB | 20–40 s |
+| Large (50 000 individuals) | 64–128 MB | 40–80 s |
 
-When or if you change your genealogy data outside of **webtrees**, it is not
-necessary to delete your GEDCOM file or database from **webtrees** and start
-over. Follow these steps to update a GEDCOM that has already been imported:
+### Installation
 
-* Go to ``Control panel`` -> ``Manage family trees`` On the line relating to this particular family tree (GEDCOM)
-  file (or a new one) select IMPORT.
-* Take careful note of the media items option (_“If you have created media objects
-  in **webtrees**, and have edited your data off-line using software that
-  deletes media objects, then tick this box to merge the current media objects
-  with the new GEDCOM.”_) In most cases you should leave this box **UNCHECKED**.
-* Click “SAVE”. **webtrees** will validate the GEDCOM again before importing.
-  During this process, **webtrees** copies your entire family tree (GEDCOM file)
-  to a 'chunk' table within your database. Depending on the coding of your file,
-  its file size and the capabilities of your server and the supporting software,
-  this may take some time. **No progress bar will show while the data is being
-  copied** and should you navigate away from this page, the process is suspended.
-  It will start again when you return to the Family Tree management page.
+1. Upload and extract the release archive to an empty folder on your web server.
+2. Navigate to the URL in your browser — the setup wizard starts automatically.
+3. Create your first family tree and optionally import a GEDCOM file.
 
-## Security
+Full installation and upgrade guides are available at <https://webtrees.net/>.
 
-**Security** in _webtrees_ means ensuring your site is safe from unwanted
-intrusions, hacking, or access to data and configuration files. The developers
-of _webtrees_ regard security as an extremely important part of its development
-and have made every attempt to ensure your data is safe.
+---
 
-The area most at risk of intrusion would be the **/data** folder that contains your
-config.ini.php file, and various temporary files. If you are concerned there
-may be a risk there is a very simple test you can do: try to fetch the file 
-config.ini.php by typing **``url_to_your_server/data/config.ini.php``** in your web
-browser.
+## Technical architecture
 
-The most likely result is an “access denied” message like this:
+### Project structure
 
-    Forbidden
+```
+app/                        Application source (PSR-4 root: Fisharebest\Webtrees\)
+├── Cli/Commands/           CLI commands (extend AbstractCommand)
+├── Contracts/              Interfaces (*Interface suffix)
+├── Enums/                  PHP enumerations
+├── Factories/              Object creation (Registry pattern)
+├── Http/
+│   ├── RequestHandlers/    HTTP controllers (one class per route action)
+│   ├── Middleware/         HTTP controllers (one class per route action)
+│   └── Routes/             Route definitions
+├── Module/                 Modules (charts, reports, sidebars, tabs, themes…)
+├── Services/               Domain services
+└── …                       Domain classes (Individual, Family, Tree, etc.)
 
-    You don't have permission to access /data/config.ini.php on this server.
+resources/
+├── css/                    Stylesheets (compiled by webpack)
+├── js/                     JavaScript (compiled by webpack)
+├── lang/                   Language files (*.po, compiled into *.php for release)
+└── views/                  View templates (*.phtml)
 
-This indicates that the protection built into **webtrees** is working, and no
-further action is required.
+tests/
+├── Unit/                   Unit tests
+└── Feature/                Feature/integration tests
 
-In the unlikely event you do fetch the file (you will just see a semicolon),
-then that protection is not working on your site and you should take some further
-action.
+public/                     Web-accessible assets (compiled CSS/JS, images, fonts)
+data/                       Runtime data (config, GEDCOM files, cache — not in VCS)
+modules_v4/                 Third-party module directory
+```
 
-If your server runs PHP in CGI mode, then change the permission of the **/data**
-folder to 700 instead of 777. This will block access to the httpd process,
-while still allowing access to PHP scripts.
+### Namespace and autoloading
 
-This will work for perhaps 99% of all users. Only the remaining 1% should consider
-the most complex solution, moving the **/data** folder out of accessible web
-space. (**_Note:_** In many shared hosting environments this is not an option anyway.)
+| Namespace | Directory | Standard |
+|-----------|-----------|----------|
+| `Fisharebest\Webtrees\` | `app/` | PSR-4 |
+| `Fisharebest\Webtrees\Tests\` | `tests/` | PSR-4 |
 
-If you do find it necessary, following is an example of the process required:
+Global helper functions are in `app/Helpers/functions.php` (loaded via composer
+`autoload.files`).
 
-If your home folder is something like **/home/username**,
-and the root folder for your web site is **/home/username/public_html**,
-and you have installed **webtrees** in the **public_html/webtrees** folder,
-then you would create a new **data** folder in your home folder at the same
-level as your public_html folder, such as **/home/username/private/data**,
-and place your GEDCOM (family tree) file there.
+### Coding standards
 
-Then change the **Data folder** setting on the ``Control panel`` ->
-``Website`` -> ``Website preferences`` page from the default **data/** to the new
-location **/home/username/private/data**
+webtrees follows [PSR-12](https://www.php-fig.org/psr/psr-12) with these additional rules:
 
-You will have **two** data directories:
+* Abstract classes are named `Abstract*`.
+* Interfaces are named `*Interface`.
+* Traits are named `*Trait`.
+* Local variables and parameters use `$snake_case`.
+* Nullable types are written `Type|null`, not `?Type`.
+* PHP function/constant calls never use named arguments.
+* Variable names are full English words (`$variables`, not `$vars`).
+* Comments and identifiers use US English (`$color`, not `$colour`).
+* All PHP functions and constants are imported with `use`; unused imports are removed.
+* No two consecutive blank lines.
+* Unit test method names are `camelCase`, not `snake_case`.
 
-* [path to webtrees]/data - just needs to contain config.ini.php
-* /home/username/private/data - contains everything else
+For javascript, we use [semistandard](https://github.com/standard/semistandard).
 
-## Backup
+PSR standards applied:
 
-Backups are good. Whatever problem you have, it can always be fixed from a good
-backup.
+| PSR | Topic |
+|-----|-------|
+| PSR-4 | Autoloading |
+| PSR-6 | Caching |
+| PSR-7 | HTTP messages |
+| PSR-11 | Dependency injection container |
+| PSR-12 | Coding style |
+| PSR-15 | HTTP request handlers and middleware |
+| PSR-17 | HTTP factories |
+| PSR-18 | HTTP client |
 
-To make a backup of **webtrees**, you need to make a copy of the following
+### Dependencies
 
-1. The files in the *webtrees/data* folder.
-2. The tables in the database. Freely available tools such as
-   [phpMyAdmin](https://www.phpmyadmin.net) allow you to do this in one click. Alternatively, You can also make a backup running a mysqldump command (just replace the words *[localhost]*, *[username]*, *[password]* and *[databasename]* with your own):
+All dependencies are pinned to exact version numbers (no ranges).
 
-    `mysqldump --host=[localhost] -u [username] -p[password] --databases [databasename] > dump_file.sql`
+**Main PHP dependencies** (via Composer):
 
-    Note that '*-p[password]*' goes together with no space in between.
+* `illuminate/database` 
+* `symfony/cache`, `symfony/console`, `symfony/mailer`, `symfony/http-client`
+* `league/flysystem`
+* `league/commonmark`
+* `aura/router`
 
-Remember that most web hosting services do NOT backup your data, and this is
-your responsibility.
+**Main JavaScript dependencies** (via npm / webpack):
 
-## Restore from backup
+* Bootstrap 5
+* Font Awesome
+* LeafletJs
+* DataTables
+* Chart.js, Tom Select, Sortable.js
+* jQuery 4 (legacy shims; being phased out)
 
-To restore a backup on a new server:
+### Building from source
 
-1. Follow the steps in [Installation](#installation) to get a clean new installation.
+Prerequisites: PHP 8.3+, [Composer](https://getcomposer.org/),
+[Node.js](https://nodejs.org/) with npm.
 
-2. Replace the *data* folder with backup copy.
+```bash
+# Install PHP dependencies
+composer install
 
-3. Restore your mysql database using phpmyadmin or running the following command line on your database server using your mysqldumpfile (just replace the words *[username]*, *[password]* and *[databasename]* with your own):
+# Install JS dependencies and compile assets
+npm install
+npm run build
 
-    `mysql -u [username] -p[password] [database_name] < [dump_file.sql]`
+# Create a .ZIP file containing a release
+composer build
+```
 
-4. Confirm the file *data/config.ini.php* contains to correct information to connect to the database and update it if needed.
+### Quality and CI
+
+Run the full local CI suite:
+
+```bash
+composer ci
+```
+
+This executes, in order:
+
+| Tool | Purpose | Config file |
+|------|---------|-------------|
+| PHP_CodeSniffer | PSR-12 style enforcement | `phpcs.xml.dist` |
+| PHPUnit | Unit and feature tests | `phpunit.xml.dist` |
+| PHPStan (level 6) | Static analysis | `phpstan.neon.dist` |
+
+Individual commands:
+
+```bash
+# Coding style (fix automatically)
+vendor/bin/phpcbf
+
+# Tests with coverage
+vendor/bin/phpunit
+
+# Static analysis
+vendor/bin/phpstan
+```
+
+### Testing
+
+Tests live in `tests/Unit/` and `tests/Feature/`. Run a subset with:
+
+```bash
+vendor/bin/phpunit --filter=testMethodName
+vendor/bin/phpunit tests/Feature/SomeTest.php
+```
+
+### HTTP architecture
+
+The application uses PSR-15 middleware and request handlers:
+
+1. `index.php` boots the application and dispatches the request.
+2. Routes are defined declaratively in `app/Http/Routes/`.
+3. Each route maps to a request handler in `app/Http/RequestHandlers/`.
+4. Middleware provides cross-cutting concerns (authentication, CSRF, etc.).
+
+### Module system
+
+Most user-visible features are implemented as modules in `app/Module/`. Modules
+implement one or more interfaces (e.g. `ModuleChartInterface`,
+`ModuleReportInterface`, `ModuleThemeInterface`) and are auto-discovered by the
+`ModuleService`.
+
+Third-party modules can be placed in `modules_v4/`.
+
+### Database
+
+webtrees uses Laravel’s Illuminate Database (query builder and schema builder)
+without the full Laravel framework. Supported drivers:
+
+* MySQL / MariaDB
+* SQLite
+* PostgreSQL
+* SQL Server
+
+Schema migrations are in `app/Schema/`. The current schema version is tracked in
+`app/Webtrees.php`.
+
+Table names use a configurable prefix so multiple instances can share a database.

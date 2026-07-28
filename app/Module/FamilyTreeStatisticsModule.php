@@ -96,7 +96,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
         extract($config, EXTR_OVERWRITE);
 
         if ($show_common_surnames === '1') {
-            $query = DB::table('name')
+            $subquery = DB::table('name')
                 ->where('n_file', '=', $tree->id())
                 ->where('n_type', '<>', '_MARNM')
                 ->where('n_surn', '<>', '')
@@ -104,12 +104,12 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
                 ->select([
                     DB::binaryColumn('n_surn', 'n_surn'),
                     DB::binaryColumn('n_surname', 'n_surname'),
-                    new Expression('COUNT(*) AS total'),
-                ])
-                ->groupBy([
-                    DB::binaryColumn('n_surn'),
-                    DB::binaryColumn('n_surname'),
                 ]);
+
+            $query = DB::query()
+                ->fromSub($subquery, 'names')
+                ->select(['n_surn', 'n_surname', new Expression('COUNT(*) AS total')])
+                ->groupBy(['n_surn', 'n_surname']);
 
             /** @var array<array<int>> $top_surnames */
             $top_surnames = [];

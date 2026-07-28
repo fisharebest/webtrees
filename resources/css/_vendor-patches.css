@@ -35,6 +35,17 @@
     right: -2rem;
 }
 
+/* Reserve space for icons, to avoid layout-shift when the images load. */
+i.fa-solid {
+    display: inline-block;
+    width: 1.25em;
+}
+
+/* The spinner uses a larger icon */
+.wt-icon-spinner i.fa-solid {
+    width: 3.75em;
+}
+
 /* Allows autocomplete.js to work with bootstrap input groups */
 .input-group > .autoComplete_wrapper {
     flex: 1 1;

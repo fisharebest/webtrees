@@ -66,7 +66,7 @@ final class ContactPage implements RequestHandlerInterface
         $to_user = $this->user_service->findByUserName($to);
 
         if ($to_user === null || !in_array($to_user, $this->message_service->validContacts($tree), false)) {
-            throw new HttpAccessDeniedException('Invalid contact user id');
+            throw new HttpAccessDeniedException();
         }
 
         $to_name = $to_user->realName();

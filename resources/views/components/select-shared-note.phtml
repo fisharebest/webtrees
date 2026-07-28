@@ -29,8 +29,12 @@ $at = $at ?? '';
     <?= ($required ?? false) ? 'required="required"' : '' ?>
 >
     <?php if (($shared_note ?? null) instanceof SharedNote) : ?>
-        <option value="<?= e($at . $shared_note->xref() . $at) ?>">
-            <?= view('selects/shared-note', ['note' => $shared_note]) ?>
+        <?php $option_html = view('selects/shared-note', ['note' => $shared_note]); ?>
+        <option
+            value="<?= e($at . $shared_note->xref() . $at) ?>"
+            data-ts-option="<?= e(json_encode(['text' => $option_html])) ?>"
+        >
+            <?= strip_tags($option_html) ?>
         </option>
     <?php else : ?>
         <option value="">&nbsp;</option>
