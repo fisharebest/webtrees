@@ -102,7 +102,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
      */
     protected function buildName(string $name, array $parts): string
     {
-        $parts = array_filter($parts);
+        $parts = array_filter($parts, static fn (string $value): bool => $value !== '');
 
         $parts = array_map(
             static fn (string $tag, string $value): string => "\n2 " . $tag . ' ' . $value,

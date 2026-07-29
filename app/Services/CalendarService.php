@@ -93,11 +93,19 @@ class CalendarService
         switch ($sort_by) {
             case 'anniv':
             case 'anniv_asc':
-                $facts = $facts->sort(static fn (Fact $x, Fact $y): int => $x->jd <=> $y->jd ?: $x->date()->minimumJulianDay() <=> $y->date()->minimumJulianDay());
+                $facts = $facts->sort(static function (Fact $x, Fact $y): int {
+                    $compare = $x->jd <=> $y->jd;
+
+                    return $compare !== 0 ? $compare : $x->date()->minimumJulianDay() <=> $y->date()->minimumJulianDay();
+                });
                 break;
 
             case 'anniv_desc':
-                $facts = $facts->sort(static fn (Fact $x, Fact $y): int => $x->jd <=> $y->jd ?: $y->date()->minimumJulianDay() <=> $x->date()->minimumJulianDay());
+                $facts = $facts->sort(static function (Fact $x, Fact $y): int {
+                    $compare = $x->jd <=> $y->jd;
+
+                    return $compare !== 0 ? $compare : $y->date()->minimumJulianDay() <=> $x->date()->minimumJulianDay();
+                });
                 break;
 
             case 'alpha':
@@ -227,7 +235,7 @@ class CalendarService
                         $husb = $record->husband();
                         $wife = $record->wife();
 
-                        if ($filterof === 'living' && ($husb && $husb->isDead() || $wife && $wife->isDead())) {
+                        if ($filterof === 'living' && ($husb !== null && $husb->isDead() || $wife !== null && $wife->isDead())) {
                             continue;
                         }
                     }

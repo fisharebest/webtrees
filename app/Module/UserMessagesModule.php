@@ -105,7 +105,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 
             return
                 $user->id() !== Auth::id() &&
-                $user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) &&
+                $user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) === '1' &&
                 $can_see_tree &&
                 $user->getPreference(UserInterface::PREF_CONTACT_METHOD) !== MessageService::CONTACT_METHOD_NONE;
         });

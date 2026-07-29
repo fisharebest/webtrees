@@ -155,7 +155,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                 ->get();
 
             foreach ($changes as $change) {
-                $record = Registry::gedcomRecordFactory()->make($change->xref, $tree, $change->new_gedcom ?: $change->old_gedcom);
+                $record = Registry::gedcomRecordFactory()->make($change->xref, $tree, $change->new_gedcom !== '' ? $change->new_gedcom : $change->old_gedcom);
                 if ($record->canShow()) {
                     $content .= '<li><a href="' . e($record->url()) . '">' . $record->fullName() . '</a></li>';
                 }

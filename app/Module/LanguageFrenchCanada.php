@@ -25,6 +25,8 @@ class LanguageFrenchCanada extends LanguageFrench
 {
     public function __construct()
     {
+        parent::__construct();
+
         $this->language = new FrenchCanada();
     }
 

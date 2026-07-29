@@ -177,10 +177,10 @@ class Relationship
         $this->matchers[] = static function (array &$nodes, array &$patterns, array &$captures) use ($relationships): bool {
             $limit = min(intdiv(count($nodes), 2), count($patterns));
 
-            for ($generations = 0; $generations < $limit; ++$generations) {
-                if (!in_array($patterns[$generations], $relationships, true)) {
-                    break;
-                }
+            $generations = 0;
+
+            while ($generations < $limit && in_array($patterns[$generations], $relationships, true)) {
+                ++$generations;
             }
 
             if ($generations > 0) {

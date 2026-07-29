@@ -107,7 +107,7 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
         $tree  = Validator::attributes($request)->treeOptional();
         $user  = Validator::attributes($request)->user();
 
-        if ($tree instanceof Tree && $tree->getPreference('SHOW_COUNTER')) {
+        if ($tree instanceof Tree && $tree->getPreference('SHOW_COUNTER') === '1') {
             $page_name = self::PAGE_NAMES[$route->name] ?? '';
 
             switch ($route->name) {

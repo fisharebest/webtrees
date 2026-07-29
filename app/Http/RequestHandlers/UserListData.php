@@ -111,7 +111,7 @@ final class UserListData implements RequestHandlerInterface
             ];
 
             // Highlight old registrations.
-            if (!$datum[10] && date('U') - $datum[6] > 604800) {
+            if ((int) $row->verified === 0 && date('U') - $datum[6] > 604800) {
                 $datum[7] = '<span class="text-danger">' . $datum[7] . '</span>';
             }
 

@@ -121,7 +121,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         $scale = Validator::attributes($request)->isBetween(self::MINIMUM_SCALE, self::MAXIMUM_SCALE)->integer('scale');
         $xrefs = Validator::queryParams($request)->array('xrefs');
         $ajax  = Validator::queryParams($request)->boolean('ajax', false);
-        $xrefs = array_filter(array_unique($xrefs));
+        $xrefs = array_unique($xrefs);
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {

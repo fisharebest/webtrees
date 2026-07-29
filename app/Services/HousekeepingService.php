@@ -27,7 +27,6 @@ use League\Flysystem\UnableToDeleteDirectory;
 use League\Flysystem\UnableToDeleteFile;
 use Psr\Clock\ClockInterface;
 
-
 /**
  * Clean up old data, files and folders.
  */

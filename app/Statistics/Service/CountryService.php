@@ -815,7 +815,7 @@ class CountryService
     public function mapTwoLetterToName(string $twoLetterCode): string
     {
         $threeLetterCode = array_search($twoLetterCode, $this->iso3166(), true);
-        $threeLetterCode = $threeLetterCode ?: '???';
+        $threeLetterCode = $threeLetterCode !== false ? $threeLetterCode : '???';
 
         return $this->getAllCountries()[$threeLetterCode];
     }

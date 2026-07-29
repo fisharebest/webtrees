@@ -53,7 +53,7 @@ final class TomSelectSource extends AbstractTomSelectHandler
         if ($source instanceof Source) {
             $results = new Collection([$source]);
         } else {
-            $search  = array_filter(explode(' ', $query));
+            $search  = array_filter(explode(' ', $query), static fn (string $value): bool => $value !== '');
             $results = $this->search_service->searchSourcesByName([$tree], $search, $offset, $limit);
         }
 

@@ -238,7 +238,7 @@ final class SetupWizard implements RequestHandlerInterface
     private function step5Administrator(array $data): ResponseInterface
     {
         // Use default port, if none specified.
-        $data['dbport'] = $data['dbport'] ?: self::DEFAULT_PORTS[$data['dbtype']];
+        $data['dbport'] = $data['dbport'] !== '' ? $data['dbport'] : self::DEFAULT_PORTS[$data['dbtype']];
 
         // Validate SSL certificate files exist when specified.
         foreach (['dbkey', 'dbcert', 'dbca'] as $key) {

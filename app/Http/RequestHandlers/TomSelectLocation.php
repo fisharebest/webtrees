@@ -53,7 +53,7 @@ final class TomSelectLocation extends AbstractTomSelectHandler
         if ($location instanceof Location) {
             $results = new Collection([$location]);
         } else {
-            $search  = array_filter(explode(' ', $query));
+            $search  = array_filter(explode(' ', $query), static fn (string $value): bool => $value !== '');
             $results = $this->search_service->searchLocations([$tree], $search, $offset, $limit);
         }
 

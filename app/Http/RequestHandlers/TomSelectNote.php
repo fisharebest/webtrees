@@ -53,7 +53,7 @@ final class TomSelectNote extends AbstractTomSelectHandler
         if ($note instanceof Note) {
             $results = new Collection([$note]);
         } else {
-            $search  = array_filter(explode(' ', $query));
+            $search  = array_filter(explode(' ', $query), static fn (string $value): bool => $value !== '');
             $results = $this->search_service->searchNotes([$tree], $search, $offset, $limit);
         }
 

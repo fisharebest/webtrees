@@ -194,7 +194,7 @@ foreach ($individuals as $index => $individual) {
             <div class="wt-timeline-age-handle">
                 <span class="wt-timeline-age-line-marker"></span>
                 <div>
-                    <?php if (!empty($birthyears[$indi->xref()])) : ?>
+                    <?php if (isset($birthyears[$indi->xref()])) : ?>
                         <?php $tyear = round(($ageyoffset + $bheight / 2) / $scale) + $baseyear; ?>
                         <div class="wt-timeline-age-content person<?= $p % 8 ?>" style="cursor: grab;">
                             <div><?= I18N::translate('Date') ?>: <span id="yearform<?= $p ?>"><?= $tyear ?></span></div>

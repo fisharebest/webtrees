@@ -141,7 +141,8 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
                 $result->properties->country,
             ];
 
-            $places[] = implode(Gedcom::PLACE_SEPARATOR, array_filter($parts)) ?: $result->properties->label;
+            $place_name = implode(Gedcom::PLACE_SEPARATOR, array_filter($parts, static fn (string|null $value): bool => $value !== null && $value !== ''));
+            $places[] = $place_name !== '' ? $place_name : $result->properties->label;
         }
 
         usort($places, I18N::compare(...));

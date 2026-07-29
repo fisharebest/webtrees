@@ -356,7 +356,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         I18N::reverseText($individual->fullName()),
                         I18N::reverseText($individual->alternateName() ?? ''),
                         I18N::reverseText($individual->lifespan()),
-                    ]);
+                    ], static fn (string $value): bool => $value !== '');
 
                     $text_lines = array_map(
                         fn (string $line): string => $this->fitTextToPixelWidth($line, $max_text_length),

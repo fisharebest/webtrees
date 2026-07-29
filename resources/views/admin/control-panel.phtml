@@ -110,7 +110,8 @@ use Illuminate\Support\Collection;
  * @var Collection<int,ModuleLanguageInterface>        $language_modules_enabled
  * @var string                                         $latest_version
  * @var string                                         $latest_version_error
- * @var CarbonImmutable                             $latest_version_timestamp
+ * @var CarbonImmutable                                $latest_version_timestamp
+ * @var int                                            $now
  * @var Collection<int,ModuleListInterface>            $list_modules_disabled
  * @var Collection<int,ModuleListInterface>            $list_modules_enabled
  * @var Collection<int,ModuleMapLinkInterface>         $map_link_modules_disabled
@@ -291,7 +292,7 @@ use Illuminate\Support\Collection;
 </div>
 
 <!-- FAMILY TREES -->
-<div class="card mb-4 <?= array_sum($changes) ? 'card-outline-danger' : '' ?>">
+<div class="card mb-4 <?= array_sum($changes) !== 0 ? 'card-outline-danger' : '' ?>">
     <div class="card-header">
         <h2 class="mb-0">
             <?= I18N::translate('Family trees') ?>
@@ -352,7 +353,7 @@ use Illuminate\Support\Collection;
 
             <tbody>
                 <?php foreach ($all_trees as $tree) : ?>
-                    <tr class="<?= $changes[$tree->id()] ? 'danger' : '' ?>">
+                    <tr class="<?= $changes[$tree->id()] !== 0 ? 'danger' : '' ?>">
                         <th scope="row">
                             <?= view('icons/preferences') ?>
                             <a href="<?= e(route(ManageTrees::class, ['tree' => $tree->name()])) ?>">
@@ -362,7 +363,7 @@ use Illuminate\Support\Collection;
                             </a>
                         </th>
                         <td style="text-align: right;">
-                            <?php if ($changes[$tree->id()]) : ?>
+                            <?php if ($changes[$tree->id()] !== 0) : ?>
                                 <a href="<?= e(route(PendingChanges::class, ['tree' => $tree->name(), 'url' => route(ControlPanel::class)])) ?>">
                                     <?= I18N::number($changes[$tree->id()]) ?>
                                     <span class="visually-hidden"><?= I18N::translate('Pending changes') ?> <?= e($tree->title()) ?></span>

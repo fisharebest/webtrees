@@ -108,7 +108,7 @@ class TreeView
         $html = $this->getPersonDetails($individual, null);
         foreach ($individual->spouseFamilies() as $family) {
             $spouse = $family->spouse($individual);
-            if ($spouse) {
+            if ($spouse !== null) {
                 $html .= $this->getPersonDetails($spouse, $family);
             }
         }
@@ -318,7 +318,7 @@ class TreeView
     private function drawPersonName(Individual $individual, string $dashed): string
     {
         $family = $individual->childFamilies()->first();
-        if ($family) {
+        if ($family !== null) {
             $family_name = strip_tags($family->fullName());
         } else {
             $family_name = I18N::translateContext('unknown family', 'unknown');

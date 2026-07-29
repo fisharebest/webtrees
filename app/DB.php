@@ -165,9 +165,7 @@ final class DB extends Manager
 
         $sql = self::DRIVER_INITIALIZATION[$driver];
 
-        if ($sql !== '') {
-            self::exec($sql);
-        }
+        self::exec($sql);
     }
 
     public static function driverName(): string

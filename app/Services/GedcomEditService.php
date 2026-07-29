@@ -139,10 +139,13 @@ class GedcomEditService
 
             // Find the next tag at the same level.  Check if any child tags have values.
             $children_with_values = false;
-            for ($j = $i + 1; $j < $count && $levels[$j] > $levels[$i]; $j++) {
+            $j                    = $i + 1;
+
+            while ($j < $count && $levels[$j] > $levels[$i]) {
                 if ($values[$j] !== '') {
                     $children_with_values = true;
                 }
+                $j++;
             }
 
             if ($values[$i] !== '' || $children_with_values  && !$element instanceof AbstractXrefElement) {

@@ -112,7 +112,7 @@ class CompressResponse implements MiddlewareInterface
 
         $content_type = $response->getHeaderLine('content-type');
         $content_type = strtr($content_type, [' ' => '']);
-        $content_type = strstr($content_type, ';', true) ?: $content_type;
+        $content_type = explode(';', $content_type, 2)[0];
         $content_type = strtolower($content_type);
 
         if (str_starts_with($content_type, 'text/')) {

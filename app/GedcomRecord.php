@@ -586,8 +586,10 @@ class GedcomRecord
 
                     $facts = $facts
                         ->sort(static function (Fact $x, Fact $y) use ($subtags): int {
-                            $sort_x = array_search($x->tag(), $subtags, true) ?: PHP_INT_MAX;
-                            $sort_y = array_search($y->tag(), $subtags, true) ?: PHP_INT_MAX;
+                            $search_x = array_search($x->tag(), $subtags, true);
+                            $search_y = array_search($y->tag(), $subtags, true);
+                            $sort_x   = $search_x !== false ? $search_x : PHP_INT_MAX;
+                            $sort_y   = $search_y !== false ? $search_y : PHP_INT_MAX;
 
                             return $sort_x <=> $sort_y;
                         });
@@ -887,7 +889,7 @@ class GedcomRecord
                     } else {
                         $this->addName($match[1], $match[2], $fact->gedcom());
                     }
-                    if ($match[3] && preg_match_all('/^' . $sublevel . ' (ROMN|FONE|_\w+) (.+)((\n[' . $subsublevel . '-9].+)*)/m', $match[3], $submatches, PREG_SET_ORDER)) {
+                    if ($match[3] !== '' && preg_match_all('/^' . $sublevel . ' (ROMN|FONE|_\w+) (.+)((\n[' . $subsublevel . '-9].+)*)/m', $match[3], $submatches, PREG_SET_ORDER)) {
                         foreach ($submatches as $submatch) {
                             if ($submatch[1] !== '_RUFNAME') {
                                 $this->addName($submatch[1], $submatch[2], $match[3]);
@@ -946,7 +948,7 @@ class GedcomRecord
     private function canShowRecord(int $access_level): bool
     {
         // This setting would better be called "$ENABLE_PRIVACY"
-        if (!$this->tree->getPreference('HIDE_LIVE_PEOPLE')) {
+        if ($this->tree->getPreference('HIDE_LIVE_PEOPLE') !== '1') {
             return true;
         }
 

@@ -53,7 +53,7 @@ final class TomSelectRepository extends AbstractTomSelectHandler
         if ($repository instanceof Repository) {
             $results = new Collection([$repository]);
         } else {
-            $search  = array_filter(explode(' ', $query));
+            $search  = array_filter(explode(' ', $query), static fn (string $value): bool => $value !== '');
             $results = $this->search_service->searchRepositories([$tree], $search, $offset, $limit);
         }
 

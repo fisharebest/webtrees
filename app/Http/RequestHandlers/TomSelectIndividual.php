@@ -50,7 +50,7 @@ final class TomSelectIndividual extends AbstractTomSelectHandler
         if ($individual instanceof Individual) {
             $results = new Collection([$individual]);
         } else {
-            $search  = array_filter(explode(' ', $query));
+            $search  = array_filter(explode(' ', $query), static fn (string $value): bool => $value !== '');
             $results = $this->search_service->searchIndividualNames([$tree], $search, $offset, $limit);
         }
 

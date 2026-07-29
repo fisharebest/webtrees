@@ -180,7 +180,7 @@ final class ListBuilder
                     ->groupBy(['xref']);
             })
             ->get()
-            ->map(fn (object $row): GedcomRecord|null => Registry::gedcomRecordFactory()->make($row->xref, $this->tree, $row->new_gedcom ?: $row->old_gedcom))
+            ->map(fn (object $row): GedcomRecord|null => Registry::gedcomRecordFactory()->make($row->xref, $this->tree, $row->new_gedcom !== '' ? $row->new_gedcom : $row->old_gedcom))
             ->filter()
             ->all();
 
@@ -459,11 +459,12 @@ final class ListBuilder
                     if (count($tags) > 1) {
                         $level = 1;
                         $t     = 'XXXX';
-                        foreach ($tags as $t) {
+                        foreach ($tags as $current_tag) {
+                            $t = $current_tag;
                             if ($searchstr !== '') {
                                 $searchstr .= "[^\n]*(\n[2-9][^\n]*)*\n";
                             }
-                            $searchstr .= $level . ' ' . $t;
+                            $searchstr .= $level . ' ' . $current_tag;
                             $level++;
                         }
                     } else {

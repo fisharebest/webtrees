@@ -32,7 +32,7 @@ use Fisharebest\Webtrees\Tree;
     <?= I18N::plural('This family tree has %s record which uses the same “XREF” as another family tree.', 'This family tree has %s records which use the same “XREF” as another family tree.', count($xrefs), I18N::number(count($xrefs))) ?>
 </p>
 
-<?php if (!empty($xrefs)) : ?>
+<?php if ($xrefs !== []) : ?>
     <p>
         <?= I18N::translate('You can renumber this family tree.') ?>
     </p>

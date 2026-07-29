@@ -100,7 +100,7 @@ use Illuminate\Support\Collection;
                     <input class="form-control" id="dbhost" name="dbhost" type="text" value="<?= e($dbhost === 'localhost' ? '' : $dbhost) ?>" dir="ltr">
                 </div>
                 <div class="col-4">
-                    <input class="form-control" id="dbport" name="dbport" pattern="\d+" type="text" value="<?= e($dbport ?: '3306') ?>" dir="ltr">
+                    <input class="form-control" id="dbport" name="dbport" pattern="\d+" type="text" value="<?= e($dbport !== '' ? $dbport : '3306') ?>" dir="ltr">
                 </div>
             </div>
         </div>
@@ -188,7 +188,7 @@ use Illuminate\Support\Collection;
             </label>
             <div class="col-sm-9">
                 <div class="form-check">
-                    <input class="form-check-input" id="dbverify" name="dbverify" type="checkbox" value="1" <?= $dbverify ? 'checked' : '' ?>>
+                    <input class="form-check-input" id="dbverify" name="dbverify" type="checkbox" value="1" <?= $dbverify !== '' ? 'checked' : '' ?>>
                 </div>
             </div>
         </div>

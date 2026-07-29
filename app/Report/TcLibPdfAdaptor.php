@@ -270,7 +270,7 @@ final class TcLibPdfAdaptor
         // Save the caller's font style/size so we can restore it after
         // wrapText() — the PdfTextMeasurer changes the renderer's current
         // style during measurement which would corrupt the rendering font.
-        $saved_font_style = (string) $this->tcpdf->font->getCurrentFont()['style'];
+        $saved_font_style = $this->tcpdf->font->getCurrentFont()['style'];
         // Style expects lowercase flags, while TCPDF uses uppercase.
         $saved_style_flags = strtolower($saved_font_style);
 

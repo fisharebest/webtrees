@@ -69,7 +69,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
     {
         $PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
         $gedcomid         = $tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
-        $default_xref     = $gedcomid ?: $PEDIGREE_ROOT_ID;
+        $default_xref     = $gedcomid !== '' ? $gedcomid : $PEDIGREE_ROOT_ID;
 
         $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
         $xref = $this->getBlockSetting($block_id, 'pid', $default_xref);
@@ -200,7 +200,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
     {
         $PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
         $gedcomid         = $tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
-        $default_xref     = $gedcomid ?: $PEDIGREE_ROOT_ID;
+        $default_xref     = $gedcomid !== '' ? $gedcomid : $PEDIGREE_ROOT_ID;
 
         $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
         $xref = $this->getBlockSetting($block_id, 'pid', $default_xref);

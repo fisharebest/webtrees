@@ -53,7 +53,7 @@ final class TomSelectFamily extends AbstractTomSelectHandler
         if ($family instanceof Family) {
             $results = new Collection([$family]);
         } else {
-            $search  = array_filter(explode(' ', $query));
+            $search  = array_filter(explode(' ', $query), static fn (string $value): bool => $value !== '');
             $results = $this->search_service->searchFamilyNames([$tree], $search, $offset, $limit);
         }
 

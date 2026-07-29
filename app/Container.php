@@ -45,6 +45,7 @@ class Container implements ContainerInterface
     /**
      * @param class-string<T> $id
      */
+    // @phpstan-ignore-next-line method.childParameterType (intentionally narrowed from PSR-11 string to class-string for type safety)
     public function has(string $id): bool
     {
         return array_key_exists($id, $this->container) || array_key_exists($id, $this->bindings);
@@ -55,6 +56,7 @@ class Container implements ContainerInterface
      *
      * @return T
      */
+    // @phpstan-ignore-next-line method.childParameterType (intentionally narrowed from PSR-11 string to class-string for type safety)
     public function get(string $id): object
     {
         return $this->container[$id] ??= $this->make($this->bindings[$id] ?? $id);
@@ -77,6 +79,7 @@ class Container implements ContainerInterface
      * @param class-string<T> $id
      * @param T               $object
      */
+    // @phpstan-ignore-next-line method.childParameterType (intentionally narrowed from string to class-string for type safety)
     public function set(string $id, object $object): static
     {
         $this->container[$id] = $object;
@@ -93,7 +96,7 @@ class Container implements ContainerInterface
     {
         try {
             $reflector = new ReflectionClass($id);
-        } catch (ReflectionException $exception) {
+        } catch (ReflectionException $exception) { // @phpstan-ignore catch.neverThrown (class-string from bindings may reference a class that does not exist)
             throw new NotFoundInContainerException('Cannot make ' . $id, 0, $exception);
         }
 

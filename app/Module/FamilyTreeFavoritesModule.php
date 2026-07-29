@@ -150,7 +150,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
         if (Auth::isManager($tree, $user)) {
             if ($type === 'url' && $url !== '') {
-                $this->addUrlFavorite($tree, $url, $title ?: $url, $note);
+                $this->addUrlFavorite($tree, $url, $title !== '' ? $title : $url, $note);
             }
 
             if ($record instanceof GedcomRecord && $record->canShow()) {

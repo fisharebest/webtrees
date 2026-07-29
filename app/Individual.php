@@ -271,7 +271,7 @@ class Individual extends GedcomRecord
             }
             // Check spouse dates
             $spouse = $family->spouse($this, Auth::PRIV_HIDE);
-            if ($spouse) {
+            if ($spouse !== null) {
                 preg_match_all('/\n2 DATE (.+)/', $spouse->gedcom, $date_matches);
                 foreach ($date_matches[1] as $date_match) {
                     $date = new Date($date_match);
@@ -569,7 +569,7 @@ class Individual extends GedcomRecord
                         $max[] = $tmp->minimumJulianDay() - 365 * 15;
                     }
                     $spouse = $family->spouse($this);
-                    if ($spouse) {
+                    if ($spouse !== null) {
                         $tmp = $spouse->getBirthDate();
                         if ($tmp->isOK()) {
                             $min[] = $tmp->maximumJulianDay() - 365 * 25;
@@ -584,7 +584,7 @@ class Individual extends GedcomRecord
                         }
                     }
                 }
-                if ($min && $max) {
+                if ($min !== [] && $max !== []) {
                     $gregorian_calendar = new GregorianCalendar();
 
                     [$year] = $gregorian_calendar->jdToYmd(intdiv(max($min) + min($max), 2));
@@ -933,9 +933,9 @@ class Individual extends GedcomRecord
             if (preg_match_all('/\/([^\/]*)\//', $full, $matches)) {
                 // There can be many surnames, each wrapped with '/'
                 $SURNS = $matches[1];
-                foreach ($SURNS as $n => $SURN) {
+                foreach ($SURNS as $n => $raw_surn) {
                     // Remove surname prefixes, such as "van de ", "d'" and "'t " (lower case only)
-                    $SURNS[$n] = preg_replace('/^(?:[a-z]+ |[a-z]+\' ?|\'[a-z]+ )+/', '', $SURN);
+                    $SURNS[$n] = preg_replace('/^(?:[a-z]+ |[a-z]+\' ?|\'[a-z]+ )+/', '', $raw_surn);
                 }
             } else {
                 // It is valid not to have a surname at all
@@ -944,7 +944,7 @@ class Individual extends GedcomRecord
         }
 
         // If we don’t have a GIVN record, extract it from the NAME
-        if (!$GIVN) {
+        if ($GIVN === '') {
             // remove surname
             $GIVN = preg_replace('/ ?\/.*\/ ?/', ' ', $full);
             // remove nickname
@@ -956,7 +956,7 @@ class Individual extends GedcomRecord
         }
 
         // Add placeholder for unknown given name
-        if (!$GIVN) {
+        if ($GIVN === null || $GIVN === '') {
             $GIVN = self::PRAENOMEN_NESCIO;
             $pos  = (int) strpos($full, '/');
             $full = substr($full, 0, $pos) . '@P.N. ' . substr($full, $pos);
@@ -982,17 +982,17 @@ class Individual extends GedcomRecord
         $GIVN   = str_replace('*', '', $GIVN);
         $fullNN = str_replace('*', '', $fullNN);
 
-        foreach ($SURNS as $SURN) {
+        foreach ($SURNS as $sort_surn) {
             // Scottish 'Mc and Mac ' prefixes both sort under 'Mac'
-            if (strcasecmp(substr($SURN, 0, 2), 'Mc') === 0) {
-                $SURN = substr_replace($SURN, 'Mac', 0, 2);
-            } elseif (strcasecmp(substr($SURN, 0, 4), 'Mac ') === 0) {
-                $SURN = substr_replace($SURN, 'Mac', 0, 4);
+            if (strcasecmp(substr($sort_surn, 0, 2), 'Mc') === 0) {
+                $sort_surn = substr_replace($sort_surn, 'Mac', 0, 2);
+            } elseif (strcasecmp(substr($sort_surn, 0, 4), 'Mac ') === 0) {
+                $sort_surn = substr_replace($sort_surn, 'Mac', 0, 4);
             }
 
             $this->getAllNames[] = [
                 'type'    => $type,
-                'sort'    => $SURN . ',' . $GIVN,
+                'sort'    => $sort_surn . ',' . $GIVN,
                 'full'    => $full,
                 // This is used for display
                 'fullNN'  => $fullNN,
@@ -1001,7 +1001,7 @@ class Individual extends GedcomRecord
                 // This goes into the database
                 'givn'    => $GIVN,
                 // This goes into the database
-                'surn'    => $SURN,
+                'surn'    => $sort_surn,
                 // This goes into the database
             ];
         }

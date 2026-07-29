@@ -157,7 +157,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
         $family_link = '<a href="' . e($family->url()) . '" title="' . strip_tags($family->fullName()) . '">' . view('icons/family') . '</a>';
 
         $marryear = $family->getMarriageYear();
-        $marr     = $marryear ? '<i class="icon-rings"></i>' . $marryear : '';
+        $marr     = $marryear !== 0 ? '<i class="icon-rings"></i>' . $marryear : '';
 
         return
             '<li class="sb_desc_indi_li">' .

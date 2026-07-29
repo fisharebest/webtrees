@@ -202,7 +202,7 @@ final class ManageMediaData implements RequestHandlerInterface
 
                 $callback = function (array $row) use ($data_filesystem, $media_trees): array {
                     try {
-                        $mime_type = $data_filesystem->mimeType($row[0]) ?: Mime::DEFAULT_TYPE;
+                        $mime_type = $data_filesystem->mimeType($row[0]) !== '' ? $data_filesystem->mimeType($row[0]) : Mime::DEFAULT_TYPE;
                     } catch (FilesystemException | UnableToRetrieveMetadata) {
                         $mime_type = Mime::DEFAULT_TYPE;
                     }

@@ -864,10 +864,10 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 
         // Colors for z-axis
         $colors = [];
-        $index  = 0;
+        $color_offset = 0;
         while (count($colors) < count($ydata)) {
-            $colors[] = self::Z_AXIS_COLORS[$index];
-            $index    = ($index + 1) % count(self::Z_AXIS_COLORS);
+            $colors[] = self::Z_AXIS_COLORS[$color_offset];
+            $color_offset = ($color_offset + 1) % count(self::Z_AXIS_COLORS);
         }
 
         // Convert our sparse dataset into a fixed-size array

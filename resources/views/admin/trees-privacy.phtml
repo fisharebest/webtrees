@@ -251,9 +251,9 @@ use Fisharebest\Webtrees\Tree;
             <?php foreach ($privacy_restrictions as $privacy_restriction) : ?>
                 <tr>
                     <td>
-                        <?php if ($privacy_restriction->record) : ?>
+                        <?php if ($privacy_restriction->record !== null) : ?>
                             <a href="<?= e($privacy_restriction->record->url()) ?>"><?= $privacy_restriction->record->fullName() ?></a>
-                        <?php elseif ($privacy_restriction->xref) : ?>
+                        <?php elseif ($privacy_restriction->xref !== '') : ?>
                             <div class="text-danger">
                                 <?= $privacy_restriction->xref ?> — <?= I18N::translate('This record does not exist.') ?>
                             </div>

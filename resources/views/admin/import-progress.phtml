@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\Tree;
      aria-valuemax="100"
 >
     <div class="progress-bar" style="min-width: <?= $progress * 100 ?>%;">
-        <?= $status ?: I18N::percentage($progress, 1) ?>
+        <?= $status !== '' ? $status : I18N::percentage($progress, 1) ?>
     </div>
 </div>
 

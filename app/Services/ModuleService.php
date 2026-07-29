@@ -573,28 +573,24 @@ class ModuleService
     {
         /** @var Collection<int,T&ModuleInterface> $modules */
         $modules = $this->all($include_disabled)
-            ->filter($this->interfaceFilter($interface));
+            ->filter($this->interfaceFilter($interface))
+            ->values();
 
         switch ($interface) {
             case ModuleFooterInterface::class:
-                /** @var Collection<int,T&ModuleInterface> */
                 return $modules->sort($this->footerComparator());
 
             case ModuleMenuInterface::class:
-                /** @var Collection<int,T&ModuleInterface> */
                 return $modules->sort($this->menuComparator());
 
             case ModuleSidebarInterface::class:
-                /** @var Collection<int,T&ModuleInterface> */
                 return $modules->sort($this->sidebarComparator());
 
             case ModuleTabInterface::class:
-                /** @var Collection<int,T&ModuleInterface> */
                 return $modules->sort($this->tabComparator());
 
             default:
                 if ($sort) {
-                    /** @var Collection<int,T&ModuleInterface> */
                     return $modules->sort($this->moduleComparator());
                 }
 

@@ -114,7 +114,7 @@ readonly class StatisticsData
                 // Exclude initials and particles.
                 if (preg_match('/^([A-Z]|[a-z]{1,3})$/', $given) !== 1) {
                     $given_names[$given] ??= 0;
-                    $given_names[$given] += (int) $count;
+                    $given_names[$given] += $count;
                 }
             }
         }
@@ -666,7 +666,7 @@ readonly class StatisticsData
 
         foreach (array_slice($places, 0, $limit) as $place => $count) {
             $records[] = [
-                'place' => new Place((string) $place, $this->tree),
+                'place' => new Place((string) $place, $this->tree), // @phpstan-ignore cast.useless (PHP converts numeric string keys to int)
                 'count' => $count,
             ];
         }
@@ -1839,8 +1839,8 @@ readonly class StatisticsData
             if (
                 $husb instanceof Individual &&
                 $wife instanceof Individual &&
-                ($husb->getAllDeathDates() || !$husb->isDead()) &&
-                ($wife->getAllDeathDates() || !$wife->isDead())
+                ($husb->getAllDeathDates() !== [] || !$husb->isDead()) &&
+                ($wife->getAllDeathDates() !== [] || !$wife->isDead())
             ) {
                 if ($family->canShow()) {
                     if ($type === 'list') {
@@ -3002,7 +3002,7 @@ readonly class StatisticsData
     private function mapNumericToName(int $numeric_code): string
     {
         $three_letter_code = array_search($numeric_code, $this->iso3166Numeric(), true);
-        $three_letter_code = $three_letter_code ?: '???';
+        $three_letter_code = $three_letter_code !== false ? $three_letter_code : '???';
 
         return $this->getAllCountries()[$three_letter_code];
     }

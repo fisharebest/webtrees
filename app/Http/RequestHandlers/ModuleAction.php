@@ -80,6 +80,6 @@ final class ModuleAction implements RequestHandlerInterface
             throw new HttpNotFoundException();
         }
 
-        return $module->$method($request);
+        return $module->$method($request); // @phpstan-ignore method.dynamicName (module actions use dynamic dispatch by design)
     }
 }

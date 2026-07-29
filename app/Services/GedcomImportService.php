@@ -189,13 +189,13 @@ class GedcomImportService
                     while (str_contains($data, '  ')) {
                         $data = strtr($data, ['  ' => ' ']);
                     }
-                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' ? '' : ' ' . $data);
+                    $newrec .= ($newrec !== '' ? "\n" : '') . $level . ' ' . ($level === '0' && $xref !== '' ? $xref . ' ' : '') . $tag . ($data === '' ? '' : ' ' . $data);
                     break;
                 case 'NOTE':
                 case 'TEXT':
                 case 'DATA':
                 case 'CONT':
-                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' ? '' : ' ' . $data);
+                    $newrec .= ($newrec !== '' ? "\n" : '') . $level . ' ' . ($level === '0' && $xref !== '' ? $xref . ' ' : '') . $tag . ($data === '' ? '' : ' ' . $data);
                     break;
                 case 'FILE':
                     // Strip off the user-defined path prefix
@@ -206,7 +206,7 @@ class GedcomImportService
                     // convert backslashes in filenames to forward slashes
                     $data = preg_replace("/\\\\/", '/', $data);
 
-                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' ? '' : ' ' . $data);
+                    $newrec .= ($newrec !== '' ? "\n" : '') . $level . ' ' . ($level === '0' && $xref !== '' ? $xref . ' ' : '') . $tag . ($data === '' ? '' : ' ' . $data);
                     break;
                 case 'CONC':
                     // Special case - Note records uniquely have data in the level 0 line.

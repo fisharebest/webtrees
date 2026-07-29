@@ -390,7 +390,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
                                 echo '<li class="wt-initials-list-item d-flex">';
                                 if ($given_count > 0) {
                                     if ($show === 'indi' && $givn_initial === $falpha && $show_all_firstnames !== 'yes') {
-                                        echo '<a class="wt-initial px-1 active" href="' . e($this->listUrl($tree, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($given_count) . '">' . $this->displayGivenNameInitial((string) $givn_initial) . '</a>';
+                                        echo '<a class="wt-initial px-1 active" href="' . e($this->listUrl($tree, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($given_count) . '">' . $this->displayGivenNameInitial((string) $givn_initial) . '</a>'; // @phpstan-ignore cast.useless (PHP converts numeric string keys to int)
                                     } else {
                                         echo '<a class="wt-initial px-1" href="' . e($this->listUrl($tree, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($given_count) . '">' . $this->displayGivenNameInitial((string) $givn_initial) . '</a>';
                                     }

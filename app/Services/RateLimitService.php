@@ -97,7 +97,7 @@ class RateLimitService
         }
 
         // Extract the timestamps.
-        $timestamps = array_filter(explode(',', $history));
+        $timestamps = array_filter(explode(',', $history), static fn (string $value): bool => $value !== '');
 
         // Filter events within our time window.
         $filter    = fn (string $x): bool => (int) $x >= $this->now - $seconds && (int) $x <= $this->now;

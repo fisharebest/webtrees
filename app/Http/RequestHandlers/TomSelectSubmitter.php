@@ -53,7 +53,7 @@ final class TomSelectSubmitter extends AbstractTomSelectHandler
         if ($submitter instanceof Submitter) {
             $results = new Collection([$submitter]);
         } else {
-            $search  = array_filter(explode(' ', $query));
+            $search  = array_filter(explode(' ', $query), static fn (string $value): bool => $value !== '');
             $results = $this->search_service->searchSubmitters([$tree], $search, $offset, $limit);
         }
 

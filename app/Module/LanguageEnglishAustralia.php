@@ -25,6 +25,8 @@ class LanguageEnglishAustralia extends LanguageEnglishGreatBritain
 {
     public function __construct()
     {
+        parent::__construct();
+
         $this->language = new EnglishAustralia();
     }
 

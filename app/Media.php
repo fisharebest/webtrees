@@ -109,7 +109,7 @@ class Media extends GedcomRecord
         }
 
         // Titles may be empty.
-        $names = array_filter($names);
+        $names = array_filter($names, static fn (string $value): bool => $value !== '');
 
         if ($names === []) {
             foreach ($this->mediaFiles() as $media_file) {

@@ -655,7 +655,7 @@ final class ParserGenerate extends AbstractParser
         $resolved_gedcom = '';
         if (count($path_segments) < 2) {
             $record          = Registry::gedcomRecordFactory()->make($attrs['id'], $this->tree);
-            $resolved_gedcom = $record ? $record->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
+            $resolved_gedcom = $record !== null ? $record->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
         }
 
         if ($resolved_gedcom === '') {
@@ -663,12 +663,12 @@ final class ParserGenerate extends AbstractParser
             foreach ($path_segments as $path_segment) {
                 if (preg_match('/\$(.+)/', $path_segment, $match)) {
                     $record          = Registry::gedcomRecordFactory()->make($match[1], $this->tree);
-                    $resolved_gedcom = $record ? $record->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
+                    $resolved_gedcom = $record !== null ? $record->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
                 } elseif (preg_match('/@(.+)/', $path_segment, $match)) {
                     $link_match = [];
                     if (preg_match("/\d $match[1] @([^@]+)@/", $current_gedcom, $link_match)) {
                         $record          = Registry::gedcomRecordFactory()->make($link_match[1], $this->tree);
-                        $resolved_gedcom = $record ? $record->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
+                        $resolved_gedcom = $record !== null ? $record->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
                         $current_gedcom  = $resolved_gedcom;
                     } else {
                         $resolved_gedcom = '';
@@ -985,7 +985,7 @@ final class ParserGenerate extends AbstractParser
                     )
                 ) {
                     $linked_object = Registry::gedcomRecordFactory()->make($xref_match[1], $this->tree);
-                    if ($linked_object && !$linked_object->canShow()) {
+                    if ($linked_object !== null && !$linked_object->canShow()) {
                         continue;
                     }
                 }
@@ -1232,7 +1232,7 @@ final class ParserGenerate extends AbstractParser
             $id = $match[2];
         }
         $record = Registry::gedcomRecordFactory()->make($id, $this->tree);
-        if ($record && $record->canShow()) {
+        if ($record !== null && $record->canShow()) {
             $this->print_data_stack[] = $this->print_data;
             $this->print_data         = true;
             $style                    = $this->style_repository->get($attrs['style'] ?? 'footnote');
@@ -1614,7 +1614,7 @@ final class ParserGenerate extends AbstractParser
             $this->list_total   = count($this->list);
             $this->list_private = 0;
             foreach ($this->list as $xref => $value) {
-                if (isset($value->generation)) {
+                if ($value instanceof Individual && $value->generation !== null) {
                     $this->generation = $value->generation;
                 }
                 $record        = Registry::gedcomRecordFactory()->make((string) $xref, $this->tree);
@@ -1677,7 +1677,7 @@ final class ParserGenerate extends AbstractParser
             if ($parents) {
                 $husband = $family->husband();
                 $wife    = $family->wife();
-                if ($husband) {
+                if ($husband !== null) {
                     $list[$husband->xref()] = $husband;
                     if (isset($list[$pid]->generation)) {
                         $list[$husband->xref()]->generation = $list[$pid]->generation - 1;
@@ -1685,7 +1685,7 @@ final class ParserGenerate extends AbstractParser
                         $list[$husband->xref()]->generation = 1;
                     }
                 }
-                if ($wife) {
+                if ($wife !== null) {
                     $list[$wife->xref()] = $wife;
                     if (isset($list[$pid]->generation)) {
                         $list[$wife->xref()]->generation = $list[$pid]->generation - 1;
@@ -1730,19 +1730,19 @@ final class ParserGenerate extends AbstractParser
             foreach ($person->childFamilies() as $family) {
                 $husband = $family->husband();
                 $wife    = $family->wife();
-                if ($husband) {
+                if ($husband !== null) {
                     $list[$husband->xref()]             = $husband;
                     $list[$husband->xref()]->generation = $list[$id]->generation + 1;
                 }
-                if ($wife) {
+                if ($wife !== null) {
                     $list[$wife->xref()]             = $wife;
                     $list[$wife->xref()]->generation = $list[$id]->generation + 1;
                 }
                 if ($generations === -1 || $list[$id]->generation + 1 < $generations) {
-                    if ($husband) {
+                    if ($husband !== null) {
                         $genlist[] = $husband->xref();
                     }
-                    if ($wife) {
+                    if ($wife !== null) {
                         $genlist[] = $wife->xref();
                     }
                 }

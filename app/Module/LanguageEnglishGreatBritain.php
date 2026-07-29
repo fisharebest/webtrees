@@ -25,6 +25,8 @@ class LanguageEnglishGreatBritain extends LanguageEnglishUnitedStates
 {
     public function __construct()
     {
+        parent::__construct();
+
         $this->language = new EnglishGreatBritain();
     }
     // British English changes "three-times" to "thrice"

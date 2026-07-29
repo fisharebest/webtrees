@@ -174,7 +174,7 @@ abstract class AbstractModule implements ModuleInterface
 
         $row = $access_levels->first(fn (object $row): bool => $row->interface === $interface && $row->module_name === $this->name());
 
-        return $row ? (int) $row->access_level : $this->access_level;
+        return $row !== null ? (int) $row->access_level : $this->access_level;
     }
 
     /**

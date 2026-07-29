@@ -69,7 +69,11 @@ final class Console extends Application
         I18N::init('en-US');
 
         try {
-            $config = parse_ini_file(filename: Webtrees::CONFIG_FILE) ?: [];
+            $config = parse_ini_file(filename: Webtrees::CONFIG_FILE);
+
+            if ($config === false) {
+                $config = [];
+            }
 
             DB::connect(
                 driver: $config['dbtype'] ?? DB::MYSQL,

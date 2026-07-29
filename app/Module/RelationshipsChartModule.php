@@ -360,12 +360,12 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             }
             echo '<div class="wt-chart wt-chart-relationships">';
             echo '<table style="border-collapse: collapse; margin: 20px 50px;">';
-            for ($y = $max_y; $y >= $min_y; --$y) {
+            for ($row = $max_y; $row >= $min_y; --$row) {
                 echo '<tr>';
-                for ($x = 0; $x <= $max_x; ++$x) {
+                for ($col = 0; $col <= $max_x; ++$col) {
                     echo '<td style="padding: 0;">';
-                    if (isset($table[$x][$y])) {
-                        echo $table[$x][$y];
+                    if (isset($table[$col][$row])) {
+                        echo $table[$col][$row];
                     }
                     echo '</td>';
                 }
@@ -375,7 +375,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             echo '</div>';
         }
 
-        if (!$num_paths) {
+        if ($num_paths === 0) {
             echo '<p>', I18N::translate('No link between the two individuals could be found.'), '</p>';
         }
 

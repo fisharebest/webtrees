@@ -93,7 +93,7 @@ use Illuminate\Support\Collection;
     </form>
 </div>
 
-<?php if (array_filter($fields) !== []) : ?>
+<?php if (array_filter($fields, static fn (string $value): bool => $value !== '') !== []) : ?>
     <?php if ($individuals->isEmpty()) : ?>
         <div class="alert alert-info">
             <?= I18N::translate('No results found.') ?>

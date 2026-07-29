@@ -104,7 +104,7 @@ abstract class AbstractParser
     {
         $sub_reader = new XMLReader();
 
-        if ($sub_reader->XML($xml) === false) {
+        if ($sub_reader->XML($xml) === false) { // @phpstan-ignore staticMethod.dynamicCall (instance call needed for PHP 8.3 compatibility)
             throw new RuntimeException('Cannot create XMLReader for fragment');
         }
 

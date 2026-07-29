@@ -163,7 +163,7 @@ trait ModuleThemeTrait
         foreach ($individual->spouseFamilies() as $family) {
             $menus[] = new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->url());
             $spouse  = $family->spouse($individual);
-            if ($spouse && $spouse->canShowName()) {
+            if ($spouse !== null && $spouse->canShowName()) {
                 $menus[] = new Menu($spouse->fullName(), $spouse->url());
             }
             foreach ($family->children() as $child) {

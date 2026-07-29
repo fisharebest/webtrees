@@ -91,7 +91,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
         extract($config, EXTR_OVERWRITE);
 
-        $end_jd      = $show_future ? self::MAXIMUM_JULIAN_DAY : Registry::timestampFactory()->todayJulianDay();
+        $end_jd      = $show_future === '1' ? self::MAXIMUM_JULIAN_DAY : Registry::timestampFactory()->todayJulianDay();
         $individuals = $this->individualsWithTasks($tree, $end_jd);
         $families    = $this->familiesWithTasks($tree, $end_jd);
 
@@ -106,10 +106,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
                 if ($user_name === Auth::user()->userName()) {
                     // Tasks belonging to us.
                     $tasks->add($task);
-                } elseif ($user_name === '' && $show_unassigned) {
+                } elseif ($user_name === '' && $show_unassigned === '1') {
                     // Tasks belonging to nobody.
                     $tasks->add($task);
-                } elseif ($user_name !== '' && $show_other) {
+                } elseif ($user_name !== '' && $show_other === '1') {
                     // Tasks belonging to others.
                     $tasks->add($task);
                 }

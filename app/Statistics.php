@@ -105,21 +105,21 @@ class Statistics
     {
         $days = $this->data->averageLifespanDays('ALL');
 
-        return $show_years ? $this->format->age($days) : I18N::number((int) ($days / 365.25));
+        return $show_years !== '0' ? $this->format->age($days) : I18N::number((int) ($days / 365.25));
     }
 
     public function averageLifespanFemale(string $show_years = '0'): string
     {
         $days = $this->data->averageLifespanDays('F');
 
-        return $show_years ? $this->format->age($days) : I18N::number((int) ($days / 365.25));
+        return $show_years !== '0' ? $this->format->age($days) : I18N::number((int) ($days / 365.25));
     }
 
     public function averageLifespanMale(string $show_years = '0'): string
     {
         $days = $this->data->averageLifespanDays('M');
 
-        return $show_years ? $this->format->age($days) : I18N::number((int) ($days / 365.25));
+        return $show_years !== '0' ? $this->format->age($days) : I18N::number((int) ($days / 365.25));
     }
 
     public function browserDate(): string
@@ -1019,7 +1019,7 @@ class Statistics
                 ->map(function (ReflectionMethod $method): string {
                     $tag = $method->getName();
 
-                    return '<dt>#' . $tag . '#</dt><dd>' . $this->$tag() . '</dd>';
+                    return '<dt>#' . $tag . '#</dt><dd>' . $this->$tag() . '</dd>'; // @phpstan-ignore method.dynamicName (statistics tag replacement uses dynamic dispatch)
                 });
 
             return '<dl>' . $examples->implode('') . '</dl>';
@@ -1052,7 +1052,7 @@ class Statistics
             $method = array_shift($params);
 
             if (method_exists($this, $method)) {
-                $tags[$match[0] . '#'] = $this->$method(...$params);
+                $tags[$match[0] . '#'] = $this->$method(...$params); // @phpstan-ignore method.dynamicName (statistics tag replacement uses dynamic dispatch)
             }
         }
 

@@ -34,7 +34,7 @@ use Fisharebest\Webtrees\Tree;
         <dt><?= I18N::translate('Comments') ?></dt>
         <dd><?= e($comments) ?></dd>
         <dt><?= I18N::translate('Tree') ?></dt>
-        <dd><?= e($tree ? $tree->name() : '') ?></dd>
+        <dd><?= e($tree !== null ? $tree->name() : '') ?></dd>
     </dl>
 
     <p>

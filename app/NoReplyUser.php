@@ -39,7 +39,8 @@ class NoReplyUser implements UserInterface
      */
     public function email(): string
     {
-        $domain = Site::getPreference('SMTP_HELO') ?: 'localhost';
+        $smtp_helo = Site::getPreference('SMTP_HELO');
+        $domain    = $smtp_helo !== '' ? $smtp_helo : 'localhost';
 
         return 'no-reply@' . $domain;
     }

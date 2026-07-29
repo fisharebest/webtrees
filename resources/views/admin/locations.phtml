@@ -62,7 +62,7 @@ use Illuminate\Support\Collection;
 
     <tbody>
     <?php foreach ($placelist as $place) : ?>
-        <tr class="<?= $active[$place->key] ?? null ? '' : 'unused-location collapse show' ?>">
+        <tr class="<?= ($active[$place->key] ?? null) !== null ? '' : 'unused-location collapse show' ?>">
             <th scope="row">
                 <a href="<?= e(route(MapDataList::class, ['parent_id' => $place->id])) ?>">
                     <bdi><?= e($place->place) ?></bdi>

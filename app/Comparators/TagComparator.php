@@ -98,7 +98,7 @@ final class TagComparator
 
         if ($order === false) {
             // Should always find EVEN!
-            $order = (int) array_search('EVEN', self::FACT_ORDER, true);
+            $order = array_search('EVEN', self::FACT_ORDER, true);
         }
 
         return $order;

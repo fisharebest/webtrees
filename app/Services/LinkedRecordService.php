@@ -237,7 +237,7 @@ class LinkedRecordService
     }
 
     /**
-     * @return Collection<int,Repository>
+     * @return Collection<int,Submitter>
      */
     public function linkedSubmitters(GedcomRecord $record): Collection
     {

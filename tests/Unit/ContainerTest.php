@@ -114,6 +114,6 @@ class ContainerTest extends TestCase
 
         $this->expectException(NotFoundInContainerException::class);
 
-        $container->get('NoSuchClass');
+        $container->get('NoSuchClass'); // @phpstan-ignore argument.type (intentionally passing invalid string to test exception handling)
     }
 }
