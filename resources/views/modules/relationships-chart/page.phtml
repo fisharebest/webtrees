@@ -46,8 +46,11 @@ use Fisharebest\Webtrees\Tree;
     </div>
 
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3 wt-page-options-label">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
+            <?= I18N::translate('Find relationships via ancestors') ?>
         </legend>
+        <div class="col-form-label col-sm-3 wt-page-options-label" aria-hidden="true"></div>
         <div class="col-sm-9 wt-page-options-value">
             <?php if ($ancestors_only) : ?>
                 <input type="hidden" name="ancestors" value="1">
@@ -59,8 +62,11 @@ use Fisharebest\Webtrees\Tree;
     </fieldset>
 
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3 wt-page-options-label">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
+            <?= I18N::translate('Find the closest relationships') ?>
         </legend>
+        <div class="col-form-label col-sm-3 wt-page-options-label" aria-hidden="true"></div>
         <div class="col-sm-9 wt-page-options-value">
             <?php if ($max_recursion === 0) : ?>
                 <?= I18N::translate('Find the closest relationships') ?>

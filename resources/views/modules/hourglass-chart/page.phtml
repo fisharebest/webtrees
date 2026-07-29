@@ -43,9 +43,13 @@ use Fisharebest\Webtrees\Tree;
     </div>
 
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3 wt-page-options-label">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= I18N::translate('Layout') ?>
         </legend>
+        <div class="col-form-label col-sm-3 wt-page-options-label" aria-hidden="true">
+            <?= I18N::translate('Layout') ?>
+        </div>
         <div class="col-sm-9 wt-page-options-value">
             <?= view('components/checkbox', ['label' => I18N::translate('Show spouses'), 'name' => 'spouses', 'checked' => $spouses]) ?>
         </div>

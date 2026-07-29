@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Webtrees;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableStyle;
 use Symfony\Component\Console\Input\InputInterface;
@@ -116,7 +117,9 @@ final class Xgettext extends AbstractCommand
         $io = new SymfonyStyle($input, $output);
         $template_rows = [];
 
-        $php_files        = $this->collectFiles(self::ROOT_DIRECTORY, 'app', '.php');
+        $io->info('Extracting translations from PHP files.');
+
+        $php_files = $this->collectFiles(self::ROOT_DIRECTORY, 'app', '.php');
 
         if ($php_files === []) {
             $io->error('No PHP files found for extraction.');
@@ -141,6 +144,8 @@ final class Xgettext extends AbstractCommand
             $this->formatNumber($this->countMessages(self::ROOT_DIRECTORY . self::PHP_TEMPLATE)),
             $this->formatNumber((int) round((microtime(true) - $php_started_at) * 1000)) . 'ms',
         ];
+
+        $io->info('Extracting translations from PHTML files.');
 
         $phtml_files = $this->collectFiles(self::ROOT_DIRECTORY, 'resources/views', '.phtml');
 
@@ -168,6 +173,8 @@ final class Xgettext extends AbstractCommand
             $this->formatNumber((int) round((microtime(true) - $phtml_started_at) * 1000)) . 'ms',
         ];
 
+        $io->info('Extracting translations from JavaScript files.');
+
         $javascript_files = $this->collectFiles(self::ROOT_DIRECTORY, 'resources/js', '.js');
 
         if ($javascript_files === []) {
@@ -193,6 +200,8 @@ final class Xgettext extends AbstractCommand
             $this->formatNumber($this->countMessages(self::ROOT_DIRECTORY . self::JAVASCRIPT_TEMPLATE)),
             $this->formatNumber((int) round((microtime(true) - $javascript_started_at) * 1000)) . 'ms',
         ];
+
+        $io->info('Extracting translations from XML files.');
 
         $xml_files = $this->collectFiles(self::ROOT_DIRECTORY, 'resources/xml/reports', '.xml');
 
@@ -295,10 +304,19 @@ final class Xgettext extends AbstractCommand
         $language_rows = [];
         $error         = false;
 
+        $io->info('Processing language catalogs.');
+
+        $progress_bar = new ProgressBar($output, count($language_catalog_filenames));
+        $progress_bar->setFormat(' %current%/%max% [%bar%] %percent%% %message%');
+        $progress_bar->setMessage('');
+        $progress_bar->start();
+
         try {
             foreach ($language_catalog_filenames as $language_catalog_filename) {
                 $language_started_at = microtime(true);
                 $language_name = basename(dirname($language_catalog_filename));
+                $progress_bar->setMessage($language_name);
+
                 $po_file       = self::ROOT_DIRECTORY . $language_catalog_filename;
                 $php_file      = self::ROOT_DIRECTORY . self::LANGUAGE_DIRECTORY . '/' . $language_name . '/messages.php';
                 $js_file       = self::ROOT_DIRECTORY . self::JAVASCRIPT_DIRECTORY . '/' . $language_name . '.js';
@@ -316,6 +334,7 @@ final class Xgettext extends AbstractCommand
                         self::LANGUAGE_DIRECTORY . '/' . $language_name . '/messages.php',
                         $this->formatNumber((int) round((microtime(true) - $language_started_at) * 1000)) . 'ms',
                     ];
+                    $progress_bar->advance();
                     continue;
                 }
 
@@ -333,6 +352,7 @@ final class Xgettext extends AbstractCommand
                         self::LANGUAGE_DIRECTORY . '/' . $language_name . '/messages.php',
                         $this->formatNumber((int) round((microtime(true) - $language_started_at) * 1000)) . 'ms',
                     ];
+                    $progress_bar->advance();
                     continue;
                 }
 
@@ -355,8 +375,13 @@ final class Xgettext extends AbstractCommand
                     self::LANGUAGE_DIRECTORY . '/' . $language_name . '/messages.php',
                     $this->formatNumber((int) round((microtime(true) - $language_started_at) * 1000)) . 'ms',
                 ];
+
+                $progress_bar->advance();
             }
         } finally {
+            $progress_bar->finish();
+            $output->writeln('');
+
             if (file_exists($merged_template_filename)) {
                 unlink($merged_template_filename);
             }

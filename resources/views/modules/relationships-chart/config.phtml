@@ -40,10 +40,15 @@ use Illuminate\Support\Collection;
         </div>
 
         <fieldset class="row mb-3">
-            <legend class="col-form-label col-sm-3">
+            <!-- For Safari -->
+            <legend class="visually-hidden">
                 <?= /* I18N: Configuration option */
                 I18N::translate('How much recursion to use when searching for relationships') ?>
             </legend>
+            <div class="col-form-label col-sm-3" aria-hidden="true">
+                <?= /* I18N: Configuration option */
+                I18N::translate('How much recursion to use when searching for relationships') ?>
+            </div>
             <div class="col-sm-9">
                 <?= view('components/radios-inline', ['name' => 'relationship-recursion-' . $tree->id(), 'options' => $recursion_options, 'selected' => (int) $tree->getPreference('RELATIONSHIP_RECURSION', $default_recursion)]) ?>
             </div>

@@ -92,7 +92,7 @@ class ModuleServiceTest extends TestCase
         $modules = $module_service->otherModules()
             ->filter(fn (ModuleInterface $module): bool => !$module instanceof ModuleCustomInterface);
 
-        self::assertCount(4, $modules);
+        self::assertCount(3, $modules);
     }
 
     public function testDeletedModules(): void

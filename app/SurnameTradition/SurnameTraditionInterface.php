@@ -27,14 +27,8 @@ use Fisharebest\Webtrees\Individual;
  */
 interface SurnameTraditionInterface
 {
-    /**
-     * The name of this surname tradition
-     */
     public function name(): string;
 
-    /**
-     * A short description of this surname tradition
-     */
     public function description(): string;
 
     /**
@@ -43,26 +37,17 @@ interface SurnameTraditionInterface
     public function defaultName(): string;
 
     /**
-     * What name is given to a new child
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array;
 
     /**
-     * What name is given to a new parent
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newParentNames(Individual $child, string $sex): array;
 
     /**
-     * What names are given to a new spouse
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newSpouseNames(Individual $spouse, string $sex): array;
 }

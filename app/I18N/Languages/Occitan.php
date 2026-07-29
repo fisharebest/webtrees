@@ -68,20 +68,20 @@ final readonly class Occitan extends AbstractLanguage
 
     protected const array JEWISH_MONTHS_NOMINATIVE = [
         '',
-        'Tishrei',
-        'Heshvan',
-        'Kislev',
-        'Tevet',
-        'Shevat',
-        'Adar I',
-        'Adar II',
-        'Adar',
-        'Nissan',
-        'Iyar',
-        'Sivan',
-        'Tamuz',
-        'Av',
-        'Elul',
+        'tishrei',
+        'heshvan',
+        'kislev',
+        'tevet',
+        'shevat',
+        'adar I',
+        'adar II',
+        'adar',
+        'nissan',
+        'iyar',
+        'sivan',
+        'tamuz',
+        'av',
+        'elul',
     ];
 
     protected const array JEWISH_MONTHS_GENITIVE = self::JEWISH_MONTHS_NOMINATIVE;
@@ -92,18 +92,18 @@ final readonly class Occitan extends AbstractLanguage
 
     protected const array FRENCH_MONTHS_NOMINATIVE = [
         '',
-        'Vendémiaire',
-        'Brumaire',
-        'Frimaire',
-        'Nivôse',
-        'Pluviôse',
-        'Ventôse',
-        'Germinal',
-        'Floréal',
-        'Prairial',
-        'Messidor',
-        'Thermidor',
-        'Fructidor',
+        'vendémiaire',
+        'brumaire',
+        'frimaire',
+        'nivôse',
+        'pluviôse',
+        'ventôse',
+        'germinal',
+        'floréal',
+        'prairial',
+        'messidor',
+        'thermidor',
+        'fructidor',
         'jours complémentaires',
     ];
 
@@ -115,18 +115,18 @@ final readonly class Occitan extends AbstractLanguage
 
     protected const array HIJRI_MONTHS_NOMINATIVE = [
         '',
-        'Muharram',
-        'Safar',
-        'Rabi al-awwal',
-        'Rabi al-thani',
-        'Jumada-al-awwal',
-        'Jumada-al-thani',
-        'Rajab',
-        'Sha’aban',
-        'Ramadan',
-        'Shawwal',
-        'Dhu-al-Qi’dah',
-        'Dhu-al-Hijjah',
+        'muharram',
+        'safar',
+        'rabi al-awwal',
+        'rabi al-thani',
+        'jumada-al-awwal',
+        'jumada-al-thani',
+        'rajab',
+        'sha’aban',
+        'ramadan',
+        'shawwal',
+        'dhu-al-qi’dah',
+        'dhu-al-hijjah',
     ];
 
     protected const array HIJRI_MONTHS_GENITIVE = self::HIJRI_MONTHS_NOMINATIVE;
@@ -137,18 +137,18 @@ final readonly class Occitan extends AbstractLanguage
 
     protected const array JALALI_MONTHS_NOMINATIVE = [
         '',
-        'Farvardin',
-        'Ordibehesht',
-        'Khordad',
-        'Tir',
-        'Mordad',
-        'Shahrivar',
-        'Mehr',
-        'Aban',
-        'Azar',
-        'Dey',
-        'Bahman',
-        'Esfand',
+        'farvardin',
+        'ordibehesht',
+        'khordad',
+        'tir',
+        'mordad',
+        'shahrivar',
+        'mehr',
+        'aban',
+        'azar',
+        'dey',
+        'bahman',
+        'esfand',
     ];
 
     protected const array JALALI_MONTHS_GENITIVE = self::JALALI_MONTHS_NOMINATIVE;
@@ -156,6 +156,24 @@ final readonly class Occitan extends AbstractLanguage
     protected const array JALALI_MONTHS_LOCATIVE = self::JALALI_MONTHS_NOMINATIVE;
 
     protected const array JALALI_MONTHS_INSTRUMENTAL = self::JALALI_MONTHS_NOMINATIVE;
+
+    protected function formatFromDate(string $date): string
+    {
+        if ($this->startsWithVowel($date)) {
+            return 'd’' . $date;
+        }
+
+        return 'de ' . $date;
+    }
+
+    protected function formatFromToDate(string $date1, string $date2): string
+    {
+        if ($this->startsWithVowel($date1)) {
+            return 'd’' . $date1 . ' a ' . $date2;
+        }
+
+        return 'de ' . $date1 . ' a ' . $date2;
+    }
 
     /**
      * @return array<Relationship>

@@ -25,9 +25,13 @@ use Fisharebest\Webtrees\I18N;
 </div>
 
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-3">
+    <!-- For Safari -->
+    <legend class="visually-hidden">
         <?= I18N::translate('Type') ?>
     </legend>
+    <div class="col-form-label col-sm-3" aria-hidden="true">
+        <?= I18N::translate('Type') ?>
+    </div>
     <div class="col-sm-9">
         <?php foreach ($formats as $type => $label) : ?>
             <?= view('components/checkbox', ['label' => $label, 'name' => $type, 'checked' => (bool) $filters[$type]]) ?>

@@ -40,8 +40,8 @@ final readonly class German extends AbstractLanguage
     protected const string    DATE_BETWEEN_AND   = 'zwischen %s und %s';
     protected const string    DATE_CALCULATED    = 'berechnet %s';
     protected const string    DATE_ESTIMATED     = 'geschätzt %s';
-    protected const string    DATE_FROM          = 'von %s';
-    protected const string    DATE_FROM_TO       = 'von %s bis %s';
+    protected const string    DATE_FROM          = 'ab %s';
+    protected const string    DATE_FROM_TO       = 'ab %s bis %s';
     protected const string    DATE_INTERPRETED   = 'interpretiert %s';
     protected const string    DATE_TO            = 'bis %s';
     protected const string    ERA_BCE            = '%s' . UTF8::NO_BREAK_SPACE . 'v. u. Z.';

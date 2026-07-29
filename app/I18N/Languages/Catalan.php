@@ -51,18 +51,18 @@ final readonly class Catalan extends AbstractLanguage
 
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
-        'Gener',
-        'Febrer',
-        'Març',
-        'Abril',
-        'Maig',
-        'Juny',
-        'Juliol',
-        'Agost',
-        'Setembre',
-        'Octubre',
-        'Novembre',
-        'Desembre',
+        'gener',
+        'febrer',
+        'març',
+        'abril',
+        'maig',
+        'juny',
+        'juliol',
+        'agost',
+        'setembre',
+        'octubre',
+        'novembre',
+        'desembre',
     ];
     protected const string    PERCENT_FORMAT     = '%s' . UTF8::NO_BREAK_SPACE . '%%';
 
@@ -74,20 +74,20 @@ final readonly class Catalan extends AbstractLanguage
 
     protected const array JEWISH_MONTHS_NOMINATIVE = [
         '',
-        'Tixrí',
-        'Heixvan',
-        'Quisleu',
-        'Tevet',
-        'Xevat',
-        'Adar I',
-        'Adar II',
-        'Adar',
-        'Nisan',
-        'Iar',
-        'Sivan',
-        'Tammuz',
-        'Av',
-        'Elul',
+        'tixrí',
+        'heixvan',
+        'quisleu',
+        'tevet',
+        'xevat',
+        'adar I',
+        'adar II',
+        'adar',
+        'nisan',
+        'iar',
+        'sivan',
+        'tammuz',
+        'av',
+        'elul',
     ];
 
     protected const array JEWISH_MONTHS_GENITIVE = self::JEWISH_MONTHS_NOMINATIVE;
@@ -98,18 +98,18 @@ final readonly class Catalan extends AbstractLanguage
 
     protected const array FRENCH_MONTHS_NOMINATIVE = [
         '',
-        'Vendemiari',
-        'Bromari',
-        'Rufolari',
-        'Nivós',
-        'Pluviós',
-        'Ventós',
-        'Germinal',
-        'Floral',
-        'Pradal',
-        'Messidor',
-        'Termidor',
-        'Fructidor',
+        'vendemiari',
+        'bromari',
+        'rufolari',
+        'nivós',
+        'pluviós',
+        'ventós',
+        'germinal',
+        'floral',
+        'pradal',
+        'messidor',
+        'termidor',
+        'fructidor',
         'dies complementaris',
     ];
 
@@ -121,18 +121,18 @@ final readonly class Catalan extends AbstractLanguage
 
     protected const array HIJRI_MONTHS_NOMINATIVE = [
         '',
-        'Muhàrram',
-        'Sàfar',
-        'Rabi’ al-awwal',
-        'Rabi’ al-thani',
-        'Jumada al-ula',
-        'Jumada al-àkhira',
-        'Ràjab',
-        'Xaban',
-        'Ramadà',
-        'Xawwal',
-        'Dhu-l-qada',
-        'Dhu-l-hijja',
+        'muhàrram',
+        'sàfar',
+        'rabi’ al-awwal',
+        'rabi’ al-thani',
+        'jumada al-ula',
+        'jumada al-àkhira',
+        'ràjab',
+        'xaban',
+        'ramadà',
+        'xawwal',
+        'dhu-l-qada',
+        'dhu-l-hijja',
     ];
 
     protected const array HIJRI_MONTHS_GENITIVE = self::HIJRI_MONTHS_NOMINATIVE;
@@ -143,18 +143,18 @@ final readonly class Catalan extends AbstractLanguage
 
     protected const array JALALI_MONTHS_NOMINATIVE = [
         '',
-        'Farvardín',
-        'Ordibehesht',
-        'Khordad',
-        'Tir',
-        'Mordad',
-        'Shahrivar',
-        'Mehr',
-        'Aban',
-        'Azar',
-        'Dey',
-        'Bahman',
-        'Esfand',
+        'farvardín',
+        'ordibehesht',
+        'khordad',
+        'tir',
+        'mordad',
+        'shahrivar',
+        'mehr',
+        'aban',
+        'azar',
+        'dey',
+        'bahman',
+        'esfand',
     ];
 
     protected const array JALALI_MONTHS_GENITIVE = self::JALALI_MONTHS_NOMINATIVE;
@@ -162,6 +162,42 @@ final readonly class Catalan extends AbstractLanguage
     protected const array JALALI_MONTHS_LOCATIVE = self::JALALI_MONTHS_NOMINATIVE;
 
     protected const array JALALI_MONTHS_INSTRUMENTAL = self::JALALI_MONTHS_NOMINATIVE;
+
+    protected function formatAfterDate(string $date): string
+    {
+        if ($this->startsWithVowel($date)) {
+            return 'després d’' . $date;
+        }
+
+        return 'després de ' . $date;
+    }
+
+    protected function formatBeforeDate(string $date): string
+    {
+        if ($this->startsWithVowel($date)) {
+            return 'abans d’' . $date;
+        }
+
+        return 'abans de ' . $date;
+    }
+
+    protected function formatFromDate(string $date): string
+    {
+        if ($this->startsWithVowel($date)) {
+            return 'des d’' . $date;
+        }
+
+        return 'des de ' . $date;
+    }
+
+    protected function formatFromToDate(string $date1, string $date2): string
+    {
+        if ($this->startsWithVowel($date1)) {
+            return 'd’' . $date1 . ' a ' . $date2;
+        }
+
+        return 'de ' . $date1 . ' a ' . $date2;
+    }
 
     /**
      * @return array<Relationship>

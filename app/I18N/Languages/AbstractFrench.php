@@ -61,20 +61,20 @@ abstract readonly class AbstractFrench extends AbstractLanguage
 
     protected const array JEWISH_MONTHS_NOMINATIVE = [
         '',
-        'Tichri',
-        'Hechvane',
-        'Kislev',
-        'Téveth',
-        'Chevat',
-        'Adar I',
-        'Adar II',
-        'Adar',
-        'Nissan',
-        'Iyar',
-        'Sivane',
-        'Tammouz',
-        'Av',
-        'Eloul',
+        'tichri',
+        'hechvane',
+        'kislev',
+        'téveth',
+        'chevat',
+        'adar I',
+        'adar II',
+        'adar',
+        'nissan',
+        'iyar',
+        'sivane',
+        'tammouz',
+        'av',
+        'eloul',
     ];
 
     protected const array JEWISH_MONTHS_GENITIVE = self::JEWISH_MONTHS_NOMINATIVE;
@@ -108,18 +108,18 @@ abstract readonly class AbstractFrench extends AbstractLanguage
 
     protected const array HIJRI_MONTHS_NOMINATIVE = [
         '',
-        'Mouharram',
-        'Safar',
-        'Rabia al-awal',
-        'Rabia ath-thani',
-        'Joumada al-oula',
-        'Joumada ath-thania',
-        'Rajab',
-        'Chaabane',
-        'Ramadan',
-        'Chawwal',
-        'Dhou al-qi’da',
-        'Dhou al-hijja',
+        'mouharram',
+        'safar',
+        'rabia al-awal',
+        'rabia ath-thani',
+        'joumada al-oula',
+        'joumada ath-thania',
+        'rajab',
+        'chaabane',
+        'ramadan',
+        'chawwal',
+        'dhou al-qi’da',
+        'dhou al-hijja',
     ];
 
     protected const array HIJRI_MONTHS_GENITIVE = self::HIJRI_MONTHS_NOMINATIVE;
@@ -154,8 +154,16 @@ abstract readonly class AbstractFrench extends AbstractLanguage
         ],
     ];
 
+    protected function formatFromToDate(string $date1, string $date2): string
+    {
+        if ($this->startsWithVowel($date1)) {
+            return 'd’' . $date1 . ' à ' . $date2;
+        }
+
+        return 'de ' . $date1 . ' à ' . $date2;
+    }
+
     /**
-     * Pour les traducteurs français, certaines configurations peuvent avoir plusieurs traduction françaises possibles,
      * ou aucune. Voici les choix qui ont été faits (mais complètement ouverts à discussion):
      * - je n'ai aucune intention de rentrer dans le débat de l'écriture inclusive, mais malheureusement un choix doit
      *   être fait: lorsque nécessaire dans les choix des articles ou accords, je m'en suis tenu à la recommandation de

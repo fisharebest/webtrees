@@ -19,7 +19,6 @@ export {
   initializeCaptchaFields,
   initializeCensusSelectors,
   initializeCheckboxActionButtons,
-  initializeCkeditorHtmlEdit,
   initializeCopyButtons,
   initializeDateReformatInputs,
   initializeEditNameAddons,

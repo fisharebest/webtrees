@@ -80,14 +80,16 @@ use Fisharebest\Webtrees\Tree;
     </div>
 
     <!-- HIDE_LIVE_PEOPLE -->
-    <fieldset class="row mb-3">
-        <legend class="col-sm-4 col-form-label">
-            <?= /* I18N: A configuration setting */ I18N::translate('Show living individuals') ?>
+    <div class="row mb-3">
+        <div class="col-sm-4 col-form-label">
+            <label for="HIDE_LIVE_PEOPLE">
+                <?= /* I18N: A configuration setting */ I18N::translate('Show living individuals') ?>
+            </label>
             <div class="hidden-xs">
                 <span class="badge visitors"><?= I18N::translate('visitors') ?></span>
                 <span class="badge members"><?= I18N::translate('members') ?></span>
             </div>
-        </legend>
+        </div>
 
         <div class="col-sm-8">
             <?= view('components/select', ['name' => 'HIDE_LIVE_PEOPLE', 'selected' => $tree->getPreference('HIDE_LIVE_PEOPLE'), 'options' => ['0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')]]) ?>
@@ -95,13 +97,17 @@ use Fisharebest\Webtrees\Tree;
                 <?= /* I18N: Help text for the “Show living individuals” configuration setting */ I18N::translate('If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public.') ?>
             </div>
         </div>
-    </fieldset>
+    </div>
 
     <!-- KEEP_ALIVE_YEARS_BIRTH / KEEP_ALIVE_YEARS_DEATH -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-4">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting. …who were born in the last XX years or died in the last YY years */ I18N::translate('Extend privacy to dead individuals') ?>
         </legend>
+        <div class="col-form-label col-sm-4" aria-hidden="true">
+            <?= /* I18N: A configuration setting. …who were born in the last XX years or died in the last YY years */ I18N::translate('Extend privacy to dead individuals') ?>
+        </div>
         <div class="col-sm-8">
             <?php
             echo
@@ -313,4 +319,3 @@ use Fisharebest\Webtrees\Tree;
     <?= csrf_field() ?>
 </form>
 </div>
-

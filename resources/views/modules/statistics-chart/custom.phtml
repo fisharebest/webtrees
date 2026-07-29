@@ -35,7 +35,9 @@ use Fisharebest\Webtrees\Tree;
 
             <div class="col-sm-4 wt-page-options-value">
                 <fieldset>
-                    <legend><?= I18N::translate('Individual') ?></legend>
+                    <!-- For Safari -->
+                    <legend class="visually-hidden"><?= I18N::translate('Individual') ?></legend>
+                    <div class="fw-semibold mb-2" aria-hidden="true"><?= I18N::translate('Individual') ?></div>
 
                     <?= view('components/radios', [
                         'name' => 'x-as', 'selected' => $module::X_AXIS_BIRTH_MONTH, 'options' => [
@@ -51,7 +53,9 @@ use Fisharebest\Webtrees\Tree;
                 </fieldset>
 
                 <fieldset>
-                    <legend><?= I18N::translate('Family') ?></legend>
+                    <!-- For Safari -->
+                    <legend class="visually-hidden"><?= I18N::translate('Family') ?></legend>
+                    <div class="fw-semibold mb-2" aria-hidden="true"><?= I18N::translate('Family') ?></div>
 
                     <?= view('components/radios', [
                         'name' => 'x-as', 'selected' => $module::X_AXIS_BIRTH_MONTH, 'options' => [
@@ -64,7 +68,9 @@ use Fisharebest\Webtrees\Tree;
                 </fieldset>
 
                 <fieldset>
-                    <legend><?= I18N::translate('Map') ?></legend>
+                    <!-- For Safari -->
+                    <legend class="visually-hidden"><?= I18N::translate('Map') ?></legend>
+                    <div class="fw-semibold mb-2" aria-hidden="true"><?= I18N::translate('Map') ?></div>
 
                     <?= view('components/radios', [
                         'name' => 'x-as', 'selected' => $module::X_AXIS_BIRTH_MONTH, 'options' => [
@@ -83,7 +89,9 @@ use Fisharebest\Webtrees\Tree;
 
             <div class="col-sm-4 wt-page-options-value">
                 <fieldset id="axes">
-                    <legend><?= I18N::translate('Categories') ?></legend>
+                    <!-- For Safari -->
+                    <legend class="visually-hidden"><?= I18N::translate('Categories') ?></legend>
+                    <div class="fw-semibold mb-2" aria-hidden="true"><?= I18N::translate('Categories') ?></div>
 
                     <label>
                         <input type="radio" id="z_none" name="z-as" value="<?= $module::Z_AXIS_ALL ?>">
@@ -126,7 +134,9 @@ use Fisharebest\Webtrees\Tree;
                 </fieldset>
 
                 <fieldset id="zyaxes">
-                    <legend><?= I18N::translate('Results') ?></legend>
+                    <!-- For Safari -->
+                    <legend class="visually-hidden"><?= I18N::translate('Results') ?></legend>
+                    <div class="fw-semibold mb-2" aria-hidden="true"><?= I18N::translate('Results') ?></div>
 
                     <label>
                         <input type="radio" name="y-as" value="<?= $module::Y_AXIS_NUMBERS ?>" checked>
@@ -140,7 +150,9 @@ use Fisharebest\Webtrees\Tree;
                 </fieldset>
 
                 <fieldset id="x_years" class="d-none">
-                    <legend><?= I18N::translate('Age interval') ?></legend>
+                    <!-- For Safari -->
+                    <legend class="visually-hidden"><?= I18N::translate('Age interval') ?></legend>
+                    <div class="fw-semibold mb-2" aria-hidden="true"><?= I18N::translate('Age interval') ?></div>
 
                     <label for="x-axis-boundaries-ages" class="visually-hidden">
                         <?= I18N::translate('Age interval') ?>
@@ -149,7 +161,9 @@ use Fisharebest\Webtrees\Tree;
                 </fieldset>
 
                 <fieldset id="x_years_m" class="d-none">
-                    <legend><?= I18N::translate('Age interval') ?></legend>
+                    <!-- For Safari -->
+                    <legend class="visually-hidden"><?= I18N::translate('Age interval') ?></legend>
+                    <div class="fw-semibold mb-2" aria-hidden="true"><?= I18N::translate('Age interval') ?></div>
 
                     <label for="x-axis-boundaries-ages_m" class="visually-hidden">
                         <?= I18N::translate('Select the desired age interval') ?>
@@ -159,7 +173,9 @@ use Fisharebest\Webtrees\Tree;
 
                 <div id="map_opt" class="d-none">
                     <fieldset id="chart_type">
-                        <legend><?= I18N::translate('Chart type') ?></legend>
+                        <!-- For Safari -->
+                        <legend class="visually-hidden"><?= I18N::translate('Chart type') ?></legend>
+                        <div class="fw-semibold mb-2" aria-hidden="true"><?= I18N::translate('Chart type') ?></div>
 
                         <label for="chart_type" class="visually-hidden"><?= I18N::translate('Chart type') ?></label>
                         <select name="chart_type" class="form-select">
@@ -178,7 +194,9 @@ use Fisharebest\Webtrees\Tree;
                     </fieldset>
 
                     <fieldset>
-                        <legend id="label-area"><?= I18N::translate('Geographic area') ?></legend>
+                        <!-- For Safari -->
+                        <legend class="visually-hidden" id="label-area"><?= I18N::translate('Geographic area') ?></legend>
+                        <div class="fw-semibold mb-2" aria-hidden="true"><?= I18N::translate('Geographic area') ?></div>
 
                         <label for="chart_shows" class="visually-hidden"><?= I18N::translate('Geographic area') ?></label>
                         <select id="chart_shows" class="form-select" name="chart_shows">
@@ -221,4 +239,3 @@ use Fisharebest\Webtrees\Tree;
 
     <div id="custom-chart"></div>
 </div>
-

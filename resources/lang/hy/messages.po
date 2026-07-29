@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-23 18:03+0100\n"
+"POT-Creation-Date: 2026-07-28 22:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -341,6 +341,7 @@ msgstr "%s, նրա ամուսիններն ու ժառանգները"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/user-messages/user-messages.phtml
 msgid "&lt;select&gt;"
 msgstr "&lt;ընտրել&gt;"
@@ -1506,8 +1507,8 @@ msgstr "Բոլոր մոդուլները"
 msgid "All records"
 msgstr "Բոլոր գրառումները"
 
-#. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
-#: app/Module/CkeditorModule.php
+#. I18N: Description of the “TinyMCE” module. WYSIWYG = “what you see is what you get”
+#: app/Module/TinymceModule.php
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
 msgstr "Թույլ տվեք այլ մոդուլներին խմբագրել տեքստը «WYSIWYG» խմբագրիչի միջոցով՝ HTML կոդերի փոխարեն:"
 
@@ -1769,6 +1770,10 @@ msgstr "Իսկապե՞ս ուզում եք հեռացնել այս տարրը ձ
 msgid "Argentina"
 msgstr "Արգենտինա"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Argentina, Colombia, Mexico, Chile, Uruguay, Peru, Israel"
+msgstr ""
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Armenia"
@@ -1864,6 +1869,10 @@ msgstr "օգոստոս"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Australia"
 msgstr "Ավստրալիա"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Australia / New Zealand"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -2304,6 +2313,10 @@ msgstr "Կապույտ ծովածոց"
 msgid "Blue Marine"
 msgstr "Կապույտ ծովային"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Body"
+msgstr ""
+
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
 msgid "Bogotá, Colombia"
@@ -2376,9 +2389,14 @@ msgid "Branches of the %s family"
 msgstr "%s ընտանիքի մասնաճյուղեր"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Brazil"
 msgstr "Բրազիլիա"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Breach notification"
+msgstr ""
 
 #: app/Elements/RelationIsDescriptor.php
 msgid "Bridesmaid"
@@ -2592,11 +2610,6 @@ msgstr "Գնորդ"
 msgid "By default, SMTP works on port 25."
 msgstr "Լռելյայնորեն, SMTP-ն աշխատում է 25-րդ նավահանգստում:"
 
-#. I18N: Name of a module. CKEditor is a trademark. Do not translate it? https://ckeditor.com
-#: app/Module/CkeditorModule.php
-msgid "CKEditor™"
-msgstr "CKEditor™"
-
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php
 msgid "CSS and JS"
@@ -2641,7 +2654,8 @@ msgid "Campinas, Brazil"
 msgstr "Կամպինաս, Բրազիլիա"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Canada"
 msgstr "Կանադա"
 
@@ -2915,6 +2929,7 @@ msgid "Children take one surname from the mother and one surname from the father
 msgstr "Երեխաները մորից վերցնում են մեկ ազգանուն, հորից՝ մեկ ազգանուն։"
 
 #. I18N: In the patrilineal surname tradition, ...
+#: app/SurnameTradition/GreekSurnameTradition.php
 #: app/SurnameTradition/LithuanianSurnameTradition.php
 #: app/SurnameTradition/PaternalSurnameTradition.php
 #: app/SurnameTradition/PatrilinealSurnameTradition.php
@@ -2927,13 +2942,18 @@ msgstr "Երեխաները վերցնում են իրենց հոր ազգանո�
 msgid "Children take their mother’s surname."
 msgstr "Երեխաները վերցնում են իրենց մոր ազգանունը."
 
+#: app/Module/PrivacyPolicy.php
+msgid "Children's data"
+msgstr ""
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Chile"
 msgstr "Չիլի"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "China"
 msgstr "Չինաստան"
 
@@ -3279,6 +3299,7 @@ msgstr "Շարունակություն"
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/relationships-chart/config.phtml
 #: resources/views/modules/sitemap/config.phtml
 #: resources/views/modules/stories/config.phtml
@@ -3303,7 +3324,7 @@ msgstr "Փոխարկել"
 msgid "Cook Islands"
 msgstr "Կուկի կղզիներ"
 
-#: resources/views/modules/privacy-policy/page.phtml
+#: app/Module/PrivacyPolicy.php
 msgid "Cookies"
 msgstr "Թխվածքաբլիթներ"
 
@@ -3619,6 +3640,10 @@ msgstr "Հատուկ GEDCOM պիտակները չեն խրախուսվում: Փ
 msgid "Custom module"
 msgstr "Պատվերով մոդուլ"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Custom statement"
+msgstr ""
+
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
 msgid "Custom welcome text"
@@ -3673,7 +3698,11 @@ msgstr "Դալլաս, Տեխաս, Ամերիկայի Միացյալ Նահանգ
 msgid "Data"
 msgstr "Տվյալներ"
 
-#: resources/views/modules/privacy-policy/page.phtml
+#: app/Module/PrivacyPolicy.php
+msgid "Data collected"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
 msgid "Data controller"
 msgstr "Տվյալների վերահսկիչ"
 
@@ -3701,6 +3730,18 @@ msgstr "Տվյալների շտկումները կարող են պահանջել
 #: resources/views/admin/site-preferences.phtml
 msgid "Data folder"
 msgstr "Տվյալների թղթապանակ"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Data protection officer"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Data retention"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Data storage location"
+msgstr ""
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -4368,6 +4409,10 @@ msgstr "Մի կնքեք, նախորդ կնքումը չեղարկված է"
 msgid "Do not seal: unauthorized"
 msgstr "Մի կնքեք. չարտոնված է"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Do not sell or share"
+msgstr ""
+
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
 msgid "Document"
@@ -4575,6 +4620,7 @@ msgstr "Էլ"
 #: resources/views/contact-page.phtml resources/views/edit-account-page.phtml
 #: resources/views/emails/register-notify-html.phtml
 #: resources/views/emails/register-notify-text.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/user-messages/user-messages.phtml
 #: resources/views/register-page.phtml
 #: resources/views/setup/step-5-administrator.phtml
@@ -4712,6 +4758,10 @@ msgstr "Եթովպիա"
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "Europe"
 msgstr "Եվրոպա"
+
+#: app/Module/PrivacyPolicy.php
+msgid "European Union / EEA / United Kingdom"
+msgstr ""
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php
 #: resources/views/lists/anniversaries-table.phtml
@@ -5457,7 +5507,8 @@ msgid "Foster mother"
 msgstr "Խնամատար մայր"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "France"
 msgstr "Ֆրանսիա"
 
@@ -5599,6 +5650,14 @@ msgstr "Գաբոն"
 msgid "Gambia"
 msgstr "Գամբիա"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Genealogical data is retained indefinitely, as the purpose of this website is to preserve historical and family-history research. User account data is retained for as long as the account is active."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Genealogical data on this website is typically obtained from publicly accessible sources, including civil registration records, church records, census returns, published directories, gravestones, and contributions from family members. The data subjects may not have provided this data themselves."
+msgstr ""
+
 #: resources/views/admin/control-panel.phtml
 msgid "Genealogy"
 msgstr "Ծագումնաբանություն"
@@ -5669,6 +5728,10 @@ msgstr "Հետնորդների սերունդներ"
 msgid "GeoNames"
 msgstr "Աշխարհագրական անուններ"
 
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "Geocoding"
+msgstr ""
+
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "Geographic area"
 msgstr "Աշխարհագրական տարածք"
@@ -5696,6 +5759,10 @@ msgstr "Վրաստան"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Germany"
 msgstr "Գերմանիա"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Germany / Austria"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -5786,6 +5853,12 @@ msgstr "Քույրերի և եղբայրների միջև ամենամեծ տա�
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Greece"
 msgstr "Հունաստան"
+
+#: app/SurnameTradition/GreekSurnameTradition.php
+#, fuzzy
+msgctxt "Surname tradition"
+msgid "Greek"
+msgstr "հունական"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php
@@ -6085,6 +6158,14 @@ msgstr "Հոնդուրաս"
 msgid "Hong Kong"
 msgstr "Հոնկոնգ"
 
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "Hosted by:"
+msgstr ""
+
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Hosting provider"
+msgstr ""
+
 #. I18N: Name of a module/chart
 #: app/Module/ChartsBlockModule.php app/Module/HourglassChartModule.php
 msgid "Hourglass chart"
@@ -6323,6 +6404,10 @@ msgstr "Որոշ օրացույցներում օրերը սկսվում են կ�
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 msgstr "Որոշ երկրներում գաղտնիության մասին օրենքները կիրառվում են ոչ միայն կենդանի անհատների, այլև վերջերս մահացածների նկատմամբ: Այս տարբերակը թույլ կտա ձեզ ընդլայնել կենդանի անհատների գաղտնիության կանոնները նրանց վրա, ովքեր ծնվել կամ մահացել են որոշակի տարիների ընթացքում: Թողեք այս արժեքները դատարկ՝ այս գործառույթն անջատելու համար:"
 
+#: app/Module/PrivacyPolicy.php
+msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
+msgstr ""
+
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
 msgstr "Ներառեք փոխանունները"
@@ -6356,7 +6441,8 @@ msgid "Include the individual’s immediate family"
 msgstr "Ներառեք անհատի անմիջական ընտանիքը"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "India"
 msgstr "Հնդկաստան"
 
@@ -6515,6 +6601,10 @@ msgstr "Ներքին հաղորդագրություններ"
 msgid "Internal messaging with emails"
 msgstr "Ներքին հաղորդագրություններ էլփոստով"
 
+#: app/Module/PrivacyPolicy.php
+msgid "International transfers"
+msgstr ""
+
 #: app/Http/RequestHandlers/GedcomLoad.php
 msgid "Invalid GEDCOM file - no header record found."
 msgstr "Անվավեր GEDCOM ֆայլ. վերնագրի գրառում չի գտնվել:"
@@ -6598,7 +6688,8 @@ msgid "January"
 msgstr "հունվար"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Japan"
 msgstr "Ճապոնիա"
 
@@ -6649,6 +6740,10 @@ msgstr "հուլիս"
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "հունիս"
+
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Jurisdiction"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -6885,6 +6980,10 @@ msgstr "Լայնություն"
 msgid "Latvia"
 msgstr "Լատվիա"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Lawful basis"
+msgstr ""
+
 #: resources/views/modules/ancestors-chart/page.phtml
 #: resources/views/modules/descendancy_chart/page.phtml
 #: resources/views/modules/fanchart/page.phtml
@@ -6921,6 +7020,14 @@ msgstr "Լիբանան"
 #: app/Module/RedirectLegacyUrlsModule.php
 msgid "Legacy URLs"
 msgstr "Ժառանգական URL-ներ"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Legal notice (Impressum)"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Legal notice (Mentions légales)"
+msgstr ""
 
 #: app/CustomTags/Reunion.php
 msgid "Legatee"
@@ -7309,6 +7416,10 @@ msgstr "Քարտեզի հղումներ"
 #: app/Services/LeafletJsService.php resources/views/admin/control-panel.phtml
 msgid "Map providers"
 msgstr "Քարտեզների մատակարարներ"
+
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "Map tiles"
+msgstr ""
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php
@@ -7762,6 +7873,10 @@ msgstr "Ռազմական"
 msgid "Military service"
 msgstr "Զինվորական ծառայություն"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Minimum age for consent"
+msgstr ""
+
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php
 #: resources/xml/reports/missing_facts_report.xml
@@ -8036,6 +8151,7 @@ msgstr "Մյանմար"
 #: resources/views/lists/anniversaries-table.phtml
 #: resources/views/modals/location-fields.phtml
 #: resources/views/modals/submitter-fields.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/yahrzeit/table.phtml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
 #: resources/xml/reports/cemetery_report.xml
@@ -8318,6 +8434,10 @@ msgstr "Լրատվական հոդվածներ չեն ներկայացվել։"
 #: app/Http/RequestHandlers/SiteRegistrationPage.php
 msgid "No predefined text"
 msgstr "Նախապես սահմանված տեքստ չկա"
+
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "No privacy policy has been configured for this website."
+msgstr ""
 
 #: resources/views/lists/datatables-attributes.phtml
 msgid "No records to display"
@@ -8738,6 +8858,10 @@ msgstr "Այլ փաստեր՝ ցույց տալու գծապատկերներու
 msgid "Other preferences"
 msgstr "Այլ նախասիրություններ"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Our data protection officer can be contacted at:"
+msgstr ""
+
 #: app/Elements/RelationIsDescriptor.php
 msgid "Owner"
 msgstr "Սեփականատեր"
@@ -8954,9 +9078,9 @@ msgstr "Մշտական համար"
 msgid "Permanently delete these records?"
 msgstr "Ընդմիշտ ջնջե՞լ այս գրառումները?"
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "Personal data"
-msgstr "Անձնական տվյալներ"
+#: app/Module/PrivacyPolicy.php
+msgid "Personal data is stored on servers located in:"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -8972,6 +9096,10 @@ msgstr "Պերու"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Philippines"
 msgstr "Ֆիլիպիններ"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Philippines, Kenya, Nigeria, Ghana, Egypt"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9254,6 +9382,10 @@ msgctxt "Surname tradition"
 msgid "Portuguese"
 msgstr "պորտուգալերեն"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Postal address"
+msgstr ""
+
 #: app/CustomTags/GedcomL.php app/CustomTags/PersonalAncestralFile.php
 #: app/Gedcom.php
 msgid "Postal code"
@@ -9343,6 +9475,10 @@ msgstr "Գաղտնիության սահմանափակումներ"
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr "Գաղտնիության սահմանափակումներ. դրանք վերաբերում են գրառումներին և փաստերին, որոնք չեն պարունակում GEDCOM RESN պիտակ"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Privacy statements"
+msgstr ""
+
 #: app/CustomTags/Legacy.php app/CustomTags/TheNextGeneration.php
 #: app/GedcomRecord.php app/Report/ParserGenerate.php app/StatisticsData.php
 msgid "Private"
@@ -9355,6 +9491,10 @@ msgstr "Անձնական բանալի"
 #: app/Gedcom.php
 msgid "Probate"
 msgstr "Վճռաբեկ"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgstr ""
 
 #: app/Gedcom.php
 msgid "Property"
@@ -9384,6 +9524,10 @@ msgstr "Հրապարակում"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Puerto Rico"
 msgstr "Պուերտո Ռիկո"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Purpose of processing"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -9839,6 +9983,22 @@ msgstr "Թոշակի անցնելը"
 msgid "Rexburg, Idaho, United States"
 msgstr "Rexburg, Այդահո, Ամերիկայի Միացյալ Նահանգներ"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Right of access and data portability"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Right to complain"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Right to correction"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "Right to erasure, objection, and restriction"
+msgstr ""
+
 #: app/CustomTags/Gedcom7.php app/CustomTags/GedcomL.php app/Gedcom.php
 #: resources/views/admin/users-edit.phtml
 msgid "Role"
@@ -9881,7 +10041,8 @@ msgid "Russell"
 msgstr "Ռասել"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Russia"
 msgstr "Ռուսաստան"
 
@@ -10013,7 +10174,8 @@ msgid "Sat"
 msgstr "Շաբաթ"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Saudi Arabia"
 msgstr "Սաուդյան Արաբիա"
 
@@ -10180,6 +10342,18 @@ msgstr "Ընտրեք փաստերն ու իրադարձությունները, �
 msgid "Select two records to merge."
 msgstr "Միավորելու համար ընտրեք երկու գրառում:"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Select which statements to display on the public privacy policy page."
+msgstr ""
+
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Select your country or region"
+msgstr ""
+
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Select your jurisdiction to automatically enable the required privacy statements. You can also enable or disable individual statements."
+msgstr ""
+
 #: resources/views/admin/site-mail.phtml
 msgid "Selector"
 msgstr "Ընտրիչ"
@@ -10304,6 +10478,10 @@ msgstr "Ծառա"
 msgid "Server information"
 msgstr "Սերվերի տեղեկատվություն"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Server location"
+msgstr ""
+
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
@@ -10311,6 +10489,10 @@ msgstr "Սերվերի տեղեկատվություն"
 #: resources/views/setup/step-4-database-sqlsrv.phtml
 msgid "Server name"
 msgstr "Սերվերի անունը"
+
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "Service"
+msgstr ""
 
 #: app/Http/RequestHandlers/PasswordResetPage.php
 msgid "Set a new password"
@@ -10453,10 +10635,10 @@ msgstr "Ամենակարճ ամուսնությունը"
 msgid "Show a download link in the media viewer"
 msgstr "Ցույց տալ ներբեռնման հղումը մեդիա դիտիչում"
 
-#. I18N: Description of the “Cookie warning” module
+#. I18N: Description of the "Privacy policy" module
 #: app/Module/PrivacyPolicy.php
-msgid "Show a privacy policy."
-msgstr "Ցույց տալ գաղտնիության քաղաքականությունը:"
+msgid "Show a privacy/data-protection policy based on your jurisdiction."
+msgstr ""
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
@@ -10810,7 +10992,8 @@ msgid "Simple dates are assumed to be in the gregorian calendar. To specify a da
 msgstr "Ենթադրվում է, որ պարզ ամսաթվերը գրված են Գրիգորյան օրացույցում: Մեկ այլ օրացույցում ամսաթիվ նշելու համար ավելացրեք հիմնաբառ ամսաթվից առաջ: Այս հիմնաբառը պարտադիր չէ, եթե ամսվա կամ տարվա ձևաչափը ամսաթիվը դարձնում է միանշանակ:"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Singapore"
 msgstr "Սինգապուր"
 
@@ -11049,12 +11232,17 @@ msgstr "Աղբյուրի տեսակը"
 msgid "Sources"
 msgstr "Աղբյուրներ"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Sources of data"
+msgstr ""
+
 #: resources/xml/reports/missing_facts_report.xml
 msgid "Sources to the events"
 msgstr "Իրադարձությունների աղբյուրները"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "South Africa"
 msgstr "Հարավային Աֆրիկա"
 
@@ -11066,6 +11254,10 @@ msgstr "Հարավային Ամերիկա"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Հարավային Ջորջիա և Հարավային Սենդվիչ կղզիներ"
+
+#: app/Module/PrivacyPolicy.php
+msgid "South Korea"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -11255,6 +11447,10 @@ msgstr "Սուդան"
 msgid "Sun"
 msgstr "Արև"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Supervisory authority"
+msgstr ""
+
 #. I18N: %s is a URL/link to the project website
 #: resources/views/admin/control-panel.phtml
 #, php-format
@@ -11315,6 +11511,7 @@ msgstr "Ազգանուններ"
 msgid "Surnames are inflected to indicate an individual’s sex and marital status."
 msgstr "Ազգանունները շեղվում են՝ ցույց տալու անհատի սեռը և ամուսնական կարգավիճակը:"
 
+#: app/SurnameTradition/GreekSurnameTradition.php
 #: app/SurnameTradition/PolishSurnameTradition.php
 msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr "Ազգանունները շեղվում են՝ ցույց տալու անհատի սեռը:"
@@ -11345,7 +11542,8 @@ msgid "Sweden"
 msgstr "Շվեդիա"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Switzerland"
 msgstr "Շվեյցարիա"
 
@@ -11444,6 +11642,10 @@ msgstr "Տեխնիկական օգնության կապ"
 msgid "Tegucigalpa, Honduras"
 msgstr "Տեգուսիգալպա, Հոնդուրաս"
 
+#: resources/views/modules/privacy-policy/admin.phtml
+msgid "Telephone"
+msgstr ""
+
 #: app/CustomTags/RootsMagic.php
 msgid "Template"
 msgstr "Կաղապար"
@@ -11469,7 +11671,8 @@ msgid "Text direction"
 msgstr "Տեքստի ուղղություն"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "Thailand"
 msgstr "Թաիլանդ"
 
@@ -11825,6 +12028,10 @@ msgstr "SMTP սերվերի հետ նույնականացման համար ան�
 msgid "The password reset link has expired."
 msgstr "Գաղտնաբառի վերակայման հղման ժամկետը սպառվել է:"
 
+#: app/Module/PrivacyPolicy.php
+msgid "The person responsible for this website and for the processing of your personal data is:"
+msgstr ""
+
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php
 msgid "The place hierarchy."
@@ -11845,6 +12052,11 @@ msgstr "Նոր տոհմածառերի նախապատվությունները թ�
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "«%s» տոհմածառի նախապատվությունները թարմացվել են:"
+
+#: app/Module/PrivacyPolicy.php
+#, php-format
+msgid "The preferences for the module \"%s\" have been updated."
+msgstr ""
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
@@ -12085,18 +12297,14 @@ msgstr "Սխալ առաջացավ նոր տարբերակի ստուգման ժ�
 msgid "There was an error uploading your file."
 msgstr "Ձեր ֆայլը վերբեռնելիս սխալ տեղի ունեցավ:"
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "These cookies are “essential”, and do not require consent."
-msgstr "Այս թխուկները «էական» են և համաձայնություն չեն պահանջում:"
-
 #: resources/views/admin/trees-unconnected.phtml
 #, php-format
 msgid "These groups of individuals are not related to %s."
 msgstr "Անհատների այս խմբերը կապված չեն %s-ի հետ:"
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "These services may use cookies or other tracking technology."
-msgstr "Այս ծառայությունները կարող են օգտագործել թխուկներ կամ հետագծման այլ տեխնոլոգիա:"
+#: app/Module/PrivacyPolicy.php
+msgid "Third-party services"
+msgstr ""
 
 #: app/Http/RequestHandlers/LoginAction.php
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -12416,10 +12624,6 @@ msgstr "Այս գրառումը խմբագրվել է։ Դուք պետք է վ�
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Այս պահոցը գոյություն չունի կամ դուք այն դիտելու թույլտվություն չունեք:"
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr "Այս հետազոտությունը հանդիսանում է «օրինական շահ»՝ համաձայն ԵՄ տվյալների պաշտպանության ընդհանուր կանոնակարգի 6-րդ հոդվածի «զ»:"
-
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr "Այս դերն ունի խմբագրի դերի բոլոր թույլտվությունները, գումարած այլ օգտվողների կողմից կատարված փոփոխություններն ընդունելու/մերժելու թույլտվությունը:"
@@ -12470,29 +12674,38 @@ msgstr "Սա սովորաբար նշանակում է, որ դուք պետք է
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
 msgstr "Այս կայքը անջատված է սպասարկման համար: Դուք պետք է <a href=\"index.php\">փորձեք նորից</a> մի քանի րոպեից:"
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This website is operated by the following individuals."
-msgstr "Այս կայքը շահագործվում է հետևյալ անձանց կողմից."
+#: app/Module/PrivacyPolicy.php
+msgid "This website is operated by the following person, who is also responsible for its content:"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "This website is published by:"
+msgstr ""
 
 #: resources/views/layouts/error.phtml resources/views/layouts/offline.phtml
 msgid "This website is temporarily unavailable"
 msgstr "Այս կայքը ժամանակավորապես անհասանելի է"
 
-#: resources/views/modules/privacy-policy/page.phtml
+#: app/Module/PrivacyPolicy.php
+msgid "This website may contain data about minors, derived from public records such as birth registers, for the purpose of historical and genealogical research. We do not collect personal data directly from children."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
 msgid "This website processes personal data for the purpose of historical and genealogical research."
 msgstr "Այս կայքը մշակում է անձնական տվյալները՝ պատմական և ծագումնաբանական հետազոտությունների նպատակով:"
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
-msgstr "Այս կայքը օգտագործում է թխուկներ՝ մուտք գործելու նիստերը միացնելու և ձեր ընտրած լեզուն հիշելու համար:"
+#: app/Module/PrivacyPolicy.php
+msgid "This website uses essential cookies for login sessions and to remember your preferences. These cookies are strictly necessary and do not require consent."
+msgstr ""
 
+#: app/Module/PrivacyPolicy.php
+msgid "This website uses external services to provide mapping and location features. When you view a map, your browser connects directly to these services, which may receive your IP address and other request data."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
 #: resources/views/modules/privacy-policy/footer.phtml
-msgid "This website uses cookies to learn about visitor behavior."
-msgstr "Այս կայքը օգտագործում է թխուկներ՝ ծանոթանալու այցելուների վարքագծին:"
-
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "This website uses third-party services to learn about visitor behavior."
-msgstr "Այս կայքը օգտագործում է երրորդ կողմի ծառայություններ՝ այցելուների վարքագծի մասին իմանալու համար:"
+msgid "This website uses third-party services to understand visitor behavior. These services may use cookies or similar tracking technology."
+msgstr ""
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml
@@ -12568,6 +12781,11 @@ msgstr "Ժամացույց"
 msgid "Timor-Leste"
 msgstr "Թիմոր-Լեստե"
 
+#. I18N: Name of a module. TinyMCE is a trademark. Do not translate it? https://www.tiny.cloud
+#: app/Module/TinymceModule.php
+msgid "TinyMCE™"
+msgstr ""
+
 #: app/CustomTags/Geneatique.php app/Gedcom.php
 #: resources/views/admin/fix-level-0-media.phtml
 #: resources/views/lists/media-table.phtml
@@ -12580,6 +12798,7 @@ msgstr "Թիմոր-Լեստե"
 #: resources/views/modules/favorites/favorites.phtml
 #: resources/views/modules/gedcom_news/edit.phtml
 #: resources/views/modules/html/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/user_blog/edit.phtml
 msgid "Title"
 msgstr "Վերնագիր"
@@ -12799,11 +13018,10 @@ msgid "Total users"
 msgstr "Ընդհանուր օգտվողներ"
 
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
-#: app/Module/ModuleAnalyticsTrait.php
+#: app/Module/ModuleAnalyticsTrait.php app/Module/PrivacyPolicy.php
 #: resources/views/admin/analytics-edit.phtml
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
-#: resources/views/modules/privacy-policy/page.phtml
 msgid "Tracking and analytics"
 msgstr "Հետևում և վերլուծություն"
 
@@ -12841,6 +13059,10 @@ msgstr "Թունիս"
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Turkey"
 msgstr "Թուրքիա"
+
+#: app/Module/PrivacyPolicy.php
+msgid "Turkey, UAE, Indonesia, Malaysia, Vietnam"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -12988,9 +13210,18 @@ msgid "United Kingdom"
 msgstr "Միացյալ Թագավորություն"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
+#: app/StatisticsData.php
 msgid "United States"
 msgstr "Միացյալ Նահանգներ"
+
+#: app/Module/PrivacyPolicy.php
+msgid "United States — CA"
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "United States — CO, CT, DE, IN, IA, KY, MD, MN, MT, NE, NH, NJ, OR, RI, TN, TX, UT, VA"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
@@ -13370,6 +13601,14 @@ msgstr "Ջրի նշիչներ"
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "Ջրի նիշերը կամընտիր են և սովորաբար ցուցադրվում են միայն այցելուներին:"
 
+#: app/Module/PrivacyPolicy.php
+msgid "We collect names, dates, places, family relationships, and other genealogical information. Much of this data is derived from public records such as registers of births, marriages, and deaths. For registered users, we also store email addresses and login credentials."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "We do not sell or share your personal information."
+msgstr ""
+
 #: resources/views/register-success-page.phtml
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
@@ -13377,6 +13616,7 @@ msgstr "Այժմ մենք հաստատման նամակ կուղարկենք <b>
 
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/trees-preferences.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 msgid "Website"
 msgstr "Կայք"
 
@@ -13445,6 +13685,11 @@ msgstr "Երբ ավելացնում եք, խմբագրում կամ ջնջում
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
 msgstr "Եթե օգտատերը կապված է տոհմածառի առանձին գրառումների հետ և ունի անդամի, խմբագրի կամ վարողի դեր, դուք կարող եք թույլ չտալ նրան մուտք գործել հեռավոր, կենդանի հարաբերությունների մանրամասները: Դուք նշում եք հարաբերությունների քայլերի քանակը, որոնք օգտատերը կարող է տեսնել:"
 
+#: resources/views/modules/privacy-policy/page.phtml
+#, php-format
+msgid "Where we operate online services that children may access directly, the minimum age for consent in our jurisdiction is %s years."
+msgstr ""
+
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml
 msgid "Which family trees should be included in the sitemaps"
@@ -13511,6 +13756,7 @@ msgstr "Վկա"
 msgid "Witnesses"
 msgstr "Վկաներ"
 
+#: app/SurnameTradition/GreekSurnameTradition.php
 #: app/SurnameTradition/LithuanianSurnameTradition.php
 #: app/SurnameTradition/PaternalSurnameTradition.php
 #: app/SurnameTradition/PolishSurnameTradition.php
@@ -13584,10 +13830,6 @@ msgstr "Դուք կարող եք ընտրել, թե արդյոք հայտնվե�
 msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "Դուք կարող եք ներբեռնել GEDCOM բնութագրի պատճենը %s-ից:"
 
-#: resources/views/modules/privacy-policy/page.phtml
-msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr "Դուք կարող եք հրաժարվել հետևելուց՝ ձեր դիտարկիչի նախապատվություններում դնելով «Չհետևել» վերնագիրը:"
-
 #: resources/views/admin/trees-renumber.phtml
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr "Դուք կարող եք վերահամարակալել տոհմածառի գրառումները, որպեսզի այս ներքին հղման համարները չկրկնվեն որևէ այլ տոհմածառում:"
@@ -13630,6 +13872,22 @@ msgstr "Դուք ընտրել եք GEDCOM ֆայլ այլ անունով: Սա �
 #: app/Http/RequestHandlers/Logout.php
 msgid "You have signed out."
 msgstr "Դուք դուրս եք եկել:"
+
+#: app/Module/PrivacyPolicy.php
+msgid "You have the right to lodge a complaint with a supervisory authority if you believe your data has been processed unlawfully."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "You have the right to request a copy of the personal data we hold about you. This data can be provided in a machine-readable format (GEDCOM)."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Module/PrivacyPolicy.php
+msgid "You may request that we delete, restrict, or cease processing your personal data. However, where data is processed for historical research purposes or was obtained from publicly accessible sources, these rights may be limited where compliance would render the research impossible or seriously impair it."
+msgstr ""
 
 #: resources/views/modules/faq/config.phtml
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -13734,6 +13992,10 @@ msgstr "Ձեր անունը"
 msgid "Your password has been updated."
 msgstr "Ձեր գաղտնաբառը թարմացվել է:"
 
+#: app/Module/PrivacyPolicy.php
+msgid "Your personal data may be transferred to, and processed in, countries other than the country in which you reside. We take appropriate safeguards to protect your data during such transfers."
+msgstr ""
+
 #: app/Http/RequestHandlers/RegisterAction.php
 #, php-format
 msgid "Your registration at %s"
@@ -13778,6 +14040,11 @@ msgstr "Մեծացնել"
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr "_WT_OBJE_SORT թեգերն օգտագործվել են վեբ ծառերի հին տարբերակների կողմից՝ անհատի համար նախընտրելի պատկերը նշելու համար: Այլընտրանք է պատկերները վերադասավորելն այնպես, որ նախընտրածը առաջինը նշված լինի:"
 
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "accept"
+msgstr ""
+
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml
 #: resources/views/individual-page-pending.phtml
@@ -13797,6 +14064,11 @@ msgstr "ընդունել"
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
 msgstr "ընդունել"
+
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "accept all"
+msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php
@@ -13910,6 +14182,7 @@ msgstr "փամփուշտների ցուցակ"
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/stories/edit.phtml
 #: resources/views/modules/user_blog/edit.phtml
 msgid "cancel"
@@ -13947,7 +14220,6 @@ msgstr "քաղաքացի"
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
 #: resources/views/modules/favorites/favorites.phtml
-#: resources/views/modules/privacy-policy/footer.phtml
 msgid "close"
 msgstr "փակել"
 
@@ -14008,6 +14280,16 @@ msgstr "ամսաթվի ժամանակաշրջանները"
 #: resources/xml/reports/descendancy_report.xml
 msgid "daughter of"
 msgstr "-ի դուստրը"
+
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "decline"
+msgstr ""
+
+#: resources/views/modules/privacy-policy/footer.phtml
+#: resources/views/modules/privacy-policy/page.phtml
+msgid "decline all"
+msgstr ""
 
 #: resources/views/admin/location-edit.phtml
 msgid "degrees"
@@ -14503,6 +14785,7 @@ msgstr "ճիշտ"
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/relationships-chart/config.phtml
 #: resources/views/modules/sitemap/config.phtml
 #: resources/views/modules/stories/edit.phtml

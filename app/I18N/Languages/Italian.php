@@ -74,20 +74,20 @@ final readonly class Italian extends AbstractLanguage
 
     protected const array JEWISH_MONTHS_NOMINATIVE = [
         '',
-        'Tishrì',
-        'Cheshvàn',
-        'Kislèv',
-        'Tevèt',
-        'Shevàt',
-        'Adàr I',
-        'Adr II',
-        'Adàr',
-        'Nisàn',
-        'Iyàr',
-        'Sivàn',
-        'Tamùz',
-        'Av',
-        'Elùl',
+        'tishrì',
+        'cheshvàn',
+        'kislèv',
+        'tevèt',
+        'shevàt',
+        'adàr I',
+        'adr II',
+        'adàr',
+        'nisàn',
+        'iyàr',
+        'sivàn',
+        'tamùz',
+        'av',
+        'elùl',
     ];
 
     protected const array JEWISH_MONTHS_GENITIVE = self::JEWISH_MONTHS_NOMINATIVE;
@@ -98,18 +98,18 @@ final readonly class Italian extends AbstractLanguage
 
     protected const array FRENCH_MONTHS_NOMINATIVE = [
         '',
-        'Vendemmiaio',
-        'Brumaio',
-        'Frimaio',
-        'Nevoso',
-        'Piovoso',
-        'Ventoso',
-        'Germinale',
-        'Floreale',
-        'Pratile',
-        'Messidoro',
-        'Termidoro',
-        'Fruttidoro',
+        'vendemmiaio',
+        'brumaio',
+        'frimaio',
+        'nevoso',
+        'piovoso',
+        'ventoso',
+        'germinale',
+        'floreale',
+        'pratile',
+        'messidoro',
+        'termidoro',
+        'fruttidoro',
         'giorni complementari',
     ];
 
@@ -121,18 +121,18 @@ final readonly class Italian extends AbstractLanguage
 
     protected const array HIJRI_MONTHS_NOMINATIVE = [
         '',
-        'Muharram',
-        'Safar',
-        'Rabi al-Awwal',
-        'Rabi al-Thani',
-        'Jumada al-Awwal',
-        'Jumada al-Thani',
-        'Rajab',
-        'Shaaban',
-        'Ramadan',
-        'Shawwal',
-        'Dhu al-Qida',
-        'Dhu al-Hijja',
+        'muharram',
+        'safar',
+        'rabi al-awwal',
+        'rabi al-thani',
+        'jumada al-awwal',
+        'jumada al-thani',
+        'rajab',
+        'shaaban',
+        'ramadan',
+        'shawwal',
+        'dhu al-qida',
+        'dhu al-hijja',
     ];
 
     protected const array HIJRI_MONTHS_GENITIVE = self::HIJRI_MONTHS_NOMINATIVE;
@@ -162,6 +162,76 @@ final readonly class Italian extends AbstractLanguage
     protected const array JALALI_MONTHS_LOCATIVE = self::JALALI_MONTHS_NOMINATIVE;
 
     protected const array JALALI_MONTHS_INSTRUMENTAL = self::JALALI_MONTHS_NOMINATIVE;
+
+    protected function formatAfterDate(string $date): string
+    {
+        if ($this->startsWithVowel($date)) {
+            return 'dopo l’' . $date;
+        }
+
+        return 'dopo il ' . $date;
+    }
+
+    protected function formatBeforeDate(string $date): string
+    {
+        if ($this->startsWithVowel($date)) {
+            return 'prima dell’' . $date;
+        }
+
+        return 'prima del ' . $date;
+    }
+
+    protected function formatBetweenDate(string $date1, string $date2): string
+    {
+        if ($this->startsWithVowel($date1)) {
+            $first = 'l’' . $date1;
+        } else {
+            $first = 'il ' . $date1;
+        }
+
+        if ($this->startsWithVowel($date2)) {
+            $second = 'l’' . $date2;
+        } else {
+            $second = 'il ' . $date2;
+        }
+
+        return 'tra ' . $first . ' e ' . $second;
+    }
+
+    protected function formatFromDate(string $date): string
+    {
+        if ($this->startsWithVowel($date)) {
+            return 'dall’' . $date;
+        }
+
+        return 'dal ' . $date;
+    }
+
+    protected function formatFromToDate(string $date1, string $date2): string
+    {
+        if ($this->startsWithVowel($date1)) {
+            $first = 'dall’' . $date1;
+        } else {
+            $first = 'dal ' . $date1;
+        }
+
+        if ($this->startsWithVowel($date2)) {
+            $second = 'all’' . $date2;
+        } else {
+            $second = 'al ' . $date2;
+        }
+
+        return $first . ' ' . $second;
+    }
+
+    protected function formatToDate(string $date): string
+    {
+        if ($this->startsWithVowel($date)) {
+            return 'fino all’' . $date;
+        }
+
+        return 'fino al ' . $date;
+    }
 
     /**
      * @return array<Relationship>

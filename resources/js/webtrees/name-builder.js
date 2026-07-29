@@ -16,13 +16,26 @@
 const lang = document.documentElement.lang;
 
 // Identify the script used by some text.
-const scriptRegexes = {
-  Han: /[\u3400-\u9FCC]/,
-  Grek: /[\u0370-\u03FF]/,
-  Cyrl: /[\u0400-\u04FF]/,
-  Hebr: /[\u0590-\u05FF]/,
-  Arab: /[\u0600-\u06FF]/
-};
+// Order matters: Jpan and Kore come before Han, since Japanese and Korean also use Han characters.
+// Latn comes last, since other texts often contain some Latin characters.
+const scriptRegexes = [
+  ['Arab', /\p{Script=Arabic}/u],
+  ['Armn', /\p{Script=Armenian}/u],
+  ['Cyrl', /\p{Script=Cyrillic}/u],
+  ['Deva', /\p{Script=Devanagari}/u],
+  ['Geor', /\p{Script=Georgian}/u],
+  ['Grek', /\p{Script=Greek}/u],
+  ['Jpan', /[\p{Script=Hiragana}\p{Script=Katakana}]/u],
+  ['Kore', /\p{Script=Hangul}/u],
+  ['Han', /\p{Script=Han}/u],
+  ['Hebr', /\p{Script=Hebrew}/u],
+  ['Java', /\p{Script=Javanese}/u],
+  ['Sund', /\p{Script=Sundanese}/u],
+  ['Taml', /\p{Script=Tamil}/u],
+  ['Thaa', /\p{Script=Thaana}/u],
+  ['Thai', /\p{Script=Thai}/u],
+  ['Latn', /\p{Script=Latin}/u],
+];
 
 /**
  * Tidy the whitespace in a string.
@@ -34,13 +47,13 @@ function trim(str) {
 }
 
 /**
- * Look for non-latin characters in a string.
+ * Detect the script used by some text.
  * @param {string} str
  * @returns {string}
  */
 export function detectScript(str) {
-  for (const script in scriptRegexes) {
-    if (str.match(scriptRegexes[script])) {
+  for (const [script, regex] of scriptRegexes) {
+    if (regex.test(str)) {
       return script;
     }
   }
@@ -78,13 +91,14 @@ function inflectSurname(surname, sex) {
  * @returns {string}
  */
 export function buildNameFromParts(npfx, givn, spfx, surn, nsfx, sex) {
-  const usesCJK = detectScript(npfx + givn + spfx + givn + surn + nsfx) === 'Han';
-  const separator = usesCJK ? '' : ' ';
-  const surnameFirst = usesCJK || ['hu', 'jp', 'ko', 'vi', 'zh-Hans', 'zh-Hant'].indexOf(lang) !== -1;
-  const patronym = ['is'].indexOf(lang) !== -1;
+  const script = detectScript(npfx + givn + spfx + surn + nsfx);
+  const usesEastAsian = ['Han', 'Jpan', 'Kore'].includes(script);
+  const separator = usesEastAsian ? '' : ' ';
+  const surnameFirst = usesEastAsian || ['hu', 'ja', 'ko', 'vi', 'zh-Hans', 'zh-Hant'].includes(lang);
+  const patronym = lang === 'is';
   const slash = patronym ? '' : '/';
 
-  // GIVN and SURN may be a comma-separated lists.
+  // GIVN and SURN may be comma-separated lists.
   npfx = trim(npfx);
   givn = trim(givn.replace(/,/g, separator));
   spfx = trim(spfx);
@@ -95,8 +109,9 @@ export function buildNameFromParts(npfx, givn, spfx, surn, nsfx, sex) {
 
   const surname = trim(spfx + surname_separator + surn);
 
-  const name = surnameFirst ? slash + surname + slash + separator + givn : givn + separator + slash + surname + slash;
+  const name = surnameFirst ?
+    slash + surname + slash + separator + givn :
+    givn + separator + slash + surname + slash;
 
   return trim(npfx + separator + name + separator + nsfx);
 }
-

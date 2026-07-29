@@ -47,9 +47,13 @@ use Fisharebest\Webtrees\Site;
 
     <!-- USE_REGISTRATION_MODULE -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('Allow visitors to request a new user account') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('Allow visitors to request a new user account') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'USE_REGISTRATION_MODULE', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) Site::getPreference('USE_REGISTRATION_MODULE')]) ?>
             <div class="form-text">
@@ -62,9 +66,13 @@ use Fisharebest\Webtrees\Site;
 
     <!-- SHOW_REGISTER_CAUTION -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('Show acceptable use agreement on “Request a new user account” page') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('Show acceptable use agreement on “Request a new user account” page') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'SHOW_REGISTER_CAUTION', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) Site::getPreference('SHOW_REGISTER_CAUTION')]) ?>
             <div class="form-text">

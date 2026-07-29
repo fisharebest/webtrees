@@ -44,6 +44,7 @@ use function mb_strtolower;
 use function mb_strtoupper;
 use function mb_substr;
 use function normalizer_normalize;
+use function str_contains;
 
 abstract readonly class AbstractLanguage implements LanguageInterface
 {
@@ -220,44 +221,6 @@ abstract readonly class AbstractLanguage implements LanguageInterface
         return strtr((string) $string, static::DIGITS);
     }
 
-    public function number(float $number): string
-    {
-        if ($number < 0) {
-            $number   = -$number;
-            $negative = static::NEGATIVE_SYMBOL;
-        } else {
-            $negative = '';
-        }
-
-        $parts  = explode('.', (string) $number, 2);
-        $digits = $parts[0];
-
-        if (strlen($digits) >= static::DIGITS_FIRST_GROUP + static::MINIMUM_GROUPING_DIGITS) {
-            $todo   = substr($digits, 0, -static::DIGITS_FIRST_GROUP);
-            $digits = static::DIGITS_SEPARATOR . substr($digits, -static::DIGITS_FIRST_GROUP);
-
-            while (strlen($todo) >= static::DIGITS_GROUP + static::MINIMUM_GROUPING_DIGITS) {
-                $digits = static::DIGITS_SEPARATOR . substr($todo, -static::DIGITS_GROUP) . $digits;
-                $todo   = substr($todo, 0, -static::DIGITS_GROUP);
-            }
-
-            $digits = $todo . $digits;
-        }
-
-        if (count($parts) > 1) {
-            $decimals = static::DECIMAL_SYMBOL . $parts[1];
-        } else {
-            $decimals = '';
-        }
-
-        return $this->digits($negative . $digits . $decimals);
-    }
-
-    public function percentage(float $number): string
-    {
-        return sprintf(static::PERCENT_FORMAT, $this->number($number * 100.0));
-    }
-
     public function endonym(): string
     {
         return static::ENDONYM;
@@ -268,23 +231,48 @@ abstract readonly class AbstractLanguage implements LanguageInterface
         return static::FIRST_DAY;
     }
 
+    protected function formatAboutDate(string $date): string
+    {
+        return sprintf(static::DATE_ABOUT, $date);
+    }
+
+    protected function formatAfterDate(string $date): string
+    {
+        return sprintf(static::DATE_AFTER, $date);
+    }
+
+    protected function formatBeforeDate(string $date): string
+    {
+        return sprintf(static::DATE_BEFORE, $date);
+    }
+
+    protected function formatBetweenDate(string $date1, string $date2): string
+    {
+        return sprintf(static::DATE_BETWEEN_AND, $date1, $date2);
+    }
+
+    protected function formatCalculatedDate(string $date): string
+    {
+        return sprintf(static::DATE_CALCULATED, $date);
+    }
+
     public function formatDate(Date $date): string
     {
         $date1 = $date->minimumDate();
         $date2 = $date->maximumDate();
 
         return match ($date->type) {
-            DateType::Exact       => sprintf(static::DATE_EXACT, $this->formatNominativeDate($date1)),
-            DateType::About       => sprintf(static::DATE_ABOUT, $this->formatGenitiveDate($date1)),
-            DateType::Calculated  => sprintf(static::DATE_CALCULATED, $this->formatNominativeDate($date1)),
-            DateType::Estimated   => sprintf(static::DATE_ESTIMATED, $this->formatNominativeDate($date1)),
-            DateType::Interpreted => sprintf(static::DATE_INTERPRETED, $this->formatNominativeDate($date1)),
-            DateType::Before      => sprintf(static::DATE_BEFORE, $this->formatInstrumentalDate($date1)),
-            DateType::After       => sprintf(static::DATE_AFTER, $this->formatLocativeDate($date1)),
-            DateType::From        => sprintf(static::DATE_FROM, $this->formatGenitiveDate($date1)),
-            DateType::To          => sprintf(static::DATE_TO, $this->formatGenitiveDate($date1)),
-            DateType::Between     => sprintf(static::DATE_BETWEEN_AND, $this->formatInstrumentalDate($date1), $this->formatInstrumentalDate($date2)),
-            DateType::FromTo      => sprintf(static::DATE_FROM_TO, $this->formatGenitiveDate($date1), $this->formatGenitiveDate($date2)),
+            DateType::Exact       => $this->formatExactDate($this->formatNominativeDate($date1)),
+            DateType::About       => $this->formatAboutDate($this->formatGenitiveDate($date1)),
+            DateType::Calculated  => $this->formatCalculatedDate($this->formatNominativeDate($date1)),
+            DateType::Estimated   => $this->formatEstimatedDate($this->formatNominativeDate($date1)),
+            DateType::Interpreted => $this->formatInterpretedDate($this->formatNominativeDate($date1)),
+            DateType::Before      => $this->formatBeforeDate($this->formatInstrumentalDate($date1)),
+            DateType::After       => $this->formatAfterDate($this->formatLocativeDate($date1)),
+            DateType::From        => $this->formatFromDate($this->formatGenitiveDate($date1)),
+            DateType::To          => $this->formatToDate($this->formatGenitiveDate($date1)),
+            DateType::Between     => $this->formatBetweenDate($this->formatInstrumentalDate($date1), $this->formatInstrumentalDate($date2)),
+            DateType::FromTo      => $this->formatFromToDate($this->formatGenitiveDate($date1), $this->formatGenitiveDate($date2)),
         };
     }
 
@@ -302,9 +290,29 @@ abstract readonly class AbstractLanguage implements LanguageInterface
         return $this->digits($date->day());
     }
 
+    protected function formatEstimatedDate(string $date): string
+    {
+        return sprintf(static::DATE_ESTIMATED, $date);
+    }
+
+    protected function formatExactDate(string $date): string
+    {
+        return sprintf(static::DATE_EXACT, $date);
+    }
+
     protected function formatFrenchYear(AbstractCalendarDate $date): string
     {
         return 'An ' . (new RomanNumeralsService())->numberToRomanNumerals($date->year());
+    }
+
+    protected function formatFromDate(string $date): string
+    {
+        return sprintf(static::DATE_FROM, $date);
+    }
+
+    protected function formatFromToDate(string $date1, string $date2): string
+    {
+        return sprintf(static::DATE_FROM_TO, $date1, $date2);
     }
 
     protected function formatGenitiveDate(AbstractCalendarDate $date): string
@@ -330,6 +338,11 @@ abstract readonly class AbstractLanguage implements LanguageInterface
     protected function formatHijriYear(AbstractCalendarDate $date): string
     {
         return $this->digits($date->year());
+    }
+
+    protected function formatInterpretedDate(string $date): string
+    {
+        return sprintf(static::DATE_INTERPRETED, $date);
     }
 
     protected function formatInstrumentalDate(AbstractCalendarDate $date): string
@@ -500,6 +513,11 @@ abstract readonly class AbstractLanguage implements LanguageInterface
         return sprintf(static::ERA_ROMAN, $year);
     }
 
+    protected function formatToDate(string $date): string
+    {
+        return sprintf(static::DATE_TO, $date);
+    }
+
     protected function formatYear(AbstractCalendarDate $date): string
     {
         if ($date->year() === 0) {
@@ -580,9 +598,47 @@ abstract readonly class AbstractLanguage implements LanguageInterface
         return [];
     }
 
+    public function number(float $number): string
+    {
+        if ($number < 0) {
+            $number   = -$number;
+            $negative = static::NEGATIVE_SYMBOL;
+        } else {
+            $negative = '';
+        }
+
+        $parts  = explode('.', (string) $number, 2);
+        $digits = $parts[0];
+
+        if (strlen($digits) >= static::DIGITS_FIRST_GROUP + static::MINIMUM_GROUPING_DIGITS) {
+            $todo   = substr($digits, 0, -static::DIGITS_FIRST_GROUP);
+            $digits = static::DIGITS_SEPARATOR . substr($digits, -static::DIGITS_FIRST_GROUP);
+
+            while (strlen($todo) >= static::DIGITS_GROUP + static::MINIMUM_GROUPING_DIGITS) {
+                $digits = static::DIGITS_SEPARATOR . substr($todo, -static::DIGITS_GROUP) . $digits;
+                $todo   = substr($todo, 0, -static::DIGITS_GROUP);
+            }
+
+            $digits = $todo . $digits;
+        }
+
+        if (count($parts) > 1) {
+            $decimals = static::DECIMAL_SYMBOL . $parts[1];
+        } else {
+            $decimals = '';
+        }
+
+        return $this->digits($negative . $digits . $decimals);
+    }
+
     public function paperSize(): PaperSize
     {
         return static::PAPER_SIZE;
+    }
+
+    public function percentage(float $number): string
+    {
+        return sprintf(static::PERCENT_FORMAT, $this->number($number * 100.0));
     }
 
     public function pluralRule(): PluralRule
@@ -611,6 +667,11 @@ abstract readonly class AbstractLanguage implements LanguageInterface
     public function strtoupper(string $string): string
     {
         return mb_strtoupper($string);
+    }
+
+    protected function startsWithVowel(string $text): bool
+    {
+        return $text !== '' && str_contains('aeiouAEIOU', $text[0]);
     }
 
     public function textDirection(): TextDirection

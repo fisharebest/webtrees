@@ -180,7 +180,7 @@ abstract class AbstractElement implements ElementInterface
         // Preserve leading newlines in our data.
         if (str_starts_with($value, "\n")) {
             $value = "\n" . $value;
-    }
+        }
 
         return '<textarea class="form-control" id="' . e($id) . '" name="' . e($name) . '" rows="3" dir="auto">' . e($value) . '</textarea>';
     }

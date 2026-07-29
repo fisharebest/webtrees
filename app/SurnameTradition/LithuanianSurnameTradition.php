@@ -54,17 +54,11 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
         'utė\b'  => 'us',
     ];
 
-    /**
-     * The name of this surname tradition
-     */
     public function name(): string
     {
         return I18N::translateContext('Surname tradition', 'Lithuanian');
     }
 
-    /**
-     * A short description of this surname tradition
-     */
     public function description(): string
     {
         /* I18N: In the Lithuanian surname tradition, ... */
@@ -75,10 +69,7 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
     }
 
     /**
-     * What name is given to a new child
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array
     {
@@ -102,10 +93,7 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
     }
 
     /**
-     * What name is given to a new parent
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newParentNames(Individual $child, string $sex): array
     {
@@ -124,10 +112,7 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
     }
 
     /**
-     * What names are given to a new spouse
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
     public function newSpouseNames(Individual $spouse, string $sex): array
     {

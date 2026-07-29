@@ -55,14 +55,14 @@ use Fisharebest\Webtrees\I18N;
     </div>
 
     <!-- Import options -->
-    <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-4">
+    <div class="row mb-3">
+        <label class="col-form-label col-sm-4" for="options">
             <?= I18N::translate('Import') ?>
-        </legend>
+        </label>
         <div class="col-sm-8">
             <?= view('components/select', ['name' => 'options', 'selected' => '', 'options' => ['update' => I18N::translate('Only update existing records'), 'add' => I18N::translate('Only add new records'), 'addupdate' => I18N::translate('Add new, and update existing records')]]) ?>
         </div>
-    </fieldset>
+    </div>
 
     <!-- SAVE BUTTON -->
     <div class="row mb-3">
@@ -81,4 +81,3 @@ use Fisharebest\Webtrees\I18N;
         <?= csrf_field() ?>
     </form>
 </div>
-
