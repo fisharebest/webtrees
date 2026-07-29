@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use Fisharebest\Webtrees\Comparators\FactComparator;
 use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Elements\RestrictionNotice;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
@@ -634,7 +634,7 @@ class GedcomRecord
     /**
      * Get the last-change timestamp for this record
      */
-    public function lastChangeTimestamp(): TimestampInterface
+    public function lastChangeTimestamp(): CarbonImmutable
     {
         $chan = $this->facts(['CHAN'])->first();
 
@@ -658,7 +658,7 @@ class GedcomRecord
         }
 
         // The record does not have a CHAN event
-        return Registry::timestampFactory()->make(0);
+        return Registry::timestampFactory()->fromEpoch(0);
     }
 
     /**

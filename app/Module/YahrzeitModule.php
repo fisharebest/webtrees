@@ -81,8 +81,8 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
         extract($config, EXTR_OVERWRITE);
 
         $jewish_calendar = new JewishCalendar();
-        $startjd         = Registry::timestampFactory()->now()->julianDay();
-        $endjd           = Registry::timestampFactory()->now()->addDays($days - 1)->julianDay();
+        $startjd         = Registry::timestampFactory()->todayJulianDay();
+        $endjd           = $startjd + $days - 1;
 
         // The standard anniversary rules cover most of the Yahrzeit rules, we just
         // need to handle a few special cases.

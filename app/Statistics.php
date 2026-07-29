@@ -1265,7 +1265,7 @@ class Statistics
             return I18N::translate('Never');
         }
 
-        return Registry::timestampFactory()->make($timestamp)->format(strtr($format, ['%' => '']));
+        return Registry::timestampFactory()->fromEpoch($timestamp)->format(strtr($format, ['%' => '']));
     }
 
     public function latestUserRegTime(string|null $format = null): string
@@ -1278,7 +1278,7 @@ class Statistics
             return I18N::translate('Never');
         }
 
-        return Registry::timestampFactory()->make($timestamp)->format(strtr($format, ['%' => '']));
+        return Registry::timestampFactory()->fromEpoch($timestamp)->format(strtr($format, ['%' => '']));
     }
 
     public function longestLife(): string
@@ -1914,7 +1914,7 @@ class Statistics
         $records = $this->data->topTenOldestAliveQuery('ALL', (int) $limit)
             ->map(fn (Individual $individual): array => [
                 'person' => $individual,
-                'age'    => $this->format->age(Registry::timestampFactory()->now()->julianDay() - $individual->getBirthDate()->minimumJulianDay()),
+                'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
             ])
             ->all();
 
@@ -1946,7 +1946,7 @@ class Statistics
         $records = $this->data->topTenOldestAliveQuery('F', (int) $limit)
             ->map(fn (Individual $individual): array => [
                 'person' => $individual,
-                'age'    => $this->format->age(Registry::timestampFactory()->now()->julianDay() - $individual->getBirthDate()->minimumJulianDay()),
+                'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
             ])
             ->all();
 
@@ -1978,7 +1978,7 @@ class Statistics
         $records = $this->data->topTenOldestAliveQuery('F', (int) $limit)
             ->map(fn (Individual $individual): array => [
                 'person' => $individual,
-                'age'    => $this->format->age(Registry::timestampFactory()->now()->julianDay() - $individual->getBirthDate()->minimumJulianDay()),
+                'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
             ])
             ->all();
 
@@ -2010,7 +2010,7 @@ class Statistics
         $records = $this->data->topTenOldestAliveQuery('ALL', (int) $limit)
             ->map(fn (Individual $individual): array => [
                 'person' => $individual,
-                'age'    => $this->format->age(Registry::timestampFactory()->now()->julianDay() - $individual->getBirthDate()->minimumJulianDay()),
+                'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
             ])
             ->all();
 
@@ -2042,7 +2042,7 @@ class Statistics
         $records = $this->data->topTenOldestAliveQuery('M', (int) $limit)
             ->map(fn (Individual $individual): array => [
                 'person' => $individual,
-                'age'    => $this->format->age(Registry::timestampFactory()->now()->julianDay() - $individual->getBirthDate()->minimumJulianDay()),
+                'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
             ])
             ->all();
 
@@ -2074,7 +2074,7 @@ class Statistics
         $records = $this->data->topTenOldestAliveQuery('M', (int) $limit)
             ->map(fn (Individual $individual): array => [
                 'person' => $individual,
-                'age'    => $this->format->age(Registry::timestampFactory()->now()->julianDay() - $individual->getBirthDate()->minimumJulianDay()),
+                'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
             ])
             ->all();
 

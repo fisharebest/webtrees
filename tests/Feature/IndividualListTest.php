@@ -52,7 +52,7 @@ class IndividualListTest extends TestCase
 
         I18N::init('en-US');
 
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $tree_service = new TreeService(new GedcomImportService());
         $this->tree   = $tree_service->create('name', 'title');
         $this->user   = $user_service->create('user', 'User', 'user@example.com', 'secret');

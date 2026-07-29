@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Html;
@@ -40,6 +40,7 @@ use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
+use Psr\Clock\ClockInterface;
 use RuntimeException;
 use ZipArchive;
 
@@ -50,7 +51,6 @@ use function ftell;
 use function fwrite;
 use function rewind;
 use function strlen;
-use function time;
 use function usort;
 use function version_compare;
 
@@ -76,6 +76,7 @@ class UpgradeService
         private readonly ClientInterface $http_client,
         private readonly RequestFactoryInterface $request_factory,
         private readonly TimeoutService $timeout_service,
+        private readonly ClockInterface $clock,
     ) {
     }
 
@@ -253,11 +254,11 @@ class UpgradeService
     /**
      * When did we last try to fetch the latest version of webtrees.
      */
-    public function latestVersionTimestamp(): TimestampInterface
+    public function latestVersionTimestamp(): CarbonImmutable
     {
         $latest_version_wt_timestamp = (int) Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
 
-        return Registry::timestampFactory()->make($latest_version_wt_timestamp);
+        return Registry::timestampFactory()->fromEpoch($latest_version_wt_timestamp);
     }
 
     /**
@@ -283,7 +284,7 @@ class UpgradeService
     {
         $last_update_timestamp = (int) Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
 
-        $current_timestamp = time();
+        $current_timestamp = $this->clock->now()->getTimestamp();
 
         if ($force || $last_update_timestamp < $current_timestamp - self::CHECK_FOR_UPDATE_INTERVAL) {
             Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', (string) $current_timestamp);

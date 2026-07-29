@@ -44,9 +44,9 @@ use Fisharebest\Webtrees\Factories\SourceFactory;
 use Fisharebest\Webtrees\Factories\SubmissionFactory;
 use Fisharebest\Webtrees\Factories\SubmitterFactory;
 use Fisharebest\Webtrees\Factories\SurnameTraditionFactory;
-use Fisharebest\Webtrees\Factories\TimeFactory;
 use Fisharebest\Webtrees\Factories\TimestampFactory;
 use Fisharebest\Webtrees\Factories\XrefFactory;
+use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
 use Fisharebest\Webtrees\Http\Dispatcher;
 use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
@@ -78,6 +78,7 @@ use Fisharebest\Webtrees\Services\PhpService;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
 use Psr\Http\Client\ClientInterface;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -223,13 +224,14 @@ class Webtrees
         Registry::submissionFactory(new SubmissionFactory());
         Registry::submitterFactory(new SubmitterFactory());
         Registry::surnameTraditionFactory(new SurnameTraditionFactory());
-        Registry::timeFactory(new TimeFactory());
-        Registry::timestampFactory(new TimestampFactory());
+        $clock = new SystemClock();
+        Registry::timestampFactory(new TimestampFactory($clock));
         Registry::xrefFactory(new XrefFactory());
 
-        // PSR-7 messages, PSR-17 message-factories, and PSR-18 HTTP client
+        // PSR-7 messages, PSR-17 message-factories, PSR-18 HTTP client, and PSR-20 clock
 
         Registry::container()
+            ->set(ClockInterface::class, $clock)
             ->bind(ClientInterface::class, Psr18Client::class)
             ->bind(RequestFactoryInterface::class, Psr17Factory::class)
             ->bind(ResponseFactoryInterface::class, Psr17Factory::class)

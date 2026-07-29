@@ -183,7 +183,8 @@ class CalendarService
             }
 
             if ($filterof === 'recent') {
-                $query->where('d_julianday1', '>=', Registry::timestampFactory()->now()->subtractYears(100)->julianDay());
+                // Approximately 100 years ago, used as a rough filter.
+                $query->where('d_julianday1', '>=', Registry::timestampFactory()->todayJulianDay() - 36525);
             }
 
             $query

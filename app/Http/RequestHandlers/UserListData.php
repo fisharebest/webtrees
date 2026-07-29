@@ -103,9 +103,9 @@ final class UserListData implements RequestHandlerInterface
                 '<a href="mailto:' . e($row->email) . '">' . e($row->email) . '</a>',
                 $languages[$row->language] ?? $row->language,
                 $row->registered_at,
-                $row->registered_at ? view('components/datetime-diff', ['timestamp' => Registry::timestampFactory()->make((int) $row->registered_at)]) : '',
+                $row->registered_at ? view('components/datetime-diff', ['timestamp' => Registry::timestampFactory()->fromEpoch((int) $row->registered_at)]) : '',
                 $row->active_at,
-                $row->active_at ? view('components/datetime-diff', ['timestamp' => Registry::timestampFactory()->make((int) $row->active_at)]) : I18N::translate('Never'),
+                $row->active_at ? view('components/datetime-diff', ['timestamp' => Registry::timestampFactory()->fromEpoch((int) $row->active_at)]) : I18N::translate('Never'),
                 $row->verified ? I18N::translate('yes') : I18N::translate('no'),
                 $row->verified_by_admin ? I18N::translate('yes') : I18N::translate('no'),
             ];

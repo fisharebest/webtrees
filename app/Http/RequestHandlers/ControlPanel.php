@@ -66,6 +66,7 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Local\LocalFilesystemAdapter;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -90,6 +91,8 @@ final class ControlPanel implements RequestHandlerInterface
 
     private UserService $user_service;
 
+    private ClockInterface $clock;
+
     public function __construct(
         AdminService $admin_service,
         HousekeepingService $housekeeping_service,
@@ -98,7 +101,8 @@ final class ControlPanel implements RequestHandlerInterface
         ServerCheckService $server_check_service,
         TreeService $tree_service,
         UpgradeService $upgrade_service,
-        UserService $user_service
+        UserService $user_service,
+        ClockInterface $clock,
     ) {
         $this->admin_service        = $admin_service;
         $this->housekeeping_service = $housekeeping_service;
@@ -108,6 +112,7 @@ final class ControlPanel implements RequestHandlerInterface
         $this->tree_service         = $tree_service;
         $this->upgrade_service      = $upgrade_service;
         $this->user_service         = $user_service;
+        $this->clock                = $clock;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
@@ -126,6 +131,7 @@ final class ControlPanel implements RequestHandlerInterface
 
         return $this->viewResponse('admin/control-panel', [
             'title'                             => I18N::translate('Control panel'),
+            'now'                               => $this->clock->now()->getTimestamp(),
             'server_errors'                     => $this->server_check_service->serverErrors(),
             'server_warnings'                   => $this->server_check_service->serverWarnings(),
             'latest_version'                    => $this->upgrade_service->latestVersion(),

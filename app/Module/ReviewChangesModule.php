@@ -37,9 +37,8 @@ use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function time;
 
 class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 {
@@ -51,14 +50,18 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
     private TreeService $tree_service;
 
+    private ClockInterface $clock;
+
     public function __construct(
         EmailService $email_service,
         TreeService $tree_service,
-        UserService $user_service
+        UserService $user_service,
+        ClockInterface $clock,
     ) {
         $this->email_service = $email_service;
         $this->tree_service  = $tree_service;
         $this->user_service  = $user_service;
+        $this->clock         = $clock;
     }
 
     public function title(): string
@@ -96,7 +99,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             $next_email_timestamp = $last_email_timestamp + 86400 * $days;
 
             // There are pending changes - tell moderators/managers/administrators about them.
-            if ($next_email_timestamp < time()) {
+            if ($next_email_timestamp < $this->clock->now()->getTimestamp()) {
                 // Which users have pending changes?
                 foreach ($this->user_service->all() as $user) {
                     if ($user->getPreference(UserInterface::PREF_CONTACT_METHOD) !== MessageService::CONTACT_METHOD_NONE) {
@@ -123,7 +126,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                     }
                 }
                 I18N::init($old_language);
-                Site::setPreference('LAST_CHANGE_EMAIL', (string) time());
+                Site::setPreference('LAST_CHANGE_EMAIL', (string) $this->clock->now()->getTimestamp());
             }
         }
         if (Auth::isEditor($tree) && $tree->hasPendingEdit()) {
@@ -132,7 +135,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                 $content .= '<a href="' . e(route(PendingChanges::class, ['tree' => $tree->name()])) . '">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
             }
             if ($sendmail) {
-                $last_email_timestamp = Registry::timestampFactory()->make((int) Site::getPreference('LAST_CHANGE_EMAIL'));
+                $last_email_timestamp = Registry::timestampFactory()->fromEpoch((int) Site::getPreference('LAST_CHANGE_EMAIL'));
                 $next_email_timestamp = $last_email_timestamp->addDays($days);
 
                 $content .= I18N::translate('Last email reminder was sent ') . view('components/datetime', ['timestamp' => $last_email_timestamp]) . '<br>';

@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\DB;
@@ -256,7 +256,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree Changes for which tree
      * @param int  $days Number of days
      *
-     * @return Collection<array-key,object{record:GedcomRecord,time:TimestampInterface,user:UserInterface}> List of records with changes
+     * @return Collection<array-key,object{record:GedcomRecord,time:CarbonImmutable,user:UserInterface}> List of records with changes
      */
     private function getRecentChangesFromDatabase(Tree $tree, int $days): Collection
     {
@@ -264,7 +264,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             ->where('gedcom_id', '=', $tree->id())
             ->where('status', '=', 'accepted')
             ->where('new_gedcom', '<>', '')
-            ->where('change_time', '>', Registry::timestampFactory()->now()->subtractDays($days)->toDateTimeString())
+            ->where('change_time', '>', Registry::timestampFactory()->now()->subDays($days)->toDateTimeString())
             ->groupBy(['xref'])
             ->select([new Expression('MAX(change_id) AS recent_change_id')]);
 
@@ -288,11 +288,11 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree Changes for which tree
      * @param int  $days Number of days
      *
-     * @return Collection<array-key,object{record:GedcomRecord,time:TimestampInterface,user:UserInterface}> List of records with changes
+     * @return Collection<array-key,object{record:GedcomRecord,time:CarbonImmutable,user:UserInterface}> List of records with changes
      */
     private function getRecentChangesFromGenealogy(Tree $tree, int $days): Collection
     {
-        $julian_day = Registry::timestampFactory()->now()->subtractDays($days)->julianDay();
+        $julian_day = Registry::timestampFactory()->todayJulianDay() - $days;
 
         $individuals = DB::table('dates')
             ->where('d_file', '=', $tree->id())

@@ -33,7 +33,7 @@ class UserAddActionTest extends TestCase
 
     public function testHandler(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $handler      = new UserAddAction($user_service);
         $request      = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
             'username'  => 'User name',

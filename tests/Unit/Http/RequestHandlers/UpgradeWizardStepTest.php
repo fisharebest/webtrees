@@ -51,7 +51,8 @@ class UpgradeWizardStepTest extends TestCase
         return new UpgradeService(
             self::createStub(ClientInterface::class),
             self::createStub(RequestFactoryInterface::class),
-            new TimeoutService(php_service: new PhpService()),
+            new TimeoutService(php_service: new PhpService(), clock: new \Fisharebest\Webtrees\Clock\SystemClock()),
+            new \Fisharebest\Webtrees\Clock\SystemClock(),
         );
     }
 
@@ -63,6 +64,7 @@ class UpgradeWizardStepTest extends TestCase
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
             $this->upgradeService(),
+            new \Fisharebest\Webtrees\Clock\SystemClock(),
         );
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Invalid']);
@@ -81,7 +83,8 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
-            $mock_upgrade_service
+            $mock_upgrade_service,
+            new \Fisharebest\Webtrees\Clock\SystemClock()
         );
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Check']);
@@ -101,7 +104,8 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
-            $mock_upgrade_service
+            $mock_upgrade_service,
+            new \Fisharebest\Webtrees\Clock\SystemClock()
         );
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Check']);
@@ -119,7 +123,8 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
-            $mock_upgrade_service
+            $mock_upgrade_service,
+            new \Fisharebest\Webtrees\Clock\SystemClock()
         );
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Check']);
@@ -134,6 +139,7 @@ class UpgradeWizardStepTest extends TestCase
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
             $this->upgradeService(),
+            new \Fisharebest\Webtrees\Clock\SystemClock(),
         );
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Prepare']);
@@ -150,6 +156,7 @@ class UpgradeWizardStepTest extends TestCase
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
             $this->upgradeService(),
+            new \Fisharebest\Webtrees\Clock\SystemClock(),
         );
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Pending']);
@@ -162,7 +169,7 @@ class UpgradeWizardStepTest extends TestCase
     {
         $tree_service = new TreeService(new GedcomImportService());
         $tree         = $tree_service->create('name', 'title');
-        $user         = (new UserService())->create('user', 'name', 'email', 'password');
+        $user         = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'name', 'email', 'password');
 
         Auth::login($user);
         $tree->createIndividual("0 @@ INDI\n1 NAME Joe Bloggs");
@@ -173,6 +180,7 @@ class UpgradeWizardStepTest extends TestCase
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
             $this->upgradeService(),
+            new \Fisharebest\Webtrees\Clock\SystemClock(),
         );
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Pending']);
@@ -194,6 +202,7 @@ class UpgradeWizardStepTest extends TestCase
             new PendingChangesService(new GedcomImportService()),
             $tree_service,
             $this->upgradeService(),
+            new \Fisharebest\Webtrees\Clock\SystemClock(),
         );
 
         $request  = self::createRequest()->withQueryParams(['step' => 'Export', 'tree' => $tree->name()]);
@@ -218,7 +227,8 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
-            $mock_upgrade_service
+            $mock_upgrade_service,
+            new \Fisharebest\Webtrees\Clock\SystemClock()
         );
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Download']);
@@ -234,7 +244,8 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
-            $mock_upgrade_service
+            $mock_upgrade_service,
+            new \Fisharebest\Webtrees\Clock\SystemClock()
         );
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Download']);
@@ -252,7 +263,8 @@ class UpgradeWizardStepTest extends TestCase
             new MaintenanceModeService(__DIR__ . '/../../../data/'),
             new PendingChangesService(new GedcomImportService()),
             new TreeService(new GedcomImportService()),
-            $mock_upgrade_service
+            $mock_upgrade_service,
+            new \Fisharebest\Webtrees\Clock\SystemClock()
         );
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Unzip']);

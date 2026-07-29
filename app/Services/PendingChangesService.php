@@ -23,7 +23,7 @@ use DateInterval;
 use DateTimeImmutable;
 use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
@@ -87,7 +87,7 @@ class PendingChangesService
      *     change_id:string,
      *     old_gedcom:string|null,
      *     new_gedcom:string|null,
-     *     change_time:TimestampInterface,
+     *     change_time:CarbonImmutable,
      *     record:GedcomRecord,
      *     user_name:string,
      *     real_name:string

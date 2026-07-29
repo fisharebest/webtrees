@@ -46,19 +46,20 @@ class ControlPanelControllerTest extends TestCase
     public function testControlPanel(): void
     {
         $admin_service         = new AdminService();
-        $message_service       = new MessageService(email_service: new EmailService(), user_service: new UserService());
+        $message_service       = new MessageService(email_service: new EmailService(), user_service: new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()));
         $module_service        = new ModuleService();
-        $housekeeping_service  = new HousekeepingService();
+        $housekeeping_service  = new HousekeepingService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $server_check_service  = new ServerCheckService(php_service: new PhpService());
-        $timeout_service       = new TimeoutService(php_service: new PhpService());
+        $timeout_service       = new TimeoutService(php_service: new PhpService(), clock: new \Fisharebest\Webtrees\Clock\SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $upgrade_service       = new UpgradeService(
             self::createStub(ClientInterface::class),
             self::createStub(RequestFactoryInterface::class),
             $timeout_service,
+            new \Fisharebest\Webtrees\Clock\SystemClock(),
         );
-        $user_service          = new UserService();
+        $user_service          = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $handler               = new ControlPanel(
             $admin_service,
             $housekeeping_service,
@@ -68,6 +69,7 @@ class ControlPanelControllerTest extends TestCase
             tree_service:  $tree_service,
             upgrade_service:  $upgrade_service,
             user_service:  $user_service,
+            clock: new \Fisharebest\Webtrees\Clock\SystemClock(),
         );
         $request               = self::createRequest();
         $response              = $handler->handle($request);

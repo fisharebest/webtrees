@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessageSelect;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
@@ -26,7 +26,7 @@ use Illuminate\Support\Collection;
  *     user_id:string,
  *     subject:string,
  *     body:string,
- *     created:TimestampInterface
+ *     created:CarbonImmutable
  * }&stdClass>                 $messages
  * @var Collection<int,User>   $users
  * @var UserService            $user_service

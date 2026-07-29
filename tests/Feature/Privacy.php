@@ -53,7 +53,7 @@ class Privacy extends TestCase
         self::assertInstanceOf(Individual::class, $beatrice);
         self::assertSame('Princess Beatrice of York', strip_tags($beatrice->fullName()));
 
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
 
         $admin = $user_service->create('admin', 'admin', 'admin', '*');
         $admin->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');

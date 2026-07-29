@@ -38,7 +38,7 @@ use Illuminate\Support\Collection;
         <div class="indent">
             <?= $fact->label() . ' — ' . $fact->date()->display($record->tree(), null, true) ?>
             <?php if (PHP_INT_SIZE >= 8 || $fact->date()->gregorianYear() > 1901) : ?>
-                (<?= Registry::timestampFactory()->now()->subtractYears($fact->anniv)->diffForHumans() ?>)
+                (<?= Registry::timestampFactory()->now()->subYears($fact->anniv)->diffForHumans() ?>)
             <?php else : ?>
                 (<?= I18N::plural('%s year', '%s years', $fact->anniv, I18N::number($fact->anniv)) ?>)
             <?php endif ?>

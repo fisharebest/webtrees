@@ -54,7 +54,7 @@ class UserTest extends TestCase
 
     public function testGettersAndSetters(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
 
         self::assertSame(1, $user->id());
@@ -78,7 +78,7 @@ class UserTest extends TestCase
 
     public function testPreferences(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
 
         self::assertSame('', $user->getPreference('foo'));

@@ -80,7 +80,7 @@ class WebtreesLogoTagTest extends TestCase
      */
     private function renderReport(string $filename): string
     {
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
@@ -95,7 +95,7 @@ class WebtreesLogoTagTest extends TestCase
             [],
             $tree,
             Webtrees::NAME,
-            Registry::timestampFactory()->make(0),
+            Registry::timestampFactory()->fromEpoch(0),
         ))->process();
 
         return $renderer->output();

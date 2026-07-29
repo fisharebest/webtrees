@@ -424,7 +424,7 @@ class EmbeddedVariablesTest extends TestCase
 
     public function testAllEmbeddedVariables(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $tree    = $this->importTree('demo.ged');
         $request = self::createRequest()->withAttribute('tree', $tree);
         Registry::container()->set(ServerRequestInterface::class, $request);
@@ -455,7 +455,7 @@ class EmbeddedVariablesTest extends TestCase
 
     public function testAllEmbeddedVariablesWithEmptyTree(): void
     {
-        $user_service          = new UserService();
+        $user_service          = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create('name', 'title');

@@ -44,7 +44,6 @@ use Fisharebest\Webtrees\Contracts\SourceFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmissionFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmitterFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SurnameTraditionFactoryInterface;
-use Fisharebest\Webtrees\Contracts\TimeFactoryInterface;
 use Fisharebest\Webtrees\Contracts\TimestampFactoryInterface;
 use Fisharebest\Webtrees\Contracts\XrefFactoryInterface;
 
@@ -103,7 +102,6 @@ class Registry
 
     private static SurnameTraditionFactoryInterface $surname_tradition_factory;
 
-    private static TimeFactoryInterface $time_factory;
 
     private static TimestampFactoryInterface $timestamp_factory;
 
@@ -409,17 +407,6 @@ class Registry
         return self::$surname_tradition_factory;
     }
 
-    /**
-     * Store or retrieve a factory object.
-     */
-    public static function timeFactory(TimeFactoryInterface|null $factory = null): TimeFactoryInterface
-    {
-        if ($factory instanceof TimeFactoryInterface) {
-            self::$time_factory = $factory;
-        }
-
-        return self::$time_factory;
-    }
 
     /**
      * Store or retrieve a factory object.

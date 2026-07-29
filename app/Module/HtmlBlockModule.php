@@ -26,10 +26,10 @@ use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function in_array;
-use function time;
 
 class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
 {
@@ -37,12 +37,15 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
 
     private HtmlService $html_service;
 
+    private ClockInterface $clock;
+
     /**
      * HtmlBlockModule bootstrap.
      */
-    public function __construct(HtmlService $html_service)
+    public function __construct(HtmlService $html_service, ClockInterface $clock)
     {
         $this->html_service = $html_service;
+        $this->clock        = $clock;
     }
 
     public function title(): string
@@ -80,10 +83,10 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $title   = $statistics->embedTags($title);
         $content = $statistics->embedTags($content);
 
-        $block_timestamp = (int) $this->getBlockSetting($block_id, 'timestamp', (string) time());
+        $block_timestamp = (int) $this->getBlockSetting($block_id, 'timestamp', (string) $this->clock->now()->getTimestamp());
 
         if ($show_timestamp === '1') {
-            $content .= '<br>' . view('components/datetime', ['timestamp' => Registry::timestampFactory()->make($block_timestamp)]);
+            $content .= '<br>' . view('components/datetime', ['timestamp' => Registry::timestampFactory()->fromEpoch($block_timestamp)]);
         }
 
         if ($context !== self::CONTEXT_EMBED) {
@@ -138,7 +141,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $this->setBlockSetting($block_id, 'title', $title);
         $this->setBlockSetting($block_id, 'html', $this->html_service->sanitize($html));
         $this->setBlockSetting($block_id, 'show_timestamp', (string) $show_timestamp);
-        $this->setBlockSetting($block_id, 'timestamp', (string) time());
+        $this->setBlockSetting($block_id, 'timestamp', (string) $this->clock->now()->getTimestamp());
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
     }
 

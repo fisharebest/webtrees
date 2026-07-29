@@ -199,7 +199,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         $statistics = Registry::container()->get(Statistics::class);
         assert($statistics instanceof Statistics);
 
-        $statistics_data = new StatisticsData($tree, new UserService());
+        $statistics_data = new StatisticsData($tree, Registry::container()->get(UserService::class));
 
         $x_axis_type = Validator::parsedBody($request)->integer('x-as');
         $y_axis_type = Validator::parsedBody($request)->integer('y-as');

@@ -189,7 +189,7 @@ class ReportRegressionTest extends TestCase
         $vars         = $this->buildVars($xml_filename, $overrides);
         $tree         = $this->prepareTreeAndLogin();
         $author       = Webtrees::NAME;
-        $timestamp    = Registry::timestampFactory()->make(0);
+        $timestamp    = Registry::timestampFactory()->fromEpoch(0);
 
         $renderer = new HtmlRenderer();
         (new ParserGenerate($xml_filename, $renderer, $vars, $tree, $author, $timestamp))->process();
@@ -208,7 +208,7 @@ class ReportRegressionTest extends TestCase
         $vars         = $this->buildVars($xml_filename, $overrides);
         $tree         = $this->prepareTreeAndLogin();
         $author       = Webtrees::NAME;
-        $timestamp    = Registry::timestampFactory()->make(0);
+        $timestamp    = Registry::timestampFactory()->fromEpoch(0);
 
         $renderer = new PdfRenderer();
         (new ParserGenerate($xml_filename, $renderer, $vars, $tree, $author, $timestamp))->process();
@@ -244,7 +244,7 @@ class ReportRegressionTest extends TestCase
 
     private function prepareTreeAndLogin(): \Fisharebest\Webtrees\Tree
     {
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 

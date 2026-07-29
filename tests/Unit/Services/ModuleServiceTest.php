@@ -51,7 +51,7 @@ class ModuleServiceTest extends TestCase
 
     public function testFindByComponent(): void
     {
-        $user_service   = new UserService();
+        $user_service   = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $module_service = new ModuleService();
 
         $tree = $this->importTree('demo.ged');

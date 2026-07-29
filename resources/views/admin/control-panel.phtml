@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\CheckForNewVersionNow;
 use Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder;
@@ -110,7 +110,7 @@ use Illuminate\Support\Collection;
  * @var Collection<int,ModuleLanguageInterface>        $language_modules_enabled
  * @var string                                         $latest_version
  * @var string                                         $latest_version_error
- * @var TimestampInterface                             $latest_version_timestamp
+ * @var CarbonImmutable                             $latest_version_timestamp
  * @var Collection<int,ModuleListInterface>            $list_modules_disabled
  * @var Collection<int,ModuleListInterface>            $list_modules_enabled
  * @var Collection<int,ModuleMapLinkInterface>         $map_link_modules_disabled
@@ -210,7 +210,7 @@ use Illuminate\Support\Collection;
             <p class="card-text">
                 <?= I18N::translate('This is the latest version of webtrees. No upgrade is available.') ?>
                 <?= /* I18N: Last checked X hours ago. */ I18N::translate('Last checked %s.', $latest_version_timestamp->diffForHumans()) ?>
-                <?php if ($latest_version_timestamp->timestamp() + 60 < time()) : ?>
+                <?php if ($latest_version_timestamp->getTimestamp() + 60 < $now) : ?>
                     <a href="#" class="btn btn-primary" data-wt-post-url="<?= e(route(CheckForNewVersionNow::class)) ?>">
                         <?= /* I18N: button label */ I18N::translate('check now') ?>
                     </a>

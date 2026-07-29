@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
 use Com\Tecnick\Pdf\Tcpdf;
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Report\PageOrientation;
 use Fisharebest\Webtrees\Report\PaperSize;
 use Fisharebest\Webtrees\Report\PdfRenderTargetInterface;
@@ -54,7 +54,7 @@ class TcLibPdfAdaptorTest extends TestCase
             align_rtl: $rtl ? 'right' : 'left',
             entity_rtl: $rtl ? '&rlm;' : '&lrm;',
             font: 'dejavusans',
-            timestamp: self::createStub(TimestampInterface::class),
+            timestamp: CarbonImmutable::now(),
         );
     }
 

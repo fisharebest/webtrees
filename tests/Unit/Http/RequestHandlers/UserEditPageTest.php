@@ -41,7 +41,7 @@ class UserEditPageTest extends TestCase
         $mail_service    = new EmailService();
         $module_service  = new ModuleService();
         $tree_service    = new TreeService(new GedcomImportService());
-        $user_service    = new UserService();
+        $user_service    = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $message_service = new MessageService($mail_service, $user_service);
         $user            = $user_service->create('user', 'real', 'email', 'pass');
         $handler         = new UserEditPage($message_service, $module_service, $tree_service, $user_service);

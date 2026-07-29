@@ -19,8 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Services;
 
-use Fisharebest\Webtrees\Contracts\TimeFactoryInterface;
-use Fisharebest\Webtrees\Registry;
+use DateTimeImmutable;
+use DateTimeZone;
+use Fisharebest\Webtrees\Clock\FrozenClock;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Services\PhpService;
@@ -34,9 +35,9 @@ class TimeoutServiceTest extends TestCase
         $php_service = self::createStub(PhpService::class);
         $php_service->method('maxExecutionTime')->willReturn(0);
 
-        $now = 1500000000.0;
+        $clock = new FrozenClock(new DateTimeImmutable('2017-07-14 02:40:00', new DateTimeZone('UTC')));
 
-        $timeout_service = new TimeoutService($php_service, $now);
+        $timeout_service = new TimeoutService($php_service, $clock);
 
         self::assertFalse($timeout_service->isTimeNearlyUp());
     }
@@ -46,55 +47,55 @@ class TimeoutServiceTest extends TestCase
         $php_service = self::createStub(PhpService::class);
         $php_service->method('maxExecutionTime')->willReturn(30);
 
-        $now = 1500000000.0;
+        $start = new DateTimeImmutable('2017-07-14 02:40:00', new DateTimeZone('UTC'));
+        $clock = new FrozenClock($start);
 
-        $timeout_service = new TimeoutService($php_service, $now);
+        $timeout_service = new TimeoutService($php_service, $clock);
 
-        $time_factory = self::createStub(TimeFactoryInterface::class);
-        $time_factory->method('now')->willReturn($now + 60.0);
-        Registry::timeFactory($time_factory);
+        // Advance the clock by 60 seconds, well past the 30-second max execution time.
+        $clock->setTo($start->modify('+60 seconds'));
 
         self::assertTrue($timeout_service->isTimeNearlyUp());
     }
 
     public function testTimeOutNotReached(): void
     {
+        $start = new DateTimeImmutable('2017-07-14 02:40:00', new DateTimeZone('UTC'));
+        $clock = new FrozenClock($start);
+
         $php_service = self::createStub(PhpService::class);
         $php_service->method('maxExecutionTime')->willReturn(30);
 
-        $now = Registry::timeFactory()->now();
+        $timeout_service = new TimeoutService($php_service, $clock);
 
-        $timeout_service = new TimeoutService($php_service, $now);
-
-        $time_factory = self::createStub(TimeFactoryInterface::class);
-        $time_factory->method('now')->willReturn($now + 10.0);
-        Registry::timeFactory($time_factory);
+        // Advance the clock by 10 seconds, within the 30-second max execution time.
+        $clock->setTo($start->modify('+10 seconds'));
 
         self::assertFalse($timeout_service->isTimeNearlyUp());
     }
 
     public function testTimeLimitNotReached(): void
     {
-        $now = Registry::timeFactory()->now();
+        $start = new DateTimeImmutable('2017-07-14 02:40:00', new DateTimeZone('UTC'));
+        $clock = new FrozenClock($start);
 
-        $timeout_service = new TimeoutService(new PhpService(), $now);
+        $timeout_service = new TimeoutService(new PhpService(), $clock);
 
-        $time_factory = self::createStub(TimeFactoryInterface::class);
-        $time_factory->method('now')->willReturn($now + 1.4);
-        Registry::timeFactory($time_factory);
+        // Advance by 1.4 seconds, under the 1.5 second limit.
+        $clock->setTo(new DateTimeImmutable('@' . ((float) $start->format('U') + 1.4)));
 
         self::assertFalse($timeout_service->isTimeLimitUp());
     }
 
     public function testTimeLimitReached(): void
     {
-        $now = Registry::timeFactory()->now();
+        $start = new DateTimeImmutable('2017-07-14 02:40:00', new DateTimeZone('UTC'));
+        $clock = new FrozenClock($start);
 
-        $timeout_service = new TimeoutService(new PhpService(), $now);
+        $timeout_service = new TimeoutService(new PhpService(), $clock);
 
-        $time_factory = self::createStub(TimeFactoryInterface::class);
-        $time_factory->method('now')->willReturn($now + 1.6);
-        Registry::timeFactory($time_factory);
+        // Advance by 1.6 seconds, over the 1.5 second limit.
+        $clock->setTo(new DateTimeImmutable('@' . ((float) $start->format('U') + 1.6)));
 
         self::assertTrue($timeout_service->isTimeLimitUp());
     }

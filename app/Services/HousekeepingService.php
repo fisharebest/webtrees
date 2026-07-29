@@ -25,15 +25,18 @@ use League\Flysystem\FilesystemOperator;
 use League\Flysystem\FilesystemReader;
 use League\Flysystem\UnableToDeleteDirectory;
 use League\Flysystem\UnableToDeleteFile;
+use Psr\Clock\ClockInterface;
 
-use function date;
-use function time;
 
 /**
  * Clean up old data, files and folders.
  */
 class HousekeepingService
 {
+    public function __construct(private readonly ClockInterface $clock)
+    {
+    }
+
     // This is a list of old files and directories, from earlier versions of webtrees.
     // Exclude the folders; app, resources and vendor.  These are cleaned by synchronizing with new releases.
     private const array OLD_PATHS = [
@@ -255,7 +258,7 @@ class HousekeepingService
      */
     public function deleteOldFiles(FilesystemOperator $filesystem, string $path, int $max_age): void
     {
-        $threshold = time() - $max_age;
+        $threshold = $this->clock->now()->getTimestamp() - $max_age;
 
         $list = $filesystem->listContents($path, FilesystemReader::LIST_DEEP);
 
@@ -273,14 +276,14 @@ class HousekeepingService
     {
         DB::table('log')
             ->whereIn('log_type', ['error', 'media'])
-            ->where('log_time', '<', date('Y-m-d H:i:s', time() - $max_age_in_seconds))
+            ->where('log_time', '<', $this->clock->now()->modify('-' . $max_age_in_seconds . ' seconds')->format('Y-m-d H:i:s'))
             ->delete();
     }
 
     public function deleteOldSessions(int $max_age_in_seconds): void
     {
         DB::table('session')
-            ->where('session_time', '<', date('Y-m-d H:i:s', time() - $max_age_in_seconds))
+            ->where('session_time', '<', $this->clock->now()->modify('-' . $max_age_in_seconds . ' seconds')->format('Y-m-d H:i:s'))
             ->delete();
     }
 

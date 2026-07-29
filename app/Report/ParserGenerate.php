@@ -23,7 +23,7 @@ use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\Comparators\IndividualComparator;
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Encodings\UTF8;
@@ -181,7 +181,7 @@ final class ParserGenerate extends AbstractParser
         array $vars,
         private readonly Tree $tree,
         private readonly string $author,
-        private readonly TimestampInterface $timestamp,
+        private readonly CarbonImmutable $timestamp,
         private readonly bool $compression = true,
         private readonly bool $font_subsetting = true,
     ) {

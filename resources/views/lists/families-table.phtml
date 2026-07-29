@@ -14,8 +14,8 @@ use Illuminate\Support\Collection;
 // Unique ID prefix for HTML id/for attributes on checkbox/label pairs
 $table_id          = Registry::idFactory()->id();
 $today             = new Date(strtoupper(date('d M Y')));
-$today_jd          = Registry::timestampFactory()->now()->julianDay();
-$hundred_years_ago = Registry::timestampFactory()->now()->subtractYears(100)->julianDay();
+$today_jd          = Registry::timestampFactory()->todayJulianDay();
+$hundred_years_ago = Registry::timestampFactory()->todayJulianDay() - 36525;
 
 /**
  * @var Tree                   $tree
@@ -211,7 +211,7 @@ $hundred_years_ago = Registry::timestampFactory()->now()->subtractYears(100)->ju
                 <!-- Last change -->
                 <td
                     <?= $tree->getPreference('SHOW_LAST_CHANGE') === '1' ? '' : 'hidden="hidden"' ?>
-                    data-sort="<?= sprintf('x%07d', $family->lastChangeTimestamp()->timestamp()) ?>"
+                    data-sort="<?= sprintf('x%07d', $family->lastChangeTimestamp()->getTimestamp()) ?>"
                 >
                     <?= view('components/datetime', ['timestamp' => $family->lastChangeTimestamp()]) ?>
                 </td>

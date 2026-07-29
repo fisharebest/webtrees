@@ -34,7 +34,7 @@ class UserListDataTest extends TestCase
     public function testHandler(): void
     {
         $datatables_service = new DatatablesService();
-        $user_service       = new UserService();
+        $user_service       = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $handler            = new UserListData($datatables_service, $user_service);
         $request            = self::createRequest();
         $response           = $handler->handle($request);

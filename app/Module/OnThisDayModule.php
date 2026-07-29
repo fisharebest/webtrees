@@ -127,7 +127,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
 
         $events_filter = implode('|', $event_array);
 
-        $startjd = Registry::timestampFactory()->now()->julianDay();
+        $startjd = Registry::timestampFactory()->todayJulianDay();
         $endjd   = $startjd;
 
         $facts = $calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);

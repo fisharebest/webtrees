@@ -50,7 +50,7 @@ class FixDuplicateLinksTest extends TestCase
 
         $this->fixDuplicateLinks = new FixDuplicateLinks(new DataFixService());
 
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user         = $user_service->create('user', 'real', 'email', 'pass');
         Auth::login($user);
     }

@@ -43,7 +43,7 @@ if (preg_match('/\n2 DATE (.+)/', $factrec, $date_match) === 1) {
     }
 
     if ($datetime instanceof DateTimeImmutable) {
-        $html = Registry::timestampFactory()->make($datetime->getTimestamp(), Auth::user())->isoFormat('LLLL');
+        $html = Registry::timestampFactory()->fromDateTime($datetime, Auth::user())->isoFormat('LLLL');
     } else {
         $html = e($date_string) . ' ' . e($time_string);
     }

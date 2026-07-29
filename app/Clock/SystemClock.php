@@ -17,19 +17,19 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Factories;
+namespace Fisharebest\Webtrees\Clock;
 
-use Fisharebest\Webtrees\Contracts\TimeFactoryInterface;
-
-use function microtime;
+use DateTimeImmutable;
+use DateTimeZone;
+use Psr\Clock\ClockInterface;
 
 /**
- * What is the time?
+ * The real system clock, always returning the current time in UTC.
  */
-class TimeFactory implements TimeFactoryInterface
+class SystemClock implements ClockInterface
 {
-    public function now(): float
+    public function now(): DateTimeImmutable
     {
-        return microtime(true);
+        return new DateTimeImmutable('now', new DateTimeZone('UTC'));
     }
 }

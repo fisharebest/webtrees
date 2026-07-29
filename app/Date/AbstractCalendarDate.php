@@ -131,7 +131,7 @@ abstract class AbstractCalendarDate
         // ...else construct an inequivalent xxxxDate object
         if ($date->year === 0) {
             // Incomplete date - convert on basis of anniversary in current year
-            $today = $date->calendar->jdToYmd(Registry::timestampFactory()->now()->julianDay());
+            $today = $date->calendar->jdToYmd(Registry::timestampFactory()->todayJulianDay());
             $jd    = $date->calendar->ymdToJd($today[0], $date->month, $date->day === 0 ? $today[2] : $date->day);
         } else {
             // Complete date
@@ -370,7 +370,7 @@ abstract class AbstractCalendarDate
      */
     public function todayYmd(): array
     {
-        return $this->calendar->jdToYmd(Registry::timestampFactory()->now()->julianDay());
+        return $this->calendar->jdToYmd(Registry::timestampFactory()->todayJulianDay());
     }
 
     /**

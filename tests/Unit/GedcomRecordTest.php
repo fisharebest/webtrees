@@ -43,7 +43,7 @@ class GedcomRecordTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $this->user   = $user_service->create('test', 'test', 'test', '*');
         Auth::login($this->user);
 
@@ -57,7 +57,7 @@ class GedcomRecordTest extends TestCase
         $tree_service = new TreeService(new GedcomImportService());
         $tree_service->delete($this->tree);
 
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user_service->delete($this->user);
 
         parent::tearDown();

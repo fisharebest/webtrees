@@ -17,17 +17,27 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Tests\Unit\Factories;
+namespace Fisharebest\Webtrees\Clock;
 
-use Fisharebest\Webtrees\Tests\TestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Factories\TimeFactory;
+use DateTimeImmutable;
+use Psr\Clock\ClockInterface;
 
-#[CoversClass(TimeFactory::class)]
-class TimeFactoryTest extends TestCase
+/**
+ * A clock that always returns a fixed time. Useful for deterministic tests.
+ */
+class FrozenClock implements ClockInterface
 {
-    public function testClass(): void
+    public function __construct(private DateTimeImmutable $now)
     {
-        self::assertTrue(class_exists(TimeFactory::class));
+    }
+
+    public function now(): DateTimeImmutable
+    {
+        return $this->now;
+    }
+
+    public function setTo(DateTimeImmutable $now): void
+    {
+        $this->now = $now;
     }
 }

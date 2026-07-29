@@ -32,16 +32,20 @@ use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function max;
-use function time;
 
 /**
  * Functions for managing users.
  */
 class UserService
 {
+    public function __construct(private readonly ClockInterface $clock)
+    {
+    }
+
     public function find(int|null $user_id): User|null
     {
         if ($user_id === null) {
@@ -98,7 +102,7 @@ class UserService
             ->where('us1.setting_value', '=', $token)
             ->join('user_setting AS us2', 'us2.user_id', '=', 'user.user_id')
             ->where('us2.setting_name', '=', 'password-token-expire')
-            ->where('us2.setting_value', '>', time())
+            ->where('us2.setting_value', '>', $this->clock->now()->getTimestamp())
             ->select(['user.*'])
             ->get()
             ->map(User::rowMapper())

@@ -23,13 +23,14 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpTooManyRequestsException;
 use Fisharebest\Webtrees\Site;
 use LogicException;
+use Psr\Clock\ClockInterface;
 
 use function array_filter;
 use function count;
 use function explode;
+use function implode;
 use function intdiv;
 use function strlen;
-use function time;
 
 /**
  * Throttle events to prevent abuse.
@@ -38,9 +39,9 @@ class RateLimitService
 {
     private int $now;
 
-    public function __construct()
+    public function __construct(private readonly ClockInterface $clock)
     {
-        $this->now = time();
+        $this->now = $this->clock->now()->getTimestamp();
     }
 
     /**

@@ -39,7 +39,7 @@ class DoHousekeepingTest extends TestCase
         $handler->method('handle')->willReturn(response());
 
         $request    = self::createRequest();
-        $middleware = new DoHousekeeping(new HousekeepingService());
+        $middleware = new DoHousekeeping(new HousekeepingService(new \Fisharebest\Webtrees\Clock\SystemClock()));
         $response   = $middleware->process($request, $handler);
 
         self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());

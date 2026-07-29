@@ -91,7 +91,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
         extract($config, EXTR_OVERWRITE);
 
-        $end_jd      = $show_future ? self::MAXIMUM_JULIAN_DAY : Registry::timestampFactory()->now()->julianDay();
+        $end_jd      = $show_future ? self::MAXIMUM_JULIAN_DAY : Registry::timestampFactory()->todayJulianDay();
         $individuals = $this->individualsWithTasks($tree, $end_jd);
         $families    = $this->familiesWithTasks($tree, $end_jd);
 

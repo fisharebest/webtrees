@@ -60,6 +60,7 @@ class UpgradeServiceTest extends TestCase
             self::createStub(ClientInterface::class),
             self::createStub(RequestFactoryInterface::class),
             $this->timeoutServiceNeverTimesOut(),
+            new \Fisharebest\Webtrees\Clock\SystemClock(),
         );
 
         try {

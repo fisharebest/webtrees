@@ -38,7 +38,7 @@ class UserEditActionTest extends TestCase
     {
         $mail_service = new EmailService();
         $tree_service = new TreeService(new GedcomImportService());
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user         = $user_service->create('user', 'real', 'email', 'pass');
         $handler      = new UserEditAction($mail_service, $tree_service, $user_service);
         $request      = self::createRequest(RequestMethodInterface::METHOD_POST, [], [

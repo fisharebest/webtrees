@@ -39,7 +39,7 @@ class SearchServiceTest extends TestCase
         $search_service = new SearchService($tree_service);
         $tree = $this->importTree('demo.ged');
 
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 

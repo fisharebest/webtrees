@@ -143,8 +143,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
         $events_filter = implode('|', $event_array);
 
-        $startjd = Registry::timestampFactory()->now()->addDays(1)->julianDay();
-        $endjd   = Registry::timestampFactory()->now()->addDays($days)->julianDay();
+        $startjd = Registry::timestampFactory()->todayJulianDay() + 1;
+        $endjd   = Registry::timestampFactory()->todayJulianDay() + $days;
 
         $facts = $this->calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 

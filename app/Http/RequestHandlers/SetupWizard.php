@@ -35,6 +35,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -90,6 +91,7 @@ final class SetupWizard implements RequestHandlerInterface
         private readonly PhpService $php_service,
         private readonly ServerCheckService $server_check_service,
         private readonly UserService $user_service,
+        private readonly ClockInterface $clock,
     ) {
     }
 
@@ -341,7 +343,7 @@ final class SetupWizard implements RequestHandlerInterface
         $request = Registry::container()->get(ServerRequestInterface::class)
             ->withAttribute('base_url', $data['baseurl']);
 
-        Session::start($request);
+        Session::start($request, $this->clock);
         Auth::login($admin);
         Session::put('language', $data['lang']);
     }

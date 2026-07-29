@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Comparators;
 
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Fisharebest\Webtrees\Timestamp;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(GedcomRecordComparator::class)]
@@ -96,7 +96,7 @@ class GedcomRecordComparatorTest extends TestCase
 
         $older->expects($this->once())
             ->method('lastChangeTimestamp')
-            ->willReturn(new Timestamp(100, 'UTC', 'en-US'));
+            ->willReturn(CarbonImmutable::createFromTimestamp(100));
 
         $newer = $this->getMockBuilder(GedcomRecord::class)
             ->disableOriginalConstructor()
@@ -105,7 +105,7 @@ class GedcomRecordComparatorTest extends TestCase
 
         $newer->expects($this->once())
             ->method('lastChangeTimestamp')
-            ->willReturn(new Timestamp(200, 'UTC', 'en-US'));
+            ->willReturn(CarbonImmutable::createFromTimestamp(200));
 
         self::assertSame(-1, GedcomRecordComparator::byLastChange($older, $newer));
     }

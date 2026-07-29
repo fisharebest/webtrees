@@ -156,7 +156,7 @@ class AhnentafelReportModuleTest extends TestCase
         string $resi,
         string $sources,
     ): void {
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
@@ -200,7 +200,7 @@ class AhnentafelReportModuleTest extends TestCase
     public function testHtmlSourcesSectionReservesSpaceForFootnotes(): void
     {
 
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
@@ -223,7 +223,7 @@ class AhnentafelReportModuleTest extends TestCase
         Site::setPreference('INDEX_DIRECTORY', 'tests/data/');
 
         $renderer = new HtmlRenderer();
-        (new ParserGenerate($xml, $renderer, $vars, $tree, Webtrees::NAME, Registry::timestampFactory()->make(0)))->process();
+        (new ParserGenerate($xml, $renderer, $vars, $tree, Webtrees::NAME, Registry::timestampFactory()->fromEpoch(0)))->process();
         $html = $renderer->output();
 
         // The Sources section header exists

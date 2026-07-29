@@ -116,7 +116,7 @@ final class UserList extends AbstractCommand
             return '';
         }
 
-        return Registry::timestampFactory()->make(timestamp: $timestamp)->format(format: 'Y-m-d H:i:s');
+        return Registry::timestampFactory()->fromEpoch(timestamp: $timestamp)->format(format: 'Y-m-d H:i:s');
     }
 
     /**

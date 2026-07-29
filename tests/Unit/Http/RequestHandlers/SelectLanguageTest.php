@@ -45,7 +45,7 @@ class SelectLanguageTest extends TestCase
 
     public function testSelectLanguageForUser(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user         = $user_service->create('user', 'real', 'email', 'pass');
         $handler      = new SelectLanguage();
         $request      = self::createRequest()

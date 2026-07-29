@@ -39,7 +39,7 @@ class ParserGenerateTest extends TestCase
 
     public function testTextInsideTextBoxIsRenderedInlineInHtml(): void
     {
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
@@ -48,7 +48,7 @@ class ParserGenerateTest extends TestCase
         $report_file = Webtrees::ROOT_DIR . 'tests/data/reports/report-with-textbox-inline-text.xml';
 
         $renderer = new HtmlRenderer();
-        (new ParserGenerate($report_file, $renderer, [], $tree, Webtrees::NAME, Registry::timestampFactory()->make(0)))->process();
+        (new ParserGenerate($report_file, $renderer, [], $tree, Webtrees::NAME, Registry::timestampFactory()->fromEpoch(0)))->process();
         $html = $renderer->output();
 
         // Text flows inside a positioned container div
@@ -78,7 +78,7 @@ class ParserGenerateTest extends TestCase
      */
     public function testMalformedXmlIsRejected(): void
     {
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
@@ -99,7 +99,7 @@ class ParserGenerateTest extends TestCase
      */
     public function testUnknownXmlElementIsRejected(): void
     {
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
@@ -115,7 +115,7 @@ class ParserGenerateTest extends TestCase
 
     public function testInvalidStyleFlagsAreRejected(): void
     {
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 

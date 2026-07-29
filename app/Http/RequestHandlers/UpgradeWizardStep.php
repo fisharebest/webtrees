@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -82,6 +83,7 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
         private PendingChangesService $pending_changes_service,
         private TreeService $tree_service,
         private UpgradeService $upgrade_service,
+        private ClockInterface $clock,
     ) {
     }
 
@@ -183,7 +185,7 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
     private function wizardStepDownload(): ResponseInterface
     {
         $root_filesystem = Registry::filesystem()->root();
-        $start_time      = Registry::timeFactory()->now();
+        $start_time      = (float) $this->clock->now()->format('U.u');
         $download_url    = $this->upgrade_service->downloadUrl();
 
         try {
@@ -193,7 +195,7 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
         }
 
         $kb       = I18N::number(intdiv($bytes + 1023, 1024));
-        $end_time = Registry::timeFactory()->now();
+        $end_time = (float) $this->clock->now()->format('U.u');
         $seconds  = I18N::number($end_time - $start_time, 2);
 
         return response(view('components/alert-success', [
@@ -203,10 +205,10 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
 
     private function wizardStepUnzip(string $zip_file, string $zip_folder): ResponseInterface
     {
-        $start_time = Registry::timeFactory()->now();
+        $start_time = (float) $this->clock->now()->format('U.u');
         $this->upgrade_service->extractWebtreesZip($zip_file, $zip_folder);
         $count    = $this->upgrade_service->webtreesZipContents($zip_file)->count();
-        $end_time = Registry::timeFactory()->now();
+        $end_time = (float) $this->clock->now()->format('U.u');
         $seconds  = I18N::number($end_time - $start_time, 2);
 
         /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */

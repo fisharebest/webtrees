@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Validator;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function is_float;
@@ -36,6 +37,10 @@ class CaptchaService
     // If the form is completed faster than this, then suspect a robot.
     private const float MINIMUM_FORM_TIME = 3.0;
 
+    public function __construct(private readonly ClockInterface $clock)
+    {
+    }
+
     /**
      * Create the captcha
      */
@@ -45,7 +50,7 @@ class CaptchaService
         $y = Registry::idFactory()->uuid();
         $z = Registry::idFactory()->uuid();
 
-        Session::put('captcha-t', Registry::timeFactory()->now());
+        Session::put('captcha-t', (float) $this->clock->now()->format('U.u'));
         Session::put('captcha-x', $x);
         Session::put('captcha-y', $y);
         Session::put('captcha-z', $z);
@@ -82,6 +87,6 @@ class CaptchaService
         }
 
         // If the form was returned too quickly, then probably a robot.
-        return Registry::timeFactory()->now() < $t + self::MINIMUM_FORM_TIME;
+        return (float) $this->clock->now()->format('U.u') < $t + self::MINIMUM_FORM_TIME;
     }
 }

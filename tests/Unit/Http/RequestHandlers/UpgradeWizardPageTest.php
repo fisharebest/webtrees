@@ -38,13 +38,14 @@ class UpgradeWizardPageTest extends TestCase
 
     public function testWizard(): void
     {
-        $timeout_service       = new TimeoutService(php_service: new PhpService());
+        $timeout_service       = new TimeoutService(php_service: new PhpService(), clock: new \Fisharebest\Webtrees\Clock\SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $upgrade_service       = new UpgradeService(
             self::createStub(ClientInterface::class),
             self::createStub(RequestFactoryInterface::class),
             $timeout_service,
+            new \Fisharebest\Webtrees\Clock\SystemClock(),
         );
         $handler               = new UpgradeWizardPage($tree_service, $upgrade_service);
         $request               = self::createRequest();
