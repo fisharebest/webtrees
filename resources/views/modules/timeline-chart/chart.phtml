@@ -146,7 +146,7 @@ foreach ($individuals as $index => $individual) {
                 <div class="wt-timeline-fact-content person<?= e((string) $col) ?>">
         <?php
         if (count($individuals) > 8) {
-            // We only have 8 colours, so show names if more than this number
+            // We only have 8 colors, so show names if more than this number
             echo $event->record()->fullName() . ' — ';
         }
         $record = $event->record();

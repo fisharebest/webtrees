@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 08:33+0100\n"
+"POT-Creation-Date: 2026-07-29 10:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1793,7 +1793,7 @@ msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "Ebrill"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Aqua Marine"
 msgstr "Gwyrddlas y Môr"
@@ -1859,7 +1859,7 @@ msgstr "Aruba"
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 msgstr "Yn ogystal â defnyddio'r bar offer i osod fformat HTML, gallwch fewnosod meysydd cronfa ddata sy'n cael eu diweddaru'n awtomatig. Mae'r meysydd arbennig hyn wedi'u marcio â nodau <b>#</b>. Er enghraifft, bydd <b># totalFamilies # yn</b> cael ei amnewid gan gyfanswm y teuluoedd yn y gronfa ddata. Efallai y bydd defnyddwyr uwch am gymhwyso dosbarthiadau CSS i'w testun, fel bod y fformatio yn cyd-fynd â'r thema a ddewiswyd ar hyn o bryd."
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Ash"
 msgstr "Lludw"
@@ -2150,7 +2150,7 @@ msgstr "Cychwyn gyda"
 msgid "Belarus"
 msgstr "Belarws"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Belgian Chocolate"
 msgstr "Siocled Belg"
@@ -2374,12 +2374,12 @@ msgstr "Rhwystro"
 msgid "Blocks"
 msgstr "Blociau"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Lagoon"
 msgstr "Morlyn Glas"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Marine"
 msgstr "Glas y Môr"
@@ -3199,12 +3199,12 @@ msgstr "Cochabamba, Bolifia"
 msgid "Cocos (Keeling) Islands"
 msgstr "Cocos (Keeling) Islands"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Coffee and Cream"
 msgstr "Coffi a Hufen"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Cold Day"
 msgstr "Diwrnod Oer"
@@ -5516,6 +5516,7 @@ msgstr "I gael gymorth gyda materion achau, cysylltwch â %s."
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/sitemap/config.phtml
 #, php-format
 msgid "For more information, see %s."
 msgstr "Am fwy o wybodaeth, gweler %s."
@@ -5936,7 +5937,7 @@ msgctxt "Surname tradition"
 msgid "Greek"
 msgstr "Groegaidd"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Green Beam"
 msgstr "Trawst Gwyrdd"
@@ -6372,8 +6373,9 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Os mai chi yw gweinyddwr y wefan, dylech wirio:"
 
 #: resources/views/errors/database-connection.phtml
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr "Os na allwch ddatrys y broblem eich hun, gallwch ofyn am help ar y fforymau yn <a href=\"https://webtrees.net\">webtrees.net</a> ."
+#, php-format
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at %s."
+msgstr "Os na allwch ddatrys y broblem eich hun, gallwch ofyn am help ar y fforymau yn %s ."
 
 #: resources/views/admin/trees-import.phtml
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7838,7 +7840,7 @@ msgstr "Math o gyfryngau"
 msgid "Medical"
 msgstr "Meddygaeth"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mediterranio"
 msgstr "Mediterranio"
@@ -7874,7 +7876,7 @@ msgstr "Dewislen"
 msgid "Menus"
 msgstr "Dewislenni"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mercury"
 msgstr "Arian byw"
@@ -8560,7 +8562,7 @@ msgstr "Dim teml - ordinhad fyw"
 msgid "No upgrade information is available."
 msgstr "Dim gwybodaeth uwchraddio ar gael."
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Nocturnal"
 msgstr "Nosol"
@@ -8853,7 +8855,7 @@ msgstr "Gwryw hynaf"
 msgid "Oldest mother"
 msgstr "Mam hynaf"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Olivia"
 msgstr "Olivia"
@@ -9036,7 +9038,7 @@ msgstr "Pacistan"
 msgid "Palau"
 msgstr "Palau"
 
-#. I18N: A colour scheme
+#. I18N: A color scheme
 #: app/Module/ColorsTheme.php
 msgid "Palette"
 msgstr "Palet"
@@ -9235,7 +9237,7 @@ msgstr "Ffotograff"
 msgid "Phrase"
 msgstr "Ymadrodd"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Pink Plastic"
 msgstr "Plastig Pinc"
@@ -9580,7 +9582,7 @@ msgid "Probate"
 msgstr "Profiant"
 
 #: app/Module/PrivacyPolicy.php
-msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
 
 #: app/Gedcom.php
@@ -10177,7 +10179,7 @@ msgstr "STARTTLS"
 msgid "Sacramento, California, United States"
 msgstr "Sacramento, California, Unol Daleithiau"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Sage"
 msgstr "Sage"
@@ -10714,7 +10716,7 @@ msgstr "Cafodd ei bedyddio"
 msgid "She was cremated"
 msgstr "Cafodd ei hamlosgi"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Shiny Tomato"
 msgstr "Tomato Sgleiniog"
@@ -11129,10 +11131,9 @@ msgstr "Nid yw codau gwirio gwefan yn gweithio pan mae webtrees wedi'i osod is-f
 msgid "Sitemaps"
 msgstr "Mapiau safle"
 
-#. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml
-msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "Mae mapiau gwefan yn ffordd i wefeistri ddweud wrth beiriannau chwilio am y tudalennau ar wefan sydd ar gael i'w cropian. Mae pob peiriant chwilio mawr yn cefnogi mapiau gwefan. Am ragor o wybodaeth, darllenwch <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a> ."
+msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps."
+msgstr "Mae mapiau gwefan yn ffordd i wefeistri ddweud wrth beiriannau chwilio am y tudalennau ar wefan sydd ar gael i'w cropian. Mae pob peiriant chwilio mawr yn cefnogi mapiau gwefan."
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml
@@ -11725,7 +11726,7 @@ msgstr "Tampico, Mecsico"
 msgid "Tanzania"
 msgstr "Tansanïa"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Teal Top"
 msgstr "Corhwyad"
@@ -12152,11 +12153,6 @@ msgstr "Mae'r dewisiadau ar gyfer cart achau newydd wedi'u diweddaru."
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "Mae'r dewisiadau ar gyfer y cart achau “%s” wedi'u diweddaru."
 
-#: app/Module/PrivacyPolicy.php
-#, php-format
-msgid "The preferences for the module \"%s\" have been updated."
-msgstr ""
-
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
@@ -12166,7 +12162,7 @@ msgstr "Mae'r dewisiadau ar gyfer y modiwl “%s” wedi'u dileu."
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
 #: app/Module/MapGeoLocationGeonames.php
 #: app/Module/MapGeoLocationOpenRouteService.php
-#: app/Module/OpenRouteServiceAutocomplete.php
+#: app/Module/OpenRouteServiceAutocomplete.php app/Module/PrivacyPolicy.php
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
@@ -15188,7 +15184,7 @@ msgid "webtrees cannot create thumbnails for this file format."
 msgstr "nid yw webtrees yn gallu creu mân-luniau ar gyfer y fformat ffeil hwn."
 
 #: app/Http/RequestHandlers/CheckTree.php
-msgid "webtrees does not recognise this file format."
+msgid "webtrees does not recognize this file format."
 msgstr "Nid yw webtrees yn adnabod y fformat ffeil hwn."
 
 #: app/Services/MessageService.php

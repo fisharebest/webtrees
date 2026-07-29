@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 08:33+0100\n"
+"POT-Creation-Date: 2026-07-29 10:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,9 +128,9 @@ msgid "%s KB"
 msgstr "%s KB"
 
 #: resources/views/fact-date.phtml
-#, php-format
+#, fuzzy, php-format
 msgid "%s after death"
-msgstr ""
+msgstr "死后%s"
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -953,19 +953,22 @@ msgid "A user will not be able to sign in until both “email verified” and �
 msgstr "在“邮件验证”和“经管理员批准”被勾选前，用户将无法登录。"
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgctxt "paper size"
 msgid "A0"
-msgstr ""
+msgstr "A0"
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgctxt "paper size"
 msgid "A1"
-msgstr ""
+msgstr "A1"
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgctxt "paper size"
 msgid "A2"
-msgstr ""
+msgstr "A2"
 
 #: resources/xml/reports/ahnentafel_report.xml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
@@ -1846,8 +1849,8 @@ msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "四月"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Aqua Marine"
 msgstr "碧海蓝天"
@@ -1916,8 +1919,8 @@ msgstr "阿鲁巴岛"
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 msgstr "使用工具栏使用HTML格式，您可以插入自动更新数据库列。这些列用特殊的字符 <b>#</b> 标记. 例如 <b>#totalFamilies#</b> 将与数据库中的家庭的实际数目替换。高级用户可能希望使用CSS类文本，使格式匹配当前选定的主题。"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Ash"
 msgstr "灰"
@@ -2232,8 +2235,8 @@ msgstr "以其开头"
 msgid "Belarus"
 msgstr "白俄罗斯"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Belgian Chocolate"
 msgstr "比利时巧克力"
@@ -2471,21 +2474,22 @@ msgstr "区块"
 msgid "Blocks"
 msgstr "区块"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Lagoon"
 msgstr "蓝礁湖"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Marine"
 msgstr "蓝色海洋"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Body"
-msgstr ""
+msgstr "正文"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -3373,14 +3377,14 @@ msgstr "科恰班巴、玻利维亚"
 msgid "Cocos (Keeling) Islands"
 msgstr "可可(吉林)群岛"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Coffee and Cream"
 msgstr "咖啡和奶油"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Cold Day"
 msgstr "冷天"
@@ -5185,8 +5189,9 @@ msgid "Excluded from this submission"
 msgstr "不包括在此提交"
 
 #: resources/views/layouts/administration.phtml
+#, fuzzy
 msgid "Exit control panel"
-msgstr ""
+msgstr "退出控制面板"
 
 #: app/Services/LeafletJsService.php
 #: resources/views/modules/interactive-tree/chart.phtml
@@ -5844,6 +5849,7 @@ msgstr "家谱问题请联系%s。"
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/sitemap/config.phtml
 #, php-format
 msgid "For more information, see %s."
 msgstr "有关详细信息，请参阅 %s。"
@@ -6264,8 +6270,9 @@ msgid "Godson"
 msgstr "教子"
 
 #: app/Module/GoogleSearchConsole.php
+#, fuzzy
 msgid "Google™ Search Console"
-msgstr ""
+msgstr "Google™ Search Console"
 
 #: app/Module/GoogleAnalyticsModule.php
 msgid "Google™ analytics"
@@ -6300,8 +6307,8 @@ msgctxt "Surname tradition"
 msgid "Greek"
 msgstr "希腊"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Green Beam"
 msgstr "绿色光束"
@@ -6786,8 +6793,9 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "如果你是网站管理员,你应该检查:"
 
 #: resources/views/errors/database-connection.phtml
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr "如果你不能自己解决问题,你可以在<a href=\"https://webtrees.net\">webtrees.net</a>论坛寻求帮助。"
+#, php-format
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at %s."
+msgstr "如果你不能自己解决问题,你可以在%s论坛寻求帮助。"
 
 #: resources/views/admin/trees-import.phtml
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -6817,8 +6825,9 @@ msgid "If you modify the filename, you should also rename the file."
 msgstr "如果修改文件名，还应重命名该文件。"
 
 #: resources/views/modules/here-maps/config.phtml
+#, fuzzy
 msgid "If you obtained this key prior to 2024 then it will be necessary to create a new key."
-msgstr ""
+msgstr "如果您在2024年之前获取了此密钥，则需要创建一个新密钥。"
 
 #: resources/views/admin/site-preferences.phtml
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -8304,8 +8313,9 @@ msgid "Media"
 msgstr "多媒体"
 
 #: app/Statistics.php
+#, fuzzy
 msgid "Media by type"
-msgstr ""
+msgstr "按类型分类的媒体"
 
 #: resources/views/admin/media-upload.phtml resources/views/admin/media.phtml
 #: resources/views/media-page-details.phtml
@@ -8384,8 +8394,8 @@ msgstr "多媒体类型"
 msgid "Medical"
 msgstr "医疗"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mediterranio"
 msgstr "地中海"
@@ -8424,8 +8434,8 @@ msgstr "菜单"
 msgid "Menus"
 msgstr "菜单"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mercury"
 msgstr "水星"
@@ -9169,8 +9179,8 @@ msgstr "没有寺庙—生活条例"
 msgid "No upgrade information is available."
 msgstr "没有可用的升级信息。"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Nocturnal"
 msgstr "夜间"
@@ -9405,8 +9415,9 @@ msgid "Nurse"
 msgstr "男保姆"
 
 #: resources/js/webtrees/confirm.js
+#, fuzzy
 msgid "OK"
-msgstr ""
+msgstr "确定"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -9485,8 +9496,8 @@ msgstr "最年长男性"
 msgid "Oldest mother"
 msgstr "最老母亲"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Olivia"
 msgstr "奥利维亚"
@@ -9643,8 +9654,9 @@ msgid "Page %s of %s"
 msgstr "%s 的 %s 页面"
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgid "Page setup"
-msgstr ""
+msgstr "页面设置"
 
 #: resources/xml/reports/ahnentafel_report.xml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
@@ -9681,8 +9693,8 @@ msgstr "巴基斯坦"
 msgid "Palau"
 msgstr "帕劳"
 
-# I18N: A colour scheme
-#. I18N: A colour scheme
+# I18N: A color scheme
+#. I18N: A color scheme
 #: app/Module/ColorsTheme.php
 msgid "Palette"
 msgstr "调色板"
@@ -9903,8 +9915,8 @@ msgstr "照片"
 msgid "Phrase"
 msgstr "成语"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Pink Plastic"
 msgstr "粉红色"
@@ -10155,8 +10167,9 @@ msgid "Portuguese"
 msgstr "葡萄牙"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Postal address"
-msgstr ""
+msgstr "邮政地址"
 
 # I18N: gedcom tag POST
 #: app/CustomTags/GedcomL.php app/CustomTags/PersonalAncestralFile.php
@@ -10272,7 +10285,7 @@ msgid "Probate"
 msgstr "遗嘱"
 
 #: app/Module/PrivacyPolicy.php
-msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
 
 # I18N: gedcom tag PROP
@@ -10926,8 +10939,8 @@ msgstr ""
 msgid "Sacramento, California, United States"
 msgstr "萨克拉门托，加利福尼亚"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Sage"
 msgstr "圣人"
@@ -11378,8 +11391,9 @@ msgid "Server name"
 msgstr "服务器名称"
 
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "Service"
-msgstr ""
+msgstr "服务"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php
 msgid "Set a new password"
@@ -11510,8 +11524,8 @@ msgstr "她被命名为"
 msgid "She was cremated"
 msgstr "她被火化"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Shiny Tomato"
 msgstr "闪亮番茄"
@@ -11951,10 +11965,9 @@ msgid "Sitemaps"
 msgstr "网站地图"
 
 # I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
-#. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml
-msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "网站地图是站长告诉搜索引擎对这个网站可以抓取网页的方式。所有主要搜索引擎支持网站地图。更多信息，见 <a href=\"https://www.sitemaps.org/en_GB/\">www.sitemaps.org</a>."
+msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps."
+msgstr "网站地图是站长告诉搜索引擎对这个网站可以抓取网页的方式。所有主要搜索引擎支持网站地图。"
 
 # I18N: Skip over the headers and menus, to the main content of the page
 #. I18N: Skip over the headers and menus, to the main content of the page
@@ -11985,8 +11998,9 @@ msgid "Slide show"
 msgstr "幻灯片"
 
 #: resources/views/modules/random_media/config.phtml
+#, fuzzy
 msgid "Slide show interval"
-msgstr ""
+msgstr "幻灯片放映间隔"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -12610,8 +12624,8 @@ msgstr "坦皮科，墨西哥"
 msgid "Tanzania"
 msgstr "坦桑尼亚"
 
-# I18N: The name of a colour-scheme
-#. I18N: The name of a colour-scheme
+# I18N: The name of a color scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Teal Top"
 msgstr "蒂尔顶部"
@@ -12629,8 +12643,9 @@ msgid "Tegucigalpa, Honduras"
 msgstr "特古西加尔巴,洪都拉斯"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Telephone"
-msgstr ""
+msgstr "电话"
 
 #: app/CustomTags/RootsMagic.php
 msgid "Template"
@@ -13064,11 +13079,6 @@ msgstr "新家谱的首选项已更新。"
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "已更新家谱“%s”的首选项。"
 
-#: app/Module/PrivacyPolicy.php
-#, php-format
-msgid "The preferences for the module \"%s\" have been updated."
-msgstr ""
-
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
@@ -13078,7 +13088,7 @@ msgstr "模块“%s”的首选项已被删除。"
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
 #: app/Module/MapGeoLocationGeonames.php
 #: app/Module/MapGeoLocationOpenRouteService.php
-#: app/Module/OpenRouteServiceAutocomplete.php
+#: app/Module/OpenRouteServiceAutocomplete.php app/Module/PrivacyPolicy.php
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
@@ -13125,8 +13135,9 @@ msgid "The server could not understand this request."
 msgstr "服务器无法理解此请求。"
 
 #: app/Http/RequestHandlers/CheckTree.php
+#, fuzzy
 msgid "The server’s memory limit has been reached."
-msgstr ""
+msgstr "已达到服务器的内存限制。"
 
 #: app/Services/ServerCheckService.php
 msgid "The server’s temporary folder cannot be accessed."
@@ -13829,8 +13840,9 @@ msgstr "东帝汶"
 
 #. I18N: Name of a module. TinyMCE is a trademark. Do not translate it? https://www.tiny.cloud
 #: app/Module/TinymceModule.php
+#, fuzzy
 msgid "TinyMCE™"
-msgstr ""
+msgstr "TinyMCE™"
 
 # I18N: gedcom tag TITL
 #: app/CustomTags/Geneatique.php app/Gedcom.php
@@ -14445,8 +14457,9 @@ msgstr "使用紧凑的布局"
 
 #: resources/views/modules/gedcom_news/edit.phtml
 #: resources/views/modules/user_blog/edit.phtml
+#, fuzzy
 msgid "Use current timestamp"
-msgstr ""
+msgstr "使用当前时间戳"
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -15056,8 +15069,9 @@ msgid "You must specify an individual record before you can restrict the user to
 msgstr "您必须先指定一条记录，然后才能将用户限制为其直系亲属。"
 
 #: app/Http/RequestHandlers/RenumberTreeAction.php
+#, fuzzy
 msgid "You need to accept or reject all pending changes before proceeding."
-msgstr ""
+msgstr "在继续之前，您需要接受或拒绝所有待处理的更改。"
 
 #: app/Http/RequestHandlers/LoginPage.php
 msgid "You need to be a family member to access this website."
@@ -16016,8 +16030,9 @@ msgid "secondary evidence"
 msgstr "间接证据"
 
 #: resources/views/modules/random_media/config.phtml
+#, fuzzy
 msgid "seconds"
-msgstr ""
+msgstr "秒"
 
 # I18N: select all (of the family trees)
 #. I18N: select all (of a list of options)
@@ -16278,7 +16293,7 @@ msgid "webtrees cannot create thumbnails for this file format."
 msgstr "家谱树无法为此文件格式创建缩略图。"
 
 #: app/Http/RequestHandlers/CheckTree.php
-msgid "webtrees does not recognise this file format."
+msgid "webtrees does not recognize this file format."
 msgstr "家谱树无法识别此文件格式。"
 
 #: app/Services/MessageService.php

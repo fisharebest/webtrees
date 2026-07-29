@@ -634,7 +634,7 @@ class Soundex
         foreach ($words as $word) {
             $soundex = soundex($word);
 
-            // Only return codes from recognisable sounds
+            // Only return codes from recognizable sounds
             if ($soundex !== '0000') {
                 $soundex_array[] = $soundex;
             }
@@ -768,7 +768,7 @@ class Soundex
                             // This is the 6th code in the sequence
                             // We're looking for 7 entries because the first is '!' and doesn't count
                             $tempResult = str_replace('!', '', implode('', $workingEntry));
-                            // Only return codes from recognisable sounds
+                            // Only return codes from recognizable sounds
                             if ($tempResult !== '') {
                                 $result[] = substr($tempResult . '000000', 0, 6);
                             }
@@ -782,7 +782,7 @@ class Soundex
         // Zero-fill and copy all remaining partial results
         foreach ($partialResult as $workingEntry) {
             $tempResult = str_replace('!', '', implode('', $workingEntry));
-            // Only return codes from recognisable sounds
+            // Only return codes from recognizable sounds
             if ($tempResult !== '') {
                 $result[] = substr($tempResult . '000000', 0, 6);
             }

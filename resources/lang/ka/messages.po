@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 08:33+0100\n"
+"POT-Creation-Date: 2026-07-29 10:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1713,7 +1713,7 @@ msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "აპრილი"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Aqua Marine"
 msgstr "სან მარინო"
@@ -1780,7 +1780,7 @@ msgstr "არუბა"
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 msgstr ""
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Ash"
 msgstr "ფერფლი"
@@ -2072,7 +2072,7 @@ msgstr ""
 msgid "Belarus"
 msgstr "ბელარუსია"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Belgian Chocolate"
 msgstr "ბელგიური შოკოლადი"
@@ -2296,12 +2296,12 @@ msgstr "ბლოკი"
 msgid "Blocks"
 msgstr "ბლოკი"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Lagoon"
 msgstr ""
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Marine"
 msgstr "აზიმუტი"
@@ -3116,12 +3116,12 @@ msgstr ""
 msgid "Cocos (Keeling) Islands"
 msgstr "კუკის კუნძულები"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Coffee and Cream"
 msgstr ""
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Cold Day"
 msgstr ""
@@ -5435,6 +5435,7 @@ msgstr "ბაზის მუშაობის შესახებ თუ �
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/sitemap/config.phtml
 #, php-format
 msgid "For more information, see %s."
 msgstr ""
@@ -5855,7 +5856,7 @@ msgctxt "Surname tradition"
 msgid "Greek"
 msgstr "ბერძნული"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Green Beam"
 msgstr "მწვანე სხივი"
@@ -6291,7 +6292,8 @@ msgid "If you are the website administrator, you should check that:"
 msgstr ""
 
 #: resources/views/errors/database-connection.phtml
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
+#, php-format
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at %s."
 msgstr ""
 
 #: resources/views/admin/trees-import.phtml
@@ -7757,7 +7759,7 @@ msgstr "მედია ფაილი"
 msgid "Medical"
 msgstr "მედიცინის მუშაკი"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mediterranio"
 msgstr "ხმელთაშუაზღვისპირეთი"
@@ -7793,7 +7795,7 @@ msgstr "მენიუ"
 msgid "Menus"
 msgstr "მენიუ"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mercury"
 msgstr ""
@@ -8469,7 +8471,7 @@ msgstr ""
 msgid "No upgrade information is available."
 msgstr ""
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Nocturnal"
 msgstr "ღამის"
@@ -8762,7 +8764,7 @@ msgstr "ყველაზე ასაკოვანი მამაკაც�
 msgid "Oldest mother"
 msgstr "ყველაზე ასაკოვანი დედა"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Olivia"
 msgstr "ბოლივია"
@@ -8946,7 +8948,7 @@ msgstr "პაკისტანი"
 msgid "Palau"
 msgstr ""
 
-#. I18N: A colour scheme
+#. I18N: A color scheme
 #: app/Module/ColorsTheme.php
 msgid "Palette"
 msgstr "პალიტრა"
@@ -9145,7 +9147,7 @@ msgstr ""
 msgid "Phrase"
 msgstr ""
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Pink Plastic"
 msgstr ""
@@ -9490,7 +9492,7 @@ msgid "Probate"
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php
-msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
 
 #: app/Gedcom.php
@@ -10089,7 +10091,7 @@ msgstr ""
 msgid "Sacramento, California, United States"
 msgstr "Сакраменто, Калифорния"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Sage"
 msgstr ""
@@ -10627,7 +10629,7 @@ msgstr "იგი იქნა მონათლული"
 msgid "She was cremated"
 msgstr "Она была кримирована"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Shiny Tomato"
 msgstr ""
@@ -11044,9 +11046,8 @@ msgstr ""
 msgid "Sitemaps"
 msgstr "საიტის რუკა"
 
-#. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml
-msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
+msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps."
 msgstr ""
 
 #. I18N: Skip over the headers and menus, to the main content of the page
@@ -11640,7 +11641,7 @@ msgstr "Тампико, Мексика"
 msgid "Tanzania"
 msgstr "ტანზანია"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Teal Top"
 msgstr ""
@@ -12067,11 +12068,6 @@ msgstr ""
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr ""
 
-#: app/Module/PrivacyPolicy.php
-#, php-format
-msgid "The preferences for the module \"%s\" have been updated."
-msgstr ""
-
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
@@ -12081,7 +12077,7 @@ msgstr ""
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
 #: app/Module/MapGeoLocationGeonames.php
 #: app/Module/MapGeoLocationOpenRouteService.php
-#: app/Module/OpenRouteServiceAutocomplete.php
+#: app/Module/OpenRouteServiceAutocomplete.php app/Module/PrivacyPolicy.php
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
@@ -15068,7 +15064,7 @@ msgid "webtrees cannot create thumbnails for this file format."
 msgstr ""
 
 #: app/Http/RequestHandlers/CheckTree.php
-msgid "webtrees does not recognise this file format."
+msgid "webtrees does not recognize this file format."
 msgstr ""
 
 #: app/Services/MessageService.php

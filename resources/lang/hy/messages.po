@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 08:33+0100\n"
+"POT-Creation-Date: 2026-07-29 10:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1727,7 +1727,7 @@ msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "ապրիլ"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Aqua Marine"
 msgstr "Aqua Marine կապույտ"
@@ -1793,7 +1793,7 @@ msgstr "Արուբա"
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 msgstr "Ինչպես նաև HTML ձևաչափումը կիրառելու համար գործիքագոտին օգտագործելով, կարող եք տեղադրել տվյալների բազայի դաշտերը, որոնք ինքնաբերաբար թարմացվում են: Այս հատուկ դաշտերը նշված են <b>#</b> նիշերով: Օրինակ, <b>#totalFamilies#</b>-ը կփոխարինվի տվյալների բազայի ընտանիքների իրական թվով: Ընդլայնված օգտվողները կարող են ցանկանալ կիրառել CSS դասեր իրենց տեքստում, որպեսզի ձևաչափումը համապատասխանի տվյալ պահին ընտրված թեմային:"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Ash"
 msgstr "Աշ"
@@ -2084,7 +2084,7 @@ msgstr "Սկսվում է"
 msgid "Belarus"
 msgstr "Բելառուս"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Belgian Chocolate"
 msgstr "Բելգիական շոկոլադ"
@@ -2308,12 +2308,12 @@ msgstr "Արգելափակել"
 msgid "Blocks"
 msgstr "Բլոկներ"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Lagoon"
 msgstr "Կապույտ ծովածոց"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Marine"
 msgstr "Կապույտ ծովային"
@@ -3129,12 +3129,12 @@ msgstr "Կոչաբամբա, Բոլիվիա"
 msgid "Cocos (Keeling) Islands"
 msgstr "Կոկոս (Քիլինգ) կղզիներ"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Coffee and Cream"
 msgstr "Սուրճ և սերուցք"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Cold Day"
 msgstr "Սառը օր"
@@ -5448,6 +5448,7 @@ msgstr "Ծագումնաբանական հարցերի հետ կապված օգն
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/sitemap/config.phtml
 #, php-format
 msgid "For more information, see %s."
 msgstr "Լրացուցիչ տեղեկությունների համար տե՛ս %s:"
@@ -5869,7 +5870,7 @@ msgctxt "Surname tradition"
 msgid "Greek"
 msgstr "հունական"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Green Beam"
 msgstr "Կանաչ ճառագայթ"
@@ -6305,8 +6306,9 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Եթե դուք կայքի ադմինիստրատորն եք, ապա պետք է ստուգեք, որ:"
 
 #: resources/views/errors/database-connection.phtml
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr "Եթե դուք ինքներդ չեք կարող լուծել խնդիրը, կարող եք օգնություն խնդրել <a href=\"https://webtrees.net\">webtrees.net</a> ֆորումներում:"
+#, php-format
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at %s."
+msgstr "Եթե դուք ինքներդ չեք կարող լուծել խնդիրը, կարող եք օգնություն խնդրել %s ֆորումներում:"
 
 #: resources/views/admin/trees-import.phtml
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7771,7 +7773,7 @@ msgstr "Մեդիա տեսակը"
 msgid "Medical"
 msgstr "Բժշկական"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mediterranio"
 msgstr "Միջերկրական"
@@ -7807,7 +7809,7 @@ msgstr "Մենյու"
 msgid "Menus"
 msgstr "Մենյուներ"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mercury"
 msgstr "Մերկուրի"
@@ -8485,7 +8487,7 @@ msgstr "Ոչ մի տաճար՝ կենդանի արարողություն"
 msgid "No upgrade information is available."
 msgstr "Թարմացման մասին տեղեկություններ չկան:"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Nocturnal"
 msgstr "Գիշերային"
@@ -8778,7 +8780,7 @@ msgstr "Ամենատարեց տղամարդը"
 msgid "Oldest mother"
 msgstr "Ամենատարեց մայրը"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Olivia"
 msgstr "Օլիվիա"
@@ -8961,7 +8963,7 @@ msgstr "Պակիստան"
 msgid "Palau"
 msgstr "Պալաու"
 
-#. I18N: A colour scheme
+#. I18N: A color scheme
 #: app/Module/ColorsTheme.php
 msgid "Palette"
 msgstr "Ներկապնակ"
@@ -9161,7 +9163,7 @@ msgstr "Լուսանկարը"
 msgid "Phrase"
 msgstr "Արտահայտություն"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Pink Plastic"
 msgstr "Վարդագույն Պլաստիկ"
@@ -9506,7 +9508,7 @@ msgid "Probate"
 msgstr "Վճռաբեկ"
 
 #: app/Module/PrivacyPolicy.php
-msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
 
 #: app/Gedcom.php
@@ -10105,7 +10107,7 @@ msgstr "STARTTLS"
 msgid "Sacramento, California, United States"
 msgstr "Սակրամենտո, Կալիֆորնիա, Ամերիկայի Միացյալ Նահանգներ"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Sage"
 msgstr "իմաստուն"
@@ -10642,7 +10644,7 @@ msgstr "Նրան մկրտեցին"
 msgid "She was cremated"
 msgstr "Նրան դիակիզել են"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Shiny Tomato"
 msgstr "Փայլուն լոլիկ"
@@ -11057,10 +11059,9 @@ msgstr "Կայքի ստուգման կոդերը չեն աշխատում, երբ
 msgid "Sitemaps"
 msgstr "Կայքի քարտեզներ"
 
-#. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml
-msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "Կայքի քարտեզները վեբ վարպետների համար որոնման համակարգերին պատմելու միջոց են կայքի այն էջերի մասին, որոնք հասանելի են սողալու համար: Բոլոր հիմնական որոնման համակարգերը աջակցում են կայքի քարտեզներին: Լրացուցիչ տեղեկությունների համար տես <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>:"
+msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps."
+msgstr ""
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml
@@ -11653,7 +11654,7 @@ msgstr "Տամպիկո, Մեքսիկա"
 msgid "Tanzania"
 msgstr "Տանզանիա"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Teal Top"
 msgstr "Թեյլ վերնաշապիկ"
@@ -12080,11 +12081,6 @@ msgstr "Նոր տոհմածառերի նախապատվությունները թ�
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "«%s» տոհմածառի նախապատվությունները թարմացվել են:"
 
-#: app/Module/PrivacyPolicy.php
-#, php-format
-msgid "The preferences for the module \"%s\" have been updated."
-msgstr ""
-
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
@@ -12094,7 +12090,7 @@ msgstr "«%s» մոդուլի նախապատվությունները ջնջվե�
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
 #: app/Module/MapGeoLocationGeonames.php
 #: app/Module/MapGeoLocationOpenRouteService.php
-#: app/Module/OpenRouteServiceAutocomplete.php
+#: app/Module/OpenRouteServiceAutocomplete.php app/Module/PrivacyPolicy.php
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
@@ -15080,7 +15076,7 @@ msgid "webtrees cannot create thumbnails for this file format."
 msgstr "webtrees-ը չի կարող այս ֆայլի ձևաչափի մանրապատկերներ ստեղծել:"
 
 #: app/Http/RequestHandlers/CheckTree.php
-msgid "webtrees does not recognise this file format."
+msgid "webtrees does not recognize this file format."
 msgstr "webtrees-ը չի ճանաչում այս ֆայլի ձևաչափը:"
 
 #: app/Services/MessageService.php

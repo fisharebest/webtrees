@@ -230,12 +230,12 @@ use Fisharebest\Webtrees\I18N;
                     </div>
                 <?php endif ?>
 
-                <?php if ($key === 'data_localisation') : ?>
-                    <div class="ms-4 mb-3 ps-3 border-start" data-fields-for="data_localisation">
+                <?php if ($key === 'data_localization') : ?>
+                    <div class="ms-4 mb-3 ps-3 border-start" data-fields-for="data_localization">
                         <div class="row mb-2">
                             <label for="server_country" class="col-sm-3 col-form-label"><?= I18N::translate('Server location') ?></label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control conditional-required" id="server_country" name="server_country" value="<?= e($server_country) ?>"  <?= in_array('data_localisation', $enabled, true) ? 'required' : '' ?>>
+                                <input type="text" class="form-control conditional-required" id="server_country" name="server_country" value="<?= e($server_country) ?>"  <?= in_array('data_localization', $enabled, true) ? 'required' : '' ?>>
                             </div>
                         </div>
                     </div>

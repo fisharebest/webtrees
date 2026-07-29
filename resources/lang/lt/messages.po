@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 08:33+0100\n"
+"POT-Creation-Date: 2026-07-29 10:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1746,7 +1746,7 @@ msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "balandis"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Aqua Marine"
 msgstr "Žydra"
@@ -1812,7 +1812,7 @@ msgstr "Aruba"
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 msgstr ""
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Ash"
 msgstr "Pelenų"
@@ -2103,7 +2103,7 @@ msgstr "Prasideda su"
 msgid "Belarus"
 msgstr "Baltarusija"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Belgian Chocolate"
 msgstr "Ruda"
@@ -2327,12 +2327,12 @@ msgstr "Blokas"
 msgid "Blocks"
 msgstr "Blokai"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Lagoon"
 msgstr "Mėlyna kaip lagūna"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Marine"
 msgstr "Mėlyna kaip jūra"
@@ -3149,12 +3149,12 @@ msgstr "Cochabamba, Bolivija"
 msgid "Cocos (Keeling) Islands"
 msgstr "Kokosų (Kilingo) salos"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Coffee and Cream"
 msgstr "Kava ir grietinėlė"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Cold Day"
 msgstr "Šalta diena"
@@ -5466,6 +5466,7 @@ msgstr "Už pagalba genealogijos klausimais atsakingas %s."
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/sitemap/config.phtml
 #, php-format
 msgid "For more information, see %s."
 msgstr ""
@@ -5886,7 +5887,7 @@ msgctxt "Surname tradition"
 msgid "Greek"
 msgstr "Graikų"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Green Beam"
 msgstr "Žalia"
@@ -6322,8 +6323,9 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Jei Jūs esate tinklapio administratorius, turėtumėte tai peržiūrėti:"
 
 #: resources/views/errors/database-connection.phtml
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr "Jei negalite išspręsti problemos pats, galite prašyti pagalbos forume <a href=\"https://webtrees.net\">webtrees.net</a>."
+#, php-format
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at %s."
+msgstr "Jei negalite išspręsti problemos pats, galite prašyti pagalbos forume %s."
 
 #: resources/views/admin/trees-import.phtml
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7788,7 +7790,7 @@ msgstr "Laikmenos tipas"
 msgid "Medical"
 msgstr "Medicininis"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mediterranio"
 msgstr "Viduržemio"
@@ -7824,7 +7826,7 @@ msgstr "Meniu"
 msgid "Menus"
 msgstr "Meniu"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mercury"
 msgstr "Merkurijaus"
@@ -8504,7 +8506,7 @@ msgstr "Ne šventykloje - gyvenamoji apeiga"
 msgid "No upgrade information is available."
 msgstr "Nėra atnaujinimo informacijos."
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Nocturnal"
 msgstr "Naktinė"
@@ -8797,7 +8799,7 @@ msgstr "Vyriausias"
 msgid "Oldest mother"
 msgstr "Vyriausia motina"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Olivia"
 msgstr "Olivia"
@@ -8980,7 +8982,7 @@ msgstr "Pakistanas"
 msgid "Palau"
 msgstr "Palau"
 
-#. I18N: A colour scheme
+#. I18N: A color scheme
 #: app/Module/ColorsTheme.php
 msgid "Palette"
 msgstr "Paletė"
@@ -9179,7 +9181,7 @@ msgstr ""
 msgid "Phrase"
 msgstr ""
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Pink Plastic"
 msgstr "Rožinis plastikas"
@@ -9524,7 +9526,7 @@ msgid "Probate"
 msgstr "Testamentas"
 
 #: app/Module/PrivacyPolicy.php
-msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
 
 #: app/Gedcom.php
@@ -10122,7 +10124,7 @@ msgstr ""
 msgid "Sacramento, California, United States"
 msgstr "Sacramento, Kalifornija"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Sage"
 msgstr "Šalavijas"
@@ -10659,7 +10661,7 @@ msgstr "Ji buvo pakrikštyta"
 msgid "She was cremated"
 msgstr "Ji buvo kremuota"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Shiny Tomato"
 msgstr "Blizgus pomidoras"
@@ -11074,10 +11076,9 @@ msgstr "Svetainės verifikacijos kodas neveiks jeigu webtrees yra įdeigtas poap
 msgid "Sitemaps"
 msgstr "Svetainės turinio žemėlapiai"
 
-#. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml
-msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "Svetainės turinio žemėlapiai yra būdas pranešti paieškos tarnyboms (google) apie dėl svetainės puslapius, kurie yra prieinami nuskaitymui. Visos pagrindinės paieškos tarnybos palaiko svetainės turinio žemėlapius. Norėdami gauti daugiau informacijos, žiūrėkite <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
+msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps."
+msgstr "Svetainės turinio žemėlapiai yra būdas pranešti paieškos tarnyboms (google) apie dėl svetainės puslapius, kurie yra prieinami nuskaitymui. Visos pagrindinės paieškos tarnybos palaiko svetainės turinio žemėlapius."
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml
@@ -11670,7 +11671,7 @@ msgstr "Tampico, Meksika"
 msgid "Tanzania"
 msgstr "Tanzanija"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Teal Top"
 msgstr "Smaragdinė viršūnė"
@@ -12097,11 +12098,6 @@ msgstr "Naujų šeimos medžių nustatymai buvo išsaugoti."
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "„%s“ šeimos medžio nustatymai buvo atnaujinti."
 
-#: app/Module/PrivacyPolicy.php
-#, php-format
-msgid "The preferences for the module \"%s\" have been updated."
-msgstr ""
-
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
@@ -12111,7 +12107,7 @@ msgstr "Nuostatos „%s“ moduliuj buvo ištrintos."
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
 #: app/Module/MapGeoLocationGeonames.php
 #: app/Module/MapGeoLocationOpenRouteService.php
-#: app/Module/OpenRouteServiceAutocomplete.php
+#: app/Module/OpenRouteServiceAutocomplete.php app/Module/PrivacyPolicy.php
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
@@ -15106,7 +15102,7 @@ msgid "webtrees cannot create thumbnails for this file format."
 msgstr ""
 
 #: app/Http/RequestHandlers/CheckTree.php
-msgid "webtrees does not recognise this file format."
+msgid "webtrees does not recognize this file format."
 msgstr ""
 
 #: app/Services/MessageService.php

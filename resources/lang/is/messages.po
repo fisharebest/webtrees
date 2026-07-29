@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 08:33+0100\n"
+"POT-Creation-Date: 2026-07-29 10:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1725,7 +1725,7 @@ msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "apríl"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Aqua Marine"
 msgstr "Sægrænn"
@@ -1791,7 +1791,7 @@ msgstr "Aruba"
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 msgstr "Auk þess að nota tækjastikuna til að nýta HTML sniðmótun, þá getur þú bætt inn gagnagrunnsreitum sem eru sjálfvirkt uppfærðir. Þessir sérstöku reitir eru merktir með <b>#</b> stöfum. Sem dæmi <b>#totalFamilies#</b> verður skipt út með raunverulegum fjölda fjölskyldna í gagnagrunninum. Reyndir notendur gætu óskað þess að nýta CSS flokka í textum sínum, þannig að sniðmótun sé í samræmi við núverandi valið þema."
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Ash"
 msgstr "Aska"
@@ -2082,7 +2082,7 @@ msgstr "Byrjar á"
 msgid "Belarus"
 msgstr "Hvíta-rússland"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Belgian Chocolate"
 msgstr "Belgískt súkkulaði"
@@ -2306,12 +2306,12 @@ msgstr "Kassi"
 msgid "Blocks"
 msgstr "Kassar"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Lagoon"
 msgstr "Bláa lónið"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Marine"
 msgstr "Sjávarblátt"
@@ -3127,12 +3127,12 @@ msgstr "Cochabamba, Bólivía"
 msgid "Cocos (Keeling) Islands"
 msgstr "Kókoseyjar (Keeling-eyjar)"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Coffee and Cream"
 msgstr "Kaffi og krem"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Cold Day"
 msgstr "Kaldur dagur"
@@ -5444,6 +5444,7 @@ msgstr "Fyrir hjálp við spurningar um ættfræði hafðu þá samband við %s.
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/sitemap/config.phtml
 #, php-format
 msgid "For more information, see %s."
 msgstr "Fyrir frekari upplýsingar, sjá %s."
@@ -5864,7 +5865,7 @@ msgctxt "Surname tradition"
 msgid "Greek"
 msgstr "Grísk"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Green Beam"
 msgstr "Grænn geisli"
@@ -6300,8 +6301,9 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Ef þú ert vefstjóri þá ættir þú að athuga að:"
 
 #: resources/views/errors/database-connection.phtml
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr "Ef þú getur ekki lagfært vandamálið sjálfur, þá getur þú óskað eftir aðstoð á umræðuvefnum <a href=\"https://webtrees.net\">webtrees.net</a>."
+#, php-format
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at %s."
+msgstr "Ef þú getur ekki lagfært vandamálið sjálfur, þá getur þú óskað eftir aðstoð á umræðuvefnum %s."
 
 #: resources/views/admin/trees-import.phtml
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7766,7 +7768,7 @@ msgstr "Gagnagerð"
 msgid "Medical"
 msgstr "Læknisfræðilegur"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mediterranio"
 msgstr "Miðjarðarhaf"
@@ -7802,7 +7804,7 @@ msgstr "Valmynd"
 msgid "Menus"
 msgstr "Valmyndir"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mercury"
 msgstr "Kvikasilfur"
@@ -8480,7 +8482,7 @@ msgstr "Ekkert musteri - Lifandi tilskipun"
 msgid "No upgrade information is available."
 msgstr "Engar uppfærsluupplýsingar liggja fyrir."
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Nocturnal"
 msgstr "Næturlag"
@@ -8773,7 +8775,7 @@ msgstr "Elsti karlmaður"
 msgid "Oldest mother"
 msgstr "Elsta móðir"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Olivia"
 msgstr "Ólivía"
@@ -8956,7 +8958,7 @@ msgstr "Pakistan"
 msgid "Palau"
 msgstr "Palau"
 
-#. I18N: A colour scheme
+#. I18N: A color scheme
 #: app/Module/ColorsTheme.php
 msgid "Palette"
 msgstr "Litaspjald"
@@ -9155,7 +9157,7 @@ msgstr "Ljósmynd"
 msgid "Phrase"
 msgstr "Setning"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Pink Plastic"
 msgstr "Bleikt plast"
@@ -9500,7 +9502,7 @@ msgid "Probate"
 msgstr "Erfðaskrá staðfesting dómstóls"
 
 #: app/Module/PrivacyPolicy.php
-msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
 
 #: app/Gedcom.php
@@ -10097,7 +10099,7 @@ msgstr "STARTTLS"
 msgid "Sacramento, California, United States"
 msgstr "Sacramento, Kalifornía"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Sage"
 msgstr "Salvía"
@@ -10634,7 +10636,7 @@ msgstr "Hún var skírð"
 msgid "She was cremated"
 msgstr "Hún var líkbrennd"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Shiny Tomato"
 msgstr "Glansandi tómatur"
@@ -11049,10 +11051,9 @@ msgstr "Staðfestingarkóðar vefsvæða virka ekki þegar veftré er sett upp �
 msgid "Sitemaps"
 msgstr "Vefsíðukort"
 
-#. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml
-msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "Staðarkort er aðferð fyrir vefstjóra að láta leitarvélar vita af síðum á vefsíðunni sem eru aðgengilegar fyrir crawling(!). Allar stærri leitarvélar styðja staðarkort. Fyrir frekari upplýsingar, sjáið <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
+msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps."
+msgstr "Staðarkort er aðferð fyrir vefstjóra að láta leitarvélar vita af síðum á vefsíðunni sem eru aðgengilegar fyrir crawling(!). Allar stærri leitarvélar styðja staðarkort."
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml
@@ -11645,7 +11646,7 @@ msgstr "Tampico, Mexikó"
 msgid "Tanzania"
 msgstr "Tansanía"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Teal Top"
 msgstr "Blágrænn"
@@ -12072,11 +12073,6 @@ msgstr "Valkostir nýrra ættartala hafa verið uppfærðir."
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "Valkostirnir fyrir ættartöluna “%s” hafa verið uppfærðir."
 
-#: app/Module/PrivacyPolicy.php
-#, php-format
-msgid "The preferences for the module \"%s\" have been updated."
-msgstr ""
-
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
@@ -12086,7 +12082,7 @@ msgstr "Valkostina fyrir eininguna “%s” hefur verið eytt út."
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
 #: app/Module/MapGeoLocationGeonames.php
 #: app/Module/MapGeoLocationOpenRouteService.php
-#: app/Module/OpenRouteServiceAutocomplete.php
+#: app/Module/OpenRouteServiceAutocomplete.php app/Module/PrivacyPolicy.php
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
@@ -15072,7 +15068,7 @@ msgid "webtrees cannot create thumbnails for this file format."
 msgstr "webtrees getur ekki búið til smámyndir fyrir þetta skráarsnið."
 
 #: app/Http/RequestHandlers/CheckTree.php
-msgid "webtrees does not recognise this file format."
+msgid "webtrees does not recognize this file format."
 msgstr "webtrees kannast ekki við þetta skráarsnið."
 
 #: app/Services/MessageService.php

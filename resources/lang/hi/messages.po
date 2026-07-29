@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 08:33+0100\n"
+"POT-Creation-Date: 2026-07-29 10:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1725,7 +1725,7 @@ msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "अप्रैल"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Aqua Marine"
 msgstr "एक्वा मरीन"
@@ -1791,7 +1791,7 @@ msgstr "अरूबा"
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 msgstr "HTML स्वरूपण लागू करने के लिए टूलबार का उपयोग करने के साथ-साथ, आप डेटाबेस फ़ील्ड डाल सकते हैं जो स्वचालित रूप से अपडेट की जाती हैं। ये विशेष फ़ील्ड <b>#</b> से चिह्नित हैं। उदाहरण के लिए <b>#totalFamilies#</b> को डेटाबेस में परिवारों की वास्तविक संख्या से बदल दिया जाएगा। एडवांस्ड उपयोगकर्ता CSS क्लास को अपने टेक्स्ट पर लागू करना चाहेंगे, ताकि प्रारूपण वर्तमान में चयनित थीम से मेल खाए।"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Ash"
 msgstr "ऐश"
@@ -2082,7 +2082,7 @@ msgstr "शुरुआती अक्षर"
 msgid "Belarus"
 msgstr "बेलोरूस"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Belgian Chocolate"
 msgstr "बेल्जियन चॉकलेट"
@@ -2306,12 +2306,12 @@ msgstr "ब्लॉक"
 msgid "Blocks"
 msgstr "ब्लॉक्स"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Lagoon"
 msgstr "ब्लू लगून"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Marine"
 msgstr "ब्लू मरीन"
@@ -3127,12 +3127,12 @@ msgstr "कोचाबम्बा, बोलीविया"
 msgid "Cocos (Keeling) Islands"
 msgstr "कोकोस (कीलिंग) द्वीपसमूह"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Coffee and Cream"
 msgstr "कॉफी और क्रीम"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Cold Day"
 msgstr "कोल्ड डे"
@@ -5444,6 +5444,7 @@ msgstr "वंशावली से संबंधित प्रश्नो
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/sitemap/config.phtml
 #, php-format
 msgid "For more information, see %s."
 msgstr "अधिक जानकारी के लिए %s देखें।"
@@ -5864,7 +5865,7 @@ msgctxt "Surname tradition"
 msgid "Greek"
 msgstr "यूनानी"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Green Beam"
 msgstr "ग्रीन बीम"
@@ -6300,8 +6301,9 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "यदि आप वेबसाइट के एडमिनिस्ट्रेटर हैं, तो आपको यह देखना चाहिए:"
 
 #: resources/views/errors/database-connection.phtml
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr "यदि आप स्वयं समस्या का समाधान नहीं कर सकते, तो आप <a href=\"https://webtrees.net\"> webtrees.net </a> के फोरम पर मदद मांग सकते हैं।"
+#, fuzzy, php-format
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at %s."
+msgstr "यदि आप स्वयं समस्या का समाधान नहीं कर सकते, तो आप %s के फोरम पर मदद मांग सकते हैं।"
 
 #: resources/views/admin/trees-import.phtml
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7766,7 +7768,7 @@ msgstr "मीडिया प्रकार"
 msgid "Medical"
 msgstr "मेडिकल"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mediterranio"
 msgstr "मेडिटेररानिओ"
@@ -7802,7 +7804,7 @@ msgstr "मेन्यू"
 msgid "Menus"
 msgstr "मेनू"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mercury"
 msgstr "मर्करी"
@@ -8480,7 +8482,7 @@ msgstr "बिना मठ के रहने रस्म"
 msgid "No upgrade information is available."
 msgstr "कोई अपग्रेड की जानकारी उपलब्ध नहीं।"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Nocturnal"
 msgstr "नोक्टर्नल"
@@ -8773,7 +8775,7 @@ msgstr "सबसे बुजुर्ग पुरुष"
 msgid "Oldest mother"
 msgstr "सबसे बड़ी माँ"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Olivia"
 msgstr "ओलिविआ"
@@ -8956,7 +8958,7 @@ msgstr "पाकिस्तान"
 msgid "Palau"
 msgstr "पलाऊ"
 
-#. I18N: A colour scheme
+#. I18N: A color scheme
 #: app/Module/ColorsTheme.php
 msgid "Palette"
 msgstr "पैलेट"
@@ -9155,7 +9157,7 @@ msgstr "फोटोग्राफ"
 msgid "Phrase"
 msgstr "मुहावरा"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Pink Plastic"
 msgstr "पिंक प्लास्टिक"
@@ -9500,7 +9502,7 @@ msgid "Probate"
 msgstr "प्रोबेट"
 
 #: app/Module/PrivacyPolicy.php
-msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
 
 #: app/Gedcom.php
@@ -10097,7 +10099,7 @@ msgstr "STARTTLS"
 msgid "Sacramento, California, United States"
 msgstr "सैक्रामेंटो, कैलिफोर्निया, संयुक्त राज्य अमेरिका"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Sage"
 msgstr "सेज"
@@ -10634,7 +10636,7 @@ msgstr "उनका नामकरण हुआ"
 msgid "She was cremated"
 msgstr "उनका दाह संस्कार हुआ"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Shiny Tomato"
 msgstr "शाइनी टोमेटो"
@@ -11049,10 +11051,9 @@ msgstr "जब webtrees किसी सबफ़ोल्डर में इ�
 msgid "Sitemaps"
 msgstr "साइटमैप"
 
-#. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml
-msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "साइटमैप वेबमास्टर्स के लिए खोज इंजन को उन पेजों के बारे में बताने का एक तरीका है जो वेबसाइट पर क्रॉलिंग के लिए उपलब्ध हैं। सभी प्रमुख खोज इंजन साइटमैप का समर्थन करते हैं। अधिक जानकारी के लिए, <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a> देखें।"
+msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps."
+msgstr ""
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml
@@ -11645,7 +11646,7 @@ msgstr "टैम्पिको, मैक्सिको"
 msgid "Tanzania"
 msgstr "तंजानिया"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Teal Top"
 msgstr "टील टॉप"
@@ -12072,11 +12073,6 @@ msgstr "नई फैमिली ट्री के लिए प्राथ�
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "वंश वृक्ष “%s” की प्राथमिकताएं अपडेट की गई हैं।"
 
-#: app/Module/PrivacyPolicy.php
-#, php-format
-msgid "The preferences for the module \"%s\" have been updated."
-msgstr ""
-
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
@@ -12086,7 +12082,7 @@ msgstr "मॉड्यूल “%s” की प्राथमिकताए�
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
 #: app/Module/MapGeoLocationGeonames.php
 #: app/Module/MapGeoLocationOpenRouteService.php
-#: app/Module/OpenRouteServiceAutocomplete.php
+#: app/Module/OpenRouteServiceAutocomplete.php app/Module/PrivacyPolicy.php
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
@@ -15072,7 +15068,7 @@ msgid "webtrees cannot create thumbnails for this file format."
 msgstr "वेबट्री इस फ़ाइल स्वरूप के लिए थंबनेल नहीं बना सकते।"
 
 #: app/Http/RequestHandlers/CheckTree.php
-msgid "webtrees does not recognise this file format."
+msgid "webtrees does not recognize this file format."
 msgstr "webtrees इस फ़ाइल स्वरूप को नहीं पहचानता है।"
 
 #: app/Services/MessageService.php

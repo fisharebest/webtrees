@@ -130,7 +130,7 @@ class ColorsTheme extends CloudsTheme implements ModuleGlobalInterface
      */
     protected function menuPalette(): Menu
     {
-        /* I18N: A colour scheme */
+        /* I18N: A color scheme */
         $menu = new Menu(I18N::translate('Palette'), '#', 'menu-color');
 
         $palette = $this->palette();
@@ -159,37 +159,37 @@ class ColorsTheme extends CloudsTheme implements ModuleGlobalInterface
     private function palettes(): array
     {
         $palettes = [
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'aquamarine'       => I18N::translate('Aqua Marine'),
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'ash'              => I18N::translate('Ash'),
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'belgianchocolate' => I18N::translate('Belgian Chocolate'),
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'bluelagoon'       => I18N::translate('Blue Lagoon'),
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'bluemarine'       => I18N::translate('Blue Marine'),
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'coffeeandcream'   => I18N::translate('Coffee and Cream'),
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'coldday'          => I18N::translate('Cold Day'),
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'greenbeam'        => I18N::translate('Green Beam'),
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'mediterranio'     => I18N::translate('Mediterranio'),
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'mercury'          => I18N::translate('Mercury'),
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'nocturnal'        => I18N::translate('Nocturnal'),
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'olivia'           => I18N::translate('Olivia'),
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'pinkplastic'      => I18N::translate('Pink Plastic'),
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'sage'             => I18N::translate('Sage'),
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'shinytomato'      => I18N::translate('Shiny Tomato'),
-            /* I18N: The name of a colour-scheme */
+            /* I18N: The name of a color scheme */
             'tealtop'          => I18N::translate('Teal Top'),
         ];
 

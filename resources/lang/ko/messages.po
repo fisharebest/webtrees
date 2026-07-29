@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 08:33+0100\n"
+"POT-Creation-Date: 2026-07-29 10:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,9 +115,9 @@ msgid "%s KB"
 msgstr "%s KB"
 
 #: resources/views/fact-date.phtml
-#, php-format
+#, fuzzy, php-format
 msgid "%s after death"
-msgstr ""
+msgstr "사망 후 %s"
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -871,19 +871,22 @@ msgid "A user will not be able to sign in until both “email verified” and �
 msgstr "\"이메일 확인\"과 \"관리자가 승인 함\"이 모두 선택 될 때까지 사용자는 로그인 할 수 없습니다."
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgctxt "paper size"
 msgid "A0"
-msgstr ""
+msgstr "A0"
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgctxt "paper size"
 msgid "A1"
-msgstr ""
+msgstr "A1"
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgctxt "paper size"
 msgid "A2"
-msgstr ""
+msgstr "A2"
 
 #: resources/xml/reports/ahnentafel_report.xml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
@@ -1708,7 +1711,7 @@ msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "4월"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Aqua Marine"
 msgstr "Aqua Marine"
@@ -1774,7 +1777,7 @@ msgstr "Aruba"
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 msgstr "툴바를 사용하여 HTML 형식을 적용 할뿐만 아니라 자동으로 업데이트되는 데이터베이스 필드를 삽입 할 수 있습니다. 이 특수 필드에는 <b>#</b> 문자가 표시되어 있습니다. 예를 들어 <b>#totalFamilies#</b>는 데이터베이스의 실제 가족 수로 바뀝니다. 고급 사용자는 서식이 현재 선택된 테마와 일치하도록 CSS 클래스를 텍스트에 적용 할 수 있습니다."
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Ash"
 msgstr "Ash"
@@ -2065,7 +2068,7 @@ msgstr "시작"
 msgid "Belarus"
 msgstr "Belarus"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Belgian Chocolate"
 msgstr "Belgian Chocolate"
@@ -2289,19 +2292,20 @@ msgstr "블록"
 msgid "Blocks"
 msgstr "블록"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Lagoon"
 msgstr "Blue Lagoon"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Marine"
 msgstr "Blue Marine"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Body"
-msgstr ""
+msgstr "본문"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -3111,12 +3115,12 @@ msgstr "Cochabamba, Bolivia"
 msgid "Cocos (Keeling) Islands"
 msgstr "Cocos (Keeling) Islands"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Coffee and Cream"
 msgstr "Coffee and Cream"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Cold Day"
 msgstr "Cold Day"
@@ -4818,8 +4822,9 @@ msgid "Excluded from this submission"
 msgstr "이 제출에서 제외됨"
 
 #: resources/views/layouts/administration.phtml
+#, fuzzy
 msgid "Exit control panel"
-msgstr ""
+msgstr "제어판 나가기"
 
 #: app/Services/LeafletJsService.php
 #: resources/views/modules/interactive-tree/chart.phtml
@@ -5436,6 +5441,7 @@ msgstr "계보 질문에 대한 도움이 필요하면 %s에게 문의하십시�
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/sitemap/config.phtml
 #, php-format
 msgid "For more information, see %s."
 msgstr "자세한 내용은 %s을 참조하십시오."
@@ -5823,8 +5829,9 @@ msgid "Godson"
 msgstr "대자"
 
 #: app/Module/GoogleSearchConsole.php
+#, fuzzy
 msgid "Google™ Search Console"
-msgstr ""
+msgstr "Google™ Search Console"
 
 #: app/Module/GoogleAnalyticsModule.php
 msgid "Google™ analytics"
@@ -5857,7 +5864,7 @@ msgctxt "Surname tradition"
 msgid "Greek"
 msgstr "그리스"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Green Beam"
 msgstr "Green Beam"
@@ -6296,8 +6303,9 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "웹 사이트 관리자인 경우 다음을 확인해야 합니다:"
 
 #: resources/views/errors/database-connection.phtml
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr "스스로 문제를 해결할 수 없는 경우 <a href=\"https://webtrees.net\">webtrees.net</a> 포럼에서 도움을 요청할 수 있습니다."
+#, php-format
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at %s."
+msgstr "스스로 문제를 해결할 수 없는 경우 %s 포럼에서 도움을 요청할 수 있습니다."
 
 #: resources/views/admin/trees-import.phtml
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -6327,8 +6335,9 @@ msgid "If you modify the filename, you should also rename the file."
 msgstr ""
 
 #: resources/views/modules/here-maps/config.phtml
+#, fuzzy
 msgid "If you obtained this key prior to 2024 then it will be necessary to create a new key."
-msgstr ""
+msgstr "2024년 이전에 이 키를 받으셨다면 새 키를 만들어야 합니다."
 
 #: resources/views/admin/site-preferences.phtml
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7694,8 +7703,9 @@ msgid "Media"
 msgstr "미디어"
 
 #: app/Statistics.php
+#, fuzzy
 msgid "Media by type"
-msgstr ""
+msgstr "유형별 미디어"
 
 #: resources/views/admin/media-upload.phtml resources/views/admin/media.phtml
 #: resources/views/media-page-details.phtml
@@ -7768,7 +7778,7 @@ msgstr "미디어 유형"
 msgid "Medical"
 msgstr "의료 항목"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mediterranio"
 msgstr "Mediterranio"
@@ -7804,7 +7814,7 @@ msgstr "메뉴"
 msgid "Menus"
 msgstr "메뉴"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mercury"
 msgstr "Mercury"
@@ -8482,7 +8492,7 @@ msgstr "성전 없음 - 생활 의식"
 msgid "No upgrade information is available."
 msgstr "업그레이드 정보가 없습니다."
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Nocturnal"
 msgstr "Nocturnal"
@@ -8702,8 +8712,9 @@ msgid "Nurse"
 msgstr "유모"
 
 #: resources/js/webtrees/confirm.js
+#, fuzzy
 msgid "OK"
-msgstr ""
+msgstr "확인"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -8775,7 +8786,7 @@ msgstr "가장 나이가 많은 남성"
 msgid "Oldest mother"
 msgstr "가장 나이가 많은 어머니"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Olivia"
 msgstr "Olivia"
@@ -8923,8 +8934,9 @@ msgid "Page %s of %s"
 msgstr "%s 의%s 페이지"
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgid "Page setup"
-msgstr ""
+msgstr "페이지 설정"
 
 #: resources/xml/reports/ahnentafel_report.xml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
@@ -8958,7 +8970,7 @@ msgstr "Pakistan"
 msgid "Palau"
 msgstr "Palau"
 
-#. I18N: A colour scheme
+#. I18N: A color scheme
 #: app/Module/ColorsTheme.php
 msgid "Palette"
 msgstr "Palette"
@@ -9157,7 +9169,7 @@ msgstr ""
 msgid "Phrase"
 msgstr ""
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Pink Plastic"
 msgstr "Pink Plastic"
@@ -9394,8 +9406,9 @@ msgid "Portuguese"
 msgstr "포르투갈"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Postal address"
-msgstr ""
+msgstr "우편 주소"
 
 #: app/CustomTags/GedcomL.php app/CustomTags/PersonalAncestralFile.php
 #: app/Gedcom.php
@@ -9505,7 +9518,7 @@ msgid "Probate"
 msgstr "유언 공증"
 
 #: app/Module/PrivacyPolicy.php
-msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
 
 #: app/Gedcom.php
@@ -10110,7 +10123,7 @@ msgstr ""
 msgid "Sacramento, California, United States"
 msgstr "Sacramento, California, United States"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Sage"
 msgstr "Sage"
@@ -10523,8 +10536,9 @@ msgid "Server name"
 msgstr "서버 이름"
 
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "Service"
-msgstr ""
+msgstr "서비스"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php
 msgid "Set a new password"
@@ -10649,7 +10663,7 @@ msgstr "그녀가 세레식 받은"
 msgid "She was cremated"
 msgstr "그녀가 화장된"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Shiny Tomato"
 msgstr "Shiny Tomato"
@@ -11065,10 +11079,9 @@ msgstr "웹 트리가 하위 폴더에 설치되어 있으면 사이트 확인 �
 msgid "Sitemaps"
 msgstr "사이트맵"
 
-#. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml
-msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "사이트 맵은 웹 마스터가 크롤링 할 수있는 웹 사이트의 페이지에 대해 검색 엔진에 알리는 방법입니다. 모든 주요 검색 엔진은 사이트 맵을 지원합니다 <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
+msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps."
+msgstr "사이트 맵은 웹 마스터가 크롤링 할 수있는 웹 사이트의 페이지에 대해 검색 엔진에 알리는 방법입니다."
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml
@@ -11096,8 +11109,9 @@ msgid "Slide show"
 msgstr "슬라이드 쇼"
 
 #: resources/views/modules/random_media/config.phtml
+#, fuzzy
 msgid "Slide show interval"
-msgstr ""
+msgstr "슬라이드쇼 간격"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -11664,7 +11678,7 @@ msgstr "Tampico, Mexico"
 msgid "Tanzania"
 msgstr "Tanzania"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Teal Top"
 msgstr "Teal Top"
@@ -11680,8 +11694,9 @@ msgid "Tegucigalpa, Honduras"
 msgstr "Tegucigalpa, Honduras"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Telephone"
-msgstr ""
+msgstr "전화번호"
 
 #: app/CustomTags/RootsMagic.php
 msgid "Template"
@@ -12091,11 +12106,6 @@ msgstr "새로운 가계도에 대한 환경 설정이 업데이트되었습니�
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "가계도 “%s”의 환경 설정이 업데이트되었습니다."
 
-#: app/Module/PrivacyPolicy.php
-#, php-format
-msgid "The preferences for the module \"%s\" have been updated."
-msgstr ""
-
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
@@ -12105,7 +12115,7 @@ msgstr "모듈 “%s”의 기본 설정이 삭제되었습니다."
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
 #: app/Module/MapGeoLocationGeonames.php
 #: app/Module/MapGeoLocationOpenRouteService.php
-#: app/Module/OpenRouteServiceAutocomplete.php
+#: app/Module/OpenRouteServiceAutocomplete.php app/Module/PrivacyPolicy.php
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
@@ -12150,8 +12160,9 @@ msgid "The server could not understand this request."
 msgstr "서버가 이 요청을 이해할 수 없습니다."
 
 #: app/Http/RequestHandlers/CheckTree.php
+#, fuzzy
 msgid "The server’s memory limit has been reached."
-msgstr ""
+msgstr "서버의 메모리 제한에 도달했습니다."
 
 #: app/Services/ServerCheckService.php
 msgid "The server’s temporary folder cannot be accessed."
@@ -12818,8 +12829,9 @@ msgstr "Timor-Leste"
 
 #. I18N: Name of a module. TinyMCE is a trademark. Do not translate it? https://www.tiny.cloud
 #: app/Module/TinymceModule.php
+#, fuzzy
 msgid "TinyMCE™"
-msgstr ""
+msgstr "TinyMCE™"
 
 #: app/CustomTags/Geneatique.php app/Gedcom.php
 #: resources/views/admin/fix-level-0-media.phtml
@@ -13386,8 +13398,9 @@ msgstr "컴팩트 레이아웃 사용"
 
 #: resources/views/modules/gedcom_news/edit.phtml
 #: resources/views/modules/user_blog/edit.phtml
+#, fuzzy
 msgid "Use current timestamp"
-msgstr ""
+msgstr "현재 타임스탬프 사용"
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -13948,8 +13961,9 @@ msgid "You must specify an individual record before you can restrict the user to
 msgstr "사용자를 직계 가족으로 제한하기 전에 인물 레코드를 지정해야합니다."
 
 #: app/Http/RequestHandlers/RenumberTreeAction.php
+#, fuzzy
 msgid "You need to accept or reject all pending changes before proceeding."
-msgstr ""
+msgstr "계속하기 전에 보류 중인 모든 변경 사항을 수락하거나 거부해야 합니다."
 
 #: app/Http/RequestHandlers/LoginPage.php
 msgid "You need to be a family member to access this website."
@@ -14849,8 +14863,9 @@ msgid "secondary evidence"
 msgstr "2번째 증거"
 
 #: resources/views/modules/random_media/config.phtml
+#, fuzzy
 msgid "seconds"
-msgstr ""
+msgstr "초"
 
 #. I18N: select all (of a list of options)
 #: resources/views/search-trees.phtml
@@ -15089,7 +15104,7 @@ msgid "webtrees cannot create thumbnails for this file format."
 msgstr ""
 
 #: app/Http/RequestHandlers/CheckTree.php
-msgid "webtrees does not recognise this file format."
+msgid "webtrees does not recognize this file format."
 msgstr ""
 
 #: app/Services/MessageService.php

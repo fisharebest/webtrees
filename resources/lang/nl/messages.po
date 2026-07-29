@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 08:33+0100\n"
+"POT-Creation-Date: 2026-07-29 10:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,9 +120,9 @@ msgid "%s KB"
 msgstr "%s KB"
 
 #: resources/views/fact-date.phtml
-#, php-format
+#, fuzzy, php-format
 msgid "%s after death"
-msgstr ""
+msgstr "%s na de dood"
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -892,19 +892,22 @@ msgid "A user will not be able to sign in until both “email verified” and �
 msgstr "Een gebruiker kan zich pas aanmelden nadat de opties “e-mail” geverifieerd en “goedgekeurd door beheerder” zijn geselecteerd."
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgctxt "paper size"
 msgid "A0"
-msgstr ""
+msgstr "A0"
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgctxt "paper size"
 msgid "A1"
-msgstr ""
+msgstr "A1"
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgctxt "paper size"
 msgid "A2"
-msgstr ""
+msgstr "A2"
 
 #: resources/xml/reports/ahnentafel_report.xml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
@@ -1729,7 +1732,7 @@ msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "april"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Aqua Marine"
 msgstr "Aquamarijn"
@@ -1796,7 +1799,7 @@ msgstr "Aruba"
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 msgstr "Naast het gebruik van de gereedschapsbalk om HTML formattering toe te passen, kunt u databasevelden invoegen die automatisch worden bijgewerkt. Deze speciale velden zijn gemarkeerd met <b>#</b> tekens. Bijvoorbeeld <b>#totalFamilies#</b> wordt vervangen door het actuele aantal families in de database. Gevorderde gebruikers kunnen CSS classes aan hun tekst toevoegen, zodat de opmaak past bij het gekozen thema."
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Ash"
 msgstr "As"
@@ -2088,7 +2091,7 @@ msgstr "Begint met"
 msgid "Belarus"
 msgstr "Wit-Rusland"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Belgian Chocolate"
 msgstr "Belgische chocola"
@@ -2312,19 +2315,20 @@ msgstr "Blok"
 msgid "Blocks"
 msgstr "Blokken"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Lagoon"
 msgstr "Blauwe Lagune"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Marine"
 msgstr "Zeeblauw"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Body"
-msgstr ""
+msgstr "Inhoud"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -3135,12 +3139,12 @@ msgstr "Cochabamba, Bolivia"
 msgid "Cocos (Keeling) Islands"
 msgstr "Kokoseilanden (Keeling)"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Coffee and Cream"
 msgstr "Koffie en room"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Cold Day"
 msgstr "Koude Dag"
@@ -4843,8 +4847,9 @@ msgid "Excluded from this submission"
 msgstr "Uitgesloten van onderwerping"
 
 #: resources/views/layouts/administration.phtml
+#, fuzzy
 msgid "Exit control panel"
-msgstr ""
+msgstr "Configuratiescherm verlaten"
 
 #: app/Services/LeafletJsService.php
 #: resources/views/modules/interactive-tree/chart.phtml
@@ -5461,6 +5466,7 @@ msgstr "Voor genealogische vragen kunt u contact opnemen met %s."
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/sitemap/config.phtml
 #, php-format
 msgid "For more information, see %s."
 msgstr "Voor meer informatie, zie %s."
@@ -5851,8 +5857,9 @@ msgid "Godson"
 msgstr "Peetzoon"
 
 #: app/Module/GoogleSearchConsole.php
+#, fuzzy
 msgid "Google™ Search Console"
-msgstr ""
+msgstr "Google™ Search Console"
 
 #: app/Module/GoogleAnalyticsModule.php
 msgid "Google™ analytics"
@@ -5885,7 +5892,7 @@ msgctxt "Surname tradition"
 msgid "Greek"
 msgstr "Grieks"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Green Beam"
 msgstr "Groene Straal"
@@ -6323,8 +6330,9 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Bent u de websitebeheerder, controleer dan of:"
 
 #: resources/views/errors/database-connection.phtml
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr "Als u het probleem niet zelf kunt oplossen, kunt u hulp vragen op de forums bij <a href=\"https://webtrees.net\">webtrees.net</a>."
+#, php-format
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at %s."
+msgstr "Als u het probleem niet zelf kunt oplossen, kunt u hulp vragen op de forums bij %s."
 
 #: resources/views/admin/trees-import.phtml
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -6354,8 +6362,9 @@ msgid "If you modify the filename, you should also rename the file."
 msgstr "Als u de bestandsnaam wijzigt, moet u ook het bestand hernoemen."
 
 #: resources/views/modules/here-maps/config.phtml
+#, fuzzy
 msgid "If you obtained this key prior to 2024 then it will be necessary to create a new key."
-msgstr ""
+msgstr "Als u deze sleutel vóór 2024 hebt verkregen, moet u een nieuwe sleutel aanmaken."
 
 #: resources/views/admin/site-preferences.phtml
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7723,8 +7732,9 @@ msgid "Media"
 msgstr "Media"
 
 #: app/Statistics.php
+#, fuzzy
 msgid "Media by type"
-msgstr ""
+msgstr "Media op type"
 
 #: resources/views/admin/media-upload.phtml resources/views/admin/media.phtml
 #: resources/views/media-page-details.phtml
@@ -7797,7 +7807,7 @@ msgstr "Mediatype"
 msgid "Medical"
 msgstr "Medisch"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mediterranio"
 msgstr "Mediterraan"
@@ -7833,7 +7843,7 @@ msgstr "Menu"
 msgid "Menus"
 msgstr "Menu's"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mercury"
 msgstr "Kwikzilver"
@@ -8513,7 +8523,7 @@ msgstr "Verordening heeft tijdens het leven van betrokkene plaatsgevonden"
 msgid "No upgrade information is available."
 msgstr "Er is geen upgrade informatie beschikbaar."
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Nocturnal"
 msgstr "Nachtelijk"
@@ -8733,8 +8743,9 @@ msgid "Nurse"
 msgstr "Verpleger"
 
 #: resources/js/webtrees/confirm.js
+#, fuzzy
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -8806,7 +8817,7 @@ msgstr "Oudste man"
 msgid "Oldest mother"
 msgstr "Oudste moeder"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Olivia"
 msgstr "Olijf"
@@ -8955,8 +8966,9 @@ msgid "Page %s of %s"
 msgstr "Pagina %s van %s"
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgid "Page setup"
-msgstr ""
+msgstr "Pagina-instelling"
 
 #: resources/xml/reports/ahnentafel_report.xml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
@@ -8990,7 +9002,7 @@ msgstr "Pakistan"
 msgid "Palau"
 msgstr "Palau"
 
-#. I18N: A colour scheme
+#. I18N: A color scheme
 #: app/Module/ColorsTheme.php
 msgid "Palette"
 msgstr "Palet"
@@ -9191,7 +9203,7 @@ msgstr "Foto"
 msgid "Phrase"
 msgstr "Frase"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Pink Plastic"
 msgstr "Roze Plastic"
@@ -9426,8 +9438,9 @@ msgid "Portuguese"
 msgstr "Portugees"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Postal address"
-msgstr ""
+msgstr "Postadres"
 
 #: app/CustomTags/GedcomL.php app/CustomTags/PersonalAncestralFile.php
 #: app/Gedcom.php
@@ -9538,7 +9551,7 @@ msgstr "Nalatenschap vastleggen"
 
 #: app/Module/PrivacyPolicy.php
 #, fuzzy
-msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr "De verwerking van persoonsgegevens op deze website is gebaseerd op het gerechtvaardigd belang bij historisch en genealogisch onderzoek. Dit wordt erkend als historisch onderzoek onder de gegevensbeschermingswet, en bepaalde rechten — waaronder het recht op wissing en het recht van bezwaar — kunnen worden beperkt wanneer de uitoefening van deze rechten het onderzoek onmogelijk zou maken of ernstig zou belemmeren."
 
 #: app/Gedcom.php
@@ -10143,7 +10156,7 @@ msgstr "STARTTLS"
 msgid "Sacramento, California, United States"
 msgstr "Sacramento, Californië"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Sage"
 msgstr "Salie"
@@ -10559,8 +10572,9 @@ msgid "Server name"
 msgstr "Servernaam"
 
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "Service"
-msgstr ""
+msgstr "Dienst"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php
 msgid "Set a new password"
@@ -10685,7 +10699,7 @@ msgstr "Zij is gedoopt"
 msgid "She was cremated"
 msgstr "Zij is gecremeerd"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Shiny Tomato"
 msgstr "Glanzende Tomaat"
@@ -11101,10 +11115,9 @@ msgstr "Website-verificatiecodes werken niet als webtrees is geïnstalleerd in e
 msgid "Sitemaps"
 msgstr "Sitemaps"
 
-#. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml
-msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "Sitemaps zijn een manier om webmasters aan zoekmachines te laten weten welke pagina's op een website beschikbaar zijn om te doorzoeken. Alle grote zoekmachines ondersteunen sitemaps. Voor meer informatie, zie <a href=\"https://www.sitemaps.org/nl/\">www.sitemaps.org</a>."
+msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps."
+msgstr "Sitemaps zijn een manier om webmasters aan zoekmachines te laten weten welke pagina's op een website beschikbaar zijn om te doorzoeken. Alle grote zoekmachines ondersteunen sitemaps."
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml
@@ -11132,8 +11145,9 @@ msgid "Slide show"
 msgstr "Diavoorstelling"
 
 #: resources/views/modules/random_media/config.phtml
+#, fuzzy
 msgid "Slide show interval"
-msgstr ""
+msgstr "Diavoorstelling-interval"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -11701,7 +11715,7 @@ msgstr "Tampico, Mexico"
 msgid "Tanzania"
 msgstr "Tanzania"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Teal Top"
 msgstr "Teal Top"
@@ -11717,8 +11731,9 @@ msgid "Tegucigalpa, Honduras"
 msgstr "Tegucigalpa, Honduras"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Telephone"
-msgstr ""
+msgstr "Telefoon"
 
 #: app/CustomTags/RootsMagic.php
 msgid "Template"
@@ -12129,11 +12144,6 @@ msgstr "De voorkeuren voor nieuwe stambomen zijn bijgewerkt."
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "De voorkeuren voor stamboom “%s” zijn bijgewerkt."
 
-#: app/Module/PrivacyPolicy.php
-#, php-format
-msgid "The preferences for the module \"%s\" have been updated."
-msgstr ""
-
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
@@ -12143,7 +12153,7 @@ msgstr "De voorkeuren voor de module “%s” zijn verwijderd."
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
 #: app/Module/MapGeoLocationGeonames.php
 #: app/Module/MapGeoLocationOpenRouteService.php
-#: app/Module/OpenRouteServiceAutocomplete.php
+#: app/Module/OpenRouteServiceAutocomplete.php app/Module/PrivacyPolicy.php
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
@@ -12188,8 +12198,9 @@ msgid "The server could not understand this request."
 msgstr "De server heeft deze aanvraag niet begrepen."
 
 #: app/Http/RequestHandlers/CheckTree.php
+#, fuzzy
 msgid "The server’s memory limit has been reached."
-msgstr ""
+msgstr "De geheugenlimiet van de server is bereikt."
 
 #: app/Services/ServerCheckService.php
 msgid "The server’s temporary folder cannot be accessed."
@@ -12866,8 +12877,9 @@ msgstr "Oost-Timor"
 
 #. I18N: Name of a module. TinyMCE is a trademark. Do not translate it? https://www.tiny.cloud
 #: app/Module/TinymceModule.php
+#, fuzzy
 msgid "TinyMCE™"
-msgstr ""
+msgstr "TinyMCE™"
 
 #: app/CustomTags/Geneatique.php app/Gedcom.php
 #: resources/views/admin/fix-level-0-media.phtml
@@ -13441,8 +13453,9 @@ msgstr "Compacte indeling"
 
 #: resources/views/modules/gedcom_news/edit.phtml
 #: resources/views/modules/user_blog/edit.phtml
+#, fuzzy
 msgid "Use current timestamp"
-msgstr ""
+msgstr "Huidige tijdstempel gebruiken"
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -14008,8 +14021,9 @@ msgid "You must specify an individual record before you can restrict the user to
 msgstr "U moet een persoonsrecord opgeven voordat u de gebruiker kunt beperken tot zijn naaste familie."
 
 #: app/Http/RequestHandlers/RenumberTreeAction.php
+#, fuzzy
 msgid "You need to accept or reject all pending changes before proceeding."
-msgstr ""
+msgstr "U moet alle openstaande wijzigingen accepteren of afwijzen voordat u verder gaat."
 
 #: app/Http/RequestHandlers/LoginPage.php
 msgid "You need to be a family member to access this website."
@@ -14912,8 +14926,9 @@ msgid "secondary evidence"
 msgstr "secundair bewijs"
 
 #: resources/views/modules/random_media/config.phtml
+#, fuzzy
 msgid "seconds"
-msgstr ""
+msgstr "seconden"
 
 #. I18N: select all (of a list of options)
 #: resources/views/search-trees.phtml
@@ -15152,7 +15167,7 @@ msgid "webtrees cannot create thumbnails for this file format."
 msgstr "webtrees kan geen miniatuurafbeeldingen maken voor dit bestandsformaat."
 
 #: app/Http/RequestHandlers/CheckTree.php
-msgid "webtrees does not recognise this file format."
+msgid "webtrees does not recognize this file format."
 msgstr "webtrees herkent dit bestandsformaat niet."
 
 #: app/Services/MessageService.php

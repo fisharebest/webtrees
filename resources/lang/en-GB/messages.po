@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 08:33+0100\n"
+"POT-Creation-Date: 2026-07-29 10:01+0100\n"
 "PO-Revision-Date: 2026-07-13 16:22+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (United Kingdom) <http://localhost:8080/projects/webtrees/webtrees-2-2/en_GB/>\n"
@@ -115,9 +115,9 @@ msgid "%s KB"
 msgstr "%s KB"
 
 #: resources/views/fact-date.phtml
-#, php-format
+#, fuzzy, php-format
 msgid "%s after death"
-msgstr ""
+msgstr "%s after death"
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -1724,7 +1724,7 @@ msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "April"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Aqua Marine"
 msgstr "Aqua Marine"
@@ -1773,8 +1773,9 @@ msgid "Argentina"
 msgstr "Argentina"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Argentina, Colombia, Mexico, Chile, Uruguay, Peru, Israel"
-msgstr ""
+msgstr "Argentina, Colombia, Mexico, Chile, Uruguay, Peru, Israel"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -1790,7 +1791,7 @@ msgstr "Aruba"
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 msgstr "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Ash"
 msgstr "Ash"
@@ -1873,8 +1874,9 @@ msgid "Australia"
 msgstr "Australia"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Australia / New Zealand"
-msgstr ""
+msgstr "Australia / New Zealand"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -2081,7 +2083,7 @@ msgstr "Begins with"
 msgid "Belarus"
 msgstr "Belarus"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Belgian Chocolate"
 msgstr "Belgian Chocolate"
@@ -2305,19 +2307,20 @@ msgstr "Block"
 msgid "Blocks"
 msgstr "Blocks"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Lagoon"
 msgstr "Blue Lagoon"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Marine"
 msgstr "Blue Marine"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Body"
-msgstr ""
+msgstr "Body"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -2397,8 +2400,9 @@ msgid "Brazil"
 msgstr "Brazil"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Breach notification"
-msgstr ""
+msgstr "Breach notification"
 
 #: app/Elements/RelationIsDescriptor.php
 msgid "Bridesmaid"
@@ -2945,8 +2949,9 @@ msgid "Children take their mother’s surname."
 msgstr "Children take their mother’s surname."
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Children's data"
-msgstr ""
+msgstr "Children's data"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -3126,12 +3131,12 @@ msgstr "Cochabamba, Bolivia"
 msgid "Cocos (Keeling) Islands"
 msgstr "Cocos (Keeling) Islands"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Coffee and Cream"
 msgstr "Coffee and Cream"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Cold Day"
 msgstr "Cold Day"
@@ -3643,8 +3648,9 @@ msgid "Custom module"
 msgstr "Custom module"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Custom statement"
-msgstr ""
+msgstr "Custom statement"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
@@ -3701,8 +3707,9 @@ msgid "Data"
 msgstr "Data"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Data collected"
-msgstr ""
+msgstr "Data collected"
 
 #: app/Module/PrivacyPolicy.php
 msgid "Data controller"
@@ -3734,16 +3741,19 @@ msgid "Data folder"
 msgstr "Data folder"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Data protection officer"
-msgstr ""
+msgstr "Data protection officer"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Data retention"
-msgstr ""
+msgstr "Data retention"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Data storage location"
-msgstr ""
+msgstr "Data storage location"
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -4412,8 +4422,9 @@ msgid "Do not seal: unauthorized"
 msgstr "Do not seal: unauthorised"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Do not sell or share"
-msgstr ""
+msgstr "Do not sell or share"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -4766,8 +4777,9 @@ msgid "Europe"
 msgstr "Europe"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "European Union / EEA / United Kingdom"
-msgstr ""
+msgstr "European Union / EEA / United Kingdom"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php
 #: resources/views/lists/anniversaries-table.phtml
@@ -4826,8 +4838,9 @@ msgid "Excluded from this submission"
 msgstr "Excluded from this submission"
 
 #: resources/views/layouts/administration.phtml
+#, fuzzy
 msgid "Exit control panel"
-msgstr ""
+msgstr "Exit control panel"
 
 #: app/Services/LeafletJsService.php
 #: resources/views/modules/interactive-tree/chart.phtml
@@ -5444,6 +5457,7 @@ msgstr "For help with genealogy questions contact %s."
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/sitemap/config.phtml
 #, php-format
 msgid "For more information, see %s."
 msgstr "For more information, see %s."
@@ -5655,12 +5669,14 @@ msgid "Gambia"
 msgstr "Gambia"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Genealogical data is retained indefinitely, as the purpose of this website is to preserve historical and family-history research. User account data is retained for as long as the account is active."
-msgstr ""
+msgstr "Genealogical data is retained indefinitely, as the purpose of this website is to preserve historical and family-history research. User account data is retained for as long as the account is active."
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Genealogical data on this website is typically obtained from publicly accessible sources, including civil registration records, church records, census returns, published directories, gravestones, and contributions from family members. The data subjects may not have provided this data themselves."
-msgstr ""
+msgstr "Genealogical data on this website is typically obtained from publicly accessible sources, including civil registration records, church records, census returns, published directories, gravestones, and contributions from family members. The data subjects may not have provided this data themselves."
 
 #: resources/views/admin/control-panel.phtml
 msgid "Genealogy"
@@ -5733,8 +5749,9 @@ msgid "GeoNames"
 msgstr "GeoNames"
 
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "Geocoding"
-msgstr ""
+msgstr "Geocoding"
 
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "Geographic area"
@@ -5765,8 +5782,9 @@ msgid "Germany"
 msgstr "Germany"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Germany / Austria"
-msgstr ""
+msgstr "Germany / Austria"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -5864,7 +5882,7 @@ msgctxt "Surname tradition"
 msgid "Greek"
 msgstr "Greek"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Green Beam"
 msgstr "Green Beam"
@@ -6163,12 +6181,14 @@ msgid "Hong Kong"
 msgstr "Hong Kong"
 
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "Hosted by:"
-msgstr ""
+msgstr "Hosted by:"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Hosting provider"
-msgstr ""
+msgstr "Hosting provider"
 
 #. I18N: Name of a module/chart
 #: app/Module/ChartsBlockModule.php app/Module/HourglassChartModule.php
@@ -6300,8 +6320,9 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "If you are the website administrator, you should check that:"
 
 #: resources/views/errors/database-connection.phtml
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
+#, php-format
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at %s."
+msgstr "If you cannot resolve the problem yourself, you can ask for help on the forums at %s."
 
 #: resources/views/admin/trees-import.phtml
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -6414,8 +6435,9 @@ msgid "In some countries, privacy laws apply not only to living individuals, but
 msgstr "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
-msgstr ""
+msgstr "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6611,8 +6633,9 @@ msgid "Internal messaging with emails"
 msgstr "Internal messaging with e-mail"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "International transfers"
-msgstr ""
+msgstr "International transfers"
 
 #: app/Http/RequestHandlers/GedcomLoad.php
 msgid "Invalid GEDCOM file - no header record found."
@@ -6751,8 +6774,9 @@ msgid "June"
 msgstr "June"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Jurisdiction"
-msgstr ""
+msgstr "Jurisdiction"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -6990,8 +7014,9 @@ msgid "Latvia"
 msgstr "Latvia"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Lawful basis"
-msgstr ""
+msgstr "Lawful basis"
 
 #: resources/views/modules/ancestors-chart/page.phtml
 #: resources/views/modules/descendancy_chart/page.phtml
@@ -7031,12 +7056,14 @@ msgid "Legacy URLs"
 msgstr "Legacy URLs"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Legal notice (Impressum)"
-msgstr ""
+msgstr "Legal notice (Impressum)"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Legal notice (Mentions légales)"
-msgstr ""
+msgstr "Legal notice (Mentions légales)"
 
 #: app/CustomTags/Reunion.php
 msgid "Legatee"
@@ -7427,8 +7454,9 @@ msgid "Map providers"
 msgstr "Map providers"
 
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "Map tiles"
-msgstr ""
+msgstr "Map tiles"
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php
@@ -7767,7 +7795,7 @@ msgstr "Media type"
 msgid "Medical"
 msgstr "Medical"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mediterranio"
 msgstr "Mediterranio"
@@ -7803,7 +7831,7 @@ msgstr "Menu"
 msgid "Menus"
 msgstr "Menus"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mercury"
 msgstr "Mercury"
@@ -7883,8 +7911,9 @@ msgid "Military service"
 msgstr "Military service"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Minimum age for consent"
-msgstr ""
+msgstr "Minimum age for consent"
 
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php
@@ -8445,8 +8474,9 @@ msgid "No predefined text"
 msgstr "No predefined text"
 
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "No privacy policy has been configured for this website."
-msgstr ""
+msgstr "No privacy policy has been configured for this website."
 
 #: resources/views/lists/datatables-attributes.phtml
 msgid "No records to display"
@@ -8481,7 +8511,7 @@ msgstr "No temple - living ordinance"
 msgid "No upgrade information is available."
 msgstr "No upgrade information is available."
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Nocturnal"
 msgstr "Nocturnal"
@@ -8774,7 +8804,7 @@ msgstr "Oldest male"
 msgid "Oldest mother"
 msgstr "Oldest mother"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Olivia"
 msgstr "Olivia"
@@ -8868,8 +8898,9 @@ msgid "Other preferences"
 msgstr "Other preferences"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Our data protection officer can be contacted at:"
-msgstr ""
+msgstr "Our data protection officer can be contacted at:"
 
 #: app/Elements/RelationIsDescriptor.php
 msgid "Owner"
@@ -8957,7 +8988,7 @@ msgstr "Pakistan"
 msgid "Palau"
 msgstr "Palau"
 
-#. I18N: A colour scheme
+#. I18N: A color scheme
 #: app/Module/ColorsTheme.php
 msgid "Palette"
 msgstr "Palette"
@@ -9087,8 +9118,9 @@ msgid "Permanently delete these records?"
 msgstr "Permanently delete these records?"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Personal data is stored on servers located in:"
-msgstr ""
+msgstr "Personal data is stored on servers located in:"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9106,8 +9138,9 @@ msgid "Philippines"
 msgstr "Philippines"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Philippines, Kenya, Nigeria, Ghana, Egypt"
-msgstr ""
+msgstr "Philippines, Kenya, Nigeria, Ghana, Egypt"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9156,7 +9189,7 @@ msgstr "Photograph"
 msgid "Phrase"
 msgstr "Phrase"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Pink Plastic"
 msgstr "Pink Plastic"
@@ -9391,8 +9424,9 @@ msgid "Portuguese"
 msgstr "Portuguese"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Postal address"
-msgstr ""
+msgstr "Postal address"
 
 #: app/CustomTags/GedcomL.php app/CustomTags/PersonalAncestralFile.php
 #: app/Gedcom.php
@@ -9484,8 +9518,9 @@ msgid "Privacy restrictions - these apply to records and facts that do not conta
 msgstr "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Privacy statements"
-msgstr ""
+msgstr "Privacy statements"
 
 #: app/CustomTags/Legacy.php app/CustomTags/TheNextGeneration.php
 #: app/GedcomRecord.php app/Report/ParserGenerate.php app/StatisticsData.php
@@ -9501,8 +9536,9 @@ msgid "Probate"
 msgstr "Probate"
 
 #: app/Module/PrivacyPolicy.php
-msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
-msgstr ""
+#, fuzzy
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgstr "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 
 #: app/Gedcom.php
 msgid "Property"
@@ -9534,8 +9570,9 @@ msgid "Puerto Rico"
 msgstr "Puerto Rico"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Purpose of processing"
-msgstr ""
+msgstr "Purpose of processing"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -9990,20 +10027,24 @@ msgid "Rexburg, Idaho, United States"
 msgstr "Rexburg, Idaho, United States"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Right of access and data portability"
-msgstr ""
+msgstr "Right of access and data portability"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Right to complain"
-msgstr ""
+msgstr "Right to complain"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Right to correction"
-msgstr ""
+msgstr "Right to correction"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Right to erasure, objection, and restriction"
-msgstr ""
+msgstr "Right to erasure, objection, and restriction"
 
 #: app/CustomTags/Gedcom7.php app/CustomTags/GedcomL.php app/Gedcom.php
 #: resources/views/admin/users-edit.phtml
@@ -10101,7 +10142,7 @@ msgstr "STARTTLS"
 msgid "Sacramento, California, United States"
 msgstr "Sacramento, California, United States"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Sage"
 msgstr "Sage"
@@ -10364,16 +10405,19 @@ msgid "Select two records to merge."
 msgstr "Select two records to merge."
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Select which statements to display on the public privacy policy page."
-msgstr ""
+msgstr "Select which statements to display on the public privacy policy page."
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Select your country or region"
-msgstr ""
+msgstr "Select your country or region"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Select your jurisdiction to automatically enable the required privacy statements. You can also enable or disable individual statements."
-msgstr ""
+msgstr "Select your jurisdiction to automatically enable the required privacy statements. You can also enable or disable individual statements."
 
 #: resources/views/admin/site-mail.phtml
 msgid "Selector"
@@ -10500,8 +10544,9 @@ msgid "Server information"
 msgstr "Server information"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Server location"
-msgstr ""
+msgstr "Server location"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml
@@ -10512,8 +10557,9 @@ msgid "Server name"
 msgstr "Server name"
 
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "Service"
-msgstr ""
+msgstr "Service"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php
 msgid "Set a new password"
@@ -10638,7 +10684,7 @@ msgstr "She was christened"
 msgid "She was cremated"
 msgstr "She was cremated"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Shiny Tomato"
 msgstr "Shiny Tomato"
@@ -10658,8 +10704,9 @@ msgstr "Show a download link in the media viewer"
 
 #. I18N: Description of the "Privacy policy" module
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Show a privacy/data-protection policy based on your jurisdiction."
-msgstr ""
+msgstr "Show a privacy/data-protection policy based on your jurisdiction."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
@@ -11053,10 +11100,9 @@ msgstr "Site verification codes do not work when webtrees is installed in a subf
 msgid "Sitemaps"
 msgstr "Sitemaps"
 
-#. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml
-msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/en_GB/\">www.sitemaps.org</a>."
+msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps."
+msgstr "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps."
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml
@@ -11254,8 +11300,9 @@ msgid "Sources"
 msgstr "Sources"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Sources of data"
-msgstr ""
+msgstr "Sources of data"
 
 #: resources/xml/reports/missing_facts_report.xml
 msgid "Sources to the events"
@@ -11277,8 +11324,9 @@ msgid "South Georgia and the South Sandwich Islands"
 msgstr "South Georgia and the South Sandwich Islands"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "South Korea"
-msgstr ""
+msgstr "South Korea"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -11470,8 +11518,9 @@ msgid "Sun"
 msgstr "Sun"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Supervisory authority"
-msgstr ""
+msgstr "Supervisory authority"
 
 #. I18N: %s is a URL/link to the project website
 #: resources/views/admin/control-panel.phtml
@@ -11649,7 +11698,7 @@ msgstr "Tampico, Mexico"
 msgid "Tanzania"
 msgstr "Tanzania"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Teal Top"
 msgstr "Teal Top"
@@ -11665,8 +11714,9 @@ msgid "Tegucigalpa, Honduras"
 msgstr "Tegucigalpa, Honduras"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Telephone"
-msgstr ""
+msgstr "Telephone"
 
 #: app/CustomTags/RootsMagic.php
 msgid "Template"
@@ -12052,8 +12102,9 @@ msgid "The password reset link has expired."
 msgstr "The password-reset link has expired."
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "The person responsible for this website and for the processing of your personal data is:"
-msgstr ""
+msgstr "The person responsible for this website and for the processing of your personal data is:"
 
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php
@@ -12076,11 +12127,6 @@ msgstr "The preferences for new family trees have been updated."
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "The preferences for the family tree ‘%s’ have been updated."
 
-#: app/Module/PrivacyPolicy.php
-#, php-format
-msgid "The preferences for the module \"%s\" have been updated."
-msgstr ""
-
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
@@ -12090,7 +12136,7 @@ msgstr "The preferences for the module ‘%s’ have been deleted."
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
 #: app/Module/MapGeoLocationGeonames.php
 #: app/Module/MapGeoLocationOpenRouteService.php
-#: app/Module/OpenRouteServiceAutocomplete.php
+#: app/Module/OpenRouteServiceAutocomplete.php app/Module/PrivacyPolicy.php
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
@@ -12326,8 +12372,9 @@ msgid "These groups of individuals are not related to %s."
 msgstr "These groups of individuals are not related to %s."
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Third-party services"
-msgstr ""
+msgstr "Third-party services"
 
 #: app/Http/RequestHandlers/LoginAction.php
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -12698,37 +12745,43 @@ msgid "This website is down for maintenance. You should <a href=\"index.php\">tr
 msgstr "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "This website is operated by the following person, who is also responsible for its content:"
-msgstr ""
+msgstr "This website is operated by the following person, who is also responsible for its content:"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "This website is published by:"
-msgstr ""
+msgstr "This website is published by:"
 
 #: resources/views/layouts/error.phtml resources/views/layouts/offline.phtml
 msgid "This website is temporarily unavailable"
 msgstr "This website is temporarily unavailable"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "This website may contain data about minors, derived from public records such as birth registers, for the purpose of historical and genealogical research. We do not collect personal data directly from children."
-msgstr ""
+msgstr "This website may contain data about minors, derived from public records such as birth registers, for the purpose of historical and genealogical research. We do not collect personal data directly from children."
 
 #: app/Module/PrivacyPolicy.php
 msgid "This website processes personal data for the purpose of historical and genealogical research."
 msgstr "This website processes personal data for the purpose of historical and genealogical research."
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "This website uses essential cookies for login sessions and to remember your preferences. These cookies are strictly necessary and do not require consent."
-msgstr ""
+msgstr "This website uses essential cookies for login sessions and to remember your preferences. These cookies are strictly necessary and do not require consent."
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "This website uses external services to provide mapping and location features. When you view a map, your browser connects directly to these services, which may receive your IP address and other request data."
-msgstr ""
+msgstr "This website uses external services to provide mapping and location features. When you view a map, your browser connects directly to these services, which may receive your IP address and other request data."
 
 #: app/Module/PrivacyPolicy.php
 #: resources/views/modules/privacy-policy/footer.phtml
+#, fuzzy
 msgid "This website uses third-party services to understand visitor behavior. These services may use cookies or similar tracking technology."
-msgstr ""
+msgstr "This website uses third-party services to understand visitor behaviour. These services may use cookies or similar tracking technology."
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml
@@ -12806,8 +12859,9 @@ msgstr "Timor-Leste"
 
 #. I18N: Name of a module. TinyMCE is a trademark. Do not translate it? https://www.tiny.cloud
 #: app/Module/TinymceModule.php
+#, fuzzy
 msgid "TinyMCE™"
-msgstr ""
+msgstr "TinyMCE™"
 
 #: app/CustomTags/Geneatique.php app/Gedcom.php
 #: resources/views/admin/fix-level-0-media.phtml
@@ -13084,8 +13138,9 @@ msgid "Turkey"
 msgstr "Türkiye"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Turkey, UAE, Indonesia, Malaysia, Vietnam"
-msgstr ""
+msgstr "Turkey, UAE, Indonesia, Malaysia, Vietnam"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -13239,12 +13294,14 @@ msgid "United States"
 msgstr "United States"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "United States — CA"
-msgstr ""
+msgstr "United States — CA"
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "United States — CO, CT, DE, IN, IA, KY, MD, MN, MT, NE, NH, NJ, OR, RI, TN, TX, UT, VA"
-msgstr ""
+msgstr "United States — CO, CT, DE, IN, IA, KY, MD, MN, MT, NE, NH, NJ, OR, RI, TN, TX, UT, VA"
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
@@ -13630,12 +13687,14 @@ msgid "Watermarks are optional and normally shown just to visitors."
 msgstr "Watermarks are optional and normally shown just to visitors."
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "We collect names, dates, places, family relationships, and other genealogical information. Much of this data is derived from public records such as registers of births, marriages, and deaths. For registered users, we also store email addresses and login credentials."
-msgstr ""
+msgstr "We collect names, dates, places, family relationships, and other genealogical information. Much of this data is derived from public records such as registers of births, marriages, and deaths. For registered users, we also store email addresses and login credentials."
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "We do not sell or share your personal information."
-msgstr ""
+msgstr "We do not sell or share your personal information."
 
 #: resources/views/register-success-page.phtml
 #, php-format
@@ -13714,9 +13773,9 @@ msgid "Where a user is associated to an individual record in a family tree and h
 msgstr "Where a user is associated to an individual record in a family tree and has a role of member, editor or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
 
 #: resources/views/modules/privacy-policy/page.phtml
-#, php-format
+#, fuzzy, php-format
 msgid "Where we operate online services that children may access directly, the minimum age for consent in our jurisdiction is %s years."
-msgstr ""
+msgstr "Where we operate online services that children may access directly, the minimum age for consent in our jurisdiction is %s years."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml
@@ -13902,20 +13961,24 @@ msgid "You have signed out."
 msgstr "You have signed out."
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "You have the right to lodge a complaint with a supervisory authority if you believe your data has been processed unlawfully."
-msgstr ""
+msgstr "You have the right to lodge a complaint with a supervisory authority if you believe your data has been processed unlawfully."
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "You have the right to request a copy of the personal data we hold about you. This data can be provided in a machine-readable format (GEDCOM)."
-msgstr ""
+msgstr "You have the right to request a copy of the personal data we hold about you. This data can be provided in a machine-readable format (GEDCOM)."
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "You have the right to request that we correct any inaccurate personal data."
-msgstr ""
+msgstr "You have the right to request that we correct any inaccurate personal data."
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "You may request that we delete, restrict, or cease processing your personal data. However, where data is processed for historical research purposes or was obtained from publicly accessible sources, these rights may be limited where compliance would render the research impossible or seriously impair it."
-msgstr ""
+msgstr "You may request that we delete, restrict, or cease processing your personal data. However, where data is processed for historical research purposes or was obtained from publicly accessible sources, these rights may be limited where compliance would render the research impossible or seriously impair it."
 
 #: resources/views/modules/faq/config.phtml
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -14021,8 +14084,9 @@ msgid "Your password has been updated."
 msgstr "Your password has been updated."
 
 #: app/Module/PrivacyPolicy.php
+#, fuzzy
 msgid "Your personal data may be transferred to, and processed in, countries other than the country in which you reside. We take appropriate safeguards to protect your data during such transfers."
-msgstr ""
+msgstr "Your personal data may be transferred to, and processed in, countries other than the country in which you reside. We take appropriate safeguards to protect your data during such transfers."
 
 #: app/Http/RequestHandlers/RegisterAction.php
 #, php-format
@@ -14070,8 +14134,9 @@ msgstr "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the
 
 #: resources/views/modules/privacy-policy/footer.phtml
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "accept"
-msgstr ""
+msgstr "accept"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml
@@ -14095,8 +14160,9 @@ msgstr "accept"
 
 #: resources/views/modules/privacy-policy/footer.phtml
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "accept all"
-msgstr ""
+msgstr "accept all"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php
@@ -14311,13 +14377,15 @@ msgstr "daughter of"
 
 #: resources/views/modules/privacy-policy/footer.phtml
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "decline"
-msgstr ""
+msgstr "decline"
 
 #: resources/views/modules/privacy-policy/footer.phtml
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "decline all"
-msgstr ""
+msgstr "decline all"
 
 #: resources/views/admin/location-edit.phtml
 msgid "degrees"
@@ -15077,7 +15145,8 @@ msgid "webtrees cannot create thumbnails for this file format."
 msgstr "webtrees cannot create thumbnails for this file format."
 
 #: app/Http/RequestHandlers/CheckTree.php
-msgid "webtrees does not recognise this file format."
+#, fuzzy
+msgid "webtrees does not recognize this file format."
 msgstr "webtrees does not recognise this file format."
 
 #: app/Services/MessageService.php

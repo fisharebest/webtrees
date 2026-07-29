@@ -111,7 +111,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         $individual_facts = $this->fact_sort_service->sort($individual_facts);
 
         // Facts of relatives take the form 1 EVEN / 2 TYPE Event of Individual
-        // Ensure custom tags from there are recognised
+        // Ensure custom tags from there are recognized
         Registry::elementFactory()->registerTags([
             'INDI:EVEN:CEME'      => new CustomElement(I18N::translate('Cemetery')),
             'INDI:EVEN:_GODP'     => new CustomElement(I18N::translate('Godparent')),

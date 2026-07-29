@@ -294,7 +294,7 @@ final class CheckTree implements RequestHandlerInterface
                     $mime = Mime::TYPES[$value] ?? Mime::DEFAULT_TYPE;
 
                     if ($mime === Mime::DEFAULT_TYPE) {
-                        $message    = I18N::translate('webtrees does not recognise this file format.');
+                        $message    = I18N::translate('webtrees does not recognize this file format.');
                         $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-' . e($value));
                     } elseif (str_starts_with($mime, 'image/') && !array_key_exists($mime, ImageFactory::SUPPORTED_FORMATS)) {
                         $message    = I18N::translate('webtrees cannot create thumbnails for this file format.');

@@ -63,7 +63,7 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface, Mod
             ],
             'lawful_basis' => [
                 'title'  => I18N::translate('Lawful basis'),
-                'text'   => I18N::translate('Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it.'),
+                'text'   => I18N::translate('Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it.'),
                 'fields' => [],
             ],
             'data_collected' => [
@@ -156,7 +156,7 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface, Mod
                 'text'   => I18N::translate('You have the right to lodge a complaint with a supervisory authority if you believe your data has been processed unlawfully.'),
                 'fields' => ['authority_name', 'authority_url'],
             ],
-            'data_localisation' => [
+            'data_localization' => [
                 'title'  => I18N::translate('Data storage location'),
                 'text'   => I18N::translate('Personal data is stored on servers located in:'),
                 'fields' => ['server_country'],
@@ -231,7 +231,7 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface, Mod
             ],
             'CN' => [
                 'label'      => I18N::translate('China'),
-                'statements' => ['purpose', 'lawful_basis', 'data_collected', 'third_party_services', 'rights_access', 'rights_correction', 'rights_removal', 'controller', 'retention', 'transfers', 'breach', 'data_localisation'],
+                'statements' => ['purpose', 'lawful_basis', 'data_collected', 'third_party_services', 'rights_access', 'rights_correction', 'rights_removal', 'controller', 'retention', 'transfers', 'breach', 'data_localization'],
             ],
             'SG' => [
                 'label'      => I18N::translate('Singapore'),
@@ -255,11 +255,11 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface, Mod
             ],
             'RU' => [
                 'label'      => I18N::translate('Russia'),
-                'statements' => ['purpose', 'data_collected', 'third_party_services', 'rights_access', 'rights_correction', 'rights_removal', 'controller', 'retention', 'transfers', 'breach', 'data_localisation'],
+                'statements' => ['purpose', 'data_collected', 'third_party_services', 'rights_access', 'rights_correction', 'rights_removal', 'controller', 'retention', 'transfers', 'breach', 'data_localization'],
             ],
             'SA' => [
                 'label'      => I18N::translate('Saudi Arabia'),
-                'statements' => ['purpose', 'data_collected', 'third_party_services', 'rights_access', 'rights_correction', 'rights_removal', 'controller', 'retention', 'breach', 'data_localisation'],
+                'statements' => ['purpose', 'data_collected', 'third_party_services', 'rights_access', 'rights_correction', 'rights_removal', 'controller', 'retention', 'breach', 'data_localization'],
             ],
             'MEA-SEA' => [
                 'label'      => I18N::translate('Turkey, UAE, Indonesia, Malaysia, Vietnam'),
@@ -450,7 +450,7 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface, Mod
         $this->setPreference('custom_title', Validator::parsedBody($request)->string('custom_title'));
         $this->setPreference('custom_body', Validator::parsedBody($request)->string('custom_body'));
 
-        $message = I18N::translate('The preferences for the module "%s" have been updated.', $this->title());
+        $message = I18N::translate('The preferences for the module “%s” have been updated.', $this->title());
         FlashMessages::addMessage($message, 'success');
 
         return redirect($this->getConfigLink());

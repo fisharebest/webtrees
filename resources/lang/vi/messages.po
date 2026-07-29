@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 08:33+0100\n"
+"POT-Creation-Date: 2026-07-29 10:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,9 +119,9 @@ msgid "%s KB"
 msgstr "%s KB"
 
 #: resources/views/fact-date.phtml
-#, php-format
+#, fuzzy, php-format
 msgid "%s after death"
-msgstr ""
+msgstr "%s sau khi chết"
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -875,19 +875,22 @@ msgid "A user will not be able to sign in until both “email verified” and �
 msgstr "Môt người dùng không thể nào đăng nhập cho tới khi tùy chọn xác minh bằng email và chấp thuận của quản trị được chọn."
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgctxt "paper size"
 msgid "A0"
-msgstr ""
+msgstr "A0"
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgctxt "paper size"
 msgid "A1"
-msgstr ""
+msgstr "A1"
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgctxt "paper size"
 msgid "A2"
-msgstr ""
+msgstr "A2"
 
 #: resources/xml/reports/ahnentafel_report.xml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
@@ -1712,7 +1715,7 @@ msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "Tháng Tư"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Aqua Marine"
 msgstr "Aqua Marine"
@@ -1778,7 +1781,7 @@ msgstr "Aruba"
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 msgstr "Cũng như viêc dùng thanh công cụ để áp dụng định dạng HTML, bạn có thể chèn các trường cơ sở dữ liệu cập nhật tự động. Những lĩnh vực đặc biệt được đánh dấu bằng ký tự <b>#</b>. Vi dụ <b> #totalFamilies#</b> sẽ được thay thế bằng số lượng thực tế của gia đình trong cơ sở dữ liệu. Người dùng nâng cao có thể muốn áp dụng các lớp CSS cho văn bản của họ, để định dạng phù hợp với chủ đề đang được chọn."
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Ash"
 msgstr "Tro"
@@ -2069,7 +2072,7 @@ msgstr "Bắt đâu bằng"
 msgid "Belarus"
 msgstr "Belarus"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Belgian Chocolate"
 msgstr "Màu sô cô la"
@@ -2293,19 +2296,20 @@ msgstr "Khối"
 msgid "Blocks"
 msgstr "Khối"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Lagoon"
 msgstr "Màu xanh Lagoon"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Blue Marine"
 msgstr "Màu xanh Marine"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Body"
-msgstr ""
+msgstr "Nội dung"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -3115,12 +3119,12 @@ msgstr "Cochabamba, Bolivia"
 msgid "Cocos (Keeling) Islands"
 msgstr "Cocos (Keeling) Islands"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Coffee and Cream"
 msgstr "Cà phê và kem"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Cold Day"
 msgstr "Màu Ngày lạnh"
@@ -4821,8 +4825,9 @@ msgid "Excluded from this submission"
 msgstr "Loại khỏi ở lần gửi này"
 
 #: resources/views/layouts/administration.phtml
+#, fuzzy
 msgid "Exit control panel"
-msgstr ""
+msgstr "Thoát bảng điều khiển"
 
 #: app/Services/LeafletJsService.php
 #: resources/views/modules/interactive-tree/chart.phtml
@@ -5439,6 +5444,7 @@ msgstr "Để được hỗ trợ các câu hỏi về gia phả, xin liên lạ
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
+#: resources/views/modules/sitemap/config.phtml
 #, php-format
 msgid "For more information, see %s."
 msgstr ""
@@ -5826,8 +5832,9 @@ msgid "Godson"
 msgstr "Con đỡ đầu"
 
 #: app/Module/GoogleSearchConsole.php
+#, fuzzy
 msgid "Google™ Search Console"
-msgstr ""
+msgstr "Google™ Search Console"
 
 #: app/Module/GoogleAnalyticsModule.php
 msgid "Google™ analytics"
@@ -5860,7 +5867,7 @@ msgctxt "Surname tradition"
 msgid "Greek"
 msgstr "Hy Lạp"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Green Beam"
 msgstr "Tia sáng xanh"
@@ -6298,8 +6305,9 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Nếu bạn là quản trị site, phải phải kiểm tra:"
 
 #: resources/views/errors/database-connection.phtml
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr "Nếu bạn không thể giải quyết vấn đề, bạn có thể yêu cầu hỗ trợ trên diễn đàn tại <a href=\"https://webtrees.net\">webtrees.net</a>."
+#, php-format
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at %s."
+msgstr "Nếu bạn không thể giải quyết vấn đề, bạn có thể yêu cầu hỗ trợ trên diễn đàn tại %s."
 
 #: resources/views/admin/trees-import.phtml
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -6329,8 +6337,9 @@ msgid "If you modify the filename, you should also rename the file."
 msgstr ""
 
 #: resources/views/modules/here-maps/config.phtml
+#, fuzzy
 msgid "If you obtained this key prior to 2024 then it will be necessary to create a new key."
-msgstr ""
+msgstr "Nếu bạn nhận được khóa này trước năm 2024 thì cần phải tạo khóa mới."
 
 #: resources/views/admin/site-preferences.phtml
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7696,8 +7705,9 @@ msgid "Media"
 msgstr "Đa phương tiện"
 
 #: app/Statistics.php
+#, fuzzy
 msgid "Media by type"
-msgstr ""
+msgstr "Phương tiện theo loại"
 
 #: resources/views/admin/media-upload.phtml resources/views/admin/media.phtml
 #: resources/views/media-page-details.phtml
@@ -7770,7 +7780,7 @@ msgstr "Lọai tài liệu"
 msgid "Medical"
 msgstr "Sức Khoẻ"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mediterranio"
 msgstr "Màu Mediterranio"
@@ -7806,7 +7816,7 @@ msgstr "Menu"
 msgid "Menus"
 msgstr "Menu"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Mercury"
 msgstr "Màu thủy ngân"
@@ -8482,7 +8492,7 @@ msgstr "Không có Đền - Sắc lệnh ở chung"
 msgid "No upgrade information is available."
 msgstr "Không có thông tin nâng cấp nào."
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Nocturnal"
 msgstr "Màu đêm"
@@ -8702,8 +8712,9 @@ msgid "Nurse"
 msgstr "Y tá"
 
 #: resources/js/webtrees/confirm.js
+#, fuzzy
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -8775,7 +8786,7 @@ msgstr "Nam già nhất"
 msgid "Oldest mother"
 msgstr "Mẹ già nhất"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Olivia"
 msgstr "Olivia"
@@ -8923,8 +8934,9 @@ msgid "Page %s of %s"
 msgstr "Trang %s / %s"
 
 #: resources/xml/reports/pedigree_report.xml
+#, fuzzy
 msgid "Page setup"
-msgstr ""
+msgstr "Thiết lập trang"
 
 #: resources/xml/reports/ahnentafel_report.xml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
@@ -8958,7 +8970,7 @@ msgstr "Pakistan"
 msgid "Palau"
 msgstr "Palau"
 
-#. I18N: A colour scheme
+#. I18N: A color scheme
 #: app/Module/ColorsTheme.php
 msgid "Palette"
 msgstr "Mẫu thang màu"
@@ -9157,7 +9169,7 @@ msgstr ""
 msgid "Phrase"
 msgstr ""
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Pink Plastic"
 msgstr "Màu hồng Plastic"
@@ -9392,8 +9404,9 @@ msgid "Portuguese"
 msgstr "Bồ Đào Nha"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Postal address"
-msgstr ""
+msgstr "Địa chỉ bưu chính"
 
 #: app/CustomTags/GedcomL.php app/CustomTags/PersonalAncestralFile.php
 #: app/Gedcom.php
@@ -9503,7 +9516,7 @@ msgid "Probate"
 msgstr "Chứng thực di chúc"
 
 #: app/Module/PrivacyPolicy.php
-msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognised as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
 
 #: app/Gedcom.php
@@ -10113,7 +10126,7 @@ msgstr ""
 msgid "Sacramento, California, United States"
 msgstr "Sacramento, California, United States"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Sage"
 msgstr "Sage"
@@ -10527,8 +10540,9 @@ msgid "Server name"
 msgstr "Tên máy phục vụ"
 
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "Service"
-msgstr ""
+msgstr "Dịch vụ"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php
 msgid "Set a new password"
@@ -10653,7 +10667,7 @@ msgstr "Bà được rửa tội"
 msgid "She was cremated"
 msgstr "Bà được hỏa táng"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Shiny Tomato"
 msgstr "Mảu đỏ bóng"
@@ -11070,10 +11084,9 @@ msgstr "Các mã xác minh site không làm việc khi webtrees được cài đ
 msgid "Sitemaps"
 msgstr "Sơ đồ website"
 
-#. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml
-msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "Sơ đồ site là cách để nhà quản trị truyền đạt cho các máy tìm kiếm các trang ở website để dò tìm. Tât cả các cơ chế tìm kiếm đều hỗ trợ sơ đồ mạng. Để tìm hiểu thêm thông tin, xin xem <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
+msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps."
+msgstr "Sơ đồ site là cách để nhà quản trị truyền đạt cho các máy tìm kiếm các trang ở website để dò tìm. Tât cả các cơ chế tìm kiếm đều hỗ trợ sơ đồ mạng."
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml
@@ -11101,8 +11114,9 @@ msgid "Slide show"
 msgstr "Chiếu hình"
 
 #: resources/views/modules/random_media/config.phtml
+#, fuzzy
 msgid "Slide show interval"
-msgstr ""
+msgstr "Khoảng cách trình chiếu"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -11669,7 +11683,7 @@ msgstr "Tampico, Mexico"
 msgid "Tanzania"
 msgstr "Tanzanya"
 
-#. I18N: The name of a colour-scheme
+#. I18N: The name of a color scheme
 #: app/Module/ColorsTheme.php
 msgid "Teal Top"
 msgstr "Màu Teal Top"
@@ -11686,8 +11700,9 @@ msgid "Tegucigalpa, Honduras"
 msgstr "Tegucigalpa, Honduras"
 
 #: resources/views/modules/privacy-policy/admin.phtml
+#, fuzzy
 msgid "Telephone"
-msgstr ""
+msgstr "Điện thoại"
 
 #: app/CustomTags/RootsMagic.php
 msgid "Template"
@@ -12097,11 +12112,6 @@ msgstr "Các tùy chọn cho các cây gia đình mới đã được cập nh�
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr "Các tùy chọn cho cây gia đình “%s” đã được cập nhật."
 
-#: app/Module/PrivacyPolicy.php
-#, php-format
-msgid "The preferences for the module \"%s\" have been updated."
-msgstr ""
-
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
@@ -12111,7 +12121,7 @@ msgstr "Các tùy chọn cho mô đun “%s” đã được xóa."
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
 #: app/Module/MapGeoLocationGeonames.php
 #: app/Module/MapGeoLocationOpenRouteService.php
-#: app/Module/OpenRouteServiceAutocomplete.php
+#: app/Module/OpenRouteServiceAutocomplete.php app/Module/PrivacyPolicy.php
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
@@ -12156,8 +12166,9 @@ msgid "The server could not understand this request."
 msgstr "Máy chủ không thể hiểu yêu cầu này."
 
 #: app/Http/RequestHandlers/CheckTree.php
+#, fuzzy
 msgid "The server’s memory limit has been reached."
-msgstr ""
+msgstr "Đã đạt giới hạn bộ nhớ của máy chủ."
 
 #: app/Services/ServerCheckService.php
 msgid "The server’s temporary folder cannot be accessed."
@@ -12830,8 +12841,9 @@ msgstr "Timor-Leste Demokratik Cumhuriyeti"
 
 #. I18N: Name of a module. TinyMCE is a trademark. Do not translate it? https://www.tiny.cloud
 #: app/Module/TinymceModule.php
+#, fuzzy
 msgid "TinyMCE™"
-msgstr ""
+msgstr "TinyMCE™"
 
 #: app/CustomTags/Geneatique.php app/Gedcom.php
 #: resources/views/admin/fix-level-0-media.phtml
@@ -13402,8 +13414,9 @@ msgstr "Dùng kiểu trình bày gọn"
 
 #: resources/views/modules/gedcom_news/edit.phtml
 #: resources/views/modules/user_blog/edit.phtml
+#, fuzzy
 msgid "Use current timestamp"
-msgstr ""
+msgstr "Sử dụng dấu thời gian hiện tại"
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -13968,8 +13981,9 @@ msgid "You must specify an individual record before you can restrict the user to
 msgstr "Bạn phải nêu rõ bản ghi cá nhân nào trước khi có thể giới hạn người dùng vào ngay gia đình của họ."
 
 #: app/Http/RequestHandlers/RenumberTreeAction.php
+#, fuzzy
 msgid "You need to accept or reject all pending changes before proceeding."
-msgstr ""
+msgstr "Bạn cần chấp nhận hoặc từ chối tất cả các thay đổi đang chờ xử lý trước khi tiếp tục."
 
 #: app/Http/RequestHandlers/LoginPage.php
 msgid "You need to be a family member to access this website."
@@ -14100,8 +14114,9 @@ msgstr ""
 
 #: resources/views/modules/privacy-policy/footer.phtml
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "accept"
-msgstr ""
+msgstr "chấp nhận"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml
@@ -14125,8 +14140,9 @@ msgstr "chấp nhận"
 
 #: resources/views/modules/privacy-policy/footer.phtml
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "accept all"
-msgstr ""
+msgstr "chấp nhận tất cả"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php
@@ -14342,13 +14358,15 @@ msgstr "con gái của"
 
 #: resources/views/modules/privacy-policy/footer.phtml
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "decline"
-msgstr ""
+msgstr "từ chối"
 
 #: resources/views/modules/privacy-policy/footer.phtml
 #: resources/views/modules/privacy-policy/page.phtml
+#, fuzzy
 msgid "decline all"
-msgstr ""
+msgstr "từ chối tất cả"
 
 #: resources/views/admin/location-edit.phtml
 msgid "degrees"
@@ -14867,8 +14885,9 @@ msgid "secondary evidence"
 msgstr "chứng cứ phụ"
 
 #: resources/views/modules/random_media/config.phtml
+#, fuzzy
 msgid "seconds"
-msgstr ""
+msgstr "giây"
 
 #. I18N: select all (of a list of options)
 #: resources/views/search-trees.phtml
@@ -15110,7 +15129,7 @@ msgid "webtrees cannot create thumbnails for this file format."
 msgstr ""
 
 #: app/Http/RequestHandlers/CheckTree.php
-msgid "webtrees does not recognise this file format."
+msgid "webtrees does not recognize this file format."
 msgstr ""
 
 #: app/Services/MessageService.php
