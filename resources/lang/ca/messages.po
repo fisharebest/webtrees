@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-28 22:41+0100\n"
+"POT-Creation-Date: 2026-07-29 08:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,6 +118,11 @@ msgstr "%s AEC"
 #, php-format
 msgid "%s KB"
 msgstr "%s KB"
+
+#: resources/views/fact-date.phtml
+#, php-format
+msgid "%s after death"
+msgstr ""
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -4690,6 +4695,11 @@ msgstr "Activat"
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr "Activant aquesta opció s’obliga als visitants a iniciar la sessió (amb nom d’usuari i contrasenya) per poder veure qualsevol dada del lloc."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Encrypted connection"
+msgstr "Connexió xifrada"
+
 #: resources/views/modules/lifespans-chart/page.phtml
 msgid "End year"
 msgstr "Acabant l’any"
@@ -6360,6 +6370,11 @@ msgstr "Si intenteu superar aquests límits, és possible que us troveu amb exce
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "Si utilitzeu un dels següents serveis de seguiment i anàlisi, webtrees pot afegir els codis de seguiment automàticament."
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "If your database uses an encrypted connection, provide the names of the files containing the SSL certificate and key."
+msgstr "Si la vostra base de dades utilitza una connexió xifrada, indiqueu els noms dels fitxers que contenen el certificat i la clau SSL."
 
 #: app/Http/RequestHandlers/ManageMediaData.php app/MediaFile.php
 msgid "Image dimensions"
@@ -10081,6 +10096,21 @@ msgstr "Servidor de correu SMTP"
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr "Hi ha instal·lada la versió SQLite %s. Cal la versió %s o posterior."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate"
+msgstr "Certificat SSL"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate authority"
+msgstr "Autoritat de certificació SSL"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL key"
+msgstr "Clau SSL"
+
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php
 msgid "SSL/TLS"
@@ -11299,6 +11329,7 @@ msgstr "Spokane, Washington, Estats Units"
 
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/edit/change-family-members.phtml
+#: resources/views/fact-date.phtml
 #: resources/views/modules/pedigree-chart/previous.phtml
 #: resources/xml/reports/bdm_report.xml
 #: resources/xml/reports/family_group_report.xml
@@ -11866,6 +11897,7 @@ msgid "The file was only partially uploaded. Please try again."
 msgstr "Fitxer parcialment carregat. Torneu-hi."
 
 #. I18N: %s is a filename
+#: app/Http/RequestHandlers/SetupWizard.php
 #: resources/views/media-page-details.phtml
 #: resources/views/modules/media-list/page.phtml
 #, php-format
@@ -13517,6 +13549,11 @@ msgstr "Veracruz, Mèxic"
 #: app/CustomTags/Legacy.php resources/views/admin/users.phtml
 msgid "Verified"
 msgstr "Verificat"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Verify server certificate"
+msgstr "Verifica el certificat del servidor"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php

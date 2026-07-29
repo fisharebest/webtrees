@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-28 22:41+0100\n"
+"POT-Creation-Date: 2026-07-29 08:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,6 +113,11 @@ msgstr "%s BCE"
 #, php-format
 msgid "%s KB"
 msgstr "%s KB"
+
+#: resources/views/fact-date.phtml
+#, php-format
+msgid "%s after death"
+msgstr ""
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -4669,6 +4674,11 @@ msgstr "활성화"
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr "이 옵션을 활성화하면 모든 방문자가 웹사이트에서 데이터를 표시 하기전에 로그인해야 합니다."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Encrypted connection"
+msgstr "암호화된 연결"
+
 #: resources/views/modules/lifespans-chart/page.phtml
 msgid "End year"
 msgstr "종료 연도"
@@ -6341,6 +6351,11 @@ msgstr "이러한 제한을 초과하려고 하면 서버 시간 초과 및 빈 
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "다음 추적 및 분석 서비스 중 하나를 사용하는 경우 웹트리에서 자동으로 추적 코드를 추가할 수 있습니다."
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "If your database uses an encrypted connection, provide the names of the files containing the SSL certificate and key."
+msgstr "데이터베이스가 암호화된 연결을 사용하는 경우, SSL 인증서와 키가 포함된 파일의 이름을 입력하십시오."
 
 #: app/Http/RequestHandlers/ManageMediaData.php app/MediaFile.php
 msgid "Image dimensions"
@@ -10065,6 +10080,21 @@ msgstr "SMTP 메일 서버"
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr "SQLite 버전 %s가 설치되었습니다.SQLite 버전 %s 이상이 필요합니다."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate"
+msgstr "SSL 인증서"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate authority"
+msgstr "SSL 인증 기관"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL key"
+msgstr "SSL 키"
+
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php
 msgid "SSL/TLS"
@@ -11286,6 +11316,7 @@ msgstr "Spokane, Washington, United States"
 
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/edit/change-family-members.phtml
+#: resources/views/fact-date.phtml
 #: resources/views/modules/pedigree-chart/previous.phtml
 #: resources/xml/reports/bdm_report.xml
 #: resources/xml/reports/family_group_report.xml
@@ -11853,6 +11884,7 @@ msgid "The file was only partially uploaded. Please try again."
 msgstr "파일이 부분적으로 만 업로드되었습니다. 다시 시도하십시오."
 
 #. I18N: %s is a filename
+#: app/Http/RequestHandlers/SetupWizard.php
 #: resources/views/media-page-details.phtml
 #: resources/views/modules/media-list/page.phtml
 #, php-format
@@ -13497,6 +13529,11 @@ msgstr "Veracruz, Mexico"
 #: app/CustomTags/Legacy.php resources/views/admin/users.phtml
 msgid "Verified"
 msgstr "검증"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Verify server certificate"
+msgstr "서버 인증서 확인"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php

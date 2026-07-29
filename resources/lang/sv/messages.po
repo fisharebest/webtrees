@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-28 22:41+0100\n"
+"POT-Creation-Date: 2026-07-29 08:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,6 +118,11 @@ msgstr "%s fvt"
 #, php-format
 msgid "%s KB"
 msgstr "%s KB"
+
+#: resources/views/fact-date.phtml
+#, php-format
+msgid "%s after death"
+msgstr ""
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -4693,6 +4698,11 @@ msgstr "Aktiverad"
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr "Om detta alternativ aktiveras måste alla besökare logga in innan de kan se någon information på webbplatsen."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Encrypted connection"
+msgstr "Krypterad anslutning"
+
 #: resources/views/modules/lifespans-chart/page.phtml
 msgid "End year"
 msgstr "Slutår"
@@ -6366,6 +6376,11 @@ msgstr "Om du försöker överskrida dessa gränser, kan du uppleva server-timeo
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "Om du använder en av de följande spårnings- och analystjänster, kan webtrees lägga upp spårningskoder automatiskt."
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "If your database uses an encrypted connection, provide the names of the files containing the SSL certificate and key."
+msgstr "Om din databas använder en krypterad anslutning, ange namnen på filerna som innehåller SSL-certifikatet och nyckeln."
 
 #: app/Http/RequestHandlers/ManageMediaData.php app/MediaFile.php
 msgid "Image dimensions"
@@ -10090,6 +10105,21 @@ msgstr "SMTP e-postserver"
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr "SQLite version %s är installerat. SQLite version %s eller senare krävs."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate"
+msgstr "SSL-certifikat"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate authority"
+msgstr "SSL-certifikatutfärdare"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL key"
+msgstr "SSL-nyckel"
+
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php
 msgid "SSL/TLS"
@@ -11312,6 +11342,7 @@ msgstr "Spokane, Washington, Förenta staterna"
 
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/edit/change-family-members.phtml
+#: resources/views/fact-date.phtml
 #: resources/views/modules/pedigree-chart/previous.phtml
 #: resources/xml/reports/bdm_report.xml
 #: resources/xml/reports/family_group_report.xml
@@ -11879,6 +11910,7 @@ msgid "The file was only partially uploaded. Please try again."
 msgstr "Filen blev endast delvis uppladdad, var god försök igen."
 
 #. I18N: %s is a filename
+#: app/Http/RequestHandlers/SetupWizard.php
 #: resources/views/media-page-details.phtml
 #: resources/views/modules/media-list/page.phtml
 #, php-format
@@ -13531,6 +13563,11 @@ msgstr "Veracruz, Mexiko"
 #: app/CustomTags/Legacy.php resources/views/admin/users.phtml
 msgid "Verified"
 msgstr "Verifierad"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Verify server certificate"
+msgstr "Verifiera servercertifikat"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php

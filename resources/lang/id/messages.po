@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-28 22:41+0100\n"
+"POT-Creation-Date: 2026-07-29 08:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,6 +118,11 @@ msgstr "Tahun %s BCE"
 #, php-format
 msgid "%s KB"
 msgstr "%s KB"
+
+#: resources/views/fact-date.phtml
+#, php-format
+msgid "%s after death"
+msgstr ""
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -4665,6 +4670,11 @@ msgstr "Diaktifkan"
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr "Mengaktifkan opsi ini akan memaksa semua pengunjung untuk masuk sebelum mereka dapat melihat data apa pun di situs."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Encrypted connection"
+msgstr "Koneksi terenkripsi"
+
 #: resources/views/modules/lifespans-chart/page.phtml
 msgid "End year"
 msgstr "Tahun Berakhir"
@@ -6333,6 +6343,11 @@ msgstr "Jika Anda mencoba untuk melampaui batas ini, Anda mungkin mengalami wakt
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "Jika anda menggunakan salah satu layanan pelacak dan analisa berikut, situs dapat menambahkan kode pelacak secara otomatis."
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "If your database uses an encrypted connection, provide the names of the files containing the SSL certificate and key."
+msgstr "Jika basis data Anda menggunakan koneksi terenkripsi, berikan nama file yang berisi sertifikat dan kunci SSL."
 
 #: app/Http/RequestHandlers/ManageMediaData.php app/MediaFile.php
 msgid "Image dimensions"
@@ -10042,6 +10057,21 @@ msgstr "Server surel SMTP"
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr "Yang terpasang SQLite versi %s . Diperlukan SQLite versi %s atau yang terbaru."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate"
+msgstr "Sertifikat SSL"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate authority"
+msgstr "Otoritas sertifikat SSL"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL key"
+msgstr "Kunci SSL"
+
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php
 msgid "SSL/TLS"
@@ -11258,6 +11288,7 @@ msgstr "Spoke, Wasington, Amerika"
 
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/edit/change-family-members.phtml
+#: resources/views/fact-date.phtml
 #: resources/views/modules/pedigree-chart/previous.phtml
 #: resources/xml/reports/bdm_report.xml
 #: resources/xml/reports/family_group_report.xml
@@ -11824,6 +11855,7 @@ msgid "The file was only partially uploaded. Please try again."
 msgstr "Berkas hanya diunggah sebagian. Silahkan coba lagi."
 
 #. I18N: %s is a filename
+#: app/Http/RequestHandlers/SetupWizard.php
 #: resources/views/media-page-details.phtml
 #: resources/views/modules/media-list/page.phtml
 #, php-format
@@ -13467,6 +13499,11 @@ msgstr "Perakrus, Meksiko"
 #: app/CustomTags/Legacy.php resources/views/admin/users.phtml
 msgid "Verified"
 msgstr "Telah diperiksa"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Verify server certificate"
+msgstr "Verifikasi sertifikat server"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php

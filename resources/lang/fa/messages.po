@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-28 22:41+0100\n"
+"POT-Creation-Date: 2026-07-29 08:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,6 +116,11 @@ msgstr "%s قبل از میلاد"
 #, php-format
 msgid "%s KB"
 msgstr "%s کیلوبایت"
+
+#: resources/views/fact-date.phtml
+#, php-format
+msgid "%s after death"
+msgstr ""
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -4680,6 +4685,10 @@ msgstr "فعال"
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr "فعال کردن این گزینه همه بازدیدکنندگان را مجبور می‌کند تا قبل از مشاهده هرگونه اطلاعات در وب‌سایت وارد سیستم شوند."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+msgid "Encrypted connection"
+msgstr ""
+
 #: resources/views/modules/lifespans-chart/page.phtml
 msgid "End year"
 msgstr "سال پایان"
@@ -6348,6 +6357,10 @@ msgstr "اگر سعی کنید از این محدودیت ها فراتر برو
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "اگر از یکی از خدمات ردیابی و تجزیه و تحلیل زیر استفاده می کنید، سایت می تواند کدهای ردیابی را به صورت خودکار اضافه کند."
+
+#: resources/views/setup/step-4-database-mysql.phtml
+msgid "If your database uses an encrypted connection, provide the names of the files containing the SSL certificate and key."
+msgstr ""
 
 #: app/Http/RequestHandlers/ManageMediaData.php app/MediaFile.php
 msgid "Image dimensions"
@@ -10059,6 +10072,18 @@ msgstr "سرور SMTP پست الکترونیکی"
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr "نسخه SQLite %s نصب شده است. نسخه SQLite %s یا جدیدتر مورد نیاز است."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+msgid "SSL certificate"
+msgstr ""
+
+#: resources/views/setup/step-4-database-mysql.phtml
+msgid "SSL certificate authority"
+msgstr ""
+
+#: resources/views/setup/step-4-database-mysql.phtml
+msgid "SSL key"
+msgstr ""
+
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php
 msgid "SSL/TLS"
@@ -11275,6 +11300,7 @@ msgstr "اسپوکن ، واشنگتن ، ایالات متحده"
 
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/edit/change-family-members.phtml
+#: resources/views/fact-date.phtml
 #: resources/views/modules/pedigree-chart/previous.phtml
 #: resources/xml/reports/bdm_report.xml
 #: resources/xml/reports/family_group_report.xml
@@ -11841,6 +11867,7 @@ msgid "The file was only partially uploaded. Please try again."
 msgstr "فقط قسمتی از فایل آپلود شد. لطفا دوباره تلاش کنید."
 
 #. I18N: %s is a filename
+#: app/Http/RequestHandlers/SetupWizard.php
 #: resources/views/media-page-details.phtml
 #: resources/views/modules/media-list/page.phtml
 #, php-format
@@ -13491,6 +13518,10 @@ msgstr "وراکروز، مکزیک"
 #: app/CustomTags/Legacy.php resources/views/admin/users.phtml
 msgid "Verified"
 msgstr "تایید شده"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+msgid "Verify server certificate"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php

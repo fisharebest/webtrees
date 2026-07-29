@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-28 22:41+0100\n"
+"POT-Creation-Date: 2026-07-29 08:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,6 +119,11 @@ msgstr "i. e. %s"
 #, php-format
 msgid "%s KB"
 msgstr "%s kilobájt"
+
+#: resources/views/fact-date.phtml
+#, php-format
+msgid "%s after death"
+msgstr ""
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -4691,6 +4696,11 @@ msgstr "Engedélyezve"
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr "Az opció bekapcsolása arra készteti az összes látogatót, hogy bejelentkezzen, mielőtt láthatna bármilyen adatot a webhelyen."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Encrypted connection"
+msgstr "Titkosított kapcsolat"
+
 #: resources/views/modules/lifespans-chart/page.phtml
 msgid "End year"
 msgstr "Utolsó év"
@@ -6362,6 +6372,11 @@ msgstr "Ha ezeket a korlátokat megpróbálja túllépni, szerveridő-túllépé
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "Ha a következő követő- és elemzőszolgáltatások egyikét használja, a webtrees automatikusan felveheti a követőkódot."
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "If your database uses an encrypted connection, provide the names of the files containing the SSL certificate and key."
+msgstr "Ha az adatbázis titkosított kapcsolatot használ, adja meg az SSL-tanúsítványt és kulcsot tartalmazó fájlok nevét."
 
 #: app/Http/RequestHandlers/ManageMediaData.php app/MediaFile.php
 msgid "Image dimensions"
@@ -10085,6 +10100,21 @@ msgstr "SMTP-levélszerver"
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr "Az SQLite %s verziója van telepítve. SQLite %s vagy újabb verzióra van szükség."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate"
+msgstr "SSL-tanúsítvány"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate authority"
+msgstr "SSL-tanúsítványkiadó"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL key"
+msgstr "SSL-kulcs"
+
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php
 msgid "SSL/TLS"
@@ -11305,6 +11335,7 @@ msgstr "Spokane, Washington, Egyesült Államok"
 
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/edit/change-family-members.phtml
+#: resources/views/fact-date.phtml
 #: resources/views/modules/pedigree-chart/previous.phtml
 #: resources/xml/reports/bdm_report.xml
 #: resources/xml/reports/family_group_report.xml
@@ -11872,6 +11903,7 @@ msgid "The file was only partially uploaded. Please try again."
 msgstr "Az állomány csak részben töltődött fel. Kérjük, próbálja újra."
 
 #. I18N: %s is a filename
+#: app/Http/RequestHandlers/SetupWizard.php
 #: resources/views/media-page-details.phtml
 #: resources/views/modules/media-list/page.phtml
 #, php-format
@@ -13524,6 +13556,11 @@ msgstr "Veracruz, Mexikó"
 #: app/CustomTags/Legacy.php resources/views/admin/users.phtml
 msgid "Verified"
 msgstr "Ellenőrizve"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Verify server certificate"
+msgstr "Kiszolgálói tanúsítvány ellenőrzése"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php

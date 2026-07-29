@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-28 22:41+0100\n"
+"POT-Creation-Date: 2026-07-29 08:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,6 +115,11 @@ msgstr "%s до н. е."
 #, php-format
 msgid "%s KB"
 msgstr "%s Кбайт"
+
+#: resources/views/fact-date.phtml
+#, php-format
+msgid "%s after death"
+msgstr ""
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -4706,6 +4711,11 @@ msgstr "Влючено"
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr "Відзначення цієї функції задає, що всі відвідувачі повинні ввести свій логін перш ніж вони зможуть подивитися дані на сайті."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Encrypted connection"
+msgstr "Зашифроване з'єднання"
+
 #: resources/views/modules/lifespans-chart/page.phtml
 msgid "End year"
 msgstr "Рік кінця"
@@ -6377,6 +6387,11 @@ msgstr "Перевищення цих вимог може виводити на 
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "Якщо ви використовуєте один із наступних сервісів відслідковування і аналітики, webtrees може додати коди відслідковування автоматично."
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "If your database uses an encrypted connection, provide the names of the files containing the SSL certificate and key."
+msgstr "Якщо ваша база даних використовує зашифроване з'єднання, вкажіть імена файлів, що містять SSL-сертифікат та ключ."
 
 #: app/Http/RequestHandlers/ManageMediaData.php app/MediaFile.php
 msgid "Image dimensions"
@@ -10102,6 +10117,21 @@ msgstr "Поштовий сервер SMTP"
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr "Встановлена версія SQLite %s. Потрібна версія SQLite %s або пізніше."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate"
+msgstr "SSL-сертифікат"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate authority"
+msgstr "Центр сертифікації SSL"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL key"
+msgstr "SSL-ключ"
+
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php
 msgid "SSL/TLS"
@@ -11322,6 +11352,7 @@ msgstr "Спокан, штат Вашингтон"
 
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/edit/change-family-members.phtml
+#: resources/views/fact-date.phtml
 #: resources/views/modules/pedigree-chart/previous.phtml
 #: resources/xml/reports/bdm_report.xml
 #: resources/xml/reports/family_group_report.xml
@@ -11889,6 +11920,7 @@ msgid "The file was only partially uploaded. Please try again."
 msgstr "Файл вивантажений частково. Спробуйте заново."
 
 #. I18N: %s is a filename
+#: app/Http/RequestHandlers/SetupWizard.php
 #: resources/views/media-page-details.phtml
 #: resources/views/modules/media-list/page.phtml
 #, php-format
@@ -13548,6 +13580,11 @@ msgstr "Веракрус, Мексика"
 #: app/CustomTags/Legacy.php resources/views/admin/users.phtml
 msgid "Verified"
 msgstr "Перевірено"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Verify server certificate"
+msgstr "Перевіряти сертифікат сервера"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php

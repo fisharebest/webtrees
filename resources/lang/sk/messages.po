@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-28 22:41+0100\n"
+"POT-Creation-Date: 2026-07-29 08:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -125,6 +125,11 @@ msgstr "%s pred n. l."
 #, php-format
 msgid "%s KB"
 msgstr "%s KB"
+
+#: resources/views/fact-date.phtml
+#, php-format
+msgid "%s after death"
+msgstr ""
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -4716,6 +4721,11 @@ msgstr "Povolené"
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr "Zapnutím tejto voľby budú akékoľvek údaje na tejto stránke prístupné iba prihláseným užívateľom."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Encrypted connection"
+msgstr "Šifrované pripojenie"
+
 #: resources/views/modules/lifespans-chart/page.phtml
 msgid "End year"
 msgstr "Konečný rok"
@@ -6387,6 +6397,11 @@ msgstr "Ak sa pokúsite prekročiť tieto limity, môžu sa vám zobraziť práz
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "Ak používate jeden z nasledujúcich nástrojov pre sledovanie a analýzu, webtrees môže automaticky pridať sledovacie kódy (Tracking Codes)."
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "If your database uses an encrypted connection, provide the names of the files containing the SSL certificate and key."
+msgstr "Ak vaša databáza používa šifrované pripojenie, zadajte názvy súborov obsahujúcich SSL certifikát a kľúč."
 
 #: app/Http/RequestHandlers/ManageMediaData.php app/MediaFile.php
 msgid "Image dimensions"
@@ -10112,6 +10127,21 @@ msgstr "Server SMTP"
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr "Je nainštalovaná SQLite verzia %s. Vyžadovaná je verzia %s alebo vyšia."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate"
+msgstr "SSL certifikát"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate authority"
+msgstr "SSL certifikačná autorita"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL key"
+msgstr "SSL kľúč"
+
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php
 msgid "SSL/TLS"
@@ -11331,6 +11361,7 @@ msgstr "Spokane, Washington, USA"
 
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/edit/change-family-members.phtml
+#: resources/views/fact-date.phtml
 #: resources/views/modules/pedigree-chart/previous.phtml
 #: resources/xml/reports/bdm_report.xml
 #: resources/xml/reports/family_group_report.xml
@@ -11898,6 +11929,7 @@ msgid "The file was only partially uploaded. Please try again."
 msgstr "Súbor bol nahraný iba čiastočne, skúste to, prosím, znovu."
 
 #. I18N: %s is a filename
+#: app/Http/RequestHandlers/SetupWizard.php
 #: resources/views/media-page-details.phtml
 #: resources/views/modules/media-list/page.phtml
 #, php-format
@@ -13557,6 +13589,11 @@ msgstr "Veracruz, Mexico"
 #: app/CustomTags/Legacy.php resources/views/admin/users.phtml
 msgid "Verified"
 msgstr "Overené"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Verify server certificate"
+msgstr "Overiť certifikát servera"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php

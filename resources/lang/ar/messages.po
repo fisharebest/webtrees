@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-28 22:41+0100\n"
+"POT-Creation-Date: 2026-07-29 08:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,6 +123,11 @@ msgstr "%s قبل الحقبة العامة"
 #, php-format
 msgid "%s KB"
 msgstr "%s كيلوبت"
+
+#: resources/views/fact-date.phtml
+#, php-format
+msgid "%s after death"
+msgstr ""
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -4763,6 +4768,11 @@ msgstr "مفعل"
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr "تفعيل هذا الخيار سيجبر الزائرين على تسجيل الدخول للإطلاع على البيانات في الموقع."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Encrypted connection"
+msgstr "اتصال مشفر"
+
 #: resources/views/modules/lifespans-chart/page.phtml
 msgid "End year"
 msgstr "سنة النهاية"
@@ -6433,6 +6443,11 @@ msgstr "إذا تخطى الإستخدام هذه الحدود ربما تظهر
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "إذا كنت تستخدم احدى خدمات التتبع و التحليل التالية، بإمكان webtrees إضافة رموز تتبع تلقائيا ."
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "If your database uses an encrypted connection, provide the names of the files containing the SSL certificate and key."
+msgstr "إذا كانت قاعدة البيانات تستخدم اتصالاً مشفراً، قدّم أسماء الملفات التي تحتوي على شهادة ومفتاح SSL."
 
 #: app/Http/RequestHandlers/ManageMediaData.php app/MediaFile.php
 msgid "Image dimensions"
@@ -10162,6 +10177,21 @@ msgstr "خادم بريد SMTP"
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr ""
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate"
+msgstr "شهادة SSL"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate authority"
+msgstr "جهة إصدار شهادات SSL"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL key"
+msgstr "مفتاح SSL"
+
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php
 msgid "SSL/TLS"
@@ -11380,6 +11410,7 @@ msgstr "سبوكان، واشنطن"
 
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/edit/change-family-members.phtml
+#: resources/views/fact-date.phtml
 #: resources/views/modules/pedigree-chart/previous.phtml
 #: resources/xml/reports/bdm_report.xml
 #: resources/xml/reports/family_group_report.xml
@@ -11947,6 +11978,7 @@ msgid "The file was only partially uploaded. Please try again."
 msgstr "لقد تم تحميل الملف جزئياً، لطفاً أعادة المحاولة مرة أخرى."
 
 #. I18N: %s is a filename
+#: app/Http/RequestHandlers/SetupWizard.php
 #: resources/views/media-page-details.phtml
 #: resources/views/modules/media-list/page.phtml
 #, php-format
@@ -13626,6 +13658,11 @@ msgstr "فيراكروز، المكسيك"
 #: app/CustomTags/Legacy.php resources/views/admin/users.phtml
 msgid "Verified"
 msgstr "مصادق"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Verify server certificate"
+msgstr "التحقق من شهادة الخادم"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php

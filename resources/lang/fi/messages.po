@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-28 22:41+0100\n"
+"POT-Creation-Date: 2026-07-29 08:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,6 +114,11 @@ msgstr "%s EAA"
 #, php-format
 msgid "%s KB"
 msgstr "%s kB"
+
+#: resources/views/fact-date.phtml
+#, php-format
+msgid "%s after death"
+msgstr ""
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -4687,6 +4692,11 @@ msgstr "Käytössä, Sallittu"
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr "Tällä valinnalla pakotetaan kaikkia vierailijoita ensin kirjautumaan sisään, ennen kuin he näkevät mitään sivuston aineistoa."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Encrypted connection"
+msgstr "Salattu yhteys"
+
 #: resources/views/modules/lifespans-chart/page.phtml
 msgid "End year"
 msgstr "Loppuvuosi"
@@ -6358,6 +6368,11 @@ msgstr "Jos ylität näitä rajoituksia, voi keskeytyä suoritettava työ tai sa
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "Jos käytät jotakin seuraavista seuranta ja analytiikka palveluista, webtrees voi lisätä seurantakoodit automaattisesti."
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "If your database uses an encrypted connection, provide the names of the files containing the SSL certificate and key."
+msgstr "Jos tietokantasi käyttää salattua yhteyttä, anna SSL-varmenteen ja avaimen sisältävien tiedostojen nimet."
 
 #: app/Http/RequestHandlers/ManageMediaData.php app/MediaFile.php
 msgid "Image dimensions"
@@ -10081,6 +10096,21 @@ msgstr "SMTP sähköpostipalvelimen nimi"
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr "SQLite-versio %s on asennettu. SQLite-versio %s tai uudempi on tarpeen."
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate"
+msgstr "SSL-varmenne"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate authority"
+msgstr "SSL-varmentaja"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL key"
+msgstr "SSL-avain"
+
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php
 msgid "SSL/TLS"
@@ -11301,6 +11331,7 @@ msgstr "Spokane, Washington, Yhdysvallat"
 
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/edit/change-family-members.phtml
+#: resources/views/fact-date.phtml
 #: resources/views/modules/pedigree-chart/previous.phtml
 #: resources/xml/reports/bdm_report.xml
 #: resources/xml/reports/family_group_report.xml
@@ -11868,6 +11899,7 @@ msgid "The file was only partially uploaded. Please try again."
 msgstr "Tiedosto latautui vain osittain, yritä uudelleen."
 
 #. I18N: %s is a filename
+#: app/Http/RequestHandlers/SetupWizard.php
 #: resources/views/media-page-details.phtml
 #: resources/views/modules/media-list/page.phtml
 #, php-format
@@ -13519,6 +13551,11 @@ msgstr "Veracruz, Meksiko"
 #: app/CustomTags/Legacy.php resources/views/admin/users.phtml
 msgid "Verified"
 msgstr "Varmistettu"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Verify server certificate"
+msgstr "Vahvista palvelimen varmenne"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php

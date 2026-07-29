@@ -126,12 +126,15 @@ final class DB extends Manager
         // MySQL/MariaDB support encrypted connections
         if (
             ($driver === self::MYSQL || $driver === self::MARIADB) &&
-            $key !== '' && $certificate !== '' && $ca !== ''
+            $key !== '' && $certificate !== ''
         ) {
             $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = $verify_certificate;
             $options[PDO::MYSQL_ATTR_SSL_KEY]                = Webtrees::ROOT_DIR . 'data/' . $key;
             $options[PDO::MYSQL_ATTR_SSL_CERT]               = Webtrees::ROOT_DIR . 'data/' . $certificate;
-            $options[PDO::MYSQL_ATTR_SSL_CA]                 = Webtrees::ROOT_DIR . 'data/' . $ca;
+
+            if ($ca !== '') {
+                $options[PDO::MYSQL_ATTR_SSL_CA] = Webtrees::ROOT_DIR . 'data/' . $ca;
+            }
         }
 
         if ($driver === self::SQLITE && $database !== ':memory:') {

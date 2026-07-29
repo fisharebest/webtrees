@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-28 22:41+0100\n"
+"POT-Creation-Date: 2026-07-29 08:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,6 +126,11 @@ msgstr "公元前 %s"
 #, php-format
 msgid "%s KB"
 msgstr "%s KB"
+
+#: resources/views/fact-date.phtml
+#, php-format
+msgid "%s after death"
+msgstr ""
 
 #: app/Module/ClippingsCartModule.php
 #, php-format
@@ -5026,6 +5031,11 @@ msgstr "启用"
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr "启用此选项将强制所有访问者在查看网站上的任何数据之前进行登录。"
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Encrypted connection"
+msgstr "加密连接"
+
 #: resources/views/modules/lifespans-chart/page.phtml
 msgid "End year"
 msgstr "结束年"
@@ -6833,6 +6843,11 @@ msgstr "如果超过这些限制,你可能会遇到服务器访问超时或空�
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "如果您使用下面的跟踪和分析服务之一，webtrees可以自动添加跟踪代码。"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "If your database uses an encrypted connection, provide the names of the files containing the SSL certificate and key."
+msgstr "如果您的数据库使用加密连接，请提供包含SSL证书和密钥的文件名。"
 
 #: app/Http/RequestHandlers/ManageMediaData.php app/MediaFile.php
 msgid "Image dimensions"
@@ -10880,6 +10895,21 @@ msgstr "SMTP邮件服务器"
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr "已安装SQLite版本%s。需要SQLite版本%s或更高版本。"
 
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate"
+msgstr "SSL证书"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL certificate authority"
+msgstr "SSL证书颁发机构"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "SSL key"
+msgstr "SSL密钥"
+
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php
 msgid "SSL/TLS"
@@ -12196,6 +12226,7 @@ msgstr "斯波坎,华盛顿"
 
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/edit/change-family-members.phtml
+#: resources/views/fact-date.phtml
 #: resources/views/modules/pedigree-chart/previous.phtml
 #: resources/xml/reports/bdm_report.xml
 #: resources/xml/reports/family_group_report.xml
@@ -12817,6 +12848,7 @@ msgstr "文件只是部分上传,请重新上传。"
 
 # I18N: %s is a filename
 #. I18N: %s is a filename
+#: app/Http/RequestHandlers/SetupWizard.php
 #: resources/views/media-page-details.phtml
 #: resources/views/modules/media-list/page.phtml
 #, php-format
@@ -14567,6 +14599,11 @@ msgstr "韦拉克鲁斯州，墨西哥"
 #: app/CustomTags/Legacy.php resources/views/admin/users.phtml
 msgid "Verified"
 msgstr "验证"
+
+#: resources/views/setup/step-4-database-mysql.phtml
+#, fuzzy
+msgid "Verify server certificate"
+msgstr "验证服务器证书"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple

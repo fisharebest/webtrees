@@ -41,6 +41,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Throwable;
 
 use function e;
+use function file_exists;
 use function file_get_contents;
 use function file_put_contents;
 use function random_bytes;
@@ -236,6 +237,20 @@ final class SetupWizard implements RequestHandlerInterface
     {
         // Use default port, if none specified.
         $data['dbport'] = $data['dbport'] ?: self::DEFAULT_PORTS[$data['dbtype']];
+
+        // Validate SSL certificate files exist when specified.
+        foreach (['dbkey', 'dbcert', 'dbca'] as $key) {
+            if ($data[$key] !== '' && !file_exists(Webtrees::ROOT_DIR . 'data/' . $data[$key])) {
+                $data['errors']->push(I18N::translate('The file “%s” does not exist.', $data[$key]));
+            }
+        }
+
+
+        if ($data['errors']->isNotEmpty()) {
+            $data['mysql_local'] = 'localhost:' . $this->php_service->pdoMysqlDefaultSocket();
+
+            return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
+        }
 
         try {
             $this->connectToDatabase($data);
