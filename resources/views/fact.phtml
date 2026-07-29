@@ -141,7 +141,11 @@ if ($fact->target() instanceof Note) {
                     </div>
                 <?php endif ?>
 
-                <?= view('fact-date', ['cal_link' => 'true', 'fact' => $fact, 'record' => $record, 'time' => true]) ?>
+                <?php if ($tag === 'CHAN') : ?>
+                    <?= view('fact-timestamp', ['fact' => $fact]) ?>
+                <?php else : ?>
+                    <?= view('fact-date', ['cal_link' => 'true', 'fact' => $fact, 'record' => $record, 'time' => true]) ?>
+                <?php endif ?>
                 <?= view('fact-place', ['fact' => $fact, 'record' => $record]) ?>
             </div>
 
