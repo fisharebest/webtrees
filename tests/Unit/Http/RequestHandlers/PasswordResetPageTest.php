@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Tests\Unit\Http\ResetHandlers;
+namespace Fisharebest\Webtrees\Tests\Unit\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\PasswordResetPage;

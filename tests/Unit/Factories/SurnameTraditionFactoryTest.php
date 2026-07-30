@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Tests\Unit;
+namespace Fisharebest\Webtrees\Tests\Unit\Factories;
 
 use Fisharebest\Webtrees\Contracts\SurnameTraditionFactoryInterface;
 use Fisharebest\Webtrees\Factories\SurnameTraditionFactory;

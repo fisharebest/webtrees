@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Tests\Unit;
+namespace Fisharebest\Webtrees\Tests\Unit\Services;
 
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
