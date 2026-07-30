@@ -162,7 +162,6 @@ All dependencies are pinned to exact version numbers (no ranges).
 * LeafletJs
 * DataTables
 * Chart.js, Tom Select, Sortable.js
-* jQuery 4 (legacy shims; being phased out)
 
 ### Building from source
 

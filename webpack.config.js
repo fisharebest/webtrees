@@ -117,15 +117,6 @@ module.exports = (env, argv) => ({
       ],
     },
 
-    resolve: {
-      alias: {
-        // jQuery 4's exports map resolves to different files for import vs require,
-        // which causes issues with CJS packages receiving a namespace object instead
-        // of the jQuery function. Pin to the CJS build for universal compatibility.
-        jquery: path.resolve(__dirname, 'node_modules/jquery/dist/jquery.js'),
-      },
-    },
-
     performance: {
       hints: false,
     },
