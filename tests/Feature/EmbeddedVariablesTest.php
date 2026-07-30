@@ -19,8 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Feature;
 
+use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Factories\CacheFactory;
+use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -420,11 +423,16 @@ class EmbeddedVariablesTest extends TestCase
         '#youngestMotherName#',
     ];
 
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+        (new ModuleService())->bootModules(new WebtreesTheme());
+    }
 
     public function testAllEmbeddedVariables(): void
     {
-        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
+        $user_service = new UserService(new SystemClock());
         $tree    = $this->importTree('demo.ged');
         $request = self::createRequest()->withAttribute('tree', $tree);
         Registry::container()->set(ServerRequestInterface::class, $request);
@@ -455,7 +463,7 @@ class EmbeddedVariablesTest extends TestCase
 
     public function testAllEmbeddedVariablesWithEmptyTree(): void
     {
-        $user_service          = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
+        $user_service          = new UserService(new SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create('name', 'title');

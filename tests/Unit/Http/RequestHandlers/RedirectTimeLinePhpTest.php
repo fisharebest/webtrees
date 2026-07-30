@@ -39,7 +39,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\RedirectTimeLinePhp;
 #[CoversClass(RedirectTimeLinePhp::class)]
 class RedirectTimeLinePhpTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testRedirect(): void
     {

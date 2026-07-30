@@ -31,7 +31,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
 #[CoversClass(AccountEdit::class)]
 class AccountEditTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testHandler(): void
     {

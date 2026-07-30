@@ -29,7 +29,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UploadMediaPage;
 #[CoversClass(UploadMediaPage::class)]
 class UploadMediaPageTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testResponseIsOK(): void
     {

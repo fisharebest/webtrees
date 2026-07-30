@@ -40,7 +40,11 @@ use Fisharebest\Webtrees\Services\UserService;
 #[CoversClass(ModuleService::class)]
 class ModuleServiceTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testAll(): void
     {

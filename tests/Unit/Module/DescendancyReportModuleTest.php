@@ -102,7 +102,11 @@ use PHPUnit\Framework\Attributes\DataProvider;
 #[CoversClass(VariableTable::class)]
 class DescendancyReportModuleTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     /**
      * @return array<int,array<string,string>>

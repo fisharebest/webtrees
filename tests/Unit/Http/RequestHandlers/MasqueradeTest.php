@@ -32,7 +32,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\Masquerade;
 #[CoversClass(Masquerade::class)]
 class MasqueradeTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testMasqueradeAsUser(): void
     {

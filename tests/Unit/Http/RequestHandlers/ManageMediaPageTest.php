@@ -29,7 +29,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaPage;
 #[CoversClass(ManageMediaPage::class)]
 class ManageMediaPageTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testIndex(): void
     {

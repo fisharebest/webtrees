@@ -36,7 +36,11 @@ use Fisharebest\Webtrees\Report\Element;
 #[CoversClass(XrefSource::class)]
 class XrefSourceTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testEdit(): void
     {

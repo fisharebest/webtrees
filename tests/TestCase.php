@@ -64,9 +64,7 @@ use const UPLOAD_ERR_OK;
 
 class TestCase extends \PHPUnit\Framework\TestCase
 {
-    protected static bool $uses_database = false;
-
-    private static function createTestDatabase(): void
+    protected static function createDatabase(): void
     {
         DB::connect(
             driver: DB::SQLITE,
@@ -155,25 +153,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         (new Gedcom())->registerTags(Registry::elementFactory(), false);
 
-        if (static::$uses_database) {
-            self::createTestDatabase();
-
-            // This is normally set in middleware.
-            (new Gedcom())->registerTags(Registry::elementFactory(), true);
-
-            // Boot modules
-            (new ModuleService())->bootModules(new WebtreesTheme());
-        }
-
         self::createRequest();
     }
 
     protected function tearDown(): void
     {
-        if (static::$uses_database) {
-            DB::connection()->disconnect();
-        }
-
         Session::clear(); // Session data is stored in the super-global
         Site::$preferences = []; // These are cached from the database
     }

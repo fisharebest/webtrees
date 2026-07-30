@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit;
 
+use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\Services\GedcomImportService;
@@ -36,15 +37,15 @@ use Fisharebest\Webtrees\Tree;
 #[CoversClass(GedcomRecord::class)]
 class GedcomRecordTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     private User $user;
     private Tree $tree;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
-        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
+        self::createDatabase();
+
+        $user_service = new UserService(new SystemClock());
         $this->user   = $user_service->create('test', 'test', 'test', '*');
         Auth::login($this->user);
 
@@ -58,7 +59,7 @@ class GedcomRecordTest extends TestCase
         $tree_service = new TreeService(new GedcomImportService());
         $tree_service->delete($this->tree);
 
-        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
+        $user_service = new UserService(new SystemClock());
         $user_service->delete($this->user);
 
         parent::tearDown();

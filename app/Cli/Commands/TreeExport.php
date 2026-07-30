@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli\Commands;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Services\GedcomExportService;

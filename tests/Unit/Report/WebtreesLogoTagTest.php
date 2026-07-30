@@ -34,7 +34,11 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(ParserGenerate::class)]
 class WebtreesLogoTagTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     /**
      * Default dimensions (80pt × 20pt) and a clickable link are rendered.

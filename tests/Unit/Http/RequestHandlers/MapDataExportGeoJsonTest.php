@@ -28,7 +28,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportGeoJson;
 #[CoversClass(MapDataExportGeoJson::class)]
 class MapDataExportGeoJsonTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testExportGeoJson(): void
     {

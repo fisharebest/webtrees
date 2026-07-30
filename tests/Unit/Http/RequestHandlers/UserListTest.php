@@ -28,7 +28,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UserListPage;
 #[CoversClass(UserListPage::class)]
 class UserListTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testHandler(): void
     {

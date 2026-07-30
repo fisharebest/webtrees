@@ -35,7 +35,11 @@ use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
 #[CoversClass(HandleExceptions::class)]
 class HandleExceptionsTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testMiddleware(): void
     {

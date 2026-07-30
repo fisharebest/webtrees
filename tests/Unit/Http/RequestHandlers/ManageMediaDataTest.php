@@ -34,7 +34,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaData;
 #[CoversClass(ManageMediaData::class)]
 class ManageMediaDataTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testDataLocal(): void
     {

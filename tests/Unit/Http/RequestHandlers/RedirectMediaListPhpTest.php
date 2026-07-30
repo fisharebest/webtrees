@@ -36,7 +36,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\RedirectMediaListPhp;
 #[CoversClass(RedirectMediaListPhp::class)]
 class RedirectMediaListPhpTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testRedirect(): void
     {

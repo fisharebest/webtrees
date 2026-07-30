@@ -29,8 +29,6 @@ use Fisharebest\Webtrees\Services\GedcomEditService;
 #[CoversClass(GedcomEditService::class)]
 class GedcomEditServiceTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     public function testEditLinesToGedcom(): void
     {
         $gedcom_edit_service = new GedcomEditService();

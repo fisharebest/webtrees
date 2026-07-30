@@ -27,7 +27,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UserAddPage;
 #[CoversClass(UserAddPage::class)]
 class UserAddPageTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testHandler(): void
     {

@@ -38,7 +38,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\RedirectAncestryPhp;
 #[CoversClass(RedirectAncestryPhp::class)]
 class RedirectAncestryPhpTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testRedirect(): void
     {

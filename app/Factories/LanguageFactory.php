@@ -103,7 +103,6 @@ use function explode;
 use function in_array;
 use function preg_match;
 use function preg_replace_callback;
-use function str_contains;
 use function strtolower;
 use function trim;
 

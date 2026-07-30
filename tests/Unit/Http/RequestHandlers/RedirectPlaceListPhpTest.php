@@ -36,7 +36,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\RedirectPlaceListPhp;
 #[CoversClass(RedirectPlaceListPhp::class)]
 class RedirectPlaceListPhpTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testRedirect(): void
     {

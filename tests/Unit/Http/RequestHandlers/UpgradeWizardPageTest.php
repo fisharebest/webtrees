@@ -34,7 +34,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UpgradeWizardPage;
 #[CoversClass(UpgradeWizardPage::class)]
 class UpgradeWizardPageTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testWizard(): void
     {

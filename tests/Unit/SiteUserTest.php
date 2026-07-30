@@ -27,7 +27,11 @@ use Fisharebest\Webtrees\Tests\TestCase;
 #[CoversClass(SiteUser::class)]
 class SiteUserTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testConstructor(): void
     {

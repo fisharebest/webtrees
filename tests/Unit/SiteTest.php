@@ -28,7 +28,11 @@ use function str_repeat;
 #[CoversClass(Site::class)]
 class SiteTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testDefault(): void
     {

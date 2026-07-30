@@ -27,7 +27,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\FixLevel0MediaPage;
 #[CoversClass(FixLevel0MediaPage::class)]
 class FixLevel0MediaPageTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testFixLevel0Media(): void
     {

@@ -30,7 +30,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 #[CoversClass(LoginPage::class)]
 class LoginPageTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testLoginPage(): void
     {

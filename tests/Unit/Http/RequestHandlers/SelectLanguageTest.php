@@ -29,7 +29,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
 #[CoversClass(SelectLanguage::class)]
 class SelectLanguageTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testSelectLanguageForGuest(): void
     {

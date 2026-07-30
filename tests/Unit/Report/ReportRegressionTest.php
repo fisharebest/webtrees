@@ -24,6 +24,8 @@ use Fisharebest\Webtrees\Contracts\ImageFactoryInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Enums\ImageOperation;
+use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\AbstractParser;
 use Fisharebest\Webtrees\Report\AbstractRenderer;
@@ -64,6 +66,7 @@ use Fisharebest\Webtrees\Report\TcLibPdfAdaptor;
 use Fisharebest\Webtrees\Report\Text;
 use Fisharebest\Webtrees\Report\TextBox;
 use Fisharebest\Webtrees\Report\VariableTable;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -122,7 +125,12 @@ use function preg_replace;
 #[CoversClass(VariableTable::class)]
 class ReportRegressionTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+        (new Gedcom())->registerTags(Registry::elementFactory(), true);
+    }
 
     private const string REPORTS_DIR  = __DIR__ . '/../../../resources/xml/reports/';
     private const string SNAPSHOT_DIR = __DIR__ . '/../../data/report_snapshots/';

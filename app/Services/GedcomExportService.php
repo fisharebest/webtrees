@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Encodings\UTF16BE;
 use Fisharebest\Webtrees\Encodings\UTF16LE;

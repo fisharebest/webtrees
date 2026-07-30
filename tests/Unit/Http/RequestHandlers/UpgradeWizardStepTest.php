@@ -44,7 +44,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UpgradeWizardStep;
 #[CoversClass(UpgradeWizardStep::class)]
 class UpgradeWizardStepTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     private function upgradeService(): UpgradeService
     {

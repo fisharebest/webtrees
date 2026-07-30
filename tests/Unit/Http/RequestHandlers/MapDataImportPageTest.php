@@ -27,7 +27,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\MapDataImportPage;
 #[CoversClass(MapDataImportPage::class)]
 class MapDataImportPageTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testImportPage(): void
     {

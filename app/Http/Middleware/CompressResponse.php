@@ -31,7 +31,6 @@ use function gzdeflate;
 use function gzencode;
 use function in_array;
 use function str_contains;
-use function strstr;
 use function strtolower;
 use function strtr;
 

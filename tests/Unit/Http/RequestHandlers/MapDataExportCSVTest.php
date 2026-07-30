@@ -28,7 +28,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportCSV;
 #[CoversClass(MapDataExportCSV::class)]
 class MapDataExportCSVTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testExportCSV(): void
     {

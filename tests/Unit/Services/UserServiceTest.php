@@ -33,11 +33,10 @@ use Fisharebest\Webtrees\Tests\TestCase;
 #[CoversClass(UserService::class)]
 class UserServiceTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     protected function setUp(): void
     {
         parent::setUp();
+        self::createDatabase();
 
         $cache_factory = self::createStub(CacheFactoryInterface::class);
         $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));

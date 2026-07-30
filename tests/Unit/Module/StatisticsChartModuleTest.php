@@ -21,7 +21,9 @@ namespace Fisharebest\Webtrees\Tests\Unit\Module;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\StatisticsData;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -35,7 +37,12 @@ use Fisharebest\Webtrees\Module\StatisticsChartModule;
 #[CoversClass(StatisticsData::class)]
 class StatisticsChartModuleTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+        (new ModuleService())->bootModules(new WebtreesTheme());
+    }
 
     /**
      * @return array<int,array{x_as:int,y_as:int,z_as:int}>

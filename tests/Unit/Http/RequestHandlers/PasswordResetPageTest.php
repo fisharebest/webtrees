@@ -29,7 +29,11 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(PasswordResetPage::class)]
 class PasswordResetPageTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testPasswordResetPageWithValidToken(): void
     {

@@ -26,8 +26,10 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\IndividualListModule;
+use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -41,16 +43,14 @@ use function preg_match_all;
 #[CoversClass(IndividualListModule::class)]
 class IndividualListTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     private Tree $tree;
     private User $user;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
-
-        I18N::init('en-US');
+        self::createDatabase();
+        (new ModuleService())->bootModules(new WebtreesTheme());
 
         $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $tree_service = new TreeService(new GedcomImportService());

@@ -32,7 +32,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\RedirectReportEnginePhp;
 #[CoversClass(RedirectReportEnginePhp::class)]
 class RedirectReportEnginePhpTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testRedirect(): void
     {

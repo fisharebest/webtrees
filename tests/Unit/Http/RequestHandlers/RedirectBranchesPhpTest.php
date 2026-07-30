@@ -35,7 +35,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\RedirectBranchesPhp;
 #[CoversClass(RedirectBranchesPhp::class)]
 class RedirectBranchesPhpTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testRedirect(): void
     {

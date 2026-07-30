@@ -32,7 +32,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UserEditAction;
 #[CoversClass(UserEditAction::class)]
 class UserEditActionTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testHandler(): void
     {

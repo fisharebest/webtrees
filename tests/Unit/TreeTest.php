@@ -46,11 +46,10 @@ use function stream_get_contents;
 #[CoversClass(GedcomExportService::class)]
 class TreeTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     protected function setUp(): void
     {
         parent::setUp();
+        self::createDatabase();
 
         $cache_factory = self::createStub(CacheFactoryInterface::class);
         $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));

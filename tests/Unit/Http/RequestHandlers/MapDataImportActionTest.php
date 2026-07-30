@@ -31,8 +31,6 @@ use function dirname;
 #[CoversClass(MapDataImportAction::class)]
 class MapDataImportActionTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     public function testImportAction(): void
     {
         $csv              = $this->createUploadedFile(dirname(__DIR__, 3) . '/data/places.csv', 'text/csv');

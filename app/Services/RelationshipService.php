@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\LanguageInterface;
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Family;

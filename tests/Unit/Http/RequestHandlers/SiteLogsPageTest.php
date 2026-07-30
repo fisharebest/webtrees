@@ -30,7 +30,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
 #[CoversClass(SiteLogsPage::class)]
 class SiteLogsPageTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testResponse(): void
     {

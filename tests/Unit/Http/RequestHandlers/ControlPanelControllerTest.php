@@ -41,7 +41,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 #[CoversClass(ControlPanel::class)]
 class ControlPanelControllerTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testControlPanel(): void
     {

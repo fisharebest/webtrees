@@ -35,7 +35,11 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(ParserGenerate::class)]
 class ParserGenerateTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testTextInsideTextBoxIsRenderedInlineInHtml(): void
     {

@@ -104,7 +104,11 @@ use function preg_match_all;
 #[CoversClass(VariableTable::class)]
 class AhnentafelReportModuleTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     /**
      * @return array<int,array<string,string>>
