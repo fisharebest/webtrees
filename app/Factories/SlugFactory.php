@@ -39,10 +39,10 @@ class SlugFactory implements SlugFactoryInterface
     public function __construct(private PhpService $php_service)
     {
         if ($this->php_service->extensionLoaded(extension: 'intl')) {
-            $ids = Transliterator::listIDs();
+            $transliterator = $this->transliterator = Transliterator::create('Any-Latin;Latin-ASCII');
 
-            if ($ids !== false && in_array('Any-Latin', $ids, true) && in_array('Latin-ASCII', $ids, true)) {
-                $this->transliterator = Transliterator::create('Any-Latin;Latin-ASCII');
+            if ($transliterator instanceof Transliterator) {
+                $this->transliterator = $transliterator;
             }
         }
     }
