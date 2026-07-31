@@ -24,78 +24,75 @@ $hundred_years_ago = Registry::timestampFactory()->todayJulianDay() - 36525;
 
 ?>
 
+<div class="btn-toolbar d-none justify-content-between mb-2 wt-table-filters" role="toolbar" aria-label="<?= I18N::translate('Filter') ?>">
+    <div class="btn-group btn-group-sm" role="group" aria-label="<?= I18N::translate('Alive or dead') ?>">
+        <input id="<?= e($table_id) ?>-bg-dead-N" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="N" autocomplete="off">
+        <label for="<?= e($table_id) ?>-bg-dead-N" class="btn btn-outline-secondary btn-sm" title="<?= I18N::translate('Show individuals who are alive or couples where both partners are alive.') ?>">
+            <?= I18N::translate('Both alive') ?>
+        </label>
+
+        <input id="<?= e($table_id) ?>-bg-dead-W" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="W" autocomplete="off">
+        <label for="<?= e($table_id) ?>-bg-dead-W" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples where only the female partner is dead.') ?>">
+            <?= I18N::translate('Widower') ?>
+        </label>
+
+        <input id="<?= e($table_id) ?>-bg-dead-H" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="H" autocomplete="off">
+        <label for="<?= e($table_id) ?>-bg-dead-H" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples where only the male partner is dead.') ?>">
+            <?= I18N::translate('Widow') ?>
+        </label>
+
+        <input id="<?= e($table_id) ?>-bg-dead-Y" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="Y" autocomplete="off">
+        <label for="<?= e($table_id) ?>-bg-dead-Y" class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals who are dead or couples where both partners are dead.') ?>">
+            <?= I18N::translate('Both dead') ?>
+        </label>
+    </div>
+
+    <div class="btn-group btn-group-sm" role="group" aria-label="<?= I18N::translate('Roots') ?>">
+        <input id="<?= e($table_id) ?>-bg-roots-R" class="btn-check" type="checkbox" data-filter-column="13" data-filter-value="R" autocomplete="off">
+        <label for="<?= e($table_id) ?>-bg-roots-R" class="btn btn-outline-secondary" title="<?= I18N::translate('Show "roots" couples or individuals. These individuals may also be called "patriarchs". They are individuals who have no parents recorded in the database.') ?>">
+            <?= I18N::translate('Roots') ?>
+        </label>
+
+        <input id="<?= e($table_id) ?>-bg-roots-L" class="btn-check" type="checkbox" data-filter-column="13" data-filter-value="L" autocomplete="off">
+        <label for="<?= e($table_id) ?>-bg-roots-L" class="btn btn-outline-secondary" title="<?= I18N::translate('Show "leaves" couples or individuals. These are individuals who are alive but have no children recorded in the database.') ?>">
+            <?= I18N::translate('Leaves') ?>
+        </label>
+    </div>
+
+    <div class="btn-group btn-group-sm" role="group" aria-label="<?= I18N::translate('Marriage') ?>">
+        <input id="<?= e($table_id) ?>-bg-marr-U" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="U" autocomplete="off">
+        <label for="<?= e($table_id) ?>-bg-marr-U" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples with an unknown marriage date.') ?>">
+            <?= I18N::translate('Not married') ?>
+        </label>
+
+        <input id="<?= e($table_id) ?>-bg-marr-YES" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="YES" autocomplete="off">
+        <label for="<?= e($table_id) ?>-bg-marr-YES" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples who married more than 100 years ago.') ?>">
+            <?= I18N::translate('Marriage') ?>&gt;100
+        </label>
+
+        <input id="<?= e($table_id) ?>-bg-marr-Y100" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="Y100" autocomplete="off">
+        <label for="<?= e($table_id) ?>-bg-marr-Y100" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples who married within the last 100 years.') ?>">
+            <?= I18N::translate('Marriage') ?>&lt;=100
+        </label>
+
+        <input id="<?= e($table_id) ?>-bg-marr-D" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="D" autocomplete="off">
+        <label for="<?= e($table_id) ?>-bg-marr-D" class="btn btn-outline-secondary" title="<?= I18N::translate('Show divorced couples.') ?>">
+            <?= I18N::translate('Divorce') ?>
+        </label>
+
+        <input id="<?= e($table_id) ?>-bg-marr-M" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="M" autocomplete="off">
+        <label for="<?= e($table_id) ?>-bg-marr-M" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples where either partner married more than once.') ?>">
+            <?= I18N::translate('Multiple marriages') ?>
+        </label>
+    </div>
+</div>
+
 <table class="table table-bordered table-sm wt-table-family wt-datatables d-none"
         <?= view('lists/datatables-attributes') ?>
         data-columns='[{"type":"text"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"type":"text"},{"type":"num"},{"visible":"<?= $tree->getPreference('SHOW_LAST_CHANGE')==='1' ? 'true' : 'false'?>"},{"sortable":false},{"sortable":false},{"sortable":false}]'
         data-sorting='[[1,"asc"]]'
     >
     <thead>
-        <tr>
-            <th colspan="14">
-                <div class="btn-toolbar d-flex justify-content-between mb-2">
-                    <div class="btn-group btn-group-sm" role="group">
-                        <input id="<?= e($table_id) ?>-bg-dead-N" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="N" autocomplete="off">
-                        <label for="<?= e($table_id) ?>-bg-dead-N" class="btn btn-outline-secondary btn-sm" title="' . I18N::translate('Show individuals who are alive or couples where both partners are alive.') ?>">
-                            <?= I18N::translate('Both alive') ?>
-                        </label>
-
-                        <input id="<?= e($table_id) ?>-bg-dead-W" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="W" autocomplete="off">
-                        <label for="<?= e($table_id) ?>-bg-dead-W" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples where only the female partner is dead.') ?>">
-                            <?= I18N::translate('Widower') ?>
-                        </label>
-
-                        <input id="<?= e($table_id) ?>-bg-dead-H" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="H" autocomplete="off">
-                        <label for="<?= e($table_id) ?>-bg-dead-H" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples where only the male partner is dead.') ?>">
-                            <?= I18N::translate('Widow') ?>
-                        </label>
-
-                        <input id="<?= e($table_id) ?>-bg-dead-Y" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="Y" autocomplete="off">
-                        <label for="<?= e($table_id) ?>-bg-dead-Y" class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals who are dead or couples where both partners are dead.') ?>">
-                            <?= I18N::translate('Both dead') ?>
-                        </label>
-                    </div>
-
-                    <div class="btn-group btn-group-sm" role="group">
-                        <input id="<?= e($table_id) ?>-bg-roots-R" class="btn-check" type="checkbox" data-filter-column="13" data-filter-value="R" autocomplete="off">
-                        <label for="<?= e($table_id) ?>-bg-roots-R" class="btn btn-outline-secondary" title="<?= I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') ?>">
-                            <?= I18N::translate('Roots') ?>
-                        </label>
-
-                        <input id="<?= e($table_id) ?>-bg-roots-L" class="btn-check" type="checkbox" data-filter-column="13" data-filter-value="L" autocomplete="off">
-                        <label for="<?= e($table_id) ?>-bg-roots-L" class="btn btn-outline-secondary" title="<?= I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') ?>">
-                            <?= I18N::translate('Leaves') ?>
-                        </label>
-                    </div>
-
-                    <div class="btn-group btn-group-sm" role="group">
-                        <input id="<?= e($table_id) ?>-bg-marr-U" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="U" autocomplete="off">
-                        <label for="<?= e($table_id) ?>-bg-marr-U" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples with an unknown marriage date.') ?>">
-                            <?= I18N::translate('Not married') ?>
-                        </label>
-
-                        <input id="<?= e($table_id) ?>-bg-marr-YES" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="YES" autocomplete="off">
-                        <label for="<?= e($table_id) ?>-bg-marr-YES" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples who married more than 100 years ago.') ?>">
-                            <?= I18N::translate('Marriage') ?>&gt;100
-                        </label>
-
-                        <input id="<?= e($table_id) ?>-bg-marr-Y100" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="Y100" autocomplete="off">
-                        <label for="<?= e($table_id) ?>-bg-marr-Y100" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples who married within the last 100 years.') ?>">
-                            <?= I18N::translate('Marriage') ?>&lt;=100
-                        </label>
-
-                        <input id="<?= e($table_id) ?>-bg-marr-D" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="D" autocomplete="off">
-                        <label for="<?= e($table_id) ?>-bg-marr-D" class="btn btn-outline-secondary" title="<?= I18N::translate('Show divorced couples.') ?>">
-                            <?= I18N::translate('Divorce') ?>
-                        </label>
-
-                        <input id="<?= e($table_id) ?>-bg-marr-M" class="btn-check" type="checkbox" data-filter-column="11" data-filter-value="M" autocomplete="off">
-                        <label for="<?= e($table_id) ?>-bg-marr-M" class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples where either partner married more than once.') ?>">
-                            <?= I18N::translate('Multiple marriages') ?>
-                        </label>
-                    </div>
-                </div>
-            </th>
-        </tr>
         <tr>
             <th><?= I18N::translate('Given names') ?></th>
             <th><?= I18N::translate('Surname') ?></th>

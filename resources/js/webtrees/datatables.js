@@ -17,13 +17,16 @@ import {initializeWhenReady} from './dom';
 
 
 /**
- * Initialize column filter checkboxes within a table.
+ * Initialize column filter checkboxes for a table.
  *
- * @param {HTMLTableElement} element
+ * @param {HTMLElement} toolbar
  * @param {DataTable} dataTable
  */
-function initializeFilterButtons(element, dataTable) {
-    element.addEventListener('click', function (event) {
+function initializeFilterButtons(toolbar, dataTable) {
+    // Reveal the toolbar now that the table is ready
+    toolbar.classList.remove('d-none');
+
+    toolbar.addEventListener('click', function (event) {
         const checkbox = event.target.closest('input[data-filter-column]');
 
         if (checkbox === null) {
@@ -72,10 +75,16 @@ function initializeParentToggle(element) {
 
 function initializeTables() {
     document.querySelectorAll('table.wt-datatables.d-none').forEach(function (element) {
+        // Capture the toolbar before DataTables wraps the table in a container div.
+        const toolbar = element.previousElementSibling;
+
         const dataTable = new DataTable(element);
 
         if (element.classList.contains('wt-table-individual') || element.classList.contains('wt-table-family')) {
-            initializeFilterButtons(element, dataTable);
+            if (toolbar !== null && toolbar.classList.contains('wt-table-filters')) {
+                initializeFilterButtons(toolbar, dataTable);
+            }
+
             initializeParentToggle(element);
         }
 
