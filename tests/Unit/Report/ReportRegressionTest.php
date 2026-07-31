@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\AbstractParser;
 use Fisharebest\Webtrees\Report\AbstractRenderer;
@@ -66,7 +65,6 @@ use Fisharebest\Webtrees\Report\TcLibPdfAdaptor;
 use Fisharebest\Webtrees\Report\Text;
 use Fisharebest\Webtrees\Report\TextBox;
 use Fisharebest\Webtrees\Report\VariableTable;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -306,7 +304,7 @@ class ReportRegressionTest extends TestCase
 
         // PDF trailer file ID: /ID [ <32-hex-chars> <32-hex-chars> ]
         $pdf = (string) preg_replace(
-            '/\/ID \[ <[0-9a-f]{32}> <[0-9a-f]{32}> \]/',
+            '/\/ID \[ <[0-9a-f]{32}> <[0-9a-f]{32}> ]/',
             '/ID [ <cfcd208495d565ef66e7dff9f98764da> <cfcd208495d565ef66e7dff9f98764da> ]',
             $pdf
         );
