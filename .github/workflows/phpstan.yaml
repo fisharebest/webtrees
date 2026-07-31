@@ -36,4 +36,4 @@ jobs:
 
       - run: composer install --no-progress
 
-      - run: composer webtrees:phpstan
+      - run: vendor/bin/phpstan

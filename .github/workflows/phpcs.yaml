@@ -35,4 +35,4 @@ jobs:
 
       - run: composer install --no-progress
 
-      - run: composer webtrees:phpcs
+      - run: vendor/bin/phpcs
