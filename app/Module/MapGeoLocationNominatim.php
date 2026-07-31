@@ -29,7 +29,6 @@ class MapGeoLocationNominatim extends AbstractModule implements ModuleMapGeoLoca
     use ModuleConfigTrait;
     use ModuleMapGeoLocationTrait;
 
-
     /**
      * Name of the map provider.
      */

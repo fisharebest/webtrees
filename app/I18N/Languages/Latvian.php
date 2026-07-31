@@ -102,7 +102,6 @@ final readonly class Latvian extends AbstractLanguage
         'decembri',
     ];
 
-
     protected const array JEWISH_MONTHS_NOMINATIVE = [
         '',
         'Tishrei',
@@ -120,7 +119,6 @@ final readonly class Latvian extends AbstractLanguage
         'Av',
         'Elul',
     ];
-
 
     protected const array JEWISH_MONTHS_GENITIVE = self::JEWISH_MONTHS_NOMINATIVE;
 
@@ -145,7 +143,6 @@ final readonly class Latvian extends AbstractLanguage
         'jours complémentaires',
     ];
 
-
     protected const array FRENCH_MONTHS_GENITIVE = self::FRENCH_MONTHS_NOMINATIVE;
 
     protected const array FRENCH_MONTHS_LOCATIVE = self::FRENCH_MONTHS_NOMINATIVE;
@@ -167,7 +164,6 @@ final readonly class Latvian extends AbstractLanguage
         'Dhu al-Qi’dah',
         'Dhu al-Hijjah',
     ];
-
 
     protected const array HIJRI_MONTHS_GENITIVE = self::HIJRI_MONTHS_NOMINATIVE;
 

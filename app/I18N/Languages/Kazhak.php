@@ -51,7 +51,6 @@ final readonly class Kazhak extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' және ';
     protected const string    LIST_SEPARATOR_OR  = ' немесе ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'Қаңтар',

@@ -102,7 +102,6 @@ class Registry
 
     private static SurnameTraditionFactoryInterface $surname_tradition_factory;
 
-
     private static TimestampFactoryInterface $timestamp_factory;
 
     private static XrefFactoryInterface $xref_factory;
@@ -406,7 +405,6 @@ class Registry
 
         return self::$surname_tradition_factory;
     }
-
 
     /**
      * Store or retrieve a factory object.

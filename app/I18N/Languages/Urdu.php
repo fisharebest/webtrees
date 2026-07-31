@@ -70,7 +70,6 @@ final readonly class Urdu extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' اور ';
     protected const string    LIST_SEPARATOR_OR  = ' یا ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'جنوری',

@@ -23,7 +23,6 @@ export function initializeDataFixPage () {
   const dataUrl = requireDatasetValue(form, 'wtDataFixUrl', 'wtDataFixUrl on #data-fix-options');
   const updateAllUrl = requireDatasetValue(form, 'wtUpdateAllUrl', 'wtUpdateAllUrl on #data-fix-options');
 
-
   let queue = [];
   /** @type {DataTable|null} */
   let dataTable = null;
@@ -134,4 +133,3 @@ export function initializeDataFixPage () {
       });
   });
 }
-

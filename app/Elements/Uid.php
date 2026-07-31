@@ -44,7 +44,6 @@ class Uid extends AbstractElement
         return Registry::idFactory()->uuid();
     }
 
-
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
         return

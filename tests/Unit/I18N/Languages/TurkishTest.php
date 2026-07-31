@@ -49,7 +49,6 @@ class TurkishTest extends AbstractLanguageTestCase
         self::assertSame(PaperSize::A4, self::language()->paperSize());
     }
 
-
     public function testTextDirection(): void
     {
         self::assertSame(TextDirection::LTR, self::language()->textDirection());
@@ -67,7 +66,6 @@ class TurkishTest extends AbstractLanguageTestCase
     {
         self::assertSame('Trke', self::language()->endonym());
     }
-
 
 
     public function testStrtolower(): void
@@ -106,7 +104,6 @@ class TurkishTest extends AbstractLanguageTestCase
 
 
 
-
     public function testFormatList(): void
     {
         $language = static::language();
@@ -126,7 +123,6 @@ class TurkishTest extends AbstractLanguageTestCase
         self::assertSame('one veya two', $language->formatListOr(['one', 'two']));
         self::assertSame('one, two veya three', $language->formatListOr(['one', 'two', 'three']));
     }
-
 
     public function testRelationships(): void
     {

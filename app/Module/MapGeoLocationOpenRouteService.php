@@ -35,7 +35,6 @@ class MapGeoLocationOpenRouteService extends AbstractModule implements ModuleCon
     use ModuleConfigTrait;
     use ModuleMapGeoLocationTrait;
 
-
     /**
      * Name of the map provider.
      */

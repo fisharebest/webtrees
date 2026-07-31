@@ -49,7 +49,6 @@ final readonly class SerbianLatin extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' i ';
     protected const string    LIST_SEPARATOR_OR  = ' ili ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'Januar',

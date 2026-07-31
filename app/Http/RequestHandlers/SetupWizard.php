@@ -247,7 +247,6 @@ final class SetupWizard implements RequestHandlerInterface
             }
         }
 
-
         if ($data['errors']->isNotEmpty()) {
             $data['mysql_local'] = 'localhost:' . $this->php_service->pdoMysqlDefaultSocket();
 

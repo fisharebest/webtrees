@@ -391,7 +391,6 @@ final class ListBuilder
             ->filter()
             ->all();
 
-
         return $this->applyPhpFilters($list, $attrs, $gedrec, $fact, $desc, $variables);
     }
 

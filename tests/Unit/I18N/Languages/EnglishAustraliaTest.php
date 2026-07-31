@@ -49,7 +49,6 @@ class EnglishAustraliaTest extends EnglishGreatBritainTest
         self::assertSame(PaperSize::A4, self::language()->paperSize());
     }
 
-
     public function testTextDirection(): void
     {
         self::assertSame(TextDirection::LTR, self::language()->textDirection());
@@ -67,7 +66,6 @@ class EnglishAustraliaTest extends EnglishGreatBritainTest
     {
         self::assertSame('Australian English', self::language()->endonym());
     }
-
 
 
     public function testStrtolower(): void
@@ -99,7 +97,6 @@ class EnglishAustraliaTest extends EnglishGreatBritainTest
     {
         return 'DMY';
     }
-
 
 
 

@@ -53,7 +53,6 @@ final readonly class Tamil extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' மற்றும் ';
     protected const string    LIST_SEPARATOR_OR  = ' அல்லது ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'ஜனவரி',

@@ -49,7 +49,6 @@ class VietnameseTest extends AbstractLanguageTestCase
         self::assertSame(PaperSize::A4, self::language()->paperSize());
     }
 
-
     public function testTextDirection(): void
     {
         self::assertSame(TextDirection::LTR, self::language()->textDirection());
@@ -67,7 +66,6 @@ class VietnameseTest extends AbstractLanguageTestCase
     {
         self::assertSame('Tiếng Việt', self::language()->endonym());
     }
-
 
 
     public function testStrtolower(): void
@@ -99,7 +97,6 @@ class VietnameseTest extends AbstractLanguageTestCase
     {
         return 'DMY';
     }
-
 
 
 
@@ -639,7 +636,6 @@ class VietnameseTest extends AbstractLanguageTestCase
         self::assertSame('one hoặc two', $language->formatListOr(['one', 'two']));
         self::assertSame('one, two hoặc three', $language->formatListOr(['one', 'two', 'three']));
     }
-
 
     public function testRelationships(): void
     {

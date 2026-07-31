@@ -49,7 +49,6 @@ final readonly class Spanish extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' y ';
     protected const string    LIST_SEPARATOR_OR  = ' o ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'enero',

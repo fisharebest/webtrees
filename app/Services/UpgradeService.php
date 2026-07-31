@@ -71,7 +71,6 @@ class UpgradeService
     // Note: earlier versions of webtrees used svn.webtrees.net, so we must maintain both URLs.
     private const string UPDATE_URL = 'https://dev.webtrees.net/build/latest-version.txt';
 
-
     public function __construct(
         private readonly ClientInterface $http_client,
         private readonly RequestFactoryInterface $request_factory,

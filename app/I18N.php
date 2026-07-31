@@ -134,7 +134,6 @@ class I18N
         return self::$language->digits($n);
     }
 
-
     public static function textDirection(): TextDirection
     {
         return self::$language->textDirection();

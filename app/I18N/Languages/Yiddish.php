@@ -51,7 +51,6 @@ final readonly class Yiddish extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' און ';
     protected const string    LIST_SEPARATOR_OR  = ' אָדער ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'יאַנואַר',

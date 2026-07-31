@@ -101,7 +101,6 @@ final class TreeExport extends AbstractCommand
             ->map(Tree::fromDB(...))
             ->first();
 
-
         if ($tree === null) {
             $io->error(message: 'Tree "' . $tree_name . '" not found.');
 

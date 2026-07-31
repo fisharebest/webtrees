@@ -49,7 +49,6 @@ final readonly class Icelandic extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' og ';
     protected const string    LIST_SEPARATOR_OR  = ' eða ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'janúar',

@@ -61,7 +61,6 @@ final readonly class Nepalese extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' र ';
     protected const string    LIST_SEPARATOR_OR  = ' वा ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'जनवरी',

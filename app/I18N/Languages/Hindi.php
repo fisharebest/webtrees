@@ -64,7 +64,6 @@ final readonly class Hindi extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' और ';
     protected const string    LIST_SEPARATOR_OR  = ' या ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'जनवरी',

@@ -30,5 +30,3 @@ $children = $individual->spouseFamilies()->map(static fn (Family $family): Colle
         <?= view('modules/hourglass-chart/parents', ['generations' => $generations - 1, 'family' => $individual->childFamilies()->first()]) ?>
     <?php endif ?>
 </div>
-
-

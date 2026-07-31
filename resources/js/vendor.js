@@ -65,7 +65,6 @@ window.TomSelect = TomSelect;
 import 'moment';
 
 
-
 import 'leaflet';
 import 'leaflet.markercluster';
 import 'beautifymarker';
@@ -87,7 +86,6 @@ library.add(
   faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater
 );
 dom.watch();
-
 
 // See https://github.com/RubaXa/Sortable/issues/1229
 // window.Sortable = require('sortablejs');

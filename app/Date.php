@@ -180,7 +180,6 @@ class Date
         return $date;
     }
 
-
     /**
      * Get the earliest calendar date from this GEDCOM date.
      * In the date “FROM 1900 TO 1910”, this would be 1900.

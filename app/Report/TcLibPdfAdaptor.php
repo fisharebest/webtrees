@@ -31,7 +31,6 @@ final class TcLibPdfAdaptor
 {
     private readonly TextWrapper $text_wrapper;
 
-
     private readonly PdfPageState $pdf_page_state;
 
     private readonly PdfPageGeometry $pdf_page_geometry;
@@ -80,7 +79,6 @@ final class TcLibPdfAdaptor
     private HexColor $draw_color;
     private HexColor $fill_color;
     private HexColor $text_color;
-
 
     public function __construct(
         private readonly Tcpdf $tcpdf,
@@ -251,7 +249,6 @@ final class TcLibPdfAdaptor
         // Replace bidi isolate characters (not in font) with embedding
         // equivalents (zero-width in font) to preserve directional context.
         $text = str_replace(self::BIDI_ISOLATE_SEARCH, self::BIDI_ISOLATE_REPLACE, $text);
-
 
         $text_width = $with_padding ? $width - self::CELL_PADDING * 2 : $width;
         if ($text_width <= 0.0) {

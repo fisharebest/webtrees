@@ -56,7 +56,6 @@ enum Restriction: string
         };
     }
 
-
     /**
      * A human-readable label for use in the UI.
      */

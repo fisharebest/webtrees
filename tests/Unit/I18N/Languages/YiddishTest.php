@@ -49,7 +49,6 @@ class YiddishTest extends AbstractLanguageTestCase
         self::assertSame(PaperSize::A4, self::language()->paperSize());
     }
 
-
     public function testTextDirection(): void
     {
         self::assertSame(TextDirection::RTL, self::language()->textDirection());
@@ -67,7 +66,6 @@ class YiddishTest extends AbstractLanguageTestCase
     {
         self::assertSame('ייִדיש', self::language()->endonym());
     }
-
 
 
     public function testStrtolower(): void
@@ -99,7 +97,6 @@ class YiddishTest extends AbstractLanguageTestCase
     {
         return 'DMY';
     }
-
 
 
 
@@ -639,7 +636,6 @@ class YiddishTest extends AbstractLanguageTestCase
         self::assertSame('one אָדער two', $language->formatListOr(['one', 'two']));
         self::assertSame('one, two אָדער three', $language->formatListOr(['one', 'two', 'three']));
     }
-
 
     public function testRelationships(): void
     {

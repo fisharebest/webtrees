@@ -164,7 +164,6 @@ final readonly class Basque extends AbstractLanguage
 
     protected const array JALALI_MONTHS_INSTRUMENTAL = self::JALALI_MONTHS_NOMINATIVE;
 
-
     protected function assembleDate(string $day, string $month, string $year): string
     {
         return parent::assembleDate($year, $month, $day);

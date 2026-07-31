@@ -495,7 +495,6 @@ readonly class ImageFactory implements ImageFactoryInterface
         }
     }
 
-
     private function cropToFit(GdImage $image, int $width, int $height): GdImage
     {
         $source_width  = imagesx($image);

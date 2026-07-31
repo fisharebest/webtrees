@@ -300,7 +300,6 @@ class ImageFactoryTest extends TestCase
     }
 
 
-
     private function createMediaFileStub(FilesystemOperator $filesystem, string $filename, string $mime_type, bool $is_image): MediaFile
     {
         $tree = self::createStub(Tree::class);

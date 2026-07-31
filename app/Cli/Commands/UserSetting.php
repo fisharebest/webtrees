@@ -130,7 +130,6 @@ final class UserSetting extends AbstractCommand
             return self::SUCCESS;
         }
 
-
         if ($setting_name === '') {
             $io->error(message: 'A setting name is required, unless the --list option is used.');
 

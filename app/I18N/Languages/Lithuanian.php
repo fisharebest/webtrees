@@ -49,7 +49,6 @@ final readonly class Lithuanian extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' ir ';
     protected const string    LIST_SEPARATOR_OR  = ' arba ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'sausis',
@@ -220,7 +219,6 @@ final readonly class Lithuanian extends AbstractLanguage
     {
         return parent::assembleDate($year, $month, $day);
     }
-
 
     public function dateOrder(): string
     {

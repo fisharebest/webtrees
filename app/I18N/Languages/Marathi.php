@@ -68,7 +68,6 @@ final readonly class Marathi extends AbstractLanguage
         'डिसेंबर',
     ];
 
-
     protected const array GREGORIAN_MONTHS_GENITIVE = self::GREGORIAN_MONTHS_NOMINATIVE;
 
     protected const array GREGORIAN_MONTHS_LOCATIVE = self::GREGORIAN_MONTHS_NOMINATIVE;
@@ -93,7 +92,6 @@ final readonly class Marathi extends AbstractLanguage
         'एलुल',
     ];
 
-
     protected const array JEWISH_MONTHS_GENITIVE = self::JEWISH_MONTHS_NOMINATIVE;
 
     protected const array JEWISH_MONTHS_LOCATIVE = self::JEWISH_MONTHS_NOMINATIVE;
@@ -117,7 +115,6 @@ final readonly class Marathi extends AbstractLanguage
         'पूरक दिवस',
     ];
 
-
     protected const array FRENCH_MONTHS_GENITIVE = self::FRENCH_MONTHS_NOMINATIVE;
 
     protected const array FRENCH_MONTHS_LOCATIVE = self::FRENCH_MONTHS_NOMINATIVE;
@@ -139,7 +136,6 @@ final readonly class Marathi extends AbstractLanguage
         'जिल्कद',
         'जिल्हिज्ज',
     ];
-
 
     protected const array HIJRI_MONTHS_GENITIVE = self::HIJRI_MONTHS_NOMINATIVE;
 

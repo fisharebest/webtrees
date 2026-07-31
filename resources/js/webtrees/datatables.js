@@ -15,7 +15,6 @@
 
 import {initializeWhenReady} from './dom';
 
-
 /**
  * Initialize column filter checkboxes for a table.
  *

@@ -49,7 +49,6 @@ class RomanianTest extends AbstractLanguageTestCase
         self::assertSame(PaperSize::A4, self::language()->paperSize());
     }
 
-
     public function testTextDirection(): void
     {
         self::assertSame(TextDirection::LTR, self::language()->textDirection());
@@ -67,7 +66,6 @@ class RomanianTest extends AbstractLanguageTestCase
     {
         self::assertSame('romnă', self::language()->endonym());
     }
-
 
 
     public function testStrtolower(): void
@@ -102,7 +100,6 @@ class RomanianTest extends AbstractLanguageTestCase
 
 
 
-
     public function testFormatList(): void
     {
         $language = static::language();
@@ -122,7 +119,6 @@ class RomanianTest extends AbstractLanguageTestCase
         self::assertSame('one sau two', $language->formatListOr(['one', 'two']));
         self::assertSame('one, two sau three', $language->formatListOr(['one', 'two', 'three']));
     }
-
 
     public function testRelationships(): void
     {

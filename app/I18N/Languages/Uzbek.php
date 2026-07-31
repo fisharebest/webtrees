@@ -53,7 +53,6 @@ final readonly class Uzbek extends AbstractLanguage
         'Dekabr',
     ];
 
-
     protected const array GREGORIAN_MONTHS_GENITIVE = self::GREGORIAN_MONTHS_NOMINATIVE;
 
     protected const array GREGORIAN_MONTHS_LOCATIVE = self::GREGORIAN_MONTHS_NOMINATIVE;
@@ -78,7 +77,6 @@ final readonly class Uzbek extends AbstractLanguage
         'Elul',
     ];
 
-
     protected const array JEWISH_MONTHS_GENITIVE = self::JEWISH_MONTHS_NOMINATIVE;
 
     protected const array JEWISH_MONTHS_LOCATIVE = self::JEWISH_MONTHS_NOMINATIVE;
@@ -102,7 +100,6 @@ final readonly class Uzbek extends AbstractLanguage
         'jours complémentaires',
     ];
 
-
     protected const array FRENCH_MONTHS_GENITIVE = self::FRENCH_MONTHS_NOMINATIVE;
 
     protected const array FRENCH_MONTHS_LOCATIVE = self::FRENCH_MONTHS_NOMINATIVE;
@@ -125,7 +122,6 @@ final readonly class Uzbek extends AbstractLanguage
         'Zulhijja',
     ];
 
-
     protected const array HIJRI_MONTHS_GENITIVE = self::HIJRI_MONTHS_NOMINATIVE;
 
     protected const array HIJRI_MONTHS_LOCATIVE = self::HIJRI_MONTHS_NOMINATIVE;
@@ -147,7 +143,6 @@ final readonly class Uzbek extends AbstractLanguage
         'Bahman',
         'Esfand',
     ];
-
 
     protected const array JALALI_MONTHS_GENITIVE = self::JALALI_MONTHS_NOMINATIVE;
 

@@ -53,7 +53,6 @@ class CalendarService
     // If no facts specified, get all except these
     protected const array SKIP_FACTS = ['CHAN', 'BAPL', 'SLGC', 'SLGS', 'ENDL', 'CENS', 'RESI', 'NOTE', 'ADDR', 'OBJE', 'SOUR', '_TODO'];
 
-
     /**
      * Get the list of current and upcoming events, sorted by anniversary date
      *

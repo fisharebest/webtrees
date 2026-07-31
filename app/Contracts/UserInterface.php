@@ -45,7 +45,6 @@ interface UserInterface
     public const string PREF_TREE_PATH_LENGTH  = 'RELATIONSHIP_PATH_LENGTH';
     public const string PREF_TREE_ROLE         = 'canedit';
 
-
     /**
      * The user‘s internal identifier
      */

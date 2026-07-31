@@ -44,7 +44,6 @@ final readonly class Vietnamese extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' và ';
     protected const string    LIST_SEPARATOR_OR  = ' hoặc ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'Tháng Giêng',

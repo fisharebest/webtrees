@@ -118,7 +118,6 @@ class MessageService
         return $success;
     }
 
-
     /**
      * Convert a username (or mailing list name) into an array of recipients.
      *

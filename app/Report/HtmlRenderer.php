@@ -177,7 +177,6 @@ final class HtmlRenderer extends AbstractRenderer implements ElementFactoryInter
         return mb_strlen($text) * $font_size / 2;
     }
 
-
     public function pageNumber(): int
     {
         return 1;

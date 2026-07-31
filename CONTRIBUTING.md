@@ -77,11 +77,9 @@ These are created using the command `composer install --no-dev`.
 We include the compiled JS and CSS assets from `/public/{css,js}`).
 These are created using the command `npm run build`.
 
-
 ## Creating a pull request
 
 [TODO]
-
 
 
 1. Fork and clone the repository

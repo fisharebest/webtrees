@@ -1744,7 +1744,6 @@ class Statistics
                 'sex'     => $row->sex,
             ]);
 
-
         foreach ($records as $record) {
             $out[$record->century][$record->sex] = $record->age;
         }

@@ -53,7 +53,6 @@ final readonly class Tatar extends AbstractLanguage
     ];
     protected const string    PERCENT_FORMAT     = '%s' . UTF8::NO_BREAK_SPACE . '%%';
 
-
     protected const array GREGORIAN_MONTHS_GENITIVE = self::GREGORIAN_MONTHS_NOMINATIVE;
 
     protected const array GREGORIAN_MONTHS_LOCATIVE = self::GREGORIAN_MONTHS_NOMINATIVE;
@@ -78,7 +77,6 @@ final readonly class Tatar extends AbstractLanguage
         'Элул',
     ];
 
-
     protected const array JEWISH_MONTHS_GENITIVE = self::JEWISH_MONTHS_NOMINATIVE;
 
     protected const array JEWISH_MONTHS_LOCATIVE = self::JEWISH_MONTHS_NOMINATIVE;
@@ -102,7 +100,6 @@ final readonly class Tatar extends AbstractLanguage
         'өстәмә көннәр',
     ];
 
-
     protected const array FRENCH_MONTHS_GENITIVE = self::FRENCH_MONTHS_NOMINATIVE;
 
     protected const array FRENCH_MONTHS_LOCATIVE = self::FRENCH_MONTHS_NOMINATIVE;
@@ -125,7 +122,6 @@ final readonly class Tatar extends AbstractLanguage
         'Зөлхиҗҗә',
     ];
 
-
     protected const array HIJRI_MONTHS_GENITIVE = self::HIJRI_MONTHS_NOMINATIVE;
 
     protected const array HIJRI_MONTHS_LOCATIVE = self::HIJRI_MONTHS_NOMINATIVE;
@@ -147,7 +143,6 @@ final readonly class Tatar extends AbstractLanguage
         'Бахман',
         'Эсфанд',
     ];
-
 
     protected const array JALALI_MONTHS_GENITIVE = self::JALALI_MONTHS_NOMINATIVE;
 

@@ -42,7 +42,6 @@ final readonly class Occitan extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' e ';
     protected const string    LIST_SEPARATOR_OR  = ' o ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'genièr',

@@ -49,7 +49,6 @@ class UrduTest extends AbstractLanguageTestCase
         self::assertSame(PaperSize::A4, self::language()->paperSize());
     }
 
-
     public function testTextDirection(): void
     {
         self::assertSame(TextDirection::RTL, self::language()->textDirection());
@@ -67,7 +66,6 @@ class UrduTest extends AbstractLanguageTestCase
     {
         self::assertSame('اردو', self::language()->endonym());
     }
-
 
 
     public function testStrtolower(): void
@@ -102,7 +100,6 @@ class UrduTest extends AbstractLanguageTestCase
 
 
 
-
     public function testFormatList(): void
     {
         $language = static::language();
@@ -122,7 +119,6 @@ class UrduTest extends AbstractLanguageTestCase
         self::assertSame('one یا two', $language->formatListOr(['one', 'two']));
         self::assertSame('one، two یا three', $language->formatListOr(['one', 'two', 'three']));
     }
-
 
     public function testRelationships(): void
     {

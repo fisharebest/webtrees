@@ -172,7 +172,6 @@ final class TextWrapper
         return mb_substr($word, 0, $break_at);
     }
 
-
     /**
      * Count the number of physical lines text will occupy at the given width.
      */

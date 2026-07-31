@@ -83,7 +83,6 @@ $filter_fn = static fn (string $tag): bool => !in_array($tag, $unique_facts, tru
 
 $quick_facts = array_filter($quick_facts, $filter_fn);
 
-
 // Create a label for a subtag
 $label_fn = static fn (string $subtag): string => Registry::elementFactory()->make($record->tag() . ':' . $subtag)->label();
 

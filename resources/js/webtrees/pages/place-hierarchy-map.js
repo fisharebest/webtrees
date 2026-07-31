@@ -50,7 +50,6 @@ export function initializePlaceHierarchyMapPage(root) {
         },
       });
 
-
       sidebar.querySelectorAll('.mapped').forEach((item) => {
         if (!(item instanceof HTMLElement)) {
           return;

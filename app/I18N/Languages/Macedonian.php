@@ -49,7 +49,6 @@ final readonly class Macedonian extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' и ';
     protected const string    LIST_SEPARATOR_OR  = ' или ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'Januari',

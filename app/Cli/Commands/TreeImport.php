@@ -115,7 +115,6 @@ final class TreeImport extends AbstractCommand
                 'change'      => DB::table('change')->where('gedcom_id', '=', $tree->id()),
             ];
 
-
             if ($keep_media) {
                 $queries['link'] = DB::table('link')
                     ->where('l_file', '=', $tree->id())

@@ -49,7 +49,6 @@ final readonly class Kurdish extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' û ';
     protected const string    LIST_SEPARATOR_OR  = ' an ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'Rêbendan',

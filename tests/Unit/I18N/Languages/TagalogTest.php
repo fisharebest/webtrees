@@ -49,7 +49,6 @@ class TagalogTest extends AbstractLanguageTestCase
         self::assertSame(PaperSize::USLetter, self::language()->paperSize());
     }
 
-
     public function testTextDirection(): void
     {
         self::assertSame(TextDirection::LTR, self::language()->textDirection());
@@ -67,7 +66,6 @@ class TagalogTest extends AbstractLanguageTestCase
     {
         self::assertSame('Tagalog', self::language()->endonym());
     }
-
 
 
     public function testStrtolower(): void
@@ -99,7 +97,6 @@ class TagalogTest extends AbstractLanguageTestCase
     {
         return 'DMY';
     }
-
 
 
 
@@ -639,7 +636,6 @@ class TagalogTest extends AbstractLanguageTestCase
         self::assertSame('one o two', $language->formatListOr(['one', 'two']));
         self::assertSame('one, two o three', $language->formatListOr(['one', 'two', 'three']));
     }
-
 
     public function testRelationships(): void
     {

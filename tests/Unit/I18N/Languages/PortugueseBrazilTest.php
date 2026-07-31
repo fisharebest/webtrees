@@ -49,7 +49,6 @@ class PortugueseBrazilTest extends AbstractPortugueseTestCase
         self::assertSame(PaperSize::A4, self::language()->paperSize());
     }
 
-
     public function testTextDirection(): void
     {
         self::assertSame(TextDirection::LTR, self::language()->textDirection());
@@ -67,7 +66,6 @@ class PortugueseBrazilTest extends AbstractPortugueseTestCase
     {
         self::assertSame('portugus do Brasil', self::language()->endonym());
     }
-
 
 
     public function testStrtolower(): void
@@ -99,7 +97,6 @@ class PortugueseBrazilTest extends AbstractPortugueseTestCase
     {
         return 'DMY';
     }
-
 
 
 

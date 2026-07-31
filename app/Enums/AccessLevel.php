@@ -41,7 +41,6 @@ enum AccessLevel: int
         return self::from((int) $tree->getPreference($setting_name));
     }
 
-
     public function label(): string
     {
         return match ($this) {

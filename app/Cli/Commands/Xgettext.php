@@ -801,7 +801,6 @@ final class Xgettext extends AbstractCommand
         return '"' . addcslashes($value, "\\\"\n\r\t") . '"';
     }
 
-
     /**
      * @return array<string,string>|null
      */
@@ -811,7 +810,6 @@ final class Xgettext extends AbstractCommand
         $translation  = Translation::fromPoStream($stream);
         fclose($stream);
         $translations = $translation->toArray();
-
 
         $php_code = "<?php\n\nreturn " . var_export($translations, true) . ";\n";
         $written  = file_put_contents($php_file, $php_code);
@@ -1213,8 +1211,6 @@ final class Xgettext extends AbstractCommand
 
         return $files;
     }
-
-
 
     /**
      * @param array<int,string> $xml_files

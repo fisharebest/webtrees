@@ -67,7 +67,6 @@ trait ModuleLanguageTrait
         return $this->language->normalize($text);
     }
 
-
     public function title(): string
     {
         return $this->language()->endonym();

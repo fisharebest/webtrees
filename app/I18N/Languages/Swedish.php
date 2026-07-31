@@ -50,7 +50,6 @@ final readonly class Swedish extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' och ';
     protected const string    LIST_SEPARATOR_OR  = ' eller ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'januari',

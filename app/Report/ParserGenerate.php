@@ -116,7 +116,6 @@ final class ParserGenerate extends AbstractParser
     /** @var array<DocumentBuilder|TextBox> Stack of containers when nesting text boxes */
     private array $container_stack = [];
 
-
     private string $gedrec = '';
 
     /** @var array<GedcomFrame> Snapshots of the GEDCOM-record state captured when nesting <Gedcom>. */
@@ -906,7 +905,6 @@ final class ParserGenerate extends AbstractParser
                 $value = strip_tags((new Place($value, $this->tree))->shortName());
             }
 
-
             // User data may have a different ltr/rtl direction to the page.
             // FSI/PDI isolation prevents adjacent reversed-direction segments
             // from merging and keeps weak characters with their logical segment.
@@ -1405,7 +1403,6 @@ final class ParserGenerate extends AbstractParser
             $this->current_container->addElement($image);
         }
     }
-
 
     /**
      * @param array<string,string> $attrs

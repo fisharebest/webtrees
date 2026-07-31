@@ -45,7 +45,6 @@ final readonly class Korean extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' 그리고 ';
     protected const string    LIST_SEPARATOR_OR  = ' 또는 ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         '1월',

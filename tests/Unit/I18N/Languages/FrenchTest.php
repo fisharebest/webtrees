@@ -49,7 +49,6 @@ class FrenchTest extends AbstractFrenchTestCase
         self::assertSame(PaperSize::A4, self::language()->paperSize());
     }
 
-
     public function testTextDirection(): void
     {
         self::assertSame(TextDirection::LTR, self::language()->textDirection());
@@ -67,7 +66,6 @@ class FrenchTest extends AbstractFrenchTestCase
     {
         self::assertSame('français', self::language()->endonym());
     }
-
 
 
     public function testStrtolower(): void
@@ -99,7 +97,6 @@ class FrenchTest extends AbstractFrenchTestCase
     {
         return 'DMY';
     }
-
 
 
 
@@ -639,7 +636,6 @@ class FrenchTest extends AbstractFrenchTestCase
         self::assertSame('one ou two', $language->formatListOr(['one', 'two']));
         self::assertSame('one, two ou three', $language->formatListOr(['one', 'two', 'three']));
     }
-
 
     public function testRelationships(): void
     {

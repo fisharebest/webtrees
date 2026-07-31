@@ -34,7 +34,6 @@ final readonly class Malay extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' dan ';
     protected const string    LIST_SEPARATOR_OR  = ' atau ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'Januari',

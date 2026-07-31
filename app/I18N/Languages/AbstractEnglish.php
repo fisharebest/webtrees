@@ -39,7 +39,6 @@ abstract readonly class AbstractEnglish extends AbstractLanguage
     protected const string LIST_SEPARATOR_AND = ' and ';
     protected const string LIST_SEPARATOR_OR  = ' or ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'January',
@@ -153,7 +152,6 @@ abstract readonly class AbstractEnglish extends AbstractLanguage
 
     protected const array JALALI_MONTHS_INSTRUMENTAL = self::JALALI_MONTHS_NOMINATIVE;
 
-
     protected const array COUSIN = [
         'sibling',
         'first cousin',
@@ -227,7 +225,6 @@ abstract readonly class AbstractEnglish extends AbstractLanguage
         0  => '',
         1  => ' ascending',
     ];
-
 
     /**
      * @return array<Relationship>

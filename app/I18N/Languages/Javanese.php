@@ -69,7 +69,6 @@ final readonly class Javanese extends AbstractLanguage
         'Desember',
     ];
 
-
     protected const array GREGORIAN_MONTHS_GENITIVE = self::GREGORIAN_MONTHS_NOMINATIVE;
 
     protected const array GREGORIAN_MONTHS_LOCATIVE = self::GREGORIAN_MONTHS_NOMINATIVE;
@@ -94,7 +93,6 @@ final readonly class Javanese extends AbstractLanguage
         'Elul',
     ];
 
-
     protected const array JEWISH_MONTHS_GENITIVE = self::JEWISH_MONTHS_NOMINATIVE;
 
     protected const array JEWISH_MONTHS_LOCATIVE = self::JEWISH_MONTHS_NOMINATIVE;
@@ -118,7 +116,6 @@ final readonly class Javanese extends AbstractLanguage
         'jours complémentaires',
     ];
 
-
     protected const array FRENCH_MONTHS_GENITIVE = self::FRENCH_MONTHS_NOMINATIVE;
 
     protected const array FRENCH_MONTHS_LOCATIVE = self::FRENCH_MONTHS_NOMINATIVE;
@@ -140,7 +137,6 @@ final readonly class Javanese extends AbstractLanguage
         'Dhu al-Qi’dah',
         'Dhu al-Hijjah',
     ];
-
 
     protected const array HIJRI_MONTHS_GENITIVE = self::HIJRI_MONTHS_NOMINATIVE;
 

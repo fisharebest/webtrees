@@ -83,7 +83,6 @@ function normalizeSource(source) {
   return new URL(source, document.baseURI).href;
 }
 
-
 /**
  * @param {Element} element
  * @returns {{title: string, title_url: string}}

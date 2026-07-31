@@ -105,7 +105,6 @@ readonly class StatisticsData
             ->pluck(new Expression('COUNT(DISTINCT n_id) AS total'), 'n_givn')
             ->map(static fn (int|string $count): int => (int) $count);
 
-
         $given_names = [];
 
         foreach ($rows as $n_givn => $count) {

@@ -118,7 +118,6 @@ final class SiteSetting extends AbstractCommand
             return self::SUCCESS;
         }
 
-
         if ($setting_name === null) {
             $io->error(message: 'A setting name is required, unless the --list option is used.');
 

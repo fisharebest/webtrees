@@ -52,7 +52,6 @@ final readonly class Japanese extends AbstractLanguage
         '12月',
     ];
 
-
     protected const array GREGORIAN_MONTHS_GENITIVE = self::GREGORIAN_MONTHS_NOMINATIVE;
 
     protected const array GREGORIAN_MONTHS_LOCATIVE = self::GREGORIAN_MONTHS_NOMINATIVE;
@@ -77,7 +76,6 @@ final readonly class Japanese extends AbstractLanguage
         'エルール',
     ];
 
-
     protected const array JEWISH_MONTHS_GENITIVE = self::JEWISH_MONTHS_NOMINATIVE;
 
     protected const array JEWISH_MONTHS_LOCATIVE = self::JEWISH_MONTHS_NOMINATIVE;
@@ -101,7 +99,6 @@ final readonly class Japanese extends AbstractLanguage
         '補充日',
     ];
 
-
     protected const array FRENCH_MONTHS_GENITIVE = self::FRENCH_MONTHS_NOMINATIVE;
 
     protected const array FRENCH_MONTHS_LOCATIVE = self::FRENCH_MONTHS_NOMINATIVE;
@@ -123,7 +120,6 @@ final readonly class Japanese extends AbstractLanguage
         'ズー・アルカアダ',
         'ズー・アルヒッジャ',
     ];
-
 
     protected const array HIJRI_MONTHS_GENITIVE = self::HIJRI_MONTHS_NOMINATIVE;
 

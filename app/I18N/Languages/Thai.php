@@ -59,7 +59,6 @@ final readonly class Thai extends AbstractLanguage
     protected const string    LIST_SEPARATOR_AND = ' และ';
     protected const string    LIST_SEPARATOR_OR  = ' หรือ';
 
-
     protected const array GREGORIAN_MONTHS_NOMINATIVE = [
         '',
         'มกราคม',

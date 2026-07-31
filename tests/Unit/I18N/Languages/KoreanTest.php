@@ -49,7 +49,6 @@ class KoreanTest extends AbstractLanguageTestCase
         self::assertSame(PaperSize::A4, self::language()->paperSize());
     }
 
-
     public function testTextDirection(): void
     {
         self::assertSame(TextDirection::LTR, self::language()->textDirection());
@@ -67,7 +66,6 @@ class KoreanTest extends AbstractLanguageTestCase
     {
         self::assertSame('한국어', self::language()->endonym());
     }
-
 
 
     public function testStrtolower(): void
@@ -99,7 +97,6 @@ class KoreanTest extends AbstractLanguageTestCase
     {
         return 'DMY';
     }
-
 
 
 
@@ -639,7 +636,6 @@ class KoreanTest extends AbstractLanguageTestCase
         self::assertSame('one 또는 two', $language->formatListOr(['one', 'two']));
         self::assertSame('one, two 또는 three', $language->formatListOr(['one', 'two', 'three']));
     }
-
 
     public function testRelationships(): void
     {

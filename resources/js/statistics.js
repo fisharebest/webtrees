@@ -72,7 +72,6 @@ const REGION_PROJECTION_PRESETS = {
   '150': { projection: 'mercator', projectionScale: 3.0, projectionOffset: [15, -55] },
 };
 
-
 const THEME_DEFAULT_COLORS = {
   bodyColor: '#212529',
   secondaryColor: '#6c757d',
@@ -439,7 +438,6 @@ function interpolateHexColor (startColor, endColor, value) {
     start[2] + (end[2] - start[2]) * normalized,
   ]);
 }
-
 
 /**
  * @param {unknown} rawData

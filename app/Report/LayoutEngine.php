@@ -47,7 +47,6 @@ final class LayoutEngine
     /** Footnote reference numbers are rendered at this fraction of the surrounding text size. */
     public const float FOOTNOTE_REF_SIZE_RATIO = 0.75;
 
-
     private float $cursor_x = 0.0;
 
     private float $cursor_y = 0.0;
@@ -533,7 +532,6 @@ final class LayoutEngine
             $this->textbox_row_rect_indexes[] = $row_rect_index;
         }
 
-
         // Advance cursor after the text box.
         // Box height already includes padding, so no extra padding is added.
         if ($is_float_box) {
@@ -589,7 +587,6 @@ final class LayoutEngine
         if ($text === '') {
             return;
         }
-
 
         if ($text_element->truncate > 0.0) {
             $text = $this->measurer->truncate($text, $text_element->truncate, $text_element->style);
@@ -1059,7 +1056,6 @@ final class LayoutEngine
 
         throw new LogicException('Unsupported layout block data class: ' . $data::class);
     }
-
 
     private function shouldSkipTotalPagesToken(Element $element): bool
     {
