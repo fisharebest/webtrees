@@ -27,10 +27,9 @@ use Symfony\Component\HtmlSanitizer\HtmlSanitizerConfig;
  */
 class HtmlService
 {
-    private HtmlSanitizer $sanitizer;
-
-    public function __construct()
+    public function sanitize(string $html): string
     {
+        // Constructing the sanitizer is slow, so create only when needed.
         $config = (new HtmlSanitizerConfig())
             ->allowSafeElements()
             // These can be abused by a malicious user,
@@ -39,15 +38,8 @@ class HtmlService
             ->allowAttribute('class', '*')
             ->allowAttribute('style', '*');
 
-        $this->sanitizer = new HtmlSanitizer($config);
-    }
+        $sanitizer = new HtmlSanitizer($config);
 
-    /**
-     * Take some dirty HTML (as provided by the user), and clean it before
-     * we save/display it.
-     */
-    public function sanitize(string $html): string
-    {
-        return $this->sanitizer->sanitize($html);
+        return $sanitizer->sanitize($html);
     }
 }
