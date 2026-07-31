@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
@@ -58,7 +59,7 @@ class LinkedRecordService
                     ->select([new Expression('MAX(change_id)')])
                     ->from('change')
                     ->where('gedcom_id', '=', $record->tree()->id())
-                    ->where('status', '=', 'pending')
+                    ->where('status', '=', ChangeStatus::Pending->value)
                     ->groupBy(['xref']);
             })
             ->select(['xref']);

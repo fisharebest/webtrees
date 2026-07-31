@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\Comparators\IndividualComparator;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
@@ -176,7 +177,7 @@ final class ListBuilder
                 $query->select([new Expression('MAX(change_id)')])
                     ->from('change')
                     ->where('gedcom_id', '=', $this->tree->id())
-                    ->where('status', '=', 'pending')
+                    ->where('status', '=', ChangeStatus::Pending->value)
                     ->groupBy(['xref']);
             })
             ->get()

@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Elements\XrefRepository;
 use Fisharebest\Webtrees\Elements\XrefSource;
 use Fisharebest\Webtrees\Elements\XrefSubmission;
 use Fisharebest\Webtrees\Elements\XrefSubmitter;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Factories\ElementFactory;
 use Fisharebest\Webtrees\Factories\ImageFactory;
 use Fisharebest\Webtrees\Family;
@@ -113,7 +114,7 @@ final class CheckTree implements RequestHandlerInterface
             ->select(['o_id AS xref', 'o_gedcom AS gedcom', 'o_type']);
         $q6 = DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
-            ->where('status', '=', 'pending')
+            ->where('status', '=', ChangeStatus::Pending->value)
             ->orderBy('change_id')
             ->select(['xref', 'new_gedcom AS gedcom', new Expression("'' AS type")]);
 

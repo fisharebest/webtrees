@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Enums\Restriction;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\Services\PendingChangesService;
@@ -791,7 +792,7 @@ class GedcomRecord
             'xref'       => $this->xref,
             'old_gedcom' => $this->gedcom(),
             'new_gedcom' => $gedcom,
-            'status'     => 'pending',
+            'status'     => ChangeStatus::Pending->value,
             'user_id'    => Auth::id(),
         ]);
 
@@ -819,7 +820,7 @@ class GedcomRecord
                 'xref'       => $this->xref,
                 'old_gedcom' => $this->gedcom(),
                 'new_gedcom' => '',
-                'status'     => 'pending',
+                'status'     => ChangeStatus::Pending->value,
                 'user_id'    => Auth::id(),
             ]);
         }

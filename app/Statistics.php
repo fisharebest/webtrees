@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Charts\ComboChartData;
 use Fisharebest\Webtrees\Charts\PieChartData;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -991,7 +992,7 @@ class Statistics
     {
         $row = DB::table('change')
             ->where('gedcom_id', '=', $this->tree->id())
-            ->where('status', '=', 'accepted')
+            ->where('status', '=', ChangeStatus::Accepted->value)
             ->orderBy('change_id', 'desc')
             ->select(['change_time'])
             ->first();

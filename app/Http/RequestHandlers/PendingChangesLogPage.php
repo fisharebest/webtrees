@@ -24,6 +24,7 @@ use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -104,13 +105,10 @@ final class PendingChangesLogPage implements RequestHandlerInterface
     private function changeStatuses(): array
     {
         return [
-            ''         => '',
-            /* I18N: the status of an edit accepted/rejected/pending */
-            'accepted' => I18N::translate('accepted'),
-            /* I18N: the status of an edit accepted/rejected/pending */
-            'rejected' => I18N::translate('rejected'),
-            /* I18N: the status of an edit accepted/rejected/pending */
-            'pending'  => I18N::translate('pending'),
+            ''                            => '',
+            ChangeStatus::Accepted->value => ChangeStatus::Accepted->label(),
+            ChangeStatus::Rejected->value => ChangeStatus::Rejected->label(),
+            ChangeStatus::Pending->value  => ChangeStatus::Pending->label(),
         ];
     }
 }

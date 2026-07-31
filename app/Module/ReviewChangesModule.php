@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -91,7 +92,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
         extract($config, EXTR_OVERWRITE);
 
         $changes_exist = DB::table('change')
-            ->where('status', 'pending')
+            ->where('status', ChangeStatus::Pending->value)
             ->exists();
 
         if ($changes_exist && $sendmail) {
@@ -149,7 +150,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                     $query->select([new Expression('MAX(change_id)')])
                         ->from('change')
                         ->where('gedcom_id', '=', $tree->id())
-                        ->where('status', '=', 'pending')
+                        ->where('status', '=', ChangeStatus::Pending->value)
                         ->groupBy(['xref']);
                 })
                 ->get();

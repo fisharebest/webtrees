@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use InvalidArgumentException;
 use League\Flysystem\FilesystemOperator;
@@ -414,7 +415,7 @@ class Tree
     {
         return DB::table('change')
             ->where('gedcom_id', '=', $this->id)
-            ->where('status', '=', 'pending')
+            ->where('status', '=', ChangeStatus::Pending->value)
             ->exists();
     }
 
@@ -438,7 +439,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
-            'status'     => 'pending',
+            'status'     => ChangeStatus::Pending->value,
             'user_id'    => Auth::id(),
         ]);
 
@@ -475,7 +476,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
-            'status'     => 'pending',
+            'status'     => ChangeStatus::Pending->value,
             'user_id'    => Auth::id(),
         ]);
 
@@ -512,7 +513,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
-            'status'     => 'pending',
+            'status'     => ChangeStatus::Pending->value,
             'user_id'    => Auth::id(),
         ]);
 
@@ -549,7 +550,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
-            'status'     => 'pending',
+            'status'     => ChangeStatus::Pending->value,
             'user_id'    => Auth::id(),
         ]);
 

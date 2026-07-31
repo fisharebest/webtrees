@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
@@ -364,7 +365,7 @@ trait ModuleDataFixTrait
     {
         $pending = DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
-            ->where('status', '=', 'pending')
+            ->where('status', '=', ChangeStatus::Pending->value)
             ->where(static function (Builder $query) use ($type): void {
                 $query
                     ->where('old_gedcom', 'LIKE', '%@ ' . $type . '\n%')

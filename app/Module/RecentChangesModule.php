@@ -23,6 +23,7 @@ use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -262,7 +263,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     {
         $subquery = DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
-            ->where('status', '=', 'accepted')
+            ->where('status', '=', ChangeStatus::Accepted->value)
             ->where('new_gedcom', '<>', '')
             ->where('change_time', '>', Registry::timestampFactory()->now()->subDays($days)->toDateTimeString())
             ->groupBy(['xref'])

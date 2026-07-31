@@ -23,6 +23,7 @@ use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\Http\RequestHandlers\ContactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
@@ -295,10 +296,10 @@ class UserService
             ->where('user_id', '=', $user->id())
             ->update(['user_id' => null]);
 
-        // Take over the user’s pending changes. (What else could we do with them?)
+        // Take over the user's pending changes. (What else could we do with them?)
         DB::table('change')
             ->where('user_id', '=', $user->id())
-            ->where('status', '=', 'rejected')
+            ->where('status', '=', ChangeStatus::Rejected->value)
             ->delete();
 
         DB::table('change')

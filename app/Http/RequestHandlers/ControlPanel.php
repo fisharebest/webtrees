@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyListModule;
@@ -217,7 +218,7 @@ final class ControlPanel implements RequestHandlerInterface
             ->leftJoin('change', static function (JoinClause $join): void {
                 $join
                     ->on('change.gedcom_id', '=', 'gedcom.gedcom_id')
-                    ->where('change.status', '=', 'pending');
+                    ->where('change.status', '=', ChangeStatus::Pending->value);
             })
             ->groupBy(['gedcom.gedcom_id'])
             ->pluck(new Expression('COUNT(change_id) AS total'), 'gedcom.gedcom_id')
