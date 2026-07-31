@@ -27,21 +27,6 @@ use Symfony\Component\HtmlSanitizer\HtmlSanitizerConfig;
  */
 class HtmlService
 {
-    private HtmlSanitizer $sanitizer;
-
-    public function __construct()
-    {
-        $config = (new HtmlSanitizerConfig())
-            ->allowSafeElements()
-            // These can be abused by a malicious user,
-            // but cKeditor creates style attributes and classes are
-            // useful to make the content match the style of the site.
-            ->allowAttribute('class', '*')
-            ->allowAttribute('style', '*');
-
-        $this->sanitizer = new HtmlSanitizer($config);
-    }
-
     /**
      * Take some dirty HTML (as provided by the user), and clean it before
      * we save/display it.
@@ -52,6 +37,17 @@ class HtmlService
      */
     public function sanitize(string $html): string
     {
-        return $this->sanitizer->sanitize($html);
+        // Constructing the sanitizer is slow, so create only when needed.
+        $config = (new HtmlSanitizerConfig())
+            ->allowSafeElements()
+            // These can be abused by a malicious user,
+            // but cKeditor creates style attributes and classes are
+            // useful to make the content match the style of the site.
+            ->allowAttribute('class', '*')
+            ->allowAttribute('style', '*');
+
+        $sanitizer = new HtmlSanitizer($config);
+
+        return $sanitizer->sanitize($html);
     }
 }
