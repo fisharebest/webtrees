@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Elements\SourceMediaType;
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteFolder;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\MediaFile;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -117,8 +117,6 @@ use Fisharebest\Webtrees\Tree;
         <?= I18N::translate('Media type') ?>
     </label>
     <div class="col-sm-10">
-        <?= (new SourceMediaType(''))->edit('type', 'type', $media_file instanceof MediaFile  ? $media_file->type() : '', $tree) ?>
+        <?= Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->edit('type', 'type', $media_file instanceof MediaFile  ? $media_file->type() : '', $tree) ?>
     </div>
 </div>
-
-
