@@ -210,9 +210,9 @@ final readonly class Hindi extends AbstractLanguage
             Relationship::fixed(...$hi('बेटा'))->son(),
             Relationship::fixed(...$hi('बच्चा'))->child(),
             // Siblings — twins
-            Relationship::fixed(...$hi('जुड़वाँ बहन'))->twin()->sister(),
-            Relationship::fixed(...$hi('जुड़वाँ भाई'))->twin()->brother(),
-            Relationship::fixed(...$hi('जुड़वाँ'))->twin()->sibling(),
+            Relationship::fixed(...$hi('जुड़वाँ बहन'))->multiple()->sister(),
+            Relationship::fixed(...$hi('जुड़वाँ भाई'))->multiple()->brother(),
+            Relationship::fixed(...$hi('जुड़वाँ'))->multiple()->sibling(),
             // Siblings — elder/younger
             Relationship::fixed(...$hi('बड़ी बहन'))->older()->sister(),
             Relationship::fixed(...$hi('छोटी बहन'))->younger()->sister(),

@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
@@ -57,7 +58,7 @@ final class LinkSpouseToIndividualAction implements RequestHandlerInterface
         $spouse = Registry::individualFactory()->make($spid, $tree);
         $spouse = Auth::checkIndividualAccess($spouse, true);
 
-        if ($individual->sex() === 'M') {
+        if ($individual->sex() === Sex::Male) {
             $gedcom = "0 @@ FAM\n1 HUSB @" . $individual->xref() . "@\n1 WIFE @" . $spouse->xref() . '@';
         } else {
             $gedcom = "0 @@ FAM\n1 WIFE @" . $individual->xref() . "@\n1 HUSB @" . $spouse->xref() . '@';

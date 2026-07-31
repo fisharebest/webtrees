@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -262,9 +263,10 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         $theme       = Registry::container()->get(ModuleThemeInterface::class);
         $text_color  = $this->imageColor($image, '000000');
         $backgrounds = [
-            'M' => $this->imageColor($image, 'b1cff0'),
-            'F' => $this->imageColor($image, 'e9daf1'),
-            'U' => $this->imageColor($image, 'eeeeee'),
+            Sex::Male->value    => $this->imageColor($image, 'b1cff0'),
+            Sex::Female->value  => $this->imageColor($image, 'e9daf1'),
+            Sex::Unknown->value => $this->imageColor($image, 'eeeeee'),
+            Sex::Other->value   => $this->imageColor($image, 'eeeeee'),
         ];
 
         // Co-ordinates are measured from the top-left corner.
@@ -296,7 +298,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                 $arc_diameter,
                 $chart_start_angle,
                 $chart_end_angle,
-                $backgrounds['U'],
+                $backgrounds[Sex::Unknown->value],
                 IMG_ARC_PIE
             );
 
@@ -319,7 +321,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         $arc_diameter,
                         $start_angle,
                         $end_angle,
-                        $backgrounds[$individual->sex()] ?? $backgrounds['U'],
+                        $backgrounds[$individual->sex()->value],
                         IMG_ARC_PIE
                     );
 
@@ -387,7 +389,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         $text
                     );
                     // Debug text positions by underlining first line of text
-                    //imageline($image, (int) $tx_start, (int) $ty_start, (int) $tx_end, (int) $ty_end, $backgrounds['U']);
+                    //imageline($image, (int) $tx_start, (int) $ty_start, (int) $tx_end, (int) $ty_end, $backgrounds[Sex::Unknown->value]);
 
                     $areas .= '<area shape="poly" coords="';
                     for ($deg = $start_angle; $deg <= $end_angle; $deg++) {

@@ -17,23 +17,10 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Census;
+namespace Fisharebest\Webtrees\Enums;
 
-use Fisharebest\Webtrees\Age;
-use Fisharebest\Webtrees\Enums\Sex;
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-
-final readonly class CensusColumnAgeMale extends AbstractCensusColumn implements CensusColumnInterface
+enum SortOrder: string
 {
-    public function generate(Individual $individual, Individual $head): string
-    {
-        if ($individual->sex() !== Sex::Male) {
-            return '';
-        }
-
-        $age = new Age($individual->getEstimatedBirthDate(), $this->date());
-
-        return I18N::number($age->ageYears());
-    }
+    case Ascending    = 'asc';
+    case Descending   = 'desc';
 }

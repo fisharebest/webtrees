@@ -185,9 +185,9 @@ final readonly class Faroese extends AbstractLanguage
             Relationship::fixed(...$rel('sonur', 'sonar'))->son(),
             Relationship::fixed(...$rel('barn', 'barns'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('tvíburasystir', 'tvíburasystur'))->twin()->sister(),
-            Relationship::fixed(...$rel('tvíburabróðir', 'tvíburabróður'))->twin()->brother(),
-            Relationship::fixed(...$rel('tvíburi', 'tvíbura'))->twin()->sibling(),
+            Relationship::fixed(...$rel('tvíburasystir', 'tvíburasystur'))->multiple()->sister(),
+            Relationship::fixed(...$rel('tvíburabróðir', 'tvíburabróður'))->multiple()->brother(),
+            Relationship::fixed(...$rel('tvíburi', 'tvíbura'))->multiple()->sibling(),
             Relationship::fixed(...$rel('eldri systir', 'eldri systur'))->older()->sister(),
             Relationship::fixed(...$rel('eldri bróðir', 'eldri bróður'))->older()->brother(),
             Relationship::fixed(...$rel('yngri systir', 'yngri systur'))->younger()->sister(),

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit;
 
+use Fisharebest\Webtrees\Enums\Relation;
 use Fisharebest\Webtrees\Factories\FamilyFactory;
 use Fisharebest\Webtrees\Factories\IndividualFactory;
 use Fisharebest\Webtrees\Family;
@@ -30,7 +31,7 @@ class RelationshipArchitectureTest extends TestCase
         $individual_factory->method("make")->willReturnMap([["i1", $self], ["i2", $brother]]);
         $family_factory->method("make")->willReturnMap([["f1", $family]]);
         $rel = Relationship::fixed("brother", "%s i brother", "%s e brother")->brother();
-        $result = $rel->match([$self, $family, $brother], ["bro"]);
+        $result = $rel->match([$self, $family, $brother], [Relation::Brother]);
         self::assertNotNull($result);
         self::assertCount(3, $result);
         self::assertSame("%s e brother", $result[2]);
@@ -49,7 +50,7 @@ class RelationshipArchitectureTest extends TestCase
         $individual_factory->method("make")->willReturnMap([["i1", $self], ["i2", $brother]]);
         $family_factory->method("make")->willReturnMap([["f1", $family]]);
         $rel = Relationship::fixed("brother", "%s of brother")->brother();
-        $result = $rel->match([$self, $family, $brother], ["bro"]);
+        $result = $rel->match([$self, $family, $brother], [Relation::Brother]);
         self::assertNotNull($result);
         self::assertCount(2, $result);
     }
@@ -67,7 +68,7 @@ class RelationshipArchitectureTest extends TestCase
         $individual_factory->method("make")->willReturnMap([["i1", $self], ["i2", $brother]]);
         $family_factory->method("make")->willReturnMap([["f1", $family]]);
         $rel = Relationship::fixed("oppa", "%s of oppa")->selfFemale()->older()->brother();
-        $result = $rel->match([$self, $family, $brother], ["bro"]);
+        $result = $rel->match([$self, $family, $brother], [Relation::Brother]);
         self::assertNotNull($result);
         self::assertSame("oppa", $result[0]);
     }
@@ -85,7 +86,7 @@ class RelationshipArchitectureTest extends TestCase
         $individual_factory->method("make")->willReturnMap([["i1", $self], ["i2", $brother]]);
         $family_factory->method("make")->willReturnMap([["f1", $family]]);
         $rel = Relationship::fixed("oppa", "%s of oppa")->selfFemale()->older()->brother();
-        $result = $rel->match([$self, $family, $brother], ["bro"]);
+        $result = $rel->match([$self, $family, $brother], [Relation::Brother]);
         self::assertNull($result);
     }
 
@@ -106,7 +107,7 @@ class RelationshipArchitectureTest extends TestCase
         $individual_factory->method("make")->willReturnMap([["i1", $self], ["i2", $father], ["i3", $uncle], ["i4", $cousin]]);
         $family_factory->method("make")->willReturnMap([["f1", $f1], ["f2", $f2], ["f3", $f3]]);
         $rel = Relationship::fixed("older cousin", "%s of older cousin")->older()->father()->brother()->son();
-        $result = $rel->match([$self, $f1, $father, $f2, $uncle, $f3, $cousin], ["fat", "bro", "son"]);
+        $result = $rel->match([$self, $f1, $father, $f2, $uncle, $f3, $cousin], [Relation::Father, Relation::Brother, Relation::Son]);
         self::assertNotNull($result);
         self::assertSame("older cousin", $result[0]);
     }
@@ -128,7 +129,7 @@ class RelationshipArchitectureTest extends TestCase
         $individual_factory->method("make")->willReturnMap([["i1", $self], ["i2", $father], ["i3", $uncle], ["i4", $cousin]]);
         $family_factory->method("make")->willReturnMap([["f1", $f1], ["f2", $f2], ["f3", $f3]]);
         $rel = Relationship::fixed("older cousin", "%s of older cousin")->older()->father()->brother()->son();
-        $result = $rel->match([$self, $f1, $father, $f2, $uncle, $f3, $cousin], ["fat", "bro", "son"]);
+        $result = $rel->match([$self, $f1, $father, $f2, $uncle, $f3, $cousin], [Relation::Father, Relation::Brother, Relation::Son]);
         self::assertNull($result);
     }
 }

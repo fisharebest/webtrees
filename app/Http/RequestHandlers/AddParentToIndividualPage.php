@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -48,6 +49,8 @@ final class AddParentToIndividualPage implements RequestHandlerInterface
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
+        $sex = Sex::from($sex);
+
         // Name facts.
         $surname_tradition = Registry::surnameTraditionFactory()
             ->make($tree->getPreference('SURNAME_TRADITION'));
@@ -58,11 +61,11 @@ final class AddParentToIndividualPage implements RequestHandlerInterface
             'i' => $this->gedcom_edit_service->newIndividualFacts($tree, $sex, $names),
         ];
 
-        if ($sex === 'F') {
-            $title = I18N::translate('Add a mother');
-        } else {
-            $title = I18N::translate('Add a father');
-        }
+        $title = match ($sex) {
+            Sex::Female => I18N::translate('Add a mother'),
+            Sex::Male   => I18N::translate('Add a father'),
+            default     => I18N::translate('Add a parent'),
+        };
 
         return $this->viewResponse('edit/new-individual', [
             'facts'               => $facts,

@@ -197,9 +197,9 @@ final readonly class Marathi extends AbstractLanguage
             Relationship::fixed(...$mr('मुलगा'))->son(),
             Relationship::fixed(...$mr('मूल'))->child(),
             // Siblings — twins
-            Relationship::fixed(...$mr('जुळी बहीण'))->twin()->sister(),
-            Relationship::fixed(...$mr('जुळा भाऊ'))->twin()->brother(),
-            Relationship::fixed(...$mr('जुळे भावंड'))->twin()->sibling(),
+            Relationship::fixed(...$mr('जुळी बहीण'))->multiple()->sister(),
+            Relationship::fixed(...$mr('जुळा भाऊ'))->multiple()->brother(),
+            Relationship::fixed(...$mr('जुळे भावंड'))->multiple()->sibling(),
             // Siblings — elder/younger
             Relationship::fixed(...$mr('मोठी बहीण'))->older()->sister(),
             Relationship::fixed(...$mr('लहान बहीण'))->younger()->sister(),

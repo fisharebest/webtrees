@@ -188,9 +188,9 @@ final readonly class Maori extends AbstractLanguage
             Relationship::fixed(...$mi('tama'))->son(),
             Relationship::fixed(...$mi('tamaiti'))->child(),
             // Siblings
-            Relationship::fixed(...$mi('māhanga tuahine'))->twin()->sister(),
-            Relationship::fixed(...$mi('māhanga tungāne'))->twin()->brother(),
-            Relationship::fixed(...$mi('māhanga'))->twin()->sibling(),
+            Relationship::fixed(...$mi('māhanga tuahine'))->multiple()->sister(),
+            Relationship::fixed(...$mi('māhanga tungāne'))->multiple()->brother(),
+            Relationship::fixed(...$mi('māhanga'))->multiple()->sibling(),
             Relationship::fixed(...$mi('tuakana wahine'))->older()->sister(),
             Relationship::fixed(...$mi('tuakana tāne'))->older()->brother(),
             Relationship::fixed(...$mi('tuakana'))->older()->sibling(),

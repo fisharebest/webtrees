@@ -258,9 +258,9 @@ final readonly class Farsi extends AbstractLanguage
             Relationship::fixed(...$fa('پسر'))->son(),
             Relationship::fixed(...$fa('فرزند'))->child(),
             // Siblings
-            Relationship::fixed(...$fa('خواهر دوقلو'))->twin()->sister(),
-            Relationship::fixed(...$fa('برادر دوقلو'))->twin()->brother(),
-            Relationship::fixed(...$fa('دوقلو'))->twin()->sibling(),
+            Relationship::fixed(...$fa('خواهر دوقلو'))->multiple()->sister(),
+            Relationship::fixed(...$fa('برادر دوقلو'))->multiple()->brother(),
+            Relationship::fixed(...$fa('دوقلو'))->multiple()->sibling(),
             Relationship::fixed(...$fa('خواهر بزرگ‌تر'))->older()->sister(),
             Relationship::fixed(...$fa('برادر بزرگ‌تر'))->older()->brother(),
             Relationship::fixed(...$fa('خواهر کوچک‌تر'))->younger()->sister(),

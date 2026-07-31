@@ -259,9 +259,9 @@ final readonly class Danish extends AbstractLanguage
             Relationship::fixed(...$gen('søn'))->son(),
             Relationship::fixed(...$gen('barn'))->child(),
             // Siblings
-            Relationship::fixed(...$gen('tvillingsøster'))->twin()->sister(),
-            Relationship::fixed(...$gen('tvillingbror'))->twin()->brother(),
-            Relationship::fixed(...$gen('tvilling'))->twin()->sibling(),
+            Relationship::fixed(...$gen('tvillingsøster'))->multiple()->sister(),
+            Relationship::fixed(...$gen('tvillingbror'))->multiple()->brother(),
+            Relationship::fixed(...$gen('tvilling'))->multiple()->sibling(),
             Relationship::fixed(...$gen('storesøster'))->older()->sister(),
             Relationship::fixed(...$gen('storebror'))->older()->brother(),
             Relationship::fixed(...$gen('ældre søskende'))->older()->sibling(),

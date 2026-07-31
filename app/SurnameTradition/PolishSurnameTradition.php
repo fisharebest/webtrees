@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\SurnameTradition;
 
 use Fisharebest\Webtrees\Elements\NameType;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -61,10 +62,10 @@ class PolishSurnameTradition extends PaternalSurnameTradition
     /**
      * @return list<string>
      */
-    public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array
+    public function newChildNames(Individual|null $father, Individual|null $mother, Sex $sex): array
     {
         if (preg_match(self::REGEX_SURN, $this->extractName($father), $match) === 1) {
-            if ($sex === 'F') {
+            if ($sex === Sex::Female) {
                 $name = $this->inflect($match['NAME'], self::INFLECT_FEMALE);
             } else {
                 $name = $this->inflect($match['NAME'], self::INFLECT_MALE);
@@ -81,9 +82,9 @@ class PolishSurnameTradition extends PaternalSurnameTradition
     /**
      * @return list<string>
      */
-    public function newParentNames(Individual $child, string $sex): array
+    public function newParentNames(Individual $child, Sex $sex): array
     {
-        if ($sex === 'M' && preg_match(self::REGEX_SURN, $this->extractName($child), $match) === 1) {
+        if ($sex === Sex::Male && preg_match(self::REGEX_SURN, $this->extractName($child), $match) === 1) {
             $name = $this->inflect($match['NAME'], self::INFLECT_MALE);
             $surn = $this->inflect($match['SURN'], self::INFLECT_MALE);
 
@@ -98,9 +99,9 @@ class PolishSurnameTradition extends PaternalSurnameTradition
     /**
      * @return list<string>
      */
-    public function newSpouseNames(Individual $spouse, string $sex): array
+    public function newSpouseNames(Individual $spouse, Sex $sex): array
     {
-        if ($sex === 'F' && preg_match(self::REGEX_SURN, $this->extractName($spouse), $match) === 1) {
+        if ($sex === Sex::Female && preg_match(self::REGEX_SURN, $this->extractName($spouse), $match) === 1) {
             $name = $this->inflect($match['NAME'], self::INFLECT_FEMALE);
             $surn = $this->inflect($match['SURN'], self::INFLECT_MALE);
 

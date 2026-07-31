@@ -211,9 +211,9 @@ final readonly class Nepalese extends AbstractLanguage
             Relationship::fixed(...$ne('छोरा'))->son(),
             Relationship::fixed(...$ne('सन्तान'))->child(),
             // Siblings — twins
-            Relationship::fixed(...$ne('जुम्ल्याहा दिदी/बहिनी'))->twin()->sister(),
-            Relationship::fixed(...$ne('जुम्ल्याहा दाइ/भाइ'))->twin()->brother(),
-            Relationship::fixed(...$ne('जुम्ल्याहा'))->twin()->sibling(),
+            Relationship::fixed(...$ne('जुम्ल्याहा दिदी/बहिनी'))->multiple()->sister(),
+            Relationship::fixed(...$ne('जुम्ल्याहा दाइ/भाइ'))->multiple()->brother(),
+            Relationship::fixed(...$ne('जुम्ल्याहा'))->multiple()->sibling(),
             // Siblings — elder/younger
             Relationship::fixed(...$ne('दिदी'))->older()->sister(),
             Relationship::fixed(...$ne('बहिनी'))->younger()->sister(),

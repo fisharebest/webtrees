@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -56,9 +57,9 @@ final class AddSpouseToFamilyAction implements RequestHandlerInterface
         $husb = $family->facts(['HUSB'], false, null, true)->first();
         $wife = $family->facts(['WIFE'], false, null, true)->first();
 
-        if ($husb === null && $spouse->sex() === 'M') {
+        if ($husb === null && $spouse->sex() === Sex::Male) {
             $link = 'HUSB';
-        } elseif ($wife === null && $spouse->sex() === 'F') {
+        } elseif ($wife === null && $spouse->sex() === Sex::Female) {
             $link = 'WIFE';
         } elseif ($husb === null) {
             $link = 'HUSB';

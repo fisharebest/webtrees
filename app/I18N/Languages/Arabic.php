@@ -271,9 +271,9 @@ final readonly class Arabic extends AbstractLanguage
             Relationship::fixed(...$ar('ابن'))->son(),
             Relationship::fixed(...$ar('ولد'))->child(),
             // Siblings
-            Relationship::fixed(...$ar('أخت توأم'))->twin()->sister(),
-            Relationship::fixed(...$ar('أخ توأم'))->twin()->brother(),
-            Relationship::fixed(...$ar('توأم'))->twin()->sibling(),
+            Relationship::fixed(...$ar('أخت توأم'))->multiple()->sister(),
+            Relationship::fixed(...$ar('أخ توأم'))->multiple()->brother(),
+            Relationship::fixed(...$ar('توأم'))->multiple()->sibling(),
             Relationship::fixed(...$ar('أخت كبرى'))->older()->sister(),
             Relationship::fixed(...$ar('أخ أكبر'))->older()->brother(),
             Relationship::fixed(...$ar('أخت صغرى'))->younger()->sister(),

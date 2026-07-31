@@ -236,9 +236,9 @@ final readonly class Yiddish extends AbstractLanguage
             Relationship::fixed(...$dem('זון'))->son(),
             Relationship::fixed(...$dem('קינד'))->child(),
             // Siblings
-            Relationship::fixed(...$der('צווילינג-שוועסטער'))->twin()->sister(),
-            Relationship::fixed(...$dem('צווילינג-ברודער'))->twin()->brother(),
-            Relationship::fixed(...$dem('צווילינג'))->twin()->sibling(),
+            Relationship::fixed(...$der('צווילינג-שוועסטער'))->multiple()->sister(),
+            Relationship::fixed(...$dem('צווילינג-ברודער'))->multiple()->brother(),
+            Relationship::fixed(...$dem('צווילינג'))->multiple()->sibling(),
             Relationship::fixed(...$der('עלטערע שוועסטער'))->older()->sister(),
             Relationship::fixed(...$dem('עלטערער ברודער'))->older()->brother(),
             Relationship::fixed(...$der('ייִנגערע שוועסטער'))->younger()->sister(),

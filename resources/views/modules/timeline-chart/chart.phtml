@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Age;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Enums\TextDirection;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
@@ -160,7 +161,7 @@ foreach ($individuals as $index => $individual) {
             foreach ($record->spouses() as $spouse) {
                 if ($spouse->getBirthDate()->isOK()) {
                     $age = (string) new Age($spouse->getBirthDate(), $gdate);
-                    if ($spouse->sex() === 'F') {
+                    if ($spouse->sex() === Sex::Female) {
                         echo '<span class="age"> ', I18N::translate('Wife’s age'), ' ', $age, '</span>';
                     } else {
                         echo '<span class="age"> ', I18N::translate('Husband’s age'), ' ', $age, '</span>';

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\SurnameTradition;
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\SurnameTradition\GreekSurnameTradition;
@@ -55,7 +56,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Παπαδόπουλος/\n2 TYPE BIRTH\n2 SURN Παπαδόπουλος"],
-            $this->surname_tradition->newChildNames($father, $mother, 'M')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Male)
         );
     }
 
@@ -75,7 +76,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Παπαδοπούλου/\n2 TYPE BIRTH\n2 SURN Παπαδόπουλος"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
     }
 
@@ -92,7 +93,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Οικονόμου/\n2 TYPE BIRTH\n2 SURN Οικονόμος"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
     }
 
@@ -109,7 +110,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Παπαδάκη/\n2 TYPE BIRTH\n2 SURN Παπαδάκης"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
     }
 
@@ -126,7 +127,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Καρρά/\n2 TYPE BIRTH\n2 SURN Καρράς"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
     }
 
@@ -143,7 +144,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Κωνσταντινίδου/\n2 TYPE BIRTH\n2 SURN Κωνσταντινίδης"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
     }
 
@@ -160,7 +161,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Αθανασιάδου/\n2 TYPE BIRTH\n2 SURN Αθανασιάδης"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
     }
 
@@ -177,7 +178,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Papadopoulou/\n2 TYPE BIRTH\n2 SURN Papadopoulos"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
     }
 
@@ -194,7 +195,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Papadaki/\n2 TYPE BIRTH\n2 SURN Papadakis"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
     }
 
@@ -211,7 +212,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Konstantinidou/\n2 TYPE BIRTH\n2 SURN Konstantinidis"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
     }
 
@@ -231,7 +232,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Παπαδόπουλος/\n2 TYPE BIRTH\n2 SURN Παπαδόπουλος"],
-            $this->surname_tradition->newChildNames($father, $mother, 'U')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Unknown)
         );
     }
 
@@ -239,7 +240,7 @@ class GreekSurnameTraditionTest extends TestCase
     {
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newChildNames(null, null, 'U')
+            $this->surname_tradition->newChildNames(null, null, Sex::Unknown)
         );
     }
 
@@ -253,7 +254,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Παπαδόπουλος/\n2 TYPE BIRTH\n2 SURN Παπαδόπουλος"],
-            $this->surname_tradition->newParentNames($individual, 'M')
+            $this->surname_tradition->newParentNames($individual, Sex::Male)
         );
     }
 
@@ -267,7 +268,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Παπαδάκης/\n2 TYPE BIRTH\n2 SURN Παπαδάκης"],
-            $this->surname_tradition->newParentNames($individual, 'M')
+            $this->surname_tradition->newParentNames($individual, Sex::Male)
         );
     }
 
@@ -281,7 +282,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Καρράς/\n2 TYPE BIRTH\n2 SURN Καρράς"],
-            $this->surname_tradition->newParentNames($individual, 'M')
+            $this->surname_tradition->newParentNames($individual, Sex::Male)
         );
     }
 
@@ -295,7 +296,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Κωνσταντινίδης/\n2 TYPE BIRTH\n2 SURN Κωνσταντινίδης"],
-            $this->surname_tradition->newParentNames($individual, 'M')
+            $this->surname_tradition->newParentNames($individual, Sex::Male)
         );
     }
 
@@ -309,7 +310,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Papadopoulos/\n2 TYPE BIRTH\n2 SURN Papadopoulos"],
-            $this->surname_tradition->newParentNames($individual, 'M')
+            $this->surname_tradition->newParentNames($individual, Sex::Male)
         );
     }
 
@@ -323,7 +324,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newParentNames($individual, 'F')
+            $this->surname_tradition->newParentNames($individual, Sex::Female)
         );
     }
 
@@ -337,7 +338,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newParentNames($individual, 'U')
+            $this->surname_tradition->newParentNames($individual, Sex::Unknown)
         );
     }
 
@@ -351,17 +352,17 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newSpouseNames($individual, 'M')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Male)
         );
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH", "1 NAME /Παπαδοπούλου/\n2 TYPE MARRIED\n2 SURN Παπαδόπουλος"],
-            $this->surname_tradition->newSpouseNames($individual, 'F')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Female)
         );
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newSpouseNames($individual, 'U')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Unknown)
         );
     }
 
@@ -375,7 +376,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH", "1 NAME /Παπαδάκη/\n2 TYPE MARRIED\n2 SURN Παπαδάκης"],
-            $this->surname_tradition->newSpouseNames($individual, 'F')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Female)
         );
     }
 
@@ -389,7 +390,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH", "1 NAME /Papadaki/\n2 TYPE MARRIED\n2 SURN Papadakis"],
-            $this->surname_tradition->newSpouseNames($individual, 'F')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Female)
         );
     }
 
@@ -406,7 +407,7 @@ class GreekSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /White/\n2 TYPE BIRTH\n2 SURN White"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
     }
 

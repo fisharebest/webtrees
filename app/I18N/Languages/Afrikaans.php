@@ -209,9 +209,9 @@ final readonly class Afrikaans extends AbstractLanguage
             Relationship::fixed(...$se('seun'))->son(),
             Relationship::fixed(...$se('kind'))->child(),
             // Siblings
-            Relationship::fixed(...$se('tweelingbroer'))->twin()->brother(),
-            Relationship::fixed(...$se('tweelingsuster'))->twin()->sister(),
-            Relationship::fixed(...$se('tweeling'))->twin()->sibling(),
+            Relationship::fixed(...$se('tweelingbroer'))->multiple()->brother(),
+            Relationship::fixed(...$se('tweelingsuster'))->multiple()->sister(),
+            Relationship::fixed(...$se('tweeling'))->multiple()->sibling(),
             Relationship::fixed(...$se('ouer broer'))->older()->brother(),
             Relationship::fixed(...$se('ouer suster'))->older()->sister(),
             Relationship::fixed(...$se('ouer broer/suster'))->older()->sibling(),

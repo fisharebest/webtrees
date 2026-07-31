@@ -242,9 +242,9 @@ final readonly class Bulgarian extends AbstractLanguage
             Relationship::fixed(...$rel('син', 'сина'))->son(),
             Relationship::fixed(...$rel('дете', 'детето'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('сестра-близначка', 'сестрата-близначка'))->twin()->sister(),
-            Relationship::fixed(...$rel('брат-близнак', 'брата-близнак'))->twin()->brother(),
-            Relationship::fixed(...$rel('близнак', 'близнака'))->twin()->sibling(),
+            Relationship::fixed(...$rel('сестра-близначка', 'сестрата-близначка'))->multiple()->sister(),
+            Relationship::fixed(...$rel('брат-близнак', 'брата-близнак'))->multiple()->brother(),
+            Relationship::fixed(...$rel('близнак', 'близнака'))->multiple()->sibling(),
             Relationship::fixed(...$rel('по-голяма сестра', 'по-голямата сестра'))->older()->sister(),
             Relationship::fixed(...$rel('по-голям брат', 'по-големия брат'))->older()->brother(),
             Relationship::fixed(...$rel('по-малка сестра', 'по-малката сестра'))->younger()->sister(),

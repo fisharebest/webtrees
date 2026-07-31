@@ -26,6 +26,8 @@ use Fisharebest\Webtrees\Charts\PieChartData;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Enums\ChangeStatus;
+use Fisharebest\Webtrees\Enums\SortOrder;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -104,21 +106,21 @@ class Statistics
 
     public function averageLifespan(string $show_years = '0'): string
     {
-        $days = $this->data->averageLifespanDays('ALL');
+        $days = $this->data->averageLifespanDays(null);
 
         return $show_years !== '0' ? $this->format->age($days) : I18N::number((int) ($days / 365.25));
     }
 
     public function averageLifespanFemale(string $show_years = '0'): string
     {
-        $days = $this->data->averageLifespanDays('F');
+        $days = $this->data->averageLifespanDays(Sex::Female);
 
         return $show_years !== '0' ? $this->format->age($days) : I18N::number((int) ($days / 365.25));
     }
 
     public function averageLifespanMale(string $show_years = '0'): string
     {
-        $days = $this->data->averageLifespanDays('M');
+        $days = $this->data->averageLifespanDays(Sex::Male);
 
         return $show_years !== '0' ? $this->format->age($days) : I18N::number((int) ($days / 365.25));
     }
@@ -172,7 +174,7 @@ class Statistics
 
     public function chartCommonGiven(string $limit = '7'): string
     {
-        $given = $this->data->commonGivenNames('ALL', 1, (int) $limit)->all();
+        $given = $this->data->commonGivenNames(null, 1, (int) $limit)->all();
 
         if ($given === []) {
             return I18N::translate('This information is not available.');
@@ -191,7 +193,7 @@ class Statistics
             $values[] = $count;
         }
 
-        $count_all_names = $this->data->commonGivenNames('ALL', 1, PHP_INT_MAX)->sum();
+        $count_all_names = $this->data->commonGivenNames(null, 1, PHP_INT_MAX)->sum();
 
         $labels[] = I18N::translate('Other');
         $values[] = $count_all_names - $tot;
@@ -329,7 +331,7 @@ class Statistics
         $data = DB::table('families')
             ->select(['f_numchil AS total', 'f_id AS id'])
             ->where('f_file', '=', $this->tree->id())
-            ->orderBy('total', 'desc')
+            ->orderBy('total', SortOrder::Descending->value)
             ->limit((int) $limit)
             ->get()
             ->map(fn (object $row): array => [
@@ -488,10 +490,10 @@ class Statistics
         string $color_other = ChartDataInterface::COLOR_OTHER_SEX
     ): string {
         $data = [
-            [I18N::translate('Males'), $this->data->countIndividualsBySex('M')],
-            [I18N::translate('Females'), $this->data->countIndividualsBySex('F')],
-            [I18N::translate('Unknown'), $this->data->countIndividualsBySex('U')],
-            [I18N::translate('Other'), $this->data->countIndividualsBySex('X')],
+            [I18N::translate('Males'), $this->data->countIndividualsBySex(Sex::Male)],
+            [I18N::translate('Females'), $this->data->countIndividualsBySex(Sex::Female)],
+            [I18N::translate('Unknown'), $this->data->countIndividualsBySex(Sex::Unknown)],
+            [I18N::translate('Other'), $this->data->countIndividualsBySex(Sex::Other)],
         ];
 
         return $this->format->pieChart(
@@ -519,7 +521,7 @@ class Statistics
 
     public function commonGiven(string $threshold = '1', string $limit = '10'): string
     {
-        $items = $this->data->commonGivenNames('ALL', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames(null, (int) $threshold, (int) $limit)
             ->keys()
             ->map(static fn (string $value): string => UTF8::FIRST_STRONG_ISOLATE . e($value) . UTF8::POP_DIRECTIONAL_ISOLATE)
             ->all();
@@ -529,7 +531,7 @@ class Statistics
 
     public function commonGivenFemale(string $threshold = '1', string $limit = '10'): string
     {
-        $items = $this->data->commonGivenNames('F', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames(Sex::Female, (int) $threshold, (int) $limit)
             ->keys()
             ->map(static fn (string $value): string => UTF8::FIRST_STRONG_ISOLATE . e($value) . UTF8::POP_DIRECTIONAL_ISOLATE)
             ->all();
@@ -540,7 +542,7 @@ class Statistics
     public function commonGivenFemaleList(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames('F', (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Female, (int) $threshold, (int) $limit)->all(),
             'show_totals' => false,
         ]);
     }
@@ -548,7 +550,7 @@ class Statistics
     public function commonGivenFemaleListTotals(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames('F', (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Female, (int) $threshold, (int) $limit)->all(),
             'show_totals' => true,
         ]);
     }
@@ -556,14 +558,14 @@ class Statistics
     public function commonGivenFemaleTable(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-table', [
-            'given_names' => $this->data->commonGivenNames('F', (int) $threshold, (int) $limit)->all(),
-            'order'       => [[1, 'desc']],
+            'given_names' => $this->data->commonGivenNames(Sex::Female, (int) $threshold, (int) $limit)->all(),
+            'order'       => [[1, SortOrder::Descending->value]],
         ]);
     }
 
     public function commonGivenFemaleTotals(string $threshold = '1', string $limit = '10'): string
     {
-        $items = $this->data->commonGivenNames('F', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames(Sex::Female, (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . ' (' . I18N::number($value) . ')',
             ])
@@ -575,7 +577,7 @@ class Statistics
     public function commonGivenList(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames('ALL', (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(null, (int) $threshold, (int) $limit)->all(),
             'show_totals' => false,
         ]);
     }
@@ -583,14 +585,14 @@ class Statistics
     public function commonGivenListTotals(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames('ALL', (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(null, (int) $threshold, (int) $limit)->all(),
             'show_totals' => true,
         ]);
     }
 
     public function commonGivenMale(string $threshold = '1', string $limit = '10'): string
     {
-        $items = $this->data->commonGivenNames('M', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames(Sex::Male, (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . '',
             ])
@@ -602,7 +604,7 @@ class Statistics
     public function commonGivenMaleList(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames('M', (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Male, (int) $threshold, (int) $limit)->all(),
             'show_totals' => false,
         ]);
     }
@@ -610,7 +612,7 @@ class Statistics
     public function commonGivenMaleListTotals(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames('M', (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Male, (int) $threshold, (int) $limit)->all(),
             'show_totals' => true,
         ]);
     }
@@ -618,14 +620,14 @@ class Statistics
     public function commonGivenMaleTable(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-table', [
-            'given_names' => $this->data->commonGivenNames('M', (int) $threshold, (int) $limit)->all(),
-            'order'       => [[1, 'desc']],
+            'given_names' => $this->data->commonGivenNames(Sex::Male, (int) $threshold, (int) $limit)->all(),
+            'order'       => [[1, SortOrder::Descending->value]],
         ]);
     }
 
     public function commonGivenMaleTotals(string $threshold = '1', string $limit = '10'): string
     {
-        $items = $this->data->commonGivenNames('M', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames(Sex::Male, (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . ' (' . I18N::number($value) . ')',
             ])
@@ -636,7 +638,7 @@ class Statistics
 
     public function commonGivenOther(string $threshold = '1', string $limit = '10'): string
     {
-        $items = $this->data->commonGivenNames('X', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames(Sex::Other, (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . '',
             ])
@@ -648,7 +650,7 @@ class Statistics
     public function commonGivenOtherList(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames('X', (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Other, (int) $threshold, (int) $limit)->all(),
             'show_totals' => false,
         ]);
     }
@@ -656,7 +658,7 @@ class Statistics
     public function commonGivenOtherListTotals(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames('X', (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Other, (int) $threshold, (int) $limit)->all(),
             'show_totals' => true,
         ]);
     }
@@ -664,14 +666,14 @@ class Statistics
     public function commonGivenOtherTable(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-table', [
-            'given_names' => $this->data->commonGivenNames('X', (int) $threshold, (int) $limit)->all(),
-            'order'       => [[1, 'desc']],
+            'given_names' => $this->data->commonGivenNames(Sex::Other, (int) $threshold, (int) $limit)->all(),
+            'order'       => [[1, SortOrder::Descending->value]],
         ]);
     }
 
     public function commonGivenOtherTotals(string $threshold = '1', string $limit = '10'): string
     {
-        $items = $this->data->commonGivenNames('X', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames(Sex::Other, (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . ' (' . I18N::number($value) . ')',
             ])
@@ -683,14 +685,14 @@ class Statistics
     public function commonGivenTable(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-table', [
-            'given_names' => $this->data->commonGivenNames('ALL', (int) $threshold, (int) $limit)->all(),
-            'order'       => [[1, 'desc']],
+            'given_names' => $this->data->commonGivenNames(null, (int) $threshold, (int) $limit)->all(),
+            'order'       => [[1, SortOrder::Descending->value]],
         ]);
     }
 
     public function commonGivenTotals(string $threshold = '1', string $limit = '10'): string
     {
-        $items = $this->data->commonGivenNames('ALL', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames(null, (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . ' (' . I18N::number($value) . ')',
             ])
@@ -701,7 +703,7 @@ class Statistics
 
     public function commonGivenUnknown(string $threshold = '1', string $limit = '10'): string
     {
-        $items = $this->data->commonGivenNames('U', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames(Sex::Unknown, (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . '',
             ])
@@ -713,7 +715,7 @@ class Statistics
     public function commonGivenUnknownList(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames('U', (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Unknown, (int) $threshold, (int) $limit)->all(),
             'show_totals' => false,
         ]);
     }
@@ -721,7 +723,7 @@ class Statistics
     public function commonGivenUnknownListTotals(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames('U', (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Unknown, (int) $threshold, (int) $limit)->all(),
             'show_totals' => true,
         ]);
     }
@@ -729,14 +731,14 @@ class Statistics
     public function commonGivenUnknownTable(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-table', [
-            'given_names' => $this->data->commonGivenNames('U', (int) $threshold, (int) $limit)->all(),
-            'order'       => [[1, 'desc']],
+            'given_names' => $this->data->commonGivenNames(Sex::Unknown, (int) $threshold, (int) $limit)->all(),
+            'order'       => [[1, SortOrder::Descending->value]],
         ]);
     }
 
     public function commonGivenUnknownTotals(string $threshold = '1', string $limit = '10'): string
     {
-        $items = $this->data->commonGivenNames('U', (int) $threshold, (int) $limit)
+        $items = $this->data->commonGivenNames(Sex::Unknown, (int) $threshold, (int) $limit)
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . ' (' . I18N::number($value) . ')',
             ])
@@ -803,107 +805,107 @@ class Statistics
 
     public function firstBirth(): string
     {
-        return $this->data->firstEventRecord(['BIRT'], true);
+        return $this->data->firstEventRecord(['BIRT'], SortOrder::Ascending);
     }
 
     public function firstBirthName(): string
     {
-        return $this->data->firstEventName(['BIRT'], true);
+        return $this->data->firstEventName(['BIRT'], SortOrder::Ascending);
     }
 
     public function firstBirthPlace(): string
     {
-        return $this->data->firstEventPlace(['BIRT'], true);
+        return $this->data->firstEventPlace(['BIRT'], SortOrder::Ascending);
     }
 
     public function firstBirthYear(): string
     {
-        return $this->data->firstEventYear(['BIRT'], true);
+        return $this->data->firstEventYear(['BIRT'], SortOrder::Ascending);
     }
 
     public function firstDeath(): string
     {
-        return $this->data->firstEventRecord(['DEAT'], true);
+        return $this->data->firstEventRecord(['DEAT'], SortOrder::Ascending);
     }
 
     public function firstDeathName(): string
     {
-        return $this->data->firstEventName(['DEAT'], true);
+        return $this->data->firstEventName(['DEAT'], SortOrder::Ascending);
     }
 
     public function firstDeathPlace(): string
     {
-        return $this->data->firstEventPlace(['DEAT'], true);
+        return $this->data->firstEventPlace(['DEAT'], SortOrder::Ascending);
     }
 
     public function firstDeathYear(): string
     {
-        return $this->data->firstEventYear(['DEAT'], true);
+        return $this->data->firstEventYear(['DEAT'], SortOrder::Ascending);
     }
 
     public function firstDivorce(): string
     {
-        return $this->data->firstEventRecord(['DIV'], true);
+        return $this->data->firstEventRecord(['DIV'], SortOrder::Ascending);
     }
 
     public function firstDivorceName(): string
     {
-        return $this->data->firstEventName(['DIV'], true);
+        return $this->data->firstEventName(['DIV'], SortOrder::Ascending);
     }
 
     public function firstDivorcePlace(): string
     {
-        return $this->data->firstEventPlace(['DIV'], true);
+        return $this->data->firstEventPlace(['DIV'], SortOrder::Ascending);
     }
 
     public function firstDivorceYear(): string
     {
-        return $this->data->firstEventYear(['DIV'], true);
+        return $this->data->firstEventYear(['DIV'], SortOrder::Ascending);
     }
 
     public function firstEvent(): string
     {
-        return $this->data->firstEventRecord([], true);
+        return $this->data->firstEventRecord([], SortOrder::Ascending);
     }
 
     public function firstEventName(): string
     {
-        return $this->data->firstEventName([], true);
+        return $this->data->firstEventName([], SortOrder::Ascending);
     }
 
     public function firstEventPlace(): string
     {
-        return $this->data->firstEventPlace([], true);
+        return $this->data->firstEventPlace([], SortOrder::Ascending);
     }
 
     public function firstEventType(): string
     {
-        return $this->data->firstEventType([], true);
+        return $this->data->firstEventType([], SortOrder::Ascending);
     }
 
     public function firstEventYear(): string
     {
-        return $this->data->firstEventYear([], true);
+        return $this->data->firstEventYear([], SortOrder::Ascending);
     }
 
     public function firstMarriage(): string
     {
-        return $this->data->firstEventRecord(['MARR'], true);
+        return $this->data->firstEventRecord(['MARR'], SortOrder::Ascending);
     }
 
     public function firstMarriageName(): string
     {
-        return $this->data->firstEventName(['MARR'], true);
+        return $this->data->firstEventName(['MARR'], SortOrder::Ascending);
     }
 
     public function firstMarriagePlace(): string
     {
-        return $this->data->firstEventPlace(['MARR'], true);
+        return $this->data->firstEventPlace(['MARR'], SortOrder::Ascending);
     }
 
     public function firstMarriageYear(): string
     {
-        return $this->data->firstEventYear(['MARR'], true);
+        return $this->data->firstEventYear(['MARR'], SortOrder::Ascending);
     }
 
     public function gedcomCreatedSoftware(): string
@@ -993,7 +995,7 @@ class Statistics
         $row = DB::table('change')
             ->where('gedcom_id', '=', $this->tree->id())
             ->where('status', '=', ChangeStatus::Accepted->value)
-            ->orderBy('change_id', 'desc')
+            ->orderBy('change_id', SortOrder::Descending->value)
             ->select(['change_time'])
             ->first();
 
@@ -1123,107 +1125,107 @@ class Statistics
 
     public function lastBirth(): string
     {
-        return $this->data->firstEventRecord(['BIRT'], false);
+        return $this->data->firstEventRecord(['BIRT'], SortOrder::Descending);
     }
 
     public function lastBirthName(): string
     {
-        return $this->data->firstEventName(['BIRT'], false);
+        return $this->data->firstEventName(['BIRT'], SortOrder::Descending);
     }
 
     public function lastBirthPlace(): string
     {
-        return $this->data->firstEventPlace(['BIRT'], false);
+        return $this->data->firstEventPlace(['BIRT'], SortOrder::Descending);
     }
 
     public function lastBirthYear(): string
     {
-        return $this->data->firstEventYear(['BIRT'], false);
+        return $this->data->firstEventYear(['BIRT'], SortOrder::Descending);
     }
 
     public function lastDeath(): string
     {
-        return $this->data->firstEventRecord(['DEAT'], false);
+        return $this->data->firstEventRecord(['DEAT'], SortOrder::Descending);
     }
 
     public function lastDeathName(): string
     {
-        return $this->data->firstEventName(['DEAT'], false);
+        return $this->data->firstEventName(['DEAT'], SortOrder::Descending);
     }
 
     public function lastDeathPlace(): string
     {
-        return $this->data->firstEventPlace(['DEAT'], false);
+        return $this->data->firstEventPlace(['DEAT'], SortOrder::Descending);
     }
 
     public function lastDeathYear(): string
     {
-        return $this->data->firstEventYear(['DEAT'], false);
+        return $this->data->firstEventYear(['DEAT'], SortOrder::Descending);
     }
 
     public function lastDivorce(): string
     {
-        return $this->data->firstEventRecord(['DIV'], false);
+        return $this->data->firstEventRecord(['DIV'], SortOrder::Descending);
     }
 
     public function lastDivorceName(): string
     {
-        return $this->data->firstEventName(['DIV'], false);
+        return $this->data->firstEventName(['DIV'], SortOrder::Descending);
     }
 
     public function lastDivorcePlace(): string
     {
-        return $this->data->firstEventPlace(['DIV'], false);
+        return $this->data->firstEventPlace(['DIV'], SortOrder::Descending);
     }
 
     public function lastDivorceYear(): string
     {
-        return $this->data->firstEventYear(['DIV'], false);
+        return $this->data->firstEventYear(['DIV'], SortOrder::Descending);
     }
 
     public function lastEvent(): string
     {
-        return $this->data->firstEventRecord([], false);
+        return $this->data->firstEventRecord([], SortOrder::Descending);
     }
 
     public function lastEventName(): string
     {
-        return $this->data->firstEventName([], false);
+        return $this->data->firstEventName([], SortOrder::Descending);
     }
 
     public function lastEventPlace(): string
     {
-        return $this->data->firstEventPlace([], false);
+        return $this->data->firstEventPlace([], SortOrder::Descending);
     }
 
     public function lastEventType(): string
     {
-        return $this->data->firstEventType([], false);
+        return $this->data->firstEventType([], SortOrder::Descending);
     }
 
     public function lastEventYear(): string
     {
-        return $this->data->firstEventYear([], false);
+        return $this->data->firstEventYear([], SortOrder::Descending);
     }
 
     public function lastMarriage(): string
     {
-        return $this->data->firstEventRecord(['MARR'], false);
+        return $this->data->firstEventRecord(['MARR'], SortOrder::Descending);
     }
 
     public function lastMarriageName(): string
     {
-        return $this->data->firstEventName(['MARR'], false);
+        return $this->data->firstEventName(['MARR'], SortOrder::Descending);
     }
 
     public function lastMarriagePlace(): string
     {
-        return $this->data->firstEventPlace(['MARR'], false);
+        return $this->data->firstEventPlace(['MARR'], SortOrder::Descending);
     }
 
     public function lastMarriageYear(): string
     {
-        return $this->data->firstEventYear(['MARR'], false);
+        return $this->data->firstEventYear(['MARR'], SortOrder::Descending);
     }
 
     public function latestUserFullName(): string
@@ -1284,7 +1286,7 @@ class Statistics
 
     public function longestLife(): string
     {
-        $row = $this->data->longlifeQuery('ALL');
+        $row = $this->data->longlifeQuery(null);
 
         if ($row === null) {
             return '';
@@ -1295,7 +1297,7 @@ class Statistics
 
     public function longestLifeAge(): string
     {
-        $row = $this->data->longlifeQuery('ALL');
+        $row = $this->data->longlifeQuery(null);
 
         if ($row === null) {
             return '';
@@ -1306,7 +1308,7 @@ class Statistics
 
     public function longestLifeFemale(): string
     {
-        $row = $this->data->longlifeQuery('F');
+        $row = $this->data->longlifeQuery(Sex::Female);
 
         if ($row === null) {
             return '';
@@ -1317,7 +1319,7 @@ class Statistics
 
     public function longestLifeFemaleAge(): string
     {
-        $row = $this->data->longlifeQuery('F');
+        $row = $this->data->longlifeQuery(Sex::Female);
 
         if ($row === null) {
             return '';
@@ -1328,12 +1330,12 @@ class Statistics
 
     public function longestLifeFemaleName(): string
     {
-        return $this->format->record($this->data->longlifeQuery('F')->individual ?? null);
+        return $this->format->record($this->data->longlifeQuery(Sex::Female)->individual ?? null);
     }
 
     public function longestLifeMale(): string
     {
-        $row = $this->data->longlifeQuery('M');
+        $row = $this->data->longlifeQuery(Sex::Male);
 
         if ($row === null) {
             return '';
@@ -1344,7 +1346,7 @@ class Statistics
 
     public function longestLifeMaleAge(): string
     {
-        $row = $this->data->longlifeQuery('M');
+        $row = $this->data->longlifeQuery(Sex::Male);
 
         if ($row === null) {
             return '';
@@ -1355,32 +1357,32 @@ class Statistics
 
     public function longestLifeMaleName(): string
     {
-        return $this->format->record($this->data->longlifeQuery('M')->individual ?? null);
+        return $this->format->record($this->data->longlifeQuery(Sex::Male)->individual ?? null);
     }
 
     public function longestLifeName(): string
     {
-        return $this->format->record($this->data->longlifeQuery('ALL')->individual ?? null);
+        return $this->format->record($this->data->longlifeQuery(null)->individual ?? null);
     }
 
     public function minAgeOfMarriage(): string
     {
-        return $this->data->ageOfMarriageQuery('age', 'ASC', 1);
+        return $this->data->ageOfMarriageQuery('age', SortOrder::Ascending, 1);
     }
 
     public function minAgeOfMarriageFamilies(string $limit = '10'): string
     {
-        return $this->data->ageOfMarriageQuery('nolist', 'ASC', (int) $limit);
+        return $this->data->ageOfMarriageQuery('nolist', SortOrder::Ascending, (int) $limit);
     }
 
     public function minAgeOfMarriageFamiliesList(string $limit = '10'): string
     {
-        return $this->data->ageOfMarriageQuery('list', 'ASC', (int) $limit);
+        return $this->data->ageOfMarriageQuery('list', SortOrder::Ascending, (int) $limit);
     }
 
     public function minAgeOfMarriageFamily(): string
     {
-        return $this->data->ageOfMarriageQuery('name', 'ASC', 1);
+        return $this->data->ageOfMarriageQuery('name', SortOrder::Ascending, 1);
     }
 
     public function noChildrenFamilies(): string
@@ -1395,62 +1397,62 @@ class Statistics
 
     public function oldestFather(): string
     {
-        return $this->data->parentsQuery('full', 'desc', 'M', false);
+        return $this->data->parentsQuery('full', SortOrder::Descending, Sex::Male, false);
     }
 
     public function oldestFatherAge(string $show_years = '0'): string
     {
-        return $this->data->parentsQuery('age', 'desc', 'M', (bool) $show_years);
+        return $this->data->parentsQuery('age', SortOrder::Descending, Sex::Male, (bool) $show_years);
     }
 
     public function oldestFatherName(): string
     {
-        return $this->data->parentsQuery('name', 'desc', 'M', false);
+        return $this->data->parentsQuery('name', SortOrder::Descending, Sex::Male, false);
     }
 
     public function oldestMarriageFemale(): string
     {
-        return $this->data->marriageQuery('full', 'desc', 'F', false);
+        return $this->data->marriageQuery('full', SortOrder::Descending, Sex::Female, false);
     }
 
     public function oldestMarriageFemaleAge(string $show_years = '0'): string
     {
-        return $this->data->marriageQuery('age', 'desc', 'F', (bool) $show_years);
+        return $this->data->marriageQuery('age', SortOrder::Descending, Sex::Female, (bool) $show_years);
     }
 
     public function oldestMarriageFemaleName(): string
     {
-        return $this->data->marriageQuery('name', 'desc', 'F', false);
+        return $this->data->marriageQuery('name', SortOrder::Descending, Sex::Female, false);
     }
 
     public function oldestMarriageMale(): string
     {
-        return $this->data->marriageQuery('full', 'desc', 'M', false);
+        return $this->data->marriageQuery('full', SortOrder::Descending, Sex::Male, false);
     }
 
     public function oldestMarriageMaleAge(string $show_years = '0'): string
     {
-        return $this->data->marriageQuery('age', 'desc', 'M', (bool) $show_years);
+        return $this->data->marriageQuery('age', SortOrder::Descending, Sex::Male, (bool) $show_years);
     }
 
     public function oldestMarriageMaleName(): string
     {
-        return $this->data->marriageQuery('name', 'desc', 'M', false);
+        return $this->data->marriageQuery('name', SortOrder::Descending, Sex::Male, false);
     }
 
     public function oldestMother(): string
     {
-        return $this->data->parentsQuery('full', 'desc', 'F', false);
+        return $this->data->parentsQuery('full', SortOrder::Descending, Sex::Female, false);
     }
 
     public function oldestMotherAge(string $show_years = '0'): string
     {
-        return $this->data->parentsQuery('age', 'desc', 'F', (bool) $show_years);
+        return $this->data->parentsQuery('age', SortOrder::Descending, Sex::Female, (bool) $show_years);
     }
 
     public function oldestMotherName(): string
     {
-        return $this->data->parentsQuery('name', 'desc', 'F', false);
+        return $this->data->parentsQuery('name', SortOrder::Descending, Sex::Female, false);
     }
 
     public function serverDate(): string
@@ -1818,7 +1820,7 @@ class Statistics
      */
     public function statsMarrAgeQuery(string $sex, int $year1 = 0, int $year2 = 0): array
     {
-        return $this->data->statsMarrAgeQuery($sex, $year1, $year2);
+        return $this->data->statsMarrAgeQuery(Sex::from($sex), $year1, $year2);
     }
 
     public function topAgeBetweenSiblings(): string
@@ -1853,22 +1855,22 @@ class Statistics
 
     public function topAgeOfMarriage(): string
     {
-        return $this->data->ageOfMarriageQuery('age', 'desc', 1);
+        return $this->data->ageOfMarriageQuery('age', SortOrder::Descending, 1);
     }
 
     public function topAgeOfMarriageFamilies(string $limit = '10'): string
     {
-        return $this->data->ageOfMarriageQuery('nolist', 'desc', (int) $limit);
+        return $this->data->ageOfMarriageQuery('nolist', SortOrder::Descending, (int) $limit);
     }
 
     public function topAgeOfMarriageFamiliesList(string $limit = '10'): string
     {
-        return $this->data->ageOfMarriageQuery('list', 'desc', (int) $limit);
+        return $this->data->ageOfMarriageQuery('list', SortOrder::Descending, (int) $limit);
     }
 
     public function topAgeOfMarriageFamily(): string
     {
-        return $this->data->ageOfMarriageQuery('name', 'desc', 1);
+        return $this->data->ageOfMarriageQuery('name', SortOrder::Descending, 1);
     }
 
     public function topTenLargestFamily(string $limit = '10'): string
@@ -1893,7 +1895,7 @@ class Statistics
 
     public function topTenOldest(string $limit = '10'): string
     {
-        $records = $this->data->topTenOldestQuery('ALL', (int) $limit)
+        $records = $this->data->topTenOldestQuery(null, (int) $limit)
             ->map(fn (object $row): array => [
                 'person' => $row->individual,
                 'age'    => $this->format->age($row->days),
@@ -1911,7 +1913,7 @@ class Statistics
             return I18N::translate('This information is private and cannot be shown.');
         }
 
-        $records = $this->data->topTenOldestAliveQuery('ALL', (int) $limit)
+        $records = $this->data->topTenOldestAliveQuery(null, (int) $limit)
             ->map(fn (Individual $individual): array => [
                 'person' => $individual,
                 'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
@@ -1925,7 +1927,7 @@ class Statistics
 
     public function topTenOldestFemale(string $limit = '10'): string
     {
-        $records = $this->data->topTenOldestQuery('F', (int) $limit)
+        $records = $this->data->topTenOldestQuery(Sex::Female, (int) $limit)
             ->map(fn (object $row): array => [
                 'person' => $row->individual,
                 'age'    => $this->format->age($row->days),
@@ -1943,7 +1945,7 @@ class Statistics
             return I18N::translate('This information is private and cannot be shown.');
         }
 
-        $records = $this->data->topTenOldestAliveQuery('F', (int) $limit)
+        $records = $this->data->topTenOldestAliveQuery(Sex::Female, (int) $limit)
             ->map(fn (Individual $individual): array => [
                 'person' => $individual,
                 'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
@@ -1957,7 +1959,7 @@ class Statistics
 
     public function topTenOldestFemaleList(string $limit = '10'): string
     {
-        $records = $this->data->topTenOldestQuery('F', (int) $limit)
+        $records = $this->data->topTenOldestQuery(Sex::Female, (int) $limit)
             ->map(fn (object $row): array => [
                 'person' => $row->individual,
                 'age'    => $this->format->age($row->days),
@@ -1975,7 +1977,7 @@ class Statistics
             return I18N::translate('This information is private and cannot be shown.');
         }
 
-        $records = $this->data->topTenOldestAliveQuery('F', (int) $limit)
+        $records = $this->data->topTenOldestAliveQuery(Sex::Female, (int) $limit)
             ->map(fn (Individual $individual): array => [
                 'person' => $individual,
                 'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
@@ -1989,7 +1991,7 @@ class Statistics
 
     public function topTenOldestList(string $limit = '10'): string
     {
-        $records = $this->data->topTenOldestQuery('ALL', (int) $limit)
+        $records = $this->data->topTenOldestQuery(null, (int) $limit)
             ->map(fn (object $row): array => [
                 'person' => $row->individual,
                 'age'    => $this->format->age($row->days),
@@ -2007,7 +2009,7 @@ class Statistics
             return I18N::translate('This information is private and cannot be shown.');
         }
 
-        $records = $this->data->topTenOldestAliveQuery('ALL', (int) $limit)
+        $records = $this->data->topTenOldestAliveQuery(null, (int) $limit)
             ->map(fn (Individual $individual): array => [
                 'person' => $individual,
                 'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
@@ -2021,7 +2023,7 @@ class Statistics
 
     public function topTenOldestMale(string $limit = '10'): string
     {
-        $records = $this->data->topTenOldestQuery('M', (int) $limit)
+        $records = $this->data->topTenOldestQuery(Sex::Male, (int) $limit)
             ->map(fn (object $row): array => [
                 'person' => $row->individual,
                 'age'    => $this->format->age($row->days),
@@ -2039,7 +2041,7 @@ class Statistics
             return I18N::translate('This information is private and cannot be shown.');
         }
 
-        $records = $this->data->topTenOldestAliveQuery('M', (int) $limit)
+        $records = $this->data->topTenOldestAliveQuery(Sex::Male, (int) $limit)
             ->map(fn (Individual $individual): array => [
                 'person' => $individual,
                 'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
@@ -2053,7 +2055,7 @@ class Statistics
 
     public function topTenOldestMaleList(string $limit = '10'): string
     {
-        $records = $this->data->topTenOldestQuery('M', (int) $limit)
+        $records = $this->data->topTenOldestQuery(Sex::Male, (int) $limit)
             ->map(fn (object $row): array => [
                 'person' => $row->individual,
                 'age'    => $this->format->age($row->days),
@@ -2071,7 +2073,7 @@ class Statistics
             return I18N::translate('This information is private and cannot be shown.');
         }
 
-        $records = $this->data->topTenOldestAliveQuery('M', (int) $limit)
+        $records = $this->data->topTenOldestAliveQuery(Sex::Male, (int) $limit)
             ->map(fn (Individual $individual): array => [
                 'person' => $individual,
                 'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
@@ -2395,52 +2397,52 @@ class Statistics
 
     public function totalSexFemales(): string
     {
-        return I18N::number($this->data->countIndividualsBySex('F'));
+        return I18N::number($this->data->countIndividualsBySex(Sex::Female));
     }
 
     public function totalSexFemalesPercentage(): string
     {
         return $this->format->percentage(
-            $this->data->countIndividualsBySex('F'),
+            $this->data->countIndividualsBySex(Sex::Female),
             $this->data->countIndividuals()
         );
     }
 
     public function totalSexMales(): string
     {
-        return I18N::number($this->data->countIndividualsBySex('M'));
+        return I18N::number($this->data->countIndividualsBySex(Sex::Male));
     }
 
     public function totalSexMalesPercentage(): string
     {
         return $this->format->percentage(
-            $this->data->countIndividualsBySex('M'),
+            $this->data->countIndividualsBySex(Sex::Male),
             $this->data->countIndividuals()
         );
     }
 
     public function totalSexOther(): string
     {
-        return I18N::number($this->data->countIndividualsBySex('X'));
+        return I18N::number($this->data->countIndividualsBySex(Sex::Other));
     }
 
     public function totalSexOtherPercentage(): string
     {
         return $this->format->percentage(
-            $this->data->countIndividualsBySex('X'),
+            $this->data->countIndividualsBySex(Sex::Other),
             $this->data->countIndividuals()
         );
     }
 
     public function totalSexUnknown(): string
     {
-        return I18N::number($this->data->countIndividualsBySex('U'));
+        return I18N::number($this->data->countIndividualsBySex(Sex::Unknown));
     }
 
     public function totalSexUnknownPercentage(): string
     {
         return $this->format->percentage(
-            $this->data->countIndividualsBySex('U'),
+            $this->data->countIndividualsBySex(Sex::Unknown),
             $this->data->countIndividuals()
         );
     }
@@ -2533,61 +2535,61 @@ class Statistics
 
     public function youngestFather(): string
     {
-        return $this->data->parentsQuery('full', 'ASC', 'M', false);
+        return $this->data->parentsQuery('full', SortOrder::Ascending, Sex::Male, false);
     }
 
     public function youngestFatherAge(string $show_years = '0'): string
     {
-        return $this->data->parentsQuery('age', 'ASC', 'M', (bool) $show_years);
+        return $this->data->parentsQuery('age', SortOrder::Ascending, Sex::Male, (bool) $show_years);
     }
 
     public function youngestFatherName(): string
     {
-        return $this->data->parentsQuery('name', 'ASC', 'M', false);
+        return $this->data->parentsQuery('name', SortOrder::Ascending, Sex::Male, false);
     }
 
     public function youngestMarriageFemale(): string
     {
-        return $this->data->marriageQuery('full', 'ASC', 'F', false);
+        return $this->data->marriageQuery('full', SortOrder::Ascending, Sex::Female, false);
     }
 
     public function youngestMarriageFemaleAge(string $show_years = '0'): string
     {
-        return $this->data->marriageQuery('age', 'ASC', 'F', (bool) $show_years);
+        return $this->data->marriageQuery('age', SortOrder::Ascending, Sex::Female, (bool) $show_years);
     }
 
     public function youngestMarriageFemaleName(): string
     {
-        return $this->data->marriageQuery('name', 'ASC', 'F', false);
+        return $this->data->marriageQuery('name', SortOrder::Ascending, Sex::Female, false);
     }
 
     public function youngestMarriageMale(): string
     {
-        return $this->data->marriageQuery('full', 'ASC', 'M', false);
+        return $this->data->marriageQuery('full', SortOrder::Ascending, Sex::Male, false);
     }
 
     public function youngestMarriageMaleAge(string $show_years = '0'): string
     {
-        return $this->data->marriageQuery('age', 'ASC', 'M', (bool) $show_years);
+        return $this->data->marriageQuery('age', SortOrder::Ascending, Sex::Male, (bool) $show_years);
     }
 
     public function youngestMarriageMaleName(): string
     {
-        return $this->data->marriageQuery('name', 'ASC', 'M', false);
+        return $this->data->marriageQuery('name', SortOrder::Ascending, Sex::Male, false);
     }
 
     public function youngestMother(): string
     {
-        return $this->data->parentsQuery('full', 'ASC', 'F', false);
+        return $this->data->parentsQuery('full', SortOrder::Ascending, Sex::Female, false);
     }
 
     public function youngestMotherAge(string $show_years = '0'): string
     {
-        return $this->data->parentsQuery('age', 'ASC', 'F', (bool) $show_years);
+        return $this->data->parentsQuery('age', SortOrder::Ascending, Sex::Female, (bool) $show_years);
     }
 
     public function youngestMotherName(): string
     {
-        return $this->data->parentsQuery('name', 'ASC', 'F', false);
+        return $this->data->parentsQuery('name', SortOrder::Ascending, Sex::Female, false);
     }
 }

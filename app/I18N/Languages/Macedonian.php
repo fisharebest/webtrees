@@ -231,9 +231,9 @@ final readonly class Macedonian extends AbstractLanguage
             Relationship::fixed(...$rel('син', 'синот'))->son(),
             Relationship::fixed(...$rel('дете', 'детето'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('сестра-близначка', 'сестрата-близначка'))->twin()->sister(),
-            Relationship::fixed(...$rel('брат-близнак', 'братот-близнак'))->twin()->brother(),
-            Relationship::fixed(...$rel('близнак', 'близнакот'))->twin()->sibling(),
+            Relationship::fixed(...$rel('сестра-близначка', 'сестрата-близначка'))->multiple()->sister(),
+            Relationship::fixed(...$rel('брат-близнак', 'братот-близнак'))->multiple()->brother(),
+            Relationship::fixed(...$rel('близнак', 'близнакот'))->multiple()->sibling(),
             Relationship::fixed(...$rel('постара сестра', 'постарата сестра'))->older()->sister(),
             Relationship::fixed(...$rel('постар брат', 'постариот брат'))->older()->brother(),
             Relationship::fixed(...$rel('помлада сестра', 'помладата сестра'))->younger()->sister(),

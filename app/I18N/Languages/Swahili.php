@@ -176,9 +176,9 @@ final readonly class Swahili extends AbstractLanguage
             Relationship::fixed(...$sw('mwana'))->son(),
             Relationship::fixed(...$sw('mtoto'))->child(),
             // Siblings — twin first
-            Relationship::fixed(...$sw('dada pacha'))->twin()->sister(),
-            Relationship::fixed(...$sw('kaka pacha'))->twin()->brother(),
-            Relationship::fixed(...$sw('ndugu pacha'))->twin()->sibling(),
+            Relationship::fixed(...$sw('dada pacha'))->multiple()->sister(),
+            Relationship::fixed(...$sw('kaka pacha'))->multiple()->brother(),
+            Relationship::fixed(...$sw('ndugu pacha'))->multiple()->sibling(),
             Relationship::fixed(...$sw('dada'))->sister(),
             Relationship::fixed(...$sw('kaka'))->brother(),
             Relationship::fixed(...$sw('ndugu'))->sibling(),

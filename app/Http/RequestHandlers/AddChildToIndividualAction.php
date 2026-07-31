@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
@@ -53,7 +54,7 @@ final class AddChildToIndividualAction implements RequestHandlerInterface
         $child  = $tree->createIndividual('0 @@ INDI' . $gedcom);
 
         // Create a new family
-        $link   = $individual->sex() === 'F' ? 'WIFE' : 'HUSB';
+        $link   = $individual->sex() === Sex::Female ? 'WIFE' : 'HUSB';
         $gedcom = "0 @@ FAM\n1 " . $link . ' @' . $individual->xref() . "@\n1 CHIL @" . $child->xref() . '@';
         $family = $tree->createFamily($gedcom);
 

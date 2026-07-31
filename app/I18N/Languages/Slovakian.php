@@ -297,9 +297,9 @@ final readonly class Slovakian extends AbstractLanguage
             Relationship::fixed('dcéra', '%s dcéry')->daughter(),
             Relationship::fixed('dieťa', '%s dieťaťa')->child(),
             // Siblings
-            Relationship::fixed('dvojička', '%s dvojičky')->twin()->sister(),
-            Relationship::fixed('dvojička', '%s dvojičky')->twin()->brother(),
-            Relationship::fixed('dvojička', '%s dvojičky')->twin()->sibling(),
+            Relationship::fixed('dvojička', '%s dvojičky')->multiple()->sister(),
+            Relationship::fixed('dvojička', '%s dvojičky')->multiple()->brother(),
+            Relationship::fixed('dvojička', '%s dvojičky')->multiple()->sibling(),
             Relationship::fixed('staršia sestra', '%s staršej sestry')->older()->sister(),
             Relationship::fixed('starší brat', '%s staršieho brata')->older()->brother(),
             Relationship::fixed('starší súrodenec', '%s staršieho súrodenca')->older()->sibling(),

@@ -182,9 +182,9 @@ final readonly class Galician extends AbstractLanguage
             Relationship::fixed(...$do('fillo'))->son(),
             Relationship::fixed(...$do('fillo/a'))->child(),
             // Siblings
-            Relationship::fixed(...$da('irmá xemelga'))->twin()->sister(),
-            Relationship::fixed(...$do('irmán xemelgo'))->twin()->brother(),
-            Relationship::fixed(...$do('xemelgo/a'))->twin()->sibling(),
+            Relationship::fixed(...$da('irmá xemelga'))->multiple()->sister(),
+            Relationship::fixed(...$do('irmán xemelgo'))->multiple()->brother(),
+            Relationship::fixed(...$do('xemelgo/a'))->multiple()->sibling(),
             Relationship::fixed(...$da('irmá maior'))->older()->sister(),
             Relationship::fixed(...$do('irmán maior'))->older()->brother(),
             Relationship::fixed(...$do('irmán/á maior'))->older()->sibling(),

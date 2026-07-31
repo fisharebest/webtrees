@@ -186,9 +186,9 @@ final readonly class Vietnamese extends AbstractLanguage
             Relationship::fixed(...$vi('con trai'))->son(),
             Relationship::fixed(...$vi('con'))->child(),
             // Siblings — elder/younger distinction
-            Relationship::fixed(...$vi('chị sinh đôi'))->twin()->sister(),
-            Relationship::fixed(...$vi('anh sinh đôi'))->twin()->brother(),
-            Relationship::fixed(...$vi('sinh đôi'))->twin()->sibling(),
+            Relationship::fixed(...$vi('chị sinh đôi'))->multiple()->sister(),
+            Relationship::fixed(...$vi('anh sinh đôi'))->multiple()->brother(),
+            Relationship::fixed(...$vi('sinh đôi'))->multiple()->sibling(),
             Relationship::fixed(...$vi('chị'))->older()->sister(),
             Relationship::fixed(...$vi('anh'))->older()->brother(),
             Relationship::fixed(...$vi('em gái'))->younger()->sister(),

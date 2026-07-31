@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Encodings\ASCII;
 use Fisharebest\Webtrees\Encodings\UTF16BE;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Encodings\Windows1252;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -439,7 +440,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $individual = Auth::checkIndividualAccess($individual);
         $name       = $individual->fullName();
 
-        if ($individual->sex() === 'F') {
+        if ($individual->sex() === Sex::Female) {
             $options = [
                 self::ADD_RECORD_ONLY       => $name,
                 self::ADD_PARENT_FAMILIES   => I18N::translate('%s, her parents and siblings', $name),

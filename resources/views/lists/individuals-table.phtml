@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
@@ -37,17 +38,17 @@ $module = Registry::container()->get(ModuleService::class)
     <div class="btn-group btn-group-sm" role="group" aria-label="<?= I18N::translate('Sex') ?>">
         <input id="<?= e($table_id) ?>-bg-sex-M" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="M" autocomplete="off" aria-label="<?= I18N::translate('Show only males.') ?>">
         <label for="<?= e($table_id) ?>-bg-sex-M" class="btn btn-outline-secondary" title="<?= I18N::translate('Show only males.') ?>">
-            <?= view('icons/sex', ['sex' => 'M']) ?>
+            <?= view('icons/sex', ['sex' => Sex::Male]) ?>
         </label>
 
         <input id="<?= e($table_id) ?>-bg-sex-F" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="F" autocomplete="off" aria-label="<?= I18N::translate('Show only females.') ?>">
         <label for="<?= e($table_id) ?>-bg-sex-F" class="btn btn-outline-secondary" title="<?= I18N::translate('Show only females.') ?>">
-            <?= view('icons/sex', ['sex' => 'F']) ?>
+            <?= view('icons/sex', ['sex' => Sex::Female]) ?>
         </label>
 
         <input id="<?= e($table_id) ?>-bg-sex-U" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="U" autocomplete="off" aria-label="<?= I18N::translate('Show only individuals for whom the sex is not known.') ?>">
         <label for="<?= e($table_id) ?>-bg-sex-U" class="btn btn-outline-secondary" title="<?= I18N::translate('Show only individuals for whom the sex is not known.') ?>">
-            <?= view('icons/sex', ['sex' => 'U']) ?>
+            <?= view('icons/sex', ['sex' => Sex::Unknown]) ?>
         </label>
     </div>
 
@@ -224,7 +225,7 @@ $module = Registry::container()->get(ModuleService::class)
 
                 <!-- Filter by sex -->
                 <td hidden="hidden">
-                    <?= $individual->sex() ?>
+                    <?= $individual->sex()->value ?>
                 </td>
 
                 <!-- Filter by birthdate -->

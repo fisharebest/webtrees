@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -16,8 +17,8 @@ use Fisharebest\Webtrees\Individual;
         <?php foreach ($family->spouses() as $spouse) : ?>
             <div class="wt-individual-list-parent">
                 <?php $spouse = clone $spouse; ?>
-                <?php $spouse->setPrimaryName(null); ?>
-                <?php if ($spouse->sex() === 'F') : ?>
+                <?php $spouse->setPrimaryName(); ?>
+                <?php if ($spouse->sex() === Sex::Female) : ?>
                     <?= I18N::translate('Mother: %s', $spouse->fullName()) ?>
                 <?php else : ?>
                     <?= I18N::translate('Father: %s', $spouse->fullName()) ?>

@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\Charts\GeoChartData;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Enums\ContactMethod;
+use Fisharebest\Webtrees\Enums\SortOrder;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Enums\TextDirection;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Module\IndividualListModule;
@@ -72,7 +74,7 @@ readonly class StatisticsData
             ->avg('f_numchil');
     }
 
-    public function averageLifespanDays(string $sex): int
+    public function averageLifespanDays(Sex|null $sex): int
     {
         return (int) $this->birthAndDeathQuery($sex)
             ->select([new Expression('AVG(' . DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ') AS days')])
@@ -82,7 +84,7 @@ readonly class StatisticsData
     /**
      * @return Collection<string,int>
      */
-    public function commonGivenNames(string $sex, int $threshold, int $limit): Collection
+    public function commonGivenNames(Sex|null $sex, int $threshold, int $limit): Collection
     {
         $query = DB::table('name')
             ->where('n_file', '=', $this->tree->id())
@@ -90,14 +92,14 @@ readonly class StatisticsData
             ->where('n_givn', '<>', Individual::PRAENOMEN_NESCIO)
             ->where(new Expression('LENGTH(n_givn)'), '>', 1);
 
-        if ($sex !== 'ALL') {
+        if ($sex !== null) {
             $query
                 ->join('individuals', static function (JoinClause $join): void {
                     $join
                         ->on('i_file', '=', 'n_file')
                         ->on('i_id', '=', 'n_id');
                 })
-                ->where('i_sex', '=', $sex);
+                ->where('i_sex', '=', $sex->value);
         }
 
         $rows = $query
@@ -137,7 +139,7 @@ readonly class StatisticsData
             ->select(['n_surn'])
             ->groupBy(['n_surn'])
             ->orderByRaw('COUNT(n_surn) DESC')
-            ->orderBy(new Expression('COUNT(n_surn)'), 'desc')
+            ->orderBy(new Expression('COUNT(n_surn)'), SortOrder::Descending->value)
             ->having(new Expression('COUNT(n_surn)'), '>=', $threshold)
             ->take($limit)
             ->pluck('n_surn')
@@ -504,11 +506,11 @@ readonly class StatisticsData
             ->count();
     }
 
-    public function countIndividualsBySex(string $sex): int
+    public function countIndividualsBySex(Sex $sex): int
     {
         return DB::table('individuals')
             ->where('i_file', '=', $this->tree->id())
-            ->where('i_sex', '=', $sex)
+            ->where('i_sex', '=', $sex->value)
             ->count();
     }
 
@@ -793,7 +795,7 @@ readonly class StatisticsData
      *
      * @return object{id:string,year:int,fact:string,type:string}|null
      */
-    private function firstEvent(array $events, bool $ascending): object|null
+    private function firstEvent(array $events, SortOrder $order): object|null
     {
         if ($events === []) {
             $events = [
@@ -809,7 +811,7 @@ readonly class StatisticsData
             ->where('d_file', '=', $this->tree->id())
             ->whereIn('d_fact', $events)
             ->where('d_julianday1', '<>', 0)
-            ->orderBy('d_julianday1', $ascending ? 'asc' : 'desc')
+            ->orderBy('d_julianday1', $order->value)
             ->limit(1)
             ->get()
             ->map(static fn (object $row): object => (object) [
@@ -824,9 +826,9 @@ readonly class StatisticsData
     /**
      * @param array<string> $events
      */
-    public function firstEventName(array $events, bool $ascending): string
+    public function firstEventName(array $events, SortOrder $order): string
     {
-        $row = $this->firstEvent($events, $ascending);
+        $row = $this->firstEvent($events, $order);
 
         if ($row !== null) {
             $record = Registry::gedcomRecordFactory()->make($row->id, $this->tree);
@@ -842,9 +844,9 @@ readonly class StatisticsData
     /**
      * @param array<string> $events
      */
-    public function firstEventPlace(array $events, bool $ascending): string
+    public function firstEventPlace(array $events, SortOrder $order): string
     {
-        $row = $this->firstEvent($events, $ascending);
+        $row = $this->firstEvent($events, $order);
 
         if ($row !== null) {
             $record = Registry::gedcomRecordFactory()->make($row->id, $this->tree);
@@ -865,9 +867,9 @@ readonly class StatisticsData
     /**
      * @param array<string> $events
      */
-    public function firstEventRecord(array $events, bool $ascending): string
+    public function firstEventRecord(array $events, SortOrder $order): string
     {
-        $row = $this->firstEvent($events, $ascending);
+        $row = $this->firstEvent($events, $order);
         $result = I18N::translate('This information is not available.');
 
         if ($row !== null) {
@@ -886,9 +888,9 @@ readonly class StatisticsData
     /**
      * @param array<string> $events
      */
-    public function firstEventType(array $events, bool $ascending): string
+    public function firstEventType(array $events, SortOrder $order): string
     {
-        $row = $this->firstEvent($events, $ascending);
+        $row = $this->firstEvent($events, $order);
 
         if ($row === null) {
             return '';
@@ -908,9 +910,9 @@ readonly class StatisticsData
     /**
      * @param array<string> $events
      */
-    public function firstEventYear(array $events, bool $ascending): string
+    public function firstEventYear(array $events, SortOrder $order): string
     {
-        $row = $this->firstEvent($events, $ascending);
+        $row = $this->firstEvent($events, $order);
 
         if ($row === null) {
             return '-';
@@ -978,7 +980,7 @@ readonly class StatisticsData
             ->where('link1.l_file', '=', $this->tree->id())
             ->distinct()
             ->select(['link1.l_from AS family', 'link1.l_to AS child1', 'link2.l_to AS child2', new Expression(DB::prefix('child2.d_julianday2') . ' - ' . DB::prefix('child1.d_julianday1') . ' AS age')])
-            ->orderBy('age', 'desc')
+            ->orderBy('age', SortOrder::Descending->value)
             ->take($limit)
             ->get()
             ->map(fn (object $row): object => (object) [
@@ -996,7 +998,7 @@ readonly class StatisticsData
     /**
      * @return Collection<int,Individual>
      */
-    public function topTenOldestAliveQuery(string $sex, int $limit): Collection
+    public function topTenOldestAliveQuery(Sex|null $sex, int $limit): Collection
     {
         $query = DB::table('dates')
             ->join('individuals', static function (JoinClause $join): void {
@@ -1011,8 +1013,8 @@ readonly class StatisticsData
             ->where('i_gedcom', 'NOT LIKE', "%\n1 BURI%")
             ->where('i_gedcom', 'NOT LIKE', "%\n1 CREM%");
 
-        if ($sex === 'F' || $sex === 'M' || $sex === 'U' || $sex === 'X') {
-            $query->where('i_sex', '=', $sex);
+        if ($sex !== null) {
+            $query->where('i_sex', '=', $sex->value);
         }
 
         return $query
@@ -1096,7 +1098,7 @@ readonly class StatisticsData
      *
      * @return array<object{days:int}>
      */
-    public function statsAgeQuery(string $sex, int $year1, int $year2): array
+    public function statsAgeQuery(Sex|null $sex, int $year1, int $year2): array
     {
         $query = $this->birthAndDeathQuery($sex);
 
@@ -1109,13 +1111,13 @@ readonly class StatisticsData
 
         return $query
             ->select([new Expression(DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' AS days')])
-            ->orderBy('days', 'desc')
+            ->orderBy('days', SortOrder::Descending->value)
             ->get()
             ->map(static fn (object $row): object => (object) ['days' => (int) $row->days])
             ->all();
     }
 
-    private function birthAndDeathQuery(string $sex): Builder
+    private function birthAndDeathQuery(Sex|null $sex): Builder
     {
         $query = DB::table('individuals')
             ->where('i_file', '=', $this->tree->id())
@@ -1134,8 +1136,8 @@ readonly class StatisticsData
             ->whereColumn('death.d_julianday1', '>=', 'birth.d_julianday2')
             ->where('birth.d_julianday2', '<>', 0);
 
-        if ($sex !== 'ALL') {
-            $query->where('i_sex', '=', $sex);
+        if ($sex !== null) {
+            $query->where('i_sex', '=', $sex->value);
         }
 
         return $query;
@@ -1144,10 +1146,10 @@ readonly class StatisticsData
     /**
      * @return object{individual:Individual,days:int}|null
      */
-    public function longlifeQuery(string $sex): object|null
+    public function longlifeQuery(Sex|null $sex): object|null
     {
         return $this->birthAndDeathQuery($sex)
-            ->orderBy('days', 'desc')
+            ->orderBy('days', SortOrder::Descending->value)
             ->select(['individuals.*', new Expression(DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' AS days')])
             ->take(1)
             ->get()
@@ -1161,11 +1163,11 @@ readonly class StatisticsData
     /**
      * @return Collection<int,object{individual:Individual,days:int}>
      */
-    public function topTenOldestQuery(string $sex, int $limit): Collection
+    public function topTenOldestQuery(Sex|null $sex, int $limit): Collection
     {
         return $this->birthAndDeathQuery($sex)
             ->groupBy(['i_id', 'i_file', 'i_rin', 'i_sex', 'i_gedcom'])
-            ->orderBy('days', 'desc')
+            ->orderBy('days', SortOrder::Descending->value)
             ->select(['individuals.*', new Expression('MAX(' . DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ') AS days')])
             ->take($limit)
             ->get()
@@ -1444,7 +1446,7 @@ readonly class StatisticsData
             })
             ->where('f_file', '=', $this->tree->id())
             ->groupBy(['f_id', 'f_file', 'f_husb', 'f_wife', 'f_gedcom', 'f_numchil'])
-            ->orderBy(new Expression('COUNT(*)'), 'desc')
+            ->orderBy(new Expression('COUNT(*)'), SortOrder::Descending->value)
             ->select(['families.*'])
             ->limit($limit)
             ->get()
@@ -1617,7 +1619,7 @@ readonly class StatisticsData
     {
         return DB::table('families')
             ->where('f_file', '=', $this->tree->id())
-            ->orderBy('f_numchil', 'desc')
+            ->orderBy('f_numchil', SortOrder::Descending->value)
             ->limit($limit)
             ->get()
             ->map(Registry::familyFactory()->mapper($this->tree))
@@ -1647,17 +1649,12 @@ readonly class StatisticsData
         ]);
     }
 
-    public function parentsQuery(string $type, string $age_dir, string $sex, bool $show_years): string
+    public function parentsQuery(string $type, SortOrder $order, Sex $sex, bool $show_years): string
     {
-        if ($sex === 'F') {
-            $sex_field = 'WIFE';
-        } else {
-            $sex_field = 'HUSB';
-        }
-
-        if ($age_dir !== 'asc') {
-            $age_dir = 'desc';
-        }
+        $sex_field = match ($sex) {
+            Sex::Female => 'WIFE',
+            default     => 'HUSB',
+        };
 
         $row = DB::table('link AS parentfamily')
             ->join('link AS childfamily', static function (JoinClause $join): void {
@@ -1684,7 +1681,7 @@ readonly class StatisticsData
             ->where('childbirth.d_julianday2', '>', new Expression(DB::prefix('birth.d_julianday1')))
             ->select(['parentfamily.l_to AS id', new Expression(DB::prefix('childbirth.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' AS age')])
             ->take(1)
-            ->orderBy('age', $age_dir)
+            ->orderBy('age', $order->value)
             ->get()
             ->first();
 
@@ -1725,10 +1722,8 @@ readonly class StatisticsData
 
     /**
      * General query on age at marriage.
-     *
-     * @param string $age_dir "ASC" or "DESC"
      */
-    public function ageOfMarriageQuery(string $type, string $age_dir, int $limit): string
+    public function ageOfMarriageQuery(string $type, SortOrder $order, int $limit): string
     {
         $hrows = DB::table('families')
             ->where('f_file', '=', $this->tree->id())
@@ -1812,7 +1807,7 @@ readonly class StatisticsData
             }
         }
 
-        if ($age_dir === 'desc') {
+        if ($order === SortOrder::Descending) {
             arsort($rows);
         } else {
             asort($rows);
@@ -1886,7 +1881,7 @@ readonly class StatisticsData
     /**
      * @return array<array{family:Family,age:string}>
      */
-    private function ageBetweenSpousesQuery(string $age_dir, int $limit): array
+    private function ageBetweenSpousesQuery(SortOrder $order, int $limit): array
     {
         $query = DB::table('families')
             ->where('f_file', '=', $this->tree->id())
@@ -1905,7 +1900,7 @@ readonly class StatisticsData
                     ->where('husb.d_julianday1', '<>', 0);
             });
 
-        if ($age_dir === 'desc') {
+        if ($order === SortOrder::Descending) {
             $query
                 ->whereColumn('wife.d_julianday1', '>=', 'husb.d_julianday1')
                 ->orderBy(new Expression('MIN(' . DB::prefix('wife.d_julianday1') . ') - MIN(' . DB::prefix('husb.d_julianday1') . ')'), 'desc');
@@ -1922,11 +1917,11 @@ readonly class StatisticsData
             ->get()
             ->map(Registry::familyFactory()->mapper($this->tree))
             ->filter(GedcomRecord::accessFilter())
-            ->map(function (Family $family) use ($age_dir): array {
+            ->map(function (Family $family) use ($order): array {
                 $husb_birt_jd = $family->husband()->getBirthDate()->minimumJulianDay();
                 $wife_birt_jd = $family->wife()->getBirthDate()->minimumJulianDay();
 
-                if ($age_dir === 'desc') {
+                if ($order === SortOrder::Descending) {
                     $diff = $wife_birt_jd - $husb_birt_jd;
                 } else {
                     $diff = $husb_birt_jd - $wife_birt_jd;
@@ -1942,7 +1937,7 @@ readonly class StatisticsData
 
     public function ageBetweenSpousesMF(int $limit = 10): string
     {
-        $records = $this->ageBetweenSpousesQuery('desc', $limit);
+        $records = $this->ageBetweenSpousesQuery(SortOrder::Descending, $limit);
 
         return view('statistics/families/top10-nolist-spouses', [
             'records' => $records,
@@ -1951,7 +1946,7 @@ readonly class StatisticsData
 
     public function ageBetweenSpousesMFList(int $limit = 10): string
     {
-        $records = $this->ageBetweenSpousesQuery('desc', $limit);
+        $records = $this->ageBetweenSpousesQuery(SortOrder::Descending, $limit);
 
         return view('statistics/families/top10-list-spouses', [
             'records' => $records,
@@ -1961,32 +1956,37 @@ readonly class StatisticsData
     public function ageBetweenSpousesFM(int $limit = 10): string
     {
         return view('statistics/families/top10-nolist-spouses', [
-            'records' => $this->ageBetweenSpousesQuery('asc', $limit),
+            'records' => $this->ageBetweenSpousesQuery(SortOrder::Ascending, $limit),
         ]);
     }
 
     public function ageBetweenSpousesFMList(int $limit = 10): string
     {
         return view('statistics/families/top10-list-spouses', [
-            'records' => $this->ageBetweenSpousesQuery('asc', $limit),
+            'records' => $this->ageBetweenSpousesQuery(SortOrder::Ascending, $limit),
         ]);
     }
 
     /**
      * @return array<object{f_id:string,d_gid:string,age:int}>
      */
-    public function statsMarrAgeQuery(string $sex, int $year1, int $year2): array
+    public function statsMarrAgeQuery(Sex $sex, int $year1, int $year2): array
     {
+        $spouse_field = match ($sex) {
+            Sex::Female => 'f_wife',
+            default     => 'f_husb',
+        };
+
         $query = DB::table('dates AS married')
             ->join('families', static function (JoinClause $join): void {
                 $join
                     ->on('f_file', '=', 'married.d_file')
                     ->on('f_id', '=', 'married.d_gid');
             })
-            ->join('dates AS birth', static function (JoinClause $join) use ($sex): void {
+            ->join('dates AS birth', static function (JoinClause $join) use ($spouse_field): void {
                 $join
                     ->on('birth.d_file', '=', 'married.d_file')
-                    ->on('birth.d_gid', '=', $sex === 'M' ? 'f_husb' : 'f_wife')
+                    ->on('birth.d_gid', '=', $spouse_field)
                     ->where('birth.d_julianday1', '<>', 0)
                     ->where('birth.d_fact', '=', 'BIRT')
                     ->whereIn('birth.d_type', ['@#DGREGORIAN@', '@#DJULIAN@']);
@@ -2015,20 +2015,13 @@ readonly class StatisticsData
      * Query the database for marriage tags.
      *
      * @param string $show    "full", "name" or "age"
-     * @param string $age_dir "ASC" or "DESC"
-     * @param string $sex     "F" or "M"
      */
-    public function marriageQuery(string $show, string $age_dir, string $sex, bool $show_years): string
+    public function marriageQuery(string $show, SortOrder $order, Sex $sex, bool $show_years): string
     {
-        if ($sex === 'F') {
-            $sex_field = 'f_wife';
-        } else {
-            $sex_field = 'f_husb';
-        }
-
-        if ($age_dir !== 'asc') {
-            $age_dir = 'desc';
-        }
+        $sex_field = match ($sex) {
+            Sex::Female => 'f_wife',
+            default     => 'f_husb',
+        };
 
         $row = DB::table('families')
             ->join('dates AS married', static function (JoinClause $join): void {
@@ -2052,7 +2045,7 @@ readonly class StatisticsData
             })
             ->where('f_file', '=', $this->tree->id())
             ->where('married.d_julianday2', '>', new Expression(DB::prefix('birth.d_julianday1')))
-            ->orderBy(new Expression(DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1')), $age_dir)
+            ->orderBy(new Expression(DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1')), $order->value)
             ->select(['f_id AS famid', $sex_field, new Expression(DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' AS age'), 'i_id'])
             ->take(1)
             ->get()

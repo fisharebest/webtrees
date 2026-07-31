@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
@@ -239,24 +240,14 @@ $hundred_years_ago = Registry::timestampFactory()->todayJulianDay() - 36525;
                         Y
                     <?php endif ?>
                     <?php if ($husb->isDead() && !$wife->isDead()) : ?>
-                        <?php if ($wife->sex() === 'F') : ?>
-                            H
-                        <?php endif ?>
-                        <?php if ($wife->sex() === 'M') : ?>
-                            W
-                        <?php endif ?>
+                        <?php if ($wife->sex() === Sex::Female) : ?>H<?php endif ?>
+                        <?php if ($wife->sex() === Sex::Male) : ?>W<?php endif ?>
                     <?php endif ?>
                     <?php if (!$husb->isDead() && $wife->isDead()) : ?>
-                        <?php if ($husb->sex() === 'M') : ?>
-                            W
-                        <?php endif ?>
-                        <?php if ($husb->sex() === 'F') : ?>
-                            H
-                        <?php endif ?>
+                        <?php if ($husb->sex() === Sex::Male) : ?>W<?php endif ?>
+                        <?php if ($husb->sex() === Sex::Female) : ?>H<?php endif ?>
                     <?php endif ?>
-                    <?php if (!$husb->isDead() && !$wife->isDead()) : ?>
-                        N
-                    <?php endif ?>
+                    <?php if (!$husb->isDead() && !$wife->isDead()) : ?>N<?php endif ?>
                 </td>
 
                 <!-- Filter by roots/leaves -->

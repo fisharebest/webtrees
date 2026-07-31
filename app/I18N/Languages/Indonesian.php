@@ -190,9 +190,9 @@ final readonly class Indonesian extends AbstractLanguage
             Relationship::fixed(...$id('anak laki-laki'))->son(),
             Relationship::fixed(...$id('anak'))->child(),
             // Siblings — elder/younger distinction
-            Relationship::fixed(...$id('saudara perempuan kembar'))->twin()->sister(),
-            Relationship::fixed(...$id('saudara laki-laki kembar'))->twin()->brother(),
-            Relationship::fixed(...$id('saudara kembar'))->twin()->sibling(),
+            Relationship::fixed(...$id('saudara perempuan kembar'))->multiple()->sister(),
+            Relationship::fixed(...$id('saudara laki-laki kembar'))->multiple()->brother(),
+            Relationship::fixed(...$id('saudara kembar'))->multiple()->sibling(),
             Relationship::fixed(...$id('kakak perempuan'))->older()->sister(),
             Relationship::fixed(...$id('kakak laki-laki'))->older()->brother(),
             Relationship::fixed(...$id('adik perempuan'))->younger()->sister(),

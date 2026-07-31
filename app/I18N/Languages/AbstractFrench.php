@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\I18N\Languages;
 
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Enums\PluralRule;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Relationship;
 
 abstract readonly class AbstractFrench extends AbstractLanguage
@@ -141,18 +143,6 @@ abstract readonly class AbstractFrench extends AbstractLanguage
         ],
     ];
 
-    protected const array ASYMMETRIC_COUSINS = [
-        1  => [
-            'F' => ['down', 'petite-cousine', 'de la '],
-            'M' => ['down', 'petit-cousin', 'du '],
-            'U' => ['down', 'petit-cousin', 'du '],
-        ],
-        -1 => [
-            'F' => ['up', 'grand-cousine', 'de la '],
-            'M' => ['up', 'grand-cousin', 'du '],
-            'U' => ['up', 'grand-cousin', 'du '],
-        ],
-    ];
 
     protected function formatFromToDate(string $date1, string $date2): string
     {
@@ -206,43 +196,6 @@ abstract readonly class AbstractFrench extends AbstractLanguage
      */
     public function relationships(): array
     {
-        // Construct the genitive form in French
-        $genitive = static fn (string $s, string $genitive_link): array => [$s, '%s ' . $genitive_link . $s];
-
-        // Functions to coumpound the name that can be indefinitely repeated
-        $degree = static fn (int $n, string $suffix, string $genitive_link): array => $genitive($suffix . ' au ' . $n . '<sup>e</sup> degré', $genitive_link);
-
-        $great = static fn (int $n, string $suffix, string $genitive_link): array => $n <= 1 ? $genitive('arrière-' . $suffix, 'de l’') : $degree($n + 1, $suffix, $genitive_link);
-
-        $firstCompound = static fn (int $n, string $suffix, string $genitive_link): array => $n <= 1 ? $genitive($suffix, $genitive_link) : $great($n - 1, $suffix, $genitive_link);
-
-        $compound =
-            static fn (int $n, string $first_level, string $suffix, string $genitive_none, string $genitive_first): array => $n <= 1 ? $genitive($suffix, $genitive_none) : $firstCompound($n - 1, $first_level . $suffix, $genitive_first);
-
-        // Functions to translate cousins' degree of relationship
-        $symmetricCousin = static fn (int $n, string $sex): array => self::SYMMETRIC_COUSINS[$n][$sex] ?? $genitive(
-            $sex === 'F' ? 'cousine au ' . $n . '<sup>e</sup> degré' : 'cousin au ' . $n . '<sup>e</sup> degré',
-            $sex === 'F' ? 'de la ' : 'du ',
-        );
-
-        $cousin =
-            static function (int $up, int $down, string $sex) use ($symmetricCousin, $firstCompound, $genitive): array {
-                if ($up === $down) {
-                    return $symmetricCousin($up, $sex);
-                }
-                $fixed = self::ASYMMETRIC_COUSINS[$up][$sex] ?? self::ASYMMETRIC_COUSINS[-$down][$sex] ?? null;
-                if ($fixed !== null) {
-                    $fixed[0] = $fixed[0] === 'up' ? $up - 1 : $down - 1;
-                    return $firstCompound(...$fixed);
-                }
-                return $genitive(
-                    $sex === 'F' ?
-                        'cousine du ' . $down . '<sup>e</sup> au ' . $up . '<sup>e</sup> degré' :
-                        'cousin du ' . $down . '<sup>e</sup> au ' . $up . '<sup>e</sup> degré',
-                    $sex === 'F' ? 'de la ' : 'du ',
-                );
-            };
-
         return [
             // Adopted
             Relationship::fixed('mère adoptive', '%s de la mère adoptive')->adoptive()->mother(),
@@ -279,9 +232,9 @@ abstract readonly class AbstractFrench extends AbstractLanguage
             Relationship::fixed('fils', '%s du fils')->son(),
             Relationship::fixed('enfant', '%s de l’enfant')->child(),
             // Siblings
-            Relationship::fixed('sœur jumelle', '%s de la sœur jumelle')->twin()->sister(),
-            Relationship::fixed('frère jumeau', '%s du frère jumeau')->twin()->brother(),
-            Relationship::fixed('jumeau', '%s du jumeau')->twin()->sibling(),
+            Relationship::fixed('sœur jumelle', '%s de la sœur jumelle')->multiple()->sister(),
+            Relationship::fixed('frère jumeau', '%s du frère jumeau')->multiple()->brother(),
+            Relationship::fixed('jumeau', '%s du jumeau')->multiple()->sibling(),
             Relationship::fixed('grande sœur', '%s de la grande sœur')->older()->sister(),
             Relationship::fixed('grand frère', '%s du grand frère')->older()->brother(),
             Relationship::fixed('grand frère/sœur', '%s du grand frère/sœur')->older()->sibling(),
@@ -340,32 +293,158 @@ abstract readonly class AbstractFrench extends AbstractLanguage
             Relationship::fixed('trisaïeul paternel', '%s du trisaïeul paternel')->father()->parent()->parent()->father(),
             Relationship::fixed('trisaïeule', '%s de la trisaïeule')->parent()->parent()->parent()->mother(),
             Relationship::fixed('trisaïeul', '%s du trisaïeul')->parent()->parent()->parent()->father(),
-            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-mère maternelle', 'de la '))->mother()->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-père maternel', 'du '))->mother()->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-parent maternel', 'du '))->mother()->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-mère paternelle', 'de la '))->father()->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-père paternel', 'du '))->father()->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-parent paternel', 'du '))->father()->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-mère', 'de la '))->parent()->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-père', 'du '))->parent()->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-parent', 'du '))->parent()->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->firstCompound($n, 'grand-mère maternelle', 'de la '))->mother()->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->firstCompound($n, 'grand-père maternel', 'du '))->mother()->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->firstCompound($n, 'grand-parent maternel', 'du '))->mother()->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->firstCompound($n, 'grand-mère paternelle', 'de la '))->father()->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->firstCompound($n, 'grand-père paternel', 'du '))->father()->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->firstCompound($n, 'grand-parent paternel', 'du '))->father()->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->firstCompound($n, 'grand-mère', 'de la '))->parent()->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->firstCompound($n, 'grand-père', 'du '))->parent()->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->firstCompound($n, 'grand-parent', 'du '))->parent()->ancestor(),
             // Grandchildren and below
-            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'petite-fille', 'de la '))->child()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'petit-fils', 'du '))->child()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'petit-enfant', 'du '))->child()->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->firstCompound($n, 'petite-fille', 'de la '))->child()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->firstCompound($n, 'petit-fils', 'du '))->child()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->firstCompound($n, 'petit-enfant', 'du '))->child()->descendant(),
             // Collateral relatives
-            Relationship::dynamic(static fn (int $n) => $compound($n, 'grand-', 'tante', 'de la ', 'de la '))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $compound($n, 'grand-', 'tante par alliance', 'de la ', 'de la '))->ancestor()->sibling()->wife(),
-            Relationship::dynamic(static fn (int $n) => $compound($n, 'grand-', 'oncle', 'de l’', 'du '))->ancestor()->brother(),
-            Relationship::dynamic(static fn (int $n) => $compound($n, 'grand-', 'oncle par alliance', 'de l’', 'du '))->ancestor()->sibling()->husband(),
-            Relationship::dynamic(static fn (int $n) => $compound($n, 'petite-', 'nièce', 'de la ', 'de la '))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $compound($n, 'petite-', 'nièce par alliance', 'de la ', 'de la '))->married()->spouse()->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $compound($n, 'petit-', 'neveu', 'du ', 'du '))->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $compound($n, 'petit-', 'neveu par alliance', 'du ', 'du '))->married()->spouse()->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->compound($n, 'grand-', 'tante', 'de la ', 'de la '))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->compound($n, 'grand-', 'tante par alliance', 'de la ', 'de la '))->ancestor()->sibling()->wife(),
+            Relationship::dynamic(fn (int $n) => $this->compound($n, 'grand-', 'oncle', 'de l’', 'du '))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->compound($n, 'grand-', 'oncle par alliance', 'de l’', 'du '))->ancestor()->sibling()->husband(),
+            Relationship::dynamic(fn (int $n) => $this->compound($n, 'petite-', 'nièce', 'de la ', 'de la '))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->compound($n, 'petite-', 'nièce par alliance', 'de la ', 'de la '))->married()->spouse()->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->compound($n, 'petit-', 'neveu', 'du ', 'du '))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->compound($n, 'petit-', 'neveu par alliance', 'du ', 'du '))->married()->spouse()->sibling()->descendant()->male(),
             // Cousins (based on canon law)
-            Relationship::dynamic(static fn (int $up, int $down) => $cousin($up, $down, 'F'))->cousin()->female(),
-            Relationship::dynamic(static fn (int $up, int $down) => $cousin($up, $down, 'M'))->cousin()->male(),
-
+            Relationship::dynamic(fn (int $up, int $down) => $this->cousin($up, $down, Sex::Female))->cousin()->female(),
+            Relationship::dynamic(fn (int $up, int $down) => $this->cousin($up, $down, Sex::Male))->cousin()->male(),
         ];
+    }
+
+    /**
+     * Construct the genitive form in French: [name, genitive format].
+     *
+     * @return array{string, string}
+     */
+    private function genitive(string $subject, string $genitive_link): array
+    {
+        return [$subject, '%s ' . $genitive_link . $subject];
+    }
+
+    /**
+     * Construct a relationship name with a degree suffix for distant relationships.
+     *
+     * @return array{string, string}
+     */
+    private function degree(int $n, string $suffix, string $genitive_link): array
+    {
+        return $this->genitive($suffix . ' au ' . $n . UTF8::SUPERSCRIPT_LATIN_SMALL_LETTER_E . ' degré', $genitive_link);
+    }
+
+    /**
+     * Apply the "arrière-" prefix, or fall back to degree notation for higher levels.
+     *
+     * @return array{string, string}
+     */
+    private function great(int $n, string $suffix, string $genitive_link): array
+    {
+        if ($n <= 1) {
+            return $this->genitive('arrière-' . $suffix, 'de l’');
+        }
+
+        return $this->degree($n + 1, $suffix, $genitive_link);
+    }
+
+    /**
+     * Build the first compound level of a relationship name (e.g. grand-mère, arrière-grand-mère).
+     *
+     * @return array{string, string}
+     */
+    private function firstCompound(int $n, string $suffix, string $genitive_link): array
+    {
+        if ($n <= 1) {
+            return $this->genitive($suffix, $genitive_link);
+        }
+
+        return $this->great($n - 1, $suffix, $genitive_link);
+    }
+
+    /**
+     * Build a compound relationship name with an optional first-level prefix (e.g. grand-tante, petite-nièce).
+     *
+     * @return array{string, string}
+     */
+    private function compound(int $n, string $first_level, string $suffix, string $genitive_none, string $genitive_first): array
+    {
+        if ($n <= 1) {
+            return $this->genitive($suffix, $genitive_none);
+        }
+
+        return $this->firstCompound($n - 1, $first_level . $suffix, $genitive_first);
+    }
+
+    /**
+     * Translate symmetric cousin relationships (where both paths have equal length).
+     *
+     * @return array{string, string}
+     */
+    private function symmetricCousin(int $n, Sex $sex): array
+    {
+        if ($n === 1) {
+            return match ($sex) {
+                Sex::Female => ['cousine germaine', '%s de la cousine germaine'],
+                default     => ['cousin germain', '%s du cousin germain'],
+            };
+        }
+
+        if ($n === 2) {
+            return match ($sex) {
+                Sex::Female => ['cousine issue de germain', '%s de la cousine issue de germain'],
+                default     => ['cousin issu de germain', '%s du cousin issu de germain'],
+            };
+        }
+
+        $ordinal = UTF8::SUPERSCRIPT_LATIN_SMALL_LETTER_E;
+
+        return match ($sex) {
+            Sex::Female => $this->genitive('cousine au ' . $n . $ordinal . ' degré', 'de la '),
+            default     => $this->genitive('cousin au ' . $n . $ordinal . ' degré', 'du '),
+        };
+    }
+
+    /**
+     * Translate cousin relationships based on canon law, handling both symmetric and asymmetric paths.
+     *
+     * @return array{string, string}
+     */
+    private function cousin(int $up, int $down, Sex $sex): array
+    {
+        if ($up === $down) {
+            return $this->symmetricCousin($up, $sex);
+        }
+
+        // Petit-cousin(e): the cousin is closer to the common ancestor than we are
+        if ($up === 1) {
+            return match ($sex) {
+                Sex::Female => $this->firstCompound($down - 1, 'petite-cousine', 'de la '),
+                default     => $this->firstCompound($down - 1, 'petit-cousin', 'du '),
+            };
+        }
+
+        // Grand-cousin(e): the cousin is further from the common ancestor than we are
+        if ($down === 1) {
+            return match ($sex) {
+                Sex::Female => $this->firstCompound($up - 1, 'grand-cousine', 'de la '),
+                default     => $this->firstCompound($up - 1, 'grand-cousin', 'du '),
+            };
+        }
+
+        // General asymmetric case: describe by degree
+        $ordinal = UTF8::SUPERSCRIPT_LATIN_SMALL_LETTER_E;
+
+        return match ($sex) {
+            Sex::Female => $this->genitive('cousine du ' . $down . $ordinal . ' au ' . $up . $ordinal . ' degré', 'de la '),
+            default     => $this->genitive('cousin du ' . $down . $ordinal . ' au ' . $up . $ordinal . ' degré', 'du '),
+        };
     }
 }

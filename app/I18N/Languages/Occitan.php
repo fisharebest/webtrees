@@ -213,9 +213,9 @@ final readonly class Occitan extends AbstractLanguage
             Relationship::fixed(...$del('filh'))->son(),
             Relationship::fixed(...$del('filh/a'))->child(),
             // Siblings
-            Relationship::fixed(...$de_la('sòrre jumèla'))->twin()->sister(),
-            Relationship::fixed(...$del('frair jumèl'))->twin()->brother(),
-            Relationship::fixed(...$del('jumèl/a'))->twin()->sibling(),
+            Relationship::fixed(...$de_la('sòrre jumèla'))->multiple()->sister(),
+            Relationship::fixed(...$del('frair jumèl'))->multiple()->brother(),
+            Relationship::fixed(...$del('jumèl/a'))->multiple()->sibling(),
             Relationship::fixed(...$de_la('sòrre granda'))->older()->sister(),
             Relationship::fixed(...$del('frair grand'))->older()->brother(),
             Relationship::fixed(...$del('frair/sòrre grand/a'))->older()->sibling(),

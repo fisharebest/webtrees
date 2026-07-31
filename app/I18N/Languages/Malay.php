@@ -176,9 +176,9 @@ final readonly class Malay extends AbstractLanguage
             Relationship::fixed(...$ms('anak lelaki'))->son(),
             Relationship::fixed(...$ms('anak'))->child(),
             // Siblings — elder/younger distinction
-            Relationship::fixed(...$ms('adik-beradik perempuan kembar'))->twin()->sister(),
-            Relationship::fixed(...$ms('adik-beradik lelaki kembar'))->twin()->brother(),
-            Relationship::fixed(...$ms('adik-beradik kembar'))->twin()->sibling(),
+            Relationship::fixed(...$ms('adik-beradik perempuan kembar'))->multiple()->sister(),
+            Relationship::fixed(...$ms('adik-beradik lelaki kembar'))->multiple()->brother(),
+            Relationship::fixed(...$ms('adik-beradik kembar'))->multiple()->sibling(),
             Relationship::fixed(...$ms('kakak perempuan'))->older()->sister(),
             Relationship::fixed(...$ms('abang'))->older()->brother(),
             Relationship::fixed(...$ms('adik perempuan'))->younger()->sister(),

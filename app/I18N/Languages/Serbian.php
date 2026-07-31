@@ -269,9 +269,9 @@ final readonly class Serbian extends AbstractLanguage
             Relationship::fixed(...$rel('син', 'сина'))->son(),
             Relationship::fixed(...$rel('дете', 'детета'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('сестра близнакиња', 'сестре близнакиње'))->twin()->sister(),
-            Relationship::fixed(...$rel('брат близанац', 'брата близанца'))->twin()->brother(),
-            Relationship::fixed(...$rel('близанац', 'близанца'))->twin()->sibling(),
+            Relationship::fixed(...$rel('сестра близнакиња', 'сестре близнакиње'))->multiple()->sister(),
+            Relationship::fixed(...$rel('брат близанац', 'брата близанца'))->multiple()->brother(),
+            Relationship::fixed(...$rel('близанац', 'близанца'))->multiple()->sibling(),
             Relationship::fixed(...$rel('старија сестра', 'старије сестре'))->older()->sister(),
             Relationship::fixed(...$rel('старији брат', 'старијег брата'))->older()->brother(),
             Relationship::fixed(...$rel('млађа сестра', 'млађе сестре'))->younger()->sister(),

@@ -573,6 +573,7 @@ class UTF8 extends AbstractEncoding
     public const string SUNDANESE_DIGIT_SEVEN                                 = "\u{1BB7}";
     public const string SUNDANESE_DIGIT_EIGHT                                 = "\u{1BB8}";
     public const string SUNDANESE_DIGIT_NINE                                  = "\u{1BB9}";
+    public const string SUPERSCRIPT_LATIN_SMALL_LETTER_E                      = "\u{1D49}";
     public const string LATIN_CAPITAL_LETTER_A_WITH_RING_BELOW                = "\u{1E00}";
     public const string LATIN_SMALL_LETTER_A_WITH_RING_BELOW                  = "\u{1E01}";
     public const string LATIN_CAPITAL_LETTER_B_WITH_DOT_ABOVE                 = "\u{1E02}";

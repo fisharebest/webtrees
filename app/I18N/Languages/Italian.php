@@ -265,9 +265,9 @@ final readonly class Italian extends AbstractLanguage
             Relationship::fixed(...$del('figlio'))->son(),
             Relationship::fixed(...$del('figlio/a'))->child(),
             // Siblings
-            Relationship::fixed(...$della('sorella gemella'))->twin()->sister(),
-            Relationship::fixed(...$del('fratello gemello'))->twin()->brother(),
-            Relationship::fixed(...$del('gemello/a'))->twin()->sibling(),
+            Relationship::fixed(...$della('sorella gemella'))->multiple()->sister(),
+            Relationship::fixed(...$del('fratello gemello'))->multiple()->brother(),
+            Relationship::fixed(...$del('gemello/a'))->multiple()->sibling(),
             Relationship::fixed(...$della('sorella maggiore'))->older()->sister(),
             Relationship::fixed(...$del('fratello maggiore'))->older()->brother(),
             Relationship::fixed(...$del('fratello/sorella maggiore'))->older()->sibling(),

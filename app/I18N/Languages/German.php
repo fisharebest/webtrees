@@ -227,9 +227,9 @@ final readonly class German extends AbstractLanguage
             Relationship::fixed(...$des('Sohn', 'Sohnes'))->son(),
             Relationship::fixed(...$des('Kind', 'Kindes'))->child(),
             // Siblings
-            Relationship::fixed(...$der('Zwillingsschwester'))->twin()->sister(),
-            Relationship::fixed(...$des('Zwillingsbruder', 'Zwillingsbruders'))->twin()->brother(),
-            Relationship::fixed(...$des('Zwillingsgeschwister', 'Zwillingsgeschwisters'))->twin()->sibling(),
+            Relationship::fixed(...$der('Zwillingsschwester'))->multiple()->sister(),
+            Relationship::fixed(...$des('Zwillingsbruder', 'Zwillingsbruders'))->multiple()->brother(),
+            Relationship::fixed(...$des('Zwillingsgeschwister', 'Zwillingsgeschwisters'))->multiple()->sibling(),
             Relationship::fixed(...$der('große Schwester'))->older()->sister(),
             Relationship::fixed(...$des('großer Bruder', 'großen Bruders'))->older()->brother(),
             Relationship::fixed(...$des('älteres Geschwister', 'älteren Geschwisters'))->older()->sibling(),

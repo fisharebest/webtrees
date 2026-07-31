@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
@@ -60,8 +61,8 @@ final class AddSpouseToIndividualAction implements RequestHandlerInterface
         $tags   = Validator::parsedBody($request)->list('ftags');
         $values = Validator::parsedBody($request)->list('fvalues');
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Family::RECORD_TYPE, $levels, $tags, $values);
-        $i_link = "\n1 " . ($individual->sex() === 'F' ? 'WIFE' : 'HUSB') . ' @' . $individual->xref() . '@';
-        $s_link = "\n1 " . ($individual->sex() !== 'F' ? 'WIFE' : 'HUSB') . ' @' . $spouse->xref() . '@';
+        $i_link = "\n1 " . ($individual->sex() === Sex::Female ? 'WIFE' : 'HUSB') . ' @' . $individual->xref() . '@';
+        $s_link = "\n1 " . ($individual->sex() !== Sex::Female ? 'WIFE' : 'HUSB') . ' @' . $spouse->xref() . '@';
         $family = $tree->createFamily('0 @@ FAM' . $gedcom . $i_link . $s_link);
 
         // Link the individual to the family

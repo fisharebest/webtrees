@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Charts\BarChartData;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -483,7 +484,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows   = $statistics_data->statsAgeQuery('ALL', 0, 0);
+                        $rows   = $statistics_data->statsAgeQuery(null, 0, 0);
                         foreach ($rows as $row) {
                             $years = (int) ($row->days / self::DAYS_IN_YEAR);
                             $this->fillYData($years, 0, 1, $x_axis, $z_axis, $ydata);
@@ -492,7 +493,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
                         foreach (array_keys($z_axis) as $sex) {
-                            $rows = $statistics_data->statsAgeQuery($sex, 0, 0);
+                            $rows = $statistics_data->statsAgeQuery(Sex::from($sex), 0, 0);
                             foreach ($rows as $row) {
                                 $years = (int) ($row->days / self::DAYS_IN_YEAR);
                                 $this->fillYData($years, $sex, 1, $x_axis, $z_axis, $ydata);
@@ -504,7 +505,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
-                            $rows = $statistics_data->statsAgeQuery('ALL', $prev_boundary, $boundary);
+                            $rows = $statistics_data->statsAgeQuery(null, $prev_boundary, $boundary);
                             foreach ($rows as $row) {
                                 $years = (int) ($row->days / self::DAYS_IN_YEAR);
                                 $this->fillYData($years, $boundary, 1, $x_axis, $z_axis, $ydata);

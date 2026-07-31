@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\SurnameTradition;
 
 use Fisharebest\Webtrees\Elements\NameType;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -43,7 +44,7 @@ class MatrilinealSurnameTradition extends DefaultSurnameTradition
     /**
      * @return list<string>
      */
-    public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array
+    public function newChildNames(Individual|null $father, Individual|null $mother, Sex $sex): array
     {
         if (preg_match(self::REGEX_SPFX_SURN, $this->extractName($mother), $match) === 1) {
             $name = $match['NAME'];
@@ -61,9 +62,9 @@ class MatrilinealSurnameTradition extends DefaultSurnameTradition
     /**
      * @return list<string>
      */
-    public function newParentNames(Individual $child, string $sex): array
+    public function newParentNames(Individual $child, Sex $sex): array
     {
-        if ($sex === 'F' && preg_match(self::REGEX_SPFX_SURN, $this->extractName($child), $match) === 1) {
+        if ($sex === Sex::Female && preg_match(self::REGEX_SPFX_SURN, $this->extractName($child), $match) === 1) {
             $name = $match['NAME'];
             $spfx = $match['SPFX'];
             $surn = $match['SURN'];

@@ -192,9 +192,9 @@ final readonly class Sundanese extends AbstractLanguage
             Relationship::fixed(...$su('anak lalaki'))->son(),
             Relationship::fixed(...$su('anak'))->child(),
             // Siblings — elder/younger distinction
-            Relationship::fixed(...$su('dulur awéwé kembar'))->twin()->sister(),
-            Relationship::fixed(...$su('dulur lalaki kembar'))->twin()->brother(),
-            Relationship::fixed(...$su('dulur kembar'))->twin()->sibling(),
+            Relationship::fixed(...$su('dulur awéwé kembar'))->multiple()->sister(),
+            Relationship::fixed(...$su('dulur lalaki kembar'))->multiple()->brother(),
+            Relationship::fixed(...$su('dulur kembar'))->multiple()->sibling(),
             Relationship::fixed(...$su('lanceuk awéwé'))->older()->sister(),
             Relationship::fixed(...$su('lanceuk lalaki'))->older()->brother(),
             Relationship::fixed(...$su('adi awéwé'))->younger()->sister(),

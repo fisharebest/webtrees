@@ -302,9 +302,9 @@ final readonly class Slovenian extends AbstractLanguage
             Relationship::fixed(...$rel('sin', 'sina'))->son(),
             Relationship::fixed(...$rel('otrok', 'otroka'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('sestra dvojčica', 'sestre dvojčice'))->twin()->sister(),
-            Relationship::fixed(...$rel('brat dvojček', 'brata dvojčka'))->twin()->brother(),
-            Relationship::fixed(...$rel('dvojček', 'dvojčka'))->twin()->sibling(),
+            Relationship::fixed(...$rel('sestra dvojčica', 'sestre dvojčice'))->multiple()->sister(),
+            Relationship::fixed(...$rel('brat dvojček', 'brata dvojčka'))->multiple()->brother(),
+            Relationship::fixed(...$rel('dvojček', 'dvojčka'))->multiple()->sibling(),
             Relationship::fixed(...$rel('starejša sestra', 'starejše sestre'))->older()->sister(),
             Relationship::fixed(...$rel('starejši brat', 'starejšega brata'))->older()->brother(),
             Relationship::fixed(...$rel('mlajša sestra', 'mlajše sestre'))->younger()->sister(),

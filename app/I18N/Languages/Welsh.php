@@ -203,9 +203,9 @@ final readonly class Welsh extends AbstractLanguage
             Relationship::fixed(...$rel('mab'))->son(),
             Relationship::fixed(...$rel('plentyn'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('brawd gefell'))->twin()->brother(),
-            Relationship::fixed(...$rel('chwaer efell'))->twin()->sister(),
-            Relationship::fixed(...$rel('gefell'))->twin()->sibling(),
+            Relationship::fixed(...$rel('brawd gefell'))->multiple()->brother(),
+            Relationship::fixed(...$rel('chwaer efell'))->multiple()->sister(),
+            Relationship::fixed(...$rel('gefell'))->multiple()->sibling(),
             Relationship::fixed(...$rel('brawd hŷn'))->older()->brother(),
             Relationship::fixed(...$rel('chwaer hŷn'))->older()->sister(),
             Relationship::fixed(...$rel('brawd/chwaer hŷn'))->older()->sibling(),

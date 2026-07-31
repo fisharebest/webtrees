@@ -327,9 +327,9 @@ final readonly class Bosnian extends AbstractLanguage
             Relationship::fixed(...$rel('sin', 'sina'))->son(),
             Relationship::fixed(...$rel('dijete', 'djeteta'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('sestra blizanka', 'sestre blizanke'))->twin()->sister(),
-            Relationship::fixed(...$rel('brat blizanac', 'brata blizanca'))->twin()->brother(),
-            Relationship::fixed(...$rel('blizanac', 'blizanca'))->twin()->sibling(),
+            Relationship::fixed(...$rel('sestra blizanka', 'sestre blizanke'))->multiple()->sister(),
+            Relationship::fixed(...$rel('brat blizanac', 'brata blizanca'))->multiple()->brother(),
+            Relationship::fixed(...$rel('blizanac', 'blizanca'))->multiple()->sibling(),
             Relationship::fixed(...$rel('starija sestra', 'starije sestre'))->older()->sister(),
             Relationship::fixed(...$rel('stariji brat', 'starijeg brata'))->older()->brother(),
             Relationship::fixed(...$rel('mlađa sestra', 'mlađe sestre'))->younger()->sister(),

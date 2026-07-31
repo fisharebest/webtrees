@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Services;
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\Tree;
@@ -134,7 +135,7 @@ class GedcomEditServiceTest extends TestCase
     #[DataProvider('newIndividualFactsData')]
     public function testNewIndividualFactsWithNoFacts(
         string $required_facts,
-        string $sex,
+        Sex $sex,
         array $names,
         array $expected_new_facts
     ): void {
@@ -166,15 +167,15 @@ class GedcomEditServiceTest extends TestCase
     }
 
     /**
-     * @return array<array<string|array<string>>>
+     * @return array<array{string,Sex,array<string>}>
      */
     public static function newIndividualFactsData(): array
     {
         return [
-            ['', 'F', ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME']],
-            ['BIRT', 'F', ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME', 'INDI:BIRT']],
-            ['FOOTAG', 'F', ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME', 'INDI:FOOTAG']],
-            ['BIRT,DEAT', 'F', ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME', 'INDI:BIRT', 'INDI:DEAT']],
+            ['', Sex::Female, ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME']],
+            ['BIRT', Sex::Female, ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME', 'INDI:BIRT']],
+            ['FOOTAG', Sex::Female, ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME', 'INDI:FOOTAG']],
+            ['BIRT,DEAT', Sex::Female, ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME', 'INDI:BIRT', 'INDI:DEAT']],
         ];
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Elements\AbstractEventElement;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
@@ -86,23 +87,14 @@ if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
                     if (
                         $fact_age !== '' && !str_starts_with($fact_age, $age) ||
                         $fact_age === '' && $husb_age === '' && $wife_age === '' ||
-                        $husb_age !== '' && !str_starts_with($husb_age, $age) && $record->sex() === 'M' ||
-                        $wife_age !== '' && !str_starts_with($wife_age, $age) && $record->sex() === 'F'
+                        $husb_age !== '' && !str_starts_with($husb_age, $age) && $record->sex() === Sex::Male ||
+                        $wife_age !== '' && !str_starts_with($wife_age, $age) && $record->sex() === Sex::Female
                     ) {
-                        switch ($record->sex()) {
-                            case 'M':
-                                /* I18N: The age of an individual at a given date */
-                                $ageText = I18N::translateContext('Male', '(aged %s)', $age);
-                                break;
-                            case 'F':
-                                /* I18N: The age of an individual at a given date */
-                                $ageText = I18N::translateContext('Female', '(aged %s)', $age);
-                                break;
-                            default:
-                                /* I18N: The age of an individual at a given date */
-                                $ageText = I18N::translate('(aged %s)', $age);
-                                break;
-                        }
+                        $ageText = match ($record->sex()) {
+                            Sex::Male   => I18N::translateContext('Male', '(aged %s)', $age),
+                            Sex::Female => I18N::translateContext('Female', '(aged %s)', $age),
+                            default     => I18N::translate('(aged %s)', $age),
+                        };
                     }
                 }
             }
@@ -162,8 +154,8 @@ if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
                         if ($recorded_age !== '') {
                             // Recorded age differs from calculated — show both to highlight potential error
                             $age_text = $recorded_age . ' ' . match ($spouse->sex()) {
-                                'M'     => I18N::translateContext('Male', '(aged %s)', $age),
-                                'F'     => I18N::translateContext('Female', '(aged %s)', $age),
+                                Sex::Male     => I18N::translateContext('Male', '(aged %s)', $age),
+                                Sex::Female     => I18N::translateContext('Female', '(aged %s)', $age),
                                 default => I18N::translate('(aged %s)', $age),
                             };
                         } else {
@@ -200,14 +192,14 @@ $record = $fact->record();
 
 if ($record instanceof Family) {
     $husb_label = match($record->husband()?->sex()) {
-        'M' => I18N::translate('Husband'),
-        'F' => I18N::translate('Wife'),
+        Sex::Male => I18N::translate('Husband'),
+        Sex::Female => I18N::translate('Wife'),
         default => I18N::translate('Spouse'),
     };
 
     $wife_label = match($record->wife()?->sex()) {
-        'M' => I18N::translate('Husband'),
-        'F' => I18N::translate('Wife'),
+        Sex::Male => I18N::translate('Husband'),
+        Sex::Female => I18N::translate('Wife'),
         default => I18N::translate('Spouse'),
     };
 } else {

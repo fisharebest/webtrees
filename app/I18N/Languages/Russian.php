@@ -441,9 +441,9 @@ final readonly class Russian extends AbstractLanguage
             Relationship::fixed('сын', '%s сына')->son(),
             Relationship::fixed('ребёнок', '%s ребёнка')->child(),
             // Siblings
-            Relationship::fixed('сестра-близнец', '%s сестры-близнеца')->twin()->sister(),
-            Relationship::fixed('брат-близнец', '%s брата-близнеца')->twin()->brother(),
-            Relationship::fixed('близнец', '%s близнеца')->twin()->sibling(),
+            Relationship::fixed('сестра-близнец', '%s сестры-близнеца')->multiple()->sister(),
+            Relationship::fixed('брат-близнец', '%s брата-близнеца')->multiple()->brother(),
+            Relationship::fixed('близнец', '%s близнеца')->multiple()->sibling(),
             Relationship::fixed('старшая сестра', '%s старшей сестры')->older()->sister(),
             Relationship::fixed('старший брат', '%s старшего брата')->older()->brother(),
             Relationship::fixed('старший сиблинг', '%s старшего сиблинга')->older()->sibling(),

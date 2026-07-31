@@ -163,9 +163,9 @@ abstract readonly class AbstractPortuguese extends AbstractLanguage
             Relationship::fixed(...$do('filho'))->son(),
             Relationship::fixed(...$do('filho/a'))->child(),
             // Siblings
-            Relationship::fixed(...$da('irmã gêmea'))->twin()->sister(),
-            Relationship::fixed(...$do('irmão gêmeo'))->twin()->brother(),
-            Relationship::fixed(...$do('gêmeo/a'))->twin()->sibling(),
+            Relationship::fixed(...$da('irmã gêmea'))->multiple()->sister(),
+            Relationship::fixed(...$do('irmão gêmeo'))->multiple()->brother(),
+            Relationship::fixed(...$do('gêmeo/a'))->multiple()->sibling(),
             Relationship::fixed(...$da('irmã mais velha'))->older()->sister(),
             Relationship::fixed(...$do('irmão mais velho'))->older()->brother(),
             Relationship::fixed(...$do('irmão/ã mais velho/a'))->older()->sibling(),

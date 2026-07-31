@@ -247,9 +247,9 @@ final readonly class Spanish extends AbstractLanguage
             Relationship::fixed(...$del('hijo'))->son(),
             Relationship::fixed(...$del('hijo/a'))->child(),
             // Siblings
-            Relationship::fixed(...$de_la('hermana gemela'))->twin()->sister(),
-            Relationship::fixed(...$del('hermano gemelo'))->twin()->brother(),
-            Relationship::fixed(...$del('gemelo/a'))->twin()->sibling(),
+            Relationship::fixed(...$de_la('hermana gemela'))->multiple()->sister(),
+            Relationship::fixed(...$del('hermano gemelo'))->multiple()->brother(),
+            Relationship::fixed(...$del('gemelo/a'))->multiple()->sibling(),
             Relationship::fixed(...$de_la('hermana mayor'))->older()->sister(),
             Relationship::fixed(...$del('hermano mayor'))->older()->brother(),
             Relationship::fixed(...$del('hermano/a mayor'))->older()->sibling(),

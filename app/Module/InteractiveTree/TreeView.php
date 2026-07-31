@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module\InteractiveTree;
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Enums\TextDirection;
 use Fisharebest\Webtrees\Gedcom;
@@ -142,7 +143,7 @@ class TreeView
             $html .= $fact->summary();
         }
 
-        return '<div class="tv' . $individual->sex() . ' tv_person_expanded">' . $html . '</div>';
+        return '<div class="tv' . $individual->sex()->value . ' tv_person_expanded">' . $html . '</div>';
     }
 
     /**
@@ -318,28 +319,20 @@ class TreeView
     private function drawPersonName(Individual $individual, string $dashed): string
     {
         $family = $individual->childFamilies()->first();
+
         if ($family !== null) {
             $family_name = strip_tags($family->fullName());
         } else {
             $family_name = I18N::translateContext('unknown family', 'unknown');
         }
-        switch ($individual->sex()) {
-            case 'M':
-                /* I18N: e.g. “Son of [father name & mother name]” */
-                $title = ' title="' . I18N::translate('Son of %s', $family_name) . '"';
-                break;
-            case 'F':
-                /* I18N: e.g. “Daughter of [father name & mother name]” */
-                $title = ' title="' . I18N::translate('Daughter of %s', $family_name) . '"';
-                break;
-            default:
-                /* I18N: e.g. “Child of [father name & mother name]” */
-                $title = ' title="' . I18N::translate('Child of %s', $family_name) . '"';
-                break;
-        }
-        $sex = $individual->sex();
 
-        return '<div class="tv' . $sex . ' ' . $dashed . '"' . $title . '><a href="' . e($individual->url()) . '"></a>' . $individual->fullName() . ' <span class="dates">' . $individual->lifespan() . '</span></div>';
+        $title = match ($individual->sex()) {
+            Sex::Male   => ' title="' . I18N::translate('Son of %s', $family_name) . '"',
+            Sex::Female => ' title="' . I18N::translate('Daughter of %s', $family_name) . '"',
+            default     => ' title="' . I18N::translate('Child of %s', $family_name) . '"',
+        };
+
+        return '<div class="tv' . $individual->sex()->value . ' ' . $dashed . '"' . $title . '><a href="' . e($individual->url()) . '"></a>' . $individual->fullName() . ' <span class="dates">' . $individual->lifespan() . '</span></div>';
     }
 
     /**

@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Contracts\LanguageInterface;
 use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Enums\Relation;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -30,7 +32,6 @@ use function array_merge;
 use function array_reduce;
 use function array_slice;
 use function count;
-use function preg_match;
 use function sprintf;
 
 /**
@@ -38,24 +39,6 @@ use function sprintf;
  */
 class RelationshipService
 {
-    private const array COMPONENTS = [
-        'CHIL' => [
-            'CHIL' => Relationship::SIBLINGS,
-            'HUSB' => Relationship::PARENTS,
-            'WIFE' => Relationship::PARENTS,
-        ],
-        'HUSB' => [
-            'CHIL' => Relationship::CHILDREN,
-            'HUSB' => Relationship::SPOUSES,
-            'WIFE' => Relationship::SPOUSES,
-        ],
-        'WIFE' => [
-            'CHIL' => Relationship::CHILDREN,
-            'HUSB' => Relationship::SPOUSES,
-            'WIFE' => Relationship::SPOUSES,
-        ],
-    ];
-
     /**
      * For close family relationships, such as the families tab, associates, and the family navigator.
      */
@@ -195,22 +178,13 @@ class RelationshipService
         return array_reduce($relationships, static fn (array $carry, array $item): array => [sprintf($carry[1], $item[0]), sprintf($carry[1], $item[1])], ['', '%s'])[0];
     }
 
-    /**
-     * Generate a reflexive pronoun for an individual
-     */
     protected function reflexivePronoun(Individual $individual): string
     {
-        switch ($individual->sex()) {
-            case 'M':
-                /* I18N: reflexive pronoun */
-                return I18N::translate('himself');
-            case 'F':
-                /* I18N: reflexive pronoun */
-                return I18N::translate('herself');
-            default:
-                /* I18N: reflexive pronoun - gender neutral version of himself/herself */
-                return I18N::translate('themself');
-        }
+        return match ($individual->sex()) {
+            Sex::Male   => I18N::translate('himself'),
+            Sex::Female => I18N::translate('herself'),
+            default     => I18N::translate('themself'),
+        };
     }
 
     /**
@@ -218,7 +192,7 @@ class RelationshipService
      *
      * @param array<Individual|Family> $nodes Alternating list of Individual and Family objects
      *
-     * @return array<string>
+     * @return array<Relation>
      */
     private function components(array $nodes): array
     {
@@ -227,17 +201,7 @@ class RelationshipService
         $count = count($nodes);
 
         for ($i = 1; $i < $count; $i += 2) {
-            $prev   = $nodes[$i - 1];
-            $family = $nodes[$i];
-            $next   = $nodes[$i + 1];
-
-            preg_match('/\n1 (HUSB|WIFE|CHIL) @' . $prev->xref() . '@/', $family->gedcom(), $match);
-            $rel1 = $match[1] ?? 'xxx';
-
-            preg_match('/\n1 (HUSB|WIFE|CHIL) @' . $next->xref() . '@/', $family->gedcom(), $match);
-            $rel2 = $match[1] ?? 'xxx';
-
-            $pattern[] = self::COMPONENTS[$rel1][$rel2][$next->sex()] ?? 'xxx';
+            $pattern[] = Relation::fromFamilyLinks($nodes[$i - 1], $nodes[$i], $nodes[$i + 1]);
         }
 
         return $pattern;
@@ -245,7 +209,7 @@ class RelationshipService
 
     /**
      * @param array<Individual|Family> $nodes
-     * @param array<string>            $pattern
+     * @param array<Relation>          $pattern
      * @param array<Relationship>      $relationships
      *
      * @return array<array{string,string}>

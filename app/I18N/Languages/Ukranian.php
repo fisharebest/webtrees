@@ -419,9 +419,9 @@ final readonly class Ukranian extends AbstractLanguage
             Relationship::fixed('син', '%s сина')->son(),
             Relationship::fixed('дитина', '%s дитини')->child(),
             // Siblings
-            Relationship::fixed('сестра-близнючка', '%s сестри-близнючки')->twin()->sister(),
-            Relationship::fixed('брат-близнюк', '%s брата-близнюка')->twin()->brother(),
-            Relationship::fixed('близнюк', '%s близнюка')->twin()->sibling(),
+            Relationship::fixed('сестра-близнючка', '%s сестри-близнючки')->multiple()->sister(),
+            Relationship::fixed('брат-близнюк', '%s брата-близнюка')->multiple()->brother(),
+            Relationship::fixed('близнюк', '%s близнюка')->multiple()->sibling(),
             Relationship::fixed('старша сестра', '%s старшої сестри')->older()->sister(),
             Relationship::fixed('старший брат', '%s старшого брата')->older()->brother(),
             Relationship::fixed('старший сиблінг', '%s старшого сиблінга')->older()->sibling(),

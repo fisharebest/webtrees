@@ -178,9 +178,9 @@ final readonly class Tagalog extends AbstractLanguage
             Relationship::fixed(...$tl('anak na lalaki'))->son(),
             Relationship::fixed(...$tl('anak'))->child(),
             // Siblings — elder/younger distinction
-            Relationship::fixed(...$tl('kambal na babae'))->twin()->sister(),
-            Relationship::fixed(...$tl('kambal na lalaki'))->twin()->brother(),
-            Relationship::fixed(...$tl('kambal'))->twin()->sibling(),
+            Relationship::fixed(...$tl('kambal na babae'))->multiple()->sister(),
+            Relationship::fixed(...$tl('kambal na lalaki'))->multiple()->brother(),
+            Relationship::fixed(...$tl('kambal'))->multiple()->sibling(),
             Relationship::fixed(...$tl('ate'))->older()->sister(),
             Relationship::fixed(...$tl('kuya'))->older()->brother(),
             Relationship::fixed(...$tl('nakababatang kapatid na babae'))->younger()->sister(),

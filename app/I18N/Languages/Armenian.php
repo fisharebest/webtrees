@@ -196,9 +196,9 @@ final readonly class Armenian extends AbstractLanguage
             Relationship::fixed(...$hy('որդի', 'որդու'))->son(),
             Relationship::fixed(...$hy('զավակ', 'զավակի'))->child(),
             // Siblings
-            Relationship::fixed(...$hy('երկվորյակ քույր', 'երկվորյակ քուրոջ'))->twin()->sister(),
-            Relationship::fixed(...$hy('երկվորյակ եղբայր', 'երկվորյակ եղբոր'))->twin()->brother(),
-            Relationship::fixed(...$hy('երկվորյակ', 'երկվորյակի'))->twin()->sibling(),
+            Relationship::fixed(...$hy('երկվորյակ քույր', 'երկվորյակ քուրոջ'))->multiple()->sister(),
+            Relationship::fixed(...$hy('երկվորյակ եղբայր', 'երկվորյակ եղբոր'))->multiple()->brother(),
+            Relationship::fixed(...$hy('երկվորյակ', 'երկվորյակի'))->multiple()->sibling(),
             Relationship::fixed(...$hy('քույր', 'քուրոջ'))->sister(),
             Relationship::fixed(...$hy('եղբայր', 'եղբոր'))->brother(),
             Relationship::fixed(...$hy('քույր/եղբայր', 'քուրոջ/եղբոր'))->sibling(),

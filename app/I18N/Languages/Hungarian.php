@@ -316,7 +316,7 @@ final readonly class Hungarian extends AbstractLanguage
             Relationship::fixed('fia', '%s fia')->son(),
             Relationship::fixed('gyermek', '%s gyermeke')->child(),
             // Siblings — elder/younger
-            Relationship::fixed('ikertestvér', '%s ikertestvére')->twin()->sibling(),
+            Relationship::fixed('ikertestvér', '%s ikertestvére')->multiple()->sibling(),
             Relationship::fixed('nővér', '%s nővére')->older()->sister(),
             Relationship::fixed('báty', '%s bátyja')->older()->brother(),
             Relationship::fixed('idősebb testvér', '%s idősebb testvére')->older()->sibling(),

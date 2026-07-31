@@ -252,9 +252,9 @@ final readonly class NorwegianNynorsk extends AbstractLanguage
             Relationship::fixed(...$gen('son'))->son(),
             Relationship::fixed(...$gen('barn'))->child(),
             // Siblings
-            Relationship::fixed(...$gen('tvillingsyster'))->twin()->sister(),
-            Relationship::fixed(...$gen('tvillingbror'))->twin()->brother(),
-            Relationship::fixed(...$gen('tvilling'))->twin()->sibling(),
+            Relationship::fixed(...$gen('tvillingsyster'))->multiple()->sister(),
+            Relationship::fixed(...$gen('tvillingbror'))->multiple()->brother(),
+            Relationship::fixed(...$gen('tvilling'))->multiple()->sibling(),
             Relationship::fixed(...$gen('storesyster'))->older()->sister(),
             Relationship::fixed(...$gen('storebror'))->older()->brother(),
             Relationship::fixed(...$gen('eldre sysken'))->older()->sibling(),

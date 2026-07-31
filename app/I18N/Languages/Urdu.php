@@ -258,9 +258,9 @@ final readonly class Urdu extends AbstractLanguage
             Relationship::fixed(...$ur('بیٹا'))->son(),
             Relationship::fixed(...$ur('بچّہ'))->child(),
             // Siblings — twins
-            Relationship::fixed(...$ur('جڑواں بہن'))->twin()->sister(),
-            Relationship::fixed(...$ur('جڑواں بھائی'))->twin()->brother(),
-            Relationship::fixed(...$ur('جڑواں'))->twin()->sibling(),
+            Relationship::fixed(...$ur('جڑواں بہن'))->multiple()->sister(),
+            Relationship::fixed(...$ur('جڑواں بھائی'))->multiple()->brother(),
+            Relationship::fixed(...$ur('جڑواں'))->multiple()->sibling(),
             // Siblings — elder/younger
             Relationship::fixed(...$ur('بڑی بہن'))->older()->sister(),
             Relationship::fixed(...$ur('چھوٹی بہن'))->younger()->sister(),

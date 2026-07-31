@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\SurnameTradition;
 
 use Fisharebest\Webtrees\Elements\NameType;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -54,7 +55,7 @@ class PortugueseSurnameTradition extends DefaultSurnameTradition
     /**
      * @return list<string>
      */
-    public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array
+    public function newChildNames(Individual|null $father, Individual|null $mother, Sex $sex): array
     {
         if (preg_match(self::REGEX_SURNS, $this->extractName($father), $match_father) === 1) {
             $father_surname = $match_father['SURN2'];
@@ -79,11 +80,11 @@ class PortugueseSurnameTradition extends DefaultSurnameTradition
     /**
      * @return list<string>
      */
-    public function newParentNames(Individual $child, string $sex): array
+    public function newParentNames(Individual $child, Sex $sex): array
     {
         if (preg_match(self::REGEX_SURNS, $this->extractName($child), $match) === 1) {
             switch ($sex) {
-                case 'M':
+                case Sex::Male:
                     return [
                         $this->buildName('// /' . $match['SURN1'] . '/', [
                             'TYPE' => NameType::VALUE_BIRTH,
@@ -91,7 +92,7 @@ class PortugueseSurnameTradition extends DefaultSurnameTradition
                         ]),
                     ];
 
-                case 'F':
+                case Sex::Female:
                     return [
                         $this->buildName('// /' . $match['SURN2'] . '/', [
                             'TYPE' => NameType::VALUE_BIRTH,
@@ -109,7 +110,7 @@ class PortugueseSurnameTradition extends DefaultSurnameTradition
     /**
      * @return list<string>
      */
-    public function newSpouseNames(Individual $spouse, string $sex): array
+    public function newSpouseNames(Individual $spouse, Sex $sex): array
     {
         return [
             $this->buildName('// //', ['TYPE' => NameType::VALUE_BIRTH]),

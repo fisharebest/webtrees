@@ -23,6 +23,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -136,17 +137,11 @@ final class IndividualPage implements RequestHandlerInterface
                 return '';
             }
 
-            switch ($individual->sex()) {
-                case 'M':
-                    /* I18N: The age of an individual at a given date */
-                    return I18N::translateContext('Male', '(aged %s)', $age);
-                case 'F':
-                    /* I18N: The age of an individual at a given date */
-                    return I18N::translateContext('Female', '(aged %s)', $age);
-                default:
-                    /* I18N: The age of an individual at a given date */
-                    return I18N::translate('(aged %s)', $age);
-            }
+            return match ($individual->sex()) {
+                Sex::Male   => I18N::translateContext('Male', '(aged %s)', $age),
+                Sex::Female => I18N::translateContext('Female', '(aged %s)', $age),
+                default     => I18N::translate('(aged %s)', $age),
+            };
         }
 
         // If living, show age today

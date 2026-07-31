@@ -339,7 +339,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         $sosa = array_search($individual, $ancestors, true);
         if (is_int($sosa) && $module instanceof RelationshipsChartModule) {
             $sosa_class = 'search_hit';
-            $sosa_html  = ' <a class="small wt-chart-box-' . strtolower($individual->sex()) . '" href="' . e($module->chartUrl($individual, ['xref2' => $ancestors[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationship') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
+            $sosa_html  = ' <a class="small wt-chart-box-' . strtolower($individual->sex()->value) . '" href="' . e($module->chartUrl($individual, ['xref2' => $ancestors[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationship') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
         } else {
             $sosa_class = '';
             $sosa_html  = '';
@@ -377,7 +377,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
                     $sosa = array_search($spouse, $ancestors, true);
                     if (is_int($sosa) && $module instanceof RelationshipsChartModule) {
                         $sosa_class = 'search_hit';
-                        $sosa_html  = ' <a class="small wt-chart-box-' . strtolower($spouse->sex()) . '" href="' . e($module->chartUrl($spouse, ['xref2' => $ancestors[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationship') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
+                        $sosa_html  = ' <a class="small wt-chart-box-' . strtolower($spouse->sex()->value) . '" href="' . e($module->chartUrl($spouse, ['xref2' => $ancestors[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationship') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
                     } else {
                         $sosa_class = '';
                         $sosa_html  = '';

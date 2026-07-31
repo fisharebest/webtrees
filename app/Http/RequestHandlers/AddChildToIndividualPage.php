@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -51,22 +52,14 @@ final class AddChildToIndividualPage implements RequestHandlerInterface
         $surname_tradition = Registry::surnameTraditionFactory()
             ->make($tree->getPreference('SURNAME_TRADITION'));
 
-        switch ($individual->sex()) {
-            case 'M':
-                $names = $surname_tradition->newChildNames($individual, null, 'U');
-                break;
-
-            case 'F':
-                $names = $surname_tradition->newChildNames(null, $individual, 'U');
-                break;
-
-            default:
-                $names = $surname_tradition->newChildNames(null, null, 'U');
-                break;
-        }
+        $names = match ($individual->sex()) {
+            Sex::Male   => $surname_tradition->newChildNames($individual, null, Sex::Unknown),
+            Sex::Female => $surname_tradition->newChildNames(null, $individual, Sex::Unknown),
+            default     => $surname_tradition->newChildNames(null, null, Sex::Unknown),
+        };
 
         $facts = [
-            'i' => $this->gedcom_edit_service->newIndividualFacts($tree, 'U', $names),
+            'i' => $this->gedcom_edit_service->newIndividualFacts($tree, Sex::Unknown, $names),
         ];
 
         $title = I18N::translate('Add a child to create a one-parent family');

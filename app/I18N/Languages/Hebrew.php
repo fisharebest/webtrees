@@ -237,9 +237,9 @@ final readonly class Hebrew extends AbstractLanguage
             Relationship::fixed(...$he('בן'))->son(),
             Relationship::fixed(...$he('ילד/ה'))->child(),
             // Siblings
-            Relationship::fixed(...$he('אחות תאומה'))->twin()->sister(),
-            Relationship::fixed(...$he('אח תאום'))->twin()->brother(),
-            Relationship::fixed(...$he('תאום/ה'))->twin()->sibling(),
+            Relationship::fixed(...$he('אחות תאומה'))->multiple()->sister(),
+            Relationship::fixed(...$he('אח תאום'))->multiple()->brother(),
+            Relationship::fixed(...$he('תאום/ה'))->multiple()->sibling(),
             Relationship::fixed(...$he('אחות גדולה'))->older()->sister(),
             Relationship::fixed(...$he('אח גדול'))->older()->brother(),
             Relationship::fixed(...$he('אחות קטנה'))->younger()->sister(),

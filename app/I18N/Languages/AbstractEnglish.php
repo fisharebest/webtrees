@@ -255,9 +255,9 @@ abstract readonly class AbstractEnglish extends AbstractLanguage
             Relationship::fixed('son', 'son’s %s')->son(),
             Relationship::fixed('child', 'child’s %s')->child(),
             // Siblings
-            Relationship::fixed('twin sister', 'twin sister’s %s')->twin()->sister(),
-            Relationship::fixed('twin brother', 'twin brother’s %s')->twin()->brother(),
-            Relationship::fixed('twin sibling', 'twin sibling’s %s')->twin()->sibling(),
+            Relationship::fixed('twin sister', 'twin sister’s %s')->multiple()->sister(),
+            Relationship::fixed('twin brother', 'twin brother’s %s')->multiple()->brother(),
+            Relationship::fixed('twin sibling', 'twin sibling’s %s')->multiple()->sibling(),
             Relationship::fixed('elder sister', 'elder sister’s %s')->older()->sister(),
             Relationship::fixed('elder brother', 'elder brother’s %s')->older()->brother(),
             Relationship::fixed('elder sibling', 'elder sibling’s %s')->older()->sibling(),

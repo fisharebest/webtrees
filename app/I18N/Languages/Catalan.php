@@ -238,9 +238,9 @@ final readonly class Catalan extends AbstractLanguage
             Relationship::fixed(...$del('fill'))->son(),
             Relationship::fixed(...$del('fill/a'))->child(),
             // Siblings
-            Relationship::fixed(...$de_la('germana bessona'))->twin()->sister(),
-            Relationship::fixed(...$del('germà bessó'))->twin()->brother(),
-            Relationship::fixed(...$del('bessó/bessona'))->twin()->sibling(),
+            Relationship::fixed(...$de_la('germana bessona'))->multiple()->sister(),
+            Relationship::fixed(...$del('germà bessó'))->multiple()->brother(),
+            Relationship::fixed(...$del('bessó/bessona'))->multiple()->sibling(),
             Relationship::fixed(...$de_la('germana gran'))->older()->sister(),
             Relationship::fixed(...$del('germà gran'))->older()->brother(),
             Relationship::fixed(...$del('germà/germana gran'))->older()->sibling(),

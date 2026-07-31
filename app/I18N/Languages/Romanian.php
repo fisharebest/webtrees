@@ -240,9 +240,9 @@ final readonly class Romanian extends AbstractLanguage
             Relationship::fixed(...$rel('fiu', 'fiului'))->son(),
             Relationship::fixed(...$rel('copil', 'copilului'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('soră geamănă', 'surorii geamăne'))->twin()->sister(),
-            Relationship::fixed(...$rel('frate geamăn', 'fratelui geamăn'))->twin()->brother(),
-            Relationship::fixed(...$rel('geamăn/ă', 'geamănului/ei'))->twin()->sibling(),
+            Relationship::fixed(...$rel('soră geamănă', 'surorii geamăne'))->multiple()->sister(),
+            Relationship::fixed(...$rel('frate geamăn', 'fratelui geamăn'))->multiple()->brother(),
+            Relationship::fixed(...$rel('geamăn/ă', 'geamănului/ei'))->multiple()->sibling(),
             Relationship::fixed(...$rel('soră mai mare', 'surorii mai mari'))->older()->sister(),
             Relationship::fixed(...$rel('frate mai mare', 'fratelui mai mare'))->older()->brother(),
             Relationship::fixed(...$rel('soră mai mică', 'surorii mai mici'))->younger()->sister(),

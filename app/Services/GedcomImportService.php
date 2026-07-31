@@ -315,15 +315,11 @@ class GedcomImportService
                     $rin = $xref;
                 }
 
-                // The database can only store MFU, and many of the stats queries assume this.
-                $sex = $record->sex();
-                $sex = $sex === 'M' || $sex === 'F' ? $sex : 'U';
-
                 DB::table('individuals')->insert([
                     'i_id'     => $xref,
                     'i_file'   => $tree_id,
                     'i_rin'    => $rin,
-                    'i_sex'    => $sex,
+                    'i_sex'    => $record->sex()->value,
                     'i_gedcom' => $gedrec,
                 ]);
 

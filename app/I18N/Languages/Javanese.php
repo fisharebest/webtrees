@@ -195,9 +195,9 @@ final readonly class Javanese extends AbstractLanguage
             Relationship::fixed(...$jv('anak lanang'))->son(),
             Relationship::fixed(...$jv('anak'))->child(),
             // Siblings — elder/younger distinction
-            Relationship::fixed(...$jv('sedulur wadon kembar'))->twin()->sister(),
-            Relationship::fixed(...$jv('sedulur lanang kembar'))->twin()->brother(),
-            Relationship::fixed(...$jv('sedulur kembar'))->twin()->sibling(),
+            Relationship::fixed(...$jv('sedulur wadon kembar'))->multiple()->sister(),
+            Relationship::fixed(...$jv('sedulur lanang kembar'))->multiple()->brother(),
+            Relationship::fixed(...$jv('sedulur kembar'))->multiple()->sibling(),
             Relationship::fixed(...$jv('mbakyu'))->older()->sister(),
             Relationship::fixed(...$jv('kangmas'))->older()->brother(),
             Relationship::fixed(...$jv('adhik wadon'))->younger()->sister(),

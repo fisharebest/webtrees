@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\SurnameTradition;
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -39,15 +40,15 @@ interface SurnameTraditionInterface
     /**
      * @return list<string>
      */
-    public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array;
+    public function newChildNames(Individual|null $father, Individual|null $mother, Sex $sex): array;
 
     /**
      * @return list<string>
      */
-    public function newParentNames(Individual $child, string $sex): array;
+    public function newParentNames(Individual $child, Sex $sex): array;
 
     /**
      * @return list<string>
      */
-    public function newSpouseNames(Individual $spouse, string $sex): array;
+    public function newSpouseNames(Individual $spouse, Sex $sex): array;
 }

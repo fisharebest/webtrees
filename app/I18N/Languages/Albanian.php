@@ -246,9 +246,9 @@ final readonly class Albanian extends AbstractLanguage
             Relationship::fixed(...$ie('djalë', 'djalit'))->son(),
             Relationship::fixed(...$ie('fëmijë', 'fëmijës'))->child(),
             // Siblings
-            Relationship::fixed(...$ie('motër binjake', 'motrës binjake'))->twin()->sister(),
-            Relationship::fixed(...$ie('vëlla binjak', 'vëllait binjak'))->twin()->brother(),
-            Relationship::fixed(...$ie('binjak/e', 'binjakut/es'))->twin()->sibling(),
+            Relationship::fixed(...$ie('motër binjake', 'motrës binjake'))->multiple()->sister(),
+            Relationship::fixed(...$ie('vëlla binjak', 'vëllait binjak'))->multiple()->brother(),
+            Relationship::fixed(...$ie('binjak/e', 'binjakut/es'))->multiple()->sibling(),
             Relationship::fixed(...$ie('motër e madhe', 'motrës së madhe'))->older()->sister(),
             Relationship::fixed(...$ie('vëlla i madh', 'vëllait të madh'))->older()->brother(),
             Relationship::fixed(...$ie('motër e vogël', 'motrës së vogël'))->younger()->sister(),

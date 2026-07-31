@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Comparators\FactComparator;
 use Fisharebest\Webtrees\Elements\AbstractXrefElement;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
@@ -81,13 +82,13 @@ class GedcomEditService
      *
      * @return Collection<int,Fact>
      */
-    public function newIndividualFacts(Tree $tree, string $sex, array $names): Collection
+    public function newIndividualFacts(Tree $tree, Sex $sex, array $names): Collection
     {
         $dummy      = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
         $tags       = (new Collection(explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS'))))
             ->filter(static fn (string $tag): bool => $tag !== '');
         $facts      = $tags->map(fn (string $tag): Fact => $this->createNewFact($dummy, $tag));
-        $sex_fact   = new Collection([new Fact('1 SEX ' . $sex, $dummy, '')]);
+        $sex_fact   = new Collection([new Fact('1 SEX ' . $sex->value, $dummy, '')]);
         $name_facts = Collection::make($names)->map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''));
 
         return $sex_fact->concat($name_facts)->concat($facts->sort(FactComparator::byType(...))->values());

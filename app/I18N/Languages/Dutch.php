@@ -260,9 +260,9 @@ final readonly class Dutch extends AbstractLanguage
             Relationship::fixed(...$van_de('zoon'))->son(),
             Relationship::fixed(...$van_het('kind'))->child(),
             // Siblings
-            Relationship::fixed(...$van_de('tweelingzus'))->twin()->sister(),
-            Relationship::fixed(...$van_de('tweelingbroer'))->twin()->brother(),
-            Relationship::fixed(...$van_de('tweeling'))->twin()->sibling(),
+            Relationship::fixed(...$van_de('tweelingzus'))->multiple()->sister(),
+            Relationship::fixed(...$van_de('tweelingbroer'))->multiple()->brother(),
+            Relationship::fixed(...$van_de('tweeling'))->multiple()->sibling(),
             Relationship::fixed(...$van_de('oudere zus'))->older()->sister(),
             Relationship::fixed(...$van_de('oudere broer'))->older()->brother(),
             Relationship::fixed(...$van_de('ouder broer/zus'))->older()->sibling(),

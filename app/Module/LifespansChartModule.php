@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Comparators\IndividualComparator;
 use Fisharebest\Webtrees\ColorGenerator;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
@@ -403,9 +404,10 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     private function layoutIndividuals(array $individuals): array
     {
         $color_generators = [
-            'M' => new ColorGenerator(240, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE * -1),
-            'F' => new ColorGenerator(000, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
-            'U' => new ColorGenerator(120, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
+            Sex::Male->value => new ColorGenerator(240, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE * -1),
+            Sex::Female->value => new ColorGenerator(000, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
+            Sex::Unknown->value => new ColorGenerator(120, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
+            Sex::Other->value => new ColorGenerator(120, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
         ];
 
         $current_year = (int) date('Y');
@@ -442,7 +444,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             // Fill the row up to the year (leaving a small gap)
             $rows[$next_row] = $death_year;
 
-            $color_generator = $color_generators[$individual->sex()] ?? $color_generators['U'];
+            $color_generator = $color_generators[$individual->sex()->value];
 
             $lifespans[] = (object) [
                 'background' => $color_generator->getNextColor(),

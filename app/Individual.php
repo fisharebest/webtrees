@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Enums\DateType;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
 use Illuminate\Support\Collection;
 
@@ -349,7 +350,7 @@ class Individual extends GedcomRecord
         }
 
         if ($this->tree->getPreference('USE_SILHOUETTE') === '1') {
-            return '<i class="icon-silhouette icon-silhouette-' . strtolower($this->sex()) . ' wt-icon-flip-rtl"></i>';
+            return '<i class="icon-silhouette icon-silhouette-' . strtolower($this->sex()->value) . ' wt-icon-flip-rtl"></i>';
         }
 
         return '';
@@ -581,7 +582,7 @@ class Individual extends GedcomRecord
                     foreach ($family->children() as $child) {
                         $tmp = $child->getBirthDate();
                         if ($tmp->isOK()) {
-                            $min[] = $tmp->maximumJulianDay() - 365 * ($this->sex() === 'F' ? 45 : 65);
+                            $min[] = $tmp->maximumJulianDay() - 365 * ($this->sex() === Sex::Female ? 45 : 65);
                             $max[] = $tmp->minimumJulianDay() - 365 * 15;
                         }
                     }
@@ -626,17 +627,16 @@ class Individual extends GedcomRecord
     }
 
     /**
-     * Get the sex - M F or U
      * Use the un-privatised gedcom record. We call this function during
      * the privatize-gedcom function, and we are allowed to know this.
      */
-    public function sex(): string
+    public function sex(): Sex
     {
-        if (preg_match('/\n1 SEX ([MFX])/', $this->gedcom . $this->pending, $match)) {
-            return $match[1];
+        if (preg_match('/\n1 SEX ([MFUX])/', $this->gedcom . $this->pending, $match)) {
+            return Sex::from($match[1]);
         }
 
-        return 'U';
+        return Sex::Unknown;
     }
 
     /**
@@ -811,7 +811,7 @@ class Individual extends GedcomRecord
                     foreach ($step_family->spouses() as $step_parent) {
                         if ($parent === $step_parent) {
                             // One common parent - must be a step family
-                            if ($parent->sex() === 'M') {
+                            if ($parent->sex() === Sex::Female) {
                                 // Father’s family with someone else
                                 if ($step_family->spouse($step_parent) instanceof Individual) {
                                     /* I18N: A step-family. %s is an individual’s name */
