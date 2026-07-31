@@ -310,8 +310,6 @@ table {
 .menu-list-subm::before {
     content: url(webtrees/menu/list-indi.png);
 }
-
-
 .menu-report .nav-link::before {
     content: url(webtrees/menu/report.png);
 }
@@ -540,11 +538,6 @@ table {
     background: var(--sex-x-bg);
     border: solid var(--sex-x-fg) thin;
 }
-
-:focus {
-    outline-style: none;
-}
-
 .flash-messages {
     clear: both;
     text-align: center;

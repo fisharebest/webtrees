@@ -372,11 +372,6 @@ table {
     padding: 4px;
     border-radius: 4px;
 }
-
-:focus {
-    outline-style: none;
-}
-
 .flash-messages {
     clear: both;
     text-align: center;
