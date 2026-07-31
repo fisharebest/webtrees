@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\EmailService;
-use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
@@ -103,26 +102,24 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             if ($next_email_timestamp < $this->clock->now()->getTimestamp()) {
                 // Which users have pending changes?
                 foreach ($this->user_service->all() as $user) {
-                    if ($user->getPreference(UserInterface::PREF_CONTACT_METHOD) !== MessageService::CONTACT_METHOD_NONE) {
-                        foreach ($this->tree_service->all() as $tmp_tree) {
-                            if ($tmp_tree->hasPendingEdit() && Auth::isManager($tmp_tree, $user)) {
-                                I18N::init($user->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
+                    foreach ($this->tree_service->all() as $tmp_tree) {
+                        if ($tmp_tree->hasPendingEdit() && Auth::isManager($tmp_tree, $user)) {
+                            I18N::init($user->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
 
-                                $this->email_service->send(
-                                    new SiteUser(),
-                                    $user,
-                                    new TreeUser($tmp_tree),
-                                    I18N::translate('Pending changes'),
-                                    view('emails/pending-changes-text', [
-                                        'tree' => $tmp_tree,
-                                        'user' => $user,
-                                    ]),
-                                    view('emails/pending-changes-html', [
-                                        'tree' => $tmp_tree,
-                                        'user' => $user,
-                                    ])
-                                );
-                            }
+                            $this->email_service->send(
+                                new SiteUser(),
+                                $user,
+                                new TreeUser($tmp_tree),
+                                I18N::translate('Pending changes'),
+                                view('emails/pending-changes-text', [
+                                    'tree' => $tmp_tree,
+                                    'user' => $user,
+                                ]),
+                                view('emails/pending-changes-html', [
+                                    'tree' => $tmp_tree,
+                                    'user' => $user,
+                                ])
+                            );
                         }
                     }
                 }

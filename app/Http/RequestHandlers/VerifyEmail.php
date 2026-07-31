@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\NoReplyUser;
 use Fisharebest\Webtrees\Services\EmailService;
-use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\User;
@@ -76,21 +75,13 @@ final class VerifyEmail implements RequestHandlerInterface
                     view('emails/verify-notify-html', ['user' => $user])
                 );
 
-                $mail1_method = $administrator->getPreference('CONTACT_METHOD');
-
-                if (
-                    $mail1_method !== MessageService::CONTACT_METHOD_EMAIL &&
-                    $mail1_method !== MessageService::CONTACT_METHOD_MAILTO &&
-                    $mail1_method !== MessageService::CONTACT_METHOD_NONE
-                ) {
-                    DB::table('message')->insert([
-                        'sender'     => $username,
-                        'ip_address' => $request->getAttribute('client-ip'),
-                        'user_id'    => $administrator->id(),
-                        'subject'    => $subject,
-                        'body'       => view('emails/verify-notify-text', ['user' => $user]),
-                    ]);
-                }
+                DB::table('message')->insert([
+                    'sender'     => $username,
+                    'ip_address' => $request->getAttribute('client-ip'),
+                    'user_id'    => $administrator->id(),
+                    'subject'    => $subject,
+                    'body'       => view('emails/verify-notify-text', ['user' => $user]),
+                ]);
             }
             I18N::init($old_language);
 

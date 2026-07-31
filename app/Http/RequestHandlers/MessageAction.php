@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\ContactMethod;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -57,7 +57,11 @@ final class MessageAction implements RequestHandlerInterface
         $to_user  = $this->user_service->findByUserName($to);
         $url      = Validator::parsedBody($request)->isLocalUrl()->string('url', $base_url);
 
-        if ($to_user === null || $to_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === MessageService::CONTACT_METHOD_NONE) {
+        if ($to_user === null) {
+            throw new HttpAccessDeniedException();
+        }
+
+        if (ContactMethod::fromUser($to_user)->isNotContactable()) {
             throw new HttpAccessDeniedException();
         }
 
