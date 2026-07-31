@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ca9187a3aa9c455a33bfeba02214341",
+    "content-hash": "72b787fb69fb893ab7cdcbcfa9e0c682",
     "packages": [
         {
             "name": "aura/router",
@@ -8956,7 +8956,6 @@
     "platform-dev": {
         "ext-dom": "*",
         "ext-libxml": "*",
-        "ext-pcov": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*"
     },

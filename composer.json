@@ -78,7 +78,6 @@
     "require-dev": {
         "ext-dom": "*",
         "ext-libxml": "*",
-        "ext-pcov": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
         "league/flysystem-memory": "3.31.0",
@@ -92,6 +91,7 @@
         "squizlabs/php_codesniffer": "4.0.1"
     },
     "suggest": {
+        "ext-pcov": "For code-coverage with phpunit",
         "ext-exif": "Recommended to auto-rotate JPEG images using EXIF orientation metadata",
         "ext-pdo_mysql": "Required to use MySQL for database storage",
         "ext-pdo_sqlite": "Required to use SQLite for database storage",
