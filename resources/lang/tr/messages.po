@@ -61,7 +61,7 @@ msgstr "%1$s, %2$s ile geri bağlantı içermiyor."
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
 msgstr[0] "%1$s dosyası %2$s saniye içinde çıkarıldı."
-msgstr[1] "%1$s dosyaları %2$s saniyeler içinde çıkarıldı."
+msgstr[1] "%1$s dosyası %2$s saniye iinde ıkarıldı."
 
 #: app/Http/RequestHandlers/CheckTree.php
 #, php-format
@@ -152,7 +152,7 @@ msgstr "%s ve onların nesilleri"
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
 msgstr[0] "%s anonim oturum açmış kullanıcı"
-msgstr[1] "%s anonim oturum açmış kullanıcılar"
+msgstr[1] "%s anonim oturum amış kullanıcı"
 
 #: resources/views/family-page-children.phtml
 #: resources/views/modules/ancestors-chart/tree.phtml
@@ -163,7 +163,7 @@ msgstr[1] "%s anonim oturum açmış kullanıcılar"
 msgid "%s child"
 msgid_plural "%s children"
 msgstr[0] "%s çocuk"
-msgstr[1] "%s çocuklar"
+msgstr[1] "%s ocuk"
 
 #: app/Age.php app/Elements/AgeAtEvent.php app/StatisticsData.php
 #: app/StatisticsFormat.php
@@ -171,7 +171,7 @@ msgstr[1] "%s çocuklar"
 msgid "%s day"
 msgid_plural "%s days"
 msgstr[0] "%s gün"
-msgstr[1] "%s günler"
+msgstr[1] "%s gn"
 
 #: app/Http/RequestHandlers/CheckTree.php
 #: app/Http/RequestHandlers/UserEditAction.php
@@ -187,14 +187,14 @@ msgstr "%s mevcut değil."
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
 msgstr[0] "%s ailesi güncellendi."
-msgstr[1] "%s aileleri güncellendi."
+msgstr[1] "%s ailesi gncellendi."
 
 #: resources/views/admin/locations.phtml
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
 msgstr[0] "%s aile ağacı"
-msgstr[1] "%s aile ağaçları"
+msgstr[1] "%s aile ağacı"
 
 #: resources/views/statistics/families/top10-list-grand.phtml
 #: resources/views/statistics/families/top10-nolist-grand.phtml
@@ -202,7 +202,7 @@ msgstr[1] "%s aile ağaçları"
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s torunu"
-msgstr[1] "%s torunları"
+msgstr[1] "%s torunu"
 
 #: app/Module/LifespansChartModule.php
 #: resources/views/admin/trees-unconnected.phtml
@@ -210,21 +210,21 @@ msgstr[1] "%s torunları"
 msgid "%s individual"
 msgid_plural "%s individuals"
 msgstr[0] "%s birey"
-msgstr[1] "%s bireyler"
+msgstr[1] "%s birey"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
 msgstr[0] "%s bireyi güncellendi."
-msgstr[1] "%s bireyleri güncellendi."
+msgstr[1] "%s bireyi gncellendi."
 
 #: app/Module/UserMessagesModule.php
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] "%s mesajı"
-msgstr[1] "%s mesajları"
+msgstr[1] "%s mesajı"
 
 #: app/Age.php app/Elements/AgeAtEvent.php app/StatisticsData.php
 #: app/StatisticsFormat.php resources/views/modules/relatives/family.phtml
@@ -232,14 +232,14 @@ msgstr[1] "%s mesajları"
 msgid "%s month"
 msgid_plural "%s months"
 msgstr[0] "%s ay"
-msgstr[1] "%s aylar"
+msgstr[1] "%s ay"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
 msgstr[0] "%s notu güncellendi."
-msgstr[1] "%s notları güncellendi."
+msgstr[1] "%s notu gncellendi."
 
 #: app/Http/RequestHandlers/CheckTree.php
 #, php-format
@@ -251,7 +251,7 @@ msgstr "%s çok kez tekrarlıyor."
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
 msgstr[0] "%s bilgi havuzu güncellendi."
-msgstr[1] "%s bilgi havuzları güncellendi."
+msgstr[1] "%s bilgi havuzu gncellendi."
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml
@@ -265,21 +265,21 @@ msgstr "%s size aşağıdaki mesajı gönderdi."
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
 msgstr[0] "%s oturum açmış kullanıcı"
-msgstr[1] "%s oturum açmış kullanıcılar"
+msgstr[1] "%s oturum amış kullanıcı"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
 msgstr[0] "%s kaynağı güncellendi."
-msgstr[1] "%s kaynakları güncellendi."
+msgstr[1] "%s kaynağı gncellendi."
 
 #: app/Elements/AgeAtEvent.php
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
 msgstr[0] "%s hafta"
-msgstr[1] "%s haftalar"
+msgstr[1] "%s hafta"
 
 #: app/Age.php app/Elements/AgeAtEvent.php app/StatisticsData.php
 #: app/StatisticsFormat.php resources/views/lists/anniversaries-list.phtml
@@ -289,7 +289,7 @@ msgstr[1] "%s haftalar"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s yıl"
-msgstr[1] "%s yıllar"
+msgstr[1] "%s yıl"
 
 #: resources/views/modules/yahrzeit/list.phtml
 #, php-format
@@ -366,7 +366,7 @@ msgstr "(%s yaş)"
 #: resources/views/fact-date.phtml
 #, php-format
 msgid "(aged %s)"
-msgstr "(yaşı %s)"
+msgstr "(%s yaşında)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
@@ -375,7 +375,7 @@ msgstr "(yaşı %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "(yaşı %s)"
+msgstr "(%s yaşında)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
@@ -384,7 +384,7 @@ msgstr "(yaşı %s)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "(yaşı %s)"
+msgstr "(%s yaşında)"
 
 #. I18N: %s is a number of records per page
 #: resources/views/lists/datatables-attributes.phtml
@@ -8417,7 +8417,7 @@ msgstr "Hiçbir hata bulunamadı."
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
 msgstr[0] "Bir sonraki %s gün için hiçbir olay yok."
-msgstr[1] "Bir sonraki %s günler için hiçbir olay yok."
+msgstr[1] "Bir sonraki %s gn iin hibir olay yok."
 
 #: app/Module/OnThisDayModule.php
 msgid "No events exist for today."
@@ -12227,7 +12227,7 @@ msgstr "Saat dilimi, bugünün tarihini bilmek gibi tarih hesaplamaları için g
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] "İki aile ağacının aynı \"XREF\" i kullanan %1$s kaydı var."
-msgstr[1] "İki aile ağacının aynı \"XREF\" i kullanan %1$s kayıtları var."
+msgstr[1] "İki aile ağacının aynı "XREF" i kullanan %1$s kaydı var."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php
 msgid "The upgrade is complete."
@@ -12348,7 +12348,7 @@ msgstr "Denetlemeniz için bekleyen değişiklikler var."
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
 msgstr[0] "Son %s günü içinde herhangi bir değişiklik olmadı."
-msgstr[1] "Son %s günler içinde herhangi bir değişiklik olmadı."
+msgstr[1] "Son %s gn iinde herhangi bir değişiklik olmadı."
 
 #: resources/views/admin/control-panel.phtml
 msgid "There was an error checking for a new version."
@@ -12423,7 +12423,7 @@ msgstr "Bu aile düzenlendi. Değişiklikleri ve ardından %1$s veya %2$s'i göz
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
 msgstr[0] "Bu aile ağacı, başka bir aile ağacıyla aynı “XREF” i kullanan %s kaydına sahiptir."
-msgstr[1] "Bu aile ağacı, başka bir aile ağacıyla aynı “XREF” i kullanan %s kayıtlarına sahiptir."
+msgstr[1] "Bu aile ağacı, başka bir aile ağacıyla aynı “XREF” i kullanan %s kaydına sahiptir."
 
 #: app/Module/SlideShowModule.php
 msgid "This family tree has no images to display."
@@ -13406,7 +13406,7 @@ msgstr "Konumları bulmak için harici bir hizmet kullanın."
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
 msgstr[0] "En az %s karakter kullanın."
-msgstr[1] "En az %s karakterler kullanın."
+msgstr[1] "En az %s karakter kullanın."
 
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
@@ -14464,7 +14464,7 @@ msgstr "ilk"
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
 msgstr[0] "%1$s yılından %2$s yıl aralıklarla"
-msgstr[1] "%1$s yılından %2$s yıllar aralıklarla"
+msgstr[1] "%1$s yılından %2$s yıl aralıklarla"
 
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php
@@ -14611,7 +14611,7 @@ msgstr "anne tarafından gelen"
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
 msgstr[0] "maksimum %s gün"
-msgstr[1] "maksimum %s günler"
+msgstr[1] "maksimum %s gn"
 
 #: resources/views/admin/trees-privacy.phtml
 msgid "members"
@@ -15190,7 +15190,7 @@ msgstr "phpmyadmin gibi diğer uygulamaları kullanarak veritabanına bağlanabi
 msgid "±%s year"
 msgid_plural "±%s years"
 msgstr[0] "±%s yıl"
-msgstr[1] "±%s yıllar"
+msgstr[1] "%s yıl"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
