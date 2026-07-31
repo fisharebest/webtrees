@@ -16,7 +16,7 @@ use Illuminate\Support\Collection;
     <ul class="nav nav-tabs flex-wrap" role="tablist">
         <?php foreach ($tabs as $tab) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link<?= $tab->isGrayedOut($record) ? ' text-muted' : '' ?>" data-bs-toggle="tab" role="tab" data-wt-href="<?= e(route('module', ['module' => $tab->name(), 'action' => 'Tab', 'tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" href="#<?= $tab->name() ?>">
+                <a class="nav-link<?= $tab->isGrayedOut($record) ? ' text-muted' : '' ?>" id="<?= $tab->name() ?>-tab" data-bs-toggle="tab" role="tab" aria-controls="<?= $tab->name() ?>" aria-selected="false" data-wt-href="<?= e(route('module', ['module' => $tab->name(), 'action' => 'Tab', 'tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" href="#<?= $tab->name() ?>">
                     <?= $tab->tabTitle() ?>
                 </a>
             </li>
@@ -25,9 +25,7 @@ use Illuminate\Support\Collection;
 
     <div class="tab-content">
         <?php foreach ($tabs as $tab) : ?>
-            <div id="<?= $tab->name() ?>" class="tab-pane mt-2 fade" role="tabpanel"><?php if (!$tab->canLoadAjax()) : ?><?= $tab->getTabContent($record) ?><?php endif ?></div>
+            <div id="<?= $tab->name() ?>" class="tab-pane mt-2 fade" role="tabpanel" aria-labelledby="<?= $tab->name() ?>-tab"><?php if (!$tab->canLoadAjax()) : ?><?= $tab->getTabContent($record) ?><?php endif ?></div>
         <?php endforeach ?>
     </div>
 </div>
-
-

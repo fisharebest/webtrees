@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Tree;
      aria-valuenow="<?= $progress * 100 ?>"
      aria-valuemin="0"
      aria-valuemax="100"
+     aria-label="<?= I18N::translate('Importing family tree') ?>"
 >
     <div class="progress-bar" style="min-width: <?= $progress * 100 ?>%;">
         <?= $status !== '' ? $status : I18N::percentage($progress, 1) ?>
@@ -29,7 +30,7 @@ use Fisharebest\Webtrees\Tree;
 <?php if ($errors === '') : ?>
     <div class="d-none" data-wt-import-autoload-url="<?= e(route(GedcomLoad::class, ['tree' => $tree->name()])) ?>"></div>
 <?php else : ?>
-    <div class="alert alert-danger">
+    <div class="alert alert-danger" role="alert">
         <?= $errors ?>
     </div>
 

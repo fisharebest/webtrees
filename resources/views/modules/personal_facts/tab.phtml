@@ -30,21 +30,21 @@ use Illuminate\Support\Collection;
                 <td colspan="2">
                     <?php if ($has_associate_facts) : ?>
                         <label>
-                            <input id="show-associate-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-associate-fact" data-wt-persist="associates" autocomplete="off">
+                            <input id="show-associate-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-associate-fact" data-wt-persist="associates" autocomplete="off" aria-expanded="false">
                             <?= I18N::translate('Associated events') ?>
                         </label>
                     <?php endif ?>
 
                     <?php if ($has_relative_facts) : ?>
                         <label>
-                            <input id="show-relatives-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-relation-fact" data-wt-persist="relatives" autocomplete="off">
+                            <input id="show-relatives-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-relation-fact" data-wt-persist="relatives" autocomplete="off" aria-expanded="false">
                             <?= I18N::translate('Events of close relatives') ?>
                         </label>
                     <?php endif ?>
 
                     <?php if ($has_historic_facts) : ?>
                         <label>
-                            <input id="show-historical-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-historic-fact" data-wt-persist="historic-facts" autocomplete="off">
+                            <input id="show-historical-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-historic-fact" data-wt-persist="historic-facts" autocomplete="off" aria-expanded="false">
                             <?= I18N::translate('Historic events') ?>
                         </label>
                     <?php endif ?>

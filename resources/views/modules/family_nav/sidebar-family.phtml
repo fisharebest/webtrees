@@ -39,7 +39,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
                             <?= $relationship_service->getCloseRelationshipName($individual, $spouse) ?>
                         </a>
 
-                        <div class="dropdown-menu wt-family-navigator-dropdown">
+                        <div class="dropdown-menu wt-family-navigator-dropdown" aria-labelledby="dropdown-<?= e($spouse->xref()) ?>">
                             <?php foreach ($spouse->childFamilies() as $n => $spouse_child_family) : ?>
                                 <?php if ($n > 0) : ?>
                                     <div class="dropdown-divider"></div>
@@ -87,7 +87,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
                                 <?= $relationship_service->getCloseRelationshipName($individual, $child) ?>
                             </a>
 
-                            <div class="dropdown-menu">
+                            <div class="dropdown-menu" aria-labelledby="dropdown-<?= e($child->xref()) ?>">
                                 <?php foreach ($child->spouseFamilies() as $n => $in_laws) : ?>
                                     <?php if ($n > 0) : ?>
                                         <div class="dropdown-divider"></div>

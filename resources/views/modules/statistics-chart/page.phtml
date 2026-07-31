@@ -18,7 +18,7 @@ declare(strict_types=1);
     <ul class="nav nav-tabs" role="tablist">
         <?php foreach ($tabs as $label => $url) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="#tab-<?= e(md5($url)) ?>" data-bs-toggle="tab" data-wt-href="<?= e($url) ?>" role="tab">
+                <a class="nav-link" id="tab-<?= e(md5($url)) ?>-tab" href="#tab-<?= e(md5($url)) ?>" data-bs-toggle="tab" data-wt-href="<?= e($url) ?>" role="tab" aria-controls="tab-<?= e(md5($url)) ?>" aria-selected="false">
                     <?= $label ?>
                 </a>
             </li>
@@ -27,11 +27,9 @@ declare(strict_types=1);
 
     <div class="tab-content">
         <?php foreach ($tabs as $url) : ?>
-            <div class="tab-pane fade" role="tabpanel" id="tab-<?= e(md5($url)) ?>">
+            <div class="tab-pane fade" role="tabpanel" id="tab-<?= e(md5($url)) ?>" aria-labelledby="tab-<?= e(md5($url)) ?>-tab">
                 <?= view('icons/spinner') ?>
             </div>
         <?php endforeach ?>
     </div>
 </div>
-
-

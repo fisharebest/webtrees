@@ -63,7 +63,7 @@ use Illuminate\Support\Collection;
                     </button>
                 </div>
 
-                <div id="card-tree-content-<?= $managed_tree->id() ?>" class="accordion-collapse collapse<?= $managed_tree->id() === $tree->id() || !$managed_tree->imported() ? ' show' : '' ?>" aria-labelledby="panel-tree-header-<?= $managed_tree->id() ?>">
+                <div id="card-tree-content-<?= $managed_tree->id() ?>" class="accordion-collapse collapse<?= $managed_tree->id() === $tree->id() || !$managed_tree->imported() ? ' show' : '' ?>" aria-labelledby="card-tree-header-<?= $managed_tree->id() ?>">
                     <div class="accordion-body">
                         <?php $importing = DB::table('gedcom_chunk')->where('gedcom_id', '=', $managed_tree->id())->where('imported', '=', 0)->exists() ?>
                         <?php if ($importing) : ?>
@@ -72,7 +72,7 @@ use Illuminate\Support\Collection;
                                 class="col-12"
                                 data-wt-import-progress-url="<?= e(route(GedcomLoad::class, ['tree' => $managed_tree->name()])) ?>"
                             >
-                                <div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="<?= I18N::translate('Importing family tree') ?>">
                                     <div class="progress-bar">
                                         <?= I18N::translate('Calculating…') ?>
                                     </div>

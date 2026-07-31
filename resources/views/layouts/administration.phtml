@@ -53,10 +53,10 @@ use Fisharebest\Webtrees\View;
                     <a class="nav-link active" href="<?= e(route(HomePage::class)) ?>"><?= I18N::translate('Exit control panel') ?></a>
                 </li>
                 <li class="nav-item dropdown menu-language">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="admin-language-menu" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <?= I18N::translate('Language') ?>
                     </a>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" aria-labelledby="admin-language-menu">
                         <?php foreach (I18N::activeLanguages() as $language_tag => $endonym) : ?>
                             <a class="dropdown-item menu-language-<?= $language_tag ?> <?= I18N::languageTag() === $language_tag ? ' active' : '' ?>" href="#" data-wt-post-url="<?= e(route(SelectLanguage::class, ['language' => $language_tag])) ?>"><?= $endonym ?></a>
                         <?php endforeach ?>

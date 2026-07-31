@@ -97,11 +97,11 @@ use Illuminate\Support\Collection;
                                 <?php endforeach ?>
                             </ul>
 
-                            <div class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true" id="access-level-<?= $module->name() ?>">
+                            <div class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="access-level-title-<?= $module->name() ?>" id="access-level-<?= $module->name() ?>">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h2 class="modal-title">
+                                            <h2 class="modal-title" id="access-level-title-<?= $module->name() ?>">
                                                 <?= e($module->title()) ?> – <?= I18N::translate('Access level') ?>
                                             </h2>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= I18N::translate('close') ?>">
@@ -173,4 +173,3 @@ use Illuminate\Support\Collection;
     <?= csrf_field() ?>
 </form>
 </div>
-

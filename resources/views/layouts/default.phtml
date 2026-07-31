@@ -106,7 +106,7 @@ $theme = Registry::container()->get(ModuleThemeInterface::class);
                     </div>
 
                     <?php if ($tree !== null) : ?>
-                        <nav class="col wt-primary-navigation">
+                        <nav class="col wt-primary-navigation" aria-label="<?= I18N::translate('Genealogy menu') ?>">
                             <ul class="nav wt-genealogy-menu">
                                 <?php foreach ($theme->genealogyMenu($tree) as $menu) : ?>
                                     <?= view('components/menu-item', ['menu' => $menu]) ?>

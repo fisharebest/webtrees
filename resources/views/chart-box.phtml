@@ -107,7 +107,7 @@ $id = Registry::idFactory()->id();
                     <div class="d-none"><?= view('icons/zoom-out') ?></div>
                 </a>
 
-                <div class="dropdown-menu dropdown-menu-end wt-chart-box-dropdown wt-chart-box-zoom-dropdown" style="position: inherit" aria-labelledby="#chart-box-zoom-<?= $id ?>">
+                <div class="dropdown-menu dropdown-menu-end wt-chart-box-dropdown wt-chart-box-zoom-dropdown" style="position: inherit" aria-labelledby="chart-box-zoom-<?= $id ?>">
                     <?php foreach ($all_facts as $fact) : ?>
                         <?= $fact->summary() ?>
                     <?php endforeach ?>
@@ -121,7 +121,7 @@ $id = Registry::idFactory()->id();
                     </span>
                 </a>
 
-                <div class="dropdown-menu dropdown-menu-end wt-chart-box-dropdown wt-chart-box-links-dropdown" style="position: inherit" aria-labelledby="#chart-box-menu-<?= $id ?>">
+                <div class="dropdown-menu dropdown-menu-end wt-chart-box-dropdown wt-chart-box-links-dropdown" style="position: inherit" aria-labelledby="chart-box-menu-<?= $id ?>">
                     <?php foreach ($menus as $menu) : ?>
                         <a class="dropdown-item p-1 <?= e($menu->getClass()) ?>" href="<?= e($menu->getLink()) ?>">
                             <?= $menu->getLabel() ?>
