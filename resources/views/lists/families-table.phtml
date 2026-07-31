@@ -177,16 +177,19 @@ $hundred_years_ago = Registry::timestampFactory()->todayJulianDay() - 36525;
                 </td>
 
                 <!-- Marriage date -->
+                <?php $is_married = $family->facts(['MARR'])->isNotEmpty() ?>
                 <?php $marriage_dates = $family->getAllMarriageDates() ?>
-                <td data-sort="<?= sprintf('x%07d', $family->getMarriageDate()->julianDay()) ?>">
+                <?php $sort_key = $family->getMarriageDate()->julianDay() ?>
+                <?php $sort_key = $sort_key === 0 ? (int) $is_married : $sort_key ?>
+                <td data-sort="<?= sprintf('x%07d', $sort_key) ?>">
                     <?php if ($marriage_dates !== []) : ?>
                         <?php foreach ($marriage_dates as $marriage_date) : ?>
                             <div><?= $marriage_date->display($tree, null, true) ?></div>
                         <?php endforeach ?>
-                    <?php elseif ($family->facts(['MARR'])->isEmpty()) : ?>
-                        <?= I18N::translate('no') ?>
-                    <?php elseif ($family->facts(['MARR'])->isNotEmpty()) : ?>
+                    <?php elseif ($is_married) : ?>
                         <?= I18N::translate('yes') ?>
+                    <?php else : ?>
+                        <?= I18N::translate('no') ?>
                     <?php endif ?>
                 </td>
 
