@@ -35,7 +35,7 @@ final readonly class Polish extends AbstractLanguage
     protected const string    LANGUAGE_TAG       = 'pl';
     protected const string    LOCALE_CODE        = 'pl_PL@collation=phonebook';
     protected const int       MINIMUM_GROUPING_DIGITS = 2;
-    protected const string    DIGITS_SEPARATOR   = UTF8::NO_BREAK_SPACE;
+    protected const string    DIGITS_SEPARATOR   = UTF8::NARROW_NO_BREAK_SPACE;
     protected const string    DECIMAL_SYMBOL     = ',';
     protected const string    DATE_ABOUT         = 'ok. %s';
     protected const string    DATE_AFTER         = 'po %s';

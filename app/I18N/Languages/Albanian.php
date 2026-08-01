@@ -34,7 +34,7 @@ final readonly class Albanian extends AbstractLanguage
     protected const PaperSize PAPER_SIZE         = PaperSize::A4;
     protected const string    LANGUAGE_TAG       = 'sq';
     protected const string    LOCALE_CODE        = 'sq_AL@collation=phonebook';
-    protected const string    DIGITS_SEPARATOR   = UTF8::NO_BREAK_SPACE;
+    protected const string    DIGITS_SEPARATOR   = UTF8::NARROW_NO_BREAK_SPACE;
     protected const string    DECIMAL_SYMBOL     = ',';
     protected const string    DATE_ABOUT         = 'rreth %s';
     protected const string    DATE_AFTER         = 'pas %s';
