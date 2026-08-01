@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -377,7 +377,6 @@ msgstr "(%s nakon smrti)"
 msgid "(age %s)"
 msgstr "(starost %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -385,7 +384,6 @@ msgstr "(starost %s)"
 msgid "(aged %s)"
 msgstr "(star/stara %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -394,7 +392,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(starost %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -902,7 +899,7 @@ msgstr "Vremenska linija sa prikazom pojedinčnih događaja.."
 
 #: resources/views/admin/users-edit.phtml
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Korisnik se neće moći prijaviti sve dok oboje \"email verifikovan\" i \"odobren od strane administratora\" ne budu selektovani."
+msgstr "Korisnik se neće moći prijaviti sve dok oboje “email verifikovan” i “odobren od strane administratora” ne budu selektovani."
 
 #: resources/xml/reports/pedigree_report.xml
 msgctxt "paper size"
@@ -1100,6 +1097,11 @@ msgstr "Dodaj članak za Novosti"
 msgid "Add a note"
 msgstr "Dodaj novu zabilješku"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "Dodaj roditelja"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "Dodaj brata / sestru"
@@ -1118,9 +1120,16 @@ msgstr "Dodaj sina"
 msgid "Add a source citation"
 msgstr "Dodaj novi citat sa izvora"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "Dodaj novog supružnika"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "Dodaj supružnika koristeći postojeću osobu"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1493,6 +1502,12 @@ msgstr "Alias"
 msgid "Alive"
 msgstr "Živi"
 
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "Živ ili mrtav"
+
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
 #: resources/views/lists/datatables-attributes.phtml
@@ -1594,7 +1609,7 @@ msgstr "Alternativni način za prijavu i odjavu na sistem."
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr "Grafikon \"pješčani sat\" predaka i potomaka pojedinca."
+msgstr "Grafikon “pješčani sat” predaka i potomaka pojedinca."
 
 #: resources/views/edit/reorder-families.phtml
 msgid "An individual can have more than one set of parents. For example, birth and adopted."
@@ -2799,7 +2814,7 @@ msgstr "Promijenite blokove „Početna stranice“"
 
 #: app/Http/RequestHandlers/UserPageEdit.php
 msgid "Change the “My page” blocks"
-msgstr "Promijenite blokove \"Moja stranica\""
+msgstr "Promijenite blokove “Moja stranica”"
 
 #. I18N: [a record was] Changed by <user>
 #: resources/views/modules/recent_changes/changes-list.phtml
@@ -2907,7 +2922,6 @@ msgstr "Dijete"
 msgid "Child of "
 msgstr "Djete "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3376,7 +3390,7 @@ msgstr "Kopiraj datoteke …"
 
 #: app/Module/ShareUrlModule.php
 msgid "Copy the URL of the record to the clipboard"
-msgstr "Kopirajte URL zapis u \"clipboard\""
+msgstr "Kopirajte URL zapis u “clipboard”"
 
 #: app/Gedcom.php
 msgid "Copyright"
@@ -3990,7 +4004,6 @@ msgstr "Datumi se čuvaju koristeći engleske skraćenice i ključne riječi. Pr
 msgid "Daughter"
 msgstr "Kćer"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4500,7 +4513,7 @@ msgstr "Svaki izvor bilježi određene događaje, uglavnom za određeno razdoblj
 
 #: resources/views/help/pending-changes.phtml
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "Svaki korisnički račun ima opciju da \"automatski prihvati promjene\". Kada je ovo omogućeno, sve promjene koje je napravio taj korisnik odmah se spremaju. Mnogi administratori to omogućavaju za svoj korisnički račun."
+msgstr "Svaki korisnički račun ima opciju da “automatski prihvati promjene”. Kada je ovo omogućeno, sve promjene koje je napravio taj korisnik odmah se spremaju. Mnogi administratori to omogućavaju za svoj korisnički račun."
 
 #: resources/views/modules/gedcom_stats/config.phtml
 #: resources/views/modules/gedcom_stats/statistics.phtml
@@ -4596,9 +4609,7 @@ msgstr "Uredi ovog pojedinca i zamijeni njegove detalje svojim."
 msgid "Edit with all GEDCOM tags"
 msgstr "Izmijenite na svim GEDCOM oznakama"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4647,6 +4658,11 @@ msgstr "Email"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "Email adresa"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "Samo e-pošta"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5262,7 +5278,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "Februar"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Ženski"
 
@@ -5338,6 +5354,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "Datoteke označene sa %s su potrebne za ispravan rad i ne mogu se ukloniti."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "Filter"
 
@@ -5694,6 +5712,11 @@ msgstr "Genološki kontakt"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "Genealoški podaci"
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "Genealoški meni"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6107,7 +6130,7 @@ msgstr "Hermosillo, Meksiko"
 msgid "Hide GEDCOM tags"
 msgstr "Sakrij GEDCOM oznake"
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6409,6 +6432,12 @@ msgstr "Uvoz geografskih podataka"
 msgid "Import preferences"
 msgstr "Postavke za uvoz"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "Uvoz porodičnog stabla"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -6416,11 +6445,11 @@ msgstr "U porodičnom stablu, svaki zapis ima interni referentni broj (koji se n
 
 #: resources/views/help/romanized.phtml
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "U mnogim kulturama uobičajeno je da se tradicionalno ime piše tradicionalnim znakovima, a takođe i romanizirana verzija imena, jer bi ono bilo napisano ili izgovarano na jezicima na osnovu latiničnog pisma, kao što je engleski. <br> <br> Ako želite da koristite ne-latiničnu abecedu kao što su hebrejski, grčki, ruski, kineski ili arapski da biste unijeli ime u standardna polja za imena, onda možete da koristite ovo polje da unesete isto ime koristeći latiničnu abecedu. Obje verzije imena će se pojavit na listama i grafikonima. <br> <br> Iako je ovo polje označeno kao \"romanizirano\", nije ograničeno samo na sadržaje sa znakova na osnovu latinične abecede. Ovo bi moglo biti od koristi sa japanskim imenima, gde se mogu pojaviti tri različita znaka."
+msgstr "U mnogim kulturama uobičajeno je da se tradicionalno ime piše tradicionalnim znakovima, a takođe i romanizirana verzija imena, jer bi ono bilo napisano ili izgovarano na jezicima na osnovu latiničnog pisma, kao što je engleski. <br> <br> Ako želite da koristite ne-latiničnu abecedu kao što su hebrejski, grčki, ruski, kineski ili arapski da biste unijeli ime u standardna polja za imena, onda možete da koristite ovo polje da unesete isto ime koristeći latiničnu abecedu. Obje verzije imena će se pojavit na listama i grafikonima. <br> <br> Iako je ovo polje označeno kao “romanizirano”, nije ograničeno samo na sadržaje sa znakova na osnovu latinične abecede. Ovo bi moglo biti od koristi sa japanskim imenima, gde se mogu pojaviti tri različita znaka."
 
 #: resources/views/help/hebrew.phtml
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "U mnogim kulturama uobičajeno je da se tradicionalno ime piše tradicionalnim karakterima, a takođe i romanizirana verzija imena, jer bi ono bilo napisano ili izgovarano na jezicima zasnovanim na osnovu latiničnog pisma, kao što je engleski. <br> <br> Ako radije koristite latiničnu abecedu za unos imena u standardna polja imena, onda možete da koristite ovo polje da unesete isto ime koristeći ne-latiničnu abecedu kao što su grčka, hebrejska, ruska, arapska ili kineska. Obje verzije imena pojavit će se na listama i grafikonima. <br> <br> Iako je ovo polje označeno kao \"hebrejski\", nije ograničeno na sadržavanje samo hebrejskih znakova."
+msgstr "U mnogim kulturama uobičajeno je da se tradicionalno ime piše tradicionalnim karakterima, a takođe i romanizirana verzija imena, jer bi ono bilo napisano ili izgovarano na jezicima zasnovanim na osnovu latiničnog pisma, kao što je engleski. <br> <br> Ako radije koristite latiničnu abecedu za unos imena u standardna polja imena, onda možete da koristite ovo polje da unesete isto ime koristeći ne-latiničnu abecedu kao što su grčka, hebrejska, ruska, arapska ili kineska. Obje verzije imena pojavit će se na listama i grafikonima. <br> <br> Iako je ovo polje označeno kao “hebrejski”, nije ograničeno na sadržavanje samo hebrejskih znakova."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -6435,6 +6464,16 @@ msgstr "U nekim zemljama, zakon o privatnosti ne primjenjuje se samo na žive po
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "Pristigla pošta i e-pošta"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "Samo pristigla pošta"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6621,14 +6660,6 @@ msgstr "Interaktivno stablo osobe %s"
 msgid "Interment"
 msgstr "Sahrana"
 
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "Interno dopisivanje"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "Interno dopisivanje sa email-ovima"
-
 #: app/Module/PrivacyPolicy.php
 msgid "International transfers"
 msgstr ""
@@ -6796,7 +6827,7 @@ msgstr "Drži otvoreno"
 #: resources/views/admin/trees-preferences.phtml
 #: resources/views/edit/edit-fact.phtml resources/views/edit/edit-record.phtml
 msgid "Keep the existing “last change” information"
-msgstr "Zadrži postojeću informaciju \"zadnja promjena\""
+msgstr "Zadrži postojeću informaciju “zadnja promjena”"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7314,10 +7345,6 @@ msgstr "Časopis"
 msgid "Maidenhead location code"
 msgstr "Maidenhead šifra lokacije"
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "Pošalji mail na: link"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7333,7 +7360,7 @@ msgstr "Malezija"
 msgid "Maldives"
 msgstr "Maldivi"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Muški"
 
@@ -7379,9 +7406,7 @@ msgstr "Upravljanje porodičnim stablima"
 msgid "Manage media"
 msgstr "Upravljanje medijima"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "Menadžer"
@@ -7800,9 +7825,7 @@ msgstr "Srednji sistemi (5.000 pojedinaca): 32–64 MB, 20–40 sekundi"
 msgid "Melbourne, Australia"
 msgstr "Melbourne, Australija"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "Član"
@@ -7911,9 +7934,7 @@ msgstr ""
 msgid "Missing data"
 msgstr "Nedostajući podaci"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "Moderator"
 
@@ -8391,7 +8412,7 @@ msgstr "Nema konverzije kalendara"
 msgid "No children"
 msgstr "Bez djece"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "Nema kontakta"
 
@@ -8814,7 +8835,7 @@ msgstr "Na današnji dan"
 msgid "Only add new records"
 msgstr "Dodaj samo nove zapise"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "Samo ovlašteni mogu mijenjati"
@@ -8874,11 +8895,17 @@ msgstr "Orlando, Florida, Sjedinjene Države"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
 msgid "Other"
 msgstr "Ostalo"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
+msgid "Other"
+msgstr "Drugo"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "Other facts to show in charts"
@@ -8962,6 +8989,11 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "Veličina stranice"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "Paginacija"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9053,7 +9085,7 @@ msgstr "Password"
 #: resources/views/password-reset-page.phtml
 #: resources/views/register-page.phtml
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Lozinke moraju imati najmanje 8 znakova i razlikovati velika i mala slova, tako da se \"lozinka\" razlikuje od \"LOZINKA\"."
+msgstr "Lozinke moraju imati najmanje 8 znakova i razlikovati velika i mala slova, tako da se “lozinka” razlikuje od “LOZINKA”."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9524,6 +9556,12 @@ msgstr "Oporuka"
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "Napredak"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -10579,6 +10617,7 @@ msgstr "Čarobnjak za instalaciju webtrees"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10755,6 +10794,7 @@ msgstr "Prikaži osobe rođene prije više od 100 godina."
 msgid "Show individuals born within the last 100 years."
 msgstr "Prikaži osobe rođene unutar prošlih 100 godina."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Prikaži osobe koje su žive ili parove gdje su oba partnera živa."
@@ -10944,23 +10984,21 @@ msgstr "Za koje jezike želite prikazati ovaj blok"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Prikažite sličice na grafikonima i porodičnim grupama."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Prikaži administratorima"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "Prikaži članovima"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11168,7 +11206,6 @@ msgstr "Neke teme mogu prikazati ikone na kartici „Činjenice i događaji“."
 msgid "Son"
 msgstr "Sin"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -13266,7 +13303,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "Nepoznato"
@@ -13281,7 +13318,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Nepoznato"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13489,7 +13526,7 @@ msgstr "Korisničko ime ili e-mail adresa"
 #: resources/views/admin/users-edit.phtml
 #: resources/views/edit-account-page.phtml resources/views/register-page.phtml
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "Korisnička imena ne razlikuju velika i mala slova i zanemaruju naglašena slova, tako da se \"semso\", \"šemso\" i \"Šemso\" smatraju istim."
+msgstr "Korisnička imena ne razlikuju velika i mala slova i zanemaruju naglašena slova, tako da se “semso”, “šemso” i “Šemso” smatraju istim."
 
 #: resources/views/admin/control-panel.phtml
 #: resources/views/modules/gedcom_stats/statistics.phtml
@@ -13596,8 +13633,7 @@ msgstr "Vidljivo online"
 msgid "Visible to other users when online"
 msgstr "Vidljiv drugim korisnicima kad je online"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -13725,7 +13761,7 @@ msgstr "Kada dodate novog člana porodice, može se dati zadano prezime. Ovo pre
 
 #: resources/views/help/pending-changes.phtml
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "Kada dodate, uredite ili izbrišete informacije, promjene se ne pohranjuju odmah. Umjesto toga, oni se drže u području \"na čekanju\". Ove promjene na čekanju mora pregledati moderator prije nego što budu prihvaćene."
+msgstr "Kada dodate, uredite ili izbrišete informacije, promjene se ne pohranjuju odmah. Umjesto toga, oni se drže u području “na čekanju”. Ove promjene na čekanju mora pregledati moderator prije nego što budu prihvaćene."
 
 #: resources/views/help/relationship-privacy.phtml
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
@@ -14117,7 +14153,7 @@ msgid "accept all"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr ""
 
@@ -14265,6 +14301,7 @@ msgstr ""
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr ""
@@ -14455,7 +14492,6 @@ msgstr ""
 msgid "half circle"
 msgstr ""
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "ona"
@@ -14466,7 +14502,6 @@ msgstr "ona"
 msgid "hide"
 msgstr "sakrij"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "on"
@@ -14686,7 +14721,7 @@ msgid "patrilineal"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr ""
 
@@ -14762,7 +14797,7 @@ msgid "reject"
 msgstr "odbij"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr ""
 
@@ -15014,7 +15049,6 @@ msgstr ""
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr ""
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr ""
@@ -15113,10 +15147,6 @@ msgstr ""
 #: resources/views/admin/site-mail.phtml
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr ""
-
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees šalje e-mailove bez čuvanja kopije"
 
 #: app/Elements/RoleInEvent.php
 msgid "wife"

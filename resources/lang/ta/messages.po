@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -360,7 +360,6 @@ msgstr "(%s இறந்த பிறகு)"
 msgid "(age %s)"
 msgstr "(வயது %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -368,7 +367,6 @@ msgstr "(வயது %s)"
 msgid "(aged %s)"
 msgstr "(%s வயது)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -377,7 +375,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(%s வயது)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -724,7 +721,7 @@ msgstr "வெப்ட்ரீஸின் புதிய பதிப்ப�
 #: app/Http/RequestHandlers/PasswordRequestAction.php
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr "கடவுச்சொல் மீட்டமைப்பு இணைப்பு \"%s\" -க்கு அனுப்பப்பட்டுள்ளது."
+msgstr "கடவுச்சொல் மீட்டமைப்பு இணைப்பு “%s” -க்கு அனுப்பப்பட்டுள்ளது."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php
@@ -885,7 +882,7 @@ msgstr "தனிப்பட்ட நிகழ்வுகளைக் கா�
 
 #: resources/views/admin/users-edit.phtml
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "\"மின்னஞ்சல் சரிபார்க்கப்பட்டது\" மற்றும் \"நிர்வாகியால் அங்கீகரிக்கப்பட்டது\" ஆகிய இரண்டும் தேர்ந்தெடுக்கப்படும் வரை ஒரு பயனர் உள்நுழைய முடியாது."
+msgstr "“மின்னஞ்சல் சரிபார்க்கப்பட்டது” மற்றும் “நிர்வாகியால் அங்கீகரிக்கப்பட்டது” ஆகிய இரண்டும் தேர்ந்தெடுக்கப்படும் வரை ஒரு பயனர் உள்நுழைய முடியாது."
 
 #: resources/xml/reports/pedigree_report.xml
 msgctxt "paper size"
@@ -1083,6 +1080,11 @@ msgstr "செய்திக் கட்டுரையைச் சேர்�
 msgid "Add a note"
 msgstr "குறிப்பைச் சேர்"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "பெற்றோரைச் சேர்"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "ஒரு உடன்பிறப்பைச் சேர்க்கவும்"
@@ -1101,9 +1103,16 @@ msgstr "ஒரு மகனைச் சேர்"
 msgid "Add a source citation"
 msgstr "மூல மேற்கோளைச் சேர்க்கவும்"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "துணைவர் சேர்க்கவும்"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "ஏற்கனவே உள்ள நபரைப் பயன்படுத்தி வாழ்க்கைத்துணையைச் சேர்"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1476,6 +1485,12 @@ msgstr "மாற்றுப்பெயர்"
 msgid "Alive"
 msgstr "உயிருடன் இருக்கிறார்"
 
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "உயிருடன் அல்லது இறந்தவர்"
+
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
 #: resources/views/lists/datatables-attributes.phtml
@@ -1513,7 +1528,7 @@ msgstr "அனைத்து பதிவுகள்"
 #. I18N: Description of the “TinyMCE” module. WYSIWYG = “what you see is what you get”
 #: app/Module/TinymceModule.php
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "HTML குறியீடுகளைப் பயன்படுத்துவதற்குப் பதிலாக, \"WYSIWYG\" எடிட்டரைப் பயன்படுத்தி உரையைத் திருத்த பிற தொகுதிகளை அனுமதிக்கவும்."
+msgstr "HTML குறியீடுகளைப் பயன்படுத்துவதற்குப் பதிலாக, “WYSIWYG” எடிட்டரைப் பயன்படுத்தி உரையைத் திருத்த பிற தொகுதிகளை அனுமதிக்கவும்."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -1552,7 +1567,7 @@ msgstr "பயனர் உள்நுழைவதற்கு முன், �
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "\"மீடியா\" தாவலுக்கு மாற்றாக, மேலும் மேம்படுத்தப்பட்ட பட பார்வையாளர்."
+msgstr "“மீடியா” தாவலுக்கு மாற்றாக, மேலும் மேம்படுத்தப்பட்ட பட பார்வையாளர்."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php
@@ -1733,7 +1748,7 @@ msgstr "அக்வா மரைன்"
 #: resources/views/edit/icon-fact-delete.phtml
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr "\"%s\" -க்கான இணைப்பை நீக்க நிச்சயமாக விரும்புகிறீர்களா?"
+msgstr "“%s” -க்கான இணைப்பை நீக்க நிச்சயமாக விரும்புகிறீர்களா?"
 
 #: resources/views/individual-page-name.phtml
 #: resources/views/media-page-details.phtml
@@ -1758,7 +1773,7 @@ msgstr "இந்தச் செய்தியை நீக்க நிச்
 #: resources/views/record-page-menu.phtml
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "\"%s\" -ஐ நீக்க நிச்சயமாக விரும்புகிறீர்களா?"
+msgstr "“%s” -ஐ நீக்க நிச்சயமாக விரும்புகிறீர்களா?"
 
 #: resources/views/pending-changes-page.phtml
 msgid "Are you sure you want to reject all the changes to this family tree?"
@@ -2665,7 +2680,7 @@ msgstr "பெலிஜ்"
 #: app/Http/RequestHandlers/SitePreferencesAction.php
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr "\"%s\" கோப்புறையில் எழுத இயலவில்லை."
+msgstr "“%s” கோப்புறையில் எழுத இயலவில்லை."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -2778,11 +2793,11 @@ msgstr "குடும்ப உறுப்பினர்களை மாற�
 
 #: app/Http/RequestHandlers/TreePageEdit.php
 msgid "Change the “Home page” blocks"
-msgstr "\"முகப்பு பக்கம்\" தொகுதிகளை மாற்றவும்"
+msgstr "“முகப்பு பக்கம்” தொகுதிகளை மாற்றவும்"
 
 #: app/Http/RequestHandlers/UserPageEdit.php
 msgid "Change the “My page” blocks"
-msgstr "\"எனது பக்கம்\" தொகுதிகளை மாற்றவும்"
+msgstr "“எனது பக்கம்” தொகுதிகளை மாற்றவும்"
 
 #. I18N: [a record was] Changed by <user>
 #: resources/views/modules/recent_changes/changes-list.phtml
@@ -2889,7 +2904,6 @@ msgstr "குழந்தை"
 msgid "Child of "
 msgstr ""
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3972,7 +3986,6 @@ msgstr ""
 msgid "Daughter"
 msgstr "மகள்"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4578,9 +4591,7 @@ msgstr "இந்த நபரைத் திருத்தி, அவர்�
 msgid "Edit with all GEDCOM tags"
 msgstr "அனைத்து GEDCOM குறிச்சொற்களிலும் திருத்தவும்"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4629,6 +4640,11 @@ msgstr "மின்னஞ்சல்"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "மின்னஞ்சல் முகவரி"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "மின்னஞ்சல் மட்டும்"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5244,7 +5260,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "பிப்ரவரி"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "பெண்"
 
@@ -5320,6 +5336,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr ""
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "வடிப்பான்"
 
@@ -5676,6 +5694,11 @@ msgstr ""
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr ""
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "மரபியல் பட்டி"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6089,7 +6112,7 @@ msgstr ""
 msgid "Hide GEDCOM tags"
 msgstr ""
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6392,6 +6415,12 @@ msgstr ""
 msgid "Import preferences"
 msgstr ""
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "குடும்ப மரம் இறக்குமதி செய்யப்படுகிறது"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -6418,6 +6447,16 @@ msgstr ""
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "இன்பாக்ஸ் மற்றும் மின்னஞ்சல்"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "இன்பாக்ஸ் மட்டும்"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6602,14 +6641,6 @@ msgstr ""
 
 #: app/CustomTags/BrothersKeeper.php
 msgid "Interment"
-msgstr ""
-
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr ""
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php
@@ -7298,10 +7329,6 @@ msgstr ""
 msgid "Maidenhead location code"
 msgstr ""
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr ""
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7317,7 +7344,7 @@ msgstr ""
 msgid "Maldives"
 msgstr ""
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "ஆண்"
 
@@ -7363,9 +7390,7 @@ msgstr ""
 msgid "Manage media"
 msgstr ""
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr ""
@@ -7784,9 +7809,7 @@ msgstr ""
 msgid "Melbourne, Australia"
 msgstr ""
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr ""
@@ -7895,9 +7918,7 @@ msgstr ""
 msgid "Missing data"
 msgstr ""
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr ""
 
@@ -8375,7 +8396,7 @@ msgstr ""
 msgid "No children"
 msgstr "குழந்தைகள் இல்லை"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "தொடர்பு இல்லை"
 
@@ -8796,7 +8817,7 @@ msgstr ""
 msgid "Only add new records"
 msgstr ""
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr ""
@@ -8856,11 +8877,17 @@ msgstr ""
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
 msgid "Other"
 msgstr ""
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
+msgid "Other"
+msgstr "பிற"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "Other facts to show in charts"
@@ -8944,6 +8971,11 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr ""
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "பக்க எண்ணிடல்"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9508,6 +9540,12 @@ msgstr ""
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "முன்னேற்றம்"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -10550,7 +10588,7 @@ msgstr ""
 #: resources/views/emails/verify-notify-html.phtml
 #: resources/views/emails/verify-notify-text.phtml
 msgid "Set the status to “approved”."
-msgstr "நிலையை \"அங்கீகரிக்கப்பட்டது\" என அமைக்கவும்."
+msgstr "நிலையை “அங்கீகரிக்கப்பட்டது” என அமைக்கவும்."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -10563,6 +10601,7 @@ msgstr ""
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10739,6 +10778,7 @@ msgstr ""
 msgid "Show individuals born within the last 100 years."
 msgstr ""
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr ""
@@ -10928,23 +10968,21 @@ msgstr ""
 msgid "Show thumbnail images in charts and family groups."
 msgstr ""
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "மேலாளர்களிடம் காட்டு"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "உறுப்பினர்களிடம் காட்டு"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11152,7 +11190,6 @@ msgstr ""
 msgid "Son"
 msgstr "மகன்"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -13245,7 +13282,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "அறியப்படாதது"
@@ -13260,7 +13297,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr ""
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13574,8 +13611,7 @@ msgstr "ஆன்லைனில் தெரியும்"
 msgid "Visible to other users when online"
 msgstr ""
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -14095,7 +14131,7 @@ msgid "accept all"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "ஏற்றுக்கொள்ளப்பட்டது"
 
@@ -14243,6 +14279,7 @@ msgstr ""
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr ""
@@ -14432,7 +14469,6 @@ msgstr ""
 msgid "half circle"
 msgstr ""
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr ""
@@ -14443,7 +14479,6 @@ msgstr ""
 msgid "hide"
 msgstr ""
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr ""
@@ -14663,7 +14698,7 @@ msgid "patrilineal"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "நிலுவையில் உள்ளது"
 
@@ -14739,7 +14774,7 @@ msgid "reject"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "நிராகரிக்கப்பட்டது"
 
@@ -14991,7 +15026,6 @@ msgstr ""
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr ""
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "தங்களை"
@@ -15091,10 +15125,6 @@ msgstr "உங்கள் பரம்பரைத் தரவைச் சே
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "கடவுச்சொல் நினைவூட்டல்கள் மற்றும் இணையதள அறிவிப்புகள் போன்ற மின்னஞ்சல்களை webtrees அனுப்ப வேண்டும்."
 
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees எந்த சேமிப்பகமும் இல்லாமல் மின்னஞ்சல்களை அனுப்புகிறது"
-
 #: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "மனைவி"
@@ -15164,7 +15194,7 @@ msgstr "“%s” நீக்கப்பட்டது."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "\"தனிப்படுத்தப்பட்ட படம்\" (_PRIM) குறிச்சொற்கள் ஒரு நபருக்கு விருப்பமான படத்தைக் குறிக்க சில பரம்பரை பயன்பாடுகளால் பயன்படுத்தப்படுகின்றன. ஒரு மாற்று படங்களை மீண்டும் ஆர்டர் செய்வதாகும், இதனால் விருப்பமான ஒன்று முதலில் பட்டியலிடப்படும்."
+msgstr "“தனிப்படுத்தப்பட்ட படம்” (_PRIM) குறிச்சொற்கள் ஒரு நபருக்கு விருப்பமான படத்தைக் குறிக்க சில பரம்பரை பயன்பாடுகளால் பயன்படுத்தப்படுகின்றன. ஒரு மாற்று படங்களை மீண்டும் ஆர்டர் செய்வதாகும், இதனால் விருப்பமான ஒன்று முதலில் பட்டியலிடப்படும்."
 
 #: app/Individual.php app/Note.php
 msgid "…"

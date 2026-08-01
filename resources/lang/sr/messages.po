@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -382,7 +382,6 @@ msgstr "(%s после смрти)"
 msgid "(age %s)"
 msgstr ""
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -390,7 +389,6 @@ msgstr ""
 msgid "(aged %s)"
 msgstr ""
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -399,7 +397,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr ""
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -1105,6 +1102,11 @@ msgstr "Додај чланак у новости"
 msgid "Add a note"
 msgstr "Додај белешку"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "Додај родитеља"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "Додај брата/сестру"
@@ -1123,9 +1125,16 @@ msgstr "Додај сина"
 msgid "Add a source citation"
 msgstr "Додај извор цитата"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr ""
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "Додај супружника користећи постојећу особу"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1498,6 +1507,12 @@ msgstr "Pseudonim"
 msgid "Alive"
 msgstr ""
 
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "Жив или мртав"
+
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
 #: resources/views/lists/datatables-attributes.phtml
@@ -1574,7 +1589,7 @@ msgstr ""
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Алтернатива за језичак \"Медији\", и напреднији прегледач слика."
+msgstr "Алтернатива за језичак “Медији”, и напреднији прегледач слика."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php
@@ -2804,7 +2819,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/UserPageEdit.php
 msgid "Change the “My page” blocks"
-msgstr "Промени блокове на \"Моја страница\""
+msgstr "Промени блокове на “Моја страница”"
 
 #. I18N: [a record was] Changed by <user>
 #: resources/views/modules/recent_changes/changes-list.phtml
@@ -2912,7 +2927,6 @@ msgstr "Dete"
 msgid "Child of "
 msgstr ""
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3995,7 +4009,6 @@ msgstr ""
 msgid "Daughter"
 msgstr "Ћерка"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4601,9 +4614,7 @@ msgstr ""
 msgid "Edit with all GEDCOM tags"
 msgstr "Измените на свим GEDCOM ознакама"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4652,6 +4663,11 @@ msgstr ""
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "Е-мејл адреса"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "Само имејл"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5267,7 +5283,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "Фебруар"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Женско"
 
@@ -5343,6 +5359,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr ""
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr ""
 
@@ -5699,6 +5717,11 @@ msgstr ""
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr ""
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "Мени генеалогије"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6112,7 +6135,7 @@ msgstr ""
 msgid "Hide GEDCOM tags"
 msgstr ""
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6415,6 +6438,12 @@ msgstr ""
 msgid "Import preferences"
 msgstr ""
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "Увоз породичног стабла"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -6441,6 +6470,16 @@ msgstr ""
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "Пријемно сандуче и имејл"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "Само пријемно сандуче"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6627,14 +6666,6 @@ msgstr "Интерактивно стабло особе %s"
 msgid "Interment"
 msgstr ""
 
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "Интерно дописивање"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "Интерно дописивање са е-мејлом"
-
 #: app/Module/PrivacyPolicy.php
 msgid "International transfers"
 msgstr ""
@@ -6802,7 +6833,7 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml
 #: resources/views/edit/edit-fact.phtml resources/views/edit/edit-record.phtml
 msgid "Keep the existing “last change” information"
-msgstr "Задржи постојећу информацију \"последња измена\""
+msgstr "Задржи постојећу информацију “последња измена”"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7321,10 +7352,6 @@ msgstr ""
 msgid "Maidenhead location code"
 msgstr ""
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "Линк за слање е-мејла"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7340,7 +7367,7 @@ msgstr "Malajzia"
 msgid "Maldives"
 msgstr "Maldivy"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Мушко"
 
@@ -7386,9 +7413,7 @@ msgstr "Уређивање породичних стабала"
 msgid "Manage media"
 msgstr "Уређивање медија"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr ""
@@ -7807,9 +7832,7 @@ msgstr ""
 msgid "Melbourne, Australia"
 msgstr ""
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr ""
@@ -7918,9 +7941,7 @@ msgstr ""
 msgid "Missing data"
 msgstr ""
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr ""
 
@@ -8398,7 +8419,7 @@ msgstr "Нема конверзије календара"
 msgid "No children"
 msgstr "Без деце"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "Нема контакта"
 
@@ -8821,7 +8842,7 @@ msgstr "На данашњи дан"
 msgid "Only add new records"
 msgstr "Додај само нове записе"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr ""
@@ -8881,11 +8902,17 @@ msgstr ""
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
 msgid "Other"
 msgstr ""
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
+msgid "Other"
+msgstr "Друго"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "Other facts to show in charts"
@@ -8969,6 +8996,11 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr ""
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "Нумерисање страница"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9060,7 +9092,7 @@ msgstr "Лозинка"
 #: resources/views/password-reset-page.phtml
 #: resources/views/register-page.phtml
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Лозинка мора имати најмање 8 знакова и разликује велика и мала слова, па је \"lozinka\" различито од \"LOZINKA\"."
+msgstr "Лозинка мора имати најмање 8 знакова и разликује велика и мала слова, па је “lozinka” различито од “LOZINKA”."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9532,6 +9564,12 @@ msgstr ""
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "Напредак"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -10587,6 +10625,7 @@ msgstr "Чаробњак за инсталацију webtrees"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10763,6 +10802,7 @@ msgstr "Прикажи особе рођене пре више од 100 годи
 msgid "Show individuals born within the last 100 years."
 msgstr "Прикажи особе рођене унутар претходних 100 година."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Прикажи особе које су живе или парове где су оба партнера жива."
@@ -10952,23 +10992,21 @@ msgstr "За које језике желите приказати овај бл
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Прикажи сличице у графиконима и групама фамилија."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Прикажи администраторима"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "Прикажи члановима"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -10982,7 +11020,7 @@ msgstr "Прикажи особе или парове који су живи а�
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "Прикажи \"коренске\" парове или особе. Те особе се још зову и \"патријарси\". То су особе које немају забележене родитеље у бази података."
+msgstr "Прикажи “коренске” парове или особе. Те особе се још зову и “патријарси”. То су особе које немају забележене родитеље у бази података."
 
 #. I18N: %s are placeholders for numbers
 #: resources/views/lists/datatables-attributes.phtml
@@ -11176,7 +11214,6 @@ msgstr ""
 msgid "Son"
 msgstr "Син"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -12720,7 +12757,7 @@ msgstr ""
 
 #: resources/views/layouts/offline.phtml
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
-msgstr "Ова веб страница је недоступна због одржавања. Можете <a href=\"indek.php\">покушати поново</a> за неколико минута."
+msgstr "Ова веб страница је недоступна због одржавања. Можете <a href=“indek.php”>покушати поново</a> за неколико минута."
 
 #: app/Module/PrivacyPolicy.php
 msgid "This website is operated by the following person, who is also responsible for its content:"
@@ -13275,7 +13312,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "Непознато"
@@ -13290,7 +13327,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Непознати"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13605,8 +13642,7 @@ msgstr "Видљив онлајн"
 msgid "Visible to other users when online"
 msgstr "Видљив другим корисницима кад је онлајн"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -14126,7 +14162,7 @@ msgid "accept all"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr ""
 
@@ -14274,6 +14310,7 @@ msgstr ""
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "затвори"
@@ -14464,7 +14501,6 @@ msgstr ""
 msgid "half circle"
 msgstr ""
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "она"
@@ -14475,7 +14511,6 @@ msgstr "она"
 msgid "hide"
 msgstr "сакриј"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "он"
@@ -14560,7 +14595,7 @@ msgstr ""
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: app/Http/RequestHandlers/TreePreferencesPage.php
 msgid "markdown"
-msgstr "\"markdown\""
+msgstr "“markdown”"
 
 #: resources/xml/reports/descendancy_report.xml
 msgctxt "FEMALE"
@@ -14694,7 +14729,7 @@ msgid "patrilineal"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr ""
 
@@ -14770,7 +14805,7 @@ msgid "reject"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr ""
 
@@ -15022,7 +15057,6 @@ msgstr ""
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr ""
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr ""
@@ -15121,10 +15155,6 @@ msgstr ""
 #: resources/views/admin/site-mail.phtml
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr ""
-
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees шаље е-пошту без складишта"
 
 #: app/Elements/RoleInEvent.php
 msgid "wife"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -385,7 +385,6 @@ msgstr "(%s после смерти)"
 msgid "(age %s)"
 msgstr "(возраст %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -393,7 +392,6 @@ msgstr "(возраст %s)"
 msgid "(aged %s)"
 msgstr "(в возрасте %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -402,7 +400,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(в возрасте %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -1111,6 +1108,11 @@ msgstr "Добавить новость"
 msgid "Add a note"
 msgstr "Добавить новое примечание"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "Добавить родителя"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "Добавить брата или сестру"
@@ -1129,9 +1131,16 @@ msgstr "Добавить сына"
 msgid "Add a source citation"
 msgstr "Добавить новую цитату из источника"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "Добавить нового супруга(у)"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "Добавить супруга, используя существующую персону"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1503,6 +1512,12 @@ msgstr "Прозвище"
 #: resources/views/lists/individuals-table.phtml
 msgid "Alive"
 msgstr "Живые"
+
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "Живой или умерший"
 
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
@@ -2813,7 +2828,7 @@ msgstr "Изменить блоки для «Моя страница»"
 
 #: app/Http/RequestHandlers/UserPageEdit.php
 msgid "Change the “My page” blocks"
-msgstr "Изменение блоков на \"Моя страница\""
+msgstr "Изменение блоков на “Моя страница”"
 
 #. I18N: [a record was] Changed by <user>
 #: resources/views/modules/recent_changes/changes-list.phtml
@@ -2921,7 +2936,6 @@ msgstr "Ребёнок"
 msgid "Child of "
 msgstr "Ребёнок от "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -4012,7 +4026,6 @@ msgstr "Даты хранятся с использованием английс
 msgid "Daughter"
 msgstr "Дочь"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4523,7 +4536,7 @@ msgstr "Каждый источник записывает конкретные 
 
 #: resources/views/help/pending-changes.phtml
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "Каждая учетная запись пользователя имеет параметр \"автоматически принимать изменения\". Когда этот параметр включен, любые изменения, внесенные пользователем, сохраняются немедленно. Многие администраторы включают этот параметр в учетной записи пользователя."
+msgstr "Каждая учетная запись пользователя имеет параметр “автоматически принимать изменения”. Когда этот параметр включен, любые изменения, внесенные пользователем, сохраняются немедленно. Многие администраторы включают этот параметр в учетной записи пользователя."
 
 #: resources/views/modules/gedcom_stats/config.phtml
 #: resources/views/modules/gedcom_stats/statistics.phtml
@@ -4619,9 +4632,7 @@ msgstr "Редактируйте запись этой персоны и зам�
 msgid "Edit with all GEDCOM tags"
 msgstr "Редактировать со всеми тегами GEDCOM"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4670,6 +4681,11 @@ msgstr "Email"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "Адрес электронной почты"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "Только электронная почта"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5288,7 +5304,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "февраль"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Жен"
 
@@ -5364,6 +5380,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "Папки или файлы, маркированные знаком %s, необходимы для нормальной работы программы и поэтому не могут быть удалены."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "Фильтр"
 
@@ -5720,6 +5738,11 @@ msgstr "По генеалогическим вопросам обращатьс�
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "Генеалогические данные"
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "Меню генеалогии"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6136,7 +6159,7 @@ msgstr "Эрмосильо, Мексика"
 msgid "Hide GEDCOM tags"
 msgstr "Скрыть теги GEDCOM"
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6442,6 +6465,12 @@ msgstr "Импорт географических данных"
 msgid "Import preferences"
 msgstr "Параметры импорта"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "Импорт генеалогического древа"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -6468,6 +6497,16 @@ msgstr "В некоторых странах законы о конфиденц�
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "Входящие и электронная почта"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "Только входящие"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6653,14 +6692,6 @@ msgstr "Интерактивное дерево для %s"
 #: app/CustomTags/BrothersKeeper.php
 msgid "Interment"
 msgstr "Погребение"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "Внутренние сообщения"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "Внутренний обмен сообщениями с электронной почтой"
 
 #: app/Module/PrivacyPolicy.php
 #, fuzzy
@@ -7350,10 +7381,6 @@ msgstr "Журнал"
 msgid "Maidenhead location code"
 msgstr "Код местоположения Мейденхед"
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "Написать эл.письмо (e-mail)"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7369,7 +7396,7 @@ msgstr "Малайзия"
 msgid "Maldives"
 msgstr "Мальдивы"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Муж."
 
@@ -7415,9 +7442,7 @@ msgstr "Управление семейными деревьями"
 msgid "Manage media"
 msgstr "Управление медиаданными"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "Менеджер"
@@ -7838,9 +7863,7 @@ msgstr "Средние системы (5000 человек): 32-64 Мбайт, 2
 msgid "Melbourne, Australia"
 msgstr "Мельбурн, Австралия"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "Участник"
@@ -7950,9 +7973,7 @@ msgstr "Минимальный возраст для согласия"
 msgid "Missing data"
 msgstr "Отсутствующие данные"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "Модератор"
 
@@ -8430,7 +8451,7 @@ msgstr "Запретить конвертацию календаря"
 msgid "No children"
 msgstr "Сведений о детях нет"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "Не хочу получать сообщения"
 
@@ -8855,7 +8876,7 @@ msgstr "В этот день"
 msgid "Only add new records"
 msgstr "Добавление только новых записей"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "Только менеджеры могут редактировать"
@@ -8915,11 +8936,17 @@ msgstr "Орландо, Флорида"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
 msgid "Other"
 msgstr "Другие"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
+msgid "Other"
+msgstr "Другой"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "Other facts to show in charts"
@@ -9004,6 +9031,11 @@ msgstr "Параметры страницы"
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "Формат страницы"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "Нумерация страниц"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9568,6 +9600,12 @@ msgstr "Утверждение завещания"
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "Прогресс"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -10621,7 +10659,7 @@ msgstr "Установить уровень доступа ко всем мер�
 #: resources/views/emails/verify-notify-html.phtml
 #: resources/views/emails/verify-notify-text.phtml
 msgid "Set the status to “approved”."
-msgstr "2. Установить статус \"Одобрено администратором\"."
+msgstr "2. Установить статус “Одобрено администратором”."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -10634,6 +10672,7 @@ msgstr "Мастер установки webtrees"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10811,6 +10850,7 @@ msgstr "Показать персон, родившихся больше 100 л�
 msgid "Show individuals born within the last 100 years."
 msgstr "Показать людей родившихся в последние 100 лет."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Показать только живых персон или семьи, где оба супруга живы."
@@ -11000,23 +11040,21 @@ msgstr "Для каких языков показывать этот блок"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Показывать фотографии на графиках и с блоке семей."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Показывать менеджерам"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "Показывать членам"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11216,7 +11254,7 @@ msgstr "Некоторые страницы могут отображать ко
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Некоторые темы могут отображать иконки на вкладке \"Факты и события\"."
+msgstr "Некоторые темы могут отображать иконки на вкладке “Факты и события”."
 
 #: resources/views/edit/change-family-members.phtml
 #: resources/xml/reports/family_group_report.xml
@@ -11225,7 +11263,6 @@ msgstr "Некоторые темы могут отображать иконки
 msgid "Son"
 msgstr "Сын"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -12028,7 +12065,7 @@ msgstr "Ссылка из “%1$s” на “%2$s” была обновлена
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php
 msgid "The lists menu."
-msgstr "Меню \"Списки\"."
+msgstr "Меню “Списки”."
 
 #: app/Http/RequestHandlers/CreateLocationAction.php
 #: app/Http/RequestHandlers/MapDataSave.php
@@ -12184,7 +12221,7 @@ msgstr "Записи “%1$s” и “%2$s” были объединены."
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php
 msgid "The reports menu."
-msgstr "Меню \"Отчеты\"."
+msgstr "Меню “Отчеты”."
 
 #: app/Http/RequestHandlers/CreateRepositoryAction.php
 msgid "The repository has been created"
@@ -12193,7 +12230,7 @@ msgstr "Хранилище (репозиторий) создано"
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php
 msgid "The search menu."
-msgstr "Меню \"Поиск\"."
+msgstr "Меню “Поиск”."
 
 #: app/Services/SearchService.php
 msgid "The search returned too many results."
@@ -12412,7 +12449,7 @@ msgstr "Эта учетная запись не была утверждена. �
 
 #: app/Http/RequestHandlers/LoginAction.php
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr "Адрес электронной почты для этой учетной записи не был подтвержден. Пожалуйста, войдите в свою электронную почту и откройте письмо с заголовком \"Ваша регистрация на <em>(имя сайта)</em>\", затем перейдите по ссылке, указанной в теле письма."
+msgstr "Адрес электронной почты для этой учетной записи не был подтвержден. Пожалуйста, войдите в свою электронную почту и откройте письмо с заголовком “Ваша регистрация на <em>(имя сайта)</em>”, затем перейдите по ссылке, указанной в теле письма."
 
 #: resources/views/modules/review_changes/config.phtml
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
@@ -12736,7 +12773,7 @@ msgstr "Эта роль имеет все разрешения роли Мене
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Эта роль имеет все разрешения роли Участник и возможность добавления/изменения/удаления данных. Все изменения должны быть одобрены модератором, кроме случая когда у пользователя включен параметр \"автоматически принимать изменения\"."
+msgstr "Эта роль имеет все разрешения роли Участник и возможность добавления/изменения/удаления данных. Все изменения должны быть одобрены модератором, кроме случая когда у пользователя включен параметр “автоматически принимать изменения”."
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -13330,7 +13367,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "Неизвестно"
@@ -13345,7 +13382,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "неизвестно"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13662,8 +13699,7 @@ msgstr "Отображать онлайн статус"
 msgid "Visible to other users when online"
 msgstr "Отображать онлайн статус"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -13779,7 +13815,7 @@ msgstr "Если запись редактируется, то пользова�
 
 #: resources/views/admin/users-edit.phtml
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Когда пользователь регистрирует аккаунт, письмо отправляется на адрес электронной почты со ссылкой для подтверждения. После того, как пользователь нажмёт на эту ссылку, статус адреса почты автоматически меняется на \"подтверждённый\"."
+msgstr "Когда пользователь регистрирует аккаунт, письмо отправляется на адрес электронной почты со ссылкой для подтверждения. После того, как пользователь нажмёт на эту ссылку, статус адреса почты автоматически меняется на “подтверждённый”."
 
 #: resources/views/edit/reorder-families.phtml
 msgid "When an individual has more than one spouse, you should sort the families in date order."
@@ -14187,7 +14223,7 @@ msgid "accept all"
 msgstr "принять все"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "принято"
 
@@ -14335,6 +14371,7 @@ msgstr "гражданин"
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "закрыть"
@@ -14527,7 +14564,6 @@ msgstr "перейти к новой персоне"
 msgid "half circle"
 msgstr "полукруг"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr " "
@@ -14538,7 +14574,6 @@ msgstr " "
 msgid "hide"
 msgstr "Скрыть"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr " "
@@ -14757,7 +14792,7 @@ msgid "patrilineal"
 msgstr "патрилейно"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "в ожидании"
 
@@ -14833,7 +14868,7 @@ msgid "reject"
 msgstr "отклонить"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "отклонено"
 
@@ -15086,7 +15121,6 @@ msgstr "настройки соединения с базой данных в ф
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "У каталога «/data» и файла «/data/config.ini.php» установлены права доступа, которые позволяют серверу прочитать их"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr " "
@@ -15186,10 +15220,6 @@ msgstr "webtrees нужна база данных для хранения ваш
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "webtrees необходимо отправлять электронные письма, например напоминания о пароле и уведомления веб-сайтов."
 
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees отсылает письмо не сохраняя"
-
 #: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "жена"
@@ -15255,7 +15285,7 @@ msgstr "«%s» скопировано в буфер обмена."
 #: app/Services/MapDataService.php
 #, php-format
 msgid "“%s” has been deleted."
-msgstr "\"%s\" был удалён."
+msgstr "“%s” был удалён."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php

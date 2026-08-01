@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -343,7 +343,6 @@ msgstr "(%s გარდაცვალების შემდეგ)"
 msgid "(age %s)"
 msgstr ""
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -351,7 +350,6 @@ msgstr ""
 msgid "(aged %s)"
 msgstr "(ასაკში %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -360,7 +358,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr ""
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -1069,6 +1066,11 @@ msgstr "სიახლის დამატება"
 msgid "Add a note"
 msgstr "ახალი შენიშვნის დამატება"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "მშობლის დამატება"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr ""
@@ -1087,9 +1089,16 @@ msgstr ""
 msgid "Add a source citation"
 msgstr "ახალი ციტატის დამატება წყაროდან"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "ახალი მეუღლის დამატება"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "მეუღლის დამატება არსებული პიროვნების გამოყენებით"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1463,6 +1472,12 @@ msgstr "ზედმეტი სახელი"
 #: resources/views/lists/individuals-table.phtml
 msgid "Alive"
 msgstr "ცოცხლები"
+
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "ცოცხალი ან გარდაცვლილი"
 
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
@@ -2878,7 +2893,6 @@ msgstr "ქვეელემენტი"
 msgid "Child of "
 msgstr "Ребёнок от "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3189,7 +3203,7 @@ msgstr "კომპაქტური გენეალოგიური ხ�
 #: app/Module/CompactTreeChartModule.php
 #, php-format
 msgid "Compact tree of %s"
-msgstr "გრაფიკი \"პეპელა\" %s"
+msgstr "გრაფიკი “პეპელა” %s"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php
@@ -3961,7 +3975,6 @@ msgstr ""
 msgid "Daughter"
 msgstr "ქალიშვილი"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4364,12 +4377,12 @@ msgstr "ვაჩვენოთ %s"
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php
 msgid "Display and manage a family tree’s favorite pages."
-msgstr "\"ფავორიტების\" მართვა."
+msgstr "“ფავორიტების” მართვა."
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php
 msgid "Display and manage a user’s favorite pages."
-msgstr "\"ფავორიტების\" მართვა."
+msgstr "“ფავორიტების” მართვა."
 
 #: app/Gedcom.php resources/views/lists/families-table.phtml
 msgid "Divorce"
@@ -4569,9 +4582,7 @@ msgstr ""
 msgid "Edit with all GEDCOM tags"
 msgstr ""
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4620,6 +4631,11 @@ msgstr ""
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "ელ-ფოსტა"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "მხოლოდ ელფოსტა"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5235,7 +5251,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "თებერვალი"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "მდედრ"
 
@@ -5311,6 +5327,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "Файлы маркированные знаком %s необходимы для нормальной работы программы и поэтому не могут быть удалены."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "ფილტრი"
 
@@ -5667,6 +5685,11 @@ msgstr "გენეალოგიის საკითხებზე და�
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr ""
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "გენეალოგიის მენიუ"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6080,7 +6103,7 @@ msgstr "Villa Hermosa, მექსიკა"
 msgid "Hide GEDCOM tags"
 msgstr ""
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6165,13 +6188,13 @@ msgstr ""
 #. I18N: Name of a module/chart
 #: app/Module/ChartsBlockModule.php app/Module/HourglassChartModule.php
 msgid "Hourglass chart"
-msgstr "გრაფიკი \"ქვიშის საათი\""
+msgstr "გრაფიკი “ქვიშის საათი”"
 
 #. I18N: %s is an individual’s name
 #: app/Module/HourglassChartModule.php
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "გრაფიკი \"ქვიშის საათი\" %s"
+msgstr "გრაფიკი “ქვიშის საათი” %s"
 
 #: resources/views/modules/census-assistant.phtml
 msgid "Household"
@@ -6260,7 +6283,7 @@ msgstr "Если у персоны две фамилии, обе должны б
 #: resources/views/help/name.phtml
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Если персона была известна под прозвищем не являющееся частью имени, оно должно быть указанно между кавычками: <%s>Иван \"Цыган\" /Иванов/<%s>."
+msgstr "Если персона была известна под прозвищем не являющееся частью имени, оно должно быть указанно между кавычками: <%s>Иван “Цыган” /Иванов/<%s>."
 
 #: resources/views/help/name.phtml
 #, php-format
@@ -6382,6 +6405,12 @@ msgstr ""
 msgid "Import preferences"
 msgstr ""
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "საგვარტომო ხის იმპორტი"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -6408,6 +6437,16 @@ msgstr "В некоторых странах законы о частной жи
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "შემოსული და ელფოსტა"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "მხოლოდ შემოსული"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6593,14 +6632,6 @@ msgstr "ინტერაქტიული გენეალოგიურ�
 #: app/CustomTags/BrothersKeeper.php
 msgid "Interment"
 msgstr ""
-
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "შიდა შეტყობინება"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "შიდა შეტყობინება"
 
 #: app/Module/PrivacyPolicy.php
 msgid "International transfers"
@@ -7287,10 +7318,6 @@ msgstr "ჟურნალი"
 msgid "Maidenhead location code"
 msgstr ""
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "მიერთება"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7306,7 +7333,7 @@ msgstr "მალაიზია"
 msgid "Maldives"
 msgstr "მალდივის კუნძულები"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "მამრ."
 
@@ -7352,9 +7379,7 @@ msgstr ""
 msgid "Manage media"
 msgstr ""
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "მენეჯერი"
@@ -7773,9 +7798,7 @@ msgstr "Средние системы (5000 человек): 32-64 Мбайт, 2
 msgid "Melbourne, Australia"
 msgstr "Перт, Австралия"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "წევრი"
@@ -7884,9 +7907,7 @@ msgstr ""
 msgid "Missing data"
 msgstr "მონაცემები არაა"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "მოდერატორი"
 
@@ -8364,7 +8385,7 @@ msgstr "კალენდარის კონვერტირების �
 msgid "No children"
 msgstr "შვილების შესახებ ინფორმაცია არ არსებობს"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "არ მინდა შეტყობინებების მიღება"
 
@@ -8783,7 +8804,7 @@ msgstr "დღეს"
 msgid "Only add new records"
 msgstr ""
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "მხოლოდ მენეჯერებს შეუძლიათ რედაქტირება"
@@ -8843,11 +8864,17 @@ msgstr "ორლანდო, ფლორიდა"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
 msgid "Other"
 msgstr "სხვები"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
+msgid "Other"
+msgstr "სხვა"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "Other facts to show in charts"
@@ -8932,6 +8959,11 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "გვერდის პარამეტრები"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "გვერდებად დაყოფა"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9023,7 +9055,7 @@ msgstr "პაროლი"
 #: resources/views/password-reset-page.phtml
 #: resources/views/register-page.phtml
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Пароль должен быть не менее 8 символов с учетом заглавными и строчных букв. Таким образом \"secret\" не рассматривается как \"SECRET\"."
+msgstr "Пароль должен быть не менее 8 символов с учетом заглавными и строчных букв. Таким образом “secret” не рассматривается как “SECRET”."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9494,6 +9526,12 @@ msgstr ""
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "პროგრესი"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -10552,6 +10590,7 @@ msgstr ""
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10728,6 +10767,7 @@ msgstr "ვაჩვენოთ პერსონები რომლებ�
 msgid "Show individuals born within the last 100 years."
 msgstr "ვაჩვენოთ პერსონები დაბადებილი ბოლო ასწლეულში."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr ""
@@ -10917,23 +10957,21 @@ msgstr ""
 msgid "Show thumbnail images in charts and family groups."
 msgstr "ვაჩვენოთ მთავარი ფოტო სავიზიტო ბარათებზე."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "ვაჩვენოთ მენეჯერებს"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "ვაჩვენოთ წევრებს"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11143,7 +11181,6 @@ msgstr ""
 msgid "Son"
 msgstr "ვაჟიშვილი"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -13233,7 +13270,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "უცნობი"
@@ -13248,7 +13285,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "უცნობი"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13562,8 +13599,7 @@ msgstr "ონლაინ სტატუსი"
 msgid "Visible to other users when online"
 msgstr "ხილვადობა საიტის მომხმარებლებისთვის ონლაინ ხართ თუ არა"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -14083,7 +14119,7 @@ msgid "accept all"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "მიღებულია"
 
@@ -14232,6 +14268,7 @@ msgstr ""
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "დახურვა"
@@ -14421,7 +14458,6 @@ msgstr "ახალ პერსონაზე გადასვლა"
 msgid "half circle"
 msgstr "ნახევრად-წრიული"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr ""
@@ -14432,7 +14468,6 @@ msgstr ""
 msgid "hide"
 msgstr "დავმალოთ"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr ""
@@ -14649,7 +14684,7 @@ msgid "patrilineal"
 msgstr "მამის ხაზით"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "მოლოდინშია"
 
@@ -14725,7 +14760,7 @@ msgid "reject"
 msgstr "უარყოფა"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "გაუქმებულია"
 
@@ -14978,7 +15013,6 @@ msgstr ""
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr ""
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr ""
@@ -15078,10 +15112,6 @@ msgstr ""
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr ""
-
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
 msgstr ""
 
 #: app/Elements/RoleInEvent.php

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -364,7 +364,6 @@ msgstr "(%s després de la mort)"
 msgid "(age %s)"
 msgstr "(%s anys d'edat)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -372,7 +371,6 @@ msgstr "(%s anys d'edat)"
 msgid "(aged %s)"
 msgstr "(%s d'edat)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -381,7 +379,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(edat %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -1090,6 +1087,11 @@ msgstr "Afegeix una notícia"
 msgid "Add a note"
 msgstr "Afegeix una nota"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "Afegeix un progenitor"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "Afegeix un/a germà/na"
@@ -1108,9 +1110,16 @@ msgstr "Afegeix un fill"
 msgid "Add a source citation"
 msgstr "Afegeix una ressenya de font"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "Afegeix un/a cònjuge"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "Afegeix un cònjuge fent servir un individu existent"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1482,6 +1491,12 @@ msgstr "Àlies"
 #: resources/views/lists/individuals-table.phtml
 msgid "Alive"
 msgstr "Vius"
+
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "Viu o mort"
 
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
@@ -2787,11 +2802,11 @@ msgstr "Canvia membres de la família"
 
 #: app/Http/RequestHandlers/TreePageEdit.php
 msgid "Change the “Home page” blocks"
-msgstr "Blocs de la \"Pàgina d’inici\""
+msgstr "Blocs de la “Pàgina d’inici”"
 
 #: app/Http/RequestHandlers/UserPageEdit.php
 msgid "Change the “My page” blocks"
-msgstr "Canvia els blocs de \"la Meva Pàgina\""
+msgstr "Canvia els blocs de “la Meva Pàgina”"
 
 #. I18N: [a record was] Changed by <user>
 #: resources/views/modules/recent_changes/changes-list.phtml
@@ -2898,7 +2913,6 @@ msgstr "Fill/a"
 msgid "Child of "
 msgstr "Fill/a de "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3987,7 +4001,6 @@ msgstr "Les dates s’emmagatzemen utilitzant abreviatures i paraules clau en an
 msgid "Daughter"
 msgstr "Filla"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4594,9 +4607,7 @@ msgstr "Editeu aquesta persona i substituïu-ne llurs detalls amb els vostres pr
 msgid "Edit with all GEDCOM tags"
 msgstr "Edita amb totes les etiquetes GEDCOM"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4645,6 +4656,11 @@ msgstr "Correu electrònic"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "Adreça de correu electrònic"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "Només correu electrònic"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5262,7 +5278,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "Febrer"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Dona"
 
@@ -5338,6 +5354,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "Els fitxers marcats amb %s són necessaris per a una correcta operativa i no es poden esborrar."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "Filtra"
 
@@ -5694,6 +5712,11 @@ msgstr "Contacte genealògic"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "Dades genealògiques"
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "Menú de genealogia"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6109,7 +6132,7 @@ msgstr "Hermosillo, Mèxic"
 msgid "Hide GEDCOM tags"
 msgstr "Oculta les etiquetes GEDCOM"
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6414,10 +6437,16 @@ msgstr "Importeu dades geogràfiques"
 msgid "Import preferences"
 msgstr "Opcions d'importació"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "S'està important l'arbre genealògic"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "En un arbre genealògic, cada registre té un número de referència intern (anomenat \"XREF\") per exemple \"F123\" o \"R14\"."
+msgstr "En un arbre genealògic, cada registre té un número de referència intern (anomenat “XREF”) per exemple “F123” o “R14”."
 
 #: resources/views/help/romanized.phtml
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
@@ -6440,6 +6469,16 @@ msgstr "En alguns països, les lleis de privadesa són aplicables no només a le
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "Safata d'entrada i correu electrònic"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "Només safata d'entrada"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6626,14 +6665,6 @@ msgstr "Arbre interactiu de %s"
 msgid "Interment"
 msgstr "Enterrament"
 
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "Missatgeria interna"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "Missatgeria interna amb correu electrònic"
-
 #: app/Module/PrivacyPolicy.php
 #, fuzzy
 msgid "International transfers"
@@ -6803,7 +6834,7 @@ msgstr "Mantenir obert"
 #: resources/views/admin/trees-preferences.phtml
 #: resources/views/edit/edit-fact.phtml resources/views/edit/edit-record.phtml
 msgid "Keep the existing “last change” information"
-msgstr "Conserva la informació existent de la \"darrera modificació\""
+msgstr "Conserva la informació existent de la “darrera modificació”"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7322,10 +7353,6 @@ msgstr "Revista"
 msgid "Maidenhead location code"
 msgstr "Codi d'ubicació Maidenhead"
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "Enllaç per correu electrònic"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7341,7 +7368,7 @@ msgstr "Malàisia"
 msgid "Maldives"
 msgstr "Maldives"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Home"
 
@@ -7387,9 +7414,7 @@ msgstr "Gestió d'arbres genealògics"
 msgid "Manage media"
 msgstr "Gestió multimèdia"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "Gestor"
@@ -7810,9 +7835,7 @@ msgstr "Sistemes mitjans (5000 persones): 32-64MB, 20-40 segons"
 msgid "Melbourne, Australia"
 msgstr "Melbourne, Austràlia"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "Membre"
@@ -7921,9 +7944,7 @@ msgstr ""
 msgid "Missing data"
 msgstr "Dades faltants"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "Supervisor"
 
@@ -8401,7 +8422,7 @@ msgstr "Sense conversió de calendari"
 msgid "No children"
 msgstr "Sense fills"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "Sense forma de contacte"
 
@@ -8823,7 +8844,7 @@ msgstr "En tal dia com avui"
 msgid "Only add new records"
 msgstr "Afegeix només els registres nous"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "Solament els gestors poden editar"
@@ -8883,11 +8904,17 @@ msgstr "Orlando, Florida, Estats Units"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
 msgid "Other"
 msgstr "Altres"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
+msgid "Other"
+msgstr "Altre"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "Other facts to show in charts"
@@ -8972,6 +8999,11 @@ msgstr "Configuració de la pàgina"
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "Mida de la pàgina"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "Paginació"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9536,6 +9568,12 @@ msgstr "Testamentaria"
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "Progrés"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -10588,7 +10626,7 @@ msgstr "Configura el nivell de privadesa d’accés a dades de persones difuntes
 #: resources/views/emails/verify-notify-html.phtml
 #: resources/views/emails/verify-notify-text.phtml
 msgid "Set the status to “approved”."
-msgstr "Ajusta l'estat a \"aprovat\"."
+msgstr "Ajusta l'estat a “aprovat”."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -10601,6 +10639,7 @@ msgstr "Assistent de configuració per a webtrees"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10777,6 +10816,7 @@ msgstr "Mostra persones nascudes fa més de 100 anys."
 msgid "Show individuals born within the last 100 years."
 msgstr "Mostra persones nascudes els darrers 100 anys."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Mostra gent que sigui viva o parelles que ambdós siguin vius."
@@ -10966,23 +11006,21 @@ msgstr "En quins idiomes es mostrarà aquest bloc"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Mostra imatges en miniatura en els gràfics i grups familiars."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Mostra-ho als gestors"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "Mostra-ho als membres"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11191,7 +11229,6 @@ msgstr "Algunes presentacions poden mostrar icones a la pestanya de «Fets i esd
 msgid "Son"
 msgstr "Fill"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -11833,7 +11870,7 @@ msgstr "La data i hora de l’última actualització"
 #: app/Http/RequestHandlers/MapDataSave.php
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr "S'han actualitzat els detalls per \"%s\"."
+msgstr "S'han actualitzat els detalls per “%s”."
 
 #. I18N: %s is a filename
 #: app/Http/RequestHandlers/ExportGedcomServer.php
@@ -12079,7 +12116,7 @@ msgstr "S'ha creat la nota"
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php
 msgid "The parameter “path” is invalid."
-msgstr "El paràmetre \"path\" no és vàlid."
+msgstr "El paràmetre “path” no és vàlid."
 
 #: app/Http/RequestHandlers/SetupWizard.php
 msgid "The password needs to be at least six characters long."
@@ -12697,7 +12734,7 @@ msgstr "Aquesta funció té tots els permisos de la funció d’administrador en
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Aquest rol té totes les atribucions de membre, a més de permís per afegir, canviar o eliminar dades. Qualsevol canvi haurà d’ésser autoritzat per un supervisor, llevat que l’usuari tingui l’opció \"autoritzar automàticament els canvis\" activada."
+msgstr "Aquest rol té totes les atribucions de membre, a més de permís per afegir, canviar o eliminar dades. Qualsevol canvi haurà d’ésser autoritzat per un supervisor, llevat que l’usuari tingui l’opció “autoritzar automàticament els canvis” activada."
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -13289,7 +13326,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "Desconegut"
@@ -13304,7 +13341,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13455,7 +13492,7 @@ msgstr "Empra siluetes"
 
 #: app/Http/RequestHandlers/CopyFact.php
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr "Utilitzeu el menú \"Edita\" per enganxar-ho a un altre registre."
+msgstr "Utilitzeu el menú “Edita” per enganxar-ho a un altre registre."
 
 #: resources/views/register-page.phtml
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -13620,8 +13657,7 @@ msgstr "Visible en línia"
 msgid "Visible to other users when online"
 msgstr "Visible en línia a altres usuaris"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -13733,7 +13769,7 @@ msgstr "Sàhara Occidental"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Quan s'edita un registre, es registra l'usuari, data i hora. A vegades és desitjable mantenir la informació existent de la \"darrera modificació\", per exemple, en fer petites correccions a les dades facilitades per una altra persona. Aquesta opció controla si aquesta funció està activada per defecte."
+msgstr "Quan s'edita un registre, es registra l'usuari, data i hora. A vegades és desitjable mantenir la informació existent de la “darrera modificació”, per exemple, en fer petites correccions a les dades facilitades per una altra persona. Aquesta opció controla si aquesta funció està activada per defecte."
 
 #: resources/views/admin/users-edit.phtml
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -14145,7 +14181,7 @@ msgid "accept all"
 msgstr "acceptar-ho tot"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "acceptat"
 
@@ -14293,6 +14329,7 @@ msgstr "ciutadà"
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "tanca"
@@ -14484,7 +14521,6 @@ msgstr "ves a la nova persona"
 msgid "half circle"
 msgstr "mig cercle"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "ella mateixa"
@@ -14495,7 +14531,6 @@ msgstr "ella mateixa"
 msgid "hide"
 msgstr "oculta"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "ell mateix"
@@ -14713,7 +14748,7 @@ msgid "patrilineal"
 msgstr "per línia paterna"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "pendent"
 
@@ -14789,7 +14824,7 @@ msgid "reject"
 msgstr "rebutjeu"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "rebutjat"
 
@@ -15042,7 +15077,6 @@ msgstr "la configuració de connexió a la base de dades del fitxer «/data/conf
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "el directori <b>/data/</b> i el fitxer «/data/config.ini.php» tenen permisos d’accés que permeten al servidor web llegir-los"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "ells mateixos"
@@ -15142,10 +15176,6 @@ msgstr "webtrees necessita una base de dades per emmagatzemar les vostres dades 
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "webtrees ha d’enviar correus electrònics, com ara recordatoris de contrasenyes i notificacions del lloc web."
 
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees envia el correu sense emmagatzemar-lo"
-
 #: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "muller"
@@ -15198,7 +15228,7 @@ msgstr "Illes Åland"
 #: app/Http/RequestHandlers/CheckTree.php
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr "\"%1$s\" caldria que fora \"%2$s\"."
+msgstr "“%1$s” caldria que fora “%2$s”."
 
 #: app/Http/RequestHandlers/CopyFact.php
 #, php-format
@@ -15215,7 +15245,7 @@ msgstr "%s ha estat eliminat."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "Algunes aplicacions genealògiques utilitzen les etiquetes \"Imatge destacada\" (_PRIM) per indicar la imatge preferida per a una persona. Una alternativa és tornar a ordenar les imatges de manera que es mostri primer la preferida."
+msgstr "Algunes aplicacions genealògiques utilitzen les etiquetes “Imatge destacada” (_PRIM) per indicar la imatge preferida per a una persona. Una alternativa és tornar a ordenar les imatges de manera que es mostri primer la preferida."
 
 #: app/Individual.php app/Note.php
 msgid "…"

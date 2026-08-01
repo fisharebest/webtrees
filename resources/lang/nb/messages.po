@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -360,7 +360,6 @@ msgstr "(%s etter dødsfall)"
 msgid "(age %s)"
 msgstr "(%s gammel)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -368,7 +367,6 @@ msgstr "(%s gammel)"
 msgid "(aged %s)"
 msgstr "(%s gammel)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -377,7 +375,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(%s gammel)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -1086,6 +1083,11 @@ msgstr "Legg inn en nyhetsartikkel"
 msgid "Add a note"
 msgstr "Legg til et nytt notat"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "Legg til en forelder"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "Legg til et søsken"
@@ -1104,9 +1106,16 @@ msgstr "Legg til en sønn"
 msgid "Add a source citation"
 msgstr "Legg til en ny kildehenvisning"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "Legg til en ny ektefelle"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "Legg til en ektefelle med en eksisterende person"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1478,6 +1487,12 @@ msgstr "Alias"
 #: resources/views/lists/individuals-table.phtml
 msgid "Alive"
 msgstr "I live"
+
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "Levende eller død"
 
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
@@ -2895,7 +2910,6 @@ msgstr "Barn"
 msgid "Child of "
 msgstr "Barn av "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3985,7 +3999,6 @@ msgstr "Datoer lagres med engelske forkortelser og nøkkelord. Alternativt kan d
 msgid "Daughter"
 msgstr "Datter"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4592,9 +4605,7 @@ msgstr "Rediger denne person og erstatt dens detaljer med dine egne."
 msgid "Edit with all GEDCOM tags"
 msgstr "Endre i alle GEDCOM-koder"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4643,6 +4654,11 @@ msgstr "E-post"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "Epostadresse"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "Kun e-post"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5261,7 +5277,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "februar"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Kvinne"
 
@@ -5337,6 +5353,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "Filer merket %s er nødvendige for at webtree skal fungere, og kan ikke slettes."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "Filter"
 
@@ -5693,6 +5711,11 @@ msgstr "Kontaktperson for slektsspørsmål"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "Slektsdata"
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "Slektsforskingsmeny"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6109,7 +6132,7 @@ msgstr "Hermosillo, Mexico"
 msgid "Hide GEDCOM tags"
 msgstr "Skjul GEDCOM-koder"
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6415,6 +6438,12 @@ msgstr "Importer geografiske data"
 msgid "Import preferences"
 msgstr "Importinnstillinger"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "Importerer slektstre"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -6441,6 +6470,16 @@ msgstr "I noen land gjelder personvernslovene ikke bare for nålevende personer,
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "Innboks og e-post"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "Kun innboks"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6627,14 +6666,6 @@ msgstr "Interaktivt tre for %s"
 msgid "Interment"
 msgstr "Jordfesting"
 
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "interne meldinger"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "Interne beskjeder med kopi til epost"
-
 #: app/Module/PrivacyPolicy.php
 #, fuzzy
 msgid "International transfers"
@@ -6804,7 +6835,7 @@ msgstr "Hold åpen"
 #: resources/views/admin/trees-preferences.phtml
 #: resources/views/edit/edit-fact.phtml resources/views/edit/edit-record.phtml
 msgid "Keep the existing “last change” information"
-msgstr "Behold eksisterende informasjon om \"siste endring\""
+msgstr "Behold eksisterende informasjon om “siste endring”"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7323,10 +7354,6 @@ msgstr "Magasin"
 msgid "Maidenhead location code"
 msgstr "Maidenhead lokalisasjonskode"
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "«Mailto»-lenke"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7342,7 +7369,7 @@ msgstr "Malaysia"
 msgid "Maldives"
 msgstr "Maldivene"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Mann"
 
@@ -7388,9 +7415,7 @@ msgstr "Administrere slektstre"
 msgid "Manage media"
 msgstr "Administrere media"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "Forvalter"
@@ -7811,9 +7836,7 @@ msgstr "Mellomstore systemer (5000 personer): 32-64MB, 20-40 sekunder"
 msgid "Melbourne, Australia"
 msgstr "Melbourne, Australia"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "Medlem"
@@ -7923,9 +7946,7 @@ msgstr "Minimumsalder for samtykke"
 msgid "Missing data"
 msgstr "Manglende data"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "Moderator"
 
@@ -8403,7 +8424,7 @@ msgstr "Ingen konvertering av kalender"
 msgid "No children"
 msgstr "Ingen registrerte barn"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "Ingen kontakt"
 
@@ -8826,7 +8847,7 @@ msgstr "På denne dag"
 msgid "Only add new records"
 msgstr "Kun legge til nye poster"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "Bare Forvaltere kan redigere"
@@ -8886,9 +8907,15 @@ msgstr "Orlando, Florida, USA"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
+msgid "Other"
+msgstr "Annet"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
 msgid "Other"
 msgstr "Annet"
 
@@ -8975,6 +9002,11 @@ msgstr "Sideoppsett"
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "Sidestørrelse"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "Sidenummerering"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9539,6 +9571,12 @@ msgstr "Skifte"
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "Fremdrift"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -10594,7 +10632,7 @@ msgstr "Setter nivået for personvern for alle døde personer."
 #: resources/views/emails/verify-notify-html.phtml
 #: resources/views/emails/verify-notify-text.phtml
 msgid "Set the status to “approved”."
-msgstr "Sett status til \"godkjent\"."
+msgstr "Sett status til “godkjent”."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -10607,6 +10645,7 @@ msgstr "Oppsetningsassistent for webtrees"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10784,6 +10823,7 @@ msgstr "Vis personer som er født for over 100 år siden."
 msgid "Show individuals born within the last 100 years."
 msgstr "Vis personer som er født de siste 100 år."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Vis personer som er i live eller par hvor begge pertnere er i live."
@@ -10973,23 +11013,21 @@ msgstr "Vis denne blokken for språkene"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Vis miniatyrbilder ved siden av personnavn i diagrammer."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Vis til forvaltere"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "Vis til medlemmer"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11189,7 +11227,7 @@ msgstr "Noen sider kan vise antall ganger de er besøkt."
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Enkelte tema kan vise ikoner under \"Fakta og hendelser\"."
+msgstr "Enkelte tema kan vise ikoner under “Fakta og hendelser”."
 
 #: resources/views/edit/change-family-members.phtml
 #: resources/xml/reports/family_group_report.xml
@@ -11198,7 +11236,6 @@ msgstr "Enkelte tema kan vise ikoner under \"Fakta og hendelser\"."
 msgid "Son"
 msgstr "Sønn"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -13297,7 +13334,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "Ukjent"
@@ -13312,7 +13349,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Ukjente"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13463,7 +13500,7 @@ msgstr "Bruk silhuetter"
 
 #: app/Http/RequestHandlers/CopyFact.php
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr "Bruk \"redigere\"-menyen for å kopiere dette inn i en annen post."
+msgstr "Bruk “redigere”-menyen for å kopiere dette inn i en annen post."
 
 #: resources/views/register-page.phtml
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -13628,8 +13665,7 @@ msgstr "Synlig på nettet"
 msgid "Visible to other users when online"
 msgstr "Vis andre at du er pålogget"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -13741,7 +13777,7 @@ msgstr "Vest-Sahara"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Når en post endres, registreres brukeren og tidspunktet. Noen ganger vil man foretrekke å beholde \"sist endret\"-informasjonen, for eksempel når man gjør små endringer i andres data. Dette alternativet avgjør om funksjonen er valgt som standard."
+msgstr "Når en post endres, registreres brukeren og tidspunktet. Noen ganger vil man foretrekke å beholde “sist endret”-informasjonen, for eksempel når man gjør små endringer i andres data. Dette alternativet avgjør om funksjonen er valgt som standard."
 
 #: resources/views/admin/users-edit.phtml
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -14153,7 +14189,7 @@ msgid "accept all"
 msgstr "godta alle"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "akseptert"
 
@@ -14301,6 +14337,7 @@ msgstr "statsborger"
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "lukk"
@@ -14492,7 +14529,6 @@ msgstr "Gå til ny person"
 msgid "half circle"
 msgstr "halvsirkel"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "henne selv"
@@ -14503,7 +14539,6 @@ msgstr "henne selv"
 msgid "hide"
 msgstr "skjul"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "han selv"
@@ -14721,7 +14756,7 @@ msgid "patrilineal"
 msgstr "farens"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "ventende"
 
@@ -14797,7 +14832,7 @@ msgid "reject"
 msgstr "avvis"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "avvist"
 
@@ -15050,7 +15085,6 @@ msgstr "Tilkoblingsinnstillingene for databasen i filen «/data/config.ini.php»
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "mappen «/data» og filen «/data/config.ini.php» har tilgangsrettigheter som tillater serveren å lese dem"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "seg selv"
@@ -15150,10 +15184,6 @@ msgstr "webtrees behøver en database for å lagre dine data."
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "webtrees må kunne sende e-post, som passord og påminnelser fra nettstedet."
 
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees sender epost uten å lagre"
-
 #: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "hustru"
@@ -15223,7 +15253,7 @@ msgstr "“%s 1” er slettet."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "\"Uthevet bilde\" (_PRIM) benyttes av enkelte slektsprogrammer for å bestemme ønsket bilde for en person. Et alternativ er å reorganisere bildene, slik at ønsket bilde er øverst på listen."
+msgstr "“Uthevet bilde” (_PRIM) benyttes av enkelte slektsprogrammer for å bestemme ønsket bilde for en person. Et alternativ er å reorganisere bildene, slik at ønsket bilde er øverst på listen."
 
 #: app/Individual.php app/Note.php
 msgid "…"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -381,7 +381,6 @@ msgstr "(%s po mirties)"
 msgid "(age %s)"
 msgstr ""
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -389,7 +388,6 @@ msgstr ""
 msgid "(aged %s)"
 msgstr "(amžius %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -398,7 +396,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr ""
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -1104,6 +1101,11 @@ msgstr "Pridėti naujieną"
 msgid "Add a note"
 msgstr "Pridėti naują pastabą"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "Pridėti tėvą/motiną"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr ""
@@ -1122,9 +1124,16 @@ msgstr ""
 msgid "Add a source citation"
 msgstr "Pridėti naują šaltinio nuorodą"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "Pridėti naują sutuoktinį"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "Pridėti sutuoktinį naudojant esamą asmenį"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1496,6 +1505,12 @@ msgstr "Alternatyvusis vardas"
 #: resources/views/lists/individuals-table.phtml
 msgid "Alive"
 msgstr "Gyvi"
+
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "Gyvas arba miręs"
 
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
@@ -2911,7 +2926,6 @@ msgstr "Vaikas"
 msgid "Child of "
 msgstr "vaikas "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3994,7 +4008,6 @@ msgstr "Datos yra saugomos naudojant Anglų santrumpas ir žodžius. Nuorodos yr
 msgid "Daughter"
 msgstr "Dukra"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4600,9 +4613,7 @@ msgstr "Redaguoti šį asmenį ir pakeisti esamus duomenis savais."
 msgid "Edit with all GEDCOM tags"
 msgstr ""
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4651,6 +4662,11 @@ msgstr ""
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "Elektroninis adresas"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "Tik el. paštas"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5266,7 +5282,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "vasaris"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Moteris"
 
@@ -5342,6 +5358,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "Bylos pažymėtos su %s yra privalomos tinkamam veikimui ir negali būti pašalintos."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "Filtruoti"
 
@@ -5698,6 +5716,11 @@ msgstr "Genealoginio medžio kontaktas"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "Genealogijos duomenys"
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "Genealogijos meniu"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6111,7 +6134,7 @@ msgstr "Hermosillo, Meksika"
 msgid "Hide GEDCOM tags"
 msgstr ""
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6413,6 +6436,12 @@ msgstr ""
 msgid "Import preferences"
 msgstr "Importavimo nustatymai"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "Importuojamas šeimos medis"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -6439,6 +6468,16 @@ msgstr ""
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "Gautieji ir el. paštas"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "Tik gautieji"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6624,14 +6663,6 @@ msgstr "%s interaktyvus medis"
 #: app/CustomTags/BrothersKeeper.php
 msgid "Interment"
 msgstr ""
-
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "Vidinis susirašinėjimas"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "Vidinės žinutės su el. paštu"
 
 #: app/Module/PrivacyPolicy.php
 msgid "International transfers"
@@ -7318,10 +7349,6 @@ msgstr "Žurnalas"
 msgid "Maidenhead location code"
 msgstr ""
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "Siųsti el. pašto nuorodą"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7337,7 +7364,7 @@ msgstr "Malaizija"
 msgid "Maldives"
 msgstr "Maldyvai"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Vyras"
 
@@ -7383,9 +7410,7 @@ msgstr "Tvarkyti šeimos medžius"
 msgid "Manage media"
 msgstr "Tvarkyti medijos objektus"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "Tvarkytojas"
@@ -7804,9 +7829,7 @@ msgstr "Vidutinės sistemos (5000 individų): 32-64MB, 20-40 sekundžių"
 msgid "Melbourne, Australia"
 msgstr "Melburnas, Australija"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "Narys"
@@ -7915,9 +7938,7 @@ msgstr ""
 msgid "Missing data"
 msgstr "Trūksta duomenų"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "Prižiūrėtojas"
 
@@ -8395,7 +8416,7 @@ msgstr "Be kalendoriaus keitimo"
 msgid "No children"
 msgstr "Nėra įrašų apie vaikus"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "Nėra kontakto"
 
@@ -8818,7 +8839,7 @@ msgstr "Šią dieną"
 msgid "Only add new records"
 msgstr ""
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "Tik administratoriai gali redaguoti"
@@ -8878,11 +8899,17 @@ msgstr "Orlando, Florida, United States"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
 msgid "Other"
 msgstr "Kitas"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
+msgid "Other"
+msgstr "Kita"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "Other facts to show in charts"
@@ -8966,6 +8993,11 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "Puslapio dydis"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "Puslapiavimas"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9528,6 +9560,12 @@ msgstr "Testamentas"
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "Eiga"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -10584,6 +10622,7 @@ msgstr "webtrees nustatymų vedlys"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10760,6 +10799,7 @@ msgstr "Rodyti asmenis gimusius anksčiau kaip prieš šimtą metų."
 msgid "Show individuals born within the last 100 years."
 msgstr "Rodyti asmenis gimusius per paskutinius šimtą metų."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Rodyti asmenis, kurie yra gyvi, arba poras, kur abu partneriai yra gyvi."
@@ -10949,23 +10989,21 @@ msgstr "Kokiomis kalbomis rodyti šį bloką"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Rodyti pažymėtus vaizdus žmonių asmeniniuose įrašuose."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Rodyti tvarkytojui"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "Rodyti nariams"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11173,7 +11211,6 @@ msgstr "Kai kurios išvaizdos temos gali rodyti ikonas „Faktų ir įvykių“ 
 msgid "Son"
 msgstr "Sūnus"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -13271,7 +13308,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "Nežinomas"
@@ -13286,7 +13323,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Nežinomas"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13601,8 +13638,7 @@ msgstr "Matomi tinklapyje"
 msgid "Visible to other users when online"
 msgstr "Kai prisijungęs, matomas kitiems naudotojams"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -14122,7 +14158,7 @@ msgid "accept all"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "priimptas"
 
@@ -14270,6 +14306,7 @@ msgstr ""
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "uždaryti"
@@ -14460,7 +14497,6 @@ msgstr "rodyk naują asmenį"
 msgid "half circle"
 msgstr "pusė apskritimo"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr ""
@@ -14471,7 +14507,6 @@ msgstr ""
 msgid "hide"
 msgstr "paslėpti"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr ""
@@ -14690,7 +14725,7 @@ msgid "patrilineal"
 msgstr "pagal vyrišką liniją"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "nepatikrintas"
 
@@ -14766,7 +14801,7 @@ msgid "reject"
 msgstr "atšaukti"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "atmestas"
 
@@ -15018,7 +15053,6 @@ msgstr "duomenų bazės ryšio nustatymai „/data/config.ini.php“ faile vis d
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "aplankas „/data“ ir failas „/data/config.ini.php“ turi prieigos teises, kurios leidžia žiniatinklio serveriui juos perskaityti"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr ""
@@ -15117,10 +15151,6 @@ msgstr "webtrees reikalinga duomenų bazė geneologijos duomenų išsaugojimui."
 #: resources/views/admin/site-mail.phtml
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr ""
-
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees siunčia el. laiškus be atminties"
 
 #: app/Elements/RoleInEvent.php
 msgid "wife"

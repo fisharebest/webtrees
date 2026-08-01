@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -364,7 +364,6 @@ msgstr "(%s μετά θάνατο)"
 msgid "(age %s)"
 msgstr "(%s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -372,7 +371,6 @@ msgstr "(%s)"
 msgid "(aged %s)"
 msgstr "(%s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -381,7 +379,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(%s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -889,7 +886,7 @@ msgstr "Ένα χρονοδιάγραμμα που εμφανίζει μεμον
 
 #: resources/views/admin/users-edit.phtml
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Ένας χρήστης δεν θα μπορεί να συνδεθεί έως ότου επιλεγούν τόσο η \"επαλήθευση email\" όσο και η \"έγκριση από τον διαχειριστή\"."
+msgstr "Ένας χρήστης δεν θα μπορεί να συνδεθεί έως ότου επιλεγούν τόσο η “επαλήθευση email” όσο και η “έγκριση από τον διαχειριστή”."
 
 #: resources/xml/reports/pedigree_report.xml
 #, fuzzy
@@ -1090,6 +1087,11 @@ msgstr "Προσθήκη άρθρου νέων"
 msgid "Add a note"
 msgstr "Προσθήκη σημειώματος/σχολίου"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "Προσθήκη γονέα"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "Προσθέστε αδελφό/-η"
@@ -1108,9 +1110,16 @@ msgstr "Προσθέστε ένα γιο"
 msgid "Add a source citation"
 msgstr "Προσθήκη αναφοράς πηγής"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "Προσθήκη νέας συζύγου"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "Προσθήκη συζύγου χρησιμοποιώντας ένα υπάρχον άτομο"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1483,6 +1492,12 @@ msgstr "Ψευδώνυμο"
 msgid "Alive"
 msgstr "Εν ζωή"
 
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "Ζωντανός ή νεκρός"
+
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
 #: resources/views/lists/datatables-attributes.phtml
@@ -1520,7 +1535,7 @@ msgstr "Όλα τα αρχεία"
 #. I18N: Description of the “TinyMCE” module. WYSIWYG = “what you see is what you get”
 #: app/Module/TinymceModule.php
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "Επιτρέψτε σε άλλες ενότητες να επεξεργάζονται κείμενο χρησιμοποιώντας ένα πρόγραμμα επεξεργασίας \"WYSIWYG\", αντί να χρησιμοποιούν κώδικες HTML."
+msgstr "Επιτρέψτε σε άλλες ενότητες να επεξεργάζονται κείμενο χρησιμοποιώντας ένα πρόγραμμα επεξεργασίας “WYSIWYG”, αντί να χρησιμοποιούν κώδικες HTML."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -1559,7 +1574,7 @@ msgstr "Ένας διαχειριστής πρέπει να εγκρίνει τ�
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Μια εναλλακτική λύση στην καρτέλα \"Πολυμέσα\" και μια βελτιωμένη προβολή εικόνων."
+msgstr "Μια εναλλακτική λύση στην καρτέλα “Πολυμέσα” και μια βελτιωμένη προβολή εικόνων."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php
@@ -1740,7 +1755,7 @@ msgstr "Άκουα Μαρίν"
 #: resources/views/edit/icon-fact-delete.phtml
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr "Σίγουρα θέλετε να διαγράψετε το σύνδεσμο προς το \"%s\";"
+msgstr "Σίγουρα θέλετε να διαγράψετε το σύνδεσμο προς το “%s”;"
 
 #: resources/views/individual-page-name.phtml
 #: resources/views/media-page-details.phtml
@@ -2674,7 +2689,7 @@ msgstr "Καναδάς"
 #: app/Http/RequestHandlers/SitePreferencesAction.php
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr "Δεν είναι δυνατή η εγγραφή στο φάκελο \"%s\"."
+msgstr "Δεν είναι δυνατή η εγγραφή στο φάκελο “%s”."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -2787,11 +2802,11 @@ msgstr "Αλλαγή μελών οικογένειας"
 
 #: app/Http/RequestHandlers/TreePageEdit.php
 msgid "Change the “Home page” blocks"
-msgstr "Αλλάξτε τα μπλοκ \"Αρχική σελίδα\""
+msgstr "Αλλάξτε τα μπλοκ “Αρχική σελίδα”"
 
 #: app/Http/RequestHandlers/UserPageEdit.php
 msgid "Change the “My page” blocks"
-msgstr "Αλλάξτε τα μπλοκ \"Η σελίδα μου\""
+msgstr "Αλλάξτε τα μπλοκ “Η σελίδα μου”"
 
 #. I18N: [a record was] Changed by <user>
 #: resources/views/modules/recent_changes/changes-list.phtml
@@ -2898,7 +2913,6 @@ msgstr "Τέκνο"
 msgid "Child of "
 msgstr "Τέκνο του "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3381,7 +3395,7 @@ msgstr "Εταιρεία"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameSlashesAndSpaces.php
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "Διορθώστε τις εγγραφές NAME της φόρμας \"John / DOE /\" ή \"John / DOE\", όπως παράγονται από παλαιότερα προγράμματα γενεαλογίας."
+msgstr "Διορθώστε τις εγγραφές NAME της φόρμας “John / DOE /” ή “John / DOE”, όπως παράγονται από παλαιότερα προγράμματα γενεαλογίας."
 
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
 msgid "Correspondence"
@@ -3988,7 +4002,6 @@ msgstr "Οι ημερομηνίες αποθηκεύονται χρησιμοπ�
 msgid "Daughter"
 msgstr "Θυγατέρα"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4495,11 +4508,11 @@ msgstr "Διπλότυπο όνομα χρήστη. Υπάρχει ήδη χρή
 
 #: resources/views/help/source-events.phtml
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "<p>Κάθε πηγή καταγράφει συγκεκριμένα συμβάντα, γενικά για ένα δεδομένο εύρος ημερομηνιών και για μια περιοχή δικαιοδοσίας. Για παράδειγμα, η Απογραφή καταγράφει γεγονότα απογραφής και η εκκλησία καταγράφει γεγονότα γέννησης, γάμου και θανάτου. </p> Επιλέξτε τα συμβάντα που καταγράφονται από αυτήν την πηγή από τη λίστα των παρεχόμενων συμβάντων. Η ημερομηνία πρέπει να καθορίζεται σε μορφή εύρους όπως <i> ΑΠΟ 1900 - 1910 </i>. Η περιοχή δικαιοδοσίας είναι το όνομα της χαμηλότερης δικαιοδοσίας που περιλαμβάνει όλες τις θέσεις χαμηλότερου επιπέδου που αναφέρονται σε αυτήν την πηγή. Για παράδειγμα, το \"Oneida, Idaho, USA\" θα χρησιμοποιείται ως πηγή δικαιοδοσίας για εκδηλώσεις που συμβαίνουν στις διάφορες πόλεις της κομητείας Oneida. Το \"Idaho, USA\" θα ήταν ο τόπος δικαιοδοσίας προέλευσης εάν τα καταγεγραμμένα γεγονότα πραγματοποιήθηκαν όχι μόνο στην κομητεία Oneida αλλά και σε άλλες κομητείες στο Idaho."
+msgstr "<p>Κάθε πηγή καταγράφει συγκεκριμένα συμβάντα, γενικά για ένα δεδομένο εύρος ημερομηνιών και για μια περιοχή δικαιοδοσίας. Για παράδειγμα, η Απογραφή καταγράφει γεγονότα απογραφής και η εκκλησία καταγράφει γεγονότα γέννησης, γάμου και θανάτου. </p> Επιλέξτε τα συμβάντα που καταγράφονται από αυτήν την πηγή από τη λίστα των παρεχόμενων συμβάντων. Η ημερομηνία πρέπει να καθορίζεται σε μορφή εύρους όπως <i> ΑΠΟ 1900 - 1910 </i>. Η περιοχή δικαιοδοσίας είναι το όνομα της χαμηλότερης δικαιοδοσίας που περιλαμβάνει όλες τις θέσεις χαμηλότερου επιπέδου που αναφέρονται σε αυτήν την πηγή. Για παράδειγμα, το “Oneida, Idaho, USA” θα χρησιμοποιείται ως πηγή δικαιοδοσίας για εκδηλώσεις που συμβαίνουν στις διάφορες πόλεις της κομητείας Oneida. Το “Idaho, USA” θα ήταν ο τόπος δικαιοδοσίας προέλευσης εάν τα καταγεγραμμένα γεγονότα πραγματοποιήθηκαν όχι μόνο στην κομητεία Oneida αλλά και σε άλλες κομητείες στο Idaho."
 
 #: resources/views/help/pending-changes.phtml
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "Κάθε λογαριασμός χρήστη έχει την επιλογή να \"δέχεται αυτόματα αλλαγές\". Όταν είναι ενεργοποιημένο, τυχόν αλλαγές που γίνονται από αυτόν τον χρήστη αποθηκεύονται αμέσως. Πολλοί διαχειριστές το ενεργοποιούν για τον δικό τους λογαριασμό χρήστη."
+msgstr "Κάθε λογαριασμός χρήστη έχει την επιλογή να “δέχεται αυτόματα αλλαγές”. Όταν είναι ενεργοποιημένο, τυχόν αλλαγές που γίνονται από αυτόν τον χρήστη αποθηκεύονται αμέσως. Πολλοί διαχειριστές το ενεργοποιούν για τον δικό τους λογαριασμό χρήστη."
 
 #: resources/views/modules/gedcom_stats/config.phtml
 #: resources/views/modules/gedcom_stats/statistics.phtml
@@ -4595,9 +4608,7 @@ msgstr "Επεξεργαστείτε αυτό το άτομο και αντικ�
 msgid "Edit with all GEDCOM tags"
 msgstr "Επεξεργασία με όλες τις ετικέτες GEDCOM"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4646,6 +4657,11 @@ msgstr "Email"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "Διεύθυνση email"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "Μόνο email"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5263,7 +5279,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "Φεβρουάριος"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Θήλυ"
 
@@ -5339,6 +5355,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "Αρχεία με %s χρειάζονται για την σωστή λειτουργία και δεν μπορούν να διαγραφούν."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "Φίλτρο"
 
@@ -5695,6 +5713,11 @@ msgstr "Επαφή επικοινωνίας"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "Γενεαλογικά δεδομένα"
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "Μενού γενεαλογίας"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6110,7 +6133,7 @@ msgstr "Χερμοσίγιο, Μεξικό"
 msgid "Hide GEDCOM tags"
 msgstr ""
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6416,18 +6439,24 @@ msgstr "Εισαγωγή γεωγραφικών δεδομένων"
 msgid "Import preferences"
 msgstr "Προτιμήσεις εισαγωγής"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "Εισαγωγή γενεαλογικού δέντρου"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "Σε ένα οικογενειακό δέντρο, κάθε εγγραφή έχει έναν εσωτερικό αριθμό αναφοράς (ονομάζεται \"XREF\") όπως \"F123\" ή \"R14\"."
+msgstr "Σε ένα οικογενειακό δέντρο, κάθε εγγραφή έχει έναν εσωτερικό αριθμό αναφοράς (ονομάζεται “XREF”) όπως “F123” ή “R14”."
 
 #: resources/views/help/romanized.phtml
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "Σε πολλούς πολιτισμούς είναι συνηθισμένο να υπάρχει ένα παραδοσιακό όνομα με τους παραδοσιακούς χαρακτήρες και επίσης μια λατινική έκδοση του ονόματος, όπως θα γράφεται ή προφέρεται σε γλώσσες με βάση το λατινικό αλφάβητο, όπως τα αγγλικά. <br> <br> Εάν προτιμάτε να χρησιμοποιήσετε ένα μη λατινικό αλφάβητο, όπως εβραϊκά, ελληνικά, ρωσικά, κινέζικα ή αραβικά για να εισαγάγετε το όνομα στα τυπικά πεδία ονόματος και, στη συνέχεια, μπορείτε να χρησιμοποιήσετε αυτό το πεδίο για να εισαγάγετε το ίδιο όνομα χρησιμοποιώντας το λατινικό αλφάβητο. Και οι δύο εκδόσεις του ονόματος θα εμφανίζονται σε λίστες και γραφήματα. <br> <br> Αν και αυτό το πεδίο έχει την ένδειξη \"Romanized\", δεν περιορίζεται στο να περιέχει μόνο χαρακτήρες που βασίζονται στο λατινικό αλφάβητο. Αυτό μπορεί να είναι χρήσιμο με ιαπωνικά ονόματα, όπου ενδέχεται να εμφανιστούν τρία διαφορετικά αλφάβητα."
+msgstr "Σε πολλούς πολιτισμούς είναι συνηθισμένο να υπάρχει ένα παραδοσιακό όνομα με τους παραδοσιακούς χαρακτήρες και επίσης μια λατινική έκδοση του ονόματος, όπως θα γράφεται ή προφέρεται σε γλώσσες με βάση το λατινικό αλφάβητο, όπως τα αγγλικά. <br> <br> Εάν προτιμάτε να χρησιμοποιήσετε ένα μη λατινικό αλφάβητο, όπως εβραϊκά, ελληνικά, ρωσικά, κινέζικα ή αραβικά για να εισαγάγετε το όνομα στα τυπικά πεδία ονόματος και, στη συνέχεια, μπορείτε να χρησιμοποιήσετε αυτό το πεδίο για να εισαγάγετε το ίδιο όνομα χρησιμοποιώντας το λατινικό αλφάβητο. Και οι δύο εκδόσεις του ονόματος θα εμφανίζονται σε λίστες και γραφήματα. <br> <br> Αν και αυτό το πεδίο έχει την ένδειξη “Romanized”, δεν περιορίζεται στο να περιέχει μόνο χαρακτήρες που βασίζονται στο λατινικό αλφάβητο. Αυτό μπορεί να είναι χρήσιμο με ιαπωνικά ονόματα, όπου ενδέχεται να εμφανιστούν τρία διαφορετικά αλφάβητα."
 
 #: resources/views/help/hebrew.phtml
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "Σε πολλούς πολιτισμούς είναι συνηθισμένο να υπάρχει ένα παραδοσιακό όνομα με τους παραδοσιακούς χαρακτήρες και επίσης μια λατινική έκδοση του ονόματος, όπως θα γράφεται ή προφέρεται σε γλώσσες με βάση το λατινικό αλφάβητο, όπως τα αγγλικά. <br> <br> Εάν προτιμάτε να χρησιμοποιήσετε το λατινικό αλφάβητο για να εισαγάγετε το όνομα στα τυπικά πεδία ονόματος και, στη συνέχεια, μπορείτε να χρησιμοποιήσετε αυτό το πεδίο για να εισαγάγετε το ίδιο όνομα στο μη λατινικό αλφάβητο όπως ελληνικά, εβραϊκά, ρωσικά, αραβικά ή κινέζικα. Και οι δύο εκδόσεις του ονόματος θα εμφανίζονται σε λίστες και γραφήματα. <br> <br> Αν και αυτό το πεδίο έχει την ένδειξη \"Εβραϊκά\", δεν περιορίζεται στο να περιέχει μόνο εβραϊκούς χαρακτήρες."
+msgstr "Σε πολλούς πολιτισμούς είναι συνηθισμένο να υπάρχει ένα παραδοσιακό όνομα με τους παραδοσιακούς χαρακτήρες και επίσης μια λατινική έκδοση του ονόματος, όπως θα γράφεται ή προφέρεται σε γλώσσες με βάση το λατινικό αλφάβητο, όπως τα αγγλικά. <br> <br> Εάν προτιμάτε να χρησιμοποιήσετε το λατινικό αλφάβητο για να εισαγάγετε το όνομα στα τυπικά πεδία ονόματος και, στη συνέχεια, μπορείτε να χρησιμοποιήσετε αυτό το πεδίο για να εισαγάγετε το ίδιο όνομα στο μη λατινικό αλφάβητο όπως ελληνικά, εβραϊκά, ρωσικά, αραβικά ή κινέζικα. Και οι δύο εκδόσεις του ονόματος θα εμφανίζονται σε λίστες και γραφήματα. <br> <br> Αν και αυτό το πεδίο έχει την ένδειξη “Εβραϊκά”, δεν περιορίζεται στο να περιέχει μόνο εβραϊκούς χαρακτήρες."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -6442,6 +6471,16 @@ msgstr "Σε ορισμένες χώρες, οι νόμοι περί απορρ�
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "Εισερχόμενα και email"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "Μόνο εισερχόμενα"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6628,14 +6667,6 @@ msgstr "Διαδραστικό δέντρο: %s"
 msgid "Interment"
 msgstr "Ενταφιασμός"
 
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "Εσωτερικά μηνύματα"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "Εσωτερική μηνύματα μέσω Ηλεκτρονικού Ταχυδρομείου"
-
 #: app/Module/PrivacyPolicy.php
 #, fuzzy
 msgid "International transfers"
@@ -6805,7 +6836,7 @@ msgstr "Διατήρησε ανοικτό"
 #: resources/views/admin/trees-preferences.phtml
 #: resources/views/edit/edit-fact.phtml resources/views/edit/edit-record.phtml
 msgid "Keep the existing “last change” information"
-msgstr "Διατήρηση των πληροφοριών της παρούσας \"τελευταίας αλλαγής\""
+msgstr "Διατήρηση των πληροφοριών της παρούσας “τελευταίας αλλαγής”"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7324,10 +7355,6 @@ msgstr "Περιοδικό"
 msgid "Maidenhead location code"
 msgstr ""
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "Σύνδεσμος \"mailto\""
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7343,7 +7370,7 @@ msgstr "Μαλαισία"
 msgid "Maldives"
 msgstr "Μαλδίβες"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Άρρεν"
 
@@ -7389,9 +7416,7 @@ msgstr "Διαχείριση οικογενειακών δένδρων"
 msgid "Manage media"
 msgstr "Διαχείριση πολυμέσων"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "Διαχειριστής"
@@ -7812,9 +7837,7 @@ msgstr "Μεσαία συστήματα (5.000 άτομα): 32-64 MB, 20-40 δε
 msgid "Melbourne, Australia"
 msgstr "Μελβούρνη, Αυστραλία"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "Μέλος"
@@ -7924,9 +7947,7 @@ msgstr "Ελάχιστη ηλικία συναίνεσης"
 msgid "Missing data"
 msgstr "Ελλειπή δεδομένα"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "Επιμελητής"
 
@@ -8404,7 +8425,7 @@ msgstr "Χωρίς μετατροπή ημερολογίου"
 msgid "No children"
 msgstr "Δεν έχουν καταχωρηθεί τέκνα"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "Χωρίς επικοινωνία"
 
@@ -8827,7 +8848,7 @@ msgstr "Σήμερα"
 msgid "Only add new records"
 msgstr "Προσθέστε μόνο νέες εγγραφές"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "Μπορεί να τροποποιηθεί μόνο από συντονιστές"
@@ -8887,9 +8908,15 @@ msgstr "Ορλάντο, Φλόριντα, Ηνωμένες Πολιτείες"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
+msgid "Other"
+msgstr "Άλλο"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
 msgid "Other"
 msgstr "Άλλο"
 
@@ -8976,6 +9003,11 @@ msgstr "Ρύθμιση σελίδας"
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "Μέγεθος σελίδας"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "Σελιδοποίηση"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9067,7 +9099,7 @@ msgstr "Συνθηματικό"
 #: resources/views/password-reset-page.phtml
 #: resources/views/register-page.phtml
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Τα συνθηματικο πρέπει να περιλαμβάνουν τουλάχιστον 8 χαρακτήρες με κεφαλαία-μικρά, έτσι το \"μυστικο\" διαφέρει απο το \"ΜΥΣΤΙΚΟ\"."
+msgstr "Τα συνθηματικο πρέπει να περιλαμβάνουν τουλάχιστον 8 χαρακτήρες με κεφαλαία-μικρά, έτσι το “μυστικο” διαφέρει απο το “ΜΥΣΤΙΚΟ”."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9243,7 +9275,7 @@ msgstr "Τα ονόματα των τοποθεσιών μπορούν να αλ
 
 #: resources/views/help/place.phtml
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr "Τα ονόματα των τόπων πρέπει να εισαχθούν ως λίστα διαχωρισμένη με κόμμα, ξεκινώντας από το μικρότερο μέρος και τελειώνοντας με τη χώρα. Για παράδειγμα, \"Westminster, London, England\"."
+msgstr "Τα ονόματα των τόπων πρέπει να εισαχθούν ως λίστα διαχωρισμένη με κόμμα, ξεκινώντας από το μικρότερο μέρος και τελειώνοντας με τη χώρα. Για παράδειγμα, “Westminster, London, England”."
 
 #: app/Gedcom.php
 msgid "Place of LDS baptism"
@@ -9464,7 +9496,7 @@ msgstr "Προτιμήσεις"
 #: resources/views/admin/modules.phtml
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "Υπάρχουν προτιμήσεις για την ενότητα \"%s\", αλλά αυτή η ενότητα δεν υπάρχει πλέον."
+msgstr "Υπάρχουν προτιμήσεις για την ενότητα “%s”, αλλά αυτή η ενότητα δεν υπάρχει πλέον."
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml
@@ -9540,6 +9572,12 @@ msgstr "Επικύρωση (διαθήκης)"
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "Πρόοδος"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -9989,7 +10027,7 @@ msgstr "Οι ερευνητικές εργασίες είναι ειδικές �
 
 #: resources/views/modules/todo/config.phtml
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Οι ερευνητικές εργασίες αποθηκεύονται χρησιμοποιώντας την προσαρμοσμένη ετικέτα GEDCOM \"_TODO\". Άλλες εφαρμογές γενεαλογίας ενδέχεται να μην αναγνωρίζουν αυτήν την ετικέτα."
+msgstr "Οι ερευνητικές εργασίες αποθηκεύονται χρησιμοποιώντας την προσαρμοσμένη ετικέτα GEDCOM “_TODO”. Άλλες εφαρμογές γενεαλογίας ενδέχεται να μην αναγνωρίζουν αυτήν την ετικέτα."
 
 #: app/CustomTags/Gedcom7.php app/Gedcom.php resources/views/admin/tags.phtml
 msgid "Residence"
@@ -10593,7 +10631,7 @@ msgstr "Show dead people<br><br>Set the privacy access level for all dead people
 #: resources/views/emails/verify-notify-html.phtml
 #: resources/views/emails/verify-notify-text.phtml
 msgid "Set the status to “approved”."
-msgstr "Ορίστε την κατάσταση σε \"εγκεκριμένη\"."
+msgstr "Ορίστε την κατάσταση σε “εγκεκριμένη”."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -10606,6 +10644,7 @@ msgstr "Εγκατάσταση webtrees"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10710,7 +10749,7 @@ msgstr "Εμφανίζει μια πολιτική απορρήτου/προστ
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "Εμφάνιση \"Αποδοχή όρων χρήσης\" στα αιτήματα νέων χρηστών"
+msgstr "Εμφάνιση “Αποδοχή όρων χρήσης” στα αιτήματα νέων χρηστών"
 
 #: resources/views/modules/media/tab.phtml
 msgid "Show all media"
@@ -10783,6 +10822,7 @@ msgstr "Εμφάνιση ατόμων γεννημένων περισσότερ�
 msgid "Show individuals born within the last 100 years."
 msgstr "Εμφάνιση ατόμων γεννημένων τα τελευταία 100 χρόνια."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Εμφάνιση ατόμων που είναι ζωντανά ή ζευγαριών όπου και οι δύο σύντροφοι ζουν."
@@ -10972,23 +11012,21 @@ msgstr "Για ποιες γλώσσες να εμφανιζεται αυτό τ
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Εμφάνιση μικρογραφιών σε διαγράμματα και σε ομάδες οικογενειών."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Εμφάνιση στους συντονιστές"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "Εμφάνιση στα μέλη"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11188,7 +11226,7 @@ msgstr "Ορισμένες σελίδες μπορούν να εμφανίσου
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Ορισμένα θέματα μπορούν να εμφανίσουν εικονίδια στην καρτέλα \"Γεγονότα και γεγονότα\"."
+msgstr "Ορισμένα θέματα μπορούν να εμφανίσουν εικονίδια στην καρτέλα “Γεγονότα και γεγονότα”."
 
 #: resources/views/edit/change-family-members.phtml
 #: resources/xml/reports/family_group_report.xml
@@ -11197,7 +11235,6 @@ msgstr "Ορισμένα θέματα μπορούν να εμφανίσουν �
 msgid "Son"
 msgstr "Υιός"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -11758,7 +11795,7 @@ msgstr "Το πεδίο <b>επώνυμο</b> περιέχει ένα όνομα
 #: app/Http/RequestHandlers/SynchronizeTrees.php
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "Το αρχείο GEDCOM \"%s\" έχει εισαχθεί."
+msgstr "Το αρχείο GEDCOM “%s” έχει εισαχθεί."
 
 #: resources/views/admin/tags.phtml
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
@@ -11772,12 +11809,12 @@ msgstr "Χάγη, Ολλανδία"
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr "Η επέκταση PHP \"%s\" δεν είναι εγκατεστημένη."
+msgstr "Η επέκταση PHP “%s” δεν είναι εγκατεστημένη."
 
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr "Η λειτουργία PHP \"%1$s\" είναι απενεργοποιημένη."
+msgstr "Η λειτουργία PHP “%1$s” είναι απενεργοποιημένη."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php
@@ -11787,12 +11824,12 @@ msgstr "Λείπει ο προσωρινός φάκελος PHP."
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr "Η ρύθμιση PHP.INI \"%1$s\" είναι απενεργοποιημένη."
+msgstr "Η ρύθμιση PHP.INI “%1$s” είναι απενεργοποιημένη."
 
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr "Η ρύθμιση PHP.INI \"%1$s\" είναι ενεργοποιημένη."
+msgstr "Η ρύθμιση PHP.INI “%1$s” είναι ενεργοποιημένη."
 
 #: resources/views/modules/share-url/share.phtml
 msgid "The URL was copied to the clipboard"
@@ -11813,14 +11850,14 @@ msgstr "Ο διαχειριστής έχει ενημερωθεί. Μόλις σ
 #: app/Http/RequestHandlers/PendingChangesAcceptTree.php
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "Οι αλλαγές στο \"%s\" έγιναν αποδεκτές."
+msgstr "Οι αλλαγές στο “%s” έγιναν αποδεκτές."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesRejectRecord.php
 #: app/Http/RequestHandlers/PendingChangesRejectTree.php
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "Οι αλλαγές στο \"%s\" έχουν απορριφθεί."
+msgstr "Οι αλλαγές στο “%s” έχουν απορριφθεί."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php
@@ -11839,7 +11876,7 @@ msgstr "Ημ/νία και ώρα τελευταίας ενημέρωσης"
 #: app/Http/RequestHandlers/MapDataSave.php
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr "Οι λεπτομέρειες για το \"%s\" έχουν ενημερωθεί."
+msgstr "Οι λεπτομέρειες για το “%s” έχουν ενημερωθεί."
 
 #. I18N: %s is a filename
 #: app/Http/RequestHandlers/ExportGedcomServer.php
@@ -11870,7 +11907,7 @@ msgstr "Το οικογενειακό δένδρο “%s” διαγράφηκε
 #: app/Http/RequestHandlers/SelectDefaultTree.php
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "Το οικογενειακό δέντρο \"%s\" θα εμφανίζεται στους επισκέπτες όταν φτάνουν για πρώτη φορά σε αυτόν τον ιστότοπο."
+msgstr "Το οικογενειακό δέντρο “%s” θα εμφανίζεται στους επισκέπτες όταν φτάνουν για πρώτη φορά σε αυτόν τον ιστότοπο."
 
 #: app/Http/RequestHandlers/MergeTreesAction.php
 msgid "The family trees have been merged successfully."
@@ -11951,7 +11988,7 @@ msgstr "Ο φάκελος μπορεί να καθοριστεί πλήρως (�
 #: app/Http/RequestHandlers/SitePreferencesAction.php
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr "Ο φάκελος \"%s\" δεν υπάρχει."
+msgstr "Ο φάκελος “%s” δεν υπάρχει."
 
 #: resources/views/admin/merge-records-step-2.phtml
 msgid "The following facts and events were found in both records."
@@ -11989,12 +12026,12 @@ msgstr "The User visitors should contact about the genealogy data on this websit
 #: app/Http/RequestHandlers/DeleteRecord.php
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr "Ο σύνδεσμος από \"%1$s\" προς \"%2$s\" διαγράφηκε."
+msgstr "Ο σύνδεσμος από “%1$s” προς “%2$s” διαγράφηκε."
 
 #: app/Http/RequestHandlers/MergeFactsAction.php
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "Ο σύνδεσμος από \"%1$s\" σε \"%2$s\" ενημερώθηκε."
+msgstr "Ο σύνδεσμος από “%1$s” σε “%2$s” ενημερώθηκε."
 
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php
@@ -12052,13 +12089,13 @@ msgstr "Το μήνυμα στάλθηκε επιτυχώς στον %s."
 #: app/Module/ChartsBlockModule.php
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "Η ενότητα \"%s\" έχει απενεργοποιηθεί."
+msgstr "Η ενότητα “%s” έχει απενεργοποιηθεί."
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php
 #: app/Http/RequestHandlers/ModulesAllAction.php
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "Η ενότητα \"%s\" έχει ενεργοποιηθεί."
+msgstr "Η ενότητα “%s” έχει ενεργοποιηθεί."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12123,12 +12160,12 @@ msgstr "Οι προτιμήσεις για νέα οικογενειακά δέ�
 #: app/Http/RequestHandlers/TreePrivacyAction.php
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "Οι προτιμήσεις για το οικογενειακό δέντρο \"%s\" έχουν ενημερωθεί."
+msgstr "Οι προτιμήσεις για το οικογενειακό δέντρο “%s” έχουν ενημερωθεί."
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "Οι προτιμήσεις για την ενότητα \"%s\" έχουν διαγραφεί."
+msgstr "Οι προτιμήσεις για την ενότητα “%s” έχουν διαγραφεί."
 
 #: app/Module/CustomCssJsModule.php app/Module/GeonamesAutocomplete.php
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
@@ -12138,7 +12175,7 @@ msgstr "Οι προτιμήσεις για την ενότητα \"%s\" έχου
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "Οι προτιμήσεις για την ενότητα \"%s\" έχουν ενημερωθεί."
+msgstr "Οι προτιμήσεις για την ενότητα “%s” έχουν ενημερωθεί."
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -12150,7 +12187,7 @@ msgstr "Το πρόθεμα είναι προαιρετικό, αλλά συνι
 #: app/Http/RequestHandlers/MergeFactsAction.php
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr "Οι εγγραφές \"%1$s\" και \"%2$s\" έχουν συγχωνευθεί."
+msgstr "Οι εγγραφές “%1$s” και “%2$s” έχουν συγχωνευθεί."
 
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php
@@ -12525,7 +12562,7 @@ msgstr "Αυτή είναι η τελευταία έκδοση των δέντρ
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "Αυτό είναι το όνομα του διακομιστή SMTP. Το \"localhost\" σημαίνει ότι η υπηρεσία αλληλογραφίας εκτελείται στον ίδιο υπολογιστή με τον διακομιστή ιστού σας."
+msgstr "Αυτό είναι το όνομα του διακομιστή SMTP. Το “localhost” σημαίνει ότι η υπηρεσία αλληλογραφίας εκτελείται στον ίδιο υπολογιστή με τον διακομιστή ιστού σας."
 
 #: resources/views/admin/users-create.phtml
 #: resources/views/admin/users-edit.phtml
@@ -12580,7 +12617,7 @@ msgstr "Πρέπει να έχει τουλάχιστον έξι χαρακτή�
 #. I18N: Help text for the “Sender name” site configuration setting
 #: resources/views/admin/site-mail.phtml
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "Αυτό το όνομα χρησιμοποιείται στο πεδίο \"Από\" κατά την αποστολή αυτόματων μηνυμάτων ηλεκτρονικού ταχυδρομείου από αυτόν τον διακομιστή."
+msgstr "Αυτό το όνομα χρησιμοποιείται στο πεδίο “Από” κατά την αποστολή αυτόματων μηνυμάτων ηλεκτρονικού ταχυδρομείου από αυτόν τον διακομιστή."
 
 #: app/Auth.php
 msgid "This note does not exist or you do not have permission to view it."
@@ -12703,7 +12740,7 @@ msgstr "Αυτός ο ρόλος έχει όλα τα δικαιώματα το�
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Αυτός ο ρόλος έχει όλα τα δικαιώματα του ρόλου μέλους, καθώς και δικαιώματα προσθήκης / αλλαγής / διαγραφής δεδομένων. Οποιεσδήποτε αλλαγές θα πρέπει να ελεγχθούν από έναν επόπτη, εκτός εάν ο χρήστης έχει ενεργοποιήσει την επιλογή \"αυτόματη αποδοχή αλλαγών\"."
+msgstr "Αυτός ο ρόλος έχει όλα τα δικαιώματα του ρόλου μέλους, καθώς και δικαιώματα προσθήκης / αλλαγής / διαγραφής δεδομένων. Οποιεσδήποτε αλλαγές θα πρέπει να ελεγχθούν από έναν επόπτη, εκτός εάν ο χρήστης έχει ενεργοποιήσει την επιλογή “αυτόματη αποδοχή αλλαγών”."
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -12780,7 +12817,7 @@ msgstr ""
 #: resources/views/admin/trees-import.phtml
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Αυτό θα διαγράψει όλα τα δεδομένα γενεαλογίας από το \"%s\" και θα τα αντικαταστήσει με δεδομένα από ένα αρχείο GEDCOM."
+msgstr "Αυτό θα διαγράψει όλα τα δεδομένα γενεαλογίας από το “%s” και θα τα αντικαταστήσει με δεδομένα από ένα αρχείο GEDCOM."
 
 #. I18N: abbreviation for Thursday
 #: resources/views/edit/initialize-calendar-popup.phtml
@@ -13296,7 +13333,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "Άγνωστο"
@@ -13311,7 +13348,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Άγνωστο"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13396,7 +13433,7 @@ msgstr "Χρήση SMTP για αποστολή μηνυμάτων"
 
 #: app/Module/FixSearchAndReplace.php
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Χρησιμοποίησε ένα \"?\" για να ταιριάξετε έναν μόνο χαρακτήρα, χρησιμοποιήστε το \"*\" για να ταιριάξετε με μηδενικούς ή περισσότερους χαρακτήρες."
+msgstr "Χρησιμοποίησε ένα “?” για να ταιριάξετε έναν μόνο χαρακτήρα, χρησιμοποιήστε το “*” για να ταιριάξετε με μηδενικούς ή περισσότερους χαρακτήρες."
 
 #: app/Module/ModuleMapGeoLocationTrait.php
 msgid "Use an external service to find locations."
@@ -13519,7 +13556,7 @@ msgstr "Όνομα χρήστη ή διεύθυνση ηλεκτρονικού �
 #: resources/views/admin/users-edit.phtml
 #: resources/views/edit-account-page.phtml resources/views/register-page.phtml
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "Τα ονόματα χρήστη δεν είναι ευδιάκριτα με κεφαλαία γράμματα και αγνοούν τα τονισμένα γράμματα, έτσι ώστε τα \"chloe\", \"chloë\" και \"Chloe\" θεωρούνται τα ίδια."
+msgstr "Τα ονόματα χρήστη δεν είναι ευδιάκριτα με κεφαλαία γράμματα και αγνοούν τα τονισμένα γράμματα, έτσι ώστε τα “chloe”, “chloë” και “Chloe” θεωρούνται τα ίδια."
 
 #: resources/views/admin/control-panel.phtml
 #: resources/views/modules/gedcom_stats/statistics.phtml
@@ -13627,8 +13664,7 @@ msgstr "Ορατός όταν συνδεδεμένος"
 msgid "Visible to other users when online"
 msgstr "Ορατό σε άλλους χρήστες οταν είναι συνδεδεμένοι"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -13740,11 +13776,11 @@ msgstr "Δυτική Σαχάρα"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Όταν γίνεται επεξεργασία μιας εγγραφής, ο χρήστης και η χρονική σήμανση καταγράφονται. Μερικές φορές είναι επιθυμητό να διατηρήσετε τις υπάρχουσες πληροφορίες \"τελευταίας αλλαγής\", για παράδειγμα όταν κάνετε μικρές διορθώσεις στα δεδομένα κάποιου άλλου. Αυτή η επιλογή ελέγχει εάν αυτή η δυνατότητα είναι επιλεγμένη από προεπιλογή."
+msgstr "Όταν γίνεται επεξεργασία μιας εγγραφής, ο χρήστης και η χρονική σήμανση καταγράφονται. Μερικές φορές είναι επιθυμητό να διατηρήσετε τις υπάρχουσες πληροφορίες “τελευταίας αλλαγής”, για παράδειγμα όταν κάνετε μικρές διορθώσεις στα δεδομένα κάποιου άλλου. Αυτή η επιλογή ελέγχει εάν αυτή η δυνατότητα είναι επιλεγμένη από προεπιλογή."
 
 #: resources/views/admin/users-edit.phtml
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Όταν ένας χρήστης εγγράφεται για λογαριασμό, ένα email αποστέλλεται στη διεύθυνση email του με έναν σύνδεσμο επαλήθευσης. Όταν ακολουθούν αυτόν τον σύνδεσμο, γνωρίζουμε ότι η διεύθυνση ηλεκτρονικού ταχυδρομείου είναι σωστή και η επιλογή \"επαλήθευση email\" επιλέγεται αυτόματα."
+msgstr "Όταν ένας χρήστης εγγράφεται για λογαριασμό, ένα email αποστέλλεται στη διεύθυνση email του με έναν σύνδεσμο επαλήθευσης. Όταν ακολουθούν αυτόν τον σύνδεσμο, γνωρίζουμε ότι η διεύθυνση ηλεκτρονικού ταχυδρομείου είναι σωστή και η επιλογή “επαλήθευση email” επιλέγεται αυτόματα."
 
 #: resources/views/edit/reorder-families.phtml
 msgid "When an individual has more than one spouse, you should sort the families in date order."
@@ -13894,7 +13930,7 @@ msgstr "Μπορείτε να υποβάλετε αίτηση για λογαρ�
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr "Μπορείτε να αλλάξετε την εμφάνιση των δέντρων web χρησιμοποιώντας \"θέματα\". Κάθε θέμα έχει διαφορετικό στυλ, διάταξη, συνδυασμό χρωμάτων κ.λπ."
+msgstr "Μπορείτε να αλλάξετε την εμφάνιση των δέντρων web χρησιμοποιώντας “θέματα”. Κάθε θέμα έχει διαφορετικό στυλ, διάταξη, συνδυασμό χρωμάτων κ.λπ."
 
 #: resources/views/admin/users-edit.phtml
 #: resources/views/edit-account-page.phtml
@@ -14027,7 +14063,7 @@ msgstr "Πρέπει να αποδεχτείτε ή να απορρίψετε ό
 #: app/Http/RequestHandlers/RegisterAction.php
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "Θα πρέπει να διαγράψετε το \"%1$s\" από το \"%2$s\" και να προσπαθήσετε ξανά."
+msgstr "Θα πρέπει να διαγράψετε το “%1$s” από το “%2$s” και να προσπαθήσετε ξανά."
 
 #: resources/views/admin/users-edit.phtml
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -14152,7 +14188,7 @@ msgid "accept all"
 msgstr "αποδοχή όλων"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "Καταχωρήθηκε"
 
@@ -14300,6 +14336,7 @@ msgstr "πολίτης"
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "κλείσιμο"
@@ -14491,7 +14528,6 @@ msgstr "πηγαίνετε σε νέο άτομο"
 msgid "half circle"
 msgstr "ημικύκλιο"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "η ίδια"
@@ -14502,7 +14538,6 @@ msgstr "η ίδια"
 msgid "hide"
 msgstr "Απόκρυψη"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "ο ίδιος"
@@ -14720,7 +14755,7 @@ msgid "patrilineal"
 msgstr "πατρικό"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "αναμένεται"
 
@@ -14796,7 +14831,7 @@ msgid "reject"
 msgstr "απόρριψη"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "απορρίφθηκε"
 
@@ -15042,14 +15077,13 @@ msgstr "σύννεφο ετικετών"
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr "οι ρυθμίσεις σύνδεσης της βάσης δεδομένων στο αρχείο \"/data/config.ini.php\" εξακολουθούν να είναι σωστές"
+msgstr "οι ρυθμίσεις σύνδεσης της βάσης δεδομένων στο αρχείο “/data/config.ini.php” εξακολουθούν να είναι σωστές"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr "ο φάκελος \"/ data\" και το αρχείο \"/data/config.ini.php\" έχουν δικαιώματα πρόσβασης που επιτρέπουν στον διακομιστή ιστού να τα διαβάσει"
+msgstr "ο φάκελος “/ data” και το αρχείο “/data/config.ini.php” έχουν δικαιώματα πρόσβασης που επιτρέπουν στον διακομιστή ιστού να τα διαβάσει"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "οι ίδιοι"
@@ -15149,10 +15183,6 @@ msgstr "Το webtrees χρειάζεται μια βάση δεδομένων γ
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "Το webtrees πρέπει να στέλνει μηνύματα ηλεκτρονικού ταχυδρομείου, όπως υπενθυμίσεις κωδικού πρόσβασης και ειδοποιήσεις ιστότοπου."
 
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "Αποστολή email χωρίς αποθήκευση"
-
 #: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "Σύζυγος"
@@ -15222,7 +15252,7 @@ msgstr "“%s” διαγράφηκε."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "Οι ετικέτες \"Highlighted image\" (_PRIM) χρησιμοποιούνται από ορισμένες εφαρμογές γενεαλογίας για να υποδείξουν την προτιμώμενη εικόνα για ένα άτομο. Μια εναλλακτική λύση είναι να αναδιατάξετε τις εικόνες έτσι ώστε η προτιμώμενη να εμφανίζεται πρώτα."
+msgstr "Οι ετικέτες “Highlighted image” (_PRIM) χρησιμοποιούνται από ορισμένες εφαρμογές γενεαλογίας για να υποδείξουν την προτιμώμενη εικόνα για ένα άτομο. Μια εναλλακτική λύση είναι να αναδιατάξετε τις εικόνες έτσι ώστε η προτιμώμενη να εμφανίζεται πρώτα."
 
 #: app/Individual.php app/Note.php
 msgid "…"

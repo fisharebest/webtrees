@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -365,7 +365,6 @@ msgstr "(%s peale surma)"
 msgid "(age %s)"
 msgstr "(vanus %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -373,7 +372,6 @@ msgstr "(vanus %s)"
 msgid "(aged %s)"
 msgstr "(vanuses %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -382,7 +380,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(vanus %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -729,7 +726,7 @@ msgstr "Uus webtrees versioon on saadaval."
 #: app/Http/RequestHandlers/PasswordRequestAction.php
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr "Parooli taastamise link on saadetud aadressile \"%s\"."
+msgstr "Parooli taastamise link on saadetud aadressile “%s”."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php
@@ -890,7 +887,7 @@ msgstr "Ajajoon, mis kuvab üksikuid sündmuseid."
 
 #: resources/views/admin/users-edit.phtml
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Kasutaja ei saa enne sisse logida, kuni mõlemad punktid: \"e-mail kinnitatud\" ja \"kinnitatud administraatori poolt\" on valitud."
+msgstr "Kasutaja ei saa enne sisse logida, kuni mõlemad punktid: “e-mail kinnitatud” ja “kinnitatud administraatori poolt” on valitud."
 
 #: resources/xml/reports/pedigree_report.xml
 msgctxt "paper size"
@@ -1088,6 +1085,11 @@ msgstr "Lisa uudis"
 msgid "Add a note"
 msgstr "Lisa märkus"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "Lisa vanem"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "Lisa õde/vend"
@@ -1106,9 +1108,16 @@ msgstr "Lisa poeg"
 msgid "Add a source citation"
 msgstr "Lisa allika viide"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "Lisa abikaasa"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "Lisa abikaasa olemasoleva isiku abil"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1481,6 +1490,12 @@ msgstr "Alias"
 msgid "Alive"
 msgstr "Elus"
 
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "Elus või surnud"
+
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
 #: resources/views/lists/datatables-attributes.phtml
@@ -1518,7 +1533,7 @@ msgstr "Kõik kirjed"
 #. I18N: Description of the “TinyMCE” module. WYSIWYG = “what you see is what you get”
 #: app/Module/TinymceModule.php
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "Luba teistel moodulitel teksti muuta kasutades \"WYSIWYG\" redaktorit, mitte HTML koode."
+msgstr "Luba teistel moodulitel teksti muuta kasutades “WYSIWYG” redaktorit, mitte HTML koode."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -1557,7 +1572,7 @@ msgstr "Administraator peab kinnitama uue kasutaja ja valima ligipääsutaseme, 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Alternatiiv \"meedia\" vahelehe jaoks ja täiustatud pildivaatur."
+msgstr "Alternatiiv “meedia” vahelehe jaoks ja täiustatud pildivaatur."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php
@@ -1738,7 +1753,7 @@ msgstr "Akvamariin"
 #: resources/views/edit/icon-fact-delete.phtml
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr "Kas olete kindel, et soovite kustutada lingi \"%s\"?"
+msgstr "Kas olete kindel, et soovite kustutada lingi “%s”?"
 
 #: resources/views/individual-page-name.phtml
 #: resources/views/media-page-details.phtml
@@ -2783,11 +2798,11 @@ msgstr "Muuda perekonna liikmeid"
 
 #: app/Http/RequestHandlers/TreePageEdit.php
 msgid "Change the “Home page” blocks"
-msgstr "Muuda \"Avaleht\" plokke"
+msgstr "Muuda “Avaleht” plokke"
 
 #: app/Http/RequestHandlers/UserPageEdit.php
 msgid "Change the “My page” blocks"
-msgstr "Muuda \"Minu leht\" plokke"
+msgstr "Muuda “Minu leht” plokke"
 
 #. I18N: [a record was] Changed by <user>
 #: resources/views/modules/recent_changes/changes-list.phtml
@@ -2894,7 +2909,6 @@ msgstr "Laps"
 msgid "Child of "
 msgstr "Laps "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3977,7 +3991,6 @@ msgstr "Kuupäevi hoiustatakse kasutades inglise lühendeid ja märksõnu. Otset
 msgid "Daughter"
 msgstr "Tütar"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4483,11 +4496,11 @@ msgstr "Korduv kasutajanimi. Sellise kasutajanimega kasutaja on juba olemas. Pal
 
 #: resources/views/help/source-events.phtml
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Iga allikas sisaldab erinevaid sündmusi, üldjuhul mingi kindla ajavahemiku ja koha kohta. Näiteks rahvaloenduse sündmused ja kirikukirjed sisaldavad infot sündide, abielude ja surmade kohta. <br><br>Valige sündmuste nimekirjast need sündmused, mida see allikas kajastab. Kuupäev peaks olema märgitud sellises formaadis <i>FROM 1900 TO 1910</i>. Koha jurisdiktsioon on madalaima jurisdiktsiooni nimi, mis tähistab antud juhul kõiki alam-tasemete kohti, mis on selles allikas kajastatud. Näiteks \"Oneida, Idaho, Usa\" võiks kasutada allika jurisdiktsiooniks sündmustes, mis on toimunud erinevates linnades Oneida maakonnas. \"Idaho, USA\" oleks allika jurisdiktsiooniks kui sündmused toimusid mitte ainult Oneida maakonnas aga ka teistes maakondates Idaho-s."
+msgstr "Iga allikas sisaldab erinevaid sündmusi, üldjuhul mingi kindla ajavahemiku ja koha kohta. Näiteks rahvaloenduse sündmused ja kirikukirjed sisaldavad infot sündide, abielude ja surmade kohta. <br><br>Valige sündmuste nimekirjast need sündmused, mida see allikas kajastab. Kuupäev peaks olema märgitud sellises formaadis <i>FROM 1900 TO 1910</i>. Koha jurisdiktsioon on madalaima jurisdiktsiooni nimi, mis tähistab antud juhul kõiki alam-tasemete kohti, mis on selles allikas kajastatud. Näiteks “Oneida, Idaho, Usa” võiks kasutada allika jurisdiktsiooniks sündmustes, mis on toimunud erinevates linnades Oneida maakonnas. “Idaho, USA” oleks allika jurisdiktsiooniks kui sündmused toimusid mitte ainult Oneida maakonnas aga ka teistes maakondates Idaho-s."
 
 #: resources/views/help/pending-changes.phtml
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "Igal kasutajal on valik \"kinnita muudatused automaatselt\". Kui see on lubatud, siis kõik muudatused, mida see kasutaja teeb salvestatakse automaatselt. Paljud administraatorid salvestavad selle enda kasutaja jaoks."
+msgstr "Igal kasutajal on valik “kinnita muudatused automaatselt”. Kui see on lubatud, siis kõik muudatused, mida see kasutaja teeb salvestatakse automaatselt. Paljud administraatorid salvestavad selle enda kasutaja jaoks."
 
 #: resources/views/modules/gedcom_stats/config.phtml
 #: resources/views/modules/gedcom_stats/statistics.phtml
@@ -4583,9 +4596,7 @@ msgstr "Muuda seda isikut ja asenda detailid enda omadega."
 msgid "Edit with all GEDCOM tags"
 msgstr ""
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4634,6 +4645,11 @@ msgstr "E-post"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "E-posti aadress"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "Ainult e-post"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5161,12 +5177,12 @@ msgstr "Perekond vanematega"
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Individual.php
 msgid "Family with rada parents"
-msgstr "Perekond \"radā\" vanematega"
+msgstr "Perekond “radā” vanematega"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/Individual.php
 msgid "Family with sealing parents"
-msgstr "Perekond \"sealing\" vanematega"
+msgstr "Perekond “sealing” vanematega"
 
 #: app/Module/ModuleThemeTrait.php resources/views/chart-box.phtml
 msgid "Family with spouse"
@@ -5249,7 +5265,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "veebruar"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Naine"
 
@@ -5325,6 +5341,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "Failid, mis on märgitud %s -ga on kindlasti vajalikud korralikuks toimimiseks ja neid ei saa eemaldada."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "Filtreeri"
 
@@ -5681,6 +5699,11 @@ msgstr "Genealoogiline kontakt"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "Genealoogilised andmed"
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "Genealoogia menüü"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6094,7 +6117,7 @@ msgstr "Hermosillo, Mehhiko"
 msgid "Hide GEDCOM tags"
 msgstr ""
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6289,7 +6312,7 @@ msgstr "Kui perekonnanimi on teadmata kasutage tühje kaldjooni: <%s>Mari //<%s>
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "Kui selle isiku kohta esineb teisi sündmuseid kui surm, matmine või tuhastamine, mis on värskemad kui antud arv aastaid, siis arvatakse, et nad on \"elus\". Teisteks sündmusteks võib antul juhul pidada laste sünnikuupäevi."
+msgstr "Kui selle isiku kohta esineb teisi sündmuseid kui surm, matmine või tuhastamine, mis on värskemad kui antud arv aastaid, siis arvatakse, et nad on “elus”. Teisteks sündmusteks võib antul juhul pidada laste sünnikuupäevi."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -6396,18 +6419,24 @@ msgstr "Impordi geograafilisi andmeid"
 msgid "Import preferences"
 msgstr "Importimise eelistused"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "Sugupuu importimine"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "Sugupuus on igal kirjel sisemine viitenumber (tähistusega \"XREF\") näiteks \"F123\" või \"R14\"."
+msgstr "Sugupuus on igal kirjel sisemine viitenumber (tähistusega “XREF”) näiteks “F123” või “R14”."
 
 #: resources/views/help/romanized.phtml
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "Paljudes kultuurides on tavaks kirjutada nimi traditsioonilistes sümbolites ja ka romaani versioon nimest sellisel kujul, kuidas seda kirjutataks või hääldataks keeltes, mis baseeruvad Ladina tähestikul nagu näiteks inglise keel.<br><br>Kui te eelistate kasutada mitte Ladina tähestikku nagu näiteks Heebrea, Kreeka, Vene, Hiina, Araabia, et sisestada nime standartsetesse nime väljadesse, siis saate kasutada seda välja, et sisestada sama nimi kasutades Ladina tähestikku. Mõlemad versioonid samast nimest ilmuvad nimekirjadesse ja joonistele.<br><br>Kuigi see väli on sildistatud \"Romaniseeritud\", ei keela see sisestada sümboleid, mis ei ole Ladina tähestikust. See võib olla kasulik Jaapani nimede puhul, kus kolm erinevat tähestikku saavad olla kasutusel."
+msgstr "Paljudes kultuurides on tavaks kirjutada nimi traditsioonilistes sümbolites ja ka romaani versioon nimest sellisel kujul, kuidas seda kirjutataks või hääldataks keeltes, mis baseeruvad Ladina tähestikul nagu näiteks inglise keel.<br><br>Kui te eelistate kasutada mitte Ladina tähestikku nagu näiteks Heebrea, Kreeka, Vene, Hiina, Araabia, et sisestada nime standartsetesse nime väljadesse, siis saate kasutada seda välja, et sisestada sama nimi kasutades Ladina tähestikku. Mõlemad versioonid samast nimest ilmuvad nimekirjadesse ja joonistele.<br><br>Kuigi see väli on sildistatud “Romaniseeritud”, ei keela see sisestada sümboleid, mis ei ole Ladina tähestikust. See võib olla kasulik Jaapani nimede puhul, kus kolm erinevat tähestikku saavad olla kasutusel."
 
 #: resources/views/help/hebrew.phtml
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "Paljudes kultuurides on tavaks kirjutada nimi traditsioonilistes sümbolites ja ka romaani versioon nimest, kuidas seda kirjutataks või hääldataks keeltes, mis baseeruvad Ladina tähestikul nagu näiteks Inglise keel.<br><br>Kui te eelistate kasutada mitte-Ladina tähestikku nagu näiteks Heebrea, Kreeka, Vene, Hiina, Araabia, et sisestada nime standartsetesse nime väljadesse, siis saate kasutada seda välja, et sisestada sama nimi kasutades Ladina tähestikku. Mõlemad versioonid samast nimest ilmuvad nimekirjadesse ja joonistele.<br><br>Kuigi see väli on sildistatud \"Heebrea\", ei keela see sisestada sümboleid, mis ei ole Heebrea tähestikust."
+msgstr "Paljudes kultuurides on tavaks kirjutada nimi traditsioonilistes sümbolites ja ka romaani versioon nimest, kuidas seda kirjutataks või hääldataks keeltes, mis baseeruvad Ladina tähestikul nagu näiteks Inglise keel.<br><br>Kui te eelistate kasutada mitte-Ladina tähestikku nagu näiteks Heebrea, Kreeka, Vene, Hiina, Araabia, et sisestada nime standartsetesse nime väljadesse, siis saate kasutada seda välja, et sisestada sama nimi kasutades Ladina tähestikku. Mõlemad versioonid samast nimest ilmuvad nimekirjadesse ja joonistele.<br><br>Kuigi see väli on sildistatud “Heebrea”, ei keela see sisestada sümboleid, mis ei ole Heebrea tähestikust."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -6422,6 +6451,16 @@ msgstr "Mõnedes riikides rakenduvad privaatsusseadused peale elavatele isikutel
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "Postkast ja e-post"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "Ainult postkast"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6608,14 +6647,6 @@ msgstr "Interaktiivne puu isikule %s"
 msgid "Interment"
 msgstr "Matmine"
 
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "Sisemine sõnumivahetus"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "Sisemine sõnumivahetus emailide saatmisega"
-
 #: app/Module/PrivacyPolicy.php
 msgid "International transfers"
 msgstr ""
@@ -6783,7 +6814,7 @@ msgstr "Hoia avatud"
 #: resources/views/admin/trees-preferences.phtml
 #: resources/views/edit/edit-fact.phtml resources/views/edit/edit-record.phtml
 msgid "Keep the existing “last change” information"
-msgstr "Jäta olemasolev \"viimane muudatus\" alles"
+msgstr "Jäta olemasolev “viimane muudatus” alles"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -6851,7 +6882,7 @@ msgstr ""
 
 #: app/Gedcom.php
 msgid "LDS spouse sealing"
-msgstr "LDS abikaasa \"sealing\""
+msgstr "LDS abikaasa “sealing”"
 
 #: app/CustomTags/FamilyTreeMaker.php
 msgid "Label"
@@ -7301,10 +7332,6 @@ msgstr "Ajakiri"
 msgid "Maidenhead location code"
 msgstr "Maidenhead asukoha kood"
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "Mailto viide"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7320,7 +7347,7 @@ msgstr "Malasia"
 msgid "Maldives"
 msgstr "Maldiivid"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Mees"
 
@@ -7366,9 +7393,7 @@ msgstr "Korralda sugupuid"
 msgid "Manage media"
 msgstr "Korralda meediat"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "Haldaja"
@@ -7787,9 +7812,7 @@ msgstr "Keskmised süsteemid (5000 isikut): 32-64MB, 20-40 sekundit"
 msgid "Melbourne, Australia"
 msgstr "Melbourne, Austraalia"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "Liige"
@@ -7898,9 +7921,7 @@ msgstr ""
 msgid "Missing data"
 msgstr "Puuduvad andmed"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "Moderaator"
 
@@ -8378,7 +8399,7 @@ msgstr "Kalendrit ei teisendata"
 msgid "No children"
 msgstr "Lapsi pole"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "Ilma kontakteerumiseta"
 
@@ -8799,7 +8820,7 @@ msgstr "Tänasel päeval"
 msgid "Only add new records"
 msgstr "Lisa ainult uusi kirjeid"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "Ainult haldajad saavad muuta"
@@ -8859,9 +8880,15 @@ msgstr "Orlando, Florida, Ühendriigid"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
+msgid "Other"
+msgstr "Muu"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
 msgid "Other"
 msgstr "Muu"
 
@@ -8947,6 +8974,11 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "Lehekülje suurus"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "Lehitsemine"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9038,7 +9070,7 @@ msgstr "Parool"
 #: resources/views/password-reset-page.phtml
 #: resources/views/register-page.phtml
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Paroolid peavad olema vähemalt 8 tähemärki pikad ja on suurtähetundlikud, ehk \"saladus\" on erinev \"SALADUS\"-st."
+msgstr "Paroolid peavad olema vähemalt 8 tähemärki pikad ja on suurtähetundlikud, ehk “saladus” on erinev “SALADUS”-st."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9222,7 +9254,7 @@ msgstr "LDS ristimise asukoht"
 
 #: app/Gedcom.php
 msgid "Place of LDS child sealing"
-msgstr "LDS lapse \"sealing\" asukoht"
+msgstr "LDS lapse “sealing” asukoht"
 
 #: app/Gedcom.php
 msgid "Place of LDS confirmation"
@@ -9230,11 +9262,11 @@ msgstr "LDS leeri asukoht"
 
 #: app/Gedcom.php
 msgid "Place of LDS endowment"
-msgstr "LDS \"endowment\" asukoht"
+msgstr "LDS “endowment” asukoht"
 
 #: app/Gedcom.php
 msgid "Place of LDS spouse sealing"
-msgstr "LDS nõbu \"sealing\" asukoht"
+msgstr "LDS nõbu “sealing” asukoht"
 
 #: app/Gedcom.php
 msgid "Place of adoption"
@@ -9509,6 +9541,12 @@ msgstr "Testamendi kinnitamine"
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "Edenemine"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -9957,7 +9995,7 @@ msgstr "Uurimisülesanded on erilised sündmused, mis on lisatud sugupuus olevat
 
 #: resources/views/modules/todo/config.phtml
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Uurimisülesandeid hoiustatakse kasutades erilist GEDCOM-i silti \"_TODO\". Teised genealoogiarakendused ei pruugi seda silti ära tunda."
+msgstr "Uurimisülesandeid hoiustatakse kasutades erilist GEDCOM-i silti “_TODO”. Teised genealoogiarakendused ei pruugi seda silti ära tunda."
 
 #: app/CustomTags/Gedcom7.php app/Gedcom.php resources/views/admin/tags.phtml
 msgid "Residence"
@@ -10242,7 +10280,7 @@ msgstr "Sealing"
 #: app/Elements/LdsOrdinanceStatus.php
 #: app/Elements/LdsSpouseSealingDateStatus.php
 msgid "Sealing canceled (divorce)"
-msgstr "\"Sealing\" tühistatud (lahutus)"
+msgstr "“Sealing” tühistatud (lahutus)"
 
 #. I18N: A button label.
 #. I18N: Name of a module
@@ -10551,7 +10589,7 @@ msgstr "Seadke privaatsuse juurdepääsutase kõikide surnud isikute jaoks."
 #: resources/views/emails/verify-notify-html.phtml
 #: resources/views/emails/verify-notify-text.phtml
 msgid "Set the status to “approved”."
-msgstr "Määrake staatus \"kinnitatuks\"."
+msgstr "Määrake staatus “kinnitatuks”."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -10564,6 +10602,7 @@ msgstr "Webtrees seadistamise abimees"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10667,7 +10706,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "Kuva aktsepteeritavat kasutajalepingut \"Taotle uut kasutajat\" lehel"
+msgstr "Kuva aktsepteeritavat kasutajalepingut “Taotle uut kasutajat” lehel"
 
 #: resources/views/modules/media/tab.phtml
 msgid "Show all media"
@@ -10740,6 +10779,7 @@ msgstr "Näita enam kui 100 aastat tagasi sündinud isikuid."
 msgid "Show individuals born within the last 100 years."
 msgstr "Näita viimase 100 aasta sees sündinud isikuid."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Näita isikuid, kes on elus või paare, kus mõlemad partnerid on elus."
@@ -10929,23 +10969,21 @@ msgstr "Millistele keeltele seda plokki näidata"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Näita pisipilti joonistel ja perekonnagruppides."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Näita haldajatele"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "Näita liikmetele"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -10954,12 +10992,12 @@ msgstr "Näita külalistele"
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "Näita \"lehed\" paare või isikuid. Need on isikud, kes on elus, kuid kellel ei ole andmebaasis lapsi olemas."
+msgstr "Näita “lehed” paare või isikuid. Need on isikud, kes on elus, kuid kellel ei ole andmebaasis lapsi olemas."
 
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "Näita \"juured\" paare või isikuid. Need on isikud keda võib kutsuda ka patriarhideks. Need on isikud, kellel ei ole andmebaasis vanemaid kirjas."
+msgstr "Näita “juured” paare või isikuid. Need on isikud keda võib kutsuda ka patriarhideks. Need on isikud, kellel ei ole andmebaasis vanemaid kirjas."
 
 #. I18N: %s are placeholders for numbers
 #: resources/views/lists/datatables-attributes.phtml
@@ -11144,7 +11182,7 @@ msgstr "Mõned leheküljed saavad näidata arvu, mitu korda neid on külastatud.
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Mõned teemad saavad kuvada ikoone \"Faktid ja sündmused\" vahelehel."
+msgstr "Mõned teemad saavad kuvada ikoone “Faktid ja sündmused” vahelehel."
 
 #: resources/views/edit/change-family-members.phtml
 #: resources/xml/reports/family_group_report.xml
@@ -11153,7 +11191,6 @@ msgstr "Mõned teemad saavad kuvada ikoone \"Faktid ja sündmused\" vahelehel."
 msgid "Son"
 msgstr "Poeg"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -11438,7 +11475,7 @@ msgstr "Esitamine"
 #: app/Elements/LdsEndowmentDateStatus.php app/Elements/LdsOrdinanceStatus.php
 #: app/Elements/LdsSpouseSealingDateStatus.php
 msgid "Submitted but not yet cleared"
-msgstr "Esitatud, aga mitte \"puhastatud\""
+msgstr "Esitatud, aga mitte “puhastatud”"
 
 #: app/Gedcom.php app/Http/RequestHandlers/CheckTree.php
 #: resources/views/admin/trees.phtml
@@ -11904,7 +11941,7 @@ msgstr "See kaust saab olla määratud täielikult (nt: /home/user_name/webtrees
 #: app/Http/RequestHandlers/SitePreferencesAction.php
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr "Kausta \"%s\" ei eksisteeri."
+msgstr "Kausta “%s” ei eksisteeri."
 
 #: resources/views/admin/merge-records-step-2.phtml
 msgid "The following facts and events were found in both records."
@@ -12531,7 +12568,7 @@ msgstr "See peab olema vähemalt kuus tähemärki. See on suurtähetundlik."
 #. I18N: Help text for the “Sender name” site configuration setting
 #: resources/views/admin/site-mail.phtml
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "Seda nime kasutatakse \"Saatja\" väljal, kui saadetakse automaatseid e-maile sellest serverist."
+msgstr "Seda nime kasutatakse “Saatja” väljal, kui saadetakse automaatseid e-maile sellest serverist."
 
 #: app/Auth.php
 msgid "This note does not exist or you do not have permission to view it."
@@ -12585,7 +12622,7 @@ msgstr "See valik lihtsustab kasutajate võimalust pilte alla laadida."
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "See valik säilitab perekonnaviited privaatsetes kirjetes. See tähendab, et te näete tühjasid \"privaatne\" kaste sugupuu joonisel ja muudel joonistel, kus on privaatseid isikuid."
+msgstr "See valik säilitab perekonnaviited privaatsetes kirjetes. See tähendab, et te näete tühjasid “privaatne” kaste sugupuu joonisel ja muudel joonistel, kus on privaatseid isikuid."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml
@@ -12654,7 +12691,7 @@ msgstr "See roll omab kõiki haldaja õiguseid kõikides sugupuudes, lisaks veel
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "See roll omab kõiki liikme õiguseid, lisaks veel õigused lisada/muuta/kustutada andmeid. Moderaatorid peavad tehtud muudatused üle vaatama, juhul kui teil ei ole \"automaatselt aktsepteeri muudatused\" valik lubatud."
+msgstr "See roll omab kõiki liikme õiguseid, lisaks veel õigused lisada/muuta/kustutada andmeid. Moderaatorid peavad tehtud muudatused üle vaatama, juhul kui teil ei ole “automaatselt aktsepteeri muudatused” valik lubatud."
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -12845,7 +12882,7 @@ msgstr ""
 
 #: resources/views/modules/todo/config.phtml
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Uute uurimisülesannete loomiseks peate esmalt lisama \"uurimisülesanne\" faktide ja sündmuste nimekirja sugupuu seadistuses."
+msgstr "Uute uurimisülesannete loomiseks peate esmalt lisama “uurimisülesanne” faktide ja sündmuste nimekirja sugupuu seadistuses."
 
 #: app/Services/LeafletJsService.php
 msgid "To display a map, you need to enable a map-provider in the control panel."
@@ -13245,7 +13282,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "Tundmatu"
@@ -13260,7 +13297,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Teadmata"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13345,7 +13382,7 @@ msgstr "Kasuta SMTP sõnumite saatmiseks"
 
 #: app/Module/FixSearchAndReplace.php
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Kasutage \"?\", et sobitada ühte tähte, kasutage \"*\", et sobitada null või rohkem tähti."
+msgstr "Kasutage “?”, et sobitada ühte tähte, kasutage “*”, et sobitada null või rohkem tähti."
 
 #: app/Module/ModuleMapGeoLocationTrait.php
 msgid "Use an external service to find locations."
@@ -13574,8 +13611,7 @@ msgstr "Nähtav võrgus"
 msgid "Visible to other users when online"
 msgstr "Veebilehel viibimine teistele kasutajatele nähtav"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -13686,11 +13722,11 @@ msgstr "Sahara Occidental"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Kui kirjet on muudetud, siis kasutaja ja aeg pannakse kirja. Vahest on vajadus jätta alles olemasolev \"viimane muudatus\" info, näiteks kui tehakse väikseid parandusi kellegi teise andmetele. See valik määrab, kas see võimalus on vaikimisi valitud."
+msgstr "Kui kirjet on muudetud, siis kasutaja ja aeg pannakse kirja. Vahest on vajadus jätta alles olemasolev “viimane muudatus” info, näiteks kui tehakse väikseid parandusi kellegi teise andmetele. See valik määrab, kas see võimalus on vaikimisi valitud."
 
 #: resources/views/admin/users-edit.phtml
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Kui kasutaja registreerib omale konto, saadetakse tema e-posti aadressile kiri koos kinnituslingiga. Kui nad seda vajutavad, saame me teada, et nende e-posti aadress on korrektne ja \"e-mail kinnitatud\" valik määratakse automaatselt valituks."
+msgstr "Kui kasutaja registreerib omale konto, saadetakse tema e-posti aadressile kiri koos kinnituslingiga. Kui nad seda vajutavad, saame me teada, et nende e-posti aadress on korrektne ja “e-mail kinnitatud” valik määratakse automaatselt valituks."
 
 #: resources/views/edit/reorder-families.phtml
 msgid "When an individual has more than one spouse, you should sort the families in date order."
@@ -13703,7 +13739,7 @@ msgstr "Kui te lisate uue perekonnaliikme, on võimalik lisada vaikimisi perekon
 
 #: resources/views/help/pending-changes.phtml
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "Kui te lisate, muudate või kustutate informatsiooni, siis muudatusi ei salvestata kohe. Neid hoiustatakse kohas nimega \"ootel\". Enne kui need muudatused kinnitatakse, peab moderaator need üle vaatama."
+msgstr "Kui te lisate, muudate või kustutate informatsiooni, siis muudatusi ei salvestata kohe. Neid hoiustatakse kohas nimega “ootel”. Enne kui need muudatused kinnitatakse, peab moderaator need üle vaatama."
 
 #: resources/views/help/relationship-privacy.phtml
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
@@ -14095,7 +14131,7 @@ msgid "accept all"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "kinnitatud"
 
@@ -14243,6 +14279,7 @@ msgstr "kodanik"
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "sulge"
@@ -14432,7 +14469,6 @@ msgstr "mine uue isiku juurde"
 msgid "half circle"
 msgstr "poolring"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "tema ise"
@@ -14443,7 +14479,6 @@ msgstr "tema ise"
 msgid "hide"
 msgstr "peida"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "tema ise"
@@ -14661,7 +14696,7 @@ msgid "patrilineal"
 msgstr "patrilineaarne"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "otsuse ootel"
 
@@ -14737,7 +14772,7 @@ msgid "reject"
 msgstr "lükka tagasi"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "tagasilükatud"
 
@@ -14989,7 +15024,6 @@ msgstr "andmebaasi ühenduse seaded failis '/data/config.ini.php’ on siiani ko
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "kaust '/data' ja fail ‘/data/config.ini.php’ omavad juurdepääsuõigusi, mis lubavad veebiserveril neid lugeda"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "tema ise"
@@ -15089,10 +15123,6 @@ msgstr "webtrees vajab andmebaasi genealoogia andmete hoiustamiseks."
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "webtrees on vaja saata meile, näiteks parooli taastamiseks ja veebilehe teavitusteks."
 
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees saadab emaili ilma kohaliku salvestamiseta"
-
 #: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "naine"
@@ -15162,7 +15192,7 @@ msgstr "“%s” on kustutatud."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "\"Esiletõstetud pilt\" (_PRIM) sildid on kasutuses osades genealoogia rakendustes, et määrata isiku jaoks eelistatud pilt. Alternatiivne võimalus on järjestada pildid ümber nii, et eelistatud pilt on nimekirjas esimene."
+msgstr "“Esiletõstetud pilt” (_PRIM) sildid on kasutuses osades genealoogia rakendustes, et määrata isiku jaoks eelistatud pilt. Alternatiivne võimalus on järjestada pildid ümber nii, et eelistatud pilt on nimekirjas esimene."
 
 #: app/Individual.php app/Note.php
 msgid "…"

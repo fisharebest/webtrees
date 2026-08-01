@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -360,7 +360,6 @@ msgstr "(%s қайтыс болғаннан кейін)"
 msgid "(age %s)"
 msgstr ""
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -368,7 +367,6 @@ msgstr ""
 msgid "(aged %s)"
 msgstr "(қартайған %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -377,7 +375,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr ""
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -1083,6 +1080,10 @@ msgstr "Жаңалықтар мақаласын қосу"
 msgid "Add a note"
 msgstr "Жазбаны қосыңыз"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+msgid "Add a parent"
+msgstr ""
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr ""
@@ -1101,8 +1102,14 @@ msgstr ""
 msgid "Add a source citation"
 msgstr "Бастапқы дәйексөзді қосыңыз"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
+msgstr ""
+
+#: resources/views/modules/relatives/tab.phtml
+msgid "Add a spouse using an existing individual"
 msgstr ""
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
@@ -1475,6 +1482,11 @@ msgstr "Бүркеншік"
 #: resources/views/lists/individuals-table.phtml
 msgid "Alive"
 msgstr "Тірі болып табылады"
+
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+msgid "Alive or dead"
+msgstr ""
 
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
@@ -2889,7 +2901,6 @@ msgstr "Бала"
 msgid "Child of "
 msgstr "Бала "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3972,7 +3983,6 @@ msgstr "Күндер ағылшын қысқартулары мен кілт с�
 msgid "Daughter"
 msgstr "қыз"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4578,9 +4588,7 @@ msgstr "Бұл адамды өзгертіңіз және өздерінің м�
 msgid "Edit with all GEDCOM tags"
 msgstr ""
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4629,6 +4637,10 @@ msgstr ""
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "Электрондық пошта"
+
+#: app/Enums/ContactMethod.php
+msgid "Email only"
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5244,7 +5256,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "Ақпан"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Әйел"
 
@@ -5320,6 +5332,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "%s таңбаланған файлдар дұрыс жұмыс істеуі үшін қажет және оларды жою мүмкін емес."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "Фильтр"
 
@@ -5676,6 +5690,10 @@ msgstr "Генеалогиялық байланыс"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "Генеалогия деректері"
+
+#: resources/views/layouts/default.phtml
+msgid "Genealogy menu"
+msgstr ""
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6089,7 +6107,7 @@ msgstr "Хермосилло, Мексика"
 msgid "Hide GEDCOM tags"
 msgstr ""
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6391,6 +6409,11 @@ msgstr ""
 msgid "Import preferences"
 msgstr "Импорт параметрлері"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+msgid "Importing family tree"
+msgstr ""
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -6416,6 +6439,14 @@ msgstr "Кейбір елдерде құпиялылық туралы заңда
 
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
+msgstr ""
+
+#: app/Enums/ContactMethod.php
+msgid "Inbox and email"
+msgstr ""
+
+#: app/Enums/ContactMethod.php
+msgid "Inbox only"
 msgstr ""
 
 #: resources/views/admin/trees-unconnected.phtml
@@ -6602,14 +6633,6 @@ msgstr "%s - ның интерактивті ағашы"
 #: app/CustomTags/BrothersKeeper.php
 msgid "Interment"
 msgstr ""
-
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "Ішкі хабар алмасу"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "Электрондық пошта арқылы ішкі хабар алмасу"
 
 #: app/Module/PrivacyPolicy.php
 msgid "International transfers"
@@ -7296,10 +7319,6 @@ msgstr "Журнал"
 msgid "Maidenhead location code"
 msgstr ""
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "Mailto сілтемесі"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7315,7 +7334,7 @@ msgstr "Малайзия"
 msgid "Maldives"
 msgstr "Мальдивтер"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Еркек"
 
@@ -7361,9 +7380,7 @@ msgstr "Жанұялық ағаштарды басқарыңыз"
 msgid "Manage media"
 msgstr "БАҚ-ты басқару"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "Менеджер"
@@ -7782,9 +7799,7 @@ msgstr "Орташа жүйелер (5000 адам): 32-64 Мб, 20-40 секу�
 msgid "Melbourne, Australia"
 msgstr "Мельбурн, Австралия"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "Мүше"
@@ -7893,9 +7908,7 @@ msgstr ""
 msgid "Missing data"
 msgstr "Деректер жоқ"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "Модератор"
 
@@ -8373,7 +8386,7 @@ msgstr "Күнтізбені түрлендіру жоқ"
 msgid "No children"
 msgstr "Балалар жоқ"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "Контакт жоқ"
 
@@ -8794,7 +8807,7 @@ msgstr "Осы күні"
 msgid "Only add new records"
 msgstr ""
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "Тек менеджерлер өңдей алады"
@@ -8854,11 +8867,16 @@ msgstr "Орландо, Флорида, Америка Құрама Штатта
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
 msgid "Other"
 msgstr "Басқа"
+
+#: app/Enums/Sex.php
+msgctxt "SEX"
+msgid "Other"
+msgstr ""
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "Other facts to show in charts"
@@ -8942,6 +8960,10 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "Бет өлшемі"
+
+#: resources/views/modules/media-list/pagination.phtml
+msgid "Pagination"
+msgstr ""
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9429,7 +9451,7 @@ msgstr "Теңшелімдер"
 #: resources/views/admin/modules.phtml
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "Параметрлер \"%s\" модулінде бар, бірақ бұл модуль енді жоқ."
+msgstr "Параметрлер “%s” модулінде бар, бірақ бұл модуль енді жоқ."
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml
@@ -9503,6 +9525,11 @@ msgstr "Өкілдік"
 
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+msgid "Progress"
 msgstr ""
 
 #: app/Gedcom.php
@@ -10559,6 +10586,7 @@ msgstr "Webtrees үшін орнату шебері"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10735,6 +10763,7 @@ msgstr "100 жылдан астам бұрын туылған адамдарды
 msgid "Show individuals born within the last 100 years."
 msgstr "Соңғы 100 жылда туылған адамдарды көрсетіңіз."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Екі тірі серіктес болған жұптарды немесе жұптарды көрсетіңіз."
@@ -10924,23 +10953,21 @@ msgstr "Бұл блокты қандай тілдерге көрсету"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Диаграммалардағы және отбасылық топтардағы нобай суреттерін көрсету."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Менеджерлерге көрсету"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "Мүшелерге көрсету"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11139,7 +11166,7 @@ msgstr "Кейбір беттерде олардың қанша рет болғ�
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Кейбір тақырыптар \"Деректер мен оқиғалар\" қойындысында белгішелерді көрсетуі мүмкін."
+msgstr "Кейбір тақырыптар “Деректер мен оқиғалар” қойындысында белгішелерді көрсетуі мүмкін."
 
 #: resources/views/edit/change-family-members.phtml
 #: resources/xml/reports/family_group_report.xml
@@ -11148,7 +11175,6 @@ msgstr "Кейбір тақырыптар \"Деректер мен оқиғал
 msgid "Son"
 msgstr "ұл"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -11706,7 +11732,7 @@ msgstr "<b>тегі</b> өрісінде сұрыптау және топтау 
 #: app/Http/RequestHandlers/SynchronizeTrees.php
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "GEDCOM \"%s\" файлы импортталды."
+msgstr "GEDCOM “%s” файлы импортталды."
 
 #: resources/views/admin/tags.phtml
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
@@ -11761,14 +11787,14 @@ msgstr "Әкімші хабардар болды. Сізге кіруге рұқ
 #: app/Http/RequestHandlers/PendingChangesAcceptTree.php
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "\"%s\" үшін өзгертулер қабылданды."
+msgstr "“%s” үшін өзгертулер қабылданды."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesRejectRecord.php
 #: app/Http/RequestHandlers/PendingChangesRejectTree.php
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "\"%s\" ішіндегі өзгерістер қабылданбады."
+msgstr "“%s” ішіндегі өзгерістер қабылданбады."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php
@@ -11800,12 +11826,12 @@ msgstr "Отбасылық ағаш %s-ге экспортталды."
 #: app/Http/RequestHandlers/TreePreferencesAction.php
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "\"%s\" тұқымдары бұрыннан бар."
+msgstr "“%s” тұқымдары бұрыннан бар."
 
 #: app/Http/RequestHandlers/CreateTreeAction.php
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "\"%s\" отбасылық ағаш құрылды."
+msgstr "“%s” отбасылық ағаш құрылды."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/DeleteTreeAction.php
@@ -11818,7 +11844,7 @@ msgstr "''%s\" отбасылық ағаш жойылды."
 #: app/Http/RequestHandlers/SelectDefaultTree.php
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "\"%s\" отбасылық торабы келушілерге осы веб-сайтқа алғаш кіргенде көрсетіледі."
+msgstr "“%s” отбасылық торабы келушілерге осы веб-сайтқа алғаш кіргенде көрсетіледі."
 
 #: app/Http/RequestHandlers/MergeTreesAction.php
 msgid "The family trees have been merged successfully."
@@ -11833,7 +11859,7 @@ msgstr ""
 #: app/Http/RequestHandlers/DeleteRecord.php
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr "\"%s\" отбасы жойылды, себебі ол тек бір мүшеге ие."
+msgstr "“%s” отбасы жойылды, себебі ол тек бір мүшеге ие."
 
 #: app/Http/RequestHandlers/UploadMediaAction.php
 #, php-format
@@ -11871,7 +11897,7 @@ msgstr "Бұл файл ішінара жүктелді. Әрекетті қай
 #: resources/views/modules/media-list/page.phtml
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr "\"%s\" файлы жоқ."
+msgstr "“%s” файлы жоқ."
 
 #: resources/views/edit/reorder-families.phtml
 msgid "The first family in the list will be used in charts, lists, reports, etc."
@@ -11937,12 +11963,12 @@ msgstr "Бұл веб-сайтта генеалогия туралы дерек�
 #: app/Http/RequestHandlers/DeleteRecord.php
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr "\"%1$s\" дегенден \"%2$s\" сілтемесі жойылды."
+msgstr "“%1$s” дегенден “%2$s” сілтемесі жойылды."
 
 #: app/Http/RequestHandlers/MergeFactsAction.php
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "\"%1$s\" дегеннен \"%2$s\" сілтемесі жаңартылды."
+msgstr "“%1$s” дегеннен “%2$s” сілтемесі жаңартылды."
 
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php
@@ -12000,13 +12026,13 @@ msgstr "Хабар сәтті %s-ке(ге) жіберілді."
 #: app/Module/ChartsBlockModule.php
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "\"%s\" модулі өшірілді."
+msgstr "“%s” модулі өшірілді."
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php
 #: app/Http/RequestHandlers/ModulesAllAction.php
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "\"%s\" модулі іске қосылды."
+msgstr "“%s” модулі іске қосылды."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12071,12 +12097,12 @@ msgstr "Жаңа отбасыларға арналған артықшылықт�
 #: app/Http/RequestHandlers/TreePrivacyAction.php
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "\"%s\" отбасылық ағашына арналған артықшылықтар жаңартылды."
+msgstr "“%s” отбасылық ағашына арналған артықшылықтар жаңартылды."
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "\"%s\" модулінің артықшылықтары жойылды."
+msgstr "“%s” модулінің артықшылықтары жойылды."
 
 #: app/Module/CustomCssJsModule.php app/Module/GeonamesAutocomplete.php
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
@@ -12086,7 +12112,7 @@ msgstr "\"%s\" модулінің артықшылықтары жойылды."
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "\"%s\" модулінің параметрлері жаңартылды."
+msgstr "“%s” модулінің параметрлері жаңартылды."
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -12098,7 +12124,7 @@ msgstr ""
 #: app/Http/RequestHandlers/MergeFactsAction.php
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr "\"%1$s\" және \"%2$s\" жазбалары біріктірілді."
+msgstr "“%1$s” және “%2$s” жазбалары біріктірілді."
 
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php
@@ -12726,7 +12752,7 @@ msgstr ""
 #: resources/views/admin/trees-import.phtml
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Бұл барлық генеалогия деректерін \"%s\" ішінен жояды және оны GEDCOM файлындағы деректермен ауыстырады."
+msgstr "Бұл барлық генеалогия деректерін “%s” ішінен жояды және оны GEDCOM файлындағы деректермен ауыстырады."
 
 #. I18N: abbreviation for Thursday
 #: resources/views/edit/initialize-calendar-popup.phtml
@@ -13240,7 +13266,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "Белгісіз"
@@ -13255,7 +13281,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Белгісіз"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13340,7 +13366,7 @@ msgstr "Хабарларды жіберу үшін SMTP пайдаланыңыз
 
 #: app/Module/FixSearchAndReplace.php
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Бір таңбаны сәйкестендіру үшін \"?\" Белгісін пайдаланыңыз, \"*\" нөл немесе одан көп таңбаларды сәйкестендіру үшін пайдаланыңыз."
+msgstr "Бір таңбаны сәйкестендіру үшін “?” Белгісін пайдаланыңыз, “*” нөл немесе одан көп таңбаларды сәйкестендіру үшін пайдаланыңыз."
 
 #: app/Module/ModuleMapGeoLocationTrait.php
 msgid "Use an external service to find locations."
@@ -13462,7 +13488,7 @@ msgstr "Пайдаланушының аты немесе электрондық 
 #: resources/views/admin/users-edit.phtml
 #: resources/views/edit-account-page.phtml resources/views/register-page.phtml
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "Пайдаланушы аттары кіші әріптерге бағынбайды және \"хлоя\", \"хлоя\" және \"Хлоя\" деген сөздер бірдей деп есептеледі."
+msgstr "Пайдаланушы аттары кіші әріптерге бағынбайды және “хлоя”, “хлоя” және “Хлоя” деген сөздер бірдей деп есептеледі."
 
 #: resources/views/admin/control-panel.phtml
 #: resources/views/modules/gedcom_stats/statistics.phtml
@@ -13569,8 +13595,7 @@ msgstr "Онлайнда көруге болады"
 msgid "Visible to other users when online"
 msgstr "Онлайн режимінде басқа пайдаланушыларға көрінеді"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -13967,7 +13992,7 @@ msgstr "Жаңартпас бұрын күткен барлық өзгертул
 #: app/Http/RequestHandlers/RegisterAction.php
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "\"%1$s\" ішінен \"%2$s\" ішінен жою керек және қайталап көріңіз."
+msgstr "“%1$s” ішінен “%2$s” ішінен жою керек және қайталап көріңіз."
 
 #: resources/views/admin/users-edit.phtml
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -14090,7 +14115,7 @@ msgid "accept all"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "қабылданды"
 
@@ -14238,6 +14263,7 @@ msgstr ""
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "жабу"
@@ -14427,7 +14453,6 @@ msgstr "жаңа адамға барыңыз"
 msgid "half circle"
 msgstr "жарты шеңбер"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "өзі"
@@ -14438,7 +14463,6 @@ msgstr "өзі"
 msgid "hide"
 msgstr ""
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "өзі"
@@ -14656,7 +14680,7 @@ msgid "patrilineal"
 msgstr "патрилиналдық"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "күтуде"
 
@@ -14732,7 +14756,7 @@ msgid "reject"
 msgstr "қабыл алмау"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "қабылдамады"
 
@@ -14984,7 +15008,6 @@ msgstr "«/data/config.ini.php» файлындағы дерекқордың қ�
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "«/ data» қалтасына және «/data/config.ini.php» файлында веб-сервердің оқылуына рұқсат беретін рұқсаттар бар"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "өздері"
@@ -15084,10 +15107,6 @@ msgstr ""
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr ""
 
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees сақтаусыз электрондық хаттарды жібереді"
-
 #: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "әйелі"
@@ -15152,7 +15171,7 @@ msgstr ""
 #: app/Services/MapDataService.php
 #, php-format
 msgid "“%s” has been deleted."
-msgstr "\"%s\" жойылды."
+msgstr "“%s” жойылды."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php

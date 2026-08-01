@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -347,7 +347,6 @@ msgstr "(%s sau khi mất)"
 msgid "(age %s)"
 msgstr "(%s tuổi )"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -355,7 +354,6 @@ msgstr "(%s tuổi )"
 msgid "(aged %s)"
 msgstr "(%s tuổi)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -364,7 +362,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(%s tuổi)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -711,7 +708,7 @@ msgstr "Đang có một phiên bản webtrees mới hơn."
 #: app/Http/RequestHandlers/PasswordRequestAction.php
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr "Một liên kết để đặt lại mật khẩu đã được gửi đến \"%s\"."
+msgstr "Một liên kết để đặt lại mật khẩu đã được gửi đến “%s”."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php
@@ -1073,6 +1070,11 @@ msgstr "Thêm một tin tức mới"
 msgid "Add a note"
 msgstr "Thêm Lời Ghi mới"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "Thêm cha/mẹ"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "Thêm một anh, em"
@@ -1091,9 +1093,16 @@ msgstr "Thêm một con trai"
 msgid "Add a source citation"
 msgstr "Thêm Nguồn Sự Dẫn mới"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "Thêm bạn đời"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "Thêm vợ/chồng bằng cách sử dụng cá nhân hiện có"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1465,6 +1474,12 @@ msgstr "Còn gọi là"
 #: resources/views/lists/individuals-table.phtml
 msgid "Alive"
 msgstr "Còn sống"
+
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "Còn sống hoặc đã mất"
 
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
@@ -2770,11 +2785,11 @@ msgstr "Thay đổi thành viên gia đình"
 
 #: app/Http/RequestHandlers/TreePageEdit.php
 msgid "Change the “Home page” blocks"
-msgstr "Đổi các khối \"Trang nhà\""
+msgstr "Đổi các khối “Trang nhà”"
 
 #: app/Http/RequestHandlers/UserPageEdit.php
 msgid "Change the “My page” blocks"
-msgstr "Đổi các khối \"Trang của tôi\""
+msgstr "Đổi các khối “Trang của tôi”"
 
 #. I18N: [a record was] Changed by <user>
 #: resources/views/modules/recent_changes/changes-list.phtml
@@ -2880,7 +2895,6 @@ msgstr "Con"
 msgid "Child of "
 msgstr "Con trai của "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3969,7 +3983,6 @@ msgstr "Ngày tháng được lưu trữ dùng từ viết tắt tiếng Anh hay
 msgid "Daughter"
 msgstr "Con gái"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4576,9 +4589,7 @@ msgstr "Sửa người này và thay thế chi tiết của họ bằng chi ti�
 msgid "Edit with all GEDCOM tags"
 msgstr ""
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4627,6 +4638,11 @@ msgstr "Email"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "Địa chỉ email"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "Chỉ email"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5244,7 +5260,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "Tháng Hai"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Nữ"
 
@@ -5320,6 +5336,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "File đã đánh dấu %s cần thiết để chương trình chạy đúng và không thể xóa."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "Lọc"
 
@@ -5676,6 +5694,11 @@ msgstr "Liên hệ gia phả"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "Dữ liệu gia phả"
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "Menu gia phả"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6091,7 +6114,7 @@ msgstr "Hermosillo, Mexico"
 msgid "Hide GEDCOM tags"
 msgstr ""
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6397,10 +6420,16 @@ msgstr "Nhập dữ liệu địa lý"
 msgid "Import preferences"
 msgstr "Nhập tùy chọn ưa thích"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "Đang nhập gia phả"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "Trong một cây gia đình, mỗi bản ghi có một số tham chiếu riêng (gọi là \"XREF\") như \"F123\", hay \"R13\"."
+msgstr "Trong một cây gia đình, mỗi bản ghi có một số tham chiếu riêng (gọi là “XREF”) như “F123”, hay “R13”."
 
 #: resources/views/help/romanized.phtml
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
@@ -6423,6 +6452,16 @@ msgstr "Ở một số nước, luật riêng tư áp dụng không chỉ cho nh
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "Hộp thư đến và email"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "Chỉ hộp thư đến"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6609,14 +6648,6 @@ msgstr "Cây tương tác của %s"
 msgid "Interment"
 msgstr ""
 
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "Thư tín nội bộ"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "Hệ thống thông báo nội bộ với email"
-
 #: app/Module/PrivacyPolicy.php
 #, fuzzy
 msgid "International transfers"
@@ -6786,7 +6817,7 @@ msgstr "Tiếp tục mở"
 #: resources/views/admin/trees-preferences.phtml
 #: resources/views/edit/edit-fact.phtml resources/views/edit/edit-record.phtml
 msgid "Keep the existing “last change” information"
-msgstr "Giữ thông tin \"thay đổi lần cuối\" hiện có"
+msgstr "Giữ thông tin “thay đổi lần cuối” hiện có"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7306,10 +7337,6 @@ msgstr "Tạp chí"
 msgid "Maidenhead location code"
 msgstr ""
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "Liên kết gửi tới"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7325,7 +7352,7 @@ msgstr "Malaysia"
 msgid "Maldives"
 msgstr "Maldiv Adaları"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Nam"
 
@@ -7371,9 +7398,7 @@ msgstr "Quản lý các cây gia đình"
 msgid "Manage media"
 msgstr "Quản lý các tập tin đa phương tiện"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "Quản lý"
@@ -7794,9 +7819,7 @@ msgstr "Hệ thống trung bình (có chừng 5000 người): 32-64MB, 20-40 gi�
 msgid "Melbourne, Australia"
 msgstr "Melbourne, Australia"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "Thành viên"
@@ -7905,9 +7928,7 @@ msgstr ""
 msgid "Missing data"
 msgstr "Dữ liệu còn thiếu"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "Hiệu đính viên"
 
@@ -8385,7 +8406,7 @@ msgstr "Không chuyển đổi lịch"
 msgid "No children"
 msgstr "Không con"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "Không địa chỉ liên hệ"
 
@@ -8805,7 +8826,7 @@ msgstr "Vào ngày này"
 msgid "Only add new records"
 msgstr "Chỉ thêm những bản ghi mới"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "Chỉ người quản lý có thể sửa"
@@ -8865,9 +8886,15 @@ msgstr "Orlando, Florida, Hoa Kỳ"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
+msgid "Other"
+msgstr "Khác"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
 msgid "Other"
 msgstr "Khác"
 
@@ -8954,6 +8981,11 @@ msgstr "Thiết lập trang"
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "Khổ trang"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "Phân trang"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9518,6 +9550,12 @@ msgstr "Chứng thực di chúc"
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "Tiến trình"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -10590,6 +10628,7 @@ msgstr "Wizard cài đặt cho webtrees"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10766,6 +10805,7 @@ msgstr "Hiện những người sinh hơn 100 năm."
 msgid "Show individuals born within the last 100 years."
 msgstr "Hiện những người sinh trong 100 năm qua."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Hiện người sống hay cặp vợ chồng khi cả hai còn sống."
@@ -10955,23 +10995,21 @@ msgstr "Hiện khối này cho ngôn ngữ nào"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Hiện hình chiếu nổi trong hộp người."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Hiển thị cho Quản trị xem"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "Hiển thị mọi thành viên xem"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11173,7 +11211,7 @@ msgstr "Một số trang có thể hiển thị số lần chúng được truy 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Vài kiểu trình bay có thể hiện biểu tượng ở tab \"Sự kiện và số liệu\"."
+msgstr "Vài kiểu trình bay có thể hiện biểu tượng ở tab “Sự kiện và số liệu”."
 
 #: resources/views/edit/change-family-members.phtml
 #: resources/xml/reports/family_group_report.xml
@@ -11182,7 +11220,6 @@ msgstr "Vài kiểu trình bay có thể hiện biểu tượng ở tab \"Sự k
 msgid "Son"
 msgstr "Con trai"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -13286,7 +13323,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "Không biết"
@@ -13301,7 +13338,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Không biết"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13618,8 +13655,7 @@ msgstr "Có thể thấy trực tuyến"
 msgid "Visible to other users when online"
 msgstr "Khi trực tuyến người khác có thể thấy được"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -13731,7 +13767,7 @@ msgstr "Western Sahara"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Khi một bản ghi được sửa đổi, người dùng và thời gian được ghi lại. Đôi khi việc giữ thông tin \"sửa chữa lần cuối\" được chuộng, thí dụ khi có thay đổi nhỏ ở dữ liệu của ai đó. Tùy chọn này kiểm soát tính năng này và được mặc định chọn."
+msgstr "Khi một bản ghi được sửa đổi, người dùng và thời gian được ghi lại. Đôi khi việc giữ thông tin “sửa chữa lần cuối” được chuộng, thí dụ khi có thay đổi nhỏ ở dữ liệu của ai đó. Tùy chọn này kiểm soát tính năng này và được mặc định chọn."
 
 #: resources/views/admin/users-edit.phtml
 #, fuzzy
@@ -14145,7 +14181,7 @@ msgid "accept all"
 msgstr "chấp nhận tất cả"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "chấp nhận"
 
@@ -14294,6 +14330,7 @@ msgstr ""
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "đóng"
@@ -14485,7 +14522,6 @@ msgstr "đến người mới"
 msgid "half circle"
 msgstr "nửa chu kỳ"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "Bản Thân bà ấy"
@@ -14496,7 +14532,6 @@ msgstr "Bản Thân bà ấy"
 msgid "hide"
 msgstr "ẩn"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "Bản thân ông ấy"
@@ -14713,7 +14748,7 @@ msgid "patrilineal"
 msgstr "phụ tuyến"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "chờ"
 
@@ -14789,7 +14824,7 @@ msgid "reject"
 msgstr "từ chối"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "từ chối"
 
@@ -15043,7 +15078,6 @@ msgstr "Thiết đặt kết nối CSDL trong file <b?/data/config.ini.php</b> c
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "thư mục <b>/data/</b> và file “/data/config.ini.php” có truy cập được và cho máy phục vụ đọc nó không"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "Bản thân"
@@ -15145,10 +15179,6 @@ msgstr "webtrees cần có một CSDL để chứa dữ kiện gia phả."
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "webtrees cần gửi email, như để nhắc mật khẩu hay thông báo của website."
 
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees gửi email không lưu trữ"
-
 #: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "Vợ"
@@ -15217,7 +15247,7 @@ msgstr "%s đã xóa."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "Thẻ \"Ảnh được tô sáng\" (_PRIM) được dùng trong một số ứng dụng gia phả nhằm chỉ hình ưa thích của một người. Một lựa chọn thay thế là xếp lại hình để hình ưa thích được xếp ở đầu."
+msgstr "Thẻ “Ảnh được tô sáng” (_PRIM) được dùng trong một số ứng dụng gia phả nhằm chỉ hình ưa thích của một người. Một lựa chọn thay thế là xếp lại hình để hình ưa thích được xếp ở đầu."
 
 #: app/Individual.php app/Note.php
 msgid "…"

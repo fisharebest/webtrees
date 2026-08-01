@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -365,7 +365,6 @@ msgid "(age %s)"
 msgstr "年龄 %s"
 
 # I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -373,7 +372,6 @@ msgstr "年龄 %s"
 msgid "(aged %s)"
 msgstr "(时年 %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -382,7 +380,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(时年 %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -1155,6 +1152,11 @@ msgstr "添加一个新闻文章"
 msgid "Add a note"
 msgstr "添加记录"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "添加父/母"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "添加兄弟或姐妹"
@@ -1173,9 +1175,16 @@ msgstr "添加儿子"
 msgid "Add a source citation"
 msgstr "添加信息来源中的源文"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "添加新用戶"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "使用现有个人添加配偶"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1571,6 +1580,12 @@ msgstr "别名"
 #: resources/views/lists/individuals-table.phtml
 msgid "Alive"
 msgstr "在世"
+
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "在世或已故"
 
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
@@ -3118,7 +3133,6 @@ msgid "Child of "
 msgstr "孩子 "
 
 # I18N: e.g. “Child of [father name & mother name]”
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -4277,7 +4291,6 @@ msgid "Daughter"
 msgstr "女儿"
 
 # I18N: e.g. “Daughter of [father name & mother name]”
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4921,9 +4934,7 @@ msgid "Edit with all GEDCOM tags"
 msgstr "使用所有GEDCOM标签进行修改"
 
 # I18N: Listbox entry; name of a role
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4979,6 +4990,11 @@ msgstr "电子邮件"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "电子邮件地址"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "仅电子邮件"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5643,7 +5659,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "二月"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "女性"
 
@@ -5721,6 +5737,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "标有 %s 文件正常操作需要和不能被删除。"
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "过滤器"
 
@@ -6103,6 +6121,11 @@ msgstr "家谱联系信息"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "家谱数据"
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "家谱菜单"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6558,7 +6581,7 @@ msgstr "埃莫西约,墨西哥"
 msgid "Hide GEDCOM tags"
 msgstr "隐藏GEDCOM标签"
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6774,7 +6797,7 @@ msgstr "假如不知道姓氏，用斜线空出: <%s>//二<%s>"
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "如果此人除了死亡、埋葬或火化之外，还有任何比这一年数更近的事件，则被视为 \"活着\"。为此，子女的出生日期被视为此类事件。"
+msgstr "如果此人除了死亡、埋葬或火化之外，还有任何比这一年数更近的事件，则被视为 “活着”。为此，子女的出生日期被视为此类事件。"
 
 # I18N: Help text for the “Media folder” configuration setting
 #. I18N: Help text for the “Media folder” configuration setting
@@ -6888,6 +6911,12 @@ msgstr "导入地理数据"
 msgid "Import preferences"
 msgstr "导入选项"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "正在导入家谱"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -6916,6 +6945,16 @@ msgstr "在一些国家,隐私法不仅适用于在世的人,而且适用于那�
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "收件箱和电子邮件"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "仅收件箱"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -7111,14 +7150,6 @@ msgstr "%s 的交互树"
 #: app/CustomTags/BrothersKeeper.php
 msgid "Interment"
 msgstr "安葬"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "内部消息"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "内部消息和电子邮件"
 
 #: app/Module/PrivacyPolicy.php
 #, fuzzy
@@ -7876,10 +7907,6 @@ msgstr "杂志"
 msgid "Maidenhead location code"
 msgstr "梅登黑德位置代码"
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "Mailto链接"
-
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7898,7 +7925,7 @@ msgstr "马来西亚"
 msgid "Maldives"
 msgstr "马尔代夫"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "男性"
 
@@ -7947,9 +7974,7 @@ msgid "Manage media"
 msgstr "管理多媒体"
 
 # I18N: Listbox entry; name of a role
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "管理员"
@@ -8411,9 +8436,7 @@ msgid "Melbourne, Australia"
 msgstr "墨尔本,澳大利亚"
 
 # I18N: Listbox entry; name of a role
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "成员"
@@ -8538,9 +8561,7 @@ msgid "Missing data"
 msgstr "缺失数据"
 
 # I18N: Listbox entry; name of a role
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "主编人"
 
@@ -9069,7 +9090,7 @@ msgstr "没有日历转换"
 msgid "No children"
 msgstr "沒有孩子"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "无联系方式"
 
@@ -9518,7 +9539,7 @@ msgstr "在这一天"
 msgid "Only add new records"
 msgstr "仅增加一条新记录"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "只有管理员可以修改"
@@ -9583,9 +9604,15 @@ msgstr "奥兰多,佛罗里达"
 # I18N: Type of media object
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
+msgid "Other"
+msgstr "其他"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
 msgid "Other"
 msgstr "其他"
 
@@ -9674,6 +9701,11 @@ msgstr "页面设置"
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "页面大小"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "分页"
 
 # I18N: Type of media object
 #. I18N: Type of media object
@@ -10287,6 +10319,12 @@ msgstr "遗嘱"
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "进度"
 
 # I18N: gedcom tag PROP
 #: app/Gedcom.php
@@ -11431,7 +11469,7 @@ msgstr "为所有死去的人设置隐私访问级别。"
 #: resources/views/emails/verify-notify-html.phtml
 #: resources/views/emails/verify-notify-text.phtml
 msgid "Set the status to “approved”."
-msgstr "将状态设置为\"批准\"。"
+msgstr "将状态设置为“批准”。"
 
 # I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
@@ -11445,6 +11483,7 @@ msgstr "webtrees安装向导"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -11630,6 +11669,7 @@ msgstr "显示100年前出生的人。"
 msgid "Show individuals born within the last 100 years."
 msgstr "显示100年内出生的人。"
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "显示在世的人或夫妻双方还在世。"
@@ -11829,23 +11869,21 @@ msgstr "显示语言选择"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "在个人信息中显示缩略图。"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "显示给管理员"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "显示给成员"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -12066,7 +12104,7 @@ msgstr "可以显示某些页面被访问的次数。"
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "一些主题可在\"事实和事件\"选项卡上显示图标。"
+msgstr "一些主题可在“事实和事件”选项卡上显示图标。"
 
 #: resources/views/edit/change-family-members.phtml
 #: resources/xml/reports/family_group_report.xml
@@ -12076,7 +12114,6 @@ msgid "Son"
 msgstr "儿子"
 
 # I18N: e.g. “Son of [father name & mother name]”
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -13492,7 +13529,7 @@ msgstr "这是 webtrees 的最新版本。 没有可用的升级。"
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "这是SMTP服务器的名称。\"localhost\"指邮件服务的同一台计算机上运行您的Web服务器。"
+msgstr "这是SMTP服务器的名称。“localhost”指邮件服务的同一台计算机上运行您的Web服务器。"
 
 #: resources/views/admin/users-create.phtml
 #: resources/views/admin/users-edit.phtml
@@ -13550,7 +13587,7 @@ msgstr "这必须是至少6个字符。它是区分大小写的。"
 #. I18N: Help text for the “Sender name” site configuration setting
 #: resources/views/admin/site-mail.phtml
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "从这台服务器发送自动电子邮件时，在\"发件人\"字段中，使用此名称。"
+msgstr "从这台服务器发送自动电子邮件时，在“发件人”字段中，使用此名称。"
 
 #: app/Auth.php
 msgid "This note does not exist or you do not have permission to view it."
@@ -13612,7 +13649,7 @@ msgstr "此选项将使用户更容易下载图像。"
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "此选项将影响是否显示家庭人员关系链接。如果涉及隐私保护，你将在图表中看到空的\"隐私保护\"框。"
+msgstr "此选项将影响是否显示家庭人员关系链接。如果涉及隐私保护，你将在图表中看到空的“隐私保护”框。"
 
 # I18N: Help text for the “Show names of private individuals” configuration setting
 #. I18N: Help text for the “Show names of private individuals” configuration setting
@@ -14323,7 +14360,7 @@ msgstr ""
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "未知"
@@ -14338,7 +14375,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "未知个体"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -14678,8 +14715,7 @@ msgid "Visible to other users when online"
 msgstr "在线时对其他用户可见"
 
 # I18N: Listbox entry; name of a role
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -15239,7 +15275,7 @@ msgstr "全部接受"
 
 # I18N: the status of an edit accepted/rejected/pending
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "接受"
 
@@ -15398,6 +15434,7 @@ msgstr "居民"
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "关闭"
@@ -15604,7 +15641,6 @@ msgid "half circle"
 msgstr "半圈"
 
 # I18N: reflexive pronoun
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "她自己"
@@ -15616,7 +15652,6 @@ msgid "hide"
 msgstr "隐藏"
 
 # I18N: reflexive pronoun
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "他自己"
@@ -15848,7 +15883,7 @@ msgstr "父系"
 
 # I18N: the status of an edit accepted/rejected/pending
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "待定"
 
@@ -15928,7 +15963,7 @@ msgstr "拒绝"
 
 # I18N: the status of an edit accepted/rejected/pending
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "拒绝"
 
@@ -16204,7 +16239,6 @@ msgid "the folder “/data” and the file “/data/config.ini.php” have acces
 msgstr "目录“/data”和文件<b>data/config.ini.php</b>允许Web服务器读取"
 
 # I18N: reflexive pronoun - gender neutral version of himself/herself
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "其本身"
@@ -16309,10 +16343,6 @@ msgstr "webtrees需要一个数据库来存储您的家谱数据。"
 #: resources/views/admin/site-mail.phtml
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "webtrees需要发送电子邮件，如密码提醒和网站通知。"
-
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees发送电子邮件且没有内部消息"
 
 #: app/Elements/RoleInEvent.php
 msgid "wife"

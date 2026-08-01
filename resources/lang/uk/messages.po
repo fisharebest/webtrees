@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -377,7 +377,6 @@ msgstr "(%s після смерті)"
 msgid "(age %s)"
 msgstr "вік %s"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -385,7 +384,6 @@ msgstr "вік %s"
 msgid "(aged %s)"
 msgstr "(у віці %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -394,7 +392,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(віком %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -1103,6 +1100,11 @@ msgstr "Додати новину"
 msgid "Add a note"
 msgstr "Додати нову примітку"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "Додати батька/матір"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "Додати брата або сестру"
@@ -1121,9 +1123,16 @@ msgstr "Додати сина"
 msgid "Add a source citation"
 msgstr "Додати нову цитату із джерела"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "Додати нового чоловіка (у)"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "Додати подружжя, використовуючи існуючу особу"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1496,6 +1505,12 @@ msgstr "Також відомий як"
 msgid "Alive"
 msgstr "Живі"
 
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "Живий або померлий"
+
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
 #: resources/views/lists/datatables-attributes.phtml
@@ -1563,7 +1578,7 @@ msgstr "Американське Самоа"
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/edit.phtml
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "Записи \"ЧаПи\" можуть бути показані у всіх генеалогічних деревах або тільки в одному з генеалогічних дерев."
+msgstr "Записи “ЧаПи” можуть бути показані у всіх генеалогічних деревах або тільки в одному з генеалогічних дерев."
 
 #: resources/views/admin/site-registration.phtml
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -2800,11 +2815,11 @@ msgstr "Редагувати членів сім'ї"
 
 #: app/Http/RequestHandlers/TreePageEdit.php
 msgid "Change the “Home page” blocks"
-msgstr "Блоки \"Домашньої сторінки\""
+msgstr "Блоки “Домашньої сторінки”"
 
 #: app/Http/RequestHandlers/UserPageEdit.php
 msgid "Change the “My page” blocks"
-msgstr "Змінити блоки на \"Моїй сторінці\""
+msgstr "Змінити блоки на “Моїй сторінці”"
 
 #. I18N: [a record was] Changed by <user>
 #: resources/views/modules/recent_changes/changes-list.phtml
@@ -2912,7 +2927,6 @@ msgstr "Дитина"
 msgid "Child of "
 msgstr "Дитя "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -4003,7 +4017,6 @@ msgstr "Дати зберігаються використовуючи англ�
 msgid "Daughter"
 msgstr "Дочка"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4510,11 +4523,11 @@ msgstr "Дубльоване ім'я користувача. Користува�
 
 #: resources/views/help/source-events.phtml
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Кожне джерело реєструє конкретні події, як правило, для певного діапазону дат та для певної адміністативно-територіальної одиниці. Наприклад, Перепис населення реєструє події перепису населення, а церквні записи реєструють події народження, шлюбу і смерті.<br><br>Виберіть події, які зареєстровні цим джерелом із списку подій. Дата повинна бути вказана у форматі діапазону, наприклад <i>З 1900 ПО 1910</i>. Адміністативно-територіальна одиниця - це назва найнижчої адміністативно-територіальної одиниці, яка включає в себе всі місця, згадані в даному джерелі. Наприклад, \"Область Онейда, штат Айдахо, США\" буде адміністративною одиницею для подій, що сталися у різних містах в області Онейда. \"Айдахо, США\" буде адміністративною одиницею для подій, які сталися не тільки в області Онейда, але й в інших областях штату Айдахо."
+msgstr "Кожне джерело реєструє конкретні події, як правило, для певного діапазону дат та для певної адміністативно-територіальної одиниці. Наприклад, Перепис населення реєструє події перепису населення, а церквні записи реєструють події народження, шлюбу і смерті.<br><br>Виберіть події, які зареєстровні цим джерелом із списку подій. Дата повинна бути вказана у форматі діапазону, наприклад <i>З 1900 ПО 1910</i>. Адміністативно-територіальна одиниця - це назва найнижчої адміністативно-територіальної одиниці, яка включає в себе всі місця, згадані в даному джерелі. Наприклад, “Область Онейда, штат Айдахо, США” буде адміністративною одиницею для подій, що сталися у різних містах в області Онейда. “Айдахо, США” буде адміністративною одиницею для подій, які сталися не тільки в області Онейда, але й в інших областях штату Айдахо."
 
 #: resources/views/help/pending-changes.phtml
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "Кожний обліковий запис користувача має параметр \"автоматично приймати зміни\". Коли цей парамет увімкнутий, будь-які зміни, внесені користувачем, зберігаются відразу. Багато адміністраторів включають цей параметр для власного облікового запису."
+msgstr "Кожний обліковий запис користувача має параметр “автоматично приймати зміни”. Коли цей парамет увімкнутий, будь-які зміни, внесені користувачем, зберігаются відразу. Багато адміністраторів включають цей параметр для власного облікового запису."
 
 #: resources/views/modules/gedcom_stats/config.phtml
 #: resources/views/modules/gedcom_stats/statistics.phtml
@@ -4610,9 +4623,7 @@ msgstr "Редагуйте запис цієї персони і замініт�
 msgid "Edit with all GEDCOM tags"
 msgstr "Редагувати з усіма тегами GEDCOM"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4661,6 +4672,11 @@ msgstr "E-mail"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "Адреса ел.пошти"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "Лише електронна пошта"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5278,7 +5294,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "Лютий"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Жіноча"
 
@@ -5354,6 +5370,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "Файли марковані знаком %s необхідні для нормальної роботи програми і тому не можуть бути видалені."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "Фільтр"
 
@@ -5710,6 +5728,11 @@ msgstr "За генеалогічним питань звертатися до"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "Генеалогічні дані"
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "Меню генеалогії"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6125,7 +6148,7 @@ msgstr "Ермосільо, Мексика"
 msgid "Hide GEDCOM tags"
 msgstr "Приховати теги GEDCOM"
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6322,7 +6345,7 @@ msgstr "Якщо прізвище невідоме, використовуйте
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "Якщо з людиною пов'язані будь-які події окрім смерті, похорон чи кремації, що трапилися після цієї кількості років, вона буде вважатися \"живою\". Народження дитини теж вважається такою подією у такому випадку."
+msgstr "Якщо з людиною пов'язані будь-які події окрім смерті, похорон чи кремації, що трапилися після цієї кількості років, вона буде вважатися “живою”. Народження дитини теж вважається такою подією у такому випадку."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -6431,10 +6454,16 @@ msgstr "Імпортувати географічні дані"
 msgid "Import preferences"
 msgstr "Налаштування імпорту"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "Імпорт генеалогічного дерева"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "В генеалогічному дереві кожний запис має внутрішній номер для посилання (який називається \"XREF\"), наприклад \"F123\" чи \"R14\"."
+msgstr "В генеалогічному дереві кожний запис має внутрішній номер для посилання (який називається “XREF”), наприклад “F123” чи “R14”."
 
 #: resources/views/help/romanized.phtml
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
@@ -6457,6 +6486,16 @@ msgstr "В деяких країнах, закони про конфіденці
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "Вхідні та електронна пошта"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "Лише вхідні"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6643,14 +6682,6 @@ msgstr "Інтерактивне дерево для %s"
 msgid "Interment"
 msgstr "Поховання"
 
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "Внутрішні повідомлення"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "Внутрішній обмін повідомленнями з електронною поштою"
-
 #: app/Module/PrivacyPolicy.php
 #, fuzzy
 msgid "International transfers"
@@ -6820,7 +6851,7 @@ msgstr "Тримати відкритими"
 #: resources/views/admin/trees-preferences.phtml
 #: resources/views/edit/edit-fact.phtml resources/views/edit/edit-record.phtml
 msgid "Keep the existing “last change” information"
-msgstr "Залишити інформацію \"остання зміна\" без змін"
+msgstr "Залишити інформацію “остання зміна” без змін"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7339,10 +7370,6 @@ msgstr "Журнал"
 msgid "Maidenhead location code"
 msgstr "QTH-код місцезнаходження"
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "Написати ел. листа"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7358,7 +7385,7 @@ msgstr "Малайзія"
 msgid "Maldives"
 msgstr "Мальдіви"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Чоловіча"
 
@@ -7404,9 +7431,7 @@ msgstr "Управління генеалогічними деревами"
 msgid "Manage media"
 msgstr "Управляти медіа даними"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "Менеджер"
@@ -7827,9 +7852,7 @@ msgstr "Середні системи (5000 осіб), Мбайт 32-64, 20-40 �
 msgid "Melbourne, Australia"
 msgstr "Мельбурн, Австралія"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "Учасник"
@@ -7939,9 +7962,7 @@ msgstr "Мінімальний вік для згоди"
 msgid "Missing data"
 msgstr "Відсутні дані"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "Модератор"
 
@@ -8419,7 +8440,7 @@ msgstr "Заборонити конвертацію календаря"
 msgid "No children"
 msgstr "Дітей немає"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "Не хочу отримувати повідомлення"
 
@@ -8844,7 +8865,7 @@ msgstr "В цей день"
 msgid "Only add new records"
 msgstr "Додайте лише нові записи"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "Тільки менеджери можуть редагувати"
@@ -8904,11 +8925,17 @@ msgstr "Орландо, Флорида"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
 msgid "Other"
 msgstr "Інше"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
+msgid "Other"
+msgstr "Інша"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "Other facts to show in charts"
@@ -8993,6 +9020,11 @@ msgstr "Налаштування сторінки"
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "Розмір сторінки"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "Нумерація сторінок"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9481,7 +9513,7 @@ msgstr "Налаштування"
 #: resources/views/admin/modules.phtml
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "Існують налаштування для модуля \"%s\", але сам модуль вже не існує."
+msgstr "Існують налаштування для модуля “%s”, але сам модуль вже не існує."
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml
@@ -9557,6 +9589,12 @@ msgstr "Затвердження заповіту"
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "Прогрес"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -10006,7 +10044,7 @@ msgstr "Завдання дослідження - це спеціальні по
 
 #: resources/views/modules/todo/config.phtml
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Завдання дослідження зберігаються у нестандартному GEDCOM тезі \"_TODO\". Інші генеалогічні програми можуть не розпізнати цей тег."
+msgstr "Завдання дослідження зберігаються у нестандартному GEDCOM тезі “_TODO”. Інші генеалогічні програми можуть не розпізнати цей тег."
 
 #: app/CustomTags/Gedcom7.php app/Gedcom.php resources/views/admin/tags.phtml
 msgid "Residence"
@@ -10610,7 +10648,7 @@ msgstr "Встановити рівень доступу до всіх мерт�
 #: resources/views/emails/verify-notify-html.phtml
 #: resources/views/emails/verify-notify-text.phtml
 msgid "Set the status to “approved”."
-msgstr "Встановити статус \"схвалений\"."
+msgstr "Встановити статус “схвалений”."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -10623,6 +10661,7 @@ msgstr "Майстер установки webtrees"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10800,6 +10839,7 @@ msgstr "Показати персон, що народилися раніше 10
 msgid "Show individuals born within the last 100 years."
 msgstr "Показати людей, які народилися за останні 100 років."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Показати тільки живих персон або сім'ї, де обоє з подружжя живі."
@@ -10989,23 +11029,21 @@ msgstr "Для яких мов показувати цей блок"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Показувати мініатюру фотографії на графіках і групах сімей."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Показувати менеджерам"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "Показувати членам"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11014,12 +11052,12 @@ msgstr "Показувати відвідувачам"
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "Показати \"листки\" із пар чи осіб. Це живі люди, що не мають дітей, зареєстрованих у базі даних."
+msgstr "Показати “листки” із пар чи осіб. Це живі люди, що не мають дітей, зареєстрованих у базі даних."
 
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "Показати \"кореневі\" пари чи осіб. Цих персон ще можна назвати \"родоначальниками, патріархами\". Це люди, у яких немає батьків, зареєстрованих у базі даних."
+msgstr "Показати “кореневі” пари чи осіб. Цих персон ще можна назвати “родоначальниками, патріархами”. Це люди, у яких немає батьків, зареєстрованих у базі даних."
 
 #. I18N: %s are placeholders for numbers
 #: resources/views/lists/datatables-attributes.phtml
@@ -11205,7 +11243,7 @@ msgstr "Деякі сторінки можуть відображати лічи
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Деякі теми можуть відображати іконки на вкладці \"Факти і події\"."
+msgstr "Деякі теми можуть відображати іконки на вкладці “Факти і події”."
 
 #: resources/views/edit/change-family-members.phtml
 #: resources/xml/reports/family_group_report.xml
@@ -11214,7 +11252,6 @@ msgstr "Деякі теми можуть відображати іконки н�
 msgid "Son"
 msgstr "Син"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -11775,7 +11812,7 @@ msgstr "Поле <b>Прізвище</b> містить ім'я, яке вико
 #: app/Http/RequestHandlers/SynchronizeTrees.php
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "GEDCOM файл \"%s\" було імпортовано."
+msgstr "GEDCOM файл “%s” було імпортовано."
 
 #: resources/views/admin/tags.phtml
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
@@ -11794,7 +11831,7 @@ msgstr "Розширення PHP “%s” не встановлене."
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr "Функція PHP \"%1$s\" вимкнена."
+msgstr "Функція PHP “%1$s” вимкнена."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php
@@ -11846,7 +11883,7 @@ msgstr "Меню діаграм."
 
 #: resources/views/modules/clippings/show.phtml
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "Кошик вирізок дозволяє вам робити витяги (\"вирізки\") з цього генеалогічного дерева і завантажити їх у форматі GEDCOM."
+msgstr "Кошик вирізок дозволяє вам робити витяги (“вирізки”) з цього генеалогічного дерева і завантажити їх у форматі GEDCOM."
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "The date and time of the last update"
@@ -11869,25 +11906,25 @@ msgstr "Генеалогічне дерево експортовано в %s."
 #: app/Http/RequestHandlers/TreePreferencesAction.php
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "Генеалогічне дерево \"%s\" уже існує."
+msgstr "Генеалогічне дерево “%s” уже існує."
 
 #: app/Http/RequestHandlers/CreateTreeAction.php
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "Генеалогічне дерево \"%s\" було створено."
+msgstr "Генеалогічне дерево “%s” було створено."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/DeleteTreeAction.php
 #: app/Http/RequestHandlers/SynchronizeTrees.php
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "Генеалогічне дерево \"%s\" було видалено."
+msgstr "Генеалогічне дерево “%s” було видалено."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/SelectDefaultTree.php
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "Генеалогічне дерево \"%s\" буде показано відвідувачам, коли вони вперше заходимуть на цей сайт."
+msgstr "Генеалогічне дерево “%s” буде показано відвідувачам, коли вони вперше заходимуть на цей сайт."
 
 #: app/Http/RequestHandlers/MergeTreesAction.php
 msgid "The family trees have been merged successfully."
@@ -12006,12 +12043,12 @@ msgstr "Персона для контакту по генеалогічної �
 #: app/Http/RequestHandlers/DeleteRecord.php
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr "Зв'язок між \"%1$s\" та \"%2$s\" було видалено."
+msgstr "Зв'язок між “%1$s” та “%2$s” було видалено."
 
 #: app/Http/RequestHandlers/MergeFactsAction.php
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "Посилання з \"%1$s\" до \"%2$s\" було оновлено."
+msgstr "Посилання з “%1$s” до “%2$s” було оновлено."
 
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php
@@ -12069,13 +12106,13 @@ msgstr "Повідомлення надіслане на адресу корис
 #: app/Module/ChartsBlockModule.php
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "Модуль \"%s\" було відключено."
+msgstr "Модуль “%s” було відключено."
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php
 #: app/Http/RequestHandlers/ModulesAllAction.php
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "Модуль \"%s\" було включено."
+msgstr "Модуль “%s” було включено."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12140,12 +12177,12 @@ msgstr "Налаштування для нових генеалогічних д
 #: app/Http/RequestHandlers/TreePrivacyAction.php
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "Налаштування для генеалогічного дерева \"%s\" були оновлені."
+msgstr "Налаштування для генеалогічного дерева “%s” були оновлені."
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "Налаштування для модуля \"%s\" були видалені."
+msgstr "Налаштування для модуля “%s” були видалені."
 
 #: app/Module/CustomCssJsModule.php app/Module/GeonamesAutocomplete.php
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
@@ -12155,7 +12192,7 @@ msgstr "Налаштування для модуля \"%s\" були видал�
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "Налаштування для модуля \"%s\" були оновлені."
+msgstr "Налаштування для модуля “%s” були оновлені."
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -12167,7 +12204,7 @@ msgstr "Префікс необов’язковий, але рекоменду�
 #: app/Http/RequestHandlers/MergeFactsAction.php
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr "Записи \"%1$s\" і \"%2$s\" було об'єднано."
+msgstr "Записи “%1$s” і “%2$s” було об'єднано."
 
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php
@@ -12654,7 +12691,7 @@ msgstr "Цей параметр полегшить користувачам за
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Цей параметр зберігає родинні зв'язки у прихованих записах. Це означає, що ви побачите порожні \"приховані\" прямокутники на діаграмі родоводу та інших діаграмах, що містять прихованих осіб."
+msgstr "Цей параметр зберігає родинні зв'язки у прихованих записах. Це означає, що ви побачите порожні “приховані” прямокутники на діаграмі родоводу та інших діаграмах, що містять прихованих осіб."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml
@@ -12724,7 +12761,7 @@ msgstr "У цієї ролі є всі дозволи ролі менеджер�
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Ця роль має всі права ролі Учасник, а також право додавати, змінювати та видаляти дані. Будь-які зміни мають бути схвалені модератором окрім випадків, коли включено параметр \"автоматично приймати зміни\"."
+msgstr "Ця роль має всі права ролі Учасник, а також право додавати, змінювати та видаляти дані. Будь-які зміни мають бути схвалені модератором окрім випадків, коли включено параметр “автоматично приймати зміни”."
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -13319,7 +13356,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "Невідомо"
@@ -13334,7 +13371,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Невідомо"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13543,7 +13580,7 @@ msgstr "Ім'я користувача або адрес електронної 
 #: resources/views/admin/users-edit.phtml
 #: resources/views/edit-account-page.phtml resources/views/register-page.phtml
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "Імена користувачів є нечутливими до регістру і ігнорують акцентовані літери, тому \"chloe\", \"chloë\" і \"Chloe\" вважаються одним і тим самим іменем."
+msgstr "Імена користувачів є нечутливими до регістру і ігнорують акцентовані літери, тому “chloe”, “chloë” і “Chloe” вважаються одним і тим самим іменем."
 
 #: resources/views/admin/control-panel.phtml
 #: resources/views/modules/gedcom_stats/statistics.phtml
@@ -13651,8 +13688,7 @@ msgstr "Відображати онлайн статус"
 msgid "Visible to other users when online"
 msgstr "Відображати онлайн статус для інших"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -13764,11 +13800,11 @@ msgstr "Західна Сахара"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Коли запис редагується, реєструються користувач, що вносить зміни, і час та дата змін. Інколи бажано зберегти інформацію про \"останні зміни\", наприклад, коли робляться малі зміни до даних, внесених іншим користувачем. Цей параметр контролює, чи ця функция увімкнена за замовчуванням."
+msgstr "Коли запис редагується, реєструються користувач, що вносить зміни, і час та дата змін. Інколи бажано зберегти інформацію про “останні зміни”, наприклад, коли робляться малі зміни до даних, внесених іншим користувачем. Цей параметр контролює, чи ця функция увімкнена за замовчуванням."
 
 #: resources/views/admin/users-edit.phtml
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Коли відвідувач робить запит на створення облікового запису, на його адресу електронної пошти надсилається лист із посиланням для перевірки. Після переходу по посиланню, стає відомо, що адреса електронної пошти правильна, і прапорець \"електронна пошта підтверджена\" встановлюється автоматично."
+msgstr "Коли відвідувач робить запит на створення облікового запису, на його адресу електронної пошти надсилається лист із посиланням для перевірки. Після переходу по посиланню, стає відомо, що адреса електронної пошти правильна, і прапорець “електронна пошта підтверджена” встановлюється автоматично."
 
 #: resources/views/edit/reorder-families.phtml
 msgid "When an individual has more than one spouse, you should sort the families in date order."
@@ -13781,7 +13817,7 @@ msgstr "Коли ви додаєте нового члена сім'ї, для �
 
 #: resources/views/help/pending-changes.phtml
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "Коли ви додаєте, змінюєте чи видаляєте інформацію, зміни зберігаються не одразу. Вони поміщаються у так звані \"очікувані зміни.\" Ці очікувані зміни мають бути переглянуті і схвалені модератором перед тим, як вони будуть збережені."
+msgstr "Коли ви додаєте, змінюєте чи видаляєте інформацію, зміни зберігаються не одразу. Вони поміщаються у так звані “очікувані зміни.” Ці очікувані зміни мають бути переглянуті і схвалені модератором перед тим, як вони будуть збережені."
 
 #: resources/views/help/relationship-privacy.phtml
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
@@ -13918,7 +13954,7 @@ msgstr "Ви можете підтвердити обліковий запис �
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr "Ви можете змінини зовнішній вигляд webtrees за допомогою \"тем\". Кожна тема має інший стиль, розположення елементів, схему кольорів і т. п."
+msgstr "Ви можете змінини зовнішній вигляд webtrees за допомогою “тем”. Кожна тема має інший стиль, розположення елементів, схему кольорів і т. п."
 
 #: resources/views/admin/users-edit.phtml
 #: resources/views/edit-account-page.phtml
@@ -14176,7 +14212,7 @@ msgid "accept all"
 msgstr "прийняти все"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "прийнято"
 
@@ -14324,6 +14360,7 @@ msgstr "громадянин"
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "закрити"
@@ -14516,7 +14553,6 @@ msgstr "перейти до нової персони"
 msgid "half circle"
 msgstr "півколо"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "вона ж"
@@ -14527,7 +14563,6 @@ msgstr "вона ж"
 msgid "hide"
 msgstr "приховати"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "він же"
@@ -14746,7 +14781,7 @@ msgid "patrilineal"
 msgstr "патрилейно"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "в очікуванні"
 
@@ -14822,7 +14857,7 @@ msgid "reject"
 msgstr "відхилити"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "відхилено"
 
@@ -15075,7 +15110,6 @@ msgstr "настройки з'єднання з базою даних у фай�
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "У каталогу «/data» і файлу «/data/config.ini.php» встановлені права доступу, які дозволяють серверу прочитати їх"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "він же"
@@ -15175,10 +15209,6 @@ msgstr "webtrees потребує бази даних для зберіганн�
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "сайт має надсилати електронні листи, такі як нагадування про паролі та повідомлення."
 
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees відсилає лист не зберігаючи"
-
 #: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "дружина"
@@ -15244,7 +15274,7 @@ msgstr "“%s“ скопійовано до буфера обміну."
 #: app/Services/MapDataService.php
 #, php-format
 msgid "“%s” has been deleted."
-msgstr "\"%s\" було видалено."
+msgstr "“%s” було видалено."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php

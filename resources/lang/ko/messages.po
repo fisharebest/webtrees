@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -343,7 +343,6 @@ msgstr "(%s 사망 이후)"
 msgid "(age %s)"
 msgstr "(나이 %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -351,7 +350,6 @@ msgstr "(나이 %s)"
 msgid "(aged %s)"
 msgstr "(나이 %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -360,7 +358,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(나이 %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -707,7 +704,7 @@ msgstr "새로운 버전의 Webtrees를 사용할 수 있습니다."
 #: app/Http/RequestHandlers/PasswordRequestAction.php
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr "암호 재설정 링크가 \"%s\"(으)로 전송되었습니다."
+msgstr "암호 재설정 링크가 “%s”(으)로 전송되었습니다."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php
@@ -868,7 +865,7 @@ msgstr "인물의 사건을 표시하는 타임 라인."
 
 #: resources/views/admin/users-edit.phtml
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "\"이메일 확인\"과 \"관리자가 승인 함\"이 모두 선택 될 때까지 사용자는 로그인 할 수 없습니다."
+msgstr "“이메일 확인”과 “관리자가 승인 함”이 모두 선택 될 때까지 사용자는 로그인 할 수 없습니다."
 
 #: resources/xml/reports/pedigree_report.xml
 #, fuzzy
@@ -1069,6 +1066,11 @@ msgstr "뉴스 기사 추가"
 msgid "Add a note"
 msgstr "노트 추가"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "부모 추가"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "형제자매 추가"
@@ -1087,9 +1089,16 @@ msgstr "아들 추가"
 msgid "Add a source citation"
 msgstr "출처 인용 추가"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "배우자 추가"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "기존 개인을 사용하여 배우자 추가"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1462,6 +1471,12 @@ msgstr "동일인일 수 있는 사람"
 msgid "Alive"
 msgstr "살아있는"
 
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "생존 또는 사망"
+
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
 #: resources/views/lists/datatables-attributes.phtml
@@ -1499,7 +1514,7 @@ msgstr "모든 레코드"
 #. I18N: Description of the “TinyMCE” module. WYSIWYG = “what you see is what you get”
 #: app/Module/TinymceModule.php
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "다른 모듈이 HTML 코드를 사용하는 대신 \"WYSIWYG\" 편집기를 사용하여 텍스트를 편집할 수 있도록 합니다."
+msgstr "다른 모듈이 HTML 코드를 사용하는 대신 “WYSIWYG” 편집기를 사용하여 텍스트를 편집할 수 있도록 합니다."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -1538,7 +1553,7 @@ msgstr "관리자는 새 사용자 계정을 승인하고 액세스 수준을 �
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "\"미디어\" 탭의 대안 및 향상된 이미지 뷰어."
+msgstr "“미디어” 탭의 대안 및 향상된 이미지 뷰어."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php
@@ -1719,7 +1734,7 @@ msgstr "Aqua Marine"
 #: resources/views/edit/icon-fact-delete.phtml
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr "\"%s\"에 대한 링크를 삭제하시겠습니까?"
+msgstr "“%s”에 대한 링크를 삭제하시겠습니까?"
 
 #: resources/views/individual-page-name.phtml
 #: resources/views/media-page-details.phtml
@@ -2876,7 +2891,6 @@ msgstr "자녀"
 msgid "Child of "
 msgstr "의 자녀 "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3359,7 +3373,7 @@ msgstr "법인"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameSlashesAndSpaces.php
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "이전 계보 프로그램에서 생성된 \"John/DOE/\" 또는 \"John /DOE\" 형식의 NAME 레코드를 수정합니다."
+msgstr "이전 계보 프로그램에서 생성된 “John/DOE/” 또는 “John /DOE” 형식의 NAME 레코드를 수정합니다."
 
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
 msgid "Correspondence"
@@ -3966,7 +3980,6 @@ msgstr "날짜는 영어 약어와 키워드를 사용하여 저장됩니다. �
 msgid "Daughter"
 msgstr "딸"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4477,7 +4490,7 @@ msgstr "각 출처는 일반적으로 지정된 날짜 범위 및 장소 관할 
 
 #: resources/views/help/pending-changes.phtml
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "각 사용자 계정에는 \"변경 사항을 자동으로 수락\"하는 옵션이 있습니다. 이 기능이 활성화되면 해당 사용자가 변경한 사항이 즉시 저장됩니다. 많은 관리자가 자신의 사용자 계정에 대해 이 기능을 활성화합니다."
+msgstr "각 사용자 계정에는 “변경 사항을 자동으로 수락”하는 옵션이 있습니다. 이 기능이 활성화되면 해당 사용자가 변경한 사항이 즉시 저장됩니다. 많은 관리자가 자신의 사용자 계정에 대해 이 기능을 활성화합니다."
 
 #: resources/views/modules/gedcom_stats/config.phtml
 #: resources/views/modules/gedcom_stats/statistics.phtml
@@ -4573,9 +4586,7 @@ msgstr "이 인물을 편집하고 세부 정보를 자신의 세부 정보로 �
 msgid "Edit with all GEDCOM tags"
 msgstr "모든 GEDCOM 태그로 편집"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4624,6 +4635,11 @@ msgstr "이메일"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "이메일 주소"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "이메일만"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -4807,7 +4823,7 @@ msgstr "정확한 날짜"
 #: app/Module/AbstractIndividualListModule.php
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "결혼 이름이 \"%s\"인 인물 제외"
+msgstr "결혼 이름이 “%s”인 인물 제외"
 
 #: resources/views/admin/media.phtml
 msgid "Exclude subfolders"
@@ -5241,7 +5257,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "2월"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "여성"
 
@@ -5299,13 +5315,13 @@ msgstr "서버의 파일이름"
 #: app/Services/MediaFileService.php
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "파일 이름에는 \"%s\" 문자를 사용할 수 없습니다."
+msgstr "파일 이름에는 “%s” 문자를 사용할 수 없습니다."
 
 #: app/Http/RequestHandlers/UploadMediaAction.php
 #: app/Services/MediaFileService.php
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "파일 이름에는 \"%s\" 확장자를 사용할 수 없습니다."
+msgstr "파일 이름에는 “%s” 확장자를 사용할 수 없습니다."
 
 #: resources/views/admin/control-panel.phtml
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
@@ -5317,6 +5333,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "%s(으)로 표시된 파일은 올바른 작업에 필요하며 제거할 수 없습니다."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "필터"
 
@@ -5673,6 +5691,11 @@ msgstr "계보 연락처"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "계보 데이터"
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "계보 메뉴"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6088,7 +6111,7 @@ msgstr "Hermosillo, Mexico"
 msgid "Hide GEDCOM tags"
 msgstr "GEDCOM 태그 숨기기"
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6271,7 +6294,7 @@ msgstr "인물이 두 개의 가문이름을 가진 경우 둘 다 슬래시로 
 #: resources/views/help/name.phtml
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "인물이 정식 이름의 일부가 아닌 별명으로 알려진 경우 따옴표로 묶어야합니다. 예를 들어 <%s> John \"Nobby\"/Clark/ <%s>입니다."
+msgstr "인물이 정식 이름의 일부가 아닌 별명으로 알려진 경우 따옴표로 묶어야합니다. 예를 들어 <%s> John “Nobby”/Clark/ <%s>입니다."
 
 #: resources/views/help/name.phtml
 #, php-format
@@ -6286,7 +6309,7 @@ msgstr "가문이름을 알 수 없는 경우 빈 슬래시를 사용하십시�
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "이 인물이 이 년 수보다 최근에 사망, 매장 또는 화장 이외의 다른 사건이 있는 경우 \"살아 있는\" 것으로 간주됩니다. 이러한 목적을 위해 자녀들의 생일은 그러한 이벤트로 간주됩니다."
+msgstr "이 인물이 이 년 수보다 최근에 사망, 매장 또는 화장 이외의 다른 사건이 있는 경우 “살아 있는” 것으로 간주됩니다. 이러한 목적을 위해 자녀들의 생일은 그러한 이벤트로 간주됩니다."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -6395,18 +6418,24 @@ msgstr "지리데이터 가져오기"
 msgid "Import preferences"
 msgstr "환경설정 가져오기"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "가계도 가져오는 중"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "가계도에서 각 기록에는 \"F123\" 또는 \"R14\"와 같은 내부 참조 번호(\"XREF\"라고 함)가 있습니다."
+msgstr "가계도에서 각 기록에는 “F123” 또는 “R14”와 같은 내부 참조 번호(“XREF”라고 함)가 있습니다."
 
 #: resources/views/help/romanized.phtml
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "많은 문화권에서는 영어와 같은 라틴 알파벳을 기반으로 하는 언어에서 철자 또는 발음되는 것과 같이 전통적인 이름을 전통적인 문자로 철자하고 로마자로 표기하는 것이 관례입니다.<br><br>만약 히브리어, 그리스어, 러시아어, 중국어 또는 아랍어와 같은 비라틴 알파벳을 사용하여 표준 이름 필드에 이름을 입력하려는 경우 이 필드에 라틴 알파벳을 사용하여 동일한 이름을 입력할 수 있습니다. 두 가지 버전의 이름이 목록과 차트에 표시됩니다.<br><br>이 필드에 \"로마자 표기\"라고 표시되어 있지만 라틴 알파벳을 기반으로 한 문자만 포함하도록 제한되지는 않습니다. 이것은 세 개의 다른 알파벳이 나타날 수 있는 일본어 이름과 함께 사용할 수 있습니다."
+msgstr "많은 문화권에서는 영어와 같은 라틴 알파벳을 기반으로 하는 언어에서 철자 또는 발음되는 것과 같이 전통적인 이름을 전통적인 문자로 철자하고 로마자로 표기하는 것이 관례입니다.<br><br>만약 히브리어, 그리스어, 러시아어, 중국어 또는 아랍어와 같은 비라틴 알파벳을 사용하여 표준 이름 필드에 이름을 입력하려는 경우 이 필드에 라틴 알파벳을 사용하여 동일한 이름을 입력할 수 있습니다. 두 가지 버전의 이름이 목록과 차트에 표시됩니다.<br><br>이 필드에 “로마자 표기”라고 표시되어 있지만 라틴 알파벳을 기반으로 한 문자만 포함하도록 제한되지는 않습니다. 이것은 세 개의 다른 알파벳이 나타날 수 있는 일본어 이름과 함께 사용할 수 있습니다."
 
 #: resources/views/help/hebrew.phtml
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "많은 문화권에서는 영어와 같은 라틴 알파벳을 기반으로 하는 언어에서 철자 또는 발음되는 것과 같이 전통적인 이름을 전통적인 문자로 철자하고 로마자로 표기하는 것이 관례입니다.<br><br>만약 히브리어, 그리스어, 러시아어, 중국어 또는 아랍어와 같은 비라틴 알파벳을 사용하여 표준 이름 필드에 이름을 입력하려는 경우 이 필드에 라틴 알파벳을 사용하여 동일한 이름을 입력할 수 있습니다. 두 가지 버전의 이름이 목록과 차트에 표시됩니다.<br><br>이 필드에 \"로마자 표기\"라고 표시되어 있지만 라틴 알파벳을 기반으로 한 문자만 포함하도록 제한되지는 않습니다. 이것은 세 개의 다른 알파벳이 나타날 수 있는 일본어 이름과 함께 사용할 수 있습니다."
+msgstr "많은 문화권에서는 영어와 같은 라틴 알파벳을 기반으로 하는 언어에서 철자 또는 발음되는 것과 같이 전통적인 이름을 전통적인 문자로 철자하고 로마자로 표기하는 것이 관례입니다.<br><br>만약 히브리어, 그리스어, 러시아어, 중국어 또는 아랍어와 같은 비라틴 알파벳을 사용하여 표준 이름 필드에 이름을 입력하려는 경우 이 필드에 라틴 알파벳을 사용하여 동일한 이름을 입력할 수 있습니다. 두 가지 버전의 이름이 목록과 차트에 표시됩니다.<br><br>이 필드에 “로마자 표기”라고 표시되어 있지만 라틴 알파벳을 기반으로 한 문자만 포함하도록 제한되지는 않습니다. 이것은 세 개의 다른 알파벳이 나타날 수 있는 일본어 이름과 함께 사용할 수 있습니다."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -6422,6 +6451,16 @@ msgstr "일부 국가에서는 개인정보 보호법이 살아있는 개인뿐�
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
 
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "받은편지함 및 이메일"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "받은편지함만"
+
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
 msgstr "별칭 포함"
@@ -6433,7 +6472,7 @@ msgstr "동료 포함"
 #: app/Module/AbstractIndividualListModule.php
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "결혼 이름으로 \"%s\"가 있는 인물 포함"
+msgstr "결혼 이름으로 “%s”가 있는 인물 포함"
 
 #. I18N: Label for check-box
 #: resources/views/admin/media.phtml
@@ -6607,14 +6646,6 @@ msgstr "%s의 범위형 가계도"
 msgid "Interment"
 msgstr "매장"
 
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "내부 메시지"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "이메일을 통한 내부 메시지"
-
 #: app/Module/PrivacyPolicy.php
 #, fuzzy
 msgid "International transfers"
@@ -6784,7 +6815,7 @@ msgstr "열린 상태로 유지"
 #: resources/views/admin/trees-preferences.phtml
 #: resources/views/edit/edit-fact.phtml resources/views/edit/edit-record.phtml
 msgid "Keep the existing “last change” information"
-msgstr "기존 \"마지막 변경\" 정보 유지"
+msgstr "기존 “마지막 변경” 정보 유지"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7304,10 +7335,6 @@ msgstr "잡지"
 msgid "Maidenhead location code"
 msgstr "Maidenhead location code"
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "메일 링크"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7323,7 +7350,7 @@ msgstr "Malaysia"
 msgid "Maldives"
 msgstr "Maldives"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "남성"
 
@@ -7369,9 +7396,7 @@ msgstr "가계도 관리"
 msgid "Manage media"
 msgstr "미디어 관리"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "관리자"
@@ -7792,9 +7817,7 @@ msgstr "중형 시스템(개인 5,000명): 32–64MB, 20–40초"
 msgid "Melbourne, Australia"
 msgstr "Melbourne, Australia"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "회원"
@@ -7904,9 +7927,7 @@ msgstr "동의 최소 연령"
 msgid "Missing data"
 msgstr "누락된 데이터"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "중재자"
 
@@ -8384,7 +8405,7 @@ msgstr "달력 변환 없음"
 msgid "No children"
 msgstr "자녀 없음"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "연락처 없음"
 
@@ -8805,7 +8826,7 @@ msgstr "오늘"
 msgid "Only add new records"
 msgstr "새 레코드만 추가"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "관리자만 수정할 수 있습니다"
@@ -8865,9 +8886,15 @@ msgstr "Orlando, Florida, United States"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
+msgid "Other"
+msgstr "기타"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
 msgid "Other"
 msgstr "기타"
 
@@ -8954,6 +8981,11 @@ msgstr "페이지 설정"
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "종이 크기"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "페이지 매김"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9045,7 +9077,7 @@ msgstr "비밀번호"
 #: resources/views/password-reset-page.phtml
 #: resources/views/register-page.phtml
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "비밀번호는 8자 이상이어야 하며 대소문자를 구분하므로 \"secret\"와 \"SECRET\"이 다릅니다."
+msgstr "비밀번호는 8자 이상이어야 하며 대소문자를 구분하므로 “secret”와 “SECRET”이 다릅니다."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9221,7 +9253,7 @@ msgstr "장소 이름은 시간이 지남에 따라 변경될 수 있습니다. 
 
 #: resources/views/help/place.phtml
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr "장소 이름은 가장 작은 장소부터 시작하여 국가로 끝나는 쉼표로 구분된 목록으로 입력해야 합니다. 예: \"웨스트민스터 런던 영국\"."
+msgstr "장소 이름은 가장 작은 장소부터 시작하여 국가로 끝나는 쉼표로 구분된 목록으로 입력해야 합니다. 예: “웨스트민스터 런던 영국”."
 
 #: app/Gedcom.php
 msgid "Place of LDS baptism"
@@ -9444,7 +9476,7 @@ msgstr "환경설정"
 #: resources/views/admin/modules.phtml
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "\\\"%s\\\" 모듈에 대한 기본 설정이 있지만 이 모듈은 더 이상 존재하지 않습니다."
+msgstr "\\“%s\\” 모듈에 대한 기본 설정이 있지만 이 모듈은 더 이상 존재하지 않습니다."
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml
@@ -9520,6 +9552,12 @@ msgstr "유언 공증"
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "진행"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -9969,7 +10007,7 @@ msgstr "연구 작업은 귀하의 가족 나무에있는 개인에게 추가 �
 
 #: resources/views/modules/todo/config.phtml
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "연구 작업은 사용자 정의 GEDCOM 태그 \"_TODO\"를 사용하여 저장됩니다.다른 계보 응용 프로그램은이 태그를 인식하지 못할 수 있습니다."
+msgstr "연구 작업은 사용자 정의 GEDCOM 태그 “_TODO”를 사용하여 저장됩니다.다른 계보 응용 프로그램은이 태그를 인식하지 못할 수 있습니다."
 
 #: app/CustomTags/Gedcom7.php app/Gedcom.php resources/views/admin/tags.phtml
 msgid "Residence"
@@ -10573,7 +10611,7 @@ msgstr "모든 사망한 인물의 개인 정보 보호 액세스 수준을 설�
 #: resources/views/emails/verify-notify-html.phtml
 #: resources/views/emails/verify-notify-text.phtml
 msgid "Set the status to “approved”."
-msgstr "상태를 \"승인\"으로 설정하십시오.."
+msgstr "상태를 “승인”으로 설정하십시오.."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -10586,6 +10624,7 @@ msgstr "WebTrees의 설치 마법사"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10690,7 +10729,7 @@ msgstr "관할 지역에 따른 개인정보/데이터 보호 정책을 표시�
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "\"새 사용자 계정 요청\" 페이지에 허용 가능한 사용 계약 표시"
+msgstr "“새 사용자 계정 요청” 페이지에 허용 가능한 사용 계약 표시"
 
 #: resources/views/modules/media/tab.phtml
 msgid "Show all media"
@@ -10763,6 +10802,7 @@ msgstr "100년 전에 태어난 인물을 표시합니다."
 msgid "Show individuals born within the last 100 years."
 msgstr "지난 100년동안 태어난 인물을 표시합니다."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "살아 있는 인물 또는 두 파트너가 살아 있는 커플을 표시합니다."
@@ -10952,23 +10992,21 @@ msgstr "언어에 대한 이 블록 표시"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "썸네일 이미지를 차트와 가족 그룹으로 표시하십시오."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "관리자에게 표시"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "회원에게 표시"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -10982,7 +11020,7 @@ msgstr "“떠난”커플 또는 인물을 표시합니다. 이들은 살아 �
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "\"최상위 조상\" 부부 또는 인물을 표시합니다. 이 사람들은 또한“시조”라고도 합니다. 그들은 데이터베이스에 부모가 기록되어 있지 않은 개인입니다."
+msgstr "“최상위 조상” 부부 또는 인물을 표시합니다. 이 사람들은 또한“시조”라고도 합니다. 그들은 데이터베이스에 부모가 기록되어 있지 않은 개인입니다."
 
 #. I18N: %s are placeholders for numbers
 #: resources/views/lists/datatables-attributes.phtml
@@ -11177,7 +11215,6 @@ msgstr "일부 테마는 “정보 및 이벤트” 탭에 아이콘을 표시 �
 msgid "Son"
 msgstr "아들"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -12119,7 +12156,7 @@ msgstr "모듈 “%s”의 기본 설정이 삭제되었습니다."
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "\"%s\"모듈의 환경 설정이 업데이트되었습니다."
+msgstr "“%s”모듈의 환경 설정이 업데이트되었습니다."
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -13270,7 +13307,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "알 수 없음"
@@ -13285,7 +13322,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "알 수 없는"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13435,7 +13472,7 @@ msgstr "실루엣 사용"
 
 #: app/Http/RequestHandlers/CopyFact.php
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr "\"편집\" 메뉴를 사용하여 이것을 다른 레코드에 붙여넣습니다."
+msgstr "“편집” 메뉴를 사용하여 이것을 다른 레코드에 붙여넣습니다."
 
 #: resources/views/register-page.phtml
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -13600,8 +13637,7 @@ msgstr "온라인으로 표시"
 msgid "Visible to other users when online"
 msgstr "온라인 일 때 다른 사용자에게 공개"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -14000,7 +14036,7 @@ msgstr "업그레이드하기 전에 보류중인 모든 변경 사항을 수락
 #: app/Http/RequestHandlers/RegisterAction.php
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "\"%2$s\"에서 \"%1$s\"를 삭제하고 다시 시도해야합니다."
+msgstr "“%2$s”에서 “%1$s”를 삭제하고 다시 시도해야합니다."
 
 #: resources/views/admin/users-edit.phtml
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -14125,7 +14161,7 @@ msgid "accept all"
 msgstr "모두 수락"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "인정됨"
 
@@ -14273,6 +14309,7 @@ msgstr "시민"
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "닫기"
@@ -14463,7 +14500,6 @@ msgstr "새로운 인물로 이동"
 msgid "half circle"
 msgstr "half circle"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "그녀 자신"
@@ -14474,7 +14510,6 @@ msgstr "그녀 자신"
 msgid "hide"
 msgstr "숨김"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "그 자신"
@@ -14691,7 +14726,7 @@ msgid "patrilineal"
 msgstr "부계"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "보류 중"
 
@@ -14767,7 +14802,7 @@ msgid "reject"
 msgstr "거부"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "거부"
 
@@ -15013,14 +15048,13 @@ msgstr "tag cloud"
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr "￦\"/data/config.ini.php￦\" 파일의 데이터베이스 연결 설정이 여전히 정확합니다"
+msgstr "￦“/data/config.ini.php￦” 파일의 데이터베이스 연결 설정이 여전히 정확합니다"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr "￦\"/data￦\" 폴더와 ￦\"/data/config.ini.php￦\" 파일에는 웹 서버가 읽을 수 있는 액세스 권한이 있습니다"
+msgstr "￦“/data￦” 폴더와 ￦“/data/config.ini.php￦” 파일에는 웹 서버가 읽을 수 있는 액세스 권한이 있습니다"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "자신"
@@ -15120,10 +15154,6 @@ msgstr "webtrees는 계보 데이터를 저장할 데이터베이스가 필요�
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "웹 트리는 암호 미리 알림 및 웹 사이트 알림과 같은 이메일을 보내야 합니다."
 
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees는 저장 공간 없이 이메일을 보냅니다"
-
 #: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "부인"
@@ -15180,19 +15210,19 @@ msgstr ""
 #: app/Http/RequestHandlers/CopyFact.php
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr "\"%s\"이(가) 클립보드에 복사되었습니다."
+msgstr "“%s”이(가) 클립보드에 복사되었습니다."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php
 #: app/Services/MapDataService.php
 #, php-format
 msgid "“%s” has been deleted."
-msgstr "\"%s\"가 삭제되었습니다."
+msgstr "“%s”가 삭제되었습니다."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "\"강조된 이미지\"(_PRIM) 태그는 개인이 선호하는 이미지를 나타내기 위해 일부 계보 응용 프로그램에서 사용됩니다. 대안은 선호하는 이미지가 먼저 나열되도록 이미지를 재정렬하는 것입니다."
+msgstr "“강조된 이미지”(_PRIM) 태그는 개인이 선호하는 이미지를 나타내기 위해 일부 계보 응용 프로그램에서 사용됩니다. 대안은 선호하는 이미지가 먼저 나열되도록 이미지를 재정렬하는 것입니다."
 
 #: app/Individual.php app/Note.php
 msgid "…"

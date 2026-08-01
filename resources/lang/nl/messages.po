@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -364,7 +364,6 @@ msgstr "(%s na overlijden)"
 msgid "(age %s)"
 msgstr "(leeftijd %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -372,7 +371,6 @@ msgstr "(leeftijd %s)"
 msgid "(aged %s)"
 msgstr "(leeftijd %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -381,7 +379,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(leeftijd %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -1090,6 +1087,11 @@ msgstr "Voeg een nieuwsartikel toe"
 msgid "Add a note"
 msgstr "Voeg een notitie toe"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "Ouder toevoegen"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "Voeg een broer of zus toe"
@@ -1108,9 +1110,16 @@ msgstr "Voeg een zoon toe"
 msgid "Add a source citation"
 msgstr "Voeg een bronvermelding toe"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "Voeg een huwelijkspartner toe"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "Partner toevoegen met een bestaand persoon"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1482,6 +1491,12 @@ msgstr "Alias"
 #: resources/views/lists/individuals-table.phtml
 msgid "Alive"
 msgstr "Levend"
+
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "Levend of overleden"
 
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
@@ -2676,7 +2691,7 @@ msgstr "Canada"
 #: app/Http/RequestHandlers/SitePreferencesAction.php
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr "Kan niet schrijven naar de map \"%s\"."
+msgstr "Kan niet schrijven naar de map “%s”."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -2900,7 +2915,6 @@ msgstr "Kind"
 msgid "Child of "
 msgstr "Kind van "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3990,7 +4004,6 @@ msgstr "Data worden bewaard via Engelse afkortingen en sleutelwoorden. Kortere m
 msgid "Daughter"
 msgstr "Dochter"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4597,9 +4610,7 @@ msgstr "Wijzig deze persoon en vervang de details door uw eigen gegevens."
 msgid "Edit with all GEDCOM tags"
 msgstr "Wijzigen met alle GEDCOM-labels"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4648,6 +4659,11 @@ msgstr "E-mail"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "E-mailadres"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "Alleen e-mail"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5266,7 +5282,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "februari"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Vrouw"
 
@@ -5342,6 +5358,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "Bestanden gemarkeerd met %s zijn nodig voor een goede werking en kunnen niet worden verwijderd."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "Filter"
 
@@ -5700,6 +5718,11 @@ msgstr "E-mail genealogische vragen"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "Genealogische gegevens"
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "Genealogiemenu"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6116,7 +6139,7 @@ msgstr "Hermosillo, Mexico"
 msgid "Hide GEDCOM tags"
 msgstr "Verberg GEDCOM-labels"
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6422,6 +6445,12 @@ msgstr "Importeer geografische gegevens"
 msgid "Import preferences"
 msgstr "Import opties"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "Stamboom importeren"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -6449,6 +6478,16 @@ msgstr "In sommige landen gelden privacy-regels niet alleen voor levende persone
 #, fuzzy
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr "In geval van een inbreuk op persoonsgegevens die een risico vormt voor uw rechten, zullen wij de bevoegde toezichthoudende autoriteit en, indien vereist, de getroffen personen op de hoogte stellen."
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "Postvak en e-mail"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "Alleen postvak"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6634,14 +6673,6 @@ msgstr "Interactieve boom van %s"
 #: app/CustomTags/BrothersKeeper.php
 msgid "Interment"
 msgstr "Begrafenis"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "Interne berichten"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "Interne berichten met e-mails"
 
 #: app/Module/PrivacyPolicy.php
 #, fuzzy
@@ -7333,10 +7364,6 @@ msgstr "Tijdschrift"
 msgid "Maidenhead location code"
 msgstr "Maidenhead-locatiecode"
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "‘Mail naar’-link"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7352,7 +7379,7 @@ msgstr "Maleisië"
 msgid "Maldives"
 msgstr "Maldiven"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Man"
 
@@ -7398,9 +7425,7 @@ msgstr "Beheer stambomen"
 msgid "Manage media"
 msgstr "Beheer media"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "Manager"
@@ -7821,9 +7846,7 @@ msgstr "Gemiddelde systemen (5000 personen): 32-64 MB, 20-40 seconden"
 msgid "Melbourne, Australia"
 msgstr "Melbourne, Australië"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "Lid"
@@ -7933,9 +7956,7 @@ msgstr "Minimumleeftijd voor toestemming"
 msgid "Missing data"
 msgstr "Ontbrekende gegevens"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "Moderator"
 
@@ -8413,7 +8434,7 @@ msgstr "Geen kalenderomzetting"
 msgid "No children"
 msgstr "Geen kinderen"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "Geen contact"
 
@@ -8836,7 +8857,7 @@ msgstr "Op deze dag"
 msgid "Only add new records"
 msgstr "Alleen nieuwe records toevoegen"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "Alleen managers kunnen wijzigen"
@@ -8896,11 +8917,17 @@ msgstr "Orlando, Florida, Verenigde Staten"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
 msgid "Other"
 msgstr "Overige"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
+msgid "Other"
+msgstr "Anders"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "Other facts to show in charts"
@@ -8986,6 +9013,11 @@ msgstr "Pagina-instelling"
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "Paginaformaat"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "Paginering"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9255,7 +9287,7 @@ msgstr "Plaatsnamen wijzigen in de tijd. In genealogie is het gebruikelijk om de
 
 #: resources/views/help/place.phtml
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr "Plaatsnamen moeten in een lijst gescheiden door komma's ingevoerd te worden, beginnend bij de kleinste plaats en als laatste het land. Bijvoorbeeld, \"Kalverstraat, Amsterdam, Nederland\"."
+msgstr "Plaatsnamen moeten in een lijst gescheiden door komma's ingevoerd te worden, beginnend bij de kleinste plaats en als laatste het land. Bijvoorbeeld, “Kalverstraat, Amsterdam, Nederland”."
 
 #: app/Gedcom.php
 msgid "Place of LDS baptism"
@@ -9553,6 +9585,12 @@ msgstr "Nalatenschap vastleggen"
 #, fuzzy
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr "De verwerking van persoonsgegevens op deze website is gebaseerd op het gerechtvaardigd belang bij historisch en genealogisch onderzoek. Dit wordt erkend als historisch onderzoek onder de gegevensbeschermingswet, en bepaalde rechten — waaronder het recht op wissing en het recht van bezwaar — kunnen worden beperkt wanneer de uitoefening van deze rechten het onderzoek onmogelijk zou maken of ernstig zou belemmeren."
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "Voortgang"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -10002,7 +10040,7 @@ msgstr "Onderzoekstaken zijn speciale gebeurtenissen, toegevoegd aan personen in
 
 #: resources/views/modules/todo/config.phtml
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Onderzoekstaken worden opgeslagen met het speciale GEDCOM-label \"_TODO\". Het zou kunnen dat andere genealogieprogramma’s dit label niet herkennen."
+msgstr "Onderzoekstaken worden opgeslagen met het speciale GEDCOM-label “_TODO”. Het zou kunnen dat andere genealogieprogramma’s dit label niet herkennen."
 
 #: app/CustomTags/Gedcom7.php app/Gedcom.php resources/views/admin/tags.phtml
 msgid "Residence"
@@ -10622,6 +10660,7 @@ msgstr "Installatie wizard voor webtrees"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10799,6 +10838,7 @@ msgstr "Toon personen, meer dan 100 jaar geleden geboren."
 msgid "Show individuals born within the last 100 years."
 msgstr "Toon personen, geboren in de laatste 100 jaar."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Toon nog levende personen, of paren waarvan beide partners nog leven."
@@ -10988,23 +11028,21 @@ msgstr "Voor welke talen moet dit blok getoond worden"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Toon miniatuurafbeeldingen in diagrammen en overzichten."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Toon aan managers"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "Toon aan leden"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11204,7 +11242,7 @@ msgstr "Op sommige pagina's kan het aantal malen dat de pagina bezocht is, getoo
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Sommige thema's kunnen pictogrammen tonen in het \"Feiten en gebeurtenissen\" tabblad."
+msgstr "Sommige thema's kunnen pictogrammen tonen in het “Feiten en gebeurtenissen” tabblad."
 
 #: resources/views/edit/change-family-members.phtml
 #: resources/xml/reports/family_group_report.xml
@@ -11213,7 +11251,6 @@ msgstr "Sommige thema's kunnen pictogrammen tonen in het \"Feiten en gebeurtenis
 msgid "Son"
 msgstr "Zoon"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -11790,7 +11827,7 @@ msgstr "Den Haag, Nederland"
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr "De PHP-extensie \"%s\" is niet geïnstalleerd."
+msgstr "De PHP-extensie “%s” is niet geïnstalleerd."
 
 #: app/Services/ServerCheckService.php
 #, php-format
@@ -12103,7 +12140,7 @@ msgstr "De notitie is aangemaakt"
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php
 msgid "The parameter “path” is invalid."
-msgstr "De parameter \"pad\" is ongeldig."
+msgstr "De parameter “pad” is ongeldig."
 
 #: app/Http/RequestHandlers/SetupWizard.php
 msgid "The password needs to be at least six characters long."
@@ -12333,7 +12370,7 @@ msgstr "Er zijn geen feiten voor deze persoon."
 #: app/Module/AbstractIndividualListModule.php
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr "Er zijn geen personen met de achternaam \"%s\""
+msgstr "Er zijn geen personen met de achternaam “%s”"
 
 #: app/Http/RequestHandlers/ManageMediaData.php
 msgid "There are no links to this media object."
@@ -13324,7 +13361,7 @@ msgstr "Verenigde Staten — CO, CT, DE, IN, IA, KY, MD, MN, MT, NE, NH, NJ, OR,
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "Onbekend"
@@ -13339,7 +13376,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Onbekende"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13490,7 +13527,7 @@ msgstr "Gebruik silhouetten"
 
 #: app/Http/RequestHandlers/CopyFact.php
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr "Gebruik het \"wijzig\"-menu om dit in een ander record te plakken."
+msgstr "Gebruik het “wijzig”-menu om dit in een ander record te plakken."
 
 #: resources/views/register-page.phtml
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -13655,8 +13692,7 @@ msgstr "Zichtbaar online"
 msgid "Visible to other users when online"
 msgstr "Zichtbaar voor andere gebruikers wanneer online"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -13773,7 +13809,7 @@ msgstr "Wanneer een record wordt bijgewerkt, worden de gebruiker en de datum/tij
 
 #: resources/views/admin/users-edit.phtml
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Als gebruikers een account aanvragen wordt er een e-mail naar het opgegeven e-mailadres gestuurd met een verificatielink. Als ze op die link klikken, weten we dat het e-mailadres correct is en wordt de optie \"e-mail geverifieerd\" automatisch geselecteerd."
+msgstr "Als gebruikers een account aanvragen wordt er een e-mail naar het opgegeven e-mailadres gestuurd met een verificatielink. Als ze op die link klikken, weten we dat het e-mailadres correct is en wordt de optie “e-mail geverifieerd” automatisch geselecteerd."
 
 #: resources/views/edit/reorder-families.phtml
 msgid "When an individual has more than one spouse, you should sort the families in date order."
@@ -14044,7 +14080,7 @@ msgstr "U moet de account details beoordelen."
 
 #: resources/views/setup/step-5-administrator.phtml
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr "U moet een beheerdersaccount aanmaken. Dit account kan alle aspecten van deze webtrees installatie beheren. Kies a.u.b. voor een \"sterk\" wachtwoord."
+msgstr "U moet een beheerdersaccount aanmaken. Dit account kan alle aspecten van deze webtrees installatie beheren. Kies a.u.b. voor een “sterk” wachtwoord."
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -14186,7 +14222,7 @@ msgid "accept all"
 msgstr "alles accepteren"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "geaccepteerd"
 
@@ -14334,6 +14370,7 @@ msgstr "inwoner"
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "sluiten"
@@ -14525,7 +14562,6 @@ msgstr "ga naar nieuwe persoon"
 msgid "half circle"
 msgstr "halve cirkel"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "zijzelf"
@@ -14536,7 +14572,6 @@ msgstr "zijzelf"
 msgid "hide"
 msgstr "verberg"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "hijzelf"
@@ -14754,7 +14789,7 @@ msgid "patrilineal"
 msgstr "patrilineair"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "uitstaand"
 
@@ -14830,7 +14865,7 @@ msgid "reject"
 msgstr "weiger"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "geweigerd"
 
@@ -15083,7 +15118,6 @@ msgstr "de instellingen voor de database verbinding in het bestand “/data/conf
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "de map “/data” en het bestand “/data/config.ini.php” toegangsrechten hebben die de webserver toestaat ze te lezen"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "zichzelf"
@@ -15183,10 +15217,6 @@ msgstr "webtrees heeft een database nodig om uw genealogische gegevens op te sla
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "webtrees moet e-mails verzenden, zoals wachtwoordherinneringen en website-meldingen."
 
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees stuurt e-mails zonder ze te bewaren"
-
 #: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "echtgenote"
@@ -15244,7 +15274,7 @@ msgstr "“%1$s” moet zijn “%2$s”."
 #: app/Http/RequestHandlers/CopyFact.php
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr "\"%s\" is naar het klembord gekopieerd."
+msgstr "“%s” is naar het klembord gekopieerd."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php
@@ -15256,7 +15286,7 @@ msgstr "“%s” is verwijderd."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "\"Gemarkeerde afbeelding\" (_PRIM) -labels worden door sommige programma's gebruikt om de gewenste afbeelding voor een persoon aan te geven. Een alternatief is om de afbeeldingen opnieuw te ordenen, zodat de gewenste afbeelding eerst wordt vermeld."
+msgstr "“Gemarkeerde afbeelding” (_PRIM) -labels worden door sommige programma's gebruikt om de gewenste afbeelding voor een persoon aan te geven. Een alternatief is om de afbeeldingen opnieuw te ordenen, zodat de gewenste afbeelding eerst wordt vermeld."
 
 #: app/Individual.php app/Note.php
 msgid "…"

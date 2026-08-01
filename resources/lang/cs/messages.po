@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -384,7 +384,6 @@ msgstr "(%s po smrti)"
 msgid "(age %s)"
 msgstr "(věk %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -392,7 +391,6 @@ msgstr "(věk %s)"
 msgid "(aged %s)"
 msgstr "(ve věku %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -401,7 +399,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(ve věku %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -1110,6 +1107,11 @@ msgstr "Přidat novinku"
 msgid "Add a note"
 msgstr "Přidat poznámku"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "Přidat rodiče"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "Přidat sourozence"
@@ -1128,9 +1130,16 @@ msgstr "Přidat syna"
 msgid "Add a source citation"
 msgstr "Přidat citaci pramene"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "Přidat partnera"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "Přidat manžela/manželku pomocí existující osoby"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1502,6 +1511,12 @@ msgstr "Přezdívka"
 #: resources/views/lists/individuals-table.phtml
 msgid "Alive"
 msgstr "Naživu"
+
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "Živý nebo mrtvý"
 
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
@@ -2920,7 +2935,6 @@ msgstr "Dítě"
 msgid "Child of "
 msgstr "Dítě od "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -4011,7 +4025,6 @@ msgstr "Data jsou uložena s použitím anglických zkrácenin (zkratek) a klí�
 msgid "Daughter"
 msgstr "Dcera"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4618,9 +4631,7 @@ msgstr "Upravit tuto osobu a nahradit její údaje vlastními."
 msgid "Edit with all GEDCOM tags"
 msgstr "Editovat se všemi tagy GEDCOM"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4669,6 +4680,11 @@ msgstr "Email"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "Emailová adresa"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "Pouze e-mail"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5287,7 +5303,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "únor"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Žena"
 
@@ -5363,6 +5379,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "Soubory označené %s jsou důležité pro provoz a nebudou odstraněny."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "Prohledat"
 
@@ -5719,6 +5737,11 @@ msgstr "Kontaktní uživatel pro tento rodokmen"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "Genealogické údaje"
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "Genealogické menu"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6135,7 +6158,7 @@ msgstr "Hermosillo, Mexiko"
 msgid "Hide GEDCOM tags"
 msgstr "Skrýt tagy GEDCOM"
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6441,6 +6464,12 @@ msgstr "Importovat zeměpisná data"
 msgid "Import preferences"
 msgstr "Nastavení importu"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "Import rodokmenu"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -6467,6 +6496,16 @@ msgstr "V některých zemích se zákony o soukromí nevztahují pouze na žijí
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "Schránka a e-mail"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "Pouze schránka"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6652,14 +6691,6 @@ msgstr "Interaktivní strom pro %s"
 #: app/CustomTags/BrothersKeeper.php
 msgid "Interment"
 msgstr "Pohřbení"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "Vnitřní zprávy"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "Vnitřní zprávy s e-maily"
 
 #: app/Module/PrivacyPolicy.php
 #, fuzzy
@@ -7349,10 +7380,6 @@ msgstr "Magazín"
 msgid "Maidenhead location code"
 msgstr "Kód lokalizace Maidenhead"
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "E-mail"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7368,7 +7395,7 @@ msgstr "Malajsie"
 msgid "Maldives"
 msgstr "Maledivy"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Muž"
 
@@ -7414,9 +7441,7 @@ msgstr "Správa rodokmenů"
 msgid "Manage media"
 msgstr "Správa médií"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "Správce"
@@ -7837,9 +7862,7 @@ msgstr "Středně velké systémy (5000 osob): 32–64 MB, 20–40 sekund"
 msgid "Melbourne, Australia"
 msgstr "Melbourne, Austrálie"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "Člen"
@@ -7949,9 +7972,7 @@ msgstr "Minimální věk pro souhlas"
 msgid "Missing data"
 msgstr "Chybějící data"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "Moderátor"
 
@@ -8429,7 +8450,7 @@ msgstr "Bez konverze kalendáře"
 msgid "No children"
 msgstr "Žádné zaznamenané děti"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "Bez kontaktu"
 
@@ -8854,7 +8875,7 @@ msgstr "V tento den"
 msgid "Only add new records"
 msgstr "Jen přidat nové záznamy"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "Upravovat mohou jen správci"
@@ -8914,11 +8935,17 @@ msgstr "Orlando, Florida, USA"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
 msgid "Other"
 msgstr "Ostatní"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
+msgid "Other"
+msgstr "Jiné"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "Other facts to show in charts"
@@ -9003,6 +9030,11 @@ msgstr "Nastavení stránky"
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "Velikost stránky"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "Stránkování"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9567,6 +9599,12 @@ msgstr "Soudní ověření poslední vůle"
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "Průběh"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -10633,6 +10671,7 @@ msgstr "Průvodce pro nastavení webtrees"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10810,6 +10849,7 @@ msgstr "Ukázat osoby, které se narodily před více než 100 lety."
 msgid "Show individuals born within the last 100 years."
 msgstr "Ukázat osoby, které se narodily během posledních 100 let."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Zobrazit osoby, které jsou naživu nebo páry, kde jsou oba partneři naživu."
@@ -10999,23 +11039,21 @@ msgstr "Pro které jazyky tento blok zobrazit"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Zobrazovat náhledové obrázky v diagramech a rodinných skupinách."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Zobrazit správcům"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "Zobrazit členům"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11224,7 +11262,6 @@ msgstr "Některá témata dokáží na panelu „Fakta a události“ zobrazovat
 msgid "Son"
 msgstr "Syn"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -13329,7 +13366,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "Neznámé"
@@ -13344,7 +13381,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Neznámí"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13496,7 +13533,7 @@ msgstr "Používat siluety"
 
 #: app/Http/RequestHandlers/CopyFact.php
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr "K vložení tohoto údaje do jiného záznamu použít menu \"upravit\"."
+msgstr "K vložení tohoto údaje do jiného záznamu použít menu “upravit”."
 
 #: resources/views/register-page.phtml
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -13661,8 +13698,7 @@ msgstr "Viditelný online"
 msgid "Visible to other users when online"
 msgstr "Viditelný pro jiné uživatele, když je online"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -14186,7 +14222,7 @@ msgid "accept all"
 msgstr "přijmout vše"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "přijata"
 
@@ -14334,6 +14370,7 @@ msgstr "občan"
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "zavřít"
@@ -14526,7 +14563,6 @@ msgstr "přejít na novou osobu"
 msgid "half circle"
 msgstr "půlkruh"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "ona sama"
@@ -14537,7 +14573,6 @@ msgstr "ona sama"
 msgid "hide"
 msgstr "skrýt"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "on sám"
@@ -14756,7 +14791,7 @@ msgid "patrilineal"
 msgstr "otcovsko-rodový"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "čeká"
 
@@ -14832,7 +14867,7 @@ msgid "reject"
 msgstr "odmítnout"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "odmítnuta"
 
@@ -15085,7 +15120,6 @@ msgstr "nastavení připojení k databázi v souboru „/data/config.ini.php“ 
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "adresář „/data“ a soubor „/data/config.ini.php“ mají přístupová práva nastavená tak, že webový server je může číst"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "oni sami"
@@ -15185,10 +15219,6 @@ msgstr "webtrees potřebuje k ukládání genealogických dat databázi."
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "webtrees potřebuje odesílat emaily, jako jsou připomenutí hesla nebo různá oznámení."
 
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees neukládá emaily, které odesílá"
-
 #: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "manželka"
@@ -15247,7 +15277,7 @@ msgstr "„%1$s“ by mělo být „%2$s“."
 #: app/Http/RequestHandlers/CopyFact.php
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr "\"%s\" vkopírováno do schránky."
+msgstr "“%s” vkopírováno do schránky."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php

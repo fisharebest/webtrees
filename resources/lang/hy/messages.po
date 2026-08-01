@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -362,7 +362,6 @@ msgstr "(%s մահից հետո)"
 msgid "(age %s)"
 msgstr "(տարիքը %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -370,7 +369,6 @@ msgstr "(տարիքը %s)"
 msgid "(aged %s)"
 msgstr "(%s տարեկան)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -379,7 +377,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(%s տարեկան)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -1085,6 +1082,10 @@ msgstr "Ավելացնել նորությունների հոդված"
 msgid "Add a note"
 msgstr "Ավելացնել նշում"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+msgid "Add a parent"
+msgstr ""
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "Ավելացրեք քույր կամ եղբայր"
@@ -1103,9 +1104,15 @@ msgstr "Ավելացնել որդի"
 msgid "Add a source citation"
 msgstr "Ավելացնել աղբյուրի մեջբերում"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "Ավելացնել կողակից"
+
+#: resources/views/modules/relatives/tab.phtml
+msgid "Add a spouse using an existing individual"
+msgstr ""
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1477,6 +1484,11 @@ msgstr "Այլանուն"
 #: resources/views/lists/individuals-table.phtml
 msgid "Alive"
 msgstr "Կենդանի"
+
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+msgid "Alive or dead"
+msgstr ""
 
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
@@ -2891,7 +2903,6 @@ msgstr "Երեխա"
 msgid "Child of "
 msgstr "-ի երեխա "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3974,7 +3985,6 @@ msgstr "Ամսաթվերը պահվում են՝ օգտագործելով անգ
 msgid "Daughter"
 msgstr "Դուստր"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4580,9 +4590,7 @@ msgstr "Խմբագրեք այս անձին և փոխարինեք նրա տվյա
 msgid "Edit with all GEDCOM tags"
 msgstr "Խմբագրել բոլոր GEDCOM պիտակներով"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4631,6 +4639,10 @@ msgstr "Էլ"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "Էլփոստի հասցե"
+
+#: app/Enums/ContactMethod.php
+msgid "Email only"
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5248,7 +5260,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "փետրվար"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Իգական"
 
@@ -5324,6 +5336,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "%s-ով նշված ֆայլերը պահանջվում են ճիշտ աշխատանքի համար և չեն կարող հեռացվել:"
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "Զտել"
 
@@ -5681,6 +5695,10 @@ msgstr "Ծագումնաբանության կոնտակտ"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "Ծագումնաբանության տվյալներ"
+
+#: resources/views/layouts/default.phtml
+msgid "Genealogy menu"
+msgstr ""
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6094,7 +6112,7 @@ msgstr "Հերմոսիլո, Մեքսիկա"
 msgid "Hide GEDCOM tags"
 msgstr "Թաքցնել GEDCOM պիտակները"
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6396,6 +6414,11 @@ msgstr "Ներմուծեք աշխարհագրական տվյալներ"
 msgid "Import preferences"
 msgstr "Ներմուծման նախապատվություններ"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+msgid "Importing family tree"
+msgstr ""
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -6421,6 +6444,14 @@ msgstr "Որոշ երկրներում գաղտնիության մասին օրե
 
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
+msgstr ""
+
+#: app/Enums/ContactMethod.php
+msgid "Inbox and email"
+msgstr ""
+
+#: app/Enums/ContactMethod.php
+msgid "Inbox only"
 msgstr ""
 
 #: resources/views/admin/trees-unconnected.phtml
@@ -6607,14 +6638,6 @@ msgstr "%s-ի ինտերակտիվ ծառ"
 #: app/CustomTags/BrothersKeeper.php
 msgid "Interment"
 msgstr "Հուղարկավորություն"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "Ներքին հաղորդագրություններ"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "Ներքին հաղորդագրություններ էլփոստով"
 
 #: app/Module/PrivacyPolicy.php
 msgid "International transfers"
@@ -7301,10 +7324,6 @@ msgstr "Ամսագիր"
 msgid "Maidenhead location code"
 msgstr "Maidenhead տեղադրության կոդը"
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "Mailto հղում"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7320,7 +7339,7 @@ msgstr "Մալայզիա"
 msgid "Maldives"
 msgstr "Մալդիվներ"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Արական"
 
@@ -7366,9 +7385,7 @@ msgstr "Կառավարեք տոհմածառերը"
 msgid "Manage media"
 msgstr "Կառավարեք լրատվամիջոցները"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "Կառավարիչ"
@@ -7787,9 +7804,7 @@ msgstr "Միջին համակարգեր (5000 անհատներ)՝ 32–64 ՄԲ, 
 msgid "Melbourne, Australia"
 msgstr "Մելբուրն, Ավստրալիա"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "Անդամ"
@@ -7898,9 +7913,7 @@ msgstr ""
 msgid "Missing data"
 msgstr "Տվյալներ բացակայում են"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "Մոդերատոր"
 
@@ -8378,7 +8391,7 @@ msgstr "Օրացույցի փոխարկում չկա"
 msgid "No children"
 msgstr "Երեխաներ չկան"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "Կապ չկա"
 
@@ -8799,7 +8812,7 @@ msgstr "Այս օրը"
 msgid "Only add new records"
 msgstr "Ավելացնել միայն նոր գրառումներ"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "Միայն կառավարիչները կարող են խմբագրել"
@@ -8859,11 +8872,16 @@ msgstr "Օռլանդո, Ֆլորիդա, Ամերիկայի Միացյալ Նահ
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
 msgid "Other"
 msgstr "Այլ"
+
+#: app/Enums/Sex.php
+msgctxt "SEX"
+msgid "Other"
+msgstr ""
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "Other facts to show in charts"
@@ -8947,6 +8965,10 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "Էջի չափը"
+
+#: resources/views/modules/media-list/pagination.phtml
+msgid "Pagination"
+msgstr ""
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9509,6 +9531,11 @@ msgstr "Վճռաբեկ"
 
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+msgid "Progress"
 msgstr ""
 
 #: app/Gedcom.php
@@ -10567,6 +10594,7 @@ msgstr "Վեբ ծառերի տեղադրման հրաշագործ"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10743,6 +10771,7 @@ msgstr "Ցույց տվեք ավելի քան 100 տարի առաջ ծնված �
 msgid "Show individuals born within the last 100 years."
 msgstr "Ցույց տալ վերջին 100 տարվա ընթացքում ծնված անհատներին:"
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Ցույց տվեք կենդանի մարդկանց կամ զույգերին, որտեղ երկու գործընկերներն էլ ողջ են:"
@@ -10932,23 +10961,21 @@ msgstr "Ցույց տալ այս բլոկը, թե որ լեզուների համ
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Ցույց տալ մանրապատկերների պատկերները գծապատկերներում և ընտանեկան խմբերում:"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Ցույց տալ ղեկավարներին"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "Ցույց տալ անդամներին"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11156,7 +11183,6 @@ msgstr "Որոշ թեմաներ կարող են պատկերակներ ցուց�
 msgid "Son"
 msgstr "Որդի"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -13248,7 +13274,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "Անհայտ"
@@ -13263,7 +13289,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Անհայտ"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13577,8 +13603,7 @@ msgstr "Տեսանելի է առցանց"
 msgid "Visible to other users when online"
 msgstr "Տեսանելի է այլ օգտվողների համար, երբ առցանց"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -14098,7 +14123,7 @@ msgid "accept all"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "ընդունված"
 
@@ -14246,6 +14271,7 @@ msgstr "քաղաքացի"
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "փակել"
@@ -14435,7 +14461,6 @@ msgstr "գնալ նոր անհատի"
 msgid "half circle"
 msgstr "կես շրջան"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "ինքն իրեն"
@@ -14446,7 +14471,6 @@ msgstr "ինքն իրեն"
 msgid "hide"
 msgstr "թաքցնել"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "ինքն իրեն"
@@ -14664,7 +14688,7 @@ msgid "patrilineal"
 msgstr "հայրական"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "սպասվում է"
 
@@ -14740,7 +14764,7 @@ msgid "reject"
 msgstr "մերժել"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "մերժվել է"
 
@@ -14992,7 +15016,6 @@ msgstr "տվյալների բազայի միացման կարգավորումն�
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "«/data» թղթապանակը և «/data/config.ini.php» ֆայլն ունեն մուտքի թույլտվություններ, որոնք թույլ են տալիս վեբսերվերին կարդալ դրանք"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "իրենք իրենց"
@@ -15091,10 +15114,6 @@ msgstr "webtrees-ին անհրաժեշտ է տվյալների բազա՝ ձեր
 #: resources/views/admin/site-mail.phtml
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "webtrees-ը պետք է նամակներ ուղարկի, ինչպիսիք են գաղտնաբառի հիշեցումները և կայքի ծանուցումները:"
-
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees-ը նամակներ է ուղարկում առանց պահեստավորման"
 
 #: app/Elements/RoleInEvent.php
 msgid "wife"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -364,7 +364,6 @@ msgstr "(%s לאחר הפטירה)"
 msgid "(age %s)"
 msgstr "(גיל %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -372,7 +371,6 @@ msgstr "(גיל %s)"
 msgid "(aged %s)"
 msgstr "(בגיל %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -381,7 +379,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(בגיל %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -889,7 +886,7 @@ msgstr "קו זמן המציג ארועים של אדם."
 
 #: resources/views/admin/users-edit.phtml
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "משתמש לא יוכל להתחבר עד שאופציות \"דוא״ל אומת\" ו\"אושר על ידי מנהל מערכת\" יבחרו."
+msgstr "משתמש לא יוכל להתחבר עד שאופציות “דוא״ל אומת” ו“אושר על ידי מנהל מערכת” יבחרו."
 
 #: resources/xml/reports/pedigree_report.xml
 #, fuzzy
@@ -1090,6 +1087,11 @@ msgstr "הוסף מאמר חדשות"
 msgid "Add a note"
 msgstr "הוסף הערה"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "הוספת הורה"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "הוסף אח/אחות"
@@ -1108,9 +1110,16 @@ msgstr "הוסף בן"
 msgid "Add a source citation"
 msgstr "הוסף ציטוט של מקור"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "הוסף בעל או אישה"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "הוספת בן/בת זוג באמצעות אדם קיים"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1483,6 +1492,12 @@ msgstr "שם נרדף"
 msgid "Alive"
 msgstr "חיים"
 
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "חי או מת"
+
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
 #: resources/views/lists/datatables-attributes.phtml
@@ -1520,7 +1535,7 @@ msgstr "כל הרשומות"
 #. I18N: Description of the “TinyMCE” module. WYSIWYG = “what you see is what you get”
 #: app/Module/TinymceModule.php
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "אפשר למודולים אחרים לערוך טקסט באמצעות עורך \"WYSIWYG\", במקום להשתמש בקודי HTML."
+msgstr "אפשר למודולים אחרים לערוך טקסט באמצעות עורך “WYSIWYG”, במקום להשתמש בקודי HTML."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -1559,7 +1574,7 @@ msgstr "מנהל חייב לאשר את חשבון המשתמש החדש ולב�
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "חלופה ללשונית \"מדיה\", ומציג תמונות משופר."
+msgstr "חלופה ללשונית “מדיה”, ומציג תמונות משופר."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php
@@ -1740,7 +1755,7 @@ msgstr "כחול ירקרק"
 #: resources/views/edit/icon-fact-delete.phtml
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr "האם אתה בטוח שברצונך למחוק את הקישור אל \"%s\"?"
+msgstr "האם אתה בטוח שברצונך למחוק את הקישור אל “%s”?"
 
 #: resources/views/individual-page-name.phtml
 #: resources/views/media-page-details.phtml
@@ -1765,7 +1780,7 @@ msgstr "האם באמת למחוק הודעה זו? לא ניתן להחזיר �
 #: resources/views/record-page-menu.phtml
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "האם אתה בטוח שאתה רוצה למחוק את \"%s\"?"
+msgstr "האם אתה בטוח שאתה רוצה למחוק את “%s”?"
 
 #: resources/views/pending-changes-page.phtml
 msgid "Are you sure you want to reject all the changes to this family tree?"
@@ -2787,11 +2802,11 @@ msgstr "שנה בני משפחה"
 
 #: app/Http/RequestHandlers/TreePageEdit.php
 msgid "Change the “Home page” blocks"
-msgstr "שנה הבלוקים של \"דף הבית\""
+msgstr "שנה הבלוקים של “דף הבית”"
 
 #: app/Http/RequestHandlers/UserPageEdit.php
 msgid "Change the “My page” blocks"
-msgstr "שנה הבלוקים של ה\"דף שלי\""
+msgstr "שנה הבלוקים של ה“דף שלי”"
 
 #. I18N: [a record was] Changed by <user>
 #: resources/views/modules/recent_changes/changes-list.phtml
@@ -2898,7 +2913,6 @@ msgstr "ילד/ה"
 msgid "Child of "
 msgstr "ילד/ה של "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3381,7 +3395,7 @@ msgstr "חברה"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameSlashesAndSpaces.php
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "תקן רשומות NAME שהם במבנה \"John/DOE/\" או \"John /DOE\", שנוצרות ע״י תוכניות חקר שושלת יוחסין ישנות."
+msgstr "תקן רשומות NAME שהם במבנה “John/DOE/” או “John /DOE”, שנוצרות ע״י תוכניות חקר שושלת יוחסין ישנות."
 
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
 msgid "Correspondence"
@@ -3987,7 +4001,6 @@ msgstr "תאריכים שמורים ע״י שימוש בקיצורים ומיל�
 msgid "Daughter"
 msgstr "בת"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4494,11 +4507,11 @@ msgstr "שם משתמש כפול. משתמש עם שם משתמש זה מוגד�
 
 #: resources/views/help/source-events.phtml
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "כל מקור רושם אירועים מסוימים, בדרך כלל עבור תחום תאריכים נתון ועבור מקום מסוים. לדוגמא: מפקד אוכלוסין רושם אירועים של מפקד אוכלוסין וכנסייה או בית כנסת רושמים אירועים של לידות, נישואין ופטירה.<br><br>בחר את האירועים שרשומים ע״י המקור הזה מהרשימה של אירועים המסופקת. את הנתונים יש להגדיר במבנה תחום <i>FROM 1900 TO 1910</i>. מקום הוא המקום הנמוך שכולל את כל המיקומים התחתונים המוזכרים במקור הזה. לדוגמא, \"Oneida, Idaho, USA\" ישמש כמקום המקור לאירועים שהתרחשו בערים שונות במחוז Oneida. \"Idaho, USA\" יהיה המקום של המקור של אירועים שהתרחשו לא רק במחוז Oneida אלא גם במחוזות אחרים של Idaho."
+msgstr "כל מקור רושם אירועים מסוימים, בדרך כלל עבור תחום תאריכים נתון ועבור מקום מסוים. לדוגמא: מפקד אוכלוסין רושם אירועים של מפקד אוכלוסין וכנסייה או בית כנסת רושמים אירועים של לידות, נישואין ופטירה.<br><br>בחר את האירועים שרשומים ע״י המקור הזה מהרשימה של אירועים המסופקת. את הנתונים יש להגדיר במבנה תחום <i>FROM 1900 TO 1910</i>. מקום הוא המקום הנמוך שכולל את כל המיקומים התחתונים המוזכרים במקור הזה. לדוגמא, “Oneida, Idaho, USA” ישמש כמקום המקור לאירועים שהתרחשו בערים שונות במחוז Oneida. “Idaho, USA” יהיה המקום של המקור של אירועים שהתרחשו לא רק במחוז Oneida אלא גם במחוזות אחרים של Idaho."
 
 #: resources/views/help/pending-changes.phtml
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "לכל חשבון משתמש יש אפשרות \"קבל באופן אוטומטי את השינויים\". כאשר אפשרות זו מופעלת, כל שינוי שנעשה על ידי אותו משתמש נשמר באופן מיידי. מנהלים רבים מאפשרים זאת לחשבון המשתמש שלהם."
+msgstr "לכל חשבון משתמש יש אפשרות “קבל באופן אוטומטי את השינויים”. כאשר אפשרות זו מופעלת, כל שינוי שנעשה על ידי אותו משתמש נשמר באופן מיידי. מנהלים רבים מאפשרים זאת לחשבון המשתמש שלהם."
 
 #: resources/views/modules/gedcom_stats/config.phtml
 #: resources/views/modules/gedcom_stats/statistics.phtml
@@ -4594,9 +4607,7 @@ msgstr "ערוך את האדם הזה והחלף פרטים שלהם עם שלך
 msgid "Edit with all GEDCOM tags"
 msgstr "ערוך עם כל תגי GEDCOM"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4645,6 +4656,11 @@ msgstr "דוא\"ל"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "כתובת דוא״ל"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "דוא״ל בלבד"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -4828,7 +4844,7 @@ msgstr "תאריך מדויק"
 #: app/Module/AbstractIndividualListModule.php
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "אל תכלול אנשים ששם הנישואין שלהם \"%s\""
+msgstr "אל תכלול אנשים ששם הנישואין שלהם “%s”"
 
 #: resources/views/admin/media.phtml
 msgid "Exclude subfolders"
@@ -5262,7 +5278,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "פברואר"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "נקבה"
 
@@ -5320,13 +5336,13 @@ msgstr "שם הקובץ בשרת"
 #: app/Services/MediaFileService.php
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "בשמות קבצים אסור לכלול את האות \"%s\"."
+msgstr "בשמות קבצים אסור לכלול את האות “%s”."
 
 #: app/Http/RequestHandlers/UploadMediaAction.php
 #: app/Services/MediaFileService.php
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "הסיומת \"%s\" אסורה בשמות קבצים."
+msgstr "הסיומת “%s” אסורה בשמות קבצים."
 
 #: resources/views/admin/control-panel.phtml
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
@@ -5338,6 +5354,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "קבצים שמסומנים ע״י %s נחוצים לפעולה תקינה ולא ניתן למחוק אותם."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "סנן"
 
@@ -5694,6 +5712,11 @@ msgstr "הקשר לנתוני חקר שושלת יוחסין"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "נתוני חקר שושלת יוחסין"
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "תפריט גנאלוגיה"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6109,7 +6132,7 @@ msgstr "ארמוסיו, מקסיקו"
 msgid "Hide GEDCOM tags"
 msgstr "הסתר תגי GEDCOM"
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6305,7 +6328,7 @@ msgstr "אם שם המשפחה אינו ידוע, השתמש בלוכסנים ר
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "אם לאדם זה יש אירועים כלשהם למעט מוות, קבורה, או שרפה בשנים האחרונות במספר זה של שנים, הוא נחשב \"חי\". תאריכי הלידה של ילדים נחשבים לאירועים כאלה למטרה זו."
+msgstr "אם לאדם זה יש אירועים כלשהם למעט מוות, קבורה, או שרפה בשנים האחרונות במספר זה של שנים, הוא נחשב “חי”. תאריכי הלידה של ילדים נחשבים לאירועים כאלה למטרה זו."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -6414,18 +6437,24 @@ msgstr "יבא נתונים גיאוגרפיים"
 msgid "Import preferences"
 msgstr "העדפות של יבוא"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "מייבא עץ משפחה"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "בעץ משפחה, לכל רשומה יש מספר התיחסות פנימי (הנקרא \"XREF\"), כגון \"F123\" או \"R14\"."
+msgstr "בעץ משפחה, לכל רשומה יש מספר התיחסות פנימי (הנקרא “XREF”), כגון “F123” או “R14”."
 
 #: resources/views/help/romanized.phtml
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "בתרבויות רבות מקובל שיש שם מסורתי שכתוב באותיות מסורתיות וגם גרסה לטינית, כמו אנגלית, של השם.<br><br>אם תעדיף לרשום את השם המסורתי בשדות השם הרגילים, תוכל להשתמש בשדה זה עבור הכתב הלטיני של אותו השם. השם הלטיני יופיע גם ברשימות וגם בתרשימים.<br><br>עברית, יונית, רוסית, ערבית או סינית, הן דוגמאות לשפות בהן לאדם יש שם כתוב באלף בית שאינו לטיני (האלף בית ה\"מסורתי\") ובנוסף באותיות לטיניות (השם ה\"לטיני\").<br><br>למרות ששם השדה \"לטיני\", הוא יכול להכיל גם אותיות שאינן לטיניות. דבר זה יכול להיות שימושי עבור שמות יפניים, ששם יתכנו שלושה אלף-בית שונים."
+msgstr "בתרבויות רבות מקובל שיש שם מסורתי שכתוב באותיות מסורתיות וגם גרסה לטינית, כמו אנגלית, של השם.<br><br>אם תעדיף לרשום את השם המסורתי בשדות השם הרגילים, תוכל להשתמש בשדה זה עבור הכתב הלטיני של אותו השם. השם הלטיני יופיע גם ברשימות וגם בתרשימים.<br><br>עברית, יונית, רוסית, ערבית או סינית, הן דוגמאות לשפות בהן לאדם יש שם כתוב באלף בית שאינו לטיני (האלף בית ה“מסורתי”) ובנוסף באותיות לטיניות (השם ה“לטיני”).<br><br>למרות ששם השדה “לטיני”, הוא יכול להכיל גם אותיות שאינן לטיניות. דבר זה יכול להיות שימושי עבור שמות יפניים, ששם יתכנו שלושה אלף-בית שונים."
 
 #: resources/views/help/hebrew.phtml
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "בתרבויות רבות מקובל שיש שם מסורתי שכתוב באותיות מסורתיות וגם גרסה לטינית, כמו אנגלית, של השם.<br><br>אם תעדיף לרשום את השם הלטיני בשדות השם הרגילים, תוכל להשתמש בשדה זה עבור הכתב הלא-לטיני של אותו השם באלף בית העברי, היווני, הרוסי, הערבי או הסיני. השם העברי יופיע גם ברשימות וגם בתרשימים.<br><br>למרות ששם השדה \"עברי\" הוא יכול להכיל גם אותיות אחרות."
+msgstr "בתרבויות רבות מקובל שיש שם מסורתי שכתוב באותיות מסורתיות וגם גרסה לטינית, כמו אנגלית, של השם.<br><br>אם תעדיף לרשום את השם הלטיני בשדות השם הרגילים, תוכל להשתמש בשדה זה עבור הכתב הלא-לטיני של אותו השם באלף בית העברי, היווני, הרוסי, הערבי או הסיני. השם העברי יופיע גם ברשימות וגם בתרשימים.<br><br>למרות ששם השדה “עברי” הוא יכול להכיל גם אותיות אחרות."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -6441,6 +6470,16 @@ msgstr "בחלק מהמדינות, חוקי הפרטיות חלים לא רק ע
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
 
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "תיבת דואר נכנס ודוא״ל"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "תיבת דואר נכנס בלבד"
+
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
 msgstr "כלול כינויים"
@@ -6452,7 +6491,7 @@ msgstr "כלול מקורבים"
 #: app/Module/AbstractIndividualListModule.php
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "כלול אנשים ששם הנישואין שלהם \"%s\""
+msgstr "כלול אנשים ששם הנישואין שלהם “%s”"
 
 #. I18N: Label for check-box
 #: resources/views/admin/media.phtml
@@ -6626,14 +6665,6 @@ msgstr "עץ אינטראקטיבי של %s"
 msgid "Interment"
 msgstr "קְבוּרָה"
 
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "הודעות פנימיות"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "הודעות פנימיות עם דואר אלקטרוני"
-
 #: app/Module/PrivacyPolicy.php
 #, fuzzy
 msgid "International transfers"
@@ -6803,7 +6834,7 @@ msgstr "שמור פתוח"
 #: resources/views/admin/trees-preferences.phtml
 #: resources/views/edit/edit-fact.phtml resources/views/edit/edit-record.phtml
 msgid "Keep the existing “last change” information"
-msgstr "שמור את המידע \"שינוי אחרון\""
+msgstr "שמור את המידע “שינוי אחרון”"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7322,10 +7353,6 @@ msgstr "כתב עת"
 msgid "Maidenhead location code"
 msgstr "קוד איתור מיידנהד"
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "קישור דואר אלקטרוני"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7341,7 +7368,7 @@ msgstr "מלזיה"
 msgid "Maldives"
 msgstr "איים המלדיביים"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "זכר"
 
@@ -7387,9 +7414,7 @@ msgstr "נהל עצי משפחה"
 msgid "Manage media"
 msgstr "נהל מדיה"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "מנהל"
@@ -7810,9 +7835,7 @@ msgstr "מערכות בינוניות (5000 אנשים): 64-32 מגה-בית , 4
 msgid "Melbourne, Australia"
 msgstr "מלבורן, אוסטרליה"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "חבר"
@@ -7921,9 +7944,7 @@ msgstr ""
 msgid "Missing data"
 msgstr "נתונים חסרים"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "מנהל"
 
@@ -8401,7 +8422,7 @@ msgstr "אין המרת לוח שנה"
 msgid "No children"
 msgstr "אין ילדים באתר"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "webtrees שולח דואר אלקטרוני ללא אחסון"
 
@@ -8823,7 +8844,7 @@ msgstr "ביום הזה"
 msgid "Only add new records"
 msgstr "הוסף רק רשומות חדשות"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "רק מנהלים יכולים לערוך"
@@ -8883,9 +8904,15 @@ msgstr "אורלנדו, פלורידה, ארצות הברית"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
+msgid "Other"
+msgstr "אחר"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
 msgid "Other"
 msgstr "אחר"
 
@@ -8972,6 +8999,11 @@ msgstr "הגדרת עמוד"
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "גודל הדף"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "עימוד"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9063,7 +9095,7 @@ msgstr "סיסמה"
 #: resources/views/password-reset-page.phtml
 #: resources/views/register-page.phtml
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "הסיסמאות צריכות להיות לפחות באורך 8 תוים ובאותיות לועזיות. אותיות גדולות וקטנות הן לא אותו דבר, כך ש-\"secret\" שונה מ-\"SECRET\"."
+msgstr "הסיסמאות צריכות להיות לפחות באורך 8 תוים ובאותיות לועזיות. אותיות גדולות וקטנות הן לא אותו דבר, כך ש-“secret” שונה מ-“SECRET”."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9239,7 +9271,7 @@ msgstr "שמות המקומות יכולים להשתנות עם הזמן. בח�
 
 #: resources/views/help/place.phtml
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr "יש להזין שמות מקומות כרשימה מופרדת בפסיקים, החל מהמקום הקטן ביותר וכלה במדינה. לדוגמה, \"רחביה, ירושלים, ישראל\" או \"Westminster, London, England\"."
+msgstr "יש להזין שמות מקומות כרשימה מופרדת בפסיקים, החל מהמקום הקטן ביותר וכלה במדינה. לדוגמה, “רחביה, ירושלים, ישראל” או “Westminster, London, England”."
 
 #: app/Gedcom.php
 msgid "Place of LDS baptism"
@@ -9460,7 +9492,7 @@ msgstr "העדפות"
 #: resources/views/admin/modules.phtml
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "קיימות העדפות עבור מודול \"%s\", אבל מודול זה אינו קיים יותר."
+msgstr "קיימות העדפות עבור מודול “%s”, אבל מודול זה אינו קיים יותר."
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml
@@ -9536,6 +9568,12 @@ msgstr "אישור צוואה"
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "התקדמות"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -9985,7 +10023,7 @@ msgstr "משימות מחקר הן אירועים מיוחדים, שהוספו �
 
 #: resources/views/modules/todo/config.phtml
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "משימות מחקר מאוחסנות באמצעות תג GEDCOM מותאם \"TODO_\". יתכן שיישומים אחרים של חקר שושלת יוחסין לא מזהים את התג הזה."
+msgstr "משימות מחקר מאוחסנות באמצעות תג GEDCOM מותאם “TODO_”. יתכן שיישומים אחרים של חקר שושלת יוחסין לא מזהים את התג הזה."
 
 #: app/CustomTags/Gedcom7.php app/Gedcom.php resources/views/admin/tags.phtml
 msgid "Residence"
@@ -10588,7 +10626,7 @@ msgstr "הגדר את רמת גישת הפרטיות עבור כל האנשים 
 #: resources/views/emails/verify-notify-html.phtml
 #: resources/views/emails/verify-notify-text.phtml
 msgid "Set the status to “approved”."
-msgstr "הגדר את המעמד כ\"אושר\"."
+msgstr "הגדר את המעמד כ“אושר”."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -10601,6 +10639,7 @@ msgstr "אשף התקנה webtrees"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10704,7 +10743,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "הראה הסכם הגנה על פרטיות על הדף \"בקש חשבון משתמש חדש\""
+msgstr "הראה הסכם הגנה על פרטיות על הדף “בקש חשבון משתמש חדש”"
 
 #: resources/views/modules/media/tab.phtml
 msgid "Show all media"
@@ -10777,6 +10816,7 @@ msgstr "הראה אנשים שנולדו לפני יותר מ-100 שנה."
 msgid "Show individuals born within the last 100 years."
 msgstr "הראה אנשים שנולדו ב-100 השנים האחרונות."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "הראה אנשים חיים או זוגות שבהם שני בני הזוג חיים."
@@ -10966,23 +11006,21 @@ msgstr "באיזה שפות להראות את הבלוק הזה"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "הראה תמונות ממוזערות בתרשימים וקבוצות משפחה."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "הצג למנהלים"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "הצג לחברים"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -10991,12 +11029,12 @@ msgstr "הצג למבקרים"
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "הראה זוגות או אנשי \"עלים\". מדובר באנשים שחיים אבל אין להם ילדים רשומים במאגר הנתונים."
+msgstr "הראה זוגות או אנשי “עלים”. מדובר באנשים שחיים אבל אין להם ילדים רשומים במאגר הנתונים."
 
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "הראה זוגות או אנשי \"שורשים\" ניתן גם לכנות את האנשים הללו \"פטריארכים\". מדובר באנשים שהוריהם אינם במאגר הנתונים."
+msgstr "הראה זוגות או אנשי “שורשים” ניתן גם לכנות את האנשים הללו “פטריארכים”. מדובר באנשים שהוריהם אינם במאגר הנתונים."
 
 #. I18N: %s are placeholders for numbers
 #: resources/views/lists/datatables-attributes.phtml
@@ -11182,7 +11220,7 @@ msgstr "דפים מסוימים יכולים להציג את מספר הפעמי
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "עיצובים מסוימים יכולים להציג צלמיות בלשונית \"עובדות ואירועים\"."
+msgstr "עיצובים מסוימים יכולים להציג צלמיות בלשונית “עובדות ואירועים”."
 
 #: resources/views/edit/change-family-members.phtml
 #: resources/xml/reports/family_group_report.xml
@@ -11191,7 +11229,6 @@ msgstr "עיצובים מסוימים יכולים להציג צלמיות בל�
 msgid "Son"
 msgstr "בן"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -11752,7 +11789,7 @@ msgstr "השדה <b>שם המשפחה</b> מכיל שם שמשמש במיון ו
 #: app/Http/RequestHandlers/SynchronizeTrees.php
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "הקובץ \"GEDCOM \"%s יובא."
+msgstr "הקובץ “GEDCOM ”%s יובא."
 
 #: resources/views/admin/tags.phtml
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
@@ -11766,12 +11803,12 @@ msgstr "האג, הולנד"
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr "תוסף PHP \"%s\" אינו מותקן."
+msgstr "תוסף PHP “%s” אינו מותקן."
 
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr "פונקצית PHP \"%1$s\" מושבתת."
+msgstr "פונקצית PHP “%1$s” מושבתת."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php
@@ -11781,12 +11818,12 @@ msgstr "חסרה תיקייה זמנית של PHP."
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr "הגדרת PHP.INI \"%1$s\" מושבתת."
+msgstr "הגדרת PHP.INI “%1$s” מושבתת."
 
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr "הגדרת PHP.INI \"%1$s\" מופעלת."
+msgstr "הגדרת PHP.INI “%1$s” מופעלת."
 
 #: resources/views/modules/share-url/share.phtml
 msgid "The URL was copied to the clipboard"
@@ -11807,14 +11844,14 @@ msgstr "הודעה נשלחה למנהל המערכת. תוכל להתחבר ע�
 #: app/Http/RequestHandlers/PendingChangesAcceptTree.php
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "השינויים ל-\"%s\" התקבלו."
+msgstr "השינויים ל-“%s” התקבלו."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesRejectRecord.php
 #: app/Http/RequestHandlers/PendingChangesRejectTree.php
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "השינויים ל-\"%s\" נדחו."
+msgstr "השינויים ל-“%s” נדחו."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php
@@ -11823,7 +11860,7 @@ msgstr "תפריט התרשימים."
 
 #: resources/views/modules/clippings/show.phtml
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "עגלת גזירי העץ מאפשרת לקיחת קטעים (\"גזירות\") מעץ משפחה זה והורדתם כקובץ GEDCOM."
+msgstr "עגלת גזירי העץ מאפשרת לקיחת קטעים (“גזירות”) מעץ משפחה זה והורדתם כקובץ GEDCOM."
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "The date and time of the last update"
@@ -11833,7 +11870,7 @@ msgstr "התאריך והשעה של העדכון האחרון"
 #: app/Http/RequestHandlers/MapDataSave.php
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr "הפרטים של \"%s\" עודכנו."
+msgstr "הפרטים של “%s” עודכנו."
 
 #. I18N: %s is a filename
 #: app/Http/RequestHandlers/ExportGedcomServer.php
@@ -11846,25 +11883,25 @@ msgstr "עץ המשפחה יוצא ל-%s."
 #: app/Http/RequestHandlers/TreePreferencesAction.php
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "עץ המשפחה \"%s\" קיים כבר."
+msgstr "עץ המשפחה “%s” קיים כבר."
 
 #: app/Http/RequestHandlers/CreateTreeAction.php
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "עץ המשפחהן \"%s\" נוצר."
+msgstr "עץ המשפחהן “%s” נוצר."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/DeleteTreeAction.php
 #: app/Http/RequestHandlers/SynchronizeTrees.php
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "עץ המשפחה \"%s\" נמחק."
+msgstr "עץ המשפחה “%s” נמחק."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/SelectDefaultTree.php
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "עץ המשפחה \"%s\" יוצג למבקרים כאשר הם מגיעים לאתר זה."
+msgstr "עץ המשפחה “%s” יוצג למבקרים כאשר הם מגיעים לאתר זה."
 
 #: app/Http/RequestHandlers/MergeTreesAction.php
 msgid "The family trees have been merged successfully."
@@ -11879,7 +11916,7 @@ msgstr "תפריט עצי המשפחה."
 #: app/Http/RequestHandlers/DeleteRecord.php
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr "המשפחה \"%s\" נמחקה, מכיוון שהיא כוללת רק בן משפחה אחד."
+msgstr "המשפחה “%s” נמחקה, מכיוון שהיא כוללת רק בן משפחה אחד."
 
 #: app/Http/RequestHandlers/UploadMediaAction.php
 #, php-format
@@ -11917,7 +11954,7 @@ msgstr "הקובץ עלה חלקית, נסה שנית."
 #: resources/views/modules/media-list/page.phtml
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr "הקובץ \"%s\" אינו קיים."
+msgstr "הקובץ “%s” אינו קיים."
 
 #: resources/views/edit/reorder-families.phtml
 msgid "The first family in the list will be used in charts, lists, reports, etc."
@@ -11940,12 +11977,12 @@ msgstr "התיקייה %s נמחקה."
 
 #: resources/views/admin/site-preferences.phtml
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
-msgstr "ניתן להגדיר את התיקייה במלואה (למשל /home/user_name/webtrees_data/) או ביחס לתיקית ההתקנה (למשל <span dir=\"ltr\">../../webtrees_data/</span>)."
+msgstr "ניתן להגדיר את התיקייה במלואה (למשל /home/user_name/webtrees_data/) או ביחס לתיקית ההתקנה (למשל <span dir=“ltr”>../../webtrees_data/</span>)."
 
 #: app/Http/RequestHandlers/SitePreferencesAction.php
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr "התיקיה \"%s\" אינה קיימת."
+msgstr "התיקיה “%s” אינה קיימת."
 
 #: resources/views/admin/merge-records-step-2.phtml
 msgid "The following facts and events were found in both records."
@@ -11983,12 +12020,12 @@ msgstr "איש קשר של נתוני חקר שושלת יוחסין באתר ז
 #: app/Http/RequestHandlers/DeleteRecord.php
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr "הקישור מ-\"%1$s\" ל-\"%2$s\" נמחק."
+msgstr "הקישור מ-“%1$s” ל-“%2$s” נמחק."
 
 #: app/Http/RequestHandlers/MergeFactsAction.php
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "הקישור מ-\"%1$s\" ל-\"%2$s\" עודכן."
+msgstr "הקישור מ-“%1$s” ל-“%2$s” עודכן."
 
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php
@@ -12046,13 +12083,13 @@ msgstr "ההודעה נשלחה בהצלחה ל-%s."
 #: app/Module/ChartsBlockModule.php
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "המודול \"%s\" אינו זמין."
+msgstr "המודול “%s” אינו זמין."
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php
 #: app/Http/RequestHandlers/ModulesAllAction.php
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "המודול \"%s\" זמין."
+msgstr "המודול “%s” זמין."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12117,12 +12154,12 @@ msgstr "ההעדפות לעצי משפחה חדשים עודכנו."
 #: app/Http/RequestHandlers/TreePrivacyAction.php
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "ההעדפות של עץ המשפחה \"%s\" עודכנו."
+msgstr "ההעדפות של עץ המשפחה “%s” עודכנו."
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "ההעדפות למודול \"%s\" נמחקו."
+msgstr "ההעדפות למודול “%s” נמחקו."
 
 #: app/Module/CustomCssJsModule.php app/Module/GeonamesAutocomplete.php
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
@@ -12132,7 +12169,7 @@ msgstr "ההעדפות למודול \"%s\" נמחקו."
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "ההעדפות של מודול \"%s\" עודכנו."
+msgstr "ההעדפות של מודול “%s” עודכנו."
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -12144,7 +12181,7 @@ msgstr "הקידומת היא אופציונלית, אך מומלצת. על יד
 #: app/Http/RequestHandlers/MergeFactsAction.php
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr "רשומות \"%1$s\" ו-\"%2$s\" מוזגו."
+msgstr "רשומות “%1$s” ו-“%2$s” מוזגו."
 
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php
@@ -12519,7 +12556,7 @@ msgstr "זו הגירסה העדכנית ביותר של webtrees. אין שדר
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "זהו השם של שרת ה- SMTP. משמעות \"localhost\" היא שהדואר פועל על אותו מחשב כמו שרת האינטרנט שלך."
+msgstr "זהו השם של שרת ה- SMTP. משמעות “localhost” היא שהדואר פועל על אותו מחשב כמו שרת האינטרנט שלך."
 
 #: resources/views/admin/users-create.phtml
 #: resources/views/admin/users-edit.phtml
@@ -12574,7 +12611,7 @@ msgstr "חייבת להיות לפחות שישה תווים. יש להקפיד 
 #. I18N: Help text for the “Sender name” site configuration setting
 #: resources/views/admin/site-mail.phtml
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "שם זה נמצא בשימוש בשדה \"מאת\", בשליחת הודעות דוא״ל אוטומטית מהשרת הזה."
+msgstr "שם זה נמצא בשימוש בשדה “מאת”, בשליחת הודעות דוא״ל אוטומטית מהשרת הזה."
 
 #: app/Auth.php
 msgid "This note does not exist or you do not have permission to view it."
@@ -12628,7 +12665,7 @@ msgstr "אפשרות זו תקל למשתמשים להוריד תמונות."
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "אפשרות זו תשמור על קשרי משפחה ברשומות פרטיות. זה אומר תראה קופסאות ריקות \"פרטיות\" באילן היוחסין ובתרשימים אחרים עם אנשים פרטיים."
+msgstr "אפשרות זו תשמור על קשרי משפחה ברשומות פרטיות. זה אומר תראה קופסאות ריקות “פרטיות” באילן היוחסין ובתרשימים אחרים עם אנשים פרטיים."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml
@@ -12697,7 +12734,7 @@ msgstr "תפקיד זה כולל את כל ההרשאות של תפקיד מנה
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "לתפקיד זה יש כל ההרשאות של תפקיד חבר, בתוספת הרשאה להוסיף/לשנות/למחוק נתונים. כל שינוי צריך להיות מאושר על ידי מנהל, אלא אם המשתמש מוגדר עם אפשרות \"לקבל באופן אוטומטי את השינויים\"."
+msgstr "לתפקיד זה יש כל ההרשאות של תפקיד חבר, בתוספת הרשאה להוסיף/לשנות/למחוק נתונים. כל שינוי צריך להיות מאושר על ידי מנהל, אלא אם המשתמש מוגדר עם אפשרות “לקבל באופן אוטומטי את השינויים”."
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -12774,7 +12811,7 @@ msgstr ""
 #: resources/views/admin/trees-import.phtml
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "פעולה זו תמחק את כל נתוני חקר שושלת יוחסין מ-\"%s\" ותחליף אותם עם נתונים מקובץ GEDCOM."
+msgstr "פעולה זו תמחק את כל נתוני חקר שושלת יוחסין מ-“%s” ותחליף אותם עם נתונים מקובץ GEDCOM."
 
 #. I18N: abbreviation for Thursday
 #: resources/views/edit/initialize-calendar-popup.phtml
@@ -12889,7 +12926,7 @@ msgstr "כדי ליצור נתונים חדשים באמצעות תגים מות
 
 #: resources/views/modules/todo/config.phtml
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "כדי ליצור משימות מחקר חדשות, תחילה עליך להוסיף \"משימת מחקר\" לרשימה של עובדות ואירועים בהעדפות של עץ המשפחה."
+msgstr "כדי ליצור משימות מחקר חדשות, תחילה עליך להוסיף “משימת מחקר” לרשימה של עובדות ואירועים בהעדפות של עץ המשפחה."
 
 #: app/Services/LeafletJsService.php
 msgid "To display a map, you need to enable a map-provider in the control panel."
@@ -13289,7 +13326,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "לא ידוע"
@@ -13304,7 +13341,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "לא ידוע"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13389,7 +13426,7 @@ msgstr "השתמש ב- SMTP לשלוח הודעות"
 
 #: app/Module/FixSearchAndReplace.php
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "השתמש ב-\"?\" כדי להתאים תו בודד, השתמש ב-\"*\" כדי להתאים אפס או יותר תוים."
+msgstr "השתמש ב-“?” כדי להתאים תו בודד, השתמש ב-“*” כדי להתאים אפס או יותר תוים."
 
 #: app/Module/ModuleMapGeoLocationTrait.php
 msgid "Use an external service to find locations."
@@ -13455,7 +13492,7 @@ msgstr "השתמש בצלליות"
 
 #: app/Http/RequestHandlers/CopyFact.php
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr "השתמש בתפריט \"עריכה\" כדי להדביק את זה ברשומה אחרת."
+msgstr "השתמש בתפריט “עריכה” כדי להדביק את זה ברשומה אחרת."
 
 #: resources/views/register-page.phtml
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -13512,7 +13549,7 @@ msgstr "שם משתמש או כתובת דוא״ל"
 #: resources/views/admin/users-edit.phtml
 #: resources/views/edit-account-page.phtml resources/views/register-page.phtml
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "בשם משתמש לא מתיחסים לאותיות לועזיות גדולות וקטנות, כך ש-\"chloe\", \"chloë\", ו-\"Chloe\" הן אותו דבר."
+msgstr "בשם משתמש לא מתיחסים לאותיות לועזיות גדולות וקטנות, כך ש-“chloe”, “chloë”, ו-“Chloe” הן אותו דבר."
 
 #: resources/views/admin/control-panel.phtml
 #: resources/views/modules/gedcom_stats/statistics.phtml
@@ -13620,8 +13657,7 @@ msgstr "גלוי כמחובר"
 msgid "Visible to other users when online"
 msgstr "גלוי למשתמשים אחרים בהיותו מחובר"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -13683,7 +13719,7 @@ msgstr "אנו לא מוכרים ולא משתפים את המידע האישי 
 #: resources/views/register-success-page.phtml
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "נשלח לך דואר של אישור לכתובת האלקטרונית <span dir=\"ltr\"><b>%s</b></span>. עליך לאשר את בקשת החשבון שלך לפי ההוראות המופיעות בדואר של האישור. אם לא תאשר את בקשת החשבון תוך שבעה ימים, בקשתך תדחה באופן אוטומטי ואז יהיה עליך להירשם שנית.<br><br>אחרי שתנהג לפי ההוראות המופיעות בדואר של האישור, על מנהל המערכת עדיין לאשר את בקשתך לפני שיהיה ניתן להשתמש בחשבון שלך.<br><br>כדי להתחבר לאתר זה, עליך לדעת שם משתמש וסיסמה שלך."
+msgstr "נשלח לך דואר של אישור לכתובת האלקטרונית <span dir=“ltr”><b>%s</b></span>. עליך לאשר את בקשת החשבון שלך לפי ההוראות המופיעות בדואר של האישור. אם לא תאשר את בקשת החשבון תוך שבעה ימים, בקשתך תדחה באופן אוטומטי ואז יהיה עליך להירשם שנית.<br><br>אחרי שתנהג לפי ההוראות המופיעות בדואר של האישור, על מנהל המערכת עדיין לאשר את בקשתך לפני שיהיה ניתן להשתמש בחשבון שלך.<br><br>כדי להתחבר לאתר זה, עליך לדעת שם משתמש וסיסמה שלך."
 
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/trees-preferences.phtml
@@ -13733,11 +13769,11 @@ msgstr "סהרה המערבית"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "כאשר עוריכים רשומה, המשתמש וחותמת הזמן נרשמים. לפעמים רצוי לשמור את המידע \"שינוי אחרון\" הקיים, למשל בעת ביצוע תיקונים קלים לנתונים של מישהו אחר. אפשרות זו שולטת אם תכונה זו נבחרת כברירת מחדל."
+msgstr "כאשר עוריכים רשומה, המשתמש וחותמת הזמן נרשמים. לפעמים רצוי לשמור את המידע “שינוי אחרון” הקיים, למשל בעת ביצוע תיקונים קלים לנתונים של מישהו אחר. אפשרות זו שולטת אם תכונה זו נבחרת כברירת מחדל."
 
 #: resources/views/admin/users-edit.phtml
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "כאשר משתמש נרשם לחשבון, הודעת דוא״ל תישלח אל כתובת הדוא״ל שלו עם קישור לאימות. כאשר הוא לוחץ על קישור זה, אנחנו יודעים שכתובת הדוא״ל נכונה, ואופציית \"דוא״ל אומת\" נבחרה באופן אוטומטי."
+msgstr "כאשר משתמש נרשם לחשבון, הודעת דוא״ל תישלח אל כתובת הדוא״ל שלו עם קישור לאימות. כאשר הוא לוחץ על קישור זה, אנחנו יודעים שכתובת הדוא״ל נכונה, ואופציית “דוא״ל אומת” נבחרה באופן אוטומטי."
 
 #: resources/views/edit/reorder-families.phtml
 msgid "When an individual has more than one spouse, you should sort the families in date order."
@@ -13750,7 +13786,7 @@ msgstr "כאשר מוסיפים בן משפחה חדש, ברירת מחדל לש
 
 #: resources/views/help/pending-changes.phtml
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "כאשר אתה מוסיף, עורך או מוחק נתונים, השינויים אינם נשמרים מידית. במקום זה הם נשמרים באזור \"תלוי ועומד\". השינויים הממתינים האלו צריכים להיבדק על ידי מנהל לפני שהם מתקבלים."
+msgstr "כאשר אתה מוסיף, עורך או מוחק נתונים, השינויים אינם נשמרים מידית. במקום זה הם נשמרים באזור “תלוי ועומד”. השינויים הממתינים האלו צריכים להיבדק על ידי מנהל לפני שהם מתקבלים."
 
 #: resources/views/help/relationship-privacy.phtml
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
@@ -13887,7 +13923,7 @@ msgstr "אתה יכול לבקש חשבון באמצעות הקישור להלן
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr "באפשרותך לשנות את המראה של webtrees באמצעות \"עיצובים\". לכל עיצוב יש סגנון, מבנה, ערכת צבעים, וכו׳ שונה."
+msgstr "באפשרותך לשנות את המראה של webtrees באמצעות “עיצובים”. לכל עיצוב יש סגנון, מבנה, ערכת צבעים, וכו׳ שונה."
 
 #: resources/views/admin/users-edit.phtml
 #: resources/views/edit-account-page.phtml
@@ -14020,7 +14056,7 @@ msgstr "לפני השדרוג קבל או דחה את כל השינויים המ
 #: app/Http/RequestHandlers/RegisterAction.php
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "עליך למחוק את ה-\"%1$s\" מ-\"%2$s\" ולנסות שוב."
+msgstr "עליך למחוק את ה-“%1$s” מ-“%2$s” ולנסות שוב."
 
 #: resources/views/admin/users-edit.phtml
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -14145,7 +14181,7 @@ msgid "accept all"
 msgstr "קבלת הכול"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "התקבלו"
 
@@ -14293,6 +14329,7 @@ msgstr "אֶזרָח"
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "סגור"
@@ -14484,7 +14521,6 @@ msgstr "לך לאדם חדש"
 msgid "half circle"
 msgstr "חצי עיגול"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "היא עַצמה"
@@ -14495,7 +14531,6 @@ msgstr "היא עַצמה"
 msgid "hide"
 msgstr "הסתר"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "הוא עַצמוֹ"
@@ -14713,7 +14748,7 @@ msgid "patrilineal"
 msgstr "מצד האב"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "בהמתנה"
 
@@ -14789,7 +14824,7 @@ msgid "reject"
 msgstr "דחה"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "נדחו"
 
@@ -15035,14 +15070,13 @@ msgstr "ענן תגיות"
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr "הגדרות הקישוריות של מאגר הנתונים בקובץ \"/data/config.ini.php\" עדיין נכונות"
+msgstr "הגדרות הקישוריות של מאגר הנתונים בקובץ “/data/config.ini.php” עדיין נכונות"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr "לתיקייה \"/data\" וקובץ \"/data/config.ini.php\" יש הרשאות גישה שמאפשרות לשרת האינטרנט לקרוא אותם"
+msgstr "לתיקייה “/data” וקובץ “/data/config.ini.php” יש הרשאות גישה שמאפשרות לשרת האינטרנט לקרוא אותם"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "הוא עַצמוֹ"
@@ -15142,10 +15176,6 @@ msgstr "webtrees צריך מסד נתונים כדי לאחסן את נתוני 
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "webtrees צריך לשלוח דוא\"ל, כגון תזכורות לסיסמאות והודעות אתר."
 
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees שולחת מיילים ללא אחסון"
-
 #: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "אישה"
@@ -15198,24 +15228,24 @@ msgstr "איי אולנד"
 #: app/Http/RequestHandlers/CheckTree.php
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr "\"%1$s\" צריך להיות \"%2$s\"."
+msgstr "“%1$s” צריך להיות “%2$s”."
 
 #: app/Http/RequestHandlers/CopyFact.php
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr "\"%s\" הועתק ללוח הגזרים."
+msgstr "“%s” הועתק ללוח הגזרים."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php
 #: app/Services/MapDataService.php
 #, php-format
 msgid "“%s” has been deleted."
-msgstr "\"%s\" נמחק."
+msgstr "“%s” נמחק."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "תגיות \"תמונה מודגשת\" (_PRIM) משמשות בחלק מיישומי גניאלוגיה כדי לציין את התמונה המועדפת של האדם. אלטרנטיבה היא למיין מחדש את התמונות כך שהמועדפת תופיע ראשונה."
+msgstr "תגיות “תמונה מודגשת” (_PRIM) משמשות בחלק מיישומי גניאלוגיה כדי לציין את התמונה המועדפת של האדם. אלטרנטיבה היא למיין מחדש את התמונות כך שהמועדפת תופיע ראשונה."
 
 #: app/Individual.php app/Note.php
 msgid "…"

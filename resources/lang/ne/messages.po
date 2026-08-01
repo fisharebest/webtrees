@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -360,7 +360,6 @@ msgstr "(%s मृत्यु पछि)"
 msgid "(age %s)"
 msgstr "(उमेर %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -368,7 +367,6 @@ msgstr "(उमेर %s)"
 msgid "(aged %s)"
 msgstr "(उमेर %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -377,7 +375,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(उमेर %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -885,7 +882,7 @@ msgstr "व्यक्तिगत घटनाहरू प्रदर्श�
 
 #: resources/views/admin/users-edit.phtml
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "प्रयोगकर्ताले \"इमेल प्रमाणित\" र \"प्रशासकद्वारा अनुमोदित\" दुवै चयन नगरेसम्म साइन इन गर्न सक्षम हुनेछैन।"
+msgstr "प्रयोगकर्ताले “इमेल प्रमाणित” र “प्रशासकद्वारा अनुमोदित” दुवै चयन नगरेसम्म साइन इन गर्न सक्षम हुनेछैन।"
 
 #: resources/xml/reports/pedigree_report.xml
 msgctxt "paper size"
@@ -1083,6 +1080,10 @@ msgstr "लेख थप्नुहोस्"
 msgid "Add a note"
 msgstr "नयाँ टिप्पणी थप"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+msgid "Add a parent"
+msgstr ""
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "दाजुभाइ थप्नुहोस्"
@@ -1101,9 +1102,15 @@ msgstr "छोरा थप्नुहोस्"
 msgid "Add a source citation"
 msgstr "स्रोत उद्धरण थप्नुहोस्"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "श्रीमान/श्रीमती थप्नुहोस्"
+
+#: resources/views/modules/relatives/tab.phtml
+msgid "Add a spouse using an existing individual"
+msgstr ""
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1476,6 +1483,11 @@ msgstr "उपनाम"
 msgid "Alive"
 msgstr "जीवित"
 
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+msgid "Alive or dead"
+msgstr ""
+
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
 #: resources/views/lists/datatables-attributes.phtml
@@ -1513,7 +1525,7 @@ msgstr "सबै रेकर्डहरू"
 #. I18N: Description of the “TinyMCE” module. WYSIWYG = “what you see is what you get”
 #: app/Module/TinymceModule.php
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "अन्य मोड्युलहरूलाई HTML कोडहरू प्रयोग गर्नुको सट्टा \"WYSIWYG\" सम्पादक प्रयोग गरेर पाठ सम्पादन गर्न अनुमति दिनुहोस्।"
+msgstr "अन्य मोड्युलहरूलाई HTML कोडहरू प्रयोग गर्नुको सट्टा “WYSIWYG” सम्पादक प्रयोग गरेर पाठ सम्पादन गर्न अनुमति दिनुहोस्।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -1552,7 +1564,7 @@ msgstr "प्रयोगकर्ताले साइन इन गर्न
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "\"मिडिया\" ट्याबको विकल्प, र एक परिष्कृत छवि दर्शक।"
+msgstr "“मिडिया” ट्याबको विकल्प, र एक परिष्कृत छवि दर्शक।"
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php
@@ -2665,7 +2677,7 @@ msgstr "क्यानाडा"
 #: app/Http/RequestHandlers/SitePreferencesAction.php
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr "\"%s\" फोल्डरमा लेख्न सकिँदैन।"
+msgstr "“%s” फोल्डरमा लेख्न सकिँदैन।"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -2889,7 +2901,6 @@ msgstr "शाखा"
 msgid "Child of "
 msgstr "को बच्चा "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3371,7 +3382,7 @@ msgstr "संघ"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameSlashesAndSpaces.php
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "\"John/DOE/\" वा \"John /DOE\" फारमको NAME रेकर्डहरू, पुरानो वंशावली कार्यक्रमहरूद्वारा उत्पादित गरी सही गर्नुहोस्।"
+msgstr "“John/DOE/” वा “John /DOE” फारमको NAME रेकर्डहरू, पुरानो वंशावली कार्यक्रमहरूद्वारा उत्पादित गरी सही गर्नुहोस्।"
 
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
 msgid "Correspondence"
@@ -3972,7 +3983,6 @@ msgstr "मितिहरू अङ्ग्रेजी संक्षिप�
 msgid "Daughter"
 msgstr "छोरी"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4478,11 +4488,11 @@ msgstr "डुप्लिकेट प्रयोगकर्ता नाम�
 
 #: resources/views/help/source-events.phtml
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "प्रत्येक स्रोतले विशेष घटनाहरू रेकर्ड गर्दछ, सामान्यतया दिइएको मिति दायरा र स्थान क्षेत्राधिकारको लागि। उदाहरणका लागि जनगणनाले जनगणनाका घटनाहरू रेकर्ड गर्छ र चर्चले जन्म, विवाह र मृत्युका घटनाहरू रेकर्ड गर्छ।<br><br>प्रदान गरिएका घटनाहरूको सूचीबाट यो स्रोतद्वारा रेकर्ड गरिएका घटनाहरू चयन गर्नुहोस्। मिति दायरा ढाँचामा निर्दिष्ट गरिनु पर्छ जस्तै <i>1900 देखि 1910</i>। स्थान क्षेत्राधिकार भनेको सबैभन्दा तल्लो अधिकार क्षेत्रको नाम हो जसले यस स्रोतमा नाम गरिएका सबै तल्लो-स्तरका स्थानहरूलाई समेट्छ। उदाहरणका लागि, \"Oneida, Idaho, USA\" लाई Oneida काउन्टी भित्रका विभिन्न सहरहरूमा हुने घटनाहरूका लागि स्रोत अधिकार क्षेत्रको रूपमा प्रयोग गरिनेछ। \"Idaho, USA\" स्रोत क्षेत्राधिकार स्थान हुनेछ यदि रेकर्ड गरिएका घटनाहरू Oneida County मा मात्र नभएर Idaho का अन्य काउन्टीहरूमा पनि भएमा।"
+msgstr "प्रत्येक स्रोतले विशेष घटनाहरू रेकर्ड गर्दछ, सामान्यतया दिइएको मिति दायरा र स्थान क्षेत्राधिकारको लागि। उदाहरणका लागि जनगणनाले जनगणनाका घटनाहरू रेकर्ड गर्छ र चर्चले जन्म, विवाह र मृत्युका घटनाहरू रेकर्ड गर्छ।<br><br>प्रदान गरिएका घटनाहरूको सूचीबाट यो स्रोतद्वारा रेकर्ड गरिएका घटनाहरू चयन गर्नुहोस्। मिति दायरा ढाँचामा निर्दिष्ट गरिनु पर्छ जस्तै <i>1900 देखि 1910</i>। स्थान क्षेत्राधिकार भनेको सबैभन्दा तल्लो अधिकार क्षेत्रको नाम हो जसले यस स्रोतमा नाम गरिएका सबै तल्लो-स्तरका स्थानहरूलाई समेट्छ। उदाहरणका लागि, “Oneida, Idaho, USA” लाई Oneida काउन्टी भित्रका विभिन्न सहरहरूमा हुने घटनाहरूका लागि स्रोत अधिकार क्षेत्रको रूपमा प्रयोग गरिनेछ। “Idaho, USA” स्रोत क्षेत्राधिकार स्थान हुनेछ यदि रेकर्ड गरिएका घटनाहरू Oneida County मा मात्र नभएर Idaho का अन्य काउन्टीहरूमा पनि भएमा।"
 
 #: resources/views/help/pending-changes.phtml
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "प्रत्येक प्रयोगकर्ता खातासँग \"स्वचालित रूपमा परिवर्तनहरू स्वीकार गर्ने\" विकल्प हुन्छ। जब यो सक्षम हुन्छ, त्यो प्रयोगकर्ताद्वारा गरिएका कुनै पनि परिवर्तनहरू तुरुन्तै सुरक्षित हुन्छन्। धेरै प्रशासकहरूले यसलाई आफ्नै प्रयोगकर्ता खाताको लागि सक्षम पार्छन्।"
+msgstr "प्रत्येक प्रयोगकर्ता खातासँग “स्वचालित रूपमा परिवर्तनहरू स्वीकार गर्ने” विकल्प हुन्छ। जब यो सक्षम हुन्छ, त्यो प्रयोगकर्ताद्वारा गरिएका कुनै पनि परिवर्तनहरू तुरुन्तै सुरक्षित हुन्छन्। धेरै प्रशासकहरूले यसलाई आफ्नै प्रयोगकर्ता खाताको लागि सक्षम पार्छन्।"
 
 #: resources/views/modules/gedcom_stats/config.phtml
 #: resources/views/modules/gedcom_stats/statistics.phtml
@@ -4578,9 +4588,7 @@ msgstr "यस व्यक्तिलाई सम्पादन गर्न
 msgid "Edit with all GEDCOM tags"
 msgstr "सबै GEDCOM ट्यागहरूसँग सम्पादन गर्नुहोस्"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4629,6 +4637,10 @@ msgstr "ईमेल"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "इमेल ठेगाना"
+
+#: app/Enums/ContactMethod.php
+msgid "Email only"
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -4811,7 +4823,7 @@ msgstr "ठ्याक्कै मिति"
 #: app/Module/AbstractIndividualListModule.php
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "विवाहित नामको रूपमा \"%s\" भएका व्यक्तिहरूलाई बहिष्कार गर्नुहोस्"
+msgstr "विवाहित नामको रूपमा “%s” भएका व्यक्तिहरूलाई बहिष्कार गर्नुहोस्"
 
 #: resources/views/admin/media.phtml
 msgid "Exclude subfolders"
@@ -5244,7 +5256,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "फेब्रुवरी"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "महिला"
 
@@ -5302,13 +5314,13 @@ msgstr "सर्भरको फाइल नाम"
 #: app/Services/MediaFileService.php
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "फाइलनामहरूलाई \"%s\" क्यारेक्टर समावेश गर्न अनुमति छैन।"
+msgstr "फाइलनामहरूलाई “%s” क्यारेक्टर समावेश गर्न अनुमति छैन।"
 
 #: app/Http/RequestHandlers/UploadMediaAction.php
 #: app/Services/MediaFileService.php
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "फाइलनामहरूलाई \"%s\" विस्तार गर्न अनुमति छैन।"
+msgstr "फाइलनामहरूलाई “%s” विस्तार गर्न अनुमति छैन।"
 
 #: resources/views/admin/control-panel.phtml
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
@@ -5320,6 +5332,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "%s सँग चिन्ह लगाइएका फाइलहरू उचित सञ्चालनका लागि आवश्यक छन् र हटाउन सकिँदैन।"
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "छनौट गर्नुस"
 
@@ -5676,6 +5690,10 @@ msgstr "वंशावली सम्पर्क"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "वंशावली डाटा"
+
+#: resources/views/layouts/default.phtml
+msgid "Genealogy menu"
+msgstr ""
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6089,7 +6107,7 @@ msgstr "हर्मोसिलो, मेक्सिको"
 msgid "Hide GEDCOM tags"
 msgstr "GEDCOM ट्यागहरू लुकाउनुहोस्"
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6284,7 +6302,7 @@ msgstr "यदि थर अज्ञात छ भने, खाली स्�
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "यदि यो व्यक्तिको मृत्यु, दफन, वा दाहसंस्कार बाहेक अन्य कुनै घटनाहरू छन् भने यो संख्या भन्दा धेरै वर्षहरू छन्, तिनीहरूलाई \"जीवित\" मानिन्छ। बालबालिकाको जन्म मितिलाई यस उद्देश्यका लागि यस्ता घटनाहरू मानिन्छ।"
+msgstr "यदि यो व्यक्तिको मृत्यु, दफन, वा दाहसंस्कार बाहेक अन्य कुनै घटनाहरू छन् भने यो संख्या भन्दा धेरै वर्षहरू छन्, तिनीहरूलाई “जीवित” मानिन्छ। बालबालिकाको जन्म मितिलाई यस उद्देश्यका लागि यस्ता घटनाहरू मानिन्छ।"
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -6391,18 +6409,23 @@ msgstr "भौगोलिक डाटा ल्याउनुहोस्"
 msgid "Import preferences"
 msgstr "प्राथमिकताहरू आयात गर्नुहोस्"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+msgid "Importing family tree"
+msgstr ""
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "पारिवारिक रूखमा, प्रत्येक रेकर्डमा आन्तरिक सन्दर्भ नम्बर हुन्छ (जसलाई \"XREF\" भनिन्छ) जस्तै \"F123\" वा \"R14\"।"
+msgstr "पारिवारिक रूखमा, प्रत्येक रेकर्डमा आन्तरिक सन्दर्भ नम्बर हुन्छ (जसलाई “XREF” भनिन्छ) जस्तै “F123” वा “R14”।"
 
 #: resources/views/help/romanized.phtml
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "धेरै संस्कृतिहरूमा परम्परागत वर्णहरूमा परम्परागत नामको हिज्जे र नामको रोमनीकृत संस्करण हुने चलन छ किनकि यसलाई अंग्रेजी जस्ता ल्याटिन वर्णमालामा आधारित भाषाहरूमा हिज्जे वा उच्चारण गरिन्छ।<br><br>यदि तपाईं मानक नाम क्षेत्रहरूमा नाम प्रविष्ट गर्न हिब्रू, ग्रीक, रूसी, चिनियाँ, वा अरबी जस्ता गैर-ल्याटिन वर्णमाला प्रयोग गर्न रुचाउनु हुन्छ, त्यसपछि तपाईंले ल्याटिन वर्णमाला प्रयोग गरेर उही नाम प्रविष्ट गर्न यो क्षेत्र प्रयोग गर्न सक्नुहुन्छ। नामको दुवै संस्करणहरू सूची र चार्टहरूमा देखा पर्नेछ।<br><br>यद्यपि यो क्षेत्रलाई \"रोमनाइज्ड\" लेबल गरिएको छ, यो ल्याटिन वर्णमालामा आधारित वर्णहरू मात्र समावेश गर्न प्रतिबन्धित छैन। यो जापानी नामहरूको साथ प्रयोगको हुन सक्छ, जहाँ तीन फरक अक्षरहरू हुन सक्छन्।"
+msgstr "धेरै संस्कृतिहरूमा परम्परागत वर्णहरूमा परम्परागत नामको हिज्जे र नामको रोमनीकृत संस्करण हुने चलन छ किनकि यसलाई अंग्रेजी जस्ता ल्याटिन वर्णमालामा आधारित भाषाहरूमा हिज्जे वा उच्चारण गरिन्छ।<br><br>यदि तपाईं मानक नाम क्षेत्रहरूमा नाम प्रविष्ट गर्न हिब्रू, ग्रीक, रूसी, चिनियाँ, वा अरबी जस्ता गैर-ल्याटिन वर्णमाला प्रयोग गर्न रुचाउनु हुन्छ, त्यसपछि तपाईंले ल्याटिन वर्णमाला प्रयोग गरेर उही नाम प्रविष्ट गर्न यो क्षेत्र प्रयोग गर्न सक्नुहुन्छ। नामको दुवै संस्करणहरू सूची र चार्टहरूमा देखा पर्नेछ।<br><br>यद्यपि यो क्षेत्रलाई “रोमनाइज्ड” लेबल गरिएको छ, यो ल्याटिन वर्णमालामा आधारित वर्णहरू मात्र समावेश गर्न प्रतिबन्धित छैन। यो जापानी नामहरूको साथ प्रयोगको हुन सक्छ, जहाँ तीन फरक अक्षरहरू हुन सक्छन्।"
 
 #: resources/views/help/hebrew.phtml
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "धेरै संस्कृतिहरूमा परम्परागत वर्णहरूमा परम्परागत नामको हिज्जे र नामको रोमनीकृत संस्करण हुने चलन छ किनकि यसलाई अंग्रेजी जस्ता ल्याटिन वर्णमालामा आधारित भाषाहरूमा हिज्जे वा उच्चारण गरिन्छ।<br><br>यदि तपाईं मानक नाम क्षेत्रहरूमा नाम प्रविष्ट गर्न ल्याटिन वर्णमाला प्रयोग गर्न रुचाउनु हुन्छ, त्यसपछि तपाईंले ग्रीक, हिब्रू, रुसी, अरबी, वा चिनियाँ जस्ता गैर-ल्याटिन वर्णमालाहरूमा उही नाम प्रविष्ट गर्न यो क्षेत्र प्रयोग गर्न सक्नुहुन्छ। नामको दुबै संस्करणहरू सूची र चार्टहरूमा देखा पर्नेछ।<br><br>यद्यपि यो क्षेत्रलाई \"हिब्रू\" लेबल गरिएको छ, यो केवल हिब्रू वर्णहरू समावेश गर्न प्रतिबन्धित छैन।"
+msgstr "धेरै संस्कृतिहरूमा परम्परागत वर्णहरूमा परम्परागत नामको हिज्जे र नामको रोमनीकृत संस्करण हुने चलन छ किनकि यसलाई अंग्रेजी जस्ता ल्याटिन वर्णमालामा आधारित भाषाहरूमा हिज्जे वा उच्चारण गरिन्छ।<br><br>यदि तपाईं मानक नाम क्षेत्रहरूमा नाम प्रविष्ट गर्न ल्याटिन वर्णमाला प्रयोग गर्न रुचाउनु हुन्छ, त्यसपछि तपाईंले ग्रीक, हिब्रू, रुसी, अरबी, वा चिनियाँ जस्ता गैर-ल्याटिन वर्णमालाहरूमा उही नाम प्रविष्ट गर्न यो क्षेत्र प्रयोग गर्न सक्नुहुन्छ। नामको दुबै संस्करणहरू सूची र चार्टहरूमा देखा पर्नेछ।<br><br>यद्यपि यो क्षेत्रलाई “हिब्रू” लेबल गरिएको छ, यो केवल हिब्रू वर्णहरू समावेश गर्न प्रतिबन्धित छैन।"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -6418,6 +6441,14 @@ msgstr "केही देशहरूमा, गोपनीयता का�
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr ""
 
+#: app/Enums/ContactMethod.php
+msgid "Inbox and email"
+msgstr ""
+
+#: app/Enums/ContactMethod.php
+msgid "Inbox only"
+msgstr ""
+
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
 msgstr "उपनामहरू समावेश गर्नुहोस्"
@@ -6429,7 +6460,7 @@ msgstr "सहयोगीहरू समावेश गर्नुहोस�
 #: app/Module/AbstractIndividualListModule.php
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "विवाहित नामको रूपमा \"%s\" भएका व्यक्तिहरूलाई समावेश गर्नुहोस्"
+msgstr "विवाहित नामको रूपमा “%s” भएका व्यक्तिहरूलाई समावेश गर्नुहोस्"
 
 #. I18N: Label for check-box
 #: resources/views/admin/media.phtml
@@ -6603,14 +6634,6 @@ msgstr "%s को पारस्परिक वृक्ष"
 msgid "Interment"
 msgstr "अन्तरक्रिया"
 
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "आन्तरिक सन्देश"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "इमेलहरूको साथ आन्तरिक सन्देश"
-
 #: app/Module/PrivacyPolicy.php
 msgid "International transfers"
 msgstr ""
@@ -6778,7 +6801,7 @@ msgstr "खुला राख्नुहोस्"
 #: resources/views/admin/trees-preferences.phtml
 #: resources/views/edit/edit-fact.phtml resources/views/edit/edit-record.phtml
 msgid "Keep the existing “last change” information"
-msgstr "अवस्थित \"अन्तिम परिवर्तन\" जानकारी राख्नुहोस्"
+msgstr "अवस्थित “अन्तिम परिवर्तन” जानकारी राख्नुहोस्"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7296,10 +7319,6 @@ msgstr "पत्रिका"
 msgid "Maidenhead location code"
 msgstr "मेडेनहेड स्थान कोड"
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "मेल पठाउने लिङ्क"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7315,7 +7334,7 @@ msgstr "मलेसिया"
 msgid "Maldives"
 msgstr "माल्दिभ्स"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "पुरुष"
 
@@ -7361,9 +7380,7 @@ msgstr "पारिवारिक वृक्षहरू व्यवस्�
 msgid "Manage media"
 msgstr "मिडिया प्रबन्ध गर्नुहोस्"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "प्रबन्धक"
@@ -7782,9 +7799,7 @@ msgstr "मध्यम प्रणालीहरू (५,००० व्य�
 msgid "Melbourne, Australia"
 msgstr "मेलबर्न, अष्ट्रेलिया"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "सदस्य"
@@ -7893,9 +7908,7 @@ msgstr ""
 msgid "Missing data"
 msgstr "हराएको डाटा"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "मोडरेटर"
 
@@ -8373,7 +8386,7 @@ msgstr "कुनै क्यालेन्डर रूपान्तरण 
 msgid "No children"
 msgstr "बच्चाहरु छैन"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "सम्पर्क छैन"
 
@@ -8794,7 +8807,7 @@ msgstr "यो दिनमा"
 msgid "Only add new records"
 msgstr "नयाँ रेकर्ड मात्र थप्नुहोस्"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "व्यवस्थापकहरूले मात्र सम्पादन गर्न सक्छन्"
@@ -8854,11 +8867,16 @@ msgstr "Orlando, फ्लोरिडा, संयुक्त राज्य
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
 msgid "Other"
 msgstr "अन्य"
+
+#: app/Enums/Sex.php
+msgctxt "SEX"
+msgid "Other"
+msgstr ""
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "Other facts to show in charts"
@@ -8942,6 +8960,10 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "पृष्ठ आकार"
+
+#: resources/views/modules/media-list/pagination.phtml
+msgid "Pagination"
+msgstr ""
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9033,7 +9055,7 @@ msgstr "पासवर्ड"
 #: resources/views/password-reset-page.phtml
 #: resources/views/register-page.phtml
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "पासवर्डहरू कम्तिमा 8 वर्ण लामो र केस-संवेदनशील हुनुपर्छ, त्यसैले \"गोप्य\" \"सेक्रेट\" भन्दा फरक छ।"
+msgstr "पासवर्डहरू कम्तिमा 8 वर्ण लामो र केस-संवेदनशील हुनुपर्छ, त्यसैले “गोप्य” “सेक्रेट” भन्दा फरक छ।"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php
@@ -9209,7 +9231,7 @@ msgstr "समय अनुसार ठाउँको नाम परिव�
 
 #: resources/views/help/place.phtml
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr "स्थानको नामहरू अल्पविराम-विभाजित सूचीको रूपमा प्रविष्ट गर्नुपर्छ, सबैभन्दा सानो ठाउँबाट सुरु भएर देशमा समाप्त हुन्छ। उदाहरणका लागि, \"वेस्टमिन्स्टर, लन्डन, इङ्गल्याण्ड\"।"
+msgstr "स्थानको नामहरू अल्पविराम-विभाजित सूचीको रूपमा प्रविष्ट गर्नुपर्छ, सबैभन्दा सानो ठाउँबाट सुरु भएर देशमा समाप्त हुन्छ। उदाहरणका लागि, “वेस्टमिन्स्टर, लन्डन, इङ्गल्याण्ड”।"
 
 #: app/Gedcom.php
 msgid "Place of LDS baptism"
@@ -9429,7 +9451,7 @@ msgstr "प्राथमिकताहरू"
 #: resources/views/admin/modules.phtml
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "मोड्युल \"%s\" को लागि प्राथमिकताहरू अवस्थित छन्, तर यो मोड्युल अब अवस्थित छैन।"
+msgstr "मोड्युल “%s” को लागि प्राथमिकताहरू अवस्थित छन्, तर यो मोड्युल अब अवस्थित छैन।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml
@@ -9503,6 +9525,11 @@ msgstr "प्रोबेट"
 
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+msgid "Progress"
 msgstr ""
 
 #: app/Gedcom.php
@@ -9952,7 +9979,7 @@ msgstr "अनुसन्धान कार्यहरू विशेष घ
 
 #: resources/views/modules/todo/config.phtml
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "अनुसन्धान कार्यहरू अनुकूलन GEDCOM ट्याग \"_TODO\" प्रयोग गरेर भण्डारण गरिन्छ। अन्य वंशावली अनुप्रयोगहरूले यो ट्याग पहिचान नगर्न सक्छन्।"
+msgstr "अनुसन्धान कार्यहरू अनुकूलन GEDCOM ट्याग “_TODO” प्रयोग गरेर भण्डारण गरिन्छ। अन्य वंशावली अनुप्रयोगहरूले यो ट्याग पहिचान नगर्न सक्छन्।"
 
 #: app/CustomTags/Gedcom7.php app/Gedcom.php resources/views/admin/tags.phtml
 msgid "Residence"
@@ -10546,7 +10573,7 @@ msgstr "सबै मृत व्यक्तिहरूको लागि �
 #: resources/views/emails/verify-notify-html.phtml
 #: resources/views/emails/verify-notify-text.phtml
 msgid "Set the status to “approved”."
-msgstr "स्थिति \"स्वीकृत\" मा सेट गर्नुहोस्।"
+msgstr "स्थिति “स्वीकृत” मा सेट गर्नुहोस्।"
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -10559,6 +10586,7 @@ msgstr "वेबट्रीहरूको लागि विजार्ड 
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10662,7 +10690,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "\"नयाँ प्रयोगकर्ता खाता अनुरोध गर्नुहोस्\" पृष्ठमा स्वीकार्य प्रयोग सम्झौता देखाउनुहोस्"
+msgstr "“नयाँ प्रयोगकर्ता खाता अनुरोध गर्नुहोस्” पृष्ठमा स्वीकार्य प्रयोग सम्झौता देखाउनुहोस्"
 
 #: resources/views/modules/media/tab.phtml
 msgid "Show all media"
@@ -10735,6 +10763,7 @@ msgstr "100 वर्ष भन्दा पहिले जन्मेका �
 msgid "Show individuals born within the last 100 years."
 msgstr "पछिल्लो 100 वर्ष भित्र जन्मेका व्यक्तिहरू देखाउनुहोस्।"
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "जीवित व्यक्तिहरू वा जोडीहरू जहाँ दुवै साझेदार जीवित छन् देखाउनुहोस्।"
@@ -10924,23 +10953,21 @@ msgstr "कुन भाषाहरूको लागि यो ब्लक �
 msgid "Show thumbnail images in charts and family groups."
 msgstr "चार्ट र पारिवारिक समूहहरूमा थम्बनेल छविहरू देखाउनुहोस्।"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "प्रबन्धकहरूलाई देखाउनुहोस्"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "सदस्यहरूलाई देखाउनुहोस्"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -10949,12 +10976,12 @@ msgstr "आगन्तुकहरूलाई देखाउनुहोस�
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "\"पातहरू\" जोडी वा व्यक्तिहरू देखाउनुहोस्। यी व्यक्तिहरू हुन् जो जीवित छन् तर डाटाबेसमा रेकर्ड गरिएका बच्चाहरू छैनन्।"
+msgstr "“पातहरू” जोडी वा व्यक्तिहरू देखाउनुहोस्। यी व्यक्तिहरू हुन् जो जीवित छन् तर डाटाबेसमा रेकर्ड गरिएका बच्चाहरू छैनन्।"
 
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "\"मूल\" जोडी वा व्यक्तिहरू देखाउनुहोस्। यी व्यक्तिहरूलाई \"कुलपिता\" पनि भनिन्छ। तिनीहरू ती व्यक्तिहरू हुन् जसको डाटाबेसमा रेकर्ड गरिएको कुनै अभिभावक छैन।"
+msgstr "“मूल” जोडी वा व्यक्तिहरू देखाउनुहोस्। यी व्यक्तिहरूलाई “कुलपिता” पनि भनिन्छ। तिनीहरू ती व्यक्तिहरू हुन् जसको डाटाबेसमा रेकर्ड गरिएको कुनै अभिभावक छैन।"
 
 #. I18N: %s are placeholders for numbers
 #: resources/views/lists/datatables-attributes.phtml
@@ -11139,7 +11166,7 @@ msgstr "केही पृष्ठहरूले तिनीहरूले 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "केही विषयवस्तुहरूले \"तथ्य र घटनाहरू\" ट्याबमा आइकनहरू प्रदर्शन गर्न सक्छन्।"
+msgstr "केही विषयवस्तुहरूले “तथ्य र घटनाहरू” ट्याबमा आइकनहरू प्रदर्शन गर्न सक्छन्।"
 
 #: resources/views/edit/change-family-members.phtml
 #: resources/xml/reports/family_group_report.xml
@@ -11148,7 +11175,6 @@ msgstr "केही विषयवस्तुहरूले \"तथ्य �
 msgid "Son"
 msgstr "छोरा"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -11706,7 +11732,7 @@ msgstr "<b>उपनाम</b> फिल्डमा एक नाम समा�
 #: app/Http/RequestHandlers/SynchronizeTrees.php
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "GEDCOM फाइल \"%s\" आयात गरिएको छ।"
+msgstr "GEDCOM फाइल “%s” आयात गरिएको छ।"
 
 #: resources/views/admin/tags.phtml
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
@@ -11720,12 +11746,12 @@ msgstr "हेग, नेदरल्याण्ड्स"
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr "PHP विस्तार \"%s\" स्थापना गरिएको छैन।"
+msgstr "PHP विस्तार “%s” स्थापना गरिएको छैन।"
 
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr "PHP प्रकार्य \"%1$s\" असक्षम गरिएको छ।"
+msgstr "PHP प्रकार्य “%1$s” असक्षम गरिएको छ।"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php
@@ -11735,12 +11761,12 @@ msgstr "PHP अस्थायी फोल्डर हराइरहेको
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr "PHP.INI सेटिङ \"%1$s\" असक्षम गरिएको छ।"
+msgstr "PHP.INI सेटिङ “%1$s” असक्षम गरिएको छ।"
 
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr "PHP.INI सेटिङ \"%1$s\" सक्षम छ।"
+msgstr "PHP.INI सेटिङ “%1$s” सक्षम छ।"
 
 #: resources/views/modules/share-url/share.phtml
 msgid "The URL was copied to the clipboard"
@@ -11761,14 +11787,14 @@ msgstr "प्रशासकलाई जानकारी गराइएक�
 #: app/Http/RequestHandlers/PendingChangesAcceptTree.php
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "\"%s\" मा परिवर्तनहरू स्वीकार गरिएको छ।"
+msgstr "“%s” मा परिवर्तनहरू स्वीकार गरिएको छ।"
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesRejectRecord.php
 #: app/Http/RequestHandlers/PendingChangesRejectTree.php
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "\"%s\" मा परिवर्तनहरू अस्वीकार गरिएको छ।"
+msgstr "“%s” मा परिवर्तनहरू अस्वीकार गरिएको छ।"
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php
@@ -11787,7 +11813,7 @@ msgstr "पछिल्लो अपडेटको मिति र समय"
 #: app/Http/RequestHandlers/MapDataSave.php
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr "\"%s\" को विवरण अद्यावधिक गरिएको छ।"
+msgstr "“%s” को विवरण अद्यावधिक गरिएको छ।"
 
 #. I18N: %s is a filename
 #: app/Http/RequestHandlers/ExportGedcomServer.php
@@ -11800,25 +11826,25 @@ msgstr "परिवार रूख %s मा निर्यात गरि�
 #: app/Http/RequestHandlers/TreePreferencesAction.php
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "पारिवारिक रूख \"%s\" पहिले नै अवस्थित छ।"
+msgstr "पारिवारिक रूख “%s” पहिले नै अवस्थित छ।"
 
 #: app/Http/RequestHandlers/CreateTreeAction.php
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "पारिवारिक रूख \"%s\" सिर्जना गरिएको छ।"
+msgstr "पारिवारिक रूख “%s” सिर्जना गरिएको छ।"
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/DeleteTreeAction.php
 #: app/Http/RequestHandlers/SynchronizeTrees.php
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "पारिवारिक रूख \"%s\" मेटाइएको छ।"
+msgstr "पारिवारिक रूख “%s” मेटाइएको छ।"
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/SelectDefaultTree.php
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "परिवार रूख \"%s\" आगन्तुकहरूलाई देखाइनेछ जब तिनीहरू पहिलो पटक यस वेबसाइटमा आइपुग्छन्।"
+msgstr "परिवार रूख “%s” आगन्तुकहरूलाई देखाइनेछ जब तिनीहरू पहिलो पटक यस वेबसाइटमा आइपुग्छन्।"
 
 #: app/Http/RequestHandlers/MergeTreesAction.php
 msgid "The family trees have been merged successfully."
@@ -11833,7 +11859,7 @@ msgstr "पारिवारिक रूखहरू मेनु।"
 #: app/Http/RequestHandlers/DeleteRecord.php
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr "परिवार \"%s\" मेटाइएको छ किनभने यसमा एक सदस्य मात्र छ।"
+msgstr "परिवार “%s” मेटाइएको छ किनभने यसमा एक सदस्य मात्र छ।"
 
 #: app/Http/RequestHandlers/UploadMediaAction.php
 #, php-format
@@ -11871,7 +11897,7 @@ msgstr "फाइल आंशिक रूपमा मात्र अपल�
 #: resources/views/modules/media-list/page.phtml
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr "फाइल \"%s\" अवस्थित छैन।"
+msgstr "फाइल “%s” अवस्थित छैन।"
 
 #: resources/views/edit/reorder-families.phtml
 msgid "The first family in the list will be used in charts, lists, reports, etc."
@@ -11899,7 +11925,7 @@ msgstr "फोल्डर पूर्ण रूपमा निर्दिष
 #: app/Http/RequestHandlers/SitePreferencesAction.php
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr "फोल्डर \"%s\" अवस्थित छैन।"
+msgstr "फोल्डर “%s” अवस्थित छैन।"
 
 #: resources/views/admin/merge-records-step-2.phtml
 msgid "The following facts and events were found in both records."
@@ -11937,12 +11963,12 @@ msgstr "यस वेबसाइटमा वंशावली डेटाक
 #: app/Http/RequestHandlers/DeleteRecord.php
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr "\"%1$s\" देखि \"%2$s\" सम्मको लिङ्क मेटाइएको छ।"
+msgstr "“%1$s” देखि “%2$s” सम्मको लिङ्क मेटाइएको छ।"
 
 #: app/Http/RequestHandlers/MergeFactsAction.php
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "\"%1$s\" देखि \"%2$s\" सम्मको लिङ्क अद्यावधिक गरिएको छ।"
+msgstr "“%1$s” देखि “%2$s” सम्मको लिङ्क अद्यावधिक गरिएको छ।"
 
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php
@@ -12000,13 +12026,13 @@ msgstr "सन्देश सफलतापूर्वक %s मा पठा
 #: app/Module/ChartsBlockModule.php
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "मोड्युल \"%s\" असक्षम गरिएको छ।"
+msgstr "मोड्युल “%s” असक्षम गरिएको छ।"
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php
 #: app/Http/RequestHandlers/ModulesAllAction.php
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "मोड्युल \"%s\" सक्षम गरिएको छ।"
+msgstr "मोड्युल “%s” सक्षम गरिएको छ।"
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12033,7 +12059,7 @@ msgstr "नोट सिर्जना गरिएको छ"
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php
 msgid "The parameter “path” is invalid."
-msgstr "\"path\" प्यारामिटर गलत छ।"
+msgstr "“path” प्यारामिटर गलत छ।"
 
 #: app/Http/RequestHandlers/SetupWizard.php
 msgid "The password needs to be at least six characters long."
@@ -12071,12 +12097,12 @@ msgstr "नयाँ पारिवारिक रूखहरूको ला
 #: app/Http/RequestHandlers/TreePrivacyAction.php
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "पारिवारिक रूख \"%s\" को लागि प्राथमिकताहरू अद्यावधिक गरिएको छ।"
+msgstr "पारिवारिक रूख “%s” को लागि प्राथमिकताहरू अद्यावधिक गरिएको छ।"
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "मोड्युल \"%s\" को लागि प्राथमिकताहरू मेटाइएको छ।"
+msgstr "मोड्युल “%s” को लागि प्राथमिकताहरू मेटाइएको छ।"
 
 #: app/Module/CustomCssJsModule.php app/Module/GeonamesAutocomplete.php
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
@@ -12086,7 +12112,7 @@ msgstr "मोड्युल \"%s\" को लागि प्राथमि�
 #: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "मोड्युल \"%s\" को लागि प्राथमिकताहरू अद्यावधिक गरिएको छ।"
+msgstr "मोड्युल “%s” को लागि प्राथमिकताहरू अद्यावधिक गरिएको छ।"
 
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -12098,7 +12124,7 @@ msgstr "उपसर्ग वैकल्पिक छ, तर सिफार�
 #: app/Http/RequestHandlers/MergeFactsAction.php
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr "रेकर्डहरू \"%1$s\" र \"%2$s\" मर्ज गरिएका छन्।"
+msgstr "रेकर्डहरू “%1$s” र “%2$s” मर्ज गरिएका छन्।"
 
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php
@@ -12261,7 +12287,7 @@ msgstr "निज (व्यक्ति)का कुनै तथ्यहर�
 #: app/Module/AbstractIndividualListModule.php
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr "\"%s\" थर भएका कुनै पनि व्यक्ति छैनन्"
+msgstr "“%s” थर भएका कुनै पनि व्यक्ति छैनन्"
 
 #: app/Http/RequestHandlers/ManageMediaData.php
 msgid "There are no links to this media object."
@@ -12471,7 +12497,7 @@ msgstr "यो webtrees को नवीनतम संस्करण हो�
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "यो SMTP सर्भरको नाम हो। \"localhost\" को अर्थ हो कि मेल सेवा तपाईको वेब सर्भर जस्तै कम्प्युटरमा चलिरहेको छ।"
+msgstr "यो SMTP सर्भरको नाम हो। “localhost” को अर्थ हो कि मेल सेवा तपाईको वेब सर्भर जस्तै कम्प्युटरमा चलिरहेको छ।"
 
 #: resources/views/admin/users-create.phtml
 #: resources/views/admin/users-edit.phtml
@@ -12526,7 +12552,7 @@ msgstr "यो कम्तिमा ६ अक्षर लामो हुन�
 #. I18N: Help text for the “Sender name” site configuration setting
 #: resources/views/admin/site-mail.phtml
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "यो नाम \"बाट\" फिल्डमा प्रयोग गरिन्छ, यो सर्भरबाट स्वचालित इमेलहरू पठाउँदा।"
+msgstr "यो नाम “बाट” फिल्डमा प्रयोग गरिन्छ, यो सर्भरबाट स्वचालित इमेलहरू पठाउँदा।"
 
 #: app/Auth.php
 msgid "This note does not exist or you do not have permission to view it."
@@ -12580,7 +12606,7 @@ msgstr "यो विकल्पले प्रयोगकर्ताहर�
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "यो विकल्पले निजी रेकर्डहरूमा पारिवारिक लिङ्कहरू राख्नेछ। यसको मतलब तपाईंले पेडिग्री चार्टमा र निजी व्यक्तिहरूसँग अन्य चार्टहरूमा खाली \"निजी\" बाकसहरू देख्नुहुनेछ।"
+msgstr "यो विकल्पले निजी रेकर्डहरूमा पारिवारिक लिङ्कहरू राख्नेछ। यसको मतलब तपाईंले पेडिग्री चार्टमा र निजी व्यक्तिहरूसँग अन्य चार्टहरूमा खाली “निजी” बाकसहरू देख्नुहुनेछ।"
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml
@@ -12649,7 +12675,7 @@ msgstr "यस भूमिकामा सबै पारिवारिक �
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "यो भूमिकामा सदस्य भूमिकाका सबै अनुमतिहरू छन्, साथै डेटा थप्ने/परिवर्तन गर्ने/मेट्ने अनुमति छ। प्रयोगकर्ताले \"स्वचालित रूपमा परिवर्तनहरू स्वीकार गर्नुहोस्\" विकल्प सक्षम नगरेसम्म कुनै पनि परिवर्तनहरू मध्यस्थकर्ताद्वारा समीक्षा गर्न आवश्यक हुनेछ।"
+msgstr "यो भूमिकामा सदस्य भूमिकाका सबै अनुमतिहरू छन्, साथै डेटा थप्ने/परिवर्तन गर्ने/मेट्ने अनुमति छ। प्रयोगकर्ताले “स्वचालित रूपमा परिवर्तनहरू स्वीकार गर्नुहोस्” विकल्प सक्षम नगरेसम्म कुनै पनि परिवर्तनहरू मध्यस्थकर्ताद्वारा समीक्षा गर्न आवश्यक हुनेछ।"
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -12726,7 +12752,7 @@ msgstr ""
 #: resources/views/admin/trees-import.phtml
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "यसले \"%s\" बाट सबै वंशावली डाटा मेटाउनेछ र यसलाई GEDCOM फाइलबाट डाटासँग बदल्नेछ।"
+msgstr "यसले “%s” बाट सबै वंशावली डाटा मेटाउनेछ र यसलाई GEDCOM फाइलबाट डाटासँग बदल्नेछ।"
 
 #. I18N: abbreviation for Thursday
 #: resources/views/edit/initialize-calendar-popup.phtml
@@ -12840,7 +12866,7 @@ msgstr "अनुकूलन ट्यागहरू प्रयोग गर
 
 #: resources/views/modules/todo/config.phtml
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "नयाँ अनुसन्धान कार्यहरू सिर्जना गर्न, तपाईंले पहिले पारिवारिक रूखको प्राथमिकताहरूमा तथ्य र घटनाहरूको सूचीमा \"अनुसन्धान कार्य\" थप्नुपर्छ।"
+msgstr "नयाँ अनुसन्धान कार्यहरू सिर्जना गर्न, तपाईंले पहिले पारिवारिक रूखको प्राथमिकताहरूमा तथ्य र घटनाहरूको सूचीमा “अनुसन्धान कार्य” थप्नुपर्छ।"
 
 #: app/Services/LeafletJsService.php
 msgid "To display a map, you need to enable a map-provider in the control panel."
@@ -13240,7 +13266,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "अज्ञात"
@@ -13255,7 +13281,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "अज्ञात"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13340,7 +13366,7 @@ msgstr "सन्देशहरू पठाउन SMTP प्रयोग ग�
 
 #: app/Module/FixSearchAndReplace.php
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "प्रयोग गर्नुहोस् \"?\" एकल क्यारेक्टर मिलाउन, शून्य वा बढी क्यारेक्टरहरू मिलाउन \"*\" प्रयोग गर्नुहोस्।"
+msgstr "प्रयोग गर्नुहोस् “?” एकल क्यारेक्टर मिलाउन, शून्य वा बढी क्यारेक्टरहरू मिलाउन “*” प्रयोग गर्नुहोस्।"
 
 #: app/Module/ModuleMapGeoLocationTrait.php
 msgid "Use an external service to find locations."
@@ -13405,7 +13431,7 @@ msgstr "सिल्हूट प्रयोग गर्नुहोस्"
 
 #: app/Http/RequestHandlers/CopyFact.php
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr "यसलाई अर्को रेकर्डमा टाँस्न \"सम्पादन\" मेनु प्रयोग गर्नुहोस्।"
+msgstr "यसलाई अर्को रेकर्डमा टाँस्न “सम्पादन” मेनु प्रयोग गर्नुहोस्।"
 
 #: resources/views/register-page.phtml
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -13462,7 +13488,7 @@ msgstr "प्रयोगकर्ता नाम अथवा ई–मेल
 #: resources/views/admin/users-edit.phtml
 #: resources/views/edit-account-page.phtml resources/views/register-page.phtml
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "प्रयोगकर्तानामहरू केस-संवेदनशील हुन्छन् र उच्चारण गरिएका अक्षरहरूलाई बेवास्ता गर्छन्, त्यसैले \"chloe\", \"chloë\", र \"Chloe\" लाई समान मानिन्छ।"
+msgstr "प्रयोगकर्तानामहरू केस-संवेदनशील हुन्छन् र उच्चारण गरिएका अक्षरहरूलाई बेवास्ता गर्छन्, त्यसैले “chloe”, “chloë”, र “Chloe” लाई समान मानिन्छ।"
 
 #: resources/views/admin/control-panel.phtml
 #: resources/views/modules/gedcom_stats/statistics.phtml
@@ -13569,8 +13595,7 @@ msgstr "अनलाइन देखिने"
 msgid "Visible to other users when online"
 msgstr "अनलाइन हुँदा अन्य प्रयोगकर्ताहरूले देख्न सक्छन्"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -13681,11 +13706,11 @@ msgstr "पश्चिमी साहारा"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "जब रेकर्ड सम्पादन गरिन्छ, प्रयोगकर्ता र टाइमस्ट्याम्प रेकर्ड गरिन्छ। कहिलेकाहीँ यो अवस्थित \"अन्तिम परिवर्तन\" जानकारी राख्न वांछनीय छ, उदाहरणका लागि अरू कसैको डेटामा सानो सुधार गर्दा। यो विकल्पले यो सुविधालाई पूर्वनिर्धारित रूपमा चयन गरेको छ कि छैन नियन्त्रण गर्छ।"
+msgstr "जब रेकर्ड सम्पादन गरिन्छ, प्रयोगकर्ता र टाइमस्ट्याम्प रेकर्ड गरिन्छ। कहिलेकाहीँ यो अवस्थित “अन्तिम परिवर्तन” जानकारी राख्न वांछनीय छ, उदाहरणका लागि अरू कसैको डेटामा सानो सुधार गर्दा। यो विकल्पले यो सुविधालाई पूर्वनिर्धारित रूपमा चयन गरेको छ कि छैन नियन्त्रण गर्छ।"
 
 #: resources/views/admin/users-edit.phtml
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "जब प्रयोगकर्ताले खाताको लागि दर्ता गर्दछ, प्रमाणीकरण लिङ्कको साथ उनीहरूको इमेल ठेगानामा इमेल पठाइन्छ। जब तिनीहरूले यो लिङ्क पछ्याउनुहोस्, हामीलाई थाहा छ इमेल ठेगाना सही छ, र \"इमेल प्रमाणित\" विकल्प स्वचालित रूपमा चयन हुन्छ।"
+msgstr "जब प्रयोगकर्ताले खाताको लागि दर्ता गर्दछ, प्रमाणीकरण लिङ्कको साथ उनीहरूको इमेल ठेगानामा इमेल पठाइन्छ। जब तिनीहरूले यो लिङ्क पछ्याउनुहोस्, हामीलाई थाहा छ इमेल ठेगाना सही छ, र “इमेल प्रमाणित” विकल्प स्वचालित रूपमा चयन हुन्छ।"
 
 #: resources/views/edit/reorder-families.phtml
 msgid "When an individual has more than one spouse, you should sort the families in date order."
@@ -13698,7 +13723,7 @@ msgstr "तपाईंले परिवारको नयाँ सदस्
 
 #: resources/views/help/pending-changes.phtml
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "जब तपाइँ जानकारी थप्नुहुन्छ, सम्पादन गर्नुहुन्छ, वा मेटाउनुहुन्छ, परिवर्तनहरू तुरुन्तै सुरक्षित हुँदैनन्। बरु, तिनीहरूलाई \"पेन्डिङ\" क्षेत्रमा राखिएको छ। यी पेन्डिङ परिवर्तनहरू स्वीकार गर्नु अघि एक मध्यस्थ द्वारा समीक्षा गर्न आवश्यक छ।"
+msgstr "जब तपाइँ जानकारी थप्नुहुन्छ, सम्पादन गर्नुहुन्छ, वा मेटाउनुहुन्छ, परिवर्तनहरू तुरुन्तै सुरक्षित हुँदैनन्। बरु, तिनीहरूलाई “पेन्डिङ” क्षेत्रमा राखिएको छ। यी पेन्डिङ परिवर्तनहरू स्वीकार गर्नु अघि एक मध्यस्थ द्वारा समीक्षा गर्न आवश्यक छ।"
 
 #: resources/views/help/relationship-privacy.phtml
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
@@ -13835,7 +13860,7 @@ msgstr "तपाईले तलको लिङ्क प्रयोग ग�
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr "तपाईं \"विषयवस्तुहरू\" प्रयोग गरेर webtrees को उपस्थिति परिवर्तन गर्न सक्नुहुन्छ। प्रत्येक विषयवस्तुको फरक शैली, लेआउट, रंग योजना, आदि हुन्छ।"
+msgstr "तपाईं “विषयवस्तुहरू” प्रयोग गरेर webtrees को उपस्थिति परिवर्तन गर्न सक्नुहुन्छ। प्रत्येक विषयवस्तुको फरक शैली, लेआउट, रंग योजना, आदि हुन्छ।"
 
 #: resources/views/admin/users-edit.phtml
 #: resources/views/edit-account-page.phtml
@@ -13967,7 +13992,7 @@ msgstr "तपाईंले अपग्रेड गर्नु अघि �
 #: app/Http/RequestHandlers/RegisterAction.php
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "तपाईंले \"%2$s\" बाट \"%1$s\" मेटाउनुपर्छ र फेरि प्रयास गर्नुपर्छ।"
+msgstr "तपाईंले “%2$s” बाट “%1$s” मेटाउनुपर्छ र फेरि प्रयास गर्नुपर्छ।"
 
 #: resources/views/admin/users-edit.phtml
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -14090,7 +14115,7 @@ msgid "accept all"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "स्वीकार गरियो"
 
@@ -14238,6 +14263,7 @@ msgstr "नागरिक"
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "नजिक"
@@ -14427,7 +14453,6 @@ msgstr "नयाँ व्यक्तिमा जानुहोस्"
 msgid "half circle"
 msgstr ""
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr ""
@@ -14438,7 +14463,6 @@ msgstr ""
 msgid "hide"
 msgstr "लुकाउनुहोस्"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr ""
@@ -14656,7 +14680,7 @@ msgid "patrilineal"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "विचाराधीन"
 
@@ -14732,7 +14756,7 @@ msgid "reject"
 msgstr "अस्वीकार"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "अस्वीकार गरियो"
 
@@ -14984,7 +15008,6 @@ msgstr ""
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr ""
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr ""
@@ -15084,10 +15107,6 @@ msgstr "webtrees लाई तपाईको वंशावली डाटा
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "webtrees ले इमेलहरू पठाउन आवश्यक छ, जस्तै पासवर्ड रिमाइन्डरहरू र वेबसाइट सूचनाहरू।"
 
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees कुनै भण्डारण बिना इमेल पठाउँछ"
-
 #: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "श्रीमती"
@@ -15140,24 +15159,24 @@ msgstr "आल्याण्ड टापुहरू"
 #: app/Http/RequestHandlers/CheckTree.php
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr "\"%1$s\" \"%2$s\" हुनुपर्छ।"
+msgstr "“%1$s” “%2$s” हुनुपर्छ।"
 
 #: app/Http/RequestHandlers/CopyFact.php
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr "\"%s\" क्लिपबोर्डमा प्रतिलिपि गरिएको छ।"
+msgstr "“%s” क्लिपबोर्डमा प्रतिलिपि गरिएको छ।"
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php
 #: app/Services/MapDataService.php
 #, php-format
 msgid "“%s” has been deleted."
-msgstr "\"%s\" मेटाइएको छ।"
+msgstr "“%s” मेटाइएको छ।"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "\"हाइलाइट गरिएको छवि\" (_PRIM) ट्यागहरू कुनै व्यक्तिको लागि मनपर्ने छवि संकेत गर्न केही वंशावली अनुप्रयोगहरूद्वारा प्रयोग गरिन्छ। एउटा विकल्प भनेको छविहरूलाई पुन: क्रमबद्ध गर्नु हो ताकि मनपर्नेलाई पहिले सूचीबद्ध गरियोस्।"
+msgstr "“हाइलाइट गरिएको छवि” (_PRIM) ट्यागहरू कुनै व्यक्तिको लागि मनपर्ने छवि संकेत गर्न केही वंशावली अनुप्रयोगहरूद्वारा प्रयोग गरिन्छ। एउटा विकल्प भनेको छविहरूलाई पुन: क्रमबद्ध गर्नु हो ताकि मनपर्नेलाई पहिले सूचीबद्ध गरियोस्।"
 
 #: app/Individual.php app/Note.php
 msgid "…"

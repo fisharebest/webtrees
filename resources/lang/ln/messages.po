@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -360,7 +360,6 @@ msgstr "(%s nsíma ya liwâ)"
 msgid "(age %s)"
 msgstr ""
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -368,7 +367,6 @@ msgstr ""
 msgid "(aged %s)"
 msgstr "(na mbúla ya %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -377,7 +375,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr ""
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -885,7 +882,7 @@ msgstr "Mokɔlɔ́tɔ mwa ntángo ekotálisa milúlú mya moto."
 
 #: resources/views/admin/users-edit.phtml
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Mosáleli akokoka kokɔ́tɔ tɛ́ kín'o \"nkandá etálámí\" mpé \"endimámí na mokambi\" ekopɔnama yangó míbálé."
+msgstr "Mosáleli akokoka kokɔ́tɔ tɛ́ kín'o “nkandá etálámí” mpé “endimámí na mokambi” ekopɔnama yangó míbálé."
 
 #: resources/xml/reports/pedigree_report.xml
 msgctxt "paper size"
@@ -1083,6 +1080,10 @@ msgstr "Bakísá ekákoli ya sika"
 msgid "Add a note"
 msgstr "Kobakísa nkomá"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+msgid "Add a parent"
+msgstr ""
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr ""
@@ -1101,9 +1102,15 @@ msgstr ""
 msgid "Add a source citation"
 msgstr "Bakísá ebandela ya lisapo"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "Kobakisa molóngani"
+
+#: resources/views/modules/relatives/tab.phtml
+msgid "Add a spouse using an existing individual"
+msgstr ""
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1477,6 +1484,11 @@ msgstr ""
 msgid "Alive"
 msgstr "Na bomɔi"
 
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+msgid "Alive or dead"
+msgstr ""
+
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
 #: resources/views/lists/datatables-attributes.phtml
@@ -1579,7 +1591,7 @@ msgstr "Nzelá isúsu ya komiyíngela mpé komibimisa."
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr "Liyémi \"hourglass\" lya bankɔ́kɔ na bakitani ba moto."
+msgstr "Liyémi “hourglass” lya bankɔ́kɔ na bakitani ba moto."
 
 #: resources/views/edit/reorder-families.phtml
 msgid "An individual can have more than one set of parents. For example, birth and adopted."
@@ -2145,7 +2157,7 @@ msgstr "Billings, Montana, Lisangá lya Amerika"
 
 #: app/Gedcom.php
 msgid "Binary data object"
-msgstr "elɔ́kɔ ya epɛ́sɛli \"Binary\""
+msgstr "elɔ́kɔ ya epɛ́sɛli “Binary”"
 
 #: app/Module/MapLinkBing.php
 msgid "Bing™ maps"
@@ -2916,7 +2928,6 @@ msgstr "Mwǎna"
 msgid "Child of "
 msgstr "Mwǎna wa "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -4003,7 +4014,6 @@ msgstr ""
 msgid "Daughter"
 msgstr "Mwǎna mwǎsí"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4517,7 +4527,7 @@ msgstr ""
 
 #: resources/views/help/pending-changes.phtml
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "Kɔ́nti nyɔ́nsɔ ezalí na bopɔni \"kondima mabóngoli\". Sɔ́kɔ́ yangó epɔnámí, mabóngoli mansɔ masálémí na mosáleli moye makobátelama ya nɔkí-nɔkí. Bakambi ebelé bakopɔnɔ yangó mpɔ̂ na kɔ́nti ya basáleli na bangó."
+msgstr "Kɔ́nti nyɔ́nsɔ ezalí na bopɔni “kondima mabóngoli”. Sɔ́kɔ́ yangó epɔnámí, mabóngoli mansɔ masálémí na mosáleli moye makobátelama ya nɔkí-nɔkí. Bakambi ebelé bakopɔnɔ yangó mpɔ̂ na kɔ́nti ya basáleli na bangó."
 
 #: resources/views/modules/gedcom_stats/config.phtml
 #: resources/views/modules/gedcom_stats/statistics.phtml
@@ -4613,9 +4623,7 @@ msgstr "Bongisá moto óyo mpé kitinyá makákoli maye na yɔ̌ mɔ̌kɔ́."
 msgid "Edit with all GEDCOM tags"
 msgstr ""
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4664,6 +4672,10 @@ msgstr ""
 #: resources/views/register-page.phtml
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
+msgstr ""
+
+#: app/Enums/ContactMethod.php
+msgid "Email only"
 msgstr ""
 
 #: resources/views/admin/users-edit.phtml
@@ -5192,7 +5204,7 @@ msgstr "Libótá na babóti"
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Individual.php
 msgid "Family with rada parents"
-msgstr "Libótá na babóti babɔ́kɔli, loléngé la \"rada\""
+msgstr "Libótá na babóti babɔ́kɔli, loléngé la “rada”"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/Individual.php
@@ -5280,7 +5292,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "Febwáli"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Mwǎsí"
 
@@ -5356,6 +5368,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr ""
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "Kokɔngɔlɔ"
 
@@ -5714,6 +5728,10 @@ msgstr ""
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "Epɛ́sɛli ya molɔngɔ́ mwa libtótá"
+
+#: resources/views/layouts/default.phtml
+msgid "Genealogy menu"
+msgstr ""
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6130,7 +6148,7 @@ msgstr ""
 msgid "Hide GEDCOM tags"
 msgstr ""
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6215,13 +6233,13 @@ msgstr ""
 #. I18N: Name of a module/chart
 #: app/Module/ChartsBlockModule.php app/Module/HourglassChartModule.php
 msgid "Hourglass chart"
-msgstr "Liyémi \"hourglass\""
+msgstr "Liyémi “hourglass”"
 
 #. I18N: %s is an individual’s name
 #: app/Module/HourglassChartModule.php
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "Liyémi \"hourglass\" lya %s"
+msgstr "Liyémi “hourglass” lya %s"
 
 #: resources/views/modules/census-assistant.phtml
 msgid "Household"
@@ -6434,6 +6452,11 @@ msgstr ""
 msgid "Import preferences"
 msgstr "Koyéisa malúli"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+msgid "Importing family tree"
+msgstr ""
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -6459,6 +6482,14 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
+msgstr ""
+
+#: app/Enums/ContactMethod.php
+msgid "Inbox and email"
+msgstr ""
+
+#: app/Enums/ContactMethod.php
+msgid "Inbox only"
 msgstr ""
 
 #: resources/views/admin/trees-unconnected.phtml
@@ -6646,14 +6677,6 @@ msgstr "Nzeté ekomimbóngwana ya %s"
 msgid "Interment"
 msgstr ""
 
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr ""
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr ""
-
 #: app/Module/PrivacyPolicy.php
 msgid "International transfers"
 msgstr ""
@@ -6823,7 +6846,7 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml
 #: resources/views/edit/edit-fact.phtml resources/views/edit/edit-record.phtml
 msgid "Keep the existing “last change” information"
-msgstr "Kobátela nsango ya \"libóngoli lya nsúka\" lizalí"
+msgstr "Kobátela nsango ya “libóngoli lya nsúka” lizalí"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
@@ -7347,10 +7370,6 @@ msgstr ""
 msgid "Maidenhead location code"
 msgstr ""
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "Ekangisi epáí ya"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7366,7 +7385,7 @@ msgstr ""
 msgid "Maldives"
 msgstr "Madívi"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Mibáli"
 
@@ -7412,9 +7431,7 @@ msgstr "Koyángela nzeté ya mabótá"
 msgid "Manage media"
 msgstr "Koyángela bisáleli bya bopanzi nsango"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "Moyángeli"
@@ -7837,9 +7854,7 @@ msgstr ""
 msgid "Melbourne, Australia"
 msgstr "Melbourne, Ostralia"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr ""
@@ -7950,9 +7965,7 @@ msgstr ""
 msgid "Missing data"
 msgstr "Epɛ́sɛli ezángí"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "Mondimi"
 
@@ -8438,7 +8451,7 @@ msgstr "Libóngoli lya manáka lizalí tɛ́"
 msgid "No children"
 msgstr "Na bǎna tɛ́"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr ""
 
@@ -8862,7 +8875,7 @@ msgstr "Na mokɔlɔ moye"
 msgid "Only add new records"
 msgstr ""
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "Sé moyángeli akokí kobɔngisa"
@@ -8924,11 +8937,16 @@ msgstr "Orlando, Florida, Lisangá lya Amerika"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
 msgid "Other"
 msgstr "Mosúsu"
+
+#: app/Enums/Sex.php
+msgctxt "SEX"
+msgid "Other"
+msgstr ""
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "Other facts to show in charts"
@@ -9012,6 +9030,10 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "Monɛ́nɛ mwa lonkásá"
+
+#: resources/views/modules/media-list/pagination.phtml
+msgid "Pagination"
+msgstr ""
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9578,6 +9600,11 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
+msgstr ""
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+msgid "Progress"
 msgstr ""
 
 #: app/Gedcom.php
@@ -10644,6 +10671,7 @@ msgstr ""
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10820,6 +10848,7 @@ msgstr "Kolakisa bato babótámi kolúta mibú nkámá eleki."
 msgid "Show individuals born within the last 100 years."
 msgstr "Kolakisa bato baóyo babótamá na káti ya mibú nkámá ya nsúka."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Kolakisa bato baye bazalí na bomɔi tǒ balóngani bábalé bazalí na bomɔi."
@@ -11009,23 +11038,21 @@ msgstr ""
 msgid "Show thumbnail images in charts and family groups."
 msgstr ""
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Kolakisa na bayángeli"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr ""
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11034,12 +11061,12 @@ msgstr "Kolakisa na batáli"
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "Kotálisa \"bankásá\" bambálé tǒ bato. Baóyo bazalí bato na bomɔi kasi bazangí bǎna bakɔ́tisámí káti na sandúku ya bipɛ́sɛli."
+msgstr "Kotálisa “bankásá” bambálé tǒ bato. Baóyo bazalí bato na bomɔi kasi bazangí bǎna bakɔ́tisámí káti na sandúku ya bipɛ́sɛli."
 
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "Kotálisa \"misisá\" bambálé tǒ bato. Baóyo bazalí bato bakokí kobengama mpé “patriarchs”. Ezalí bato bazangí babóti bakɔ́tisámí káti na sandúku ya bipɛ́sɛli."
+msgstr "Kotálisa “misisá” bambálé tǒ bato. Baóyo bazalí bato bakokí kobengama mpé “patriarchs”. Ezalí bato bazangí babóti bakɔ́tisámí káti na sandúku ya bipɛ́sɛli."
 
 #. I18N: %s are placeholders for numbers
 #: resources/views/lists/datatables-attributes.phtml
@@ -11234,7 +11261,6 @@ msgstr ""
 msgid "Son"
 msgstr "Mwǎna mobáli"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -13333,7 +13359,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "Eyébání tɛ́"
@@ -13348,7 +13374,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Eyébání tɛ́"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13664,8 +13690,7 @@ msgstr ""
 msgid "Visible to other users when online"
 msgstr ""
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -13932,7 +13957,7 @@ msgstr ""
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr "Okokí kobóngola bomɔ́nɔni bwa webtrees na kosáleláká \"mibímbi\". Mobímbí mɔ́nsɔ mozalí na loléngé ekɛsɛ́ní, emɔ́niseli, liyemi lya lángi, etc..."
+msgstr "Okokí kobóngola bomɔ́nɔni bwa webtrees na kosáleláká “mibímbi”. Mobímbí mɔ́nsɔ mozalí na loléngé ekɛsɛ́ní, emɔ́niseli, liyemi lya lángi, etc..."
 
 #: resources/views/admin/users-edit.phtml
 #: resources/views/edit-account-page.phtml
@@ -14187,7 +14212,7 @@ msgid "accept all"
 msgstr ""
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "endimámí"
 
@@ -14335,6 +14360,7 @@ msgstr ""
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "kangá"
@@ -14524,7 +14550,6 @@ msgstr "kɛndɛ epayi ya moto wa sika"
 msgid "half circle"
 msgstr "nzínga ya ndámbo"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "yě mɔ̌kɔ́"
@@ -14535,7 +14560,6 @@ msgstr "yě mɔ̌kɔ́"
 msgid "hide"
 msgstr "kobómba"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "yě mɔ̌kɔ́"
@@ -14753,7 +14777,7 @@ msgid "patrilineal"
 msgstr "na molɔngɔ́ ya botatá"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "ezalí kozela"
 
@@ -14829,7 +14853,7 @@ msgid "reject"
 msgstr "kobóya"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "ebóyámí"
 
@@ -15081,7 +15105,6 @@ msgstr "Bisálisela bya bokangisi bwa sandúku ya bipɛ́sɛli na kása-kása �
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "Bitúka “/data” mpé “/data/config.ini.php” bizalí na ndingisa ya bokɔ́ti óyo ekopésa webserver etánga byangó"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "bangó mɔ̌kɔ́"
@@ -15180,10 +15203,6 @@ msgstr ""
 #: resources/views/admin/site-mail.phtml
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr ""
-
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "webtrees etindí nkandá izangí bobómbi"
 
 #: app/Elements/RoleInEvent.php
 msgid "wife"

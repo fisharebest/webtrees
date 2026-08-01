@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 10:01+0100\n"
+"POT-Creation-Date: 2026-08-01 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -366,7 +366,6 @@ msgstr "(%s dopo la morte)"
 msgid "(age %s)"
 msgstr "(età %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -374,7 +373,6 @@ msgstr "(età %s)"
 msgid "(aged %s)"
 msgstr "(età %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -383,7 +381,6 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr "(età %s)"
 
-#. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
@@ -730,7 +727,7 @@ msgstr "È disponibile una nuova versione di webtrees."
 #: app/Http/RequestHandlers/PasswordRequestAction.php
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr "Il link per resettare la password è stato inviato a \"%s\"."
+msgstr "Il link per resettare la password è stato inviato a “%s”."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php
@@ -1092,6 +1089,11 @@ msgstr "Aggiungi una notizia"
 msgid "Add a note"
 msgstr "Aggiungi una nota"
 
+#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#, fuzzy
+msgid "Add a parent"
+msgstr "Aggiungi un genitore"
+
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a sibling"
 msgstr "Aggiungi un fratello di genere ignoto"
@@ -1110,9 +1112,16 @@ msgstr "Aggiungi un figlio"
 msgid "Add a source citation"
 msgstr "Aggiungi una citazione di fonte"
 
+#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr "Aggiungi un nuovo coniuge"
+
+#: resources/views/modules/relatives/tab.phtml
+#, fuzzy
+msgid "Add a spouse using an existing individual"
+msgstr "Aggiungi un coniuge utilizzando un individuo esistente"
 
 #: app/Module/StoriesModule.php resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/tab.phtml
@@ -1484,6 +1493,12 @@ msgstr "Pseudonimo"
 #: resources/views/lists/individuals-table.phtml
 msgid "Alive"
 msgstr "In vita"
+
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
+#, fuzzy
+msgid "Alive or dead"
+msgstr "Vivo o morto"
 
 #: app/Module/AbstractIndividualListModule.php
 #: app/Module/FrequentlyAskedQuestionsModule.php
@@ -2902,7 +2917,6 @@ msgstr "Figlio"
 msgid "Child of "
 msgstr "Figlio di "
 
-#. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Child of %s"
@@ -3993,7 +4007,6 @@ msgstr "Le date vengono memorizzate utilizzando abbreviazioni e parole chiave in
 msgid "Daughter"
 msgstr "Figlia"
 
-#. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Daughter of %s"
@@ -4600,9 +4613,7 @@ msgstr "Modifica questa persona e sostituisci i suoi dettagli con i tuoi."
 msgid "Edit with all GEDCOM tags"
 msgstr "Modifica con tutte le tag GEDCOM"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 #: resources/views/modules/recent_changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
@@ -4651,6 +4662,11 @@ msgstr "Email"
 #: resources/views/setup/step-5-administrator.phtml
 msgid "Email address"
 msgstr "Indirizzo email"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Email only"
+msgstr "Solo email"
 
 #: resources/views/admin/users-edit.phtml
 msgid "Email verified"
@@ -5269,7 +5285,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "febbraio"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Female"
 msgstr "Femmina"
 
@@ -5345,6 +5361,8 @@ msgid "Files marked with %s are required for proper operation and cannot be remo
 msgstr "I file contrassegnati con %s sono necessari per il corretto funzionamento del programma e non possono essere rimossi."
 
 #: resources/views/lists/datatables-attributes.phtml
+#: resources/views/lists/families-table.phtml
+#: resources/views/lists/individuals-table.phtml
 msgid "Filter"
 msgstr "Filtra"
 
@@ -5456,7 +5474,7 @@ msgstr "Ad esempio, se si specifica una lunghezza di percorso pari a 2, la perso
 
 #: resources/views/help/data-fixes.phtml
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr "Ad esempio, si possono individuare facilmente gli individui che non hanno un evento \"decesso\", ma è più lento calcolare se l'individuo potrebbe essere defunto."
+msgstr "Ad esempio, si possono individuare facilmente gli individui che non hanno un evento “decesso”, ma è più lento calcolare se l'individuo potrebbe essere defunto."
 
 #: app/Module/ContactsFooterModule.php
 #, php-format
@@ -5703,6 +5721,11 @@ msgstr "Contatto per informazioni genealogiche"
 #: resources/views/admin/trees.phtml
 msgid "Genealogy data"
 msgstr "Dati genealogici"
+
+#: resources/views/layouts/default.phtml
+#, fuzzy
+msgid "Genealogy menu"
+msgstr "Menu di genealogia"
 
 #: resources/views/admin/trees-preferences.phtml
 msgid "General"
@@ -6119,7 +6142,7 @@ msgstr "Hermosillo, Messico"
 msgid "Hide GEDCOM tags"
 msgstr "Nascondi tag GEDCOM"
 
-#: app/Auth.php app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Auth.php app/Enums/AccessLevel.php
 #: app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
@@ -6425,6 +6448,12 @@ msgstr "Importa dati geografici"
 msgid "Import preferences"
 msgstr "Importa impostazioni"
 
+#: resources/views/admin/import-progress.phtml
+#: resources/views/admin/trees.phtml
+#, fuzzy
+msgid "Importing family tree"
+msgstr "Importazione dell'albero genealogico"
+
 #: resources/views/admin/trees-merge.phtml
 #: resources/views/admin/trees-renumber.phtml
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -6452,6 +6481,16 @@ msgstr "In alcune nazioni le leggi a tutela della privacy si applicano, oltre al
 #, fuzzy
 msgid "In the event of a personal data breach that poses a risk to your rights, we will notify the relevant supervisory authority and, where required, the affected individuals."
 msgstr "In caso di violazione dei dati personali che comporti un rischio per i suoi diritti, notificheremo l'autorità di controllo competente e, ove richiesto, le persone interessate."
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox and email"
+msgstr "Posta in arrivo ed email"
+
+#: app/Enums/ContactMethod.php
+#, fuzzy
+msgid "Inbox only"
+msgstr "Solo posta in arrivo"
 
 #: resources/views/admin/trees-unconnected.phtml
 msgid "Include aliases"
@@ -6637,14 +6676,6 @@ msgstr "Albero interattivo di %s"
 #: app/CustomTags/BrothersKeeper.php
 msgid "Interment"
 msgstr "Sepoltura"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging"
-msgstr "Messaggistica interna"
-
-#: app/Services/MessageService.php
-msgid "Internal messaging with emails"
-msgstr "Messaggi interni con email"
 
 #: app/Module/PrivacyPolicy.php
 #, fuzzy
@@ -7336,10 +7367,6 @@ msgstr "Rivista"
 msgid "Maidenhead location code"
 msgstr "Codice locazione Maidenhead"
 
-#: app/Services/MessageService.php
-msgid "Mailto link"
-msgstr "Collegamento mailto"
-
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Malawi"
@@ -7355,7 +7382,7 @@ msgstr "Malesia"
 msgid "Maldives"
 msgstr "Maldive"
 
-#: app/Elements/SexValue.php app/Module/StatisticsChartModule.php
+#: app/Enums/Sex.php app/Module/StatisticsChartModule.php
 msgid "Male"
 msgstr "Maschio"
 
@@ -7401,9 +7428,7 @@ msgstr "Gestisci gli alberi genealogici"
 msgid "Manage media"
 msgstr "Gestisci oggetti multimediali"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Manager"
 msgstr "Gestore"
@@ -7824,9 +7849,7 @@ msgstr "Sistemi medi (5000 persone): 32–64 MB, 20–40 secondi"
 msgid "Melbourne, Australia"
 msgstr "Melbourne, Australia"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/gedcom-export-options.phtml
+#: app/Enums/Role.php resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Member"
 msgstr "membro"
@@ -7936,9 +7959,7 @@ msgstr "Età minima per il consenso"
 msgid "Missing data"
 msgstr "Dati mancanti"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php
-#: resources/views/admin/users-edit.phtml
+#: app/Enums/Role.php resources/views/admin/users-edit.phtml
 msgid "Moderator"
 msgstr "Moderatore"
 
@@ -8416,7 +8437,7 @@ msgstr "Nessuna conversione calendario"
 msgid "No children"
 msgstr "Nessun figlio"
 
-#: app/Services/MessageService.php
+#: app/Enums/ContactMethod.php
 msgid "No contact"
 msgstr "Nessun contatto"
 
@@ -8839,7 +8860,7 @@ msgstr "In questo giorno"
 msgid "Only add new records"
 msgstr "Aggiungere unicamente nuovi record"
 
-#: app/Elements/RestrictionNotice.php
+#: app/Elements/RestrictionNotice.php app/Enums/Restriction.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Only managers can edit"
 msgstr "Solo i gestori possono modificare"
@@ -8899,9 +8920,15 @@ msgstr "Orlando, Florida, Stati Uniti d'America"
 
 #. I18N: Type of media object
 #: app/Elements/ResearchTaskStatus.php app/Elements/ResearchTaskType.php
-#: app/Elements/SexXValue.php app/Elements/SourceMediaType.php
-#: app/Module/StatisticsChartModule.php app/Statistics.php
-#: app/StatisticsData.php resources/views/admin/control-panel.phtml
+#: app/Elements/SourceMediaType.php app/Module/StatisticsChartModule.php
+#: app/Statistics.php app/StatisticsData.php
+#: resources/views/admin/control-panel.phtml
+msgid "Other"
+msgstr "Altro"
+
+#: app/Enums/Sex.php
+#, fuzzy
+msgctxt "SEX"
 msgid "Other"
 msgstr "Altro"
 
@@ -8989,6 +9016,11 @@ msgstr "Impostazione pagina"
 #: resources/xml/reports/relative_ext_report.xml
 msgid "Page size"
 msgstr "Dimensioni della pagina"
+
+#: resources/views/modules/media-list/pagination.phtml
+#, fuzzy
+msgid "Pagination"
+msgstr "Paginazione"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php
@@ -9258,7 +9290,7 @@ msgstr "Il nome dei luoghi può cambiare nel tempo. In genealogia, è prassi usa
 
 #: resources/views/help/place.phtml
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr "I nomi dei luoghi devono essere inseriti come una lista separata da virgole, iniziando dal luogo più piccolo e finendo con la nazione. Per empio, \"Anzio, Roma, Lazio, Italia\"."
+msgstr "I nomi dei luoghi devono essere inseriti come una lista separata da virgole, iniziando dal luogo più piccolo e finendo con la nazione. Per empio, “Anzio, Roma, Lazio, Italia”."
 
 #: app/Gedcom.php
 msgid "Place of LDS baptism"
@@ -9556,6 +9588,12 @@ msgstr "Omologazione del testamento"
 #, fuzzy
 msgid "Processing of personal data on this website is based on legitimate interest in historical and genealogical research. This is recognized as historical research under data protection law, and certain rights — including the right to erasure and the right to object — may be limited where exercising those rights would render the research impossible or seriously impair it."
 msgstr "Il trattamento dei dati personali su questo sito web si basa sul legittimo interesse alla ricerca storica e genealogica. Questo è riconosciuto come ricerca storica ai sensi della legge sulla protezione dei dati, e alcuni diritti — compreso il diritto alla cancellazione e il diritto di opposizione — possono essere limitati qualora il loro esercizio renderebbe la ricerca impossibile o la comprometterebbe gravemente."
+
+#: resources/views/admin/data-fix-page.phtml
+#: resources/views/components/progress.phtml
+#, fuzzy
+msgid "Progress"
+msgstr "Progresso"
 
 #: app/Gedcom.php
 msgid "Property"
@@ -10625,6 +10663,7 @@ msgstr "Configurazione guidata di webtrees"
 
 #: app/CustomTags/GedcomL.php app/Gedcom.php app/Statistics.php
 #: resources/views/individual-page-sex.phtml
+#: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
@@ -10802,6 +10841,7 @@ msgstr "Visualizza le persone nate più di 100 anni fa."
 msgid "Show individuals born within the last 100 years."
 msgstr "Visualizza le persone nate nel corso degli ultimi 100 anni."
 
+#: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr "Visualizza le persone che sono vive o coppie in cui entrambi i partner sono in vita."
@@ -10991,23 +11031,21 @@ msgstr "Per quali lingue va mostrato questo riquadro"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Mostra le miniature in grafici e gruppi."
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr "Mostra ai gestori"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr "Mostra ai membri"
 
-#: app/Auth.php app/Elements/RestrictionNotice.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
+#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11207,7 +11245,7 @@ msgstr "Alcune pagine possono mostrare il numero di visite ricevute."
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Qualche tema può mostrare delle icone nella sezione \"Fatti ed eventi\"."
+msgstr "Qualche tema può mostrare delle icone nella sezione “Fatti ed eventi”."
 
 #: resources/views/edit/change-family-members.phtml
 #: resources/xml/reports/family_group_report.xml
@@ -11216,7 +11254,6 @@ msgstr "Qualche tema può mostrare delle icone nella sezione \"Fatti ed eventi\"
 msgid "Son"
 msgstr "Figlio"
 
-#. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php
 #, php-format
 msgid "Son of %s"
@@ -11793,12 +11830,12 @@ msgstr "L’Aia, Paesi Bassi"
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr "L'estensione PHP \"%s\" non è installata."
+msgstr "L'estensione PHP “%s” non è installata."
 
 #: app/Services/ServerCheckService.php
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr "La funzione PHP \"%1$s\" è disabilitata."
+msgstr "La funzione PHP “%1$s” è disabilitata."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php
@@ -11860,7 +11897,7 @@ msgstr "Data e ora ultimo aggiornamento"
 #: app/Http/RequestHandlers/MapDataSave.php
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr "I dettagli per \"%s\" sono stati aggiornati."
+msgstr "I dettagli per “%s” sono stati aggiornati."
 
 #. I18N: %s is a filename
 #: app/Http/RequestHandlers/ExportGedcomServer.php
@@ -11873,25 +11910,25 @@ msgstr "Albero genealogico esportato in %s."
 #: app/Http/RequestHandlers/TreePreferencesAction.php
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "L'albero \"%s\" esiste già."
+msgstr "L'albero “%s” esiste già."
 
 #: app/Http/RequestHandlers/CreateTreeAction.php
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "L'albero \"%s\" è stato creato."
+msgstr "L'albero “%s” è stato creato."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/DeleteTreeAction.php
 #: app/Http/RequestHandlers/SynchronizeTrees.php
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "L'albero \"%s\" è stato cancellato."
+msgstr "L'albero “%s” è stato cancellato."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/SelectDefaultTree.php
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "L'albero \"%s\" sarà mostrato ai visitatori al primo accesso a questo sito."
+msgstr "L'albero “%s” sarà mostrato ai visitatori al primo accesso a questo sito."
 
 #: app/Http/RequestHandlers/MergeTreesAction.php
 msgid "The family trees have been merged successfully."
@@ -11972,7 +12009,7 @@ msgstr "È possibile specificare il percorso assoluto della cartella (es. /home/
 #: app/Http/RequestHandlers/SitePreferencesAction.php
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr "La cartella \"%s\" non esiste."
+msgstr "La cartella “%s” non esiste."
 
 #: resources/views/admin/merge-records-step-2.phtml
 msgid "The following facts and events were found in both records."
@@ -12015,7 +12052,7 @@ msgstr "Il collegamento da «%1$s» a «%2$s» è stato rimosso."
 #: app/Http/RequestHandlers/MergeFactsAction.php
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "Il collegamento tra \"%1$s\" e \"%2$s\" è stato aggiornato."
+msgstr "Il collegamento tra “%1$s” e “%2$s” è stato aggiornato."
 
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php
@@ -12073,13 +12110,13 @@ msgstr "Messaggio inviato correttamente a %s."
 #: app/Module/ChartsBlockModule.php
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr "Il modulo \"%s\" è stato disabilitato."
+msgstr "Il modulo “%s” è stato disabilitato."
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php
 #: app/Http/RequestHandlers/ModulesAllAction.php
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr "Il modulo \"%s\" è stato abilitato."
+msgstr "Il modulo “%s” è stato abilitato."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -13328,7 +13365,7 @@ msgstr "Stati Uniti — CO, CT, DE, IN, IA, KY, MD, MN, MT, NE, NH, NJ, OR, RI, 
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
-#: app/GedcomRecord.php app/Statistics.php
+#: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
 #: app/Statistics/Service/CountryService.php app/StatisticsData.php
 msgid "Unknown"
 msgstr "sconosciuto"
@@ -13343,7 +13380,7 @@ msgctxt "unknown people"
 msgid "Unknown"
 msgstr "sconosciutI"
 
-#: app/Elements/SexValue.php resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgctxt "unknown sex"
@@ -13659,8 +13696,7 @@ msgstr "Visibile online"
 msgid "Visible to other users when online"
 msgstr "Visibile dagli altri utenti quando collegato"
 
-#. I18N: Listbox entry; name of a role
-#: app/Http/RequestHandlers/UserEditPage.php app/Statistics.php
+#: app/Enums/Role.php app/Statistics.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/users-edit.phtml
 msgid "Visitor"
@@ -14190,7 +14226,7 @@ msgid "accept all"
 msgstr "accetta tutti"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "accepted"
 msgstr "accettato"
 
@@ -14338,6 +14374,7 @@ msgstr "cittadino"
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/footer-close.phtml
 #: resources/views/modals/header.phtml
+#: resources/views/modals/on-screen-keyboard.phtml
 #: resources/views/modules/favorites/favorites.phtml
 msgid "close"
 msgstr "chiudi"
@@ -14529,7 +14566,6 @@ msgstr "vai a nuova persona"
 msgid "half circle"
 msgstr "semi-cerchio"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "herself"
 msgstr "lei"
@@ -14540,7 +14576,6 @@ msgstr "lei"
 msgid "hide"
 msgstr "nascondi"
 
-#. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php
 msgid "himself"
 msgstr "lui"
@@ -14758,7 +14793,7 @@ msgid "patrilineal"
 msgstr "patrilineare"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "pending"
 msgstr "in sospeso"
 
@@ -14834,7 +14869,7 @@ msgid "reject"
 msgstr "rifiutarla"
 
 #. I18N: the status of an edit accepted/rejected/pending
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
+#: app/Enums/ChangeStatus.php
 msgid "rejected"
 msgstr "rifiutato"
 
@@ -15087,7 +15122,6 @@ msgstr "le impostazioni della connessione al database nel file «/data/config.in
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr "la cartella «/data» e il file «/data/config.ini.php» hanno permessi di accesso che ne permettono la lettura da parte del server web"
 
-#. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php
 msgid "themself"
 msgstr "se stessi"
@@ -15187,10 +15221,6 @@ msgstr "webtrees ha bisogno di un database per memorizzare i dati genealogici."
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr "webtrees ha la necessità di inviare email, come reminder della password e notifiche del sito."
 
-#: app/Services/MessageService.php
-msgid "webtrees sends emails with no storage"
-msgstr "invio di email da parte di webtrees senza salvarle"
-
 #: app/Elements/RoleInEvent.php
 msgid "wife"
 msgstr "moglie"
@@ -15255,7 +15285,7 @@ msgstr "“%s“ è stato copiato nella clipboard."
 #: app/Services/MapDataService.php
 #, php-format
 msgid "“%s” has been deleted."
-msgstr "\"%s\" è stato eliminato."
+msgstr "“%s” è stato eliminato."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php
