@@ -28,10 +28,6 @@ export async function load(element, url, data = null) {
     'x-requested-with': 'XMLHttpRequest',
   };
 
-  if (data !== null) {
-    headers['x-csrf-token'] = document.head.querySelector('meta[name=csrf]').getAttribute('content');
-  }
-
   const response = await fetch(url, {
     body: data,
     method: data === null ? 'GET' : 'POST',
@@ -73,4 +69,3 @@ export async function load(element, url, data = null) {
   // Notify listeners that new content has been loaded into the DOM.
   notifyContentLoaded(element);
 }
-

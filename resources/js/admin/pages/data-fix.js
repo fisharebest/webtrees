@@ -91,7 +91,7 @@ export function initializeDataFixPage () {
       dataTable = new DataTable(table, {
         ajax: {
           url: dataUrl,
-          type: 'POST',
+          method: 'POST',
           data: (requestData) => {
             Object.assign(requestData, getParams());
           },

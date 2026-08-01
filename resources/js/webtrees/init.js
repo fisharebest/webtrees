@@ -49,7 +49,7 @@ import {
 } from './forms';
 import { initializeDatatables } from './datatables';
 import { initializeGallery } from './gallery';
-import { httpPost } from './http';
+import { configureCsrfInterceptor, httpPost } from './http';
 import { initializeOnScreenKeyboard } from './on-screen-keyboard';
 import {
   initializeAjaxModalPage,
@@ -80,9 +80,8 @@ import {
  * are accessed via window.webtrees at runtime since they are part of the same bundle.
  */
 export function initializeWebtreesPage() {
-  if (typeof window.webtreesLegacy?.configureAjaxCsrf === 'function') {
-    window.webtreesLegacy.configureAjaxCsrf();
-  }
+  // Install a global fetch interceptor so all POST requests include the CSRF token.
+  configureCsrfInterceptor();
 
   initializeDatatables();
 
