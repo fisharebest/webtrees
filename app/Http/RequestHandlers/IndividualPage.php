@@ -131,7 +131,7 @@ final class IndividualPage implements RequestHandlerInterface
     {
         if ($individual->isDead()) {
             // If dead, show age at death
-            $age = (string) new Age($individual->getBirthDate(), $individual->getDeathDate());
+            $age = (new Age($individual->getBirthDate(), $individual->getDeathDate()))->toString();
 
             if ($age === '') {
                 return '';
@@ -146,7 +146,7 @@ final class IndividualPage implements RequestHandlerInterface
 
         // If living, show age today
         $today = new Date(strtoupper(date('d M Y')));
-        $age   = (string) new Age($individual->getBirthDate(), $today);
+        $age   = (new Age($individual->getBirthDate(), $today))->toString();
 
         if ($age === '') {
             return '';

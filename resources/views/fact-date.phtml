@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Elements\AbstractEventElement;
 use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
@@ -24,23 +23,29 @@ use Fisharebest\Webtrees\Registry;
 $factrec = $fact->gedcom();
 $html    = '';
 
-// Recorded age
+// Recorded age (raw GEDCOM values and display-formatted values)
 if (preg_match('/\n2 AGE (.+)/', $factrec, $match) === 1) {
-    $fact_age = Registry::elementFactory()->make($fact->tag() . ':AGE')->value($match[1], $record->tree());
+    $raw_fact_age = $match[1];
+    $fact_age     = Registry::elementFactory()->make($fact->tag() . ':AGE')->value($match[1], $record->tree());
 } else {
-    $fact_age = '';
+    $raw_fact_age = '';
+    $fact_age     = '';
 }
 
 if (preg_match('/\n2 HUSB\n3 AGE (.+)/', $factrec, $match) === 1) {
-    $husb_age = Registry::elementFactory()->make($fact->tag() . ':HUSB:AGE')->value($match[1], $record->tree());
+    $raw_husb_age = $match[1];
+    $husb_age     = Registry::elementFactory()->make($fact->tag() . ':HUSB:AGE')->value($match[1], $record->tree());
 } else {
-    $husb_age = '';
+    $raw_husb_age = '';
+    $husb_age     = '';
 }
 
 if (preg_match('/\n2 WIFE\n3 AGE (.+)/', $factrec, $match) === 1) {
-    $wife_age = Registry::elementFactory()->make($fact->tag() . ':WIFE:AGE')->value($match[1], $record->tree());
+    $raw_wife_age = $match[1];
+    $wife_age     = Registry::elementFactory()->make($fact->tag() . ':WIFE:AGE')->value($match[1], $record->tree());
 } else {
-    $wife_age = '';
+    $raw_wife_age = '';
+    $wife_age     = '';
 }
 
 // Calculated age
@@ -64,7 +69,7 @@ if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
             $html .= view('fact-parents-age', ['individual' => $record, 'birth_date' => $date]);
         }
 
-        if ($tag !== 'BIRT' && Registry::elementFactory()->make($fact->tag()) instanceof AbstractEventElement) {
+        if ($tag !== 'BIRT') {
             // age at event
             $birth_date = $record->getBirthDate();
             // Can't use getDeathDate(), as this also gives BURI/CREM events, which
@@ -76,91 +81,95 @@ if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
             } else {
                 $death_date = new Date('');
             }
-            $ageText = '';
+            $age_text = '';
 
             if ($tag === 'DEAT' || Date::compare($date, $death_date) <= 0 || !$record->isDead()) {
                 // Before death, print age
-                $age = (string) new Age($birth_date, $date);
+                $age = new Age($birth_date, $date);
 
-                // Only show calculated age if it differs from recorded age
-                if ($age !== '') {
-                    if (
-                        $fact_age !== '' && !str_starts_with($fact_age, $age) ||
-                        $fact_age === '' && $husb_age === '' && $wife_age === '' ||
-                        $husb_age !== '' && !str_starts_with($husb_age, $age) && $record->sex() === Sex::Male ||
-                        $wife_age !== '' && !str_starts_with($wife_age, $age) && $record->sex() === Sex::Female
-                    ) {
-                        $ageText = match ($record->sex()) {
-                            Sex::Male   => I18N::translateContext('Male', '(aged %s)', $age),
-                            Sex::Female => I18N::translateContext('Female', '(aged %s)', $age),
-                            default     => I18N::translate('(aged %s)', $age),
+                if ($age->isValid()) {
+                    // Determine the relevant raw recorded age for comparison
+                    $spouse_raw_age = $raw_fact_age;
+                    if ($spouse_raw_age === '' && $raw_husb_age !== '' && $record->sex() === Sex::Male) {
+                        $spouse_raw_age = $raw_husb_age;
+                    } elseif ($spouse_raw_age === '' && $raw_wife_age !== '' && $record->sex() === Sex::Female) {
+                        $spouse_raw_age = $raw_wife_age;
+                    }
+
+                    // Show calculated age unless it matches the recorded age
+                    if (!$age->matchesRecordedAge($spouse_raw_age) && !$age->isZero()) {
+                        $age_text = match ($record->sex()) {
+                            Sex::Male   => I18N::translateContext('Male', '(aged %s)', $age->toString()),
+                            Sex::Female => I18N::translateContext('Female', '(aged %s)', $age->toString()),
+                            default     => I18N::translate('(aged %s)', $age->toString()),
                         };
                     }
                 }
             }
 
             if ($tag !== 'DEAT' && $death_date->isOK() && Date::compare($death_date, $date) <= 0) {
-                $death_day = $death_date->minimumDate()->day();
-                $event_day = $date->minimumDate()->day();
-                if ($death_day !== 0 && $event_day !== 0 && Date::compare($death_date, $date) === 0) {
-                    // On the exact date of death?
-                    // NOTE: this path is never reached.  Keep the code (translation) in case
-                    // we decide to re-introduce it.
-                    $ageText = I18N::translate('(on the date of death)');
-                } else {
-                    // After death
-                    $age = (string) new Age($death_date, $date);
+                $afterDeathAge = new Age($death_date, $date);
 
-                    if ($age !== '') {
-                        $ageText = I18N::translate('(%s after death)', $age);
+                if ($afterDeathAge->isZero()) {
+                    // On the exact date of death
+                    $age_text = I18N::translate('(on the date of death)');
+                } elseif ($afterDeathAge->isValid()) {
+                    // After death
+                    $age_string = $afterDeathAge->toString();
+
+                    if ($age_string !== '') {
+                        $age_text = I18N::translate('(%s after death)', $age_string);
                     } else {
-                        $ageText = '';
+                        $age_text = '';
                     }
                 }
 
                 // Family events which occur after death are probably errors
-                if ($fact->record() instanceof Family && $ageText !== '') {
-                    $ageText .= view('icons/warning');
+                if ($fact->record() instanceof Family && $age_text !== '') {
+                    $age_text .= view('icons/warning');
                 }
             }
 
-            if ($ageText !== '') {
-                $html .= ' <span class="age">' . $ageText . '</span>';
+            if ($age_text !== '') {
+                $html .= ' <span class="age">' . $age_text . '</span>';
             }
         }
     } elseif ($record instanceof Family) {
         // Calculate ages of both spouses at family events
-        if (Registry::elementFactory()->make($fact->tag()) instanceof AbstractEventElement) {
-            $spouses = [
-                'husb' => $record->husband(),
-                'wife' => $record->wife(),
-            ];
+        $spouses = [
+            'husb' => $record->husband(),
+            'wife' => $record->wife(),
+        ];
 
-            foreach ($spouses as $role => $spouse) {
-                if (!$spouse instanceof Individual) {
-                    continue;
-                }
+        foreach ($spouses as $role => $spouse) {
+            if (!$spouse instanceof Individual) {
+                continue;
+            }
 
-                $recorded_age = $role === 'husb' ? $husb_age : $wife_age;
-                $birth_date   = $spouse->getBirthDate();
-                $death_event  = $spouse->facts(['DEAT'])->first();
-                $death_date   = $death_event instanceof Fact ? $death_event->date() : new Date('');
+            $recorded_age     = $role === 'husb' ? $husb_age : $wife_age;
+            $raw_recorded_age = $role === 'husb' ? $raw_husb_age : $raw_wife_age;
+            $birth_date       = $spouse->getBirthDate();
+            $death_event      = $spouse->facts(['DEAT'])->first();
+            $death_date       = $death_event instanceof Fact ? $death_event->date() : new Date('');
 
-                if (Date::compare($date, $death_date) <= 0 || !$spouse->isDead()) {
-                    // Event before death — calculate age at event
-                    $age = (string) new Age($birth_date, $date);
+            if (Date::compare($date, $death_date) <= 0 || !$spouse->isDead()) {
+                // Event before death — calculate age at event
+                $age = new Age($birth_date, $date);
 
-                    if ($age !== '' && !str_starts_with($recorded_age, $age)) {
+                if ($age->isValid() && !$age->matchesRecordedAge($raw_recorded_age)) {
+                    $age_string = $age->toString();
+
+                    if ($age_string !== '') {
                         if ($recorded_age !== '') {
                             // Recorded age differs from calculated — show both to highlight potential error
                             $age_text = $recorded_age . ' ' . match ($spouse->sex()) {
-                                Sex::Male     => I18N::translateContext('Male', '(aged %s)', $age),
-                                Sex::Female     => I18N::translateContext('Female', '(aged %s)', $age),
-                                default => I18N::translate('(aged %s)', $age),
+                                Sex::Male   => I18N::translateContext('Male', '(aged %s)', $age_string),
+                                Sex::Female => I18N::translateContext('Female', '(aged %s)', $age_string),
+                                default     => I18N::translate('(aged %s)', $age_string),
                             };
                         } else {
                             // No recorded age — show calculated
-                            $age_text = $age;
+                            $age_text = $age_string;
                         }
 
                         if ($role === 'husb') {
@@ -169,18 +178,19 @@ if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
                             $wife_age = $age_text;
                         }
                     }
-                } elseif ($death_date->isOK()) {
-                    // Event after death — probably an error
-                    $age = (string) new Age($death_date, $date);
+                }
+            } elseif ($death_date->isOK()) {
+                // Event after death — probably an error
+                $age = new Age($death_date, $date);
+                $age_string = $age->toString();
 
-                    if ($age !== '') {
-                        $after_death = I18N::translate('%s after death', $age) . ' ' . view('icons/warning');
+                if ($age_string !== '') {
+                    $after_death = I18N::translate('%s after death', $age_string) . ' ' . view('icons/warning');
 
-                        if ($role === 'husb') {
-                            $husb_age = $husb_age !== '' ? $husb_age . ' ' . $after_death : $after_death;
-                        } else {
-                            $wife_age = $wife_age !== '' ? $wife_age . ' ' . $after_death : $after_death;
-                        }
+                    if ($role === 'husb') {
+                        $husb_age = $husb_age !== '' ? $husb_age . ' ' . $after_death : $after_death;
+                    } else {
+                        $wife_age = $wife_age !== '' ? $wife_age . ' ' . $after_death : $after_death;
                     }
                 }
             }

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 13:39+0100\n"
+"POT-Creation-Date: 2026-08-02 22:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -363,6 +363,15 @@ msgstr "%s, jego małżonki i dzieci"
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, jego małżonki i potomków"
+
+#. I18N: plural form is based on the second year
+#: app/Age.php
+#, fuzzy, php-format
+msgid "%s–%s year"
+msgid_plural "%s–%s years"
+msgstr[0] "%s–%s rok"
+msgstr[1] "%s–%s lata"
+msgstr[2] "%s–%s lat"
 
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/edit/add-fact-row.phtml
