@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -315,13 +315,8 @@ class RelationshipService
     }
 
     /**
-     * @param string          $path
-     * @param Individual|null $person1
-     * @param Individual|null $person2
-     *
-     * @return string
-     *
-     * @deprecated This code was originally Functions::getRelationshipNameFromPath
+     * This code was originally Functions::getRelationshipNameFromPath
+     * We will need it until all languages have relationship definitions.
      */
     public function legacyNameAlgorithm(string $path, Individual|null $person1 = null, Individual|null $person2 = null): string
     {
@@ -2219,12 +2214,8 @@ class RelationshipService
     /**
      * Calculate the name of a cousin.
      *
-     * @param int    $n
-     * @param string $sex
-     *
-     * @return string
-     *
-     * @deprecated
+     * This code was originally part of Functions::getRelationshipNameFromPath
+     * We will need it until all languages have relationship definitions.
      */
     private static function legacyCousinName(int $n, string $sex): string
     {
@@ -2355,16 +2346,11 @@ class RelationshipService
     }
 
     /**
-     * A variation on cousin_name(), for constructs such as “sixth great-nephew”
+     * A variation on legacyCousinName(), for constructs such as “sixth great-nephew”
      * Currently used only by Spanish relationship names.
      *
-     * @param int    $n
-     * @param string $sex
-     * @param string $relation
-     *
-     * @return string
-     *
-     * @deprecated
+     * This code was originally part of Functions::getRelationshipNameFromPath
+     * We will need it until all languages have relationship definitions.
      */
     private static function legacyCousinName2(int $n, string $sex, string $relation): string
     {

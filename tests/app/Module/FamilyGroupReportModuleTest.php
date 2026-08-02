@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,14 +30,14 @@ use Fisharebest\Webtrees\Report\ReportBaseFootnote;
 use Fisharebest\Webtrees\Report\ReportBaseImage;
 use Fisharebest\Webtrees\Report\ReportBaseLine;
 use Fisharebest\Webtrees\Report\ReportBaseText;
-use Fisharebest\Webtrees\Report\ReportBaseTextbox;
+use Fisharebest\Webtrees\Report\ReportBaseTextBox;
 use Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider;
 use Fisharebest\Webtrees\Report\ReportHtmlCell;
 use Fisharebest\Webtrees\Report\ReportHtmlFootnote;
 use Fisharebest\Webtrees\Report\ReportHtmlImage;
 use Fisharebest\Webtrees\Report\ReportHtmlLine;
 use Fisharebest\Webtrees\Report\ReportHtmlText;
-use Fisharebest\Webtrees\Report\ReportHtmlTextbox;
+use Fisharebest\Webtrees\Report\ReportHtmlTextBox;
 use Fisharebest\Webtrees\Report\ReportParserBase;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
@@ -49,8 +49,10 @@ use Fisharebest\Webtrees\Report\ReportPdfText;
 use Fisharebest\Webtrees\Report\ReportPdfTextBox;
 use Fisharebest\Webtrees\Report\TcpdfWrapper;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function ob_get_clean;
 
@@ -64,14 +66,14 @@ use function ob_get_clean;
 #[CoversClass(ReportBaseImage::class)]
 #[CoversClass(ReportBaseLine::class)]
 #[CoversClass(ReportBaseText::class)]
-#[CoversClass(ReportBaseTextbox::class)]
+#[CoversClass(ReportBaseTextBox::class)]
 #[CoversClass(ReportExpressionLanguageProvider::class)]
 #[CoversClass(ReportHtmlCell::class)]
 #[CoversClass(ReportHtmlFootnote::class)]
 #[CoversClass(ReportHtmlImage::class)]
 #[CoversClass(ReportHtmlLine::class)]
 #[CoversClass(ReportHtmlText::class)]
-#[CoversClass(ReportHtmlTextbox::class)]
+#[CoversClass(ReportHtmlTextBox::class)]
 #[CoversClass(ReportParserBase::class)]
 #[CoversClass(ReportParserGenerate::class)]
 #[CoversClass(ReportParserSetup::class)]
@@ -86,8 +88,52 @@ class FamilyGroupReportModuleTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    public function testReportRunsWithoutError(): void
+    /**
+     * @return array<int,array<string,string>>
+     */
+    public static function reportOptions(): array
     {
+        return [
+            [
+                'blanks'    => 'on',
+                'colors'    => 'on',
+                'id'        => 'f1',
+                'notes'     => 'on',
+                'page_size' => 'A4',
+                'photos'    => 'on',
+                'sources'   => 'on',
+            ],
+            [
+                'blanks'    => '',
+                'colors'    => '',
+                'id'        => 'f1',
+                'notes'     => '',
+                'page_size' => 'US-Letter',
+                'photos'    => '',
+                'sources'   => '',
+            ],
+            [
+                'blanks'    => '',
+                'colors'    => '',
+                'id'        => '',
+                'notes'     => '',
+                'page_size' => '',
+                'photos'    => '',
+                'sources'   => '',
+            ],
+        ];
+    }
+
+    #[DataProvider('reportOptions')]
+    public function testReportRunsWithoutError(
+        string $blanks,
+        string $colors,
+        string $id,
+        string $notes,
+        string $page_size,
+        string $photos,
+        string $sources,
+    ): void {
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
@@ -98,16 +144,21 @@ class FamilyGroupReportModuleTest extends TestCase
 
         $xml  = 'resources/' . $module->xmlFilename();
         $vars = [
-            'id'       => ['id' => 'f1'],
-            'sources'  => ['id' => 'on'],
-            'notes'    => ['id' => 'on'],
-            'photos'   => ['id' => 'on'],
-            'colors'   => ['id' => 'on'],
-            'blanks'   => ['id' => 'on'],
-            'pageSize' => ['id' => 'A4'],
+            'blanks'   => $blanks,
+            'colors'   => $colors,
+            'id'       => $id,
+            'notes'    => $notes,
+            'pageSize' => $page_size,
+            'photos'   => $photos,
+            'sources'  => $sources,
         ];
 
-        new ReportParserSetup($xml);
+        $parser = new ReportParserSetup($xml);
+        $this->assertNotEmpty($parser->reportDescription());
+        $this->assertNotEmpty($parser->reportTitle());
+        $this->assertNotEmpty($parser->reportInputs());
+
+        Site::setPreference('INDEX_DIRECTORY', 'tests/data/');
 
         ob_start();
         new ReportParserGenerate($xml, new HtmlRenderer(), $vars, $tree);

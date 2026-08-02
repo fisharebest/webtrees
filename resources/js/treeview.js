@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -44,7 +44,6 @@ function TreeViewHandler (treeview_instance, ged) {
     let drag_start_y;
 
     tv.treeview.on('mousedown touchstart', function (event) {
-    
       let pageX = (event.type === 'touchstart') ? event.touches[0].pageX : event.pageX;
       let pageY = (event.type === 'touchstart') ? event.touches[0].pageY : event.pageY;
 
@@ -374,3 +373,6 @@ function readCookie (name) {
   }
   return null;
 }
+
+// Expose TreeViewHandler globally for inline scripts
+window.TreeViewHandler = TreeViewHandler;

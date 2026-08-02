@@ -10,9 +10,6 @@
 	<Input name="deathdate2" lookup="DATE" type="text"><var var="I18N::translate('Death date range end')" /></Input>
 	<Input name="sortby" type="select" default="BIRT:DATE" options="NAME=>I18N::translate('sort by name')|BIRT:DATE=>I18N::translate('sort by date of birth')|DEAT:DATE=>I18N::translate('sort by date of death')"><var var="I18N::translate('Sort order')" /></Input>
 	<Input name="pageSize" type="select" options="A4=>I18N::translateContext('paper size','A4')|A3=>I18N::translateContext('paper size', 'A3')|US-Letter=>I18N::translateContext('paper size','Letter')|US-Tabloid=>I18N::translateContext('paper size','Tabloid')"><var var="I18N::translate('Page size')" /></Input>
-	<!--
-	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translateContext('font name', 'Arial')|dejavusans=>I18N::translateContext('font name', 'DejaVu')|helvetica=>I18N::translateContext('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
-	-->
 	<SetVar name="fonts" value="dejavusans" />
 
 	<!-- Header -->
@@ -33,7 +30,7 @@
 			<Cell align="center" newline="1" style="header">
 				<var var="I18N::translate('Vital records')" />
 				<if condition="$name!=''">
-				    : <var var="name" /> 
+				    : <var var="name" />
 				</if>
 				<if condition="$bdmplace!=''">
 					: <var var="bdmplace" />
@@ -162,12 +159,12 @@
 								<br />  <var var="I18N::translate('Source')" />
 								: <RepeatTag tag="MARR:SOUR">
 									<Gedcom id="@SOUR">
-										<GedcomValue tag="TITL" /> 
+										<GedcomValue tag="TITL" />
 									</Gedcom>
 								</RepeatTag>
 								<br />
 								<var var="I18N::translate('Spouse')" />
-								: 
+								:
 								<SetVar name="hpid" value="@HUSB"/>
 								<SetVar name="wpid" value="@WIFE"/>
 								<if condition="$spid==$wpid">
@@ -196,7 +193,7 @@
 							<br />  <var var="I18N::translate('Source')" />
 							: <RepeatTag tag="DEAT:SOUR">
 								<Gedcom id="@SOUR">
-									<GedcomValue tag="TITL" /> 
+									<GedcomValue tag="TITL" />
 								</Gedcom>
 							</RepeatTag>
 							<SetVar name="moreD" value="1" />

@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,13 +22,13 @@
 .tv_out {
     position: relative;
     overflow: hidden;
-    border: thin solid #CCCCCC; /* customizable */
+    border: thin solid var(--bs-border-color); /* customizable */
     /* The chart height can be adjusted to fill the pag */
     height: 50vh;
     resize: vertical;
     min-height: 25vh;
     max-height: 95vh;
-    background: #E6E6E6; /* customizable */
+    background: var(--bs-secondary-bg); /* customizable */
     display: -webkit-box;
     display: -moz-box;
     display: flex;
@@ -159,8 +159,8 @@ table#tvTreeBorder td,
 
 /* Person or couple(s) box style */
 #tv_tree div.tv_box {
-    border: thin outset #81A9CB; /* customizable */
-    background: #fffdfd; /* customizable */
+    border: thin outset var(--bs-tertiary-color); /* customizable */
+    background: transparent; /* customizable */
     margin-top: 2px;
     margin-bottom: 2px;
     padding: 0;
@@ -168,30 +168,16 @@ table#tvTreeBorder td,
     cursor: help; /* customizable */
     border-collapse: collapse; /* required */
     border-radius: 4px; /* customizable */
-    box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
+    box-shadow: var(--bs-box-shadow-sm); /* customizable */
 }
 #tv_tree div.boxExpanded {
     width: 250px; /* customizable:initial expanded box width */
-}
-#tv_tree div.tv_box div.tvM {
-    background: #f5fdff; /* customizable */
-    color: #220000; /* customizable */
-}
-#tv_tree div.tv_box div.tvF {
-    background: #fff8f5; /* customizable */
-    color: #000022; /* customizable */
 }
 #tv_tree div.tv_box span.tvSexSymbol {
     font-weight: bold;
     font-family: x-large, serif; /*Arial Unicode MS, monospace; /* customizable, BUT test required for ALL browsers */
     vertical-align: top;
     margin: 1px;
-}
-#tv_tree div.tv_box span.tvM {
-    color: #8f8fdf; /* customizable */
-}
-#tv_tree div.tv_box span.tvF {
-    color: #df8f8f; /* customizable */
 }
 
 #tv_tree div.tv_box div.tvM,
@@ -246,10 +232,10 @@ table#tvTreeBorder td,
     padding: 0;
     margin: 0; /* required */
     z-index: 90; /* should be < 100 because 100 is the z-index of WT menus */
-    background-color: #efefef; /* customizable */
-    border: 1px outset #dfdfdf; /* customizable */
-    border-radius: 4px; /* customizable */
-    box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
+    background-color: var(--bs-tertiary-bg); /* customizable */
+    border: var(--bs-border-width) outset var(--bs-border-color); /* customizable */
+    border-radius: var(--bs-border-radius-sm); /* customizable */
+    box-shadow: var(--bs-box-shadow-sm ); /* customizable */
 }
 
 /* styles submenu */
@@ -274,9 +260,8 @@ table#tvTreeBorder td,
     height: 24px;
     text-align: center;
     vertical-align: middle;
-    border: thin solid #efefef; /* customizable */
-    background-color: #efefef; /* customizable */
-    border-radius: 4px;
+    border: thin solid var(--bs-border-color); /* customizable */
+    border-radius: var(--bs-border-radius-sm);
 }
 #tvStylesSubmenu li.tv_button {
     float : none;
@@ -286,11 +271,11 @@ table#tvTreeBorder td,
     display: block;
 }
 #tv_tools li.tv_button:hover {
-    border: thin outset #fdfffd; /* customizable */
+    border: thin outset var(--bs-border-color); /* customizable */
     cursor: pointer;
 }
 #tv_tools li.tvPressed {
-    border: thin inset #ffffff; /* customizable */
+    border: thin inset var(--bs-border-color); /* customizable */
 }
 #tv_tools ul li img {
     border: none;
@@ -314,26 +299,26 @@ table#tvTreeBorder td,
     cursor: move;
     height: 22px;
     width: 2px;
-    border: thin inset #f6f6f6; /* customizable */
+    border: thin inset var(--bs-border-color); /* customizable */
     margin: 2px;
     overflow: hidden; /* required for IE */
 }
 
 #tvToolsHandler:hover {
-    border: thin outset #f6f6f6; /* customizable */
+    border: thin outset var(--bs-border-color); /* customizable */
 }
 
 
 #tv_tree div.tv_box div.tvM,
 #tv_tree div.tv_box div.tvF {
     background: none;
-    color: #000;
+    color: var(--bs-body-color);
     border: 0;
     margin: 0;
     padding: 0 4px;
 }
 
-.tvM {background-color: #DDF !important;}
-.tvF {background-color: #FDD !important;}
+.tvM {background-color: var(--bs-primary-bg-subtle) !important;}
+.tvF {background-color: var(--bs-danger-bg-subtle) !important;}
 
-.dashed {border-top: thin dashed #81A9CB !important;}
+.dashed {border-top: thin dashed var(--bs-secondary-color) !important;}

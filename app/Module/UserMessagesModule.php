@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -113,8 +113,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             });
 
         $users = $this->user_service->all()->filter(static function (UserInterface $user) use ($tree): bool {
-            $public_tree  = $tree->getPreference('REQUIRE_AUTHENTICATION') !== '1';
-            $can_see_tree = $public_tree || Auth::accessLevel($tree, $user) <= Auth::PRIV_USER;
+            $can_see_tree = !$tree->private() || Auth::accessLevel($tree, $user) <= Auth::PRIV_USER;
 
             return
                 $user->id() !== Auth::id() &&

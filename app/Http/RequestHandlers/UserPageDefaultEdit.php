@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -46,8 +46,8 @@ final class UserPageDefaultEdit implements RequestHandlerInterface
 
         $this->home_page_service->checkDefaultUserBlocksExist();
 
-        $default_tree = new Tree(-1, 'DEFAULT', 'DEFAULT');
-        $default_user = new User(-1, 'DEFAULT', 'DEFAULT', 'DEFAULT');
+        $default_tree = new Tree(-1, '', '', '', '', true, true, null, null);
+        $default_user = new User(-1, '', '', '');
 
         $main_blocks = $this->home_page_service->userBlocks($default_tree, $default_user, ModuleBlockInterface::MAIN_BLOCKS);
         $side_blocks = $this->home_page_service->userBlocks($default_tree, $default_user, ModuleBlockInterface::SIDE_BLOCKS);

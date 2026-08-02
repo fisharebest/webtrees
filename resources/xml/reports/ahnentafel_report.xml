@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- Includes 2010 work done by John Hawthornthwaite(hagershorn1) for an ancestry report in PhpGedView -->
 <Report>
 	<Title><var var="I18N::translate('Ancestors')" /></Title>
 	<Description><var var="I18N::translate('A report of an individual’s ancestors, in a narrative style.')" /></Description>
@@ -11,9 +10,6 @@
 	<Input name="resi" type="checkbox" default="0"><var var="I18N::translate('Show residences')" /></Input>
 	<Input name="children" type="checkbox" default="0"><var var="I18N::translate('Show children of ancestors')" /></Input>
 	<Input name="pageSize" type="select" options="A4=>I18N::translateContext('paper size','A4')|A3=>I18N::translateContext('paper size', 'A3')|US-Letter=>I18N::translateContext('paper size','Letter')|US-Tabloid=>I18N::translateContext('paper size','Tabloid')"><var var="I18N::translate('Page size')" /></Input>
-	<!--
-	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translateContext('font name', 'Arial')|dejavusans=>I18N::translateContext('font name', 'DejaVu')|helvetica=>I18N::translateContext('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
-	-->
 	<SetVar name="fonts" value="dejavusans" />
 
 	<!-- Header -->

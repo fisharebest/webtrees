@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,11 +22,7 @@ namespace Fisharebest\Webtrees\Report;
 class ReportHtmlImage extends ReportBaseImage
 {
     /**
-     * Image renderer
-     *
      * @param HtmlRenderer $renderer
-     *
-     * @return void
      */
     public function render($renderer): void
     {
@@ -48,18 +44,18 @@ class ReportHtmlImage extends ReportBaseImage
         switch ($this->align) {
             case 'L':
                 echo '<div style="position:absolute;top:', $this->y, 'pt;left:0pt;width:', $renderer->getRemainingWidth(), "pt;text-align:left;\">\n";
-                echo '<img src="', $this->file, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
+                echo '<img src="', $this->src, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
                 break;
             case 'C':
                 echo '<div style="position:absolute;top:', $this->y, 'pt;left:0pt;width:', $renderer->getRemainingWidth(), "pt;text-align:center;\">\n";
-                echo '<img src="', $this->file, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
+                echo '<img src="', $this->src, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
                 break;
             case 'R':
                 echo '<div style="position:absolute;top:', $this->y, 'pt;left:0pt;width:', $renderer->getRemainingWidth(), "pt;text-align:right;\">\n";
-                echo '<img src="', $this->file, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
+                echo '<img src="', $this->src, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
                 break;
             default:
-                echo '<img src="', $this->file, '" style="position:absolute;', $renderer->alignRTL, ':', $this->x, 'pt;top:', $this->y, 'pt;width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n";
+                echo '<img src="', $this->src, '" style="position:absolute;', $renderer->alignRTL, ':', $this->x, 'pt;top:', $this->y, 'pt;width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n";
         }
 
         $lastpicpage   = $renderer->pageNo();
@@ -80,8 +76,6 @@ class ReportHtmlImage extends ReportBaseImage
      * so we add a bit bottom space between the images
      *
      * @param HtmlRenderer $renderer
-     *
-     * @return float
      */
     public function getHeight($renderer): float
     {

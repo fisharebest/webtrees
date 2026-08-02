@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,19 +21,8 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
 
-/**
- * The month of birth, if within the last year.
- */
-class CensusColumnMonthIfBornWithinYear extends AbstractCensusColumn implements CensusColumnInterface
+final readonly class CensusColumnMonthIfBornWithinYear extends AbstractCensusColumn implements CensusColumnInterface
 {
-    /**
-     * Generate the likely value of this census column, based on available information.
-     *
-     * @param Individual $individual
-     * @param Individual $head
-     *
-     * @return string
-     */
     public function generate(Individual $individual, Individual $head): string
     {
         $birth_jd  = $individual->getBirthDate()->julianDay();

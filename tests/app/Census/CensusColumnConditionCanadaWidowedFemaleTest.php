@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -63,7 +63,7 @@ class CensusColumnConditionCanadaWidowedFemaleTest extends TestCase
 
     public function testNoFamilyFactsMale(): void
     {
-        $family = self::createStub(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
@@ -82,7 +82,7 @@ class CensusColumnConditionCanadaWidowedFemaleTest extends TestCase
 
     public function testNoFamilyFactsFemale(): void
     {
-        $family = self::createStub(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
@@ -162,7 +162,7 @@ class CensusColumnConditionCanadaWidowedFemaleTest extends TestCase
 
     public function testNoFamilyUnmarriedMale(): void
     {
-        $family = self::createStub(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
@@ -181,7 +181,7 @@ class CensusColumnConditionCanadaWidowedFemaleTest extends TestCase
 
     public function testNoFamilyUnmarriedFemale(): void
     {
-        $family = self::createStub(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
@@ -200,7 +200,7 @@ class CensusColumnConditionCanadaWidowedFemaleTest extends TestCase
 
     public function testChildMale(): void
     {
-        $family = self::createStub(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
@@ -219,7 +219,7 @@ class CensusColumnConditionCanadaWidowedFemaleTest extends TestCase
 
     public function testChildFemale(): void
     {
-        $family = self::createStub(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 

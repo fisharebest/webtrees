@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -86,8 +86,9 @@ class RedirectMediaListPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $module_service = self::createStub(ModuleService::class);
+        $module_service = $this->createMock(ModuleService::class);
         $module_service
+            ->expects($this->once())
             ->method('findByComponent')
             ->with(ModuleListInterface::class, $tree, new GuestUser())
             ->willReturn(new Collection());

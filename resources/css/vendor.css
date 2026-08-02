@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -17,7 +17,6 @@
 @import "../../node_modules/datatables.net-bs5/css/dataTables.bootstrap5.css";
 @import "../../node_modules/tom-select/dist/css/tom-select.min.css";
 @import "../../node_modules/tom-select/dist/css/tom-select.bootstrap5.min.css";
-@import "../../node_modules/typeahead.js-bootstrap4-css/typeaheadjs.css";
 @import "../../node_modules/leaflet/dist/leaflet.css";
 @import "../../node_modules/beautifymarker/leaflet-beautify-marker-icon.css";
 @import "../../node_modules/leaflet-control-geocoder/dist/Control.Geocoder.css";

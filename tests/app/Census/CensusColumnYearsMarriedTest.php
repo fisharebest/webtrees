@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -46,7 +46,7 @@ class CensusColumnYearsMarriedTest extends TestCase
 
     public function testNoMarriage(): void
     {
-        $family = self::createStub(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('facts')->with(['MARR'], true)->willReturn(new Collection());
 
         $individual = self::createStub(Individual::class);
@@ -65,7 +65,7 @@ class CensusColumnYearsMarriedTest extends TestCase
         $fact = self::createStub(Fact::class);
         $fact->method('date')->willReturn(new Date(''));
 
-        $family = self::createStub(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('facts')->with(['MARR'], true)->willReturn(new Collection([$fact]));
 
         $individual = self::createStub(Individual::class);
@@ -84,7 +84,7 @@ class CensusColumnYearsMarriedTest extends TestCase
         $fact = self::createStub(Fact::class);
         $fact->method('date')->willReturn(new Date('1861'));
 
-        $family = self::createStub(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('facts')->with(['MARR'], true)->willReturn(new Collection([$fact]));
 
         $individual = self::createStub(Individual::class);
@@ -103,7 +103,7 @@ class CensusColumnYearsMarriedTest extends TestCase
         $fact = self::createStub(Fact::class);
         $fact->method('date')->willReturn(new Date('OCT 1851'));
 
-        $family = self::createStub(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('facts')->with(['MARR'], true)->willReturn(new Collection([$fact]));
 
         $individual = self::createStub(Individual::class);

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,12 +27,8 @@ use function substr_count;
 class ReportHtmlText extends ReportBaseText
 {
     /**
-     * Render the elements.
-     *
      * @param HtmlRenderer $renderer
      * @param bool         $attrib Is is called from a different element?
-     *
-     * @return void
      */
     public function render($renderer, bool $attrib = true): void
     {
@@ -42,13 +38,7 @@ class ReportHtmlText extends ReportBaseText
         }
         $temptext = str_replace('#PAGENUM#', (string) $renderer->pageNo(), $this->text);
         // underline «title» part of Source item
-        $temptext = str_replace([
-            '«',
-            '»',
-        ], [
-            '<u>',
-            '</u>',
-        ], $temptext);
+        $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
 
         // If any text at all
         if (!empty($temptext)) {
@@ -85,12 +75,7 @@ class ReportHtmlText extends ReportBaseText
     }
 
     /**
-     * Returns the height in points of the text element
-     * The height is already calculated in getWidth()
-     *
      * @param HtmlRenderer $renderer
-     *
-     * @return float
      */
     public function getHeight($renderer): float
     {

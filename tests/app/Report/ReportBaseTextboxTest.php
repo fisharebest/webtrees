@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,11 +22,11 @@ namespace Fisharebest\Webtrees\Report;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(ReportBaseTextbox::class)]
+#[CoversClass(ReportBaseTextBox::class)]
 class ReportBaseTextboxTest extends TestCase
 {
     public function testClass(): void
     {
-        self::assertTrue(class_exists(ReportBaseTextbox::class));
+        self::assertTrue(class_exists(ReportBaseTextBox::class));
     }
 }

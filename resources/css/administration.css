@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -41,19 +41,6 @@ h4 {
 
 ::backdrop, .wt-global {
     background: url(administration/paper_fibers.png); /* http://www.subtlepatterns.com */
-}
-
-/* Show a placeholder for slow ajax responses. */
-.wt-ajax-load:empty {
-    height: 32px;
-    width: 32px;
-    background: url(images/loading-32x32.gif) no-repeat;
-}
-
-@media (min-device-pixel-ratio: 2) {
-    ::backdrop, .wt-global {
-        background: url(administration/paper_fibers_@2X.png);
-    }
 }
 
 /* Raw GEDCOM data */

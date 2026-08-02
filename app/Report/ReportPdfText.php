@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,11 +29,7 @@ use function substr_count;
 class ReportPdfText extends ReportBaseText
 {
     /**
-     * PDF Text renderer
-     *
      * @param PdfRenderer $renderer
-     *
-     * @return void
      */
     public function render($renderer): void
     {
@@ -43,13 +39,7 @@ class ReportPdfText extends ReportBaseText
         }
         $temptext = str_replace('#PAGENUM#', (string) $renderer->tcpdf->PageNo(), $this->text);
         // underline «title» part of Source item
-        $temptext = str_replace([
-            '«',
-            '»',
-        ], [
-            '<u>',
-            '</u>',
-        ], $temptext);
+        $temptext = str_replace(['«', '»',], ['<u>', '</u>',], $temptext);
 
         // Paint the text color or they might use inherited colors by the previous function
         $match = [];
@@ -77,25 +67,13 @@ class ReportPdfText extends ReportBaseText
             ],
             $temptext
         );
-        $renderer->tcpdf->writeHTML(
-            $temptext,
-            false,
-            false,
-            true,
-            false,
-            ''
-        ); //change height - line break etc. - the form is mirror on rtl pages
-        // Reset the text color to black or it will be inherited
+        $renderer->tcpdf->writeHTML($temptext, false, false, true);
+        // Reset the text color to black, or it will be inherited
         $renderer->tcpdf->setTextColor(0, 0, 0);
     }
 
     /**
-     * Returns the height in points of the text element
-     * The height is already calculated in getWidth()
-     *
      * @param PdfRenderer $renderer
-     *
-     * @return float
      */
     public function getHeight($renderer): float
     {

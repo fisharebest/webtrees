@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,33 +21,13 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
 
-/**
- * The individual's sex Male?
- */
-class CensusColumnSexM extends AbstractCensusColumn implements CensusColumnInterface
+final readonly class CensusColumnSexM extends AbstractCensusColumn implements CensusColumnInterface
 {
-    protected const string MALE = 'M';
-
-    protected const string FEMALE = 'F';
-
-    protected const string X = 'X';
-
-    /**
-     * Generate the likely value of this census column, based on available information.
-     * X is the value returned for this column as it is a selection of F column or M
-     * column.
-     *
-     * @param Individual $individual
-     * @param Individual $head
-     *
-     * @return string
-     */
     public function generate(Individual $individual, Individual $head): string
     {
-        if ($individual->sex() === 'M') {
-            return static::X;
-        }
-
-        return '';
+        return match ($individual->sex()) {
+            'M'     => 'X',
+            default => '',
+        };
     }
 }

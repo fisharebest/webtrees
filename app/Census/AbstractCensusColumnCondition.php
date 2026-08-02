@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,52 +23,40 @@ use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 
-/**
- * Marital status.
- */
-abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implements CensusColumnInterface
+abstract readonly class AbstractCensusColumnCondition extends AbstractCensusColumn implements CensusColumnInterface
 {
-    // Text to display for married males
+    // Text to display for married men
     protected const string HUSBAND = '';
 
-    // Text to display for married females
+    // Text to display for married women
     protected const string WIFE = '';
 
-    // Text to display for married unmarried males
+    // Text to display for married unmarried men
     protected const string BACHELOR = '';
 
-    // Text to display for married unmarried females
+    // Text to display for married unmarried women
     protected const string SPINSTER = '';
 
-    // Text to display for male children
+    // Text to display for boys
     protected const string BOY = '';
 
-    // Text to display for female children
+    // Text to display for girls
     protected const string GIRL = '';
 
-    // Text to display for divorced males
+    // Text to display for divorced men
     protected const string DIVORCE = '';
 
-    // Text to display for divorced females
+    // Text to display for divorced women
     protected const string DIVORCEE = '';
 
-    // Text to display for widowed males
+    // Text to display for widowed men
     protected const string WIDOWER = '';
 
-    // Text to display for widowed females
+    // Text to display for widowed women
     protected const string WIDOW = '';
 
-    // At what age is this individual recorded as an adult
     protected const int AGE_ADULT = 15;
 
-    /**
-     * Generate the likely value of this census column, based on available information.
-     *
-     * @param Individual $individual
-     * @param Individual $head
-     *
-     * @return string
-     */
     public function generate(Individual $individual, Individual $head): string
     {
         $family = $this->spouseFamily($individual);
@@ -94,13 +82,6 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
         return $this->conditionMarried($sex);
     }
 
-    /**
-     * Is the individual a child.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
-     */
     private function isChild(Individual $individual): bool
     {
         $age = new Age($individual->getEstimatedBirthDate(), $this->date());
@@ -108,13 +89,6 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
         return $age->ageYears() < static::AGE_ADULT;
     }
 
-    /**
-     * How is this condition written in a census column.
-     *
-     * @param string $sex
-     *
-     * @return string
-     */
     private function conditionChild(string $sex): string
     {
         if ($sex === 'F') {
@@ -124,13 +98,6 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
         return static::BOY;
     }
 
-    /**
-     * How is this condition written in a census column.
-     *
-     * @param string $sex
-     *
-     * @return string
-     */
     private function conditionSingle(string $sex): string
     {
         if ($sex === 'F') {
@@ -140,13 +107,6 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
         return static::BACHELOR;
     }
 
-    /**
-     * How is this condition written in a census column.
-     *
-     * @param string $sex
-     *
-     * @return string
-     */
     private function conditionDivorced(string $sex): string
     {
         if ($sex === 'F') {
@@ -156,25 +116,11 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
         return static::DIVORCE;
     }
 
-    /**
-     * Is the individual dead.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
-     */
     private function isDead(Individual $individual): bool
     {
         return $individual->getDeathDate()->isOK() && Date::compare($individual->getDeathDate(), $this->date()) < 0;
     }
 
-    /**
-     * How is this condition written in a census column.
-     *
-     * @param string $sex
-     *
-     * @return string
-     */
     private function conditionWidowed(string $sex): string
     {
         if ($sex === 'F') {
@@ -184,13 +130,6 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
         return static::WIDOWER;
     }
 
-    /**
-     * How is this condition written in a census column.
-     *
-     * @param string $sex
-     *
-     * @return string
-     */
     private function conditionMarried(string $sex): string
     {
         if ($sex === 'F') {

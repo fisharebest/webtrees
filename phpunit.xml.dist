@@ -5,6 +5,9 @@
   bootstrap="vendor/autoload.php"
   colors="true"
   cacheDirectory=".phpunit.cache"
+  displayDetailsOnPhpunitDeprecations="true"
+  displayDetailsOnTestsThatTriggerDeprecations="true"
+  displayDetailsOnTestsThatTriggerWarnings="true"
   requireCoverageMetadata="true"
 >
   <testsuites>

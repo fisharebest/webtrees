@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -83,7 +83,7 @@ final class SetupWizard implements RequestHandlerInterface
 
     private const array DEFAULT_PORTS = [
         DB::MYSQL      => '3306',
-        DB::POSTGRES   => '5432',
+        DB::POSTGRESQL => '5432',
         DB::SQLITE     => '',
         DB::SQL_SERVER => '', // Do not use default, as it is valid to have no port number.
     ];
@@ -324,7 +324,7 @@ final class SetupWizard implements RequestHandlerInterface
             $admin->setPreference(UserInterface::PREF_LANGUAGE, $data['lang']);
             $admin->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, '1');
         } else {
-            $admin->setPassword($_POST['wtpass']);
+            $admin->setPassword($data['wtpass']);
         }
         // Make the user an administrator
         $admin->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');

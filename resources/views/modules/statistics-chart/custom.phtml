@@ -212,9 +212,7 @@ use Fisharebest\Webtrees\View;
         <?= csrf_field() ?>
     </form>
 
-    <div id="custom-chart" class="wt-ajax-load">
-        <!-- Not initially empty, to disable spinner -->
-    </div>
+    <div id="custom-chart"></div>
 </div>
 
 <?php View::push('javascript') ?>
@@ -282,7 +280,7 @@ use Fisharebest\Webtrees\View;
     }
 
     function loadCustomChart() {
-        $("#custom-chart").html("");
+        $("#custom-chart").html(<?= json_encode(view('icons/spinner')) ?>);
         var form = $("#own-stats-form");
         jQuery.post(form.attr("action"), form.serialize())
             .done(function (data) {

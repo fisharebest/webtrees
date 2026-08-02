@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -49,7 +49,7 @@ final class ImportGedcomPage implements RequestHandlerInterface
         $data_filesystem = Registry::filesystem()->data();
         $data_folder     = Registry::filesystem()->dataName();
 
-        $default_gedcom_file = $tree->getPreference('gedcom_filename');
+        $default_gedcom_file = $tree->gedcomFilename();
         $gedcom_media_path   = $tree->getPreference('GEDCOM_MEDIA_PATH');
         $gedcom_files        = $this->admin_service->gedcomFiles($data_filesystem);
 

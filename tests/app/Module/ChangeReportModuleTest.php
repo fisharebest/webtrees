@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\AbstractRenderer;
 use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PdfRenderer;
@@ -31,14 +30,14 @@ use Fisharebest\Webtrees\Report\ReportBaseFootnote;
 use Fisharebest\Webtrees\Report\ReportBaseImage;
 use Fisharebest\Webtrees\Report\ReportBaseLine;
 use Fisharebest\Webtrees\Report\ReportBaseText;
-use Fisharebest\Webtrees\Report\ReportBaseTextbox;
+use Fisharebest\Webtrees\Report\ReportBaseTextBox;
 use Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider;
 use Fisharebest\Webtrees\Report\ReportHtmlCell;
 use Fisharebest\Webtrees\Report\ReportHtmlFootnote;
 use Fisharebest\Webtrees\Report\ReportHtmlImage;
 use Fisharebest\Webtrees\Report\ReportHtmlLine;
 use Fisharebest\Webtrees\Report\ReportHtmlText;
-use Fisharebest\Webtrees\Report\ReportHtmlTextbox;
+use Fisharebest\Webtrees\Report\ReportHtmlTextBox;
 use Fisharebest\Webtrees\Report\ReportParserBase;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
@@ -50,8 +49,10 @@ use Fisharebest\Webtrees\Report\ReportPdfText;
 use Fisharebest\Webtrees\Report\ReportPdfTextBox;
 use Fisharebest\Webtrees\Report\TcpdfWrapper;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function ob_get_clean;
 
@@ -65,14 +66,14 @@ use function ob_get_clean;
 #[CoversClass(ReportBaseImage::class)]
 #[CoversClass(ReportBaseLine::class)]
 #[CoversClass(ReportBaseText::class)]
-#[CoversClass(ReportBaseTextbox::class)]
+#[CoversClass(ReportBaseTextBox::class)]
 #[CoversClass(ReportExpressionLanguageProvider::class)]
 #[CoversClass(ReportHtmlCell::class)]
 #[CoversClass(ReportHtmlFootnote::class)]
 #[CoversClass(ReportHtmlImage::class)]
 #[CoversClass(ReportHtmlLine::class)]
 #[CoversClass(ReportHtmlText::class)]
-#[CoversClass(ReportHtmlTextbox::class)]
+#[CoversClass(ReportHtmlTextBox::class)]
 #[CoversClass(ReportParserBase::class)]
 #[CoversClass(ReportParserGenerate::class)]
 #[CoversClass(ReportParserSetup::class)]
@@ -87,8 +88,56 @@ class ChangeReportModuleTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    public function testReportRunsWithoutError(): void
+    /**
+     * @return array<int,array<string,string>>
+     */
+    public static function reportOptions(): array
     {
+        return [
+            [
+                'change_range_start' => '01 JAN 2020',
+                'change_range_end'   => '31 DEC 2030',
+                'pending'            => 'yes',
+                'sortby'             => 'CHAN',
+                'page_size'          => 'A4',
+                'pageorient'         => 'landscape',
+            ],
+            [
+                'change_range_start' => '01 JAN 2020',
+                'change_range_end'   => '31 DEC 2030',
+                'pending'            => 'no',
+                'sortby'             => 'NAME',
+                'page_size'          => 'US-Letter',
+                'pageorient'         => 'portrait',
+            ],
+            [
+                'change_range_start' => '01 JAN 2020',
+                'change_range_end'   => '31 DEC 2030',
+                'pending'            => 'yes',
+                'sortby'             => 'BIRT:DATE',
+                'page_size'          => 'A4',
+                'pageorient'         => 'landscape',
+            ],
+            [
+                'change_range_start' => '',
+                'change_range_end'   => '',
+                'pending'            => '',
+                'sortby'             => '',
+                'page_size'          => '',
+                'pageorient'         => '',
+            ],
+        ];
+    }
+
+    #[DataProvider('reportOptions')]
+    public function testReportRunsWithoutError(
+        string $change_range_start,
+        string $change_range_end,
+        string $pending,
+        string $sortby,
+        string $page_size,
+        string $pageorient,
+    ): void {
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
@@ -99,15 +148,20 @@ class ChangeReportModuleTest extends TestCase
 
         $xml  = 'resources/' . $module->xmlFilename();
         $vars = [
-            'changeRangeStart' => ['id' => Registry::timestampFactory()->now()->subtractMonths(1)->format('d M Y')],
-            'changeRangeEnd'   => ['id' => Registry::timestampFactory()->now()->format('d M Y')],
-            'pending'          => ['id' => 'yes'],
-            'sortby'           => ['id' => 'CHAN'],
-            'pageSize'         => ['id' => 'A4'],
-            'pageorient'       => ['id' => 'landscape'],
+            'changeRangeStart' => $change_range_start,
+            'changeRangeEnd'   => $change_range_end,
+            'pending'          => $pending,
+            'sortby'           => $sortby,
+            'pageSize'         => $page_size,
+            'pageorient'       => $pageorient,
         ];
 
-        new ReportParserSetup($xml);
+        $parser = new ReportParserSetup($xml);
+        $this->assertNotEmpty($parser->reportDescription());
+        $this->assertNotEmpty($parser->reportTitle());
+        $this->assertNotEmpty($parser->reportInputs());
+
+        Site::setPreference('INDEX_DIRECTORY', 'tests/data/');
 
         ob_start();
         new ReportParserGenerate($xml, new HtmlRenderer(), $vars, $tree);

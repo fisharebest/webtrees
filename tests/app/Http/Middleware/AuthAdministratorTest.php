@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,7 +38,7 @@ class AuthAdministratorTest extends TestCase
         $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $user = self::createStub(User::class);
+        $user = $this->createMock(User::class);
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('1');
 
         $request    = self::createRequest()->withAttribute('user', $user);
@@ -57,7 +57,7 @@ class AuthAdministratorTest extends TestCase
         $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $user = self::createStub(User::class);
+        $user = $this->createMock(User::class);
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('');
 
         $request    = self::createRequest()->withAttribute('user', $user);

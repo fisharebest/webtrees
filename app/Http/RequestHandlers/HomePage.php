@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -49,7 +49,7 @@ final class HomePage implements RequestHandlerInterface
         $user    = Validator::attributes($request)->user();
 
         if ($tree instanceof Tree) {
-            if ($tree->getPreference('imported') === '1') {
+            if ($tree->imported()) {
                 // Logged in?  Go to the user's page.
                 if ($user instanceof User) {
                     return redirect(route(UserPage::class, ['tree' => $tree->name()]));

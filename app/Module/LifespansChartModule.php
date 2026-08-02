@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -285,6 +285,11 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             return $carry;
         }, 0);
 
+        // No dates?  Show the current year.
+        if ($jd === 0) {
+            return (int) date('Y');
+        }
+
         $year = $this->jdToYear($jd);
 
         // Don't show future dates
@@ -307,6 +312,11 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
             return $carry;
         }, PHP_INT_MAX);
+
+        // No dates?  Show the current year.
+        if ($jd === PHP_INT_MAX) {
+            return (int) date('Y');
+        }
 
         return $this->jdToYear($jd);
     }

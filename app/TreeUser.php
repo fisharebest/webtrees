@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -54,15 +54,10 @@ class TreeUser implements UserInterface
      */
     public function email(): string
     {
-        $user_service = Registry::container()->get(UserService::class);
-        $contact_id   = (int) $this->getPreference('CONTACT_USER_ID');
+        $contact = Registry::container()->get(UserService::class)->find($this->tree->contactUserId());
 
-        if ($contact_id !== 0) {
-            $contact = $user_service->find($contact_id);
-
-            if ($contact instanceof User) {
-                return $contact->email();
-            }
+        if ($contact instanceof User) {
+            return $contact->email();
         }
 
         return Site::getPreference('SMTP_FROM_NAME');

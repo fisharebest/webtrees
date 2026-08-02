@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,10 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
-/**
- * Definitions for a census
- */
-class CensusOfCanada1931 extends CensusOfCanada implements CensusInterface
+readonly class CensusOfCanada1931 extends CensusOfCanada implements CensusInterface
 {
     /**
      * When did this census occur.
@@ -35,9 +32,7 @@ class CensusOfCanada1931 extends CensusOfCanada implements CensusInterface
     }
 
     /**
-     * The columns of the census.
-     *
-     * @return array<CensusColumnInterface>
+     * @return list<CensusColumnInterface>
      */
     public function columns(): array
     {

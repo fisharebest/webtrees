@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,14 +27,10 @@ class ReportBaseElement
     // Special value for X or Y position, to indicate the current position.
     public const float CURRENT_POSITION = -1.0;
 
-    public string $text = '';
+    protected string $text = '';
 
     /**
-     * Element renderer
-     *
      * @param HtmlRenderer|PdfRenderer $renderer
-     *
-     * @return void
      */
     public function render($renderer): void
     {
@@ -42,11 +38,7 @@ class ReportBaseElement
     }
 
     /**
-     * Get the height.
-     *
      * @param HtmlRenderer|PdfRenderer $renderer
-     *
-     * @return float
      */
     public function getHeight($renderer): float
     {
@@ -54,8 +46,6 @@ class ReportBaseElement
     }
 
     /**
-     * Get the width.
-     *
      * @param HtmlRenderer|PdfRenderer $renderer
      *
      * @return array{0:float,1:int,2:float}
@@ -65,74 +55,33 @@ class ReportBaseElement
         return [0.0, 1, 0.0];
     }
 
-    /**
-     * Add text.
-     *
-     * @param string $t
-     *
-     * @return void
-     */
     public function addText(string $t): void
     {
         $t = trim($t, "\r\n\t");
-        $t = strtr($t, ['<br>' => "\n", '&nbsp;' => ' ']);
+        $t = strtr($t, ['<br>' => "\n", '&nbsp;' => "\u{A0}"]);
 
         $this->text .= strip_tags($t);
     }
 
-    /**
-     * Add an end-of-line.
-     *
-     * @return void
-     */
     public function addNewline(): void
     {
         $this->text .= "\n";
     }
 
-    /**
-     * Get the current text.
-     *
-     * @return string
-     */
     public function getValue(): string
     {
         return $this->text;
     }
 
-    /**
-     * Set the width to wrap text.
-     *
-     * @param float $wrapwidth
-     * @param float $cellwidth
-     *
-     * @return float
-     */
     public function setWrapWidth(float $wrapwidth, float $cellwidth): float
     {
         return 0;
     }
 
     /**
-     * Render the footnotes.
-     *
      * @param HtmlRenderer|PdfRenderer $renderer
-     *
-     * @return void
      */
     public function renderFootnote($renderer): void
     {
-    }
-
-    /**
-     * Set the text.
-     *
-     * @param string $text
-     *
-     * @return void
-     */
-    public function setText(string $text): void
-    {
-        $this->text = $text;
     }
 }

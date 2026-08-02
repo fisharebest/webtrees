@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,7 +36,7 @@ class CensusColumnMonthIfMarriedWithinYearTest extends TestCase
         $fact = self::createStub(Fact::class);
         $fact->method('date')->willReturn(new Date('01 DEC 1859'));
 
-        $family = self::createStub(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('facts')->with(['MARR'])->willReturn(new Collection([$fact]));
 
         $individual = self::createStub(Individual::class);
@@ -55,7 +55,7 @@ class CensusColumnMonthIfMarriedWithinYearTest extends TestCase
         $fact = self::createStub(Fact::class);
         $fact->method('date')->willReturn(new Date('01 JAN 1859'));
 
-        $family = self::createStub(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('facts')->with(['MARR'])->willReturn(new Collection([$fact]));
 
         $individual = self::createStub(Individual::class);
@@ -74,7 +74,7 @@ class CensusColumnMonthIfMarriedWithinYearTest extends TestCase
         $fact = self::createStub(Fact::class);
         $fact->method('date')->willReturn(new Date('02 JUN 1860'));
 
-        $family = self::createStub(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('facts')->with(['MARR'])->willReturn(new Collection([$fact]));
 
         $individual = self::createStub(Individual::class);
@@ -90,7 +90,7 @@ class CensusColumnMonthIfMarriedWithinYearTest extends TestCase
 
     public function testNoMarriage(): void
     {
-        $family = self::createStub(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
         $individual = self::createStub(Individual::class);

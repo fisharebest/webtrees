@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -62,12 +62,12 @@ final class ReportGenerate implements RequestHandlerInterface
 
         Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
 
-        $varnames  = Validator::queryParams($request)->array('varnames');
-        $vars      = Validator::queryParams($request)->array('vars');
-        $variables = [];
+        $varnames = Validator::queryParams($request)->array('varnames');
+        $vars     = Validator::queryParams($request)->array('vars');
 
+        // Ensure we have an empty value for checkboxes in the report options.
         foreach ($varnames as $name) {
-            $variables[$name]['id'] = $vars[$name] ?? '';
+            $vars[$name] = $vars[$name] ?? '';
         }
 
         $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
@@ -81,7 +81,7 @@ final class ReportGenerate implements RequestHandlerInterface
             default:
             case 'HTML':
                 ob_start();
-                new ReportParserGenerate($xml_filename, new HtmlRenderer(), $variables, $tree);
+                new ReportParserGenerate($xml_filename, new HtmlRenderer(), $vars, $tree);
                 $html = ob_get_clean();
 
                 $this->layout = 'layouts/report';
@@ -99,7 +99,7 @@ final class ReportGenerate implements RequestHandlerInterface
 
             case 'PDF':
                 ob_start();
-                new ReportParserGenerate($xml_filename, new PdfRenderer(), $variables, $tree);
+                new ReportParserGenerate($xml_filename, new PdfRenderer(), $vars, $tree);
                 $pdf = ob_get_clean();
 
                 $headers = ['content-type' => 'application/pdf'];

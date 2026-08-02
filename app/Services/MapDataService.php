@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -75,11 +75,9 @@ class MapDataService
         $children = [];
 
         $rows = DB::table('places')
-            ->join('gedcom', 'gedcom.gedcom_id', '=', 'p_file')
-            ->join('gedcom_setting', 'gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
-            ->where('setting_name', '=', 'title')
+            ->join('gedcom', 'gedcom_id', '=', 'p_file')
             ->whereIn('p_parent_id', $parents)
-            ->select(['p_place', 'gedcom_name AS tree_name', 'setting_value AS tree_title', 'p_id'])
+            ->select(['p_place', 'gedcom_name AS tree_name', 'title AS tree_title', 'p_id'])
             ->get()
             ->map(static fn (object $row): object => (object) [
                 'p_place'    => $row->p_place,
@@ -232,9 +230,13 @@ class MapDataService
         }
 
         return $query
-            ->groupBy(['p0.id'])
+            ->groupBy(['p0.id', 'p0.parent_id', 'p0.place', 'p0.latitude', 'p0.longitude'])
             ->select([
-                'p0.*',
+                'p0.id',
+                'p0.parent_id',
+                'p0.place',
+                'p0.latitude',
+                'p0.longitude',
                 new Expression('COUNT(' . DB::prefix('p1') . '.id) AS child_count'),
                 new Expression('SUM(' . $expression . ') AS no_coord'),
             ])

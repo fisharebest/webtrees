@@ -23,27 +23,26 @@ declare(strict_types=1);
 </div>
 
 <script>
-  jQuery("area")
-    .click(function (e) {
+  document.querySelectorAll('area').forEach(function (area) {
+    area.addEventListener('click', function (e) {
       e.stopPropagation();
       e.preventDefault();
-      let target = jQuery(this.hash);
-      // position the menu centered immediately above the mouse click position and
-      // make sure it doesn’t end up off the screen
-      target
-        .css({
-          left: Math.max(0, e.pageX - (target.outerWidth() / 2)),
-          top:  Math.max(0, e.pageY - target.outerHeight())
-        })
-        .toggle()
-        .siblings(".fan_chart_menu").hide();
+      const target = document.querySelector(this.hash);
+      const display = target.style.display;
+
+      // Close any other open menus
+      target.parentElement.querySelectorAll('.fan_chart_menu')
+        .forEach(function (element) {
+          element.style.display = 'none';
+        });
+
+      // Toggle display
+      if (display !== 'block') {
+        // position the menu centered immediately above the mouse click position
+        target.style.display = 'block';
+        target.style.left = Math.max(0, e.pageX - (target.offsetWidth / 2)) + 'px';
+        target.style.top = Math.max(0, e.pageY - 1 - target.offsetHeight) + 'px';
+      }
     });
-  jQuery(".fan_chart_menu")
-    .on("click", "a", function (e) {
-      e.stopPropagation();
-    });
-  jQuery("#fan_chart")
-    .click(function () {
-      jQuery(".fan_chart_menu").hide();
-    });
+  });
 </script>

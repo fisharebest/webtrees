@@ -1,37 +1,25 @@
 parameters:
 	ignoreErrors:
 		-
-			rawMessage: Access to an undefined property Fisharebest\Webtrees\GedcomRecord::$generation.
-			identifier: property.notFound
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			rawMessage: 'Call to an undefined method Fisharebest\Webtrees\GedcomRecord::sex().'
-			identifier: method.notFound
-			count: 17
-			path: app/Services/IndividualFactsService.php
-
-		-
-			rawMessage: 'Call to an undefined method Fisharebest\Webtrees\GedcomRecord::getBirthDate().'
+			message: '#^Call to an undefined method Fisharebest\\Webtrees\\GedcomRecord\:\:getBirthDate\(\)\.$#'
 			identifier: method.notFound
 			count: 1
 			path: resources/views/edit/reorder-children.phtml
 
 		-
-			rawMessage: 'Call to an undefined method Fisharebest\Webtrees\GedcomRecord::getMarriageDate().'
+			message: '#^Call to an undefined method Fisharebest\\Webtrees\\GedcomRecord\:\:getMarriageDate\(\)\.$#'
 			identifier: method.notFound
 			count: 2
 			path: resources/views/edit/reorder-families.phtml
 
 		-
-			rawMessage: 'Call to an undefined method Fisharebest\Webtrees\GedcomRecord::displayImage().'
+			message: '#^Call to an undefined method Fisharebest\\Webtrees\\GedcomRecord\:\:displayImage\(\)\.$#'
 			identifier: method.notFound
 			count: 1
 			path: resources/views/edit/reorder-media.phtml
 
 		-
-			rawMessage: 'Call to an undefined method Fisharebest\Webtrees\GedcomRecord::displayImage().'
+			message: '#^Call to an undefined method Fisharebest\\Webtrees\\GedcomRecord\:\:displayImage\(\)\.$#'
 			identifier: method.notFound
 			count: 1
 			path: resources/views/modules/pedigree-map/events.phtml

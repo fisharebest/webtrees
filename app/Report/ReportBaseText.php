@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,42 +21,22 @@ namespace Fisharebest\Webtrees\Report;
 
 use function str_contains;
 
-class ReportBaseText extends ReportBaseElement
+abstract class ReportBaseText extends ReportBaseElement
 {
-    // Text color in HTML code
-    public string $color;
-
-    // Style name
-    public string $styleName;
-
     // Remaining width of a cell (points)
     public float $wrapWidthRemaining;
 
-    // Original width of a cell  (points)
+    // Original width of a cell (points)
     public float $wrapWidthCell;
 
-    /**
-     * Create a Text class - Base
-     *
-     * @param string $style The name of the text style
-     * @param string $color HTML color code
-     */
-    public function __construct(string $style, string $color)
-    {
+    public function __construct(
+        protected string $styleName,
+        protected string $color,
+    ) {
         $this->text               = '';
-        $this->color              = $color;
         $this->wrapWidthRemaining = 0.0;
-        $this->styleName          = $style;
     }
 
-    /**
-     * Set the width for word-wrapping.
-     *
-     * @param float $wrapwidth
-     * @param float $cellwidth
-     *
-     * @return float
-     */
     public function setWrapWidth(float $wrapwidth, float $cellwidth): float
     {
         $this->wrapWidthCell = $cellwidth;
@@ -69,11 +49,6 @@ class ReportBaseText extends ReportBaseElement
         return $this->wrapWidthRemaining;
     }
 
-    /**
-     * Get the style name.
-     *
-     * @return string
-     */
     public function getStyleName(): string
     {
         return $this->styleName;

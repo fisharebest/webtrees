@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -65,8 +65,8 @@ class MessageService
     public function validContacts(Tree $tree): array
     {
         $contacts = [
-            $this->user_service->find((int) $tree->getPreference('CONTACT_USER_ID')),
-            $this->user_service->find((int) $tree->getPreference('WEBMASTER_USER_ID')),
+            $this->user_service->find($tree->contactUserId()),
+            $this->user_service->find($tree->supportUserId()),
         ];
 
         return array_filter($contacts);
