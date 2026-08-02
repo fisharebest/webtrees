@@ -93,11 +93,6 @@ final class DeleteRecord implements RequestHandlerInterface
 
     /**
      * Remove all links from $gedrec to $xref, and any sub-tags.
-     *
-     * @param string $gedrec
-     * @param string $xref
-     *
-     * @return string
      */
     private function removeLinks(string $gedrec, string $xref): string
     {

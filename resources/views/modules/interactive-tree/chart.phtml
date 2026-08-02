@@ -9,30 +9,29 @@ use Fisharebest\Webtrees\Tree;
 /**
  * @var Individual $individual
  * @var string     $module
- * @var string     $name
  * @var Tree       $tree
  */
 
 ?>
 
 <div class="wt-chart wt-chart-interactive">
-    <div id="<?= $name ?>_out" class="tv_out" data-url-details="<?= e(route('module', ['module' => $module, 'action' => 'Details', 'tree' => $tree->name(), 'dummy' => 'dummy'])) ?>" data-url-individuals="<?= e(route('module', ['module' => $module, 'action' => 'Individuals', 'tree' => $tree->name(), 'dummy' => 'dummy'])) ?>">
-        <div id="tv_tools">
+    <div class="tv_out" data-wt-interactive-tree data-wt-interactive-tree-details-url="<?= e(route('module', ['module' => $module, 'action' => 'Details', 'tree' => $tree->name()])) ?>" data-wt-interactive-tree-individuals-url="<?= e(route('module', ['module' => $module, 'action' => 'Individuals', 'tree' => $tree->name()])) ?>">
+        <div class="tv_tools" data-wt-interactive-tree-tools>
             <ul>
-                <li id="tvbCompact" class="tv_button" title="<?= I18N::translate('Use compact layout') ?>">
+                <li class="tv_button tvbCompact" title="<?= I18N::translate('Use compact layout') ?>" data-wt-interactive-tree-compact>
                 </li>
-                <li id="tvbFullscreen" class="tv_button">
+                <li class="tv_button">
                     <a href="#" data-wt-fullscreen=".wt-chart-interactive">
                         <span title="<?= I18N::translate('Enter fullscreen') ?>"><?= view('icons/enter-fullscreen') ?></span>
                         <span title="<?= I18N::translate('Exit fullscreen') ?>"><?= view('icons/exit-fullscreen') ?></span>
                     </a>
                 </li>
-                <li class="tv_button" id="<?= $name ?>_loading">
+                <li class="tv_button" data-wt-interactive-tree-loading>
                     <i class="icon-loading-small"></i>
                 </li>
             </ul>
         </div>
-        <div id="<?= $name ?>_in" class="tv_in" dir="ltr">
+        <div class="tv_in" data-wt-interactive-tree-canvas dir="ltr">
             <?= $individual ?>
         </div>
     </div>

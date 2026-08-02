@@ -2,18 +2,19 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Charts\BarChartData;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * @var array<int,array<string|array<string,int|bool|string>>> $chart_options
- * @var string                                                 $chart_title
- * @var array<array{0:string,1:int}>                           $data
- * @var string                                                 $language
+ * @var BarChartData         $chart_data
+ * @var array<string,mixed>  $chart_options
+ * @var string               $chart_title
+ * @var string               $language
  */
 
 ?>
 
-<?php if (count($data) === 1) : ?>
+<?php if (!$chart_data->hasData()) : ?>
     <?= I18N::translate('This information is not available.') ?>
 <?php else : ?>
     <div class="d-grid mb-3">
@@ -22,7 +23,12 @@ use Fisharebest\Webtrees\I18N;
                 <?= $chart_title ?>
             </div>
             <div class="card-body">
-                <?= view('statistics/other/charts/column', [ 'data' => $data, 'chart_options' => $chart_options, 'chart_title' => '', 'language' => $language]) ?>
+                <?= view('statistics/other/charts/column', [
+                    'chart_data'    => $chart_data,
+                    'chart_options' => $chart_options,
+                    'chart_title'   => '',
+                    'language'      => $language,
+                ]) ?>
             </div>
         </div>
     </div>

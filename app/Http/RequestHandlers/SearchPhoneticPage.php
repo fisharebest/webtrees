@@ -54,7 +54,7 @@ final class SearchPhoneticPage implements RequestHandlerInterface
         $soundex   = Validator::queryParams($request)->isInArray(['DaitchM', 'Russell'])->string('soundex', 'Russell');
 
         // Where to search
-        $search_tree_names = Validator::queryParams($request)->array('search_trees');
+        $search_tree_names = Validator::queryParams($request)->list('search_trees');
 
         // What trees to search?
         if (Site::getPreference('ALLOW_CHANGE_GEDCOM') === '1') {

@@ -23,6 +23,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -61,11 +62,6 @@ final class IndividualPage implements RequestHandlerInterface
 
     private UserService $user_service;
 
-    /**
-     * @param ClipboardService $clipboard_service
-     * @param ModuleService    $module_service
-     * @param UserService      $user_service
-     */
     public function __construct(
         ClipboardService $clipboard_service,
         ModuleService $module_service,
@@ -131,11 +127,6 @@ final class IndividualPage implements RequestHandlerInterface
         ])->withHeader('Link', '<' . $individual->url() . '>; rel="canonical"');
     }
 
-    /**
-     * @param Individual $individual
-     *
-     * @return string
-     */
     private function ageString(Individual $individual): string
     {
         if ($individual->isDead()) {
@@ -146,17 +137,11 @@ final class IndividualPage implements RequestHandlerInterface
                 return '';
             }
 
-            switch ($individual->sex()) {
-                case 'M':
-                    /* I18N: The age of an individual at a given date */
-                    return I18N::translateContext('Male', '(aged %s)', $age);
-                case 'F':
-                    /* I18N: The age of an individual at a given date */
-                    return I18N::translateContext('Female', '(aged %s)', $age);
-                default:
-                    /* I18N: The age of an individual at a given date */
-                    return I18N::translate('(aged %s)', $age);
-            }
+            return match ($individual->sex()) {
+                Sex::Male   => I18N::translateContext('Male', '(aged %s)', $age),
+                Sex::Female => I18N::translateContext('Female', '(aged %s)', $age),
+                default     => I18N::translate('(aged %s)', $age),
+            };
         }
 
         // If living, show age today
@@ -171,11 +156,6 @@ final class IndividualPage implements RequestHandlerInterface
         return I18N::translate('(age %s)', $age);
     }
 
-    /**
-     * @param Individual $individual
-     *
-     * @return string
-     */
     private function metaDescription(Individual $individual): string
     {
         $meta_facts = [];
@@ -225,7 +205,6 @@ final class IndividualPage implements RequestHandlerInterface
      * Which tabs should we show on this individual's page.
      * We don't show empty tabs.
      *
-     * @param Individual $individual
      *
      * @return Collection<int,ModuleSidebarInterface>
      */
@@ -240,7 +219,6 @@ final class IndividualPage implements RequestHandlerInterface
      * Which tabs should we show on this individual's page.
      * We don't show empty tabs.
      *
-     * @param Individual $individual
      *
      * @return Collection<int,ModuleTabInterface>
      */
@@ -254,10 +232,6 @@ final class IndividualPage implements RequestHandlerInterface
     /**
      * What are the significant elements of this page?
      * The layout will need them to generate URLs for charts and reports.
-     *
-     * @param Individual $individual
-     *
-     * @return object
      */
     private function significant(Individual $individual): object
     {

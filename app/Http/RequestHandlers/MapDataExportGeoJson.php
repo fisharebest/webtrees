@@ -70,7 +70,7 @@ final class MapDataExportGeoJson implements RequestHandlerInterface
         while ($queue !== []) {
             [$id, $hierarchy, $latitude, $longitude] = array_shift($queue);
 
-            if ($latitude !== null && !$longitude !== null) {
+            if ($latitude !== null && $longitude !== null) {
                 $features[] = [
                     'type'       => 'Feature',
                     'geometry'   => [
@@ -96,7 +96,7 @@ final class MapDataExportGeoJson implements RequestHandlerInterface
             }
 
             $rows = $query
-                ->orderBy('place', 'DESC')
+                ->orderBy('place', 'desc')
                 ->select(['id', 'place', 'latitude', 'longitude'])
                 ->get();
 

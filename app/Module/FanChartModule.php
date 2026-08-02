@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -102,9 +103,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 
     private ChartService $chart_service;
 
-    /**
-     * @param ChartService $chart_service
-     */
     public function __construct(ChartService $chart_service)
     {
         $this->chart_service = $chart_service;
@@ -112,8 +110,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -137,8 +133,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -155,10 +149,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 
     /**
      * The title for a specific instance of this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function chartTitle(Individual $individual): string
     {
@@ -169,10 +159,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     /**
      * A form to request the chart parameters.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
@@ -182,11 +169,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
@@ -243,13 +225,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 
     /**
      * Generate both the HTML and PNG components of the fan chart
-     *
-     * @param Individual $individual
-     * @param int        $style
-     * @param int        $width
-     * @param int        $generations
-     *
-     * @return ResponseInterface
      */
     protected function chart(Individual $individual, int $style, int $width, int $generations): ResponseInterface
     {
@@ -288,9 +263,10 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         $theme       = Registry::container()->get(ModuleThemeInterface::class);
         $text_color  = $this->imageColor($image, '000000');
         $backgrounds = [
-            'M' => $this->imageColor($image, 'b1cff0'),
-            'F' => $this->imageColor($image, 'e9daf1'),
-            'U' => $this->imageColor($image, 'eeeeee'),
+            Sex::Male->value    => $this->imageColor($image, 'b1cff0'),
+            Sex::Female->value  => $this->imageColor($image, 'e9daf1'),
+            Sex::Unknown->value => $this->imageColor($image, 'eeeeee'),
+            Sex::Other->value   => $this->imageColor($image, 'eeeeee'),
         ];
 
         // Co-ordinates are measured from the top-left corner.
@@ -322,7 +298,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                 $arc_diameter,
                 $chart_start_angle,
                 $chart_end_angle,
-                $backgrounds['U'],
+                $backgrounds[Sex::Unknown->value],
                 IMG_ARC_PIE
             );
 
@@ -345,7 +321,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         $arc_diameter,
                         $start_angle,
                         $end_angle,
-                        $backgrounds[$individual->sex()] ?? $backgrounds['U'],
+                        $backgrounds[$individual->sex()->value],
                         IMG_ARC_PIE
                     );
 
@@ -382,7 +358,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         I18N::reverseText($individual->fullName()),
                         I18N::reverseText($individual->alternateName() ?? ''),
                         I18N::reverseText($individual->lifespan()),
-                    ]);
+                    ], static fn (string $value): bool => $value !== '');
 
                     $text_lines = array_map(
                         fn (string $line): string => $this->fitTextToPixelWidth($line, $max_text_length),
@@ -413,7 +389,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         $text
                     );
                     // Debug text positions by underlining first line of text
-                    //imageline($image, (int) $tx_start, (int) $ty_start, (int) $tx_end, (int) $ty_end, $backgrounds['U']);
+                    //imageline($image, (int) $tx_start, (int) $ty_start, (int) $tx_end, (int) $ty_end, $backgrounds[Sex::Unknown->value]);
 
                     $areas .= '<area shape="poly" coords="';
                     for ($deg = $start_angle; $deg <= $end_angle; $deg++) {
@@ -468,11 +444,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 
     /**
      * Convert a CSS color into a GD color.
-     *
-     * @param GdImage $image
-     * @param string  $css_color
-     *
-     * @return int
      */
     protected function imageColor(GdImage $image, string $css_color): int
     {
@@ -504,11 +475,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     /**
      * Fit text to a given number of pixels by either cropping to fit,
      * or adding spaces to center.
-     *
-     * @param string $text
-     * @param int    $pixels
-     *
-     * @return string
      */
     protected function fitTextToPixelWidth(string $text, int $pixels): string
     {
@@ -524,11 +490,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         return rtrim($text);
     }
 
-    /**
-     * @param string $text
-     *
-     * @return int
-     */
     protected function textWidthInPixels(string $text): int
     {
         // If PHP is compiled with --enable-gd-jis-conv, then the function

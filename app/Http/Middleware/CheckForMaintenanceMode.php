@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\MaintenanceModeService;
-use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;

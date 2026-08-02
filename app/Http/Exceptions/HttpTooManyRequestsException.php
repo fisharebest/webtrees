@@ -27,9 +27,6 @@ use Fisharebest\Webtrees\I18N;
  */
 class HttpTooManyRequestsException extends HttpException
 {
-    /**
-     * @param string|null $message
-     */
     public function __construct(string|null $message = null)
     {
         $message ??= I18N::translate('Too many requests. Try again later.');

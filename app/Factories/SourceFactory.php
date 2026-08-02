@@ -57,7 +57,6 @@ class SourceFactory extends AbstractGedcomRecordFactory implements SourceFactory
     /**
      * Create a source from a row in the database.
      *
-     * @param Tree $tree
      *
      * @return Closure(object):Source
      */
@@ -69,13 +68,9 @@ class SourceFactory extends AbstractGedcomRecordFactory implements SourceFactory
     /**
      * Create a source from raw GEDCOM data.
      *
-     * @param string      $xref
      * @param string      $gedcom  an empty string for new/pending records
      * @param string|null $pending null for a record with no pending edits,
      *                             empty string for records with pending deletions
-     * @param Tree        $tree
-     *
-     * @return Source
      */
     public function new(string $xref, string $gedcom, string|null $pending, Tree $tree): Source
     {
@@ -84,11 +79,6 @@ class SourceFactory extends AbstractGedcomRecordFactory implements SourceFactory
 
     /**
      * Fetch GEDCOM data from the database.
-     *
-     * @param string $xref
-     * @param Tree   $tree
-     *
-     * @return string|null
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {

@@ -36,8 +36,6 @@ trait ModuleAnalyticsTrait
 
     /**
      * A unique internal name for this module (based on the installation folder).
-     *
-     * @return string
      */
     abstract public function name(): string;
 
@@ -48,18 +46,11 @@ trait ModuleAnalyticsTrait
      *
      * Since module settings are NOT NULL, setting a value to NULL will cause
      * it to be deleted.
-     *
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return void
      */
     abstract public function setPreference(string $setting_name, string $setting_value): void;
 
     /**
      * Should we add this tracker?
-     *
-     * @return bool
      */
     public function analyticsCanShow(): bool
     {
@@ -67,6 +58,14 @@ trait ModuleAnalyticsTrait
 
         // If the browser sets the DNT header, then we won't use analytics.
         if (Validator::serverParams($request)->boolean('HTTP_DNT', false)) {
+            return false;
+        }
+
+        // Do not activate tracker until we have explicit consent.
+        $cookies = $request->getCookieParams();
+        $consent_cookie = $cookies['analytics_consent_' . $this->name()] ?? null;
+
+        if ($consent_cookie !== '1') {
             return false;
         }
 
@@ -94,11 +93,6 @@ trait ModuleAnalyticsTrait
         return I18N::translate('Tracking and analytics');
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -113,8 +107,6 @@ trait ModuleAnalyticsTrait
 
     /**
      * Form fields to edit the parameters.
-     *
-     * @return string
      */
     public function analyticsFormFields(): string
     {
@@ -125,8 +117,6 @@ trait ModuleAnalyticsTrait
      * Embed placeholders in the snippet.
      *
      * @param array<string> $parameters
-     *
-     * @return string
      */
     public function analyticsSnippet(array $parameters): string
     {
@@ -135,8 +125,6 @@ trait ModuleAnalyticsTrait
 
     /**
      * Is this a tracker, as opposed to just a site-verification.
-     *
-     * @return bool
      */
     public function isTracker(): bool
     {
@@ -144,10 +132,31 @@ trait ModuleAnalyticsTrait
     }
 
     /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
+     * Do we need to ask the user for consent?
      */
+    public function analyticsNeedsConsent(): bool
+    {
+        $request = Registry::container()->get(ServerRequestInterface::class);
+
+        // DNT header set?  We disable analytics, so don't need to ask.
+        if (Validator::serverParams($request)->boolean('HTTP_DNT', false)) {
+            return false;
+        }
+
+        // Module not configured yet, so don't need to ask.
+        foreach ($this->analyticsParameters() as $parameter) {
+            if ($parameter === '') {
+                return false;
+            }
+        }
+
+        // Consent cookie already exists (accepted or declined), so don't need to ask.
+        $cookies = $request->getCookieParams();
+        $consent_cookie = $cookies['analytics_consent_' . $this->name()] ?? null;
+
+        return $consent_cookie === null;
+    }
+
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         foreach (array_keys($this->analyticsParameters()) as $parameter) {

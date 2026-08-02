@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleInterface;
@@ -45,9 +46,6 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
      * @template T of ModuleInterface
      *
      * @param class-string<T>        $interface
-     * @param ServerRequestInterface $request
-     *
-     * @return void
      */
     protected function updateStatus(string $interface, ServerRequestInterface $request): void
     {
@@ -78,9 +76,6 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
      * @template T of ModuleInterface
      *
      * @param class-string<T>        $interface
-     * @param ServerRequestInterface $request
-     *
-     * @return void
      */
     protected function updateAccessLevel(string $interface, ServerRequestInterface $request): void
     {
@@ -90,7 +85,7 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
         foreach ($modules as $module) {
             foreach ($trees as $tree) {
                 $key          = 'access-' . $module->name() . '-' . $tree->id();
-                $access_level = Validator::parsedBody($request)->integer($key);
+                $access_level = AccessLevel::from(Validator::parsedBody($request)->integer($key));
 
                 if ($access_level !== $module->accessLevel($tree, $interface)) {
                     DB::table('module_privacy')->updateOrInsert([
@@ -106,20 +101,16 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
     }
 
     /**
-     * Update the access levels of the modules.
+     * Update the order of the modules.
      *
      * @template T of ModuleInterface
      *
      * @param class-string<T>        $interface
-     * @param string                 $column
-     * @param ServerRequestInterface $request
-     *
-     * @return void
      */
     protected function updateOrder(string $interface, string $column, ServerRequestInterface $request): void
     {
         $modules = $this->module_service->findByInterface($interface, true);
-        $order   = Validator::parsedBody($request)->array('order');
+        $order   = Validator::parsedBody($request)->list('order');
         $order   = array_flip($order);
 
         foreach ($modules as $module) {

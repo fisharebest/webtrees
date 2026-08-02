@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -17,7 +16,7 @@ use Illuminate\Support\Collection;
     <ul class="nav nav-tabs flex-wrap" role="tablist">
         <?php foreach ($tabs as $tab) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link<?= $tab->isGrayedOut($record) ? ' text-muted' : '' ?>" data-bs-toggle="tab" role="tab" data-wt-href="<?= e(route('module', ['module' => $tab->name(), 'action' => 'Tab', 'tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" href="#<?= $tab->name() ?>">
+                <a class="nav-link<?= $tab->isGrayedOut($record) ? ' text-muted' : '' ?>" id="<?= $tab->name() ?>-tab" data-bs-toggle="tab" role="tab" aria-controls="<?= $tab->name() ?>" aria-selected="false" data-wt-href="<?= e(route('module', ['module' => $tab->name(), 'action' => 'Tab', 'tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" href="#<?= $tab->name() ?>">
                     <?= $tab->tabTitle() ?>
                 </a>
             </li>
@@ -26,42 +25,7 @@ use Illuminate\Support\Collection;
 
     <div class="tab-content">
         <?php foreach ($tabs as $tab) : ?>
-            <div id="<?= $tab->name() ?>" class="tab-pane mt-2 fade" role="tabpanel"><?php if (!$tab->canLoadAjax()) : ?><?= $tab->getTabContent($record) ?><?php endif ?></div>
+            <div id="<?= $tab->name() ?>" class="tab-pane mt-2 fade" role="tabpanel" aria-labelledby="<?= $tab->name() ?>-tab"><?php if (!$tab->canLoadAjax()) : ?><?= $tab->getTabContent($record) ?><?php endif ?></div>
         <?php endforeach ?>
     </div>
 </div>
-
-<?php View::push('javascript') ?>
-<script>
-  'use strict';
-
-  // Bootstrap tabs - load content dynamically using AJAX
-  $('a[data-bs-toggle="tab"][data-wt-href]').on('show.bs.tab', function () {
-    let target = $(this.hash + ':empty');
-    if (target.length > 0) {
-      // Start the download immediately...
-      let download = webtrees.httpGet(this.dataset.wtHref);
-
-      // ...but don't insert it until the tab is ready.
-      $(this).one('shown.bs.tab', () => {
-        download
-          .then(data => data.text())
-          .then(data => target.html(data));
-      });
-    }
-  });
-
-  // If the URL contains a fragment, then activate the corresponding tab.
-  // Use a prefix on the fragment, to prevent scrolling to the element.
-  let target = window.location.hash.replace("tab-", "");
-  let tab = document.querySelector("#individual-tabs .nav-link[href='" + target + "']");
-  // If not, then activate the first tab.
-  tab = tab ?? document.querySelector("#individual-tabs .nav-link");
-  tab.click();
-
-  // If the user selects a tab, update the URL to reflect this
-  $('#individual-tabs a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
-    window.location.hash = "tab-" + e.target.href.substring(e.target.href.indexOf('#') + 1);
-  });
-</script>
-<?php View::endpush() ?>

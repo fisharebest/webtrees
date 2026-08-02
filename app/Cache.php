@@ -31,9 +31,6 @@ class Cache
 {
     private CacheInterface $cache;
 
-    /**
-     * @param CacheInterface $cache
-     */
     public function __construct(CacheInterface $cache)
     {
         $this->cache = $cache;
@@ -44,9 +41,7 @@ class Cache
      *
      * @template T
      *
-     * @param string       $key
      * @param Closure(): T $closure
-     * @param int|null     $ttl
      *
      * @return T
      */
@@ -61,8 +56,6 @@ class Cache
 
     /**
      * Remove an item from the cache.
-     *
-     * @param string $key
      */
     public function forget(string $key): void
     {

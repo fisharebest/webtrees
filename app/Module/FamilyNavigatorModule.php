@@ -42,19 +42,12 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 
     /**
      * The default position for this sidebar.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultSidebarOrder(): int
     {
         return 2;
     }
 
-    /**
-     * @param Individual $individual
-     *
-     * @return bool
-     */
     public function hasSidebarContent(Individual $individual): bool
     {
         return true;
@@ -62,10 +55,6 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 
     /**
      * Load this sidebar synchronously.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function getSidebarContent(Individual $individual): string
     {

@@ -53,7 +53,7 @@ final class RedirectTimeLinePhp implements RequestHandlerInterface
                 ->first(static fn (ModuleChartInterface $module): bool => $module instanceof TimelineChartModule);
 
             if ($module instanceof TimelineChartModule) {
-                $pids       = Validator::queryParams($request)->array('pids');
+                $pids       = Validator::queryParams($request)->list('pids');
                 $xref       = $pids[0] ?? '';
                 $user       = Auth::user();
                 $individual = Registry::individualFactory()->make($xref, $tree) ?? $tree->significantIndividual($user);

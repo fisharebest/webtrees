@@ -34,7 +34,6 @@ use function preg_quote;
 final class AutoCompleteCitation extends AbstractAutocompleteHandler
 {
     /**
-     * @param ServerRequestInterface $request
      *
      * @return Collection<int,string>
      */

@@ -48,11 +48,6 @@ final class PendingChangesLogData implements RequestHandlerInterface
 
     private PendingChangesService $pending_changes_service;
 
-    /**
-     * @param DatatablesService     $datatables_service
-     * @param MyersDiff             $myers_diff
-     * @param PendingChangesService $pending_changes_service
-     */
     public function __construct(
         DatatablesService $datatables_service,
         MyersDiff $myers_diff,
@@ -66,7 +61,7 @@ final class PendingChangesLogData implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree           = Validator::attributes($request)->tree();
-        $params         = $request->getQueryParams();
+        $params         = (array) $request->getParsedBody();
         $params['tree'] = $tree->name();
 
         $query = $this->pending_changes_service->changesQuery($params);

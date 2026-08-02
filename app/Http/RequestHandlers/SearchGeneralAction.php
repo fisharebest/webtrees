@@ -36,7 +36,7 @@ final class SearchGeneralAction implements RequestHandlerInterface
             'search_notes'        => Validator::parsedBody($request)->boolean('search_notes', false),
             'search_repositories' => Validator::parsedBody($request)->boolean('search_repositories', false),
             'search_sources'      => Validator::parsedBody($request)->boolean('search_sources', false),
-            'search_trees'        => Validator::parsedBody($request)->array('search_trees'),
+            'search_trees'        => Validator::parsedBody($request)->list('search_trees'),
             'tree'                => Validator::attributes($request)->tree()->name(),
         ]));
     }

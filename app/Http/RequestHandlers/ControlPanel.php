@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyListModule;
@@ -66,6 +67,7 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Local\LocalFilesystemAdapter;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -90,16 +92,8 @@ final class ControlPanel implements RequestHandlerInterface
 
     private UserService $user_service;
 
-    /**
-     * @param AdminService        $admin_service
-     * @param HousekeepingService $housekeeping_service
-     * @param MessageService      $message_service
-     * @param ModuleService       $module_service
-     * @param ServerCheckService  $server_check_service
-     * @param TreeService         $tree_service
-     * @param UpgradeService      $upgrade_service
-     * @param UserService         $user_service
-     */
+    private ClockInterface $clock;
+
     public function __construct(
         AdminService $admin_service,
         HousekeepingService $housekeeping_service,
@@ -108,7 +102,8 @@ final class ControlPanel implements RequestHandlerInterface
         ServerCheckService $server_check_service,
         TreeService $tree_service,
         UpgradeService $upgrade_service,
-        UserService $user_service
+        UserService $user_service,
+        ClockInterface $clock,
     ) {
         $this->admin_service        = $admin_service;
         $this->housekeeping_service = $housekeeping_service;
@@ -118,6 +113,7 @@ final class ControlPanel implements RequestHandlerInterface
         $this->tree_service         = $tree_service;
         $this->upgrade_service      = $upgrade_service;
         $this->user_service         = $user_service;
+        $this->clock                = $clock;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
@@ -136,6 +132,7 @@ final class ControlPanel implements RequestHandlerInterface
 
         return $this->viewResponse('admin/control-panel', [
             'title'                             => I18N::translate('Control panel'),
+            'now'                               => $this->clock->now()->getTimestamp(),
             'server_errors'                     => $this->server_check_service->serverErrors(),
             'server_warnings'                   => $this->server_check_service->serverWarnings(),
             'latest_version'                    => $this->upgrade_service->latestVersion(),
@@ -221,7 +218,7 @@ final class ControlPanel implements RequestHandlerInterface
             ->leftJoin('change', static function (JoinClause $join): void {
                 $join
                     ->on('change.gedcom_id', '=', 'gedcom.gedcom_id')
-                    ->where('change.status', '=', 'pending');
+                    ->where('change.status', '=', ChangeStatus::Pending->value);
             })
             ->groupBy(['gedcom.gedcom_id'])
             ->pluck(new Expression('COUNT(change_id) AS total'), 'gedcom.gedcom_id')

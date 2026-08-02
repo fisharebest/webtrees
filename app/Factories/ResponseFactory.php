@@ -46,10 +46,6 @@ class ResponseFactory implements ResponseFactoryInterface
 
     private StreamFactoryInterface $stream_factory;
 
-    /**
-     * @param PSR17ResponseFactoryInterface $response_factory
-     * @param StreamFactoryInterface        $stream_factory
-     */
     public function __construct(PSR17ResponseFactoryInterface $response_factory, StreamFactoryInterface $stream_factory)
     {
         $this->response_factory = $response_factory;
@@ -59,12 +55,7 @@ class ResponseFactory implements ResponseFactoryInterface
     /**
      * Redirect to a named route.
      *
-     * @param string                                    $route_name
      * @param array<bool|int|string|array<string>|null> $parameters
-     * @param int                                       $status
-     *
-     * @return ResponseInterface
-     *
      */
     public function redirect(
         string $route_name,
@@ -78,11 +69,6 @@ class ResponseFactory implements ResponseFactoryInterface
 
     /**
      * Redirect to a URL.
-     *
-     * @param UriInterface|string $url
-     * @param int                 $code
-     *
-     * @return ResponseInterface
      */
     public function redirectUrl(UriInterface|string $url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface
     {
@@ -93,10 +79,7 @@ class ResponseFactory implements ResponseFactoryInterface
 
     /**
      * @param string|array<mixed>|object $content
-     * @param int                        $code
      * @param array<string,string>       $headers
-     *
-     * @return ResponseInterface
      */
     public function response(string|array|object $content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
     {
@@ -127,12 +110,7 @@ class ResponseFactory implements ResponseFactoryInterface
     /**
      * Create and render a view, and embed it in an HTML page.
      *
-     * @param string              $view_name
      * @param array<string,mixed> $view_data
-     * @param int                 $status
-     * @param string              $layout_name
-     *
-     * @return ResponseInterface
      */
     public function view(
         string $view_name,

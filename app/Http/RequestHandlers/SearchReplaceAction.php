@@ -103,10 +103,6 @@ final class SearchReplaceAction implements RequestHandlerInterface
 
     /**
      * @param Collection<int,GedcomRecord> $records
-     * @param string                       $search
-     * @param string                       $replace
-     *
-     * @return int
      */
     private function replaceRecords(Collection $records, string $search, string $replace): int
     {
@@ -128,11 +124,7 @@ final class SearchReplaceAction implements RequestHandlerInterface
 
     /**
      * @param Collection<int,GedcomRecord> $records
-     * @param string                       $search
-     * @param string                       $replace
      * @param array<string>                $name_tags
-     *
-     * @return int
      */
     private function replaceIndividualNames(Collection $records, string $search, string $replace, array $name_tags): int
     {
@@ -155,10 +147,6 @@ final class SearchReplaceAction implements RequestHandlerInterface
 
     /**
      * @param Collection<int,GedcomRecord> $records
-     * @param string                       $search
-     * @param string                       $replace
-     *
-     * @return int
      */
     private function replacePlaces(Collection $records, string $search, string $replace): int
     {

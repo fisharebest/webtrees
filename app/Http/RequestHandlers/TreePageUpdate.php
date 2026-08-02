@@ -52,8 +52,8 @@ final class TreePageUpdate implements RequestHandlerInterface
             $side_blocks = $this->home_page_service->treeBlocks($default_tree, $user, ModuleBlockInterface::SIDE_BLOCKS)
                 ->map(static fn (ModuleBlockInterface $block) => $block->name());
         } else {
-            $main_blocks = new Collection(Validator::parsedBody($request)->array(ModuleBlockInterface::MAIN_BLOCKS));
-            $side_blocks = new Collection(Validator::parsedBody($request)->array(ModuleBlockInterface::SIDE_BLOCKS));
+            $main_blocks = new Collection(Validator::parsedBody($request)->list(ModuleBlockInterface::MAIN_BLOCKS));
+            $side_blocks = new Collection(Validator::parsedBody($request)->list(ModuleBlockInterface::SIDE_BLOCKS));
         }
 
         $this->home_page_service->updateTreeBlocks($tree->id(), $main_blocks, $side_blocks);

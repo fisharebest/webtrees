@@ -22,10 +22,8 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\JoinClause;
@@ -37,37 +35,15 @@ use function e;
 
 final class UserListData implements RequestHandlerInterface
 {
-    private DatatablesService $datatables_service;
-
-    private ModuleService $module_service;
-
-    private UserService $user_service;
-
-    /**
-     * @param DatatablesService $datatables_service
-     * @param ModuleService     $module_service
-     * @param UserService       $user_service
-     */
     public function __construct(
-        DatatablesService $datatables_service,
-        ModuleService $module_service,
-        UserService $user_service
+        private readonly DatatablesService $datatables_service,
+        private readonly UserService $user_service
     ) {
-        $this->datatables_service = $datatables_service;
-        $this->module_service     = $module_service;
-        $this->user_service       = $user_service;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $self = Validator::attributes($request)->user();
-
-        $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class, true)
-            ->mapWithKeys(static function (ModuleLanguageInterface $module): array {
-                $locale = $module->locale();
-
-                return [$locale->languageTag() => $locale->endonym()];
-            });
 
         $query = DB::table('user')
             ->leftJoin('user_setting AS us1', static function (JoinClause $join): void {
@@ -114,6 +90,8 @@ final class UserListData implements RequestHandlerInterface
         $search_columns = ['user_name', 'real_name', 'email'];
         $sort_columns   = [];
 
+        $languages = I18N::allLanguages();
+
         $callback = function (object $row) use ($languages, $self): array {
             $user  = $this->user_service->find((int) $row->user_id);
             $datum = [
@@ -122,17 +100,17 @@ final class UserListData implements RequestHandlerInterface
                 '<bdi>' . e($row->user_name) . '</bdi>',
                 '<bdi>' . e($row->real_name) . '</bdi>',
                 '<a href="mailto:' . e($row->email) . '">' . e($row->email) . '</a>',
-                $languages->get($row->language, $row->language),
+                $languages[$row->language] ?? $row->language,
                 $row->registered_at,
-                $row->registered_at ? view('components/datetime-diff', ['timestamp' => Registry::timestampFactory()->make((int) $row->registered_at)]) : '',
+                $row->registered_at ? view('components/datetime-diff', ['timestamp' => Registry::timestampFactory()->fromEpoch((int) $row->registered_at)]) : '',
                 $row->active_at,
-                $row->active_at ? view('components/datetime-diff', ['timestamp' => Registry::timestampFactory()->make((int) $row->active_at)]) : I18N::translate('Never'),
+                $row->active_at ? view('components/datetime-diff', ['timestamp' => Registry::timestampFactory()->fromEpoch((int) $row->active_at)]) : I18N::translate('Never'),
                 $row->verified ? I18N::translate('yes') : I18N::translate('no'),
                 $row->verified_by_admin ? I18N::translate('yes') : I18N::translate('no'),
             ];
 
             // Highlight old registrations.
-            if (!$datum[10] && date('U') - $datum[6] > 604800) {
+            if ((int) $row->verified === 0 && date('U') - $datum[6] > 604800) {
                 $datum[7] = '<span class="text-danger">' . $datum[7] . '</span>';
             }
 

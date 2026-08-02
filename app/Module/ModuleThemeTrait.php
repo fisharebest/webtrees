@@ -64,10 +64,6 @@ trait ModuleThemeTrait
 
     /**
      * Generate the facts, for display in charts.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function individualBoxFacts(Individual $individual): string
     {
@@ -119,7 +115,6 @@ trait ModuleThemeTrait
     /**
      * Links, to show in chart boxes;
      *
-     * @param Individual $individual
      *
      * @return array<Menu>
      */
@@ -134,7 +129,6 @@ trait ModuleThemeTrait
     /**
      * Chart links, to show in chart boxes;
      *
-     * @param Individual $individual
      *
      * @return array<Menu>
      */
@@ -151,7 +145,7 @@ trait ModuleThemeTrait
             }
         }
 
-        usort($menus, static fn (Menu $x, Menu $y): int => I18N::comparator()($x->getLabel(), $y->getLabel()));
+        usort($menus, static fn (Menu $x, Menu $y): int => I18N::compare($x->getLabel(), $y->getLabel()));
 
         return $menus;
     }
@@ -159,7 +153,6 @@ trait ModuleThemeTrait
     /**
      * Family links, to show in chart boxes.
      *
-     * @param Individual $individual
      *
      * @return array<Menu>
      */
@@ -170,7 +163,7 @@ trait ModuleThemeTrait
         foreach ($individual->spouseFamilies() as $family) {
             $menus[] = new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->url());
             $spouse  = $family->spouse($individual);
-            if ($spouse && $spouse->canShowName()) {
+            if ($spouse !== null && $spouse->canShowName()) {
                 $menus[] = new Menu($spouse->fullName(), $spouse->url());
             }
             foreach ($family->children() as $child) {
@@ -185,10 +178,6 @@ trait ModuleThemeTrait
 
     /**
      * Generate a menu item to change the blocks on the current tree/user page.
-     *
-     * @param Tree $tree
-     *
-     * @return Menu|null
      */
     public function menuChangeBlocks(Tree $tree): Menu|null
     {
@@ -208,10 +197,6 @@ trait ModuleThemeTrait
 
     /**
      * Generate a menu item for the control panel.
-     *
-     * @param Tree $tree
-     *
-     * @return Menu|null
      */
     public function menuControlPanel(Tree $tree): Menu|null
     {
@@ -228,17 +213,14 @@ trait ModuleThemeTrait
 
     /**
      * A menu to show a list of available languages.
-     *
-     * @return Menu|null
      */
     public function menuLanguages(): Menu|null
     {
         $menu = new Menu(I18N::translate('Language'), '#', 'menu-language');
 
-        foreach (I18N::activeLocales() as $active_locale) {
-            $language_tag = $active_locale->languageTag();
+        foreach (I18N::activeLanguages() as $language_tag => $endonym) {
             $class        = 'menu-language-' . $language_tag . (I18N::languageTag() === $language_tag ? ' active' : '');
-            $menu->addSubmenu(new Menu($active_locale->endonym(), '#', $class, [
+            $menu->addSubmenu(new Menu($endonym, '#', $class, [
                 'data-wt-post-url' => route(SelectLanguage::class, ['language' => $language_tag]),
             ]));
         }
@@ -252,8 +234,6 @@ trait ModuleThemeTrait
 
     /**
      * A login menu option (or null if we are already logged in).
-     *
-     * @return Menu|null
      */
     public function menuLogin(): Menu|null
     {
@@ -281,8 +261,6 @@ trait ModuleThemeTrait
 
     /**
      * A logout menu option (or null if we are already logged out).
-     *
-     * @return Menu|null
      */
     public function menuLogout(): Menu|null
     {
@@ -300,10 +278,6 @@ trait ModuleThemeTrait
 
     /**
      * A link to allow users to edit their account settings.
-     *
-     * @param Tree|null $tree
-     *
-     * @return Menu
      */
     public function menuMyAccount(Tree|null $tree): Menu
     {
@@ -314,10 +288,6 @@ trait ModuleThemeTrait
 
     /**
      * A link to the user's individual record (individual.php).
-     *
-     * @param Tree $tree
-     *
-     * @return Menu|null
      */
     public function menuMyIndividualRecord(Tree $tree): Menu|null
     {
@@ -332,10 +302,6 @@ trait ModuleThemeTrait
 
     /**
      * A link to the user's personal home page.
-     *
-     * @param Tree $tree
-     *
-     * @return Menu
      */
     public function menuMyPage(Tree $tree): Menu
     {
@@ -344,10 +310,6 @@ trait ModuleThemeTrait
 
     /**
      * A menu for the user's personal pages.
-     *
-     * @param Tree|null $tree
-     *
-     * @return Menu|null
      */
     public function menuMyPages(Tree|null $tree): Menu|null
     {
@@ -371,10 +333,6 @@ trait ModuleThemeTrait
 
     /**
      * A link to the user's individual record.
-     *
-     * @param Tree $tree
-     *
-     * @return Menu|null
      */
     public function menuMyPedigree(Tree $tree): Menu|null
     {
@@ -402,10 +360,6 @@ trait ModuleThemeTrait
 
     /**
      * Create a pending changes menu.
-     *
-     * @param Tree|null $tree
-     *
-     * @return Menu|null
      */
     public function menuPendingChanges(Tree|null $tree): Menu|null
     {
@@ -425,8 +379,6 @@ trait ModuleThemeTrait
 
     /**
      * Themes menu.
-     *
-     * @return Menu|null
      */
     public function menuThemes(): Menu|null
     {
@@ -453,7 +405,6 @@ trait ModuleThemeTrait
     /**
      * Generate a list of items for the main menu.
      *
-     * @param Tree|null $tree
      *
      * @return array<Menu>
      */
@@ -476,8 +427,6 @@ trait ModuleThemeTrait
      * Create the genealogy menu.
      *
      * @param array<Menu> $menus
-     *
-     * @return string
      */
     public function genealogyMenuContent(array $menus): string
     {
@@ -487,7 +436,6 @@ trait ModuleThemeTrait
     /**
      * Generate a list of items for the user menu.
      *
-     * @param Tree|null $tree
      *
      * @return array<Menu>
      */

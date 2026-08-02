@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
@@ -40,10 +41,6 @@ trait ModuleDataFixTrait
 {
     /**
      * Options form.
-     *
-     * @param Tree $tree
-     *
-     * @return string
      */
     public function fixOptions(Tree $tree): string
     {
@@ -54,7 +51,6 @@ trait ModuleDataFixTrait
      * A list of all records that need examining.  This may include records
      * that do not need updating, if we can't detect this quickly using SQL.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,object{xref:string,type:string}>
@@ -112,10 +108,7 @@ trait ModuleDataFixTrait
     /**
      * Does a record need updating?
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return bool
      */
     public function doesRecordNeedUpdate(GedcomRecord $record, array $params): bool
     {
@@ -125,10 +118,7 @@ trait ModuleDataFixTrait
     /**
      * Show the changes we would make
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return string
      */
     public function previewUpdate(GedcomRecord $record, array $params): string
     {
@@ -138,10 +128,7 @@ trait ModuleDataFixTrait
     /**
      * Fix a record
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return void
      */
     public function updateRecord(GedcomRecord $record, array $params): void
     {
@@ -150,7 +137,6 @@ trait ModuleDataFixTrait
     /**
      * XREFs of family records that might need fixing.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,string>|null
@@ -161,10 +147,7 @@ trait ModuleDataFixTrait
     }
 
     /**
-     * @param Tree                 $tree
      * @param array<string,string> $params
-     *
-     * @return Builder
      */
     protected function familiesToFixQuery(Tree $tree, array $params): Builder
     {
@@ -181,7 +164,6 @@ trait ModuleDataFixTrait
     /**
      * XREFs of individual records that might need fixing.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,string>|null
@@ -192,10 +174,7 @@ trait ModuleDataFixTrait
     }
 
     /**
-     * @param Tree                 $tree
      * @param array<string,string> $params
-     *
-     * @return Builder
      */
     protected function individualsToFixQuery(Tree $tree, array $params): Builder
     {
@@ -212,7 +191,6 @@ trait ModuleDataFixTrait
     /**
      * XREFs of location records that might need fixing.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,string>|null
@@ -223,10 +201,7 @@ trait ModuleDataFixTrait
     }
 
     /**
-     * @param Tree                 $tree
      * @param array<string,string> $params
-     *
-     * @return Builder
      */
     protected function locationsToFixQuery(Tree $tree, array $params): Builder
     {
@@ -244,7 +219,6 @@ trait ModuleDataFixTrait
     /**
      * XREFs of media records that might need fixing.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,string>|null
@@ -255,10 +229,7 @@ trait ModuleDataFixTrait
     }
 
     /**
-     * @param Tree                 $tree
      * @param array<string,string> $params
-     *
-     * @return Builder
      */
     protected function mediaToFixQuery(Tree $tree, array $params): Builder
     {
@@ -275,7 +246,6 @@ trait ModuleDataFixTrait
     /**
      * XREFs of note records that might need fixing.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,string>|null
@@ -286,10 +256,7 @@ trait ModuleDataFixTrait
     }
 
     /**
-     * @param Tree                 $tree
      * @param array<string,string> $params
-     *
-     * @return Builder
      */
     protected function notesToFixQuery(Tree $tree, array $params): Builder
     {
@@ -307,7 +274,6 @@ trait ModuleDataFixTrait
     /**
      * XREFs of repository records that might need fixing.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,string>|null
@@ -318,10 +284,7 @@ trait ModuleDataFixTrait
     }
 
     /**
-     * @param Tree                 $tree
      * @param array<string,string> $params
-     *
-     * @return Builder
      */
     protected function repositoriesToFixQuery(Tree $tree, array $params): Builder
     {
@@ -339,7 +302,6 @@ trait ModuleDataFixTrait
     /**
      * XREFs of source records that might need fixing.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,string>|null
@@ -350,10 +312,7 @@ trait ModuleDataFixTrait
     }
 
     /**
-     * @param Tree                 $tree
      * @param array<string,string> $params
-     *
-     * @return Builder
      */
     protected function sourcesToFixQuery(Tree $tree, array $params): Builder
     {
@@ -370,7 +329,6 @@ trait ModuleDataFixTrait
     /**
      * XREFs of submitter records that might need fixing.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,string>|null
@@ -381,10 +339,7 @@ trait ModuleDataFixTrait
     }
 
     /**
-     * @param Tree                 $tree
      * @param array<string,string> $params
-     *
-     * @return Builder
      */
     protected function submittersToFixQuery(Tree $tree, array $params): Builder
     {
@@ -403,8 +358,6 @@ trait ModuleDataFixTrait
      * Merge pending changes of a given type.  We need to check all pending records.
      *
      * @param Collection<int,string> $records
-     * @param Tree                   $tree
-     * @param string                 $type
      *
      * @return Collection<int,object{xref:string,type:string}>
      */
@@ -412,7 +365,7 @@ trait ModuleDataFixTrait
     {
         $pending = DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
-            ->where('status', '=', 'pending')
+            ->where('status', '=', ChangeStatus::Pending->value)
             ->where(static function (Builder $query) use ($type): void {
                 $query
                     ->where('old_gedcom', 'LIKE', '%@ ' . $type . '\n%')

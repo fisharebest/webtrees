@@ -36,7 +36,6 @@ interface HeaderFactoryInterface extends GedcomRecordFactoryInterface
     /**
      * Create a header from a row in the database.
      *
-     * @param Tree $tree
      *
      * @return Closure(object):Header
      */
@@ -45,13 +44,9 @@ interface HeaderFactoryInterface extends GedcomRecordFactoryInterface
     /**
      * Create a header from raw GEDCOM data.
      *
-     * @param string      $xref
      * @param string      $gedcom  an empty string for new/pending records
      * @param string|null $pending null for a record with no pending edits,
      *                             empty string for records with pending deletions
-     * @param Tree        $tree
-     *
-     * @return Header
      */
     public function new(string $xref, string $gedcom, string|null $pending, Tree $tree): Header;
 }

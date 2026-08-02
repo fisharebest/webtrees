@@ -2,28 +2,37 @@ name: Code style
 
 on: [push, pull_request]
 
+# Change default permissions from all to none.
+permissions: {}
+
+# Cancel previous runs of the same workflow for the same pull request or branch.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   run:
+    name: phpcs
     if: ${{ !startsWith(github.event.head_commit.message, 'Translation:') }}
-    runs-on: ${{ matrix.operating-system }}
-    name: PHP/PHTML
-
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        operating-system: ['ubuntu-latest']
         php-version: ['8.3', '8.4', '8.5', '8.6']
       fail-fast: false
 
     steps:
-      - uses: shivammathur/setup-php@master
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: ${{ matrix.php-version }}
           ini-file: 'development'
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          # Don't leave GITHUB_TOKEN in .git/config
+          persist-credentials: false
 
       - run: composer validate
 
       - run: composer install --no-progress
 
-      - run: composer webtrees:phpcs
+      - run: vendor/bin/phpcs

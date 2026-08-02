@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\SurnameTradition;
 
 use Fisharebest\Webtrees\Elements\NameType;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -28,22 +29,12 @@ use Fisharebest\Webtrees\Individual;
  */
 class MatrilinealSurnameTradition extends DefaultSurnameTradition
 {
-    /**
-     * The name of this surname tradition
-     *
-     * @return string
-     */
     public function name(): string
     {
         /* I18N: A system where children take their mother’s surname */
         return I18N::translate('matrilineal');
     }
 
-    /**
-     * A short description of this surname tradition
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: In the matrilineal surname tradition, ... */
@@ -51,15 +42,9 @@ class MatrilinealSurnameTradition extends DefaultSurnameTradition
     }
 
     /**
-     * What name is given to a new child
-     *
-     * @param Individual|null $father
-     * @param Individual|null $mother
-     * @param string          $sex
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
-    public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array
+    public function newChildNames(Individual|null $father, Individual|null $mother, Sex $sex): array
     {
         if (preg_match(self::REGEX_SPFX_SURN, $this->extractName($mother), $match) === 1) {
             $name = $match['NAME'];
@@ -75,16 +60,11 @@ class MatrilinealSurnameTradition extends DefaultSurnameTradition
     }
 
     /**
-     * What name is given to a new parent
-     *
-     * @param Individual $child
-     * @param string                           $sex
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
-    public function newParentNames(Individual $child, string $sex): array
+    public function newParentNames(Individual $child, Sex $sex): array
     {
-        if ($sex === 'F' && preg_match(self::REGEX_SPFX_SURN, $this->extractName($child), $match) === 1) {
+        if ($sex === Sex::Female && preg_match(self::REGEX_SPFX_SURN, $this->extractName($child), $match) === 1) {
             $name = $match['NAME'];
             $spfx = $match['SPFX'];
             $surn = $match['SURN'];

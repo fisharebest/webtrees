@@ -25,7 +25,6 @@ namespace Fisharebest\Webtrees\Module;
 interface ModuleMapGeoLocationInterface extends ModuleInterface
 {
     /**
-     * @param string $place
      *
      * @return array<string>
      */

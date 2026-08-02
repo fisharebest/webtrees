@@ -20,11 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\Encodings\ANSEL;
 use Fisharebest\Webtrees\Encodings\ASCII;
 use Fisharebest\Webtrees\Encodings\UTF16BE;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Encodings\Windows1252;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -69,6 +72,7 @@ use function is_string;
 use function preg_match_all;
 use function redirect;
 use function route;
+use function strval;
 use function str_replace;
 use function uasort;
 use function view;
@@ -101,8 +105,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         'Submitter'  => SubmitterPage::class,
     ];
 
-    /** @var int The default access level for this module.  It can be changed in the control panel. */
-    protected int $access_level = Auth::PRIV_USER;
+    protected AccessLevel $access_level = AccessLevel::Member;
 
     public function __construct(
         private GedcomExportService $gedcom_export_service,
@@ -230,23 +233,23 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $cart = is_array($cart) ? $cart : [];
 
         $xrefs = array_keys($cart[$tree->name()] ?? []);
-        $xrefs = array_map('strval', $xrefs); // PHP converts numeric keys to integers.
+        $xrefs = array_map(strval(...), $xrefs); // PHP converts numeric keys to integers.
 
         $records = new Collection();
 
         switch ($privacy) {
             case 'gedadmin':
-                $access_level = Auth::PRIV_NONE;
+                $access_level = AccessLevel::Manager;
                 break;
             case 'user':
-                $access_level = Auth::PRIV_USER;
+                $access_level = AccessLevel::Member;
                 break;
             case 'visitor':
-                $access_level = Auth::PRIV_PRIVATE;
+                $access_level = AccessLevel::Public;
                 break;
             case 'none':
             default:
-                $access_level = Auth::PRIV_HIDE;
+                $access_level = AccessLevel::Hidden;
                 break;
         }
 
@@ -342,7 +345,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $cart = is_array($cart) ? $cart : [];
 
         $xrefs = array_keys($cart[$tree->name()] ?? []);
-        $xrefs = array_map('strval', $xrefs); // PHP converts numeric keys to integers.
+        $xrefs = array_map(strval(...), $xrefs); // PHP converts numeric keys to integers.
 
         // Fetch all the records in the cart.
         $records = array_map(static fn (string $xref): GedcomRecord|null => Registry::gedcomRecordFactory()->make($xref, $tree), $xrefs);
@@ -350,8 +353,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         // Some records may have been deleted after they were added to the cart.
         $records = array_filter($records);
 
-        // Group and sort.
-        uasort($records, static fn (GedcomRecord $x, GedcomRecord $y): int => $x->tag() <=> $y->tag() ?: GedcomRecord::nameComparator()($x, $y));
+        // Sort by name and group by type.
+        uasort($records, GedcomRecordComparator::byName(...));
+        uasort($records, GedcomRecordComparator::byType(...));
 
         return $records;
     }
@@ -436,7 +440,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $individual = Auth::checkIndividualAccess($individual);
         $name       = $individual->fullName();
 
-        if ($individual->sex() === 'F') {
+        if ($individual->sex() === Sex::Female) {
             $options = [
                 self::ADD_RECORD_ONLY       => $name,
                 self::ADD_PARENT_FAMILIES   => I18N::translate('%s, her parents and siblings', $name),

@@ -63,12 +63,6 @@ final class ManageMediaData implements RequestHandlerInterface
 
     private TreeService $tree_service;
 
-    /**
-     * @param DatatablesService   $datatables_service
-     * @param LinkedRecordService $linked_record_service
-     * @param MediaFileService    $media_file_service
-     * @param TreeService         $tree_service
-     */
     public function __construct(
         DatatablesService $datatables_service,
         LinkedRecordService $linked_record_service,
@@ -135,7 +129,7 @@ final class ManageMediaData implements RequestHandlerInterface
                 }
 
                 $url = route(AdminMediaFileDownload::class, ['path' => $path]);
-                $img = '<a href="' . e($url) . '" type="' . $mime_type . '" class="gallery">' . $img . '</a>';
+                $img = '<a href="' . e($url) . '" data-wt-gallery="1" data-wt-gallery-title="' . e($row->multimedia_file_refn) . '">' . $img . '</a>';
             } catch (UnableToReadFile) {
                 $url = route(AdminMediaFileThumbnail::class, ['path' => $path]);
                 $img = '<img src="' . e($url) . '">';
@@ -208,7 +202,7 @@ final class ManageMediaData implements RequestHandlerInterface
 
                 $callback = function (array $row) use ($data_filesystem, $media_trees): array {
                     try {
-                        $mime_type = $data_filesystem->mimeType($row[0]) ?: Mime::DEFAULT_TYPE;
+                        $mime_type = $data_filesystem->mimeType($row[0]) !== '' ? $data_filesystem->mimeType($row[0]) : Mime::DEFAULT_TYPE;
                     } catch (FilesystemException | UnableToRetrieveMetadata) {
                         $mime_type = Mime::DEFAULT_TYPE;
                     }
@@ -221,7 +215,7 @@ final class ManageMediaData implements RequestHandlerInterface
                     }
 
                     $url = route(AdminMediaFileDownload::class, ['path' => $row[0]]);
-                    $img = '<a href="' . e($url) . '">' . $img . '</a>';
+                    $img = '<a href="' . e($url) . '" data-wt-gallery="1" data-wt-gallery-title="' . e($row[0]) . '">' . $img . '</a>';
 
                     // Form to create new media object in each tree
                     $create_form = '';
@@ -229,7 +223,7 @@ final class ManageMediaData implements RequestHandlerInterface
                         if (str_starts_with($row[0], $media_directory)) {
                             $tmp = substr($row[0], strlen($media_directory));
                             $create_form .=
-                                '<p><a href="#" data-bs-toggle="modal" data-bs-target="#modal-create-media-from-file" data-file="' . e($tmp) . '" data-url="' . e(route(CreateMediaObjectFromFile::class, ['tree' => $media_tree])) . '" onclick="document.getElementById(\'modal-create-media-from-file-form\').action=this.dataset.url; document.getElementById(\'file\').value=this.dataset.file;">' . I18N::translate('Create') . '</a> — ' . e($media_tree) . '<p>';
+                                '<p><a href="#" data-wt-create-media-file="' . e($tmp) . '" data-wt-create-media-url="' . e(route(CreateMediaObjectFromFile::class, ['tree' => $media_tree])) . '">' . I18N::translate('Create') . '</a> — ' . e($media_tree) . '<p>';
                         }
                     }
 
@@ -254,7 +248,6 @@ final class ManageMediaData implements RequestHandlerInterface
     /**
      * Generate some useful information and links about a media object.
      *
-     * @param Media $media
      *
      * @return string HTML
      */
@@ -271,28 +264,8 @@ final class ManageMediaData implements RequestHandlerInterface
 
         $linked = [];
 
-        foreach ($this->linked_record_service->linkedIndividuals($media) as $link) {
-            $linked[] = view('icons/individual') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
-        }
-
-        foreach ($this->linked_record_service->linkedFamilies($media) as $link) {
-            $linked[] = view('icons/family') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
-        }
-
-        foreach ($this->linked_record_service->linkedSources($media) as $link) {
-            $linked[] = view('icons/source') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
-        }
-
-        foreach ($this->linked_record_service->linkedNotes($media) as $link) {
-            $linked[] = view('icons/note') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
-        }
-
-        foreach ($this->linked_record_service->linkedRepositories($media) as $link) {
-            $linked[] = view('icons/media') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
-        }
-
-        foreach ($this->linked_record_service->linkedMedia($media) as $link) {
-            $linked[] = view('icons/location') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
+        foreach ($this->linked_record_service->allLinkedRecords($media) as $record) {
+            $linked[] = view('icons/record', ['record' => $record]) . ' <a href="' . e($record->url()) . '">' . $record->fullName() . '</a>';
         }
 
         if ($linked !== []) {
@@ -310,11 +283,6 @@ final class ManageMediaData implements RequestHandlerInterface
 
     /**
      * Generate some useful information and links about a media file.
-     *
-     * @param FilesystemOperator $data_filesystem
-     * @param string             $file
-     *
-     * @return string
      */
     private function mediaFileInfo(FilesystemOperator $data_filesystem, string $file): string
     {
@@ -347,7 +315,7 @@ final class ManageMediaData implements RequestHandlerInterface
                 $html .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
                 /* I18N: image dimensions, width × height */
                 $html .= '<dd>' . I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize[0]), I18N::number($imgsize[1])) . '</dd>';
-            } catch (FilesystemException | UnableToReadFile | Throwable) {
+            } catch (Throwable) {
                 // Not an image, or not a valid image?
             }
         }

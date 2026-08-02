@@ -31,10 +31,6 @@ abstract class AbstractEventElement extends AbstractElement
 {
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {
@@ -49,38 +45,21 @@ abstract class AbstractEventElement extends AbstractElement
 
     /**
      * An edit control for this data.
-     *
-     * @param string $id
-     * @param string $name
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
         return
             '<div class="form-check">' .
             $this->editHidden($id, $name, $value !== '' ? 'Y' : '') .
-            '<input class="form-check-input" type="checkbox" value="Y" id="' . e($id) . '-check" ' . ($value !== '' ? 'checked="checked"' : '') . ' />' .
+            '<input class="form-check-input" type="checkbox" value="Y" id="' . e($id) . '-check" data-wt-event-checkbox-target="' . e($id) . '" ' . ($value !== '' ? 'checked="checked"' : '') . ' />' .
             '<label class="form-check-label" for="' . e($id) . '-check">' .
             I18N::translate('This event occurred, but the details are unknown.') .
             '</label>' .
-            '</div>' .
-            '<script>' .
-            'document.getElementById("' . e($id) . '-check").addEventListener("change", function () {' .
-            'document.getElementById("' . e($id) . '").value = this.checked ? "Y" : "";' .
-            '})' .
-            '</script>';
+            '</div>';
     }
 
     /**
      * Display the value of this type of element.
-     *
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function value(string $value, Tree $tree): string
     {

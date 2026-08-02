@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -54,13 +55,15 @@ final class LinkSpouseToIndividualPage implements RequestHandlerInterface
             ],
         ];
 
-        if ($individual->sex() === 'F') {
-            $title = $individual->fullName() . ' - ' . I18N::translate('Add a husband using an existing individual');
-            $label = I18N::translate('Husband');
-        } else {
-            $title = $individual->fullName() . ' - ' . I18N::translate('Add a wife using an existing individual');
-            $label = I18N::translate('Wife');
-        }
+        $title = match ($individual->sex()) {
+            Sex::Female => $individual->fullName() . ' - ' . I18N::translate('Add a husband using an existing individual'),
+            default     => $individual->fullName() . ' - ' . I18N::translate('Add a wife using an existing individual'),
+        };
+
+        $label = match ($individual->sex()) {
+            Sex::Female => I18N::translate('Husband'),
+            default     => I18N::translate('Wife'),
+        };
 
         return $this->viewResponse('edit/link-spouse-to-individual', [
             'cancel_url'          => $individual->url(),

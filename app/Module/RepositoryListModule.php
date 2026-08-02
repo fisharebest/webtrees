@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -37,13 +38,10 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
 
     protected const string ROUTE_URL = '/tree/{tree}/repository-list';
 
-    /** @var int The default access level for this module.  It can be changed in the control panel. */
-    protected int $access_level = Auth::PRIV_USER;
+    protected AccessLevel $access_level = AccessLevel::Member;
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -65,8 +63,6 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function listMenuClass(): string
     {
@@ -74,10 +70,7 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
     }
 
     /**
-     * @param Tree                                      $tree
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function listUrl(Tree $tree, array $parameters = []): string
     {
@@ -94,11 +87,6 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
         return [];
     }
 
-    /**
-     * @param Tree $tree
-     *
-     * @return bool
-     */
     public function listIsEmpty(Tree $tree): bool
     {
         return !DB::table('other')
@@ -107,11 +95,6 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
             ->exists();
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

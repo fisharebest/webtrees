@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -54,10 +54,10 @@ abstract class AbstractModuleComponentPage implements RequestHandlerInterface
         $access_summary = $modules
             ->mapWithKeys(function (ModuleInterface $module) use ($interface): array {
                 $access_levels = $this->tree_service->all()
-                    ->map(static fn (Tree $tree): int => $module->accessLevel($tree, $interface))
+                    ->map(static fn (Tree $tree): AccessLevel => $module->accessLevel($tree, $interface))
                     ->uniqueStrict()
                     ->values()
-                    ->map(static fn (int $level): string => Auth::accessLevelNames()[$level])
+                    ->map(static fn (AccessLevel $level): string => $level->label())
                     ->all();
 
                 return [$module->name() => $access_levels];

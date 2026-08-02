@@ -19,65 +19,74 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Factories;
 
+use Carbon\CarbonImmutable;
+use DateTimeImmutable;
+use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\TimestampFactoryInterface;
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Timestamp;
 use InvalidArgumentException;
+use Psr\Clock\ClockInterface;
 
-use function date;
 use function date_create_from_format;
-use function time;
+use function GregorianToJD;
+use function str_replace;
 
 /**
- * Create a timestamp object.
+ * Create localized CarbonImmutable instances with the user's timezone and language.
  */
 class TimestampFactory implements TimestampFactoryInterface
 {
-    /**
-     * @param int                $timestamp
-     * @param UserInterface|null $user
-     *
-     * @return TimestampInterface
-     */
-    public function make(int $timestamp, UserInterface|null $user = null): TimestampInterface
+    public function __construct(private readonly ClockInterface $clock)
+    {
+    }
+
+    public function fromDateTime(DateTimeImmutable $datetime, UserInterface|null $user = null): CarbonImmutable
     {
         $user     ??= Auth::user();
         $timezone = $user->getPreference(UserInterface::PREF_TIME_ZONE, Site::getPreference('TIMEZONE'));
-        $locale   = I18N::locale()->code();
 
-        return new Timestamp($timestamp, $timezone, $locale);
+        // Convert to the user's timezone for display.
+        $localized = $datetime->setTimezone(new DateTimeZone($timezone));
+
+        // Immutability is only for the date/time.  Locale is mutable!
+        return CarbonImmutable::instance($localized)
+            ->locale(str_replace('-', '_', I18N::languageTag()));
+    }
+
+    public function fromEpoch(int $timestamp, UserInterface|null $user = null): CarbonImmutable
+    {
+        return $this->fromDateTime(new DateTimeImmutable('@' . $timestamp), $user);
     }
 
     /**
-     * @param string|null        $string YYYY-MM-DD HH:MM:SS (as provided by SQL).
-     * @param string             $format
-     * @param UserInterface|null $user
-     *
-     * @return TimestampInterface
+     * @param string|null $string YYYY-MM-DD HH:MM:SS (as provided by SQL).
      */
-    public function fromString(string|null $string, string $format = 'Y-m-d H:i:s', UserInterface|null $user = null): TimestampInterface
+    public function fromString(string|null $string, string $format = 'Y-m-d H:i:s', UserInterface|null $user = null): CarbonImmutable
     {
-        $string    ??= date($format);
+        $string    ??= $this->clock->now()->format($format);
         $timestamp = date_create_from_format($format, $string);
 
         if ($timestamp === false) {
             throw new InvalidArgumentException('date/time "' . $string . '" does not match pattern "' . $format . '"');
         }
 
-        return $this->make($timestamp->getTimestamp(), $user);
+        return $this->fromDateTime(DateTimeImmutable::createFromMutable($timestamp), $user);
     }
 
-    /**
-     * @param UserInterface|null $user
-     *
-     * @return TimestampInterface
-     */
-    public function now(UserInterface|null $user = null): TimestampInterface
+    public function now(UserInterface|null $user = null): CarbonImmutable
     {
-        return $this->make(time(), $user);
+        return $this->fromDateTime($this->clock->now(), $user);
+    }
+
+    public function todayJulianDay(UserInterface|null $user = null): int
+    {
+        $user     ??= Auth::user();
+        $timezone = $user->getPreference(UserInterface::PREF_TIME_ZONE, Site::getPreference('TIMEZONE'));
+        $today    = $this->clock->now()->setTimezone(new DateTimeZone($timezone));
+
+        return GregorianToJD((int) $today->format('n'), (int) $today->format('j'), (int) $today->format('Y'));
     }
 }

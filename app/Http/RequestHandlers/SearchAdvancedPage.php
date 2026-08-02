@@ -133,7 +133,8 @@ final class SearchAdvancedPage implements RequestHandlerInterface
     {
         $tree           = Validator::attributes($request)->tree();
         $default_fields = array_fill_keys(self::DEFAULT_ADVANCED_FIELDS, '');
-        $fields         = Validator::queryParams($request)->array('fields') ?: $default_fields;
+        $fields         = Validator::queryParams($request)->array('fields');
+        $fields         = $fields !== [] ? $fields : $default_fields;
         $modifiers      = Validator::queryParams($request)->array('modifiers');
         $other_fields   = $this->otherFields($fields);
         $date_options   = $this->dateOptions();
@@ -188,7 +189,9 @@ final class SearchAdvancedPage implements RequestHandlerInterface
             $label1 = $element_factory->make(strtr($x, [':DATE' => '', ':PLAC' => '', ':TYPE' => '']))->label();
             $label2 = $element_factory->make(strtr($y, [':DATE' => '', ':PLAC' => '', ':TYPE' => '']))->label();
 
-            return I18N::comparator()($label1, $label2) ?: strcmp($x, $y);
+            $compare = I18N::compare($label1, $label2);
+
+            return $compare !== 0 ? $compare : strcmp($x, $y);
         };
 
         return $default_facts

@@ -64,8 +64,6 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     /**
      * How should this module be labelled on tabs, footers, etc.?
-     *
-     * @return string
      */
     public function title(): string
     {
@@ -81,8 +79,6 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     /**
      * The default position for this footer.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultFooterOrder(): int
     {
@@ -91,10 +87,6 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     /**
      * A footer, to be added at the bottom of every page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return string
      */
     public function getFooter(ServerRequestInterface $request): string
     {
@@ -115,7 +107,7 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
         $tree  = Validator::attributes($request)->treeOptional();
         $user  = Validator::attributes($request)->user();
 
-        if ($tree instanceof Tree && $tree->getPreference('SHOW_COUNTER')) {
+        if ($tree instanceof Tree && $tree->getPreference('SHOW_COUNTER') === '1') {
             $page_name = self::PAGE_NAMES[$route->name] ?? '';
 
             switch ($route->name) {
@@ -145,12 +137,6 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     /**
      * Increment the page count.
-     *
-     * @param Tree   $tree
-     * @param string $page
-     * @param string $parameter
-     *
-     * @return int
      */
     protected function countHit(Tree $tree, string $page, string $parameter): int
     {

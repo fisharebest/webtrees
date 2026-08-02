@@ -26,10 +26,10 @@ use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function in_array;
-use function time;
 
 class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
 {
@@ -37,14 +37,15 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
 
     private HtmlService $html_service;
 
+    private ClockInterface $clock;
+
     /**
      * HtmlBlockModule bootstrap.
-     *
-     * @param HtmlService $html_service
      */
-    public function __construct(HtmlService $html_service)
+    public function __construct(HtmlService $html_service, ClockInterface $clock)
     {
         $this->html_service = $html_service;
+        $this->clock        = $clock;
     }
 
     public function title(): string
@@ -62,12 +63,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -79,7 +75,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $languages      = $this->getBlockSetting($block_id, 'languages');
 
         // Only show this block for certain languages
-        if ($languages && !in_array(I18N::languageTag(), explode(',', $languages), true)) {
+        if ($languages !== '' && !in_array(I18N::languageTag(), explode(',', $languages), true)) {
             return '';
         }
 
@@ -87,10 +83,10 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $title   = $statistics->embedTags($title);
         $content = $statistics->embedTags($content);
 
-        $block_timestamp = (int) $this->getBlockSetting($block_id, 'timestamp', (string) time());
+        $block_timestamp = (int) $this->getBlockSetting($block_id, 'timestamp', (string) $this->clock->now()->getTimestamp());
 
         if ($show_timestamp === '1') {
-            $content .= '<br>' . view('components/datetime', ['timestamp' => Registry::timestampFactory()->make($block_timestamp)]);
+            $content .= '<br>' . view('components/datetime', ['timestamp' => Registry::timestampFactory()->fromEpoch($block_timestamp)]);
         }
 
         if ($context !== self::CONTEXT_EMBED) {
@@ -110,8 +106,6 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
      * Should this block load asynchronously using AJAX?
      *
      * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
      */
     public function loadAjax(): bool
     {
@@ -120,8 +114,6 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the user’s home page?
-     *
-     * @return bool
      */
     public function isUserBlock(): bool
     {
@@ -130,8 +122,6 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {
@@ -140,33 +130,23 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Update the configuration for a block.
-     *
-     * @param ServerRequestInterface $request
-     * @param int                    $block_id
-     *
-     * @return void
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
         $title          = Validator::parsedBody($request)->string('title');
         $html           = Validator::parsedBody($request)->string('html');
         $show_timestamp = Validator::parsedBody($request)->boolean('show_timestamp');
-        $languages      = Validator::parsedBody($request)->array('languages');
+        $languages      = Validator::parsedBody($request)->list('languages');
 
         $this->setBlockSetting($block_id, 'title', $title);
         $this->setBlockSetting($block_id, 'html', $this->html_service->sanitize($html));
         $this->setBlockSetting($block_id, 'show_timestamp', (string) $show_timestamp);
-        $this->setBlockSetting($block_id, 'timestamp', (string) time());
+        $this->setBlockSetting($block_id, 'timestamp', (string) $this->clock->now()->getTimestamp());
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
     }
 
     /**
      * An HTML form to edit block settings
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return string
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {

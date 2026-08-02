@@ -40,12 +40,6 @@ class User implements UserInterface
     /** @var array<string,string> */
     private array $preferences;
 
-    /**
-     * @param int    $user_id
-     * @param string $user_name
-     * @param string $real_name
-     * @param string $email
-     */
     public function __construct(int $user_id, string $user_name, string $real_name, string $email)
     {
         $this->user_id   = $user_id;
@@ -61,8 +55,6 @@ class User implements UserInterface
 
     /**
      * The user‘s internal identifier.
-     *
-     * @return int
      */
     public function id(): int
     {
@@ -71,8 +63,6 @@ class User implements UserInterface
 
     /**
      * The users email address.
-     *
-     * @return string
      */
     public function email(): string
     {
@@ -81,10 +71,6 @@ class User implements UserInterface
 
     /**
      * Set the email address of this user.
-     *
-     * @param string $email
-     *
-     * @return User
      */
     public function setEmail(string $email): User
     {
@@ -103,8 +89,6 @@ class User implements UserInterface
 
     /**
      * The user‘s real name.
-     *
-     * @return string
      */
     public function realName(): string
     {
@@ -113,10 +97,6 @@ class User implements UserInterface
 
     /**
      * Set the real name of this user.
-     *
-     * @param string $real_name
-     *
-     * @return User
      */
     public function setRealName(string $real_name): User
     {
@@ -135,8 +115,6 @@ class User implements UserInterface
 
     /**
      * The user‘s login name.
-     *
-     * @return string
      */
     public function userName(): string
     {
@@ -145,10 +123,6 @@ class User implements UserInterface
 
     /**
      * Set the login name for this user.
-     *
-     * @param string $user_name
-     *
-     * @return self
      */
     public function setUserName(string $user_name): self
     {
@@ -169,11 +143,6 @@ class User implements UserInterface
      * Fetch a user option/setting from the wt_user_setting table.
      * Since we'll fetch several settings for each user, and since there aren't
      * that many of them, fetch them all in one database query
-     *
-     * @param string $setting_name
-     * @param string $default
-     *
-     * @return string
      */
     public function getPreference(string $setting_name, string $default = ''): string
     {
@@ -182,11 +151,6 @@ class User implements UserInterface
 
     /**
      * Update a setting for the user.
-     *
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return void
      */
     public function setPreference(string $setting_name, string $setting_value): void
     {
@@ -204,10 +168,6 @@ class User implements UserInterface
 
     /**
      * Set the password of this user.
-     *
-     * @param string $password
-     *
-     * @return User
      */
     public function setPassword(#[\SensitiveParameter] string $password): User
     {
@@ -222,10 +182,6 @@ class User implements UserInterface
 
     /**
      * Validate a supplied password
-     *
-     * @param string $password
-     *
-     * @return bool
      */
     public function checkPassword(#[\SensitiveParameter] string $password): bool
     {

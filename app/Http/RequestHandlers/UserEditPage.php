@@ -19,11 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -34,34 +33,19 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_column;
+use function array_map;
+
 final class UserEditPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private MessageService $message_service;
-
-    private ModuleService $module_service;
-
-    private UserService $user_service;
-
-    private TreeService $tree_service;
-
-    /**
-     * @param MessageService $message_service
-     * @param ModuleService  $module_service
-     * @param TreeService    $tree_service
-     * @param UserService    $user_service
-     */
     public function __construct(
-        MessageService $message_service,
-        ModuleService $module_service,
-        TreeService $tree_service,
-        UserService $user_service
+        private readonly MessageService $message_service,
+        private readonly ModuleService $module_service,
+        private readonly TreeService $tree_service,
+        private readonly UserService $user_service
     ) {
-        $this->message_service = $message_service;
-        $this->module_service  = $module_service;
-        $this->tree_service    = $tree_service;
-        $this->user_service    = $user_service;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
@@ -75,25 +59,8 @@ final class UserEditPage implements RequestHandlerInterface
             throw new HttpNotFoundException(I18N::translate('%s does not exist.', 'user_id:' . $user_id));
         }
 
-        $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class, true, true)
-            ->mapWithKeys(static function (ModuleLanguageInterface $module): array {
-                $locale = $module->locale();
-
-                return [$locale->languageTag() => $locale->endonym()];
-            });
-
-        $roles = [
-            /* I18N: Listbox entry; name of a role */
-            UserInterface::ROLE_VISITOR   => I18N::translate('Visitor'),
-            /* I18N: Listbox entry; name of a role */
-            UserInterface::ROLE_MEMBER    => I18N::translate('Member'),
-            /* I18N: Listbox entry; name of a role */
-            UserInterface::ROLE_EDITOR    => I18N::translate('Editor'),
-            /* I18N: Listbox entry; name of a role */
-            UserInterface::ROLE_MODERATOR => I18N::translate('Moderator'),
-            /* I18N: Listbox entry; name of a role */
-            UserInterface::ROLE_MANAGER   => I18N::translate('Manager'),
-        ];
+        $roles = array_column(Role::cases(), null, 'value');
+        $roles = array_map(static fn (Role $role): string => $role->label(), $roles);
 
         $theme_options = $this->module_service
             ->findByInterface(ModuleThemeInterface::class)
@@ -102,7 +69,7 @@ final class UserEditPage implements RequestHandlerInterface
 
         return $this->viewResponse('admin/users-edit', [
             'contact_methods' => $this->message_service->contactMethods(),
-            'languages'       => $languages->all(),
+            'languages'       => I18N::allLanguages(),
             'roles'           => $roles,
             'trees'           => $this->tree_service->all(),
             'theme_options'   => $theme_options,

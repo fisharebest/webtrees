@@ -30,9 +30,6 @@ class CheckForNewVersion implements MiddlewareInterface
 {
     private UpgradeService $upgrade_service;
 
-    /**
-     * @param UpgradeService $upgrade_service
-     */
     public function __construct(UpgradeService $upgrade_service)
     {
         $this->upgrade_service = $upgrade_service;

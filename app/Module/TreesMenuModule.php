@@ -38,9 +38,6 @@ class TreesMenuModule extends AbstractModule implements ModuleMenuInterface
 
     private TreeService $tree_service;
 
-    /**
-     * @param TreeService $tree_service
-     */
     public function __construct(TreeService $tree_service)
     {
         $this->tree_service = $tree_service;
@@ -60,8 +57,6 @@ class TreesMenuModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * The default position for this menu.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultMenuOrder(): int
     {
@@ -70,10 +65,6 @@ class TreesMenuModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * A menu, to be added to the main application menu.
-     *
-     * @param Tree $tree
-     *
-     * @return Menu|null
      */
     public function getMenu(Tree $tree): Menu|null
     {

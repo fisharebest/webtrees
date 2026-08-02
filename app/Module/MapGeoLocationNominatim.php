@@ -31,8 +31,6 @@ class MapGeoLocationNominatim extends AbstractModule implements ModuleMapGeoLoca
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function title(): string
     {

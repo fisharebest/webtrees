@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -33,12 +32,12 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Throwable;
 
-use function assert;
 use function date;
 use function e;
 use function fclose;
@@ -79,11 +78,12 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
     ];
 
     public function __construct(
-        private readonly GedcomExportService $gedcom_export_service,
-        private readonly MaintenanceModeService $maintenance_mode_service,
-        private readonly PendingChangesService $pending_changes_service,
-        private readonly TreeService $tree_service,
-        private readonly UpgradeService $upgrade_service,
+        private GedcomExportService $gedcom_export_service,
+        private MaintenanceModeService $maintenance_mode_service,
+        private PendingChangesService $pending_changes_service,
+        private TreeService $tree_service,
+        private UpgradeService $upgrade_service,
+        private ClockInterface $clock,
     ) {
     }
 
@@ -107,7 +107,6 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
             case self::STEP_EXPORT:
                 $tree_name = Validator::queryParams($request)->string('tree');
                 $tree      = $this->tree_service->all()[$tree_name];
-                assert($tree instanceof Tree);
 
                 return $this->wizardStepExport($tree);
 
@@ -186,7 +185,7 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
     private function wizardStepDownload(): ResponseInterface
     {
         $root_filesystem = Registry::filesystem()->root();
-        $start_time      = Registry::timeFactory()->now();
+        $start_time      = (float) $this->clock->now()->format('U.u');
         $download_url    = $this->upgrade_service->downloadUrl();
 
         try {
@@ -196,7 +195,7 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
         }
 
         $kb       = I18N::number(intdiv($bytes + 1023, 1024));
-        $end_time = Registry::timeFactory()->now();
+        $end_time = (float) $this->clock->now()->format('U.u');
         $seconds  = I18N::number($end_time - $start_time, 2);
 
         return response(view('components/alert-success', [
@@ -206,10 +205,10 @@ readonly class UpgradeWizardStep implements RequestHandlerInterface
 
     private function wizardStepUnzip(string $zip_file, string $zip_folder): ResponseInterface
     {
-        $start_time = Registry::timeFactory()->now();
+        $start_time = (float) $this->clock->now()->format('U.u');
         $this->upgrade_service->extractWebtreesZip($zip_file, $zip_folder);
         $count    = $this->upgrade_service->webtreesZipContents($zip_file)->count();
-        $end_time = Registry::timeFactory()->now();
+        $end_time = (float) $this->clock->now()->format('U.u');
         $seconds  = I18N::number($end_time - $start_time, 2);
 
         /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */

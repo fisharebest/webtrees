@@ -54,8 +54,8 @@ final class UserPageUpdate implements RequestHandlerInterface
                 ->userBlocks($default_tree, $user, ModuleBlockInterface::SIDE_BLOCKS)
                 ->map(static fn (ModuleBlockInterface $block) => $block->name());
         } else {
-            $main_blocks = new Collection(Validator::parsedBody($request)->array(ModuleBlockInterface::MAIN_BLOCKS));
-            $side_blocks = new Collection(Validator::parsedBody($request)->array(ModuleBlockInterface::SIDE_BLOCKS));
+            $main_blocks = new Collection(Validator::parsedBody($request)->list(ModuleBlockInterface::MAIN_BLOCKS));
+            $side_blocks = new Collection(Validator::parsedBody($request)->list(ModuleBlockInterface::SIDE_BLOCKS));
         }
 
         $this->home_page_service->updateUserBlocks($user->id(), $main_blocks, $side_blocks);

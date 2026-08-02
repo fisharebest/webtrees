@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Enums\TextDirection;
 
 /**
- * @var string $dir
+ * @var TextDirection $text_direction
  * @var int    $end_year
  * @var array<object{
  *      background: string,
@@ -36,13 +37,13 @@ use Fisharebest\Webtrees\Individual;
 <div class="wt-lifespans-individuals position-relative" style="height: <?= (5 + $max_rows) * 1.5 ?>rem; width: <?= ($end_year - $start_year) * 7 ?>px;">
     <?php foreach ($lifespans as $lifespan) : ?>
     <a href="#" data-bs-toggle="collapse" data-bs-target="#<?= e($lifespan->id) ?>" aria-expanded="false" aria-controls="<?= e($lifespan->id) ?>">
-        <div class="wt-lifespans-individual position-absolute text-nowrap text-truncate" dir="auto" style="background: <?= $lifespan->background ?>; <?= $dir === 'ltr' ? 'left' : 'right' ?>:<?= ($lifespan->birth_year - $start_year) * 7 ?>px; top:<?= $lifespan->row * 1.5 ?>rem; width:<?= ($lifespan->death_year - $lifespan->birth_year) * 7 + 5 ?>px;">
+        <div class="wt-lifespans-individual position-absolute text-nowrap text-truncate" dir="auto" style="background: <?= $lifespan->background ?>; <?= $text_direction === TextDirection::LTR ? 'left' : 'right' ?>:<?= ($lifespan->birth_year - $start_year) * 7 ?>px; top:<?= $lifespan->row * 1.5 ?>rem; width:<?= ($lifespan->death_year - $lifespan->birth_year) * 7 + 5 ?>px;">
             <?= $lifespan->individual->fullName() ?>
             <?= strip_tags($lifespan->individual->lifespan()) ?>
         </div>
     </a>
 
-    <div class="wt-lifespans-summary collapse position-absolute" id="<?= e($lifespan->id) ?>" style="<?= $dir === 'ltr' ? 'left' : 'right' ?>:<?= (min($lifespan->birth_year, $end_year - 50) - $start_year) * 7 ?>px; top:<?= ($lifespan->row + 1) * 1.5 ?>rem; width:350px;">
+    <div class="wt-lifespans-summary collapse position-absolute" id="<?= e($lifespan->id) ?>" style="<?= $text_direction === TextDirection::LTR ? 'left' : 'right' ?>:<?= (min($lifespan->birth_year, $end_year - 50) - $start_year) * 7 ?>px; top:<?= ($lifespan->row + 1) * 1.5 ?>rem; width:350px;">
         <a class="wt-lifespans-summary-link" href="<?= e($lifespan->individual->url()) ?>">
             <?= $lifespan->individual->fullName() ?>
         </a>

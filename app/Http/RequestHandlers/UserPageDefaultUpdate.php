@@ -39,8 +39,8 @@ final class UserPageDefaultUpdate implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $main_blocks = new Collection(Validator::parsedBody($request)->array(ModuleBlockInterface::MAIN_BLOCKS));
-        $side_blocks = new Collection(Validator::parsedBody($request)->array(ModuleBlockInterface::SIDE_BLOCKS));
+        $main_blocks = new Collection(Validator::parsedBody($request)->list(ModuleBlockInterface::MAIN_BLOCKS));
+        $side_blocks = new Collection(Validator::parsedBody($request)->list(ModuleBlockInterface::SIDE_BLOCKS));
 
         $this->home_page_service->updateUserBlocks(-1, $main_blocks, $side_blocks);
 

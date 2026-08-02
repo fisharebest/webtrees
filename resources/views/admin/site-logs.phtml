@@ -8,7 +8,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDelete;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDownload;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -113,9 +112,9 @@ use Illuminate\Support\Collection;
 
 <table
     id="wt-datatables-admin-logs"
-    class="table table-bordered table-sm table-hover table-site-logs datatables"
+    class="table table-bordered table-sm table-hover table-site-logs wt-datatables d-none"
     <?= view('lists/datatables-attributes') ?>
-    data-ajax="<?= e(route(SiteLogsData::class, ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'tree' => $tree])) ?>"
+    data-ajax='{"url":"<?= e(route(SiteLogsData::class, ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'tree' => $tree])) ?>","method":"POST"}'
     data-server-side="true"
     data-filter="false"
     data-processing="true"

@@ -28,33 +28,21 @@ interface FilesystemFactoryInterface
 {
     /**
      * Describe a filesystem for the user's data folder.
-     *
-     * @return string
      */
     public function dataName(): string;
 
     /**
      * Create a filesystem for the user's data folder.
-     *
-     * @param string $path_prefix
-     *
-     * @return FilesystemOperator
      */
     public function data(string $path_prefix = ''): FilesystemOperator;
 
     /**
      * Create a filesystem for the application's root folder.
-     *
-     * @param string $path_prefix
-     *
-     * @return FilesystemOperator
      */
     public function root(string $path_prefix = ''): FilesystemOperator;
 
     /**
      * Describe a filesystem for the application's root folder.
-     *
-     * @return string
      */
     public function rootName(): string;
 }

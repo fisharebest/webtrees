@@ -57,8 +57,6 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -82,8 +80,6 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -100,10 +96,6 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
 
     /**
      * The title for a specific instance of this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function chartTitle(Individual $individual): string
     {
@@ -114,10 +106,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
@@ -127,11 +116,6 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();

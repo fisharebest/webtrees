@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -30,6 +31,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_map;
 use function in_array;
 use function route;
 
@@ -43,11 +45,6 @@ final class ContactPage implements RequestHandlerInterface
 
     private UserService $user_service;
 
-    /**
-     * @param CaptchaService $captcha_service
-     * @param MessageService $message_service
-     * @param UserService    $user_service
-     */
     public function __construct(
         CaptchaService $captcha_service,
         MessageService $message_service,
@@ -70,8 +67,10 @@ final class ContactPage implements RequestHandlerInterface
 
         $to_user = $this->user_service->findByUserName($to);
 
-        if ($to_user === null || !in_array($to_user, $this->message_service->validContacts($tree), false)) {
-            throw new HttpAccessDeniedException('Invalid contact user id');
+        $valid_contact_ids = array_map(static fn (UserInterface $user): int => $user->id(), $this->message_service->validContacts($tree));
+
+        if ($to_user === null || !in_array($to_user->id(), $valid_contact_ids, true)) {
+            throw new HttpAccessDeniedException();
         }
 
         $to_name = $to_user->realName();

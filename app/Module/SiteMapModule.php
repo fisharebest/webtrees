@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
@@ -68,9 +68,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
 
     private TreeService $tree_service;
 
-    /**
-     * @param TreeService $tree_service
-     */
     public function __construct(TreeService $tree_service)
     {
         $this->tree_service = $tree_service;
@@ -78,8 +75,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -104,11 +99,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         return false;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -128,11 +118,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         return I18N::translate('Sitemaps');
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         foreach ($this->tree_service->all() as $tree) {
@@ -145,11 +130,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         return redirect($this->getConfigLink());
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $route = Validator::attributes($request)->route();
@@ -169,11 +149,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         return $this->siteMapFile($request);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     private function siteMapIndex(ServerRequestInterface $request): ResponseInterface
     {
         $content = Registry::cache()->file()->remember('sitemap.xml', function (): string {
@@ -185,46 +160,46 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             $count_families = DB::table('families')
                 ->join('gedcom', 'f_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
-                ->groupBy(['gedcom_id'])
+                ->groupBy(['gedcom_name'])
                 ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
             $count_individuals = DB::table('individuals')
                 ->join('gedcom', 'i_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
-                ->groupBy(['gedcom_id'])
+                ->groupBy(['gedcom_name'])
                 ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
             $count_media = DB::table('media')
                 ->join('gedcom', 'm_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
-                ->groupBy(['gedcom_id'])
+                ->groupBy(['gedcom_name'])
                 ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
             $count_notes = DB::table('other')
                 ->join('gedcom', 'o_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->where('o_type', '=', Note::RECORD_TYPE)
-                ->groupBy(['gedcom_id'])
+                ->groupBy(['gedcom_name'])
                 ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
             $count_repositories = DB::table('other')
                 ->join('gedcom', 'o_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->where('o_type', '=', Repository::RECORD_TYPE)
-                ->groupBy(['gedcom_id'])
+                ->groupBy(['gedcom_name'])
                 ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
             $count_sources = DB::table('sources')
                 ->join('gedcom', 's_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
-                ->groupBy(['gedcom_id'])
+                ->groupBy(['gedcom_name'])
                 ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
             $count_submitters = DB::table('other')
                 ->join('gedcom', 'o_file', '=', 'gedcom_id')
                 ->whereIn('gedcom_id', $tree_ids)
                 ->where('o_type', '=', Submitter::RECORD_TYPE)
-                ->groupBy(['gedcom_id'])
+                ->groupBy(['gedcom_name'])
                 ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
             // Versions 2.0.1 and earlier of this module stored large amounts of data in the settings.
@@ -252,11 +227,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     private function siteMapFile(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree('tree');
@@ -286,10 +256,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     }
 
     /**
-     * @param Tree   $tree
-     * @param string $type
-     * @param int    $limit
-     * @param int    $offset
      *
      * @return Collection<int,GedcomRecord>
      */
@@ -325,19 +291,16 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
                 break;
 
             default:
-                throw new HttpNotFoundException('Invalid record type: ' . e($type));
+                throw new HttpNotFoundException();
         }
 
         // Skip private records.
-        $records = $records->filter(static fn (GedcomRecord $record): bool => $record->canShow(Auth::PRIV_PRIVATE));
+        $records = $records->filter(static fn (GedcomRecord $record): bool => $record->canShow(AccessLevel::Public));
 
         return $records;
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $limit
-     * @param int  $offset
      *
      * @return Collection<int,Family>
      */
@@ -353,9 +316,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $limit
-     * @param int  $offset
      *
      * @return Collection<int,Individual>
      */
@@ -371,9 +331,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $limit
-     * @param int  $offset
      *
      * @return Collection<int,Media>
      */
@@ -389,9 +346,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $limit
-     * @param int  $offset
      *
      * @return Collection<int,Note>
      */
@@ -408,9 +362,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $limit
-     * @param int  $offset
      *
      * @return Collection<int,Repository>
      */
@@ -427,9 +378,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $limit
-     * @param int  $offset
      *
      * @return Collection<int,Source>
      */
@@ -445,9 +393,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $limit
-     * @param int  $offset
      *
      * @return Collection<int,Submitter>
      */

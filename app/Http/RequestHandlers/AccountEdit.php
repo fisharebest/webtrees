@@ -24,10 +24,8 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MessageService;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -42,7 +40,6 @@ final class AccountEdit implements RequestHandlerInterface
 
     public function __construct(
         private readonly MessageService $message_service,
-        private readonly ModuleService $module_service,
     ) {
     }
 
@@ -59,13 +56,6 @@ final class AccountEdit implements RequestHandlerInterface
             $default_individual   = null;
         }
 
-        $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class, true, true)
-            ->mapWithKeys(static function (ModuleLanguageInterface $module): array {
-                $locale = $module->locale();
-
-                return [$locale->languageTag() => $locale->endonym()];
-            });
-
         $show_delete_option = $user->getPreference(UserInterface::PREF_IS_ADMINISTRATOR) !== '1';
         $timezone_ids       = DateTimeZone::listIdentifiers();
         $timezones          = array_combine($timezone_ids, $timezone_ids);
@@ -74,7 +64,7 @@ final class AccountEdit implements RequestHandlerInterface
         return $this->viewResponse('edit-account-page', [
             'contact_methods'      => $this->message_service->contactMethods(),
             'default_individual'   => $default_individual,
-            'languages'            => $languages->all(),
+            'languages'            => I18N::allLanguages(),
             'my_individual_record' => $my_individual_record,
             'show_delete_option'   => $show_delete_option,
             'timezones'            => $timezones,

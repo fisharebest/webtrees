@@ -20,7 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
@@ -47,16 +49,16 @@ final class LinkSpouseToIndividualAction implements RequestHandlerInterface
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
-        $levels = Validator::parsedBody($request)->array('flevels');
-        $tags   = Validator::parsedBody($request)->array('ftags');
-        $values = Validator::parsedBody($request)->array('fvalues');
+        $levels = Validator::parsedBody($request)->list('flevels');
+        $tags   = Validator::parsedBody($request)->list('ftags');
+        $values = Validator::parsedBody($request)->list('fvalues');
 
         // Create the new family
         $spid   = Validator::parsedBody($request)->string('spid');
         $spouse = Registry::individualFactory()->make($spid, $tree);
         $spouse = Auth::checkIndividualAccess($spouse, true);
 
-        if ($individual->sex() === 'M') {
+        if ($individual->sex() === Sex::Male) {
             $gedcom = "0 @@ FAM\n1 HUSB @" . $individual->xref() . "@\n1 WIFE @" . $spouse->xref() . '@';
         } else {
             $gedcom = "0 @@ FAM\n1 WIFE @" . $individual->xref() . "@\n1 HUSB @" . $spouse->xref() . '@';
@@ -84,7 +86,7 @@ final class LinkSpouseToIndividualAction implements RequestHandlerInterface
                 Date::compare($family->getMarriageDate(), $fact->target()->getMarriageDate()) < 0;
         };
         return $partner
-            ->facts(['FAMS'], false, Auth::PRIV_HIDE, true)
+            ->facts(['FAMS'], false, AccessLevel::Hidden, true)
             ->first($filter);
     }
 }

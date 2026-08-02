@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\SearchService;
-use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
@@ -35,11 +34,6 @@ final class TomSelectPlace extends AbstractTomSelectHandler
     /**
      * Perform the search
      *
-     * @param Tree   $tree
-     * @param string $query
-     * @param int    $offset
-     * @param int    $limit
-     * @param string $at
      *
      * @return Collection<int,array{text:string,value:string}>
      */

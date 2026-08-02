@@ -71,7 +71,7 @@ use Fisharebest\Webtrees\Tree;
                 <?= I18N::translate('save') ?>
             </button>
 
-            <a href="<?= e($url ?: route('module', ['module' => 'stories', 'action' => 'Admin', 'tree' => $tree->name()])) ?>" class="btn btn-secondary">
+            <a href="<?= e($url !== '' ? $url : route('module', ['module' => 'stories', 'action' => 'Admin', 'tree' => $tree->name()])) ?>" class="btn btn-secondary">
                 <?= view('icons/cancel') ?>
                 <?= I18N::translate('cancel') ?>
             </a>

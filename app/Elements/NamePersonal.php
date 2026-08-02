@@ -69,7 +69,7 @@ class NamePersonal extends AbstractElement
     ];
 
     // For some languages, we want to show the surname field first.
-    protected const array SURNAME_FIRST_LANGUAGES = ['hu', 'jp', 'ko', 'zh-Hans', 'zh-Hant'];
+    protected const array SURNAME_FIRST_LANGUAGES = ['hu', 'ja', 'ko', 'vi', 'zh-Hans', 'zh-Hant'];
 
     protected const array SUBTAGS_SURNAME_FIRST = [
         'TYPE' => '0:1',
@@ -86,7 +86,6 @@ class NamePersonal extends AbstractElement
     ];
 
     /**
-     * @param string             $label
      * @param array<string>|null $subtags
      */
     public function __construct(string $label, array|null $subtags = null)
@@ -99,10 +98,6 @@ class NamePersonal extends AbstractElement
 
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {
@@ -117,10 +112,6 @@ class NamePersonal extends AbstractElement
 
     /**
      * Create a default value for this element.
-     *
-     * @param Tree $tree
-     *
-     * @return string
      */
     public function default(Tree $tree): string
     {
@@ -131,13 +122,6 @@ class NamePersonal extends AbstractElement
 
     /**
      * An edit control for this data.
-     *
-     * @param string $id
-     * @param string $name
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {

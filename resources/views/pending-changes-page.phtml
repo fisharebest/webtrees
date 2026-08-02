@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptChange;
@@ -18,7 +18,7 @@ use Fisharebest\Webtrees\Tree;
  *     change_id:string,
  *     old_gedcom:string|null,
  *     new_gedcom:string|null,
- *     change_time:TimestampInterface,
+ *     change_time:CarbonImmutable,
  *     record:GedcomRecord,
  *     user_name:string,
  *     real_name:string

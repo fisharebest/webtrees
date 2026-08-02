@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Contracts\ContainerInterface;
 use Fisharebest\Webtrees\Exceptions\NotFoundInContainerException;
 use ReflectionClass;
+use ReflectionException;
 use ReflectionNamedType;
 use ReflectionParameter;
 
@@ -38,14 +39,16 @@ class Container implements ContainerInterface
     /** @var array<class-string<T>,T> */
     private array $container = [];
 
+    /** @var array<class-string,class-string> */
+    private array $bindings = [];
+
     /**
      * @param class-string<T> $id
-     *
-     * @return bool
      */
+    // @phpstan-ignore-next-line method.childParameterType (intentionally narrowed from PSR-11 string to class-string for type safety)
     public function has(string $id): bool
     {
-        return array_key_exists($id, $this->container);
+        return array_key_exists($id, $this->container) || array_key_exists($id, $this->bindings);
     }
 
     /**
@@ -53,17 +56,30 @@ class Container implements ContainerInterface
      *
      * @return T
      */
+    // @phpstan-ignore-next-line method.childParameterType (intentionally narrowed from PSR-11 string to class-string for type safety)
     public function get(string $id): object
     {
-        return $this->container[$id] ??= $this->make($id);
+        return $this->container[$id] ??= $this->make($this->bindings[$id] ?? $id);
+    }
+
+    /**
+     * @param class-string<T> $id
+     * @param class-string<T> $class
+     *
+     * @return $this
+     */
+    public function bind(string $id, string $class): static
+    {
+        $this->bindings[$id] = $class;
+
+        return $this;
     }
 
     /**
      * @param class-string<T> $id
      * @param T               $object
-     *
-     * @return $this
      */
+    // @phpstan-ignore-next-line method.childParameterType (intentionally narrowed from string to class-string for type safety)
     public function set(string $id, object $object): static
     {
         $this->container[$id] = $object;
@@ -78,7 +94,12 @@ class Container implements ContainerInterface
      */
     private function make(string $id): object
     {
-        $reflector   = new ReflectionClass($id);
+        try {
+            $reflector = new ReflectionClass($id);
+        } catch (ReflectionException $exception) { // @phpstan-ignore catch.neverThrown (class-string from bindings may reference a class that does not exist)
+            throw new NotFoundInContainerException('Cannot make ' . $id, 0, $exception);
+        }
+
         $constructor = $reflector->getConstructor();
 
         if ($constructor === null) {

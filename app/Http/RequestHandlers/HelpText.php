@@ -28,7 +28,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_keys;
 use function response;
-use function strip_tags;
 use function view;
 
 final class HelpText implements RequestHandlerInterface
@@ -298,7 +297,7 @@ final class HelpText implements RequestHandlerInterface
             $gedcom_date = (string) $gedcom_date;
 
             $date                = new Date($gedcom_date);
-            $dates[$gedcom_date] = strip_tags($date->display());
+            $dates[$gedcom_date] = $date->display();
         }
 
         return $dates;

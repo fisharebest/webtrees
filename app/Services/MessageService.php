@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ContactMethod;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\SiteUser;
@@ -29,8 +30,9 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
 
+use function array_combine;
 use function array_filter;
-use function in_array;
+use function array_map;
 use function view;
 
 /**
@@ -38,13 +40,6 @@ use function view;
  */
 class MessageService
 {
-    // Users can be contacted by various methods
-    public const string CONTACT_METHOD_INTERNAL           = 'messaging';
-    public const string CONTACT_METHOD_INTERNAL_AND_EMAIL = 'messaging2';
-    public const string CONTACT_METHOD_EMAIL              = 'messaging3';
-    public const string CONTACT_METHOD_MAILTO             = 'mailto';
-    public const string CONTACT_METHOD_NONE               = 'none';
-
     private const string BROADCAST_ALL   = 'all';
     private const string BROADCAST_NEVER = 'never';
     private const string BROADCAST_GONE  = 'gone';
@@ -58,7 +53,6 @@ class MessageService
     /**
      * Contact messages can only be sent to the designated contacts
      *
-     * @param Tree $tree
      *
      * @return array<UserInterface>
      */
@@ -74,19 +68,11 @@ class MessageService
 
     /**
      * Add a message to a user's inbox, send it to them via email, or both.
-     *
-     * @param UserInterface $sender
-     * @param UserInterface $recipient
-     * @param string        $subject
-     * @param string        $body
-     * @param string        $url
-     * @param string        $ip
-     *
-     * @return bool
      */
     public function deliverMessage(UserInterface $sender, UserInterface $recipient, string $subject, string $body, string $url, string $ip): bool
     {
-        $success = true;
+        $success        = true;
+        $contact_method = ContactMethod::fromUser($recipient);
 
         // Temporarily switch to the recipient's language
         $old_language = I18N::languageTag();
@@ -106,8 +92,7 @@ class MessageService
             'url'       => $url,
         ]);
 
-        // Send via the internal messaging system.
-        if ($this->sendInternalMessage($recipient)) {
+        if ($contact_method->sendsInternalMessage()) {
             DB::table('message')->insert([
                 'sender'     => Auth::check() ? Auth::user()->email() : $sender->email(),
                 'ip_address' => $ip,
@@ -117,8 +102,7 @@ class MessageService
             ]);
         }
 
-        // Send via email
-        if ($this->sendEmail($recipient)) {
+        if ($contact_method->sendsEmail()) {
             $success = $this->email_service->send(
                 new SiteUser(),
                 $recipient,
@@ -135,43 +119,8 @@ class MessageService
     }
 
     /**
-     * Should we send messages to this user via internal messaging?
-     *
-     * @param UserInterface $user
-     *
-     * @return bool
-     */
-    public function sendInternalMessage(UserInterface $user): bool
-    {
-        return in_array($user->getPreference(UserInterface::PREF_CONTACT_METHOD), [
-            self::CONTACT_METHOD_INTERNAL,
-            self::CONTACT_METHOD_INTERNAL_AND_EMAIL,
-            self::CONTACT_METHOD_MAILTO,
-            self::CONTACT_METHOD_NONE,
-        ], true);
-    }
-
-    /**
-     * Should we send messages to this user via email?
-     *
-     * @param UserInterface $user
-     *
-     * @return bool
-     */
-    public function sendEmail(UserInterface $user): bool
-    {
-        return in_array($user->getPreference(UserInterface::PREF_CONTACT_METHOD), [
-            self::CONTACT_METHOD_INTERNAL_AND_EMAIL,
-            self::CONTACT_METHOD_EMAIL,
-            self::CONTACT_METHOD_MAILTO,
-            self::CONTACT_METHOD_NONE,
-        ], true);
-    }
-
-    /**
      * Convert a username (or mailing list name) into an array of recipients.
      *
-     * @param string $to
      *
      * @return Collection<int,User>
      */
@@ -185,7 +134,7 @@ class MessageService
                 return $this->user_service->all()
                     ->filter(static fn (UserInterface $user): bool => $user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) === '1' && $user->getPreference(UserInterface::PREF_TIMESTAMP_REGISTERED) > $user->getPreference(UserInterface::PREF_TIMESTAMP_ACTIVE));
             case self::BROADCAST_GONE:
-                $six_months_ago = Registry::timestampFactory()->now()->subtractMonths(6)->timestamp();
+                $six_months_ago = Registry::timestampFactory()->now()->subMonths(6)->getTimestamp();
 
                 return $this->user_service->all()->filter(static function (UserInterface $user) use ($six_months_ago): bool {
                     $session_time = (int) $user->getPreference(UserInterface::PREF_TIMESTAMP_ACTIVE);
@@ -212,16 +161,13 @@ class MessageService
     /**
      * A list of contact methods (e.g. for an edit control).
      *
-     * @return array<string>
+     * @return array<string,string>
      */
     public function contactMethods(): array
     {
-        return [
-            self::CONTACT_METHOD_INTERNAL           => I18N::translate('Internal messaging'),
-            self::CONTACT_METHOD_INTERNAL_AND_EMAIL => I18N::translate('Internal messaging with emails'),
-            self::CONTACT_METHOD_EMAIL              => I18N::translate('webtrees sends emails with no storage'),
-            self::CONTACT_METHOD_MAILTO             => I18N::translate('Mailto link'),
-            self::CONTACT_METHOD_NONE               => I18N::translate('No contact'),
-        ];
+        return array_combine(
+            array_map(static fn (ContactMethod $method): string => $method->value, ContactMethod::cases()),
+            array_map(static fn (ContactMethod $method): string => $method->label(), ContactMethod::cases()),
+        );
     }
 }

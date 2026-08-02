@@ -30,7 +30,6 @@ use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Validator;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToMoveFile;
-use League\Flysystem\UnableToRetrieveMetadata;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -97,23 +96,19 @@ final class EditMediaFileAction implements RequestHandlerInterface
         $old        = $media_file->filename();
         $new        = $file;
 
-        // Update the filesystem, if we can.
-        if ($old !== $new && !$media_file->isExternal() && $filesystem->fileExists($old)) {
+        // Update the filesystem if we can.
+        if ($old !== $new && !$media_file->isExternal()) {
             try {
-                $file_exists = $filesystem->fileExists($old);
-
-                if ($file_exists) {
-                    try {
-                        $filesystem->move($old, $new);
-                        FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
-                    } catch (FilesystemException | UnableToMoveFile) {
-                        // Don't overwrite existing file
-                        FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
-                        $file = $old;
-                    }
+                if ($filesystem->fileExists($old) && !$filesystem->fileExists($new)) {
+                    $filesystem->move($old, $new);
+                    FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
+                } else {
+                    FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
+                    $file = $old;
                 }
-            } catch (FilesystemException | UnableToRetrieveMetadata) {
-                // File does not exist?
+            } catch (FilesystemException | UnableToMoveFile) {
+                FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
+                $file = $old;
             }
         }
 

@@ -29,17 +29,11 @@ interface ModuleReportInterface extends ModuleInterface
 {
     /**
      * Name of the XML report file, relative to the resources folder.
-     *
-     * @return string
      */
     public function xmlFilename(): string;
 
     /**
      * Return a menu item for this report.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
      */
     public function getReportMenu(Individual $individual): Menu;
 }

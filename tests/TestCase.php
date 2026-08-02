@@ -17,22 +17,28 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Tests;
 
 use Aura\Router\Route;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Http\RequestHandlers\GedcomLoad;
+use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Services\PhpService;
-use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 use PHPUnit\Framework\Constraint\Callback;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
@@ -58,9 +64,7 @@ use const UPLOAD_ERR_OK;
 
 class TestCase extends \PHPUnit\Framework\TestCase
 {
-    protected static bool $uses_database = false;
-
-    private static function createTestDatabase(): void
+    protected static function createDatabase(): void
     {
         DB::connect(
             driver: DB::SQLITE,
@@ -88,7 +92,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * Create a request and bind it into the container.
      *
      * @param array<string|array<string>>  $query
-     * @param array<string>                $params
+     * @param array<string|array<string>>  $params
      * @param array<UploadedFileInterface> $files
      * @param array<string|Tree>           $attributes
      */
@@ -140,34 +144,20 @@ class TestCase extends \PHPUnit\Framework\TestCase
         // This is normally set in middleware.
         Registry::container()->set(ModuleThemeInterface::class, new WebtreesTheme());
 
-        // Need the routing table, to generate URLs.
+        // Need the routing table to generate URLs.
         $router_container = new RouterContainer('/');
         (new WebRoutes())->load($router_container->getMap());
         Registry::container()->set(RouterContainer::class, $router_container);
 
-        I18N::init('en-US', true);
+        I18N::init('en-US');
 
-        if (static::$uses_database) {
-            self::createTestDatabase();
-
-            I18N::init('en-US');
-
-            // This is normally set in middleware.
-            (new Gedcom())->registerTags(Registry::elementFactory(), true);
-
-            // Boot modules
-            (new ModuleService())->bootModules(new WebtreesTheme());
-        }
+        (new Gedcom())->registerTags(Registry::elementFactory(), false);
 
         self::createRequest();
     }
 
     protected function tearDown(): void
     {
-        if (static::$uses_database) {
-            DB::connection()->disconnect();
-        }
-
         Session::clear(); // Session data is stored in the super-global
         Site::$preferences = []; // These are cached from the database
     }
@@ -248,7 +238,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
                         static::fail('Closing tag matches nothing: ' . $match[0] . ' at ' . implode(':', $stack));
                     }
                     $html = substr($html, strlen($match[0]));
-                } elseif (preg_match('~^<([a-z]+)(?:\s+[a-z_\-]+="[^">]*")*\s*(/?)>~', $html, $match) === 1) {
+                } elseif (preg_match('~^<([a-z]+)(?:\s+[^\s"\'=<>\/]+(?:=(?:"[^"]*"|\'[^\']*\'|[^\s"\'=<>\/]+))?)*\s*(/?)>~', $html, $match) === 1) {
                     $tag = $match[1];
                     $self_closing = $match[2] === '/';
 

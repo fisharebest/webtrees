@@ -46,10 +46,6 @@ class PlaceName extends AbstractElement
 
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {
@@ -70,8 +66,6 @@ class PlaceName extends AbstractElement
 
     /**
      * Should we collapse the children of this element when editing?
-     *
-     * @return bool
      */
     public function collapseChildren(): bool
     {
@@ -80,13 +74,6 @@ class PlaceName extends AbstractElement
 
     /**
      * An edit control for this data.
-     *
-     * @param string $id
-     * @param string $name
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {

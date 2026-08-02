@@ -37,9 +37,6 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
     private SearchService $search_service;
 
-    /**
-     * @param SearchService $search_service
-     */
     public function __construct(SearchService $search_service)
     {
         $this->search_service = $search_service;
@@ -59,19 +56,12 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
     /**
      * The default position for this sidebar.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultSidebarOrder(): int
     {
         return 3;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getSearchAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();
@@ -93,11 +83,6 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
         return response($html);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getDescendantsAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
@@ -114,11 +99,6 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
         return response($html);
     }
 
-    /**
-     * @param Individual $individual
-     *
-     * @return bool
-     */
     public function hasSidebarContent(Individual $individual): bool
     {
         return true;
@@ -126,10 +106,6 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
     /**
      * Load this sidebar synchronously.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function getSidebarContent(Individual $individual): string
     {
@@ -141,11 +117,6 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
     /**
      * Format an individual in a list.
-     *
-     * @param Individual $person
-     * @param int        $generations
-     *
-     * @return string
      */
     public function getPersonLi(Individual $person, int $generations = 0): string
     {
@@ -171,12 +142,6 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
     /**
      * Format a family in a list.
-     *
-     * @param Family     $family
-     * @param Individual $person
-     * @param int        $generations
-     *
-     * @return string
      */
     public function getFamilyLi(Family $family, Individual $person, int $generations = 0): string
     {
@@ -192,7 +157,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
         $family_link = '<a href="' . e($family->url()) . '" title="' . strip_tags($family->fullName()) . '">' . view('icons/family') . '</a>';
 
         $marryear = $family->getMarriageYear();
-        $marr     = $marryear ? '<i class="icon-rings"></i>' . $marryear : '';
+        $marr     = $marryear !== 0 ? '<i class="icon-rings"></i>' . $marryear : '';
 
         return
             '<li class="sb_desc_indi_li">' .
@@ -208,11 +173,6 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
     /**
      * Display spouses.
-     *
-     * @param Individual $individual
-     * @param int        $generations
-     *
-     * @return string
      */
     public function loadSpouses(Individual $individual, int $generations): string
     {
@@ -231,11 +191,6 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
     /**
      * Display descendants.
-     *
-     * @param Family $family
-     * @param int    $generations
-     *
-     * @return string
      */
     public function loadChildren(Family $family, int $generations): string
     {

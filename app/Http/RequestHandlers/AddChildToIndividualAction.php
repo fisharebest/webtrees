@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
@@ -44,16 +45,16 @@ final class AddChildToIndividualAction implements RequestHandlerInterface
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
-        $levels = Validator::parsedBody($request)->array('ilevels');
-        $tags   = Validator::parsedBody($request)->array('itags');
-        $values = Validator::parsedBody($request)->array('ivalues');
+        $levels = Validator::parsedBody($request)->list('ilevels');
+        $tags   = Validator::parsedBody($request)->list('itags');
+        $values = Validator::parsedBody($request)->list('ivalues');
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
 
         // Create the new child
         $child  = $tree->createIndividual('0 @@ INDI' . $gedcom);
 
         // Create a new family
-        $link   = $individual->sex() === 'F' ? 'WIFE' : 'HUSB';
+        $link   = $individual->sex() === Sex::Female ? 'WIFE' : 'HUSB';
         $gedcom = "0 @@ FAM\n1 " . $link . ' @' . $individual->xref() . "@\n1 CHIL @" . $child->xref() . '@';
         $family = $tree->createFamily($gedcom);
 

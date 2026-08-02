@@ -99,10 +99,6 @@
     text-align: center;
 }
 
-#cboxLoadingGraphic {
-    background: url(images/loading-32x32.gif) no-repeat center center;
-}
-
 #cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {
     background-color: transparent;
     border: 0;

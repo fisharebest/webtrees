@@ -20,7 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
@@ -48,19 +50,19 @@ final class AddSpouseToIndividualAction implements RequestHandlerInterface
         $individual = Auth::checkIndividualAccess($individual, true);
 
         // Create the new spouse
-        $levels = Validator::parsedBody($request)->array('ilevels');
-        $tags   = Validator::parsedBody($request)->array('itags');
-        $values = Validator::parsedBody($request)->array('ivalues');
+        $levels = Validator::parsedBody($request)->list('ilevels');
+        $tags   = Validator::parsedBody($request)->list('itags');
+        $values = Validator::parsedBody($request)->list('ivalues');
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
         $spouse = $tree->createIndividual('0 @@ INDI' . $gedcom);
 
         // Create the new family
-        $levels = Validator::parsedBody($request)->array('flevels');
-        $tags   = Validator::parsedBody($request)->array('ftags');
-        $values = Validator::parsedBody($request)->array('fvalues');
+        $levels = Validator::parsedBody($request)->list('flevels');
+        $tags   = Validator::parsedBody($request)->list('ftags');
+        $values = Validator::parsedBody($request)->list('fvalues');
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Family::RECORD_TYPE, $levels, $tags, $values);
-        $i_link = "\n1 " . ($individual->sex() === 'F' ? 'WIFE' : 'HUSB') . ' @' . $individual->xref() . '@';
-        $s_link = "\n1 " . ($individual->sex() !== 'F' ? 'WIFE' : 'HUSB') . ' @' . $spouse->xref() . '@';
+        $i_link = "\n1 " . ($individual->sex() === Sex::Female ? 'WIFE' : 'HUSB') . ' @' . $individual->xref() . '@';
+        $s_link = "\n1 " . ($individual->sex() !== Sex::Female ? 'WIFE' : 'HUSB') . ' @' . $spouse->xref() . '@';
         $family = $tree->createFamily('0 @@ FAM' . $gedcom . $i_link . $s_link);
 
         // Link the individual to the family
@@ -83,7 +85,7 @@ final class AddSpouseToIndividualAction implements RequestHandlerInterface
                 Date::compare($family->getMarriageDate(), $fact->target()->getMarriageDate()) < 0;
         };
         return $partner
-            ->facts(['FAMS'], false, Auth::PRIV_HIDE, true)
+            ->facts(['FAMS'], false, AccessLevel::Hidden, true)
             ->first($filter);
     }
 }

@@ -19,9 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Enums\Restriction;
 use Fisharebest\Webtrees\I18N;
-
-use function strtoupper;
 
 /**
  * RESTRICTION_NOTICE := {Size=6:7}
@@ -41,27 +40,13 @@ use function strtoupper;
  *                listed for the record or Family History Support when no submitter is listed.
  * privacy      = Indicate that information concerning this record is not present due to rights of
  *                or an approved request for privacy. For example, data from requested downloads of
- *                the Ancestral File may have individuals marked with ‘privacy’ if they are assumed
- *                living, that is they were born within the last 110 years and there isn’t a death
+ *                the Ancestral File may have individuals marked with 'privacy' if they are assumed
+ *                living, that is they were born within the last 110 years and there isn't a death
  *                date. In certain cases family records may also be marked with the RESN tag of
  *                privacy if either individual acting in the role of HUSB or WIFE is assumed living.
  */
 class RestrictionNotice extends AbstractElement
 {
-    public const string VALUE_NONE    = 'NONE';
-    public const string VALUE_PRIVACY      = 'PRIVACY';
-    public const string VALUE_CONFIDENTIAL = 'CONFIDENTIAL';
-    public const string VALUE_LOCKED       = 'LOCKED';
-
-    private const array CANONICAL = [
-        // Store the locked value after the privacy value.
-        self::VALUE_LOCKED . ', ' . self::VALUE_NONE         => self::VALUE_NONE . ', ' . self::VALUE_LOCKED,
-        self::VALUE_LOCKED . ', ' . self::VALUE_PRIVACY      => self::VALUE_PRIVACY . ', ' . self::VALUE_LOCKED,
-        self::VALUE_LOCKED . ', ' . self::VALUE_CONFIDENTIAL => self::VALUE_CONFIDENTIAL . ', ' . self::VALUE_LOCKED,
-        // Old versions of Legacy
-        'invisible'                                          => self::VALUE_PRIVACY,
-    ];
-
     private const string ICON_CONFIDENTIAL = '<i class="icon-resn-confidential"></i>';
     private const string ICON_LOCKED = '<i class="icon-resn-locked"></i> ';
     private const string ICON_NONE    = '<i class="icon-resn-none"></i>';
@@ -69,18 +54,10 @@ class RestrictionNotice extends AbstractElement
 
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {
-        $value = strtoupper(parent::canonical($value));
-        $value = trim($value, ', ');
-        $value = preg_replace('/[, ]+/', ', ', $value);
-
-        return self::CANONICAL[$value] ?? $value;
+        return Restriction::fromString($value)->value;
     }
 
     /**
@@ -99,14 +76,14 @@ class RestrictionNotice extends AbstractElement
         $privacy      = I18N::translate('Show to members');
 
         return [
-            ''                                                   => '',
-            self::VALUE_NONE                                     => self::ICON_NONE . ' ' . $none,
-            self::VALUE_NONE . ', ' . self::VALUE_LOCKED         => self::ICON_NONE . self::ICON_LOCKED . ' ' . $none . ' — ' . $locked,
-            self::VALUE_PRIVACY                                  => self::ICON_PRIVACY . ' ' . $privacy,
-            self::VALUE_PRIVACY . ', ' . self::VALUE_LOCKED      => self::ICON_PRIVACY . self::ICON_LOCKED . ' ' . $privacy . ' — ' . $locked,
-            self::VALUE_CONFIDENTIAL                             => self::ICON_CONFIDENTIAL . ' ' . $confidential,
-            self::VALUE_CONFIDENTIAL . ', ' . self::VALUE_LOCKED => self::ICON_CONFIDENTIAL . ' ' . self::ICON_LOCKED . ' ' . $confidential . ' — ' . $locked,
-            self::VALUE_LOCKED                                   => self::ICON_LOCKED . ' ' . $locked,
+            Restriction::Undefined->value          => '',
+            Restriction::None->value               => self::ICON_NONE . ' ' . $none,
+            Restriction::NoneLocked->value         => self::ICON_NONE . self::ICON_LOCKED . ' ' . $none . ' — ' . $locked,
+            Restriction::Privacy->value            => self::ICON_PRIVACY . ' ' . $privacy,
+            Restriction::PrivacyLocked->value      => self::ICON_PRIVACY . self::ICON_LOCKED . ' ' . $privacy . ' — ' . $locked,
+            Restriction::Confidential->value       => self::ICON_CONFIDENTIAL . ' ' . $confidential,
+            Restriction::ConfidentialLocked->value => self::ICON_CONFIDENTIAL . ' ' . self::ICON_LOCKED . ' ' . $confidential . ' — ' . $locked,
+            Restriction::Locked->value             => self::ICON_LOCKED . ' ' . $locked,
         ];
     }
 }

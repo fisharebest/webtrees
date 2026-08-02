@@ -26,7 +26,6 @@ use Psr\Http\Message\ServerRequestInterface;
 final class AutoCompleteSurname extends AbstractAutocompleteHandler
 {
     /**
-     * @param ServerRequestInterface $request
      *
      * @return Collection<int,string>
      */

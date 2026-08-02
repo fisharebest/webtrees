@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -50,25 +51,12 @@ final class PasswordRequestAction implements RequestHandlerInterface, StatusCode
 
     private const int RATE_LIMIT_SECONDS = 300;
 
-    private EmailService $email_service;
-
-    private RateLimitService $rate_limit_service;
-
-    private UserService $user_service;
-
-    /**
-     * @param EmailService     $email_service
-     * @param RateLimitService $rate_limit_service
-     * @param UserService      $user_service
-     */
     public function __construct(
-        EmailService $email_service,
-        RateLimitService $rate_limit_service,
-        UserService $user_service
+        private readonly EmailService $email_service,
+        private readonly RateLimitService $rate_limit_service,
+        private readonly UserService $user_service,
+        private readonly ClockInterface $clock,
     ) {
-        $this->email_service      = $email_service;
-        $this->rate_limit_service = $rate_limit_service;
-        $this->user_service       = $user_service;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
@@ -81,7 +69,7 @@ final class PasswordRequestAction implements RequestHandlerInterface, StatusCode
             $this->rate_limit_service->limitRateForUser($user, self::RATE_LIMIT_REQUESTS, self::RATE_LIMIT_SECONDS, 'rate-limit-pw-reset');
 
             $token  = Str::random(self::TOKEN_LENGTH);
-            $expire = (string) (time() + self::TOKEN_VALIDITY_SECONDS);
+            $expire = (string) ($this->clock->now()->getTimestamp() + self::TOKEN_VALIDITY_SECONDS);
             $url    = route(PasswordResetPage::class, [
                 'token' => $token,
                 'tree'  => $tree?->name(),

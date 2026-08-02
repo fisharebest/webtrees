@@ -189,13 +189,13 @@ class GedcomImportService
                     while (str_contains($data, '  ')) {
                         $data = strtr($data, ['  ' => ' ']);
                     }
-                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag !== 'NOTE' ? '' : ' ' . $data);
+                    $newrec .= ($newrec !== '' ? "\n" : '') . $level . ' ' . ($level === '0' && $xref !== '' ? $xref . ' ' : '') . $tag . ($data === '' ? '' : ' ' . $data);
                     break;
                 case 'NOTE':
                 case 'TEXT':
                 case 'DATA':
                 case 'CONT':
-                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag !== 'NOTE' ? '' : ' ' . $data);
+                    $newrec .= ($newrec !== '' ? "\n" : '') . $level . ' ' . ($level === '0' && $xref !== '' ? $xref . ' ' : '') . $tag . ($data === '' ? '' : ' ' . $data);
                     break;
                 case 'FILE':
                     // Strip off the user-defined path prefix
@@ -206,11 +206,17 @@ class GedcomImportService
                     // convert backslashes in filenames to forward slashes
                     $data = preg_replace("/\\\\/", '/', $data);
 
-                    $newrec .= ($newrec ? "\n" : '') . $level . ' ' . ($level === '0' && $xref ? $xref . ' ' : '') . $tag . ($data === '' && $tag !== 'NOTE' ? '' : ' ' . $data);
+                    $newrec .= ($newrec !== '' ? "\n" : '') . $level . ' ' . ($level === '0' && $xref !== '' ? $xref . ' ' : '') . $tag . ($data === '' ? '' : ' ' . $data);
                     break;
                 case 'CONC':
-                    // Merge CONC lines, to simplify access later on.
-                    $newrec .= ($tree->getPreference('WORD_WRAPPED_NOTES') ? ' ' : '') . $data;
+                    // Special case - Note records uniquely have data in the level 0 line.
+                    // We move this data to a CONC line, so our normal edit tools work.
+                    // So we need to add a space for '0 @X@ NOTE\n1 CONC'.
+                    if ($n === 1 || $tree->getPreference('WORD_WRAPPED_NOTES') === '1') {
+                        $newrec .= ' ' . $data;
+                    } else {
+                        $newrec .= $data;
+                    }
                     break;
             }
         }
@@ -225,8 +231,6 @@ class GedcomImportService
      * @param string $gedrec the raw gedcom record to parse
      * @param Tree   $tree   import the record into this tree
      * @param bool   $update whether this is an updated record that has been accepted
-     *
-     * @throws GedcomErrorException
      */
     public function importRecord(string $gedrec, Tree $tree, bool $update): void
     {
@@ -311,15 +315,11 @@ class GedcomImportService
                     $rin = $xref;
                 }
 
-                // The database can only store MFU, and many of the stats queries assume this.
-                $sex = $record->sex();
-                $sex = $sex === 'M' || $sex === 'F' ? $sex : 'U';
-
                 DB::table('individuals')->insert([
                     'i_id'     => $xref,
                     'i_file'   => $tree_id,
                     'i_rin'    => $rin,
-                    'i_sex'    => $sex,
+                    'i_sex'    => $record->sex()->value,
                     'i_gedcom' => $gedrec,
                 ]);
 
@@ -561,29 +561,29 @@ class GedcomImportService
             $fact = $match[1];
             $date = new Date($match[2]);
             $rows[] = [
-                'd_day'        => $date->minimumDate()->day,
-                'd_month'      => $date->minimumDate()->format('%O'),
-                'd_mon'        => $date->minimumDate()->month,
-                'd_year'       => $date->minimumDate()->year,
+                'd_day'        => $date->minimumDate()->day(),
+                'd_month'      => $date->minimumDate()->gedcomMonth(),
+                'd_mon'        => $date->minimumDate()->month(),
+                'd_year'       => $date->minimumDate()->year(),
                 'd_julianday1' => $date->minimumDate()->minimumJulianDay(),
                 'd_julianday2' => $date->minimumDate()->maximumJulianDay(),
                 'd_fact'       => $fact,
                 'd_gid'        => $xref,
                 'd_file'       => $ged_id,
-                'd_type'       => $date->minimumDate()->format('%@'),
+                'd_type'       => $date->minimumDate()->calendarEscape()->value,
             ];
 
             $rows[] = [
-                'd_day'        => $date->maximumDate()->day,
-                'd_month'      => $date->maximumDate()->format('%O'),
-                'd_mon'        => $date->maximumDate()->month,
-                'd_year'       => $date->maximumDate()->year,
+                'd_day'        => $date->maximumDate()->day(),
+                'd_month'      => $date->maximumDate()->gedcomMonth(),
+                'd_mon'        => $date->maximumDate()->month(),
+                'd_year'       => $date->maximumDate()->year(),
                 'd_julianday1' => $date->maximumDate()->minimumJulianDay(),
                 'd_julianday2' => $date->maximumDate()->maximumJulianDay(),
                 'd_fact'       => $fact,
                 'd_gid'        => $xref,
                 'd_file'       => $ged_id,
-                'd_type'       => $date->minimumDate()->format('%@'),
+                'd_type'       => $date->maximumDate()->calendarEscape()->value,
             ];
         }
 

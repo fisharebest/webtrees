@@ -29,18 +29,19 @@ use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Validator;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function route;
-use function time;
 
 final class LoginAction implements RequestHandlerInterface
 {
     public function __construct(
         private readonly UpgradeService $upgrade_service,
         private readonly UserService $user_service,
+        private readonly ClockInterface $clock,
     ) {
     }
 
@@ -75,12 +76,6 @@ final class LoginAction implements RequestHandlerInterface
 
     /**
      * Log in, if we can.  Throw an exception, if we can't.
-     *
-     * @param string $username
-     * @param string $password
-     *
-     * @return void
-     * @throws Exception
      */
     private function doLogin(string $username, #[\SensitiveParameter] string $password): void
     {
@@ -113,7 +108,7 @@ final class LoginAction implements RequestHandlerInterface
 
         Auth::login($user);
         Log::addAuthenticationLog('Login: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
-        Auth::user()->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, (string) time());
+        Auth::user()->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, (string) $this->clock->now()->getTimestamp());
 
         Session::put('language', Auth::user()->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
         Session::put('theme', Auth::user()->getPreference(UserInterface::PREF_THEME));

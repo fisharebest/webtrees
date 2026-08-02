@@ -59,7 +59,7 @@ final class FixLevel0MediaData implements RequestHandlerInterface
             'INDI:RESN',
         ];
 
-        $search = Validator::queryParams($request)->array('search')['value'] ?? '';
+        $search = Validator::parsedBody($request)->array('search')['value'] ?? '';
 
         $query = DB::table('media')
             ->join('media_file', static function (JoinClause $join): void {

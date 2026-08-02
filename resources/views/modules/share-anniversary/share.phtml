@@ -21,17 +21,17 @@ use Illuminate\Support\Collection;
             <option value="<?= e($url) ?>"><?= $label ?></option>
         <?php endforeach ?>
     </select>
-    <button class="btn btn-primary" type="button" id="share-anniversary-button">
+    <button
+        class="btn btn-primary"
+        type="button"
+        id="share-anniversary-button"
+        data-wt-submit-selected-url-button
+        data-wt-submit-select="#share-anniversary-select"
+        data-wt-submit-form="#share-anniversary-form"
+    >
         <?= view('icons/download') ?>
         <?= I18N::translate('Download') ?>
     </button>
 </div>
 <form id="share-anniversary-form"></form>
-<script>
-  document.getElementById('share-anniversary-button').addEventListener('click', function () {
-    const select = document.getElementById('share-anniversary-select');
-    let form = document.getElementById('share-anniversary-form');
-    form.action = select.options[select.selectedIndex].value;
-    form.submit();
-  });
-</script>
+

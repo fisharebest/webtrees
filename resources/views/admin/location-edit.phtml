@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataSave;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\PlaceLocation;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var array<string,string> $breadcrumbs
@@ -26,14 +25,25 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<div class="row wt-location-edit-wrapper wt-fullscreen-container">
-    <div id="wt-map" class="col-sm-9 wt-map" dir="ltr"></div>
+<div
+    id="admin-location-edit-page"
+    data-wt-leaflet-config="<?= e(json_encode($leaflet_config, JSON_THROW_ON_ERROR)) ?>"
+    data-wt-add-place="<?= $location->id() === null ? '1' : '0' ?>"
+    data-wt-marker-position="<?= e(json_encode($marker_position, JSON_THROW_ON_ERROR)) ?>"
+    data-wt-map-bounds="<?= e(json_encode($map_bounds, JSON_THROW_ON_ERROR)) ?>"
+    data-wt-location-name="<?= e($location->locationName()) ?>"
+    data-wt-search-label="<?= e(I18N::translate('Search')) ?>"
+    data-wt-nothing-found="<?= e(I18N::translate('Nothing found.')) ?>"
+    data-wt-icon-image-path="<?= e(asset('css/images/')) ?>"
+>
+    <div class="row wt-location-edit-wrapper wt-fullscreen-container">
+        <div id="wt-map" class="col-sm-9 wt-map" dir="ltr"></div>
 
-    <div class="col-sm-3 wt-map-sidebar">
-        <form method="post" action="<?= e(route(MapDataSave::class)) ?>">
-            <input type="hidden" name="parent_id" value="<?= $parent->id() ?>">
-            <input type="hidden" name="place_id" value="<?= $location->id() ?>">
-            <input type="hidden" name="url" value="<?= e($url) ?>">
+        <div class="col-sm-3 wt-map-sidebar">
+            <form method="post" action="<?= e(route(MapDataSave::class)) ?>">
+                <input type="hidden" name="parent_id" value="<?= $parent->id() ?>">
+                <input type="hidden" name="place_id" value="<?= $location->id() ?>">
+                <input type="hidden" name="url" value="<?= e($url) ?>">
 
             <label class="col-form-label col-sm-6" for="new_place_name">
                 <?= I18N::translate('Place') ?>
@@ -65,95 +75,9 @@ use Fisharebest\Webtrees\View;
                 </a>
             </div>
 
-            <?= csrf_field() ?>
-        </form>
+                <?= csrf_field() ?>
+            </form>
+        </div>
     </div>
 </div>
 
-<?php View::push('javascript') ?>
-<script>
-  'use strict';
-
-  (function () {
-    const config = <?= json_encode($leaflet_config, JSON_THROW_ON_ERROR) ?>;
-    const add_place = <?= json_encode($location->id() === null, JSON_THROW_ON_ERROR) ?>;
-
-    let new_place_lati = document.getElementById('new_place_lati');
-    let new_place_long = document.getElementById('new_place_long');
-
-    // postcss_image_inliner breaks the autodetection of image paths.
-    L.Icon.Default.imagePath = <?= json_encode(asset('css/images/'), JSON_THROW_ON_ERROR) ?>;
-
-    // draggable marker
-    let marker = L.marker(<?= json_encode($marker_position, JSON_THROW_ON_ERROR) ?>, {
-      draggable: true,
-    })
-    .on('dragend', function () {
-      let coords = marker.getLatLng();
-      map.panTo(coords);
-      new_place_lati.value = Number(coords.lat).toFixed(5);
-      new_place_long.value = Number(coords.lng).toFixed(5);
-    });
-
-    /**
-     * Passed to resetControl to
-     * perform necessary reset actions on map
-     *
-     * @param {Event} event
-     */
-    let resetCallback = function (event) {
-      event.preventDefault();
-      map.fitBounds(<?= json_encode($map_bounds, JSON_THROW_ON_ERROR) ?>, {padding: [50, 30]});
-      marker.setLatLng(<?= json_encode($marker_position, JSON_THROW_ON_ERROR) ?>);
-      document.querySelector('form').reset();
-    }
-
-    // Geocoder (place lookup)
-    let geocoder = new L.Control.geocoder({
-      position: 'bottomleft',
-      defaultMarkGeocode: false,
-      expand: 'click',
-      showResultIcons: true,
-      query: <?= json_encode($location->locationName(), JSON_THROW_ON_ERROR) ?>,
-      placeholder: <?= json_encode(I18N::translate('Place'), JSON_THROW_ON_ERROR) ?>,
-      errorMessage: <?= json_encode(I18N::translate('Nothing found.'), JSON_THROW_ON_ERROR) ?>,
-      iconLabel: <?= json_encode(I18N::translate('Search'), JSON_THROW_ON_ERROR) ?>
-    })
-    .on('markgeocode', function (result) {
-      let coords = result.geocode.center;
-      let place = result.geocode.name.split(',', 1).toString();
-      marker.setLatLng(coords);
-      map.panTo(coords);
-      if (add_place) {
-        document.getElementById('new_place_name').value = place
-      }
-      new_place_lati.value = Number(coords.lat).toFixed(5);
-      new_place_long.value = Number(coords.lng).toFixed(5);
-    });
-
-    const map = webtrees.buildLeafletJsMap('wt-map', config, resetCallback)
-      .addControl(geocoder)
-      .addLayer(marker)
-      .fitBounds(<?= json_encode($map_bounds, JSON_THROW_ON_ERROR) ?>, {padding: [50, 30]})
-      .on('zoomend', function () {
-        if (!map.getBounds().contains(marker.getLatLng())) {
-          map.panTo(marker.getLatLng());
-        }
-    });
-
-    document.querySelectorAll('.editable').forEach((element) => {
-      element.addEventListener('change', () => {
-        let lat = new_place_lati.value;
-        let lng = new_place_long.value;
-        marker.setLatLng([lat, lng]);
-        map.panTo([lat, lng]);
-      });
-    });
-
-    window.onload = function() {
-      let icon = document.querySelector('.leaflet-control-geocoder-icon');
-      icon.setAttribute('title', <?= json_encode(I18N::translate('Search'), JSON_THROW_ON_ERROR) ?>);
-    }
-  })();
-</script>
-<?php View::endpush() ?>

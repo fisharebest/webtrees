@@ -36,11 +36,7 @@ trait ViewResponseTrait
     protected string $layout = 'layouts/default';
 
     /**
-     * @param string       $view_name
      * @param array<mixed> $view_data
-     * @param int          $status
-     *
-     * @return ResponseInterface
      */
     protected function viewResponse(string $view_name, array $view_data, int $status = StatusCodeInterface::STATUS_OK): ResponseInterface
     {

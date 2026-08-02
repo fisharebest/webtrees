@@ -3,7 +3,6 @@
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Encodings\UTF8;
-use InvalidArgumentException;
 use Normalizer;
 use Stringable;
 

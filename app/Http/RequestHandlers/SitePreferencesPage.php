@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Factories\LanguageFactory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -50,6 +51,7 @@ final class SitePreferencesPage implements RequestHandlerInterface
         return $this->viewResponse('admin/site-preferences', [
             'all_themes'         => $all_themes,
             'data_folder'        => Registry::filesystem()->dataName(),
+            'language_factory'   => Registry::container()->get(LanguageFactory::class),
             'title'              => $title,
         ]);
     }

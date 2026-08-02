@@ -2,18 +2,17 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
  * @var int                                                                                    $id
  * @var int                                                                                    $limit_low
  * @var int                                                                                    $limit_high
- * @var Collection<int,object{record:GedcomRecord,time:TimestampInterface,user:UserInterface}> $rows
+ * @var Collection<int,object{record:GedcomRecord,time:CarbonImmutable,user:UserInterface}> $rows
  * @var bool                                                                                   $show_date
  * @var bool                                                                                   $show_user
  */
@@ -23,22 +22,11 @@ use Illuminate\Support\Collection;
 <?php foreach ($rows as $n => $row) : ?>
     <?php if ($n === $limit_low && $rows->count() > $limit_high) : ?>
         <div>
-            <button class="btn btn-sm btn-secondary" id="show-more-<?= e($id) ?>">
+            <button class="btn btn-sm btn-secondary" type="button" data-wt-show-more-button data-wt-show-more-block="#block-<?= e($id) ?>">
                 <?= view('icons/add') ?>
                 <?= /* I18N: button label */ I18N::translate('show more') ?>
             </button>
         </div>
-
-        <?php View::push('javascript') ?>
-        <script>
-            document.getElementById("show-more-<?= e($id) ?>").addEventListener("click", function (ev) {
-                document.querySelectorAll("#block-<?= e($id) ?> .d-none").forEach(function (el) {
-                    el.classList.remove("d-none");
-                });
-                ev.target.parentNode.removeChild(ev.target);
-            });
-        </script>
-        <?php View::endpush() ?>
     <?php endif ?>
 
     <div class="<?= $n >= $limit_low && $rows->count() > $limit_high ? 'd-none' : '' ?>">

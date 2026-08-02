@@ -57,10 +57,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompletePlace;
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteSurname;
 use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\BrowserconfigXml;
-use Fisharebest\Webtrees\Http\RequestHandlers\CalendarAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\CalendarEvents;
-use Fisharebest\Webtrees\Http\RequestHandlers\CalendarPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ChangeFamilyMembersAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ChangeFamilyMembersPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\CheckForNewVersionNow;
@@ -327,7 +323,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UserPageUpdate;
 use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail;
-use Fisharebest\Webtrees\Http\RequestHandlers\WebmanifestJson;
 
 /**
  * Routing table for web requests
@@ -336,8 +331,6 @@ class WebRoutes
 {
     /**
      * @param Map<Route> $router
-     *
-     * @return void
      */
     public function load(Map $router): void
     {
@@ -360,17 +353,17 @@ class WebRoutes
                 $router->post(EmailPreferencesAction::class, '/email');
                 $router->get(FixLevel0MediaPage::class, '/fix-level-0-media');
                 $router->post(FixLevel0MediaAction::class, '/fix-level-0-media');
-                $router->get(FixLevel0MediaData::class, '/fix-level-0-media-data');
+                $router->post(FixLevel0MediaData::class, '/fix-level-0-media-data');
                 $router->get(PhpInformation::class, '/information');
                 $router->get(SiteLogsPage::class, '/logs');
                 $router->post(SiteLogsAction::class, '/logs');
-                $router->get(SiteLogsData::class, '/logs-data');
+                $router->post(SiteLogsData::class, '/logs-data');
                 $router->post(SiteLogsDelete::class, '/logs-delete');
                 $router->get(SiteLogsDownload::class, '/logs-download');
                 $router->post(Masquerade::class, '/masquerade/{user_id}');
                 $router->get(ManageMediaPage::class, '/media');
                 $router->post(ManageMediaAction::class, '/media');
-                $router->get(ManageMediaData::class, '/media-data');
+                $router->post(ManageMediaData::class, '/media-data');
                 $router->get(UploadMediaPage::class, '/media-upload');
                 $router->post(UploadMediaAction::class, '/media-upload');
                 $router->get(AdminMediaFileDownload::class, '/media-file');
@@ -434,7 +427,7 @@ class WebRoutes
                 $router->post(UpgradeWizardConfirm::class, '/upgrade-confirm');
                 $router->post(UpgradeWizardStep::class, '/upgrade-action');
                 $router->get(UserListPage::class, '/admin-users');
-                $router->get(UserListData::class, '/admin-users-data');
+                $router->post(UserListData::class, '/admin-users-data');
                 $router->get(UserAddPage::class, '/admin-users-create');
                 $router->post(UserAddAction::class, '/admin-users-create');
                 $router->get(UserEditPage::class, '/admin-users-edit');
@@ -476,7 +469,7 @@ class WebRoutes
 
                 $router->get(PendingChangesLogPage::class, '/changes-log');
                 $router->post(PendingChangesLogAction::class, '/changes-log');
-                $router->get(PendingChangesLogData::class, '/changes-data');
+                $router->post(PendingChangesLogData::class, '/changes-data');
                 $router->post(PendingChangesLogDelete::class, '/changes-delete');
                 $router->get(PendingChangesLogDownload::class, '/changes-download');
                 $router->get(CheckTree::class, '/check');
@@ -485,7 +478,7 @@ class WebRoutes
                 $router->get(DataFixPage::class, '/data-fix/{data_fix}');
                 $router->post(DataFixUpdate::class, '/data-fix/{data_fix}/update');
                 $router->post(DataFixUpdateAll::class, '/data-fix/{data_fix}/update-all');
-                $router->get(DataFixData::class, '/data-fix/{data_fix}/data');
+                $router->post(DataFixData::class, '/data-fix/{data_fix}/data');
                 $router->get(DataFixPreview::class, '/data-fix/{data_fix}/preview');
                 $router->get(FindDuplicateRecords::class, '/duplicates');
                 $router->get(ExportGedcomPage::class, '/export');
@@ -688,9 +681,6 @@ class WebRoutes
                 $router->get(AutoCompleteSurname::class, '/autocomplete/surname');
                 $router->get(ContactPage::class, '/contact');
                 $router->post(ContactAction::class, '/contact');
-                $router->get(CalendarPage::class, '/calendar/{view}');
-                $router->post(CalendarAction::class, '/calendar/{view}');
-                $router->get(CalendarEvents::class, '/calendar-events/{view}');
                 $router->get(ReportListPage::class, '/report');
                 $router->post(ReportListAction::class, '/report');
                 $router->get(ReportSetupPage::class, '/report/{report}');
@@ -737,10 +727,8 @@ class WebRoutes
             $router->get(AdsTxt::class, '/ads.txt');
             $router->get(AppAdsTxt::class, '/app-ads.txt');
             $router->get(AppleTouchIconPng::class, '/apple-touch-icon.png');
-            $router->get(BrowserconfigXml::class, '/browserconfig.xml');
             $router->get(FaviconIco::class, '/favicon.ico');
             $router->get(RobotsTxt::class, '/robots.txt');
-            $router->get(WebmanifestJson::class, '/webmanifest.json');
         });
     }
 }

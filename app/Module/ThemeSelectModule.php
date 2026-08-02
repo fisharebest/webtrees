@@ -46,12 +46,7 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -81,8 +76,6 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
      * Should this block load asynchronously using AJAX?
      *
      * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
      */
     public function loadAjax(): bool
     {
@@ -91,8 +84,6 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the user’s home page?
-     *
-     * @return bool
      */
     public function isUserBlock(): bool
     {
@@ -101,8 +92,6 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {

@@ -33,10 +33,6 @@ class ChangeDate extends DateValueToday
     /**
      * Escape @ signs in a GEDCOM export.
      * This value should not include calendar escapes, so override special logic for date fields.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function escape(string $value): string
     {

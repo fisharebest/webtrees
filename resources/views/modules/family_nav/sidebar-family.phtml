@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
     </caption>
     <tbody>
         <?php foreach ($family->spouses() as $spouse) : ?>
-            <tr class="text-center wt-family-navigator-parent wt-sex-<?= strtolower($spouse->sex()) ?>">
+            <tr class="text-center wt-family-navigator-parent <?= $spouse->sex()->cssClass() ?>">
                 <th class="align-middle wt-family-navigator-label" scope="row">
                     <?php if ($spouse === $individual) : ?>
                         <?= $relationship_service->getCloseRelationshipName($individual, $spouse) ?>
@@ -39,7 +39,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
                             <?= $relationship_service->getCloseRelationshipName($individual, $spouse) ?>
                         </a>
 
-                        <div class="dropdown-menu wt-family-navigator-dropdown">
+                        <div class="dropdown-menu wt-family-navigator-dropdown" aria-labelledby="dropdown-<?= e($spouse->xref()) ?>">
                             <?php foreach ($spouse->childFamilies() as $n => $spouse_child_family) : ?>
                                 <?php if ($n > 0) : ?>
                                     <div class="dropdown-divider"></div>
@@ -76,7 +76,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
         <?php endforeach ?>
 
         <?php foreach ($family->children() as $child) : ?>
-            <tr class="text-center wt-family-navigator-child wt-sex-<?= strtolower($child->sex()) ?>">
+            <tr class="text-center wt-family-navigator-child <?= $child->sex()->cssClass() ?>">
                 <th class="align-middle wt-family-navigator-label" scope="row">
                     <?php if ($child === $individual) : ?>
                         <?= $relationship_service->getCloseRelationshipName($individual, $child) ?>
@@ -87,7 +87,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
                                 <?= $relationship_service->getCloseRelationshipName($individual, $child) ?>
                             </a>
 
-                            <div class="dropdown-menu">
+                            <div class="dropdown-menu" aria-labelledby="dropdown-<?= e($child->xref()) ?>">
                                 <?php foreach ($child->spouseFamilies() as $n => $in_laws) : ?>
                                     <?php if ($n > 0) : ?>
                                         <div class="dropdown-divider"></div>

@@ -22,9 +22,11 @@ namespace Fisharebest\Webtrees\Module;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Comparators\IndividualComparator;
 use Fisharebest\Webtrees\ColorGenerator;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
@@ -81,8 +83,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -106,8 +106,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -117,10 +115,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * The URL for this chart.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
@@ -130,11 +125,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();
@@ -145,7 +135,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         if ($xrefs === '') {
             try {
                 // URLs created by webtrees 2.0 and earlier used an array.
-                $xrefs = Validator::queryParams($request)->array('xrefs');
+                $xrefs = Validator::queryParams($request)->list('xrefs');
             } catch (HttpBadRequestException) {
                 // Not a 2.0 request, just an empty parameter.
                 $xrefs = [];
@@ -229,10 +219,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * @param Tree          $tree
      * @param array<string> $xrefs
-     *
-     * @return ResponseInterface
      */
     protected function chart(Tree $tree, array $xrefs): ResponseInterface
     {
@@ -241,8 +228,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
         $individuals = array_filter($individuals, static fn (Individual|null $individual): bool => $individual instanceof Individual && $individual->canShow());
 
-        // Sort the array in order of birth year
-        usort($individuals, Individual::birthDateComparator());
+        usort($individuals, IndividualComparator::byBirthDate(...));
 
         // Round to whole decades
         $start_year = intdiv($this->minYear($individuals), 10) * 10;
@@ -257,7 +243,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         $subtitle = I18N::plural('%s individual', '%s individuals', $count, I18N::number($count));
 
         $html = view('modules/lifespans-chart/chart', [
-            'dir'        => I18N::direction(),
+            'text_direction' => I18N::textDirection(),
             'end_year'   => $end_year,
             'lifespans'  => $lifespans,
             'max_rows'   => $max_rows,
@@ -272,8 +258,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      * Find the latest event year for individuals
      *
      * @param array<Individual> $individuals
-     *
-     * @return int
      */
     protected function maxYear(array $individuals): int
     {
@@ -300,8 +284,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      * Find the earliest event year for individuals
      *
      * @param array<Individual> $individuals
-     *
-     * @return int
      */
     protected function minYear(array $individuals): int
     {
@@ -323,10 +305,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * Convert a julian day to a gregorian year
-     *
-     * @param int $jd
-     *
-     * @return int
      */
     protected function jdToYear(int $jd): int
     {
@@ -341,9 +319,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * @param Date $start
-     * @param Date $end
-     * @param Tree $tree
      *
      * @return array<string>
      */
@@ -364,8 +339,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * @param Place $place
-     * @param Tree  $tree
      *
      * @return array<string>
      */
@@ -386,7 +359,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * Find the close family members of an individual.
      *
-     * @param Individual $individual
      *
      * @return array<string>
      */
@@ -432,9 +404,10 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     private function layoutIndividuals(array $individuals): array
     {
         $color_generators = [
-            'M' => new ColorGenerator(240, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE * -1),
-            'F' => new ColorGenerator(000, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
-            'U' => new ColorGenerator(120, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
+            Sex::Male->value => new ColorGenerator(240, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE * -1),
+            Sex::Female->value => new ColorGenerator(000, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
+            Sex::Unknown->value => new ColorGenerator(120, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
+            Sex::Other->value => new ColorGenerator(120, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
         ];
 
         $current_year = (int) date('Y');
@@ -471,7 +444,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             // Fill the row up to the year (leaving a small gap)
             $rows[$next_row] = $death_year;
 
-            $color_generator = $color_generators[$individual->sex()] ?? $color_generators['U'];
+            $color_generator = $color_generators[$individual->sex()->value];
 
             $lifespans[] = (object) [
                 'background' => $color_generator->getNextColor(),

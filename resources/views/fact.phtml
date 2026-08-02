@@ -55,10 +55,9 @@ if ($id === 'asso') {
     $styles[] = 'wt-associate-fact collapse';
 }
 
-if ($element instanceof UnknownElement && $tree->getPreference('HIDE_GEDCOM_ERRORS') === '0') {
+if ($element instanceof UnknownElement && $tree->getPreference('HIDE_GEDCOM_ERRORS') === '1') {
     $styles[] = 'd-none';
 }
-
 
 // historical facts
 if ($id === 'histo') {
@@ -142,7 +141,11 @@ if ($fact->target() instanceof Note) {
                     </div>
                 <?php endif ?>
 
-                <?= view('fact-date', ['cal_link' => 'true', 'fact' => $fact, 'record' => $record, 'time' => true]) ?>
+                <?php if ($tag === 'CHAN') : ?>
+                    <?= view('fact-timestamp', ['fact' => $fact]) ?>
+                <?php else : ?>
+                    <?= view('fact-date', ['cal_link' => 'true', 'fact' => $fact, 'record' => $record, 'time' => true]) ?>
+                <?php endif ?>
                 <?= view('fact-place', ['fact' => $fact, 'record' => $record]) ?>
             </div>
 

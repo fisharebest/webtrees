@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -35,14 +36,6 @@ final class AddSpouseToIndividualPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    // Create mixed-sex couples by default
-    private const array OPPOSITE_SEX = [
-        'F' => 'M',
-        'M' => 'F',
-        'U' => 'U',
-        'X' => 'U',
-    ];
-
     public function __construct(
         private readonly GedcomEditService $gedcom_edit_service,
     ) {
@@ -55,7 +48,7 @@ final class AddSpouseToIndividualPage implements RequestHandlerInterface
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
-        $sex = self::OPPOSITE_SEX[$individual->sex()];
+        $sex = $individual->sex()->opposite();
 
         // Name facts.
         $surname_tradition = Registry::surnameTraditionFactory()
@@ -68,13 +61,11 @@ final class AddSpouseToIndividualPage implements RequestHandlerInterface
             'f' => $this->gedcom_edit_service->newFamilyFacts($tree),
         ];
 
-        $titles = [
-            'F' => I18N::translate('Add a wife'),
-            'M' => I18N::translate('Add a husband'),
-            'U' => I18N::translate('Add a spouse'),
-        ];
-
-        $title = $titles[$sex];
+        $title = match ($sex) {
+            Sex::Female => I18N::translate('Add a wife'),
+            Sex::Male => I18N::translate('Add a husband'),
+            default => I18N::translate('Add a spouse'),
+        };
 
         return $this->viewResponse('edit/new-individual', [
             'facts'               => $facts,

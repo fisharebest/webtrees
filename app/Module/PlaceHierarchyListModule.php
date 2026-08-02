@@ -20,6 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Comparators\PlaceComparator;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataEdit;
@@ -55,8 +57,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
     protected const string ROUTE_URL = '/tree/{tree}/place-list{/place_id}';
 
-    /** @var int The default access level for this module.  It can be changed in the control panel. */
-    protected int $access_level = Auth::PRIV_USER;
+    protected AccessLevel $access_level = AccessLevel::Member;
 
     private LeafletJsService $leaflet_js_service;
 
@@ -64,11 +65,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
     private SearchService $search_service;
 
-    /**
-     * @param LeafletJsService $leaflet_js_service
-     * @param ModuleService    $module_service
-     * @param SearchService    $search_service
-     */
     public function __construct(LeafletJsService $leaflet_js_service, ModuleService $module_service, SearchService $search_service)
     {
         $this->leaflet_js_service = $leaflet_js_service;
@@ -78,8 +74,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -101,8 +95,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function listMenuClass(): string
     {
@@ -117,11 +109,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
         return [];
     }
 
-    /**
-     * @param Tree $tree
-     *
-     * @return bool
-     */
     public function listIsEmpty(Tree $tree): bool
     {
         return !DB::table('places')
@@ -130,10 +117,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     }
 
     /**
-     * @param Tree                                      $tree
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function listUrl(Tree $tree, array $parameters = []): string
     {
@@ -142,11 +126,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
         return route(static::class, $parameters);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();
@@ -221,7 +200,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     }
 
     /**
-     * @param Place $place
      *
      * @return array<mixed>
      */
@@ -299,14 +277,13 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     }
 
     /**
-     * @param Tree $tree
      *
      * @return array<array<Place>>
      */
     private function getList(Tree $tree): array
     {
         $places = $this->search_service->searchPlaces($tree, '')
-            ->sort(static fn (Place $x, Place $y): int => I18N::comparator()($x->gedcomName(), $y->gedcomName()))
+            ->sort(PlaceComparator::byPlaceName(...))
             ->all();
 
         $count = count($places);
@@ -321,7 +298,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     }
 
     /**
-     * @param Place $place
      *
      * @return array{columns:array<array<Place>>,place:Place,tree:Tree,col_class:string}|null
      */
@@ -345,7 +321,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     }
 
     /**
-     * @param Place $place
      *
      * @return array{breadcrumbs:array<Place>,current:Place|null}
      */
@@ -371,11 +346,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
         ];
     }
 
-    /**
-     * @param Place $place
-     *
-     * @return Builder
-     */
     private function placeLinks(Place $place): Builder
     {
         return DB::table('places')
@@ -388,11 +358,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
             ->where('p_id', '=', $place->id());
     }
 
-    /**
-     * @param Place $place
-     *
-     * @return Builder
-     */
     private function familyPlaceLinks(Place $place): Builder
     {
         return $this->placeLinks($place)
@@ -403,11 +368,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
             });
     }
 
-    /**
-     * @param Place $place
-     *
-     * @return Builder
-     */
     private function individualPlaceLinks(Place $place): Builder
     {
         return $this->placeLinks($place)
@@ -418,11 +378,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
             });
     }
 
-    /**
-     * @param Place $place
-     *
-     * @return Builder
-     */
     private function locationPlaceLinks(Place $place): Builder
     {
         return $this->placeLinks($place)

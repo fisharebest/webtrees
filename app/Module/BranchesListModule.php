@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Comparators\FamilyComparator;
+use Fisharebest\Webtrees\Comparators\IndividualComparator;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
@@ -64,9 +66,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
     private ModuleService $module_service;
 
-    /**
-     * @param ModuleService $module_service
-     */
     public function __construct(ModuleService $module_service)
     {
         $this->module_service = $module_service;
@@ -74,8 +73,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -99,8 +96,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function listMenuClass(): string
     {
@@ -108,10 +103,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
     }
 
     /**
-     * @param Tree                                      $tree
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function listUrl(Tree $tree, array $parameters = []): string
     {
@@ -139,11 +131,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         return [];
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
@@ -219,7 +206,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
     /**
      * Find all ancestors of an individual, indexed by the Sosa-Stradonitz number.
      *
-     * @param Individual $individual
      *
      * @return array<Individual>
      */
@@ -250,10 +236,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
     /**
      * Fetch all individuals with a matching surname
      *
-     * @param Tree   $tree
-     * @param string $surname
-     * @param bool   $soundex_dm
-     * @param bool   $soundex_std
      *
      * @return array<Individual>
      */
@@ -297,7 +279,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
             ->filter(GedcomRecord::accessFilter())
             ->all();
 
-        usort($individuals, Individual::birthDateComparator());
+        usort($individuals, IndividualComparator::byBirthDate(...));
 
         return $individuals;
     }
@@ -305,14 +287,8 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
     /**
      * For each individual with no ancestors, list their descendants.
      *
-     * @param Tree              $tree
      * @param array<Individual> $individuals
      * @param array<Individual> $ancestors
-     * @param string            $surname
-     * @param bool              $soundex_dm
-     * @param bool              $soundex_std
-     *
-     * @return string
      */
     private function getPatriarchsHtml(Tree $tree, array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std): string
     {
@@ -335,16 +311,8 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
      * Generate a recursive list of descendants of an individual.
      * If parents are specified, we can also show the pedigree (adopted, etc.).
      *
-     * @param Tree              $tree
      * @param array<Individual> $individuals
      * @param array<Individual> $ancestors
-     * @param string            $surname
-     * @param bool              $soundex_dm
-     * @param bool              $soundex_std
-     * @param Individual        $individual
-     * @param Family|null       $parents
-     *
-     * @return string
      */
     private function getDescendantsHtml(Tree $tree, array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std, Individual $individual, Family|null $parents = null): string
     {
@@ -371,7 +339,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         $sosa = array_search($individual, $ancestors, true);
         if (is_int($sosa) && $module instanceof RelationshipsChartModule) {
             $sosa_class = 'search_hit';
-            $sosa_html  = ' <a class="small wt-chart-box-' . strtolower($individual->sex()) . '" href="' . e($module->chartUrl($individual, ['xref2' => $ancestors[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationship') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
+            $sosa_html  = ' <a class="small wt-chart-box-' . strtolower($individual->sex()->value) . '" href="' . e($module->chartUrl($individual, ['xref2' => $ancestors[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationship') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
         } else {
             $sosa_class = '';
             $sosa_html  = '';
@@ -397,7 +365,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
         // spouses and children
         $spouse_families = $individual->spouseFamilies()
-            ->sort(Family::marriageDateComparator());
+            ->sort(FamilyComparator::byMarriageDate(...));
 
         if ($spouse_families->isNotEmpty()) {
             $fam_html = '';
@@ -409,14 +377,14 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
                     $sosa = array_search($spouse, $ancestors, true);
                     if (is_int($sosa) && $module instanceof RelationshipsChartModule) {
                         $sosa_class = 'search_hit';
-                        $sosa_html  = ' <a class="small wt-chart-box-' . strtolower($spouse->sex()) . '" href="' . e($module->chartUrl($spouse, ['xref2' => $ancestors[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationship') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
+                        $sosa_html  = ' <a class="small wt-chart-box-' . strtolower($spouse->sex()->value) . '" href="' . e($module->chartUrl($spouse, ['xref2' => $ancestors[1]->xref()])) . '" rel="nofollow" title="' . I18N::translate('Relationship') . '">' . I18N::number($sosa) . '</a>' . self::sosaGeneration($sosa);
                     } else {
                         $sosa_class = '';
                         $sosa_html  = '';
                     }
                     $marriage_year = $family->getMarriageYear();
                     if ($marriage_year !== 0) {
-                        $fam_html .= ' <a href="' . e($family->url()) . '" title="' . strip_tags($family->getMarriageDate()->display()) . '"><i class="icon-rings"></i>' . $marriage_year . '</a>';
+                        $fam_html .= ' <a href="' . e($family->url()) . '" title="' . $family->getMarriageDate()->display() . '"><i class="icon-rings"></i>' . $marriage_year . '</a>';
                     } elseif ($family->facts(['MARR'])->isNotEmpty()) {
                         $fam_html .= ' <a href="' . e($family->url()) . '" title="' . I18N::translate('Marriage') . '"><i class="icon-rings"></i></a>';
                     } else {
@@ -441,13 +409,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
     /**
      * Do two surnames match?
-     *
-     * @param string $surname1
-     * @param string $surname2
-     * @param bool   $soundex_std
-     * @param bool   $soundex_dm
-     *
-     * @return bool
      */
     private function surnamesMatch(string $surname1, string $surname2, bool $soundex_std, bool $soundex_dm): bool
     {
@@ -468,10 +429,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
     /**
      * Convert a SOSA number into a generation number. e.g. 8 = great-grandfather = 3 generations
-     *
-     * @param int $sosa
-     *
-     * @return string
      */
     private static function sosaGeneration(int $sosa): string
     {

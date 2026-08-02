@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Enums\Script;
+
 use function array_slice;
 use function count;
 use function strlen;
@@ -611,11 +613,6 @@ class Soundex
 
     /**
      * Is there a match between two soundex codes?
-     *
-     * @param string $soundex1
-     * @param string $soundex2
-     *
-     * @return bool
      */
     public static function compare(string $soundex1, string $soundex2): bool
     {
@@ -628,10 +625,6 @@ class Soundex
 
     /**
      * Generate Russell soundex codes for a given text.
-     *
-     * @param string $text
-     *
-     * @return string
      */
     public static function russell(string $text): string
     {
@@ -641,7 +634,7 @@ class Soundex
         foreach ($words as $word) {
             $soundex = soundex($word);
 
-            // Only return codes from recognisable sounds
+            // Only return codes from recognizable sounds
             if ($soundex !== '0000') {
                 $soundex_array[] = $soundex;
             }
@@ -660,10 +653,6 @@ class Soundex
 
     /**
      * Generate Daitch–Mokotoff soundex codes for a given text.
-     *
-     * @param string $text
-     *
-     * @return string
      */
     public static function daitchMokotoff(string $text): string
     {
@@ -687,7 +676,6 @@ class Soundex
     /**
      * Calculate the Daitch-Mokotoff soundex for a word.
      *
-     * @param string $name
      *
      * @return array<string> List of possible DM codes for the word.
      */
@@ -701,7 +689,7 @@ class Soundex
 
         // Initialize
         $name_script = I18N::textScript($name);
-        $noVowels    = $name_script === 'Hebr' || $name_script === 'Arab';
+        $noVowels    = $name_script === Script::Hebr || $name_script === Script::Arab;
 
         $lastPos         = strlen($name) - 1;
         $currPos         = 0;
@@ -780,7 +768,7 @@ class Soundex
                             // This is the 6th code in the sequence
                             // We're looking for 7 entries because the first is '!' and doesn't count
                             $tempResult = str_replace('!', '', implode('', $workingEntry));
-                            // Only return codes from recognisable sounds
+                            // Only return codes from recognizable sounds
                             if ($tempResult !== '') {
                                 $result[] = substr($tempResult . '000000', 0, 6);
                             }
@@ -794,7 +782,7 @@ class Soundex
         // Zero-fill and copy all remaining partial results
         foreach ($partialResult as $workingEntry) {
             $tempResult = str_replace('!', '', implode('', $workingEntry));
-            // Only return codes from recognisable sounds
+            // Only return codes from recognizable sounds
             if ($tempResult !== '') {
                 $result[] = substr($tempResult . '000000', 0, 6);
             }

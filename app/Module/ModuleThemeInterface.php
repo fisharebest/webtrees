@@ -31,7 +31,6 @@ interface ModuleThemeInterface extends ModuleInterface
     /**
      * Links, to show in chart boxes;
      *
-     * @param Individual $individual
      *
      * @return array<Menu>
      */
@@ -39,15 +38,12 @@ interface ModuleThemeInterface extends ModuleInterface
 
     /**
      * Themes menu.
-     *
-     * @return Menu|null
      */
     public function menuThemes(): Menu|null;
 
     /**
      * Generate a list of items for the main menu.
      *
-     * @param Tree|null $tree
      *
      * @return array<Menu>
      */
@@ -56,7 +52,6 @@ interface ModuleThemeInterface extends ModuleInterface
     /**
      * Generate a list of items for the user menu.
      *
-     * @param Tree|null $tree
      *
      * @return array<Menu>
      */

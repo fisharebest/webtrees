@@ -46,10 +46,7 @@ class RouteFactory implements RouteFactoryInterface
     /**
      * Generate a URL for a named route.
      *
-     * @param string                                    $route_name
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function route(string $route_name, array $parameters = []): string
     {
@@ -74,7 +71,8 @@ class RouteFactory implements RouteFactoryInterface
 
         if (Validator::attributes($request)->boolean('rewrite_urls', false)) {
             // Make the pretty URL absolute.
-            $base_path = parse_url($base_url, PHP_URL_PATH) ?: '';
+            $base_path = parse_url($base_url, PHP_URL_PATH);
+            $base_path = is_string($base_path) ? $base_path : '';
             $url       = $base_url . substr($url, strlen($base_path));
         } else {
             // Turn the pretty URL into an ugly one.

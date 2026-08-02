@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -46,9 +47,9 @@ final class AddSpouseToFamilyAction implements RequestHandlerInterface
         $family = Auth::checkFamilyAccess($family, true);
 
         // Create the new spouse
-        $levels = Validator::parsedBody($request)->array('ilevels');
-        $tags   = Validator::parsedBody($request)->array('itags');
-        $values = Validator::parsedBody($request)->array('ivalues');
+        $levels = Validator::parsedBody($request)->list('ilevels');
+        $tags   = Validator::parsedBody($request)->list('itags');
+        $values = Validator::parsedBody($request)->list('ivalues');
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
         $spouse = $tree->createIndividual("0 @@ INDI\n1 FAMS @" . $family->xref() . '@' . $gedcom);
 
@@ -56,9 +57,9 @@ final class AddSpouseToFamilyAction implements RequestHandlerInterface
         $husb = $family->facts(['HUSB'], false, null, true)->first();
         $wife = $family->facts(['WIFE'], false, null, true)->first();
 
-        if ($husb === null && $spouse->sex() === 'M') {
+        if ($husb === null && $spouse->sex() === Sex::Male) {
             $link = 'HUSB';
-        } elseif ($wife === null && $spouse->sex() === 'F') {
+        } elseif ($wife === null && $spouse->sex() === Sex::Female) {
             $link = 'WIFE';
         } elseif ($husb === null) {
             $link = 'HUSB';
@@ -73,9 +74,9 @@ final class AddSpouseToFamilyAction implements RequestHandlerInterface
         $family->createFact('1 ' . $link . ' @' . $spouse->xref() . '@', false);
 
         // Add any family facts
-        $levels = Validator::parsedBody($request)->array('flevels');
-        $tags   = Validator::parsedBody($request)->array('ftags');
-        $values = Validator::parsedBody($request)->array('fvalues');
+        $levels = Validator::parsedBody($request)->list('flevels');
+        $tags   = Validator::parsedBody($request)->list('ftags');
+        $values = Validator::parsedBody($request)->list('fvalues');
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Family::RECORD_TYPE, $levels, $tags, $values, false);
 
         if ($gedcom !== '') {

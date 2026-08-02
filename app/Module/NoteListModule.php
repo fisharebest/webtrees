@@ -39,8 +39,6 @@ class NoteListModule extends AbstractModule implements ModuleListInterface, Requ
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -62,8 +60,6 @@ class NoteListModule extends AbstractModule implements ModuleListInterface, Requ
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function listMenuClass(): string
     {
@@ -71,10 +67,7 @@ class NoteListModule extends AbstractModule implements ModuleListInterface, Requ
     }
 
     /**
-     * @param Tree                                      $tree
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function listUrl(Tree $tree, array $parameters = []): string
     {
@@ -91,11 +84,6 @@ class NoteListModule extends AbstractModule implements ModuleListInterface, Requ
         return [];
     }
 
-    /**
-     * @param Tree $tree
-     *
-     * @return bool
-     */
     public function listIsEmpty(Tree $tree): bool
     {
         return !DB::table('other')
@@ -104,11 +92,6 @@ class NoteListModule extends AbstractModule implements ModuleListInterface, Requ
             ->exists();
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

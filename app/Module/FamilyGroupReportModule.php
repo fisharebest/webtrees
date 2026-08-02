@@ -45,10 +45,6 @@ class FamilyGroupReportModule extends AbstractModule implements ModuleReportInte
 
     /**
      * Return a menu item for this report.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
      */
     public function getReportMenu(Individual $individual): Menu
     {

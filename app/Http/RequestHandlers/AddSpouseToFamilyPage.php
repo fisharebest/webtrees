@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -49,6 +50,8 @@ final class AddSpouseToFamilyPage implements RequestHandlerInterface
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
+        $sex = Sex::from($sex);
+
         // Name facts.
         $surname_tradition = Registry::surnameTraditionFactory()
             ->make($tree->getPreference('SURNAME_TRADITION'));
@@ -66,11 +69,11 @@ final class AddSpouseToFamilyPage implements RequestHandlerInterface
             'f' => $this->gedcom_edit_service->newFamilyFacts($tree),
         ];
 
-        if ($sex === 'F') {
-            $title = I18N::translate('Add a wife');
-        } else {
-            $title = I18N::translate('Add a husband');
-        }
+        $title = match ($sex) {
+            Sex::Female => I18N::translate('Add a wife'),
+            Sex::Male   => I18N::translate('Add a husband'),
+            default     => I18N::translate('Add a spouse'),
+        };
 
         return $this->viewResponse('edit/new-individual', [
             'facts'               => $facts,

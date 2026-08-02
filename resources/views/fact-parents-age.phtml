@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 
@@ -20,7 +21,7 @@ $family = $individual->childFamilies()->first();
     <span class="age">
     <?php foreach ($family->spouses() as $parent) : ?>
         <?php if ($parent->getBirthDate()->isOK()) : ?>
-            <?php if ($parent->sex() === 'F') : ?>
+            <?php if ($parent->sex() === Sex::Female) : ?>
                 <?= view('fact-parent-age', ['age' => new Age($parent->getBirthDate(), $birth_date), 'died' => $parent->getDeathDate()->isOK() && $parent->getDeathDate()->maximumJulianDay() < $birth_date->minimumJulianDay() + 90, 'sex' => $parent->sex()]) ?>
             <?php else : ?>
                 <?= view('fact-parent-age', ['age' => new Age($parent->getBirthDate(), $birth_date), 'died' => $parent->getDeathDate()->isOK() && $parent->getDeathDate()->maximumJulianDay() < $birth_date->minimumJulianDay(), 'sex' => $parent->sex()]) ?>

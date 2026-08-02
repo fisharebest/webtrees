@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Elements\UnknownElement;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -51,11 +52,6 @@ final class TreePreferencesPage implements RequestHandlerInterface
 
     private UserService $user_service;
 
-    /**
-     * @param ModuleService $module_service
-     * @param TreeService   $tree_service
-     * @param UserService   $user_service
-     */
     public function __construct(
         ModuleService $module_service,
         TreeService $tree_service,
@@ -112,9 +108,9 @@ final class TreePreferencesPage implements RequestHandlerInterface
             ->prepend(I18N::translate('<default theme>'), '');
 
         $privacy_options = [
-            Auth::PRIV_USER => I18N::translate('Show to members'),
-            Auth::PRIV_NONE => I18N::translate('Show to managers'),
-            Auth::PRIV_HIDE => I18N::translate('Hide from everyone'),
+            AccessLevel::Member->value  => AccessLevel::Member->label(),
+            AccessLevel::Manager->value => AccessLevel::Manager->label(),
+            AccessLevel::Hidden->value  => AccessLevel::Hidden->label(),
         ];
 
         // For historical reasons, we have two fields in one
@@ -135,7 +131,7 @@ final class TreePreferencesPage implements RequestHandlerInterface
             ->map(static fn (string $tag): ElementInterface => Registry::elementFactory()->make($tag))
             ->filter(static fn (ElementInterface $element): bool => !$element instanceof UnknownElement)
             ->map(static fn (ElementInterface $element): string => $element->label())
-            ->sort(I18N::comparator());
+            ->sort(I18N::compare(...));
 
         $all_individual_facts = Collection::make(Registry::elementFactory()->make('INDI')->subtags())
             ->filter(static fn (string $value, string $key): bool => !in_array($key, $ignore_facts, true))
@@ -143,7 +139,7 @@ final class TreePreferencesPage implements RequestHandlerInterface
             ->map(static fn (string $tag): ElementInterface => Registry::elementFactory()->make($tag))
             ->filter(static fn (ElementInterface $element): bool => !$element instanceof UnknownElement)
             ->map(static fn (ElementInterface $element): string => $element->label())
-            ->sort(I18N::comparator());
+            ->sort(I18N::compare(...));
 
         $all_surname_traditions = Registry::surnameTraditionFactory()->list();
 

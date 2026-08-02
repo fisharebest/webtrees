@@ -41,7 +41,6 @@ use function array_key_exists;
 use function intdiv;
 use function redirect;
 use function route;
-use function ucfirst;
 use function view;
 
 use const PHP_INT_SIZE;
@@ -71,25 +70,18 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     protected RelationshipService $relationship_service;
 
-    /**
-     * @param ChartService        $chart_service
-     * @param LeafletJsService    $leaflet_js_service
-     * @param RelationshipService $relationship_service
-     */
     public function __construct(
         ChartService $chart_service,
         LeafletJsService $leaflet_js_service,
-        RelationshipService $relationship_service
+        RelationshipService $relationship_service,
     ) {
-        $this->chart_service      = $chart_service;
-        $this->leaflet_js_service = $leaflet_js_service;
+        $this->chart_service        = $chart_service;
+        $this->leaflet_js_service   = $leaflet_js_service;
         $this->relationship_service = $relationship_service;
     }
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -113,8 +105,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -123,10 +113,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     /**
      * Return a menu item for this chart - for use in individual boxes.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu|null
      */
     public function chartBoxMenu(Individual $individual): Menu|null
     {
@@ -135,10 +121,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     /**
      * The title for a specific instance of this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function chartTitle(Individual $individual): string
     {
@@ -149,10 +131,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
@@ -162,11 +141,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
@@ -185,8 +159,8 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
-        $individual  = Registry::individualFactory()->make($xref, $tree);
-        $individual  = Auth::checkIndividualAccess($individual, false, true);
+        $individual = Registry::individualFactory()->make($xref, $tree);
+        $individual = Auth::checkIndividualAccess($individual, false, true);
 
         $map = view('modules/pedigree-map/chart', [
             'data'           => $this->getMapData($request),
@@ -207,13 +181,31 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     }
 
     /**
-     * @param ServerRequestInterface $request
-     *
      * @return array<mixed> $geojson
      */
     protected function getMapData(ServerRequestInterface $request): array
     {
-        $facts = $this->getPedigreeMapFacts($request, $this->chart_service);
+        $tree        = Validator::attributes($request)->tree();
+        $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
+        $xref        = Validator::attributes($request)->isXref()->string('xref');
+        $individual  = Registry::individualFactory()->make($xref, $tree);
+        $individual  = Auth::checkIndividualAccess($individual, false, true);
+        $ancestors   = $this->chart_service->sosaStradonitzAncestorPaths($individual, $generations);
+
+        $facts         = [];
+        $relationships = [];
+
+        foreach ($ancestors as $sosa => $path) {
+            $relationships[$sosa] = $this->relationship_service->nameFromPath($path, I18N::language());
+
+            $birth = $path[array_key_last($path)]
+                ->facts(Gedcom::BIRTH_EVENTS, true)
+                ->first(static fn(Fact $fact): bool => $fact->place()->gedcomName() !== '');
+
+            if ($birth instanceof Fact) {
+                $facts[$sosa] = $birth;
+            }
+        }
 
         $geojson = [
             'type'     => 'FeatureCollection',
@@ -271,7 +263,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                         'summary'   => view('modules/pedigree-map/events', [
                             'class'        => $class,
                             'fact'         => $fact,
-                            'relationship' => $this->getSosaName($sosa),
+                            'relationship' => $relationships[$sosa],
                             'sosa'         => $sosa,
                         ]),
                     ],
@@ -280,58 +272,5 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         }
 
         return $geojson;
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     * @param ChartService           $chart_service
-     *
-     * @return array<Fact>
-     */
-    protected function getPedigreeMapFacts(ServerRequestInterface $request, ChartService $chart_service): array
-    {
-        $tree        = Validator::attributes($request)->tree();
-        $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
-        $xref        = Validator::attributes($request)->isXref()->string('xref');
-        $individual  = Registry::individualFactory()->make($xref, $tree);
-        $individual  = Auth::checkIndividualAccess($individual, false, true);
-        $ancestors   = $chart_service->sosaStradonitzAncestors($individual, $generations);
-        $facts       = [];
-
-        foreach ($ancestors as $sosa => $person) {
-            if ($person->canShow()) {
-                $birth = $person->facts(Gedcom::BIRTH_EVENTS, true)
-                    ->first(static fn (Fact $fact): bool => $fact->place()->gedcomName() !== '');
-
-                if ($birth instanceof Fact) {
-                    $facts[$sosa] = $birth;
-                }
-            }
-        }
-
-        return $facts;
-    }
-
-    /**
-     * builds and returns sosa relationship name in the active language
-     *
-     * @param int $sosa Sosa number
-     *
-     * @return string
-     */
-    protected function getSosaName(int $sosa): string
-    {
-        $path = '';
-
-        while ($sosa > 1) {
-            if ($sosa % 2 === 1) {
-                $path = 'mot' . $path;
-            } else {
-                $path = 'fat' . $path;
-            }
-            $sosa = intdiv($sosa, 2);
-        }
-
-        return ucfirst($this->relationship_service->legacyNameAlgorithm($path));
     }
 }

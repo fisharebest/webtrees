@@ -160,10 +160,6 @@ class GedcomService
 
     /**
      * Convert a GEDCOM tag to a canonical form.
-     *
-     * @param string $tag
-     *
-     * @return string
      */
     public function canonicalTag(string $tag): string
     {

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddChildToFamilyPage;
@@ -15,7 +16,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
 
 /**
  * @var Family              $family
- * @var int                 $fam_access_level
+ * @var AccessLevel         $fam_access_level
  * @var Individual          $individual
  * @var string              $label
  * @var RelationshipService $relationship_service
@@ -36,7 +37,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
             $found |= !$fact->isPendingDeletion();
             $person = $fact->target();
             if ($person instanceof Individual) {
-                $row_class = 'wt-sex-' . strtolower($person->sex());
+                $row_class = $person->sex()->cssClass();
                 if ($fact->isPendingAddition()) {
                     $row_class .= ' wt-new';
                 } elseif ($fact->isPendingDeletion()) {
@@ -75,7 +76,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
             $person = $fact->target();
             if ($person instanceof Individual) {
                 $found |= !$fact->isPendingDeletion();
-                $row_class = 'wt-sex-' . strtolower($person->sex());
+                $row_class = $person->sex()->cssClass();
                 if ($fact->isPendingAddition()) {
                     $row_class .= ' wt-new';
                 } elseif ($fact->isPendingDeletion()) {
@@ -163,7 +164,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
         foreach ($family->facts(['CHIL'], false, $fam_access_level) as $fact) {
             $person = $fact->target();
             if ($person instanceof Individual) {
-                $row_class = 'wt-sex-' . strtolower($person->sex());
+                $row_class = $person->sex()->cssClass();
                 if ($fact->isPendingAddition()) {
                     $child_number++;
                     $row_class .= ' new';

@@ -42,7 +42,7 @@ final class UsersCleanupAction implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $delete = Validator::parsedBody($request)->array('delete');
+        $delete = Validator::parsedBody($request)->list('delete');
 
         foreach ($delete as $user_id) {
             $user = $this->user_service->find((int) $user_id);

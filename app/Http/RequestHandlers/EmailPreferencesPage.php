@@ -64,7 +64,7 @@ final class EmailPreferencesPage implements RequestHandlerInterface
         $DKIM_SELECTOR  = Site::getPreference('DKIM_SELECTOR');
         $DKIM_KEY       = Site::getPreference('DKIM_KEY');
 
-        $hostname = gethostname() ?: 'localhost';
+        $hostname = gethostname() !== false ? gethostname() : 'localhost';
         $ip       = gethostbyname($hostname);
 
         if ($ip !== $hostname) {
@@ -72,10 +72,10 @@ final class EmailPreferencesPage implements RequestHandlerInterface
         }
 
         // Defaults
-        $SMTP_PORT      = $SMTP_PORT ?: '25';
-        $SMTP_HELO      = $SMTP_HELO ?: $hostname;
-        $SMTP_FROM_NAME = $SMTP_FROM_NAME ?: ('no-reply@' . $SMTP_HELO);
-        $SMTP_DISP_NAME = $SMTP_DISP_NAME ?: Webtrees::NAME;
+        $SMTP_PORT      = $SMTP_PORT !== '' ? $SMTP_PORT : '25';
+        $SMTP_HELO      = $SMTP_HELO !== '' ? $SMTP_HELO : $hostname;
+        $SMTP_FROM_NAME = $SMTP_FROM_NAME !== '' ? $SMTP_FROM_NAME : ('no-reply@' . $SMTP_HELO);
+        $SMTP_DISP_NAME = $SMTP_DISP_NAME !== '' ? $SMTP_DISP_NAME : Webtrees::NAME;
 
         $smtp_from_name_valid = $this->email_service->isValidEmail($SMTP_FROM_NAME);
         $smtp_helo_valid      = filter_var($SMTP_HELO, FILTER_VALIDATE_DOMAIN);

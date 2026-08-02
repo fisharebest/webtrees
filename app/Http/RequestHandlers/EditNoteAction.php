@@ -39,12 +39,18 @@ final class EditNoteAction implements RequestHandlerInterface
         // Convert HTML line endings to GEDCOM continuations
         $NOTE = strtr($NOTE, ["\r\n" => "\n1 CONT "]);
 
+        if ($NOTE === '' || str_starts_with($NOTE, "\n")) {
+            $separator = '';
+        } else {
+            $separator = ' ';
+        }
+
         // "\" and "$" are significant in preg replacement strings, so escape them.
         $NOTE = str_replace(['\\', '$'], ['\\\\', '\\$'], $NOTE);
 
         $gedrec = preg_replace(
             '/^0 @' . $note->xref() . '@ NOTE.*(\n1 CONT.*)*/',
-            '0 @' . $note->xref() . '@ NOTE ' . $NOTE,
+            '0 @' . $note->xref() . '@ NOTE' . $separator . $NOTE,
             $note->gedcom()
         );
 

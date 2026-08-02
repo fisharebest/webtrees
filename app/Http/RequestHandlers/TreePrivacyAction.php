@@ -38,15 +38,15 @@ final class TreePrivacyAction implements RequestHandlerInterface
     {
         $tree = Validator::attributes($request)->tree();
 
-        $delete_default_resn_id = Validator::parsedBody($request)->array('delete');
+        $delete_default_resn_id = Validator::parsedBody($request)->list('delete');
 
         DB::table('default_resn')
             ->whereIn('default_resn_id', $delete_default_resn_id)
             ->delete();
 
-        $xrefs     = Validator::parsedBody($request)->array('xref');
-        $tag_types = Validator::parsedBody($request)->array('tag_type');
-        $resns     = Validator::parsedBody($request)->array('resn');
+        $xrefs     = Validator::parsedBody($request)->list('xref');
+        $tag_types = Validator::parsedBody($request)->list('tag_type');
+        $resns     = Validator::parsedBody($request)->list('resn');
 
         $count_xrefs     = count($xrefs);
         $count_tag_types = count($tag_types);

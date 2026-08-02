@@ -47,10 +47,6 @@ class RomanNumeralsService
 
     /**
      * Convert a decimal number to roman numerals
-     *
-     * @param int $number
-     *
-     * @return string
      */
     public function numberToRomanNumerals(int $number): string
     {
@@ -71,10 +67,6 @@ class RomanNumeralsService
 
     /**
      * Convert a roman numeral to decimal
-     *
-     * @param string $roman
-     *
-     * @return int
      */
     public function romanNumeralsToNumber(string $roman): int
     {

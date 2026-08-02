@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -42,11 +43,10 @@ final class AddUnlinkedPage implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
-        $sex  = Registry::elementFactory()->make('INDI:SEX')->default($tree);
         $name = Registry::elementFactory()->make('INDI:NAME')->default($tree);
 
         $facts = [
-            'i' => $this->gedcom_edit_service->newIndividualFacts($tree, $sex, ['1 NAME ' . $name]),
+            'i' => $this->gedcom_edit_service->newIndividualFacts($tree, Sex::Unknown, ['1 NAME ' . $name]),
         ];
 
         $url = route(ManageTrees::class, ['tree' => $tree->name()]);

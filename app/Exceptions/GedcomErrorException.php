@@ -29,9 +29,6 @@ use function e;
  */
 class GedcomErrorException extends Exception
 {
-    /**
-     * @param string $gedcom
-     */
     public function __construct(string $gedcom)
     {
         $message = I18N::translate('Invalid GEDCOM record') . '<pre>' . e($gedcom) . '</pre>';

@@ -30,8 +30,6 @@ trait ModuleReportTrait
 {
     /**
      * A unique internal name for this module (based on the installation folder).
-     *
-     * @return string
      */
     abstract public function name(): string;
 
@@ -39,8 +37,6 @@ trait ModuleReportTrait
 
     /**
      * Name of the XML report file, relative to the resources folder.
-     *
-     * @return string
      */
     public function xmlFilename(): string
     {
@@ -49,10 +45,6 @@ trait ModuleReportTrait
 
     /**
      * Return a menu item for this report.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
      */
     public function getReportMenu(Individual $individual): Menu
     {

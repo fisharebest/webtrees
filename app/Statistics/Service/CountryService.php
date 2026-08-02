@@ -811,13 +811,11 @@ class CountryService
      * Returns the translated country name based on the given two letter country code.
      *
      * @param string $twoLetterCode The two letter country code
-     *
-     * @return string
      */
     public function mapTwoLetterToName(string $twoLetterCode): string
     {
         $threeLetterCode = array_search($twoLetterCode, $this->iso3166(), true);
-        $threeLetterCode = $threeLetterCode ?: '???';
+        $threeLetterCode = $threeLetterCode !== false ? $threeLetterCode : '???';
 
         return $this->getAllCountries()[$threeLetterCode];
     }

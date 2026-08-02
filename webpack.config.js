@@ -2,7 +2,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');  // bundled with webpack
+const TerserPlugin = require('terser-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 // CSS entry points
@@ -26,6 +26,8 @@ module.exports = (env, argv) => ({
 
     entry: {
       'js/vendor.min': path.resolve(__dirname, 'resources/js/vendor.js'),
+      'js/tinymce.min': path.resolve(__dirname, 'resources/js/tinymce.js'),
+      'js/administration.min': path.resolve(__dirname, 'resources/js/administration.js'),
       'js/webtrees.min': [
         path.resolve(__dirname, 'resources/js/webtrees.js'),
         path.resolve(__dirname, 'resources/js/statistics.js'),
@@ -48,17 +50,8 @@ module.exports = (env, argv) => ({
           use: {
             loader: 'babel-loader',
             options: {
+              targets: 'defaults',
               presets: ['@babel/preset-env'],
-            },
-          },
-        },
-        {
-          // jquery-colorbox uses jQuery/$ as free variables without importing
-          test: /jquery-colorbox/,
-          use: {
-            loader: 'imports-loader',
-            options: {
-              imports: ['default jquery jQuery', 'default jquery $'],
             },
           },
         },
@@ -122,15 +115,6 @@ module.exports = (env, argv) => ({
         new TerserPlugin(),
         new CssMinimizerPlugin(),
       ],
-    },
-
-    resolve: {
-      alias: {
-        // jQuery 4's exports map resolves to different files for import vs require,
-        // which causes issues with CJS packages receiving a namespace object instead
-        // of the jQuery function. Pin to the CJS build for universal compatibility.
-        jquery: path.resolve(__dirname, 'node_modules/jquery/dist/jquery.js'),
-      },
     },
 
     performance: {

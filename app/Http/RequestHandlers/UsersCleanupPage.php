@@ -38,8 +38,8 @@ final class UsersCleanupPage implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $inactive_threshold   = Registry::timestampFactory()->now()->subtractMonths(6)->timestamp();
-        $unverified_threshold = Registry::timestampFactory()->now()->subtractDays(7)->timestamp();
+        $inactive_threshold   = Registry::timestampFactory()->now()->subMonths(6)->getTimestamp();
+        $unverified_threshold = Registry::timestampFactory()->now()->subDays(7)->getTimestamp();
 
         $inactive_users = $this->user_service->all()
             ->filter($this->user_service->filterInactive($inactive_threshold))

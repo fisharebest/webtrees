@@ -36,7 +36,6 @@ interface FamilyFactoryInterface extends GedcomRecordFactoryInterface
     /**
      * Create a Family object from a row in the database.
      *
-     * @param Tree $tree
      *
      * @return Closure(object):Family
      */
@@ -45,13 +44,9 @@ interface FamilyFactoryInterface extends GedcomRecordFactoryInterface
     /**
      * Create a Family object from raw GEDCOM data.
      *
-     * @param string      $xref
      * @param string      $gedcom  an empty string for new/pending records
      * @param string|null $pending null for a record with no pending edits,
      *                             empty string for records with pending deletions
-     * @param Tree        $tree
-     *
-     * @return Family
      */
     public function new(string $xref, string $gedcom, string|null $pending, Tree $tree): Family;
 }

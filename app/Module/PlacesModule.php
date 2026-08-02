@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Services\FactSortService;
 use Fisharebest\Webtrees\Services\LeafletJsService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Support\Collection;
@@ -60,18 +61,11 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
     protected const array DEFAULT_ICON = ['color' => 'gold', 'name' => 'bullseye fas'];
 
-    private LeafletJsService $leaflet_js_service;
-
-    private ModuleService $module_service;
-
-    /**
-     * @param LeafletJsService $leaflet_js_service
-     * @param ModuleService    $module_service
-     */
-    public function __construct(LeafletJsService $leaflet_js_service, ModuleService $module_service)
-    {
-        $this->leaflet_js_service = $leaflet_js_service;
-        $this->module_service = $module_service;
+    public function __construct(
+        private LeafletJsService $leaflet_js_service,
+        private ModuleService $module_service,
+        private FactSortService $fact_sort_service,
+    ) {
     }
 
     public function title(): string
@@ -88,8 +82,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * The default position for this tab.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultTabOrder(): int
     {
@@ -98,10 +90,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * Is this tab empty? If so, we don't always need to display it.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
      */
     public function hasTabContent(Individual $individual): bool
     {
@@ -110,11 +98,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
         return $map_providers->isNotEmpty() && $this->getMapData($individual)->features !== [];
     }
 
-    /**
-     * @param Individual $indi
-     *
-     * @return object
-     */
     private function getMapData(Individual $indi): object
     {
         $facts = $this->getPersonalFacts($indi);
@@ -160,7 +143,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     }
 
     /**
-     * @param Individual $individual
      *
      * @return Collection<int,Fact>
      * @throws Exception
@@ -180,14 +162,12 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
             }
         }
 
-        $facts = Fact::sortFacts($facts);
+        $facts = $this->fact_sort_service->sort($facts);
 
         return $facts->filter(static fn (Fact $item): bool => $item->place()->gedcomName() !== '');
     }
 
     /**
-     * @param Individual $individual
-     * @param Fact       $fact
      *
      * @return array<string|Place>
      */
@@ -225,10 +205,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     /**
      * A greyed out tab has no actual content, but may perhaps have
      * options to create content.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
      */
     public function isGrayedOut(Individual $individual): bool
     {
@@ -237,8 +213,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * Can this tab load asynchronously?
-     *
-     * @return bool
      */
     public function canLoadAjax(): bool
     {
@@ -247,10 +221,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * Generate the HTML content of this tab.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function getTabContent(Individual $individual): string
     {

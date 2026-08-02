@@ -44,9 +44,9 @@ final class EditRecordAction implements RequestHandlerInterface
         $record    = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record    = Auth::checkRecordAccess($record, true);
         $keep_chan = Validator::parsedBody($request)->boolean('keep_chan', false);
-        $levels    = Validator::parsedBody($request)->array('levels');
-        $tags      = Validator::parsedBody($request)->array('tags');
-        $values    = Validator::parsedBody($request)->array('values');
+        $levels    = Validator::parsedBody($request)->list('levels');
+        $tags      = Validator::parsedBody($request)->list('tags');
+        $values    = Validator::parsedBody($request)->list('values');
 
         if ($record->tag() === Header::RECORD_TYPE) {
             $gedcom = '0 ' . $record->tag();

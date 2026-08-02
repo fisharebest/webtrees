@@ -120,7 +120,7 @@ final class TreePrivacyPage implements RequestHandlerInterface
                     'label'           => $label,
                 ];
             })
-            ->sort(static fn (object $x, object $y): int => I18N::comparator()($x->label, $y->label))
+            ->sort(static fn (object $x, object $y): int => I18N::compare($x->label, $y->label))
             ->all();
     }
 
@@ -150,7 +150,7 @@ final class TreePrivacyPage implements RequestHandlerInterface
             $tags[$tag] = Registry::elementFactory()->make($tag) -> label();
         }
 
-        uasort($tags, I18N::comparator());
+        uasort($tags, I18N::compare(...));
 
         return array_merge(
             ['' => I18N::translate('All facts and events')],

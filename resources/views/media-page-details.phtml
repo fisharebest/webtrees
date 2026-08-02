@@ -52,7 +52,7 @@ use Illuminate\Support\Collection;
                         <?= Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $record->tree()) ?>
                     <?php elseif (Auth::isEditor($record->tree())) :?>
                         <?php if (!$media_file->fileExists()) : ?>
-                            <p class="alert alert-danger">
+                            <p class="alert alert-danger" role="alert">
                                 <?= I18N::translate('The file “%s” does not exist.', e($media_file->filename())) ?>
                             </p>
                         <?php endif ?>

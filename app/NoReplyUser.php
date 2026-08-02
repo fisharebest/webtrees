@@ -28,8 +28,6 @@ class NoReplyUser implements UserInterface
 {
     /**
      * The user‘s internal identifier.
-     *
-     * @return int
      */
     public function id(): int
     {
@@ -38,20 +36,17 @@ class NoReplyUser implements UserInterface
 
     /**
      * The users email address.
-     *
-     * @return string
      */
     public function email(): string
     {
-        $domain = Site::getPreference('SMTP_HELO') ?: 'localhost';
+        $smtp_helo = Site::getPreference('SMTP_HELO');
+        $domain    = $smtp_helo !== '' ? $smtp_helo : 'localhost';
 
         return 'no-reply@' . $domain;
     }
 
     /**
      * The user‘s real name.
-     *
-     * @return string
      */
     public function realName(): string
     {
@@ -60,31 +55,17 @@ class NoReplyUser implements UserInterface
 
     /**
      * The user‘s login name.
-     *
-     * @return string
      */
     public function userName(): string
     {
         return '';
     }
 
-    /**
-     * @param string $setting_name
-     * @param string $default
-     *
-     * @return string
-     */
     public function getPreference(string $setting_name, string $default = ''): string
     {
         return $default;
     }
 
-    /**
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return void
-     */
     public function setPreference(string $setting_name, string $setting_value): void
     {
     }

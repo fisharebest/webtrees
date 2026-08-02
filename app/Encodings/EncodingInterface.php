@@ -29,28 +29,16 @@ interface EncodingInterface
 
     /**
      * Convert a string from UTF-8 encoding to another encoding.
-     *
-     * @param string $text
-     *
-     * @return string
      */
     public function fromUtf8(string $text): string;
 
     /**
      * Convert a string from another encoding to UTF-8 encoding.
-     *
-     * @param string $text
-     *
-     * @return string
      */
     public function toUtf8(string $text): string;
 
     /**
      * When reading multi-byte encodings using a stream, we must avoid incomplete characters.
-     *
-     * @param string $text
-     *
-     * @return int
      */
     public function convertibleBytes(string $text): int;
 }

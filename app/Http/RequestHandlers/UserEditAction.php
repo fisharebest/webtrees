@@ -45,11 +45,6 @@ final class UserEditAction implements RequestHandlerInterface
 
     private TreeService $tree_service;
 
-    /**
-     * @param EmailService $email_service
-     * @param TreeService  $tree_service
-     * @param UserService  $user_service
-     */
     public function __construct(
         EmailService $email_service,
         TreeService $tree_service,

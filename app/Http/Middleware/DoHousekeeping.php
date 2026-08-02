@@ -49,9 +49,6 @@ class DoHousekeeping implements MiddlewareInterface
 
     private HousekeepingService $housekeeping_service;
 
-    /**
-     * @param HousekeepingService $housekeeping_service
-     */
     public function __construct(HousekeepingService $housekeeping_service)
     {
         $this->housekeeping_service = $housekeeping_service;
@@ -71,11 +68,6 @@ class DoHousekeeping implements MiddlewareInterface
 
     /**
      * Run the various housekeeping services.
-     *
-     * @param FilesystemOperator $data_filesystem
-     * @param FilesystemOperator $root_filesystem
-     *
-     * @return void
      */
     private function runHousekeeping(FilesystemOperator $data_filesystem, FilesystemOperator $root_filesystem): void
     {

@@ -25,8 +25,9 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -40,22 +41,16 @@ trait ModuleCustomTrait
 {
     /**
      * A unique internal name for this module (based on the installation folder).
-     *
-     * @return string
      */
     abstract public function name(): string;
 
     /**
      * Where does this module store its resources
-     *
-     * @return string
      */
     abstract public function resourcesFolder(): string;
 
     /**
      * The person or organisation who created this module.
-     *
-     * @return string
      */
     public function customModuleAuthorName(): string
     {
@@ -74,8 +69,6 @@ trait ModuleCustomTrait
 
     /**
      * A URL that will provide the latest version of this module.
-     *
-     * @return string
      */
     public function customModuleLatestVersionUrl(): string
     {
@@ -84,8 +77,6 @@ trait ModuleCustomTrait
 
     /**
      * Fetch the latest version of this module.
-     *
-     * @return string
      */
     public function customModuleLatestVersion(): string
     {
@@ -96,11 +87,10 @@ trait ModuleCustomTrait
 
         return Registry::cache()->file()->remember($this->name() . '-latest-version', function (): string {
             try {
-                $client = new Client([
-                    'timeout' => 3,
-                ]);
-
-                $response = $client->get($this->customModuleLatestVersionUrl());
+                $http_client     = Registry::container()->get(ClientInterface::class);
+                $request_factory = Registry::container()->get(RequestFactoryInterface::class);
+                $request         = $request_factory->createRequest('GET', $this->customModuleLatestVersionUrl());
+                $response        = $http_client->sendRequest($request);
 
                 if ($response->getStatusCode() === StatusCodeInterface::STATUS_OK) {
                     $version = $response->getBody()->getContents();
@@ -110,7 +100,7 @@ trait ModuleCustomTrait
                         return $version;
                     }
                 }
-            } catch (GuzzleException) {
+            } catch (ClientExceptionInterface) {
                 // Can't connect to the server?
             }
 
@@ -120,8 +110,6 @@ trait ModuleCustomTrait
 
     /**
      * Where to get support for this module.  Perhaps a github repository?
-     *
-     * @return string
      */
     public function customModuleSupportUrl(): string
     {
@@ -131,7 +119,6 @@ trait ModuleCustomTrait
     /**
      * Additional/updated translations.
      *
-     * @param string $language
      *
      * @return array<string,string>
      */
@@ -144,8 +131,6 @@ trait ModuleCustomTrait
      * Create a URL for an asset.
      *
      * @param string $asset e.g. "css/theme.css" or "img/banner.png"
-     *
-     * @return string
      */
     public function assetUrl(string $asset): string
     {
@@ -164,10 +149,6 @@ trait ModuleCustomTrait
 
     /**
      * Serve a CSS/JS file.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
      */
     public function getAssetAction(ServerRequestInterface $request): ResponseInterface
     {
@@ -176,7 +157,7 @@ trait ModuleCustomTrait
 
         // Do not allow requests that try to access parent folders.
         if (str_contains($asset, '..')) {
-            throw new HttpAccessDeniedException($asset);
+            throw new HttpAccessDeniedException();
         }
 
         // Find the file for this asset.
@@ -185,7 +166,7 @@ trait ModuleCustomTrait
         $file = $this->resourcesFolder() . $asset;
 
         if (!file_exists($file)) {
-            throw new HttpNotFoundException(e($file));
+            throw new HttpNotFoundException();
         }
 
         $content   = file_get_contents($file);

@@ -42,8 +42,8 @@ final class SiteTagsAction implements RequestHandlerInterface
             Site::setPreference('HIDE_' . $setting, (string) $value);
         }
 
-        $custom_family_tags     = Validator::parsedBody($request)->array('custom_family_tags');
-        $custom_individual_tags = Validator::parsedBody($request)->array('custom_individual_tags');
+        $custom_family_tags     = Validator::parsedBody($request)->list('custom_family_tags');
+        $custom_individual_tags = Validator::parsedBody($request)->list('custom_individual_tags');
         $custom_gedcom_l_tags   = Validator::parsedBody($request)->boolean('custom_gedcom_l_tags', false);
         $custom_fam_fact        = Validator::parsedBody($request)->boolean('custom_fam_fact', false);
         $custom_fam_nchi        = Validator::parsedBody($request)->boolean('custom_fam_nchi', false);

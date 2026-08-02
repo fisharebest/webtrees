@@ -29,9 +29,6 @@ class TreeUser implements UserInterface
 {
     private Tree $tree;
 
-    /**
-     * @param Tree $tree
-     */
     public function __construct(Tree $tree)
     {
         $this->tree = $tree;
@@ -39,8 +36,6 @@ class TreeUser implements UserInterface
 
     /**
      * The user‘s internal identifier.
-     *
-     * @return int
      */
     public function id(): int
     {
@@ -49,8 +44,6 @@ class TreeUser implements UserInterface
 
     /**
      * The users email address.
-     *
-     * @return string
      */
     public function email(): string
     {
@@ -63,12 +56,6 @@ class TreeUser implements UserInterface
         return Site::getPreference('SMTP_FROM_NAME');
     }
 
-    /**
-     * @param string $setting_name
-     * @param string $default
-     *
-     * @return string
-     */
     public function getPreference(string $setting_name, string $default = ''): string
     {
         return $default;
@@ -76,8 +63,6 @@ class TreeUser implements UserInterface
 
     /**
      * The user‘s real name.
-     *
-     * @return string
      */
     public function realName(): string
     {
@@ -86,20 +71,12 @@ class TreeUser implements UserInterface
 
     /**
      * The user‘s login name.
-     *
-     * @return string
      */
     public function userName(): string
     {
         return '';
     }
 
-    /**
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return void
-     */
     public function setPreference(string $setting_name, string $setting_value): void
     {
     }

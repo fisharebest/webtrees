@@ -32,7 +32,7 @@ final class SearchPhoneticAction implements RequestHandlerInterface
             'firstname'    => Validator::parsedBody($request)->string('firstname'),
             'lastname'     => Validator::parsedBody($request)->string('lastname'),
             'place'        => Validator::parsedBody($request)->string('place'),
-            'search_trees' => Validator::parsedBody($request)->array('search_trees'),
+            'search_trees' => Validator::parsedBody($request)->list('search_trees'),
             'soundex'      => Validator::parsedBody($request)->string('soundex'),
             'tree'         => Validator::attributes($request)->tree()->name(),
         ]));
