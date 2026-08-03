@@ -31,14 +31,15 @@ use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\LocationPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\SubmitterPage;
+use Fisharebest\Webtrees\Http\Controllers\FamilyPage;
+use Fisharebest\Webtrees\Http\Controllers\IndividualPage;
+use Fisharebest\Webtrees\Http\Controllers\LocationPage;
+use Fisharebest\Webtrees\Http\Controllers\MediaPage;
+use Fisharebest\Webtrees\Http\Controllers\NotePage;
+use Fisharebest\Webtrees\Http\Controllers\RepositoryPage;
+use Fisharebest\Webtrees\Http\Controllers\SourcePage;
+use Fisharebest\Webtrees\Http\Controllers\SubmitterPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -135,19 +136,19 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $badge   = view('components/badge', ['count' => $count]);
 
         $submenus = [
-            new Menu($this->title() . ' ' . $badge, route('module', [
+            new Menu($this->title() . ' ' . $badge, route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Show',
                 'tree'   => $tree->name(),
             ]), 'menu-clippings-cart', ['rel' => 'nofollow']),
         ];
 
-        $action = array_search($route->name, self::ROUTES_WITH_RECORDS, true);
+        $action = array_search($route->controller, self::ROUTES_WITH_RECORDS, true);
         if ($action !== false) {
-            $xref = $route->attributes['xref'];
+            $xref = $request->getAttribute('xref', '');
             assert(is_string($xref));
 
-            $add_route = route('module', [
+            $add_route = route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Add' . $action,
                 'xref'   => $xref,
@@ -158,13 +159,13 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         }
 
         if (!$this->isCartEmpty($tree)) {
-            $submenus[] = new Menu(I18N::translate('Empty the clippings cart'), route('module', [
+            $submenus[] = new Menu(I18N::translate('Empty the clippings cart'), route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Empty',
                 'tree'   => $tree->name(),
             ]), 'menu-clippings-empty', ['rel' => 'nofollow']);
 
-            $submenus[] = new Menu(I18N::translate('Download'), route('module', [
+            $submenus[] = new Menu(I18N::translate('Download'), route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'DownloadForm',
                 'tree'   => $tree->name(),
@@ -296,7 +297,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $cart[$tree->name()] = [];
         Session::put('cart', $cart);
 
-        $url = route('module', [
+        $url = route(ModuleAction::class, [
             'module' => $this->name(),
             'action' => 'Show',
             'tree'   => $tree->name(),
@@ -315,7 +316,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         unset($cart[$tree->name()][$xref]);
         Session::put('cart', $cart);
 
-        $url = route('module', [
+        $url = route(ModuleAction::class, [
             'module' => $this->name(),
             'action' => 'Show',
             'tree'   => $tree->name(),

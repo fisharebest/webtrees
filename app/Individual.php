@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Enums\DateType;
 use Fisharebest\Webtrees\Enums\Sex;
-use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
+use Fisharebest\Webtrees\Http\Controllers\IndividualPage;
 use Illuminate\Support\Collection;
 
 use function array_key_exists;

@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\SharedNotePage;
+use Fisharebest\Webtrees\Http\Controllers\SharedNotePage;
 
 /**
  * A GEDCOM shared note (SNOTE) object.

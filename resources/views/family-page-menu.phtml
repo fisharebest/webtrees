@@ -5,13 +5,13 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Http\RequestHandlers\AddChildToFamilyPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
-use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToFamilyPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ChangeFamilyMembersPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\DeleteRecord;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditRawRecordPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenPage;
+use Fisharebest\Webtrees\Http\Controllers\AddChildToFamily;
+use Fisharebest\Webtrees\Http\Controllers\AddNewFact;
+use Fisharebest\Webtrees\Http\Controllers\AddSpouseToFamily;
+use Fisharebest\Webtrees\Http\Controllers\ChangeFamilyMembers;
+use Fisharebest\Webtrees\Http\Controllers\DeleteRecord;
+use Fisharebest\Webtrees\Http\Controllers\EditRawRecord;
+use Fisharebest\Webtrees\Http\Controllers\ReorderChildren;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
@@ -30,32 +30,32 @@ use Illuminate\Support\Collection;
     </button>
 
     <div class="dropdown-menu dropdown-menu-end wt-page-menu-items" aria-labelledby="page-menu">
-        <a class="dropdown-item" href="<?= e(route(ChangeFamilyMembersPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+        <a class="dropdown-item" href="<?= e(route(ChangeFamilyMembers::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
             <?= view('icons/family') ?>
             <?= I18N::translate('Change family members') ?>
         </a>
 
         <?php if ($record->husband() === null) : ?>
-            <a class="dropdown-item" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'sex' => 'M'])) ?>">
+            <a class="dropdown-item" href="<?= e(route(AddSpouseToFamily::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'sex' => 'M'])) ?>">
                 <?= view('icons/add') ?>
                 <?= I18N::translate('Add a husband') ?>
             </a>
         <?php endif ?>
 
         <?php if ($record->wife() === null) : ?>
-            <a class="dropdown-item" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'sex' => 'F'])) ?>">
+            <a class="dropdown-item" href="<?= e(route(AddSpouseToFamily::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'sex' => 'F'])) ?>">
                 <?= view('icons/add') ?>
                 <?= I18N::translate('Add a wife') ?>
             </a>
         <?php endif ?>
 
-        <a class="dropdown-item" href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'sex' => 'U'])) ?>">
+        <a class="dropdown-item" href="<?= e(route(AddChildToFamily::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'sex' => 'U'])) ?>">
             <?= view('icons/add') ?>
             <?= I18N::translate('Add a child') ?>
         </a>
 
         <?php if ($record->numberOfChildren() > 1) : ?>
-            <a class="dropdown-item" href="<?= e(route(ReorderChildrenPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+            <a class="dropdown-item" href="<?= e(route(ReorderChildren::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order children') ?>
             </a>
@@ -84,7 +84,7 @@ use Illuminate\Support\Collection;
         </a>
 
         <?php if (Auth::isAdmin() || $record->tree()->getPreference('SHOW_GEDCOM_RECORD') === '1') : ?>
-            <a class="dropdown-item" href="<?= e(route(EditRawRecordPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+            <a class="dropdown-item" href="<?= e(route(EditRawRecord::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/edit') ?>
                 <?= I18N::translate('Edit the raw GEDCOM') ?>
             </a>

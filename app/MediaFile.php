@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\MediaFileDownload;
-use Fisharebest\Webtrees\Http\RequestHandlers\MediaFileThumbnail;
+use Fisharebest\Webtrees\Http\Controllers\MediaFileDownload;
+use Fisharebest\Webtrees\Http\Controllers\MediaFileThumbnail;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToCheckFileExistence;
 use League\Flysystem\UnableToReadFile;

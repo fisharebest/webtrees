@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Factories\MarkdownFactory;
-use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
+use Fisharebest\Webtrees\Http\Controllers\NotePage;
 use Illuminate\Support\Str;
 
 use function explode;

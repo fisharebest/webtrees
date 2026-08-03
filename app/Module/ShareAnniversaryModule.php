@@ -33,7 +33,6 @@ use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 use Sabre\VObject\Component\VCalendar;
 
 use function response;
@@ -41,7 +40,7 @@ use function route;
 use function strip_tags;
 use function view;
 
-class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterface, RequestHandlerInterface
+class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterface
 {
     use ModuleShareTrait;
 
@@ -55,8 +54,7 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class);
     }
 
     public function title(): string
@@ -105,7 +103,7 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
         return '';
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();
         $xref    = Validator::attributes($request)->isXref()->string('xref');

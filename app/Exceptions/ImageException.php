@@ -19,22 +19,23 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Exceptions;
 
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use RuntimeException;
 
 final class ImageException extends RuntimeException
 {
     public function __construct(
-        readonly private int $status_code,
+        readonly private HttpStatusCode $status_code,
         readonly private string $filename,
         readonly private string $error,
     ) {
-        parent::__construct($error, $status_code);
+        parent::__construct($error, $status_code->value);
     }
 
     public function toSvg(): string
     {
         return view('errors/image-svg', [
-            'status'   => $this->status_code,
+            'status'   => $this->status_code->value,
             'filename' => $this->filename,
             'message'  => $this->error,
         ]);

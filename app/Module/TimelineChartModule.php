@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Comparators\FactComparator;
 use Fisharebest\Webtrees\Date\GregorianDate;
@@ -34,14 +33,13 @@ use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 use function in_array;
 use function redirect;
 use function route;
 use function usort;
 
-class TimelineChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
+class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
@@ -75,10 +73,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST)
-            ->extras(['middleware' => [AuthNotRobot::class]]);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class, [AuthNotRobot::class]);
     }
 
     public function title(): string
@@ -114,7 +109,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();
         $user  = Validator::attributes($request)->user();
@@ -123,16 +118,6 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         $ajax  = Validator::queryParams($request)->boolean('ajax', false);
         $xrefs = array_unique($xrefs);
 
-        // Convert POST requests into GET requests for pretty URLs.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            $xrefs[] = Validator::parsedBody($request)->isXref()->string('add', '');
-
-            return redirect(route(static::class, [
-                'tree'  => $tree->name(),
-                'scale' => $scale,
-                'xrefs' => $xrefs,
-            ]));
-        }
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
@@ -292,5 +277,17 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         ]);
 
         return response($html);
+    }
+
+    public function post(ServerRequestInterface $request, Tree $tree, int $scale, string $add = ''): ResponseInterface
+    {
+        $xrefs = Validator::parsedBody($request)->array('xrefs');
+        $xrefs[] = $add;
+
+        return redirect(route(static::class, [
+            'tree'  => $tree->name(),
+            'scale' => $scale,
+            'xrefs' => $xrefs,
+        ]));
     }
 }

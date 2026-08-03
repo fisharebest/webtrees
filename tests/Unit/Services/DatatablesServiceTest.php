@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Services;
 
-use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Illuminate\Support\Collection;
@@ -42,7 +42,7 @@ class DatatablesServiceTest extends TestCase
         ]);
 
         $request = self::createRequest(
-            RequestMethodInterface::METHOD_POST,
+            HttpRequestMethod::POST->value,
             ['draw' => '1'],
             [
                 'draw'   => '7',

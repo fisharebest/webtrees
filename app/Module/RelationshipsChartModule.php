@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Closure;
-use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Algorithm\Dijkstra;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
@@ -36,12 +35,12 @@ use Fisharebest\Webtrees\Enums\TextDirection;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\RelationshipService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_map;
 use function asset;
@@ -61,7 +60,7 @@ use function route;
 use function sort;
 use function view;
 
-class RelationshipsChartModule extends AbstractModule implements ModuleChartInterface, ModuleConfigInterface, RequestHandlerInterface
+class RelationshipsChartModule extends AbstractModule implements ModuleChartInterface, ModuleConfigInterface
 {
     use ModuleChartTrait;
     use ModuleConfigTrait;
@@ -96,14 +95,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST)
-            ->extras(['middleware' => [AuthNotRobot::class]])
-            ->tokens([
-                'ancestors' => '\d+',
-                'recursion' => '\d+',
-            ]);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class, [AuthNotRobot::class]);
     }
 
     public function description(): string
@@ -182,7 +174,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             ] + $parameters + $default_parameters);
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree      = Validator::attributes($request)->tree();
         $xref      = Validator::attributes($request)->isXref()->string('xref');
@@ -192,16 +184,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         $recursion = Validator::attributes($request)->integer('recursion');
         $user      = Validator::attributes($request)->user();
 
-        // Convert POST requests into GET requests for pretty URLs.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            return redirect(route(static::class, [
-                'tree'      => $tree->name(),
-                'ancestors' => Validator::parsedBody($request)->string('ancestors', ''),
-                'recursion' => Validator::parsedBody($request)->string('recursion', ''),
-                'xref'      => Validator::parsedBody($request)->string('xref', ''),
-                'xref2'     => Validator::parsedBody($request)->string('xref2', ''),
-            ]));
-        }
 
         $individual1 = Registry::individualFactory()->make($xref, $tree);
         $individual2 = Registry::individualFactory()->make($xref2, $tree);
@@ -621,5 +603,21 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             '0'            => I18N::translate('Find the closest relationships'),
             $max_recursion => $text,
         ];
+    }
+
+    public function post(
+        Tree $tree,
+        int $ancestors,
+        int $recursion,
+        Individual $xref,
+        Individual $xref2,
+    ): ResponseInterface {
+        return redirect(route(static::class, [
+            'tree'      => $tree->name(),
+            'ancestors' => $ancestors,
+            'recursion' => $recursion,
+            'xref'      => $xref->xref(),
+            'xref2'     => $xref2->xref(),
+        ]));
     }
 }

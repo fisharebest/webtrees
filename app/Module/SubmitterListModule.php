@@ -30,9 +30,8 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
-class SubmitterListModule extends AbstractModule implements ModuleListInterface, RequestHandlerInterface
+class SubmitterListModule extends AbstractModule implements ModuleListInterface
 {
     use ModuleListTrait;
 
@@ -45,8 +44,7 @@ class SubmitterListModule extends AbstractModule implements ModuleListInterface,
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class);
     }
 
     public function title(): string
@@ -100,7 +98,7 @@ class SubmitterListModule extends AbstractModule implements ModuleListInterface,
             ->exists();
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
         $user = Validator::attributes($request)->user();

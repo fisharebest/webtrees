@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Middleware;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Exceptions\ImageException;
-use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpInternalServerErrorException;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\PhpService;
@@ -46,7 +46,7 @@ class HandleExceptionsTest extends TestCase
         $tree_service = self::createStub(TreeService::class);
 
         $handler = self::createStub(RequestHandlerInterface::class);
-        $handler->method('handle')->willThrowException(new HttpServerErrorException('eek'));
+        $handler->method('handle')->willThrowException(new HttpInternalServerErrorException('eek'));
 
         $module_service = self::createStub(ModuleService::class);
         $module_service->method('findByInterface')->willReturn(new Collection());
@@ -57,7 +57,7 @@ class HandleExceptionsTest extends TestCase
         $middleware = new HandleExceptions(new PhpService(), $tree_service);
         $response   = $middleware->process($request, $handler);
 
-        self::assertSame(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR, $response->getStatusCode());
+        self::assertSame(HttpStatusCode::InternalServerError->value, $response->getStatusCode());
     }
 
     public function testMiddlewareRendersSvgForImageException(): void
@@ -65,14 +65,14 @@ class HandleExceptionsTest extends TestCase
         $tree_service = self::createStub(TreeService::class);
 
         $handler = self::createStub(RequestHandlerInterface::class);
-        $handler->method('handle')->willThrowException(new ImageException(500, 'broken.jpg', 'File is corrupt'));
+        $handler->method('handle')->willThrowException(new ImageException(HttpStatusCode::InternalServerError, 'broken.jpg', 'File is corrupt'));
 
         $request    = self::createRequest();
         $middleware = new HandleExceptions(new PhpService(), $tree_service);
         $response   = $middleware->process($request, $handler);
         $body       = $response->getBody()->getContents();
 
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertSame('image/svg+xml', $response->getHeaderLine('content-type'));
         self::assertStringContainsString('500', $body);
         self::assertStringContainsString('broken.jpg', $body);

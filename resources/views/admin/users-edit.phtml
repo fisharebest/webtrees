@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserEditAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserListPage;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\UserEdit;
+use Fisharebest\Webtrees\Http\Controllers\UserListPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -33,7 +33,7 @@ use Illuminate\Support\Collection;
 <h1><?= $title ?></h1>
 
 <div id="admin-users-edit-page">
-<form method="post" action="<?= e(route(UserEditAction::class)) ?>" class="form-horizontal" autocomplete="off">
+<form method="post" action="<?= e(route(UserEdit::class)) ?>" class="form-horizontal" autocomplete="off">
     <input type="hidden" name="user_id" value="<?= $user->id() ?>">
 
     <!-- REAL NAME -->

@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Tests\Feature;
 use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Factories\CacheFactory;
-use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\ModuleService;

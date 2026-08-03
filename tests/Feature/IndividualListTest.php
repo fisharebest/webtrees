@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Feature;
 
-use Fig\Http\Message\RequestMethodInterface;
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
@@ -78,22 +78,22 @@ class IndividualListTest extends TestCase
         $this->tree->createIndividual("0 @@ INDI\n1 NAME /Dza/");
 
         I18N::init('en-US');
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $this->tree]);
-        $response = $module->handle($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, [], [], [], ['tree' => $this->tree]);
+        $response = $module->get($request);
         $html     = $response->getBody()->getContents();
         preg_match_all('/%2Findividual-list&amp;alpha=([^"&]+)/', $html, $matches);
         self::assertEquals(['A', 'C', 'D', 'Æ'], array_map(rawurldecode(...), $matches[1]));
 
         I18N::init('sv');
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $this->tree]);
-        $response = $module->handle($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, [], [], [], ['tree' => $this->tree]);
+        $response = $module->get($request);
         $html     = $response->getBody()->getContents();
         preg_match_all('/%2Findividual-list&amp;alpha=([^"&]+)/', $html, $matches);
         self::assertEquals(['A', 'C', 'D', 'Å', 'Æ'], array_map(rawurldecode(...), $matches[1]));
 
         I18N::init('hu');
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $this->tree]);
-        $response = $module->handle($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, [], [], [], ['tree' => $this->tree]);
+        $response = $module->get($request);
         $html     = $response->getBody()->getContents();
         preg_match_all('/%2Findividual-list&amp;alpha=([^"&]+)/', $html, $matches);
         self::assertEquals(['A', 'C', 'CS', 'DZ', 'Æ'], array_map(rawurldecode(...), $matches[1]));
@@ -104,20 +104,20 @@ class IndividualListTest extends TestCase
         $module = new IndividualListModule();
 
         I18N::init('en-US');
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'Muller'], [], [], ['tree' => $this->tree]);
-        $response = $module->handle($request);
-        self::assertSame(StatusCodeInterface::STATUS_MOVED_PERMANENTLY, $response->getStatusCode());
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['surname' => 'Muller'], [], [], ['tree' => $this->tree]);
+        $response = $module->get($request);
+        self::assertSame(HttpStatusCode::MovedPermanently->value, $response->getStatusCode());
         self::assertStringContainsString('surname=MULLER', $response->getHeaderLine('Location'));
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'MÜLLER'], [], [], ['tree' => $this->tree]);
-        $response = $module->handle($request);
-        self::assertSame(StatusCodeInterface::STATUS_MOVED_PERMANENTLY, $response->getStatusCode());
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['surname' => 'MÜLLER'], [], [], ['tree' => $this->tree]);
+        $response = $module->get($request);
+        self::assertSame(HttpStatusCode::MovedPermanently->value, $response->getStatusCode());
         self::assertStringContainsString('surname=MULLER', $response->getHeaderLine('Location'));
 
         I18N::init('de');
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'MÜLLER'], [], [], ['tree' => $this->tree]);
-        $response = $module->handle($request);
-        self::assertSame(StatusCodeInterface::STATUS_MOVED_PERMANENTLY, $response->getStatusCode());
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['surname' => 'MÜLLER'], [], [], ['tree' => $this->tree]);
+        $response = $module->get($request);
+        self::assertSame(HttpStatusCode::MovedPermanently->value, $response->getStatusCode());
         self::assertStringContainsString('surname=MUELLER', $response->getHeaderLine('Location'));
     }
 
@@ -130,21 +130,21 @@ class IndividualListTest extends TestCase
         $i3 = $this->tree->createIndividual("0 @@ INDI\n1 NAME /Mueller/");
 
         I18N::init('en-US');
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'MULLER'], [], [], ['tree' => $this->tree]);
-        $response = $module->handle($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['surname' => 'MULLER'], [], [], ['tree' => $this->tree]);
+        $response = $module->get($request);
         $html     = $response->getBody()->getContents();
         preg_match_all('/%2Fname%2Findividual%2F(X\d+)%2F/', $html, $matches);
         self::assertEqualsCanonicalizing([$i1->xref(), $i2->xref()], $matches[1], 'English, so U should match U and Ü');
 
         I18N::init('de');
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'MULLER'], [], [], ['tree' => $this->tree]);
-        $response = $module->handle($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['surname' => 'MULLER'], [], [], ['tree' => $this->tree]);
+        $response = $module->get($request);
         $html     = $response->getBody()->getContents();
         preg_match_all('/%2Fname%2Findividual%2F(X\d+)%2F/', $html, $matches);
         self::assertEqualsCanonicalizing([$i1->xref()], $matches[1], 'German, so U should only match U');
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'MUELLER'], [], [], ['tree' => $this->tree]);
-        $response = $module->handle($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['surname' => 'MUELLER'], [], [], ['tree' => $this->tree]);
+        $response = $module->get($request);
         $html     = $response->getBody()->getContents();
         preg_match_all('/%2Fname%2Findividual%2F(X\d+)%2F/', $html, $matches);
         self::assertEqualsCanonicalizing([$i2->xref(), $i3->xref()], $matches[1], 'German, so UE should also match Ü');
@@ -157,14 +157,14 @@ class IndividualListTest extends TestCase
         $i1 = $this->tree->createIndividual("0 @@ INDI\n1 NAME John //");
         $i2 = $this->tree->createIndividual("0 @@ INDI\n1 NAME John");
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => '@'], [], [], ['tree' => $this->tree]);
-        $response = $module->handle($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['alpha' => '@'], [], [], ['tree' => $this->tree]);
+        $response = $module->get($request);
         $html     = $response->getBody()->getContents();
         preg_match_all('/%2Fname%2Findividual%2F(X\d+)%2F/', $html, $matches);
         self::assertEqualsCanonicalizing([$i1->xref()], $matches[1]);
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => ','], [], [], ['tree' => $this->tree]);
-        $response = $module->handle($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['alpha' => ','], [], [], ['tree' => $this->tree]);
+        $response = $module->get($request);
         $html     = $response->getBody()->getContents();
         preg_match_all('/%2Fname%2Findividual%2F(X\d+)%2F/', $html, $matches);
         self::assertEqualsCanonicalizing([$i2->xref()], $matches[1]);
@@ -179,14 +179,14 @@ class IndividualListTest extends TestCase
         $this->tree->createIndividual("0 @@ INDI\n1 NAME Peter //");
         $this->tree->createIndividual("0 @@ INDI\n1 NAME Paul");
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['show_all' => 'yes'], [], [], ['tree' => $this->tree]);
-        $response = $module->handle($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['show_all' => 'yes'], [], [], ['tree' => $this->tree]);
+        $response = $module->get($request);
         $html     = $response->getBody()->getContents();
         preg_match_all('/individual-list&amp;surname=([A-Z]+)/', $html, $matches);
         self::assertEqualsCanonicalizing(['BLACK', 'WHITE'], $matches[1]);
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['show_all' => 'yes', 'show' => 'indi'], [], [], ['tree' => $this->tree]);
-        $response = $module->handle($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['show_all' => 'yes', 'show' => 'indi'], [], [], ['tree' => $this->tree]);
+        $response = $module->get($request);
         $html     = $response->getBody()->getContents();
         preg_match_all('/%2Fname%2Findividual%2F(X\d+)%2F/', $html, $matches);
         self::assertEqualsCanonicalizing([$i1->xref(), $i2->xref()], $matches[1]);
@@ -201,14 +201,14 @@ class IndividualListTest extends TestCase
         $this->tree->createIndividual("0 @@ INDI\n1 NAME Peter /White/");
         $this->tree->createIndividual("0 @@ INDI\n1 NAME Paul /Green/");
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => 'B'], [], [], ['tree' => $this->tree]);
-        $response = $module->handle($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['alpha' => 'B'], [], [], ['tree' => $this->tree]);
+        $response = $module->get($request);
         $html     = $response->getBody()->getContents();
         preg_match_all('/individual-list&amp;surname=([A-Z]+)/', $html, $matches);
         self::assertEqualsCanonicalizing(['BLACK', 'BROWN'], $matches[1]);
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => 'B', 'show' => 'indi'], [], [], ['tree' => $this->tree]);
-        $response = $module->handle($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['alpha' => 'B', 'show' => 'indi'], [], [], ['tree' => $this->tree]);
+        $response = $module->get($request);
         $html     = $response->getBody()->getContents();
         preg_match_all('/%2Fname%2Findividual%2F(X\d+)%2F/', $html, $matches);
         self::assertEqualsCanonicalizing([$i1->xref(), $i2->xref()], $matches[1]);

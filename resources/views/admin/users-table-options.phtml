@@ -3,10 +3,10 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser;
-use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\Masquerade;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserEditPage;
+use Fisharebest\Webtrees\Http\Controllers\DeleteUser;
+use Fisharebest\Webtrees\Http\Controllers\HomePage;
+use Fisharebest\Webtrees\Http\Controllers\Masquerade;
+use Fisharebest\Webtrees\Http\Controllers\UserEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\User;
 
@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\User;
     <div class="dropdown-menu" aria-labelledby="edit-user-button-<?= $user->id() ?>">
         <div class="dropdown-item">
             <?= view('icons/edit') ?>
-            <a href="<?= e(route(UserEditPage::class, ['user_id' => $user->id()])) ?>">
+            <a href="<?= e(route(UserEdit::class, ['user_id' => $user->id()])) ?>">
                 <?= I18N::translate('Edit') ?>
             </a>
         </div>

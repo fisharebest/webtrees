@@ -25,8 +25,8 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Enums\Role;
-use Fisharebest\Webtrees\Http\RequestHandlers\ContactPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
+use Fisharebest\Webtrees\Http\Controllers\Contact;
+use Fisharebest\Webtrees\Http\Controllers\Message;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\User;
@@ -333,14 +333,14 @@ class UserService
 
         if ($user instanceof User) {
             // Logged-in users send direct messages
-            $url = route(MessagePage::class, [
+            $url = route(Message::class, [
                 'to'   => $contact_user->userName(),
                 'tree' => $tree->name(),
                 'url'  => (string) $request->getUri(),
             ]);
         } else {
             // Visitors use the contact form.
-            $url = route(ContactPage::class, [
+            $url = route(Contact::class, [
                 'to'   => $contact_user->userName(),
                 'tree' => $tree->name(),
                 'url'  => (string) $request->getUri(),

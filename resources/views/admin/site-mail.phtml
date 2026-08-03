@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesAction;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\EmailPreferences;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Webtrees;
 
@@ -36,7 +36,7 @@ use Fisharebest\Webtrees\Webtrees;
     <?= I18N::translate('See %s for more information.', '<a class="alert-link" href="' . e(Webtrees::URL_FAQ_EMAIL) . '">' . e(Webtrees::URL_FAQ_EMAIL) . '</a>') ?>
 </div>
 
-<form method="post" action="<?= e(route(EmailPreferencesAction::class)) ?>" class="form-horizontal">
+<form method="post" action="<?= e(route(EmailPreferences::class)) ?>" class="form-horizontal">
     <div class="row mb-3">
         <label for="SMTP_ACTIVE" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */

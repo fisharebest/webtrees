@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Tree;
@@ -39,8 +40,8 @@ use Illuminate\Support\Collection;
 
         <?php if (Auth::isManager($tree)) : ?>
             <hr>
-            <form method="post" action="<?= e(route('module', ['module' => 'gedcom_news', 'action' => 'DeleteNews', 'news_id' => $article->news_id, 'tree' => $tree->name()])) ?>">
-                <a class="btn btn-link" href="<?= e(route('module', ['module' => 'gedcom_news', 'action' => 'EditNews', 'news_id' => $article->news_id, 'tree' => $tree->name()])) ?>">
+            <form method="post" action="<?= e(route(ModuleAction::class, ['module' => 'gedcom_news', 'action' => 'DeleteNews', 'news_id' => $article->news_id, 'tree' => $tree->name()])) ?>">
+                <a class="btn btn-link" href="<?= e(route(ModuleAction::class, ['module' => 'gedcom_news', 'action' => 'EditNews', 'news_id' => $article->news_id, 'tree' => $tree->name()])) ?>">
                     <?= I18N::translate('Edit') ?>
                 </a>
                 |
@@ -60,7 +61,7 @@ use Illuminate\Support\Collection;
 
 <?php if (Auth::isManager($tree)) : ?>
     <p>
-        <a class="btn btn-link" href="<?= e(route('module', ['module' => 'gedcom_news', 'action' => 'EditNews', 'tree' => $tree->name()])) ?>">
+        <a class="btn btn-link" href="<?= e(route(ModuleAction::class, ['module' => 'gedcom_news', 'action' => 'EditNews', 'tree' => $tree->name()])) ?>">
             <?= I18N::translate('Add a news article') ?>
         </a>
     </p>

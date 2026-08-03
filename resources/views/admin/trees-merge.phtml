@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\MergeTreesAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\RenumberTreePage;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\MergeTrees;
+use Fisharebest\Webtrees\Http\Controllers\RenumberTree;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -33,18 +33,18 @@ use Fisharebest\Webtrees\Tree;
         <?= I18N::translate('You must renumber the records in one of the trees before you can merge them.') ?>
     </p>
     <p>
-        <a class="current" href="<?= e(route(RenumberTreePage::class, ['tree' => $tree1->name()])) ?>">
+        <a class="current" href="<?= e(route(RenumberTree::class, ['tree' => $tree1->name()])) ?>">
             <?= I18N::translate('Renumber XREFs') ?> — <?= e($tree1->title()) ?>
         </a>
     </p>
     <p>
-        <a class="current" href="<?= e(route(RenumberTreePage::class, ['tree' => $tree2->name()])) ?>">
+        <a class="current" href="<?= e(route(RenumberTree::class, ['tree' => $tree2->name()])) ?>">
             <?= I18N::translate('Renumber XREFs') ?> — <?= e($tree2->title()) ?>
         </a>
     </p>
 <?php endif ?>
 
-<form method="post" action="<?= e(route(MergeTreesAction::class)) ?>">
+<form method="post" action="<?= e(route(MergeTrees::class)) ?>">
     <div>
         <?= I18N::translate(/* I18N: Copy all the records from [family tree 1] into [family tree 2] */
             'Copy all the records from %1$s into %2$s.',

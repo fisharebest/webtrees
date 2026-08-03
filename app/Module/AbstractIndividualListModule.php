@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
@@ -36,7 +36,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_filter;
 use function array_key_exists;
@@ -60,7 +59,7 @@ use const ARRAY_FILTER_USE_KEY;
 /**
  * Common logic for individual and family lists.
  */
-abstract class AbstractIndividualListModule extends AbstractModule implements ModuleListInterface, RequestHandlerInterface
+abstract class AbstractIndividualListModule extends AbstractModule implements ModuleListInterface
 {
     use ModuleListTrait;
 
@@ -75,7 +74,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()->get(static::class, $this->routeUrl(), $this);
+        Registry::routeFactory()->routeMap()->add($this->routeUrl(), static::class);
     }
 
     /**
@@ -109,7 +108,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
         return [];
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
         $user = Validator::attributes($request)->user();
@@ -150,7 +149,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
 
         if ($surname_param !== $surname) {
             return Registry::responseFactory()
-                ->redirectUrl($this->listUrl($tree, $params), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+                ->redirectUrl($this->listUrl($tree, $params), HttpStatusCode::MovedPermanently);
         }
 
         // Make sure parameters are consistent with each other.

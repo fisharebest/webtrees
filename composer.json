@@ -43,8 +43,6 @@
         "ext-pdo": "*",
         "ext-session": "*",
         "ext-xml": "*",
-        "aura/router": "3.4.2",
-        "fig/http-message-util": "1.1.5",
         "fisharebest/algorithm": "1.6.0",
         "fisharebest/ext-calendar": "2.6.0",
         "illuminate/database": "13.23.0",

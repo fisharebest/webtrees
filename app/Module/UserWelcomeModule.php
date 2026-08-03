@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
+use Fisharebest\Webtrees\Http\Controllers\Account;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -88,7 +88,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
         }
 
         $links[] = [
-            'url'   => route(AccountEdit::class, ['tree' => $tree->name()]),
+            'url'   => route(Account::class, ['tree' => $tree->name()]),
             'title' => I18N::translate('My account'),
             'class' => 'icon-mypage',
             'icon'  => view('icons/account'),

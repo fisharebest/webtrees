@@ -1,0 +1,81 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2026 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Http\Controllers;
+
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Exceptions\ImageException;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Validator;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
+use function addcslashes;
+use function basename;
+use function redirect;
+use function response;
+
+final class MediaFileDownload
+{
+    public function get(ServerRequestInterface $request): ResponseInterface
+    {
+        $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
+
+        $image_factory = Registry::imageFactory();
+
+        $disposition = Validator::queryParams($request)->isInArray(['inline', 'attachment'])->string('disposition');
+        $xref        = Validator::queryParams($request)->isXref()->string('xref');
+        $fact_id     = Validator::queryParams($request)->string('fact_id');
+        $media       = Registry::mediaFactory()->make($xref, $tree);
+        $media       = Auth::checkMediaAccess($media);
+
+        foreach ($media->mediaFiles() as $media_file) {
+            if ($media_file->factId() === $fact_id) {
+                if ($media_file->isExternal()) {
+                    return redirect($media_file->filename());
+                }
+
+                $tree      = $media_file->media()->tree();
+                $watermark = $media_file->isImage() && Auth::needsWatermark($tree, $user);
+                $download  = $disposition === 'attachment';
+                $mime_type = $media_file->mimeType();
+                $data      = $image_factory->mediaFileContents($media_file, $watermark);
+
+                $response = response($data)
+                    ->withHeader('content-type', $mime_type)
+                    ->withHeader('content-security-policy', 'default-src none');
+
+                if ($download) {
+                    $filename = addcslashes(string: basename(path: $media_file->filename()), characters: '"');
+                    $response = $response->withHeader('content-disposition', 'attachment; filename="' . $filename . '"');
+                }
+
+                return $response->withHeader('cache-control', 'public,max-age=31536000');
+            }
+        }
+
+        throw new ImageException(
+            status_code: HttpStatusCode::NotFound,
+            filename: $xref,
+            error: 'File not found',
+        );
+    }
+}

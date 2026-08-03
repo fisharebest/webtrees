@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\NetworkService;
 use Fisharebest\Webtrees\Validator;
@@ -1679,6 +1679,6 @@ class BadBotBlocker implements MiddlewareInterface
 
     private function response(string $content): ResponseInterface
     {
-        return response($content, StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
+        return response($content, HttpStatusCode::NotAcceptable);
     }
 }

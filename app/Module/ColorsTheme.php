@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Session;
@@ -136,7 +137,7 @@ class ColorsTheme extends CloudsTheme implements ModuleGlobalInterface
         $palette = $this->palette();
 
         foreach ($this->palettes() as $palette_id => $palette_name) {
-            $url = route('module', ['module' => $this->name(), 'action' => 'Palette', 'palette' => $palette_id]);
+            $url = route(ModuleAction::class, ['module' => $this->name(), 'action' => 'Palette', 'palette' => $palette_id]);
 
             $submenu = new Menu(
                 $palette_name,

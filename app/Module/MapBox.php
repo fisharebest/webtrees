@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpInternalServerErrorException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -101,7 +101,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
                 $message = '<a href="' . e($this->getConfigLink()) . '">' . $message . '</a>';
             }
 
-            throw new HttpServerErrorException($message);
+            throw new HttpInternalServerErrorException($message);
         }
 
         return [

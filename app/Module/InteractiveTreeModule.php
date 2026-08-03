@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -128,7 +129,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return route('module', [
+        return route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Chart',
                 'xref'   => $individual->xref(),
@@ -161,7 +162,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
 
     public function postChartAction(ServerRequestInterface $request): ResponseInterface
     {
-        return redirect(route('module', [
+        return redirect(route(ModuleAction::class, [
             'module' => $this->name(),
             'action' => 'Chart',
             'tree'   => Validator::attributes($request)->tree()->name(),

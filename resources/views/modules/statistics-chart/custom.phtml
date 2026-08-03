@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteSurname;
+use Fisharebest\Webtrees\Http\Controllers\AutoCompleteSurname;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\StatisticsChartModule;
 use Fisharebest\Webtrees\Tree;
@@ -21,7 +22,7 @@ use Fisharebest\Webtrees\Tree;
 
     <form
         method="post"
-        action="<?= e(route('module', ['module' => $module->name(), 'action' => 'CustomChart', 'tree' => $tree->name()])) ?>"
+        action="<?= e(route(ModuleAction::class, ['module' => $module->name(), 'action' => 'CustomChart', 'tree' => $tree->name()])) ?>"
         id="own-stats-form"
         class="wt-page-options wt-page-options-statistics"
         data-wt-statistics-custom-chart

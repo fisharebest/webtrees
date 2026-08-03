@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Enums\TextDirection;
 use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
@@ -28,15 +27,15 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ChartService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 use function route;
 use function view;
 
-class PedigreeChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
+class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
@@ -80,10 +79,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST)
-            ->extras(['middleware' => [AuthNotRobot::class]]);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class, [AuthNotRobot::class]);
     }
 
     public function title(): string
@@ -136,7 +132,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             ] + $parameters + static::DEFAULT_PARAMETERS);
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
         $user        = Validator::attributes($request)->user();
@@ -145,15 +141,6 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
         $ajax        = Validator::queryParams($request)->boolean('ajax', false);
 
-        // Convert POST requests into GET requests for pretty URLs.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            return redirect(route(self::class, [
-                'tree'        => $tree->name(),
-                'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
-                    'style'       => Validator::parsedBody($request)->isInArrayKeys($this->styles(TextDirection::LTR))->string('style'),
-                'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
-            ]));
-        }
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
@@ -317,5 +304,15 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             self::STYLE_UP    => view('icons/pedigree-up') . I18N::translate('up'),
             self::STYLE_DOWN  => view('icons/pedigree-down') . I18N::translate('down'),
         ];
+    }
+
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    {
+        return redirect(route(self::class, [
+            'tree'        => $tree->name(),
+            'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
+                'style'       => Validator::parsedBody($request)->isInArrayKeys($this->styles(TextDirection::LTR))->string('style'),
+            'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
+        ]));
     }
 }

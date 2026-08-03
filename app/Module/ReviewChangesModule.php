@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\ChangeStatus;
-use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
+use Fisharebest\Webtrees\Http\Controllers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\EmailService;

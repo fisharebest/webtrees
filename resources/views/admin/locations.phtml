@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataAdd;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataDelete;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataDeleteUnused;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataEdit;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportCSV;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportGeoJson;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataImportPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
+use Fisharebest\Webtrees\Http\Controllers\MapDataAdd;
+use Fisharebest\Webtrees\Http\Controllers\MapDataDelete;
+use Fisharebest\Webtrees\Http\Controllers\MapDataDeleteUnused;
+use Fisharebest\Webtrees\Http\Controllers\MapDataEdit;
+use Fisharebest\Webtrees\Http\Controllers\MapDataExportCSV;
+use Fisharebest\Webtrees\Http\Controllers\MapDataExportGeoJson;
+use Fisharebest\Webtrees\Http\Controllers\MapDataImport;
+use Fisharebest\Webtrees\Http\Controllers\MapDataList;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
 use Fisharebest\Webtrees\Tree;
@@ -167,7 +167,7 @@ use Illuminate\Support\Collection;
                         geoJSON
                     </a>
                 </div>
-                <a class="btn btn-primary" href="<?= e(route(MapDataImportPage::class, ['parent_id' => $parent_id])) ?>">
+                <a class="btn btn-primary" href="<?= e(route(MapDataImport::class, ['parent_id' => $parent_id])) ?>">
                     <?= view('icons/upload') ?>
                     <?= /* I18N: A button label. */
                     I18N::translate('import file') ?>

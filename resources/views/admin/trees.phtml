@@ -4,28 +4,28 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\CheckTree;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\CreateMediaObjectModal;
-use Fisharebest\Webtrees\Http\RequestHandlers\CreateNoteModal;
-use Fisharebest\Webtrees\Http\RequestHandlers\CreateRepositoryModal;
-use Fisharebest\Webtrees\Http\RequestHandlers\CreateSourceModal;
-use Fisharebest\Webtrees\Http\RequestHandlers\CreateSubmitterModal;
-use Fisharebest\Webtrees\Http\RequestHandlers\DataFixChoose;
-use Fisharebest\Webtrees\Http\RequestHandlers\DeleteTreeAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\ExportGedcomPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\FindDuplicateRecords;
-use Fisharebest\Webtrees\Http\RequestHandlers\GedcomLoad;
-use Fisharebest\Webtrees\Http\RequestHandlers\ImportGedcomPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\MergeRecordsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\RenumberTreePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\SelectDefaultTree;
-use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\TreePreferencesPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\TreePrivacyPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage;
+use Fisharebest\Webtrees\Http\Controllers\AddUnlinked;
+use Fisharebest\Webtrees\Http\Controllers\CheckTree;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\CreateMediaObject;
+use Fisharebest\Webtrees\Http\Controllers\CreateNote;
+use Fisharebest\Webtrees\Http\Controllers\CreateRepository;
+use Fisharebest\Webtrees\Http\Controllers\CreateSource;
+use Fisharebest\Webtrees\Http\Controllers\CreateSubmitter;
+use Fisharebest\Webtrees\Http\Controllers\DataFixChoose;
+use Fisharebest\Webtrees\Http\Controllers\DeleteTreeAction;
+use Fisharebest\Webtrees\Http\Controllers\ExportGedcomPage;
+use Fisharebest\Webtrees\Http\Controllers\FindDuplicateRecords;
+use Fisharebest\Webtrees\Http\Controllers\GedcomLoad;
+use Fisharebest\Webtrees\Http\Controllers\ImportGedcom;
+use Fisharebest\Webtrees\Http\Controllers\MergeRecords;
+use Fisharebest\Webtrees\Http\Controllers\PendingChangesLog;
+use Fisharebest\Webtrees\Http\Controllers\RenumberTree;
+use Fisharebest\Webtrees\Http\Controllers\SelectDefaultTree;
+use Fisharebest\Webtrees\Http\Controllers\TreePage;
+use Fisharebest\Webtrees\Http\Controllers\TreePreferences;
+use Fisharebest\Webtrees\Http\Controllers\TreePrivacy;
+use Fisharebest\Webtrees\Http\Controllers\Unconnected;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -96,7 +96,7 @@ use Illuminate\Support\Collection;
                                     <!-- PREFERENCES -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/preferences') ?></span>
-                                        <a href="<?= e(route(TreePreferencesPage::class, ['tree' => $managed_tree->name()])) ?>">
+                                        <a href="<?= e(route(TreePreferences::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Preferences') ?>
                                             <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
@@ -104,7 +104,7 @@ use Illuminate\Support\Collection;
                                     <!-- PRIVACY -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/lock') ?></span>
-                                        <a href="<?= e(route(TreePrivacyPage::class, ['tree' => $managed_tree->name()])) ?>">
+                                        <a href="<?= e(route(TreePrivacy::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Privacy') ?>
                                             <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
@@ -171,7 +171,7 @@ use Illuminate\Support\Collection;
                                     <!-- MERGE -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/merge') ?></span>
-                                        <a href="<?= e(route(MergeRecordsPage::class, ['tree' => $managed_tree->name()])) ?>">
+                                        <a href="<?= e(route(MergeRecords::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Merge records') ?>
                                             <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
@@ -187,7 +187,7 @@ use Illuminate\Support\Collection;
                                     <!-- UNCONNECTED INDIVIDUALS -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/unlink') ?></span>
-                                        <a href="<?= e(route(UnconnectedPage::class, ['tree' => $managed_tree->name()])) ?>">
+                                        <a href="<?= e(route(Unconnected::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Find unrelated individuals') ?>
                                             <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
@@ -195,7 +195,7 @@ use Illuminate\Support\Collection;
                                     <!-- RENUMBER -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/sort') ?></span>
-                                        <a href="<?= e(route(RenumberTreePage::class, ['tree' => $managed_tree->name()])) ?>">
+                                        <a href="<?= e(route(RenumberTree::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Renumber XREFs') ?>
                                             <span class="visually-hidden">
                                         <?= e($managed_tree->title()) ?>
@@ -205,7 +205,7 @@ use Illuminate\Support\Collection;
                                     <!-- CHANGES -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/edit') ?></span>
-                                        <a href="<?= route(PendingChangesLogPage::class, ['tree' => $managed_tree->name()]) ?>">
+                                        <a href="<?= route(PendingChangesLog::class, ['tree' => $managed_tree->name()]) ?>">
                                             <?= I18N::translate('Changes log') ?>
                                             <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
@@ -220,7 +220,7 @@ use Illuminate\Support\Collection;
                                     <!-- UNLINKED INDIVIDUAL -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/individual') ?></span>
-                                        <a href="<?= e(route(AddUnlinkedPage::class, ['tree' => $managed_tree->name()])) ?>">
+                                        <a href="<?= e(route(AddUnlinked::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Individual') ?>
                                             <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
@@ -228,7 +228,7 @@ use Illuminate\Support\Collection;
                                     <!-- UNLINKED SOURCE -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/source') ?></span>
-                                        <a href="#" data-wt-href="<?= e(route(CreateSourceModal::class, ['tree' => $managed_tree->name()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal">
+                                        <a href="#" data-wt-href="<?= e(route(CreateSource::class, ['tree' => $managed_tree->name()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal">
                                             <?= I18N::translate('Source') ?>
                                             <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
@@ -236,7 +236,7 @@ use Illuminate\Support\Collection;
                                     <!-- UNLINKED REPOSITORY -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/repository') ?></span>
-                                        <a href="#" data-wt-href="<?= e(route(CreateRepositoryModal::class, ['tree' => $managed_tree->name()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal">
+                                        <a href="#" data-wt-href="<?= e(route(CreateRepository::class, ['tree' => $managed_tree->name()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal">
                                             <?= I18N::translate('Repository') ?>
                                             <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
@@ -244,7 +244,7 @@ use Illuminate\Support\Collection;
                                     <!-- UNLINKED MEDIA OBJECT -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/media') ?></span>
-                                        <a href="#" data-wt-href="<?= e(route(CreateMediaObjectModal::class, ['tree' => $managed_tree->name()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal">
+                                        <a href="#" data-wt-href="<?= e(route(CreateMediaObject::class, ['tree' => $managed_tree->name()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal">
 
                                             <?= I18N::translate('Media object') ?>
                                             <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
@@ -253,7 +253,7 @@ use Illuminate\Support\Collection;
                                     <!-- UNLINKED NOTE -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/note') ?></span>
-                                        <a href="#" data-wt-href="<?= e(route(CreateNoteModal::class, ['tree' => $managed_tree->name()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal">
+                                        <a href="#" data-wt-href="<?= e(route(CreateNote::class, ['tree' => $managed_tree->name()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal">
                                             <?= I18N::translate('Shared note') ?>
                                             <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
@@ -261,7 +261,7 @@ use Illuminate\Support\Collection;
                                     <!-- UNLINKED SUBMITTER -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/submitter') ?></span>
-                                        <a href="#" data-wt-href="<?= e(route(CreateSubmitterModal::class, ['tree' => $managed_tree->name()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal">
+                                        <a href="#" data-wt-href="<?= e(route(CreateSubmitter::class, ['tree' => $managed_tree->name()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal">
                                             <?= I18N::translate('Submitter') ?>
                                             <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
@@ -284,7 +284,7 @@ use Illuminate\Support\Collection;
                                     <!-- UPLOAD/IMPORT -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/upload') ?></span>
-                                        <a href="<?= e(route(ImportGedcomPage::class, ['tree' => $managed_tree->name()])) ?>">
+                                        <a href="<?= e(route(ImportGedcom::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Import') ?>
                                             <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>

@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Http\RequestHandlers\AppleTouchIconPng;
-use Fisharebest\Webtrees\Http\RequestHandlers\SearchQuickAction;
+use Fisharebest\Webtrees\Http\Controllers\AppleTouchIconPng;
+use Fisharebest\Webtrees\Http\Controllers\SearchQuickAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
@@ -64,7 +64,7 @@ $theme = Registry::container()->get(ModuleThemeInterface::class);
     </head>
 
     <body
-        class="wt-global wt-theme-<?= e($theme->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name, ['\\' => '/']))) ?>"
+        class="wt-global wt-theme-<?= e($theme->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->controller, ['\\' => '/']))) ?>"
     >
         <header class="wt-header-wrapper d-print-none">
             <div class="container-lg wt-header-container">

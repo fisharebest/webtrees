@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\LoginAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\PasswordRequestPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\RegisterPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
+use Fisharebest\Webtrees\Http\Controllers\Login;
+use Fisharebest\Webtrees\Http\Controllers\PasswordRequest;
+use Fisharebest\Webtrees\Http\Controllers\Register;
+use Fisharebest\Webtrees\Http\Controllers\UserPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -16,7 +16,7 @@ use Fisharebest\Webtrees\Tree;
 
 ?>
 
-<form method="post" action="<?= route(LoginAction::class, ['tree' => $tree->name()]) ?>" name="login-form">
+<form method="post" action="<?= route(Login::class, ['tree' => $tree->name()]) ?>" name="login-form">
     <input type="hidden" name="url" value="<?= e(route(UserPage::class, ['tree' => $tree->name()])) ?>">
 
     <div class="mb-3">
@@ -38,12 +38,12 @@ use Fisharebest\Webtrees\Tree;
             <?= /* I18N: A button label. */ I18N::translate('sign in') ?>
         </button>
 
-        <a class="btn btn-link" href="<?= e(route(PasswordRequestPage::class, ['tree' => $tree->name()])) ?>">
+        <a class="btn btn-link" href="<?= e(route(PasswordRequest::class, ['tree' => $tree->name()])) ?>">
             <?= I18N::translate('Forgot password?') ?>
         </a>
 
         <?php if ($allow_register) : ?>
-            <a class="btn btn-link" href="<?= e(route(RegisterPage::class, ['tree' => $tree->name()])) ?>">
+            <a class="btn btn-link" href="<?= e(route(Register::class, ['tree' => $tree->name()])) ?>">
                 <?= I18N::translate('Request a new user account') ?>
             </a>
         <?php endif ?>

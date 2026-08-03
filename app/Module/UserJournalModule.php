@@ -24,9 +24,9 @@ use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpForbiddenException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
+use Fisharebest\Webtrees\Http\Controllers\UserPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HtmlService;
@@ -118,7 +118,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
         $tree = Validator::attributes($request)->tree();
 
         if (!Auth::check()) {
-            throw new HttpAccessDeniedException();
+            throw new HttpForbiddenException();
         }
 
         $news_id = Validator::queryParams($request)->integer('news_id', 0);
@@ -162,7 +162,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
         $tree = Validator::attributes($request)->tree();
 
         if (!Auth::check()) {
-            throw new HttpAccessDeniedException();
+            throw new HttpForbiddenException();
         }
 
         $news_id = Validator::queryParams($request)->integer('news_id', 0);

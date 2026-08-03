@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Enums\ContactMethod;
 use Fisharebest\Webtrees\Enums\SortOrder;
 use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Enums\TextDirection;
-use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
+use Fisharebest\Webtrees\Http\Controllers\Message;
 use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
@@ -2149,7 +2149,7 @@ readonly class StatisticsData
                 $content .= ' - ' . e($user->userName());
 
                 if (ContactMethod::fromUser($user)->isContactable() && Auth::id() !== $user->id()) {
-                    $content .= '<a href="' . e(route(MessagePage::class, ['to' => $user->userName(), 'tree' => $this->tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
+                    $content .= '<a href="' . e(route(Message::class, ['to' => $user->userName(), 'tree' => $this->tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
                 }
 
                 if ($type === 'list') {

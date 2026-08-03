@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 
@@ -78,7 +79,7 @@ trait ModuleChartTrait
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return route('module', [
+        return route(ModuleAction::class, [
             'module' => $this->name(),
             'action' => 'Chart',
             'xref'   => $individual->xref(),

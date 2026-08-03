@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Enums\TextDirection;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -122,7 +123,7 @@ class TreeView
      */
     private function getPersonDetails(Individual $individual, Family|null $family = null): string
     {
-        $chart_url = route('module', [
+        $chart_url = route(ModuleAction::class, [
             'module' => 'tree',
             'action' => 'Chart',
             'xref'   => $individual->xref(),

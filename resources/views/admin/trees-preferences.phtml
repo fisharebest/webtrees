@@ -5,9 +5,10 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
-use Fisharebest\Webtrees\Http\RequestHandlers\TreePreferencesAction;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\Example;
+use Fisharebest\Webtrees\Http\Controllers\ManageTrees;
+use Fisharebest\Webtrees\Http\Controllers\TreePreferences;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -41,7 +42,7 @@ use Illuminate\Support\Collection;
 
 <h1><?= $title ?></h1>
 
-<form method="post" action="<?= e(route(TreePreferencesAction::class, ['tree' => $tree->name()])) ?>" class="form-horizontal">
+<form method="post" action="<?= e(route(TreePreferences::class, ['tree' => $tree->name()])) ?>" class="form-horizontal">
     <h2><?= I18N::translate('General') ?></h2>
 
     <!-- TREE TITLE -->
@@ -72,13 +73,13 @@ use Illuminate\Support\Collection;
             <div class="col-sm-9">
                 <div class="input-group" dir="ltr">
                     <span class="input-group-text" dir="ltr">
-                        <?= e(explode('{tree}', rawurldecode(route('example')))[0]) ?>
+                        <?= e(explode('{tree}', rawurldecode(route('example', ['tree' => '{tree}'])))[0]) ?>
                     </span>
 
                     <input class="form-control" dir="ltr" id="gedcom" maxlength="255" name="gedcom" required="required" type="text" value="<?= e($tree->name()) ?>">
 
                     <span class="input-group-text" dir="ltr">
-                        <?= e(explode('{tree}', rawurldecode(route('example')))[1]) ?>
+                        <?= e(explode('{tree}', rawurldecode(route('example', ['tree' => '{tree}'])))[1]) ?>
                     </span>
                 </div>
 

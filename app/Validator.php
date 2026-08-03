@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Aura\Router\Route;
+use Fisharebest\Webtrees\Http\Routing\Route;
 use Closure;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
@@ -44,7 +44,7 @@ use function substr;
  */
 class Validator
 {
-    /** @var array<int|string|Tree|UserInterface|array<mixed>> */
+    /** @var array<int|string|Tree|Route|UserInterface|array<mixed>> */
     private array $parameters;
 
     private ServerRequestInterface $request;

@@ -232,7 +232,6 @@ use Fisharebest\Webtrees\Module\ReviewChangesModule;
 use Fisharebest\Webtrees\Module\SearchMenuModule;
 use Fisharebest\Webtrees\Module\ShareAnniversaryModule;
 use Fisharebest\Webtrees\Module\ShareUrlModule;
-use Fisharebest\Webtrees\Module\SiteMapModule;
 use Fisharebest\Webtrees\Module\SlideShowModule;
 use Fisharebest\Webtrees\Module\SourceListModule;
 use Fisharebest\Webtrees\Module\SourcesTabModule;
@@ -508,7 +507,6 @@ class ModuleService
         'search-menu'             => SearchMenuModule::class,
         'share-anniversary'       => ShareAnniversaryModule::class,
         'share-url'               => ShareUrlModule::class,
-        'sitemap'                 => SiteMapModule::class,
         'source_list'             => SourceListModule::class,
         'sources_tab'             => SourcesTabModule::class,
         'statcounter'             => StatcounterModule::class,
