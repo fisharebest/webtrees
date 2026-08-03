@@ -319,4 +319,46 @@ class AgeTest extends TestCase
         self::assertSame(50, $age->ageYears());
         self::assertSame('50', $age->ageYearsString());
     }
+
+    public function testBeforeBirthDate(): void
+    {
+        $x = new Date('BEF 1850');
+        $y = new Date('1 JAN 1880');
+        $age = new Age($x, $y);
+
+        self::assertFalse($age->isValid());
+        self::assertSame(-1, $age->ageYears());
+        self::assertSame(-1, $age->ageDays());
+        self::assertSame('', $age->toString());
+    }
+
+    public function testAfterBirthDate(): void
+    {
+        $x = new Date('AFT 1800');
+        $y = new Date('1 JAN 1880');
+        $age = new Age($x, $y);
+
+        self::assertFalse($age->isValid());
+        self::assertSame('', $age->toString());
+    }
+
+    public function testBeforeEventDate(): void
+    {
+        $x = new Date('1 JAN 1800');
+        $y = new Date('BEF 1850');
+        $age = new Age($x, $y);
+
+        self::assertFalse($age->isValid());
+        self::assertSame('', $age->toString());
+    }
+
+    public function testAfterEventDate(): void
+    {
+        $x = new Date('1 JAN 1800');
+        $y = new Date('AFT 1850');
+        $age = new Age($x, $y);
+
+        self::assertFalse($age->isValid());
+        self::assertSame('', $age->toString());
+    }
 }

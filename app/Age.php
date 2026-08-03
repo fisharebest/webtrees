@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Enums\DateType;
+
 use function max;
 use function preg_match;
 use function str_starts_with;
@@ -50,13 +52,15 @@ class Age
 
     private bool $is_valid;
 
-    /**
-     * @param Date $x The first date (e.g. birth)
-     * @param Date $y The second date (e.g. event)
-     */
-    public function __construct(Date $x, Date $y)
+    public function __construct(Date $birth_date, Date $event_date)
     {
-        $this->is_valid = $x->isOK() && $y->isOK();
+        $this->is_valid =
+            $birth_date->isOK() &&
+            $event_date->isOK() &&
+            $birth_date->type !== DateType::Before &&
+            $birth_date->type !== DateType::After &&
+            $event_date->type !== DateType::Before &&
+            $event_date->type !== DateType::After;
 
         if (!$this->is_valid) {
             $this->min_years  = -1;
@@ -73,12 +77,12 @@ class Age
         }
 
         // For minimum age: latest possible birth to earliest possible event
-        $lateBirth  = $x->maximumDate();
-        $earlyEvent = $y->minimumDate();
+        $lateBirth  = $birth_date->maximumDate();
+        $earlyEvent = $event_date->minimumDate();
 
         // For maximum age: earliest possible birth to latest possible event
-        $earlyBirth = $x->minimumDate();
-        $lateEvent  = $y->maximumDate();
+        $earlyBirth = $birth_date->minimumDate();
+        $lateEvent  = $event_date->maximumDate();
 
         [$this->min_years, $this->min_months, $this->min_days] = $lateBirth->ageDifference($earlyEvent);
         [$this->max_years, $this->max_months, $this->max_days] = $earlyBirth->ageDifference($lateEvent);
