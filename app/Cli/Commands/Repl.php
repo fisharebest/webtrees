@@ -1,0 +1,149 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2026 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Cli\Commands;
+
+use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Webtrees;
+use Psy\Configuration;
+use Psy\Shell;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use SplFileInfo;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+
+use function array_key_exists;
+use function basename;
+use function class_alias;
+use function class_exists;
+use function interface_exists;
+use function spl_autoload_register;
+use function str_ends_with;
+use function str_replace;
+use function str_starts_with;
+use function substr;
+
+final class Repl extends AbstractCommand
+{
+    private const string APP_NAMESPACE = 'Fisharebest\\Webtrees\\';
+
+    protected function configure(): void
+    {
+        $this
+            ->setName(name: 'dev:repl')
+            ->setDescription(description: 'Interact with webtrees using an interactive shell');
+    }
+
+    protected function execute(InputInterface $input, OutputInterface $output): int
+    {
+        $config = new Configuration(config: [
+            'updateCheck' => 'never',
+        ]);
+
+        $config->getPresenter()->addCasters([
+            // Add custom casters here if needed
+        ]);
+
+        $shell = new Shell(config: $config);
+
+        $shell->setScopeVariables([
+            'container' => Registry::container(),
+            'db'        => DB::connection(),
+        ]);
+
+        // Autoload webtrees classes on first use.
+        $this->registerAliasAutoloader(classMap: $this->buildClassMap(output: $output));
+
+        return $shell->run();
+    }
+
+    /**
+     * Scan the app/ directory and build a map of short class name => FQCN.
+     * If duplicates are found, warn and keep only the first.
+     *
+     * @return array<string, string>
+     */
+    private function buildClassMap(OutputInterface $output): array
+    {
+        $appDir = Webtrees::ROOT_DIR . 'app/';
+
+        /** @var array<string, string> Map of short name => FQCN (first wins) */
+        $classMap = [];
+
+        $iterator = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($appDir)
+        );
+
+        /** @var SplFileInfo $file */
+        foreach ($iterator as $file) {
+            if (!$file->isFile() || !str_ends_with($file->getFilename(), '.php')) {
+                continue;
+            }
+
+            $relativePath = substr($file->getPathname(), strlen($appDir));
+
+            // Skip the Helpers directory (contains function files, not classes)
+            if (str_starts_with($relativePath, 'Helpers/')) {
+                continue;
+            }
+
+            // Derive FQCN from PSR-4 path: app/Foo/Bar.php => Fisharebest\Webtrees\Foo\Bar
+            $fqcn = self::APP_NAMESPACE . str_replace('/', '\\', substr($relativePath, 0, -4));
+
+            // Short class name (e.g. "TreeService")
+            $shortName = basename($file->getFilename(), '.php');
+
+            if (array_key_exists($shortName, $classMap)) {
+                $output->writeln(
+                    "<comment>Warning:</comment> Skipping <info>{$fqcn}</info> — " .
+                    "short name <info>{$shortName}</info> already mapped to <info>{$classMap[$shortName]}</info>"
+                );
+                continue;
+            }
+
+            $classMap[$shortName] = $fqcn;
+        }
+
+        return $classMap;
+    }
+
+    /**
+     * Register an autoloader that aliases short class names to their FQCNs.
+     * When PsySH encounters e.g. `new TreeService()`, PHP's autoloader fires,
+     * we create a class_alias, and the class resolves transparently.
+     *
+     * @param array<string, string> $classMap
+     */
+    private function registerAliasAutoloader(array $classMap): void
+    {
+        spl_autoload_register(static function (string $shortName) use ($classMap): void {
+            if (array_key_exists($shortName, $classMap)) {
+                $fqcn = $classMap[$shortName];
+
+                // Ensure the real class is loaded first (via Composer's autoloader)
+                if (class_exists($fqcn, autoload: true) || interface_exists($fqcn, autoload: true)) {
+                    class_alias($fqcn, $shortName);
+                }
+            }
+        });
+    }
+}

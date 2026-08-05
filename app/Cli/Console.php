@@ -37,6 +37,7 @@ final class Console extends Application
         Commands\SiteOffline::class,
         Commands\SiteOnline::class,
         Commands\SiteSetting::class,
+        Commands\Repl::class,
         Commands\TreeEdit::class,
         Commands\TreeExport::class,
         Commands\TreeImport::class,

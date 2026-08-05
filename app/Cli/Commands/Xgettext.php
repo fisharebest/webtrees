@@ -108,7 +108,7 @@ final class Xgettext extends AbstractCommand
     protected function configure(): void
     {
         $this
-            ->setName('xgettext')
+            ->setName('dev:xgettext')
             ->setDescription('Extract PHP, PHTML, JavaScript and XML translation templates');
     }
 

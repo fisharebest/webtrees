@@ -64,6 +64,7 @@
         "psr/http-message": "2.0",
         "psr/http-server-handler": "1.0.2",
         "psr/http-server-middleware": "1.0.2",
+        "psy/psysh": "^0.12.24",
         "ramsey/uuid": "4.9.3",
         "sabre/vobject": "5.0.0",
         "symfony/cache": "7.4.15",
