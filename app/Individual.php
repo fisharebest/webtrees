@@ -35,9 +35,6 @@ use function array_key_exists;
 use function count;
 use function in_array;
 use function preg_match;
-use function trigger_error;
-
-use const E_USER_DEPRECATED;
 
 /**
  * A GEDCOM individual (INDI) object.
@@ -58,36 +55,6 @@ class Individual extends GedcomRecord
     private Date|null $estimated_birth_date = null;
 
     private Date|null $estimated_death_date = null;
-
-    /**
-     * A closure which will compare individuals by birth date.
-     *
-     * @return Closure(Individual,Individual):int
-     */
-    public static function birthDateComparator(): Closure
-    {
-        trigger_error(
-            'Individual::birthDateComparator() is deprecated and will be removed in version 2.3. Use IndividualComparator::byBirthDate(...) instead.',
-            E_USER_DEPRECATED
-        );
-
-        return IndividualComparator::byBirthDate(...);
-    }
-
-    /**
-     * A closure which will compare individuals by death date.
-     *
-     * @return Closure(Individual,Individual):int
-     */
-    public static function deathDateComparator(): Closure
-    {
-        trigger_error(
-            'Individual::deathDateComparator() is deprecated and will be removed in version 2.3. Use IndividualComparator::byDeathDate(...) instead.',
-            E_USER_DEPRECATED
-        );
-
-        return IndividualComparator::byDeathDate(...);
-    }
 
     /**
      * Can the name of this record be shown?

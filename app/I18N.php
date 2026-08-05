@@ -337,21 +337,6 @@ class I18N
     }
 
     /**
-     * A closure which will compare strings using local collation rules.
-     *
-     * @return Closure(string,string):int
-     */
-    public static function comparator(): Closure
-    {
-        trigger_error(
-            'I18N::comparator() is deprecated and will be removed in version 2.3. Use I18N::compare(...) instead.',
-            E_USER_DEPRECATED,
-        );
-
-        return self::compare(...);
-    }
-
-    /**
      * Convert a string to lower case.
      */
     public static function strtolower(string $string): string

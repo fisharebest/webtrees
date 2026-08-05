@@ -34,9 +34,6 @@ use function preg_match;
 use function preg_replace;
 use function str_contains;
 use function str_ends_with;
-use function trigger_error;
-
-use const E_USER_DEPRECATED;
 
 /**
  * A GEDCOM fact or event object.
@@ -449,48 +446,6 @@ class Fact
         }
 
         return implode(' — ', $items);
-    }
-
-    /**
-     * Sort a collection of facts.
-     *
-     * 1. Split facts into dated (have a parseable date) and nondated.
-     * 2. Sort dated facts chronologically, using type order as tiebreaker.
-     * 3. Group nondated facts: individual facts stay separate; family facts
-     *    are grouped by family identity so they are inserted as a unit.
-     * 4. Insert each family group near its family's dated facts, or before
-     *    any later-input families' facts (preserving original family order).
-     * 5. Insert individual nondated facts at their type-order position in the result.
-     *
-     * @param Collection<int,Fact> $unsorted
-     *
-     * @return Collection<int,Fact>
-     */
-    public static function sortFacts(Collection $unsorted): Collection
-    {
-        trigger_error(
-            'Fact::sortFacts() is deprecated and will be removed in version 2.3. Use FactSortService::sort() instead.',
-            E_USER_DEPRECATED
-        );
-
-        return (new FactSortService())->sort($unsorted);
-    }
-
-    /**
-     * Sort fact/event tags using the same order that we use for facts.
-     *
-     * @param Collection<int,string> $unsorted
-     *
-     * @return Collection<int,string>
-     */
-    public static function sortFactTags(Collection $unsorted): Collection
-    {
-        trigger_error(
-            'Fact::sortFactTags() is deprecated and will be removed in version 2.3. Use TagComparator::byOrder(...) instead.',
-            E_USER_DEPRECATED
-        );
-
-        return $unsorted->sort(TagComparator::byOrder(...));
     }
 
     /**

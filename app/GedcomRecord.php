@@ -56,11 +56,9 @@ use function str_contains;
 use function str_pad;
 use function strtoupper;
 use function strtr;
-use function trigger_error;
 use function trim;
 use function view;
 
-use const E_USER_DEPRECATED;
 use const PHP_INT_MAX;
 use const PREG_SET_ORDER;
 use const STR_PAD_LEFT;
@@ -117,38 +115,6 @@ class GedcomRecord
     public static function accessFilter(): Closure
     {
         return static fn (GedcomRecord $record): bool => $record->canShow();
-    }
-
-    /**
-     * A closure which will compare records by name.
-     *
-     * @return Closure(GedcomRecord,GedcomRecord):int
-     */
-    public static function nameComparator(): Closure
-    {
-        trigger_error(
-            'GedcomRecord::nameComparator() is deprecated and will be removed in version 2.3. Use GedcomRecordComparator::byName(...) instead.',
-            E_USER_DEPRECATED
-        );
-
-        return GedcomRecordComparator::byName(...);
-    }
-
-    /**
-     * A closure which will compare records by change time.
-     *
-     * @param int $direction +1 to sort ascending, -1 to sort descending
-     *
-     * @return Closure(GedcomRecord,GedcomRecord):int
-     */
-    public static function lastChangeComparator(int $direction = 1): Closure
-    {
-        trigger_error(
-            'GedcomRecord::lastChangeComparator() is deprecated and will be removed in version 2.3. Use GedcomRecordComparator::byLastChange(...) instead.',
-            E_USER_DEPRECATED
-        );
-
-        return static fn (GedcomRecord $x, GedcomRecord $y): int => $direction * GedcomRecordComparator::byLastChange($x, $y);
     }
 
     /**
@@ -729,20 +695,6 @@ class GedcomRecord
 
     public function updateFact(string $fact_id, string $gedcom, bool $update_chan): void
     {
-        if ($fact_id === '') {
-            trigger_error('$fact_id cannot be empty.  Use createFact() instead.', E_USER_DEPRECATED);
-            $this->createFact($gedcom, $update_chan);
-
-            return;
-        }
-
-        if ($gedcom === '') {
-            trigger_error('$gedcom cannot be empty.  Use deleteFact() instead.', E_USER_DEPRECATED);
-            $this->deleteFact($fact_id, $update_chan);
-
-            return;
-        }
-
         if (!preg_match('/^1 ' . Gedcom::REGEX_TAG . '/', $gedcom) || str_contains($gedcom, "\r")) {
             throw new InvalidArgumentException('Invalid GEDCOM passed to GedcomRecord::updateFact(' . $gedcom . ')');
         }

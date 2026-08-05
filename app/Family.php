@@ -19,15 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Closure;
-use Fisharebest\Webtrees\Comparators\FamilyComparator;
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
 use Illuminate\Support\Collection;
-
-use function trigger_error;
-
-use const E_USER_DEPRECATED;
 
 /**
  * A GEDCOM family (FAM) object.
@@ -64,21 +58,6 @@ class Family extends GedcomRecord
         if (preg_match('/\n1 WIFE @(.+)@/', $gedcom_pending, $match)) {
             $this->wife = Registry::individualFactory()->make($match[1], $tree);
         }
-    }
-
-    /**
-     * A closure which will compare families by marriage date.
-     *
-     * @return Closure(Family,Family):int
-     */
-    public static function marriageDateComparator(): Closure
-    {
-        trigger_error(
-            'Family::marriageDateComparator() is deprecated and will be removed in version 2.3. Use FamilyComparator::byMarriageDate(...) instead.',
-            E_USER_DEPRECATED
-        );
-
-        return FamilyComparator::byMarriageDate(...);
     }
 
     /**
