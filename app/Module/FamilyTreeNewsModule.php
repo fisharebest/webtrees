@@ -72,7 +72,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
                 return $row;
             });
 
-        $content = view('modules/gedcom_news/list', [
+        $content = view('modules/gedcom-news/list', [
             'articles' => $articles,
             'block_id' => $block_id,
             'limit'    => 5,
@@ -147,7 +147,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             $updated = Registry::timestampFactory()->now(Auth::user());
         }
 
-        return $this->viewResponse('modules/gedcom_news/edit', [
+        return $this->viewResponse('modules/gedcom-news/edit', [
             'body'    => $body,
             'news_id' => $news_id,
             'subject' => $subject,

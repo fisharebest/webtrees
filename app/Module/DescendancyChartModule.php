@@ -154,7 +154,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
 
             switch ($style) {
                 case self::CHART_STYLE_TREE:
-                    return $this->viewResponse('modules/descendancy_chart/tree', [
+                    return $this->viewResponse('modules/descendancy-chart/tree', [
                         'individual'  => $individual,
                         'generations' => $generations,
                         'daboville'   => '1',
@@ -185,7 +185,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
             'ajax'        => true,
         ]);
 
-        return $this->viewResponse('modules/descendancy_chart/page', [
+        return $this->viewResponse('modules/descendancy-chart/page', [
             'ajax_url'            => $ajax_url,
             'style'               => $style,
             'styles'              => $this->styles(),

@@ -72,7 +72,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
                 return $row;
             });
 
-        $content = view('modules/user_blog/list', [
+        $content = view('modules/user-blog/list', [
             'articles' => $articles,
             'block_id' => $block_id,
             'limit'    => 5,
@@ -147,7 +147,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             $updated = Registry::timestampFactory()->now(Auth::user());
         }
 
-        return $this->viewResponse('modules/user_blog/edit', [
+        return $this->viewResponse('modules/user-blog/edit', [
             'body'    => $body,
             'news_id' => $news_id,
             'subject' => $subject,

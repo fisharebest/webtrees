@@ -150,7 +150,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         }
 
         if ($random_media instanceof Media) {
-            $content = view('modules/random_media/slide-show', [
+            $content = view('modules/random-media/slide-show', [
                 'block_id'            => $block_id,
                 'delay'               => $delay,
                 'linked_families'     => $this->linked_record_service->linkedFamilies($random_media),
@@ -273,7 +273,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
 
         $formats = array_filter(Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values(), static fn (string $value): bool => $value !== '');
 
-        return view('modules/random_media/config', [
+        return view('modules/random-media/config', [
             'controls' => $controls,
             'filter'   => $filter,
             'filters'  => $filters,

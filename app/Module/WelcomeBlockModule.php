@@ -90,7 +90,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
             ];
         }
 
-        $content = view('modules/gedcom_block/welcome', ['links' => $links]);
+        $content = view('modules/gedcom-block/welcome', ['links' => $links]);
 
         $title = e($individual->tree()->title());
 

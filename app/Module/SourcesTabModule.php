@@ -81,7 +81,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
      */
     public function getTabContent(Individual $individual): string
     {
-        return view('modules/sources_tab/tab', [
+        return view('modules/sources-tab/tab', [
             'can_edit'        => $individual->canEdit(),
             'clipboard_facts' => $this->clipboard_service->pastableFactsOfType($individual, $this->supportedFacts()),
             'individual'      => $individual,

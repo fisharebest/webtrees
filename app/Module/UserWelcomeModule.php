@@ -94,7 +94,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
             'icon'  => view('icons/account'),
         ];
 
-        $content = view('modules/user_welcome/welcome', ['links' => $links]);
+        $content = view('modules/user-welcome/welcome', ['links' => $links]);
 
         $real_name = "\u{2068}" . e(Auth::user()->realName()) . "\u{2069}";
 

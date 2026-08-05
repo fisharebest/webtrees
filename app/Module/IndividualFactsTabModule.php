@@ -119,7 +119,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             'INDI:EVEN:FAMC:ADOP' => new AdoptedByWhichParent(I18N::translate('Adoption')),
         ]);
 
-        return view('modules/personal_facts/tab', [
+        return view('modules/personal-facts/tab', [
             'can_edit'            => $individual->canEdit(),
             'clipboard_facts'     => $this->clipboard_service->pastableFacts($individual),
             'has_associate_facts' => $associate_facts->isNotEmpty(),

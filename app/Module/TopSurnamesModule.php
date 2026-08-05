@@ -239,7 +239,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             'tagcloud' => I18N::translate('tag cloud'),
         ];
 
-        return view('modules/top10_surnames/config', [
+        return view('modules/top10-surnames/config', [
             'num'         => $num,
             'info_style'  => $info_style,
             'info_styles' => $info_styles,
