@@ -526,17 +526,17 @@ class SearchService
             $query->join('link AS l1', static function (JoinClause $join): void {
                 $join
                     ->on('l1.l_file', '=', 'individuals.i_file')
-                    ->on('l1.l_from', '=', 'individuals.i_id')
-                    ->where('l1.l_type', '=', 'FAMC');
-            });
+                    ->on('l1.l_from', '=', 'individuals.i_id');
+            })
+                ->where('l1.l_type', '=', 'FAMC');
 
             if ($father_name) {
                 $query->join('link AS l2', static function (JoinClause $join): void {
                     $join
                         ->on('l2.l_file', '=', 'l1.l_file')
-                        ->on('l2.l_from', '=', 'l1.l_to')
-                        ->where('l2.l_type', '=', 'HUSB');
-                });
+                        ->on('l2.l_from', '=', 'l1.l_to');
+                })
+                    ->where('l2.l_type', '=', 'HUSB');
                 $query->join('name AS father_name', static function (JoinClause $join): void {
                     $join
                         ->on('father_name.n_file', '=', 'l2.l_file')
@@ -548,9 +548,9 @@ class SearchService
                 $query->join('link AS l3', static function (JoinClause $join): void {
                     $join
                         ->on('l3.l_file', '=', 'l1.l_file')
-                        ->on('l3.l_from', '=', 'l1.l_to')
-                        ->where('l3.l_type', '=', 'WIFE');
-                });
+                        ->on('l3.l_from', '=', 'l1.l_to');
+                })
+                    ->where('l3.l_type', '=', 'WIFE');
                 $query->join('name AS mother_name', static function (JoinClause $join): void {
                     $join
                         ->on('mother_name.n_file', '=', 'l3.l_file')
@@ -563,9 +563,9 @@ class SearchService
             $query->join('link AS l4', static function (JoinClause $join): void {
                 $join
                     ->on('l4.l_file', '=', 'individuals.i_file')
-                    ->on('l4.l_from', '=', 'individuals.i_id')
-                    ->where('l4.l_type', '=', 'FAMS');
-            });
+                    ->on('l4.l_from', '=', 'individuals.i_id');
+            })
+                ->where('l4.l_type', '=', 'FAMS');
             $query->join('families AS spouse_families', static function (JoinClause $join): void {
                 $join
                     ->on('spouse_families.f_file', '=', 'l4.l_file')

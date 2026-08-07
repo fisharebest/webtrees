@@ -386,10 +386,10 @@ readonly class StatisticsData
             ->join('dates', static function (JoinClause $join): void {
                 $join
                     ->on('d_gid', '=', 'l_to')
-                    ->on('d_file', '=', 'l_file')
-                    ->where('d_julianday1', '<>', 0)
-                    ->whereIn('d_month', ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']);
+                    ->on('d_file', '=', 'l_file');
             })
+            ->where('d_julianday1', '<>', 0)
+            ->whereIn('d_month', ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'])
             ->where('l_file', '=', $this->tree->id())
             ->where('l_type', '=', 'CHIL')
             ->select(['l_from AS family_id', new Expression('MIN(d_julianday1) AS min_birth_jd')])
@@ -425,11 +425,11 @@ readonly class StatisticsData
             ->join('dates', static function (JoinClause $join): void {
                 $join
                     ->on('d_gid', '=', 'f_id')
-                    ->on('d_file', '=', 'f_file')
-                    ->where('d_fact', '=', 'MARR')
-                    ->whereIn('d_month', ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'])
-                    ->where('d_julianday2', '<>', 0);
+                    ->on('d_file', '=', 'f_file');
             })
+            ->where('d_fact', '=', 'MARR')
+            ->whereIn('d_month', ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'])
+            ->where('d_julianday2', '<>', 0)
             ->where('f_file', '=', $tree->id());
 
         if ($year1 !== 0 && $year2 !== 0) {
@@ -965,17 +965,17 @@ readonly class StatisticsData
             ->join('dates AS child1', static function (JoinClause $join): void {
                 $join
                     ->on('child1.d_gid', '=', 'link1.l_to')
-                    ->on('child1.d_file', '=', 'link1.l_file')
-                    ->where('child1.d_fact', '=', 'BIRT')
-                    ->where('child1.d_julianday1', '<>', 0);
+                    ->on('child1.d_file', '=', 'link1.l_file');
             })
             ->join('dates AS child2', static function (JoinClause $join): void {
                 $join
                     ->on('child2.d_gid', '=', 'link2.l_to')
-                    ->on('child2.d_file', '=', 'link2.l_file')
-                    ->where('child2.d_fact', '=', 'BIRT')
-                    ->whereColumn('child2.d_julianday2', '>', 'child1.d_julianday1');
+                    ->on('child2.d_file', '=', 'link2.l_file');
             })
+            ->where('child1.d_fact', '=', 'BIRT')
+            ->where('child1.d_julianday1', '<>', 0)
+            ->where('child2.d_fact', '=', 'BIRT')
+            ->whereColumn('child2.d_julianday2', '>', 'child1.d_julianday1')
             ->where('link1.l_type', '=', 'CHIL')
             ->where('link1.l_file', '=', $this->tree->id())
             ->distinct()
@@ -1431,19 +1431,19 @@ readonly class StatisticsData
             ->join('link AS children', static function (JoinClause $join): void {
                 $join
                     ->on('children.l_from', '=', 'f_id')
-                    ->on('children.l_file', '=', 'f_file')
-                    ->where('children.l_type', '=', 'CHIL');
+                    ->on('children.l_file', '=', 'f_file');
             })->join('link AS mchildren', static function (JoinClause $join): void {
                 $join
                     ->on('mchildren.l_file', '=', 'children.l_file')
-                    ->on('mchildren.l_from', '=', 'children.l_to')
-                    ->where('mchildren.l_type', '=', 'FAMS');
+                    ->on('mchildren.l_from', '=', 'children.l_to');
             })->join('link AS gchildren', static function (JoinClause $join): void {
                 $join
                     ->on('gchildren.l_file', '=', 'mchildren.l_file')
-                    ->on('gchildren.l_from', '=', 'mchildren.l_to')
-                    ->where('gchildren.l_type', '=', 'CHIL');
+                    ->on('gchildren.l_from', '=', 'mchildren.l_to');
             })
+            ->where('children.l_type', '=', 'CHIL')
+            ->where('mchildren.l_type', '=', 'FAMS')
+            ->where('gchildren.l_type', '=', 'CHIL')
             ->where('f_file', '=', $this->tree->id())
             ->groupBy(['f_id', 'f_file', 'f_husb', 'f_wife', 'f_gedcom', 'f_numchil'])
             ->orderBy(new Expression('COUNT(*)'), SortOrder::Descending->value)
@@ -1660,22 +1660,22 @@ readonly class StatisticsData
             ->join('link AS childfamily', static function (JoinClause $join): void {
                 $join
                     ->on('childfamily.l_file', '=', 'parentfamily.l_file')
-                    ->on('childfamily.l_from', '=', 'parentfamily.l_from')
-                    ->where('childfamily.l_type', '=', 'CHIL');
+                    ->on('childfamily.l_from', '=', 'parentfamily.l_from');
             })
             ->join('dates AS birth', static function (JoinClause $join): void {
                 $join
                     ->on('birth.d_file', '=', 'parentfamily.l_file')
-                    ->on('birth.d_gid', '=', 'parentfamily.l_to')
-                    ->where('birth.d_fact', '=', 'BIRT')
-                    ->where('birth.d_julianday1', '<>', 0);
+                    ->on('birth.d_gid', '=', 'parentfamily.l_to');
             })
             ->join('dates AS childbirth', static function (JoinClause $join): void {
                 $join
                     ->on('childbirth.d_file', '=', 'parentfamily.l_file')
-                    ->on('childbirth.d_gid', '=', 'childfamily.l_to')
-                    ->where('childbirth.d_fact', '=', 'BIRT');
+                    ->on('childbirth.d_gid', '=', 'childfamily.l_to');
             })
+            ->where('childfamily.l_type', '=', 'CHIL')
+            ->where('birth.d_fact', '=', 'BIRT')
+            ->where('birth.d_julianday1', '<>', 0)
+            ->where('childbirth.d_fact', '=', 'BIRT')
             ->where('childfamily.l_file', '=', $this->tree->id())
             ->where('parentfamily.l_type', '=', $sex_field)
             ->where('childbirth.d_julianday2', '>', new Expression(DB::prefix('birth.d_julianday1')))
@@ -1730,16 +1730,16 @@ readonly class StatisticsData
             ->join('dates AS married', static function (JoinClause $join): void {
                 $join
                     ->on('married.d_file', '=', 'f_file')
-                    ->on('married.d_gid', '=', 'f_id')
-                    ->where('married.d_fact', '=', 'MARR')
-                    ->where('married.d_julianday1', '<>', 0);
+                    ->on('married.d_gid', '=', 'f_id');
             })
             ->join('dates AS husbdeath', static function (JoinClause $join): void {
                 $join
                     ->on('husbdeath.d_gid', '=', 'f_husb')
-                    ->on('husbdeath.d_file', '=', 'f_file')
-                    ->where('husbdeath.d_fact', '=', 'DEAT');
+                    ->on('husbdeath.d_file', '=', 'f_file');
             })
+            ->where('married.d_fact', '=', 'MARR')
+            ->where('married.d_julianday1', '<>', 0)
+            ->where('husbdeath.d_fact', '=', 'DEAT')
             ->whereColumn('married.d_julianday1', '<', 'husbdeath.d_julianday2')
             ->groupBy(['f_id'])
             ->select(['f_id AS family', new Expression('MIN(' . DB::prefix('husbdeath.d_julianday2') . ' - ' . DB::prefix('married.d_julianday1') . ') AS age')])
@@ -1751,16 +1751,16 @@ readonly class StatisticsData
             ->join('dates AS married', static function (JoinClause $join): void {
                 $join
                     ->on('married.d_file', '=', 'f_file')
-                    ->on('married.d_gid', '=', 'f_id')
-                    ->where('married.d_fact', '=', 'MARR')
-                    ->where('married.d_julianday1', '<>', 0);
+                    ->on('married.d_gid', '=', 'f_id');
             })
             ->join('dates AS wifedeath', static function (JoinClause $join): void {
                 $join
                     ->on('wifedeath.d_gid', '=', 'f_wife')
-                    ->on('wifedeath.d_file', '=', 'f_file')
-                    ->where('wifedeath.d_fact', '=', 'DEAT');
+                    ->on('wifedeath.d_file', '=', 'f_file');
             })
+            ->where('married.d_fact', '=', 'MARR')
+            ->where('married.d_julianday1', '<>', 0)
+            ->where('wifedeath.d_fact', '=', 'DEAT')
             ->whereColumn('married.d_julianday1', '<', 'wifedeath.d_julianday2')
             ->groupBy(['f_id'])
             ->select(['f_id AS family', new Expression('MIN(' . DB::prefix('wifedeath.d_julianday2') . ' - ' . DB::prefix('married.d_julianday1') . ') AS age')])
@@ -1772,16 +1772,16 @@ readonly class StatisticsData
             ->join('dates AS married', static function (JoinClause $join): void {
                 $join
                     ->on('married.d_file', '=', 'f_file')
-                    ->on('married.d_gid', '=', 'f_id')
-                    ->where('married.d_fact', '=', 'MARR')
-                    ->where('married.d_julianday1', '<>', 0);
+                    ->on('married.d_gid', '=', 'f_id');
             })
             ->join('dates AS divorced', static function (JoinClause $join): void {
                 $join
                     ->on('divorced.d_gid', '=', 'f_id')
-                    ->on('divorced.d_file', '=', 'f_file')
-                    ->whereIn('divorced.d_fact', ['DIV', 'ANUL', '_SEPR']);
+                    ->on('divorced.d_file', '=', 'f_file');
             })
+            ->where('married.d_fact', '=', 'MARR')
+            ->where('married.d_julianday1', '<>', 0)
+            ->whereIn('divorced.d_fact', ['DIV', 'ANUL', '_SEPR'])
             ->whereColumn('married.d_julianday1', '<', 'divorced.d_julianday2')
             ->groupBy(['f_id'])
             ->select(['f_id AS family', new Expression('MIN(' . DB::prefix('divorced.d_julianday2') . ' - ' . DB::prefix('married.d_julianday1') . ') AS age')])
@@ -1888,17 +1888,17 @@ readonly class StatisticsData
             ->join('dates AS wife', static function (JoinClause $join): void {
                 $join
                     ->on('wife.d_gid', '=', 'f_wife')
-                    ->on('wife.d_file', '=', 'f_file')
-                    ->where('wife.d_fact', '=', 'BIRT')
-                    ->where('wife.d_julianday1', '<>', 0);
+                    ->on('wife.d_file', '=', 'f_file');
             })
             ->join('dates AS husb', static function (JoinClause $join): void {
                 $join
                     ->on('husb.d_gid', '=', 'f_husb')
-                    ->on('husb.d_file', '=', 'f_file')
-                    ->where('husb.d_fact', '=', 'BIRT')
-                    ->where('husb.d_julianday1', '<>', 0);
-            });
+                    ->on('husb.d_file', '=', 'f_file');
+            })
+            ->where('wife.d_fact', '=', 'BIRT')
+            ->where('wife.d_julianday1', '<>', 0)
+            ->where('husb.d_fact', '=', 'BIRT')
+            ->where('husb.d_julianday1', '<>', 0);
 
         if ($order === SortOrder::Descending) {
             $query
@@ -1986,11 +1986,11 @@ readonly class StatisticsData
             ->join('dates AS birth', static function (JoinClause $join) use ($spouse_field): void {
                 $join
                     ->on('birth.d_file', '=', 'married.d_file')
-                    ->on('birth.d_gid', '=', $spouse_field)
-                    ->where('birth.d_julianday1', '<>', 0)
-                    ->where('birth.d_fact', '=', 'BIRT')
-                    ->whereIn('birth.d_type', ['@#DGREGORIAN@', '@#DJULIAN@']);
+                    ->on('birth.d_gid', '=', $spouse_field);
             })
+            ->where('birth.d_julianday1', '<>', 0)
+            ->where('birth.d_fact', '=', 'BIRT')
+            ->whereIn('birth.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
             ->where('married.d_file', '=', $this->tree->id())
             ->where('married.d_fact', '=', 'MARR')
             ->whereIn('married.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
@@ -2027,22 +2027,22 @@ readonly class StatisticsData
             ->join('dates AS married', static function (JoinClause $join): void {
                 $join
                     ->on('married.d_file', '=', 'f_file')
-                    ->on('married.d_gid', '=', 'f_id')
-                    ->where('married.d_fact', '=', 'MARR');
+                    ->on('married.d_gid', '=', 'f_id');
             })
             ->join('individuals', static function (JoinClause $join) use ($sex, $sex_field): void {
                 $join
                     ->on('i_file', '=', 'f_file')
-                    ->on('i_id', '=', $sex_field)
-                    ->where('i_sex', '=', $sex);
+                    ->on('i_id', '=', $sex_field);
             })
             ->join('dates AS birth', static function (JoinClause $join): void {
                 $join
                     ->on('birth.d_file', '=', 'i_file')
-                    ->on('birth.d_gid', '=', 'i_id')
-                    ->where('birth.d_fact', '=', 'BIRT')
-                    ->where('birth.d_julianday1', '<>', 0);
+                    ->on('birth.d_gid', '=', 'i_id');
             })
+            ->where('married.d_fact', '=', 'MARR')
+            ->where('i_sex', '=', $sex)
+            ->where('birth.d_fact', '=', 'BIRT')
+            ->where('birth.d_julianday1', '<>', 0)
             ->where('f_file', '=', $this->tree->id())
             ->where('married.d_julianday2', '>', new Expression(DB::prefix('birth.d_julianday1')))
             ->orderBy(new Expression(DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1')), $order->value)

@@ -339,15 +339,12 @@ final class ListBuilder
                     unset($attrs[$attr]);
                 } elseif (preg_match('/^NAME CONTAINS (.*)$/', $value, $match)) {
                     if ($sortby === 'NAME' || $match[1] !== '') {
-                        $query->join('name AS ' . $attr, static function (JoinClause $join) use ($attr): void {
-                            $join
-                                ->on($attr . '.n_file', '=', 'f_file')
-                                ->where(static function (Builder $query): void {
-                                    $query
-                                        ->whereColumn('n_id', '=', 'f_husb')
-                                        ->orWhereColumn('n_id', '=', 'f_wife');
-                                });
-                        });
+                        $query->join('name AS ' . $attr, $attr . '.n_file', '=', 'f_file')
+                            ->where(static function (Builder $query) use ($attr): void {
+                                $query
+                                    ->whereColumn($attr . '.n_id', '=', 'f_husb')
+                                    ->orWhereColumn($attr . '.n_id', '=', 'f_wife');
+                            });
                         if ($match[1] !== '') {
                             $names = explode(' ', $match[1]);
                             foreach ($names as $name) {

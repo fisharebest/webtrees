@@ -67,8 +67,7 @@ final class AutoCompleteCitation extends AbstractAutocompleteHandler
             ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_file', '=', 'f_file')
-                    ->on('l_from', '=', 'f_id')
-                    ->where('l_type', '=', 'SOUR');
+                    ->on('l_from', '=', 'f_id');
             })
             ->where('f_file', '=', $tree->id())
             ->where('l_to', '=', $source->xref())

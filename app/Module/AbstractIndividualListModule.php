@@ -494,9 +494,9 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
             $query->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_from', '=', 'n_id')
-                    ->on('l_file', '=', 'n_file')
-                    ->where('l_type', '=', 'FAMS');
-            });
+                    ->on('l_file', '=', 'n_file');
+            })
+                ->where('l_type', '=', 'FAMS');
         }
     }
 

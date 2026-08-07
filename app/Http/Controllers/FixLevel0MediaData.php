@@ -69,14 +69,14 @@ final class FixLevel0MediaData
             ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('link.l_file', '=', 'media.m_file')
-                    ->on('link.l_to', '=', 'media.m_id')
-                    ->where('link.l_type', '=', 'OBJE');
+                    ->on('link.l_to', '=', 'media.m_id');
             })
             ->join('individuals', static function (JoinClause $join): void {
                 $join
                     ->on('individuals.i_file', '=', 'link.l_file')
                     ->on('individuals.i_id', '=', 'link.l_from');
             })
+            ->where('link.l_type', '=', 'OBJE')
             ->where('i_gedcom', 'LIKE', new Expression("('%\n1 OBJE @' || " . DB::prefix('media') . ".m_id || '@%')"))
             ->orderBy('individuals.i_file')
             ->orderBy('individuals.i_id')
