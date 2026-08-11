@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Http\RequestHandlers\ChangeFamilyMembersAction;
+use Fisharebest\Webtrees\Http\Controllers\ChangeFamilyMembers;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -17,19 +18,17 @@ use Fisharebest\Webtrees\Tree;
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(ChangeFamilyMembersAction::class, ['tree' => $tree->name()])) ?>" class="wt-page-content" name="changefamform">
+<form method="post" action="<?= e(route(ChangeFamilyMembers::class, ['tree' => $tree->name()])) ?>" class="wt-page-content" name="changefamform">
     <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($family->xref()) ?>">
 
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="HUSB">
-            <?php if ($family->husband()?->sex() === 'M') : ?>
-                <?= I18N::translate('Husband') ?>
-            <?php elseif ($family->husband()?->sex() === 'F') : ?>
-                <?= I18N::translate('Wife') ?>
-            <?php else : ?>
-                <?= I18N::translate('Spouse') ?>
-            <?php endif ?>
+            <?= match($family->husband()?->sex()) {
+                Sex::Male => I18N::translate('Husband'),
+                Sex::Female => I18N::translate('Wife'),
+                default => I18N::translate('Spouse'),
+            } ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
             <?= view('components/select-individual', ['name' => 'HUSB', 'individual' => $family->husband(), 'tree' => $tree]) ?>
@@ -38,13 +37,11 @@ use Fisharebest\Webtrees\Tree;
 
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="WIFE">
-            <?php if ($family->wife()?->sex() === 'M') : ?>
-                <?= I18N::translate('Husband') ?>
-            <?php elseif ($family->wife()?->sex() === 'F') : ?>
-                <?= I18N::translate('Wife') ?>
-            <?php else : ?>
-                <?= I18N::translate('Spouse') ?>
-            <?php endif ?>
+            <?= match($family->wife()?->sex()) {
+                Sex::Male => I18N::translate('Husband'),
+                Sex::Female => I18N::translate('Wife'),
+                default => I18N::translate('Spouse'),
+            } ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
             <?= view('components/select-individual', ['name' => 'WIFE', 'individual' => $family->wife(), 'tree' => $tree]) ?>
@@ -54,13 +51,11 @@ use Fisharebest\Webtrees\Tree;
     <?php foreach ($family->children() as $n => $child) : ?>
         <div class="row">
             <label class="col-sm-3 col-form-label wt-page-options-label" for="CHIL<?= $n ?>">
-                <?php if ($child->sex() === 'M') : ?>
-                    <?= I18N::translate('Son') ?>
-                <?php elseif ($child->sex() === 'F') : ?>
-                    <?= I18N::translate('Daughter') ?>
-                <?php else : ?>
-                    <?= I18N::translate('Child') ?>
-                <?php endif ?>
+                <?= match($child->sex()) {
+                    Sex::Male => I18N::translate('Son'),
+                    Sex::Female => I18N::translate('Daughter'),
+                    default => I18N::translate('Child'),
+                } ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
                 <?= view('components/select-individual', ['name' => 'CHIL[]', 'id' => 'CHIL' . $n, 'individual' => $child, 'tree' => $tree]) ?>

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,84 +19,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleUz;
-use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\I18N\Languages\Uzbek;
 
 class LanguageUzbek extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            'A',
-            'B',
-            'D',
-            'E',
-            'F',
-            'G',
-            'H',
-            'I',
-            'J',
-            'K',
-            'L',
-            'M',
-            'N',
-            'O',
-            'P',
-            'Q',
-            'R',
-            'S',
-            'T',
-            'U',
-            'V',
-            'X',
-            'Y',
-            'Z',
-            'O' . UTF8::MODIFIER_LETTER_TURNED_COMMA,
-            'G' . UTF8::MODIFIER_LETTER_TURNED_COMMA,
-            'SH',
-            'CH',
-            'NG',
-        ];
+        $this->language = new Uzbek();
     }
-
-    public function initialLetter(string $string): string
-    {
-        if (str_starts_with($string, 'O' . UTF8::MODIFIER_LETTER_TURNED_COMMA)) {
-            return 'O' . UTF8::MODIFIER_LETTER_TURNED_COMMA;
-        }
-
-        if (str_starts_with($string, 'G' . UTF8::MODIFIER_LETTER_TURNED_COMMA)) {
-            return 'G' . UTF8::MODIFIER_LETTER_TURNED_COMMA;
-        }
-
-        if (str_starts_with($string, 'SH')) {
-            return 'SH';
-        }
-
-        if (str_starts_with($string, 'CH')) {
-            return 'CH';
-        }
-
-        if (str_starts_with($string, 'NG')) {
-            return 'NG';
-        }
-
-        return mb_substr($string, 0, 1);
-    }
-
     public function isEnabledByDefault(): bool
     {
         return false;
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleUz();
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -51,8 +51,6 @@ class EncodingFactory implements EncodingFactoryInterface
 {
     /**
      * Detect an encoding from a GEDCOM header record.
-     *
-     * @throws InvalidGedcomEncodingException
      */
     public function detect(string $header): EncodingInterface|null
     {
@@ -153,11 +151,6 @@ class EncodingFactory implements EncodingFactoryInterface
 
     /**
      * Create a named encoding.
-     *
-     * @param string $name
-     *
-     * @return EncodingInterface
-     * @throws DomainException
      */
     public function make(string $name): EncodingInterface
     {

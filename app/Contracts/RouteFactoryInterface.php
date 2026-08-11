@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,8 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Contracts;
 
-use Aura\Router\Map;
-use Aura\Router\Route;
+use Fisharebest\Webtrees\Http\Routing\RouteCollection;
 
 /**
  * Make a URL for a route.
@@ -30,15 +29,12 @@ interface RouteFactoryInterface
     /**
      * Generate a URL for a named route.
      *
-     * @param string                                    $route_name
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function route(string $route_name, array $parameters = []): string;
 
     /**
-     * @return Map<Route>
+     * Get the route collection.
      */
-    public function routeMap(): Map;
+    public function routeMap(): RouteCollection;
 }

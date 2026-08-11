@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Symfony\Component\Console\Completion\CompletionInput;
@@ -34,12 +33,9 @@ use Throwable;
 
 use function addcslashes;
 use function file_exists;
-use function file_get_contents;
 use function filesize;
 use function fopen;
-use function gc_collect_cycles;
 use function preg_split;
-use function str_replace;
 
 final class TreeImport extends AbstractCommand
 {
@@ -102,7 +98,7 @@ final class TreeImport extends AbstractCommand
         try {
             DB::connection()->beginTransaction();
 
-            $tree->setPreference('imported', '0');
+            DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update(['imported' => 0]);
             $tree->setPreference('keep_media', $keep_media ? '1' : '0');
             $tree->setPreference('WORD_WRAPPED_NOTES', $word_wrapped_notes ? '1' : '0');
             $tree->setPreference('GEDCOM_MEDIA_PATH', $gedcom_media_path);
@@ -118,7 +114,6 @@ final class TreeImport extends AbstractCommand
                 'dates'       => DB::table('dates')->where('d_file', '=', $tree->id()),
                 'change'      => DB::table('change')->where('gedcom_id', '=', $tree->id()),
             ];
-
 
             if ($keep_media) {
                 $queries['link'] = DB::table('link')
@@ -179,7 +174,7 @@ final class TreeImport extends AbstractCommand
 
             $output->writeln('');
 
-            $tree->setPreference('imported', '1');
+            DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update(['imported' => 1]);
 
             DB::connection()->commit();
         } catch (Throwable $ex) {

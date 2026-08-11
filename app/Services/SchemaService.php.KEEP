@@ -1,0 +1,247 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2026 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Services;
+
+use Fisharebest\Webtrees\DB;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
+use Illuminate\Database\Schema\Blueprint;
+use Throwable;
+
+/**
+ * @internal - this code is likely to change
+ */
+final readonly class SchemaService
+{
+    /**
+     *
+     */
+    public function updateSchema(int $version): int
+    {
+        switch ($version) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+            case 17:
+            case 18:
+            case 19:
+            case 20:
+            case 21:
+            case 22:
+            case 23:
+            case 24:
+            case 25:
+            case 26:
+            case 27:
+            case 28:
+            case 29:
+            case 30:
+                // Assign GEDCOM settings for default tree and default_resn
+            case 31:
+                // Language codes become language tags
+            case 32:
+                // Increase size of site_setting values
+                // Delete invalid rows in change
+            case 33:
+                // Add to site_access_rule
+            case 34:
+                // Delete old values from gedcom_setting
+            case 35:
+                // Convert text/mediumtext to longtext
+            case 36:
+                // Increase size of ip_address columns
+            case 37:
+                // Drop site_access_rule, next_id
+                // Split media into media/media_file
+            case 38:
+                // Create the placelocation table (which is deleted in migration 44)
+            case 39:
+                // Create the favorite table
+            case 40:
+                // Create the news table
+            case 41:
+                // Add footer_order to module table
+            case 42:
+                // module_privacy replaced component (enum) with interface (string)
+            case 43:
+                // LANGUAGE changed from a gedcom setting to a site setting
+            case 44:
+                // placelocation becomes place_location
+            case 45:
+            case 46:
+            case 47:
+            case 48:
+            case 49:
+        }
+    }
+
+    /**
+     * Clean up the database schema after an upgrade.
+     *
+     * These scripts must never fail.
+     */
+    public function cleanUpDatabase(): void
+    {
+        $this->deleteOldTables();
+        $this->deleteOldColumns();
+        $this->unpackGedcomSettingTable();
+    }
+
+    private function deleteOldTables(): void
+    {
+        // Created in PGV, dropped in migration 6.
+        DB::schema()->dropIfExists(table: 'remotelinks');
+
+        // Created in PGV, dropped in migration 20.
+        DB::schema()->dropIfExists(table: 'media_mapping');
+
+        // Created in PGV, dropped in migration 29.
+        DB::schema()->dropIfExists(table: 'ip_address');
+
+        // Created in migration 0, dropped in migration 37.
+        DB::schema()->dropIfExists(table: 'next_id');
+
+        // Created in migration 17, dropped in migration 37.
+        DB::schema()->dropIfExists(table: 'site_access_rule');
+
+        // Created in migration 37 (only for unreleased dev code).
+        DB::schema()->dropIfExists(table: 'repository');
+    }
+
+    private function deleteOldColumns(): void
+    {
+        // Created in PGV, dropped in migration 2
+        $this->dropColumnIfExists(table: 'gedcom', column: 'import_offset');
+
+        // Created in PGV, dropped in migration 2
+        $this->dropColumnIfExists(table: 'gedcom', column: 'import_gedcom');
+
+        // Created in PGV, dropped in migration 6
+        $this->dropColumnIfExists(table: 'sources', column: 's_dbid');
+
+        // Created in PGV, dropped in migration 11
+        $this->dropColumnIfExists(table: 'name', column: 'n_list');
+
+        // Created in PGV, dropped in migration 13
+        $this->dropColumnIfExists(table: 'individuals', column: 'i_isdead');
+
+        // Created in PGV, dropped in migration 18
+        $this->dropColumnIfExists(table: 'places', column: 'p_level');
+
+        // Created in migration 0, dropped in migration 20
+        $this->dropColumnIfExists(table: 'media', column: 'm_id');
+    }
+
+    private function dropColumnIfExists(string $table, string $column): void
+    {
+        if (DB::schema()->hasColumn(table: $table, column: $column)) {
+            DB::schema()->table(table: $table, callback: static function ($table) use ($column): void {
+                $table->dropColumn(columns: $column);
+            });
+        }
+    }
+
+    private function deleteOldRows(): void
+    {
+    }
+
+    public function convertColumnToUpperCase(string $table, string $column): void
+    {
+        DB::table(table: $table)->update(values: [
+            $column => new Expression(value: 'UPPER(' . DB::connection()->getQueryGrammar()->wrap(value: $column) . ')')
+        ]);
+    }
+
+    // Requires MySQL 8.0
+    private function insertMissingGedcomSettings(string $name, string $default): void
+    {
+        // CTEs are not supported in laravel query-builder,
+        // but they are the only cross-platform way to do this.
+        $gedcom         = DB::prefix(identifier: 'gedcom');
+        $gedcom_setting = DB::prefix(identifier: 'gedcom_setting');
+
+        $sql = "
+            INSERT INTO {$gedcom_setting} (gedcom_id, setting_name, setting_value)
+            WITH missing AS (
+                SELECT gedcom_id, ? AS setting_name, ? AS setting_value FROM {$gedcom}
+                WHERE NOT EXISTS (
+                    SELECT 1 FROM {$gedcom_setting}
+                    WHERE {$gedcom}.gedcom_id = {$gedcom_setting}.gedcom_id AND setting_name = ?
+                )
+            )
+            SELECT * FROM missing
+        ";
+
+        DB::connection()->statement(query: $sql, bindings: [$name, $default, $name]);
+    }
+
+    private function unpackGedcomSettingTable(): void
+    {
+        $new_columns = [
+            'MEDIA_DIRECTORY'        => 'media_folder',
+            'imported'               => 'imported',
+            'title'                  => 'title',
+            'gedcom_filename'        => 'gedcom_file',
+            'REQUIRE_AUTHENTICATION' => 'private',
+            'CONTACT_USER_ID'        => 'contact_user_id',
+            'WEBMASTER_USER_ID'      => 'support_user_id',
+        ];
+
+        $rows = DB::table(table: 'gedcom_setting')
+            ->whereIn(column: 'setting_name', values: array_keys($new_columns))
+            ->get();
+
+        foreach ($rows as $row) {
+            $column = $new_columns[$row->setting_name];
+
+            $value = match ($row->setting_name) {
+                'imported', 'REQUIRE_AUTHENTICATION'   => (int) (bool) $row->setting_value,
+                'CONTACT_USER_ID', 'WEBMASTER_USER_ID' => (int) $row->setting_value,
+                default                                => $row->setting_value,
+            };
+
+            try {
+                DB::table(table: 'gedcom')
+                    ->where(column: 'gedcom_id', operator: '=', value: $row->gedcom_id)
+                    ->update(values: [$column => $value]);
+            } catch (Throwable) {
+                // If it violates a foreign key constraint, then just ignore it.
+            }
+        }
+
+        DB::table(table: 'gedcom_setting')
+            ->whereIn(column: 'setting_name', values: array_keys($new_columns))
+            ->delete();
+    }
+}

@@ -1,0 +1,129 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2026 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Tests\Unit\Elements;
+
+use DOMDocument;
+use Fisharebest\Webtrees\Factories\LocationFactory;
+use Fisharebest\Webtrees\Location;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tests\TestCase;
+use Fisharebest\Webtrees\Tree;
+use PHPUnit\Framework\Attributes\CoversClass;
+use Psr\Http\Message\ServerRequestInterface;
+use Fisharebest\Webtrees\Elements\AbstractXrefElement;
+use Fisharebest\Webtrees\Elements\XrefLocation;
+use Fisharebest\Webtrees\Report\Element;
+
+#[CoversClass(Element::class)]
+#[CoversClass(AbstractXrefElement::class)]
+#[CoversClass(XrefLocation::class)]
+class XrefLocationTest extends TestCase
+{
+    public function testEdit(): void
+    {
+        $element = new XrefLocation('');
+
+        $tree = self::createStub(Tree::class);
+
+        $factory = $this->createMock(LocationFactory::class);
+
+        $factory->expects($this->once())
+            ->method('make')
+            ->willReturn(null);
+
+        Registry::locationFactory($factory);
+
+        $request = self::createRequest();
+
+        Registry::container()->set(ServerRequestInterface::class, $request);
+
+        $html = $element->edit('some-id', 'some-name', '@X123@', $tree);
+        $dom  = new DOMDocument();
+        $dom->loadHTML($html);
+
+        $select_nodes = $dom->getElementsByTagName('select');
+        self::assertEquals(1, $select_nodes->count());
+
+        foreach ($select_nodes as $select_node) {
+            $option_nodes = $select_node->getElementsByTagName('option');
+            self::assertEquals(1, $option_nodes->count());
+        }
+    }
+
+    public function testEscape(): void
+    {
+        $element = new XrefLocation('');
+
+        self::assertSame('@X123@', $element->escape('@X123@'));
+    }
+
+    public function testValueXrefLink(): void
+    {
+        $element = new XrefLocation('');
+
+        $record = $this->createMock(Location::class);
+
+        $record->expects($this->once())
+            ->method('fullName')
+            ->willReturn('Full Name');
+
+        $record->expects($this->once())
+            ->method('url')
+            ->willReturn('https://url');
+
+        $tree = self::createStub(Tree::class);
+
+        $factory = $this->createMock(LocationFactory::class);
+
+        $factory->expects($this->once())
+            ->method('make')
+            ->willReturn($record);
+
+        Registry::locationFactory($factory);
+
+        self::assertSame('<a href="https://url">Full Name</a>', $element->value('@X123@', $tree));
+    }
+
+    public function testValueXrefLinkWithInvalidXref(): void
+    {
+        $element = new XrefLocation('');
+
+        $tree = self::createStub(Tree::class);
+
+        self::assertSame('<span class="error">invalid</span>', $element->value('invalid', $tree));
+    }
+
+    public function testValueXrefLinkWithMissingRecord(): void
+    {
+        $element = new XrefLocation('');
+
+        $tree = self::createStub(Tree::class);
+
+        $factory = $this->createMock(LocationFactory::class);
+
+        $factory->expects($this->once())
+            ->method('make')
+            ->willReturn(null);
+
+        Registry::locationFactory($factory);
+
+        self::assertSame('<span class="error">@X321@</span>', $element->value('@X321@', $tree));
+    }
+}

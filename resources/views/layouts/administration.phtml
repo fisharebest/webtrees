@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
-use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
+use Fisharebest\Webtrees\Http\Controllers\Logout;
+use Fisharebest\Webtrees\Http\Controllers\HomePage;
+use Fisharebest\Webtrees\Http\Controllers\SelectLanguage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\CustomCssJsModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\View;
 ?>
 
 <!DOCTYPE html>
-<html dir="<?= I18N::locale()->direction() ?>" lang="<?= I18N::locale()->languageTag() ?>">
+<html dir="<?= I18N::textDirection()->value ?>" lang="<?= I18N::languageTag() ?>">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,15 +50,15 @@ use Fisharebest\Webtrees\View;
 
             <ul class="nav small d-flex justify-content-end">
                 <li class="nav-item menu-mypage">
-                    <a class="nav-link active" href="<?= e(route(HomePage::class)) ?>"><?= I18N::translate('My page') ?></a>
+                    <a class="nav-link active" href="<?= e(route(HomePage::class)) ?>"><?= I18N::translate('Exit control panel') ?></a>
                 </li>
                 <li class="nav-item dropdown menu-language">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="admin-language-menu" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <?= I18N::translate('Language') ?>
                     </a>
-                    <div class="dropdown-menu">
-                        <?php foreach (I18N::activeLocales() as $locale) : ?>
-                            <a class="dropdown-item menu-language-<?= $locale->languageTag() ?> <?= I18N::languageTag() === $locale->languageTag() ? ' active' : '' ?>" href="#" data-wt-post-url="<?= e(route(SelectLanguage::class, ['language' => $locale->languageTag()])) ?>"><?= $locale->endonym() ?></a>
+                    <div class="dropdown-menu" aria-labelledby="admin-language-menu">
+                        <?php foreach (I18N::activeLanguages() as $language_tag => $endonym) : ?>
+                            <a class="dropdown-item menu-language-<?= $language_tag ?> <?= I18N::languageTag() === $language_tag ? ' active' : '' ?>" href="#" data-wt-post-url="<?= e(route(SelectLanguage::class, ['language' => $language_tag])) ?>"><?= $endonym ?></a>
                         <?php endforeach ?>
                     </div>
                 </li>
@@ -80,9 +80,10 @@ use Fisharebest\Webtrees\View;
             <?= $content ?>
         </main>
 
-
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
+        <script src="<?= e(asset('js/i18n/' . I18N::languageTag() . '.js')) ?>"></script>
         <script src="<?= e(asset('js/webtrees.min.js')) ?>"></script>
+        <script src="<?= e(asset('js/administration.min.js')) ?>"></script>
 
         <?= View::stack('javascript') ?>
 

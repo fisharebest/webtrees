@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataAdd;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataDelete;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataDeleteUnused;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataEdit;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportCSV;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportGeoJson;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataImportPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
+use Fisharebest\Webtrees\Http\Controllers\MapDataAdd;
+use Fisharebest\Webtrees\Http\Controllers\MapDataDelete;
+use Fisharebest\Webtrees\Http\Controllers\MapDataDeleteUnused;
+use Fisharebest\Webtrees\Http\Controllers\MapDataEdit;
+use Fisharebest\Webtrees\Http\Controllers\MapDataExportCSV;
+use Fisharebest\Webtrees\Http\Controllers\MapDataExportGeoJson;
+use Fisharebest\Webtrees\Http\Controllers\MapDataImport;
+use Fisharebest\Webtrees\Http\Controllers\MapDataList;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
 use Fisharebest\Webtrees\Tree;
@@ -40,7 +40,7 @@ use Illuminate\Support\Collection;
 
 <p>
     <label>
-        <input id="hide-unused-locations" type="checkbox" data-bs-toggle="collapse" data-bs-target=".unused-location" data-wt-persist="hide-unused-locations" autocomplete="off">
+        <input id="hide-unused-locations" type="checkbox" data-bs-toggle="collapse" data-bs-target=".unused-location" data-wt-persist="hide-unused-locations" autocomplete="off" aria-expanded="false">
         <?= I18N::translate('Hide unused locations') ?>
     </label>
 </p>
@@ -62,7 +62,7 @@ use Illuminate\Support\Collection;
 
     <tbody>
     <?php foreach ($placelist as $place) : ?>
-        <tr class="<?= $active[$place->key] ?? null ? '' : 'unused-location collapse show' ?>">
+        <tr class="<?= ($active[$place->key] ?? null) !== null ? '' : 'unused-location collapse show' ?>">
             <th scope="row">
                 <a href="<?= e(route(MapDataList::class, ['parent_id' => $place->id])) ?>">
                     <bdi><?= e($place->place) ?></bdi>
@@ -114,11 +114,11 @@ use Illuminate\Support\Collection;
                         </a>
                     <?php else : ?>
                         <div class="dropdown">
-                            <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdown-place-<?= $place->id ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?= I18N::plural('%s family tree', '%s family trees', count($active[$place->key]), I18N::number(count($active[$place->key]))) ?>
                             </a>
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-menu" aria-labelledby="dropdown-place-<?= $place->id ?>">
                                 <?php foreach ($active[$place->key] as $n => $link) : ?>
                                     <a class="dropdown-item" href="<?= e($list_module->listUrl($all_trees[$active[$place->key][$n]->tree_name], ['place_id' => $link->p_id])) ?>">
                                         <?= e($link->tree_title) ?>
@@ -167,7 +167,7 @@ use Illuminate\Support\Collection;
                         geoJSON
                     </a>
                 </div>
-                <a class="btn btn-primary" href="<?= e(route(MapDataImportPage::class, ['parent_id' => $parent_id])) ?>">
+                <a class="btn btn-primary" href="<?= e(route(MapDataImport::class, ['parent_id' => $parent_id])) ?>">
                     <?= view('icons/upload') ?>
                     <?= /* I18N: A button label. */
                     I18N::translate('import file') ?>

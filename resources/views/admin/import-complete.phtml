@@ -1,15 +1,1 @@
-<?php
-
-declare(strict_types=1);
-
-use Fisharebest\Webtrees\Tree;
-
-/**
- * @var Tree $tree
- */
-
-?>
-<script>
-  $("#import<?= e($tree->id()) ?>").addClass("d-none");
-  $("#actions<?= e($tree->id()) ?>").removeClass("d-none");
-</script>
+<div data-wt-import-complete></div>

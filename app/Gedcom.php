@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -1015,8 +1015,8 @@ class Gedcom
      */
     private function customSubTags(): array
     {
-        $custom_family_tags     = array_filter(explode(',', Site::getPreference('CUSTOM_FAMILY_TAGS')));
-        $custom_individual_tags = array_filter(explode(',', Site::getPreference('CUSTOM_INDIVIDUAL_TAGS')));
+        $custom_family_tags     = array_filter(explode(',', Site::getPreference('CUSTOM_FAMILY_TAGS')), static fn (string $value): bool => $value !== '');
+        $custom_individual_tags = array_filter(explode(',', Site::getPreference('CUSTOM_INDIVIDUAL_TAGS')), static fn (string $value): bool => $value !== '');
 
         $subtags = [
             'FAM'  => array_map(static fn (string $tag): array => [$tag, '0:M'], $custom_family_tags),
@@ -1133,12 +1133,6 @@ class Gedcom
         return $subtags;
     }
 
-    /**
-     * @param ElementFactoryInterface $element_factory
-     * @param bool                    $include_custom_tags
-     *
-     * @return void
-     */
     public function registerTags(ElementFactoryInterface $element_factory, bool $include_custom_tags): void
     {
         // Standard GEDCOM.

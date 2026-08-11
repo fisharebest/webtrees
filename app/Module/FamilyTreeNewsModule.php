@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,9 +24,9 @@ use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpForbiddenException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
+use Fisharebest\Webtrees\Http\Controllers\TreePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HtmlService;
@@ -72,7 +72,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
                 return $row;
             });
 
-        $content = view('modules/gedcom_news/list', [
+        $content = view('modules/gedcom-news/list', [
             'articles' => $articles,
             'block_id' => $block_id,
             'limit'    => 5,
@@ -118,7 +118,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         $tree = Validator::attributes($request)->tree();
 
         if (!Auth::isManager($tree)) {
-            throw new HttpAccessDeniedException();
+            throw new HttpForbiddenException();
         }
 
         $news_id = Validator::queryParams($request)->integer('news_id', 0);
@@ -147,7 +147,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             $updated = Registry::timestampFactory()->now(Auth::user());
         }
 
-        return $this->viewResponse('modules/gedcom_news/edit', [
+        return $this->viewResponse('modules/gedcom-news/edit', [
             'body'    => $body,
             'news_id' => $news_id,
             'subject' => $subject,
@@ -162,7 +162,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         $tree = Validator::attributes($request)->tree();
 
         if (!Auth::isManager($tree)) {
-            throw new HttpAccessDeniedException();
+            throw new HttpForbiddenException();
         }
 
         $news_id = Validator::queryParams($request)->integer('news_id', 0);
@@ -213,7 +213,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         $news_id = Validator::queryParams($request)->integer('news_id');
 
         if (!Auth::isManager($tree)) {
-            throw new HttpAccessDeniedException();
+            throw new HttpForbiddenException();
         }
 
         DB::table('news')

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,8 +37,6 @@ class Html
      * Convert an array of HTML attributes to an HTML string.
      *
      * @param array<string,string|int|bool> $attributes
-     *
-     * @return string
      */
     public static function attributes(array $attributes): string
     {
@@ -59,10 +57,7 @@ class Html
     /**
      * Encode a URL.
      *
-     * @param string                                    $path
      * @param array<bool|int|string|array<string>|null> $data
-     *
-     * @return string
      */
     public static function url(string $path, array $data): string
     {
@@ -77,10 +72,6 @@ class Html
 
     /**
      * Filenames are (almost?) always LTR, even on RTL systems.
-     *
-     * @param string $filename
-     *
-     * @return string
      */
     public static function filename(string $filename): string
     {

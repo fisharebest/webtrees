@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,33 +28,21 @@ interface ModuleFooterInterface extends ModuleInterface
 {
     /**
      * Users change change the order of footers using the control panel.
-     *
-     * @param int $footer_order
-     *
-     * @return void
      */
     public function setFooterOrder(int $footer_order): void;
 
     /**
      * Users change change the order of footers using the control panel.
-     *
-     * @return int
      */
     public function getFooterOrder(): int;
 
     /**
      * The default position for this footer.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultFooterOrder(): int;
 
     /**
      * A footer, to be added at the bottom of every page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return string
      */
     public function getFooter(ServerRequestInterface $request): string;
 }

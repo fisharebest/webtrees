@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,70 +19,31 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Contracts;
 
+use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\MediaFile;
-use Intervention\Image\Interfaces\ImageInterface;
 use League\Flysystem\FilesystemOperator;
-use Psr\Http\Message\ResponseInterface;
 
-/**
- * Make an image (from another image).
- */
 interface ImageFactoryInterface
 {
-    /**
-     * Send the original file - either inline or as a download.
-     */
-    public function fileResponse(FilesystemOperator $filesystem, string $path, bool $download): ResponseInterface;
+    public function fileContents(FilesystemOperator $filesystem, string $path): string;
 
-    /**
-     * Send the original file - either inline or as a download.
-     */
-    public function thumbnailResponse(
+    public function fileMimeType(FilesystemOperator $filesystem, string $path): string;
+
+    public function thumbnailContents(
         FilesystemOperator $filesystem,
         string $path,
         int $width,
         int $height,
-        string $fit
-    ): ResponseInterface;
+        ImageOperation $operation
+    ): string;
 
-    /**
-     * Create a full-size version of an image.
-     */
-    public function mediaFileResponse(MediaFile $media_file, bool $add_watermark, bool $download): ResponseInterface;
+    public function mediaFileContents(MediaFile $media_file, bool $add_watermark): string;
 
-    /**
-     * Create a smaller version of an image.
-     */
-    public function mediaFileThumbnailResponse(
+    public function mediaFileThumbnail(
         MediaFile $media_file,
         int $width,
         int $height,
-        string $fit,
+        ImageOperation $operation,
         bool $add_watermark
-    ): ResponseInterface;
-
-    /**
-     * Does a full-sized image need a watermark?
-     */
-    public function fileNeedsWatermark(MediaFile $media_file, UserInterface $user): bool;
-
-    /**
-     * Does a thumbnail image need a watermark?
-     */
-    public function thumbnailNeedsWatermark(MediaFile $media_file, UserInterface $user): bool;
-
-    /**
-     * Create a watermark image, perhaps specific to a media-file.
-     */
-    public function createWatermark(int $width, int $height, MediaFile $media_file): ImageInterface;
-
-    /**
-     * Add a watermark to an image.
-     */
-    public function addWatermark(ImageInterface $image, ImageInterface $watermark): ImageInterface;
-
-    /**
-     * Send a replacement image, to replace one that could not be found or created.
-     */
-    public function replacementImageResponse(string $text): ResponseInterface;
+    ): string;
 }

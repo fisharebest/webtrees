@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,19 +19,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Encodings\UTF16BE;
 use Fisharebest\Webtrees\Encodings\UTF16LE;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Encodings\Windows1252;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Factories\AbstractGedcomRecordFactory;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Query\Builder;
@@ -73,10 +72,10 @@ use const STREAM_FILTER_WRITE;
 class GedcomExportService
 {
     private const array ACCESS_LEVELS = [
-        'gedadmin' => Auth::PRIV_NONE,
-        'user'     => Auth::PRIV_USER,
-        'visitor'  => Auth::PRIV_PRIVATE,
-        'none'     => Auth::PRIV_HIDE,
+        'gedadmin' => AccessLevel::Manager,
+        'user'     => AccessLevel::Member,
+        'visitor'  => AccessLevel::Public,
+        'none'     => AccessLevel::Hidden,
     ];
 
     public function __construct(
@@ -123,7 +122,7 @@ class GedcomExportService
         $zip_filesystem->open($temp_zip_file, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
         if ($format === 'zipmedia') {
-            $media_path = $tree->getPreference('MEDIA_DIRECTORY');
+            $media_path = $tree->mediaFolder();
         } elseif ($format === 'gedzip') {
             $media_path = '';
         } else {
@@ -159,7 +158,7 @@ class GedcomExportService
      * @param Tree                                            $tree           Export data from this tree
      * @param bool                                            $sort_by_xref   Write GEDCOM records in XREF order
      * @param string                                          $encoding       Convert from UTF-8 to other encoding
-     * @param int                                             $access_level   Apply privacy filtering
+     * @param AccessLevel                                     $access_level   Apply privacy filtering
      * @param string                                          $line_endings   CRLF or LF
      * @param Collection<int,string|object|GedcomRecord>|null $records        Just export these records
      * @param ZipArchive|FilesystemOperator|null              $zip_filesystem Write media files to this filesystem
@@ -171,7 +170,7 @@ class GedcomExportService
         Tree $tree,
         bool $sort_by_xref = false,
         string $encoding = UTF8::NAME,
-        int $access_level = Auth::PRIV_HIDE,
+        AccessLevel $access_level = AccessLevel::Hidden,
         string $line_endings = 'CRLF',
         Collection|null $records = null,
         ZipArchive|FilesystemOperator|null $zip_filesystem = null,
@@ -188,14 +187,14 @@ class GedcomExportService
         if ($records instanceof Collection) {
             // Export just these records - e.g. from clippings cart.
             $data = [
-                new Collection([$this->createHeader($tree, $encoding, false)]),
+                new Collection([$this->createHeader($tree, $encoding, false, $access_level)]),
                 $records,
                 new Collection(['0 TRLR']),
             ];
-        } elseif ($access_level === Auth::PRIV_HIDE) {
+        } elseif ($access_level === AccessLevel::Hidden) {
             // If we will be applying privacy filters, then we will need the GEDCOM record objects.
             $data = [
-                new Collection([$this->createHeader($tree, $encoding, true)]),
+                new Collection([$this->createHeader($tree, $encoding, true, $access_level)]),
                 $this->individualQuery($tree, $sort_by_xref)->cursor(),
                 $this->familyQuery($tree, $sort_by_xref)->cursor(),
                 $this->sourceQuery($tree, $sort_by_xref)->cursor(),
@@ -208,7 +207,7 @@ class GedcomExportService
             Registry::cache()->array()->remember(AbstractGedcomRecordFactory::class . $tree->id(), static fn (): Collection => new Collection());
 
             $data = [
-                new Collection([$this->createHeader($tree, $encoding, true)]),
+                new Collection([$this->createHeader($tree, $encoding, true, $access_level)]),
                 $this->individualQuery($tree, $sort_by_xref)->get()->map(Registry::individualFactory()->mapper($tree)),
                 $this->familyQuery($tree, $sort_by_xref)->get()->map(Registry::familyFactory()->mapper($tree)),
                 $this->sourceQuery($tree, $sort_by_xref)->get()->map(Registry::sourceFactory()->mapper($tree)),
@@ -251,11 +250,17 @@ class GedcomExportService
                             }
 
                             if ($zip_filesystem instanceof ZipArchive) {
-                                // If the media file is stored locally, we can add it directly to the ZipArchive
-                                // $local_file = Site::getPreference('INDEX_DIRECTORY') . $tree->getPreference('MEDIA_DIRECTORY') . $media_path . $media_file;
-                                // $zip_filesystem->addFile($local_file, $media_path . $media_file);
+                                $tmpfile = tempnam(sys_get_temp_dir(), 'wt-zip-');
+                                $src = $media_filesystem->readStream($media_file);
+                                $dst = fopen($tmpfile, 'wb+');
+                                stream_copy_to_stream($src, $dst);
 
-                                $zip_filesystem->addFromString($media_path . $media_file, $media_filesystem->read($media_file));
+                                $zip_filesystem->addFile($tmpfile, $media_path . $media_file);
+                                // Media files are (almost always) already compressed.  Don't recompress them.
+                                $zip_filesystem->setCompressionName($media_path . $media_file, ZipArchive::CM_STORE);
+
+                                fclose($src);
+                                fclose($dst);
                             }
                         }
                     }
@@ -282,7 +287,7 @@ class GedcomExportService
         return $stream;
     }
 
-    public function createHeader(Tree $tree, string $encoding, bool $include_sub): string
+    public function createHeader(Tree $tree, string $encoding, bool $include_sub, AccessLevel $access_level): string
     {
         // Force a ".ged" suffix
         $filename = $tree->name();
@@ -314,16 +319,13 @@ class GedcomExportService
         // Preserve some values from the original header
         $header = Registry::headerFactory()->make('HEAD', $tree) ?? Registry::headerFactory()->new('HEAD', '0 HEAD', null, $tree);
 
-        // There should always be a header record.
-        if ($header instanceof Header) {
-            foreach ($header->facts(['COPR', 'LANG', 'PLAC', 'NOTE']) as $fact) {
-                $gedcom .= "\n" . $fact->gedcom();
-            }
+        foreach ($header->facts(['COPR', 'LANG', 'PLAC', 'NOTE'], false, $access_level) as $fact) {
+            $gedcom .= "\n" . $fact->gedcom();
+        }
 
-            if ($include_sub) {
-                foreach ($header->facts(['SUBM', 'SUBN']) as $fact) {
-                    $gedcom .= "\n" . $fact->gedcom();
-                }
+        if ($include_sub) {
+            foreach ($header->facts(['SUBM', 'SUBN'], false, $access_level) as $fact) {
+                $gedcom .= "\n" . $fact->gedcom();
             }
         }
 

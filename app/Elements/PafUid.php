@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -50,14 +50,9 @@ class PafUid extends AbstractElement
         return
             '<div class="input-group mb-3">' .
             parent::edit($id, $name, $value, $tree) .
-            '<button type="button" class="input-group-text btn btn-primary" id="create-' . e($id) . '">' .
+            '<button type="button" class="input-group-text btn btn-primary" data-wt-generated-value-target="' . e($id) . '" data-wt-generated-value="' . e(Registry::idFactory()->pafUid()) . '">' .
             I18N::translate('create') .
             '</button>' .
-            '</div>' .
-            '<script>' .
-            'document.getElementById("create-' . e($id) . '").addEventListener("click", function(event) {' .
-            ' document.getElementById("' . e($id) . '").value="' . e(Registry::idFactory()->pafUid()) . '";' .
-            '})' .
-            '</script>';
+            '</div>';
     }
 }

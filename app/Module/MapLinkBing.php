@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,27 +34,17 @@ class MapLinkBing extends AbstractModule implements ModuleMapLinkInterface
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     protected function providerName(): string
     {
         return I18N::translate('Bing™ maps');
     }
 
-    /**
-     * @return string
-     */
     protected function icon(): string
     {
         return view('icons/bing-maps');
     }
 
-    /**
-     * @param Fact $fact
-     *
-     * @return string
-     */
     protected function mapUrl(Fact $fact): string
     {
         $latitude  = $fact->latitude();

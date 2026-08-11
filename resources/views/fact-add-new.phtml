@@ -3,15 +3,15 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Comparators\TagComparator;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 
 /**
- * @var GedcomRecord $record
+ * @var Family|Individual $record
  */
 
 ?>
@@ -22,7 +22,8 @@ $add_facts = (new GedcomEditService())->factsToAdd($record, false);
 // Add from pick list
 switch ($record->tag()) {
     case Individual::RECORD_TYPE:
-        $quick_facts  = array_filter(explode(',', $record->tree()->getPreference('INDI_FACTS_QUICK')));
+        $quick_facts  = array_filter(explode(',', $record->tree()->getPreference('INDI_FACTS_QUICK')), static fn (string $value): bool => $value !== '');
+        usort($quick_facts, TagComparator::byOrder(...));
         $unique_facts = [
             'ADOP',
             'AFN',
@@ -61,7 +62,8 @@ switch ($record->tag()) {
         break;
 
     case Family::RECORD_TYPE:
-        $quick_facts  = array_filter(explode(',', $record->tree()->getPreference('FAM_FACTS_QUICK')));
+        $quick_facts  = array_filter(explode(',', $record->tree()->getPreference('FAM_FACTS_QUICK')), static fn (string $value): bool => $value !== '');
+        usort($quick_facts, TagComparator::byOrder(...));
         $unique_facts = [
             'DIV',
             'DIVF',
@@ -81,14 +83,13 @@ $filter_fn = static fn (string $tag): bool => !in_array($tag, $unique_facts, tru
 
 $quick_facts = array_filter($quick_facts, $filter_fn);
 
-
 // Create a label for a subtag
 $label_fn = static fn (string $subtag): string => Registry::elementFactory()->make($record->tag() . ':' . $subtag)->label();
 
 $quick_facts = array_combine($quick_facts, array_map($label_fn, $quick_facts));
 $add_facts   = array_combine($add_facts, array_map($label_fn, $add_facts));
 
-uasort($add_facts, I18N::comparator());
+uasort($add_facts, I18N::compare(...));
 
 if (!Auth::canUploadMedia($record->tree(), Auth::user())) {
     unset($add_facts['OBJE'], $quick_facts['OBJE']);

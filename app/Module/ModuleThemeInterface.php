@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,7 +31,6 @@ interface ModuleThemeInterface extends ModuleInterface
     /**
      * Links, to show in chart boxes;
      *
-     * @param Individual $individual
      *
      * @return array<Menu>
      */
@@ -39,15 +38,12 @@ interface ModuleThemeInterface extends ModuleInterface
 
     /**
      * Themes menu.
-     *
-     * @return Menu|null
      */
     public function menuThemes(): Menu|null;
 
     /**
      * Generate a list of items for the main menu.
      *
-     * @param Tree|null $tree
      *
      * @return array<Menu>
      */
@@ -56,7 +52,6 @@ interface ModuleThemeInterface extends ModuleInterface
     /**
      * Generate a list of items for the user menu.
      *
-     * @param Tree|null $tree
      *
      * @return array<Menu>
      */
@@ -68,4 +63,6 @@ interface ModuleThemeInterface extends ModuleInterface
      * @return array<string>
      */
     public function stylesheets(): array;
+
+    public function bootstrapColorScheme(): string;
 }

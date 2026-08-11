@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,8 +38,6 @@ class ClipboardService
 
     /**
      * Copy a fact to the clipboard.
-     *
-     * @param Fact $fact
      */
     public function copyFact(Fact $fact): void
     {
@@ -61,11 +59,6 @@ class ClipboardService
 
     /**
      * Copy a fact from the clipboard to a record.
-     *
-     * @param string       $fact_id
-     * @param GedcomRecord $record
-     *
-     * @return bool
      */
     public function pasteFact(string $fact_id, GedcomRecord $record): bool
     {
@@ -84,8 +77,6 @@ class ClipboardService
 
     /**
      * Empty the clipboard
-     *
-     * @return void
      */
     public function emptyClipboard(): void
     {
@@ -95,7 +86,6 @@ class ClipboardService
     /**
      * Create a list of facts that can be pasted into a given record
      *
-     * @param GedcomRecord $record
      *
      * @return Collection<int,Fact>
      */
@@ -113,7 +103,6 @@ class ClipboardService
     /**
      * Find facts of a given type, from all records.
      *
-     * @param GedcomRecord           $record
      * @param Collection<int,string> $types
      *
      * @return Collection<int,Fact>

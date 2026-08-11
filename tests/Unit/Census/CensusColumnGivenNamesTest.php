@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2026 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Tests\Unit\Census;
+
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use Fisharebest\Webtrees\Census\AbstractCensusColumn;
+use Fisharebest\Webtrees\Census\CensusColumnGivenNames;
+use Fisharebest\Webtrees\Census\CensusInterface;
+
+#[CoversClass(CensusColumnGivenNames::class)]
+#[CoversClass(AbstractCensusColumn::class)]
+class CensusColumnGivenNamesTest extends TestCase
+{
+    public function testGivenNames(): void
+    {
+        $individual = self::createStub(Individual::class);
+        $individual->method('getAllNames')->willReturn([['givn' => 'Joe']]);
+
+        $census = self::createStub(CensusInterface::class);
+
+        $column = new CensusColumnGivenNames($census, '', '');
+
+        self::assertSame('Joe', $column->generate($individual, $individual));
+    }
+
+    public function testNoName(): void
+    {
+        $individual = self::createStub(Individual::class);
+        $individual->method('getAllNames')->willReturn([]);
+
+        $census = self::createStub(CensusInterface::class);
+
+        $column = new CensusColumnGivenNames($census, '', '');
+
+        self::assertSame('', $column->generate($individual, $individual));
+    }
+}

@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -12,8 +12,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
-import $ from 'jquery';
 
 import '@popperjs/core';
 import { Alert, Button, Carousel, Collapse, Dropdown, Modal, Offcanvas, Popover, ScrollSpy, Tab, Toast, Tooltip } from 'bootstrap';
@@ -42,13 +40,12 @@ import {
   faGenderless, faGripHorizontal, faGripLines, faHistory, faInfoCircle, faKeyboard, faLanguage, faLink,
   faList, faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faMinusSquare, faPaintBrush, faPause,
   faPencilAlt, faPlay, faPlus, faPlusSquare, faPuzzlePiece, faQuestionCircle, faRedo, faSearch,
-  faSearchLocation, faSearchMinus, faSearchPlus, faServer, faShareAlt, faSitemap, faSortAmountDown, faStar,
-  faStepForward, faStickyNote, faStop, faSyncAlt, faTags, faThList, faThumbtack, faTimes, faTransgender,
+  faSearchLocation, faSearchMinus, faSearchPlus, faServer, faShareAlt, faSitemap, faSortAmountDown, faSpinner,
+  faStar, faStepForward, faStickyNote, faStop, faSyncAlt, faTags, faThList, faThumbtack, faTimes, faTransgender,
   faTrashAlt, faTree, faUndo, faUniversity, faUnlink, faUpload, faUser, faUsers, faVenus, faWrench,
   // For the BeautifyMarker library
   faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater
 } from '@fortawesome/free-solid-svg-icons';
-import 'corejs-typeahead';
 
 import DataTable from 'datatables.net';
 import 'datatables.net-bs5';
@@ -65,20 +62,14 @@ TomSelect.define('virtual_scroll', require('tom-select/dist/js/plugins/virtual_s
 
 window.TomSelect = TomSelect;
 
-import 'hideshowpassword';
-
 import 'moment';
 
-import 'jquery-colorbox';
-import 'pinch-zoom-element';
 
 import 'leaflet';
 import 'leaflet.markercluster';
 import 'beautifymarker';
 import 'leaflet-control-geocoder';
 import 'leaflet.control.layers.tree';
-
-window.$ = window.jQuery = $;
 
 library.add(
   // For resources/views/icons/*
@@ -88,15 +79,13 @@ library.add(
   faGenderless, faGripHorizontal, faGripLines, faHistory, faInfoCircle, faKeyboard, faLanguage, faLink,
   faList, faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faMinusSquare, faPaintBrush, faPause,
   faPencilAlt, faPlay, faPlus, faPlusSquare, faPuzzlePiece, faQuestionCircle, faRedo, faSearch,
-  faSearchLocation, faSearchMinus, faSearchPlus, faServer, faShareAlt, faSitemap, faSortAmountDown, faStar,
-  faStepForward, faStickyNote, faStop, faSyncAlt, faTags, faThList, faThumbtack, faTimes, faTransgender,
+  faSearchLocation, faSearchMinus, faSearchPlus, faServer, faShareAlt, faSitemap, faSortAmountDown, faSpinner,
+  faStar, faStepForward, faStickyNote, faStop, faSyncAlt, faTags, faThList, faThumbtack, faTimes, faTransgender,
   faTrashAlt, faTree, faUndo, faUniversity, faUnlink, faUpload, faUser, faUsers, faVenus, faWrench,
   // For the BeautifyMarker library
   faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater
 );
 dom.watch();
-
-window.Bloodhound = require('corejs-typeahead/dist/bloodhound.min.js');
 
 // See https://github.com/RubaXa/Sortable/issues/1229
 // window.Sortable = require('sortablejs');

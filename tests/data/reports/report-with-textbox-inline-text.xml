@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report>
+  <Doc pageSize="A4">
+    <Style name="text" size="12"/>
+    <Style name="name" style="b" size="12"/>
+    <Body>
+      <TextBox border="1" newline="1" width="100">
+        <Text style="text">Hello</Text>
+        <var var=" "/>
+        <Text style="name">world</Text>
+      </TextBox>
+    </Body>
+  </Doc>
+</Report>

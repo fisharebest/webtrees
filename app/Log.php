@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,10 +36,6 @@ class Log
 
     /**
      * Store an authentication message in the message log.
-     *
-     * @param string $message
-     *
-     * @return void
      */
     public static function addAuthenticationLog(string $message): void
     {
@@ -48,12 +44,6 @@ class Log
 
     /**
      * Store a new message (of the appropriate type) in the message log.
-     *
-     * @param string    $message
-     * @param string    $log_type
-     * @param Tree|null $tree
-     *
-     * @return void
      */
     private static function addLog(string $message, string $log_type, Tree|null $tree = null): void
     {
@@ -75,11 +65,6 @@ class Log
 
     /**
      * Store a configuration message in the message log.
-     *
-     * @param string    $message
-     * @param Tree|null $tree
-     *
-     * @return void
      */
     public static function addConfigurationLog(string $message, Tree|null $tree = null): void
     {
@@ -88,11 +73,6 @@ class Log
 
     /**
      * Store an edit message in the message log.
-     *
-     * @param string $message
-     * @param Tree   $tree
-     *
-     * @return void
      */
     public static function addEditLog(string $message, Tree $tree): void
     {
@@ -101,10 +81,6 @@ class Log
 
     /**
      * Store an error message in the message log.
-     *
-     * @param string $message
-     *
-     * @return void
      */
     public static function addErrorLog(string $message): void
     {
@@ -113,10 +89,6 @@ class Log
 
     /**
      * Store an media management message in the message log.
-     *
-     * @param string $message
-     *
-     * @return void
      */
     public static function addMediaLog(string $message): void
     {
@@ -128,10 +100,7 @@ class Log
      * Unlike most webtrees activity, search is not restricted to a single tree,
      * so we need to record which trees were searched.
      *
-     * @param string      $message
      * @param array<Tree> $trees Which trees were searched
-     *
-     * @return void
      */
     public static function addSearchLog(string $message, array $trees): void
     {

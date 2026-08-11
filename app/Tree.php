@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,13 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Closure;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use InvalidArgumentException;
 use League\Flysystem\FilesystemOperator;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 
 use function array_key_exists;
 use function date;
@@ -33,6 +32,7 @@ use function is_string;
 use function str_starts_with;
 use function strtoupper;
 use function substr_replace;
+use function trigger_error;
 
 /**
  * Provide an interface to the wt_gedcom table.
@@ -40,75 +40,69 @@ use function substr_replace;
 class Tree
 {
     private const array RESN_PRIVACY = [
-        'none'         => Auth::PRIV_PRIVATE,
-        'privacy'      => Auth::PRIV_USER,
-        'confidential' => Auth::PRIV_NONE,
-        'hidden'       => Auth::PRIV_HIDE,
+        'none'         => AccessLevel::Public,
+        'privacy'      => AccessLevel::Member,
+        'confidential' => AccessLevel::Manager,
+        'hidden'       => AccessLevel::Hidden,
     ];
 
     // Default values for some tree preferences.
     protected const array DEFAULT_PREFERENCES = [
-        'CALENDAR_FORMAT'              => 'gregorian',
-        'CHART_BOX_TAGS'               => '',
-        'EXPAND_SOURCES'               => '0',
-        'FAM_FACTS_QUICK'              => 'ENGA,MARR,DIV',
-        'FORMAT_TEXT'                  => 'markdown',
-        'GEDCOM_MEDIA_PATH'            => '',
-        'GENERATE_UIDS'                => '0',
-        'HIDE_GEDCOM_ERRORS'           => '1',
-        'HIDE_LIVE_PEOPLE'             => '1',
-        'INDI_FACTS_QUICK'             => 'BIRT,BURI,BAPM,CENS,DEAT,OCCU,RESI',
-        'KEEP_ALIVE_YEARS_BIRTH'       => '',
-        'KEEP_ALIVE_YEARS_DEATH'       => '',
-        'LANGUAGE'                     => 'en-US',
-        'MAX_ALIVE_AGE'                => '120',
-        'MEDIA_DIRECTORY'              => 'media/',
-        'MEDIA_UPLOAD'                 => '1', // Auth::PRIV_USER
-        'META_DESCRIPTION'             => '',
-        'META_TITLE'                   => Webtrees::NAME,
-        'NO_UPDATE_CHAN'               => '0',
-        'PEDIGREE_ROOT_ID'             => '',
-        'QUICK_REQUIRED_FACTS'         => 'BIRT,DEAT',
-        'QUICK_REQUIRED_FAMFACTS'      => 'MARR',
-        'REQUIRE_AUTHENTICATION'       => '0',
-        'SAVE_WATERMARK_IMAGE'         => '0',
-        'SHOW_AGE_DIFF'                => '0',
-        'SHOW_COUNTER'                 => '1',
-        'SHOW_DEAD_PEOPLE'             => '2', // Auth::PRIV_PRIVATE
-        'SHOW_EST_LIST_DATES'          => '0',
-        'SHOW_FACT_ICONS'              => '1',
-        'SHOW_GEDCOM_RECORD'           => '0',
-        'SHOW_HIGHLIGHT_IMAGES'        => '1',
-        'SHOW_LEVEL2_NOTES'            => '1',
-        'SHOW_LIVING_NAMES'            => '1', // Auth::PRIV_USER
-        'SHOW_MEDIA_DOWNLOAD'          => '0',
-        'SHOW_NO_WATERMARK'            => '1', // Auth::PRIV_USER
-        'SHOW_PARENTS_AGE'             => '1',
-        'SHOW_PEDIGREE_PLACES'         => '9',
-        'SHOW_PEDIGREE_PLACES_SUFFIX'  => '0',
-        'SHOW_PRIVATE_RELATIONSHIPS'   => '1',
-        'SHOW_RELATIVES_EVENTS'        => '_BIRT_CHIL,_BIRT_SIBL,_MARR_CHIL,_MARR_PARE,_DEAT_CHIL,_DEAT_PARE,_DEAT_GPAR,_DEAT_SIBL,_DEAT_SPOU',
-        'SUBLIST_TRIGGER_I'            => '200',
-        'SURNAME_LIST_STYLE'           => 'style2',
-        'SURNAME_TRADITION'            => 'paternal',
-        'USE_SILHOUETTE'               => '1',
-        'WORD_WRAPPED_NOTES'           => '0',
+        'CALENDAR_FORMAT'             => 'gregorian',
+        'CHART_BOX_TAGS'              => '',
+        'EXPAND_SOURCES'              => '0',
+        'FAM_FACTS_QUICK'             => 'ENGA,MARR,DIV',
+        'FORMAT_TEXT'                 => 'markdown',
+        'GEDCOM_MEDIA_PATH'           => '',
+        'GENERATE_UIDS'               => '0',
+        'HIDE_GEDCOM_ERRORS'          => '1',
+        'HIDE_LIVE_PEOPLE'            => '1',
+        'INDI_FACTS_QUICK'            => 'BIRT,BURI,BAPM,CENS,DEAT,OCCU,RESI',
+        'KEEP_ALIVE_YEARS_BIRTH'      => '',
+        'KEEP_ALIVE_YEARS_DEATH'      => '',
+        'MAX_ALIVE_AGE'               => '120',
+        'MEDIA_UPLOAD'                => '1', // AccessLevel::Member
+        'META_DESCRIPTION'            => '',
+        'META_TITLE'                  => Webtrees::NAME,
+        'NO_UPDATE_CHAN'              => '0',
+        'PEDIGREE_ROOT_ID'            => '',
+        'QUICK_REQUIRED_FACTS'        => 'BIRT,DEAT',
+        'QUICK_REQUIRED_FAMFACTS'     => 'MARR',
+        'REQUIRE_AUTHENTICATION'      => '0',
+        'SAVE_WATERMARK_IMAGE'        => '0',
+        'SHOW_AGE_DIFF'               => '0',
+        'SHOW_COUNTER'                => '1',
+        'SHOW_DEAD_PEOPLE'            => '2', // AccessLevel::Public
+        'SHOW_EST_LIST_DATES'         => '0',
+        'SHOW_FACT_ICONS'             => '1',
+        'SHOW_GEDCOM_RECORD'          => '0',
+        'SHOW_HIGHLIGHT_IMAGES'       => '1',
+        'SHOW_LEVEL2_NOTES'           => '1',
+        'SHOW_LIVING_NAMES'           => '1', // AccessLevel::Member
+        'SHOW_MEDIA_DOWNLOAD'         => '0',
+        'SHOW_NO_WATERMARK'           => '1', // AccessLevel::Member
+        'SHOW_PARENTS_AGE'            => '1',
+        'SHOW_PEDIGREE_PLACES'        => '9',
+        'SHOW_PEDIGREE_PLACES_SUFFIX' => '0',
+        'SHOW_PRIVATE_RELATIONSHIPS'  => '1',
+        'SHOW_RELATIVES_EVENTS'       => '_BIRT_CHIL,_BIRT_SIBL,_MARR_CHIL,_MARR_PARE,_DEAT_CHIL,_DEAT_PARE,_DEAT_GPAR,_DEAT_SIBL,_DEAT_SPOU',
+        'SUBLIST_TRIGGER_I'           => '200',
+        'SURNAME_LIST_STYLE'          => 'style2',
+        'SURNAME_TRADITION'           => 'paternal',
+        'USE_SILHOUETTE'              => '1',
+        'WORD_WRAPPED_NOTES'          => '0',
     ];
 
-    private int $id;
+    private bool $default_resn_loaded = false;
 
-    private string $name;
+    /** @var array<AccessLevel> Default access rules for facts in this tree */
+    private array $fact_privacy = [];
 
-    private string $title;
+    /** @var array<AccessLevel> Default access rules for individuals in this tree */
+    private array $individual_privacy = [];
 
-    /** @var array<int> Default access rules for facts in this tree */
-    private array $fact_privacy;
-
-    /** @var array<int> Default access rules for individuals in this tree */
-    private array $individual_privacy;
-
-    /** @var array<array<int>> Default access rules for individual facts in this tree */
-    private array $individual_fact_privacy;
+    /** @var array<array<AccessLevel>> Default access rules for individual facts in this tree */
+    private array $individual_fact_privacy = [];
 
     /** @var array<string> Cached copy of the wt_gedcom_setting table. */
     private array $preferences = [];
@@ -116,23 +110,161 @@ class Tree
     /** @var array<array<string>> Cached copy of the wt_user_gedcom_setting table. */
     private array $user_preferences = [];
 
-    /**
-     * Create a tree object.
-     *
-     * @param int    $id
-     * @param string $name
-     * @param string $title
-     */
-    public function __construct(int $id, string $name, string $title)
-    {
-        $this->id                      = $id;
-        $this->name                    = $name;
-        $this->title                   = $title;
-        $this->fact_privacy            = [];
-        $this->individual_privacy      = [];
-        $this->individual_fact_privacy = [];
+    public function __construct(
+        private readonly int $id,
+        private readonly string $name,
+        private readonly string $title,
+        private readonly string $media_folder,
+        private readonly string $gedcom_filename,
+        private readonly bool $imported,
+        private readonly bool $private,
+        private readonly int|null $contact_user_id,
+        private readonly int|null $support_user_id,
+    ) {
+    }
 
-        // Load the privacy settings for this tree
+    /**
+     * @param object{
+     *     gedcom_id:string|int,
+     *     gedcom_name:string,
+     *     title:string,
+     *     media_folder:string,
+     *     gedcom_filename:string,
+     *     private:string|int,
+     *     imported:string|int,
+     *     contact_user_id:string|int|null,
+     *     support_user_id:string|int|null,
+     * } $row
+     */
+    public static function fromDB(object $row): self
+    {
+        return new self(
+            id: (int) $row->gedcom_id,
+            name: $row->gedcom_name,
+            title: $row->title,
+            media_folder: $row->media_folder,
+            gedcom_filename: $row->gedcom_filename,
+            imported: (bool) $row->imported,
+            private: (bool) $row->private,
+            contact_user_id: $row->contact_user_id === null ? null : (int) $row->contact_user_id,
+            support_user_id: $row->support_user_id === null ? null : (int) $row->support_user_id,
+        );
+    }
+
+    public function setPreference(string $setting_name, string $setting_value): self
+    {
+        if ($setting_value !== $this->getPreference($setting_name)) {
+            DB::table('gedcom_setting')->updateOrInsert([
+                'gedcom_id'    => $this->id,
+                'setting_name' => $setting_name,
+            ], [
+                'setting_value' => $setting_value,
+            ]);
+
+            $this->preferences[$setting_name] = $setting_value;
+
+            Log::addConfigurationLog('Tree preference "' . $setting_name . '" set to "' . $setting_value . '"', $this);
+        }
+
+        return $this;
+    }
+
+    public function getPreference(string $setting_name, string|null $default = null): string
+    {
+        if ($this->preferences === []) {
+            $this->preferences = DB::table('gedcom_setting')
+                ->where('gedcom_id', '=', $this->id)
+                ->pluck('setting_value', 'setting_name')
+                ->all();
+        }
+
+        return $this->preferences[$setting_name] ?? $default ?? self::DEFAULT_PREFERENCES[$setting_name] ?? '';
+    }
+
+    public function gedcomFilename(): string
+    {
+        return $this->gedcom_filename;
+    }
+
+    public function imported(): bool
+    {
+        return $this->imported;
+    }
+
+    public function mediaFolder(): string
+    {
+        return $this->media_folder;
+    }
+
+    public function name(): string
+    {
+        return $this->name;
+    }
+
+    public function private(): bool
+    {
+        return $this->private;
+    }
+
+    public function title(): string
+    {
+        return $this->title;
+    }
+
+    public function contactUserId(): int|null
+    {
+        return $this->contact_user_id;
+    }
+
+    public function supportUserId(): int|null
+    {
+        return $this->support_user_id;
+    }
+
+    /**
+     * The fact-level privacy for this tree.
+     *
+     * @return array<AccessLevel>
+     */
+    public function getFactPrivacy(): array
+    {
+        if (!$this->default_resn_loaded) {
+            $this->loadDefaultResn();
+        }
+
+        return $this->fact_privacy;
+    }
+
+    /**
+     * The individual-level privacy for this tree.
+     *
+     * @return array<AccessLevel>
+     */
+    public function getIndividualPrivacy(): array
+    {
+        if (!$this->default_resn_loaded) {
+            $this->loadDefaultResn();
+        }
+
+        return $this->individual_privacy;
+    }
+
+    /**
+     * The individual-fact-level privacy for this tree.
+     *
+     * @return array<array<AccessLevel>>
+     */
+    public function getIndividualFactPrivacy(): array
+    {
+        if (!$this->default_resn_loaded) {
+            $this->loadDefaultResn();
+        }
+
+        return $this->individual_fact_privacy;
+    }
+
+    private function loadDefaultResn(): void
+    {
         $rows = DB::table('default_resn')
             ->where('gedcom_id', '=', $this->id)
             ->get();
@@ -151,124 +283,14 @@ class Tree
                 $this->fact_privacy[$row->tag_type] = $row->resn;
             }
         }
-    }
 
-    /**
-     * A closure which will create a record from a database row.
-     *
-     * @return Closure(object):Tree
-     */
-    public static function rowMapper(): Closure
-    {
-        return static fn (object $row): Tree => new Tree((int) $row->tree_id, $row->tree_name, $row->tree_title);
-    }
-
-    /**
-     * Set the tree’s configuration settings.
-     *
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return self
-     */
-    public function setPreference(string $setting_name, string $setting_value): Tree
-    {
-        if ($setting_value !== $this->getPreference($setting_name)) {
-            DB::table('gedcom_setting')->updateOrInsert([
-                'gedcom_id'    => $this->id,
-                'setting_name' => $setting_name,
-            ], [
-                'setting_value' => $setting_value,
-            ]);
-
-            $this->preferences[$setting_name] = $setting_value;
-
-            Log::addConfigurationLog('Tree preference "' . $setting_name . '" set to "' . $setting_value . '"', $this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get the tree’s configuration settings.
-     *
-     * @param string      $setting_name
-     * @param string|null $default
-     *
-     * @return string
-     */
-    public function getPreference(string $setting_name, string|null $default = null): string
-    {
-        if ($this->preferences === []) {
-            $this->preferences = DB::table('gedcom_setting')
-                ->where('gedcom_id', '=', $this->id)
-                ->pluck('setting_value', 'setting_name')
-                ->all();
-        }
-
-        return $this->preferences[$setting_name] ?? $default ?? self::DEFAULT_PREFERENCES[$setting_name] ?? '';
-    }
-
-    /**
-     * The name of this tree
-     *
-     * @return string
-     */
-    public function name(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * The title of this tree
-     *
-     * @return string
-     */
-    public function title(): string
-    {
-        return $this->title;
-    }
-
-    /**
-     * The fact-level privacy for this tree.
-     *
-     * @return array<int>
-     */
-    public function getFactPrivacy(): array
-    {
-        return $this->fact_privacy;
-    }
-
-    /**
-     * The individual-level privacy for this tree.
-     *
-     * @return array<int>
-     */
-    public function getIndividualPrivacy(): array
-    {
-        return $this->individual_privacy;
-    }
-
-    /**
-     * The individual-fact-level privacy for this tree.
-     *
-     * @return array<array<int>>
-     */
-    public function getIndividualFactPrivacy(): array
-    {
-        return $this->individual_fact_privacy;
+        $this->default_resn_loaded = true;
     }
 
     /**
      * Set the tree’s user-configuration settings.
-     *
-     * @param UserInterface $user
-     * @param string        $setting_name
-     * @param string        $setting_value
-     *
-     * @return self
      */
-    public function setUserPreference(UserInterface $user, string $setting_name, string $setting_value): Tree
+    public function setUserPreference(UserInterface $user, string $setting_name, string $setting_value): self
     {
         if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
             // Update the database
@@ -291,12 +313,6 @@ class Tree
 
     /**
      * Get the tree’s user-configuration settings.
-     *
-     * @param UserInterface $user
-     * @param string        $setting_name
-     * @param string        $default
-     *
-     * @return string
      */
     public function getUserPreference(UserInterface $user, string $setting_name, string $default = ''): string
     {
@@ -315,8 +331,6 @@ class Tree
 
     /**
      * The ID of this tree
-     *
-     * @return int
      */
     public function id(): int
     {
@@ -325,38 +339,20 @@ class Tree
 
     /**
      * Can a user accept changes for this tree?
-     *
-     * @param UserInterface $user
-     *
-     * @return bool
      */
     public function canAcceptChanges(UserInterface $user): bool
     {
         return Auth::isModerator($this, $user);
     }
 
-    /**
-     * Are there any pending edits for this tree, that need reviewing by a moderator.
-     *
-     * @return bool
-     */
     public function hasPendingEdit(): bool
     {
         return DB::table('change')
             ->where('gedcom_id', '=', $this->id)
-            ->where('status', '=', 'pending')
+            ->where('status', '=', ChangeStatus::Pending->value)
             ->exists();
     }
 
-    /**
-     * Create a new record from GEDCOM data.
-     *
-     * @param string $gedcom
-     *
-     * @return GedcomRecord
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     */
     public function createRecord(string $gedcom): GedcomRecord
     {
         if (preg_match('/^0 @@ ([_A-Z]+)/', $gedcom, $match) !== 1) {
@@ -367,8 +363,8 @@ class Tree
         $gedcom = substr_replace($gedcom, $xref, 3, 0);
 
         // Create a change record
-        $today = strtoupper(date('d M Y'));
-        $now   = date('H:i:s');
+        $today  = strtoupper(date('d M Y'));
+        $now    = date('H:i:s');
         $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
@@ -377,7 +373,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
-            'status'     => 'pending',
+            'status'     => ChangeStatus::Pending->value,
             'user_id'    => Auth::id(),
         ]);
 
@@ -394,15 +390,7 @@ class Tree
         return Registry::gedcomRecordFactory()->new($xref, '', $gedcom, $this);
     }
 
-    /**
-     * Create a new family from GEDCOM data.
-     *
-     * @param string $gedcom
-     *
-     * @return Family
-     * @throws InvalidArgumentException
-     */
-    public function createFamily(string $gedcom): GedcomRecord
+    public function createFamily(string $gedcom): Family
     {
         if (!str_starts_with($gedcom, '0 @@ FAM')) {
             throw new InvalidArgumentException('GedcomRecord::createFamily(' . $gedcom . ') does not begin 0 @@ FAM');
@@ -412,8 +400,8 @@ class Tree
         $gedcom = substr_replace($gedcom, $xref, 3, 0);
 
         // Create a change record
-        $today = strtoupper(date('d M Y'));
-        $now   = date('H:i:s');
+        $today  = strtoupper(date('d M Y'));
+        $now    = date('H:i:s');
         $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
@@ -422,7 +410,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
-            'status'     => 'pending',
+            'status'     => ChangeStatus::Pending->value,
             'user_id'    => Auth::id(),
         ]);
 
@@ -439,15 +427,7 @@ class Tree
         return Registry::familyFactory()->new($xref, '', $gedcom, $this);
     }
 
-    /**
-     * Create a new individual from GEDCOM data.
-     *
-     * @param string $gedcom
-     *
-     * @return Individual
-     * @throws InvalidArgumentException
-     */
-    public function createIndividual(string $gedcom): GedcomRecord
+    public function createIndividual(string $gedcom): Individual
     {
         if (!str_starts_with($gedcom, '0 @@ INDI')) {
             throw new InvalidArgumentException('GedcomRecord::createIndividual(' . $gedcom . ') does not begin 0 @@ INDI');
@@ -457,8 +437,8 @@ class Tree
         $gedcom = substr_replace($gedcom, $xref, 3, 0);
 
         // Create a change record
-        $today = strtoupper(date('d M Y'));
-        $now   = date('H:i:s');
+        $today  = strtoupper(date('d M Y'));
+        $now    = date('H:i:s');
         $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
@@ -467,7 +447,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
-            'status'     => 'pending',
+            'status'     => ChangeStatus::Pending->value,
             'user_id'    => Auth::id(),
         ]);
 
@@ -484,14 +464,6 @@ class Tree
         return Registry::individualFactory()->new($xref, '', $gedcom, $this);
     }
 
-    /**
-     * Create a new media object from GEDCOM data.
-     *
-     * @param string $gedcom
-     *
-     * @return Media
-     * @throws InvalidArgumentException
-     */
     public function createMediaObject(string $gedcom): Media
     {
         if (!str_starts_with($gedcom, '0 @@ OBJE')) {
@@ -502,8 +474,8 @@ class Tree
         $gedcom = substr_replace($gedcom, $xref, 3, 0);
 
         // Create a change record
-        $today = strtoupper(date('d M Y'));
-        $now   = date('H:i:s');
+        $today  = strtoupper(date('d M Y'));
+        $now    = date('H:i:s');
         $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
@@ -512,7 +484,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
-            'status'     => 'pending',
+            'status'     => ChangeStatus::Pending->value,
             'user_id'    => Auth::id(),
         ]);
 
@@ -529,14 +501,6 @@ class Tree
         return Registry::mediaFactory()->new($xref, '', $gedcom, $this);
     }
 
-    /**
-     * What is the most significant individual in this tree.
-     *
-     * @param UserInterface $user
-     * @param string        $xref
-     *
-     * @return Individual
-     */
     public function significantIndividual(UserInterface $user, string $xref = ''): Individual
     {
         if ($xref === '') {
@@ -564,6 +528,7 @@ class Tree
         if ($individual === null && $this->getPreference('PEDIGREE_ROOT_ID') !== '') {
             $individual = Registry::individualFactory()->make($this->getPreference('PEDIGREE_ROOT_ID'), $this);
         }
+
         if ($individual === null) {
             $xref = DB::table('individuals')
                 ->where('i_file', '=', $this->id())
@@ -573,21 +538,12 @@ class Tree
                 $individual = Registry::individualFactory()->make($xref, $this);
             }
         }
-        if ($individual === null) {
-            // always return a record
-            $individual = Registry::individualFactory()->new('I', '0 @I@ INDI', null, $this);
-        }
 
-        return $individual;
+        return $individual ?? Registry::individualFactory()->new('I', '0 @I@ INDI', null, $this);
     }
 
-    /**
-     * Where do we store our media files.
-     *
-     * @return FilesystemOperator
-     */
     public function mediaFilesystem(): FilesystemOperator
     {
-        return Registry::filesystem()->data($this->getPreference('MEDIA_DIRECTORY'));
+        return Registry::filesystem()->data($this->mediaFolder());
     }
 }

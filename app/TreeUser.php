@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,9 +29,6 @@ class TreeUser implements UserInterface
 {
     private Tree $tree;
 
-    /**
-     * @param Tree $tree
-     */
     public function __construct(Tree $tree)
     {
         $this->tree = $tree;
@@ -39,8 +36,6 @@ class TreeUser implements UserInterface
 
     /**
      * The user‘s internal identifier.
-     *
-     * @return int
      */
     public function id(): int
     {
@@ -49,31 +44,18 @@ class TreeUser implements UserInterface
 
     /**
      * The users email address.
-     *
-     * @return string
      */
     public function email(): string
     {
-        $user_service = Registry::container()->get(UserService::class);
-        $contact_id   = (int) $this->getPreference('CONTACT_USER_ID');
+        $contact = Registry::container()->get(UserService::class)->find($this->tree->contactUserId());
 
-        if ($contact_id !== 0) {
-            $contact = $user_service->find($contact_id);
-
-            if ($contact instanceof User) {
-                return $contact->email();
-            }
+        if ($contact instanceof User) {
+            return $contact->email();
         }
 
         return Site::getPreference('SMTP_FROM_NAME');
     }
 
-    /**
-     * @param string $setting_name
-     * @param string $default
-     *
-     * @return string
-     */
     public function getPreference(string $setting_name, string $default = ''): string
     {
         return $default;
@@ -81,8 +63,6 @@ class TreeUser implements UserInterface
 
     /**
      * The user‘s real name.
-     *
-     * @return string
      */
     public function realName(): string
     {
@@ -91,20 +71,12 @@ class TreeUser implements UserInterface
 
     /**
      * The user‘s login name.
-     *
-     * @return string
      */
     public function userName(): string
     {
         return '';
     }
 
-    /**
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return void
-     */
     public function setPreference(string $setting_name, string $setting_value): void
     {
     }

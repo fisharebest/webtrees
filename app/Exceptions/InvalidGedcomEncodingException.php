@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,9 +29,6 @@ use function e;
  */
 class InvalidGedcomEncodingException extends Exception
 {
-    /**
-     * @param string $charset
-     */
     public function __construct(string $charset)
     {
         $message = I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', e($charset));

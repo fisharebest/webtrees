@@ -75,7 +75,7 @@ $count_notes = DB::table('other')
 
 <table
     id="wt-datatables-sources"
-    class="table table-bordered table-sm wt-table-source datatables d-none"
+    class="table table-bordered table-sm wt-table-source wt-datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([
         ['type' => 'html'],
@@ -153,7 +153,7 @@ $count_notes = DB::table('other')
                 </td>
 
                 <!-- Last change -->
-                <td data-sort="<?= sprintf('x%07d', $source->lastChangeTimestamp()->timestamp()) ?>">
+                <td data-sort="<?= sprintf('x%07d', $source->lastChangeTimestamp()->getTimestamp()) ?>">
                     <?= view('components/datetime', ['timestamp' => $source->lastChangeTimestamp()]) ?>
                 </td>
             </tr>

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,13 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Enums\ContactMethod;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
+use Fisharebest\Webtrees\Http\Controllers\TreePage;
+use Fisharebest\Webtrees\Http\Controllers\UserPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
@@ -43,9 +44,6 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 
     private UserService $user_service;
 
-    /**
-     * @param UserService $user_service
-     */
     public function __construct(UserService $user_service)
     {
         $this->user_service = $user_service;
@@ -65,16 +63,12 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Delete one or messages belonging to a user.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
      */
     public function postDeleteMessageAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
         $context     = Validator::queryParams($request)->string('context');
-        $message_ids = Validator::parsedBody($request)->array('message_id');
+        $message_ids = Validator::parsedBody($request)->list('message_id');
 
         DB::table('message')
             ->where('user_id', '=', Auth::id())
@@ -93,12 +87,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -113,14 +102,13 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             });
 
         $users = $this->user_service->all()->filter(static function (UserInterface $user) use ($tree): bool {
-            $public_tree  = $tree->getPreference('REQUIRE_AUTHENTICATION') !== '1';
-            $can_see_tree = $public_tree || Auth::accessLevel($tree, $user) <= Auth::PRIV_USER;
+            $can_see_tree = !$tree->private() || AccessLevel::Member->allows(Auth::accessLevel($tree, $user));
 
             return
                 $user->id() !== Auth::id() &&
-                $user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) &&
+                $user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) === '1' &&
                 $can_see_tree &&
-                $user->getPreference(UserInterface::PREF_CONTACT_METHOD) !== MessageService::CONTACT_METHOD_NONE;
+                ContactMethod::fromUser($user)->isContactable();
         });
 
         $content = view('modules/user-messages/user-messages', [
@@ -152,8 +140,6 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
      * Should this block load asynchronously using AJAX?
      *
      * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
      */
     public function loadAjax(): bool
     {
@@ -162,8 +148,6 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the user’s home page?
-     *
-     * @return bool
      */
     public function isUserBlock(): bool
     {
@@ -172,8 +156,6 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {
