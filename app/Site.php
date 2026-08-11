@@ -52,6 +52,7 @@ class Site
         'HIDE_BARM'               => '1',
         'HIDE_BIRT_FAMC'          => '1',
         'HIDE_CHR'                => '1',
+        'HIDE_DATE_NOTE'          => '1',
         'HIDE_DIVF'               => '1',
         'HIDE_ENGA'               => '1',
         'HIDE_FAM_CENS'           => '1',

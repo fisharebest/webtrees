@@ -60,6 +60,9 @@ if (preg_match('/\n2 DATE\s(.+)/', $factrec) === 1) {
         $htmlParts[] = '<span class="date time">' . $match[1] . '</span>';
     }
     $html .= join(' - ', $htmlParts);
+    if (preg_match('/2 DATE.*(?:\n[3-9].*)*\n3 NOTE (?!@)(.+)/', $factrec, $match) === 1) {
+        $html .= ' <span class="date phrase">' . $match[1] . '</span>';
+    }
     if (preg_match('/2 DATE.*(?:\n[3-9].*)*\n3 PHRASE (.+)/', $factrec, $match) === 1) {
         $html .= ' <span class="date phrase">' . $match[1] . '</span>';
     }

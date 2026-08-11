@@ -288,6 +288,8 @@ class Gedcom
         'NAME_ROMN'  => ['INDI:NAME:ROMN'],
         'NAME_NOTE'  => ['INDI:NAME:NOTE', 'INDI:NAME:FONE:NOTE', 'INDI:NAME:ROMN:NOTE'],
         'NAME_SOUR'  => ['INDI:NAME:SOUR', 'INDI:NAME:FONE:SOUR', 'INDI:NAME:ROMN:SOUR'],
+        // Dates
+        'DATE_NOTE'  => [':DATE:NOTE'],
         // Places
         'PLAC_MAP'   => [':PLAC:MAP'],
         'PLAC_FONE'  => [':PLAC:FONE'],
@@ -409,6 +411,7 @@ class Gedcom
             'FAM:*:AGNC'                 => new ResponsibleAgency(I18N::translate('Agency')),
             'FAM:*:CAUS'                 => new CauseOfEvent(I18N::translate('Cause')),
             'FAM:*:DATE'                 => new DateValue(I18N::translate('Date')),
+            'FAM:*:DATE:NOTE'            => new NoteStructure(I18N::translate('Note on date')),
             'FAM:*:EMAIL'                => new AddressEmail(I18N::translate('Email address')),
             'FAM:*:FAX'                  => new AddressFax(I18N::translate('Fax')),
             'FAM:*:HUSB'                 => new EmptyElement(I18N::translate('Husband'), ['AGE' => '0:1']),
@@ -543,6 +546,7 @@ class Gedcom
             'INDI:*:AGNC'                => new ResponsibleAgency(I18N::translate('Agency')),
             'INDI:*:CAUS'                => new CauseOfEvent(I18N::translate('Cause')),
             'INDI:*:DATE'                => new DateValue(I18N::translate('Date')),
+            'INDI:*:DATE:NOTE'           => new NoteStructure(I18N::translate('Note on date')),
             'INDI:*:EMAIL'               => new AddressEmail(I18N::translate('Email address')),
             'INDI:*:FAX'                 => new AddressFax(I18N::translate('Fax')),
             'INDI:*:NOTE'                => new NoteStructure(I18N::translate('Note')),

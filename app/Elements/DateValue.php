@@ -42,6 +42,10 @@ use function view;
  */
 class DateValue extends AbstractElement
 {
+    protected const array SUBTAGS = [
+        'NOTE' => '0:1',
+    ];
+
     /**
      * An edit control for this data.
      */
