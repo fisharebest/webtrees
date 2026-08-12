@@ -155,6 +155,9 @@ a:hover, .btn-link:hover, .nav-link:hover {
     z-index: 999;
 }
 
+.date.phrase {
+    font-style: italic;
+}
 .date.phrase::before {
     content: "(";
 }
