@@ -898,7 +898,7 @@ final class ParserGenerate extends AbstractParser
             $value = GedcomTextReader::getGedcomValue($tag, $level, $this->gedrec, $this->tree);
 
             if ($tag === 'DATE' || str_ends_with($tag, ':DATE')) {
-                $value = (new Date($value))->display();
+                $value = (new Date($value))->display(spanned_text: false);
             }
 
             if ($tag === 'PLAC' || str_ends_with($tag, ':PLAC')) {

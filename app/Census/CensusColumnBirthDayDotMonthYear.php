@@ -31,6 +31,6 @@ final readonly class CensusColumnBirthDayDotMonthYear extends AbstractCensusColu
         // @TODO - pass it in.
         I18N::init('de');
 
-        return Date::fromCalendarDate($individual->getEstimatedBirthDate()->minimumDate())->display();
+        return Date::fromCalendarDate($individual->getEstimatedBirthDate()->minimumDate())->display(spanned_text: false);
     }
 }

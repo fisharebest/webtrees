@@ -387,8 +387,8 @@ class Individual extends GedcomRecord
         $birth_place = strip_tags($this->getBirthPlace()->shortName());
         $death_place = strip_tags($this->getDeathPlace()->shortName());
 
-        $birth_date = UTF8::FIRST_STRONG_ISOLATE . $this->getBirthDate()->display() . UTF8::POP_DIRECTIONAL_ISOLATE;
-        $death_date = UTF8::FIRST_STRONG_ISOLATE . $this->getDeathDate()->display() . UTF8::POP_DIRECTIONAL_ISOLATE;
+        $birth_date = UTF8::FIRST_STRONG_ISOLATE . $this->getBirthDate()->display(spanned_text: false) . UTF8::POP_DIRECTIONAL_ISOLATE;
+        $death_date = UTF8::FIRST_STRONG_ISOLATE . $this->getDeathDate()->display(spanned_text: false) . UTF8::POP_DIRECTIONAL_ISOLATE;
 
         // Use minimum and maximum dates - to agree with the age calculations.
         $birth_year = $this->getBirthDate()->yearOnly()->display();

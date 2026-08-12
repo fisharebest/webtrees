@@ -133,7 +133,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
                 <td>
                     <span class="label"><?= $fact->label() ?></span>
                     —
-                    <span class="field"><?= $fact->date()->display() ?> — <?= $fact->place()->fullName() ?></span>
+                    <span class="field"><?= $fact->date()->display(spanned_text: false) ?> — <?= $fact->place()->fullName() ?></span>
                 </td>
             </tr>
 

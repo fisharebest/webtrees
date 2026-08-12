@@ -26,7 +26,7 @@ final readonly class CensusColumnBirthMonth extends AbstractCensusColumn impleme
 {
     public function generate(Individual $individual, Individual $head): string
     {
-        $date = Date::fromCalendarDate($individual->getEstimatedBirthDate()->minimumDate())->display();
+        $date = Date::fromCalendarDate($individual->getEstimatedBirthDate()->minimumDate())->display(spanned_text: false);
 
         return substr(preg_replace('/[0-9 ,]/', '', $date), 0, 3);
     }
