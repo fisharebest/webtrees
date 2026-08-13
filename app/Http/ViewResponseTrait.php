@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Registry;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -36,13 +36,9 @@ trait ViewResponseTrait
     protected string $layout = 'layouts/default';
 
     /**
-     * @param string       $view_name
      * @param array<mixed> $view_data
-     * @param int          $status
-     *
-     * @return ResponseInterface
      */
-    protected function viewResponse(string $view_name, array $view_data, int $status = StatusCodeInterface::STATUS_OK): ResponseInterface
+    protected function viewResponse(string $view_name, array $view_data, HttpStatusCode $status = HttpStatusCode::OK): ResponseInterface
     {
         // Make the view's data available to the layout.
         $layout_data = $view_data;

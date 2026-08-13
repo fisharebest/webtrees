@@ -77,12 +77,6 @@ class MarkdownFactory implements MarkdownFactoryInterface
         ],
     ];
 
-    /**
-     * @param string    $markdown
-     * @param Tree|null $tree
-     *
-     * @return string
-     */
     public function autolink(string $markdown, Tree|null $tree = null): string
     {
         // Create a minimal commonmark processor - just add support for auto-links.
@@ -95,7 +89,7 @@ class MarkdownFactory implements MarkdownFactoryInterface
         $environment->addRenderer(Newline::class, new NewlineRenderer());
         $environment->addExtension(new AutolinkExtension());
 
-        // Optionally create links to other records.
+        // Optionally, create links to other records.
         if ($tree instanceof Tree) {
             $environment->addExtension(new XrefExtension($tree));
         }
@@ -108,15 +102,13 @@ class MarkdownFactory implements MarkdownFactoryInterface
         $html = strip_tags($html, ['a', 'br', 'p']);
 
         // The markdown convert adds newlines, but not in a documented way.  Safest to ignore them.
-        return strtr($html, ["\n"   => '']);
+        $html = strtr($html, ["\n"   => '']);
+
+        // The library creates a list of HTML elements, without a parent.
+        // Add one, so we can style it
+        return '<div class="wt-markdown">' . $html . '</div>';
     }
 
-    /**
-     * @param string    $markdown
-     * @param Tree|null $tree
-     *
-     * @return string
-     */
     public function markdown(string $markdown, Tree|null $tree = null): string
     {
         $environment = new Environment(static::CONFIG_MARKDOWN);
@@ -126,7 +118,7 @@ class MarkdownFactory implements MarkdownFactoryInterface
         // Convert webtrees 1.x style census tables to commonmark format.
         $environment->addExtension(new CensusTableExtension());
 
-        // Optionally create links to other records.
+        // Optionally, create links to other records.
         if ($tree instanceof Tree) {
             $environment->addExtension(new XrefExtension($tree));
         }
@@ -135,7 +127,11 @@ class MarkdownFactory implements MarkdownFactoryInterface
 
         $html = $converter->convert($markdown)->getContent();
 
-        // The markdown convert adds newlines, but not in a documented way.  Safest to ignore them.
-        return strtr($html, ["\n"   => '']);
+        // The markdown conversion adds newlines, but not in a documented way.  Safest to ignore them.
+        $html = strtr($html, ["\n"   => '']);
+
+        // The library creates a list of HTML elements, without a parent.
+        // Add one, so we can style it
+        return '<div class="wt-markdown">' . $html . '</div>';
     }
 }

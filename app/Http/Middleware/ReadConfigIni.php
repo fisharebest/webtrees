@@ -31,14 +31,9 @@ use function parse_ini_file;
 
 class ReadConfigIni implements MiddlewareInterface
 {
-    private SetupWizard $setup_wizard;
-
-    /**
-     * @param SetupWizard $setup_wizard
-     */
-    public function __construct(SetupWizard $setup_wizard)
-    {
-        $this->setup_wizard = $setup_wizard;
+    public function __construct(
+        private SetupWizard $setup_wizard,
+    ) {
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface

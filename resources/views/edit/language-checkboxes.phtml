@@ -10,11 +10,11 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 <div style="columns: auto 12rem">
-    <?php foreach (I18N::activeLocales() as $locale) : ?>
+    <?php foreach (I18N::activeLanguages() as $language_tag => $endonym) : ?>
         <div class="form-check">
-            <label title="<?= e($locale->languageTag()) ?>">
-                <input type="checkbox" name="languages[]" value="<?= e($locale->languageTag()) ?>" <?= in_array($locale->languageTag(), $languages, true) ? 'checked' : '' ?>>
-                <?= $locale->endonym() ?>
+            <label title="<?= $language_tag ?>">
+                <input type="checkbox" name="languages[]" value="<?= $language_tag ?>" <?= in_array($language_tag, $languages, true) ? 'checked' : '' ?>>
+                <?= $endonym ?>
             </label>
         </div>
     <?php endforeach ?>

@@ -26,10 +26,5 @@ use Fisharebest\Webtrees\GedcomRecord;
  */
 interface SlugFactoryInterface
 {
-    /**
-     * @param GedcomRecord $record
-     *
-     * @return string
-     */
     public function make(GedcomRecord $record): string;
 }

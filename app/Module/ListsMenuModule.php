@@ -34,9 +34,6 @@ class ListsMenuModule extends AbstractModule implements ModuleMenuInterface
 
     private ModuleService $module_service;
 
-    /**
-     * @param ModuleService $module_service
-     */
     public function __construct(ModuleService $module_service)
     {
         $this->module_service = $module_service;
@@ -56,8 +53,6 @@ class ListsMenuModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * The default position for this menu.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultMenuOrder(): int
     {
@@ -66,19 +61,15 @@ class ListsMenuModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * A menu, to be added to the main application menu.
-     *
-     * @param Tree $tree
-     *
-     * @return Menu|null
      */
     public function getMenu(Tree $tree): Menu|null
     {
         $submenus = $this->module_service->findByComponent(ModuleListInterface::class, $tree, Auth::user())
             ->map(static fn (ModuleListInterface $module): Menu|null => $module->listMenu($tree))
             ->filter()
-            ->sort(static fn (Menu $x, Menu $y): int => I18N::comparator()($x->getLabel(), $y->getLabel()));
+            ->sort(static fn (Menu $x, Menu $y): int => I18N::compare($x->getLabel(), $y->getLabel()));
 
-        if ($submenus->isEmpty()) {
+        if ($submenus->count() === 0) {
             return null;
         }
 

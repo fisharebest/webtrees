@@ -11,7 +11,7 @@ use Fisharebest\Webtrees\I18N;
 ?>
 
 <span class="input-group-text">
-    <a data-bs-toggle="collapse" data-bs-target=".child_of_<?= e($id) ?>" href="#" title="<?= I18N::translate('Latitude') . ' / ' . I18N::translate('Longitude') ?>">
+    <a data-bs-toggle="collapse" data-bs-target=".child_of_<?= e($id) ?>" href="#" aria-expanded="false" title="<?= I18N::translate('Latitude') . ' / ' . I18N::translate('Longitude') ?>">
         <?= view('icons/coordinates') ?>
         <span class="visually-hidden">
             <?= I18N::translate('Latitude') . ' / ' . I18N::translate('Longitude') ?>

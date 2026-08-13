@@ -13,9 +13,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import $ from 'jquery';
-window.$ = window.jQuery = $;
-
 import '@popperjs/core';
 import { Alert, Button, Carousel, Collapse, Dropdown, Modal, Offcanvas, Popover, ScrollSpy, Tab, Toast, Tooltip } from 'bootstrap';
 window.bootstrap = {
@@ -49,7 +46,6 @@ import {
   // For the BeautifyMarker library
   faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater
 } from '@fortawesome/free-solid-svg-icons';
-import 'corejs-typeahead';
 
 import DataTable from 'datatables.net';
 import 'datatables.net-bs5';
@@ -68,8 +64,6 @@ window.TomSelect = TomSelect;
 
 import 'moment';
 
-import 'jquery-colorbox';
-import 'pinch-zoom-element';
 
 import 'leaflet';
 import 'leaflet.markercluster';
@@ -92,8 +86,6 @@ library.add(
   faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater
 );
 dom.watch();
-
-window.Bloodhound = require('corejs-typeahead/dist/bloodhound.min.js');
 
 // See https://github.com/RubaXa/Sortable/issues/1229
 // window.Sortable = require('sortablejs');

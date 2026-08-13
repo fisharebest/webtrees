@@ -26,8 +26,6 @@ interface ModuleConfigInterface extends ModuleInterface
 {
     /**
      * The URL to a page where the user can modify the configuration of this module.
-     *
-     * @return string
      */
     public function getConfigLink(): string;
 }

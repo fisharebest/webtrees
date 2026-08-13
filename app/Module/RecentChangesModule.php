@@ -19,9 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -64,9 +66,6 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
     private UserService $user_service;
 
-    /**
-     * @param UserService $user_service
-     */
     public function __construct(UserService $user_service)
     {
         $this->user_service = $user_service;
@@ -85,12 +84,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -111,7 +105,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($sortStyle) {
             case 'name':
-                $rows  = $rows->sort(static fn (object $x, object $y): int => GedcomRecord::nameComparator()($x->record, $y->record));
+                $rows  = $rows->sort(static fn (object $x, object $y): int => GedcomRecordComparator::byName($x->record, $y->record));
                 $order = [[1, 'asc']];
                 break;
 
@@ -130,7 +124,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
         if ($rows->isEmpty()) {
             $content = I18N::plural('There have been no changes within the last %s day.', 'There have been no changes within the last %s days.', $days, I18N::number($days));
         } elseif ($infoStyle === 'list') {
-            $content = view('modules/recent_changes/changes-list', [
+            $content = view('modules/recent-changes/changes-list', [
                 'id'         => $block_id,
                 'limit_low'  => self::LIMIT_LOW,
                 'limit_high' => self::LIMIT_HIGH,
@@ -139,7 +133,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
                 'show_user'  => $show_user,
             ]);
         } else {
-            $content = view('modules/recent_changes/changes-table', [
+            $content = view('modules/recent-changes/changes-table', [
                 'limit_low'  => self::LIMIT_LOW,
                 'limit_high' => self::LIMIT_HIGH,
                 'rows'       => $rows,
@@ -166,8 +160,6 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * Should this block load asynchronously using AJAX?
      *
      * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
      */
     public function loadAjax(): bool
     {
@@ -176,8 +168,6 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the user’s home page?
-     *
-     * @return bool
      */
     public function isUserBlock(): bool
     {
@@ -186,8 +176,6 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {
@@ -196,11 +184,6 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Update the configuration for a block.
-     *
-     * @param ServerRequestInterface $request
-     * @param int                    $block_id
-     *
-     * @return void
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
@@ -221,11 +204,6 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * An HTML form to edit block settings
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return string
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
@@ -259,7 +237,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             self::SOURCE_GEDCOM   => I18N::translate('show changes recorded in the genealogy data'),
         ];
 
-        return view('modules/recent_changes/config', [
+        return view('modules/recent-changes/config', [
             'days'        => $days,
             'infoStyle'   => $infoStyle,
             'info_styles' => $info_styles,
@@ -279,15 +257,15 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree Changes for which tree
      * @param int  $days Number of days
      *
-     * @return Collection<array-key,object{record:GedcomRecord,time:TimestampInterface,user:UserInterface}> List of records with changes
+     * @return Collection<array-key,object{record:GedcomRecord,time:CarbonImmutable,user:UserInterface}> List of records with changes
      */
     private function getRecentChangesFromDatabase(Tree $tree, int $days): Collection
     {
         $subquery = DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
-            ->where('status', '=', 'accepted')
+            ->where('status', '=', ChangeStatus::Accepted->value)
             ->where('new_gedcom', '<>', '')
-            ->where('change_time', '>', Registry::timestampFactory()->now()->subtractDays($days)->toDateTimeString())
+            ->where('change_time', '>', Registry::timestampFactory()->now()->subDays($days)->toDateTimeString())
             ->groupBy(['xref'])
             ->select([new Expression('MAX(change_id) AS recent_change_id')]);
 
@@ -311,11 +289,11 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree Changes for which tree
      * @param int  $days Number of days
      *
-     * @return Collection<array-key,object{record:GedcomRecord,time:TimestampInterface,user:UserInterface}> List of records with changes
+     * @return Collection<array-key,object{record:GedcomRecord,time:CarbonImmutable,user:UserInterface}> List of records with changes
      */
     private function getRecentChangesFromGenealogy(Tree $tree, int $days): Collection
     {
-        $julian_day = Registry::timestampFactory()->now()->subtractDays($days)->julianDay();
+        $julian_day = Registry::timestampFactory()->todayJulianDay() - $days;
 
         $individuals = DB::table('dates')
             ->where('d_file', '=', $tree->id())

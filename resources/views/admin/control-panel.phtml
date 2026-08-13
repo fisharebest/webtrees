@@ -2,51 +2,51 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
-use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\CheckForNewVersionNow;
-use Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\FixLevel0MediaPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
-use Fisharebest\Webtrees\Http\RequestHandlers\MergeTreesPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAnalyticsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesBlocksPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesChartsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesDataFixesPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesFootersPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesHistoricEventsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesLanguagesPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesListsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapAutocompletePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapGeoLocationsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapLinksPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapProvidersPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMenusPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesReportsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesSharesPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesSidebarsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesTabsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesThemesPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
-use Fisharebest\Webtrees\Http\RequestHandlers\PhpInformation;
-use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\SitePreferencesPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\SiteRegistrationPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\SiteTagsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\TreePageDefaultEdit;
-use Fisharebest\Webtrees\Http\RequestHandlers\UpgradeWizardPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\UploadMediaPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserAddPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserEditPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserListPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserPageDefaultEdit;
-use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupPage;
+use Carbon\CarbonImmutable;
+use Fisharebest\Webtrees\Http\Controllers\Broadcast;
+use Fisharebest\Webtrees\Http\Controllers\CheckForNewVersionNow;
+use Fisharebest\Webtrees\Http\Controllers\CleanDataFolder;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\CreateTree;
+use Fisharebest\Webtrees\Http\Controllers\EmailPreferences;
+use Fisharebest\Webtrees\Http\Controllers\FixLevel0Media;
+use Fisharebest\Webtrees\Http\Controllers\ManageMedia;
+use Fisharebest\Webtrees\Http\Controllers\ManageTrees;
+use Fisharebest\Webtrees\Http\Controllers\MapDataList;
+use Fisharebest\Webtrees\Http\Controllers\MergeTrees;
+use Fisharebest\Webtrees\Http\Controllers\ModulesAll;
+use Fisharebest\Webtrees\Http\Controllers\ModulesAnalytics;
+use Fisharebest\Webtrees\Http\Controllers\ModulesBlocks;
+use Fisharebest\Webtrees\Http\Controllers\ModulesCharts;
+use Fisharebest\Webtrees\Http\Controllers\ModulesDataFixes;
+use Fisharebest\Webtrees\Http\Controllers\ModulesFooters;
+use Fisharebest\Webtrees\Http\Controllers\ModulesHistoricEvents;
+use Fisharebest\Webtrees\Http\Controllers\ModulesLanguages;
+use Fisharebest\Webtrees\Http\Controllers\ModulesLists;
+use Fisharebest\Webtrees\Http\Controllers\ModulesMapAutocomplete;
+use Fisharebest\Webtrees\Http\Controllers\ModulesMapGeoLocations;
+use Fisharebest\Webtrees\Http\Controllers\ModulesMapLinks;
+use Fisharebest\Webtrees\Http\Controllers\ModulesMapProviders;
+use Fisharebest\Webtrees\Http\Controllers\ModulesMenus;
+use Fisharebest\Webtrees\Http\Controllers\ModulesReports;
+use Fisharebest\Webtrees\Http\Controllers\ModulesShares;
+use Fisharebest\Webtrees\Http\Controllers\ModulesSidebars;
+use Fisharebest\Webtrees\Http\Controllers\ModulesTabs;
+use Fisharebest\Webtrees\Http\Controllers\ModulesThemes;
+use Fisharebest\Webtrees\Http\Controllers\PendingChanges;
+use Fisharebest\Webtrees\Http\Controllers\PhpInformation;
+use Fisharebest\Webtrees\Http\Controllers\SiteLogs;
+use Fisharebest\Webtrees\Http\Controllers\SitePreferences;
+use Fisharebest\Webtrees\Http\Controllers\SiteRegistration;
+use Fisharebest\Webtrees\Http\Controllers\SiteTags;
+use Fisharebest\Webtrees\Http\Controllers\TreePageDefault;
+use Fisharebest\Webtrees\Http\Controllers\UpgradeWizardPage;
+use Fisharebest\Webtrees\Http\Controllers\UploadMedia;
+use Fisharebest\Webtrees\Http\Controllers\UserAdd;
+use Fisharebest\Webtrees\Http\Controllers\UserEdit;
+use Fisharebest\Webtrees\Http\Controllers\UserListPage;
+use Fisharebest\Webtrees\Http\Controllers\UserPageDefaultEdit;
+use Fisharebest\Webtrees\Http\Controllers\UsersCleanup;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\FamilyListModule;
 use Fisharebest\Webtrees\Module\IndividualListModule;
@@ -110,7 +110,8 @@ use Illuminate\Support\Collection;
  * @var Collection<int,ModuleLanguageInterface>        $language_modules_enabled
  * @var string                                         $latest_version
  * @var string                                         $latest_version_error
- * @var TimestampInterface                             $latest_version_timestamp
+ * @var CarbonImmutable                                $latest_version_timestamp
+ * @var int                                            $now
  * @var Collection<int,ModuleListInterface>            $list_modules_disabled
  * @var Collection<int,ModuleListInterface>            $list_modules_enabled
  * @var Collection<int,ModuleMapLinkInterface>         $map_link_modules_disabled
@@ -210,7 +211,7 @@ use Illuminate\Support\Collection;
             <p class="card-text">
                 <?= I18N::translate('This is the latest version of webtrees. No upgrade is available.') ?>
                 <?= /* I18N: Last checked X hours ago. */ I18N::translate('Last checked %s.', $latest_version_timestamp->diffForHumans()) ?>
-                <?php if ($latest_version_timestamp->timestamp() + 60 < time()) : ?>
+                <?php if ($latest_version_timestamp->getTimestamp() + 60 < $now) : ?>
                     <a href="#" class="btn btn-primary" data-wt-post-url="<?= e(route(CheckForNewVersionNow::class)) ?>">
                         <?= /* I18N: button label */ I18N::translate('check now') ?>
                     </a>
@@ -236,19 +237,19 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/preferences') ?></span>
-                        <a href="<?= e(route(SitePreferencesPage::class)) ?>">
+                        <a href="<?= e(route(SitePreferences::class)) ?>">
                             <?= I18N::translate('Website preferences') ?>
                         </a>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/email') ?></span>
-                        <a href="<?= e(route(EmailPreferencesPage::class)) ?>">
+                        <a href="<?= e(route(EmailPreferences::class)) ?>">
                             <?= I18N::translate('Sending email') ?>
                         </a>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/user') ?></span>
-                        <a href="<?= e(route(SiteRegistrationPage::class)) ?>">
+                        <a href="<?= e(route(SiteRegistration::class)) ?>">
                             <?= I18N::translate('Sign-in and registration') ?>
                         </a>
                     </li>
@@ -258,7 +259,7 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/list') ?></span>
-                        <a href="<?= e(route(SiteLogsPage::class)) ?>">
+                        <a href="<?= e(route(SiteLogs::class)) ?>">
                             <?= I18N::translate('Website logs') ?>
                         </a>
                     </li>
@@ -280,7 +281,7 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/tag') ?></span>
-                        <a href="<?= e(route(SiteTagsPage::class)) ?>">
+                        <a href="<?= e(route(SiteTags::class)) ?>">
                             <?= I18N::translate('GEDCOM tags') ?>
                         </a>
                     </li>
@@ -291,7 +292,7 @@ use Illuminate\Support\Collection;
 </div>
 
 <!-- FAMILY TREES -->
-<div class="card mb-4 <?= array_sum($changes) ? 'card-outline-danger' : '' ?>">
+<div class="card mb-4 <?= array_sum($changes) !== 0 ? 'card-outline-danger' : '' ?>">
     <div class="card-header">
         <h2 class="mb-0">
             <?= I18N::translate('Family trees') ?>
@@ -311,20 +312,20 @@ use Illuminate\Support\Collection;
         <ul class="fa-ul mx-0">
             <li>
                 <span class="fa-li"><?= view('icons/add') ?></span>
-                <a href="<?= e(route(CreateTreePage::class)) ?>">
+                <a href="<?= e(route(CreateTree::class)) ?>">
                     <?= I18N::translate('Create a family tree') ?>
                 </a>
             </li>
             <li>
                 <span class="fa-li"><?= view('icons/block') ?></span>
-                <a href="<?= e(route(TreePageDefaultEdit::class)) ?>">
+                <a href="<?= e(route(TreePageDefault::class)) ?>">
                     <?= I18N::translate('Set the default blocks for new family trees') ?>
                 </a>
             </li>
             <?php if (count($all_trees) > 1) : ?>
                 <li>
                     <span class="fa-li"><?= view('icons/merge') ?></span>
-                    <a href="<?= e(route(MergeTreesPage::class)) ?>">
+                    <a href="<?= e(route(MergeTrees::class)) ?>">
                         <?= I18N::translate('Merge family trees') ?>
                     </a>
                 </li>
@@ -352,7 +353,7 @@ use Illuminate\Support\Collection;
 
             <tbody>
                 <?php foreach ($all_trees as $tree) : ?>
-                    <tr class="<?= $changes[$tree->id()] ? 'danger' : '' ?>">
+                    <tr class="<?= $changes[$tree->id()] !== 0 ? 'danger' : '' ?>">
                         <th scope="row">
                             <?= view('icons/preferences') ?>
                             <a href="<?= e(route(ManageTrees::class, ['tree' => $tree->name()])) ?>">
@@ -362,7 +363,7 @@ use Illuminate\Support\Collection;
                             </a>
                         </th>
                         <td style="text-align: right;">
-                            <?php if ($changes[$tree->id()]) : ?>
+                            <?php if ($changes[$tree->id()] !== 0) : ?>
                                 <a href="<?= e(route(PendingChanges::class, ['tree' => $tree->name(), 'url' => route(ControlPanel::class)])) ?>">
                                     <?= I18N::number($changes[$tree->id()]) ?>
                                     <span class="visually-hidden"><?= I18N::translate('Pending changes') ?> <?= e($tree->title()) ?></span>
@@ -508,11 +509,8 @@ use Illuminate\Support\Collection;
                     <?= $label ?>
                 </dt>
                 <dd class="col-sm-6">
-                    <?php foreach ($list as $n => $user) : ?>
-                        <?= $n ? I18N::$list_separator : '' ?>
-                        <a href="<?= e(route(UserEditPage::class, ['user_id' => $user->id()])) ?>" dir="auto">
-                            <?= e($user->realName()) ?>
-                        </a>
+                    <?php foreach ($list as $user) : ?>
+                        <a href="<?= e(route(UserEdit::class, ['user_id' => $user->id()])) ?>" dir="auto"><?= e($user->realName()) ?></a>
                     <?php endforeach ?>
                     <?php if ($list->isEmpty()) : ?>
                         —
@@ -532,13 +530,13 @@ use Illuminate\Support\Collection;
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/add') ?></span>
-                        <a href="<?= e(route(UserAddPage::class)) ?>">
+                        <a href="<?= e(route(UserAdd::class)) ?>">
                             <?= I18N::translate('Add a user') ?>
                         </a>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/delete') ?></span>
-                        <a href="<?= e(route(UsersCleanupPage::class)) ?>">
+                        <a href="<?= e(route(UsersCleanup::class)) ?>">
                             <?= I18N::translate('Delete inactive users') ?>
                         </a>
                     </li>
@@ -555,7 +553,7 @@ use Illuminate\Support\Collection;
                     <?php foreach ($recipients as $to => $recipient) : ?>
                     <li>
                         <span class="fa-li"><?= view('icons/email') ?></span>
-                        <a href="<?= e(route(BroadcastPage::class, ['to' => $to])) ?>">
+                        <a href="<?= e(route(Broadcast::class, ['to' => $to])) ?>">
                             <?= $recipient ?>
                         </a>
                     </li>
@@ -579,7 +577,7 @@ use Illuminate\Support\Collection;
         <ul class="fa-ul mx-0">
             <li>
                 <span class="fa-li"><?= view('icons/module') ?></span>
-                <a href="<?= e(route(ModulesAllPage::class)) ?>">
+                <a href="<?= e(route(ModulesAll::class)) ?>">
                     <?= I18N::translate('All modules') ?>
                 </a>
                 <?= view('components/badge', ['count' => $all_modules_enabled->count(), 'total' => $all_modules_disabled->count(), 'context' => 'primary']) ?>
@@ -595,28 +593,28 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/footer') ?></span>
-                        <a href="<?= e(route(ModulesFootersPage::class)) ?>">
+                        <a href="<?= e(route(ModulesFooters::class)) ?>">
                             <?= I18N::translate('Footers') ?>
                         </a>
                         <?= view('components/badge', ['count' => $footer_modules_enabled->count(), 'total' => $footer_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/analytics') ?></span>
-                        <a href="<?= e(route(ModulesAnalyticsPage::class)) ?>">
+                        <a href="<?= e(route(ModulesAnalytics::class)) ?>">
                             <?= I18N::translate('Tracking and analytics') ?>
                         </a>
                         <?= view('components/badge', ['count' => $analytics_modules_enabled->count(), 'total' => $analytics_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/theme') ?></span>
-                        <a href="<?= e(route(ModulesThemesPage::class)) ?>">
+                        <a href="<?= e(route(ModulesThemes::class)) ?>">
                             <?= I18N::translate('Themes') ?>
                         </a>
                         <?= view('components/badge', ['count' => $theme_modules_enabled->count(), 'total' => $theme_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/language') ?></span>
-                        <a href="<?= e(route(ModulesLanguagesPage::class)) ?>">
+                        <a href="<?= e(route(ModulesLanguages::class)) ?>">
                             <?= I18N::translate('Languages') ?>
                         </a>
                         <?= view('components/badge', ['count' => $language_modules_enabled->count(), 'total' => $language_modules_disabled->count(), 'context' => 'primary']) ?>
@@ -630,7 +628,7 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/block') ?></span>
-                        <a href="<?= e(route(ModulesBlocksPage::class)) ?>">
+                        <a href="<?= e(route(ModulesBlocks::class)) ?>">
                             <?= I18N::translate('Blocks') ?>
                         </a>
                         <?= view('components/badge', ['count' => $block_modules_enabled->count(), 'total' => $block_modules_disabled->count(), 'context' => 'primary']) ?>
@@ -644,28 +642,28 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/search') ?></span>
-                        <a href="<?= e(route(ModulesMapAutocompletePage::class)) ?>">
+                        <a href="<?= e(route(ModulesMapAutocomplete::class)) ?>">
                             <?= /* I18N: Automatic suggestions when you type */ I18N::translate('Autocomplete') ?>
                         </a>
                         <?= view('components/badge', ['count' => $map_autocomplete_modules_enabled->count(), 'total' => $map_autocomplete_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/search-location') ?></span>
-                        <a href="<?= e(route(ModulesMapGeoLocationsPage::class)) ?>">
+                        <a href="<?= e(route(ModulesMapGeoLocations::class)) ?>">
                             <?= /* I18N: find latitude/longitude for a place */ I18N::translate('Geolocation') ?>
                         </a>
                         <?= view('components/badge', ['count' => $map_search_modules_enabled->count(), 'total' => $map_search_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/location') ?></span>
-                        <a href="<?= e(route(ModulesMapLinksPage::class)) ?>">
+                        <a href="<?= e(route(ModulesMapLinks::class)) ?>">
                             <?= /* I18N: Links to maps */ I18N::translate('Map links') ?>
                         </a>
                         <?= view('components/badge', ['count' => $map_link_modules_enabled->count(), 'total' => $map_link_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/map') ?></span>
-                        <a href="<?= e(route(ModulesMapProvidersPage::class)) ?>">
+                        <a href="<?= e(route(ModulesMapProviders::class)) ?>">
                             <?= I18N::translate('Map providers') ?>
                         </a>
                         <?= view('components/badge', ['count' => $map_provider_modules_enabled->count(), 'total' => $map_provider_modules_disabled->count(), 'context' => 'primary']) ?>
@@ -681,35 +679,35 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/menu') ?></span>
-                        <a href="<?= e(route(ModulesMenusPage::class)) ?>">
+                        <a href="<?= e(route(ModulesMenus::class)) ?>">
                             <?= I18N::translate('Menus') ?>
                         </a>
                         <?= view('components/badge', ['count' => $menu_modules_enabled->count(), 'total' => $menu_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/chart') ?></span>
-                        <a href="<?= e(route(ModulesChartsPage::class)) ?>">
+                        <a href="<?= e(route(ModulesCharts::class)) ?>">
                             <?= I18N::translate('Charts') ?>
                         </a>
                         <?= view('components/badge', ['count' => $chart_modules_enabled->count(), 'total' => $chart_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/list') ?></span>
-                        <a href="<?= e(route(ModulesListsPage::class)) ?>">
+                        <a href="<?= e(route(ModulesLists::class)) ?>">
                             <?= I18N::translate('Lists') ?>
                         </a>
                         <?= view('components/badge', ['count' => $list_modules_enabled->count(), 'total' => $list_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/report') ?></span>
-                        <a href="<?= e(route(ModulesReportsPage::class)) ?>">
+                        <a href="<?= e(route(ModulesReports::class)) ?>">
                             <?= I18N::translate('Reports') ?>
                         </a>
                         <?= view('components/badge', ['count' => $report_modules_enabled->count(), 'total' => $report_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/data-fix') ?></span>
-                        <a href="<?= e(route(ModulesDataFixesPage::class)) ?>">
+                        <a href="<?= e(route(ModulesDataFixes::class)) ?>">
                             <?= I18N::translate('Data fixes') ?>
                         </a>
                         <?= view('components/badge', ['count' => $data_fix_modules_enabled->count(), 'total' => $data_fix_modules_disabled->count(), 'context' => 'primary']) ?>
@@ -723,28 +721,28 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/tab') ?></span>
-                        <a href="<?= e(route(ModulesTabsPage::class)) ?>">
+                        <a href="<?= e(route(ModulesTabs::class)) ?>">
                             <?= I18N::translate('Tabs') ?>
                             <?= view('components/badge', ['count' => $tab_modules_enabled->count(), 'total' => $tab_modules_disabled->count(), 'context' => 'primary']) ?>
                         </a>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/sidebar') ?></span>
-                        <a href="<?= e(route(ModulesSidebarsPage::class)) ?>">
+                        <a href="<?= e(route(ModulesSidebars::class)) ?>">
                             <?= I18N::translate('Sidebars') ?>
                         </a>
                         <?= view('components/badge', ['count' => $sidebar_modules_enabled->count(), 'total' => $sidebar_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/history') ?></span>
-                        <a href="<?= e(route(ModulesHistoricEventsPage::class)) ?>">
+                        <a href="<?= e(route(ModulesHistoricEvents::class)) ?>">
                             <?= I18N::translate('Historic events') ?>
                         </a>
                         <?= view('components/badge', ['count' => $history_modules_enabled->count(), 'total' => $history_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/share') ?></span>
-                        <a href="<?= e(route(ModulesSharesPage::class)) ?>">
+                        <a href="<?= e(route(ModulesShares::class)) ?>">
                             <?= /* I18N: plural noun - things that can be shared */  I18N::translate('Shares') ?>
                         </a>
                         <?= view('components/badge', ['count' => $share_modules_enabled->count(), 'total' => $share_modules_disabled->count(), 'context' => 'primary']) ?>
@@ -803,19 +801,19 @@ use Illuminate\Support\Collection;
         <ul class="fa-ul mx-0">
             <li>
                 <span class="fa-li"><?= view('icons/preferences') ?></span>
-                <a href="<?= e(route(ManageMediaPage::class)) ?>">
+                <a href="<?= e(route(ManageMedia::class)) ?>">
                     <?= I18N::translate('Manage media') ?>
                 </a>
             </li>
             <li>
                 <span class="fa-li"><?= view('icons/upload') ?></span>
-                <a href="<?= e(route(UploadMediaPage::class)) ?>">
+                <a href="<?= e(route(UploadMedia::class)) ?>">
                     <?= I18N::translate('Upload media files') ?>
                 </a>
             </li>
             <li>
                 <span class="fa-li"><?= view('icons/link') ?></span>
-                <a href="<?= e(route(FixLevel0MediaPage::class)) ?>">
+                <a href="<?= e(route(FixLevel0Media::class)) ?>">
                     <?= I18N::translate('Link media objects to facts and events') ?>
                 </a>
             </li>

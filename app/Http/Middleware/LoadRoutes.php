@@ -19,9 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Http\Routes\ApiRoutes;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
+use Fisharebest\Webtrees\Http\Routing\RouteCollection;
+use Fisharebest\Webtrees\Http\Routing\UrlGenerator;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -35,33 +36,26 @@ use const PHP_URL_PATH;
 
 class LoadRoutes implements MiddlewareInterface
 {
-    private ApiRoutes $api_routes;
-
-    private WebRoutes $web_routes;
-
-    /**
-     * @param ApiRoutes $api_routes
-     * @param WebRoutes $web_routes
-     */
-    public function __construct(ApiRoutes $api_routes, WebRoutes $web_routes)
-    {
-        $this->api_routes = $api_routes;
-        $this->web_routes = $web_routes;
+    public function __construct(
+        private ApiRoutes $api_routes,
+        private WebRoutes $web_routes,
+    ) {
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $base_url         = Validator::attributes($request)->string('base_url');
-        $base_path        = parse_url($base_url, PHP_URL_PATH);
-        $router_container = new RouterContainer($base_path);
+        $base_url  = Validator::attributes($request)->string('base_url');
+        $base_path = parse_url($base_url, PHP_URL_PATH);
+        $base_path = is_string($base_path) ? $base_path : '';
 
         // Load the core routing tables. Modules will load their own routes later.
-        $map = $router_container->getMap();
-        $this->api_routes->load($map);
-        $this->web_routes->load($map);
+        $routes = new RouteCollection();
+        $this->api_routes->load($routes);
+        $this->web_routes->load($routes);
 
-        // Save the router in the container, as we'll need it to generate URLs.
-        Registry::container()->set(RouterContainer::class, $router_container);
+        // Save the route collection and URL generator in the container.
+        Registry::container()->set(RouteCollection::class, $routes);
+        Registry::container()->set(UrlGenerator::class, new UrlGenerator($routes, $base_path));
 
         return $handler->handle($request);
     }

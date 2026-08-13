@@ -42,8 +42,6 @@ class AlbumModule extends MediaTabModule
 
     /**
      * The default position for this tab.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultTabOrder(): int
     {
@@ -52,10 +50,6 @@ class AlbumModule extends MediaTabModule
 
     /**
      * Generate the HTML content of this tab.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function getTabContent(Individual $individual): string
     {
@@ -67,7 +61,6 @@ class AlbumModule extends MediaTabModule
     /**
      * Get the linked media objects.
      *
-     * @param Individual $individual
      *
      * @return Collection<int,Media>
      */

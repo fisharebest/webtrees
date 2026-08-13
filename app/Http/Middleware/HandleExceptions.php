@@ -19,8 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\RequestMethodInterface;
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Log;
@@ -49,7 +50,7 @@ use function view;
 use const E_ERROR;
 use const PHP_EOL;
 
-class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
+class HandleExceptions implements MiddlewareInterface
 {
     use ViewResponseTrait;
 
@@ -58,10 +59,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
     }
 
     /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
      *
-     * @return ResponseInterface
      * @throws Throwable
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
@@ -79,6 +77,8 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
 
         try {
             return $handler->handle($request);
+        } catch (ImageException $exception) {
+            return $this->imageExceptionResponse($exception);
         } catch (HttpException $exception) {
             // The router added the tree attribute to the request, and we need it for the error response.
             if (Registry::container()->has(ServerRequestInterface::class)) {
@@ -131,32 +131,26 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             }
 
             // Show a stack dump.
-            return response(nl2br((string) $exception), StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+            return response(nl2br((string) $exception), HttpStatusCode::InternalServerError);
         }
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param HttpException          $exception
-     *
-     * @return ResponseInterface
-     */
     private function httpExceptionResponse(ServerRequestInterface $request, HttpException $exception): ResponseInterface
     {
-        $tree    = Validator::attributes($request)->treeOptional();
+        $tree    = $request->getAttribute('tree');
         $default = Site::getPreference('DEFAULT_GEDCOM');
         $tree    ??= $this->tree_service->all()[$default] ?? $this->tree_service->all()->first();
 
-        $status_code = $exception->getCode();
+        $status_code = HttpStatusCode::from($exception->getCode());
 
         // If this was a GET request, then we were probably fetching HTML to display, for
-        // example a chart or tab.
+        // example, a chart or tab.
         if (
             $request->getHeaderLine('X-Requested-With') !== '' &&
-            $request->getMethod() === RequestMethodInterface::METHOD_GET
+            $request->getMethod() === HttpRequestMethod::GET->value
         ) {
             $this->layout = 'layouts/ajax';
-            $status_code = StatusCodeInterface::STATUS_OK;
+            $status_code = HttpStatusCode::OK;
         }
 
         return $this->viewResponse('components/alert-danger', [
@@ -166,15 +160,9 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         ], $status_code);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param Throwable              $exception
-     *
-     * @return ResponseInterface
-     */
     private function thirdPartyExceptionResponse(ServerRequestInterface $request, Throwable $exception): ResponseInterface
     {
-        $tree = Validator::attributes($request)->treeOptional();
+        $tree = $request->getAttribute('tree');
 
         $default = Site::getPreference('DEFAULT_GEDCOM');
         $tree ??= $this->tree_service->all()[$default] ?? $this->tree_service->all()->first();
@@ -187,15 +175,17 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             'alert' => $exception->getMessage(),
             'title' => $exception->getMessage(),
             'tree'  => $tree,
-        ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+        ], HttpStatusCode::InternalServerError);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param Throwable              $exception
-     *
-     * @return ResponseInterface
-     */
+    private function imageExceptionResponse(ImageException $exception): ResponseInterface
+    {
+        // We can't send the actual status code, as browsers won't show images with 4xx/5xx.
+        return response(content: $exception->toSvg())
+            ->withHeader('content-type', 'image/svg+xml')
+            ->withHeader('content-security-policy', 'default-src none');
+    }
+
     private function unhandledExceptionResponse(ServerRequestInterface $request, Throwable $exception): ResponseInterface
     {
         $this->layout = 'layouts/default';
@@ -218,10 +208,10 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         if ($request->getHeaderLine('X-Requested-With') !== '') {
             // If this was a GET request, then we were probably fetching HTML to display, for
             // example a chart or tab.
-            if ($request->getMethod() === RequestMethodInterface::METHOD_GET) {
-                $status_code = StatusCodeInterface::STATUS_OK;
+            if ($request->getMethod() === HttpRequestMethod::GET->value) {
+                $status_code = HttpStatusCode::OK;
             } else {
-                $status_code = StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR;
+                $status_code = HttpStatusCode::InternalServerError;
             }
 
             return response(view('components/alert-danger', ['alert' => $trace]), $status_code);
@@ -234,7 +224,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
                 'error'   => $trace,
                 'request' => $request,
                 'tree'    => Validator::attributes($request)->treeOptional(),
-            ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+            ], HttpStatusCode::InternalServerError);
         } catch (Throwable) {
             // Try with a minimal header/menu
             return $this->viewResponse('errors/unhandled-exception', [
@@ -242,7 +232,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
                 'error'   => $trace,
                 'request' => $request,
                 'tree'    => null,
-            ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+            ], HttpStatusCode::InternalServerError);
         }
     }
 }

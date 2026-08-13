@@ -26,8 +26,6 @@ readonly class CensusOfCanada1851 extends CensusOfCanada implements CensusInterf
      *
      * Officially, this census was the "1851 Census" but data collection
      * began January 12, 1852. Using that data breaks stuff.
-     *
-     * @return string
      */
     public function censusDate(): string
     {

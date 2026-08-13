@@ -68,8 +68,6 @@ class MigrationService
 
     /**
      *  Write default data to the database.
-     *
-     * @return void
      */
     public function seedDatabase(): void
     {

@@ -38,10 +38,6 @@ class FamilyNonEvent extends AbstractElement
 
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {
@@ -69,7 +65,7 @@ class FamilyNonEvent extends AbstractElement
             'MARR' => Registry::elementFactory()->make('FAM:MARR')->label(),
         ];
 
-        uasort($values, I18N::comparator());
+        uasort($values, I18N::compare(...));
 
         return $values;
     }

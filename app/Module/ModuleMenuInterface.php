@@ -29,33 +29,21 @@ interface ModuleMenuInterface extends ModuleInterface
 {
     /**
      * Users change change the order of menus using the control panel.
-     *
-     * @param int $menu_order
-     *
-     * @return void
      */
     public function setMenuOrder(int $menu_order): void;
 
     /**
      * Users change change the order of menus using the control panel.
-     *
-     * @return int
      */
     public function getMenuOrder(): int;
 
     /**
      * The default position for this menu.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultMenuOrder(): int;
 
     /**
      * A menu, to be added to the main application menu.
-     *
-     * @param Tree $tree
-     *
-     * @return Menu|null
      */
     public function getMenu(Tree $tree): Menu|null;
 }

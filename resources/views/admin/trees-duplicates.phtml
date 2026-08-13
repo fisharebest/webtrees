@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
-use Fisharebest\Webtrees\Http\RequestHandlers\MergeFactsPage;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\ManageTrees;
+use Fisharebest\Webtrees\Http\Controllers\MergeFacts;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -24,20 +24,20 @@ use Fisharebest\Webtrees\Tree;
 <?php foreach ($duplicates as $category => $records) : ?>
     <h2><?= $category ?></h2>
 
-    <?php if (!empty($records)) : ?>
+    <?php if ($records !== []) : ?>
         <ol>
-            <?php foreach ($records as $duplicates) : ?>
+            <?php foreach ($records as $duplicate_group) : ?>
                 <li>
-                    <?= $duplicates[0]->fullName() ?>
-                    <?php foreach ($duplicates as $record) : ?>
+                    <?= $duplicate_group[0]->fullName() ?>
+                    <?php foreach ($duplicate_group as $record) : ?>
                         —
                         <a href="<?= e($record->url()) ?>">
                             <?= $record->xref() ?>
                         </a>
                     <?php endforeach ?>
-                    <?php if (count($duplicates) === 2) : ?>
+                    <?php if (count($duplicate_group) === 2) : ?>
                         —
-                        <a href="<?= e(route(MergeFactsPage::class, ['tree' => $tree->name(), 'xref1' => $duplicates[0]->xref(), 'xref2' => $duplicates[1]->xref()])) ?>">
+                        <a href="<?= e(route(MergeFacts::class, ['tree' => $tree->name(), 'xref1' => $duplicate_group[0]->xref(), 'xref2' => $duplicate_group[1]->xref()])) ?>">
                             <?= I18N::translate('Merge') ?>
                         </a>
                     <?php endif ?>

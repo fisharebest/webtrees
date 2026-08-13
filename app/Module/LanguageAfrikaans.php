@@ -19,15 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleAf;
-use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\I18N\Languages\Afrikaans;
 
 class LanguageAfrikaans extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    public function locale(): LocaleInterface
+    public function __construct()
     {
-        return new LocaleAf();
+        $this->language = new Afrikaans();
     }
 }

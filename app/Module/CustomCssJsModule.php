@@ -46,10 +46,6 @@ class CustomCssJsModule extends AbstractModule implements ModuleConfigInterface,
 
     /**
      * Show a form to edit the user CSS and JS.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
      */
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
@@ -70,10 +66,6 @@ class CustomCssJsModule extends AbstractModule implements ModuleConfigInterface,
 
     /**
      * Save the user CSS and JS.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
@@ -92,8 +84,6 @@ class CustomCssJsModule extends AbstractModule implements ModuleConfigInterface,
     /**
      * Raw content, to be added at the end of the <body> element.
      * Typically, this will be <script> elements.
-     *
-     * @return string
      */
     public function bodyContent(): string
     {
@@ -103,8 +93,6 @@ class CustomCssJsModule extends AbstractModule implements ModuleConfigInterface,
     /**
      * Raw content, to be added at the end of the <head> element.
      * Typically, this will be <link> and <meta> elements.
-     *
-     * @return string
      */
     public function headContent(): string
     {

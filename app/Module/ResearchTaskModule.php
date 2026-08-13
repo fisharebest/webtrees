@@ -81,12 +81,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -96,7 +91,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
         extract($config, EXTR_OVERWRITE);
 
-        $end_jd      = $show_future ? self::MAXIMUM_JULIAN_DAY : Registry::timestampFactory()->now()->julianDay();
+        $end_jd      = $show_future === '1' ? self::MAXIMUM_JULIAN_DAY : Registry::timestampFactory()->todayJulianDay();
         $individuals = $this->individualsWithTasks($tree, $end_jd);
         $families    = $this->familiesWithTasks($tree, $end_jd);
 
@@ -111,10 +106,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
                 if ($user_name === Auth::user()->userName()) {
                     // Tasks belonging to us.
                     $tasks->add($task);
-                } elseif ($user_name === '' && $show_unassigned) {
+                } elseif ($user_name === '' && $show_unassigned === '1') {
                     // Tasks belonging to nobody.
                     $tasks->add($task);
-                } elseif ($user_name !== '' && $show_other) {
+                } elseif ($user_name !== '' && $show_other === '1') {
                     // Tasks belonging to others.
                     $tasks->add($task);
                 }
@@ -145,8 +140,6 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $max_julian_day
      *
      * @return Collection<int,Individual>
      */
@@ -169,8 +162,6 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $max_julian_day
      *
      * @return Collection<int,Family>
      */
@@ -202,8 +193,6 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
      * Should this block load asynchronously using AJAX?
      *
      * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
      */
     public function loadAjax(): bool
     {
@@ -212,8 +201,6 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the user’s home page?
-     *
-     * @return bool
      */
     public function isUserBlock(): bool
     {
@@ -222,8 +209,6 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {
@@ -232,11 +217,6 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Update the configuration for a block.
-     *
-     * @param ServerRequestInterface $request
-     * @param int                    $block_id
-     *
-     * @return void
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
@@ -251,11 +231,6 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * An HTML form to edit block settings
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return string
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {

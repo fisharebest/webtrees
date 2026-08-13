@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
+
 /**
  * Trait ModuleConfigTrait - default implementation of ModuleConfigInterface
  */
@@ -26,19 +28,15 @@ trait ModuleConfigTrait
 {
     /**
      * A unique internal name for this module (based on the installation folder).
-     *
-     * @return string
      */
     abstract public function name(): string;
 
     /**
      * The URL to a page where the user can modify the configuration of this module.
-     *
-     * @return string
      */
     public function getConfigLink(): string
     {
-        return route('module', [
+        return route(ModuleAction::class, [
             'module' => $this->name(),
             'action' => 'Admin',
         ]);

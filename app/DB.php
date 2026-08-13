@@ -67,12 +67,31 @@ final class DB extends Manager
     ];
 
     private const array DRIVER_INITIALIZATION = [
-        self::MARIADB    => "SET NAMES utf8mb4, sql_mode := 'ANSI,STRICT_ALL_TABLES', TIME_ZONE := '+00:00', SQL_BIG_SELECTS := 1, GROUP_CONCAT_MAX_LEN := 1048576",
-        self::MYSQL      => "SET NAMES utf8mb4, sql_mode := 'ANSI,STRICT_ALL_TABLES', TIME_ZONE := '+00:00', SQL_BIG_SELECTS := 1, GROUP_CONCAT_MAX_LEN := 1048576",
-        self::POSTGRESQL => '',
-        self::SQLITE     => 'PRAGMA foreign_keys = ON',
-        self::SQL_SERVER => 'SET language us_english', // For timestamp columns
-        self::FIREBIRD   => '',
+        self::MARIADB    =>
+            'SET NAMES utf8mb4;' .
+            "SET sql_mode             := 'ANSI,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ONLY_FULL_GROUP_BY';" .
+            "SET TIME_ZONE            := '+00:00';" .
+            'SET SQL_BIG_SELECTS      := 1;' .
+            'SET GROUP_CONCAT_MAX_LEN := 1048576;',
+        self::MYSQL      =>
+            'SET NAMES utf8mb4;' .
+            "SET sql_mode             := 'ANSI,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ONLY_FULL_GROUP_BY';" .
+            "SET TIME_ZONE            := '+00:00';" .
+            'SET SQL_BIG_SELECTS      := 1;' .
+            'SET GROUP_CONCAT_MAX_LEN := 1048576;',
+        self::POSTGRESQL =>
+            "SET timezone  = 'UTC';" .
+            "SET datestyle = 'ISO, YMD';",
+        self::SQLITE     =>
+            'PRAGMA journal_mode = WAL;' .
+            'PRAGMA foreign_keys = ON;' .
+            'PRAGMA synchronous  = NORMAL;' .
+            'PRAGMA busy_timeout = 5000;' .
+            'PRAGMA cache_size   = -16000;',
+        self::SQL_SERVER =>
+            'SET language us_english;', // For timestamp columns
+        self::FIREBIRD   =>
+            'SET NAMES UTF8;',
     ];
 
     public static function connect(
@@ -107,12 +126,15 @@ final class DB extends Manager
         // MySQL/MariaDB support encrypted connections
         if (
             ($driver === self::MYSQL || $driver === self::MARIADB) &&
-            $key !== '' && $certificate !== '' && $ca !== ''
+            $key !== '' && $certificate !== ''
         ) {
             $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = $verify_certificate;
             $options[PDO::MYSQL_ATTR_SSL_KEY]                = Webtrees::ROOT_DIR . 'data/' . $key;
             $options[PDO::MYSQL_ATTR_SSL_CERT]               = Webtrees::ROOT_DIR . 'data/' . $certificate;
-            $options[PDO::MYSQL_ATTR_SSL_CA]                 = Webtrees::ROOT_DIR . 'data/' . $ca;
+
+            if ($ca !== '') {
+                $options[PDO::MYSQL_ATTR_SSL_CA] = Webtrees::ROOT_DIR . 'data/' . $ca;
+            }
         }
 
         if ($driver === self::SQLITE && $database !== ':memory:') {
@@ -143,9 +165,7 @@ final class DB extends Manager
 
         $sql = self::DRIVER_INITIALIZATION[$driver];
 
-        if ($sql !== '') {
-            self::exec($sql);
-        }
+        self::exec($sql);
     }
 
     public static function driverName(): string
@@ -251,7 +271,11 @@ final class DB extends Manager
     }
 
     /**
-     * @return Expression<string>
+     * @TODO - the next version of illumate/database will change literal-string to string.
+     *
+     * @param literal-string $column
+     * @param literal-string|null $alias
+     * @return Expression<literal-string>
      */
     public static function binaryColumn(string $column, string|null $alias = null): Expression
     {

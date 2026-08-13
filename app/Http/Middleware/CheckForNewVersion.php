@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -30,9 +30,6 @@ class CheckForNewVersion implements MiddlewareInterface
 {
     private UpgradeService $upgrade_service;
 
-    /**
-     * @param UpgradeService $upgrade_service
-     */
     public function __construct(UpgradeService $upgrade_service)
     {
         $this->upgrade_service = $upgrade_service;
@@ -41,7 +38,7 @@ class CheckForNewVersion implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // Only run on full page requests.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_GET && $request->getHeaderLine('X-Requested-With') === '') {
+        if ($request->getMethod() === HttpRequestMethod::GET->value && $request->getHeaderLine('X-Requested-With') === '') {
             $this->upgrade_service->isUpgradeAvailable();
         }
 

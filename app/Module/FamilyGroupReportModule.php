@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Http\RequestHandlers\ReportSetupPage;
+use Fisharebest\Webtrees\Http\Controllers\ReportSetup;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -45,10 +45,6 @@ class FamilyGroupReportModule extends AbstractModule implements ModuleReportInte
 
     /**
      * Return a menu item for this report.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
      */
     public function getReportMenu(Individual $individual): Menu
     {
@@ -57,7 +53,7 @@ class FamilyGroupReportModule extends AbstractModule implements ModuleReportInte
 
         return new Menu(
             $this->title(),
-            route(ReportSetupPage::class, [
+            route(ReportSetup::class, [
                 'tree'   => $individual->tree()->name(),
                 'xref'   => $xref,
                 'report' => $this->name(),

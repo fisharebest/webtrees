@@ -31,10 +31,6 @@ class DateValueToday extends DateValueExact
 {
     /**
      * Create a default value for this element.
-     *
-     * @param Tree $tree
-     *
-     * @return string
      */
     public function default(Tree $tree): string
     {

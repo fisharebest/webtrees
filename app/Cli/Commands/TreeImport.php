@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Symfony\Component\Console\Completion\CompletionInput;
@@ -34,12 +33,9 @@ use Throwable;
 
 use function addcslashes;
 use function file_exists;
-use function file_get_contents;
 use function filesize;
 use function fopen;
-use function gc_collect_cycles;
 use function preg_split;
-use function str_replace;
 
 final class TreeImport extends AbstractCommand
 {
@@ -118,7 +114,6 @@ final class TreeImport extends AbstractCommand
                 'dates'       => DB::table('dates')->where('d_file', '=', $tree->id()),
                 'change'      => DB::table('change')->where('gedcom_id', '=', $tree->id()),
             ];
-
 
             if ($keep_media) {
                 $queries['link'] = DB::table('link')

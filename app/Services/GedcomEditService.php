@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\Comparators\FactComparator;
 use Fisharebest\Webtrees\Elements\AbstractXrefElement;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
@@ -62,7 +64,6 @@ use const PHP_INT_MAX;
 class GedcomEditService
 {
     /**
-     * @param Tree $tree
      *
      * @return Collection<int,Fact>
      */
@@ -73,34 +74,26 @@ class GedcomEditService
             ->filter(static fn (string $tag): bool => $tag !== '');
         $facts = $tags->map(fn (string $tag): Fact => $this->createNewFact($dummy, $tag));
 
-        return Fact::sortFacts($facts);
+        return $facts->sort(FactComparator::byType(...));
     }
 
     /**
-     * @param Tree          $tree
-     * @param string        $sex
      * @param array<string> $names
      *
      * @return Collection<int,Fact>
      */
-    public function newIndividualFacts(Tree $tree, string $sex, array $names): Collection
+    public function newIndividualFacts(Tree $tree, Sex $sex, array $names): Collection
     {
         $dummy      = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
         $tags       = (new Collection(explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS'))))
             ->filter(static fn (string $tag): bool => $tag !== '');
         $facts      = $tags->map(fn (string $tag): Fact => $this->createNewFact($dummy, $tag));
-        $sex_fact   = new Collection([new Fact('1 SEX ' . $sex, $dummy, '')]);
+        $sex_fact   = new Collection([new Fact('1 SEX ' . $sex->value, $dummy, '')]);
         $name_facts = Collection::make($names)->map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''));
 
-        return $sex_fact->concat($name_facts)->concat(Fact::sortFacts($facts));
+        return $sex_fact->concat($name_facts)->concat($facts->sort(FactComparator::byType(...))->values());
     }
 
-    /**
-     * @param GedcomRecord $record
-     * @param string       $tag
-     *
-     * @return Fact
-     */
     private function createNewFact(GedcomRecord $record, string $tag): Fact
     {
         $element = Registry::elementFactory()->make($record->tag() . ':' . $tag);
@@ -113,13 +106,10 @@ class GedcomEditService
     /**
      * Reassemble edited GEDCOM fields into a GEDCOM fact/event string.
      *
-     * @param string        $record_type
      * @param array<string> $levels
      * @param array<string> $tags
      * @param array<string> $values
      * @param bool          $append Are we appending to a level 0 record, or replacing a level 1 record?
-     *
-     * @return string
      */
     public function editLinesToGedcom(string $record_type, array $levels, array $tags, array $values, bool $append = true): string
     {
@@ -150,10 +140,13 @@ class GedcomEditService
 
             // Find the next tag at the same level.  Check if any child tags have values.
             $children_with_values = false;
-            for ($j = $i + 1; $j < $count && $levels[$j] > $levels[$i]; $j++) {
+            $j                    = $i + 1;
+
+            while ($j < $count && $levels[$j] > $levels[$i]) {
                 if ($values[$j] !== '') {
                     $children_with_values = true;
                 }
+                $j++;
             }
 
             if ($values[$i] !== '' || $children_with_values  && !$element instanceof AbstractXrefElement) {
@@ -185,11 +178,6 @@ class GedcomEditService
 
     /**
      * Add blank lines, to allow a user to add/edit new values.
-     *
-     * @param Fact $fact
-     * @param bool $include_hidden
-     *
-     * @return string
      */
     public function insertMissingFactSubtags(Fact $fact, bool $include_hidden): string
     {
@@ -201,11 +189,6 @@ class GedcomEditService
 
     /**
      * Add blank lines, to allow a user to add/edit new values.
-     *
-     * @param GedcomRecord $record
-     * @param bool         $include_hidden
-     *
-     * @return string
      */
     public function insertMissingRecordSubtags(GedcomRecord $record, bool $include_hidden): string
     {
@@ -225,8 +208,6 @@ class GedcomEditService
     /**
      * List of facts/events to add to families and individuals.
      *
-     * @param Family|Individual $record
-     * @param bool              $include_hidden
      *
      * @return array<string>
      */
@@ -249,14 +230,6 @@ class GedcomEditService
         return array_diff($subtags, ['HUSB', 'WIFE', 'CHIL', 'FAMC', 'FAMS', 'CHAN']);
     }
 
-    /**
-     * @param Tree   $tree
-     * @param string $tag
-     * @param string $gedcom
-     * @param bool   $include_hidden
-     *
-     * @return string
-     */
     protected function insertMissingLevels(Tree $tree, string $tag, string $gedcom, bool $include_hidden): string
     {
         $next_level = substr_count($tag, ':') + 1;
@@ -321,10 +294,6 @@ class GedcomEditService
 
     /**
      * List of tags to exclude when creating new data.
-     *
-     * @param string $tag
-     *
-     * @return bool
      */
     private function isHiddenTag(string $tag): bool
     {

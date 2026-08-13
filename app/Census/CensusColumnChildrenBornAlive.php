@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Individual;
 
 final readonly class CensusColumnChildrenBornAlive extends AbstractCensusColumn implements CensusColumnInterface
@@ -28,7 +29,7 @@ final readonly class CensusColumnChildrenBornAlive extends AbstractCensusColumn 
     {
         $family = $this->spouseFamily($individual);
 
-        if ($family === null || $individual->sex() !== 'F') {
+        if ($family === null || $individual->sex() !== Sex::Female) {
             return '';
         }
 

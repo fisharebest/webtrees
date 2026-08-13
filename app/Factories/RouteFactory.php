@@ -19,11 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Factories;
 
-use Aura\Router\Map;
-use Aura\Router\Route;
-use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Contracts\RouteFactoryInterface;
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Http\Routing\RouteCollection;
+use Fisharebest\Webtrees\Http\Routing\UrlGenerator;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
@@ -32,6 +31,7 @@ use function array_filter;
 use function array_map;
 use function is_bool;
 use function parse_url;
+use function str_contains;
 use function strlen;
 use function substr;
 
@@ -46,53 +46,49 @@ class RouteFactory implements RouteFactoryInterface
     /**
      * Generate a URL for a named route.
      *
-     * @param string                                    $route_name
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function route(string $route_name, array $parameters = []): string
     {
         $request  = Registry::container()->get(ServerRequestInterface::class);
         $base_url = Validator::attributes($request)->string('base_url');
-        $route    = $this->routeMap()->getRoute($route_name);
 
-        // Generate the URL.
-        $router_container = Registry::container()->get(RouterContainer::class);
-
-        // webtrees uses http_build_query() to generate URLs - which maps false onto "0".
-        // Aura uses rawurlencode(), which maps false onto "" - which does not work as an aura URL parameter.
+        // Map booleans to integers for URL generation.
         $parameters = array_map(static fn ($var) => is_bool($var) ? (int) $var : $var, $parameters);
 
-        // Aura doesn't work with empty/optional URL parameters - but we need empty ones for query parameters.
-        $url_parameters = array_map(static fn ($var) => $var === '' ? null : $var, $parameters);
-
-        $url = $router_container->getGenerator()->generate($route_name, $url_parameters);
-
-        // Aura ignores parameters that are not tokens.  We need to add them as query parameters.
-        $parameters = array_filter($parameters, static fn (string $key): bool => !str_contains($route->path, '{' . $key . '}') && !str_contains($route->path, '{/' . $key . '}'), ARRAY_FILTER_USE_KEY);
+        $url_generator = Registry::container()->get(UrlGenerator::class);
+        $route         = $this->routeMap()->get($route_name);
 
         if (Validator::attributes($request)->boolean('rewrite_urls', false)) {
-            // Make the pretty URL absolute.
-            $base_path = parse_url($base_url, PHP_URL_PATH) ?: '';
-            $url       = $base_url . substr($url, strlen($base_path));
-        } else {
-            // Turn the pretty URL into an ugly one.
-            $path       = parse_url($url, PHP_URL_PATH);
-            $parameters = ['route' => $path] + $parameters;
-            $url        = $base_url . '/index.php';
+            // Generate the pretty URL (includes query string for non-path parameters).
+            $url = $url_generator->generate($route_name, $parameters);
+
+            // Make it absolute.
+            $base_path = parse_url($base_url, PHP_URL_PATH);
+            $base_path = is_string($base_path) ? $base_path : '';
+
+            return $base_url . substr($url, strlen($base_path));
         }
+
+        // Ugly URLs: generate path, then wrap in index.php?route=...
+        $url = $url_generator->generate($route_name, $parameters);
+
+        // Extract path portion only (without query string that UrlGenerator may add)
+        $path = parse_url($url, PHP_URL_PATH);
+
+        // All parameters that weren't consumed by the path become query params
+        $parameters = array_filter($parameters, static fn (string $key): bool => !str_contains($route->url, '{' . $key . '}') && !str_contains($route->url, '{/' . $key . '}'), ARRAY_FILTER_USE_KEY);
+        $parameters = ['route' => $path] + $parameters;
+        $url        = $base_url . '/index.php';
 
         return Html::url($url, $parameters);
     }
 
     /**
-     * @return Map<Route>
+     * Get the route collection.
      */
-    public function routeMap(): Map
+    public function routeMap(): RouteCollection
     {
-        $router_container = Registry::container()->get(RouterContainer::class);
-
-        return $router_container->getMap();
+        return Registry::container()->get(RouteCollection::class);
     }
 }

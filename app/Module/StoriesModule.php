@@ -20,8 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -47,18 +49,13 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
     private TreeService $tree_service;
 
-    /**
-     * @param HtmlService $html_service
-     * @param TreeService $tree_service
-     */
     public function __construct(HtmlService $html_service, TreeService $tree_service)
     {
         $this->html_service = $html_service;
         $this->tree_service = $tree_service;
     }
 
-    /** @var int The default access level for this module.  It can be changed in the control panel. */
-    protected int $access_level = Auth::PRIV_HIDE;
+    protected AccessLevel $access_level = AccessLevel::Hidden;
 
     public function description(): string
     {
@@ -68,8 +65,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
     /**
      * The default position for this menu.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultMenuOrder(): int
     {
@@ -78,8 +73,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
     /**
      * The default position for this tab.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultTabOrder(): int
     {
@@ -88,10 +81,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
     /**
      * Generate the HTML content of this tab.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function getTabContent(Individual $individual): string
     {
@@ -134,10 +123,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
     /**
      * Is this tab empty? If so, we don't always need to display it.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
      */
     public function hasTabContent(Individual $individual): bool
     {
@@ -147,10 +132,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     /**
      * A greyed out tab has no actual content, but may perhaps have
      * options to create content.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
      */
     public function isGrayedOut(Individual $individual): bool
     {
@@ -159,8 +140,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
     /**
      * Can this tab load asynchronously?
-     *
-     * @return bool
      */
     public function canLoadAjax(): bool
     {
@@ -169,14 +148,10 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
 
     /**
      * A menu, to be added to the main application menu.
-     *
-     * @param Tree $tree
-     *
-     * @return Menu|null
      */
     public function getMenu(Tree $tree): Menu|null
     {
-        return new Menu($this->title(), route('module', [
+        return new Menu($this->title(), route(ModuleAction::class, [
             'module' => $this->name(),
             'action' => 'ShowList',
             'tree'    => $tree->name(),
@@ -189,11 +164,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         return I18N::translate('Stories');
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -204,7 +174,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         if (!$tree instanceof Tree) {
             $tree = $this->tree_service->all()->first();
             if ($tree instanceof Tree) {
-                return redirect(route('module', ['module' => $this->name(), 'action' => 'Admin', 'tree' => $tree->name()]));
+                return redirect(route(ModuleAction::class, ['module' => $this->name(), 'action' => 'Admin', 'tree' => $tree->name()]));
             }
 
             return redirect(route(ControlPanel::class));
@@ -237,25 +207,15 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        return redirect(route('module', [
+        return redirect(route(ModuleAction::class, [
             'module' => $this->name(),
             'action' => 'Admin',
             'tree'   => Validator::parsedBody($request)->string('tree'),
         ]));
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getAdminEditAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -297,11 +257,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminEditAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
@@ -309,8 +264,8 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $xref        = Validator::parsedBody($request)->string('xref');
         $story_body  = Validator::parsedBody($request)->string('story_body');
         $story_title = Validator::parsedBody($request)->string('story_title');
-        $languages   = Validator::parsedBody($request)->array('languages');
-        $default_url = route('module', ['module' => $this->name(), 'action' => 'Admin', 'tree' => $tree->name()]);
+        $languages   = Validator::parsedBody($request)->list('languages');
+        $default_url = route(ModuleAction::class, ['module' => $this->name(), 'action' => 'Admin', 'tree' => $tree->name()]);
         $url         = Validator::parsedBody($request)->isLocalUrl()->string('url', $default_url);
         $story_body  = $this->html_service->sanitize($story_body);
 
@@ -339,11 +294,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         return redirect($url);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminDeleteAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();
@@ -357,7 +307,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             ->where('block_id', '=', $block_id)
             ->delete();
 
-        $url = route('module', [
+        $url = route(ModuleAction::class, [
             'module' => $this->name(),
             'action' => 'Admin',
             'tree'    => $tree->name(),
@@ -366,11 +316,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         return redirect($url);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getShowListAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();

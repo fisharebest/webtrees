@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Individual;
 
 final readonly class CensusColumnSexMK extends AbstractCensusColumn implements CensusColumnInterface
@@ -26,9 +27,9 @@ final readonly class CensusColumnSexMK extends AbstractCensusColumn implements C
     public function generate(Individual $individual, Individual $head): string
     {
         return match ($individual->sex()) {
-            'M'     => 'M',
-            'F'     => 'K',
-            default => '',
+            Sex::Male   => 'M',
+            Sex::Female => 'K',
+            default     => '',
         };
     }
 }

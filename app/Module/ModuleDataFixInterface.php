@@ -30,17 +30,12 @@ interface ModuleDataFixInterface extends ModuleInterface
 {
     /**
      * Options form.
-     *
-     * @param Tree $tree
-     *
-     * @return string
      */
     public function fixOptions(Tree $tree): string;
 
     /**
      * A combined list of all records that might need fixing.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,object{xref:string,type:string}>
@@ -50,30 +45,21 @@ interface ModuleDataFixInterface extends ModuleInterface
     /**
      * Does a record need updating?
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return bool
      */
     public function doesRecordNeedUpdate(GedcomRecord $record, array $params): bool;
 
     /**
      * Show the changes we would make
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return string
      */
     public function previewUpdate(GedcomRecord $record, array $params): string;
 
     /**
      * Fix a record
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return void
      */
     public function updateRecord(GedcomRecord $record, array $params): void;
 }

@@ -19,23 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleEl;
-use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\I18N\Languages\Greek;
 
 class LanguageGreek extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return ['Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ', 'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω'];
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleEl();
+        $this->language = new Greek();
     }
 }

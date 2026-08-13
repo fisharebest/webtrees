@@ -19,13 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
 use JsonException;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -39,10 +39,14 @@ use const JSON_THROW_ON_ERROR;
  */
 trait ModuleMapGeoLocationTrait
 {
+    public function __construct(
+        private readonly ClientInterface $http_client,
+        private readonly RequestFactoryInterface $request_factory,
+    ) {
+    }
+
     /**
      * A unique internal name for this module (based on the installation folder).
-     *
-     * @return string
      */
     abstract public function name(): string;
 
@@ -52,7 +56,6 @@ trait ModuleMapGeoLocationTrait
     }
 
     /**
-     * @param string $place
      *
      * @return array<string>
      */
@@ -67,15 +70,10 @@ trait ModuleMapGeoLocationTrait
         $ttl   = 86400;
 
         return $cache->remember($key, function () use ($place) {
-            $request = $this->searchLocationsRequest($place);
+            $request  = $this->searchLocationsRequest($place);
+            $response = $this->http_client->sendRequest($request);
 
-            $client = new Client([
-                'timeout' => 3,
-            ]);
-
-            $response = $client->send($request);
-
-            if ($response->getStatusCode() === StatusCodeInterface::STATUS_OK) {
+            if ($response->getStatusCode() === HttpStatusCode::OK->value) {
                 return $this->extractLocationsFromResponse($response);
             }
 
@@ -83,11 +81,6 @@ trait ModuleMapGeoLocationTrait
         }, $ttl);
     }
 
-    /**
-     * @param string $place
-     *
-     * @return RequestInterface
-     */
     protected function searchLocationsRequest(string $place): RequestInterface
     {
         $uri = Html::url('https://nominatim.openstreetmap.org/search', [
@@ -97,11 +90,10 @@ trait ModuleMapGeoLocationTrait
             'q'               => $place,
         ]);
 
-        return new Request('GET', $uri);
+        return $this->request_factory->createRequest('GET', $uri);
     }
 
     /**
-     * @param ResponseInterface $response
      *
      * @return array<string>
      */

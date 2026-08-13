@@ -19,61 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleRu;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\I18N\Languages\Russian;
 
 class LanguageRussian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            'А',
-            'Б',
-            'В',
-            'Г',
-            'Д',
-            'Е',
-            'Ё',
-            'Ж',
-            'З',
-            'И',
-            'Й',
-            'К',
-            'Л',
-            'М',
-            'Н',
-            'О',
-            'П',
-            'Р',
-            'С',
-            'Т',
-            'У',
-            'Ф',
-            'Х',
-            'Ц',
-            'Ч',
-            'Ш',
-            'Щ',
-            'Ъ',
-            'Ы',
-            'Ь',
-            'Э',
-            'Ю',
-            'Я',
-        ];
+        $this->language = new Russian();
     }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleRu();
-    }
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

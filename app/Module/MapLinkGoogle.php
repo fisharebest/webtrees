@@ -33,27 +33,17 @@ class MapLinkGoogle extends AbstractModule implements ModuleMapLinkInterface
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     protected function providerName(): string
     {
         return I18N::translate('Google™ maps');
     }
 
-    /**
-     * @return string
-     */
     protected function icon(): string
     {
         return view('icons/google-maps');
     }
 
-    /**
-     * @param Fact $fact
-     *
-     * @return string
-     */
     protected function mapUrl(Fact $fact): string
     {
         // This URL allows us to add a pin at the location.

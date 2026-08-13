@@ -19,21 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Exceptions;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\I18N;
 
-/**
- * Application level exceptions.
- */
 class HttpNotFoundException extends HttpException
 {
-    /**
-     * @param string|null $message
-     */
     public function __construct(string|null $message = null)
     {
         $message ??= I18N::translate('You do not have permission to view this page.');
 
-        parent::__construct($message, StatusCodeInterface::STATUS_NOT_FOUND);
+        parent::__construct($message, HttpStatusCode::NotFound);
     }
 }

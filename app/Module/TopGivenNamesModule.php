@@ -50,12 +50,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -67,14 +62,14 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($infoStyle) {
             case 'list':
-                $content = view('modules/top10_givnnames/block', [
+                $content = view('modules/top10-givnnames/block', [
                     'males'   => $statistics->commonGivenMaleListTotals('1', $num),
                     'females' => $statistics->commonGivenFemaleListTotals('1', $num),
                 ]);
                 break;
             default:
             case 'table':
-                $content = view('modules/top10_givnnames/block', [
+                $content = view('modules/top10-givnnames/block', [
                     'males'   => $statistics->commonGivenMaleTable('1', $num),
                     'females' => $statistics->commonGivenFemaleTable('1', $num),
                 ]);
@@ -108,8 +103,6 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
      * Should this block load asynchronously using AJAX?
      *
      * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
      */
     public function loadAjax(): bool
     {
@@ -118,8 +111,6 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the user’s home page?
-     *
-     * @return bool
      */
     public function isUserBlock(): bool
     {
@@ -128,8 +119,6 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {
@@ -138,11 +127,6 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Update the configuration for a block.
-     *
-     * @param ServerRequestInterface $request
-     * @param int $block_id
-     *
-     * @return void
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
@@ -155,11 +139,6 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * An HTML form to edit block settings
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return string
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
@@ -173,7 +152,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
             'table' => I18N::translate('table'),
         ];
 
-        return view('modules/top10_givnnames/config', [
+        return view('modules/top10-givnnames/config', [
             'info_style'  => $info_style,
             'info_styles' => $info_styles,
             'num'         => $num,

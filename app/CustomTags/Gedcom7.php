@@ -56,8 +56,6 @@ class Gedcom7 implements CustomTagInterface
 {
     /**
      * The name of the application.
-     *
-     * @return string
      */
     public function name(): string
     {

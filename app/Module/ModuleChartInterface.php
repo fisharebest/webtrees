@@ -34,36 +34,23 @@ interface ModuleChartInterface extends ModuleInterface
 
     /**
      * A main menu item for this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
      */
     public function chartMenu(Individual $individual): Menu;
 
     /**
      * CSS class for the menu.
-     *
-     * @return string
      */
     public function chartMenuClass(): string;
 
     /**
      * The title for a specific instance of this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function chartTitle(Individual $individual): string;
 
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string;
 

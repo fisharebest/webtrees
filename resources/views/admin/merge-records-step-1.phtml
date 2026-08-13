@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
-use Fisharebest\Webtrees\Http\RequestHandlers\MergeRecordsAction;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\ManageTrees;
+use Fisharebest\Webtrees\Http\Controllers\MergeRecords;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -15,7 +15,6 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var Family|null     $family1
@@ -44,7 +43,8 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<form id="merge-step-1" method="post" action="<?= e(route(MergeRecordsAction::class, ['tree' => $tree->name()])) ?>">
+<div id="admin-merge-records-step-1-page">
+<form id="merge-step-1" method="post" action="<?= e(route(MergeRecords::class, ['tree' => $tree->name()])) ?>">
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="record-type">
             <?= I18N::translate('Select two records to merge.') ?>
@@ -153,11 +153,5 @@ use Fisharebest\Webtrees\View;
 
     <?= csrf_field() ?>
 </form>
+</div>
 
-<?php View::push('javascript') ?>
-<script>
-  'use strict';
-
-  webtrees.initializeIFSRO(document.getElementById('record-type'), document.getElementById('merge-step-1'));
-</script>
-<?php View::endpush() ?>

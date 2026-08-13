@@ -68,12 +68,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -86,8 +81,8 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
         extract($config, EXTR_OVERWRITE);
 
         $jewish_calendar = new JewishCalendar();
-        $startjd         = Registry::timestampFactory()->now()->julianDay();
-        $endjd           = Registry::timestampFactory()->now()->addDays($days - 1)->julianDay();
+        $startjd         = Registry::timestampFactory()->todayJulianDay();
+        $endjd           = $startjd + $days - 1;
 
         // The standard anniversary rules cover most of the Yahrzeit rules, we just
         // need to handle a few special cases.
@@ -108,15 +103,15 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                         $hd1->setJdFromYmd();
                         // Special rules. See https://www.hebcal.com/help/anniv.html
                         // Everything else is taken care of by our standard anniversary rules.
-                        if ($hd->day === 30 && $hd->month === 2 && $hd->year !== 0 && $hd1->daysInMonth() < 30) {
+                        if ($hd->day() === 30 && $hd->month() === 2 && $hd->year() !== 0 && $hd1->daysInMonth() < 30) {
                             // 30 CSH - Last day in CSH
-                            $jd_yahrtzeit = $jewish_calendar->ymdToJd($today->year, 3, 1) - 1;
-                        } elseif ($hd->day === 30 && $hd->month === 3 && $hd->year !== 0 && $hd1->daysInMonth() < 30) {
+                            $jd_yahrtzeit = $jewish_calendar->ymdToJd($today->year(), 3, 1) - 1;
+                        } elseif ($hd->day() === 30 && $hd->month() === 3 && $hd->year() !== 0 && $hd1->daysInMonth() < 30) {
                             // 30 KSL - Last day in KSL
-                            $jd_yahrtzeit = $jewish_calendar->ymdToJd($today->year, 4, 1) - 1;
-                        } elseif ($hd->day === 30 && $hd->month === 6 && $hd->year !== 0 && $today->daysInMonth() < 30 && !$today->isLeapYear()) {
+                            $jd_yahrtzeit = $jewish_calendar->ymdToJd($today->year(), 4, 1) - 1;
+                        } elseif ($hd->day === 30 && $hd->month() === 6 && $hd->year() !== 0 && $today->daysInMonth() < 30 && !$today->isLeapYear()) {
                             // 30 ADR - Last day in SHV
-                            $jd_yahrtzeit = $jewish_calendar->ymdToJd($today->year, 6, 1) - 1;
+                            $jd_yahrtzeit = $jewish_calendar->ymdToJd($today->year(), 6, 1) - 1;
                         }
                     }
 
@@ -132,13 +127,12 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                                 $yahrzeit_calendar_date = new JewishDate($jd_yahrtzeit);
                                 break;
                         }
-                        $yahrzeit_date = new Date($yahrzeit_calendar_date->format('%@ %A %O %E'));
 
                         $yahrzeits->add((object) [
                             'individual'    => $fact->record(),
                             'fact_date'     => $fact->date(),
                             'fact'          => $fact,
-                            'yahrzeit_date' => $yahrzeit_date,
+                            'yahrzeit_date' => Date::fromCalendarDate($yahrzeit_calendar_date),
                         ]);
                     }
                 }
@@ -181,8 +175,6 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
      * Should this block load asynchronously using AJAX?
      *
      * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
      */
     public function loadAjax(): bool
     {
@@ -191,8 +183,6 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the user’s home page?
-     *
-     * @return bool
      */
     public function isUserBlock(): bool
     {
@@ -201,8 +191,6 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {
@@ -211,11 +199,6 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Update the configuration for a block.
-     *
-     * @param ServerRequestInterface $request
-     * @param int     $block_id
-     *
-     * @return void
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
@@ -230,11 +213,6 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * An HTML form to edit block settings
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return string
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {

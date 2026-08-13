@@ -37,9 +37,6 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
 
     private ModuleService $module_service;
 
-    /**
-     * @param ModuleService $module_service
-     */
     public function __construct(ModuleService $module_service)
     {
         $this->module_service = $module_service;
@@ -59,8 +56,6 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * The default position for this menu.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultMenuOrder(): int
     {
@@ -77,7 +72,7 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
         $individual = $tree->significantIndividual(Auth::user(), $xref);
         $submenus   = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
             ->map(static fn (ModuleChartInterface $module): Menu => $module->chartMenu($individual))
-            ->sort(static fn (Menu $x, Menu $y): int => I18N::comparator()($x->getLabel(), $y->getLabel()));
+            ->sort(static fn (Menu $x, Menu $y): int => I18N::compare($x->getLabel(), $y->getLabel()));
 
         if ($submenus->isEmpty()) {
             return null;

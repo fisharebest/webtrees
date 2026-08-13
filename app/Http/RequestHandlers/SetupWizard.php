@@ -20,34 +20,31 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Exception;
-use Fisharebest\Localization\Locale;
-use Fisharebest\Localization\Locale\LocaleEnUs;
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Factories\CacheFactory;
+use Fisharebest\Webtrees\Factories\LanguageFactory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MigrationService;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Throwable;
 
 use function e;
+use function file_exists;
 use function file_get_contents;
 use function file_put_contents;
-use function intdiv;
 use function random_bytes;
 use function realpath;
 use function redirect;
@@ -61,7 +58,7 @@ final class SetupWizard implements RequestHandlerInterface
 
     private const string DEFAULT_DBTYPE = DB::MYSQL;
     private const string DEFAULT_PREFIX = 'wt_';
-    private const array DEFAULT_DATA    = [
+    private const array  DEFAULT_DATA   = [
         'baseurl'  => '',
         'lang'     => '',
         'dbtype'   => self::DEFAULT_DBTYPE,
@@ -90,10 +87,11 @@ final class SetupWizard implements RequestHandlerInterface
 
     public function __construct(
         private readonly MigrationService $migration_service,
-        private readonly ModuleService $module_service,
+        private readonly LanguageFactory $language_factory,
         private readonly PhpService $php_service,
         private readonly ServerCheckService $server_check_service,
-        private readonly UserService $user_service
+        private readonly UserService $user_service,
+        private readonly ClockInterface $clock,
     ) {
     }
 
@@ -117,22 +115,13 @@ final class SetupWizard implements RequestHandlerInterface
 
         $step = Validator::parsedBody($request)->integer('step', 1);
 
-        $locales = $this->module_service
-            ->setupLanguages()
-            ->map(static fn (ModuleLanguageInterface $module): LocaleInterface => $module->locale());
-
         if ($data['lang'] === '') {
-            $default = new LocaleEnUs();
-
-            $locale  = Locale::httpAcceptLanguage($request->getServerParams(), $locales->all(), $default);
-
-            $data['lang'] = $locale->languageTag();
+            $data['lang'] = $this->language_factory->fromRequest($request)->languageTag();
         }
 
-        I18N::init($data['lang'], true);
+        I18N::init($data['lang']);
 
         $data['cpu_limit']    = $this->php_service->maxExecutionTime();
-        $data['locales']      = $locales;
         $data['memory_limit'] = $this->php_service->memoryLimit();
 
         // Only show database errors after the user has chosen a driver.
@@ -148,7 +137,7 @@ final class SetupWizard implements RequestHandlerInterface
             $data['errors']->push(
                 '<code>' . e(realpath(Webtrees::DATA_DIR)) . '</code><br>' .
                 I18N::translate('Oops! webtrees was unable to create files in this folder.') . ' ' .
-                I18N::translate('This usually means that you need to change the folder permissions to 777.')
+                I18N::translate('This usually means that you need to change the folder permissions to 777.'),
             );
         }
 
@@ -249,7 +238,20 @@ final class SetupWizard implements RequestHandlerInterface
     private function step5Administrator(array $data): ResponseInterface
     {
         // Use default port, if none specified.
-        $data['dbport'] = $data['dbport'] ?: self::DEFAULT_PORTS[$data['dbtype']];
+        $data['dbport'] = $data['dbport'] !== '' ? $data['dbport'] : self::DEFAULT_PORTS[$data['dbtype']];
+
+        // Validate SSL certificate files exist when specified.
+        foreach (['dbkey', 'dbcert', 'dbca'] as $key) {
+            if ($data[$key] !== '' && !file_exists(Webtrees::ROOT_DIR . 'data/' . $data[$key])) {
+                $data['errors']->push(I18N::translate('The file “%s” does not exist.', $data[$key]));
+            }
+        }
+
+        if ($data['errors']->isNotEmpty()) {
+            $data['mysql_local'] = 'localhost:' . $this->php_service->pdoMysqlDefaultSocket();
+
+            return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
+        }
 
         try {
             $this->connectToDatabase($data);
@@ -324,7 +326,7 @@ final class SetupWizard implements RequestHandlerInterface
             $admin->setPreference(UserInterface::PREF_LANGUAGE, $data['lang']);
             $admin->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, '1');
         } else {
-            $admin->setPassword($_POST['wtpass']);
+            $admin->setPassword($data['wtpass']);
         }
         // Make the user an administrator
         $admin->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
@@ -340,7 +342,7 @@ final class SetupWizard implements RequestHandlerInterface
         $request = Registry::container()->get(ServerRequestInterface::class)
             ->withAttribute('base_url', $data['baseurl']);
 
-        Session::start($request);
+        Session::start($request, $this->clock);
         Auth::login($admin);
         Session::put('language', $data['lang']);
     }

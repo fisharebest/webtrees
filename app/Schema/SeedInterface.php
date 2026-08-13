@@ -26,8 +26,6 @@ interface SeedInterface
 {
     /**
      *  Run the seeder.
-     *
-     * @return void
      */
     public function run(): void;
 }

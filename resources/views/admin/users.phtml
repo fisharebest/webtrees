@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserListData;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\UserListData;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var string $filter
@@ -20,11 +19,11 @@ use Fisharebest\Webtrees\View;
 
 <table
     id="wt-datatables-admin-users"
-    class="table table-sm table-bordered table-user-list datatables"
+    class="table table-sm table-bordered table-user-list wt-datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-processing="true"
     data-server-side="true"
-    data-ajax='{"url":"<?= e(route(UserListData::class)) ?>"}'
+    data-ajax='{"url":"<?= e(route(UserListData::class)) ?>","method":"POST"}'
     data-auto-width="false"
     data-sorting='[[2,"asc"]]'
     data-search='{"search":"<?= e($filter) ?>"}'

@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteSurname;
+use Fisharebest\Webtrees\Http\Controllers\AutoCompleteSurname;
 use Fisharebest\Webtrees\Tree;
 
 use function e;
@@ -36,13 +36,6 @@ class NamePieceSurname extends AbstractElement
 
     /**
      * An edit control for this data.
-     *
-     * @param string $id
-     * @param string $name
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {

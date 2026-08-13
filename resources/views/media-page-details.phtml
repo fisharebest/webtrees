@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditMediaFileModal;
+use Fisharebest\Webtrees\Http\Controllers\DeleteFact;
+use Fisharebest\Webtrees\Http\Controllers\EditMediaFile;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Registry;
@@ -27,7 +27,7 @@ use Illuminate\Support\Collection;
                 <?= I18N::translate('Media file') ?>
                 <?php if ($record->canEdit() && !$media_file->isPendingDeletion()) : ?>
                     <div class="pt-2 wt-fact-edit-links">
-                        <a class="btn btn-link" href="#" data-bs-toggle="modal" data-bs-target="#wt-ajax-modal" data-wt-href="<?= route(EditMediaFileModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact_id' => $media_file->factId()]) ?>" title="<?= I18N::translate('Edit') ?>">
+                        <a class="btn btn-link" href="#" data-bs-toggle="modal" data-bs-target="#wt-ajax-modal" data-wt-href="<?= route(EditMediaFile::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact_id' => $media_file->factId()]) ?>" title="<?= I18N::translate('Edit') ?>">
                             <?= view('icons/edit') ?>
                             <span class="visually-hidden">
                             <?= I18N::translate('Edit') ?>
@@ -52,7 +52,7 @@ use Illuminate\Support\Collection;
                         <?= Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $record->tree()) ?>
                     <?php elseif (Auth::isEditor($record->tree())) :?>
                         <?php if (!$media_file->fileExists()) : ?>
-                            <p class="alert alert-danger">
+                            <p class="alert alert-danger" role="alert">
                                 <?= I18N::translate('The file “%s” does not exist.', e($media_file->filename())) ?>
                             </p>
                         <?php endif ?>

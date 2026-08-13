@@ -34,27 +34,17 @@ class MapLinkBing extends AbstractModule implements ModuleMapLinkInterface
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     protected function providerName(): string
     {
         return I18N::translate('Bing™ maps');
     }
 
-    /**
-     * @return string
-     */
     protected function icon(): string
     {
         return view('icons/bing-maps');
     }
 
-    /**
-     * @param Fact $fact
-     *
-     * @return string
-     */
     protected function mapUrl(Fact $fact): string
     {
         $latitude  = $fact->latitude();

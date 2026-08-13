@@ -42,10 +42,6 @@ abstract class AbstractEncoding implements EncodingInterface
 
     /**
      * Convert a string from UTF-8 to another encoding.
-     *
-     * @param string $text
-     *
-     * @return string
      */
     public function fromUtf8(string $text): string
     {
@@ -66,10 +62,6 @@ abstract class AbstractEncoding implements EncodingInterface
 
     /**
      * Convert a string from another encoding to UTF-8.
-     *
-     * @param string $text
-     *
-     * @return string
      */
     public function toUtf8(string $text): string
     {
@@ -78,10 +70,6 @@ abstract class AbstractEncoding implements EncodingInterface
 
     /**
      * When reading multi-byte encodings using a stream, we must avoid incomplete characters.
-     *
-     * @param string $text
-     *
-     * @return int
      */
     public function convertibleBytes(string $text): int
     {

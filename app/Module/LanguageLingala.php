@@ -19,20 +19,19 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleLn;
+use Fisharebest\Webtrees\I18N\Languages\Lingala;
 
 class LanguageLingala extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
+    public function __construct()
+    {
+        $this->language = new Lingala();
+    }
+
     public function isEnabledByDefault(): bool
     {
         return false;
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleLn();
     }
 }

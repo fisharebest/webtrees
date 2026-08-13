@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\LocationPage;
+use Fisharebest\Webtrees\Http\Controllers\LocationPage;
 
 /**
  * A GEDCOM location (_LOC) object.
@@ -32,8 +32,6 @@ class Location extends GedcomRecord
 
     /**
      * Extract names from the GEDCOM record.
-     *
-     * @return void
      */
     public function extractNames(): void
     {

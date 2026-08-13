@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpInternalServerErrorException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -43,8 +43,6 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function description(): string
     {
@@ -59,9 +57,6 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
         return false;
     }
 
-    /**
-     * @return ResponseInterface
-     */
     public function getAdminAction(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -76,19 +71,12 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function title(): string
     {
         return /* I18N: https://wego.here.com */ I18N::translate('Here maps');
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $api_key = Validator::parsedBody($request)->string('api_key');
@@ -116,7 +104,7 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
                 $message = '<a href="' . e($this->getConfigLink()) . '">' . $message . '</a>';
             }
 
-            throw new HttpServerErrorException($message);
+            throw new HttpInternalServerErrorException($message);
         }
 
         $tag = I18N::languageTag();

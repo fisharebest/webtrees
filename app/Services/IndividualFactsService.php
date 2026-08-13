@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
@@ -46,7 +47,6 @@ class IndividualFactsService
     /**
      * The individuals own facts, such as birth and death.
      *
-     * @param Individual             $individual
      * @param Collection<int,string> $exclude_facts
      *
      * @return Collection<int,Fact>
@@ -60,7 +60,6 @@ class IndividualFactsService
     /**
      * The individuals own family facts, such as marriage and divorce.
      *
-     * @param Individual             $individual
      * @param Collection<int,string> $exclude_facts
      *
      * @return Collection<int,Fact>
@@ -76,7 +75,6 @@ class IndividualFactsService
     /**
      * Get the events of associates.
      *
-     * @param Individual $individual
      *
      * @return Collection<int,Fact>
      */
@@ -120,7 +118,6 @@ class IndividualFactsService
     /**
      * Get the events of close relatives.
      *
-     * @param Individual $individual
      *
      * @return Collection<int,Fact>
      */
@@ -150,7 +147,6 @@ class IndividualFactsService
     /**
      * Get any historical events.
      *
-     * @param Individual $individual
      *
      * @return Collection<int,Fact>
      */
@@ -164,12 +160,6 @@ class IndividualFactsService
     /**
      * Get the events of children and grandchildren.
      *
-     * @param Individual $person
-     * @param Family     $family
-     * @param string     $option
-     * @param string     $relation
-     * @param Date       $min_date
-     * @param Date       $max_date
      *
      * @return Collection<int,Fact>
      */
@@ -459,7 +449,7 @@ class IndividualFactsService
             'U' => I18N::translate('Marriage of a half-sibling'),
         ];
 
-        /** @var Collection<Fact> $facts */
+        /** @var Collection<int,Fact> $facts */
         $facts = new Collection();
 
         // Deal with recursion.
@@ -468,12 +458,12 @@ class IndividualFactsService
             foreach ($family->children() as $child) {
                 foreach ($child->spouseFamilies() as $cfamily) {
                     switch ($child->sex()) {
-                        case 'M':
+                        case Sex::Male:
                             foreach ($this->childFacts($person, $cfamily, '_GCHI', 'son', $min_date, $max_date) as $fact) {
                                 $facts[] = $fact;
                             }
                             break;
-                        case 'F':
+                        case Sex::Female:
                             foreach ($this->childFacts($person, $cfamily, '_GCHI', 'dau', $min_date, $max_date) as $fact) {
                                 $facts[] = $fact;
                             }
@@ -599,10 +589,6 @@ class IndividualFactsService
     /**
      * Get the events of parents and grandparents.
      *
-     * @param Individual $person
-     * @param int        $sosa
-     * @param Date       $min_date
-     * @param Date       $max_date
      *
      * @return Collection<int,Fact>
      */
@@ -688,7 +674,7 @@ class IndividualFactsService
             'U' => I18N::translate('Marriage of a parent'),
         ];
 
-        /** @var Collection<Fact> $facts */
+        /** @var Collection<int,Fact> $facts */
         $facts = new Collection();
 
         if ($sosa === 1) {
@@ -707,7 +693,7 @@ class IndividualFactsService
                         }
                     }
                     // Add grandparents
-                    foreach ($this->parentFacts($spouse, $spouse->sex() === 'F' ? 3 : 2, $min_date, $max_date) as $fact) {
+                    foreach ($this->parentFacts($spouse, $spouse->sex() === Sex::Female ? 3 : 2, $min_date, $max_date) as $fact) {
                         $facts[] = $fact;
                     }
                 }
@@ -719,7 +705,7 @@ class IndividualFactsService
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             // marriage of parents (to each other)
-                            $facts[] = $this->convertEvent($fact, ['U' => I18N::translate('Marriage of parents')], 'U');
+                            $facts[] = $this->convertEvent($fact, ['U' => I18N::translate('Marriage of parents')], Sex::Unknown);
                         }
                     }
                 }
@@ -727,7 +713,7 @@ class IndividualFactsService
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             // marriage of a parent (to another spouse)
-                            $facts[] = $this->convertEvent($fact, $marriage_of_a_parent, 'U');
+                            $facts[] = $this->convertEvent($fact, $marriage_of_a_parent, Sex::Unknown);
                         }
                     }
                 }
@@ -746,17 +732,11 @@ class IndividualFactsService
                                     break;
                                 case 2:
                                 case 3:
-                                    switch ($person->sex()) {
-                                        case 'M':
-                                            $facts[] = $this->convertEvent($fact, $death_of_a_paternal_grandparent[$fact->tag()], $parent->sex());
-                                            break;
-                                        case 'F':
-                                            $facts[] = $this->convertEvent($fact, $death_of_a_maternal_grandparent[$fact->tag()], $parent->sex());
-                                            break;
-                                        default:
-                                            $facts[] = $this->convertEvent($fact, $death_of_a_grandparent[$fact->tag()], $parent->sex());
-                                            break;
-                                    }
+                                    $facts[] = match ($person->sex()) {
+                                        Sex::Male   => $this->convertEvent($fact, $death_of_a_paternal_grandparent[$fact->tag()], $parent->sex()),
+                                        Sex::Female => $this->convertEvent($fact, $death_of_a_maternal_grandparent[$fact->tag()], $parent->sex()),
+                                        default     => $this->convertEvent($fact, $death_of_a_grandparent[$fact->tag()], $parent->sex()),
+                                    };
                             }
                         }
                     }
@@ -772,8 +752,6 @@ class IndividualFactsService
      *
      * @param Individual $individual Show events that occurred during the lifetime of this individual
      * @param Individual $spouse     Show events of this individual
-     * @param Date       $min_date
-     * @param Date       $max_date
      *
      * @return Collection<int,Fact>
      */
@@ -799,7 +777,7 @@ class IndividualFactsService
             ],
         ];
 
-        /** @var Collection<Fact> $facts */
+        /** @var Collection<int,Fact> $facts */
         $facts = new Collection();
 
         if (str_contains($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
@@ -815,12 +793,6 @@ class IndividualFactsService
 
     /**
      * Does a relative event occur within a date range (i.e. the individual's lifetime)?
-     *
-     * @param Fact $fact
-     * @param Date $min_date
-     * @param Date $max_date
-     *
-     * @return bool
      */
     private function includeFact(Fact $fact, Date $min_date, Date $max_date): bool
     {
@@ -832,15 +804,11 @@ class IndividualFactsService
     /**
      * Convert an event into a special "event of a close relative".
      *
-     * @param Fact          $fact
      * @param array<string> $types
-     * @param string        $sex
-     *
-     * @return Fact
      */
-    private function convertEvent(Fact $fact, array $types, string $sex): Fact
+    private function convertEvent(Fact $fact, array $types, Sex $sex): Fact
     {
-        $type = $types[$sex] ?? $types['U'];
+        $type = $types[$sex->value] ?? $types['U'];
 
         $gedcom = $fact->gedcom();
         $gedcom = preg_replace('/\n2 TYPE .*/', '', $gedcom);

@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\SubmitterPage;
+use Fisharebest\Webtrees\Http\Controllers\SubmitterPage;
 
 /**
  * A GEDCOM submitter (SUBM) object.
@@ -32,8 +32,6 @@ class Submitter extends GedcomRecord
 
     /**
      * Extract names from the GEDCOM record.
-     *
-     * @return void
      */
     public function extractNames(): void
     {

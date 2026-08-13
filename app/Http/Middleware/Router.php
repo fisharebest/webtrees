@@ -19,12 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Aura\Router\Route;
-use Aura\Router\RouterContainer;
-use Aura\Router\Rule\Accepts;
-use Aura\Router\Rule\Allows;
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Http\Dispatcher;
+use Fisharebest\Webtrees\Http\Routing\ControllerDispatcher;
+use Fisharebest\Webtrees\Http\Routing\RouteCollection;
+use Fisharebest\Webtrees\Http\Routing\RouteMatcher;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -36,15 +35,14 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function explode;
-use function implode;
 use function str_contains;
 
 readonly class Router implements MiddlewareInterface
 {
     public function __construct(
         private ModuleService $module_service,
-        private RouterContainer $router_container,
-        private TreeService $tree_service
+        private RouteCollection $route_collection,
+        private TreeService $tree_service,
     ) {
     }
 
@@ -61,7 +59,7 @@ readonly class Router implements MiddlewareInterface
                     ->withQuery(explode('&', $request->getUri()->getQuery(), 2)[1] ?? '');
 
                 return Registry::responseFactory()
-                    ->redirectUrl($uri, StatusCodeInterface::STATUS_PERMANENT_REDIRECT)
+                    ->redirectUrl($uri, HttpStatusCode::PermanentRedirect)
                     ->withHeader('Link', '<' . $uri . '>; rel="canonical"');
             }
 
@@ -73,32 +71,20 @@ readonly class Router implements MiddlewareInterface
         }
 
         // Match the request to a route.
-        $matcher = $this->router_container->getMatcher();
-        $route   = $matcher->match($pretty);
+        $matcher = new RouteMatcher($this->route_collection);
+        $result  = $matcher->match($pretty);
 
         // No route matched?
-        if ($route === false) {
-            $failed_route = $matcher->getFailedRoute();
-
-            if ($failed_route instanceof Route) {
-                if ($failed_route->failedRule === Allows::class) {
-                    return Registry::responseFactory()->response('', StatusCodeInterface::STATUS_METHOD_NOT_ALLOWED, [
-                        'Allow' => implode(', ', $failed_route->allows),
-                    ]);
-                }
-
-                if ($failed_route->failedRule === Accepts::class) {
-                    return Registry::responseFactory()->response('Negotiation failed', StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
-                }
-            }
-
+        if (!$result->isSuccess()) {
             return $handler->handle($request);
         }
+
+        $route = $result->route;
 
         // Add the route as attribute of the request
         $request = $request->withAttribute('route', $route);
 
-        $route_middleware = $route->extras['middleware'] ?? [];
+        $route_middleware = $route->middleware;
 
         $module_middleware = $this->module_service->findByInterface(MiddlewareInterface::class)->all();
 
@@ -106,28 +92,23 @@ readonly class Router implements MiddlewareInterface
             ...$route_middleware,
             CheckCsrf::class,
             ...$module_middleware,
-            RequestHandler::class,
+            ControllerDispatcher::class,
         ];
 
         // Add the matched attributes to the request.
-        foreach ($route->attributes as $key => $value) {
-            if ($key === 'tree') {
-                $value = $this->tree_service->all()->get($value);
-
-                if ($value instanceof Tree) {
-                    Registry::container()->set(Tree::class, $value);
-                }
-
-                // Missing mandatory parameter? Let the default handler take care of it.
-                if ($value === null && str_contains($route->path, '{tree}')) {
-                    return $handler->handle($request);
-                }
-            }
-
-            $request = $request->withAttribute((string) $key, $value);
+        foreach ($result->attributes as $key => $value) {
+            $request = $request->withAttribute($key, $value);
         }
 
-        // Bind the updated request into the container
+        // Legacy code expects the tree attribute to be a Tree object.
+        $tree    = $request->getAttribute('tree');
+        $tree    = $this->tree_service->all()->get($tree);
+        $request = $request->withAttribute('tree', $tree);
+
+        // Some old code expects to find these in the container.
+        if ($tree instanceof Tree) {
+            Registry::container()->set(Tree::class, $tree);
+        }
         Registry::container()->set(ServerRequestInterface::class, $request);
 
         return Dispatcher::dispatch(middleware: $middleware, request: $request);

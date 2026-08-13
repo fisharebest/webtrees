@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\SurnameTradition;
 
 use Fisharebest\Webtrees\Elements\NameType;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -32,21 +33,11 @@ use Fisharebest\Webtrees\Individual;
  */
 class SpanishSurnameTradition extends DefaultSurnameTradition
 {
-    /**
-     * The name of this surname tradition
-     *
-     * @return string
-     */
     public function name(): string
     {
         return I18N::translateContext('Surname tradition', 'Spanish');
     }
 
-    /**
-     * A short description of this surname tradition
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: In the Spanish surname tradition, ... */
@@ -55,8 +46,6 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
 
     /**
      * A default/empty name
-     *
-     * @return string
      */
     public function defaultName(): string
     {
@@ -64,15 +53,9 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
     }
 
     /**
-     * What name is given to a new child
-     *
-     * @param Individual|null $father
-     * @param Individual|null $mother
-     * @param string          $sex
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
-    public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array
+    public function newChildNames(Individual|null $father, Individual|null $mother, Sex $sex): array
     {
         if (preg_match(self::REGEX_SURNS, $this->extractName($father), $match_father) === 1) {
             $father_surname = $match_father['SURN1'];
@@ -95,18 +78,13 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
     }
 
     /**
-     * What name is given to a new parent
-     *
-     * @param Individual $child
-     * @param string     $sex
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
-    public function newParentNames(Individual $child, string $sex): array
+    public function newParentNames(Individual $child, Sex $sex): array
     {
         if (preg_match(self::REGEX_SURNS, $this->extractName($child), $match) === 1) {
             switch ($sex) {
-                case 'M':
+                case Sex::Male:
                     return [
                         $this->buildName('/' . $match['SURN1'] . '/ //', [
                             'TYPE' => NameType::VALUE_BIRTH,
@@ -114,7 +92,7 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
                         ]),
                     ];
 
-                case 'F':
+                case Sex::Female:
                     return [
                         $this->buildName('/' . $match['SURN2'] . '/ //', [
                             'TYPE' => NameType::VALUE_BIRTH,
@@ -130,14 +108,9 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
     }
 
     /**
-     * What names are given to a new spouse
-     *
-     * @param Individual $spouse
-     * @param string     $sex
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
-    public function newSpouseNames(Individual $spouse, string $sex): array
+    public function newSpouseNames(Individual $spouse, Sex $sex): array
     {
         return [
             $this->buildName('// //', ['TYPE' => NameType::VALUE_BIRTH]),

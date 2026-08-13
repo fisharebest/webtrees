@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
@@ -36,7 +36,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_filter;
 use function array_key_exists;
@@ -60,7 +59,7 @@ use const ARRAY_FILTER_USE_KEY;
 /**
  * Common logic for individual and family lists.
  */
-abstract class AbstractIndividualListModule extends AbstractModule implements ModuleListInterface, RequestHandlerInterface
+abstract class AbstractIndividualListModule extends AbstractModule implements ModuleListInterface
 {
     use ModuleListTrait;
 
@@ -75,7 +74,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()->get(static::class, $this->routeUrl(), $this);
+        Registry::routeFactory()->routeMap()->add($this->routeUrl(), static::class);
     }
 
     /**
@@ -109,7 +108,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
         return [];
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
         $user = Validator::attributes($request)->user();
@@ -150,7 +149,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
 
         if ($surname_param !== $surname) {
             return Registry::responseFactory()
-                ->redirectUrl($this->listUrl($tree, $params), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+                ->redirectUrl($this->listUrl($tree, $params), HttpStatusCode::MovedPermanently);
         }
 
         // Make sure parameters are consistent with each other.
@@ -206,7 +205,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
             } else {
                 // The surname parameter is a root/canonical form. Display the actual surnames found.
                 $variants = array_keys($all_surnames[$surname] ?? [$surname => $surname]);
-                usort($variants, I18N::comparator());
+                usort($variants, I18N::compare(...));
                 $variants = array_map(static fn (string $x): string => $x === '' ? I18N::translate('No surname') : $x, $variants);
                 $legend   = implode('/', $variants);
             }
@@ -390,7 +389,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
                                 echo '<li class="wt-initials-list-item d-flex">';
                                 if ($given_count > 0) {
                                     if ($show === 'indi' && $givn_initial === $falpha && $show_all_firstnames !== 'yes') {
-                                        echo '<a class="wt-initial px-1 active" href="' . e($this->listUrl($tree, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($given_count) . '">' . $this->displayGivenNameInitial((string) $givn_initial) . '</a>';
+                                        echo '<a class="wt-initial px-1 active" href="' . e($this->listUrl($tree, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($given_count) . '">' . $this->displayGivenNameInitial((string) $givn_initial) . '</a>'; // @phpstan-ignore cast.useless (PHP converts numeric string keys to int)
                                     } else {
                                         echo '<a class="wt-initial px-1" href="' . e($this->listUrl($tree, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($given_count) . '">' . $this->displayGivenNameInitial((string) $givn_initial) . '</a>';
                                     }
@@ -529,19 +528,21 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
             $initials[$initial] = 0;
         }
 
-        $query = DB::table('name')
-            ->where('n_file', '=', $tree->id());
+        $subquery = DB::table('name')
+            ->where('n_file', '=', $tree->id())
+            ->select([DB::binaryColumn('n_givn', 'n_givn')]);
 
-        $this->whereFamily($fams, $query);
-        $this->whereMarriedName($marnm, $query);
+        $this->whereFamily($fams, $subquery);
+        $this->whereMarriedName($marnm, $subquery);
 
         if ($surns !== []) {
-            $query->whereIn('n_surn', $surns);
+            $subquery->whereIn('n_surn', $surns);
         }
 
-        $query
-            ->select([DB::binaryColumn('n_givn', 'n_givn'), new Expression('COUNT(*) AS count')])
-            ->groupBy([DB::binaryColumn('n_givn')]);
+        $query = DB::query()
+            ->fromSub($subquery, 'names')
+            ->select(['n_givn', new Expression('COUNT(*) AS count')])
+            ->groupBy(['n_givn']);
 
         foreach ($query->get() as $row) {
             $initial = I18N::language()->initialLetter(I18N::language()->normalize(I18N::strtoupper($row->n_givn)));
@@ -565,25 +566,22 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
      */
     private function surnameData(Tree $tree, bool $marnm, bool $fams): array
     {
-        $query = DB::table('name')
+        $subquery = DB::table('name')
             ->where('n_file', '=', $tree->id())
             ->whereNotNull('n_surn') // Filters old records for sources, repositories, etc.
             ->whereNotNull('n_surname')
             ->select([
                 DB::binaryColumn('n_surn', 'n_surn'),
                 DB::binaryColumn('n_surname', 'n_surname'),
-                new Expression('COUNT(*) AS total'),
             ]);
 
-        $this->whereFamily($fams, $query);
-        $this->whereMarriedName($marnm, $query);
+        $this->whereFamily($fams, $subquery);
+        $this->whereMarriedName($marnm, $subquery);
 
-        $query->groupBy([
-            DB::binaryColumn('n_surn'),
-            DB::binaryColumn('n_surname'),
-        ]);
-
-        return $query
+        return DB::query()
+            ->fromSub($subquery, 'names')
+            ->select(['n_surn', 'n_surname', new Expression('COUNT(*) AS total')])
+            ->groupBy(['n_surn', 'n_surname'])
             ->get()
             ->map(static fn (object $x): object => (object) ['n_surn' => $x->n_surn, 'n_surname' => $x->n_surname, 'total' => (int) $x->total])
             ->all();
@@ -606,7 +604,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
             $list[$normalized][] = $row->n_surn;
         }
 
-        uksort($list, I18N::comparator());
+        uksort($list, I18N::compare(...));
 
         return $list;
     }
@@ -631,7 +629,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
             $list[$n_surn][$row->n_surname] += $row->total;
         }
 
-        uksort($list, I18N::comparator());
+        uksort($list, I18N::compare(...));
 
         return $list;
     }

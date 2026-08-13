@@ -19,12 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Comparators\IndividualComparator;
 use Fisharebest\Webtrees\ColorGenerator;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
@@ -36,7 +38,6 @@ use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_filter;
 use function array_intersect;
@@ -60,7 +61,7 @@ use function view;
 
 use const PHP_INT_MAX;
 
-class LifespansChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
+class LifespansChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
@@ -81,15 +82,10 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST)
-            ->extras(['middleware' => [AuthNotRobot::class]]);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class, [AuthNotRobot::class]);
     }
 
     public function title(): string
@@ -106,8 +102,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -117,10 +111,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * The URL for this chart.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
@@ -130,77 +121,15 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(Tree $tree, UserInterface $user, string $xrefs = '', bool $ajax = false): ResponseInterface
     {
-        $tree  = Validator::attributes($request)->tree();
-        $user  = Validator::attributes($request)->user();
-        $xrefs = Validator::queryParams($request)->string('xrefs', '');
-        $ajax  = Validator::queryParams($request)->boolean('ajax', false);
-
-        if ($xrefs === '') {
-            try {
-                // URLs created by webtrees 2.0 and earlier used an array.
-                $xrefs = Validator::queryParams($request)->array('xrefs');
-            } catch (HttpBadRequestException) {
-                // Not a 2.0 request, just an empty parameter.
-                $xrefs = [];
-            }
-        } else {
-            $xrefs = explode(self::SEPARATOR, $xrefs);
-        }
-
-        $addxref   = Validator::parsedBody($request)->string('addxref', '');
-        $addfam    = Validator::parsedBody($request)->boolean('addfam', false);
-        $place_id  = Validator::parsedBody($request)->integer('place_id', 0);
-        $start     = Validator::parsedBody($request)->string('start', '');
-        $end       = Validator::parsedBody($request)->string('end', '');
-
-        $place      = Place::find($place_id, $tree);
-        $start_date = new Date($start);
-        $end_date   = new Date($end);
-
-        $xrefs = array_unique($xrefs);
-
-        // Add an individual, and family members
-        $individual = Registry::individualFactory()->make($addxref, $tree);
-        if ($individual !== null) {
-            $xrefs[] = $addxref;
-            if ($addfam) {
-                $xrefs = array_merge($xrefs, $this->closeFamily($individual));
-            }
-        }
-
-        // Select by date and/or place.
-        if ($place_id !== 0 && $start_date->isOK() && $end_date->isOK()) {
-            $date_xrefs  = $this->findIndividualsByDate($start_date, $end_date, $tree);
-            $place_xrefs = $this->findIndividualsByPlace($place, $tree);
-            $xrefs       = array_intersect($date_xrefs, $place_xrefs);
-        } elseif ($start_date->isOK() && $end_date->isOK()) {
-            $xrefs = $this->findIndividualsByDate($start_date, $end_date, $tree);
-        } elseif ($place_id !== 0) {
-            $xrefs = $this->findIndividualsByPlace($place, $tree);
-        }
-
-        // Filter duplicates and private individuals.
+        $xrefs = explode(self::SEPARATOR, $xrefs);
         $xrefs = array_unique($xrefs);
         $xrefs = array_filter($xrefs, static function (string $xref) use ($tree): bool {
             $individual = Registry::individualFactory()->make($xref, $tree);
 
             return $individual !== null && $individual->canShow();
         });
-
-        // Convert POST requests into GET requests for pretty URLs.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            return redirect(route(static::class, [
-                'tree'  => $tree->name(),
-                'xrefs' => implode(self::SEPARATOR, $xrefs),
-            ]));
-        }
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
@@ -229,10 +158,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * @param Tree          $tree
      * @param array<string> $xrefs
-     *
-     * @return ResponseInterface
      */
     protected function chart(Tree $tree, array $xrefs): ResponseInterface
     {
@@ -241,8 +167,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
         $individuals = array_filter($individuals, static fn (Individual|null $individual): bool => $individual instanceof Individual && $individual->canShow());
 
-        // Sort the array in order of birth year
-        usort($individuals, Individual::birthDateComparator());
+        usort($individuals, IndividualComparator::byBirthDate(...));
 
         // Round to whole decades
         $start_year = intdiv($this->minYear($individuals), 10) * 10;
@@ -257,7 +182,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         $subtitle = I18N::plural('%s individual', '%s individuals', $count, I18N::number($count));
 
         $html = view('modules/lifespans-chart/chart', [
-            'dir'        => I18N::direction(),
+            'text_direction' => I18N::textDirection(),
             'end_year'   => $end_year,
             'lifespans'  => $lifespans,
             'max_rows'   => $max_rows,
@@ -272,8 +197,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      * Find the latest event year for individuals
      *
      * @param array<Individual> $individuals
-     *
-     * @return int
      */
     protected function maxYear(array $individuals): int
     {
@@ -300,8 +223,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      * Find the earliest event year for individuals
      *
      * @param array<Individual> $individuals
-     *
-     * @return int
      */
     protected function minYear(array $individuals): int
     {
@@ -323,10 +244,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * Convert a julian day to a gregorian year
-     *
-     * @param int $jd
-     *
-     * @return int
      */
     protected function jdToYear(int $jd): int
     {
@@ -341,9 +258,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * @param Date $start
-     * @param Date $end
-     * @param Tree $tree
      *
      * @return array<string>
      */
@@ -364,8 +278,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * @param Place $place
-     * @param Tree  $tree
      *
      * @return array<string>
      */
@@ -384,40 +296,6 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * Find the close family members of an individual.
-     *
-     * @param Individual $individual
-     *
-     * @return array<string>
-     */
-    protected function closeFamily(Individual $individual): array
-    {
-        $xrefs = [];
-
-        foreach ($individual->spouseFamilies() as $family) {
-            foreach ($family->children() as $child) {
-                $xrefs[] = $child->xref();
-            }
-
-            foreach ($family->spouses() as $spouse) {
-                $xrefs[] = $spouse->xref();
-            }
-        }
-
-        foreach ($individual->childFamilies() as $family) {
-            foreach ($family->children() as $child) {
-                $xrefs[] = $child->xref();
-            }
-
-            foreach ($family->spouses() as $spouse) {
-                $xrefs[] = $spouse->xref();
-            }
-        }
-
-        return $xrefs;
-    }
-
-    /**
      * @param array<Individual> $individuals
      *
      * @return array<object{
@@ -432,9 +310,10 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     private function layoutIndividuals(array $individuals): array
     {
         $color_generators = [
-            'M' => new ColorGenerator(240, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE * -1),
-            'F' => new ColorGenerator(000, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
-            'U' => new ColorGenerator(120, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
+            Sex::Male->value => new ColorGenerator(240, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE * -1),
+            Sex::Female->value => new ColorGenerator(000, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
+            Sex::Unknown->value => new ColorGenerator(120, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
+            Sex::Other->value => new ColorGenerator(120, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
         ];
 
         $current_year = (int) date('Y');
@@ -471,7 +350,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             // Fill the row up to the year (leaving a small gap)
             $rows[$next_row] = $death_year;
 
-            $color_generator = $color_generators[$individual->sex()] ?? $color_generators['U'];
+            $color_generator = $color_generators[$individual->sex()->value];
 
             $lifespans[] = (object) [
                 'background' => $color_generator->getNextColor(),
@@ -484,5 +363,84 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         }
 
         return $lifespans;
+    }
+
+    public function post(
+        Tree $tree,
+        string $xrefs = '',
+        string|null $addxref = null,
+        int|null $place_id = null,
+        string|null $start = null,
+        string|null $end = null,
+        bool $addfam = false,
+    ): ResponseInterface {
+        $xrefs = explode(self::SEPARATOR, $xrefs);
+
+        if ($addxref !== null) {
+            $individual = Registry::individualFactory()->make($addxref, $tree);
+            if ($individual !== null) {
+                $xrefs[] = $addxref;
+
+                if ($addfam) {
+                    foreach ($individual->spouseFamilies() as $family) {
+                        foreach ($family->children() as $child) {
+                            $xrefs[] = $child->xref();
+                        }
+
+                        foreach ($family->spouses() as $spouse) {
+                            $xrefs[] = $spouse->xref();
+                        }
+                    }
+
+                    foreach ($individual->childFamilies() as $family) {
+                        foreach ($family->children() as $child) {
+                            $xrefs[] = $child->xref();
+                        }
+
+                        foreach ($family->spouses() as $spouse) {
+                            $xrefs[] = $spouse->xref();
+                        }
+                    }
+                }
+            }
+        }
+
+        if ($place_id !== null) {
+            $place      = Place::find($place_id, $tree);
+            $add_xrefs = $this->findIndividualsByPlace($place, $tree);
+        } else {
+            $add_xrefs = [];
+        }
+
+        if ($start !== null && $end !== null) {
+            $start_date = new Date($start);
+            $end_date   = new Date($end);
+
+            if ($start_date->isOK() && $end_date->isOK()) {
+                $date_xrefs  = $this->findIndividualsByDate($start_date, $end_date, $tree);
+            } else {
+                $date_xrefs = [];
+            }
+
+            if ($place_id !== null) {
+                // Date and place filters are applied together.
+                $add_xrefs = array_intersect($add_xrefs, $date_xrefs);
+            } else {
+                $add_xrefs = $date_xrefs;
+            }
+        }
+
+        $xrefs = array_merge($xrefs, $add_xrefs);
+        $xrefs = array_unique($xrefs);
+        $xrefs = array_filter($xrefs, static function (string $xref) use ($tree): bool {
+            $individual = Registry::individualFactory()->make($xref, $tree);
+
+            return $individual !== null && $individual->canShow();
+        });
+
+        return redirect(route(static::class, [
+            'tree'  => $tree->name(),
+            'xrefs' => implode(self::SEPARATOR, $xrefs),
+        ]));
     }
 }

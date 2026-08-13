@@ -19,244 +19,91 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\MediaFile;
-use Fisharebest\Webtrees\Webtrees;
+use LogicException;
 
-abstract class AbstractRenderer
+abstract class AbstractRenderer implements RendererInterface, DocumentAcceptorInterface, StyleConsumerInterface, ElementRendererInterface
 {
-    // Reports layouts are measured in points.
     protected const string UNITS = 'pt';
 
-    // A point is 1/72 of an inch
-    private const float INCH_TO_POINTS = 72.0;
-    private const float MM_TO_POINTS   = 72.0 / 25.4;
+    public Config $config;
 
-    protected const array PAPER_SIZES = [
-        // ISO 216
-        'A0'         => [841.0 * self::MM_TO_POINTS, 1189.0 * self::MM_TO_POINTS],
-        'A1'         => [594.0 * self::MM_TO_POINTS, 841.0 * self::MM_TO_POINTS],
-        'A2'         => [420.0 * self::MM_TO_POINTS, 594.0 * self::MM_TO_POINTS],
-        'A3'         => [297.0 * self::MM_TO_POINTS, 420.0 * self::MM_TO_POINTS],
-        'A4'         => [210.0 * self::MM_TO_POINTS, 297.0 * self::MM_TO_POINTS],
-        // US
-        'US-Letter'  => [8.5 * self::INCH_TO_POINTS, 11.0 * self::INCH_TO_POINTS],
-        'US-Legal'   => [8.5 * self::INCH_TO_POINTS, 14.0 * self::INCH_TO_POINTS],
-        'US-Tabloid' => [11.0 * self::INCH_TO_POINTS, 17.0 * self::INCH_TO_POINTS],
-    ];
+    private readonly RenderContext $render_context;
 
-    public float $left_margin = 18.0 * self::MM_TO_POINTS;
-
-    public float $right_margin = 9.9 * self::MM_TO_POINTS;
-
-    public float $top_margin = 26.8 * self::MM_TO_POINTS;
-
-    public float $bottom_margin = 21.6 * self::MM_TO_POINTS;
-
-    public float $header_margin = 4.9 * self::MM_TO_POINTS;
-
-    public float $footer_margin = 9.9 * self::MM_TO_POINTS;
-
-    public string $orientation = 'portrait';
-
-    public string $page_format = 'A4';
-
-    public float $page_height = 0.0;
-
-    public float $page_width = 0.0;
-
-    /** @var array<array{'name': string, 'font': string, 'style': string, 'size': float}> Style elements found in the document */
-    public array $styles = [];
-
-    public string $default_font = 'dejavusans';
-
-    public float $default_font_size = 12.0;
-
-    /** @var string Header (H), Body (B) or Footer (F) */
-    public string $processing = 'H';
-
-    public bool $rtl = false;
-
-    public bool $show_generated_by = true;
-
-    public string $generated_by = '';
-
-    public string $title = '';
-
-    public string $rauthor = Webtrees::NAME . ' ' . Webtrees::VERSION;
-
-    public string $rkeywords = '';
-
-    public string $rsubject = '';
-
-    /** @var array<ReportBaseElement|string> */
-    public array $headerElements = [];
-
-    /** @var array<ReportBaseElement|string> */
-    public array $footerElements = [];
-
-    /** @var array<ReportBaseElement|string> */
-    public array $bodyElements = [];
-
-    public string $currentStyle = '';
-
-    public function addElement(ReportBaseElement|string $element): void
+    public function __construct()
     {
-        if ($this->processing === 'B') {
-            $this->addElementToBody($element);
-        } elseif ($this->processing === 'H') {
-            $this->addElementToHeader($element);
-        } elseif ($this->processing === 'F') {
-            $this->addElementToFooter($element);
+        $this->render_context = new RenderContext();
+    }
+
+    public function applyDocument(Document $report_document): void
+    {
+        $this->render_context->applyDocument($report_document);
+    }
+
+    abstract public function output(): string;
+
+    abstract public function setCurrentStyle(Style $style): void;
+
+    abstract public function getStringWidth(string $text): float;
+
+    public function setup(Config $config): void
+    {
+        $this->config = $config;
+    }
+
+    public function reportConfig(): Config
+    {
+        if (!isset($this->config)) {
+            throw new LogicException('Report configuration is not initialized. Is there a <Doc> element?');
         }
+
+        return $this->config;
     }
 
-    public function addElementToHeader(ReportBaseElement|string $element): void
+    public function addStyle(Style $style): void
     {
-        $this->headerElements[] = $element;
+        $this->render_context->addStyle($style);
     }
 
-    public function addElementToBody(ReportBaseElement|string $element): void
+    public function getStyle(string $style): Style
     {
-        $this->bodyElements[] = $element;
+        return $this->render_context->getStyle($style);
     }
 
-    public function addElementToFooter(ReportBaseElement|string $element): void
+    /** @return list<Element> */
+    protected function headerElements(): array
     {
-        $this->footerElements[] = $element;
+        return $this->render_context->headerElements();
     }
 
-    abstract public function run(): void;
-
-    /**
-     * @param float  $width   cell width (expressed in points)
-     * @param float  $height  cell height (expressed in points)
-     * @param string $border  Border style
-     * @param string $align   Text alignment
-     * @param string $bgcolor Background color code
-     * @param string $style   The name of the text style
-     * @param int    $ln      Indicates where the current position should go after the call
-     * @param float  $top     Y-position
-     * @param float  $left    X-position
-     * @param bool   $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
-     * @param int    $stretch Stretch character mode
-     * @param string $bocolor Border color
-     * @param string $tcolor  Text color
-     * @param bool   $reseth
-     */
-    abstract public function createCell(
-        float $width,
-        float $height,
-        string $border,
-        string $align,
-        string $bgcolor,
-        string $style,
-        int $ln,
-        float $top,
-        float $left,
-        bool $fill,
-        int $stretch,
-        string $bocolor,
-        string $tcolor,
-        bool $reseth
-    ): ReportBaseCell;
-
-    /**
-     * @param float  $width   Text box width
-     * @param float  $height  Text box height
-     * @param bool   $border
-     * @param string $bgcolor Background color code in HTML
-     * @param bool   $newline
-     * @param float  $left
-     * @param float  $top
-     * @param bool   $pagecheck
-     * @param string $style
-     * @param bool   $fill
-     * @param bool   $padding
-     * @param bool   $reseth
-     */
-    abstract public function createTextBox(
-        float $width,
-        float $height,
-        bool $border,
-        string $bgcolor,
-        bool $newline,
-        float $left,
-        float $top,
-        bool $pagecheck,
-        string $style,
-        bool $fill,
-        bool $padding,
-        bool $reseth
-    ): ReportBaseTextBox;
-
-    abstract public function createText(string $style, string $color): ReportBaseText;
-
-    abstract public function createLine(float $x1, float $y1, float $x2, float $y2): ReportBaseLine;
-
-    abstract public function createImage(
-        string $file,
-        float $x,
-        float $y,
-        float $w,
-        float $h,
-        string $align, // L:left, C:center, R:right or empty to use x/y
-        string $ln,    //  T:same line, N:next line
-    ): ReportBaseImage;
-
-    abstract public function createImageFromObject(
-        MediaFile $media_file,
-        float $x,
-        float $y,
-        float $w,
-        float $h,
-        string $align, // L:left, C:center, R:right or empty to use x/y
-        string $ln,    // T:same line, N:next line
-    ): ReportBaseImage;
-
-    abstract public function createFootnote(string $style): ReportBaseFootnote;
-
-    public function setup(): void
+    /** @return list<Element> */
+    protected function bodyElements(): array
     {
-        $this->rtl = I18N::direction() === 'rtl';
-
-        $this->rkeywords = '';
-
-        // I18N: This is a report footer. %s is the name of the application.
-        $this->generated_by = I18N::translate('Generated by %s', Webtrees::NAME . ' ' . Webtrees::VERSION);
-
-        // Paper size - defaults to A4 if the report fails to define a size.
-        [$this->page_width, $this->page_height] = self::PAPER_SIZES[$this->page_format] ?? self::PAPER_SIZES['A4'];
+        return $this->render_context->bodyElements();
     }
 
-    public function setProcessing(string $p): void
+    /** @return list<Element> */
+    protected function footerElements(): array
     {
-        $this->processing = $p;
+        return $this->render_context->footerElements();
     }
 
-    public function addTitle(string $data): void
+    /** @return array<string, Style> */
+    protected function stylesMap(): array
     {
-        $this->title .= $data;
+        return $this->render_context->stylesMap();
     }
 
-    public function addDescription(string $data): void
+    protected function currentStyleValue(): Style|null
     {
-        $this->rsubject .= $data;
+        return $this->render_context->currentStyle();
     }
 
-    /**
-     * @param array{'name': string, 'font': string, 'style': string, 'size': float} $style
-     */
-    public function addStyle(array $style): void
+    protected function setCurrentStyleValue(Style|null $style): void
     {
-        $this->styles[$style['name']] = $style;
+        $this->render_context->setCurrentStyle($style);
     }
 
-    /**
-     * @return array{'name': string, 'font': string, 'style': string, 'size': float}
-     */
-    public function getStyle(string $style): array
-    {
-        return $this->styles[$style];
-    }
+    abstract public function newPage(): void;
+
+    abstract public function pageNumber(): int;
 }

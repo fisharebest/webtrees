@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteSurname;
+use Fisharebest\Webtrees\Http\Controllers\AutoCompleteSurname;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -33,9 +33,13 @@ use Fisharebest\Webtrees\Tree;
     </div>
 
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3 wt-page-options-label">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= I18N::translate('Phonetic search') ?>
         </legend>
+        <div class="col-form-label col-sm-3 wt-page-options-label" aria-hidden="true">
+            <?= I18N::translate('Phonetic search') ?>
+        </div>
 
         <div class="col-sm-9 wt-page-options-value">
             <?= view('components/checkbox-inline', ['label' => I18N::translate('Russell'), 'name' => 'soundex_std', 'checked' => $soundex_std]) ?>

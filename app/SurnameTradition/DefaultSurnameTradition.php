@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\SurnameTradition;
 
 use Fisharebest\Webtrees\Elements\NameType;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -47,21 +48,11 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     /** Extract two Spanish/Portuguese SURNs from a NAME */
     protected const string REGEX_SURNS = '~/(?<SURN1>[^ /]+)(?: | y |/ /|/ y /)(?<SURN2>[^ /]+)/~';
 
-    /**
-     * The name of this surname tradition
-     *
-     * @return string
-     */
     public function name(): string
     {
         return I18N::translateContext('Surname tradition', 'none');
     }
 
-    /**
-     * A short description of this surname tradition
-     *
-     * @return string
-     */
     public function description(): string
     {
         return '';
@@ -69,8 +60,6 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
 
     /**
      * A default/empty name
-     *
-     * @return string
      */
     public function defaultName(): string
     {
@@ -78,15 +67,9 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     }
 
     /**
-     * What name is given to a new child
-     *
-     * @param Individual|null $father
-     * @param Individual|null $mother
-     * @param string          $sex
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
-    public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array
+    public function newChildNames(Individual|null $father, Individual|null $mother, Sex $sex): array
     {
         return [
             $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
@@ -94,14 +77,9 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     }
 
     /**
-     * What name is given to a new parent
-     *
-     * @param Individual $child
-     * @param string     $sex
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
-    public function newParentNames(Individual $child, string $sex): array
+    public function newParentNames(Individual $child, Sex $sex): array
     {
         return [
             $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
@@ -109,14 +87,9 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     }
 
     /**
-     * What names are given to a new spouse
-     *
-     * @param Individual $spouse
-     * @param string     $sex
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
-    public function newSpouseNames(Individual $spouse, string $sex): array
+    public function newSpouseNames(Individual $spouse, Sex $sex): array
     {
         return [
             $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
@@ -126,14 +99,11 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     /**
      * Build a GEDCOM name record
      *
-     * @param string               $name
      * @param array<string,string> $parts
-     *
-     * @return string
      */
     protected function buildName(string $name, array $parts): string
     {
-        $parts = array_filter($parts);
+        $parts = array_filter($parts, static fn (string $value): bool => $value !== '');
 
         $parts = array_map(
             static fn (string $tag, string $value): string => "\n2 " . $tag . ' ' . $value,
@@ -150,10 +120,6 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
 
     /**
      * Extract an individual's name.
-     *
-     * @param Individual|null $individual
-     *
-     * @return string
      */
     protected function extractName(Individual|null $individual): string
     {

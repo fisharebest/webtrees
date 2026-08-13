@@ -30,9 +30,6 @@ class RegisterGedcomTags implements MiddlewareInterface
 {
     private Gedcom $gedcom;
 
-    /**
-     * @param Gedcom $gedcom
-     */
     public function __construct(Gedcom $gedcom)
     {
         $this->gedcom = $gedcom;

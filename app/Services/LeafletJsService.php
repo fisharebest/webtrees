@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServiceUnavailableException;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapProvidersPage;
+use Fisharebest\Webtrees\Http\Controllers\ModulesMapProviders;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleMapProviderInterface;
 
@@ -35,9 +35,6 @@ class LeafletJsService
     ) {
     }
 
-    /**
-     * @return object
-     */
     public function config(): object
     {
         $default = 'openstreetmap';
@@ -56,7 +53,7 @@ class LeafletJsService
             $message = I18N::translate('To display a map, you need to enable a map-provider in the control panel.');
 
             if (Auth::isAdmin()) {
-                $url = route(ModulesMapProvidersPage::class);
+                $url = route(ModulesMapProviders::class);
                 $message .= ' — <a class="alert-link" href="' . e($url) . '">' . I18N::translate('Map providers') . '</a>';
             }
 
@@ -67,11 +64,6 @@ class LeafletJsService
         $exit_fullscreen_icon  = '<span title="' . I18N::translate('Exit fullscreen') . '">' . view('icons/exit-fullscreen') . '</span>';
 
         return (object) [
-            'i18n'         => [
-                'reset'   => I18N::translate('Reload map'),
-                'zoomIn'  => I18N::translate('Zoom in'),
-                'zoomOut' => I18N::translate('Zoom out'),
-            ],
             'icons'        => [
                 'collapse'   => view('icons/collapse'),
                 'expand'     => view('icons/expand'),

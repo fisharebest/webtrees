@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Validator;
-use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -46,10 +46,13 @@ class GeonamesAutocomplete extends AbstractModule implements ModuleConfigInterfa
     use ModuleConfigTrait;
     use ModuleMapAutocompleteTrait;
 
+    public function __construct(
+        private readonly RequestFactoryInterface $request_factory,
+    ) {
+    }
+
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function title(): string
     {
@@ -59,8 +62,6 @@ class GeonamesAutocomplete extends AbstractModule implements ModuleConfigInterfa
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function description(): string
     {
@@ -74,9 +75,6 @@ class GeonamesAutocomplete extends AbstractModule implements ModuleConfigInterfa
         return false;
     }
 
-    /**
-     * @return ResponseInterface
-     */
     public function getAdminAction(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -91,11 +89,6 @@ class GeonamesAutocomplete extends AbstractModule implements ModuleConfigInterfa
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $username = Validator::parsedBody($request)->string('username');
@@ -107,11 +100,6 @@ class GeonamesAutocomplete extends AbstractModule implements ModuleConfigInterfa
         return redirect($this->getConfigLink());
     }
 
-    /**
-     * @param string $place
-     *
-     * @return RequestInterface
-     */
     protected function createPlaceNameSearchRequest(string $place): RequestInterface
     {
         // This was a global setting before it became a module setting...
@@ -125,11 +113,10 @@ class GeonamesAutocomplete extends AbstractModule implements ModuleConfigInterfa
             'username'        => $username,
         ]);
 
-        return new Request('GET', $uri);
+        return $this->request_factory->createRequest('GET', $uri);
     }
 
     /**
-     * @param ResponseInterface $response
      *
      * @return array<string>
      */
@@ -152,10 +139,10 @@ class GeonamesAutocomplete extends AbstractModule implements ModuleConfigInterfa
                 $result->countryName ?? null,
             ];
 
-            $places[] = implode(Gedcom::PLACE_SEPARATOR, array_filter($parts));
+            $places[] = implode(Gedcom::PLACE_SEPARATOR, array_filter($parts, static fn (string|null $value): bool => $value !== null && $value !== ''));
         }
 
-        usort($places, I18N::comparator());
+        usort($places, I18N::compare(...));
 
         return $places;
     }

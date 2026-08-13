@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Tree;
 
 use function strtoupper;
@@ -33,10 +33,6 @@ class SexValue extends AbstractElement
 {
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {
@@ -45,10 +41,6 @@ class SexValue extends AbstractElement
 
     /**
      * Create a default value for this element.
-     *
-     * @param Tree $tree
-     *
-     * @return string
      */
     public function default(Tree $tree): string
     {
@@ -57,13 +49,6 @@ class SexValue extends AbstractElement
 
     /**
      * An edit control for this data.
-     *
-     * @param string $id
-     * @param string $name
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
@@ -82,9 +67,9 @@ class SexValue extends AbstractElement
     public function values(): array
     {
         return [
-            'M' => I18N::translate('Male'),
-            'F' => I18N::translate('Female'),
-            'U' => I18N::translateContext('unknown sex', 'Unknown'),
+            Sex::Female->value => Sex::Female->label(),
+            Sex::Male->value => Sex::Male->label(),
+            Sex::Unknown->value => Sex::Unknown->label(),
         ];
     }
 }

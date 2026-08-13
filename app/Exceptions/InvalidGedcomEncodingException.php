@@ -29,9 +29,6 @@ use function e;
  */
 class InvalidGedcomEncodingException extends Exception
 {
-    /**
-     * @param string $charset
-     */
     public function __construct(string $charset)
     {
         $message = I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', e($charset));

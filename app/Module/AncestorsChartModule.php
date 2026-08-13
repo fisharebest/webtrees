@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
@@ -27,14 +26,14 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ChartService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 use function route;
 
-class AncestorsChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
+class AncestorsChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
@@ -59,9 +58,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
     private ChartService $chart_service;
 
-    /**
-     * @param ChartService $chart_service
-     */
     public function __construct(ChartService $chart_service)
     {
         $this->chart_service = $chart_service;
@@ -69,19 +65,10 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST)
-            ->extras(['middleware' => [AuthNotRobot::class]])
-            ->tokens([
-                'generations' => '\d+',
-                'style'       => implode('|', array_keys($this->styles())),
-            ]);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class, [AuthNotRobot::class]);
     }
 
     public function title(): string
@@ -98,8 +85,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function chartMenuClass(): string
     {
@@ -116,10 +101,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 
     /**
      * The title for a specific instance of this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function chartTitle(Individual $individual): string
     {
@@ -130,10 +111,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
@@ -143,12 +121,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
         $user        = Validator::attributes($request)->user();
@@ -157,15 +130,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
         $ajax        = Validator::queryParams($request)->boolean('ajax', false);
 
-        // Convert POST requests into GET requests for pretty URLs.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            return redirect(route(static::class, [
-                'tree'        => $tree->name(),
-                'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
-                'style'       => Validator::parsedBody($request)->isInArrayKeys($this->styles())->string('style'),
-                'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
-            ]));
-        }
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
@@ -240,5 +204,15 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
             self::CHART_STYLE_INDIVIDUALS => I18N::translate('Individuals'),
             self::CHART_STYLE_FAMILIES    => I18N::translate('Families'),
         ];
+    }
+
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    {
+        return redirect(route(static::class, [
+            'tree'        => $tree->name(),
+            'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
+            'style'       => Validator::parsedBody($request)->isInArrayKeys($this->styles())->string('style'),
+            'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
+        ]));
     }
 }

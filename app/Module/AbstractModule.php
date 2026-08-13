@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
@@ -38,7 +38,7 @@ abstract class AbstractModule implements ModuleInterface
     private string $name = '';
 
     // The default access level for this module.  It can be changed in the control panel.
-    protected int $access_level = Auth::PRIV_PRIVATE;
+    protected AccessLevel $access_level = AccessLevel::Public;
 
     // The default status for this module.  It can be changed in the control panel.
     private bool $enabled = true;
@@ -65,12 +65,6 @@ abstract class AbstractModule implements ModuleInterface
      *
      * Originally, this was just used for the home-page blocks.  Now, it is used by any
      * module that has repeated blocks of content on the same page.
-     *
-     * @param int    $block_id
-     * @param string $setting_name
-     * @param string $default
-     *
-     * @return string
      */
     final protected function getBlockSetting(int $block_id, string $setting_name, string $default = ''): string
     {
@@ -85,12 +79,6 @@ abstract class AbstractModule implements ModuleInterface
 
     /**
      * Set a block setting.
-     *
-     * @param int    $block_id
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return self
      */
     final protected function setBlockSetting(int $block_id, string $setting_name, string $setting_value): self
     {
@@ -106,10 +94,6 @@ abstract class AbstractModule implements ModuleInterface
 
     /**
      * A unique internal name for this module (based on the installation folder).
-     *
-     * @param string $name
-     *
-     * @return void
      */
     final public function setName(string $name): void
     {
@@ -118,8 +102,6 @@ abstract class AbstractModule implements ModuleInterface
 
     /**
      * A unique internal name for this module (based on the installation folder).
-     *
-     * @return string
      */
     final public function name(): string
     {
@@ -128,10 +110,6 @@ abstract class AbstractModule implements ModuleInterface
 
     /**
      * Modules are either enabled or disabled.
-     *
-     * @param bool $enabled
-     *
-     * @return ModuleInterface
      */
     final public function setEnabled(bool $enabled): ModuleInterface
     {
@@ -142,8 +120,6 @@ abstract class AbstractModule implements ModuleInterface
 
     /**
      * Modules are either enabled or disabled.
-     *
-     * @return bool
      */
     final public function isEnabled(): bool
     {
@@ -157,11 +133,6 @@ abstract class AbstractModule implements ModuleInterface
 
     /**
      * Get a module setting. Return a default if the setting is not set.
-     *
-     * @param string $setting_name
-     * @param string $default
-     *
-     * @return string
      */
     final public function getPreference(string $setting_name, string $default = ''): string
     {
@@ -176,11 +147,6 @@ abstract class AbstractModule implements ModuleInterface
      *
      * Since module settings are NOT NULL, setting a value to NULL will cause
      * it to be deleted.
-     *
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return void
      */
     final public function setPreference(string $setting_name, string $setting_value): void
     {
@@ -197,12 +163,9 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @template T
      *
-     * @param Tree            $tree
      * @param class-string<T> $interface
-     *
-     * @return int
      */
-    final public function accessLevel(Tree $tree, string $interface): int
+    final public function accessLevel(Tree $tree, string $interface): AccessLevel
     {
         $access_levels = Registry::cache()->array()
             ->remember('module-privacy-' . $tree->id(), static fn (): Collection => DB::table('module_privacy')
@@ -211,13 +174,11 @@ abstract class AbstractModule implements ModuleInterface
 
         $row = $access_levels->first(fn (object $row): bool => $row->interface === $interface && $row->module_name === $this->name());
 
-        return $row ? (int) $row->access_level : $this->access_level;
+        return $row !== null ? AccessLevel::from((int) $row->access_level) : $this->access_level;
     }
 
     /**
      * Where does this module store its resources
-     *
-     * @return string
      */
     public function resourcesFolder(): string
     {

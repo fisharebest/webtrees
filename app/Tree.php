@@ -19,8 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Closure;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use InvalidArgumentException;
 use League\Flysystem\FilesystemOperator;
@@ -39,10 +40,10 @@ use function trigger_error;
 class Tree
 {
     private const array RESN_PRIVACY = [
-        'none'         => Auth::PRIV_PRIVATE,
-        'privacy'      => Auth::PRIV_USER,
-        'confidential' => Auth::PRIV_NONE,
-        'hidden'       => Auth::PRIV_HIDE,
+        'none'         => AccessLevel::Public,
+        'privacy'      => AccessLevel::Member,
+        'confidential' => AccessLevel::Manager,
+        'hidden'       => AccessLevel::Hidden,
     ];
 
     // Default values for some tree preferences.
@@ -60,7 +61,7 @@ class Tree
         'KEEP_ALIVE_YEARS_BIRTH'      => '',
         'KEEP_ALIVE_YEARS_DEATH'      => '',
         'MAX_ALIVE_AGE'               => '120',
-        'MEDIA_UPLOAD'                => '1', // Auth::PRIV_USER
+        'MEDIA_UPLOAD'                => '1', // AccessLevel::Member
         'META_DESCRIPTION'            => '',
         'META_TITLE'                  => Webtrees::NAME,
         'NO_UPDATE_CHAN'              => '0',
@@ -71,15 +72,15 @@ class Tree
         'SAVE_WATERMARK_IMAGE'        => '0',
         'SHOW_AGE_DIFF'               => '0',
         'SHOW_COUNTER'                => '1',
-        'SHOW_DEAD_PEOPLE'            => '2', // Auth::PRIV_PRIVATE
+        'SHOW_DEAD_PEOPLE'            => '2', // AccessLevel::Public
         'SHOW_EST_LIST_DATES'         => '0',
         'SHOW_FACT_ICONS'             => '1',
         'SHOW_GEDCOM_RECORD'          => '0',
         'SHOW_HIGHLIGHT_IMAGES'       => '1',
         'SHOW_LEVEL2_NOTES'           => '1',
-        'SHOW_LIVING_NAMES'           => '1', // Auth::PRIV_USER
+        'SHOW_LIVING_NAMES'           => '1', // AccessLevel::Member
         'SHOW_MEDIA_DOWNLOAD'         => '0',
-        'SHOW_NO_WATERMARK'           => '1', // Auth::PRIV_USER
+        'SHOW_NO_WATERMARK'           => '1', // AccessLevel::Member
         'SHOW_PARENTS_AGE'            => '1',
         'SHOW_PEDIGREE_PLACES'        => '9',
         'SHOW_PEDIGREE_PLACES_SUFFIX' => '0',
@@ -94,13 +95,13 @@ class Tree
 
     private bool $default_resn_loaded = false;
 
-    /** @var array<int> Default access rules for facts in this tree */
+    /** @var array<AccessLevel> Default access rules for facts in this tree */
     private array $fact_privacy = [];
 
-    /** @var array<int> Default access rules for individuals in this tree */
+    /** @var array<AccessLevel> Default access rules for individuals in this tree */
     private array $individual_privacy = [];
 
-    /** @var array<array<int>> Default access rules for individual facts in this tree */
+    /** @var array<array<AccessLevel>> Default access rules for individual facts in this tree */
     private array $individual_fact_privacy = [];
 
     /** @var array<string> Cached copy of the wt_gedcom_setting table. */
@@ -152,30 +153,6 @@ class Tree
 
     public function setPreference(string $setting_name, string $setting_value): self
     {
-        switch ($setting_name) {
-            case 'CONTACT_USER_ID':
-            case 'WEBMASTER_USER_ID':
-                trigger_error('Deprecated since 2.2.6 - update the table directly');
-                DB::table('gedcom')->update(['support_user_id' => $setting_value === '' ? null : (int) $setting_value]);
-
-                return $this;
-
-            case 'imported':
-            case 'REQUIRE_AUTHENTICATION':
-                trigger_error('Deprecated since 2.2.6 - update the table directly');
-                DB::table('gedcom')->update(['private' => (int) $setting_value]);
-
-                return $this;
-
-            case 'gedcom_filename':
-            case 'MEDIA_DIRECTORY':
-            case 'title':
-                trigger_error('Deprecated since 2.2.6 - update the table directly');
-                DB::table('gedcom')->update(['title' => $setting_value]);
-
-                return $this;
-        }
-
         if ($setting_value !== $this->getPreference($setting_name)) {
             DB::table('gedcom_setting')->updateOrInsert([
                 'gedcom_id'    => $this->id,
@@ -194,42 +171,6 @@ class Tree
 
     public function getPreference(string $setting_name, string|null $default = null): string
     {
-        switch ($setting_name) {
-            case 'CONTACT_USER_ID':
-                trigger_error('Deprecated since 2.2.6 - use Tree::contactUserId().', E_USER_DEPRECATED);
-
-                return (string) $this->contactUserId();
-
-            case 'gedcom_filename':
-                trigger_error('Deprecated since 2.2.6 - use Tree::gedcomFile().', E_USER_DEPRECATED);
-
-                return $this->gedcomFilename();
-
-            case 'imported':
-                trigger_error('Deprecated since 2.2.6 - use Tree::imported().', E_USER_DEPRECATED);
-
-                return $this->imported() ? '1' : '';
-
-            case 'MEDIA_DIRECTORY':
-                trigger_error('Deprecated since 2.2.6 - use Tree::mediaFolder().', E_USER_DEPRECATED);
-
-                return $this->mediaFolder();
-
-            case 'REQUIRE_AUTHENTICATION':
-                trigger_error('Deprecated since 2.2.6 - use Tree::private().', E_USER_DEPRECATED);
-
-                return $this->private() ? '1' : '';
-
-            case 'WEBMASTER_USER_ID':
-                trigger_error('Deprecated since 2.2.6 - use Tree::supportUserId().', E_USER_DEPRECATED);
-                return (string) $this->supportUserId();
-
-            case 'title':
-                trigger_error('Deprecated since 2.2.6 - use Tree::title().', E_USER_DEPRECATED);
-
-                return $this->title();
-        }
-
         if ($this->preferences === []) {
             $this->preferences = DB::table('gedcom_setting')
                 ->where('gedcom_id', '=', $this->id)
@@ -283,7 +224,7 @@ class Tree
     /**
      * The fact-level privacy for this tree.
      *
-     * @return array<int>
+     * @return array<AccessLevel>
      */
     public function getFactPrivacy(): array
     {
@@ -297,7 +238,7 @@ class Tree
     /**
      * The individual-level privacy for this tree.
      *
-     * @return array<int>
+     * @return array<AccessLevel>
      */
     public function getIndividualPrivacy(): array
     {
@@ -311,7 +252,7 @@ class Tree
     /**
      * The individual-fact-level privacy for this tree.
      *
-     * @return array<array<int>>
+     * @return array<array<AccessLevel>>
      */
     public function getIndividualFactPrivacy(): array
     {
@@ -348,12 +289,6 @@ class Tree
 
     /**
      * Set the tree’s user-configuration settings.
-     *
-     * @param UserInterface $user
-     * @param string        $setting_name
-     * @param string        $setting_value
-     *
-     * @return self
      */
     public function setUserPreference(UserInterface $user, string $setting_name, string $setting_value): self
     {
@@ -378,12 +313,6 @@ class Tree
 
     /**
      * Get the tree’s user-configuration settings.
-     *
-     * @param UserInterface $user
-     * @param string        $setting_name
-     * @param string        $default
-     *
-     * @return string
      */
     public function getUserPreference(UserInterface $user, string $setting_name, string $default = ''): string
     {
@@ -402,8 +331,6 @@ class Tree
 
     /**
      * The ID of this tree
-     *
-     * @return int
      */
     public function id(): int
     {
@@ -412,10 +339,6 @@ class Tree
 
     /**
      * Can a user accept changes for this tree?
-     *
-     * @param UserInterface $user
-     *
-     * @return bool
      */
     public function canAcceptChanges(UserInterface $user): bool
     {
@@ -426,7 +349,7 @@ class Tree
     {
         return DB::table('change')
             ->where('gedcom_id', '=', $this->id)
-            ->where('status', '=', 'pending')
+            ->where('status', '=', ChangeStatus::Pending->value)
             ->exists();
     }
 
@@ -450,7 +373,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
-            'status'     => 'pending',
+            'status'     => ChangeStatus::Pending->value,
             'user_id'    => Auth::id(),
         ]);
 
@@ -467,7 +390,7 @@ class Tree
         return Registry::gedcomRecordFactory()->new($xref, '', $gedcom, $this);
     }
 
-    public function createFamily(string $gedcom): GedcomRecord
+    public function createFamily(string $gedcom): Family
     {
         if (!str_starts_with($gedcom, '0 @@ FAM')) {
             throw new InvalidArgumentException('GedcomRecord::createFamily(' . $gedcom . ') does not begin 0 @@ FAM');
@@ -487,7 +410,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
-            'status'     => 'pending',
+            'status'     => ChangeStatus::Pending->value,
             'user_id'    => Auth::id(),
         ]);
 
@@ -524,7 +447,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
-            'status'     => 'pending',
+            'status'     => ChangeStatus::Pending->value,
             'user_id'    => Auth::id(),
         ]);
 
@@ -561,7 +484,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
-            'status'     => 'pending',
+            'status'     => ChangeStatus::Pending->value,
             'user_id'    => Auth::id(),
         ]);
 

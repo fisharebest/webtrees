@@ -37,9 +37,6 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
 
     private LinkedRecordService $linked_record_service;
 
-    /**
-     * @param LinkedRecordService $linked_record_service
-     */
     public function __construct(LinkedRecordService $linked_record_service)
     {
         $this->linked_record_service = $linked_record_service;
@@ -60,7 +57,6 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
     /**
      * XREFs of media records that might need fixing.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,string>
@@ -76,10 +72,7 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
     /**
      * Does a record need updating?
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return bool
      */
     public function doesRecordNeedUpdate(GedcomRecord $record, array $params): bool
     {
@@ -89,10 +82,7 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
     /**
      * Show the changes we would make
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return string
      */
     public function previewUpdate(GedcomRecord $record, array $params): string
     {
@@ -113,10 +103,7 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
     /**
      * Fix a record
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return void
      */
     public function updateRecord(GedcomRecord $record, array $params): void
     {
@@ -133,11 +120,6 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
         }
     }
 
-    /**
-     * @param Individual $individual
-     * @param string     $xref
-     * @param bool       $primary
-     */
     private function updateMediaLinks(Individual $individual, string $xref, bool $primary): void
     {
         $facts = $individual->facts([], false, null, true);

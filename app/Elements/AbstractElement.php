@@ -75,7 +75,6 @@ abstract class AbstractElement implements ElementInterface
     private array $subtags;
 
     /**
-     * @param string             $label
      * @param array<string>|null $subtags
      */
     public function __construct(string $label, array|null $subtags = null)
@@ -86,10 +85,6 @@ abstract class AbstractElement implements ElementInterface
 
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {
@@ -104,10 +99,6 @@ abstract class AbstractElement implements ElementInterface
 
     /**
      * Convert a multi-line value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     protected function canonicalText(string $value): string
     {
@@ -118,8 +109,6 @@ abstract class AbstractElement implements ElementInterface
 
     /**
      * Should we collapse the children of this element when editing?
-     *
-     * @return bool
      */
     public function collapseChildren(): bool
     {
@@ -128,10 +117,6 @@ abstract class AbstractElement implements ElementInterface
 
     /**
      * Create a default value for this element.
-     *
-     * @param Tree $tree
-     *
-     * @return string
      */
     public function default(Tree $tree): string
     {
@@ -140,13 +125,6 @@ abstract class AbstractElement implements ElementInterface
 
     /**
      * An edit control for this data.
-     *
-     * @param string $id
-     * @param string $name
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
@@ -187,12 +165,6 @@ abstract class AbstractElement implements ElementInterface
 
     /**
      * An edit control for this data.
-     *
-     * @param string $id
-     * @param string $name
-     * @param string $value
-     *
-     * @return string
      */
     public function editHidden(string $id, string $name, string $value): string
     {
@@ -201,24 +173,20 @@ abstract class AbstractElement implements ElementInterface
 
     /**
      * An edit control for this data.
-     *
-     * @param string $id
-     * @param string $name
-     * @param string $value
-     *
-     * @return string
      */
     public function editTextArea(string $id, string $name, string $value): string
     {
+        // The HTML specification ignores a leading newline in <pre> and <textarea> elements.
+        // Preserve leading newlines in our data.
+        if (str_starts_with($value, "\n")) {
+            $value = "\n" . $value;
+        }
+
         return '<textarea class="form-control" id="' . e($id) . '" name="' . e($name) . '" rows="3" dir="auto">' . e($value) . '</textarea>';
     }
 
     /**
      * Escape @ signs in a GEDCOM export.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function escape(string $value): string
     {
@@ -227,8 +195,6 @@ abstract class AbstractElement implements ElementInterface
 
     /**
      * Create a label for this element.
-     *
-     * @return string
      */
     public function label(): string
     {
@@ -237,11 +203,6 @@ abstract class AbstractElement implements ElementInterface
 
     /**
      * Create a label/value pair for this element.
-     *
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function labelValue(string $value, Tree $tree): string
     {
@@ -254,12 +215,6 @@ abstract class AbstractElement implements ElementInterface
 
     /**
      * Set, remove or replace a subtag.
-     *
-     * @param string $subtag
-     * @param string $repeat
-     * @param string $before
-     *
-     * @return void
      */
     public function subtag(string $subtag, string $repeat, string $before = ''): void
     {
@@ -289,11 +244,6 @@ abstract class AbstractElement implements ElementInterface
 
     /**
      * Display the value of this type of element.
-     *
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function value(string $value, Tree $tree): string
     {
@@ -324,10 +274,6 @@ abstract class AbstractElement implements ElementInterface
 
     /**
      * Display the value of this type of element - convert URLs to links.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     protected function valueAutoLink(string $value): string
     {
@@ -349,11 +295,6 @@ abstract class AbstractElement implements ElementInterface
 
     /**
      * Display the value of this type of element - multi-line text with/without markdown.
-     *
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     protected function valueFormatted(string $value, Tree $tree): string
     {
@@ -372,10 +313,6 @@ abstract class AbstractElement implements ElementInterface
 
     /**
      * Display the value of this type of element - convert to URL.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     protected function valueLink(string $value): string
     {
@@ -390,10 +327,6 @@ abstract class AbstractElement implements ElementInterface
 
     /**
      * Display the value of this type of element.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function valueNumeric(string $value): string
     {

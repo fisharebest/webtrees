@@ -28,15 +28,11 @@ interface CacheFactoryInterface
 {
     /**
      * Create an array-based cache.
-     *
-     * @return Cache
      */
     public function array(): Cache;
 
     /**
      * Create an file-based cache.
-     *
-     * @return Cache
      */
     public function file(): Cache;
 }

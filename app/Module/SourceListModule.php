@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -28,26 +29,21 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
-class SourceListModule extends AbstractModule implements ModuleListInterface, RequestHandlerInterface
+class SourceListModule extends AbstractModule implements ModuleListInterface
 {
     use ModuleListTrait;
 
     protected const string ROUTE_URL = '/tree/{tree}/source-list';
 
-    /** @var int The default access level for this module.  It can be changed in the control panel. */
-    protected int $access_level = Auth::PRIV_USER;
+    protected AccessLevel $access_level = AccessLevel::Member;
 
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class);
     }
 
     public function title(): string
@@ -64,8 +60,6 @@ class SourceListModule extends AbstractModule implements ModuleListInterface, Re
 
     /**
      * CSS class for the URL.
-     *
-     * @return string
      */
     public function listMenuClass(): string
     {
@@ -73,10 +67,7 @@ class SourceListModule extends AbstractModule implements ModuleListInterface, Re
     }
 
     /**
-     * @param Tree                                      $tree
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function listUrl(Tree $tree, array $parameters = []): string
     {
@@ -93,11 +84,6 @@ class SourceListModule extends AbstractModule implements ModuleListInterface, Re
         return [];
     }
 
-    /**
-     * @param Tree $tree
-     *
-     * @return bool
-     */
     public function listIsEmpty(Tree $tree): bool
     {
         return !DB::table('sources')
@@ -105,12 +91,7 @@ class SourceListModule extends AbstractModule implements ModuleListInterface, Re
             ->exists();
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
         $user = Validator::attributes($request)->user();

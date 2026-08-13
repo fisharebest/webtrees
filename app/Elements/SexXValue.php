@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Enums\Sex;
 
 /**
  * A modification to the standard SEX record, which allows 'X'.
@@ -34,10 +34,11 @@ class SexXValue extends SexValue
      */
     public function values(): array
     {
-        $values = parent::values();
-
-        $values['X'] = I18N::translate('Other');
-
-        return $values;
+        return [
+            Sex::Female->value => Sex::Female->label(),
+            Sex::Male->value => Sex::Male->label(),
+            Sex::Unknown->value => Sex::Unknown->label(),
+            Sex::Other->value => Sex::Other->label(),
+        ];
     }
 }

@@ -73,7 +73,7 @@ final class TreeEdit extends AbstractCommand
             return Command::INVALID;
         }
 
-        $tree = $this->tree_service->all()->get('name');
+        $tree = $this->tree_service->all()->get($name);
 
         if ($create) {
             if ($tree instanceof Tree) {
