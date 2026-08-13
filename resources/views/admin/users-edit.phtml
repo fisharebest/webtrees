@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserEditAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserListPage;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\UserEdit;
+use Fisharebest\Webtrees\Http\Controllers\UserListPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -33,7 +32,8 @@ use Illuminate\Support\Collection;
 
 <h1><?= $title ?></h1>
 
-<form method="post" action="<?= e(route(UserEditAction::class)) ?>" class="form-horizontal" autocomplete="off">
+<div id="admin-users-edit-page">
+<form method="post" action="<?= e(route(UserEdit::class)) ?>" class="form-horizontal" autocomplete="off">
     <input type="hidden" name="user_id" value="<?= $user->id() ?>">
 
     <!-- REAL NAME -->
@@ -332,7 +332,7 @@ use Illuminate\Support\Collection;
                         <select class="form-select" name="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" id="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" class="relpath">
                             <?php for ($n = 0; $n <= 10; ++$n) : ?>
                                 <option value="<?= $n ?>" <?= (int) $tree->getUserPreference($user, UserInterface::PREF_TREE_PATH_LENGTH) === $n ? 'selected' : '' ?>>
-                                    <?= $n ?: I18N::translate('No') ?>
+                                    <?= $n !== 0 ? $n : I18N::translate('No') ?>
                                 </option>
                             <?php endfor ?>
                         </select>
@@ -354,17 +354,4 @@ use Illuminate\Support\Collection;
 </form>
 
 <?= view('modals/ajax') ?>
-
-<?php View::push('javascript') ?>
-<script>
-    $(".relpath").change(function () {
-        var fieldIDx = $(this).attr("id");
-        var idNum    = fieldIDx.replace("RELATIONSHIP_PATH_LENGTH", "");
-        var newIDx   = "gedcomid" + idNum;
-        if ($("#" + newIDx).val() === "" && $("#".fieldIDx).val() !== "0") {
-            alert("<?= I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.') ?>");
-            $(this).val("0");
-        }
-    });
-</script>
-<?php View::endpush() ?>
+</div>

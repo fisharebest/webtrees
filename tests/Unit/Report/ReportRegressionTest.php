@@ -20,10 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\ImageFactoryInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Factories\ImageFactory;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Enums\ImageOperation;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Report\AbstractParser;
 use Fisharebest\Webtrees\Report\AbstractRenderer;
 use Fisharebest\Webtrees\Report\Cell;
@@ -71,7 +73,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 use function array_merge;
-use function extension_loaded;
+use function base64_decode;
 use function file_exists;
 use function file_get_contents;
 use function file_put_contents;
@@ -121,7 +123,12 @@ use function preg_replace;
 #[CoversClass(VariableTable::class)]
 class ReportRegressionTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+        (new Gedcom())->registerTags(Registry::elementFactory(), true);
+    }
 
     private const string REPORTS_DIR  = __DIR__ . '/../../../resources/xml/reports/';
     private const string SNAPSHOT_DIR = __DIR__ . '/../../data/report_snapshots/';
@@ -133,6 +140,10 @@ class ReportRegressionTest extends TestCase
 
     // A Hebrew-named individual for mixed-direction (bidi) testing.
     private const string DEMO_BIDI_INDIVIDUAL = 'X1167';
+
+    // Fixed 1x1 thumbnail payloads used by the mocked image factory.
+    private const string DUMMY_JPEG_BASE64 = '/9j/4AAQSkZJRgABAQEAYABgAAD//gA7Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2ODApLCBxdWFsaXR5ID0gNzUK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAAQABAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9/ooooA//9k=';
+    private const string DUMMY_PNG_BASE64  = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO7+o3kAAAAASUVORK5CYII=';
 
     /**
      * One data-provider row per bundled XML report.
@@ -185,7 +196,7 @@ class ReportRegressionTest extends TestCase
         $vars         = $this->buildVars($xml_filename, $overrides);
         $tree         = $this->prepareTreeAndLogin();
         $author       = Webtrees::NAME;
-        $timestamp    = Registry::timestampFactory()->make(0);
+        $timestamp    = Registry::timestampFactory()->fromEpoch(0);
 
         $renderer = new HtmlRenderer();
         (new ParserGenerate($xml_filename, $renderer, $vars, $tree, $author, $timestamp))->process();
@@ -204,7 +215,7 @@ class ReportRegressionTest extends TestCase
         $vars         = $this->buildVars($xml_filename, $overrides);
         $tree         = $this->prepareTreeAndLogin();
         $author       = Webtrees::NAME;
-        $timestamp    = Registry::timestampFactory()->make(0);
+        $timestamp    = Registry::timestampFactory()->fromEpoch(0);
 
         $renderer = new PdfRenderer();
         (new ParserGenerate($xml_filename, $renderer, $vars, $tree, $author, $timestamp))->process();
@@ -240,23 +251,39 @@ class ReportRegressionTest extends TestCase
 
     private function prepareTreeAndLogin(): \Fisharebest\Webtrees\Tree
     {
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         // Some reports (those that embed media) rely on this preference.
         Site::setPreference('INDEX_DIRECTORY', 'tests/data/');
 
-        // Force the GD image driver for deterministic thumbnail output.
-        // Imagick and GD produce different bytes for the same operations,
-        // so snapshots must be generated with a consistent driver.
-        $php_service = self::createStub(PhpService::class);
-        $php_service->method('extensionLoaded')->willReturnCallback(
-            static fn (string $extension): bool => $extension !== 'imagick' && extension_loaded($extension)
+        // Report snapshots validate report layout/content, not image encoding.
+        // Use fixed image bytes so snapshots remain stable across platforms.
+        $image_factory = self::createStub(ImageFactoryInterface::class);
+        $image_factory->method('mediaFileThumbnail')->willReturnCallback(
+            fn (
+                mixed $media_file,
+                int $width,
+                int $height,
+                ImageOperation $operation,
+                bool $add_watermark,
+            ): string => $this->dummyThumbnailForMime($media_file->mimeType())
         );
-        Registry::imageFactory(new ImageFactory($php_service));
+        Registry::imageFactory($image_factory);
 
-        return $this->importTree('demo.ged');
+        $tree = $this->importTree('demo.ged');
+        $tree->setPreference('SHOW_NO_WATERMARK', (string) AccessLevel::Manager->value);
+
+        return $tree;
+    }
+
+    private function dummyThumbnailForMime(string $mime_type): string
+    {
+        return match ($mime_type) {
+            'image/png' => (string) base64_decode(self::DUMMY_PNG_BASE64, true),
+            default     => (string) base64_decode(self::DUMMY_JPEG_BASE64, true),
+        };
     }
 
     /**
@@ -277,8 +304,15 @@ class ReportRegressionTest extends TestCase
 
         // PDF trailer file ID: /ID [ <32-hex-chars> <32-hex-chars> ]
         $pdf = (string) preg_replace(
-            '/\/ID \[ <[0-9a-f]{32}> <[0-9a-f]{32}> \]/',
+            '/\/ID \[ <[0-9a-f]{32}> <[0-9a-f]{32}> ]/',
             '/ID [ <cfcd208495d565ef66e7dff9f98764da> <cfcd208495d565ef66e7dff9f98764da> ]',
+            $pdf
+        );
+
+        // TCPDF version string embedded in Producer metadata
+        $pdf = (string) preg_replace(
+            '/TCPDF \d+\.\d+\.\d+/',
+            'TCPDF 0.0.0',
             $pdf
         );
 

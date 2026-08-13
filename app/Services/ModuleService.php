@@ -37,14 +37,12 @@ use Fisharebest\Webtrees\Module\BranchesListModule;
 use Fisharebest\Webtrees\Module\BritishMonarchs;
 use Fisharebest\Webtrees\Module\BritishPrimeMinisters;
 use Fisharebest\Webtrees\Module\BritishSocialHistory;
-use Fisharebest\Webtrees\Module\CalendarMenuModule;
 use Fisharebest\Webtrees\Module\CemeteryReportModule;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Module\ChangeReportModule;
 use Fisharebest\Webtrees\Module\ChartsBlockModule;
 use Fisharebest\Webtrees\Module\ChartsMenuModule;
 use Fisharebest\Webtrees\Module\CheckForNewVersion;
-use Fisharebest\Webtrees\Module\CkeditorModule;
 use Fisharebest\Webtrees\Module\ClippingsCartModule;
 use Fisharebest\Webtrees\Module\CloudsTheme;
 use Fisharebest\Webtrees\Module\ColorsTheme;
@@ -52,6 +50,7 @@ use Fisharebest\Webtrees\Module\CompactTreeChartModule;
 use Fisharebest\Webtrees\Module\ContactsFooterModule;
 use Fisharebest\Webtrees\Module\CustomCssJsModule;
 use Fisharebest\Webtrees\Module\CzechMonarchsAndPresidents;
+use Fisharebest\Webtrees\Module\DanishHistoricalEvents;
 use Fisharebest\Webtrees\Module\DeathReportModule;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
 use Fisharebest\Webtrees\Module\DescendancyModule;
@@ -137,6 +136,7 @@ use Fisharebest\Webtrees\Module\LanguageLatvian;
 use Fisharebest\Webtrees\Module\LanguageLingala;
 use Fisharebest\Webtrees\Module\LanguageLithuanian;
 use Fisharebest\Webtrees\Module\LanguageMalay;
+use Fisharebest\Webtrees\Module\LanguageMacedonian;
 use Fisharebest\Webtrees\Module\LanguageMaori;
 use Fisharebest\Webtrees\Module\LanguageMarathi;
 use Fisharebest\Webtrees\Module\LanguageNepalese;
@@ -232,7 +232,6 @@ use Fisharebest\Webtrees\Module\ReviewChangesModule;
 use Fisharebest\Webtrees\Module\SearchMenuModule;
 use Fisharebest\Webtrees\Module\ShareAnniversaryModule;
 use Fisharebest\Webtrees\Module\ShareUrlModule;
-use Fisharebest\Webtrees\Module\SiteMapModule;
 use Fisharebest\Webtrees\Module\SlideShowModule;
 use Fisharebest\Webtrees\Module\SourceListModule;
 use Fisharebest\Webtrees\Module\SourcesTabModule;
@@ -242,6 +241,7 @@ use Fisharebest\Webtrees\Module\StoriesModule;
 use Fisharebest\Webtrees\Module\SubmitterListModule;
 use Fisharebest\Webtrees\Module\ThemeSelectModule;
 use Fisharebest\Webtrees\Module\TimelineChartModule;
+use Fisharebest\Webtrees\Module\TinymceModule;
 use Fisharebest\Webtrees\Module\TopGivenNamesModule;
 use Fisharebest\Webtrees\Module\TopPageViewsModule;
 use Fisharebest\Webtrees\Module\TopSurnamesModule;
@@ -332,13 +332,12 @@ class ModuleService
         'british-monarchs'        => BritishMonarchs::class,
         'british-prime-ministers' => BritishPrimeMinisters::class,
         'british-social-history'  => BritishSocialHistory::class,
-        'calendar-menu'           => CalendarMenuModule::class,
         'cemetery_report'         => CemeteryReportModule::class,
         'change_report'           => ChangeReportModule::class,
         'charts'                  => ChartsBlockModule::class,
         'charts-menu'             => ChartsMenuModule::class,
         'check-for-new-version'   => CheckForNewVersion::class,
-        'ckeditor'                => CkeditorModule::class,
+        'ckeditor'                => TinymceModule::class,
         'clippings'               => ClippingsCartModule::class,
         'clouds'                  => CloudsTheme::class,
         'colors'                  => ColorsTheme::class,
@@ -351,6 +350,7 @@ class ModuleService
         'descendancy_chart'       => DescendancyChartModule::class,
         'descendancy_report'      => DescendancyReportModule::class,
         'dutch_monarchs'          => DutchMonarchs::class,
+        'danish_history'          => DanishHistoricalEvents::class,
         'dutch_prime_ministers'   => DutchPrimeMinisters::class,
         'esri-maps'               => EsriMaps::class,
         'extra_info'              => IndividualMetadataModule::class,
@@ -428,6 +428,7 @@ class ModuleService
         'language-lt'             => LanguageLithuanian::class,
         'language-lv'             => LanguageLatvian::class,
         'language-mi'             => LanguageMaori::class,
+        'language-mk'             => LanguageMacedonian::class,
         'language-mr'             => LanguageMarathi::class,
         'language-ms'             => LanguageMalay::class,
         'language-nb'             => LanguageNorwegianBokmal::class,
@@ -506,7 +507,6 @@ class ModuleService
         'search-menu'             => SearchMenuModule::class,
         'share-anniversary'       => ShareAnniversaryModule::class,
         'share-url'               => ShareUrlModule::class,
-        'sitemap'                 => SiteMapModule::class,
         'source_list'             => SourceListModule::class,
         'sources_tab'             => SourcesTabModule::class,
         'statcounter'             => StatcounterModule::class,
@@ -555,7 +555,7 @@ class ModuleService
     public function findByComponent(string $interface, Tree $tree, UserInterface $user): Collection
     {
         return $this->findByInterface($interface, false, true)
-            ->filter(static fn (ModuleInterface $module): bool => $module->accessLevel($tree, $interface) >= Auth::accessLevel($tree, $user));
+            ->filter(static fn (ModuleInterface $module): bool => $module->accessLevel($tree, $interface)->allows(Auth::accessLevel($tree, $user)));
     }
 
     /**
@@ -571,28 +571,24 @@ class ModuleService
     {
         /** @var Collection<int,T&ModuleInterface> $modules */
         $modules = $this->all($include_disabled)
-            ->filter($this->interfaceFilter($interface));
+            ->filter($this->interfaceFilter($interface))
+            ->values();
 
         switch ($interface) {
             case ModuleFooterInterface::class:
-                /** @var Collection<int,T&ModuleInterface> */
                 return $modules->sort($this->footerComparator());
 
             case ModuleMenuInterface::class:
-                /** @var Collection<int,T&ModuleInterface> */
                 return $modules->sort($this->menuComparator());
 
             case ModuleSidebarInterface::class:
-                /** @var Collection<int,T&ModuleInterface> */
                 return $modules->sort($this->sidebarComparator());
 
             case ModuleTabInterface::class:
-                /** @var Collection<int,T&ModuleInterface> */
                 return $modules->sort($this->tabComparator());
 
             default:
                 if ($sort) {
-                    /** @var Collection<int,T&ModuleInterface> */
                     return $modules->sort($this->moduleComparator());
                 }
 
@@ -799,25 +795,7 @@ class ModuleService
      */
     private function moduleComparator(): Closure
     {
-        return static function (ModuleInterface $x, ModuleInterface $y): int {
-            $title1 = $x instanceof ModuleLanguageInterface ? $x->locale()->endonymSortable() : $x->title();
-            $title2 = $y instanceof ModuleLanguageInterface ? $y->locale()->endonymSortable() : $y->title();
-
-            return I18N::comparator()($title1, $title2);
-        };
-    }
-
-    /**
-     * During setup, we'll need access to some languages.
-     *
-     * @return Collection<string,ModuleLanguageInterface>
-     */
-    public function setupLanguages(): Collection
-    {
-        return $this->coreModules()
-            ->whereInstanceOf(ModuleLanguageInterface::class)
-            ->filter(static fn (ModuleLanguageInterface $module): bool => $module->isEnabledByDefault())
-            ->sort(static fn (ModuleLanguageInterface $x, ModuleLanguageInterface $y): int => $x->locale()->endonymSortable() <=> $y->locale()->endonymSortable());
+        return static fn (ModuleInterface $x, ModuleInterface $y): int => I18N::compare($x->title(), $y->title());
     }
 
     /**

@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
@@ -457,12 +458,12 @@ class IndividualFactsService
             foreach ($family->children() as $child) {
                 foreach ($child->spouseFamilies() as $cfamily) {
                     switch ($child->sex()) {
-                        case 'M':
+                        case Sex::Male:
                             foreach ($this->childFacts($person, $cfamily, '_GCHI', 'son', $min_date, $max_date) as $fact) {
                                 $facts[] = $fact;
                             }
                             break;
-                        case 'F':
+                        case Sex::Female:
                             foreach ($this->childFacts($person, $cfamily, '_GCHI', 'dau', $min_date, $max_date) as $fact) {
                                 $facts[] = $fact;
                             }
@@ -692,7 +693,7 @@ class IndividualFactsService
                         }
                     }
                     // Add grandparents
-                    foreach ($this->parentFacts($spouse, $spouse->sex() === 'F' ? 3 : 2, $min_date, $max_date) as $fact) {
+                    foreach ($this->parentFacts($spouse, $spouse->sex() === Sex::Female ? 3 : 2, $min_date, $max_date) as $fact) {
                         $facts[] = $fact;
                     }
                 }
@@ -704,7 +705,7 @@ class IndividualFactsService
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             // marriage of parents (to each other)
-                            $facts[] = $this->convertEvent($fact, ['U' => I18N::translate('Marriage of parents')], 'U');
+                            $facts[] = $this->convertEvent($fact, ['U' => I18N::translate('Marriage of parents')], Sex::Unknown);
                         }
                     }
                 }
@@ -712,7 +713,7 @@ class IndividualFactsService
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             // marriage of a parent (to another spouse)
-                            $facts[] = $this->convertEvent($fact, $marriage_of_a_parent, 'U');
+                            $facts[] = $this->convertEvent($fact, $marriage_of_a_parent, Sex::Unknown);
                         }
                     }
                 }
@@ -731,17 +732,11 @@ class IndividualFactsService
                                     break;
                                 case 2:
                                 case 3:
-                                    switch ($person->sex()) {
-                                        case 'M':
-                                            $facts[] = $this->convertEvent($fact, $death_of_a_paternal_grandparent[$fact->tag()], $parent->sex());
-                                            break;
-                                        case 'F':
-                                            $facts[] = $this->convertEvent($fact, $death_of_a_maternal_grandparent[$fact->tag()], $parent->sex());
-                                            break;
-                                        default:
-                                            $facts[] = $this->convertEvent($fact, $death_of_a_grandparent[$fact->tag()], $parent->sex());
-                                            break;
-                                    }
+                                    $facts[] = match ($person->sex()) {
+                                        Sex::Male   => $this->convertEvent($fact, $death_of_a_paternal_grandparent[$fact->tag()], $parent->sex()),
+                                        Sex::Female => $this->convertEvent($fact, $death_of_a_maternal_grandparent[$fact->tag()], $parent->sex()),
+                                        default     => $this->convertEvent($fact, $death_of_a_grandparent[$fact->tag()], $parent->sex()),
+                                    };
                             }
                         }
                     }
@@ -811,9 +806,9 @@ class IndividualFactsService
      *
      * @param array<string> $types
      */
-    private function convertEvent(Fact $fact, array $types, string $sex): Fact
+    private function convertEvent(Fact $fact, array $types, Sex $sex): Fact
     {
-        $type = $types[$sex] ?? $types['U'];
+        $type = $types[$sex->value] ?? $types['U'];
 
         $gedcom = $fact->gedcom();
         $gedcom = preg_replace('/\n2 TYPE .*/', '', $gedcom);

@@ -329,22 +329,6 @@ table {
     content: url(clouds/menu/list-indi.png);
 }
 
-.menu-calendar .nav-link::before {
-    content: url(clouds/menu/calendar.png);
-}
-
-.menu-calendar-day::before {
-    content: url(clouds/menu/calendar.png);
-}
-
-.menu-calendar-month::before {
-    content: url(clouds/menu/calendar.png);
-}
-
-.menu-calendar-year::before {
-    content: url(clouds/menu/calendar.png);
-}
-
 .menu-report .nav-link::before {
     content: url(clouds/menu/report.png);
 }
@@ -607,11 +591,6 @@ footer,
 #tabs{
     border-radius: 3px;
 }
-
-:focus {
-    outline-style: none;
-}
-
 .flash-messages {
     clear: both;
     text-align: center;
@@ -636,11 +615,6 @@ img.block {
 .button {
     width: 60px;
 }
-
-button:focus {
-     outline: 0;
-}
-
 .alpha_index {
     color: #999;
 }
@@ -727,10 +701,6 @@ div.fact_SHARED_NOTE {
 
 .details_label {
     font-weight: bold;
-}
-
-.date {
-    color: #039;
 }
 
 .label {

@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\ImportGedcomAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\ImportGedcom;
+use Fisharebest\Webtrees\Http\Controllers\ManageTrees;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -26,11 +25,17 @@ use Illuminate\Support\Collection;
 
 <h1><?= $title ?></h1>
 
+<div id="admin-trees-import-page">
 <div class="alert alert-warning">
     <?= /* I18N: %s is the name of a family tree */ I18N::translate('This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file.', e($tree->title())) ?>
 </div>
 
-<form method="post" action="<?= e(route(ImportGedcomAction::class, ['tree' => $tree->name()])) ?>" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= e(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
+<form
+    id="wt-gedcom-import-form"
+    method="post"
+    action="<?= e(route(ImportGedcom::class, ['tree' => $tree->name()])) ?>"
+    enctype="multipart/form-data"
+>
     <input type="hidden" id="gedcom_file" value="<?= e($default_gedcom_file) ?>">
 
     <h2><?= I18N::translate('Select a GEDCOM file to import') ?></h2>
@@ -94,7 +99,7 @@ use Illuminate\Support\Collection;
 
         <div class="col-sm-9">
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" name="keep_media" id="keep_media" value="1" <?= $tree->getPreference('keep_media') ? 'checked' : '' ?>>
+                <input type="checkbox" class="form-check-input" name="keep_media" id="keep_media" value="1" <?= $tree->getPreference('keep_media') === '1' ? 'checked' : '' ?>>
                 <label for="keep_media" class="form-check-label">
                     <?= I18N::translate('If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file.') ?>
                 </label>
@@ -109,7 +114,7 @@ use Illuminate\Support\Collection;
 
         <div class="col-sm-9">
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" name="WORD_WRAPPED_NOTES" id="WORD_WRAPPED_NOTES" value="1" <?= $tree->getPreference('WORD_WRAPPED_NOTES') ? 'checked' : '' ?>>
+                <input type="checkbox" class="form-check-input" name="WORD_WRAPPED_NOTES" id="WORD_WRAPPED_NOTES" value="1" <?= $tree->getPreference('WORD_WRAPPED_NOTES') === '1' ? 'checked' : '' ?>>
                 <label for="WORD_WRAPPED_NOTES" class="form-check-label">
                     <?= I18N::translate('If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces.') ?>
                 </label>
@@ -139,29 +144,4 @@ use Illuminate\Support\Collection;
 
     <?= csrf_field() ?>
 </form>
-
-<?php View::push('javascript') ?>
-<script>
-  function checkGedcomImportForm (message) {
-    let oldFile = $('#gedcom_file').val();
-    let method = $('input[name=source]:checked').val();
-    let newFile = method === 'server' ? $('#import-server-file').val() : $('#import-client-file').val();
-
-    // Some browsers include c:\fakepath\ in the filename.
-    newFile = newFile.replace(/.*[/\\]/, '');
-    if (newFile !== oldFile && oldFile !== '') {
-      return window.confirm(message);
-    } else {
-      return true;
-    }
-  }
-
-  document.getElementById('import-client-file').addEventListener('focus', function () {
-    document.getElementById('import-client').checked = true;
-  });
-
-  document.getElementById('import-server-file').addEventListener('focus', function () {
-    document.getElementById('import-server').checked = true;
-  });
-</script>
-<?php View::endpush() ?>
+</div>

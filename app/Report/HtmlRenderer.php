@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Registry;
 
@@ -139,14 +140,12 @@ final class HtmlRenderer extends AbstractRenderer implements ElementFactoryInter
         CellAlign $align,
         ImageContinuation $ln,
     ): Image {
-        $add_watermark = Registry::imageFactory()->fileNeedsWatermark($media_file, Auth::user());
-
         $data = Registry::imageFactory()->mediaFileThumbnail(
             $media_file,
             (int) ($w * 4),
             (int) ($h * 4),
-            'crop',
-            $add_watermark,
+            ImageOperation::Crop,
+            Auth::needsWatermark($media_file->media()->tree()),
         );
 
         $src = 'data:' . $media_file->mimeType() . ';base64,' . base64_encode($data);
@@ -177,7 +176,6 @@ final class HtmlRenderer extends AbstractRenderer implements ElementFactoryInter
 
         return mb_strlen($text) * $font_size / 2;
     }
-
 
     public function pageNumber(): int
     {

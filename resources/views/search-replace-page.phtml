@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\SearchReplaceAction;
+use Fisharebest\Webtrees\Http\Controllers\SearchReplace;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\Tree;
     <?= $title ?>
 </h2>
 
-<form method="post" action="<?= e(route(SearchReplaceAction::class, ['tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-ancestors-chart hidden-print">
+<form method="post" action="<?= e(route(SearchReplace::class, ['tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-ancestors-chart hidden-print">
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="search">
             <?= I18N::translate('Search for') ?>

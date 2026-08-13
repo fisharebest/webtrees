@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\SurnameTradition;
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -55,7 +56,7 @@ class PolishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /White/\n2 TYPE BIRTH\n2 SURN White"],
-            $this->surname_tradition->newChildNames($father, $mother, 'M')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Male)
         );
     }
 
@@ -75,7 +76,7 @@ class PolishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /White/\n2 TYPE BIRTH\n2 SURN White"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
     }
 
@@ -95,7 +96,7 @@ class PolishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Whitecka/\n2 TYPE BIRTH\n2 SURN Whitecki"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
 
         $father_fact = self::createStub(Fact::class);
@@ -112,7 +113,7 @@ class PolishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Whitedzka/\n2 TYPE BIRTH\n2 SURN Whitedzki"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
 
         $father_fact = self::createStub(Fact::class);
@@ -129,7 +130,7 @@ class PolishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Whiteska/\n2 TYPE BIRTH\n2 SURN Whiteski"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
 
         $father_fact = self::createStub(Fact::class);
@@ -146,7 +147,7 @@ class PolishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Whiteżka/\n2 TYPE BIRTH\n2 SURN Whiteżki"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
     }
 
@@ -166,7 +167,7 @@ class PolishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /White/\n2 TYPE BIRTH\n2 SURN White"],
-            $this->surname_tradition->newChildNames($father, $mother, 'U')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Unknown)
         );
     }
 
@@ -174,7 +175,7 @@ class PolishSurnameTraditionTest extends TestCase
     {
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newChildNames(null, null, 'U')
+            $this->surname_tradition->newChildNames(null, null, Sex::Unknown)
         );
     }
 
@@ -188,7 +189,7 @@ class PolishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /White/\n2 TYPE BIRTH\n2 SURN White"],
-            $this->surname_tradition->newParentNames($individual, 'M')
+            $this->surname_tradition->newParentNames($individual, Sex::Male)
         );
     }
 
@@ -202,7 +203,7 @@ class PolishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Whitecki/\n2 TYPE BIRTH\n2 SURN Whitecki"],
-            $this->surname_tradition->newParentNames($individual, 'M')
+            $this->surname_tradition->newParentNames($individual, Sex::Male)
         );
 
         $fact = self::createStub(Fact::class);
@@ -213,7 +214,7 @@ class PolishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Whitedzki/\n2 TYPE BIRTH\n2 SURN Whitedzki"],
-            $this->surname_tradition->newParentNames($individual, 'M')
+            $this->surname_tradition->newParentNames($individual, Sex::Male)
         );
 
         $fact = self::createStub(Fact::class);
@@ -224,7 +225,7 @@ class PolishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Whiteski/\n2 TYPE BIRTH\n2 SURN Whiteski"],
-            $this->surname_tradition->newParentNames($individual, 'M')
+            $this->surname_tradition->newParentNames($individual, Sex::Male)
         );
 
         $fact = self::createStub(Fact::class);
@@ -235,7 +236,7 @@ class PolishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Whiteżki/\n2 TYPE BIRTH\n2 SURN Whiteżki"],
-            $this->surname_tradition->newParentNames($individual, 'M')
+            $this->surname_tradition->newParentNames($individual, Sex::Male)
         );
     }
 
@@ -249,7 +250,7 @@ class PolishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newParentNames($individual, 'F')
+            $this->surname_tradition->newParentNames($individual, Sex::Female)
         );
     }
 
@@ -263,7 +264,7 @@ class PolishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newParentNames($individual, 'U')
+            $this->surname_tradition->newParentNames($individual, Sex::Unknown)
         );
     }
 
@@ -277,17 +278,17 @@ class PolishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newSpouseNames($individual, 'M')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Male)
         );
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH", "1 NAME /White/\n2 TYPE MARRIED\n2 SURN White"],
-            $this->surname_tradition->newSpouseNames($individual, 'F')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Female)
         );
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newSpouseNames($individual, 'U')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Unknown)
         );
     }
 

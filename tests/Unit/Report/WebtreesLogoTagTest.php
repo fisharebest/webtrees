@@ -34,7 +34,11 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(ParserGenerate::class)]
 class WebtreesLogoTagTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     /**
      * Default dimensions (80pt × 20pt) and a clickable link are rendered.
@@ -80,7 +84,7 @@ class WebtreesLogoTagTest extends TestCase
      */
     private function renderReport(string $filename): string
     {
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
@@ -95,7 +99,7 @@ class WebtreesLogoTagTest extends TestCase
             [],
             $tree,
             Webtrees::NAME,
-            Registry::timestampFactory()->make(0),
+            Registry::timestampFactory()->fromEpoch(0),
         ))->process();
 
         return $renderer->output();

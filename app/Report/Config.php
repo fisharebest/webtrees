@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 
 /**
  * Immutable page-layout configuration for a report, built by the parser
@@ -50,7 +50,7 @@ final readonly class Config
         public string $align_rtl,
         public string $entity_rtl,
         public string $font,
-        public TimestampInterface $timestamp,
+        public CarbonImmutable $timestamp,
         public bool $font_subsetting = true,
         public bool $compression = true,
     ) {

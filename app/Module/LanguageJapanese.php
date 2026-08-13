@@ -19,20 +19,19 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleJa;
+use Fisharebest\Webtrees\I18N\Languages\Japanese;
 
 class LanguageJapanese extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
+    public function __construct()
+    {
+        $this->language = new Japanese();
+    }
+
     public function isEnabledByDefault(): bool
     {
         return false;
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleJa();
     }
 }

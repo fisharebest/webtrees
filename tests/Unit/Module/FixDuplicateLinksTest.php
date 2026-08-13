@@ -33,8 +33,6 @@ use Fisharebest\Webtrees\Module\FixDuplicateLinks;
 #[CoversClass(FixDuplicateLinks::class)]
 class FixDuplicateLinksTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     protected FixDuplicateLinks $fixDuplicateLinks;
 
     protected Tree $tree;
@@ -44,13 +42,14 @@ class FixDuplicateLinksTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        self::createDatabase();
 
         $tree_service = new TreeService(new GedcomImportService());
         $this->tree = $tree_service->create('name', 'title');
 
         $this->fixDuplicateLinks = new FixDuplicateLinks(new DataFixService());
 
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user         = $user_service->create('user', 'real', 'email', 'pass');
         Auth::login($user);
     }

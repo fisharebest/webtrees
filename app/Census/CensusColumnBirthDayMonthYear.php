@@ -19,12 +19,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 final readonly class CensusColumnBirthDayMonthYear extends AbstractCensusColumn implements CensusColumnInterface
 {
     public function generate(Individual $individual, Individual $head): string
     {
-        return $individual->getEstimatedBirthDate()->minimumDate()->format('%j %M %Y');
+        // Assumes the language is set to the census language.
+        // @TODO - pass it in.
+        I18N::init('en-GB');
+
+        return Date::fromCalendarDate($individual->getEstimatedBirthDate()->minimumDate())->display();
     }
 }

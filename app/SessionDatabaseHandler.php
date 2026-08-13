@@ -19,24 +19,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use SessionHandlerInterface;
-
-use function date;
-use function time;
 
 /**
  * Session handling - stores sessions in the database.
  */
 class SessionDatabaseHandler implements SessionHandlerInterface
 {
-    private ServerRequestInterface $request;
-
     private object|null $row = null;
 
-    public function __construct(ServerRequestInterface $request)
-    {
-        $this->request = $request;
+    public function __construct(
+        private readonly ServerRequestInterface $request,
+        private readonly ClockInterface $clock,
+    ) {
     }
 
     public function open(string $path, string $name): bool
@@ -62,11 +59,12 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     {
         $ip_address = Validator::attributes($this->request)->string('client-ip');
         $user_id    = (int) Auth::id();
+        $now        = $this->clock->now()->format('Y-m-d H:i:s');
 
         if ($this->row === null) {
             DB::table('session')->insert([
                 'session_id'   => $id,
-                'session_time' => date('Y-m-d H:i:s'),
+                'session_time' => $now,
                 'user_id'      => $user_id,
                 'ip_address'   => $ip_address,
                 'session_data' => $data,
@@ -88,8 +86,10 @@ class SessionDatabaseHandler implements SessionHandlerInterface
             }
 
             // Only update session once a minute to reduce contention on the session table.
-            if (date('Y-m-d H:i:s', time() - 60) > $this->row->session_time) {
-                $updates['session_time'] =  date('Y-m-d H:i:s');
+            $one_minute_ago = $this->clock->now()->modify('-60 seconds')->format('Y-m-d H:i:s');
+
+            if ($one_minute_ago > $this->row->session_time) {
+                $updates['session_time'] = $now;
             }
 
             if ($updates !== []) {
@@ -114,7 +114,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     public function gc(int $max_lifetime): int
     {
         return DB::table('session')
-            ->where('session_time', '<', date('Y-m-d H:i:s', time() - $max_lifetime))
+            ->where('session_time', '<', $this->clock->now()->modify('-' . $max_lifetime . ' seconds')->format('Y-m-d H:i:s'))
             ->delete();
     }
 }

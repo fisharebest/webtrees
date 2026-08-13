@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\SearchAdvancedAction;
+use Fisharebest\Webtrees\Http\Controllers\SearchAdvanced;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -27,7 +27,7 @@ use Illuminate\Support\Collection;
 </h2>
 
 <div id="advanced-search-page">
-    <form method="post" action="<?= e(route(SearchAdvancedAction::class, ['tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-search-advanced hidden-print mb-4">
+    <form method="post" action="<?= e(route(SearchAdvanced::class, ['tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-search-advanced hidden-print mb-4">
         <div class="row">
             <div class="col col-form-label wt-page-options-label">
                 <?= I18N::translate('Individual') ?>
@@ -93,7 +93,7 @@ use Illuminate\Support\Collection;
     </form>
 </div>
 
-<?php if (array_filter($fields) !== []) : ?>
+<?php if (array_filter($fields, static fn (string $value): bool => $value !== '') !== []) : ?>
     <?php if ($individuals->isEmpty()) : ?>
         <div class="alert alert-info">
             <?= I18N::translate('No results found.') ?>

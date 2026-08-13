@@ -462,7 +462,7 @@ class SearchService
         }
 
         $row_mapper = static function (object $row) use ($tree): Place {
-            $place = implode(', ', array_filter((array) $row));
+            $place = implode(', ', array_filter((array) $row, static fn (string|null $value): bool => $value !== null));
 
             return new Place($place, $tree);
         };

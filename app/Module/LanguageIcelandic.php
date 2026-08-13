@@ -19,15 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleIs;
+use Fisharebest\Webtrees\I18N\Languages\Icelandic;
 
 class LanguageIcelandic extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    public function locale(): LocaleInterface
+    public function __construct()
     {
-        return new LocaleIs();
+        $this->language = new Icelandic();
     }
 }

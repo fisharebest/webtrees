@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -34,7 +33,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 use function addcslashes;
 use function array_combine;
@@ -45,7 +43,7 @@ use function min;
 use function redirect;
 use function route;
 
-class MediaListModule extends AbstractModule implements ModuleListInterface, RequestHandlerInterface
+class MediaListModule extends AbstractModule implements ModuleListInterface
 {
     use ModuleListTrait;
 
@@ -63,9 +61,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class);
     }
 
     public function title(): string
@@ -113,7 +109,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
             ->exists();
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
         $user = Validator::attributes($request)->user();
@@ -121,21 +117,6 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
         $formats = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
-
-        // Convert POST requests into GET requests for pretty URLs.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            $params = [
-                'go'      => true,
-                'page'    => Validator::parsedBody($request)->integer('page'),
-                'max'     => Validator::parsedBody($request)->integer('max'),
-                'folder'  => Validator::parsedBody($request)->string('folder'),
-                'filter'  => Validator::parsedBody($request)->string('filter'),
-                'subdirs' => Validator::parsedBody($request)->boolean('subdirs', false),
-                'format'  => Validator::parsedBody($request)->isInArrayKeys($formats)->string('format'),
-            ];
-
-            return redirect($this->listUrl($tree, $params));
-        }
 
         $folders = $this->allFolders($tree);
         $go      = Validator::queryParams($request)->boolean('go', false);
@@ -166,6 +147,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
             'folders'               => $folders,
             'format'                => $format,
             'formats'               => $formats,
+            'go'                    => $go,
             'linked_record_service' => $this->linked_record_service,
             'max'                   => $max,
             'media_objects'         => $media_objects,
@@ -274,5 +256,22 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
             ->map(Registry::mediaFactory()->mapper($tree))
             ->uniqueStrict()
             ->filter(GedcomRecord::accessFilter());
+    }
+
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    {
+        $formats = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
+
+        $params = [
+            'go'      => true,
+            'page'    => Validator::parsedBody($request)->integer('page'),
+            'max'     => Validator::parsedBody($request)->integer('max'),
+            'folder'  => Validator::parsedBody($request)->string('folder'),
+            'filter'  => Validator::parsedBody($request)->string('filter'),
+            'subdirs' => Validator::parsedBody($request)->boolean('subdirs', false),
+            'format'  => Validator::parsedBody($request)->isInArrayKeys($formats)->string('format'),
+        ];
+
+        return redirect($this->listUrl($tree, $params));
     }
 }

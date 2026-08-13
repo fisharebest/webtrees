@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Individual;
 
 final readonly class CensusColumnSexMZ extends AbstractCensusColumn implements CensusColumnInterface
@@ -27,9 +28,9 @@ final readonly class CensusColumnSexMZ extends AbstractCensusColumn implements C
     public function generate(Individual $individual, Individual $head): string
     {
         return match ($individual->sex()) {
-            'M'     => 'M',
-            'F'     => UTF8::LATIN_CAPITAL_LETTER_Z_WITH_CARON,
-            default => '',
+            Sex::Male   => 'M',
+            Sex::Female => UTF8::LATIN_CAPITAL_LETTER_Z_WITH_CARON,
+            default     => '',
         };
     }
 }

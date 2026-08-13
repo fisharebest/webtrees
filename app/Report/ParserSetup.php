@@ -214,7 +214,7 @@ final class ParserSetup extends AbstractParser
                 $default = $attrs['default'];
             }
         } elseif (($attrs['name'] ?? '') === 'pageSize') {
-            $default = I18N::locale()->territory()->paperSize();
+            $default = I18N::language()->paperSize()->value;
         }
 
         $this->input = new InputDefinition(

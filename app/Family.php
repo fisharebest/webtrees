@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Closure;
-use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Http\Controllers\FamilyPage;
 use Illuminate\Support\Collection;
 
 /**
@@ -61,22 +61,12 @@ class Family extends GedcomRecord
     }
 
     /**
-     * A closure which will compare families by marriage date.
-     *
-     * @return Closure(Family,Family):int
-     */
-    public static function marriageDateComparator(): Closure
-    {
-        return static fn (Family $x, Family $y): int => Date::compare($x->getMarriageDate(), $y->getMarriageDate());
-    }
-
-    /**
      * Get the male (or first female) partner of the family
      */
-    public function husband(int|null $access_level = null): Individual|null
+    public function husband(AccessLevel|null $access_level = null): Individual|null
     {
         if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
-            $access_level = Auth::PRIV_HIDE;
+            $access_level = AccessLevel::Hidden;
         }
 
         if ($this->husb instanceof Individual && $this->husb->canShowName($access_level)) {
@@ -89,10 +79,10 @@ class Family extends GedcomRecord
     /**
      * Get the female (or second male) partner of the family
      */
-    public function wife(int|null $access_level = null): Individual|null
+    public function wife(AccessLevel|null $access_level = null): Individual|null
     {
         if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
-            $access_level = Auth::PRIV_HIDE;
+            $access_level = AccessLevel::Hidden;
         }
 
         if ($this->wife instanceof Individual && $this->wife->canShowName($access_level)) {
@@ -105,7 +95,7 @@ class Family extends GedcomRecord
     /**
      * Each object type may have its own special rules, and re-implement this function.
      */
-    protected function canShowByType(int $access_level): bool
+    protected function canShowByType(AccessLevel $access_level): bool
     {
         // Hide a family if any member is private
         preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches);
@@ -123,7 +113,7 @@ class Family extends GedcomRecord
     /**
      * Can the name of this record be shown?
      */
-    public function canShowName(int|null $access_level = null): bool
+    public function canShowName(AccessLevel|null $access_level = null): bool
     {
         // We can always see the name (Husband-name + Wife-name), however,
         // the name will often be "private + private"
@@ -133,7 +123,7 @@ class Family extends GedcomRecord
     /**
      * Find the spouse of a person.
      */
-    public function spouse(Individual $person, int|null $access_level = null): Individual|null
+    public function spouse(Individual $person, AccessLevel|null $access_level = null): Individual|null
     {
         if ($person === $this->wife) {
             return $this->husband($access_level);
@@ -148,7 +138,7 @@ class Family extends GedcomRecord
      *
      * @return Collection<int,Individual>
      */
-    public function spouses(int|null $access_level = null): Collection
+    public function spouses(AccessLevel|null $access_level = null): Collection
     {
         $spouses = new Collection([
             $this->husband($access_level),
@@ -164,12 +154,12 @@ class Family extends GedcomRecord
      *
      * @return Collection<int,Individual>
      */
-    public function children(int|null $access_level = null): Collection
+    public function children(AccessLevel|null $access_level = null): Collection
     {
         $access_level ??= Auth::accessLevel($this->tree);
 
         if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
-            $access_level = Auth::PRIV_HIDE;
+            $access_level = AccessLevel::Hidden;
         }
 
         $children = new Collection();
@@ -225,7 +215,7 @@ class Family extends GedcomRecord
      */
     public function getMarriageYear(): int
     {
-        return $this->getMarriageDate()->minimumDate()->year;
+        return $this->getMarriageDate()->minimumDate()->year();
     }
 
     /**

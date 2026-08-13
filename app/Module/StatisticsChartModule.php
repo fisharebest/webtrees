@@ -20,7 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Charts\BarChartData;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -35,7 +38,6 @@ use function array_key_exists;
 use function array_key_last;
 use function array_keys;
 use function array_map;
-use function array_merge;
 use function array_sum;
 use function array_values;
 use function array_walk;
@@ -44,12 +46,12 @@ use function count;
 use function explode;
 use function in_array;
 use function is_numeric;
-use function sprintf;
 
 class StatisticsChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
+    // Keep these values in sync with resources/js/webtrees/pages/statistics-chart-custom-page.js.
     public const int X_AXIS_INDIVIDUAL_MAP        = 1;
     public const int X_AXIS_BIRTH_MAP             = 2;
     public const int X_AXIS_DEATH_MAP             = 3;
@@ -67,6 +69,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     public const int Y_AXIS_NUMBERS = 201;
     public const int Y_AXIS_PERCENT = 202;
 
+    // Keep these values in sync with resources/js/webtrees/pages/statistics-chart-custom-page.js.
     public const int Z_AXIS_ALL  = 300;
     public const int Z_AXIS_SEX  = 301;
     public const int Z_AXIS_TIME = 302;
@@ -103,7 +106,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return route('module', [
+        return route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Chart',
                 'tree'    => $individual->tree()->name(),
@@ -121,22 +124,22 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
         $tabs = [
-            I18N::translate('Individuals') => route('module', [
+            I18N::translate('Individuals') => route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Individuals',
                 'tree'    => $tree->name(),
             ]),
-            I18N::translate('Families')    => route('module', [
+            I18N::translate('Families')    => route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Families',
                 'tree'    => $tree->name(),
             ]),
-            I18N::translate('Other')       => route('module', [
+            I18N::translate('Other')       => route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Other',
                 'tree'    => $tree->name(),
             ]),
-            I18N::translate('Custom')      => route('module', [
+            I18N::translate('Custom')      => route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Custom',
                 'tree'    => $tree->name(),
@@ -198,7 +201,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         $statistics = Registry::container()->get(Statistics::class);
         assert($statistics instanceof Statistics);
 
-        $statistics_data = new StatisticsData($tree, new UserService());
+        $statistics_data = new StatisticsData($tree, Registry::container()->get(UserService::class));
 
         $x_axis_type = Validator::parsedBody($request)->integer('x-as');
         $y_axis_type = Validator::parsedBody($request)->integer('y-as');
@@ -482,7 +485,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows   = $statistics_data->statsAgeQuery('ALL', 0, 0);
+                        $rows   = $statistics_data->statsAgeQuery(null, 0, 0);
                         foreach ($rows as $row) {
                             $years = (int) ($row->days / self::DAYS_IN_YEAR);
                             $this->fillYData($years, 0, 1, $x_axis, $z_axis, $ydata);
@@ -491,7 +494,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
                         foreach (array_keys($z_axis) as $sex) {
-                            $rows = $statistics_data->statsAgeQuery($sex, 0, 0);
+                            $rows = $statistics_data->statsAgeQuery(Sex::from($sex), 0, 0);
                             foreach ($rows as $row) {
                                 $years = (int) ($row->days / self::DAYS_IN_YEAR);
                                 $this->fillYData($years, $sex, 1, $x_axis, $z_axis, $ydata);
@@ -503,7 +506,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
-                            $rows = $statistics_data->statsAgeQuery('ALL', $prev_boundary, $boundary);
+                            $rows = $statistics_data->statsAgeQuery(null, $prev_boundary, $boundary);
                             foreach ($rows as $row) {
                                 $years = (int) ($row->days / self::DAYS_IN_YEAR);
                                 $this->fillYData($years, $boundary, 1, $x_axis, $z_axis, $ydata);
@@ -863,10 +866,10 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 
         // Colors for z-axis
         $colors = [];
-        $index  = 0;
+        $color_offset = 0;
         while (count($colors) < count($ydata)) {
-            $colors[] = self::Z_AXIS_COLORS[$index];
-            $index    = ($index + 1) % count(self::Z_AXIS_COLORS);
+            $colors[] = self::Z_AXIS_COLORS[$color_offset];
+            $color_offset = ($color_offset + 1) % count(self::Z_AXIS_COLORS);
         }
 
         // Convert our sparse dataset into a fixed-size array
@@ -889,53 +892,51 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             });
         }
 
-        $data = [
-            array_merge(
-                [I18N::translate('Century')],
-                array_values($z_axis)
-            ),
-        ];
+        $labels = array_values($x_axis);
+        $datasets = [];
 
-        $intermediate = [];
-        foreach ($ydata as $months) {
-            foreach ($months as $month => $value) {
-                $intermediate[$month][] = [
-                    'v' => $value,
-                    'f' => $y_axis_type === self::Y_AXIS_PERCENT ? sprintf('%.1f%%', $value) : $value,
-                ];
-            }
+        $color_index = 0;
+
+        foreach ($ydata as $index => $values) {
+            $datasets[] = [
+                'label'           => array_key_exists($index, $z_axis) ? $z_axis[$index] : (string) $index,
+                'data'            => array_values($values),
+                'backgroundColor' => '#' . $colors[$color_index % count($colors)],
+            ];
+
+            $color_index++;
         }
 
-        foreach ($intermediate as $key => $values) {
-            $data[] = array_merge(
-                [$x_axis[$key]],
-                $values
-            );
-        }
+        $chart_data = new BarChartData($labels, $datasets);
 
         $chart_options = [
-            'title'    => '',
-            'subtitle' => '',
-            'height'   => 400,
-            'width'    => '100%',
-            'legend'   => [
-                'position'  => count($z_axis) > 1 ? 'right' : 'none',
-                'alignment' => 'center',
+            'plugins' => [
+                'legend' => [
+                    'display'  => count($z_axis) > 1,
+                    'position' => 'right',
+                ],
+                'tooltip' => [
+                    'enabled' => true,
+                ],
             ],
-            'tooltip'  => [
-                'format' => '\'%\'',
+            'scales' => [
+                'y' => [
+                    'title' => [
+                        'display' => true,
+                        'text'    => $y_axis_title,
+                    ],
+                ],
+                'x' => [
+                    'title' => [
+                        'display' => true,
+                        'text'    => $x_axis_title,
+                    ],
+                ],
             ],
-            'vAxis'    => [
-                'title' => $y_axis_title,
-            ],
-            'hAxis'    => [
-                'title' => $x_axis_title,
-            ],
-            'colors'   => $colors,
         ];
 
         return view('statistics/other/charts/custom', [
-            'data'          => $data,
+            'chart_data'    => $chart_data,
             'chart_options' => $chart_options,
             'chart_title'   => $chart_title,
             'language'      => I18N::languageTag(),

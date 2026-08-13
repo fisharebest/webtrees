@@ -266,7 +266,7 @@ class PdfBlockWriterTest extends TestCase
             ->willReturn(0);
         $renderer->expects($this->once())
             ->method('setFillColor')
-            ->with($this->callback(static fn (HexColor $color): bool => $color->hex() === '#FFFFFF'));
+            ->with(self::callback(static fn (HexColor $color): bool => $color->hex() === '#FFFFFF'));
         $renderer->expects($this->once())
             ->method('drawRect')
             ->with(12.0, 23.0, 40.0, 12.0, 'DF');

@@ -33,6 +33,7 @@ interface SurnameTraditionFactoryInterface
     public const string SPANISH     = 'spanish';
     public const string POLISH      = 'polish';
     public const string LITHUANIAN  = 'lithuanian';
+    public const string GREEK       = 'greek';
     public const string ICELANDIC   = 'icelandic';
     public const string DEFAULT     = '';
 

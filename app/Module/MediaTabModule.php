@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Services\FactSortService;
 use Illuminate\Support\Collection;
 
 use function preg_match;
@@ -33,11 +34,10 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
 
-    private ClipboardService $clipboard_service;
-
-    public function __construct(ClipboardService $clipboard_service)
-    {
-        $this->clipboard_service = $clipboard_service;
+    public function __construct(
+        private ClipboardService $clipboard_service,
+        private FactSortService $fact_sort_service,
+    ) {
     }
 
     public function title(): string
@@ -98,7 +98,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
      */
     protected function getFactsWithMedia(Individual $individual): Collection
     {
-        return Registry::cache()->array()->remember(self::class . ':' . __METHOD__, static function () use ($individual): Collection {
+        return Registry::cache()->array()->remember(self::class . ':' . __METHOD__, function () use ($individual): Collection {
             $facts = $individual->facts();
 
             foreach ($individual->spouseFamilies() as $family) {
@@ -109,7 +109,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
 
             $facts = $facts->filter(static fn (Fact $fact): bool => preg_match('/(?:^1|\n\d) OBJE @' . Gedcom::REGEX_XREF . '@/', $fact->gedcom()) === 1);
 
-            return Fact::sortFacts($facts);
+            return $this->fact_sort_service->sort($facts);
         });
     }
 

@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -126,7 +127,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
         return
             '<li class="sb_desc_indi_li">' .
-            '<a class="sb_desc_indi" href="#" data-wt-href="' . e(route('module', [
+            '<a class="sb_desc_indi" href="#" data-wt-href="' . e(route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Descendants',
                 'tree'    => $person->tree()->name(),
@@ -157,7 +158,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
         $family_link = '<a href="' . e($family->url()) . '" title="' . strip_tags($family->fullName()) . '">' . view('icons/family') . '</a>';
 
         $marryear = $family->getMarriageYear();
-        $marr     = $marryear ? '<i class="icon-rings"></i>' . $marryear : '';
+        $marr     = $marryear !== 0 ? '<i class="icon-rings"></i>' . $marryear : '';
 
         return
             '<li class="sb_desc_indi_li">' .

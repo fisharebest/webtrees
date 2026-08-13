@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
-use Fisharebest\Webtrees\Http\RequestHandlers\RenumberTreeAction;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\ManageTrees;
+use Fisharebest\Webtrees\Http\Controllers\RenumberTree;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -32,12 +32,12 @@ use Fisharebest\Webtrees\Tree;
     <?= I18N::plural('This family tree has %s record which uses the same “XREF” as another family tree.', 'This family tree has %s records which use the same “XREF” as another family tree.', count($xrefs), I18N::number(count($xrefs))) ?>
 </p>
 
-<?php if (!empty($xrefs)) : ?>
+<?php if ($xrefs !== []) : ?>
     <p>
         <?= I18N::translate('You can renumber this family tree.') ?>
     </p>
 
-    <form method="post" action="<?= e(route(RenumberTreeAction::class, ['tree' => $tree->name()])) ?>">
+    <form method="post" action="<?= e(route(RenumberTree::class, ['tree' => $tree->name()])) ?>">
         <button type="submit" class="btn btn-primary">
             <?= view('icons/save') ?>
             <?= /* I18N: A button label. */

@@ -76,7 +76,7 @@ class IndividualNonEvent extends AbstractElement
             'WILL' => Registry::elementFactory()->make('INDI:WILL')->label(),
         ];
 
-        uasort($values, I18N::comparator());
+        uasort($values, I18N::compare(...));
 
         return $values;
     }

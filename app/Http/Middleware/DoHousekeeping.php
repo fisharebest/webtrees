@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use League\Flysystem\FilesystemOperator;
@@ -59,7 +59,7 @@ class DoHousekeeping implements MiddlewareInterface
         $response = $handler->handle($request);
 
         // Run the cleanup after random page requests.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_GET && random_int(1, self::PROBABILITY) === 1) {
+        if ($request->getMethod() === HttpRequestMethod::GET->value && random_int(1, self::PROBABILITY) === 1) {
             $this->runHousekeeping(Registry::filesystem()->data(), Registry::filesystem()->root());
         }
 

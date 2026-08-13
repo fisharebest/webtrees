@@ -38,14 +38,12 @@ final class RenderContext
 
     private Style|null $current_style = null;
 
-
     public function applyDocument(Document $report_document): void
     {
         $this->header_elements = $report_document->header_elements;
         $this->body_elements   = $report_document->body_elements;
         $this->footer_elements = $report_document->footer_elements;
     }
-
 
     public function addStyle(Style $style): void
     {

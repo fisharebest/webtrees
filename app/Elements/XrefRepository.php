@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\CreateRepositoryModal;
+use Fisharebest\Webtrees\Http\Controllers\CreateRepository;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -55,7 +55,7 @@ class XrefRepository extends AbstractXrefElement
 
         return
             '<div class="input-group">' .
-            '<button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#wt-ajax-modal" data-wt-href="' . e(route(CreateRepositoryModal::class, ['tree' => $tree->name()])) . '" data-wt-select-id="' . $id . '" title="' . I18N::translate('Create a repository') . '">' .
+            '<button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#wt-ajax-modal" data-wt-href="' . e(route(CreateRepository::class, ['tree' => $tree->name()])) . '" data-wt-select-id="' . $id . '" title="' . I18N::translate('Create a repository') . '">' .
             view('icons/add') .
             '</button>' .
             $select .

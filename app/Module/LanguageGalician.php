@@ -19,15 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleGl;
-use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\I18N\Languages\Galician;
 
 class LanguageGalician extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    public function locale(): LocaleInterface
+    public function __construct()
     {
-        return new LocaleGl();
+        $this->language = new Galician();
     }
 }

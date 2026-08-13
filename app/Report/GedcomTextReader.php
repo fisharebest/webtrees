@@ -62,7 +62,7 @@ final class GedcomTextReader
         if ($match_count < $num) {
             return '';
         }
-        $start_position = (int) $match[$num - 1][0][1];
+        $start_position = $match[$num - 1][0][1];
         $end_position   = strpos($gedrec, "\n$level", $start_position + 1);
         if (!$end_position) {
             $end_position = strpos($gedrec, "\n1", $start_position + 1);
@@ -127,9 +127,10 @@ final class GedcomTextReader
 
         $subrecord = $gedrec;
         $final_tag = 'XXXX';
-        foreach ($tags as $final_tag) {
+        foreach ($tags as $current_tag) {
+            $final_tag          = $current_tag;
             $previous_subrecord = $subrecord;
-            $subrecord          = self::getSubRecord($level, "$level $final_tag", $subrecord);
+            $subrecord          = self::getSubRecord($level, "$level $current_tag", $subrecord);
             if ($subrecord === '' && $original_level === 0) {
                 $level--;
                 $subrecord = self::getSubRecord($level, "$level $final_tag", $previous_subrecord);

@@ -92,14 +92,14 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
         if (str_starts_with($parameters['GOOGLE_ANALYTICS_ID'], 'UA-')) {
             $parameters['dimensions'] = (object) [
                 'dimension1' => $tree instanceof Tree ? $tree->name() : '-',
-                'dimension2' => $tree instanceof Tree ? Auth::accessLevel($tree, $user) : '-',
+                'dimension2' => $tree instanceof Tree ? Auth::accessLevel($tree, $user)->value : '-',
             ];
 
             return view('modules/google-analytics/snippet', $parameters);
         }
 
         $parameters['tree_name'] = $tree instanceof Tree ? $tree->name() : '-';
-        $parameters['access_level'] = $tree instanceof Tree ? Auth::accessLevel($tree, $user) : '-';
+        $parameters['access_level'] = $tree instanceof Tree ? Auth::accessLevel($tree, $user)->value : '-';
 
         return view('modules/google-analytics/snippet-v4', $parameters);
     }

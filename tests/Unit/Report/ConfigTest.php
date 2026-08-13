@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Report\PageOrientation;
@@ -31,7 +31,7 @@ class ConfigTest extends TestCase
 {
     public function testConstructorAssignsProperties(): void
     {
-        $timestamp = self::createStub(TimestampInterface::class);
+        $timestamp = CarbonImmutable::now();
 
         $config = new Config(
             paper_width:      612.0,

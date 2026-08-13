@@ -52,7 +52,6 @@ class Element
 
     protected string $text = '';
 
-
     public function addText(string $text): void
     {
         // Whitespace-only chunks that contain a newline are XML formatting
@@ -107,7 +106,6 @@ class Element
     {
         return str_contains($this->text, self::TOTAL_PAGES_TOKEN);
     }
-
 
     public function getValue(): string
     {

@@ -48,11 +48,11 @@ class DatatablesService
      */
     public function handleCollection(ServerRequestInterface $request, Collection $collection, array $search_columns, array $sort_columns, Closure $callback): ResponseInterface
     {
-        $search = Validator::queryParams($request)->array('search')['value'] ?? '';
-        $start  = Validator::queryParams($request)->integer('start', 0);
-        $length = Validator::queryParams($request)->integer('length', 0);
-        $order  = Validator::queryParams($request)->arrayArray('order');
-        $draw   = Validator::queryParams($request)->integer('draw', 0);
+        $search = Validator::parsedBody($request)->array('search')['value'] ?? '';
+        $start  = Validator::parsedBody($request)->integer('start', 0);
+        $length = Validator::parsedBody($request)->integer('length', 0);
+        $order  = Validator::parsedBody($request)->arrayArray('order');
+        $draw   = Validator::parsedBody($request)->integer('draw', 0);
 
         // Count unfiltered records
         $recordsTotal = $collection->count();
@@ -122,11 +122,11 @@ class DatatablesService
      */
     public function handleQuery(ServerRequestInterface $request, Builder $query, array $search_columns, array $sort_columns, Closure $callback): ResponseInterface
     {
-        $search = Validator::queryParams($request)->array('search')['value'] ?? '';
-        $start  = Validator::queryParams($request)->integer('start', 0);
-        $length = Validator::queryParams($request)->integer('length', 0);
-        $order  = Validator::queryParams($request)->arrayArray('order');
-        $draw   = Validator::queryParams($request)->integer('draw', 0);
+        $search = Validator::parsedBody($request)->array('search')['value'] ?? '';
+        $start  = Validator::parsedBody($request)->integer('start', 0);
+        $length = Validator::parsedBody($request)->integer('length', 0);
+        $order  = Validator::parsedBody($request)->arrayArray('order');
+        $draw   = Validator::parsedBody($request)->integer('draw', 0);
 
         // Count unfiltered records
         $recordsTotal = (clone $query)->count();

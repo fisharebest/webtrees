@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Census;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
@@ -37,7 +38,7 @@ class CensusColumnConditionEnglishTest extends TestCase
     public function testNoSpouseFamiliesMale(): void
     {
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('M');
+        $individual->method('sex')->willReturn(Sex::Male);
         $individual->method('spouseFamilies')->willReturn(new Collection());
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
 
@@ -52,7 +53,7 @@ class CensusColumnConditionEnglishTest extends TestCase
     public function testNoSpouseFamiliesFemale(): void
     {
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('F');
+        $individual->method('sex')->willReturn(Sex::Female);
         $individual->method('spouseFamilies')->willReturn(new Collection());
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
 
@@ -73,7 +74,7 @@ class CensusColumnConditionEnglishTest extends TestCase
         $individual = self::createStub(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
-        $individual->method('sex')->willReturn('M');
+        $individual->method('sex')->willReturn(Sex::Male);
 
         $census = self::createStub(CensusInterface::class);
 
@@ -92,7 +93,7 @@ class CensusColumnConditionEnglishTest extends TestCase
         $individual = self::createStub(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
-        $individual->method('sex')->willReturn('F');
+        $individual->method('sex')->willReturn(Sex::Female);
 
         $census = self::createStub(CensusInterface::class);
 
@@ -110,6 +111,7 @@ class CensusColumnConditionEnglishTest extends TestCase
         $spouse->method('getDeathDate')->willReturn(new Date('1820'));
 
         $family = $this->createMock(Family::class);
+        $family->method('getMarriageDate')->willReturn(new Date(''));
         $family
             ->expects($this->exactly(2))
             ->method('facts')
@@ -121,7 +123,7 @@ class CensusColumnConditionEnglishTest extends TestCase
         $family->expects($this->once())->method('spouse')->willReturn($spouse);
 
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('M');
+        $individual->method('sex')->willReturn(Sex::Male);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
         $census = self::createStub(CensusInterface::class);
@@ -140,6 +142,7 @@ class CensusColumnConditionEnglishTest extends TestCase
         $spouse->method('getDeathDate')->willReturn(new Date('1820'));
 
         $family = $this->createMock(Family::class);
+        $family->method('getMarriageDate')->willReturn(new Date(''));
         $family
             ->expects($this->exactly(2))
             ->method('facts')
@@ -151,7 +154,7 @@ class CensusColumnConditionEnglishTest extends TestCase
         $family->expects($this->once())->method('spouse')->willReturn($spouse);
 
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('F');
+        $individual->method('sex')->willReturn(Sex::Female);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
         $census = self::createStub(CensusInterface::class);
@@ -169,7 +172,7 @@ class CensusColumnConditionEnglishTest extends TestCase
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('M');
+        $individual->method('sex')->willReturn(Sex::Male);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
 
@@ -188,7 +191,7 @@ class CensusColumnConditionEnglishTest extends TestCase
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('F');
+        $individual->method('sex')->willReturn(Sex::Female);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1800'));
 
@@ -207,7 +210,7 @@ class CensusColumnConditionEnglishTest extends TestCase
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('M');
+        $individual->method('sex')->willReturn(Sex::Male);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1820'));
 
@@ -226,7 +229,7 @@ class CensusColumnConditionEnglishTest extends TestCase
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('F');
+        $individual->method('sex')->willReturn(Sex::Female);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('1820'));
 
@@ -243,6 +246,7 @@ class CensusColumnConditionEnglishTest extends TestCase
         $fact = self::createStub(Fact::class);
 
         $family = $this->createMock(Family::class);
+        $family->method('getMarriageDate')->willReturn(new Date(''));
         $family
             ->expects($this->exactly(2))
             ->method('facts')
@@ -253,7 +257,7 @@ class CensusColumnConditionEnglishTest extends TestCase
             );
 
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('M');
+        $individual->method('sex')->willReturn(Sex::Male);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
         $census = self::createStub(CensusInterface::class);
@@ -269,6 +273,7 @@ class CensusColumnConditionEnglishTest extends TestCase
         $fact = self::createStub(Fact::class);
 
         $family = $this->createMock(Family::class);
+        $family->method('getMarriageDate')->willReturn(new Date(''));
         $family
             ->expects($this->exactly(2))
             ->method('facts')
@@ -279,7 +284,7 @@ class CensusColumnConditionEnglishTest extends TestCase
             );
 
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('F');
+        $individual->method('sex')->willReturn(Sex::Female);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
         $census = self::createStub(CensusInterface::class);

@@ -19,8 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Elements\XrefMedia;
-use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
+use Fisharebest\Webtrees\Http\Controllers\MediaPage;
 use Illuminate\Support\Collection;
 
 use function array_filter;
@@ -38,7 +39,7 @@ class Media extends GedcomRecord
     /**
      * Each object type may have its own special rules, and re-implement this function.
      */
-    protected function canShowByType(int $access_level): bool
+    protected function canShowByType(AccessLevel $access_level): bool
     {
         // Hide media objects if they are attached to private records
         $linked_ids = DB::table('link')
@@ -109,7 +110,7 @@ class Media extends GedcomRecord
         }
 
         // Titles may be empty.
-        $names = array_filter($names);
+        $names = array_filter($names, static fn (string $value): bool => $value !== '');
 
         if ($names === []) {
             foreach ($this->mediaFiles() as $media_file) {

@@ -27,8 +27,6 @@ use Fisharebest\Webtrees\Tree;
 #[CoversClass(Note::class)]
 class NoteTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(Note::class));

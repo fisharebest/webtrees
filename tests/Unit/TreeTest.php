@@ -46,11 +46,10 @@ use function stream_get_contents;
 #[CoversClass(GedcomExportService::class)]
 class TreeTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     protected function setUp(): void
     {
         parent::setUp();
+        self::createDatabase();
 
         $cache_factory = self::createStub(CacheFactoryInterface::class);
         $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));
@@ -80,7 +79,7 @@ class TreeTest extends TestCase
 
     public function testUserTreePreferences(): void
     {
-        $user_service          = new UserService();
+        $user_service          = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create('name', 'title');
@@ -98,7 +97,7 @@ class TreeTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $user_service          = new UserService();
+        $user_service          = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create('name', 'title');
@@ -111,7 +110,7 @@ class TreeTest extends TestCase
 
     public function testCreateIndividual(): void
     {
-        $user_service          = new UserService();
+        $user_service          = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create('name', 'title');
@@ -131,7 +130,7 @@ class TreeTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $user_service          = new UserService();
+        $user_service          = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create('name', 'title');
@@ -144,7 +143,7 @@ class TreeTest extends TestCase
 
     public function testCreateFamily(): void
     {
-        $user_service          = new UserService();
+        $user_service          = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create('name', 'title');
@@ -164,7 +163,7 @@ class TreeTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $user_service          = new UserService();
+        $user_service          = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create('name', 'title');
@@ -177,7 +176,7 @@ class TreeTest extends TestCase
 
     public function testCreateMediaObject(): void
     {
-        $user_service          = new UserService();
+        $user_service          = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create('name', 'title');
@@ -197,7 +196,7 @@ class TreeTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $user_service          = new UserService();
+        $user_service          = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create('name', 'title');
@@ -210,7 +209,7 @@ class TreeTest extends TestCase
 
     public function testCreateRecord(): void
     {
-        $user_service          = new UserService();
+        $user_service          = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create('name', 'title');
@@ -229,7 +228,7 @@ class TreeTest extends TestCase
     public function testSignificantIndividual(): void
     {
         $gedcom_import_service = new GedcomImportService();
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $tree_service = new TreeService($gedcom_import_service);
         $tree         = $tree_service->create('name', 'title');
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
@@ -279,7 +278,7 @@ class TreeTest extends TestCase
 
     public function testHasPendingEdits(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $tree         = $this->importTree('demo.ged');
         $user         = $user_service->create('admin', 'Administrator', 'admin@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');

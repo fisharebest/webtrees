@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
-use function e;
 use function preg_replace_callback;
 use function view;
 
@@ -58,7 +57,7 @@ class DateValue extends AbstractElement
             'id'        => $id,
             'name'      => $name,
             'value'     => $value,
-            'onchange'  => 'webtrees.reformatDate(this, \'' . e($dmy) . '\')',
+            'data-wt-reformat-date-order' => $dmy,
             'maxlength' => static::MAXIMUM_LENGTH,
             'pattern'   => static::PATTERN,
         ];

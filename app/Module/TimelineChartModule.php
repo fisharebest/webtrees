@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Comparators\FactComparator;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -33,13 +33,13 @@ use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 use function in_array;
 use function redirect;
 use function route;
+use function usort;
 
-class TimelineChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
+class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
@@ -73,10 +73,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST)
-            ->extras(['middleware' => [AuthNotRobot::class]]);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class, [AuthNotRobot::class]);
     }
 
     public function title(): string
@@ -112,25 +109,15 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();
         $user  = Validator::attributes($request)->user();
         $scale = Validator::attributes($request)->isBetween(self::MINIMUM_SCALE, self::MAXIMUM_SCALE)->integer('scale');
-        $xrefs = Validator::queryParams($request)->list('xrefs');
+        $xrefs = Validator::queryParams($request)->array('xrefs');
         $ajax  = Validator::queryParams($request)->boolean('ajax', false);
-        $xrefs = array_filter(array_unique($xrefs));
+        $xrefs = array_unique($xrefs);
 
-        // Convert POST requests into GET requests for pretty URLs.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            $xrefs[] = Validator::parsedBody($request)->isXref()->string('add', '');
-
-            return redirect(route(static::class, [
-                'tree'  => $tree->name(),
-                'scale' => $scale,
-                'xrefs' => $xrefs,
-            ]));
-        }
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
@@ -226,9 +213,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             if ($bdate->isOK()) {
                 $date = new GregorianDate($bdate->minimumJulianDay());
 
-                $birthyears [$individual->xref()] = $date->year;
-                $birthmonths[$individual->xref()] = max(1, $date->month);
-                $birthdays  [$individual->xref()] = max(1, $date->day);
+                $birthyears [$individual->xref()] = $date->year();
+                $birthmonths[$individual->xref()] = max(1, $date->month());
+                $birthdays  [$individual->xref()] = max(1, $date->day());
             }
             // find all the fact information
             $facts = $individual->facts();
@@ -244,8 +231,8 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
                     $date = $event->date();
                     if ($date->isOK()) {
                         $date     = new GregorianDate($date->minimumJulianDay());
-                        $baseyear = min($baseyear, $date->year);
-                        $topyear  = max($topyear, $date->year);
+                        $baseyear = min($baseyear, $date->year());
+                        $topyear  = max($topyear, $date->year());
 
                         if (!$individual->isDead()) {
                             $topyear = max($topyear, (int) date('Y'));
@@ -272,7 +259,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         $baseyear -= 5;
         $topyear  += 5;
 
-        $indifacts = Fact::sortFacts($indifacts);
+        $sorted_facts = $indifacts->all();
+        usort($sorted_facts, FactComparator::byDate(...));
+        $indifacts = new Collection($sorted_facts);
 
         $html = view('modules/timeline-chart/chart', [
             'baseyear'    => $baseyear,
@@ -288,5 +277,17 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         ]);
 
         return response($html);
+    }
+
+    public function post(ServerRequestInterface $request, Tree $tree, int $scale, string $add = ''): ResponseInterface
+    {
+        $xrefs = Validator::parsedBody($request)->array('xrefs');
+        $xrefs[] = $add;
+
+        return redirect(route(static::class, [
+            'tree'  => $tree->name(),
+            'scale' => $scale,
+            'xrefs' => $xrefs,
+        ]));
     }
 }

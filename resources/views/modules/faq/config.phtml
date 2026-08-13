@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\ModulesAll;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -25,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 
 ?>
 
-<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ModulesAllPage::class) => I18N::translate('Modules'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ModulesAll::class) => I18N::translate('Modules'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
@@ -47,7 +48,7 @@ use Fisharebest\Webtrees\Tree;
 </form>
 
 <p>
-    <a href="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminEdit', 'tree' => $tree->name()])) ?>" class="btn btn-link">
+    <a href="<?= e(route(ModuleAction::class, ['module' => 'faq', 'action' => 'AdminEdit', 'tree' => $tree->name()])) ?>" class="btn btn-link">
         <?= view('icons/add') ?>
         <?= /* I18N: FAQ = “Frequently Asked Question” */
         I18N::translate('Add an FAQ') ?>
@@ -89,25 +90,25 @@ use Fisharebest\Webtrees\Tree;
                 </td>
                 <td>
                     <?php if ($faq->block_order !== $min_block_order) : ?>
-                        <a href="#" data-wt-post-url="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveUp', 'block_id' => $faq->block_id])) ?>" class="btn btn-secondary">
+                        <a href="#" data-wt-post-url="<?= e(route(ModuleAction::class, ['module' => 'faq', 'action' => 'AdminMoveUp', 'block_id' => $faq->block_id])) ?>" class="btn btn-secondary">
                             <?= view('icons/arrow-up') ?>
                         </a>
                     <?php endif ?>
                 </td>
                 <td>
                     <?php if ($faq->block_order !== $max_block_order) : ?>
-                        <a href="#" data-wt-post-url="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveDown', 'block_id' => $faq->block_id])) ?>" class="btn btn-secondary">
+                        <a href="#" data-wt-post-url="<?= e(route(ModuleAction::class, ['module' => 'faq', 'action' => 'AdminMoveDown', 'block_id' => $faq->block_id])) ?>" class="btn btn-secondary">
                         <?= view('icons/arrow-down') ?>
                         </a>
                     <?php endif ?>
                 </td>
                 <td>
-                    <a href="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminEdit', 'block_id' => $faq->block_id, 'tree' => $tree->name()])) ?>" aria-label="<?= I18N::translate('Edit') ?>" class="btn btn-primary">
+                    <a href="<?= e(route(ModuleAction::class, ['module' => 'faq', 'action' => 'AdminEdit', 'block_id' => $faq->block_id, 'tree' => $tree->name()])) ?>" aria-label="<?= I18N::translate('Edit') ?>" class="btn btn-primary">
                         <?= view('icons/edit') ?>
                     </a>
                 </td>
                 <td>
-                    <a href="#" data-wt-post-url="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminDelete', 'block_id' => $faq->block_id])) ?>" data-wt-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($faq->header)) ?>" aria-label="<?= I18N::translate('Delete') ?>" class="btn btn-danger">
+                    <a href="#" data-wt-post-url="<?= e(route(ModuleAction::class, ['module' => 'faq', 'action' => 'AdminDelete', 'block_id' => $faq->block_id])) ?>" data-wt-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($faq->header)) ?>" aria-label="<?= I18N::translate('Delete') ?>" class="btn btn-danger">
                         <?= view('icons/delete') ?>
                     </a>
                 </td>

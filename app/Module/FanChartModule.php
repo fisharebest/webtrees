@@ -19,20 +19,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ChartService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
 use GdImage;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_filter;
 use function array_map;
@@ -67,7 +67,7 @@ use function view;
 
 use const IMG_ARC_PIE;
 
-class FanChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
+class FanChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
@@ -112,10 +112,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST)
-            ->extras(['middleware' => [AuthNotRobot::class]]);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class, [AuthNotRobot::class]);
     }
 
     public function title(): string
@@ -168,7 +165,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
         $user        = Validator::attributes($request)->user();
@@ -178,16 +175,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         $width       = Validator::attributes($request)->isBetween(self::MINIMUM_WIDTH, self::MAXIMUM_WIDTH)->integer('width');
         $ajax        = Validator::queryParams($request)->boolean('ajax', false);
 
-        // Convert POST requests into GET requests for pretty URLs.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            return redirect(route(static::class, [
-                'tree'        => $tree->name(),
-                'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
-                'style'       => Validator::parsedBody($request)->isInArrayKeys($this->styles())->integer('style'),
-                'width'       => Validator::parsedBody($request)->isBetween(self::MINIMUM_WIDTH, self::MAXIMUM_WIDTH)->integer('width'),
-                'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
-             ]));
-        }
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
@@ -262,9 +249,10 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         $theme       = Registry::container()->get(ModuleThemeInterface::class);
         $text_color  = $this->imageColor($image, '000000');
         $backgrounds = [
-            'M' => $this->imageColor($image, 'b1cff0'),
-            'F' => $this->imageColor($image, 'e9daf1'),
-            'U' => $this->imageColor($image, 'eeeeee'),
+            Sex::Male->value    => $this->imageColor($image, 'b1cff0'),
+            Sex::Female->value  => $this->imageColor($image, 'e9daf1'),
+            Sex::Unknown->value => $this->imageColor($image, 'eeeeee'),
+            Sex::Other->value   => $this->imageColor($image, 'eeeeee'),
         ];
 
         // Co-ordinates are measured from the top-left corner.
@@ -296,7 +284,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                 $arc_diameter,
                 $chart_start_angle,
                 $chart_end_angle,
-                $backgrounds['U'],
+                $backgrounds[Sex::Unknown->value],
                 IMG_ARC_PIE
             );
 
@@ -319,7 +307,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         $arc_diameter,
                         $start_angle,
                         $end_angle,
-                        $backgrounds[$individual->sex()] ?? $backgrounds['U'],
+                        $backgrounds[$individual->sex()->value],
                         IMG_ARC_PIE
                     );
 
@@ -356,7 +344,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         I18N::reverseText($individual->fullName()),
                         I18N::reverseText($individual->alternateName() ?? ''),
                         I18N::reverseText($individual->lifespan()),
-                    ]);
+                    ], static fn (string $value): bool => $value !== '');
 
                     $text_lines = array_map(
                         fn (string $line): string => $this->fitTextToPixelWidth($line, $max_text_length),
@@ -387,7 +375,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         $text
                     );
                     // Debug text positions by underlining first line of text
-                    //imageline($image, (int) $tx_start, (int) $ty_start, (int) $tx_end, (int) $ty_end, $backgrounds['U']);
+                    //imageline($image, (int) $tx_start, (int) $ty_start, (int) $tx_end, (int) $ty_end, $backgrounds[Sex::Unknown->value]);
 
                     $areas .= '<area shape="poly" coords="';
                     for ($deg = $start_angle; $deg <= $end_angle; $deg++) {
@@ -500,5 +488,16 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         $bounding_box = imagettfbbox(self::TEXT_SIZE_POINTS, 0, self::FONT, $text);
 
         return $bounding_box[4] - $bounding_box[0];
+    }
+
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    {
+        return redirect(route(static::class, [
+            'tree'        => $tree->name(),
+            'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
+            'style'       => Validator::parsedBody($request)->isInArrayKeys($this->styles())->integer('style'),
+            'width'       => Validator::parsedBody($request)->isBetween(self::MINIMUM_WIDTH, self::MAXIMUM_WIDTH)->integer('width'),
+            'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
+         ]));
     }
 }

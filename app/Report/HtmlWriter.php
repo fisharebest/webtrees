@@ -170,7 +170,6 @@ final class HtmlWriter
             return $this->renderBodySection($class, $blocks, $content_width);
         }
 
-
         // Calculate the total height needed for the section
         $max_y = 0.0;
         foreach ($blocks as $block) {
@@ -434,7 +433,6 @@ final class HtmlWriter
 
         return $html;
     }
-
 
     /**
      * Render a single LayoutBlock as HTML.
@@ -829,7 +827,6 @@ final class HtmlWriter
             $style_parts[] = 'border-right:solid ' . $resolved_border_color . ' 1pt';
         }
     }
-
 
     /**
      * Escape text for safe HTML output, converting newlines to <br>.

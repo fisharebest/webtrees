@@ -20,22 +20,26 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\Encodings\ANSEL;
 use Fisharebest\Webtrees\Encodings\ASCII;
 use Fisharebest\Webtrees\Encodings\UTF16BE;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Encodings\Windows1252;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\LocationPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\SubmitterPage;
+use Fisharebest\Webtrees\Http\Controllers\FamilyPage;
+use Fisharebest\Webtrees\Http\Controllers\IndividualPage;
+use Fisharebest\Webtrees\Http\Controllers\LocationPage;
+use Fisharebest\Webtrees\Http\Controllers\MediaPage;
+use Fisharebest\Webtrees\Http\Controllers\NotePage;
+use Fisharebest\Webtrees\Http\Controllers\RepositoryPage;
+use Fisharebest\Webtrees\Http\Controllers\SourcePage;
+use Fisharebest\Webtrees\Http\Controllers\SubmitterPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -69,6 +73,7 @@ use function is_string;
 use function preg_match_all;
 use function redirect;
 use function route;
+use function strval;
 use function str_replace;
 use function uasort;
 use function view;
@@ -101,8 +106,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         'Submitter'  => SubmitterPage::class,
     ];
 
-    /** @var int The default access level for this module.  It can be changed in the control panel. */
-    protected int $access_level = Auth::PRIV_USER;
+    protected AccessLevel $access_level = AccessLevel::Member;
 
     public function __construct(
         private GedcomExportService $gedcom_export_service,
@@ -132,19 +136,19 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $badge   = view('components/badge', ['count' => $count]);
 
         $submenus = [
-            new Menu($this->title() . ' ' . $badge, route('module', [
+            new Menu($this->title() . ' ' . $badge, route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Show',
                 'tree'   => $tree->name(),
             ]), 'menu-clippings-cart', ['rel' => 'nofollow']),
         ];
 
-        $action = array_search($route->name, self::ROUTES_WITH_RECORDS, true);
+        $action = array_search($route->controller, self::ROUTES_WITH_RECORDS, true);
         if ($action !== false) {
-            $xref = $route->attributes['xref'];
+            $xref = $request->getAttribute('xref', '');
             assert(is_string($xref));
 
-            $add_route = route('module', [
+            $add_route = route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Add' . $action,
                 'xref'   => $xref,
@@ -155,13 +159,13 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         }
 
         if (!$this->isCartEmpty($tree)) {
-            $submenus[] = new Menu(I18N::translate('Empty the clippings cart'), route('module', [
+            $submenus[] = new Menu(I18N::translate('Empty the clippings cart'), route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Empty',
                 'tree'   => $tree->name(),
             ]), 'menu-clippings-empty', ['rel' => 'nofollow']);
 
-            $submenus[] = new Menu(I18N::translate('Download'), route('module', [
+            $submenus[] = new Menu(I18N::translate('Download'), route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'DownloadForm',
                 'tree'   => $tree->name(),
@@ -230,23 +234,23 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $cart = is_array($cart) ? $cart : [];
 
         $xrefs = array_keys($cart[$tree->name()] ?? []);
-        $xrefs = array_map('strval', $xrefs); // PHP converts numeric keys to integers.
+        $xrefs = array_map(strval(...), $xrefs); // PHP converts numeric keys to integers.
 
         $records = new Collection();
 
         switch ($privacy) {
             case 'gedadmin':
-                $access_level = Auth::PRIV_NONE;
+                $access_level = AccessLevel::Manager;
                 break;
             case 'user':
-                $access_level = Auth::PRIV_USER;
+                $access_level = AccessLevel::Member;
                 break;
             case 'visitor':
-                $access_level = Auth::PRIV_PRIVATE;
+                $access_level = AccessLevel::Public;
                 break;
             case 'none':
             default:
-                $access_level = Auth::PRIV_HIDE;
+                $access_level = AccessLevel::Hidden;
                 break;
         }
 
@@ -293,7 +297,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $cart[$tree->name()] = [];
         Session::put('cart', $cart);
 
-        $url = route('module', [
+        $url = route(ModuleAction::class, [
             'module' => $this->name(),
             'action' => 'Show',
             'tree'   => $tree->name(),
@@ -312,7 +316,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         unset($cart[$tree->name()][$xref]);
         Session::put('cart', $cart);
 
-        $url = route('module', [
+        $url = route(ModuleAction::class, [
             'module' => $this->name(),
             'action' => 'Show',
             'tree'   => $tree->name(),
@@ -342,7 +346,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $cart = is_array($cart) ? $cart : [];
 
         $xrefs = array_keys($cart[$tree->name()] ?? []);
-        $xrefs = array_map('strval', $xrefs); // PHP converts numeric keys to integers.
+        $xrefs = array_map(strval(...), $xrefs); // PHP converts numeric keys to integers.
 
         // Fetch all the records in the cart.
         $records = array_map(static fn (string $xref): GedcomRecord|null => Registry::gedcomRecordFactory()->make($xref, $tree), $xrefs);
@@ -350,8 +354,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         // Some records may have been deleted after they were added to the cart.
         $records = array_filter($records);
 
-        // Group and sort.
-        uasort($records, static fn (GedcomRecord $x, GedcomRecord $y): int => $x->tag() <=> $y->tag() ?: GedcomRecord::nameComparator()($x, $y));
+        // Sort by name and group by type.
+        uasort($records, GedcomRecordComparator::byName(...));
+        uasort($records, GedcomRecordComparator::byType(...));
 
         return $records;
     }
@@ -436,7 +441,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $individual = Auth::checkIndividualAccess($individual);
         $name       = $individual->fullName();
 
-        if ($individual->sex() === 'F') {
+        if ($individual->sex() === Sex::Female) {
             $options = [
                 self::ADD_RECORD_ONLY       => $name,
                 self::ADD_PARENT_FAMILIES   => I18N::translate('%s, her parents and siblings', $name),

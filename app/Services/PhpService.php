@@ -25,6 +25,7 @@ use function extension_loaded;
 use function function_exists;
 use function ini_get;
 use function ini_parse_quantity;
+use function memory_get_usage;
 use function sys_get_temp_dir;
 
 use const PHP_OS_FAMILY;
@@ -62,6 +63,11 @@ class PhpService
     public function memoryLimit(): int
     {
         return ini_parse_quantity(shorthand: $this->iniGet(option: 'memory_limit'));
+    }
+
+    public function memoryGetUsage(bool $real_usage = false): int
+    {
+        return memory_get_usage($real_usage);
     }
 
     public function pdoMysqlDefaultSocket(): string

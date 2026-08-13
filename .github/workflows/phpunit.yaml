@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   run:
-    name: phpunit PHP ${{ matrix.php-version }}
+    name: phpunit
     if: ${{ !startsWith(github.event.head_commit.message, 'Translation:') }}
     runs-on: ubuntu-latest
     strategy:

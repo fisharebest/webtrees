@@ -21,6 +21,9 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Enums\Relation;
+use Fisharebest\Webtrees\Enums\Sex;
 
 use function abs;
 use function array_slice;
@@ -29,32 +32,8 @@ use function in_array;
 use function intdiv;
 use function min;
 
-/**
- * Class Relationship - define a relationship for a language.
- */
 class Relationship
 {
-    // The basic components of a relationship.
-    // These strings are needed for compatibility with the legacy algorithm.
-    // Once that has been replaced, it may be more efficient to use integers here.
-    public const string SISTER   = 'sis';
-    public const string BROTHER  = 'bro';
-    public const string SIBLING  = 'sib';
-    public const string MOTHER   = 'mot';
-    public const string FATHER   = 'fat';
-    public const string PARENT   = 'par';
-    public const string DAUGHTER = 'dau';
-    public const string SON      = 'son';
-    public const string CHILD    = 'chi';
-    public const string WIFE     = 'wif';
-    public const string HUSBAND  = 'hus';
-    public const string SPOUSE   = 'spo';
-
-    public const array SIBLINGS = ['F' => self::SISTER, 'M' => self::BROTHER, 'U' => self::SIBLING];
-    public const array PARENTS  = ['F' => self::MOTHER, 'M' => self::FATHER, 'U' => self::PARENT];
-    public const array CHILDREN = ['F' => self::DAUGHTER, 'M' => self::SON, 'U' => self::CHILD];
-    public const array SPOUSES  = ['F' => self::WIFE, 'M' => self::HUSBAND, 'U' => self::SPOUSE];
-
     // Generates a name from the matched relationship.
     private Closure $callback;
 
@@ -70,9 +49,11 @@ class Relationship
     /**
      * Allow fluent constructor.
      */
-    public static function fixed(string $nominative, string $genitive): Relationship
+    public static function fixed(string $nominative, string $genitive, string $genitiveFemale = ''): Relationship
     {
-        return new self(fn () => [$nominative, $genitive]);
+        return new self(fn () => $genitiveFemale !== ''
+            ? [$nominative, $genitive, $genitiveFemale]
+            : [$nominative, $genitive]);
     }
 
     /**
@@ -87,7 +68,7 @@ class Relationship
      * Does this relationship match the pattern?
      *
      * @param array<Individual|Family> $nodes
-     * @param array<string>            $patterns
+     * @param array<Relation>          $patterns
      *
      * @return array<string>|null [nominative, genitive] or null
      */
@@ -111,7 +92,7 @@ class Relationship
     public function adopted(): Relationship
     {
         $this->matchers[] = static fn (array $nodes): bool => count($nodes) > 2 && $nodes[2]
-                ->facts(['FAMC'], false, Auth::PRIV_HIDE)
+                ->facts(['FAMC'], false, AccessLevel::Hidden)
                 ->contains(fn (Fact $fact): bool => $fact->value() === '@' . $nodes[1]->xref() . '@' && $fact->attribute('PEDI') === PedigreeLinkageType::VALUE_ADOPTED);
 
         return $this;
@@ -120,7 +101,7 @@ class Relationship
     public function adoptive(): Relationship
     {
         $this->matchers[] = static fn (array $nodes): bool => $nodes[0]
-            ->facts(['FAMC'], false, Auth::PRIV_HIDE)
+            ->facts(['FAMC'], false, AccessLevel::Hidden)
             ->contains(fn (Fact $fact): bool => $fact->value() === '@' . $nodes[1]->xref() . '@' && $fact->attribute('PEDI') === PedigreeLinkageType::VALUE_ADOPTED);
 
         return $this;
@@ -128,13 +109,13 @@ class Relationship
 
     public function brother(): Relationship
     {
-        return $this->relation([self::BROTHER]);
+        return $this->relation([Relation::Brother]);
     }
 
     /**
      * Match the next relationship in the path.
      *
-     * @param array<string> $relationships
+     * @param array<Relation> $relationships
      */
     protected function relation(array $relationships): Relationship
     {
@@ -162,23 +143,23 @@ class Relationship
 
     public function descendant(): Relationship
     {
-        return $this->repeatedRelationship(self::CHILDREN);
+        return $this->repeatedRelationship([Relation::Daughter, Relation::Son, Relation::Child]);
     }
 
     /**
      * Match a repeated number of the same type of component
      *
-     * @param array<string> $relationships
+     * @param array<Relation> $relationships
      */
     protected function repeatedRelationship(array $relationships): Relationship
     {
         $this->matchers[] = static function (array &$nodes, array &$patterns, array &$captures) use ($relationships): bool {
             $limit = min(intdiv(count($nodes), 2), count($patterns));
 
-            for ($generations = 0; $generations < $limit; ++$generations) {
-                if (!in_array($patterns[$generations], $relationships, true)) {
-                    break;
-                }
+            $generations = 0;
+
+            while ($generations < $limit && in_array($patterns[$generations], $relationships, true)) {
+                ++$generations;
             }
 
             if ($generations > 0) {
@@ -197,22 +178,22 @@ class Relationship
 
     public function sibling(): Relationship
     {
-        return $this->relation(self::SIBLINGS);
+        return $this->relation([Relation::Sister, Relation::Brother, Relation::Sibling]);
     }
 
     public function ancestor(): Relationship
     {
-        return $this->repeatedRelationship(self::PARENTS);
+        return $this->repeatedRelationship([Relation::Mother, Relation::Father, Relation::Parent]);
     }
 
     public function child(): Relationship
     {
-        return $this->relation(self::CHILDREN);
+        return $this->relation([Relation::Daughter, Relation::Son, Relation::Child]);
     }
 
     public function daughter(): Relationship
     {
-        return $this->relation([self::DAUGHTER]);
+        return $this->relation([Relation::Daughter]);
     }
 
     public function divorced(): Relationship
@@ -229,7 +210,7 @@ class Relationship
             $family = $nodes[1] ?? null;
 
             if ($family instanceof Family) {
-                $fact = $family->facts(['ENGA', 'MARR', 'DIV', 'ANUL'], true, Auth::PRIV_HIDE)->last();
+                $fact = $family->facts(['ENGA', 'MARR', 'DIV', 'ANUL'], true, AccessLevel::Hidden)->last();
 
                 if ($fact instanceof Fact) {
                     switch ($status) {
@@ -258,18 +239,18 @@ class Relationship
 
     public function father(): Relationship
     {
-        return $this->relation([self::FATHER]);
+        return $this->relation([Relation::Father]);
     }
 
     public function female(): Relationship
     {
-        return $this->sex('F');
+        return $this->sex(Sex::Female);
     }
 
     /**
      * Match the sex of the current individual
      */
-    protected function sex(string $sex): Relationship
+    protected function sex(Sex $sex): Relationship
     {
         $this->matchers[] = static fn (array $nodes): bool => $nodes[0]->sex() === $sex;
 
@@ -279,7 +260,7 @@ class Relationship
     public function fostered(): Relationship
     {
         $this->matchers[] = static fn (array $nodes): bool => count($nodes) > 2 && $nodes[2]
-                ->facts(['FAMC'], false, Auth::PRIV_HIDE)
+                ->facts(['FAMC'], false, AccessLevel::Hidden)
                 ->contains(fn (Fact $fact): bool => $fact->value() === '@' . $nodes[1]->xref() . '@' && $fact->attribute('PEDI') === PedigreeLinkageType::VALUE_FOSTER);
 
         return $this;
@@ -288,7 +269,7 @@ class Relationship
     public function fostering(): Relationship
     {
         $this->matchers[] = static fn (array $nodes): bool => $nodes[0]
-            ->facts(['FAMC'], false, Auth::PRIV_HIDE)
+            ->facts(['FAMC'], false, AccessLevel::Hidden)
             ->contains(fn (Fact $fact): bool => $fact->value() === '@' . $nodes[1]->xref() . '@' && $fact->attribute('PEDI') === PedigreeLinkageType::VALUE_FOSTER);
 
         return $this;
@@ -296,7 +277,7 @@ class Relationship
 
     public function husband(): Relationship
     {
-        return $this->married()->relation([self::HUSBAND]);
+        return $this->married()->relation([Relation::Husband]);
     }
 
     public function married(): Relationship
@@ -306,19 +287,29 @@ class Relationship
 
     public function male(): Relationship
     {
-        return $this->sex('M');
+        return $this->sex(Sex::Male);
+    }
+
+    /**
+     * Match when the first individual in the path is female.
+     */
+    public function selfFemale(): Relationship
+    {
+        $this->matchers[] = static fn (array $nodes): bool => $nodes[0]->sex() === Sex::Female;
+
+        return $this;
     }
 
     public function mother(): Relationship
     {
-        return $this->relation([self::MOTHER]);
+        return $this->relation([Relation::Mother]);
     }
 
     public function older(): Relationship
     {
         $this->matchers[] = static function (array $nodes): bool {
-            $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
-            $date2 = $nodes[2]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date1 = $nodes[0]->facts(['BIRT'], false, AccessLevel::Hidden)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date2 = $nodes[count($nodes) - 1]->facts(['BIRT'], false, AccessLevel::Hidden)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
 
             return Date::compare($date1, $date2) > 0;
         };
@@ -328,17 +319,17 @@ class Relationship
 
     public function parent(): Relationship
     {
-        return $this->relation(self::PARENTS);
+        return $this->relation([Relation::Mother, Relation::Father, Relation::Parent]);
     }
 
     public function sister(): Relationship
     {
-        return $this->relation([self::SISTER]);
+        return $this->relation([Relation::Sister]);
     }
 
     public function son(): Relationship
     {
-        return $this->relation([self::SON]);
+        return $this->relation([Relation::Son]);
     }
 
     public function spouse(): Relationship
@@ -348,7 +339,7 @@ class Relationship
 
     public function partner(): Relationship
     {
-        return $this->relation(self::SPOUSES);
+        return $this->relation([Relation::Wife, Relation::Husband, Relation::Spouse]);
     }
 
     /**
@@ -362,23 +353,23 @@ class Relationship
             $n = 0;
 
             // Ancestors
-            while ($n < $count && in_array($patterns[$n], Relationship::PARENTS, true)) {
+            while ($n < $count && in_array($patterns[$n], [Relation::Mother, Relation::Father, Relation::Parent], true)) {
                 $n++;
             }
 
-            // No ancestors?  Not enough path left for descendants?
+            // No ancestors?  Not enough of the path left for descendants?
             if ($n === 0 || $n * 2 + 1 !== $count) {
                 return false;
             }
 
             // Siblings
-            if (!in_array($patterns[$n], Relationship::SIBLINGS, true)) {
+            if (!in_array($patterns[$n], [Relation::Sister, Relation::Brother, Relation::Sibling], true)) {
                 return false;
             }
 
             // Descendants
             for ($descendants = $n + 1; $descendants < $count; ++$descendants) {
-                if (!in_array($patterns[$descendants], Relationship::CHILDREN, true)) {
+                if (!in_array($patterns[$descendants], [Relation::Daughter, Relation::Son, Relation::Child], true)) {
                     return false;
                 }
             }
@@ -393,11 +384,11 @@ class Relationship
         return $this;
     }
 
-    public function twin(): Relationship
+    public function multiple(): Relationship
     {
         $this->matchers[] = static function (array $nodes): bool {
-            $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
-            $date2 = $nodes[2]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date1 = $nodes[0]->facts(['BIRT'], false, AccessLevel::Hidden)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date2 = $nodes[count($nodes) - 1]->facts(['BIRT'], false, AccessLevel::Hidden)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
 
             return
                 $date1->isOK() &&
@@ -412,14 +403,21 @@ class Relationship
 
     public function wife(): Relationship
     {
-        return $this->married()->relation([self::WIFE]);
+        return $this->married()->relation([Relation::Wife]);
     }
 
     public function younger(): Relationship
     {
         $this->matchers[] = static function (array $nodes): bool {
-            $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
-            $date2 = $nodes[2]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date1 = $nodes[0]
+                ->facts(['BIRT'], false, AccessLevel::Hidden)
+                ->map(fn (Fact $fact): Date => $fact->date())
+                ->first() ?? new Date('');
+
+            $date2 = $nodes[count($nodes) - 1]
+                ->facts(['BIRT'], false, AccessLevel::Hidden)
+                ->map(fn (Fact $fact): Date => $fact->date())
+                ->first() ?? new Date('');
 
             return Date::compare($date1, $date2) < 0;
         };

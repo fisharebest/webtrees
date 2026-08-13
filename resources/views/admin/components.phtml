@@ -3,15 +3,14 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\ModulesAll;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -27,10 +26,11 @@ use Illuminate\Support\Collection;
 
 ?>
 
-<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ModulesAllPage::class) => I18N::translate('All modules'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ModulesAll::class) => I18N::translate('All modules'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
+<div id="admin-components-page">
 <p><?= $description ?></p>
 
 <form method="post">
@@ -97,11 +97,11 @@ use Illuminate\Support\Collection;
                                 <?php endforeach ?>
                             </ul>
 
-                            <div class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true" id="access-level-<?= $module->name() ?>">
+                            <div class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="access-level-title-<?= $module->name() ?>" id="access-level-<?= $module->name() ?>">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h2 class="modal-title">
+                                            <h2 class="modal-title" id="access-level-title-<?= $module->name() ?>">
                                                 <?= e($module->title()) ?> – <?= I18N::translate('Access level') ?>
                                             </h2>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= I18N::translate('close') ?>">
@@ -172,19 +172,4 @@ use Illuminate\Support\Collection;
 
     <?= csrf_field() ?>
 </form>
-
-<?php View::push('javascript') ?>
-<script>
-  $('.wt-table-components td.move').click(function () {
-    let row = $(this).closest('tr');
-
-    if ($(this).hasClass('up')) {
-      row.prev().before(row);
-    } else {
-      row.next().after(row);
-    }
-
-    return false;
-  });
-</script>
-<?php View::endpush() ?>
+</div>

@@ -28,7 +28,11 @@ use Fisharebest\Webtrees\TreeUser;
 #[CoversClass(TreeUser::class)]
 class TreeUserTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testConstructor(): void
     {

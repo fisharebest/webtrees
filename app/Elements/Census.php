@@ -60,7 +60,7 @@ class Census extends AbstractEventElement
     {
         $html = $this->editHidden($id, $name, $value);
 
-        $html .= view('modules/GEDFact_assistant/select-census', [
+        $html .= view('modules/GEDFact-assistant/select-census', [
             'census_places' => Censuses::censusPlaces(I18N::languageTag()),
         ]);
 

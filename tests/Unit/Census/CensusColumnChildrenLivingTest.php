@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Census;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -36,7 +37,7 @@ class CensusColumnChildrenLivingTest extends TestCase
     public function testMale(): void
     {
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('M');
+        $individual->method('sex')->willReturn(Sex::Male);
         $individual->method('spouseFamilies')->willReturn(new Collection([]));
 
         $census = self::createStub(CensusInterface::class);
@@ -69,6 +70,7 @@ class CensusColumnChildrenLivingTest extends TestCase
         $child4->method('getDeathDate')->willReturn(new Date(''));
 
         $family = self::createStub(Family::class);
+        $family->method('getMarriageDate')->willReturn(new Date(''));
         $family->method('children')->willReturn(new Collection([
             $child1,
             $child2,
@@ -77,7 +79,7 @@ class CensusColumnChildrenLivingTest extends TestCase
         ]));
 
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('F');
+        $individual->method('sex')->willReturn(Sex::Female);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
         $census = self::createStub(CensusInterface::class);

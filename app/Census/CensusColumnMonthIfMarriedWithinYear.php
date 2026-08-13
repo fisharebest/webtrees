@@ -31,7 +31,9 @@ final readonly class CensusColumnMonthIfMarriedWithinYear extends AbstractCensus
                 $census_jd   = $this->date()->julianDay();
                 if ($marriage_jd <= $census_jd && $marriage_jd >= $census_jd - 365) {
                     // Use the GEDCOM month, as we need this in English - for the US census
-                    return ucfirst(strtolower($fact->date()->minimumDate()->format('%O')));
+                    $date = $fact->date()->minimumDate();
+
+                    return ucfirst(strtolower($date->gedcomMonth()));
                 }
             }
         }

@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Report;
 
 use Com\Tecnick\Pdf\Tcpdf;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Webtrees;
@@ -39,7 +40,6 @@ final class PdfRenderer extends AbstractRenderer implements ElementFactoryInterf
      */
     private const bool UNICODE = true;
 
-
     private TcLibPdfAdaptor $adaptor;
 
     private readonly PdfWriter $pdf_writer;
@@ -49,7 +49,6 @@ final class PdfRenderer extends AbstractRenderer implements ElementFactoryInterf
         parent::__construct();
         $this->pdf_writer = new PdfWriter();
     }
-
 
     public function header(float $origin_x = 0.0, float $origin_y = 0.0): void
     {
@@ -197,14 +196,13 @@ final class PdfRenderer extends AbstractRenderer implements ElementFactoryInterf
         ImageContinuation $ln,
     ): Image {
         // Send higher-resolution image at the same aspect ratio.
-        $add_watermark = Registry::imageFactory()->fileNeedsWatermark($media_file, Auth::user());
 
         $data = Registry::imageFactory()->mediaFileThumbnail(
             $media_file,
             (int) ($w * 4),
             (int) ($h * 4),
-            'crop',
-            $add_watermark,
+            ImageOperation::Crop,
+            Auth::needsWatermark($media_file->media()->tree()),
         );
 
         $src = '@' . $data;

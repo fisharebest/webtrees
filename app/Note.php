@@ -19,8 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Factories\MarkdownFactory;
-use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
+use Fisharebest\Webtrees\Http\Controllers\NotePage;
 use Illuminate\Support\Str;
 
 use function explode;
@@ -55,7 +56,7 @@ class Note extends GedcomRecord
     /**
      * Each object type may have its own special rules, and re-implement this function.
      */
-    protected function canShowByType(int $access_level): bool
+    protected function canShowByType(AccessLevel $access_level): bool
     {
         // Hide notes if they are attached to private records
         $linked_ids = DB::table('link')

@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompletePlace;
+use Fisharebest\Webtrees\Http\Controllers\AutoCompletePlace;
 use Fisharebest\Webtrees\Tree;
 
 use function e;

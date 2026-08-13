@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Report\Cell;
 use Fisharebest\Webtrees\Report\Element;
 use Fisharebest\Webtrees\Report\Footnote;
@@ -91,7 +91,7 @@ class LayoutEngineTest extends TestCase
             align_rtl: $rtl ? 'right' : 'left',
             entity_rtl: $rtl ? '&rlm;' : '&lrm;',
             font: 'dejavusans',
-            timestamp: $this->createStub(TimestampInterface::class),
+            timestamp: CarbonImmutable::now(),
         );
     }
 

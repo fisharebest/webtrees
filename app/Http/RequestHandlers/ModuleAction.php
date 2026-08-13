@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpForbiddenException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Validator;
@@ -73,13 +73,13 @@ final class ModuleAction implements RequestHandlerInterface
 
         // Actions with "Admin" in the name are for administrators only.
         if (str_contains(strtolower($action), 'admin') && !Auth::isAdmin($user)) {
-            throw new HttpAccessDeniedException('Admin only action');
+            throw new HttpForbiddenException();
         }
 
         if (!method_exists($module, $method)) {
-            throw new HttpNotFoundException('Method ' . e($method) . '() not found in ' . e($module_name));
+            throw new HttpNotFoundException();
         }
 
-        return $module->$method($request);
+        return $module->$method($request); // @phpstan-ignore method.dynamicName (module actions use dynamic dispatch by design)
     }
 }

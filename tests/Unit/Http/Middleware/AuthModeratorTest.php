@@ -19,10 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Middleware;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\GuestUser;
-use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpForbiddenException;
 use Fisharebest\Webtrees\Http\Middleware\AuthModerator;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\Tree;
@@ -44,19 +45,19 @@ class AuthModeratorTest extends TestCase
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('');
 
         $tree = $this->createMock(Tree::class);
-        $tree->method('getUserPreference')->with($user, UserInterface::PREF_TREE_ROLE)->willReturn(UserInterface::ROLE_MODERATOR);
+        $tree->method('getUserPreference')->with($user, UserInterface::PREF_TREE_ROLE)->willReturn(Role::Moderator->value);
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', $user);
         $middleware = new AuthModerator();
         $response   = $middleware->process($request, $handler);
 
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertSame('lorem ipsum', (string) $response->getBody());
     }
 
     public function testNotAllowed(): void
     {
-        $this->expectException(HttpAccessDeniedException::class);
+        $this->expectException(HttpForbiddenException::class);
         $this->expectExceptionMessage('You do not have permission to view this page.');
 
         $handler = self::createStub(RequestHandlerInterface::class);
@@ -66,7 +67,7 @@ class AuthModeratorTest extends TestCase
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('');
 
         $tree = $this->createMock(Tree::class);
-        $tree->method('getUserPreference')->with($user, UserInterface::PREF_TREE_ROLE)->willReturn(UserInterface::ROLE_EDITOR);
+        $tree->method('getUserPreference')->with($user, UserInterface::PREF_TREE_ROLE)->willReturn(Role::Editor->value);
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', $user);
         $middleware = new AuthModerator();
@@ -85,6 +86,6 @@ class AuthModeratorTest extends TestCase
         $middleware = new AuthModerator();
         $response   = $middleware->process($request, $handler);
 
-        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        self::assertSame(HttpStatusCode::Found->value, $response->getStatusCode());
     }
 }

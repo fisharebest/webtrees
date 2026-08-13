@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Services\MessageService;
+use Fisharebest\Webtrees\Enums\ContactMethod;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\User;
@@ -144,7 +144,7 @@ final class UserEdit extends AbstractCommand
             );
             $user->setPreference(
                 setting_name: UserInterface::PREF_CONTACT_METHOD,
-                setting_value: MessageService::CONTACT_METHOD_INTERNAL_AND_EMAIL,
+                setting_value: ContactMethod::InternalAndEmail->value,
             );
             $user->setPreference(
                 setting_name: UserInterface::PREF_IS_VISIBLE_ONLINE,

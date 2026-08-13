@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
-use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\MessageSelect;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
+use Carbon\CarbonImmutable;
+use Fisharebest\Webtrees\Http\Controllers\Message;
+use Fisharebest\Webtrees\Http\Controllers\MessageSelect;
+use Fisharebest\Webtrees\Http\Controllers\UserPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Registry;
@@ -26,7 +27,7 @@ use Illuminate\Support\Collection;
  *     user_id:string,
  *     subject:string,
  *     body:string,
- *     created:TimestampInterface
+ *     created:CarbonImmutable
  * }&stdClass>                 $messages
  * @var Collection<int,User>   $users
  * @var UserService            $user_service
@@ -58,7 +59,7 @@ use Illuminate\Support\Collection;
 
 <form
     method="post"
-    action="<?= e(route('module', ['action' => 'DeleteMessage', 'module' => $module->name(), 'context' => $context, 'tree' => $tree->name()])) ?>"
+    action="<?= e(route(ModuleAction::class, ['action' => 'DeleteMessage', 'module' => $module->name(), 'context' => $context, 'tree' => $tree->name()])) ?>"
     id="messageform"
     name="messageform"
 >
@@ -70,7 +71,8 @@ use Illuminate\Support\Collection;
                         <?= I18N::translate('Delete') ?>
                         <br>
                         <a href="#"
-                           onclick="$('#block-<?= $block_id ?> :checkbox').prop('checked', true); return false;">
+                           data-wt-checkbox-action="all"
+                           data-wt-checkbox-target="#block-<?= $block_id ?> :checkbox">
                             <?= I18N::translate('All') ?>
                         </a>
                     </th>
@@ -125,7 +127,7 @@ use Illuminate\Support\Collection;
 
                                 // If this user still exists, show a reply link.
                                 if ($user instanceof User) {
-                                    $reply_url = route(MessagePage::class, [
+                                    $reply_url = route(Message::class, [
                                         'subject' => $message->subject,
                                         'to'      => $user->userName(),
                                         'tree'    => $tree->name(),
@@ -140,8 +142,11 @@ use Illuminate\Support\Collection;
                                 <?php } ?>
                                 <button
                                     type="button"
-                                    class="btn btn-danger"
-                                    onclick="if (confirm('<?= I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') ?>')) {$('#messageform :checkbox').prop('checked', false); $('#cb_message<?= $message->message_id ?>').prop('checked', true); document.messageform.submit();}"
+                                    class="btn btn-danger wt-delete-message"
+                                    data-wt-confirm="<?= I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') ?>"
+                                    data-wt-message-id="<?= $message->message_id ?>"
+                                    data-wt-single-message-delete
+                                    data-wt-single-message-form="#messageform"
                                 >
                                     <?= I18N::translate('Delete') ?>
                                 </button>

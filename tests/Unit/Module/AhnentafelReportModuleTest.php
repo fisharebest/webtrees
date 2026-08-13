@@ -65,7 +65,6 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 
-use function preg_match;
 use function preg_match_all;
 
 #[CoversClass(Cell::class)]
@@ -105,7 +104,11 @@ use function preg_match_all;
 #[CoversClass(VariableTable::class)]
 class AhnentafelReportModuleTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     /**
      * @return array<int,array<string,string>>
@@ -157,7 +160,7 @@ class AhnentafelReportModuleTest extends TestCase
         string $resi,
         string $sources,
     ): void {
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
@@ -179,9 +182,9 @@ class AhnentafelReportModuleTest extends TestCase
 
         $parser = new ParserSetup($xml);
         $parser->process();
-        $this->assertNotEmpty($parser->reportDescription());
-        $this->assertNotEmpty($parser->reportTitle());
-        $this->assertNotEmpty($parser->reportInputs());
+        self::assertNotEmpty($parser->reportDescription());
+        self::assertNotEmpty($parser->reportTitle());
+        self::assertNotEmpty($parser->reportInputs());
 
         Site::setPreference('INDEX_DIRECTORY', 'tests/data/');
 
@@ -201,7 +204,7 @@ class AhnentafelReportModuleTest extends TestCase
     public function testHtmlSourcesSectionReservesSpaceForFootnotes(): void
     {
 
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
@@ -224,7 +227,7 @@ class AhnentafelReportModuleTest extends TestCase
         Site::setPreference('INDEX_DIRECTORY', 'tests/data/');
 
         $renderer = new HtmlRenderer();
-        (new ParserGenerate($xml, $renderer, $vars, $tree, Webtrees::NAME, Registry::timestampFactory()->make(0)))->process();
+        (new ParserGenerate($xml, $renderer, $vars, $tree, Webtrees::NAME, Registry::timestampFactory()->fromEpoch(0)))->process();
         $html = $renderer->output();
 
         // The Sources section header exists

@@ -1,0 +1,153 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2026 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Http\Controllers;
+
+use Fisharebest\Webtrees\Exceptions\FileUploadException;
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\MediaFileService;
+use Fisharebest\Webtrees\Services\PhpService;
+use Fisharebest\Webtrees\Validator;
+use League\Flysystem\FilesystemException;
+use League\Flysystem\UnableToCheckFileExistence;
+use League\Flysystem\UnableToWriteFile;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
+use function e;
+use function intdiv;
+use function redirect;
+use function route;
+use function str_replace;
+use function substr;
+use function trim;
+
+use const UPLOAD_ERR_NO_FILE;
+use const UPLOAD_ERR_OK;
+
+final class UploadMedia
+{
+    use ViewResponseTrait;
+
+    // How many files to upload on one form.
+    private const int MAX_UPLOAD_FILES = 10;
+
+    public function __construct(
+        private readonly MediaFileService $media_file_service,
+        private readonly PhpService $php_service,
+    ) {
+    }
+
+    public function get(ServerRequestInterface $request): ResponseInterface
+    {
+        $this->layout = 'layouts/administration';
+
+        $data_filesystem = Registry::filesystem()->data();
+        $media_folders   = $this->media_file_service->allMediaFolders($data_filesystem);
+        $kb              = intdiv(num1: $this->php_service->uploadMaxFilesize() + 1023, num2: 1024);
+        $filesize        = I18N::translate('%s KB', I18N::number($kb));
+        $title           = I18N::translate('Upload media files');
+
+        return $this->viewResponse('admin/media-upload', [
+            'max_upload_files' => self::MAX_UPLOAD_FILES,
+            'filesize'         => $filesize,
+            'media_folders'    => $media_folders,
+            'title'            => $title,
+        ]);
+    }
+
+    public function post(ServerRequestInterface $request): ResponseInterface
+    {
+        $data_filesystem = Registry::filesystem()->data();
+        $all_folders     = $this->media_file_service->allMediaFolders($data_filesystem);
+
+        foreach ($request->getUploadedFiles() as $key => $uploaded_file) {
+            if ($uploaded_file->getError() === UPLOAD_ERR_NO_FILE) {
+                continue;
+            }
+
+            if ($uploaded_file->getError() !== UPLOAD_ERR_OK) {
+                throw new FileUploadException($uploaded_file);
+            }
+
+            $key      = substr($key, 9); // "mediafile1", "mediafile2", ...
+            $folder   = Validator::parsedBody($request)->string('folder' . $key);
+            $filename = Validator::parsedBody($request)->string('filename' . $key);
+
+            // If no filename specified, use the original filename.
+            if ($filename === '') {
+                $filename = $uploaded_file->getClientFilename();
+            }
+
+            // Validate the folder
+            if (!$all_folders->contains($folder)) {
+                break;
+            }
+
+            // Validate the filename.
+            $filename = str_replace('\\', '/', $filename);
+            $filename = trim($filename, '/');
+
+            $tmp = strpbrk($filename, MediaFileService::BLOCKED_CHARACTERS);
+
+            if ($tmp !== false) {
+                $message = I18N::translate('Filenames are not allowed to contain the character "%s".', $tmp[0]);
+                FlashMessages::addMessage($message);
+                continue;
+            }
+
+            $extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+            if (in_array(strtolower($extension), MediaFileService::BLOCKED_EXTENSIONS, true)) {
+                $message = I18N::translate('Filenames are not allowed to have the extension "%s".', $extension);
+                FlashMessages::addMessage($message);
+                continue;
+            }
+
+            $path = $folder . $filename;
+
+            try {
+                $file_exists = $data_filesystem->fileExists($path);
+            } catch (FilesystemException | UnableToCheckFileExistence) {
+                $file_exists = false;
+            }
+
+            if ($file_exists) {
+                FlashMessages::addMessage(I18N::translate('The file %s already exists. Use another filename.', $path, 'error'));
+                continue;
+            }
+
+            // Now copy the file to the correct location.
+            try {
+                $data_filesystem->writeStream($path, $uploaded_file->getStream()->detach());
+                FlashMessages::addMessage(I18N::translate('The file %s has been uploaded.', Html::filename($path)), 'success');
+                Log::addMediaLog('Media file ' . $path . ' uploaded');
+            } catch (FilesystemException | UnableToWriteFile $ex) {
+                FlashMessages::addMessage(I18N::translate('There was an error uploading your file.') . '<br>' . e($ex->getMessage()), 'danger');
+            }
+        }
+
+        return redirect(route(self::class));
+    }
+}

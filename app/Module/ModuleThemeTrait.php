@@ -23,19 +23,19 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
-use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
-use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
-use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
-use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
-use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\TreePageEdit;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserPageEdit;
+use Fisharebest\Webtrees\Http\Controllers\Account;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\HomePage;
+use Fisharebest\Webtrees\Http\Controllers\Login;
+use Fisharebest\Webtrees\Http\Controllers\Logout;
+use Fisharebest\Webtrees\Http\Controllers\ManageTrees;
+use Fisharebest\Webtrees\Http\Controllers\PendingChanges;
+use Fisharebest\Webtrees\Http\Controllers\SelectLanguage;
+use Fisharebest\Webtrees\Http\Controllers\SelectTheme;
+use Fisharebest\Webtrees\Http\Controllers\TreePage;
+use Fisharebest\Webtrees\Http\Controllers\TreePageEdit;
+use Fisharebest\Webtrees\Http\Controllers\UserPage;
+use Fisharebest\Webtrees\Http\Controllers\UserPageEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -145,7 +145,7 @@ trait ModuleThemeTrait
             }
         }
 
-        usort($menus, static fn (Menu $x, Menu $y): int => I18N::comparator()($x->getLabel(), $y->getLabel()));
+        usort($menus, static fn (Menu $x, Menu $y): int => I18N::compare($x->getLabel(), $y->getLabel()));
 
         return $menus;
     }
@@ -163,7 +163,7 @@ trait ModuleThemeTrait
         foreach ($individual->spouseFamilies() as $family) {
             $menus[] = new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->url());
             $spouse  = $family->spouse($individual);
-            if ($spouse && $spouse->canShowName()) {
+            if ($spouse !== null && $spouse->canShowName()) {
                 $menus[] = new Menu($spouse->fullName(), $spouse->url());
             }
             foreach ($family->children() as $child) {
@@ -184,11 +184,11 @@ trait ModuleThemeTrait
         $request = Registry::container()->get(ServerRequestInterface::class);
         $route   = Validator::attributes($request)->route();
 
-        if (Auth::check() && $route->name === UserPage::class) {
+        if (Auth::check() && $route->controller === UserPage::class) {
             return new Menu(I18N::translate('Customize this page'), route(UserPageEdit::class, ['tree' => $tree->name()]), 'menu-change-blocks');
         }
 
-        if (Auth::isManager($tree) && $route->name === TreePage::class) {
+        if (Auth::isManager($tree) && $route->controller === TreePage::class) {
             return new Menu(I18N::translate('Customize this page'), route(TreePageEdit::class, ['tree' => $tree->name()]), 'menu-change-blocks');
         }
 
@@ -218,10 +218,9 @@ trait ModuleThemeTrait
     {
         $menu = new Menu(I18N::translate('Language'), '#', 'menu-language');
 
-        foreach (I18N::activeLocales() as $active_locale) {
-            $language_tag = $active_locale->languageTag();
+        foreach (I18N::activeLanguages() as $language_tag => $endonym) {
             $class        = 'menu-language-' . $language_tag . (I18N::languageTag() === $language_tag ? ' active' : '');
-            $menu->addSubmenu(new Menu($active_locale->endonym(), '#', $class, [
+            $menu->addSubmenu(new Menu($endonym, '#', $class, [
                 'data-wt-post-url' => route(SelectLanguage::class, ['language' => $language_tag]),
             ]));
         }
@@ -250,12 +249,12 @@ trait ModuleThemeTrait
         $route    = Validator::attributes($request)->route();
 
         // ...but switch from the tree-page to the user-page
-        if ($route->name === TreePage::class) {
+        if ($route->controller === TreePage::class) {
             $redirect = route(UserPage::class, ['tree' => $tree?->name()]);
         }
 
         // Stay on the same tree page
-        $url = route(LoginPage::class, ['tree' => $tree?->name(), 'url' => $redirect]);
+        $url = route(Login::class, ['tree' => $tree?->name(), 'url' => $redirect]);
 
         return new Menu(I18N::translate('Sign in'), $url, 'menu-login', ['rel' => 'nofollow']);
     }
@@ -282,7 +281,7 @@ trait ModuleThemeTrait
      */
     public function menuMyAccount(Tree|null $tree): Menu
     {
-        $url = route(AccountEdit::class, ['tree' => $tree?->name()]);
+        $url = route(Account::class, ['tree' => $tree?->name()]);
 
         return new Menu(I18N::translate('My account'), $url, 'menu-myaccount');
     }

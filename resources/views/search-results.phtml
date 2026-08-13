@@ -10,7 +10,6 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -31,11 +30,11 @@ use Illuminate\Support\Collection;
 
 ?>
 
-<div class="wt-search-results">
+<div class="wt-search-results" id="webtrees-search-results-page">
     <ul class="nav nav-tabs wt-search-results-tabs" role="tablist">
         <?php if ($search_individuals) : ?>
             <li class="nav-item" role="presentation">
-                <button class="nav-link <?= $individuals->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#individuals" data-bs-toggle="tab" href="#individuals" role="tab" aria-controls="individuals">
+                <button class="nav-link <?= $individuals->isEmpty() ? 'text-muted' : '' ?>" id="individuals-tab" data-bs-target="#individuals" data-bs-toggle="tab" href="#individuals" role="tab" aria-controls="individuals" aria-selected="false">
                     <?= I18N::translate('Individuals') ?>
                     <span class="badge bg-secondary">
                         <?= I18N::number(count($individuals)) ?>
@@ -46,7 +45,7 @@ use Illuminate\Support\Collection;
 
         <?php if ($search_families) : ?>
             <li class="nav-item" role="presentation">
-                <button class="nav-link <?= $families->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#families" data-bs-toggle="tab" href="#families" role="tab" aria-controls="families">
+                <button class="nav-link <?= $families->isEmpty() ? 'text-muted' : '' ?>" id="families-tab" data-bs-target="#families" data-bs-toggle="tab" href="#families" role="tab" aria-controls="families" aria-selected="false">
                     <?= I18N::translate('Families') ?>
                     <span class="badge bg-secondary">
                         <?= I18N::number(count($families)) ?>
@@ -57,7 +56,7 @@ use Illuminate\Support\Collection;
 
         <?php if ($search_sources) : ?>
             <li class="nav-item" role="presentation">
-                <button class="nav-link <?= $sources->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#sources" data-bs-toggle="tab" href="#sources" role="tab" aria-controls="sources">
+                <button class="nav-link <?= $sources->isEmpty() ? 'text-muted' : '' ?>" id="sources-tab" data-bs-target="#sources" data-bs-toggle="tab" href="#sources" role="tab" aria-controls="sources" aria-selected="false">
                     <?= I18N::translate('Sources') ?>
                     <span class="badge bg-secondary">
                         <?= I18N::number(count($sources)) ?>
@@ -68,7 +67,7 @@ use Illuminate\Support\Collection;
 
         <?php if ($search_repositories) : ?>
             <li class="nav-item" role="presentation">
-                <button class="nav-link <?= $repositories->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#repositories" data-bs-toggle="tab" href="#repositories" role="tab" aria-controls="repositories">
+                <button class="nav-link <?= $repositories->isEmpty() ? 'text-muted' : '' ?>" id="repositories-tab" data-bs-target="#repositories" data-bs-toggle="tab" href="#repositories" role="tab" aria-controls="repositories" aria-selected="false">
                     <?= I18N::translate('Repositories') ?>
                     <span class="badge bg-secondary">
                         <?= I18N::number(count($repositories)) ?>
@@ -79,7 +78,7 @@ use Illuminate\Support\Collection;
 
         <?php if ($search_notes) : ?>
             <li class="nav-item" role="presentation">
-                <button class="nav-link <?= $notes->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#notes" data-bs-toggle="tab" href="#notes" role="tab" aria-controls="notes">
+                <button class="nav-link <?= $notes->isEmpty() ? 'text-muted' : '' ?>" id="notes-tab" data-bs-target="#notes" data-bs-toggle="tab" href="#notes" role="tab" aria-controls="notes" aria-selected="false">
                     <?= I18N::translate('Notes') ?>
                     <span class="badge bg-secondary">
                         <?= I18N::number(count($notes)) ?>
@@ -90,7 +89,7 @@ use Illuminate\Support\Collection;
 
         <?php if ($search_locations) : ?>
             <li class="nav-item" role="presentation">
-                <button class="nav-link <?= $locations->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#locations" data-bs-toggle="tab" href="#locations" role="tab" aria-controls="locations">
+                <button class="nav-link <?= $locations->isEmpty() ? 'text-muted' : '' ?>" id="locations-tab" data-bs-target="#locations" data-bs-toggle="tab" href="#locations" role="tab" aria-controls="locations" aria-selected="false">
                     <?= I18N::translate('Locations') ?>
                     <span class="badge bg-secondary">
                         <?= I18N::number(count($locations)) ?>
@@ -138,9 +137,3 @@ use Illuminate\Support\Collection;
         <?php endif ?>
     </div>
 </div>
-
-<?php View::push('javascript') ?>
-<script>
-  document.querySelector('.wt-search-results-tabs li button').click();
-</script>
-<?php View::endpush() ?>
