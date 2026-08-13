@@ -19,8 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module\InteractiveTree;
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Enums\TextDirection;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -29,23 +32,8 @@ use Illuminate\Support\Collection;
 
 use function count;
 
-use const JSON_THROW_ON_ERROR;
-
 class TreeView
 {
-    // HTML element name
-    private string $name;
-
-    /**
-     * Treeview Constructor
-     *
-     * @param string $name the name of the TreeView object’s instance
-     */
-    public function __construct(string $name = 'tree')
-    {
-        $this->name = $name;
-    }
-
     /**
      * Draw the viewport which creates the draggable/zoomable framework
      * Size is set by the container, as the viewport can scale itself automatically
@@ -53,21 +41,15 @@ class TreeView
      * @param Individual $individual  Draw the chart for this individual
      * @param int        $generations number of generations to draw
      *
-     * @return array<string>  HTML and Javascript
+     * @return string
      */
-    public function drawViewport(Individual $individual, int $generations): array
+    public function drawViewport(Individual $individual, int $generations): string
     {
-        $html = view('modules/interactive-tree/chart', [
+        return view('modules/interactive-tree/chart', [
             'module'     => 'tree',
-            'name'       => $this->name,
             'individual' => $this->drawPerson($individual, $generations, 0, null, '', true),
             'tree'       => $individual->tree(),
         ]);
-
-        return [
-            $html,
-            'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '", "' . e($individual->tree()->name()) . '");',
-        ];
     }
 
     /**
@@ -94,7 +76,12 @@ class TreeView
                     break;
 
                 case 'p':
-                    [$xref, $order] = explode('@', $json_request);
+                    $parts = explode('@', $json_request, 2);
+                    if (count($parts) !== 2) {
+                        break;
+                    }
+
+                    [$xref, $order] = $parts;
 
                     $family = Registry::familyFactory()->make($xref, $tree);
                     if ($family instanceof Family) {
@@ -123,7 +110,7 @@ class TreeView
         $html = $this->getPersonDetails($individual, null);
         foreach ($individual->spouseFamilies() as $family) {
             $spouse = $family->spouse($individual);
-            if ($spouse) {
+            if ($spouse !== null) {
                 $html .= $this->getPersonDetails($spouse, $family);
             }
         }
@@ -136,28 +123,28 @@ class TreeView
      */
     private function getPersonDetails(Individual $individual, Family|null $family = null): string
     {
-        $chart_url = route('module', [
+        $chart_url = route(ModuleAction::class, [
             'module' => 'tree',
             'action' => 'Chart',
             'xref'   => $individual->xref(),
             'tree'   => $individual->tree()->name(),
         ]);
 
-        $hmtl = $this->getThumbnail($individual);
-        $hmtl .= '<a class="tv_link" href="' . e($individual->url()) . '">' . $individual->fullName() . '</a> <a href="' . e($chart_url) . '" title="' . I18N::translate('Interactive tree of %s', strip_tags($individual->fullName())) . '" class="tv_link tv_treelink">' . view('icons/individual') . '</a>';
+        $html = $this->getThumbnail($individual);
+        $html .= '<a class="tv_link" href="' . e($individual->url()) . '">' . $individual->fullName() . '</a> <a href="' . e($chart_url) . '" title="' . I18N::translate('Interactive tree of %s', strip_tags($individual->fullName())) . '" class="tv_link tv_treelink">' . view('icons/individual') . '</a>';
         foreach ($individual->facts(Gedcom::BIRTH_EVENTS, true) as $fact) {
-            $hmtl .= $fact->summary();
+            $html .= $fact->summary();
         }
         if ($family instanceof Family) {
             foreach ($family->facts(Gedcom::MARRIAGE_EVENTS, true) as $fact) {
-                $hmtl .= $fact->summary();
+                $html .= $fact->summary();
             }
         }
         foreach ($individual->facts(Gedcom::DEATH_EVENTS, true) as $fact) {
-            $hmtl .= $fact->summary();
+            $html .= $fact->summary();
         }
 
-        return '<div class="tv' . $individual->sex() . ' tv_person_expanded">' . $hmtl . '</div>';
+        return '<div class="tv' . $individual->sex()->value . ' tv_person_expanded">' . $html . '</div>';
     }
 
     /**
@@ -201,7 +188,7 @@ class TreeView
                 $html .= $this->drawPerson($child, $gen - 1, -1, null, $co, false);
             }
             if (!$ajax) {
-                $html = '<td align="right"' . ($gen === 0 ? ' abbr="c' . $f2load . '"' : '') . '>' . $html . '</td>' . $this->drawHorizontalLine();
+                $html = '<td class="tv_tree_children"' . ($gen === 0 ? ' data-wt-interactive-tree-request="c' . $f2load . '"' : '') . '>' . $html . '</td>' . $this->drawHorizontalLine();
             }
         }
 
@@ -229,12 +216,12 @@ class TreeView
         }
 
         if ($isRoot) {
-            $html = '<table id="tvTreeBorder" class="tv_tree"><tbody><tr><td id="tv_tree_topleft"></td><td id="tv_tree_top"></td><td id="tv_tree_topright"></td></tr><tr><td id="tv_tree_left"></td><td>';
+            $html = '<table class="tv_tree tv_tree_border"><tbody><tr><td class="tv_tree_topleft"></td><td class="tv_tree_top"></td><td class="tv_tree_topright"></td></tr><tr><td class="tv_tree_left"></td><td>';
         } else {
             $html = '';
         }
         /* height 1% : this hack enable the div auto-dimensioning in td for FF & Chrome */
-        $html .= '<table class="tv_tree"' . ($isRoot ? ' id="tv_tree"' : '') . ' style="height: 1%"><tbody><tr>';
+        $html .= '<table class="tv_tree' . ($isRoot ? ' tv_tree_root' : '') . '" style="height: 1%"><tbody><tr>';
 
         if ($state <= 0) {
             // draw children
@@ -246,7 +233,11 @@ class TreeView
 
         /* draw the person. Do NOT add person or family id as an id, since a same person could appear more than once in the tree !!! */
         // Fixing the width for td to the box initial width when the person is the root person fix a rare bug that happen when a person without child and without known parents is the root person : an unwanted white rectangle appear at the right of the person’s boxes, otherwise.
-        $html .= '<td' . ($isRoot ? ' style="width:1px"' : '') . '><div class="tv_box' . ($isRoot ? ' rootPerson' : '') . '" dir="' . I18N::direction() . '" style="text-align: ' . (I18N::direction() === 'rtl' ? 'right' : 'left') . '; direction: ' . I18N::direction() . '" abbr="' . $person->xref() . '" onclick="' . $this->name . 'Handler.expandBox(this, event);">';
+        $direction  = I18N::textDirection();
+        $text_align = $direction === TextDirection::RTL ? 'right' : 'left';
+        $dir_value  = $direction->value;
+
+        $html .= '<td' . ($isRoot ? ' style="width:1px"' : '') . '><div class="tv_box' . ($isRoot ? ' rootPerson' : '') . '" dir="' . $dir_value . '" style="text-align: ' . $text_align . '; direction: ' . $dir_value . '" data-wt-interactive-tree-person-id="' . $person->xref() . '" data-wt-interactive-tree-box>';
         $html .= $this->drawPersonName($person, '');
 
         $fop = []; // $fop is fathers of partners
@@ -286,11 +277,11 @@ class TreeView
         /* draw the parents */
         if ($state >= 0 && ($parent instanceof Individual || $fop !== [])) {
             $unique = $parent === null || $fop === [];
-            $html .= '<td align="left"><table class="tv_tree"><tbody>';
+            $html .= '<td class="tv_tree_parents"><table class="tv_tree"><tbody>';
 
             if ($parent instanceof Individual) {
                 $u = $unique ? 'c' : 't';
-                $html .= '<tr><td ' . ($gen === 0 ? ' abbr="p' . $primaryChildFamily->xref() . '@' . $u . '"' : '') . '>';
+                $html .= '<tr><td' . ($gen === 0 ? ' data-wt-interactive-tree-request="p' . $primaryChildFamily->xref() . '@' . $u . '"' : '') . '>';
                 $html .= $this->drawPerson($parent, $gen - 1, 1, $primaryChildFamily, $u, false);
                 $html .= '</td></tr>';
             }
@@ -300,8 +291,8 @@ class TreeView
                 $nb = count($fop);
                 foreach ($fop as $p) {
                     $n++;
-                    $u = $unique ? 'c' : ($n === $nb || empty($p[1]) ? 'b' : 'h');
-                    $html .= '<tr><td ' . ($gen === 0 ? ' abbr="p' . $p[1]->xref() . '@' . $u . '"' : '') . '>' . $this->drawPerson($p[0], $gen - 1, 1, $p[1], $u, false) . '</td></tr>';
+                    $u = $unique ? 'c' : ($n === $nb ? 'b' : 'h');
+                    $html .= '<tr><td' . ($gen === 0 ? ' data-wt-interactive-tree-request="p' . $p[1]->xref() . '@' . $u . '"' : '') . '>' . $this->drawPerson($p[0], $gen - 1, 1, $p[1], $u, false) . '</td></tr>';
                 }
             }
             $html .= '</tbody></table></td>';
@@ -314,7 +305,7 @@ class TreeView
         $html .= '</tr></tbody></table>';
 
         if ($isRoot) {
-            $html .= '</td><td id="tv_tree_right"></td></tr><tr><td id="tv_tree_bottomleft"></td><td id="tv_tree_bottom"></td><td id="tv_tree_bottomright"></td></tr></tbody></table>';
+            $html .= '</td><td class="tv_tree_right"></td></tr><tr><td class="tv_tree_bottomleft"></td><td class="tv_tree_bottom"></td><td class="tv_tree_bottomright"></td></tr></tbody></table>';
         }
 
         return $html;
@@ -329,28 +320,20 @@ class TreeView
     private function drawPersonName(Individual $individual, string $dashed): string
     {
         $family = $individual->childFamilies()->first();
-        if ($family) {
+
+        if ($family !== null) {
             $family_name = strip_tags($family->fullName());
         } else {
             $family_name = I18N::translateContext('unknown family', 'unknown');
         }
-        switch ($individual->sex()) {
-            case 'M':
-                /* I18N: e.g. “Son of [father name & mother name]” */
-                $title = ' title="' . I18N::translate('Son of %s', $family_name) . '"';
-                break;
-            case 'F':
-                /* I18N: e.g. “Daughter of [father name & mother name]” */
-                $title = ' title="' . I18N::translate('Daughter of %s', $family_name) . '"';
-                break;
-            default:
-                /* I18N: e.g. “Child of [father name & mother name]” */
-                $title = ' title="' . I18N::translate('Child of %s', $family_name) . '"';
-                break;
-        }
-        $sex = $individual->sex();
 
-        return '<div class="tv' . $sex . ' ' . $dashed . '"' . $title . '><a href="' . e($individual->url()) . '"></a>' . $individual->fullName() . ' <span class="dates">' . $individual->lifespan() . '</span></div>';
+        $title = match ($individual->sex()) {
+            Sex::Male   => ' title="' . I18N::translate('Son of %s', $family_name) . '"',
+            Sex::Female => ' title="' . I18N::translate('Daughter of %s', $family_name) . '"',
+            default     => ' title="' . I18N::translate('Child of %s', $family_name) . '"',
+        };
+
+        return '<div class="tv' . $individual->sex()->value . ' ' . $dashed . '"' . $title . '><a href="' . e($individual->url()) . '"></a>' . $individual->fullName() . ' <span class="dates">' . $individual->lifespan() . '</span></div>';
     }
 
     /**

@@ -40,7 +40,11 @@ use Fisharebest\Webtrees\Services\UserService;
 #[CoversClass(ModuleService::class)]
 class ModuleServiceTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testAll(): void
     {
@@ -51,7 +55,7 @@ class ModuleServiceTest extends TestCase
 
     public function testFindByComponent(): void
     {
-        $user_service   = new UserService();
+        $user_service   = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $module_service = new ModuleService();
 
         $tree = $this->importTree('demo.ged');
@@ -92,7 +96,7 @@ class ModuleServiceTest extends TestCase
         $modules = $module_service->otherModules()
             ->filter(fn (ModuleInterface $module): bool => !$module instanceof ModuleCustomInterface);
 
-        self::assertCount(4, $modules);
+        self::assertCount(3, $modules);
     }
 
     public function testDeletedModules(): void

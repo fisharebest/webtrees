@@ -5,9 +5,10 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
-use Fisharebest\Webtrees\Http\RequestHandlers\TreePreferencesAction;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\Example;
+use Fisharebest\Webtrees\Http\Controllers\ManageTrees;
+use Fisharebest\Webtrees\Http\Controllers\TreePreferences;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -41,7 +42,7 @@ use Illuminate\Support\Collection;
 
 <h1><?= $title ?></h1>
 
-<form method="post" action="<?= e(route(TreePreferencesAction::class, ['tree' => $tree->name()])) ?>" class="form-horizontal">
+<form method="post" action="<?= e(route(TreePreferences::class, ['tree' => $tree->name()])) ?>" class="form-horizontal">
     <h2><?= I18N::translate('General') ?></h2>
 
     <!-- TREE TITLE -->
@@ -72,13 +73,13 @@ use Illuminate\Support\Collection;
             <div class="col-sm-9">
                 <div class="input-group" dir="ltr">
                     <span class="input-group-text" dir="ltr">
-                        <?= e(explode('{tree}', rawurldecode(route('example')))[0]) ?>
+                        <?= e(explode('{tree}', rawurldecode(route('example', ['tree' => '{tree}'])))[0]) ?>
                     </span>
 
                     <input class="form-control" dir="ltr" id="gedcom" maxlength="255" name="gedcom" required="required" type="text" value="<?= e($tree->name()) ?>">
 
                     <span class="input-group-text" dir="ltr">
-                        <?= e(explode('{tree}', rawurldecode(route('example')))[1]) ?>
+                        <?= e(explode('{tree}', rawurldecode(route('example', ['tree' => '{tree}'])))[1]) ?>
                     </span>
                 </div>
 
@@ -104,7 +105,8 @@ use Illuminate\Support\Collection;
 
     <!-- CALENDAR_FORMAT -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('Calendar conversion') ?>
             <label class="visually-hidden" for="CALENDAR_FORMAT0">
                 <?= /* I18N: A configuration setting */ I18N::translate('Calendar conversion') ?> 1
@@ -113,6 +115,9 @@ use Illuminate\Support\Collection;
                 <?= /* I18N: A configuration setting */ I18N::translate('Calendar conversion') ?> 2
             </label>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('Calendar conversion') ?>
+        </div>
         <div class="col-sm-9">
             <div class="row">
                 <div class="col-sm-6">
@@ -136,9 +141,13 @@ use Illuminate\Support\Collection;
 
     <!-- GENERATE_UIDS -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('Add unique identifiers') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('Add unique identifiers') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'GENERATE_UIDS', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $tree->getPreference('GENERATE_UIDS')]) ?>
             <div class="form-text">
@@ -273,25 +282,29 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- SHOW_MEDIA_DOWNLOAD -->
-    <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+    <div class="row mb-3">
+        <label class="col-form-label col-sm-3" for="SHOW_MEDIA_DOWNLOAD">
             <?= /* I18N: A configuration setting */ I18N::translate('Show a download link in the media viewer') ?>
-        </legend>
+        </label>
         <div class="col-sm-9">
             <?= view('components/select', ['name' => 'SHOW_MEDIA_DOWNLOAD', 'selected' => $tree->getPreference('SHOW_MEDIA_DOWNLOAD'), 'options' => Auth::accessLevelNames()]) ?>
             <div class="form-text">
                 <?= /* I18N: Help text for the “Show a download link in the media viewer” configuration setting */ I18N::translate('This option will make it easier for users to download images.') ?>
             </div>
         </div>
-    </fieldset>
+    </div>
 
     <h2><?= I18N::translate('Thumbnail images') ?></h2>
 
     <!-- SHOW_HIGHLIGHT_IMAGES -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= I18N::translate('Thumbnail images') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= I18N::translate('Thumbnail images') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'SHOW_HIGHLIGHT_IMAGES', 'options' => [I18N::translate('hide'), I18N::translate('show')], 'selected' => (int) $tree->getPreference('SHOW_HIGHLIGHT_IMAGES')]) ?>
             <div class="form-text">
@@ -302,9 +315,13 @@ use Illuminate\Support\Collection;
 
     <!-- USE_SILHOUETTE -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('Use silhouettes') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('Use silhouettes') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'USE_SILHOUETTE', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $tree->getPreference('USE_SILHOUETTE')]) ?>
             <div class="form-text">
@@ -366,9 +383,13 @@ use Illuminate\Support\Collection;
 
     <!-- SHOW_EST_LIST_DATES -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('Estimated dates for birth and death') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('Estimated dates for birth and death') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'SHOW_EST_LIST_DATES', 'options' => [I18N::translate('hide'), I18N::translate('show')], 'selected' => (int) $tree->getPreference('SHOW_EST_LIST_DATES')]) ?>
             <div class="form-text">
@@ -379,9 +400,13 @@ use Illuminate\Support\Collection;
 
     <!-- SHOW_LAST_CHANGE -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= I18N::translate('The date and time of the last update') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= I18N::translate('The date and time of the last update') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'SHOW_LAST_CHANGE', 'options' => [I18N::translate('hide'), I18N::translate('show')], 'selected' => (int) $tree->getPreference('SHOW_LAST_CHANGE')]) ?>
             <div class="form-text">
@@ -393,9 +418,13 @@ use Illuminate\Support\Collection;
 
     <!-- SHOW_PARENTS_AGE -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('Age of parents next to child’s birthdate') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('Age of parents next to child’s birthdate') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'SHOW_PARENTS_AGE', 'options' => [I18N::translate('hide'), I18N::translate('show')], 'selected' => (int) $tree->getPreference('SHOW_PARENTS_AGE')]) ?>
             <div class="form-text">
@@ -420,9 +449,13 @@ use Illuminate\Support\Collection;
 
     <!-- SHOW_RELATIVES_EVENTS -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= I18N::translate('Show the events of close relatives on the individual page') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= I18N::translate('Show the events of close relatives on the individual page') ?>
+        </div>
         <div class="col-sm-3">
             <div class="form-check">
                 <label for="_BIRT_GCHI">
@@ -511,9 +544,13 @@ use Illuminate\Support\Collection;
 
     <!-- SHOW_FACT_ICONS -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('Fact icons') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('Fact icons') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'SHOW_FACT_ICONS', 'options' => [I18N::translate('hide'), I18N::translate('show')], 'selected' => (int) $tree->getPreference('SHOW_FACT_ICONS')]) ?>
             <div class="form-text">
@@ -524,9 +561,13 @@ use Illuminate\Support\Collection;
 
     <!-- EXPAND_NOTES -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('Automatically expand notes') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('Automatically expand notes') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'EXPAND_NOTES', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $tree->getPreference('EXPAND_NOTES')]) ?>
             <div class="form-text">
@@ -538,9 +579,13 @@ use Illuminate\Support\Collection;
 
     <!-- EXPAND_SOURCES -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('Automatically expand sources') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('Automatically expand sources') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'EXPAND_SOURCES', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $tree->getPreference('EXPAND_SOURCES')]) ?>
             <div class="form-text">
@@ -554,7 +599,8 @@ use Illuminate\Support\Collection;
 
     <!-- SHOW_PEDIGREE_PLACES -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('Abbreviate place names') ?>
             <label class="visually-hidden" for="SHOW_PEDIGREE_PLACES_SUFFIX">
                 <?= /* I18N: A configuration setting */ I18N::translate('Abbreviate place names') ?>
@@ -564,6 +610,9 @@ use Illuminate\Support\Collection;
                 <?= /* I18N: A configuration setting */ I18N::translate('Abbreviate place names') ?>
             </label>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('Abbreviate place names') ?>
+        </div>
         <div class="col-sm-9">
             <?= /* I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name */ I18N::translate(
                 'Show the %1$s %2$s parts of a place name.',
@@ -580,9 +629,13 @@ use Illuminate\Support\Collection;
 
     <!-- FORMAT_TEXT -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('Format text and notes') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('Format text and notes') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'FORMAT_TEXT', 'options' => $formats, 'selected' =>  $tree->getPreference('FORMAT_TEXT')]) ?>
             <div class="form-text">
@@ -597,9 +650,13 @@ use Illuminate\Support\Collection;
 
     <!-- SHOW_GEDCOM_RECORD -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('Allow users to see raw GEDCOM records') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('Allow users to see raw GEDCOM records') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'SHOW_GEDCOM_RECORD', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $tree->getPreference('SHOW_GEDCOM_RECORD')]) ?>
             <div class="form-text">
@@ -610,9 +667,13 @@ use Illuminate\Support\Collection;
 
     <!-- HIDE_GEDCOM_ERRORS -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('GEDCOM errors') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('GEDCOM errors') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'HIDE_GEDCOM_ERRORS', 'options' => [I18N::translate('hide'), I18N::translate('show')], 'selected' => (int) $tree->getPreference('HIDE_GEDCOM_ERRORS')]) ?>
             <div class="form-text">
@@ -623,9 +684,13 @@ use Illuminate\Support\Collection;
 
     <!-- SHOW_COUNTER -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('Hit counters') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('Hit counters') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'SHOW_COUNTER', 'options' => [I18N::translate('hide'), I18N::translate('show')], 'selected' => (int) $tree->getPreference('SHOW_COUNTER')]) ?>
             <div class="form-text">
@@ -690,9 +755,13 @@ use Illuminate\Support\Collection;
 
     <!-- SURNAME_TRADITION -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= I18N::translate('Surname tradition') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= I18N::translate('Surname tradition') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios', ['name' => 'SURNAME_TRADITION', 'options' => $all_surname_traditions, 'selected' => $tree->getPreference('SURNAME_TRADITION')]) ?>
             <div class="form-text">
@@ -703,9 +772,13 @@ use Illuminate\Support\Collection;
 
     <!-- NO_UPDATE_CHAN -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */ I18N::translate('Keep the existing “last change” information') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */ I18N::translate('Keep the existing “last change” information') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'NO_UPDATE_CHAN', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $tree->getPreference('NO_UPDATE_CHAN')]) ?>
             <div class="form-text">

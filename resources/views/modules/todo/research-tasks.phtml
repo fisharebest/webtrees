@@ -16,7 +16,7 @@ use Illuminate\Support\Collection;
 
 <table
     id="wt-datatables-research-tasks"
-    class="table table-bordered table-sm wt-table-tasks datatables d-none"
+    class="table table-bordered table-sm wt-table-tasks wt-datatables d-none"
     style="table-layout: fixed"
     <?= view('lists/datatables-attributes') ?>
     data-paging="<?= $tasks->count() >= $limit_high ? 'true' : 'false' ?>"

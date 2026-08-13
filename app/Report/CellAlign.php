@@ -25,11 +25,6 @@ namespace Fisharebest\Webtrees\Report;
  * The single-letter scalar values match TCPDF's MultiCell()/Image() alignment
  * parameter so that the PDF backend can pass them through unchanged.  The
  * HTML backend maps each case to the corresponding CSS text-align value.
- *
- * {@see CellAlign::None} represents "no explicit alignment" and is what the
- * parser falls back to when the XML attribute is absent or contains a value
- * we do not recognise (for example the alias keywords "leftrtl" / "rightrtl"
- * that are resolved to Left / Right elsewhere in the parser).
  */
 enum CellAlign: string
 {
@@ -37,5 +32,4 @@ enum CellAlign: string
     case Left    = 'L';
     case Right   = 'R';
     case Center  = 'C';
-    case Justify = 'J';
 }

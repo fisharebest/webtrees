@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Census;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -41,6 +42,8 @@ class CensusColumnBirthDayMonthYearTest extends TestCase
 
         $column = new CensusColumnBirthDayMonthYear($census, '', '');
 
-        self::assertSame('2 Mar 1800', $column->generate($individual, $individual));
+        I18N::init('en-GB');
+
+        self::assertSame('2 March 1800', $column->generate($individual, $individual));
     }
 }

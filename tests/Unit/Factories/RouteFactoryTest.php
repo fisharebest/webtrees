@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Factories;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
+use Fisharebest\Webtrees\Http\Controllers\HomePage;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Factories\RouteFactory;

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\SurnameTradition;
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -53,17 +54,17 @@ class PaternalSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /White/\n2 TYPE BIRTH\n2 SURN White"],
-            $this->surname_tradition->newChildNames($father, $mother, 'M')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Male)
         );
 
         self::assertSame(
             ["1 NAME /White/\n2 TYPE BIRTH\n2 SURN White"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
 
         self::assertSame(
             ["1 NAME /White/\n2 TYPE BIRTH\n2 SURN White"],
-            $this->surname_tradition->newChildNames($father, $mother, 'U')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Unknown)
         );
     }
 
@@ -83,7 +84,7 @@ class PaternalSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /de White/\n2 TYPE BIRTH\n2 SPFX de\n2 SURN White"],
-            $this->surname_tradition->newChildNames($father, $mother, 'U')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Unknown)
         );
     }
 
@@ -103,7 +104,7 @@ class PaternalSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /van der White/\n2 TYPE BIRTH\n2 SPFX van der\n2 SURN White"],
-            $this->surname_tradition->newChildNames($father, $mother, 'U')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Unknown)
         );
     }
 
@@ -123,7 +124,7 @@ class PaternalSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /'t White/\n2 TYPE BIRTH\n2 SPFX 't\n2 SURN White"],
-            $this->surname_tradition->newChildNames($father, $mother, 'U')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Unknown)
         );
     }
 
@@ -143,7 +144,7 @@ class PaternalSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /van 't White/\n2 TYPE BIRTH\n2 SPFX van 't\n2 SURN White"],
-            $this->surname_tradition->newChildNames($father, $mother, 'U')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Unknown)
         );
     }
 
@@ -157,7 +158,7 @@ class PaternalSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /White/\n2 TYPE BIRTH\n2 SURN White"],
-            $this->surname_tradition->newParentNames($individual, 'M')
+            $this->surname_tradition->newParentNames($individual, Sex::Male)
         );
     }
 
@@ -171,7 +172,7 @@ class PaternalSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH", "1 NAME /White/\n2 TYPE MARRIED\n2 SURN White"],
-            $this->surname_tradition->newParentNames($individual, 'F')
+            $this->surname_tradition->newParentNames($individual, Sex::Female)
         );
     }
 
@@ -185,7 +186,7 @@ class PaternalSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newParentNames($individual, 'U')
+            $this->surname_tradition->newParentNames($individual, Sex::Unknown)
         );
     }
 
@@ -199,7 +200,7 @@ class PaternalSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newSpouseNames($individual, 'M')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Male)
         );
     }
 
@@ -213,7 +214,7 @@ class PaternalSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH", "1 NAME /White/\n2 TYPE MARRIED\n2 SURN White"],
-            $this->surname_tradition->newSpouseNames($individual, 'F')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Female)
         );
     }
 
@@ -227,7 +228,7 @@ class PaternalSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH", "1 NAME /van der White/\n2 TYPE MARRIED\n2 SPFX van der\n2 SURN White"],
-            $this->surname_tradition->newSpouseNames($individual, 'F')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Female)
         );
     }
 
@@ -241,7 +242,7 @@ class PaternalSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newSpouseNames($individual, 'U')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Unknown)
         );
     }
 

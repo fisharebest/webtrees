@@ -29,14 +29,18 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Message\ServerRequestInterface;
 use Fisharebest\Webtrees\Elements\AbstractXrefElement;
 use Fisharebest\Webtrees\Elements\XrefSource;
-use Fisharebest\Webtrees\Report\AbstractElement;
+use Fisharebest\Webtrees\Report\Element;
 
-#[CoversClass(AbstractElement::class)]
+#[CoversClass(Element::class)]
 #[CoversClass(AbstractXrefElement::class)]
 #[CoversClass(XrefSource::class)]
 class XrefSourceTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testEdit(): void
     {
@@ -136,7 +140,7 @@ class XrefSourceTest extends TestCase
 
         $tree = self::createStub(Tree::class);
 
-        self::assertSame('<p>invalid</p>', $element->value('invalid', $tree));
+        self::assertSame('<div class="wt-markdown"><p>invalid</p></div>', $element->value('invalid', $tree));
     }
 
     public function testValueXrefLinkWithMissingRecord(): void

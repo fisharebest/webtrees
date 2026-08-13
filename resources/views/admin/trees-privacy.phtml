@@ -3,19 +3,20 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
-use Fisharebest\Webtrees\Http\RequestHandlers\TreePrivacyAction;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\ManageTrees;
+use Fisharebest\Webtrees\Http\Controllers\SitemapIndexXml;
+use Fisharebest\Webtrees\Http\Controllers\TreePrivacy;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var array<string,string>                                                                            $all_tags
  * @var int                                                                                             $count_trees
  * @var array<string,string>                                                                            $privacy_constants
- * @var list<object{default_resn_id:int,resn:string,xref:string,record:GedcomRecord|null,label:string}> $privacy_restrictions
+ * @var list<object{default_resn_id:int,resn:string,xref:string|null,record:GedcomRecord|null,label:string}> $privacy_restrictions
  * @var string                                                                                          $title
  * @var Tree                                                                                            $tree
  */
@@ -26,7 +27,8 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<form method="post" action="<?= e(route(TreePrivacyAction::class, ['tree' => $tree->name()])) ?>">
+<div id="admin-trees-privacy-page">
+<form method="post" action="<?= e(route(TreePrivacy::class, ['tree' => $tree->name()])) ?>">
     <!-- REQUIRE_AUTHENTICATION -->
     <div class="row mb-3">
         <div class="col-form-label col-sm-4">
@@ -58,13 +60,12 @@ use Fisharebest\Webtrees\View;
             </div>
         </div>
         <div class="col-sm-8">
-            <?= view('components/select', ['name' => 'SHOW_DEAD_PEOPLE', 'selected' => $tree->getPreference('SHOW_DEAD_PEOPLE'), 'options' => array_slice(Auth::accessLevelNames(), 0, 2, true)]) ?>
+            <?= view('components/select', ['name' => 'SHOW_DEAD_PEOPLE', 'selected' => $tree->getPreference('SHOW_DEAD_PEOPLE'), 'options' => [AccessLevel::Public->value => AccessLevel::Public->label(), AccessLevel::Member->value => AccessLevel::Member->label()]]) ?>
             <div class="form-text">
                 <?= /* I18N: Help text for the “Show dead individuals” configuration setting */ I18N::translate('Set the privacy access level for all dead individuals.') ?>
             </div>
         </div>
     </div>
-
 
     <!-- MAX_ALIVE_AGE -->
     <div class="row mb-3">
@@ -80,28 +81,34 @@ use Fisharebest\Webtrees\View;
     </div>
 
     <!-- HIDE_LIVE_PEOPLE -->
-    <fieldset class="row mb-3">
-        <legend class="col-sm-4 col-form-label">
-            <?= /* I18N: A configuration setting */ I18N::translate('Show living individuals') ?>
+    <div class="row mb-3">
+        <div class="col-sm-4 col-form-label">
+            <label for="HIDE_LIVE_PEOPLE">
+                <?= /* I18N: A configuration setting */ I18N::translate('Show living individuals') ?>
+            </label>
             <div class="hidden-xs">
                 <span class="badge visitors"><?= I18N::translate('visitors') ?></span>
                 <span class="badge members"><?= I18N::translate('members') ?></span>
             </div>
-        </legend>
+        </div>
 
         <div class="col-sm-8">
-            <?= view('components/select', ['name' => 'HIDE_LIVE_PEOPLE', 'selected' => $tree->getPreference('HIDE_LIVE_PEOPLE'), 'options' => ['0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')]]) ?>
+            <?= view('components/select', ['name' => 'HIDE_LIVE_PEOPLE', 'selected' => $tree->getPreference('HIDE_LIVE_PEOPLE'), 'options' => [AccessLevel::Public->label(), AccessLevel::Member->label()]]) ?>
             <div class="form-text">
                 <?= /* I18N: Help text for the “Show living individuals” configuration setting */ I18N::translate('If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public.') ?>
             </div>
         </div>
-    </fieldset>
+    </div>
 
     <!-- KEEP_ALIVE_YEARS_BIRTH / KEEP_ALIVE_YEARS_DEATH -->
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-4">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting. …who were born in the last XX years or died in the last YY years */ I18N::translate('Extend privacy to dead individuals') ?>
         </legend>
+        <div class="col-form-label col-sm-4" aria-hidden="true">
+            <?= /* I18N: A configuration setting. …who were born in the last XX years or died in the last YY years */ I18N::translate('Extend privacy to dead individuals') ?>
+        </div>
         <div class="col-sm-8">
             <?php
             echo
@@ -129,7 +136,7 @@ use Fisharebest\Webtrees\View;
             </div>
         </div>
         <div class="col-sm-8">
-            <?= view('components/select', ['name' => 'SHOW_LIVING_NAMES', 'selected' => $tree->getPreference('SHOW_LIVING_NAMES'), 'options' => array_slice(Auth::accessLevelNames(), 0, 3, true)]) ?>
+            <?= view('components/select', ['name' => 'SHOW_LIVING_NAMES', 'selected' => $tree->getPreference('SHOW_LIVING_NAMES'), 'options' => [AccessLevel::Public->value => AccessLevel::Public->label(), AccessLevel::Member->value => AccessLevel::Member->label(), AccessLevel::Manager->value => AccessLevel::Manager->label()]]) ?>
             <div class="form-text">
                 <?= /* I18N: Help text for the “Show names of private individuals” configuration setting */ I18N::translate('This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record.') ?>
             </div>
@@ -154,9 +161,34 @@ use Fisharebest\Webtrees\View;
             </div>
         </div>
     </div>
-    <h2><?= /* I18N: Privacy restrictions are set by RESN tags in GEDCOM. */ I18N::translate('Privacy restrictions') ?></h2>
+
+    <hr>
+
+    <!-- SITEMAP.XML -->
+    <div class="row mb-3">
+        <div class="col-form-label col-sm-4">
+            <a href="<?= route(SitemapIndexXml::class) ?>">
+                sitemap.xml
+            </a>
+        </div>
+        <div class="col-sm-8">
+            <?= view('components/checkbox', [
+                    'name' => 'include_in_sitemap',
+                    'checked' => $tree->getPreference('include_in_sitemap') === '1',
+                    'label' => I18N::translate('include'),
+                    ]) ?>
+            <div class="form-text">
+                <?= I18N::translate('Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps.') ?>
+                <?= I18N::translate('For more information, see %s.', '<a href="https://www.sitemaps.org/">www.sitemaps.org</a>') ?>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2><?= I18N::translate('Privacy restrictions') ?></h2>
     <p>
-        <?= /* I18N: Privacy restrictions are RESN tags in GEDCOM. */ I18N::translate('You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used.') ?>
+        <?=  I18N::translate('You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used.') ?>
     </p>
 
     <script id="new-resn-template" type="text/html">
@@ -245,9 +277,9 @@ use Fisharebest\Webtrees\View;
             <?php foreach ($privacy_restrictions as $privacy_restriction) : ?>
                 <tr>
                     <td>
-                        <?php if ($privacy_restriction->record) : ?>
+                        <?php if ($privacy_restriction->record !== null) : ?>
                             <a href="<?= e($privacy_restriction->record->url()) ?>"><?= $privacy_restriction->record->fullName() ?></a>
-                        <?php elseif ($privacy_restriction->xref) : ?>
+                        <?php elseif ($privacy_restriction->xref !== null) : ?>
                             <div class="text-danger">
                                 <?= $privacy_restriction->xref ?> — <?= I18N::translate('This record does not exist.') ?>
                             </div>
@@ -312,81 +344,4 @@ use Fisharebest\Webtrees\View;
 
     <?= csrf_field() ?>
 </form>
-
-<?php View::push('javascript') ?>
-<script>
-  'use strict';
-
-  /**
-   * Hide/show the feedback labels for a privacy option.
-   *
-   * @param sel    the control to change
-   * @param who    "visitors", "members" or "managers"
-   * @param access true or false
-   */
-  function setPrivacyFeedback (sel, who, access) {
-    var formGroup = $(sel).closest('.row');
-
-    if (access) {
-      $('.' + who, formGroup).addClass('bg-success').removeClass('bg-secondary');
-      $('.' + who + ' i', formGroup).addClass('fa-check').removeClass('fa-times');
-    } else {
-      $('.' + who, formGroup).addClass('bg-secondary').removeClass('bg-success');
-      $('.' + who + ' i', formGroup).addClass('fa-times').removeClass('fa-check');
-    }
-  }
-
-  /**
-   * Update all the privacy feedback labels.
-   */
-  function updatePrivacyFeedback () {
-    var requireAuthentication = parseInt($('[name=REQUIRE_AUTHENTICATION]').val(), 10);
-    var showDeadPeople = parseInt($('[name=SHOW_DEAD_PEOPLE]').val(), 10);
-    var hideLivePeople = parseInt($('[name=HIDE_LIVE_PEOPLE]').val(), 10);
-    var showLivingNames = parseInt($('[name=SHOW_LIVING_NAMES]').val(), 10);
-    var showPrivateRelationships = parseInt($('[name=SHOW_PRIVATE_RELATIONSHIPS]').val(), 10);
-
-    setPrivacyFeedback('[name=REQUIRE_AUTHENTICATION]', 'visitors', requireAuthentication === 0);
-    setPrivacyFeedback('[name=REQUIRE_AUTHENTICATION]', 'members', true);
-
-    setPrivacyFeedback('[name=SHOW_DEAD_PEOPLE]', 'visitors', requireAuthentication === 0 && (showDeadPeople >= 2 || hideLivePeople === 0));
-    setPrivacyFeedback('[name=SHOW_DEAD_PEOPLE]', 'members', showDeadPeople >= 1 || hideLivePeople === 0);
-
-    setPrivacyFeedback('[name=HIDE_LIVE_PEOPLE]', 'visitors', requireAuthentication === 0 && hideLivePeople === 0);
-    setPrivacyFeedback('[name=HIDE_LIVE_PEOPLE]', 'members', true);
-
-    setPrivacyFeedback('[name=SHOW_LIVING_NAMES]', 'visitors', requireAuthentication === 0 && showLivingNames >= 2);
-    setPrivacyFeedback('[name=SHOW_LIVING_NAMES]', 'members', showLivingNames >= 1);
-    setPrivacyFeedback('[name=SHOW_LIVING_NAMES]', 'managers', showLivingNames >= 0);
-
-    setPrivacyFeedback('[name=SHOW_PRIVATE_RELATIONSHIPS]', 'visitors', requireAuthentication === 0 && showPrivateRelationships >= 1);
-    setPrivacyFeedback('[name=SHOW_PRIVATE_RELATIONSHIPS]', 'members', showPrivateRelationships >= 1);
-  }
-
-  // Activate the privacy feedback labels.
-  updatePrivacyFeedback();
-  $('[name=REQUIRE_AUTHENTICATION], [name=HIDE_LIVE_PEOPLE], [name=SHOW_DEAD_PEOPLE], [name=SHOW_LIVING_NAMES], [name=SHOW_PRIVATE_RELATIONSHIPS]').on('change', function () {
-    updatePrivacyFeedback();
-  });
-
-  // Mute a line when it is marked for deletion
-  $('#default-resn').on('click', 'input[type=checkbox]', function () {
-    if ($(this).prop('checked')) {
-      $($(this).closest('tr').addClass('text-muted'));
-    } else {
-      $($(this).closest('tr').removeClass('text-muted'));
-    }
-  });
-
-  // Add a new row to the table
-  $('#add-resn').on('click', function () {
-    $('#default-resn tbody').prepend($('#new-resn-template').html());
-
-    document.querySelectorAll('#default-resn tbody tr:first-child select.tom-select')
-      .forEach(element => webtrees.initializeTomSelect(element));
-
-    let row = document.getElementById('default-resn').querySelector('tbody tr');
-    webtrees.initializeIFSRO(row.querySelector('select'), row);
-  });
-</script>
-<?php View::endpush() ?>
+</div>

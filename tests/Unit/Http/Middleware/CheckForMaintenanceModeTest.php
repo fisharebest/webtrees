@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Middleware;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Services\MaintenanceModeService;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -44,7 +44,7 @@ class CheckForMaintenanceModeTest extends TestCase
         $middleware = new CheckForMaintenanceMode($maintenance_mode_service);
         $response   = $middleware->process($request, $handler);
 
-        self::assertSame(StatusCodeInterface::STATUS_SERVICE_UNAVAILABLE, $response->getStatusCode());
+        self::assertSame(HttpStatusCode::ServiceUnavailable->value, $response->getStatusCode());
         self::assertStringContainsString('XYZZY', $response->getBody()->getContents());
     }
 
@@ -60,6 +60,6 @@ class CheckForMaintenanceModeTest extends TestCase
         $middleware = new CheckForMaintenanceMode($maintenance_mode_service);
         $response   = $middleware->process($request, $handler);
 
-        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
+        self::assertSame(HttpStatusCode::NoContent->value, $response->getStatusCode());
     }
 }

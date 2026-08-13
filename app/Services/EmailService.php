@@ -163,7 +163,8 @@ class EmailService
 
         // Some web hosts disable checkdnsrr.
         if (function_exists('checkdnsrr')) {
-            $domain = substr(strrchr($address->getAddress(), '@') ?: '@', 1);
+            $at_pos = strrchr($address->getAddress(), '@');
+            $domain = substr($at_pos !== false ? $at_pos : '@', 1);
             return checkdnsrr($domain);
         }
 

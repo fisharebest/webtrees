@@ -127,7 +127,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
 
         $events_filter = implode('|', $event_array);
 
-        $startjd = Registry::timestampFactory()->now()->julianDay();
+        $startjd = Registry::timestampFactory()->todayJulianDay();
         $endjd   = $startjd;
 
         $facts = $calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
@@ -138,7 +138,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
             } else {
                 $message = I18N::translate('No events exist for today.');
             }
-            $content = view('modules/todays_events/empty', ['message' => $message]);
+            $content = view('modules/todays-events/empty', ['message' => $message]);
         } elseif ($infoStyle === 'list') {
             $content = view('lists/anniversaries-list', [
                 'id'         => $block_id,
@@ -202,7 +202,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
         $filter     = Validator::parsedBody($request)->string('filter');
         $info_style = Validator::parsedBody($request)->string('infoStyle');
         $sort_style = Validator::parsedBody($request)->string('sortStyle');
-        $events     = Validator::parsedBody($request)->array('events');
+        $events     = Validator::parsedBody($request)->list('events');
 
         $this->setBlockSetting($block_id, 'filter', $filter);
         $this->setBlockSetting($block_id, 'infoStyle', $info_style);
@@ -245,7 +245,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
             'anniv_desc' => I18N::translate('sort by date, newest first'),
         ];
 
-        return view('modules/todays_events/config', [
+        return view('modules/todays-events/config', [
             'all_events'  => $all_events,
             'event_array' => $event_array,
             'filter'      => $filter,

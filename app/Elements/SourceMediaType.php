@@ -92,7 +92,7 @@ class SourceMediaType extends AbstractElement
             self::VALUE_VIDEO      => /* I18N: Type of media object */ I18N::translate('Video'),
         ];
 
-        uasort($values, I18N::comparator());
+        uasort($values, I18N::compare(...));
 
         return $values;
     }

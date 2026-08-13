@@ -19,57 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleTr;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\I18N\Languages\Turkish;
 
 class LanguageTurkish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            'A',
-            'B',
-            'C',
-            UTF8::LATIN_CAPITAL_LETTER_C_WITH_CEDILLA,
-            'D',
-            'E',
-            'F',
-            'G',
-            UTF8::LATIN_CAPITAL_LETTER_G_WITH_BREVE,
-            'H',
-            'I',
-            UTF8::LATIN_CAPITAL_LETTER_I_WITH_DOT_ABOVE,
-            'J',
-            'K',
-            'L',
-            'M',
-            'N',
-            'O',
-            UTF8::LATIN_CAPITAL_LETTER_O_WITH_DIAERESIS,
-            'P',
-            'R',
-            'S',
-            UTF8::LATIN_CAPITAL_LETTER_S_WITH_CEDILLA,
-            'T',
-            'U',
-            UTF8::LATIN_CAPITAL_LETTER_U_WITH_DIAERESIS,
-            'V',
-            'Y',
-            'Z',
-        ];
+        $this->language = new Turkish();
     }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleTr();
-    }
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

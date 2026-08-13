@@ -19,17 +19,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleDe;
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\I18N\Languages\German;
 
 class LanguageGerman extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    public function locale(): LocaleInterface
+    public function __construct()
     {
-        return new LocaleDe();
+        $this->language = new German();
     }
 
     /**

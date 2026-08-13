@@ -17,10 +17,11 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Tests\Unit;
+namespace Fisharebest\Webtrees\Tests\Unit\Services;
 
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\Services\UserService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
@@ -32,11 +33,10 @@ use Fisharebest\Webtrees\Tests\TestCase;
 #[CoversClass(UserService::class)]
 class UserServiceTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     protected function setUp(): void
     {
         parent::setUp();
+        self::createDatabase();
 
         $cache_factory = self::createStub(CacheFactoryInterface::class);
         $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));
@@ -45,7 +45,7 @@ class UserServiceTest extends TestCase
 
     public function testCreate(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
 
         $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
 
@@ -54,7 +54,7 @@ class UserServiceTest extends TestCase
 
     public function testDelete(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user_id      = $user->id();
         $user_service->delete($user);
@@ -64,7 +64,7 @@ class UserServiceTest extends TestCase
 
     public function testFindNonExistingUser(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user         = $user_service->find(999);
 
         self::assertNull($user);
@@ -72,7 +72,7 @@ class UserServiceTest extends TestCase
 
     public function testFindExistingUser(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user2        = $user_service->find($user1->id());
         self::assertInstanceOf(UserInterface::class, $user2);
@@ -82,7 +82,7 @@ class UserServiceTest extends TestCase
 
     public function testFindUserByEmail(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user2        = $user_service->findByEmail($user1->email());
         self::assertInstanceOf(UserInterface::class, $user2);
@@ -92,7 +92,7 @@ class UserServiceTest extends TestCase
 
     public function testFindUserByUserName(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user2        = $user_service->findByUserName($user1->userName());
         self::assertInstanceOf(UserInterface::class, $user2);
@@ -102,7 +102,7 @@ class UserServiceTest extends TestCase
 
     public function testFindUserByIdentifier(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user2        = $user_service->findByIdentifier($user1->userName());
         $user3        = $user_service->findByIdentifier($user1->email());
@@ -115,7 +115,7 @@ class UserServiceTest extends TestCase
 
     public function testFindUsersByIndividual(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
         Auth::login($user);
         $tree = $this->importTree('demo.ged');
@@ -130,7 +130,7 @@ class UserServiceTest extends TestCase
 
     public function testFindAllUsers(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user1        = $user_service->create('bbbbb', 'BBBBB', 'bbbbb@example.com', 'secret');
         $user2        = $user_service->create('aaaaa', 'AAAAA', 'aaaaa@example.com', 'secret');
 
@@ -143,7 +143,7 @@ class UserServiceTest extends TestCase
 
     public function testFindAdministrators(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user_service->create('user', 'User', 'user@example.com', 'secret');
 
         $admin = $user_service->create('admin', 'Admin', 'admin@example.com', 'secret');
@@ -157,17 +157,17 @@ class UserServiceTest extends TestCase
 
     public function testFindManagers(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user1        = $user_service->create('user1', 'User1', 'user1@example.com', 'secret');
         $user2        = $user_service->create('user2', 'User2', 'user2@example.com', 'secret');
         $user3        = $user_service->create('user3', 'User3', 'user3@example.com', 'secret');
         $user4        = $user_service->create('user4', 'User4', 'user4@example.com', 'secret');
 
         $tree = $this->importTree('demo.ged');
-        $tree->setUserPreference($user1, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MANAGER);
-        $tree->setUserPreference($user2, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MODERATOR);
-        $tree->setUserPreference($user3, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_EDITOR);
-        $tree->setUserPreference($user4, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MEMBER);
+        $tree->setUserPreference($user1, UserInterface::PREF_TREE_ROLE, Role::Manager->value);
+        $tree->setUserPreference($user2, UserInterface::PREF_TREE_ROLE, Role::Moderator->value);
+        $tree->setUserPreference($user3, UserInterface::PREF_TREE_ROLE, Role::Editor->value);
+        $tree->setUserPreference($user4, UserInterface::PREF_TREE_ROLE, Role::Member->value);
 
         $users = $user_service->managers();
 
@@ -177,17 +177,17 @@ class UserServiceTest extends TestCase
 
     public function testFindModerators(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user1        = $user_service->create('user1', 'User1', 'user1@example.com', 'secret');
         $user2        = $user_service->create('user2', 'User2', 'user2@example.com', 'secret');
         $user3        = $user_service->create('user3', 'User3', 'user3@example.com', 'secret');
         $user4        = $user_service->create('user4', 'User4', 'user4@example.com', 'secret');
 
         $tree = $this->importTree('demo.ged');
-        $tree->setUserPreference($user1, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MANAGER);
-        $tree->setUserPreference($user2, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MODERATOR);
-        $tree->setUserPreference($user3, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_EDITOR);
-        $tree->setUserPreference($user4, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MEMBER);
+        $tree->setUserPreference($user1, UserInterface::PREF_TREE_ROLE, Role::Manager->value);
+        $tree->setUserPreference($user2, UserInterface::PREF_TREE_ROLE, Role::Moderator->value);
+        $tree->setUserPreference($user3, UserInterface::PREF_TREE_ROLE, Role::Editor->value);
+        $tree->setUserPreference($user4, UserInterface::PREF_TREE_ROLE, Role::Member->value);
 
         $users = $user_service->moderators();
 
@@ -197,7 +197,7 @@ class UserServiceTest extends TestCase
 
     public function testFindUnapprovedAndUnverified(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user1        = $user_service->create('user1', 'User1', 'user1@example.com', 'secret');
         $user2        = $user_service->create('user2', 'User2', 'user2@example.com', 'secret');
         $user3        = $user_service->create('user3', 'User3', 'user3@example.com', 'secret');

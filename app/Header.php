@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\HeaderPage;
+use Fisharebest\Webtrees\Http\Controllers\HeaderPage;
 
 /**
  * A GEDCOM header (HEAD) object.

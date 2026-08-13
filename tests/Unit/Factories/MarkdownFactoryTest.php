@@ -34,7 +34,7 @@ class MarkdownFactoryTest extends TestCase
         $factory  = new MarkdownFactory();
 
         self::assertSame(
-            '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
+            '<div class="wt-markdown"><p>FOO <a href="https://example.com">https://example.com</a> BAR</p></div>',
             $factory->autolink('FOO https://example.com BAR')
         );
     }
@@ -45,7 +45,7 @@ class MarkdownFactoryTest extends TestCase
         $tree    = self::createStub(Tree::class);
 
         self::assertSame(
-            '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
+            '<div class="wt-markdown"><p>FOO <a href="https://example.com">https://example.com</a> BAR</p></div>',
             $factory->autolink('FOO https://example.com BAR', $tree)
         );
     }
@@ -55,7 +55,7 @@ class MarkdownFactoryTest extends TestCase
         $factory  = new MarkdownFactory();
 
         self::assertSame(
-            '<p>&lt;b&gt; <a href="https://example.com">https://example.com</a> &lt;/b&gt;</p>',
+            '<div class="wt-markdown"><p>&lt;b&gt; <a href="https://example.com">https://example.com</a> &lt;/b&gt;</p></div>',
             $factory->autolink('<b> https://example.com </b>')
         );
     }
@@ -65,12 +65,12 @@ class MarkdownFactoryTest extends TestCase
         $factory = new MarkdownFactory();
 
         self::assertSame(
-            '<p>FOO https://example.com BAR</p>',
+            '<div class="wt-markdown"><p>FOO https://example.com BAR</p></div>',
             $factory->markdown('FOO https://example.com BAR')
         );
 
         self::assertSame(
-            '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
+            '<div class="wt-markdown"><p>FOO <a href="https://example.com">https://example.com</a> BAR</p></div>',
             $factory->markdown('FOO <https://example.com> BAR')
         );
     }
@@ -81,12 +81,12 @@ class MarkdownFactoryTest extends TestCase
         $factory = new MarkdownFactory();
 
         self::assertSame(
-            '<p>FOO https://example.com BAR</p>',
+            '<div class="wt-markdown"><p>FOO https://example.com BAR</p></div>',
             $factory->markdown('FOO https://example.com BAR', $tree)
         );
 
         self::assertSame(
-            '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
+            '<div class="wt-markdown"><p>FOO <a href="https://example.com">https://example.com</a> BAR</p></div>',
             $factory->markdown('FOO <https://example.com> BAR', $tree)
         );
     }
@@ -96,7 +96,7 @@ class MarkdownFactoryTest extends TestCase
         $factory = new MarkdownFactory();
 
         self::assertSame(
-            '<p>&lt;b&gt; <a href="https://example.com">https://example.com</a> &lt;/b&gt;</p>',
+            '<div class="wt-markdown"><p>&lt;b&gt; <a href="https://example.com">https://example.com</a> &lt;/b&gt;</p></div>',
             $factory->markdown('<b> <https://example.com> </b>')
         );
     }
@@ -106,12 +106,12 @@ class MarkdownFactoryTest extends TestCase
         $factory = new MarkdownFactory();
 
         self::assertSame(
-            '<p>alpha<br />beta<br />gamma<br />delta</p>',
+            '<div class="wt-markdown"><p>alpha<br />beta<br />gamma<br />delta</p></div>',
             $factory->autolink("alpha\nbeta\ngamma  \ndelta")
         );
 
         self::assertSame(
-            "<p>alpha<br />beta<br />gamma<br />\ndelta</p>",
+            "<div class=\"wt-markdown\"><p>alpha<br />beta<br />gamma<br />\ndelta</p></div>",
             $factory->markdown("alpha\nbeta\ngamma  \ndelta")
         );
     }
@@ -121,12 +121,12 @@ class MarkdownFactoryTest extends TestCase
         $factory = new MarkdownFactory();
 
         self::assertSame(
-            '<p>alpha<br />beta</p><p>gamma<br />delta</p>',
+            '<div class="wt-markdown"><p>alpha<br />beta</p><p>gamma<br />delta</p></div>',
             $factory->autolink("alpha\nbeta\n\n\n\ngamma\ndelta")
         );
 
         self::assertSame(
-            "<p>alpha<br />beta</p>\n<p>gamma<br />delta</p>",
+            "<div class=\"wt-markdown\"><p>alpha<br />beta</p>\n<p>gamma<br />delta</p></div>",
             $factory->markdown("alpha\nbeta\n\n\n\ngamma\ndelta")
         );
     }
@@ -136,12 +136,12 @@ class MarkdownFactoryTest extends TestCase
         $factory = new MarkdownFactory();
         // code block within backticks
         self::assertSame(
-            "<pre><code>alpha\n beta\n  gamma\n   delta\n</code></pre>",
+            "<div class=\"wt-markdown\"><pre><code>alpha\n beta\n  gamma\n   delta\n</code></pre></div>",
             $factory->markdown("````\nalpha\n beta\n  gamma\n   delta\n````")
         );
         // code block through indentation
         self::assertSame(
-            "<pre><code>alpha\n beta\n  gamma\n   delta\n</code></pre>",
+            "<div class=\"wt-markdown\"><pre><code>alpha\n beta\n  gamma\n   delta\n</code></pre></div>",
             $factory->markdown("    alpha\n     beta\n      gamma\n       delta")
         );
     }

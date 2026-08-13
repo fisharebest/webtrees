@@ -19,234 +19,91 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use Fisharebest\Webtrees\MediaFile;
+use LogicException;
 
-use function substr_count;
-
-abstract class AbstractRenderer implements ElementContainerInterface
+abstract class AbstractRenderer implements RendererInterface, DocumentAcceptorInterface, StyleConsumerInterface, ElementRendererInterface
 {
-    // The default font size when none is specified in the XML
-    public const float DEFAULT_FONT_SIZE = 12.0;
-
-    // Reports layouts are measured in points.
     protected const string UNITS = 'pt';
 
-    /** Report layout configuration, set by setup(). */
-    public ReportConfig $config;
+    public Config $config;
 
-    /** @var array<string, Style> Style elements found in the document, keyed by name */
-    protected array $styles = [];
+    private readonly RenderContext $render_context;
 
-    /** Which logical section of the report is currently being assembled. */
-    protected ReportSection $processing = ReportSection::Header;
-
-    /** @var array<AbstractElement> */
-    protected array $headerElements = [];
-
-    /** @var array<AbstractElement> */
-    protected array $footerElements = [];
-
-    /** @var array<AbstractElement> */
-    protected array $bodyElements = [];
-
-    protected Style|null $currentStyle = null;
-
-    // The largest font size within a TextBox, used to calculate text height
-    private float $largestFontHeight = 0.0;
-
-    // The last cell height
-    private float $lastCellHeight = 0.0;
-
-    /** @var array<AbstractFootnote> Footnotes that have been rendered or queued for rendering */
-    protected array $printedfootnotes = [];
-
-    public function addElement(AbstractElement $element): void
+    public function __construct()
     {
-        match ($this->processing) {
-            ReportSection::Body   => $this->addElementToBody($element),
-            ReportSection::Header => $this->addElementToHeader($element),
-            ReportSection::Footer => $this->addElementToFooter($element),
-        };
+        $this->render_context = new RenderContext();
     }
 
-    public function addElementToHeader(AbstractElement $element): void
+    public function applyDocument(Document $report_document): void
     {
-        $this->headerElements[] = $element;
+        $this->render_context->applyDocument($report_document);
     }
 
-    public function addElementToBody(AbstractElement $element): void
-    {
-        $this->bodyElements[] = $element;
-    }
-
-    public function addElementToFooter(AbstractElement $element): void
-    {
-        $this->footerElements[] = $element;
-    }
-
-    abstract public function run(): void;
+    abstract public function output(): string;
 
     abstract public function setCurrentStyle(Style $style): void;
 
     abstract public function getStringWidth(string $text): float;
 
-    /** Count the number of lines in a string. Returns 0 for empty text. */
-    public function countLines(string $text): int
-    {
-        if ($text === '') {
-            return 0;
-        }
-
-        return substr_count($text, "\n") + 1;
-    }
-
-    /**
-     * @param float       $width   cell width (expressed in points)
-     * @param float       $height  cell height (expressed in points)
-     * @param string      $border  Border style
-     * @param CellAlign   $align   Text alignment
-     * @param string      $bgcolor Background color code
-     * @param Style       $style   The text style
-     * @param CellNewline $ln      Where the cursor should go after the call
-     * @param float       $top     Y-position
-     * @param float       $left    X-position
-     * @param bool        $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
-     * @param int         $stretch Stretch character mode
-     * @param string      $bocolor Border color
-     * @param string      $tcolor  Text color
-     */
-    abstract public function createCell(
-        float $width,
-        float $height,
-        string $border,
-        CellAlign $align,
-        string $bgcolor,
-        Style $style,
-        CellNewline $ln,
-        float $top,
-        float $left,
-        bool $fill,
-        int $stretch,
-        string $bocolor,
-        string $tcolor,
-        bool $reseth
-    ): AbstractCell;
-
-    /**
-     * @param float  $width   Text box width
-     * @param float  $height  Text box height
-     * @param string $bgcolor Background color code in HTML
-     */
-    abstract public function createTextBox(
-        float $width,
-        float $height,
-        bool $border,
-        string $bgcolor,
-        bool $newline,
-        float $left,
-        float $top,
-        bool $pagecheck,
-        string $style,
-        bool $fill,
-        bool $padding,
-        bool $reseth
-    ): AbstractTextBox;
-
-    abstract public function createText(Style $style, string $color): AbstractText;
-
-    abstract public function createLine(float $x1, float $y1, float $x2, float $y2): AbstractLine;
-
-    abstract public function createImage(
-        string $file,
-        float $x,
-        float $y,
-        float $w,
-        float $h,
-        CellAlign $align,
-        ImageContinuation $ln,
-    ): AbstractImage;
-
-    abstract public function createImageFromObject(
-        MediaFile $media_file,
-        float $x,
-        float $y,
-        float $w,
-        float $h,
-        CellAlign $align,
-        ImageContinuation $ln,
-    ): AbstractImage;
-
-    abstract public function createFootnote(Style $style): AbstractFootnote;
-
-    public function setup(ReportConfig $config): void
+    public function setup(Config $config): void
     {
         $this->config = $config;
     }
 
-    public function setProcessing(ReportSection $section): void
+    public function reportConfig(): Config
     {
-        $this->processing = $section;
-    }
+        if (!isset($this->config)) {
+            throw new LogicException('Report configuration is not initialized. Is there a <Doc> element?');
+        }
 
+        return $this->config;
+    }
 
     public function addStyle(Style $style): void
     {
-        $this->styles[$style->name] = $style;
+        $this->render_context->addStyle($style);
     }
 
     public function getStyle(string $style): Style
     {
-        return $this->styles[$style];
+        return $this->render_context->getStyle($style);
     }
 
-    public function getCurrentStyleHeight(): float
+    /** @return list<Element> */
+    protected function headerElements(): array
     {
-        return $this->currentStyle?->size ?? self::DEFAULT_FONT_SIZE;
+        return $this->render_context->headerElements();
     }
 
-    /** Reset the largest-font tracker at the start of a new TextBox. */
-    public function resetLargestFontHeight(): void
+    /** @return list<Element> */
+    protected function bodyElements(): array
     {
-        $this->largestFontHeight = 0.0;
+        return $this->render_context->bodyElements();
     }
 
-    /** Track the maximum font height seen within the current TextBox. */
-    public function trackFontHeight(float $size): void
+    /** @return list<Element> */
+    protected function footerElements(): array
     {
-        if ($size > $this->largestFontHeight) {
-            $this->largestFontHeight = $size;
-        }
+        return $this->render_context->footerElements();
     }
 
-    /** The largest font height recorded since the last reset. */
-    public function getLargestFontHeight(): float
+    /** @return array<string, Style> */
+    protected function stylesMap(): array
     {
-        return $this->largestFontHeight;
+        return $this->render_context->stylesMap();
     }
 
-    /** Reset the last-cell-height tracker. */
-    public function resetLastCellHeight(): void
+    protected function currentStyleValue(): Style|null
     {
-        $this->lastCellHeight = 0.0;
+        return $this->render_context->currentStyle();
     }
 
-    /** Set the last cell height to a specific value. */
-    public function setLastCellHeight(float $height): void
+    protected function setCurrentStyleValue(Style|null $style): void
     {
-        $this->lastCellHeight = $height;
+        $this->render_context->setCurrentStyle($style);
     }
-
-    /** The height of the last rendered cell. */
-    public function getLastCellHeight(): float
-    {
-        return $this->lastCellHeight;
-    }
-
-    abstract public function footnotes(): void;
 
     abstract public function newPage(): void;
 
-    abstract public function checkFootnote(AbstractFootnote $footnote): void;
-
-    abstract public function pageNo(): int;
+    abstract public function pageNumber(): int;
 }

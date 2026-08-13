@@ -19,62 +19,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleSl;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\I18N\Languages\Slovenian;
 
 class LanguageSlovenian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            'A',
-            'B',
-            'C',
-            UTF8::LATIN_CAPITAL_LETTER_C_WITH_CARON,
-            UTF8::LATIN_CAPITAL_LETTER_C_WITH_ACUTE,
-            'D',
-            UTF8::LATIN_CAPITAL_LETTER_D_WITH_STROKE,
-            'E',
-            'F',
-            'G',
-            'H',
-            'I',
-            'J',
-            'K',
-            'L',
-            'M',
-            'N',
-            'O',
-            'P',
-            'Q',
-            'R',
-            'S',
-            UTF8::LATIN_CAPITAL_LETTER_S_WITH_CARON,
-            'T',
-            'U',
-            'V',
-            'W',
-            'X',
-            'Y',
-            'Z',
-            UTF8::LATIN_CAPITAL_LETTER_Z_WITH_CARON,
-        ];
+        $this->language = new Slovenian();
     }
-
     public function isEnabledByDefault(): bool
     {
         return false;
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleSl();
     }
 
     /**

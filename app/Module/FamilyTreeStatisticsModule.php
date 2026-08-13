@@ -96,7 +96,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
         extract($config, EXTR_OVERWRITE);
 
         if ($show_common_surnames === '1') {
-            $query = DB::table('name')
+            $subquery = DB::table('name')
                 ->where('n_file', '=', $tree->id())
                 ->where('n_type', '<>', '_MARNM')
                 ->where('n_surn', '<>', '')
@@ -104,12 +104,12 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
                 ->select([
                     DB::binaryColumn('n_surn', 'n_surn'),
                     DB::binaryColumn('n_surname', 'n_surname'),
-                    new Expression('COUNT(*) AS total'),
-                ])
-                ->groupBy([
-                    DB::binaryColumn('n_surn'),
-                    DB::binaryColumn('n_surname'),
                 ]);
+
+            $query = DB::query()
+                ->fromSub($subquery, 'names')
+                ->select(['n_surn', 'n_surname', new Expression('COUNT(*) AS total')])
+                ->groupBy(['n_surn', 'n_surname']);
 
             /** @var array<array<int>> $top_surnames */
             $top_surnames = [];
@@ -141,7 +141,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
             $surnames = '';
         }
 
-        $content = view('modules/gedcom_stats/statistics', [
+        $content = view('modules/gedcom-stats/statistics', [
             'show_last_update'     => $show_last_update,
             'show_common_surnames' => $show_common_surnames,
             'number_of_surnames'   => $number_of_surnames,
@@ -278,7 +278,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
         $stat_most_chil       = $this->getBlockSetting($block_id, 'stat_most_chil', '1');
         $stat_avg_chil        = $this->getBlockSetting($block_id, 'stat_avg_chil', '1');
 
-        return view('modules/gedcom_stats/config', [
+        return view('modules/gedcom-stats/config', [
             'show_last_update'     => $show_last_update,
             'show_common_surnames' => $show_common_surnames,
             'number_of_surnames'   => $number_of_surnames,

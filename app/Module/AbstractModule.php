@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
@@ -38,7 +38,7 @@ abstract class AbstractModule implements ModuleInterface
     private string $name = '';
 
     // The default access level for this module.  It can be changed in the control panel.
-    protected int $access_level = Auth::PRIV_PRIVATE;
+    protected AccessLevel $access_level = AccessLevel::Public;
 
     // The default status for this module.  It can be changed in the control panel.
     private bool $enabled = true;
@@ -165,7 +165,7 @@ abstract class AbstractModule implements ModuleInterface
      *
      * @param class-string<T> $interface
      */
-    final public function accessLevel(Tree $tree, string $interface): int
+    final public function accessLevel(Tree $tree, string $interface): AccessLevel
     {
         $access_levels = Registry::cache()->array()
             ->remember('module-privacy-' . $tree->id(), static fn (): Collection => DB::table('module_privacy')
@@ -174,7 +174,7 @@ abstract class AbstractModule implements ModuleInterface
 
         $row = $access_levels->first(fn (object $row): bool => $row->interface === $interface && $row->module_name === $this->name());
 
-        return $row ? (int) $row->access_level : $this->access_level;
+        return $row !== null ? AccessLevel::from((int) $row->access_level) : $this->access_level;
     }
 
     /**

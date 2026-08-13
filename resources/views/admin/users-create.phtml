@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserAddAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserListPage;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\UserAdd;
+use Fisharebest\Webtrees\Http\Controllers\UserListPage;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var string $email
@@ -25,7 +24,8 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<form method="post" action="<?= e(route(UserAddAction::class)) ?>" class="form-horizontal" autocomplete="off">
+<div id="admin-users-create-page">
+<form method="post" action="<?= e(route(UserAdd::class)) ?>" class="form-horizontal" autocomplete="off">
     <!-- REAL NAME -->
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="real_name">
@@ -88,11 +88,5 @@ use Fisharebest\Webtrees\View;
 
     <?= csrf_field() ?>
 </form>
+</div>
 
-<?php View::push('javascript') ?>
-<script>
-  function regex_quote(str) {
-    return str.replace(/[\\.?+*()[\]{}|]/g, "\\$&");
-  }
-</script>
-<?php View::endpush() ?>

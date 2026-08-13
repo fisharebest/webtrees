@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Illuminate\Support\Str;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function array_map;
@@ -54,10 +55,10 @@ class Session
     /**
      * Start a session
      */
-    public static function start(ServerRequestInterface $request): void
+    public static function start(ServerRequestInterface $request, ClockInterface $clock): void
     {
         // Store sessions in the database
-        session_set_save_handler(new SessionDatabaseHandler($request));
+        session_set_save_handler(new SessionDatabaseHandler($request, $clock));
 
         $url    = Validator::attributes($request)->string('base_url');
         $secure = parse_url($url, PHP_URL_SCHEME) === 'https';

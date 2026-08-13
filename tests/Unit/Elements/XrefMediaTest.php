@@ -29,9 +29,9 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Message\ServerRequestInterface;
 use Fisharebest\Webtrees\Elements\AbstractXrefElement;
 use Fisharebest\Webtrees\Elements\XrefMedia;
-use Fisharebest\Webtrees\Report\AbstractElement;
+use Fisharebest\Webtrees\Report\Element;
 
-#[CoversClass(AbstractElement::class)]
+#[CoversClass(Element::class)]
 #[CoversClass(AbstractXrefElement::class)]
 #[CoversClass(XrefMedia::class)]
 class XrefMediaTest extends TestCase

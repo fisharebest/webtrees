@@ -19,16 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpInternalServerErrorException;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Webtrees;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
@@ -38,6 +37,10 @@ use League\Flysystem\StorageAttributes;
 use League\Flysystem\UnableToDeleteFile;
 use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
+use Psr\Clock\ClockInterface;
 use RuntimeException;
 use ZipArchive;
 
@@ -48,7 +51,7 @@ use function ftell;
 use function fwrite;
 use function rewind;
 use function strlen;
-use function time;
+use function usort;
 use function version_compare;
 
 use const PHP_VERSION;
@@ -58,13 +61,6 @@ use const PHP_VERSION;
  */
 class UpgradeService
 {
-    // Options for fetching files using GuzzleHTTP
-    private const array GUZZLE_OPTIONS = [
-        'connect_timeout' => 25,
-        'read_timeout'    => 25,
-        'timeout'         => 55,
-    ];
-
     // Transfer stream data in blocks of this number of bytes.
     private const int READ_BLOCK_SIZE = 65535;
 
@@ -75,11 +71,11 @@ class UpgradeService
     // Note: earlier versions of webtrees used svn.webtrees.net, so we must maintain both URLs.
     private const string UPDATE_URL = 'https://dev.webtrees.net/build/latest-version.txt';
 
-    // If the update server doesn't respond after this time, give up.
-    private const float HTTP_TIMEOUT = 3.0;
-
     public function __construct(
+        private readonly ClientInterface $http_client,
+        private readonly RequestFactoryInterface $request_factory,
         private readonly TimeoutService $timeout_service,
+        private readonly ClockInterface $clock,
     ) {
     }
 
@@ -95,7 +91,7 @@ class UpgradeService
             $zip->extractTo($target_folder);
             $zip->close();
         } else {
-            throw new HttpServerErrorException('Cannot read ZIP file. Is it corrupt?');
+            throw new HttpInternalServerErrorException('Cannot read ZIP file. Is it corrupt?');
         }
     }
 
@@ -125,7 +121,7 @@ class UpgradeService
      *
      *
      * @return int The number of bytes downloaded
-     * @throws GuzzleException
+     * @throws ClientExceptionInterface
      * @throws FilesystemException
      */
     public function downloadFile(string $url, FilesystemOperator $filesystem, string $path): int
@@ -134,8 +130,8 @@ class UpgradeService
         $tmp = fopen('php://memory', 'wb+');
 
         // Read from the URL
-        $client   = new Client();
-        $response = $client->get($url, self::GUZZLE_OPTIONS);
+        $request  = $this->request_factory->createRequest('GET', $url);
+        $response = $this->http_client->sendRequest($request);
         $stream   = $response->getBody();
 
         // Download the file to temporary storage.
@@ -150,7 +146,7 @@ class UpgradeService
 
             if ($this->timeout_service->isTimeNearlyUp()) {
                 $stream->close();
-                throw new HttpServerErrorException(I18N::translate('The server’s time limit has been reached.'));
+                throw new HttpInternalServerErrorException(I18N::translate('The server’s time limit has been reached.'));
             }
         }
 
@@ -173,15 +169,27 @@ class UpgradeService
      */
     public function moveFiles(FilesystemOperator $source, FilesystemOperator $destination): void
     {
+        $folders = [];
+
         foreach ($source->listContents('', FilesystemReader::LIST_DEEP) as $attributes) {
             if ($attributes->isFile()) {
                 $destination->write($attributes->path(), $source->read($attributes->path()));
                 $source->delete($attributes->path());
 
                 if ($this->timeout_service->isTimeNearlyUp()) {
-                    throw new HttpServerErrorException(I18N::translate('The server’s time limit has been reached.'));
+                    throw new HttpInternalServerErrorException(I18N::translate('The server’s time limit has been reached.'));
                 }
+            } else {
+                $folders[] = $attributes->path();
             }
+        }
+
+        // Sort folders by longest name, so we have a depth-first list.
+        usort($folders, static fn ($first, $second): int => strlen($second) <=> strlen($first));
+
+        // Delete these now empty folders.
+        foreach ($folders as $folder) {
+            $source->deleteDirectory($folder);
         }
     }
 
@@ -245,11 +253,11 @@ class UpgradeService
     /**
      * When did we last try to fetch the latest version of webtrees.
      */
-    public function latestVersionTimestamp(): TimestampInterface
+    public function latestVersionTimestamp(): CarbonImmutable
     {
         $latest_version_wt_timestamp = (int) Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
 
-        return Registry::timestampFactory()->make($latest_version_wt_timestamp);
+        return Registry::timestampFactory()->fromEpoch($latest_version_wt_timestamp);
     }
 
     /**
@@ -275,30 +283,26 @@ class UpgradeService
     {
         $last_update_timestamp = (int) Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
 
-        $current_timestamp = time();
+        $current_timestamp = $this->clock->now()->getTimestamp();
 
         if ($force || $last_update_timestamp < $current_timestamp - self::CHECK_FOR_UPDATE_INTERVAL) {
             Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', (string) $current_timestamp);
 
             try {
-                $client = new Client([
-                    'timeout' => self::HTTP_TIMEOUT,
-                ]);
+                $url = Html::url(self::UPDATE_URL, $this->serverParameters());
+                $request  = $this->request_factory->createRequest('GET', $url);
+                $response = $this->http_client->sendRequest($request);
 
-                $response = $client->get(self::UPDATE_URL, [
-                    'query' => $this->serverParameters(),
-                ]);
-
-                if ($response->getStatusCode() === StatusCodeInterface::STATUS_OK) {
+                if ($response->getStatusCode() === HttpStatusCode::OK->value) {
                     Site::setPreference('LATEST_WT_VERSION', $response->getBody()->getContents());
                     Site::setPreference('LATEST_WT_VERSION_ERROR', '');
                 } else {
                     Site::setPreference('LATEST_WT_VERSION_ERROR', 'HTTP' . $response->getStatusCode());
                 }
-            } catch (GuzzleException $ex) {
+            } catch (ClientExceptionInterface $exception) {
                 // Can't connect to the server?
                 // Use the existing information about latest versions.
-                Site::setPreference('LATEST_WT_VERSION_ERROR', $ex->getMessage());
+                Site::setPreference('LATEST_WT_VERSION_ERROR', $exception->getMessage());
             }
         }
 

@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Http\RequestHandlers\SetupWizard;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\RequestHandlers\SetupWizard;
 
 #[CoversClass(SetupWizard::class)]
 class SetupWizardTest extends TestCase

@@ -19,21 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
+use Fisharebest\Webtrees\Report\Element;
+use Fisharebest\Webtrees\Report\FootnoteTextsElement;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Report\FootnoteTextsElement;
 
+#[CoversClass(Element::class)]
 #[CoversClass(FootnoteTextsElement::class)]
 class FootnoteTextsElementTest extends TestCase
 {
     public function testGetValueReturnsNonEmptyString(): void
     {
-        $element = new FootnoteTextsElement();
-        self::assertNotEmpty($element->getValue());
-    }
-
-    public function testClass(): void
-    {
-        self::assertTrue(class_exists(FootnoteTextsElement::class));
+        self::assertSame('dummy', (new FootnoteTextsElement())->getValue());
     }
 }

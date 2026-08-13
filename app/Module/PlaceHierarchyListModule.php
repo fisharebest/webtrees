@@ -20,9 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Comparators\PlaceComparator;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapDataEdit;
+use Fisharebest\Webtrees\Http\Controllers\MapDataEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -38,7 +40,6 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_chunk;
 use function array_pop;
@@ -49,14 +50,13 @@ use function redirect;
 use function route;
 use function view;
 
-class PlaceHierarchyListModule extends AbstractModule implements ModuleListInterface, RequestHandlerInterface
+class PlaceHierarchyListModule extends AbstractModule implements ModuleListInterface
 {
     use ModuleListTrait;
 
     protected const string ROUTE_URL = '/tree/{tree}/place-list{/place_id}';
 
-    /** @var int The default access level for this module.  It can be changed in the control panel. */
-    protected int $access_level = Auth::PRIV_USER;
+    protected AccessLevel $access_level = AccessLevel::Member;
 
     private LeafletJsService $leaflet_js_service;
 
@@ -76,8 +76,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class);
     }
 
     public function title(): string
@@ -125,7 +124,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
         return route(static::class, $parameters);
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();
         $user     = Validator::attributes($request)->user();
@@ -282,7 +281,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     private function getList(Tree $tree): array
     {
         $places = $this->search_service->searchPlaces($tree, '')
-            ->sort(static fn (Place $x, Place $y): int => I18N::comparator()($x->gedcomName(), $y->gedcomName()))
+            ->sort(PlaceComparator::byPlaceName(...))
             ->all();
 
         $count = count($places);

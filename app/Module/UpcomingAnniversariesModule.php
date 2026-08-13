@@ -143,8 +143,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
         $events_filter = implode('|', $event_array);
 
-        $startjd = Registry::timestampFactory()->now()->addDays(1)->julianDay();
-        $endjd   = Registry::timestampFactory()->now()->addDays($days)->julianDay();
+        $startjd = Registry::timestampFactory()->todayJulianDay() + 1;
+        $endjd   = Registry::timestampFactory()->todayJulianDay() + $days;
 
         $facts = $this->calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 
@@ -163,7 +163,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
                 }
             }
 
-            $content = view('modules/upcoming_events/empty', ['message' => $message]);
+            $content = view('modules/upcoming-events/empty', ['message' => $message]);
         } elseif ($infoStyle === 'list') {
             $content = view('lists/anniversaries-list', [
                 'id'         => $block_id,
@@ -228,7 +228,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
         $filter     = Validator::parsedBody($request)->boolean('filter');
         $info_style = Validator::parsedBody($request)->isInArrayKeys($this->infoStyles())->string('infoStyle');
         $sort_style = Validator::parsedBody($request)->isInArrayKeys($this->sortStyles())->string('sortStyle');
-        $events     = Validator::parsedBody($request)->array('events');
+        $events     = Validator::parsedBody($request)->list('events');
 
         $this->setBlockSetting($block_id, 'days', (string)$days);
         $this->setBlockSetting($block_id, 'filter', (string)$filter);
@@ -257,7 +257,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
             $all_events[$event] = Registry::elementFactory()->make($tag)->label();
         }
 
-        return view('modules/upcoming_events/config', [
+        return view('modules/upcoming-events/config', [
             'all_events'  => $all_events,
             'days'        => $days,
             'event_array' => $event_array,

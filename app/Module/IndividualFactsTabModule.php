@@ -23,11 +23,11 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Elements\AdoptedByWhichParent;
 use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Elements\XrefFamily;
-use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Services\FactSortService;
 use Fisharebest\Webtrees\Services\IndividualFactsService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Support\Collection;
@@ -38,20 +38,12 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 {
     use ModuleTabTrait;
 
-    private ClipboardService $clipboard_service;
-
-    private IndividualFactsService $individual_facts_service;
-
-    private ModuleService $module_service;
-
     public function __construct(
-        ClipboardService $clipboard_service,
-        IndividualFactsService $individual_facts_service,
-        ModuleService $module_service
+        private ClipboardService $clipboard_service,
+        private FactSortService $fact_sort_service,
+        private IndividualFactsService $individual_facts_service,
+        private ModuleService $module_service,
     ) {
-        $this->clipboard_service        = $clipboard_service;
-        $this->individual_facts_service = $individual_facts_service;
-        $this->module_service           = $module_service;
     }
 
     public function title(): string
@@ -116,10 +108,10 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             ->merge($associate_facts)
             ->merge($historic_facts);
 
-        $individual_facts = Fact::sortFacts($individual_facts);
+        $individual_facts = $this->fact_sort_service->sort($individual_facts);
 
         // Facts of relatives take the form 1 EVEN / 2 TYPE Event of Individual
-        // Ensure custom tags from there are recognised
+        // Ensure custom tags from there are recognized
         Registry::elementFactory()->registerTags([
             'INDI:EVEN:CEME'      => new CustomElement(I18N::translate('Cemetery')),
             'INDI:EVEN:_GODP'     => new CustomElement(I18N::translate('Godparent')),
@@ -127,7 +119,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             'INDI:EVEN:FAMC:ADOP' => new AdoptedByWhichParent(I18N::translate('Adoption')),
         ]);
 
-        return view('modules/personal_facts/tab', [
+        return view('modules/personal-facts/tab', [
             'can_edit'            => $individual->canEdit(),
             'clipboard_facts'     => $this->clipboard_service->pastableFacts($individual),
             'has_associate_facts' => $associate_facts->isNotEmpty(),

@@ -79,13 +79,13 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
         $contact_user   = $this->user_service->find(user_id: $tree->contactUserId());
         $webmaster_user = $this->user_service->find(user_id: $tree->supportUserId());
 
-        if ($contact_user instanceof User && $contact_user === $webmaster_user) {
-            return view('modules/contact-links/footer', [
-                'contact_links' => $this->contactLinkEverything($contact_user, $request),
-            ]);
-        }
-
         if ($contact_user instanceof User && $webmaster_user instanceof User) {
+            if ($contact_user === $webmaster_user) {
+                return view('modules/contact-links/footer', [
+                    'contact_links' => $this->contactLinkEverything($contact_user, $request),
+                ]);
+            }
+
             return view('modules/contact-links/footer', [
                 'contact_links' => $this->contactLinkGenealogy($contact_user, $request) . '<br>' . $this->contactLinkTechnical($webmaster_user, $request),
             ]);

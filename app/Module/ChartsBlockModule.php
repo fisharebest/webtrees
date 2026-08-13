@@ -69,7 +69,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
     {
         $PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
         $gedcomid         = $tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
-        $default_xref     = $gedcomid ?: $PEDIGREE_ROOT_ID;
+        $default_xref     = $gedcomid !== '' ? $gedcomid : $PEDIGREE_ROOT_ID;
 
         $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
         $xref = $this->getBlockSetting($block_id, 'pid', $default_xref);
@@ -147,10 +147,8 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
                     if ($module instanceof InteractiveTreeModule) {
                         $title = I18N::translate('Interactive tree of %s', $individual->fullName());
-                        $tv    = new TreeView();
-                        [$html, $js] = $tv->drawViewport($individual, 2);
-                        $js      = 'document.addEventListener("DOMContentLoaded", function() {' . $js . '});';
-                        $content = $html . '<script>' . $js . '</script>';
+                        $tv      = new TreeView();
+                        $content = $tv->drawViewport($individual, 2);
                     } else {
                         $title   = I18N::translate('Interactive tree');
                         $content = I18N::translate('The module “%s” has been disabled.', $title);
@@ -202,7 +200,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
     {
         $PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
         $gedcomid         = $tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
-        $default_xref     = $gedcomid ?: $PEDIGREE_ROOT_ID;
+        $default_xref     = $gedcomid !== '' ? $gedcomid : $PEDIGREE_ROOT_ID;
 
         $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
         $xref = $this->getBlockSetting($block_id, 'pid', $default_xref);
@@ -213,7 +211,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
             'hourglass'   => I18N::translate('Hourglass chart'),
             'treenav'     => I18N::translate('Interactive tree'),
         ];
-        uasort($charts, I18N::comparator());
+        uasort($charts, I18N::compare(...));
 
         $individual = Registry::individualFactory()->make($xref, $tree);
 

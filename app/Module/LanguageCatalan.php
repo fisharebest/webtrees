@@ -19,15 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleCa;
-use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\I18N\Languages\Catalan;
 
 class LanguageCatalan extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    public function locale(): LocaleInterface
+    public function __construct()
     {
-        return new LocaleCa();
+        $this->language = new Catalan();
     }
 }

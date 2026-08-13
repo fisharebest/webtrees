@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Census;
 
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Date\GregorianDate;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -34,19 +34,15 @@ class CensusColumnBirthYearTest extends TestCase
 {
     public function testGenerateColumn(): void
     {
-        $cal_date = self::createStub(GregorianDate::class);
-        $cal_date->method('format')->willReturn('1800');
-
-        $date = self::createStub(Date::class);
-        $date->method('minimumDate')->willReturn($cal_date);
-
         $individual = self::createStub(Individual::class);
-        $individual->method('getEstimatedBirthDate')->willReturn($date);
+        $individual->method('getEstimatedBirthDate')->willReturn(new Date('02 JAN 1800'));
 
         $census = self::createStub(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1832');
 
         $column = new CensusColumnBirthYear($census, '', '');
+
+        I18N::init('en-GB');
 
         self::assertSame('1800', $column->generate($individual, $individual));
     }

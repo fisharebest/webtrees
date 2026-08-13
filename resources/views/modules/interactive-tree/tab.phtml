@@ -2,11 +2,8 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\View;
-
 /**
  * @var string $html
- * @var string $js
  */
 
 ?>
@@ -15,8 +12,3 @@ use Fisharebest\Webtrees\View;
     <?= $html ?>
 </div>
 
-<?php View::push('javascript') ?>
-<script>
-    <?= $js ?>
-</script>
-<?php View::endpush() ?>

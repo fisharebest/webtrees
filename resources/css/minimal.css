@@ -611,10 +611,6 @@ div.faq_body {
     content: url(images/indicator.gif);
 }
 
-.icon-loading-large {
-    content: url(images/loading-32x32.gif);
-}
-
 .icon-minus {
     content: url(icons/minus.png);
 }

@@ -19,10 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
+use LogicException;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Report\AbstractParser;
 use Fisharebest\Webtrees\Report\ParserSetup;
+use Fisharebest\Webtrees\Webtrees;
 
 #[CoversClass(AbstractParser::class)]
 #[CoversClass(ParserSetup::class)]
@@ -31,5 +33,15 @@ class ParserSetupTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(ParserSetup::class));
+    }
+
+    public function testInvalidStyleFlagsAreRejected(): void
+    {
+        $report_file = Webtrees::ROOT_DIR . 'tests/data/reports/report-with-invalid-style-flags.xml';
+
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Invalid style flags "x". Use only lowercase b, i, u, and d.');
+
+        (new ParserSetup($report_file))->process();
     }
 }

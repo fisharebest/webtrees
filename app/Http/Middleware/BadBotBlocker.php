@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\NetworkService;
 use Fisharebest\Webtrees\Validator;
@@ -1619,8 +1619,10 @@ class BadBotBlocker implements MiddlewareInterface
                 '<body>Cookie check</body>' .
                 '</html>';
 
-            return $this->response($content)
-                ->withHeader('set-cookie', 'x=y; HttpOnly; SameSite=Strict');
+            // Use a 200 status code, as some webserver configs replace
+            // 4xx with a default error page.
+            return response($content)
+                ->withHeader('set-cookie', 'x=y; Path=/; HttpOnly; SameSite=Strict');
         }
 
         // Bots get restricted access
@@ -1677,6 +1679,6 @@ class BadBotBlocker implements MiddlewareInterface
 
     private function response(string $content): ResponseInterface
     {
-        return response($content, StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
+        return response($content, HttpStatusCode::NotAcceptable);
     }
 }

@@ -21,9 +21,9 @@ namespace Fisharebest\Webtrees\Tests\Unit\Elements;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Elements\TransmissionDate;
-use Fisharebest\Webtrees\Report\AbstractElement;
+use Fisharebest\Webtrees\Report\Element;
 
-#[CoversClass(AbstractElement::class)]
+#[CoversClass(Element::class)]
 #[CoversClass(TransmissionDate::class)]
 class TransmissionDateTest extends AbstractElementTestCase
 {

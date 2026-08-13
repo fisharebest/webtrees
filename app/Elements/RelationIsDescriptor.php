@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\I18N;
 
 use function uasort;
@@ -40,14 +41,14 @@ class RelationIsDescriptor extends AbstractElement
     /**
      * A list of controlled values for this element
      *
-     * @param string $sex the text depends on the sex of the *linked* individual
+     * @TODO - This is the sex of the individual that is linked to.  Need to pass it in.
      *
      * @return array<int|string,string>
      */
-    public function values(string $sex = 'U'): array
+    public function values(Sex $sex = Sex::Unknown): array
     {
-        $values = [
-            'M' => [
+        $values = match ($sex) {
+            Sex::Male => [
                 ''                 => '',
                 'attendant'        => I18N::translateContext('MALE', 'Attendant'),
                 'attending'        => I18N::translateContext('MALE', 'Attending'),
@@ -69,7 +70,7 @@ class RelationIsDescriptor extends AbstractElement
                 'slave'            => I18N::translateContext('MALE', 'Slave'),
                 'ward'             => I18N::translateContext('MALE', 'Ward'),
             ],
-            'F' => [
+            Sex::Female => [
                 'attendant'        => I18N::translateContext('FEMALE', 'Attendant'),
                 'attending'        => I18N::translateContext('FEMALE', 'Attending'),
                 'buyer'            => I18N::translateContext('FEMALE', 'Buyer'),
@@ -90,7 +91,7 @@ class RelationIsDescriptor extends AbstractElement
                 'slave'            => I18N::translateContext('FEMALE', 'Slave'),
                 'ward'             => I18N::translateContext('FEMALE', 'Ward'),
             ],
-            'U' => [
+            default => [
                 'attendant'        => I18N::translate('Attendant'),
                 'attending'        => I18N::translate('Attending'),
                 'best_man'         => I18N::translate('Best man'),
@@ -127,12 +128,10 @@ class RelationIsDescriptor extends AbstractElement
                 'ward'             => I18N::translate('Ward'),
                 'witness'          => I18N::translate('Witness'),
             ],
-        ];
+        };
 
-        $tmp = $values[$sex] ?? $values['U'];
+        uasort($values, I18N::compare(...));
 
-        uasort($tmp, I18N::comparator());
-
-        return $tmp;
+        return $values;
     }
 }

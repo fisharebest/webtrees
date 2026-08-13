@@ -23,6 +23,7 @@ use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -86,13 +87,13 @@ class TreeService
                     $query->where(static function (Builder $query): void {
                         $query
                             // Managers
-                            ->where('setting_value', '=', UserInterface::ROLE_MANAGER)
+                            ->where('setting_value', '=', Role::Manager->value)
                             // Members
                             ->orWhere(static function (Builder $query): void {
                                 $query
                                     ->where('imported', '=', 1)
                                     ->where('private', '=', 1)
-                                    ->where('setting_value', '<>', UserInterface::ROLE_VISITOR);
+                                    ->where('setting_value', '<>', Role::Visitor->value);
                             })
                             // Public trees
                             ->orWhere(static function (Builder $query): void {

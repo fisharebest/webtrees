@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * @var string $class
@@ -36,6 +37,7 @@ use Fisharebest\Webtrees\Fact;
         </div>
     </div>
     <div class="d-none d-lg-block">
-        <?= $fact->record()->displayImage(40, 50, 'crop', ['class' => 'wt-pedigree-map-thumbnail']) ?>
+        <?php $individual = $fact->record() ?>
+        <?= $individual instanceof Individual ? $individual->displayImage(40, 50, 'crop', ['class' => 'wt-pedigree-map-thumbnail']) : '' ?>
     </div>
 </div>

@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\RequestHandlers;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\GuestUser;
-use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpForbiddenException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\Module\AbstractModule;
@@ -53,14 +53,14 @@ class ModuleActionTest extends TestCase
         $handler  = new ModuleAction($module_service);
         $response = $handler->handle($request);
 
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertSame('It works!', (string) $response->getBody());
     }
 
     public function testNonExistingAction(): void
     {
         $this->expectException(HttpNotFoundException::class);
-        $this->expectExceptionMessage('Method getTestingAction() not found in test');
+        $this->expectExceptionMessage('You do not have permission to view this page.');
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
@@ -101,8 +101,8 @@ class ModuleActionTest extends TestCase
 
     public function testAdminAction(): void
     {
-        $this->expectException(HttpAccessDeniedException::class);
-        $this->expectExceptionMessage('Admin only action');
+        $this->expectException(HttpForbiddenException::class);
+        $this->expectExceptionMessage('You do not have permission to view this page.');
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service

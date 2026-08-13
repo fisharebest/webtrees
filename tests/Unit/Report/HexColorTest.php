@@ -44,6 +44,12 @@ class HexColorTest extends TestCase
         self::assertSame(0xEF, $color->blue);
     }
 
+    public function testHexReturnsNormalizedUppercase(): void
+    {
+        $color = new HexColor('#aBcDeF');
+        self::assertSame('#ABCDEF', $color->hex());
+    }
+
     /**
      * @return array<string,array{string}>
      */

@@ -21,9 +21,9 @@ namespace Fisharebest\Webtrees\Tests\Unit\Elements;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Elements\AddressLine2;
-use Fisharebest\Webtrees\Report\AbstractElement;
+use Fisharebest\Webtrees\Report\Element;
 
-#[CoversClass(AbstractElement::class)]
+#[CoversClass(Element::class)]
 #[CoversClass(AddressLine2::class)]
 class AddressLine2Test extends AbstractElementTestCase
 {

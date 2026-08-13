@@ -3,17 +3,18 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Age;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * @var Age    $age
- * @var bool   $died
- * @var string $sex
+ * @var Age  $age
+ * @var bool $died
+ * @var Sex  $sex
  */
 
 ?>
 
-<?php if ($sex === 'F') : ?>
+<?php if ($sex === Sex::Female) : ?>
     <?php if ($died) : ?>
         <span title="<?= I18N::translate('Death of a mother') ?>" class="parentdeath">
             <small><?= view('icons/sex', ['sex' => $sex]) ?></small><?= I18N::number($age->ageYears()) ?>
@@ -23,7 +24,7 @@ use Fisharebest\Webtrees\I18N;
             <small><?= view('icons/sex', ['sex' => $sex]) ?></small><?= I18N::number($age->ageYears()) ?>
         </span>
     <?php endif ?>
-<?php elseif ($sex === 'M') : ?>
+<?php elseif ($sex === Sex::Male) : ?>
     <?php if ($died) : ?>
         <span title="<?= I18N::translate('Death of a father') ?>" class="parentdeath">
             <small><?= view('icons/sex', ['sex' => $sex]) ?></small><?= I18N::number($age->ageYears()) ?>

@@ -19,8 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\RequestMethodInterface;
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\HomePage;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Registry;
@@ -38,13 +39,13 @@ final class NotFound implements RequestHandlerInterface
     {
         // Robots don't need pretty error pages
         if ($request->getAttribute(BadBotBlocker::ROBOT_ATTRIBUTE_NAME) !== null) {
-            return response('', StatusCodeInterface::STATUS_NOT_FOUND);
+            return response('', HttpStatusCode::NotFound);
         }
 
         // Need the request to generate a route/error page.
         Registry::container()->set(ServerRequestInterface::class, $request);
 
-        if ($request->getMethod() !== RequestMethodInterface::METHOD_GET) {
+        if ($request->getMethod() !== HttpRequestMethod::GET->value) {
             throw new HttpNotFoundException();
         }
 

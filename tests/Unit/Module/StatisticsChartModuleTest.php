@@ -19,9 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Module;
 
-use Fig\Http\Message\RequestMethodInterface;
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\StatisticsData;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -35,7 +37,12 @@ use Fisharebest\Webtrees\Module\StatisticsChartModule;
 #[CoversClass(StatisticsData::class)]
 class StatisticsChartModuleTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+        (new ModuleService())->bootModules(new WebtreesTheme());
+    }
 
     /**
      * @return array<int,array{x_as:int,y_as:int,z_as:int}>
@@ -148,23 +155,23 @@ class StatisticsChartModuleTest extends TestCase
         Registry::container()->set(Tree::class, $tree);
 
         $module  = new StatisticsChartModule();
-        $request = self::createRequest(RequestMethodInterface::METHOD_POST)
+        $request = self::createRequest(HttpRequestMethod::POST->value)
             ->withAttribute('tree', $tree);
 
         $response = $module->getChartAction($request);
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertNotEmpty($response->getBody()->getContents());
 
         //$response = $module->getFamiliesAction($request);
-        //self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        //self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         //self::assertNotEmpty($response->getBody()->getContents());
 
         $response = $module->getIndividualsAction($request);
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertNotEmpty($response->getBody()->getContents());
 
         $response = $module->getOtherAction($request);
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertNotEmpty($response->getBody()->getContents());
     }
 
@@ -180,10 +187,10 @@ class StatisticsChartModuleTest extends TestCase
 
         $response = $module->getCustomAction($request);
 
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertNotEmpty($response->getBody()->getContents());
 
-        $request = self::createRequest(RequestMethodInterface::METHOD_POST)
+        $request = self::createRequest(HttpRequestMethod::POST->value)
             ->withAttribute('tree', $tree)
             ->withParsedBody([
                 'x-as'                      => $x_as,
@@ -196,7 +203,7 @@ class StatisticsChartModuleTest extends TestCase
 
         $response = $module->postCustomChartAction($request);
 
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertNotEmpty($response->getBody()->getContents());
     }
 
@@ -207,7 +214,7 @@ class StatisticsChartModuleTest extends TestCase
         Registry::container()->set(Tree::class, $tree);
 
         $module  = new StatisticsChartModule();
-        $request = self::createRequest(RequestMethodInterface::METHOD_POST)
+        $request = self::createRequest(HttpRequestMethod::POST->value)
             ->withAttribute('tree', $tree)
             ->withParsedBody([
                 'x-as'        => $x_as,
@@ -220,7 +227,7 @@ class StatisticsChartModuleTest extends TestCase
 
         $response = $module->postCustomChartAction($request);
 
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertNotEmpty($response->getBody()->getContents());
     }
 }

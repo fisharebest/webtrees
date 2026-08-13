@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\DB;
-use stdClass;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -118,7 +117,6 @@ final class SiteSetting extends AbstractCommand
 
             return self::SUCCESS;
         }
-
 
         if ($setting_name === null) {
             $io->error(message: 'A setting name is required, unless the --list option is used.');

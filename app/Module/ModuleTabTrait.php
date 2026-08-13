@@ -20,7 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Http\Exceptions\HttpForbiddenException;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -57,7 +58,7 @@ trait ModuleTabTrait
      *
      * @param class-string<T> $interface
      */
-    abstract public function accessLevel(Tree $tree, string $interface): int;
+    abstract public function accessLevel(Tree $tree, string $interface): AccessLevel;
 
     /**
      * Users change change the order of tabs using the control panel.
@@ -110,8 +111,8 @@ trait ModuleTabTrait
         $record = Registry::individualFactory()->make($xref, $tree);
         $record = Auth::checkIndividualAccess($record);
 
-        if ($this->accessLevel($tree, ModuleTabInterface::class) < Auth::accessLevel($tree, $user)) {
-            throw new HttpAccessDeniedException();
+        if ($this->accessLevel($tree, ModuleTabInterface::class)->disallows(Auth::accessLevel($tree, $user))) {
+            throw new HttpForbiddenException();
         }
 
         $layout = view('layouts/ajax', [

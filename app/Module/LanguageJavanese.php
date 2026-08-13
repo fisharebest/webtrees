@@ -19,20 +19,19 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleJv;
+use Fisharebest\Webtrees\I18N\Languages\Javanese;
 
 class LanguageJavanese extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
+    public function __construct()
+    {
+        $this->language = new Javanese();
+    }
+
     public function isEnabledByDefault(): bool
     {
         return false;
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleJv();
     }
 }

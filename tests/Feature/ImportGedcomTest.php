@@ -26,7 +26,11 @@ use Fisharebest\Webtrees\Tests\TestCase;
 #[CoversClass(GedcomImportService::class)]
 class ImportGedcomTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testImportTrees(): void
     {

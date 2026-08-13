@@ -462,7 +462,7 @@ class SearchService
         }
 
         $row_mapper = static function (object $row) use ($tree): Place {
-            $place = implode(', ', array_filter((array) $row));
+            $place = implode(', ', array_filter((array) $row, static fn (string|null $value): bool => $value !== null));
 
             return new Place($place, $tree);
         };
@@ -1028,8 +1028,8 @@ class SearchService
     /**
      * Apply search filters to a SQL query column.  Apply collation rules to MySQL.
      *
-     * @param Expression<literal-string>|string $column
-     * @param array<string>             $search_terms
+     * @param Expression<literal-string|int|float>|string $column
+     * @param array<string>                                $search_terms
      */
     private function whereSearch(Builder $query, Expression|string $column, array $search_terms): void
     {

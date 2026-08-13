@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 
 /**

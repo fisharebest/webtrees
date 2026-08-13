@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2026 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Http\Controllers;
+
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Services\HomePageService;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
+use Illuminate\Support\Collection;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
+use function redirect;
+use function route;
+
+final class TreePageDefault
+{
+    use ViewResponseTrait;
+
+    public function __construct(
+        private readonly HomePageService $home_page_service
+    ) {
+    }
+
+    public function get(ServerRequestInterface $request): ResponseInterface
+    {
+
+        $this->layout = 'layouts/administration';
+
+        $this->home_page_service->checkDefaultTreeBlocksExist();
+
+        $default_tree = new Tree(-1, '', '', '', '', true, true, null, null);
+        $default_user = new User(-1, '', '', '');
+
+        $main_blocks = $this->home_page_service->treeBlocks($default_tree, $default_user, ModuleBlockInterface::MAIN_BLOCKS);
+        $side_blocks = $this->home_page_service->treeBlocks($default_tree, $default_user, ModuleBlockInterface::SIDE_BLOCKS);
+
+        $all_blocks = $this->home_page_service->availableTreeBlocks($default_tree, $default_user);
+        $title      = I18N::translate('Set the default blocks for new family trees');
+        $url_cancel = route(ControlPanel::class);
+        $url_save   = route(TreePageDefault::class);
+
+        return $this->viewResponse('edit-blocks-page', [
+            'all_blocks'  => $all_blocks,
+            'can_reset'   => false,
+            'main_blocks' => $main_blocks,
+            'side_blocks' => $side_blocks,
+            'title'       => $title,
+            'url_cancel'  => $url_cancel,
+            'url_save'    => $url_save,
+        ]);
+    }
+
+    public function post(ServerRequestInterface $request): ResponseInterface
+    {
+
+        $main_blocks = new Collection(Validator::parsedBody($request)->list(ModuleBlockInterface::MAIN_BLOCKS));
+        $side_blocks = new Collection(Validator::parsedBody($request)->list(ModuleBlockInterface::SIDE_BLOCKS));
+
+        $this->home_page_service->updateTreeBlocks(-1, $main_blocks, $side_blocks);
+
+        return redirect(route(ControlPanel::class));
+    }
+}

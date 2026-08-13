@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\RegisterAction;
+use Fisharebest\Webtrees\Http\Controllers\Register;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var string    $captcha
@@ -29,7 +28,7 @@ use Fisharebest\Webtrees\View;
     </div>
 <?php endif ?>
 
-<form method="post" action="<?= e(route(RegisterAction::class, ['tree' => $tree?->name()])) ?>" autocomplete="off" class="wt-page-options wt-page-options-register">
+<form method="post" action="<?= e(route(Register::class, ['tree' => $tree?->name()])) ?>" autocomplete="off" class="wt-page-options wt-page-options-register">
     <?= $captcha ?>
 
     <div class="row">

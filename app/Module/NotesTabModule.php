@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Services\FactSortService;
 use Illuminate\Support\Collection;
 
 use function preg_match;
@@ -34,11 +35,10 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
     /** @var Collection<array-key,Fact>|null  */
     private Collection|null $facts = null;
 
-    private ClipboardService $clipboard_service;
-
-    public function __construct(ClipboardService $clipboard_service)
-    {
-        $this->clipboard_service = $clipboard_service;
+    public function __construct(
+        private ClipboardService $clipboard_service,
+        private FactSortService $fact_sort_service,
+    ) {
     }
 
     public function title(): string
@@ -114,7 +114,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
 
             $this->facts = $facts->filter($callback);
 
-            $this->facts = Fact::sortFacts($this->facts);
+            $this->facts = $this->fact_sort_service->sort($this->facts);
         }
 
         return $this->facts;
