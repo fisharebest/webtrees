@@ -39,7 +39,7 @@ final class ExportGedcomClient
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request): ResponseInterface
     {
         $tree         = Validator::attributes($request)->tree();
         $filename     = Validator::parsedBody($request)->string('filename');
