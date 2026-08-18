@@ -41,7 +41,7 @@ class UserListDataTest extends TestCase
         $user_service       = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $handler            = new UserListData($datatables_service, $user_service);
         $request            = self::createRequest();
-        $response           = $handler->get($request);
+        $response           = $handler->post($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }

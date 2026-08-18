@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use League\Flysystem\FilesystemException;
+use League\Flysystem\UnableToRetrieveMetadata;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 

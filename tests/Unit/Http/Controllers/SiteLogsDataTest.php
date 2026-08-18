@@ -51,7 +51,7 @@ class SiteLogsDataTest extends TestCase
         $data_tables_service->method('handleQuery')->willReturn($response);
 
         $handler  = new SiteLogsData($data_tables_service, $site_logs_service);
-        $response = $handler->get($request);
+        $response = $handler->post($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }
