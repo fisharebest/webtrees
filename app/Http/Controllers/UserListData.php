@@ -40,7 +40,7 @@ final class UserListData
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request): ResponseInterface
     {
         $self = Validator::attributes($request)->user();
 
