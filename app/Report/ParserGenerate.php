@@ -902,7 +902,7 @@ final class ParserGenerate extends AbstractParser
             }
 
             if ($tag === 'PLAC' || str_ends_with($tag, ':PLAC')) {
-                $value = strip_tags((new Place($value, $this->tree))->shortName());
+                $value = (new Place($value, $this->tree))->gedcomName();
             }
 
             // User data may have a different ltr/rtl direction to the page.
