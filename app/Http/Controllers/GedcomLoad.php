@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -35,8 +34,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use function preg_split;
 use function str_replace;
 use function str_starts_with;
-use function strlen;
-use function substr;
 
 final class GedcomLoad
 {
@@ -159,14 +156,6 @@ final class GedcomLoad
                 }
 
                 if ($first_time) {
-                    // Remove any byte-order-mark
-                    if (str_starts_with($data->chunk_data, UTF8::BYTE_ORDER_MARK)) {
-                        $data->chunk_data = substr($data->chunk_data, strlen(UTF8::BYTE_ORDER_MARK));
-                        DB::table('gedcom_chunk')
-                            ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
-                            ->update(['chunk_data' => $data->chunk_data]);
-                    }
-
                     if (!str_starts_with($data->chunk_data, '0 HEAD')) {
                         return $this->viewResponse('admin/import-fail', [
                             'error' => I18N::translate('Invalid GEDCOM file - no header record found.'),

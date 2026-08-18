@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Symfony\Component\Console\Completion\CompletionInput;
@@ -144,32 +145,23 @@ final class TreeImport extends AbstractCommand
 
             $io->info('Importing new genealogy data.');
 
-            $total_bytes  = filesize($gedcom_file);
+            $fp = fopen($gedcom_file, 'rb');
 
-            $bytes_loaded = 0;
+            // Convert to UTF-8.
+            stream_filter_append($fp, GedcomEncodingFilter::class, STREAM_FILTER_READ, ['src_encoding' => $encoding]);
 
-            $fp     = fopen($gedcom_file, 'rb');
-            $buffer = '';
+            $records = preg_split('/[\r\n]+(?=0)/', stream_get_contents($fp));
 
-            $progress_bar = new ProgressBar($output, $total_bytes);
+            $progress_bar = new ProgressBar($output, count($records));
             $progress_bar->setFormat(' %current%/%max% [%bar%] %percent%%, %memory%, %elapsed% elapsed, %remaining% remaining');
             $progress_bar->setRedrawFrequency(1);
             $progress_bar->minSecondsBetweenRedraws(0.1);
 
-            while ($bytes_loaded < $total_bytes) {
-                $tmp = fread($fp, 8192);
-                $buffer .= $tmp;
-                $bytes_loaded += strlen($tmp);
-
-                $records = preg_split('/[\r\n]+(?=0)/', $buffer);
-                $buffer = array_pop($records);
-
-                foreach ($records as $record) {
-                    $this->gedcom_import_service->importRecord($record, $tree, false);
-                }
-
-                $progress_bar->setProgress($bytes_loaded);
+            foreach ($records as $n => $record) {
+                $this->gedcom_import_service->importRecord($record, $tree, false);
+                $progress_bar->setProgress($n);
             }
+
             $progress_bar->finish();
 
             $output->writeln('');
