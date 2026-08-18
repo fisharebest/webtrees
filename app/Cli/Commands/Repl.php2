@@ -92,22 +92,26 @@ final class Repl extends AbstractCommand
         (new WebRoutes())->load($routes);
         (new ApiRoutes())->load($routes);
 
-        // Save the route collection and URL generator in the container.
-        $this->storeInContainer(RouteCollection::class, $routes);
-        $this->storeInContainer(UrlGenerator::class, new UrlGenerator($routes, ''));
+        $url_generator = new UrlGenerator($routes, '');
+
+        $this->storeRoutingServicesInContainer($routes, $url_generator);
 
         return $shell->run();
     }
 
-    /*
-     * Within the REPL, we use class-aliases to avoid typing FQCNs.
-     * But this means that container lookups will fail, as they are stored
-     * under the FQCN, not the alias.  Save as both.
+    /**
+     * Register routing services with both FQCN and short-name IDs for REPL convenience.
      */
-    private function storeInContainer(string $class, object $object): void
+    private function storeRoutingServicesInContainer(RouteCollection $route_collection, UrlGenerator $url_generator): void
     {
-        Registry::container()->set($class, $object);
-        Registry::container()->set(basename(str_replace('\\', '/', $class)), $object);
+        $container = Registry::container();
+
+        $container->set(RouteCollection::class, $route_collection);
+        $container->set(UrlGenerator::class, $url_generator);
+
+        // In PsySH, `RouteCollection::class` resolves to "RouteCollection" unless imported.
+        $container->set('RouteCollection', $route_collection);
+        $container->set('UrlGenerator', $url_generator);
     }
 
     /**
