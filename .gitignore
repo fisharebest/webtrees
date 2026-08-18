@@ -22,3 +22,5 @@
 /robots.txt
 
 /vendor/
+
+.DS_Store
