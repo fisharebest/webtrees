@@ -266,10 +266,10 @@ final readonly class Greek extends AbstractLanguage
             Relationship::fixed('ξαδέλφη', '%s της ξαδέλφης')->parent()->sibling()->daughter(),
             Relationship::fixed('ξάδελφος', '%s του ξαδέλφου')->parent()->sibling()->son(),
             // Dynamic — great-grandparents and beyond
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'γιαγιά', 'της', 'γιαγιάς'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'παππούς', 'του', 'παππού'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'γονέας', 'του', 'γονέα'))->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'εγγόνι', 'του', 'εγγονιού'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'γιαγιά', 'της', 'γιαγιάς'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'παππούς', 'του', 'παππού'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'γονέας', 'του', 'γονέα'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'εγγόνι', 'του', 'εγγονιού'))->descendant(),
         ];
     }
 }

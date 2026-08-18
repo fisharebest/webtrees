@@ -169,125 +169,131 @@ final readonly class Basque extends AbstractLanguage
         return parent::assembleDate($year, $month, $day);
     }
 
+        /** @return array{string, string} */
+    private function eu(string $nom, string $gen): array
+    {
+        return [$nom, $gen . ' %s'];
+    }
+
+    /**
+     * @return array<Relationship>
+     */
     public function relationships(): array
     {
-        // Basque genitive: nominative + explicit genitive with -(r)en suffix
-        $eu = static fn (string $nom, string $gen): array => [$nom, $gen . ' %s'];
-
         return [
             // Adopted
-            Relationship::fixed(...$eu('ama adoptatzaile', 'ama adoptatzailearen'))->adoptive()->mother(),
-            Relationship::fixed(...$eu('aita adoptatzaile', 'aita adoptatzailearen'))->adoptive()->father(),
-            Relationship::fixed(...$eu('guraso adoptatzaile', 'guraso adoptatzailearen'))->adoptive()->parent(),
-            Relationship::fixed(...$eu('alaba adoptatua', 'alaba adoptatuaren'))->adopted()->daughter(),
-            Relationship::fixed(...$eu('seme adoptatua', 'seme adoptatuaren'))->adopted()->son(),
-            Relationship::fixed(...$eu('ume adoptatua', 'ume adoptatuaren'))->adopted()->child(),
+            Relationship::fixed(...$this->eu('ama adoptatzaile', 'ama adoptatzailearen'))->adoptive()->mother(),
+            Relationship::fixed(...$this->eu('aita adoptatzaile', 'aita adoptatzailearen'))->adoptive()->father(),
+            Relationship::fixed(...$this->eu('guraso adoptatzaile', 'guraso adoptatzailearen'))->adoptive()->parent(),
+            Relationship::fixed(...$this->eu('alaba adoptatua', 'alaba adoptatuaren'))->adopted()->daughter(),
+            Relationship::fixed(...$this->eu('seme adoptatua', 'seme adoptatuaren'))->adopted()->son(),
+            Relationship::fixed(...$this->eu('ume adoptatua', 'ume adoptatuaren'))->adopted()->child(),
             // Fostered
-            Relationship::fixed(...$eu('harrera-ama', 'harrera-amaren'))->fostering()->mother(),
-            Relationship::fixed(...$eu('harrera-aita', 'harrera-aitaren'))->fostering()->father(),
-            Relationship::fixed(...$eu('harrera-guraso', 'harrera-gurasoren'))->fostering()->parent(),
-            Relationship::fixed(...$eu('harrera-alaba', 'harrera-alabaren'))->fostered()->daughter(),
-            Relationship::fixed(...$eu('harrera-seme', 'harrera-semeren'))->fostered()->son(),
-            Relationship::fixed(...$eu('harrera-ume', 'harrera-umeren'))->fostered()->child(),
+            Relationship::fixed(...$this->eu('harrera-ama', 'harrera-amaren'))->fostering()->mother(),
+            Relationship::fixed(...$this->eu('harrera-aita', 'harrera-aitaren'))->fostering()->father(),
+            Relationship::fixed(...$this->eu('harrera-guraso', 'harrera-gurasoren'))->fostering()->parent(),
+            Relationship::fixed(...$this->eu('harrera-alaba', 'harrera-alabaren'))->fostered()->daughter(),
+            Relationship::fixed(...$this->eu('harrera-seme', 'harrera-semeren'))->fostered()->son(),
+            Relationship::fixed(...$this->eu('harrera-ume', 'harrera-umeren'))->fostered()->child(),
             // Step
-            Relationship::fixed(...$eu('amaordeko', 'amaordekoren'))->parent()->wife(),
-            Relationship::fixed(...$eu('aitaordeko', 'aitaordekoren'))->parent()->husband(),
-            Relationship::fixed(...$eu('alabaordeko', 'alabaordekoren'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$eu('semeordeko', 'semeordekoren'))->married()->spouse()->son(),
-            Relationship::fixed(...$eu('umeordeko', 'umeordekoren'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->eu('amaordeko', 'amaordekoren'))->parent()->wife(),
+            Relationship::fixed(...$this->eu('aitaordeko', 'aitaordekoren'))->parent()->husband(),
+            Relationship::fixed(...$this->eu('alabaordeko', 'alabaordekoren'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->eu('semeordeko', 'semeordekoren'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->eu('umeordeko', 'umeordekoren'))->married()->spouse()->child(),
             // Parents
-            Relationship::fixed(...$eu('ama', 'amaren'))->mother(),
-            Relationship::fixed(...$eu('aita', 'aitaren'))->father(),
-            Relationship::fixed(...$eu('guraso', 'gurasoren'))->parent(),
+            Relationship::fixed(...$this->eu('ama', 'amaren'))->mother(),
+            Relationship::fixed(...$this->eu('aita', 'aitaren'))->father(),
+            Relationship::fixed(...$this->eu('guraso', 'gurasoren'))->parent(),
             // Children
-            Relationship::fixed(...$eu('alaba', 'alabaren'))->daughter(),
-            Relationship::fixed(...$eu('seme', 'semeren'))->son(),
-            Relationship::fixed(...$eu('ume', 'umeren'))->child(),
+            Relationship::fixed(...$this->eu('alaba', 'alabaren'))->daughter(),
+            Relationship::fixed(...$this->eu('seme', 'semeren'))->son(),
+            Relationship::fixed(...$this->eu('ume', 'umeren'))->child(),
             // Siblings — ego-relative (Basque distinguishes by speaker's gender)
-            Relationship::fixed(...$eu('ahizpa', 'ahizparen'))->selfFemale()->sister(),
-            Relationship::fixed(...$eu('arreba', 'arrebaren'))->sister(),
-            Relationship::fixed(...$eu('anaia', 'anaiaren'))->selfFemale()->brother(),
-            Relationship::fixed(...$eu('neba', 'nebaren'))->brother(),
-            Relationship::fixed(...$eu('senide', 'senideren'))->sibling(),
+            Relationship::fixed(...$this->eu('ahizpa', 'ahizparen'))->selfFemale()->sister(),
+            Relationship::fixed(...$this->eu('arreba', 'arrebaren'))->sister(),
+            Relationship::fixed(...$this->eu('anaia', 'anaiaren'))->selfFemale()->brother(),
+            Relationship::fixed(...$this->eu('neba', 'nebaren'))->brother(),
+            Relationship::fixed(...$this->eu('senide', 'senideren'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$eu('aitaren alaba', 'aitaren alabaren'))->father()->daughter(),
-            Relationship::fixed(...$eu('aitaren seme', 'aitaren semeren'))->father()->son(),
-            Relationship::fixed(...$eu('amaren alaba', 'amaren alabaren'))->mother()->daughter(),
-            Relationship::fixed(...$eu('amaren seme', 'amaren semeren'))->mother()->son(),
-            Relationship::fixed(...$eu('erdi-senide', 'erdi-senideren'))->parent()->child(),
+            Relationship::fixed(...$this->eu('aitaren alaba', 'aitaren alabaren'))->father()->daughter(),
+            Relationship::fixed(...$this->eu('aitaren seme', 'aitaren semeren'))->father()->son(),
+            Relationship::fixed(...$this->eu('amaren alaba', 'amaren alabaren'))->mother()->daughter(),
+            Relationship::fixed(...$this->eu('amaren seme', 'amaren semeren'))->mother()->son(),
+            Relationship::fixed(...$this->eu('erdi-senide', 'erdi-senideren'))->parent()->child(),
             // Partners
-            Relationship::fixed(...$eu('senar ohia', 'senar ohiaren'))->divorced()->partner()->male(),
-            Relationship::fixed(...$eu('emazte ohia', 'emazte ohiaren'))->divorced()->partner()->female(),
-            Relationship::fixed(...$eu('ezkontide ohia', 'ezkontide ohiaren'))->divorced()->partner(),
-            Relationship::fixed(...$eu('emazte', 'emazteren'))->wife(),
-            Relationship::fixed(...$eu('senar', 'senarraren'))->husband(),
-            Relationship::fixed(...$eu('ezkontide', 'ezkontidearen'))->spouse(),
-            Relationship::fixed(...$eu('bikotekide', 'bikotekidearen'))->partner(),
+            Relationship::fixed(...$this->eu('senar ohia', 'senar ohiaren'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->eu('emazte ohia', 'emazte ohiaren'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->eu('ezkontide ohia', 'ezkontide ohiaren'))->divorced()->partner(),
+            Relationship::fixed(...$this->eu('emazte', 'emazteren'))->wife(),
+            Relationship::fixed(...$this->eu('senar', 'senarraren'))->husband(),
+            Relationship::fixed(...$this->eu('ezkontide', 'ezkontidearen'))->spouse(),
+            Relationship::fixed(...$this->eu('bikotekide', 'bikotekidearen'))->partner(),
             // In-laws — spouse's parents
-            Relationship::fixed(...$eu('amaginarreba', 'amaginarrebaren'))->spouse()->mother(),
-            Relationship::fixed(...$eu('aitaginarreba', 'aitaginarrebaren'))->spouse()->father(),
+            Relationship::fixed(...$this->eu('amaginarreba', 'amaginarrebaren'))->spouse()->mother(),
+            Relationship::fixed(...$this->eu('aitaginarreba', 'aitaginarrebaren'))->spouse()->father(),
             // In-laws — child's spouse
-            Relationship::fixed(...$eu('erraina', 'errainaren'))->child()->wife(),
-            Relationship::fixed(...$eu('suhi', 'suhiaren'))->child()->husband(),
+            Relationship::fixed(...$this->eu('erraina', 'errainaren'))->child()->wife(),
+            Relationship::fixed(...$this->eu('suhi', 'suhiaren'))->child()->husband(),
             // In-laws — spouse's siblings
-            Relationship::fixed(...$eu('koinata', 'koinataren'))->spouse()->sister(),
-            Relationship::fixed(...$eu('koinatu', 'koinaturen'))->spouse()->brother(),
+            Relationship::fixed(...$this->eu('koinata', 'koinataren'))->spouse()->sister(),
+            Relationship::fixed(...$this->eu('koinatu', 'koinaturen'))->spouse()->brother(),
             // In-laws — sibling's spouse
-            Relationship::fixed(...$eu('koinata', 'koinataren'))->sibling()->wife(),
-            Relationship::fixed(...$eu('koinatu', 'koinaturen'))->sibling()->husband(),
+            Relationship::fixed(...$this->eu('koinata', 'koinataren'))->sibling()->wife(),
+            Relationship::fixed(...$this->eu('koinatu', 'koinaturen'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$eu('amona', 'amonaren'))->parent()->mother(),
-            Relationship::fixed(...$eu('aitona', 'aitonaren'))->parent()->father(),
+            Relationship::fixed(...$this->eu('amona', 'amonaren'))->parent()->mother(),
+            Relationship::fixed(...$this->eu('aitona', 'aitonaren'))->parent()->father(),
             // Grandchildren
-            Relationship::fixed(...$eu('biloba', 'bilobaren'))->child()->daughter(),
-            Relationship::fixed(...$eu('biloba', 'bilobaren'))->child()->son(),
-            Relationship::fixed(...$eu('biloba', 'bilobaren'))->child()->child(),
+            Relationship::fixed(...$this->eu('biloba', 'bilobaren'))->child()->daughter(),
+            Relationship::fixed(...$this->eu('biloba', 'bilobaren'))->child()->son(),
+            Relationship::fixed(...$this->eu('biloba', 'bilobaren'))->child()->child(),
             // Great-grandparents
-            Relationship::fixed(...$eu('biramona', 'biramonaren'))->parent()->parent()->mother(),
-            Relationship::fixed(...$eu('biraitona', 'biraitonaren'))->parent()->parent()->father(),
+            Relationship::fixed(...$this->eu('biramona', 'biramonaren'))->parent()->parent()->mother(),
+            Relationship::fixed(...$this->eu('biraitona', 'biraitonaren'))->parent()->parent()->father(),
             // Great-grandchildren
-            Relationship::fixed(...$eu('birbiloba', 'birbilobaren'))->child()->child()->child(),
+            Relationship::fixed(...$this->eu('birbiloba', 'birbilobaren'))->child()->child()->child(),
             // Aunts and uncles
-            Relationship::fixed(...$eu('izeba', 'izebaren'))->parent()->sister(),
-            Relationship::fixed(...$eu('osaba', 'osabaren'))->parent()->brother(),
+            Relationship::fixed(...$this->eu('izeba', 'izebaren'))->parent()->sister(),
+            Relationship::fixed(...$this->eu('osaba', 'osabaren'))->parent()->brother(),
             // Nieces and nephews (iloba is gender-neutral)
-            Relationship::fixed(...$eu('iloba', 'ilobaren'))->sibling()->daughter(),
-            Relationship::fixed(...$eu('iloba', 'ilobaren'))->sibling()->son(),
-            Relationship::fixed(...$eu('iloba', 'ilobaren'))->sibling()->child(),
+            Relationship::fixed(...$this->eu('iloba', 'ilobaren'))->sibling()->daughter(),
+            Relationship::fixed(...$this->eu('iloba', 'ilobaren'))->sibling()->son(),
+            Relationship::fixed(...$this->eu('iloba', 'ilobaren'))->sibling()->child(),
             // Cousins
-            Relationship::fixed(...$eu('lehengusina', 'lehengusinaren'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$eu('lehengusu', 'lehengusuren'))->parent()->sibling()->son(),
-            Relationship::fixed(...$eu('lehengusu', 'lehengusuren'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->eu('lehengusina', 'lehengusinaren'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->eu('lehengusu', 'lehengusuren'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->eu('lehengusu', 'lehengusuren'))->parent()->sibling()->child(),
             // Dynamic: great-grandparents (n ≥ 3)
-            Relationship::dynamic(static fn (int $n) => match ($n) {
-                3       => $eu('biramona', 'biramonaren'),
-                default => $eu($n . '. belaunaldiko amona', ($n) . '. belaunaldiko amonaren'),
+            Relationship::dynamic(fn (int $n) => match ($n) {
+                3       => $this->eu('biramona', 'biramonaren'),
+                default => $this->eu($n . '. belaunaldiko amona', ($n) . '. belaunaldiko amonaren'),
             })->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => match ($n) {
-                3       => $eu('biraitona', 'biraitonaren'),
-                default => $eu($n . '. belaunaldiko aitona', ($n) . '. belaunaldiko aitonaren'),
+            Relationship::dynamic(fn (int $n) => match ($n) {
+                3       => $this->eu('biraitona', 'biraitonaren'),
+                default => $this->eu($n . '. belaunaldiko aitona', ($n) . '. belaunaldiko aitonaren'),
             })->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $eu($n . '. belaunaldiko arbasoa', ($n) . '. belaunaldiko arbasoaren'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->eu($n . '. belaunaldiko arbasoa', ($n) . '. belaunaldiko arbasoaren'))->ancestor(),
             // Dynamic: great-grandchildren (n ≥ 3)
-            Relationship::dynamic(static fn (int $n) => match ($n) {
-                3       => $eu('birbiloba', 'birbilobaren'),
-                default => $eu($n . '. belaunaldiko biloba', ($n) . '. belaunaldiko bilobaren'),
+            Relationship::dynamic(fn (int $n) => match ($n) {
+                3       => $this->eu('birbiloba', 'birbilobaren'),
+                default => $this->eu($n . '. belaunaldiko biloba', ($n) . '. belaunaldiko bilobaren'),
             })->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => match ($n) {
-                3       => $eu('birbiloba', 'birbilobaren'),
-                default => $eu($n . '. belaunaldiko biloba', ($n) . '. belaunaldiko bilobaren'),
+            Relationship::dynamic(fn (int $n) => match ($n) {
+                3       => $this->eu('birbiloba', 'birbilobaren'),
+                default => $this->eu($n . '. belaunaldiko biloba', ($n) . '. belaunaldiko bilobaren'),
             })->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => match ($n) {
-                3       => $eu('birbiloba', 'birbilobaren'),
-                default => $eu($n . '. belaunaldiko biloba', ($n) . '. belaunaldiko bilobaren'),
+            Relationship::dynamic(fn (int $n) => match ($n) {
+                3       => $this->eu('birbiloba', 'birbilobaren'),
+                default => $this->eu($n . '. belaunaldiko biloba', ($n) . '. belaunaldiko bilobaren'),
             })->descendant(),
             // Dynamic: great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $eu($n . '. belaunaldiko izeba', ($n) . '. belaunaldiko izebaren'))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $eu($n . '. belaunaldiko osaba', ($n) . '. belaunaldiko osabaren'))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->eu($n . '. belaunaldiko izeba', ($n) . '. belaunaldiko izebaren'))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->eu($n . '. belaunaldiko osaba', ($n) . '. belaunaldiko osabaren'))->ancestor()->brother(),
             // Dynamic: great-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $eu($n . '. belaunaldiko iloba', ($n) . '. belaunaldiko ilobaren'))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $eu($n . '. belaunaldiko iloba', ($n) . '. belaunaldiko ilobaren'))->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $eu($n . '. belaunaldiko iloba', ($n) . '. belaunaldiko ilobaren'))->sibling()->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->eu($n . '. belaunaldiko iloba', ($n) . '. belaunaldiko ilobaren'))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->eu($n . '. belaunaldiko iloba', ($n) . '. belaunaldiko ilobaren'))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->eu($n . '. belaunaldiko iloba', ($n) . '. belaunaldiko ilobaren'))->sibling()->descendant(),
         ];
     }
 }

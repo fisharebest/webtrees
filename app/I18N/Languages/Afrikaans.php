@@ -173,121 +173,137 @@ final readonly class Afrikaans extends AbstractLanguage
     ];
 
     /**
+     * Generate nominative and genitive forms with the Afrikaans "se" particle.
+     *
+     * @return array{string, string}
+     */
+    private function se(string $nominative): array
+    {
+        return [$nominative, '%s se ' . $nominative];
+    }
+
+    /**
+     * Generate nominative and genitive forms for a dynamic relationship
+     * using the repeated "groot-" prefix.
+     *
+     * ouma → groot-ouma → groot-groot-ouma
+     *
+     * @return array{string, string}
+     */
+    private function groot(int $n, string $suffix): array
+    {
+        return $this->se(($n > 3 ? 'groot×' . $n . '-' : str_repeat('groot-', $n)) . $suffix);
+    }
+
+    /**
      * @return array<Relationship>
      */
     public function relationships(): array
     {
-        // Afrikaans genitive: "se" (possessive particle)
-        $se = static fn (string $s): array => [$s, '%s se ' . $s];
-
-        $groot = static fn (int $n, string $prefix, string $suffix): array => [
-            $prefix . ($n > 3 ? 'groot×' . $n . '-' : str_repeat('groot-', $n)) . $suffix,
-            '%s se ' . $prefix . ($n > 3 ? 'groot×' . $n . '-' : str_repeat('groot-', $n)) . $suffix,
-        ];
 
         return [
             // Adopted
-            Relationship::fixed(...$se('aanneemmoeder'))->adoptive()->mother(),
-            Relationship::fixed(...$se('aanneemvader'))->adoptive()->father(),
-            Relationship::fixed(...$se('aanneemouer'))->adoptive()->parent(),
-            Relationship::fixed(...$se('aangenome dogter'))->adopted()->daughter(),
-            Relationship::fixed(...$se('aangenome seun'))->adopted()->son(),
-            Relationship::fixed(...$se('aangenome kind'))->adopted()->child(),
+            Relationship::fixed(...$this->se('aanneemmoeder'))->adoptive()->mother(),
+            Relationship::fixed(...$this->se('aanneemvader'))->adoptive()->father(),
+            Relationship::fixed(...$this->se('aanneemouer'))->adoptive()->parent(),
+            Relationship::fixed(...$this->se('aangenome dogter'))->adopted()->daughter(),
+            Relationship::fixed(...$this->se('aangenome seun'))->adopted()->son(),
+            Relationship::fixed(...$this->se('aangenome kind'))->adopted()->child(),
             // Fostered
-            Relationship::fixed(...$se('pleegmoeder'))->fostering()->mother(),
-            Relationship::fixed(...$se('pleegvader'))->fostering()->father(),
-            Relationship::fixed(...$se('pleegouer'))->fostering()->parent(),
-            Relationship::fixed(...$se('pleegdogter'))->fostered()->daughter(),
-            Relationship::fixed(...$se('pleegseun'))->fostered()->son(),
-            Relationship::fixed(...$se('pleegkind'))->fostered()->child(),
+            Relationship::fixed(...$this->se('pleegmoeder'))->fostering()->mother(),
+            Relationship::fixed(...$this->se('pleegvader'))->fostering()->father(),
+            Relationship::fixed(...$this->se('pleegouer'))->fostering()->parent(),
+            Relationship::fixed(...$this->se('pleegdogter'))->fostered()->daughter(),
+            Relationship::fixed(...$this->se('pleegseun'))->fostered()->son(),
+            Relationship::fixed(...$this->se('pleegkind'))->fostered()->child(),
             // Parents
-            Relationship::fixed(...$se('moeder'))->mother(),
-            Relationship::fixed(...$se('vader'))->father(),
-            Relationship::fixed(...$se('ouer'))->parent(),
+            Relationship::fixed(...$this->se('moeder'))->mother(),
+            Relationship::fixed(...$this->se('vader'))->father(),
+            Relationship::fixed(...$this->se('ouer'))->parent(),
             // Children
-            Relationship::fixed(...$se('dogter'))->daughter(),
-            Relationship::fixed(...$se('seun'))->son(),
-            Relationship::fixed(...$se('kind'))->child(),
+            Relationship::fixed(...$this->se('dogter'))->daughter(),
+            Relationship::fixed(...$this->se('seun'))->son(),
+            Relationship::fixed(...$this->se('kind'))->child(),
             // Siblings
-            Relationship::fixed(...$se('tweelingbroer'))->multiple()->brother(),
-            Relationship::fixed(...$se('tweelingsuster'))->multiple()->sister(),
-            Relationship::fixed(...$se('tweeling'))->multiple()->sibling(),
-            Relationship::fixed(...$se('ouer broer'))->older()->brother(),
-            Relationship::fixed(...$se('ouer suster'))->older()->sister(),
-            Relationship::fixed(...$se('ouer broer/suster'))->older()->sibling(),
-            Relationship::fixed(...$se('jonger broer'))->younger()->brother(),
-            Relationship::fixed(...$se('jonger suster'))->younger()->sister(),
-            Relationship::fixed(...$se('jonger broer/suster'))->younger()->sibling(),
-            Relationship::fixed(...$se('suster'))->sister(),
-            Relationship::fixed(...$se('broer'))->brother(),
-            Relationship::fixed(...$se('broer/suster'))->sibling(),
+            Relationship::fixed(...$this->se('tweelingbroer'))->multiple()->brother(),
+            Relationship::fixed(...$this->se('tweelingsuster'))->multiple()->sister(),
+            Relationship::fixed(...$this->se('tweeling'))->multiple()->sibling(),
+            Relationship::fixed(...$this->se('ouer broer'))->older()->brother(),
+            Relationship::fixed(...$this->se('ouer suster'))->older()->sister(),
+            Relationship::fixed(...$this->se('ouer broer/suster'))->older()->sibling(),
+            Relationship::fixed(...$this->se('jonger broer'))->younger()->brother(),
+            Relationship::fixed(...$this->se('jonger suster'))->younger()->sister(),
+            Relationship::fixed(...$this->se('jonger broer/suster'))->younger()->sibling(),
+            Relationship::fixed(...$this->se('suster'))->sister(),
+            Relationship::fixed(...$this->se('broer'))->brother(),
+            Relationship::fixed(...$this->se('broer/suster'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$se('halfsuster'))->parent()->daughter(),
-            Relationship::fixed(...$se('halfbroer'))->parent()->son(),
-            Relationship::fixed(...$se('halfbroer/halfsuster'))->parent()->child(),
+            Relationship::fixed(...$this->se('halfsuster'))->parent()->daughter(),
+            Relationship::fixed(...$this->se('halfbroer'))->parent()->son(),
+            Relationship::fixed(...$this->se('halfbroer/halfsuster'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$se('stiefmoeder'))->parent()->wife(),
-            Relationship::fixed(...$se('stiefvader'))->parent()->husband(),
-            Relationship::fixed(...$se('stiefouer'))->parent()->married()->spouse(),
-            Relationship::fixed(...$se('stiefdogter'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$se('stiefseun'))->married()->spouse()->son(),
-            Relationship::fixed(...$se('stiefkind'))->married()->spouse()->child(),
-            Relationship::fixed(...$se('stiefsuster'))->parent()->spouse()->daughter(),
-            Relationship::fixed(...$se('stiefbroer'))->parent()->spouse()->son(),
-            Relationship::fixed(...$se('stiefbroer/stiefsuster'))->parent()->spouse()->child(),
+            Relationship::fixed(...$this->se('stiefmoeder'))->parent()->wife(),
+            Relationship::fixed(...$this->se('stiefvader'))->parent()->husband(),
+            Relationship::fixed(...$this->se('stiefouer'))->parent()->married()->spouse(),
+            Relationship::fixed(...$this->se('stiefdogter'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->se('stiefseun'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->se('stiefkind'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->se('stiefsuster'))->parent()->spouse()->daughter(),
+            Relationship::fixed(...$this->se('stiefbroer'))->parent()->spouse()->son(),
+            Relationship::fixed(...$this->se('stiefbroer/stiefsuster'))->parent()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$se('eks-vrou'))->divorced()->partner()->female(),
-            Relationship::fixed(...$se('eks-man'))->divorced()->partner()->male(),
-            Relationship::fixed(...$se('eks-maat'))->divorced()->partner(),
-            Relationship::fixed(...$se('verloofde'))->engaged()->partner()->female(),
-            Relationship::fixed(...$se('verloofde'))->engaged()->partner()->male(),
-            Relationship::fixed(...$se('vrou'))->wife(),
-            Relationship::fixed(...$se('man'))->husband(),
-            Relationship::fixed(...$se('eggenoot'))->spouse(),
-            Relationship::fixed(...$se('maat'))->partner(),
+            Relationship::fixed(...$this->se('eks-vrou'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->se('eks-man'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->se('eks-maat'))->divorced()->partner(),
+            Relationship::fixed(...$this->se('verloofde'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->se('verloofde'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->se('vrou'))->wife(),
+            Relationship::fixed(...$this->se('man'))->husband(),
+            Relationship::fixed(...$this->se('eggenoot'))->spouse(),
+            Relationship::fixed(...$this->se('maat'))->partner(),
             // In-laws
-            Relationship::fixed(...$se('skoonmoeder'))->married()->spouse()->mother(),
-            Relationship::fixed(...$se('skoonvader'))->married()->spouse()->father(),
-            Relationship::fixed(...$se('skoonouer'))->married()->spouse()->parent(),
-            Relationship::fixed(...$se('skoondogter'))->child()->wife(),
-            Relationship::fixed(...$se('skoonseun'))->child()->husband(),
-            Relationship::fixed(...$se('skoonkind'))->child()->married()->spouse(),
-            Relationship::fixed(...$se('skoonsuster'))->spouse()->sister(),
-            Relationship::fixed(...$se('skoonbroer'))->spouse()->brother(),
-            Relationship::fixed(...$se('skoonsuster'))->sibling()->wife(),
-            Relationship::fixed(...$se('skoonbroer'))->sibling()->husband(),
+            Relationship::fixed(...$this->se('skoonmoeder'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->se('skoonvader'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->se('skoonouer'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->se('skoondogter'))->child()->wife(),
+            Relationship::fixed(...$this->se('skoonseun'))->child()->husband(),
+            Relationship::fixed(...$this->se('skoonkind'))->child()->married()->spouse(),
+            Relationship::fixed(...$this->se('skoonsuster'))->spouse()->sister(),
+            Relationship::fixed(...$this->se('skoonbroer'))->spouse()->brother(),
+            Relationship::fixed(...$this->se('skoonsuster'))->sibling()->wife(),
+            Relationship::fixed(...$this->se('skoonbroer'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$se('ouma'))->parent()->mother(),
-            Relationship::fixed(...$se('oupa'))->parent()->father(),
-            Relationship::fixed(...$se('grootouers'))->parent()->parent(),
+            Relationship::fixed(...$this->se('ouma'))->parent()->mother(),
+            Relationship::fixed(...$this->se('oupa'))->parent()->father(),
+            Relationship::fixed(...$this->se('grootouers'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$se('kleindogter'))->child()->daughter(),
-            Relationship::fixed(...$se('kleinseun'))->child()->son(),
-            Relationship::fixed(...$se('kleinkind'))->child()->child(),
+            Relationship::fixed(...$this->se('kleindogter'))->child()->daughter(),
+            Relationship::fixed(...$this->se('kleinseun'))->child()->son(),
+            Relationship::fixed(...$this->se('kleinkind'))->child()->child(),
             // Aunts and uncles
-            Relationship::fixed(...$se('tante'))->parent()->sister(),
-            Relationship::fixed(...$se('oom'))->parent()->brother(),
+            Relationship::fixed(...$this->se('tante'))->parent()->sister(),
+            Relationship::fixed(...$this->se('oom'))->parent()->brother(),
             // Nieces and nephews
-            Relationship::fixed(...$se('niggie'))->sibling()->daughter(),
-            Relationship::fixed(...$se('neef'))->sibling()->son(),
-            Relationship::fixed(...$se('niggie'))->married()->spouse()->sibling()->daughter(),
-            Relationship::fixed(...$se('neef'))->married()->spouse()->sibling()->son(),
+            Relationship::fixed(...$this->se('niggie'))->sibling()->daughter(),
+            Relationship::fixed(...$this->se('neef'))->sibling()->son(),
+            Relationship::fixed(...$this->se('niggie'))->married()->spouse()->sibling()->daughter(),
+            Relationship::fixed(...$this->se('neef'))->married()->spouse()->sibling()->son(),
             // Cousins (flat - same term for all levels)
-            Relationship::fixed(...$se('niggie'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$se('neef'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->se('niggie'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->se('neef'))->parent()->sibling()->son(),
             // Dynamic relationships
-            Relationship::dynamic(static fn (int $n) => $groot($n - 1, '', 'tante'))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $groot($n - 1, '', 'oom'))->ancestor()->brother(),
-            Relationship::dynamic(static fn (int $n) => $groot($n - 1, '', 'niggie'))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $groot($n - 1, '', 'niggie'))->married()->spouse()->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $groot($n - 1, '', 'neef'))->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $groot($n - 1, '', 'neef'))->married()->spouse()->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $groot($n - 1, '', 'ouma'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $groot($n - 1, '', 'oupa'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $groot($n - 1, '', 'grootouers'))->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $groot($n - 2, '', 'kleindogter'))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $groot($n - 2, '', 'kleinseun'))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $groot($n - 2, '', 'kleinkind'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->groot($n - 1, 'tante'))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->groot($n - 1, 'oom'))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->groot($n - 1, 'niggie'))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->groot($n - 1, 'niggie'))->married()->spouse()->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->groot($n - 1, 'neef'))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->groot($n - 1, 'neef'))->married()->spouse()->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->groot($n - 1, 'ouma'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->groot($n - 1, 'oupa'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->groot($n - 1, 'grootouers'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->groot($n - 2, 'kleindogter'))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->groot($n - 2, 'kleinseun'))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->groot($n - 2, 'kleinkind'))->descendant(),
         ];
     }
 }

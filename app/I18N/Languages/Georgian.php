@@ -165,16 +165,24 @@ final readonly class Georgian extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
+    /**
+     * Generate nominative and genitive forms for a dynamic relationship
+     * using the repeated "დიდი" (great) prefix.
+     *
+     * @return array{string, string}
+     */
+    private function great(int $n, string $nominative, string $genitive): array
+    {
+        $prefix = str_repeat('დიდი ', $n);
+
+        return [$prefix . $nominative, $prefix . $genitive . ' %s'];
+    }
+
+    /**
+     * @return array<Relationship>
+     */
     public function relationships(): array
     {
-        // Georgian genitive: "-ის" suffix, e.g. "დედის %s" (mother's %s)
-        // "პაპის პაპა" pattern for great-grandparents
-        $great = static function (int $n, string $nom, string $gen): array {
-            $prefix = str_repeat('დიდი ', $n);
-
-            return [$prefix . $nom, $prefix . $gen . ' %s'];
-        };
-
         return [
             // Parents
             Relationship::fixed('დედა', 'დედის %s')->mother(),
@@ -246,10 +254,10 @@ final readonly class Georgian extends AbstractLanguage
             Relationship::fixed('ბიძაშვილი', 'ბიძაშვილის %s')->parent()->sibling()->son(),
             Relationship::fixed('ბიძაშვილი', 'ბიძაშვილის %s')->parent()->sibling()->child(),
             // Dynamic — great-grandparents and beyond
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'ბებია', 'ბებიის'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'ბაბუა', 'ბაბუის'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'ბებია-ბაბუა', 'ბებია-ბაბუის'))->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'შვილიშვილი', 'შვილიშვილის'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'ბებია', 'ბებიის'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'ბაბუა', 'ბაბუის'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'ბებია-ბაბუა', 'ბებია-ბაბუის'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'შვილიშვილი', 'შვილიშვილის'))->descendant(),
         ];
     }
 }

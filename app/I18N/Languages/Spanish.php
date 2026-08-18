@@ -209,123 +209,142 @@ final readonly class Spanish extends AbstractLanguage
         ];
     }
 
+    /** @return array{string, string} */
+    private function deLa(string $nominative): array
+    {
+        return [$nominative, '%s de la ' . $nominative];
+    }
+
+    /** @return array{string, string} */
+    private function del(string $nominative): array
+    {
+        return [$nominative, '%s del ' . $nominative];
+    }
+
+    /**
+     * Generate nominative and genitive forms for a dynamic relationship
+     * using the Spanish "bis/tatara" prefix pattern.
+     *
+     * abuelo → bisabuelo → tatarabuelo → tataratataraabuelo
+     *
+     * @return array{string, string}
+     */
+    private function bis(int $n, string $suffix, string $article): array
+    {
+        $nominative = ($n === 1 ? 'bis' : ($n === 2 ? 'tatara' : ($n > 3 ? $n . '° ' : str_repeat('tatara', $n - 1)))) . $suffix;
+
+        return [$nominative, '%s ' . $article . $nominative];
+    }
+
     /**
      * @return array<Relationship>
      */
     public function relationships(): array
     {
-        // Spanish genitive: "de la" (f), "del" (m)
-        $de_la = static fn (string $s): array => [$s, '%s de la ' . $s];
-        $del   = static fn (string $s): array => [$s, '%s del ' . $s];
-
-        $great = static fn (int $n, string $suffix, string $article): array => [
-            ($n === 1 ? 'bis' : ($n === 2 ? 'tatara' : ($n > 3 ? $n . '° ' : str_repeat('tatara', $n - 1)))) . $suffix,
-            '%s ' . $article . ($n === 1 ? 'bis' : ($n === 2 ? 'tatara' : ($n > 3 ? $n . '° ' : str_repeat('tatara', $n - 1)))) . $suffix,
-        ];
 
         return [
             // Adopted
-            Relationship::fixed(...$de_la('madre adoptiva'))->adoptive()->mother(),
-            Relationship::fixed(...$del('padre adoptivo'))->adoptive()->father(),
-            Relationship::fixed(...$del('padre/madre adoptivo/a'))->adoptive()->parent(),
-            Relationship::fixed(...$de_la('hija adoptiva'))->adopted()->daughter(),
-            Relationship::fixed(...$del('hijo adoptivo'))->adopted()->son(),
-            Relationship::fixed(...$del('hijo/a adoptivo/a'))->adopted()->child(),
+            Relationship::fixed(...$this->deLa('madre adoptiva'))->adoptive()->mother(),
+            Relationship::fixed(...$this->del('padre adoptivo'))->adoptive()->father(),
+            Relationship::fixed(...$this->del('padre/madre adoptivo/a'))->adoptive()->parent(),
+            Relationship::fixed(...$this->deLa('hija adoptiva'))->adopted()->daughter(),
+            Relationship::fixed(...$this->del('hijo adoptivo'))->adopted()->son(),
+            Relationship::fixed(...$this->del('hijo/a adoptivo/a'))->adopted()->child(),
             // Fostered
-            Relationship::fixed(...$de_la('madre de acogida'))->fostering()->mother(),
-            Relationship::fixed(...$del('padre de acogida'))->fostering()->father(),
-            Relationship::fixed(...$del('padre/madre de acogida'))->fostering()->parent(),
-            Relationship::fixed(...$de_la('hija de acogida'))->fostered()->daughter(),
-            Relationship::fixed(...$del('hijo de acogida'))->fostered()->son(),
-            Relationship::fixed(...$del('hijo/a de acogida'))->fostered()->child(),
+            Relationship::fixed(...$this->deLa('madre de acogida'))->fostering()->mother(),
+            Relationship::fixed(...$this->del('padre de acogida'))->fostering()->father(),
+            Relationship::fixed(...$this->del('padre/madre de acogida'))->fostering()->parent(),
+            Relationship::fixed(...$this->deLa('hija de acogida'))->fostered()->daughter(),
+            Relationship::fixed(...$this->del('hijo de acogida'))->fostered()->son(),
+            Relationship::fixed(...$this->del('hijo/a de acogida'))->fostered()->child(),
             // Parents
-            Relationship::fixed(...$de_la('madre'))->mother(),
-            Relationship::fixed(...$del('padre'))->father(),
-            Relationship::fixed(...$del('padre/madre'))->parent(),
+            Relationship::fixed(...$this->deLa('madre'))->mother(),
+            Relationship::fixed(...$this->del('padre'))->father(),
+            Relationship::fixed(...$this->del('padre/madre'))->parent(),
             // Children
-            Relationship::fixed(...$de_la('hija'))->daughter(),
-            Relationship::fixed(...$del('hijo'))->son(),
-            Relationship::fixed(...$del('hijo/a'))->child(),
+            Relationship::fixed(...$this->deLa('hija'))->daughter(),
+            Relationship::fixed(...$this->del('hijo'))->son(),
+            Relationship::fixed(...$this->del('hijo/a'))->child(),
             // Siblings
-            Relationship::fixed(...$de_la('hermana gemela'))->multiple()->sister(),
-            Relationship::fixed(...$del('hermano gemelo'))->multiple()->brother(),
-            Relationship::fixed(...$del('gemelo/a'))->multiple()->sibling(),
-            Relationship::fixed(...$de_la('hermana mayor'))->older()->sister(),
-            Relationship::fixed(...$del('hermano mayor'))->older()->brother(),
-            Relationship::fixed(...$del('hermano/a mayor'))->older()->sibling(),
-            Relationship::fixed(...$de_la('hermana menor'))->younger()->sister(),
-            Relationship::fixed(...$del('hermano menor'))->younger()->brother(),
-            Relationship::fixed(...$del('hermano/a menor'))->younger()->sibling(),
-            Relationship::fixed(...$de_la('hermana'))->sister(),
-            Relationship::fixed(...$del('hermano'))->brother(),
-            Relationship::fixed(...$del('hermano/a'))->sibling(),
+            Relationship::fixed(...$this->deLa('hermana gemela'))->multiple()->sister(),
+            Relationship::fixed(...$this->del('hermano gemelo'))->multiple()->brother(),
+            Relationship::fixed(...$this->del('gemelo/a'))->multiple()->sibling(),
+            Relationship::fixed(...$this->deLa('hermana mayor'))->older()->sister(),
+            Relationship::fixed(...$this->del('hermano mayor'))->older()->brother(),
+            Relationship::fixed(...$this->del('hermano/a mayor'))->older()->sibling(),
+            Relationship::fixed(...$this->deLa('hermana menor'))->younger()->sister(),
+            Relationship::fixed(...$this->del('hermano menor'))->younger()->brother(),
+            Relationship::fixed(...$this->del('hermano/a menor'))->younger()->sibling(),
+            Relationship::fixed(...$this->deLa('hermana'))->sister(),
+            Relationship::fixed(...$this->del('hermano'))->brother(),
+            Relationship::fixed(...$this->del('hermano/a'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$de_la('media hermana'))->parent()->daughter(),
-            Relationship::fixed(...$del('medio hermano'))->parent()->son(),
-            Relationship::fixed(...$del('medio/a hermano/a'))->parent()->child(),
+            Relationship::fixed(...$this->deLa('media hermana'))->parent()->daughter(),
+            Relationship::fixed(...$this->del('medio hermano'))->parent()->son(),
+            Relationship::fixed(...$this->del('medio/a hermano/a'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$de_la('madrastra'))->parent()->wife(),
-            Relationship::fixed(...$del('padrastro'))->parent()->husband(),
-            Relationship::fixed(...$del('padrastro/madrastra'))->parent()->married()->spouse(),
-            Relationship::fixed(...$de_la('hijastra'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$del('hijastro'))->married()->spouse()->son(),
-            Relationship::fixed(...$del('hijastro/a'))->married()->spouse()->child(),
-            Relationship::fixed(...$de_la('hermanastra'))->parent()->spouse()->daughter(),
-            Relationship::fixed(...$del('hermanastro'))->parent()->spouse()->son(),
-            Relationship::fixed(...$del('hermanastro/a'))->parent()->spouse()->child(),
+            Relationship::fixed(...$this->deLa('madrastra'))->parent()->wife(),
+            Relationship::fixed(...$this->del('padrastro'))->parent()->husband(),
+            Relationship::fixed(...$this->del('padrastro/madrastra'))->parent()->married()->spouse(),
+            Relationship::fixed(...$this->deLa('hijastra'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->del('hijastro'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->del('hijastro/a'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->deLa('hermanastra'))->parent()->spouse()->daughter(),
+            Relationship::fixed(...$this->del('hermanastro'))->parent()->spouse()->son(),
+            Relationship::fixed(...$this->del('hermanastro/a'))->parent()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$de_la('ex-esposa'))->divorced()->partner()->female(),
-            Relationship::fixed(...$del('ex-esposo'))->divorced()->partner()->male(),
-            Relationship::fixed(...$del('ex-cónyuge'))->divorced()->partner(),
-            Relationship::fixed(...$de_la('prometida'))->engaged()->partner()->female(),
-            Relationship::fixed(...$del('prometido'))->engaged()->partner()->male(),
-            Relationship::fixed(...$de_la('esposa'))->wife(),
-            Relationship::fixed(...$del('esposo'))->husband(),
-            Relationship::fixed(...$del('cónyuge'))->spouse(),
-            Relationship::fixed(...$de_la('pareja'))->partner(),
+            Relationship::fixed(...$this->deLa('ex-esposa'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->del('ex-esposo'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->del('ex-cónyuge'))->divorced()->partner(),
+            Relationship::fixed(...$this->deLa('prometida'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->del('prometido'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->deLa('esposa'))->wife(),
+            Relationship::fixed(...$this->del('esposo'))->husband(),
+            Relationship::fixed(...$this->del('cónyuge'))->spouse(),
+            Relationship::fixed(...$this->deLa('pareja'))->partner(),
             // In-laws
-            Relationship::fixed(...$de_la('suegra'))->married()->spouse()->mother(),
-            Relationship::fixed(...$del('suegro'))->married()->spouse()->father(),
-            Relationship::fixed(...$del('suegro/a'))->married()->spouse()->parent(),
-            Relationship::fixed(...$de_la('nuera'))->child()->wife(),
-            Relationship::fixed(...$del('yerno'))->child()->husband(),
-            Relationship::fixed(...$del('yerno/nuera'))->child()->married()->spouse(),
-            Relationship::fixed(...$de_la('cuñada'))->spouse()->sister(),
-            Relationship::fixed(...$del('cuñado'))->spouse()->brother(),
-            Relationship::fixed(...$de_la('cuñada'))->sibling()->wife(),
-            Relationship::fixed(...$del('cuñado'))->sibling()->husband(),
+            Relationship::fixed(...$this->deLa('suegra'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->del('suegro'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->del('suegro/a'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->deLa('nuera'))->child()->wife(),
+            Relationship::fixed(...$this->del('yerno'))->child()->husband(),
+            Relationship::fixed(...$this->del('yerno/nuera'))->child()->married()->spouse(),
+            Relationship::fixed(...$this->deLa('cuñada'))->spouse()->sister(),
+            Relationship::fixed(...$this->del('cuñado'))->spouse()->brother(),
+            Relationship::fixed(...$this->deLa('cuñada'))->sibling()->wife(),
+            Relationship::fixed(...$this->del('cuñado'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$de_la('abuela'))->parent()->mother(),
-            Relationship::fixed(...$del('abuelo'))->parent()->father(),
-            Relationship::fixed(...$del('abuelo/a'))->parent()->parent(),
+            Relationship::fixed(...$this->deLa('abuela'))->parent()->mother(),
+            Relationship::fixed(...$this->del('abuelo'))->parent()->father(),
+            Relationship::fixed(...$this->del('abuelo/a'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$de_la('nieta'))->child()->daughter(),
-            Relationship::fixed(...$del('nieto'))->child()->son(),
-            Relationship::fixed(...$del('nieto/a'))->child()->child(),
+            Relationship::fixed(...$this->deLa('nieta'))->child()->daughter(),
+            Relationship::fixed(...$this->del('nieto'))->child()->son(),
+            Relationship::fixed(...$this->del('nieto/a'))->child()->child(),
             // Aunts and uncles
-            Relationship::fixed(...$de_la('tía'))->parent()->sister(),
-            Relationship::fixed(...$del('tío'))->parent()->brother(),
+            Relationship::fixed(...$this->deLa('tía'))->parent()->sister(),
+            Relationship::fixed(...$this->del('tío'))->parent()->brother(),
             // Nieces and nephews
-            Relationship::fixed(...$de_la('sobrina'))->sibling()->daughter(),
-            Relationship::fixed(...$del('sobrino'))->sibling()->son(),
-            Relationship::fixed(...$de_la('sobrina'))->married()->spouse()->sibling()->daughter(),
-            Relationship::fixed(...$del('sobrino'))->married()->spouse()->sibling()->son(),
+            Relationship::fixed(...$this->deLa('sobrina'))->sibling()->daughter(),
+            Relationship::fixed(...$this->del('sobrino'))->sibling()->son(),
+            Relationship::fixed(...$this->deLa('sobrina'))->married()->spouse()->sibling()->daughter(),
+            Relationship::fixed(...$this->del('sobrino'))->married()->spouse()->sibling()->son(),
             // Cousins
-            Relationship::fixed(...$de_la('prima'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$del('primo'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->deLa('prima'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->del('primo'))->parent()->sibling()->son(),
             // Dynamic relationships
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, 'abuela', 'de la '))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, 'abuelo', 'del '))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, 'abuelo/a', 'del '))->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'nieta', 'de la '))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'nieto', 'del '))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'nieto/a', 'del '))->descendant(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, 'tía', 'de la '))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, 'tío', 'del '))->ancestor()->brother(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, 'sobrina', 'de la '))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, 'sobrina', 'de la '))->married()->spouse()->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, 'sobrino', 'del '))->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, 'sobrino', 'del '))->married()->spouse()->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->bis($n - 1, 'abuela', 'de la '))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->bis($n - 1, 'abuelo', 'del '))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->bis($n - 1, 'abuelo/a', 'del '))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->bis($n - 2, 'nieta', 'de la '))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->bis($n - 2, 'nieto', 'del '))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->bis($n - 2, 'nieto/a', 'del '))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->bis($n - 1, 'tía', 'de la '))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->bis($n - 1, 'tío', 'del '))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->bis($n - 1, 'sobrina', 'de la '))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->bis($n - 1, 'sobrina', 'de la '))->married()->spouse()->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->bis($n - 1, 'sobrino', 'del '))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->bis($n - 1, 'sobrino', 'del '))->married()->spouse()->sibling()->descendant()->male(),
         ];
     }
 }

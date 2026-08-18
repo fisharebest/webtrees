@@ -315,10 +315,10 @@ final readonly class Turkish extends AbstractLanguage
             Relationship::fixed('kuzen', '%s kuzenin')->parent()->sibling()->son(),
             Relationship::fixed('kuzen', '%s kuzenin')->parent()->sibling()->child(),
             // Dynamic — great-grandparents and beyond
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'büyükanne', 'büyükannenin'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'büyükbaba', 'büyükbabanın'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'büyük ebeveyn', 'büyük ebeveynin'))->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'torun', 'torununun'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'büyükanne', 'büyükannenin'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'büyükbaba', 'büyükbabanın'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'büyük ebeveyn', 'büyük ebeveynin'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'torun', 'torununun'))->descendant(),
         ];
     }
 

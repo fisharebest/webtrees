@@ -209,127 +209,135 @@ final readonly class Albanian extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
-    public function relationships(): array
+        /** @return array{string, string} */
+    private function ie(string $nom, string $gen): array
     {
-        // Albanian genitive uses linking article "i" (masculine %s) / "e" (feminine %s)
-        // followed by the noun in genitive/dative case.
-        $ie = static fn (string $nom, string $gen): array => [$nom, '%s i ' . $gen, '%s e ' . $gen];
+        return [$nom, '%s i ' . $gen, '%s e ' . $gen];
+    }
 
-        // Dynamic with "stër" prefix for great-generations
-        $ster = static fn (int $n, string $suffix, string $genSuffix): array => [
+    /** @return array{string, string} */
+    private function ster(int $n, string $suffix, string $genSuffix): array
+    {
+        return [
             ($n > 3 ? 'stër×' . $n . '-' : str_repeat('stër', $n)) . $suffix,
             '%s i ' . ($n > 3 ? 'stër×' . $n . '-' : str_repeat('stër', $n)) . $genSuffix,
             '%s e ' . ($n > 3 ? 'stër×' . $n . '-' : str_repeat('stër', $n)) . $genSuffix,
         ];
+    }
 
+    /**
+     * @return array<Relationship>
+     */
+    public function relationships(): array
+    {
         return [
             // Adopted
-            Relationship::fixed(...$ie('nënë birësuese', 'nënës birësuese'))->adoptive()->mother(),
-            Relationship::fixed(...$ie('baba birësues', 'babait birësues'))->adoptive()->father(),
-            Relationship::fixed(...$ie('prind birësues', 'prindit birësues'))->adoptive()->parent(),
-            Relationship::fixed(...$ie('vajzë e birësuar', 'vajzës së birësuar'))->adopted()->daughter(),
-            Relationship::fixed(...$ie('djalë i birësuar', 'djalit të birësuar'))->adopted()->son(),
-            Relationship::fixed(...$ie('fëmijë i birësuar', 'fëmijës së birësuar'))->adopted()->child(),
+            Relationship::fixed(...$this->ie('nënë birësuese', 'nënës birësuese'))->adoptive()->mother(),
+            Relationship::fixed(...$this->ie('baba birësues', 'babait birësues'))->adoptive()->father(),
+            Relationship::fixed(...$this->ie('prind birësues', 'prindit birësues'))->adoptive()->parent(),
+            Relationship::fixed(...$this->ie('vajzë e birësuar', 'vajzës së birësuar'))->adopted()->daughter(),
+            Relationship::fixed(...$this->ie('djalë i birësuar', 'djalit të birësuar'))->adopted()->son(),
+            Relationship::fixed(...$this->ie('fëmijë i birësuar', 'fëmijës së birësuar'))->adopted()->child(),
             // Fostered
-            Relationship::fixed(...$ie('nënë kujdestare', 'nënës kujdestare'))->fostering()->mother(),
-            Relationship::fixed(...$ie('baba kujdestar', 'babait kujdestar'))->fostering()->father(),
-            Relationship::fixed(...$ie('prind kujdestar', 'prindit kujdestar'))->fostering()->parent(),
-            Relationship::fixed(...$ie('vajzë në kujdestari', 'vajzës në kujdestari'))->fostered()->daughter(),
-            Relationship::fixed(...$ie('djalë në kujdestari', 'djalit në kujdestari'))->fostered()->son(),
-            Relationship::fixed(...$ie('fëmijë në kujdestari', 'fëmijës në kujdestari'))->fostered()->child(),
+            Relationship::fixed(...$this->ie('nënë kujdestare', 'nënës kujdestare'))->fostering()->mother(),
+            Relationship::fixed(...$this->ie('baba kujdestar', 'babait kujdestar'))->fostering()->father(),
+            Relationship::fixed(...$this->ie('prind kujdestar', 'prindit kujdestar'))->fostering()->parent(),
+            Relationship::fixed(...$this->ie('vajzë në kujdestari', 'vajzës në kujdestari'))->fostered()->daughter(),
+            Relationship::fixed(...$this->ie('djalë në kujdestari', 'djalit në kujdestari'))->fostered()->son(),
+            Relationship::fixed(...$this->ie('fëmijë në kujdestari', 'fëmijës në kujdestari'))->fostered()->child(),
             // Parents
-            Relationship::fixed(...$ie('nënë', 'nënës'))->mother(),
-            Relationship::fixed(...$ie('baba', 'babait'))->father(),
-            Relationship::fixed(...$ie('prind', 'prindit'))->parent(),
+            Relationship::fixed(...$this->ie('nënë', 'nënës'))->mother(),
+            Relationship::fixed(...$this->ie('baba', 'babait'))->father(),
+            Relationship::fixed(...$this->ie('prind', 'prindit'))->parent(),
             // Children
-            Relationship::fixed(...$ie('vajzë', 'vajzës'))->daughter(),
-            Relationship::fixed(...$ie('djalë', 'djalit'))->son(),
-            Relationship::fixed(...$ie('fëmijë', 'fëmijës'))->child(),
+            Relationship::fixed(...$this->ie('vajzë', 'vajzës'))->daughter(),
+            Relationship::fixed(...$this->ie('djalë', 'djalit'))->son(),
+            Relationship::fixed(...$this->ie('fëmijë', 'fëmijës'))->child(),
             // Siblings
-            Relationship::fixed(...$ie('motër binjake', 'motrës binjake'))->multiple()->sister(),
-            Relationship::fixed(...$ie('vëlla binjak', 'vëllait binjak'))->multiple()->brother(),
-            Relationship::fixed(...$ie('binjak/e', 'binjakut/es'))->multiple()->sibling(),
-            Relationship::fixed(...$ie('motër e madhe', 'motrës së madhe'))->older()->sister(),
-            Relationship::fixed(...$ie('vëlla i madh', 'vëllait të madh'))->older()->brother(),
-            Relationship::fixed(...$ie('motër e vogël', 'motrës së vogël'))->younger()->sister(),
-            Relationship::fixed(...$ie('vëlla i vogël', 'vëllait të vogël'))->younger()->brother(),
-            Relationship::fixed(...$ie('motër', 'motrës'))->sister(),
-            Relationship::fixed(...$ie('vëlla', 'vëllait'))->brother(),
-            Relationship::fixed(...$ie('vëlla/motër', 'vëllait/motrës'))->sibling(),
+            Relationship::fixed(...$this->ie('motër binjake', 'motrës binjake'))->multiple()->sister(),
+            Relationship::fixed(...$this->ie('vëlla binjak', 'vëllait binjak'))->multiple()->brother(),
+            Relationship::fixed(...$this->ie('binjak/e', 'binjakut/es'))->multiple()->sibling(),
+            Relationship::fixed(...$this->ie('motër e madhe', 'motrës së madhe'))->older()->sister(),
+            Relationship::fixed(...$this->ie('vëlla i madh', 'vëllait të madh'))->older()->brother(),
+            Relationship::fixed(...$this->ie('motër e vogël', 'motrës së vogël'))->younger()->sister(),
+            Relationship::fixed(...$this->ie('vëlla i vogël', 'vëllait të vogël'))->younger()->brother(),
+            Relationship::fixed(...$this->ie('motër', 'motrës'))->sister(),
+            Relationship::fixed(...$this->ie('vëlla', 'vëllait'))->brother(),
+            Relationship::fixed(...$this->ie('vëlla/motër', 'vëllait/motrës'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$ie('gjysmëmotër', 'gjysmëmotrës'))->parent()->daughter(),
-            Relationship::fixed(...$ie('gjysmëvëlla', 'gjysmëvëllait'))->parent()->son(),
-            Relationship::fixed(...$ie('gjysmëvëlla/motër', 'gjysmëvëllait/motrës'))->parent()->child(),
+            Relationship::fixed(...$this->ie('gjysmëmotër', 'gjysmëmotrës'))->parent()->daughter(),
+            Relationship::fixed(...$this->ie('gjysmëvëlla', 'gjysmëvëllait'))->parent()->son(),
+            Relationship::fixed(...$this->ie('gjysmëvëlla/motër', 'gjysmëvëllait/motrës'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$ie('njerkë', 'njerkës'))->parent()->wife(),
-            Relationship::fixed(...$ie('njerk', 'njerkut'))->parent()->husband(),
-            Relationship::fixed(...$ie('prind vitreg', 'prindit vitreg'))->parent()->married()->spouse(),
-            Relationship::fixed(...$ie('vajzë vitregë', 'vajzës vitregë'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$ie('djalë vitreg', 'djalit vitreg'))->married()->spouse()->son(),
-            Relationship::fixed(...$ie('fëmijë vitreg', 'fëmijës vitreg'))->married()->spouse()->child(),
-            Relationship::fixed(...$ie('motër vitregë', 'motrës vitregë'))->parent()->spouse()->daughter(),
-            Relationship::fixed(...$ie('vëlla vitreg', 'vëllait vitreg'))->parent()->spouse()->son(),
-            Relationship::fixed(...$ie('vëlla/motër vitreg', 'vëllait/motrës vitreg'))->parent()->spouse()->child(),
+            Relationship::fixed(...$this->ie('njerkë', 'njerkës'))->parent()->wife(),
+            Relationship::fixed(...$this->ie('njerk', 'njerkut'))->parent()->husband(),
+            Relationship::fixed(...$this->ie('prind vitreg', 'prindit vitreg'))->parent()->married()->spouse(),
+            Relationship::fixed(...$this->ie('vajzë vitregë', 'vajzës vitregë'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->ie('djalë vitreg', 'djalit vitreg'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->ie('fëmijë vitreg', 'fëmijës vitreg'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->ie('motër vitregë', 'motrës vitregë'))->parent()->spouse()->daughter(),
+            Relationship::fixed(...$this->ie('vëlla vitreg', 'vëllait vitreg'))->parent()->spouse()->son(),
+            Relationship::fixed(...$this->ie('vëlla/motër vitreg', 'vëllait/motrës vitreg'))->parent()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$ie('ish-grua', 'ish-gruas'))->divorced()->partner()->female(),
-            Relationship::fixed(...$ie('ish-burrë', 'ish-burrit'))->divorced()->partner()->male(),
-            Relationship::fixed(...$ie('ish-bashkëshort', 'ish-bashkëshortit'))->divorced()->partner(),
-            Relationship::fixed(...$ie('e fejuar', 'së fejuarës'))->engaged()->partner()->female(),
-            Relationship::fixed(...$ie('i fejuar', 'të fejuarit'))->engaged()->partner()->male(),
-            Relationship::fixed(...$ie('grua', 'gruas'))->wife(),
-            Relationship::fixed(...$ie('burrë', 'burrit'))->husband(),
-            Relationship::fixed(...$ie('bashkëshort/e', 'bashkëshortit/es'))->spouse(),
-            Relationship::fixed(...$ie('partner/e', 'partnerit/es'))->partner(),
+            Relationship::fixed(...$this->ie('ish-grua', 'ish-gruas'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->ie('ish-burrë', 'ish-burrit'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->ie('ish-bashkëshort', 'ish-bashkëshortit'))->divorced()->partner(),
+            Relationship::fixed(...$this->ie('e fejuar', 'së fejuarës'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->ie('i fejuar', 'të fejuarit'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->ie('grua', 'gruas'))->wife(),
+            Relationship::fixed(...$this->ie('burrë', 'burrit'))->husband(),
+            Relationship::fixed(...$this->ie('bashkëshort/e', 'bashkëshortit/es'))->spouse(),
+            Relationship::fixed(...$this->ie('partner/e', 'partnerit/es'))->partner(),
             // In-laws (via spouse)
-            Relationship::fixed(...$ie('vjehrrë', 'vjehrrës'))->married()->spouse()->mother(),
-            Relationship::fixed(...$ie('vjehërr', 'vjehërrit'))->married()->spouse()->father(),
-            Relationship::fixed(...$ie('prind vjehërr', 'prindit vjehërr'))->married()->spouse()->parent(),
-            Relationship::fixed(...$ie('nuse', 'nuses'))->child()->wife(),
-            Relationship::fixed(...$ie('dhëndër', 'dhëndrit'))->child()->husband(),
-            Relationship::fixed(...$ie('kunatë', 'kunatës'))->spouse()->sister(),
-            Relationship::fixed(...$ie('kunat', 'kunatit'))->spouse()->brother(),
-            Relationship::fixed(...$ie('kunatë', 'kunatës'))->sibling()->wife(),
-            Relationship::fixed(...$ie('kunat', 'kunatit'))->sibling()->husband(),
+            Relationship::fixed(...$this->ie('vjehrrë', 'vjehrrës'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->ie('vjehërr', 'vjehërrit'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->ie('prind vjehërr', 'prindit vjehërr'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->ie('nuse', 'nuses'))->child()->wife(),
+            Relationship::fixed(...$this->ie('dhëndër', 'dhëndrit'))->child()->husband(),
+            Relationship::fixed(...$this->ie('kunatë', 'kunatës'))->spouse()->sister(),
+            Relationship::fixed(...$this->ie('kunat', 'kunatit'))->spouse()->brother(),
+            Relationship::fixed(...$this->ie('kunatë', 'kunatës'))->sibling()->wife(),
+            Relationship::fixed(...$this->ie('kunat', 'kunatit'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$ie('gjyshe', 'gjyshes'))->parent()->mother(),
-            Relationship::fixed(...$ie('gjysh', 'gjyshit'))->parent()->father(),
-            Relationship::fixed(...$ie('gjysh/gjyshe', 'gjyshit/gjyshes'))->parent()->parent(),
+            Relationship::fixed(...$this->ie('gjyshe', 'gjyshes'))->parent()->mother(),
+            Relationship::fixed(...$this->ie('gjysh', 'gjyshit'))->parent()->father(),
+            Relationship::fixed(...$this->ie('gjysh/gjyshe', 'gjyshit/gjyshes'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$ie('mbesë', 'mbesës'))->child()->daughter(),
-            Relationship::fixed(...$ie('nip', 'nipit'))->child()->son(),
-            Relationship::fixed(...$ie('nip/mbesë', 'nipit/mbesës'))->child()->child(),
+            Relationship::fixed(...$this->ie('mbesë', 'mbesës'))->child()->daughter(),
+            Relationship::fixed(...$this->ie('nip', 'nipit'))->child()->son(),
+            Relationship::fixed(...$this->ie('nip/mbesë', 'nipit/mbesës'))->child()->child(),
             // Aunts and uncles (Albanian distinguishes maternal/paternal)
-            Relationship::fixed(...$ie('teze', 'tezes'))->mother()->sister(),
-            Relationship::fixed(...$ie('hallë', 'hallës'))->father()->sister(),
-            Relationship::fixed(...$ie('dajë', 'dajës'))->mother()->brother(),
-            Relationship::fixed(...$ie('xhaxha', 'xhaxhait'))->father()->brother(),
-            Relationship::fixed(...$ie('teze/hallë', 'tezes/hallës'))->parent()->sister(),
-            Relationship::fixed(...$ie('dajë/xhaxha', 'dajës/xhaxhait'))->parent()->brother(),
+            Relationship::fixed(...$this->ie('teze', 'tezes'))->mother()->sister(),
+            Relationship::fixed(...$this->ie('hallë', 'hallës'))->father()->sister(),
+            Relationship::fixed(...$this->ie('dajë', 'dajës'))->mother()->brother(),
+            Relationship::fixed(...$this->ie('xhaxha', 'xhaxhait'))->father()->brother(),
+            Relationship::fixed(...$this->ie('teze/hallë', 'tezes/hallës'))->parent()->sister(),
+            Relationship::fixed(...$this->ie('dajë/xhaxha', 'dajës/xhaxhait'))->parent()->brother(),
             // Nieces and nephews
-            Relationship::fixed(...$ie('mbesë', 'mbesës'))->sibling()->daughter(),
-            Relationship::fixed(...$ie('nip', 'nipit'))->sibling()->son(),
-            Relationship::fixed(...$ie('mbesë', 'mbesës'))->married()->spouse()->sibling()->daughter(),
-            Relationship::fixed(...$ie('nip', 'nipit'))->married()->spouse()->sibling()->son(),
+            Relationship::fixed(...$this->ie('mbesë', 'mbesës'))->sibling()->daughter(),
+            Relationship::fixed(...$this->ie('nip', 'nipit'))->sibling()->son(),
+            Relationship::fixed(...$this->ie('mbesë', 'mbesës'))->married()->spouse()->sibling()->daughter(),
+            Relationship::fixed(...$this->ie('nip', 'nipit'))->married()->spouse()->sibling()->son(),
             // Cousins
-            Relationship::fixed(...$ie('kushërirë', 'kushërirës'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$ie('kushëri', 'kushërit'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->ie('kushërirë', 'kushërirës'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->ie('kushëri', 'kushërit'))->parent()->sibling()->son(),
             // Dynamic relationships
             // Great-aunts/uncles: ancestor(n>=2)->sister/brother
-            Relationship::dynamic(static fn (int $n) => $ster($n - 1, 'teze', 'tezes'))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $ster($n - 1, 'xhaxha', 'xhaxhait'))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->ster($n - 1, 'teze', 'tezes'))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->ster($n - 1, 'xhaxha', 'xhaxhait'))->ancestor()->brother(),
             // Great-nieces/nephews: sibling->descendant(n>=2)
-            Relationship::dynamic(static fn (int $n) => $ster($n - 1, 'mbesë', 'mbesës'))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $ster($n - 1, 'mbesë', 'mbesës'))->married()->spouse()->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $ster($n - 1, 'nip', 'nipit'))->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $ster($n - 1, 'nip', 'nipit'))->married()->spouse()->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->ster($n - 1, 'mbesë', 'mbesës'))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->ster($n - 1, 'mbesë', 'mbesës'))->married()->spouse()->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->ster($n - 1, 'nip', 'nipit'))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->ster($n - 1, 'nip', 'nipit'))->married()->spouse()->sibling()->descendant()->male(),
             // Great-grandparents: ancestor(n>=3)
-            Relationship::dynamic(static fn (int $n) => $ster($n - 2, 'gjyshe', 'gjyshes'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $ster($n - 2, 'gjysh', 'gjyshit'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $ster($n - 2, 'gjysh/gjyshe', 'gjyshit/gjyshes'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->ster($n - 2, 'gjyshe', 'gjyshes'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->ster($n - 2, 'gjysh', 'gjyshit'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->ster($n - 2, 'gjysh/gjyshe', 'gjyshit/gjyshes'))->ancestor(),
             // Great-grandchildren: descendant(n>=3)
-            Relationship::dynamic(static fn (int $n) => $ster($n - 2, 'mbesë', 'mbesës'))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $ster($n - 2, 'nip', 'nipit'))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $ster($n - 2, 'nip/mbesë', 'nipit/mbesës'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->ster($n - 2, 'mbesë', 'mbesës'))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->ster($n - 2, 'nip', 'nipit'))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->ster($n - 2, 'nip/mbesë', 'nipit/mbesës'))->descendant(),
         ];
     }
 }

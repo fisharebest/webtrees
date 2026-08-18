@@ -238,154 +238,162 @@ final readonly class Arabic extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
+        /** @return array{string, string} */
+    private function ar(string $s): array
+    {
+        return [$s, '%s ' . $s];
+    }
+
+    /** @return array{string, string} */
+    private function ar2(string $nom, string $gen): array
+    {
+        return [$nom, '%s ' . $gen];
+    }
+
+    /**
+     * @return array<Relationship>
+     */
     public function relationships(): array
     {
-        // Arabic iḍāfa (construct state): genitive puts the next term before this one
-        // e.g. "mother's brother" = "أخ أم" (brother of mother) → genitive = "%s أم"
-        $ar = static fn (string $s): array => [$s, '%s ' . $s];
-
-        // When nominative uses ال (definite article) but genitive drops it in iḍāfa chain
-        $ar2 = static fn (string $nom, string $gen): array => [$nom, '%s ' . $gen];
-
         return [
             // Adopted
-            Relationship::fixed(...$ar('أم بالتبني'))->adoptive()->mother(),
-            Relationship::fixed(...$ar('أب بالتبني'))->adoptive()->father(),
-            Relationship::fixed(...$ar('والد/ة بالتبني'))->adoptive()->parent(),
-            Relationship::fixed(...$ar('ابنة بالتبني'))->adopted()->daughter(),
-            Relationship::fixed(...$ar('ابن بالتبني'))->adopted()->son(),
-            Relationship::fixed(...$ar('طفل بالتبني'))->adopted()->child(),
+            Relationship::fixed(...$this->ar('أم بالتبني'))->adoptive()->mother(),
+            Relationship::fixed(...$this->ar('أب بالتبني'))->adoptive()->father(),
+            Relationship::fixed(...$this->ar('والد/ة بالتبني'))->adoptive()->parent(),
+            Relationship::fixed(...$this->ar('ابنة بالتبني'))->adopted()->daughter(),
+            Relationship::fixed(...$this->ar('ابن بالتبني'))->adopted()->son(),
+            Relationship::fixed(...$this->ar('طفل بالتبني'))->adopted()->child(),
             // Fostered
-            Relationship::fixed(...$ar('أم حاضنة'))->fostering()->mother(),
-            Relationship::fixed(...$ar('أب حاضن'))->fostering()->father(),
-            Relationship::fixed(...$ar('والد/ة حاضن/ة'))->fostering()->parent(),
-            Relationship::fixed(...$ar('ابنة بالحضانة'))->fostered()->daughter(),
-            Relationship::fixed(...$ar('ابن بالحضانة'))->fostered()->son(),
-            Relationship::fixed(...$ar('طفل بالحضانة'))->fostered()->child(),
+            Relationship::fixed(...$this->ar('أم حاضنة'))->fostering()->mother(),
+            Relationship::fixed(...$this->ar('أب حاضن'))->fostering()->father(),
+            Relationship::fixed(...$this->ar('والد/ة حاضن/ة'))->fostering()->parent(),
+            Relationship::fixed(...$this->ar('ابنة بالحضانة'))->fostered()->daughter(),
+            Relationship::fixed(...$this->ar('ابن بالحضانة'))->fostered()->son(),
+            Relationship::fixed(...$this->ar('طفل بالحضانة'))->fostered()->child(),
             // Parents
-            Relationship::fixed(...$ar('أم'))->mother(),
-            Relationship::fixed(...$ar('أب'))->father(),
-            Relationship::fixed(...$ar('والد'))->parent(),
+            Relationship::fixed(...$this->ar('أم'))->mother(),
+            Relationship::fixed(...$this->ar('أب'))->father(),
+            Relationship::fixed(...$this->ar('والد'))->parent(),
             // Children
-            Relationship::fixed(...$ar('ابنة'))->daughter(),
-            Relationship::fixed(...$ar('ابن'))->son(),
-            Relationship::fixed(...$ar('ولد'))->child(),
+            Relationship::fixed(...$this->ar('ابنة'))->daughter(),
+            Relationship::fixed(...$this->ar('ابن'))->son(),
+            Relationship::fixed(...$this->ar('ولد'))->child(),
             // Siblings
-            Relationship::fixed(...$ar('أخت توأم'))->multiple()->sister(),
-            Relationship::fixed(...$ar('أخ توأم'))->multiple()->brother(),
-            Relationship::fixed(...$ar('توأم'))->multiple()->sibling(),
-            Relationship::fixed(...$ar('أخت كبرى'))->older()->sister(),
-            Relationship::fixed(...$ar('أخ أكبر'))->older()->brother(),
-            Relationship::fixed(...$ar('أخت صغرى'))->younger()->sister(),
-            Relationship::fixed(...$ar('أخ أصغر'))->younger()->brother(),
-            Relationship::fixed(...$ar('أخت'))->sister(),
-            Relationship::fixed(...$ar('أخ'))->brother(),
-            Relationship::fixed(...$ar('أخ/أخت'))->sibling(),
+            Relationship::fixed(...$this->ar('أخت توأم'))->multiple()->sister(),
+            Relationship::fixed(...$this->ar('أخ توأم'))->multiple()->brother(),
+            Relationship::fixed(...$this->ar('توأم'))->multiple()->sibling(),
+            Relationship::fixed(...$this->ar('أخت كبرى'))->older()->sister(),
+            Relationship::fixed(...$this->ar('أخ أكبر'))->older()->brother(),
+            Relationship::fixed(...$this->ar('أخت صغرى'))->younger()->sister(),
+            Relationship::fixed(...$this->ar('أخ أصغر'))->younger()->brother(),
+            Relationship::fixed(...$this->ar('أخت'))->sister(),
+            Relationship::fixed(...$this->ar('أخ'))->brother(),
+            Relationship::fixed(...$this->ar('أخ/أخت'))->sibling(),
             // Half-siblings (paternal)
-            Relationship::fixed(...$ar('أخت لأب'))->father()->daughter(),
-            Relationship::fixed(...$ar('أخ لأب'))->father()->son(),
+            Relationship::fixed(...$this->ar('أخت لأب'))->father()->daughter(),
+            Relationship::fixed(...$this->ar('أخ لأب'))->father()->son(),
             // Half-siblings (maternal)
-            Relationship::fixed(...$ar('أخت لأم'))->mother()->daughter(),
-            Relationship::fixed(...$ar('أخ لأم'))->mother()->son(),
+            Relationship::fixed(...$this->ar('أخت لأم'))->mother()->daughter(),
+            Relationship::fixed(...$this->ar('أخ لأم'))->mother()->son(),
             // Half-siblings (generic fallback)
-            Relationship::fixed(...$ar('أخت غير شقيقة'))->parent()->daughter(),
-            Relationship::fixed(...$ar('أخ غير شقيق'))->parent()->son(),
-            Relationship::fixed(...$ar('أخ/أخت'))->parent()->child(),
+            Relationship::fixed(...$this->ar('أخت غير شقيقة'))->parent()->daughter(),
+            Relationship::fixed(...$this->ar('أخ غير شقيق'))->parent()->son(),
+            Relationship::fixed(...$this->ar('أخ/أخت'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$ar2('زوجة الأب', 'زوجة أب'))->parent()->wife(),
-            Relationship::fixed(...$ar2('زوج الأم', 'زوج أم'))->parent()->husband(),
-            Relationship::fixed(...$ar('ربيبة'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$ar('ربيب'))->married()->spouse()->son(),
-            Relationship::fixed(...$ar('ربيب/ربيبة'))->married()->spouse()->child(),
-            Relationship::fixed(...$ar('ربيبة'))->parent()->spouse()->daughter(),
-            Relationship::fixed(...$ar('ربيب'))->parent()->spouse()->son(),
-            Relationship::fixed(...$ar('ربيب/ربيبة'))->parent()->spouse()->child(),
+            Relationship::fixed(...$this->ar2('زوجة الأب', 'زوجة أب'))->parent()->wife(),
+            Relationship::fixed(...$this->ar2('زوج الأم', 'زوج أم'))->parent()->husband(),
+            Relationship::fixed(...$this->ar('ربيبة'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->ar('ربيب'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->ar('ربيب/ربيبة'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->ar('ربيبة'))->parent()->spouse()->daughter(),
+            Relationship::fixed(...$this->ar('ربيب'))->parent()->spouse()->son(),
+            Relationship::fixed(...$this->ar('ربيب/ربيبة'))->parent()->spouse()->child(),
             // Co-wives (ضرائر) — two wives married to the same husband
-            Relationship::fixed(...$ar('ضرّة'))->husband()->wife(),
+            Relationship::fixed(...$this->ar('ضرّة'))->husband()->wife(),
             // Partners
-            Relationship::fixed(...$ar('مطلّقة'))->divorced()->partner()->female(),
-            Relationship::fixed(...$ar('مطلّق'))->divorced()->partner()->male(),
-            Relationship::fixed(...$ar('طليق/ة'))->divorced()->partner(),
-            Relationship::fixed(...$ar('خطيبة'))->engaged()->partner()->female(),
-            Relationship::fixed(...$ar('خطيب'))->engaged()->partner()->male(),
-            Relationship::fixed(...$ar('زوجة'))->wife(),
-            Relationship::fixed(...$ar('زوج'))->husband(),
-            Relationship::fixed(...$ar('زوج/زوجة'))->spouse(),
-            Relationship::fixed(...$ar('شريكة'))->partner()->female(),
-            Relationship::fixed(...$ar('شريك'))->partner()->male(),
-            Relationship::fixed(...$ar('شريك/شريكة'))->partner(),
+            Relationship::fixed(...$this->ar('مطلّقة'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->ar('مطلّق'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->ar('طليق/ة'))->divorced()->partner(),
+            Relationship::fixed(...$this->ar('خطيبة'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->ar('خطيب'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->ar('زوجة'))->wife(),
+            Relationship::fixed(...$this->ar('زوج'))->husband(),
+            Relationship::fixed(...$this->ar('زوج/زوجة'))->spouse(),
+            Relationship::fixed(...$this->ar('شريكة'))->partner()->female(),
+            Relationship::fixed(...$this->ar('شريك'))->partner()->male(),
+            Relationship::fixed(...$this->ar('شريك/شريكة'))->partner(),
             // In-laws (spouse's parents)
-            Relationship::fixed(...$ar('حماة'))->married()->spouse()->mother(),
-            Relationship::fixed(...$ar('حمو'))->married()->spouse()->father(),
-            Relationship::fixed(...$ar('والد/ة الزوج/ة'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->ar('حماة'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->ar('حمو'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->ar('والد/ة الزوج/ة'))->married()->spouse()->parent(),
             // In-laws (child's spouse)
-            Relationship::fixed(...$ar('كنّة'))->child()->wife(),
-            Relationship::fixed(...$ar('صهر'))->child()->husband(),
-            Relationship::fixed(...$ar('كنّة/صهر'))->child()->married()->spouse(),
+            Relationship::fixed(...$this->ar('كنّة'))->child()->wife(),
+            Relationship::fixed(...$this->ar('صهر'))->child()->husband(),
+            Relationship::fixed(...$this->ar('كنّة/صهر'))->child()->married()->spouse(),
             // In-laws (spouse's siblings)
-            Relationship::fixed(...$ar('سلفة'))->spouse()->sister(),
-            Relationship::fixed(...$ar('سلف'))->spouse()->brother(),
+            Relationship::fixed(...$this->ar('سلفة'))->spouse()->sister(),
+            Relationship::fixed(...$this->ar('سلف'))->spouse()->brother(),
             // In-laws (sibling's spouse)
-            Relationship::fixed(...$ar2('زوجة الأخ', 'زوجة أخ'))->sibling()->wife(),
-            Relationship::fixed(...$ar2('زوج الأخت', 'زوج أخت'))->sibling()->husband(),
+            Relationship::fixed(...$this->ar2('زوجة الأخ', 'زوجة أخ'))->sibling()->wife(),
+            Relationship::fixed(...$this->ar2('زوج الأخت', 'زوج أخت'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$ar2('الجدة', 'جدة'))->parent()->mother(),
-            Relationship::fixed(...$ar2('الجد', 'جد'))->parent()->father(),
-            Relationship::fixed(...$ar('جد/جدة'))->parent()->parent(),
+            Relationship::fixed(...$this->ar2('الجدة', 'جدة'))->parent()->mother(),
+            Relationship::fixed(...$this->ar2('الجد', 'جد'))->parent()->father(),
+            Relationship::fixed(...$this->ar('جد/جدة'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$ar('حفيدة'))->child()->daughter(),
-            Relationship::fixed(...$ar('حفيد'))->child()->son(),
-            Relationship::fixed(...$ar('حفيد/حفيدة'))->child()->child(),
+            Relationship::fixed(...$this->ar('حفيدة'))->child()->daughter(),
+            Relationship::fixed(...$this->ar('حفيد'))->child()->son(),
+            Relationship::fixed(...$this->ar('حفيد/حفيدة'))->child()->child(),
             // Aunts — paternal/maternal distinction
-            Relationship::fixed(...$ar('عمة'))->father()->sister(),
-            Relationship::fixed(...$ar('خالة'))->mother()->sister(),
-            Relationship::fixed(...$ar('عمة/خالة'))->parent()->sister(),
+            Relationship::fixed(...$this->ar('عمة'))->father()->sister(),
+            Relationship::fixed(...$this->ar('خالة'))->mother()->sister(),
+            Relationship::fixed(...$this->ar('عمة/خالة'))->parent()->sister(),
             // Uncles — paternal/maternal distinction
-            Relationship::fixed(...$ar('عم'))->father()->brother(),
-            Relationship::fixed(...$ar('خال'))->mother()->brother(),
-            Relationship::fixed(...$ar('عم/خال'))->parent()->brother(),
+            Relationship::fixed(...$this->ar('عم'))->father()->brother(),
+            Relationship::fixed(...$this->ar('خال'))->mother()->brother(),
+            Relationship::fixed(...$this->ar('عم/خال'))->parent()->brother(),
             // Nieces — by brother or sister
-            Relationship::fixed(...$ar2('بنت الأخ', 'بنت أخ'))->brother()->daughter(),
-            Relationship::fixed(...$ar2('بنت الأخت', 'بنت أخت'))->sister()->daughter(),
-            Relationship::fixed(...$ar('بنت الأخ/الأخت'))->sibling()->daughter(),
+            Relationship::fixed(...$this->ar2('بنت الأخ', 'بنت أخ'))->brother()->daughter(),
+            Relationship::fixed(...$this->ar2('بنت الأخت', 'بنت أخت'))->sister()->daughter(),
+            Relationship::fixed(...$this->ar('بنت الأخ/الأخت'))->sibling()->daughter(),
             // Nephews — by brother or sister
-            Relationship::fixed(...$ar2('ابن الأخ', 'ابن أخ'))->brother()->son(),
-            Relationship::fixed(...$ar2('ابن الأخت', 'ابن أخت'))->sister()->son(),
-            Relationship::fixed(...$ar('ابن الأخ/الأخت'))->sibling()->son(),
+            Relationship::fixed(...$this->ar2('ابن الأخ', 'ابن أخ'))->brother()->son(),
+            Relationship::fixed(...$this->ar2('ابن الأخت', 'ابن أخت'))->sister()->son(),
+            Relationship::fixed(...$this->ar('ابن الأخ/الأخت'))->sibling()->son(),
             // Nieces/nephews via in-laws
-            Relationship::fixed(...$ar('بنت الأخ/الأخت'))->married()->spouse()->sibling()->daughter(),
-            Relationship::fixed(...$ar('ابن الأخ/الأخت'))->married()->spouse()->sibling()->son(),
+            Relationship::fixed(...$this->ar('بنت الأخ/الأخت'))->married()->spouse()->sibling()->daughter(),
+            Relationship::fixed(...$this->ar('ابن الأخ/الأخت'))->married()->spouse()->sibling()->son(),
             // Cousins — paternal uncle's children
-            Relationship::fixed(...$ar2('بنت العم', 'بنت عم'))->father()->brother()->daughter(),
-            Relationship::fixed(...$ar2('ابن العم', 'ابن عم'))->father()->brother()->son(),
+            Relationship::fixed(...$this->ar2('بنت العم', 'بنت عم'))->father()->brother()->daughter(),
+            Relationship::fixed(...$this->ar2('ابن العم', 'ابن عم'))->father()->brother()->son(),
             // Cousins — paternal aunt's children
-            Relationship::fixed(...$ar2('بنت العمة', 'بنت عمة'))->father()->sister()->daughter(),
-            Relationship::fixed(...$ar2('ابن العمة', 'ابن عمة'))->father()->sister()->son(),
+            Relationship::fixed(...$this->ar2('بنت العمة', 'بنت عمة'))->father()->sister()->daughter(),
+            Relationship::fixed(...$this->ar2('ابن العمة', 'ابن عمة'))->father()->sister()->son(),
             // Cousins — maternal uncle's children
-            Relationship::fixed(...$ar2('بنت الخال', 'بنت خال'))->mother()->brother()->daughter(),
-            Relationship::fixed(...$ar2('ابن الخال', 'ابن خال'))->mother()->brother()->son(),
+            Relationship::fixed(...$this->ar2('بنت الخال', 'بنت خال'))->mother()->brother()->daughter(),
+            Relationship::fixed(...$this->ar2('ابن الخال', 'ابن خال'))->mother()->brother()->son(),
             // Cousins — maternal aunt's children
-            Relationship::fixed(...$ar2('بنت الخالة', 'بنت خالة'))->mother()->sister()->daughter(),
-            Relationship::fixed(...$ar2('ابن الخالة', 'ابن خالة'))->mother()->sister()->son(),
+            Relationship::fixed(...$this->ar2('بنت الخالة', 'بنت خالة'))->mother()->sister()->daughter(),
+            Relationship::fixed(...$this->ar2('ابن الخالة', 'ابن خالة'))->mother()->sister()->son(),
             // Generic cousin fallback
-            Relationship::fixed(...$ar('ابنة عم/خال'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$ar('ابن عم/خال'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->ar('ابنة عم/خال'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->ar('ابن عم/خال'))->parent()->sibling()->son(),
             // Dynamic: great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $ar('عمة/خالة كبرى' . ($n > 2 ? ' ×' . ($n - 1) : '')))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $ar('عم/خال أكبر' . ($n > 2 ? ' ×' . ($n - 1) : '')))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->ar('عمة/خالة كبرى' . ($n > 2 ? ' ×' . ($n - 1) : '')))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->ar('عم/خال أكبر' . ($n > 2 ? ' ×' . ($n - 1) : '')))->ancestor()->brother(),
             // Dynamic: grand-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $ar('بنت أخ/أخت كبرى' . ($n > 2 ? ' ×' . ($n - 1) : '')))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $ar('بنت أخ/أخت كبرى' . ($n > 2 ? ' ×' . ($n - 1) : '')))->married()->spouse()->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $ar('ابن أخ/أخت أكبر' . ($n > 2 ? ' ×' . ($n - 1) : '')))->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $ar('ابن أخ/أخت أكبر' . ($n > 2 ? ' ×' . ($n - 1) : '')))->married()->spouse()->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->ar('بنت أخ/أخت كبرى' . ($n > 2 ? ' ×' . ($n - 1) : '')))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->ar('بنت أخ/أخت كبرى' . ($n > 2 ? ' ×' . ($n - 1) : '')))->married()->spouse()->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->ar('ابن أخ/أخت أكبر' . ($n > 2 ? ' ×' . ($n - 1) : '')))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->ar('ابن أخ/أخت أكبر' . ($n > 2 ? ' ×' . ($n - 1) : '')))->married()->spouse()->sibling()->descendant()->male(),
             // Dynamic: ancestors
-            Relationship::dynamic(static fn (int $n) => $ar2('الجدة الكبرى' . ($n > 3 ? ' ×' . ($n - 2) : ''), 'جدة كبرى' . ($n > 3 ? ' ×' . ($n - 2) : '')))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $ar2('الجد الأكبر' . ($n > 3 ? ' ×' . ($n - 2) : ''), 'جد أكبر' . ($n > 3 ? ' ×' . ($n - 2) : '')))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $ar('جد/جدة أكبر' . ($n > 3 ? ' ×' . ($n - 2) : '')))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->ar2('الجدة الكبرى' . ($n > 3 ? ' ×' . ($n - 2) : ''), 'جدة كبرى' . ($n > 3 ? ' ×' . ($n - 2) : '')))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->ar2('الجد الأكبر' . ($n > 3 ? ' ×' . ($n - 2) : ''), 'جد أكبر' . ($n > 3 ? ' ×' . ($n - 2) : '')))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->ar('جد/جدة أكبر' . ($n > 3 ? ' ×' . ($n - 2) : '')))->ancestor(),
             // Dynamic: descendants
-            Relationship::dynamic(static fn (int $n) => $ar('حفيدة كبرى' . ($n > 3 ? ' ×' . ($n - 2) : '')))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $ar('حفيد أكبر' . ($n > 3 ? ' ×' . ($n - 2) : '')))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $ar('حفيد/حفيدة' . ($n > 3 ? ' ×' . ($n - 2) : '')))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->ar('حفيدة كبرى' . ($n > 3 ? ' ×' . ($n - 2) : '')))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->ar('حفيد أكبر' . ($n > 3 ? ' ×' . ($n - 2) : '')))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->ar('حفيد/حفيدة' . ($n > 3 ? ' ×' . ($n - 2) : '')))->descendant(),
         ];
     }
 }
