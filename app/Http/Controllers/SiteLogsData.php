@@ -44,7 +44,7 @@ final class SiteLogsData
         $this->site_logs_service  = $site_logs_service;
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request): ResponseInterface
     {
         $query = $this->site_logs_service->logsQuery($request);
 
