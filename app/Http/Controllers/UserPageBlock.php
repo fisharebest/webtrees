@@ -19,9 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Services\HomePageService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -32,19 +34,18 @@ use function view;
 final class UserPageBlock
 {
     public function __construct(
-        private readonly HomePageService $home_page_service,
+        private UserInterface $user,
+        private HomePageService $home_page_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree     = Validator::attributes($request)->tree();
-        $user     = Validator::attributes($request)->user();
         $block_id = Validator::queryParams($request)->integer('block_id');
 
         $block_id = (int) DB::table('block')
             ->where('block_id', '=', $block_id)
-            ->where('user_id', '=', $user->id())
+            ->where('user_id', '=', $this->user->id())
             ->value('block_id');
 
         $module = $this->home_page_service->getBlockModule($tree, $block_id);

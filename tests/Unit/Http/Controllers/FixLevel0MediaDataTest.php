@@ -21,12 +21,12 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\FixLevel0MediaData;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\FixLevel0MediaData;
 
 #[CoversClass(FixLevel0MediaData::class)]
 class FixLevel0MediaDataTest extends TestCase
@@ -43,11 +43,11 @@ class FixLevel0MediaDataTest extends TestCase
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create('name', 'title');
-        $handler               = new FixLevel0MediaData($datatables_service, $tree_service);
+        $controller            = new FixLevel0MediaData($datatables_service, $tree_service);
         $request               = self::createRequest(HttpRequestMethod::POST->value, [
             'tree_id' => (string) $tree->id(),
         ]);
-        $response              = $handler->get($request);
+        $response              = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }

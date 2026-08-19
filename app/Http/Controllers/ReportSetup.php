@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -29,6 +30,7 @@ use Fisharebest\Webtrees\Report\ParserSetup;
 use Fisharebest\Webtrees\Report\PlaceholderExpander;
 use Fisharebest\Webtrees\Report\VariableTable;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -41,16 +43,13 @@ final class ReportSetup
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly ModuleService $module_service
+        private UserInterface $user,
+        private ModuleService $module_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree = Validator::attributes($request)->tree();
-        $user = Validator::attributes($request)->user();
-
         $report = Validator::attributes($request)->string('report');
         $module = $this->module_service->findByName($report);
 
@@ -58,7 +57,7 @@ final class ReportSetup
             return redirect(route(ReportList::class, ['tree' => $tree->name()]));
         }
 
-        Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
+        Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $this->user);
 
         $xref = Validator::queryParams($request)->isXref()->string('xref', '');
 
@@ -157,8 +156,8 @@ final class ReportSetup
             $inputs[] = $input->withControl($control, $extra);
         }
 
-        $destination = $user->getPreference('default-report-destination', 'view');
-        $format      = $user->getPreference('default-report-format', 'PDF');
+        $destination = $this->user->getPreference('default-report-destination', 'view');
+        $format      = $this->user->getPreference('default-report-format', 'PDF');
 
         return $this->viewResponse('report-setup-page', [
             'description' => $description,
@@ -171,11 +170,8 @@ final class ReportSetup
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree   = Validator::attributes($request)->tree();
-        $user   = Validator::attributes($request)->user();
         $report = Validator::attributes($request)->string('report');
         $module = $this->module_service->findByName($report);
 
@@ -183,7 +179,7 @@ final class ReportSetup
             return redirect(route(ReportList::class, ['tree' => $tree->name()]));
         }
 
-        Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
+        Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $this->user);
 
         return redirect(route(ReportGenerate::class, [
             'tree'        => $tree->name(),

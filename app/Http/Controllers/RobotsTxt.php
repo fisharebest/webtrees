@@ -20,9 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validate;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -42,7 +42,7 @@ final class RobotsTxt
     ];
 
     public function __construct(
-        private readonly TreeService $tree_service,
+        private TreeService $tree_service,
     ) {
     }
 

@@ -26,10 +26,9 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TimeoutService;
-use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\DetectsConcurrencyErrors;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function preg_split;
 use function str_replace;
@@ -52,11 +51,9 @@ final class GedcomLoad
         $this->timeout_service       = $timeout_service;
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
-
-        $tree = Validator::attributes($request)->tree();
 
         try {
             // What is the current import status?

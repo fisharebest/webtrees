@@ -20,38 +20,21 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
-use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Module\AbstractModule;
-use Fisharebest\Webtrees\Module\ModuleConfigInterface;
-use Fisharebest\Webtrees\Module\ModuleConfigTrait;
 use Fisharebest\Webtrees\Note;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\TreeService;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\Expression;
-use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function date;
-use function redirect;
 use function response;
 use function route;
 use function view;
 
-class SitemapIndexXml
+final class SitemapIndexXml
 {
     public const int RECORDS_PER_VOLUME = 500; // Keep sitemap files small, for memory, CPU and max_allowed_packet limits.
 
@@ -62,7 +45,7 @@ class SitemapIndexXml
         $this->tree_service = $tree_service;
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(): ResponseInterface
     {
         // Which trees have sitemaps enabled?
         // Filter private trees, so logged-in users see the same as search-engines.

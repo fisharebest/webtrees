@@ -22,18 +22,17 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function response;
 
 final class Ping
 {
     public function __construct(
-        private readonly ServerCheckService $server_check_service,
+        private ServerCheckService $server_check_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(): ResponseInterface
     {
         if ($this->server_check_service->serverErrors()->isNotEmpty()) {
             return response('ERROR', HttpStatusCode::ServiceUnavailable);

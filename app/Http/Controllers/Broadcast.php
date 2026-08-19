@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -36,16 +37,14 @@ final class Broadcast
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly MessageService $message_service,
+        private UserInterface $user,
+        private MessageService $message_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request, string $to): ResponseInterface
+    public function get(string $to): ResponseInterface
     {
         $recipient_types = $this->message_service->recipientTypes();
-
-        $user = Validator::attributes($request)->user();
-
         // Validate that 'to' is a valid recipient type key
         if (!isset($recipient_types[$to])) {
             $to = array_key_first($recipient_types);
@@ -56,7 +55,7 @@ final class Broadcast
         $this->layout = 'layouts/administration';
 
         return $this->viewResponse('admin/broadcast', [
-            'from'       => $user,
+            'from'       => $this->user,
             'title'      => $title,
             'to'         => $to,
             'recipients' => $this->message_service->recipientUsers($to),
@@ -65,7 +64,6 @@ final class Broadcast
 
     public function post(ServerRequestInterface $request, string $to): ResponseInterface
     {
-        $user    = Validator::attributes($request)->user();
         $ip      = Validator::attributes($request)->string('client-ip');
         $body    = Validator::parsedBody($request)->isNotEmpty()->string('body');
         $subject = Validator::parsedBody($request)->isNotEmpty()->string('subject');
@@ -79,7 +77,7 @@ final class Broadcast
         }
 
         foreach ($this->message_service->recipientUsers($to) as $to_user) {
-            if ($this->message_service->deliverMessage($user, $to_user, $subject, $body, '', $ip)) {
+            if ($this->message_service->deliverMessage($this->user, $to_user, $subject, $body, '', $ip)) {
                 FlashMessages::addMessage(
                     I18N::translate('The message was successfully sent to %s.', e($to_user->realName())),
                     'success'

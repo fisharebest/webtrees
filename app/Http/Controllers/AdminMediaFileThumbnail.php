@@ -36,7 +36,7 @@ final class AdminMediaFileThumbnail
     private const int THUMBNAIL_CACHE_TTL = 8640000;
 
     public function __construct(
-        private readonly MediaFileService $media_file_service,
+        private MediaFileService $media_file_service,
     ) {
     }
 

@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\Routing;
 use Fisharebest\Webtrees\Http\Routing\Route;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use Psr\Container\ContainerInterface;
 
 #[CoversClass(Route::class)]
 class RouteTest extends TestCase
@@ -51,13 +52,13 @@ class RouteTest extends TestCase
         // Use a class that definitely exists
         $route = new Route(url: '/test', controller: self::class, middleware: []);
 
-        self::assertTrue($route->isDispatchable());
+        self::assertTrue($route->isDispatchable(self::createStub(ContainerInterface::class)));
     }
 
     public function testIsDispatchableWithPlainString(): void
     {
         $route = new Route(url: '/module/{module}/{action}{/tree}', controller: 'module', middleware: []);
 
-        self::assertFalse($route->isDispatchable());
+        self::assertFalse($route->isDispatchable(self::createStub(ContainerInterface::class)));
     }
 }

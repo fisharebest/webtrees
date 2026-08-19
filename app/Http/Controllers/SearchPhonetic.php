@@ -39,15 +39,13 @@ final class SearchPhonetic
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly SearchService $search_service,
-        private readonly TreeService $tree_service
+        private SearchService $search_service,
+        private TreeService $tree_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree      = Validator::attributes($request)->tree();
         $firstname = Validator::queryParams($request)->string('firstname', '');
         $lastname  = Validator::queryParams($request)->string('lastname', '');
         $place     = Validator::queryParams($request)->string('place', '');
@@ -97,16 +95,15 @@ final class SearchPhonetic
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
         return redirect(route(SearchPhonetic::class, [
             'firstname'    => Validator::parsedBody($request)->string('firstname'),
             'lastname'     => Validator::parsedBody($request)->string('lastname'),
             'place'        => Validator::parsedBody($request)->string('place'),
             'search_trees' => Validator::parsedBody($request)->list('search_trees'),
             'soundex'      => Validator::parsedBody($request)->string('soundex'),
-            'tree'         => Validator::attributes($request)->tree()->name(),
+            'tree'         => $tree->name(),
         ]));
     }
 }

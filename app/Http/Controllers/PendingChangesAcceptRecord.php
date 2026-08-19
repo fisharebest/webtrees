@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\PendingChangesService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -33,13 +34,12 @@ use function response;
 final class PendingChangesAcceptRecord
 {
     public function __construct(
-        private readonly PendingChangesService $pending_changes_service,
+        private PendingChangesService $pending_changes_service,
     ) {
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
         $xref   = Validator::attributes($request)->isXref()->string('xref', '');
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
 

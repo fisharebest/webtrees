@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\DataFixData;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\FixSearchAndReplace;
 use Fisharebest\Webtrees\Services\DataFixService;
@@ -30,7 +31,6 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\DataFixData;
 
 #[CoversClass(DataFixData::class)]
 #[CoversClass(FixSearchAndReplace::class)]
@@ -48,22 +48,22 @@ class DataFixDataTest extends TestCase
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create('name', 'title');
 
-        $data_fix_service = new DataFixService();
+        $data_fix_service   = new DataFixService();
         $datatables_service = new DatatablesService();
-        $module_service = new ModuleService();
+        $module_service     = new ModuleService();
 
-        $handler = new DataFixData($data_fix_service, $datatables_service, $module_service);
+        $controller = new DataFixData($data_fix_service, $datatables_service, $module_service);
 
         $request = self::createRequest(HttpRequestMethod::POST->value, [], [
-                'type'       => Individual::RECORD_TYPE,
-                'search-for' => 'DOE',
-                'method'     => 'exact',
-                'case'       => '',
-            ])
+            'type'       => Individual::RECORD_TYPE,
+            'search-for' => 'DOE',
+            'method'     => 'exact',
+            'case'       => '',
+        ])
             ->withAttribute('tree', $tree)
             ->withAttribute('data_fix', 'fix-search-and-replace');
 
-        $response = $handler->get($request);
+        $response = $controller->get($request, $tree);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }

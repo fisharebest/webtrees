@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -31,13 +32,12 @@ use function route;
 final class DataFixSelect
 {
     public function __construct(
-        private readonly ModuleService $module_service,
+        private ModuleService $module_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree       = Validator::attributes($request)->tree();
         $data_fixes = $this->module_service->findByInterface(ModuleDataFixInterface::class);
         $data_fix   = Validator::parsedBody($request)->string('data_fix');
         $module     = $data_fixes->get($data_fix);

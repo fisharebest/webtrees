@@ -19,15 +19,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\SiteLogsData;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\SiteLogsService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Illuminate\Database\Query\Builder;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Message\ResponseInterface;
-use Fisharebest\Webtrees\Http\Controllers\SiteLogsData;
 
 #[CoversClass(SiteLogsData::class)]
 class SiteLogsDataTest extends TestCase
@@ -36,7 +37,7 @@ class SiteLogsDataTest extends TestCase
     {
         $request = self::createRequest(
             HttpRequestMethod::GET->value,
-            ['tree' => 'a', 'from' => 'b', 'to' => 'c', 'type' => 'd', 'text' => 'e', 'ip' => 'f', 'username' => 'g']
+            ['tree' => 'a', 'from' => 'b', 'to' => 'c', 'type' => 'd', 'text' => 'e', 'ip' => 'f', 'username' => 'g'],
         );
 
         $query = self::createStub(Builder::class);
@@ -50,8 +51,8 @@ class SiteLogsDataTest extends TestCase
         $data_tables_service = self::createStub(DatatablesService::class);
         $data_tables_service->method('handleQuery')->willReturn($response);
 
-        $handler  = new SiteLogsData($data_tables_service, $site_logs_service);
-        $response = $handler->post($request);
+        $controller = new SiteLogsData(self::createStub(UserInterface::class), $data_tables_service, $site_logs_service);
+        $response   = $controller->post($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }

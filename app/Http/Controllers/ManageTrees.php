@@ -35,8 +35,8 @@ final class ManageTrees
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly AdminService $admin_service,
-        private readonly TreeService $tree_service,
+        private AdminService $admin_service,
+        private TreeService $tree_service,
     ) {
     }
 

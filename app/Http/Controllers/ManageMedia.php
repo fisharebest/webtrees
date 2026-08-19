@@ -35,7 +35,7 @@ final class ManageMedia
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly MediaFileService $media_file_service,
+        private MediaFileService $media_file_service,
     ) {
     }
 

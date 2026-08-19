@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -33,13 +34,12 @@ use function response;
 final class CopyFact
 {
     public function __construct(
-        private readonly ClipboardService $clipboard_service,
+        private ClipboardService $clipboard_service,
     ) {
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree    = Validator::attributes($request)->tree();
         $xref    = Validator::attributes($request)->isXref()->string('xref');
         $fact_id = Validator::attributes($request)->string('fact_id');
         $record  = Registry::gedcomRecordFactory()->make($xref, $tree);

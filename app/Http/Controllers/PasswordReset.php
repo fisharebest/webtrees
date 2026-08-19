@@ -25,10 +25,12 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use SensitiveParameter;
 
 use function redirect;
 use function route;
@@ -38,14 +40,14 @@ final class PasswordReset
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly UserService $user_service,
+        private UserService $user_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree  = Validator::attributes($request)->treeOptional();
-        $token = $request->getAttribute('token');
+    public function get(
+        Tree|null $tree,
+        #[SensitiveParameter] string $token,
+    ): ResponseInterface {
         $title = I18N::translate('Set a new password');
         $user  = $this->user_service->findByToken($token);
 
@@ -58,24 +60,24 @@ final class PasswordReset
             ]);
         }
 
-        $message1 = I18N::translate('The password reset link has expired.');
-        $message2 = I18N::translate('Please try again.');
-        $message  = $message1 . '<br>' . $message2;
+        $message  =
+            I18N::translate('The password reset link has expired.') .
+            '<br>' .
+            I18N::translate('Please try again.');
 
         FlashMessages::addMessage($message, 'danger');
 
-        return redirect(route(PasswordRequest::class, ['tree' => $tree?->name()]));
+        return redirect(route(PasswordRequest::class, ['tree' => $tree]));
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree  = Validator::attributes($request)->treeOptional();
-        $token = $request->getAttribute('token');
+    public function post(
+        Tree|null $tree,
+        #[SensitiveParameter] string $token,
+        #[SensitiveParameter] string $password,
+    ): ResponseInterface {
         $user  = $this->user_service->findByToken($token);
 
         if ($user instanceof User) {
-            $password = Validator::parsedBody($request)->string('password');
-
             $user->setPreference('password-token', '');
             $user->setPreference('password-token-expire', '');
             $user->setPassword($password);
@@ -91,12 +93,13 @@ final class PasswordReset
             return redirect(route(HomePage::class));
         }
 
-        $message1 = I18N::translate('The password reset link has expired.');
-        $message2 = I18N::translate('Please try again.');
-        $message  = $message1 . '<br>' . $message2;
+        $message  =
+            I18N::translate('The password reset link has expired.') .
+            '<br>' .
+            I18N::translate('Please try again.');
 
         FlashMessages::addMessage($message, 'danger');
 
-        return redirect(route(PasswordRequest::class, ['tree' => $tree?->name()]));
+        return redirect(route(PasswordRequest::class, ['tree' => $tree]));
     }
 }

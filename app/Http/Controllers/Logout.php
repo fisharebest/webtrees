@@ -20,11 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\User;
-use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -34,12 +34,15 @@ use function route;
 
 final class Logout
 {
+    public function __construct(
+        private UserInterface $user,
+    ) {
+    }
+
     public function post(ServerRequestInterface $request): ResponseInterface
     {
-        $user = Validator::attributes($request)->user();
-
-        if ($user instanceof User) {
-            Log::addAuthenticationLog('Logout: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
+        if ($this->user instanceof User) {
+            Log::addAuthenticationLog('Logout: ' . $this->user->userName() . '/' . $this->user->realName());
             Auth::logout();
             FlashMessages::addMessage(I18N::translate('You have signed out.'));
         }

@@ -21,37 +21,40 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validate;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function response;
 use function view;
 
 final class CreateSource
 {
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function __construct(
+        private Validate $validate,
+    ) {
+    }
+
+    public function get(Tree $tree): ResponseInterface
     {
-
-        $tree = Validator::attributes($request)->tree();
-
         return response(view('modals/create-source', [
             'tree' => $tree,
         ]));
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
-    {
-
-        $tree         = Validator::attributes($request)->tree();
-        $title        = Validator::parsedBody($request)->isNotEmpty()->string('source-title');
-        $abbreviation = Validator::parsedBody($request)->string('source-abbreviation');
-        $author       = Validator::parsedBody($request)->string('source-author');
-        $publication  = Validator::parsedBody($request)->string('source-publication');
-        $repository   = Validator::parsedBody($request)->isXref()->string('source-repository', '');
-        $call_number  = Validator::parsedBody($request)->string('source-call-number');
-        $text         = Validator::parsedBody($request)->string('source-text');
-        $restriction  = Validator::parsedBody($request)->string('restriction');
+    public function post(
+        Tree $tree,
+        string $title,
+        string $abbreviation,
+        string $author,
+        string $publication,
+        string $repository,
+        string $call_number,
+        string $text,
+        string $restriction,
+    ): ResponseInterface {
+        $this->validate->notEmpty($title, 'title');
+        $this->validate->xref($repository, 'repository');
 
         $title        = Registry::elementFactory()->make('SOUR:TITL')->canonical($title);
         $abbreviation = Registry::elementFactory()->make('SOUR:ABBR')->canonical($abbreviation);
@@ -95,7 +98,7 @@ final class CreateSource
         $record = $tree->createRecord($gedcom);
 
         // value and text are for autocomplete
-        // html is for interactive modals
+        // HTML is for interactive modals
         return response([
             'value' => '@' . $record->xref() . '@',
             'text'  => view('selects/source', ['source' => $record]),

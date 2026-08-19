@@ -23,28 +23,23 @@ use Fisharebest\Webtrees\Module\ModuleMapAutocompleteInterface;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\SearchService;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use Psr\Http\Message\ServerRequestInterface;
 
 final class AutoCompletePlace extends AbstractAutocompleteHandler
 {
     public function __construct(
-        private readonly ModuleService $module_service,
+        private ModuleService $module_service,
         SearchService $search_service,
     ) {
         parent::__construct($search_service);
     }
 
     /**
-     *
      * @return Collection<int,string>
      */
-    protected function search(ServerRequestInterface $request): Collection
+    protected function search(Tree $tree, string $query, string $extra): Collection
     {
-        $tree  = Validator::attributes($request)->tree();
-        $query = Validator::queryParams($request)->string('query');
-
         $data = $this->search_service
             ->searchPlaces($tree, $query, 0, static::LIMIT)
             ->map(static fn (Place $place): string => $place->gedcomName());

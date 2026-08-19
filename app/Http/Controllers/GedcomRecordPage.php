@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -61,14 +62,13 @@ final class GedcomRecordPage
     ];
 
     public function __construct(
-        private readonly ClipboardService $clipboard_service,
-        private readonly LinkedRecordService $linked_record_service,
+        private ClipboardService $clipboard_service,
+        private LinkedRecordService $linked_record_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
         $xref   = Validator::attributes($request)->isXref()->string('xref');
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record);

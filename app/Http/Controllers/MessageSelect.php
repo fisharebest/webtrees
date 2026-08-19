@@ -19,19 +19,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 final class MessageSelect
 {
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         return redirect(route(Message::class, [
             'body'    => Validator::parsedBody($request)->string('body', ''),
             'subject' => Validator::parsedBody($request)->string('subject', ''),
             'to'      => Validator::parsedBody($request)->string('to', ''),
-            'tree'    => Validator::attributes($request)->tree()->name(),
+            'tree'    => $tree->name(),
             'url'     => Validator::parsedBody($request)->string('url', ''),
         ]));
     }

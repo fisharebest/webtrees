@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use DateTimeImmutable;
 use DateTimeZone;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -45,8 +44,9 @@ final class SiteLogs
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly TreeService $tree_service,
-        private readonly UserService $user_service,
+        private UserInterface $user,
+        private TreeService $tree_service,
+        private UserService $user_service,
     ) {
     }
 
@@ -59,11 +59,11 @@ final class SiteLogs
         $latest   = DB::table('log')->max('log_time') ?? date('Y-m-d H:i:s');
 
         $earliest = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $earliest, new DateTimeZone('UTC'))
-            ->setTimezone(new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
+            ->setTimezone(new DateTimeZone($this->user->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
             ->format('Y-m-d');
 
         $latest = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $latest, new DateTimeZone('UTC'))
-            ->setTimezone(new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
+            ->setTimezone(new DateTimeZone($this->user->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
             ->format('Y-m-d');
 
         $action   = Validator::queryParams($request)->string('action', '');

@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -40,13 +41,12 @@ use function sprintf;
 final class DeleteRecord
 {
     public function __construct(
-        private readonly LinkedRecordService $linked_record_service,
+        private LinkedRecordService $linked_record_service,
     ) {
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
         $xref   = Validator::attributes($request)->isXref()->string('xref');
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);

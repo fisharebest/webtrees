@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Age;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Enums\Sex;
@@ -36,6 +37,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -62,6 +64,7 @@ final class IndividualPage
     private UserService $user_service;
 
     public function __construct(
+        private UserInterface $user,
         ClipboardService $clipboard_service,
         ModuleService $module_service,
         UserService $user_service
@@ -71,9 +74,8 @@ final class IndividualPage
         $this->user_service      = $user_service;
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree       = Validator::attributes($request)->tree();
         $xref       = Validator::attributes($request)->isXref()->string('xref');
         $slug       = Validator::attributes($request)->string('slug', '');
         $individual = Registry::individualFactory()->make($xref, $tree);
@@ -110,7 +112,7 @@ final class IndividualPage
 
         return $this->viewResponse('individual-page', [
             'age'              => $this->ageString($individual),
-            'can_upload_media' => Auth::canUploadMedia($tree, Auth::user()),
+            'can_upload_media' => Auth::canUploadMedia($tree, $this->user),
             'clipboard_facts'  => $this->clipboard_service->pastableFacts($individual),
             'individual_media' => $individual_media,
             'meta_description' => $this->metaDescription($individual),
@@ -210,7 +212,7 @@ final class IndividualPage
     public function getSidebars(Individual $individual): Collection
     {
         return $this->module_service
-            ->findByComponent(ModuleSidebarInterface::class, $individual->tree(), Auth::user())
+            ->findByComponent(ModuleSidebarInterface::class, $individual->tree(), $this->user)
             ->filter(static fn (ModuleSidebarInterface $sidebar): bool => $sidebar->hasSidebarContent($individual));
     }
 
@@ -224,7 +226,7 @@ final class IndividualPage
     public function getTabs(Individual $individual): Collection
     {
         return $this->module_service
-            ->findByComponent(ModuleTabInterface::class, $individual->tree(), Auth::user())
+            ->findByComponent(ModuleTabInterface::class, $individual->tree(), $this->user)
             ->filter(static fn (ModuleTabInterface $tab): bool => $tab->hasTabContent($individual));
     }
 

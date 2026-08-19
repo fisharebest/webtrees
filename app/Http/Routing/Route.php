@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Routing;
 
-use Fisharebest\Webtrees\Registry;
+use Psr\Container\ContainerInterface;
 use Psr\Http\Server\MiddlewareInterface;
 
 use function class_exists;
@@ -39,8 +39,8 @@ final readonly class Route
     /**
      * Some routes exist purely to generate URLs, and don't have a controller.
      */
-    public function isDispatchable(): bool
+    public function isDispatchable(ContainerInterface $container): bool
     {
-        return class_exists($this->controller) || Registry::container()->has($this->controller);
+        return class_exists($this->controller) || $container->has($this->controller);
     }
 }

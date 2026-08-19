@@ -38,7 +38,7 @@ final class UserAdd
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly UserService $user_service,
+        private UserService $user_service,
     ) {
     }
 

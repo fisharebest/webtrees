@@ -36,8 +36,8 @@ final class MapDataEdit
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly LeafletJsService $leaflet_js_service,
-        private readonly MapDataService $map_data_service,
+        private LeafletJsService $leaflet_js_service,
+        private MapDataService $map_data_service,
     ) {
     }
 

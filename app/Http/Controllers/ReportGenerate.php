@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Registry;
@@ -28,6 +29,7 @@ use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Report\ParserGenerate;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
@@ -43,14 +45,13 @@ final class ReportGenerate
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly ModuleService $module_service,
+        private UserInterface $user,
+        private ModuleService $module_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
-        $user   = Validator::attributes($request)->user();
         $report = Validator::attributes($request)->string('report');
         $module = $this->module_service->findByName($report);
 
@@ -58,7 +59,7 @@ final class ReportGenerate
             return redirect(route(ReportList::class, ['tree' => $tree->name()]));
         }
 
-        Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
+        Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $this->user);
 
         $varnames = Validator::queryParams($request)->list('varnames');
         $vars     = Validator::queryParams($request)->array('vars');
@@ -72,8 +73,8 @@ final class ReportGenerate
         $format       = Validator::queryParams($request)->string('format');
         $destination  = Validator::queryParams($request)->string('destination');
 
-        $user->setPreference('default-report-destination', $destination);
-        $user->setPreference('default-report-format', $format);
+        $this->user->setPreference('default-report-destination', $destination);
+        $this->user->setPreference('default-report-format', $format);
 
         switch ($format) {
             default:

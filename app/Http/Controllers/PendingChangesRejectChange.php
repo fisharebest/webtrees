@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Services\PendingChangesService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -29,13 +30,12 @@ use function response;
 final class PendingChangesRejectChange
 {
     public function __construct(
-        private readonly PendingChangesService $pending_changes_service,
+        private PendingChangesService $pending_changes_service,
     ) {
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
         $xref   = Validator::attributes($request)->isXref()->string('xref');
         $change = $request->getAttribute('change');
 

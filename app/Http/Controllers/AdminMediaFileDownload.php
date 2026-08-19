@@ -32,7 +32,7 @@ use function response;
 final class AdminMediaFileDownload
 {
     public function __construct(
-        private readonly MediaFileService $media_file_service,
+        private MediaFileService $media_file_service,
     ) {
     }
 

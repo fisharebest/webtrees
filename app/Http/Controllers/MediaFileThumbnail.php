@@ -21,29 +21,32 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToRetrieveMetadata;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function basename;
 use function implode;
 use function redirect;
 use function response;
 
 final class MediaFileThumbnail
 {
+    public function __construct(
+        private UserInterface $user,
+    ) {
+    }
+
     private const int THUMBNAIL_CACHE_TTL = 8640000;
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-        $user = Validator::attributes($request)->user();
-
         $params  = $request->getQueryParams();
         $xref    = Validator::queryParams($request)->isXref()->string('xref');
         $fact_id = Validator::queryParams($request)->string('fact_id');
@@ -88,7 +91,7 @@ final class MediaFileThumbnail
 
                 $width         = (int) $params['w'];
                 $height        = (int) $params['h'];
-                $add_watermark = Auth::needsWatermark($media_file->media()->tree(), $user);
+                $add_watermark = Auth::needsWatermark($media_file->media()->tree(), $this->user);
                 $path          = $media_file->filename();
                 $filesystem    = $media_file->media()->tree()->mediaFilesystem();
 

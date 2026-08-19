@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\GuestUser;
+use Fisharebest\Webtrees\Http\Controllers\RedirectNoteListPhp;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\NoteListModule;
@@ -31,7 +32,6 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\RedirectNoteListPhp;
 
 #[CoversClass(RedirectNoteListPhp::class)]
 class RedirectNoteListPhpTest extends TestCase
@@ -68,11 +68,11 @@ class RedirectNoteListPhpTest extends TestCase
             ->with(ModuleListInterface::class)
             ->willReturn(new Collection([$module]));
 
-        $handler = new RedirectNoteListPhp($module_service, $tree_service);
+        $controller = new RedirectNoteListPhp(new GuestUser(), $module_service, $tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1']);
 
-        $response = $handler->get($request);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::MovedPermanently->value, $response->getStatusCode());
         self::assertSame('https://www.example.com', $response->getHeaderLine('Location'));
@@ -98,13 +98,13 @@ class RedirectNoteListPhpTest extends TestCase
             ->with(ModuleListInterface::class, $tree, new GuestUser())
             ->willReturn(new Collection());
 
-        $handler = new RedirectNoteListPhp($module_service, $tree_service);
+        $controller = new RedirectNoteListPhp(new GuestUser(), $module_service, $tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1']);
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 
     public function testNoSuchTree(): void
@@ -117,12 +117,12 @@ class RedirectNoteListPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection([]));
 
-        $handler = new RedirectNoteListPhp($module_service, $tree_service);
+        $controller = new RedirectNoteListPhp(new GuestUser(), $module_service, $tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1']);
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 }

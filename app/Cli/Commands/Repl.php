@@ -22,9 +22,15 @@ namespace Fisharebest\Webtrees\Cli\Commands;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Routes\ApiRoutes;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
+use Fisharebest\Webtrees\Http\Routing\GedcomRecordParameterResolver;
+use Fisharebest\Webtrees\Http\Routing\ParameterResolverInterface;
+use Fisharebest\Webtrees\Http\Routing\ParameterResolver;
 use Fisharebest\Webtrees\Http\Routing\RouteCollection;
+use Fisharebest\Webtrees\Http\Routing\ScalarParameterResolver;
+use Fisharebest\Webtrees\Http\Routing\TreeParameterResolver;
 use Fisharebest\Webtrees\Http\Routing\UrlGenerator;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -93,8 +99,15 @@ final class Repl extends AbstractCommand
         (new ApiRoutes())->load($routes);
 
         // Save the route collection and URL generator in the container.
+        $tree_service = Registry::container()->get(TreeService::class);
+        $parameter_resolver = new ParameterResolver([
+            new TreeParameterResolver($tree_service),
+            new GedcomRecordParameterResolver(),
+            new ScalarParameterResolver(),
+        ]);
         $this->storeInContainer(RouteCollection::class, $routes);
-        $this->storeInContainer(UrlGenerator::class, new UrlGenerator($routes, ''));
+        $this->storeInContainer(ParameterResolverInterface::class, $parameter_resolver);
+        $this->storeInContainer(UrlGenerator::class, new UrlGenerator($routes, '', $parameter_resolver));
 
         return $shell->run();
     }

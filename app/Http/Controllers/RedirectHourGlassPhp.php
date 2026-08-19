@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\HourglassChartModule;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
@@ -36,8 +36,9 @@ use Psr\Http\Message\ServerRequestInterface;
 final class RedirectHourGlassPhp
 {
     public function __construct(
-        private readonly ModuleService $module_service,
-        private readonly TreeService $tree_service,
+        private UserInterface $user,
+        private ModuleService $module_service,
+        private TreeService $tree_service,
     ) {
     }
 
@@ -48,14 +49,14 @@ final class RedirectHourGlassPhp
 
         if ($tree instanceof Tree) {
             $module = $this->module_service
-                ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
+                ->findByComponent(ModuleChartInterface::class, $tree, $this->user)
                 ->first(static fn (ModuleChartInterface $module): bool => $module instanceof HourglassChartModule);
 
             if ($module instanceof HourglassChartModule) {
                 $root_id     = Validator::queryParams($request)->string('rootid', '');
                 $generations = Validator::queryParams($request)->string('generations', HourglassChartModule::DEFAULT_GENERATIONS);
                 $show_spouse = Validator::queryParams($request)->boolean('show_spouse', HourglassChartModule::DEFAULT_SPOUSES);
-                $individual  = Registry::individualFactory()->make($root_id, $tree) ?? $tree->significantIndividual(Auth::user());
+                $individual  = Registry::individualFactory()->make($root_id, $tree) ?? $tree->significantIndividual($this->user);
 
                 $url = $module->chartUrl($individual, [
                     'generations' => $generations,

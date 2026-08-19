@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -33,13 +34,12 @@ use function response;
 final class DataFixUpdate
 {
     public function __construct(
-        private readonly ModuleService $module_service,
+        private ModuleService $module_service,
     ) {
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree     = Validator::attributes($request)->tree();
         $data_fix = Validator::attributes($request)->string('data_fix', '');
         $module   = $this->module_service->findByName($data_fix);
         assert($module instanceof ModuleDataFixInterface);

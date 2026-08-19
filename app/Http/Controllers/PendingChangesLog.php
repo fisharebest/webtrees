@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use DateTimeImmutable;
 use DateTimeZone;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\ChangeStatus;
@@ -29,6 +28,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -40,16 +40,16 @@ final class PendingChangesLog
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly TreeService $tree_service,
-        private readonly UserService $user_service,
+        private UserInterface $user,
+        private TreeService $tree_service,
+        private UserService $user_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree  = Validator::attributes($request)->tree();
         $trees = $this->tree_service->titles();
         $users = ['' => ''];
 
@@ -63,11 +63,11 @@ final class PendingChangesLog
         $latest   = DB::table('change')->max('change_time') ?? date('Y-m-d H:i:s');
 
         $earliest = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $earliest, new DateTimeZone('UTC'))
-            ->setTimezone(new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
+            ->setTimezone(new DateTimeZone($this->user->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
             ->format('Y-m-d');
 
         $latest = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $latest, new DateTimeZone('UTC'))
-            ->setTimezone(new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
+            ->setTimezone(new DateTimeZone($this->user->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
             ->format('Y-m-d');
 
         $from     = Validator::queryParams($request)->string('from', $earliest);
@@ -109,7 +109,6 @@ final class PendingChangesLog
             'username' => Validator::parsedBody($request)->string('username'),
         ]));
     }
-
 
     /**
      * Labels for the various statuses.

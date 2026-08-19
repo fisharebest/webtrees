@@ -45,7 +45,7 @@ use function stream_get_contents;
 final class MapDataExportCSV
 {
     public function __construct(
-        private readonly MapDataService $map_data_service,
+        private MapDataService $map_data_service,
     ) {
     }
 

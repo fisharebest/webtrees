@@ -19,9 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Factories\IndividualFactory;
+use Fisharebest\Webtrees\Http\Controllers\RedirectFanChartPhp;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\FanChartModule;
@@ -33,7 +35,6 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\RedirectFanChartPhp;
 
 #[CoversClass(RedirectFanChartPhp::class)]
 class RedirectFanChartPhpTest extends TestCase
@@ -81,11 +82,11 @@ class RedirectFanChartPhpTest extends TestCase
             ->with(ModuleChartInterface::class)
             ->willReturn(new Collection([$module]));
 
-        $handler = new RedirectFanChartPhp($module_service, $tree_service);
+        $controller = new RedirectFanChartPhp(self::createStub(UserInterface::class), $module_service, $tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'rootid' => 'X123']);
 
-        $response = $handler->get($request);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::MovedPermanently->value, $response->getStatusCode());
         self::assertSame('https://www.example.com', $response->getHeaderLine('Location'));
@@ -110,13 +111,13 @@ class RedirectFanChartPhpTest extends TestCase
             ->with(ModuleChartInterface::class)
             ->willReturn(new Collection());
 
-        $handler = new RedirectFanChartPhp($module_service, $tree_service);
+        $controller = new RedirectFanChartPhp(self::createStub(UserInterface::class), $module_service, $tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'rootid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 
     public function testNoSuchTree(): void
@@ -129,12 +130,12 @@ class RedirectFanChartPhpTest extends TestCase
 
         $module_service = self::createStub(ModuleService::class);
 
-        $handler = new RedirectFanChartPhp($module_service, $tree_service);
+        $controller = new RedirectFanChartPhp(self::createStub(UserInterface::class), $module_service, $tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'rootid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 }

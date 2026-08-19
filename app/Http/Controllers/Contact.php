@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\RateLimitService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -48,18 +49,16 @@ final class Contact
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly CaptchaService $captcha_service,
-        private readonly MessageService $message_service,
-        private readonly UserService $user_service,
-        private readonly EmailService $email_service,
-        private readonly RateLimitService $rate_limit_service
+        private CaptchaService $captcha_service,
+        private MessageService $message_service,
+        private UserService $user_service,
+        private EmailService $email_service,
+        private RateLimitService $rate_limit_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree       = Validator::attributes($request)->tree();
         $body       = Validator::queryParams($request)->string('body', '');
         $from_email = Validator::queryParams($request)->string('from_email', '');
         $from_name  = Validator::queryParams($request)->string('from_name', '');
@@ -93,10 +92,8 @@ final class Contact
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree       = Validator::attributes($request)->tree();
         $ip         = Validator::attributes($request)->string('client-ip');
         $base_url   = Validator::attributes($request)->string('base_url');
         $body       = Validator::parsedBody($request)->string('body');

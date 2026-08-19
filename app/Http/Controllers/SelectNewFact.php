@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -27,10 +28,10 @@ use function redirect;
 
 final class SelectNewFact
 {
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         return redirect(route(AddNewFact::class, [
-            'tree' => Validator::attributes($request)->tree()->name(),
+            'tree' => $tree->name(),
             'xref' => Validator::attributes($request)->isXref()->string('xref'),
             'fact' => Validator::parsedBody($request)->string('fact'),
         ]));

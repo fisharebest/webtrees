@@ -38,11 +38,11 @@ final class UserPageDefaultEdit
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly HomePageService $home_page_service,
+        private HomePageService $home_page_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 

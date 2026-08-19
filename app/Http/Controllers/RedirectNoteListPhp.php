@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\NoteListModule;
@@ -36,8 +36,9 @@ use Psr\Http\Message\ServerRequestInterface;
 final class RedirectNoteListPhp
 {
     public function __construct(
-        private readonly ModuleService $module_service,
-        private readonly TreeService $tree_service,
+        private UserInterface $user,
+        private ModuleService $module_service,
+        private TreeService $tree_service,
     ) {
     }
 
@@ -48,7 +49,7 @@ final class RedirectNoteListPhp
 
         if ($tree instanceof Tree) {
             $module = $this->module_service
-                ->findByComponent(ModuleListInterface::class, $tree, Auth::user())
+                ->findByComponent(ModuleListInterface::class, $tree, $this->user)
                 ->first(static fn (ModuleListInterface $module): bool => $module instanceof NoteListModule);
 
             if ($module instanceof NoteListModule) {

@@ -162,10 +162,9 @@ class HandleExceptions implements MiddlewareInterface
 
     private function thirdPartyExceptionResponse(ServerRequestInterface $request, Throwable $exception): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
+        $tree = $request->getAttribute('tree', Site::getPreference('DEFAULT_GEDCOM'));
 
-        $default = Site::getPreference('DEFAULT_GEDCOM');
-        $tree ??= $this->tree_service->all()[$default] ?? $this->tree_service->all()->first();
+        $tree = $this->tree_service->all()[$tree];
 
         if ($request->getHeaderLine('X-Requested-With') !== '') {
             $this->layout = 'layouts/ajax';
@@ -194,10 +193,7 @@ class HandleExceptions implements MiddlewareInterface
         $base_path = dirname(__DIR__, 3);
         $trace     = $exception->getMessage() . ' ' . $exception->getFile() . ':' . $exception->getLine() . PHP_EOL . $exception->getTraceAsString();
         $trace     = str_replace($base_path, '…', $trace);
-        // User data may contain non UTF-8 characters.
-        $trace     = mb_convert_encoding($trace, 'UTF-8', 'UTF-8');
         $trace     = e($trace);
-        $trace     = preg_replace('/^.*modules_v4.*$/m', '<b>$0</b>', $trace);
 
         try {
             Log::addErrorLog($trace);
@@ -206,8 +202,8 @@ class HandleExceptions implements MiddlewareInterface
         }
 
         if ($request->getHeaderLine('X-Requested-With') !== '') {
-            // If this was a GET request, then we were probably fetching HTML to display, for
-            // example a chart or tab.
+            // If this was a GET request, then we were probably fetching HTML to display.
+            // For example, a chart or tab.
             if ($request->getMethod() === HttpRequestMethod::GET->value) {
                 $status_code = HttpStatusCode::OK;
             } else {

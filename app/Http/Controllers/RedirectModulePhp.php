@@ -36,8 +36,8 @@ use Psr\Http\Message\ServerRequestInterface;
 final class RedirectModulePhp
 {
     public function __construct(
-        private readonly ModuleService $module_service,
-        private readonly TreeService $tree_service,
+        private ModuleService $module_service,
+        private TreeService $tree_service,
     ) {
     }
 

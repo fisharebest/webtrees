@@ -33,7 +33,7 @@ use Psr\Http\Message\ServerRequestInterface;
 final class RedirectMediaViewerPhp
 {
     public function __construct(
-        private readonly TreeService $tree_service,
+        private TreeService $tree_service,
     ) {
     }
 

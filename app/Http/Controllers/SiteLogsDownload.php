@@ -30,7 +30,7 @@ use function str_replace;
 final class SiteLogsDownload
 {
     public function __construct(
-        private readonly SiteLogsService $site_logs_service,
+        private SiteLogsService $site_logs_service,
     ) {
     }
 

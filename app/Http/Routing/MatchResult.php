@@ -22,17 +22,17 @@ namespace Fisharebest\Webtrees\Http\Routing;
 /**
  * Value object representing the result of a route match attempt.
  */
-readonly class MatchResult
+final readonly class MatchResult
 {
     /**
-     * @param Route|null          $route         The matched route, or null on failure.
-     * @param array<string,mixed> $attributes    Extracted URL parameters.
-     * @param string|null         $failureReason null on success, 'not_found' on failure.
+     * @param Route|null          $route          The matched route, or null on failure.
+     * @param array<string,mixed> $attributes     Extracted URL parameters.
+     * @param string|null         $failure_reason null on success, 'not_found' on failure.
      */
     private function __construct(
         public Route|null $route,
         public array $attributes,
-        public string|null $failureReason,
+        public string|null $failure_reason,
     ) {
     }
 
@@ -43,7 +43,7 @@ readonly class MatchResult
      */
     public static function success(Route $route, array $attributes): self
     {
-        return new self(route: $route, attributes: $attributes, failureReason: null);
+        return new self(route: $route, attributes: $attributes, failure_reason: null);
     }
 
     /**
@@ -51,7 +51,7 @@ readonly class MatchResult
      */
     public static function notFound(): self
     {
-        return new self(route: null, attributes: [], failureReason: 'not_found');
+        return new self(route: null, attributes: [], failure_reason: 'not_found');
     }
 
     /**
@@ -59,6 +59,6 @@ readonly class MatchResult
      */
     public function isSuccess(): bool
     {
-        return $this->failureReason === null;
+        return $this->failure_reason === null;
     }
 }

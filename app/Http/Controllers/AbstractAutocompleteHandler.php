@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -39,9 +40,9 @@ abstract class AbstractAutocompleteHandler
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(Tree $tree, string $query, string $extra = ''): ResponseInterface
     {
-        $data = $this->search($request)
+        $data = $this->search($tree, $query, $extra)
             ->map(static fn (string $datum): array => ['value' => $datum])
             ->values()
             ->all();
@@ -51,8 +52,7 @@ abstract class AbstractAutocompleteHandler
     }
 
     /**
-     *
      * @return Collection<int,string>
      */
-    abstract protected function search(ServerRequestInterface $request): Collection;
+    abstract protected function search(Tree $tree, string $query, string $extra): Collection;
 }

@@ -21,31 +21,30 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validate;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function response;
 use function view;
 
 final class CreateNote
 {
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function __construct(
+        private Validate $validate,
+    ) {
+    }
+
+    public function get(Tree $tree): ResponseInterface
     {
-
-        $tree = Validator::attributes($request)->tree();
-
         return response(view('modals/create-note-object', [
             'tree' => $tree,
         ]));
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(Tree $tree, string $note, string $restriction): ResponseInterface
     {
-
-        $tree        = Validator::attributes($request)->tree();
-        $note        = Validator::parsedBody($request)->isNotEmpty()->string('note');
-        $restriction = Validator::parsedBody($request)->string('restriction');
+        $this->validate->notEmpty($note, 'note');
 
         $note        = Registry::elementFactory()->make('NOTE:CONT')->canonical($note);
         $restriction = Registry::elementFactory()->make('NOTE:RESN')->canonical($restriction);
@@ -59,7 +58,7 @@ final class CreateNote
         $record = $tree->createRecord($gedcom);
 
         // value and text are for autocomplete
-        // html is for interactive modals
+        // HTML is for interactive modals
         return response([
             'value' => '@' . $record->xref() . '@',
             'text'  => view('selects/note', ['note' => $record]),

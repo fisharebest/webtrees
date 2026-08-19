@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\Http\Controllers\GedcomRecordPage;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\GedcomRecordPage;
 
 #[CoversClass(GedcomRecordPage::class)]
 class GedcomRecordPageTest extends TestCase

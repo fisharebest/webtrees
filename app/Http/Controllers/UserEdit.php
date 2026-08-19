@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\FlashMessages;
@@ -48,11 +47,12 @@ final class UserEdit
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly MessageService $message_service,
-        private readonly ModuleService $module_service,
-        private readonly TreeService $tree_service,
-        private readonly UserService $user_service,
-        private readonly EmailService $email_service,
+        private UserInterface $user,
+        private MessageService $message_service,
+        private ModuleService $module_service,
+        private TreeService $tree_service,
+        private UserService $user_service,
+        private EmailService $email_service,
     ) {
     }
 
@@ -88,7 +88,6 @@ final class UserEdit
 
     public function post(ServerRequestInterface $request): ResponseInterface
     {
-        $user           = Validator::attributes($request)->user();
         $user_id        = Validator::parsedBody($request)->integer('user_id');
         $username       = Validator::parsedBody($request)->string('username');
         $real_name      = Validator::parsedBody($request)->string('real_name');
@@ -120,7 +119,7 @@ final class UserEdit
             $this->email_service->send(
                 new SiteUser(),
                 $edit_user,
-                Auth::user(),
+                $this->user,
                 /* I18N: %s is a server name/URL */
                 I18N::translate('New user at %s', $base_url),
                 view('emails/approve-user-text', ['user' => $edit_user, 'base_url' => $base_url]),
@@ -144,7 +143,7 @@ final class UserEdit
         }
 
         // We cannot change our own admin status. Another admin will need to do it.
-        if ($edit_user->id() !== $user->id()) {
+        if ($edit_user->id() !== $this->user->id()) {
             $edit_user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, $canadmin ? '1' : '');
         }
 

@@ -19,22 +19,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use Psr\Http\Message\ServerRequestInterface;
 
 final class AutoCompleteSurname extends AbstractAutocompleteHandler
 {
     /**
-     *
      * @return Collection<int,string>
      */
-    protected function search(ServerRequestInterface $request): Collection
+    protected function search(Tree $tree, string $query, string $extra): Collection
     {
-        $tree  = Validator::attributes($request)->tree();
-        $query = Validator::queryParams($request)->string('query');
-
-        return $this->search_service
-            ->searchSurnames([$tree], [$query], 0, static::LIMIT);
+        return $this->search_service->searchSurnames([$tree], [$query], 0, self::LIMIT);
     }
 }

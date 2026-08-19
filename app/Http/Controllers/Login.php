@@ -26,17 +26,15 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
-use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Validate;
 use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use SensitiveParameter;
 
 use function e;
 use function redirect;
@@ -47,35 +45,19 @@ final class Login
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly TreeService $tree_service,
-        private readonly UpgradeService $upgrade_service,
-        private readonly UserService $user_service,
-        private readonly ClockInterface $clock,
+        private ClockInterface $clock,
+        private UpgradeService $upgrade_service,
+        private UserService $user_service,
+        private Validate $validate,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = Validator::attributes($request)->treeOptional();
-        $user = Validator::attributes($request)->user();
-
-        // Already logged in?
-        if ($user instanceof User) {
-            return redirect(route(UserPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : '']));
-        }
-
-        $url      = Validator::queryParams($request)->isLocalUrl()->string('url', route(HomePage::class));
-        $username = Validator::queryParams($request)->string('username', '');
-
-        // No tree?  perhaps we came here from a page without one.
-        if ($tree === null) {
-            $default = Site::getPreference('DEFAULT_GEDCOM');
-            $tree    = $this->tree_service->all()->get($default) ?? $this->tree_service->all()->first();
-
-            if ($tree instanceof Tree) {
-                return redirect(route(self::class, ['tree' => $tree->name(), 'url' => $url]));
-            }
-        }
+    public function get(
+        Tree|null $tree,
+        #[SensitiveParameter] string $username = '',
+        string $url = '',
+    ): ResponseInterface {
+        $this->validate->localUrl($url, 'url');
 
         $title = I18N::translate('Sign in');
 
@@ -118,13 +100,17 @@ final class Login
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree        = Validator::attributes($request)->treeOptional();
-        $default_url = route(HomePage::class);
-        $username    = Validator::parsedBody($request)->string('username');
-        $password    = Validator::parsedBody($request)->string('password');
-        $url         = Validator::parsedBody($request)->isLocalUrl()->string('url', $default_url);
+    public function post(
+        Tree|null $tree,
+        #[SensitiveParameter] string $username,
+        #[SensitiveParameter] string $password,
+        string $url = '',
+    ): ResponseInterface {
+        if ($url === '') {
+            $url = route(HomePage::class);
+        } else {
+            $this->validate->localUrl($url, 'url');
+        }
 
         try {
             $this->doLogin($username, $password);
@@ -133,24 +119,19 @@ final class Login
                 FlashMessages::addMessage(I18N::translate('A new version of webtrees is available.') . ' <a class="alert-link" href="' . e(route(UpgradeWizardPage::class)) . '">' . I18N::translate('Upgrade to webtrees %s.', '<span dir="ltr">' . $this->upgrade_service->latestVersion() . '</span>') . '</a>');
             }
 
-            // Redirect to the target URL
             return redirect($url);
         } catch (Exception $ex) {
-            // Failed to log in.
             FlashMessages::addMessage($ex->getMessage(), 'danger');
 
             return redirect(route(self::class, [
-                'tree'     => $tree?->name(),
+                'tree'     => $tree,
                 'username' => $username,
                 'url'      => $url,
             ]));
         }
     }
 
-    /**
-     * Log in, if we can.  Throw an exception, if we can't.
-     */
-    private function doLogin(string $username, #[\SensitiveParameter] string $password): void
+    private function doLogin(string $username, #[SensitiveParameter] string $password): void
     {
         if ($_COOKIE === []) {
             Log::addAuthenticationLog('Login failed (no session cookies): ' . $username);
@@ -180,11 +161,11 @@ final class Login
         }
 
         Auth::login($user);
-        Log::addAuthenticationLog('Login: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
-        Auth::user()->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, (string) $this->clock->now()->getTimestamp());
+        Log::addAuthenticationLog('Login: ' . $user->userName() . '/' . $user->realName());
+        $user->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, (string) $this->clock->now()->getTimestamp());
 
-        Session::put('language', Auth::user()->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
-        Session::put('theme', Auth::user()->getPreference(UserInterface::PREF_THEME));
-        I18N::init(Auth::user()->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
+        Session::put('language', $user->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
+        Session::put('theme', $user->getPreference(UserInterface::PREF_THEME));
+        I18N::init($user->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
     }
 }

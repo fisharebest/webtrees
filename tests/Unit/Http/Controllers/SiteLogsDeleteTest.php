@@ -20,11 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\SiteLogsDelete;
 use Fisharebest\Webtrees\Services\SiteLogsService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Illuminate\Database\Query\Builder;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\SiteLogsDelete;
 
 #[CoversClass(SiteLogsDelete::class)]
 class SiteLogsDeleteTest extends TestCase
@@ -39,8 +39,8 @@ class SiteLogsDeleteTest extends TestCase
         $site_logs_service = self::createStub(SiteLogsService::class);
         $site_logs_service->method('logsQuery')->willReturn($query);
 
-        $handler  = new SiteLogsDelete($site_logs_service);
-        $response = $handler->post($request);
+        $controller = new SiteLogsDelete($site_logs_service);
+        $response   = $controller->post($request);
 
         self::assertSame(HttpStatusCode::NoContent->value, $response->getStatusCode());
     }

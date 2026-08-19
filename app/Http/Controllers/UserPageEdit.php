@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
@@ -37,18 +38,16 @@ final class UserPageEdit
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly HomePageService $home_page_service
+        private UserInterface $user,
+        private HomePageService $home_page_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(Tree $tree): ResponseInterface
     {
-
-        $tree        = Validator::attributes($request)->tree();
-        $user        = Validator::attributes($request)->user();
-        $main_blocks = $this->home_page_service->userBlocks($tree, $user, ModuleBlockInterface::MAIN_BLOCKS);
-        $side_blocks = $this->home_page_service->userBlocks($tree, $user, ModuleBlockInterface::SIDE_BLOCKS);
-        $all_blocks  = $this->home_page_service->availableUserBlocks($tree, $user);
+        $main_blocks = $this->home_page_service->userBlocks($tree, $this->user, ModuleBlockInterface::MAIN_BLOCKS);
+        $side_blocks = $this->home_page_service->userBlocks($tree, $this->user, ModuleBlockInterface::SIDE_BLOCKS);
+        $all_blocks  = $this->home_page_service->availableUserBlocks($tree, $this->user);
         $title       = I18N::translate('Change the “My page” blocks');
         $url_cancel  = route(UserPage::class, ['tree' => $tree->name()]);
         $url_save    = route(UserPageEdit::class, ['tree' => $tree->name()]);
@@ -65,28 +64,25 @@ final class UserPageEdit
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree     = Validator::attributes($request)->tree();
-        $user     = Validator::attributes($request)->user();
         $defaults = Validator::parsedBody($request)->boolean('defaults', false);
 
         if ($defaults) {
             $default_tree = new Tree(-1, '', '', '', '', true, true, null, null);
 
             $main_blocks = $this->home_page_service
-                ->userBlocks($default_tree, $user, ModuleBlockInterface::MAIN_BLOCKS)
+                ->userBlocks($default_tree, $this->user, ModuleBlockInterface::MAIN_BLOCKS)
                 ->map(static fn (ModuleBlockInterface $block) => $block->name());
             $side_blocks = $this->home_page_service
-                ->userBlocks($default_tree, $user, ModuleBlockInterface::SIDE_BLOCKS)
+                ->userBlocks($default_tree, $this->user, ModuleBlockInterface::SIDE_BLOCKS)
                 ->map(static fn (ModuleBlockInterface $block) => $block->name());
         } else {
             $main_blocks = new Collection(Validator::parsedBody($request)->list(ModuleBlockInterface::MAIN_BLOCKS));
             $side_blocks = new Collection(Validator::parsedBody($request)->list(ModuleBlockInterface::SIDE_BLOCKS));
         }
 
-        $this->home_page_service->updateUserBlocks($user->id(), $main_blocks, $side_blocks);
+        $this->home_page_service->updateUserBlocks($this->user->id(), $main_blocks, $side_blocks);
 
         return redirect(route(UserPage::class, ['tree' => $tree->name()]));
     }

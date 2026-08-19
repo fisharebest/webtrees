@@ -21,10 +21,10 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\GuestUser;
+use Fisharebest\Webtrees\Http\Controllers\SelectTheme;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\User;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\SelectTheme;
 
 #[CoversClass(SelectTheme::class)]
 class SelectThemeTest extends TestCase
@@ -34,12 +34,8 @@ class SelectThemeTest extends TestCase
         $user = $this->createMock(GuestUser::class);
         $user->expects($this->once())->method('setPreference')->with('theme', 'FOO');
 
-        $request = self::createRequest()
-            ->withAttribute('theme', 'FOO')
-            ->withAttribute('user', $user);
-
-        $handler  = new SelectTheme();
-        $response = $handler->post($request);
+        $controller = new SelectTheme($user);
+        $response   = $controller->post('FOO');
 
         self::assertSame(HttpStatusCode::NoContent->value, $response->getStatusCode());
     }
@@ -49,12 +45,8 @@ class SelectThemeTest extends TestCase
         $user = $this->createMock(User::class);
         $user->expects($this->once())->method('setPreference')->with('theme', 'FOO');
 
-        $request = self::createRequest()
-            ->withAttribute('user', $user)
-            ->withAttribute('theme', 'FOO');
-
-        $handler  = new SelectTheme();
-        $response = $handler->post($request);
+        $controller = new SelectTheme($user);
+        $response   = $controller->post('FOO');
 
         self::assertSame(HttpStatusCode::NoContent->value, $response->getStatusCode());
     }

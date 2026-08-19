@@ -35,7 +35,7 @@ class MatchResultTest extends TestCase
         self::assertTrue($result->isSuccess());
         self::assertSame($route, $result->route);
         self::assertSame(['id' => '42'], $result->attributes);
-        self::assertNull($result->failureReason);
+        self::assertNull($result->failure_reason);
     }
 
     public function testNotFound(): void
@@ -45,6 +45,6 @@ class MatchResultTest extends TestCase
         self::assertFalse($result->isSuccess());
         self::assertNull($result->route);
         self::assertSame([], $result->attributes);
-        self::assertSame('not_found', $result->failureReason);
+        self::assertSame('not_found', $result->failure_reason);
     }
 }

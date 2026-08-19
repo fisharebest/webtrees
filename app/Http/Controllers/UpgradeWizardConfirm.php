@@ -20,14 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function redirect;
 use function route;
 
 final class UpgradeWizardConfirm
 {
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(): ResponseInterface
     {
         return redirect(route(UpgradeWizardPage::class, ['continue' => 1]));
     }

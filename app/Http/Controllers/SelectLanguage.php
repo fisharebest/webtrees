@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Session;
-use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -31,15 +30,15 @@ use function response;
 
 final class SelectLanguage
 {
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function __construct(
+        private UserInterface $user,
+    ) {
+    }
+
+    public function post(string $language): ResponseInterface
     {
-        $user = Validator::attributes($request)->user();
-
-        $language = $request->getAttribute('language');
-        assert(is_string($language));
-
         Session::put('language', $language);
-        $user->setPreference(UserInterface::PREF_LANGUAGE, $language);
+        $this->user->setPreference(UserInterface::PREF_LANGUAGE, $language);
 
         return response();
     }

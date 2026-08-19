@@ -19,12 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\Clock\SystemClock;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\UserListData;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\UserListData;
 
 #[CoversClass(UserListData::class)]
 class UserListDataTest extends TestCase
@@ -37,11 +39,12 @@ class UserListDataTest extends TestCase
 
     public function testHandler(): void
     {
+        $user               = self::createStub(UserInterface::class);
         $datatables_service = new DatatablesService();
-        $user_service       = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
-        $handler            = new UserListData($datatables_service, $user_service);
+        $user_service       = new UserService(new SystemClock());
+        $controller         = new UserListData($user, $datatables_service, $user_service);
         $request            = self::createRequest();
-        $response           = $handler->post($request);
+        $response           = $controller->post($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }

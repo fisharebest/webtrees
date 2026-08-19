@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\GedcomImportService;
@@ -36,7 +38,6 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
-use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
 
 #[CoversClass(ControlPanel::class)]
 class ControlPanelControllerTest extends TestCase
@@ -50,33 +51,33 @@ class ControlPanelControllerTest extends TestCase
     public function testControlPanel(): void
     {
         $admin_service         = new AdminService();
-        $message_service       = new MessageService(email_service: new EmailService(), user_service: new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()));
+        $message_service       = new MessageService(email_service: new EmailService(), user_service: new UserService(new SystemClock()));
         $module_service        = new ModuleService();
-        $housekeeping_service  = new HousekeepingService(new \Fisharebest\Webtrees\Clock\SystemClock());
+        $housekeeping_service  = new HousekeepingService(new SystemClock());
         $server_check_service  = new ServerCheckService(php_service: new PhpService());
-        $timeout_service       = new TimeoutService(php_service: new PhpService(), clock: new \Fisharebest\Webtrees\Clock\SystemClock());
+        $timeout_service       = new TimeoutService(php_service: new PhpService(), clock: new SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $upgrade_service       = new UpgradeService(
             self::createStub(ClientInterface::class),
             self::createStub(RequestFactoryInterface::class),
             $timeout_service,
-            new \Fisharebest\Webtrees\Clock\SystemClock(),
+            new SystemClock(),
         );
-        $user_service          = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
-        $handler               = new ControlPanel(
+        $user_service          = new UserService(new SystemClock());
+        $controller            = new ControlPanel(
             $admin_service,
             $housekeeping_service,
-            message_service:  $message_service,
-            module_service:  $module_service,
-            server_check_service:  $server_check_service,
-            tree_service:  $tree_service,
-            upgrade_service:  $upgrade_service,
-            user_service:  $user_service,
-            clock: new \Fisharebest\Webtrees\Clock\SystemClock(),
+            message_service: $message_service,
+            module_service: $module_service,
+            server_check_service: $server_check_service,
+            tree_service: $tree_service,
+            upgrade_service: $upgrade_service,
+            user_service: $user_service,
+            clock: new SystemClock(),
         );
         $request               = self::createRequest();
-        $response              = $handler->get($request);
+        $response              = $controller->get();
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }

@@ -28,7 +28,7 @@ use function response;
 final class SiteLogsDelete
 {
     public function __construct(
-        private readonly SiteLogsService $site_logs_service,
+        private SiteLogsService $site_logs_service,
     ) {
     }
 

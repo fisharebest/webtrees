@@ -28,27 +28,29 @@ use Fisharebest\Webtrees\NoReplyUser;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SiteUser;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use SensitiveParameter;
 
 final class VerifyEmail
 {
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly EmailService $email_service,
-        private readonly UserService $user_service,
+        private EmailService $email_service,
+        private UserService $user_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
-    {
-        $token    = $request->getAttribute('token');
-        $tree     = Validator::attributes($request)->treeOptional();
-        $username = $request->getAttribute('username');
-
+    public function get(
+        ServerRequestInterface $request,
+        Tree|null $tree,
+        #[SensitiveParameter] string $token,
+        #[SensitiveParameter] string $username,
+    ): ResponseInterface {
         $title = I18N::translate('User verification');
 
         $user = $this->user_service->findByUserName($username);

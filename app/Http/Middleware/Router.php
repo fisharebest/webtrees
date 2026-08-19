@@ -20,8 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
-use Fisharebest\Webtrees\Http\Dispatcher;
-use Fisharebest\Webtrees\Http\Routing\ControllerDispatcher;
+use Fisharebest\Webtrees\Http\MiddlewarePipeline;
 use Fisharebest\Webtrees\Http\Routing\RouteCollection;
 use Fisharebest\Webtrees\Http\Routing\RouteMatcher;
 use Fisharebest\Webtrees\Registry;
@@ -71,7 +70,7 @@ readonly class Router implements MiddlewareInterface
         }
 
         // Match the request to a route.
-        $matcher = new RouteMatcher($this->route_collection);
+        $matcher = new RouteMatcher($this->route_collection, Registry::container());
         $result  = $matcher->match($pretty);
 
         // No route matched?
@@ -90,9 +89,9 @@ readonly class Router implements MiddlewareInterface
 
         $middleware = [
             ...$route_middleware,
-            CheckCsrf::class,
+            CheckCsrf::class,  // Needs the current route, for its exclusion list
             ...$module_middleware,
-            ControllerDispatcher::class,
+            InvokeController::class,
         ];
 
         // Add the matched attributes to the request.
@@ -100,17 +99,24 @@ readonly class Router implements MiddlewareInterface
             $request = $request->withAttribute($key, $value);
         }
 
-        // Legacy code expects the tree attribute to be a Tree object.
+        // Some older code expects the tree attribute to be a Tree object.
+        // For example, default.phtml
         $tree    = $request->getAttribute('tree');
         $tree    = $this->tree_service->all()->get($tree);
         $request = $request->withAttribute('tree', $tree);
 
-        // Some old code expects to find these in the container.
+        // Some older code expects to find these in the container, for dependency-injection.
+        // For example, the Statistics class.
         if ($tree instanceof Tree) {
             Registry::container()->set(Tree::class, $tree);
         }
+
         Registry::container()->set(ServerRequestInterface::class, $request);
 
-        return Dispatcher::dispatch(middleware: $middleware, request: $request);
+        $pipeline = new MiddlewarePipeline(container: Registry::container());
+
+        return $pipeline
+            ->build(middleware: $middleware)
+            ->handle(request: $request);
     }
 }

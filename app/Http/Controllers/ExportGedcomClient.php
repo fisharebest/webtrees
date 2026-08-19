@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Encodings\Windows1252;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Services\GedcomExportService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -35,13 +36,12 @@ final class ExportGedcomClient
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly GedcomExportService $gedcom_export_service,
+        private GedcomExportService $gedcom_export_service,
     ) {
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree         = Validator::attributes($request)->tree();
         $filename     = Validator::parsedBody($request)->string('filename');
         $format       = Validator::parsedBody($request)->isInArray(['gedcom', 'zip', 'zipmedia', 'gedzip'])->string('format');
         $privacy      = Validator::parsedBody($request)->isInArray(['none', 'gedadmin', 'user', 'visitor'])->string('privacy');

@@ -41,7 +41,7 @@ final class SitePreferences
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly ModuleService $module_service,
+        private ModuleService $module_service,
     ) {
     }
 

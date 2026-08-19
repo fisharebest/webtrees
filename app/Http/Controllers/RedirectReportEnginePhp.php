@@ -35,7 +35,7 @@ use function dirname;
 final class RedirectReportEnginePhp
 {
     public function __construct(
-        private readonly TreeService $tree_service,
+        private TreeService $tree_service,
     ) {
     }
 

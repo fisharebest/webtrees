@@ -20,11 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\Ping;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\Ping;
 
 #[CoversClass(Ping::class)]
 class PingTest extends TestCase
@@ -35,9 +35,9 @@ class PingTest extends TestCase
         $server_check_service->expects($this->once())->method('serverErrors')->willReturn(new Collection());
         $server_check_service->expects($this->once())->method('serverWarnings')->willReturn(new Collection());
 
-        $request  = self::createRequest();
-        $handler  = new Ping($server_check_service);
-        $response = $handler->get($request);
+        $request    = self::createRequest();
+        $controller = new Ping($server_check_service);
+        $response   = $controller->get();
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertSame('OK', (string) $response->getBody());
@@ -49,9 +49,9 @@ class PingTest extends TestCase
         $server_check_service->expects($this->once())->method('serverErrors')->willReturn(new Collection());
         $server_check_service->expects($this->once())->method('serverWarnings')->willReturn(new Collection(['warning']));
 
-        $request  = self::createRequest();
-        $handler  = new Ping($server_check_service);
-        $response = $handler->get($request);
+        $request    = self::createRequest();
+        $controller = new Ping($server_check_service);
+        $response   = $controller->get();
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertSame('WARNING', (string) $response->getBody());
@@ -62,9 +62,9 @@ class PingTest extends TestCase
         $server_check_service = $this->createMock(ServerCheckService::class);
         $server_check_service->expects($this->once())->method('serverErrors')->willReturn(new Collection(['error']));
 
-        $request  = self::createRequest();
-        $handler  = new Ping($server_check_service);
-        $response = $handler->get($request);
+        $request    = self::createRequest();
+        $controller = new Ping($server_check_service);
+        $response   = $controller->get();
 
         self::assertSame(HttpStatusCode::ServiceUnavailable->value, $response->getStatusCode());
         self::assertSame('ERROR', (string) $response->getBody());

@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Services\PendingChangesService;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -29,13 +29,12 @@ use function response;
 final class PendingChangesLogDelete
 {
     public function __construct(
-        private readonly PendingChangesService $pending_changes_service,
+        private PendingChangesService $pending_changes_service,
     ) {
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree           = Validator::attributes($request)->tree();
         $params         = $request->getQueryParams();
         $params['tree'] = $tree->name();
 

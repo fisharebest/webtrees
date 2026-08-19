@@ -31,7 +31,7 @@ use function view;
 
 final class ModulesReports extends AbstractModuleComponent
 {
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(): ResponseInterface
     {
         return $this->listComponents(
             ModuleReportInterface::class,

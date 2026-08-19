@@ -23,10 +23,9 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function preg_match_all;
 use function preg_quote;
@@ -34,15 +33,11 @@ use function preg_quote;
 final class AutoCompleteCitation extends AbstractAutocompleteHandler
 {
     /**
-     *
      * @return Collection<int,string>
      */
-    protected function search(ServerRequestInterface $request): Collection
+    protected function search(Tree $tree, string $query, string $extra): Collection
     {
-        $tree   = Validator::attributes($request)->tree();
-        $query  = Validator::queryParams($request)->string('query');
-        $xref   = Validator::queryParams($request)->string('extra', '');
-        $source = Registry::sourceFactory()->make($xref, $tree);
+        $source = Registry::sourceFactory()->make($extra, $tree);
         $source = Auth::checkSourceAccess($source);
 
         $regex_query = strtr(preg_quote($query, '/'), [' ' => '.+']);

@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -35,15 +34,14 @@ use function e;
 final class UserListData
 {
     public function __construct(
-        private readonly DatatablesService $datatables_service,
-        private readonly UserService $user_service
+        private UserInterface $user,
+        private DatatablesService $datatables_service,
+        private UserService $user_service
     ) {
     }
 
     public function post(ServerRequestInterface $request): ResponseInterface
     {
-        $self = Validator::attributes($request)->user();
-
         $query = DB::table('user')
             ->leftJoin('user_setting AS us1', static function (JoinClause $join): void {
                 $join
@@ -91,10 +89,10 @@ final class UserListData
 
         $languages = I18N::allLanguages();
 
-        $callback = function (object $row) use ($languages, $self): array {
+        $callback = function (object $row) use ($languages): array {
             $user  = $this->user_service->find((int) $row->user_id);
             $datum = [
-                view('admin/users-table-options', ['self' => $self, 'user' => $user]),
+                view('admin/users-table-options', ['self' => $this->user, 'user' => $user]),
                 $row->user_id,
                 '<bdi>' . e($row->user_name) . '</bdi>',
                 '<bdi>' . e($row->real_name) . '</bdi>',

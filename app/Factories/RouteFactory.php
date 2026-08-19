@@ -47,7 +47,7 @@ class RouteFactory implements RouteFactoryInterface
     /**
      * Generate a URL for a named route.
      *
-     * @param array<bool|int|string|array<string>|null> $parameters
+     * @param array<mixed> $parameters
      */
     public function route(string $route_name, array $parameters = []): string
     {

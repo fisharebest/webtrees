@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\HomePageService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -34,14 +35,12 @@ final class TreePageBlockEdit
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly HomePageService $home_page_service
+        private HomePageService $home_page_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree     = Validator::attributes($request)->tree();
         $block_id = Validator::attributes($request)->integer('block_id');
 
         $block = $this->home_page_service->treeBlock($request);
@@ -57,10 +56,8 @@ final class TreePageBlockEdit
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree     = Validator::attributes($request)->tree();
         $block_id = Validator::attributes($request)->integer('block_id');
 
         $block = $this->home_page_service->treeBlock($request);

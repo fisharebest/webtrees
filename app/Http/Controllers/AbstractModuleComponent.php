@@ -39,8 +39,8 @@ abstract class AbstractModuleComponent
     use ViewResponseTrait;
 
     public function __construct(
-        protected readonly ModuleService $module_service,
-        protected readonly TreeService $tree_service,
+        protected ModuleService $module_service,
+        protected TreeService $tree_service,
     ) {
     }
 

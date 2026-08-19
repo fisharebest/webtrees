@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Services\MapDataService;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function redirect;
 use function route;
@@ -29,11 +28,11 @@ use function route;
 final class MapDataDeleteUnused
 {
     public function __construct(
-        private readonly MapDataService $map_data_service,
+        private MapDataService $map_data_service,
     ) {
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(): ResponseInterface
     {
         $this->map_data_service->deleteUnusedLocations(null, [0]);
 

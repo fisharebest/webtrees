@@ -27,7 +27,7 @@ use function sprintf;
 /**
  * Stores all registered routes and provides the registration API.
  */
-class RouteCollection
+final class RouteCollection
 {
     /** @var array<string, Route> name => Route */
     private array $routes = [];

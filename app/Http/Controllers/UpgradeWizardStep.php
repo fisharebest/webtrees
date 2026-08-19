@@ -49,7 +49,7 @@ use function view;
 /**
  * Upgrade to a new version of webtrees.
  */
-readonly class UpgradeWizardStep
+class UpgradeWizardStep
 {
     // We make the upgrade in a number of small steps to keep within server time limits.
     private const string STEP_CHECK   = 'Check';

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\ContactMethod;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Exceptions\HttpForbiddenException;
@@ -26,6 +27,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -39,16 +41,14 @@ final class Message
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly UserService $user_service,
-        private readonly MessageService $message_service
+        private UserInterface $user,
+        private UserService $user_service,
+        private MessageService $message_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree    = Validator::attributes($request)->tree();
-        $user    = Validator::attributes($request)->user();
         $body    = Validator::queryParams($request)->string('body', '');
         $subject = Validator::queryParams($request)->string('subject', '');
         $to      = Validator::queryParams($request)->string('to', '');
@@ -67,7 +67,7 @@ final class Message
 
         return $this->viewResponse('message-page', [
             'body'    => $body,
-            'from'    => $user,
+            'from'    => $this->user,
             'subject' => $subject,
             'title'   => $title,
             'to'      => $to_user,
@@ -76,11 +76,8 @@ final class Message
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree     = Validator::attributes($request)->tree();
-        $user     = Validator::attributes($request)->user();
         $ip       = Validator::attributes($request)->string('client-ip');
         $base_url = Validator::attributes($request)->string('base_url');
         $body     = Validator::parsedBody($request)->string('body');
@@ -107,7 +104,7 @@ final class Message
             ]));
         }
 
-        if ($this->message_service->deliverMessage($user, $to_user, $subject, $body, $url, $ip)) {
+        if ($this->message_service->deliverMessage($this->user, $to_user, $subject, $body, $url, $ip)) {
             FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
 
             return redirect($url);

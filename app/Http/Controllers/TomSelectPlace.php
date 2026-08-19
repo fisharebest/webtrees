@@ -27,7 +27,7 @@ use Illuminate\Support\Collection;
 final class TomSelectPlace extends AbstractTomSelectHandler
 {
     public function __construct(
-        private readonly SearchService $search_service,
+        private SearchService $search_service,
     ) {
     }
 

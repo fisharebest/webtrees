@@ -36,11 +36,11 @@ final class FixLevel0Media
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly TreeService $tree_service,
+        private TreeService $tree_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 

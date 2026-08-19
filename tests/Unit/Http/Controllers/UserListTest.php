@@ -19,11 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
-use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\UserListPage;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\UserListPage;
 
 #[CoversClass(UserListPage::class)]
 class UserListTest extends TestCase
@@ -36,10 +36,10 @@ class UserListTest extends TestCase
 
     public function testHandler(): void
     {
-        $handler  = new UserListPage();
-        $request  = self::createRequest()
+        $controller = new UserListPage(Auth::user());
+        $request    = self::createRequest()
             ->withAttribute('user', Auth::user());
-        $response = $handler->get($request);
+        $response   = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }

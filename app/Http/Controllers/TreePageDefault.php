@@ -38,13 +38,12 @@ final class TreePageDefault
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly HomePageService $home_page_service
+        private HomePageService $home_page_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(): ResponseInterface
     {
-
         $this->layout = 'layouts/administration';
 
         $this->home_page_service->checkDefaultTreeBlocksExist();
@@ -73,7 +72,6 @@ final class TreePageDefault
 
     public function post(ServerRequestInterface $request): ResponseInterface
     {
-
         $main_blocks = new Collection(Validator::parsedBody($request)->list(ModuleBlockInterface::MAIN_BLOCKS));
         $side_blocks = new Collection(Validator::parsedBody($request)->list(ModuleBlockInterface::SIDE_BLOCKS));
 

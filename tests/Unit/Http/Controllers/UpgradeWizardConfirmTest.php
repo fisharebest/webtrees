@@ -20,18 +20,18 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\UpgradeWizardConfirm;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\UpgradeWizardConfirm;
 
 #[CoversClass(UpgradeWizardConfirm::class)]
 class UpgradeWizardConfirmTest extends TestCase
 {
     public function testWizardContinue(): void
     {
-        $handler  = new UpgradeWizardConfirm();
-        $request  = self::createRequest();
-        $response = $handler->get($request);
+        $controller = new UpgradeWizardConfirm();
+        $request    = self::createRequest();
+        $response   = $controller->get();
 
         self::assertSame(HttpStatusCode::Found->value, $response->getStatusCode());
     }

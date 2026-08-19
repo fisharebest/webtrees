@@ -20,10 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\MapDataExportGeoJson;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\MapDataExportGeoJson;
 
 #[CoversClass(MapDataExportGeoJson::class)]
 class MapDataExportGeoJsonTest extends TestCase
@@ -37,9 +37,9 @@ class MapDataExportGeoJsonTest extends TestCase
     public function testExportGeoJson(): void
     {
         $map_data_service = new MapDataService();
-        $handler          = new MapDataExportGeoJson($map_data_service);
+        $controller       = new MapDataExportGeoJson($map_data_service);
         $request          = self::createRequest();
-        $response         = $handler->get($request);
+        $response         = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertSame($response->getHeaderLine('content-type'), 'application/vnd.geo+json');

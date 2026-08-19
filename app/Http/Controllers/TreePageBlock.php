@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Services\HomePageService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -32,13 +33,12 @@ use function view;
 final class TreePageBlock
 {
     public function __construct(
-        private readonly HomePageService $home_page_service,
+        private HomePageService $home_page_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree     = Validator::attributes($request)->tree();
         $block_id = Validator::queryParams($request)->integer('block_id');
 
         $block_id = (int) DB::table('block')

@@ -22,9 +22,8 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function e;
 use function redirect;
@@ -32,10 +31,8 @@ use function route;
 
 final class SelectDefaultTree
 {
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(Tree $tree): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
         Site::setPreference('DEFAULT_GEDCOM', $tree->name());
 
         /* I18N: %s is the name of a family tree */

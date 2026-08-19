@@ -21,8 +21,10 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -34,11 +36,13 @@ use function response;
 
 final class MediaFileDownload
 {
-    public function get(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = Validator::attributes($request)->tree();
-        $user = Validator::attributes($request)->user();
+    public function __construct(
+        private UserInterface $user,
+    ) {
+    }
 
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    {
         $image_factory = Registry::imageFactory();
 
         $disposition = Validator::queryParams($request)->isInArray(['inline', 'attachment'])->string('disposition');
@@ -54,7 +58,7 @@ final class MediaFileDownload
                 }
 
                 $tree      = $media_file->media()->tree();
-                $watermark = $media_file->isImage() && Auth::needsWatermark($tree, $user);
+                $watermark = $media_file->isImage() && Auth::needsWatermark($tree, $this->user);
                 $download  = $disposition === 'attachment';
                 $mime_type = $media_file->mimeType();
                 $data      = $image_factory->mediaFileContents($media_file, $watermark);

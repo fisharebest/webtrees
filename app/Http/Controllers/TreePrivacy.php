@@ -44,15 +44,14 @@ final class TreePrivacy
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly TreeService $tree_service,
+        private TreeService $tree_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree  = Validator::attributes($request)->tree();
         $title = e($tree->name()) . ' — ' . I18N::translate('Privacy');
 
         return $this->viewResponse('admin/trees-privacy', [
@@ -65,10 +64,8 @@ final class TreePrivacy
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
         $delete_default_resn_id = Validator::parsedBody($request)->list('delete');
 
         DB::table('default_resn')
@@ -167,7 +164,6 @@ final class TreePrivacy
 
         return redirect(route(ManageTrees::class, ['tree' => $tree->name()]));
     }
-
 
     /**
      * Names of our privacy levels

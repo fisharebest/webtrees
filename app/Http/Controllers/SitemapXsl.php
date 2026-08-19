@@ -21,14 +21,13 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function response;
 use function view;
 
-class SitemapXsl
+final class SitemapXsl
 {
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(): ResponseInterface
     {
         return response(
             view('sitemap/sitemap-xsl'),

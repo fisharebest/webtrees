@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -27,6 +28,7 @@ use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\RateLimitService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SiteUser;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
@@ -53,33 +55,23 @@ final class PasswordRequest
     private const int RATE_LIMIT_SECONDS = 300;
 
     public function __construct(
-        private readonly EmailService $email_service,
-        private readonly RateLimitService $rate_limit_service,
-        private readonly UserService $user_service,
-        private readonly ClockInterface $clock,
+        private EmailService $email_service,
+        private RateLimitService $rate_limit_service,
+        private UserService $user_service,
+        private ClockInterface $clock,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(Tree|null $tree): ResponseInterface
     {
-        $tree = Validator::attributes($request)->treeOptional();
-        $user = Validator::attributes($request)->user();
-
-        // Already logged in?
-        if ($user instanceof User) {
-            return redirect(route(Account::class, ['tree' => $tree?->name()]));
-        }
-
         $title = I18N::translate('Request a new password');
 
         return $this->viewResponse('password-request-page', ['title' => $title, 'tree' => $tree]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(Tree|null $tree, string $email): ResponseInterface
     {
-        $tree  = Validator::attributes($request)->treeOptional();
-        $email = Validator::parsedBody($request)->string('email');
-        $user  = $this->user_service->findByEmail($email);
+        $user = $this->user_service->findByEmail($email);
 
         if ($user instanceof User) {
             $this->rate_limit_service->limitRateForUser($user, self::RATE_LIMIT_REQUESTS, self::RATE_LIMIT_SECONDS, 'rate-limit-pw-reset');
@@ -111,10 +103,14 @@ final class PasswordRequest
         }
 
         // For security, send a success message even when we fail.
-        $message1 = I18N::translate('A password reset link has been sent to "%s".', e($email));
-        $message2 = I18N::translate('This link is valid for one hour.');
-        FlashMessages::addMessage($message1 . '<br>' . $message2, 'success');
+        $message =
+            I18N::translate('A password reset link has been sent to "%s".', e($email)) .
+            '<br>' .
+            I18N::translate('This link is valid for one hour.');
 
-        return redirect(route(Login::class, ['tree' => $tree?->name()]));
+
+        FlashMessages::addMessage($message, 'success');
+
+        return redirect(route(Login::class, ['tree' => $tree]));
     }
 }

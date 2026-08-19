@@ -69,7 +69,6 @@ use League\Flysystem\Filesystem;
 use League\Flysystem\Local\LocalFilesystemAdapter;
 use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 final class ControlPanel
 {
@@ -115,7 +114,7 @@ final class ControlPanel
         $this->clock                = $clock;
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 

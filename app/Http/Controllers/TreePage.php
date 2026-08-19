@@ -19,15 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Services\HomePageService;
-use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function e;
 
@@ -36,15 +36,13 @@ final class TreePage
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly HomePageService $home_page_service,
+        private UserInterface $user,
+        private HomePageService $home_page_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(Tree $tree): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-        $user = Validator::attributes($request)->user();
-
         $has_blocks = DB::table('block')
             ->where('gedcom_id', '=', $tree->id())
             ->exists();
@@ -65,8 +63,8 @@ final class TreePage
         }
 
         return $this->viewResponse('tree-page', [
-            'main_blocks'      => $this->home_page_service->treeBlocks($tree, $user, ModuleBlockInterface::MAIN_BLOCKS),
-            'side_blocks'      => $this->home_page_service->treeBlocks($tree, $user, ModuleBlockInterface::SIDE_BLOCKS),
+            'main_blocks'      => $this->home_page_service->treeBlocks($tree, $this->user, ModuleBlockInterface::MAIN_BLOCKS),
+            'side_blocks'      => $this->home_page_service->treeBlocks($tree, $this->user, ModuleBlockInterface::SIDE_BLOCKS),
             'title'            => e($tree->title()),
             'tree'             => $tree,
             'meta_robots'      => 'index,follow',

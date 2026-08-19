@@ -33,11 +33,10 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Source;
-use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function e;
 use function redirect;
@@ -48,16 +47,15 @@ final class RenumberTree
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly AdminService $admin_service,
-        private readonly TimeoutService $timeout_service,
+        private AdminService $admin_service,
+        private TimeoutService $timeout_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree  = Validator::attributes($request)->tree();
         $xrefs = $this->admin_service->duplicateXrefs($tree);
 
         /* I18N: Renumber the records in a family tree */
@@ -70,9 +68,8 @@ final class RenumberTree
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(Tree $tree): ResponseInterface
     {
-        $tree  = Validator::attributes($request)->tree();
         $xrefs = $this->admin_service->duplicateXrefs($tree);
 
         if ($xrefs !== [] && $tree->hasPendingEdit()) {

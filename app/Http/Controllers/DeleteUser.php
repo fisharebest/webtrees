@@ -32,7 +32,7 @@ use function response;
 final class DeleteUser
 {
     public function __construct(
-        private readonly UserService $user_service,
+        private UserService $user_service,
     ) {
     }
 

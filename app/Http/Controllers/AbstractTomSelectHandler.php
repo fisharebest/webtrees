@@ -32,9 +32,8 @@ abstract class AbstractTomSelectHandler
     // For clients that request one page of data at a time.
     private const int RESULTS_PER_PAGE = 50;
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree  = Validator::attributes($request)->tree();
         $at    = Validator::queryParams($request)->isInArray(['', '@'])->string('at');
         $page  = Validator::queryParams($request)->integer('page', 1);
         $query = Validator::queryParams($request)->string('query');

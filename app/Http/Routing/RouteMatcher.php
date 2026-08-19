@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Routing;
 
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function array_filter;
@@ -32,10 +33,12 @@ use const ARRAY_FILTER_USE_KEY;
  * Matches a ServerRequestInterface against the RouteCollection by path only.
  * Only dispatchable routes (where class_exists($route->name)) are considered.
  */
-class RouteMatcher
+final readonly class RouteMatcher
 {
-    public function __construct(private readonly RouteCollection $routes)
-    {
+    public function __construct(
+        private readonly RouteCollection $routes,
+        private readonly ContainerInterface $container,
+    ) {
     }
 
     /**
@@ -64,7 +67,7 @@ class RouteMatcher
 
                 // isDispatchable() uses the autoloader, which is relatively slow,
                 // so only call it for matched classes.
-                if ($route->isDispatchable()) {
+                if ($route->isDispatchable($this->container)) {
                     return MatchResult::success($route, $attributes);
                 }
             }

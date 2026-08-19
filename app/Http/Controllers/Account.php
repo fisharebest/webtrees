@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use DateTimeZone;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -45,26 +44,24 @@ final class Account
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly MessageService $message_service,
-        private readonly UserService $user_service
+        private UserInterface $user,
+        private MessageService $message_service,
+        private UserService $user_service
     ) {
     }
 
     public function get(ServerRequestInterface $request): ResponseInterface
     {
-
         $tree = Validator::attributes($request)->treeOptional();
-        $user = Validator::attributes($request)->user();
-
         if ($tree instanceof Tree) {
-            $my_individual_record = Registry::individualFactory()->make($tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF), $tree);
-            $default_individual   = Registry::individualFactory()->make($tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_DEFAULT_XREF), $tree);
+            $my_individual_record = Registry::individualFactory()->make($tree->getUserPreference($this->user, UserInterface::PREF_TREE_ACCOUNT_XREF), $tree);
+            $default_individual   = Registry::individualFactory()->make($tree->getUserPreference($this->user, UserInterface::PREF_TREE_DEFAULT_XREF), $tree);
         } else {
             $my_individual_record = null;
             $default_individual   = null;
         }
 
-        $show_delete_option = $user->getPreference(UserInterface::PREF_IS_ADMINISTRATOR) !== '1';
+        $show_delete_option = $this->user->getPreference(UserInterface::PREF_IS_ADMINISTRATOR) !== '1';
         $timezone_ids       = DateTimeZone::listIdentifiers();
         $timezones          = array_combine($timezone_ids, $timezone_ids);
         $title              = I18N::translate('My account');
@@ -78,17 +75,14 @@ final class Account
             'timezones'            => $timezones,
             'title'                => $title,
             'tree'                 => $tree,
-            'user'                 => $user,
+            'user'                 => $this->user,
         ]);
     }
 
     public function post(ServerRequestInterface $request): ResponseInterface
     {
-
         $tree = Validator::attributes($request)->treeOptional();
-        $user = Validator::attributes($request)->user();
-
-        assert($user instanceof User);
+        assert($this->user instanceof User);
 
         $contact_method = Validator::parsedBody($request)->string('contact-method');
         $email          = Validator::parsedBody($request)->string('email');
@@ -101,49 +95,49 @@ final class Account
 
         // Change the password
         if ($password !== '') {
-            $user->setPassword($password);
+            $this->user->setPassword($password);
         }
 
         // Changing the email address - make sure it isn't used by another user.
-        if ($user->email() !== $email) {
+        if ($this->user->email() !== $email) {
             $existing = $this->user_service->findByEmail($email);
 
-            if ($existing instanceof User && $existing->id() !== $user->id()) {
+            if ($existing instanceof User && $existing->id() !== $this->user->id()) {
                 $message = I18N::translate('Duplicate email address. A user with that email already exists.');
                 FlashMessages::addMessage($message, 'danger');
             } else {
-                $user->setEmail($email);
+                $this->user->setEmail($email);
             }
         }
 
         // Changing the username - make sure it isn't used by another user
-        if ($user->userName() !== $username) {
+        if ($this->user->userName() !== $username) {
             $existing = $this->user_service->findByUserName($username);
 
-            if ($existing instanceof User && $existing->id() !== $user->id()) {
+            if ($existing instanceof User && $existing->id() !== $this->user->id()) {
                 $message = I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.');
                 FlashMessages::addMessage($message, 'danger');
             } else {
-                $user->setUserName($username);
+                $this->user->setUserName($username);
             }
         }
 
-        $user->setRealName($real_name);
-        $user->setPreference(UserInterface::PREF_CONTACT_METHOD, $contact_method);
-        $user->setPreference(UserInterface::PREF_LANGUAGE, $language);
-        $user->setPreference(UserInterface::PREF_TIME_ZONE, $time_zone);
-        $user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, (string) $visible_online);
+        $this->user->setRealName($real_name);
+        $this->user->setPreference(UserInterface::PREF_CONTACT_METHOD, $contact_method);
+        $this->user->setPreference(UserInterface::PREF_LANGUAGE, $language);
+        $this->user->setPreference(UserInterface::PREF_TIME_ZONE, $time_zone);
+        $this->user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, (string) $visible_online);
 
         if ($tree instanceof Tree) {
             $default_xref = Validator::parsedBody($request)->string('default-xref');
-            $tree->setUserPreference($user, UserInterface::PREF_TREE_DEFAULT_XREF, $default_xref);
+            $tree->setUserPreference($this->user, UserInterface::PREF_TREE_DEFAULT_XREF, $default_xref);
         }
 
         // Switch to the new language now
         Session::put('language', $language);
 
-        FlashMessages::addMessage(I18N::translate('The details for “%s” have been updated.', e($user->userName())), 'success');
+        FlashMessages::addMessage(I18N::translate('The details for “%s” have been updated.', e($this->user->userName())), 'success');
 
-        return redirect(route(HomePage::class, ['tree' => $tree?->name()]));
+        return redirect(route(HomePage::class, ['tree' => $tree]));
     }
 }

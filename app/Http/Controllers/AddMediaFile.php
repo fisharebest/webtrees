@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -38,15 +39,13 @@ use function view;
 final class AddMediaFile
 {
     public function __construct(
-        private readonly MediaFileService $media_file_service,
-        private readonly PendingChangesService $pending_changes_service
+        private MediaFileService $media_file_service,
+        private PendingChangesService $pending_changes_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree  = Validator::attributes($request)->tree();
         $xref  = Validator::attributes($request)->isXref()->string('xref');
         $media = Registry::mediaFactory()->make($xref, $tree);
 
@@ -72,10 +71,8 @@ final class AddMediaFile
         ]));
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree   = Validator::attributes($request)->tree();
         $xref   = Validator::attributes($request)->isXref()->string('xref');
         $media  = Registry::mediaFactory()->make($xref, $tree);
         $media  = Auth::checkMediaAccess($media, true);

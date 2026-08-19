@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomExportService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToWriteFile;
@@ -44,14 +45,12 @@ final class ExportGedcomServer
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly GedcomExportService $gedcom_export_service,
+        private GedcomExportService $gedcom_export_service,
     ) {
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
         $data_filesystem = Registry::filesystem()->data();
 
         $filename = Validator::parsedBody($request)->string('filename');

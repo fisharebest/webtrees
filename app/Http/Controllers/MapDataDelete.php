@@ -29,7 +29,7 @@ use function route;
 final class MapDataDelete
 {
     public function __construct(
-        private readonly MapDataService $map_data_service,
+        private MapDataService $map_data_service,
     ) {
     }
 

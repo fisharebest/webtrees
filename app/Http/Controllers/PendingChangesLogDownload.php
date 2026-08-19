@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Services\PendingChangesService;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -30,13 +30,12 @@ use function response;
 final class PendingChangesLogDownload
 {
     public function __construct(
-        private readonly PendingChangesService $pending_changes_service,
+        private PendingChangesService $pending_changes_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree           = Validator::attributes($request)->tree();
         $params         = $request->getQueryParams();
         $params['tree'] = $tree->name();
 

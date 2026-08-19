@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -34,9 +35,8 @@ final class HeaderPage
 {
     use ViewResponseTrait;
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
         $xref   = Validator::attributes($request)->isXref()->string('xref');
         $slug   = Validator::attributes($request)->string('slug', '');
         $header = Registry::headerFactory()->make($xref, $tree);

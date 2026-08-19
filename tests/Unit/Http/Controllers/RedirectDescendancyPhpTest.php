@@ -19,9 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Factories\IndividualFactory;
+use Fisharebest\Webtrees\Http\Controllers\RedirectDescendencyPhp;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
@@ -33,7 +35,6 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\RedirectDescendencyPhp;
 
 #[CoversClass(RedirectDescendencyPhp::class)]
 class RedirectDescendancyPhpTest extends TestCase
@@ -81,10 +82,10 @@ class RedirectDescendancyPhpTest extends TestCase
             ->with(ModuleChartInterface::class)
             ->willReturn(new Collection([$descendancy_chart]));
 
-        $handler = new RedirectDescendencyPhp($module_service, $tree_service);
+        $controller = new RedirectDescendencyPhp(self::createStub(UserInterface::class), $module_service, $tree_service);
 
         $request  = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'rootid' => 'X123']);
-        $response = $handler->get($request);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::MovedPermanently->value, $response->getStatusCode());
         self::assertSame('https://www.example.com', $response->getHeaderLine('Location'));
@@ -106,13 +107,13 @@ class RedirectDescendancyPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $handler = new RedirectDescendencyPhp($module_service, $tree_service);
+        $controller = new RedirectDescendencyPhp(self::createStub(UserInterface::class), $module_service, $tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'rootid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 
     public function testNoSuchTree(): void
@@ -125,12 +126,12 @@ class RedirectDescendancyPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection([]));
 
-        $handler = new RedirectDescendencyPhp($module_service, $tree_service);
+        $controller = new RedirectDescendencyPhp(self::createStub(UserInterface::class), $module_service, $tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'rootid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 }

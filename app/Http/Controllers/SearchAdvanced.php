@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -124,14 +125,12 @@ final class SearchAdvanced
     ];
 
     public function __construct(
-        private readonly SearchService $search_service
+        private SearchService $search_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree           = Validator::attributes($request)->tree();
         $default_fields = array_fill_keys(self::DEFAULT_ADVANCED_FIELDS, '');
         $fields         = Validator::queryParams($request)->array('fields');
         $fields         = $fields !== [] ? $fields : $default_fields;
@@ -172,10 +171,8 @@ final class SearchAdvanced
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree        = Validator::attributes($request)->tree();
         $fields      = Validator::parsedBody($request)->array('fields');
         $modifiers   = Validator::parsedBody($request)->array('modifiers');
         $other_field = Validator::parsedBody($request)->string('other_field');

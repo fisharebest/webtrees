@@ -33,7 +33,7 @@ use Psr\Http\Message\ServerRequestInterface;
 final class RedirectGedRecordPhp
 {
     public function __construct(
-        private readonly TreeService $tree_service,
+        private TreeService $tree_service,
     ) {
     }
 
