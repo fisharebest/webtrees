@@ -80,7 +80,8 @@ class RouteFactory implements RouteFactoryInterface
         // Strip the base path prefix — the Router expects route-relative paths.
         $base_path = parse_url($base_url, PHP_URL_PATH);
         $base_path = is_string($base_path) ? $base_path : '';
-        if ($base_path !== '' && str_starts_with((string) $path, $base_path)) {
+
+        if (str_starts_with((string) $path, $base_path)) {
             $path = substr($path, strlen($base_path));
         }
 
