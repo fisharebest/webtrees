@@ -33,7 +33,7 @@ final class SelectNewFact
         return redirect(route(AddNewFact::class, [
             'tree' => $tree->name(),
             'xref' => Validator::attributes($request)->isXref()->string('xref'),
-            'fact' => Validator::parsedBody($request)->string('fact'),
+            'fact' => Validator::queryParams($request)->string('fact'),
         ]));
     }
 }
