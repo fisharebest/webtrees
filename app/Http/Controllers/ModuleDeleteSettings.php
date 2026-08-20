@@ -31,7 +31,7 @@ use function route;
 
 final class ModuleDeleteSettings
 {
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request): ResponseInterface
     {
         $module_name = Validator::parsedBody($request)->string('module_name');
 
