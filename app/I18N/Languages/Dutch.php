@@ -280,9 +280,9 @@ final readonly class Dutch extends AbstractLanguage
     }
 
     /**
-     * Dynamic descendant relationship using the "over" prefix.
+     * Dynamic descendant relationship using the "achter" prefix.
      *
-     * kleinkind → overkleinkind → overoverkleinkind
+     * kleinkind → achterkleinkind → achterachterkleinkind
      *
      * @return array{string, string}
      */
@@ -390,16 +390,16 @@ final readonly class Dutch extends AbstractLanguage
             // Dynamic relationships
             Relationship::dynamic(fn (int $n) => $this->oud($n - 1, 'tante', $this->vanDe(...)))->ancestor()->sister(),
             Relationship::dynamic(fn (int $n) => $this->oud($n - 1, 'oom', $this->vanDe(...)))->ancestor()->brother(),
-            Relationship::dynamic(fn (int $n) => $this->oud($n - 1, 'nicht', $this->vanDe(...)))->sibling()->descendant()->female(),
-            Relationship::dynamic(fn (int $n) => $this->oud($n - 1, 'nicht', $this->vanDe(...)))->married()->spouse()->sibling()->descendant()->female(),
-            Relationship::dynamic(fn (int $n) => $this->oud($n - 1, 'neef', $this->vanDe(...)))->sibling()->descendant()->male(),
-            Relationship::dynamic(fn (int $n) => $this->oud($n - 1, 'neef', $this->vanDe(...)))->married()->spouse()->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->achter($n - 1, 'nicht', $this->vanDe(...)))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->achter($n - 1, 'nicht', $this->vanDe(...)))->married()->spouse()->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->achter($n - 1, 'neef', $this->vanDe(...)))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->achter($n - 1, 'neef', $this->vanDe(...)))->married()->spouse()->sibling()->descendant()->male(),
             Relationship::dynamic(fn (int $n) => $this->bet($n - 3, 'overgrootmoeder', $this->vanDe(...)))->ancestor()->female(),
             Relationship::dynamic(fn (int $n) => $this->bet($n - 3, 'overgrootvader', $this->vanDe(...)))->ancestor()->male(),
             Relationship::dynamic(fn (int $n) => $this->bet($n - 3, 'overgrootouder', $this->vanDe(...)))->ancestor(),
-            Relationship::dynamic(fn (int $n) => $this->over($n - 2, 'kleindochter', $this->vanDe(...)))->descendant()->female(),
-            Relationship::dynamic(fn (int $n) => $this->over($n - 2, 'kleinzoon', $this->vanDe(...)))->descendant()->male(),
-            Relationship::dynamic(fn (int $n) => $this->over($n - 2, 'kleinkind', $this->vanHet(...)))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->achter($n - 2, 'kleindochter', $this->vanDe(...)))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->achter($n - 2, 'kleinzoon', $this->vanDe(...)))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->achter($n - 2, 'kleinkind', $this->vanHet(...)))->descendant(),
         ];
     }
 }
