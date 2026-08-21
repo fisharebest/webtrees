@@ -286,7 +286,7 @@ final readonly class Dutch extends AbstractLanguage
      *
      * @return array{string, string}
      */
-    private function over(int $n, string $suffix, Closure $genitive): array
+    private function achter(int $n, string $suffix, Closure $genitive): array
     {
         return $this->repeat($n, $suffix, 'over', $genitive);
     }
