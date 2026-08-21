@@ -175,7 +175,7 @@ use Illuminate\Support\Collection;
             </td>
             <td colspan="2">
                 <?php if (count($active) !== count($placelist)) : ?>
-                    <form class="d-inline" method="post" action="<?= route(MapDataDeleteUnused::class) ?>">
+                    <form class="d-inline" method="post" action="<?= e(route(MapDataDeleteUnused::class)) ?>">
                         <button type="submit" class="btn btn-danger">
                             <?= view('icons/delete') ?>
                             <?= I18N::translate('Delete unused locations') ?>
