@@ -42,6 +42,10 @@ use function view;
  */
 class DateValue extends AbstractElement
 {
+    protected const array SUBTAGS = [
+        'NOTE' => '0:1',
+    ];
+
     /**
      * An edit control for this data.
      */
@@ -70,6 +74,16 @@ class DateValue extends AbstractElement
             '</div>' .
             '<div id="caldiv' . $id . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000"></div>' .
             '<div class="form-text">' . (new Date($value))->display() . '</div>';
+    }
+
+    /**
+     * Should we collapse the children of this element when editing?
+     *
+     * @return bool
+     */
+    public function collapseChildren(): bool
+    {
+        return true;
     }
 
     /**

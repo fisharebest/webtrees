@@ -113,7 +113,7 @@ final class FamilyPage
 
         foreach ($family->facts(['MARR', 'DIV'], true) as $fact) {
             if ($fact->date()->isOK()) {
-                $value = $fact->date()->display();
+                $value = $fact->date()->display(spanned_text: false);
             } else {
                 $value = I18N::translate('yes');
             }

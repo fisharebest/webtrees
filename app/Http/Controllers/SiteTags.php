@@ -61,10 +61,11 @@ final class SiteTags
         $custom_gedcom_l_tags = (bool) Site::getPreference('CUSTOM_GEDCOM_L_TAGS');
 
         // GEDCOM 7 extensions
-        $custom_fam_fact      = (bool) Site::getPreference('CUSTOM_FAM_FACT');
-        $custom_fam_nchi      = (bool) Site::getPreference('CUSTOM_FAM_NCHI');
-        $custom_resi_value    = (bool) Site::getPreference('CUSTOM_RESI_VALUE');
-        $custom_time_tags     = (bool) Site::getPreference('CUSTOM_TIME_TAGS');
+        $custom_fam_fact        = (bool) Site::getPreference('CUSTOM_FAM_FACT');
+        $custom_fam_nchi        = (bool) Site::getPreference('CUSTOM_FAM_NCHI');
+        $custom_resi_value      = (bool) Site::getPreference('CUSTOM_RESI_VALUE');
+        $custom_time_tags       = (bool) Site::getPreference('CUSTOM_TIME_TAGS');
+        $custom_datephrase_tags = (bool) Site::getPreference('CUSTOM_DATEPHRASE_TAGS');
 
         return $this->viewResponse('admin/tags', [
             'all_family_tags'        => $all_family_tags->sort()->all(),
@@ -76,6 +77,7 @@ final class SiteTags
             'custom_fam_nchi'        => $custom_fam_nchi,
             'custom_resi_value'      => $custom_resi_value,
             'custom_time_tags'       => $custom_time_tags,
+            'custom_datephrase_tags' => $custom_datephrase_tags,
             'element_factory'        => Registry::elementFactory(),
             'title'                  => I18N::translate('GEDCOM tags'),
         ]);
@@ -95,6 +97,7 @@ final class SiteTags
         $custom_fam_nchi        = Validator::parsedBody($request)->boolean('custom_fam_nchi', false);
         $custom_resi_value      = Validator::parsedBody($request)->boolean('custom_resi_value', false);
         $custom_time_tags       = Validator::parsedBody($request)->boolean('custom_time_tags', false);
+        $custom_datephrase_tags = Validator::parsedBody($request)->boolean('custom_datephrase_tags', false);
 
         Site::setPreference('CUSTOM_FAMILY_TAGS', implode(',', $custom_family_tags));
         Site::setPreference('CUSTOM_INDIVIDUAL_TAGS', implode(',', $custom_individual_tags));
@@ -103,6 +106,7 @@ final class SiteTags
         Site::setPreference('CUSTOM_FAM_NCHI', (string) $custom_fam_nchi);
         Site::setPreference('CUSTOM_RESI_VALUE', (string) $custom_resi_value);
         Site::setPreference('CUSTOM_TIME_TAGS', (string) $custom_time_tags);
+        Site::setPreference('CUSTOM_DATEPHRASE_TAGS', (string) $custom_datephrase_tags);
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 

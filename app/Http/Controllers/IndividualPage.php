@@ -166,7 +166,7 @@ final class IndividualPage
 
         if ($birth_date->isOK() || $birth_place->id() !== 0) {
             $meta_facts[] = I18N::translate('Birth') . ' ' .
-                $birth_date->display() . ' ' .
+                $birth_date->display(spanned_text: false) . ' ' .
                 $birth_place->placeName();
         }
 
@@ -175,7 +175,7 @@ final class IndividualPage
 
         if ($death_date->isOK() || $death_place->id() !== 0) {
             $meta_facts[] = I18N::translate('Death') . ' ' .
-                $death_date->display() . ' ' .
+                $death_date->display(spanned_text: false) . ' ' .
                 $death_place->placeName();
         }
 

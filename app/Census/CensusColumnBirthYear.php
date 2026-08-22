@@ -25,6 +25,6 @@ final readonly class CensusColumnBirthYear extends AbstractCensusColumn implemen
 {
     public function generate(Individual $individual, Individual $head): string
     {
-        return $individual->getEstimatedBirthDate()->yearOnly()->display();
+        return $individual->getEstimatedBirthDate()->yearOnly()->display(spanned_text: false);
     }
 }

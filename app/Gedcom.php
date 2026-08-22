@@ -288,6 +288,8 @@ class Gedcom
         'NAME_ROMN'  => ['INDI:NAME:ROMN'],
         'NAME_NOTE'  => ['INDI:NAME:NOTE', 'INDI:NAME:FONE:NOTE', 'INDI:NAME:ROMN:NOTE'],
         'NAME_SOUR'  => ['INDI:NAME:SOUR', 'INDI:NAME:FONE:SOUR', 'INDI:NAME:ROMN:SOUR'],
+        // Dates
+        'DATE_NOTE'  => [':DATE:NOTE'],
         // Places
         'PLAC_MAP'   => [':PLAC:MAP'],
         'PLAC_FONE'  => [':PLAC:FONE'],
@@ -409,6 +411,7 @@ class Gedcom
             'FAM:*:AGNC'                 => new ResponsibleAgency(I18N::translate('Agency')),
             'FAM:*:CAUS'                 => new CauseOfEvent(I18N::translate('Cause')),
             'FAM:*:DATE'                 => new DateValue(I18N::translate('Date')),
+            'FAM:*:DATE:NOTE'            => new NoteStructure(I18N::translate('Note on date')),
             'FAM:*:EMAIL'                => new AddressEmail(I18N::translate('Email address')),
             'FAM:*:FAX'                  => new AddressFax(I18N::translate('Fax')),
             'FAM:*:HUSB'                 => new EmptyElement(I18N::translate('Husband'), ['AGE' => '0:1']),
@@ -543,6 +546,7 @@ class Gedcom
             'INDI:*:AGNC'                => new ResponsibleAgency(I18N::translate('Agency')),
             'INDI:*:CAUS'                => new CauseOfEvent(I18N::translate('Cause')),
             'INDI:*:DATE'                => new DateValue(I18N::translate('Date')),
+            'INDI:*:DATE:NOTE'           => new NoteStructure(I18N::translate('Note on date')),
             'INDI:*:EMAIL'               => new AddressEmail(I18N::translate('Email address')),
             'INDI:*:FAX'                 => new AddressFax(I18N::translate('Fax')),
             'INDI:*:NOTE'                => new NoteStructure(I18N::translate('Note')),
@@ -1050,6 +1054,33 @@ class Gedcom
         if (Site::getPreference('CUSTOM_TIME_TAGS') === '1') {
             $subtags['INDI:BIRT:DATE'][] = ['TIME', '0:1'];
             $subtags['INDI:DEAT:DATE'][] = ['TIME', '0:1'];
+        }
+
+        if (Site::getPreference('CUSTOM_DATEPHRASE_TAGS') === '1') {
+            // needed when the fact date has an explicit translation set in function gedcom551Tags
+            $subtags['FAM:DIV:DATE'][]  = ['PHRASE', '0:1'];
+            $subtags['FAM:ENGA:DATE'][]  = ['PHRASE', '0:1'];
+            $subtags['FAM:MARB:DATE'][]  = ['PHRASE', '0:1'];
+            $subtags['FAM:MARR:DATE'][]  = ['PHRASE', '0:1'];
+            $subtags['INDI:ADOP:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:BAPM:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:BARM:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:BASM:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:BIRT:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:BLES:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:BURI:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:CENS:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:CHR:DATE'][]  = ['PHRASE', '0:1'];
+            $subtags['INDI:CONF:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:CREM:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:DEAT:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:EMIG:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:EVEN:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:FCOM:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:IMMI:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:NATU:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:ORDN:DATE'][] = ['PHRASE', '0:1'];
+            $subtags['INDI:RESI:DATE'][] = ['PHRASE', '0:1'];
         }
 
         if (Site::getPreference('CUSTOM_GEDCOM_L_TAGS') === '1') {

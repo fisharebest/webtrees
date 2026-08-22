@@ -55,7 +55,7 @@ class Date
         $calendar_date_factory = Registry::calendarDateFactory();
 
         // Extract any explanatory text
-        if (preg_match('/^(.*) ?[(](.*)[)]/', $date, $match)) {
+        if (preg_match('/^(.*?) ?[(](.*)[)]/', $date, $match)) {
             $date       = $match[1];
             $this->text = $match[2];
         }
@@ -102,6 +102,7 @@ class Date
         $tmp               = clone $this;
         $tmp->date1->month = 0;
         $tmp->date1->day   = 0;
+        $tmp->text  = '';
         $tmp->date1->setJdFromYmd();
         $tmp->date2 = null;
         $tmp->type  = DateType::Exact;
@@ -116,7 +117,7 @@ class Date
      * @param string|null $date_format       Override the default date format
      * @param bool        $convert_calendars Convert the date into other calendars (requires a tree)
      */
-    public function display(Tree|null $tree = null, string|null $date_format = null, bool $convert_calendars = false): string
+    public function display(Tree|null $tree = null, string|null $date_format = null, bool $convert_calendars = false, bool $spanned_text = true): string
     {
         if ($tree instanceof Tree) {
             $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
@@ -133,7 +134,9 @@ class Date
         $date = I18N::language()->formatDate($this);
 
         if ($this->text !== '') {
-            $date .= ' (' . e($this->text) . ')';
+            $pref = $spanned_text ? ' <span class="date phrase">' : ' (';
+            $postf = $spanned_text ? '</span>' : ')';
+            $date .= $pref . e($this->text) . $postf;
         }
 
         // Convert to other calendars, if requested.

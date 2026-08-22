@@ -155,6 +155,15 @@ a:hover, .btn-link:hover, .nav-link:hover {
     z-index: 999;
 }
 
+.date.phrase {
+    font-style: italic;
+}
+.date.phrase::before {
+    content: "(";
+}
+.date.phrase::after {
+    content: ")";
+}
 /* Show a spinner if the page takes more than 1 second to load. */
 @keyframes spinner-fade-in {
     to { opacity: 1; }
