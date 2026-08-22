@@ -55,6 +55,6 @@ final class AdminMediaFileDownload
             }
         }
 
-        throw new HttpBadRequestException(I18N::translate('The parameter “path” is invalid.'));
+        throw new HttpBadRequestException('The parameter “path” is invalid.');
     }
 }

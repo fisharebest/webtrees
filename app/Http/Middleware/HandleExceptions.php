@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Error;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Exceptions\ImageException;
@@ -137,11 +138,15 @@ class HandleExceptions implements MiddlewareInterface
 
     private function httpExceptionResponse(ServerRequestInterface $request, HttpException $exception): ResponseInterface
     {
-        $tree    = $request->getAttribute('tree');
-        $default = Site::getPreference('DEFAULT_GEDCOM');
-        $tree    ??= $this->tree_service->all()[$default] ?? $this->tree_service->all()->first();
-
+        $tree = $request->getAttribute('tree');
         $status_code = HttpStatusCode::from($exception->getCode());
+        try {
+            $default = Site::getPreference('DEFAULT_GEDCOM');
+            $tree ??= $this->tree_service->all()[$default] ?? $this->tree_service->all()->first();
+        } catch (Error) {
+            // httpException can be thrown before database connection is made: return a simple stack trace dump
+            return response(nl2br((string) $exception), $status_code);
+        }
 
         // If this was a GET request, then we were probably fetching HTML to display, for
         // example, a chart or tab.
