@@ -162,6 +162,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
                 'config_url' => $this->configUrl($tree, $context, $block_id),
                 'title'      => $this->title(),
                 'content'    => $content,
+                'icon'       => 'icons/calendar',
             ]);
         }
 
