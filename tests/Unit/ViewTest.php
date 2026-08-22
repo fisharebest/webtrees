@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit;
 
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\View;
@@ -29,5 +30,16 @@ class ViewTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(View::class));
+    }
+
+    public function testSelectAcceptsBackedEnum(): void
+    {
+        $html = view('components/select', [
+            'name'     => 'access-level',
+            'selected' => AccessLevel::Member,
+            'options'  => [AccessLevel::Member->value => 'Member'],
+        ]);
+
+        self::assertStringContainsString('<option value="1" selected="selected">', $html);
     }
 }
