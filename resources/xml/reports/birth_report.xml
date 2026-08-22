@@ -18,7 +18,7 @@
   <Input name="birthdate2" lookup="DATE" type="text">
     <var var="I18N::translate('Birth date range end')"/>
   </Input>
-  <Input name="sortby" type="select" default="NAME" options="NAME=&gt;I18N::translate('sort by name')|BIRT:DATE=&gt;I18N::translate('sort by date of birth')">
+  <Input name="sortby" type="select" default="NAME" options="NAME=&gt;I18N::translate('sort by name')|BIRT:DATE=&gt;I18N::translate('sort by date of birth')|BIRT:PLAC=>I18N::translate('sort by place of birth')">
     <var var="I18N::translate('Sort order')"/>
   </Input>
   <Input name="pageSize" type="select" options="A4=&gt;I18N::translateContext('paper size','A4')|A3=&gt;I18N::translateContext('paper size', 'A3')|US-Letter=&gt;I18N::translateContext('paper size','Letter')|US-Tabloid=&gt;I18N::translateContext('paper size','Tabloid')">
