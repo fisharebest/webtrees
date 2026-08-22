@@ -34,6 +34,7 @@ final class ExpressionLanguageProvider implements ExpressionFunctionProviderInte
     {
         return [
             ExpressionFunction::fromPhp('stristr'),
+            ExpressionFunction::fromPhp('strcasecmp'),
         ];
     }
 }
