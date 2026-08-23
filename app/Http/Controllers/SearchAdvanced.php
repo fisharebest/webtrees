@@ -119,6 +119,7 @@ final class SearchAdvanced
         'INDI:SLGC:DATE',
         'INDI:SLGC:PLAC',
         'INDI:TITL',
+        'INDI:_TODO',
         'FAM:DIV:DATE',
         'FAM:SLGS:DATE',
         'FAM:SLGS:PLAC',
