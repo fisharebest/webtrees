@@ -75,7 +75,7 @@ final class DeleteRecord
                             /* I18N: %s are names of records, such as sources, repositories or individuals */
                             FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', sprintf('<a href="%1$s" class="alert-link">%2$s</a>', e($relict->url()), $relict->fullName()), $linker->fullName()));
                         }
-                    } else if (
+                    } elseif (
                         // If we have removed the last member from a family
                         $linker instanceof Family &&
                         preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . Gedcom::REGEX_XREF . ')@/', $new_gedcom, $match) === 0
