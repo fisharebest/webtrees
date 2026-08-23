@@ -21,10 +21,11 @@ namespace Fisharebest\Webtrees\I18N\Languages;
 
 use Closure;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\Enums\PluralRule;
 use Fisharebest\Webtrees\Relationship;
 use Fisharebest\Webtrees\Report\PaperSize;
-use Fisharebest\Webtrees\Enums\PluralRule;
 
+use function intdiv;
 use function mb_substr;
 use function str_repeat;
 use function str_starts_with;
@@ -200,6 +201,19 @@ final readonly class Dutch extends AbstractLanguage
         'IJ',
     ];
 
+    private const array OSSEE_BASE = ['', 'groot', 'overgroot', 'betovergroot'];
+
+    private const array OSSEE_CYCLE = [
+        1  => 'oud ',
+        2  => 'stam ',
+        4  => 'edel ',
+        8  => 'voor ',
+        16 => 'aarts ',
+        32 => 'opper ',
+        64 => 'hoog ',
+    ];
+
+
     public function initialLetter(string $string): string
     {
         if (str_starts_with($string, 'IJ')) {
@@ -256,15 +270,30 @@ final readonly class Dutch extends AbstractLanguage
     }
 
     /**
-     * Dynamic ancestor relationship using the "bet" prefix.
-     *
-     * overgrootmoeder → betovergrootmoeder → betbetovergrootmoeder
+     * Dynamic ancestor relationship using the "OSSEE" naming system.
      *
      * @return array{string, string}
      */
-    private function bet(int $n, string $suffix, Closure $genitive): array
+    private function ossee(int $n, string $suffix, Closure $genitive): array
     {
-        return $this->repeat($n, $suffix, 'bet', $genitive);
+        $base  = self::OSSEE_BASE[($n - 1) % 4];
+        $cycle = intdiv($n - 1, 4);
+
+        if ($cycle < 128) {
+            $prefix = '';
+
+            // OSSEE has labels for up to 255 generations
+            foreach (self::OSSEE_CYCLE as $key => $value) {
+                if ($cycle & $key) {
+                    $prefix = $value . $prefix;
+                }
+            }
+
+            return $genitive($prefix . $base . $suffix);
+        }
+
+        // More than 512 generations!? Use "betxN overgroot"
+        return $genitive('bet' . UTF8::MULTIPLICATION_SIGN .  $n - 3 . ' ' . self::OSSEE_BASE[2] . $suffix);
     }
 
     /**
@@ -394,9 +423,9 @@ final readonly class Dutch extends AbstractLanguage
             Relationship::dynamic(fn (int $n) => $this->achter($n - 1, 'nicht', $this->vanDe(...)))->married()->spouse()->sibling()->descendant()->female(),
             Relationship::dynamic(fn (int $n) => $this->achter($n - 1, 'neef', $this->vanDe(...)))->sibling()->descendant()->male(),
             Relationship::dynamic(fn (int $n) => $this->achter($n - 1, 'neef', $this->vanDe(...)))->married()->spouse()->sibling()->descendant()->male(),
-            Relationship::dynamic(fn (int $n) => $this->bet($n - 3, 'overgrootmoeder', $this->vanDe(...)))->ancestor()->female(),
-            Relationship::dynamic(fn (int $n) => $this->bet($n - 3, 'overgrootvader', $this->vanDe(...)))->ancestor()->male(),
-            Relationship::dynamic(fn (int $n) => $this->bet($n - 3, 'overgrootouder', $this->vanDe(...)))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->ossee($n, 'moeder', $this->vanDe(...)))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->ossee($n, 'vader', $this->vanDe(...)))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->ossee($n, 'ouder', $this->vanDe(...)))->ancestor(),
             Relationship::dynamic(fn (int $n) => $this->achter($n - 2, 'kleindochter', $this->vanDe(...)))->descendant()->female(),
             Relationship::dynamic(fn (int $n) => $this->achter($n - 2, 'kleinzoon', $this->vanDe(...)))->descendant()->male(),
             Relationship::dynamic(fn (int $n) => $this->achter($n - 2, 'kleinkind', $this->vanHet(...)))->descendant(),
