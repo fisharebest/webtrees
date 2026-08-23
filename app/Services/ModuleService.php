@@ -597,15 +597,12 @@ class ModuleService
     }
 
     /**
-     * All modules.
-     *
-     *
      * @return Collection<string,ModuleInterface>
      */
     public function all(bool $include_disabled = false): Collection
     {
         return Registry::cache()->array()->remember('all-modules', function (): Collection {
-            // Modules have a default status, order etc.
+            // Modules have a default status, order, etc.
             // We can override these from database settings.
             $module_info = DB::table('module')
                 ->get()

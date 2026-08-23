@@ -20,7 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -36,18 +38,23 @@ trait ViewResponseTrait
     protected string $layout = 'layouts/default';
 
     /**
-     * @param array<mixed> $view_data
+     * @param array<string,mixed> $view_data
      */
     protected function viewResponse(string $view_name, array $view_data, HttpStatusCode $status = HttpStatusCode::OK): ResponseInterface
     {
-        // Make the view's data available to the layout.
-        $layout_data = $view_data;
+        $layout_data = [
+            // All layouts need these
+            'content'          => view($view_name, $view_data),
+            'title'            => $view_data['title'],
+            // default layout needs these
+            'meta_description' => $view_data['meta_description'] ?? null,
+            'meta_robots'      => $view_data['meta_robots'] ?? null,
+            'modules'          => Registry::container()->get(ModuleService::class)->all(),
+            'request'          => Registry::container()->get(ServerRequestInterface::class),
+            'theme'            => Registry::container()->get(ModuleThemeInterface::class),
+            'tree'             => $view_data['tree'] ?? null,
+        ];
 
-        // Render the view
-        $layout_data['content'] = view($view_name, $view_data);
-        $layout_data['request'] = Registry::container()->get(ServerRequestInterface::class);
-
-        // Insert the view into the layout
         $html = view($this->layout, $layout_data);
 
         return response($html, $status);

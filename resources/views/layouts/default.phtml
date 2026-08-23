@@ -8,25 +8,25 @@ use Fisharebest\Webtrees\Http\Controllers\SearchQuickAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
+use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
-use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * @var string                 $content
- * @var string|null            $meta_description
- * @var string|null            $meta_robots
- * @var ServerRequestInterface $request
- * @var string                 $title
- * @var Tree|null              $tree
+ * @var string                      $content
+ * @var string|null                 $meta_description
+ * @var string|null                 $meta_robots
+ * @var Collection<ModuleInterface> $modules
+ * @var ServerRequestInterface      $request
+ * @var ModuleThemeInterface        $theme
+ * @var string                      $title
+ * @var Tree|null                   $tree
  */
-
-$theme = Registry::container()->get(ModuleThemeInterface::class);
 
 ?>
 
@@ -60,7 +60,7 @@ $theme = Registry::container()->get(ModuleThemeInterface::class);
 
         <?= View::stack('styles') ?>
 
-        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->headContent())->implode('') ?>
+        <?= $modules->filter(static fn (ModuleInterface $module): bool => $module instanceof ModuleGlobalInterface)->map(static fn (ModuleGlobalInterface $module): string => $module->headContent())->implode('') ?>
     </head>
 
     <body
@@ -135,7 +135,7 @@ $theme = Registry::container()->get(ModuleThemeInterface::class);
         </main>
 
         <footer class="container-lg wt-footers d-print-none">
-            <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static fn (ModuleFooterInterface $module): string => $module->getFooter($request))->implode('') ?>
+            <?= $modules->filter(static fn (ModuleInterface $module): bool => $module instanceof ModuleFooterInterface)->map(static fn (ModuleFooterInterface $module): string => $module->getFooter($request))->implode('') ?>
         </footer>
 
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
@@ -144,6 +144,6 @@ $theme = Registry::container()->get(ModuleThemeInterface::class);
 
         <?= View::stack('javascript') ?>
 
-        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->bodyContent())->implode('') ?>
+        <?= $modules->filter(static fn (ModuleInterface $module): bool => $module instanceof ModuleGlobalInterface)->map(static fn (ModuleGlobalInterface $module): string => $module->bodyContent())->implode('') ?>
     </body>
 </html>
