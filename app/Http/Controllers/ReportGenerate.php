@@ -19,15 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\HtmlRenderer;
-use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Report\ParserGenerate;
+use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
@@ -39,11 +38,10 @@ use function addcslashes;
 use function redirect;
 use function response;
 use function route;
+use function view;
 
 final class ReportGenerate
 {
-    use ViewResponseTrait;
-
     public function __construct(
         private UserInterface $user,
         private ModuleService $module_service,
@@ -91,12 +89,10 @@ final class ReportGenerate
                 $parser->process();
                 $html = $renderer->output();
 
-                $this->layout = 'layouts/report';
-
-                $response = $this->viewResponse('report-page', [
+                $response = response(view('layouts/report', [
                     'content' => $html,
                     'title'   => $module->title(),
-                ]);
+                ]));
 
                 if ($destination === 'download') {
                     $response = $response->withHeader('content-disposition', 'attachment; filename="' . addcslashes($report, '"') . '.html"');
