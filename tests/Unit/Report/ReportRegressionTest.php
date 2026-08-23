@@ -309,9 +309,18 @@ class ReportRegressionTest extends TestCase
             $pdf
         );
 
-        // TCPDF version string embedded in Producer metadata
+        // TCPDF version string embedded in Producer metadata.
+        // The info dictionary encodes this as UTF-16BE with null-byte separators.
         $pdf = (string) preg_replace(
-            '/TCPDF \d+\.\d+\.\d+/',
+            '/\xFE\xFF\x00T\x00C\x00P\x00D\x00F\x00[^\x00]\x00\d(?:\x00\.\x00\d){1,3}(?:\x00[-+~_.A-Za-z0-9])*/',
+            "\xFE\xFF\x00T\x00C\x00P\x00D\x00F\x00 \x000\x00.\x000\x00.\x000",
+            $pdf
+        );
+
+        // XMP/plain metadata may contain the same Producer value as ASCII.
+        // Allow non-standard separators/suffixes used by upstream releases.
+        $pdf = (string) preg_replace(
+            '/TCPDF[^\d<\r\n]{0,8}\d+(?:\.\d+){1,3}(?:[-+~_.A-Za-z0-9]*)?/',
             'TCPDF 0.0.0',
             $pdf
         );
