@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\UpgradeWizardPage;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Services\TimeoutService;
@@ -29,7 +31,6 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
-use Fisharebest\Webtrees\Http\Controllers\UpgradeWizardPage;
 
 #[CoversClass(UpgradeWizardPage::class)]
 class UpgradeWizardPageTest extends TestCase
@@ -42,18 +43,18 @@ class UpgradeWizardPageTest extends TestCase
 
     public function testWizard(): void
     {
-        $timeout_service       = new TimeoutService(php_service: new PhpService(), clock: new \Fisharebest\Webtrees\Clock\SystemClock());
+        $timeout_service       = new TimeoutService(php_service: new PhpService(), clock: new SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $upgrade_service       = new UpgradeService(
             self::createStub(ClientInterface::class),
             self::createStub(RequestFactoryInterface::class),
             $timeout_service,
-            new \Fisharebest\Webtrees\Clock\SystemClock(),
+            new SystemClock(),
         );
-        $handler               = new UpgradeWizardPage($tree_service, $upgrade_service);
+        $controller            = new UpgradeWizardPage($tree_service, $upgrade_service);
         $request               = self::createRequest();
-        $response              = $handler->get($request);
+        $response              = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }

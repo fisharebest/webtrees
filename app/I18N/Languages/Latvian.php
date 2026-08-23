@@ -196,123 +196,132 @@ final readonly class Latvian extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
-    public function relationships(): array
+        /** @return array{string, string} */
+    private function rel(string $nom, string $gen): array
     {
-        // Latvian genitive: nominative + genitive form
-        $rel = static fn (string $nom, string $gen): array => [$nom, '%s ' . $gen];
+        return [$nom, '%s ' . $gen];
+    }
 
-        // Dynamic prefix for great- generations: vec- repeats
-        $vec = static fn (int $n, string $nom, string $gen): array => [
+    /** @return array{string, string} */
+    private function vec(int $n, string $nom, string $gen): array
+    {
+        return [
             str_repeat('vec', $n) . $nom,
             '%s ' . str_repeat('vec', $n) . $gen,
         ];
+    }
 
+    /**
+     * @return array<Relationship>
+     */
+    public function relationships(): array
+    {
         return [
             // Adopted
-            Relationship::fixed(...$rel('adoptētā meita', 'adoptētās meitas'))->adopted()->daughter(),
-            Relationship::fixed(...$rel('adoptētais dēls', 'adoptētā dēla'))->adopted()->son(),
-            Relationship::fixed(...$rel('adoptētais bērns', 'adoptētā bērna'))->adopted()->child(),
-            Relationship::fixed(...$rel('adoptētāja māte', 'adoptētājas mātes'))->adoptive()->mother(),
-            Relationship::fixed(...$rel('adoptētājs tēvs', 'adoptētāja tēva'))->adoptive()->father(),
-            Relationship::fixed(...$rel('adoptētājs vecāks', 'adoptētāja vecāka'))->adoptive()->parent(),
+            Relationship::fixed(...$this->rel('adoptētā meita', 'adoptētās meitas'))->adopted()->daughter(),
+            Relationship::fixed(...$this->rel('adoptētais dēls', 'adoptētā dēla'))->adopted()->son(),
+            Relationship::fixed(...$this->rel('adoptētais bērns', 'adoptētā bērna'))->adopted()->child(),
+            Relationship::fixed(...$this->rel('adoptētāja māte', 'adoptētājas mātes'))->adoptive()->mother(),
+            Relationship::fixed(...$this->rel('adoptētājs tēvs', 'adoptētāja tēva'))->adoptive()->father(),
+            Relationship::fixed(...$this->rel('adoptētājs vecāks', 'adoptētāja vecāka'))->adoptive()->parent(),
             // Foster
-            Relationship::fixed(...$rel('audžumeita', 'audžumeitas'))->fostered()->daughter(),
-            Relationship::fixed(...$rel('audžudēls', 'audžudēla'))->fostered()->son(),
-            Relationship::fixed(...$rel('audžubērns', 'audžubērna'))->fostered()->child(),
-            Relationship::fixed(...$rel('audžumāte', 'audžumātes'))->fostering()->mother(),
-            Relationship::fixed(...$rel('audžutēvs', 'audžutēva'))->fostering()->father(),
-            Relationship::fixed(...$rel('audžuvecāks', 'audžuvecāka'))->fostering()->parent(),
+            Relationship::fixed(...$this->rel('audžumeita', 'audžumeitas'))->fostered()->daughter(),
+            Relationship::fixed(...$this->rel('audžudēls', 'audžudēla'))->fostered()->son(),
+            Relationship::fixed(...$this->rel('audžubērns', 'audžubērna'))->fostered()->child(),
+            Relationship::fixed(...$this->rel('audžumāte', 'audžumātes'))->fostering()->mother(),
+            Relationship::fixed(...$this->rel('audžutēvs', 'audžutēva'))->fostering()->father(),
+            Relationship::fixed(...$this->rel('audžuvecāks', 'audžuvecāka'))->fostering()->parent(),
             // Parents
-            Relationship::fixed(...$rel('māte', 'mātes'))->mother(),
-            Relationship::fixed(...$rel('tēvs', 'tēva'))->father(),
-            Relationship::fixed(...$rel('vecāks', 'vecāka'))->parent(),
+            Relationship::fixed(...$this->rel('māte', 'mātes'))->mother(),
+            Relationship::fixed(...$this->rel('tēvs', 'tēva'))->father(),
+            Relationship::fixed(...$this->rel('vecāks', 'vecāka'))->parent(),
             // Children
-            Relationship::fixed(...$rel('meita', 'meitas'))->daughter(),
-            Relationship::fixed(...$rel('dēls', 'dēla'))->son(),
-            Relationship::fixed(...$rel('bērns', 'bērna'))->child(),
+            Relationship::fixed(...$this->rel('meita', 'meitas'))->daughter(),
+            Relationship::fixed(...$this->rel('dēls', 'dēla'))->son(),
+            Relationship::fixed(...$this->rel('bērns', 'bērna'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('māsa', 'māsas'))->sister(),
-            Relationship::fixed(...$rel('brālis', 'brāļa'))->brother(),
-            Relationship::fixed(...$rel('brālis/māsa', 'brāļa/māsas'))->sibling(),
+            Relationship::fixed(...$this->rel('māsa', 'māsas'))->sister(),
+            Relationship::fixed(...$this->rel('brālis', 'brāļa'))->brother(),
+            Relationship::fixed(...$this->rel('brālis/māsa', 'brāļa/māsas'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$rel('pusmāsa', 'pusmāsas'))->parent()->daughter(),
-            Relationship::fixed(...$rel('pusbrālis', 'pusbrāļa'))->parent()->son(),
+            Relationship::fixed(...$this->rel('pusmāsa', 'pusmāsas'))->parent()->daughter(),
+            Relationship::fixed(...$this->rel('pusbrālis', 'pusbrāļa'))->parent()->son(),
             // Stepfamily
-            Relationship::fixed(...$rel('pamāte', 'pamātes'))->parent()->wife(),
-            Relationship::fixed(...$rel('patēvs', 'patēva'))->parent()->husband(),
-            Relationship::fixed(...$rel('pameita', 'pameitas'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$rel('padēls', 'padēla'))->married()->spouse()->son(),
-            Relationship::fixed(...$rel('pabērns', 'pabērna'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->rel('pamāte', 'pamātes'))->parent()->wife(),
+            Relationship::fixed(...$this->rel('patēvs', 'patēva'))->parent()->husband(),
+            Relationship::fixed(...$this->rel('pameita', 'pameitas'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->rel('padēls', 'padēla'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->rel('pabērns', 'pabērna'))->married()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$rel('bijusī sieva', 'bijušās sievas'))->divorced()->partner()->female(),
-            Relationship::fixed(...$rel('bijušais vīrs', 'bijušā vīra'))->divorced()->partner()->male(),
-            Relationship::fixed(...$rel('bijušais laulātais', 'bijušā laulātā'))->divorced()->partner(),
-            Relationship::fixed(...$rel('līgava', 'līgavas'))->engaged()->partner()->female(),
-            Relationship::fixed(...$rel('līgavainis', 'līgavaiņa'))->engaged()->partner()->male(),
-            Relationship::fixed(...$rel('sieva', 'sievas'))->wife(),
-            Relationship::fixed(...$rel('vīrs', 'vīra'))->husband(),
-            Relationship::fixed(...$rel('laulātais draugs', 'laulātā drauga'))->spouse(),
-            Relationship::fixed(...$rel('partneris', 'partnera'))->partner(),
+            Relationship::fixed(...$this->rel('bijusī sieva', 'bijušās sievas'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->rel('bijušais vīrs', 'bijušā vīra'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->rel('bijušais laulātais', 'bijušā laulātā'))->divorced()->partner(),
+            Relationship::fixed(...$this->rel('līgava', 'līgavas'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->rel('līgavainis', 'līgavaiņa'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->rel('sieva', 'sievas'))->wife(),
+            Relationship::fixed(...$this->rel('vīrs', 'vīra'))->husband(),
+            Relationship::fixed(...$this->rel('laulātais draugs', 'laulātā drauga'))->spouse(),
+            Relationship::fixed(...$this->rel('partneris', 'partnera'))->partner(),
             // In-laws — wife's parents
-            Relationship::fixed(...$rel('sievasmāte', 'sievasmātes'))->wife()->mother(),
-            Relationship::fixed(...$rel('sievastēvs', 'sievastēva'))->wife()->father(),
+            Relationship::fixed(...$this->rel('sievasmāte', 'sievasmātes'))->wife()->mother(),
+            Relationship::fixed(...$this->rel('sievastēvs', 'sievastēva'))->wife()->father(),
             // In-laws — husband's parents
-            Relationship::fixed(...$rel('vīramāte', 'vīramātes'))->husband()->mother(),
-            Relationship::fixed(...$rel('vīratēvs', 'vīratēva'))->husband()->father(),
+            Relationship::fixed(...$this->rel('vīramāte', 'vīramātes'))->husband()->mother(),
+            Relationship::fixed(...$this->rel('vīratēvs', 'vīratēva'))->husband()->father(),
             // In-laws — spouse's parents (generic)
-            Relationship::fixed(...$rel('vīramāte', 'vīramātes'))->married()->spouse()->mother(),
-            Relationship::fixed(...$rel('vīratēvs', 'vīratēva'))->married()->spouse()->father(),
-            Relationship::fixed(...$rel('vīramāte', 'vīramātes'))->spouse()->mother(),
-            Relationship::fixed(...$rel('vīratēvs', 'vīratēva'))->spouse()->father(),
+            Relationship::fixed(...$this->rel('vīramāte', 'vīramātes'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->rel('vīratēvs', 'vīratēva'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->rel('vīramāte', 'vīramātes'))->spouse()->mother(),
+            Relationship::fixed(...$this->rel('vīratēvs', 'vīratēva'))->spouse()->father(),
             // Children-in-law
-            Relationship::fixed(...$rel('vedekla', 'vedeklas'))->child()->wife(),
-            Relationship::fixed(...$rel('znots', 'znota'))->child()->husband(),
+            Relationship::fixed(...$this->rel('vedekla', 'vedeklas'))->child()->wife(),
+            Relationship::fixed(...$this->rel('znots', 'znota'))->child()->husband(),
             // Siblings-in-law (spouse's siblings)
-            Relationship::fixed(...$rel('svaine', 'svaines'))->spouse()->sister(),
-            Relationship::fixed(...$rel('svainis', 'svaiņa'))->spouse()->brother(),
+            Relationship::fixed(...$this->rel('svaine', 'svaines'))->spouse()->sister(),
+            Relationship::fixed(...$this->rel('svainis', 'svaiņa'))->spouse()->brother(),
             // Siblings-in-law (sibling's spouses)
-            Relationship::fixed(...$rel('brāļasieva', 'brāļasievas'))->brother()->wife(),
-            Relationship::fixed(...$rel('māsasvīrs', 'māsasvīra'))->sister()->husband(),
-            Relationship::fixed(...$rel('svaine', 'svaines'))->sibling()->wife(),
-            Relationship::fixed(...$rel('svainis', 'svaiņa'))->sibling()->husband(),
+            Relationship::fixed(...$this->rel('brāļasieva', 'brāļasievas'))->brother()->wife(),
+            Relationship::fixed(...$this->rel('māsasvīrs', 'māsasvīra'))->sister()->husband(),
+            Relationship::fixed(...$this->rel('svaine', 'svaines'))->sibling()->wife(),
+            Relationship::fixed(...$this->rel('svainis', 'svaiņa'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$rel('vecāmāte', 'vecāmātes'))->parent()->mother(),
-            Relationship::fixed(...$rel('vectēvs', 'vectēva'))->parent()->father(),
-            Relationship::fixed(...$rel('vecvecāks', 'vecvecāka'))->parent()->parent(),
+            Relationship::fixed(...$this->rel('vecāmāte', 'vecāmātes'))->parent()->mother(),
+            Relationship::fixed(...$this->rel('vectēvs', 'vectēva'))->parent()->father(),
+            Relationship::fixed(...$this->rel('vecvecāks', 'vecvecāka'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$rel('mazmeita', 'mazmeitas'))->child()->daughter(),
-            Relationship::fixed(...$rel('mazdēls', 'mazdēla'))->child()->son(),
-            Relationship::fixed(...$rel('mazbērns', 'mazbērna'))->child()->child(),
+            Relationship::fixed(...$this->rel('mazmeita', 'mazmeitas'))->child()->daughter(),
+            Relationship::fixed(...$this->rel('mazdēls', 'mazdēla'))->child()->son(),
+            Relationship::fixed(...$this->rel('mazbērns', 'mazbērna'))->child()->child(),
             // Aunts and uncles
-            Relationship::fixed(...$rel('tante', 'tantes'))->parent()->sister(),
-            Relationship::fixed(...$rel('tēvocis', 'tēvoča'))->parent()->brother(),
+            Relationship::fixed(...$this->rel('tante', 'tantes'))->parent()->sister(),
+            Relationship::fixed(...$this->rel('tēvocis', 'tēvoča'))->parent()->brother(),
             // Nieces and nephews (from brother)
-            Relationship::fixed(...$rel('brāļameita', 'brāļameitas'))->brother()->daughter(),
-            Relationship::fixed(...$rel('brāļadēls', 'brāļadēla'))->brother()->son(),
+            Relationship::fixed(...$this->rel('brāļameita', 'brāļameitas'))->brother()->daughter(),
+            Relationship::fixed(...$this->rel('brāļadēls', 'brāļadēla'))->brother()->son(),
             // Nieces and nephews (from sister)
-            Relationship::fixed(...$rel('māsasmeita', 'māsasmeitas'))->sister()->daughter(),
-            Relationship::fixed(...$rel('māsasdēls', 'māsasdēla'))->sister()->son(),
+            Relationship::fixed(...$this->rel('māsasmeita', 'māsasmeitas'))->sister()->daughter(),
+            Relationship::fixed(...$this->rel('māsasdēls', 'māsasdēla'))->sister()->son(),
             // Nieces and nephews (generic)
-            Relationship::fixed(...$rel('brāļameita', 'brāļameitas'))->sibling()->daughter(),
-            Relationship::fixed(...$rel('brāļadēls', 'brāļadēla'))->sibling()->son(),
+            Relationship::fixed(...$this->rel('brāļameita', 'brāļameitas'))->sibling()->daughter(),
+            Relationship::fixed(...$this->rel('brāļadēls', 'brāļadēla'))->sibling()->son(),
             // Cousins
-            Relationship::fixed(...$rel('māsīca', 'māsīcas'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$rel('brālēns', 'brālēna'))->parent()->sibling()->son(),
-            Relationship::fixed(...$rel('brālēns', 'brālēna'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->rel('māsīca', 'māsīcas'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->rel('brālēns', 'brālēna'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->rel('brālēns', 'brālēna'))->parent()->sibling()->child(),
             // Dynamic — great-grandparents and beyond (vec- prefix)
-            Relationship::dynamic(static fn (int $n) => $vec($n - 2, 'vecāmāte', 'vecāmātes'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $vec($n - 2, 'vectēvs', 'vectēva'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $vec($n - 2, 'vectēvs', 'vectēva'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->vec($n - 2, 'vecāmāte', 'vecāmātes'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->vec($n - 2, 'vectēvs', 'vectēva'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->vec($n - 2, 'vectēvs', 'vectēva'))->ancestor(),
             // Dynamic — great-grandchildren
-            Relationship::dynamic(static fn (int $n) => $vec($n - 2, 'mazmeita', 'mazmeitas'))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $vec($n - 2, 'mazdēls', 'mazdēla'))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $vec($n - 2, 'mazdēls', 'mazdēla'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->vec($n - 2, 'mazmeita', 'mazmeitas'))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->vec($n - 2, 'mazdēls', 'mazdēla'))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->vec($n - 2, 'mazdēls', 'mazdēla'))->descendant(),
             // Dynamic — great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $vec($n - 1, 'tante', 'tantes'))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $vec($n - 1, 'tēvocis', 'tēvoča'))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->vec($n - 1, 'tante', 'tantes'))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->vec($n - 1, 'tēvocis', 'tēvoča'))->ancestor()->brother(),
             // Dynamic — great-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $vec($n - 1, 'brāļameita', 'brāļameitas'))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $vec($n - 1, 'brāļadēls', 'brāļadēla'))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->vec($n - 1, 'brāļameita', 'brāļameitas'))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->vec($n - 1, 'brāļadēls', 'brāļadēla'))->sibling()->descendant()->male(),
         ];
     }
 

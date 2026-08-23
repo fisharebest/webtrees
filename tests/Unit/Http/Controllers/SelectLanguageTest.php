@@ -19,12 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\GuestUser;
+use Fisharebest\Webtrees\Http\Controllers\SelectLanguage;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\SelectLanguage;
 
 #[CoversClass(SelectLanguage::class)]
 class SelectLanguageTest extends TestCase
@@ -37,25 +39,20 @@ class SelectLanguageTest extends TestCase
 
     public function testSelectLanguageForGuest(): void
     {
-        $user     = new GuestUser();
-        $handler  = new SelectLanguage();
-        $request  = self::createRequest()
-            ->withAttribute('user', $user)
-            ->withAttribute('language', 'fr');
-        $response = $handler->post($request);
+        $user       = new GuestUser();
+        $controller = new SelectLanguage($user);
+        $response   = $controller->post('fr');
 
         self::assertSame(HttpStatusCode::NoContent->value, $response->getStatusCode());
     }
 
     public function testSelectLanguageForUser(): void
     {
-        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
+        $user_service = new UserService(new SystemClock());
         $user         = $user_service->create('user', 'real', 'email', 'pass');
-        $handler      = new SelectLanguage();
-        $request      = self::createRequest()
-            ->withAttribute('user', $user)
-            ->withAttribute('language', 'fr');
-        $response     = $handler->post($request);
+        Auth::login($user);
+        $controller = new SelectLanguage($user);
+        $response   = $controller->post('fr');
 
         self::assertSame(HttpStatusCode::NoContent->value, $response->getStatusCode());
     }

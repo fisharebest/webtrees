@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -30,9 +31,8 @@ use function route;
 
 final class SearchQuickAction
 {
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree  = Validator::attributes($request)->tree();
         $query = Validator::parsedBody($request)->string('query');
 
         // Was the search query an XREF in the current tree?

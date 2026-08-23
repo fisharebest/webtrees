@@ -20,8 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http;
 
 use Fisharebest\Webtrees\Http\RequestHandlers\NotFound;
-use Fisharebest\Webtrees\Registry;
 use LogicException;
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -31,34 +31,38 @@ use function array_reduce;
 use function array_reverse;
 use function is_string;
 
-readonly class Dispatcher
+readonly class MiddlewarePipeline
 {
+    public function __construct(
+        private ContainerInterface $container,
+    ) {
+    }
+
     /**
      * @param list<class-string|MiddlewareInterface> $middleware
      */
-    public static function dispatch(array $middleware, ServerRequestInterface $request): ResponseInterface
+    public function build(array $middleware): RequestHandlerInterface
     {
-        $pipeline = array_reduce(
+        return array_reduce(
             array: array_reverse(array: $middleware),
-            callback: self::reduceMiddleware(...),
+            callback: $this->reduceMiddleware(...),
             initial: new NotFound(),
         );
-
-        return $pipeline->handle(request: $request);
     }
 
     /**
      * @param class-string|MiddlewareInterface $item
      */
-    private static function reduceMiddleware(
+    private function reduceMiddleware(
         RequestHandlerInterface $carry,
         string|MiddlewareInterface $item,
     ): RequestHandlerInterface {
-        return new readonly class (carry: $carry, item: $item) implements RequestHandlerInterface {
+        return new readonly class (container: $this->container, carry: $carry, item: $item) implements RequestHandlerInterface {
             /**
              * @param class-string|MiddlewareInterface $item
              */
             public function __construct(
+                private ContainerInterface $container,
                 private RequestHandlerInterface $carry,
                 private string|MiddlewareInterface $item,
             ) {
@@ -69,7 +73,7 @@ readonly class Dispatcher
                 $item = $this->item;
 
                 if (is_string(value: $item)) {
-                    $item = Registry::container()->get(id: $item);
+                    $item = $this->container->get(id: $item);
                 }
 
                 if ($item instanceof MiddlewareInterface) {

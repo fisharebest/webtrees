@@ -20,8 +20,20 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Http\Routes\ApiRoutes;
+use Fisharebest\Webtrees\Http\Routes\WebRoutes;
+use Fisharebest\Webtrees\Http\Routing\GedcomRecordParameterResolver;
+use Fisharebest\Webtrees\Http\Routing\ParameterResolverInterface;
+use Fisharebest\Webtrees\Http\Routing\ParameterResolver;
+use Fisharebest\Webtrees\Http\Routing\RouteCollection;
+use Fisharebest\Webtrees\Http\Routing\ScalarParameterResolver;
+use Fisharebest\Webtrees\Http\Routing\TreeParameterResolver;
+use Fisharebest\Webtrees\Http\Routing\UrlGenerator;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Webtrees;
+use Psr\Http\Message\ServerRequestFactoryInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Psy\Configuration;
 use Psy\Shell;
 use RecursiveDirectoryIterator;
@@ -73,7 +85,42 @@ final class Repl extends AbstractCommand
         // Autoload webtrees classes on first use.
         $this->registerAliasAutoloader(classMap: $this->buildClassMap(output: $output));
 
+        // We obviously don't process requests in CLI mode, but we might want to test code that does.
+        $request = Registry::container()->get(ServerRequestFactoryInterface::class)
+            ->createServerRequest(method: 'GET', uri: '/')
+            ->withAttribute('base_url', 'https://webtrees.test')
+            ->withAttribute('rewrite_urls', '1');
+
+        Registry::container()->set(ServerRequestInterface::class, $request);
+
+        // Load the core routing tables. Modules will load their own routes later.
+        $routes = new RouteCollection();
+        (new WebRoutes())->load($routes);
+        (new ApiRoutes())->load($routes);
+
+        // Save the route collection and URL generator in the container.
+        $tree_service = Registry::container()->get(TreeService::class);
+        $parameter_resolver = new ParameterResolver([
+            new TreeParameterResolver($tree_service),
+            new GedcomRecordParameterResolver(),
+            new ScalarParameterResolver(),
+        ]);
+        $this->storeInContainer(RouteCollection::class, $routes);
+        $this->storeInContainer(ParameterResolverInterface::class, $parameter_resolver);
+        $this->storeInContainer(UrlGenerator::class, new UrlGenerator($routes, '', $parameter_resolver));
+
         return $shell->run();
+    }
+
+    /*
+     * Within the REPL, we use class-aliases to avoid typing FQCNs.
+     * But this means that container lookups will fail, as they are stored
+     * under the FQCN, not the alias.  Save as both.
+     */
+    private function storeInContainer(string $class, object $object): void
+    {
+        Registry::container()->set($class, $object);
+        Registry::container()->set(basename(str_replace('\\', '/', $class)), $object);
     }
 
     /**

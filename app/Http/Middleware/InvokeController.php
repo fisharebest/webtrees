@@ -17,55 +17,42 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Routing;
+namespace Fisharebest\Webtrees\Http\Middleware;
 
-use BackedEnum;
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
-use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpInternalServerErrorException;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Location;
-use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Http\Routing\ParameterResolverInterface;
+use Fisharebest\Webtrees\Http\Routing\Route;
+use Fisharebest\Webtrees\Http\Routing\ScalarParameterResolver;
+use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Repository;
-use Fisharebest\Webtrees\Services\TreeService;
-use Fisharebest\Webtrees\SharedNote;
-use Fisharebest\Webtrees\Source;
-use Fisharebest\Webtrees\Submission;
-use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use ReflectionEnum;
 use ReflectionMethod;
 use ReflectionNamedType;
 use ReflectionParameter;
 
-use function is_numeric;
+use function is_array;
 use function method_exists;
 use function strtolower;
 
-class ControllerDispatcher implements MiddlewareInterface
+class InvokeController implements MiddlewareInterface
 {
     public function __construct(
-        private TreeService $tree_service,
+        private readonly ParameterResolverInterface $parameter_resolver,
+        private readonly ScalarParameterResolver $scalar_parameter_resolver,
     ) {
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $route = Validator::attributes($request)->route();
-
+        $route      = Validator::attributes($request)->route();
         $controller = Registry::container()->get($route->controller);
         $verb       = strtolower($request->getMethod());
 
@@ -100,7 +87,7 @@ class ControllerDispatcher implements MiddlewareInterface
     /**
      * Resolve all parameters for a controller method.
      *
-     * @return array<ServerRequestInterface|Tree|GedcomRecord|string|int|float|array<string|array<string>>|BackedEnum|null>
+     * @return array<mixed>
      */
     private function resolveParameters(ReflectionMethod $method, ServerRequestInterface $request): array
     {
@@ -148,57 +135,56 @@ class ControllerDispatcher implements MiddlewareInterface
                 return null;
             }
 
-            $message = sprintf('The parameter “%s” is missing.', $name);
+            $message = sprintf('The parameter "%s" is missing.', $name);
             throw new HttpBadRequestException($message);
         }
 
-        // @TODO - this may be a Tree object, which is set for compatibility
-        // with legacy code. Remove when the migration is complete.
-        if (is_object($value)) {
+        // Middleware sets these attributes as objects for legacy compatibility.
+        // Remove when the migration to string-based resolution is complete.
+        if ($value instanceof Tree && $name === 'tree') {
+            // Set by middleware: Router
+            return $value;
+        }
+
+        if ($value instanceof UserInterface && $name === 'user') {
+            // Set by middleware: UseSession
+            return $value;
+        }
+
+        if ($value instanceof ModuleThemeInterface && $name === 'theme') {
+            // Set by middleware: UseTheme
+            return $value;
+        }
+
+        if ($value instanceof Route && $name === 'route') {
+            // Set by middleware: Router
             return $value;
         }
 
         if ($type instanceof ReflectionNamedType) {
-            if (is_subclass_of($type->getName(), BackedEnum::class)) {
-                $reflection_enum = new ReflectionEnum($type->getName());
+            $type_name = $type->getName();
 
-                if ($reflection_enum->getBackingType()->getName() === 'int') {
-                    $value = (int) $value;
+            // Delegate to parameter resolvers
+            if ($this->parameter_resolver->supports($type_name)) {
+                // Arrays cannot be coerced to string - validate directly.
+                if ($type_name === 'array') {
+                    return $this->scalar_parameter_resolver->castToArray($value);
                 }
 
-                $method   = new ReflectionMethod($type->getName(), 'tryFrom');
-                $resolved = $method->invoke(null, $value);
-            } else {
-                $resolved = match ($type->getName()) {
-                    Tree::class          => $this->tree_service->all()->get($value),
-                    UserInterface::class => Auth::user(),
-                    Individual::class    => Registry::individualFactory()->make($value, $tree),
-                    Family::class        => Registry::familyFactory()->make($value, $tree),
-                    Source::class        => Registry::sourceFactory()->make($value, $tree),
-                    Repository::class    => Registry::repositoryFactory()->make($value, $tree),
-                    Media::class         => Registry::mediaFactory()->make($value, $tree),
-                    Note::class          => Registry::noteFactory()->make($value, $tree),
-                    SharedNote::class    => Registry::sharedNoteFactory()->make($value, $tree),
-                    Location::class      => Registry::locationFactory()->make($value, $tree),
-                    Header::class        => Registry::headerFactory()->make($value, $tree),
-                    Submission::class    => Registry::submissionFactory()->make($value, $tree),
-                    Submitter::class     => Registry::submitterFactory()->make($value, $tree),
-                    GedcomRecord::class  => Registry::gedcomRecordFactory()->make($value, $tree),
-                    'string'             => $value,
-                    'bool'               => (bool) $value,
-                    'int'                => $this->castToInt((string) $value, $name),
-                    'float'              => $this->castToFloat((string) $value, $name),
-                    'array'              => is_array($value) ? $value : [$value],
-                    default              => null,
-                };
+                $context  = ['tree' => $tree];
+                $resolved = $this->parameter_resolver->deserialize((string) $value, $type_name, $context);
+
+
+                if ($resolved === null && !$type->allowsNull()) {
+                    $message = sprintf('The parameter "%s" could not be resolved.', $name);
+                    throw new HttpBadRequestException($message);
+                }
+
+                return $resolved;
             }
 
-            if ($resolved === null && !$type->allowsNull()) {
-                $message = sprintf('The parameter “%s” could not be resolved.', $name);
-                throw new HttpBadRequestException($message);
-            }
-
-            return $resolved;
+            // Unknown type
+            return null;
         } else {
             throw new HttpInternalServerErrorException('Cannot resolve union/intersection type for: ' . $name);
         }
@@ -231,31 +217,5 @@ class ControllerDispatcher implements MiddlewareInterface
         }
 
         return null;
-    }
-
-    private function castToInt(string $value, string $name): int|null
-    {
-        if ($value === '') {
-            return null;
-        }
-
-        if (!is_numeric($value) || (string) (int) $value !== $value) {
-            throw new HttpNotFoundException('Invalid integer parameter: ' . $name);
-        }
-
-        return (int) $value;
-    }
-
-    private function castToFloat(string $value, string $name): float|null
-    {
-        if ($value === '') {
-            return null;
-        }
-
-        if (!is_numeric($value)) {
-            throw new HttpNotFoundException('Invalid numeric parameter: ' . $name);
-        }
-
-        return (float) $value;
     }
 }

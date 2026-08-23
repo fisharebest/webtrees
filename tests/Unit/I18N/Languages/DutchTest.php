@@ -662,10 +662,12 @@ class DutchTest extends AbstractLanguageTestCase
         $nephewFromBro = self::male('npb', "1 FAMC @fbro@");
         $cousinFemale = self::female('cf', "1 FAMC @fbro@");
         $cousinMale = self::male('cm', "1 FAMC @fbro@");
-        $paternalGF = self::male('pgf', "1 FAMS @fgp@");
+        $paternalGF = self::male('pgf', "1 FAMS @fgp@\n1 FAMC @fggp@");
         $paternalGM = self::female('pgm', "1 FAMS @fgp@");
         $greatAunt = self::female('ga', "1 FAMC @fgp@");
         $greatUncle = self::male('gu', "1 FAMC @fgp@");
+        $greatGreatGF = self::male('gggf', "1 FAMS @fggp@");
+        $greatGreatGM = self::female('gggm', "1 FAMS @fggp@");
         $engaged = self::female('eng', "1 FAMS @fe@");
         $fiance = self::male('fan', "1 FAMS @fe@");
 
@@ -677,6 +679,7 @@ class DutchTest extends AbstractLanguageTestCase
         $fdau = self::family('fdau', "0 @fdau@ FAM\n1 MARR Y\n1 HUSB @hd@\n1 WIFE @d@");
         $fbro = self::family('fbro', "0 @fbro@ FAM\n1 HUSB @bh@\n1 CHIL @nb@\n1 CHIL @npb@\n1 CHIL @cf@\n1 CHIL @cm@");
         $fgp = self::family('fgp', "0 @fgp@ FAM\n1 HUSB @pgf@\n1 WIFE @pgm@\n1 CHIL @fh@\n1 CHIL @ga@\n1 CHIL @gu@");
+        $fggp = self::family('fggp', "0 @fggp@ FAM\n1 HUSB @gggf@\n1 WIFE @gggm@\n1 CHIL @pgf@");
         $fe = self::family('fe', "0 @fe@ FAM\n1 ENGA Y\n1 HUSB @fan@\n1 WIFE @eng@");
 
         self::registerStubs(
@@ -684,8 +687,9 @@ class DutchTest extends AbstractLanguageTestCase
              $fatherOfH, $motherOfH, $fatherOfW, $motherOfW, $brotherOfH, $sisterOfH,
              $wifeOfSon, $husbandOfDaughter,
              $nieceFromBro, $nephewFromBro, $cousinFemale, $cousinMale,
-             $paternalGF, $paternalGM, $greatAunt, $greatUncle, $engaged, $fiance],
-            [$fm, $fd, $fp, $fw, $fson, $fdau, $fbro, $fgp, $fe]
+             $paternalGF, $paternalGM, $greatAunt, $greatUncle,
+             $greatGreatGF, $greatGreatGM, $engaged, $fiance],
+            [$fm, $fd, $fp, $fw, $fson, $fdau, $fbro, $fgp, $fggp, $fe]
         );
 
         // Partners
@@ -709,6 +713,7 @@ class DutchTest extends AbstractLanguageTestCase
         // Siblings
         self::assertRelationshipNames('jongere zus', 'oudere broer', [$son, $fm, $daughter]);
         self::assertRelationshipNames('oudere broer', 'jongere zus', [$daughter, $fm, $son]);
+        self::assertRelationshipNames('jongere broer/zus', 'oudere broer', [$son, $fm, $child]);
 
         // Half-siblings
         self::assertRelationshipNames('halfbroer', 'halfzus', [$stepDaughter, $fd, $wife, $fm, $son]);
@@ -728,8 +733,12 @@ class DutchTest extends AbstractLanguageTestCase
         self::assertRelationshipName('kleindochter', [$fatherOfH, $fp, $husband, $fm, $daughter]);
 
         // Great-grandparents (dynamic)
-        self::assertRelationshipName('overovergrootvader', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGF]);
-        self::assertRelationshipName('overovergrootmoeder', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGM]);
+        self::assertRelationshipName('overgrootvader', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGF]);
+        self::assertRelationshipName('overgrootmoeder', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGM]);
+
+        // Great-great-grandparents (dynamic, bet+over prefix)
+        self::assertRelationshipName('betovergrootvader', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGF, $fggp, $greatGreatGF]);
+        self::assertRelationshipName('betovergrootmoeder', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGF, $fggp, $greatGreatGM]);
 
         // Aunts and uncles
         self::assertRelationshipNames('tante', 'neef', [$son, $fm, $husband, $fp, $sisterOfH]);
@@ -744,7 +753,7 @@ class DutchTest extends AbstractLanguageTestCase
         self::assertRelationshipName('neef', [$son, $fm, $husband, $fp, $brotherOfH, $fbro, $cousinMale]);
 
         // Great-aunt/uncle (dynamic)
-        self::assertRelationshipName('overtante', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $greatAunt]);
-        self::assertRelationshipName('overoom', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $greatUncle]);
+        self::assertRelationshipName('oudtante', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $greatAunt]);
+        self::assertRelationshipName('oudoom', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $greatUncle]);
     }
 }

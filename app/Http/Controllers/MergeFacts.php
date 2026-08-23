@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\FlashMessages;
@@ -27,6 +26,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
@@ -44,15 +44,15 @@ final class MergeFacts
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly LinkedRecordService $linked_record_service,
+        private UserInterface $user,
+        private LinkedRecordService $linked_record_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree  = Validator::attributes($request)->tree();
         $xref1 = Validator::queryParams($request)->isXref()->string('xref1');
         $xref2 = Validator::queryParams($request)->isXref()->string('xref2');
         $title = I18N::translate('Merge records') . ' — ' . e($tree->title());
@@ -114,9 +114,8 @@ final class MergeFacts
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree  = Validator::attributes($request)->tree();
         $xref1 = Validator::parsedBody($request)->isXref()->string('xref1');
         $xref2 = Validator::parsedBody($request)->isXref()->string('xref2');
         $keep1 = Validator::parsedBody($request)->list('keep1');
@@ -142,7 +141,7 @@ final class MergeFacts
         }
 
         // If we are not auto-accepting, then we can show a link to the pending deletion
-        if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
+        if ($this->user->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record2_name = $record2->fullName();
         } else {
             $record2_name = '<a class="alert-link" href="' . e($record2->url()) . '">' . $record2->fullName() . '</a>';

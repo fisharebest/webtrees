@@ -22,9 +22,8 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\AdminService;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function e;
 
@@ -33,15 +32,13 @@ final class FindDuplicateRecords
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly AdminService $admin_service,
+        private AdminService $admin_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
-
-        $tree = Validator::attributes($request)->tree();
 
         $duplicates = $this->admin_service->duplicateRecords($tree);
         $title      = I18N::translate('Find duplicates') . ' — ' . e($tree->title());

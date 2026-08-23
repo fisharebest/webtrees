@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -36,14 +37,12 @@ final class DataFixPage
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly ModuleService $module_service,
+        private ModuleService $module_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
         $data_fixes = $this->module_service->findByInterface(ModuleDataFixInterface::class, false, true);
 
         if ($data_fixes->isEmpty()) {

@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -44,17 +45,15 @@ final class ImportGedcom
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly AdminService $admin_service,
-        private readonly StreamFactoryInterface $stream_factory,
-        private readonly TreeService $tree_service,
+        private AdminService $admin_service,
+        private StreamFactoryInterface $stream_factory,
+        private TreeService $tree_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
-
-        $tree = Validator::attributes($request)->tree();
 
         $data_filesystem = Registry::filesystem()->data();
         $data_folder     = Registry::filesystem()->dataName();
@@ -75,9 +74,8 @@ final class ImportGedcom
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree               = Validator::attributes($request)->tree();
         $keep_media         = Validator::parsedBody($request)->boolean('keep_media', false);
         $word_wrapped_notes = Validator::parsedBody($request)->boolean('WORD_WRAPPED_NOTES', false);
         $gedcom_media_path  = Validator::parsedBody($request)->string('GEDCOM_MEDIA_PATH');

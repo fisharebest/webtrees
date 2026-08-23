@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -45,7 +46,8 @@ final class EmailPreferences
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly EmailService $email_service,
+        private UserInterface $user,
+        private EmailService $email_service,
     ) {
     }
 
@@ -110,7 +112,6 @@ final class EmailPreferences
 
     public function post(ServerRequestInterface $request): ResponseInterface
     {
-        $user          = Validator::attributes($request)->user();
         $active        = Validator::parsedBody($request)->string('SMTP_ACTIVE');
         $disp_name     = Validator::parsedBody($request)->string('SMTP_DISP_NAME');
         $from_name     = Validator::parsedBody($request)->string('SMTP_FROM_NAME');
@@ -146,10 +147,10 @@ final class EmailPreferences
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 
         if ($test) {
-            $success = $this->email_service->send(new SiteUser(), $user, $user, 'test', 'test', 'test');
+            $success = $this->email_service->send(new SiteUser(), $this->user, $this->user, 'test', 'test', 'test');
 
             if ($success) {
-                FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($user->email())), 'success');
+                FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($this->user->email())), 'success');
             } else {
                 FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
             }

@@ -54,12 +54,12 @@ final class UploadMedia
     private const int MAX_UPLOAD_FILES = 10;
 
     public function __construct(
-        private readonly MediaFileService $media_file_service,
-        private readonly PhpService $php_service,
+        private MediaFileService $media_file_service,
+        private PhpService $php_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 

@@ -20,11 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Algorithm\ConnectedComponent;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -38,10 +40,13 @@ final class Unconnected
 {
     use ViewResponseTrait;
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function __construct(
+        private UserInterface $user,
+    ) {
+    }
+
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree       = Validator::attributes($request)->tree();
-        $user       = Validator::attributes($request)->user();
         $aliases    = Validator::queryParams($request)->boolean('aliases', false);
         $associates = Validator::queryParams($request)->boolean('associates', false);
 
@@ -76,7 +81,7 @@ final class Unconnected
 
         $algorithm  = new ConnectedComponent($graph);
         $components = $algorithm->findConnectedComponents();
-        $root       = $tree->significantIndividual($user);
+        $root       = $tree->significantIndividual($this->user);
         $xref       = $root->xref();
 
         /** @var Individual[][] */
@@ -112,12 +117,12 @@ final class Unconnected
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         return redirect(route(self::class, [
             'aliases'    => Validator::parsedBody($request)->boolean('aliases', false),
             'associates' => Validator::parsedBody($request)->boolean('associates', false),
-            'tree'       => Validator::attributes($request)->tree()->name(),
+            'tree'       => $tree->name(),
         ]));
     }
 }

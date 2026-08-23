@@ -53,10 +53,10 @@ final class Register
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly CaptchaService $captcha_service,
-        private readonly EmailService $email_service,
-        private readonly RateLimitService $rate_limit_service,
-        private readonly UserService $user_service,
+        private CaptchaService $captcha_service,
+        private EmailService $email_service,
+        private RateLimitService $rate_limit_service,
+        private UserService $user_service,
     ) {
     }
 

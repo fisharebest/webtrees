@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -38,14 +39,12 @@ final class AddChildToIndividual
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly GedcomEditService $gedcom_edit_service
+        private GedcomEditService $gedcom_edit_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree       = Validator::attributes($request)->tree();
         $xref       = Validator::attributes($request)->isXref()->string('xref');
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
@@ -76,10 +75,8 @@ final class AddChildToIndividual
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree       = Validator::attributes($request)->tree();
         $xref       = Validator::attributes($request)->isXref()->string('xref');
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);

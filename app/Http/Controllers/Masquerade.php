@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UserService;
@@ -33,7 +34,8 @@ use function response;
 final class Masquerade
 {
     public function __construct(
-        private readonly UserService $user_service,
+        private UserInterface $user,
+        private UserService $user_service,
     ) {
     }
 
@@ -46,7 +48,7 @@ final class Masquerade
             throw new HttpNotFoundException();
         }
 
-        if (Validator::attributes($request)->user()->id() !== $user_id) {
+        if ($this->user->id() !== $user_id) {
             Log::addAuthenticationLog('Masquerade as user: ' . $user->userName());
             Auth::login($user);
             Session::put('masquerade', '1');

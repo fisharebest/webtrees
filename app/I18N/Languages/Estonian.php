@@ -263,97 +263,114 @@ final readonly class Estonian extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
+    /** @return array{string, string} */
+    private function rel(string $nominative, string $genitive): array
+    {
+        return [$nominative, '%s ' . $genitive];
+    }
+
+    /**
+     * Generate nominative and genitive forms for a dynamic relationship
+     * using the repeated "vana" prefix.
+     *
+     * vanaema → vanavanaema → vanavanavanaema
+     *
+     * @return array{string, string}
+     */
+    private function vana(int $n, string $nominative, string $genitive): array
+    {
+        return [
+            str_repeat('vana', $n) . $nominative,
+            '%s ' . str_repeat('vana', $n) . $genitive,
+        ];
+    }
+
+    /**
+     * @return array<Relationship>
+     */
     public function relationships(): array
     {
-        // Estonian genitive: nominative + genitive form for possessive constructions
-        $rel = static fn (string $nom, string $gen): array => [$nom, '%s ' . $gen];
-
-        // Estonian uses "vana" prefix for great- generations: vanavanaema = great-grandmother
-        $vana = static fn (int $n, string $nom, string $gen): array => [
-            str_repeat('vana', $n) . $nom,
-            '%s ' . str_repeat('vana', $n) . $gen,
-        ];
 
         return [
             // Parents
-            Relationship::fixed(...$rel('ema', 'ema'))->mother(),
-            Relationship::fixed(...$rel('isa', 'isa'))->father(),
-            Relationship::fixed(...$rel('vanem', 'vanema'))->parent(),
+            Relationship::fixed(...$this->rel('ema', 'ema'))->mother(),
+            Relationship::fixed(...$this->rel('isa', 'isa'))->father(),
+            Relationship::fixed(...$this->rel('vanem', 'vanema'))->parent(),
             // Children
-            Relationship::fixed(...$rel('tütar', 'tütre'))->daughter(),
-            Relationship::fixed(...$rel('poeg', 'poja'))->son(),
-            Relationship::fixed(...$rel('laps', 'lapse'))->child(),
+            Relationship::fixed(...$this->rel('tütar', 'tütre'))->daughter(),
+            Relationship::fixed(...$this->rel('poeg', 'poja'))->son(),
+            Relationship::fixed(...$this->rel('laps', 'lapse'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('õde', 'õe'))->sister(),
-            Relationship::fixed(...$rel('vend', 'venna'))->brother(),
+            Relationship::fixed(...$this->rel('õde', 'õe'))->sister(),
+            Relationship::fixed(...$this->rel('vend', 'venna'))->brother(),
             // Half-siblings
-            Relationship::fixed(...$rel('poolõde', 'poolõe'))->parent()->daughter(),
-            Relationship::fixed(...$rel('poolvend', 'poolvenna'))->parent()->son(),
-            Relationship::fixed(...$rel('poolõde', 'poolõe'))->parent()->child(),
+            Relationship::fixed(...$this->rel('poolõde', 'poolõe'))->parent()->daughter(),
+            Relationship::fixed(...$this->rel('poolvend', 'poolvenna'))->parent()->son(),
+            Relationship::fixed(...$this->rel('poolõde', 'poolõe'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$rel('kasuema', 'kasuema'))->parent()->wife(),
-            Relationship::fixed(...$rel('kasuisa', 'kasuisa'))->parent()->husband(),
-            Relationship::fixed(...$rel('kasutütar', 'kasutütre'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$rel('kasupoeg', 'kasupoja'))->married()->spouse()->son(),
-            Relationship::fixed(...$rel('kasulaps', 'kasulapse'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->rel('kasuema', 'kasuema'))->parent()->wife(),
+            Relationship::fixed(...$this->rel('kasuisa', 'kasuisa'))->parent()->husband(),
+            Relationship::fixed(...$this->rel('kasutütar', 'kasutütre'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->rel('kasupoeg', 'kasupoja'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->rel('kasulaps', 'kasulapse'))->married()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$rel('endine naine', 'endise naise'))->divorced()->partner()->female(),
-            Relationship::fixed(...$rel('endine mees', 'endise mehe'))->divorced()->partner()->male(),
-            Relationship::fixed(...$rel('endine abikaasa', 'endise abikaasa'))->divorced()->partner(),
-            Relationship::fixed(...$rel('kihlatu', 'kihlatu'))->engaged()->partner()->female(),
-            Relationship::fixed(...$rel('kihlatu', 'kihlatu'))->engaged()->partner()->male(),
-            Relationship::fixed(...$rel('naine', 'naise'))->wife(),
-            Relationship::fixed(...$rel('mees', 'mehe'))->husband(),
-            Relationship::fixed(...$rel('abikaasa', 'abikaasa'))->spouse(),
-            Relationship::fixed(...$rel('elukaaslane', 'elukaaslase'))->partner(),
+            Relationship::fixed(...$this->rel('endine naine', 'endise naise'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->rel('endine mees', 'endise mehe'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->rel('endine abikaasa', 'endise abikaasa'))->divorced()->partner(),
+            Relationship::fixed(...$this->rel('kihlatu', 'kihlatu'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->rel('kihlatu', 'kihlatu'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->rel('naine', 'naise'))->wife(),
+            Relationship::fixed(...$this->rel('mees', 'mehe'))->husband(),
+            Relationship::fixed(...$this->rel('abikaasa', 'abikaasa'))->spouse(),
+            Relationship::fixed(...$this->rel('elukaaslane', 'elukaaslase'))->partner(),
             // In-laws (spouse's parents)
-            Relationship::fixed(...$rel('ämm', 'ämma'))->married()->spouse()->mother(),
-            Relationship::fixed(...$rel('äi', 'äia'))->married()->spouse()->father(),
-            Relationship::fixed(...$rel('ämm', 'ämma'))->spouse()->mother(),
-            Relationship::fixed(...$rel('äi', 'äia'))->spouse()->father(),
+            Relationship::fixed(...$this->rel('ämm', 'ämma'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->rel('äi', 'äia'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->rel('ämm', 'ämma'))->spouse()->mother(),
+            Relationship::fixed(...$this->rel('äi', 'äia'))->spouse()->father(),
             // Children-in-law
-            Relationship::fixed(...$rel('minia', 'minia'))->child()->wife(),
-            Relationship::fixed(...$rel('väimees', 'väimehe'))->child()->husband(),
+            Relationship::fixed(...$this->rel('minia', 'minia'))->child()->wife(),
+            Relationship::fixed(...$this->rel('väimees', 'väimehe'))->child()->husband(),
             // Siblings-in-law
-            Relationship::fixed(...$rel('käli', 'käli'))->spouse()->sister(),
-            Relationship::fixed(...$rel('küdi', 'küdi'))->spouse()->brother(),
-            Relationship::fixed(...$rel('käli', 'käli'))->sibling()->wife(),
-            Relationship::fixed(...$rel('küdi', 'küdi'))->sibling()->husband(),
+            Relationship::fixed(...$this->rel('käli', 'käli'))->spouse()->sister(),
+            Relationship::fixed(...$this->rel('küdi', 'küdi'))->spouse()->brother(),
+            Relationship::fixed(...$this->rel('käli', 'käli'))->sibling()->wife(),
+            Relationship::fixed(...$this->rel('küdi', 'küdi'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$rel('vanaema', 'vanaema'))->parent()->mother(),
-            Relationship::fixed(...$rel('vanaisa', 'vanaisa'))->parent()->father(),
-            Relationship::fixed(...$rel('vanavanem', 'vanavanema'))->parent()->parent(),
+            Relationship::fixed(...$this->rel('vanaema', 'vanaema'))->parent()->mother(),
+            Relationship::fixed(...$this->rel('vanaisa', 'vanaisa'))->parent()->father(),
+            Relationship::fixed(...$this->rel('vanavanem', 'vanavanema'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$rel('lapselaps', 'lapselapse'))->child()->child(),
+            Relationship::fixed(...$this->rel('lapselaps', 'lapselapse'))->child()->child(),
             // Aunts and uncles
-            Relationship::fixed(...$rel('tädi', 'tädi'))->parent()->sister(),
-            Relationship::fixed(...$rel('onu', 'onu'))->parent()->brother(),
+            Relationship::fixed(...$this->rel('tädi', 'tädi'))->parent()->sister(),
+            Relationship::fixed(...$this->rel('onu', 'onu'))->parent()->brother(),
             // Nieces and nephews
-            Relationship::fixed(...$rel('vennatütar', 'vennatütre'))->brother()->daughter(),
-            Relationship::fixed(...$rel('vennapoeg', 'vennapoja'))->brother()->son(),
-            Relationship::fixed(...$rel('õetütar', 'õetütre'))->sister()->daughter(),
-            Relationship::fixed(...$rel('õepoeg', 'õepoja'))->sister()->son(),
-            Relationship::fixed(...$rel('vennatütar', 'vennatütre'))->sibling()->daughter(),
-            Relationship::fixed(...$rel('vennapoeg', 'vennapoja'))->sibling()->son(),
+            Relationship::fixed(...$this->rel('vennatütar', 'vennatütre'))->brother()->daughter(),
+            Relationship::fixed(...$this->rel('vennapoeg', 'vennapoja'))->brother()->son(),
+            Relationship::fixed(...$this->rel('õetütar', 'õetütre'))->sister()->daughter(),
+            Relationship::fixed(...$this->rel('õepoeg', 'õepoja'))->sister()->son(),
+            Relationship::fixed(...$this->rel('vennatütar', 'vennatütre'))->sibling()->daughter(),
+            Relationship::fixed(...$this->rel('vennapoeg', 'vennapoja'))->sibling()->son(),
             // Cousins
-            Relationship::fixed(...$rel('nõbu', 'nõbu'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->rel('nõbu', 'nõbu'))->parent()->sibling()->child(),
             // Dynamic — great-grandparents and beyond
-            Relationship::dynamic(static fn (int $n) => $vana($n - 1, 'ema', 'ema'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $vana($n - 1, 'isa', 'isa'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $vana($n - 1, 'vanem', 'vanema'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->vana($n - 1, 'ema', 'ema'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->vana($n - 1, 'isa', 'isa'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->vana($n - 1, 'vanem', 'vanema'))->ancestor(),
             // Dynamic — great-grandchildren
-            Relationship::dynamic(static fn (int $n) => [
+            Relationship::dynamic(fn (int $n) => [
                 str_repeat('lapse', $n - 1) . 'laps',
                 '%s ' . str_repeat('lapse', $n - 1) . 'lapse',
             ])->descendant(),
             // Dynamic — great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $vana($n - 1, 'tädi', 'tädi'))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $vana($n - 1, 'onu', 'onu'))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->vana($n - 1, 'tädi', 'tädi'))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->vana($n - 1, 'onu', 'onu'))->ancestor()->brother(),
             // Dynamic — great-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $vana($n - 1, 'vennatütar', 'vennatütre'))->brother()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $vana($n - 1, 'vennapoeg', 'vennapoja'))->brother()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $vana($n - 1, 'õetütar', 'õetütre'))->sister()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $vana($n - 1, 'õepoeg', 'õepoja'))->sister()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->vana($n - 1, 'vennatütar', 'vennatütre'))->brother()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->vana($n - 1, 'vennapoeg', 'vennapoja'))->brother()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->vana($n - 1, 'õetütar', 'õetütre'))->sister()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->vana($n - 1, 'õepoeg', 'õepoja'))->sister()->descendant()->male(),
         ];
     }
 }

@@ -20,11 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\Exceptions\HttpForbiddenException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -37,17 +39,17 @@ final class AddNewFact
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly GedcomEditService $gedcom_edit_service,
+        private UserInterface $user,
+        private GedcomEditService $gedcom_edit_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
         $xref   = Validator::attributes($request)->isXref()->string('xref');
         $subtag = Validator::attributes($request)->isTag()->string('fact');
 
-        if ($subtag === 'OBJE' && !Auth::canUploadMedia($tree, Auth::user())) {
+        if ($subtag === 'OBJE' && !Auth::canUploadMedia($tree, $this->user)) {
             throw new HttpForbiddenException();
         }
 

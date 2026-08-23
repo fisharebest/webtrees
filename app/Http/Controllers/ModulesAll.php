@@ -36,11 +36,11 @@ final class ModulesAll
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly ModuleService $module_service,
+        private ModuleService $module_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 

@@ -149,169 +149,175 @@ final readonly class Japanese extends AbstractLanguage
 
     protected const array JALALI_MONTHS_INSTRUMENTAL = self::JALALI_MONTHS_NOMINATIVE;
 
+        /** @return array{string, string} */
+    private function ja(string $s): array
+    {
+        return [$s, $s . 'の%s'];
+    }
+
+    /**
+     * @return array<Relationship>
+     */
     public function relationships(): array
     {
-        // Japanese uses の (no) for possessive — "母の%s" = "mother's X"
-        $ja = static fn (string $s): array => [$s, $s . 'の%s'];
-
         return [
             // Adopted
-            Relationship::fixed(...$ja('養母'))->adoptive()->mother(),
-            Relationship::fixed(...$ja('養父'))->adoptive()->father(),
-            Relationship::fixed(...$ja('養親'))->adoptive()->parent(),
-            Relationship::fixed(...$ja('養女'))->adopted()->daughter(),
-            Relationship::fixed(...$ja('養子'))->adopted()->son(),
-            Relationship::fixed(...$ja('養子女'))->adopted()->child(),
+            Relationship::fixed(...$this->ja('養母'))->adoptive()->mother(),
+            Relationship::fixed(...$this->ja('養父'))->adoptive()->father(),
+            Relationship::fixed(...$this->ja('養親'))->adoptive()->parent(),
+            Relationship::fixed(...$this->ja('養女'))->adopted()->daughter(),
+            Relationship::fixed(...$this->ja('養子'))->adopted()->son(),
+            Relationship::fixed(...$this->ja('養子女'))->adopted()->child(),
             // Fostered
-            Relationship::fixed(...$ja('里母'))->fostering()->mother(),
-            Relationship::fixed(...$ja('里父'))->fostering()->father(),
-            Relationship::fixed(...$ja('里親'))->fostering()->parent(),
-            Relationship::fixed(...$ja('里娘'))->fostered()->daughter(),
-            Relationship::fixed(...$ja('里子'))->fostered()->son(),
-            Relationship::fixed(...$ja('里子女'))->fostered()->child(),
+            Relationship::fixed(...$this->ja('里母'))->fostering()->mother(),
+            Relationship::fixed(...$this->ja('里父'))->fostering()->father(),
+            Relationship::fixed(...$this->ja('里親'))->fostering()->parent(),
+            Relationship::fixed(...$this->ja('里娘'))->fostered()->daughter(),
+            Relationship::fixed(...$this->ja('里子'))->fostered()->son(),
+            Relationship::fixed(...$this->ja('里子女'))->fostered()->child(),
             // Step
-            Relationship::fixed(...$ja('継母'))->parent()->wife(),
-            Relationship::fixed(...$ja('継父'))->parent()->husband(),
-            Relationship::fixed(...$ja('継娘'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$ja('継息子'))->married()->spouse()->son(),
-            Relationship::fixed(...$ja('継子'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->ja('継母'))->parent()->wife(),
+            Relationship::fixed(...$this->ja('継父'))->parent()->husband(),
+            Relationship::fixed(...$this->ja('継娘'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->ja('継息子'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->ja('継子'))->married()->spouse()->child(),
             // Parents
-            Relationship::fixed(...$ja('母'))->mother(),
-            Relationship::fixed(...$ja('父'))->father(),
-            Relationship::fixed(...$ja('親'))->parent(),
+            Relationship::fixed(...$this->ja('母'))->mother(),
+            Relationship::fixed(...$this->ja('父'))->father(),
+            Relationship::fixed(...$this->ja('親'))->parent(),
             // Children
-            Relationship::fixed(...$ja('娘'))->daughter(),
-            Relationship::fixed(...$ja('息子'))->son(),
-            Relationship::fixed(...$ja('子'))->child(),
+            Relationship::fixed(...$this->ja('娘'))->daughter(),
+            Relationship::fixed(...$this->ja('息子'))->son(),
+            Relationship::fixed(...$this->ja('子'))->child(),
             // Siblings — elder/younger distinction
-            Relationship::fixed(...$ja('双子の姉'))->multiple()->older()->sister(),
-            Relationship::fixed(...$ja('双子の妹'))->multiple()->younger()->sister(),
-            Relationship::fixed(...$ja('双子の兄'))->multiple()->older()->brother(),
-            Relationship::fixed(...$ja('双子の弟'))->multiple()->younger()->brother(),
-            Relationship::fixed(...$ja('双子'))->multiple()->sibling(),
-            Relationship::fixed(...$ja('姉'))->older()->sister(),
-            Relationship::fixed(...$ja('兄'))->older()->brother(),
-            Relationship::fixed(...$ja('妹'))->younger()->sister(),
-            Relationship::fixed(...$ja('弟'))->younger()->brother(),
-            Relationship::fixed(...$ja('姉妹'))->sister(),
-            Relationship::fixed(...$ja('兄弟'))->brother(),
-            Relationship::fixed(...$ja('きょうだい'))->sibling(),
+            Relationship::fixed(...$this->ja('双子の姉'))->multiple()->older()->sister(),
+            Relationship::fixed(...$this->ja('双子の妹'))->multiple()->younger()->sister(),
+            Relationship::fixed(...$this->ja('双子の兄'))->multiple()->older()->brother(),
+            Relationship::fixed(...$this->ja('双子の弟'))->multiple()->younger()->brother(),
+            Relationship::fixed(...$this->ja('双子'))->multiple()->sibling(),
+            Relationship::fixed(...$this->ja('姉'))->older()->sister(),
+            Relationship::fixed(...$this->ja('兄'))->older()->brother(),
+            Relationship::fixed(...$this->ja('妹'))->younger()->sister(),
+            Relationship::fixed(...$this->ja('弟'))->younger()->brother(),
+            Relationship::fixed(...$this->ja('姉妹'))->sister(),
+            Relationship::fixed(...$this->ja('兄弟'))->brother(),
+            Relationship::fixed(...$this->ja('きょうだい'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$ja('異母姉妹'))->father()->daughter(),
-            Relationship::fixed(...$ja('異母兄弟'))->father()->son(),
-            Relationship::fixed(...$ja('異父姉妹'))->mother()->daughter(),
-            Relationship::fixed(...$ja('異父兄弟'))->mother()->son(),
-            Relationship::fixed(...$ja('異父母きょうだい'))->parent()->child(),
+            Relationship::fixed(...$this->ja('異母姉妹'))->father()->daughter(),
+            Relationship::fixed(...$this->ja('異母兄弟'))->father()->son(),
+            Relationship::fixed(...$this->ja('異父姉妹'))->mother()->daughter(),
+            Relationship::fixed(...$this->ja('異父兄弟'))->mother()->son(),
+            Relationship::fixed(...$this->ja('異父母きょうだい'))->parent()->child(),
             // Partners
-            Relationship::fixed(...$ja('元妻'))->divorced()->partner()->female(),
-            Relationship::fixed(...$ja('元夫'))->divorced()->partner()->male(),
-            Relationship::fixed(...$ja('元配偶者'))->divorced()->partner(),
-            Relationship::fixed(...$ja('婚約者'))->engaged()->partner()->female(),
-            Relationship::fixed(...$ja('婚約者'))->engaged()->partner()->male(),
-            Relationship::fixed(...$ja('妻'))->wife(),
-            Relationship::fixed(...$ja('夫'))->husband(),
-            Relationship::fixed(...$ja('配偶者'))->spouse(),
-            Relationship::fixed(...$ja('パートナー'))->partner(),
+            Relationship::fixed(...$this->ja('元妻'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->ja('元夫'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->ja('元配偶者'))->divorced()->partner(),
+            Relationship::fixed(...$this->ja('婚約者'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->ja('婚約者'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->ja('妻'))->wife(),
+            Relationship::fixed(...$this->ja('夫'))->husband(),
+            Relationship::fixed(...$this->ja('配偶者'))->spouse(),
+            Relationship::fixed(...$this->ja('パートナー'))->partner(),
             // In-laws — spouse's parents
-            Relationship::fixed(...$ja('姑'))->husband()->mother(),
-            Relationship::fixed(...$ja('舅'))->husband()->father(),
-            Relationship::fixed(...$ja('義母'))->wife()->mother(),
-            Relationship::fixed(...$ja('義父'))->wife()->father(),
-            Relationship::fixed(...$ja('義親'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->ja('姑'))->husband()->mother(),
+            Relationship::fixed(...$this->ja('舅'))->husband()->father(),
+            Relationship::fixed(...$this->ja('義母'))->wife()->mother(),
+            Relationship::fixed(...$this->ja('義父'))->wife()->father(),
+            Relationship::fixed(...$this->ja('義親'))->married()->spouse()->parent(),
             // In-laws — child's spouse
-            Relationship::fixed(...$ja('嫁'))->son()->wife(),
-            Relationship::fixed(...$ja('婿'))->daughter()->husband(),
-            Relationship::fixed(...$ja('嫁'))->child()->wife(),
-            Relationship::fixed(...$ja('婿'))->child()->husband(),
+            Relationship::fixed(...$this->ja('嫁'))->son()->wife(),
+            Relationship::fixed(...$this->ja('婿'))->daughter()->husband(),
+            Relationship::fixed(...$this->ja('嫁'))->child()->wife(),
+            Relationship::fixed(...$this->ja('婿'))->child()->husband(),
             // In-laws — spouse's siblings
-            Relationship::fixed(...$ja('小姑'))->husband()->sister(),
-            Relationship::fixed(...$ja('義兄弟'))->husband()->brother(),
-            Relationship::fixed(...$ja('義姉妹'))->wife()->sister(),
-            Relationship::fixed(...$ja('義兄弟'))->wife()->brother(),
+            Relationship::fixed(...$this->ja('小姑'))->husband()->sister(),
+            Relationship::fixed(...$this->ja('義兄弟'))->husband()->brother(),
+            Relationship::fixed(...$this->ja('義姉妹'))->wife()->sister(),
+            Relationship::fixed(...$this->ja('義兄弟'))->wife()->brother(),
             // In-laws — sibling's spouse
-            Relationship::fixed(...$ja('兄嫁'))->brother()->wife(),
-            Relationship::fixed(...$ja('姉婿'))->sister()->husband(),
+            Relationship::fixed(...$this->ja('兄嫁'))->brother()->wife(),
+            Relationship::fixed(...$this->ja('姉婿'))->sister()->husband(),
             // Grandparents — paternal
-            Relationship::fixed(...$ja('父方の祖母'))->father()->mother(),
-            Relationship::fixed(...$ja('父方の祖父'))->father()->father(),
+            Relationship::fixed(...$this->ja('父方の祖母'))->father()->mother(),
+            Relationship::fixed(...$this->ja('父方の祖父'))->father()->father(),
             // Grandparents — maternal
-            Relationship::fixed(...$ja('母方の祖母'))->mother()->mother(),
-            Relationship::fixed(...$ja('母方の祖父'))->mother()->father(),
+            Relationship::fixed(...$this->ja('母方の祖母'))->mother()->mother(),
+            Relationship::fixed(...$this->ja('母方の祖父'))->mother()->father(),
             // Grandparents — generic
-            Relationship::fixed(...$ja('祖父母'))->parent()->parent(),
+            Relationship::fixed(...$this->ja('祖父母'))->parent()->parent(),
             // Grandchildren — son's children
-            Relationship::fixed(...$ja('孫娘'))->son()->daughter(),
-            Relationship::fixed(...$ja('孫息子'))->son()->son(),
+            Relationship::fixed(...$this->ja('孫娘'))->son()->daughter(),
+            Relationship::fixed(...$this->ja('孫息子'))->son()->son(),
             // Grandchildren — daughter's children
-            Relationship::fixed(...$ja('孫娘'))->daughter()->daughter(),
-            Relationship::fixed(...$ja('孫息子'))->daughter()->son(),
+            Relationship::fixed(...$this->ja('孫娘'))->daughter()->daughter(),
+            Relationship::fixed(...$this->ja('孫息子'))->daughter()->son(),
             // Grandchildren — generic
-            Relationship::fixed(...$ja('孫'))->child()->child(),
+            Relationship::fixed(...$this->ja('孫'))->child()->child(),
             // Aunts/Uncles — paternal
-            Relationship::fixed(...$ja('父方の伯母/叔母'))->father()->sister(),
-            Relationship::fixed(...$ja('父方の伯父/叔父'))->father()->brother(),
+            Relationship::fixed(...$this->ja('父方の伯母/叔母'))->father()->sister(),
+            Relationship::fixed(...$this->ja('父方の伯父/叔父'))->father()->brother(),
             // Aunts/Uncles — maternal
-            Relationship::fixed(...$ja('母方の伯母/叔母'))->mother()->sister(),
-            Relationship::fixed(...$ja('母方の伯父/叔父'))->mother()->brother(),
+            Relationship::fixed(...$this->ja('母方の伯母/叔母'))->mother()->sister(),
+            Relationship::fixed(...$this->ja('母方の伯父/叔父'))->mother()->brother(),
             // Aunts/Uncles — generic
-            Relationship::fixed(...$ja('伯母/叔母'))->parent()->sister(),
-            Relationship::fixed(...$ja('伯父/叔父'))->parent()->brother(),
+            Relationship::fixed(...$this->ja('伯母/叔母'))->parent()->sister(),
+            Relationship::fixed(...$this->ja('伯父/叔父'))->parent()->brother(),
             // Uncle/aunt's spouses
-            Relationship::fixed(...$ja('伯母/叔母の夫'))->parent()->sister()->husband(),
-            Relationship::fixed(...$ja('伯父/叔父の妻'))->parent()->brother()->wife(),
+            Relationship::fixed(...$this->ja('伯母/叔母の夫'))->parent()->sister()->husband(),
+            Relationship::fixed(...$this->ja('伯父/叔父の妻'))->parent()->brother()->wife(),
             // Nieces/Nephews
-            Relationship::fixed(...$ja('姪'))->brother()->daughter(),
-            Relationship::fixed(...$ja('甥'))->brother()->son(),
-            Relationship::fixed(...$ja('姪'))->sister()->daughter(),
-            Relationship::fixed(...$ja('甥'))->sister()->son(),
-            Relationship::fixed(...$ja('甥姪'))->sibling()->child(),
+            Relationship::fixed(...$this->ja('姪'))->brother()->daughter(),
+            Relationship::fixed(...$this->ja('甥'))->brother()->son(),
+            Relationship::fixed(...$this->ja('姪'))->sister()->daughter(),
+            Relationship::fixed(...$this->ja('甥'))->sister()->son(),
+            Relationship::fixed(...$this->ja('甥姪'))->sibling()->child(),
             // Cousins — generic (Japanese doesn't distinguish paternal/maternal cousins as strictly as Chinese)
-            Relationship::fixed(...$ja('従姉'))->older()->parent()->sibling()->daughter(),
-            Relationship::fixed(...$ja('従妹'))->younger()->parent()->sibling()->daughter(),
-            Relationship::fixed(...$ja('従兄'))->older()->parent()->sibling()->son(),
-            Relationship::fixed(...$ja('従弟'))->younger()->parent()->sibling()->son(),
-            Relationship::fixed(...$ja('従姉妹'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$ja('従兄弟'))->parent()->sibling()->son(),
-            Relationship::fixed(...$ja('いとこ'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->ja('従姉'))->older()->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->ja('従妹'))->younger()->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->ja('従兄'))->older()->parent()->sibling()->son(),
+            Relationship::fixed(...$this->ja('従弟'))->younger()->parent()->sibling()->son(),
+            Relationship::fixed(...$this->ja('従姉妹'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->ja('従兄弟'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->ja('いとこ'))->parent()->sibling()->child(),
             // Dynamic: great-grandparents
-            Relationship::dynamic(static fn (int $n) => match ($n) {
-                3       => $ja('曾祖母'),
-                4       => $ja('高祖母'),
-                default => $ja(($n - 2) . '世の祖母'),
+            Relationship::dynamic(fn (int $n) => match ($n) {
+                3       => $this->ja('曾祖母'),
+                4       => $this->ja('高祖母'),
+                default => $this->ja(($n - 2) . '世の祖母'),
             })->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => match ($n) {
-                3       => $ja('曾祖父'),
-                4       => $ja('高祖父'),
-                default => $ja(($n - 2) . '世の祖父'),
+            Relationship::dynamic(fn (int $n) => match ($n) {
+                3       => $this->ja('曾祖父'),
+                4       => $this->ja('高祖父'),
+                default => $this->ja(($n - 2) . '世の祖父'),
             })->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => match ($n) {
-                3       => $ja('曾祖'),
-                4       => $ja('高祖'),
-                default => $ja(($n - 2) . '世の祖'),
+            Relationship::dynamic(fn (int $n) => match ($n) {
+                3       => $this->ja('曾祖'),
+                4       => $this->ja('高祖'),
+                default => $this->ja(($n - 2) . '世の祖'),
             })->ancestor(),
             // Dynamic: great-grandchildren
-            Relationship::dynamic(static fn (int $n) => match ($n) {
-                3       => $ja('曾孫娘'),
-                4       => $ja('玄孫娘'),
-                default => $ja(($n - 2) . '世の孫娘'),
+            Relationship::dynamic(fn (int $n) => match ($n) {
+                3       => $this->ja('曾孫娘'),
+                4       => $this->ja('玄孫娘'),
+                default => $this->ja(($n - 2) . '世の孫娘'),
             })->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => match ($n) {
-                3       => $ja('曾孫'),
-                4       => $ja('玄孫'),
-                default => $ja(($n - 2) . '世の孫'),
+            Relationship::dynamic(fn (int $n) => match ($n) {
+                3       => $this->ja('曾孫'),
+                4       => $this->ja('玄孫'),
+                default => $this->ja(($n - 2) . '世の孫'),
             })->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => match ($n) {
-                3       => $ja('曾孫'),
-                4       => $ja('玄孫'),
-                default => $ja(($n - 2) . '世の孫'),
+            Relationship::dynamic(fn (int $n) => match ($n) {
+                3       => $this->ja('曾孫'),
+                4       => $this->ja('玄孫'),
+                default => $this->ja(($n - 2) . '世の孫'),
             })->descendant(),
             // Dynamic: great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $ja($n . '世の伯母/叔母'))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $ja($n . '世の伯父/叔父'))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->ja($n . '世の伯母/叔母'))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->ja($n . '世の伯父/叔父'))->ancestor()->brother(),
             // Dynamic: great-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $ja($n . '世の姪'))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $ja($n . '世の甥'))->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $ja($n . '世の甥姪'))->sibling()->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->ja($n . '世の姪'))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->ja($n . '世の甥'))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->ja($n . '世の甥姪'))->sibling()->descendant(),
         ];
     }
 }

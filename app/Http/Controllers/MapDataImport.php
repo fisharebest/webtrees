@@ -62,11 +62,11 @@ final class MapDataImport
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly StreamFactoryInterface $stream_factory,
+        private StreamFactoryInterface $stream_factory,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 

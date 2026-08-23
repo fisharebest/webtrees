@@ -19,8 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\RedirectLifeSpanPhp;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\LifespansChartModule;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
@@ -30,7 +32,6 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\RedirectLifeSpanPhp;
 
 #[CoversClass(RedirectLifeSpanPhp::class)]
 class RedirectLifeSpanPhpTest extends TestCase
@@ -67,11 +68,11 @@ class RedirectLifeSpanPhpTest extends TestCase
             ->with(ModuleChartInterface::class)
             ->willReturn(new Collection([$module]));
 
-        $handler = new RedirectLifeSpanPhp($module_service, $tree_service);
+        $controller = new RedirectLifeSpanPhp(self::createStub(UserInterface::class), $module_service, $tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'rootid' => 'X123']);
 
-        $response = $handler->get($request);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::MovedPermanently->value, $response->getStatusCode());
         self::assertSame('https://www.example.com', $response->getHeaderLine('Location'));
@@ -93,13 +94,13 @@ class RedirectLifeSpanPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $handler = new RedirectLifeSpanPhp($module_service, $tree_service);
+        $controller = new RedirectLifeSpanPhp(self::createStub(UserInterface::class), $module_service, $tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'rootid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 
     public function testNoSuchTree(): void
@@ -112,12 +113,12 @@ class RedirectLifeSpanPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection([]));
 
-        $handler = new RedirectLifeSpanPhp($module_service, $tree_service);
+        $controller = new RedirectLifeSpanPhp(self::createStub(UserInterface::class), $module_service, $tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'rootid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 }

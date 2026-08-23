@@ -160,96 +160,101 @@ final readonly class Lingala extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
+        /** @return array{string, string} */
+    private function ln(string $s): array
+    {
+        return [$s, $s . ' ya %s'];
+    }
+
+    /**
+     * @return array<Relationship>
+     */
     public function relationships(): array
     {
-        // Lingala genitive: "ya" (of) — e.g. "mama ya %s"
-        // Bantu noun-class language; kinship terms are relatively flat
-        $ln = static fn (string $s): array => [$s, $s . ' ya %s'];
-
         return [
             // Parents
-            Relationship::fixed(...$ln('mama'))->mother(),
-            Relationship::fixed(...$ln('tata'))->father(),
-            Relationship::fixed(...$ln('moboti'))->parent(),
+            Relationship::fixed(...$this->ln('mama'))->mother(),
+            Relationship::fixed(...$this->ln('tata'))->father(),
+            Relationship::fixed(...$this->ln('moboti'))->parent(),
             // Children
-            Relationship::fixed(...$ln('mwana mwasi'))->daughter(),
-            Relationship::fixed(...$ln('mwana mobali'))->son(),
-            Relationship::fixed(...$ln('mwana'))->child(),
+            Relationship::fixed(...$this->ln('mwana mwasi'))->daughter(),
+            Relationship::fixed(...$this->ln('mwana mobali'))->son(),
+            Relationship::fixed(...$this->ln('mwana'))->child(),
             // Siblings
-            Relationship::fixed(...$ln('ndeko mwasi'))->sister(),
-            Relationship::fixed(...$ln('ndeko mobali'))->brother(),
-            Relationship::fixed(...$ln('ndeko'))->sibling(),
+            Relationship::fixed(...$this->ln('ndeko mwasi'))->sister(),
+            Relationship::fixed(...$this->ln('ndeko mobali'))->brother(),
+            Relationship::fixed(...$this->ln('ndeko'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$ln('ndeko mwasi ya ndámbo'))->parent()->daughter(),
-            Relationship::fixed(...$ln('ndeko mobali ya ndámbo'))->parent()->son(),
-            Relationship::fixed(...$ln('ndeko ya ndámbo'))->parent()->child(),
+            Relationship::fixed(...$this->ln('ndeko mwasi ya ndámbo'))->parent()->daughter(),
+            Relationship::fixed(...$this->ln('ndeko mobali ya ndámbo'))->parent()->son(),
+            Relationship::fixed(...$this->ln('ndeko ya ndámbo'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$ln('mama ya kobɔkɔla'))->parent()->wife(),
-            Relationship::fixed(...$ln('tata ya kobɔkɔla'))->parent()->husband(),
-            Relationship::fixed(...$ln('moboti ya kobɔkɔla'))->parent()->married()->spouse(),
-            Relationship::fixed(...$ln('mwana mwasi ya kobɔkɔla'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$ln('mwana mobali ya kobɔkɔla'))->married()->spouse()->son(),
-            Relationship::fixed(...$ln('mwana ya kobɔkɔla'))->married()->spouse()->child(),
-            Relationship::fixed(...$ln('ndeko mwasi ya kobɔkɔla'))->parent()->spouse()->daughter(),
-            Relationship::fixed(...$ln('ndeko mobali ya kobɔkɔla'))->parent()->spouse()->son(),
-            Relationship::fixed(...$ln('ndeko ya kobɔkɔla'))->parent()->spouse()->child(),
+            Relationship::fixed(...$this->ln('mama ya kobɔkɔla'))->parent()->wife(),
+            Relationship::fixed(...$this->ln('tata ya kobɔkɔla'))->parent()->husband(),
+            Relationship::fixed(...$this->ln('moboti ya kobɔkɔla'))->parent()->married()->spouse(),
+            Relationship::fixed(...$this->ln('mwana mwasi ya kobɔkɔla'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->ln('mwana mobali ya kobɔkɔla'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->ln('mwana ya kobɔkɔla'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->ln('ndeko mwasi ya kobɔkɔla'))->parent()->spouse()->daughter(),
+            Relationship::fixed(...$this->ln('ndeko mobali ya kobɔkɔla'))->parent()->spouse()->son(),
+            Relationship::fixed(...$this->ln('ndeko ya kobɔkɔla'))->parent()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$ln('molongani ya kala'))->divorced()->partner()->female(),
-            Relationship::fixed(...$ln('molongani ya kala'))->divorced()->partner()->male(),
-            Relationship::fixed(...$ln('molongani ya kala'))->divorced()->partner(),
-            Relationship::fixed(...$ln('mobalani'))->engaged()->partner()->female(),
-            Relationship::fixed(...$ln('mobalani'))->engaged()->partner()->male(),
-            Relationship::fixed(...$ln('mwasi'))->wife(),
-            Relationship::fixed(...$ln('mobali'))->husband(),
-            Relationship::fixed(...$ln('molongani'))->spouse(),
-            Relationship::fixed(...$ln('moninga'))->partner(),
+            Relationship::fixed(...$this->ln('molongani ya kala'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->ln('molongani ya kala'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->ln('molongani ya kala'))->divorced()->partner(),
+            Relationship::fixed(...$this->ln('mobalani'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->ln('mobalani'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->ln('mwasi'))->wife(),
+            Relationship::fixed(...$this->ln('mobali'))->husband(),
+            Relationship::fixed(...$this->ln('molongani'))->spouse(),
+            Relationship::fixed(...$this->ln('moninga'))->partner(),
             // In-laws
-            Relationship::fixed(...$ln('bokilo mwasi'))->married()->spouse()->mother(),
-            Relationship::fixed(...$ln('bokilo mobali'))->married()->spouse()->father(),
-            Relationship::fixed(...$ln('bokilo'))->married()->spouse()->parent(),
-            Relationship::fixed(...$ln('bɔkɛli mwasi'))->child()->wife(),
-            Relationship::fixed(...$ln('bɔkɛli mobali'))->child()->husband(),
-            Relationship::fixed(...$ln('ndeko mwasi ya molongani'))->spouse()->sister(),
-            Relationship::fixed(...$ln('ndeko mobali ya molongani'))->spouse()->brother(),
-            Relationship::fixed(...$ln('mwasi ya ndeko'))->sibling()->wife(),
-            Relationship::fixed(...$ln('mobali ya ndeko'))->sibling()->husband(),
+            Relationship::fixed(...$this->ln('bokilo mwasi'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->ln('bokilo mobali'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->ln('bokilo'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->ln('bɔkɛli mwasi'))->child()->wife(),
+            Relationship::fixed(...$this->ln('bɔkɛli mobali'))->child()->husband(),
+            Relationship::fixed(...$this->ln('ndeko mwasi ya molongani'))->spouse()->sister(),
+            Relationship::fixed(...$this->ln('ndeko mobali ya molongani'))->spouse()->brother(),
+            Relationship::fixed(...$this->ln('mwasi ya ndeko'))->sibling()->wife(),
+            Relationship::fixed(...$this->ln('mobali ya ndeko'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$ln('nkɔkɔ mwasi'))->parent()->mother(),
-            Relationship::fixed(...$ln('nkɔkɔ mobali'))->parent()->father(),
-            Relationship::fixed(...$ln('nkɔkɔ'))->parent()->parent(),
+            Relationship::fixed(...$this->ln('nkɔkɔ mwasi'))->parent()->mother(),
+            Relationship::fixed(...$this->ln('nkɔkɔ mobali'))->parent()->father(),
+            Relationship::fixed(...$this->ln('nkɔkɔ'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$ln('nkɔkɔ mwasi'))->child()->daughter(),
-            Relationship::fixed(...$ln('nkɔkɔ mobali'))->child()->son(),
-            Relationship::fixed(...$ln('nkɔkɔ'))->child()->child(),
+            Relationship::fixed(...$this->ln('nkɔkɔ mwasi'))->child()->daughter(),
+            Relationship::fixed(...$this->ln('nkɔkɔ mobali'))->child()->son(),
+            Relationship::fixed(...$this->ln('nkɔkɔ'))->child()->child(),
             // Aunts and uncles
-            Relationship::fixed(...$ln('tántí'))->mother()->sister(),
-            Relationship::fixed(...$ln('tɔ́ngɔ'))->mother()->brother(),
-            Relationship::fixed(...$ln('tántí'))->father()->sister(),
-            Relationship::fixed(...$ln('nkɔ́kɔ'))->father()->brother(),
-            Relationship::fixed(...$ln('tántí'))->parent()->sister(),
-            Relationship::fixed(...$ln('nkɔ́kɔ'))->parent()->brother(),
+            Relationship::fixed(...$this->ln('tántí'))->mother()->sister(),
+            Relationship::fixed(...$this->ln('tɔ́ngɔ'))->mother()->brother(),
+            Relationship::fixed(...$this->ln('tántí'))->father()->sister(),
+            Relationship::fixed(...$this->ln('nkɔ́kɔ'))->father()->brother(),
+            Relationship::fixed(...$this->ln('tántí'))->parent()->sister(),
+            Relationship::fixed(...$this->ln('nkɔ́kɔ'))->parent()->brother(),
             // Nieces and nephews
-            Relationship::fixed(...$ln('mwana ya ndeko mwasi'))->sibling()->daughter(),
-            Relationship::fixed(...$ln('mwana ya ndeko mobali'))->sibling()->son(),
-            Relationship::fixed(...$ln('mwana ya ndeko'))->sibling()->child(),
+            Relationship::fixed(...$this->ln('mwana ya ndeko mwasi'))->sibling()->daughter(),
+            Relationship::fixed(...$this->ln('mwana ya ndeko mobali'))->sibling()->son(),
+            Relationship::fixed(...$this->ln('mwana ya ndeko'))->sibling()->child(),
             // Cousins — flat system (one term for all)
-            Relationship::fixed(...$ln('ndeko ya mbɔ́ka'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$ln('ndeko ya mbɔ́ka'))->parent()->sibling()->son(),
-            Relationship::fixed(...$ln('ndeko ya mbɔ́ka'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->ln('ndeko ya mbɔ́ka'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->ln('ndeko ya mbɔ́ka'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->ln('ndeko ya mbɔ́ka'))->parent()->sibling()->child(),
             // Dynamic — great-grandparents and beyond
-            Relationship::dynamic(static fn (int $n) => [
+            Relationship::dynamic(fn (int $n) => [
                 'nkɔkɔ mwasi ya molɔ́ngɔ́ ya ' . ($n - 1),
                 'nkɔkɔ mwasi ya molɔ́ngɔ́ ya ' . ($n - 1) . ' ya %s',
             ])->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => [
+            Relationship::dynamic(fn (int $n) => [
                 'nkɔkɔ mobali ya molɔ́ngɔ́ ya ' . ($n - 1),
                 'nkɔkɔ mobali ya molɔ́ngɔ́ ya ' . ($n - 1) . ' ya %s',
             ])->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => [
+            Relationship::dynamic(fn (int $n) => [
                 'nkɔkɔ ya molɔ́ngɔ́ ya ' . ($n - 1),
                 'nkɔkɔ ya molɔ́ngɔ́ ya ' . ($n - 1) . ' ya %s',
             ])->ancestor(),
-            Relationship::dynamic(static fn (int $n) => [
+            Relationship::dynamic(fn (int $n) => [
                 'nkɔkɔ ya molɔ́ngɔ́ ya ' . ($n - 1),
                 'nkɔkɔ ya molɔ́ngɔ́ ya ' . ($n - 1) . ' ya %s',
             ])->descendant(),

@@ -22,29 +22,24 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\SearchService;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use League\Flysystem\FilesystemException;
-use Psr\Http\Message\ServerRequestInterface;
 
 final class AutoCompleteFolder extends AbstractAutocompleteHandler
 {
     public function __construct(
-        private readonly MediaFileService $media_file_service,
+        private MediaFileService $media_file_service,
         SearchService $search_service,
     ) {
         parent::__construct($search_service);
     }
 
     /**
-     *
      * @return Collection<int,string>
      */
-    protected function search(ServerRequestInterface $request): Collection
+    protected function search(Tree $tree, string $query, string $extra): Collection
     {
-        $tree  = Validator::attributes($request)->tree();
-        $query = Validator::queryParams($request)->string('query');
-
         try {
             return $this->media_file_service->mediaFolders($tree)
                 ->filter(fn (string $path): bool => stripos($path, $query) !== false)

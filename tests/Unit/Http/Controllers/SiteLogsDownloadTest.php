@@ -20,12 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\SiteLogsDownload;
 use Fisharebest\Webtrees\Services\SiteLogsService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\SiteLogsDownload;
 
 #[CoversClass(SiteLogsDownload::class)]
 class SiteLogsDownloadTest extends TestCase
@@ -46,8 +46,8 @@ class SiteLogsDownloadTest extends TestCase
         $site_logs_service = self::createStub(SiteLogsService::class);
         $site_logs_service->method('logsQuery')->willReturn($query1);
 
-        $handler  = new SiteLogsDownload($site_logs_service);
-        $response = $handler->get($request);
+        $controller = new SiteLogsDownload($site_logs_service);
+        $response   = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertSame('text/csv; charset=UTF-8', $response->getHeaderLine('content-type'));

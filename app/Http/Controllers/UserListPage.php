@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Validator;
@@ -29,14 +30,17 @@ final class UserListPage
 {
     use ViewResponseTrait;
 
+    public function __construct(
+        private UserInterface $user,
+    ) {
+    }
+
     public function get(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
-
-        $user   = Validator::attributes($request)->user();
         $filter = Validator::queryParams($request)->string('filter', '');
 
-        $page_size = (int) $user->getPreference(' admin_users_page_size', '10');
+        $page_size = (int) $this->user->getPreference(' admin_users_page_size', '10');
 
         $title = I18N::translate('User administration');
 

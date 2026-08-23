@@ -22,9 +22,8 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\PhpService;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function date;
 use function e;
@@ -39,13 +38,12 @@ final class ExportGedcomPage
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly PhpService $php_service,
+        private PhpService $php_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(Tree $tree): ResponseInterface
     {
-        $tree  = Validator::attributes($request)->tree();
         $title = I18N::translate('Export a GEDCOM file') . ' — ' . e($tree->title());
 
         $this->layout = 'layouts/administration';

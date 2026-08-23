@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
@@ -36,8 +36,9 @@ use Psr\Http\Message\ServerRequestInterface;
 final class RedirectRelationshipPhp
 {
     public function __construct(
-        private readonly ModuleService $module_service,
-        private readonly TreeService $tree_service,
+        private UserInterface $user,
+        private ModuleService $module_service,
+        private TreeService $tree_service,
     ) {
     }
 
@@ -48,13 +49,12 @@ final class RedirectRelationshipPhp
 
         if ($tree instanceof Tree) {
             $module = $this->module_service
-                ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
+                ->findByComponent(ModuleChartInterface::class, $tree, $this->user)
                 ->first(static fn (ModuleChartInterface $module): bool => $module instanceof RelationshipsChartModule);
 
             if ($module instanceof RelationshipsChartModule) {
                 $pid1       = Validator::queryParams($request)->string('pid1', '');
-                $user       = Auth::user();
-                $individual = Registry::individualFactory()->make($pid1, $tree) ?? $tree->significantIndividual($user);
+                $individual = Registry::individualFactory()->make($pid1, $tree) ?? $tree->significantIndividual($this->user);
 
                 $url = $module->chartUrl($individual, [
                     'ancestors' => Validator::queryParams($request)->string('ancestors', '0'),

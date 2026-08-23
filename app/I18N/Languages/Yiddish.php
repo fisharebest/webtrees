@@ -200,123 +200,137 @@ final readonly class Yiddish extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
-    public function relationships(): array
+        /** @return array{string, string} */
+    private function der(string $s): array
     {
-        // Yiddish genitive: "פֿון דער" (fun der, feminine), "פֿון דעם" (fun dem, masculine/neuter)
-        $der = static fn (string $s): array => [$s, '%s פֿון דער ' . $s];
-        $dem = static fn (string $s): array => [$s, '%s פֿון דעם ' . $s];
+        return [$s, '%s פֿון דער ' . $s];
+    }
 
-        // Dynamic "עלטער-" (elter-) prefix for great- (like German "Ur-")
-        $elter = static fn (int $n, string $nom, string $prep): array => [
+    /** @return array{string, string} */
+    private function dem(string $s): array
+    {
+        return [$s, '%s פֿון דעם ' . $s];
+    }
+
+    /** @return array{string, string} */
+    private function elter(int $n, string $nom, string $prep): array
+    {
+        return [
             str_repeat('עלטער-', $n) . $nom,
             '%s ' . $prep . str_repeat('עלטער-', $n) . $nom,
         ];
+    }
 
+    /**
+     * @return array<Relationship>
+     */
+    public function relationships(): array
+    {
         return [
             // Adopted
-            Relationship::fixed(...$der('אַדאָפּטיוו-מאַמע'))->adoptive()->mother(),
-            Relationship::fixed(...$dem('אַדאָפּטיוו-טאַטע'))->adoptive()->father(),
-            Relationship::fixed(...$dem('אַדאָפּטיוו-עלטער'))->adoptive()->parent(),
-            Relationship::fixed(...$der('אַדאָפּטירטע טאָכטער'))->adopted()->daughter(),
-            Relationship::fixed(...$dem('אַדאָפּטירטער זון'))->adopted()->son(),
-            Relationship::fixed(...$dem('אַדאָפּטירט קינד'))->adopted()->child(),
+            Relationship::fixed(...$this->der('אַדאָפּטיוו-מאַמע'))->adoptive()->mother(),
+            Relationship::fixed(...$this->dem('אַדאָפּטיוו-טאַטע'))->adoptive()->father(),
+            Relationship::fixed(...$this->dem('אַדאָפּטיוו-עלטער'))->adoptive()->parent(),
+            Relationship::fixed(...$this->der('אַדאָפּטירטע טאָכטער'))->adopted()->daughter(),
+            Relationship::fixed(...$this->dem('אַדאָפּטירטער זון'))->adopted()->son(),
+            Relationship::fixed(...$this->dem('אַדאָפּטירט קינד'))->adopted()->child(),
             // Fostered
-            Relationship::fixed(...$der('פֿלעגע-מאַמע'))->fostering()->mother(),
-            Relationship::fixed(...$dem('פֿלעגע-טאַטע'))->fostering()->father(),
-            Relationship::fixed(...$dem('פֿלעגע-עלטער'))->fostering()->parent(),
-            Relationship::fixed(...$der('פֿלעגע-טאָכטער'))->fostered()->daughter(),
-            Relationship::fixed(...$dem('פֿלעגע-זון'))->fostered()->son(),
-            Relationship::fixed(...$dem('פֿלעגע-קינד'))->fostered()->child(),
+            Relationship::fixed(...$this->der('פֿלעגע-מאַמע'))->fostering()->mother(),
+            Relationship::fixed(...$this->dem('פֿלעגע-טאַטע'))->fostering()->father(),
+            Relationship::fixed(...$this->dem('פֿלעגע-עלטער'))->fostering()->parent(),
+            Relationship::fixed(...$this->der('פֿלעגע-טאָכטער'))->fostered()->daughter(),
+            Relationship::fixed(...$this->dem('פֿלעגע-זון'))->fostered()->son(),
+            Relationship::fixed(...$this->dem('פֿלעגע-קינד'))->fostered()->child(),
             // Parents
-            Relationship::fixed(...$der('מאַמע'))->mother(),
-            Relationship::fixed(...$dem('טאַטע'))->father(),
-            Relationship::fixed(...$dem('עלטער'))->parent(),
+            Relationship::fixed(...$this->der('מאַמע'))->mother(),
+            Relationship::fixed(...$this->dem('טאַטע'))->father(),
+            Relationship::fixed(...$this->dem('עלטער'))->parent(),
             // Children
-            Relationship::fixed(...$der('טאָכטער'))->daughter(),
-            Relationship::fixed(...$dem('זון'))->son(),
-            Relationship::fixed(...$dem('קינד'))->child(),
+            Relationship::fixed(...$this->der('טאָכטער'))->daughter(),
+            Relationship::fixed(...$this->dem('זון'))->son(),
+            Relationship::fixed(...$this->dem('קינד'))->child(),
             // Siblings
-            Relationship::fixed(...$der('צווילינג-שוועסטער'))->multiple()->sister(),
-            Relationship::fixed(...$dem('צווילינג-ברודער'))->multiple()->brother(),
-            Relationship::fixed(...$dem('צווילינג'))->multiple()->sibling(),
-            Relationship::fixed(...$der('עלטערע שוועסטער'))->older()->sister(),
-            Relationship::fixed(...$dem('עלטערער ברודער'))->older()->brother(),
-            Relationship::fixed(...$der('ייִנגערע שוועסטער'))->younger()->sister(),
-            Relationship::fixed(...$dem('ייִנגערער ברודער'))->younger()->brother(),
-            Relationship::fixed(...$der('שוועסטער'))->sister(),
-            Relationship::fixed(...$dem('ברודער'))->brother(),
-            Relationship::fixed(...$dem('געשוויסטער'))->sibling(),
+            Relationship::fixed(...$this->der('צווילינג-שוועסטער'))->multiple()->sister(),
+            Relationship::fixed(...$this->dem('צווילינג-ברודער'))->multiple()->brother(),
+            Relationship::fixed(...$this->dem('צווילינג'))->multiple()->sibling(),
+            Relationship::fixed(...$this->der('עלטערע שוועסטער'))->older()->sister(),
+            Relationship::fixed(...$this->dem('עלטערער ברודער'))->older()->brother(),
+            Relationship::fixed(...$this->der('ייִנגערע שוועסטער'))->younger()->sister(),
+            Relationship::fixed(...$this->dem('ייִנגערער ברודער'))->younger()->brother(),
+            Relationship::fixed(...$this->der('שוועסטער'))->sister(),
+            Relationship::fixed(...$this->dem('ברודער'))->brother(),
+            Relationship::fixed(...$this->dem('געשוויסטער'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$der('האַלב-שוועסטער'))->parent()->daughter(),
-            Relationship::fixed(...$dem('האַלב-ברודער'))->parent()->son(),
-            Relationship::fixed(...$dem('האַלב-געשוויסטער'))->parent()->child(),
+            Relationship::fixed(...$this->der('האַלב-שוועסטער'))->parent()->daughter(),
+            Relationship::fixed(...$this->dem('האַלב-ברודער'))->parent()->son(),
+            Relationship::fixed(...$this->dem('האַלב-געשוויסטער'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$der('שטיפֿמאַמע'))->parent()->wife(),
-            Relationship::fixed(...$dem('שטיפֿטאַטע'))->parent()->husband(),
-            Relationship::fixed(...$dem('שטיפֿעלטער'))->parent()->married()->spouse(),
-            Relationship::fixed(...$der('שטיפֿטאָכטער'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$dem('שטיפֿזון'))->married()->spouse()->son(),
-            Relationship::fixed(...$dem('שטיפֿקינד'))->married()->spouse()->child(),
-            Relationship::fixed(...$der('שטיפֿשוועסטער'))->parent()->spouse()->daughter(),
-            Relationship::fixed(...$dem('שטיפֿברודער'))->parent()->spouse()->son(),
-            Relationship::fixed(...$dem('שטיפֿגעשוויסטער'))->parent()->spouse()->child(),
+            Relationship::fixed(...$this->der('שטיפֿמאַמע'))->parent()->wife(),
+            Relationship::fixed(...$this->dem('שטיפֿטאַטע'))->parent()->husband(),
+            Relationship::fixed(...$this->dem('שטיפֿעלטער'))->parent()->married()->spouse(),
+            Relationship::fixed(...$this->der('שטיפֿטאָכטער'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->dem('שטיפֿזון'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->dem('שטיפֿקינד'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->der('שטיפֿשוועסטער'))->parent()->spouse()->daughter(),
+            Relationship::fixed(...$this->dem('שטיפֿברודער'))->parent()->spouse()->son(),
+            Relationship::fixed(...$this->dem('שטיפֿגעשוויסטער'))->parent()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$der('געוועזענע ווײַב'))->divorced()->partner()->female(),
-            Relationship::fixed(...$dem('געוועזענער מאַן'))->divorced()->partner()->male(),
-            Relationship::fixed(...$dem('געוועזענער פּאַרטנער'))->divorced()->partner(),
-            Relationship::fixed(...$der('כּלה'))->engaged()->partner()->female(),
-            Relationship::fixed(...$dem('חתן'))->engaged()->partner()->male(),
-            Relationship::fixed(...$der('ווײַב'))->wife(),
-            Relationship::fixed(...$dem('מאַן'))->husband(),
-            Relationship::fixed(...$dem('פּאַרטנער'))->spouse(),
-            Relationship::fixed(...$dem('פּאַרטנער'))->partner(),
+            Relationship::fixed(...$this->der('געוועזענע ווײַב'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->dem('געוועזענער מאַן'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->dem('געוועזענער פּאַרטנער'))->divorced()->partner(),
+            Relationship::fixed(...$this->der('כּלה'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->dem('חתן'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->der('ווײַב'))->wife(),
+            Relationship::fixed(...$this->dem('מאַן'))->husband(),
+            Relationship::fixed(...$this->dem('פּאַרטנער'))->spouse(),
+            Relationship::fixed(...$this->dem('פּאַרטנער'))->partner(),
             // In-laws (spouse's parents)
-            Relationship::fixed(...$der('שוויגער'))->married()->spouse()->mother(),
-            Relationship::fixed(...$dem('שווער'))->married()->spouse()->father(),
-            Relationship::fixed(...$dem('שווער/שוויגער'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->der('שוויגער'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->dem('שווער'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->dem('שווער/שוויגער'))->married()->spouse()->parent(),
             // In-laws (child's spouse)
-            Relationship::fixed(...$der('שנור'))->child()->wife(),
-            Relationship::fixed(...$dem('איידעם'))->child()->husband(),
-            Relationship::fixed(...$dem('איידעם/שנור'))->child()->married()->spouse(),
+            Relationship::fixed(...$this->der('שנור'))->child()->wife(),
+            Relationship::fixed(...$this->dem('איידעם'))->child()->husband(),
+            Relationship::fixed(...$this->dem('איידעם/שנור'))->child()->married()->spouse(),
             // In-laws (spouse's siblings)
-            Relationship::fixed(...$der('שוועגערין'))->spouse()->sister(),
-            Relationship::fixed(...$dem('שוואָגער'))->spouse()->brother(),
+            Relationship::fixed(...$this->der('שוועגערין'))->spouse()->sister(),
+            Relationship::fixed(...$this->dem('שוואָגער'))->spouse()->brother(),
             // In-laws (sibling's spouse)
-            Relationship::fixed(...$der('שוועגערין'))->sibling()->wife(),
-            Relationship::fixed(...$dem('שוואָגער'))->sibling()->husband(),
+            Relationship::fixed(...$this->der('שוועגערין'))->sibling()->wife(),
+            Relationship::fixed(...$this->dem('שוואָגער'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$der('באָבע'))->parent()->mother(),
-            Relationship::fixed(...$dem('זיידע'))->parent()->father(),
-            Relationship::fixed(...$dem('באָבע/זיידע'))->parent()->parent(),
+            Relationship::fixed(...$this->der('באָבע'))->parent()->mother(),
+            Relationship::fixed(...$this->dem('זיידע'))->parent()->father(),
+            Relationship::fixed(...$this->dem('באָבע/זיידע'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$der('אייניקלע'))->child()->daughter(),
-            Relationship::fixed(...$dem('אייניקל'))->child()->son(),
-            Relationship::fixed(...$dem('אייניקל'))->child()->child(),
+            Relationship::fixed(...$this->der('אייניקלע'))->child()->daughter(),
+            Relationship::fixed(...$this->dem('אייניקל'))->child()->son(),
+            Relationship::fixed(...$this->dem('אייניקל'))->child()->child(),
             // Aunts/uncles
-            Relationship::fixed(...$der('מומע'))->parent()->sister(),
-            Relationship::fixed(...$dem('פֿעטער'))->parent()->brother(),
+            Relationship::fixed(...$this->der('מומע'))->parent()->sister(),
+            Relationship::fixed(...$this->dem('פֿעטער'))->parent()->brother(),
             // Nieces/nephews
-            Relationship::fixed(...$der('פּלימעניצע'))->sibling()->daughter(),
-            Relationship::fixed(...$dem('פּלימעניק'))->sibling()->son(),
-            Relationship::fixed(...$dem('פּלימעניק'))->sibling()->child(),
+            Relationship::fixed(...$this->der('פּלימעניצע'))->sibling()->daughter(),
+            Relationship::fixed(...$this->dem('פּלימעניק'))->sibling()->son(),
+            Relationship::fixed(...$this->dem('פּלימעניק'))->sibling()->child(),
             // Cousins
-            Relationship::fixed(...$der('קוזינע'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$dem('קוזין'))->parent()->sibling()->son(),
-            Relationship::fixed(...$dem('קוזין'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->der('קוזינע'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->dem('קוזין'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->dem('קוזין'))->parent()->sibling()->child(),
             // Dynamic: great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $elter($n - 1, 'מומע', 'פֿון דער '))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $elter($n - 1, 'פֿעטער', 'פֿון דעם '))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->elter($n - 1, 'מומע', 'פֿון דער '))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->elter($n - 1, 'פֿעטער', 'פֿון דעם '))->ancestor()->brother(),
             // Dynamic: grand-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $elter($n - 1, 'פּלימעניצע', 'פֿון דער '))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $elter($n - 1, 'פּלימעניק', 'פֿון דעם '))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->elter($n - 1, 'פּלימעניצע', 'פֿון דער '))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->elter($n - 1, 'פּלימעניק', 'פֿון דעם '))->sibling()->descendant()->male(),
             // Dynamic: ancestors
-            Relationship::dynamic(static fn (int $n) => $elter($n - 1, 'באָבע', 'פֿון דער '))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $elter($n - 1, 'זיידע', 'פֿון דעם '))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $elter($n - 1, 'באָבע/זיידע', 'פֿון דעם '))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->elter($n - 1, 'באָבע', 'פֿון דער '))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->elter($n - 1, 'זיידע', 'פֿון דעם '))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->elter($n - 1, 'באָבע/זיידע', 'פֿון דעם '))->ancestor(),
             // Dynamic: descendants
-            Relationship::dynamic(static fn (int $n) => $elter($n - 2, 'אייניקלע', 'פֿון דער '))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $elter($n - 2, 'אייניקל', 'פֿון דעם '))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $elter($n - 2, 'אייניקל', 'פֿון דעם '))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->elter($n - 2, 'אייניקלע', 'פֿון דער '))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->elter($n - 2, 'אייניקל', 'פֿון דעם '))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->elter($n - 2, 'אייניקל', 'פֿון דעם '))->descendant(),
         ];
     }
 }

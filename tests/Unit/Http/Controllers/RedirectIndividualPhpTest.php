@@ -22,6 +22,8 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Factories\IndividualFactory;
+use Fisharebest\Webtrees\Http\Controllers\RedirectFamilyPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectIndividualPhp;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Individual;
@@ -31,8 +33,6 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\RedirectFamilyPhp;
-use Fisharebest\Webtrees\Http\Controllers\RedirectIndividualPhp;
 
 #[CoversClass(RedirectIndividualPhp::class)]
 class RedirectIndividualPhpTest extends TestCase
@@ -70,11 +70,11 @@ class RedirectIndividualPhpTest extends TestCase
 
         Registry::individualFactory($individual_factory);
 
-        $handler = new RedirectIndividualPhp($tree_service);
+        $controller = new RedirectIndividualPhp($tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'pid' => 'X123']);
 
-        $response = $handler->get($request);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::MovedPermanently->value, $response->getStatusCode());
         self::assertSame('https://www.example.com', $response->getHeaderLine('Location'));
@@ -90,13 +90,13 @@ class RedirectIndividualPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $handler = new RedirectIndividualPhp($tree_service);
+        $controller = new RedirectIndividualPhp($tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'pid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 
     public function testNoSuchTree(): void
@@ -107,25 +107,25 @@ class RedirectIndividualPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection([]));
 
-        $handler = new RedirectIndividualPhp($tree_service);
+        $controller = new RedirectIndividualPhp($tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'pid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 
     public function testMissingXrefParameter(): void
     {
         $tree_service = self::createStub(TreeService::class);
 
-        $handler = new RedirectFamilyPhp($tree_service);
+        $controller = new RedirectFamilyPhp($tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1']);
 
         $this->expectException(HttpBadRequestException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 }

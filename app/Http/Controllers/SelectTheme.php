@@ -21,25 +21,21 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Session;
-use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
-use function is_string;
 use function response;
 
 final class SelectTheme
 {
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function __construct(
+        private UserInterface $user,
+    ) {
+    }
+
+    public function post(string $theme): ResponseInterface
     {
-        $user = Validator::attributes($request)->user();
-
-        $theme = $request->getAttribute('theme');
-        assert(is_string($theme));
-
         Session::put('theme', $theme);
-        $user->setPreference(UserInterface::PREF_THEME, $theme);
+        $this->user->setPreference(UserInterface::PREF_THEME, $theme);
 
         return response();
     }

@@ -21,28 +21,32 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use League\Flysystem\FilesystemException;
+use League\Flysystem\UnableToRetrieveMetadata;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function basename;
 use function implode;
 use function redirect;
 use function response;
 
 final class MediaFileThumbnail
 {
+    public function __construct(
+        private UserInterface $user,
+    ) {
+    }
+
     private const int THUMBNAIL_CACHE_TTL = 8640000;
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-        $user = Validator::attributes($request)->user();
-
         $params  = $request->getQueryParams();
         $xref    = Validator::queryParams($request)->isXref()->string('xref');
         $fact_id = Validator::queryParams($request)->string('fact_id');
@@ -87,19 +91,17 @@ final class MediaFileThumbnail
 
                 $width         = (int) $params['w'];
                 $height        = (int) $params['h'];
-                $add_watermark = Auth::needsWatermark($media_file->media()->tree(), $user);
+                $add_watermark = Auth::needsWatermark($media_file->media()->tree(), $this->user);
                 $path          = $media_file->filename();
-                $filename      = basename($path);
                 $filesystem    = $media_file->media()->tree()->mediaFilesystem();
 
                 try {
                     $last_modified = $filesystem->lastModified(path: $path);
-                } catch (FilesystemException $exception) {
-                    throw new ImageException(
-                        status_code: HttpStatusCode::InternalServerError,
-                        filename: $filename,
-                        error: 'File is not readable',
-                    );
+                } catch (FilesystemException | UnableToRetrieveMetadata) {
+                    // If we can't get a timestamp, it might be a limitation of the filesystem,
+                    // rather than a fatal error.  This is only used for cache-busting.
+                    // If we can't actually read the file's contents, then we will throw a 404 later.
+                    $last_modified = 0;
                 }
 
                 $cache_key = implode(separator: ':', array: [

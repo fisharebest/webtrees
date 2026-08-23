@@ -19,15 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
-use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\Masquerade;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\User;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\Masquerade;
 
 #[CoversClass(Masquerade::class)]
 class MasqueradeTest extends TestCase
@@ -53,8 +53,8 @@ class MasqueradeTest extends TestCase
             ->withAttribute('user', $user1)
             ->withAttribute('user_id', $user2->id());
 
-        $handler  = new Masquerade($user_service);
-        $response = $handler->post($request);
+        $controller = new Masquerade($user1, $user_service);
+        $response   = $controller->post($request);
 
         self::assertSame(HttpStatusCode::NoContent->value, $response->getStatusCode());
         self::assertSame($user2->id(), Auth::id());
@@ -73,8 +73,8 @@ class MasqueradeTest extends TestCase
             ->withAttribute('user', $user)
             ->withAttribute('user_id', $user->id());
 
-        $handler  = new Masquerade($user_service);
-        $response = $handler->post($request);
+        $controller = new Masquerade($user, $user_service);
+        $response   = $controller->post($request);
 
         self::assertSame(HttpStatusCode::NoContent->value, $response->getStatusCode());
         self::assertNull(Session::get('masquerade'));
@@ -95,7 +95,7 @@ class MasqueradeTest extends TestCase
             ->withAttribute('user', $user)
             ->withAttribute('user_id', 2);
 
-        $handler = new Masquerade($user_service);
-        $handler->post($request);
+        $controller = new Masquerade($user, $user_service);
+        $controller->post($request);
     }
 }

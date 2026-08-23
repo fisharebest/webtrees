@@ -53,9 +53,8 @@ final class DataFixUpdateAll
         $this->module_service   = $module_service;
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree     = Validator::attributes($request)->tree();
         $data_fix = Validator::attributes($request)->string('data_fix', '');
         $module   = $this->module_service->findByName($data_fix);
         assert($module instanceof ModuleDataFixInterface);

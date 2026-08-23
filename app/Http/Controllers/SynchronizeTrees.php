@@ -30,7 +30,6 @@ use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToReadFile;
 use League\Flysystem\UnableToRetrieveMetadata;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 
 use function redirect;
@@ -58,7 +57,7 @@ final class SynchronizeTrees
         $this->tree_service    = $tree_service;
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(): ResponseInterface
     {
         $data_filesystem = Registry::filesystem()->data();
 

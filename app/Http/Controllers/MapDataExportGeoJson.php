@@ -37,7 +37,7 @@ use function response;
 final class MapDataExportGeoJson
 {
     public function __construct(
-        private readonly MapDataService $map_data_service,
+        private MapDataService $map_data_service,
     ) {
     }
 

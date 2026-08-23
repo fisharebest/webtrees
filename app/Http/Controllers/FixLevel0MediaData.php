@@ -41,8 +41,8 @@ use function view;
 final class FixLevel0MediaData
 {
     public function __construct(
-        private readonly DatatablesService $datatables_service,
-        private readonly TreeService $tree_service,
+        private DatatablesService $datatables_service,
+        private TreeService $tree_service,
     ) {
     }
 

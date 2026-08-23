@@ -22,9 +22,8 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TreeService;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function e;
 use function response;
@@ -32,14 +31,12 @@ use function response;
 final class DeleteTreeAction
 {
     public function __construct(
-        private readonly TreeService $tree_service,
+        private TreeService $tree_service,
     ) {
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(Tree $tree): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
         $this->tree_service->delete($tree);
 
         /* I18N: %s is the name of a family tree */

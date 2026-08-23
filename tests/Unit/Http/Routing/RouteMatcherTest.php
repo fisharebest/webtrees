@@ -24,19 +24,24 @@ use Fisharebest\Webtrees\Http\Routing\RouteMatcher;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Nyholm\Psr7\ServerRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
+use Psr\Container\ContainerInterface;
 
 #[CoversClass(RouteMatcher::class)]
 class RouteMatcherTest extends TestCase
 {
+    private function createRouteMatcher(RouteCollection $routes): RouteMatcher
+    {
+        return new RouteMatcher($routes, self::createStub(ContainerInterface::class));
+    }
+
     public function testMatchesSimplePath(): void
     {
         $routes = new RouteCollection();
         $routes->add('/ping', self::class);
 
-        $matcher = new RouteMatcher($routes);
+        $matcher = $this->createRouteMatcher($routes);
         $request = new ServerRequest('GET', '/ping');
-
-        $result = $matcher->match($request);
+        $result  = $matcher->match($request);
 
         self::assertTrue($result->isSuccess());
         self::assertSame(self::class, $result->route->controller);
@@ -48,10 +53,9 @@ class RouteMatcherTest extends TestCase
         $routes = new RouteCollection();
         $routes->add('/tree/{tree}/individual/{xref}', self::class);
 
-        $matcher = new RouteMatcher($routes);
+        $matcher = $this->createRouteMatcher($routes);
         $request = new ServerRequest('GET', '/tree/demo/individual/I001');
-
-        $result = $matcher->match($request);
+        $result  = $matcher->match($request);
 
         self::assertTrue($result->isSuccess());
         self::assertSame(['tree' => 'demo', 'xref' => 'I001'], $result->attributes);
@@ -62,10 +66,9 @@ class RouteMatcherTest extends TestCase
         $routes = new RouteCollection();
         $routes->add('/tree/{tree}/individual/{xref}{/slug}', self::class);
 
-        $matcher = new RouteMatcher($routes);
+        $matcher = $this->createRouteMatcher($routes);
         $request = new ServerRequest('GET', '/tree/demo/individual/I001/john-doe');
-
-        $result = $matcher->match($request);
+        $result  = $matcher->match($request);
 
         self::assertTrue($result->isSuccess());
         self::assertSame(['tree' => 'demo', 'xref' => 'I001', 'slug' => 'john-doe'], $result->attributes);
@@ -76,10 +79,9 @@ class RouteMatcherTest extends TestCase
         $routes = new RouteCollection();
         $routes->add('/tree/{tree}/individual/{xref}{/slug}', self::class);
 
-        $matcher = new RouteMatcher($routes);
+        $matcher = $this->createRouteMatcher($routes);
         $request = new ServerRequest('GET', '/tree/demo/individual/I001');
-
-        $result = $matcher->match($request);
+        $result  = $matcher->match($request);
 
         self::assertTrue($result->isSuccess());
         self::assertSame(['tree' => 'demo', 'xref' => 'I001'], $result->attributes);
@@ -90,13 +92,12 @@ class RouteMatcherTest extends TestCase
         $routes = new RouteCollection();
         $routes->add('/ping', self::class);
 
-        $matcher = new RouteMatcher($routes);
+        $matcher = $this->createRouteMatcher($routes);
         $request = new ServerRequest('GET', '/nonexistent');
-
-        $result = $matcher->match($request);
+        $result  = $matcher->match($request);
 
         self::assertFalse($result->isSuccess());
-        self::assertSame('not_found', $result->failureReason);
+        self::assertSame('not_found', $result->failure_reason);
     }
 
     public function testSkipsNonDispatchableRoutes(): void
@@ -104,10 +105,9 @@ class RouteMatcherTest extends TestCase
         $routes = new RouteCollection();
         $routes->add('/module/{module}/{action}{/tree}', 'module'); // plain string, not a class
 
-        $matcher = new RouteMatcher($routes);
+        $matcher = $this->createRouteMatcher($routes);
         $request = new ServerRequest('GET', '/module/charts/show/demo');
-
-        $result = $matcher->match($request);
+        $result  = $matcher->match($request);
 
         self::assertFalse($result->isSuccess());
     }
@@ -117,10 +117,9 @@ class RouteMatcherTest extends TestCase
         $routes = new RouteCollection();
         $routes->add('/tree/{tree}', self::class);
 
-        $matcher = new RouteMatcher($routes);
+        $matcher = $this->createRouteMatcher($routes);
         $request = new ServerRequest('GET', '/tree/my%20tree');
-
-        $result = $matcher->match($request);
+        $result  = $matcher->match($request);
 
         self::assertTrue($result->isSuccess());
         self::assertSame(['tree' => 'my tree'], $result->attributes);
@@ -132,10 +131,9 @@ class RouteMatcherTest extends TestCase
         $routes = new RouteCollection();
         $routes->add('/ping', self::class);
 
-        $matcher = new RouteMatcher($routes);
-
-        $get  = $matcher->match(new ServerRequest('GET', '/ping'));
-        $post = $matcher->match(new ServerRequest('POST', '/ping'));
+        $matcher = $this->createRouteMatcher($routes);
+        $get     = $matcher->match(new ServerRequest('GET', '/ping'));
+        $post    = $matcher->match(new ServerRequest('POST', '/ping'));
 
         self::assertTrue($get->isSuccess());
         self::assertTrue($post->isSuccess());

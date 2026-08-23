@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -30,20 +31,15 @@ use function view;
 
 final class CreateLocation
 {
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(Tree $tree): ResponseInterface
     {
-
-        $tree = Validator::attributes($request)->tree();
-
         return response(view('modals/create-location', [
             'tree' => $tree,
         ]));
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree = Validator::attributes($request)->tree();
         $name = Validator::parsedBody($request)->isNotEmpty()->string('location_name');
 
         $name = Registry::elementFactory()->make('_LOC:NAME')->canonical($name);

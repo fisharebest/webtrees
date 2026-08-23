@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\PendingChangesService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -32,13 +33,12 @@ use function response;
 final class PendingChangesAcceptTree
 {
     public function __construct(
-        private readonly PendingChangesService $pending_changes_service,
+        private PendingChangesService $pending_changes_service,
     ) {
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
         $n    = Validator::queryParams($request)->integer('n');
 
         $this->pending_changes_service->acceptTree($tree, $n);

@@ -68,6 +68,7 @@ abstract readonly class AbstractLanguage implements LanguageInterface
     protected const string    ERA_JEWISH              = '%s' . UTF8::NO_BREAK_SPACE . 'ᴀᴍ';
     protected const string    ERA_JULIAN              = 'ᴀᴅ' . UTF8::NO_BREAK_SPACE . '%s';
     protected const string    ERA_ROMAN               = '%s' . UTF8::NO_BREAK_SPACE . 'ᴀᴜᴄ';
+    protected const string    ERA_SWEDISH             = '%s' . UTF8::NO_BREAK_SPACE . 'ss';
     protected const string    LIST_SEPARATOR          = ', ';
     protected const string    LIST_SEPARATOR_AND      = ', ';
     protected const string    LIST_SEPARATOR_OR       = ', ';

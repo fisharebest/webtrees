@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use DateTimeImmutable;
 use DateTimeZone;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\SiteLogsService;
@@ -37,6 +36,7 @@ final class SiteLogsData
     private SiteLogsService $site_logs_service;
 
     public function __construct(
+        private UserInterface $user,
         DatatablesService $datatables_service,
         SiteLogsService $site_logs_service
     ) {
@@ -44,13 +44,13 @@ final class SiteLogsData
         $this->site_logs_service  = $site_logs_service;
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request): ResponseInterface
     {
         $query = $this->site_logs_service->logsQuery($request);
 
-        return $this->datatables_service->handleQuery($request, $query, [], [], static function (object $row): array {
+        return $this->datatables_service->handleQuery($request, $query, [], [], function (object $row): array {
             $log_time = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $row->log_time, new DateTimeZone('UTC'))
-                ->setTimezone(new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
+                ->setTimezone(new DateTimeZone($this->user->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
                 ->format('Y-m-d H:i:s T');
 
             return [

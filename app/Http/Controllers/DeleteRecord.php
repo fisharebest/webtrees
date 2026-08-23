@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -40,13 +41,12 @@ use function sprintf;
 final class DeleteRecord
 {
     public function __construct(
-        private readonly LinkedRecordService $linked_record_service,
+        private LinkedRecordService $linked_record_service,
     ) {
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
         $xref   = Validator::attributes($request)->isXref()->string('xref');
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
@@ -75,6 +75,15 @@ final class DeleteRecord
                             /* I18N: %s are names of records, such as sources, repositories or individuals */
                             FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', sprintf('<a href="%1$s" class="alert-link">%2$s</a>', e($relict->url()), $relict->fullName()), $linker->fullName()));
                         }
+                    } elseif (
+                        // If we have removed the last member from a family
+                        $linker instanceof Family &&
+                        preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . Gedcom::REGEX_XREF . ')@/', $new_gedcom, $match) === 0
+                    ) {
+                        // Delete the family
+                        /* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */
+                        FlashMessages::addMessage(I18N::translate('The family “%s” has been deleted because the last member has been deleted.', $linker->fullName()));
+                        $linker->deleteRecord();
                     } else {
                         // Remove links from $linker to $record
                         /* I18N: %s are names of records, such as sources, repositories or individuals */

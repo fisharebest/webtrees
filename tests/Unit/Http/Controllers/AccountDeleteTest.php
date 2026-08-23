@@ -19,23 +19,25 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\AccountDelete;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\AccountDelete;
 
 #[CoversClass(AccountDelete::class)]
 class AccountDeleteTest extends TestCase
 {
     public function testHandler(): void
     {
+        $user         = self::createStub(UserInterface::class);
         $user_service = self::createStub(UserService::class);
 
         $request = self::createRequest();
 
-        $handler  = new AccountDelete($user_service);
-        $response = $handler->post($request);
+        $controller = new AccountDelete($user, $user_service);
+        $response   = $controller->post($request);
 
         self::assertSame(HttpStatusCode::Found->value, $response->getStatusCode());
     }

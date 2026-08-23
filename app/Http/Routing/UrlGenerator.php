@@ -19,24 +19,22 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Routing;
 
-use BackedEnum;
-use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Tree;
-
 use function array_filter;
 use function array_map;
 use function http_build_query;
+use function is_object;
 use function preg_replace_callback;
 
 /**
  * Generates a URL from a route name and parameters.
  * Works with all routes — both dispatchable and generation-only.
  */
-class UrlGenerator
+final readonly class UrlGenerator
 {
     public function __construct(
-        private readonly RouteCollection $routes,
-        private readonly string $basePath = '',
+        private RouteCollection $routes,
+        private string $base_path = '',
+        private ParameterResolverInterface|null $parameter_resolver = null,
     ) {
     }
 
@@ -44,10 +42,10 @@ class UrlGenerator
      * Generate a URL for the given route name.
      *
      * Parameters matching {param} tokens are interpolated into the path.
-     * Remaining parameters are appended as a query string.
+     * Any remaining parameters are appended as a query string.
      * Optional {/param} segments are omitted when the value is null/empty.
      *
-     * @param array<string, BackedEnum|bool|int|string|array<string>|Tree|GedcomRecord|null> $parameters
+     * @param array<string, mixed> $parameters
      */
     public function generate(string $name, array $parameters = []): string
     {
@@ -100,7 +98,7 @@ class UrlGenerator
             ARRAY_FILTER_USE_KEY,
         );
 
-        $url = $this->basePath . $path;
+        $url = $this->base_path . $path;
 
         if ($remaining !== []) {
             $url .= '?' . http_build_query($remaining);
@@ -111,21 +109,11 @@ class UrlGenerator
 
     /**
      * Resolve a parameter value to a type suitable for URL generation.
-     * @param BackedEnum|bool|int|string|array<string>|Tree|GedcomRecord|null $value
-     * @return bool|int|string|array<string>|null
      */
-    private function resolveValue(BackedEnum|bool|int|string|array|Tree|GedcomRecord|null $value): bool|int|string|array|null
+    private function resolveValue(mixed $value): mixed
     {
-        if ($value instanceof Tree) {
-            return $value->name();
-        }
-
-        if ($value instanceof GedcomRecord) {
-            return $value->xref();
-        }
-
-        if ($value instanceof BackedEnum) {
-            return $value->value;
+        if ($this->parameter_resolver !== null && is_object($value)) {
+            return $this->parameter_resolver->serialize($value);
         }
 
         return $value;

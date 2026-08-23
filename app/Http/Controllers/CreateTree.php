@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validate;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -37,29 +38,26 @@ final class CreateTree
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly TreeService $tree_service,
+        private TreeService $tree_service,
+        private Validate $validate,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(string|null $title): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
-        $title      = I18N::translate('Create a family tree');
-        $tree_name  = Validator::queryParams($request)->string('name', $this->tree_service->uniqueTreeName());
-        $tree_title = Validator::queryParams($request)->string('title', I18N::translate('My family tree'));
-
         return $this->viewResponse('admin/trees-create', [
-            'title'      => $title,
-            'tree_name'  => $tree_name,
-            'tree_title' => $tree_title,
+            'title'      => I18N::translate('Create a family tree'),
+            'tree_name'  => $this->tree_service->uniqueTreeName(),
+            'tree_title' => $title ?? I18N::translate('My family tree'),
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(string $name, string $title): ResponseInterface
     {
-        $name  = Validator::parsedBody($request)->string('name');
-        $title = Validator::parsedBody($request)->string('title');
+        $this->validate->notEmpty($name, 'name');
+        $this->validate->notEmpty($title, 'title');
 
         if ($this->tree_service->all()->get($name) instanceof Tree) {
             FlashMessages::addMessage(I18N::translate('The family tree "%s" already exists.', e($name)), 'danger');

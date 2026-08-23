@@ -33,21 +33,20 @@ use function route;
 final class AccountDelete
 {
     public function __construct(
-        private readonly UserService $user_service,
+        private UserInterface $user,
+        private UserService $user_service,
     ) {
     }
 
     public function post(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->treeOptional();
-        $user = Validator::attributes($request)->user();
-
         // An administrator can only be deleted by another administrator
-        if ($user instanceof User && $user->getPreference(UserInterface::PREF_IS_ADMINISTRATOR) !== '1') {
-            $this->user_service->delete($user);
+        if ($this->user instanceof User && $this->user->getPreference(UserInterface::PREF_IS_ADMINISTRATOR) !== '1') {
+            $this->user_service->delete($this->user);
             Auth::logout();
         }
 
-        return redirect(route(Account::class, ['tree' => $tree?->name()]));
+        return redirect(route(Account::class, ['tree' => $tree]));
     }
 }

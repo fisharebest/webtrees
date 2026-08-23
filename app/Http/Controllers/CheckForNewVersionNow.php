@@ -22,16 +22,15 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 final class CheckForNewVersionNow
 {
     public function __construct(
-        private readonly UpgradeService $upgrade_service,
+        private UpgradeService $upgrade_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(): ResponseInterface
     {
         $this->upgrade_service->isUpgradeAvailable(true);
 

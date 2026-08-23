@@ -22,9 +22,8 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\PendingChangesService;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function e;
 use function response;
@@ -32,14 +31,12 @@ use function response;
 final class PendingChangesRejectTree
 {
     public function __construct(
-        private readonly PendingChangesService $pending_changes_service,
+        private PendingChangesService $pending_changes_service,
     ) {
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(Tree $tree): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
         $this->pending_changes_service->rejectTree($tree);
 
         FlashMessages::addMessage(I18N::translate('The changes to “%s” have been rejected.', e($tree->title())));

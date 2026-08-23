@@ -172,131 +172,137 @@ final readonly class Thai extends AbstractLanguage
 
     protected const array JALALI_MONTHS_INSTRUMENTAL = self::JALALI_MONTHS_NOMINATIVE;
 
+        /** @return array{string, string} */
+    private function th(string $s): array
+    {
+        return [$s, '%s ของ' . $s];
+    }
+
+    /**
+     * @return array<Relationship>
+     */
     public function relationships(): array
     {
-        // Thai uses ของ (khǒong = "of") for possessive — "%s ของแม่" = "mother's X"
-        $th = static fn (string $s): array => [$s, '%s ของ' . $s];
-
         return [
             // Adopted
-            Relationship::fixed(...$th('แม่บุญธรรม'))->adoptive()->mother(),
-            Relationship::fixed(...$th('พ่อบุญธรรม'))->adoptive()->father(),
-            Relationship::fixed(...$th('พ่อแม่บุญธรรม'))->adoptive()->parent(),
-            Relationship::fixed(...$th('ลูกสาวบุญธรรม'))->adopted()->daughter(),
-            Relationship::fixed(...$th('ลูกชายบุญธรรม'))->adopted()->son(),
-            Relationship::fixed(...$th('ลูกบุญธรรม'))->adopted()->child(),
+            Relationship::fixed(...$this->th('แม่บุญธรรม'))->adoptive()->mother(),
+            Relationship::fixed(...$this->th('พ่อบุญธรรม'))->adoptive()->father(),
+            Relationship::fixed(...$this->th('พ่อแม่บุญธรรม'))->adoptive()->parent(),
+            Relationship::fixed(...$this->th('ลูกสาวบุญธรรม'))->adopted()->daughter(),
+            Relationship::fixed(...$this->th('ลูกชายบุญธรรม'))->adopted()->son(),
+            Relationship::fixed(...$this->th('ลูกบุญธรรม'))->adopted()->child(),
             // Fostered
-            Relationship::fixed(...$th('แม่อุปถัมภ์'))->fostering()->mother(),
-            Relationship::fixed(...$th('พ่ออุปถัมภ์'))->fostering()->father(),
-            Relationship::fixed(...$th('พ่อแม่อุปถัมภ์'))->fostering()->parent(),
-            Relationship::fixed(...$th('ลูกสาวอุปถัมภ์'))->fostered()->daughter(),
-            Relationship::fixed(...$th('ลูกชายอุปถัมภ์'))->fostered()->son(),
-            Relationship::fixed(...$th('ลูกอุปถัมภ์'))->fostered()->child(),
+            Relationship::fixed(...$this->th('แม่อุปถัมภ์'))->fostering()->mother(),
+            Relationship::fixed(...$this->th('พ่ออุปถัมภ์'))->fostering()->father(),
+            Relationship::fixed(...$this->th('พ่อแม่อุปถัมภ์'))->fostering()->parent(),
+            Relationship::fixed(...$this->th('ลูกสาวอุปถัมภ์'))->fostered()->daughter(),
+            Relationship::fixed(...$this->th('ลูกชายอุปถัมภ์'))->fostered()->son(),
+            Relationship::fixed(...$this->th('ลูกอุปถัมภ์'))->fostered()->child(),
             // Step
-            Relationship::fixed(...$th('แม่เลี้ยง'))->parent()->wife(),
-            Relationship::fixed(...$th('พ่อเลี้ยง'))->parent()->husband(),
-            Relationship::fixed(...$th('ลูกเลี้ยงหญิง'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$th('ลูกเลี้ยงชาย'))->married()->spouse()->son(),
-            Relationship::fixed(...$th('ลูกเลี้ยง'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->th('แม่เลี้ยง'))->parent()->wife(),
+            Relationship::fixed(...$this->th('พ่อเลี้ยง'))->parent()->husband(),
+            Relationship::fixed(...$this->th('ลูกเลี้ยงหญิง'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->th('ลูกเลี้ยงชาย'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->th('ลูกเลี้ยง'))->married()->spouse()->child(),
             // Parents
-            Relationship::fixed(...$th('แม่'))->mother(),
-            Relationship::fixed(...$th('พ่อ'))->father(),
-            Relationship::fixed(...$th('พ่อแม่'))->parent(),
+            Relationship::fixed(...$this->th('แม่'))->mother(),
+            Relationship::fixed(...$this->th('พ่อ'))->father(),
+            Relationship::fixed(...$this->th('พ่อแม่'))->parent(),
             // Children
-            Relationship::fixed(...$th('ลูกสาว'))->daughter(),
-            Relationship::fixed(...$th('ลูกชาย'))->son(),
-            Relationship::fixed(...$th('ลูก'))->child(),
+            Relationship::fixed(...$this->th('ลูกสาว'))->daughter(),
+            Relationship::fixed(...$this->th('ลูกชาย'))->son(),
+            Relationship::fixed(...$this->th('ลูก'))->child(),
             // Siblings — elder/younger distinction
-            Relationship::fixed(...$th('พี่สาวแฝด'))->multiple()->older()->sister(),
-            Relationship::fixed(...$th('น้องสาวแฝด'))->multiple()->younger()->sister(),
-            Relationship::fixed(...$th('พี่ชายแฝด'))->multiple()->older()->brother(),
-            Relationship::fixed(...$th('น้องชายแฝด'))->multiple()->younger()->brother(),
-            Relationship::fixed(...$th('แฝด'))->multiple()->sibling(),
-            Relationship::fixed(...$th('พี่สาว'))->older()->sister(),
-            Relationship::fixed(...$th('พี่ชาย'))->older()->brother(),
-            Relationship::fixed(...$th('พี่'))->older()->sibling(),
-            Relationship::fixed(...$th('น้องสาว'))->younger()->sister(),
-            Relationship::fixed(...$th('น้องชาย'))->younger()->brother(),
-            Relationship::fixed(...$th('น้อง'))->younger()->sibling(),
-            Relationship::fixed(...$th('พี่น้องหญิง'))->sister(),
-            Relationship::fixed(...$th('พี่น้องชาย'))->brother(),
-            Relationship::fixed(...$th('พี่น้อง'))->sibling(),
+            Relationship::fixed(...$this->th('พี่สาวแฝด'))->multiple()->older()->sister(),
+            Relationship::fixed(...$this->th('น้องสาวแฝด'))->multiple()->younger()->sister(),
+            Relationship::fixed(...$this->th('พี่ชายแฝด'))->multiple()->older()->brother(),
+            Relationship::fixed(...$this->th('น้องชายแฝด'))->multiple()->younger()->brother(),
+            Relationship::fixed(...$this->th('แฝด'))->multiple()->sibling(),
+            Relationship::fixed(...$this->th('พี่สาว'))->older()->sister(),
+            Relationship::fixed(...$this->th('พี่ชาย'))->older()->brother(),
+            Relationship::fixed(...$this->th('พี่'))->older()->sibling(),
+            Relationship::fixed(...$this->th('น้องสาว'))->younger()->sister(),
+            Relationship::fixed(...$this->th('น้องชาย'))->younger()->brother(),
+            Relationship::fixed(...$this->th('น้อง'))->younger()->sibling(),
+            Relationship::fixed(...$this->th('พี่น้องหญิง'))->sister(),
+            Relationship::fixed(...$this->th('พี่น้องชาย'))->brother(),
+            Relationship::fixed(...$this->th('พี่น้อง'))->sibling(),
             // Half-siblings (paternal)
-            Relationship::fixed(...$th('พี่น้องหญิงต่างแม่'))->father()->daughter(),
-            Relationship::fixed(...$th('พี่น้องชายต่างแม่'))->father()->son(),
+            Relationship::fixed(...$this->th('พี่น้องหญิงต่างแม่'))->father()->daughter(),
+            Relationship::fixed(...$this->th('พี่น้องชายต่างแม่'))->father()->son(),
             // Half-siblings (maternal)
-            Relationship::fixed(...$th('พี่น้องหญิงต่างพ่อ'))->mother()->daughter(),
-            Relationship::fixed(...$th('พี่น้องชายต่างพ่อ'))->mother()->son(),
+            Relationship::fixed(...$this->th('พี่น้องหญิงต่างพ่อ'))->mother()->daughter(),
+            Relationship::fixed(...$this->th('พี่น้องชายต่างพ่อ'))->mother()->son(),
             // Half-siblings (generic)
-            Relationship::fixed(...$th('พี่น้องต่างพ่อแม่'))->parent()->child(),
+            Relationship::fixed(...$this->th('พี่น้องต่างพ่อแม่'))->parent()->child(),
             // Partners
-            Relationship::fixed(...$th('อดีตภรรยา'))->divorced()->partner()->female(),
-            Relationship::fixed(...$th('อดีตสามี'))->divorced()->partner()->male(),
-            Relationship::fixed(...$th('อดีตคู่สมรส'))->divorced()->partner(),
-            Relationship::fixed(...$th('คู่หมั้นหญิง'))->engaged()->partner()->female(),
-            Relationship::fixed(...$th('คู่หมั้นชาย'))->engaged()->partner()->male(),
-            Relationship::fixed(...$th('ภรรยา'))->wife(),
-            Relationship::fixed(...$th('สามี'))->husband(),
-            Relationship::fixed(...$th('คู่สมรส'))->spouse(),
-            Relationship::fixed(...$th('คู่ครอง'))->partner(),
+            Relationship::fixed(...$this->th('อดีตภรรยา'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->th('อดีตสามี'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->th('อดีตคู่สมรส'))->divorced()->partner(),
+            Relationship::fixed(...$this->th('คู่หมั้นหญิง'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->th('คู่หมั้นชาย'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->th('ภรรยา'))->wife(),
+            Relationship::fixed(...$this->th('สามี'))->husband(),
+            Relationship::fixed(...$this->th('คู่สมรส'))->spouse(),
+            Relationship::fixed(...$this->th('คู่ครอง'))->partner(),
             // In-laws — spouse's parents
-            Relationship::fixed(...$th('แม่สามี'))->husband()->mother(),
-            Relationship::fixed(...$th('พ่อสามี'))->husband()->father(),
-            Relationship::fixed(...$th('แม่ยาย'))->wife()->mother(),
-            Relationship::fixed(...$th('พ่อตา'))->wife()->father(),
-            Relationship::fixed(...$th('พ่อแม่คู่สมรส'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->th('แม่สามี'))->husband()->mother(),
+            Relationship::fixed(...$this->th('พ่อสามี'))->husband()->father(),
+            Relationship::fixed(...$this->th('แม่ยาย'))->wife()->mother(),
+            Relationship::fixed(...$this->th('พ่อตา'))->wife()->father(),
+            Relationship::fixed(...$this->th('พ่อแม่คู่สมรส'))->married()->spouse()->parent(),
             // In-laws — child's spouse
-            Relationship::fixed(...$th('ลูกสะใภ้'))->child()->wife(),
-            Relationship::fixed(...$th('ลูกเขย'))->child()->husband(),
+            Relationship::fixed(...$this->th('ลูกสะใภ้'))->child()->wife(),
+            Relationship::fixed(...$this->th('ลูกเขย'))->child()->husband(),
             // In-laws — spouse's siblings
-            Relationship::fixed(...$th('พี่น้องสามี'))->husband()->sibling(),
-            Relationship::fixed(...$th('พี่น้องภรรยา'))->wife()->sibling(),
+            Relationship::fixed(...$this->th('พี่น้องสามี'))->husband()->sibling(),
+            Relationship::fixed(...$this->th('พี่น้องภรรยา'))->wife()->sibling(),
             // In-laws — sibling's spouse
-            Relationship::fixed(...$th('พี่น้องเขย'))->sister()->husband(),
-            Relationship::fixed(...$th('พี่น้องสะใภ้'))->brother()->wife(),
+            Relationship::fixed(...$this->th('พี่น้องเขย'))->sister()->husband(),
+            Relationship::fixed(...$this->th('พี่น้องสะใภ้'))->brother()->wife(),
             // Grandparents — paternal/maternal distinction
-            Relationship::fixed(...$th('ย่า'))->father()->mother(),
-            Relationship::fixed(...$th('ปู่'))->father()->father(),
-            Relationship::fixed(...$th('ยาย'))->mother()->mother(),
-            Relationship::fixed(...$th('ตา'))->mother()->father(),
-            Relationship::fixed(...$th('ปู่ย่าตายาย'))->parent()->parent(),
+            Relationship::fixed(...$this->th('ย่า'))->father()->mother(),
+            Relationship::fixed(...$this->th('ปู่'))->father()->father(),
+            Relationship::fixed(...$this->th('ยาย'))->mother()->mother(),
+            Relationship::fixed(...$this->th('ตา'))->mother()->father(),
+            Relationship::fixed(...$this->th('ปู่ย่าตายาย'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$th('หลานสาว'))->child()->daughter(),
-            Relationship::fixed(...$th('หลานชาย'))->child()->son(),
-            Relationship::fixed(...$th('หลาน'))->child()->child(),
+            Relationship::fixed(...$this->th('หลานสาว'))->child()->daughter(),
+            Relationship::fixed(...$this->th('หลานชาย'))->child()->son(),
+            Relationship::fixed(...$this->th('หลาน'))->child()->child(),
             // Aunts/Uncles — paternal (อา = father's sibling)
-            Relationship::fixed(...$th('อา'))->father()->sister(),
-            Relationship::fixed(...$th('อา'))->father()->brother(),
+            Relationship::fixed(...$this->th('อา'))->father()->sister(),
+            Relationship::fixed(...$this->th('อา'))->father()->brother(),
             // Aunts/Uncles — maternal (น้า = mother's sibling)
-            Relationship::fixed(...$th('น้า'))->mother()->sister(),
-            Relationship::fixed(...$th('น้า'))->mother()->brother(),
+            Relationship::fixed(...$this->th('น้า'))->mother()->sister(),
+            Relationship::fixed(...$this->th('น้า'))->mother()->brother(),
             // Aunts/Uncles — generic
-            Relationship::fixed(...$th('ป้า'))->parent()->sister(),
-            Relationship::fixed(...$th('ลุง'))->parent()->brother(),
+            Relationship::fixed(...$this->th('ป้า'))->parent()->sister(),
+            Relationship::fixed(...$this->th('ลุง'))->parent()->brother(),
             // Uncle/aunt's spouses
-            Relationship::fixed(...$th('ลุง'))->parent()->sister()->husband(),
-            Relationship::fixed(...$th('ป้า'))->parent()->brother()->wife(),
+            Relationship::fixed(...$this->th('ลุง'))->parent()->sister()->husband(),
+            Relationship::fixed(...$this->th('ป้า'))->parent()->brother()->wife(),
             // Nieces/Nephews (หลาน — same as grandchild)
-            Relationship::fixed(...$th('หลานสาว'))->sibling()->daughter(),
-            Relationship::fixed(...$th('หลานชาย'))->sibling()->son(),
-            Relationship::fixed(...$th('หลาน'))->sibling()->child(),
+            Relationship::fixed(...$this->th('หลานสาว'))->sibling()->daughter(),
+            Relationship::fixed(...$this->th('หลานชาย'))->sibling()->son(),
+            Relationship::fixed(...$this->th('หลาน'))->sibling()->child(),
             // Cousins
-            Relationship::fixed(...$th('ลูกพี่ลูกน้อง'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->th('ลูกพี่ลูกน้อง'))->parent()->sibling()->child(),
             // Dynamic: great-grandparents (ทวด)
-            Relationship::dynamic(static fn (int $n) => $th(str_repeat('ทวด', $n - 2) . 'หญิง'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $th(str_repeat('ทวด', $n - 2) . 'ชาย'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $th(str_repeat('ทวด', $n - 2)))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->th(str_repeat('ทวด', $n - 2) . 'หญิง'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->th(str_repeat('ทวด', $n - 2) . 'ชาย'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->th(str_repeat('ทวด', $n - 2)))->ancestor(),
             // Dynamic: great-grandchildren (เหลน)
-            Relationship::dynamic(static fn (int $n) => $th(str_repeat('เหลน', $n - 2) . 'สาว'))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $th(str_repeat('เหลน', $n - 2) . 'ชาย'))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $th(str_repeat('เหลน', $n - 2)))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->th(str_repeat('เหลน', $n - 2) . 'สาว'))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->th(str_repeat('เหลน', $n - 2) . 'ชาย'))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->th(str_repeat('เหลน', $n - 2)))->descendant(),
             // Dynamic: great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $th('ป้าชั้นที่ ' . $n))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $th('ลุงชั้นที่ ' . $n))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->th('ป้าชั้นที่ ' . $n))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->th('ลุงชั้นที่ ' . $n))->ancestor()->brother(),
             // Dynamic: great-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $th('หลานสาวชั้นที่ ' . $n))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $th('หลานชายชั้นที่ ' . $n))->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $th('หลานชั้นที่ ' . $n))->sibling()->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->th('หลานสาวชั้นที่ ' . $n))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->th('หลานชายชั้นที่ ' . $n))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->th('หลานชั้นที่ ' . $n))->sibling()->descendant(),
         ];
     }
 }

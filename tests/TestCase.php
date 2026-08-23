@@ -25,8 +25,13 @@ use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
+use Fisharebest\Webtrees\Http\Routing\GedcomRecordParameterResolver;
+use Fisharebest\Webtrees\Http\Routing\ParameterResolverInterface;
+use Fisharebest\Webtrees\Http\Routing\ParameterResolver;
 use Fisharebest\Webtrees\Http\Routing\Route;
 use Fisharebest\Webtrees\Http\Routing\RouteCollection;
+use Fisharebest\Webtrees\Http\Routing\ScalarParameterResolver;
+use Fisharebest\Webtrees\Http\Routing\TreeParameterResolver;
 use Fisharebest\Webtrees\Http\Routing\UrlGenerator;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -146,8 +151,15 @@ class TestCase extends \PHPUnit\Framework\TestCase
         // Need the routing table to generate URLs.
         $routes = new RouteCollection();
         (new WebRoutes())->load($routes);
+        $tree_service = new TreeService(new GedcomImportService());
+        $parameter_resolver = new ParameterResolver([
+            new TreeParameterResolver($tree_service),
+            new GedcomRecordParameterResolver(),
+            new ScalarParameterResolver(),
+        ]);
         Registry::container()->set(RouteCollection::class, $routes);
-        Registry::container()->set(UrlGenerator::class, new UrlGenerator($routes, '/'));
+        Registry::container()->set(ParameterResolverInterface::class, $parameter_resolver);
+        Registry::container()->set(UrlGenerator::class, new UrlGenerator($routes, '/', $parameter_resolver));
 
         I18N::init('en-US');
 

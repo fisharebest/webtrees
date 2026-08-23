@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -60,11 +61,10 @@ final class TreePreferences
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree        = Validator::attributes($request)->tree();
         $data_folder = Registry::filesystem()->dataName();
 
         $french_calendar_start    = new Date('22 SEP 1792');
@@ -172,10 +172,8 @@ final class TreePreferences
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
         // For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
         // e.g. "gregorian_and_jewish"
         $calendar_format_0           = Validator::parsedBody($request)->string('CALENDAR_FORMAT0');

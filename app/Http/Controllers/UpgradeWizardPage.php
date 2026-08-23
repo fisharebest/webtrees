@@ -47,8 +47,8 @@ final class UpgradeWizardPage
     private const string STEP_COPY     = 'Copy';
 
     public function __construct(
-        private readonly TreeService $tree_service,
-        private readonly UpgradeService $upgrade_service,
+        private TreeService $tree_service,
+        private UpgradeService $upgrade_service,
     ) {
     }
 

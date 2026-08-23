@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\I18N;
     </th>
     <td>
         <?php if ($add_facts !== []) : ?>
-            <form method="post" action="<?= e(route(SelectNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-wt-require-select>
+            <form method="get" action="<?= e(route(SelectNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-wt-require-select>
                 <div class="input-group">
                     <select class="form-select" id="add-fact" name="fact" data-wt-required-select-control>
                         <option value="" disabled selected>

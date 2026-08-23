@@ -48,7 +48,7 @@ use Fisharebest\Webtrees\Factories\TimestampFactory;
 use Fisharebest\Webtrees\Factories\XrefFactory;
 use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
-use Fisharebest\Webtrees\Http\Dispatcher;
+use Fisharebest\Webtrees\Http\MiddlewarePipeline;
 use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Http\Middleware\BaseUrl;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
@@ -281,6 +281,10 @@ class Webtrees
 
         $request = $server_request_creator->fromGlobals();
 
-        return Dispatcher::dispatch(middleware: self::MIDDLEWARE, request: $request);
+        $pipeline = new MiddlewarePipeline(container: Registry::container());
+
+        return $pipeline
+            ->build(middleware: self::MIDDLEWARE)
+            ->handle(request: $request);
     }
 }

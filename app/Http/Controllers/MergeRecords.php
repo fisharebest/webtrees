@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -42,11 +43,10 @@ final class MergeRecords
 {
     use ViewResponseTrait;
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree  = Validator::attributes($request)->tree();
         $xref1 = Validator::queryParams($request)->isXref()->string('xref1', '');
         $xref2 = Validator::queryParams($request)->isXref()->string('xref2', '');
 
@@ -77,9 +77,8 @@ final class MergeRecords
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
         $xref1 = Validator::parsedBody($request)->isXref()->string('xref1');
         $xref2 = Validator::parsedBody($request)->isXref()->string('xref2');
 

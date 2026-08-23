@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Factories\SourceFactory;
+use Fisharebest\Webtrees\Http\Controllers\RedirectSourcePhp;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Registry;
@@ -31,7 +32,6 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\RedirectSourcePhp;
 
 #[CoversClass(RedirectSourcePhp::class)]
 class RedirectSourcePhpTest extends TestCase
@@ -69,11 +69,11 @@ class RedirectSourcePhpTest extends TestCase
 
         Registry::sourceFactory($source_factory);
 
-        $handler = new RedirectSourcePhp($tree_service);
+        $controller = new RedirectSourcePhp($tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'sid' => 'X123']);
 
-        $response = $handler->get($request);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::MovedPermanently->value, $response->getStatusCode());
         self::assertSame('https://www.example.com', $response->getHeaderLine('Location'));
@@ -89,25 +89,25 @@ class RedirectSourcePhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $handler = new RedirectSourcePhp($tree_service);
+        $controller = new RedirectSourcePhp($tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'sid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 
     public function testMissingXrefParameter(): void
     {
         $tree_service = self::createStub(TreeService::class);
 
-        $handler = new RedirectSourcePhp($tree_service);
+        $controller = new RedirectSourcePhp($tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1']);
 
         $this->expectException(HttpBadRequestException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 }

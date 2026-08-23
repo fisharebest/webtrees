@@ -20,10 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -36,18 +38,15 @@ final class ReportList
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly ModuleService $module_service
+        private UserInterface $user,
+        private ModuleService $module_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(Tree $tree): ResponseInterface
     {
-
-        $tree = Validator::attributes($request)->tree();
-        $user = Validator::attributes($request)->user();
-
         $reports = $this->module_service
-            ->findByComponent(ModuleReportInterface::class, $tree, $user);
+            ->findByComponent(ModuleReportInterface::class, $tree, $this->user);
 
         $title = I18N::translate('Choose a report to run');
 
@@ -58,16 +57,13 @@ final class ReportList
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree   = Validator::attributes($request)->tree();
-        $user   = Validator::attributes($request)->user();
         $report = Validator::parsedBody($request)->string('report');
         $module = $this->module_service->findByName($report);
 
         if ($module instanceof ModuleReportInterface) {
-            Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
+            Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $this->user);
 
             return redirect(route(ReportSetup::class, [
                 'tree'   => $tree->name(),

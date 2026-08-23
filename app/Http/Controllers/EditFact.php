@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -38,15 +39,13 @@ final class EditFact
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly GedcomEditService $gedcom_edit_service,
+        private GedcomEditService $gedcom_edit_service,
         private ModuleService $module_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree           = Validator::attributes($request)->tree();
         $xref           = Validator::attributes($request)->isXref()->string('xref');
         $fact_id        = Validator::attributes($request)->string('fact_id');
         $include_hidden = Validator::queryParams($request)->boolean('include_hidden', false);
@@ -92,10 +91,8 @@ final class EditFact
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree    = Validator::attributes($request)->tree();
         $xref    = Validator::attributes($request)->isXref()->string('xref');
         $fact_id = Validator::attributes($request)->string('fact_id');
 

@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -28,6 +29,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -46,13 +48,13 @@ final class FamilyPage
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly ClipboardService $clipboard_service,
+        private UserInterface $user,
+        private ClipboardService $clipboard_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
         $xref   = Validator::attributes($request)->isXref()->string('xref');
         $slug   = Validator::attributes($request)->string('slug', '');
         $family = Registry::familyFactory()->make($xref, $tree);
@@ -69,7 +71,7 @@ final class FamilyPage
             ->filter(static fn (Fact $fact): bool => !in_array($fact->tag(), ['FAM:HUSB', 'FAM:WIFE', 'FAM:CHIL'], true));
 
         return $this->viewResponse('family-page', [
-            'can_upload_media' => Auth::canUploadMedia($tree, Auth::user()),
+            'can_upload_media' => Auth::canUploadMedia($tree, $this->user),
             'clipboard_facts'  => $clipboard_facts,
             'facts'            => $facts,
             'meta_description' => $this->metaDescription($family),

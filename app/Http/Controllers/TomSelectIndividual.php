@@ -32,7 +32,7 @@ use function view;
 final class TomSelectIndividual extends AbstractTomSelectHandler
 {
     public function __construct(
-        private readonly SearchService $search_service,
+        private SearchService $search_service,
     ) {
     }
 

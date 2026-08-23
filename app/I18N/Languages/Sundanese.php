@@ -163,143 +163,149 @@ final readonly class Sundanese extends AbstractLanguage
 
     protected const array JALALI_MONTHS_INSTRUMENTAL = self::JALALI_MONTHS_NOMINATIVE;
 
+        /** @return array{string, string} */
+    private function su(string $s): array
+    {
+        return [$s, '%s ' . $s];
+    }
+
+    /**
+     * @return array<Relationship>
+     */
     public function relationships(): array
     {
-        // Sundanese genitive: noun juxtaposition — "%s indung" = "mother's %s"
-        $su = static fn (string $s): array => [$s, '%s ' . $s];
-
         return [
             // Adopted
-            Relationship::fixed(...$su('indung angkat'))->adoptive()->mother(),
-            Relationship::fixed(...$su('bapa angkat'))->adoptive()->father(),
-            Relationship::fixed(...$su('kolot angkat'))->adoptive()->parent(),
-            Relationship::fixed(...$su('anak awéwé angkat'))->adopted()->daughter(),
-            Relationship::fixed(...$su('anak lalaki angkat'))->adopted()->son(),
-            Relationship::fixed(...$su('anak angkat'))->adopted()->child(),
+            Relationship::fixed(...$this->su('indung angkat'))->adoptive()->mother(),
+            Relationship::fixed(...$this->su('bapa angkat'))->adoptive()->father(),
+            Relationship::fixed(...$this->su('kolot angkat'))->adoptive()->parent(),
+            Relationship::fixed(...$this->su('anak awéwé angkat'))->adopted()->daughter(),
+            Relationship::fixed(...$this->su('anak lalaki angkat'))->adopted()->son(),
+            Relationship::fixed(...$this->su('anak angkat'))->adopted()->child(),
             // Fostered
-            Relationship::fixed(...$su('indung asuh'))->fostering()->mother(),
-            Relationship::fixed(...$su('bapa asuh'))->fostering()->father(),
-            Relationship::fixed(...$su('kolot asuh'))->fostering()->parent(),
-            Relationship::fixed(...$su('anak awéwé asuh'))->fostered()->daughter(),
-            Relationship::fixed(...$su('anak lalaki asuh'))->fostered()->son(),
-            Relationship::fixed(...$su('anak asuh'))->fostered()->child(),
+            Relationship::fixed(...$this->su('indung asuh'))->fostering()->mother(),
+            Relationship::fixed(...$this->su('bapa asuh'))->fostering()->father(),
+            Relationship::fixed(...$this->su('kolot asuh'))->fostering()->parent(),
+            Relationship::fixed(...$this->su('anak awéwé asuh'))->fostered()->daughter(),
+            Relationship::fixed(...$this->su('anak lalaki asuh'))->fostered()->son(),
+            Relationship::fixed(...$this->su('anak asuh'))->fostered()->child(),
             // Parents
-            Relationship::fixed(...$su('indung'))->mother(),
-            Relationship::fixed(...$su('bapa'))->father(),
-            Relationship::fixed(...$su('kolot'))->parent(),
+            Relationship::fixed(...$this->su('indung'))->mother(),
+            Relationship::fixed(...$this->su('bapa'))->father(),
+            Relationship::fixed(...$this->su('kolot'))->parent(),
             // Children
-            Relationship::fixed(...$su('anak awéwé'))->daughter(),
-            Relationship::fixed(...$su('anak lalaki'))->son(),
-            Relationship::fixed(...$su('anak'))->child(),
+            Relationship::fixed(...$this->su('anak awéwé'))->daughter(),
+            Relationship::fixed(...$this->su('anak lalaki'))->son(),
+            Relationship::fixed(...$this->su('anak'))->child(),
             // Siblings — elder/younger distinction
-            Relationship::fixed(...$su('dulur awéwé kembar'))->multiple()->sister(),
-            Relationship::fixed(...$su('dulur lalaki kembar'))->multiple()->brother(),
-            Relationship::fixed(...$su('dulur kembar'))->multiple()->sibling(),
-            Relationship::fixed(...$su('lanceuk awéwé'))->older()->sister(),
-            Relationship::fixed(...$su('lanceuk lalaki'))->older()->brother(),
-            Relationship::fixed(...$su('adi awéwé'))->younger()->sister(),
-            Relationship::fixed(...$su('adi lalaki'))->younger()->brother(),
-            Relationship::fixed(...$su('dulur awéwé'))->sister(),
-            Relationship::fixed(...$su('dulur lalaki'))->brother(),
-            Relationship::fixed(...$su('dulur'))->sibling(),
+            Relationship::fixed(...$this->su('dulur awéwé kembar'))->multiple()->sister(),
+            Relationship::fixed(...$this->su('dulur lalaki kembar'))->multiple()->brother(),
+            Relationship::fixed(...$this->su('dulur kembar'))->multiple()->sibling(),
+            Relationship::fixed(...$this->su('lanceuk awéwé'))->older()->sister(),
+            Relationship::fixed(...$this->su('lanceuk lalaki'))->older()->brother(),
+            Relationship::fixed(...$this->su('adi awéwé'))->younger()->sister(),
+            Relationship::fixed(...$this->su('adi lalaki'))->younger()->brother(),
+            Relationship::fixed(...$this->su('dulur awéwé'))->sister(),
+            Relationship::fixed(...$this->su('dulur lalaki'))->brother(),
+            Relationship::fixed(...$this->su('dulur'))->sibling(),
             // Half-siblings (paternal)
-            Relationship::fixed(...$su('dulur awéwé sabapa'))->father()->daughter(),
-            Relationship::fixed(...$su('dulur lalaki sabapa'))->father()->son(),
+            Relationship::fixed(...$this->su('dulur awéwé sabapa'))->father()->daughter(),
+            Relationship::fixed(...$this->su('dulur lalaki sabapa'))->father()->son(),
             // Half-siblings (maternal)
-            Relationship::fixed(...$su('dulur awéwé saindung'))->mother()->daughter(),
-            Relationship::fixed(...$su('dulur lalaki saindung'))->mother()->son(),
+            Relationship::fixed(...$this->su('dulur awéwé saindung'))->mother()->daughter(),
+            Relationship::fixed(...$this->su('dulur lalaki saindung'))->mother()->son(),
             // Half-siblings (generic)
-            Relationship::fixed(...$su('dulur téré awéwé'))->parent()->daughter(),
-            Relationship::fixed(...$su('dulur téré lalaki'))->parent()->son(),
-            Relationship::fixed(...$su('dulur téré'))->parent()->child(),
+            Relationship::fixed(...$this->su('dulur téré awéwé'))->parent()->daughter(),
+            Relationship::fixed(...$this->su('dulur téré lalaki'))->parent()->son(),
+            Relationship::fixed(...$this->su('dulur téré'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$su('indung téré'))->parent()->wife(),
-            Relationship::fixed(...$su('bapa téré'))->parent()->husband(),
-            Relationship::fixed(...$su('anak téré awéwé'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$su('anak téré lalaki'))->married()->spouse()->son(),
-            Relationship::fixed(...$su('anak téré'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->su('indung téré'))->parent()->wife(),
+            Relationship::fixed(...$this->su('bapa téré'))->parent()->husband(),
+            Relationship::fixed(...$this->su('anak téré awéwé'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->su('anak téré lalaki'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->su('anak téré'))->married()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$su('urut pamajikan'))->divorced()->partner()->female(),
-            Relationship::fixed(...$su('urut salaki'))->divorced()->partner()->male(),
-            Relationship::fixed(...$su('urut pasangan'))->divorced()->partner(),
-            Relationship::fixed(...$su('tunangan awéwé'))->engaged()->partner()->female(),
-            Relationship::fixed(...$su('tunangan lalaki'))->engaged()->partner()->male(),
-            Relationship::fixed(...$su('pamajikan'))->wife(),
-            Relationship::fixed(...$su('salaki'))->husband(),
-            Relationship::fixed(...$su('pasangan'))->spouse(),
-            Relationship::fixed(...$su('pasangan'))->partner(),
+            Relationship::fixed(...$this->su('urut pamajikan'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->su('urut salaki'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->su('urut pasangan'))->divorced()->partner(),
+            Relationship::fixed(...$this->su('tunangan awéwé'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->su('tunangan lalaki'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->su('pamajikan'))->wife(),
+            Relationship::fixed(...$this->su('salaki'))->husband(),
+            Relationship::fixed(...$this->su('pasangan'))->spouse(),
+            Relationship::fixed(...$this->su('pasangan'))->partner(),
             // In-laws (spouse's parents)
-            Relationship::fixed(...$su('mitoha awéwé'))->husband()->mother(),
-            Relationship::fixed(...$su('mitoha lalaki'))->husband()->father(),
-            Relationship::fixed(...$su('mitoha awéwé'))->wife()->mother(),
-            Relationship::fixed(...$su('mitoha lalaki'))->wife()->father(),
-            Relationship::fixed(...$su('mitoha'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->su('mitoha awéwé'))->husband()->mother(),
+            Relationship::fixed(...$this->su('mitoha lalaki'))->husband()->father(),
+            Relationship::fixed(...$this->su('mitoha awéwé'))->wife()->mother(),
+            Relationship::fixed(...$this->su('mitoha lalaki'))->wife()->father(),
+            Relationship::fixed(...$this->su('mitoha'))->married()->spouse()->parent(),
             // In-laws (child's spouse)
-            Relationship::fixed(...$su('minantu awéwé'))->child()->wife(),
-            Relationship::fixed(...$su('minantu lalaki'))->child()->husband(),
+            Relationship::fixed(...$this->su('minantu awéwé'))->child()->wife(),
+            Relationship::fixed(...$this->su('minantu lalaki'))->child()->husband(),
             // In-laws (spouse's siblings)
-            Relationship::fixed(...$su('ipar awéwé'))->husband()->sister(),
-            Relationship::fixed(...$su('ipar lalaki'))->husband()->brother(),
-            Relationship::fixed(...$su('ipar awéwé'))->wife()->sister(),
-            Relationship::fixed(...$su('ipar lalaki'))->wife()->brother(),
+            Relationship::fixed(...$this->su('ipar awéwé'))->husband()->sister(),
+            Relationship::fixed(...$this->su('ipar lalaki'))->husband()->brother(),
+            Relationship::fixed(...$this->su('ipar awéwé'))->wife()->sister(),
+            Relationship::fixed(...$this->su('ipar lalaki'))->wife()->brother(),
             // In-laws (sibling's spouse)
-            Relationship::fixed(...$su('ipar awéwé'))->brother()->wife(),
-            Relationship::fixed(...$su('ipar lalaki'))->sister()->husband(),
+            Relationship::fixed(...$this->su('ipar awéwé'))->brother()->wife(),
+            Relationship::fixed(...$this->su('ipar lalaki'))->sister()->husband(),
             // Grandparents
-            Relationship::fixed(...$su('nini'))->parent()->mother(),
-            Relationship::fixed(...$su('aki'))->parent()->father(),
-            Relationship::fixed(...$su('aki/nini'))->parent()->parent(),
+            Relationship::fixed(...$this->su('nini'))->parent()->mother(),
+            Relationship::fixed(...$this->su('aki'))->parent()->father(),
+            Relationship::fixed(...$this->su('aki/nini'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$su('incu awéwé'))->child()->daughter(),
-            Relationship::fixed(...$su('incu lalaki'))->child()->son(),
-            Relationship::fixed(...$su('incu'))->child()->child(),
+            Relationship::fixed(...$this->su('incu awéwé'))->child()->daughter(),
+            Relationship::fixed(...$this->su('incu lalaki'))->child()->son(),
+            Relationship::fixed(...$this->su('incu'))->child()->child(),
             // Aunts/Uncles
-            Relationship::fixed(...$su('bibi'))->parent()->sister(),
-            Relationship::fixed(...$su('mamang'))->parent()->brother(),
-            Relationship::fixed(...$su('mamang/bibi'))->parent()->sibling(),
+            Relationship::fixed(...$this->su('bibi'))->parent()->sister(),
+            Relationship::fixed(...$this->su('mamang'))->parent()->brother(),
+            Relationship::fixed(...$this->su('mamang/bibi'))->parent()->sibling(),
             // Nieces/Nephews
-            Relationship::fixed(...$su('kaponakan awéwé'))->sibling()->daughter(),
-            Relationship::fixed(...$su('kaponakan lalaki'))->sibling()->son(),
-            Relationship::fixed(...$su('kaponakan'))->sibling()->child(),
+            Relationship::fixed(...$this->su('kaponakan awéwé'))->sibling()->daughter(),
+            Relationship::fixed(...$this->su('kaponakan lalaki'))->sibling()->son(),
+            Relationship::fixed(...$this->su('kaponakan'))->sibling()->child(),
             // Cousins — flat (one term for all degrees)
-            Relationship::fixed(...$su('dulur misan awéwé'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$su('dulur misan lalaki'))->parent()->sibling()->son(),
-            Relationship::fixed(...$su('dulur misan'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->su('dulur misan awéwé'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->su('dulur misan lalaki'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->su('dulur misan'))->parent()->sibling()->child(),
             // Dynamic: great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $su($n > 2 ? 'bibi buyut generasi ka-' . $n : 'bibi'))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $su($n > 2 ? 'mamang buyut generasi ka-' . $n : 'mamang'))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->su($n > 2 ? 'bibi buyut generasi ka-' . $n : 'bibi'))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->su($n > 2 ? 'mamang buyut generasi ka-' . $n : 'mamang'))->ancestor()->brother(),
             // Dynamic: great-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $su($n > 2 ? 'kaponakan awéwé generasi ka-' . $n : 'kaponakan awéwé'))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $su($n > 2 ? 'kaponakan lalaki generasi ka-' . $n : 'kaponakan lalaki'))->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $su($n > 2 ? 'kaponakan generasi ka-' . $n : 'kaponakan'))->sibling()->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->su($n > 2 ? 'kaponakan awéwé generasi ka-' . $n : 'kaponakan awéwé'))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->su($n > 2 ? 'kaponakan lalaki generasi ka-' . $n : 'kaponakan lalaki'))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->su($n > 2 ? 'kaponakan generasi ka-' . $n : 'kaponakan'))->sibling()->descendant(),
             // Dynamic: ancestors — buyut (great-grand), bao (great-great-grand), then generasi ka-N
-            Relationship::dynamic(static fn (int $n) => $su(match (true) {
+            Relationship::dynamic(fn (int $n) => $this->su(match (true) {
                 $n === 3 => 'nini buyut',
                 $n === 4 => 'nini bao',
                 default  => 'nini generasi ka-' . $n,
             }))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $su(match (true) {
+            Relationship::dynamic(fn (int $n) => $this->su(match (true) {
                 $n === 3 => 'aki buyut',
                 $n === 4 => 'aki bao',
                 default  => 'aki generasi ka-' . $n,
             }))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $su(match (true) {
+            Relationship::dynamic(fn (int $n) => $this->su(match (true) {
                 $n === 3 => 'buyut',
                 $n === 4 => 'bao',
                 default  => 'karuhun generasi ka-' . $n,
             }))->ancestor(),
             // Dynamic: descendants — buyut (great-grand), bao (great-great-grand), then generasi ka-N
-            Relationship::dynamic(static fn (int $n) => $su(match (true) {
+            Relationship::dynamic(fn (int $n) => $this->su(match (true) {
                 $n === 3 => 'buyut awéwé',
                 $n === 4 => 'bao awéwé',
                 default  => 'turunan awéwé generasi ka-' . $n,
             }))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $su(match (true) {
+            Relationship::dynamic(fn (int $n) => $this->su(match (true) {
                 $n === 3 => 'buyut lalaki',
                 $n === 4 => 'bao lalaki',
                 default  => 'turunan lalaki generasi ka-' . $n,
             }))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $su(match (true) {
+            Relationship::dynamic(fn (int $n) => $this->su(match (true) {
                 $n === 3 => 'buyut',
                 $n === 4 => 'bao',
                 default  => 'turunan generasi ka-' . $n,

@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\ManageMediaData;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
@@ -29,7 +30,6 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\ManageMediaData;
 
 #[CoversClass(ManageMediaData::class)]
 class ManageMediaDataTest extends TestCase
@@ -47,9 +47,9 @@ class ManageMediaDataTest extends TestCase
         $linked_record_service = new LinkedRecordService();
         $media_file_service    = self::createStub(MediaFileService::class);
         $media_file_service->method('allMediaFolders')->willReturn(new Collection(['media/']));
-        $tree_service          = new TreeService($gedcom_import_service);
-        $handler               = new ManageMediaData($datatables_service, $linked_record_service, $media_file_service, $tree_service);
-        $request               = self::createRequest(HttpRequestMethod::GET->value, [
+        $tree_service = new TreeService($gedcom_import_service);
+        $controller   = new ManageMediaData($datatables_service, $linked_record_service, $media_file_service, $tree_service);
+        $request      = self::createRequest(HttpRequestMethod::GET->value, [
             'files'        => 'local',
             'media_folder' => 'media/',
             'subfolders'   => 'include',
@@ -57,7 +57,7 @@ class ManageMediaDataTest extends TestCase
             'start'        => '0',
             'length'       => '10',
         ]);
-        $response              = $handler->get($request);
+        $response     = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }
@@ -69,9 +69,9 @@ class ManageMediaDataTest extends TestCase
         $linked_record_service = new LinkedRecordService();
         $media_file_service    = self::createStub(MediaFileService::class);
         $media_file_service->method('allMediaFolders')->willReturn(new Collection(['media/']));
-        $tree_service          = new TreeService($gedcom_import_service);
-        $handler               = new ManageMediaData($datatables_service, $linked_record_service, $media_file_service, $tree_service);
-        $request               = self::createRequest(HttpRequestMethod::GET->value, [
+        $tree_service = new TreeService($gedcom_import_service);
+        $controller   = new ManageMediaData($datatables_service, $linked_record_service, $media_file_service, $tree_service);
+        $request      = self::createRequest(HttpRequestMethod::GET->value, [
             'files'        => 'local',
             'media_folder' => 'media/',
             'subfolders'   => 'include',
@@ -79,7 +79,7 @@ class ManageMediaDataTest extends TestCase
             'start'        => '0',
             'length'       => '10',
         ]);
-        $response              = $handler->get($request);
+        $response     = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }
@@ -91,17 +91,17 @@ class ManageMediaDataTest extends TestCase
         $linked_record_service = new LinkedRecordService();
         $media_file_service    = self::createStub(MediaFileService::class);
         $media_file_service->method('allMediaFolders')->willReturn(new Collection(['media/']));
-        $tree_service          = new TreeService($gedcom_import_service);
-        $handler               = new ManageMediaData($datatables_service, $linked_record_service, $media_file_service, $tree_service);
-        $request               = self::createRequest(HttpRequestMethod::GET->value, [
+        $tree_service = new TreeService($gedcom_import_service);
+        $controller   = new ManageMediaData($datatables_service, $linked_record_service, $media_file_service, $tree_service);
+        $request      = self::createRequest(HttpRequestMethod::GET->value, [
             'files'        => 'local',
             'media_folder' => 'media/',
             'subfolders'   => 'include',
             'search'       => ['value' => ''],
-            'start'  => '0',
-            'length' => '10',
+            'start'        => '0',
+            'length'       => '10',
         ]);
-        $response              = $handler->get($request);
+        $response     = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }

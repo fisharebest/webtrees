@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
@@ -43,8 +43,9 @@ final class RedirectDescendencyPhp
     ];
 
     public function __construct(
-        private readonly ModuleService $module_service,
-        private readonly TreeService $tree_service,
+        private UserInterface $user,
+        private ModuleService $module_service,
+        private TreeService $tree_service,
     ) {
     }
 
@@ -55,14 +56,14 @@ final class RedirectDescendencyPhp
 
         if ($tree instanceof Tree) {
             $module = $this->module_service
-                ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
+                ->findByComponent(ModuleChartInterface::class, $tree, $this->user)
                 ->first(static fn (ModuleChartInterface $module): bool => $module instanceof DescendancyChartModule);
 
             if ($module instanceof DescendancyChartModule) {
                 $root_id     = Validator::queryParams($request)->string('rootid', '');
                 $generations = Validator::queryParams($request)->string('generations', DescendancyChartModule::DEFAULT_GENERATIONS);
                 $chart_style = Validator::queryParams($request)->string('chart_style', '');
-                $individual  = Registry::individualFactory()->make($root_id, $tree) ?? $tree->significantIndividual(Auth::user());
+                $individual  = Registry::individualFactory()->make($root_id, $tree) ?? $tree->significantIndividual($this->user);
 
                 $url = $module->chartUrl($individual, [
                     'generations' => $generations,

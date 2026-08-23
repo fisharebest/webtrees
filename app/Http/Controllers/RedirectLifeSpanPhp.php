@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\LifespansChartModule;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
@@ -36,8 +36,9 @@ use Psr\Http\Message\ServerRequestInterface;
 final class RedirectLifeSpanPhp
 {
     public function __construct(
-        private readonly ModuleService $module_service,
-        private readonly TreeService $tree_service,
+        private UserInterface $user,
+        private ModuleService $module_service,
+        private TreeService $tree_service,
     ) {
     }
 
@@ -48,11 +49,11 @@ final class RedirectLifeSpanPhp
 
         if ($tree instanceof Tree) {
             $module = $this->module_service
-                ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
+                ->findByComponent(ModuleChartInterface::class, $tree, $this->user)
                 ->first(static fn (ModuleChartInterface $module): bool => $module instanceof LifespansChartModule);
 
             if ($module instanceof LifespansChartModule) {
-                $individual = $tree->significantIndividual(Auth::user());
+                $individual = $tree->significantIndividual($this->user);
 
                 // This chart stored a list of individuals in the session, which we won't have.
                 $url = $module->chartUrl($individual, []);

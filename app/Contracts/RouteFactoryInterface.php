@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Contracts;
 
 use Fisharebest\Webtrees\Http\Routing\RouteCollection;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Make a URL for a route.
@@ -29,7 +30,7 @@ interface RouteFactoryInterface
     /**
      * Generate a URL for a named route.
      *
-     * @param array<bool|int|string|array<string>|null> $parameters
+     * @param array<mixed> $parameters
      */
     public function route(string $route_name, array $parameters = []): string;
 

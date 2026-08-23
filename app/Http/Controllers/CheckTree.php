@@ -80,17 +80,16 @@ final class CheckTree
     private const int VIEW_MEMORY_PER_ISSUE = 2 * 1024;
 
     public function __construct(
-        private readonly Gedcom $gedcom,
-        private readonly TimeoutService $timeout_service,
-        private readonly MemoryService $memory_service,
+        private Gedcom $gedcom,
+        private TimeoutService $timeout_service,
+        private MemoryService $memory_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree    = Validator::attributes($request)->tree();
         $skip_to = Validator::queryParams($request)->string('skip_to', '');
 
         // We need to work with raw GEDCOM data, as we are looking for errors

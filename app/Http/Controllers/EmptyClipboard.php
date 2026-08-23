@@ -29,7 +29,7 @@ use function redirect;
 final class EmptyClipboard
 {
     public function __construct(
-        private readonly ClipboardService $clipboard_service,
+        private ClipboardService $clipboard_service,
     ) {
     }
 

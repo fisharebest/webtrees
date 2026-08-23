@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -37,14 +38,12 @@ final class AddUnlinked
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly GedcomEditService $gedcom_edit_service
+        private GedcomEditService $gedcom_edit_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree = Validator::attributes($request)->tree();
         $name = Registry::elementFactory()->make('INDI:NAME')->default($tree);
 
         $facts = [
@@ -63,11 +62,8 @@ final class AddUnlinked
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree = Validator::attributes($request)->tree();
-
         $levels = Validator::parsedBody($request)->list('ilevels');
         $tags   = Validator::parsedBody($request)->list('itags');
         $values = Validator::parsedBody($request)->list('ivalues');

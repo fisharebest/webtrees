@@ -21,31 +21,33 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validate;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 final class CreateSubmitter
 {
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function __construct(
+        private Validate $validate,
+    ) {
+    }
+
+    public function get(Tree $tree): ResponseInterface
     {
-
-        $tree = Validator::attributes($request)->tree();
-
         return response(view('modals/create-submitter', [
             'tree' => $tree,
         ]));
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
-    {
-
-        $tree        = Validator::attributes($request)->tree();
-        $name        = Validator::parsedBody($request)->isNotEmpty()->string('submitter_name');
-        $address     = Validator::parsedBody($request)->string('submitter_address');
-        $email       = Validator::parsedBody($request)->string('submitter_email');
-        $phone       = Validator::parsedBody($request)->string('submitter_phone');
-        $restriction = Validator::parsedBody($request)->string('restriction');
+    public function post(
+        Tree $tree,
+        string $name,
+        string $address,
+        string $email,
+        string $phone,
+        string $restriction,
+    ): ResponseInterface {
+        $this->validate->notEmpty($name, 'name');
 
         $name        = Registry::elementFactory()->make('SUBM:NAME')->canonical($name);
         $address     = Registry::elementFactory()->make('SUBM:ADDR')->canonical($address);

@@ -74,7 +74,7 @@ final class ManageMediaData
         $this->tree_service          = $tree_service;
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request): ResponseInterface
     {
         $data_filesystem = Registry::filesystem()->data();
 

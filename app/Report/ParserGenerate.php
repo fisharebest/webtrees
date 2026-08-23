@@ -52,6 +52,7 @@ use function explode;
 use function file_exists;
 use function file_get_contents;
 use function getimagesize;
+use function html_entity_decode;
 use function imagecreatefromstring;
 use function imagesx;
 use function imagesy;
@@ -813,6 +814,10 @@ final class ParserGenerate extends AbstractParser
                     $name .= ' ' . $addname;
                 }
 
+                // The HTML renderer will encode special characters.
+                // The PDF renderer needs unencoded characters.
+                $name = html_entity_decode($name);
+
                 // Names are user data and may have a different direction to the page.
                 $bidi_name = UTF8::FIRST_STRONG_ISOLATE . trim($name) . UTF8::POP_DIRECTIONAL_ISOLATE;
 
@@ -902,7 +907,7 @@ final class ParserGenerate extends AbstractParser
             }
 
             if ($tag === 'PLAC' || str_ends_with($tag, ':PLAC')) {
-                $value = strip_tags((new Place($value, $this->tree))->shortName());
+                $value = (new Place($value, $this->tree))->gedcomName();
             }
 
             // User data may have a different ltr/rtl direction to the page.

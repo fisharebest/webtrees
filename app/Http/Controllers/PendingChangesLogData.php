@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use DateTimeImmutable;
 use DateTimeZone;
 use Fisharebest\Algorithm\MyersDiff;
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -30,7 +29,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -48,6 +47,7 @@ final class PendingChangesLogData
     private PendingChangesService $pending_changes_service;
 
     public function __construct(
+        private UserInterface $user,
         DatatablesService $datatables_service,
         MyersDiff $myers_diff,
         PendingChangesService $pending_changes_service
@@ -57,9 +57,8 @@ final class PendingChangesLogData
         $this->pending_changes_service = $pending_changes_service;
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree           = Validator::attributes($request)->tree();
         $params         = (array) $request->getParsedBody();
         $params['tree'] = $tree->name();
 
@@ -89,7 +88,7 @@ final class PendingChangesLogData
             $record = Registry::gedcomRecordFactory()->make($row->xref, $tree);
 
             $change_time = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $row->change_time, new DateTimeZone('UTC'))
-                ->setTimezone(new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
+                ->setTimezone(new DateTimeZone($this->user->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
                 ->format('Y-m-d H:i:s T');
 
             return [

@@ -250,11 +250,11 @@ trait ModuleThemeTrait
 
         // ...but switch from the tree-page to the user-page
         if ($route->controller === TreePage::class) {
-            $redirect = route(UserPage::class, ['tree' => $tree?->name()]);
+            $redirect = route(UserPage::class, ['tree' => $tree]);
         }
 
         // Stay on the same tree page
-        $url = route(Login::class, ['tree' => $tree?->name(), 'url' => $redirect]);
+        $url = route(Login::class, ['tree' => $tree, 'url' => $redirect]);
 
         return new Menu(I18N::translate('Sign in'), $url, 'menu-login', ['rel' => 'nofollow']);
     }
@@ -281,7 +281,7 @@ trait ModuleThemeTrait
      */
     public function menuMyAccount(Tree|null $tree): Menu
     {
-        $url = route(Account::class, ['tree' => $tree?->name()]);
+        $url = route(Account::class, ['tree' => $tree]);
 
         return new Menu(I18N::translate('My account'), $url, 'menu-myaccount');
     }

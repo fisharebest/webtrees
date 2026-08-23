@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -35,15 +36,13 @@ use function view;
 final class CreateMediaObject
 {
     public function __construct(
-        private readonly MediaFileService $media_file_service,
-        private readonly PendingChangesService $pending_changes_service
+        private MediaFileService $media_file_service,
+        private PendingChangesService $pending_changes_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(Tree $tree): ResponseInterface
     {
-
-        $tree            = Validator::attributes($request)->tree();
         $max_upload_size = $this->media_file_service->maxUploadFilesize();
         $media_types     = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
         $unused_files    = $this->media_file_service->unusedFiles($tree);
@@ -56,10 +55,8 @@ final class CreateMediaObject
         ]));
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree        = Validator::attributes($request)->tree();
         $note        = Validator::parsedBody($request)->string('media-note');
         $title       = Validator::parsedBody($request)->string('title');
         $type        = Validator::parsedBody($request)->string('type');

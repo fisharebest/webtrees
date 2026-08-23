@@ -21,13 +21,13 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\RedirectReportEnginePhp;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\RedirectReportEnginePhp;
 
 #[CoversClass(RedirectReportEnginePhp::class)]
 class RedirectReportEnginePhpTest extends TestCase
@@ -51,22 +51,22 @@ class RedirectReportEnginePhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $handler = new RedirectReportEnginePhp($tree_service);
+        $controller = new RedirectReportEnginePhp($tree_service);
 
         $request = self::createRequest(
             HttpRequestMethod::GET->value,
             ['ged' => 'tree1', 'action' => 'run', 'report' => 'foo/report.xml'],
             [],
             [],
-            ['base_url' => 'https://www.example.com']
+            ['base_url' => 'https://www.example.com'],
         );
 
-        $response = $handler->get($request);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::MovedPermanently->value, $response->getStatusCode());
         self::assertSame(
             'https://www.example.com/index.php?route=%2Ftree1%2Freport-run%2Ffoo',
-            $response->getHeaderLine('Location')
+            $response->getHeaderLine('Location'),
         );
     }
 
@@ -78,15 +78,15 @@ class RedirectReportEnginePhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection([]));
 
-        $handler = new RedirectReportEnginePhp($tree_service);
+        $controller = new RedirectReportEnginePhp($tree_service);
 
         $request = self::createRequest(
             HttpRequestMethod::GET->value,
-            ['ged'    => 'tree1', 'action' => 'run', 'report' => 'foo/report.xml']
+            ['ged' => 'tree1', 'action' => 'run', 'report' => 'foo/report.xml'],
         );
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 }

@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToMoveFile;
@@ -46,15 +47,13 @@ use function view;
 final class EditMediaFile
 {
     public function __construct(
-        private readonly MediaFileService $media_file_service,
-        private readonly PendingChangesService $pending_changes_service
+        private MediaFileService $media_file_service,
+        private PendingChangesService $pending_changes_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree    = Validator::attributes($request)->tree();
         $xref    = Validator::attributes($request)->isXref()->string('xref');
         $fact_id = Validator::attributes($request)->string('fact_id');
         $media   = Registry::mediaFactory()->make($xref, $tree);
@@ -86,10 +85,8 @@ final class EditMediaFile
         return response('', HttpStatusCode::NotFound);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree     = Validator::attributes($request)->tree();
         $xref     = Validator::attributes($request)->isXref()->string('xref');
         $fact_id  = Validator::attributes($request)->string('fact_id');
         $folder   = Validator::parsedBody($request)->string('folder');

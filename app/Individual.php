@@ -778,7 +778,7 @@ class Individual extends GedcomRecord
                     foreach ($step_family->spouses() as $step_parent) {
                         if ($parent === $step_parent) {
                             // One common parent - must be a step family
-                            if ($parent->sex() === Sex::Female) {
+                            if ($parent->sex() === Sex::Male) {
                                 // Father’s family with someone else
                                 if ($step_family->spouse($step_parent) instanceof Individual) {
                                     /* I18N: A step-family. %s is an individual’s name */

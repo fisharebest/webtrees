@@ -21,27 +21,27 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validate;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 final class CreateSubmission
 {
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function __construct(
+        private Validate $validate,
+    ) {
+    }
+
+    public function get(Tree $tree): ResponseInterface
     {
-
-        $tree = Validator::attributes($request)->tree();
-
         return response(view('modals/create-submission', [
             'tree' => $tree,
         ]));
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(Tree $tree, string $submitter): ResponseInterface
     {
-
-        $tree      = Validator::attributes($request)->tree();
-        $submitter = Validator::parsedBody($request)->isXref()->string('submitter');
+        $this->validate->xref($submitter, 'submitter');
 
         $submitter = Registry::elementFactory()->make('SUBN:SUBM')->canonical($submitter);
 
@@ -50,7 +50,7 @@ final class CreateSubmission
         $record = $tree->createRecord($gedcom);
 
         // value and text are for autocomplete
-        // html is for interactive modals
+        // HTML is for interactive modals
         return response([
             'value' => '@' . $record->xref() . '@',
             'text'  => view('selects/submission', ['submission' => $record]),

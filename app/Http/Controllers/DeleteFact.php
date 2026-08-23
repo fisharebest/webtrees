@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -29,9 +30,8 @@ use function response;
 
 final class DeleteFact
 {
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree    = Validator::attributes($request)->tree();
         $xref    = Validator::attributes($request)->isXref()->string('xref');
         $fact_id = Validator::attributes($request)->string('fact_id');
         $record  = Registry::gedcomRecordFactory()->make($xref, $tree);

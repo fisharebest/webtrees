@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Factories\IndividualFactory;
+use Fisharebest\Webtrees\Http\Controllers\RedirectModulePhp;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\InteractiveTreeModule;
@@ -33,7 +34,6 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\RedirectModulePhp;
 
 #[CoversClass(RedirectModulePhp::class)]
 class RedirectModulePhpTest extends TestCase
@@ -81,14 +81,14 @@ class RedirectModulePhpTest extends TestCase
             ->with(PedigreeMapModule::class)
             ->willReturn(new Collection([$module]));
 
-        $handler = new RedirectModulePhp($module_service, $tree_service);
+        $controller = new RedirectModulePhp($module_service, $tree_service);
 
         $request = self::createRequest(
             HttpRequestMethod::GET->value,
-            ['mod' => 'googlemap', 'mod_action' => 'pedigree_map', 'ged' => 'tree1', 'rootid' => 'X123']
+            ['mod' => 'googlemap', 'mod_action' => 'pedigree_map', 'ged' => 'tree1', 'rootid' => 'X123'],
         );
 
-        $response = $handler->get($request);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::MovedPermanently->value, $response->getStatusCode());
         self::assertSame('https://www.example.com', $response->getHeaderLine('Location'));
@@ -131,14 +131,14 @@ class RedirectModulePhpTest extends TestCase
             ->with(InteractiveTreeModule::class)
             ->willReturn(new Collection([$module]));
 
-        $handler = new RedirectModulePhp($module_service, $tree_service);
+        $controller = new RedirectModulePhp($module_service, $tree_service);
 
         $request = self::createRequest(
             HttpRequestMethod::GET->value,
-            ['mod' => 'tree', 'mod_action' => 'treeview', 'ged' => 'tree1', 'rootid' => 'X123']
+            ['mod' => 'tree', 'mod_action' => 'treeview', 'ged' => 'tree1', 'rootid' => 'X123'],
         );
 
-        $response = $handler->get($request);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::MovedPermanently->value, $response->getStatusCode());
         self::assertSame('https://www.example.com', $response->getHeaderLine('Location'));
@@ -146,23 +146,23 @@ class RedirectModulePhpTest extends TestCase
 
     public function testNoSuchTree(): void
     {
-        $module_service  = self::createStub(ModuleService::class);
-        $tree_service = $this->createMock(TreeService::class);
+        $module_service = self::createStub(ModuleService::class);
+        $tree_service   = $this->createMock(TreeService::class);
         $tree_service
             ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection([]));
 
-        $handler = new RedirectModulePhp($module_service, $tree_service);
+        $controller = new RedirectModulePhp($module_service, $tree_service);
 
         $request = self::createRequest(
             HttpRequestMethod::GET->value,
-            ['ged' => 'tree1', 'rootid' => 'X123']
+            ['ged' => 'tree1', 'rootid' => 'X123'],
         );
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 
     public function testNoSuchIndividual(): void
@@ -180,23 +180,23 @@ class RedirectModulePhpTest extends TestCase
             ->willReturn(null);
 
         Registry::individualFactory($individual_factory);
-        $module_service  = self::createStub(ModuleService::class);
-        $tree_service = $this->createMock(TreeService::class);
+        $module_service = self::createStub(ModuleService::class);
+        $tree_service   = $this->createMock(TreeService::class);
         $tree_service
             ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $handler = new RedirectModulePhp($module_service, $tree_service);
+        $controller = new RedirectModulePhp($module_service, $tree_service);
 
         $request = self::createRequest(
             HttpRequestMethod::GET->value,
-            ['ged' => 'tree1', 'rootid' => 'X123']
+            ['ged' => 'tree1', 'rootid' => 'X123'],
         );
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 
     public function testPedigreeMapModuleDisabled(): void
@@ -230,16 +230,16 @@ class RedirectModulePhpTest extends TestCase
             ->with(PedigreeMapModule::class)
             ->willReturn(new Collection([]));
 
-        $handler = new RedirectModulePhp($module_service, $tree_service);
+        $controller = new RedirectModulePhp($module_service, $tree_service);
 
         $request = self::createRequest(
             HttpRequestMethod::GET->value,
-            ['mod' => 'googlemap', 'mod_action' => 'pedigree_map', 'ged' => 'tree1', 'rootid' => 'X123']
+            ['mod' => 'googlemap', 'mod_action' => 'pedigree_map', 'ged' => 'tree1', 'rootid' => 'X123'],
         );
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 
     public function testInteractiveTreeModuleDisabled(): void
@@ -273,15 +273,15 @@ class RedirectModulePhpTest extends TestCase
             ->with(InteractiveTreeModule::class)
             ->willReturn(new Collection([]));
 
-        $handler = new RedirectModulePhp($module_service, $tree_service);
+        $controller = new RedirectModulePhp($module_service, $tree_service);
 
         $request = self::createRequest(
             HttpRequestMethod::GET->value,
-            ['mod' => 'tree', 'mod_action' => 'treeview', 'ged' => 'tree1', 'rootid' => 'X123']
+            ['mod' => 'tree', 'mod_action' => 'treeview', 'ged' => 'tree1', 'rootid' => 'X123'],
         );
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 }

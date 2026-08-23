@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -37,9 +38,8 @@ final class ReorderMediaFiles
 {
     use ViewResponseTrait;
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree  = Validator::attributes($request)->tree();
         $xref  = Validator::attributes($request)->isXref()->string('xref');
         $media = Registry::mediaFactory()->make($xref, $tree);
         $media = Auth::checkMediaAccess($media, true);
@@ -59,9 +59,8 @@ final class ReorderMediaFiles
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree  = Validator::attributes($request)->tree();
         $xref  = Validator::attributes($request)->isXref()->string('xref');
         $order = Validator::parsedBody($request)->list('order');
 

@@ -21,9 +21,15 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\Http\Routes\ApiRoutes;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
+use Fisharebest\Webtrees\Http\Routing\GedcomRecordParameterResolver;
+use Fisharebest\Webtrees\Http\Routing\ParameterResolverInterface;
+use Fisharebest\Webtrees\Http\Routing\ParameterResolver;
 use Fisharebest\Webtrees\Http\Routing\RouteCollection;
+use Fisharebest\Webtrees\Http\Routing\ScalarParameterResolver;
+use Fisharebest\Webtrees\Http\Routing\TreeParameterResolver;
 use Fisharebest\Webtrees\Http\Routing\UrlGenerator;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -53,9 +59,18 @@ class LoadRoutes implements MiddlewareInterface
         $this->api_routes->load($routes);
         $this->web_routes->load($routes);
 
-        // Save the route collection and URL generator in the container.
+        // Build the parameter resolver aggregate with all known resolvers.
+        $tree_service = Registry::container()->get(TreeService::class);
+        $parameter_resolver = new ParameterResolver([
+            new TreeParameterResolver($tree_service),
+            new GedcomRecordParameterResolver(),
+            new ScalarParameterResolver(),
+        ]);
+
+        // Save the route collection, parameter resolver, and URL generator in the container.
         Registry::container()->set(RouteCollection::class, $routes);
-        Registry::container()->set(UrlGenerator::class, new UrlGenerator($routes, $base_path));
+        Registry::container()->set(ParameterResolverInterface::class, $parameter_resolver);
+        Registry::container()->set(UrlGenerator::class, new UrlGenerator($routes, $base_path, $parameter_resolver));
 
         return $handler->handle($request);
     }

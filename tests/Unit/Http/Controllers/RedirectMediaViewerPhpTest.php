@@ -22,6 +22,8 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Factories\MediaFactory;
+use Fisharebest\Webtrees\Http\Controllers\RedirectFamilyPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectMediaViewerPhp;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Media;
@@ -31,8 +33,6 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\RedirectFamilyPhp;
-use Fisharebest\Webtrees\Http\Controllers\RedirectMediaViewerPhp;
 
 #[CoversClass(RedirectMediaViewerPhp::class)]
 class RedirectMediaViewerPhpTest extends TestCase
@@ -70,11 +70,11 @@ class RedirectMediaViewerPhpTest extends TestCase
 
         Registry::mediaFactory($media_factory);
 
-        $handler = new RedirectMediaViewerPhp($tree_service);
+        $controller = new RedirectMediaViewerPhp($tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'mid' => 'X123']);
 
-        $response = $handler->get($request);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::MovedPermanently->value, $response->getStatusCode());
         self::assertSame('https://www.example.com', $response->getHeaderLine('Location'));
@@ -90,13 +90,13 @@ class RedirectMediaViewerPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $handler = new RedirectMediaViewerPhp($tree_service);
+        $controller = new RedirectMediaViewerPhp($tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'mid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 
     public function testNoSuchTree(): void
@@ -107,38 +107,38 @@ class RedirectMediaViewerPhpTest extends TestCase
             ->method('all')
             ->willReturn(new Collection([]));
 
-        $handler = new RedirectMediaViewerPhp($tree_service);
+        $controller = new RedirectMediaViewerPhp($tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1', 'mid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 
     public function testMissingTreeParameter(): void
     {
         $tree_service = self::createStub(TreeService::class);
 
-        $handler = new RedirectFamilyPhp($tree_service);
+        $controller = new RedirectFamilyPhp($tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['mid' => 'X123']);
 
         $this->expectException(HttpBadRequestException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 
     public function testMissingXrefParameter(): void
     {
         $tree_service = self::createStub(TreeService::class);
 
-        $handler = new RedirectFamilyPhp($tree_service);
+        $controller = new RedirectFamilyPhp($tree_service);
 
         $request = self::createRequest(HttpRequestMethod::GET->value, ['ged' => 'tree1']);
 
         $this->expectException(HttpBadRequestException::class);
 
-        $handler->get($request);
+        $controller->get($request);
     }
 }

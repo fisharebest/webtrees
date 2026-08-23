@@ -160,131 +160,158 @@ final readonly class Welsh extends AbstractLanguage
     protected const array JALALI_MONTHS_INSTRUMENTAL = self::JALALI_MONTHS_NOMINATIVE;
 
     /**
+     * Generate nominative and genitive forms using Welsh juxtaposition.
+     *
+     * @return array{string, string}
+     */
+    private function rel(string $nominative): array
+    {
+        return [$nominative, '%s ' . $nominative];
+    }
+
+    /**
+     * Generate nominative and genitive forms for a dynamic ancestor relationship
+     * using the repeated "hen " prefix (with soft mutation on the base form).
+     *
+     * mam-gu → hen fam-gu → hen hen fam-gu
+     *
+     * @return array{string, string}
+     */
+    private function hen(int $n, string $mutated): array
+    {
+        return [
+            str_repeat('hen ', $n) . $mutated,
+            '%s ' . str_repeat('hen ', $n) . $mutated,
+        ];
+    }
+
+    /**
+     * Generate nominative and genitive forms for a dynamic descendant relationship
+     * using the repeated "gor" prefix.
+     *
+     * wyres → gorwyres → gorgorwyres
+     *
+     * @return array{string, string}
+     */
+    private function gor(int $n, string $base): array
+    {
+        return [
+            str_repeat('gor', $n) . $base,
+            '%s ' . str_repeat('gor', $n) . $base,
+        ];
+    }
+
+    /**
      * @return array<Relationship>
      */
     public function relationships(): array
     {
-        // Welsh genitive: juxtaposition (possessed + possessor)
-        $rel = static fn (string $s): array => [$s, '%s ' . $s];
-
-        // "hen " prefix for great- ancestors (soft mutation applied to base form)
-        $hen = static fn (int $n, string $mutated): array => [
-            str_repeat('hen ', $n) . $mutated,
-            '%s ' . str_repeat('hen ', $n) . $mutated,
-        ];
-
-        // "gor" prefix for great- descendants
-        $gor = static fn (int $n, string $base): array => [
-            str_repeat('gor', $n) . $base,
-            '%s ' . str_repeat('gor', $n) . $base,
-        ];
-
         return [
             // Adopted
-            Relationship::fixed(...$rel('mam fabwysiedig'))->adoptive()->mother(),
-            Relationship::fixed(...$rel('tad mabwysiedig'))->adoptive()->father(),
-            Relationship::fixed(...$rel('rhiant mabwysiedig'))->adoptive()->parent(),
-            Relationship::fixed(...$rel('merch fabwysiedig'))->adopted()->daughter(),
-            Relationship::fixed(...$rel('mab mabwysiedig'))->adopted()->son(),
-            Relationship::fixed(...$rel('plentyn mabwysiedig'))->adopted()->child(),
+            Relationship::fixed(...$this->rel('mam fabwysiedig'))->adoptive()->mother(),
+            Relationship::fixed(...$this->rel('tad mabwysiedig'))->adoptive()->father(),
+            Relationship::fixed(...$this->rel('rhiant mabwysiedig'))->adoptive()->parent(),
+            Relationship::fixed(...$this->rel('merch fabwysiedig'))->adopted()->daughter(),
+            Relationship::fixed(...$this->rel('mab mabwysiedig'))->adopted()->son(),
+            Relationship::fixed(...$this->rel('plentyn mabwysiedig'))->adopted()->child(),
             // Fostered
-            Relationship::fixed(...$rel('mam faeth'))->fostering()->mother(),
-            Relationship::fixed(...$rel('tad maeth'))->fostering()->father(),
-            Relationship::fixed(...$rel('rhiant maeth'))->fostering()->parent(),
-            Relationship::fixed(...$rel('merch faeth'))->fostered()->daughter(),
-            Relationship::fixed(...$rel('mab maeth'))->fostered()->son(),
-            Relationship::fixed(...$rel('plentyn maeth'))->fostered()->child(),
+            Relationship::fixed(...$this->rel('mam faeth'))->fostering()->mother(),
+            Relationship::fixed(...$this->rel('tad maeth'))->fostering()->father(),
+            Relationship::fixed(...$this->rel('rhiant maeth'))->fostering()->parent(),
+            Relationship::fixed(...$this->rel('merch faeth'))->fostered()->daughter(),
+            Relationship::fixed(...$this->rel('mab maeth'))->fostered()->son(),
+            Relationship::fixed(...$this->rel('plentyn maeth'))->fostered()->child(),
             // Parents
-            Relationship::fixed(...$rel('mam'))->mother(),
-            Relationship::fixed(...$rel('tad'))->father(),
-            Relationship::fixed(...$rel('rhiant'))->parent(),
+            Relationship::fixed(...$this->rel('mam'))->mother(),
+            Relationship::fixed(...$this->rel('tad'))->father(),
+            Relationship::fixed(...$this->rel('rhiant'))->parent(),
             // Children
-            Relationship::fixed(...$rel('merch'))->daughter(),
-            Relationship::fixed(...$rel('mab'))->son(),
-            Relationship::fixed(...$rel('plentyn'))->child(),
+            Relationship::fixed(...$this->rel('merch'))->daughter(),
+            Relationship::fixed(...$this->rel('mab'))->son(),
+            Relationship::fixed(...$this->rel('plentyn'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('brawd gefell'))->multiple()->brother(),
-            Relationship::fixed(...$rel('chwaer efell'))->multiple()->sister(),
-            Relationship::fixed(...$rel('gefell'))->multiple()->sibling(),
-            Relationship::fixed(...$rel('brawd hŷn'))->older()->brother(),
-            Relationship::fixed(...$rel('chwaer hŷn'))->older()->sister(),
-            Relationship::fixed(...$rel('brawd/chwaer hŷn'))->older()->sibling(),
-            Relationship::fixed(...$rel('brawd iau'))->younger()->brother(),
-            Relationship::fixed(...$rel('chwaer iau'))->younger()->sister(),
-            Relationship::fixed(...$rel('brawd/chwaer iau'))->younger()->sibling(),
-            Relationship::fixed(...$rel('chwaer'))->sister(),
-            Relationship::fixed(...$rel('brawd'))->brother(),
-            Relationship::fixed(...$rel('brawd/chwaer'))->sibling(),
+            Relationship::fixed(...$this->rel('brawd gefell'))->multiple()->brother(),
+            Relationship::fixed(...$this->rel('chwaer efell'))->multiple()->sister(),
+            Relationship::fixed(...$this->rel('gefell'))->multiple()->sibling(),
+            Relationship::fixed(...$this->rel('brawd hŷn'))->older()->brother(),
+            Relationship::fixed(...$this->rel('chwaer hŷn'))->older()->sister(),
+            Relationship::fixed(...$this->rel('brawd/chwaer hŷn'))->older()->sibling(),
+            Relationship::fixed(...$this->rel('brawd iau'))->younger()->brother(),
+            Relationship::fixed(...$this->rel('chwaer iau'))->younger()->sister(),
+            Relationship::fixed(...$this->rel('brawd/chwaer iau'))->younger()->sibling(),
+            Relationship::fixed(...$this->rel('chwaer'))->sister(),
+            Relationship::fixed(...$this->rel('brawd'))->brother(),
+            Relationship::fixed(...$this->rel('brawd/chwaer'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$rel('hanner chwaer'))->parent()->daughter(),
-            Relationship::fixed(...$rel('hanner brawd'))->parent()->son(),
-            Relationship::fixed(...$rel('hanner brawd/chwaer'))->parent()->child(),
+            Relationship::fixed(...$this->rel('hanner chwaer'))->parent()->daughter(),
+            Relationship::fixed(...$this->rel('hanner brawd'))->parent()->son(),
+            Relationship::fixed(...$this->rel('hanner brawd/chwaer'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$rel('llysfam'))->parent()->wife(),
-            Relationship::fixed(...$rel('llystad'))->parent()->husband(),
-            Relationship::fixed(...$rel('llysriant'))->parent()->married()->spouse(),
-            Relationship::fixed(...$rel('llysferch'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$rel('llysfab'))->married()->spouse()->son(),
-            Relationship::fixed(...$rel('llysblentyn'))->married()->spouse()->child(),
-            Relationship::fixed(...$rel('llyschwer'))->parent()->spouse()->daughter(),
-            Relationship::fixed(...$rel('llysfrawd'))->parent()->spouse()->son(),
-            Relationship::fixed(...$rel('llysfrawd/llyschwer'))->parent()->spouse()->child(),
+            Relationship::fixed(...$this->rel('llysfam'))->parent()->wife(),
+            Relationship::fixed(...$this->rel('llystad'))->parent()->husband(),
+            Relationship::fixed(...$this->rel('llysriant'))->parent()->married()->spouse(),
+            Relationship::fixed(...$this->rel('llysferch'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->rel('llysfab'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->rel('llysblentyn'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->rel('llyschwer'))->parent()->spouse()->daughter(),
+            Relationship::fixed(...$this->rel('llysfrawd'))->parent()->spouse()->son(),
+            Relationship::fixed(...$this->rel('llysfrawd/llyschwer'))->parent()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$rel('cyn-wraig'))->divorced()->partner()->female(),
-            Relationship::fixed(...$rel('cyn-ŵr'))->divorced()->partner()->male(),
-            Relationship::fixed(...$rel('cyn-bartner'))->divorced()->partner(),
-            Relationship::fixed(...$rel('dyweddi'))->engaged()->partner()->female(),
-            Relationship::fixed(...$rel('dyweddi'))->engaged()->partner()->male(),
-            Relationship::fixed(...$rel('gwraig'))->wife(),
-            Relationship::fixed(...$rel('gŵr'))->husband(),
-            Relationship::fixed(...$rel('priod'))->spouse(),
-            Relationship::fixed(...$rel('partner'))->partner(),
+            Relationship::fixed(...$this->rel('cyn-wraig'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->rel('cyn-ŵr'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->rel('cyn-bartner'))->divorced()->partner(),
+            Relationship::fixed(...$this->rel('dyweddi'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->rel('dyweddi'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->rel('gwraig'))->wife(),
+            Relationship::fixed(...$this->rel('gŵr'))->husband(),
+            Relationship::fixed(...$this->rel('priod'))->spouse(),
+            Relationship::fixed(...$this->rel('partner'))->partner(),
             // In-laws
-            Relationship::fixed(...$rel('mam-yng-nghyfraith'))->married()->spouse()->mother(),
-            Relationship::fixed(...$rel('tad-yng-nghyfraith'))->married()->spouse()->father(),
-            Relationship::fixed(...$rel('rhiant-yng-nghyfraith'))->married()->spouse()->parent(),
-            Relationship::fixed(...$rel('merch-yng-nghyfraith'))->child()->wife(),
-            Relationship::fixed(...$rel('mab-yng-nghyfraith'))->child()->husband(),
-            Relationship::fixed(...$rel('plentyn-yng-nghyfraith'))->child()->married()->spouse(),
-            Relationship::fixed(...$rel('chwaer-yng-nghyfraith'))->spouse()->sister(),
-            Relationship::fixed(...$rel('brawd-yng-nghyfraith'))->spouse()->brother(),
-            Relationship::fixed(...$rel('chwaer-yng-nghyfraith'))->sibling()->wife(),
-            Relationship::fixed(...$rel('brawd-yng-nghyfraith'))->sibling()->husband(),
+            Relationship::fixed(...$this->rel('mam-yng-nghyfraith'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->rel('tad-yng-nghyfraith'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->rel('rhiant-yng-nghyfraith'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->rel('merch-yng-nghyfraith'))->child()->wife(),
+            Relationship::fixed(...$this->rel('mab-yng-nghyfraith'))->child()->husband(),
+            Relationship::fixed(...$this->rel('plentyn-yng-nghyfraith'))->child()->married()->spouse(),
+            Relationship::fixed(...$this->rel('chwaer-yng-nghyfraith'))->spouse()->sister(),
+            Relationship::fixed(...$this->rel('brawd-yng-nghyfraith'))->spouse()->brother(),
+            Relationship::fixed(...$this->rel('chwaer-yng-nghyfraith'))->sibling()->wife(),
+            Relationship::fixed(...$this->rel('brawd-yng-nghyfraith'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$rel('mam-gu'))->parent()->mother(),
-            Relationship::fixed(...$rel('tad-cu'))->parent()->father(),
-            Relationship::fixed(...$rel('taid/nain'))->parent()->parent(),
+            Relationship::fixed(...$this->rel('mam-gu'))->parent()->mother(),
+            Relationship::fixed(...$this->rel('tad-cu'))->parent()->father(),
+            Relationship::fixed(...$this->rel('taid/nain'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$rel('wyres'))->child()->daughter(),
-            Relationship::fixed(...$rel('ŵyr'))->child()->son(),
-            Relationship::fixed(...$rel('ŵyr/wyres'))->child()->child(),
+            Relationship::fixed(...$this->rel('wyres'))->child()->daughter(),
+            Relationship::fixed(...$this->rel('ŵyr'))->child()->son(),
+            Relationship::fixed(...$this->rel('ŵyr/wyres'))->child()->child(),
             // Aunts and uncles
-            Relationship::fixed(...$rel('modryb'))->parent()->sister(),
-            Relationship::fixed(...$rel('ewythr'))->parent()->brother(),
+            Relationship::fixed(...$this->rel('modryb'))->parent()->sister(),
+            Relationship::fixed(...$this->rel('ewythr'))->parent()->brother(),
             // Nieces and nephews
-            Relationship::fixed(...$rel('nith'))->sibling()->daughter(),
-            Relationship::fixed(...$rel('nai'))->sibling()->son(),
-            Relationship::fixed(...$rel('nith'))->married()->spouse()->sibling()->daughter(),
-            Relationship::fixed(...$rel('nai'))->married()->spouse()->sibling()->son(),
+            Relationship::fixed(...$this->rel('nith'))->sibling()->daughter(),
+            Relationship::fixed(...$this->rel('nai'))->sibling()->son(),
+            Relationship::fixed(...$this->rel('nith'))->married()->spouse()->sibling()->daughter(),
+            Relationship::fixed(...$this->rel('nai'))->married()->spouse()->sibling()->son(),
             // Cousins (flat — same term for all levels)
-            Relationship::fixed(...$rel('cyfnither'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$rel('cefnder'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->rel('cyfnither'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->rel('cefnder'))->parent()->sibling()->son(),
             // Dynamic — great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $hen($n - 1, 'fodryb'))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $hen($n - 1, 'ewythr'))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->hen($n - 1, 'fodryb'))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->hen($n - 1, 'ewythr'))->ancestor()->brother(),
             // Dynamic — great-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $gor($n - 1, 'nith'))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $gor($n - 1, 'nith'))->married()->spouse()->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $gor($n - 1, 'nai'))->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $gor($n - 1, 'nai'))->married()->spouse()->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->gor($n - 1, 'nith'))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->gor($n - 1, 'nith'))->married()->spouse()->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->gor($n - 1, 'nai'))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->gor($n - 1, 'nai'))->married()->spouse()->sibling()->descendant()->male(),
             // Dynamic — ancestors
-            Relationship::dynamic(static fn (int $n) => $hen($n - 2, 'fam-gu'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $hen($n - 2, 'dad-cu'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $hen($n - 2, 'daid/nain'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->hen($n - 2, 'fam-gu'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->hen($n - 2, 'dad-cu'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->hen($n - 2, 'daid/nain'))->ancestor(),
             // Dynamic — descendants
-            Relationship::dynamic(static fn (int $n) => $gor($n - 2, 'wyres'))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $gor($n - 2, 'ŵyr'))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $gor($n - 2, 'ŵyr/wyres'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->gor($n - 2, 'wyres'))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->gor($n - 2, 'ŵyr'))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->gor($n - 2, 'ŵyr/wyres'))->descendant(),
         ];
     }
 }

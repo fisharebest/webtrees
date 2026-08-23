@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -29,14 +30,13 @@ use Psr\Http\Message\ServerRequestInterface;
 final class CreateMediaObjectFromFile
 {
     public function __construct(
-        private readonly MediaFileService $media_file_service,
-        private readonly PendingChangesService $pending_changes_service,
+        private MediaFileService $media_file_service,
+        private PendingChangesService $pending_changes_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-        $tree  = Validator::attributes($request)->tree();
         $file  = Validator::parsedBody($request)->string('file');
         $type  = Validator::parsedBody($request)->string('type');
         $title = Validator::parsedBody($request)->string('title');

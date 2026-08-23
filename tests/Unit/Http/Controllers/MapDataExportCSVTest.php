@@ -20,10 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\MapDataExportCSV;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\MapDataExportCSV;
 
 #[CoversClass(MapDataExportCSV::class)]
 class MapDataExportCSVTest extends TestCase
@@ -37,9 +37,9 @@ class MapDataExportCSVTest extends TestCase
     public function testExportCSV(): void
     {
         $map_data_service = new MapDataService();
-        $handler          = new MapDataExportCSV($map_data_service);
+        $controller       = new MapDataExportCSV($map_data_service);
         $request          = self::createRequest();
-        $response         = $handler->get($request);
+        $response         = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertSame($response->getHeaderLine('content-type'), 'text/csv; charset=UTF-8');

@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -35,14 +36,12 @@ final class SearchReplace
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly SearchService $search_service
+        private SearchService $search_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree    = Validator::attributes($request)->tree();
         $context = Validator::queryParams($request)->string('context', 'all');
         $replace = Validator::queryParams($request)->string('replace', '');
         $search  = Validator::queryParams($request)->string('search', '');
@@ -57,10 +56,8 @@ final class SearchReplace
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree    = Validator::attributes($request)->tree();
         $search  = Validator::parsedBody($request)->string('search');
         $replace = Validator::parsedBody($request)->string('replace');
         $context = Validator::parsedBody($request)->string('context');

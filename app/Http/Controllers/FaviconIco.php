@@ -20,14 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function file_get_contents;
 use function response;
 
 final class FaviconIco
 {
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(): ResponseInterface
     {
         $content = file_get_contents(__DIR__ . '/../../../favicon.ico');
 

@@ -49,16 +49,13 @@ final class SearchGeneral
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly SearchService $search_service,
-        private readonly TreeService $tree_service
+        private SearchService $search_service,
+        private TreeService $tree_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree = Validator::attributes($request)->tree();
-
         $query = Validator::queryParams($request)->string('query', '');
 
         // What type of records to search?
@@ -251,9 +248,8 @@ final class SearchGeneral
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
         return redirect(route(SearchGeneral::class, [
             'query'               => Validator::parsedBody($request)->string('query'),
             'search_families'     => Validator::parsedBody($request)->boolean('search_families', false),
@@ -263,7 +259,7 @@ final class SearchGeneral
             'search_repositories' => Validator::parsedBody($request)->boolean('search_repositories', false),
             'search_sources'      => Validator::parsedBody($request)->boolean('search_sources', false),
             'search_trees'        => Validator::parsedBody($request)->list('search_trees'),
-            'tree'                => Validator::attributes($request)->tree()->name(),
+            'tree'                => $tree->name(),
         ]));
     }
 

@@ -44,7 +44,7 @@ final class DeletePath
     ];
 
     public function __construct(
-        private readonly WhitespacePathNormalizer $whitespace_path_normalizer,
+        private WhitespacePathNormalizer $whitespace_path_normalizer,
     ) {
     }
 

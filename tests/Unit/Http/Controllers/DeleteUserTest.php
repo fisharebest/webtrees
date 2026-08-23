@@ -19,15 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
-use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\DeleteUser;
 use Fisharebest\Webtrees\Http\Exceptions\HttpForbiddenException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\User;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Http\Controllers\DeleteUser;
 
 #[CoversClass(DeleteUser::class)]
 class DeleteUserTest extends TestCase
@@ -46,10 +46,10 @@ class DeleteUserTest extends TestCase
         $user_service = $this->createMock(UserService::class);
         $user_service->expects($this->once())->method('find')->willReturn($user);
 
-        $request  = self::createRequest()
+        $request    = self::createRequest()
             ->withAttribute('user_id', $user->id());
-        $handler  = new DeleteUser($user_service);
-        $response = $handler->post($request);
+        $controller = new DeleteUser($user_service);
+        $response   = $controller->post($request);
 
         self::assertSame(HttpStatusCode::NoContent->value, $response->getStatusCode());
     }
@@ -62,10 +62,10 @@ class DeleteUserTest extends TestCase
         $user_service = $this->createMock(UserService::class);
         $user_service->expects($this->once())->method('find')->willReturn(null);
 
-        $request  = self::createRequest()
+        $request    = self::createRequest()
             ->withAttribute('user_id', 98765);
-        $handler  = new DeleteUser($user_service);
-        $handler->post($request);
+        $controller = new DeleteUser($user_service);
+        $controller->post($request);
     }
 
     public function testCannotDeleteAdministrator(): void
@@ -80,9 +80,9 @@ class DeleteUserTest extends TestCase
         $user_service = $this->createMock(UserService::class);
         $user_service->expects($this->once())->method('find')->willReturn($user);
 
-        $request  = self::createRequest()
+        $request    = self::createRequest()
             ->withAttribute('user_id', $user->id());
-        $handler = new DeleteUser($user_service);
-        $handler->post($request);
+        $controller = new DeleteUser($user_service);
+        $controller->post($request);
     }
 }

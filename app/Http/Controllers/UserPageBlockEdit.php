@@ -19,9 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\HomePageService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -34,18 +36,16 @@ final class UserPageBlockEdit
     use ViewResponseTrait;
 
     public function __construct(
-        private readonly HomePageService $home_page_service
+        private UserInterface $user,
+        private HomePageService $home_page_service
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree     = Validator::attributes($request)->tree();
-        $user     = Validator::attributes($request)->user();
         $block_id = Validator::attributes($request)->integer('block_id');
 
-        $block = $this->home_page_service->userBlock($request, $user);
+        $block = $this->home_page_service->userBlock($request, $this->user);
         $title = $block->title() . ' — ' . I18N::translate('Preferences');
 
         return $this->viewResponse('modules/edit-block-config', [
@@ -58,14 +58,11 @@ final class UserPageBlockEdit
         ]);
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
-
-        $tree     = Validator::attributes($request)->tree();
-        $user     = Validator::attributes($request)->user();
         $block_id = Validator::attributes($request)->integer('block_id');
 
-        $block = $this->home_page_service->userBlock($request, $user);
+        $block = $this->home_page_service->userBlock($request, $this->user);
         $block->saveBlockConfiguration($request, $block_id);
 
         return redirect(route(UserPage::class, ['tree' => $tree->name()]));

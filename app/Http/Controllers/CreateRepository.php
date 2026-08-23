@@ -24,20 +24,22 @@ use Fisharebest\Webtrees\Elements\AddressWebPage;
 use Fisharebest\Webtrees\Elements\NameOfRepository;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Validator;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validate;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function response;
 use function view;
 
 final class CreateRepository
 {
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function __construct(
+        private Validate $validate,
+    ) {
+    }
+
+    public function get(Tree $tree): ResponseInterface
     {
-
-        $tree = Validator::attributes($request)->tree();
-
         $elements = [
             'name'    => new NameOfRepository(I18N::translateContext('Repository', 'Name')),
             'address' => new AddressLine(I18N::translate('Address')),
@@ -50,14 +52,9 @@ final class CreateRepository
         ]));
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function post(Tree $tree, string $name, string $address, string $url, string $restriction): ResponseInterface
     {
-
-        $tree        = Validator::attributes($request)->tree();
-        $name        = Validator::parsedBody($request)->isNotEmpty()->string('name');
-        $address     = Validator::parsedBody($request)->string('address');
-        $url         = Validator::parsedBody($request)->string('url');
-        $restriction = Validator::parsedBody($request)->string('restriction');
+        $this->validate->notEmpty($name, 'name');
 
         $name        = Registry::elementFactory()->make('REPO:NAME')->canonical($name);
         $address     = Registry::elementFactory()->make('REPO:ADDR')->canonical($address);

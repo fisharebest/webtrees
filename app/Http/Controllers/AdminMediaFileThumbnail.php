@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Enums\ImageOperation;
+use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -36,15 +38,13 @@ final class AdminMediaFileThumbnail
     private const int THUMBNAIL_CACHE_TTL = 8640000;
 
     public function __construct(
-        private readonly MediaFileService $media_file_service,
+        private MediaFileService $media_file_service,
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(string $path): ResponseInterface
     {
-        $filesystem = Registry::filesystem()->data();
-        $path       = Validator::queryParams($request)->string('path');
-
+        $filesystem    = Registry::filesystem()->data();
         $media_folders = $this->media_file_service->allMediaFolders($filesystem)->all();
 
         foreach ($media_folders as $media_folder) {
@@ -78,6 +78,6 @@ final class AdminMediaFileThumbnail
             }
         }
 
-        throw new HttpBadRequestException(I18N::translate('The parameter “path” is invalid.'));
+        throw new ImageException(status_code: HttpStatusCode::NotFound, filename: $path, error: 'File not found');
     }
 }
