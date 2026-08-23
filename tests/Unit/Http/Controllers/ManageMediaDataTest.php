@@ -57,7 +57,7 @@ class ManageMediaDataTest extends TestCase
             'start'        => '0',
             'length'       => '10',
         ]);
-        $response     = $controller->get($request);
+        $response     = $controller->post($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }
@@ -72,14 +72,14 @@ class ManageMediaDataTest extends TestCase
         $tree_service = new TreeService($gedcom_import_service);
         $controller   = new ManageMediaData($datatables_service, $linked_record_service, $media_file_service, $tree_service);
         $request      = self::createRequest(HttpRequestMethod::GET->value, [
-            'files'        => 'local',
+            'files'        => 'external',
             'media_folder' => 'media/',
             'subfolders'   => 'include',
             'search'       => ['value' => ''],
             'start'        => '0',
             'length'       => '10',
         ]);
-        $response     = $controller->get($request);
+        $response     = $controller->post($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }
@@ -91,17 +91,19 @@ class ManageMediaDataTest extends TestCase
         $linked_record_service = new LinkedRecordService();
         $media_file_service    = self::createStub(MediaFileService::class);
         $media_file_service->method('allMediaFolders')->willReturn(new Collection(['media/']));
+        $media_file_service->method('allFilesOnDisk')->willReturn(new Collection());
+        $media_file_service->method('allFilesInDatabase')->willReturn(new Collection());
         $tree_service = new TreeService($gedcom_import_service);
         $controller   = new ManageMediaData($datatables_service, $linked_record_service, $media_file_service, $tree_service);
         $request      = self::createRequest(HttpRequestMethod::GET->value, [
-            'files'        => 'local',
+            'files'        => 'unused',
             'media_folder' => 'media/',
             'subfolders'   => 'include',
             'search'       => ['value' => ''],
             'start'        => '0',
             'length'       => '10',
         ]);
-        $response     = $controller->get($request);
+        $response     = $controller->post($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }

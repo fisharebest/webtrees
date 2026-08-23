@@ -30,6 +30,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use function array_filter;
 use function array_map;
 use function is_bool;
+use function is_string;
 use function parse_url;
 use function str_contains;
 use function str_starts_with;
@@ -76,12 +77,13 @@ class RouteFactory implements RouteFactoryInterface
 
         // Extract path portion only (without query string that UrlGenerator may add)
         $path = parse_url($url, PHP_URL_PATH);
+        $path = is_string($path) ? $path : '';
 
         // Strip the base path prefix — the Router expects route-relative paths.
         $base_path = parse_url($base_url, PHP_URL_PATH);
         $base_path = is_string($base_path) ? $base_path : '';
 
-        if (str_starts_with((string) $path, $base_path)) {
+        if (str_starts_with($path, $base_path)) {
             $path = substr($path, strlen($base_path));
         }
 
