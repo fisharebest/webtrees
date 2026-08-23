@@ -135,7 +135,7 @@ export function httpGet(url) {
  *
  * @returns {Promise}
  */
-export function httpPost(url, body = '') {
+export function httpPost(url, body = null) {
   const options = {
     body: body,
     method: 'POST',
