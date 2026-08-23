@@ -40,7 +40,7 @@ use Fisharebest\Webtrees\Http\Controllers\SitePreferences;
 use Fisharebest\Webtrees\Http\Controllers\SiteRegistration;
 use Fisharebest\Webtrees\Http\Controllers\SiteTags;
 use Fisharebest\Webtrees\Http\Controllers\TreePageDefault;
-use Fisharebest\Webtrees\Http\Controllers\UpgradeWizardPage;
+use Fisharebest\Webtrees\Http\Controllers\UpgradeWizard;
 use Fisharebest\Webtrees\Http\Controllers\UploadMedia;
 use Fisharebest\Webtrees\Http\Controllers\UserAdd;
 use Fisharebest\Webtrees\Http\Controllers\UserEdit;
@@ -202,7 +202,7 @@ use Illuminate\Support\Collection;
         <?php elseif (version_compare(Webtrees::VERSION, $latest_version) < 0) : ?>
             <p class="card-text alert alert-info">
                 <?= I18N::translate('A new version of webtrees is available.') ?>
-                <a href="<?= e(route(UpgradeWizardPage::class)) ?>" class="alert-link">
+                <a href="<?= e(route(UpgradeWizard::class)) ?>" class="alert-link">
                     <?= /* I18N: %s is a version number */
                     I18N::translate('Upgrade to webtrees %s.', e($latest_version)) ?>
                 </a>

@@ -26,7 +26,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class MessageSelect
 {
-    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         return redirect(route(Message::class, [
             'body'    => Validator::parsedBody($request)->string('body', ''),

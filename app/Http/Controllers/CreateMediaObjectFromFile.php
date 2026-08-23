@@ -35,7 +35,7 @@ final class CreateMediaObjectFromFile
     ) {
     }
 
-    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $file  = Validator::parsedBody($request)->string('file');
         $type  = Validator::parsedBody($request)->string('type');

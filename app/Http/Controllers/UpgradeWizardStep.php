@@ -46,10 +46,7 @@ use function route;
 use function version_compare;
 use function view;
 
-/**
- * Upgrade to a new version of webtrees.
- */
-class UpgradeWizardStep
+final class UpgradeWizardStep
 {
     // We make the upgrade in a number of small steps to keep within server time limits.
     private const string STEP_CHECK   = 'Check';
@@ -86,7 +83,7 @@ class UpgradeWizardStep
     ) {
     }
 
-    public function post(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $zip_file   = Webtrees::ROOT_DIR . self::ZIP_FILENAME;
         $zip_folder = Webtrees::ROOT_DIR . self::UPGRADE_FOLDER;

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
-use Fisharebest\Webtrees\Http\Controllers\DataFixSelect;
+use Fisharebest\Webtrees\Http\Controllers\DataFix;
 use Fisharebest\Webtrees\Http\Controllers\ManageTrees;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
@@ -23,7 +23,7 @@ use Illuminate\Support\Collection;
 
 <h1><?= $title ?></h1>
 
-<form method="post" action="<?= e(route(DataFixSelect::class, ['tree' => $tree->name()])) ?>">
+<form method="post" action="<?= e(route(DataFix::class, ['tree' => $tree->name()])) ?>">
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="data_fix">
             <?= I18N::translate('Data fix') ?>

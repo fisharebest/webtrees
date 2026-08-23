@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
 use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
-use Fisharebest\Webtrees\Http\Controllers\UpgradeWizardPage;
+use Fisharebest\Webtrees\Http\Controllers\UpgradeWizard;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Services\TimeoutService;
@@ -32,8 +32,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 
-#[CoversClass(UpgradeWizardPage::class)]
-class UpgradeWizardPageTest extends TestCase
+#[CoversClass(UpgradeWizard::class)]
+class UpgradeWizardTest extends TestCase
 {
     protected function setUp(): void
     {
@@ -52,7 +52,7 @@ class UpgradeWizardPageTest extends TestCase
             $timeout_service,
             new SystemClock(),
         );
-        $controller            = new UpgradeWizardPage($tree_service, $upgrade_service);
+        $controller            = new UpgradeWizard($tree_service, $upgrade_service);
         $request               = self::createRequest();
         $response              = $controller->get($request);
 

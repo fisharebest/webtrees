@@ -33,7 +33,7 @@ use function e;
 use function route;
 use function version_compare;
 
-final class UpgradeWizardPage
+final class UpgradeWizard
 {
     use ViewResponseTrait;
 
@@ -52,11 +52,9 @@ final class UpgradeWizardPage
     ) {
     }
 
-    public function get(ServerRequestInterface $request): ResponseInterface
+    public function get(string $continue = ''): ResponseInterface
     {
         $this->layout = 'layouts/administration';
-
-        $continue = Validator::queryParams($request)->string('continue', '');
 
         $title = I18N::translate('Upgrade wizard');
 
@@ -76,6 +74,11 @@ final class UpgradeWizardPage
             'latest_version'  => $latest_version,
             'title'           => $title,
         ]);
+    }
+
+    public function post(string $continue = ''): ResponseInterface
+    {
+        return redirect(route(__CLASS__, ['continue' => $continue]));
     }
 
     /**

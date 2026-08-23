@@ -19,15 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
-use Fisharebest\Webtrees\Http\Controllers\DataFixSelect;
+use Fisharebest\Webtrees\Http\Controllers\DataFix;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(DataFixSelect::class)]
-class DataFixSelectTest extends TestCase
+#[CoversClass(DataFix::class)]
+class DataFixTest extends TestCase
 {
     public function testClass(): void
     {
-        self::assertTrue(class_exists(DataFixSelect::class));
+        self::assertTrue(class_exists(DataFix::class));
     }
 }

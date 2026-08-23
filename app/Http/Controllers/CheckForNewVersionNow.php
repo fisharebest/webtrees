@@ -30,7 +30,7 @@ final class CheckForNewVersionNow
     ) {
     }
 
-    public function get(): ResponseInterface
+    public function post(): ResponseInterface
     {
         $this->upgrade_service->isUpgradeAvailable(true);
 

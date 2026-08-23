@@ -24,11 +24,17 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 
-use function e;
+use Psr\Http\Message\ServerRequestInterface;
 
-final class DataFixChoose
+use function e;
+use function redirect;
+use function route;
+use function var_dump;
+
+final class DataFix
 {
     use ViewResponseTrait;
 
@@ -50,5 +56,16 @@ final class DataFixChoose
             'data_fixes' => $data_fixes,
             'tree'       => $tree,
         ]);
+    }
+
+    public function post(Tree $tree, string $data_fix): ResponseInterface
+    {
+        $module = $this->module_service->all()->get($data_fix);
+
+        if ($module instanceof ModuleDataFixInterface) {
+            return redirect(route(DataFixPage::class, ['tree' => $tree, 'data_fix' => $module->name()]));
+        }
+
+        return redirect(route(DataFix::class, ['tree' => $tree]));
     }
 }

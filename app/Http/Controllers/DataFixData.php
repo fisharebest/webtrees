@@ -53,7 +53,7 @@ final class DataFixData
         $this->datatables_service = $datatables_service;
     }
 
-    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $data_fix = Validator::attributes($request)->string('data_fix', '');
         $module   = $this->module_service->findByName($data_fix);

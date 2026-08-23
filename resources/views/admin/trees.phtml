@@ -12,7 +12,7 @@ use Fisharebest\Webtrees\Http\Controllers\CreateNote;
 use Fisharebest\Webtrees\Http\Controllers\CreateRepository;
 use Fisharebest\Webtrees\Http\Controllers\CreateSource;
 use Fisharebest\Webtrees\Http\Controllers\CreateSubmitter;
-use Fisharebest\Webtrees\Http\Controllers\DataFixChoose;
+use Fisharebest\Webtrees\Http\Controllers\DataFix;
 use Fisharebest\Webtrees\Http\Controllers\DeleteTreeAction;
 use Fisharebest\Webtrees\Http\Controllers\ExportGedcomPage;
 use Fisharebest\Webtrees\Http\Controllers\FindDuplicateRecords;
@@ -147,7 +147,7 @@ use Illuminate\Support\Collection;
                                     <!-- DATA FIXES -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/data-fix') ?></span>
-                                        <a href="<?= e(route(DataFixChoose::class, ['tree' => $managed_tree->name()])) ?>">
+                                        <a href="<?= e(route(DataFix::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Data fixes') ?>
                                             <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
