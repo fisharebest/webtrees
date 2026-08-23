@@ -26,8 +26,10 @@ export function initializeUpgradeWizardPage () {
     step.innerHTML = spinnerHTML;
 
     window.webtrees.load(step, url)
-      .then(() => {
-        nextAjaxStep();
+      .then((response) => {
+        if (response.ok) {
+          nextAjaxStep();
+        }
       })
       .catch((error) => {
         console.error('Upgrade wizard step failed', { url, error });

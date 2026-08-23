@@ -68,4 +68,6 @@ export async function load(element, url, data = null) {
 
   // Notify listeners that new content has been loaded into the DOM.
   notifyContentLoaded(element);
+
+  return response;
 }
