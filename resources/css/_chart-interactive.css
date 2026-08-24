@@ -46,6 +46,7 @@
     clear: both;
     cursor: move;
     display: inline-block; /* prevent from blinking on IE */
+    position: relative;
 }
 
 .tv_in .tv_tree,
