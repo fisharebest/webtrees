@@ -72,9 +72,9 @@ class UpgradeWizardStepTest extends TestCase
             new SystemClock(),
         );
 
-        $request = self::createRequest(HttpRequestMethod::POST->value, ['step' => 'Invalid']);
+        $request = self::createRequest(HttpRequestMethod::GET->value, ['step' => 'Invalid']);
 
-        $response = $controller->post($request);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::NoContent->value, $response->getStatusCode());
     }
@@ -92,8 +92,8 @@ class UpgradeWizardStepTest extends TestCase
             new SystemClock(),
         );
 
-        $request  = self::createRequest(HttpRequestMethod::POST->value, ['step' => 'Check']);
-        $response = $controller->post($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['step' => 'Check']);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }
@@ -113,8 +113,8 @@ class UpgradeWizardStepTest extends TestCase
             new SystemClock(),
         );
 
-        $request = self::createRequest(HttpRequestMethod::POST->value, ['step' => 'Check']);
-        $controller->post($request);
+        $request = self::createRequest(HttpRequestMethod::GET->value, ['step' => 'Check']);
+        $controller->get($request);
     }
 
     public function testStepCheckFail(): void
@@ -132,8 +132,8 @@ class UpgradeWizardStepTest extends TestCase
             new SystemClock(),
         );
 
-        $request = self::createRequest(HttpRequestMethod::POST->value, ['step' => 'Check']);
-        $controller->post($request);
+        $request = self::createRequest(HttpRequestMethod::GET->value, ['step' => 'Check']);
+        $controller->get($request);
     }
 
     public function testStepPrepare(): void
@@ -147,8 +147,8 @@ class UpgradeWizardStepTest extends TestCase
             new SystemClock(),
         );
 
-        $request  = self::createRequest(HttpRequestMethod::POST->value, ['step' => 'Prepare']);
-        $response = $controller->post($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['step' => 'Prepare']);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }
@@ -164,8 +164,8 @@ class UpgradeWizardStepTest extends TestCase
             new SystemClock(),
         );
 
-        $request  = self::createRequest(HttpRequestMethod::POST->value, ['step' => 'Pending']);
-        $response = $controller->post($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['step' => 'Pending']);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }
@@ -188,8 +188,8 @@ class UpgradeWizardStepTest extends TestCase
             new SystemClock(),
         );
 
-        $request  = self::createRequest(HttpRequestMethod::POST->value, ['step' => 'Pending']);
-        $response = $controller->post($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['step' => 'Pending']);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::InternalServerError->value, $response->getStatusCode());
     }
@@ -211,12 +211,12 @@ class UpgradeWizardStepTest extends TestCase
         );
 
         $request  = self::createRequest()->withQueryParams(['step' => 'Export', 'tree' => $tree->name()]);
-        $response = $controller->post($request);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
 
         // Now overwrite the file we just created
-        $response = $controller->post($request);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }
@@ -236,8 +236,8 @@ class UpgradeWizardStepTest extends TestCase
             new SystemClock(),
         );
 
-        $request = self::createRequest(HttpRequestMethod::POST->value, ['step' => 'Download']);
-        $controller->post($request);
+        $request = self::createRequest(HttpRequestMethod::GET->value, ['step' => 'Download']);
+        $controller->get($request);
     }
 
     public function testStepDownload(): void
@@ -253,8 +253,8 @@ class UpgradeWizardStepTest extends TestCase
             new SystemClock(),
         );
 
-        $request  = self::createRequest(HttpRequestMethod::POST->value, ['step' => 'Download']);
-        $response = $controller->post($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['step' => 'Download']);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }
@@ -272,8 +272,8 @@ class UpgradeWizardStepTest extends TestCase
             new SystemClock(),
         );
 
-        $request  = self::createRequest(HttpRequestMethod::POST->value, ['step' => 'Unzip']);
-        $response = $controller->post($request);
+        $request  = self::createRequest(HttpRequestMethod::GET->value, ['step' => 'Unzip']);
+        $response = $controller->get($request);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }

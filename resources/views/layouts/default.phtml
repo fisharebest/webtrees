@@ -24,7 +24,7 @@ use Psr\Http\Message\ServerRequestInterface;
  * @var Collection<ModuleInterface> $modules
  * @var ServerRequestInterface      $request
  * @var ModuleThemeInterface        $theme
- * @var string                      $title
+ * @var string|null                 $title
  * @var Tree|null                   $tree
  */
 
@@ -41,7 +41,7 @@ use Psr\Http\Message\ServerRequestInterface;
         <meta name="description" content="<?= $meta_description ?? '' ?>">
 
         <title>
-            <?= strip_tags($title) ?>
+            <?= strip_tags($title ?? Webtrees::NAME) ?>
             <?php if ($tree !== null && $tree->getPreference('META_TITLE') !== '') : ?>
                 – <?= e($tree->getPreference('META_TITLE')) ?>
             <?php endif ?>
@@ -64,7 +64,7 @@ use Psr\Http\Message\ServerRequestInterface;
     </head>
 
     <body
-        class="wt-global wt-theme-<?= e($theme->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->controller, ['\\' => '/']))) ?>"
+        class="wt-global wt-theme-<?= e($theme->name()) ?> wt-route-<?= e(basename(strtr((string) $request->getAttribute('route')?->controller, ['\\' => '/']))) ?>"
     >
         <header class="wt-header-wrapper d-print-none">
             <div class="container-lg wt-header-container">

@@ -63,7 +63,7 @@ class DataFixDataTest extends TestCase
             ->withAttribute('tree', $tree)
             ->withAttribute('data_fix', 'fix-search-and-replace');
 
-        $response = $controller->get($request, $tree);
+        $response = $controller->post($request, $tree);
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }

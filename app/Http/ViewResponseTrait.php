@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -45,7 +46,8 @@ trait ViewResponseTrait
         $layout_data = [
             // All layouts need these
             'content'          => view($view_name, $view_data),
-            'title'            => $view_data['title'],
+            // default and admin layouts need these
+            'title'            => $view_data['title'] ?? Webtrees::NAME,
             // default layout needs these
             'meta_description' => $view_data['meta_description'] ?? null,
             'meta_robots'      => $view_data['meta_robots'] ?? null,

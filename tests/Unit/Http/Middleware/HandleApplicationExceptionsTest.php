@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\Middleware;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpInternalServerErrorException;
+use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\PhpService;
@@ -30,10 +31,10 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Server\RequestHandlerInterface;
-use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
+use Fisharebest\Webtrees\Http\Middleware\HandleApplicationExceptions;
 
-#[CoversClass(HandleExceptions::class)]
-class HandleExceptionsTest extends TestCase
+#[CoversClass(HandleApplicationExceptions::class)]
+class HandleApplicationExceptionsTest extends TestCase
 {
     protected function setUp(): void
     {
@@ -43,18 +44,11 @@ class HandleExceptionsTest extends TestCase
 
     public function testMiddleware(): void
     {
-        $tree_service = self::createStub(TreeService::class);
-
         $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willThrowException(new HttpInternalServerErrorException('eek'));
 
-        $module_service = self::createStub(ModuleService::class);
-        $module_service->method('findByInterface')->willReturn(new Collection());
-        $module_service->method('findByComponent')->willReturn(new Collection());
-        Registry::container()->set(ModuleService::class, $module_service);
-
         $request    = self::createRequest();
-        $middleware = new HandleExceptions(new PhpService(), $tree_service);
+        $middleware = new HandleApplicationExceptions(new ModuleService(), new WebtreesTheme());
         $response   = $middleware->process($request, $handler);
 
         self::assertSame(HttpStatusCode::InternalServerError->value, $response->getStatusCode());
@@ -62,13 +56,11 @@ class HandleExceptionsTest extends TestCase
 
     public function testMiddlewareRendersSvgForImageException(): void
     {
-        $tree_service = self::createStub(TreeService::class);
-
         $handler = self::createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willThrowException(new ImageException(HttpStatusCode::InternalServerError, 'broken.jpg', 'File is corrupt'));
 
         $request    = self::createRequest();
-        $middleware = new HandleExceptions(new PhpService(), $tree_service);
+        $middleware = new HandleApplicationExceptions(new ModuleService(), new WebtreesTheme());
         $response   = $middleware->process($request, $handler);
         $body       = $response->getBody()->getContents();
 

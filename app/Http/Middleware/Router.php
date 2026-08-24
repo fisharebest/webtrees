@@ -83,8 +83,7 @@ readonly class Router implements MiddlewareInterface
         // Add the route as attribute of the request
         $request = $request->withAttribute('route', $route);
 
-        $route_middleware = $route->middleware;
-
+        $route_middleware  = $route->middleware;
         $module_middleware = $this->module_service->findByInterface(MiddlewareInterface::class)->all();
 
         $middleware = [
@@ -100,7 +99,6 @@ readonly class Router implements MiddlewareInterface
         }
 
         // Some older code expects the tree attribute to be a Tree object.
-        // For example, default.phtml
         $tree    = $request->getAttribute('tree');
         $tree    = $this->tree_service->all()->get($tree);
         $request = $request->withAttribute('tree', $tree);
@@ -111,6 +109,7 @@ readonly class Router implements MiddlewareInterface
             Registry::container()->set(Tree::class, $tree);
         }
 
+        // Save this updated request.  We'll need it in the exception handlers.
         Registry::container()->set(ServerRequestInterface::class, $request);
 
         $pipeline = new MiddlewarePipeline(container: Registry::container());

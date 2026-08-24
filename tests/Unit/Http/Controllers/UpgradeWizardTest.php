@@ -53,8 +53,7 @@ class UpgradeWizardTest extends TestCase
             new SystemClock(),
         );
         $controller            = new UpgradeWizard($tree_service, $upgrade_service);
-        $request               = self::createRequest();
-        $response              = $controller->get($request);
+        $response              = $controller->get('1');
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
     }
