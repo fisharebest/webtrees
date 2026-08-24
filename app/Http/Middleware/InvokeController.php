@@ -191,10 +191,20 @@ class InvokeController implements MiddlewareInterface
     }
 
     /**
-     * Find a parameter value from request attributes, query params, or parsed body.
+     * Find a parameter value from parsed-body, request attributes, or query params.
+     *
+     * Parsed body takes precedence over request attributes, as the URL will contain
+     * the previous value, while the parsed-body will contain the new/updated value.
      */
     private function findParameterValue(string $name, ServerRequestInterface $request): mixed
     {
+        // Parsed body (user-submitted data takes priority)
+        $body = $request->getParsedBody();
+
+        if (is_array($body) && isset($body[$name])) {
+            return $body[$name];
+        }
+
         // Route attributes (populated by the router)
         $value = $request->getAttribute($name);
 
@@ -209,12 +219,6 @@ class InvokeController implements MiddlewareInterface
             return $query[$name];
         }
 
-        // Parsed body
-        $body = $request->getParsedBody();
-
-        if (is_array($body) && isset($body[$name])) {
-            return $body[$name];
-        }
 
         return null;
     }
