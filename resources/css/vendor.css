@@ -18,7 +18,6 @@
 @import "../../node_modules/tom-select/dist/css/tom-select.min.css";
 @import "../../node_modules/tom-select/dist/css/tom-select.bootstrap5.min.css";
 @import "../../node_modules/tinymce/skins/ui/oxide/skin.min.css";
-@import "../../node_modules/tinymce/skins/content/default/content.min.css";
 @import "../../node_modules/leaflet/dist/leaflet.css";
 @import "../../node_modules/beautifymarker/leaflet-beautify-marker-icon.css";
 @import "../../node_modules/leaflet-control-geocoder/dist/Control.Geocoder.css";

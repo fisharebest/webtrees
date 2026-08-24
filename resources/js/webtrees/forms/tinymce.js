@@ -110,8 +110,9 @@ export function initializeTinymceHtmlEdit(root) {
         target: editor,
         license_key: 'gpl',
         language: language,
-        // Skin/content CSS are bundled in vendor.min.css.
+        // Skin CSS is bundled in vendor.min.css.
         skin: false,
+        // Content CSS is provided via content_style below.
         content_css: false,
         content_style: content_style,
         menubar: false,
