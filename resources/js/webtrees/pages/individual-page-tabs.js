@@ -1,5 +1,7 @@
 'use strict';
 
+import { notifyContentLoaded } from '../dom.js';
+
 /**
  * Initialize individual page tabs.
  */
@@ -47,6 +49,7 @@ export function initializeIndividualPageTabs (root) {
       tab.addEventListener('shown.bs.tab', () => {
         download.then((html) => {
           target.innerHTML = html;
+          notifyContentLoaded(target);
         }).catch((error) => {
           console.error('Failed to load individual tab content', { url, error });
         });
@@ -75,4 +78,3 @@ export function initializeIndividualPageTabs (root) {
     targetTab.click();
   }
 }
-
