@@ -284,7 +284,7 @@ final readonly class Dutch extends AbstractLanguage
 
             // OSSEE has labels for up to 255 generations
             foreach (self::OSSEE_CYCLE as $key => $value) {
-                if ($cycle & $key) {
+                if (($cycle & $key) !== 0) {
                     $prefix = $value . $prefix;
                 }
             }
