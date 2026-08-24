@@ -116,7 +116,7 @@ use Illuminate\Support\Collection;
                                                                 <?= e($tree->title()) ?>
                                                             </td>
                                                             <td>
-                                                                <?= view('components/select', ['name' => 'access-' . $module->name() . '-' . $tree->id(), 'selected' => $module->accessLevel($tree, $interface), 'options' => Auth::accessLevelNames()]) ?>
+                                                                <?= view('components/select', ['name' => 'access-' . $module->name() . '-' . $tree->id(), 'selected' => $module->accessLevel($tree, $interface)->value, 'options' => Auth::accessLevelNames()]) ?>
                                                         </tr>
                                                     <?php endforeach ?>
                                                 </tbody>
