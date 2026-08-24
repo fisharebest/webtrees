@@ -37,18 +37,9 @@ final class NotFound implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        // Robots don't need pretty error pages
-        if ($request->getAttribute(BadBotBlocker::ROBOT_ATTRIBUTE_NAME) !== null) {
-            return response('', HttpStatusCode::NotFound);
-        }
-
-        // Need the request to generate a route/error page.
+        // Save this updated request.  We'll need it in the exception handler.
         Registry::container()->set(ServerRequestInterface::class, $request);
 
-        if ($request->getMethod() !== HttpRequestMethod::GET->value) {
-            throw new HttpNotFoundException();
-        }
-
-        return redirect(url: route(route_name: HomePage::class));
+        throw new HttpNotFoundException();
     }
 }

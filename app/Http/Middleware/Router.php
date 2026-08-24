@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\MiddlewarePipeline;
 use Fisharebest\Webtrees\Http\Routing\RouteCollection;
 use Fisharebest\Webtrees\Http\Routing\RouteMatcher;
@@ -109,7 +110,7 @@ readonly class Router implements MiddlewareInterface
             Registry::container()->set(Tree::class, $tree);
         }
 
-        // Save this updated request.  We'll need it in the exception handlers.
+        // Save this updated request.  We'll need it in the exception handler.
         Registry::container()->set(ServerRequestInterface::class, $request);
 
         $pipeline = new MiddlewarePipeline(container: Registry::container());

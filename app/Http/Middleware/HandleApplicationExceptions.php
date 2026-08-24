@@ -70,7 +70,7 @@ final readonly class HandleApplicationExceptions extends AbstractExceptionHandle
     ): ResponseInterface {
         $status_code = HttpStatusCode::from($exception->getCode());
 
-        $html = view('components/alert-danger', ['alert' => e($exception->getMessage())]);
+        $html = view('components/alert-danger', ['alert' => $exception->getMessage()]);
 
         if ($this->isAjaxRequest($request)) {
             return response($html, $status_code);

@@ -20,13 +20,22 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Exceptions;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\HomePage;
 use Fisharebest\Webtrees\I18N;
+
+use function e;
+use function route;
 
 class HttpNotFoundException extends HttpException
 {
     public function __construct(string|null $message = null)
     {
-        $message ??= I18N::translate('You do not have permission to view this page.');
+        $message ??=
+            I18N::translate('You do not have permission to view this page.') .
+            '<br><br>' .
+            '<a href="' . e(route(HomePage::class)) . '" class="alert-link">' .
+            I18N::translate('Home page') .
+            '</a>';
 
         parent::__construct($message, HttpStatusCode::NotFound);
     }

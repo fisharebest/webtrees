@@ -185,9 +185,9 @@ class InvokeController implements MiddlewareInterface
 
             // Unknown type
             return null;
-        } else {
-            throw new HttpInternalServerErrorException('Cannot resolve union/intersection type for: ' . $name);
         }
+
+        throw new HttpInternalServerErrorException('Cannot resolve union/intersection type for: ' . $name);
     }
 
     /**
