@@ -50,7 +50,7 @@ final class TreePageBlockEdit
             'block'      => $block,
             'block_id'   => $block_id,
             'cancel_url' => route(TreePage::class, ['tree' => $tree->name()]),
-            'save_url'   => route(TreePageBlock::class, ['tree' => $tree->name(), 'block_id' => $block_id]),
+            'save_url'   => route(__CLASS__, ['tree' => $tree->name(), 'block_id' => $block_id]),
             'title'      => $title,
             'tree'       => $tree,
         ]);
