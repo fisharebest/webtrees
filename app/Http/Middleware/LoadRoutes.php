@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,10 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Http\Routes\ApiRoutes;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
+use Fisharebest\Webtrees\Http\Routing\GedcomRecordParameterResolver;
+use Fisharebest\Webtrees\Http\Routing\ParameterResolverInterface;
+use Fisharebest\Webtrees\Http\Routing\ParameterResolver;
+use Fisharebest\Webtrees\Http\Routing\RouteCollection;
+use Fisharebest\Webtrees\Http\Routing\ScalarParameterResolver;
+use Fisharebest\Webtrees\Http\Routing\TreeParameterResolver;
+use Fisharebest\Webtrees\Http\Routing\UrlGenerator;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -33,44 +40,37 @@ use function parse_url;
 
 use const PHP_URL_PATH;
 
-/**
- * Load the routing table.
- */
 class LoadRoutes implements MiddlewareInterface
 {
-    private ApiRoutes $api_routes;
-
-    private WebRoutes $web_routes;
-
-    /**
-     * @param ApiRoutes $api_routes
-     * @param WebRoutes $web_routes
-     */
-    public function __construct(ApiRoutes $api_routes, WebRoutes $web_routes)
-    {
-        $this->api_routes = $api_routes;
-        $this->web_routes = $web_routes;
+    public function __construct(
+        private ApiRoutes $api_routes,
+        private WebRoutes $web_routes,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
-     */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $base_url         = Validator::attributes($request)->string('base_url');
-        $base_path        = parse_url($base_url, PHP_URL_PATH);
-        $router_container = new RouterContainer($base_path);
+        $base_url  = Validator::attributes($request)->string('base_url');
+        $base_path = parse_url($base_url, PHP_URL_PATH);
+        $base_path = is_string($base_path) ? $base_path : '';
 
         // Load the core routing tables. Modules will load their own routes later.
-        $map = $router_container->getMap();
-        $this->api_routes->load($map);
-        $this->web_routes->load($map);
+        $routes = new RouteCollection();
+        $this->api_routes->load($routes);
+        $this->web_routes->load($routes);
 
-        // Save the router in the container, as we'll need it to generate URLs.
-        Registry::container()->set(RouterContainer::class, $router_container);
+        // Build the parameter resolver aggregate with all known resolvers.
+        $tree_service = Registry::container()->get(TreeService::class);
+        $parameter_resolver = new ParameterResolver([
+            new TreeParameterResolver($tree_service),
+            new GedcomRecordParameterResolver(),
+            new ScalarParameterResolver(),
+        ]);
+
+        // Save the route collection, parameter resolver, and URL generator in the container.
+        Registry::container()->set(RouteCollection::class, $routes);
+        Registry::container()->set(ParameterResolverInterface::class, $parameter_resolver);
+        Registry::container()->set(UrlGenerator::class, new UrlGenerator($routes, $base_path, $parameter_resolver));
 
         return $handler->handle($request);
     }

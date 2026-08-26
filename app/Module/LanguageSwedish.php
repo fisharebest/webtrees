@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,57 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleSv;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\I18N\Languages\Swedish;
 
 class LanguageSwedish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            'A',
-            'B',
-            'C',
-            'D',
-            'E',
-            'F',
-            'G',
-            'H',
-            'I',
-            'J',
-            'K',
-            'L',
-            'M',
-            'N',
-            'O',
-            'P',
-            'Q',
-            'R',
-            'S',
-            'T',
-            'U',
-            'V',
-            'W',
-            'X',
-            'Y',
-            'Z',
-            UTF8::LATIN_CAPITAL_LETTER_A_WITH_RING_ABOVE,
-            UTF8::LATIN_CAPITAL_LETTER_A_WITH_DIAERESIS,
-            UTF8::LATIN_CAPITAL_LETTER_O_WITH_DIAERESIS,
-        ];
+        $this->language = new Swedish();
     }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleSv();
-    }
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

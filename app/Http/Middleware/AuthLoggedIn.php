@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
+use Fisharebest\Webtrees\Http\Controllers\Login;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -29,17 +29,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
 
-/**
- * Middleware to restrict access to logged-in users.
- */
 class AuthLoggedIn implements MiddlewareInterface
 {
-    /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
-     */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $tree = Validator::attributes($request)->treeOptional();
@@ -51,8 +42,8 @@ class AuthLoggedIn implements MiddlewareInterface
         }
 
         // Not logged in.
-        return redirect(route(LoginPage::class, [
-            'tree' => $tree?->name(),
+        return redirect(route(Login::class, [
+            'tree' => $tree,
             'url'  => (string) $request->getUri(),
         ]));
     }

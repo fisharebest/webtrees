@@ -1,0 +1,74 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @var string        $method
+ * @var string        $php
+ * @var array<string> $previous
+ * @var string        $referer
+ * @var string        $title
+ * @var string        $trace
+ * @var string        $url
+ */
+
+?>
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noindex">
+
+        <title><?= $title ?></title>
+
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+        <style>
+            body {
+                font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+                margin: 2rem;
+            }
+
+            .alert {
+                border-radius: 0.375rem;
+                padding: 1rem;
+                margin-top: 1rem;
+                font-size: 0.875rem;
+            }
+
+            pre {
+                overflow-x: auto;
+            }
+
+            .alert-danger {
+                color: #842029;
+                background-color: #f8d7da;
+                border: 1px solid #f5c2c7;
+            }
+
+            .alert-info {
+                color: #055160;
+                background-color: #cff4fc;
+                border: 1px solid #b6effb;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1><?= $title ?></h1>
+
+        <div class="alert alert-info">
+            <?= e($method) ?> <?= e($url) ?>
+            <?php if ($referer !== '') : ?>
+                <br>
+                Referer: <?= e($referer) ?>
+            <?php endif ?>
+            <br>
+            <br>
+            PHP: <?= e($php) ?>
+        </div>
+
+        <?= view('components/alert-danger', ['alert' => $trace]) ?>
+    </body>
+</html>

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,15 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
-/**
- * Definitions for a census
- */
-class CensusOfUnitedStates extends Census implements CensusPlaceInterface
+readonly class CensusOfUnitedStates implements CensusPlaceInterface
 {
     /**
      * All available censuses for this census place.
      *
-     * @return array<CensusInterface>
+     * @return list<CensusInterface>
      */
     public function allCensusDates(): array
     {
@@ -52,21 +49,11 @@ class CensusOfUnitedStates extends Census implements CensusPlaceInterface
         ];
     }
 
-    /**
-     * Where did this census occur, in GEDCOM format.
-     *
-     * @return string
-     */
     public function censusPlace(): string
     {
         return 'United States';
     }
 
-    /**
-     * In which language was this census written.
-     *
-     * @return string
-     */
     public function censusLanguage(): string
     {
         return 'en-US';

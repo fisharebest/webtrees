@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,62 +19,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleRo;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\I18N\Languages\Romanian;
 
 class LanguageRomanian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            'A',
-            UTF8::LATIN_CAPITAL_LETTER_A_WITH_BREVE,
-            UTF8::LATIN_CAPITAL_LETTER_A_WITH_CIRCUMFLEX,
-            'B',
-            'C',
-            'D',
-            'E',
-            'F',
-            'G',
-            'H',
-            'I',
-            UTF8::LATIN_CAPITAL_LETTER_I_WITH_CIRCUMFLEX,
-            'J',
-            'K',
-            'L',
-            'M',
-            'N',
-            'O',
-            'P',
-            'Q',
-            'R',
-            'S',
-            UTF8::LATIN_CAPITAL_LETTER_S_WITH_CEDILLA,
-            'T',
-            'Ţ',
-            'U',
-            'V',
-            'W',
-            'X',
-            'Y',
-            'Z',
-        ];
+        $this->language = new Romanian();
     }
-
     public function isEnabledByDefault(): bool
     {
         return false;
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleRo();
     }
 
     /**

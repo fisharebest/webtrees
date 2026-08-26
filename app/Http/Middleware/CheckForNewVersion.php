@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,38 +19,26 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Middleware to check if a new version of webtrees is available.
- */
 class CheckForNewVersion implements MiddlewareInterface
 {
     private UpgradeService $upgrade_service;
 
-    /**
-     * @param UpgradeService $upgrade_service
-     */
     public function __construct(UpgradeService $upgrade_service)
     {
         $this->upgrade_service = $upgrade_service;
     }
 
-    /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
-     */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // Only run on full page requests.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_GET && $request->getHeaderLine('X-Requested-With') === '') {
+        if ($request->getMethod() === HttpRequestMethod::GET->value && $request->getHeaderLine('X-Requested-With') === '') {
             $this->upgrade_service->isUpgradeAvailable();
         }
 

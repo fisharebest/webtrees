@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Http\Controllers\SourcePage;
 
 /**
  * A GEDCOM source (SOUR) object.
@@ -32,12 +33,8 @@ class Source extends GedcomRecord
 
     /**
      * Each object type may have its own special rules, and re-implement this function.
-     *
-     * @param int $access_level
-     *
-     * @return bool
      */
-    protected function canShowByType(int $access_level): bool
+    protected function canShowByType(AccessLevel $access_level): bool
     {
         // Hide sources if they are attached to private repositories ...
         preg_match_all('/\n1 REPO @(.+)@/', $this->gedcom, $matches);
@@ -54,8 +51,6 @@ class Source extends GedcomRecord
 
     /**
      * Extract names from the GEDCOM record.
-     *
-     * @return void
      */
     public function extractNames(): void
     {

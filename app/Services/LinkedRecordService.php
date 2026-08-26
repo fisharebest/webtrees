@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
@@ -58,19 +59,20 @@ class LinkedRecordService
                     ->select([new Expression('MAX(change_id)')])
                     ->from('change')
                     ->where('gedcom_id', '=', $record->tree()->id())
-                    ->where('status', '=', 'pending')
+                    ->where('status', '=', ChangeStatus::Pending->value)
                     ->groupBy(['xref']);
             })
             ->select(['xref']);
 
-        $xrefs = DB::table('link')
+        return DB::table('link')
             ->where('l_file', '=', $record->tree()->id())
             ->where('l_to', '=', $record->xref())
             ->select(['l_from'])
             ->union($union)
-            ->pluck('l_from');
-
-        return $xrefs->map(static fn (string $xref) => Registry::gedcomRecordFactory()->make($xref, $record->tree()));
+            ->pluck('l_from')
+            ->map(static fn (string $xref) => Registry::gedcomRecordFactory()->make($xref, $record->tree()))
+            ->whereInstanceOf(GedcomRecord::class)
+            ->filter(GedcomRecord::accessFilter());
     }
 
     /**
@@ -96,6 +98,7 @@ class LinkedRecordService
             ->select(['families.*'])
             ->get()
             ->map(Registry::familyFactory()->mapper($record->tree()))
+            ->whereInstanceOf(Family::class)
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -122,6 +125,7 @@ class LinkedRecordService
             ->select(['individuals.*'])
             ->get()
             ->map(Registry::individualFactory()->mapper($record->tree()))
+            ->whereInstanceOf(Individual::class)
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -143,6 +147,7 @@ class LinkedRecordService
             ->select(['other.*'])
             ->get()
             ->map(Registry::locationFactory()->mapper($record->tree()))
+            ->whereInstanceOf(Location::class)
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -163,6 +168,7 @@ class LinkedRecordService
             ->select(['media.*'])
             ->get()
             ->map(Registry::mediaFactory()->mapper($record->tree()))
+            ->whereInstanceOf(Media::class)
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -184,6 +190,7 @@ class LinkedRecordService
             ->select(['other.*'])
             ->get()
             ->map(Registry::noteFactory()->mapper($record->tree()))
+            ->whereInstanceOf(Note::class)
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -205,6 +212,7 @@ class LinkedRecordService
             ->select(['other.*'])
             ->get()
             ->map(Registry::repositoryFactory()->mapper($record->tree()))
+            ->whereInstanceOf(Repository::class)
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -225,11 +233,12 @@ class LinkedRecordService
             ->select(['sources.*'])
             ->get()
             ->map(Registry::sourceFactory()->mapper($record->tree()))
+            ->whereInstanceOf(Source::class)
             ->filter(GedcomRecord::accessFilter());
     }
 
     /**
-     * @return Collection<int,Repository>
+     * @return Collection<int,Submitter>
      */
     public function linkedSubmitters(GedcomRecord $record): Collection
     {
@@ -246,7 +255,8 @@ class LinkedRecordService
             ->select(['other.*'])
             ->distinct()
             ->get()
-            ->map(Registry::repositoryFactory()->mapper($record->tree()))
+            ->map(Registry::submitterFactory()->mapper($record->tree()))
+            ->whereInstanceOf(Submitter::class)
             ->filter(GedcomRecord::accessFilter());
     }
 }

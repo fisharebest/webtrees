@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use League\Flysystem\FilesystemOperator;
@@ -28,9 +28,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Run the housekeeping service at irregular intervals.
- */
 class DoHousekeeping implements MiddlewareInterface
 {
     // Delete old thumbnails after 90 days.
@@ -52,26 +49,17 @@ class DoHousekeeping implements MiddlewareInterface
 
     private HousekeepingService $housekeeping_service;
 
-    /**
-     * @param HousekeepingService $housekeeping_service
-     */
     public function __construct(HousekeepingService $housekeeping_service)
     {
         $this->housekeeping_service = $housekeeping_service;
     }
 
-    /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
-     */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $response = $handler->handle($request);
 
         // Run the cleanup after random page requests.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_GET && random_int(1, self::PROBABILITY) === 1) {
+        if ($request->getMethod() === HttpRequestMethod::GET->value && random_int(1, self::PROBABILITY) === 1) {
             $this->runHousekeeping(Registry::filesystem()->data(), Registry::filesystem()->root());
         }
 
@@ -80,11 +68,6 @@ class DoHousekeeping implements MiddlewareInterface
 
     /**
      * Run the various housekeeping services.
-     *
-     * @param FilesystemOperator $data_filesystem
-     * @param FilesystemOperator $root_filesystem
-     *
-     * @return void
      */
     private function runHousekeeping(FilesystemOperator $data_filesystem, FilesystemOperator $root_filesystem): void
     {

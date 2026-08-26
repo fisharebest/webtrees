@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,75 +28,41 @@ interface ElementInterface
 {
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string;
 
     /**
      * Should we collapse the children of this element when editing?
-     *
-     * @return bool
      */
     public function collapseChildren(): bool;
 
     /**
      * Create a default value for this element.
-     *
-     * @param Tree $tree
-     *
-     * @return string
      */
     public function default(Tree $tree): string;
 
     /**
      * An edit control for this data.
-     *
-     * @param string $id
-     * @param string $name
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string;
 
     /**
      * Escape @ signs in a GEDCOM export.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function escape(string $value): string;
 
     /**
      * Name for this GEDCOM primitive.
-     *
-     * @return string
      */
     public function label(): string;
 
     /**
      * Create a label/value pair for this element.
-     *
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function labelValue(string $value, Tree $tree): string;
 
     /**
      * Set, remove or replace a subtag.
-     *
-     * @param string $subtag
-     * @param string $repeat
-     * @param string $before
-     *
-     * @return void
      */
     public function subtag(string $subtag, string $repeat, string $before = ''): void;
 
@@ -107,11 +73,6 @@ interface ElementInterface
 
     /**
      * Display the value of this type of element.
-     *
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function value(string $value, Tree $tree): string;
 

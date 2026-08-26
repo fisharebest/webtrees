@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2023 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,16 +19,18 @@
 
 @import "_blocks.css";
 @import "_charts.css";
-@import "_colorbox.css";
+@import "_gallery.css";
 @import "_lists.css";
 @import "_markdown.css";
 @import "_maps.css";
 @import "_mime-type-icons.css";
+@import "_modal.css";
 @import "_on-screen-keyboard.css";
 @import "_pages.css";
 @import "_sortable.css";
 @import "_tab-album.css";
 @import "_tab-relatives.css";
+@import "_autocompletejs.css";
 
 /* Some icons need to be reversed on right-to-left pages */
 /* rtl:ignore */
@@ -59,7 +61,8 @@ a {
     text-decoration: none;
 }
 
-a:hover {
+a:hover,
+a:focus {
     text-decoration: underline;
 }
 
@@ -87,7 +90,7 @@ a:hover {
 /* Accordions */
 .accordion-button,
 .accordion-button:not(.collapsed) {
-    background-color: rgba(0,0,0,.03);
+    background-color: var(--bs-tertiary-bg);
     color: currentcolor;
 }
 
@@ -110,7 +113,6 @@ a:hover, .btn-link:hover, .nav-link:hover {
 .dropdown-menu {
     max-height: 90vh;
     overflow-x: hidden;
-    scrollbar-gutter: stable;
 }
 
 /* User-generated text */
@@ -125,7 +127,7 @@ a:hover, .btn-link:hover, .nav-link:hover {
 .wt-nested-edit-fields {
     padding-left: 1rem;
     margin-left: 1rem;
-    border-left: solid 4px grey;
+    border-left: solid 4px var(--bs-border-color);
 }
 
 .wt-text-overflow-elipsis {
@@ -151,4 +153,16 @@ a:hover, .btn-link:hover, .nav-link:hover {
 /* Leaflet sets this to 1000, which conflicts with bootstrap dropdowns */
 .leaflet-bottom, .leaflet-top {
     z-index: 999;
+}
+
+/* Show a spinner if the page takes more than 1 second to load. */
+@keyframes spinner-fade-in {
+    to { opacity: 1; }
+}
+
+.wt-icon-spinner {
+    color: var(--bs-secondary-color);
+    opacity: 0;
+    animation: spinner-fade-in 0.5s ease-in forwards;
+    animation-delay: 1s;
 }

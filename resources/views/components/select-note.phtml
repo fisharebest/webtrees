@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\TomSelectNote;
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Http\Controllers\TomSelectNote;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Tree;
 
@@ -24,15 +23,18 @@ $at = $at ?? '';
     autocomplete="off"
     class="form-select tom-select <?= $class ?? '' ?>"
     data-wt-url="<?= e(route(TomSelectNote::class, ['tree' => $tree->name(), 'at' => $at])) ?>"
-    data-wt-i18n-no-results="<?= I18N::translate('No results found') ?>"
     id="<?= e($id ?? $name) ?>"
     name="<?= e($name) ?>"
     <?= ($disabled ?? false) ? 'disabled="disabled"' : '' ?>
     <?= ($required ?? false) ? 'required="required"' : '' ?>
 >
     <?php if (($note ?? null) instanceof Note) : ?>
-        <option value="<?= e($at . $note->xref() . $at) ?>">
-            <?= view('selects/note', ['note' => $note]) ?>
+        <?php $option_html = view('selects/note', ['note' => $note]); ?>
+        <option 
+            value="<?= e($at . $note->xref() . $at) ?>"
+            data-ts-option="<?= e(json_encode(['text' => $option_html])) ?>"
+        >
+            <?= strip_tags($option_html) ?>
         </option>
     <?php else : ?>
         <option value="">&nbsp;</option>

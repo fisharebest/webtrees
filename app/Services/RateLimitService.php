@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,13 +23,14 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpTooManyRequestsException;
 use Fisharebest\Webtrees\Site;
 use LogicException;
+use Psr\Clock\ClockInterface;
 
 use function array_filter;
 use function count;
 use function explode;
+use function implode;
 use function intdiv;
 use function strlen;
-use function time;
 
 /**
  * Throttle events to prevent abuse.
@@ -38,12 +39,9 @@ class RateLimitService
 {
     private int $now;
 
-    /**
-     *
-     */
-    public function __construct()
+    public function __construct(private readonly ClockInterface $clock)
     {
-        $this->now = time();
+        $this->now = $this->clock->now()->getTimestamp();
     }
 
     /**
@@ -53,8 +51,6 @@ class RateLimitService
      * @param int    $num     allow this number of events
      * @param int    $seconds in a rolling window of this number of seconds
      * @param string $limit   name of limit to enforce
-     *
-     * @return void
      */
     public function limitRateForSite(int $num, int $seconds, string $limit): void
     {
@@ -73,8 +69,6 @@ class RateLimitService
      * @param int           $num     allow this number of events
      * @param int           $seconds in a rolling window of this number of seconds
      * @param string        $limit   name of limit to enforce
-     *
-     * @return void
      */
     public function limitRateForUser(UserInterface $user, int $num, int $seconds, string $limit): void
     {
@@ -93,7 +87,6 @@ class RateLimitService
      * @param string $history comma-separated list of previous timestamps
      *
      * @return string updated list of timestamps
-     * @throws HttpTooManyRequestsException
      */
     private function checkLimitReached(int $num, int $seconds, string $history): string
     {
@@ -104,7 +97,7 @@ class RateLimitService
         }
 
         // Extract the timestamps.
-        $timestamps = array_filter(explode(',', $history));
+        $timestamps = array_filter(explode(',', $history), static fn (string $value): bool => $value !== '');
 
         // Filter events within our time window.
         $filter    = fn (string $x): bool => (int) $x >= $this->now - $seconds && (int) $x <= $this->now;

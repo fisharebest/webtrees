@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Http\RequestHandlers\SearchGeneralAction;
+use Fisharebest\Webtrees\Http\Controllers\SearchGeneral;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -43,7 +43,7 @@ use Illuminate\Support\Collection;
     <?= $title ?>
 </h2>
 
-<form method="post" action="<?= e(route(SearchGeneralAction::class, ['tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-search hidden-print mb-4" name="searchform">
+<form method="post" action="<?= e(route(SearchGeneral::class, ['tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-search hidden-print mb-4" name="searchform">
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="query">
             <?= I18N::translate('Search for') ?>
@@ -57,9 +57,13 @@ use Illuminate\Support\Collection;
     </div>
 
     <fieldset class="row">
-        <label class="col-sm-3 col-form-label wt-page-options-label">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= I18N::translate('Records') ?>
-        </label>
+        </legend>
+        <div class="col-sm-3 col-form-label wt-page-options-label" aria-hidden="true">
+            <?= I18N::translate('Records') ?>
+        </div>
         <div class="col-sm-9 wt-page-options-value">
             <div class="form-check form-check-inline">
                 <label class="form-check-label">

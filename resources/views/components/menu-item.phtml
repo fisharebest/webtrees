@@ -12,11 +12,11 @@ use Fisharebest\Webtrees\Menu;
 
 <?php if ($menu->getSubmenus() !== []) : ?>
     <li class="nav-item dropdown <?= $menu->getClass() ?>">
-        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+        <a href="#" class="nav-link dropdown-toggle" id="menu-<?= e($menu->getClass()) ?>" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <?= $menu->getLabel() ?>
             <span class="caret"></span>
         </a>
-        <div class="dropdown-menu" role="menu">
+        <div class="dropdown-menu" role="menu" aria-labelledby="menu-<?= e($menu->getClass()) ?>">
             <?php foreach ($menu->getSubmenus() as $submenu) : ?>
                 <a
                     class="dropdown-item <?= $submenu->getClass() ?>"

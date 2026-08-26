@@ -63,7 +63,7 @@ use Illuminate\Support\Collection;
 
 <div class="row my-4">
     <?php foreach ($individuals as $n => $individual) : ?>
-        <div class="col-md-6 col-lg-4 col-xl-3 person<?= $n % 6 ?>">
+        <div class="col-md-6 col-lg-4 col-xl-3 person<?= $n % 8 ?>">
             <?= view('icons/sex', ['sex' => $individual->sex()]) ?>
             <a href="<?= e($individual->url()) ?>">
                 <?= $individual->fullName() ?>
@@ -78,7 +78,7 @@ use Illuminate\Support\Collection;
             <?php if ($individual->getBirthDate()->isOK()) : ?>
                 <br>
                 <label>
-                    <input type="checkbox" name="agebar<?= $n ?>" onclick="$('#agebox<?= $n ?>').toggle();">
+                    <input type="checkbox" name="agebar<?= $n ?>" data-wt-toggle-target="#agebox<?= $n ?>" data-wt-toggle-mode="checked">
                     <?= /* I18N: an age indicator, which can be dragged around the screen */
                     I18N::translate('Show an age cursor') ?>
                 </label>
@@ -87,4 +87,6 @@ use Illuminate\Support\Collection;
     <?php endforeach ?>
 </div>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-timeline-chart" data-wt-ajax-url="<?= e($ajax_url) ?>"></div>
+<div class="wt-page-content wt-chart wt-timeline-chart" data-wt-ajax-url="<?= e($ajax_url) ?>">
+    <?= view('icons/spinner') ?>
+</div>

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,13 +31,9 @@ use function gzdeflate;
 use function gzencode;
 use function in_array;
 use function str_contains;
-use function strstr;
 use function strtolower;
 use function strtr;
 
-/**
- * Middleware to compress (gzip or deflate) a response.
- */
 class CompressResponse implements MiddlewareInterface
 {
     // Non-text responses that will benefit from compression.
@@ -54,12 +50,6 @@ class CompressResponse implements MiddlewareInterface
     {
     }
 
-    /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
-     */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $response = $handler->handle($request);
@@ -112,11 +102,6 @@ class CompressResponse implements MiddlewareInterface
         return null;
     }
 
-    /**
-     * @param ResponseInterface $response
-     *
-     * @return bool
-     */
     protected function isCompressible(ResponseInterface $response): bool
     {
         // Already encoded?
@@ -126,7 +111,7 @@ class CompressResponse implements MiddlewareInterface
 
         $content_type = $response->getHeaderLine('content-type');
         $content_type = strtr($content_type, [' ' => '']);
-        $content_type = strstr($content_type, ';', true) ?: $content_type;
+        $content_type = explode(';', $content_type, 2)[0];
         $content_type = strtolower($content_type);
 
         if (str_starts_with($content_type, 'text/')) {

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Services\MessageService;
+use Fisharebest\Webtrees\Enums\ContactMethod;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\User;
@@ -63,7 +63,7 @@ final class UserEdit extends AbstractCommand
         $delete    = $this->boolOption(input: $input, name: 'delete');
 
         if ($user_name === '') {
-            $io->error(message: 'The user- name cannot be empty.');
+            $io->error(message: 'The user-name cannot be empty.');
 
             return Command::INVALID;
         }
@@ -144,7 +144,7 @@ final class UserEdit extends AbstractCommand
             );
             $user->setPreference(
                 setting_name: UserInterface::PREF_CONTACT_METHOD,
-                setting_value: MessageService::CONTACT_METHOD_INTERNAL_AND_EMAIL,
+                setting_value: ContactMethod::InternalAndEmail->value,
             );
             $user->setPreference(
                 setting_name: UserInterface::PREF_IS_VISIBLE_ONLINE,

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,10 +28,10 @@ class OpenStreetMap extends AbstractModule implements ModuleMapProviderInterface
 {
     use ModuleMapProviderTrait;
 
+    private const OSM_REFERRER_POLICY = 'strict-origin-when-cross-origin';
+
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function description(): string
     {
@@ -43,8 +43,6 @@ class OpenStreetMap extends AbstractModule implements ModuleMapProviderInterface
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function title(): string
     {
@@ -63,6 +61,7 @@ class OpenStreetMap extends AbstractModule implements ModuleMapProviderInterface
                 'attribution' => 'Map data ©<a href="https://www.openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC-BY-SA</a>',
                 'default'     => true,
                 'label'       => 'Mapnik',
+                'referrerPolicy' => self::OSM_REFERRER_POLICY,
                 'maxZoom'     => 19,
                 'minZoom'     => 2,
                 'subdomains'  => ['a', 'b', 'c'],
@@ -73,6 +72,7 @@ class OpenStreetMap extends AbstractModule implements ModuleMapProviderInterface
                 'attribution' => 'Map data ©<a href="https://www.openstreetmap.org">Karte hergestellt aus OpenStreetMap-Daten</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC-BY-SA</a>',
                 'default'     => false,
                 'label'       => 'Deutsch',
+                'referrerPolicy' => self::OSM_REFERRER_POLICY,
                 'maxZoom'     => 18,
                 'minZoom'     => 2,
                 'subdomains'  => ['a', 'b', 'c'],
@@ -83,6 +83,7 @@ class OpenStreetMap extends AbstractModule implements ModuleMapProviderInterface
                 'attribution' => 'Map data ©<a href="https://www.openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC-BY-SA</a>',
                 'default'     => false,
                 'label'       => 'Français',
+                'referrerPolicy' => self::OSM_REFERRER_POLICY,
                 'maxZoom'     => 20,
                 'minZoom'     => 2,
                 'subdomains'  => ['a', 'b', 'c'],

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,17 +29,11 @@ interface ModuleReportInterface extends ModuleInterface
 {
     /**
      * Name of the XML report file, relative to the resources folder.
-     *
-     * @return string
      */
     public function xmlFilename(): string;
 
     /**
      * Return a menu item for this report.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
      */
     public function getReportMenu(Individual $individual): Menu;
 }

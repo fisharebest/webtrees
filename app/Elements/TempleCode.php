@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,10 +32,6 @@ class TempleCode extends AbstractElement
 {
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {
@@ -207,7 +203,7 @@ class TempleCode extends AbstractElement
             'WINTE' => /* I18N: Location of an LDS church temple */ I18N::translate('Winter Quarters, Nebraska, United States'),
         ];
 
-        uasort($values, I18N::comparator());
+        uasort($values, I18N::compare(...));
         $values = ['' => I18N::translate('No temple - living ordinance')] + $values;
 
         return $values;

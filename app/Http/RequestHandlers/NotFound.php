@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,8 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\RequestMethodInterface;
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\HomePage;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Registry;
@@ -36,18 +37,9 @@ final class NotFound implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        // Robots don't need pretty error pages
-        if ($request->getAttribute(BadBotBlocker::ROBOT_ATTRIBUTE_NAME) !== null) {
-            return response('', StatusCodeInterface::STATUS_NOT_FOUND);
-        }
-
-        // Need the request to generate a route/error page.
+        // Save this updated request.  We'll need it in the exception handler.
         Registry::container()->set(ServerRequestInterface::class, $request);
 
-        if ($request->getMethod() !== RequestMethodInterface::METHOD_GET) {
-            throw new HttpNotFoundException();
-        }
-
-        return redirect(url: route(route_name: HomePage::class));
+        throw new HttpNotFoundException();
     }
 }

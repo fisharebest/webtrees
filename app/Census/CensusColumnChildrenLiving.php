@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,26 +20,16 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Individual;
 
-/**
- * The number of children who are still living.
- */
-class CensusColumnChildrenLiving extends AbstractCensusColumn implements CensusColumnInterface
+final readonly class CensusColumnChildrenLiving extends AbstractCensusColumn implements CensusColumnInterface
 {
-    /**
-     * Generate the likely value of this census column, based on available information.
-     *
-     * @param Individual $individual
-     * @param Individual $head
-     *
-     * @return string
-     */
     public function generate(Individual $individual, Individual $head): string
     {
         $family = $this->spouseFamily($individual);
 
-        if ($family === null || $individual->sex() !== 'F') {
+        if ($family === null || $individual->sex() !== Sex::Female) {
             return '';
         }
 

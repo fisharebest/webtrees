@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli\Commands;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
@@ -33,7 +35,7 @@ use function implode;
 
 final class TreeList extends AbstractCommand
 {
-    public function __construct(private readonly TreeService $tree_service)
+    public function __construct(private readonly UserService $user_service)
     {
         parent::__construct();
     }
@@ -58,16 +60,22 @@ final class TreeList extends AbstractCommand
 
         $io = new SymfonyStyle(input: $input, output: $output);
 
-        $trees = $this->tree_service->all()->sort(callback: fn ($a, $b) => $a->id() <=> $b->id());
+        $trees = DB::table('gedcom')->orderBy('gedcom_id')
+            ->where('gedcom_id', '>', 0)
+            ->get()
+            ->map(Tree::fromDB(...));
 
-        $headers = ['ID', 'Name', 'Title', 'Media directory', 'Imported'];
+        $headers = ['ID', 'Name', 'Title', 'Media folder', 'Imported', 'Private', 'Support user', 'Contact user'];
 
-        $rows = $trees->map(callback: static fn (Tree $tree): array => [
-            'id'              => $tree->id(),
-            'name'            => $tree->name(),
-            'title'           => $tree->title(),
-            'media_directory' => $tree->getPreference(setting_name: 'MEDIA_DIRECTORY'),
-            'imported'        => $tree->getPreference(setting_name: 'imported') === '1' ? 'yes' : 'no',
+        $rows = $trees->map(callback: fn (Tree $tree): array => [
+            'id'           => $tree->id(),
+            'name'         => $tree->name(),
+            'title'        => $tree->title(),
+            'media_folder' => $tree->mediaFolder(),
+            'imported'     => $tree->imported() ? 'yes' : 'no',
+            'private'      => $tree->private() ? 'yes' : 'no',
+            'support_user' => $this->user_service->find($tree->supportUserId())?->userName() ?? '[NULL]',
+            'contact_user' => $this->user_service->find($tree->contactUserId())?->userName() ?? '[NULL]',
         ])
             ->values()
             ->all();

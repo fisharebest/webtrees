@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,10 +31,6 @@ trait ModuleFooterTrait
 
     /**
      * Users can change the order of footers using the control panel.
-     *
-     * @param int $footer_order
-     *
-     * @return void
      */
     public function setFooterOrder(int $footer_order): void
     {
@@ -43,8 +39,6 @@ trait ModuleFooterTrait
 
     /**
      * Users can change the order of footers using the control panel.
-     *
-     * @return int
      */
     public function getFooterOrder(): int
     {
@@ -53,8 +47,6 @@ trait ModuleFooterTrait
 
     /**
      * The default position for this footer.
-     *
-     * @return int
      */
     public function defaultFooterOrder(): int
     {
@@ -63,10 +55,6 @@ trait ModuleFooterTrait
 
     /**
      * A footer, to be added at the bottom of every page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return string
      */
     public function getFooter(ServerRequestInterface $request): string
     {

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,36 +34,23 @@ interface ModuleChartInterface extends ModuleInterface
 
     /**
      * A main menu item for this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
      */
     public function chartMenu(Individual $individual): Menu;
 
     /**
      * CSS class for the menu.
-     *
-     * @return string
      */
     public function chartMenuClass(): string;
 
     /**
      * The title for a specific instance of this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function chartTitle(Individual $individual): string;
 
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual                                $individual
      * @param array<bool|int|string|array<string>|null> $parameters
-     *
-     * @return string
      */
     public function chartUrl(Individual $individual, array $parameters = []): string;
 

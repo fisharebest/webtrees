@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,9 +33,6 @@ use function strtoupper;
  */
 class IdFactory implements IdFactoryInterface
 {
-    /**
-     * @return string
-     */
     public function uuid(): string
     {
         try {
@@ -48,10 +45,6 @@ class IdFactory implements IdFactoryInterface
 
     /**
      * An identifier for use in CSS/HTML
-     *
-     * @param string $prefix
-     *
-     * @return string
      */
     public function id(string $prefix = 'id-'): string
     {
@@ -60,8 +53,6 @@ class IdFactory implements IdFactoryInterface
 
     /**
      * A value for _UID fields, as created by PAF
-     *
-     * @return string
      */
     public function pafUid(): string
     {

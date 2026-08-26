@@ -38,14 +38,18 @@ use Fisharebest\Webtrees\Tree;
             <?= I18N::translate('Generations') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select-number', ['name' => 'generations', 'selected' => $generations, 'options' => range($minimum_generations, $maximum_generations)]) ?>
+            <input class="form-control" id="generations" name="generations" type="number" min="<?= e($minimum_generations) ?>" max="<?= e($maximum_generations) ?>" value="<?= e($generations) ?>" required="required">
         </div>
     </div>
 
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3 wt-page-options-label">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= I18N::translate('Layout') ?>
         </legend>
+        <div class="col-form-label col-sm-3 wt-page-options-label" aria-hidden="true">
+            <?= I18N::translate('Layout') ?>
+        </div>
         <div class="col-sm-9 wt-page-options-value">
             <?= view('components/checkbox', ['label' => I18N::translate('Show spouses'), 'name' => 'spouses', 'checked' => $spouses]) ?>
         </div>
@@ -61,4 +65,6 @@ use Fisharebest\Webtrees\Tree;
     <?= csrf_field() ?>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-chart-hourglass" data-wt-ajax-url="<?= e($ajax_url) ?>"></div>
+<div class="wt-page-content wt-chart wt-chart-hourglass" data-wt-ajax-url="<?= e($ajax_url) ?>">
+    <?= view('icons/spinner') ?>
+</div>

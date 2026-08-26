@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,18 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Services\MaintenanceModeService;
-use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Middleware to check whether the site is offline.
- */
-readonly class CheckForMaintenanceMode implements MiddlewareInterface, StatusCodeInterface
+readonly class CheckForMaintenanceMode implements MiddlewareInterface
 {
     public function __construct(
         private MaintenanceModeService $maintenance_mode_service,
@@ -45,7 +41,7 @@ readonly class CheckForMaintenanceMode implements MiddlewareInterface, StatusCod
                 'url'     => (string) $request->getUri(),
             ]);
 
-            return response($html, StatusCodeInterface::STATUS_SERVICE_UNAVAILABLE);
+            return response($html, HttpStatusCode::ServiceUnavailable);
         }
 
         return $handler->handle($request);

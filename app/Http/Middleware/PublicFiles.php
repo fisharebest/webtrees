@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
@@ -36,9 +36,6 @@ use function strtoupper;
 
 use const PATHINFO_EXTENSION;
 
-/**
- * Provide access to files in the folder /public, for cli-server requests and in case the web-server doesn't do this.
- */
 class PublicFiles implements MiddlewareInterface
 {
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
@@ -52,7 +49,7 @@ class PublicFiles implements MiddlewareInterface
                 $extension = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
                 $mime_type = Mime::TYPES[$extension] ?? Mime::DEFAULT_TYPE;
 
-                return response($content, StatusCodeInterface::STATUS_OK, [
+                return response($content, HttpStatusCode::OK, [
                     'cache-control' => 'public,max-age=31536000',
                     'content-type'  => $mime_type,
                 ]);

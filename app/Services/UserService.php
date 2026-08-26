@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,8 +23,10 @@ use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Http\RequestHandlers\ContactPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
+use Fisharebest\Webtrees\Enums\Role;
+use Fisharebest\Webtrees\Http\Controllers\Contact;
+use Fisharebest\Webtrees\Http\Controllers\Message;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\User;
@@ -32,21 +34,26 @@ use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function max;
-use function time;
 
 /**
  * Functions for managing users.
  */
 class UserService
 {
-    /**
-     * Find the user with a specified user_id.
-     */
+    public function __construct(private readonly ClockInterface $clock)
+    {
+    }
+
     public function find(int|null $user_id): User|null
     {
+        if ($user_id === null) {
+            return null;
+        }
+
         return Registry::cache()->array()
             ->remember('user-' . $user_id, static fn (): User|null => DB::table('user')
                 ->where('user_id', '=', $user_id)
@@ -55,9 +62,6 @@ class UserService
                 ->first());
     }
 
-    /**
-     * Find the user with a specified email address.
-     */
     public function findByEmail(string $email): User|null
     {
         return DB::table('user')
@@ -67,9 +71,6 @@ class UserService
             ->first();
     }
 
-    /**
-     * Find the user with a specified user_name or email address.
-     */
     public function findByIdentifier(string $identifier): User|null
     {
         return DB::table('user')
@@ -81,10 +82,6 @@ class UserService
     }
 
     /**
-     * Find the user(s) with a specified genealogy record.
-     *
-     * @param Individual $individual
-     *
      * @return Collection<int,User>
      */
     public function findByIndividual(Individual $individual): Collection
@@ -99,9 +96,6 @@ class UserService
             ->map(User::rowMapper());
     }
 
-    /**
-     * Find the user with a specified password reset token.
-     */
     public function findByToken(string $token): User|null
     {
         return DB::table('user')
@@ -110,16 +104,13 @@ class UserService
             ->where('us1.setting_value', '=', $token)
             ->join('user_setting AS us2', 'us2.user_id', '=', 'user.user_id')
             ->where('us2.setting_name', '=', 'password-token-expire')
-            ->where('us2.setting_value', '>', time())
+            ->where('us2.setting_value', '>', $this->clock->now()->getTimestamp())
             ->select(['user.*'])
             ->get()
             ->map(User::rowMapper())
             ->first();
     }
 
-    /**
-     * Find the user with a specified user_name.
-     */
     public function findByUserName(string $user_name): User|null
     {
         return DB::table('user')
@@ -130,8 +121,6 @@ class UserService
     }
 
     /**
-     * Callback to sort users by their last-login (or registration) time.
-     *
      * @return Closure(UserInterface,UserInterface):int
      */
     public function sortByLastLogin(): Closure
@@ -147,10 +136,6 @@ class UserService
     }
 
     /**
-     * Callback to filter users who have not logged in since a given time.
-     *
-     * @param int $timestamp
-     *
      * @return Closure(UserInterface):bool
      */
     public function filterInactive(int $timestamp): Closure
@@ -164,8 +149,6 @@ class UserService
     }
 
     /**
-     * Get a list of all users.
-     *
      * @return Collection<int,User>
      */
     public function all(): Collection
@@ -178,8 +161,6 @@ class UserService
     }
 
     /**
-     * Get a list of all administrators.
-     *
      * @return Collection<int,User>
      */
     public function administrators(): Collection
@@ -196,8 +177,6 @@ class UserService
     }
 
     /**
-     * Get a list of all managers.
-     *
      * @return Collection<int,User>
      */
     public function managers(): Collection
@@ -205,7 +184,7 @@ class UserService
         return DB::table('user')
             ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
             ->where('user_gedcom_setting.setting_name', '=', UserInterface::PREF_TREE_ROLE)
-            ->where('user_gedcom_setting.setting_value', '=', UserInterface::ROLE_MANAGER)
+            ->where('user_gedcom_setting.setting_value', '=', Role::Manager->value)
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
             ->distinct()
@@ -215,8 +194,6 @@ class UserService
     }
 
     /**
-     * Get a list of all moderators.
-     *
      * @return Collection<int,User>
      */
     public function moderators(): Collection
@@ -224,7 +201,7 @@ class UserService
         return DB::table('user')
             ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
             ->where('user_gedcom_setting.setting_name', '=', UserInterface::PREF_TREE_ROLE)
-            ->where('user_gedcom_setting.setting_value', '=', UserInterface::ROLE_MODERATOR)
+            ->where('user_gedcom_setting.setting_value', '=', Role::Moderator->value)
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
             ->distinct()
@@ -234,8 +211,6 @@ class UserService
     }
 
     /**
-     * Get a list of all verified users.
-     *
      * @return Collection<int,User>
      */
     public function unapproved(): Collection
@@ -259,8 +234,6 @@ class UserService
     }
 
     /**
-     * Get a list of all verified users.
-     *
      * @return Collection<int,User>
      */
     public function unverified(): Collection
@@ -284,8 +257,6 @@ class UserService
     }
 
     /**
-     * Get a list of all users who are currently logged in.
-     *
      * @return Collection<int,User>
      */
     public function allLoggedIn(): Collection
@@ -300,18 +271,6 @@ class UserService
             ->map(User::rowMapper());
     }
 
-    /**
-     * Create a new user.
-     * The calling code needs to check for duplicates identifiers before calling
-     * this function.
-     *
-     * @param string $user_name
-     * @param string $real_name
-     * @param string $email
-     * @param string $password
-     *
-     * @return User
-     */
     public function create(string $user_name, string $real_name, string $email, #[\SensitiveParameter] string $password): User
     {
         DB::table('user')->insert([
@@ -326,13 +285,6 @@ class UserService
         return new User($user_id, $user_name, $real_name, $email);
     }
 
-    /**
-     * Delete a user
-     *
-     * @param User $user
-     *
-     * @return void
-     */
     public function delete(User $user): void
     {
         DB::table('session')
@@ -344,10 +296,10 @@ class UserService
             ->where('user_id', '=', $user->id())
             ->update(['user_id' => null]);
 
-        // Take over the user’s pending changes. (What else could we do with them?)
+        // Take over the user's pending changes. (What else could we do with them?)
         DB::table('change')
             ->where('user_id', '=', $user->id())
-            ->where('status', '=', 'rejected')
+            ->where('status', '=', ChangeStatus::Rejected->value)
             ->delete();
 
         DB::table('change')
@@ -364,32 +316,31 @@ class UserService
         DB::table('user_gedcom_setting')->where('user_id', '=', $user->id())->delete();
         DB::table('user_setting')->where('user_id', '=', $user->id())->delete();
         DB::table('message')->where('user_id', '=', $user->id())->delete();
+
+        if (DB::driverName() === DB::SQL_SERVER) {
+            // SQL-Server cannot handle these foreign key constraints.
+            DB::table('gedcom')->where('contact_user_id', '=', $user->id())->update(['contact_user_id' => null]);
+            DB::table('gedcom')->where('support_user_id', '=', $user->id())->update(['support_user_id' => null]);
+        }
+
         DB::table('user')->where('user_id', '=', $user->id())->delete();
     }
 
-    /**
-     * @param User                   $contact_user
-     * @param ServerRequestInterface $request
-     *
-     * @return string
-     */
     public function contactLink(User $contact_user, ServerRequestInterface $request): string
     {
         $tree = Validator::attributes($request)->tree();
         $user = Validator::attributes($request)->user();
 
-        if ($contact_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === MessageService::CONTACT_METHOD_MAILTO) {
-            $url = 'mailto:' . $contact_user->email();
-        } elseif ($user instanceof User) {
+        if ($user instanceof User) {
             // Logged-in users send direct messages
-            $url = route(MessagePage::class, [
-                'to' => $contact_user->userName(),
+            $url = route(Message::class, [
+                'to'   => $contact_user->userName(),
                 'tree' => $tree->name(),
                 'url'  => (string) $request->getUri(),
             ]);
         } else {
             // Visitors use the contact form.
-            $url = route(ContactPage::class, [
+            $url = route(Contact::class, [
                 'to'   => $contact_user->userName(),
                 'tree' => $tree->name(),
                 'url'  => (string) $request->getUri(),

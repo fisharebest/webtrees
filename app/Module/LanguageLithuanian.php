@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,65 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleLt;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\I18N\Languages\Lithuanian;
 
 class LanguageLithuanian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            'A',
-            UTF8::LATIN_CAPITAL_LETTER_A_WITH_OGONEK,
-            'B',
-            'C',
-            UTF8::LATIN_CAPITAL_LETTER_C_WITH_CARON,
-            'D',
-            'E',
-            UTF8::LATIN_CAPITAL_LETTER_E_WITH_OGONEK,
-            UTF8::LATIN_CAPITAL_LETTER_E_WITH_DOT_ABOVE,
-            'F',
-            'G',
-            'H',
-            'I',
-            'Y',
-            UTF8::LATIN_CAPITAL_LETTER_I_WITH_OGONEK,
-            'J',
-            'K',
-            'L',
-            'M',
-            'N',
-            'O',
-            'P',
-            'R',
-            'S',
-            UTF8::LATIN_CAPITAL_LETTER_S_WITH_CARON,
-            'T',
-            'U',
-            UTF8::LATIN_CAPITAL_LETTER_U_WITH_OGONEK,
-            UTF8::LATIN_CAPITAL_LETTER_U_WITH_MACRON,
-            'V',
-            'Z',
-            UTF8::LATIN_CAPITAL_LETTER_Z_WITH_CARON,
-        ];
+        $this->language = new Lithuanian();
     }
-
-    public function dateOrder(): string
-    {
-        return 'YMD';
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleLt();
-    }
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

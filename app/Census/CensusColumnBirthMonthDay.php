@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,23 +19,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 
-/**
- * The individual's month and date of birth.
- */
-class CensusColumnBirthMonthDay extends AbstractCensusColumn implements CensusColumnInterface
+final readonly class CensusColumnBirthMonthDay extends AbstractCensusColumn implements CensusColumnInterface
 {
-    /**
-     * Generate the likely value of this census column, based on available information.
-     *
-     * @param Individual $individual
-     * @param Individual $head
-     *
-     * @return string
-     */
     public function generate(Individual $individual, Individual $head): string
     {
-        return $individual->getEstimatedBirthDate()->minimumDate()->format('%M %j');
+        $date = Date::fromCalendarDate($individual->getEstimatedBirthDate()->minimumDate())->display();
+
+        $date = preg_replace('/(\s*|, )\d{3,4}\s*/', '', $date);
+        return preg_replace('/(\p{L}{3})\p{L}*/u', '$1', $date);
     }
 }

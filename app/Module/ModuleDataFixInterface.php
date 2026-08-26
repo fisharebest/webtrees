@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,17 +30,12 @@ interface ModuleDataFixInterface extends ModuleInterface
 {
     /**
      * Options form.
-     *
-     * @param Tree $tree
-     *
-     * @return string
      */
     public function fixOptions(Tree $tree): string;
 
     /**
      * A combined list of all records that might need fixing.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,object{xref:string,type:string}>
@@ -50,30 +45,21 @@ interface ModuleDataFixInterface extends ModuleInterface
     /**
      * Does a record need updating?
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return bool
      */
     public function doesRecordNeedUpdate(GedcomRecord $record, array $params): bool;
 
     /**
      * Show the changes we would make
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return string
      */
     public function previewUpdate(GedcomRecord $record, array $params): string;
 
     /**
      * Fix a record
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return void
      */
     public function updateRecord(GedcomRecord $record, array $params): void;
 }

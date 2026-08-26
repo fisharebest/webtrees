@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
-use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
+use Fisharebest\Webtrees\Http\Exceptions\HttpForbiddenException;
+use Fisharebest\Webtrees\Http\Controllers\Login;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -33,17 +33,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function redirect;
 use function route;
 
-/**
- * Middleware to restrict access to administrators.
- */
 class AuthAdministrator implements MiddlewareInterface
 {
-    /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
-     */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $user = Validator::attributes($request)->user();
@@ -54,11 +45,11 @@ class AuthAdministrator implements MiddlewareInterface
         }
 
         // Logged in, but without the correct role?
-        if ($user instanceof User || $request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            throw new HttpAccessDeniedException();
+        if ($user instanceof User || $request->getMethod() === HttpRequestMethod::POST->value) {
+            throw new HttpForbiddenException();
         }
 
         // Not logged in.
-        return redirect(route(LoginPage::class, ['url' => (string) $request->getUri()]));
+        return redirect(route(Login::class, ['url' => (string) $request->getUri()]));
     }
 }

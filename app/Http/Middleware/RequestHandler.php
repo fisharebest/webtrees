@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,28 +26,13 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function is_string;
-
-/**
- * Middleware to run a request-handler.
- */
 class RequestHandler implements MiddlewareInterface
 {
-    /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
-     */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $route = Validator::attributes($request)->route();
 
-        $request_handler = $route->handler;
-
-        if (is_string($request_handler)) {
-            $request_handler = Registry::container()->get($request_handler);
-        }
+        $request_handler = Registry::container()->get($route->controller);
 
         return $request_handler->handle($request);
     }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2025 webtrees development team
+ * Copyright (C) 2026 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,8 +42,6 @@ class AlbumModule extends MediaTabModule
 
     /**
      * The default position for this tab.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultTabOrder(): int
     {
@@ -52,10 +50,6 @@ class AlbumModule extends MediaTabModule
 
     /**
      * Generate the HTML content of this tab.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function getTabContent(Individual $individual): string
     {
@@ -67,7 +61,6 @@ class AlbumModule extends MediaTabModule
     /**
      * Get the linked media objects.
      *
-     * @param Individual $individual
      *
      * @return Collection<int,Media>
      */
