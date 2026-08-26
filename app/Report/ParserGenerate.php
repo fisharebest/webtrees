@@ -132,6 +132,8 @@ final class ParserGenerate extends AbstractParser
 
     private string $type = '';
 
+    private string $context = '';
+
     private int $generation = 1;
 
     /** @var array<GedcomRecord> Source data for processing lists */
@@ -644,31 +646,62 @@ final class ParserGenerate extends AbstractParser
      */
     private function gedcomStartHandler(array $attrs): void
     {
+        // "id" can be; an XREF, a tag (BIRT), or a linked record @FAMC:HUSB
+        $id = $attrs['id'];
+
+        if ($id === '') {
+            throw new LogicException('The "id" attribute is missing.');
+        }
+
         if ($this->process_gedcoms > 0) {
             $this->process_gedcoms++;
 
             return;
         }
 
-        $gedcom_path     = str_replace('@fact', $this->fact, $attrs['id']);
+        $gedcom_path     = str_replace('@fact', $this->fact, $id);
         $path_segments   = explode(':', $gedcom_path);
         $resolved_gedcom = '';
-        if (count($path_segments) < 2) {
-            $record          = Registry::gedcomRecordFactory()->make($attrs['id'], $this->tree);
-            $resolved_gedcom = $record !== null ? $record->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
+        $new_context     = '';
+
+        // Direct record lookup by XREF
+        // This could fail if we look up "BIRT", and there is also a record with an XREF of "BIRT".
+        if (count($path_segments) === 1 && !str_starts_with($id, '@')) {
+            $record = Registry::gedcomRecordFactory()->make($id, $this->tree);
+
+            if ($record !== null) {
+                $resolved_gedcom = $record->privatizeGedcom(Auth::accessLevel($this->tree));
+                $new_context     = $record->tag();
+            }
         }
 
+        // Iterate over cross-references and sub-records
         if ($resolved_gedcom === '') {
             $current_gedcom  = $this->gedrec;
+            $new_context = $this->context;
             foreach ($path_segments as $path_segment) {
                 if (preg_match('/\$(.+)/', $path_segment, $match)) {
-                    $record          = Registry::gedcomRecordFactory()->make($match[1], $this->tree);
-                    $resolved_gedcom = $record !== null ? $record->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
+                    $record = Registry::gedcomRecordFactory()->make($match[1], $this->tree);
+
+                    if ($record === null) {
+                        $resolved_gedcom = '';
+                        break;
+                    }
+
+                    $resolved_gedcom = $record->privatizeGedcom(Auth::accessLevel($this->tree));
+                    $new_context     = $record->tag();
                 } elseif (preg_match('/@(.+)/', $path_segment, $match)) {
                     $link_match = [];
                     if (preg_match("/\d $match[1] @([^@]+)@/", $current_gedcom, $link_match)) {
-                        $record          = Registry::gedcomRecordFactory()->make($link_match[1], $this->tree);
-                        $resolved_gedcom = $record !== null ? $record->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
+                        $record = Registry::gedcomRecordFactory()->make($link_match[1], $this->tree);
+
+                        if ($record === null) {
+                            $resolved_gedcom = '';
+                            break;
+                        }
+
+                        $resolved_gedcom = $record->privatizeGedcom(Auth::accessLevel($this->tree));
+                        $new_context     = $record->tag();
                         $current_gedcom  = $resolved_gedcom;
                     } else {
                         $resolved_gedcom = '';
@@ -677,24 +710,29 @@ final class ParserGenerate extends AbstractParser
                 } else {
                     $level           = 1 + (int) explode(' ', trim($current_gedcom))[0];
                     $resolved_gedcom = GedcomTextReader::getSubRecord($level, "$level $path_segment", $current_gedcom);
+                    $new_context .= ':' . $path_segment;
                     $current_gedcom  = $resolved_gedcom;
                 }
             }
         }
 
-        if ($resolved_gedcom !== '') {
+        if ($resolved_gedcom === '') {
+            $this->process_gedcoms++;
+        } else {
             $this->gedrec_stack[] = new GedcomFrame(
-                gedrec: $this->gedrec,
-                fact:   $this->fact,
-                desc:   $this->desc,
+                gedrec:  $this->gedrec,
+                fact:    $this->fact,
+                desc:    $this->desc,
+                context: $this->context,
             );
-            $this->gedrec         = $resolved_gedcom;
+
+            $this->gedrec  = $resolved_gedcom;
+            $this->context = $new_context;
+
             if (preg_match("/(\d+) (_?[A-Z0-9]+) (.*)/", $this->gedrec, $match)) {
                 $this->fact = $match[2];
                 $this->desc = trim($match[3]);
             }
-        } else {
-            $this->process_gedcoms++;
         }
     }
 
@@ -703,10 +741,11 @@ final class ParserGenerate extends AbstractParser
         if ($this->process_gedcoms > 0) {
             $this->process_gedcoms--;
         } else {
-            $frame        = array_pop($this->gedrec_stack);
-            $this->gedrec = $frame->gedrec;
-            $this->fact   = $frame->fact;
-            $this->desc   = $frame->desc;
+            $frame         = array_pop($this->gedrec_stack);
+            $this->gedrec  = $frame->gedrec;
+            $this->fact    = $frame->fact;
+            $this->desc    = $frame->desc;
+            $this->context = $frame->context;
         }
     }
 
@@ -900,7 +939,7 @@ final class ParserGenerate extends AbstractParser
                 }
             }
 
-            $value = GedcomTextReader::getGedcomValue($tag, $level, $this->gedrec, $this->tree);
+            $value = GedcomTextReader::getGedcomValue($tag, $level, $this->gedrec, $this->tree, $this->context);
 
             if ($tag === 'DATE' || str_ends_with($tag, ':DATE')) {
                 $value = (new Date($value))->display();
@@ -1005,15 +1044,22 @@ final class ParserGenerate extends AbstractParser
         }
 
         if ($this->repeats !== []) {
-            $fragment  = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
-            $oldgedrec = $this->gedrec;
+            $fragment        = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
+            $oldgedrec       = $this->gedrec;
+            $old_context = $this->context;
 
             foreach ($this->repeats as $gedrec) {
                 $this->gedrec = $gedrec;
+
+                // Tag queries in RepeatTag blocks include the sub-record's own tag
+                // (e.g. "NAME:TYPE" when the gedrec IS the NAME sub-record).
+                // So $context stays at the parent level
+
                 $this->parseFragment($fragment);
             }
 
-            $this->gedrec = $oldgedrec;
+            $this->gedrec  = $oldgedrec;
+            $this->context = $old_context;
         }
 
         $this->popRepeatFrame();
@@ -1134,8 +1180,9 @@ final class ParserGenerate extends AbstractParser
         }
 
         if ($this->repeats !== []) {
-            $fragment  = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
-            $oldgedrec = $this->gedrec;
+            $fragment    = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
+            $oldgedrec   = $this->gedrec;
+            $old_context = $this->context;
 
             foreach ($this->repeats as $gedrec) {
                 $this->gedrec = $gedrec;
@@ -1155,10 +1202,15 @@ final class ParserGenerate extends AbstractParser
                     $this->desc .= GedcomTextReader::getCont(2, $this->gedrec);
                 }
 
+                // element_tag stays at the parent level — tag queries in
+                // Facts blocks include the fact tag via @fact substitution
+                // (e.g. @fact:DATE → BIRT:DATE).
+
                 $this->parseFragment($fragment);
             }
 
-            $this->gedrec = $oldgedrec;
+            $this->gedrec  = $oldgedrec;
+            $this->context = $old_context;
         }
 
         $this->popRepeatFrame();
@@ -1211,6 +1263,7 @@ final class ParserGenerate extends AbstractParser
             $this->desc,
             $this->generation,
             $this->tree,
+            $this->context,
         );
 
         if (!$result) {
@@ -1467,21 +1520,24 @@ final class ParserGenerate extends AbstractParser
         }
 
         if (count($this->list) > 0) {
-            $fragment  = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
-            $oldgedrec = $this->gedrec;
+            $fragment    = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
+            $oldgedrec   = $this->gedrec;
+            $old_context = $this->context;
 
             $this->list_total   = count($this->list);
             $this->list_private = 0;
             foreach ($this->list as $record) {
                 if ($record->canShow()) {
-                    $this->gedrec = $record->privatizeGedcom(Auth::accessLevel($record->tree()));
+                    $this->gedrec  = $record->privatizeGedcom(Auth::accessLevel($record->tree()));
+                    $this->context = $record->tag();
                     $this->parseFragment($fragment);
                 } else {
                     $this->list_private++;
                 }
             }
-            $this->list   = [];
-            $this->gedrec = $oldgedrec;
+            $this->list    = [];
+            $this->gedrec  = $oldgedrec;
+            $this->context = $old_context;
         }
         $this->popRepeatFrame();
     }
@@ -1610,8 +1666,9 @@ final class ParserGenerate extends AbstractParser
         }
 
         if (count($this->list) > 0) {
-            $fragment  = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
-            $oldgedrec = $this->gedrec;
+            $fragment    = '<tempdoc>' . $this->repeat_xml . '</tempdoc>';
+            $oldgedrec   = $this->gedrec;
+            $old_context = $this->context;
 
             $this->list_total   = count($this->list);
             $this->list_private = 0;
@@ -1621,11 +1678,13 @@ final class ParserGenerate extends AbstractParser
                 }
                 $record        = Registry::gedcomRecordFactory()->make((string) $xref, $this->tree);
                 $this->gedrec  = $record->privatizeGedcom(Auth::accessLevel($this->tree));
+                $this->context = $record->tag();
 
                 $this->parseFragment($fragment);
             }
-            $this->list   = [];
-            $this->gedrec = $oldgedrec;
+            $this->list    = [];
+            $this->gedrec  = $oldgedrec;
+            $this->context = $old_context;
         }
         $this->popRepeatFrame();
     }

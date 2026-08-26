@@ -201,13 +201,13 @@
                   <if condition="@MARR:TYPE==''">
                     <var var="@fact"/>
                   </if>
-                  <if condition="@MARR:TYPE=='Religious'">
+                  <if condition="@MARR:TYPE=='RELIGIOUS'">
                     <var var="I18N::translate('Religious marriage')"/>
                   </if>
-                  <if condition="@MARR:TYPE=='Civil'">
+                  <if condition="@MARR:TYPE=='CIVIL'">
                     <var var="I18N::translate('Civil marriage')"/>
                   </if>
-                  <if condition="@MARR:TYPE=='Partners'">
+                  <if condition="@MARR:TYPE=='PARTNERS'">
                     <var var="I18N::translate('Registered partnership')"/>
                   </if>
                 </if>

@@ -19,13 +19,19 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
+use Fisharebest\Webtrees\Tests\TestCase;
+use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\TestCase;
 use Fisharebest\Webtrees\Report\GedcomTextReader;
 
 #[CoversClass(GedcomTextReader::class)]
 class GedcomTextReaderTest extends TestCase
 {
+    private function createTree(): Tree
+    {
+        return self::createStub(Tree::class);
+    }
+
     public function testGetSubRecordReturnsEmptyForEmptyInput(): void
     {
         self::assertSame('', GedcomTextReader::getSubRecord(1, '1 BIRT', ''));
@@ -84,5 +90,78 @@ class GedcomTextReaderTest extends TestCase
         $result = GedcomTextReader::getCont(2, $record);
 
         self::assertSame("\nSecond line", $result);
+    }
+
+    public function testGetGedcomValueReturnsEmptyForEmptyRecord(): void
+    {
+        self::assertSame('', GedcomTextReader::getGedcomValue('NAME', 1, '', $this->createTree(), ''));
+    }
+
+    public function testGetGedcomValueReturnsEmptyWhenTagNotFound(): void
+    {
+        $gedrec = "0 @I1@ INDI\n1 NAME John /Doe/";
+
+        self::assertSame('', GedcomTextReader::getGedcomValue('BIRT:DATE', 1, $gedrec, $this->createTree(), 'INDI'));
+    }
+
+    public function testGetGedcomValueExtractsSimpleValue(): void
+    {
+        $gedrec = "0 @I1@ INDI\n1 SEX M";
+
+        self::assertSame('M', GedcomTextReader::getGedcomValue('SEX', 1, $gedrec, $this->createTree(), 'INDI'));
+    }
+
+    public function testGetGedcomValueExtractsNestedValue(): void
+    {
+        $gedrec = "0 @I1@ INDI\n1 BIRT\n2 DATE 1 JAN 1900";
+
+        self::assertSame('1 JAN 1900', GedcomTextReader::getGedcomValue('BIRT:DATE', 1, $gedrec, $this->createTree(), 'INDI'));
+    }
+
+    public function testGetGedcomValueCanonicalizesSexValue(): void
+    {
+        // SexValue::canonical() converts to uppercase
+        $gedrec = "0 @I1@ INDI\n1 SEX m";
+
+        self::assertSame('M', GedcomTextReader::getGedcomValue('SEX', 1, $gedrec, $this->createTree(), 'INDI'));
+    }
+
+    public function testGetGedcomValueCanonicalizesNameType(): void
+    {
+        // NameType::canonical() converts to uppercase
+        $gedrec = "0 @I1@ INDI\n1 NAME Jane /Doe/\n2 TYPE married";
+
+        self::assertSame('MARRIED', GedcomTextReader::getGedcomValue('NAME:TYPE', 1, $gedrec, $this->createTree(), 'INDI'));
+    }
+
+    public function testGetGedcomValueCanonicalizesNameTypeInSubrecord(): void
+    {
+        // When gedrec is a sub-record (level 1), the caller provides the context
+        $gedrec = "1 NAME Jane /Doe/\n2 TYPE married";
+
+        self::assertSame('MARRIED', GedcomTextReader::getGedcomValue('NAME:TYPE', 1, $gedrec, $this->createTree(), 'INDI'));
+    }
+
+    public function testGetGedcomValueUsesExplicitElementTag(): void
+    {
+        // The context parameter provides the parent context for canonicalization
+        $gedrec = "1 BIRT\n2 DATE 1 JAN 1900";
+
+        self::assertSame('1 JAN 1900', GedcomTextReader::getGedcomValue('DATE', 2, $gedrec, $this->createTree(), 'INDI:BIRT'));
+    }
+
+    public function testGetGedcomValueNormalizesWhitespace(): void
+    {
+        // canonical() collapses multiple spaces
+        $gedrec = "0 @I1@ INDI\n1 BIRT\n2 PLAC London,  England";
+
+        self::assertSame('London, England', GedcomTextReader::getGedcomValue('BIRT:PLAC', 1, $gedrec, $this->createTree(), 'INDI'));
+    }
+
+    public function testGetGedcomValueStripsNameSlashes(): void
+    {
+        $gedrec = "0 @I1@ INDI\n1 NAME John /Doe/";
+
+        self::assertSame('John Doe', GedcomTextReader::getGedcomValue('NAME', 1, $gedrec, $this->createTree(), 'INDI'));
     }
 }

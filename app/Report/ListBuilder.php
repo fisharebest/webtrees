@@ -520,7 +520,7 @@ final class ListBuilder
                         }
                         $tags = explode(':', $tag);
                         $t    = end($tags);
-                        $v    = GedcomTextReader::getGedcomValue($tag, 1, $grec, $this->tree);
+                        $v    = GedcomTextReader::getGedcomValue($tag, 1, $grec, $this->tree, $indi->tag());
 
                         switch ($expr) {
                             case 'GTE':
