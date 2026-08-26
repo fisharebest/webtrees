@@ -75,7 +75,7 @@ final class AddChildToFamily
         return $this->viewResponse('edit/new-individual', [
             'facts'               => $facts,
             'gedcom_edit_service' => $this->gedcom_edit_service,
-            'post_url'            => route(AddChildToFamily::class, ['tree' => $tree->name(), 'xref' => $xref]),
+            'post_url'            => route(AddChildToFamily::class, ['tree' => $tree->name(), 'xref' => $xref, 'sex' => $sex]),
             'title'               => $family->fullName() . ' - ' . $title,
             'tree'                => $tree,
             'url'                 => Validator::queryParams($request)->isLocalUrl()->string('url', $family->url()),
