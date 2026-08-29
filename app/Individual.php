@@ -376,6 +376,20 @@ class Individual extends GedcomRecord
     }
 
     /**
+     * Get the place of burial
+     */
+    public function getBurialPlace(): Place
+    {
+        $places = $this->getAllEventPlaces(['BURI']);
+
+        foreach ($places as $place) {
+            return $place;
+        }
+
+        return new Place('', $this->tree);
+    }
+
+    /**
      * Get the range of years in which a individual lived. e.g. “1870–”, “1870–1920”, “–1920”.
      * Provide the place and full date using a tooltip.
      * For consistent layout in charts, etc., show just a “–” when no dates are known.

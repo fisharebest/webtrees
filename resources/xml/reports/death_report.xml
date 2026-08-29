@@ -18,7 +18,7 @@
   <Input name="deathdate2" lookup="DATE" type="text">
     <var var="I18N::translate('Death date range end')"/>
   </Input>
-  <Input name="sortby" type="select" default="NAME" options="NAME=&gt;I18N::translate('sort by name')|DEAT:DATE=&gt;I18N::translate('sort by date of death')">
+  <Input name="sortby" type="select" default="NAME" options="NAME=&gt;I18N::translate('sort by name')|DEAT:DATE=&gt;I18N::translate('sort by date of death')|DEAT:PLAC=>I18N::translate('sort by place of death')">
     <var var="I18N::translate('Sort order')"/>
   </Input>
   <Input name="adlist" type="select" default="none" options="none=&gt;I18N::translate('None')|_MARNM=&gt;I18N::translate('Married name')|HUSB=&gt;I18N::translate('Husband')">
