@@ -1,0 +1,9 @@
+{
+  "name": "webtrees",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "forwardPorts": [8080],
+  "postCreateCommand": "composer install --no-interaction && npm ci"
+}
