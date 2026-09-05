@@ -1,7 +1,7 @@
-FROM php:8.5-cli-bookworm
+FROM php:8.5-cli-trixie
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
-COPY --from=node:22-bookworm /usr/local/ /usr/local/
+COPY --from=node:22-trixie /usr/local/ /usr/local/
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
