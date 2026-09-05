@@ -19,6 +19,7 @@ RUN apt-get update \
     && docker-php-ext-install -j1 gd \
     && docker-php-ext-install -j1 intl \
     && docker-php-ext-install -j1 mbstring \
+    && docker-php-ext-install -j1 exif \
     && docker-php-ext-install -j1 pdo_sqlite \
     && docker-php-ext-install -j1 zip \
     && rm -rf /var/lib/apt/lists/*
