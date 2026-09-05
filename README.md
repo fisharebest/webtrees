@@ -174,13 +174,14 @@ needed to develop and test webtrees.
 Prerequisites:
 
 * An OCI-compatible container engine, such as Docker or Podman
-* A client that supports the Development Container specification
-* Internet access to download container images and project dependencies
+* A Development Container client, such as Visual Studio Code with the
+	Dev Containers extension, GitHub Codespaces, or the Dev Container CLI
 
 Clone the repository or extract a source archive, then use your Development
-Container client to open the source directory in its container. The container
-creation process runs `composer install` and `npm ci` automatically. Then build
-the assets and start the development server:
+Container client to open the source directory in its container. The initial
+container setup downloads the container image and project dependencies, then
+runs `composer install` and `npm ci` automatically. Then build the assets and
+start the development server:
 
 ```bash
 npm run build
@@ -190,10 +191,13 @@ php -S 0.0.0.0:8080
 Open <http://localhost:8080> on the host. Port 8080 is declared by the container
 configuration and should be forwarded by the client.
 
-Complete the setup wizard and select SQLite for the database. The database is
-stored as `data/<name>.sqlite` in the source directory, so it remains available
-when the container is rebuilt or replaced. The Development Container does not
-include a MySQL, PostgreSQL, or SQL Server service.
+Complete the setup wizard and select SQLite for the simplest setup. The
+container includes PHP PDO drivers for SQLite, MySQL/MariaDB, and PostgreSQL,
+but it does not run a database server. SQLite is stored as
+`data/<name>.sqlite` in the source directory, so it remains available when the
+container is rebuilt or replaced. To use MySQL/MariaDB, PostgreSQL, or SQL
+Server, provide a separately running database server and configure its
+connection details in the setup wizard.
 
 #### Local environment
 
