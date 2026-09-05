@@ -11,6 +11,7 @@ RUN apt-get update \
         libjpeg62-turbo-dev \
         libonig-dev \
         libpng-dev \
+        libpq-dev \
         libsqlite3-dev \
         libzip-dev \
         unzip \
@@ -21,6 +22,8 @@ RUN apt-get update \
     && docker-php-ext-install -j1 mbstring \
     && docker-php-ext-install -j1 exif \
     && docker-php-ext-install -j1 pdo_sqlite \
+    && docker-php-ext-install -j1 pdo_mysql \
+    && docker-php-ext-install -j1 pdo_pgsql \
     && docker-php-ext-install -j1 zip \
     && rm -rf /var/lib/apt/lists/*
 
