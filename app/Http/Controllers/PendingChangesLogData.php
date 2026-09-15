@@ -57,7 +57,7 @@ final class PendingChangesLogData
         $this->pending_changes_service = $pending_changes_service;
     }
 
-    public function get(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
     {
         $params         = (array) $request->getParsedBody();
         $params['tree'] = $tree->name();
