@@ -17,17 +17,19 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\RequestHandlers;
+namespace Fisharebest\Webtrees\Http\Controllers;
 
-use LogicException;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 
-final class NotFound implements RequestHandlerInterface
+final class NotFound
 {
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(): never
     {
-        throw new LogicException('Should never get here. The router should handle not-found requests.');
+        throw new HttpNotFoundException();
+    }
+
+    public function post(): never
+    {
+        throw new HttpNotFoundException();
     }
 }

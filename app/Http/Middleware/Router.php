@@ -20,8 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\NotFound;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\MiddlewarePipeline;
+use Fisharebest\Webtrees\Http\Routing\Route;
 use Fisharebest\Webtrees\Http\Routing\RouteCollection;
 use Fisharebest\Webtrees\Http\Routing\RouteMatcher;
 use Fisharebest\Webtrees\Registry;
@@ -74,12 +76,11 @@ readonly class Router implements MiddlewareInterface
         $matcher = new RouteMatcher($this->route_collection, Registry::container());
         $result  = $matcher->match($pretty);
 
-        // No route matched?
-        if (!$result->isSuccess()) {
-            return $handler->handle($request);
+        if ($result->isSuccess()) {
+            $route = $result->route;
+        } else {
+            $route = new Route($pretty->getUri()->getPath(), NotFound::class);
         }
-
-        $route = $result->route;
 
         // Add the route as attribute of the request
         $request = $request->withAttribute('route', $route);
