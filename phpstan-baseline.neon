@@ -847,6 +847,12 @@ parameters:
 			path: app/Factories/LocationFactory.php
 
 		-
+			rawMessage: 'Class League\CommonMark\MarkdownConverter referenced with incorrect case: League\CommonMark\MarkDownConverter.'
+			identifier: class.nameCase
+			count: 2
+			path: app/Factories/MarkdownFactory.php
+
+		-
 			rawMessage: 'Parameter #1 $config of class League\CommonMark\Environment\Environment constructor expects array<string, mixed>, mixed given.'
 			identifier: argument.type
 			count: 2
@@ -1987,7 +1993,7 @@ parameters:
 			path: app/Http/RequestHandlers/DataFixUpdateAll.php
 
 		-
-			rawMessage: 'Parameter #2 $parameters of function route expects array<array<string>|bool|int|string|null>, array given.'
+			rawMessage: 'Parameter #2 $parameters of function route expects array<array<string>|bool|int|string|null>, array<mixed> given.'
 			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/DataFixUpdateAll.php
@@ -3091,12 +3097,6 @@ parameters:
 			path: app/Http/RequestHandlers/PhpInformation.php
 
 		-
-			rawMessage: 'Parameter #2 $subject of function preg_match expects string, string|false given.'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/PhpInformation.php
-
-		-
 			rawMessage: 'Parameter #1 $content of function response expects array<mixed>|object|string, string|false given.'
 			identifier: argument.type
 			count: 1
@@ -3853,12 +3853,6 @@ parameters:
 			path: app/Individual.php
 
 		-
-			rawMessage: Cannot access an offset on mixed.
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
-			path: app/Individual.php
-
-		-
 			rawMessage: 'Cannot access offset int<-1, max> on mixed.'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 2
@@ -3915,7 +3909,7 @@ parameters:
 		-
 			rawMessage: 'Parameter #2 $haystack of function in_array expects array, mixed given.'
 			identifier: argument.type
-			count: 4
+			count: 3
 			path: app/Individual.php
 
 		-
@@ -4261,24 +4255,6 @@ parameters:
 			path: app/Module/ClippingsCartModule.php
 
 		-
-			rawMessage: 'Argument of an invalid type list<string>|false supplied for foreach, only iterables are supported.'
-			identifier: foreach.nonIterable
-			count: 1
-			path: app/Module/CloudsTheme.php
-
-		-
-			rawMessage: 'Argument of an invalid type mixed supplied for foreach, only iterables are supported.'
-			identifier: foreach.nonIterable
-			count: 1
-			path: app/Module/CloudsTheme.php
-
-		-
-			rawMessage: 'Cannot access offset int<0, max> on mixed.'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: app/Module/CloudsTheme.php
-
-		-
 			rawMessage: 'Cannot call method name() on mixed.'
 			identifier: method.nonObject
 			count: 1
@@ -4291,19 +4267,7 @@ parameters:
 			path: app/Module/CloudsTheme.php
 
 		-
-			rawMessage: 'Parameter #1 $filter of method Fisharebest\Webtrees\GedcomRecord::facts() expects array<string>, array<int, mixed> given.'
-			identifier: argument.type
-			count: 1
-			path: app/Module/CloudsTheme.php
-
-		-
 			rawMessage: 'Parameter #2 $haystack of function in_array expects array, list<string>|false given.'
-			identifier: argument.type
-			count: 1
-			path: app/Module/CloudsTheme.php
-
-		-
-			rawMessage: 'Parameter #2 $haystack of function in_array expects array, mixed given.'
 			identifier: argument.type
 			count: 1
 			path: app/Module/CloudsTheme.php
@@ -4327,24 +4291,6 @@ parameters:
 			path: app/Module/DescendancyChartModule.php
 
 		-
-			rawMessage: 'Argument of an invalid type list<string>|false supplied for foreach, only iterables are supported.'
-			identifier: foreach.nonIterable
-			count: 1
-			path: app/Module/FabTheme.php
-
-		-
-			rawMessage: 'Argument of an invalid type mixed supplied for foreach, only iterables are supported.'
-			identifier: foreach.nonIterable
-			count: 1
-			path: app/Module/FabTheme.php
-
-		-
-			rawMessage: 'Cannot access offset int<0, max> on mixed.'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: app/Module/FabTheme.php
-
-		-
 			rawMessage: 'Cannot call method name() on mixed.'
 			identifier: method.nonObject
 			count: 1
@@ -4357,19 +4303,7 @@ parameters:
 			path: app/Module/FabTheme.php
 
 		-
-			rawMessage: 'Parameter #1 $filter of method Fisharebest\Webtrees\GedcomRecord::facts() expects array<string>, array<int, mixed> given.'
-			identifier: argument.type
-			count: 1
-			path: app/Module/FabTheme.php
-
-		-
 			rawMessage: 'Parameter #2 $haystack of function in_array expects array, list<string>|false given.'
-			identifier: argument.type
-			count: 1
-			path: app/Module/FabTheme.php
-
-		-
-			rawMessage: 'Parameter #2 $haystack of function in_array expects array, mixed given.'
 			identifier: argument.type
 			count: 1
 			path: app/Module/FabTheme.php
@@ -4711,12 +4645,6 @@ parameters:
 			path: app/Module/FixDuplicateLinks.php
 
 		-
-			rawMessage: 'Strict comparison using !== between Illuminate\Support\Collection&iterable<int, string> and null will always evaluate to true.'
-			identifier: notIdentical.alwaysTrue
-			count: 6
-			path: app/Module/FixDuplicateLinks.php
-
-		-
 			rawMessage: Access to an undefined property object::$xref.
 			identifier: property.notFound
 			count: 2
@@ -4765,12 +4693,6 @@ parameters:
 			path: app/Module/FixNameTags.php
 
 		-
-			rawMessage: 'Strict comparison using !== between Illuminate\Support\Collection&iterable<int, string> and null will always evaluate to true.'
-			identifier: notIdentical.alwaysTrue
-			count: 1
-			path: app/Module/FixNameTags.php
-
-		-
 			rawMessage: Access to an undefined property object::$xref.
 			identifier: property.notFound
 			count: 2
@@ -4801,12 +4723,6 @@ parameters:
 			path: app/Module/FixPrimaryTag.php
 
 		-
-			rawMessage: 'Strict comparison using !== between Illuminate\Support\Collection&iterable<int, string> and null will always evaluate to true.'
-			identifier: notIdentical.alwaysTrue
-			count: 1
-			path: app/Module/FixPrimaryTag.php
-
-		-
 			rawMessage: Access to an undefined property object::$xref.
 			identifier: property.notFound
 			count: 2
@@ -4833,12 +4749,6 @@ parameters:
 		-
 			rawMessage: 'Method Fisharebest\Webtrees\Module\FixWtObjeSortTag::mergePendingRecords() should return Illuminate\Support\Collection&iterable<int, object{xref: string, type: string}> but returns Illuminate\Support\Collection&iterable<int, string>.'
 			identifier: return.type
-			count: 1
-			path: app/Module/FixWtObjeSortTag.php
-
-		-
-			rawMessage: 'Strict comparison using !== between Illuminate\Support\Collection&iterable<int, string> and null will always evaluate to true.'
-			identifier: notIdentical.alwaysTrue
 			count: 1
 			path: app/Module/FixWtObjeSortTag.php
 
@@ -5551,24 +5461,6 @@ parameters:
 			path: app/Module/MediaListModule.php
 
 		-
-			rawMessage: 'Argument of an invalid type list<string>|false supplied for foreach, only iterables are supported.'
-			identifier: foreach.nonIterable
-			count: 1
-			path: app/Module/MinimalTheme.php
-
-		-
-			rawMessage: 'Argument of an invalid type mixed supplied for foreach, only iterables are supported.'
-			identifier: foreach.nonIterable
-			count: 1
-			path: app/Module/MinimalTheme.php
-
-		-
-			rawMessage: 'Cannot access offset int<0, max> on mixed.'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: app/Module/MinimalTheme.php
-
-		-
 			rawMessage: 'Cannot call method name() on mixed.'
 			identifier: method.nonObject
 			count: 1
@@ -5581,19 +5473,7 @@ parameters:
 			path: app/Module/MinimalTheme.php
 
 		-
-			rawMessage: 'Parameter #1 $filter of method Fisharebest\Webtrees\GedcomRecord::facts() expects array<string>, array<int, mixed> given.'
-			identifier: argument.type
-			count: 1
-			path: app/Module/MinimalTheme.php
-
-		-
 			rawMessage: 'Parameter #2 $haystack of function in_array expects array, list<string>|false given.'
-			identifier: argument.type
-			count: 1
-			path: app/Module/MinimalTheme.php
-
-		-
-			rawMessage: 'Parameter #2 $haystack of function in_array expects array, mixed given.'
 			identifier: argument.type
 			count: 1
 			path: app/Module/MinimalTheme.php
@@ -5689,7 +5569,7 @@ parameters:
 			path: app/Module/OpenRouteServiceAutocomplete.php
 
 		-
-			rawMessage: Binary operation "+" between non-empty-array<array<string>|bool|int|string|null> and mixed results in an error.
+			rawMessage: 'Binary operation "+" between array{xref: string, tree: string, ...<array<string>|bool|int|string|null>} and mixed results in an error.'
 			identifier: binaryOp.invalid
 			count: 1
 			path: app/Module/PedigreeChartModule.php
@@ -6325,24 +6205,6 @@ parameters:
 			path: app/Module/UserMessagesModule.php
 
 		-
-			rawMessage: 'Argument of an invalid type list<string>|false supplied for foreach, only iterables are supported.'
-			identifier: foreach.nonIterable
-			count: 1
-			path: app/Module/WebtreesTheme.php
-
-		-
-			rawMessage: 'Argument of an invalid type mixed supplied for foreach, only iterables are supported.'
-			identifier: foreach.nonIterable
-			count: 1
-			path: app/Module/WebtreesTheme.php
-
-		-
-			rawMessage: 'Cannot access offset int<0, max> on mixed.'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: app/Module/WebtreesTheme.php
-
-		-
 			rawMessage: 'Cannot call method name() on mixed.'
 			identifier: method.nonObject
 			count: 1
@@ -6355,19 +6217,7 @@ parameters:
 			path: app/Module/WebtreesTheme.php
 
 		-
-			rawMessage: 'Parameter #1 $filter of method Fisharebest\Webtrees\GedcomRecord::facts() expects array<string>, array<int, mixed> given.'
-			identifier: argument.type
-			count: 1
-			path: app/Module/WebtreesTheme.php
-
-		-
 			rawMessage: 'Parameter #2 $haystack of function in_array expects array, list<string>|false given.'
-			identifier: argument.type
-			count: 1
-			path: app/Module/WebtreesTheme.php
-
-		-
-			rawMessage: 'Parameter #2 $haystack of function in_array expects array, mixed given.'
 			identifier: argument.type
 			count: 1
 			path: app/Module/WebtreesTheme.php
@@ -6377,24 +6227,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Module/WebtreesTheme.php
-
-		-
-			rawMessage: 'Argument of an invalid type list<string>|false supplied for foreach, only iterables are supported.'
-			identifier: foreach.nonIterable
-			count: 1
-			path: app/Module/XeneaTheme.php
-
-		-
-			rawMessage: 'Argument of an invalid type mixed supplied for foreach, only iterables are supported.'
-			identifier: foreach.nonIterable
-			count: 1
-			path: app/Module/XeneaTheme.php
-
-		-
-			rawMessage: 'Cannot access offset int<0, max> on mixed.'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: app/Module/XeneaTheme.php
 
 		-
 			rawMessage: 'Cannot call method name() on mixed.'
@@ -6409,19 +6241,7 @@ parameters:
 			path: app/Module/XeneaTheme.php
 
 		-
-			rawMessage: 'Parameter #1 $filter of method Fisharebest\Webtrees\GedcomRecord::facts() expects array<string>, array<int, mixed> given.'
-			identifier: argument.type
-			count: 1
-			path: app/Module/XeneaTheme.php
-
-		-
 			rawMessage: 'Parameter #2 $haystack of function in_array expects array, list<string>|false given.'
-			identifier: argument.type
-			count: 1
-			path: app/Module/XeneaTheme.php
-
-		-
-			rawMessage: 'Parameter #2 $haystack of function in_array expects array, mixed given.'
 			identifier: argument.type
 			count: 1
 			path: app/Module/XeneaTheme.php
@@ -6493,7 +6313,7 @@ parameters:
 			path: app/Place.php
 
 		-
-			rawMessage: 'Parameter #1 $str of function mb_substr expects string, mixed given.'
+			rawMessage: 'Parameter #1 $string of function mb_substr expects string, mixed given.'
 			identifier: argument.type
 			count: 2
 			path: app/Place.php
@@ -6595,7 +6415,7 @@ parameters:
 			path: app/PlaceLocation.php
 
 		-
-			rawMessage: 'Parameter #1 $str of function mb_substr expects string, mixed given.'
+			rawMessage: 'Parameter #1 $string of function mb_substr expects string, mixed given.'
 			identifier: argument.type
 			count: 1
 			path: app/PlaceLocation.php
@@ -6825,12 +6645,6 @@ parameters:
 		-
 			rawMessage: Access to an undefined property object::$xref.
 			identifier: property.notFound
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			rawMessage: 'Access to protected property Fisharebest\Webtrees\GedcomRecord|static(Fisharebest\Webtrees\Report\ReportParserGenerate)::$generation.'
-			identifier: property.protected
 			count: 1
 			path: app/Report/ReportParserGenerate.php
 
@@ -9379,7 +9193,7 @@ parameters:
 			path: app/StatisticsData.php
 
 		-
-			rawMessage: 'Method Fisharebest\Webtrees\StatisticsData::countFirstMarriagesByMonth() should return array<string, int> but returns array<int>.'
+			rawMessage: 'Method Fisharebest\Webtrees\StatisticsData::countFirstMarriagesByMonth() should return array<string, int> but returns array<int<0, max>>.'
 			identifier: return.type
 			count: 1
 			path: app/StatisticsData.php
@@ -9739,6 +9553,18 @@ parameters:
 			path: app/Validator.php
 
 		-
+			rawMessage: 'Value false in the haystack passed to in_array() can never be identical to the needle type array<int|string>|Fisharebest\Webtrees\Contracts\UserInterface|Fisharebest\Webtrees\Tree|int|string|null.'
+			identifier: function.impossibleHaystackValue
+			count: 1
+			path: app/Validator.php
+
+		-
+			rawMessage: 'Value true in the haystack passed to in_array() can never be identical to the needle type array<int|string>|Fisharebest\Webtrees\Contracts\UserInterface|Fisharebest\Webtrees\Tree|int|string|null.'
+			identifier: function.impossibleHaystackValue
+			count: 1
+			path: app/Validator.php
+
+		-
 			rawMessage: 'Parameter #1 $url of function parse_url expects string, mixed given.'
 			identifier: argument.type
 			count: 1
@@ -9881,6 +9707,78 @@ parameters:
 			identifier: echo.nonString
 			count: 1
 			path: resources/views/chart-box.phtml
+
+		-
+			rawMessage: 'Coalesce operator ??= is unnecessary because the left side is always set and the right side is null.'
+			identifier: nullCoalesce.unnecessary
+			count: 1
+			path: resources/views/components/badge.phtml
+
+		-
+			rawMessage: Coalesce operator ?? is unnecessary because the left side is always set and the right side is null.
+			identifier: nullCoalesce.unnecessary
+			count: 1
+			path: resources/views/components/select-family.phtml
+
+		-
+			rawMessage: Coalesce operator ?? is unnecessary because the left side is always set and the right side is null.
+			identifier: nullCoalesce.unnecessary
+			count: 1
+			path: resources/views/components/select-individual.phtml
+
+		-
+			rawMessage: Coalesce operator ?? is unnecessary because the left side is always set and the right side is null.
+			identifier: nullCoalesce.unnecessary
+			count: 1
+			path: resources/views/components/select-location.phtml
+
+		-
+			rawMessage: Coalesce operator ?? is unnecessary because the left side is always set and the right side is null.
+			identifier: nullCoalesce.unnecessary
+			count: 1
+			path: resources/views/components/select-media.phtml
+
+		-
+			rawMessage: Coalesce operator ?? is unnecessary because the left side is always set and the right side is null.
+			identifier: nullCoalesce.unnecessary
+			count: 1
+			path: resources/views/components/select-note.phtml
+
+		-
+			rawMessage: Coalesce operator ?? is unnecessary because the left side is always set and the right side is null.
+			identifier: nullCoalesce.unnecessary
+			count: 1
+			path: resources/views/components/select-place.phtml
+
+		-
+			rawMessage: Coalesce operator ?? is unnecessary because the left side is always set and the right side is null.
+			identifier: nullCoalesce.unnecessary
+			count: 1
+			path: resources/views/components/select-repository.phtml
+
+		-
+			rawMessage: Coalesce operator ?? is unnecessary because the left side is always set and the right side is null.
+			identifier: nullCoalesce.unnecessary
+			count: 1
+			path: resources/views/components/select-shared-note.phtml
+
+		-
+			rawMessage: Coalesce operator ?? is unnecessary because the left side is always set and the right side is null.
+			identifier: nullCoalesce.unnecessary
+			count: 1
+			path: resources/views/components/select-source.phtml
+
+		-
+			rawMessage: Coalesce operator ?? is unnecessary because the left side is always set and the right side is null.
+			identifier: nullCoalesce.unnecessary
+			count: 1
+			path: resources/views/components/select-submission.phtml
+
+		-
+			rawMessage: Coalesce operator ?? is unnecessary because the left side is always set and the right side is null.
+			identifier: nullCoalesce.unnecessary
+			count: 1
+			path: resources/views/components/select-submitter.phtml
 
 		-
 			rawMessage: Cannot cast mixed to string.
@@ -10109,6 +10007,12 @@ parameters:
 			identifier: method.nonObject
 			count: 1
 			path: resources/views/fact-association-structure.phtml
+
+		-
+			rawMessage: Coalesce operator ?? is unnecessary because the left side is always set and the right side is null.
+			identifier: nullCoalesce.unnecessary
+			count: 1
+			path: resources/views/fact-edit-links.phtml
 
 		-
 			rawMessage: 'Parameter #2 $subject of function preg_match_all expects string, string|null given.'
