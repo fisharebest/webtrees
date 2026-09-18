@@ -73,13 +73,13 @@ use Illuminate\Support\Collection;
             <div class="col-sm-9">
                 <div class="input-group" dir="ltr">
                     <span class="input-group-text" dir="ltr">
-                        <?= e(explode('{tree}', rawurldecode(route('example', ['tree' => '{tree}'])))[0]) ?>
+                        <?= e(explode('XXXXX', rawurldecode(route('example', ['tree' => 'XXXXX'])))[0]) ?>
                     </span>
 
                     <input class="form-control" dir="ltr" id="gedcom" maxlength="255" name="gedcom" required="required" type="text" value="<?= e($tree->name()) ?>">
 
                     <span class="input-group-text" dir="ltr">
-                        <?= e(explode('{tree}', rawurldecode(route('example', ['tree' => '{tree}'])))[1]) ?>
+                        <?= e(explode('XXXXX', rawurldecode(route('example', ['tree' => 'XXXXX'])))[1]) ?>
                     </span>
                 </div>
 
