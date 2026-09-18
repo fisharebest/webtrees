@@ -72,7 +72,7 @@ class Session
         session_register_shutdown();
         session_set_cookie_params([
             'lifetime' => 0,
-            'path'     => $path . '/',
+            'path'     => rtrim($path, '/') . '/',
             'domain'   => $domain,
             'secure'   => $secure,
             'httponly' => true,
