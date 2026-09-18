@@ -69,11 +69,6 @@ class Element
 
         $text = strtr($text, ['<br>' => "\n"]);
 
-        // Embedded variables report logic should not generate HTML.
-        if ($text !== strip_tags($text)) {
-            throw new LogicException('HTML tags are not allowed in text: ' . $text);
-        }
-
         $this->text = preg_replace('/ {2,}/', ' ', $this->text . $text);
     }
 
