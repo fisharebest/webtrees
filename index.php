@@ -26,6 +26,12 @@ use function parse_url;
 use const PHP_SAPI;
 use const PHP_URL_PATH;
 
+// When PHP 8.4 was released, Laravel declined to backport the syntax
+// change for implicitly null parameters to versions older than 18 months
+// due to their policy (even though it runs happily on newer versions of PHP).
+// So to support PHP >= 8.4, we need to disable deprecations during bootstrap.
+error_reporting(E_ALL & ~E_DEPRECATED);
+
 require __DIR__ . '/vendor/autoload.php';
 
 if (PHP_SAPI === 'cli-server') {
