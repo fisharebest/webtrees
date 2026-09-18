@@ -19,8 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use Fisharebest\Webtrees\Age;
+use Fisharebest\Webtrees\Date;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
+
+use function date;
+use function strtoupper;
 
 /**
  * Class ExpressionLanguageProvider - support functions in report expressions.
@@ -34,6 +39,24 @@ final class ExpressionLanguageProvider implements ExpressionFunctionProviderInte
     {
         return [
             ExpressionFunction::fromPhp('stristr'),
+            $this->ageYearsFunction(),
         ];
+    }
+
+    /**
+     * age_years(gedcom_date) - the number of complete years between a GEDCOM date and today.
+     * Returns -1 if the date cannot be parsed.
+     */
+    private function ageYearsFunction(): ExpressionFunction
+    {
+        return new ExpressionFunction(
+            'age_years',
+            static fn (string $date): string => 'age_years(' . $date . ')',
+            static function (array $variables, string $date): int {
+                $today = new Date(strtoupper(date('d M Y')));
+
+                return (new Age(new Date($date), $today))->ageYears();
+            },
+        );
     }
 }
