@@ -40,8 +40,7 @@ class RouteMatcherTest extends TestCase
         $routes->add('/ping', self::class);
 
         $matcher = $this->createRouteMatcher($routes);
-        $request = new ServerRequest('GET', '/ping');
-        $result  = $matcher->match($request);
+        $result  = $matcher->match('/ping');
 
         self::assertTrue($result->isSuccess());
         self::assertSame(self::class, $result->route->controller);
@@ -54,8 +53,7 @@ class RouteMatcherTest extends TestCase
         $routes->add('/tree/{tree}/individual/{xref}', self::class);
 
         $matcher = $this->createRouteMatcher($routes);
-        $request = new ServerRequest('GET', '/tree/demo/individual/I001');
-        $result  = $matcher->match($request);
+        $result  = $matcher->match('/tree/demo/individual/I001');
 
         self::assertTrue($result->isSuccess());
         self::assertSame(['tree' => 'demo', 'xref' => 'I001'], $result->attributes);
@@ -67,8 +65,7 @@ class RouteMatcherTest extends TestCase
         $routes->add('/tree/{tree}/individual/{xref}{/slug}', self::class);
 
         $matcher = $this->createRouteMatcher($routes);
-        $request = new ServerRequest('GET', '/tree/demo/individual/I001/john-doe');
-        $result  = $matcher->match($request);
+        $result  = $matcher->match('/tree/demo/individual/I001/john-doe');
 
         self::assertTrue($result->isSuccess());
         self::assertSame(['tree' => 'demo', 'xref' => 'I001', 'slug' => 'john-doe'], $result->attributes);
@@ -80,8 +77,7 @@ class RouteMatcherTest extends TestCase
         $routes->add('/tree/{tree}/individual/{xref}{/slug}', self::class);
 
         $matcher = $this->createRouteMatcher($routes);
-        $request = new ServerRequest('GET', '/tree/demo/individual/I001');
-        $result  = $matcher->match($request);
+        $result  = $matcher->match('/tree/demo/individual/I001');
 
         self::assertTrue($result->isSuccess());
         self::assertSame(['tree' => 'demo', 'xref' => 'I001'], $result->attributes);
@@ -93,8 +89,7 @@ class RouteMatcherTest extends TestCase
         $routes->add('/ping', self::class);
 
         $matcher = $this->createRouteMatcher($routes);
-        $request = new ServerRequest('GET', '/nonexistent');
-        $result  = $matcher->match($request);
+        $result  = $matcher->match('/nonexistent');
 
         self::assertFalse($result->isSuccess());
         self::assertSame('not_found', $result->failure_reason);
@@ -106,8 +101,7 @@ class RouteMatcherTest extends TestCase
         $routes->add('/module/{module}/{action}{/tree}', 'module'); // plain string, not a class
 
         $matcher = $this->createRouteMatcher($routes);
-        $request = new ServerRequest('GET', '/module/charts/show/demo');
-        $result  = $matcher->match($request);
+        $result  = $matcher->match('/module/charts/show/demo');
 
         self::assertFalse($result->isSuccess());
     }
@@ -118,24 +112,9 @@ class RouteMatcherTest extends TestCase
         $routes->add('/tree/{tree}', self::class);
 
         $matcher = $this->createRouteMatcher($routes);
-        $request = new ServerRequest('GET', '/tree/my%20tree');
-        $result  = $matcher->match($request);
+        $result  = $matcher->match('/tree/my%20tree');
 
         self::assertTrue($result->isSuccess());
         self::assertSame(['tree' => 'my tree'], $result->attributes);
-    }
-
-    public function testMatchesMethodAgnostic(): void
-    {
-        // The matcher matches by path only, not by HTTP method
-        $routes = new RouteCollection();
-        $routes->add('/ping', self::class);
-
-        $matcher = $this->createRouteMatcher($routes);
-        $get     = $matcher->match(new ServerRequest('GET', '/ping'));
-        $post    = $matcher->match(new ServerRequest('POST', '/ping'));
-
-        self::assertTrue($get->isSuccess());
-        self::assertTrue($post->isSuccess());
     }
 }

@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpInternalServerErrorException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\Routing\ParameterResolverInterface;
 use Fisharebest\Webtrees\Http\Routing\Route;
 use Fisharebest\Webtrees\Http\Routing\ScalarParameterResolver;
@@ -135,8 +136,7 @@ class InvokeController implements MiddlewareInterface
                 return null;
             }
 
-            $message = sprintf('The parameter "%s" is missing.', $name);
-            throw new HttpBadRequestException($message);
+            throw new HttpNotFoundException();
         }
 
         // Middleware sets these attributes as objects for legacy compatibility.
