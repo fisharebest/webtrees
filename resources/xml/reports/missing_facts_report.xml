@@ -628,35 +628,37 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
         <!-- DEAT -->
         <if condition="$fdeat=='on'">
           <SetVar name="nrevent" value="$nrevent + 2"/>
-          <if condition="@DEAT:DATE==''">
-            <SetVar name="nrmissingevent" value="$nrmissingevent + 1"/>
-            <if condition="$printname=='1'">
-              <Cell style="text" width="$name"> </Cell>
-            </if>
-            <if condition="$printname=='0'">
-              <Cell style="text" width="$name">
-                <GetPersonName/>
+          <if condition="(@BIRT:DATE!='') and (age_years(@BIRT:DATE) GT max_alive_age())">
+            <if condition="@DEAT:DATE==''">
+              <SetVar name="nrmissingevent" value="$nrmissingevent + 1"/>
+              <if condition="$printname=='1'">
+                <Cell style="text" width="$name"> </Cell>
+              </if>
+              <if condition="$printname=='0'">
+                <Cell style="text" width="$name">
+                  <GetPersonName/>
+                </Cell>
+                <SetVar name="printname" value="1"/>
+              </if>
+              <Cell newline="1" style="text">
+                <var var="I18N::translate('Date of death')"/>
               </Cell>
-              <SetVar name="printname" value="1"/>
             </if>
-            <Cell newline="1" style="text">
-              <var var="I18N::translate('Date of death')"/>
-            </Cell>
-          </if>
-          <if condition="@DEAT:PLAC==''">
-            <SetVar name="nrmissingevent" value="$nrmissingevent + 1"/>
-            <if condition="$printname=='1'">
-              <Cell style="text" width="$name"> </Cell>
-            </if>
-            <if condition="$printname=='0'">
-              <Cell style="text" width="$name">
-                <GetPersonName/>
+            <if condition="@DEAT:PLAC==''">
+              <SetVar name="nrmissingevent" value="$nrmissingevent + 1"/>
+              <if condition="$printname=='1'">
+                <Cell style="text" width="$name"> </Cell>
+              </if>
+              <if condition="$printname=='0'">
+                <Cell style="text" width="$name">
+                  <GetPersonName/>
+                </Cell>
+                <SetVar name="printname" value="1"/>
+              </if>
+              <Cell newline="1" style="text">
+                <var var="I18N::translate('Place of death')"/>
               </Cell>
-              <SetVar name="printname" value="1"/>
             </if>
-            <Cell newline="1" style="text">
-              <var var="I18N::translate('Place of death')"/>
-            </Cell>
           </if>
           <if condition="$fsour=='on'">
             <SetVar name="nrevent" value="$nrevent + 1"/>
