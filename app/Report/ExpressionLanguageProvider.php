@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Tree;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 
@@ -32,6 +33,11 @@ use function strtoupper;
  */
 final class ExpressionLanguageProvider implements ExpressionFunctionProviderInterface
 {
+    public function __construct(
+        private readonly Tree|null $tree = null,
+    ) {
+    }
+
     /**
      * @return array<ExpressionFunction>
      */
@@ -40,6 +46,7 @@ final class ExpressionLanguageProvider implements ExpressionFunctionProviderInte
         return [
             ExpressionFunction::fromPhp('stristr'),
             $this->ageYearsFunction(),
+            $this->maxAliveAgeFunction(),
         ];
     }
 
@@ -57,6 +64,23 @@ final class ExpressionLanguageProvider implements ExpressionFunctionProviderInte
 
                 return (new Age(new Date($date), $today))->ageYears();
             },
+        );
+    }
+
+    /**
+     * max_alive_age() - the tree's "Age at which to assume an individual is dead"
+     * preference (MAX_ALIVE_AGE), the same value webtrees itself already uses
+     * (see Individual::isDead()) to decide whether an individual without a death
+     * date is still shown as living. Falls back to the tree's own default (120)
+     * when no tree is in scope, e.g. plain arithmetic evaluation outside a report
+     * condition.
+     */
+    private function maxAliveAgeFunction(): ExpressionFunction
+    {
+        return new ExpressionFunction(
+            'max_alive_age',
+            static fn (): string => 'max_alive_age()',
+            fn (array $variables): int => (int) ($this->tree?->getPreference('MAX_ALIVE_AGE') ?? 120),
         );
     }
 }
