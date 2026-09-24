@@ -94,6 +94,7 @@ final class UserEdit
         $email          = Validator::parsedBody($request)->string('email');
         $password       = Validator::parsedBody($request)->string('password');
         $theme          = Validator::parsedBody($request)->string('theme');
+        $theme_mobile   = Validator::parsedBody($request)->string('theme-mobile');
         $language       = Validator::parsedBody($request)->string('language');
         $timezone       = Validator::parsedBody($request)->string('timezone');
         $contact_method = Validator::parsedBody($request)->string('contact-method');
@@ -129,6 +130,7 @@ final class UserEdit
 
         $edit_user->setRealName($real_name);
         $edit_user->setPreference(UserInterface::PREF_THEME, $theme);
+        $edit_user->setPreference(UserInterface::PREF_THEME_MOBILE, $theme_mobile);
         $edit_user->setPreference(UserInterface::PREF_LANGUAGE, $language);
         $edit_user->setPreference(UserInterface::PREF_TIME_ZONE, $timezone);
         $edit_user->setPreference(UserInterface::PREF_CONTACT_METHOD, $contact_method);

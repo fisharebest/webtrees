@@ -203,6 +203,16 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
+    <!-- THEME_MOBILE -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="theme-mobile">
+            <?= I18N::translate('Theme for mobile devices') ?>
+        </label>
+        <div class="col-sm-9">
+            <?= view('components/select', ['name' => 'theme-mobile', 'selected' => $user->getPreference(UserInterface::PREF_THEME_MOBILE), 'options' => $theme_options]) ?>
+        </div>
+    </div>
+
     <!-- COMMENTS -->
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="comment">
