@@ -116,8 +116,14 @@ final class ListBuilder
             case 'BIRT:DATE':
                 uasort($individuals, IndividualComparator::byBirthDate(...));
                 break;
+            case 'BIRT:PLAC':
+                uasort($individuals, IndividualComparator::byBirthPlace(...));
+                break;
             case 'DEAT:DATE':
                 uasort($individuals, IndividualComparator::byDeathDate(...));
+                break;
+            case 'DEAT:PLAC':
+                uasort($individuals, IndividualComparator::byDeathPlace(...));
                 break;
             default:
                 break;
@@ -151,6 +157,9 @@ final class ListBuilder
                 break;
             case 'MARR:DATE':
                 uasort($families, FamilyComparator::byMarriageDate(...));
+                break;
+            case 'MARR:PLAC':
+                uasort($families, FamilyComparator::byMarriagePlace(...));
                 break;
             default:
                 break;
