@@ -68,9 +68,10 @@ final class PasswordRequestAction implements RequestHandlerInterface, StatusCode
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree  = Validator::attributes($request)->treeOptional();
-        $email = Validator::parsedBody($request)->string('email');
-        $user  = $this->user_service->findByEmail($email);
+        $tree     = Validator::attributes($request)->treeOptional();
+        $base_url = Validator::attributes($request)->string('base_url');
+        $email    = Validator::parsedBody($request)->string('email');
+        $user     = $this->user_service->findByEmail($email);
 
         if ($user instanceof User) {
             $this->rate_limit_service->limitRateForUser($user, self::RATE_LIMIT_REQUESTS, self::RATE_LIMIT_SECONDS, 'rate-limit-pw-reset');
@@ -90,8 +91,8 @@ final class PasswordRequestAction implements RequestHandlerInterface, StatusCode
                 $user,
                 new SiteUser(),
                 I18N::translate('Request a new password'),
-                view('emails/password-request-text', ['url' => $url, 'user' => $user]),
-                view('emails/password-request-html', ['url' => $url, 'user' => $user])
+                view('emails/password-request-text', ['url' => $url, 'user' => $user, 'base_url' => $base_url]),
+                view('emails/password-request-html', ['url' => $url, 'user' => $user, 'base_url' => $base_url])
             );
 
             Log::addAuthenticationLog('Password request for user: ' . $user->userName());
