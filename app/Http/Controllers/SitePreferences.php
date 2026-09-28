@@ -57,6 +57,7 @@ final class SitePreferences
 
         return $this->viewResponse('admin/site-preferences', [
             'all_themes'         => $all_themes,
+            'mobile_themes'      => ['' => I18N::translate('<default theme>')] + $all_themes->all(),
             'data_folder'        => Registry::filesystem()->dataName(),
             'language_factory'   => Registry::container()->get(LanguageFactory::class),
             'title'              => $title,
@@ -69,6 +70,8 @@ final class SitePreferences
         $allow_change_gedcom = Validator::parsedBody($request)->boolean('ALLOW_CHANGE_GEDCOM');
         $language            = Validator::parsedBody($request)->string('LANGUAGE');
         $theme_dir           = Validator::parsedBody($request)->string('THEME_DIR');
+        $theme_dir_mobile    = Validator::parsedBody($request)->string('THEME_DIR_MOBILE');
+        $theme_mobile_detect = Validator::parsedBody($request)->boolean('THEME_MOBILE_DETECT');
         $timezone            = Validator::parsedBody($request)->string('TIMEZONE');
 
         if (!str_ends_with($index_directory, '/')) {
@@ -88,6 +91,8 @@ final class SitePreferences
         Site::setPreference('ALLOW_CHANGE_GEDCOM', (string) $allow_change_gedcom);
         Site::setPreference('LANGUAGE', $language);
         Site::setPreference('THEME_DIR', $theme_dir);
+        Site::setPreference('THEME_DIR_MOBILE', $theme_dir_mobile);
+        Site::setPreference('THEME_MOBILE_DETECT', (string) $theme_mobile_detect);
         Site::setPreference('TIMEZONE', $timezone);
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');

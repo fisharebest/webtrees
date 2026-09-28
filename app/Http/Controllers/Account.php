@@ -24,8 +24,10 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MessageService;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
@@ -46,6 +48,7 @@ final class Account
     public function __construct(
         private UserInterface $user,
         private MessageService $message_service,
+        private ModuleService $module_service,
         private UserService $user_service
     ) {
     }
@@ -66,12 +69,18 @@ final class Account
         $timezones          = array_combine($timezone_ids, $timezone_ids);
         $title              = I18N::translate('My account');
 
+        $themes = $this->module_service
+            ->findByInterface(ModuleThemeInterface::class)
+            ->map($this->module_service->titleMapper())
+            ->all();
+
         return $this->viewResponse('edit-account-page', [
             'contact_methods'      => $this->message_service->contactMethods(),
             'default_individual'   => $default_individual,
             'languages'            => I18N::allLanguages(),
             'my_individual_record' => $my_individual_record,
             'show_delete_option'   => $show_delete_option,
+            'theme_options'        => ['' => I18N::translate('<default theme>')] + $themes,
             'timezones'            => $timezones,
             'title'                => $title,
             'tree'                 => $tree,
@@ -88,6 +97,8 @@ final class Account
         $email          = Validator::parsedBody($request)->string('email');
         $language       = Validator::parsedBody($request)->string('language');
         $real_name      = Validator::parsedBody($request)->string('real_name');
+        $theme          = Validator::parsedBody($request)->string('theme');
+        $theme_mobile   = Validator::parsedBody($request)->string('theme-mobile');
         $password       = Validator::parsedBody($request)->string('password');
         $time_zone      = Validator::parsedBody($request)->string('timezone');
         $username       = Validator::parsedBody($request)->string('user_name');
@@ -126,6 +137,8 @@ final class Account
         $this->user->setPreference(UserInterface::PREF_CONTACT_METHOD, $contact_method);
         $this->user->setPreference(UserInterface::PREF_LANGUAGE, $language);
         $this->user->setPreference(UserInterface::PREF_TIME_ZONE, $time_zone);
+        $this->user->setPreference(UserInterface::PREF_THEME, $theme);
+        $this->user->setPreference(UserInterface::PREF_THEME_MOBILE, $theme_mobile);
         $this->user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, (string) $visible_online);
 
         if ($tree instanceof Tree) {
@@ -133,8 +146,10 @@ final class Account
             $tree->setUserPreference($this->user, UserInterface::PREF_TREE_DEFAULT_XREF, $default_xref);
         }
 
-        // Switch to the new language now
+        // Switch to the new language and themes now
         Session::put('language', $language);
+        Session::put('theme', $theme);
+        Session::put('theme-mobile', $theme_mobile);
 
         FlashMessages::addMessage(I18N::translate('The details for “%s” have been updated.', e($this->user->userName())), 'success');
 
