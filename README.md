@@ -168,7 +168,7 @@ All dependencies are pinned to exact version numbers (no ranges).
 #### Development Container
 
 The repository includes a [Development Container](https://containers.dev/)
-configuration with PHP 8.5, Composer, Node.js 22, npm, and the PHP extensions
+configuration with PHP 8.5, Composer, Node.js 26, npm, and the PHP extensions
 needed to develop and test webtrees.
 
 Prerequisites:
